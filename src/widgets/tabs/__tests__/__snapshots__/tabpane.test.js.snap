@@ -7,32 +7,16 @@ exports[`tabpaneDemo Component JSON 1`] = `
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  font-size: 1.2rem;
 }
 
 .c0 {
   position: relative;
   cursor: pointer;
   white-space: nowrap;
-  cursor: pointer;
+  padding: 0 10px 0 20px;
   display: inline-block;
-  line-height: 2.8333333333333335em;
-  height: 2.8333333333333335em;
-  padding: 0 0.8333333333333334em 0 1.6666666666666667em;
-  box-shadow: 0 0 0.5em none;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  background: none;
-  z-index: 5;
-  box-sizing: border-box;
-}
-
-.c0:hover > div {
-  color: #4d63ff;
-}
-
-.c0:hover > span > i:first-child {
-  color: none;
+  padding: 0 10px 0 20px;
+  text-align: center;
 }
 
 .c1 {
@@ -44,9 +28,7 @@ exports[`tabpaneDemo Component JSON 1`] = `
   -ms-user-select: none;
   user-select: none;
   text-align: left;
-  padding: 0 0em 0 0em;
-  height: 2.8333333333333335em;
-  line-height: 2.8333333333333335em;
+  height: 3.4rem;
 }
 
 .c1:focus {
@@ -57,35 +39,43 @@ exports[`tabpaneDemo Component JSON 1`] = `
   -webkit-transition: all 0.3s linear 0.1s;
   transition: all 0.3s linear 0.1s;
   z-index: 2;
-  display: inline-block;
+  opacity: 0;
+  color: #999;
   opacity: 1;
+  margin-left: 10px;
 }
 
 .c3 {
   font-size: 1rem;
 }
 
-.c3:hover {
-  color: #999999;
-}
-
 <div
-  className="c0"
+  className="BaseTab  c0"
   onClick={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
+  style={Object {}}
 >
   <div
-    className="c1"
-  />
+    className="cardTitle  c1"
+    style={
+      Object {
+        "lineHeight": "34px",
+      }
+    }
+  >
+    tabs
+  </div>
   <span
     className="c2"
     onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
+    style={Object {}}
   >
     <i
-      className="lugia-icon-reminder_close c3 c4"
+      className="lugia-icon-reminder_close c3  c4"
+      style={Object {}}
     />
   </span>
 </div>

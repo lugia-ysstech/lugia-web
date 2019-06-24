@@ -53,9 +53,9 @@ const BaseTabHoc = CSSComponent({
           animation: ${addWidth} 0.2s linear forwards;
           transform: translateX(-50%);
         `;
-        let pos = tabPosition === 'top' ? 'bottom: 0;' : 'top: 0;';
+        let pos = tabPosition === 'top' ? 'bottom: -1px;' : 'top: -1px;';
         if (isVertical(tabPosition)) {
-          pos = tabPosition === 'left' ? 'right: -20px;' : 'left: -20px;';
+          pos = tabPosition === 'left' ? 'right: -21px;' : 'left: -21px;';
           cssString = css`
             width: 2px;
             height: 100%;
@@ -374,10 +374,10 @@ type TabpaneProps = {
   onDeleteClick?: Function,
   icon?: string,
   suffixIcon?: string,
-  tabType: TabType,
-  tabPosition: TabPositionType,
-  activityValue: string,
-  isSelect: boolean,
+  tabType?: TabType,
+  tabPosition?: TabPositionType,
+  activityValue?: string,
+  isSelect?: boolean,
   disabled?: boolean,
   onClick?: Function,
   onMouseEnter?: Function,

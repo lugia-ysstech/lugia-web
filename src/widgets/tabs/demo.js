@@ -468,6 +468,7 @@ const hasActivityValueChildren = [
     activityValue={'12'}
   />,
 ];
+
 export default () => {
   const lineView = {
     [Widget.Tabs]: {
@@ -480,7 +481,6 @@ export default () => {
           color: '#ccc',
         },
       },
-
       DefaultTabPan: {
         normal: {},
         hover: {
@@ -488,6 +488,13 @@ export default () => {
         },
         disabled: {
           color: '#ccc',
+        },
+      },
+      AddButton: {},
+      BorderStyle: {
+        normal: {
+          color: '#FFCCFF',
+          width: 1,
         },
       },
     },
@@ -501,17 +508,6 @@ export default () => {
           background: {
             color: '#D8BFD8',
           },
-        },
-        disabled: {
-          color: '#ccc',
-        },
-      },
-      SelectTitle: {
-        normal: {
-          color: themeColor,
-        },
-        hover: {
-          color: 'orange',
         },
         disabled: {
           color: '#ccc',
@@ -558,32 +554,12 @@ export default () => {
           color: '#ccc',
         },
       },
-      SelectTitle: {
-        normal: {
-          color: themeColor,
-        },
-        hover: {
-          color: 'orange',
-        },
-        disabled: {
-          color: '#ccc',
-        },
-      },
       WindowTabPan: {
         normal: {
           background: {
             color: 'pink',
           },
         },
-        hover: {
-          color: 'orange',
-        },
-        disabled: {
-          color: '#ccc',
-        },
-      },
-      DefaultTabPan: {
-        normal: {},
         hover: {
           color: 'orange',
         },
@@ -600,138 +576,139 @@ export default () => {
   };
   return (
     <div>
-      {/*<Theme config={lineView}>*/}
-      {/*<div>*/}
-      {/*<p style={{titleStyle}}>defaultData </p>*/}
-      {/*<Tabs*/}
-      {/*tabType={'line'}*/}
-      {/*tabPosition={'top'}*/}
-      {/*onPreClick={onPreClick}*/}
-      {/*onNextClick={onNextClick}*/}
-      {/*defaultData={defaultData}*/}
-      {/*/>*/}
-      {/*</div>*/}
-      {/*<div>*/}
-      {/*<p style={{titleStyle}}>height 60 </p>*/}
-      {/*<Tabs*/}
-      {/*tabType={'line'}*/}
-      {/*tabPosition={'top'}*/}
-      {/*onPreClick={onPreClick}*/}
-      {/*onNextClick={onNextClick}*/}
-      {/*defaultData={defaultData}*/}
-      {/*/>*/}
-      {/*</div>*/}
-      {/*<div>*/}
-      {/*<p style={{titleStyle}}>suffixIcon </p>*/}
-      {/*<Tabs tabType={'line'} tabPosition={'top'} data={suffixData} />*/}
-      {/*</div>*/}
-      {/*<div>*/}
-      {/*<p style={{titleStyle}}>disabled </p>*/}
-      {/*<Tabs tabType={'line'} tabPosition={'top'} data={disabledData} />*/}
-      {/*</div>*/}
-      {/*<div>*/}
-      {/*<p style={{titleStyle}}>data tabPosition=top</p>*/}
-      {/*<Tabs*/}
-      {/*tabType={'line'}*/}
-      {/*tabPosition={'top'}*/}
-      {/*onPreClick={onPreClick}*/}
-      {/*onNextClick={onNextClick}*/}
-      {/*children={children}*/}
-      {/*data={defaultData}*/}
-      {/*/>*/}
-      {/*</div>*/}
-      {/*</Theme>*/}
+      <Theme config={lineView}>
+        <div>
+          <p style={{ titleStyle }}>defaultData </p>
+          <Tabs
+            tabType={'line'}
+            tabPosition={'top'}
+            onPreClick={onPreClick}
+            onNextClick={onNextClick}
+            defaultData={defaultData}
+          />
+        </div>
+        <div>
+          <p style={{ titleStyle }}>height 60 </p>
+          <Tabs
+            tabType={'line'}
+            tabPosition={'top'}
+            onPreClick={onPreClick}
+            onNextClick={onNextClick}
+            defaultData={defaultData}
+          />
+        </div>
+        <div>
+          <p style={{ titleStyle }}>suffixIcon </p>
+          <Tabs tabType={'line'} tabPosition={'top'} data={suffixData} />
+        </div>
+        <div>
+          <p style={{ titleStyle }}>disabled </p>
+          <Tabs tabType={'line'} tabPosition={'top'} data={disabledData} />
+        </div>
+        <div>
+          <p style={{ titleStyle }}>data tabPosition=top</p>
+          <Tabs
+            tabType={'line'}
+            tabPosition={'top'}
+            onPreClick={onPreClick}
+            onNextClick={onNextClick}
+            children={children}
+            data={defaultData}
+          />
+        </div>
+      </Theme>
 
-      {/*<Theme config={lineView}>*/}
-      {/*<div>*/}
-      {/*<p style={{titleStyle}}>children tabPosition=left</p>*/}
-      {/*<Tabs*/}
-      {/*tabType={'line'}*/}
-      {/*tabPosition={'left'}*/}
-      {/*onPreClick={onPreClick}*/}
-      {/*onNextClick={onNextClick}*/}
-      {/*children={hasActivityValueChildren}*/}
-      {/*/>*/}
-      {/*</div>*/}
-      {/*<p style={{titleStyle}}>children tabPosition=right</p>*/}
-      {/*<div>*/}
-      {/*<Tabs*/}
-      {/*tabType={'line'}*/}
-      {/*tabPosition={'right'}*/}
-      {/*onPreClick={onPreClick}*/}
-      {/*onNextClick={onNextClick}*/}
-      {/*children={shortChildren}*/}
-      {/*/>*/}
-      {/*</div>*/}
-      {/*<div>*/}
-      {/*<Tabs*/}
-      {/*tabType={'line'}*/}
-      {/*tabPosition={'bottom'}*/}
-      {/*onPreClick={onPreClick}*/}
-      {/*onNextClick={onNextClick}*/}
-      {/*children={longChildren}*/}
-      {/*/>*/}
-      {/*</div>*/}
-      {/*<div>*/}
-      {/*<p style={{titleStyle}}>data tabPosition=top</p>*/}
-      {/*<Tabs*/}
-      {/*tabType={'line'}*/}
-      {/*data={defaultData}*/}
-      {/*onPreClick={onPreClick}*/}
-      {/*onNextClick={onNextClick}*/}
-      {/*/>*/}
-      {/*</div>*/}
-      {/*<br />*/}
-      {/*<div>*/}
-      {/*<p style={{titleStyle}}>data tabPosition=left </p>*/}
-      {/*<Tabs*/}
-      {/*tabType={'line'}*/}
-      {/*tabPosition={'left'}*/}
-      {/*data={hasActivityValueData}*/}
-      {/*onPreClick={onPreClick}*/}
-      {/*onNextClick={onNextClick}*/}
-      {/*/>*/}
-      {/*</div>*/}
-      {/*<br />*/}
-      {/*<p style={{titleStyle}}>data tabPosition=right && pagedType=single</p>*/}
-      {/*<div>*/}
-      {/*<Tabs*/}
-      {/*tabType={'line'}*/}
-      {/*tabPosition={'right'}*/}
-      {/*data={hasActivityValueData}*/}
-      {/*onPreClick={onPreClick}*/}
-      {/*onNextClick={onNextClick}*/}
-      {/*defaultActivityValue={'2'}*/}
-      {/*/>*/}
-      {/*</div>*/}
-      {/*<br />*/}
-      {/*<p style={{titleStyle}}>children tabPosition=bottom</p>*/}
-      {/*<div>*/}
-      {/*<Tabs*/}
-      {/*tabType={'line'}*/}
-      {/*data={defaultData}*/}
-      {/*tabPosition={'bottom'}*/}
-      {/*onPreClick={onPreClick}*/}
-      {/*onNextClick={onNextClick}*/}
-      {/*/>*/}
-      {/*</div>*/}
-      {/*<br />*/}
-      {/*</Theme>*/}
+      <Theme config={lineView}>
+        <div>
+          <p style={{ titleStyle }}>children tabPosition=left</p>
+          <Tabs
+            tabType={'line'}
+            tabPosition={'left'}
+            onPreClick={onPreClick}
+            onNextClick={onNextClick}
+            children={hasActivityValueChildren}
+          />
+        </div>
+        <p style={{ titleStyle }}>children tabPosition=right</p>
+        <div>
+          <Tabs
+            tabType={'line'}
+            tabPosition={'right'}
+            onPreClick={onPreClick}
+            onNextClick={onNextClick}
+            children={shortChildren}
+          />
+        </div>
+        <p style={{ titleStyle }}>children tabPosition=bottom</p>
+        <div>
+          <Tabs
+            tabType={'line'}
+            tabPosition={'bottom'}
+            onPreClick={onPreClick}
+            onNextClick={onNextClick}
+            children={longChildren}
+          />
+        </div>
+        <div>
+          <p style={{ titleStyle }}>data tabPosition=top</p>
+          <Tabs
+            tabType={'line'}
+            data={defaultData}
+            onPreClick={onPreClick}
+            onNextClick={onNextClick}
+          />
+        </div>
+        <br />
+        <div>
+          <p style={{ titleStyle }}>data tabPosition=left </p>
+          <Tabs
+            tabType={'line'}
+            tabPosition={'left'}
+            data={hasActivityValueData}
+            onPreClick={onPreClick}
+            onNextClick={onNextClick}
+          />
+        </div>
+        <br />
+        <p style={{ titleStyle }}>data tabPosition=right && pagedType=single</p>
+        <div>
+          <Tabs
+            tabType={'line'}
+            tabPosition={'right'}
+            data={hasActivityValueData}
+            onPreClick={onPreClick}
+            onNextClick={onNextClick}
+            defaultActivityValue={'2'}
+          />
+        </div>
+        <br />
+        <p style={{ titleStyle }}>children tabPosition=bottom</p>
+        <div>
+          <Tabs
+            tabType={'line'}
+            data={defaultData}
+            tabPosition={'bottom'}
+            onPreClick={onPreClick}
+            onNextClick={onNextClick}
+          />
+        </div>
+        <br />
+      </Theme>
 
-      {/*<Theme config={cardView}>*/}
-      {/*<div>*/}
-      {/*<p style={{titleStyle}}>tabType=card pagedType=single</p>*/}
-      {/*<Tabs*/}
-      {/*tabType={'card'}*/}
-      {/*pagedType={'single'}*/}
-      {/*data={hasActivityValueData}*/}
-      {/*onPreClick={onPreClick}*/}
-      {/*onNextClick={onNextClick}*/}
-      {/*/>*/}
-      {/*</div>*/}
-      {/*<br />*/}
-      {/*<br />*/}
-      {/*</Theme>*/}
+      <Theme config={cardView}>
+        <div>
+          <p style={{ titleStyle }}>tabType=card pagedType=single</p>
+          <Tabs
+            tabType={'card'}
+            pagedType={'single'}
+            data={hasActivityValueData}
+            onPreClick={onPreClick}
+            onNextClick={onNextClick}
+          />
+        </div>
+        <br />
+        <br />
+      </Theme>
       <Theme config={windowView}>
         <div>
           <p style={{ titleStyle }}>tabType=window pagedType=page</p>
@@ -744,9 +721,9 @@ export default () => {
           />
         </div>
         <p style={{ titleStyle }}>非受限 不传data 展示数据由state 控制</p>
-        {/*<Tabsdemo />*/}
+        <Tabsdemo />
         <p style={{ titleStyle }}>受限 展示数据 由props控制</p>
-        {/*<TabsLimitdemo />*/}
+        <TabsLimitdemo />
         <br />
       </Theme>
     </div>

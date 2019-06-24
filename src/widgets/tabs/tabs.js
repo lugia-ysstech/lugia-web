@@ -338,6 +338,17 @@ const HscrollerContainer = CSSComponent({
   className: 'HscrollerContainer',
   normal: {
     selectNames: [],
+    getCSS: (theme: Object, themeProps: Object) => {
+      const {
+        propsConfig: { tabPosition },
+      } = themeProps;
+      const { color = '#e8e8e8', width = 1 } = theme;
+      let border = `border-bottom: ${width}px solid ${color};`;
+      if (tabPosition === 'bottom') {
+        border = `border-top: ${width}px solid ${color};`;
+      }
+      return border;
+    },
   },
   disabled: {
     selectNames: [],
@@ -346,7 +357,6 @@ const HscrollerContainer = CSSComponent({
     display: inline-block;
     box-sizing: border-box;
     white-space: nowrap;
-    border-bottom: 1px solid #e8e8e8;
     transition: all 0.5s;
   `,
 }); //height: ${hContainerHeight};
@@ -374,6 +384,17 @@ const YscrollerContainer = CSSComponent({
   className: 'YscrollerContainer',
   normal: {
     selectNames: [],
+    getCSS: (theme: Object, themeProps: Object) => {
+      const {
+        propsConfig: { tabPosition },
+      } = themeProps;
+      const { color = '#e8e8e8', width = 1 } = theme;
+      let border = `border-left: ${width}px solid ${color};`;
+      if (tabPosition === 'left') {
+        border = `border-right: ${width}px solid ${color};`;
+      }
+      return border;
+    },
   },
   disabled: {
     selectNames: [],
@@ -417,7 +438,7 @@ const VTabsOutContainer = CSSComponent({
     box-sizing: border-box;
     white-space: nowrap;
     overflow: hidden;
-    height: 100%;
+    // height: 100%;
   `,
 }); //${getSelectColor};${getContainerBorder}; ${getContainerPadding};
 
@@ -592,6 +613,8 @@ class TabsBox extends Component<TabsProps, TabsState> {
     const arrowUp = 'lugia-icon-direction_up';
     const arrowDown = 'lugia-icon-direction_down';
     const y = -YtabsHeight * pagedCount;
+    const borderThemeProps = this.props.getPartOfThemeProps('BorderStyle');
+    borderThemeProps.propsConfig = { tabPosition };
     return (
       <VTabsOutContainer
         themeProps={themeProps}
@@ -604,15 +627,10 @@ class TabsBox extends Component<TabsProps, TabsState> {
           onClick={this.onPreClick}
           {...this.getArrowConfig('pre')}
         >
-          <PageIcon themeProps={themeProps} iconClass={arrowUp} {...this.getArrowConfig('pre')} />
+          <PageIcon themeProps={themeProps} iconClass={arrowUp} />
         </VPrePage>
         <VTabsContainer themeProps={themeProps}>
-          <YscrollerContainer y={y} themeProps={themeProps}>
-            <VLine
-              themeProps={themeProps}
-              y={getIndexfromKey(data, 'activityValue', activityValue) * 100}
-              tabPosition={tabPosition}
-            />
+          <YscrollerContainer y={y} themeProps={borderThemeProps}>
             {this.getChildren()}
           </YscrollerContainer>
         </VTabsContainer>
@@ -677,18 +695,20 @@ class TabsBox extends Component<TabsProps, TabsState> {
   }
 
   getHtabsChildren() {
-    const { tabType, getTheme, themeProps } = this.props;
+    const { tabType, tabPosition, getTheme, themeProps } = this.props;
     const arrowLeft = 'lugia-icon-direction_Left';
     const arrowRight = 'lugia-icon-direction_right';
     const pre = this.getArrowConfig('pre');
     const next = this.getArrowConfig('next');
+    const borderThemeProps = this.props.getPartOfThemeProps('BorderStyle');
+    borderThemeProps.propsConfig = { tabPosition };
     return [
       <HPrePage themeProps={themeProps} onClick={this.onPreClick} tabType={tabType} {...pre}>
         <PageIcon themeProps={themeProps} iconClass={arrowLeft} {...pre} />
       </HPrePage>,
       <HTabsContainer themeProps={themeProps} tabType={tabType}>
         <HscrollerContainer
-          themeProps={themeProps}
+          themeProps={borderThemeProps}
           tabType={tabType}
           x={this.computePagedX()}
           theme={getTheme()}
@@ -893,6 +913,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
 
   onDeleteClick = (e: Event, activityValue: string) => {
     const { data } = this.state;
+    // console.log('onDeleteClick',activityValue,data);
     let newdata = [];
     if (!hasDataInProps(this.props)) {
       newdata = data.filter(tabpane => {
@@ -907,6 +928,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
         }
       );
     }
+
     const { onDeleteClick } = this.props;
     onDeleteClick && onDeleteClick(activityValue);
   };
