@@ -8,21 +8,9 @@ import '../common/shirm';
 import React, { Component } from 'react';
 import Widget from '../consts/index';
 import { TabType, TabPositionType, CardMarginRight } from '../css/tabs';
-import {
-  getTitlePadding,
-  getSelectedStyleByTabType,
-  getStyleByTabType,
-  getHoverStyleByTabType,
-  getTabpaneHoverTransform,
-  getButtonShow,
-  getTabpaneIconHoverColor,
-  getClearButtonOpacity,
-  getTabpaneHeight,
-} from '../css/tabs';
+import { getTitlePadding } from '../css/tabs';
 
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
-import ThemeProvider from '../theme-provider';
-import { px2remcss } from '../css/units';
 import Icon from '../icon';
 import { isVertical, matchType } from './utils';
 import { ObjectUtils } from '@lugia/type-utils';
@@ -35,73 +23,11 @@ import colorsFunc from '../css/stateColor';
 
 const { themeColor, mediumGreyColor, superLightColor, disableColor } = colorsFunc();
 
-// const BaseTab = ThemeHoc(
-//   CSSComponent({
-//     tag: 'div',
-//     className: 'BaseTab',
-//     normal: {
-//       selectNames: [['color'], ['background'], ['border'], ['margin']],
-//     },
-//     hover: {
-//       selectNames: [['color'], ['background']],
-//       defaultTheme: {
-//         color: themeColor,
-//       },
-//       getCSS: (theme: Object, themeProps: Object) => {
-//         return css`
-//           & > span {
-//             opacity: 1;
-//           }
-//           & > div.cardTitle {
-//             transition: all 0.3s linear;
-//             transform: translateX(-3px);
-//           }
-//         `;
-//       },
-//     },
-//     disabled: {
-//       selectNames: [],
-//       defaultTheme: {
-//         cursor: 'not-allowed',
-//         color: '#999',
-//       },
-//       getCSS: (theme: Object, themeProps: Object) => {
-//         const { color } = theme;
-//         return css`
-//           color: ${color || '#999'};
-//
-//           & > div.lineTitle::before {
-//             content: '';
-//             width: 0;
-//             height: 0;
-//           }
-//           & > div.cardTitle {
-//             transition: none;
-//             transform: none;
-//           }
-//         `;
-//       },
-//     },
-//     css: css`
-//       position: relative;
-//       cursor: pointer;
-//       white-space: nowrap;
-//       display: inline-block;
-//       padding: 0 10px 0 20px;
-//     `,
-//   }),
-//   'BaseTab',
-//   { hover: true, active: false }
-// );
-
 const BaseTabHoc = CSSComponent({
   tag: 'div',
   className: 'BaseTab',
   normal: {
     selectNames: [['color'], ['background'], ['border'], ['margin']],
-    defaultTheme: {
-      // height:34
-    },
     getCSS: (theme: Object, themeProps: Object) => {
       const { color } = theme;
       const {
@@ -109,17 +35,23 @@ const BaseTabHoc = CSSComponent({
       } = themeProps;
       let display = 'inline-block';
       let padding = 'padding: 0 10px 0 20px;';
+      let textAlign = 'text-align: center';
       if (isVertical(tabPosition)) {
         display = 'block';
-        padding = 'padding: 0 20px;';
+        padding = 'padding: 0 20px; ';
+        if (tabPosition === 'left') {
+          textAlign = 'text-align: right';
+        } else {
+          textAlign = 'text-align: left';
+        }
       }
-
       if (isSelect && tabType === 'line') {
         let cssString = css`
           width: 100%;
           height: 2px;
           left: 50%;
           animation: ${addWidth} 0.2s linear forwards;
+          transform: translateX(-50%);
         `;
         let pos = tabPosition === 'top' ? 'bottom: 0;' : 'top: 0;';
         if (isVertical(tabPosition)) {
@@ -127,12 +59,14 @@ const BaseTabHoc = CSSComponent({
           cssString = css`
             width: 2px;
             height: 100%;
-            top: 0;
+            top: 50%;
             animation: ${addHeight} 0.2s linear forwards;
+            transform: translateY(-50%);
           `;
         }
         return css`
           display: ${display};
+          ${textAlign}
           ${padding}
           & > div::before {
             content: '';
@@ -140,7 +74,6 @@ const BaseTabHoc = CSSComponent({
             border-radius: 2px;
             position: absolute;
             ${pos}
-            transform: translate(-50%);
             ${cssString}
           }
         `;
@@ -148,6 +81,7 @@ const BaseTabHoc = CSSComponent({
       return css`
         display: ${display};
         ${padding}
+        ${textAlign}
       `;
     },
   },
@@ -157,7 +91,6 @@ const BaseTabHoc = CSSComponent({
       color: themeColor,
     },
     getCSS: (theme: Object, themeProps: Object) => {
-      console.log('hover', themeProps);
       const {
         propsConfig: { tabType },
       } = themeProps;
@@ -222,7 +155,6 @@ const BaseTab = ThemeHoc(
         onMouseEnter,
         onMouseLeave,
       } = this.props;
-      console.log('this.props', this.props);
       themeProps.propsConfig = { tabType, isSelect, tabPosition };
       return (
         <BaseTabHoc
@@ -291,8 +223,6 @@ const Title = CSSComponent({
     display: inline-block;
     box-sizing: border-box;
     user-select: none;
-    text-align: left;
-    width: 100%;
     &:focus {
       color: ${themeColor};
     }
@@ -504,7 +434,6 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
       >
-        {this.getTabIconContainer(icon, titleThemeProps)}
         {tabType === 'line' ? (
           <Title
             className={'lineTitle'}
@@ -515,7 +444,9 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
             isSelect={isSelect}
             disabled={disabled}
           >
+            {this.getTabIconContainer(icon, titleThemeProps)}
             {title}
+            {this.getTabIconContainer(suffixIcon, titleThemeProps, 'suffix')}
           </Title>
         ) : (
           <CardTitle
@@ -527,11 +458,12 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
             isSelect={isSelect}
             disabled={disabled}
           >
+            {this.getTabIconContainer(icon, titleThemeProps)}
             {title}
+            {this.getTabIconContainer(suffixIcon, titleThemeProps, 'suffix')}
           </CardTitle>
         )}
 
-        {this.getTabIconContainer(suffixIcon, titleThemeProps, 'suffix')}
         {this.getClearButton()}
       </BaseTab>
     );
@@ -550,7 +482,6 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
           // onMouseEnter={this.onMouseEnter}
           // onMouseLeave={this.onMouseLeave}
         >
-          {this.getTabIconContainer(icon, titleThemeProps)}
           <Title
             className={'lineTitle'}
             themeProps={titleThemeProps}
@@ -560,6 +491,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
             isSelect={isSelect}
             disabled={disabled}
           >
+            {this.getTabIconContainer(icon, titleThemeProps)}
             {title}
           </Title>
         </BaseTab>
@@ -570,15 +502,10 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
 
   getHTabPaneThemeProps(tabType: string, isSelect: boolean) {
     let titleThemeProps = this.props.getPartOfThemeProps('DefaultTabPan');
-    // const cardTabPanThemeProps = this.props.getPartOfThemeProps('SelectTabPan');
-    // console.log('doDeepMerge a,b', titleThemeProps, 'B', cardTabPanThemeProps);
-    // console.log('doDeepMerge', doDeepMerge(titleThemeProps, cardTabPanThemeProps));
-
     const { props } = this;
     const targetObj = { normal: { ...getTitlePadding(props) } };
     titleThemeProps = doDeepMerge(targetObj, titleThemeProps);
 
-    // let tabThemeProps = this.props.getPartOfThemeProps('DefaultTabPan');
     const { viewClass, theme } = this.props.getPartOfThemeHocProps('DefaultTabPan');
     let themeRes = theme;
     switch (tabType) {
@@ -632,21 +559,14 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     return { tabThemeProps: { viewClass, theme: themeRes }, titleThemeProps };
   }
 
-  componentDidMount() {
-    // this.getContainerWidth();
-  }
+  componentDidMount() {}
 
   handleClick = () => {
-    console.log('handleClick');
     const { activityValue, onClick, disabled } = this.props;
     if (!disabled) onClick && onClick(activityValue);
   };
 
   getTabIconContainer(icon: ?string, themeProps?: Object = {}, type?: string) {
-    // const closeTheme = {...themeProps};
-    // if(type ==='suffix'){
-    //   closeTheme.themeConfig = doDeepMerge(themeProps.themeConfig,{themeConfig:{normal:{color: '#999'}}}).themeConfig;
-    // }
     return icon ? (
       <IconContainer themeProps={themeProps}>{this.getIcon(icon, themeProps)}</IconContainer>
     ) : null;
@@ -662,7 +582,6 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
   }
   onDeleteClick = (e: Event) => {
     const { onDeleteClick, activityValue } = this.props;
-    // console.log('onDeleteClick',activityValue);
     onDeleteClick && onDeleteClick(e, activityValue);
   };
   getClearButton() {
