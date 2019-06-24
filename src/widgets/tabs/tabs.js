@@ -63,48 +63,6 @@ import { addMouseEvent } from '@lugia/theme-hoc';
 import ThemeHoc from '@lugia/theme-hoc';
 import { deepMerge } from '@lugia/object-utils';
 
-const BaseLine = CSSComponent({
-  tag: 'div',
-  className: 'BaseLine',
-  normal: {
-    selectNames: [],
-  },
-  disabled: {
-    selectNames: [],
-  },
-  css: css`
-    position: absolute;
-    box-sizing: border-box;
-    z-index: 3;
-    border-radius: ${px2remcss(2)};
-  `,
-});
-
-const HLine = CSSComponent({
-  extend: BaseLine,
-  className: 'HLine',
-  normal: {
-    selectNames: [],
-  },
-  disabled: {
-    selectNames: [],
-  },
-  css: css`
-    height: ${px2remcss(2)};
-    width: ${lineWidth};
-    transform: translateX(${props => px2remcss(props.x)});
-    transition: all 0.3s;
-  `,
-}); // ${getLinePosition};
-
-// const HLine = styled(BaseLine)`
-//   height: ${px2remcss(2)};
-//   width: ${lineWidth};
-//   ${getLinePosition};
-//   transform: translateX(${props => px2remcss(props.x)});
-//   transition: all 0.3s;
-// `;
-
 const ShadowLine = CSSComponent({
   tag: 'div',
   className: 'BaseLine',
@@ -123,23 +81,6 @@ const ShadowLine = CSSComponent({
   `,
 }); //${getBackgroundShadow};
 
-const VLine = CSSComponent({
-  extend: BaseLine,
-  className: 'VLine',
-  normal: {
-    selectNames: [],
-  },
-  disabled: {
-    selectNames: [],
-  },
-  css: css`
-    height: ${px2remcss(YtabsHeight)};
-    width: ${px2remcss(2)};
-    transform: translateY(${props => props.y}%);
-    transition: all 0.3s;
-  `,
-}); //${getLinePosition};
-
 const ArrowContainer = CSSComponent({
   tag: 'span',
   className: 'BaseLine',
@@ -152,7 +93,7 @@ const ArrowContainer = CSSComponent({
   css: css`
     position: absolute;
     font-size: 1.2rem;
-    display: ${props => (props.arrowShow === false ? 'none' : 'inline-block')};
+    // display: ${props => (props.arrowShow === false ? 'none' : 'inline-block')};
     z-index: 5;
   `,
 }); //${getCursor};;
@@ -258,6 +199,7 @@ const OutContainer = CSSComponent({
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     position: relative;
+    overflow: hidden;
   `,
 }); //width: ${hContainerWidth};height: ${vContainerHeight};
 OutContainer.displayName = Widget.TabsContainer;
@@ -438,6 +380,7 @@ const VTabsOutContainer = CSSComponent({
     box-sizing: border-box;
     white-space: nowrap;
     overflow: hidden;
+    float: left;
     // height: 100%;
   `,
 }); //${getSelectColor};${getContainerBorder}; ${getContainerPadding};
@@ -675,25 +618,6 @@ class TabsBox extends Component<TabsProps, TabsState> {
     return null;
   }
 
-  getHline() {
-    const { tabType, tabPosition, themeProps } = this.props;
-    const { activityValue, data, childrenSize } = this.state;
-    if (matchType(tabType, 'line')) {
-      return (
-        <HLine
-          themeProps={themeProps}
-          lineWidth={childrenSize[getIndexfromKey(data, 'activityValue', activityValue)]}
-          x={
-            plusWidth(getIndexfromKey(data, 'activityValue', activityValue) - 1, childrenSize) +
-            LineMarginLeft
-          }
-          tabPosition={tabPosition}
-        />
-      );
-    }
-    return null;
-  }
-
   getHtabsChildren() {
     const { tabType, tabPosition, getTheme, themeProps } = this.props;
     const arrowLeft = 'lugia-icon-direction_Left';
@@ -715,7 +639,6 @@ class TabsBox extends Component<TabsProps, TabsState> {
         >
           {this.getChildren()}
           {this.getAddButton()}
-          {/*{this.getHline()}*/}
         </HscrollerContainer>
       </HTabsContainer>,
       <HNextPage themeProps={themeProps} {...next} onClick={this.onNextClick} tabType={tabType}>
@@ -874,9 +797,12 @@ class TabsBox extends Component<TabsProps, TabsState> {
               getAttributeFromObject(child, 'children', undefined)
             )
           );
+          const contentThemeProps = this.props.getPartOfThemeProps('ContentBlock');
+          contentThemeProps.propsConfig = { tabPosition };
           return (
             <TabContent
-              themeProps={themeProps}
+              {...this.props}
+              themeProps={contentThemeProps}
               content={content}
               activityValue={childActivityValue}
               tabPosition={tabPosition}

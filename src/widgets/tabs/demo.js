@@ -497,6 +497,16 @@ export default () => {
           width: 1,
         },
       },
+      ContentBlock: {
+        normal: {
+          padding: {
+            top: 10,
+            left: 10,
+            right: 10,
+            bottom: 10,
+          },
+        },
+      },
     },
   };
   const cardView = {
