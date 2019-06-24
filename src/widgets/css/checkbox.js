@@ -21,6 +21,9 @@ const {
   marginToPeerElementForY,
   blackColor,
   lightGreyColor,
+  borderColor,
+  disableColor,
+  borderDisableColor,
 } = colorsFunc();
 
 export type CSStype = {
@@ -102,27 +105,21 @@ export const CheckBoxWrap = CSSComponent({
   `,
   normal: {
     defaultTheme: {
-      color: blackColor,
+      opacity: 1,
     },
-    selectNames: [['color'], ['font'], ['opacity'], ['margin'], ['padding'], ['width'], ['height']],
+    selectNames: [['opacity'], ['margin'], ['padding'], ['width'], ['height']],
   },
   hover: {
     defaultTheme: {
-      color: blackColor,
+      opacity: 1,
     },
-    selectNames: [['opacity'], ['color']],
+    selectNames: [['opacity']],
   },
   disabled: {
     defaultTheme: {
-      color: lightGreyColor,
+      opacity: 1,
     },
-    selectNames: [['opacity'], ['color']],
-  },
-  active: {
-    defaultTheme: {
-      color: blackColor,
-    },
-    selectNames: [['opacity'], ['color']],
+    selectNames: [['opacity']],
   },
 });
 
@@ -138,12 +135,33 @@ export const CheckBoxContent = StaticComponent({
   `,
 });
 
-export const CheckBoxLabelSpan = StaticComponent({
+export const CheckBoxLabelSpan = CSSComponent({
   tag: 'span',
   className: 'checkbox-label-span',
   css: css`
     padding-left: ${em(10)};
   `,
+  normal: {
+    selectNames: [['color'], ['font']],
+    defaultTheme: {
+      color: blackColor,
+      font: { fontSize: 14 },
+    },
+  },
+  hover: {
+    selectNames: [['color'], ['font']],
+    defaultTheme: {
+      color: blackColor,
+      font: { fontSize: 14 },
+    },
+  },
+  disabled: {
+    selectNames: [['color'], ['font']],
+    defaultTheme: {
+      color: lightGreyColor,
+      font: { fontSize: 14 },
+    },
+  },
 });
 
 export const CheckBoxInput = StaticComponent({
@@ -178,19 +196,43 @@ export const CheckBoxInnerSpan = CSSComponent({
   `,
   normal: {
     selectNames: [['background'], ['border']],
-    getCSS(themeMeta: Object): string {
-      const { checked, isDisabled, isIndeterminate, isChecked } = themeMeta;
-      if (checked) {
+    defaultTheme: {
+      background: { color: '#fff' },
+      border: getBorder({ color: borderColor, width: 1, style: 'solid' }, { radius: 2 }),
+    },
+    getCSS(themeMeta: Object, themeConfig: Object): string {
+      console.log(themeConfig);
+      const { propsConfig, themeState } = themeConfig;
+      const { hover } = themeState;
+      const {
+        checkboxInnerCheckedTheme,
+        isCancel,
+        isDisabled,
+        isChecked,
+        isIndeterminate,
+      } = propsConfig;
+      if (isCancel || isChecked || isIndeterminate) {
+        const {
+          normal: normalTheme,
+          hover: hoverTheme,
+          disabled: disabledTheme,
+        } = checkboxInnerCheckedTheme;
         const defaultWidth = isChecked ? 6 : isIndeterminate ? 10 : 6;
         const defaultHeight = isChecked ? 10 : isIndeterminate ? 1 : 10;
-        const { background } = checked;
-        const colors = background ? background.color : isDisabled ? lightGreyColor : defaultColor;
+        const colors = isDisabled
+          ? disabledTheme.color
+          : hover
+          ? hoverTheme.color
+          : normalTheme.color;
 
         return css`
           &::after {
             position: absolute;
             box-sizing: border-box;
-            ${getAfterTransform({ indeterminate: isIndeterminate, checked: isChecked })};
+            ${getAfterTransform({
+              indeterminate: isIndeterminate,
+              checked: isChecked || isCancel,
+            })};
             left: 50%;
             top: 50%;
             width: ${em(defaultWidth)};
@@ -211,10 +253,16 @@ export const CheckBoxInnerSpan = CSSComponent({
     selectNames: [['background'], ['border']],
     defaultTheme: {
       border: getBorder({ color: themeColor, width: 1, style: 'solid' }, { radius: 2 }),
+      background: { color: '#fff' },
     },
   },
-  disabled: { selectNames: [['background'], ['border']] },
-  active: { selectNames: [] },
+  disabled: {
+    selectNames: [['background'], ['border']],
+    defaultTheme: {
+      border: getBorder({ color: borderDisableColor, width: 1, style: 'solid' }, { radius: 2 }),
+      background: { color: disableColor },
+    },
+  },
 });
 
 export const HoverSpan = StaticComponent({
