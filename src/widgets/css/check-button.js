@@ -24,6 +24,8 @@ export type CheckProps = {
   children: any,
   cancel?: boolean,
   type: 'checkbox' | 'radio',
+  childrenIndex: number,
+  childrenCount: number,
 };
 type CSSProps = {
   themes: Function,
@@ -153,7 +155,11 @@ export const CheckSpan = CSSComponent({
     defaultTheme: {
       opacity: 1,
       color: darkGreyColor,
-      border: getBorder({ color: borderColor, width: 1, style: 'solid' }),
+      border: {
+        top: { color: borderColor, width: 1, style: 'solid' },
+        right: { color: borderColor, width: 1, style: 'solid' },
+        bottom: { color: borderColor, width: 1, style: 'solid' },
+      },
       background: { color: '#fff' },
       fontSize: em(12),
       padding: {
@@ -169,7 +175,11 @@ export const CheckSpan = CSSComponent({
     defaultTheme: {
       color: themeColor,
       opacity: 1,
-      border: getBorder({ color: borderColor, width: 1, style: 'solid' }),
+      border: {
+        top: { color: borderColor, width: 1, style: 'solid' },
+        right: { color: borderColor, width: 1, style: 'solid' },
+        bottom: { color: borderColor, width: 1, style: 'solid' },
+      },
       background: { color: '#fff' },
       fontSize: em(12),
       padding: {
@@ -185,7 +195,11 @@ export const CheckSpan = CSSComponent({
     defaultTheme: {
       color: lightGreyColor,
       opacity: 1,
-      border: getBorder({ color: borderDisableColor, width: 1, style: 'solid' }),
+      border: {
+        top: { color: borderDisableColor, width: 1, style: 'solid' },
+        right: { color: borderDisableColor, width: 1, style: 'solid' },
+        bottom: { color: borderDisableColor, width: 1, style: 'solid' },
+      },
       background: { color: '#fff' },
       fontSize: em(12),
       padding: {

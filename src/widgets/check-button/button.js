@@ -6,7 +6,6 @@ import Widget from '../consts';
 import { LabelWrapper, CheckInput, CheckSpan, CancelSpan, IconWrap } from '../css/check-button';
 import type { CheckProps, CheckState } from '../css/check-button';
 import colorsFunc from '../css/stateColor';
-import { getBorder } from '@lugia/theme-css-hoc/lib/index';
 
 const { disabledColor, themeColor, borderDisableColor, spiritColor, lightGreyColor } = colorsFunc();
 const defaultCancelTheme = {
@@ -26,17 +25,29 @@ const defaultCheckedTheme = {
     normal: {
       color: '#fff',
       background: { color: themeColor },
-      border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
+      border: {
+        top: { color: themeColor, width: 1, style: 'solid' },
+        right: { color: '#fff', width: 1, style: 'solid' },
+        bottom: { color: themeColor, width: 1, style: 'solid' },
+      },
     },
     hover: {
       color: '#fff',
       background: { color: themeColor },
-      border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
+      border: {
+        top: { color: themeColor, width: 1, style: 'solid' },
+        right: { color: '#fff', width: 1, style: 'solid' },
+        bottom: { color: themeColor, width: 1, style: 'solid' },
+      },
     },
     disabled: {
       color: lightGreyColor,
       background: { color: spiritColor },
-      border: getBorder({ color: borderDisableColor, width: 1, style: 'solid' }),
+      border: {
+        top: { color: borderDisableColor, width: 1, style: 'solid' },
+        right: { color: '#fff', width: 1, style: 'solid' },
+        bottom: { color: borderDisableColor, width: 1, style: 'solid' },
+      },
     },
   },
 };
@@ -65,6 +76,8 @@ export default ThemeProvider(
         type = 'checkbox',
         getPartOfThemeProps,
         themeProps,
+        childrenCount,
+        childrenIndex,
       } = this.props;
       const { hasChecked, hover, hasCancel } = this.state;
       const config = {};
@@ -72,8 +85,12 @@ export default ThemeProvider(
         config.enter = this.handleMouseEnter;
         config.leave = this.handleMouseLeave;
       }
-      const checkedTheme = getPartOfThemeProps('CheckButtonChecked');
-      const unCheckedTheme = getPartOfThemeProps('CheckButtonUnChecked');
+      const checkedTheme = getPartOfThemeProps('CheckButtonChecked', {
+        selector: { index: childrenIndex, count: childrenCount },
+      });
+      const unCheckedTheme = getPartOfThemeProps('CheckButtonUnChecked', {
+        selector: { index: childrenIndex, count: childrenCount },
+      });
       const cancelTheme = getPartOfThemeProps('CheckButtonCancel');
       const CheckButtonTheme = cancel
         ? deepMerge(defaultCancelTheme, cancelTheme)

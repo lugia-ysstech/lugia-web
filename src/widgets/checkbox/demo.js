@@ -398,7 +398,25 @@ export const CheckboxGroupDemo = class extends React.Component<any, any> {
               width: 100,
               height: 50,
               opacity: 1,
-              border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 4 }),
+              border: {
+                top: { color: 'pink', width: 1, style: 'solid' },
+                right: { color: '#fff', width: 1, style: 'solid' },
+                bottom: { color: 'pink', width: 1, style: 'solid' },
+              },
+              last: {
+                border: {
+                  top: { color: 'pink', width: 1, style: 'solid' },
+                  right: { color: 'pink', width: 1, style: 'solid' },
+                  bottom: { color: 'pink', width: 1, style: 'solid' },
+                },
+              },
+              first: {
+                border: {
+                  top: { color: 'pink', width: 1, style: 'solid' },
+                  bottom: { color: 'pink', width: 1, style: 'solid' },
+                  left: { color: 'pink', width: 1, style: 'solid' },
+                },
+              },
               background: { color: 'yellow' },
               color: 'red',
               font: { fontSize: 16, fontWeight: 500 },
@@ -407,13 +425,21 @@ export const CheckboxGroupDemo = class extends React.Component<any, any> {
             hover: {
               background: { color: 'yellow' },
               opacity: 0.6,
-              border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 4 }),
+              border: {
+                top: { color: 'pink', width: 1, style: 'solid' },
+                right: { color: '#fff', width: 1, style: 'solid' },
+                bottom: { color: 'pink', width: 1, style: 'solid' },
+              },
               color: 'green',
             },
             disabled: {
               background: { color: 'orange' },
               opacity: 0.6,
-              border: getBorder({ color: 'red', width: 2, style: 'solid' }, { radius: 4 }),
+              border: {
+                top: { color: 'red', width: 1, style: 'solid' },
+                right: { color: '#fff', width: 1, style: 'solid' },
+                bottom: { color: 'red', width: 1, style: 'solid' },
+              },
               color: 'green',
             },
           },
@@ -422,7 +448,7 @@ export const CheckboxGroupDemo = class extends React.Component<any, any> {
               width: 100,
               height: 50,
               opacity: 1,
-              border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 4 }),
+              // border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 4 }),
               background: { color: 'yellow' },
               color: 'green',
               font: { fontSize: 16, fontWeight: 500 },
@@ -431,7 +457,7 @@ export const CheckboxGroupDemo = class extends React.Component<any, any> {
             hover: {
               background: { color: 'green' },
               opacity: 0.6,
-              border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 4 }),
+              // border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 4 }),
               color: 'yellow',
             },
           },
@@ -440,7 +466,25 @@ export const CheckboxGroupDemo = class extends React.Component<any, any> {
               width: 100,
               height: 50,
               opacity: 1,
-              border: getBorder({ color: 'green', width: 2, style: 'solid' }, { radius: 4 }),
+              border: {
+                top: { color: 'orange', width: 1, style: 'solid' },
+                right: { color: '#fff', width: 1, style: 'solid' },
+                bottom: { color: 'orange', width: 1, style: 'solid' },
+              },
+              last: {
+                border: {
+                  top: { color: 'red', width: 1, style: 'solid' },
+                  right: { color: 'red', width: 1, style: 'solid' },
+                  bottom: { color: 'red', width: 1, style: 'solid' },
+                },
+              },
+              first: {
+                border: {
+                  top: { color: 'red', width: 1, style: 'solid' },
+                  bottom: { color: 'red', width: 1, style: 'solid' },
+                  left: { color: 'red', width: 1, style: 'solid' },
+                },
+              },
               background: { color: '#33f340' },
               color: 'red',
               font: { fontSize: 16, fontWeight: 500 },
@@ -449,13 +493,21 @@ export const CheckboxGroupDemo = class extends React.Component<any, any> {
             hover: {
               background: { color: 'yellow' },
               opacity: 0.6,
-              border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 4 }),
+              border: {
+                top: { color: 'red', width: 1, style: 'solid' },
+                right: { color: 'yellow', width: 1, style: 'solid' },
+                bottom: { color: 'red', width: 1, style: 'solid' },
+              },
               color: 'green',
             },
             disabled: {
               background: { color: 'orange' },
               opacity: 0.6,
-              border: getBorder({ color: 'red', width: 2, style: 'solid' }, { radius: 4 }),
+              border: {
+                top: { color: 'green', width: 1, style: 'solid' },
+                right: { color: 'orange', width: 1, style: 'solid' },
+                bottom: { color: 'green', width: 1, style: 'solid' },
+              },
               color: 'yellow',
             },
           },
@@ -515,7 +567,7 @@ export const CheckboxGroupDemo = class extends React.Component<any, any> {
           />
         </Wrapper>
         <Wrapper>
-          <CheckBoxGroup childType="button" onChange={handleChange} value={defaultValue}>
+          <CheckBoxGroup childType="button" onChange={handleChange} defaultValue={defaultValue}>
             <CheckBoxButton value="1">CheckBox1</CheckBoxButton>
             <CheckBoxButton value="2">CheckBox2</CheckBoxButton>
             <CheckBoxButton value="3">CheckBox3</CheckBoxButton>
