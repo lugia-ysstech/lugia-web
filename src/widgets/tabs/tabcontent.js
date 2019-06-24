@@ -13,13 +13,34 @@ import type { TabType, TabPositionType } from '../css/tabs';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import ThemeProvider from '../theme-provider';
 import { getContentPosition } from '../css/tabs';
+import { isVertical, matchType } from './utils';
+import CSSComponent, { css, keyframes } from '@lugia/theme-css-hoc';
+import { px2remcss } from '../css/units';
 
-const ContentContainer = styled.div`
-  display: inline-block;
-  overflow: hidden;
-  width: 100%;
-  ${getContentPosition};
-`;
+const ContentContainer = CSSComponent({
+  tag: 'div',
+  className: 'ContentContainer',
+  normal: {
+    selectNames: [['padding']],
+    getCSS: (theme: Object, themeProps: Object) => {
+      console.log('ContentContainer', theme, themeProps);
+      const {
+        propsConfig: { tabPosition },
+      } = themeProps;
+      if (isVertical(tabPosition)) {
+        return 'float: left;';
+      }
+    },
+  },
+  disabled: {
+    selectNames: [],
+  },
+  css: css`
+    // display: inline-block;
+    overflow: hidden;
+    // width: 100%;
+  `,
+}); //${getContentPosition};
 
 type TabContentState = {};
 type TabContentProps = {
@@ -38,14 +59,18 @@ class TabContent extends Component<TabContentProps, TabContentState> {
   }
 
   render() {
-    const { tabPosition, content, activityValue } = this.props;
+    const { tabPosition, content, activityValue, themeProps } = this.props;
+
     return (
-      <ContentContainer activityValue={activityValue} tabPosition={tabPosition}>
+      <ContentContainer
+        themeProps={themeProps}
+        activityValue={activityValue}
+        tabPosition={tabPosition}
+      >
         {content}
       </ContentContainer>
     );
   }
 }
 
-const TargetTabContent = ThemeProvider(KeyBoardEventAdaptor(TabContent), Widget.TabContent);
-export default TargetTabContent;
+export default TabContent;
