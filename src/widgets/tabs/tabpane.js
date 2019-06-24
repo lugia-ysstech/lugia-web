@@ -361,10 +361,6 @@ const ClearIcon = CSSComponent({
 
 ClearIcon.displayName = 'deleteIcon';
 
-export const doDeepMerge = (mergeTarget: Object, themeProps: Object) => {
-  return deepMerge({ themeConfig: { ...mergeTarget } }, themeProps);
-};
-
 type TabpaneState = {
   iconClass: string,
 };
@@ -503,8 +499,8 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
   getHTabPaneThemeProps(tabType: string, isSelect: boolean) {
     let titleThemeProps = this.props.getPartOfThemeProps('DefaultTabPan');
     const { props } = this;
-    const targetObj = { normal: { ...getTitlePadding(props) } };
-    titleThemeProps = doDeepMerge(targetObj, titleThemeProps);
+    const targetObj = { themeConfig: { normal: { ...getTitlePadding(props) } } };
+    titleThemeProps = deepMerge(targetObj, titleThemeProps);
 
     const { viewClass, theme } = this.props.getPartOfThemeHocProps('DefaultTabPan');
     let themeRes = theme;
@@ -513,14 +509,17 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
         const borderInfo = { color: superLightColor, width: 1, style: 'solid' };
         const border = getBorder({ ...borderInfo }, { radius: 4, radiusDirections: ['tl', 'tr'] });
         const cardDefault = {
-          normal: { background: { color: '#f8f8f8' }, margin: { right: CardMarginRight }, border },
+          themeConfig: {
+            normal: {
+              background: { color: '#f8f8f8' },
+              margin: { right: CardMarginRight },
+              border,
+            },
+          },
         };
-        const cardThemeProps = doDeepMerge(
-          cardDefault,
-          this.props.getPartOfThemeProps('CardTabPan')
-        );
+        const cardThemeProps = deepMerge(cardDefault, this.props.getPartOfThemeProps('CardTabPan'));
 
-        const cardTabThemeProps = doDeepMerge(theme[viewClass], cardThemeProps);
+        const cardTabThemeProps = deepMerge({ themeConfig: theme[viewClass] }, cardThemeProps);
         themeRes = { [viewClass]: cardTabThemeProps.themeConfig };
 
         break;
@@ -530,13 +529,15 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
           { radius: 4, radiusDirections: ['tl', 'tr'] }
         );
         const windowDefault = {
-          normal: { background: { color: '#ffffff' }, border: windowBorder },
+          themeConfig: {
+            normal: { background: { color: '#ffffff' }, border: windowBorder },
+          },
         };
-        const windowThemeProps = doDeepMerge(
+        const windowThemeProps = deepMerge(
           windowDefault,
           this.props.getPartOfThemeProps('WindowTabPan')
         );
-        const windowTabThemeProps = doDeepMerge(theme[viewClass], windowThemeProps);
+        const windowTabThemeProps = deepMerge({ themeConfig: theme[viewClass] }, windowThemeProps);
         themeRes = { [viewClass]: windowTabThemeProps.themeConfig };
         break;
       default:
@@ -544,12 +545,12 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     }
 
     if (isSelect) {
-      titleThemeProps = doDeepMerge(
-        { ...titleThemeProps.themeConfig },
+      titleThemeProps = deepMerge(
+        { themeConfig: { ...titleThemeProps.themeConfig } },
         this.props.getPartOfThemeProps('SelectTabPan')
       );
-      const windowThemeProps = doDeepMerge(
-        themeRes[viewClass],
+      const windowThemeProps = deepMerge(
+        { themeConfig: themeRes[viewClass] },
         this.props.getPartOfThemeProps('SelectTabPan')
       );
       themeRes = { [viewClass]: windowThemeProps.themeConfig };
