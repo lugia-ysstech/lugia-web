@@ -180,19 +180,15 @@ export const RadioCircleSpan = CSSComponent({
   normal: {
     selectNames: [['background'], ['border'], ['width'], ['height']],
     getCSS(themeMeta: Object, themeProps: Object): string {
-      console.log('themeProps', themeProps);
       const { propsConfig, themeState } = themeProps;
       const { hover } = themeState;
-      const { RadioInnerCheckedTheme, isCancel, isDisabled, isChecked } = propsConfig;
-      const afterThemeConfig = RadioInnerCheckedTheme.themeConfig;
-      const theme = isDisabled
-        ? afterThemeConfig.disabled
-        : isCancel
-        ? afterThemeConfig.cancel
-        : hover
-        ? afterThemeConfig.hover
-        : afterThemeConfig.normal;
-      if (isChecked || isCancel) {
+      const { RadioInnerCheckedTheme: afterThemeConfig, isDisabled, isChecked } = propsConfig;
+      if (isChecked) {
+        const theme = isDisabled
+          ? afterThemeConfig.disabled
+          : hover
+          ? afterThemeConfig.hover
+          : afterThemeConfig.normal;
         const { background, width = 10, height = 10 } = theme;
         return css`
           &::after {
@@ -217,6 +213,8 @@ export const RadioCircleSpan = CSSComponent({
     defaultTheme: {
       border: getBorder({ color: borderColor, width: 1, style: 'solid' }, { radius: '100%' }),
       background: { color: '#fff' },
+      width: 16,
+      height: 16,
     },
   },
   hover: {
