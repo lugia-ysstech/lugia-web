@@ -380,7 +380,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <span
           className="c2"
           onClick={null}
-          style={Object {}}
         >
           <input
             className="c3"
@@ -433,7 +432,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <span
           className="c2"
           onClick={null}
-          style={Object {}}
         >
           <input
             className="c7"
@@ -484,7 +482,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <span
           className="c2"
           onClick={null}
-          style={Object {}}
         >
           <input
             className="c7"
@@ -549,7 +546,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <span
           className="c2"
           onClick={null}
-          style={Object {}}
         >
           <input
             className="c3"
@@ -602,7 +598,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <span
           className="c2"
           onClick={null}
-          style={Object {}}
         >
           <input
             className="c7"
@@ -653,7 +648,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <span
           className="c2"
           onClick={null}
-          style={Object {}}
         >
           <input
             className="c7"
@@ -749,7 +743,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <span
           className="c2"
           onClick={null}
-          style={Object {}}
         >
           <input
             className="c7"
@@ -811,7 +804,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <span
           className="c2"
           onClick={null}
-          style={Object {}}
         >
           <input
             className="c7"
@@ -873,7 +865,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <span
           className="c2"
           onClick={null}
-          style={Object {}}
         >
           <input
             className="c7"
@@ -933,7 +924,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <span
           className="c2"
           onClick={[Function]}
-          style={Object {}}
         >
           <input
             className="c7"
@@ -984,7 +974,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <span
           className="c2"
           onClick={null}
-          style={Object {}}
         >
           <input
             className="c7"
@@ -1035,7 +1024,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <span
           className="c2"
           onClick={null}
-          style={Object {}}
         >
           <input
             className="c7"
@@ -1086,7 +1074,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <span
           className="c2"
           onClick={null}
-          style={Object {}}
         >
           <input
             className="c7"
@@ -1146,7 +1133,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <span
           className="c2"
           onClick={[Function]}
-          style={Object {}}
         >
           <input
             className="c7"
@@ -1197,7 +1183,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <span
           className="c2"
           onClick={null}
-          style={Object {}}
         >
           <input
             className="c7"
@@ -1248,7 +1233,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <span
           className="c2"
           onClick={null}
-          style={Object {}}
         >
           <input
             className="c7"
@@ -1299,7 +1283,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <span
           className="c2"
           onClick={null}
-          style={Object {}}
         >
           <input
             className="c7"
@@ -1359,7 +1342,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <input
           className="c14"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -1384,7 +1366,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <input
           className="c14"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -1409,7 +1390,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <input
           className="c14"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -1447,7 +1427,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <input
           className="c14"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -1501,7 +1480,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <input
           className="c14"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -1555,7 +1533,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <input
           className="c14"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -1619,7 +1596,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <input
           className="c14"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -1659,30 +1635,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
           <span
             className="c19"
             onClick={[Function]}
-            style={
-              Object {
-                "backgroundColor": "#33f340",
-                "borderBottomColor": "green",
-                "borderBottomLeftRadius": "0.4rem",
-                "borderBottomRightRadius": "0.4rem",
-                "borderBottomStyle": "solid",
-                "borderBottomWidth": "0.2rem",
-                "borderLeftColor": "green",
-                "borderLeftStyle": "solid",
-                "borderLeftWidth": "0.2rem",
-                "borderRightColor": "green",
-                "borderRightStyle": "solid",
-                "borderRightWidth": "0.2rem",
-                "borderTopColor": "green",
-                "borderTopLeftRadius": "0.4rem",
-                "borderTopRightRadius": "0.4rem",
-                "borderTopStyle": "solid",
-                "borderTopWidth": "0.2rem",
-                "height": "5rem",
-                "opacity": 1,
-                "width": "10rem",
-              }
-            }
           >
             <i
               className="lugia-icon-reminder_close c20  c21"
@@ -1708,7 +1660,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <input
           className="c14"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -1764,7 +1715,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <input
           className="c14"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -1820,7 +1770,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <input
           className="c14"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -1885,7 +1834,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <input
           className="c14"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -1925,30 +1873,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
           <span
             className="c19"
             onClick={[Function]}
-            style={
-              Object {
-                "backgroundColor": "#33f340",
-                "borderBottomColor": "green",
-                "borderBottomLeftRadius": "0.4rem",
-                "borderBottomRightRadius": "0.4rem",
-                "borderBottomStyle": "solid",
-                "borderBottomWidth": "0.2rem",
-                "borderLeftColor": "green",
-                "borderLeftStyle": "solid",
-                "borderLeftWidth": "0.2rem",
-                "borderRightColor": "green",
-                "borderRightStyle": "solid",
-                "borderRightWidth": "0.2rem",
-                "borderTopColor": "green",
-                "borderTopLeftRadius": "0.4rem",
-                "borderTopRightRadius": "0.4rem",
-                "borderTopStyle": "solid",
-                "borderTopWidth": "0.2rem",
-                "height": "5rem",
-                "opacity": 1,
-                "width": "10rem",
-              }
-            }
           >
             <i
               className="lugia-icon-reminder_close c20  c21"
@@ -1975,7 +1899,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <input
           className="c14"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -2032,7 +1955,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <input
           className="c14"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -2088,7 +2010,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <input
           className="c14"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -2154,7 +2075,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <input
           className="c14"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -2211,7 +2131,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <input
           className="c14"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -2267,7 +2186,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <input
           className="c14"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -2328,7 +2246,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <input
           className="c14"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -2343,7 +2260,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
           <span
             className="c19"
             onClick={[Function]}
-            style={Object {}}
           >
             <i
               className="lugia-icon-reminder_close c20  c21"
@@ -2365,7 +2281,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <input
           className="c14"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -2392,7 +2307,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <input
           className="c14"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -2419,7 +2333,6 @@ exports[`CheckBox CheckBoxGroup CSS 1`] = `
         <input
           className="c14"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span

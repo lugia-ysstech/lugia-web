@@ -12,10 +12,14 @@ import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import type { RadioProps } from '../css/radio';
 import { RadioChildrenSpan, RadioContent, RadioCircleSpan, RadioWrap } from '../css/radio';
+import colorsFunc from '../css/stateColor';
 
 type RadioState = {
   checked: boolean,
 };
+
+const { themeColor, lightGreyColor } = colorsFunc();
+const cancelColor = colorsFunc(themeColor).disabledColor;
 
 export default ThemeProvider(
   class extends React.Component<RadioProps, RadioState> {
@@ -55,7 +59,6 @@ export default ThemeProvider(
       const {
         children,
         value = '',
-        getTheme,
         disabled,
         styles = 'default',
         cancel,
@@ -63,40 +66,31 @@ export default ThemeProvider(
         getPartOfThemeProps,
       } = this.props;
       const { checked } = this.state;
-      const RadioWrapProps = getPartOfThemeProps('RadioWrap');
-      const CircleEdgeTheme = getPartOfThemeProps('RadioEdge');
-      const CircleCheckedTheme = getPartOfThemeProps('RadioChecked');
       const defaultProps = {
-        normal: {},
-        active: {},
-        hover: {},
-        disabled: {},
+        normal: { width: 10, height: 10, background: { color: themeColor } },
+        active: { width: 10, height: 10, background: { color: themeColor } },
+        hover: { width: 10, height: 10, background: { color: themeColor } },
+        disabled: { width: 10, height: 10, background: { color: lightGreyColor } },
+        cancel: { width: 10, height: 10, background: { color: cancelColor } },
       };
-      if (checked) {
-        CircleEdgeTheme.themeConfig = deepMerge(defaultProps, CircleEdgeTheme.themeConfig);
-        CircleEdgeTheme.themeConfig.normal = deepMerge(
-          CircleEdgeTheme.themeConfig.normal,
-          CircleEdgeTheme.themeConfig.active
-        );
-        CircleEdgeTheme.themeState.hover = false;
-        RadioWrapProps.themeState.hover = false;
-        CircleEdgeTheme.themeConfig.normal.checked = cancel
-          ? CircleCheckedTheme.themeConfig.cancel || {}
-          : disabled
-          ? CircleCheckedTheme.themeConfig.disabled || {}
-          : CircleCheckedTheme.themeConfig.active || {};
-        CircleEdgeTheme.themeConfig.normal.isDisabled = disabled;
-        CircleEdgeTheme.themeConfig.normal.isCancel = cancel;
-      }
-      if (disabled) {
-        CircleEdgeTheme.themeConfig = deepMerge(defaultProps, CircleEdgeTheme.themeConfig);
-        CircleEdgeTheme.themeState.hover = false;
-        RadioWrapProps.themeState.hover = false;
-      }
+      const RadioWrapTheme = getPartOfThemeProps('RadioWrap');
+      const RadioTextTheme = getPartOfThemeProps('RadioText');
+      const RadioEdgeCheckedTheme = getPartOfThemeProps('RadioEdgeChecked');
+      const RadioEdgeUnCheckedTheme = getPartOfThemeProps('RadioEdgeUnChecked');
+      const RadioInnerCheckedTheme = getPartOfThemeProps('RadioInnerChecked');
+      RadioInnerCheckedTheme.themeConfig = deepMerge(
+        defaultProps,
+        RadioInnerCheckedTheme.themeConfig
+      );
+      const CircleEdgeTheme = checked ? RadioEdgeCheckedTheme : RadioEdgeUnCheckedTheme;
+      CircleEdgeTheme.propsConfig.RadioInnerCheckedTheme = RadioInnerCheckedTheme;
+      CircleEdgeTheme.propsConfig.isChecked = checked;
+      CircleEdgeTheme.propsConfig.isCancel = cancel;
+      CircleEdgeTheme.propsConfig.isDisabled = disabled;
 
       return (
         <RadioWrap
-          themeProps={RadioWrapProps}
+          themeProps={RadioWrapTheme}
           onClick={this.handleClick(value)}
           styles={styles}
           disabled={disabled}
@@ -111,7 +105,7 @@ export default ThemeProvider(
               checked={checked}
             />
           </RadioContent>
-          <RadioChildrenSpan themeProps={themeProps}>{children}</RadioChildrenSpan>
+          <RadioChildrenSpan themeProps={RadioTextTheme}>{children}</RadioChildrenSpan>
         </RadioWrap>
       );
     }

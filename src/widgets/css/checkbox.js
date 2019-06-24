@@ -6,11 +6,10 @@
 
 import colorsFunc from '../css/stateColor';
 import styled, { css } from 'styled-components';
-import CSSComponent from '@lugia/theme-css-hoc';
+import CSSComponent, { StaticComponent, getBorder } from '@lugia/theme-css-hoc';
 import { px2remcss } from '../css/units';
 import type { ThemeType } from '@lugia/lugia-web';
 import Icon from '../icon';
-import { getBorder } from '@lugia/theme-css-hoc/lib/index';
 
 const FontSize = 1.4;
 const defaultColor = '#fff';
@@ -22,6 +21,9 @@ const {
   marginToPeerElementForY,
   blackColor,
   lightGreyColor,
+  borderColor,
+  disableColor,
+  borderDisableColor,
 } = colorsFunc();
 
 export type CSStype = {
@@ -103,31 +105,25 @@ export const CheckBoxWrap = CSSComponent({
   `,
   normal: {
     defaultTheme: {
-      color: blackColor,
+      opacity: 1,
     },
-    selectNames: [['color'], ['font'], ['opacity'], ['margin'], ['padding'], ['width'], ['height']],
+    selectNames: [['opacity'], ['margin'], ['padding'], ['width'], ['height']],
   },
   hover: {
     defaultTheme: {
-      color: blackColor,
+      opacity: 1,
     },
-    selectNames: [['opacity'], ['color']],
+    selectNames: [['opacity']],
   },
   disabled: {
     defaultTheme: {
-      color: lightGreyColor,
+      opacity: 1,
     },
-    selectNames: [['opacity'], ['color']],
-  },
-  active: {
-    defaultTheme: {
-      color: blackColor,
-    },
-    selectNames: [['opacity'], ['color']],
+    selectNames: [['opacity']],
   },
 });
 
-export const CheckBoxContent = CSSComponent({
+export const CheckBoxContent = StaticComponent({
   tag: 'span',
   className: 'checkbox-content',
   css: css`
@@ -137,26 +133,53 @@ export const CheckBoxContent = CSSComponent({
     vertical-align: text-bottom;
     display: inline-block;
   `,
-  normal: { selectNames: [] },
-  hover: { selectNames: [] },
-  disabled: { selectNames: [] },
-  active: { selectNames: [] },
 });
-export const CheckBoxLabelSpan = styled.span`
-  padding-left: ${em(10)};
-`;
-export const CheckBoxInput = styled.input`
-  position: absolute;
-  left: 0;
-  z-index: 1;
-  cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
-  opacity: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-`;
+
+export const CheckBoxLabelSpan = CSSComponent({
+  tag: 'span',
+  className: 'checkbox-label-span',
+  css: css`
+    padding-left: ${em(10)};
+  `,
+  normal: {
+    selectNames: [['color'], ['font']],
+    defaultTheme: {
+      color: blackColor,
+      font: { fontSize: 14 },
+    },
+  },
+  hover: {
+    selectNames: [['color'], ['font']],
+    defaultTheme: {
+      color: blackColor,
+      font: { fontSize: 14 },
+    },
+  },
+  disabled: {
+    selectNames: [['color'], ['font']],
+    defaultTheme: {
+      color: lightGreyColor,
+      font: { fontSize: 14 },
+    },
+  },
+});
+
+export const CheckBoxInput = StaticComponent({
+  tag: 'input',
+  className: 'checkbox-input',
+  css: css`
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
+    opacity: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  `,
+});
 
 export const CheckBoxInnerSpan = CSSComponent({
   tag: 'span',
@@ -173,19 +196,43 @@ export const CheckBoxInnerSpan = CSSComponent({
   `,
   normal: {
     selectNames: [['background'], ['border']],
-    getCSS(themeMeta: Object): string {
-      const { checked, isDisabled, isIndeterminate, isChecked } = themeMeta;
-      if (checked) {
+    defaultTheme: {
+      background: { color: '#fff' },
+      border: getBorder({ color: borderColor, width: 1, style: 'solid' }, { radius: 2 }),
+    },
+    getCSS(themeMeta: Object, themeConfig: Object): string {
+      console.log(themeConfig);
+      const { propsConfig, themeState } = themeConfig;
+      const { hover } = themeState;
+      const {
+        checkboxInnerCheckedTheme,
+        isCancel,
+        isDisabled,
+        isChecked,
+        isIndeterminate,
+      } = propsConfig;
+      if (isCancel || isChecked || isIndeterminate) {
+        const {
+          normal: normalTheme,
+          hover: hoverTheme,
+          disabled: disabledTheme,
+        } = checkboxInnerCheckedTheme;
         const defaultWidth = isChecked ? 6 : isIndeterminate ? 10 : 6;
         const defaultHeight = isChecked ? 10 : isIndeterminate ? 1 : 10;
-        const { background } = checked;
-        const colors = background ? background.color : isDisabled ? lightGreyColor : defaultColor;
+        const colors = isDisabled
+          ? disabledTheme.color
+          : hover
+          ? hoverTheme.color
+          : normalTheme.color;
 
         return css`
           &::after {
             position: absolute;
             box-sizing: border-box;
-            ${getAfterTransform({ indeterminate: isIndeterminate, checked: isChecked })};
+            ${getAfterTransform({
+              indeterminate: isIndeterminate,
+              checked: isChecked || isCancel,
+            })};
             left: 50%;
             top: 50%;
             width: ${em(defaultWidth)};
@@ -206,18 +253,28 @@ export const CheckBoxInnerSpan = CSSComponent({
     selectNames: [['background'], ['border']],
     defaultTheme: {
       border: getBorder({ color: themeColor, width: 1, style: 'solid' }, { radius: 2 }),
+      background: { color: '#fff' },
     },
   },
-  disabled: { selectNames: [['background'], ['border']] },
-  active: { selectNames: [] },
+  disabled: {
+    selectNames: [['background'], ['border']],
+    defaultTheme: {
+      border: getBorder({ color: borderDisableColor, width: 1, style: 'solid' }, { radius: 2 }),
+      background: { color: disableColor },
+    },
+  },
 });
 
-export const HoverSpan = styled.span`
-  box-sizing: border-box;
-  display: block;
-  width: ${em(18)};
-  height: ${em(18)};
-`;
+export const HoverSpan = StaticComponent({
+  tag: 'span',
+  className: 'checkbox-hover-span',
+  css: css`
+    box-sizing: border-box;
+    display: block;
+    width: ${em(18)};
+    height: ${em(18)};
+  `,
+});
 export const IconWrap: Object = styled(Icon)`
   vertical-align: text-bottom !important;
   font-size: ${em(18)};

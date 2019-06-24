@@ -391,7 +391,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
     >
       <span
         className="c1"
-        style={Object {}}
       >
         <span
           checked={true}
@@ -423,7 +422,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
       </span>
       <span
         className="c3"
-        style={Object {}}
       >
         Radio
       </span>
@@ -450,7 +448,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
     >
       <span
         className="c1"
-        style={Object {}}
       >
         <span
           checked={false}
@@ -482,7 +479,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
       </span>
       <span
         className="c3"
-        style={Object {}}
       >
         Radio2
       </span>
@@ -510,7 +506,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
     >
       <span
         className="c1"
-        style={Object {}}
       >
         <span
           checked={false}
@@ -543,7 +538,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
       </span>
       <span
         className="c3"
-        style={Object {}}
       >
         Radio3
       </span>
@@ -570,7 +564,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
       >
         <span
           className="c1"
-          style={Object {}}
         >
           <span
             checked={true}
@@ -580,7 +573,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         </span>
         <span
           className="c3"
-          style={Object {}}
         >
           Radio
         </span>
@@ -596,7 +588,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
       >
         <span
           className="c1"
-          style={Object {}}
         >
           <span
             checked={false}
@@ -606,7 +597,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         </span>
         <span
           className="c3"
-          style={Object {}}
         >
           Radio2
         </span>
@@ -630,7 +620,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
       >
         <span
           className="c1"
-          style={Object {}}
         >
           <span
             checked={true}
@@ -640,7 +629,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         </span>
         <span
           className="c3"
-          style={Object {}}
         >
           Radio
         </span>
@@ -656,7 +644,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
       >
         <span
           className="c1"
-          style={Object {}}
         >
           <span
             checked={false}
@@ -666,7 +653,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         </span>
         <span
           className="c3"
-          style={Object {}}
         >
           Radio2
         </span>
@@ -690,7 +676,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
       >
         <span
           className="c1"
-          style={Object {}}
         >
           <span
             checked={true}
@@ -700,7 +685,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         </span>
         <span
           className="c3"
-          style={Object {}}
         >
           Radio
         </span>
@@ -716,7 +700,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
       >
         <span
           className="c1"
-          style={Object {}}
         >
           <span
             checked={false}
@@ -726,7 +709,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         </span>
         <span
           className="c3"
-          style={Object {}}
         >
           Radio
         </span>
@@ -750,7 +732,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
       >
         <span
           className="c1"
-          style={Object {}}
         >
           <span
             checked={true}
@@ -760,7 +741,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         </span>
         <span
           className="c3"
-          style={Object {}}
         >
           radio1
         </span>
@@ -776,7 +756,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
       >
         <span
           className="c1"
-          style={Object {}}
         >
           <span
             checked={false}
@@ -786,7 +765,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         </span>
         <span
           className="c3"
-          style={Object {}}
         >
           radio2
         </span>
@@ -803,7 +781,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
       >
         <span
           className="c1"
-          style={Object {}}
         >
           <span
             checked={false}
@@ -834,7 +811,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         </span>
         <span
           className="c3"
-          style={Object {}}
         >
           radio3
         </span>
@@ -858,7 +834,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
       >
         <span
           className="c1"
-          style={Object {}}
         >
           <span
             checked={true}
@@ -868,7 +843,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         </span>
         <span
           className="c3"
-          style={Object {}}
         >
           radio1
         </span>
@@ -884,7 +858,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
       >
         <span
           className="c1"
-          style={Object {}}
         >
           <span
             checked={false}
@@ -894,7 +867,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         </span>
         <span
           className="c3"
-          style={Object {}}
         >
           radio2
         </span>
@@ -911,7 +883,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
       >
         <span
           className="c1"
-          style={Object {}}
         >
           <span
             checked={false}
@@ -942,7 +913,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         </span>
         <span
           className="c3"
-          style={Object {}}
         >
           radio3
         </span>
@@ -981,7 +951,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
       >
         <span
           className="c1"
-          style={Object {}}
         >
           <span
             checked={true}
@@ -1013,7 +982,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         </span>
         <span
           className="c3"
-          style={Object {}}
         >
           Radio
         </span>
@@ -1040,7 +1008,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
       >
         <span
           className="c1"
-          style={Object {}}
         >
           <span
             checked={false}
@@ -1072,7 +1039,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         </span>
         <span
           className="c3"
-          style={Object {}}
         >
           Radio
         </span>
@@ -1107,7 +1073,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
       >
         <span
           className="c1"
-          style={Object {}}
         >
           <span
             checked={true}
@@ -1139,7 +1104,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         </span>
         <span
           className="c3"
-          style={Object {}}
         >
           radio1
         </span>
@@ -1166,7 +1130,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
       >
         <span
           className="c1"
-          style={Object {}}
         >
           <span
             checked={false}
@@ -1198,7 +1161,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         </span>
         <span
           className="c3"
-          style={Object {}}
         >
           radio2
         </span>
@@ -1226,7 +1188,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
       >
         <span
           className="c1"
-          style={Object {}}
         >
           <span
             checked={false}
@@ -1259,7 +1220,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         </span>
         <span
           className="c3"
-          style={Object {}}
         >
           radio3
         </span>
@@ -1287,7 +1247,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
       >
         <span
           className="c1"
-          style={Object {}}
         >
           <span
             checked={true}
@@ -1297,7 +1256,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         </span>
         <span
           className="c3"
-          style={Object {}}
         >
           DisplayValue
         </span>
@@ -1313,7 +1271,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
       >
         <span
           className="c1"
-          style={Object {}}
         >
           <span
             checked={false}
@@ -1323,7 +1280,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         </span>
         <span
           className="c3"
-          style={Object {}}
         >
           radio1
         </span>
@@ -1339,7 +1295,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
       >
         <span
           className="c1"
-          style={Object {}}
         >
           <span
             checked={false}
@@ -1349,7 +1304,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         </span>
         <span
           className="c3"
-          style={Object {}}
         >
           radio2
         </span>
@@ -1366,7 +1320,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
       >
         <span
           className="c1"
-          style={Object {}}
         >
           <span
             checked={false}
@@ -1397,7 +1350,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         </span>
         <span
           className="c3"
-          style={Object {}}
         >
           radio3
         </span>
@@ -1425,7 +1377,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
       >
         <span
           className="c1"
-          style={Object {}}
         >
           <span
             checked={true}
@@ -1435,7 +1386,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         </span>
         <span
           className="c3"
-          style={Object {}}
         >
           DisplayValue
         </span>
@@ -1451,7 +1401,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
       >
         <span
           className="c1"
-          style={Object {}}
         >
           <span
             checked={false}
@@ -1461,7 +1410,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         </span>
         <span
           className="c3"
-          style={Object {}}
         >
           radio1
         </span>
@@ -1477,7 +1425,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
       >
         <span
           className="c1"
-          style={Object {}}
         >
           <span
             checked={false}
@@ -1487,7 +1434,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         </span>
         <span
           className="c3"
-          style={Object {}}
         >
           radio2
         </span>
@@ -1504,7 +1450,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
       >
         <span
           className="c1"
-          style={Object {}}
         >
           <span
             checked={false}
@@ -1535,7 +1480,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         </span>
         <span
           className="c3"
-          style={Object {}}
         >
           radio3
         </span>
@@ -1590,7 +1534,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         <input
           className="c13"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -1645,7 +1588,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         <input
           className="c13"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -1700,7 +1642,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         <input
           className="c13"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -1789,7 +1730,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         <input
           className="c13"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -1844,7 +1784,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         <input
           className="c13"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -1898,7 +1837,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         <input
           className="c13"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -1958,7 +1896,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         <input
           className="c13"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -2000,7 +1937,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         <input
           className="c13"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -2025,7 +1961,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         <input
           className="c13"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -2060,7 +1995,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         <input
           className="c13"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -2085,7 +2019,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         <input
           className="c13"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -2110,7 +2043,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         <input
           className="c13"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -2146,7 +2078,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         <input
           className="c13"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -2173,7 +2104,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         <input
           className="c13"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -2200,7 +2130,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         <input
           className="c13"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -2228,7 +2157,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         <input
           className="c13"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -2282,7 +2210,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         <input
           className="c13"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -2309,7 +2236,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         <input
           className="c13"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -2336,7 +2262,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         <input
           className="c13"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -2364,7 +2289,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         <input
           className="c13"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -2418,7 +2342,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         <input
           className="c13"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -2467,7 +2390,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         <input
           className="c13"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -2499,7 +2421,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         <input
           className="c13"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span
@@ -2532,7 +2453,6 @@ exports[`RadioGroup RadioGroup css 1`] = `
         <input
           className="c13"
           onBlur={[Function]}
-          style={Object {}}
           type="radio"
         />
         <span

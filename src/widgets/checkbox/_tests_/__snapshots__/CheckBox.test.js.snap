@@ -265,7 +265,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
       <span
         className="c2"
         onClick={null}
-        style={Object {}}
       >
         <input
           className="c3"
@@ -331,7 +330,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
       <span
         className="c2"
         onClick={null}
-        style={Object {}}
       >
         <input
           className="c7"
@@ -398,7 +396,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
       <span
         className="c2"
         onClick={null}
-        style={Object {}}
       >
         <input
           className="c3"
@@ -464,7 +461,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
       <span
         className="c2"
         onClick={[Function]}
-        style={Object {}}
       >
         <input
           className="c3"
@@ -519,7 +515,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
       <span
         className="c2"
         onClick={[Function]}
-        style={Object {}}
       >
         <input
           className="c3"
@@ -585,7 +580,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
       <span
         className="c2"
         onClick={null}
-        style={Object {}}
       >
         <input
           className="c3"
@@ -639,7 +633,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
       <span
         className="c2"
         onClick={null}
-        style={Object {}}
       >
         <input
           className="c3"
@@ -693,7 +686,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
       <span
         className="c2"
         onClick={null}
-        style={Object {}}
       >
         <input
           className="c3"
@@ -748,7 +740,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
       <span
         className="c2"
         onClick={null}
-        style={Object {}}
       >
         <input
           className="c3"
@@ -808,7 +799,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
       <span
         className="c2"
         onClick={null}
-        style={Object {}}
       >
         <input
           className="c7"
@@ -869,7 +859,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
       <span
         className="c2"
         onClick={null}
-        style={Object {}}
       >
         <input
           className="c7"
@@ -931,7 +920,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
       <span
         className="c2"
         onClick={null}
-        style={Object {}}
       >
         <input
           className="c7"
@@ -988,7 +976,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
       <span
         className="c2"
         onClick={null}
-        style={Object {}}
       >
         <input
           className="c3"
