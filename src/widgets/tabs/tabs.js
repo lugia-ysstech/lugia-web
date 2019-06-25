@@ -101,15 +101,19 @@ const HBasePage = CSSComponent({
   className: 'HBasePage',
   normal: {
     selectNames: [],
+    getCSS: (themeMeta: Object, themeProps: Object) => {
+      const { height } = themeMeta;
+      return `line-height: ${height + 'px' || '3.4rem'}`;
+    },
   },
   disabled: {
     selectNames: [],
   },
   css: css`
-    transform: translateY(-50%);
     text-align: center;
+    width: 24px;
+    line-height: 3.5rem;
     display: ${props => (props.arrowShow === false ? 'none' : 'block')};
-    float: left;
   `,
 }); //${getArrowTop};
 
@@ -123,7 +127,7 @@ const HPrePage = CSSComponent({
     selectNames: [],
   },
   css: css`
-    left: ${px2remcss(10)};
+    float: left;
   `,
 });
 
@@ -137,7 +141,7 @@ const HNextPage = CSSComponent({
     selectNames: [],
   },
   css: css`
-    right: ${px2remcss(10)};
+    float: right;
   `,
 });
 
@@ -156,7 +160,6 @@ const VBasePage = CSSComponent({
     height: ${px2remcss(24)};
     line-height: ${px2remcss(24)};
     display: ${props => (props.arrowShow === false ? 'none' : 'block')};
-    float: left;
   `,
 });
 
@@ -236,7 +239,6 @@ const HTabsContainer = CSSComponent({
   },
   css: css`
     width: 100%;
-    // display: inline-block;
     white-space: nowrap;
     overflow: hidden;
     float: left;
@@ -311,7 +313,6 @@ const HscrollerContainer = CSSComponent({
       if (tabPosition === 'bottom') {
         border = `border-top: ${width}px solid ${color};`;
       }
-      console.log('tabType', tabType);
       if (tabType === 'window') {
         border = `border-bottom: ${0}px solid transparent;`;
       }
@@ -349,7 +350,6 @@ const VTabsContainer = CSSComponent({
     white-space: nowrap;
     display: inline-block;
     overflow: hidden;
-    float: left;
   `,
 });
 
@@ -675,9 +675,13 @@ class TabsBox extends Component<TabsProps, TabsState> {
     const moveDistance = this.computeMoveDistance();
     const { isDisabledToPrev, isDisabledToNext } = this.getIsAllowToMove(moveDistance);
 
+    const prevPageThemeProps = deepMerge(
+      { themeProps: { normal: { height: 35 } } },
+      this.props.getPartOfThemeProps('DefaultTabPan')
+    );
     return [
       <HPrePage
-        themeProps={themeProps}
+        themeProps={prevPageThemeProps}
         onClick={this.onPreClick(isDisabledToPrev)}
         tabType={tabType}
         {...pre}
@@ -701,7 +705,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
         </HscrollerContainer>
       </HTabsContainer>,
       <HNextPage
-        themeProps={themeProps}
+        themeProps={prevPageThemeProps}
         {...next}
         onClick={this.onNextClick(isDisabledToNext)}
         tabType={tabType}

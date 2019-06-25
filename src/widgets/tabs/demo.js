@@ -481,7 +481,9 @@ export default () => {
         },
       },
       DefaultTabPan: {
-        normal: {},
+        normal: {
+          height: 35,
+        },
         hover: {
           color: 'orange',
         },
@@ -631,7 +633,7 @@ export default () => {
           <p style={{ titleStyle }}>defaultData pagedType=page</p>
           <Tabs
             tabType={'line'}
-            tabPosition={'top'}
+            tabPosition={'bottom'}
             onPreClick={onPreClick}
             onNextClick={onNextClick}
             children={hasActivityValueChildren}

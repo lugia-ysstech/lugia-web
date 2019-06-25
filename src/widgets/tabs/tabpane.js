@@ -373,9 +373,6 @@ const TabIcon = ThemeHoc(
     },
     hover: {
       selectNames: [['color']],
-      getCSS: (theme: Object, themeProps: Object) => {
-        console.log('TabIcon', theme, themeProps);
-      },
     },
     disabled: {
       selectNames: [['color']],
@@ -390,22 +387,6 @@ const TabIcon = ThemeHoc(
   'TabIcon',
   { hover: true, active: false }
 );
-
-const IconContainer = CSSComponent({
-  tag: 'span',
-  className: 'IconContainer',
-  css: css`
-    display: inline-block;
-    height: 12px;
-    width: 12px;
-  `,
-  normal: {
-    selectNames: [['color']],
-  },
-  disabled: {
-    selectNames: [],
-  },
-});
 
 const ClearButtonContainer = CSSComponent({
   tag: 'span',
@@ -687,9 +668,6 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
 
   getTabIconContainer(icon: ?string, themeProps?: Object = {}, type?: string) {
     return icon ? this.getIcon(icon, themeProps) : null;
-    // return icon ? (
-    //   <IconContainer themeProps={themeProps}>{this.getIcon(icon, themeProps)}</IconContainer>
-    // ) : null;
   }
   getIcon(icon: string, themeProps: Object) {
     const { isSelect, disabled } = this.props;
