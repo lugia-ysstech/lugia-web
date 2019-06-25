@@ -38,6 +38,41 @@ const {
   lightGreyColor,
 } = colorsFunc();
 const defaultColor = '#fff';
+const defaultEdgeCancelProps = {
+  themeConfig: {
+    normal: {
+      border: getBorder({ color: disabledColor, width: 1, style: 'solid' }, { radius: 2 }),
+      background: { color: disabledColor },
+    },
+  },
+};
+const defaultEdgeTheme = {
+  themeConfig: {
+    normal: {
+      border: getBorder({ color: themeColor, width: 1, style: 'solid' }, { radius: 2 }),
+      background: { color: themeColor },
+    },
+    hover: {
+      border: getBorder({ color: themeColor, width: 1, style: 'solid' }, { radius: 2 }),
+      background: { color: themeColor },
+    },
+    disabled: {
+      border: getBorder({ color: disableColor, width: 1, style: 'solid' }, { radius: 2 }),
+      background: { color: disableColor },
+    },
+  },
+};
+const defaultInnerTheme = {
+  normal: {
+    color: '#fff',
+  },
+  hover: {
+    color: '#fff',
+  },
+  disabled: {
+    color: lightGreyColor,
+  },
+};
 
 export default ThemeProvider(
   class extends React.Component<CheckBoxProps, CheckBoxState> {
@@ -110,41 +145,7 @@ export default ThemeProvider(
         config.enter = this.handleMouseEnter;
         config.leave = this.handleMouseLeave;
       }
-      const defaultEdgeCancelProps = {
-        themeConfig: {
-          normal: {
-            border: getBorder({ color: disabledColor, width: 1, style: 'solid' }, { radius: 2 }),
-            background: { color: disabledColor },
-          },
-        },
-      };
-      const defaultEdgeTheme = {
-        themeConfig: {
-          normal: {
-            border: getBorder({ color: themeColor, width: 1, style: 'solid' }, { radius: 2 }),
-            background: { color: themeColor },
-          },
-          hover: {
-            border: getBorder({ color: themeColor, width: 1, style: 'solid' }, { radius: 2 }),
-            background: { color: themeColor },
-          },
-          disabled: {
-            border: getBorder({ color: disableColor, width: 1, style: 'solid' }, { radius: 2 }),
-            background: { color: disableColor },
-          },
-        },
-      };
-      const defaultInnerTheme = {
-        normal: {
-          color: '#fff',
-        },
-        hover: {
-          color: '#fff',
-        },
-        disabled: {
-          color: lightGreyColor,
-        },
-      };
+
       const CheckboxWrapProps = getPartOfThemeProps('CheckboxWrap');
       const CircleEdgeCheckedTheme = getPartOfThemeProps('CheckboxEdgeChecked');
       const CircleEdgeUnCheckedTheme = getPartOfThemeProps('CheckboxEdgeUnChecked');
@@ -184,6 +185,7 @@ export default ThemeProvider(
         CircleEdgeTheme.propsConfig.isCancel = cancel;
       }
       CircleEdgeTheme.propsConfig.isDisabled = disabled;
+      CircleEdgeTheme.propsConfig.hasChecked = hasChecked;
 
       return (
         <CheckBoxWrap

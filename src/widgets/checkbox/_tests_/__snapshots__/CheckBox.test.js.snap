@@ -12,7 +12,7 @@ exports[`CheckBox CheckBox CSS 1`] = `
   white-space: nowrap;
   display: inline-block;
   margin-right: 3rem;
-  color: #333333;
+  opacity: 1;
 }
 
 .c6 {
@@ -26,7 +26,7 @@ exports[`CheckBox CheckBox CSS 1`] = `
   white-space: nowrap;
   display: inline-block;
   margin-right: 3rem;
-  color: #333333;
+  opacity: 1;
 }
 
 .c2 {
@@ -39,6 +39,8 @@ exports[`CheckBox CheckBox CSS 1`] = `
 
 .c5 {
   padding-left: 1rem;
+  color: #333333;
+  font-size: 14;
 }
 
 .c3 {
@@ -77,6 +79,23 @@ exports[`CheckBox CheckBox CSS 1`] = `
   height: 1.8rem;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  background-color: #fff;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
+  border-top-left-radius: 0.2rem;
+  border-top-right-radius: 0.2rem;
+  border-bottom-right-radius: 0.2rem;
+  border-bottom-left-radius: 0.2rem;
 }
 
 .c8 {
@@ -89,9 +108,170 @@ exports[`CheckBox CheckBox CSS 1`] = `
   height: 1.8rem;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  background-color: #fff;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
+  border-top-left-radius: 0.2rem;
+  border-top-right-radius: 0.2rem;
+  border-bottom-right-radius: 0.2rem;
+  border-bottom-left-radius: 0.2rem;
 }
 
 .c8::after {
+  position: absolute;
+  box-sizing: border-box;
+  -webkit-transform: translate(-50%,-50%) rotate(45deg) scale(1);
+  -ms-transform: translate(-50%,-50%) rotate(45deg) scale(1);
+  transform: translate(-50%,-50%) rotate(45deg) scale(1);
+  -webkit-transition: all .2s cubic-bezier(.71,-.46,.88,.6);
+  transition: all .2s cubic-bezier(.71,-.46,.88,.6);
+  left: 50%;
+  top: 50%;
+  width: 0.6rem;
+  height: 1rem;
+  display: table;
+  border: 0.2rem solid red;
+  border-top: 0;
+  border-left: 0;
+  content: ' ';
+}
+
+.c9 {
+  position: relative;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 1.8rem;
+  height: 1.8rem;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  background-color: #fff;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
+  border-top-left-radius: 0.2rem;
+  border-top-right-radius: 0.2rem;
+  border-bottom-right-radius: 0.2rem;
+  border-bottom-left-radius: 0.2rem;
+}
+
+.c9::after {
+  position: absolute;
+  box-sizing: border-box;
+  -webkit-transform: translate(-50%,-50%) rotate(45deg) scale(1);
+  -ms-transform: translate(-50%,-50%) rotate(45deg) scale(1);
+  transform: translate(-50%,-50%) rotate(45deg) scale(1);
+  -webkit-transition: all .2s cubic-bezier(.71,-.46,.88,.6);
+  transition: all .2s cubic-bezier(.71,-.46,.88,.6);
+  left: 50%;
+  top: 50%;
+  width: 0.6rem;
+  height: 1rem;
+  display: table;
+  border: 0.2rem solid orange;
+  border-top: 0;
+  border-left: 0;
+  content: ' ';
+}
+
+.c10 {
+  position: relative;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 1.8rem;
+  height: 1.8rem;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  background-color: #fff;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
+  border-top-left-radius: 0.2rem;
+  border-top-right-radius: 0.2rem;
+  border-bottom-right-radius: 0.2rem;
+  border-bottom-left-radius: 0.2rem;
+}
+
+.c10::after {
+  position: absolute;
+  box-sizing: border-box;
+  -webkit-transform: translate(-50%,-50%) scale(1);
+  -ms-transform: translate(-50%,-50%) scale(1);
+  transform: translate(-50%,-50%) scale(1);
+  -webkit-transition: all .2s cubic-bezier(.03,.86,.56,.87);
+  transition: all .2s cubic-bezier(.03,.86,.56,.87);
+  left: 50%;
+  top: 50%;
+  width: 1rem;
+  height: 0.1rem;
+  display: table;
+  border: 0.2rem solid red;
+  border-top: 0;
+  border-left: 0;
+  content: ' ';
+}
+
+.c11 {
+  position: relative;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 1.8rem;
+  height: 1.8rem;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  background-color: #fff;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
+  border-top-left-radius: 0.2rem;
+  border-top-right-radius: 0.2rem;
+  border-bottom-right-radius: 0.2rem;
+  border-bottom-left-radius: 0.2rem;
+}
+
+.c11::after {
   position: absolute;
   box-sizing: border-box;
   -webkit-transform: translate(-50%,-50%) rotate(45deg) scale(1);
@@ -110,7 +290,7 @@ exports[`CheckBox CheckBox CSS 1`] = `
   content: ' ';
 }
 
-.c9 {
+.c12 {
   position: relative;
   box-sizing: border-box;
   top: 0;
@@ -120,9 +300,26 @@ exports[`CheckBox CheckBox CSS 1`] = `
   height: 1.8rem;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  background-color: #fff;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
+  border-top-left-radius: 0.2rem;
+  border-top-right-radius: 0.2rem;
+  border-bottom-right-radius: 0.2rem;
+  border-bottom-left-radius: 0.2rem;
 }
 
-.c9::after {
+.c12::after {
   position: absolute;
   box-sizing: border-box;
   -webkit-transform: translate(-50%,-50%) rotate(45deg) scale(1);
@@ -141,7 +338,7 @@ exports[`CheckBox CheckBox CSS 1`] = `
   content: ' ';
 }
 
-.c10 {
+.c13 {
   position: relative;
   box-sizing: border-box;
   top: 0;
@@ -151,40 +348,26 @@ exports[`CheckBox CheckBox CSS 1`] = `
   height: 1.8rem;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  background-color: #fff;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
+  border-top-left-radius: 0.2rem;
+  border-top-right-radius: 0.2rem;
+  border-bottom-right-radius: 0.2rem;
+  border-bottom-left-radius: 0.2rem;
 }
 
-.c10::after {
-  position: absolute;
-  box-sizing: border-box;
-  -webkit-transform: translate(-50%,-50%) scale(1);
-  -ms-transform: translate(-50%,-50%) scale(1);
-  transform: translate(-50%,-50%) scale(1);
-  -webkit-transition: all .2s cubic-bezier(.03,.86,.56,.87);
-  transition: all .2s cubic-bezier(.03,.86,.56,.87);
-  left: 50%;
-  top: 50%;
-  width: 1rem;
-  height: 0.1rem;
-  display: table;
-  border: 0.2rem solid pink;
-  border-top: 0;
-  border-left: 0;
-  content: ' ';
-}
-
-.c11 {
-  position: relative;
-  box-sizing: border-box;
-  top: 0;
-  left: 0;
-  display: block;
-  width: 1.8rem;
-  height: 1.8rem;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-
-.c11::after {
+.c13::after {
   position: absolute;
   box-sizing: border-box;
   -webkit-transform: translate(-50%,-50%) rotate(45deg) scale(1);
@@ -203,7 +386,7 @@ exports[`CheckBox CheckBox CSS 1`] = `
   content: ' ';
 }
 
-.c12 {
+.c14 {
   position: relative;
   box-sizing: border-box;
   top: 0;
@@ -213,9 +396,26 @@ exports[`CheckBox CheckBox CSS 1`] = `
   height: 1.8rem;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  background-color: #fff;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
+  border-top-left-radius: 0.2rem;
+  border-top-right-radius: 0.2rem;
+  border-bottom-right-radius: 0.2rem;
+  border-bottom-left-radius: 0.2rem;
 }
 
-.c12::after {
+.c14::after {
   position: absolute;
   box-sizing: border-box;
   -webkit-transform: translate(-50%,-50%) scale(1);
@@ -251,9 +451,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
       onMouseUp={[Function]}
       style={
         Object {
-          "color": "blue",
-          "fontSize": 16,
-          "fontWeight": 200,
           "height": "5rem",
           "margin": "1rem 1rem 1rem 1rem",
           "opacity": 1,
@@ -298,6 +495,13 @@ exports[`CheckBox CheckBox CSS 1`] = `
       </span>
       <span
         className="c5"
+        style={
+          Object {
+            "color": "red",
+            "fontSize": 16,
+            "fontWeight": 500,
+          }
+        }
       >
         CheckBox
       </span>
@@ -316,9 +520,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
       onMouseUp={[Function]}
       style={
         Object {
-          "color": "red",
-          "fontSize": 16,
-          "fontWeight": 200,
           "height": "5rem",
           "margin": "1rem 1rem 1rem 1rem",
           "opacity": 0.4,
@@ -365,6 +566,13 @@ exports[`CheckBox CheckBox CSS 1`] = `
       </span>
       <span
         className="c5"
+        style={
+          Object {
+            "color": "yellow",
+            "fontSize": 16,
+            "fontWeight": 500,
+          }
+        }
       >
         CheckBox
       </span>
@@ -382,9 +590,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
       onMouseUp={[Function]}
       style={
         Object {
-          "color": "green",
-          "fontSize": 16,
-          "fontWeight": 200,
           "height": "5rem",
           "margin": "1rem 1rem 1rem 1rem",
           "opacity": 1,
@@ -407,29 +612,108 @@ exports[`CheckBox CheckBox CSS 1`] = `
           className="c8"
           style={
             Object {
-              "backgroundColor": "#3452c2",
-              "borderBottomColor": "red",
+              "backgroundColor": "#56c22d",
+              "borderBottomColor": "yellow",
               "borderBottomLeftRadius": "0.2rem",
               "borderBottomRightRadius": "0.2rem",
               "borderBottomStyle": "solid",
-              "borderBottomWidth": "0.1rem",
-              "borderLeftColor": "red",
+              "borderBottomWidth": "0.2rem",
+              "borderLeftColor": "yellow",
               "borderLeftStyle": "solid",
-              "borderLeftWidth": "0.1rem",
-              "borderRightColor": "red",
+              "borderLeftWidth": "0.2rem",
+              "borderRightColor": "yellow",
               "borderRightStyle": "solid",
-              "borderRightWidth": "0.1rem",
-              "borderTopColor": "red",
+              "borderRightWidth": "0.2rem",
+              "borderTopColor": "yellow",
               "borderTopLeftRadius": "0.2rem",
               "borderTopRightRadius": "0.2rem",
               "borderTopStyle": "solid",
-              "borderTopWidth": "0.1rem",
+              "borderTopWidth": "0.2rem",
             }
           }
         />
       </span>
       <span
         className="c5"
+        style={
+          Object {
+            "color": "red",
+            "fontSize": 16,
+            "fontWeight": 500,
+          }
+        }
+      >
+        CheckBox
+      </span>
+    </label>
+  </div>
+  <div
+    className="c0"
+  >
+    <label
+      className="c6"
+      disabled={true}
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "height": "5rem",
+          "margin": "1rem 1rem 1rem 1rem",
+          "opacity": 0.4,
+          "padding": "1rem 1rem 1rem 1rem",
+          "width": "10rem",
+        }
+      }
+    >
+      <span
+        className="c2"
+        onClick={null}
+      >
+        <input
+          className="c7"
+          disabled={true}
+          onBlur={[Function]}
+          type="checkbox"
+        />
+        <span
+          checked={true}
+          className="c9"
+          disabled={true}
+          style={
+            Object {
+              "backgroundColor": "red",
+              "borderBottomColor": "orange",
+              "borderBottomLeftRadius": "0.2rem",
+              "borderBottomRightRadius": "0.2rem",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.2rem",
+              "borderLeftColor": "orange",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": "0.2rem",
+              "borderRightColor": "orange",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.2rem",
+              "borderTopColor": "orange",
+              "borderTopLeftRadius": "0.2rem",
+              "borderTopRightRadius": "0.2rem",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.2rem",
+            }
+          }
+        />
+      </span>
+      <span
+        className="c5"
+        style={
+          Object {
+            "color": "yellow",
+            "fontSize": 16,
+            "fontWeight": 500,
+          }
+        }
       >
         CheckBox
       </span>
@@ -447,9 +731,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
       onMouseUp={[Function]}
       style={
         Object {
-          "color": "green",
-          "fontSize": 16,
-          "fontWeight": 200,
           "height": "5rem",
           "margin": "1rem 1rem 1rem 1rem",
           "opacity": 1,
@@ -460,7 +741,7 @@ exports[`CheckBox CheckBox CSS 1`] = `
     >
       <span
         className="c2"
-        onClick={[Function]}
+        onClick={null}
       >
         <input
           className="c3"
@@ -469,86 +750,39 @@ exports[`CheckBox CheckBox CSS 1`] = `
         />
         <span
           checked={true}
-          className="c9"
+          className="c8"
           style={
             Object {
-              "backgroundColor": "pink",
-              "borderBottomColor": "red",
+              "backgroundColor": "#56c22d",
+              "borderBottomColor": "yellow",
               "borderBottomLeftRadius": "0.2rem",
               "borderBottomRightRadius": "0.2rem",
               "borderBottomStyle": "solid",
-              "borderBottomWidth": "0.1rem",
-              "borderLeftColor": "red",
+              "borderBottomWidth": "0.2rem",
+              "borderLeftColor": "yellow",
               "borderLeftStyle": "solid",
-              "borderLeftWidth": "0.1rem",
-              "borderRightColor": "red",
+              "borderLeftWidth": "0.2rem",
+              "borderRightColor": "yellow",
               "borderRightStyle": "solid",
-              "borderRightWidth": "0.1rem",
-              "borderTopColor": "red",
+              "borderRightWidth": "0.2rem",
+              "borderTopColor": "yellow",
               "borderTopLeftRadius": "0.2rem",
               "borderTopRightRadius": "0.2rem",
               "borderTopStyle": "solid",
-              "borderTopWidth": "0.1rem",
+              "borderTopWidth": "0.2rem",
             }
           }
         />
       </span>
       <span
         className="c5"
-      >
-        CheckBox
-      </span>
-    </label>
-  </div>
-  <div
-    className="c0"
-  >
-    <label
-      className="c1"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={Object {}}
-    >
-      <span
-        className="c2"
-        onClick={[Function]}
-      >
-        <input
-          className="c3"
-          onBlur={[Function]}
-          type="checkbox"
-        />
-        <span
-          checked={true}
-          className="c9"
-          style={
-            Object {
-              "backgroundColor": "#c0c8ff",
-              "borderBottomColor": "#c0c8ff",
-              "borderBottomLeftRadius": "0.2rem",
-              "borderBottomRightRadius": "0.2rem",
-              "borderBottomStyle": "solid",
-              "borderBottomWidth": "0.1rem",
-              "borderLeftColor": "#c0c8ff",
-              "borderLeftStyle": "solid",
-              "borderLeftWidth": "0.1rem",
-              "borderRightColor": "#c0c8ff",
-              "borderRightStyle": "solid",
-              "borderRightWidth": "0.1rem",
-              "borderTopColor": "#c0c8ff",
-              "borderTopLeftRadius": "0.2rem",
-              "borderTopRightRadius": "0.2rem",
-              "borderTopStyle": "solid",
-              "borderTopWidth": "0.1rem",
-            }
+        style={
+          Object {
+            "color": "red",
+            "fontSize": 16,
+            "fontWeight": 500,
           }
-        />
-      </span>
-      <span
-        className="c5"
+        }
       >
         CheckBox
       </span>
@@ -566,9 +800,6 @@ exports[`CheckBox CheckBox CSS 1`] = `
       onMouseUp={[Function]}
       style={
         Object {
-          "color": "blue",
-          "fontSize": 16,
-          "fontWeight": 200,
           "height": "5rem",
           "margin": "1rem 1rem 1rem 1rem",
           "opacity": 1,
@@ -613,6 +844,81 @@ exports[`CheckBox CheckBox CSS 1`] = `
       </span>
       <span
         className="c5"
+        style={
+          Object {
+            "color": "red",
+            "fontSize": 16,
+            "fontWeight": 500,
+          }
+        }
+      >
+        CheckBox
+      </span>
+    </label>
+  </div>
+  <div
+    className="c0"
+  >
+    <label
+      className="c1"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "height": "5rem",
+          "margin": "1rem 1rem 1rem 1rem",
+          "opacity": 1,
+          "padding": "1rem 1rem 1rem 1rem",
+          "width": "10rem",
+        }
+      }
+    >
+      <span
+        className="c2"
+        onClick={[Function]}
+      >
+        <input
+          className="c3"
+          onBlur={[Function]}
+          type="checkbox"
+        />
+        <span
+          className="c11"
+          style={
+            Object {
+              "backgroundColor": "pink",
+              "borderBottomColor": "#56c22d",
+              "borderBottomLeftRadius": "0.2rem",
+              "borderBottomRightRadius": "0.2rem",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.2rem",
+              "borderLeftColor": "#56c22d",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": "0.2rem",
+              "borderRightColor": "#56c22d",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.2rem",
+              "borderTopColor": "#56c22d",
+              "borderTopLeftRadius": "0.2rem",
+              "borderTopRightRadius": "0.2rem",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.2rem",
+            }
+          }
+        />
+      </span>
+      <span
+        className="c5"
+        style={
+          Object {
+            "color": "red",
+            "fontSize": 16,
+            "fontWeight": 500,
+          }
+        }
       >
         CheckBox
       </span>
@@ -641,139 +947,12 @@ exports[`CheckBox CheckBox CSS 1`] = `
         />
         <span
           className="c4"
-          style={
-            Object {
-              "backgroundColor": "#fff",
-              "borderBottomColor": "#cccccc",
-              "borderBottomLeftRadius": "0.2rem",
-              "borderBottomRightRadius": "0.2rem",
-              "borderBottomStyle": "solid",
-              "borderBottomWidth": "0.1rem",
-              "borderLeftColor": "#cccccc",
-              "borderLeftStyle": "solid",
-              "borderLeftWidth": "0.1rem",
-              "borderRightColor": "#cccccc",
-              "borderRightStyle": "solid",
-              "borderRightWidth": "0.1rem",
-              "borderTopColor": "#cccccc",
-              "borderTopLeftRadius": "0.2rem",
-              "borderTopRightRadius": "0.2rem",
-              "borderTopStyle": "solid",
-              "borderTopWidth": "0.1rem",
-            }
-          }
+          style={Object {}}
         />
       </span>
       <span
         className="c5"
-      >
-        CheckBox
-      </span>
-    </label>
-  </div>
-  <div
-    className="c0"
-  >
-    <label
-      className="c1"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={Object {}}
-    >
-      <span
-        className="c2"
-        onClick={null}
-      >
-        <input
-          className="c3"
-          onBlur={[Function]}
-          type="checkbox"
-        />
-        <span
-          checked={true}
-          className="c9"
-          style={
-            Object {
-              "backgroundColor": "#4d63ff",
-              "borderBottomColor": "#4d63ff",
-              "borderBottomLeftRadius": "0.2rem",
-              "borderBottomRightRadius": "0.2rem",
-              "borderBottomStyle": "solid",
-              "borderBottomWidth": "0.1rem",
-              "borderLeftColor": "#4d63ff",
-              "borderLeftStyle": "solid",
-              "borderLeftWidth": "0.1rem",
-              "borderRightColor": "#4d63ff",
-              "borderRightStyle": "solid",
-              "borderRightWidth": "0.1rem",
-              "borderTopColor": "#4d63ff",
-              "borderTopLeftRadius": "0.2rem",
-              "borderTopRightRadius": "0.2rem",
-              "borderTopStyle": "solid",
-              "borderTopWidth": "0.1rem",
-            }
-          }
-        />
-      </span>
-      <span
-        className="c5"
-      >
-        CheckBox
-      </span>
-    </label>
-  </div>
-  <div
-    className="c0"
-  >
-    <label
-      className="c1"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={Object {}}
-    >
-      <span
-        className="c2"
-        onClick={null}
-      >
-        <input
-          className="c3"
-          onBlur={[Function]}
-          type="checkbox"
-        />
-        <span
-          checked={true}
-          className="c9"
-          style={
-            Object {
-              "backgroundColor": "#4d63ff",
-              "borderBottomColor": "#4d63ff",
-              "borderBottomLeftRadius": "0.2rem",
-              "borderBottomRightRadius": "0.2rem",
-              "borderBottomStyle": "solid",
-              "borderBottomWidth": "0.1rem",
-              "borderLeftColor": "#4d63ff",
-              "borderLeftStyle": "solid",
-              "borderLeftWidth": "0.1rem",
-              "borderRightColor": "#4d63ff",
-              "borderRightStyle": "solid",
-              "borderRightWidth": "0.1rem",
-              "borderTopColor": "#4d63ff",
-              "borderTopLeftRadius": "0.2rem",
-              "borderTopRightRadius": "0.2rem",
-              "borderTopStyle": "solid",
-              "borderTopWidth": "0.1rem",
-            }
-          }
-        />
-      </span>
-      <span
-        className="c5"
+        style={Object {}}
       >
         CheckBox
       </span>
@@ -792,7 +971,7 @@ exports[`CheckBox CheckBox CSS 1`] = `
       onMouseUp={[Function]}
       style={
         Object {
-          "color": "#cccccc",
+          "opacity": 1,
         }
       }
     >
@@ -834,128 +1013,12 @@ exports[`CheckBox CheckBox CSS 1`] = `
       </span>
       <span
         className="c5"
-      >
-        CheckBox
-      </span>
-    </label>
-  </div>
-  <div
-    className="c0"
-  >
-    <label
-      className="c6"
-      disabled={true}
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "color": "#cccccc",
-        }
-      }
-    >
-      <span
-        className="c2"
-        onClick={null}
-      >
-        <input
-          className="c7"
-          disabled={true}
-          onBlur={[Function]}
-          type="checkbox"
-        />
-        <span
-          checked={true}
-          className="c11"
-          disabled={true}
-          style={
-            Object {
-              "backgroundColor": "#f2f2f2",
-              "borderBottomColor": "#e8e8e8",
-              "borderBottomLeftRadius": "0.2rem",
-              "borderBottomRightRadius": "0.2rem",
-              "borderBottomStyle": "solid",
-              "borderBottomWidth": "0.1rem",
-              "borderLeftColor": "#e8e8e8",
-              "borderLeftStyle": "solid",
-              "borderLeftWidth": "0.1rem",
-              "borderRightColor": "#e8e8e8",
-              "borderRightStyle": "solid",
-              "borderRightWidth": "0.1rem",
-              "borderTopColor": "#e8e8e8",
-              "borderTopLeftRadius": "0.2rem",
-              "borderTopRightRadius": "0.2rem",
-              "borderTopStyle": "solid",
-              "borderTopWidth": "0.1rem",
-            }
+        style={
+          Object {
+            "color": "#cccccc",
+            "fontSize": 14,
           }
-        />
-      </span>
-      <span
-        className="c5"
-      >
-        CheckBox
-      </span>
-    </label>
-  </div>
-  <div
-    className="c0"
-  >
-    <label
-      className="c6"
-      disabled={true}
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "color": "#cccccc",
         }
-      }
-    >
-      <span
-        className="c2"
-        onClick={null}
-      >
-        <input
-          className="c7"
-          disabled={true}
-          onBlur={[Function]}
-          type="checkbox"
-        />
-        <span
-          checked={true}
-          className="c11"
-          disabled={true}
-          style={
-            Object {
-              "backgroundColor": "#f2f2f2",
-              "borderBottomColor": "#e8e8e8",
-              "borderBottomLeftRadius": "0.2rem",
-              "borderBottomRightRadius": "0.2rem",
-              "borderBottomStyle": "solid",
-              "borderBottomWidth": "0.1rem",
-              "borderLeftColor": "#e8e8e8",
-              "borderLeftStyle": "solid",
-              "borderLeftWidth": "0.1rem",
-              "borderRightColor": "#e8e8e8",
-              "borderRightStyle": "solid",
-              "borderRightWidth": "0.1rem",
-              "borderTopColor": "#e8e8e8",
-              "borderTopLeftRadius": "0.2rem",
-              "borderTopRightRadius": "0.2rem",
-              "borderTopStyle": "solid",
-              "borderTopWidth": "0.1rem",
-            }
-          }
-        />
-      </span>
-      <span
-        className="c5"
       >
         CheckBox
       </span>
@@ -983,6 +1046,7 @@ exports[`CheckBox CheckBox CSS 1`] = `
           type="checkbox"
         />
         <span
+          checked={true}
           className="c12"
           style={
             Object {
@@ -1009,6 +1073,374 @@ exports[`CheckBox CheckBox CSS 1`] = `
       </span>
       <span
         className="c5"
+        style={Object {}}
+      >
+        CheckBox
+      </span>
+    </label>
+  </div>
+  <div
+    className="c0"
+  >
+    <label
+      className="c6"
+      disabled={true}
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+    >
+      <span
+        className="c2"
+        onClick={null}
+      >
+        <input
+          className="c7"
+          disabled={true}
+          onBlur={[Function]}
+          type="checkbox"
+        />
+        <span
+          checked={true}
+          className="c13"
+          disabled={true}
+          style={
+            Object {
+              "backgroundColor": "#f2f2f2",
+              "borderBottomColor": "#f2f2f2",
+              "borderBottomLeftRadius": "0.2rem",
+              "borderBottomRightRadius": "0.2rem",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "borderLeftColor": "#f2f2f2",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": "0.1rem",
+              "borderRightColor": "#f2f2f2",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.1rem",
+              "borderTopColor": "#f2f2f2",
+              "borderTopLeftRadius": "0.2rem",
+              "borderTopRightRadius": "0.2rem",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.1rem",
+            }
+          }
+        />
+      </span>
+      <span
+        className="c5"
+        style={
+          Object {
+            "color": "#cccccc",
+            "fontSize": 14,
+          }
+        }
+      >
+        CheckBox
+      </span>
+    </label>
+  </div>
+  <div
+    className="c0"
+  >
+    <label
+      className="c1"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={Object {}}
+    >
+      <span
+        className="c2"
+        onClick={null}
+      >
+        <input
+          className="c3"
+          onBlur={[Function]}
+          type="checkbox"
+        />
+        <span
+          className="c14"
+          style={
+            Object {
+              "backgroundColor": "#4d63ff",
+              "borderBottomColor": "#4d63ff",
+              "borderBottomLeftRadius": "0.2rem",
+              "borderBottomRightRadius": "0.2rem",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "borderLeftColor": "#4d63ff",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": "0.1rem",
+              "borderRightColor": "#4d63ff",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.1rem",
+              "borderTopColor": "#4d63ff",
+              "borderTopLeftRadius": "0.2rem",
+              "borderTopRightRadius": "0.2rem",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.1rem",
+            }
+          }
+        />
+      </span>
+      <span
+        className="c5"
+        style={Object {}}
+      >
+        CheckBox
+      </span>
+    </label>
+  </div>
+  <div
+    className="c0"
+  >
+    <label
+      className="c1"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "height": "5rem",
+          "margin": "1rem 1rem 1rem 1rem",
+          "opacity": 1,
+          "padding": "1rem 1rem 1rem 1rem",
+          "width": "10rem",
+        }
+      }
+    >
+      <span
+        className="c2"
+        onClick={[Function]}
+      >
+        <input
+          className="c3"
+          onBlur={[Function]}
+          type="checkbox"
+        />
+        <span
+          checked={true}
+          className="c11"
+          style={
+            Object {
+              "backgroundColor": "pink",
+              "borderBottomColor": "#56c22d",
+              "borderBottomLeftRadius": "0.2rem",
+              "borderBottomRightRadius": "0.2rem",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.2rem",
+              "borderLeftColor": "#56c22d",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": "0.2rem",
+              "borderRightColor": "#56c22d",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.2rem",
+              "borderTopColor": "#56c22d",
+              "borderTopLeftRadius": "0.2rem",
+              "borderTopRightRadius": "0.2rem",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.2rem",
+            }
+          }
+        />
+      </span>
+      <span
+        className="c5"
+        style={
+          Object {
+            "color": "red",
+            "fontSize": 16,
+            "fontWeight": 500,
+          }
+        }
+      >
+        CheckBox
+      </span>
+    </label>
+  </div>
+  <div
+    className="c0"
+  >
+    <label
+      className="c1"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={Object {}}
+    >
+      <span
+        className="c2"
+        onClick={[Function]}
+      >
+        <input
+          className="c3"
+          onBlur={[Function]}
+          type="checkbox"
+        />
+        <span
+          checked={true}
+          className="c12"
+          style={
+            Object {
+              "backgroundColor": "#c0c8ff",
+              "borderBottomColor": "#c0c8ff",
+              "borderBottomLeftRadius": "0.2rem",
+              "borderBottomRightRadius": "0.2rem",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "borderLeftColor": "#c0c8ff",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": "0.1rem",
+              "borderRightColor": "#c0c8ff",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.1rem",
+              "borderTopColor": "#c0c8ff",
+              "borderTopLeftRadius": "0.2rem",
+              "borderTopRightRadius": "0.2rem",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.1rem",
+            }
+          }
+        />
+      </span>
+      <span
+        className="c5"
+        style={Object {}}
+      >
+        CheckBox
+      </span>
+    </label>
+  </div>
+  <div
+    className="c0"
+  >
+    <label
+      className="c1"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={Object {}}
+    >
+      <span
+        className="c2"
+        onClick={null}
+      >
+        <input
+          className="c3"
+          onBlur={[Function]}
+          type="checkbox"
+        />
+        <span
+          checked={true}
+          className="c12"
+          style={
+            Object {
+              "backgroundColor": "#4d63ff",
+              "borderBottomColor": "#4d63ff",
+              "borderBottomLeftRadius": "0.2rem",
+              "borderBottomRightRadius": "0.2rem",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "borderLeftColor": "#4d63ff",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": "0.1rem",
+              "borderRightColor": "#4d63ff",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.1rem",
+              "borderTopColor": "#4d63ff",
+              "borderTopLeftRadius": "0.2rem",
+              "borderTopRightRadius": "0.2rem",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.1rem",
+            }
+          }
+        />
+      </span>
+      <span
+        className="c5"
+        style={Object {}}
+      >
+        CheckBox
+      </span>
+    </label>
+  </div>
+  <div
+    className="c0"
+  >
+    <label
+      className="c6"
+      disabled={true}
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+    >
+      <span
+        className="c2"
+        onClick={null}
+      >
+        <input
+          className="c7"
+          disabled={true}
+          onBlur={[Function]}
+          type="checkbox"
+        />
+        <span
+          checked={true}
+          className="c13"
+          disabled={true}
+          style={
+            Object {
+              "backgroundColor": "#f2f2f2",
+              "borderBottomColor": "#f2f2f2",
+              "borderBottomLeftRadius": "0.2rem",
+              "borderBottomRightRadius": "0.2rem",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "borderLeftColor": "#f2f2f2",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": "0.1rem",
+              "borderRightColor": "#f2f2f2",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.1rem",
+              "borderTopColor": "#f2f2f2",
+              "borderTopLeftRadius": "0.2rem",
+              "borderTopRightRadius": "0.2rem",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.1rem",
+            }
+          }
+        />
+      </span>
+      <span
+        className="c5"
+        style={
+          Object {
+            "color": "#cccccc",
+            "fontSize": 14,
+          }
+        }
       >
         CheckBox
       </span>

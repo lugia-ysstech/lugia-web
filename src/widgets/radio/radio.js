@@ -13,13 +13,58 @@ import Widget from '../consts/index';
 import type { RadioProps } from '../css/radio';
 import { RadioChildrenSpan, RadioContent, RadioCircleSpan, RadioWrap } from '../css/radio';
 import colorsFunc from '../css/stateColor';
+import { getBorder } from '@lugia/theme-css-hoc/lib/index';
 
 type RadioState = {
   checked: boolean,
 };
 
-const { themeColor, lightGreyColor } = colorsFunc();
+const { themeColor, lightGreyColor, disableColor, borderDisableColor } = colorsFunc();
 const cancelColor = colorsFunc(themeColor).disabledColor;
+const defaultProps = {
+  normal: { width: 10, height: 10, background: { color: themeColor } },
+  hover: { width: 10, height: 10, background: { color: themeColor } },
+  disabled: { width: 10, height: 10, background: { color: lightGreyColor } },
+};
+const defaultEdgeCancelProps = {
+  themeConfig: {
+    normal: {
+      width: 16,
+      height: 16,
+      background: { color: '#fff' },
+      border: getBorder({ color: cancelColor, width: 1, style: 'solid' }, { radius: 100 }),
+    },
+    hover: {
+      background: { color: '#fff' },
+      border: getBorder({ color: cancelColor, width: 1, style: 'solid' }, { radius: 100 }),
+    },
+  },
+};
+const defaultInnerCancelProps = {
+  normal: { width: 10, height: 10, background: { color: cancelColor } },
+  hover: { width: 10, height: 10, background: { color: cancelColor } },
+};
+const defaultEdgeCheckedProps = {
+  themeConfig: {
+    normal: {
+      width: 16,
+      height: 16,
+      background: { color: '#fff' },
+      border: getBorder({ color: themeColor, width: 1, style: 'solid' }, { radius: '100%' }),
+    },
+    hover: {
+      background: { color: '#fff' },
+      border: getBorder({ color: themeColor, width: 1, style: 'solid' }, { radius: '100%' }),
+    },
+    disabled: {
+      background: { color: disableColor },
+      border: getBorder(
+        { color: borderDisableColor, width: 1, style: 'solid' },
+        { radius: '100%' }
+      ),
+    },
+  },
+};
 
 export default ThemeProvider(
   class extends React.Component<RadioProps, RadioState> {
@@ -64,26 +109,33 @@ export default ThemeProvider(
         cancel,
         themeProps,
         getPartOfThemeProps,
+        getPartOfThemeConfig,
       } = this.props;
       const { checked } = this.state;
-      const defaultProps = {
-        normal: { width: 10, height: 10, background: { color: themeColor } },
-        active: { width: 10, height: 10, background: { color: themeColor } },
-        hover: { width: 10, height: 10, background: { color: themeColor } },
-        disabled: { width: 10, height: 10, background: { color: lightGreyColor } },
-        cancel: { width: 10, height: 10, background: { color: cancelColor } },
-      };
       const RadioWrapTheme = getPartOfThemeProps('RadioWrap');
       const RadioTextTheme = getPartOfThemeProps('RadioText');
       const RadioEdgeCheckedTheme = getPartOfThemeProps('RadioEdgeChecked');
       const RadioEdgeUnCheckedTheme = getPartOfThemeProps('RadioEdgeUnChecked');
-      const RadioInnerCheckedTheme = getPartOfThemeProps('RadioInnerChecked');
-      RadioInnerCheckedTheme.themeConfig = deepMerge(
-        defaultProps,
-        RadioInnerCheckedTheme.themeConfig
-      );
-      const CircleEdgeTheme = checked ? RadioEdgeCheckedTheme : RadioEdgeUnCheckedTheme;
-      CircleEdgeTheme.propsConfig.RadioInnerCheckedTheme = RadioInnerCheckedTheme;
+      const RadioEdgeCancelTheme = getPartOfThemeProps('RadioEdgeCancel');
+      const RadioInnerCheckedTheme = getPartOfThemeConfig('RadioInnerChecked');
+      const RadioInnerCancelTheme = getPartOfThemeConfig('RadioInnerChecked');
+      const CircleEdgeTheme = cancel
+        ? deepMerge(defaultEdgeCancelProps, RadioEdgeCancelTheme)
+        : checked
+        ? deepMerge(defaultEdgeCheckedProps, RadioEdgeCheckedTheme)
+        : RadioEdgeUnCheckedTheme;
+      if (checked) {
+        CircleEdgeTheme.propsConfig.RadioInnerCheckedTheme = deepMerge(
+          defaultProps,
+          RadioInnerCheckedTheme
+        );
+      }
+      if (cancel) {
+        CircleEdgeTheme.propsConfig.RadioInnerCheckedTheme = deepMerge(
+          defaultInnerCancelProps,
+          RadioInnerCancelTheme
+        );
+      }
       CircleEdgeTheme.propsConfig.isChecked = checked;
       CircleEdgeTheme.propsConfig.isCancel = cancel;
       CircleEdgeTheme.propsConfig.isDisabled = disabled;

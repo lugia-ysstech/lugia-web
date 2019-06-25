@@ -201,7 +201,6 @@ export const CheckBoxInnerSpan = CSSComponent({
       border: getBorder({ color: borderColor, width: 1, style: 'solid' }, { radius: 2 }),
     },
     getCSS(themeMeta: Object, themeConfig: Object): string {
-      console.log(themeConfig);
       const { propsConfig, themeState } = themeConfig;
       const { hover } = themeState;
       const {
@@ -210,6 +209,7 @@ export const CheckBoxInnerSpan = CSSComponent({
         isDisabled,
         isChecked,
         isIndeterminate,
+        hasChecked,
       } = propsConfig;
       if (isCancel || isChecked || isIndeterminate) {
         const {
@@ -244,6 +244,10 @@ export const CheckBoxInnerSpan = CSSComponent({
             content: ' ';
           }
         `;
+      }
+
+      if (hasChecked) {
+        return `border: 1px solid ${themeColor};`;
       }
 
       return '';
