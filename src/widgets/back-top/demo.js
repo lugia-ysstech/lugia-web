@@ -39,9 +39,25 @@ export default class AffixDemo extends React.Component<any, any> {
             border: getBorder({ color: 'red', width: 1, style: 'solid' }, { radius: 100 }),
           },
         },
-        Icon: {
+        BackTopIcon: {
           normal: {
             color: 'green',
+            fontSize: 16,
+            padding: {
+              right: 10,
+              left: 10,
+              top: 10,
+              bottom: 10,
+            },
+            margin: {
+              right: 10,
+              left: 0,
+              top: 0,
+              bottom: 10,
+            },
+          },
+          hover: {
+            color: 'red',
             fontSize: 16,
             padding: {
               right: 10,
