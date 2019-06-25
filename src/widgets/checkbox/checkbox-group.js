@@ -34,6 +34,7 @@ type CheckBoxGroupProps = {
   children?: any,
   getTheme: Function,
   getPartOfThemeProps: Function,
+  getPartOfThemeConfig: Function,
   styles?: 'default' | 'vertical',
   cache?: boolean,
   childType?: 'default' | 'button',
