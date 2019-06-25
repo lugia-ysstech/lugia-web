@@ -3,7 +3,8 @@
  * create by guorg
  * @flow
  */
-import { px2emcss } from '../css/units';
+import CSSComponent, { StaticComponent, getBorder } from '@lugia/theme-css-hoc';
+import { px2remcss } from '../css/units';
 import colorsFunc from '../css/stateColor';
 import changeColor from './utilsColor';
 import type { ThemeType } from '@lugia/lugia-web';
@@ -11,7 +12,7 @@ import { createGetWidthOrHeight } from '../common/ThemeUtils';
 import styled, { css, keyframes } from 'styled-components';
 import Icon from '../icon';
 
-type Type = 'info' | 'success' | 'error' | 'warning';
+export type Type = 'info' | 'success' | 'error' | 'warning';
 export type AlertProps = {
   type?: Type,
   message: string,
@@ -22,6 +23,8 @@ export type AlertProps = {
   description?: string | React.ReactNode,
   onClose?: Function,
   icon?: string,
+  themeProps: Object,
+  getPartOfThemeProps: Function,
 };
 export type AlertState = {
   visible: boolean,
@@ -32,6 +35,7 @@ type CSSProps = {
   showIcon: boolean,
   type: Type,
   theme: Object,
+  themeProps: Object,
   closable: boolean,
   textInProps: boolean,
   hasDect: boolean,
@@ -41,7 +45,7 @@ type CSSProps = {
 };
 
 const FontSize = 1.4;
-const em = px2emcss(FontSize);
+const em = px2remcss;
 const getWidth = createGetWidthOrHeight('width', { fontSize: FontSize });
 const {
   themeColor,
@@ -72,11 +76,10 @@ const TypeCSS = {
 };
 
 const getAlertBorderCSS = (props: CSSProps) => {
-  const { showIcon, type, theme } = props;
-  const { color } = theme;
+  const { showIcon, type } = props;
   if (!showIcon) {
     return `
-      border-left: ${em(4)} solid ${color || TypeCSS[type].color};
+      border-left: ${em(4)} solid ${TypeCSS[type].color};
     `;
   }
 };
@@ -104,22 +107,12 @@ const getLineHeight = (props: CSSProps): number => {
   return 1;
 };
 const getPadding = (props: CSSProps): string => {
-  const { hasDect, showIcon } = props;
-  let verticalPad = em(12);
-  let leftPad = em(10);
+  const { themeProps } = props;
+  const { themeConfig } = themeProps;
+  const { padding = { top: 12, bottom: 12, left: 10, right: 10 } } = themeConfig.normal;
+  const { top, bottom, left, right } = padding;
 
-  if (showIcon) {
-    if (hasDect) {
-      leftPad = em(40);
-    } else {
-      leftPad = em(34);
-    }
-  }
-  if (hasDect) {
-    verticalPad = em(18);
-  }
-
-  return `${verticalPad} ${em(10)} ${verticalPad} ${leftPad}`;
+  return `${top} ${right} ${bottom} ${left}`;
 };
 const getAlertAnimate = (props: CSSProps) => {
   const { height, animateStart } = props;
@@ -144,19 +137,35 @@ const getAlertAnimate = (props: CSSProps) => {
     `;
   }
 };
-export const Alert = styled.div`
-  position: relative;
-  box-sizing: border-box;
-  font-size: ${FontSize}rem;
-  overflow: hidden;
-  padding: ${props => getPadding(props)};
-  line-height: ${props => getLineHeight(props)};
-  border-radius: ${em(4)};
-  ${getAlertBorderCSS};
-  ${getBackgroundCSS};
-  ${getAlertAnimate};
-  ${getWidth};
-`;
+
+export const Alert = CSSComponent({
+  tag: 'div',
+  className: 'alert-wrap',
+  css: css`
+    position: relative;
+    box-sizing: border-box;
+    font-size: ${FontSize}rem;
+    overflow: hidden;
+    line-height: ${props => getLineHeight(props)};
+    border-radius: ${em(4)};
+    ${getAlertAnimate};
+  `,
+  normal: {
+    defaultTheme: {
+      opacity: 1,
+    },
+    selectNames: [
+      ['opacity'],
+      ['margin'],
+      ['padding'],
+      ['width'],
+      ['height'],
+      ['background'],
+      ['border'],
+      ['boxShadow'],
+    ],
+  },
+});
 const getIconColor = (props: CSSProps) => {
   const { type, theme } = props;
   const { color } = theme;
@@ -176,9 +185,8 @@ const getIconFont = (props: CSSProps) => {
 };
 const getPosition = (props: CSSProps) => {
   const { hasDect } = props;
-  const Em = hasDect ? px2emcss(2) : em;
 
-  return `top: ${hasDect ? Em(18) : Em(12)};left: ${Em(10)}`;
+  return `top: ${hasDect ? em(18) : em(12)};left: ${em(10)}`;
 };
 export const Icons: Object = styled(Icon)`
   ${getIconColor};
@@ -203,11 +211,18 @@ const getMessageCSS = (props: CSSProps) => {
     font-size: ${em(14)};
   `;
 };
-export const Message = styled.span`
-  color: ${blackColor};
-  vertical-align: text-bottom;
-  ${getMessageCSS};
-`;
+
+export const Message = CSSComponent({
+  tag: 'span',
+  className: 'alert-wrap',
+  css: css`
+    vertical-align: text-bottom;
+  `,
+  normal: {
+    defaultTheme: { color: blackColor, font: { fontSize: 14 } },
+    selectNames: [['color'], ['font']],
+  },
+});
 const getCloseTextColor = (props: CSSProps) => {
   const { textInProps, type, theme } = props;
   const { color } = theme;
@@ -236,8 +251,19 @@ export const CloseText = styled.a`
   right: ${em(14)};
   ${getCloseTextColor};
 `;
-export const Description = styled.span`
-  display: block;
-  color: ${darkGreyColor};
-  font-size: ${em(14)};
-`;
+
+export const Description = CSSComponent({
+  tag: 'span',
+  className: 'alert-wrap',
+  css: css`
+    display: block;
+  `,
+  normal: {
+    defaultTheme: {
+      color: darkGreyColor,
+      font: { fontSize: 14 },
+      padding: { top: 0, right: 0, bottom: 0, left: 0 },
+    },
+    selectNames: [['color'], ['font'], ['padding']],
+  },
+});
