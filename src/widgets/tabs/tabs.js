@@ -108,7 +108,8 @@ const HBasePage = CSSComponent({
   css: css`
     transform: translateY(-50%);
     text-align: center;
-    display: ${props => (props.arrowShow === false ? 'none' : 'inline-block')};
+    display: ${props => (props.arrowShow === false ? 'none' : 'block')};
+    float: left;
   `,
 }); //${getArrowTop};
 
@@ -155,6 +156,7 @@ const VBasePage = CSSComponent({
     height: ${px2remcss(24)};
     line-height: ${px2remcss(24)};
     display: ${props => (props.arrowShow === false ? 'none' : 'block')};
+    float: left;
   `,
 });
 
@@ -182,11 +184,11 @@ const VNextPage = CSSComponent({
   css: css``,
 });
 
-const OutContainer = CSSComponent({
+const WindowContainer = CSSComponent({
   tag: 'div',
-  className: 'OutContainer',
+  className: 'WindowContainer',
   normal: {
-    selectNames: [['padding'], ['width']],
+    selectNames: [['background'], ['padding'], ['border']],
   },
   disabled: {
     selectNames: [],
@@ -196,13 +198,32 @@ const OutContainer = CSSComponent({
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
+    display: inline-block;
+  `,
+});
+
+const OutContainer = CSSComponent({
+  tag: 'div',
+  className: 'OutContainer',
+  normal: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
+  css: css`
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
   `,
 }); //width: ${hContainerWidth};height: ${vContainerHeight};
 OutContainer.displayName = Widget.TabsContainer;
 
 const HTabsContainer = CSSComponent({
   tag: 'div',
-  className: 'HTabsContainer',
+  className: 'TabsContainer',
   normal: {
     selectNames: [],
     getCSS: (themeMeta: Object, themePros: Object) => {
@@ -215,9 +236,10 @@ const HTabsContainer = CSSComponent({
   },
   css: css`
     width: 100%;
-    display: inline-block;
+    // display: inline-block;
     white-space: nowrap;
     overflow: hidden;
+    float: left;
   `,
 });
 
@@ -282,12 +304,16 @@ const HscrollerContainer = CSSComponent({
     selectNames: [],
     getCSS: (theme: Object, themeProps: Object) => {
       const {
-        propsConfig: { tabPosition },
+        propsConfig: { tabPosition, tabType },
       } = themeProps;
       const { color = '#e8e8e8', width = 1 } = theme;
       let border = `border-bottom: ${width}px solid ${color};`;
       if (tabPosition === 'bottom') {
         border = `border-top: ${width}px solid ${color};`;
+      }
+      console.log('tabType', tabType);
+      if (tabType === 'window') {
+        border = `border-bottom: ${0}px solid transparent;`;
       }
       return border;
     },
@@ -323,6 +349,7 @@ const VTabsContainer = CSSComponent({
     white-space: nowrap;
     display: inline-block;
     overflow: hidden;
+    float: left;
   `,
 });
 
@@ -518,20 +545,25 @@ class TabsBox extends Component<TabsProps, TabsState> {
   }
 
   render() {
-    const { getTheme, themeProps, tabPosition } = this.props;
-    const config = {
-      width: this.offsetWidth,
-      height: this.offsetHeight,
-    };
-    const theme = { [Widget.TabsContainer]: config };
-    return (
-      <Theme config={theme}>
-        <OutContainer themeProps={themeProps} theme={getTheme()}>
-          {this.getTabs()}
-          {this.getChildrenContent()}
-        </OutContainer>
-      </Theme>
+    const { themeProps, tabType } = this.props;
+    const outContainerThemeProps = this.props.getPartOfThemeProps('WindowContainer');
+    let target = (
+      <OutContainer themeProps={themeProps}>
+        {this.getTabs()}
+        {this.getChildrenContent()}
+      </OutContainer>
     );
+    if (tabType === 'window') {
+      target = (
+        <WindowContainer themeProps={outContainerThemeProps}>
+          <OutContainer themeProps={themeProps}>
+            {this.getTabs()}
+            {this.getChildrenContent()}
+          </OutContainer>
+        </WindowContainer>
+      );
+    }
+    return target;
   }
 
   getTabs() {
@@ -637,7 +669,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
     const pre = this.getArrowConfig('pre');
     const next = this.getArrowConfig('next');
     const borderThemeProps = this.props.getPartOfThemeProps('BorderStyle');
-    borderThemeProps.propsConfig = { tabPosition };
+    borderThemeProps.propsConfig = { tabPosition, tabType };
     const tabsThemeProps = this.props.getPartOfThemeProps('TabsContainer');
     tabsThemeProps.propsConfig = { tabPosition };
     const moveDistance = this.computeMoveDistance();

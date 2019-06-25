@@ -521,7 +521,7 @@ export default () => {
         normal: {
           color: themeColor,
           background: {
-            color: '#D8BFD8',
+            color: '#',
           },
         },
         disabled: {
@@ -530,9 +530,9 @@ export default () => {
       },
       CardTabPan: {
         normal: {
-          background: {
-            color: 'pink',
-          },
+          // background: {
+          //   color: 'pink',
+          // },
         },
         hover: {
           color: 'orange',
@@ -560,6 +560,9 @@ export default () => {
       },
     },
   };
+  const defaultCardView = {
+    [Widget.Tabs]: {},
+  };
 
   const windowView = {
     [Widget.Tabs]: {
@@ -567,9 +570,6 @@ export default () => {
       SelectTabPan: {
         normal: {
           color: themeColor,
-          background: {
-            color: '#D8BFD8',
-          },
         },
         disabled: {
           color: '#ccc',
@@ -577,9 +577,9 @@ export default () => {
       },
       WindowTabPan: {
         normal: {
-          background: {
-            color: 'pink',
-          },
+          // background: {
+          //   color: 'pink',
+          // },
         },
         hover: {
           color: 'orange',
@@ -591,6 +591,19 @@ export default () => {
       TabsContainer: {
         normal: {
           width: 316,
+        },
+      },
+      WindowContainer: {
+        normal: {
+          padding: {
+            left: 10,
+            right: 10,
+            top: 10,
+            bottom: 10,
+          },
+          background: {
+            color: 'orange',
+          },
         },
       },
     },
@@ -775,6 +788,8 @@ export default () => {
         </div>
         <p style={{ titleStyle }}>非受限 不传data 展示数据由state 控制</p>
         <Tabsdemo />
+      </Theme>
+      <Theme config={defaultCardView}>
         <p style={{ titleStyle }}>受限 展示数据 由props控制</p>
         <TabsLimitdemo />
         <br />

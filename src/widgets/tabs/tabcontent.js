@@ -31,6 +31,8 @@ const ContentContainer = CSSComponent({
   },
   css: css`
     overflow: hidden;
+    background: #fff;
+    padding: 10px;
   `,
 }); //${getContentPosition};
 
