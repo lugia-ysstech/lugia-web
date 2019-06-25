@@ -20,6 +20,7 @@ import ThemeHoc from '@lugia/theme-hoc';
 import { addMouseEvent } from '@lugia/theme-hoc';
 import { deepMerge } from '@lugia/object-utils';
 import colorsFunc from '../css/stateColor';
+import { findDOMNode } from 'react-dom';
 
 const { themeColor, mediumGreyColor, superLightColor, disableColor } = colorsFunc();
 
@@ -340,26 +341,21 @@ const ClearIcon = ThemeHoc(
     className: 'ClearIcon',
     css: css`
       font-size: 1rem;
-      color: blue;
     `,
     normal: {
       selectNames: [['color']],
       defaultTheme: {
-        color: 'red',
+        color: '#e8e8e8',
       },
     },
     hover: {
       selectNames: [['color']],
       defaultTheme: {
-        color: '#fff',
+        color: mediumGreyColor,
       },
     },
     disabled: {
-      selectNames: [],
-      defaultTheme: {
-        cursor: 'not-allowed',
-        color: 'red',
-      },
+      selectNames: [['cursor']],
       getCSS: (theme: Object, themeProps: Object) => {
         return 'cursor: not-allowed';
       },
@@ -388,23 +384,22 @@ type TabpaneProps = {
   onClick?: Function,
   onMouseEnter?: Function,
   onMouseLeave?: Function,
-  getTabpaneWidth?: Function,
+  getTabpaneWidthOrHeight?: Function,
   themeProps: Object,
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
-  // getTheme: Function,
 };
 
 class Tabpane extends Component<TabpaneProps, TabpaneState> {
   static defaultProps = {};
   static displayName = Widget.Tabpane;
   tabpane: any;
-  offsetWidth: number;
+  offsetSize: number;
 
   constructor(props: TabpaneProps) {
     super(props);
     this.tabpane = React.createRef();
-    this.offsetWidth = 0;
+    this.offsetSize = 0;
   }
 
   static getDerivedStateFromProps(nextProps: TabpaneProps, state: TabpaneState) {
@@ -484,9 +479,8 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
           tabPosition={tabPosition}
           isSelect={isSelect}
           ref={this.tabpane}
-          {...addMouseEvent(this, { enter: this.onMouseEnter, leave: this.onMouseLeave })}
-          // onMouseEnter={this.onMouseEnter}
-          // onMouseLeave={this.onMouseLeave}
+          onMouseEnter={this.onMouseEnter}
+          onMouseLeave={this.onMouseLeave}
         >
           <Title
             className={'lineTitle'}
@@ -570,7 +564,9 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     return { tabThemeProps: { viewClass, theme: themeRes }, titleThemeProps };
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.getContainerWidth();
+  }
 
   handleClick = () => {
     const { activityValue, onClick, disabled } = this.props;
@@ -636,43 +632,16 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
   };
   getContainerWidth() {
     if (this.tabpane) {
-      this.offsetWidth = this.tabpane.offsetWidth;
+      const { tabPosition } = this.props;
+      if (isVertical(tabPosition)) {
+        this.offsetSize = findDOMNode(this.tabpane.current).offsetHeight;
+      } else {
+        this.offsetSize = findDOMNode(this.tabpane.current).offsetWidth;
+      }
     }
-    // const { getTabpaneWidth } = this.props;
-    // getTabpaneWidth && getTabpaneWidth(this.offsetWidth);
+    const { getTabpaneWidthOrHeight } = this.props;
+    getTabpaneWidthOrHeight && getTabpaneWidthOrHeight(this.offsetSize);
   }
 }
 
-// const TargetTabpano = ThemeProvider(Tabpane, Widget.Tabpane, { hover: true, actived: false });
-// const TargetTabpano = ThemeProvider(KeyBoardEventAdaptor(Tabpane), Widget.Tabpane, {
-//   hover: true,
-//   actived: false,
-// });
-//
-// export default TargetTabpano;
 export default Tabpane;
-
-// 原先是  const BaseTab = ThemeHoc(
-//   CSSComponent({
-//     ....
-//   }),
-//   'BaseTab',
-//   { hover: true, active: false }
-// );
-//
-// 拆成
-// const BaseTabCSShOC = CSSComponent({
-//     class TabsBox extends Component{
-//        <aaa><aaa/>
-//     }
-// });
-// BaseTabCSShOC.themeProps.propsConfig = {xxxxxxx};
-//  <BaseTabCSShOC themeProps= { 合并后的themeProps }></BaseTabCSShOC>
-
-// const BaseTab = ThemeHoc(
-//    BaseTabCSShOC,
-//   'BaseTab',
-//   { hover: true, active: false }
-// );
-
-// <BaseTab theme={theme} viewClass={viewClass}></BaseTab>

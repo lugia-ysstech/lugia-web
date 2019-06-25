@@ -58,7 +58,7 @@ import { getAttributeFromObject } from '../common/ObjectUtils.js';
 
 import Icon from '../icon';
 import { getIndexfromKey, getKeyfromIndex } from '../common/ObjectUtils';
-import CSSComponent, { css, keyframes } from '@lugia/theme-css-hoc';
+import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import { addMouseEvent } from '@lugia/theme-hoc';
 import ThemeHoc from '@lugia/theme-hoc';
 import { deepMerge } from '@lugia/object-utils';
@@ -82,7 +82,7 @@ const ShadowLine = CSSComponent({
 }); //${getBackgroundShadow};
 
 const ArrowContainer = CSSComponent({
-  tag: 'span',
+  tag: 'div',
   className: 'BaseLine',
   normal: {
     selectNames: [],
@@ -91,9 +91,7 @@ const ArrowContainer = CSSComponent({
     selectNames: [],
   },
   css: css`
-    position: absolute;
     font-size: 1.2rem;
-    // display: ${props => (props.arrowShow === false ? 'none' : 'inline-block')};
     z-index: 5;
   `,
 }); //${getCursor};;
@@ -109,7 +107,8 @@ const HBasePage = CSSComponent({
   },
   css: css`
     transform: translateY(-50%);
-    line-height: 100%;
+    text-align: center;
+    display: ${props => (props.arrowShow === false ? 'none' : 'inline-block')};
   `,
 }); //${getArrowTop};
 
@@ -154,6 +153,8 @@ const VBasePage = CSSComponent({
     width: 100%;
     text-align: center;
     height: ${px2remcss(24)};
+    line-height: ${px2remcss(24)};
+    display: ${props => (props.arrowShow === false ? 'none' : 'block')};
   `,
 });
 
@@ -166,9 +167,7 @@ const VPrePage = CSSComponent({
   disabled: {
     selectNames: [],
   },
-  css: css`
-    top: ${px2remcss(12)};
-  `,
+  css: css``,
 });
 
 const VNextPage = CSSComponent({
@@ -180,10 +179,7 @@ const VNextPage = CSSComponent({
   disabled: {
     selectNames: [],
   },
-  css: css`
-    transform: translateX(-100%);
-    bottom: ${px2remcss(-6)};
-  `,
+  css: css``,
 });
 
 const OutContainer = CSSComponent({
@@ -209,6 +205,10 @@ const HTabsContainer = CSSComponent({
   className: 'HTabsContainer',
   normal: {
     selectNames: [],
+    getCSS: (themeMeta: Object, themePros: Object) => {
+      const { width } = themeMeta;
+      return `width:${width + 'px' || '100%'};`;
+    },
   },
   disabled: {
     selectNames: [],
@@ -217,7 +217,7 @@ const HTabsContainer = CSSComponent({
     width: 100%;
     display: inline-block;
     white-space: nowrap;
-    // overflow: hidden;
+    overflow: hidden;
   `,
 });
 
@@ -300,6 +300,7 @@ const HscrollerContainer = CSSComponent({
     box-sizing: border-box;
     white-space: nowrap;
     transition: all 0.5s;
+    transform: translateX(${props => px2remcss(props.x)});
   `,
 }); //height: ${hContainerHeight};
 
@@ -308,6 +309,10 @@ const VTabsContainer = CSSComponent({
   className: 'VTabsContainer',
   normal: {
     selectNames: [],
+    getCSS: (themeMeta: Object, themePros: Object) => {
+      const { height } = themeMeta;
+      return `height:${height + 'px' || '100%'};`;
+    },
   },
   disabled: {
     selectNames: [],
@@ -362,6 +367,7 @@ const HTabsOutContainer = CSSComponent({
   css: css`
     position: relative;
     z-index: 99;
+    overflow: hidden;
   `,
 }); //height: ${hContainerHeight};line-height: ${hContainerHeight};position: relative;${getContainerBorder};background: ${backgroundColor};${getContainerPadding};
 
@@ -381,29 +387,36 @@ const VTabsOutContainer = CSSComponent({
     white-space: nowrap;
     overflow: hidden;
     float: left;
-    // height: 100%;
   `,
 }); //${getSelectColor};${getContainerBorder}; ${getContainerPadding};
 
-const PageIcon = CSSComponent({
-  extend: Icon,
-  className: 'PageIcon',
-  normal: {
-    selectNames: [],
-  },
-  hover: {
-    selectNames: [],
-  },
-  disabled: {
-    selectNames: [],
-  },
-  css: css`
-    display: inline-block;
-    font-style: normal;
-    text-align: center;
-    font-size: 1rem;
-  `,
-}); // ${getCursor};
+const PageIcon = ThemeHoc(
+  CSSComponent({
+    extend: Icon,
+    className: 'PageIcon',
+    normal: {
+      selectNames: [],
+    },
+    hover: {
+      selectNames: [],
+    },
+    disabled: {
+      selectNames: [],
+      getCSS: () => {
+        return 'cursor: not-allowed';
+      },
+    },
+    css: css`
+      display: inline-block;
+      font-style: normal;
+      text-align: center;
+      font-size: 1rem;
+    `,
+  }),
+  'PageIcon',
+  { hover: true, active: false }
+);
+// ${getCursor};
 
 PageIcon.displayName = 'page';
 
@@ -505,22 +518,15 @@ class TabsBox extends Component<TabsProps, TabsState> {
   }
 
   render() {
-    const { getTheme, themeProps } = this.props;
+    const { getTheme, themeProps, tabPosition } = this.props;
     const config = {
       width: this.offsetWidth,
       height: this.offsetHeight,
     };
     const theme = { [Widget.TabsContainer]: config };
-    // {...addMouseEvent(this)}
     return (
       <Theme config={theme}>
-        <OutContainer
-          themeProps={themeProps}
-          theme={getTheme()}
-          ref={cmp => {
-            this.tabs = cmp;
-          }}
-        >
+        <OutContainer themeProps={themeProps} theme={getTheme()}>
           {this.getTabs()}
           {this.getChildrenContent()}
         </OutContainer>
@@ -552,12 +558,17 @@ class TabsBox extends Component<TabsProps, TabsState> {
 
   getVtabs() {
     const { tabPosition, themeProps } = this.props;
-    const { data, activityValue, pagedCount, totalPage } = this.state;
+    const { data, activityValue, pagedCount, totalPage, arrowShow } = this.state;
     const arrowUp = 'lugia-icon-direction_up';
     const arrowDown = 'lugia-icon-direction_down';
     const y = -YtabsHeight * pagedCount;
     const borderThemeProps = this.props.getPartOfThemeProps('BorderStyle');
     borderThemeProps.propsConfig = { tabPosition };
+    const tabsThemeProps = this.props.getPartOfThemeProps('TabsContainer');
+    tabsThemeProps.propsConfig = { tabPosition };
+    const moveDistance = this.computeMoveDistance();
+    const { isDisabledToPrev, isDisabledToNext } = this.getIsAllowToMove(moveDistance);
+
     return (
       <VTabsOutContainer
         themeProps={themeProps}
@@ -567,13 +578,13 @@ class TabsBox extends Component<TabsProps, TabsState> {
         <VPrePage
           themeProps={themeProps}
           tabPosition={tabPosition}
-          onClick={this.onPreClick}
+          onClick={this.onPreClick(isDisabledToPrev)}
           {...this.getArrowConfig('pre')}
         >
-          <PageIcon themeProps={themeProps} iconClass={arrowUp} />
+          <PageIcon disabled={isDisabledToPrev} themeProps={themeProps} iconClass={arrowUp} />
         </VPrePage>
-        <VTabsContainer themeProps={themeProps}>
-          <YscrollerContainer y={y} themeProps={borderThemeProps}>
+        <VTabsContainer themeProps={tabsThemeProps} innerRef={this.tabs}>
+          <YscrollerContainer y={moveDistance} themeProps={borderThemeProps}>
             {this.getChildren()}
           </YscrollerContainer>
         </VTabsContainer>
@@ -581,9 +592,10 @@ class TabsBox extends Component<TabsProps, TabsState> {
           themeProps={themeProps}
           {...this.getArrowConfig('next')}
           tabPosition={tabPosition}
-          onClick={this.onNextClick}
+          onClick={this.onNextClick(isDisabledToNext)}
         >
           <PageIcon
+            disabled={isDisabledToNext}
             themeProps={themeProps}
             iconClass={arrowDown}
             {...this.getArrowConfig('next')}
@@ -626,25 +638,68 @@ class TabsBox extends Component<TabsProps, TabsState> {
     const next = this.getArrowConfig('next');
     const borderThemeProps = this.props.getPartOfThemeProps('BorderStyle');
     borderThemeProps.propsConfig = { tabPosition };
+    const tabsThemeProps = this.props.getPartOfThemeProps('TabsContainer');
+    tabsThemeProps.propsConfig = { tabPosition };
+    const moveDistance = this.computeMoveDistance();
+    const { isDisabledToPrev, isDisabledToNext } = this.getIsAllowToMove(moveDistance);
+
     return [
-      <HPrePage themeProps={themeProps} onClick={this.onPreClick} tabType={tabType} {...pre}>
-        <PageIcon themeProps={themeProps} iconClass={arrowLeft} {...pre} />
+      <HPrePage
+        themeProps={themeProps}
+        onClick={this.onPreClick(isDisabledToPrev)}
+        tabType={tabType}
+        {...pre}
+      >
+        <PageIcon
+          disabled={isDisabledToPrev}
+          themeProps={themeProps}
+          iconClass={arrowLeft}
+          {...pre}
+        />
       </HPrePage>,
-      <HTabsContainer themeProps={themeProps} tabType={tabType}>
+      <HTabsContainer themeProps={tabsThemeProps} tabType={tabType} innerRef={this.tabs}>
         <HscrollerContainer
           themeProps={borderThemeProps}
           tabType={tabType}
-          x={this.computePagedX()}
+          x={moveDistance}
           theme={getTheme()}
         >
           {this.getChildren()}
           {this.getAddButton()}
         </HscrollerContainer>
       </HTabsContainer>,
-      <HNextPage themeProps={themeProps} {...next} onClick={this.onNextClick} tabType={tabType}>
-        <PageIcon themeProps={themeProps} iconClass={arrowRight} {...next} />
+      <HNextPage
+        themeProps={themeProps}
+        {...next}
+        onClick={this.onNextClick(isDisabledToNext)}
+        tabType={tabType}
+      >
+        <PageIcon
+          disabled={isDisabledToNext}
+          themeProps={themeProps}
+          iconClass={arrowRight}
+          {...next}
+        />
       </HNextPage>,
     ];
+  }
+
+  getIsAllowToMove(moveDistance: number) {
+    const { tabType, tabPosition } = this.props;
+    const { childrenSize } = this.state;
+    let actualWidth;
+    let offsetSize;
+    if (isVertical(tabPosition)) {
+      actualWidth = this.getActualWidth('line', childrenSize);
+      offsetSize = this.offsetHeight;
+    } else {
+      actualWidth = this.getActualWidth(tabType, childrenSize);
+      offsetSize = this.offsetWidth;
+    }
+    const isDisabledToNext = offsetSize - moveDistance >= actualWidth;
+    const isDisabledToPrev = moveDistance === 0;
+
+    return { isDisabledToPrev, isDisabledToNext };
   }
 
   getAddButton() {
@@ -670,39 +725,47 @@ class TabsBox extends Component<TabsProps, TabsState> {
     this.matchPage();
   }
 
-  matchPage() {
-    const { currentPage, childrenSize, data } = this.state;
-    const { tabPosition, tabType } = this.props;
+  getActualWidth(tabType, childrenSize) {
     const width = plusWidth(childrenSize.length - 1, childrenSize);
-
-    const actualWidth = matchType(tabType, 'window')
+    return matchType(tabType, 'window')
       ? width + WindowMarginLeft + AddButtonSize
       : matchType(tabType, 'card')
       ? width + (childrenSize.length + 1) * CardMarginRight + AddButtonSize
       : width;
-    const actualHeight = data.length * YtabsHeight;
-    const totalPage = isVertical(tabPosition)
-      ? computePage(this.offsetHeight - ArrowContainerWidth, actualHeight)
-      : computePage(this.offsetWidth - ArrowContainerWidth, actualWidth);
+  }
+
+  matchPage() {
+    const { currentPage, childrenSize, data } = this.state;
+    const { tabPosition, tabType } = this.props;
+
+    let totalPage;
+    if (isVertical(tabPosition)) {
+      const actualHeight = this.getActualWidth('line', childrenSize);
+      totalPage = computePage(this.offsetHeight, actualHeight);
+    } else {
+      const actualWidth = this.getActualWidth(tabType, childrenSize);
+      totalPage = computePage(this.offsetWidth, actualWidth);
+    }
     const arrowShow = totalPage > 1 && currentPage < totalPage;
     this.setState({ arrowShow, totalPage });
   }
 
-  computePagedX() {
+  computeMoveDistance() {
     const { currentPage, totalPage, pagedCount, childrenSize } = this.state;
-    const { tabType } = this.props;
+    const { tabType, tabPosition } = this.props;
     const currentTabsWidth = plusWidth(pagedCount - 1, childrenSize);
-    let x = totalPage > 1 ? currentPage * (this.offsetWidth - ArrowContainerWidth) : 0;
+    const maxDistance = isVertical(tabPosition) ? this.offsetHeight : this.offsetWidth;
+    let distance = totalPage > 1 ? currentPage * maxDistance : 0;
     if (pagedCount > 0) {
       if (matchType(tabType, 'card')) {
-        x = currentTabsWidth + CardBorderAndMarginWidth * pagedCount;
+        distance = currentTabsWidth + CardBorderAndMarginWidth * pagedCount;
       } else if (matchType(tabType, 'window')) {
-        x = currentTabsWidth + WindowMarginLeft;
+        distance = currentTabsWidth + WindowMarginLeft;
       } else {
-        x = currentTabsWidth;
+        distance = currentTabsWidth;
       }
     }
-    return -x;
+    return -distance;
   }
 
   initContainerSize() {
@@ -714,8 +777,8 @@ class TabsBox extends Component<TabsProps, TabsState> {
 
   updateContainerSize() {
     if (this.tabs) {
-      this.offsetWidth = this.tabs.offsetWidth;
-      this.offsetHeight = this.tabs.offsetHeight;
+      this.offsetWidth = this.tabs.current.offsetWidth;
+      this.offsetHeight = this.tabs.current.offsetHeight;
     }
   }
 
@@ -755,7 +818,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
       activityValue: TabpaneActivityValue,
       onClick: this.onTabClick,
       isSelect: !disabled && TabpaneActivityValue === activityValue,
-      getTabpaneWidth: this.getTabpaneWidth,
+      getTabpaneWidthOrHeight: this.getTabpaneWidthOrHeight,
       onDeleteClick: this.onDeleteClick,
       disabled,
       onMouseEnter: this.onTabMouseEnter,
@@ -839,7 +902,6 @@ class TabsBox extends Component<TabsProps, TabsState> {
 
   onDeleteClick = (e: Event, activityValue: string) => {
     const { data } = this.state;
-    // console.log('onDeleteClick',activityValue,data);
     let newdata = [];
     if (!hasDataInProps(this.props)) {
       newdata = data.filter(tabpane => {
@@ -885,7 +947,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
     onAddClick && onAddClick(e);
   };
 
-  getTabpaneWidth = (width: number) => {
+  getTabpaneWidthOrHeight = (width: number) => {
     const { childrenSize } = this.state;
     const newChildrenSize = childrenSize;
     newChildrenSize.push(width);
@@ -911,8 +973,18 @@ class TabsBox extends Component<TabsProps, TabsState> {
     click && click(e);
   };
 
-  onNextClick = this.createNativeClick('onNextClick', 'next');
-  onPreClick = this.createNativeClick('onPreClick', 'pre');
+  onNextClick = (isAllowToNext: boolead) => {
+    if (isAllowToNext) {
+      return;
+    }
+    return this.createNativeClick('onNextClick', 'next');
+  };
+  onPreClick = (isAllowToPrev: boolead) => {
+    if (isAllowToPrev) {
+      return;
+    }
+    return this.createNativeClick('onPreClick', 'pre');
+  };
 
   getPagedCount(currentPage: number, totalPage: number, type: EditEventType) {
     if (matchType(type, 'next')) {

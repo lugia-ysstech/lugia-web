@@ -369,7 +369,7 @@ const hasActivityValueChildren = [
     activityValue={'3'}
   />,
   <Tabpane
-    title={'555555'}
+    title={'55555'}
     content={
       <div>
         <div>
@@ -380,7 +380,7 @@ const hasActivityValueChildren = [
     activityValue={'4'}
   />,
   <Tabpane
-    title={'666666'}
+    title={'66666'}
     content={
       <div>
         <div>
@@ -472,7 +472,6 @@ const hasActivityValueChildren = [
 export default () => {
   const lineView = {
     [Widget.Tabs]: {
-      width: 500,
       SelectTabPan: {
         normal: {
           color: 'red',
@@ -505,6 +504,12 @@ export default () => {
             right: 10,
             bottom: 10,
           },
+        },
+      },
+      TabsContainer: {
+        normal: {
+          width: 300,
+          height: 300,
         },
       },
     },
@@ -547,6 +552,12 @@ export default () => {
           color: '#ccc',
         },
       },
+      TabsContainer: {
+        normal: {
+          width: 300,
+          height: 300,
+        },
+      },
     },
   };
 
@@ -577,6 +588,11 @@ export default () => {
           color: '#ccc',
         },
       },
+      TabsContainer: {
+        normal: {
+          width: 316,
+        },
+      },
     },
   };
   const vStyle = {
@@ -588,13 +604,25 @@ export default () => {
     <div>
       <Theme config={lineView}>
         <div>
-          <p style={{ titleStyle }}>defaultData </p>
+          <p style={{ titleStyle }}>defaultData pagedType=single </p>
           <Tabs
             tabType={'line'}
             tabPosition={'top'}
             onPreClick={onPreClick}
             onNextClick={onNextClick}
-            defaultData={defaultData}
+            children={hasActivityValueChildren}
+            pagedType={'single'}
+          />
+        </div>
+        <div>
+          <p style={{ titleStyle }}>defaultData pagedType=page</p>
+          <Tabs
+            tabType={'line'}
+            tabPosition={'top'}
+            onPreClick={onPreClick}
+            onNextClick={onNextClick}
+            children={hasActivityValueChildren}
+            pagedType={'page'}
           />
         </div>
         <div>
@@ -605,6 +633,7 @@ export default () => {
             onPreClick={onPreClick}
             onNextClick={onNextClick}
             defaultData={defaultData}
+            pagedType={'single'}
           />
         </div>
         <div>
@@ -630,12 +659,24 @@ export default () => {
 
       <Theme config={lineView}>
         <div>
-          <p style={{ titleStyle }}>children tabPosition=left</p>
+          <p style={{ titleStyle }}>children tabPosition=left pagedType = page</p>
           <Tabs
             tabType={'line'}
             tabPosition={'left'}
             onPreClick={onPreClick}
             onNextClick={onNextClick}
+            pagedType={'page'}
+            children={hasActivityValueChildren}
+          />
+        </div>
+        <div>
+          <p style={{ titleStyle }}>children tabPosition=left pagedType = single</p>
+          <Tabs
+            tabType={'line'}
+            tabPosition={'left'}
+            onPreClick={onPreClick}
+            onNextClick={onNextClick}
+            pagedType={'single'}
             children={hasActivityValueChildren}
           />
         </div>
@@ -646,6 +687,7 @@ export default () => {
             tabPosition={'right'}
             onPreClick={onPreClick}
             onNextClick={onNextClick}
+            pagedType={'single'}
             children={shortChildren}
           />
         </div>
@@ -656,6 +698,7 @@ export default () => {
             tabPosition={'bottom'}
             onPreClick={onPreClick}
             onNextClick={onNextClick}
+            pagedType={'single'}
             children={longChildren}
           />
         </div>
