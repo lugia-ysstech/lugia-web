@@ -9,13 +9,13 @@ exports[`Icon iconClass: lugia-icon-reminder_close_circle_o 1`] = `
   cursor: pointer;
 }
 
-<span
+<i
+  className="lugia-icon-reminder_close_circle_o   c0"
+  onClick={[Function]}
+  onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
->
-  <i
-    className="lugia-icon-reminder_close_circle_o   c0"
-    style={Object {}}
-  />
-</span>
+  onMouseUp={[Function]}
+  style={Object {}}
+/>
 `;

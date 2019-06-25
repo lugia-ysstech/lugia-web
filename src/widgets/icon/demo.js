@@ -305,13 +305,11 @@ const iconData = [
   'lugia-icon-reminder_warning',
 ];
 export default () => {
-  const onClick = () => {};
-
   const getIcon = iconClassArray => {
     let iconClass = '';
     const iconArray = iconClassArray.map(v => {
       iconClass = v;
-      return iconClass ? <Icon iconClass={iconClass} onClick={onClick} /> : null;
+      return iconClass ? <Icon iconClass={iconClass} /> : null;
     });
     return iconArray;
   };
