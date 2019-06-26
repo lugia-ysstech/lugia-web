@@ -83,6 +83,7 @@ const Bit = CSSComponent({
   className: 'badgeNumberBit',
   normal: {
     selectNames: [['color'], ['fontSize']],
+    defaultTheme: { height: px2remcss(14) },
   },
   css: css`
     height: ${px2remcss(14)};

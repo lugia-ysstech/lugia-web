@@ -54,9 +54,10 @@ describe('AmountInputDemo', () => {
   const defaultValue = 1234;
   const firstValue = '4321';
   const changeValue = '5678';
-  const displayValue = '¥1,234';
-  const displayFirstValue = '¥4,321';
-  const displayChangeValue = '¥5,678';
+  const displayValue = '1,234';
+  const activedValue = '¥1,234';
+  const displayFirstValue = '4,321';
+  const displayChangeValue = '5,678';
   const displayAmountDefaultValue = '壹仟贰佰叁拾肆元整';
   const displayAmountFirstValue = '壹仟贰佰叁拾肆元整';
   const displayAmountChangeValue = '伍仟陆佰柒拾捌元整';
@@ -226,7 +227,7 @@ describe('AmountInputDemo', () => {
       return getToolTip().props().title.props.children;
     };
     assertInputValue(component, displayAmountDefaultValue);
-    expect(getToolTipValue()).toBe(displayValue);
+    expect(getToolTipValue()).toBe(activedValue);
     component
       .find('lugia_widget_AmountInput')
       .at(0)
@@ -306,7 +307,7 @@ describe('AmountInputDemo', () => {
 
     expect(getInputComponent(component).state.value).toBe(defaultValue + '');
     assertInputValue(component, displayAmountDefaultValue);
-    expect(getToolTipValue()).toBe(displayValue);
+    expect(getToolTipValue()).toBe(activedValue);
     component
       .find('toolTip_title')
       .at(0)
