@@ -287,8 +287,8 @@ const Title = CSSComponent({
   normal: {
     selectNames: [['height'], ['lineHeight']],
     defaultTheme: {
-      height: 34,
-      lineHeight: 34,
+      height: 42,
+      lineHeight: 42,
     },
     getStyle: (theme: Object, themeProps: Object) => {
       const { height } = theme;
@@ -326,8 +326,8 @@ const CardTitle = CSSComponent({
   normal: {
     selectNames: [['height'], ['lineHeight']],
     defaultTheme: {
-      height: 34,
-      lineHeight: 34,
+      height: 35,
+      lineHeight: 35,
     },
     getStyle: (theme: Object, themeProps: Object) => {
       const { height } = theme;
@@ -742,4 +742,10 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
   }
 }
 
-export default Tabpane;
+// export default Tabpane;
+
+const TargetTabPan = ThemeHoc(KeyBoardEventAdaptor(Tabpane), Widget.Tabs, {
+  hover: true,
+  active: false,
+});
+export default TargetTabPan;

@@ -28,7 +28,7 @@ exports[`tabpaneDemo Component JSON 1`] = `
   -ms-user-select: none;
   user-select: none;
   text-align: left;
-  height: 3.4rem;
+  height: 3.5rem;
 }
 
 .c1:focus {
@@ -47,10 +47,11 @@ exports[`tabpaneDemo Component JSON 1`] = `
 
 .c3 {
   font-size: 1rem;
+  color: #e8e8e8;
 }
 
 <div
-  className="BaseTab  c0"
+  className="DefaultTabPan  c0"
   onClick={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}

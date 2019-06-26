@@ -103,7 +103,7 @@ const HBasePage = CSSComponent({
     selectNames: [],
     getCSS: (themeMeta: Object, themeProps: Object) => {
       const { height } = themeMeta;
-      return `line-height: ${height + 'px' || '3.4rem'}`;
+      return `line-height: ${height ? height + 'px' : '35px'}`;
     },
   },
   disabled: {
@@ -461,20 +461,20 @@ type TabsProps = {
   activityValue: string,
   defaultActivityValue: string,
   onTabClick: Function,
-  tabPosition: TabPositionType,
-  tabType: TabType,
+  tabPosition?: TabPositionType,
+  tabType?: TabType,
   onChange: Function,
-  onNextClick: Function,
-  onPreClick: Function,
-  children: React$Element<any>,
-  data: Array<Object>,
-  defaultData: Array<Object>,
-  forceRender: boolean,
-  getTheme: Function,
+  onNextClick?: Function,
+  onPreClick?: Function,
+  children?: React$Element<any>,
+  data?: Array<Object>,
+  defaultData?: Array<Object>,
+  forceRender?: boolean,
   onDeleteClick: Function,
-  onAddClick: Function,
-  pagedType: PagedType,
-  getTabpane: Function,
+  allowToAdd?: boolean,
+  onAddClick?: Function,
+  pagedType?: PagedType,
+  getTabpane?: Function,
   themeProps: Object,
   onTabMouseEnter?: Function,
   onTabMouseLeave?: Function,
@@ -638,7 +638,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
   }
 
   getHTabs() {
-    const { tabType, tabPosition, getTheme, themeProps } = this.props;
+    const { tabType, tabPosition, themeProps } = this.props;
     const { totalPage } = this.state;
     return [
       <HTabsOutContainer
@@ -646,7 +646,6 @@ class TabsBox extends Component<TabsProps, TabsState> {
         tabType={tabType}
         tabPosition={tabPosition}
         showPadding={totalPage > 1}
-        theme={getTheme()}
       >
         {this.getHtabsChildren()}
         {this.getShadowLine()}
@@ -663,7 +662,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
   }
 
   getHtabsChildren() {
-    const { tabType, tabPosition, getTheme, themeProps } = this.props;
+    const { tabType, tabPosition, themeProps } = this.props;
     const arrowLeft = 'lugia-icon-direction_Left';
     const arrowRight = 'lugia-icon-direction_right';
     const pre = this.getArrowConfig('pre');
@@ -694,12 +693,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
         />
       </HPrePage>,
       <HTabsContainer themeProps={tabsThemeProps} tabType={tabType} innerRef={this.tabs}>
-        <HscrollerContainer
-          themeProps={borderThemeProps}
-          tabType={tabType}
-          x={moveDistance}
-          theme={getTheme()}
-        >
+        <HscrollerContainer themeProps={borderThemeProps} tabType={tabType} x={moveDistance}>
           {this.getChildren()}
           {this.getAddButton()}
         </HscrollerContainer>
@@ -739,11 +733,11 @@ class TabsBox extends Component<TabsProps, TabsState> {
   }
 
   getAddButton() {
-    const { tabType, getTheme, themeProps } = this.props;
+    const { tabType, themeProps } = this.props;
     const add = 'lugia-icon-reminder_plus';
     if (!matchType(tabType, 'line')) {
       return (
-        <AddOutContainer themeProps={themeProps} tabType={tabType} theme={getTheme()}>
+        <AddOutContainer themeProps={themeProps} tabType={tabType}>
           <AddContainer themeProps={themeProps} tabType={tabType} onClick={this.onAddClick}>
             <AddIcon themeProps={themeProps} tabType={tabType} iconClass={add} />
           </AddContainer>
@@ -805,10 +799,8 @@ class TabsBox extends Component<TabsProps, TabsState> {
   }
 
   initContainerSize() {
-    const { getTheme } = this.props;
-    const { width, height } = getTheme();
-    this.offsetWidth = width ? width : 0;
-    this.offsetHeight = height ? height : 0;
+    this.offsetWidth = 0;
+    this.offsetHeight = 0;
   }
 
   updateContainerSize() {
@@ -1053,7 +1045,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
   };
 }
 
-const TargetTabs = ThemeProvider(KeyBoardEventAdaptor(TabsBox), Widget.Tabs, {
+const TargetTabs = ThemeHoc(KeyBoardEventAdaptor(TabsBox), Widget.Tabs, {
   hover: true,
   active: false,
 });
