@@ -1,280 +1,61 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AmountInputDemo Component JSON 1`] = `
-.c5 {
+.c7 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  font-size: 1.2rem;
+}
+
+.c5 {
+  line-height: 1.5;
+  display: inline-block;
+  font-family: inherit;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  outline: none;
+  border-radius: 0.4rem;
+  width: 20rem;
+  height: 3.2rem;
+  cursor: text;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
+}
+
+.c5::-webkit-input-placeholder {
+  color: #ccc;
+}
+
+.c5::-moz-placeholder {
+  color: #ccc;
+}
+
+.c5:-ms-input-placeholder {
+  color: #ccc;
+}
+
+.c5::placeholder {
+  color: #ccc;
 }
 
 .c2 {
+  z-index: 0;
   position: relative;
   display: inline-block;
-}
-
-.c9 {
-  position: relative;
-  display: inline-block;
-  margin: 0.8333333333333334em;
-}
-
-.c3 {
-  height: 2.666666666666667em;
-  cursor: text;
-  width: 16.666666666666668em;
-  border-radius: 0.33333333333333337em;
-  border: 1px;
-  border-style: solid;
-  border-color: #cccccc;
-  line-height: 1.5;
-  font-size: 1.4rem;
-  display: inline-block;
-  font-family: inherit;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  background-image: none;
-  color: #333333;
-  padding-left: 0.8333333333333334em;
-  padding-right: 2.916666666666667em;
   outline: none;
-  min-height: 100%;
-  z-index: 1;
-  position: relative;
-  font-size: 1.2rem;
-}
-
-.c3:hover {
-  border-color: #4d63ff;
-}
-
-.c3::-webkit-input-placeholder {
-  color: #ccc;
-}
-
-.c3::-moz-placeholder {
-  color: #ccc;
-}
-
-.c3:-ms-input-placeholder {
-  color: #ccc;
-}
-
-.c3::placeholder {
-  color: #ccc;
-}
-
-.c3:focus {
-  border-color: #4d63ff;
-  box-shadow: 0 0 6px rgba(104,79,255,0.2);
-}
-
-.c7 {
-  height: 2.666666666666667em;
-  cursor: not-allowed;
-  width: 16.666666666666668em;
-  border-radius: 0.33333333333333337em;
-  border: 1px;
-  border-style: solid;
-  border-color: #cccccc;
-  line-height: 1.5;
-  font-size: 1.4rem;
-  display: inline-block;
-  font-family: inherit;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  background-image: none;
-  color: #333333;
-  padding-left: 0.8333333333333334em;
-  padding-right: 2.916666666666667em;
-  background: #f2f2f2;
-  outline: none;
-  min-height: 100%;
-  z-index: 1;
-  position: relative;
-  font-size: 1.2rem;
-}
-
-.c7:hover {
-  border-color: #cccccc;
-}
-
-.c7::-webkit-input-placeholder {
-  color: #ccc;
-}
-
-.c7::-moz-placeholder {
-  color: #ccc;
-}
-
-.c7:-ms-input-placeholder {
-  color: #ccc;
-}
-
-.c7::placeholder {
-  color: #ccc;
-}
-
-.c7:focus {
-  border-color: #4d63ff;
-  box-shadow: 0 0 6px rgba(104,79,255,0.2);
-}
-
-.c10 {
-  height: 2em;
-  cursor: text;
-  width: 29.166666666666668em;
-  border-radius: 0.33333333333333337em;
-  border: 1px;
-  border-style: solid;
-  border-color: #cccccc;
-  line-height: 1.5;
-  font-size: 1.4rem;
-  display: inline-block;
-  font-family: inherit;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  background-image: none;
-  color: #333333;
-  padding-left: 0.8333333333333334em;
-  padding-right: 2.916666666666667em;
-  outline: none;
-  min-height: 100%;
-  z-index: 1;
-  position: relative;
-  font-size: 1.2rem;
-}
-
-.c10:hover {
-  border-color: #4d63ff;
-}
-
-.c10::-webkit-input-placeholder {
-  color: #ccc;
-}
-
-.c10::-moz-placeholder {
-  color: #ccc;
-}
-
-.c10:-ms-input-placeholder {
-  color: #ccc;
-}
-
-.c10::placeholder {
-  color: #ccc;
-}
-
-.c10:focus {
-  border-color: #4d63ff;
-  box-shadow: 0 0 6px rgba(104,79,255,0.2);
-}
-
-.c11 {
-  height: 2.666666666666667em;
-  cursor: text;
-  width: 29.166666666666668em;
-  border-radius: 0.33333333333333337em;
-  border: 1px;
-  border-style: solid;
-  border-color: #cccccc;
-  line-height: 1.5;
-  font-size: 1.4rem;
-  display: inline-block;
-  font-family: inherit;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  background-image: none;
-  color: #333333;
-  padding-left: 0.8333333333333334em;
-  padding-right: 2.916666666666667em;
-  outline: none;
-  min-height: 100%;
-  z-index: 1;
-  position: relative;
-  font-size: 1.2rem;
-}
-
-.c11:hover {
-  border-color: #4d63ff;
-}
-
-.c11::-webkit-input-placeholder {
-  color: #ccc;
-}
-
-.c11::-moz-placeholder {
-  color: #ccc;
-}
-
-.c11:-ms-input-placeholder {
-  color: #ccc;
-}
-
-.c11::placeholder {
-  color: #ccc;
-}
-
-.c11:focus {
-  border-color: #4d63ff;
-  box-shadow: 0 0 6px rgba(104,79,255,0.2);
-}
-
-.c12 {
-  height: 3.3333333333333335em;
-  cursor: text;
-  width: 29.166666666666668em;
-  border-radius: 0.33333333333333337em;
-  border: 1px;
-  border-style: solid;
-  border-color: #cccccc;
-  line-height: 1.5;
-  font-size: 1.4rem;
-  display: inline-block;
-  font-family: inherit;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  background-image: none;
-  color: #333333;
-  padding-left: 0.8333333333333334em;
-  padding-right: 2.916666666666667em;
-  outline: none;
-  min-height: 100%;
-  z-index: 1;
-  position: relative;
-  font-size: 1.2rem;
-}
-
-.c12:hover {
-  border-color: #4d63ff;
-}
-
-.c12::-webkit-input-placeholder {
-  color: #ccc;
-}
-
-.c12::-moz-placeholder {
-  color: #ccc;
-}
-
-.c12:-ms-input-placeholder {
-  color: #ccc;
-}
-
-.c12::placeholder {
-  color: #ccc;
-}
-
-.c12:focus {
-  border-color: #4d63ff;
-  box-shadow: 0 0 6px rgba(104,79,255,0.2);
+  border-radius: 0.4rem;
 }
 
 .c4 {
@@ -284,40 +65,39 @@ exports[`AmountInputDemo Component JSON 1`] = `
   transform: translateY(50%);
   z-index: 2;
   bottom: 50%;
-  line-height: 0.8333333333333334em;
-  right: 0.8333333333333334em;
-  display: !important;
-  color: #999999;
+  line-height: 1rem;
+  font-size: 1.4em;
+  color: rgba(0,0,0,0.65);
+  left: 1rem;
 }
 
-.c4:hover {
-  color: #666666;
-}
-
-.c1 {
-  width: 16.666666666666668em;
-  position: relative;
-  display: inline-block;
-}
-
-.c8 {
-  margin: 0.8333333333333334em;
-  width: 29.166666666666668em;
-  position: relative;
-  display: inline-block;
+.c3 {
+  position: absolute;
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  z-index: 2;
+  bottom: 50%;
+  line-height: 1rem;
+  font-size: 1.4em;
+  color: rgba(0,0,0,0.65);
+  left: 1rem;
 }
 
 .c6 {
-  background: transparent;
-  left: 2.5em;
-  color: #999999;
-  top: 50%;
   position: absolute;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
   z-index: 2;
-  font-size: 1.2rem;
+  bottom: 50%;
+  right: 1rem;
+  color: #999999;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
 }
 
 .c0 {
@@ -336,14 +116,26 @@ exports[`AmountInputDemo Component JSON 1`] = `
       className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
+      style={Object {}}
     >
-      <span
+      <div
         className="c2"
-        disabled={false}
+        style={Object {}}
       >
+        <span
+          className="c3  c4"
+          style={Object {}}
+        >
+          <span
+            className=""
+            style={Object {}}
+          >
+            ¥
+          </span>
+        </span>
         <input
           autoFocus={false}
-          className="c3"
+          className="c5"
           disabled={false}
           onBlur={[Function]}
           onChange={[Function]}
@@ -352,22 +144,39 @@ exports[`AmountInputDemo Component JSON 1`] = `
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          placeholder="请填写金额"
+          prefix={
+            <CSSComponent
+              themeProps={
+                Object {
+                  "propsConfig": Object {},
+                  "themeConfig": Object {},
+                  "themeState": Object {
+                    "disabled": undefined,
+                  },
+                }
+              }
+            >
+              ¥
+            </CSSComponent>
+          }
           readOnly={false}
           size="default"
-          value="¥"
+          style={
+            Object {
+              "color": "#333333",
+              "height": "3.2rem",
+              "paddingLeft": "3rem",
+              "paddingRight": "3.5rem",
+            }
+          }
+          value=""
         />
-        <i
-          className="lugia-icon-reminder_close c4 c5"
-          onClick={[Function]}
-        />
-      </span>
-      <span
-        className="c6"
-        onClick={[Function]}
-      >
-        请填写金额
-         
-      </span>
+      </div>
     </span>
     <p>
       default AmountInput
@@ -376,14 +185,26 @@ exports[`AmountInputDemo Component JSON 1`] = `
       className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
+      style={Object {}}
     >
-      <span
+      <div
         className="c2"
-        disabled={false}
+        style={Object {}}
       >
+        <span
+          className="c3  c4"
+          style={Object {}}
+        >
+          <span
+            className=""
+            style={Object {}}
+          >
+            ¥
+          </span>
+        </span>
         <input
           autoFocus={false}
-          className="c3"
+          className="c5"
           disabled={false}
           onBlur={[Function]}
           onChange={[Function]}
@@ -392,22 +213,39 @@ exports[`AmountInputDemo Component JSON 1`] = `
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          placeholder="请填写金额"
+          prefix={
+            <CSSComponent
+              themeProps={
+                Object {
+                  "propsConfig": Object {},
+                  "themeConfig": Object {},
+                  "themeState": Object {
+                    "disabled": undefined,
+                  },
+                }
+              }
+            >
+              ¥
+            </CSSComponent>
+          }
           readOnly={false}
           size="default"
-          value="¥"
+          style={
+            Object {
+              "color": "#333333",
+              "height": "3.2rem",
+              "paddingLeft": "3rem",
+              "paddingRight": "3.5rem",
+            }
+          }
+          value=""
         />
-        <i
-          className="lugia-icon-reminder_close c4 c5"
-          onClick={[Function]}
-        />
-      </span>
-      <span
-        className="c6"
-        onClick={[Function]}
-      >
-        请填写金额
-         
-      </span>
+      </div>
     </span>
     <p>
       禁用状态 
@@ -416,14 +254,26 @@ exports[`AmountInputDemo Component JSON 1`] = `
       className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
+      style={Object {}}
     >
-      <span
+      <div
         className="c2"
-        disabled={true}
+        style={Object {}}
       >
+        <span
+          className="c3  c4"
+          style={Object {}}
+        >
+          <span
+            className=""
+            style={Object {}}
+          >
+            ¥
+          </span>
+        </span>
         <input
           autoFocus={false}
-          className="c7"
+          className="c5"
           disabled={true}
           onBlur={[Function]}
           onChange={[Function]}
@@ -432,21 +282,52 @@ exports[`AmountInputDemo Component JSON 1`] = `
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          placeholder=""
+          prefix={
+            <CSSComponent
+              themeProps={
+                Object {
+                  "propsConfig": Object {},
+                  "themeConfig": Object {},
+                  "themeState": Object {
+                    "disabled": true,
+                  },
+                }
+              }
+            >
+              ¥
+            </CSSComponent>
+          }
           readOnly={false}
           size="default"
-          value="¥"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "borderLeftColor": "#cccccc",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": "0.1rem",
+              "borderRightColor": "#cccccc",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.1rem",
+              "borderTopColor": "#cccccc",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.1rem",
+              "color": "#333333",
+              "cursor": "not-allowed",
+              "height": "3.2rem",
+              "paddingLeft": "3rem",
+              "paddingRight": "3.5rem",
+            }
+          }
+          value=""
         />
-        <i
-          className="lugia-icon-reminder_close c4 c5"
-          onClick={[Function]}
-        />
-      </span>
-      <span
-        className="c6"
-        onClick={[Function]}
-      >
-         
-      </span>
+      </div>
     </span>
   </div>
   <div
@@ -456,17 +337,41 @@ exports[`AmountInputDemo Component JSON 1`] = `
       small size
     </p>
     <span
-      className="c8"
+      className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
+      style={Object {}}
     >
-      <span
-        className="c9"
-        disabled={false}
+      <div
+        className="c2"
+        style={
+          Object {
+            "height": "5rem",
+            "margin": "2rem 0rem 0rem 0rem",
+            "opacity": 0.8,
+            "width": "40rem",
+          }
+        }
       >
+        <span
+          className="c3  c4"
+          style={Object {}}
+        >
+          <span
+            className=""
+            style={
+              Object {
+                "color": "blue",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            ¥
+          </span>
+        </span>
         <input
           autoFocus={false}
-          className="c10"
+          className="c5"
           disabled={false}
           onBlur={[Function]}
           onChange={[Function]}
@@ -475,38 +380,85 @@ exports[`AmountInputDemo Component JSON 1`] = `
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          placeholder="请填写金额"
+          prefix={
+            <CSSComponent
+              themeProps={
+                Object {
+                  "propsConfig": Object {},
+                  "themeConfig": Object {
+                    "normal": Object {
+                      "color": "blue",
+                      "fontSize": 14,
+                    },
+                  },
+                  "themeState": Object {
+                    "disabled": undefined,
+                  },
+                }
+              }
+            >
+              ¥
+            </CSSComponent>
+          }
           readOnly={false}
           size="small"
-          value="¥"
+          style={
+            Object {
+              "color": "#333333",
+              "height": 50,
+              "paddingLeft": "3rem",
+              "paddingRight": "3.5rem",
+              "width": "40rem",
+            }
+          }
+          value=""
         />
-        <i
-          className="lugia-icon-reminder_close c4 c5"
-          onClick={[Function]}
-        />
-      </span>
-      <span
-        className="c6"
-        onClick={[Function]}
-      >
-        请填写金额
-         
-      </span>
+      </div>
     </span>
     <p>
       default size
     </p>
     <span
-      className="c8"
+      className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
+      style={Object {}}
     >
-      <span
-        className="c9"
-        disabled={false}
+      <div
+        className="c2"
+        style={
+          Object {
+            "height": "5rem",
+            "margin": "2rem 0rem 0rem 0rem",
+            "opacity": 0.8,
+            "width": "40rem",
+          }
+        }
       >
+        <span
+          className="c3  c4"
+          style={Object {}}
+        >
+          <span
+            className=""
+            style={
+              Object {
+                "color": "blue",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            ¥
+          </span>
+        </span>
         <input
           autoFocus={false}
-          className="c11"
+          className="c5"
           disabled={false}
           onBlur={[Function]}
           onChange={[Function]}
@@ -515,39 +467,86 @@ exports[`AmountInputDemo Component JSON 1`] = `
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          placeholder="请填写金额"
+          prefix={
+            <CSSComponent
+              themeProps={
+                Object {
+                  "propsConfig": Object {},
+                  "themeConfig": Object {
+                    "normal": Object {
+                      "color": "blue",
+                      "fontSize": 14,
+                    },
+                  },
+                  "themeState": Object {
+                    "disabled": undefined,
+                  },
+                }
+              }
+            >
+              ¥
+            </CSSComponent>
+          }
           readOnly={false}
           size="default"
-          value="¥"
+          style={
+            Object {
+              "color": "#333333",
+              "height": 50,
+              "paddingLeft": "3rem",
+              "paddingRight": "3.5rem",
+              "width": "40rem",
+            }
+          }
+          value=""
         />
-        <i
-          className="lugia-icon-reminder_close c4 c5"
-          onClick={[Function]}
-        />
-      </span>
-      <span
-        className="c6"
-        onClick={[Function]}
-      >
-        请填写金额
-         
-      </span>
+      </div>
     </span>
     <p>
       large size
     </p>
     <span
-      className="c8"
+      className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
+      style={Object {}}
     >
-      <span
-        className="c9"
-        disabled={false}
+      <div
+        className="c2"
+        style={
+          Object {
+            "height": "5rem",
+            "margin": "2rem 0rem 0rem 0rem",
+            "opacity": 0.8,
+            "width": "40rem",
+          }
+        }
       >
+        <span
+          className="c3  c4"
+          style={Object {}}
+        >
+          <span
+            className=""
+            style={
+              Object {
+                "color": "blue",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            ¥
+          </span>
+        </span>
         <input
           autoFocus={false}
-          className="c12"
-          disabled={false}
+          className="c5"
+          disabled={true}
           onBlur={[Function]}
           onChange={[Function]}
           onClick={[Function]}
@@ -555,22 +554,58 @@ exports[`AmountInputDemo Component JSON 1`] = `
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          placeholder=""
+          prefix={
+            <CSSComponent
+              themeProps={
+                Object {
+                  "propsConfig": Object {},
+                  "themeConfig": Object {
+                    "normal": Object {
+                      "color": "blue",
+                      "fontSize": 14,
+                    },
+                  },
+                  "themeState": Object {
+                    "disabled": true,
+                  },
+                }
+              }
+            >
+              ¥
+            </CSSComponent>
+          }
           readOnly={false}
           size="large"
-          value="¥"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "borderLeftColor": "#cccccc",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": "0.1rem",
+              "borderRightColor": "#cccccc",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.1rem",
+              "borderTopColor": "#cccccc",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.1rem",
+              "color": "#333333",
+              "cursor": "not-allowed",
+              "height": 50,
+              "paddingLeft": "3rem",
+              "paddingRight": "3.5rem",
+              "width": "40rem",
+            }
+          }
+          value=""
         />
-        <i
-          className="lugia-icon-reminder_close c4 c5"
-          onClick={[Function]}
-        />
-      </span>
-      <span
-        className="c6"
-        onClick={[Function]}
-      >
-        请填写金额
-         
-      </span>
+      </div>
     </span>
   </div>
   <div
@@ -583,14 +618,26 @@ exports[`AmountInputDemo Component JSON 1`] = `
       className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
+      style={Object {}}
     >
-      <span
+      <div
         className="c2"
-        disabled={false}
+        style={Object {}}
       >
+        <span
+          className="c3  c4"
+          style={Object {}}
+        >
+          <span
+            className=""
+            style={Object {}}
+          >
+            ¥
+          </span>
+        </span>
         <input
           autoFocus={false}
-          className="c3"
+          className="c5"
           disabled={false}
           onBlur={[Function]}
           onChange={[Function]}
@@ -599,21 +646,38 @@ exports[`AmountInputDemo Component JSON 1`] = `
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          prefix={
+            <CSSComponent
+              themeProps={
+                Object {
+                  "propsConfig": Object {},
+                  "themeConfig": Object {},
+                  "themeState": Object {
+                    "disabled": undefined,
+                  },
+                }
+              }
+            >
+              ¥
+            </CSSComponent>
+          }
           readOnly={false}
           size="default"
-          value="¥"
+          style={
+            Object {
+              "color": "#333333",
+              "height": "3.2rem",
+              "paddingLeft": "3rem",
+              "paddingRight": "3.5rem",
+            }
+          }
+          value=""
         />
-        <i
-          className="lugia-icon-reminder_close c4 c5"
-          onClick={[Function]}
-        />
-      </span>
-      <span
-        className="c6"
-        onClick={[Function]}
-      >
-         
-      </span>
+      </div>
     </span>
     <p>
       有默认值的 受限Input
@@ -622,14 +686,26 @@ exports[`AmountInputDemo Component JSON 1`] = `
       className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
+      style={Object {}}
     >
-      <span
+      <div
         className="c2"
-        disabled={false}
+        style={Object {}}
       >
+        <span
+          className="c3  c4"
+          style={Object {}}
+        >
+          <span
+            className=""
+            style={Object {}}
+          >
+            ¥
+          </span>
+        </span>
         <input
           autoFocus={false}
-          className="c3"
+          className="c5"
           disabled={false}
           onBlur={[Function]}
           onChange={[Function]}
@@ -638,15 +714,47 @@ exports[`AmountInputDemo Component JSON 1`] = `
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          prefix={
+            <CSSComponent
+              themeProps={
+                Object {
+                  "propsConfig": Object {},
+                  "themeConfig": Object {},
+                  "themeState": Object {
+                    "disabled": undefined,
+                  },
+                }
+              }
+            >
+              ¥
+            </CSSComponent>
+          }
           readOnly={false}
           size="default"
-          value="¥123,456"
+          style={
+            Object {
+              "color": "#333333",
+              "height": "3.2rem",
+              "paddingLeft": "3rem",
+              "paddingRight": "3.5rem",
+            }
+          }
+          value="123,456"
         />
         <i
-          className="lugia-icon-reminder_close c4 c5"
+          className="lugia-icon-reminder_close c6  c7"
           onClick={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={Object {}}
         />
-      </span>
+      </div>
     </span>
   </div>
   <div
@@ -659,14 +767,26 @@ exports[`AmountInputDemo Component JSON 1`] = `
       className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
+      style={Object {}}
     >
-      <span
+      <div
         className="c2"
-        disabled={false}
+        style={Object {}}
       >
+        <span
+          className="c3  c4"
+          style={Object {}}
+        >
+          <span
+            className=""
+            style={Object {}}
+          >
+            ¥
+          </span>
+        </span>
         <input
           autoFocus={false}
-          className="c3"
+          className="c5"
           disabled={false}
           onBlur={[Function]}
           onChange={[Function]}
@@ -675,21 +795,38 @@ exports[`AmountInputDemo Component JSON 1`] = `
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          prefix={
+            <CSSComponent
+              themeProps={
+                Object {
+                  "propsConfig": Object {},
+                  "themeConfig": Object {},
+                  "themeState": Object {
+                    "disabled": undefined,
+                  },
+                }
+              }
+            >
+              ¥
+            </CSSComponent>
+          }
           readOnly={false}
           size="default"
-          value="¥"
+          style={
+            Object {
+              "color": "#333333",
+              "height": "3.2rem",
+              "paddingLeft": "3rem",
+              "paddingRight": "3.5rem",
+            }
+          }
+          value=""
         />
-        <i
-          className="lugia-icon-reminder_close c4 c5"
-          onClick={[Function]}
-        />
-      </span>
-      <span
-        className="c6"
-        onClick={[Function]}
-      >
-         
-      </span>
+      </div>
     </span>
     <p>
       amountPrefix: '$' transform: false 
@@ -698,14 +835,26 @@ exports[`AmountInputDemo Component JSON 1`] = `
       className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
+      style={Object {}}
     >
-      <span
+      <div
         className="c2"
-        disabled={false}
+        style={Object {}}
       >
+        <span
+          className="c3  c4"
+          style={Object {}}
+        >
+          <span
+            className=""
+            style={Object {}}
+          >
+            $
+          </span>
+        </span>
         <input
           autoFocus={false}
-          className="c3"
+          className="c5"
           disabled={false}
           onBlur={[Function]}
           onChange={[Function]}
@@ -714,21 +863,38 @@ exports[`AmountInputDemo Component JSON 1`] = `
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          prefix={
+            <CSSComponent
+              themeProps={
+                Object {
+                  "propsConfig": Object {},
+                  "themeConfig": Object {},
+                  "themeState": Object {
+                    "disabled": undefined,
+                  },
+                }
+              }
+            >
+              $
+            </CSSComponent>
+          }
           readOnly={false}
           size="default"
-          value="$"
+          style={
+            Object {
+              "color": "#333333",
+              "height": "3.2rem",
+              "paddingLeft": "3rem",
+              "paddingRight": "3.5rem",
+            }
+          }
+          value=""
         />
-        <i
-          className="lugia-icon-reminder_close c4 c5"
-          onClick={[Function]}
-        />
-      </span>
-      <span
-        className="c6"
-        onClick={[Function]}
-      >
-         
-      </span>
+      </div>
     </span>
   </div>
 </div>
@@ -736,68 +902,52 @@ exports[`AmountInputDemo Component JSON 1`] = `
 
 exports[`AmountInputDemo props: placeholder  1`] = `
 .c4 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  font-size: 1.2rem;
-}
-
-.c1 {
-  position: relative;
-  display: inline-block;
-}
-
-.c2 {
-  height: 2.666666666666667em;
-  cursor: text;
-  width: 16.666666666666668em;
-  border-radius: 0.33333333333333337em;
-  border: 1px;
-  border-style: solid;
-  border-color: #cccccc;
   line-height: 1.5;
-  font-size: 1.4rem;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  background-image: none;
-  color: #333333;
-  padding-left: 0.8333333333333334em;
-  padding-right: 2.916666666666667em;
   outline: none;
-  min-height: 100%;
-  z-index: 1;
+  border-radius: 0.4rem;
+  width: 20rem;
+  height: 3.2rem;
+  cursor: text;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
+}
+
+.c4::-webkit-input-placeholder {
+  color: #ccc;
+}
+
+.c4::-moz-placeholder {
+  color: #ccc;
+}
+
+.c4:-ms-input-placeholder {
+  color: #ccc;
+}
+
+.c4::placeholder {
+  color: #ccc;
+}
+
+.c1 {
+  z-index: 0;
   position: relative;
-  font-size: 1.2rem;
-}
-
-.c2:hover {
-  border-color: #4d63ff;
-}
-
-.c2::-webkit-input-placeholder {
-  color: #ccc;
-}
-
-.c2::-moz-placeholder {
-  color: #ccc;
-}
-
-.c2:-ms-input-placeholder {
-  color: #ccc;
-}
-
-.c2::placeholder {
-  color: #ccc;
-}
-
-.c2:focus {
-  border-color: #4d63ff;
-  box-shadow: 0 0 6px rgba(104,79,255,0.2);
+  display: inline-block;
+  outline: none;
+  border-radius: 0.4rem;
 }
 
 .c3 {
@@ -807,47 +957,54 @@ exports[`AmountInputDemo props: placeholder  1`] = `
   transform: translateY(50%);
   z-index: 2;
   bottom: 50%;
-  line-height: 0.8333333333333334em;
-  right: 0.8333333333333334em;
-  display: !important;
-  color: #999999;
+  line-height: 1rem;
+  font-size: 1.4em;
+  color: rgba(0,0,0,0.65);
+  left: 1rem;
 }
 
-.c3:hover {
-  color: #666666;
+.c2 {
+  position: absolute;
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  z-index: 2;
+  bottom: 50%;
+  line-height: 1rem;
+  font-size: 1.4em;
+  color: rgba(0,0,0,0.65);
+  left: 1rem;
 }
 
 .c0 {
-  width: 16.666666666666668em;
   position: relative;
   display: inline-block;
-}
-
-.c5 {
-  background: transparent;
-  left: 2.5em;
-  color: #999999;
-  top: 50%;
-  position: absolute;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  z-index: 2;
-  font-size: 1.2rem;
 }
 
 <span
   className="c0"
   onBlur={[Function]}
   onFocus={[Function]}
+  style={Object {}}
 >
-  <span
+  <div
     className="c1"
-    disabled={false}
+    style={Object {}}
   >
+    <span
+      className="c2  c3"
+      style={Object {}}
+    >
+      <span
+        className=""
+        style={Object {}}
+      >
+        ¥
+      </span>
+    </span>
     <input
       autoFocus={false}
-      className="c2"
+      className="c4"
       disabled={false}
       onBlur={[Function]}
       onChange={[Function]}
@@ -856,89 +1013,90 @@ exports[`AmountInputDemo props: placeholder  1`] = `
       onKeyDown={[Function]}
       onKeyPress={[Function]}
       onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      placeholder="请填写内容"
+      prefix={
+        <CSSComponent
+          themeProps={
+            Object {
+              "propsConfig": Object {},
+              "themeConfig": Object {},
+              "themeState": Object {
+                "disabled": undefined,
+              },
+            }
+          }
+        >
+          ¥
+        </CSSComponent>
+      }
       readOnly={false}
       size="default"
-      value="¥"
+      style={
+        Object {
+          "color": "#333333",
+          "height": "3.2rem",
+          "paddingLeft": "3rem",
+          "paddingRight": "3.5rem",
+        }
+      }
+      value=""
     />
-    <i
-      className="lugia-icon-reminder_close c3 c4"
-      onClick={[Function]}
-    />
-  </span>
-  <span
-    className="c5"
-    onClick={[Function]}
-  >
-    请填写内容
-     
-  </span>
+  </div>
 </span>
 `;
 
 exports[`AmountInputDemo props: placeholder  2`] = `
 .c4 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  font-size: 1.2rem;
-}
-
-.c1 {
-  position: relative;
-  display: inline-block;
-}
-
-.c2 {
-  height: 2.666666666666667em;
-  cursor: text;
-  width: 16.666666666666668em;
-  border-radius: 0.33333333333333337em;
-  border: 1px;
-  border-style: solid;
-  border-color: #cccccc;
   line-height: 1.5;
-  font-size: 1.4rem;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  background-image: none;
-  color: #333333;
-  padding-left: 0.8333333333333334em;
-  padding-right: 2.916666666666667em;
   outline: none;
-  min-height: 100%;
-  z-index: 1;
+  border-radius: 0.4rem;
+  width: 20rem;
+  height: 3.2rem;
+  cursor: text;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
+}
+
+.c4::-webkit-input-placeholder {
+  color: #ccc;
+}
+
+.c4::-moz-placeholder {
+  color: #ccc;
+}
+
+.c4:-ms-input-placeholder {
+  color: #ccc;
+}
+
+.c4::placeholder {
+  color: #ccc;
+}
+
+.c1 {
+  z-index: 0;
   position: relative;
-  font-size: 1.2rem;
-}
-
-.c2:hover {
-  border-color: #4d63ff;
-}
-
-.c2::-webkit-input-placeholder {
-  color: #ccc;
-}
-
-.c2::-moz-placeholder {
-  color: #ccc;
-}
-
-.c2:-ms-input-placeholder {
-  color: #ccc;
-}
-
-.c2::placeholder {
-  color: #ccc;
-}
-
-.c2:focus {
-  border-color: #4d63ff;
-  box-shadow: 0 0 6px rgba(104,79,255,0.2);
+  display: inline-block;
+  outline: none;
+  border-radius: 0.4rem;
 }
 
 .c3 {
@@ -948,47 +1106,54 @@ exports[`AmountInputDemo props: placeholder  2`] = `
   transform: translateY(50%);
   z-index: 2;
   bottom: 50%;
-  line-height: 0.8333333333333334em;
-  right: 0.8333333333333334em;
-  display: !important;
-  color: #999999;
+  line-height: 1rem;
+  font-size: 1.4em;
+  color: rgba(0,0,0,0.65);
+  left: 1rem;
 }
 
-.c3:hover {
-  color: #666666;
+.c2 {
+  position: absolute;
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  z-index: 2;
+  bottom: 50%;
+  line-height: 1rem;
+  font-size: 1.4em;
+  color: rgba(0,0,0,0.65);
+  left: 1rem;
 }
 
 .c0 {
-  width: 16.666666666666668em;
   position: relative;
   display: inline-block;
-}
-
-.c5 {
-  background: transparent;
-  left: 2.5em;
-  color: #999999;
-  top: 50%;
-  position: absolute;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  z-index: 2;
-  font-size: 1.2rem;
 }
 
 <span
   className="c0"
   onBlur={[Function]}
   onFocus={[Function]}
+  style={Object {}}
 >
-  <span
+  <div
     className="c1"
-    disabled={false}
+    style={Object {}}
   >
+    <span
+      className="c2  c3"
+      style={Object {}}
+    >
+      <span
+        className=""
+        style={Object {}}
+      >
+        ¥
+      </span>
+    </span>
     <input
       autoFocus={false}
-      className="c2"
+      className="c4"
       disabled={false}
       onBlur={[Function]}
       onChange={[Function]}
@@ -997,21 +1162,38 @@ exports[`AmountInputDemo props: placeholder  2`] = `
       onKeyDown={[Function]}
       onKeyPress={[Function]}
       onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      placeholder=""
+      prefix={
+        <CSSComponent
+          themeProps={
+            Object {
+              "propsConfig": Object {},
+              "themeConfig": Object {},
+              "themeState": Object {
+                "disabled": undefined,
+              },
+            }
+          }
+        >
+          ¥
+        </CSSComponent>
+      }
       readOnly={false}
       size="default"
-      value="¥"
+      style={
+        Object {
+          "color": "#333333",
+          "height": "3.2rem",
+          "paddingLeft": "3rem",
+          "paddingRight": "3.5rem",
+        }
+      }
+      value=""
     />
-    <i
-      className="lugia-icon-reminder_close c3 c4"
-      onClick={[Function]}
-    />
-  </span>
-  <span
-    className="c5"
-    onClick={[Function]}
-  >
-    
-     
-  </span>
+  </div>
 </span>
 `;

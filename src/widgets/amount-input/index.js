@@ -1,20 +1,13 @@
 // @flow
 import '../common/shirm';
 import React, { Component } from 'react';
-import styled from 'styled-components';
-import Theme from '../theme';
-import BaseInput from '../input/index';
+import InnerInput from '../input/index';
 import Widget from '../consts/index';
 import type { InputSize } from '../css/input';
-import { getMargin } from '../common/ThemeUtils';
-import {
-  DefaultAmountPrefix,
-  getBackground,
-  getPlaceholderFontColor,
-  getWidth,
-} from '../css/input';
+import { DefaultAmountPrefix } from '../css/input';
+import { findDOMNode } from 'react-dom';
 
-import InputTip from '../tooltip';
+import ToolTip from '../tooltip';
 import { fixControlledValue } from '../utils';
 import {
   amountFormatter,
@@ -28,35 +21,59 @@ import {
   tipTool,
 } from './amountUtils';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
-import ThemeProvider from '../theme-provider';
-import { px2emcss } from '../css/units';
-import { FontSize } from '../css';
 import { checkNumber } from '../common/Math';
+import CSSComponent, { css } from '../theme/CSSProvider';
+import ThemeHoc from '@lugia/theme-hoc';
+import { addPropsConfig } from '../avatar';
 
-const em = px2emcss(1.2);
+const InputContainer = CSSComponent({
+  tag: 'span',
+  className: 'amountInputContainer',
+  normal: {
+    selectNames: [['border'], ['margin'], ['padding']],
+  },
+  hover: {
+    selectNames: [['border']],
+  },
+  disabled: {
+    selectNames: [['boxShadow'], ['background']],
+  },
+  css: css`
+    position: relative;
+    display: inline-block;
+  `,
+});
 
-const InputContainer = styled.span`
-  ${getBackground};
-  ${getMargin};
-  ${getWidth};
-  position: relative;
-  display: inline-block;
-`;
-
-const InputPlaceholder = styled.span`
-  background: transparent;
-  left: ${em(30)};
-  color: ${getPlaceholderFontColor};
-  top: 50%;
-  position: absolute;
-  transform: translateY(-50%);
-  z-index: 2;
-  font-size: ${FontSize};
-`;
-const Title = styled.span`
-  font-size: ${FontSize};
-`;
+const Title = CSSComponent({
+  tag: 'span',
+  className: 'amountInputTitle',
+  normal: {
+    selectNames: [['fontSize']],
+  },
+});
+const AmountInputPrefix = CSSComponent({
+  tag: 'span',
+  className: 'amountInputPrefix',
+  normal: {
+    selectNames: [['fontSize'], ['color']],
+  },
+});
 Title.displayName = 'toolTip_title';
+const InputTip = CSSComponent({
+  extend: ToolTip,
+  className: 'amountInputTip',
+  normal: {
+    selectNames: [['opacity']],
+    getStyle(ThemeMeta: Object, ThemeProps: Object) {
+      const { propsConfig } = ThemeProps;
+      const { value } = propsConfig;
+      const style = {};
+      const opacity = value && value.length ? 1 : 0;
+      style.opacity = opacity;
+      return style;
+    },
+  },
+});
 
 type AmountInputState = {|
   value: string,
@@ -80,6 +97,9 @@ type AmountInputProps = {|
   value?: string,
   amountPrefix: string,
   transform?: boolean,
+  themeProps: Object,
+  getPartOfThemeProps: Function,
+  getPartOfThemeHocProps: Function,
 |};
 
 class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
@@ -145,7 +165,7 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
   }
 
   getInputDom() {
-    return this.el.current.getThemeTarget().input;
+    return findDOMNode(this.el.current).querySelector('input');
   }
 
   handleChange = (event: Object) => {
@@ -183,8 +203,7 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
   };
 
   updatePos() {
-    const newPos = getInputSelection(this.getInputDom()).start;
-    this.cursorPos = newPos;
+    this.cursorPos = getInputSelection(this.getInputDom()).start;
   }
 
   onBlur = (event: UIEvent) => {
@@ -208,55 +227,24 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
     }
     this.setState({ rmb: !this.state.rmb });
   };
-  getFocusByPlaceholder = (e: Object) => {
-    const { disabled } = this.props;
-    if (disabled) {
-      return;
-    }
-    setTimeout(() => {
-      this.getInputDom().focus();
-    }, 0);
-  };
   render() {
     const { value } = this.state;
-    const opacity = value && value.length ? 1 : 0;
-    const view = {
-      [Widget.Tooltip]: {
-        opacity,
-      },
-    };
+    const theThemeProps = addPropsConfig(this.props.getPartOfThemeProps('AmountTip'), { value });
     return (
-      <Theme config={view}>
-        <InputTip title={this.getTitle()} action={'focus'} theme={opacity}>
-          {this.getInputContainer()}
-        </InputTip>
-      </Theme>
+      <InputTip title={this.getTitle()} action={'focus'} themeProps={theThemeProps}>
+        {this.getInputContainer()}
+      </InputTip>
     );
   }
 
   getInputContainer() {
-    const { getTheme } = this.props;
-    return (
-      <InputContainer theme={getTheme()}>
-        {this.generateInput()}
-        {this.getPlaceholder()}
-      </InputContainer>
-    );
-  }
-
-  getPlaceholder() {
-    const { placeholder } = this.props;
-    if (!this.state.value) {
-      return (
-        <InputPlaceholder onClick={this.getFocusByPlaceholder}>{placeholder} </InputPlaceholder>
-      );
-    }
-    return null;
+    const theThemeProps = this.props.getPartOfThemeProps('AmountInputContainer');
+    return <InputContainer themeProps={theThemeProps}>{this.generateInput()}</InputContainer>;
   }
 
   getTitle() {
     const { value, rmb } = this.state;
-    const { amountPrefix, transform } = this.props;
+    const { amountPrefix, transform, themeProps } = this.props;
     const isDefaultAmountPrefix = amountPrefix === DefaultAmountPrefix;
     let titleValue = '';
     if (isDefaultAmountPrefix) {
@@ -267,9 +255,13 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
       titleValue = amountPrefix + amountFormatter(value);
     }
     if (transform) {
-      return <Title onClick={this.onTransform}>{titleValue}</Title>;
+      return (
+        <Title onClick={this.onTransform} themeProps={themeProps}>
+          {titleValue}
+        </Title>
+      );
     }
-    return <Title>{titleValue}</Title>;
+    return <Title themeProps={themeProps}>{titleValue}</Title>;
   }
 
   onKeyDown = (event: KeyboardEvent) => {
@@ -282,39 +274,44 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
   generateInput(): React$Element<any> {
     const { props } = this;
     const { value, rmb } = this.state;
-    const { onKeyUp, onKeyPress, size, disabled, amountPrefix, getTheme } = props;
-    const actualValue = rmb
-      ? tipTool(parser(value), convertCurrency)
-      : amountPrefix + amountFormatter(value);
-    const { width, margin } = getTheme();
-    const view = {
-      [Widget.Input]: {
-        width,
-        margin,
-      },
-    };
-
-    return (
-      <Theme config={view}>
-        <BaseInput
-          ref={this.el}
-          theme={getTheme()}
-          value={actualValue}
-          size={size}
-          onKeyUp={onKeyUp}
-          onKeyPress={onKeyPress}
-          onKeyDown={this.onKeyDown}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
-          onChange={this.handleChange}
-          disabled={disabled}
-          formatter={amountFormatter}
-          readOnly={rmb}
-        />
-      </Theme>
+    const { onKeyUp, onKeyPress, size, disabled, placeholder } = props;
+    const prefix = this.getPrefix();
+    const thePlaceholder = disabled ? '' : placeholder;
+    const actualValue = rmb ? tipTool(parser(value), convertCurrency) : amountFormatter(value);
+    const { theme: inputTheme, viewClass: inputViewClass } = this.props.getPartOfThemeHocProps(
+      Widget.Input
     );
+    return (
+      <InnerInput
+        theme={inputTheme}
+        viewClass={inputViewClass}
+        ref={this.el}
+        value={actualValue}
+        size={size}
+        onKeyUp={onKeyUp}
+        onKeyPress={onKeyPress}
+        onKeyDown={this.onKeyDown}
+        onFocus={this.onFocus}
+        onBlur={this.onBlur}
+        placeholder={thePlaceholder}
+        onChange={this.handleChange}
+        disabled={disabled}
+        prefix={prefix}
+        formatter={amountFormatter}
+        readOnly={rmb}
+      />
+    );
+  }
+
+  getPrefix() {
+    const { amountPrefix } = this.props;
+    const theThemeProps = this.props.getPartOfThemeProps('AmountInputPrefix');
+    return <AmountInputPrefix themeProps={theThemeProps}>{amountPrefix}</AmountInputPrefix>;
   }
 }
 
-const TargetAmountTextBox = ThemeProvider(KeyBoardEventAdaptor(AmountTextBox), Widget.AmountInput);
+const TargetAmountTextBox = ThemeHoc(KeyBoardEventAdaptor(AmountTextBox), Widget.AmountInput, {
+  hover: true,
+  active: true,
+});
 export default TargetAmountTextBox;
