@@ -5,7 +5,7 @@
  * @flow
  */
 import * as React from 'react';
-import { getBorder } from '@lugia/theme-css-hoc/lib/index';
+import { getBorder } from '@lugia/theme-css-hoc';
 import { deepMerge } from '@lugia/object-utils';
 import colorsFunc from '../css/stateColor';
 import ThemeProvider from '../theme-provider';
@@ -29,8 +29,50 @@ type CheckBoxState = {
   hasCancel: boolean,
 };
 
-const { themeColor, borderColor, borderDisableColor, disableColor, disabledColor } = colorsFunc();
+const {
+  themeColor,
+  borderColor,
+  borderDisableColor,
+  disableColor,
+  disabledColor,
+  lightGreyColor,
+} = colorsFunc();
 const defaultColor = '#fff';
+const defaultEdgeCancelProps = {
+  themeConfig: {
+    normal: {
+      border: getBorder({ color: disabledColor, width: 1, style: 'solid' }, { radius: 2 }),
+      background: { color: disabledColor },
+    },
+  },
+};
+const defaultEdgeTheme = {
+  themeConfig: {
+    normal: {
+      border: getBorder({ color: themeColor, width: 1, style: 'solid' }, { radius: 2 }),
+      background: { color: themeColor },
+    },
+    hover: {
+      border: getBorder({ color: themeColor, width: 1, style: 'solid' }, { radius: 2 }),
+      background: { color: themeColor },
+    },
+    disabled: {
+      border: getBorder({ color: disableColor, width: 1, style: 'solid' }, { radius: 2 }),
+      background: { color: disableColor },
+    },
+  },
+};
+const defaultInnerTheme = {
+  normal: {
+    color: '#fff',
+  },
+  hover: {
+    color: '#fff',
+  },
+  disabled: {
+    color: lightGreyColor,
+  },
+};
 
 export default ThemeProvider(
   class extends React.Component<CheckBoxProps, CheckBoxState> {
@@ -95,6 +137,7 @@ export default ThemeProvider(
         children,
         themeProps,
         getPartOfThemeProps,
+        getPartOfThemeConfig,
       } = this.props;
       const { checked, hasChecked, hasCancel } = this.state;
       const config = {};
@@ -102,88 +145,47 @@ export default ThemeProvider(
         config.enter = this.handleMouseEnter;
         config.leave = this.handleMouseLeave;
       }
+
       const CheckboxWrapProps = getPartOfThemeProps('CheckboxWrap');
-      const CircleEdgeTheme = getPartOfThemeProps('CheckboxEdge');
-      const CircleCheckedTheme = getPartOfThemeProps('CheckboxChecked');
-      const defaultProps = {
-        normal: {},
-        active: {},
-        hover: {},
-        disabled: {},
-      };
-      const circleDcefaultProps = {
-        normal: {
-          background: {
-            color: disabled
-              ? disableColor
-              : cancel
-              ? disabledColor
-              : checked || indeterminate
-              ? themeColor
-              : defaultColor,
-          },
-          border: getBorder(
-            {
-              color: disabled
-                ? borderDisableColor
-                : cancel
-                ? disabledColor
-                : checked || indeterminate
-                ? themeColor
-                : hasChecked
-                ? themeColor
-                : borderColor,
-              width: 1,
-              style: 'solid',
-            },
-            { radius: 2 }
-          ),
-        },
-        active: {},
-        hover: {},
-        disabled: {},
-      };
-      const defaultIndeterminate = {
-        background: { color: defaultColor },
-        border: getBorder({ color: themeColor, width: 1, style: 'solid' }, { radius: 2 }),
-      };
-      CheckboxWrapProps.themeConfig = deepMerge(defaultProps, CheckboxWrapProps.themeConfig);
-      CircleEdgeTheme.themeConfig = deepMerge(circleDcefaultProps, CircleEdgeTheme.themeConfig);
+      const CircleEdgeCheckedTheme = getPartOfThemeProps('CheckboxEdgeChecked');
+      const CircleEdgeUnCheckedTheme = getPartOfThemeProps('CheckboxEdgeUnChecked');
+      const CircleEdgeCancelTheme = getPartOfThemeProps('CheckboxEdgeCancel');
+      const CircleEdgeIndeterminateTheme = getPartOfThemeProps('CheckboxEdgeIndeterminate');
+      const checkboxTextTheme = getPartOfThemeProps('CheckboxText');
+      const CircleEdgeTheme = cancel
+        ? deepMerge(defaultEdgeCancelProps, CircleEdgeCancelTheme)
+        : checked
+        ? deepMerge(defaultEdgeTheme, CircleEdgeCheckedTheme)
+        : indeterminate
+        ? deepMerge(defaultEdgeTheme, CircleEdgeIndeterminateTheme)
+        : CircleEdgeUnCheckedTheme;
+      const CircleInnerCheckedTheme = getPartOfThemeConfig('CheckboxInnerChecked');
+      const CircleInnerCancelTheme = getPartOfThemeConfig('CheckboxInnerCancel');
+      const CircleInnerIndeterminateTheme = getPartOfThemeConfig('CheckboxInnerIndeterminate');
+      CircleEdgeTheme.propsConfig.checkboxInnerCheckedTheme = defaultInnerTheme;
       if (indeterminate) {
-        CircleEdgeTheme.themeConfig.normal.checked =
-          CircleCheckedTheme.themeConfig.indeterminate || defaultIndeterminate;
-        CircleEdgeTheme.themeConfig.normal.isIndeterminate = indeterminate;
+        CircleEdgeTheme.propsConfig.checkboxInnerCheckedTheme = deepMerge(
+          defaultInnerTheme,
+          CircleInnerIndeterminateTheme
+        );
+        CircleEdgeTheme.propsConfig.isIndeterminate = indeterminate;
       }
       if (checked) {
-        CircleEdgeTheme.themeConfig.normal = deepMerge(
-          CircleEdgeTheme.themeConfig.normal,
-          CircleEdgeTheme.themeConfig.active
+        CircleEdgeTheme.propsConfig.checkboxInnerCheckedTheme = deepMerge(
+          defaultInnerTheme,
+          CircleInnerCheckedTheme
         );
-        CheckboxWrapProps.themeConfig.normal = deepMerge(
-          CheckboxWrapProps.themeConfig.normal,
-          CheckboxWrapProps.themeConfig.active
-        );
-        CircleEdgeTheme.themeConfig.normal.checked = cancel
-          ? CircleCheckedTheme.themeConfig.cancel || {}
-          : disabled
-          ? CircleCheckedTheme.themeConfig.disabled || {}
-          : CircleCheckedTheme.themeConfig.active || {};
+        CircleEdgeTheme.propsConfig.isChecked = checked;
       }
       if (cancel) {
-        CircleEdgeTheme.themeConfig = deepMerge(defaultProps, CircleEdgeTheme.themeConfig);
-        CircleEdgeTheme.themeConfig.normal = deepMerge(
-          CircleEdgeTheme.themeConfig.normal,
-          CircleEdgeTheme.themeConfig.cancel
+        CircleEdgeTheme.propsConfig.checkboxInnerCheckedTheme = deepMerge(
+          defaultInnerTheme,
+          CircleInnerCancelTheme
         );
+        CircleEdgeTheme.propsConfig.isCancel = cancel;
       }
-
-      CircleEdgeTheme.themeConfig.normal.isDisabled = disabled;
-      CircleEdgeTheme.themeConfig.normal.isCancel = cancel;
-      CircleEdgeTheme.themeConfig.normal.isChecked = checked;
-      if (disabled || indeterminate || checked) {
-        CircleEdgeTheme.themeState.hover = false;
-        CheckboxWrapProps.themeState.hover = false;
-      }
+      CircleEdgeTheme.propsConfig.isDisabled = disabled;
+      CircleEdgeTheme.propsConfig.hasChecked = hasChecked;
 
       return (
         <CheckBoxWrap
@@ -212,7 +214,7 @@ export default ThemeProvider(
               />
             )}
           </CheckBoxContent>
-          <CheckBoxLabelSpan>{children}</CheckBoxLabelSpan>
+          <CheckBoxLabelSpan themeProps={checkboxTextTheme}>{children}</CheckBoxLabelSpan>
         </CheckBoxWrap>
       );
     }

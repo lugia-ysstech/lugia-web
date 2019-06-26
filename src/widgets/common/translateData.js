@@ -172,7 +172,8 @@ function renderChildren(
     value = type === 'radio' ? '' : [];
   }
   const { children, disabled, styles } = params.props;
-  return React.Children.map(children, child => {
+  const childrenCount = React.Children.count(children);
+  return React.Children.map(children, (child, index) => {
     if (React.isValidElement(child)) {
       let change = 'onChangeForGroup';
       if (childType === 'button') {
@@ -185,6 +186,8 @@ function renderChildren(
         disabled: disabled || child.props.disabled,
         styles: styles || child.props.styles,
         hasValue: params.hasValueProps(),
+        childrenCount,
+        childrenIndex: index,
       });
     }
   });

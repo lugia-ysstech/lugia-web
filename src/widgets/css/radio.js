@@ -6,10 +6,10 @@
 
 import colorsFunc from '../css/stateColor';
 import { css } from 'styled-components';
-import CSSComponent from '@lugia/theme-css-hoc';
+import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import { px2remcss } from '../css/units';
 import type { ThemeType } from '@lugia/lugia-web';
-import { getBorder } from '@lugia/theme-css-hoc/lib/index';
+import { getBorder } from '@lugia/theme-css-hoc';
 
 const em = px2remcss;
 const {
@@ -21,6 +21,7 @@ const {
   marginToSameElement,
   marginToPeerElementForY,
   lightGreyColor,
+  blackColor,
 } = colorsFunc();
 
 type RadioStyleType = 'default' | 'vertical';
@@ -61,6 +62,16 @@ const getStyleCSS = (props: RadioType): string => {
   `;
 };
 
+const RadioDefaultTheme = {
+  opacity: 1,
+  padding: {
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+  },
+};
+
 export const RadioWrap = CSSComponent({
   tag: 'label',
   className: 'radio-wrap',
@@ -76,20 +87,30 @@ export const RadioWrap = CSSComponent({
     ${getStyleCSS};
   `,
   normal: {
-    selectNames: [['color'], ['font'], ['opacity'], ['margin'], ['padding'], ['width'], ['height']],
+    selectNames: [['opacity'], ['margin'], ['padding'], ['width'], ['height']],
+    defaultTheme: RadioDefaultTheme,
   },
   hover: {
-    selectNames: [['opacity'], ['color']],
+    selectNames: [['opacity']],
+    defaultTheme: {
+      opacity: 1,
+    },
   },
   disabled: {
     selectNames: [['opacity']],
+    defaultTheme: {
+      opacity: 1,
+    },
   },
   active: {
     selectNames: [['opacity']],
+    defaultTheme: {
+      opacity: 1,
+    },
   },
 });
 
-export const RadioContent = CSSComponent({
+export const RadioContent = StaticComponent({
   tag: 'span',
   className: 'radio-content',
   css: css`
@@ -99,10 +120,6 @@ export const RadioContent = CSSComponent({
     vertical-align: text-bottom;
     display: inline-block;
   `,
-  normal: { selectNames: [] },
-  hover: { selectNames: [] },
-  disabled: { selectNames: [] },
-  active: { selectNames: [] },
 });
 
 export const RadioChildrenSpan = CSSComponent({
@@ -111,8 +128,36 @@ export const RadioChildrenSpan = CSSComponent({
   css: css`
     padding-left: ${em(padding)};
   `,
+  normal: {
+    selectNames: [['color'], ['font'], ['padding']],
+    defaultTheme: {
+      color: blackColor,
+      font: { fontSize: em(14) },
+      padding: {
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: padding,
+      },
+    },
+  },
   hover: {
-    selectNames: [],
+    selectNames: [['color']],
+    defaultTheme: {
+      color: blackColor,
+    },
+  },
+  disabled: {
+    selectNames: [['color']],
+    defaultTheme: {
+      color: lightGreyColor,
+    },
+  },
+  active: {
+    selectNames: [['color']],
+    defaultTheme: {
+      color: blackColor,
+    },
   },
 });
 
@@ -134,10 +179,17 @@ export const RadioCircleSpan = CSSComponent({
   `,
   normal: {
     selectNames: [['background'], ['border'], ['width'], ['height']],
-    getCSS(themeMeta: Object): string {
-      const { checked, isDisabled, isCancel } = themeMeta;
-      if (checked) {
-        const { background, width = 10, height = 10 } = checked;
+    getCSS(themeMeta: Object, themeProps: Object): string {
+      const { propsConfig, themeState } = themeProps;
+      const { hover } = themeState;
+      const { RadioInnerCheckedTheme: afterThemeConfig, isDisabled, isChecked } = propsConfig;
+      if (isChecked) {
+        const theme = isDisabled
+          ? afterThemeConfig.disabled
+          : hover
+          ? afterThemeConfig.hover
+          : afterThemeConfig.normal;
+        const { background, width = 10, height = 10 } = theme;
         return css`
           &::after {
             position: absolute;
@@ -151,24 +203,25 @@ export const RadioCircleSpan = CSSComponent({
             border-top: 0;
             border-left: 0;
             content: ' ';
-            background-color: ${background
-              ? background.color
-              : isCancel
-              ? colorsFunc(themeColor).disabledColor
-              : isDisabled
-              ? lightGreyColor
-              : themeColor};
+            background-color: ${background.color};
           }
         `;
       }
 
       return '';
     },
+    defaultTheme: {
+      border: getBorder({ color: borderColor, width: 1, style: 'solid' }, { radius: '100%' }),
+      background: { color: '#fff' },
+      width: 16,
+      height: 16,
+    },
   },
   hover: {
     selectNames: [['background'], ['border']],
     defaultTheme: {
       border: getBorder({ color: themeColor, width: 1, style: 'solid' }, { radius: '100%' }),
+      background: { color: '#fff' },
     },
   },
   disabled: {
@@ -183,5 +236,9 @@ export const RadioCircleSpan = CSSComponent({
   },
   active: {
     selectNames: [],
+    defaultTheme: {
+      border: getBorder({ color: themeColor, width: 1, style: 'solid' }, { radius: '100%' }),
+      background: { color: '#fff' },
+    },
   },
 });
