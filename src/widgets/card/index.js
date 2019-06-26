@@ -98,12 +98,14 @@ const Content = CSSComponent({
         paddingLeft
       )};padding-right:${px2remcss(paddingLeft)};`;
     },
+    defaultTheme: {
+      padding: { top: 16 },
+      width: '100%',
+    },
   },
   css: css`
     font-size: 1.2rem;
     display: inline-block;
-    width: 100%;
-    padding-top: ${px2remcss(16)};
   `,
 });
 const Image = ThemeHoc(
@@ -281,25 +283,28 @@ const Title = CSSComponent({
       ['margin'],
       ['padding'],
     ],
-    getCSS(themeMeta: Object, themeProps: Object) {
+    getStyle(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
       const { imageOrientation, type } = propsConfig;
       const textAlign = type === 'avatar' && imageOrientation === 'vertical' ? 'center' : '';
       const flexDirection = imageOrientation === 'vertical' ? 'column' : 'row';
       const weight = type === 'tip' ? 700 : 500;
-      return `
-        text-align:${textAlign};
-        flex-direction:${flexDirection};
-        font-weight:${weight};
-        padding-bottom: ${px2remcss(8)};
-        font-weight:${weight};`;
+      const style = {};
+      style.textAlign = textAlign;
+      style.fontWeight = weight;
+      style.flexDirection = flexDirection;
+      return style;
+    },
+    defaultTheme: {
+      padding: {
+        bottom: px2remcss(8),
+      },
     },
   },
   css: css`
     display: inline-block;
     flex: 1;
     font-size: 1.6rem;
-    color: ${blackColor};
     overflow: hidden;
     white-space: nowrap;
   `,

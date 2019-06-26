@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Card css 1`] = `
-.c23 {
+.c24 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -9,13 +9,13 @@ exports[`Card css 1`] = `
   cursor: pointer;
 }
 
-.c11 {
-  color: rgba(0,0,0,0.65);
+.c12 {
   box-sizing: border-box;
   display: inline-block;
   text-align: center;
   white-space: nowrap;
   position: relative;
+  color: rgba(0,0,0,0.65);
   background-color: #cccccc;
   border-radius: 50%;
   width: 2.666666666666667em;
@@ -23,7 +23,7 @@ exports[`Card css 1`] = `
   line-height: 2.666666666666667em;
 }
 
-.c12 {
+.c13 {
   vertical-align: middle;
   width: 6rem;
   height: 6rem;
@@ -44,7 +44,7 @@ exports[`Card css 1`] = `
   flex-direction: row;
 }
 
-.c8 {
+.c9 {
   border: 0.1rem solid #cccccc;
   position: relative;
   display: -webkit-box;
@@ -59,7 +59,7 @@ exports[`Card css 1`] = `
   flex-direction: column;
 }
 
-.c14 {
+.c15 {
   border: 0.1rem solid #cccccc;
   position: relative;
   display: -webkit-box;
@@ -77,31 +77,31 @@ exports[`Card css 1`] = `
   font-size: 1.2rem;
   display: inline-block;
   width: 100%;
-  padding-top: 1.6rem;
+  padding: 1.6rem 0rem 0rem 0rem;
   padding-left: 1rem;
   padding-right: 1rem;
 }
 
-.c16 {
+.c17 {
   width: 12rem;
   height: 11.2rem;
 }
 
-.c15 {
+.c16 {
   position: relative;
   width: 20rem;
   height: 35rem;
   display: block;
 }
 
-.c17 {
+.c18 {
   position: relative;
   width: 36rem;
   height: 20rem;
   display: inline-block;
 }
 
-.c9 {
+.c10 {
   position: relative;
   text-align: center;
   width: 16rem;
@@ -109,7 +109,7 @@ exports[`Card css 1`] = `
   display: block;
 }
 
-.c13 {
+.c14 {
   position: relative;
   text-align: center;
   width: 26rem;
@@ -117,7 +117,7 @@ exports[`Card css 1`] = `
   display: block;
 }
 
-.c10 {
+.c11 {
   border-radius: 50%;
   width: 7rem;
   height: 7rem;
@@ -127,28 +127,33 @@ exports[`Card css 1`] = `
 
 .c5 {
   text-align: inherit;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.c4 {
   display: inline-block;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   font-size: 1.6rem;
-  color: #333333;
   overflow: hidden;
   white-space: nowrap;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  font-weight: 500;
-  padding-bottom: 0.8rem;
-  font-weight: 500;
+  padding: 0rem 0rem NaNrem 0rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
-.c7 {
+.c4 {
+  text-align: inherit;
+  display: inline-block;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 1.6rem;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 0rem 0rem NaNrem 0rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.c8 {
   left: 1.4rem;
   position: absolute;
   display: inline-block;
@@ -158,7 +163,17 @@ exports[`Card css 1`] = `
   border-radius: 0.5rem;
 }
 
+.c7 {
+  text-align: inherit;
+  font-size: 1.4rem;
+  padding-top: 0.4rem;
+  color: #666666;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 .c6 {
+  text-align: inherit;
   font-size: 1.4rem;
   padding-top: 0.4rem;
   color: #666666;
@@ -174,7 +189,7 @@ exports[`Card css 1`] = `
   top: 1.6rem;
 }
 
-.c26 {
+.c27 {
   position: relative;
   cursor: pointer;
   white-space: nowrap;
@@ -191,34 +206,16 @@ exports[`Card css 1`] = `
   box-sizing: border-box;
 }
 
-.c26:hover > div {
+.c27:hover > div {
   color: #4d63ff;
 }
 
-.c26:hover > span > i:first-child {
-  color: #4d63ff;
-}
-
-.c27 {
-  color: #4d63ff;
-  position: relative;
-  display: inline-block;
-  box-sizing: border-box;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  text-align: left;
-  padding: 0 0em 0 0em;
-  height: 2.8333333333333335em;
-  line-height: 2.8333333333333335em;
-}
-
-.c27:focus {
+.c27:hover > span > i:first-child {
   color: #4d63ff;
 }
 
 .c28 {
+  color: #4d63ff;
   position: relative;
   display: inline-block;
   box-sizing: border-box;
@@ -236,14 +233,32 @@ exports[`Card css 1`] = `
   color: #4d63ff;
 }
 
-.c32 {
+.c29 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: left;
+  padding: 0 0em 0 0em;
+  height: 2.8333333333333335em;
+  line-height: 2.8333333333333335em;
+}
+
+.c29:focus {
+  color: #4d63ff;
+}
+
+.c33 {
   display: inline-block;
   overflow: hidden;
   width: 100%;
   height: 100%;
 }
 
-.c29 {
+.c30 {
   background-color: blue;
   position: absolute;
   box-sizing: border-box;
@@ -259,7 +274,7 @@ exports[`Card css 1`] = `
   transition: all 0.3s;
 }
 
-.c21 {
+.c22 {
   position: absolute;
   font-size: 1.2rem;
   display: none;
@@ -273,7 +288,7 @@ exports[`Card css 1`] = `
   left: 0.8333333333333334em;
 }
 
-.c30 {
+.c31 {
   position: absolute;
   font-size: 1.2rem;
   display: none;
@@ -287,21 +302,21 @@ exports[`Card css 1`] = `
   right: 0.8333333333333334em;
 }
 
-.c19 {
+.c20 {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   position: relative;
   width: NaNem;
 }
 
-.c24 {
+.c25 {
   width: 100%;
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
 }
 
-.c25 {
+.c26 {
   height: 2.8333333333333335em;
   display: inline-block;
   box-sizing: border-box;
@@ -313,7 +328,7 @@ exports[`Card css 1`] = `
   transform: translateX(0em);
 }
 
-.c20 {
+.c21 {
   height: 2.8333333333333335em;
   line-height: 2.8333333333333335em;
   position: relative;
@@ -322,7 +337,7 @@ exports[`Card css 1`] = `
   z-index: 99;
 }
 
-.c22 {
+.c23 {
   display: inline-block;
   font-style: normal;
   text-align: center;
@@ -330,7 +345,7 @@ exports[`Card css 1`] = `
   cursor: not-allowed;
 }
 
-.c31 {
+.c32 {
   display: inline-block;
   font-style: normal;
   text-align: center;
@@ -344,18 +359,18 @@ exports[`Card css 1`] = `
   display: inline-block;
 }
 
-.c18 {
+.c19 {
   display: inline-block;
   margin-left: 20px;
 }
 
-.c33 {
+.c34 {
   text-align: center;
   width: 100%;
   height: 100%;
 }
 
-.c34 {
+.c35 {
   text-align: center;
   font-size: 16px;
   color: #666;
@@ -365,13 +380,13 @@ exports[`Card css 1`] = `
   width: 100%;
 }
 
-.c35 {
+.c36 {
   text-align: center;
   color: #4d63ff;
   display: inline-block;
 }
 
-.c36 {
+.c37 {
   position: absolute;
   text-align: center;
   font-size: 14px;
@@ -395,51 +410,50 @@ exports[`Card css 1`] = `
   <div
     className="c0"
   >
-    <span
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
+    <div
+      className="c1"
+      style={
+        Object {
+          "height": "13rem",
+          "width": "35rem",
+        }
+      }
+      type="simple"
     >
       <div
-        className="c1"
-        style={
-          Object {
-            "height": "13rem",
-            "width": "35rem",
-          }
-        }
+        className="c2"
+        style={Object {}}
+      >
+        操作
+      </div>
+      <div
+        className="c3"
+        style={Object {}}
         type="simple"
       >
         <div
-          className="c2"
-          style={Object {}}
-        >
-          操作
-        </div>
-        <div
-          className="c3"
-          style={Object {}}
+          className="c4  c5"
+          style={
+            Object {
+              "flexDirection": "row",
+              "fontWeight": 500,
+              "textAlign": "",
+            }
+          }
           type="simple"
         >
-          <div
-            className="c4  c5"
-            style={Object {}}
-            type="simple"
-          >
-            this is title
-             
-          </div>
-          <div
-            className="c6  c5"
-            style={Object {}}
-          >
-            this is description
-             
-          </div>
+          this is title
+           
+        </div>
+        <div
+          className="c6  c7"
+          style={Object {}}
+        >
+          this is description
+           
         </div>
       </div>
-    </span>
+    </div>
   </div>
   <p>
     基本样式
@@ -447,58 +461,57 @@ exports[`Card css 1`] = `
   <div
     className="c0"
   >
-    <span
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
+    <div
+      className="c1"
+      style={
+        Object {
+          "height": "20rem",
+          "width": "50rem",
+        }
+      }
+      type="simple"
     >
       <div
-        className="c1"
-        style={
-          Object {
-            "height": "20rem",
-            "width": "50rem",
-          }
-        }
+        className="c3"
+        style={Object {}}
         type="simple"
       >
         <div
-          className="c3"
-          style={Object {}}
+          className="c4  c5"
+          style={
+            Object {
+              "flexDirection": "row",
+              "fontWeight": 500,
+              "textAlign": "",
+            }
+          }
           type="simple"
         >
-          <div
-            className="c4  c5"
-            style={Object {}}
-            type="simple"
-          >
-            <div>
-              this is title
-            </div>
-             
+          <div>
+            this is title
           </div>
-          <div
-            className="c6  c5"
-            style={Object {}}
-          >
-            <div>
-              this is description
-            </div>
-            <div>
-              this is description
-            </div>
-            <div>
-              this is description
-            </div>
-            <div>
-              this is description
-            </div>
-             
+           
+        </div>
+        <div
+          className="c6  c7"
+          style={Object {}}
+        >
+          <div>
+            this is description
           </div>
+          <div>
+            this is description
+          </div>
+          <div>
+            this is description
+          </div>
+          <div>
+            this is description
+          </div>
+           
         </div>
       </div>
-    </span>
+    </div>
   </div>
   <p>
     tip样式
@@ -506,58 +519,57 @@ exports[`Card css 1`] = `
   <div
     className="c0"
   >
-    <span
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
+    <div
+      className="c1"
+      style={
+        Object {
+          "height": "20rem",
+          "width": "50rem",
+        }
+      }
+      type="tip"
     >
       <div
-        className="c1"
-        style={
-          Object {
-            "height": "20rem",
-            "width": "50rem",
-          }
+        className="c3"
+        content={
+          Array [
+            <div>
+              this is description
+            </div>,
+            <div>
+              this is description
+            </div>,
+          ]
         }
+        style={Object {}}
         type="tip"
       >
         <div
-          className="c3"
-          content={
-            Array [
-              <div>
-                this is description
-              </div>,
-              <div>
-                this is description
-              </div>,
-            ]
-          }
+          className="c8"
           style={Object {}}
+        />
+        <div
+          className="c4  c5"
+          style={
+            Object {
+              "flexDirection": "row",
+              "fontWeight": 500,
+              "textAlign": "",
+            }
+          }
           type="tip"
         >
-          <div
-            className="c7"
-            style={Object {}}
-          />
-          <div
-            className="c4  c5"
-            style={Object {}}
-            type="tip"
-          >
-            this is title
-             
-          </div>
-          <div>
-            this is description
-          </div>
-          <div>
-            this is description
-          </div>
+          this is title
+           
+        </div>
+        <div>
+          this is description
+        </div>
+        <div>
+          this is description
         </div>
       </div>
-    </span>
+    </div>
   </div>
   <p>
     头像样式
@@ -565,84 +577,79 @@ exports[`Card css 1`] = `
   <div
     className="c0"
   >
-    <span
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
+    <div
+      className="c9"
+      style={
+        Object {
+          "height": "22rem",
+          "width": "16rem",
+        }
+      }
+      type="avatar"
     >
-      <div
-        className="c8"
+      <span
+        className="c10"
         style={
           Object {
             "height": "22rem",
             "width": "16rem",
           }
         }
+      >
+        <div
+          className="c11  c12"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          shape="circle"
+          size="default"
+          src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png"
+          style={Object {}}
+        >
+          <img
+            className="c13"
+            shape="circle"
+            src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png"
+            style={
+              Object {
+                "height": "6rem",
+                "width": "6rem",
+              }
+            }
+          />
+        </div>
+      </span>
+      <div
+        className="c3"
+        style={Object {}}
         type="avatar"
       >
-        <span
-          className="c9"
+        <div
+          className="c4  c5"
           style={
             Object {
-              "height": "22rem",
-              "width": "16rem",
+              "flexDirection": "row",
+              "fontWeight": 500,
+              "textAlign": "",
             }
           }
-        >
-          <span>
-            <span>
-              <div
-                className="c10  c11"
-                onBlur={[Function]}
-                onClick={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onKeyPress={[Function]}
-                onKeyUp={[Function]}
-                shape="circle"
-                size="default"
-                src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png"
-                style={Object {}}
-              >
-                <img
-                  className="c12"
-                  shape="circle"
-                  src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png"
-                  style={
-                    Object {
-                      "height": "6rem",
-                      "width": "6rem",
-                    }
-                  }
-                />
-              </div>
-            </span>
-          </span>
-        </span>
-        <div
-          className="c3"
-          style={Object {}}
           type="avatar"
         >
-          <div
-            className="c4  c5"
-            style={Object {}}
-            type="avatar"
-          >
-            this is title
-             
-          </div>
-          <div
-            className="c6  c5"
-            style={Object {}}
-          >
-            this is description
-             
-          </div>
+          this is title
+           
+        </div>
+        <div
+          className="c6  c7"
+          style={Object {}}
+        >
+          this is description
+           
         </div>
       </div>
-    </span>
+    </div>
   </div>
   <p>
     头像样式
@@ -650,88 +657,83 @@ exports[`Card css 1`] = `
   <div
     className="c0"
   >
-    <span
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
+    <div
+      className="c1"
+      style={
+        Object {
+          "height": "18rem",
+          "width": "26rem",
+        }
+      }
+      type="avatar"
     >
-      <div
-        className="c1"
+      <span
+        className="c14"
         style={
           Object {
             "height": "18rem",
             "width": "26rem",
           }
         }
+      >
+        <div
+          className="c11  c12"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          shape="circle"
+          size="default"
+          src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png"
+          style={Object {}}
+        >
+          <img
+            className="c13"
+            shape="circle"
+            src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png"
+            style={
+              Object {
+                "height": "6rem",
+                "width": "6rem",
+              }
+            }
+          />
+        </div>
+      </span>
+      <div
+        className="c3"
+        style={Object {}}
         type="avatar"
       >
-        <span
-          className="c13"
+        <div
+          className="c4  c5"
           style={
             Object {
-              "height": "18rem",
-              "width": "26rem",
+              "flexDirection": "row",
+              "fontWeight": 500,
+              "textAlign": "",
             }
           }
-        >
-          <span>
-            <span>
-              <div
-                className="c10  c11"
-                onBlur={[Function]}
-                onClick={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onKeyPress={[Function]}
-                onKeyUp={[Function]}
-                shape="circle"
-                size="default"
-                src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png"
-                style={Object {}}
-              >
-                <img
-                  className="c12"
-                  shape="circle"
-                  src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png"
-                  style={
-                    Object {
-                      "height": "6rem",
-                      "width": "6rem",
-                    }
-                  }
-                />
-              </div>
-            </span>
-          </span>
-        </span>
-        <div
-          className="c3"
-          style={Object {}}
           type="avatar"
         >
-          <div
-            className="c4  c5"
-            style={Object {}}
-            type="avatar"
-          >
-            this is title
-             
-          </div>
-          <div
-            className="c6  c5"
-            style={Object {}}
-          >
+          this is title
+           
+        </div>
+        <div
+          className="c6  c7"
+          style={Object {}}
+        >
+          <div>
             <div>
-              <div>
-                this is description
-              </div>
+              this is description
             </div>
-             
           </div>
+           
         </div>
       </div>
-    </span>
+    </div>
   </div>
   <p>
     图片样式
@@ -739,14 +741,22 @@ exports[`Card css 1`] = `
   <div
     className="c0"
   >
-    <span
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
+    <div
+      className="c15"
+      style={
+        Object {
+          "backgroundColor": "gray",
+          "height": "35rem",
+          "margin": "2rem 0rem 0rem 0rem",
+          "opacity": 0.8,
+          "padding": "1rem 0rem 0rem 0rem",
+          "width": "20rem",
+        }
+      }
+      type="image"
     >
       <div
-        className="c14"
+        className="c16"
         style={
           Object {
             "backgroundColor": "gray",
@@ -757,68 +767,54 @@ exports[`Card css 1`] = `
             "width": "20rem",
           }
         }
-        type="image"
       >
-        <div
-          className="c15"
+        <img
+          className="c17"
+          src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg"
           style={
             Object {
-              "backgroundColor": "gray",
-              "height": "35rem",
-              "margin": "2rem 0rem 0rem 0rem",
-              "opacity": 0.8,
-              "padding": "1rem 0rem 0rem 0rem",
+              "height": "16rem",
               "width": "20rem",
             }
           }
-        >
-          <span>
-            <img
-              className="c16"
-              src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg"
-              style={
-                Object {
-                  "height": "16rem",
-                  "width": "20rem",
-                }
-              }
-            />
-          </span>
-        </div>
+        />
+      </div>
+      <div
+        className="c3"
+        style={Object {}}
+        type="image"
+      >
         <div
-          className="c3"
-          style={Object {}}
+          className="c4  c5"
+          style={
+            Object {
+              "backgroundColor": "red",
+              "color": "pink",
+              "flexDirection": "row",
+              "fontWeight": 500,
+              "height": "2rem",
+              "textAlign": "",
+              "width": "10rem",
+            }
+          }
           type="image"
         >
-          <div
-            className="c4  c5"
-            style={
-              Object {
-                "backgroundColor": "red",
-                "color": "pink",
-                "height": "2rem",
-                "width": "10rem",
-              }
+          this is title
+           
+        </div>
+        <div
+          className="c6  c7"
+          style={
+            Object {
+              "color": "yellow",
             }
-            type="image"
-          >
-            this is title
-             
-          </div>
-          <div
-            className="c6  c5"
-            style={
-              Object {
-                "color": "yellow",
-              }
-            }
-          >
-            this is description
-             
-          </div>
+          }
+        >
+          this is description
+           
         </div>
       </div>
-    </span>
+    </div>
   </div>
   <p>
     图片样式
@@ -826,67 +822,64 @@ exports[`Card css 1`] = `
   <div
     className="c0"
   >
-    <span
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
+    <div
+      className="c1"
+      style={
+        Object {
+          "height": "20rem",
+          "width": "36rem",
+        }
+      }
+      type="image"
     >
       <div
-        className="c1"
+        className="c18"
         style={
           Object {
             "height": "20rem",
             "width": "36rem",
           }
         }
-        type="image"
       >
-        <div
+        <img
           className="c17"
+          src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg"
           style={
             Object {
               "height": "20rem",
-              "width": "36rem",
+              "width": "16rem",
             }
           }
-        >
-          <span>
-            <img
-              className="c16"
-              src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg"
-              style={
-                Object {
-                  "height": "20rem",
-                  "width": "16rem",
-                }
-              }
-            />
-          </span>
-        </div>
+        />
+      </div>
+      <div
+        className="c3"
+        style={Object {}}
+        type="image"
+      >
         <div
-          className="c3"
-          style={Object {}}
+          className="c4  c5"
+          style={
+            Object {
+              "flexDirection": "row",
+              "fontWeight": 500,
+              "textAlign": "",
+            }
+          }
           type="image"
         >
-          <div
-            className="c4  c5"
-            style={Object {}}
-            type="image"
-          >
-            this is title
-             
-          </div>
-          <div
-            className="c6  c5"
-            style={Object {}}
-          >
-            this is description
-             
-          </div>
+          this is title
+           
+        </div>
+        <div
+          className="c6  c7"
+          style={Object {}}
+        >
+          this is description
+           
         </div>
       </div>
-    </span>
+    </div>
   </div>
   <p>
     组合样式
@@ -894,170 +887,149 @@ exports[`Card css 1`] = `
   <div
     className="c0"
   >
-    <span
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
+    <div
+      className="c1"
+      style={
+        Object {
+          "height": "24rem",
+          "width": "40rem",
+        }
+      }
+      type="combo"
     >
       <div
-        className="c1"
-        style={
-          Object {
-            "height": "24rem",
-            "width": "40rem",
-          }
+        className="c2"
+        style={Object {}}
+      >
+        操作
+      </div>
+      <div
+        className="c3"
+        content={
+          <ForwardRef>
+            <lugia_t_hoc_lugia_widget_Tabs
+              data={
+                Array [
+                  Object {
+                    "content": "content of Tab1",
+                    "title": "Tab1",
+                  },
+                  Object {
+                    "content": "content of Tab2",
+                    "title": "Tab2",
+                  },
+                  Object {
+                    "content": "content of Tab3",
+                    "title": "Tab3",
+                  },
+                ]
+              }
+            />
+          </ForwardRef>
         }
+        style={Object {}}
         type="combo"
       >
         <div
-          className="c2"
-          style={Object {}}
-        >
-          操作
-        </div>
-        <div
-          className="c3"
-          content={
-            <ForwardRef>
-              <lugia_t_hoc_lugia_widget_Tabs
-                data={
-                  Array [
-                    Object {
-                      "content": "content of Tab1",
-                      "title": "Tab1",
-                    },
-                    Object {
-                      "content": "content of Tab2",
-                      "title": "Tab2",
-                    },
-                    Object {
-                      "content": "content of Tab3",
-                      "title": "Tab3",
-                    },
-                  ]
-                }
-              />
-            </ForwardRef>
-          }
-          style={Object {}}
-          type="combo"
+          className="c19"
         >
           <div
-            className="c18"
+            className="c20"
           >
-            <span>
+            <div
+              className="c21"
+            >
+              <span
+                className="c22"
+                onClick={[Function]}
+                type="pre"
+              >
+                <i
+                  className="lugia-icon-direction_Left c23  c24"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  style={Object {}}
+                />
+              </span>
               <div
-                className="c19"
+                className="c25"
               >
                 <div
-                  className="c20"
+                  className="c26"
+                  x={-0}
                 >
-                  <span
-                    className="c21"
-                    onClick={[Function]}
-                    type="pre"
-                  >
-                    <span
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                    >
-                      <i
-                        className="lugia-icon-direction_Left c22  c23"
-                        style={Object {}}
-                      />
-                    </span>
-                  </span>
                   <div
-                    className="c24"
+                    className="c27"
+                    disabled={false}
+                    onClick={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
                   >
                     <div
-                      className="c25"
-                      x={-0}
+                      className="c28"
+                      disabled={false}
                     >
-                      <span>
-                        <div
-                          className="c26"
-                          disabled={false}
-                          onClick={[Function]}
-                          onMouseEnter={[Function]}
-                          onMouseLeave={[Function]}
-                        >
-                          <div
-                            className="c27"
-                            disabled={false}
-                          >
-                            Tab1
-                          </div>
-                        </div>
-                      </span>
-                      <span>
-                        <div
-                          className="c26"
-                          disabled={false}
-                          onClick={[Function]}
-                          onMouseEnter={[Function]}
-                          onMouseLeave={[Function]}
-                        >
-                          <div
-                            className="c28"
-                            disabled={false}
-                          >
-                            Tab2
-                          </div>
-                        </div>
-                      </span>
-                      <span>
-                        <div
-                          className="c26"
-                          disabled={false}
-                          onClick={[Function]}
-                          onMouseEnter={[Function]}
-                          onMouseLeave={[Function]}
-                        >
-                          <div
-                            className="c28"
-                            disabled={false}
-                          >
-                            Tab3
-                          </div>
-                        </div>
-                      </span>
-                      <div
-                        className="c29"
-                        x={20}
-                      />
+                      Tab1
                     </div>
                   </div>
-                  <span
-                    className="c30"
-                    onClick={[Function]}
-                    type="next"
-                  >
-                    <span
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                    >
-                      <i
-                        className="lugia-icon-direction_right c31  c23"
-                        style={Object {}}
-                      />
-                    </span>
-                  </span>
-                </div>
-                <span>
                   <div
-                    className="c32"
+                    className="c27"
+                    disabled={false}
+                    onClick={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
                   >
-                    content of Tab1
+                    <div
+                      className="c29"
+                      disabled={false}
+                    >
+                      Tab2
+                    </div>
                   </div>
-                </span>
+                  <div
+                    className="c27"
+                    disabled={false}
+                    onClick={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                  >
+                    <div
+                      className="c29"
+                      disabled={false}
+                    >
+                      Tab3
+                    </div>
+                  </div>
+                  <div
+                    className="c30"
+                    x={20}
+                  />
+                </div>
               </div>
-            </span>
+              <span
+                className="c31"
+                onClick={[Function]}
+                type="next"
+              >
+                <i
+                  className="lugia-icon-direction_right c32  c24"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  style={Object {}}
+                />
+              </span>
+            </div>
+            <div
+              className="c33"
+            >
+              content of Tab1
+            </div>
           </div>
         </div>
       </div>
-    </span>
+    </div>
   </div>
   <p>
     组合样式
@@ -1065,69 +1037,62 @@ exports[`Card css 1`] = `
   <div
     className="c0"
   >
-    <span
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
+    <div
+      className="c1"
+      style={
+        Object {
+          "height": "22rem",
+          "width": "20rem",
+        }
+      }
+      type="combo"
     >
       <div
-        className="c1"
-        style={
-          Object {
-            "height": "22rem",
-            "width": "20rem",
-          }
-        }
+        className="c3"
+        content={<AmountCard />}
+        style={Object {}}
         type="combo"
       >
         <div
-          className="c3"
-          content={<AmountCard />}
-          style={Object {}}
-          type="combo"
+          className="c34"
         >
           <div
-            className="c33"
+            className="c35"
+          >
+            价格
+          </div>
+          <div
+            className="c36"
           >
             <div
-              className="c34"
+              className="c36"
+              style={
+                Object {
+                  "fontSize": 32,
+                }
+              }
             >
-              价格
+              9
             </div>
             <div
-              className="c35"
-            >
-              <div
-                className="c35"
-                style={
-                  Object {
-                    "fontSize": 32,
-                  }
-                }
-              >
-                9
-              </div>
-              <div
-                className="c35"
-                style={
-                  Object {
-                    "fontSize": 18,
-                  }
-                }
-              >
-                .88
-              </div>
-            </div>
-            <button
               className="c36"
+              style={
+                Object {
+                  "fontSize": 18,
+                }
+              }
             >
-              购买
-            </button>
+              .88
+            </div>
           </div>
+          <button
+            className="c37"
+          >
+            购买
+          </button>
         </div>
       </div>
-    </span>
+    </div>
   </div>
 </div>
 `;

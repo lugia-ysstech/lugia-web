@@ -33,6 +33,12 @@ const BaseAvatar = CSSComponent({
       ['padding'],
       ['opacity'],
     ],
+    defaultTheme: {
+      color: 'rgba(0, 0, 0, 0.65)',
+      background: {
+        color: borderColor,
+      },
+    },
     getCSS(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
       const { width, height, background = {} } = themeMeta;
@@ -48,13 +54,11 @@ const BaseAvatar = CSSComponent({
     },
   },
   css: css`
-    color: rgba(0, 0, 0, 0.65);
     box-sizing: border-box;
     display: inline-block;
     text-align: center;
     white-space: nowrap;
     position: relative;
-    background-color: ${borderColor};
   `,
 });
 const AvatarIcon: Object = CSSComponent({
@@ -62,6 +66,7 @@ const AvatarIcon: Object = CSSComponent({
   className: 'avatarIcon',
   normal: {
     selectNames: [['color'], ['fontSize']],
+    defaultTheme: { color: 'white' },
     getCSS(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
       const { size } = propsConfig;
@@ -71,11 +76,9 @@ const AvatarIcon: Object = CSSComponent({
   },
   css: css`
     display: inline-block;
-    font-style: normal;
     text-align: center;
     text-transform: none;
     vertical-align: middle !important;
-    color: white;
   `,
 });
 
@@ -84,6 +87,7 @@ const Name = CSSComponent({
   className: 'avatarName',
   normal: {
     selectNames: [['color'], ['width'], ['height'], ['fontSize']],
+    defaultTheme: { color: 'white' },
     getCSS(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
       const { width, height } = themeMeta;
@@ -97,7 +101,6 @@ const Name = CSSComponent({
   },
   css: css`
     user-select: none;
-    color: white;
   `,
 });
 const Picture = CSSComponent({
