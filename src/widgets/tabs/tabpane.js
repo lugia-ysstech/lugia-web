@@ -28,18 +28,16 @@ const BaseTabHoc = CSSComponent({
   tag: 'div',
   className: 'BaseTab',
   normal: {
-    selectNames: [['color'], ['background'], ['border'], ['margin']],
+    selectNames: [['color'], ['background'], ['border'], ['margin'], ['padding']],
     getCSS: (theme: Object, themeProps: Object) => {
       const { color } = theme;
       const {
         propsConfig: { isSelect, tabType, tabPosition },
       } = themeProps;
       let display = 'inline-block';
-      let padding = 'padding: 0 10px 0 20px;';
       let textAlign = 'text-align: center';
       if (isVertical(tabPosition)) {
         display = 'block';
-        padding = 'padding: 0 20px; ';
         if (tabPosition === 'left') {
           textAlign = 'text-align: right';
         } else {
@@ -68,7 +66,6 @@ const BaseTabHoc = CSSComponent({
         return css`
           display: ${display};
           ${textAlign}
-          ${padding}
           & > div::before {
             content: '';
             background: ${color || themeColor};
@@ -81,7 +78,6 @@ const BaseTabHoc = CSSComponent({
       }
       return css`
         display: ${display};
-        ${padding}
         ${textAlign}
       `;
     },
@@ -102,7 +98,7 @@ const BaseTabHoc = CSSComponent({
        
       `;
       if (tabType === 'card') {
-        cssString += ` & > div.cardTitle {
+        cssString += ` & > div {
           transition: all 0.3s linear;
           transform: translateX(-3px);
         }`;
@@ -139,7 +135,7 @@ const BaseTabHoc = CSSComponent({
     position: relative;
     cursor: pointer;
     white-space: nowrap;
-    padding: 0 10px 0 20px;
+    padding: 0 20px;
   `,
 });
 
@@ -229,7 +225,7 @@ const WindowTab = ThemeHoc(
       );
     }
   },
-  'BaseTab',
+  'WindowTab',
   { hover: true, active: false }
 );
 
@@ -259,7 +255,7 @@ const CardTab = ThemeHoc(
       );
     }
   },
-  'BaseTab',
+  'CardTab',
   { hover: true, active: false }
 );
 
@@ -425,9 +421,6 @@ const ClearIcon = ThemeHoc(
     `,
     normal: {
       selectNames: [['color']],
-      defaultTheme: {
-        color: '#e8e8e8',
-      },
     },
     hover: {
       selectNames: [['color']],
@@ -498,9 +491,12 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
   getHTabPane() {
     const { title, tabType, tabPosition, isSelect, icon, suffixIcon, disabled } = this.props;
 
-    const { TargetTab, theme, viewClass } = this.getHTabPaneThemeProps(tabType, isSelect);
+    const { TargetTab, theme, viewClass, titleThemeProps } = this.getHTabPaneThemeProps(
+      tabType,
+      isSelect
+    );
 
-    const titleThemeProps = this.props.getPartOfThemeProps('DefaultTabPan');
+    // const titleThemeProps = this.props.getPartOfThemeProps('DefaultTabPan');
     let Target = (
       <TargetTab
         theme={theme}
@@ -579,13 +575,14 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     return Target;
   }
 
-  getHTabPaneThemeProps(tabType: string, isSelect: boolean) {
+  getHTabPaneThemeProps(tabType: ?string, isSelect: ?boolean) {
     const { viewClass: defaultViewClass, theme: defaultTheme } = this.props.getPartOfThemeHocProps(
       'DefaultTabPan'
     );
     const { viewClass: selectViewClass, theme: selectTheme } = this.props.getPartOfThemeHocProps(
       'SelectTabPan'
     );
+    let titleThemeProps = this.props.getPartOfThemeProps('DefaultTabPan');
     let baseDefaultTab = BaseTab;
     let baseDefaultTheme = defaultTheme;
     let baseDefaultViewClass = defaultViewClass;
@@ -626,6 +623,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
           },
         };
         baseSelectTheme = deepMerge(cardSelectObj, selectTheme);
+        titleThemeProps = this.props.getPartOfThemeProps('CardTabPan');
         break;
       case 'window':
         baseDefaultTab = WindowTab;
@@ -646,15 +644,15 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
           },
         };
         baseSelectTheme = deepMerge(windowSelectObj, selectTheme);
+        titleThemeProps = this.props.getPartOfThemeProps('WindowTabPan');
         break;
       default:
         break;
     }
-
     const TargetTab = isSelect ? SelectTab : baseDefaultTab;
     const theme = isSelect ? baseSelectTheme : baseDefaultTheme;
     const viewClass = isSelect ? selectViewClass : baseDefaultViewClass;
-    return { TargetTab, theme, viewClass };
+    return { TargetTab, theme, viewClass, titleThemeProps };
   }
 
   componentDidMount() {
@@ -741,8 +739,6 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     getTabpaneWidthOrHeight && getTabpaneWidthOrHeight(this.offsetSize);
   }
 }
-
-// export default Tabpane;
 
 const TargetTabPan = ThemeHoc(KeyBoardEventAdaptor(Tabpane), Widget.Tabs, {
   hover: true,

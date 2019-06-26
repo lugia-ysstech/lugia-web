@@ -518,7 +518,6 @@ export default () => {
   };
   const cardView = {
     [Widget.Tabs]: {
-      width: 500,
       SelectTabPan: {
         normal: {
           color: themeColor,
@@ -532,20 +531,9 @@ export default () => {
       },
       CardTabPan: {
         normal: {
-          // background: {
-          //   color: 'pink',
-          // },
-        },
-        hover: {
-          color: 'orange',
-        },
-        disabled: {
-          color: '#ccc',
-        },
-      },
-      DefaultTabPan: {
-        normal: {
-          color: 'purple',
+          background: {
+            color: 'pink',
+          },
         },
         hover: {
           color: 'orange',
@@ -555,10 +543,7 @@ export default () => {
         },
       },
       TabsContainer: {
-        normal: {
-          width: 300,
-          height: 300,
-        },
+        normal: {},
       },
     },
   };
@@ -578,11 +563,7 @@ export default () => {
         },
       },
       WindowTabPan: {
-        normal: {
-          // background: {
-          //   color: 'pink',
-          // },
-        },
+        normal: {},
         hover: {
           color: 'orange',
         },
@@ -772,6 +753,21 @@ export default () => {
             data={hasActivityValueData}
             onPreClick={onPreClick}
             onNextClick={onNextClick}
+          />
+        </div>
+        <br />
+        <br />
+      </Theme>
+      <Theme config={cardView}>
+        <div>
+          <p style={{ titleStyle }}>tabType=card pagedType=single showadd</p>
+          <Tabs
+            tabType={'card'}
+            pagedType={'single'}
+            data={hasActivityValueData}
+            onPreClick={onPreClick}
+            onNextClick={onNextClick}
+            showAddBtn={true}
           />
         </div>
         <br />

@@ -62,7 +62,8 @@ import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import { addMouseEvent } from '@lugia/theme-hoc';
 import ThemeHoc from '@lugia/theme-hoc';
 import { deepMerge } from '@lugia/object-utils';
-
+import colorsFunc from '../css/stateColor';
+const { superLightColor } = colorsFunc();
 const ShadowLine = CSSComponent({
   tag: 'div',
   className: 'BaseLine',
@@ -112,7 +113,7 @@ const HBasePage = CSSComponent({
   css: css`
     text-align: center;
     width: 24px;
-    line-height: 3.5rem;
+    line-height: 35px;
     display: ${props => (props.arrowShow === false ? 'none' : 'block')};
   `,
 }); //${getArrowTop};
@@ -258,6 +259,10 @@ const AddContainer = CSSComponent({
     position: relative;
     width: ${px2remcss(AddButtonSize)};
     height: ${px2remcss(AddButtonSize)};
+    border: 1px solid ${superLightColor};
+    border-radius: 4px;
+    background: #f8f8f8;
+    line-height: ${px2remcss(AddButtonSize)};
   `,
 }); /* ${getAddBackground};${getTabpaneBorder};${getAddRadius};${getAddTop};&:focus {${getAddHoverBackground};}*/
 
@@ -293,7 +298,7 @@ const AddIcon = CSSComponent({
     position: relative;
     transition: all 0.3s linear 0.1s;
     font-size: 1rem;
-    opacity: 0;
+    vertical-align: text-top !important;
   `,
 }); //${getAddButtonBottom};${getAddButtonDisplay};&:hover { ${getButtonShow};}
 
@@ -471,7 +476,7 @@ type TabsProps = {
   defaultData?: Array<Object>,
   forceRender?: boolean,
   onDeleteClick: Function,
-  allowToAdd?: boolean,
+  showAddBtn?: boolean,
   onAddClick?: Function,
   pagedType?: PagedType,
   getTabpane?: Function,
@@ -733,9 +738,9 @@ class TabsBox extends Component<TabsProps, TabsState> {
   }
 
   getAddButton() {
-    const { tabType, themeProps } = this.props;
+    const { tabType, themeProps, showAddBtn } = this.props;
     const add = 'lugia-icon-reminder_plus';
-    if (!matchType(tabType, 'line')) {
+    if (!matchType(tabType, 'line') && showAddBtn) {
       return (
         <AddOutContainer themeProps={themeProps} tabType={tabType}>
           <AddContainer themeProps={themeProps} tabType={tabType} onClick={this.onAddClick}>
