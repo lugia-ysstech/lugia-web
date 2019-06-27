@@ -68,7 +68,7 @@ export const IconWrap: Object = styled(Icon)`
 
 const CommonBackTopStyle = CSSComponent({
   tag: 'div',
-  className: 'a',
+  className: 'common-back-top',
   css: css`
     border: 1px solid #e8e8e8;
     text-align: center;
@@ -123,7 +123,7 @@ export const IconBox = CSSComponent({
 
 export const Icons = ThemeHoc(
   CSSComponent({
-    className: 'icon',
+    className: 'back-top-icon',
     extend: Icon,
     normal: {
       selectNames: [['color'], ['fontSize'], ['margin'], ['padding']],
