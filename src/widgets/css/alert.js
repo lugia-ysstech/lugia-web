@@ -3,15 +3,13 @@
  * create by guorg
  * @flow
  */
-import CSSComponent, { StaticComponent, getBorder } from '@lugia/theme-css-hoc';
+import CSSComponent from '@lugia/theme-css-hoc';
 import { units } from '@lugia/css';
 import colorsFunc from '../css/stateColor';
 import changeColor from './utilsColor';
 import type { ThemeType } from '@lugia/lugia-web';
-import { createGetWidthOrHeight } from '../common/ThemeUtils';
 import styled, { css, keyframes } from 'styled-components';
 import Icon from '../icon';
-import ThemeHoc from '@lugia/theme-hoc/lib/index';
 
 const { px2remcss } = units;
 export type Type = 'info' | 'success' | 'error' | 'warning';
@@ -72,12 +70,6 @@ const TypeCSS = {
     color: dangerColor,
     background: changeColor(dangerColor, 0, 0, 20).rgba,
   },
-};
-
-const getColor = (type: Type, target: 'color' | 'background') => {
-  return `
-    ${target}: ${TypeCSS[type][target]};
-  `;
 };
 
 const getLineHeight = (props: CSSProps): number => {
@@ -162,18 +154,7 @@ export const Alert = CSSComponent({
     },
   },
 });
-const getIconColor = (props: CSSProps) => {
-  const { type } = props;
 
-  return getColor(type, 'color');
-};
-const getIconFont = (props: CSSProps) => {
-  const { hasDect } = props;
-  if (hasDect) {
-    return `font-size: ${px2remcss(20)};`;
-  }
-  return `font-size: ${px2remcss(14)};`;
-};
 const getPosition = (props: CSSProps) => {
   const { hasDect } = props;
 
@@ -184,18 +165,20 @@ export const Icons = CSSComponent({
   className: 'alert-icon',
   extend: Icon,
   normal: {
-    selectNames: [['color'], ['font']],
+    selectNames: [['color'], ['fontSize']],
     defaultTheme: {
-      font: { fontSize: 14 },
+      fontSize: 14,
+      cursor: 'default',
     },
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig = {} } = themeProps;
-      const { type } = propsConfig;
+      const { type, hasDect } = propsConfig;
       const typeCSSTheme = TypeCSS[type];
       const color = typeCSSTheme ? typeCSSTheme.color : TypeCSS.info.color;
-      console.log('color', color);
+
       return {
         color,
+        fontSize: hasDect ? 20 : 14,
       };
     },
   },

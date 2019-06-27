@@ -13,7 +13,6 @@ import type { AlertProps, AlertState, Type } from '../css/alert';
 import { Alert, CloseIcon, CloseText, Description, Icons, Message } from '../css/alert';
 import changeColor from '../css/utilsColor';
 import colorsFunc from '../css/stateColor';
-import { addMouseEvent } from '@lugia/theme-hoc/lib/index';
 
 const AlertIcons = {
   info: 'lugia-icon-reminder_info_circle_o',
@@ -21,15 +20,7 @@ const AlertIcons = {
   error: 'lugia-icon-reminder_close_circle_o',
   warning: 'lugia-icon-reminder_exclamation_circle_o',
 };
-const {
-  themeColor,
-  successColor,
-  warningColor,
-  dangerColor,
-  mediumGreyColor,
-  blackColor,
-  darkGreyColor,
-} = colorsFunc();
+const { themeColor, successColor, warningColor, dangerColor } = colorsFunc();
 const TypeThemeProps = {
   info: {
     normal: {
@@ -104,13 +95,11 @@ export default ThemeProvider(
       const {
         type = 'info',
         showIcon = false,
-        getTheme,
         message = '警告提示',
         closable = false,
         description,
         icon,
         getPartOfThemeProps,
-        getPartOfThemeHocProps,
       } = this.props;
       const { visible, height, animateStart } = this.state;
       const hasDect = this.isInProps('description');
@@ -124,7 +113,7 @@ export default ThemeProvider(
       AlertWrapTheme.propsConfig.hasDect = hasDect;
       AlertWrapTheme.propsConfig.showIcon = showIcon;
       AlertMessageTheme.propsConfig.hasDect = hasDect;
-      // console.log('color', getPartOfThemeHocProps('AlertIcon'));
+
       return visible ? (
         <Alert
           ref={(node: any) => (this.alert = node)}
