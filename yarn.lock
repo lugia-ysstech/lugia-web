@@ -1181,10 +1181,10 @@
     babel-plugin-transform-dynamic-import "2.1.0"
     babel-plugin-transform-react-remove-prop-types "0.4.20"
 
-"@lugia/css@1.0.11", "@lugia/css@^1.0.11":
-  version "1.0.11"
-  resolved "http://192.168.102.79:5001/@lugia/css/download/@lugia/css-1.0.11.tgz#4cae0c71efcae8f5216af5b18a7a04244ee136bb"
-  integrity sha1-TK4Mce/K6PUhavWxinoEJE7hNrs=
+"@lugia/css@1.0.12", "@lugia/css@^1.0.12":
+  version "1.0.12"
+  resolved "http://192.168.102.79:5001/@lugia/css/download/@lugia/css-1.0.12.tgz#dbc619370a380aed1f6911245f25d4259ea68352"
+  integrity sha1-28YZNwo4Cu0faREkXyXUJZ6mg1I=
   dependencies:
     "@babel/runtime" "^7.4.5"
     decamelize "^3.2.0"
@@ -1437,10 +1437,10 @@
     webpack-merge "^4.2.1"
     webpack-parallel-uglify-plugin "^1.1.0"
 
-"@lugia/object-utils@^1.0.0", "@lugia/object-utils@^1.0.7":
-  version "1.0.7"
-  resolved "http://192.168.102.79:5001/@lugia/object-utils/download/@lugia/object-utils-1.0.7.tgz#9ec0ac84570c4a11cd2aba52792f39e7a69fc9e1"
-  integrity sha1-nsCshFcMShHNKrpSeS8556afyeE=
+"@lugia/object-utils@1.0.8", "@lugia/object-utils@^1.0.8":
+  version "1.0.8"
+  resolved "http://192.168.102.79:5001/@lugia/object-utils/download/@lugia/object-utils-1.0.8.tgz#a338b861f19ae96c03ab9b20f7f9707a5c0b2e25"
+  integrity sha1-ozi4YfGa6WwDq5sg9/lwelwLLiU=
   dependencies:
     "@babel/runtime" "^7.4.5"
     deepmerge "^3.2.0"
@@ -1461,49 +1461,50 @@
     react "^16.4.0"
     react-dom "^16.4.0"
 
-"@lugia/theme-config@^1.0.12":
-  version "1.0.12"
-  resolved "http://192.168.102.79:5001/@lugia/theme-config/download/@lugia/theme-config-1.0.12.tgz#d2ac39cb8260529a2f3046b345e75c2d8763a36c"
-  integrity sha1-0qw5y4JgUpovMEazRedcLYdjo2w=
+"@lugia/theme-config@1.0.15":
+  version "1.0.15"
+  resolved "http://192.168.102.79:5001/@lugia/theme-config/download/@lugia/theme-config-1.0.15.tgz#608acb09fa3aed4aeae4f939aeb717a1a22910ff"
+  integrity sha1-YIrLCfo67Urq5Pk5rrcXoaIpEP8=
   dependencies:
     "@babel/runtime" "^7.4.5"
-    "@lugia/theme-core" "^1.0.12"
+    "@lugia/theme-core" "^1.0.15"
     prop-types "^15.7.2"
 
-"@lugia/theme-core@^1.0.12":
-  version "1.0.12"
-  resolved "http://192.168.102.79:5001/@lugia/theme-core/download/@lugia/theme-core-1.0.12.tgz#70b53d4866c9cf8ab93d5dbc0e86278ec3757ca5"
-  integrity sha1-cLU9SGbJz4q5PV28DoYnjsN1fKU=
+"@lugia/theme-core@1.0.15", "@lugia/theme-core@^1.0.15":
+  version "1.0.15"
+  resolved "http://192.168.102.79:5001/@lugia/theme-core/download/@lugia/theme-core-1.0.15.tgz#cfc2abf2ddb7f24923a3d77bec96a0367dc74691"
+  integrity sha1-z8Kr8t238kkjo9d77JagNn3HRpE=
   dependencies:
     "@babel/runtime" "^7.4.5"
-    "@lugia/object-utils" "^1.0.7"
+    "@lugia/object-utils" "^1.0.8"
 
-"@lugia/theme-css-hoc@1.0.22":
-  version "1.0.22"
-  resolved "http://192.168.102.79:5001/@lugia/theme-css-hoc/download/@lugia/theme-css-hoc-1.0.22.tgz#f617268ec1770eae24bfe20817da13178d3cf133"
-  integrity sha1-9hcmjsF3Dq4kv+IIF9oTF4088TM=
+"@lugia/theme-css-hoc@^1.0.29":
+  version "1.0.29"
+  resolved "http://192.168.102.79:5001/@lugia/theme-css-hoc/download/@lugia/theme-css-hoc-1.0.29.tgz#f0242f235447c74ad6ed25eb1ff351ad30ab3dac"
+  integrity sha1-8CQvI1RHx0rW7SXrH/NRrTCrPaw=
   dependencies:
     "@babel/runtime" "^7.4.5"
-    "@lugia/css" "^1.0.11"
-    "@lugia/object-utils" "^1.0.0"
+    "@lugia/css" "^1.0.12"
+    "@lugia/object-utils" "^1.0.8"
+    "@lugia/theme-core" "^1.0.15"
     decamelize "^3.2.0"
 
-"@lugia/theme-hoc-devtools@^1.0.1":
-  version "1.0.1"
-  resolved "http://192.168.102.79:5001/@lugia/theme-hoc-devtools/download/@lugia/theme-hoc-devtools-1.0.1.tgz#8036aa53f44d5eb43ec0ce222b4632d5f4b70c13"
-  integrity sha1-gDaqU/RNXrQ+wM4iK0Yy1fS3DBM=
+"@lugia/theme-hoc-devtools@1.0.2", "@lugia/theme-hoc-devtools@^1.0.2":
+  version "1.0.2"
+  resolved "http://192.168.102.79:5001/@lugia/theme-hoc-devtools/download/@lugia/theme-hoc-devtools-1.0.2.tgz#0abc2fc8c7a8f024daff62a76c665d992ab581d1"
+  integrity sha1-CrwvyMeo8CTa/2KnbGZdmSq1gdE=
   dependencies:
     "@lugia/react-devtools-core" "^1.0.3"
 
-"@lugia/theme-hoc@1.0.17":
-  version "1.0.17"
-  resolved "http://192.168.102.79:5001/@lugia/theme-hoc/download/@lugia/theme-hoc-1.0.17.tgz#dcef9404ff815ec7544a521aa11c44481887b6e3"
-  integrity sha1-3O+UBP+BXsdUSlIaoRxESBiHtuM=
+"@lugia/theme-hoc@^1.0.21":
+  version "1.0.21"
+  resolved "http://192.168.102.79:5001/@lugia/theme-hoc/download/@lugia/theme-hoc-1.0.21.tgz#da1de37167f6fd22d4ae6c6bbb0f8840b78aef5d"
+  integrity sha1-2h3jcWf2/SLUrmxruw+IQLeK710=
   dependencies:
     "@babel/runtime" "^7.4.5"
-    "@lugia/object-utils" "^1.0.7"
-    "@lugia/theme-core" "^1.0.12"
-    "@lugia/theme-hoc-devtools" "^1.0.1"
+    "@lugia/object-utils" "^1.0.8"
+    "@lugia/theme-core" "^1.0.15"
+    "@lugia/theme-hoc-devtools" "^1.0.2"
 
 "@lugia/type-utils@^1.0.1", "@lugia/type-utils@^1.0.4":
   version "1.0.4"
@@ -13849,16 +13850,6 @@ react-dom@^16.4.0:
     prop-types "^15.6.2"
     scheduler "^0.11.2"
 
-react-dom@^16.7.0:
-  version "16.7.0"
-  resolved "http://registry.npm.taobao.org/react-dom/download/react-dom-16.7.0.tgz#a17b2a7ca89ee7390bc1ed5eb81783c7461748b8"
-  integrity sha1-oXsqfKie5zkLwe1euBeDx0YXSLg=
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    prop-types "^15.6.2"
-    scheduler "^0.12.0"
-
 react-dom@^16.8.6:
   version "16.8.6"
   resolved "https://registry.npm.taobao.org/react-dom/download/react-dom-16.8.6.tgz#71d6303f631e8b0097f56165ef608f051ff6e10f"
@@ -13974,19 +13965,9 @@ react@^16.4.0:
     prop-types "^15.6.2"
     scheduler "^0.11.2"
 
-react@^16.7.0:
-  version "16.7.0"
-  resolved "http://registry.npm.taobao.org/react/download/react-16.7.0.tgz#b674ec396b0a5715873b350446f7ea0802ab6381"
-  integrity sha1-tnTsOWsKVxWHOzUERvfqCAKrY4E=
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    prop-types "^15.6.2"
-    scheduler "^0.12.0"
-
 react@^16.8.6:
   version "16.8.6"
-  resolved "https://registry.npm.taobao.org/react/download/react-16.8.6.tgz#ad6c3a9614fd3a4e9ef51117f54d888da01f2bbe"
+  resolved "https://registry.npm.taobao.org/react/download/react-16.8.6.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Freact%2Fdownload%2Freact-16.8.6.tgz#ad6c3a9614fd3a4e9ef51117f54d888da01f2bbe"
   integrity sha1-rWw6lhT9Ok6e9REX9U2IjaAfK74=
   dependencies:
     loose-envify "^1.1.0"
@@ -14830,14 +14811,6 @@ scheduler@^0.11.2:
   version "0.11.2"
   resolved "http://registry.npm.taobao.org/scheduler/download/scheduler-0.11.2.tgz#a8db5399d06eba5abac51b705b7151d2319d33d3"
   integrity sha1-qNtTmdBuulq6xRtwW3FR0jGdM9M=
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-
-scheduler@^0.12.0:
-  version "0.12.0"
-  resolved "http://registry.npm.taobao.org/scheduler/download/scheduler-0.12.0.tgz#8ab17699939c0aedc5a196a657743c496538647b"
-  integrity sha1-irF2mZOcCu3FoZamV3Q8SWU4ZHs=
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"

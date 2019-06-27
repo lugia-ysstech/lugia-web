@@ -13,6 +13,7 @@ import { getThemeProps } from './styledConfig';
 import { findDOMNode } from 'react-dom';
 import Widgets from '../consts/index';
 import Theme from '../theme/index';
+import { addMouseEvent } from '@lugia/theme-hoc';
 
 type TypeProps = {
   value?: boolean,
@@ -168,7 +169,7 @@ class Switch extends React.Component<TypeProps, TypeState> {
       },
     } = childrenThemeProps;
     return (
-      <SwitchContainer themeProps={SwitchContainerThemeProps}>
+      <SwitchContainer themeProps={SwitchContainerThemeProps} {...addMouseEvent(this)}>
         <SwitchWrapper
           onMouseUp={isabled ? this.mouseup : null}
           onKeyDown={isabled ? this.handleKeyDown : null}
