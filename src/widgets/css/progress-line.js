@@ -6,7 +6,7 @@
 import styled, { css, keyframes } from 'styled-components';
 import colorsFunc from '../css/stateColor';
 import { getWidth } from '../common/ThemeUtils';
-import { px2emcss } from './units';
+import { px2remcss } from './units';
 import Icon from '../icon';
 
 type StatusType = 'success' | 'active' | 'error' | 'default';
@@ -50,9 +50,9 @@ export const getWrapFontSize = (props: Object) => {
 export const getEM = (props: Object) => {
   const { size } = props;
   if (isSmall(size)) {
-    return px2emcss(1.2);
+    return px2remcss(12);
   }
-  return px2emcss(FontSize);
+  return px2remcss(14);
 };
 
 export const handlePercent = (per: number) => {
@@ -78,7 +78,7 @@ const getProgtrssWidth = (props: CSSProps) => {
   const { showInfo, showType } = props;
   const em = getEM(props);
   if (showInfo && showType === 'default') {
-    return `width: calc(100% - ${em(30)});`;
+    return `width: calc(100% - ${px2remcss(30)});`;
   }
 
   return 'width: 100%;';
@@ -88,7 +88,7 @@ export const ProgressLine = styled.div`
   ${getProgtrssWidth};
   display: inline-block;
   background: #f5f5f5;
-  border-radius: ${props => getEM(props)(50)};
+  border-radius: ${props => px2remcss(50)};
 `;
 
 const getBackGroundWidth = (props: CSSProps) => {
@@ -153,15 +153,15 @@ const getBackgroundHeight = (props: CSSProps) => {
   const { height } = theme;
   const em = getEM(props);
   if (height && typeof height === 'number') {
-    return `height: ${em(height)};`;
+    return `height: ${px2remcss(height)};`;
   }
   if (showType === 'inside') {
-    return `height: ${em(16)};`;
+    return `height: ${px2remcss(16)};`;
   }
   if (isSmall(size)) {
-    return `height: ${em(6)};`;
+    return `height: ${px2remcss(6)};`;
   }
-  return `height: ${em(8)};`;
+  return `height: ${px2remcss(8)};`;
 };
 
 export const ProgressBackground = styled.div`
@@ -169,7 +169,7 @@ export const ProgressBackground = styled.div`
   ${getBackGroundWidth};
   ${getStatusCSS};
   ${getBackgroundHeight};
-  border-radius: ${props => getEM(props)(50)};
+  border-radius: ${props => px2remcss(50)};
   position: relative;
   text-align: right;
 `;
@@ -192,26 +192,25 @@ const getTextFont = (props: CSSProps) => {
   const { size, type } = props;
   const em = getEM(props);
   if (type === 'line' && isSmall(size)) {
-    return `font-size: ${em(12)};`;
+    return `font-size: ${px2remcss(12)};`;
   }
 
   if (type === 'circle' || type === 'dashboard') {
-    const em = px2emcss(CirleSvgTextFontSize);
     if (isSmall(size)) {
-      return `font-size: ${em(26)};`;
+      return `font-size: ${px2remcss(26)};`;
     }
-    return `font-size: ${em(40)};`;
+    return `font-size: ${px2remcss(40)};`;
   }
-  return `font-size: ${em(14)};`;
+  return `font-size: ${px2remcss(14)};`;
 };
 
 export const ProgressText = styled.span`
   display: inline-block;
   ${getTextFont};
-  width: ${props => getEM(props)(20)};
+  width: ${px2remcss(20)};
   ${getTextColor};
   text-align: left;
-  margin-left: ${props => getEM(props)(10)};
+  margin-left: ${px2remcss(10)};
   white-space: nowrap;
   word-break: normal;
   vertical-align: bottom;
@@ -229,7 +228,7 @@ const getMinWidth = (props: CSSProps) => {
   if (type === 'line') {
     const minWidth = isSmall(size) ? 56 : 60;
 
-    return `min-width: ${em(minWidth)};`;
+    return `min-width: ${px2remcss(minWidth)};`;
   }
 };
 
@@ -242,7 +241,7 @@ export const InsideText = styled.span`
   display: inline-block;
   color: #fff;
   text-align: left;
-  margin: 0 ${props => getEM(props)(6)};
+  margin: 0 ${px2remcss(6)};
   white-space: nowrap;
   word-break: normal;
   vertical-align: bottom;
