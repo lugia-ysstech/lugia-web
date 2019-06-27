@@ -13,6 +13,7 @@ import type { AlertProps, AlertState, Type } from '../css/alert';
 import { Alert, CloseIcon, CloseText, Description, Icons, Message } from '../css/alert';
 import changeColor from '../css/utilsColor';
 import colorsFunc from '../css/stateColor';
+import { addMouseEvent } from '@lugia/theme-hoc/lib/index';
 
 const AlertIcons = {
   info: 'lugia-icon-reminder_info_circle_o',
@@ -99,40 +100,6 @@ export default ThemeProvider(
       return TypeThemeProps.info;
     }
 
-    getDefaultPaddiong = () => {
-      const { showIcon } = this.props;
-      const hasDect = this.isInProps('description');
-      let verticalPad = 12;
-      let leftPad = 10;
-
-      if (showIcon) {
-        if (hasDect) {
-          leftPad = 40;
-        } else {
-          leftPad = 34;
-        }
-      }
-      if (hasDect) {
-        verticalPad = 18;
-      }
-      const padding = {
-        top: verticalPad,
-        bottom: verticalPad,
-        left: leftPad,
-        right: 10,
-      };
-      return padding;
-    };
-
-    getMessageFont = () => {
-      const hasDect = this.isInProps('description');
-      let font = 14;
-      if (hasDect) {
-        font = 18;
-      }
-      return { normal: { font: { fontSize: font } } };
-    };
-
     render() {
       const {
         type = 'info',
@@ -142,24 +109,22 @@ export default ThemeProvider(
         closable = false,
         description,
         icon,
-        themeProps,
         getPartOfThemeProps,
+        getPartOfThemeHocProps,
       } = this.props;
       const { visible, height, animateStart } = this.state;
       const hasDect = this.isInProps('description');
-
       const AlertWrapTheme = getPartOfThemeProps('AlertWrap');
       const AlertMessageTheme = getPartOfThemeProps('AlertMessage');
       const AlertDescriptionTheme = getPartOfThemeProps('AlertDescription');
+      const AlertIconTheme = getPartOfThemeProps('AlertIcon');
+      AlertIconTheme.propsConfig = { hasDect, type };
       const defaultAlertTheme = this.getDefaultTheme(type);
-      defaultAlertTheme.normal.padding = this.getDefaultPaddiong();
       AlertWrapTheme.themeConfig = deepMerge(defaultAlertTheme, AlertWrapTheme.themeConfig);
-      console.log('ssss', AlertMessageTheme);
-      AlertMessageTheme.themeConfig = deepMerge(
-        this.getMessageFont(),
-        AlertMessageTheme.themeConfig
-      );
-      console.log(AlertMessageTheme);
+      AlertWrapTheme.propsConfig.hasDect = hasDect;
+      AlertWrapTheme.propsConfig.showIcon = showIcon;
+      AlertMessageTheme.propsConfig.hasDect = hasDect;
+      // console.log('color', getPartOfThemeHocProps('AlertIcon'));
       return visible ? (
         <Alert
           ref={(node: any) => (this.alert = node)}
@@ -173,10 +138,10 @@ export default ThemeProvider(
         >
           {showIcon ? (
             <Icons
-              theme={getTheme()}
+              iconClass={icon || AlertIcons[type]}
               hasDect={hasDect}
               type={type}
-              iconClass={icon || AlertIcons[type]}
+              themeProps={AlertIconTheme}
             />
           ) : null}
           <Message hasDect={hasDect} showIcon={showIcon} themeProps={AlertMessageTheme}>
@@ -191,13 +156,14 @@ export default ThemeProvider(
     }
 
     getCloseText = () => {
-      const { closeText, type = 'info', getTheme } = this.props;
+      const { closeText, type = 'info', getPartOfThemeProps } = this.props;
+      const CloseTextTheme = getPartOfThemeProps('CloseText');
+      CloseTextTheme.propsConfig = { textInProps: this.isInProps('closeText'), type };
       return (
         <CloseText
           onClick={this.handleClose}
-          theme={getTheme()}
+          themeProps={CloseTextTheme}
           type={type}
-          textInProps={this.isInProps('closeText')}
           hasDect={this.isInProps('description')}
         >
           {closeText || <CloseIcon iconClass="lugia-icon-reminder_close" />}
