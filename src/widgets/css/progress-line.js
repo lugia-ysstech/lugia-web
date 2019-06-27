@@ -3,10 +3,9 @@
  * create by guorg
  * @flow
  */
-import styled, { css, keyframes } from 'styled-components';
-import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
+import { css, keyframes } from 'styled-components';
+import CSSComponent from '@lugia/theme-css-hoc';
 import colorsFunc from '../css/stateColor';
-import { getWidth } from '../common/ThemeUtils';
 import { px2remcss } from './units';
 import Icon from '../icon';
 
@@ -102,13 +101,6 @@ const getProgtrssWidth = (props: CSSProps) => {
   return 'width: 100%;';
 };
 
-// export const ProgressLine = styled.div`
-//   ${getProgtrssWidth};
-//   display: inline-block;
-//   background: #f5f5f5;
-//   border-radius: ${px2remcss(50)};
-//   vertical-align: middle;
-// `;
 export const ProgressLine = CSSComponent({
   tag: 'div',
   className: 'ProgressLine',
@@ -133,57 +125,6 @@ const getBackGroundWidth = (props: CSSProps) => {
   `;
 };
 
-const getStatusCSS = (props: CSSProps) => {
-  const { status = 'default', theme, percent } = props;
-  const { color } = theme;
-  const defaultColor = color ? color : themeColor;
-
-  if (status === 'active') {
-    return css`
-      background-color: ${handlePercent(percent) === 100 ? successColor : defaultColor};
-    `;
-  }
-
-  if (handlePercent(percent) === 100) {
-    if (status === 'error') {
-      return `background-color: ${BackgroundCSS.error.background};`;
-    }
-    return `background-color: ${successColor};`;
-  }
-
-  const background = color ? color : BackgroundCSS[status].background;
-
-  return `background-color: ${background};`;
-};
-
-const getBackgroundHeight = (props: CSSProps) => {
-  const { size, theme, showType } = props;
-  const { height } = theme;
-
-  if (height && typeof height === 'number') {
-    return `height: ${px2remcss(height)};`;
-  }
-  if (showType === 'inside') {
-    return `height: ${px2remcss(16)};`;
-  }
-  if (isSmall(size)) {
-    return `height: ${px2remcss(6)};`;
-  }
-  return `height: ${px2remcss(8)};`;
-};
-
-const getBackground = (propsConfig: Object) => {
-  const { status, percent } = propsConfig;
-  if (handlePercent(percent) === 100) {
-    if (status === 'error') {
-      return dangerColor;
-    }
-    return successColor;
-  }
-  const backgroundCSS = BackgroundCSS[status];
-
-  return backgroundCSS ? backgroundCSS.background : themeColor;
-};
 const getHeight = (propsConfig: Object) => {
   const { size, showType } = propsConfig;
 
@@ -263,17 +204,6 @@ const getTextFont = (size: 'default' | 'small') => {
   return isSmall(size) ? 12 : 14;
 };
 
-// export const ProgressText = styled.span`
-//   display: inline-block;
-//   ${getTextFont};
-//   width: ${px2remcss(20)};
-//   ${getTextColor};
-//   text-align: left;
-//   margin-left: ${px2remcss(10)};
-//   white-space: nowrap;
-//   word-break: normal;
-//   vertical-align: middle;
-// `;
 export const ProgressText = CSSComponent({
   tag: 'span',
   className: 'ProgressText',
@@ -355,15 +285,7 @@ export const Wrap = CSSComponent({
     },
   },
 });
-// export const InsideText = styled.span`
-//   display: inline-block;
-//   color: #fff;
-//   text-align: left;
-//   margin: 0 ${px2remcss(6)};
-//   white-space: nowrap;
-//   word-break: normal;
-//   vertical-align: bottom;
-// `;
+
 export const InsideText = CSSComponent({
   tag: 'span',
   className: 'progress-inside-text',
