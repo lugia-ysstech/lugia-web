@@ -8,7 +8,7 @@ import '../common/shirm';
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Tabpane from './tabpane';
-import TabContent from './tabcontent';
+import TabContentInner from './tabcontent';
 import Widget from '../consts/index';
 import Theme from '../theme';
 import { EditEventType, PagedType, TabPositionType, TabType } from '../css/tabs';
@@ -79,6 +79,58 @@ const ShadowLine = CSSComponent({
     bottom: ${px2remcss(-1)};
     height: ${px2remcss(1)};
     z-index: -1;
+  `,
+}); //${getBackgroundShadow};
+const TabContentContainer = CSSComponent({
+  tag: 'div',
+  className: 'ContentBlock',
+  normal: {
+    selectNames: [['height'], ['width']],
+    getCSS: (theme: Object, themeProps: Object) => {
+      const {
+        propsConfig: { tabPosition },
+      } = themeProps;
+      if (isVertical(tabPosition)) {
+        return 'float: left;';
+      }
+    },
+  },
+  disabled: {
+    selectNames: [],
+  },
+  css: css`
+    position: relative;
+    padding: 10px;
+    height: 100px;
+  `,
+}); //${getBackgroundShadow};
+const TabContent = CSSComponent({
+  tag: 'div',
+  className: 'TabContent',
+  normal: {
+    selectNames: [],
+    getCSS: (theme: Object, themeProps: Object) => {
+      const {
+        propsConfig: { active, index },
+      } = themeProps;
+      if (active === index) {
+        return 'opacity: 1;';
+      }
+    },
+  },
+  disabled: {
+    selectNames: [],
+  },
+  css: css`
+    overflow: hidden;
+    background: #fff;
+    padding: 10px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
   `,
 }); //${getBackgroundShadow};
 
@@ -453,7 +505,7 @@ const PageIcon = ThemeHoc(
 PageIcon.displayName = 'page';
 
 type TabsState = {|
-  activityValue: string,
+  activityValue: number,
   data: Array<Object>,
   currentPage: number,
   totalPage: number,
@@ -463,7 +515,7 @@ type TabsState = {|
 |};
 
 type TabsProps = {
-  activityValue: string,
+  activityValue: number,
   defaultActivityValue: string,
   onTabClick: Function,
   tabPosition?: TabPositionType,
@@ -523,7 +575,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
       }
     }
     if (!state) {
-      const theData = configData ? addActivityValue2Data(configData) : [];
+      const theData = configData || [];
       const theActivityValue = hasActivityValueInprops
         ? activityValue
         : defaultActivityValue
@@ -533,7 +585,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
         : undefined;
       return {
         data: theData,
-        activityValue: theActivityValue,
+        activityValue: theActivityValue * 1,
         currentPage: 0,
         totalPage: 1,
         pagedCount: 0,
@@ -848,9 +900,10 @@ class TabsBox extends Component<TabsProps, TabsState> {
         'suffixIcon',
         getAttributeFromObject(child.props, 'suffixIcon', '')
       ),
-      activityValue: TabpaneActivityValue,
       onClick: this.onTabClick,
-      isSelect: !disabled && TabpaneActivityValue === activityValue,
+      activityValue,
+      index: i,
+      isSelect: !disabled && activityValue === i,
       getTabpaneWidthOrHeight: this.getTabpaneWidthOrHeight,
       onDeleteClick: this.onDeleteClick,
       disabled,
@@ -863,75 +916,116 @@ class TabsBox extends Component<TabsProps, TabsState> {
     const { data } = this.state;
     const { getTabpane, themeProps } = this.props;
     return data
-      ? data.map((child, i) => {
-          const target = <Tabpane {...this.props} {...this.getTabpaneConfig(child, i)} />;
-          return getTabpane ? getTabpane(target, i) : target;
+      ? data.map((child, index) => {
+          const target = <Tabpane {...this.props} {...this.getTabpaneConfig(child, index)} />;
+          return getTabpane ? getTabpane(target, index) : target;
         })
       : null;
   }
+
   getChildrenContent() {
-    const { forceRender, tabPosition, themeProps } = this.props;
     const { activityValue, data } = this.state;
-    if (data && data.map) {
-      return data.map((child, i) => {
-        const childActivityValue = getAttributeFromObject(
-          child,
-          'activityValue',
-          getAttributeFromObject(
-            child.props,
-            'activityValue',
-            getKeyfromIndex(data, i, 'activityValue')
-          )
-        );
-        if (forceRender || childActivityValue === activityValue) {
-          const content = getAttributeFromObject(
-            child,
-            'content',
-            getAttributeFromObject(
-              child.props,
+    const { forceRender, tabPosition, themeProps } = this.props;
+    if (data) {
+      themeProps.propsConfig = { tabPosition };
+      return (
+        <TabContentContainer themeProps={themeProps}>
+          {data.map((child, index) => {
+            const content = getAttributeFromObject(
+              child,
               'content',
-              getAttributeFromObject(child, 'children', undefined)
-            )
-          );
-          const contentThemeProps = this.props.getPartOfThemeProps('ContentBlock');
-          contentThemeProps.propsConfig = { tabPosition };
-          return (
-            <TabContent
-              {...this.props}
-              themeProps={contentThemeProps}
-              content={content}
-              activityValue={childActivityValue}
-              tabPosition={tabPosition}
-            />
-          );
-        }
-      });
+              getAttributeFromObject(
+                child.props,
+                'content',
+                getAttributeFromObject(child, 'children', undefined)
+              )
+            );
+            const props = { active: activityValue, index };
+            const contentThemeProps = this.props.getPartOfThemeProps('ContentBlock', { props });
+            return (
+              <TabContent themeProps={contentThemeProps}>
+                <TabContentInner
+                  {...this.props}
+                  themeProps={contentThemeProps}
+                  content={content}
+                  // tabPosition={tabPosition}
+                />
+              </TabContent>
+            );
+          })}
+        </TabContentContainer>
+      );
     }
-    return null;
   }
-  getTabpaneDisabled(activityValue: string) {
+  // TabContentContainer
+  // getChildrenContent() {
+  //   const { forceRender, tabPosition, themeProps } = this.props;
+  //   const { activityValue, data } = this.state;
+  //   if (data && data.map) {
+  //     return data.map((child, i) => {
+  //       const childActivityValue = getAttributeFromObject(
+  //         child,
+  //         'activityValue',
+  //         getAttributeFromObject(
+  //           child.props,
+  //           'activityValue',
+  //           getKeyfromIndex(data, i, 'activityValue')
+  //         )
+  //       );
+  //       if (forceRender || childActivityValue === activityValue) {
+  //         const content = getAttributeFromObject(
+  //           child,
+  //           'content',
+  //           getAttributeFromObject(
+  //             child.props,
+  //             'content',
+  //             getAttributeFromObject(child, 'children', undefined)
+  //           )
+  //         );
+  //         const contentThemeProps = this.props.getPartOfThemeProps('ContentBlock');
+  //         contentThemeProps.propsConfig = { tabPosition };
+  //         return (
+  //           <TabContent
+  //             {...this.props}
+  //             themeProps={contentThemeProps}
+  //             content={content}
+  //             activityValue={childActivityValue}
+  //             tabPosition={tabPosition}
+  //           />
+  //         );
+  //       }
+  //     });
+  //   }
+  //   return null;
+  // }
+  getTabpaneDisabled(activityValue: number) {
     const { data } = this.state;
     if (activityValue) {
-      const index = getIndexfromKey(data, 'activityValue', activityValue);
-      return data[index].disabled;
+      // const index = getIndexfromKey(data, 'activityValue', activityValue.toString());
+      return data[activityValue].disabled;
     }
     return false;
   }
 
-  onTabClick = (activityValue: string, e: Event) => {
+  onTabClick = (index: number) => {
     const { onTabClick } = this.props;
-    if (!this.getTabpaneDisabled(activityValue)) {
-      onTabClick && onTabClick(activityValue, e);
-      this.setActiveValue(activityValue, e);
+    const { activityValue } = this.state;
+    if (activityValue === index) {
+      return;
+    }
+
+    if (!this.getTabpaneDisabled(index)) {
+      onTabClick && onTabClick(index);
+      this.setState({ activityValue: index });
     }
   };
-  setActiveValue = (activityValue: string, e: Event) => {
-    const { onChange } = this.props;
-    if (activityValue !== this.state.activityValue) {
-      if (!('activeValue' in this.props)) this.setState({ activityValue });
-    }
-    onChange && onChange(activityValue, e);
-  };
+  // setActiveValue = (activityValue: number) => {
+  //   const { onChange } = this.props;
+  //   if (activityValue !== this.state.activityValue) {
+  //     this.setState({ activityValue });
+  //   }
+  //   // onChange && onChange(activityValue, e);
+  // };
 
   onDeleteClick = (e: Event, activityValue: string) => {
     const { data } = this.state;
@@ -1006,13 +1100,13 @@ class TabsBox extends Component<TabsProps, TabsState> {
     click && click(e);
   };
 
-  onNextClick = (isAllowToNext: boolead) => {
+  onNextClick = (isAllowToNext: boolean) => {
     if (isAllowToNext) {
       return;
     }
     return this.createNativeClick('onNextClick', 'next');
   };
-  onPreClick = (isAllowToPrev: boolead) => {
+  onPreClick = (isAllowToPrev: boolean) => {
     if (isAllowToPrev) {
       return;
     }

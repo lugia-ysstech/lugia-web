@@ -28,7 +28,7 @@ const BaseTabHoc = CSSComponent({
   tag: 'div',
   className: 'BaseTab',
   normal: {
-    selectNames: [['color'], ['background'], ['border'], ['margin'], ['padding']],
+    selectNames: [['color'], ['background'], ['border'], ['margin'], ['padding'], ['font']],
     getCSS: (theme: Object, themeProps: Object) => {
       const { color } = theme;
       const {
@@ -139,125 +139,13 @@ const BaseTabHoc = CSSComponent({
   `,
 });
 
-const BaseTab = ThemeHoc(
-  class extends React.Component<any, any> {
-    render() {
-      const {
-        tabType,
-        isSelect,
-        tabPosition,
-        themeProps,
-        children,
-        onClick,
-        onMouseEnter,
-        onMouseLeave,
-      } = this.props;
-      themeProps.propsConfig = { tabType, isSelect, tabPosition };
-      return (
-        <BaseTabHoc
-          onClick={onClick}
-          {...addMouseEvent(this, { enter: onMouseEnter, leave: onMouseLeave })}
-          themeProps={themeProps}
-          className={'DefaultTabPan'}
-        >
-          {children}
-        </BaseTabHoc>
-      );
-    }
-  },
-  'BaseTab',
-  { hover: true, active: false }
-);
+const BaseTab = ThemeHoc(BaseTabHoc, 'BaseTab', { hover: true, active: false });
 
-const SelectTab = ThemeHoc(
-  class extends React.Component<any, any> {
-    render() {
-      const {
-        tabType,
-        isSelect,
-        tabPosition,
-        themeProps,
-        children,
-        onClick,
-        onMouseEnter,
-        onMouseLeave,
-      } = this.props;
-      themeProps.propsConfig = { tabType, isSelect, tabPosition };
-      return (
-        <BaseTabHoc
-          onClick={onClick}
-          {...addMouseEvent(this, { enter: onMouseEnter, leave: onMouseLeave })}
-          themeProps={themeProps}
-          className={'SelectTabPan'}
-        >
-          {children}
-        </BaseTabHoc>
-      );
-    }
-  },
-  'BaseTab',
-  { hover: true, active: false }
-);
+const SelectTab = ThemeHoc(BaseTabHoc, 'BaseTab', { hover: true, active: false });
 
-const WindowTab = ThemeHoc(
-  class extends React.Component<any, any> {
-    render() {
-      const {
-        tabType,
-        isSelect,
-        tabPosition,
-        themeProps,
-        children,
-        onClick,
-        onMouseEnter,
-        onMouseLeave,
-      } = this.props;
-      themeProps.propsConfig = { tabType, isSelect, tabPosition };
-      return (
-        <BaseTabHoc
-          onClick={onClick}
-          {...addMouseEvent(this, { enter: onMouseEnter, leave: onMouseLeave })}
-          themeProps={themeProps}
-          className={'WindowTabPan'}
-        >
-          {children}
-        </BaseTabHoc>
-      );
-    }
-  },
-  'WindowTab',
-  { hover: true, active: false }
-);
+const WindowTab = ThemeHoc(BaseTabHoc, 'WindowTab', { hover: true, active: false });
 
-const CardTab = ThemeHoc(
-  class extends React.Component<any, any> {
-    render() {
-      const {
-        tabType,
-        isSelect,
-        tabPosition,
-        themeProps,
-        children,
-        onClick,
-        onMouseEnter,
-        onMouseLeave,
-      } = this.props;
-      themeProps.propsConfig = { tabType, isSelect, tabPosition };
-      return (
-        <BaseTabHoc
-          onClick={onClick}
-          {...addMouseEvent(this, { enter: onMouseEnter, leave: onMouseLeave })}
-          themeProps={themeProps}
-          className={'CardTabPan'}
-        >
-          {children}
-        </BaseTabHoc>
-      );
-    }
-  },
-  'CardTab',
-  { hover: true, active: false }
-);
+const CardTab = ThemeHoc(BaseTabHoc, 'CardTab', { hover: true, active: false });
 
 const addWidth = keyframes`
     0% {
@@ -290,6 +178,12 @@ const Title = CSSComponent({
       const { height } = theme;
       return {
         lineHeight: height ? `${height}px` : '3.4rem',
+      };
+    },
+    getThemeMeta: (theme: Object, themeProps: Object) => {
+      const { height } = theme;
+      return {
+        lineHeight: height ? `${height}` : '3.4rem',
       };
     },
   },
@@ -452,7 +346,7 @@ type TabpaneProps = {
   suffixIcon?: string,
   tabType?: TabType,
   tabPosition?: TabPositionType,
-  activityValue?: string,
+  index: number,
   isSelect?: boolean,
   disabled?: boolean,
   onClick?: Function,
@@ -495,10 +389,11 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
       tabType,
       isSelect
     );
-
+    console.log('isSelect', isSelect);
     // const titleThemeProps = this.props.getPartOfThemeProps('DefaultTabPan');
     let Target = (
       <TargetTab
+        propsConfig={{ tabType, tabPosition, isSelect }}
         theme={theme}
         viewClass={viewClass}
         disabled={disabled}
@@ -546,6 +441,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     if (matchType(tabType, 'line') && isVertical(tabPosition)) {
       Target = (
         <TargetTab
+          propsConfig={{ tabType, tabPosition, isSelect }}
           theme={theme}
           viewClass={viewClass}
           disabled={disabled}
@@ -615,6 +511,10 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
         const cardSelectObj = {
           [selectViewClass]: {
             normal: {
+              margin: {
+                left: 4,
+                right: 4,
+              },
               border: getBorder(
                 { color: '#e8e8e8', width: 1, style: 'solid' },
                 { directions: ['l', 'r', 't'], radius: 4, radiusDirections: ['tl', 'tr'] }
@@ -660,8 +560,8 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
   }
 
   handleClick = () => {
-    const { activityValue, onClick, disabled } = this.props;
-    if (!disabled) onClick && onClick(activityValue);
+    const { index, onClick, disabled } = this.props;
+    if (!disabled) onClick && onClick(index);
   };
 
   getTabIconContainer(icon: ?string, themeProps?: Object = {}, type?: string) {
@@ -684,8 +584,8 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     return icon;
   }
   onDeleteClick = (e: Event) => {
-    const { onDeleteClick, activityValue } = this.props;
-    onDeleteClick && onDeleteClick(e, activityValue);
+    const { onDeleteClick, index } = this.props;
+    onDeleteClick && onDeleteClick(e, index);
   };
   getClearButton() {
     const { tabType, themeProps, disabled } = this.props;
@@ -719,12 +619,12 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     this.setState({ iconClass: 'lugia-icon-reminder_close' });
   };
   onMouseEnter = (e: Object) => {
-    const { onMouseEnter, activityValue } = this.props;
-    onMouseEnter && onMouseEnter(activityValue);
+    const { onMouseEnter, index } = this.props;
+    onMouseEnter && onMouseEnter(index);
   };
   onMouseLeave = (e: Object) => {
-    const { onMouseLeave, activityValue } = this.props;
-    onMouseLeave && onMouseLeave(activityValue);
+    const { onMouseLeave, index } = this.props;
+    onMouseLeave && onMouseLeave(index);
   };
   getContainerWidth() {
     if (this.tabpane) {

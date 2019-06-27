@@ -16,32 +16,18 @@ const ContentContainer = CSSComponent({
   tag: 'div',
   className: 'ContentContainer',
   normal: {
-    selectNames: [['padding']],
-    getCSS: (theme: Object, themeProps: Object) => {
-      const {
-        propsConfig: { tabPosition },
-      } = themeProps;
-      if (isVertical(tabPosition)) {
-        return 'float: left;';
-      }
-    },
+    selectNames: [],
   },
   disabled: {
     selectNames: [],
   },
-  css: css`
-    overflow: hidden;
-    background: #fff;
-    padding: 10px;
-  `,
+  css: '',
 }); //${getContentPosition};
 
 type TabContentState = {};
 type TabContentProps = {
   content: React$Element<any>,
   tabType: TabType,
-  tabPosition: TabPositionType,
-  activityValue: string,
 };
 
 class TabContent extends Component<TabContentProps, TabContentState> {
@@ -53,17 +39,9 @@ class TabContent extends Component<TabContentProps, TabContentState> {
   }
 
   render() {
-    const { tabPosition, content, activityValue, themeProps } = this.props;
+    const { content, themeProps } = this.props;
 
-    return (
-      <ContentContainer
-        themeProps={themeProps}
-        activityValue={activityValue}
-        tabPosition={tabPosition}
-      >
-        {content}
-      </ContentContainer>
-    );
+    return <ContentContainer themeProps={themeProps}>{content}</ContentContainer>;
   }
 }
 
