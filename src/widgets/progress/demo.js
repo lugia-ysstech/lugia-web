@@ -5,7 +5,6 @@
  * @flow
  */
 import * as React from 'react';
-import styled from 'styled-components';
 import { getBorder, getBoxShadow } from '@lugia/theme-css-hoc';
 import Progress from './progress';
 import Widget from '../consts/index';
