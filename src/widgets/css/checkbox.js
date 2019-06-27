@@ -197,7 +197,7 @@ export const CheckBoxInnerSpan = CSSComponent({
   normal: {
     selectNames: [['background'], ['border']],
     defaultTheme: {
-      background: { color: '#fff' },
+      background: { color: defaultColor },
       border: getBorder({ color: borderColor, width: 1, style: 'solid' }, { radius: 2 }),
     },
     getCSS(themeMeta: Object, themeConfig: Object): string {
@@ -257,7 +257,7 @@ export const CheckBoxInnerSpan = CSSComponent({
     selectNames: [['background'], ['border']],
     defaultTheme: {
       border: getBorder({ color: themeColor, width: 1, style: 'solid' }, { radius: 2 }),
-      background: { color: '#fff' },
+      background: { color: defaultColor },
     },
   },
   disabled: {
