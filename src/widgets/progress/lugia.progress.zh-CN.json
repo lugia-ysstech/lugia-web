@@ -20,7 +20,12 @@
     },
     "status": {
       "type": "ProgressStatusType",
-      "desc": "进度条状态，可设置为success、error、active或不设",
+      "desc": "进度条状态，可设置为success、error或不设",
+      "defaultValue": "true"
+    },
+    "active": {
+      "type": "boolean",
+      "desc": "进度条状态是否激活状态，仅生效于 type = line",
       "defaultValue": "true"
     },
     "showInfo": {
