@@ -14,14 +14,14 @@ const IconTag = CSSComponent({
   tag: 'i',
   className: 'iconTag',
   normal: {
-    selectNames: [['color'], ['margin'], ['fontSize'], ['padding'], ['cursor']],
+    selectNames: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
     defaultTheme: { cursor: 'pointer' },
   },
   hover: {
-    selectNames: [['color'], ['margin'], ['cursor']],
+    selectNames: [['color'], ['margin'], ['cursor'], ['fontSize'], ['font']],
   },
   active: {
-    selectNames: [['color'], ['cursor']],
+    selectNames: [['color'], ['cursor'], ['fontSize'], ['font']],
   },
   disabled: {
     selectNames: [['color'], ['cursor']],
