@@ -200,7 +200,15 @@ export const getTextColor = (status: 'error' | 'success' | 'default') => {
   return mediumGreyColor;
 };
 
-const getTextFont = (size: 'default' | 'small') => {
+const getTextFont = (propsConfig: Object) => {
+  const { type, size } = propsConfig;
+  if (type === 'circle' || type === 'dashboard') {
+    if (isSmall(size)) {
+      return 26;
+    }
+    return 40;
+  }
+
   return isSmall(size) ? 12 : 14;
 };
 
@@ -251,7 +259,7 @@ export const Icons = CSSComponent({
 
       return {
         color: getTextColor(status),
-        fontSize: getTextFont(size),
+        fontSize: getTextFont(propsConfig),
       };
     },
   },

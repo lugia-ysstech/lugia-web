@@ -89,7 +89,14 @@ export default class extends React.Component<any, any> {
     };
   };
   getPercentText = () => {
-    const { percent = 0, format, status, size = 'default', type = 'circle' } = this.props;
+    const {
+      percent = 0,
+      format,
+      status,
+      size = 'default',
+      type = 'circle',
+      getPartOfThemeProps,
+    } = this.props;
 
     return getText(true, {
       hasFormat: this.hasFormat(),
@@ -98,6 +105,7 @@ export default class extends React.Component<any, any> {
       status,
       size,
       type,
+      getPartOfThemeProps,
     });
   };
   getColor = () => {
