@@ -1181,10 +1181,10 @@
     babel-plugin-transform-dynamic-import "2.1.0"
     babel-plugin-transform-react-remove-prop-types "0.4.20"
 
-"@lugia/css@1.0.13", "@lugia/css@^1.0.13":
-  version "1.0.13"
-  resolved "http://192.168.102.79:5001/@lugia/css/download/@lugia/css-1.0.13.tgz#47177db7e23271594772c2d68a383b4dae36d6ed"
-  integrity sha1-Rxd9t+IycVlHcsLWijg7Ta421u0=
+"@lugia/css@^1.0.14":
+  version "1.0.14"
+  resolved "http://192.168.102.79:5001/@lugia/css/download/@lugia/css-1.0.14.tgz#b56999508f52994fbc96b903bfa06913a2696ff2"
+  integrity sha1-tWmZUI9SmU+8lrkDv6BpE6Jpb/I=
   dependencies:
     "@babel/runtime" "^7.4.5"
     decamelize "^3.2.0"
@@ -1478,13 +1478,13 @@
     "@babel/runtime" "^7.4.5"
     "@lugia/object-utils" "^1.0.8"
 
-"@lugia/theme-css-hoc@1.0.30":
-  version "1.0.30"
-  resolved "http://192.168.102.79:5001/@lugia/theme-css-hoc/download/@lugia/theme-css-hoc-1.0.30.tgz#26e604c2fbd760991b82c2f67b377e45222d19ce"
-  integrity sha1-JuYEwvvXYJkbgsL2ezd+RSItGc4=
+"@lugia/theme-css-hoc@^1.0.31":
+  version "1.0.31"
+  resolved "http://192.168.102.79:5001/@lugia/theme-css-hoc/download/@lugia/theme-css-hoc-1.0.31.tgz#a1941e8164ee62038b4f0104a1f464ccaf74b334"
+  integrity sha1-oZQegWTuYgOLTwEEofRkzK90szQ=
   dependencies:
     "@babel/runtime" "^7.4.5"
-    "@lugia/css" "^1.0.13"
+    "@lugia/css" "^1.0.14"
     "@lugia/object-utils" "^1.0.8"
     "@lugia/theme-core" "^1.0.16"
     decamelize "^3.2.0"
