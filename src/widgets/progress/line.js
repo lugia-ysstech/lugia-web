@@ -34,8 +34,8 @@ export const getText = (inside?: boolean, props: Object) => {
       : 'ProgressDashboardSuccessIcon'
   );
   const ErrorIconTheme = getPartOfThemeProps('ProgressLineErrorIcon');
-  SuccessIconTheme.propsConfig = { size, status };
-  ErrorIconTheme.propsConfig = { size, status };
+  SuccessIconTheme.propsConfig = { size, status, type };
+  ErrorIconTheme.propsConfig = { size, status, type };
 
   if (status === 'error') {
     return (
@@ -60,17 +60,18 @@ export const getText = (inside?: boolean, props: Object) => {
   return `${percent}%`;
 };
 
-export default class extends React.Component<ProgressProps, ProgressState> {
-  getStatus = () => {
-    const { status = 'default', percent = 0 } = this.props;
-    if (handlePercent(percent) === 100) {
-      if (status === 'error') {
-        return status;
-      }
-      return 'success';
+export const getStatus = (props: Object) => {
+  const { status = 'default', percent = 0 } = props;
+  if (handlePercent(percent) === 100) {
+    if (status === 'error') {
+      return status;
     }
-    return status;
-  };
+    return 'success';
+  }
+  return status;
+};
+
+export default class extends React.Component<ProgressProps, ProgressState> {
   render() {
     const {
       type = 'line',
@@ -89,7 +90,7 @@ export default class extends React.Component<ProgressProps, ProgressState> {
     const InnerLineErrorTheme = getPartOfThemeProps('ProgressInnerLine_Error');
     const InsideTextTheme = getPartOfThemeProps('ProgressLineInsideText');
     const InfoTextTheme = getPartOfThemeProps('ProgressLineInfoText');
-    const progressStatus = this.getStatus();
+    const progressStatus = getStatus({ status, percent });
     const ProgressInnerLineTheme =
       progressStatus === 'success'
         ? InnerLineSuccessTheme

@@ -159,7 +159,7 @@ export const ProgressBackground = CSSComponent({
       const { status } = propsConfig;
       const height = getHeight(propsConfig);
       const backgroundCSS = BackgroundCSS[status];
-      console.log(backgroundCSS);
+
       return {
         background: { color: backgroundCSS ? backgroundCSS.background : themeColor },
         height,
@@ -200,7 +200,7 @@ export const getTextColor = (status: 'error' | 'success' | 'default') => {
   return mediumGreyColor;
 };
 
-const getTextFont = (propsConfig: Object) => {
+export const getTextFont = (propsConfig: Object) => {
   const { type, size } = propsConfig;
   if (type === 'circle' || type === 'dashboard') {
     if (isSmall(size)) {
@@ -256,7 +256,9 @@ export const Icons = CSSComponent({
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig = {} } = themeProps;
       const { size, status } = propsConfig;
-
+      console.log('status', status);
+      console.log('color', getTextColor(status));
+      console.log('fontSize', getTextFont(propsConfig));
       return {
         color: getTextColor(status),
         fontSize: getTextFont(propsConfig),
