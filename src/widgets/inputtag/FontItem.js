@@ -7,16 +7,12 @@
 import React from 'react';
 import Item from './Item';
 import Widget from '../consts/index';
-import styled from 'styled-components';
-import { FontSize } from '../css';
+import { findDOMNode } from 'react-dom';
+import { HiddenItem } from '../css/inputtag';
+
 type FontItemState = {
   text: string,
 };
-const HiddenItem: Object = styled(Item)`
-  font-size: ${FontSize};
-  position: absolute !important;
-  top: -943124px;
-`;
 export default class extends React.Component<any, FontItemState> {
   static displayName = Widget.InputTagFontItem;
 
@@ -46,10 +42,18 @@ export default class extends React.Component<any, FontItemState> {
 
   render() {
     const { text } = this.state;
+
     const fillItem: Function = (cmp: Object): void => {
       this.item = cmp;
     };
-    return <HiddenItem ref={fillItem}>{text}</HiddenItem>;
+
+    return (
+      <HiddenItem themeProps={this.props.themeProps}>
+        <Item {...this.props} ref={fillItem}>
+          {text}
+        </Item>
+      </HiddenItem>
+    );
   }
 
   componentDidMount() {
@@ -57,7 +61,8 @@ export default class extends React.Component<any, FontItemState> {
   }
   componentDidUpdate() {
     if (this.item) {
-      this.width = this.item.getWidth();
+      // this.width = findDOMNode(this.item).offsetWidth;
+      this.width = this.item.getThemeTarget().item.offsetWidth;
     }
   }
 }

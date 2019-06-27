@@ -70,6 +70,7 @@ export const MenuContainer = CSSComponent({
     overflow: hidden;
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
+    background: #fff;
   `,
 });
 

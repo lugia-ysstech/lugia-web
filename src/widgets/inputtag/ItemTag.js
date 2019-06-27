@@ -15,32 +15,31 @@ import {
 } from '../css/inputtag';
 import { ItemBackgroundColor } from '../css/menu';
 import { Padding } from '../css/input';
-import { px2emcss } from '../css/units';
-const em = px2emcss(1.2);
+import { px2remcss } from '../css/units';
 
 const ItemTagHeight = Height - Padding - MarginTop * 2;
 
-const getPaddingRight = (props: Object) => (props.closeable ? em(PadingRight) : em(PaddingLeft));
+const getPaddingRight = (props: Object) =>
+  (props.closeable ? px2remcss(PadingRight) : px2remcss(PaddingLeft));
 export const ItemContainer = styled.li`
-  margin-top: ${em(4)};
-  height: ${em(ItemTagHeight)};
-  line-height: ${em(ItemTagHeight)};
+  margin-top: ${px2remcss(4)};
+  height: ${px2remcss(ItemTagHeight)};
+  line-height: ${px2remcss(ItemTagHeight)};
   user-select: none;
   background: ${ItemBackgroundColor};
-  border-radius: ${em(ItemTagHeight)};
+  border-radius: ${px2remcss(ItemTagHeight)};
   color: ${darkGreyColor};
   cursor: default;
   float: left;
-  margin-right: ${em(MarginRight)};
   position: relative;
   overflow: hidden;
   transition: padding 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-  padding: 0 ${getPaddingRight} 0 ${em(PaddingLeft)};
+  padding: 0 ${getPaddingRight} 0 ${px2remcss(PaddingLeft)};
 `;
 
 export const ItemText = styled.span`
-  height: ${em(20)};
-  line-height: ${em(20)};
+  height: ${px2remcss(20)};
+  line-height: ${px2remcss(20)};
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;

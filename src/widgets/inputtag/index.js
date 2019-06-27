@@ -8,48 +8,43 @@ import '../common/shirm';
 
 import * as React from 'react';
 import styled from 'styled-components';
-
+import ThemeHoc from '@lugia/theme-hoc';
 import Item from './ItemOption';
 import Icon from '../icon';
 import MoreItem from './MoreItem';
 import FontItem from './FontItem';
-import ThemeProvider from '../theme-provider';
+import { toNumber, isNumber } from '../common/NumberUtils';
 import Widget from '../consts/index';
 import { ValueField } from '../consts/props';
-import Theme from '../theme';
 import DropMenu from '../dropmenu';
 import Menu from '../menu';
 import Support from '../common/FormFieldWidgetSupport';
 import PlaceContainer from '../common/PlaceContainer';
-import * as InputCSS from '../css/input';
-import {
-  DefaultHelp,
-  getFocusShadow,
-  getInputBorderColor,
-  getInputBorderHoverColor,
-  Padding,
-  RadiusSize,
-} from '../css/input';
+import { DefaultHelp } from '../css/input';
 
-import { FontSize, FontSizeNumber } from '../css';
 import { DefaultHeight } from '../css/menu';
 import {
-  blackColor,
-  defaultColor,
-  Height,
+  FontSize,
   lightGreyColor,
-  MarginRight,
-  mediumGreyColor,
-  SingleLineHeight,
-  themeColor,
+  Container,
+  OutContainer,
+  InnerContainer,
+  SingleInnerContainer,
+  Prefix,
+  IconWrap,
+  CommonIcon,
+  FlexResBox,
+  List,
+  HiddenList,
+  FocuInput,
+  InputTagTheme,
 } from '../css/inputtag';
 import ErrorTip from '../tooltip/ErrorTip';
-import { px2emcss } from '../css/units';
+import { px2remcss } from '../css/units';
 
-const em = px2emcss(FontSizeNumber);
 const ClearMenuItemButton: Object = styled(Icon)`
   top: 50%;
-  right: ${em(12)};
+  right: ${px2remcss(FontSize)};
   position: absolute;
   transform: translateY(-50%);
   color: ${lightGreyColor};
@@ -79,128 +74,17 @@ type InputTagProps = {
   prefix?: any,
 };
 const Clear = 'lugia-icon-reminder_close';
+const Pull = 'lugia-icon-direction_down';
 type InputTagState = {
   focus: boolean,
   items: Array<React.Node>,
   value: Object,
   query: string,
 };
-const getWidthBySpan = (spanWidth: number) => (props: Object) => {
-  const w = props.theme.width - spanWidth;
-  return w ? `width: ${em(w)};` : `width: ${em(200)};`;
+
+const getContentWidth = (w: number, left: number, right: number, size: number) => {
+  return w - left - right - size - 10;
 };
-const getWidth = getWidthBySpan(0);
-const getBackground = props => {
-  return props.disabled ? 'background: rgba(0,0,0,.1);' : '#ffffff';
-};
-
-const getCursor = props => {
-  const { disabled } = props;
-  return disabled ? 'no-drop' : 'pointer';
-};
-
-const Container = styled.div`
-  ${getWidth};
-  display: inline-block;
-  position: relative;
-  background: ${defaultColor};
-  color: ${mediumGreyColor};
-  font-size: ${FontSize};
-  cursor: ${getCursor};
-`;
-const getBorderColor = props => {
-  const { focus } = props;
-  return focus ? `border-color: ${getInputBorderHoverColor(props)}; ${getFocusShadow(props)};` : '';
-};
-
-const IconButton: Object = styled(Icon)`
-  top: 50%;
-  right: 0;
-  position: absolute;
-  transform: translateY(-50%);
-  color: ${lightGreyColor};
-  transition: all 0.3s;
-`;
-
-const Prefix = styled.span`
-  position: relative;
-  left: ${em(-5)};
-`;
-
-/** add by szfeng */
-const PullIcon: Object = styled(IconButton)`
-  font-size: ${FontSize};
-`;
-IconButton.displayName = Widget.InputTagClearButton;
-
-const getHoverCSS = (props: Object) => {
-  const { disabled } = props;
-  return disabled
-    ? ''
-    : `
-  :hover {
-    border-color: ${themeColor};
-  }
-  &:hover > div > i {
-    color: ${themeColor};
-  }
-  `;
-};
-
-const OutContainer = styled.div`
-  ${getBackground};
-  border: solid ${em(1)} ${getInputBorderColor};
-  border-radius: ${RadiusSize};
-  min-height: ${InputCSS.DefaultHeight};
-  padding-bottom: ${em(3)};
-  transition: all 0.3s;
-  ${getBorderColor};
-  ${getHoverCSS};
-`;
-
-const marginLeft = 5;
-const marginRight = 7;
-
-const getContentWidth = (w: number) => {
-  return w - marginRight - marginLeft;
-};
-const InnerContainer = styled.div`
-  ${getWidthBySpan(-getContentWidth(0))}
-  height: ${em(Height - Padding)};
-  margin-left: ${em(marginLeft)};
-  margin-right: ${em(marginRight)};
-  margin-bottom: -${em(3)};
-  position: relative;
-  user-select: none;
-`;
-const SingleInnerContainer = styled(InnerContainer)`
-  padding-left: ${em(5)};
-  padding-right: ${em(14)};
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  line-height: ${SingleLineHeight};
-  color: ${blackColor};
-`;
-const List = styled.ul`
-  list-style: none;
-  margin: 0;
-  padding: 0;
-`;
-const InputTagTheme = styled.span`
-  display: block;
-  min-height: ${em(Height)};
-  height: ${em(Height)};
-`;
-const FocuInput = styled.input`
-  position: absolute;
-  left: -${em(500)};
-  width: ${em(1)};
-  height: ${em(1)};
-  padding: 0;
-  border: none;
-`;
-FocuInput.displayName = Widget.InputTagFocuInput;
 
 class InputTag extends React.Component<InputTagProps, InputTagState> {
   static displayName = Widget.InputTag;
@@ -318,32 +202,53 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     let result;
     const clearButton = this.getClearButton();
     const placeholder = this.getPlaceholder();
-    const config = { width: this.getWidth(), height: this.getHeight() };
-    const theme = {
-      [Widget.DropMenu]: config,
-      [Widget.Icon]: { hoverColor: themeColor },
-      [IconButton.displayName]: { hoverColor: themeColor },
-    };
+    const FontItemThemeProps = props.getPartOfThemeProps('TagWrap');
     const fillFontItem: Function = (cmp: Object): any => (this.fontItem = cmp);
-    const font = <FontItem ref={fillFontItem} key="fontItem" />;
+    const font = (
+      <FontItem
+        themeProps={FontItemThemeProps}
+        theme={this.getTagItemTheme()}
+        ref={fillFontItem}
+        key="fontItem"
+      />
+    );
     const { focus } = state;
-    const { getTheme, disabled, validateStatus, prefix } = props;
+    const {
+      getTheme,
+      disabled,
+      validateStatus,
+      prefix,
+      getPartOfThemeHocProps,
+      getPartOfThemeProps,
+    } = props;
 
+    const themeProps = getPartOfThemeProps('InputTagWrap');
+    const { theme: ContainerTheme, viewClass } = getPartOfThemeHocProps('InputTagWrap');
     if (!this.isMutliple()) {
       result = this.generateOutter(
         <Container
+          themeProps={themeProps}
           disabled={disabled}
           theme={getTheme()}
           ref={cmp => (this.container = cmp)}
           onClick={this.onClick}
         >
-          <OutContainer focus={focus} disabled={disabled} validateStatus={validateStatus}>
-            <SingleInnerContainer disabled={disabled} theme={props.getTheme()}>
-              {prefix ? <Prefix>{prefix}</Prefix> : null}
-              {placeholder}
-              {this.getSingleValue()}
+          <OutContainer
+            theme={ContainerTheme}
+            viewClass={viewClass}
+            focus={focus}
+            disabled={disabled}
+            validateStatus={validateStatus}
+          >
+            <SingleInnerContainer themeProps={themeProps} disabled={disabled}>
+              <FlexResBox themeProps={themeProps}>
+                {prefix ? <Prefix>{prefix}</Prefix> : null}
+                {placeholder}
+                {this.getSingleValue()}
+                <FocuInput themeProps={themeProps} />
+              </FlexResBox>
+
               {clearButton}
-              <FocuInput />
             </SingleInnerContainer>
           </OutContainer>
         </Container>
@@ -352,18 +257,27 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       const { items } = state;
       result = this.generateOutter(
         <Container
+          themeProps={themeProps}
           disabled={disabled}
-          theme={props.getTheme()}
           ref={cmp => (this.container = cmp)}
           onClick={this.onClick}
         >
-          <OutContainer focus={focus} disabled={disabled} validateStatus={validateStatus}>
-            <InnerContainer theme={props.getTheme()}>
-              <List ref={cmp => (this.list = cmp)}>{items}</List>
-
-              {placeholder}
+          <OutContainer
+            theme={ContainerTheme}
+            viewClass={viewClass}
+            focus={focus}
+            disabled={disabled}
+            validateStatus={validateStatus}
+          >
+            <InnerContainer themeProps={themeProps}>
+              <FlexResBox themeProps={themeProps}>
+                <List themeProps={themeProps} ref={cmp => (this.list = cmp)}>
+                  {items}
+                </List>
+                {placeholder}
+                <FocuInput themeProps={themeProps} onFocus={this.onFocus} onBlur={this.onBlur} />
+              </FlexResBox>
               {clearButton}
-              <FocuInput onFocus={this.onFocus} onBlur={this.onBlur} />
             </InnerContainer>
           </OutContainer>
         </Container>
@@ -378,7 +292,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
             onPopupVisibleChange={this.onPopupVisibleChange}
             action={[]}
             query={query}
-            needQueryInput
+            needQueryInput // 此处是否显示查询框
             hideAction={['click']}
             ref={cmp => {
               this.dropMenu = cmp;
@@ -391,12 +305,12 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     }
 
     return (
-      <Theme config={theme}>
-        <InputTagTheme>
-          <List>{font}</List>
-          {result}
-        </InputTagTheme>
-      </Theme>
+      <InputTagTheme themeProps={themeProps}>
+        <HiddenList themeProps={themeProps}>
+          <List themeProps={themeProps}>{font}</List>
+        </HiddenList>
+        {result}
+      </InputTagTheme>
     );
   }
 
@@ -440,11 +354,17 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   };
 
   getClearButton() {
-    if (this.isEmpty()) {
-      return <PullIcon iconClass="lugia-icon-direction_down" />;
-    }
+    const { theme, viewClass } = this.props.getPartOfThemeHocProps('Icon');
+    const themeProps = this.props.getPartOfThemeProps('Icon');
+    const Icon = this.isEmpty() ? (
+      <CommonIcon themeProps={themeProps} iconClass={Pull} />
+    ) : (
+      <CommonIcon themeProps={themeProps} iconClass={Clear} onClick={this.onClear} />
+    );
     return (
-      <IconButton iconClass={Clear} viewClass={IconButton.displayName} onClick={this.onClear} />
+      <IconWrap theme={theme} viewClass={viewClass}>
+        {Icon}
+      </IconWrap>
     );
   }
 
@@ -494,8 +414,11 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
         }
       }
     }
-
-    return <Menu data={items} step={30} getSuffix={this.getIcon} />;
+    const themeConfig = this.props.getPartOfThemeConfig('Menu');
+    const menuConfig = {
+      [Widget.Menu]: themeConfig,
+    };
+    return <Menu theme={menuConfig} data={items} step={30} getSuffix={this.getIcon} />;
   }
 
   valueKeys: Array<string>;
@@ -604,19 +527,22 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   }
 
   getOffSetWidth() {
-    const { getTheme } = this.props;
-    const { width } = getTheme();
+    const { getPartOfThemeConfig } = this.props;
+    const { normal = {} } = getPartOfThemeConfig('InputTagWrap');
+    const { normal: IconNormal = {} } = getPartOfThemeConfig('Icon');
+    const { font = {} } = IconNormal;
+    const { fontSize = FontSize } = font;
+    const { width = 250, padding = {} } = normal;
+    let { left = 10, right = 10 } = padding;
+    left = toNumber(left, 0);
+    right = toNumber(right, 0);
+    const size = isNumber(fontSize) ? fontSize : FontSize;
     if (this.isMutliple()) {
-      return typeof width === 'number' ? getContentWidth(width) : this.list.offsetWidth;
+      return typeof width === 'number'
+        ? getContentWidth(width, left, right, size)
+        : this.list.offsetWidth;
     }
     return 0;
-  }
-
-  getWidth() {
-    const { getTheme } = this.props;
-    const { width } = getTheme();
-    const offsetWidth = this.container ? this.container.offsetWidth : 0;
-    return width ? width : offsetWidth;
   }
 
   getHeight() {
@@ -626,6 +552,72 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     return height;
   }
 
+  getTagMargin() {
+    const { getPartOfThemeConfig } = this.props;
+    const { normal = {} } = getPartOfThemeConfig('TagWrap');
+    const { margin } = normal;
+    if (!margin) {
+      return 5;
+    }
+    // 此处有bug，因为margin中设置类似{left: '20'}时生效，但是如果{left: 'a'}不能转成数字的字符串
+    // 此时四个方向的margin都不能生效，但是还是会加起来
+    const { left, right } = margin;
+    return toNumber(left, 0) + toNumber(right, 0);
+  }
+
+  getTagPadding() {
+    const { getPartOfThemeConfig } = this.props;
+    const { normal = {} } = getPartOfThemeConfig('TagWrap');
+    const { padding } = normal;
+    if (!padding) {
+      return 10;
+    }
+    // 此处有bug，同margin
+    const { left, right } = padding;
+    return toNumber(left, 0) + toNumber(right, 0);
+  }
+
+  getTagFontSize() {
+    const { getPartOfThemeConfig } = this.props;
+    const { normal = {} } = getPartOfThemeConfig('TagWrap');
+    const { font = {} } = normal;
+    const { fontSize = FontSize } = font;
+    return isNumber(fontSize) ? fontSize : FontSize;
+  }
+
+  getTagWidth() {
+    const { getPartOfThemeConfig } = this.props;
+    const { normal = {} } = getPartOfThemeConfig('TagWrap');
+    const { width } = normal;
+    if (!width || !isNumber(width)) {
+      return undefined;
+    }
+    return width;
+  }
+
+  getMoreItemWidth() {
+    const margin = this.getTagMargin();
+    const width = this.getTagWidth();
+    if (width) {
+      return width + margin;
+    }
+
+    const padding = this.getTagPadding();
+    const fontSize = this.getTagFontSize();
+
+    return margin + padding + fontSize;
+  }
+
+  // getInputTagHeight() {
+  //   const { getPartOfThemeConfig } = this.props;
+  //   const { normal } = getPartOfThemeConfig('InputTagWrap');
+  //   if (!normal) {
+  //     return 30;
+  //   }
+  //   const { height = 30 } = normal;
+  //   return height;
+  // }
+
   async adaptiveItems(listWidth: number): Promise<boolean> {
     if (!this.isMutliple()) {
       return true;
@@ -633,7 +625,10 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     const items = [];
     const { value } = this.state;
     if (value) {
-      listWidth -= 36;
+      const moreItemWidth = this.getMoreItemWidth();
+
+      listWidth -= moreItemWidth;
+
       let totalWidth = 0;
       const keys = this.getKeys(value);
       const valueLen = keys.length;
@@ -645,16 +640,21 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
         }
         const { text } = theValue;
         const fontWidth = await this.getFontWidth(text);
-        totalWidth += fontWidth + MarginRight;
-        if (totalWidth >= listWidth) {
-          break;
-        }
 
-        items.push(
-          <Item key={key} onCloseClick={this.onDelItem.bind(this, key)}>
-            {text}
-          </Item>
-        );
+        totalWidth += fontWidth + this.getTagMargin();
+        if (totalWidth > listWidth) {
+          break;
+        } else {
+          items.push(
+            <Item
+              theme={this.getTagItemTheme()}
+              key={key}
+              onCloseClick={this.onDelItem.bind(this, key)}
+            >
+              {text}
+            </Item>
+          );
+        }
       }
       this.needMoreItem = false;
       if (valueLen !== items.length) {
@@ -670,7 +670,28 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   }
 
   getMoreItem() {
-    return <MoreItem items={this.props.value} onClick={this.onMoreClick} key="more_item" />;
+    return (
+      <MoreItem
+        theme={this.getTagItemTheme()}
+        // ref={cmp => (this.moreItem = cmp)}
+        themeProps={this.props.getPartOfThemeProps('TagWrap')}
+        items={this.props.value}
+        onClick={this.onMoreClick}
+        key="more_item"
+      />
+    );
+  }
+
+  getTagItemTheme() {
+    const { getPartOfThemeConfig } = this.props;
+    const ItemThemeProps = {
+      ItemTag: {
+        TagWrap: getPartOfThemeConfig('TagWrap'),
+        TagIcon: getPartOfThemeConfig('TagIcon'),
+      },
+    };
+
+    return ItemThemeProps;
   }
 
   onMoreClick = (e: Object) => {
@@ -697,7 +718,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   };
 }
 
-const InputTagBox = ThemeProvider(InputTag, Widget.InputTag);
+const InputTagBox = ThemeHoc(InputTag, Widget.InputTag, { hover: true });
 export const _InputTag_ = InputTag;
 
 export default InputTagBox;
