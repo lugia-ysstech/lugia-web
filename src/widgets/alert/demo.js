@@ -50,19 +50,25 @@ export default class AlertDemo extends React.Component<any, any> {
         AlertMessage: {
           normal: {
             color: 'green',
-            font: { fontSize: 18, fontWeight: 500 },
+            font: { size: 18, weight: 500 },
           },
         },
         AlertDescription: {
           normal: {
             color: 'pink',
-            font: { fontSize: 14, fontWeight: 500 },
+            font: { size: 14, weight: 500 },
             padding: {
               top: 10,
               right: 10,
               bottom: 10,
               left: 10,
             },
+          },
+        },
+        CloseText: {
+          normal: {
+            color: 'green',
+            font: { size: 16, weight: 500 },
           },
         },
       },
@@ -75,6 +81,9 @@ export default class AlertDemo extends React.Component<any, any> {
         <Theme config={view}>
           <Alert message="Alert-info" closable description="这是辅助性文字介绍" />
         </Theme>
+        <Theme config={view}>
+          <Alert type="error" message="Alert-error" closable closeText="确定" />
+        </Theme>
 
         {/*<Alert message="Alert-info" />*/}
         {/*<Alert type="success" message="Alert-success" />*/}
@@ -83,10 +92,10 @@ export default class AlertDemo extends React.Component<any, any> {
 
         {/*<Alert message="Alert-info" closable />*/}
         {/*<Alert type="success" message="Alert-success" closable />*/}
-        {/*<Alert type="error" message="Alert-error" closable closeText="确定" />*/}
+        <Alert type="error" message="Alert-error" closable closeText="确定" />
         {/*<Alert type="warning" message="Alert-warning" closable closeText="ok" />*/}
 
-        {/*<Alert message="Alert-info" showIcon />*/}
+        <Alert message="Alert-info" showIcon />
         {/*<Alert type="success" message="Alert-success" showIcon />*/}
         {/*<Alert type="error" message="Alert-error" showIcon />*/}
         {/*<Alert type="warning" message="Alert-warning" showIcon />*/}
@@ -108,7 +117,7 @@ export default class AlertDemo extends React.Component<any, any> {
         {/*description="这是辅助性文字介绍"*/}
         {/*/>*/}
 
-        {/*<Alert message="Alert-info" closable description="这是辅助性文字介绍" showIcon />*/}
+        <Alert message="Alert-info" closable description="这是辅助性文字介绍" showIcon />
         {/*<Alert*/}
         {/*type="success"*/}
         {/*message="Alert-success"*/}
