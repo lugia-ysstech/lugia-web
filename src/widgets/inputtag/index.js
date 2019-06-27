@@ -271,7 +271,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
           >
             <InnerContainer themeProps={themeProps}>
               <FlexResBox themeProps={themeProps}>
-                <List themeProps={themeProps} ref={cmp => (this.list = cmp)}>
+                <List themeProps={themeProps} innerRef={cmp => (this.list = cmp)}>
                   {items}
                 </List>
                 {placeholder}
@@ -513,6 +513,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
 
   componentDidMount() {
     const offSetWidth = this.getOffSetWidth();
+    console.log('offSetWidth', offSetWidth);
     this.oldWidth = offSetWidth;
 
     this.adaptiveItems(offSetWidth);
@@ -537,12 +538,16 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     left = toNumber(left, 0);
     right = toNumber(right, 0);
     const size = isNumber(fontSize) ? fontSize : FontSize;
+    console.log('list', this.list.offsetWidth);
+
     if (this.isMutliple()) {
-      return typeof width === 'number'
-        ? getContentWidth(width, left, right, size)
-        : this.list.offsetWidth;
+      // return typeof width === 'number'
+      //   ? getContentWidth(width, left, right, size)
+      //   : this.list.offsetWidth;
+      return this.list.offsetWidth;
     }
     return 0;
+    // return this.list.offsetWidth;
   }
 
   getHeight() {
@@ -581,8 +586,8 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     const { getPartOfThemeConfig } = this.props;
     const { normal = {} } = getPartOfThemeConfig('TagWrap');
     const { font = {} } = normal;
-    const { fontSize = FontSize } = font;
-    return isNumber(fontSize) ? fontSize : FontSize;
+    const { size = FontSize } = font;
+    return isNumber(size) ? size : FontSize;
   }
 
   getTagWidth() {
@@ -598,14 +603,14 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   getMoreItemWidth() {
     const margin = this.getTagMargin();
     const width = this.getTagWidth();
+    // offsetWidth 多了 3px，所以为了不引起bug，先加5px
     if (width) {
-      return width + margin;
+      return width + margin + 5;
     }
 
     const padding = this.getTagPadding();
     const fontSize = this.getTagFontSize();
-
-    return margin + padding + fontSize;
+    return margin + padding + fontSize + 5;
   }
 
   // getInputTagHeight() {
@@ -642,6 +647,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
         const fontWidth = await this.getFontWidth(text);
 
         totalWidth += fontWidth + this.getTagMargin();
+        console.log('fontWidth', fontWidth, totalWidth, listWidth, moreItemWidth);
         if (totalWidth > listWidth) {
           break;
         } else {

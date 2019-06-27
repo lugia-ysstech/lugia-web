@@ -181,7 +181,7 @@ export const InnerContainer = CSSComponent({
     getCSS: themeMeta => {
       const { height = 30 } = themeMeta;
       return `
-        // line-height: ${px2remcss(height)};
+        line-height: ${px2remcss(height)};
       `;
     },
   },
@@ -304,6 +304,7 @@ export const List = CSSComponent({
   css: css`
     list-style: none;
     height: ${px2remcss(30)};
+    line-height: ${px2remcss(30)};
     margin: 0;
     padding: 0;
   `,
@@ -372,6 +373,7 @@ export const ItemWrap = CSSComponent({
   css: css`
     display: inline-block;
     height: ${px2remcss(20)};
+    vertical-align: middle;
   `,
 });
 
@@ -426,7 +428,10 @@ export const ItemText = CSSComponent({
   tag: 'span',
   className: 'ItemText',
   normal: {
-    selectNames: [['width'], ['height']],
+    selectNames: [['width'], ['height'], ['font']],
+    getCSS: themeMeta => {
+      console.log('themeMeta', themeMeta);
+    },
   },
   hover: {
     selectNames: [],
