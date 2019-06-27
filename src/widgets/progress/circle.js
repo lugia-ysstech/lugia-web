@@ -8,7 +8,7 @@
 import * as React from 'react';
 import { handlePercent } from '../css/progress-line';
 import { SvgInner, SvgText } from '../css/progress-circle';
-import { getText } from './line';
+import { getText, getStatus } from './line';
 import colorsFunc from '../css/stateColor';
 import { getPoints } from '../common/circleUtils';
 
@@ -26,7 +26,13 @@ const { themeColor, successColor, dangerColor } = colorsFunc();
 
 export default class extends React.Component<any, any> {
   render() {
-    const { percent = 0, type = 'circle', size = 'default', status = 'default' } = this.props;
+    const {
+      percent = 0,
+      type = 'circle',
+      size = 'default',
+      status = 'default',
+      getPartOfThemeProps,
+    } = this.props;
     const {
       viewWidth,
       viewHeight,
@@ -44,6 +50,10 @@ export default class extends React.Component<any, any> {
       strokeWidth,
       fill: 'none',
     };
+    const CircleTextTheme = getPartOfThemeProps('ProgressCircleText');
+    const DashboardTextTheme = getPartOfThemeProps('DashboardText');
+    const TextTheme = type === 'circle' ? CircleTextTheme : DashboardTextTheme;
+    TextTheme.propsConfig = { status: getStatus({ status, percent }) };
     return (
       <SvgInner size={size}>
         {type === 'circle' ? (
@@ -65,7 +75,7 @@ export default class extends React.Component<any, any> {
           </svg>
         )}
 
-        <SvgText percent={percent} status={status} size={size}>
+        <SvgText themeProps={TextTheme} percent={percent} status={status} size={size}>
           {this.getPercentText()}
         </SvgText>
       </SvgInner>
@@ -102,7 +112,7 @@ export default class extends React.Component<any, any> {
       hasFormat: this.hasFormat(),
       percent,
       format,
-      status,
+      status: getStatus({ status, percent }),
       size,
       type,
       getPartOfThemeProps,
