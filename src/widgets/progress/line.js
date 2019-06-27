@@ -26,7 +26,13 @@ export const getText = (inside?: boolean, props: Object) => {
 
   const { status = 'default', size = 'default', type = 'line' } = props;
   const config = { size, type };
-  const SuccessIconTheme = getPartOfThemeProps('ProgressLineSuccessIcon');
+  const SuccessIconTheme = getPartOfThemeProps(
+    type === 'line'
+      ? 'ProgressLineSuccessIcon'
+      : type === 'circle'
+      ? 'ProgressCircleSuccessIcon'
+      : 'ProgressDashboardSuccessIcon'
+  );
   const ErrorIconTheme = getPartOfThemeProps('ProgressLineErrorIcon');
   SuccessIconTheme.propsConfig = { size, status };
   ErrorIconTheme.propsConfig = { size, status };
