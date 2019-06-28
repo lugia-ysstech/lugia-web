@@ -43,8 +43,7 @@ const getShadow = props => {
 };
 
 const MenuContainer = styled.div`
-  background-color: #fff;
-  ${getShadow};
+  padding: 0;
   border-radius: ${em(4)};
   box-sizing: border-box;
 `;
