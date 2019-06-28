@@ -392,7 +392,7 @@ const LoadIcon = ThemeHoc(
       selectNames: [['color'], ['cursor']],
       defaultTheme: {
         cursor: 'not-allowed',
-        color: 'red',
+        color: '#999',
       },
     },
     css: css`
