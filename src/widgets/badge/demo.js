@@ -38,12 +38,8 @@ class Turn extends React.Component<any, any> {
 
   render() {
     const config = {
-      [Widget.Badge]: {
-        children: {
-          [Widget.NumberTurn]: {
-            normal: { position: { top: -5, right: -5 } },
-          },
-        },
+      [Widget.NumberTurn]: {
+        normal: { position: { top: -5, right: -5 } },
       },
     };
     return (
@@ -73,28 +69,26 @@ class Turn extends React.Component<any, any> {
 }
 
 export default () => {
-  const view = {
+  const dot = {
     [Widget.Badge]: {
-      normal: {
-        position: { top: -5, right: 0 },
-        background: { backgroundColor: 'orange' },
-        color: 'black',
+      BadgeDot: {
+        normal: {
+          position: { top: -5, right: 6 },
+          background: { color: 'orange' },
+          width: 20,
+          height: 20,
+        },
       },
+    },
+  };
+  const numberDot = {
+    [Widget.NumberTurn]: {
+      normal: { position: { top: -5, right: -5 } },
     },
   };
   return (
     <div>
-      <Theme
-        config={{
-          [Widget.Badge]: {
-            children: {
-              [Widget.NumberTurn]: {
-                normal: { position: { top: -5, right: -5 } },
-              },
-            },
-          },
-        }}
-      >
+      <Theme config={numberDot}>
         <Wrapper>
           <Row>
             <Col span={4}>
@@ -115,103 +109,111 @@ export default () => {
           </Row>
         </Wrapper>
         <Wrapper>
-          <Theme config={view}>
-            <Row>
-              <Col span={4}>
-                <Badge count={0}>
-                  <Box />
-                </Badge>
-              </Col>
-              <Col span={4}>
-                <Badge showZero>
-                  <Box />
-                </Badge>
-              </Col>
-              <Col span={4}>
-                <Badge showZero count={0}>
-                  <Box />
-                </Badge>
-              </Col>
-              <Col span={4}>
-                <a href="www.baidu.com">
-                  <Badge>
-                    <Box />
-                  </Badge>
-                </a>
-              </Col>
-            </Row>
-          </Theme>
-        </Wrapper>
-        <Wrapper>
           <Row>
             <Col span={4}>
-              <Theme
-                config={{
-                  green: {
-                    normal: {
-                      position: { top: -5, right: 2 },
-                      background: { backgroundColor: 'green' },
-                    },
-                  },
-                }}
-              >
-                <Badge viewClass="green">
-                  <Box />
-                </Badge>
-              </Theme>
+              <Badge count={0}>
+                <Box />
+              </Badge>
             </Col>
             <Col span={4}>
-              <Theme
-                config={{
-                  purple: {
-                    normal: {
-                      position: { top: -5, right: 2 },
-                      background: { backgroundColor: 'purple' },
-                    },
-                  },
-                }}
-              >
-                <Badge viewClass="purple">
-                  <Box />
-                </Badge>
-              </Theme>
+              <Badge showZero>
+                <Box />
+              </Badge>
             </Col>
             <Col span={4}>
-              <Theme
-                config={{
-                  yellow: {
-                    normal: {
-                      position: { top: -5, right: 2 },
-                      background: { backgroundColor: 'yellow' },
-                    },
-                  },
-                }}
-              >
-                <Badge viewClass="yellow">
-                  <Box />
-                </Badge>
-              </Theme>
+              <Badge showZero count={0}>
+                <Box />
+              </Badge>
             </Col>
             <Col span={4}>
-              <Theme
-                config={{
-                  blue: {
-                    normal: {
-                      position: { top: -5, right: 2 },
-                      background: { backgroundColor: 'blue' },
-                    },
-                  },
-                }}
-              >
-                <Badge viewClass="blue">
-                  <Box />
-                </Badge>
-              </Theme>
+              <a href="www.baidu.com">
+                <Theme config={dot}>
+                  <Badge viewClass="dot">
+                    <Box />
+                  </Badge>
+                </Theme>
+              </a>
             </Col>
           </Row>
         </Wrapper>
-        <Turn />
       </Theme>
+      <Wrapper>
+        <Row>
+          <Col span={4}>
+            <Theme
+              config={{
+                green: {
+                  BadgeDot: {
+                    normal: {
+                      position: { top: -5, right: 2 },
+                      background: { color: 'green' },
+                    },
+                  },
+                },
+              }}
+            >
+              <Badge viewClass="green">
+                <Box />
+              </Badge>
+            </Theme>
+          </Col>
+          <Col span={4}>
+            <Theme
+              config={{
+                purple: {
+                  BadgeDot: {
+                    normal: {
+                      position: { top: -5, right: 2 },
+                      background: { color: 'purple' },
+                    },
+                  },
+                },
+              }}
+            >
+              <Badge viewClass="purple">
+                <Box />
+              </Badge>
+            </Theme>
+          </Col>
+          <Col span={4}>
+            <Theme
+              config={{
+                yellow: {
+                  BadgeDot: {
+                    normal: {
+                      position: { top: -5, right: 2 },
+                      background: { color: 'yellow' },
+                    },
+                  },
+                },
+              }}
+            >
+              <Badge viewClass="yellow">
+                <Box />
+              </Badge>
+            </Theme>
+          </Col>
+          <Col span={4}>
+            <Theme
+              config={{
+                blue: {
+                  BadgeDot: {
+                    normal: {
+                      position: { top: -5, right: 2 },
+                      background: { color: 'blue' },
+                    },
+                  },
+                },
+              }}
+            >
+              <Badge viewClass="blue">
+                <Box />
+              </Badge>
+            </Theme>
+          </Col>
+        </Row>
+      </Wrapper>
+      <Turn />
     </div>
   );
 };

@@ -7,8 +7,9 @@
 
 import React from 'react';
 import Widget from '../consts/index';
-import ThemeProvider from '../theme-provider';
-import { TagContainer, ItemText, CloseButtonWrap, CloseButton } from '../css/tag';
+import ThemeHoc from '@lugia/theme-hoc';
+import { TagWrap, OptionalWrap, ItemText, CloseButtonWrap, CloseButton } from '../css/tag';
+import { deepMerge } from '@lugia/object-utils';
 
 type shapeType = 'basic' | 'round';
 type styleType = 'customs' | 'primary' | 'basic' | 'presets' | 'optional';
@@ -21,6 +22,7 @@ type TagProps = {
   shape: shapeType,
   getTheme: Function,
   type: styleType,
+  themeProps: Object,
 };
 
 type TagState = {
@@ -67,32 +69,58 @@ class Tag extends React.Component<TagProps, TagState> {
   }
 
   itemText: Object;
+
+  mergeTheme(theme: Object, viewClass: string, params: Object) {
+    theme[viewClass] = deepMerge(theme[viewClass], { propsConfig: params });
+  }
+
   render() {
     const { isClose, checked } = this.state;
-    const { type, getTheme, shape, closable = false, children } = this.props;
-    const Theme = getTheme();
-    return (
-      <TagContainer
-        closable={closable}
-        checked={checked}
-        onClick={this.onClick}
-        shape={shape}
-        isClose={isClose}
-        type={type}
-        Theme={Theme}
-      >
-        <ItemText ref={cmp => (this.itemText = cmp)} type={type}>
+    const {
+      getPartOfThemeProps,
+      type,
+      shape,
+      closable = false,
+      children,
+      getPartOfThemeHocProps,
+    } = this.props;
+    const TagThemeProps = getPartOfThemeProps('Tag');
+    const CloseThemeProps = getPartOfThemeProps('CloseButton');
+
+    const themeHoc =
+      type === 'optional' && checked
+        ? getPartOfThemeHocProps('CheckedTagWrap')
+        : getPartOfThemeHocProps('TagWrap');
+    const { theme, viewClass } = themeHoc;
+    this.mergeTheme(theme, viewClass, {
+      shape,
+      type,
+      isClose,
+      closable,
+      checked,
+    });
+
+    return type === 'optional' ? (
+      <OptionalWrap onClick={this.onClick} theme={theme} viewClass={viewClass}>
+        <ItemText themeProps={TagThemeProps} ref={cmp => (this.itemText = cmp)} type={type}>
+          {children}
+        </ItemText>
+      </OptionalWrap>
+    ) : (
+      <TagWrap onClick={this.onClick} theme={theme} viewClass={viewClass}>
+        <ItemText themeProps={TagThemeProps} ref={cmp => (this.itemText = cmp)} type={type}>
           {children}
         </ItemText>
         {closable ? (
-          <CloseButtonWrap>
+          <CloseButtonWrap themeProps={CloseThemeProps}>
             <CloseButton
+              themeProps={CloseThemeProps}
               iconClass="lugia-icon-reminder_close"
               onClick={this.onCloseClick.bind(this)}
             />
           </CloseButtonWrap>
         ) : null}
-      </TagContainer>
+      </TagWrap>
     );
   }
 
@@ -115,4 +143,4 @@ class Tag extends React.Component<TagProps, TagState> {
   };
 }
 
-export default ThemeProvider(Tag, Widget.Tag);
+export default ThemeHoc(Tag, Widget.Tag, { hover: true, active: true });

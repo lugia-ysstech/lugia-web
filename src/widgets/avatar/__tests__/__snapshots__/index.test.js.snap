@@ -10,7 +10,6 @@ exports[`Avatar css 1`] = `
 }
 
 .c1 {
-  font-variant: tabular-nums;
   color: rgba(0,0,0,0.65);
   box-sizing: border-box;
   display: inline-block;
@@ -22,11 +21,10 @@ exports[`Avatar css 1`] = `
   width: 2.666666666666667em;
   height: 2.666666666666667em;
   line-height: 2.666666666666667em;
-  background-color: #cccccc;
+  background-color: #e2e2e2;
 }
 
 .c3 {
-  font-variant: tabular-nums;
   color: rgba(0,0,0,0.65);
   box-sizing: border-box;
   display: inline-block;
@@ -38,11 +36,10 @@ exports[`Avatar css 1`] = `
   width: 2.666666666666667em;
   height: 2.666666666666667em;
   line-height: 2.666666666666667em;
-  background-color: #cccccc;
+  background-color: #e2e2e2;
 }
 
 .c4 {
-  font-variant: tabular-nums;
   color: rgba(0,0,0,0.65);
   box-sizing: border-box;
   display: inline-block;
@@ -54,11 +51,10 @@ exports[`Avatar css 1`] = `
   width: 2em;
   height: 2em;
   line-height: 2em;
-  background-color: #cccccc;
+  background-color: #e2e2e2;
 }
 
 .c8 {
-  font-variant: tabular-nums;
   color: rgba(0,0,0,0.65);
   box-sizing: border-box;
   display: inline-block;
@@ -70,11 +66,10 @@ exports[`Avatar css 1`] = `
   width: 3.3333333333333335em;
   height: 3.3333333333333335em;
   line-height: 3.3333333333333335em;
-  background-color: #cccccc;
+  background-color: #e2e2e2;
 }
 
 .c10 {
-  font-variant: tabular-nums;
   color: rgba(0,0,0,0.65);
   box-sizing: border-box;
   display: inline-block;
@@ -86,11 +81,10 @@ exports[`Avatar css 1`] = `
   width: 2em;
   height: 2em;
   line-height: 2em;
-  background-color: #cccccc;
+  background-color: #e2e2e2;
 }
 
 .c11 {
-  font-variant: tabular-nums;
   color: rgba(0,0,0,0.65);
   box-sizing: border-box;
   display: inline-block;
@@ -99,6 +93,21 @@ exports[`Avatar css 1`] = `
   position: relative;
   background-color: #cccccc;
   border-radius: 50%;
+  width: 3.3333333333333335em;
+  height: 3.3333333333333335em;
+  line-height: 3.3333333333333335em;
+  background-color: #e2e2e2;
+}
+
+.c16 {
+  color: rgba(0,0,0,0.65);
+  box-sizing: border-box;
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+  position: relative;
+  background-color: #cccccc;
+  border-radius: 10%;
   width: 3.3333333333333335em;
   height: 3.3333333333333335em;
   line-height: 3.3333333333333335em;
@@ -106,7 +115,6 @@ exports[`Avatar css 1`] = `
 }
 
 .c23 {
-  font-variant: tabular-nums;
   color: rgba(0,0,0,0.65);
   box-sizing: border-box;
   display: inline-block;
@@ -127,7 +135,7 @@ exports[`Avatar css 1`] = `
   text-transform: none;
   vertical-align: middle !important;
   color: white;
-  font-size: 1.2em;
+  font-size: 1.2rem;
 }
 
 .c7 {
@@ -137,7 +145,7 @@ exports[`Avatar css 1`] = `
   text-transform: none;
   vertical-align: middle !important;
   color: white;
-  font-size: 1.8em;
+  font-size: 1.8rem;
 }
 
 .c9 {
@@ -147,7 +155,7 @@ exports[`Avatar css 1`] = `
   text-transform: none;
   vertical-align: middle !important;
   color: white;
-  font-size: 2.2em;
+  font-size: 2.2rem;
 }
 
 .c2 {
@@ -182,16 +190,9 @@ exports[`Avatar css 1`] = `
 
 .c14 {
   vertical-align: middle;
-  width: 2.666666666666667em;
-  height: 2.666666666666667em;
+  width: 4rem;
+  height: 4rem;
   border-radius: 10%;
-}
-
-.c15 {
-  vertical-align: middle;
-  width: 2.666666666666667em;
-  height: 2.666666666666667em;
-  border-radius: 50%;
 }
 
 .c17 {
@@ -251,19 +252,19 @@ exports[`Avatar css 1`] = `
   -ms-transform-origin: 100%;
   transform-origin: 100%;
   z-index: 10;
-  background: #f22735;
+  background-color: #f22735;
   color: #ffffff;
 }
 
 .c21 {
-  height: 1rem;
-  width: 1rem;
   border-radius: 100%;
   z-index: 10;
+  width: 1rem;
+  height: 1rem;
   box-shadow: 0 0 0 0.1rem #fff;
 }
 
-.c16 {
+.c15 {
   background: transparent;
   box-sizing: border-box;
   position: relative;
@@ -295,9 +296,7 @@ exports[`Avatar css 1`] = `
         size="default"
         style={
           Object {
-            "backgroundColor": "#cccccc",
-            "color": "white",
-            "margin": "1rem 0rem 0rem 1rem",
+            "backgroundColor": "#e2e2e2",
           }
         }
       >
@@ -306,7 +305,7 @@ exports[`Avatar css 1`] = `
           size="default"
           style={
             Object {
-              "color": "white",
+              "color": "red",
             }
           }
         >
@@ -328,9 +327,7 @@ exports[`Avatar css 1`] = `
         size="default"
         style={
           Object {
-            "backgroundColor": "#cccccc",
-            "color": "white",
-            "margin": "1rem 0rem 0rem 1rem",
+            "backgroundColor": "#e2e2e2",
           }
         }
       >
@@ -339,7 +336,7 @@ exports[`Avatar css 1`] = `
           size="default"
           style={
             Object {
-              "color": "white",
+              "color": "red",
             }
           }
         >
@@ -361,9 +358,7 @@ exports[`Avatar css 1`] = `
         size="default"
         style={
           Object {
-            "backgroundColor": "#cccccc",
-            "color": "white",
-            "margin": "1rem 0rem 0rem 1rem",
+            "backgroundColor": "#e2e2e2",
           }
         }
       >
@@ -372,7 +367,7 @@ exports[`Avatar css 1`] = `
           size="default"
           style={
             Object {
-              "color": "white",
+              "color": "red",
             }
           }
         >
@@ -394,9 +389,7 @@ exports[`Avatar css 1`] = `
         size="default"
         style={
           Object {
-            "backgroundColor": "#cccccc",
-            "color": "white",
-            "margin": "1rem 0rem 0rem 1rem",
+            "backgroundColor": "#e2e2e2",
           }
         }
       >
@@ -405,7 +398,7 @@ exports[`Avatar css 1`] = `
           size="default"
           style={
             Object {
-              "color": "white",
+              "color": "red",
             }
           }
         >
@@ -428,9 +421,7 @@ exports[`Avatar css 1`] = `
         size="default"
         style={
           Object {
-            "backgroundColor": "#cccccc",
-            "color": "white",
-            "margin": "1rem 0rem 0rem 1rem",
+            "backgroundColor": "#e2e2e2",
           }
         }
       >
@@ -439,7 +430,7 @@ exports[`Avatar css 1`] = `
           size="default"
           style={
             Object {
-              "color": "white",
+              "color": "red",
             }
           }
         >
@@ -461,9 +452,7 @@ exports[`Avatar css 1`] = `
         size="default"
         style={
           Object {
-            "backgroundColor": "#cccccc",
-            "color": "white",
-            "margin": "1rem 0rem 0rem 1rem",
+            "backgroundColor": "#e2e2e2",
           }
         }
       >
@@ -472,7 +461,7 @@ exports[`Avatar css 1`] = `
           size="default"
           style={
             Object {
-              "color": "white",
+              "color": "red",
             }
           }
         >
@@ -494,9 +483,7 @@ exports[`Avatar css 1`] = `
         size="default"
         style={
           Object {
-            "backgroundColor": "#cccccc",
-            "color": "white",
-            "margin": "1rem 0rem 0rem 1rem",
+            "backgroundColor": "#e2e2e2",
           }
         }
       >
@@ -505,7 +492,7 @@ exports[`Avatar css 1`] = `
           size="default"
           style={
             Object {
-              "color": "white",
+              "color": "red",
             }
           }
         >
@@ -527,9 +514,7 @@ exports[`Avatar css 1`] = `
         size="default"
         style={
           Object {
-            "backgroundColor": "#cccccc",
-            "color": "white",
-            "margin": "1rem 0rem 0rem 1rem",
+            "backgroundColor": "#e2e2e2",
           }
         }
       >
@@ -538,7 +523,7 @@ exports[`Avatar css 1`] = `
           size="default"
           style={
             Object {
-              "color": "white",
+              "color": "red",
             }
           }
         >
@@ -563,9 +548,7 @@ exports[`Avatar css 1`] = `
         size="small"
         style={
           Object {
-            "backgroundColor": "#cccccc",
-            "color": "white",
-            "margin": "1rem 0rem 0rem 1rem",
+            "backgroundColor": "#e2e2e2",
           }
         }
       >
@@ -575,7 +558,12 @@ exports[`Avatar css 1`] = `
         >
           <i
             className="lugia-icon-financial_user c5  c6"
-            style={Object {}}
+            style={
+              Object {
+                "color": "orange",
+                "fontSize": "1.6rem",
+              }
+            }
           />
         </span>
       </div>
@@ -593,9 +581,7 @@ exports[`Avatar css 1`] = `
         size="default"
         style={
           Object {
-            "backgroundColor": "#cccccc",
-            "color": "white",
-            "margin": "1rem 0rem 0rem 1rem",
+            "backgroundColor": "#e2e2e2",
           }
         }
       >
@@ -605,7 +591,12 @@ exports[`Avatar css 1`] = `
         >
           <i
             className="lugia-icon-financial_user c7  c6"
-            style={Object {}}
+            style={
+              Object {
+                "color": "orange",
+                "fontSize": "1.6rem",
+              }
+            }
           />
         </span>
       </div>
@@ -623,9 +614,7 @@ exports[`Avatar css 1`] = `
         size="large"
         style={
           Object {
-            "backgroundColor": "#cccccc",
-            "color": "white",
-            "margin": "1rem 0rem 0rem 1rem",
+            "backgroundColor": "#e2e2e2",
           }
         }
       >
@@ -635,7 +624,12 @@ exports[`Avatar css 1`] = `
         >
           <i
             className="lugia-icon-financial_user c9  c6"
-            style={Object {}}
+            style={
+              Object {
+                "color": "orange",
+                "fontSize": "1.6rem",
+              }
+            }
           />
         </span>
       </div>
@@ -654,9 +648,7 @@ exports[`Avatar css 1`] = `
         size="small"
         style={
           Object {
-            "backgroundColor": "#cccccc",
-            "color": "white",
-            "margin": "1rem 0rem 0rem 1rem",
+            "backgroundColor": "#e2e2e2",
           }
         }
       >
@@ -684,9 +676,7 @@ exports[`Avatar css 1`] = `
         size="default"
         style={
           Object {
-            "backgroundColor": "#cccccc",
-            "color": "white",
-            "margin": "1rem 0rem 0rem 1rem",
+            "backgroundColor": "#e2e2e2",
           }
         }
       >
@@ -714,9 +704,7 @@ exports[`Avatar css 1`] = `
         size="large"
         style={
           Object {
-            "backgroundColor": "#cccccc",
-            "color": "white",
-            "margin": "1rem 0rem 0rem 1rem",
+            "backgroundColor": "#e2e2e2",
           }
         }
       >
@@ -749,9 +737,7 @@ exports[`Avatar css 1`] = `
         size="small"
         style={
           Object {
-            "backgroundColor": "#cccccc",
-            "color": "white",
-            "margin": "1rem 0rem 0rem 1rem",
+            "backgroundColor": "#e2e2e2",
           }
         }
       >
@@ -760,7 +746,7 @@ exports[`Avatar css 1`] = `
           size="small"
           style={
             Object {
-              "color": "white",
+              "color": "blue",
             }
           }
         >
@@ -782,9 +768,7 @@ exports[`Avatar css 1`] = `
         size="default"
         style={
           Object {
-            "backgroundColor": "#cccccc",
-            "color": "white",
-            "margin": "1rem 0rem 0rem 1rem",
+            "backgroundColor": "#e2e2e2",
           }
         }
       >
@@ -793,7 +777,7 @@ exports[`Avatar css 1`] = `
           size="default"
           style={
             Object {
-              "color": "white",
+              "color": "blue",
             }
           }
         >
@@ -815,9 +799,7 @@ exports[`Avatar css 1`] = `
         size="large"
         style={
           Object {
-            "backgroundColor": "#cccccc",
-            "color": "white",
-            "margin": "1rem 0rem 0rem 1rem",
+            "backgroundColor": "#e2e2e2",
           }
         }
       >
@@ -826,7 +808,7 @@ exports[`Avatar css 1`] = `
           size="large"
           style={
             Object {
-              "color": "white",
+              "color": "blue",
             }
           }
         >
@@ -849,9 +831,7 @@ exports[`Avatar css 1`] = `
         size="small"
         style={
           Object {
-            "backgroundColor": "#cccccc",
-            "color": "white",
-            "margin": "1rem 0rem 0rem 1rem",
+            "backgroundColor": "#e2e2e2",
           }
         }
       >
@@ -860,7 +840,7 @@ exports[`Avatar css 1`] = `
           size="small"
           style={
             Object {
-              "color": "white",
+              "color": "red",
             }
           }
         >
@@ -882,9 +862,7 @@ exports[`Avatar css 1`] = `
         size="default"
         style={
           Object {
-            "backgroundColor": "#cccccc",
-            "color": "white",
-            "margin": "1rem 0rem 0rem 1rem",
+            "backgroundColor": "#e2e2e2",
           }
         }
       >
@@ -893,7 +871,7 @@ exports[`Avatar css 1`] = `
           size="default"
           style={
             Object {
-              "color": "white",
+              "color": "red",
             }
           }
         >
@@ -915,9 +893,7 @@ exports[`Avatar css 1`] = `
         size="large"
         style={
           Object {
-            "backgroundColor": "#cccccc",
-            "color": "white",
-            "margin": "1rem 0rem 0rem 1rem",
+            "backgroundColor": "#e2e2e2",
           }
         }
       >
@@ -926,7 +902,7 @@ exports[`Avatar css 1`] = `
           size="large"
           style={
             Object {
-              "color": "white",
+              "color": "red",
             }
           }
         >
@@ -952,9 +928,7 @@ exports[`Avatar css 1`] = `
         size="default"
         style={
           Object {
-            "backgroundColor": "#cccccc",
-            "color": "white",
-            "margin": "1rem 0rem 0rem 1rem",
+            "backgroundColor": "#e2e2e2",
           }
         }
       >
@@ -963,7 +937,7 @@ exports[`Avatar css 1`] = `
           size="default"
           style={
             Object {
-              "color": "white",
+              "color": "red",
             }
           }
         >
@@ -984,9 +958,7 @@ exports[`Avatar css 1`] = `
         size="default"
         style={
           Object {
-            "backgroundColor": "#cccccc",
-            "color": "white",
-            "margin": "1rem 0rem 0rem 1rem",
+            "backgroundColor": "#e2e2e2",
           }
         }
       >
@@ -1015,9 +987,7 @@ exports[`Avatar css 1`] = `
         src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/master/lugiaweb%E7%BB%84%E4%BB%B6/%E5%A4%B4%E5%83%8F/32.jpg"
         style={
           Object {
-            "backgroundColor": "#cccccc",
-            "color": "white",
-            "margin": "1rem 0rem 0rem 1rem",
+            "backgroundColor": "#e2e2e2",
           }
         }
       >
@@ -1027,7 +997,8 @@ exports[`Avatar css 1`] = `
           src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/master/lugiaweb%E7%BB%84%E4%BB%B6/%E5%A4%B4%E5%83%8F/32.jpg"
           style={
             Object {
-              "color": "white",
+              "height": "4rem",
+              "width": "4rem",
             }
           }
         />
@@ -1048,9 +1019,7 @@ exports[`Avatar css 1`] = `
         size="default"
         style={
           Object {
-            "backgroundColor": "#cccccc",
-            "color": "white",
-            "margin": "1rem 0rem 0rem 1rem",
+            "backgroundColor": "#e2e2e2",
           }
         }
       >
@@ -1059,7 +1028,7 @@ exports[`Avatar css 1`] = `
           size="default"
           style={
             Object {
-              "color": "white",
+              "color": "red",
             }
           }
         >
@@ -1080,9 +1049,7 @@ exports[`Avatar css 1`] = `
         size="default"
         style={
           Object {
-            "backgroundColor": "#cccccc",
-            "color": "white",
-            "margin": "1rem 0rem 0rem 1rem",
+            "backgroundColor": "#e2e2e2",
           }
         }
       >
@@ -1111,19 +1078,18 @@ exports[`Avatar css 1`] = `
         src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/master/lugiaweb%E7%BB%84%E4%BB%B6/%E5%A4%B4%E5%83%8F/32.jpg"
         style={
           Object {
-            "backgroundColor": "#cccccc",
-            "color": "white",
-            "margin": "1rem 0rem 0rem 1rem",
+            "backgroundColor": "#e2e2e2",
           }
         }
       >
         <img
-          className="c15"
+          className="c14"
           shape="circle"
           src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/master/lugiaweb%E7%BB%84%E4%BB%B6/%E5%A4%B4%E5%83%8F/32.jpg"
           style={
             Object {
-              "color": "white",
+              "height": "4rem",
+              "width": "4rem",
             }
           }
         />
@@ -1135,12 +1101,12 @@ exports[`Avatar css 1`] = `
   >
     <span>
       <span
-        className="c16"
+        className="c15"
         style={Object {}}
       >
         <span>
           <div
-            className="c8"
+            className="c16"
             name="lugia"
             onBlur={[Function]}
             onClick={[Function]}
@@ -1164,7 +1130,13 @@ exports[`Avatar css 1`] = `
         <span>
           <div
             className=""
-            style={Object {}}
+            style={
+              Object {
+                "position": "absolute",
+                "right": "0rem",
+                "top": "-0.3rem",
+              }
+            }
           >
             <span
               className="c17"
@@ -1312,12 +1284,12 @@ exports[`Avatar css 1`] = `
     <br />
     <span>
       <span
-        className="c16"
+        className="c15"
         style={Object {}}
       >
         <span>
           <div
-            className="c8"
+            className="c16"
             name="lugia"
             onBlur={[Function]}
             onClick={[Function]}
@@ -1340,15 +1312,25 @@ exports[`Avatar css 1`] = `
         </span>
         <sup
           className="c21  c22"
-          style={Object {}}
+          style={
+            Object {
+              "position": "absolute",
+              "right": "0rem",
+              "top": "-0.3rem",
+            }
+          }
         />
       </span>
     </span>
     <br />
     <br />
+  </div>
+  <div
+    className="c0"
+  >
     <span>
       <span
-        className="c16"
+        className="c15"
         style={Object {}}
       >
         <span>
@@ -1378,7 +1360,13 @@ exports[`Avatar css 1`] = `
         <span>
           <div
             className=""
-            style={Object {}}
+            style={
+              Object {
+                "position": "absolute",
+                "right": "0rem",
+                "top": "-0.3rem",
+              }
+            }
           >
             <span
               className="c17"
@@ -1526,7 +1514,7 @@ exports[`Avatar css 1`] = `
     <br />
     <span>
       <span
-        className="c16"
+        className="c15"
         style={Object {}}
       >
         <span>
@@ -1555,7 +1543,13 @@ exports[`Avatar css 1`] = `
         </span>
         <sup
           className="c21  c22"
-          style={Object {}}
+          style={
+            Object {
+              "position": "absolute",
+              "right": "0rem",
+              "top": "-0.3rem",
+            }
+          }
         />
       </span>
     </span>

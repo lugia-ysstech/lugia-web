@@ -131,8 +131,8 @@
       "name": "滑块组件外盒",
       "desc": "为滑块组件外盒配置样式",
       "normal": [["border"], ["background"], ["margin"], ["padding"], ["opacity"]],
-      "hover": [["border"], ["background"], ["opacity"]],
-      "active": [["border"], ["background"], ["opacity"]],
+      "hover": [],
+      "active": [],
       "disabled": [["border"], ["background"], ["opacity"]]
     },
     "SliderTrack": {

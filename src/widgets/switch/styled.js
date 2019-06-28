@@ -81,6 +81,7 @@ export const SwitchWrapper = CSSProvider({
 
 export const SwitchText = CSSProvider({
   tag: 'span',
+  className: 'SwitchText',
   normal: {
     selectNames: [['fontSize'], ['color'], ['padding']],
     getCSS(themeMeta, themeProps) {

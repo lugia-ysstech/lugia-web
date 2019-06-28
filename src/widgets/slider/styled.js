@@ -2,28 +2,19 @@
  * by wangcuixia
  * @flow
  * */
-import styled, { css } from 'styled-components';
-// import colorsFunc from '../css/stateColor';
+import { css } from 'styled-components';
 import { valueInRange } from '../common/Math';
 import { iconStyles, dotStyles } from './slider_public_size';
 import { px2remcss } from '../css/units';
 import {
-  btnDisabledBackground,
-  // themeColor,
-  // throughRangeBackground,
-  tipBackground,
-  tipColor,
-  // trackBackground,
-  // trackDisabledBackground,
   dotNormalColor,
   dotThroughColor,
   iconNormalColor,
   iconChangeColor,
 } from './slider_public_color';
-import Widgets from '../consts';
-import ThemeProvider from '../theme-provider';
 import CSSProvider from '../theme/CSSProvider';
-
+import ThemeHoc from '@lugia/theme-hoc';
+import Icon from '../icon';
 const em = px2remcss;
 type CssTypeProps = {
   background: string,
@@ -63,10 +54,10 @@ export const SliderBigBox = CSSProvider({
     },
   },
   hover: {
-    selectNames: [['border'], ['background'], ['opacity']],
+    selectNames: [],
   },
   active: {
-    selectNames: [['border'], ['background'], ['opacity']],
+    selectNames: [],
   },
   disabled: {
     selectNames: [['border'], ['background'], ['opacity']],
@@ -99,7 +90,6 @@ export const SliderBox = CSSProvider({
     ${props => getPaddingSize(props)};
   `,
 });
-//${props => getSliderWrapperStyle(props).MarginValue};
 export const SliderWrapper = CSSProvider({
   tag: 'div',
   className: 'SliderTrack',
@@ -129,7 +119,6 @@ export const SliderInner = CSSProvider({
       const { propsConfig } = themeProps;
       const size = getSliderInnerHeight(themeMate, propsConfig);
       const { InnerWidth, InnerHeight, sliderInnerPosition } = getSliderInnerStyle(propsConfig);
-      console.log(InnerWidth, InnerHeight);
       return `
         width:${InnerWidth};
         height:${InnerHeight};
@@ -171,20 +160,47 @@ export const Button = CSSProvider({
   className: 'SliderButton',
   normal: {
     selectNames: [['width'], ['height'], ['background'], ['border'], ['borderRadius']],
+    getCSS(themeMate, { propsConfig, themeConfig }) {
+      const { width, height } = themeMate;
+      const {
+        normal: { width: normalW, height: normalH },
+      } = themeConfig;
+      return getButtonStyle({ ...propsConfig, width, height, normalW, normalH });
+    },
   },
   hover: {
     selectNames: [['width'], ['height'], ['background'], ['border'], ['borderRadius']],
+    getCSS(themeMate, { propsConfig, themeConfig }) {
+      const { width, height } = themeMate;
+      const {
+        normal: { width: normalW, height: normalH },
+      } = themeConfig;
+      return getButtonStyle({ ...propsConfig, width, height, normalW, normalH });
+    },
   },
   active: {
     selectNames: [['width'], ['height'], ['background'], ['border'], ['borderRadius']],
+    getCSS(themeMate, { propsConfig, themeConfig }) {
+      const { width, height } = themeMate;
+      const {
+        normal: { width: normalW, height: normalH },
+      } = themeConfig;
+      return getButtonStyle({ ...propsConfig, width, height, normalW, normalH });
+    },
   },
   disabled: {
     selectNames: [['width'], ['height'], ['background'], ['border'], ['borderRadius']],
+    getCSS(themeMate, { propsConfig, themeConfig }) {
+      const { width, height } = themeMate;
+      const {
+        normal: { width: normalW, height: normalH },
+      } = themeConfig;
+      return getButtonStyle({ ...propsConfig, width, height, normalW, normalH });
+    },
   },
   css: css`
     border-radius: 50%;
     position: absolute;
-    ${props => getButtonStyle(props).btnPosition};
   `,
 });
 export const Tips = CSSProvider({
@@ -342,34 +358,98 @@ export const Tiparrow = CSSProvider({
 export const Dot = CSSProvider({
   tag: 'span',
   normal: {
+    selectNames: [['color'], ['font']],
+    getCSS(themeMate, { propsConfig }) {
+      const { color } = themeMate;
+      const { dotPosition, dotBackground, dotW, dotH, marskText, dotTextPosition } = getDotStyle(
+        propsConfig
+      );
+      return ` 
+        ${dotPosition};  
+        ${dotBackground};
+        width:${dotW};
+        height:${dotH};
+       &::before{
+        content:'${marskText}';
+        ${dotTextPosition};
+        color:${color};
+        
+       }
+      `;
+    },
+  },
+  hover: {
     selectNames: [],
   },
+  active: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [['color'], ['font']],
+    getCSS(themeMate) {
+      const { color } = themeMate;
+      return ` 
+         &::before{
+          color:${color};
+         }
+      `;
+    },
+  },
+
   css: css`
     border-radius: 50%;
     position: absolute;
-    ${props => getDotStyle(props).dotPosition};  
     z-index: 1;
-    ${props => getDotStyle(props).dotBackground}; 
-    width: ${props => getDotStyle(props).dotW};
-    height: ${props => getDotStyle(props).dotH};
     &::before {
-      content: '${props => getDotStyle(props).marskText}';
       display: block;
       position: absolute;
-      ${props => getDotStyle(props).dotTextPosition}
     }
   `,
 });
-export const Icons = ThemeProvider(
-  styled.span`
+export const Icons = CSSProvider({
+  tag: 'span',
+  normal: {
+    className: [],
+  },
+  hover: {
+    className: [],
+  },
+  active: {
+    className: [],
+  },
+  disabled: {
+    className: [],
+  },
+  css: css`
     position: absolute;
     line-height: 0;
     ${props => getIconsStyle(props).iconPosition};
     ${props => getIconsStyle(props).changeColor};
     font-size: ${props => getIconsStyle(props).fontSize};
   `,
-  Widgets.SliderIcon
+});
+
+export const IconsInner = ThemeHoc(
+  CSSProvider({
+    extend: Icon,
+    className: 'IconsInner',
+    normal: {
+      selectNames: [['color'], ['font'], ['fontSize']],
+    },
+    hover: {
+      selectNames: [],
+    },
+    active: {
+      selectNames: [],
+    },
+    disabled: {
+      selectNames: [['color']],
+    },
+  }),
+  'IconsInner',
+  { hover: true, active: false }
 );
+
 function getPaddingSize(props) {
   const { vertical, levelPaddings, sliderVerticalPaddings } = props;
   const left = vertical ? sliderVerticalPaddings[0] : levelPaddings[0];
@@ -411,28 +491,32 @@ const getSliderInnerStyle = (props: CssTypeProps) => {
     sliderInnerPosition,
   };
 };
+function getButtonPositionDisatance(normalSize, currentSize) {
+  const differenceValue = normalSize - currentSize;
+  const size = Math.abs(differenceValue) / 2;
+  return differenceValue > 0 ? size : -size;
+}
 const getButtonStyle = (props: CssTypeProps) => {
-  const { changeBackground, btnDisabled, disabled, vertical } = props;
-  const { moveX, moveY } = props;
+  const { changeBackground, btnDisabled, vertical } = props;
+  const { moveX, moveY, width = 0, height = 0, normalW = 0, normalH = 0 } = props;
   const isChangeBg = changeBackground && btnDisabled;
-
+  const left = getButtonPositionDisatance(normalW, width);
+  const top = getButtonPositionDisatance(normalH, height);
   const btnZIndex = `
   z-index:${isChangeBg ? '3' : '2'};
   `;
-  const btnleft = vertical ? 50 : moveX;
-  const btnTorBot = vertical ? `bottom:${moveY}%` : 'top: 50%';
+  const btnleft = vertical ? '50%' : `calc(${moveX}% + ${em(left)})`;
+  const btnTorBot = vertical ? `bottom:calc(${moveY}% + ${em(top)})` : 'top: 50%';
   const btnTransform = vertical ? 'translateX' : 'translateY';
   const btnPosition = `
-        left: ${btnleft}%;
+        left: ${btnleft};
         ${btnTorBot};
         transform: ${btnTransform}(-50%);
         -webkit-transform: ${btnTransform}(-50%);
         ${btnZIndex};
         transition:${transitionTime}s; 
       `;
-  return {
-    btnPosition,
-  };
+  return btnPosition;
 };
 const getDotStyle = (props: CssTypeProps) => {
   const { marksData } = props;
@@ -490,16 +574,16 @@ const getDotStyle = (props: CssTypeProps) => {
     const dotPosTorBot = vertical ? `bottom: ${dotMoveX}%` : 'top: 50%';
     const dotPosTrans = vertical ? 'translateX' : 'translateY';
     const { distanceForSlider } = dotStyles;
-    const dotTextLeft = vertical ? px2remcss(distanceForSlider) : '50%';
-    const dotTextTop = vertical ? '50%' : px2remcss(distanceForSlider);
-    const dotTextTrans = vertical ? 'translateY' : 'translateX';
+    const dotTextLeft = vertical ? 'left:calc(100% + 10px)' : 'left:50%';
+    const dotTextTop = vertical ? '50%' : `-${em(distanceForSlider)}`;
+    const dotTextTrans = vertical ? 'translateY(50%)' : 'translateX(-50%)';
     dotTextPosition = `
       font-size:${px2remcss(dotFontSize)};
       line-height:1;
-      left: ${dotTextLeft};
-      transform: ${dotTextTrans}(-50%);
-      -webkit-transform: ${dotTextTrans}(-50%);
-      top: ${dotTextTop};
+      ${dotTextLeft};
+      transform: ${dotTextTrans};
+      -webkit-transform: ${dotTextTrans};
+      bottom: ${dotTextTop};
       color:${dotColor};
     `;
     dotPosition = `
@@ -545,7 +629,7 @@ const getIconsStyle = (props: CssTypeProps) => {
     const iconCenterP = vertical ? 'left:50%' : 'top: 50%';
     const iconTrans = vertical ? 'translateX' : 'translateY';
     const theValue = value[0];
-    const distance = px2remcss(iconDistancen);
+    const distance = em(iconDistancen);
     if (index === 0) {
       iconPos = `${vertical ? 'bottom' : 'left'}:-${distance}`;
       if (theValue <= middleVal) {

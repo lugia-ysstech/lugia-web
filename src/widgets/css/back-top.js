@@ -6,10 +6,9 @@
 import styled, { css, keyframes } from 'styled-components';
 import { getBorder } from '@lugia/theme-css-hoc';
 import colorsFunc from '../css/stateColor';
-import ThemeProvider from '../theme-provider';
 import { px2remcss } from './units';
 import Icon from '../icon';
-import CSSComponent from '@lugia/theme-css-hoc';
+import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 
 const { defaultColor, themeColor } = colorsFunc();
 const FontSize = 1.2;
@@ -18,7 +17,8 @@ const em = px2remcss;
 export type BackTopProps = {
   visibilityHeight?: number,
   children?: any,
-  getChildThemeHocProps: Function,
+  getPartOfThemeProps: Function,
+  getPartOfThemeConfig: Function,
   target?: Function,
   themeProps: Object,
   icon?: string,
@@ -76,7 +76,7 @@ const CommonBackTopStyle = CSSComponent({
   `,
 });
 
-export const BackTop = CSSComponent({
+export const BackTop = StaticComponent({
   tag: 'div',
   className: 'back-top',
   css: css`
@@ -85,9 +85,6 @@ export const BackTop = CSSComponent({
     ${getLeftOrRight};
     cursor: pointer;
   `,
-  normal: {
-    selectNames: [],
-  },
 });
 
 export const BackTopContent = CSSComponent({
@@ -97,17 +94,9 @@ export const BackTopContent = CSSComponent({
     position: relative;
   `,
   normal: {
-    selectNames: [
-      ['background'],
-      ['color'],
-      ['width'],
-      ['height'],
-      ['borderRadius'],
-      ['opacity'],
-      ['border'],
-    ],
+    selectNames: [['background'], ['color'], ['width'], ['height'], ['opacity'], ['border']],
     defaultTheme: {
-      background: { backgroundColor: defaultColor },
+      background: { color: defaultColor },
       color: themeColor,
       width: 40,
       height: 40,
@@ -131,23 +120,20 @@ export const IconBox = CSSComponent({
   `,
 });
 
-export const Icons = ThemeProvider(
-  CSSComponent({
-    className: 'icon',
-    extend: Icon,
-    normal: {
-      selectNames: [['color'], ['fontSize'], ['margin'], ['padding']],
-    },
-    defaultTheme: {
-      margin: 0,
-      padding: 0,
-    },
-    css: css`
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    `,
-  }),
-  'Icons'
-);
+export const Icons = CSSComponent({
+  className: 'icon',
+  extend: Icon,
+  normal: {
+    selectNames: [['color'], ['fontSize'], ['margin'], ['padding']],
+  },
+  defaultTheme: {
+    margin: 0,
+    padding: 0,
+  },
+  css: css`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  `,
+});

@@ -81,27 +81,31 @@ class AmountCard extends React.Component<Object, Object> {
 export default () => {
   const avatar = {
     [Widget.Card]: {
-      normal: { width: 300, height: 160 },
-      hover: {
-        background: {
-          backgroundColor: 'red',
+      CardContainer: {
+        normal: { width: 300, height: 160 },
+        hover: {
+          background: {
+            color: 'red',
+          },
         },
       },
     },
   };
   const view = {
     [Widget.Card]: {
-      normal: { width: 500, height: 200 },
-      hover: {
-        background: {
-          backgroundColor: 'red',
+      CardContainer: {
+        normal: { width: 500, height: 200 },
+        hover: {
+          background: {
+            color: 'red',
+          },
         },
       },
     },
   };
   const imageVCard = {
     [Widget.Card]: {
-      [Widget.Card]: {
+      CardContainer: {
         normal: {
           width: 200,
           height: 350,
@@ -109,30 +113,30 @@ export default () => {
           margin: { top: 20 },
           padding: { top: 10 },
           background: {
-            backgroundColor: 'gray',
+            color: 'gray',
           },
           color: 'red',
         },
       },
-      cardImage: {
+      CardImage: {
         normal: {
           width: 200,
           height: 160,
         },
       },
-      CardAvatar: {
-        normal: {
-          color: 'red',
-        },
-      },
-      cardDescription: {
+      CardDescription: {
         normal: {
           color: 'yellow',
         },
       },
       CardTitle: {
         normal: {
+          width: 100,
+          height: 20,
           color: 'pink',
+          background: {
+            color: 'red',
+          },
         },
       },
       CardOperation: {
@@ -144,11 +148,13 @@ export default () => {
   };
   const imageHCard = {
     [Widget.Card]: {
-      normal: {
-        width: 360,
-        height: 200,
+      CardContainer: {
+        normal: {
+          width: 360,
+          height: 200,
+        },
       },
-      cardImage: {
+      CardImage: {
         normal: {
           width: 160,
           height: 200,
@@ -158,28 +164,36 @@ export default () => {
   };
   const avatarVCard = {
     [Widget.Card]: {
-      normal: {
-        width: 160,
-        height: 220,
-      },
-      cardAvatar: {
+      CardContainer: {
         normal: {
-          width: 100,
-          height: 100,
+          width: 160,
+          height: 220,
+        },
+      },
+    },
+    [Widget.Avatar]: {
+      SrcAvatar: {
+        normal: {
+          width: 60,
+          height: 60,
         },
       },
     },
   };
   const avatarHCard = {
     [Widget.Card]: {
-      normal: {
-        width: 260,
-        height: 180,
-      },
-      cardAvatar: {
+      CardContainer: {
         normal: {
-          width: 100,
-          height: 100,
+          width: 260,
+          height: 180,
+        },
+      },
+    },
+    [Widget.Avatar]: {
+      SrcAvatar: {
+        normal: {
+          width: 60,
+          height: 60,
         },
       },
     },
@@ -187,17 +201,21 @@ export default () => {
 
   const price = {
     [Widget.Card]: {
-      normal: { width: 200, height: 220 },
-      hover: {
-        background: {
-          backgroundColor: 'red',
+      CardContainer: {
+        normal: { width: 200, height: 220 },
+        hover: {
+          background: {
+            color: 'red',
+          },
         },
       },
     },
   };
   const tabsCard = {
     [Widget.Card]: {
-      normal: { width: 400, height: 240 },
+      CardContainer: {
+        normal: { width: 400, height: 240 },
+      },
     },
   };
 
@@ -226,67 +244,67 @@ export default () => {
           operation={'操作'}
         />
       </Wrapper>
-      {/*<p>基本样式</p>*/}
-      {/*<Theme config={view}>*/}
-      {/*<Wrapper>*/}
-      {/*<Card*/}
-      {/*title={<div>{'this is title'}</div>}*/}
-      {/*description={[*/}
-      {/*<div>{'this is description'}</div>,*/}
-      {/*<div>{'this is description'}</div>,*/}
-      {/*<div>{'this is description'}</div>,*/}
-      {/*<div>{'this is description'}</div>,*/}
-      {/*]}*/}
-      {/*shadow={'always'}*/}
-      {/*/>*/}
-      {/*</Wrapper>*/}
-      {/*</Theme>*/}
-      {/*<p>tip样式</p>*/}
-      {/*<Theme config={view}>*/}
-      {/*<Wrapper>*/}
-      {/*<Card*/}
-      {/*type={'tip'}*/}
-      {/*title={'this is title'}*/}
-      {/*content={[<div>{'this is description'}</div>, <div>{'this is description'}</div>]}*/}
-      {/*shadow={'always'}*/}
-      {/*/>*/}
-      {/*</Wrapper>*/}
-      {/*</Theme>*/}
+      <p>基本样式</p>
+      <Theme config={view}>
+        <Wrapper>
+          <Card
+            title={<div>{'this is title'}</div>}
+            description={[
+              <div>{'this is description'}</div>,
+              <div>{'this is description'}</div>,
+              <div>{'this is description'}</div>,
+              <div>{'this is description'}</div>,
+            ]}
+            shadow={'always'}
+          />
+        </Wrapper>
+      </Theme>
+      <p>tip样式</p>
+      <Theme config={view}>
+        <Wrapper>
+          <Card
+            type={'tip'}
+            title={'this is title'}
+            content={[<div>{'this is description'}</div>, <div>{'this is description'}</div>]}
+            shadow={'always'}
+          />
+        </Wrapper>
+      </Theme>
 
-      {/*<Theme config={avatarVCard}>*/}
-      {/*<p>头像样式</p>*/}
-      {/*<Wrapper>*/}
-      {/*<Card*/}
-      {/*type={'avatar'}*/}
-      {/*title={'this is title'}*/}
-      {/*description={'this is description'}*/}
-      {/*imageOrientation={'vertical'}*/}
-      {/*avatar={*/}
-      {/*'http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png'*/}
-      {/*}*/}
-      {/*shadow={'hover'}*/}
-      {/*/>*/}
-      {/*</Wrapper>*/}
-      {/*</Theme>*/}
+      <Theme config={avatarVCard}>
+        <p>头像样式</p>
+        <Wrapper>
+          <Card
+            type={'avatar'}
+            title={'this is title'}
+            description={'this is description'}
+            imageOrientation={'vertical'}
+            avatar={
+              'http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png'
+            }
+            shadow={'hover'}
+          />
+        </Wrapper>
+      </Theme>
 
-      {/*<p>头像样式</p>*/}
-      {/*<Theme config={avatarHCard}>*/}
-      {/*<Wrapper>*/}
-      {/*<Card*/}
-      {/*type={'avatar'}*/}
-      {/*title={'this is title'}*/}
-      {/*description={*/}
-      {/*<div>*/}
-      {/*<div>{'this is description'}</div>*/}
-      {/*</div>*/}
-      {/*}*/}
-      {/*avatar={*/}
-      {/*'http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png'*/}
-      {/*}*/}
-      {/*shadow={'hover'}*/}
-      {/*/>*/}
-      {/*</Wrapper>*/}
-      {/*</Theme>*/}
+      <p>头像样式</p>
+      <Theme config={avatarHCard}>
+        <Wrapper>
+          <Card
+            type={'avatar'}
+            title={'this is title'}
+            description={
+              <div>
+                <div>{'this is description'}</div>
+              </div>
+            }
+            avatar={
+              'http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png'
+            }
+            shadow={'hover'}
+          />
+        </Wrapper>
+      </Theme>
 
       <Theme config={imageVCard}>
         <p>图片样式</p>
@@ -304,42 +322,42 @@ export default () => {
           />
         </Wrapper>
       </Theme>
-      {/*<p>图片样式</p>*/}
-      {/*<Theme config={imageHCard}>*/}
-      {/*<Wrapper>*/}
-      {/*<Card*/}
-      {/*type={'image'}*/}
-      {/*title={'this is title'}*/}
-      {/*imageOrientation={'horizontal'}*/}
-      {/*description={'this is description'}*/}
-      {/*image={*/}
-      {/*'http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg'*/}
-      {/*}*/}
-      {/*shadow={'hover'}*/}
-      {/*/>*/}
-      {/*</Wrapper>*/}
-      {/*</Theme>*/}
-      {/*<p>组合样式</p>*/}
-      {/*<Theme config={tabsCard}>*/}
-      {/*<Wrapper>*/}
-      {/*<Card*/}
-      {/*operation={'操作'}*/}
-      {/*type={'combo'}*/}
-      {/*content={*/}
-      {/*<TabsWrapper>*/}
-      {/*<Tabs data={defaultData} />*/}
-      {/*</TabsWrapper>*/}
-      {/*}*/}
-      {/*shadow={'hover'}*/}
-      {/*/>*/}
-      {/*</Wrapper>*/}
-      {/*</Theme>*/}
-      {/*<p>组合样式</p>*/}
-      {/*<Theme config={price}>*/}
-      {/*<Wrapper>*/}
-      {/*<Card viewClass={'price'} type={'combo'} content={<AmountCard />} shadow={'hover'} />*/}
-      {/*</Wrapper>*/}
-      {/*</Theme>*/}
+      <p>图片样式</p>
+      <Theme config={imageHCard}>
+        <Wrapper>
+          <Card
+            type={'image'}
+            title={'this is title'}
+            imageOrientation={'horizontal'}
+            description={'this is description'}
+            image={
+              'http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg'
+            }
+            shadow={'hover'}
+          />
+        </Wrapper>
+      </Theme>
+      <p>组合样式</p>
+      <Theme config={tabsCard}>
+        <Wrapper>
+          <Card
+            operation={'操作'}
+            type={'combo'}
+            content={
+              <TabsWrapper>
+                <Tabs data={defaultData} />
+              </TabsWrapper>
+            }
+            shadow={'hover'}
+          />
+        </Wrapper>
+      </Theme>
+      <p>组合样式</p>
+      <Theme config={price}>
+        <Wrapper>
+          <Card viewClass={'price'} type={'combo'} content={<AmountCard />} shadow={'hover'} />
+        </Wrapper>
+      </Theme>
     </Wrapper>
   );
 };

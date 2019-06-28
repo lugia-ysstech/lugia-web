@@ -14,6 +14,7 @@ import StaticComponent from '../theme/CSSProvider';
 import colorsFunc from '../css/stateColor';
 
 import { units } from '@lugia/css';
+import { addPropsConfig } from '../avatar/index';
 
 const { px2remcss } = units;
 const { borderDisableColor } = colorsFunc();
@@ -21,19 +22,25 @@ const Divider = CSSComponent({
   tag: 'div',
   className: 'divider',
   normal: {
+    selectNames: [['width'], ['height'], ['opacity'], ['margin'], ['padding'], ['boxShadow']],
     getCSS(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
       const { dashed, position, content } = propsConfig;
-      const { color } = themeMeta;
+      const { background = {}, height, width } = themeMeta;
+      const { color = '' } = background;
       const theColor = color ? color : borderDisableColor;
-      const theWidth = !content
+      const theWidth = width
+        ? px2remcss(width)
+        : !content
         ? '100%'
         : position === 'left'
         ? '95%'
         : position === 'right'
         ? '5%'
         : '50%';
-      const otherWidth = !content
+      const otherWidth = width
+        ? px2remcss(width)
+        : !content
         ? '100%'
         : position === 'left'
         ? '5%'
@@ -41,22 +48,21 @@ const Divider = CSSComponent({
         ? '95%'
         : '50%';
       const theDashed = dashed ? 'dashed' : 'solid';
+      const theHeight = height ? px2remcss(height) : px2remcss(1);
       return ` ::before {
       content: '';
       display: table-cell;
       position: relative;
-      top: 50%;
       width:${theWidth};
-      border-top: ${px2remcss(1)} ${theDashed} ${theColor};
+      border-top: ${theHeight} ${theDashed} ${theColor};
       transform: translateY(50%);
     }
     ::after {
       content: '';
       display: table-cell;
       position: relative;
-      top: 50%;
       width:${otherWidth};
-      border-top: ${px2remcss(1)} ${theDashed} ${theColor};
+      border-top: ${theHeight} ${theDashed} ${theColor};
       transform: translateY(50%);
     }`;
     },
@@ -73,6 +79,17 @@ const Divider = CSSComponent({
 const VerticalDivider = StaticComponent({
   tag: 'div',
   className: 'verticalDivider',
+  normal: {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['background'],
+      ['opacity'],
+      ['margin'],
+      ['padding'],
+      ['boxShadow'],
+    ],
+  },
   css: css`
     margin: 0 ${px2remcss(6)};
     display: inline-block;
@@ -86,6 +103,9 @@ const VerticalDivider = StaticComponent({
 const ChildText = StaticComponent({
   tag: 'span',
   className: 'dividerChildText',
+  normal: {
+    selectNames: [],
+  },
   css: css`
     display: inline-block;
     white-space: nowrap;
@@ -110,13 +130,24 @@ class LineBox extends Component<DividerProps, any> {
     return content ? <ChildText themeProps={themeProps}>{content}</ChildText> : null;
   }
   getDivider() {
-    const { type, position, dashed, content, themeProps } = this.props;
-    themeProps.propsConfig = { dashed, position, content };
+    const { type, position, dashed, content } = this.props;
+
+    const vThemeProps = addPropsConfig(this.props.getPartOfThemeProps('VerticalDivider'), {
+      dashed,
+      position,
+      content,
+    });
+    const hThemeProps = addPropsConfig(this.props.getPartOfThemeProps('HorizontalDivider'), {
+      dashed,
+      position,
+      content,
+    });
+
     if (type === 'vertical') {
-      return <VerticalDivider themeProps={themeProps} />;
+      return <VerticalDivider themeProps={vThemeProps} />;
     }
     return (
-      <Divider dashed={dashed} position={position} content={content} themeProps={themeProps}>
+      <Divider dashed={dashed} position={position} content={content} themeProps={hThemeProps}>
         {this.getChildText()}
       </Divider>
     );

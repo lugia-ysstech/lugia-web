@@ -3,7 +3,7 @@ import '../common/shirm';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import React, { Component } from 'react';
 import Widget from '../consts/index';
-import ThemeHoc from '@lugia/theme-hoc';
+import ThemeHoc, { addMouseEvent } from '@lugia/theme-hoc';
 import { fixControlledValue } from '.././utils';
 import type { InputSize, InputValidateType, ValidateStatus } from '../css/input';
 import {
@@ -486,7 +486,11 @@ class TextBox extends Component<InputProps, InputState> {
 
   getInputContainer(fetcher: Function) {
     const { themeProps } = this.props;
-    return <InputContainer themeProps={themeProps}>{fetcher()}</InputContainer>;
+    return (
+      <InputContainer themeProps={themeProps} {...addMouseEvent(this)}>
+        {fetcher()}
+      </InputContainer>
+    );
   }
 
   getInputInner = () => {

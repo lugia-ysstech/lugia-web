@@ -5,25 +5,15 @@
  * @flow
  */
 import * as React from 'react';
-import styled from 'styled-components';
+import ThemeHoc from '@lugia/theme-hoc';
 import Widget from '../consts/index';
 import Divider from '../divider';
 import { FontSize } from '../css';
-
-import {
-  blackColor,
-  disableColor,
-  getMenuItemHeight,
-  ItemBackgroundColor,
-  lightGreyColor,
-  SelectIcon,
-  themeColor,
-} from '../css/menu';
+import { px2remcss } from '../css/units';
+import { deepMerge } from '@lugia/object-utils';
+import { SelectIcon, ItemWrap, DividerWrap, TextContainer } from '../css/menu';
 import CheckBox from '../checkbox';
 import Theme from '../theme';
-import { px2emcss } from '../css/units';
-
-const em = px2emcss(1.2);
 
 const Utils = require('@lugia/type-utils');
 const { ObjectUtils } = Utils;
@@ -41,62 +31,6 @@ export type MenuItemProps = {
   checkedCSS?: 'none' | 'background' | 'mark' | 'checkbox',
   theme: Object,
   isFirst: boolean,
-};
-
-const getFontSize = (props: Object) => {
-  const { size = 'default' } = props;
-  return size === 'large' || size === 'bigger' ? em(14) : em(12);
-};
-
-const TextContainer = styled.span`
-  padding: ${em(0)} ${em(8)};
-  font-size: ${getFontSize};
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 100%;
-`;
-
-const getMulipleCheckedStyle = (props: MenuItemProps) => {
-  return props.checked
-    ? `
-    :after{
-      color: ${themeColor};
-    } 
-    :hover:after{
-      color: ${themeColor};
-    }
-    `
-    : `
-    :hover:after{
-      color: #d0c8c8;
-    }
-    `;
-};
-
-const getItemColorAndBackground = (props: MenuItemProps) => {
-  const { checked, disabled, checkedCSS, theme } = props;
-  const { color } = theme;
-
-  return disabled
-    ? `color: ${lightGreyColor};
-     font-weight: 500;`
-    : checked && checkedCSS !== 'background'
-    ? `
-    color: ${themeColor};
-    font-weight: 900;
-  `
-    : checked && checkedCSS === 'background'
-    ? `
-      color: ${blackColor};
-      font-weight: 900;
-      background: ${disableColor}
-    `
-    : `
-    color: ${color};
-    font-weight: 500;
-  `;
 };
 
 const getIcon = props => {
@@ -119,76 +53,15 @@ const getIcon = props => {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      right: ${em(12)};
+      right: ${px2remcss(12)};
       font-weight: 700;
-      font-size: ${em(16)};
+      font-size: ${px2remcss(16)};
       text-shadow: 0 0.1px 0, 0.1px 0 0, 0 -0.1px 0, -0.1px 0;
     }
     `
     }
   `;
 };
-
-const getHeight = (props: Object) => {
-  const { size } = props;
-  const itemHeight = getMenuItemHeight(size);
-  return `height: ${em(itemHeight)}`;
-};
-
-const getHoverCSS = (props: Object) => {
-  const { disabled, theme } = props;
-  const { hover } = theme;
-
-  return disabled
-    ? ''
-    : `&:hover {
-    font-weight: ${hover ? hover.fontWeight : 900};
-    background: ${hover ? hover.background : ItemBackgroundColor};
-    color: ${hover ? hover.color : blackColor};
-  }`;
-};
-
-const getCursor = (props: Object) => {
-  const { disabled } = props;
-  return `cursor: ${disabled ? 'not-allowed' : 'pointer'}`;
-};
-
-const getBackground = (props: Object) => {
-  const { theme } = props;
-  const { background } = theme;
-  return `background: ${background ? background : ''}`;
-};
-const SingleItem = styled.li`
-  box-sizing: border-box;
-  position: relative;
-  display: block;
-  font-weight: 400;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  transition: background 0.3s ease;
-  ${getIcon};
-  ${getHeight};
-  ${getCursor};
-  ${getHoverCSS};
-  ${getMulipleCheckedStyle};
-  ${getItemColorAndBackground};
-  ${getBackground};
-`;
-
-const DividedWrap = styled.div`
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: ${em(1)};
-`;
-
-const MutlipleItem = styled(SingleItem)`
-  ${getIcon};
-  ${getMulipleCheckedStyle};
-`;
-MutlipleItem.displayName = 'mutlipleMenuItem';
 
 class MenuItem extends React.Component<MenuItemProps> {
   static defaultProps = {
@@ -198,6 +71,17 @@ class MenuItem extends React.Component<MenuItemProps> {
     divided: false,
   };
   static displayName = Widget.MenuItem;
+
+  mergeTheme(theme: Object, viewClass: string, params: Object) {
+    theme[viewClass] = deepMerge(theme[viewClass], { propsConfig: params });
+  }
+
+  getDividerTheme() {
+    // const { getPartOfThemeConfig } = this.props;
+    return {
+      // Divider没有完成，所以没办法配置
+    };
+  }
 
   render() {
     const {
@@ -210,10 +94,18 @@ class MenuItem extends React.Component<MenuItemProps> {
       checkedCSS,
       size,
       divided,
-      theme,
       isFirst,
+      getPartOfThemeHocProps,
+      getPartOfThemeProps,
     } = this.props;
-    const Item = mutliple ? MutlipleItem : SingleItem;
+
+    let theme;
+    if (checked) {
+      theme = getPartOfThemeHocProps('SelectedItem');
+    } else {
+      theme = getPartOfThemeHocProps('Item');
+    }
+    const { viewClass, theme: itemTheme } = theme;
     let title = '';
     React.Children.forEach(children, (item: Object) => {
       if (ObjectUtils.isString(item)) {
@@ -221,40 +113,52 @@ class MenuItem extends React.Component<MenuItemProps> {
       }
     });
     const isCheckbox = checkedCSS === 'checkbox';
+    this.mergeTheme(itemTheme, viewClass, {
+      size,
+      checkedCSS,
+      checked,
+    });
+
+    const ItemThemeProps = getPartOfThemeProps('Item');
+    const DividerThemeProps = getPartOfThemeProps('Divider');
 
     const target = (
-      <Item
+      <ItemWrap
         onClick={onClick}
         onMouseEnter={onMouseEnter}
         title={title}
-        checked={checked}
         disabled={disabled}
-        divided={divided}
-        checkedCSS={checkedCSS}
-        size={size}
-        theme={theme}
+        viewClass={viewClass}
+        theme={itemTheme}
       >
         {divided && !isFirst ? (
-          <DividedWrap>
-            <Divider />
-          </DividedWrap>
+          <DividerWrap themeProps={DividerThemeProps}>
+            <Theme config={this.getDividerTheme()}>
+              <Divider />
+            </Theme>
+          </DividerWrap>
         ) : null}
         {isCheckbox ? (
-          <Theme>
-            <TextContainer>
+          <TextContainer themeProps={ItemThemeProps}>
+            <Theme
+              config={
+                {
+                  // checkbox 还未完成，暂时只能等待checkbox完成后再配置
+                }
+              }
+            >
               <CheckBox checked={checked} disabled={disabled} onChange={onClick}>
                 {children}
               </CheckBox>
-            </TextContainer>
-          </Theme>
+            </Theme>
+          </TextContainer>
         ) : (
-          <TextContainer size={size}>{children}</TextContainer>
+          <TextContainer themeProps={ItemThemeProps}>{children}</TextContainer>
         )}
-      </Item>
+      </ItemWrap>
     );
 
     return target;
   }
 }
-
-export default MenuItem;
+export default ThemeHoc(MenuItem, Widget.MenuItem, { hover: true, active: true });

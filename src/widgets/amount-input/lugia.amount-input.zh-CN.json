@@ -124,5 +124,72 @@
       "event": "SyntheticEvent"
     }
   },
-  "category": ["数据录入"]
+  "category": ["数据录入"],
+  "designInfo": {
+    "AmountInputConfig": {
+      "sequence": 1,
+      "title": "金额输入框",
+      "desc": "金额输入框",
+      "theme": {
+        "AmountInputConfig": {
+          "name": "金额输入框",
+          "desc": "配置金额输入框展示不同样式",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["fontSize"],
+            ["font"],
+            ["color"],
+            ["padding"],
+            ["background"],
+            ["border"],
+            ["cursor"],
+            ["margin"],
+            ["padding"]
+          ],
+          "hover": [["border"], ["background"]],
+          "clicked": [],
+          "disabled": []
+        }
+      }
+    }
+  },
+  "theme": {
+    "Input": {
+      "name": "金额输入框",
+      "desc": "金额输入框主体结构",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["fontSize"],
+        ["font"],
+        ["color"],
+        ["padding"],
+        ["background"],
+        ["border"],
+        ["cursor"],
+        ["margin"],
+        ["padding"]
+      ],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
+    },
+    "AmountInputPrefix": {
+      "name": "金额输入框主体前缀",
+      "desc": "金额输入框主体前缀",
+      "normal": [["width"], ["height"], ["fontSize"], ["font"], ["color"]],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
+    },
+    "AmountTip": {
+      "name": "输入框提示",
+      "desc": "输入框提示",
+      "normal": [["font"], ["color"], ["background"], ["border"]],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
+    }
+  }
 }

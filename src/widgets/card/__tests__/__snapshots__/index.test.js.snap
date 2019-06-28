@@ -1,6 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Card css 1`] = `
+.c24 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c12 {
+  box-sizing: border-box;
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+  position: relative;
+  color: rgba(0,0,0,0.65);
+  background-color: #cccccc;
+  border-radius: 50%;
+  width: 2.666666666666667em;
+  height: 2.666666666666667em;
+  line-height: 2.666666666666667em;
+}
+
+.c13 {
+  vertical-align: middle;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 10%;
+}
+
 .c1 {
   border: 0.1rem solid #cccccc;
   position: relative;
@@ -10,14 +39,12 @@ exports[`Card css 1`] = `
   display: flex;
   border-radius: 0.5rem;
   box-shadow: 0 0 0.6rem rgba(0,0,50,0.1);
-  width: 35rem;
-  height: 13rem;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
 }
 
-.c7 {
+.c9 {
   border: 0.1rem solid #cccccc;
   position: relative;
   display: -webkit-box;
@@ -26,8 +53,21 @@ exports[`Card css 1`] = `
   display: flex;
   border-radius: 0.5rem;
   box-shadow: 0 0 0.6rem rgba(0,0,50,0.1);
-  width: 20rem;
-  height: 23rem;
+  text-align: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c15 {
+  border: 0.1rem solid #cccccc;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.6rem rgba(0,0,50,0.1);
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -37,47 +77,103 @@ exports[`Card css 1`] = `
   font-size: 1.2rem;
   display: inline-block;
   width: 100%;
-  padding-top: 1.6rem;
+  padding: 1.6rem 0rem 0rem 0rem;
   padding-left: 1rem;
   padding-right: 1rem;
 }
 
-.c9 {
+.c17 {
   width: 12rem;
   height: 11.2rem;
 }
 
-.c8 {
+.c16 {
   position: relative;
-  width: 100%;
-  height: 11.2rem;
+  width: 20rem;
+  height: 35rem;
   display: block;
+}
+
+.c18 {
+  position: relative;
+  width: 36rem;
+  height: 20rem;
+  display: inline-block;
+}
+
+.c10 {
+  position: relative;
+  text-align: center;
+  width: 16rem;
+  height: 22rem;
+  display: block;
+}
+
+.c14 {
+  position: relative;
+  text-align: center;
+  width: 26rem;
+  height: 18rem;
+  display: block;
+}
+
+.c11 {
+  border-radius: 50%;
+  width: 7rem;
+  height: 7rem;
+  background-color: transparent;
+  padding: 2rem 0;
 }
 
 .c5 {
   text-align: inherit;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.c4 {
   display: inline-block;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   font-size: 1.6rem;
-  color: #333333;
   overflow: hidden;
   white-space: nowrap;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  font-weight: 500;
-  padding-bottom: 0.8rem;
-  font-weight: 500;
+  padding: 0rem 0rem NaNrem 0rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.c4 {
+  text-align: inherit;
+  display: inline-block;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 1.6rem;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 0rem 0rem NaNrem 0rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.c8 {
+  left: 1.4rem;
+  position: absolute;
+  display: inline-block;
+  height: 2rem;
+  width: 0.5rem;
+  background: #4d63ff;
+  border-radius: 0.5rem;
+}
+
+.c7 {
+  text-align: inherit;
+  font-size: 1.4rem;
+  padding-top: 0.4rem;
+  color: #666666;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .c6 {
+  text-align: inherit;
   font-size: 1.4rem;
   padding-top: 0.4rem;
   color: #666666;
@@ -93,10 +189,216 @@ exports[`Card css 1`] = `
   top: 1.6rem;
 }
 
+.c27 {
+  position: relative;
+  cursor: pointer;
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 2.8333333333333335em;
+  height: 2.8333333333333335em;
+  padding: 0 1.6666666666666667em 0 1.6666666666666667em;
+  box-shadow: 0 0 0.5em none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  background: none;
+  z-index: 5;
+  box-sizing: border-box;
+}
+
+.c27:hover > div {
+  color: #4d63ff;
+}
+
+.c27:hover > span > i:first-child {
+  color: #4d63ff;
+}
+
+.c28 {
+  color: #4d63ff;
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: left;
+  padding: 0 0em 0 0em;
+  height: 2.8333333333333335em;
+  line-height: 2.8333333333333335em;
+}
+
+.c28:focus {
+  color: #4d63ff;
+}
+
+.c29 {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: left;
+  padding: 0 0em 0 0em;
+  height: 2.8333333333333335em;
+  line-height: 2.8333333333333335em;
+}
+
+.c29:focus {
+  color: #4d63ff;
+}
+
+.c33 {
+  display: inline-block;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.c30 {
+  background-color: blue;
+  position: absolute;
+  box-sizing: border-box;
+  z-index: 3;
+  border-radius: 0.16666666666666669em;
+  height: 0.16666666666666669em;
+  width: 8.333333333333334em;
+  bottom: 0;
+  -webkit-transform: translateX(1.6666666666666667em);
+  -ms-transform: translateX(1.6666666666666667em);
+  transform: translateX(1.6666666666666667em);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.c22 {
+  position: absolute;
+  font-size: 1.2rem;
+  display: none;
+  z-index: 5;
+  cursor: not-allowed;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  line-height: 100%;
+  top: 50%;
+  left: 0.8333333333333334em;
+}
+
+.c31 {
+  position: absolute;
+  font-size: 1.2rem;
+  display: none;
+  z-index: 5;
+  cursor: pointer;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  line-height: 100%;
+  top: 50%;
+  right: 0.8333333333333334em;
+}
+
+.c20 {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  width: NaNem;
+}
+
+.c25 {
+  width: 100%;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.c26 {
+  height: 2.8333333333333335em;
+  display: inline-block;
+  box-sizing: border-box;
+  white-space: nowrap;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  -webkit-transform: translateX(0em);
+  -ms-transform: translateX(0em);
+  transform: translateX(0em);
+}
+
+.c21 {
+  height: 2.8333333333333335em;
+  line-height: 2.8333333333333335em;
+  position: relative;
+  border-bottom: 0.08333333333333334em solid #e8e8e8;
+  background: none;
+  z-index: 99;
+}
+
+.c23 {
+  display: inline-block;
+  font-style: normal;
+  text-align: center;
+  font-size: 1rem;
+  cursor: not-allowed;
+}
+
+.c32 {
+  display: inline-block;
+  font-style: normal;
+  text-align: center;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
 .c0 {
   margin-left: 50px;
   margin-top: 50px;
   display: inline-block;
+}
+
+.c19 {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.c34 {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+.c35 {
+  text-align: center;
+  font-size: 16px;
+  color: #666;
+  height: 45px;
+  padding-top: 34px;
+  padding-bottom: 26px;
+  width: 100%;
+}
+
+.c36 {
+  text-align: center;
+  color: #4d63ff;
+  display: inline-block;
+}
+
+.c37 {
+  position: absolute;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 20px;
+  margin-top: 32px;
+  color: #fff;
+  bottom: 10%;
+  width: 80%;
+  background-color: #4d63ff;
+  height: 32px;
+  border: 2px solid #4d63ff;
+  left: 10%;
 }
 
 <div
@@ -108,41 +410,330 @@ exports[`Card css 1`] = `
   <div
     className="c0"
   >
-    <span>
+    <div
+      className="c1"
+      style={
+        Object {
+          "height": "13rem",
+          "width": "35rem",
+        }
+      }
+      type="simple"
+    >
       <div
-        className="c1"
+        className="c2"
+        style={Object {}}
+      >
+        操作
+      </div>
+      <div
+        className="c3"
         style={Object {}}
         type="simple"
       >
         <div
-          className="c2"
-          style={Object {}}
-        >
-          操作
-        </div>
-        <div
-          className="c3"
-          style={Object {}}
+          className="c4  c5"
+          style={
+            Object {
+              "flexDirection": "row",
+              "fontWeight": 500,
+              "textAlign": "",
+            }
+          }
           type="simple"
         >
-          <div
-            className="c4  c5"
-            style={Object {}}
-            type="simple"
-          >
-            this is title
-             
-          </div>
-          <div
-            className="c6  c5"
-            style={Object {}}
-          >
-            this is description
-             
-          </div>
+          this is title
+           
+        </div>
+        <div
+          className="c6  c7"
+          style={Object {}}
+        >
+          this is description
+           
         </div>
       </div>
-    </span>
+    </div>
+  </div>
+  <p>
+    基本样式
+  </p>
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+      style={
+        Object {
+          "height": "20rem",
+          "width": "50rem",
+        }
+      }
+      type="simple"
+    >
+      <div
+        className="c3"
+        style={Object {}}
+        type="simple"
+      >
+        <div
+          className="c4  c5"
+          style={
+            Object {
+              "flexDirection": "row",
+              "fontWeight": 500,
+              "textAlign": "",
+            }
+          }
+          type="simple"
+        >
+          <div>
+            this is title
+          </div>
+           
+        </div>
+        <div
+          className="c6  c7"
+          style={Object {}}
+        >
+          <div>
+            this is description
+          </div>
+          <div>
+            this is description
+          </div>
+          <div>
+            this is description
+          </div>
+          <div>
+            this is description
+          </div>
+           
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>
+    tip样式
+  </p>
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+      style={
+        Object {
+          "height": "20rem",
+          "width": "50rem",
+        }
+      }
+      type="tip"
+    >
+      <div
+        className="c3"
+        content={
+          Array [
+            <div>
+              this is description
+            </div>,
+            <div>
+              this is description
+            </div>,
+          ]
+        }
+        style={Object {}}
+        type="tip"
+      >
+        <div
+          className="c8"
+          style={Object {}}
+        />
+        <div
+          className="c4  c5"
+          style={
+            Object {
+              "flexDirection": "row",
+              "fontWeight": 500,
+              "textAlign": "",
+            }
+          }
+          type="tip"
+        >
+          this is title
+           
+        </div>
+        <div>
+          this is description
+        </div>
+        <div>
+          this is description
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>
+    头像样式
+  </p>
+  <div
+    className="c0"
+  >
+    <div
+      className="c9"
+      style={
+        Object {
+          "height": "22rem",
+          "width": "16rem",
+        }
+      }
+      type="avatar"
+    >
+      <span
+        className="c10"
+        style={
+          Object {
+            "height": "22rem",
+            "width": "16rem",
+          }
+        }
+      >
+        <div
+          className="c11  c12"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          shape="circle"
+          size="default"
+          src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png"
+          style={Object {}}
+        >
+          <img
+            className="c13"
+            shape="circle"
+            src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png"
+            style={
+              Object {
+                "height": "6rem",
+                "width": "6rem",
+              }
+            }
+          />
+        </div>
+      </span>
+      <div
+        className="c3"
+        style={Object {}}
+        type="avatar"
+      >
+        <div
+          className="c4  c5"
+          style={
+            Object {
+              "flexDirection": "row",
+              "fontWeight": 500,
+              "textAlign": "",
+            }
+          }
+          type="avatar"
+        >
+          this is title
+           
+        </div>
+        <div
+          className="c6  c7"
+          style={Object {}}
+        >
+          this is description
+           
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>
+    头像样式
+  </p>
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+      style={
+        Object {
+          "height": "18rem",
+          "width": "26rem",
+        }
+      }
+      type="avatar"
+    >
+      <span
+        className="c14"
+        style={
+          Object {
+            "height": "18rem",
+            "width": "26rem",
+          }
+        }
+      >
+        <div
+          className="c11  c12"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          shape="circle"
+          size="default"
+          src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png"
+          style={Object {}}
+        >
+          <img
+            className="c13"
+            shape="circle"
+            src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png"
+            style={
+              Object {
+                "height": "6rem",
+                "width": "6rem",
+              }
+            }
+          />
+        </div>
+      </span>
+      <div
+        className="c3"
+        style={Object {}}
+        type="avatar"
+      >
+        <div
+          className="c4  c5"
+          style={
+            Object {
+              "flexDirection": "row",
+              "fontWeight": 500,
+              "textAlign": "",
+            }
+          }
+          type="avatar"
+        >
+          this is title
+           
+        </div>
+        <div
+          className="c6  c7"
+          style={Object {}}
+        >
+          <div>
+            <div>
+              this is description
+            </div>
+          </div>
+           
+        </div>
+      </div>
+    </div>
   </div>
   <p>
     图片样式
@@ -150,60 +741,358 @@ exports[`Card css 1`] = `
   <div
     className="c0"
   >
-    <span>
+    <div
+      className="c15"
+      style={
+        Object {
+          "backgroundColor": "gray",
+          "height": "35rem",
+          "margin": "2rem 0rem 0rem 0rem",
+          "opacity": 0.8,
+          "padding": "1rem 0rem 0rem 0rem",
+          "width": "20rem",
+        }
+      }
+      type="image"
+    >
       <div
-        className="c7"
+        className="c16"
+        style={
+          Object {
+            "backgroundColor": "gray",
+            "height": "35rem",
+            "margin": "2rem 0rem 0rem 0rem",
+            "opacity": 0.8,
+            "padding": "1rem 0rem 0rem 0rem",
+            "width": "20rem",
+          }
+        }
+      >
+        <img
+          className="c17"
+          src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg"
+          style={
+            Object {
+              "height": "16rem",
+              "width": "20rem",
+            }
+          }
+        />
+      </div>
+      <div
+        className="c3"
         style={Object {}}
         type="image"
       >
         <div
-          className="c8"
-          style={Object {}}
-        >
-          <span>
-            <img
-              className="c9"
-              src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg"
-              style={
-                Object {
-                  "height": "16rem",
-                  "width": "20rem",
-                }
-              }
-            />
-          </span>
-        </div>
-        <div
-          className="c3"
-          style={Object {}}
+          className="c4  c5"
+          style={
+            Object {
+              "backgroundColor": "red",
+              "color": "pink",
+              "flexDirection": "row",
+              "fontWeight": 500,
+              "height": "2rem",
+              "textAlign": "",
+              "width": "10rem",
+            }
+          }
           type="image"
         >
-          <div
-            className="c4  c5"
-            style={
-              Object {
-                "color": "pink",
-              }
+          this is title
+           
+        </div>
+        <div
+          className="c6  c7"
+          style={
+            Object {
+              "color": "yellow",
             }
-            type="image"
-          >
-            this is title
-             
-          </div>
-          <div
-            className="c6  c5"
-            style={
-              Object {
-                "color": "yellow",
-              }
+          }
+        >
+          this is description
+           
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>
+    图片样式
+  </p>
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+      style={
+        Object {
+          "height": "20rem",
+          "width": "36rem",
+        }
+      }
+      type="image"
+    >
+      <div
+        className="c18"
+        style={
+          Object {
+            "height": "20rem",
+            "width": "36rem",
+          }
+        }
+      >
+        <img
+          className="c17"
+          src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg"
+          style={
+            Object {
+              "height": "20rem",
+              "width": "16rem",
             }
+          }
+        />
+      </div>
+      <div
+        className="c3"
+        style={Object {}}
+        type="image"
+      >
+        <div
+          className="c4  c5"
+          style={
+            Object {
+              "flexDirection": "row",
+              "fontWeight": 500,
+              "textAlign": "",
+            }
+          }
+          type="image"
+        >
+          this is title
+           
+        </div>
+        <div
+          className="c6  c7"
+          style={Object {}}
+        >
+          this is description
+           
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>
+    组合样式
+  </p>
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+      style={
+        Object {
+          "height": "24rem",
+          "width": "40rem",
+        }
+      }
+      type="combo"
+    >
+      <div
+        className="c2"
+        style={Object {}}
+      >
+        操作
+      </div>
+      <div
+        className="c3"
+        content={
+          <ForwardRef>
+            <lugia_t_hoc_lugia_widget_Tabs
+              data={
+                Array [
+                  Object {
+                    "content": "content of Tab1",
+                    "title": "Tab1",
+                  },
+                  Object {
+                    "content": "content of Tab2",
+                    "title": "Tab2",
+                  },
+                  Object {
+                    "content": "content of Tab3",
+                    "title": "Tab3",
+                  },
+                ]
+              }
+            />
+          </ForwardRef>
+        }
+        style={Object {}}
+        type="combo"
+      >
+        <div
+          className="c19"
+        >
+          <div
+            className="c20"
           >
-            this is description
-             
+            <div
+              className="c21"
+            >
+              <span
+                className="c22"
+                onClick={[Function]}
+                type="pre"
+              >
+                <i
+                  className="lugia-icon-direction_Left c23  c24"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  style={Object {}}
+                />
+              </span>
+              <div
+                className="c25"
+              >
+                <div
+                  className="c26"
+                  x={-0}
+                >
+                  <div
+                    className="c27"
+                    disabled={false}
+                    onClick={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                  >
+                    <div
+                      className="c28"
+                      disabled={false}
+                    >
+                      Tab1
+                    </div>
+                  </div>
+                  <div
+                    className="c27"
+                    disabled={false}
+                    onClick={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                  >
+                    <div
+                      className="c29"
+                      disabled={false}
+                    >
+                      Tab2
+                    </div>
+                  </div>
+                  <div
+                    className="c27"
+                    disabled={false}
+                    onClick={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                  >
+                    <div
+                      className="c29"
+                      disabled={false}
+                    >
+                      Tab3
+                    </div>
+                  </div>
+                  <div
+                    className="c30"
+                    x={20}
+                  />
+                </div>
+              </div>
+              <span
+                className="c31"
+                onClick={[Function]}
+                type="next"
+              >
+                <i
+                  className="lugia-icon-direction_right c32  c24"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  style={Object {}}
+                />
+              </span>
+            </div>
+            <div
+              className="c33"
+            >
+              content of Tab1
+            </div>
           </div>
         </div>
       </div>
-    </span>
+    </div>
+  </div>
+  <p>
+    组合样式
+  </p>
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+      style={
+        Object {
+          "height": "22rem",
+          "width": "20rem",
+        }
+      }
+      type="combo"
+    >
+      <div
+        className="c3"
+        content={<AmountCard />}
+        style={Object {}}
+        type="combo"
+      >
+        <div
+          className="c34"
+        >
+          <div
+            className="c35"
+          >
+            价格
+          </div>
+          <div
+            className="c36"
+          >
+            <div
+              className="c36"
+              style={
+                Object {
+                  "fontSize": 32,
+                }
+              }
+            >
+              9
+            </div>
+            <div
+              className="c36"
+              style={
+                Object {
+                  "fontSize": 18,
+                }
+              }
+            >
+              .88
+            </div>
+          </div>
+          <button
+            className="c37"
+          >
+            购买
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;

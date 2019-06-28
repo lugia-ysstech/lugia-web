@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import Theme from '../theme';
 import Widget from '../consts';
 import CheckBox from './';
+import { getBorder } from '@lugia/theme-css-hoc';
 
 const CheckBoxGroup = CheckBox.Group;
 const CheckBoxButton = CheckBox.Button;
@@ -18,6 +19,11 @@ const Wrapper = styled.div`
 const defaultValue = ['1', '2'];
 const options = [
   { label: 'check1', value: '11', name: '1' },
+  { label: 'check2', value: '22', name: '2' },
+  { label: 'check3', value: '33', name: '3' },
+];
+const options2 = [
+  { label: 'check1', value: '11', name: '1', disabled: true },
   { label: 'check2', value: '22', name: '2' },
   { label: 'check3', value: '33', name: '3' },
 ];
@@ -38,52 +44,203 @@ const view = {
     margin: 20,
   },
 };
-export const CheckBoxDemo = () => {
-  return (
-    <div>
-      <Wrapper>
-        <CheckBox>CheckBox</CheckBox>
-      </Wrapper>
-      <Wrapper>
-        <CheckBox checked onChange={handleChange}>
-          CheckBox
-        </CheckBox>
-      </Wrapper>
-      <Wrapper>
-        <CheckBox defaultChecked>CheckBox</CheckBox>
-      </Wrapper>
-      <Wrapper>
-        <CheckBox disabled>CheckBox</CheckBox>
-      </Wrapper>
-      <Wrapper>
-        <CheckBox checked disabled>
-          CheckBox
-        </CheckBox>
-      </Wrapper>
-      <Wrapper>
-        <CheckBox defaultChecked disabled>
-          CheckBox
-        </CheckBox>
-      </Wrapper>
-      <Wrapper>
-        <CheckBox indeterminate>CheckBox</CheckBox>
-      </Wrapper>
-      <Wrapper>
-        <Theme config={view}>
-          <CheckBox viewClass="register">CheckBox</CheckBox>
-        </Theme>
-      </Wrapper>
-      <Wrapper>
-        <Theme config={view}>
-          <CheckBox viewClass="register" checked>
+export class CheckboxDemo extends React.Component<any, any> {
+  render() {
+    const view = {
+      [Widget.Checkbox]: {
+        CheckboxWrap: {
+          normal: {
+            opacity: 1,
+            width: 100,
+            height: 50,
+            margin: {
+              top: 10,
+              bottom: 10,
+              left: 10,
+              right: 10,
+            },
+            padding: {
+              top: 10,
+              bottom: 10,
+              left: 10,
+              right: 10,
+            },
+          },
+          hover: {
+            opacity: 0.6,
+          },
+          disabled: {
+            opacity: 0.4,
+          },
+          active: {
+            opacity: 1,
+          },
+        },
+        CheckboxText: {
+          normal: {
+            color: 'red',
+            font: { fontSize: 16, fontWeight: 500 },
+          },
+          hover: { color: 'green', font: { fontSize: 16, fontWeight: 500 } },
+          disabled: { color: 'yellow', font: { fontSize: 16, fontWeight: 500 } },
+        },
+        CheckboxEdgeChecked: {
+          normal: {
+            background: { color: '#56c22d' },
+            border: getBorder({ color: 'yellow', width: 2, style: 'solid' }, { radius: 2 }),
+          },
+          hover: {
+            background: { color: 'red' },
+            border: getBorder({ color: 'yellow', width: 2, style: 'solid' }, { radius: 2 }),
+          },
+          disabled: {
+            background: { color: 'red' },
+            border: getBorder({ color: 'orange', width: 2, style: 'solid' }, { radius: 2 }),
+          },
+        },
+        CheckboxEdgeUnChecked: {
+          normal: {
+            background: { color: 'yellow' },
+            border: getBorder({ color: '#56c22d', width: 2, style: 'solid' }, { radius: 2 }),
+          },
+          hover: {
+            background: { color: '#56c22d' },
+            border: getBorder({ color: 'yellow', width: 2, style: 'solid' }, { radius: 2 }),
+          },
+          disabled: {
+            background: { color: 'orange' },
+            border: getBorder({ color: 'red', width: 2, style: 'solid' }, { radius: 2 }),
+          },
+        },
+        CheckboxEdgeIndeterminate: {
+          normal: {
+            background: { color: 'yellow' },
+            border: getBorder({ color: '#56c22d', width: 2, style: 'solid' }, { radius: 2 }),
+          },
+          hover: {
+            background: { color: '#56c22d' },
+            border: getBorder({ color: 'yellow', width: 2, style: 'solid' }, { radius: 2 }),
+          },
+          disabled: {
+            background: { color: 'orange' },
+            border: getBorder({ color: 'red', width: 2, style: 'solid' }, { radius: 2 }),
+          },
+        },
+        CheckboxEdgeCancel: {
+          normal: {
+            background: { color: 'pink' },
+            border: getBorder({ color: '#56c22d', width: 2, style: 'solid' }, { radius: 2 }),
+          },
+        },
+        CheckboxInnerChecked: {
+          normal: {
+            color: 'red',
+          },
+          hover: { color: 'yellow' },
+          disabled: {
+            color: 'orange',
+          },
+        },
+        CheckboxInnerIndeterminate: {
+          normal: {
+            color: 'red',
+          },
+          hover: { color: 'yellow' },
+          disabled: {
+            color: 'orange',
+          },
+        },
+        CheckboxInnerCancel: {
+          normal: {
+            color: 'yellow',
+          },
+        },
+      },
+    };
+    return (
+      <div>
+        <Wrapper>
+          <Theme config={view}>
+            <CheckBox>CheckBox</CheckBox>
+          </Theme>
+        </Wrapper>
+        <Wrapper>
+          <Theme config={view}>
+            <CheckBox disabled>CheckBox</CheckBox>
+          </Theme>
+        </Wrapper>
+        <Wrapper>
+          <Theme config={view}>
+            <CheckBox checked>CheckBox</CheckBox>
+          </Theme>
+        </Wrapper>
+        <Wrapper>
+          <Theme config={view}>
+            <CheckBox checked disabled>
+              CheckBox
+            </CheckBox>
+          </Theme>
+        </Wrapper>
+        <Wrapper>
+          <Theme config={view}>
+            <CheckBox indeterminate checked>
+              CheckBox
+            </CheckBox>
+          </Theme>
+        </Wrapper>
+        <Wrapper>
+          <Theme config={view}>
+            <CheckBox indeterminate>CheckBox</CheckBox>
+          </Theme>
+        </Wrapper>
+        <Wrapper>
+          <Theme config={view}>
+            <CheckBox cancel>CheckBox</CheckBox>
+          </Theme>
+        </Wrapper>
+        <Wrapper>
+          <CheckBox>CheckBox</CheckBox>
+        </Wrapper>
+        <Wrapper>
+          <CheckBox disabled>CheckBox</CheckBox>
+        </Wrapper>
+        <Wrapper>
+          <CheckBox checked>CheckBox</CheckBox>
+        </Wrapper>
+        <Wrapper>
+          <CheckBox checked disabled>
             CheckBox
           </CheckBox>
-        </Theme>
-      </Wrapper>
-    </div>
-  );
-};
-export const CheckBoxGroupDemo = class extends React.Component<any, any> {
+        </Wrapper>
+        <Wrapper>
+          <CheckBox indeterminate>CheckBox</CheckBox>
+        </Wrapper>
+
+        <Wrapper>
+          <Theme config={view}>
+            <CheckBox cancel checked handleCancelItemClick={() => {}}>
+              CheckBox
+            </CheckBox>
+          </Theme>
+        </Wrapper>
+        <Wrapper>
+          <CheckBox cancel checked handleCancelItemClick={() => {}}>
+            CheckBox
+          </CheckBox>
+        </Wrapper>
+        <Wrapper>
+          <CheckBox defaultChecked>CheckBox</CheckBox>
+        </Wrapper>
+        <Wrapper>
+          <CheckBox defaultChecked disabled>
+            CheckBox
+          </CheckBox>
+        </Wrapper>
+      </div>
+    );
+  }
+}
+export const CheckboxGroupDemo = class extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -98,6 +255,265 @@ export const CheckBoxGroupDemo = class extends React.Component<any, any> {
   };
 
   render() {
+    const checkboxView = {
+      [Widget.CheckboxGroup]: {
+        Group: {
+          normal: {
+            width: 400,
+            height: 500,
+            opacity: 1,
+            border: getBorder({ color: 'orange', width: 2, style: 'solid' }, { radius: 4 }),
+            background: { color: 'orange' },
+            padding: {
+              top: 10,
+              bottom: 10,
+              left: 10,
+              right: 10,
+            },
+            margin: {
+              top: 10,
+              bottom: 10,
+              left: 10,
+              right: 10,
+            },
+          },
+        },
+        Checkbox: {
+          CheckboxWrap: {
+            normal: {
+              opacity: 1,
+              width: 100,
+              height: 50,
+              margin: {
+                top: 10,
+                bottom: 10,
+                left: 10,
+                right: 10,
+              },
+              padding: {
+                top: 10,
+                bottom: 10,
+                left: 10,
+                right: 10,
+              },
+            },
+            hover: {
+              opacity: 0.6,
+            },
+            disabled: {
+              opacity: 0.4,
+            },
+            active: {
+              opacity: 1,
+            },
+          },
+          CheckboxText: {
+            normal: {
+              color: 'red',
+              font: { fontSize: 16, fontWeight: 500 },
+            },
+            hover: { color: 'green', font: { fontSize: 16, fontWeight: 500 } },
+            disabled: { color: 'yellow', font: { fontSize: 16, fontWeight: 500 } },
+          },
+          CheckboxEdgeChecked: {
+            normal: {
+              background: { color: '#56c22d' },
+              border: getBorder({ color: 'yellow', width: 2, style: 'solid' }, { radius: 2 }),
+            },
+            hover: {
+              background: { color: 'red' },
+              border: getBorder({ color: 'yellow', width: 2, style: 'solid' }, { radius: 2 }),
+            },
+            disabled: {
+              background: { color: 'red' },
+              border: getBorder({ color: 'orange', width: 2, style: 'solid' }, { radius: 2 }),
+            },
+          },
+          CheckboxEdgeUnChecked: {
+            normal: {
+              background: { color: 'yellow' },
+              border: getBorder({ color: '#56c22d', width: 2, style: 'solid' }, { radius: 2 }),
+            },
+            hover: {
+              background: { color: '#56c22d' },
+              border: getBorder({ color: 'yellow', width: 2, style: 'solid' }, { radius: 2 }),
+            },
+            disabled: {
+              background: { color: 'orange' },
+              border: getBorder({ color: 'red', width: 2, style: 'solid' }, { radius: 2 }),
+            },
+          },
+          CheckboxEdgeIndeterminate: {
+            normal: {
+              background: { color: 'yellow' },
+              border: getBorder({ color: '#56c22d', width: 2, style: 'solid' }, { radius: 2 }),
+            },
+            hover: {
+              background: { color: '#56c22d' },
+              border: getBorder({ color: 'yellow', width: 2, style: 'solid' }, { radius: 2 }),
+            },
+            disabled: {
+              background: { color: 'orange' },
+              border: getBorder({ color: 'red', width: 2, style: 'solid' }, { radius: 2 }),
+            },
+          },
+          CheckboxEdgeCancel: {
+            normal: {
+              background: { color: 'pink' },
+              border: getBorder({ color: '#56c22d', width: 2, style: 'solid' }, { radius: 2 }),
+            },
+          },
+          CheckboxInnerChecked: {
+            normal: {
+              color: 'red',
+            },
+            hover: { color: 'yellow' },
+            disabled: {
+              color: 'orange',
+            },
+          },
+          CheckboxInnerIndeterminate: {
+            normal: {
+              color: 'red',
+            },
+            hover: { color: 'yellow' },
+            disabled: {
+              color: 'orange',
+            },
+          },
+          CheckboxInnerCancel: {
+            normal: {
+              color: 'yellow',
+            },
+          },
+        },
+      },
+    };
+    const checkbuttonView = {
+      [Widget.CheckboxGroup]: {
+        Group: {},
+        CheckButton: {
+          CheckButtonChecked: {
+            normal: {
+              width: 100,
+              height: 50,
+              opacity: 1,
+              border: {
+                top: { color: 'pink', width: 1, style: 'solid' },
+                right: { color: '#fff', width: 1, style: 'solid' },
+                bottom: { color: 'pink', width: 1, style: 'solid' },
+              },
+              last: {
+                border: {
+                  top: { color: 'pink', width: 1, style: 'solid' },
+                  right: { color: 'pink', width: 1, style: 'solid' },
+                  bottom: { color: 'pink', width: 1, style: 'solid' },
+                },
+              },
+              first: {
+                border: {
+                  top: { color: 'pink', width: 1, style: 'solid' },
+                  bottom: { color: 'pink', width: 1, style: 'solid' },
+                  left: { color: 'pink', width: 1, style: 'solid' },
+                },
+              },
+              background: { color: 'yellow' },
+              color: 'red',
+              font: { fontSize: 16, fontWeight: 500 },
+              padding: { top: 10, bottom: 10, left: 10, right: 10 },
+            },
+            hover: {
+              background: { color: 'yellow' },
+              opacity: 0.6,
+              border: {
+                top: { color: 'pink', width: 1, style: 'solid' },
+                right: { color: '#fff', width: 1, style: 'solid' },
+                bottom: { color: 'pink', width: 1, style: 'solid' },
+              },
+              color: 'green',
+            },
+            disabled: {
+              background: { color: 'orange' },
+              opacity: 0.6,
+              border: {
+                top: { color: 'red', width: 1, style: 'solid' },
+                right: { color: '#fff', width: 1, style: 'solid' },
+                bottom: { color: 'red', width: 1, style: 'solid' },
+              },
+              color: 'green',
+            },
+          },
+          CheckButtonCancel: {
+            normal: {
+              width: 100,
+              height: 50,
+              opacity: 1,
+              // border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 4 }),
+              background: { color: 'yellow' },
+              color: 'green',
+              font: { fontSize: 16, fontWeight: 500 },
+              padding: { top: 10, bottom: 10, left: 10, right: 10 },
+            },
+            hover: {
+              background: { color: 'green' },
+              opacity: 0.6,
+              // border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 4 }),
+              color: 'yellow',
+            },
+          },
+          CheckButtonUnChecked: {
+            normal: {
+              width: 100,
+              height: 50,
+              opacity: 1,
+              border: {
+                top: { color: 'orange', width: 1, style: 'solid' },
+                right: { color: '#fff', width: 1, style: 'solid' },
+                bottom: { color: 'orange', width: 1, style: 'solid' },
+              },
+              last: {
+                border: {
+                  top: { color: 'red', width: 1, style: 'solid' },
+                  right: { color: 'red', width: 1, style: 'solid' },
+                  bottom: { color: 'red', width: 1, style: 'solid' },
+                },
+              },
+              first: {
+                border: {
+                  top: { color: 'red', width: 1, style: 'solid' },
+                  bottom: { color: 'red', width: 1, style: 'solid' },
+                  left: { color: 'red', width: 1, style: 'solid' },
+                },
+              },
+              background: { color: '#33f340' },
+              color: 'red',
+              font: { fontSize: 16, fontWeight: 500 },
+              padding: { top: 10, bottom: 10, left: 10, right: 10 },
+            },
+            hover: {
+              background: { color: 'yellow' },
+              opacity: 0.6,
+              border: {
+                top: { color: 'red', width: 1, style: 'solid' },
+                right: { color: 'yellow', width: 1, style: 'solid' },
+                bottom: { color: 'red', width: 1, style: 'solid' },
+              },
+              color: 'green',
+            },
+            disabled: {
+              background: { color: 'orange' },
+              opacity: 0.6,
+              border: {
+                top: { color: 'green', width: 1, style: 'solid' },
+                right: { color: 'orange', width: 1, style: 'solid' },
+                bottom: { color: 'green', width: 1, style: 'solid' },
+              },
+              color: 'yellow',
+            },
+          },
+        },
+      },
+    };
     return (
       <div>
         <Wrapper>
@@ -120,7 +536,7 @@ export const CheckBoxGroupDemo = class extends React.Component<any, any> {
           </CheckBoxGroup>
         </Wrapper>
         <Wrapper>
-          <Theme config={view}>
+          <Theme config={checkboxView}>
             <CheckBoxGroup
               onChange={handleChange}
               styles="vertical"
@@ -151,14 +567,14 @@ export const CheckBoxGroupDemo = class extends React.Component<any, any> {
           />
         </Wrapper>
         <Wrapper>
-          <CheckBoxGroup childType="button" onChange={handleChange} value={defaultValue}>
+          <CheckBoxGroup childType="button" onChange={handleChange} defaultValue={defaultValue}>
             <CheckBoxButton value="1">CheckBox1</CheckBoxButton>
             <CheckBoxButton value="2">CheckBox2</CheckBoxButton>
             <CheckBoxButton value="3">CheckBox3</CheckBoxButton>
           </CheckBoxGroup>
         </Wrapper>
         <Wrapper>
-          <Theme config={view}>
+          <Theme config={checkbuttonView}>
             <CheckBoxGroup childType="button" onChange={handleChange} defaultValue={defaultValue}>
               <CheckBoxButton value="1">CheckBox1</CheckBoxButton>
               <CheckBoxButton value="2">CheckBox2</CheckBoxButton>
@@ -167,14 +583,40 @@ export const CheckBoxGroupDemo = class extends React.Component<any, any> {
           </Theme>
         </Wrapper>
         <Wrapper>
-          <CheckBoxGroup
-            onChange={this.handleChange}
-            data={options}
-            value={this.state.newValue}
-            displayValue={['check4', 'check5']}
-            displayField="label"
-            childType="button"
-          />
+          <Theme config={checkbuttonView}>
+            <CheckBoxGroup
+              onChange={this.handleChange}
+              data={options}
+              value={this.state.newValue}
+              displayValue={['check4', 'check5']}
+              displayField="label"
+              childType="button"
+            />
+          </Theme>
+        </Wrapper>
+        <Wrapper>
+          <Theme config={checkbuttonView}>
+            <CheckBoxGroup
+              onChange={this.handleChange}
+              data={options2}
+              value={this.state.newValue}
+              displayValue={['check4', 'check5']}
+              displayField="label"
+              childType="button"
+            />
+          </Theme>
+        </Wrapper>
+        <Wrapper>
+          <Theme config={checkbuttonView}>
+            <CheckBoxGroup
+              onChange={this.handleChange}
+              data={options2}
+              value={'22'}
+              displayValue={['check4', 'check5']}
+              displayField="label"
+              childType="button"
+            />
+          </Theme>
         </Wrapper>
         <Wrapper>
           <CheckBoxGroup
