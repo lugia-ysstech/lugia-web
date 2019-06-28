@@ -45,7 +45,7 @@ export const SwitchContainer = CSSProvider({
 });
 export const SwitchWrapper = CSSProvider({
   tag: 'span',
-  className: 'SwitchWrapper',
+  className: 'Switch',
   normal: {
     selectNames: [
       ['width'],

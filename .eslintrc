@@ -104,7 +104,7 @@
     "no-labels": "error",
     "no-multi-str": "error",
     "no-redeclare": "error",
-    "camelcase": "error",
+   // "camelcase": "error",
     "block-spacing": "error",
     "array-bracket-spacing": "error",
     "brace-style": "error",

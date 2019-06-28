@@ -12,8 +12,7 @@ import {
   iconNormalColor,
   iconChangeColor,
 } from './slider_public_color';
-import CSSProvider from '../theme/CSSProvider';
-import ThemeHoc from '@lugia/theme-hoc';
+import CSSComponent from '../theme/CSSProvider';
 import Icon from '../icon';
 const em = px2remcss;
 type CssTypeProps = {
@@ -38,7 +37,7 @@ type CssTypeProps = {
   vertical?: boolean,
 };
 const transitionTime = '0.1';
-export const SliderBigBox = CSSProvider({
+export const SliderBigBox = CSSComponent({
   tag: 'div',
   className: 'SliderBigBox',
   normal: {
@@ -68,7 +67,7 @@ export const SliderBigBox = CSSProvider({
     vertical-align: top;
   `,
 });
-export const SliderBox = CSSProvider({
+export const SliderBox = CSSComponent({
   tag: 'div',
   normal: {
     selectNames: [],
@@ -90,7 +89,7 @@ export const SliderBox = CSSProvider({
     ${props => getPaddingSize(props)};
   `,
 });
-export const SliderWrapper = CSSProvider({
+export const SliderWrapper = CSSComponent({
   tag: 'div',
   className: 'SliderTrack',
   normal: {
@@ -110,7 +109,7 @@ export const SliderWrapper = CSSProvider({
     position: relative;
   `,
 });
-export const SliderInner = CSSProvider({
+export const SliderInner = CSSComponent({
   tag: 'div',
   className: 'SliderPassedWay',
   normal: {
@@ -155,7 +154,7 @@ export const SliderInner = CSSProvider({
   `,
 });
 
-export const Button = CSSProvider({
+export const Button = CSSComponent({
   tag: 'span',
   className: 'SliderButton',
   normal: {
@@ -203,7 +202,7 @@ export const Button = CSSProvider({
     position: absolute;
   `,
 });
-export const Tips = CSSProvider({
+export const Tips = CSSComponent({
   tag: 'span',
   className: 'SliderTips',
   normal: {
@@ -239,7 +238,7 @@ export const Tips = CSSProvider({
     -webkit-transform: translateX(-50%);
   `,
 });
-export const Tipinner = CSSProvider({
+export const Tipinner = CSSComponent({
   tag: 'span',
   className: 'SliderTips',
   normal: {
@@ -335,7 +334,7 @@ export const Tipinner = CSSProvider({
     }
   `,
 });
-export const Tiparrow = CSSProvider({
+export const Tiparrow = CSSComponent({
   tag: 'span',
   className: 'SliderTips',
   normal: {
@@ -355,8 +354,9 @@ export const Tiparrow = CSSProvider({
     vertical-align: top;
   `,
 });
-export const Dot = CSSProvider({
+export const Dot = CSSComponent({
   tag: 'span',
+  className: 'Dot',
   normal: {
     selectNames: [['color'], ['font']],
     getCSS(themeMate, { propsConfig }) {
@@ -406,7 +406,7 @@ export const Dot = CSSProvider({
     }
   `,
 });
-export const Icons = CSSProvider({
+export const Icons = CSSComponent({
   tag: 'span',
   normal: {
     className: [],
@@ -429,26 +429,22 @@ export const Icons = CSSProvider({
   `,
 });
 
-export const IconsInner = ThemeHoc(
-  CSSProvider({
-    extend: Icon,
-    className: 'IconsInner',
-    normal: {
-      selectNames: [['color'], ['font'], ['fontSize']],
-    },
-    hover: {
-      selectNames: [],
-    },
-    active: {
-      selectNames: [],
-    },
-    disabled: {
-      selectNames: [['color']],
-    },
-  }),
-  'IconsInner',
-  { hover: true, active: false }
-);
+export const IconsInner = CSSComponent({
+  extend: Icon,
+  className: 'IconsInner',
+  normal: {
+    selectNames: [['color'], ['font'], ['fontSize']],
+  },
+  hover: {
+    selectNames: [],
+  },
+  active: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [['color']],
+  },
+});
 
 function getPaddingSize(props) {
   const { vertical, levelPaddings, sliderVerticalPaddings } = props;

@@ -1572,73 +1572,85 @@ exports[`default Wrapper 1`] = `
     <h2>
        normal
     </h2>
-    <span
+    <div
+      className="c0"
       onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       onMouseUp={[Function]}
+      style={
+        Object {
+          "backgroundColor": "yellow",
+          "borderBottomColor": "#000",
+          "borderBottomLeftRadius": "0.6rem",
+          "borderBottomRightRadius": "0.6rem",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.1rem",
+          "borderLeftColor": "#000",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.1rem",
+          "borderRightColor": "#000",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.1rem",
+          "borderTopColor": "#000",
+          "borderTopLeftRadius": "0.6rem",
+          "borderTopRightRadius": "0.6rem",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.1rem",
+          "margin": "1rem 2rem 3rem 4rem",
+          "opacity": 0.5,
+          "padding": "1rem 2rem 3rem 4rem",
+        }
+      }
     >
       <div
-        className="c0"
-        style={
-          Object {
-            "backgroundColor": "yellow",
-            "borderBottomColor": "#000",
-            "borderBottomLeftRadius": "0.6rem",
-            "borderBottomRightRadius": "0.6rem",
-            "borderBottomStyle": "solid",
-            "borderBottomWidth": "0.1rem",
-            "borderLeftColor": "#000",
-            "borderLeftStyle": "solid",
-            "borderLeftWidth": "0.1rem",
-            "borderRightColor": "#000",
-            "borderRightStyle": "solid",
-            "borderRightWidth": "0.1rem",
-            "borderTopColor": "#000",
-            "borderTopLeftRadius": "0.6rem",
-            "borderTopRightRadius": "0.6rem",
-            "borderTopStyle": "solid",
-            "borderTopWidth": "0.1rem",
-            "margin": "1rem 2rem 3rem 4rem",
-            "opacity": 0.5,
-            "padding": "1rem 2rem 3rem 4rem",
-          }
+        className="c1"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={Object {}}
+        value={
+          Array [
+            20,
+          ]
         }
       >
         <div
-          className="c1"
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          style={Object {}}
+          className="c2"
+          style={
+            Object {
+              "backgroundColor": "green",
+              "borderBottomColor": "#000",
+              "borderBottomLeftRadius": "0.6rem",
+              "borderBottomRightRadius": "0.6rem",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "borderLeftColor": "#000",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": "0.1rem",
+              "borderRightColor": "#000",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.1rem",
+              "borderTopColor": "#000",
+              "borderTopLeftRadius": "0.6rem",
+              "borderTopRightRadius": "0.6rem",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.1rem",
+              "height": "30rem",
+              "width": "3rem",
+            }
+          }
           value={
             Array [
               20,
             ]
           }
         >
-          <div
-            className="c2"
+          <span
+            className="c3"
             style={
               Object {
-                "backgroundColor": "green",
-                "borderBottomColor": "#000",
-                "borderBottomLeftRadius": "0.6rem",
-                "borderBottomRightRadius": "0.6rem",
-                "borderBottomStyle": "solid",
-                "borderBottomWidth": "0.1rem",
-                "borderLeftColor": "#000",
-                "borderLeftStyle": "solid",
-                "borderLeftWidth": "0.1rem",
-                "borderRightColor": "#000",
-                "borderRightStyle": "solid",
-                "borderRightWidth": "0.1rem",
-                "borderTopColor": "#000",
-                "borderTopLeftRadius": "0.6rem",
-                "borderTopRightRadius": "0.6rem",
-                "borderTopStyle": "solid",
-                "borderTopWidth": "0.1rem",
-                "height": "30rem",
-                "width": "3rem",
+                "color": "red",
+                "fontSize": "10rem",
               }
             }
             value={
@@ -1647,156 +1659,131 @@ exports[`default Wrapper 1`] = `
               ]
             }
           >
-            <span
-              className="c3"
-              style={
-                Object {
-                  "color": "red",
-                  "fontSize": "10rem",
-                }
-              }
-              value={
-                Array [
-                  20,
-                ]
-              }
-            >
-              <span
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-              >
-                <span
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                >
-                  <i
-                    className="lugia-icon-financial_smile_o  c4"
-                    style={
-                      Object {
-                        "color": "red",
-                        "fontSize": "10rem",
-                      }
-                    }
-                  />
-                </span>
-              </span>
-            </span>
-            <span
-              className="c5"
-              style={
-                Object {
-                  "color": "green",
-                  "fontSize": "3rem",
-                }
-              }
-              value={
-                Array [
-                  20,
-                ]
-              }
-            >
-              <span
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-              >
-                <span
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                >
-                  <i
-                    className="lugia-icon-financial_sad_o  c4"
-                    style={
-                      Object {
-                        "color": "green",
-                        "fontSize": "3rem",
-                      }
-                    }
-                  />
-                </span>
-              </span>
-            </span>
-            <span
-              className="c6"
-              data-sign="mask"
-              style={
-                Object {
-                  "color": "red",
-                  "fontSize": 14,
-                  "fontWeight": 700,
-                }
-              }
-            />
-            <span
-              className="c7"
-              data-sign="mask"
-              style={
-                Object {
-                  "color": "blue",
-                  "fontSize": 14,
-                  "fontWeight": 700,
-                }
-              }
-            />
-            <span
-              className="c8"
-              data-sign="mask"
-              style={
-                Object {
-                  "color": "green",
-                  "fontSize": 14,
-                  "fontWeight": 700,
-                }
-              }
-            />
-            <div
-              className="c9"
-              style={
-                Object {
-                  "backgroundColor": "#b53030",
-                }
-              }
-            />
-            <span
-              className="c10"
+            <i
+              className="lugia-icon-financial_smile_o  c4"
+              onClick={[Function]}
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseUp={[Function]}
               style={
                 Object {
-                  "backgroundColor": "#ef5a5a",
-                  "borderBottomColor": "yellow",
-                  "borderBottomLeftRadius": "0.5rem",
-                  "borderBottomRightRadius": "0.5rem",
-                  "borderBottomStyle": "solid",
-                  "borderBottomWidth": "0.1rem",
-                  "borderLeftColor": "yellow",
-                  "borderLeftStyle": "solid",
-                  "borderLeftWidth": "0.1rem",
-                  "borderRightColor": "yellow",
-                  "borderRightStyle": "solid",
-                  "borderRightWidth": "0.1rem",
-                  "borderTopColor": "yellow",
-                  "borderTopLeftRadius": "0.5rem",
-                  "borderTopRightRadius": "0.5rem",
-                  "borderTopStyle": "solid",
-                  "borderTopWidth": "0.1rem",
-                  "height": "2rem",
-                  "width": "1rem",
+                  "color": "red",
+                  "fontSize": "10rem",
                 }
               }
-              value={
-                Array [
-                  20,
-                ]
+            />
+          </span>
+          <span
+            className="c5"
+            style={
+              Object {
+                "color": "green",
+                "fontSize": "3rem",
               }
-            >
-              
-            </span>
-          </div>
+            }
+            value={
+              Array [
+                20,
+              ]
+            }
+          >
+            <i
+              className="lugia-icon-financial_sad_o  c4"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={
+                Object {
+                  "color": "green",
+                  "fontSize": "3rem",
+                }
+              }
+            />
+          </span>
+          <span
+            className="c6"
+            data-sign="mask"
+            style={
+              Object {
+                "color": "red",
+                "fontSize": 14,
+                "fontWeight": 700,
+              }
+            }
+          />
+          <span
+            className="c7"
+            data-sign="mask"
+            style={
+              Object {
+                "color": "blue",
+                "fontSize": 14,
+                "fontWeight": 700,
+              }
+            }
+          />
+          <span
+            className="c8"
+            data-sign="mask"
+            style={
+              Object {
+                "color": "green",
+                "fontSize": 14,
+                "fontWeight": 700,
+              }
+            }
+          />
+          <div
+            className="c9"
+            style={
+              Object {
+                "backgroundColor": "#b53030",
+              }
+            }
+          />
+          <span
+            className="c10"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#ef5a5a",
+                "borderBottomColor": "yellow",
+                "borderBottomLeftRadius": "0.5rem",
+                "borderBottomRightRadius": "0.5rem",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "0.1rem",
+                "borderLeftColor": "yellow",
+                "borderLeftStyle": "solid",
+                "borderLeftWidth": "0.1rem",
+                "borderRightColor": "yellow",
+                "borderRightStyle": "solid",
+                "borderRightWidth": "0.1rem",
+                "borderTopColor": "yellow",
+                "borderTopLeftRadius": "0.5rem",
+                "borderTopRightRadius": "0.5rem",
+                "borderTopStyle": "solid",
+                "borderTopWidth": "0.1rem",
+                "height": "2rem",
+                "width": "1rem",
+              }
+            }
+            value={
+              Array [
+                20,
+              ]
+            }
+          >
+            
+          </span>
         </div>
       </div>
-    </span>
+    </div>
   </div>
   <div
     style={
@@ -1815,21 +1802,42 @@ exports[`default Wrapper 1`] = `
     >
        normal
     </h2>
-    <span
+    <div
+      className="c11"
       onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       onMouseUp={[Function]}
+      style={Object {}}
     >
       <div
-        className="c11"
+        className="c12"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={Object {}}
+        value={
+          Array [
+            15,
+          ]
+        }
       >
         <div
-          className="c12"
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          style={Object {}}
+          className="c2"
+          style={
+            Object {
+              "backgroundColor": "#e8e8e8",
+              "borderBottomLeftRadius": "0.6rem",
+              "borderBottomRightRadius": "0.6rem",
+              "borderBottomWidth": "0rem",
+              "borderLeftWidth": "0rem",
+              "borderRightWidth": "0rem",
+              "borderTopLeftRadius": "0.6rem",
+              "borderTopRightRadius": "0.6rem",
+              "borderTopWidth": "0rem",
+              "height": "0.6rem",
+              "width": "30rem",
+            }
+          }
           value={
             Array [
               15,
@@ -1837,20 +1845,24 @@ exports[`default Wrapper 1`] = `
           }
         >
           <div
-            className="c2"
+            className="c13"
             style={
               Object {
-                "backgroundColor": "#e8e8e8",
-                "borderBottomLeftRadius": "0.6rem",
-                "borderBottomRightRadius": "0.6rem",
-                "borderBottomWidth": "0rem",
-                "borderLeftWidth": "0rem",
-                "borderRightWidth": "0rem",
-                "borderTopLeftRadius": "0.6rem",
-                "borderTopRightRadius": "0.6rem",
-                "borderTopWidth": "0rem",
-                "height": "0.6rem",
-                "width": "30rem",
+                "backgroundColor": "#4d63ff",
+              }
+            }
+          />
+          <span
+            className="c14"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+                "height": "1.6rem",
+                "width": "1.6rem",
               }
             }
             value={
@@ -1859,54 +1871,48 @@ exports[`default Wrapper 1`] = `
               ]
             }
           >
-            <div
-              className="c13"
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                }
-              }
-            />
-            <span
-              className="c14"
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                  "height": "1.6rem",
-                  "width": "1.6rem",
-                }
-              }
-              value={
-                Array [
-                  15,
-                ]
-              }
-            >
-              
-            </span>
-          </div>
+            
+          </span>
         </div>
       </div>
-    </span>
-    <span
+    </div>
+    <div
+      className="c11"
       onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       onMouseUp={[Function]}
+      style={Object {}}
     >
       <div
-        className="c11"
+        className="c12"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={Object {}}
+        value={
+          Array [
+            5,
+            15,
+          ]
+        }
       >
         <div
-          className="c12"
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          style={Object {}}
+          className="c2"
+          style={
+            Object {
+              "backgroundColor": "#e8e8e8",
+              "borderBottomLeftRadius": "0.6rem",
+              "borderBottomRightRadius": "0.6rem",
+              "borderBottomWidth": "0rem",
+              "borderLeftWidth": "0rem",
+              "borderRightWidth": "0rem",
+              "borderTopLeftRadius": "0.6rem",
+              "borderTopRightRadius": "0.6rem",
+              "borderTopWidth": "0rem",
+              "height": "0.6rem",
+              "width": "30rem",
+            }
+          }
           value={
             Array [
               5,
@@ -1915,20 +1921,24 @@ exports[`default Wrapper 1`] = `
           }
         >
           <div
-            className="c2"
+            className="c15"
             style={
               Object {
-                "backgroundColor": "#e8e8e8",
-                "borderBottomLeftRadius": "0.6rem",
-                "borderBottomRightRadius": "0.6rem",
-                "borderBottomWidth": "0rem",
-                "borderLeftWidth": "0rem",
-                "borderRightWidth": "0rem",
-                "borderTopLeftRadius": "0.6rem",
-                "borderTopRightRadius": "0.6rem",
-                "borderTopWidth": "0rem",
-                "height": "0.6rem",
-                "width": "30rem",
+                "backgroundColor": "#4d63ff",
+              }
+            }
+          />
+          <span
+            className="c16"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+                "height": "1.6rem",
+                "width": "1.6rem",
               }
             }
             value={
@@ -1938,62 +1948,33 @@ exports[`default Wrapper 1`] = `
               ]
             }
           >
-            <div
-              className="c15"
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                }
+            
+          </span>
+          <span
+            className="c14"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+                "height": "1.6rem",
+                "width": "1.6rem",
               }
-            />
-            <span
-              className="c16"
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                  "height": "1.6rem",
-                  "width": "1.6rem",
-                }
-              }
-              value={
-                Array [
-                  5,
-                  15,
-                ]
-              }
-            >
-              
-            </span>
-            <span
-              className="c14"
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                  "height": "1.6rem",
-                  "width": "1.6rem",
-                }
-              }
-              value={
-                Array [
-                  5,
-                  15,
-                ]
-              }
-            >
-              
-            </span>
-          </div>
+            }
+            value={
+              Array [
+                5,
+                15,
+              ]
+            }
+          >
+            
+          </span>
         </div>
       </div>
-    </span>
+    </div>
   </div>
   <div
     style={
@@ -2012,21 +1993,42 @@ exports[`default Wrapper 1`] = `
     >
        自定义css
     </h2>
-    <span
+    <div
+      className="c11"
       onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       onMouseUp={[Function]}
+      style={Object {}}
     >
       <div
-        className="c11"
+        className="c12"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={Object {}}
+        value={
+          Array [
+            0,
+          ]
+        }
       >
         <div
-          className="c12"
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          style={Object {}}
+          className="c2"
+          style={
+            Object {
+              "backgroundColor": "#e8e8e8",
+              "borderBottomLeftRadius": "0.6rem",
+              "borderBottomRightRadius": "0.6rem",
+              "borderBottomWidth": "0rem",
+              "borderLeftWidth": "0rem",
+              "borderRightWidth": "0rem",
+              "borderTopLeftRadius": "0.6rem",
+              "borderTopRightRadius": "0.6rem",
+              "borderTopWidth": "0rem",
+              "height": "0.6rem",
+              "width": "30rem",
+            }
+          }
           value={
             Array [
               0,
@@ -2034,20 +2036,24 @@ exports[`default Wrapper 1`] = `
           }
         >
           <div
-            className="c2"
+            className="c17"
             style={
               Object {
-                "backgroundColor": "#e8e8e8",
-                "borderBottomLeftRadius": "0.6rem",
-                "borderBottomRightRadius": "0.6rem",
-                "borderBottomWidth": "0rem",
-                "borderLeftWidth": "0rem",
-                "borderRightWidth": "0rem",
-                "borderTopLeftRadius": "0.6rem",
-                "borderTopRightRadius": "0.6rem",
-                "borderTopWidth": "0rem",
-                "height": "0.6rem",
-                "width": "30rem",
+                "backgroundColor": "#4d63ff",
+              }
+            }
+          />
+          <span
+            className="c18"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+                "height": "1.6rem",
+                "width": "1.6rem",
               }
             }
             value={
@@ -2056,39 +2062,11 @@ exports[`default Wrapper 1`] = `
               ]
             }
           >
-            <div
-              className="c17"
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                }
-              }
-            />
-            <span
-              className="c18"
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                  "height": "1.6rem",
-                  "width": "1.6rem",
-                }
-              }
-              value={
-                Array [
-                  0,
-                ]
-              }
-            >
-              
-            </span>
-          </div>
+            
+          </span>
         </div>
       </div>
-    </span>
+    </div>
   </div>
   <div
     style={
@@ -2107,21 +2085,42 @@ exports[`default Wrapper 1`] = `
     >
        单滑块 defaultValue=-1
     </h2>
-    <span
+    <div
+      className="c11"
       onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       onMouseUp={[Function]}
+      style={Object {}}
     >
       <div
-        className="c11"
+        className="c12"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={Object {}}
+        value={
+          Array [
+            10,
+          ]
+        }
       >
         <div
-          className="c12"
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          style={Object {}}
+          className="c2"
+          style={
+            Object {
+              "backgroundColor": "#e8e8e8",
+              "borderBottomLeftRadius": "0.6rem",
+              "borderBottomRightRadius": "0.6rem",
+              "borderBottomWidth": "0rem",
+              "borderLeftWidth": "0rem",
+              "borderRightWidth": "0rem",
+              "borderTopLeftRadius": "0.6rem",
+              "borderTopRightRadius": "0.6rem",
+              "borderTopWidth": "0rem",
+              "height": "0.6rem",
+              "width": "30rem",
+            }
+          }
           value={
             Array [
               10,
@@ -2129,20 +2128,24 @@ exports[`default Wrapper 1`] = `
           }
         >
           <div
-            className="c2"
+            className="c17"
             style={
               Object {
-                "backgroundColor": "#e8e8e8",
-                "borderBottomLeftRadius": "0.6rem",
-                "borderBottomRightRadius": "0.6rem",
-                "borderBottomWidth": "0rem",
-                "borderLeftWidth": "0rem",
-                "borderRightWidth": "0rem",
-                "borderTopLeftRadius": "0.6rem",
-                "borderTopRightRadius": "0.6rem",
-                "borderTopWidth": "0rem",
-                "height": "0.6rem",
-                "width": "30rem",
+                "backgroundColor": "#4d63ff",
+              }
+            }
+          />
+          <span
+            className="c18"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+                "height": "1.6rem",
+                "width": "1.6rem",
               }
             }
             value={
@@ -2151,39 +2154,11 @@ exports[`default Wrapper 1`] = `
               ]
             }
           >
-            <div
-              className="c17"
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                }
-              }
-            />
-            <span
-              className="c18"
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                  "height": "1.6rem",
-                  "width": "1.6rem",
-                }
-              }
-              value={
-                Array [
-                  10,
-                ]
-              }
-            >
-              
-            </span>
-          </div>
+            
+          </span>
         </div>
       </div>
-    </span>
+    </div>
   </div>
   <div
     style={
@@ -2202,21 +2177,42 @@ exports[`default Wrapper 1`] = `
     >
        单滑块
     </h2>
-    <span
+    <div
+      className="c11"
       onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       onMouseUp={[Function]}
+      style={Object {}}
     >
       <div
-        className="c11"
+        className="c12"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={Object {}}
+        value={
+          Array [
+            40,
+          ]
+        }
       >
         <div
-          className="c12"
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          style={Object {}}
+          className="c2"
+          style={
+            Object {
+              "backgroundColor": "#e8e8e8",
+              "borderBottomLeftRadius": "0.6rem",
+              "borderBottomRightRadius": "0.6rem",
+              "borderBottomWidth": "0rem",
+              "borderLeftWidth": "0rem",
+              "borderRightWidth": "0rem",
+              "borderTopLeftRadius": "0.6rem",
+              "borderTopRightRadius": "0.6rem",
+              "borderTopWidth": "0rem",
+              "height": "0.6rem",
+              "width": "30rem",
+            }
+          }
           value={
             Array [
               40,
@@ -2224,20 +2220,24 @@ exports[`default Wrapper 1`] = `
           }
         >
           <div
-            className="c2"
+            className="c19"
             style={
               Object {
-                "backgroundColor": "#e8e8e8",
-                "borderBottomLeftRadius": "0.6rem",
-                "borderBottomRightRadius": "0.6rem",
-                "borderBottomWidth": "0rem",
-                "borderLeftWidth": "0rem",
-                "borderRightWidth": "0rem",
-                "borderTopLeftRadius": "0.6rem",
-                "borderTopRightRadius": "0.6rem",
-                "borderTopWidth": "0rem",
-                "height": "0.6rem",
-                "width": "30rem",
+                "backgroundColor": "#4d63ff",
+              }
+            }
+          />
+          <span
+            className="c20"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+                "height": "1.6rem",
+                "width": "1.6rem",
               }
             }
             value={
@@ -2246,39 +2246,11 @@ exports[`default Wrapper 1`] = `
               ]
             }
           >
-            <div
-              className="c19"
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                }
-              }
-            />
-            <span
-              className="c20"
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                  "height": "1.6rem",
-                  "width": "1.6rem",
-                }
-              }
-              value={
-                Array [
-                  40,
-                ]
-              }
-            >
-              
-            </span>
-          </div>
+            
+          </span>
         </div>
       </div>
-    </span>
+    </div>
   </div>
   <div
     style={
@@ -2297,21 +2269,43 @@ exports[`default Wrapper 1`] = `
     >
        双滑块 minValue -1
     </h2>
-    <span
+    <div
+      className="c11"
       onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       onMouseUp={[Function]}
+      style={Object {}}
     >
       <div
-        className="c11"
+        className="c12"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={Object {}}
+        value={
+          Array [
+            0,
+            20,
+          ]
+        }
       >
         <div
-          className="c12"
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          style={Object {}}
+          className="c2"
+          style={
+            Object {
+              "backgroundColor": "#e8e8e8",
+              "borderBottomLeftRadius": "0.6rem",
+              "borderBottomRightRadius": "0.6rem",
+              "borderBottomWidth": "0rem",
+              "borderLeftWidth": "0rem",
+              "borderRightWidth": "0rem",
+              "borderTopLeftRadius": "0.6rem",
+              "borderTopRightRadius": "0.6rem",
+              "borderTopWidth": "0rem",
+              "height": "0.6rem",
+              "width": "30rem",
+            }
+          }
           value={
             Array [
               0,
@@ -2320,20 +2314,24 @@ exports[`default Wrapper 1`] = `
           }
         >
           <div
-            className="c2"
+            className="c21"
             style={
               Object {
-                "backgroundColor": "#e8e8e8",
-                "borderBottomLeftRadius": "0.6rem",
-                "borderBottomRightRadius": "0.6rem",
-                "borderBottomWidth": "0rem",
-                "borderLeftWidth": "0rem",
-                "borderRightWidth": "0rem",
-                "borderTopLeftRadius": "0.6rem",
-                "borderTopRightRadius": "0.6rem",
-                "borderTopWidth": "0rem",
-                "height": "0.6rem",
-                "width": "30rem",
+                "backgroundColor": "#4d63ff",
+              }
+            }
+          />
+          <span
+            className="c18"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+                "height": "1.6rem",
+                "width": "1.6rem",
               }
             }
             value={
@@ -2343,62 +2341,33 @@ exports[`default Wrapper 1`] = `
               ]
             }
           >
-            <div
-              className="c21"
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                }
+            
+          </span>
+          <span
+            className="c22"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+                "height": "1.6rem",
+                "width": "1.6rem",
               }
-            />
-            <span
-              className="c18"
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                  "height": "1.6rem",
-                  "width": "1.6rem",
-                }
-              }
-              value={
-                Array [
-                  0,
-                  20,
-                ]
-              }
-            >
-              
-            </span>
-            <span
-              className="c22"
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                  "height": "1.6rem",
-                  "width": "1.6rem",
-                }
-              }
-              value={
-                Array [
-                  0,
-                  20,
-                ]
-              }
-            >
-              
-            </span>
-          </div>
+            }
+            value={
+              Array [
+                0,
+                20,
+              ]
+            }
+          >
+            
+          </span>
         </div>
       </div>
-    </span>
+    </div>
   </div>
   <div
     style={
@@ -2417,22 +2386,44 @@ exports[`default Wrapper 1`] = `
     >
        disabled
     </h2>
-    <span
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
+    <div
+      className="c11"
+      onMouseDown={null}
       onMouseUp={[Function]}
+      style={Object {}}
     >
       <div
-        className="c11"
+        className="c12"
+        disabled={true}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={Object {}}
+        value={
+          Array [
+            20,
+          ]
+        }
       >
         <div
-          className="c12"
+          className="c2"
           disabled={true}
-          onMouseDown={null}
-          onMouseUp={[Function]}
-          style={Object {}}
+          style={
+            Object {
+              "backgroundColor": "#f2f2f2",
+              "borderBottomLeftRadius": "0.6rem",
+              "borderBottomRightRadius": "0.6rem",
+              "borderBottomWidth": "0rem",
+              "borderLeftWidth": "0rem",
+              "borderRightWidth": "0rem",
+              "borderTopLeftRadius": "0.6rem",
+              "borderTopRightRadius": "0.6rem",
+              "borderTopWidth": "0rem",
+              "height": "0.6rem",
+              "width": "30rem",
+            }
+          }
           value={
             Array [
               20,
@@ -2440,21 +2431,25 @@ exports[`default Wrapper 1`] = `
           }
         >
           <div
-            className="c2"
-            disabled={true}
+            className="c23"
             style={
               Object {
-                "backgroundColor": "#f2f2f2",
-                "borderBottomLeftRadius": "0.6rem",
-                "borderBottomRightRadius": "0.6rem",
-                "borderBottomWidth": "0rem",
-                "borderLeftWidth": "0rem",
-                "borderRightWidth": "0rem",
-                "borderTopLeftRadius": "0.6rem",
-                "borderTopRightRadius": "0.6rem",
-                "borderTopWidth": "0rem",
-                "height": "0.6rem",
-                "width": "30rem",
+                "backgroundColor": "#e8e8e8",
+              }
+            }
+          />
+          <span
+            className="c24"
+            disabled={true}
+            onMouseDown={null}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#e8e8e8",
+                "height": "1.6rem",
+                "width": "1.6rem",
               }
             }
             value={
@@ -2463,40 +2458,11 @@ exports[`default Wrapper 1`] = `
               ]
             }
           >
-            <div
-              className="c23"
-              style={
-                Object {
-                  "backgroundColor": "#e8e8e8",
-                }
-              }
-            />
-            <span
-              className="c24"
-              disabled={true}
-              onMouseDown={null}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#e8e8e8",
-                  "height": "1.6rem",
-                  "width": "1.6rem",
-                }
-              }
-              value={
-                Array [
-                  20,
-                ]
-              }
-            >
-              
-            </span>
-          </div>
+            
+          </span>
         </div>
       </div>
-    </span>
+    </div>
   </div>
   <div
     style={
@@ -2515,21 +2481,42 @@ exports[`default Wrapper 1`] = `
     >
        value
     </h2>
-    <span
+    <div
+      className="c11"
       onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       onMouseUp={[Function]}
+      style={Object {}}
     >
       <div
-        className="c11"
+        className="c12"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={Object {}}
+        value={
+          Array [
+            23,
+          ]
+        }
       >
         <div
-          className="c12"
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          style={Object {}}
+          className="c2"
+          style={
+            Object {
+              "backgroundColor": "#e8e8e8",
+              "borderBottomLeftRadius": "0.6rem",
+              "borderBottomRightRadius": "0.6rem",
+              "borderBottomWidth": "0rem",
+              "borderLeftWidth": "0rem",
+              "borderRightWidth": "0rem",
+              "borderTopLeftRadius": "0.6rem",
+              "borderTopRightRadius": "0.6rem",
+              "borderTopWidth": "0rem",
+              "height": "0.6rem",
+              "width": "30rem",
+            }
+          }
           value={
             Array [
               23,
@@ -2537,20 +2524,24 @@ exports[`default Wrapper 1`] = `
           }
         >
           <div
-            className="c2"
+            className="c25"
             style={
               Object {
-                "backgroundColor": "#e8e8e8",
-                "borderBottomLeftRadius": "0.6rem",
-                "borderBottomRightRadius": "0.6rem",
-                "borderBottomWidth": "0rem",
-                "borderLeftWidth": "0rem",
-                "borderRightWidth": "0rem",
-                "borderTopLeftRadius": "0.6rem",
-                "borderTopRightRadius": "0.6rem",
-                "borderTopWidth": "0rem",
-                "height": "0.6rem",
-                "width": "30rem",
+                "backgroundColor": "#4d63ff",
+              }
+            }
+          />
+          <span
+            className="c26"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+                "height": "1.6rem",
+                "width": "1.6rem",
               }
             }
             value={
@@ -2559,39 +2550,11 @@ exports[`default Wrapper 1`] = `
               ]
             }
           >
-            <div
-              className="c25"
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                }
-              }
-            />
-            <span
-              className="c26"
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                  "height": "1.6rem",
-                  "width": "1.6rem",
-                }
-              }
-              value={
-                Array [
-                  23,
-                ]
-              }
-            >
-              
-            </span>
-          </div>
+            
+          </span>
         </div>
       </div>
-    </span>
+    </div>
   </div>
   <div
     style={
@@ -2610,42 +2573,87 @@ exports[`default Wrapper 1`] = `
     >
        离散 marks 对象+对象
     </h2>
-    <span
+    <div
+      className="c11"
       onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       onMouseUp={[Function]}
+      style={Object {}}
     >
       <div
-        className="c11"
+        className="c12"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={Object {}}
+        value={
+          Array [
+            10,
+          ]
+        }
       >
         <div
-          className="c12"
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          style={Object {}}
+          className="c2"
+          style={
+            Object {
+              "backgroundColor": "#e8e8e8",
+              "borderBottomLeftRadius": "0.6rem",
+              "borderBottomRightRadius": "0.6rem",
+              "borderBottomWidth": "0rem",
+              "borderLeftWidth": "0rem",
+              "borderRightWidth": "0rem",
+              "borderTopLeftRadius": "0.6rem",
+              "borderTopRightRadius": "0.6rem",
+              "borderTopWidth": "0rem",
+              "height": "0.6rem",
+              "width": "30rem",
+            }
+          }
           value={
             Array [
               10,
             ]
           }
         >
+          <span
+            className="c27"
+            data-sign="mask"
+            style={Object {}}
+          />
+          <span
+            className="c28"
+            data-sign="mask"
+            style={Object {}}
+          />
+          <span
+            className="c29"
+            data-sign="mask"
+            style={Object {}}
+          />
+          <span
+            className="c30"
+            data-sign="mask"
+            style={Object {}}
+          />
           <div
-            className="c2"
+            className="c31"
             style={
               Object {
-                "backgroundColor": "#e8e8e8",
-                "borderBottomLeftRadius": "0.6rem",
-                "borderBottomRightRadius": "0.6rem",
-                "borderBottomWidth": "0rem",
-                "borderLeftWidth": "0rem",
-                "borderRightWidth": "0rem",
-                "borderTopLeftRadius": "0.6rem",
-                "borderTopRightRadius": "0.6rem",
-                "borderTopWidth": "0rem",
-                "height": "0.6rem",
-                "width": "30rem",
+                "backgroundColor": "#4d63ff",
+              }
+            }
+          />
+          <span
+            className="c32"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+                "height": "1.6rem",
+                "width": "1.6rem",
               }
             }
             value={
@@ -2654,59 +2662,11 @@ exports[`default Wrapper 1`] = `
               ]
             }
           >
-            <span
-              className="c27"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <span
-              className="c28"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <span
-              className="c29"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <span
-              className="c30"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <div
-              className="c31"
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                }
-              }
-            />
-            <span
-              className="c32"
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                  "height": "1.6rem",
-                  "width": "1.6rem",
-                }
-              }
-              value={
-                Array [
-                  10,
-                ]
-              }
-            >
-              
-            </span>
-          </div>
+            
+          </span>
         </div>
       </div>
-    </span>
+    </div>
   </div>
   <div
     style={
@@ -2725,21 +2685,43 @@ exports[`default Wrapper 1`] = `
     >
        离散 marks 对象+对象
     </h2>
-    <span
+    <div
+      className="c11"
       onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       onMouseUp={[Function]}
+      style={Object {}}
     >
       <div
-        className="c11"
+        className="c12"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={Object {}}
+        value={
+          Array [
+            10,
+            20,
+          ]
+        }
       >
         <div
-          className="c12"
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          style={Object {}}
+          className="c2"
+          style={
+            Object {
+              "backgroundColor": "#e8e8e8",
+              "borderBottomLeftRadius": "0.6rem",
+              "borderBottomRightRadius": "0.6rem",
+              "borderBottomWidth": "0rem",
+              "borderLeftWidth": "0rem",
+              "borderRightWidth": "0rem",
+              "borderTopLeftRadius": "0.6rem",
+              "borderTopRightRadius": "0.6rem",
+              "borderTopWidth": "0rem",
+              "height": "0.6rem",
+              "width": "30rem",
+            }
+          }
           value={
             Array [
               10,
@@ -2747,21 +2729,45 @@ exports[`default Wrapper 1`] = `
             ]
           }
         >
+          <span
+            className="c33"
+            data-sign="mask"
+            style={Object {}}
+          />
+          <span
+            className="c34"
+            data-sign="mask"
+            style={Object {}}
+          />
+          <span
+            className="c35"
+            data-sign="mask"
+            style={Object {}}
+          />
+          <span
+            className="c30"
+            data-sign="mask"
+            style={Object {}}
+          />
           <div
-            className="c2"
+            className="c36"
             style={
               Object {
-                "backgroundColor": "#e8e8e8",
-                "borderBottomLeftRadius": "0.6rem",
-                "borderBottomRightRadius": "0.6rem",
-                "borderBottomWidth": "0rem",
-                "borderLeftWidth": "0rem",
-                "borderRightWidth": "0rem",
-                "borderTopLeftRadius": "0.6rem",
-                "borderTopRightRadius": "0.6rem",
-                "borderTopWidth": "0rem",
-                "height": "0.6rem",
-                "width": "30rem",
+                "backgroundColor": "#4d63ff",
+              }
+            }
+          />
+          <span
+            className="c32"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+                "height": "1.6rem",
+                "width": "1.6rem",
               }
             }
             value={
@@ -2771,82 +2777,33 @@ exports[`default Wrapper 1`] = `
               ]
             }
           >
-            <span
-              className="c33"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <span
-              className="c34"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <span
-              className="c35"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <span
-              className="c30"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <div
-              className="c36"
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                }
+            
+          </span>
+          <span
+            className="c37"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+                "height": "1.6rem",
+                "width": "1.6rem",
               }
-            />
-            <span
-              className="c32"
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                  "height": "1.6rem",
-                  "width": "1.6rem",
-                }
-              }
-              value={
-                Array [
-                  10,
-                  20,
-                ]
-              }
-            >
-              
-            </span>
-            <span
-              className="c37"
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                  "height": "1.6rem",
-                  "width": "1.6rem",
-                }
-              }
-              value={
-                Array [
-                  10,
-                  20,
-                ]
-              }
-            >
-              
-            </span>
-          </div>
+            }
+            value={
+              Array [
+                10,
+                20,
+              ]
+            }
+          >
+            
+          </span>
         </div>
       </div>
-    </span>
+    </div>
   </div>
   <div
     style={
@@ -2865,42 +2822,82 @@ exports[`default Wrapper 1`] = `
     >
        离散no min max
     </h2>
-    <span
+    <div
+      className="c11"
       onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       onMouseUp={[Function]}
+      style={Object {}}
     >
       <div
-        className="c11"
+        className="c12"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={Object {}}
+        value={
+          Array [
+            10,
+          ]
+        }
       >
         <div
-          className="c12"
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          style={Object {}}
+          className="c2"
+          style={
+            Object {
+              "backgroundColor": "#e8e8e8",
+              "borderBottomLeftRadius": "0.6rem",
+              "borderBottomRightRadius": "0.6rem",
+              "borderBottomWidth": "0rem",
+              "borderLeftWidth": "0rem",
+              "borderRightWidth": "0rem",
+              "borderTopLeftRadius": "0.6rem",
+              "borderTopRightRadius": "0.6rem",
+              "borderTopWidth": "0rem",
+              "height": "0.6rem",
+              "width": "30rem",
+            }
+          }
           value={
             Array [
               10,
             ]
           }
         >
+          <span
+            className="c38"
+            data-sign="mask"
+            style={Object {}}
+          />
+          <span
+            className="c39"
+            data-sign="mask"
+            style={Object {}}
+          />
+          <span
+            className="c40"
+            data-sign="mask"
+            style={Object {}}
+          />
           <div
-            className="c2"
+            className="c17"
             style={
               Object {
-                "backgroundColor": "#e8e8e8",
-                "borderBottomLeftRadius": "0.6rem",
-                "borderBottomRightRadius": "0.6rem",
-                "borderBottomWidth": "0rem",
-                "borderLeftWidth": "0rem",
-                "borderRightWidth": "0rem",
-                "borderTopLeftRadius": "0.6rem",
-                "borderTopRightRadius": "0.6rem",
-                "borderTopWidth": "0rem",
-                "height": "0.6rem",
-                "width": "30rem",
+                "backgroundColor": "#4d63ff",
+              }
+            }
+          />
+          <span
+            className="c18"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+                "height": "1.6rem",
+                "width": "1.6rem",
               }
             }
             value={
@@ -2909,54 +2906,11 @@ exports[`default Wrapper 1`] = `
               ]
             }
           >
-            <span
-              className="c38"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <span
-              className="c39"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <span
-              className="c40"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <div
-              className="c17"
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                }
-              }
-            />
-            <span
-              className="c18"
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                  "height": "1.6rem",
-                  "width": "1.6rem",
-                }
-              }
-              value={
-                Array [
-                  10,
-                ]
-              }
-            >
-              
-            </span>
-          </div>
+            
+          </span>
         </div>
       </div>
-    </span>
+    </div>
   </div>
   <div
     style={
@@ -2975,42 +2929,105 @@ exports[`default Wrapper 1`] = `
     >
        icon
     </h2>
-    <span
+    <div
+      className="c11"
       onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       onMouseUp={[Function]}
+      style={Object {}}
     >
       <div
-        className="c11"
+        className="c41"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={Object {}}
+        value={
+          Array [
+            0,
+          ]
+        }
       >
         <div
-          className="c41"
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          style={Object {}}
+          className="c2"
+          style={
+            Object {
+              "backgroundColor": "#e8e8e8",
+              "borderBottomLeftRadius": "0.6rem",
+              "borderBottomRightRadius": "0.6rem",
+              "borderBottomWidth": "0rem",
+              "borderLeftWidth": "0rem",
+              "borderRightWidth": "0rem",
+              "borderTopLeftRadius": "0.6rem",
+              "borderTopRightRadius": "0.6rem",
+              "borderTopWidth": "0rem",
+              "height": "0.6rem",
+              "width": "30rem",
+            }
+          }
           value={
             Array [
               0,
             ]
           }
         >
+          <span
+            className="c42"
+            style={Object {}}
+            value={
+              Array [
+                0,
+              ]
+            }
+          >
+            <i
+              className="lugia-icon-financial_smile_o  c4"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={Object {}}
+            />
+          </span>
+          <span
+            className="c43"
+            style={Object {}}
+            value={
+              Array [
+                0,
+              ]
+            }
+          >
+            <i
+              className="lugia-icon-financial_sad_o  c4"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={Object {}}
+            />
+          </span>
           <div
-            className="c2"
+            className="c17"
             style={
               Object {
-                "backgroundColor": "#e8e8e8",
-                "borderBottomLeftRadius": "0.6rem",
-                "borderBottomRightRadius": "0.6rem",
-                "borderBottomWidth": "0rem",
-                "borderLeftWidth": "0rem",
-                "borderRightWidth": "0rem",
-                "borderTopLeftRadius": "0.6rem",
-                "borderTopRightRadius": "0.6rem",
-                "borderTopWidth": "0rem",
-                "height": "0.6rem",
-                "width": "30rem",
+                "backgroundColor": "#4d63ff",
+              }
+            }
+          />
+          <span
+            className="c18"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+                "height": "1.6rem",
+                "width": "1.6rem",
               }
             }
             value={
@@ -3019,87 +3036,11 @@ exports[`default Wrapper 1`] = `
               ]
             }
           >
-            <span
-              className="c42"
-              style={Object {}}
-              value={
-                Array [
-                  0,
-                ]
-              }
-            >
-              <span
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-              >
-                <span
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                >
-                  <i
-                    className="lugia-icon-financial_smile_o  c4"
-                    style={Object {}}
-                  />
-                </span>
-              </span>
-            </span>
-            <span
-              className="c43"
-              style={Object {}}
-              value={
-                Array [
-                  0,
-                ]
-              }
-            >
-              <span
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-              >
-                <span
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                >
-                  <i
-                    className="lugia-icon-financial_sad_o  c4"
-                    style={Object {}}
-                  />
-                </span>
-              </span>
-            </span>
-            <div
-              className="c17"
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                }
-              }
-            />
-            <span
-              className="c18"
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                  "height": "1.6rem",
-                  "width": "1.6rem",
-                }
-              }
-              value={
-                Array [
-                  0,
-                ]
-              }
-            >
-              
-            </span>
-          </div>
+            
+          </span>
         </div>
       </div>
-    </span>
+    </div>
   </div>
   <div
     style={
@@ -3118,22 +3059,44 @@ exports[`default Wrapper 1`] = `
     >
        单滑块 disabled false-&gt; true
     </h2>
-    <span
+    <div
+      className="c11"
       onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       onMouseUp={[Function]}
+      style={Object {}}
     >
       <div
-        className="c11"
+        className="c12"
+        disabled={false}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={Object {}}
+        value={
+          Array [
+            0,
+          ]
+        }
       >
         <div
-          className="c12"
+          className="c2"
           disabled={false}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          style={Object {}}
+          style={
+            Object {
+              "backgroundColor": "#e8e8e8",
+              "borderBottomLeftRadius": "0.6rem",
+              "borderBottomRightRadius": "0.6rem",
+              "borderBottomWidth": "0rem",
+              "borderLeftWidth": "0rem",
+              "borderRightWidth": "0rem",
+              "borderTopLeftRadius": "0.6rem",
+              "borderTopRightRadius": "0.6rem",
+              "borderTopWidth": "0rem",
+              "height": "0.6rem",
+              "width": "30rem",
+            }
+          }
           value={
             Array [
               0,
@@ -3141,21 +3104,25 @@ exports[`default Wrapper 1`] = `
           }
         >
           <div
-            className="c2"
-            disabled={false}
+            className="c17"
             style={
               Object {
-                "backgroundColor": "#e8e8e8",
-                "borderBottomLeftRadius": "0.6rem",
-                "borderBottomRightRadius": "0.6rem",
-                "borderBottomWidth": "0rem",
-                "borderLeftWidth": "0rem",
-                "borderRightWidth": "0rem",
-                "borderTopLeftRadius": "0.6rem",
-                "borderTopRightRadius": "0.6rem",
-                "borderTopWidth": "0rem",
-                "height": "0.6rem",
-                "width": "30rem",
+                "backgroundColor": "#4d63ff",
+              }
+            }
+          />
+          <span
+            className="c18"
+            disabled={false}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+                "height": "1.6rem",
+                "width": "1.6rem",
               }
             }
             value={
@@ -3164,40 +3131,11 @@ exports[`default Wrapper 1`] = `
               ]
             }
           >
-            <div
-              className="c17"
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                }
-              }
-            />
-            <span
-              className="c18"
-              disabled={false}
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                  "height": "1.6rem",
-                  "width": "1.6rem",
-                }
-              }
-              value={
-                Array [
-                  0,
-                ]
-              }
-            >
-              
-            </span>
-          </div>
+            
+          </span>
         </div>
       </div>
-    </span>
+    </div>
     <p>
       <button
         onClick={[Function]}
@@ -3230,21 +3168,42 @@ exports[`default Wrapper 1`] = `
     >
        normal
     </h2>
-    <span
+    <div
+      className="c44"
       onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       onMouseUp={[Function]}
+      style={Object {}}
     >
       <div
-        className="c44"
+        className="c45"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={Object {}}
+        value={
+          Array [
+            0,
+          ]
+        }
       >
         <div
-          className="c45"
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          style={Object {}}
+          className="c2"
+          style={
+            Object {
+              "backgroundColor": "#e8e8e8",
+              "borderBottomLeftRadius": "0.6rem",
+              "borderBottomRightRadius": "0.6rem",
+              "borderBottomWidth": "0rem",
+              "borderLeftWidth": "0rem",
+              "borderRightWidth": "0rem",
+              "borderTopLeftRadius": "0.6rem",
+              "borderTopRightRadius": "0.6rem",
+              "borderTopWidth": "0rem",
+              "height": "30rem",
+              "width": "0.6rem",
+            }
+          }
           value={
             Array [
               0,
@@ -3252,20 +3211,24 @@ exports[`default Wrapper 1`] = `
           }
         >
           <div
-            className="c2"
+            className="c46"
             style={
               Object {
-                "backgroundColor": "#e8e8e8",
-                "borderBottomLeftRadius": "0.6rem",
-                "borderBottomRightRadius": "0.6rem",
-                "borderBottomWidth": "0rem",
-                "borderLeftWidth": "0rem",
-                "borderRightWidth": "0rem",
-                "borderTopLeftRadius": "0.6rem",
-                "borderTopRightRadius": "0.6rem",
-                "borderTopWidth": "0rem",
-                "height": "30rem",
-                "width": "0.6rem",
+                "backgroundColor": "#4d63ff",
+              }
+            }
+          />
+          <span
+            className="c47"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+                "height": "1.6rem",
+                "width": "1.6rem",
               }
             }
             value={
@@ -3274,39 +3237,11 @@ exports[`default Wrapper 1`] = `
               ]
             }
           >
-            <div
-              className="c46"
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                }
-              }
-            />
-            <span
-              className="c47"
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                  "height": "1.6rem",
-                  "width": "1.6rem",
-                }
-              }
-              value={
-                Array [
-                  0,
-                ]
-              }
-            >
-              
-            </span>
-          </div>
+            
+          </span>
         </div>
       </div>
-    </span>
+    </div>
   </div>
   <div
     style={
@@ -3325,21 +3260,42 @@ exports[`default Wrapper 1`] = `
     >
        单滑块value
     </h2>
-    <span
+    <div
+      className="c44"
       onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       onMouseUp={[Function]}
+      style={Object {}}
     >
       <div
-        className="c44"
+        className="c45"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={Object {}}
+        value={
+          Array [
+            10,
+          ]
+        }
       >
         <div
-          className="c45"
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          style={Object {}}
+          className="c2"
+          style={
+            Object {
+              "backgroundColor": "#e8e8e8",
+              "borderBottomLeftRadius": "0.6rem",
+              "borderBottomRightRadius": "0.6rem",
+              "borderBottomWidth": "0rem",
+              "borderLeftWidth": "0rem",
+              "borderRightWidth": "0rem",
+              "borderTopLeftRadius": "0.6rem",
+              "borderTopRightRadius": "0.6rem",
+              "borderTopWidth": "0rem",
+              "height": "30rem",
+              "width": "0.6rem",
+            }
+          }
           value={
             Array [
               10,
@@ -3347,20 +3303,24 @@ exports[`default Wrapper 1`] = `
           }
         >
           <div
-            className="c2"
+            className="c48"
             style={
               Object {
-                "backgroundColor": "#e8e8e8",
-                "borderBottomLeftRadius": "0.6rem",
-                "borderBottomRightRadius": "0.6rem",
-                "borderBottomWidth": "0rem",
-                "borderLeftWidth": "0rem",
-                "borderRightWidth": "0rem",
-                "borderTopLeftRadius": "0.6rem",
-                "borderTopRightRadius": "0.6rem",
-                "borderTopWidth": "0rem",
-                "height": "30rem",
-                "width": "0.6rem",
+                "backgroundColor": "#4d63ff",
+              }
+            }
+          />
+          <span
+            className="c49"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+                "height": "1.6rem",
+                "width": "1.6rem",
               }
             }
             value={
@@ -3369,39 +3329,11 @@ exports[`default Wrapper 1`] = `
               ]
             }
           >
-            <div
-              className="c48"
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                }
-              }
-            />
-            <span
-              className="c49"
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                  "height": "1.6rem",
-                  "width": "1.6rem",
-                }
-              }
-              value={
-                Array [
-                  10,
-                ]
-              }
-            >
-              
-            </span>
-          </div>
+            
+          </span>
         </div>
       </div>
-    </span>
+    </div>
   </div>
   <div
     style={
@@ -3420,21 +3352,42 @@ exports[`default Wrapper 1`] = `
     >
        单滑块
     </h2>
-    <span
+    <div
+      className="c44"
       onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       onMouseUp={[Function]}
+      style={Object {}}
     >
       <div
-        className="c44"
+        className="c45"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={Object {}}
+        value={
+          Array [
+            10,
+          ]
+        }
       >
         <div
-          className="c45"
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          style={Object {}}
+          className="c2"
+          style={
+            Object {
+              "backgroundColor": "#e8e8e8",
+              "borderBottomLeftRadius": "0.6rem",
+              "borderBottomRightRadius": "0.6rem",
+              "borderBottomWidth": "0rem",
+              "borderLeftWidth": "0rem",
+              "borderRightWidth": "0rem",
+              "borderTopLeftRadius": "0.6rem",
+              "borderTopRightRadius": "0.6rem",
+              "borderTopWidth": "0rem",
+              "height": "30rem",
+              "width": "0.6rem",
+            }
+          }
           value={
             Array [
               10,
@@ -3442,20 +3395,24 @@ exports[`default Wrapper 1`] = `
           }
         >
           <div
-            className="c2"
+            className="c48"
             style={
               Object {
-                "backgroundColor": "#e8e8e8",
-                "borderBottomLeftRadius": "0.6rem",
-                "borderBottomRightRadius": "0.6rem",
-                "borderBottomWidth": "0rem",
-                "borderLeftWidth": "0rem",
-                "borderRightWidth": "0rem",
-                "borderTopLeftRadius": "0.6rem",
-                "borderTopRightRadius": "0.6rem",
-                "borderTopWidth": "0rem",
-                "height": "30rem",
-                "width": "0.6rem",
+                "backgroundColor": "#4d63ff",
+              }
+            }
+          />
+          <span
+            className="c49"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+                "height": "1.6rem",
+                "width": "1.6rem",
               }
             }
             value={
@@ -3464,39 +3421,11 @@ exports[`default Wrapper 1`] = `
               ]
             }
           >
-            <div
-              className="c48"
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                }
-              }
-            />
-            <span
-              className="c49"
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                  "height": "1.6rem",
-                  "width": "1.6rem",
-                }
-              }
-              value={
-                Array [
-                  10,
-                ]
-              }
-            >
-              
-            </span>
-          </div>
+            
+          </span>
         </div>
       </div>
-    </span>
+    </div>
   </div>
   <div
     style={
@@ -3515,21 +3444,43 @@ exports[`default Wrapper 1`] = `
     >
        双滑块
     </h2>
-    <span
+    <div
+      className="c44"
       onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       onMouseUp={[Function]}
+      style={Object {}}
     >
       <div
-        className="c44"
+        className="c45"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={Object {}}
+        value={
+          Array [
+            10,
+            20,
+          ]
+        }
       >
         <div
-          className="c45"
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          style={Object {}}
+          className="c2"
+          style={
+            Object {
+              "backgroundColor": "#e8e8e8",
+              "borderBottomLeftRadius": "0.6rem",
+              "borderBottomRightRadius": "0.6rem",
+              "borderBottomWidth": "0rem",
+              "borderLeftWidth": "0rem",
+              "borderRightWidth": "0rem",
+              "borderTopLeftRadius": "0.6rem",
+              "borderTopRightRadius": "0.6rem",
+              "borderTopWidth": "0rem",
+              "height": "30rem",
+              "width": "0.6rem",
+            }
+          }
           value={
             Array [
               10,
@@ -3538,20 +3489,24 @@ exports[`default Wrapper 1`] = `
           }
         >
           <div
-            className="c2"
+            className="c50"
             style={
               Object {
-                "backgroundColor": "#e8e8e8",
-                "borderBottomLeftRadius": "0.6rem",
-                "borderBottomRightRadius": "0.6rem",
-                "borderBottomWidth": "0rem",
-                "borderLeftWidth": "0rem",
-                "borderRightWidth": "0rem",
-                "borderTopLeftRadius": "0.6rem",
-                "borderTopRightRadius": "0.6rem",
-                "borderTopWidth": "0rem",
-                "height": "30rem",
-                "width": "0.6rem",
+                "backgroundColor": "#4d63ff",
+              }
+            }
+          />
+          <span
+            className="c49"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+                "height": "1.6rem",
+                "width": "1.6rem",
               }
             }
             value={
@@ -3561,62 +3516,33 @@ exports[`default Wrapper 1`] = `
               ]
             }
           >
-            <div
-              className="c50"
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                }
+            
+          </span>
+          <span
+            className="c51"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+                "height": "1.6rem",
+                "width": "1.6rem",
               }
-            />
-            <span
-              className="c49"
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                  "height": "1.6rem",
-                  "width": "1.6rem",
-                }
-              }
-              value={
-                Array [
-                  10,
-                  20,
-                ]
-              }
-            >
-              
-            </span>
-            <span
-              className="c51"
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                  "height": "1.6rem",
-                  "width": "1.6rem",
-                }
-              }
-              value={
-                Array [
-                  10,
-                  20,
-                ]
-              }
-            >
-              
-            </span>
-          </div>
+            }
+            value={
+              Array [
+                10,
+                20,
+              ]
+            }
+          >
+            
+          </span>
         </div>
       </div>
-    </span>
+    </div>
   </div>
   <div
     style={
@@ -3635,21 +3561,43 @@ exports[`default Wrapper 1`] = `
     >
        双滑块value
     </h2>
-    <span
+    <div
+      className="c44"
       onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       onMouseUp={[Function]}
+      style={Object {}}
     >
       <div
-        className="c44"
+        className="c45"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={Object {}}
+        value={
+          Array [
+            10,
+            20,
+          ]
+        }
       >
         <div
-          className="c45"
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          style={Object {}}
+          className="c2"
+          style={
+            Object {
+              "backgroundColor": "#e8e8e8",
+              "borderBottomLeftRadius": "0.6rem",
+              "borderBottomRightRadius": "0.6rem",
+              "borderBottomWidth": "0rem",
+              "borderLeftWidth": "0rem",
+              "borderRightWidth": "0rem",
+              "borderTopLeftRadius": "0.6rem",
+              "borderTopRightRadius": "0.6rem",
+              "borderTopWidth": "0rem",
+              "height": "30rem",
+              "width": "0.6rem",
+            }
+          }
           value={
             Array [
               10,
@@ -3658,20 +3606,24 @@ exports[`default Wrapper 1`] = `
           }
         >
           <div
-            className="c2"
+            className="c50"
             style={
               Object {
-                "backgroundColor": "#e8e8e8",
-                "borderBottomLeftRadius": "0.6rem",
-                "borderBottomRightRadius": "0.6rem",
-                "borderBottomWidth": "0rem",
-                "borderLeftWidth": "0rem",
-                "borderRightWidth": "0rem",
-                "borderTopLeftRadius": "0.6rem",
-                "borderTopRightRadius": "0.6rem",
-                "borderTopWidth": "0rem",
-                "height": "30rem",
-                "width": "0.6rem",
+                "backgroundColor": "#4d63ff",
+              }
+            }
+          />
+          <span
+            className="c49"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+                "height": "1.6rem",
+                "width": "1.6rem",
               }
             }
             value={
@@ -3681,62 +3633,33 @@ exports[`default Wrapper 1`] = `
               ]
             }
           >
-            <div
-              className="c50"
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                }
+            
+          </span>
+          <span
+            className="c51"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+                "height": "1.6rem",
+                "width": "1.6rem",
               }
-            />
-            <span
-              className="c49"
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                  "height": "1.6rem",
-                  "width": "1.6rem",
-                }
-              }
-              value={
-                Array [
-                  10,
-                  20,
-                ]
-              }
-            >
-              
-            </span>
-            <span
-              className="c51"
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                  "height": "1.6rem",
-                  "width": "1.6rem",
-                }
-              }
-              value={
-                Array [
-                  10,
-                  20,
-                ]
-              }
-            >
-              
-            </span>
-          </div>
+            }
+            value={
+              Array [
+                10,
+                20,
+              ]
+            }
+          >
+            
+          </span>
         </div>
       </div>
-    </span>
+    </div>
   </div>
   <div
     style={
@@ -3755,42 +3678,92 @@ exports[`default Wrapper 1`] = `
     >
        离散
     </h2>
-    <span
+    <div
+      className="c44"
       onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       onMouseUp={[Function]}
+      style={Object {}}
     >
       <div
-        className="c44"
+        className="c45"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={Object {}}
+        value={
+          Array [
+            10,
+          ]
+        }
       >
         <div
-          className="c45"
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          style={Object {}}
+          className="c2"
+          style={
+            Object {
+              "backgroundColor": "#e8e8e8",
+              "borderBottomLeftRadius": "0.6rem",
+              "borderBottomRightRadius": "0.6rem",
+              "borderBottomWidth": "0rem",
+              "borderLeftWidth": "0rem",
+              "borderRightWidth": "0rem",
+              "borderTopLeftRadius": "0.6rem",
+              "borderTopRightRadius": "0.6rem",
+              "borderTopWidth": "0rem",
+              "height": "30rem",
+              "width": "0.6rem",
+            }
+          }
           value={
             Array [
               10,
             ]
           }
         >
+          <span
+            className="c52"
+            data-sign="mask"
+            style={Object {}}
+          />
+          <span
+            className="c53"
+            data-sign="mask"
+            style={Object {}}
+          />
+          <span
+            className="c54"
+            data-sign="mask"
+            style={Object {}}
+          />
+          <span
+            className="c55"
+            data-sign="mask"
+            style={Object {}}
+          />
+          <span
+            className="c56"
+            data-sign="mask"
+            style={Object {}}
+          />
           <div
-            className="c2"
+            className="c57"
             style={
               Object {
-                "backgroundColor": "#e8e8e8",
-                "borderBottomLeftRadius": "0.6rem",
-                "borderBottomRightRadius": "0.6rem",
-                "borderBottomWidth": "0rem",
-                "borderLeftWidth": "0rem",
-                "borderRightWidth": "0rem",
-                "borderTopLeftRadius": "0.6rem",
-                "borderTopRightRadius": "0.6rem",
-                "borderTopWidth": "0rem",
-                "height": "30rem",
-                "width": "0.6rem",
+                "backgroundColor": "#4d63ff",
+              }
+            }
+          />
+          <span
+            className="c58"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+                "height": "1.6rem",
+                "width": "1.6rem",
               }
             }
             value={
@@ -3799,64 +3772,11 @@ exports[`default Wrapper 1`] = `
               ]
             }
           >
-            <span
-              className="c52"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <span
-              className="c53"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <span
-              className="c54"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <span
-              className="c55"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <span
-              className="c56"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <div
-              className="c57"
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                }
-              }
-            />
-            <span
-              className="c58"
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                  "height": "1.6rem",
-                  "width": "1.6rem",
-                }
-              }
-              value={
-                Array [
-                  10,
-                ]
-              }
-            >
-              
-            </span>
-          </div>
+            
+          </span>
         </div>
       </div>
-    </span>
+    </div>
   </div>
   <div
     style={
@@ -3875,21 +3795,43 @@ exports[`default Wrapper 1`] = `
     >
        离散
     </h2>
-    <span
+    <div
+      className="c44"
       onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       onMouseUp={[Function]}
+      style={Object {}}
     >
       <div
-        className="c44"
+        className="c45"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={Object {}}
+        value={
+          Array [
+            10,
+            20,
+          ]
+        }
       >
         <div
-          className="c45"
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          style={Object {}}
+          className="c2"
+          style={
+            Object {
+              "backgroundColor": "#e8e8e8",
+              "borderBottomLeftRadius": "0.6rem",
+              "borderBottomRightRadius": "0.6rem",
+              "borderBottomWidth": "0rem",
+              "borderLeftWidth": "0rem",
+              "borderRightWidth": "0rem",
+              "borderTopLeftRadius": "0.6rem",
+              "borderTopRightRadius": "0.6rem",
+              "borderTopWidth": "0rem",
+              "height": "30rem",
+              "width": "0.6rem",
+            }
+          }
           value={
             Array [
               10,
@@ -3897,21 +3839,50 @@ exports[`default Wrapper 1`] = `
             ]
           }
         >
+          <span
+            className="c59"
+            data-sign="mask"
+            style={Object {}}
+          />
+          <span
+            className="c60"
+            data-sign="mask"
+            style={Object {}}
+          />
+          <span
+            className="c61"
+            data-sign="mask"
+            style={Object {}}
+          />
+          <span
+            className="c55"
+            data-sign="mask"
+            style={Object {}}
+          />
+          <span
+            className="c62"
+            data-sign="mask"
+            style={Object {}}
+          />
           <div
-            className="c2"
+            className="c63"
             style={
               Object {
-                "backgroundColor": "#e8e8e8",
-                "borderBottomLeftRadius": "0.6rem",
-                "borderBottomRightRadius": "0.6rem",
-                "borderBottomWidth": "0rem",
-                "borderLeftWidth": "0rem",
-                "borderRightWidth": "0rem",
-                "borderTopLeftRadius": "0.6rem",
-                "borderTopRightRadius": "0.6rem",
-                "borderTopWidth": "0rem",
-                "height": "30rem",
-                "width": "0.6rem",
+                "backgroundColor": "#4d63ff",
+              }
+            }
+          />
+          <span
+            className="c58"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+                "height": "1.6rem",
+                "width": "1.6rem",
               }
             }
             value={
@@ -3921,87 +3892,33 @@ exports[`default Wrapper 1`] = `
               ]
             }
           >
-            <span
-              className="c59"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <span
-              className="c60"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <span
-              className="c61"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <span
-              className="c55"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <span
-              className="c62"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <div
-              className="c63"
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                }
+            
+          </span>
+          <span
+            className="c64"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+                "height": "1.6rem",
+                "width": "1.6rem",
               }
-            />
-            <span
-              className="c58"
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                  "height": "1.6rem",
-                  "width": "1.6rem",
-                }
-              }
-              value={
-                Array [
-                  10,
-                  20,
-                ]
-              }
-            >
-              
-            </span>
-            <span
-              className="c64"
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                  "height": "1.6rem",
-                  "width": "1.6rem",
-                }
-              }
-              value={
-                Array [
-                  10,
-                  20,
-                ]
-              }
-            >
-              
-            </span>
-          </div>
+            }
+            value={
+              Array [
+                10,
+                20,
+              ]
+            }
+          >
+            
+          </span>
         </div>
       </div>
-    </span>
+    </div>
   </div>
   <div
     style={
@@ -4020,22 +3937,44 @@ exports[`default Wrapper 1`] = `
     >
        disabled
     </h2>
-    <span
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
+    <div
+      className="c44"
+      onMouseDown={null}
       onMouseUp={[Function]}
+      style={Object {}}
     >
       <div
-        className="c44"
+        className="c45"
+        disabled={true}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={Object {}}
+        value={
+          Array [
+            5,
+          ]
+        }
       >
         <div
-          className="c45"
+          className="c2"
           disabled={true}
-          onMouseDown={null}
-          onMouseUp={[Function]}
-          style={Object {}}
+          style={
+            Object {
+              "backgroundColor": "#f2f2f2",
+              "borderBottomLeftRadius": "0.6rem",
+              "borderBottomRightRadius": "0.6rem",
+              "borderBottomWidth": "0rem",
+              "borderLeftWidth": "0rem",
+              "borderRightWidth": "0rem",
+              "borderTopLeftRadius": "0.6rem",
+              "borderTopRightRadius": "0.6rem",
+              "borderTopWidth": "0rem",
+              "height": "30rem",
+              "width": "0.6rem",
+            }
+          }
           value={
             Array [
               5,
@@ -4043,21 +3982,25 @@ exports[`default Wrapper 1`] = `
           }
         >
           <div
-            className="c2"
-            disabled={true}
+            className="c65"
             style={
               Object {
-                "backgroundColor": "#f2f2f2",
-                "borderBottomLeftRadius": "0.6rem",
-                "borderBottomRightRadius": "0.6rem",
-                "borderBottomWidth": "0rem",
-                "borderLeftWidth": "0rem",
-                "borderRightWidth": "0rem",
-                "borderTopLeftRadius": "0.6rem",
-                "borderTopRightRadius": "0.6rem",
-                "borderTopWidth": "0rem",
-                "height": "30rem",
-                "width": "0.6rem",
+                "backgroundColor": "#e8e8e8",
+              }
+            }
+          />
+          <span
+            className="c66"
+            disabled={true}
+            onMouseDown={null}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#e8e8e8",
+                "height": "1.6rem",
+                "width": "1.6rem",
               }
             }
             value={
@@ -4066,40 +4009,11 @@ exports[`default Wrapper 1`] = `
               ]
             }
           >
-            <div
-              className="c65"
-              style={
-                Object {
-                  "backgroundColor": "#e8e8e8",
-                }
-              }
-            />
-            <span
-              className="c66"
-              disabled={true}
-              onMouseDown={null}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#e8e8e8",
-                  "height": "1.6rem",
-                  "width": "1.6rem",
-                }
-              }
-              value={
-                Array [
-                  5,
-                ]
-              }
-            >
-              
-            </span>
-          </div>
+            
+          </span>
         </div>
       </div>
-    </span>
+    </div>
   </div>
   <div
     style={
@@ -4118,42 +4032,82 @@ exports[`default Wrapper 1`] = `
     >
        离散
     </h2>
-    <span
+    <div
+      className="c44"
       onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       onMouseUp={[Function]}
+      style={Object {}}
     >
       <div
-        className="c44"
+        className="c45"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={Object {}}
+        value={
+          Array [
+            0,
+          ]
+        }
       >
         <div
-          className="c45"
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          style={Object {}}
+          className="c2"
+          style={
+            Object {
+              "backgroundColor": "#e8e8e8",
+              "borderBottomLeftRadius": "0.6rem",
+              "borderBottomRightRadius": "0.6rem",
+              "borderBottomWidth": "0rem",
+              "borderLeftWidth": "0rem",
+              "borderRightWidth": "0rem",
+              "borderTopLeftRadius": "0.6rem",
+              "borderTopRightRadius": "0.6rem",
+              "borderTopWidth": "0rem",
+              "height": "30rem",
+              "width": "0.6rem",
+            }
+          }
           value={
             Array [
               0,
             ]
           }
         >
+          <span
+            className="c67"
+            data-sign="mask"
+            style={Object {}}
+          />
+          <span
+            className="c68"
+            data-sign="mask"
+            style={Object {}}
+          />
+          <span
+            className="c69"
+            data-sign="mask"
+            style={Object {}}
+          />
           <div
-            className="c2"
+            className="c46"
             style={
               Object {
-                "backgroundColor": "#e8e8e8",
-                "borderBottomLeftRadius": "0.6rem",
-                "borderBottomRightRadius": "0.6rem",
-                "borderBottomWidth": "0rem",
-                "borderLeftWidth": "0rem",
-                "borderRightWidth": "0rem",
-                "borderTopLeftRadius": "0.6rem",
-                "borderTopRightRadius": "0.6rem",
-                "borderTopWidth": "0rem",
-                "height": "30rem",
-                "width": "0.6rem",
+                "backgroundColor": "#4d63ff",
+              }
+            }
+          />
+          <span
+            className="c47"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+                "height": "1.6rem",
+                "width": "1.6rem",
               }
             }
             value={
@@ -4162,54 +4116,11 @@ exports[`default Wrapper 1`] = `
               ]
             }
           >
-            <span
-              className="c67"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <span
-              className="c68"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <span
-              className="c69"
-              data-sign="mask"
-              style={Object {}}
-            />
-            <div
-              className="c46"
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                }
-              }
-            />
-            <span
-              className="c47"
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                  "height": "1.6rem",
-                  "width": "1.6rem",
-                }
-              }
-              value={
-                Array [
-                  0,
-                ]
-              }
-            >
-              
-            </span>
-          </div>
+            
+          </span>
         </div>
       </div>
-    </span>
+    </div>
   </div>
   <div
     style={
@@ -4228,42 +4139,54 @@ exports[`default Wrapper 1`] = `
     >
        icon
     </h2>
-    <span
+    <div
+      className="c44"
       onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       onMouseUp={[Function]}
+      style={Object {}}
     >
       <div
-        className="c44"
+        className="c70"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={Object {}}
+        value={
+          Array [
+            0,
+          ]
+        }
       >
         <div
-          className="c70"
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          style={Object {}}
+          className="c2"
+          style={
+            Object {
+              "backgroundColor": "#e8e8e8",
+              "borderBottomLeftRadius": "0.6rem",
+              "borderBottomRightRadius": "0.6rem",
+              "borderBottomWidth": "0rem",
+              "borderLeftWidth": "0rem",
+              "borderRightWidth": "0rem",
+              "borderTopLeftRadius": "0.6rem",
+              "borderTopRightRadius": "0.6rem",
+              "borderTopWidth": "0rem",
+              "height": "30rem",
+              "width": "0.6rem",
+            }
+          }
           value={
             Array [
               0,
             ]
           }
         >
-          <div
-            className="c2"
+          <span
+            className="c3"
             style={
               Object {
-                "backgroundColor": "#e8e8e8",
-                "borderBottomLeftRadius": "0.6rem",
-                "borderBottomRightRadius": "0.6rem",
-                "borderBottomWidth": "0rem",
-                "borderLeftWidth": "0rem",
-                "borderRightWidth": "0rem",
-                "borderTopLeftRadius": "0.6rem",
-                "borderTopRightRadius": "0.6rem",
-                "borderTopWidth": "0rem",
-                "height": "30rem",
-                "width": "0.6rem",
+                "color": "red",
+                "fontSize": "10rem",
               }
             }
             value={
@@ -4272,107 +4195,82 @@ exports[`default Wrapper 1`] = `
               ]
             }
           >
-            <span
-              className="c3"
-              style={
-                Object {
-                  "color": "red",
-                  "fontSize": "10rem",
-                }
-              }
-              value={
-                Array [
-                  0,
-                ]
-              }
-            >
-              <span
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-              >
-                <span
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                >
-                  <i
-                    className="lugia-icon-financial_smile_o  c4"
-                    style={
-                      Object {
-                        "color": "red",
-                        "fontSize": "10rem",
-                      }
-                    }
-                  />
-                </span>
-              </span>
-            </span>
-            <span
-              className="c5"
-              style={
-                Object {
-                  "color": "green",
-                  "fontSize": "3rem",
-                }
-              }
-              value={
-                Array [
-                  0,
-                ]
-              }
-            >
-              <span
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-              >
-                <span
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                >
-                  <i
-                    className="lugia-icon-financial_sad_o  c4"
-                    style={
-                      Object {
-                        "color": "green",
-                        "fontSize": "3rem",
-                      }
-                    }
-                  />
-                </span>
-              </span>
-            </span>
-            <div
-              className="c46"
-              style={
-                Object {
-                  "backgroundColor": "#4d63ff",
-                }
-              }
-            />
-            <span
-              className="c47"
+            <i
+              className="lugia-icon-financial_smile_o  c4"
+              onClick={[Function]}
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseUp={[Function]}
               style={
                 Object {
-                  "backgroundColor": "#4d63ff",
-                  "height": "1.6rem",
-                  "width": "1.6rem",
+                  "color": "red",
+                  "fontSize": "10rem",
                 }
               }
-              value={
-                Array [
-                  0,
-                ]
+            />
+          </span>
+          <span
+            className="c5"
+            style={
+              Object {
+                "color": "green",
+                "fontSize": "3rem",
               }
-            >
-              
-            </span>
-          </div>
+            }
+            value={
+              Array [
+                0,
+              ]
+            }
+          >
+            <i
+              className="lugia-icon-financial_sad_o  c4"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={
+                Object {
+                  "color": "green",
+                  "fontSize": "3rem",
+                }
+              }
+            />
+          </span>
+          <div
+            className="c46"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
+          />
+          <span
+            className="c47"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+                "height": "1.6rem",
+                "width": "1.6rem",
+              }
+            }
+            value={
+              Array [
+                0,
+              ]
+            }
+          >
+            
+          </span>
         </div>
       </div>
-    </span>
+    </div>
   </div>
 </div>
 `;

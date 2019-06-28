@@ -10,6 +10,7 @@ import {
 import { btnWidthNormal, rangeHeightNormal, rangeWidthNormal } from './slider_public_size';
 import colorsFunc from '../css/stateColor';
 import { getBorder } from '../theme/CSSProvider';
+//import {rangeWidthNormal,rangeHeightNormal,btnWidthNormal} from './slider_public_size';
 export const { themeColor } = colorsFunc();
 
 function verticalSize(props) {
@@ -34,7 +35,7 @@ function verticalSize(props) {
 }
 
 export function getThemeProps(props) {
-  const { getPartOfThemeProps, getTheme, themeProps: sliderTheme, vertical } = props;
+  const { getPartOfThemeProps, vertical } = props;
   const buttonThemeProps = getSliderButtonThemeProps(getPartOfThemeProps, vertical);
 
   const sliderTrackThemeProps = getSliderTrackThemeProps(getPartOfThemeProps, vertical);
@@ -69,9 +70,17 @@ function getSliderTrackThemeProps(getPartOfThemeProps, vertical) {
     },
   };
   const mergeSliderTrackNormal = deepMerge(sliderNormalTheme, { normal });
-  const {
+  let {
     normal: { width, height },
   } = mergeSliderTrackNormal;
+  const isNumWidth = typeof width === 'number' && !isNaN(width);
+  const isNumHeight = typeof height === 'number' && !isNaN(height);
+  if (!isNumWidth) {
+    width = rangeWidthNormal;
+  }
+  if (!isNumHeight) {
+    height = rangeHeightNormal;
+  }
   const { width: sliderWidth, height: sliderHeight } = verticalSize({ vertical, width, height });
   const defaultSliderThemeProps = {
     ...mergeSliderTrackNormal,
@@ -181,13 +190,21 @@ export function getSliderButtonThemeProps(getPartOfThemeProps, vertical) {
   const sliderButtonNormalThemeProps = deepMerge(defalutSliderButtonNormalThemeProps, {
     normal: buttonNormalTheme,
   });
-  const {
+  let {
     normal: {
       background: { color },
       width,
       height,
     },
   } = sliderButtonNormalThemeProps;
+  const isNumWidth = typeof width === 'number' && !isNaN(width);
+  const isNumHeight = typeof height === 'number' && !isNaN(height);
+  if (!isNumWidth) {
+    width = btnWidthNormal;
+  }
+  if (!isNumHeight) {
+    height = btnWidthNormal;
+  }
   const { width: btnWidth, height: btnHeight } = verticalSize({ vertical, width, height });
   const defaultSliderButtonThemeProps = {
     ...sliderButtonNormalThemeProps,
