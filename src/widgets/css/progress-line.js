@@ -50,13 +50,6 @@ export const getWrapFontSize = (props: Object) => {
   }
   return FontSize;
 };
-export const getEM = (props: Object) => {
-  const { size } = props;
-  if (isSmall(size)) {
-    return px2remcss(12);
-  }
-  return px2remcss(14);
-};
 
 export const handlePercent = (per: number) => {
   per = per - 0;
@@ -255,10 +248,8 @@ export const Icons = CSSComponent({
     },
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig = {} } = themeProps;
-      const { size, status } = propsConfig;
-      console.log('status', status);
-      console.log('color', getTextColor(status));
-      console.log('fontSize', getTextFont(propsConfig));
+      const { status } = propsConfig;
+
       return {
         color: getTextColor(status),
         fontSize: getTextFont(propsConfig),
