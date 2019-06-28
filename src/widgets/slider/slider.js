@@ -3,9 +3,6 @@
  * @flow
  * */
 import React, { Component } from 'react';
-import Icon from '../icon/index';
-import Theme from '../theme/index';
-import Widget from '../consts/index';
 import { getElementPosition } from '../utils';
 import { getMinAndMax, limit, limitToSet, sortable } from '../common/Math';
 import {
@@ -16,19 +13,12 @@ import {
   SliderBigBox,
   SliderBox,
   SliderWrapper,
-  Tiparrow,
   Tipinner,
   Tips,
   IconsInner,
 } from './styled';
 import { getChangeValue } from './utils';
-import {
-  iconStyles,
-  btnWidthNormal,
-  rangeHeightNormal,
-  rangeWidthNormal,
-} from './slider_public_size';
-import Widgets from '../consts';
+import { iconStyles, rangeHeightNormal } from './slider_public_size';
 import { getThemeProps } from './styledConfig';
 import { findDOMNode } from 'react-dom';
 import { deepMerge } from '@lugia/object-utils';
@@ -80,7 +70,7 @@ class Slider extends Component<TypeProps, TypeState> {
     SliderInnerLeft: number,
   };
   oldValue: Array<number>;
-
+  sliderHeight = rangeHeightNormal;
   constructor() {
     super();
     this.sliderRange = React.createRef();
@@ -371,7 +361,7 @@ class Slider extends Component<TypeProps, TypeState> {
     const { length } = node;
     const nodeWidths = [];
     const nodeHeights = [];
-    const rangeH = rangeHeightNormal - 1; //1 是mask的border
+    const rangeH = this.sliderHeight - 2; //1 是mask的border
     for (let i = 0; i < length; i++) {
       const sign = node[i].getAttribute('data-sign');
       if (sign === 'mask') {
@@ -482,10 +472,12 @@ class Slider extends Component<TypeProps, TypeState> {
           iconSize[index] = fontSize;
         }
         const sliderIcons = index === 0 ? 'IconsFirst' : 'IconsLast';
-        const { viewClass, theme } = this.props.getPartOfThemeHocProps(sliderIcons);
-        const { normal: { font: { fontSize: fontObjSize } = {}, fontSize } = {} } = theme[
-          viewClass
-        ];
+        const iconsThemeProps = this.props.getPartOfThemeProps(sliderIcons);
+        iconsThemeProps.themeState.hover = false;
+        iconsThemeProps.themeState.active = false;
+        const {
+          themeConfig: { normal: { font: { fontSize: fontObjSize } = {}, fontSize } = {} },
+        } = iconsThemeProps;
         const hasFontSize = fontSize || fontObjSize;
         if (hasFontSize) {
           newFontSize = hasFontSize;
@@ -501,13 +493,8 @@ class Slider extends Component<TypeProps, TypeState> {
           index,
         };
         iconsChildren.push(
-          <Icons
-            iconStyle={iconStyle}
-            value={value}
-            {...size}
-            themeProps={deepMerge({ themeConfig: theme[viewClass] })}
-          >
-            <IconsInner iconClass={icon.name} viewClass={viewClass} theme={theme} />
+          <Icons iconStyle={iconStyle} value={value} {...size} themeProps={iconsThemeProps}>
+            <IconsInner iconClass={icon.name} themeProps={iconsThemeProps} />
           </Icons>
         );
       });
@@ -515,14 +502,7 @@ class Slider extends Component<TypeProps, TypeState> {
 
     return { iconsChildren, levelPaddings, iconSize };
   }
-  //onMouseEnter={mouseenter(2)}
-  //           onMouseLeave={mouseleave}
-  sliderTrackOnMouseEnter = () => {
-    this.setState({ changeBackground: true, isInBall: true });
-  };
-  sliderTrackOnMouseLeave = () => {
-    this.setState({ changeBackground: false, isInBall: false });
-  };
+
   render() {
     const { background, tips = false, icons, vertical = false, disabled, getTheme } = this.props;
     const {
@@ -532,6 +512,7 @@ class Slider extends Component<TypeProps, TypeState> {
       buttonThemeProps: { sliderButtonThemeProps, width: btnWidth, height: btnHeight },
       sliderTrackThemeProps: { sliderTrackThemeProps, width: sliderWidth, height: sliderHeight },
     } = getThemeProps(this.props);
+    this.sliderHeight = sliderHeight;
     const {
       value,
       index,
@@ -648,18 +629,12 @@ class Slider extends Component<TypeProps, TypeState> {
               changeBackground: this.state.changeBackground,
             },
           })}
-          // onMouseDown={mousedown}
-          // onMouseUp={mouseup}
-          // onMouseEnter={mouseenter(i)}
-          // onMouseLeave={mouseleave}
+          onMouseDown={mousedown}
+          onMouseUp={mouseup}
+          onMouseEnter={mouseenter(i)}
+          onMouseLeave={mouseleave}
           {...size}
           key={i}
-          {...addMouseEvent(this, {
-            enter: mouseenter(i),
-            leave: mouseleave,
-            down: mousedown,
-            up: mouseup,
-          })}
         >
           {showTip && btnDisabled ? (
             <Tips themeProps={sliderTipsThemeProps}>
@@ -682,16 +657,11 @@ class Slider extends Component<TypeProps, TypeState> {
       dotHeights
     );
     const { themeProps } = this.props;
-    console.log(this.state);
     return (
       <SliderBigBox
         themeProps={sliderContainerThemeProps}
-        {...addMouseEvent(this, {
-          enter: this.sliderTrackOnMouseEnter,
-          leave: this.sliderTrackOnMouseLeave,
-          down: mousedown,
-          up: mouseup,
-        })}
+        onMouseDown={mousedown}
+        onMouseUp={mouseup}
       >
         <SliderBox
           {...size}
@@ -701,14 +671,7 @@ class Slider extends Component<TypeProps, TypeState> {
           sliderVerticalPaddings={sliderVerticalPaddings}
           onMouseDown={mousedown}
           onMouseUp={mouseup}
-          onMouseEnter={this.sliderTrackOnMouseEnter}
-          onMouseLeave={this.sliderTrackOnMouseLeave}
-          {...addMouseEvent(this, {
-            enter: this.sliderTrackOnMouseEnter,
-            leave: this.sliderTrackOnMouseLeave,
-            down: mousedown,
-            up: mouseup,
-          })}
+          {...addMouseEvent(this)}
         >
           <SliderWrapper
             themeProps={sliderTrackThemeProps}
@@ -721,12 +684,6 @@ class Slider extends Component<TypeProps, TypeState> {
             <SliderInner
               themeProps={deepMerge(sliderPassedWayThemeProps, { propsConfig: size })}
               getTheme={getTheme}
-              {...addMouseEvent(this, {
-                enter: this.sliderTrackOnMouseEnter,
-                leave: this.sliderTrackOnMouseLeave,
-                down: mousedown,
-                up: mouseup,
-              })}
             />
             {children}
           </SliderWrapper>

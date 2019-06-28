@@ -43,7 +43,7 @@ export default class Sw extends Component<any, TypeState> {
           <Theme
             config={{
               [Widgets.Switch]: {
-                SwitchOpen: {
+                Switch_SwitchOpen: {
                   normal: {
                     width: 150,
                     height: 40,
@@ -60,7 +60,7 @@ export default class Sw extends Component<any, TypeState> {
                     },
                   },
                 },
-                SwitchClosed: {
+                Switch_SwitchClosed: {
                   normal: {
                     width: 150,
                     height: 40,
