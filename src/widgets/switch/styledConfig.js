@@ -70,7 +70,8 @@ export function getThemeProps(props, value) {
   const closed = getPartOfThemeProps(switchclosedName);
   const opencolor = getBackground(props, true);
   const closedcolor = getBackground(props, false);
-
+  const { getInternalThemeProps } = props;
+  const nessecaryProps = (getInternalThemeProps && getInternalThemeProps()) || {};
   const defaultOpenThemeProps = {
     normal: {
       width: wrapWidth,
@@ -164,15 +165,18 @@ export function getThemeProps(props, value) {
     switchThemeProps: deepMerge(
       { themeConfig: switchThemeProps },
       { themeState: { disabled: disabled || loading } },
-      { propsConfig: { textPosition, textBox } }
+      { propsConfig: { textPosition, textBox } },
+      nessecaryProps
     ),
     childrenThemeProps: deepMerge(
       childrenThemeProps,
       { themeState: { disabled: disabled || loading } },
-      { propsConfig: { switchButtonPosition } }
+      { propsConfig: { switchButtonPosition } },
+      nessecaryProps
     ),
     SwitchContainerThemeProps: deepMerge(getPartOfThemeProps('SwitchContainer'), {
       themeState: { disabled: disabled || loading },
+      nessecaryProps,
     }),
   };
 }
