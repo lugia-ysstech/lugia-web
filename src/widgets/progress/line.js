@@ -33,7 +33,13 @@ export const getText = (inside?: boolean, props: Object) => {
       ? 'ProgressCircleSuccessIcon'
       : 'ProgressDashboardSuccessIcon'
   );
-  const ErrorIconTheme = getPartOfThemeProps('ProgressLineErrorIcon');
+  const ErrorIconTheme = getPartOfThemeProps(
+    type === 'line'
+      ? 'ProgressLineErrorIcon'
+      : type === 'circle'
+      ? 'ProgressCircleErrorIcon'
+      : 'ProgressDashboardErrorIcon'
+  );
   SuccessIconTheme.propsConfig = { size, status, type };
   ErrorIconTheme.propsConfig = { size, status, type };
 
@@ -108,7 +114,7 @@ export default class extends React.Component<ProgressProps, ProgressState> {
       status: progressStatus,
       size,
     };
-    console.log(ProgressInnerLineTheme);
+
     return (
       <Wrap themeProps={ProgressWrapTheme} size={size} type={type}>
         <ProgressLine
@@ -150,7 +156,7 @@ export default class extends React.Component<ProgressProps, ProgressState> {
     const {
       percent = 0,
       format,
-      status,
+      status = 'default',
       size = 'default',
       type = 'line',
       getPartOfThemeProps,

@@ -140,6 +140,18 @@ export default class ProgressDemo extends React.Component<any, any> {
             color: 'red',
           },
         },
+        ProgressCircleSuccessIcon: {
+          normal: {
+            fontSize: 16,
+            color: 'red',
+          },
+        },
+        ProgressCircleErrorIcon: {
+          normal: {
+            fontSize: 20,
+            color: 'green',
+          },
+        },
       },
     };
     const DashboardView = {
@@ -151,6 +163,18 @@ export default class ProgressDemo extends React.Component<any, any> {
               weight: 500,
             },
             color: 'red',
+          },
+        },
+        ProgressDashboardSuccessIcon: {
+          normal: {
+            fontSize: 16,
+            color: 'red',
+          },
+        },
+        ProgressDashboardErrorIcon: {
+          normal: {
+            fontSize: 20,
+            color: 'green',
           },
         },
       },
@@ -272,6 +296,12 @@ export default class ProgressDemo extends React.Component<any, any> {
           <Theme config={CircleView}>
             <Progress type="circle" percent={0} />
           </Theme>
+          <Theme config={CircleView}>
+            <Progress type="circle" status="error" percent={0} />
+          </Theme>
+          <Theme config={CircleView}>
+            <Progress type="circle" percent={100} />
+          </Theme>
           <h1>circle</h1>
           <p>type="circle" props: percent={0}</p>
           <br />
@@ -332,6 +362,12 @@ export default class ProgressDemo extends React.Component<any, any> {
             <h1>dashboard</h1>
             <Theme config={DashboardView}>
               <Progress type="dashboard" percent={50} />
+            </Theme>
+            <Theme config={DashboardView}>
+              <Progress type="dashboard" status="error" percent={0} />
+            </Theme>
+            <Theme config={DashboardView}>
+              <Progress type="dashboard" percent={100} />
             </Theme>
             <p>type="dashboard" props: percent={50}</p>
             <br />
