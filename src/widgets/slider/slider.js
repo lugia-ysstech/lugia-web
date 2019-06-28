@@ -32,6 +32,8 @@ import Widgets from '../consts';
 import { getThemeProps } from './styledConfig';
 import { findDOMNode } from 'react-dom';
 import { deepMerge } from '@lugia/object-utils';
+import { addMouseEvent } from '@lugia/theme-hoc';
+
 type TypeProps = {
   maxValue?: number,
   minValue?: number,
@@ -513,6 +515,14 @@ class Slider extends Component<TypeProps, TypeState> {
 
     return { iconsChildren, levelPaddings, iconSize };
   }
+  //onMouseEnter={mouseenter(2)}
+  //           onMouseLeave={mouseleave}
+  sliderTrackOnMouseEnter = () => {
+    this.setState({ changeBackground: true, isInBall: true });
+  };
+  sliderTrackOnMouseLeave = () => {
+    this.setState({ changeBackground: false, isInBall: false });
+  };
   render() {
     const { background, tips = false, icons, vertical = false, disabled, getTheme } = this.props;
     const {
@@ -638,12 +648,18 @@ class Slider extends Component<TypeProps, TypeState> {
               changeBackground: this.state.changeBackground,
             },
           })}
-          onMouseDown={mousedown}
-          onMouseUp={mouseup}
-          onMouseEnter={mouseenter(i)}
-          onMouseLeave={mouseleave}
+          // onMouseDown={mousedown}
+          // onMouseUp={mouseup}
+          // onMouseEnter={mouseenter(i)}
+          // onMouseLeave={mouseleave}
           {...size}
           key={i}
+          {...addMouseEvent(this, {
+            enter: mouseenter(i),
+            leave: mouseleave,
+            down: mousedown,
+            up: mouseup,
+          })}
         >
           {showTip && btnDisabled ? (
             <Tips themeProps={sliderTipsThemeProps}>
@@ -666,8 +682,17 @@ class Slider extends Component<TypeProps, TypeState> {
       dotHeights
     );
     const { themeProps } = this.props;
+    console.log(this.state);
     return (
-      <SliderBigBox themeProps={sliderContainerThemeProps}>
+      <SliderBigBox
+        themeProps={sliderContainerThemeProps}
+        {...addMouseEvent(this, {
+          enter: this.sliderTrackOnMouseEnter,
+          leave: this.sliderTrackOnMouseLeave,
+          down: mousedown,
+          up: mouseup,
+        })}
+      >
         <SliderBox
           {...size}
           themeProps={themeProps}
@@ -676,6 +701,14 @@ class Slider extends Component<TypeProps, TypeState> {
           sliderVerticalPaddings={sliderVerticalPaddings}
           onMouseDown={mousedown}
           onMouseUp={mouseup}
+          onMouseEnter={this.sliderTrackOnMouseEnter}
+          onMouseLeave={this.sliderTrackOnMouseLeave}
+          {...addMouseEvent(this, {
+            enter: this.sliderTrackOnMouseEnter,
+            leave: this.sliderTrackOnMouseLeave,
+            down: mousedown,
+            up: mouseup,
+          })}
         >
           <SliderWrapper
             themeProps={sliderTrackThemeProps}
@@ -688,6 +721,12 @@ class Slider extends Component<TypeProps, TypeState> {
             <SliderInner
               themeProps={deepMerge(sliderPassedWayThemeProps, { propsConfig: size })}
               getTheme={getTheme}
+              {...addMouseEvent(this, {
+                enter: this.sliderTrackOnMouseEnter,
+                leave: this.sliderTrackOnMouseLeave,
+                down: mousedown,
+                up: mouseup,
+              })}
             />
             {children}
           </SliderWrapper>
