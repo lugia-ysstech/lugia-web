@@ -673,7 +673,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
     if (!input) {
       return;
     }
-    const element = findDOMNode(input.current).querySelector('input');
+    const element = findDOMNode(input.current);
     if (element) {
       this.setState({
         inputElement: element,
@@ -887,7 +887,9 @@ class GetElement extends React.Component<DefProps, StateProps> {
   handleClickToUpload = () => {
     const { inputElement } = this.state;
     const { disabled } = this.props;
+    console.log('inputElement', inputElement, disabled);
     if (disabled || !inputElement) return;
+
     inputElement.click();
   };
   handleClickToSubmit = () => {
