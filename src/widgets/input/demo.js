@@ -116,13 +116,19 @@ const Wrapper = styled.div`
 const InputDemo = () => {
   const register = {
     [Widget.Input]: {
-      normal: { width: 300, height: 40, margin: { top: 20 } },
-      hover: { background: { backgroundColor: 'white' } },
-      disabled: { border: { color: 'blue', width: 1, style: 'solid' } },
+      Input: {
+        normal: {
+          width: 300,
+          height: 40,
+          margin: { top: 20 },
+        },
+
+        disabled: { background: { color: 'gray' } },
+      },
+      InputSuffix: { normal: { color: 'red', fontSize: 12 } },
+      InputPrefix: { normal: { color: 'pink', fontSize: 16 } },
+      ClearButton: { normal: { color: 'red', fontSize: 14 } },
     },
-    InputSuffix: { normal: { color: 'red' } },
-    InputPrefix: { normal: { color: 'pink' } },
-    clearButton: { normal: { color: 'blue' } },
   };
   const onChange = (cmpName: string) => (value: any) => {};
   const formatter = value => {
