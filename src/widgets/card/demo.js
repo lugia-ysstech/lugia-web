@@ -110,12 +110,12 @@ export default () => {
           width: 200,
           height: 350,
           opacity: 0.8,
-          margin: { top: 20 },
-          padding: { top: 10 },
-          background: {
-            color: 'gray',
-          },
-          color: 'red',
+        },
+      },
+      CardImageContainer: {
+        normal: {
+          width: 200,
+          height: 150,
         },
       },
       CardImage: {
@@ -154,6 +154,12 @@ export default () => {
           height: 200,
         },
       },
+      CardImageContainer: {
+        normal: {
+          width: 160,
+          height: 100,
+        },
+      },
       CardImage: {
         normal: {
           width: 160,
@@ -168,6 +174,12 @@ export default () => {
         normal: {
           width: 160,
           height: 220,
+        },
+      },
+      CardAvatarContainer: {
+        normal: {
+          width: 160,
+          height: 100,
         },
       },
     },

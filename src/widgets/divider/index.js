@@ -20,7 +20,7 @@ const { px2remcss } = units;
 const { borderDisableColor } = colorsFunc();
 const Divider = CSSComponent({
   tag: 'div',
-  className: 'divider',
+  className: 'HorizontalDivider',
   normal: {
     selectNames: [['width'], ['height'], ['opacity'], ['margin'], ['padding'], ['boxShadow']],
     getCSS(themeMeta: Object, themeProps: Object) {
@@ -78,7 +78,7 @@ const Divider = CSSComponent({
 });
 const VerticalDivider = StaticComponent({
   tag: 'div',
-  className: 'verticalDivider',
+  className: 'VerticalDivider',
   normal: {
     selectNames: [
       ['width'],
@@ -102,7 +102,7 @@ const VerticalDivider = StaticComponent({
 });
 const ChildText = StaticComponent({
   tag: 'span',
-  className: 'dividerChildText',
+  className: 'DividerChildText',
   normal: {
     selectNames: [],
   },

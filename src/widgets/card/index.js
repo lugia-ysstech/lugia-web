@@ -80,11 +80,11 @@ const Content = CSSComponent({
       ['opacity'],
       ['color'],
     ],
-    getCSS(themeMeta: Object, themeProps: Object) {
+    getThemeMeta(themeMeta: Object, themeProps: Object) {
       const { width, height } = themeMeta;
       const { type, imageOrientation } = themeProps;
       const paddingBottom = 12;
-      const paddingTop = 26;
+      const paddingTop = 16;
       const paddingLeft =
         type === 'tip'
           ? 30
@@ -92,14 +92,15 @@ const Content = CSSComponent({
           ? 0
           : 10;
 
-      const theWidth = width ? px2remcss(width - paddingLeft) : '';
-      const theHeight = height ? px2remcss(height - paddingTop - paddingBottom) : '';
-      return `width:${theWidth};height:${theHeight};padding-left:${px2remcss(
-        paddingLeft
-      )};padding-right:${px2remcss(paddingLeft)};`;
+      const theWidth = width ? width - paddingLeft : '';
+      const theHeight = height ? height - paddingTop - paddingBottom : '';
+      return {
+        width: theWidth,
+        height: theHeight,
+        padding: { left: paddingLeft, right: paddingLeft, top: paddingTop },
+      };
     },
     defaultTheme: {
-      padding: { top: 16 },
       width: '100%',
     },
   },
@@ -117,7 +118,6 @@ const Image = ThemeHoc(
         ['width'],
         ['height'],
         ['background'],
-        ['borderRadius'],
         ['border'],
         ['margin'],
         ['padding'],
@@ -134,13 +134,12 @@ const Image = ThemeHoc(
 );
 const ImageContainer = CSSComponent({
   tag: 'div',
-  className: 'cardImageContainer',
+  className: 'CardImageContainer',
   normal: {
     selectNames: [
       ['width'],
       ['height'],
       ['background'],
-      ['borderRadius'],
       ['border'],
       ['margin'],
       ['padding'],
@@ -172,13 +171,12 @@ const ImageContainer = CSSComponent({
 
 const AvatarContainer = CSSComponent({
   tag: 'span',
-  className: 'cardAvatarContainer',
+  className: 'CardAvatarContainer',
   normal: {
     selectNames: [
       ['width'],
       ['height'],
       ['background'],
-      ['borderRadius'],
       ['border'],
       ['margin'],
       ['padding'],
@@ -211,29 +209,36 @@ const AvatarContainer = CSSComponent({
 const CardAvatar: Object = ThemeHoc(
   CSSComponent({
     extend: Avatar,
-    className: 'cardAvatar',
+    className: 'CardAvatar',
     normal: {
       selectNames: [
         ['width'],
         ['height'],
-        ['background'],
-        ['borderRadius'],
         ['border'],
         ['margin'],
         ['padding'],
         ['boxShadow'],
         ['opacity'],
       ],
-      getCSS(themeMeta: Object, themeProps: Object) {
+      getThemeMeta(themeMeta: Object, themeProps: Object) {
         const { imageOrientation } = themeProps;
-        const left = imageOrientation === 'horizontal' ? px2remcss(20) : 0;
-        return `padding: ${px2remcss(20)}  ${left};`;
+        const left = imageOrientation === 'horizontal' ? 20 : 0;
+        return {
+          padding: {
+            top: 20,
+            left,
+            right: left,
+            bottom: 20,
+          },
+        };
+      },
+      defaultTheme: {
+        width: 70,
+        height: 70,
       },
     },
     css: css`
       border-radius: 50%;
-      width: ${px2remcss(70)};
-      height: ${px2remcss(70)};
       background-color: transparent;
     `,
   }),
@@ -242,20 +247,19 @@ const CardAvatar: Object = ThemeHoc(
 
 const BaseText = CSSComponent({
   tag: 'div',
-  className: 'cardBaseText',
+  className: 'CardBaseText',
   normal: {
     selectNames: [
       ['width'],
       ['height'],
       ['background'],
-      ['borderRadius'],
       ['border'],
       ['margin'],
       ['padding'],
       ['boxShadow'],
       ['opacity'],
     ],
-    getCSS(themeMeta: Object, themeProps: Object) {
+    getThemeMeta(themeMeta: Object, themeProps: Object) {
       const { imageOrientation, type } = themeProps;
       const padding =
         type === 'tip'
@@ -263,7 +267,12 @@ const BaseText = CSSComponent({
           : (type === 'avatar' && imageOrientation === 'vertical') || type === 'combo'
           ? 0
           : 10;
-      return `padding-left:${px2remcss(padding)};padding-right:${px2remcss(padding)};`;
+      return {
+        padding: {
+          left: padding,
+          right: padding,
+        },
+      };
     },
   },
   css: css`
@@ -272,7 +281,7 @@ const BaseText = CSSComponent({
 });
 const Title = CSSComponent({
   extend: BaseText,
-  className: 'cardTitle',
+  className: 'CardTitle',
   normal: {
     selectNames: [
       ['width'],
@@ -282,36 +291,42 @@ const Title = CSSComponent({
       ['background'],
       ['margin'],
       ['padding'],
+      ['fontSize'],
     ],
-    getStyle(themeMeta: Object, themeProps: Object) {
+    getThemeMeta(themeMeta: Object, themeProps: Object) {
+      const { propsConfig } = themeProps;
+      const { type } = propsConfig;
+      const weight = type === 'tip' ? 700 : 500;
+      return {
+        font: {
+          weight,
+        },
+      };
+    },
+    getCSS(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
       const { imageOrientation, type } = propsConfig;
       const textAlign = type === 'avatar' && imageOrientation === 'vertical' ? 'center' : '';
       const flexDirection = imageOrientation === 'vertical' ? 'column' : 'row';
-      const weight = type === 'tip' ? 700 : 500;
-      const style = {};
-      style.textAlign = textAlign;
-      style.fontWeight = weight;
-      style.flexDirection = flexDirection;
-      return style;
+      return `text-align:${textAlign};flex-direction:${flexDirection}`;
     },
     defaultTheme: {
       padding: {
-        bottom: px2remcss(8),
+        bottom: 8,
       },
+      fontSize: 16,
     },
   },
   css: css`
     display: inline-block;
     flex: 1;
-    font-size: 1.6rem;
     overflow: hidden;
     white-space: nowrap;
   `,
 });
 const TitleTipLine = StaticComponent({
   tag: 'div',
-  className: 'cardTitleTipLine',
+  className: 'CardTitleTipLine',
   normal: {
     selectNames: [],
   },
@@ -329,27 +344,32 @@ const Description = CSSComponent({
   extend: BaseText,
   className: 'cardDescription',
   normal: {
-    selectNames: [['width'], ['height'], ['color'], ['font']],
+    selectNames: [['width'], ['height'], ['color'], ['font'], ['fontSize']],
+    defaultTheme: {
+      fontSize: 14,
+      color: darkGreyColor,
+      padding: {
+        top: 4,
+      },
+    },
   },
-  css: css`
-    font-size: 1.4rem;
-    padding-top: ${px2remcss(4)};
-    color: ${darkGreyColor};
-  `,
 });
 const Operation = CSSComponent({
   tag: 'div',
-  className: 'cardOperation',
+  className: 'CardOperation',
   normal: {
     selectNames: [['width'], ['height'], ['color'], ['font'], ['position']],
+    defaultTheme: {
+      font: {
+        weight: 400,
+        size: 14,
+      },
+      position: {
+        right: 20,
+        top: 16,
+      },
+    },
   },
-  css: css`
-    position: absolute;
-    font-size: 1.4rem;
-    font-weight: 400;
-    right: ${px2remcss(20)};
-    top: ${px2remcss(16)};
-  `,
 });
 
 class Card extends React.Component<CardProps, CardState> {
@@ -436,19 +456,28 @@ class Card extends React.Component<CardProps, CardState> {
   getImageContainer() {
     const { type, imageOrientation } = this.props;
 
-    const theThemeProps = addPropsConfig(this.props.getPartOfThemeProps('CardContainer'), {
-      imageOrientation,
-    });
+    const avatarContainerThemeProps = addPropsConfig(
+      this.props.getPartOfThemeProps('CardAvatarContainer'),
+      {
+        imageOrientation,
+      }
+    );
+    const imageContainerThemeProps = addPropsConfig(
+      this.props.getPartOfThemeProps('CardImageContainer'),
+      {
+        imageOrientation,
+      }
+    );
 
     if (type === 'avatar')
       return (
-        <AvatarContainer themeProps={theThemeProps} imageOrientation={imageOrientation}>
+        <AvatarContainer themeProps={avatarContainerThemeProps} imageOrientation={imageOrientation}>
           {this.getAvatar()}
         </AvatarContainer>
       );
     if (type === 'image')
       return (
-        <ImageContainer themeProps={theThemeProps} imageOrientation={imageOrientation}>
+        <ImageContainer themeProps={imageContainerThemeProps} imageOrientation={imageOrientation}>
           {this.getImage()}
         </ImageContainer>
       );
@@ -467,7 +496,7 @@ class Card extends React.Component<CardProps, CardState> {
         const titleThemeProps = this.props.getPartOfThemeProps('CardTitle');
         return title ? (
           <Title type={type} themeProps={titleThemeProps}>
-            {title}{' '}
+            {title}
           </Title>
         ) : null;
       case 'description':
