@@ -77,5 +77,48 @@
       "bottomLeft"
     ]
   },
-  "category": ["数据展示"]
+  "category": ["数据展示"],
+  "designInfo": {
+    "ToolTipConfig": {
+      "sequence": 1,
+      "title": "文字提示",
+      "desc": "文字提示",
+      "theme": {
+        "TooltipContainer": {
+          "name": "文字提示框外框部分",
+          "desc": "文字提示框外框部分",
+          "normal": [["opacity"], ["background"], ["width"], ["height"], ["margin"], ["padding"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
+        },
+        "TooltipMessage": {
+          "name": "文字提示信息文字部分",
+          "desc": "文字提示信息文字部分",
+          "normal": [["fontSize"], ["font"], ["color"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
+        }
+      }
+    }
+  },
+  "theme": {
+    "TooltipContainer": {
+      "name": "文字提示框外框部分",
+      "desc": "文字提示框外框部分",
+      "normal": [["opacity"], ["background"], ["width"], ["height"], ["margin"], ["padding"]],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
+    },
+    "TooltipMessage": {
+      "name": "文字提示信息文字部分",
+      "desc": "文字提示信息文字部分",
+      "normal": [["fontSize"], ["font"], ["color"]],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
+    }
+  }
 }
