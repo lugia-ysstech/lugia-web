@@ -191,5 +191,160 @@
       "event": "SyntheticEvent"
     }
   },
-  "category": ["数据录入"]
+  "category": ["数据录入"],
+  "designInfo": {
+    "NumberInputThemeConfig": {
+      "sequence": 1,
+      "title": "数字输入框",
+      "desc": "数字输入框",
+      "theme": {
+        "Input": {
+          "name": "数字输入框中输入框部分",
+          "desc": "数字输入框中输入框部分",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["fontSize"],
+            ["font"],
+            ["color"],
+            ["padding"],
+            ["background"],
+            ["border"],
+            ["cursor"],
+            ["margin"],
+            ["padding"],
+            ["opacity"]
+          ],
+          "hover": [["font"], ["color"], ["background"], ["border"], ["cursor"]],
+          "clicked": [["font"], ["color"], ["background"], ["border"], ["cursor"]],
+          "disabled": [["font"], ["color"], ["background"], ["border"], ["cursor"]]
+        },
+        "ArrowIconContainer": {
+          "name": "数字输入框步长图标包裹框",
+          "desc": "数字输入框步长图标包裹框",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["fontSize"],
+            ["font"],
+            ["color"],
+            ["background"],
+            ["cursor"],
+            ["margin"],
+            ["padding"],
+            ["opacity"]
+          ],
+          "hover": [
+            ["width"],
+            ["height"],
+            ["font"],
+            ["color"],
+            ["background"],
+            ["cursor"],
+            ["opacity"]
+          ],
+          "clicked": [
+            ["width"],
+            ["height"],
+            ["font"],
+            ["color"],
+            ["background"],
+            ["cursor"],
+            ["opacity"]
+          ],
+          "disabled": [
+            ["width"],
+            ["height"],
+            ["font"],
+            ["color"],
+            ["background"],
+            ["cursor"],
+            ["opacity"]
+          ]
+        },
+        "InputArrowIcon": {
+          "name": "数字输入框步长图标",
+          "desc": "数字输入框步长图标",
+          "normal": [["fontSize"], ["font"], ["color"], ["background"], ["cursor"], ["opacity"]],
+          "hover": [["fontSize"], ["font"], ["color"], ["background"], ["cursor"], ["opacity"]],
+          "active": [["fontSize"], ["font"], ["color"], ["background"], ["cursor"], ["opacity"]],
+          "disabled": [["fontSize"], ["font"], ["color"], ["background"], ["cursor"], ["opacity"]]
+        }
+      }
+    }
+  },
+  "theme": {
+    "Input": {
+      "name": "数字输入框中输入框部分",
+      "desc": "数字输入框中输入框部分",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["fontSize"],
+        ["font"],
+        ["color"],
+        ["padding"],
+        ["background"],
+        ["border"],
+        ["cursor"],
+        ["margin"],
+        ["padding"],
+        ["opacity"]
+      ],
+      "hover": [["font"], ["color"], ["background"], ["border"], ["cursor"]],
+      "clicked": [["font"], ["color"], ["background"], ["border"], ["cursor"]],
+      "disabled": [["font"], ["color"], ["background"], ["border"], ["cursor"]]
+    },
+    "ArrowIconContainer": {
+      "name": "数字输入框步长图标包裹框",
+      "desc": "数字输入框步长图标包裹框",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["fontSize"],
+        ["font"],
+        ["color"],
+        ["background"],
+        ["cursor"],
+        ["margin"],
+        ["padding"],
+        ["opacity"]
+      ],
+      "hover": [
+        ["width"],
+        ["height"],
+        ["font"],
+        ["color"],
+        ["background"],
+        ["cursor"],
+        ["opacity"]
+      ],
+      "clicked": [
+        ["width"],
+        ["height"],
+        ["font"],
+        ["color"],
+        ["background"],
+        ["cursor"],
+        ["opacity"]
+      ],
+      "disabled": [
+        ["width"],
+        ["height"],
+        ["font"],
+        ["color"],
+        ["background"],
+        ["cursor"],
+        ["opacity"]
+      ]
+    },
+    "InputArrowIcon": {
+      "name": "数字输入框步长图标",
+      "desc": "数字输入框步长图标",
+      "normal": [["fontSize"], ["font"], ["color"], ["background"], ["cursor"], ["opacity"]],
+      "hover": [["fontSize"], ["font"], ["color"], ["background"], ["cursor"], ["opacity"]],
+      "active": [["fontSize"], ["font"], ["color"], ["background"], ["cursor"], ["opacity"]],
+      "disabled": [["fontSize"], ["font"], ["color"], ["background"], ["cursor"], ["opacity"]]
+    }
+  }
 }
