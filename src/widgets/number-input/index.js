@@ -28,7 +28,7 @@ const { px2remcss } = units;
 const ArrowIcon = ThemeHoc(
   CSSComponent({
     extend: Icon,
-    className: 'numberInputArrowIcon',
+    className: 'NumberInputArrowIcon',
     normal: {
       selectNames: [['cursor'], ['color'], ['fontSize'], ['opacity']],
       defaultTheme: {
@@ -132,7 +132,7 @@ const ArrowIconContainer = ThemeHoc(
 
 const StepButton = CSSComponent({
   tag: 'span',
-  className: 'numberInputStepButton',
+  className: 'NumberInputStepButton',
   normal: {
     selectNames: [['cursor']],
     defaultTheme: {
@@ -153,7 +153,7 @@ const StepButton = CSSComponent({
 const MinusButton = ThemeHoc(
   CSSComponent({
     extend: StepButton,
-    className: 'numberInputMinusButton',
+    className: 'NumberInputMinusButton',
     normal: {
       selectNames: [],
     },
@@ -182,13 +182,13 @@ const MinusButton = ThemeHoc(
       height: 50%;
     `,
   }),
-  'numberInputMinusButton',
+  'NumberInputMinusButton',
   { hover: true, active: true }
 );
 const PlusButton = ThemeHoc(
   CSSComponent({
     extend: StepButton,
-    className: 'numberInputPlusButton',
+    className: 'NumberInputPlusButton',
     normal: {
       selectNames: [],
     },
@@ -216,7 +216,7 @@ const PlusButton = ThemeHoc(
       height: 50%;
     `,
   }),
-  'numberInputPlusButton',
+  'NumberInputPlusButton',
   { hover: true, active: true }
 );
 
@@ -224,7 +224,7 @@ PlusButton.displayName = 'Plus';
 MinusButton.displayName = 'Minus';
 const InputContainer = CSSComponent({
   tag: 'div',
-  className: 'numberInputContainer',
+  className: 'NumberInputContainer',
   normal: {
     selectNames: [],
   },
