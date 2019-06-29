@@ -28,7 +28,7 @@ import { addPropsConfig } from '../avatar';
 
 const InputContainer = CSSComponent({
   tag: 'span',
-  className: 'amountInputContainer',
+  className: 'AmountInputContainer',
   normal: {
     selectNames: [['border'], ['margin'], ['padding']],
   },
@@ -46,14 +46,14 @@ const InputContainer = CSSComponent({
 
 const Title = CSSComponent({
   tag: 'span',
-  className: 'amountInputTitle',
+  className: 'AmountInputTitle',
   normal: {
-    selectNames: [['fontSize']],
+    selectNames: [['fontSize'], ['font'], ['color']],
   },
 });
 const AmountInputPrefix = CSSComponent({
   tag: 'span',
-  className: 'amountInputPrefix',
+  className: 'AmountInputPrefix',
   normal: {
     selectNames: [['fontSize'], ['color']],
   },
@@ -61,16 +61,16 @@ const AmountInputPrefix = CSSComponent({
 Title.displayName = 'toolTip_title';
 const InputTip = CSSComponent({
   extend: ToolTip,
-  className: 'amountInputTip',
+  className: 'AmountInputTip',
   normal: {
-    selectNames: [['opacity']],
-    getStyle(ThemeMeta: Object, ThemeProps: Object) {
+    selectNames: [['opacity'], ['background']],
+    getThemeMeta(ThemeMeta: Object, ThemeProps: Object) {
       const { propsConfig } = ThemeProps;
       const { value } = propsConfig;
-      const style = {};
       const opacity = value && value.length ? 1 : 0;
-      style.opacity = opacity;
-      return style;
+      return {
+        opacity,
+      };
     },
   },
 });
