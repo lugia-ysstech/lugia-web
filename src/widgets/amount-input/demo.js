@@ -43,12 +43,25 @@ export default () => {
             width: 400,
             height: 50,
             opacity: 0.8,
-            margin: { top: 20 },
           },
         },
       },
       AmountInputPrefix: { normal: { fontSize: 14, color: 'blue' } },
-      AmountTip: { normal: { background: { color: 'blue' } } },
+    },
+    [Widget.ToolTip]: {
+      TooltipContainer: {
+        normal: {
+          background: {
+            color: '#eee',
+          },
+        },
+      },
+      TooltipMessage: {
+        normal: {
+          color: '#4d63ff',
+          fontSize: 16,
+        },
+      },
     },
   };
   const onChange = (cmpName: string) => (value: any) => {};

@@ -63,7 +63,7 @@ const InputTip = CSSComponent({
   extend: ToolTip,
   className: 'AmountInputTip',
   normal: {
-    selectNames: [['opacity'], ['background']],
+    selectNames: [['opacity'], ['background'], ['width'], ['height']],
     getThemeMeta(ThemeMeta: Object, ThemeProps: Object) {
       const { propsConfig } = ThemeProps;
       const { value } = propsConfig;
@@ -229,9 +229,16 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
   };
   render() {
     const { value } = this.state;
-    const theThemeProps = addPropsConfig(this.props.getPartOfThemeProps('AmountTip'), { value });
+    const theThemeProps = addPropsConfig(this.props.getPartOfThemeProps('TooltipContainer'), {
+      value,
+    });
     return (
-      <InputTip title={this.getTitle()} action={'focus'} themeProps={theThemeProps}>
+      <InputTip
+        title={this.getTitle()}
+        action={'focus'}
+        placement={'topLeft'}
+        themeProps={theThemeProps}
+      >
         {this.getInputContainer()}
       </InputTip>
     );
@@ -254,9 +261,11 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
     } else {
       titleValue = amountPrefix + amountFormatter(value);
     }
+    const theThemeProps = this.props.getPartOfThemeProps('TooltipMessage');
+
     if (transform) {
       return (
-        <Title onClick={this.onTransform} themeProps={themeProps}>
+        <Title onClick={this.onTransform} themeProps={theThemeProps}>
           {titleValue}
         </Title>
       );

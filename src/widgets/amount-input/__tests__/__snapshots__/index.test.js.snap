@@ -16,7 +16,6 @@ exports[`AmountInputDemo Component JSON 1`] = `
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   outline: none;
-  border-radius: 0.4rem;
   width: 20rem;
   height: 3.2rem;
   cursor: text;
@@ -32,6 +31,10 @@ exports[`AmountInputDemo Component JSON 1`] = `
   border-right-width: 0.1rem;
   border-right-style: solid;
   border-right-color: #cccccc;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
 }
 
 .c5::-webkit-input-placeholder {
@@ -51,11 +54,25 @@ exports[`AmountInputDemo Component JSON 1`] = `
 }
 
 .c2 {
-  z-index: 0;
   position: relative;
   display: inline-block;
   outline: none;
-  border-radius: 0.4rem;
+  border-top-width: 0rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
 }
 
 .c4 {
@@ -63,7 +80,6 @@ exports[`AmountInputDemo Component JSON 1`] = `
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
-  z-index: 2;
   bottom: 50%;
   line-height: 1rem;
   font-size: 1.4em;
@@ -76,7 +92,6 @@ exports[`AmountInputDemo Component JSON 1`] = `
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
-  z-index: 2;
   bottom: 50%;
   line-height: 1rem;
   font-size: 1.4em;
@@ -89,7 +104,6 @@ exports[`AmountInputDemo Component JSON 1`] = `
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
-  z-index: 2;
   bottom: 50%;
   right: 1rem;
   color: #999999;
@@ -120,6 +134,10 @@ exports[`AmountInputDemo Component JSON 1`] = `
     >
       <div
         className="c2"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={Object {}}
       >
         <span
@@ -144,15 +162,12 @@ exports[`AmountInputDemo Component JSON 1`] = `
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
           placeholder="请填写金额"
           prefix={
             <CSSComponent
               themeProps={
                 Object {
+                  "onLugia": [Function],
                   "propsConfig": Object {},
                   "themeConfig": Object {},
                   "themeState": Object {
@@ -170,8 +185,10 @@ exports[`AmountInputDemo Component JSON 1`] = `
             Object {
               "color": "#333333",
               "height": "3.2rem",
+              "paddingBottom": "0rem",
               "paddingLeft": "3rem",
               "paddingRight": "3.5rem",
+              "paddingTop": "0rem",
             }
           }
           value=""
@@ -189,6 +206,10 @@ exports[`AmountInputDemo Component JSON 1`] = `
     >
       <div
         className="c2"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={Object {}}
       >
         <span
@@ -213,15 +234,12 @@ exports[`AmountInputDemo Component JSON 1`] = `
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
           placeholder="请填写金额"
           prefix={
             <CSSComponent
               themeProps={
                 Object {
+                  "onLugia": [Function],
                   "propsConfig": Object {},
                   "themeConfig": Object {},
                   "themeState": Object {
@@ -239,8 +257,10 @@ exports[`AmountInputDemo Component JSON 1`] = `
             Object {
               "color": "#333333",
               "height": "3.2rem",
+              "paddingBottom": "0rem",
               "paddingLeft": "3rem",
               "paddingRight": "3.5rem",
+              "paddingTop": "0rem",
             }
           }
           value=""
@@ -258,6 +278,10 @@ exports[`AmountInputDemo Component JSON 1`] = `
     >
       <div
         className="c2"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={Object {}}
       >
         <span
@@ -282,15 +306,12 @@ exports[`AmountInputDemo Component JSON 1`] = `
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
           placeholder=""
           prefix={
             <CSSComponent
               themeProps={
                 Object {
+                  "onLugia": [Function],
                   "propsConfig": Object {},
                   "themeConfig": Object {},
                   "themeState": Object {
@@ -307,6 +328,8 @@ exports[`AmountInputDemo Component JSON 1`] = `
           style={
             Object {
               "borderBottomColor": "#cccccc",
+              "borderBottomLeftRadius": "0.4rem",
+              "borderBottomRightRadius": "0.4rem",
               "borderBottomStyle": "solid",
               "borderBottomWidth": "0.1rem",
               "borderLeftColor": "#cccccc",
@@ -316,13 +339,17 @@ exports[`AmountInputDemo Component JSON 1`] = `
               "borderRightStyle": "solid",
               "borderRightWidth": "0.1rem",
               "borderTopColor": "#cccccc",
+              "borderTopLeftRadius": "0.4rem",
+              "borderTopRightRadius": "0.4rem",
               "borderTopStyle": "solid",
               "borderTopWidth": "0.1rem",
               "color": "#333333",
               "cursor": "not-allowed",
               "height": "3.2rem",
+              "paddingBottom": "0rem",
               "paddingLeft": "3rem",
               "paddingRight": "3.5rem",
+              "paddingTop": "0rem",
             }
           }
           value=""
@@ -344,10 +371,13 @@ exports[`AmountInputDemo Component JSON 1`] = `
     >
       <div
         className="c2"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={
           Object {
             "height": "5rem",
-            "margin": "2rem 0rem 0rem 0rem",
             "opacity": 0.8,
             "width": "40rem",
           }
@@ -380,17 +410,15 @@ exports[`AmountInputDemo Component JSON 1`] = `
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
           placeholder="请填写金额"
           prefix={
             <CSSComponent
               themeProps={
                 Object {
+                  "onLugia": [Function],
                   "propsConfig": Object {},
                   "themeConfig": Object {
+                    "__partName": "AmountInputPrefix",
                     "normal": Object {
                       "color": "blue",
                       "fontSize": 14,
@@ -410,9 +438,11 @@ exports[`AmountInputDemo Component JSON 1`] = `
           style={
             Object {
               "color": "#333333",
-              "height": 50,
+              "height": "5rem",
+              "paddingBottom": "0rem",
               "paddingLeft": "3rem",
               "paddingRight": "3.5rem",
+              "paddingTop": "0rem",
               "width": "40rem",
             }
           }
@@ -431,10 +461,13 @@ exports[`AmountInputDemo Component JSON 1`] = `
     >
       <div
         className="c2"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={
           Object {
             "height": "5rem",
-            "margin": "2rem 0rem 0rem 0rem",
             "opacity": 0.8,
             "width": "40rem",
           }
@@ -467,17 +500,15 @@ exports[`AmountInputDemo Component JSON 1`] = `
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
           placeholder="请填写金额"
           prefix={
             <CSSComponent
               themeProps={
                 Object {
+                  "onLugia": [Function],
                   "propsConfig": Object {},
                   "themeConfig": Object {
+                    "__partName": "AmountInputPrefix",
                     "normal": Object {
                       "color": "blue",
                       "fontSize": 14,
@@ -497,9 +528,11 @@ exports[`AmountInputDemo Component JSON 1`] = `
           style={
             Object {
               "color": "#333333",
-              "height": 50,
+              "height": "5rem",
+              "paddingBottom": "0rem",
               "paddingLeft": "3rem",
               "paddingRight": "3.5rem",
+              "paddingTop": "0rem",
               "width": "40rem",
             }
           }
@@ -518,10 +551,13 @@ exports[`AmountInputDemo Component JSON 1`] = `
     >
       <div
         className="c2"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={
           Object {
             "height": "5rem",
-            "margin": "2rem 0rem 0rem 0rem",
             "opacity": 0.8,
             "width": "40rem",
           }
@@ -554,17 +590,15 @@ exports[`AmountInputDemo Component JSON 1`] = `
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
           placeholder=""
           prefix={
             <CSSComponent
               themeProps={
                 Object {
+                  "onLugia": [Function],
                   "propsConfig": Object {},
                   "themeConfig": Object {
+                    "__partName": "AmountInputPrefix",
                     "normal": Object {
                       "color": "blue",
                       "fontSize": 14,
@@ -584,6 +618,8 @@ exports[`AmountInputDemo Component JSON 1`] = `
           style={
             Object {
               "borderBottomColor": "#cccccc",
+              "borderBottomLeftRadius": "0.4rem",
+              "borderBottomRightRadius": "0.4rem",
               "borderBottomStyle": "solid",
               "borderBottomWidth": "0.1rem",
               "borderLeftColor": "#cccccc",
@@ -593,13 +629,17 @@ exports[`AmountInputDemo Component JSON 1`] = `
               "borderRightStyle": "solid",
               "borderRightWidth": "0.1rem",
               "borderTopColor": "#cccccc",
+              "borderTopLeftRadius": "0.4rem",
+              "borderTopRightRadius": "0.4rem",
               "borderTopStyle": "solid",
               "borderTopWidth": "0.1rem",
               "color": "#333333",
               "cursor": "not-allowed",
-              "height": 50,
+              "height": "5rem",
+              "paddingBottom": "0rem",
               "paddingLeft": "3rem",
               "paddingRight": "3.5rem",
+              "paddingTop": "0rem",
               "width": "40rem",
             }
           }
@@ -622,6 +662,10 @@ exports[`AmountInputDemo Component JSON 1`] = `
     >
       <div
         className="c2"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={Object {}}
       >
         <span
@@ -646,14 +690,11 @@ exports[`AmountInputDemo Component JSON 1`] = `
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
           prefix={
             <CSSComponent
               themeProps={
                 Object {
+                  "onLugia": [Function],
                   "propsConfig": Object {},
                   "themeConfig": Object {},
                   "themeState": Object {
@@ -671,8 +712,10 @@ exports[`AmountInputDemo Component JSON 1`] = `
             Object {
               "color": "#333333",
               "height": "3.2rem",
+              "paddingBottom": "0rem",
               "paddingLeft": "3rem",
               "paddingRight": "3.5rem",
+              "paddingTop": "0rem",
             }
           }
           value=""
@@ -690,6 +733,10 @@ exports[`AmountInputDemo Component JSON 1`] = `
     >
       <div
         className="c2"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={Object {}}
       >
         <span
@@ -714,14 +761,11 @@ exports[`AmountInputDemo Component JSON 1`] = `
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
           prefix={
             <CSSComponent
               themeProps={
                 Object {
+                  "onLugia": [Function],
                   "propsConfig": Object {},
                   "themeConfig": Object {},
                   "themeState": Object {
@@ -739,8 +783,10 @@ exports[`AmountInputDemo Component JSON 1`] = `
             Object {
               "color": "#333333",
               "height": "3.2rem",
+              "paddingBottom": "0rem",
               "paddingLeft": "3rem",
               "paddingRight": "3.5rem",
+              "paddingTop": "0rem",
             }
           }
           value="123,456"
@@ -771,6 +817,10 @@ exports[`AmountInputDemo Component JSON 1`] = `
     >
       <div
         className="c2"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={Object {}}
       >
         <span
@@ -795,14 +845,11 @@ exports[`AmountInputDemo Component JSON 1`] = `
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
           prefix={
             <CSSComponent
               themeProps={
                 Object {
+                  "onLugia": [Function],
                   "propsConfig": Object {},
                   "themeConfig": Object {},
                   "themeState": Object {
@@ -820,8 +867,10 @@ exports[`AmountInputDemo Component JSON 1`] = `
             Object {
               "color": "#333333",
               "height": "3.2rem",
+              "paddingBottom": "0rem",
               "paddingLeft": "3rem",
               "paddingRight": "3.5rem",
+              "paddingTop": "0rem",
             }
           }
           value=""
@@ -839,6 +888,10 @@ exports[`AmountInputDemo Component JSON 1`] = `
     >
       <div
         className="c2"
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
         style={Object {}}
       >
         <span
@@ -863,14 +916,11 @@ exports[`AmountInputDemo Component JSON 1`] = `
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
           prefix={
             <CSSComponent
               themeProps={
                 Object {
+                  "onLugia": [Function],
                   "propsConfig": Object {},
                   "themeConfig": Object {},
                   "themeState": Object {
@@ -888,8 +938,10 @@ exports[`AmountInputDemo Component JSON 1`] = `
             Object {
               "color": "#333333",
               "height": "3.2rem",
+              "paddingBottom": "0rem",
               "paddingLeft": "3rem",
               "paddingRight": "3.5rem",
+              "paddingTop": "0rem",
             }
           }
           value=""
@@ -908,7 +960,6 @@ exports[`AmountInputDemo props: placeholder  1`] = `
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   outline: none;
-  border-radius: 0.4rem;
   width: 20rem;
   height: 3.2rem;
   cursor: text;
@@ -924,6 +975,10 @@ exports[`AmountInputDemo props: placeholder  1`] = `
   border-right-width: 0.1rem;
   border-right-style: solid;
   border-right-color: #cccccc;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
 }
 
 .c4::-webkit-input-placeholder {
@@ -943,11 +998,25 @@ exports[`AmountInputDemo props: placeholder  1`] = `
 }
 
 .c1 {
-  z-index: 0;
   position: relative;
   display: inline-block;
   outline: none;
-  border-radius: 0.4rem;
+  border-top-width: 0rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
 }
 
 .c3 {
@@ -955,7 +1024,6 @@ exports[`AmountInputDemo props: placeholder  1`] = `
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
-  z-index: 2;
   bottom: 50%;
   line-height: 1rem;
   font-size: 1.4em;
@@ -968,7 +1036,6 @@ exports[`AmountInputDemo props: placeholder  1`] = `
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
-  z-index: 2;
   bottom: 50%;
   line-height: 1rem;
   font-size: 1.4em;
@@ -989,6 +1056,10 @@ exports[`AmountInputDemo props: placeholder  1`] = `
 >
   <div
     className="c1"
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
     style={Object {}}
   >
     <span
@@ -1013,15 +1084,12 @@ exports[`AmountInputDemo props: placeholder  1`] = `
       onKeyDown={[Function]}
       onKeyPress={[Function]}
       onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
       placeholder="请填写内容"
       prefix={
         <CSSComponent
           themeProps={
             Object {
+              "onLugia": [Function],
               "propsConfig": Object {},
               "themeConfig": Object {},
               "themeState": Object {
@@ -1039,8 +1107,10 @@ exports[`AmountInputDemo props: placeholder  1`] = `
         Object {
           "color": "#333333",
           "height": "3.2rem",
+          "paddingBottom": "0rem",
           "paddingLeft": "3rem",
           "paddingRight": "3.5rem",
+          "paddingTop": "0rem",
         }
       }
       value=""
@@ -1057,7 +1127,6 @@ exports[`AmountInputDemo props: placeholder  2`] = `
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   outline: none;
-  border-radius: 0.4rem;
   width: 20rem;
   height: 3.2rem;
   cursor: text;
@@ -1073,6 +1142,10 @@ exports[`AmountInputDemo props: placeholder  2`] = `
   border-right-width: 0.1rem;
   border-right-style: solid;
   border-right-color: #cccccc;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
 }
 
 .c4::-webkit-input-placeholder {
@@ -1092,11 +1165,25 @@ exports[`AmountInputDemo props: placeholder  2`] = `
 }
 
 .c1 {
-  z-index: 0;
   position: relative;
   display: inline-block;
   outline: none;
-  border-radius: 0.4rem;
+  border-top-width: 0rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
 }
 
 .c3 {
@@ -1104,7 +1191,6 @@ exports[`AmountInputDemo props: placeholder  2`] = `
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
-  z-index: 2;
   bottom: 50%;
   line-height: 1rem;
   font-size: 1.4em;
@@ -1117,7 +1203,6 @@ exports[`AmountInputDemo props: placeholder  2`] = `
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
-  z-index: 2;
   bottom: 50%;
   line-height: 1rem;
   font-size: 1.4em;
@@ -1138,6 +1223,10 @@ exports[`AmountInputDemo props: placeholder  2`] = `
 >
   <div
     className="c1"
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
     style={Object {}}
   >
     <span
@@ -1162,15 +1251,12 @@ exports[`AmountInputDemo props: placeholder  2`] = `
       onKeyDown={[Function]}
       onKeyPress={[Function]}
       onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
       placeholder=""
       prefix={
         <CSSComponent
           themeProps={
             Object {
+              "onLugia": [Function],
               "propsConfig": Object {},
               "themeConfig": Object {},
               "themeState": Object {
@@ -1188,8 +1274,10 @@ exports[`AmountInputDemo props: placeholder  2`] = `
         Object {
           "color": "#333333",
           "height": "3.2rem",
+          "paddingBottom": "0rem",
           "paddingLeft": "3rem",
           "paddingRight": "3.5rem",
+          "paddingTop": "0rem",
         }
       }
       value=""
