@@ -72,7 +72,6 @@ export default ThemeProvider(
         iconType = 'info',
         getTheme,
         mask = true,
-        themeProps,
         getPartOfThemeProps,
       } = this.props;
       const { visible = false, closing, opening } = this.state;
