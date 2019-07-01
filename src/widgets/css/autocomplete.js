@@ -8,19 +8,6 @@ import CSSComponent, { css } from '@lugia/theme-css-hoc';
 
 const { disableColor, mediumGreyColor } = colorsFunc();
 
-// export const OldValueItem = styled.div`
-//   box-sizing: border-box;
-//   width: 100%;
-//   height: ${px2remcss(MenuItemHeight)};
-//   line-height: ${px2remcss(MenuItemHeight)};
-//   background: ${disableColor};
-//   color: ${mediumGreyColor};
-//   font-size: ${px2remcss(14)};
-//   position: relative;
-//   cursor: pointer;
-//   overflow: hidden;
-// `;
-
 export const OldValueItem = ThemeHoc(
   CSSComponent({
     tag: 'div',
@@ -45,7 +32,6 @@ export const OldValueItem = ThemeHoc(
       selectNames: [['color'], ['background'], ['opacity'], ['border']],
     },
     css: css`
-      /* box-sizing: border-box; */
       transition: all 0.3s;
       width: 100%;
       height: ${px2remcss(MenuItemHeight)};
