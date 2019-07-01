@@ -44,37 +44,36 @@ exports[`Modal css 1`] = `
   box-sizing: border-box;
   font-size: 1.4rem;
   position: relative;
-  width: 52rem;
   top: 10rem;
   margin: 0 auto;
   z-index: 99999;
+  width: 52rem;
 }
 
 .c6 {
   position: relative;
-  background-color: #fff;
   border: 0;
   border-radius: 0.4rem;
   box-shadow: 0 0.4rem 1.2rem rgba(0,0,0,0.15);
-  padding: 3rem 3rem 3rem 3rem;
-}
-
-.c17 {
-  position: relative;
+  width: 52rem;
+  box-shadow: 0px 0px 0px 0px;
   background-color: #fff;
-  border: 0;
-  border-radius: 0.4rem;
-  box-shadow: 0 0.4rem 1.2rem rgba(0,0,0,0.15);
-  padding: 5rem;
-}
-
-.c18 {
-  position: relative;
-  background-color: #fff;
-  border: 0;
-  border-radius: 0.4rem;
-  box-shadow: 0 0.4rem 1.2rem rgba(0,0,0,0.15);
-  padding: 3rem 10rem 3rem 10rem;
+  border-top-width: 0rem;
+  border-top-style: solid;
+  border-top-color: #ccc;
+  border-bottom-width: 0rem;
+  border-bottom-style: solid;
+  border-bottom-color: #ccc;
+  border-left-width: 0rem;
+  border-left-style: solid;
+  border-left-color: #ccc;
+  border-right-width: 0rem;
+  border-right-style: solid;
+  border-right-color: #ccc;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
 }
 
 .c7 {
@@ -89,17 +88,24 @@ exports[`Modal css 1`] = `
 }
 
 .c10 {
-  padding-bottom: 1.6rem;
   border-radius: 0.4rem 0.4rem 0 0;
-  background: #fff;
   color: #333333;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: 500;
+  padding-top: 0rem;
+  padding-bottom: 1.6rem;
+  padding-left: 0rem;
+  padding-right: 0rem;
 }
 
 .c11 {
-  color: #666666;
   word-wrap: break-word;
+  color: #666666;
+  font-size: 1.4rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-left: 0rem;
+  padding-right: 0rem;
 }
 
 .c12 {
@@ -320,7 +326,7 @@ exports[`Modal css 1`] = `
       className="c1"
       size="default"
     >
-      Modal
+      Theme Modal
     </span>
   </button>
   <div
@@ -335,9 +341,43 @@ exports[`Modal css 1`] = `
     >
       <div
         className="c5"
+        style={
+          Object {
+            "width": "80rem",
+          }
+        }
       >
         <div
           className="c6"
+          style={
+            Object {
+              "backgroundColor": "orange",
+              "borderBottomColor": "#4d63ff",
+              "borderBottomLeftRadius": "5rem",
+              "borderBottomRightRadius": "5rem",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "borderLeftColor": "#4d63ff",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": "0.1rem",
+              "borderRightColor": "#4d63ff",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.1rem",
+              "borderTopColor": "#4d63ff",
+              "borderTopLeftRadius": "5rem",
+              "borderTopRightRadius": "5rem",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.1rem",
+              "boxShadow": "1px 2px 2px 2px #e8e8e8",
+              "height": "50rem",
+              "opacity": 0.8,
+              "paddingBottom": "3rem",
+              "paddingLeft": "5rem",
+              "paddingRight": "3rem",
+              "paddingTop": "3rem",
+              "width": "80rem",
+            }
+          }
         >
           <div
             className="c7"
@@ -350,16 +390,43 @@ exports[`Modal css 1`] = `
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseUp={[Function]}
-              style={Object {}}
+              style={
+                Object {
+                  "color": "green",
+                  "fontSize": "1.8rem",
+                }
+              }
             />
           </div>
           <div
             className="c10"
+            style={
+              Object {
+                "color": "green",
+                "fontSize": "1.8rem",
+                "fontWeight": 500,
+                "paddingBottom": "3rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "3rem",
+                "paddingTop": "3rem",
+              }
+            }
           >
             这是标题！
           </div>
           <div
             className="c11"
+            style={
+              Object {
+                "color": "green",
+                "fontSize": "1.8rem",
+                "fontWeight": 500,
+                "paddingBottom": "3rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "3rem",
+                "paddingTop": "3rem",
+              }
+            }
           >
             这是内容！
           </div>
@@ -438,9 +505,18 @@ exports[`Modal css 1`] = `
     >
       <div
         className="c5"
+        style={Object {}}
       >
         <div
           className="c6"
+          style={
+            Object {
+              "paddingBottom": "3rem",
+              "paddingLeft": "3rem",
+              "paddingRight": "3rem",
+              "paddingTop": "3rem",
+            }
+          }
         >
           <div
             className="c7"
@@ -458,11 +534,127 @@ exports[`Modal css 1`] = `
           </div>
           <div
             className="c10"
+            style={Object {}}
           >
             这是标题！
           </div>
           <div
             className="c11"
+            style={Object {}}
+          >
+            这是内容！
+          </div>
+          <div
+            className="c12"
+          >
+            <button
+              className="c13"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              onMouseUp={[Function]}
+              size="default"
+              type="primary"
+            >
+              <span
+                className="c14"
+                size="default"
+                type="primary"
+              >
+                确定
+              </span>
+            </button>
+            <button
+              className="c15"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              onMouseUp={[Function]}
+              size="default"
+            >
+              <span
+                className="c1"
+                size="default"
+              >
+                取消
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <button
+    className="c0"
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    size="default"
+  >
+    <span
+      className="c1"
+      size="default"
+    >
+      Modal
+    </span>
+  </button>
+  <div
+    className="c2"
+  >
+    <div
+      className="c3"
+      onClick={[Function]}
+    />
+    <div
+      className="c4"
+    >
+      <div
+        className="c5"
+        style={Object {}}
+      >
+        <div
+          className="c6"
+          style={
+            Object {
+              "paddingBottom": "3rem",
+              "paddingLeft": "3rem",
+              "paddingRight": "3rem",
+              "paddingTop": "3rem",
+            }
+          }
+        >
+          <div
+            className="c7"
+            onClick={[Function]}
+          >
+            <i
+              className="lugia-icon-reminder_close c8  c9"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={Object {}}
+            />
+          </div>
+          <div
+            className="c10"
+            style={Object {}}
+          >
+            这是标题！
+          </div>
+          <div
+            className="c11"
+            style={Object {}}
           >
             <div>
               <button
@@ -494,9 +686,18 @@ exports[`Modal css 1`] = `
                 >
                   <div
                     className="c5"
+                    style={Object {}}
                   >
                     <div
                       className="c6"
+                      style={
+                        Object {
+                          "paddingBottom": "3rem",
+                          "paddingLeft": "3rem",
+                          "paddingRight": "3rem",
+                          "paddingTop": "3rem",
+                        }
+                      }
                     >
                       <div
                         className="c7"
@@ -514,11 +715,13 @@ exports[`Modal css 1`] = `
                       </div>
                       <div
                         className="c10"
+                        style={Object {}}
                       >
                         另一个对话框！
                       </div>
                       <div
                         className="c11"
+                        style={Object {}}
                       >
                         <div
                           style={
@@ -652,9 +855,18 @@ exports[`Modal css 1`] = `
     >
       <div
         className="c5"
+        style={Object {}}
       >
         <div
           className="c6"
+          style={
+            Object {
+              "paddingBottom": "3rem",
+              "paddingLeft": "3rem",
+              "paddingRight": "3rem",
+              "paddingTop": "3rem",
+            }
+          }
         >
           <div
             className="c7"
@@ -672,11 +884,13 @@ exports[`Modal css 1`] = `
           </div>
           <div
             className="c10"
+            style={Object {}}
           >
             这是标题！
           </div>
           <div
             className="c11"
+            style={Object {}}
           >
             这是内容！
           </div>
@@ -755,9 +969,18 @@ exports[`Modal css 1`] = `
     >
       <div
         className="c5"
+        style={Object {}}
       >
         <div
           className="c6"
+          style={
+            Object {
+              "paddingBottom": "3rem",
+              "paddingLeft": "3rem",
+              "paddingRight": "3rem",
+              "paddingTop": "3rem",
+            }
+          }
         >
           <div
             className="c7"
@@ -775,11 +998,13 @@ exports[`Modal css 1`] = `
           </div>
           <div
             className="c10"
+            style={Object {}}
           >
             这是标题！
           </div>
           <div
             className="c11"
+            style={Object {}}
           >
             这是内容！
           </div>
@@ -837,9 +1062,18 @@ exports[`Modal css 1`] = `
     >
       <div
         className="c5"
+        style={Object {}}
       >
         <div
-          className="c17"
+          className="c6"
+          style={
+            Object {
+              "paddingBottom": "3rem",
+              "paddingLeft": "3rem",
+              "paddingRight": "3rem",
+              "paddingTop": "3rem",
+            }
+          }
         >
           <div
             className="c7"
@@ -857,11 +1091,13 @@ exports[`Modal css 1`] = `
           </div>
           <div
             className="c10"
+            style={Object {}}
           >
             这是标题！
           </div>
           <div
             className="c11"
+            style={Object {}}
           >
             这是内容！
           </div>
@@ -940,9 +1176,18 @@ exports[`Modal css 1`] = `
     >
       <div
         className="c5"
+        style={Object {}}
       >
         <div
-          className="c18"
+          className="c6"
+          style={
+            Object {
+              "paddingBottom": "3rem",
+              "paddingLeft": "3rem",
+              "paddingRight": "3rem",
+              "paddingTop": "3rem",
+            }
+          }
         >
           <div
             className="c7"
@@ -960,11 +1205,13 @@ exports[`Modal css 1`] = `
           </div>
           <div
             className="c10"
+            style={Object {}}
           >
             这是标题！
           </div>
           <div
             className="c11"
+            style={Object {}}
           >
             这是内容！
           </div>
