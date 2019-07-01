@@ -5,6 +5,7 @@
  */
 import styled, { css, keyframes } from 'styled-components';
 import { getBorder } from '@lugia/theme-css-hoc';
+import ThemeHoc from '@lugia/theme-hoc';
 import colorsFunc from '../css/stateColor';
 import { px2remcss } from './units';
 import Icon from '../icon';
@@ -18,7 +19,7 @@ export type BackTopProps = {
   visibilityHeight?: number,
   children?: any,
   getPartOfThemeProps: Function,
-  getPartOfThemeConfig: Function,
+  getPartOfThemeHocProps: Function,
   target?: Function,
   themeProps: Object,
   icon?: string,
@@ -67,7 +68,7 @@ export const IconWrap: Object = styled(Icon)`
 
 const CommonBackTopStyle = CSSComponent({
   tag: 'div',
-  className: 'a',
+  className: 'common-back-top',
   css: css`
     border: 1px solid #e8e8e8;
     text-align: center;
@@ -120,20 +121,27 @@ export const IconBox = CSSComponent({
   `,
 });
 
-export const Icons = CSSComponent({
-  className: 'icon',
-  extend: Icon,
-  normal: {
-    selectNames: [['color'], ['fontSize'], ['margin'], ['padding']],
-  },
-  defaultTheme: {
-    margin: 0,
-    padding: 0,
-  },
-  css: css`
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  `,
-});
+export const Icons = ThemeHoc(
+  CSSComponent({
+    className: 'back-top-icon',
+    extend: Icon,
+    normal: {
+      selectNames: [['color'], ['fontSize'], ['margin'], ['padding']],
+      defaultTheme: {
+        margin: 0,
+        padding: 0,
+      },
+    },
+    hover: {
+      selectNames: [['color'], ['fontSize'], ['margin'], ['padding']],
+    },
+    css: css`
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    `,
+  }),
+  'BackTopIcon',
+  { hover: true, active: false }
+);
