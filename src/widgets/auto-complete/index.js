@@ -7,16 +7,15 @@ import * as React from 'react';
 import Menu from '../menu';
 import Input from '../input';
 import Trigger from '../trigger';
-import ThemeProvider from '../theme-provider';
 import ShortKeyBoard from '../common/ShortKeyBoard';
 import Keys from '../consts/KeyBoard';
-import Theme from '../theme';
 import Widget from '../consts/index';
 import { DisplayField, ValueField } from '../consts/props';
-import CommonIcon from '../icon';
 import { OldValueItem, OldValueTitle, TimeIcon, EmptyBox } from '../css/autocomplete';
 import { DefaultWidth, MenuItemHeight } from '../css/menu';
-
+import ThemeHoc from '@lugia/theme-hoc';
+import { findDOMNode } from 'react-dom';
+import styled from 'styled-components';
 const ScrollerStep = 30;
 
 type AutoCompleteProps = {
@@ -42,7 +41,7 @@ type AutoCompleteState = {
 };
 
 export default ShortKeyBoard(
-  ThemeProvider(
+  ThemeHoc(
     class AotuComplete extends React.Component<AutoCompleteProps, AutoCompleteState> {
       static defaultProps = {
         getTheme() {
@@ -87,12 +86,6 @@ export default ShortKeyBoard(
         const len = data.length;
         const menuLen = Math.min(5, len);
         const menuHeight = menuLen * MenuItemHeight;
-        const themeConfig = { width, height: menuHeight };
-        const menuConfig = {
-          [Widget.Menu]: themeConfig,
-          [Widget.Input]: { width: themeConfig.width },
-          [Widget.Trigger]: themeConfig,
-        };
 
         const menu =
           menuHeight === 0 ? (
@@ -102,6 +95,7 @@ export default ShortKeyBoard(
               this.getOldValueItem(),
               <Menu
                 data={data}
+                theme={this.getMenuTheme()}
                 mutliple={false}
                 selectedKeys={value}
                 onClick={this.menuItemClickHandler}
@@ -113,28 +107,27 @@ export default ShortKeyBoard(
           );
 
         return (
-          <Theme config={menuConfig}>
-            <Trigger
-              align={'bottomLeft'}
-              action={disabled ? [] : ['focus']}
-              hideAction={['focus']}
-              popup={menu}
-              ref={this.triggerEl}
-            >
-              <Input
-                value={value}
-                disabled={disabled}
-                ref={this.inputEl}
-                onChange={this.changeInputValue}
-                onClear={this.clearInputValue}
-                onFocus={this.onFocus}
-                onBlur={this.onBlur}
-                placeholder={placeholder}
-                prefix={prefix}
-                suffix={suffix}
-              />
-            </Trigger>
-          </Theme>
+          <Trigger
+            align={'bottomLeft'}
+            action={disabled ? [] : ['focus']}
+            hideAction={['focus']}
+            popup={menu}
+            ref={this.triggerEl}
+          >
+            <Input
+              theme={this.getInputTheme()}
+              value={value}
+              disabled={disabled}
+              ref={this.inputEl}
+              onChange={this.changeInputValue}
+              onClear={this.clearInputValue}
+              onFocus={this.onFocus}
+              onBlur={this.onBlur}
+              placeholder={placeholder}
+              prefix={prefix}
+              suffix={suffix}
+            />
+          </Trigger>
         );
       }
 
@@ -143,13 +136,13 @@ export default ShortKeyBoard(
         if (preSelectValue === '') {
           return null;
         }
-        const { showOldValue } = this.props;
+        const { showOldValue, getPartOfThemeHocProps, getPartOfThemeProps } = this.props;
+        const { theme, viewClass } = getPartOfThemeHocProps('PreItem');
+        const themeProps = getPartOfThemeProps('PreItem');
         return showOldValue ? (
-          <OldValueItem onClick={this.handleClickOldValueItem}>
-            <TimeIcon>
-              <CommonIcon iconClass={'lugia-icon-reminder_clock_circle_o'} />
-            </TimeIcon>
-            <OldValueTitle>{preSelectValue}</OldValueTitle>
+          <OldValueItem onClick={this.handleClickOldValueItem} theme={theme} viewClass={viewClass}>
+            <TimeIcon themeProps={themeProps} iconClass={'lugia-icon-reminder_clock_circle_o'} />
+            <OldValueTitle themeProps={themeProps}>{preSelectValue}</OldValueTitle>
           </OldValueItem>
         ) : null;
       }
@@ -213,7 +206,7 @@ export default ShortKeyBoard(
       }
 
       getInputDom(): Object {
-        return this.inputEl.current.getThemeTarget().input;
+        return findDOMNode(this.inputEl.current).querySelector('input');
       }
 
       enterValue: string;
@@ -262,9 +255,26 @@ export default ShortKeyBoard(
         onChange && onChange(value);
       }
 
+      getMenuTheme() {
+        const { getPartOfThemeConfig } = this.props;
+        const config = {
+          [Widget.Menu]: getPartOfThemeConfig(Widget.Menu),
+        };
+        return config;
+      }
+
+      getInputTheme() {
+        const { getPartOfThemeConfig } = this.props;
+        const config = {
+          [Widget.Input]: getPartOfThemeConfig(Widget.Input),
+        };
+        return config;
+      }
+
       onUp() {}
     },
-    Widget.AutoComplete
+    Widget.AutoComplete,
+    { hover: true }
   ),
   [
     {

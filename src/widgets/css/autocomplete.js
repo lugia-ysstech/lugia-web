@@ -1,42 +1,94 @@
 import { MenuItemHeight } from './menu';
+import Icon from '../icon';
 import colorsFunc from '../css/stateColor';
 import styled from 'styled-components';
-import { px2emcss } from './units';
+import { px2remcss } from '../css/units';
+import ThemeHoc from '@lugia/theme-hoc';
+import CSSComponent, { css } from '@lugia/theme-css-hoc';
 
-const em = px2emcss(1.2);
 const { disableColor, mediumGreyColor } = colorsFunc();
 
-export const OldValueItem = styled.div`
-  box-sizing: border-box;
-  width: 100%;
-  height: ${em(MenuItemHeight)};
-  line-height: ${em(MenuItemHeight)};
-  background: ${disableColor};
-  color: ${mediumGreyColor};
-  font-size: ${em(14)};
-  position: relative;
-  cursor: pointer;
-  overflow: hidden;
-`;
+// export const OldValueItem = styled.div`
+//   box-sizing: border-box;
+//   width: 100%;
+//   height: ${px2remcss(MenuItemHeight)};
+//   line-height: ${px2remcss(MenuItemHeight)};
+//   background: ${disableColor};
+//   color: ${mediumGreyColor};
+//   font-size: ${px2remcss(14)};
+//   position: relative;
+//   cursor: pointer;
+//   overflow: hidden;
+// `;
+
+export const OldValueItem = ThemeHoc(
+  CSSComponent({
+    tag: 'div',
+    className: 'OldValueItem',
+    normal: {
+      selectNames: [
+        ['width'],
+        ['height'],
+        ['color'],
+        ['background'],
+        ['padding'],
+        ['opacity'],
+        ['font'],
+        ['border'],
+      ],
+      getCSS: themeMeta => {
+        const { height = MenuItemHeight } = themeMeta;
+        return `line-height: ${px2remcss(height)}`;
+      },
+    },
+    hover: {
+      selectNames: [['color'], ['background'], ['opacity'], ['border']],
+    },
+    css: css`
+      /* box-sizing: border-box; */
+      transition: all 0.3s;
+      width: 100%;
+      height: ${px2remcss(MenuItemHeight)};
+      line-height: ${px2remcss(MenuItemHeight)};
+      padding: 0 ${px2remcss(10)};
+      background: ${disableColor};
+      color: ${mediumGreyColor};
+      font-size: ${px2remcss(14)};
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+    `,
+  }),
+
+  'ItemWrap',
+  { hover: true, active: true }
+);
 OldValueItem.displayName = 'oldValueItem';
 
-export const CommonSpan = styled.span`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-`;
+export const TimeIcon = CSSComponent({
+  extend: Icon,
+  className: 'TimeIcon',
+  normal: {
+    selectNames: [],
+  },
+  css: css`
+    margin: 0;
+  `,
+});
 
-export const TimeIcon = styled(CommonSpan)`
-  margin-right: ${em(10)};
-  font-size: ${em(12)};
-  left: ${em(10)};
-`;
-
-export const OldValueTitle = styled(CommonSpan)`
-  left: ${em(25)};
-  padding: 0 ${em(5)};
-`;
-OldValueTitle.displayName = 'oldValueTitleSpan';
+export const OldValueTitle = CSSComponent({
+  tag: 'div',
+  className: 'OldValueTitle',
+  normal: {
+    selectNames: [['height']],
+  },
+  css: css`
+    display: inline-block;
+    margin-left: ${px2remcss(10)};
+    height: ${px2remcss(MenuItemHeight)};
+  `,
+});
+OldValueTitle.displayName = 'OldValueTitle';
 
 export const EmptyBox = styled.div`
   height: 0;
