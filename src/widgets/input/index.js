@@ -29,6 +29,7 @@ const {
   blackColor,
   mediumGreyColor,
   darkGreyColor,
+  superLightColor,
 } = colorsFunc();
 
 const CommonInputStyle = CSSComponent({
@@ -106,7 +107,7 @@ const CommonInputStyle = CSSComponent({
     defaultTheme: {
       cursor: 'not-allowed',
       background: { backgroundColor: disableColor },
-      border: getBorder({ color: borderColor, width: 1, style: 'solid' }, { radius: 4 }),
+      border: getBorder({ color: borderColor, width: 1, style: 'solid' }),
     },
   },
   css: css`
@@ -136,7 +137,7 @@ const InputErrorTip = CSSComponent({
     selectNames: [['color'], ['background']],
     defaultTheme: {
       background: {
-        color: 'gray',
+        color: superLightColor,
       },
       color: dangerColor,
     },
@@ -146,14 +147,11 @@ const InputErrorTip = CSSComponent({
     display: inline-block;
   `,
 });
-const InputContainer = CSSComponent({
+const InputContainer = StaticComponent({
   tag: 'div',
   className: 'inputContainer',
   normal: {
-    selectNames: [['width'], ['height'], ['opacity'], ['padding'], ['margin']],
-    defaultTheme: {
-      border: getBorder({ color: borderColor, width: 0, style: 'solid' }, { radius: 4 }),
-    },
+    selectNames: [],
   },
   css: css`
     position: relative;

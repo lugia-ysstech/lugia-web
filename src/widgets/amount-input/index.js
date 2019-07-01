@@ -22,21 +22,15 @@ import {
 } from './amountUtils';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import { checkNumber } from '../common/Math';
-import CSSComponent, { css } from '../theme/CSSProvider';
+import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import ThemeHoc from '@lugia/theme-hoc';
 import { addPropsConfig } from '../avatar';
 
-const InputContainer = CSSComponent({
+const InputContainer = StaticComponent({
   tag: 'span',
   className: 'AmountInputContainer',
   normal: {
-    selectNames: [['border'], ['margin'], ['padding']],
-  },
-  hover: {
-    selectNames: [['border']],
-  },
-  disabled: {
-    selectNames: [['boxShadow'], ['background']],
+    selectNames: [],
   },
   css: css`
     position: relative;
@@ -245,7 +239,7 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
   }
 
   getInputContainer() {
-    const theThemeProps = this.props.getPartOfThemeProps('AmountInputContainer');
+    const theThemeProps = this.props.getPartOfThemeProps(Widget.Input);
     return <InputContainer themeProps={theThemeProps}>{this.generateInput()}</InputContainer>;
   }
 

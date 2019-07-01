@@ -14,14 +14,9 @@ import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import Icon from '../icon/index';
 import { accAdd, checkNumber, limit } from '../common/Math';
 import type { InputValidateType, ValidateStatus } from '../css/input';
-import CSSComponent, { css } from '../theme/CSSProvider';
-
 import { units } from '@lugia/css';
 import { findDOMNode } from 'react-dom';
-import colorsFunc from '../css/stateColor';
-import { getBorder } from '@lugia/theme-css-hoc';
-
-const { themeColor, disableColor } = colorsFunc();
+import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 
 const { px2remcss } = units;
 
@@ -222,7 +217,7 @@ const PlusButton = ThemeHoc(
 
 PlusButton.displayName = 'Plus';
 MinusButton.displayName = 'Minus';
-const InputContainer = CSSComponent({
+const InputContainer = StaticComponent({
   tag: 'div',
   className: 'NumberInputContainer',
   normal: {
