@@ -10,6 +10,7 @@ import Button from '../button';
 import Widget from '../consts/index';
 import Theme from '../theme';
 import styled from 'styled-components';
+import { getBoxShadow } from '@lugia/theme-css-hoc';
 
 const buttonWidth = 80;
 const text = <span>prompt text</span>;
@@ -64,10 +65,10 @@ const ToolTipRVWrapper = styled(ToolTipBaseWrapper)`
 export default () => {
   const config = {
     [Widget.Tooltip]: {
-      TooltipContainer: {
+      TooltipContent: {
         normal: {
           background: {
-            color: '#ccc',
+            color: '#ddd',
           },
         },
       },

@@ -84,10 +84,18 @@
       "title": "文字提示",
       "desc": "文字提示",
       "theme": {
-        "TooltipContainer": {
-          "name": "文字提示框外框部分",
-          "desc": "文字提示框外框部分",
-          "normal": [["opacity"], ["background"], ["width"], ["height"], ["margin"], ["padding"]],
+        "TooltipContent": {
+          "name": "文字提示框内容部分",
+          "desc": "文字提示框内容部分",
+          "normal": [
+            ["opacity"],
+            ["background"],
+            ["width"],
+            ["height"],
+            ["margin"],
+            ["padding"],
+            ["border"]
+          ],
           "hover": [],
           "clicked": [],
           "disabled": []
@@ -104,9 +112,9 @@
     }
   },
   "theme": {
-    "TooltipContainer": {
-      "name": "文字提示框外框部分",
-      "desc": "文字提示框外框部分",
+    "TooltipContent": {
+      "name": "文字提示框内容部分",
+      "desc": "文字提示框内容部分",
       "normal": [["opacity"], ["background"], ["width"], ["height"], ["margin"], ["padding"]],
       "hover": [],
       "clicked": [],
