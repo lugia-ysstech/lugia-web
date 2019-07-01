@@ -5,6 +5,7 @@
  * @flow
  */
 import * as React from 'react';
+import { getBorder, getBoxShadow } from '@lugia/theme-css-hoc';
 import Modal from './index';
 import Button from '../button';
 import Theme from '../theme';
@@ -58,6 +59,7 @@ export default class ModalDemo extends React.Component<any, any> {
       visable4: false,
       visable5: false,
       visable6: false,
+      visable7: false,
     };
   }
 
@@ -90,10 +92,80 @@ export default class ModalDemo extends React.Component<any, any> {
       visable4,
       visable5,
       visable6,
+      visable7,
       confirmLoading,
     } = this.state;
+    const view = {
+      [Widgets.Modal]: {
+        ModalWrap: {
+          normal: {
+            width: 800,
+            height: 500,
+            border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }, { radius: 50 }),
+            opacity: 0.8,
+            boxShadow: getBoxShadow('1px 2px 2px 2px #e8e8e8'),
+            background: { color: 'orange' },
+            padding: {
+              top: 30,
+              right: 30,
+              bottom: 30,
+              left: 50,
+            },
+          },
+        },
+        ModalTitle: {
+          normal: {
+            color: 'green',
+            font: { size: 18, weight: 500 },
+            padding: {
+              top: 30,
+              right: 30,
+              bottom: 30,
+              left: 0,
+            },
+          },
+        },
+        ModalContentText: {
+          normal: {
+            color: 'green',
+            font: { size: 18, weight: 500 },
+            padding: {
+              top: 30,
+              right: 30,
+              bottom: 30,
+              left: 0,
+            },
+          },
+        },
+        ModalCloseIcon: {
+          normal: {
+            color: 'green',
+            fontSize: 18,
+          },
+        },
+        // ModalIcon: {
+        //   normal: {
+        //     color: 'orange',
+        //     fontSize: 18,
+        //   },
+        // },
+      },
+    };
     return (
       <div>
+        <Button onClick={this.Click(7)}>Theme Modal</Button>
+        <Theme config={view}>
+          <Modal
+            visible={visable7}
+            title="这是标题！"
+            onOk={this.buttonClick(7)}
+            onCancel={this.buttonClick(7)}
+          >
+            这是内容！
+          </Modal>
+        </Theme>
+        <br />
+        <br />
         <Button onClick={this.Click(4)}>Modal</Button>
         <Modal
           visible={visable4}
