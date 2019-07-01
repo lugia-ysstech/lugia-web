@@ -16,25 +16,25 @@ import {
 } from '../css/input';
 import ToolTip from '../tooltip/index';
 import Icon from '../icon';
-import StaticComponent from '../theme/CSSProvider';
-import { deepMerge } from '@lugia/object-utils';
-import CSSComponent, { css } from '../theme/CSSProvider';
+import CSSComponent, { css, getBorder, StaticComponent, getBoxShadow } from '@lugia/theme-css-hoc';
 import colorsFunc from '../css/stateColor';
 import { units } from '@lugia/css';
+import { addPropsConfig } from '../avatar/index';
 const { px2remcss } = units;
 const {
   themeColor,
   disableColor,
-  lightGreyColor,
+  borderColor,
   dangerColor,
   blackColor,
   mediumGreyColor,
   darkGreyColor,
+  superLightColor,
 } = colorsFunc();
 
 const CommonInputStyle = CSSComponent({
   tag: 'input',
-  className: 'innerInput',
+  className: 'InnerInput',
   normal: {
     selectNames: [
       ['width'],
@@ -48,36 +48,15 @@ const CommonInputStyle = CSSComponent({
       ['cursor'],
     ],
     defaultTheme: {
-      width: px2remcss(200),
+      cursor: 'text',
+      width: 200,
       height: DefaultHeight,
-      border: {
-        top: {
-          color: lightGreyColor,
-          style: 'solid',
-          width: 1,
-        },
-        left: {
-          color: lightGreyColor,
-          style: 'solid',
-          width: 1,
-        },
-        bottom: {
-          color: lightGreyColor,
-          style: 'solid',
-          width: 1,
-        },
-        right: {
-          color: lightGreyColor,
-          style: 'solid',
-          width: 1,
-        },
-      },
+      border: getBorder({ color: borderColor, width: 1, style: 'solid' }, { radius: 4 }),
     },
-    getStyle(themeMeta: Object, themeProps: Object) {
+    getThemeMeta(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
       const { size, prefix, validateStatus, validateType } = propsConfig;
       const { width, height, color } = themeMeta;
-      const style = {};
       const theColor = color
         ? color
         : isValidateSuccess(validateStatus, validateType, 'inner')
@@ -90,52 +69,27 @@ const CommonInputStyle = CSSComponent({
         : size === 'small'
         ? SmallHeight
         : DefaultHeight;
-      const paddingLeft = prefix
-        ? px2remcss(30)
-        : width && width < 200
-        ? px2remcss(width / 20)
-        : px2remcss(10);
-      const paddingRight = width && width < 200 ? px2remcss(15 + width / 10) : px2remcss(35);
-      style.color = theColor;
-      style.height = theHeight;
-      style.paddingLeft = paddingLeft;
-      style.paddingRight = paddingRight;
-      return style;
+      const paddingLeft = prefix ? 30 : width && width < 200 ? width / 20 : 10;
+      const paddingRight = width && width < 200 ? 15 + width / 10 : 35;
+      return {
+        color: theColor,
+        height: theHeight,
+        padding: {
+          left: paddingLeft,
+          right: paddingRight,
+        },
+      };
     },
   },
   hover: {
     selectNames: [['width'], ['height'], ['padding'], ['border'], ['cursor'], ['background']],
     defaultTheme: {
-      border: {
-        top: {
-          color: themeColor,
-          style: 'solid',
-          width: 1,
-        },
-        left: {
-          color: themeColor,
-          style: 'solid',
-          width: 1,
-        },
-        bottom: {
-          color: themeColor,
-          style: 'solid',
-          width: 1,
-        },
-        right: {
-          color: themeColor,
-          style: 'solid',
-          width: 1,
-        },
-      },
+      border: getBorder({ color: themeColor, width: 1, style: 'solid' }, { radius: 4 }),
     },
   },
   active: {
     selectNames: [['boxShadow'], ['border'], ['cursor']],
-    defaultTheme: {
-      boxShadow: `0px 0px 6px ${themeColor};`,
-    },
-    getCSS(themeMeta: Object, themeProps: Object) {
+    getThemeMeta(themeMeta: Object, themeProps: Object) {
       const { propsConfig, themeState } = themeProps;
       const { validateStatus } = propsConfig;
       const { disabled } = themeState;
@@ -144,46 +98,24 @@ const CommonInputStyle = CSSComponent({
         : isSuccess(validateStatus)
         ? 'rgba(104, 79, 255, 0.2)'
         : 'rgba(248, 172, 48, 0.2)';
-      return `box-shadow: 0 0 6px ${theColor}; `;
+      const shadow = `0 0 6 ${theColor}`;
+      return { boxShadow: getBoxShadow(shadow) };
     },
   },
   disabled: {
-    selectNames: [['cursor'], ['border'], ['background']],
+    selectNames: [['cursor'], ['border'], ['background'], ['color']],
     defaultTheme: {
       cursor: 'not-allowed',
       background: { backgroundColor: disableColor },
-      border: {
-        top: {
-          color: lightGreyColor,
-          style: 'solid',
-          width: 1,
-        },
-        left: {
-          color: lightGreyColor,
-          style: 'solid',
-          width: 1,
-        },
-        bottom: {
-          color: lightGreyColor,
-          style: 'solid',
-          width: 1,
-        },
-        right: {
-          color: lightGreyColor,
-          style: 'solid',
-          width: 1,
-        },
-      },
+      border: getBorder({ color: borderColor, width: 1, style: 'solid' }),
     },
   },
   css: css`
-    cursor: text;
     line-height: 1.5;
     display: inline-block;
     font-family: inherit;
     transition: all 0.3s;
     outline: none;
-    border-radius: ${px2remcss(4)};
     &::placeholder {
       color: #ccc;
     }
@@ -192,7 +124,7 @@ const CommonInputStyle = CSSComponent({
 
 const BaseInputContainer = StaticComponent({
   tag: 'span',
-  className: 'inputBaseInputContainer',
+  className: 'InputBaseInputContainer',
   css: css`
     position: relative;
     display: inline-block;
@@ -200,12 +132,12 @@ const BaseInputContainer = StaticComponent({
 });
 const InputErrorTip = CSSComponent({
   extend: ToolTip,
-  className: 'errorTip',
+  className: 'ErrorTip',
   normal: {
     selectNames: [['color'], ['background']],
     defaultTheme: {
       background: {
-        color: 'gray',
+        color: superLightColor,
       },
       color: dangerColor,
     },
@@ -215,24 +147,16 @@ const InputErrorTip = CSSComponent({
     display: inline-block;
   `,
 });
-const InputContainer = CSSComponent({
+const InputContainer = StaticComponent({
   tag: 'div',
   className: 'inputContainer',
   normal: {
-    selectNames: [['width'], ['height'], ['opacity'], ['padding'], ['margin']],
-  },
-  hover: {
-    selectNames: [['boxShadow']],
-  },
-  disabled: {
-    selectNames: [['boxShadow']],
+    selectNames: [],
   },
   css: css`
-    z-index: 0;
     position: relative;
     display: inline-block;
     outline: none;
-    border-radius: ${px2remcss(4)};
   `,
 });
 
@@ -242,7 +166,6 @@ const TipBottom = CSSComponent({
   css: css`
     display: block;
     transform: translateY(50%);
-    z-index: 2;
     font-size: 1em;
     color: ${dangerColor};
   `,
@@ -272,7 +195,6 @@ const Fix = CSSComponent({
   css: css`
     position: absolute;
     transform: translateY(50%);
-    z-index: 2;
     bottom: 50%;
     line-height: ${px2remcss(10)};
     font-size: 1.4em;
@@ -284,10 +206,10 @@ const Prefix: Object = CSSComponent({
   extend: Fix,
   className: 'inputPrefix',
   normal: {
-    selectNames: [['font'], ['color']],
+    selectNames: [['font'], ['fontSize'], ['color']],
   },
   css: css`
-    left: ${px2remcss(5)};
+    left: ${px2remcss(10)};
   `,
 });
 
@@ -295,10 +217,10 @@ const Suffix: Object = CSSComponent({
   extend: Fix,
   className: 'inputSuffix',
   normal: {
-    selectNames: [['font'], ['color']],
+    selectNames: [['font'], ['fontSize'], ['color']],
   },
   css: css`
-    right: ${px2remcss(5)};
+    right: ${px2remcss(10)};
   `,
 });
 
@@ -309,7 +231,7 @@ const ClearButton: Object = ThemeHoc(
     extend: Icon,
     className: 'inputClearButton',
     normal: {
-      selectNames: [['font'], ['color']],
+      selectNames: [['font'], ['fontSize'], ['color']],
       defaultTheme: {
         color: mediumGreyColor,
       },
@@ -329,12 +251,12 @@ const ClearButton: Object = ThemeHoc(
     css: css`
       position: absolute;
       transform: translateY(50%);
-      z-index: 2;
       bottom: 50%;
       right: ${px2remcss(10)};
     `,
   }),
-  'ClearButton'
+  'ClearButton',
+  { hover: true, active: true }
 );
 ClearButton.displayName = 'ClearButton';
 
@@ -372,6 +294,7 @@ type InputProps = {|
   autoFocus?: boolean,
   type: string,
   getPartOfThemeProps: Function,
+  getPartOfThemeHocProps: Function,
 |};
 
 class TextBox extends Component<InputProps, InputState> {
@@ -485,9 +408,13 @@ class TextBox extends Component<InputProps, InputState> {
   }
 
   getInputContainer(fetcher: Function) {
-    const { themeProps } = this.props;
+    const theThemeProps = this.props.getPartOfThemeProps('Input');
     return (
-      <InputContainer themeProps={themeProps} {...addMouseEvent(this)}>
+      <InputContainer
+        themeProps={theThemeProps}
+        {...addMouseEvent(this)}
+        _lugia_theme_style_={this.props._lugia_theme_style_}
+      >
         {fetcher()}
       </InputContainer>
     );
@@ -498,16 +425,18 @@ class TextBox extends Component<InputProps, InputState> {
     themeProps.propsConfig = { validateType, validateStatus, prefix, size };
     if (validateType === 'bottom') {
       const result = [
-        <BaseInputContainer themeProps={this.props.themeProps}>
+        <BaseInputContainer themeProps={themeProps}>
           {this.generatePrefix()}
           {this.generateInput()}
           {this.generateSuffix()}
         </BaseInputContainer>,
       ];
+      const tipBottomThemeProps = addPropsConfig(
+        this.props.getPartOfThemeProps('validateBottomConfig'),
+        { validateType, validateStatus, prefix, size }
+      );
       result.push(
-        <TipBottom themeProps={this.props.getPartOfThemeProps('validateBottomConfig')}>
-          {this.isValidateError() ? help : ''}
-        </TipBottom>
+        <TipBottom themeProps={tipBottomThemeProps}>{this.isValidateError() ? help : ''}</TipBottom>
       );
       return result;
     }
@@ -519,13 +448,18 @@ class TextBox extends Component<InputProps, InputState> {
   }
   render() {
     const { props } = this;
-    const { validateType, size, help, validateStatus, prefix, themeProps } = props;
+    const { validateType, size, help, validateStatus, prefix } = props;
     const result = this.getInputContent();
-    themeProps.propsConfig = { validateType, validateStatus, prefix, size };
+    const errorTipThemeProps = addPropsConfig(this.props.getPartOfThemeProps('validateTopConfig'), {
+      validateType,
+      validateStatus,
+      prefix,
+      size,
+    });
     if (isValidateSuccess(validateStatus, validateType, 'top')) {
       return (
         <InputErrorTip
-          themeProps={this.props.getPartOfThemeProps('validateTopConfig')}
+          themeProps={errorTipThemeProps}
           size={size}
           placement={'topLeft'}
           switch
@@ -561,16 +495,15 @@ class TextBox extends Component<InputProps, InputState> {
     if (this.isEmpty()) {
       return null;
     }
-    const { validateStatus, validateType, prefix, size } = this.props;
     const show = this.state.clearButtonShow;
-    const ClearButtonThemeProps = this.props.getPartOfThemeProps('InputClearButton');
-    ClearButtonThemeProps.propsConfig = { validateType, validateStatus, prefix, size };
+    const ClearButtonThemeProps = this.props.getPartOfThemeHocProps('ClearButton');
     return (
       <ClearButton
         themeProps={ClearButtonThemeProps}
         iconClass={Clear}
         onClick={this.onClear}
         show={show}
+        {...addMouseEvent(this)}
       />
     );
   }
@@ -601,15 +534,17 @@ class TextBox extends Component<InputProps, InputState> {
       onClick,
       autoFocus,
       type,
-      themeProps,
-      theme = {},
       disabled,
     } = props;
     if (formatter && parser) {
       value = formatter(value);
     }
-    const theThemeProps = deepMerge(themeProps, theme);
-    theThemeProps.propsConfig = { validateType, validateStatus, prefix, size };
+    const theThemeProps = addPropsConfig(this.props.getPartOfThemeProps('Input'), {
+      validateType,
+      validateStatus,
+      prefix,
+      size,
+    });
     return (
       <CommonInputStyle
         themeProps={theThemeProps}

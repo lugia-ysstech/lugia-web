@@ -1,17 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Input props: getTheme: width:100,margin:10, 1`] = `
-.c2 {
-  cursor: text;
+.c1 {
   line-height: 1.5;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   outline: none;
-  border-radius: 0.4rem;
   width: 20rem;
   height: 3.2rem;
+  cursor: text;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -24,99 +23,79 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
   border-right-width: 0.1rem;
   border-right-style: solid;
   border-right-color: #cccccc;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
 }
 
-.c2::-webkit-input-placeholder {
+.c1::-webkit-input-placeholder {
   color: #ccc;
 }
 
-.c2::-moz-placeholder {
+.c1::-moz-placeholder {
   color: #ccc;
 }
 
-.c2:-ms-input-placeholder {
+.c1:-ms-input-placeholder {
   color: #ccc;
 }
 
-.c2::placeholder {
+.c1::placeholder {
   color: #ccc;
 }
 
 .c0 {
-  z-index: 0;
   position: relative;
   display: inline-block;
   outline: none;
-  border-radius: 0.4rem;
 }
 
-.c1 {
-  position: relative;
-  outline: none;
-  width: 20rem;
-  height: 3.2rem;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-}
-
-<span
+<div
+  className="c0"
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
 >
-  <div
-    className="c0"
-    style={Object {}}
-  >
-    <input
-      autoFocus={false}
-      className="c1  c2"
-      disabled={false}
-      onBlur={[Function]}
-      onChange={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      size="default"
-      style={
-        Object {
-          "color": "#333333",
-          "height": "3.2rem",
-          "paddingLeft": "1rem",
-          "paddingRight": "3.5rem",
-        }
+  <input
+    autoFocus={false}
+    className="c1"
+    disabled={false}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    size="default"
+    style={
+      Object {
+        "color": "#333333",
+        "height": "3.2rem",
+        "paddingBottom": "0rem",
+        "paddingLeft": "1rem",
+        "paddingRight": "3.5rem",
+        "paddingTop": "0rem",
       }
-      value=""
-    />
-  </div>
-</span>
+    }
+    value=""
+  />
+</div>
 `;
 
 exports[`Input props: null 1`] = `
-.c2 {
-  cursor: text;
+.c1 {
   line-height: 1.5;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   outline: none;
-  border-radius: 0.4rem;
   width: 20rem;
   height: 3.2rem;
+  cursor: text;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -129,99 +108,79 @@ exports[`Input props: null 1`] = `
   border-right-width: 0.1rem;
   border-right-style: solid;
   border-right-color: #cccccc;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
 }
 
-.c2::-webkit-input-placeholder {
+.c1::-webkit-input-placeholder {
   color: #ccc;
 }
 
-.c2::-moz-placeholder {
+.c1::-moz-placeholder {
   color: #ccc;
 }
 
-.c2:-ms-input-placeholder {
+.c1:-ms-input-placeholder {
   color: #ccc;
 }
 
-.c2::placeholder {
+.c1::placeholder {
   color: #ccc;
 }
 
 .c0 {
-  z-index: 0;
   position: relative;
   display: inline-block;
   outline: none;
-  border-radius: 0.4rem;
 }
 
-.c1 {
-  position: relative;
-  outline: none;
-  width: 20rem;
-  height: 3.2rem;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-}
-
-<span
+<div
+  className="c0"
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
 >
-  <div
-    className="c0"
-    style={Object {}}
-  >
-    <input
-      autoFocus={false}
-      className="c1  c2"
-      disabled={false}
-      onBlur={[Function]}
-      onChange={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      size="default"
-      style={
-        Object {
-          "color": "#333333",
-          "height": "3.2rem",
-          "paddingLeft": "1rem",
-          "paddingRight": "3.5rem",
-        }
+  <input
+    autoFocus={false}
+    className="c1"
+    disabled={false}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    size="default"
+    style={
+      Object {
+        "color": "#333333",
+        "height": "3.2rem",
+        "paddingBottom": "0rem",
+        "paddingLeft": "1rem",
+        "paddingRight": "3.5rem",
+        "paddingTop": "0rem",
       }
-      value=""
-    />
-  </div>
-</span>
+    }
+    value=""
+  />
+</div>
 `;
 
 exports[`Input props: placeholder  1`] = `
-.c2 {
-  cursor: text;
+.c1 {
   line-height: 1.5;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   outline: none;
-  border-radius: 0.4rem;
   width: 20rem;
   height: 3.2rem;
+  cursor: text;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -234,100 +193,80 @@ exports[`Input props: placeholder  1`] = `
   border-right-width: 0.1rem;
   border-right-style: solid;
   border-right-color: #cccccc;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
 }
 
-.c2::-webkit-input-placeholder {
+.c1::-webkit-input-placeholder {
   color: #ccc;
 }
 
-.c2::-moz-placeholder {
+.c1::-moz-placeholder {
   color: #ccc;
 }
 
-.c2:-ms-input-placeholder {
+.c1:-ms-input-placeholder {
   color: #ccc;
 }
 
-.c2::placeholder {
+.c1::placeholder {
   color: #ccc;
 }
 
 .c0 {
-  z-index: 0;
   position: relative;
   display: inline-block;
   outline: none;
-  border-radius: 0.4rem;
 }
 
-.c1 {
-  position: relative;
-  outline: none;
-  width: 20rem;
-  height: 3.2rem;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-}
-
-<span
+<div
+  className="c0"
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
 >
-  <div
-    className="c0"
-    style={Object {}}
-  >
-    <input
-      autoFocus={false}
-      className="c1  c2"
-      disabled={false}
-      onBlur={[Function]}
-      onChange={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      placeholder="请填写内容"
-      size="default"
-      style={
-        Object {
-          "color": "#333333",
-          "height": "3.2rem",
-          "paddingLeft": "1rem",
-          "paddingRight": "3.5rem",
-        }
+  <input
+    autoFocus={false}
+    className="c1"
+    disabled={false}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    placeholder="请填写内容"
+    size="default"
+    style={
+      Object {
+        "color": "#333333",
+        "height": "3.2rem",
+        "paddingBottom": "0rem",
+        "paddingLeft": "1rem",
+        "paddingRight": "3.5rem",
+        "paddingTop": "0rem",
       }
-      value=""
-    />
-  </div>
-</span>
+    }
+    value=""
+  />
+</div>
 `;
 
 exports[`Input props: placeholder  2`] = `
-.c2 {
-  cursor: text;
+.c1 {
   line-height: 1.5;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   outline: none;
-  border-radius: 0.4rem;
   width: 20rem;
   height: 3.2rem;
+  cursor: text;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -340,100 +279,80 @@ exports[`Input props: placeholder  2`] = `
   border-right-width: 0.1rem;
   border-right-style: solid;
   border-right-color: #cccccc;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
 }
 
-.c2::-webkit-input-placeholder {
+.c1::-webkit-input-placeholder {
   color: #ccc;
 }
 
-.c2::-moz-placeholder {
+.c1::-moz-placeholder {
   color: #ccc;
 }
 
-.c2:-ms-input-placeholder {
+.c1:-ms-input-placeholder {
   color: #ccc;
 }
 
-.c2::placeholder {
+.c1::placeholder {
   color: #ccc;
 }
 
 .c0 {
-  z-index: 0;
   position: relative;
   display: inline-block;
   outline: none;
-  border-radius: 0.4rem;
 }
 
-.c1 {
-  position: relative;
-  outline: none;
-  width: 20rem;
-  height: 3.2rem;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-}
-
-<span
+<div
+  className="c0"
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
 >
-  <div
-    className="c0"
-    style={Object {}}
-  >
-    <input
-      autoFocus={false}
-      className="c1  c2"
-      disabled={false}
-      onBlur={[Function]}
-      onChange={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      placeholder=""
-      size="default"
-      style={
-        Object {
-          "color": "#333333",
-          "height": "3.2rem",
-          "paddingLeft": "1rem",
-          "paddingRight": "3.5rem",
-        }
+  <input
+    autoFocus={false}
+    className="c1"
+    disabled={false}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    placeholder=""
+    size="default"
+    style={
+      Object {
+        "color": "#333333",
+        "height": "3.2rem",
+        "paddingBottom": "0rem",
+        "paddingLeft": "1rem",
+        "paddingRight": "3.5rem",
+        "paddingTop": "0rem",
       }
-      value=""
-    />
-  </div>
-</span>
+    }
+    value=""
+  />
+</div>
 `;
 
 exports[`Input props: size 1`] = `
-.c2 {
-  cursor: text;
+.c1 {
   line-height: 1.5;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   outline: none;
-  border-radius: 0.4rem;
   width: 20rem;
   height: 3.2rem;
+  cursor: text;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -446,99 +365,79 @@ exports[`Input props: size 1`] = `
   border-right-width: 0.1rem;
   border-right-style: solid;
   border-right-color: #cccccc;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
 }
 
-.c2::-webkit-input-placeholder {
+.c1::-webkit-input-placeholder {
   color: #ccc;
 }
 
-.c2::-moz-placeholder {
+.c1::-moz-placeholder {
   color: #ccc;
 }
 
-.c2:-ms-input-placeholder {
+.c1:-ms-input-placeholder {
   color: #ccc;
 }
 
-.c2::placeholder {
+.c1::placeholder {
   color: #ccc;
 }
 
 .c0 {
-  z-index: 0;
   position: relative;
   display: inline-block;
   outline: none;
-  border-radius: 0.4rem;
 }
 
-.c1 {
-  position: relative;
-  outline: none;
-  width: 20rem;
-  height: 3.2rem;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-}
-
-<span
+<div
+  className="c0"
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
 >
-  <div
-    className="c0"
-    style={Object {}}
-  >
-    <input
-      autoFocus={false}
-      className="c1  c2"
-      disabled={false}
-      onBlur={[Function]}
-      onChange={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      size="small"
-      style={
-        Object {
-          "color": "#333333",
-          "height": "2.4rem",
-          "paddingLeft": "1rem",
-          "paddingRight": "3.5rem",
-        }
+  <input
+    autoFocus={false}
+    className="c1"
+    disabled={false}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    size="small"
+    style={
+      Object {
+        "color": "#333333",
+        "height": "2.4rem",
+        "paddingBottom": "0rem",
+        "paddingLeft": "1rem",
+        "paddingRight": "3.5rem",
+        "paddingTop": "0rem",
       }
-      value=""
-    />
-  </div>
-</span>
+    }
+    value=""
+  />
+</div>
 `;
 
 exports[`Input props: size 2`] = `
-.c2 {
-  cursor: text;
+.c1 {
   line-height: 1.5;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   outline: none;
-  border-radius: 0.4rem;
   width: 20rem;
   height: 3.2rem;
+  cursor: text;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -551,83 +450,64 @@ exports[`Input props: size 2`] = `
   border-right-width: 0.1rem;
   border-right-style: solid;
   border-right-color: #cccccc;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
 }
 
-.c2::-webkit-input-placeholder {
+.c1::-webkit-input-placeholder {
   color: #ccc;
 }
 
-.c2::-moz-placeholder {
+.c1::-moz-placeholder {
   color: #ccc;
 }
 
-.c2:-ms-input-placeholder {
+.c1:-ms-input-placeholder {
   color: #ccc;
 }
 
-.c2::placeholder {
+.c1::placeholder {
   color: #ccc;
 }
 
 .c0 {
-  z-index: 0;
   position: relative;
   display: inline-block;
   outline: none;
-  border-radius: 0.4rem;
 }
 
-.c1 {
-  position: relative;
-  outline: none;
-  width: 20rem;
-  height: 3.2rem;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-}
-
-<span
+<div
+  className="c0"
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
 >
-  <div
-    className="c0"
-    style={Object {}}
-  >
-    <input
-      autoFocus={false}
-      className="c1  c2"
-      disabled={false}
-      onBlur={[Function]}
-      onChange={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      size="large"
-      style={
-        Object {
-          "color": "#333333",
-          "height": "4rem",
-          "paddingLeft": "1rem",
-          "paddingRight": "3.5rem",
-        }
+  <input
+    autoFocus={false}
+    className="c1"
+    disabled={false}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    size="large"
+    style={
+      Object {
+        "color": "#333333",
+        "height": "4rem",
+        "paddingBottom": "0rem",
+        "paddingLeft": "1rem",
+        "paddingRight": "3.5rem",
+        "paddingTop": "0rem",
       }
-      value=""
-    />
-  </div>
-</span>
+    }
+    value=""
+  />
+</div>
 `;

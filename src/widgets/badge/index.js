@@ -11,36 +11,37 @@ import NumberTurn from './numberturn/index';
 
 import ThemeHoc from '@lugia/theme-hoc';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
-import { css } from '../theme/CSSProvider';
-import CSSComponent from '../theme/CSSProvider';
+import CSSComponent, { css, getBoxShadow } from '@lugia/theme-css-hoc';
 import colorsFunc from '../css/stateColor';
 import { units } from '@lugia/css';
-import { deepMerge } from '@lugia/object-utils';
 
-const { px2remcss } = units;
 const { dangerColor, defaultColor } = colorsFunc();
 
 export const BaseRedPoint = CSSComponent({
   tag: 'sup',
-  className: 'baseRedPoint',
+  className: 'BaseRedPoint',
   normal: {
     selectNames: [['width'], ['height'], ['background'], ['position'], ['opacity'], ['border']],
+    defaultTheme: {
+      background: {
+        color: dangerColor,
+      },
+      color: defaultColor,
+      fontSize: 10,
+    },
   },
   css: css`
-    font-size: 1rem;
     box-sizing: border-box;
     position: absolute;
     transform: translateX(50%);
     transform-origin: 100%;
     z-index: 10;
-    background-color: ${dangerColor};
-    color: ${defaultColor};
   `,
 });
 
 const Dot: Object = CSSComponent({
   extend: BaseRedPoint,
-  className: 'badgeDot',
+  className: 'BadgeDot',
   normal: {
     selectNames: [
       ['width'],
@@ -52,9 +53,9 @@ const Dot: Object = CSSComponent({
       ['boxShadow'],
     ],
     defaultTheme: {
-      boxShadow: `0 0 0 ${px2remcss(1)} #fff`,
-      height: `${px2remcss(10)}`,
-      width: `${px2remcss(10)}`,
+      boxShadow: getBoxShadow('0 0 0 1 #fff'),
+      height: 10,
+      width: 10,
     },
   },
   css: css`
@@ -65,7 +66,7 @@ const Dot: Object = CSSComponent({
 
 const Container: Object = CSSComponent({
   tag: 'span',
-  className: 'badgeContainer',
+  className: 'BadgeContainer',
   normal: {
     selectNames: [['padding'], ['margin'], ['position'], ['opacity']],
   },

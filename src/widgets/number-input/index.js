@@ -6,104 +6,228 @@
  */
 import '../common/shirm';
 import React, { Component } from 'react';
-import styled from 'styled-components';
-import Theme from '../theme';
+import ThemeHoc, { addMouseEvent } from '@lugia/theme-hoc';
 import type { ClickType, InputSize } from '../css/number-input';
-import {
-  getBackground,
-  getBorderHoverColor,
-  getButtonSize,
-  getCursor,
-  getFocusBorderColor,
-  getFocusShadow,
-  getIconHoverColor,
-  getMinusHoverHeight,
-  getPlusHoverHeight,
-  getShow,
-  getWidth,
-} from '../css/number-input';
-import BaseInput from '../input/index';
+import Input from '../input/index';
 import Widget from '../consts';
-import ThemeProvider from '../theme-provider';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
-import Icon from '../icon';
-import { px2emcss } from '../css/units';
+import Icon from '../icon/index';
 import { accAdd, checkNumber, limit } from '../common/Math';
 import type { InputValidateType, ValidateStatus } from '../css/input';
+import { units } from '@lugia/css';
+import { findDOMNode } from 'react-dom';
+import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 
-const em = px2emcss(1.2);
-const ArrowIcon: Object = styled(Icon)`
-  ${getCursor};
-  z-index: 3;
-  font-size: ${em(8)};
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-`;
+const { px2remcss } = units;
 
-const ButtonContainer = styled.div`
-  ${getShow};
-  ${getButtonSize};
-  border-left: ${em(1)} solid #d9d9d9;
-  width: ${em(22)};
-  position: absolute;
-  bottom: ${em(1)};
-  right: ${em(1)};
-  -webkit-transition: all 0.3s linear 0.1s;
-  transition: all 0.3s linear 0.1s;
-  z-index: 2;
-`;
-
-const PlusClass = 'lugia-icon-direction_up';
-const MinusClass = 'lugia-icon-direction_down';
-const StepButton = styled.span`
-  ${getCursor};
-  &:hover {
-    color: ${getIconHoverColor};
+const ArrowIcon = ThemeHoc(
+  CSSComponent({
+    extend: Icon,
+    className: 'NumberInputArrowIcon',
+    normal: {
+      selectNames: [['cursor'], ['color'], ['fontSize'], ['opacity']],
+      defaultTheme: {
+        cursor: 'pointer',
+        fontSize: 10,
+      },
+      getThemeMeta(themeMeta, themeProps) {
+        const { propsConfig } = themeProps;
+        const { outRange } = propsConfig;
+        const theCursor = outRange ? 'not-allowed' : 'pointer';
+        return {
+          cursor: theCursor,
+        };
+      },
+    },
+    hover: {
+      selectNames: [['cursor'], ['color'], ['fontSize'], ['opacity']],
+      getThemeMeta(themeMeta, themeProps) {
+        const { propsConfig } = themeProps;
+        const { outRange } = propsConfig;
+        const theCursor = outRange ? 'not-allowed' : 'pointer';
+        return {
+          cursor: theCursor,
+        };
+      },
+    },
+    active: {
+      selectNames: [['cursor']],
+      getThemeMeta(themeMeta, themeProps) {
+        const { propsConfig } = themeProps;
+        const { outRange, disabled } = propsConfig;
+        const theCursor = outRange || disabled ? 'not-allowed' : 'pointer';
+        return {
+          cursor: theCursor,
+        };
+      },
+    },
+    disabled: {
+      selectNames: [['cursor'], ['color'], ['opacity']],
+      defaultTheme: {
+        cursor: 'not-allowed',
+        fontSize: 10,
+        opacity: 0,
+      },
+    },
+    css: css`
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: all 0.3s;
+    `,
+  }),
+  'ArrowIcon',
+  {
+    hover: true,
+    active: true,
   }
+);
 
-  text-align: center;
-  overflow: hidden;
-  color: rgba(0, 0, 0, 0.45);
-  position: relative;
-  -webkit-transition: all 0.1s linear;
-  transition: all 0.1s linear;
-  display: block;
-  width: 100%;
-  font-weight: bold;
-`;
-const MinusButton = styled(StepButton)`
-  border-top: ${em(1)} solid #d9d9d9;
-  ${getMinusHoverHeight};
-`;
-const PlusButton = styled(StepButton)`
-  ${getPlusHoverHeight};
-`;
+const ArrowIconContainer = ThemeHoc(
+  CSSComponent({
+    tag: 'div',
+    className: 'ArrowIconContainer',
+    normal: {
+      selectNames: [['width'], ['fontSize'], ['opacity']],
+      getThemeMeta(themeMeta, themeProps) {
+        const { propsConfig } = themeProps;
+        const { width } = themeMeta;
+        const { show, disabled } = propsConfig;
+        const theOpacity = !disabled && show ? 1 : 0.01;
+        const theCursor = !disabled && show ? 'pointer' : 'not-allowed';
+        const theWidth = width ? width : 22;
+        return {
+          opacity: theOpacity,
+          cursor: theCursor,
+          width: theWidth,
+        };
+      },
+    },
+    disabled: {
+      selectNames: [['opacity']],
+      defaultTheme: {
+        opacity: 0,
+      },
+    },
+    css: css`
+      border-left: ${px2remcss(1)} solid #d9d9d9;
+      position: absolute;
+      height: 96%;
+      bottom: ${px2remcss(1)};
+      right: ${px2remcss(1)};
+      -webkit-transition: all 0.3s linear 0.1s;
+      transition: all 0.3s linear 0.1s;
+      box-sizing: border-box;
+    `,
+  }),
+  'ArrowContainer',
+  { hover: true, active: true }
+);
+
+const StepButton = CSSComponent({
+  tag: 'span',
+  className: 'NumberInputStepButton',
+  normal: {
+    selectNames: [['cursor']],
+    defaultTheme: {
+      cursor: 'pointer',
+    },
+  },
+
+  css: css`
+    text-align: center;
+    color: rgba(0, 0, 0, 0.45);
+    position: relative;
+    transition: all pointer 0.1s linear;
+    display: block;
+    width: 100%;
+    font-weight: bold;
+  `,
+});
+const MinusButton = ThemeHoc(
+  CSSComponent({
+    extend: StepButton,
+    className: 'NumberInputMinusButton',
+    normal: {
+      selectNames: [],
+    },
+    hover: {
+      selectNames: [['height'], ['cursor']],
+      getThemeMeta(themeMeta, themeProps) {
+        const { propsConfig } = themeProps;
+        const { hover, outRange } = propsConfig;
+        const theHeight = hover === 'no' ? '50%' : hover === 'minus' ? '60%' : '40%';
+        const theCursor = outRange ? 'not-allowed' : 'pointer';
+        return {
+          height: theHeight,
+          cursor: theCursor,
+        };
+      },
+    },
+    disabled: {
+      selectNames: [['cursor'], ['opacity']],
+      defaultTheme: {
+        cursor: 'not-allowed',
+        opacity: 0,
+      },
+    },
+    css: css`
+      border-top: ${px2remcss(1)} solid #d9d9d9;
+      height: 50%;
+    `,
+  }),
+  'NumberInputMinusButton',
+  { hover: true, active: true }
+);
+const PlusButton = ThemeHoc(
+  CSSComponent({
+    extend: StepButton,
+    className: 'NumberInputPlusButton',
+    normal: {
+      selectNames: [],
+    },
+    hover: {
+      selectNames: [['height'], ['cursor']],
+      getThemeMeta(themeMeta, themeProps) {
+        const { propsConfig } = themeProps;
+        const { hover, outRange } = propsConfig;
+        const theHeight = hover === 'no' ? '50%' : hover === 'plus' ? '60%' : '40%';
+        const theCursor = outRange ? 'not-allowed' : 'pointer';
+        return {
+          height: theHeight,
+          cursor: theCursor,
+        };
+      },
+    },
+    disabled: {
+      selectNames: [['cursor'], ['opacity']],
+      defaultTheme: {
+        cursor: 'not-allowed',
+        opacity: 0,
+      },
+    },
+    css: css`
+      height: 50%;
+    `,
+  }),
+  'NumberInputPlusButton',
+  { hover: true, active: true }
+);
 
 PlusButton.displayName = 'Plus';
 MinusButton.displayName = 'Minus';
-const InputContainer = styled.span`
-  ${getBackground};
-  ${getWidth};
-  &:focus {
-    ${getFocusBorderColor};
-    ${getFocusShadow};
-  }
-
-  border-radius: ${em(2)};
-  &:hover {
-    & > span > span > input {
-      ${getBorderHoverColor};
-    }
-  }
-
-  position: relative;
-  display: inline-block;
-  z-index: 1;
-`;
+const InputContainer = StaticComponent({
+  tag: 'div',
+  className: 'NumberInputContainer',
+  normal: {
+    selectNames: [],
+  },
+  css: css`
+    position: relative;
+    display: inline-block;
+  `,
+});
 type NumberInputState = {|
   value: string,
   buttonShow: boolean,
@@ -111,7 +235,9 @@ type NumberInputState = {|
   stepHover: ClickType,
 |};
 
-export type NumberInputProps = {|
+const PlusClass = 'lugia-icon-direction_up';
+const MinusClass = 'lugia-icon-direction_down';
+export type NumberInputProps = {
   size?: InputSize,
   viewClass: string,
   max: number,
@@ -138,7 +264,11 @@ export type NumberInputProps = {|
   validateStatus: ValidateStatus,
   validateType: InputValidateType,
   help: string,
-|};
+  themeProps: Object,
+  getPartOfThemeProps: Function,
+  getPartOfThemeHocProps: Function,
+  createEventChannel: Function,
+};
 
 function hasValueProps(props: Object) {
   return 'value' in props;
@@ -155,9 +285,6 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     size: 'default',
     precision: 0,
     defaultValue: '10',
-    getTheme: () => {
-      return {};
-    },
     step: 1,
 
     formatter: (value: string) => {
@@ -213,68 +340,98 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     this.setState({ stepHover: type });
   };
 
-  getStepButtonContainer(): React$Element<any> {
+  getStepArrowIconContainer(channel): React$Element<any> {
     const { buttonShow, value, stepHover } = this.state;
-    const { max, min, size, disabled } = this.props;
-    const maxDisabled = Number(value) >= max;
-    const minDisabled = Number(value) <= min;
+    const { max, min, size, disabled, themeProps } = this.props;
+    const overMax = Number(value) >= max;
+    const belowMin = Number(value) <= min;
+    themeProps.propsConfig = { show: buttonShow, size, hover: stepHover };
+
     return (
-      <ButtonContainer size={size} disabled={disabled} show={buttonShow}>
+      <ArrowIconContainer
+        disabled={disabled}
+        {...channel.provider}
+        {...this.props.getPartOfThemeHocProps('ArrowIconContainer')}
+        propsConfig={{ show: buttonShow, size, hover: stepHover }}
+        {...addMouseEvent(this)}
+      >
         <PlusButton
-          hover={stepHover}
+          disabled={disabled}
+          propsConfig={{ show: buttonShow, size, hover: stepHover, outRange: overMax }}
+          {...this.props.getPartOfThemeHocProps('ArrowIconContainer')}
           onClick={this.handleClick('plus')}
           onMouseEnter={this.getButtonMousePos('plus')}
           onMouseLeave={this.getButtonMousePos('no')}
+          {...addMouseEvent(this, {
+            enter: this.getButtonMousePos('plus'),
+            leave: this.getButtonMousePos('no'),
+          })}
         >
-          <ArrowIcon disabled={maxDisabled} iconClass={PlusClass} />
+          <ArrowIcon
+            disabled={disabled}
+            propsConfig={{ outRange: overMax }}
+            iconClass={PlusClass}
+            {...this.props.getPartOfThemeHocProps('InputArrowIcon')}
+            {...addMouseEvent(this, {
+              enter: this.getButtonMousePos('plus'),
+              leave: this.getButtonMousePos('no'),
+            })}
+          />
         </PlusButton>
         <MinusButton
-          hover={stepHover}
+          disabled={disabled}
+          propsConfig={{ show: buttonShow, size, hover: stepHover, outRange: belowMin }}
+          {...this.props.getPartOfThemeHocProps('ArrowIconContainer')}
           onClick={this.handleClick('minus')}
           onMouseEnter={this.getButtonMousePos('minus')}
           onMouseLeave={this.getButtonMousePos('no')}
+          {...addMouseEvent(this, {
+            enter: this.getButtonMousePos('minus'),
+            leave: this.getButtonMousePos('no'),
+          })}
         >
-          <ArrowIcon disabled={minDisabled} iconClass={MinusClass} />
+          <ArrowIcon
+            disabled={disabled}
+            propsConfig={{ outRange: belowMin }}
+            iconClass={MinusClass}
+            {...this.props.getPartOfThemeHocProps('InputArrowIcon')}
+            {...addMouseEvent(this, {
+              enter: this.getButtonMousePos('minus'),
+              leave: this.getButtonMousePos('no'),
+            })}
+          />
         </MinusButton>
-      </ButtonContainer>
+      </ArrowIconContainer>
     );
   }
 
-  generateInput(): React$Element<any> {
+  generateInput(channel): React$Element<any> {
     const { value } = this.state;
-    const { getTheme } = this.props;
-    const { width } = getTheme();
-    const view = {
-      [Widget.Input]: {
-        width,
-      },
-    };
-
     return (
-      <Theme config={view}>
-        <BaseInput
-          ref={this.el}
-          {...this.props}
-          value={value}
-          suffix={<div />}
-          onBlur={this.onBlur}
-          onChange={this.handleChange}
-        />
-      </Theme>
+      <Input
+        lugiaConsumers={channel.consumer}
+        ref={this.el}
+        {...this.props.getPartOfThemeHocProps('Input')}
+        {...this.props}
+        value={value}
+        suffix={<div />}
+        onBlur={this.onBlur}
+        onChange={this.handleChange}
+      />
     );
   }
 
   render() {
-    const { getTheme, disabled } = this.props;
+    const { themeProps } = this.props;
+    const channel = this.props.createEventChannel(['active', 'hover']);
     return (
       <InputContainer
-        disabled={disabled}
-        theme={getTheme()}
+        themeProps={themeProps}
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
       >
-        {this.generateInput()}
-        {this.getStepButtonContainer()}
+        {this.generateInput(channel)}
+        {this.getStepArrowIconContainer(channel)}
       </InputContainer>
     );
   }
@@ -288,7 +445,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
   };
 
   getInputDom() {
-    return this.el.current.getThemeTarget().input;
+    return findDOMNode(this.el.current).querySelector('input');
   }
 
   handleClick = (click: ClickType) => (event: Event) => {
@@ -331,5 +488,8 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
   }
 }
 
-const TargetNumberInput = ThemeProvider(KeyBoardEventAdaptor(NumberTextBox), Widget.NumberInput);
+const TargetNumberInput = ThemeHoc(KeyBoardEventAdaptor(NumberTextBox), Widget.NumberInput, {
+  hover: true,
+  active: true,
+});
 export default TargetNumberInput;

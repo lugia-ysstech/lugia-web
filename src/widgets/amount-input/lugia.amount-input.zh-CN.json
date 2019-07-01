@@ -183,10 +183,18 @@
       "clicked": [],
       "disabled": []
     },
-    "AmountTip": {
-      "name": "输入框提示",
-      "desc": "输入框提示",
-      "normal": [["font"], ["color"], ["background"], ["border"]],
+    "TooltipContainer": {
+      "name": "输入框提示框外框部分",
+      "desc": "输入框提示框外框部分",
+      "normal": [["opacity"], ["background"], ["width"], ["height"]],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
+    },
+    "TooltipMessage": {
+      "name": "金额输入框提示信息文字部分",
+      "desc": "金额输入框提示信息文字部分",
+      "normal": [["fontSize"], ["font"], ["color"]],
       "hover": [],
       "clicked": [],
       "disabled": []
