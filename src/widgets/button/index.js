@@ -5,87 +5,15 @@
  * @flow
  */
 import * as React from 'react';
-import styled from 'styled-components';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
-import Icon from '../icon';
 import DelayHoc from '../common/DelayHoc';
 import MouseEventAdaptor from '../common/MouseEventAdaptor';
-import { px2emcss } from '../css/units';
-
-import {
-  getTypeCSS,
-  getActiveCSS,
-  getCircleCSS,
-  getClickCSS,
-  getDisabledCSS,
-  getShapeCSS,
-  getSizeCSS,
-  hoverStyle,
-  getThemeStyle,
-  getIconStyle,
-  getLoadingIconStyle,
-  getChildrenLineHeight,
-  getCircleIconFont,
-  getIconCursor,
-} from '../css/button';
+import { ButtonOut, ChildrenSpan, IconWrap, CircleIcon } from '../css/button';
 import type { ButtonOutProps } from '../css/button';
 
 type ButtonState = { clicked: boolean, loading: boolean };
 
-const ButtonOut = styled.button`
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms, Arial, Helvetica, sans-serif;
-  user-select: none;
-  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  ${props => (props.block ? 'width: 100%;' : '')}
-  &:hover {
-    ${hoverStyle}
-  }
-  
-  &:focus {
-    ${hoverStyle}
-  }
-  &:active {
-    ${getActiveCSS}
-  }
-  
-  ${getTypeCSS} 
-  ${getSizeCSS} 
-  ${getShapeCSS}
-  ${getCircleCSS}
-  ${props => (props.loading ? hoverStyle : '')}
-  ${props => (props.loading ? 'pointer-events: none;' : '')}
-  ${getDisabledCSS}
-  ${getClickCSS}
-  ${getThemeStyle}
-`;
-
-const ChildrenSpan = styled.span`
-  display: inline-block;
-  ${getChildrenLineHeight}
-`;
-
-const IconWrap: Object = styled(Icon)`
-  vertical-align: -${props => props.em(1.75)} !important;
-  ${getIconStyle};
-  ${getLoadingIconStyle};
-  ${getIconCursor}
-`;
-const CircleIcon: Object = styled(Icon)`
-  vertical-align: -${props => props.em(1.75)} !important;
-  ${getCircleIconFont};
-`;
 ButtonOut.displayName = 'ButtonWrap';
 
 export default ThemeProvider(
@@ -118,19 +46,15 @@ export default ThemeProvider(
 
         handleChildren = () => {
           const { children, text, icon, circle, loading, size = 'default', disabled } = this.props;
-          let em = px2emcss(1.4);
-          if (size === 'small') {
-            em = px2emcss(1.2);
-          }
           if (circle) {
             const iconType = icon || 'lugia-icon-direction_logout';
-            return <CircleIcon size={size} em={em} iconClass={iconType} />;
+            return <CircleIcon size={size} iconClass={iconType} />;
           }
 
           if (loading) {
             return (
               <span>
-                <IconWrap em={em} loading iconClass="lugia-icon-financial_loading_o" />
+                <IconWrap loading iconClass="lugia-icon-financial_loading_o" />
                 {text || children}
               </span>
             );
@@ -139,7 +63,7 @@ export default ThemeProvider(
             const hasChildren = !!children || !!text;
             return (
               <span>
-                <IconWrap em={em} iconClass={icon} hasChildren={hasChildren} disabled={disabled} />
+                <IconWrap iconClass={icon} hasChildren={hasChildren} disabled={disabled} />
                 {text || children}
               </span>
             );
@@ -164,10 +88,6 @@ export default ThemeProvider(
             block,
           } = this.props;
           const { clicked } = this.state;
-          let em = px2emcss(1.4);
-          if (size === 'small') {
-            em = px2emcss(1.2);
-          }
           return (
             <ButtonOut
               clicked={clicked}
@@ -185,10 +105,9 @@ export default ThemeProvider(
               onMouseUp={onMouseUp}
               onMouseDown={onMouseDown}
               themes={getTheme()}
-              em={em}
               block={block}
             >
-              <ChildrenSpan em={em} size={size} type={type} plain={plain}>
+              <ChildrenSpan size={size} type={type} plain={plain}>
                 {this.handleChildren()}
               </ChildrenSpan>
             </ButtonOut>

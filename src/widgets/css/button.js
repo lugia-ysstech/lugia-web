@@ -3,11 +3,14 @@
  * create by guorg
  * @flow
  */
+import styled from 'styled-components';
 import colorsFunc from '../css/stateColor';
 import changeColor from '../css/utilsColor';
+import { px2remcss } from '../css/units';
 import { getThemeColor } from '../common/ThemeUtils';
 import { css, keyframes } from 'styled-components';
 import type { MarginType, ThemeType } from '@lugia/lugia-web';
+import Icon from '../icon';
 
 export type ButtonType = 'default' | 'primary' | 'success' | 'warning' | 'danger';
 type ButtonShape = 'default' | 'round';
@@ -196,12 +199,12 @@ function fetchPlainCSS(color: string): { [key: ButtonType]: PlainTypeColor } {
   };
 }
 
-function fetchSize(sizeType: string, em: Function) {
+function fetchSize(sizeType: string) {
   const { height, vPadding, dPadding, fontSize } = Size[sizeType];
   return {
-    height: `${em(height)}`,
-    vPadding: `${em(vPadding)}`,
-    dPadding: `${em(dPadding)}`,
+    height: `${px2remcss(height)}`,
+    vPadding: `${px2remcss(vPadding)}`,
+    dPadding: `${px2remcss(dPadding)}`,
     fontSize,
   };
 }
@@ -232,12 +235,12 @@ export const getTypeCSS = (props: ButtonOutProps) => {
 };
 
 export const getShapeCSS = (props: ButtonOutProps) => {
-  const { shape = 'default', size = 'default', em } = props;
-  let borderRadius = `${em(21)}`;
+  const { shape = 'default', size = 'default' } = props;
+  let borderRadius = `${px2remcss(21)}`;
   if (shape === 'default') {
-    borderRadius = `${em(4)}`;
+    borderRadius = `${px2remcss(4)}`;
   } else {
-    borderRadius = em(ShapeCSS[size].borderRadius);
+    borderRadius = px2remcss(ShapeCSS[size].borderRadius);
   }
   return `
     border-radius: ${borderRadius};
@@ -286,8 +289,8 @@ export const getDisabledCSS = (props: ButtonOutProps) => {
   }
 };
 export const getSizeCSS = (props: ButtonOutProps) => {
-  const { size = 'default', em } = props;
-  const { dPadding, fontSize } = fetchSize(size, em);
+  const { size = 'default' } = props;
+  const { dPadding, fontSize } = fetchSize(size);
 
   return `
     
@@ -296,9 +299,9 @@ export const getSizeCSS = (props: ButtonOutProps) => {
   `;
 };
 export const getCircleCSS = (props: ButtonOutProps) => {
-  const { circle = false, em, size = 'default' } = props;
+  const { circle = false, size = 'default' } = props;
   const borderRadius = '50%';
-  const width = `${em(Size[size].height)}`;
+  const width = `${px2remcss(Size[size].height)}`;
   if (circle) {
     return `
       width: ${width};
@@ -309,15 +312,8 @@ export const getCircleCSS = (props: ButtonOutProps) => {
   }
 };
 export const getClickCSS = (props: ButtonOutProps) => {
-  const {
-    type = 'default',
-    size = 'default',
-    shape = 'default',
-    circle = false,
-    themes,
-    em,
-  } = props;
-  const { height: sizeHeight } = fetchSize(size, em);
+  const { type = 'default', size = 'default', shape = 'default', circle = false, themes } = props;
+  const { height: sizeHeight } = fetchSize(size);
   const themeColor = getThemeColor(themes);
   const backGround =
     type === 'default'
@@ -326,8 +322,8 @@ export const getClickCSS = (props: ButtonOutProps) => {
   const borderRadius = circle
     ? '50%'
     : shape === 'default'
-    ? em(NotCircleSize.borderRadius)
-    : em(ShapeCSS[size].borderRadius);
+    ? px2remcss(NotCircleSize.borderRadius)
+    : px2remcss(ShapeCSS[size].borderRadius);
 
   const clickAnimate = keyframes`
     0% {
@@ -417,24 +413,24 @@ export const hoverStyle = (props: ButtonOutProps) => {
   `;
 };
 
-const getMarginCSS = (em: Function, margin?: MarginType): string => {
+const getMarginCSS = (margin?: MarginType): string => {
   let marginCss = '';
   if (margin) {
     if (typeof margin === 'number') {
-      marginCss = em(margin);
+      marginCss = px2remcss(margin);
     }
     if (typeof margin === 'object') {
       const { top = 0, right = 0, bottom = 0, left = 0 } = margin;
-      marginCss = `${em(top)} ${em(right)} ${em(bottom)} ${em(left)}`;
+      marginCss = `${px2remcss(top)} ${px2remcss(right)} ${px2remcss(bottom)} ${px2remcss(left)}`;
     }
   }
   return marginCss;
 };
 export const getThemeStyle = (props: ButtonOutProps) => {
-  const { themes, em } = props;
+  const { themes } = props;
   const { width, color, margin } = themes;
-  const marginCss = getMarginCSS(em, margin);
-  const withCss = width && typeof width === 'number' ? em(width) : '';
+  const marginCss = getMarginCSS(margin);
+  const withCss = width && typeof width === 'number' ? px2remcss(width) : '';
   const colorCss = color ? color : '';
   return `
     margin: ${marginCss};
@@ -443,12 +439,12 @@ export const getThemeStyle = (props: ButtonOutProps) => {
   `;
 };
 export const getIconStyle = (props: CSSProps) => {
-  const { em, hasChildren = true } = props;
+  const { hasChildren = true } = props;
   if (!hasChildren) {
     return '';
   }
   return `
-    margin-right: ${em(10)};
+    margin-right: ${px2remcss(10)};
   `;
 };
 const spin = keyframes`
@@ -469,20 +465,20 @@ export const getLoadingIconStyle = (props: IconLoadingProps) => {
   }
 };
 export const getChildrenLineHeight = (props: CSSProps) => {
-  const { size = 'default', em, type = 'default', plain } = props;
+  const { size = 'default', type = 'default', plain } = props;
   const { height } = Size[size];
   if (type === 'default' || plain) {
-    return `line-height: ${em(height - 2)};`;
+    return `line-height: ${px2remcss(height - 2)};`;
   }
 
   return `
-    line-height: ${em(height)};
+    line-height: ${px2remcss(height)};
   `;
 };
 export const getCircleIconFont = (props: CSSProps) => {
-  const { size = 'default', em } = props;
+  const { size = 'default' } = props;
   const fontSize = CircleCSS[size].font;
-  return `font-size: ${em(fontSize)};`;
+  return `font-size: ${px2remcss(fontSize)};`;
 };
 export const getIconCursor = (props: CSSProps): ?string => {
   const { disabled } = props;
@@ -490,3 +486,56 @@ export const getIconCursor = (props: CSSProps): ?string => {
     return `cursor: ${cursor};`;
   }
 };
+
+export const ButtonOut = styled.button`
+  display: inline-block;
+  margin-bottom: 0;
+  box-sizing: border-box;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms, Arial, Helvetica, sans-serif;
+  user-select: none;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  ${props => (props.block ? 'width: 100%;' : '')}
+  &:hover {
+    ${hoverStyle}
+  }
+  
+  &:focus {
+    ${hoverStyle}
+  }
+  &:active {
+    ${getActiveCSS}
+  }
+  
+  ${getTypeCSS} 
+  ${getSizeCSS} 
+  ${getShapeCSS}
+  ${getCircleCSS}
+  ${props => (props.loading ? hoverStyle : '')}
+  ${props => (props.loading ? 'pointer-events: none;' : '')}
+  ${getDisabledCSS}
+  ${getClickCSS}
+  ${getThemeStyle}
+`;
+export const ChildrenSpan = styled.span`
+  display: inline-block;
+  ${getChildrenLineHeight}
+`;
+
+export const IconWrap: Object = styled(Icon)`
+  vertical-align: -${px2remcss(1.75)} !important;
+  ${getIconStyle};
+  ${getLoadingIconStyle};
+  ${getIconCursor}
+`;
+export const CircleIcon: Object = styled(Icon)`
+  vertical-align: -${px2remcss(1.75)} !important;
+  ${getCircleIconFont};
+`;
