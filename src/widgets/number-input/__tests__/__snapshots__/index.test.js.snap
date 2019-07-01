@@ -57,22 +57,6 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
   position: relative;
   display: inline-block;
   outline: none;
-  border-top-width: 0rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
 }
 
 .c4 {
@@ -187,7 +171,6 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
   className="c0"
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
-  style={Object {}}
 >
   <div
     className="c1"
@@ -195,7 +178,6 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     onMouseUp={[Function]}
-    style={Object {}}
   >
     <input
       autoFocus={false}
@@ -649,22 +631,6 @@ exports[`NumberInput props: placeholder  1`] = `
   position: relative;
   display: inline-block;
   outline: none;
-  border-top-width: 0rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
 }
 
 .c4 {
@@ -779,7 +745,6 @@ exports[`NumberInput props: placeholder  1`] = `
   className="c0"
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
-  style={Object {}}
 >
   <div
     className="c1"
@@ -787,7 +752,6 @@ exports[`NumberInput props: placeholder  1`] = `
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     onMouseUp={[Function]}
-    style={Object {}}
   >
     <input
       autoFocus={false}
@@ -946,22 +910,6 @@ exports[`NumberInput props: placeholder  2`] = `
   position: relative;
   display: inline-block;
   outline: none;
-  border-top-width: 0rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
 }
 
 .c4 {
@@ -1076,7 +1024,6 @@ exports[`NumberInput props: placeholder  2`] = `
   className="c0"
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
-  style={Object {}}
 >
   <div
     className="c1"
@@ -1084,7 +1031,6 @@ exports[`NumberInput props: placeholder  2`] = `
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     onMouseUp={[Function]}
-    style={Object {}}
   >
     <input
       autoFocus={false}
@@ -1243,22 +1189,6 @@ exports[`NumberInput props: size 1`] = `
   position: relative;
   display: inline-block;
   outline: none;
-  border-top-width: 0rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
 }
 
 .c4 {
@@ -1373,7 +1303,6 @@ exports[`NumberInput props: size 1`] = `
   className="c0"
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
-  style={Object {}}
 >
   <div
     className="c1"
@@ -1381,7 +1310,6 @@ exports[`NumberInput props: size 1`] = `
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     onMouseUp={[Function]}
-    style={Object {}}
   >
     <input
       autoFocus={false}
@@ -1539,22 +1467,6 @@ exports[`NumberInput props: size 2`] = `
   position: relative;
   display: inline-block;
   outline: none;
-  border-top-width: 0rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
 }
 
 .c4 {
@@ -1669,7 +1581,6 @@ exports[`NumberInput props: size 2`] = `
   className="c0"
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
-  style={Object {}}
 >
   <div
     className="c1"
@@ -1677,7 +1588,6 @@ exports[`NumberInput props: size 2`] = `
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     onMouseUp={[Function]}
-    style={Object {}}
   >
     <input
       autoFocus={false}
