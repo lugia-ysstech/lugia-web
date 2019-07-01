@@ -8,7 +8,7 @@ import '../common/shirm';
 import React, { Component } from 'react';
 import Widget from '../consts/index';
 import type { TabType, TabPositionType } from '../css/tabs';
-
+import { addMouseEvent } from '@lugia/theme-hoc';
 import { isVertical, matchType } from './utils';
 import CSSComponent, { css, keyframes } from '@lugia/theme-css-hoc';
 
@@ -28,6 +28,8 @@ type TabContentState = {};
 type TabContentProps = {
   content: React$Element<any>,
   tabType: TabType,
+  themeProps: Object,
+  forceRender: boolean,
 };
 
 class TabContent extends Component<TabContentProps, TabContentState> {
@@ -40,7 +42,6 @@ class TabContent extends Component<TabContentProps, TabContentState> {
 
   render() {
     const { content, themeProps } = this.props;
-
     return <ContentContainer themeProps={themeProps}>{content}</ContentContainer>;
   }
 }

@@ -101,7 +101,8 @@ const TabContentContainer = CSSComponent({
   css: css`
     position: relative;
     padding: 10px;
-    height: 100px;
+    min-width: 100px;
+    min-height: 100px;
   `,
 }); //${getBackgroundShadow};
 const TabContent = CSSComponent({
@@ -114,7 +115,11 @@ const TabContent = CSSComponent({
         propsConfig: { active, index },
       } = themeProps;
       if (active === index) {
-        return 'opacity: 1;';
+        return `
+        // opacity: 1;
+        display:block;
+        z-index:10;
+        `;
       }
     },
   },
@@ -130,7 +135,8 @@ const TabContent = CSSComponent({
     top: 0;
     width: 100%;
     height: 100%;
-    opacity: 0;
+    // opacity: 0;
+    display: none;
   `,
 }); //${getBackgroundShadow};
 
@@ -474,32 +480,28 @@ const VTabsOutContainer = CSSComponent({
   `,
 }); //${getSelectColor};${getContainerBorder}; ${getContainerPadding};
 
-const PageIcon = ThemeHoc(
-  CSSComponent({
-    extend: Icon,
-    className: 'PageIcon',
-    normal: {
-      selectNames: [],
+const PageIcon = CSSComponent({
+  extend: Icon,
+  className: 'PageIcon',
+  normal: {
+    selectNames: [],
+  },
+  hover: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+    getCSS: () => {
+      return 'cursor: not-allowed';
     },
-    hover: {
-      selectNames: [],
-    },
-    disabled: {
-      selectNames: [],
-      getCSS: () => {
-        return 'cursor: not-allowed';
-      },
-    },
-    css: css`
-      display: inline-block;
-      font-style: normal;
-      text-align: center;
-      font-size: 1rem;
-    `,
-  }),
-  'PageIcon',
-  { hover: true, active: false }
-);
+  },
+  css: css`
+    display: inline-block;
+    font-style: normal;
+    text-align: center;
+    font-size: 1rem;
+  `,
+});
 // ${getCursor};
 
 PageIcon.displayName = 'page';
@@ -516,7 +518,7 @@ type TabsState = {|
 
 type TabsProps = {
   activityValue: number,
-  defaultActivityValue: string,
+  defaultActivityValue: number,
   onTabClick: Function,
   tabPosition?: TabPositionType,
   tabType?: TabType,
@@ -540,12 +542,31 @@ function hasDataInProps(props: TabsProps) {
   return 'data' in props;
 }
 
+function getDefaultData(props) {
+  const { defaultData, data, children } = props;
+  let configData = [];
+  if (hasDataInProps(props)) {
+    configData = data ? data : [];
+  } else {
+    if (children) {
+      configData = [];
+      React.Children.map(children, child => {
+        configData && configData.push(child.props);
+      });
+    } else {
+      configData = defaultData ? defaultData : [];
+    }
+  }
+  return configData;
+}
+
 class TabsBox extends Component<TabsProps, TabsState> {
   static defaultProps = {
     tabType: 'line',
     tabPosition: 'top',
     pagedType: 'single',
     defaultData: [],
+    forceRender: false,
   };
   tabs: any;
   static displayName = Widget.Tabs;
@@ -559,47 +580,32 @@ class TabsBox extends Component<TabsProps, TabsState> {
   }
 
   static getDerivedStateFromProps(props: TabsProps, state: TabsState) {
-    const { activityValue, defaultActivityValue, defaultData, data, children } = props;
-    const hasActivityValueInprops = 'activityValue' in props;
-    let configData = [];
-    if (hasDataInProps(props)) {
-      configData = data ? data : [];
-    } else {
-      if (Array.isArray(children) && children.length > 0) {
-        configData = [];
-        React.Children.map(children, child => {
-          configData && configData.push(child.props);
-        });
-      } else {
-        configData = defaultData ? defaultData : [];
-      }
-    }
+    const { activityValue, defaultActivityValue } = props;
+    const configData = getDefaultData(props);
+    let theData;
+    let theActivityValue = 0;
     if (!state) {
-      const theData = configData || [];
-      const theActivityValue = hasActivityValueInprops
-        ? activityValue
-        : defaultActivityValue
-        ? defaultActivityValue
-        : theData.length > 0
-        ? theData[0].activityValue
-        : undefined;
-      return {
-        data: theData,
-        activityValue: theActivityValue * 1,
-        currentPage: 0,
-        totalPage: 1,
-        pagedCount: 0,
-        arrowShow: false,
-        childrenSize: [],
-      };
+      theData = configData || [];
+      theActivityValue = activityValue || defaultActivityValue || 0;
+    } else {
+      theData = state.data;
+      theActivityValue = state.activityValue;
     }
-    const sData = state.data;
-    const sActivityValue = state.activityValue;
+
     return {
-      activityValue: hasActivityValueInprops ? activityValue : sActivityValue,
-      data: hasDataInProps(props) ? addActivityValue2Data(configData) : sData,
+      // activityValue: hasActivityValueInprops ? activityValue : sActivityValue,
+      // data: hasDataInProps(props) ? addActivityValue2Data(configData) : sData,
+      data: theData,
+      activityValue: theActivityValue,
+      currentPage: 0,
+      totalPage: 1,
+      pagedCount: 0,
+      arrowShow: false,
+      childrenSize: [],
     };
   }
+
+  componentDidUpdate() {}
 
   render() {
     const { themeProps, tabType } = this.props;
@@ -628,7 +634,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
     if (isVertical(tabPosition)) {
       return this.getVtabs();
     }
-    return this.getHTabs();
+    return this.getHorizonTabPan();
   }
 
   getArrowConfig(type: EditEventType) {
@@ -672,7 +678,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
         >
           <PageIcon disabled={isDisabledToPrev} themeProps={themeProps} iconClass={arrowUp} />
         </VPrePage>
-        <VTabsContainer themeProps={tabsThemeProps} innerRef={this.tabs}>
+        <VTabsContainer themeProps={tabsThemeProps}>
           <YscrollerContainer y={moveDistance} themeProps={borderThemeProps}>
             {this.getChildren()}
           </YscrollerContainer>
@@ -694,6 +700,60 @@ class TabsBox extends Component<TabsProps, TabsState> {
     );
   }
 
+  getHorizonTabPan() {
+    const { tabType, tabPosition, themeProps } = this.props;
+    const { totalPage } = this.state;
+
+    const borderThemeProps = this.props.getPartOfThemeProps('BorderStyle');
+    borderThemeProps.propsConfig = { tabPosition, tabType };
+    const tabsThemeProps = this.props.getPartOfThemeProps('TabsContainer');
+    tabsThemeProps.propsConfig = { tabPosition };
+    const moveDistance = this.computeMoveDistance();
+    const { isDisabledToPrev, isDisabledToNext } = this.getIsAllowToMove(moveDistance);
+
+    const prevPageThemeProps = deepMerge(
+      { themeConfig: { normal: { height: 35 } } },
+      this.props.getPartOfThemeProps('DefaultTabPan')
+    );
+
+    return (
+      <HTabsOutContainer
+        themeProps={themeProps}
+        tabType={tabType}
+        tabPosition={tabPosition}
+        showPadding={totalPage > 1}
+      >
+        <HPrePage
+          themeProps={prevPageThemeProps}
+          onClick={this.onPreClick(isDisabledToPrev)}
+          tabType={tabType}
+        >
+          <PageIcon
+            disabled={isDisabledToPrev}
+            themeProps={themeProps}
+            iconClass={'lugia-icon-direction_Left'}
+          />
+        </HPrePage>
+        <HTabsContainer themeProps={tabsThemeProps} ref={this.tabs}>
+          <HscrollerContainer themeProps={borderThemeProps} x={moveDistance}>
+            {this.getChildren()}
+            {this.getAddButton()}
+          </HscrollerContainer>
+        </HTabsContainer>
+        <HNextPage
+          themeProps={prevPageThemeProps}
+          onClick={this.onNextClick(isDisabledToNext)}
+          tabType={tabType}
+        >
+          <PageIcon
+            disabled={isDisabledToNext}
+            themeProps={themeProps}
+            iconClass={'lugia-icon-direction_right'}
+          />
+        </HNextPage>
+      </HTabsOutContainer>
+    );
+  }
   getHTabs() {
     const { tabType, tabPosition, themeProps } = this.props;
     const { totalPage } = this.state;
@@ -732,43 +792,46 @@ class TabsBox extends Component<TabsProps, TabsState> {
     const { isDisabledToPrev, isDisabledToNext } = this.getIsAllowToMove(moveDistance);
 
     const prevPageThemeProps = deepMerge(
-      { themeProps: { normal: { height: 35 } } },
+      { themeConfig: { normal: { height: 35 } } },
       this.props.getPartOfThemeProps('DefaultTabPan')
     );
-    return [
-      <HPrePage
-        themeProps={prevPageThemeProps}
-        onClick={this.onPreClick(isDisabledToPrev)}
-        tabType={tabType}
-        {...pre}
-      >
-        <PageIcon
-          disabled={isDisabledToPrev}
-          themeProps={themeProps}
-          iconClass={arrowLeft}
+
+    return (
+      <React.Fragment>
+        <HPrePage
+          themeProps={prevPageThemeProps}
+          onClick={this.onPreClick(isDisabledToPrev)}
+          tabType={tabType}
           {...pre}
-        />
-      </HPrePage>,
-      <HTabsContainer themeProps={tabsThemeProps} tabType={tabType} innerRef={this.tabs}>
-        <HscrollerContainer themeProps={borderThemeProps} tabType={tabType} x={moveDistance}>
-          {this.getChildren()}
-          {this.getAddButton()}
-        </HscrollerContainer>
-      </HTabsContainer>,
-      <HNextPage
-        themeProps={prevPageThemeProps}
-        {...next}
-        onClick={this.onNextClick(isDisabledToNext)}
-        tabType={tabType}
-      >
-        <PageIcon
-          disabled={isDisabledToNext}
-          themeProps={themeProps}
-          iconClass={arrowRight}
+        >
+          <PageIcon
+            disabled={isDisabledToPrev}
+            themeProps={themeProps}
+            iconClass={arrowLeft}
+            {...pre}
+          />
+        </HPrePage>
+        <HTabsContainer themeProps={tabsThemeProps}>
+          <HscrollerContainer themeProps={borderThemeProps} x={moveDistance}>
+            {this.getChildren()}
+            {this.getAddButton()}
+          </HscrollerContainer>
+        </HTabsContainer>
+        <HNextPage
+          themeProps={prevPageThemeProps}
           {...next}
-        />
-      </HNextPage>,
-    ];
+          onClick={this.onNextClick(isDisabledToNext)}
+          tabType={tabType}
+        >
+          <PageIcon
+            disabled={isDisabledToNext}
+            themeProps={themeProps}
+            iconClass={arrowRight}
+            {...next}
+          />
+        </HNextPage>
+      </React.Fragment>
+    );
   }
 
   getIsAllowToMove(moveDistance: number) {
@@ -808,7 +871,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
   }
 
   measurePage() {
-    this.updateContainerSize();
+    // this.updateContainerSize();
     this.matchPage();
   }
 
@@ -861,7 +924,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
   }
 
   updateContainerSize() {
-    if (this.tabs) {
+    if (this.tabs.current) {
       this.offsetWidth = this.tabs.current.offsetWidth;
       this.offsetHeight = this.tabs.current.offsetHeight;
     }
@@ -870,17 +933,6 @@ class TabsBox extends Component<TabsProps, TabsState> {
   getTabpaneConfig(child: React$Element<any>, i: number) {
     const { tabPosition, tabType } = this.props;
     const { activityValue, data } = this.state;
-    const TabpaneActivityValue = getAttributeFromObject(
-      child,
-      'activityValue',
-      child
-        ? getKeyfromIndex(data, i, 'activityValue')
-        : getAttributeFromObject(
-            child.props,
-            'activityValue',
-            child ? getKeyfromIndex(data, i, 'activityValue') : '0'
-          )
-    );
     const disabled = getAttributeFromObject(
       child,
       'disabled',
@@ -925,7 +977,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
 
   getChildrenContent() {
     const { activityValue, data } = this.state;
-    const { forceRender, tabPosition, themeProps } = this.props;
+    const { tabPosition, themeProps } = this.props;
     if (data) {
       themeProps.propsConfig = { tabPosition };
       return (
@@ -942,13 +994,25 @@ class TabsBox extends Component<TabsProps, TabsState> {
             );
             const props = { active: activityValue, index };
             const contentThemeProps = this.props.getPartOfThemeProps('ContentBlock', { props });
-            return (
+            const { forceRender } = this.props;
+            return forceRender ? (
+              activityValue === index && (
+                <TabContent themeProps={contentThemeProps}>
+                  <TabContentInner
+                    {...this.props}
+                    themeProps={contentThemeProps}
+                    content={content}
+                    forceRender={forceRender && index === activityValue}
+                  />
+                </TabContent>
+              )
+            ) : (
               <TabContent themeProps={contentThemeProps}>
                 <TabContentInner
                   {...this.props}
                   themeProps={contentThemeProps}
                   content={content}
-                  // tabPosition={tabPosition}
+                  forceRender={forceRender && index === activityValue}
                 />
               </TabContent>
             );
@@ -957,47 +1021,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
       );
     }
   }
-  // TabContentContainer
-  // getChildrenContent() {
-  //   const { forceRender, tabPosition, themeProps } = this.props;
-  //   const { activityValue, data } = this.state;
-  //   if (data && data.map) {
-  //     return data.map((child, i) => {
-  //       const childActivityValue = getAttributeFromObject(
-  //         child,
-  //         'activityValue',
-  //         getAttributeFromObject(
-  //           child.props,
-  //           'activityValue',
-  //           getKeyfromIndex(data, i, 'activityValue')
-  //         )
-  //       );
-  //       if (forceRender || childActivityValue === activityValue) {
-  //         const content = getAttributeFromObject(
-  //           child,
-  //           'content',
-  //           getAttributeFromObject(
-  //             child.props,
-  //             'content',
-  //             getAttributeFromObject(child, 'children', undefined)
-  //           )
-  //         );
-  //         const contentThemeProps = this.props.getPartOfThemeProps('ContentBlock');
-  //         contentThemeProps.propsConfig = { tabPosition };
-  //         return (
-  //           <TabContent
-  //             {...this.props}
-  //             themeProps={contentThemeProps}
-  //             content={content}
-  //             activityValue={childActivityValue}
-  //             tabPosition={tabPosition}
-  //           />
-  //         );
-  //       }
-  //     });
-  //   }
-  //   return null;
-  // }
+
   getTabpaneDisabled(activityValue: number) {
     const { data } = this.state;
     if (activityValue) {

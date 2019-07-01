@@ -389,7 +389,6 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
       tabType,
       isSelect
     );
-    console.log('isSelect', isSelect);
     // const titleThemeProps = this.props.getPartOfThemeProps('DefaultTabPan');
     let Target = (
       <TargetTab
