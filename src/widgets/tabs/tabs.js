@@ -155,6 +155,7 @@ type TabsProps = {
   data?: Array<Object>,
   defaultData?: Array<Object>,
   forceRender?: boolean,
+  showDeleteBtn?: boolean,
   onDeleteClick: Function,
   showAddBtn?: boolean,
   onAddClick?: Function,
@@ -166,14 +167,14 @@ type TabsProps = {
   getPartOfThemeHocProps: Function,
   getPartOfThemeProps: Function,
 };
-function hasDataInProps(props: TabsProps) {
-  return 'data' in props;
+function hasTargetInProps(target: string, props: TabsProps) {
+  return `${target}` in props;
 }
 
 function getDefaultData(props) {
   const { defaultData, data, children } = props;
   let configData = [];
-  if (hasDataInProps(props)) {
+  if (hasTargetInProps('data', props)) {
     configData = data ? data : [];
   } else {
     if (children) {
@@ -195,6 +196,8 @@ class TabsBox extends Component<TabsProps, TabsState> {
     pagedType: 'single',
     defaultData: [],
     forceRender: false,
+    showAddBtn: false,
+    showDeleteBtn: false,
   };
   static displayName = Widget.Tabs;
 
@@ -204,20 +207,20 @@ class TabsBox extends Component<TabsProps, TabsState> {
 
   static getDerivedStateFromProps(props: TabsProps, state: TabsState) {
     const { activityValue, defaultActivityValue, data } = props;
-    // const configData = getDefaultData(props);
-    // let theData;
-    // let theActivityValue = 0;
-    // if (!state) {
-    //   theData = configData || [];
-    //   theActivityValue = activityValue || defaultActivityValue || 0;
-    // } else {
-    //   theData = state.data;
-    //   theActivityValue = state.activityValue;
-    // }
-    //
+    let theActivityValue = activityValue || defaultActivityValue || 0;
+    let theData = getDefaultData(props);
+    if (state) {
+      theActivityValue = hasTargetInProps('activityValue', props)
+        ? theActivityValue
+        : state.activityValue;
+      theData =
+        hasTargetInProps('data', props) || hasTargetInProps('children', props)
+          ? theData
+          : state.data;
+    }
     const returnData = {
-      data: data || [],
-      activityValue: activityValue || defaultActivityValue,
+      data: theData,
+      activityValue: theActivityValue,
     };
     return {
       ...returnData,
@@ -253,18 +256,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
 
   getTabHeaderProps() {
     const { activityValue, data } = this.state;
-    console.log('data tabs', data, this.props.data);
-    const {
-      tabType,
-      tabPosition,
-      showAddBtn,
-      pagedType,
-      onTabClick,
-      onPreClick,
-      onNextClick,
-      onAddClick,
-      onDeleteClick,
-    } = this.props;
+    const { tabType, tabPosition, showAddBtn, pagedType, onAddClick, showDeleteBtn } = this.props;
     const tabHeaderThemes = this.props.getPartOfThemeHocProps('TabHeader');
     return {
       activityValue,
@@ -273,17 +265,23 @@ class TabsBox extends Component<TabsProps, TabsState> {
       tabType,
       showAddBtn,
       pagedType,
+      showDeleteBtn,
       onChange: this.onChange,
       onTabClick: this.onTabClick,
       onPreClick: this.onPreClick,
       onNextClick: this.onNextClick,
-      onAddClick,
+      onAddClick: this.onAddClick,
       onDelete: this.onDelete,
       ...tabHeaderThemes,
     };
   }
 
   onChange = (index: number) => {
+    const { onChange } = this.props;
+    onChange && onChange(index);
+    if (hasTargetInProps('activityValue', this.props)) {
+      return;
+    }
     this.setState({
       activityValue: index,
     });
@@ -310,19 +308,30 @@ class TabsBox extends Component<TabsProps, TabsState> {
     // });
   };
 
-  componentDidMount() {
-    const { doDelayFunc } = this;
-    setTimeout(() => {
-      doDelayFunc();
-    }, 3000);
-  }
-
-  doDelayFunc = () => {
-    console.log('delay in ');
+  onAddClick = (e: Event) => {
+    const { onAddClick } = this.props;
+    onAddClick && onAddClick();
+    if (hasTargetInProps('activityValue', this.props)) {
+      return;
+    }
+    if (hasTargetInProps('data', this.props) || hasTargetInProps('children', this.props)) {
+      return;
+    }
+    const { data } = this.state;
+    const newData = [...data];
+    newData.push({
+      title: '白菜',
+      content: '白菜啊啊啊啊啊',
+    });
     this.setState({
-      activityValue: 1,
+      activityValue: data.length,
+      data: newData,
     });
   };
+
+  componentDidMount() {
+    console.log('componentDidMount tabs');
+  }
 
   getChildrenContent() {
     const { activityValue, data } = this.state;
@@ -343,7 +352,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
             );
             const props = { active: activityValue, index };
             const contentThemeProps = this.props.getPartOfThemeProps('ContentBlock', { props });
-            console.log('contentThemeProps', contentThemeProps);
+
             const { forceRender } = this.props;
             return forceRender ? (
               activityValue === index && (

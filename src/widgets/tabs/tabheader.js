@@ -159,6 +159,7 @@ const HTabsContainer = CSSComponent({
     width: 100%;
     white-space: nowrap;
     overflow: hidden;
+    float: left;
   `,
 });
 
@@ -180,7 +181,7 @@ const AddContainer = CSSComponent({
     background: #f8f8f8;
     line-height: ${px2remcss(AddButtonSize)};
   `,
-}); /* ${getAddBackground};${getTabpaneBorder};${getAddRadius};${getAddTop};&:focus {${getAddHoverBackground};}*/
+});
 
 const AddOutContainer = CSSComponent({
   tag: 'div',
@@ -196,7 +197,7 @@ const AddOutContainer = CSSComponent({
     text-align: center;
     display: inline-block;
   `,
-}); // ${getAddTop};${getAddRight};  height: ${hContainerHeight};line-height: ${hContainerHeight};
+});
 
 const AddIcon = CSSComponent({
   extend: Icon,
@@ -216,7 +217,7 @@ const AddIcon = CSSComponent({
     font-size: 1rem;
     vertical-align: text-top !important;
   `,
-}); //${getAddButtonBottom};${getAddButtonDisplay};&:hover { ${getButtonShow};}
+});
 
 AddIcon.displayName = 'addIcon';
 
@@ -250,7 +251,7 @@ const HscrollerContainer = CSSComponent({
     transition: all 0.5s;
     transform: translateX(${props => px2remcss(props.x)});
   `,
-}); //height: ${hContainerHeight};
+});
 
 const VTabsContainer = CSSComponent({
   tag: 'div',
@@ -313,7 +314,7 @@ const HTabsOutContainer = CSSComponent({
     z-index: 99;
     overflow: hidden;
   `,
-}); //height: ${hContainerHeight};line-height: ${hContainerHeight};position: relative;${getContainerBorder};background: ${backgroundColor};${getContainerPadding};
+});
 
 const VTabsOutContainer = CSSComponent({
   tag: 'div',
@@ -332,7 +333,7 @@ const VTabsOutContainer = CSSComponent({
     overflow: hidden;
     float: left;
   `,
-}); //${getSelectColor};${getContainerBorder}; ${getContainerPadding};
+});
 
 const PageIcon = CSSComponent({
   extend: Icon,
@@ -356,26 +357,28 @@ const PageIcon = CSSComponent({
     font-size: 1rem;
   `,
 });
-// ${getCursor};
 
 PageIcon.displayName = 'page';
 
-type TabsState = {|
+type TabsState = {
   activityValue: number,
   data: Array<Object>,
   currentPage: number,
   totalPage: number,
   pagedCount: number,
   arrowShow: boolean,
-  childrenSize: Array<number>,
-|};
+  titleSize: Array<number>,
+  oldDataLength: number,
+  allowToCalc: boolean,
+};
 
 type TabsProps = {
   activityValue: number,
   tabPosition?: TabPositionType,
   tabType?: TabType,
-  data?: Array<Object>,
+  data: Array<Object>,
   showAddBtn?: boolean,
+  showDeleteBtn?: boolean,
   pagedType?: PagedType,
   onChange?: Function,
   onTabClick?: Function,
@@ -383,28 +386,11 @@ type TabsProps = {
   onNextClick?: Function,
   onAddClick?: Function,
   onDeleteClick?: Function,
+  themeProps?: Object,
+  viewClass?: string,
+  getPartOfThemeHocProps: Function,
+  getPartOfThemeProps: Function,
 };
-function hasDataInProps(props: TabsProps) {
-  return 'data' in props;
-}
-
-function getDefaultData(props) {
-  const { defaultData, data, children } = props;
-  let configData = [];
-  if (hasDataInProps(props)) {
-    configData = data ? data : [];
-  } else {
-    if (children) {
-      configData = [];
-      React.Children.map(children, child => {
-        configData && configData.push(child.props);
-      });
-    } else {
-      configData = defaultData ? defaultData : [];
-    }
-  }
-  return configData;
-}
 
 class TabHeader extends Component<TabsProps, TabsState> {
   static defaultProps = {
@@ -425,32 +411,42 @@ class TabHeader extends Component<TabsProps, TabsState> {
 
     this.titleBox = React.createRef();
     this.titlePanel = [...Array(props.data.length)].map(() => React.createRef());
-    console.log('componentDidUpdate props.data', props.data, this.titlePanel);
   }
 
   static getDerivedStateFromProps(props: TabsProps, state: TabsState) {
     const { activityValue, data } = props;
-    // const configData = getDefaultData(props);
-    // let theData;
-    // let childrenSize = [];
-    // let allowToAddChildrenSize = true;
-    // if (!state) {
-    //   theData = configData || [];
-    // } else {
-    //   theData = state.data;
-    //
-    //   childrenSize = state.childrenSize;
-    //   allowToAddChildrenSize = (state.beforeDataLength === theData.length) ? false : true;
-    // }
-    //
-    const returnData = {
-      data,
-      currentPage: 0,
-      totalPage: 1,
-      pagedCount: 0,
-      arrowShow: false,
-      activityValue,
-    };
+    const datalength = data ? data.length : 0;
+    let allowToCalc = true;
+    let returnData = {};
+    if (state) {
+      if (datalength === state.oldDataLength) {
+        allowToCalc = false;
+      }
+      returnData = {
+        data,
+        currentPage: state.currentPage,
+        totalPage: state.totalPage,
+        pagedCount: state.pagedCount,
+        arrowShow: state.arrowShow,
+        activityValue,
+        oldDataLength: datalength,
+        allowToCalc,
+        titleSize: state.titleSize,
+      };
+    } else {
+      returnData = {
+        data,
+        currentPage: 0,
+        totalPage: 1,
+        pagedCount: 0,
+        arrowShow: false,
+        activityValue,
+        oldDataLength: datalength,
+        allowToCalc,
+        titleSize: [],
+      };
+    }
+
     return {
       ...returnData,
     };
@@ -462,8 +458,32 @@ class TabHeader extends Component<TabsProps, TabsState> {
   // }
 
   componentDidMount() {
-    this.getTabpaneWidthOrHeight();
+    if (this.titleBox) {
+      this.offsetWidth = this.titleBox.offsetWidth;
+      this.offsetHeight = this.titleBox.offsetHeight;
+    }
+    this.matchPage();
   }
+
+  matchPage() {
+    const titleSize = this.getTabpaneWidthOrHeight();
+    const { currentPage } = this.state;
+    const { tabPosition, tabType } = this.props;
+    let totalPage;
+    if (isVertical(tabPosition)) {
+      const actualHeight = this.getActualWidth('line', titleSize);
+      totalPage = computePage(this.offsetHeight, actualHeight);
+    } else {
+      const actualWidth = this.getActualWidth(tabType, titleSize);
+      totalPage = computePage(this.offsetWidth, actualWidth);
+    }
+    const arrowShow = totalPage > 1 && currentPage < totalPage;
+    this.setState({ arrowShow, totalPage, titleSize });
+  }
+
+  // componentWillUpdate(nextProps, nextState){
+  //   console.log('componentDidMount componentWillUpdate',nextProps,nextState);
+  // }
 
   render() {
     const { data } = this.state;
@@ -473,12 +493,156 @@ class TabHeader extends Component<TabsProps, TabsState> {
 
   getTabs() {
     const { tabPosition } = this.props;
-    // if (isVertical(tabPosition)) {
-    //   return this.getVtabs();
-    // }
-    // return this.getHorizonTabPan();
+    if (isVertical(tabPosition)) {
+      return this.getVtabs();
+    }
+    return this.getHorizonTabPan();
     // return (<div>123123</div>);
-    return this.getTestHorizonTabPan();
+    // return this.getTestHorizonTabPan();
+  }
+
+  getVtabs() {
+    const { tabPosition, themeProps } = this.props;
+    const { pagedCount, totalPage } = this.state;
+    const borderThemeProps = this.props.getPartOfThemeProps('BorderStyle');
+    borderThemeProps.propsConfig = { tabPosition };
+    const tabsThemeProps = this.props.getPartOfThemeProps('TitleContainer');
+    tabsThemeProps.propsConfig = { tabPosition };
+    const moveDistance = this.computeMoveDistance();
+    // const { isDisabledToPrev, isDisabledToNext } = { isDisabledToPrev:false, isDisabledToNext:false};
+    const { isDisabledToPrev, isDisabledToNext } = this.getIsAllowToMove(moveDistance);
+
+    return (
+      <VTabsOutContainer
+        themeProps={themeProps}
+        tabPosition={tabPosition}
+        showPadding={totalPage > 1}
+      >
+        {this.getPrevOrNextPage('prev', themeProps, isDisabledToPrev, isDisabledToNext)}
+        <VTabsContainer themeProps={tabsThemeProps} innerRef={node => (this.titleBox = node)}>
+          <YscrollerContainer y={moveDistance} themeProps={borderThemeProps}>
+            {this.getChildren()}
+          </YscrollerContainer>
+        </VTabsContainer>
+        {this.getPrevOrNextPage('next', themeProps, isDisabledToPrev, isDisabledToNext)}
+      </VTabsOutContainer>
+    );
+  }
+
+  getPrevOrNextPage(
+    type: string,
+    themeProps: Object,
+    isDisabledToPrev: boolean,
+    isDisabledToNext: boolean
+  ) {
+    const { arrowShow } = this.state;
+    if (!arrowShow) {
+      return;
+    }
+    const { tabPosition } = this.props;
+    if (type === 'prev') {
+      const arrowUp = isVertical(tabPosition)
+        ? 'lugia-icon-direction_up'
+        : 'lugia-icon-direction_Left';
+      const Target = isVertical(tabPosition) ? VPrePage : HPrePage;
+      return (
+        <Target
+          themeProps={themeProps}
+          tabPosition={tabPosition}
+          onClick={this.onPreClick(isDisabledToPrev)}
+          {...this.getArrowConfig('pre')}
+        >
+          <PageIcon disabled={isDisabledToPrev} themeProps={themeProps} iconClass={arrowUp} />
+        </Target>
+      );
+    }
+
+    const arrowDown = isVertical(tabPosition)
+      ? 'lugia-icon-direction_down'
+      : 'lugia-icon-direction_right';
+    const Target = isVertical(tabPosition) ? VNextPage : HNextPage;
+    return (
+      <Target
+        themeProps={themeProps}
+        {...this.getArrowConfig('next')}
+        tabPosition={tabPosition}
+        onClick={this.onNextClick(isDisabledToNext)}
+      >
+        <PageIcon disabled={isDisabledToNext} themeProps={themeProps} iconClass={arrowDown} />
+      </Target>
+    );
+  }
+
+  getArrowConfig(type: EditEventType) {
+    const { currentPage, arrowShow, totalPage, pagedCount, titleSize } = this.state;
+    const { pagedType } = this.props;
+    return {
+      type,
+      pagedType,
+      totalPage,
+      currentPage,
+      arrowShow,
+      pagedCount,
+      titleSize,
+    };
+  }
+
+  handleChangePage = (type: EditEventType) => {
+    let { currentPage, totalPage, pagedCount, titleSize } = this.state;
+    const { pagedType } = this.props;
+    if (pagedType === 'page') {
+      currentPage = this.getPagedCount(currentPage, totalPage, type);
+    } else {
+      pagedCount = this.getPagedCount(pagedCount, titleSize.length, type);
+    }
+
+    this.setState({ currentPage, pagedCount });
+  };
+
+  getPagedCount(currentPage: number, totalPage: number, type: EditEventType) {
+    if (matchType(type, 'next')) {
+      currentPage++;
+    } else if (matchType(type, 'pre')) {
+      currentPage--;
+    }
+    return Math.max(Math.min(currentPage, totalPage - 1), 0);
+  }
+
+  getHorizonTabPan() {
+    const { tabType, tabPosition, themeProps, showAddBtn } = this.props;
+    const { totalPage } = this.state;
+
+    const borderThemeProps = this.props.getPartOfThemeProps('BorderStyle', {
+      props: { tabPosition, tabType },
+    });
+    const tabsThemeProps = this.props.getPartOfThemeProps('TitleContainer', {
+      props: { tabPosition },
+    });
+    const moveDistance = this.computeMoveDistance();
+    const { isDisabledToPrev, isDisabledToNext } = this.getIsAllowToMove(moveDistance);
+    // const { isDisabledToPrev, isDisabledToNext } = { isDisabledToPrev:false, isDisabledToNext:false};
+
+    const prevPageThemeProps = deepMerge(
+      { themeConfig: { normal: { height: 35 } } },
+      this.props.getPartOfThemeProps('DefaultTabPan')
+    );
+    return (
+      <HTabsOutContainer
+        themeProps={themeProps}
+        tabType={tabType}
+        tabPosition={tabPosition}
+        showPadding={totalPage > 1}
+      >
+        {this.getPrevOrNextPage('prev', prevPageThemeProps, isDisabledToPrev, isDisabledToNext)}
+        <HTabsContainer themeProps={tabsThemeProps} innerRef={node => (this.titleBox = node)}>
+          <HscrollerContainer themeProps={borderThemeProps} x={moveDistance}>
+            {this.getChildren()}
+            {this.getAddButton()}
+          </HscrollerContainer>
+        </HTabsContainer>
+        {this.getPrevOrNextPage('next', prevPageThemeProps, isDisabledToPrev, isDisabledToNext)}
+      </HTabsOutContainer>
+    );
   }
 
   getTestHorizonTabPan() {
@@ -501,7 +665,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
   getChildren() {
     const { data } = this.state;
     const { getTabpane } = this.props;
-    console.log('data---', data);
+
     return data
       ? data.map((child, index) => {
           const target = (
@@ -516,9 +680,29 @@ class TabHeader extends Component<TabsProps, TabsState> {
       : null;
   }
 
+  getAddButton() {
+    const { tabType, themeProps, showAddBtn } = this.props;
+    const add = 'lugia-icon-reminder_plus';
+    if (!matchType(tabType, 'line') && showAddBtn) {
+      return (
+        <AddOutContainer themeProps={themeProps} tabType={tabType}>
+          <AddContainer themeProps={themeProps} tabType={tabType} onClick={this.onAddClick}>
+            <AddIcon themeProps={themeProps} tabType={tabType} iconClass={add} />
+          </AddContainer>
+        </AddOutContainer>
+      );
+    }
+    return null;
+  }
+
+  onAddClick = (e: Event) => {
+    const { onAddClick } = this.props;
+    onAddClick && onAddClick(e);
+  };
+
   getTabpaneConfig(child: React$Element<any>, i: number) {
-    const { tabPosition, tabType } = this.props;
-    const { activityValue, data, allowToAddChildrenSize, childrenSize } = this.state;
+    const { tabPosition, tabType, showDeleteBtn } = this.props;
+    const { activityValue, data } = this.state;
     const disabled = getAttributeFromObject(
       child,
       'disabled',
@@ -541,9 +725,8 @@ class TabHeader extends Component<TabsProps, TabsState> {
       onClick: this.onTabClick,
       activityValue,
       index: i,
+      showDeleteBtn,
       isSelect: !disabled && activityValue === i,
-      allowToAddChildrenSize,
-      childrenSize,
       // getTabpaneWidthOrHeight: this.getTabpaneWidthOrHeight,
       onDeleteClick: this.onDeleteClick,
       disabled,
@@ -553,7 +736,6 @@ class TabHeader extends Component<TabsProps, TabsState> {
   }
 
   getTabpaneWidthOrHeight = () => {
-    console.log('componentDidUpdate getTabpaneWidthOrHeight', this.titlePanel);
     const { tabPosition } = this.props;
     const titleSize = this.titlePanel.map((item, index) => {
       const tabPan = findDOMNode(item.current);
@@ -568,8 +750,53 @@ class TabHeader extends Component<TabsProps, TabsState> {
       }
       return offsetSize;
     });
-    console.log('componentDidUpdate titleSize', titleSize);
+    return titleSize;
   };
+
+  computeMoveDistance() {
+    const { currentPage, totalPage, pagedCount, titleSize } = this.state;
+    const { tabType, tabPosition } = this.props;
+    const currentTabsWidth = plusWidth(pagedCount - 1, titleSize);
+    const maxDistance = isVertical(tabPosition) ? this.offsetHeight : this.offsetWidth;
+    let distance = totalPage > 1 ? currentPage * maxDistance : 0;
+    if (pagedCount > 0) {
+      if (matchType(tabType, 'card')) {
+        distance = currentTabsWidth + CardBorderAndMarginWidth * pagedCount;
+      } else if (matchType(tabType, 'window')) {
+        distance = currentTabsWidth + WindowMarginLeft;
+      } else {
+        distance = currentTabsWidth;
+      }
+    }
+    return -distance;
+  }
+
+  getIsAllowToMove(moveDistance: number) {
+    const { tabType, tabPosition } = this.props;
+    const { titleSize } = this.state;
+    let actualWidth;
+    let offsetSize;
+    if (isVertical(tabPosition)) {
+      actualWidth = this.getActualWidth('line', titleSize);
+      offsetSize = this.offsetHeight;
+    } else {
+      actualWidth = this.getActualWidth(tabType, titleSize);
+      offsetSize = this.offsetWidth;
+    }
+    const isDisabledToNext = offsetSize - moveDistance >= actualWidth;
+    const isDisabledToPrev = moveDistance === 0;
+
+    return { isDisabledToPrev, isDisabledToNext };
+  }
+
+  getActualWidth(tabType, titleSize) {
+    const width = plusWidth(titleSize.length - 1, titleSize);
+    return matchType(tabType, 'window')
+      ? width + WindowMarginLeft + AddButtonSize
+      : matchType(tabType, 'card')
+      ? width + (titleSize.length + 1) * CardMarginRight + AddButtonSize
+      : width;
+  }
 
   onTabClick = (index: number) => {
     if (!this.getTabpaneDisabled(index)) {
@@ -581,7 +808,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
       }
       const { onChange } = this.props;
       onChange && onChange(index);
-      this.setState({ activityValue: index });
+      // this.setState({ activityValue: index });
     }
   };
 
@@ -595,7 +822,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
   getTabpaneDisabled(index: number) {
     const { data } = this.state;
     if (index) {
-      return data[index].disabled;
+      return data[index] && data[index].disabled;
     }
     return false;
   }
@@ -608,6 +835,27 @@ class TabHeader extends Component<TabsProps, TabsState> {
   onTabMouseLeave = (activityValue: string, e: Event) => {
     const { onTabMouseLeave } = this.props;
     onTabMouseLeave && onTabMouseLeave(activityValue, e);
+  };
+
+  createNativeClick = (eventName: 'onNextClick' | 'onPreClick', type: EditEventType) => (
+    e: Event
+  ) => {
+    const { [eventName]: click } = this.props;
+    this.handleChangePage(type);
+    click && click(e);
+  };
+
+  onNextClick = (isAllowToNext: boolean) => {
+    if (isAllowToNext) {
+      return;
+    }
+    return this.createNativeClick('onNextClick', 'next');
+  };
+  onPreClick = (isAllowToPrev: boolean) => {
+    if (isAllowToPrev) {
+      return;
+    }
+    return this.createNativeClick('onPreClick', 'pre');
   };
 }
 
