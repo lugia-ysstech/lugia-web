@@ -223,7 +223,7 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
   };
   render() {
     const { value } = this.state;
-    const theThemeProps = addPropsConfig(this.props.getPartOfThemeProps('TooltipContainer'), {
+    const theThemeProps = addPropsConfig(this.props.getPartOfThemeProps('TooltipContent'), {
       value,
     });
     return (

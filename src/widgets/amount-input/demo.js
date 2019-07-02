@@ -48,8 +48,8 @@ export default () => {
       },
       AmountInputPrefix: { normal: { fontSize: 14, color: 'blue' } },
     },
-    [Widget.ToolTip]: {
-      TooltipContainer: {
+    [Widget.Tooltip]: {
+      TooltipContent: {
         normal: {
           background: {
             color: '#eee',

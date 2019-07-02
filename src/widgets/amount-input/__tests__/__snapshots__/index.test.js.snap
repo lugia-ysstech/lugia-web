@@ -38,19 +38,19 @@ exports[`AmountInputDemo Component JSON 1`] = `
 }
 
 .c5::-webkit-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c5::-moz-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c5:-ms-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c5::placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c2 {
@@ -117,7 +117,6 @@ exports[`AmountInputDemo Component JSON 1`] = `
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
-      style={Object {}}
     >
       <div
         className="c2"
@@ -191,7 +190,6 @@ exports[`AmountInputDemo Component JSON 1`] = `
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
-      style={Object {}}
     >
       <div
         className="c2"
@@ -265,7 +263,6 @@ exports[`AmountInputDemo Component JSON 1`] = `
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
-      style={Object {}}
     >
       <div
         className="c2"
@@ -356,7 +353,6 @@ exports[`AmountInputDemo Component JSON 1`] = `
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
-      style={Object {}}
     >
       <div
         className="c2"
@@ -442,7 +438,6 @@ exports[`AmountInputDemo Component JSON 1`] = `
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
-      style={Object {}}
     >
       <div
         className="c2"
@@ -528,7 +523,6 @@ exports[`AmountInputDemo Component JSON 1`] = `
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
-      style={Object {}}
     >
       <div
         className="c2"
@@ -631,7 +625,6 @@ exports[`AmountInputDemo Component JSON 1`] = `
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
-      style={Object {}}
     >
       <div
         className="c2"
@@ -704,7 +697,6 @@ exports[`AmountInputDemo Component JSON 1`] = `
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
-      style={Object {}}
     >
       <div
         className="c2"
@@ -790,7 +782,6 @@ exports[`AmountInputDemo Component JSON 1`] = `
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
-      style={Object {}}
     >
       <div
         className="c2"
@@ -863,7 +854,6 @@ exports[`AmountInputDemo Component JSON 1`] = `
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
-      style={Object {}}
     >
       <div
         className="c2"
@@ -960,19 +950,19 @@ exports[`AmountInputDemo props: placeholder  1`] = `
 }
 
 .c4::-webkit-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c4::-moz-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c4:-ms-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c4::placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1 {
@@ -1017,7 +1007,6 @@ exports[`AmountInputDemo props: placeholder  1`] = `
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
-  style={Object {}}
 >
   <div
     className="c1"
@@ -1113,19 +1102,19 @@ exports[`AmountInputDemo props: placeholder  2`] = `
 }
 
 .c4::-webkit-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c4::-moz-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c4:-ms-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c4::placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1 {
@@ -1170,7 +1159,6 @@ exports[`AmountInputDemo props: placeholder  2`] = `
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
-  style={Object {}}
 >
   <div
     className="c1"
