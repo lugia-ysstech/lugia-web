@@ -362,12 +362,10 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
   static defaultProps = {};
   static displayName = Widget.Tabpane;
   tabpane: any;
-  offsetSize: number;
 
   constructor(props: TabpaneProps) {
     super(props);
     this.tabpane = React.createRef();
-    this.offsetSize = 0;
   }
 
   static getDerivedStateFromProps(nextProps: TabpaneProps, state: TabpaneState) {
@@ -389,6 +387,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
       tabType,
       isSelect
     );
+    console.log('nextProps', title);
     // const titleThemeProps = this.props.getPartOfThemeProps('DefaultTabPan');
     let Target = (
       <TargetTab
@@ -626,21 +625,26 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     onMouseLeave && onMouseLeave(index);
   };
   getContainerWidth() {
-    if (this.tabpane) {
-      const { tabPosition } = this.props;
-      if (isVertical(tabPosition)) {
-        this.offsetSize = findDOMNode(this.tabpane.current).offsetHeight;
-      } else {
-        this.offsetSize = findDOMNode(this.tabpane.current).offsetWidth;
-      }
-    }
-    const { getTabpaneWidthOrHeight } = this.props;
-    getTabpaneWidthOrHeight && getTabpaneWidthOrHeight(this.offsetSize);
+    console.log('newChildrenSize getContainerWidth');
+    // let offsetSize = 0;
+    // if (this.tabpane) {
+    //   const { tabPosition } = this.props;
+    //   if (isVertical(tabPosition)) {
+    //    offsetSize = findDOMNode(this.tabpane.current).offsetHeight;
+    //   } else {
+    //     offsetSize = findDOMNode(this.tabpane.current).offsetWidth;
+    //   }
+    // }
+    // const { allowToAddChildrenSize } = this.props;
+    // if(allowToAddChildrenSize){
+    //   const { getTabpaneWidthOrHeight } = this.props;
+    //   getTabpaneWidthOrHeight && getTabpaneWidthOrHeight(offsetSize);
+    // }
   }
 }
 
-const TargetTabPan = ThemeHoc(KeyBoardEventAdaptor(Tabpane), Widget.Tabs, {
-  hover: true,
-  active: false,
-});
-export default TargetTabPan;
+// const TargetTabPan = ThemeHoc(KeyBoardEventAdaptor(Tabpane), Widget.Tabpane, {
+//   hover: true,
+//   active: false,
+// });
+export default Tabpane;

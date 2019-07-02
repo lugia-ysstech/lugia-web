@@ -29,13 +29,10 @@ export class Tabsdemo extends React.Component<any, any> {
     activeValue: '0',
   };
   onAddClick = () => {
-    const activityValue = `newTab${this.state.data.length++}`;
-    const item = {
+    return {
       title: 'New Tab',
       content: 'Content of new Tab',
-      activityValue,
     };
-    return item;
   };
   onDeleteClick = (activityValue: string) => {};
   render() {
@@ -481,32 +478,6 @@ export default class TabsDemo extends React.Component<any, any> {
   render() {
     const lineView = {
       [Widget.Tabs]: {
-        SelectTabPan: {
-          normal: {
-            color: 'red',
-          },
-          disabled: {
-            color: '#ccc',
-          },
-        },
-        DefaultTabPan: {
-          normal: {
-            height: 35,
-          },
-          hover: {
-            color: 'orange',
-          },
-          disabled: {
-            color: '#ccc',
-          },
-        },
-        AddButton: {},
-        BorderStyle: {
-          normal: {
-            color: '#FFCCFF',
-            width: 1,
-          },
-        },
         ContentBlock: {
           normal: {
             padding: {
@@ -517,54 +488,86 @@ export default class TabsDemo extends React.Component<any, any> {
             },
           },
         },
-        TabsContainer: {
-          normal: {
-            width: 300,
-            height: 300,
+        TabHeader: {
+          SelectTabPan: {
+            normal: {
+              color: 'red',
+            },
+            disabled: {
+              color: '#ccc',
+            },
           },
+          BorderStyle: {
+            normal: {
+              color: '#FFCCFF',
+              width: 1,
+            },
+          },
+          TitleContainer: {
+            normal: {
+              width: 300,
+              height: 300,
+            },
+          },
+          DefaultTabPan: {
+            normal: {
+              height: 35,
+            },
+            hover: {
+              color: 'orange',
+            },
+            disabled: {
+              color: '#ccc',
+            },
+          },
+          AddButton: {},
         },
       },
     };
     const cardView = {
       [Widget.Tabs]: {
-        SelectTabPan: {
-          normal: {
-            color: themeColor,
-            background: {
-              color: '#',
+        TabHeader: {
+          SelectTabPan: {
+            normal: {
+              color: themeColor,
+              background: {
+                color: '#',
+              },
+            },
+            disabled: {
+              color: '#ccc',
             },
           },
-          disabled: {
-            color: '#ccc',
-          },
-        },
-        CardTabPan: {
-          normal: {
-            background: {
-              color: 'pink',
+          CardTabPan: {
+            normal: {
+              background: {
+                color: 'pink',
+              },
+            },
+            hover: {
+              color: 'orange',
+            },
+            disabled: {
+              color: '#ccc',
             },
           },
-          hover: {
-            color: 'orange',
-          },
-          disabled: {
-            color: '#ccc',
-          },
-        },
-        TabsContainer: {
-          normal: {
-            width: 300,
-            height: 300,
+          TitleContainer: {
+            normal: {
+              width: 300,
+              height: 300,
+            },
           },
         },
       },
     };
     const defaultCardView = {
       [Widget.Tabs]: {
-        TabsContainer: {
-          normal: {
-            width: 300,
-            height: 300,
+        TabHeader: {
+          TitleContainer: {
+            normal: {
+              width: 300,
+              height: 300,
+            },
           },
         },
       },
@@ -572,28 +575,6 @@ export default class TabsDemo extends React.Component<any, any> {
 
     const windowView = {
       [Widget.Tabs]: {
-        SelectTabPan: {
-          normal: {
-            color: themeColor,
-          },
-          disabled: {
-            color: '#ccc',
-          },
-        },
-        WindowTabPan: {
-          normal: {},
-          hover: {
-            color: 'orange',
-          },
-          disabled: {
-            color: '#ccc',
-          },
-        },
-        TabsContainer: {
-          normal: {
-            width: 316,
-          },
-        },
         WindowContainer: {
           normal: {
             padding: {
@@ -607,25 +588,49 @@ export default class TabsDemo extends React.Component<any, any> {
             },
           },
         },
+        TabHeader: {
+          SelectTabPan: {
+            normal: {
+              color: themeColor,
+            },
+            disabled: {
+              color: '#ccc',
+            },
+          },
+          WindowTabPan: {
+            normal: {},
+            hover: {
+              color: 'orange',
+            },
+            disabled: {
+              color: '#ccc',
+            },
+          },
+          TitleContainer: {
+            normal: {
+              width: 316,
+            },
+          },
+        },
       },
     };
     const { testDelayData } = this.state;
     return (
       <div>
         <Theme config={lineView}>
-          <div>
-            <p style={{ titleStyle }}>defaultData pagedType=single forceRender=true </p>
-            {/*<Switch  />*/}
-            <Tabs
-              tabType={'line'}
-              tabPosition={'top'}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-              pagedType={'single'}
-              forceRender={true}
-              data={testDelayData}
-            />
-          </div>
+          {/*<div>*/}
+          {/*<p style={{ titleStyle }}>defaultData pagedType=single forceRender=true </p>*/}
+          {/*/!*<Switch  />*!/*/}
+          {/*<Tabs*/}
+          {/*tabType={'line'}*/}
+          {/*tabPosition={'top'}*/}
+          {/*onPreClick={onPreClick}*/}
+          {/*onNextClick={onNextClick}*/}
+          {/*pagedType={'single'}*/}
+          {/*forceRender={true}*/}
+          {/*data={testDelayData}*/}
+          {/*/>*/}
+          {/*</div>*/}
           <div>
             <p style={{ titleStyle }}>defaultData pagedType=single forceRender=false </p>
             {/*<Switch  />*/}
@@ -638,210 +643,210 @@ export default class TabsDemo extends React.Component<any, any> {
               data={testDelayData}
             />
           </div>
-          <div>
-            <p style={{ titleStyle }}>defaultData pagedType=single </p>
-            {/*<Switch  />*/}
-            <Tabs
-              tabType={'line'}
-              tabPosition={'top'}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-              pagedType={'single'}
-              forceRender={false}
-            >
-              <Tabpane
-                {...addMouseEvent(this)}
-                title={'酥肉'}
-                content={<div>酥肉啊啊啊 </div>}
-                activityValue={'0'}
-              />
-              <Tabpane title={'海带'} content={<div>海带啊啊啊啊 </div>} activityValue={'1'} />
-              <Tabpane title={'土豆'} content={'土豆啊啊啊'} activityValue={'2'} />
-              <Tabpane title={'火锅'} content={<div>火锅啊啊啊啊</div>} activityValue={'3'} />
-            </Tabs>
-          </div>
-          <div>
-            <p style={{ titleStyle }}>defaultData pagedType=page</p>
-            <Tabs
-              tabType={'line'}
-              tabPosition={'bottom'}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-              children={hasActivityValueChildren}
-              pagedType={'page'}
-            />
-          </div>
-          <div>
-            <p style={{ titleStyle }}>height 60 </p>
-            <Tabs
-              tabType={'line'}
-              tabPosition={'top'}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-              defaultData={defaultData}
-              pagedType={'single'}
-            />
-          </div>
-          <div>
-            <p style={{ titleStyle }}>suffixIcon </p>
-            <Tabs tabType={'line'} tabPosition={'top'} data={suffixData} />
-          </div>
-          <div>
-            <p style={{ titleStyle }}>disabled </p>
-            <Tabs tabType={'line'} tabPosition={'top'} data={disabledData} />
-          </div>
-          <div>
-            <p style={{ titleStyle }}>data tabPosition=top</p>
-            <Tabs
-              tabType={'line'}
-              tabPosition={'top'}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-              children={children}
-              data={defaultData}
-            />
-          </div>
+          {/*<div>*/}
+          {/*<p style={{ titleStyle }}>defaultData pagedType=single </p>*/}
+          {/*/!*<Switch  />*!/*/}
+          {/*<Tabs*/}
+          {/*tabType={'line'}*/}
+          {/*tabPosition={'top'}*/}
+          {/*onPreClick={onPreClick}*/}
+          {/*onNextClick={onNextClick}*/}
+          {/*pagedType={'single'}*/}
+          {/*forceRender={false}*/}
+          {/*>*/}
+          {/*<Tabpane*/}
+          {/*{...addMouseEvent(this)}*/}
+          {/*title={'酥肉'}*/}
+          {/*content={<div>酥肉啊啊啊 </div>}*/}
+          {/*activityValue={'0'}*/}
+          {/*/>*/}
+          {/*<Tabpane title={'海带'} content={<div>海带啊啊啊啊 </div>} activityValue={'1'} />*/}
+          {/*<Tabpane title={'土豆'} content={'土豆啊啊啊'} activityValue={'2'} />*/}
+          {/*<Tabpane title={'火锅'} content={<div>火锅啊啊啊啊</div>} activityValue={'3'} />*/}
+          {/*</Tabs>*/}
+          {/*</div>*/}
+          {/*<div>*/}
+          {/*<p style={{ titleStyle }}>defaultData pagedType=page</p>*/}
+          {/*<Tabs*/}
+          {/*tabType={'line'}*/}
+          {/*tabPosition={'bottom'}*/}
+          {/*onPreClick={onPreClick}*/}
+          {/*onNextClick={onNextClick}*/}
+          {/*children={hasActivityValueChildren}*/}
+          {/*pagedType={'page'}*/}
+          {/*/>*/}
+          {/*</div>*/}
+          {/*<div>*/}
+          {/*<p style={{ titleStyle }}>height 60 </p>*/}
+          {/*<Tabs*/}
+          {/*tabType={'line'}*/}
+          {/*tabPosition={'top'}*/}
+          {/*onPreClick={onPreClick}*/}
+          {/*onNextClick={onNextClick}*/}
+          {/*defaultData={defaultData}*/}
+          {/*pagedType={'single'}*/}
+          {/*/>*/}
+          {/*</div>*/}
+          {/*<div>*/}
+          {/*<p style={{ titleStyle }}>suffixIcon </p>*/}
+          {/*<Tabs tabType={'line'} tabPosition={'top'} data={suffixData} />*/}
+          {/*</div>*/}
+          {/*<div>*/}
+          {/*<p style={{ titleStyle }}>disabled </p>*/}
+          {/*<Tabs tabType={'line'} tabPosition={'top'} data={disabledData} />*/}
+          {/*</div>*/}
+          {/*<div>*/}
+          {/*<p style={{ titleStyle }}>data tabPosition=top</p>*/}
+          {/*<Tabs*/}
+          {/*tabType={'line'}*/}
+          {/*tabPosition={'top'}*/}
+          {/*onPreClick={onPreClick}*/}
+          {/*onNextClick={onNextClick}*/}
+          {/*children={children}*/}
+          {/*data={defaultData}*/}
+          {/*/>*/}
+          {/*</div>*/}
         </Theme>
 
-        <Theme config={lineView}>
-          <div>
-            <p style={{ titleStyle }}>children tabPosition=left pagedType = page</p>
-            <Tabs
-              tabType={'line'}
-              tabPosition={'left'}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-              pagedType={'page'}
-              children={hasActivityValueChildren}
-            />
-          </div>
-          <div>
-            <p style={{ titleStyle }}>children tabPosition=left pagedType = single</p>
-            <Tabs
-              tabType={'line'}
-              tabPosition={'left'}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-              pagedType={'single'}
-              children={hasActivityValueChildren}
-            />
-          </div>
-          <p style={{ titleStyle }}>children tabPosition=right</p>
-          <div>
-            <Tabs
-              tabType={'line'}
-              tabPosition={'right'}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-              pagedType={'single'}
-              children={shortChildren}
-            />
-          </div>
-          <p style={{ titleStyle }}>children tabPosition=bottom</p>
-          <div>
-            <Tabs
-              tabType={'line'}
-              tabPosition={'bottom'}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-              pagedType={'single'}
-              children={longChildren}
-            />
-          </div>
-          <div>
-            <p style={{ titleStyle }}>data tabPosition=top</p>
-            <Tabs
-              tabType={'line'}
-              data={defaultData}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-            />
-          </div>
-          <br />
-          <div>
-            <p style={{ titleStyle }}>data tabPosition=left </p>
-            <Tabs
-              tabType={'line'}
-              tabPosition={'left'}
-              data={hasActivityValueData}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-            />
-          </div>
-          <br />
-          <p style={{ titleStyle }}>data tabPosition=right && pagedType=single</p>
-          <div>
-            <Tabs
-              tabType={'line'}
-              tabPosition={'right'}
-              data={hasActivityValueData}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-              defaultActivityValue={2}
-            />
-          </div>
-          <br />
-          <p style={{ titleStyle }}>children tabPosition=bottom</p>
-          <div>
-            <Tabs
-              tabType={'line'}
-              data={defaultData}
-              tabPosition={'bottom'}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-            />
-          </div>
-          <br />
-        </Theme>
+        {/*<Theme config={lineView}>*/}
+        {/*<div>*/}
+        {/*<p style={{ titleStyle }}>children tabPosition=left pagedType = page</p>*/}
+        {/*<Tabs*/}
+        {/*tabType={'line'}*/}
+        {/*tabPosition={'left'}*/}
+        {/*onPreClick={onPreClick}*/}
+        {/*onNextClick={onNextClick}*/}
+        {/*pagedType={'page'}*/}
+        {/*children={hasActivityValueChildren}*/}
+        {/*/>*/}
+        {/*</div>*/}
+        {/*<div>*/}
+        {/*<p style={{ titleStyle }}>children tabPosition=left pagedType = single</p>*/}
+        {/*<Tabs*/}
+        {/*tabType={'line'}*/}
+        {/*tabPosition={'left'}*/}
+        {/*onPreClick={onPreClick}*/}
+        {/*onNextClick={onNextClick}*/}
+        {/*pagedType={'single'}*/}
+        {/*children={hasActivityValueChildren}*/}
+        {/*/>*/}
+        {/*</div>*/}
+        {/*<p style={{ titleStyle }}>children tabPosition=right</p>*/}
+        {/*<div>*/}
+        {/*<Tabs*/}
+        {/*tabType={'line'}*/}
+        {/*tabPosition={'right'}*/}
+        {/*onPreClick={onPreClick}*/}
+        {/*onNextClick={onNextClick}*/}
+        {/*pagedType={'single'}*/}
+        {/*children={shortChildren}*/}
+        {/*/>*/}
+        {/*</div>*/}
+        {/*<p style={{ titleStyle }}>children tabPosition=bottom</p>*/}
+        {/*<div>*/}
+        {/*<Tabs*/}
+        {/*tabType={'line'}*/}
+        {/*tabPosition={'bottom'}*/}
+        {/*onPreClick={onPreClick}*/}
+        {/*onNextClick={onNextClick}*/}
+        {/*pagedType={'single'}*/}
+        {/*children={longChildren}*/}
+        {/*/>*/}
+        {/*</div>*/}
+        {/*<div>*/}
+        {/*<p style={{ titleStyle }}>data tabPosition=top</p>*/}
+        {/*<Tabs*/}
+        {/*tabType={'line'}*/}
+        {/*data={defaultData}*/}
+        {/*onPreClick={onPreClick}*/}
+        {/*onNextClick={onNextClick}*/}
+        {/*/>*/}
+        {/*</div>*/}
+        {/*<br />*/}
+        {/*<div>*/}
+        {/*<p style={{ titleStyle }}>data tabPosition=left </p>*/}
+        {/*<Tabs*/}
+        {/*tabType={'line'}*/}
+        {/*tabPosition={'left'}*/}
+        {/*data={hasActivityValueData}*/}
+        {/*onPreClick={onPreClick}*/}
+        {/*onNextClick={onNextClick}*/}
+        {/*/>*/}
+        {/*</div>*/}
+        {/*<br />*/}
+        {/*<p style={{ titleStyle }}>data tabPosition=right && pagedType=single</p>*/}
+        {/*<div>*/}
+        {/*<Tabs*/}
+        {/*tabType={'line'}*/}
+        {/*tabPosition={'right'}*/}
+        {/*data={hasActivityValueData}*/}
+        {/*onPreClick={onPreClick}*/}
+        {/*onNextClick={onNextClick}*/}
+        {/*defaultActivityValue={2}*/}
+        {/*/>*/}
+        {/*</div>*/}
+        {/*<br />*/}
+        {/*<p style={{ titleStyle }}>children tabPosition=bottom</p>*/}
+        {/*<div>*/}
+        {/*<Tabs*/}
+        {/*tabType={'line'}*/}
+        {/*data={defaultData}*/}
+        {/*tabPosition={'bottom'}*/}
+        {/*onPreClick={onPreClick}*/}
+        {/*onNextClick={onNextClick}*/}
+        {/*/>*/}
+        {/*</div>*/}
+        {/*<br />*/}
+        {/*</Theme>*/}
 
-        <Theme config={cardView}>
-          <div>
-            <p style={{ titleStyle }}>tabType=card pagedType=single</p>
-            <Tabs
-              tabType={'card'}
-              pagedType={'single'}
-              data={hasActivityValueData}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-            />
-          </div>
-          <br />
-          <br />
-        </Theme>
-        <Theme config={cardView}>
-          <div>
-            <p style={{ titleStyle }}>tabType=card pagedType=single showadd</p>
-            <Tabs
-              tabType={'card'}
-              pagedType={'single'}
-              data={hasActivityValueData}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-              showAddBtn={true}
-            />
-          </div>
-          <br />
-          <br />
-        </Theme>
-        <Theme config={windowView}>
-          <div>
-            <p style={{ titleStyle }}>tabType=window pagedType=page</p>
-            <Tabs
-              tabType={'window'}
-              pagedType={'page'}
-              data={hasActivityValueData}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-            />
-          </div>
-          <p style={{ titleStyle }}>非受限 不传data 展示数据由state 控制</p>
-          <Tabsdemo />
-        </Theme>
-        <Theme config={defaultCardView}>
-          <p style={{ titleStyle }}>受限 展示数据 由props控制</p>
-          <TabsLimitdemo />
-          <br />
-        </Theme>
+        {/*<Theme config={cardView}>*/}
+        {/*<div>*/}
+        {/*<p style={{ titleStyle }}>tabType=card pagedType=single</p>*/}
+        {/*<Tabs*/}
+        {/*tabType={'card'}*/}
+        {/*pagedType={'single'}*/}
+        {/*data={hasActivityValueData}*/}
+        {/*onPreClick={onPreClick}*/}
+        {/*onNextClick={onNextClick}*/}
+        {/*/>*/}
+        {/*</div>*/}
+        {/*<br />*/}
+        {/*<br />*/}
+        {/*</Theme>*/}
+        {/*<Theme config={cardView}>*/}
+        {/*<div>*/}
+        {/*<p style={{ titleStyle }}>tabType=card pagedType=single showadd</p>*/}
+        {/*<Tabs*/}
+        {/*tabType={'card'}*/}
+        {/*pagedType={'single'}*/}
+        {/*data={hasActivityValueData}*/}
+        {/*onPreClick={onPreClick}*/}
+        {/*onNextClick={onNextClick}*/}
+        {/*showAddBtn={true}*/}
+        {/*/>*/}
+        {/*</div>*/}
+        {/*<br />*/}
+        {/*<br />*/}
+        {/*</Theme>*/}
+        {/*<Theme config={windowView}>*/}
+        {/*<div>*/}
+        {/*<p style={{ titleStyle }}>tabType=window pagedType=page</p>*/}
+        {/*<Tabs*/}
+        {/*tabType={'window'}*/}
+        {/*pagedType={'page'}*/}
+        {/*data={hasActivityValueData}*/}
+        {/*onPreClick={onPreClick}*/}
+        {/*onNextClick={onNextClick}*/}
+        {/*/>*/}
+        {/*</div>*/}
+        {/*<p style={{ titleStyle }}>非受限 不传data 展示数据由state 控制</p>*/}
+        {/*<Tabsdemo />*/}
+        {/*</Theme>*/}
+        {/*<Theme config={defaultCardView}>*/}
+        {/*<p style={{ titleStyle }}>受限 展示数据 由props控制</p>*/}
+        {/*<TabsLimitdemo />*/}
+        {/*<br />*/}
+        {/*</Theme>*/}
       </div>
     );
   }
