@@ -13,7 +13,7 @@ import MouseEventAdaptor from '../common/MouseEventAdaptor';
 import { ButtonOut, ChildrenSpan, IconWrap, CircleIcon } from '../css/button';
 import type { ButtonOutProps } from '../css/button';
 
-type ButtonState = { clicked: boolean, loading: boolean };
+type ButtonState = { clicked: boolean };
 
 ButtonOut.displayName = 'ButtonWrap';
 
@@ -22,12 +22,11 @@ export default ThemeProvider(
     DelayHoc(
       class extends React.Component<ButtonOutProps, ButtonState> {
         static displayName = 'Button';
-        static getDerivedStateFromProps(nextProps, prevState) {
-          if (!prevState) {
-            return {
-              clicked: false,
-            };
-          }
+        constructor() {
+          super();
+          this.state = {
+            clicked: false,
+          };
         }
 
         onClick = e => {
@@ -103,6 +102,8 @@ export default ThemeProvider(
             plain,
             disabled,
             loading,
+            size,
+            circle,
           };
           return (
             <ButtonOut
