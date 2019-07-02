@@ -163,7 +163,7 @@ export const RadioChildrenSpan = CSSComponent({
 
 export const RadioCircleSpan = CSSComponent({
   tag: 'span',
-  className: 'radio-children-span',
+  className: 'radio-circle-span',
   css: css`
     position: relative;
     top: 0;

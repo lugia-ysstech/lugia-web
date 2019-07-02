@@ -5,7 +5,7 @@
  */
 import colorsFunc from '../css/stateColor';
 import styled, { css } from 'styled-components';
-import CSSComponent, { getBorder, StaticComponent } from '@lugia/theme-css-hoc';
+import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import { px2remcss } from '../css/units';
 import Icon from '../icon';
 

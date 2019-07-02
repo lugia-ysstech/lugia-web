@@ -70,7 +70,7 @@
   },
   "category": ["数据录入"],
   "theme": {
-    "SwitchOpen": {
+    "Switch_SwitchOpen": {
       "name": "开关组件打开的样式",
       "desc": "开关组件打开的样式配置",
       "normal": [
@@ -88,7 +88,7 @@
       "active": [],
       "disabled": [["background"], ["border"]]
     },
-    "SwitchClosed": {
+    "Switch_SwitchClosed": {
       "name": "开关组件打开的样式",
       "desc": "开关组件打开的样式配置",
       "normal": [

@@ -64,10 +64,10 @@ export function getThemeProps(props, value) {
     circleSize: { width: circleWidth, height: circleHeight },
   } = getStyled(props);
   const { getPartOfThemeProps, loading, disabled } = props;
-  const switchOpenName = 'SwitchOpen';
-  const switchclosedName = 'SwitchClosed';
+  const switchOpenName = 'Switch_SwitchOpen';
+  const switchClosedName = 'Switch_SwitchClosed';
   const open = getPartOfThemeProps(switchOpenName);
-  const closed = getPartOfThemeProps(switchclosedName);
+  const closed = getPartOfThemeProps(switchClosedName);
   const opencolor = getBackground(props, true);
   const closedcolor = getBackground(props, false);
   const { getInternalThemeProps } = props;

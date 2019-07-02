@@ -174,5 +174,55 @@
       }
     }
   },
-  "theme": {}
+  "theme": {
+    "TagWrap": {
+      "name": "标签区域",
+      "desc": "标签内的样式配置",
+      "normal": [
+        ["color"],
+        ["background"],
+        ["border"],
+        ["width"],
+        ["height"],
+        ["boxShadow"],
+        ["opacity"],
+        ["font"],
+        ["margin"],
+        ["padding"]
+      ],
+      "hover": [["color"], ["background"], ["border"], ["boxShadow"], ["opacity"], ["font"]],
+      "active": [],
+      "clicked": [],
+      "disabled": []
+    },
+    "CheckedTagWrap": {
+      "name": "选中标签区域",
+      "desc": "选中后的标签内的样式配置",
+      "normal": [
+        ["color"],
+        ["background"],
+        ["border"],
+        ["width"],
+        ["height"],
+        ["boxShadow"],
+        ["opacity"],
+        ["font"],
+        ["margin"],
+        ["padding"]
+      ],
+      "hover": [["color"], ["background"], ["border"], ["boxShadow"], ["opacity"], ["font"]],
+      "active": [["color"], ["background"], ["border"], ["boxShadow"], ["opacity"], ["font"]],
+      "clicked": [],
+      "disabled": []
+    },
+    "CloseButton": {
+      "name": "隐藏图标",
+      "desc": "隐藏图标的样式配置",
+      "normal": [["font"], ["color"]],
+      "hover": [],
+      "active": [],
+      "clicked": [],
+      "disabled": []
+    }
+  }
 }

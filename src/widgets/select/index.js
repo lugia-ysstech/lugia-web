@@ -10,10 +10,8 @@ import * as React from 'react';
 import InputTag from '../inputtag';
 import Trigger from '../trigger';
 import Menu from '../menu';
-import Theme from '../theme';
 import styled from 'styled-components';
 import Widget from '../consts/index';
-import ThemeProvider from '../theme-provider';
 import QueryInput from '../common/QueryInput';
 import {
   didUpdate,
@@ -23,14 +21,10 @@ import {
   updateMapData,
 } from '../common/translateData';
 import { DisplayField, ValueField } from '../consts/props';
-import {
-  appendCustomValue,
-  getTheme,
-  isCanInput,
-  isMutliple,
-  setNewValue,
-} from '../common/selectFunction';
+import { appendCustomValue, isCanInput, isMutliple, setNewValue } from '../common/selectFunction';
 import { toMatchFromType } from '../common/StringUtils';
+import { px2remcss } from '../css/units';
+import ThemeHoc from '@lugia/theme-hoc';
 
 type ValidateStatus = 'success' | 'error';
 type RowData = { [key: string]: any };
@@ -356,34 +350,34 @@ class Select extends React.Component<SelectProps, SelectState> {
     };
 
     return (
-      <Theme config={getTheme(props, Widget.Menu)} key="select_theme">
-        <SelectContainer>
-          <Trigger
-            popup={menu}
-            key="trigger"
-            ref={getMenuTriger}
-            createPortal={createPortal}
-            action={disabled ? [] : ['click']}
-            hideAction={['click']}
-            onPopupVisibleChange={this.onMenuPopupVisibleChange}
-          >
-            <InputTag
-              ref={getInputTag}
-              prefix={prefix}
-              key="inputtag"
-              value={[...value]}
-              displayValue={[...displayValue]}
-              validateStatus={validateStatus}
-              onChange={this.onInputTagChange}
-              onPopupVisibleChange={this.onInputTagPopupVisibleChange}
-              disabled={disabled}
-              placeholder={placeholder}
-              mutliple={isMutliple(props)}
-              onClear={this.onClear}
-            />
-          </Trigger>
-        </SelectContainer>
-      </Theme>
+      <SelectContainer>
+        <Trigger
+          popup={menu}
+          key="trigger"
+          offsetY={4}
+          ref={getMenuTriger}
+          createPortal={createPortal}
+          action={disabled ? [] : ['click']}
+          hideAction={['click']}
+          onPopupVisibleChange={this.onMenuPopupVisibleChange}
+        >
+          <InputTag
+            theme={this.getInputtagTheme()}
+            ref={getInputTag}
+            prefix={prefix}
+            key="inputtag"
+            value={[...value]}
+            displayValue={[...displayValue]}
+            validateStatus={validateStatus}
+            onChange={this.onInputTagChange}
+            onPopupVisibleChange={this.onInputTagPopupVisibleChange}
+            disabled={disabled}
+            placeholder={placeholder}
+            mutliple={isMutliple(props)}
+            onClear={this.onClear}
+          />
+        </Trigger>
+      </SelectContainer>
     );
   }
 
@@ -395,6 +389,7 @@ class Select extends React.Component<SelectProps, SelectState> {
     const menuData = this.updateMenuData(data, query, searchType);
     return (
       <Menu
+        theme={this.getMenuTheme()}
         displayField={displayField}
         valueField={valueField}
         data={menuData}
@@ -656,6 +651,21 @@ class Select extends React.Component<SelectProps, SelectState> {
     const totalLimitCount = this.getLimitCount();
     return totalLimitCount === value.length;
   }
+
+  getInputtagTheme() {
+    const { getPartOfThemeConfig } = this.props;
+    const config = {
+      [Widget.InputTag]: getPartOfThemeConfig(Widget.InputTag),
+    };
+    return config;
+  }
+  getMenuTheme() {
+    const { getPartOfThemeConfig } = this.props;
+    const config = {
+      [Widget.Menu]: getPartOfThemeConfig(Widget.Menu),
+    };
+    return config;
+  }
 }
 
-export default ThemeProvider(Select, Widget.Select);
+export default ThemeHoc(Select, Widget.Select, { hover: true });
