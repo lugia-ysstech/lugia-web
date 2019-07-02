@@ -27,6 +27,7 @@ const ToolTrigger: Object = ThemeHoc(
     },
     css: css`
       box-shadow: none;
+      background: transparent;
     `,
   }),
   'ToolTrigger',
