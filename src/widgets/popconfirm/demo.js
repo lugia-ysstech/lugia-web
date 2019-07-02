@@ -7,11 +7,12 @@
 import * as React from 'react';
 import Direction from '../button';
 import Icon from '../icon';
-import Switch from '../switch';
 import notification from '../notification';
 import styled from 'styled-components';
 import Popconfirm from './popconfirm';
 import Input from '../input/index';
+import Widget from '../consts';
+import Theme from '../theme';
 
 const Wrapper = styled.div`
   margin: 100px;
@@ -61,7 +62,6 @@ export class Condition extends React.Component<any, any> {
     return (
       <div style={{ margin: 20 }}>
         <p> 触发弹出框</p>
-        <Switch defaultChecked onChange={this.changeCondition} />
         <Popconfirm
           title="确定要删除吗?"
           visible={this.state.visible}
@@ -80,52 +80,70 @@ export class Condition extends React.Component<any, any> {
 
 export const WrapperDemo = () => {
   const text = '确定删除这个选项吗?';
+  const config = {
+    [Widget.Popconfirm]: {
+      PopconfirmContent: {
+        normal: {
+          font: {
+            color: '#000',
+          },
+          background: { color: 'green' },
+        },
+      },
+      PopconfirmTitle: { normal: { background: { color: 'red' } } },
+    },
+    [Widget.Tooltip]: {
+      TooltipContent: { normal: { background: { color: 'pink' } } },
+    },
+  };
   return (
     <Wrapper>
-      <div style={{ marginLeft: 50, whiteSpace: 'nowrap' }}>
-        <Popconfirm placement="topLeft" title={text} action={'click'}>
-          <Direction>TL</Direction>
-        </Popconfirm>
-        <Popconfirm placement="top" title={text}>
-          <Direction>Top</Direction>
-        </Popconfirm>
-        <Popconfirm placement="topRight" title={text}>
-          <Direction>TR</Direction>
-        </Popconfirm>
-      </div>
-      <div style={{ width: 70, float: 'left' }}>
-        <Popconfirm placement="leftTop" title={text}>
-          <Direction>LT</Direction>
-        </Popconfirm>
-        <Popconfirm placement="left" title={text}>
-          <Direction>Left</Direction>
-        </Popconfirm>
-        <Popconfirm placement="leftBottom" title={text}>
-          <Direction>LB</Direction>
-        </Popconfirm>
-      </div>
-      <div style={{ width: 70, marginLeft: 200 }}>
-        <Popconfirm placement="rightTop" title={text}>
-          <Direction>RT</Direction>
-        </Popconfirm>
-        <Popconfirm placement="right" title={text}>
-          <Direction>Right</Direction>
-        </Popconfirm>
-        <Popconfirm placement="rightBottom" title={text}>
-          <Direction>RB</Direction>
-        </Popconfirm>
-      </div>
-      <div style={{ marginLeft: 50, clear: 'both', whiteSpace: 'nowrap' }}>
-        <Popconfirm placement="bottomLeft" title={text}>
-          <Direction>BL</Direction>
-        </Popconfirm>
-        <Popconfirm placement="bottom" title={text}>
-          <Direction>Bottom</Direction>
-        </Popconfirm>
-        <Popconfirm placement="bottomRight" title={text}>
-          <Direction>BR</Direction>
-        </Popconfirm>
-      </div>
+      <Theme config={config}>
+        <div style={{ marginLeft: 50, whiteSpace: 'nowrap' }}>
+          <Popconfirm placement="topLeft" title={text} action={'click'}>
+            <Direction>TL</Direction>
+          </Popconfirm>
+          <Popconfirm placement="top" title={text}>
+            <Direction>Top</Direction>
+          </Popconfirm>
+          <Popconfirm placement="topRight" title={text}>
+            <Direction>TR</Direction>
+          </Popconfirm>
+        </div>
+        <div style={{ width: 70, float: 'left' }}>
+          <Popconfirm placement="leftTop" title={text}>
+            <Direction>LT</Direction>
+          </Popconfirm>
+          <Popconfirm placement="left" title={text}>
+            <Direction>Left</Direction>
+          </Popconfirm>
+          <Popconfirm placement="leftBottom" title={text}>
+            <Direction>LB</Direction>
+          </Popconfirm>
+        </div>
+        <div style={{ width: 70, marginLeft: 200 }}>
+          <Popconfirm placement="rightTop" title={text}>
+            <Direction>RT</Direction>
+          </Popconfirm>
+          <Popconfirm placement="right" title={text}>
+            <Direction>Right</Direction>
+          </Popconfirm>
+          <Popconfirm placement="rightBottom" title={text}>
+            <Direction>RB</Direction>
+          </Popconfirm>
+        </div>
+        <div style={{ marginLeft: 50, clear: 'both', whiteSpace: 'nowrap' }}>
+          <Popconfirm placement="bottomLeft" title={text}>
+            <Direction>BL</Direction>
+          </Popconfirm>
+          <Popconfirm placement="bottom" title={text}>
+            <Direction>Bottom</Direction>
+          </Popconfirm>
+          <Popconfirm placement="bottomRight" title={text}>
+            <Direction>BR</Direction>
+          </Popconfirm>
+        </div>
+      </Theme>
       <br />
       <Popconfirm title={text} action={'focus'}>
         <Input placeholder={'聚焦弹出'} />
@@ -159,8 +177,8 @@ export const WrapperDemo = () => {
           okText="yes"
           okType="danger"
           icon={
-            <IconWrapper style={{ background: 'red' }}>
-              <HintIcon style={{ color: 'white' }} iconClass={'lugia-icon-reminder_question'} />
+            <IconWrapper>
+              <HintIcon iconClass={'lugia-icon-reminder_question'} />
             </IconWrapper>
           }
         >
@@ -172,7 +190,6 @@ export const WrapperDemo = () => {
 };
 export default () => {
   return [
-    <Popconfirm />,
     <WrapperDemo />,
     <Wrapper>
       <Condition />

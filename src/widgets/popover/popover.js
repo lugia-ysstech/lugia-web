@@ -18,7 +18,7 @@ import { units } from '@lugia/css';
 import colorsFunc from '../css/stateColor';
 
 const { px2remcss } = units;
-const { mediumGreyColor, darkGreyColor, blackColor } = colorsFunc();
+const { mediumGreyColor, darkGreyColor, blackColor, defaultColor } = colorsFunc();
 
 const ClearContainer: Object = StaticComponent({
   tag: 'div',
@@ -125,10 +125,10 @@ const Content: Object = CSSComponent({
     selectNames: [['font'], ['fontSize'], ['padding'], ['background'], ['boxShadow']],
     defaultTheme: {
       padding: {
-        top: 6,
-        bottom: 6,
-        left: 8,
-        right: 8,
+        top: 3,
+        bottom: 3,
+        left: 4,
+        right: 4,
       },
       fontSize: 12,
     },
@@ -143,7 +143,11 @@ const TooltipWrapper: Object = CSSComponent({
   className: 'PopoverWrapper',
   normal: {
     selectNames: [['background'], ['width'], ['height'], ['boxShadow'], ['border']],
-    defaultTheme: {},
+    defaultTheme: {
+      background: {
+        color: defaultColor,
+      },
+    },
   },
   css: css`
     display: inline-block;
@@ -170,7 +174,6 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
   getTitle(): React.Node | null {
     const { title } = this.props;
     const PopoverTitleThemeProps = this.props.getPartOfThemeProps('PopoverTitle');
-    console.log(PopoverTitleThemeProps, 111111111111);
     return title ? <Title themeProps={PopoverTitleThemeProps}>{title} </Title> : null;
   }
 
@@ -228,7 +231,6 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
     const { visible } = this.state;
     const getTarget: Function = cmp => (this.target = cmp);
     const theThemeProps = this.props.getPartOfThemeProps('TooltipContent');
-    console.log(theThemeProps, 'TooltipContent');
     return (
       <TooltipWrapper
         themeProps={theThemeProps}

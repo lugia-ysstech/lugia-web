@@ -5,9 +5,7 @@
  * @flow
  */
 import type { ThemeType } from '@lugia/lugia-web';
-import colorsFunc from '../css/stateColor';
 import type { DirectionType } from '../css/tooltip';
-const { mediumGreyColor } = colorsFunc();
 
 export type PopoverProps = {
   description: React.Node,
@@ -20,16 +18,12 @@ export type PopoverProps = {
   visible: boolean,
   defaultVisible?: boolean,
   onVisibleChange: Function,
-  clear?: React.Node,
+  clearIcon?: React.Node,
   onClearClick?: Function,
   defaultChildren: React.Node,
+  getPartOfThemeProps: Function,
+  getPartOfThemeHocProps: Function,
 };
 export type PopoverState = {
   visible: boolean,
-};
-
-export const getIconColor = (props: Object) => {
-  const { theme } = props;
-  const { fontColor } = theme;
-  return fontColor ? fontColor : mediumGreyColor;
 };

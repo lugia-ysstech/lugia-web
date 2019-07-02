@@ -84,20 +84,9 @@ class HoverAndClickDemo extends React.Component<any, any> {
     const config = {
       [Widget.Popover]: {},
       [Widget.Tooltip]: {
-        TooltipContent: {
-          normal: {
-            background: {
-              color: 'blue',
-            },
-            font: {
-              color: '#000',
-            },
-          },
-        },
-        [Widget.Button]: {
-          width: buttonWidth,
-        },
+        TooltipContent: { normal: { background: { color: 'blue' }, font: { color: '#000' } } },
       },
+      [Widget.Button]: { width: buttonWidth },
     };
     return (
       <Theme config={config}>
@@ -139,7 +128,7 @@ export const WrapperDemo = () => {
     [Widget.Popover]: {
       PopoverTitle: { normal: { background: { color: 'green' }, font: { color: 'white' } } },
       PopoverDescription: { normal: { background: { color: 'yellow' }, font: { color: 'red' } } },
-      PopoverOperation: { normal: { background: { color: 'gray' }, font: { color: 'purple' } } },
+      PopoverOperation: { normal: { font: { color: 'purple' } } },
     },
     [Widget.Tooltip]: {
       TooltipContent: { normal: { background: { color: 'pink' }, font: { color: '#333' } } },
