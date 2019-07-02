@@ -6,6 +6,7 @@
  */
 import * as React from 'react';
 import ThemeProvider from '../theme-provider';
+import { addMouseEvent } from '@lugia/theme-hoc';
 import Widget from '../consts/index';
 import DelayHoc from '../common/DelayHoc';
 import MouseEventAdaptor from '../common/MouseEventAdaptor';
@@ -81,13 +82,28 @@ export default ThemeProvider(
             getTheme,
             loading,
             onMouseOut,
-            onMouseEnter,
             onMouseOver,
+            onMouseEnter,
+            onMouseLeave,
             onMouseUp,
             onMouseDown,
             block,
+            getPartOfThemeProps,
           } = this.props;
           const { clicked } = this.state;
+          const mouseConfig = {
+            enter: onMouseEnter,
+            leave: onMouseLeave,
+            up: onMouseUp,
+            down: onMouseDown,
+          };
+          const ButtonWrapTheme = getPartOfThemeProps('ButtonWrap');
+          ButtonWrapTheme.propsConfig = {
+            type,
+            plain,
+            disabled,
+            loading,
+          };
           return (
             <ButtonOut
               clicked={clicked}
@@ -100,12 +116,13 @@ export default ThemeProvider(
               loading={loading}
               onClick={this.onClick}
               onMouseOut={onMouseOut}
-              onMouseEnter={onMouseEnter}
               onMouseOver={onMouseOver}
-              onMouseUp={onMouseUp}
-              onMouseDown={onMouseDown}
               themes={getTheme()}
               block={block}
+              themeProps={ButtonWrapTheme}
+              {...addMouseEvent(this, mouseConfig)}
+              onFocus={() => console.log('focus')}
+              onBlur={() => console.log('onBlur')}
             >
               <ChildrenSpan size={size} type={type} plain={plain}>
                 {this.handleChildren()}
@@ -116,5 +133,6 @@ export default ThemeProvider(
       }
     )
   ),
-  Widget.Button
+  Widget.Button,
+  { hover: true, active: true }
 );

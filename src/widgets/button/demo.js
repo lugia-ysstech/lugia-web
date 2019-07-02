@@ -18,12 +18,11 @@ const Wrapper = styled.div`
 export default () => {
   const view = {
     [Widget.Button]: {
-      width: 100,
-    },
-    register: {
-      width: 300,
-      margin: 10,
-      color: 'red',
+      ButtonWrap: {
+        disabled: {
+          color: 'green',
+        },
+      },
     },
   };
   return (
