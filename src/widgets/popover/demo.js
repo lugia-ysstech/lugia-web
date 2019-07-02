@@ -49,7 +49,7 @@ class InnerCloseDemo extends React.Component<any, any> {
     );
   }
 }
-class HoverAndClcikDemo extends React.Component<any, any> {
+class HoverAndClickDemo extends React.Component<any, any> {
   state = {
     clicked: false,
     hovered: false,
@@ -81,31 +81,50 @@ class HoverAndClcikDemo extends React.Component<any, any> {
   render() {
     const hoverContent = <div>This is hover content.</div>;
     const clickContent = <div>This is click content.</div>;
+    const config = {
+      [Widget.Popover]: {},
+      [Widget.Tooltip]: {
+        TooltipContent: {
+          normal: {
+            background: {
+              color: 'blue',
+            },
+            font: {
+              color: '#000',
+            },
+          },
+        },
+        [Widget.Button]: {
+          width: buttonWidth,
+        },
+      },
+    };
     return (
-      <Popover
-        style={{ width: 500 }}
-        description={hoverContent}
-        title="This is  hover title"
-        action={'hover'}
-        placement="topLeft"
-        visible={this.state.hovered}
-        onVisibleChange={this.handleHoverChange}
-      >
-        <div>
-          <Popover
-            description={clickContent}
-            title="This is  click title"
-            action={'click'}
-            placement="topLeft"
-            visible={this.state.clicked}
-            clear={'lugia-icon-reminder_close'}
-            onVisibleChange={this.handleClickChange}
-            onClearClick={this.hide}
-          >
-            <Direction type="primary">Hover and click / 悬停并单击</Direction>
-          </Popover>
-        </div>
-      </Popover>
+      <Theme config={config}>
+        <Popover
+          description={hoverContent}
+          title="This is  hover title"
+          action={'hover'}
+          placement="topLeft"
+          visible={this.state.hovered}
+          onVisibleChange={this.handleHoverChange}
+        >
+          <div>
+            <Popover
+              description={clickContent}
+              title="This is  click title"
+              action={'click'}
+              placement="topLeft"
+              visible={this.state.clicked}
+              clear={'lugia-icon-reminder_close'}
+              onVisibleChange={this.handleClickChange}
+              onClearClick={this.hide}
+            >
+              <Direction type="primary">Hover and click / 悬停并单击</Direction>
+            </Popover>
+          </div>
+        </Popover>
+      </Theme>
     );
   }
 }
@@ -117,17 +136,15 @@ export const WrapperDemo = () => {
   const text = 'this is title ';
   const description = 'this is description';
   const config = {
+    [Widget.Popover]: {
+      PopoverTitle: { normal: { background: { color: 'green' }, font: { color: 'white' } } },
+      PopoverDescription: { normal: { background: { color: 'yellow' }, font: { color: 'red' } } },
+      PopoverOperation: { normal: { background: { color: 'gray' }, font: { color: 'purple' } } },
+    },
     [Widget.Tooltip]: {
-      normal: {
-        color: '#fef0ef',
-        font: {
-          fontColor: '#000',
-        },
-      },
+      TooltipContent: { normal: { background: { color: 'pink' }, font: { color: '#333' } } },
     },
-    [Widget.Button]: {
-      width: buttonWidth,
-    },
+    [Widget.Button]: { width: buttonWidth },
   };
   return (
     <Wrapper>
@@ -253,7 +270,7 @@ export default () => {
     <Popover />,
     <WrapperDemo />,
     <Wrapper>
-      <HoverAndClcikDemo /> <InnerCloseDemo />
+      <HoverAndClickDemo /> <InnerCloseDemo />
     </Wrapper>,
   ];
 };

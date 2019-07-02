@@ -122,41 +122,25 @@ exports[`popover Demo Component JSON 1`] = `
 }
 
 .c4::-webkit-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c4::-moz-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c4:-ms-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c4::placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c3 {
   position: relative;
   display: inline-block;
   outline: none;
-  border-top-width: 0rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
 }
 
 .c0 {
@@ -439,7 +423,6 @@ exports[`popover Demo Component JSON 1`] = `
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     onMouseUp={[Function]}
-    style={Object {}}
   >
     <input
       autoFocus={false}
