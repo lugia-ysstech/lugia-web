@@ -87,6 +87,7 @@ export const Group = CSSComponent({
     selectNames: [
       ['opacity'],
       ['border'],
+      ['borderRadius'],
       ['background'],
       ['width'],
       ['height'],

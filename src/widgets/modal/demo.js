@@ -5,11 +5,12 @@
  * @flow
  */
 import * as React from 'react';
-import { getBorder, getBoxShadow } from '@lugia/theme-css-hoc';
+import { getBorder, getBoxShadow } from '@lugia/theme-utils';
 import Modal from './index';
 import Button from '../button';
 import Theme from '../theme';
 import Widgets from '../consts';
+import { getBorderRadius } from '../theme/CSSProvider';
 
 class ModalBox extends React.Component<any, any> {
   constructor() {
@@ -101,7 +102,8 @@ export default class ModalDemo extends React.Component<any, any> {
           normal: {
             width: 800,
             height: 500,
-            border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }, { radius: 50 }),
+            border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }),
+            borderRadius: getBorderRadius(50),
             opacity: 0.8,
             boxShadow: getBoxShadow('1px 2px 2px 2px #e8e8e8'),
             background: { color: 'orange' },

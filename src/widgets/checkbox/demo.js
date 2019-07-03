@@ -9,7 +9,8 @@ import styled from 'styled-components';
 import Theme from '../theme';
 import Widget from '../consts';
 import CheckBox from './';
-import { getBorder } from '@lugia/theme-css-hoc';
+import { getBorder } from '@lugia/theme-utils';
+import { getBorderRadius } from '../theme/CSSProvider';
 
 const CheckBoxGroup = CheckBox.Group;
 const CheckBoxButton = CheckBox.Button;
@@ -87,49 +88,59 @@ export class CheckboxDemo extends React.Component<any, any> {
         CheckboxEdgeChecked: {
           normal: {
             background: { color: '#56c22d' },
-            border: getBorder({ color: 'yellow', width: 2, style: 'solid' }, { radius: 2 }),
+            border: getBorder({ color: 'yellow', width: 2, style: 'solid' }),
+            borderRadius: getBorderRadius(2),
           },
           hover: {
             background: { color: 'red' },
-            border: getBorder({ color: 'yellow', width: 2, style: 'solid' }, { radius: 2 }),
+            border: getBorder({ color: 'yellow', width: 2, style: 'solid' }),
+            borderRadius: getBorderRadius(2),
           },
           disabled: {
             background: { color: 'red' },
-            border: getBorder({ color: 'orange', width: 2, style: 'solid' }, { radius: 2 }),
+            border: getBorder({ color: 'orange', width: 2, style: 'solid' }),
+            borderRadius: getBorderRadius(2),
           },
         },
         CheckboxEdgeUnChecked: {
           normal: {
             background: { color: 'yellow' },
-            border: getBorder({ color: '#56c22d', width: 2, style: 'solid' }, { radius: 2 }),
+            border: getBorder({ color: '#56c22d', width: 2, style: 'solid' }),
+            borderRadius: getBorderRadius(2),
           },
           hover: {
             background: { color: '#56c22d' },
-            border: getBorder({ color: 'yellow', width: 2, style: 'solid' }, { radius: 2 }),
+            border: getBorder({ color: 'yellow', width: 2, style: 'solid' }),
+            borderRadius: getBorderRadius(2),
           },
           disabled: {
             background: { color: 'orange' },
-            border: getBorder({ color: 'red', width: 2, style: 'solid' }, { radius: 2 }),
+            border: getBorder({ color: 'red', width: 2, style: 'solid' }),
+            borderRadius: getBorderRadius(2),
           },
         },
         CheckboxEdgeIndeterminate: {
           normal: {
             background: { color: 'yellow' },
-            border: getBorder({ color: '#56c22d', width: 2, style: 'solid' }, { radius: 2 }),
+            border: getBorder({ color: '#56c22d', width: 2, style: 'solid' }),
+            borderRadius: getBorderRadius(2),
           },
           hover: {
             background: { color: '#56c22d' },
-            border: getBorder({ color: 'yellow', width: 2, style: 'solid' }, { radius: 2 }),
+            borderRadius: getBorderRadius(2),
+            border: getBorder({ color: 'yellow', width: 2, style: 'solid' }),
           },
           disabled: {
             background: { color: 'orange' },
-            border: getBorder({ color: 'red', width: 2, style: 'solid' }, { radius: 2 }),
+            border: getBorder({ color: 'red', width: 2, style: 'solid' }),
+            borderRadius: getBorderRadius(2),
           },
         },
         CheckboxEdgeCancel: {
           normal: {
             background: { color: 'pink' },
-            border: getBorder({ color: '#56c22d', width: 2, style: 'solid' }, { radius: 2 }),
+            borderRadius: getBorderRadius(2),
+            border: getBorder({ color: '#56c22d', width: 2, style: 'solid' }),
           },
         },
         CheckboxInnerChecked: {
@@ -262,7 +273,8 @@ export const CheckboxGroupDemo = class extends React.Component<any, any> {
             width: 400,
             height: 500,
             opacity: 1,
-            border: getBorder({ color: 'orange', width: 2, style: 'solid' }, { radius: 4 }),
+            border: getBorder({ color: 'orange', width: 2, style: 'solid' }),
+            borderRadius: getBorderRadius(4),
             background: { color: 'orange' },
             padding: {
               top: 10,
@@ -318,49 +330,59 @@ export const CheckboxGroupDemo = class extends React.Component<any, any> {
           CheckboxEdgeChecked: {
             normal: {
               background: { color: '#56c22d' },
-              border: getBorder({ color: 'yellow', width: 2, style: 'solid' }, { radius: 2 }),
+              border: getBorder({ color: 'yellow', width: 2, style: 'solid' }),
+              borderRadius: getBorderRadius(2),
             },
             hover: {
               background: { color: 'red' },
-              border: getBorder({ color: 'yellow', width: 2, style: 'solid' }, { radius: 2 }),
+              border: getBorder({ color: 'yellow', width: 2, style: 'solid' }),
+              borderRadius: getBorderRadius(2),
             },
             disabled: {
               background: { color: 'red' },
-              border: getBorder({ color: 'orange', width: 2, style: 'solid' }, { radius: 2 }),
+              border: getBorder({ color: 'orange', width: 2, style: 'solid' }),
+              borderRadius: getBorderRadius(2),
             },
           },
           CheckboxEdgeUnChecked: {
             normal: {
               background: { color: 'yellow' },
-              border: getBorder({ color: '#56c22d', width: 2, style: 'solid' }, { radius: 2 }),
+              borderRadius: getBorderRadius(2),
+              border: getBorder({ color: '#56c22d', width: 2, style: 'solid' }),
             },
             hover: {
               background: { color: '#56c22d' },
-              border: getBorder({ color: 'yellow', width: 2, style: 'solid' }, { radius: 2 }),
+              borderRadius: getBorderRadius(2),
+              border: getBorder({ color: 'yellow', width: 2, style: 'solid' }),
             },
             disabled: {
               background: { color: 'orange' },
-              border: getBorder({ color: 'red', width: 2, style: 'solid' }, { radius: 2 }),
+              borderRadius: getBorderRadius(2),
+              border: getBorder({ color: 'red', width: 2, style: 'solid' }),
             },
           },
           CheckboxEdgeIndeterminate: {
             normal: {
               background: { color: 'yellow' },
-              border: getBorder({ color: '#56c22d', width: 2, style: 'solid' }, { radius: 2 }),
+              borderRadius: getBorderRadius(2),
+              border: getBorder({ color: '#56c22d', width: 2, style: 'solid' }),
             },
             hover: {
               background: { color: '#56c22d' },
-              border: getBorder({ color: 'yellow', width: 2, style: 'solid' }, { radius: 2 }),
+              borderRadius: getBorderRadius(2),
+              border: getBorder({ color: 'yellow', width: 2, style: 'solid' }),
             },
             disabled: {
               background: { color: 'orange' },
-              border: getBorder({ color: 'red', width: 2, style: 'solid' }, { radius: 2 }),
+              border: getBorder({ color: 'red', width: 2, style: 'solid' }),
+              borderRadius: getBorderRadius(2),
             },
           },
           CheckboxEdgeCancel: {
             normal: {
               background: { color: 'pink' },
-              border: getBorder({ color: '#56c22d', width: 2, style: 'solid' }, { radius: 2 }),
+              border: getBorder({ color: '#56c22d', width: 2, style: 'solid' }),
+              borderRadius: getBorderRadius(2),
             },
           },
           CheckboxInnerChecked: {
@@ -448,7 +470,6 @@ export const CheckboxGroupDemo = class extends React.Component<any, any> {
               width: 100,
               height: 50,
               opacity: 1,
-              // border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 4 }),
               background: { color: 'yellow' },
               color: 'green',
               font: { fontSize: 16, fontWeight: 500 },
@@ -457,7 +478,6 @@ export const CheckboxGroupDemo = class extends React.Component<any, any> {
             hover: {
               background: { color: 'green' },
               opacity: 0.6,
-              // border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 4 }),
               color: 'yellow',
             },
           },

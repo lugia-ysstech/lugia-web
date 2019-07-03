@@ -22,6 +22,7 @@ export const OldValueItem = ThemeHoc(
         ['opacity'],
         ['font'],
         ['border'],
+        ['borderRadius'],
       ],
       getCSS: themeMeta => {
         const { height = MenuItemHeight } = themeMeta;
@@ -29,7 +30,7 @@ export const OldValueItem = ThemeHoc(
       },
     },
     hover: {
-      selectNames: [['color'], ['background'], ['opacity'], ['border']],
+      selectNames: [['color'], ['background'], ['opacity'], ['border'], ['borderRadius']],
     },
     css: css`
       transition: all 0.3s;

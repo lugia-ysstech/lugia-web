@@ -1,7 +1,8 @@
 import * as React from 'react';
 import AutoComplete from './';
-import { getBorder } from '@lugia/theme-css-hoc';
+import { getBorder } from '@lugia/theme-utils';
 import Widget from '../consts/index';
+import { getBorderRadius } from '../theme/CSSProvider';
 
 const data = [
   'Nikcy Romero',
@@ -65,13 +66,15 @@ export default class AutoCompleteBounded extends React.Component<any, any> {
             background: { color: '#333' },
             opacity: 0.6,
             padding: { left: 10 },
-            border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }, { radius: 20 }),
+            border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }),
+            borderRadius: getBorderRadius(20),
           },
           hover: {
             color: '#4d63ff',
             background: { color: '#4a8e29' },
             opacity: 1,
-            border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }, { radius: 20 }),
+            border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }),
+            borderRadius: getBorderRadius(20),
           },
         },
         [Widget.Input]: {
@@ -88,7 +91,8 @@ export default class AutoCompleteBounded extends React.Component<any, any> {
               opacity: 0.6,
               boxShadow: '2px 2px 5px #4d63ff',
               background: { color: '#000' },
-              border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }, { radius: 20 }),
+              border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }),
+              borderRadius: getBorderRadius(20),
             },
             hover: {
               opacity: 1,

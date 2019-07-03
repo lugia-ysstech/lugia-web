@@ -5,7 +5,7 @@
  * @flow
  */
 import * as React from 'react';
-import { getBorder } from '@lugia/theme-css-hoc';
+import { getBorder } from '@lugia/theme-utils';
 import { deepMerge } from '@lugia/object-utils';
 import colorsFunc from '../css/stateColor';
 import ThemeProvider from '../theme-provider';
@@ -21,6 +21,7 @@ import {
   IconWrap,
 } from '../css/checkbox';
 import { addMouseEvent } from '@lugia/theme-hoc';
+import { getBorderRadius } from '../theme/CSSProvider';
 
 type CheckBoxState = {
   checked: boolean,
@@ -41,7 +42,8 @@ const defaultColor = '#fff';
 const defaultEdgeCancelProps = {
   themeConfig: {
     normal: {
-      border: getBorder({ color: disabledColor, width: 1, style: 'solid' }, { radius: 2 }),
+      border: getBorder({ color: disabledColor, width: 1, style: 'solid' }),
+      borderRadius: getBorderRadius(2),
       background: { color: disabledColor },
     },
   },
@@ -49,15 +51,18 @@ const defaultEdgeCancelProps = {
 const defaultEdgeTheme = {
   themeConfig: {
     normal: {
-      border: getBorder({ color: themeColor, width: 1, style: 'solid' }, { radius: 2 }),
+      border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
+      borderRadius: getBorderRadius(2),
       background: { color: themeColor },
     },
     hover: {
-      border: getBorder({ color: themeColor, width: 1, style: 'solid' }, { radius: 2 }),
+      border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
+      borderRadius: getBorderRadius(2),
       background: { color: themeColor },
     },
     disabled: {
-      border: getBorder({ color: disableColor, width: 1, style: 'solid' }, { radius: 2 }),
+      border: getBorder({ color: disableColor, width: 1, style: 'solid' }),
+      borderRadius: getBorderRadius(2),
       background: { color: disableColor },
     },
   },

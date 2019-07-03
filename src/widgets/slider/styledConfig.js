@@ -9,7 +9,7 @@ import {
 } from './slider_public_color';
 import { btnWidthNormal, rangeHeightNormal, rangeWidthNormal } from './slider_public_size';
 import colorsFunc from '../css/stateColor';
-import { getBorder } from '../theme/CSSProvider';
+import { getBorder, getBorderRadius } from '../theme/CSSProvider';
 //import {rangeWidthNormal,rangeHeightNormal,btnWidthNormal} from './slider_public_size';
 export const { themeColor } = colorsFunc();
 
@@ -66,7 +66,8 @@ function getSliderTrackThemeProps(getPartOfThemeProps, vertical) {
       background: {
         color: trackBackground,
       },
-      border: getBorder({ color: '', style: '', width: 0 }, { radius: 6 }),
+      border: getBorder({ color: '', style: '', width: 0 }),
+      borderRadius: getBorderRadius(6),
     },
   };
   const mergeSliderTrackNormal = deepMerge(sliderNormalTheme, { normal });
@@ -252,7 +253,7 @@ function getTipsThemeProps(getPartOfThemeProps) {
       },
       height: 27,
       color: tipColor,
-      border: getBorder({}, { radius: 3 }),
+      borderRadius: getBorderRadius(3),
       fontSize: 14,
     },
     disabled: {

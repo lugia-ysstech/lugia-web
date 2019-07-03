@@ -83,7 +83,7 @@ export default class Sw extends Component<any, TypeState> {
                     background: {
                       color: 'blue',
                     },
-                    border: getBorder({}, { radius: 40 }),
+                    borderRadius: getBorderRadius(40),
                     color: 'red',
                   },
                   active: {
@@ -92,7 +92,7 @@ export default class Sw extends Component<any, TypeState> {
                     background: {
                       color: 'yellow',
                     },
-                    border: getBorder({}, { radius: 30 }),
+                    borderRadius: getBorderRadius(30),
                   },
                   disabled: {
                     background: {

@@ -134,6 +134,7 @@ export const Alert = CSSComponent({
       ['height'],
       ['background'],
       ['border', 'left'],
+      ['borderRadius'],
       ['boxShadow'],
     ],
     getThemeMeta(themeMeta, themeProps) {

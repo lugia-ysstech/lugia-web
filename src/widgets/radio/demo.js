@@ -6,10 +6,11 @@
  */
 import React from 'react';
 import styled from 'styled-components';
-import { getBorder } from '@lugia/theme-css-hoc';
+import { getBorder } from '@lugia/theme-utils';
 import Theme from '../theme';
 import Widget from '../consts';
 import Radio from './';
+import { getBorderRadius } from '../theme/CSSProvider';
 
 const RadioGroup = Radio.Group;
 const RadioButton = Radio.Button;
@@ -77,45 +78,53 @@ export class RadioDemo extends React.Component<any, any> {
         RadioEdgeChecked: {
           normal: {
             background: { color: 'orange' },
-            border: getBorder({ color: 'red', width: 2, style: 'solid' }, { radius: 100 }),
+            border: getBorder({ color: 'red', width: 2, style: 'solid' }),
+            borderRadius: getBorderRadius(100),
             width: 20,
             height: 20,
           },
           hover: {
             background: { color: 'green' },
-            border: getBorder({ color: 'orange', width: 2, style: 'solid' }, { radius: 100 }),
+            border: getBorder({ color: 'orange', width: 2, style: 'solid' }),
+            borderRadius: getBorderRadius(100),
           },
           disabled: {
             background: { color: '#ccc' },
-            border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 100 }),
+            borderRadius: getBorderRadius(100),
+            border: getBorder({ color: 'pink', width: 2, style: 'solid' }),
           },
         },
         RadioEdgeCancel: {
           normal: {
             background: { color: 'orange' },
-            border: getBorder({ color: 'red', width: 2, style: 'solid' }, { radius: 100 }),
+            border: getBorder({ color: 'red', width: 2, style: 'solid' }),
+            borderRadius: getBorderRadius(100),
             width: 20,
             height: 20,
           },
           hover: {
             background: { color: 'green' },
-            border: getBorder({ color: 'orange', width: 2, style: 'solid' }, { radius: 100 }),
+            borderRadius: getBorderRadius(100),
+            border: getBorder({ color: 'orange', width: 2, style: 'solid' }),
           },
         },
         RadioEdgeUnChecked: {
           normal: {
             background: { color: 'yellow' },
-            border: getBorder({ color: 'green', width: 2, style: 'solid' }, { radius: 100 }),
+            borderRadius: getBorderRadius(100),
+            border: getBorder({ color: 'green', width: 2, style: 'solid' }),
             width: 20,
             height: 20,
           },
           hover: {
+            borderRadius: getBorderRadius(100),
             background: { color: 'pink' },
-            border: getBorder({ color: 'orange', width: 2, style: 'solid' }, { radius: 100 }),
+            border: getBorder({ color: 'orange', width: 2, style: 'solid' }),
           },
           disabled: {
+            borderRadius: getBorderRadius(100),
             background: { color: 'yellow' },
-            border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 100 }),
+            border: getBorder({ color: 'pink', width: 2, style: 'solid' }),
           },
         },
         RadioInnerChecked: {
@@ -286,33 +295,39 @@ export class RadioGroupDemo extends React.Component<any, any> {
           RadioEdgeChecked: {
             normal: {
               background: { color: 'orange' },
-              border: getBorder({ color: 'red', width: 2, style: 'solid' }, { radius: 100 }),
+              borderRadius: getBorderRadius(100),
+              border: getBorder({ color: 'red', width: 2, style: 'solid' }),
               width: 20,
               height: 20,
             },
             hover: {
               background: { color: 'green' },
-              border: getBorder({ color: 'orange', width: 2, style: 'solid' }, { radius: 100 }),
+              borderRadius: getBorderRadius(100),
+              border: getBorder({ color: 'orange', width: 2, style: 'solid' }),
             },
             disabled: {
               background: { color: '#ccc' },
-              border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 100 }),
+              borderRadius: getBorderRadius(100),
+              border: getBorder({ color: 'pink', width: 2, style: 'solid' }),
             },
           },
           RadioEdgeUnChecked: {
             normal: {
               background: { color: 'yellow' },
-              border: getBorder({ color: 'green', width: 2, style: 'solid' }, { radius: 100 }),
+              borderRadius: getBorderRadius(100),
+              border: getBorder({ color: 'green', width: 2, style: 'solid' }),
               width: 20,
               height: 20,
             },
             hover: {
               background: { color: 'pink' },
-              border: getBorder({ color: 'orange', width: 2, style: 'solid' }, { radius: 100 }),
+              borderRadius: getBorderRadius(100),
+              border: getBorder({ color: 'orange', width: 2, style: 'solid' }),
             },
             disabled: {
               background: { color: 'yellow' },
-              border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 100 }),
+              borderRadius: getBorderRadius(100),
+              border: getBorder({ color: 'pink', width: 2, style: 'solid' }),
             },
           },
           RadioInnerChecked: {
@@ -341,7 +356,8 @@ export class RadioGroupDemo extends React.Component<any, any> {
             width: 500,
             height: 200,
             opacity: 1,
-            border: getBorder({ color: 'orange', width: 2, style: 'solid' }, { radius: 4 }),
+            border: getBorder({ color: 'orange', width: 2, style: 'solid' }),
+            borderRadius: getBorderRadius(4),
             background: { color: '#ccc' },
             padding: {
               top: 10,
@@ -400,45 +416,53 @@ export class RadioGroupDemo extends React.Component<any, any> {
           RadioEdgeChecked: {
             normal: {
               background: { color: 'orange' },
-              border: getBorder({ color: 'red', width: 2, style: 'solid' }, { radius: 100 }),
+              border: getBorder({ color: 'red', width: 2, style: 'solid' }),
+              borderRadius: getBorderRadius(100),
               width: 20,
               height: 20,
             },
             hover: {
               background: { color: 'green' },
-              border: getBorder({ color: 'orange', width: 2, style: 'solid' }, { radius: 100 }),
+              borderRadius: getBorderRadius(100),
+              border: getBorder({ color: 'orange', width: 2, style: 'solid' }),
             },
             disabled: {
               background: { color: '#ccc' },
-              border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 100 }),
+              borderRadius: getBorderRadius(100),
+              border: getBorder({ color: 'pink', width: 2, style: 'solid' }),
             },
           },
           RadioEdgeCancel: {
             normal: {
               background: { color: 'orange' },
-              border: getBorder({ color: 'red', width: 2, style: 'solid' }, { radius: 100 }),
+              border: getBorder({ color: 'red', width: 2, style: 'solid' }),
+              borderRadius: getBorderRadius(100),
               width: 20,
               height: 20,
             },
             hover: {
               background: { color: 'green' },
-              border: getBorder({ color: 'orange', width: 2, style: 'solid' }, { radius: 100 }),
+              border: getBorder({ color: 'orange', width: 2, style: 'solid' }),
+              borderRadius: getBorderRadius(100),
             },
           },
           RadioEdgeUnChecked: {
             normal: {
               background: { color: 'yellow' },
-              border: getBorder({ color: 'green', width: 2, style: 'solid' }, { radius: 100 }),
+              borderRadius: getBorderRadius(100),
+              border: getBorder({ color: 'green', width: 2, style: 'solid' }),
               width: 20,
               height: 20,
             },
             hover: {
               background: { color: 'pink' },
-              border: getBorder({ color: 'orange', width: 2, style: 'solid' }, { radius: 100 }),
+              borderRadius: getBorderRadius(100),
+              border: getBorder({ color: 'orange', width: 2, style: 'solid' }),
             },
             disabled: {
               background: { color: 'yellow' },
-              border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 100 }),
+              borderRadius: getBorderRadius(100),
+              border: getBorder({ color: 'pink', width: 2, style: 'solid' }),
             },
           },
           RadioInnerChecked: {
@@ -471,7 +495,8 @@ export class RadioGroupDemo extends React.Component<any, any> {
               width: 100,
               height: 50,
               opacity: 1,
-              border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 4 }),
+              border: getBorder({ color: 'pink', width: 2, style: 'solid' }),
+              borderRadius: getBorderRadius(4),
               background: { color: 'yellow' },
               color: 'red',
               font: { fontSize: 16, fontWeight: 500 },
@@ -480,13 +505,15 @@ export class RadioGroupDemo extends React.Component<any, any> {
             hover: {
               background: { color: 'yellow' },
               opacity: 0.6,
-              border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 4 }),
+              border: getBorder({ color: 'pink', width: 2, style: 'solid' }),
+              borderRadius: getBorderRadius(4),
               color: 'green',
             },
             disabled: {
               background: { color: 'orange' },
               opacity: 0.6,
-              border: getBorder({ color: 'red', width: 2, style: 'solid' }, { radius: 4 }),
+              border: getBorder({ color: 'red', width: 2, style: 'solid' }),
+              borderRadius: getBorderRadius(4),
               color: 'green',
             },
           },
@@ -495,7 +522,8 @@ export class RadioGroupDemo extends React.Component<any, any> {
               width: 100,
               height: 50,
               opacity: 1,
-              border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 4 }),
+              border: getBorder({ color: 'pink', width: 2, style: 'solid' }),
+              borderRadius: getBorderRadius(4),
               background: { color: 'yellow' },
               color: 'green',
               font: { fontSize: 16, fontWeight: 500 },
@@ -504,7 +532,8 @@ export class RadioGroupDemo extends React.Component<any, any> {
             hover: {
               background: { color: 'green' },
               opacity: 0.6,
-              border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 4 }),
+              border: getBorder({ color: 'pink', width: 2, style: 'solid' }),
+              borderRadius: getBorderRadius(4),
               color: 'yellow',
             },
           },
@@ -513,7 +542,8 @@ export class RadioGroupDemo extends React.Component<any, any> {
               width: 100,
               height: 50,
               opacity: 1,
-              border: getBorder({ color: 'green', width: 2, style: 'solid' }, { radius: 4 }),
+              border: getBorder({ color: 'green', width: 2, style: 'solid' }),
+              borderRadius: getBorderRadius(4),
               background: { color: '#33f340' },
               color: 'red',
               font: { fontSize: 16, fontWeight: 500 },
@@ -522,13 +552,15 @@ export class RadioGroupDemo extends React.Component<any, any> {
             hover: {
               background: { color: 'yellow' },
               opacity: 0.6,
-              border: getBorder({ color: 'pink', width: 2, style: 'solid' }, { radius: 4 }),
+              border: getBorder({ color: 'pink', width: 2, style: 'solid' }),
+              borderRadius: getBorderRadius(4),
               color: 'green',
             },
             disabled: {
               background: { color: 'orange' },
               opacity: 0.6,
-              border: getBorder({ color: 'red', width: 2, style: 'solid' }, { radius: 4 }),
+              border: getBorder({ color: 'red', width: 2, style: 'solid' }),
+              borderRadius: getBorderRadius(4),
               color: 'yellow',
             },
           },

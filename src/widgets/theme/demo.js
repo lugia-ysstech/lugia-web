@@ -9,10 +9,9 @@ import React from 'react';
 import { css } from 'styled-components';
 import Theme from './';
 import Input from '../input';
-import Card from '../card';
-import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
 import CSSProvider, { getClassName } from './CSSProvider.js';
+
 const themeColor = '#4d63ff';
 const Button = CSSProvider({
   tag: 'button',
@@ -36,7 +35,7 @@ const SelfInput = CSSProvider({
 const Child = CSSProvider({
   tag: 'div',
   normal: {
-    selectNames: [['width'], ['height'], ['border']], //只应用于配置属性
+    selectNames: [['width'], ['height'], ['borderRadius'], ['border']], //只应用于配置属性
     default: { width: 100, height: 100 },
   },
   hover: {
@@ -139,6 +138,7 @@ class Demo extends React.Component<any, any> {
     );
   }
 }
+
 class InputDemo extends React.Component<any, any> {
   render() {
     const config = {
