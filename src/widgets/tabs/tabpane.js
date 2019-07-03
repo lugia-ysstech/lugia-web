@@ -103,7 +103,6 @@ const BaseTabHoc = CSSComponent({
       color: themeColor,
     },
     getCSS: (theme: Object, themeProps: Object) => {
-      console.log('getCSS hover');
       const {
         propsConfig: { tabType },
       } = themeProps;
@@ -638,7 +637,6 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     this.setState({ iconClass: 'lugia-icon-reminder_close' });
   };
   onMouseEnter = (e: Object) => {
-    console.log('getCSS onMouseEnter');
     const { onMouseEnter, index } = this.props;
     onMouseEnter && onMouseEnter(index);
   };

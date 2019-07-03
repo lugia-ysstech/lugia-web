@@ -338,10 +338,6 @@ class TabsBox extends Component<TabsProps, TabsState> {
     });
   };
 
-  componentDidMount() {
-    console.log('componentDidMount tabs');
-  }
-
   getChildrenContent() {
     const { activityValue, data } = this.state;
     const { tabPosition, themeProps } = this.props;

@@ -458,12 +458,12 @@ class TabHeader extends Component<TabsProps, TabsState> {
 
   static getDerivedStateFromProps(props: TabsProps, state: TabsState) {
     const { activityValue, data } = props;
-    const datalength = data ? data.length : 0;
-    let allowToCalc = true;
+    const dataLength = data ? data.length : 0;
+    let allowToCalc = false;
     let returnData = {};
     if (state) {
-      if (datalength === state.oldDataLength) {
-        allowToCalc = false;
+      if (dataLength !== state.oldDataLength) {
+        allowToCalc = true;
       }
       returnData = {
         data,
@@ -472,7 +472,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
         pagedCount: state.pagedCount,
         arrowShow: state.arrowShow,
         activityValue,
-        oldDataLength: datalength,
+        oldDataLength: dataLength,
         allowToCalc,
         titleSize: state.titleSize,
       };
@@ -484,7 +484,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
         pagedCount: 0,
         arrowShow: false,
         activityValue,
-        oldDataLength: datalength,
+        oldDataLength: dataLength,
         allowToCalc,
         titleSize: [],
       };
@@ -495,10 +495,13 @@ class TabHeader extends Component<TabsProps, TabsState> {
     };
   }
 
-  // shouldComponentUpdate(nextProps: any, nextState: any) {
-  //   console.log('componentDidUpdate',nextProps,nextState);
-  //   return true;
-  // }
+  shouldComponentUpdate(nextProps: any, nextState: any) {
+    const { allowToCalc } = this.state;
+    if (allowToCalc) {
+      this.matchPage();
+    }
+    return true;
+  }
 
   componentDidMount() {
     if (this.titleBox) {
@@ -523,14 +526,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
     const arrowShow = totalPage > 1 && currentPage < totalPage;
     this.setState({ arrowShow, totalPage, titleSize });
   }
-
-  // componentWillUpdate(nextProps, nextState){
-  //   console.log('componentDidMount componentWillUpdate',nextProps,nextState);
-  // }
-
   render() {
-    const { data } = this.state;
-    // this.titlePanel = [...Array(data.length)].map(() => React.createRef());
     return <React.Fragment>{this.getTabs()}</React.Fragment>;
   }
 
