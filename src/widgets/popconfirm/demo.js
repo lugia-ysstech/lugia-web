@@ -7,6 +7,7 @@
 import * as React from 'react';
 import Direction from '../button';
 import Icon from '../icon';
+import Switch from '../switch';
 import notification from '../notification';
 import styled from 'styled-components';
 import Popconfirm from './popconfirm';
@@ -62,6 +63,7 @@ export class Condition extends React.Component<any, any> {
     return (
       <div style={{ margin: 20 }}>
         <p> 触发弹出框</p>
+        <Switch defaultChecked onChange={this.changeCondition} />
         <Popconfirm
           title="确定要删除吗?"
           visible={this.state.visible}
