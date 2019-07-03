@@ -56,7 +56,7 @@ const Content: Object = CSSComponent({
   normal: {
     selectNames: [['background'], ['width'], ['height'], ['boxShadow'], ['border']],
     defaultTheme: {
-      background: { color: superLightColor },
+      background: { color: defaultColor },
       boxShadow: getBoxShadow('0 0 2 rgba(102, 102, 102, 0.15)'),
     },
     getThemeMeta(themeMeta, themeProps) {
@@ -82,7 +82,7 @@ const Arrow: Object = CSSComponent({
   tag: 'div',
   className: 'ToolTipArrow',
   normal: {
-    selectNames: [['fontSize'], ['color']],
+    selectNames: [['fontSize'], ['color'], ['background']],
     defaultTheme: {
       fonSize: 12,
       color: defaultColor,
@@ -91,7 +91,7 @@ const Arrow: Object = CSSComponent({
       const { propsConfig } = themeProps;
       const { background = {} } = themeMeta;
       const { direction } = propsConfig;
-      const bgColor = background && background.color ? background.color : superLightColor;
+      const bgColor = background && background.color ? background.color : defaultColor;
       switch (direction) {
         case Up:
           return `
@@ -142,7 +142,7 @@ const BaseArrow: Object = CSSComponent({
     getCSS(themeMeta: Object, themeProps: Object): string {
       const { propsConfig } = themeProps;
       const { background = {} } = themeMeta;
-      const bgColor = background && background.color ? background.color : superLightColor;
+      const bgColor = background && background.color ? background.color : defaultColor;
 
       const { direction, placement } = propsConfig;
       let angle = '';
@@ -259,7 +259,6 @@ const Message: Object = CSSComponent({
     user-select: none;
     line-height: 1;
     overflow: hidden;
-    padding: ${px2remcss(6)} ${px2remcss(8)};
     text-align: left;
     text-decoration: none;
   `,
