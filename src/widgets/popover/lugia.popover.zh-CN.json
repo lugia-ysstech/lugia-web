@@ -151,5 +151,58 @@
       }
     }
   },
-  "theme": {}
+  "theme": {
+    "TooltipContent": {
+      "name": "气泡卡片框内容部分",
+      "desc": "气泡卡片框内容部分",
+      "normal": [
+        ["opacity"],
+        ["background"],
+        ["width"],
+        ["height"],
+        ["margin"],
+        ["padding"],
+        ["border"]
+      ]
+    },
+    "PopoverTitle": {
+      "name": "气泡卡片标题部分",
+      "desc": "气泡卡片标题部分",
+      "normal": [
+        ["opacity"],
+        ["background"],
+        ["width"],
+        ["height"],
+        ["color"],
+        ["font"],
+        ["fontSize"]
+      ]
+    },
+    "PopoverDescription": {
+      "name": "气泡卡片描述部分",
+      "desc": "气泡卡片描述部分",
+      "normal": [
+        ["opacity"],
+        ["background"],
+        ["width"],
+        ["height"],
+        ["color"],
+        ["font"],
+        ["fontSize"]
+      ]
+    },
+    "PopoverOperation": {
+      "name": "气泡卡片操作部分",
+      "desc": "气泡卡片操作部分",
+      "normal": [
+        ["opacity"],
+        ["background"],
+        ["width"],
+        ["height"],
+        ["color"],
+        ["font"],
+        ["fontSize"]
+      ]
+    }
+  }
 }
