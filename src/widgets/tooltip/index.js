@@ -16,7 +16,7 @@ import { units } from '@lugia/css';
 import { addPropsConfig } from '../avatar';
 const { px2remcss } = units;
 const DefaultMessage = '默认信息';
-const { defaultColor, blackColor, superLightColor } = colorsFunc();
+const { defaultColor, blackColor } = colorsFunc();
 
 const ToolTrigger: Object = ThemeHoc(
   CSSComponent({
