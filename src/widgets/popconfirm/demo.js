@@ -82,19 +82,11 @@ export const WrapperDemo = () => {
   const text = '确定删除这个选项吗?';
   const config = {
     [Widget.Popconfirm]: {
-      PopconfirmContent: {
-        normal: {
-          font: {
-            color: '#000',
-          },
-          background: { color: 'green' },
-        },
-      },
+      PopconfirmContent: { normal: { font: { color: '#000' }, background: { color: 'green' } } },
       PopconfirmTitle: { normal: { background: { color: 'red' } } },
+      PopconfirmText: { normal: { color: 'red' } },
     },
-    [Widget.Tooltip]: {
-      TooltipContent: { normal: { background: { color: 'pink' } } },
-    },
+    [Widget.Tooltip]: { TooltipContent: { normal: { background: { color: 'pink' } } } },
   };
   return (
     <Wrapper>

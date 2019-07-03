@@ -125,10 +125,10 @@ const Content: Object = CSSComponent({
     selectNames: [['font'], ['fontSize'], ['padding'], ['background'], ['boxShadow']],
     defaultTheme: {
       padding: {
-        top: 3,
-        bottom: 3,
-        left: 4,
-        right: 4,
+        top: 6,
+        bottom: 6,
+        left: 8,
+        right: 8,
       },
       fontSize: 12,
     },

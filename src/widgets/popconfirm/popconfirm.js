@@ -14,10 +14,10 @@ import type { ButtonType } from '../css/button';
 import { ObjectUtils } from '@lugia/type-utils';
 import { getStateFromProps, processOnVisibleChange } from '../tooltip';
 import ThemeHoc from '@lugia/theme-hoc';
-import CSSComponent, { css } from '../theme/CSSProvider';
+import CSSComponent, { css, StaticComponent } from '../theme/CSSProvider';
 import { units } from '@lugia/css';
 import colorsFunc from '../css/stateColor';
-const { mediumGreyColor, darkGreyColor, blackColor } = colorsFunc();
+const { blackColor } = colorsFunc();
 const { px2remcss } = units;
 
 type PopconfirmProps = {
@@ -106,10 +106,10 @@ const Content = CSSComponent({
     defaultTheme: {
       fontSize: 12,
       padding: {
-        top: 3,
-        bottom: 3,
-        left: 4,
-        right: 4,
+        top: 6,
+        bottom: 6,
+        left: 8,
+        right: 8,
       },
     },
   },
@@ -117,18 +117,15 @@ const Content = CSSComponent({
     display: block;
   `,
 });
-const Operation = CSSComponent({
-  extend: Content,
+const Operation = StaticComponent({
+  tag: 'div',
   className: 'PopconfirmOperation',
   normal: {
-    selectNames: [['margin']],
-    defaultTheme: {
-      margin: {
-        top: 12,
-      },
-    },
+    selectNames: [],
   },
   css: css`
+    padding-top: ${px2remcss(12)};
+    display: block;
     text-align: right;
   `,
 });
@@ -158,7 +155,7 @@ const BaseButton: Object = ThemeHoc(
     extend: Button,
     className: 'PopconfirmBaseButton',
     normal: {
-      selectNames: [['font'], ['fontSize'], ['color'], ['margin']],
+      selectNames: [['width'], ['height'], ['font'], ['fontSize'], ['color'], ['margin']],
       defaultTheme: {
         fontSize: 12,
       },
@@ -175,7 +172,7 @@ const Cancel: Object = ThemeHoc(
     extend: BaseButton,
     className: 'PopconfirmCancel',
     normal: {
-      selectNames: [['font'], ['fontSize'], ['color'], ['margin']],
+      selectNames: [['width'], ['height'], ['font'], ['fontSize'], ['color'], ['margin']],
       defaultTheme: {
         fontSize: 12,
         margin: {
@@ -192,7 +189,7 @@ const Confirm: Object = ThemeHoc(
     extend: BaseButton,
     className: 'PopconfirmCancel',
     normal: {
-      selectNames: [['font'], ['fontSize'], ['color'], ['margin']],
+      selectNames: [['width'], ['height'], ['font'], ['fontSize'], ['color'], ['margin']],
       defaultTheme: {
         fontSize: 12,
         margin: {
