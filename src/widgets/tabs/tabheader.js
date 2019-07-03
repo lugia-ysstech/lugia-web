@@ -225,6 +225,8 @@ const AddContainer = ThemeHoc(
   { hover: true, active: false }
 );
 
+AddContainer.displayName = 'addBtn';
+
 const AddOutContainer = CSSComponent({
   tag: 'div',
   className: 'AddContainer',
@@ -261,8 +263,6 @@ const AddIcon = CSSComponent({
     vertical-align: text-top !important;
   `,
 });
-
-AddIcon.displayName = 'addIcon';
 
 const HscrollerContainer = CSSComponent({
   tag: 'div',
@@ -431,6 +431,8 @@ type TabsProps = {
   onDelete?: Function,
   themeProps?: Object,
   viewClass?: string,
+  onMouseEnter?: Function,
+  onMouseLeave?: Function,
   getPartOfThemeHocProps: Function,
   getPartOfThemeProps: Function,
 };
@@ -873,13 +875,13 @@ class TabHeader extends Component<TabsProps, TabsState> {
   }
 
   onTabMouseEnter = (activityValue: string, e: Event) => {
-    const { onTabMouseEnter } = this.props;
-    onTabMouseEnter && onTabMouseEnter(activityValue, e);
+    const { onMouseEnter } = this.props;
+    onMouseEnter && onMouseEnter(activityValue, e);
   };
 
   onTabMouseLeave = (activityValue: string, e: Event) => {
-    const { onTabMouseLeave } = this.props;
-    onTabMouseLeave && onTabMouseLeave(activityValue, e);
+    const { onMouseLeave } = this.props;
+    onMouseLeave && onMouseLeave(activityValue, e);
   };
 
   createNativeClick = (eventName: 'onNextClick' | 'onPreClick', type: EditEventType) => (

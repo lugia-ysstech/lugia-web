@@ -5,7 +5,7 @@
  * @flow
  */
 import * as React from 'react';
-import Tabs from './tabs';
+import Tabs from './';
 import Button from '../button';
 import Switch from '../switch';
 import Tabpane from './tabpane';
@@ -121,7 +121,7 @@ export const suffixData = [
   {
     title: 'Tab1',
     content: 'content of Tab1',
-    suffixIcon: <Icon iconClass={'lugia-icon-reminder_close_circle_o'} />,
+    suffixIcon: <Icon iconClass={'lugia-icon-financial_archive'} />,
   },
   {
     title: 'Tab2',
@@ -443,20 +443,10 @@ const hasActivityValueChildren = [
     activityValue={'12'}
   />,
 ];
-
 export const defaulttestDelayData = [
-  {
-    title: '猪蹄',
-    content: <TestInner />,
-  },
-  {
-    title: '排骨',
-    content: '排骨啊啊啊啊啊',
-  },
-  {
-    title: '鸡腿',
-    content: '鸡腿啊啊啊啊啊',
-  },
+  { title: '猪蹄', content: '猪蹄啊啊啊啊啊' },
+  { title: '排骨', content: '排骨啊啊啊啊啊' },
+  { title: '鸡腿', content: '鸡腿啊啊啊啊啊' },
 ];
 
 const addItem = [
@@ -582,7 +572,7 @@ export default class TabsDemo extends React.Component<any, any> {
               color: '#ccc',
             },
           },
-          CardTabPan: {
+          DefaultTabPan: {
             normal: {
               background: {
                 color: 'pink',
@@ -673,7 +663,7 @@ export default class TabsDemo extends React.Component<any, any> {
               color: '#ccc',
             },
           },
-          WindowTabPan: {
+          DefaultTabPan: {
             normal: {},
             hover: {
               color: 'orange',

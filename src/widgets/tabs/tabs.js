@@ -27,7 +27,7 @@ const TabContentContainer = CSSComponent({
   tag: 'div',
   className: 'ContentBlock',
   normal: {
-    selectNames: [['height'], ['width']],
+    selectNames: [],
     getCSS: (theme: Object, themeProps: Object) => {
       const {
         propsConfig: { tabPosition },
@@ -49,9 +49,9 @@ const TabContentContainer = CSSComponent({
 }); //${getBackgroundShadow};
 const TabContent = CSSComponent({
   tag: 'div',
-  className: 'TabContent',
+  className: 'ContentBlock',
   normal: {
-    selectNames: [],
+    selectNames: [['padding'], ['width'], ['height']],
     getCSS: (theme: Object, themeProps: Object) => {
       const {
         propsConfig: { active, index },
@@ -99,7 +99,12 @@ const WindowContainer = CSSComponent({
   tag: 'div',
   className: 'WindowContainer',
   normal: {
-    selectNames: [['background'], ['padding'], ['border']],
+    selectNames: [['background'], ['padding'], ['border'], ['borderRadius'], ['opacity']],
+    defaultTheme: {
+      background: {
+        color: '#f8f8f8',
+      },
+    },
   },
   disabled: {
     selectNames: [],
@@ -143,12 +148,12 @@ type TabsState = {
 };
 
 type TabsProps = {
-  activityValue: number,
-  defaultActivityValue: number,
-  onTabClick: Function,
+  activityValue?: number,
+  defaultActivityValue?: number,
+  onTabClick?: Function,
   tabPosition?: TabPositionType,
   tabType?: TabType,
-  onChange: Function,
+  onChange?: Function,
   onNextClick?: Function,
   onPreClick?: Function,
   children?: React$Element<any>,
@@ -156,15 +161,15 @@ type TabsProps = {
   defaultData?: Array<Object>,
   forceRender?: boolean,
   showDeleteBtn?: boolean,
-  onDeleteClick: Function,
+  onDelete?: Function,
   showAddBtn?: boolean,
   onAddClick?: Function,
   getAddItem?: Function,
   pagedType?: PagedType,
   getTabpane?: Function,
   themeProps: Object,
-  onTabMouseEnter?: Function,
-  onTabMouseLeave?: Function,
+  onMouseEnter?: Function,
+  onMouseLeave?: Function,
   getPartOfThemeHocProps: Function,
   getPartOfThemeProps: Function,
 };
@@ -174,8 +179,12 @@ function hasTargetInProps(target: string, props: TabsProps) {
 
 function getDefaultData(props) {
   const { defaultData, data, children } = props;
-  let configData = [];
-  if (hasTargetInProps('data', props)) {
+  let configData = [
+    { title: 'Tab1', content: 'Tab1 content' },
+    { title: 'Tab2', content: 'Tab2 content' },
+    { title: 'Tab3', content: 'Tab3 content' },
+  ];
+  if (hasTargetInProps('data', props) && Array.isArray(data)) {
     configData = data ? data : [];
   } else {
     if (children) {
@@ -184,7 +193,7 @@ function getDefaultData(props) {
         configData && configData.push(child.props);
       });
     } else {
-      configData = defaultData ? defaultData : [];
+      configData = defaultData ? defaultData : configData;
     }
   }
   return configData;
@@ -195,7 +204,6 @@ class TabsBox extends Component<TabsProps, TabsState> {
     tabType: 'line',
     tabPosition: 'top',
     pagedType: 'single',
-    defaultData: [],
     forceRender: false,
     showAddBtn: false,
     showDeleteBtn: false,
@@ -257,7 +265,16 @@ class TabsBox extends Component<TabsProps, TabsState> {
 
   getTabHeaderProps() {
     const { activityValue, data } = this.state;
-    const { tabType, tabPosition, showAddBtn, pagedType, onAddClick, showDeleteBtn } = this.props;
+    const {
+      tabType,
+      tabPosition,
+      showAddBtn,
+      pagedType,
+      getTabpane,
+      showDeleteBtn,
+      onMouseEnter,
+      onMouseLeave,
+    } = this.props;
     const tabHeaderThemes = this.props.getPartOfThemeHocProps('TabHeader');
     return {
       activityValue,
@@ -267,6 +284,9 @@ class TabsBox extends Component<TabsProps, TabsState> {
       showAddBtn,
       pagedType,
       showDeleteBtn,
+      getTabpane,
+      onMouseEnter,
+      onMouseLeave,
       onChange: this.onChange,
       onTabClick: this.onTabClick,
       onPreClick: this.onPreClick,
@@ -299,13 +319,13 @@ class TabsBox extends Component<TabsProps, TabsState> {
   };
 
   onNextClick = (e: Event) => {
-    const { onPreClick } = this.props;
-    onPreClick && onPreClick(e);
+    const { onNextClick } = this.props;
+    onNextClick && onNextClick(e);
   };
 
   onDelete = (index: number) => {
-    const { onDeleteClick } = this.props;
-    onDeleteClick && onDeleteClick(index);
+    const { onDelete } = this.props;
+    onDelete && onDelete(index);
     if (hasTargetInProps('data', this.props) || hasTargetInProps('children', this.props)) {
       return;
     }
@@ -317,7 +337,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
 
   onAddClick = (e: Event) => {
     const { onAddClick } = this.props;
-    onAddClick && onAddClick();
+    onAddClick && onAddClick(e);
     if (hasTargetInProps('activityValue', this.props)) {
       return;
     }
@@ -328,8 +348,8 @@ class TabsBox extends Component<TabsProps, TabsState> {
     const newData = [...data];
     const { getAddItem } = this.props;
     const item = (getAddItem && getAddItem()) || {
-      title: `Tab${data.length}`,
-      content: `Tab${data.length} Content`,
+      title: `Tab${data.length + 1}`,
+      content: `Tab${data.length + 1} Content`,
     };
     newData.push(item);
     this.setState({
@@ -387,8 +407,9 @@ class TabsBox extends Component<TabsProps, TabsState> {
   }
 }
 
-const TargetTabs = ThemeHoc(KeyBoardEventAdaptor(TabsBox), Widget.Tabs, {
+export default ThemeHoc(TabsBox, Widget.Tabs, {
   hover: true,
   active: false,
 });
-export default TargetTabs;
+
+// export default TabsBox;
