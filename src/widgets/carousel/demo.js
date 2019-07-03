@@ -5,9 +5,10 @@
  */
 import * as React from 'react';
 import Carousel from './index';
-import { getBorder } from '@lugia/theme-css-hoc';
+import { getBorder } from '@lugia/theme-utils';
 import styled from 'styled-components';
 import Widget from '../consts/index';
+import { getBorderRadius } from '../theme/CSSProvider';
 
 const data = [
   'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1543751358232&di=f7fd14870cb6028086f7bb55d479df53&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F4%2F586b090b7f42b.jpg',
@@ -125,7 +126,8 @@ export default class SkeletonDemo extends React.Component<any, any> {
             opacity: 0.5,
             background: { color: 'pink' },
             boxShadow: '2px 2px 5px 5px yellow',
-            border: getBorder({ color: '#9482ff', width: 0, style: 'solid' }, { radius: 20 }),
+            border: getBorder({ color: '#9482ff', width: 0, style: 'solid' }),
+            borderRadius: getBorderRadius(20),
             margin: {
               left: 10,
               right: 10,

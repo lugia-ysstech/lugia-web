@@ -1181,10 +1181,10 @@
     babel-plugin-transform-dynamic-import "2.1.0"
     babel-plugin-transform-react-remove-prop-types "0.4.20"
 
-"@lugia/css@1.0.12", "@lugia/css@^1.0.12":
-  version "1.0.12"
-  resolved "http://192.168.102.79:5001/@lugia/css/download/@lugia/css-1.0.12.tgz#dbc619370a380aed1f6911245f25d4259ea68352"
-  integrity sha1-28YZNwo4Cu0faREkXyXUJZ6mg1I=
+"@lugia/css@^1.0.14":
+  version "1.0.14"
+  resolved "http://192.168.102.79:5001/@lugia/css/download/@lugia/css-1.0.14.tgz#b56999508f52994fbc96b903bfa06913a2696ff2"
+  integrity sha1-tWmZUI9SmU+8lrkDv6BpE6Jpb/I=
   dependencies:
     "@babel/runtime" "^7.4.5"
     decamelize "^3.2.0"
@@ -1461,50 +1461,60 @@
     react "^16.4.0"
     react-dom "^16.4.0"
 
-"@lugia/theme-config@1.0.15":
-  version "1.0.15"
-  resolved "http://192.168.102.79:5001/@lugia/theme-config/download/@lugia/theme-config-1.0.15.tgz#608acb09fa3aed4aeae4f939aeb717a1a22910ff"
-  integrity sha1-YIrLCfo67Urq5Pk5rrcXoaIpEP8=
+"@lugia/theme-config@1.0.17":
+  version "1.0.17"
+  resolved "http://192.168.102.79:5001/@lugia/theme-config/download/@lugia/theme-config-1.0.17.tgz#a03d45244e23d2b26a7b4fd982f2f8d0e96fb44c"
+  integrity sha1-oD1FJE4j0rJqe0/ZgvL40OlvtEw=
   dependencies:
     "@babel/runtime" "^7.4.5"
-    "@lugia/theme-core" "^1.0.15"
+    "@lugia/theme-core" "^1.0.17"
     prop-types "^15.7.2"
 
-"@lugia/theme-core@1.0.15", "@lugia/theme-core@^1.0.15":
-  version "1.0.15"
-  resolved "http://192.168.102.79:5001/@lugia/theme-core/download/@lugia/theme-core-1.0.15.tgz#cfc2abf2ddb7f24923a3d77bec96a0367dc74691"
-  integrity sha1-z8Kr8t238kkjo9d77JagNn3HRpE=
+"@lugia/theme-core@1.0.17", "@lugia/theme-core@^1.0.17":
+  version "1.0.17"
+  resolved "http://192.168.102.79:5001/@lugia/theme-core/download/@lugia/theme-core-1.0.17.tgz#13ce01923993b057d199f0c124ef18a2f74bf311"
+  integrity sha1-E84BkjmTsFfRmfDBJO8YovdL8xE=
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/object-utils" "^1.0.8"
+    "@lugia/theme-hoc-devtools" "^1.0.3"
 
-"@lugia/theme-css-hoc@^1.0.29":
-  version "1.0.29"
-  resolved "http://192.168.102.79:5001/@lugia/theme-css-hoc/download/@lugia/theme-css-hoc-1.0.29.tgz#f0242f235447c74ad6ed25eb1ff351ad30ab3dac"
-  integrity sha1-8CQvI1RHx0rW7SXrH/NRrTCrPaw=
+"@lugia/theme-css-hoc@1.0.34":
+  version "1.0.34"
+  resolved "http://192.168.102.79:5001/@lugia/theme-css-hoc/download/@lugia/theme-css-hoc-1.0.34.tgz#4f71582255a5c78096d6f5ae4414ce95cf56106c"
+  integrity sha1-T3FYIlWlx4CW1vWuRBTOlc9WEGw=
   dependencies:
     "@babel/runtime" "^7.4.5"
-    "@lugia/css" "^1.0.12"
+    "@lugia/css" "^1.0.14"
     "@lugia/object-utils" "^1.0.8"
-    "@lugia/theme-core" "^1.0.15"
+    "@lugia/theme-core" "^1.0.17"
+    "@lugia/theme-utils" "^1.0.1"
     decamelize "^3.2.0"
 
-"@lugia/theme-hoc-devtools@1.0.2", "@lugia/theme-hoc-devtools@^1.0.2":
-  version "1.0.2"
-  resolved "http://192.168.102.79:5001/@lugia/theme-hoc-devtools/download/@lugia/theme-hoc-devtools-1.0.2.tgz#0abc2fc8c7a8f024daff62a76c665d992ab581d1"
-  integrity sha1-CrwvyMeo8CTa/2KnbGZdmSq1gdE=
+"@lugia/theme-hoc-devtools@1.0.3", "@lugia/theme-hoc-devtools@^1.0.3":
+  version "1.0.3"
+  resolved "http://192.168.102.79:5001/@lugia/theme-hoc-devtools/download/@lugia/theme-hoc-devtools-1.0.3.tgz#1bdc9c57c9342865b9b44e7a097c57e759d64344"
+  integrity sha1-G9ycV8k0KGW5tE56CXxX51nWQ0Q=
   dependencies:
     "@lugia/react-devtools-core" "^1.0.3"
 
-"@lugia/theme-hoc@^1.0.21":
-  version "1.0.21"
-  resolved "http://192.168.102.79:5001/@lugia/theme-hoc/download/@lugia/theme-hoc-1.0.21.tgz#da1de37167f6fd22d4ae6c6bbb0f8840b78aef5d"
-  integrity sha1-2h3jcWf2/SLUrmxruw+IQLeK710=
+"@lugia/theme-hoc@1.0.24":
+  version "1.0.24"
+  resolved "http://192.168.102.79:5001/@lugia/theme-hoc/download/@lugia/theme-hoc-1.0.24.tgz#7fa48d6996f1fa4d78236db50584dbf82681482a"
+  integrity sha1-f6SNaZbx+k14I221BYTb+CaBSCo=
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/object-utils" "^1.0.8"
-    "@lugia/theme-core" "^1.0.15"
-    "@lugia/theme-hoc-devtools" "^1.0.2"
+    "@lugia/theme-core" "^1.0.17"
+    "@lugia/theme-hoc-devtools" "^1.0.3"
+
+"@lugia/theme-utils@1.0.1", "@lugia/theme-utils@^1.0.1":
+  version "1.0.1"
+  resolved "http://192.168.102.79:5001/@lugia/theme-utils/download/@lugia/theme-utils-1.0.1.tgz#80c3bfa4497f969d8b7a0fb80b0cb7fbe17d2b8a"
+  integrity sha1-gMO/pEl/lp2Leg+4Cwy3++F9K4o=
+  dependencies:
+    "@babel/runtime" "^7.4.5"
+    "@lugia/css" "^1.0.14"
 
 "@lugia/type-utils@^1.0.1", "@lugia/type-utils@^1.0.4":
   version "1.0.4"
@@ -13887,11 +13897,6 @@ react-is@^16.6.1, react-is@^16.6.3:
   resolved "http://registry.npm.taobao.org/react-is/download/react-is-16.6.3.tgz#d2d7462fcfcbe6ec0da56ad69047e47e56e7eac0"
   integrity sha1-0tdGL8/L5uwNpWrWkEfkflbn6sA=
 
-react-is@^16.8.2:
-  version "16.8.2"
-  resolved "http://registry.npm.taobao.org/react-is/download/react-is-16.8.2.tgz#09891d324cad1cb0c1f2d91f70a71a4bee34df0f"
-  integrity sha1-CYkdMkytHLDB8tkfcKcaS+403w8=
-
 react-lifecycles-compat@^3.0.0, react-lifecycles-compat@^3.0.2, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "http://registry.npm.taobao.org/react-lifecycles-compat/download/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
@@ -13945,15 +13950,15 @@ react-test-renderer@^16.0.0-0:
     react-is "^16.6.3"
     scheduler "^0.11.2"
 
-react-test-renderer@^16.8.2:
-  version "16.8.2"
-  resolved "http://registry.npm.taobao.org/react-test-renderer/download/react-test-renderer-16.8.2.tgz#3ce0bf12aa211116612fda01a886d6163c9c459b"
-  integrity sha1-POC/EqohERZhL9oBqIbWFjycRZs=
+react-test-renderer@^16.8.6:
+  version "16.8.6"
+  resolved "https://registry.npm.taobao.org/react-test-renderer/download/react-test-renderer-16.8.6.tgz#188d8029b8c39c786f998aa3efd3ffe7642d5ba1"
+  integrity sha1-GI2AKbjDnHhvmYqj79P/52QtW6E=
   dependencies:
     object-assign "^4.1.1"
     prop-types "^15.6.2"
-    react-is "^16.8.2"
-    scheduler "^0.13.2"
+    react-is "^16.8.6"
+    scheduler "^0.13.6"
 
 react@^16.4.0:
   version "16.6.3"
@@ -14811,14 +14816,6 @@ scheduler@^0.11.2:
   version "0.11.2"
   resolved "http://registry.npm.taobao.org/scheduler/download/scheduler-0.11.2.tgz#a8db5399d06eba5abac51b705b7151d2319d33d3"
   integrity sha1-qNtTmdBuulq6xRtwW3FR0jGdM9M=
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-
-scheduler@^0.13.2:
-  version "0.13.2"
-  resolved "http://registry.npm.taobao.org/scheduler/download/scheduler-0.13.2.tgz#969eaee2764a51d2e97b20a60963b2546beff8fa"
-  integrity sha1-lp6u4nZKUdLpeyCmCWOyVGvv+Po=
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"

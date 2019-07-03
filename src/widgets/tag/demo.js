@@ -8,7 +8,8 @@ import Widget from '../consts/index';
 import Theme from '../theme';
 import styled from 'styled-components';
 import React from 'react';
-import { getBorder } from '@lugia/theme-css-hoc';
+import { getBorder } from '@lugia/theme-utils';
+import { getBorderRadius } from '../theme/CSSProvider';
 
 const Box = styled.div`
   display: inline-block;
@@ -29,7 +30,8 @@ const commonConfig = {
         color: '#000',
         opacity: 1,
         boxShadow: '2px 2px 5px #4d63ff',
-        border: getBorder({ color: '#ddd', width: 1, style: 'solid' }, { radius: 20 }),
+        border: getBorder({ color: '#ddd', width: 1, style: 'solid' }),
+        borderRadius: getBorderRadius(20),
         background: { color: '#ddd' },
         font: {
           size: 22,
@@ -49,7 +51,8 @@ const commonConfig = {
         opacity: 0.7,
         boxShadow: '2px 2px 10px #8d030f',
         background: { color: '#ff0000' },
-        border: getBorder({ color: '#ff0000', width: 1, style: 'solid' }, { radius: 4 }),
+        border: getBorder({ color: '#ff0000', width: 1, style: 'solid' }),
+        borderRadius: getBorderRadius(4),
       },
     },
     CloseButton: {
@@ -78,7 +81,8 @@ const optionalConfig = {
         color: '#000',
         opacity: 1,
         boxShadow: '2px 2px 5px #4d63ff',
-        border: getBorder({ color: '#ddd', width: 1, style: 'solid' }, { radius: 4 }),
+        border: getBorder({ color: '#ddd', width: 1, style: 'solid' }),
+        borderRadius: getBorderRadius(4),
         background: { color: '#ddd' },
         font: {
           size: 22,
@@ -98,12 +102,14 @@ const optionalConfig = {
         opacity: 0.7,
         boxShadow: '2px 2px 10px #8d030f',
         background: { color: '#ffccff' },
-        border: getBorder({ color: '#ff0000', width: 1, style: 'solid' }, { radius: 4 }),
+        border: getBorder({ color: '#ff0000', width: 1, style: 'solid' }),
+        borderRadius: getBorderRadius(4),
       },
       active: {
         color: '#fff',
-        border: getBorder({ color: '#ff0000', width: 1, style: 'solid' }, { radius: 60 }),
+        border: getBorder({ color: '#ff0000', width: 1, style: 'solid' }),
         background: { color: '#d35a24' },
+        borderRadius: getBorderRadius(60),
       },
     },
 
@@ -114,7 +120,8 @@ const optionalConfig = {
         color: '#7fe0c0',
         opacity: 1,
         boxShadow: '2px 2px 5px #4d63ff',
-        border: getBorder({ color: '#ffff00', width: 1, style: 'solid' }, { radius: 20 }),
+        border: getBorder({ color: '#ffff00', width: 1, style: 'solid' }),
+        borderRadius: getBorderRadius(40),
         background: { color: '#4d63ff' },
         font: {
           size: 22,
@@ -134,12 +141,14 @@ const optionalConfig = {
         opacity: 0.7,
         boxShadow: '2px 2px 10px #8d030f',
         background: { color: '#ffff00' },
-        border: getBorder({ color: '#ff0000', width: 1, style: 'solid' }, { radius: 4 }),
+        border: getBorder({ color: '#ff0000', width: 1, style: 'solid' }),
+        borderRadius: getBorderRadius(4),
       },
       active: {
         color: '#fff',
         background: { color: '#993424' },
-        border: getBorder({ color: '#ff0000', width: 1, style: 'solid' }, { radius: 60 }),
+        border: getBorder({ color: '#ff0000', width: 1, style: 'solid' }),
+        borderRadius: getBorderRadius(60),
       },
     },
   },

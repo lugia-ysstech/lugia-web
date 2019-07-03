@@ -194,6 +194,7 @@ export const TagWrap = ThemeHoc(
         ['color'],
         ['background'],
         ['border'],
+        ['borderRadius'],
         ['width'],
         ['height'],
         ['boxShadow'],
@@ -227,7 +228,15 @@ export const TagWrap = ThemeHoc(
       },
     },
     hover: {
-      selectNames: [['color'], ['background'], ['border'], ['boxShadow'], ['opacity'], ['font']],
+      selectNames: [
+        ['color'],
+        ['background'],
+        ['border'],
+        ['borderRadius'],
+        ['boxShadow'],
+        ['opacity'],
+        ['font'],
+      ],
       getStyle: (themeMeta, themeProps) => {
         const { themeConfig, propsConfig } = themeProps;
         const { normal = {}, hover = {} } = themeConfig;
@@ -353,6 +362,7 @@ export const OptionalWrap = ThemeHoc(
         ['color'],
         ['background'],
         ['border'],
+        ['borderRadius'],
         ['width'],
         ['height'],
         ['boxShadow'],
@@ -389,7 +399,15 @@ export const OptionalWrap = ThemeHoc(
       },
     },
     hover: {
-      selectNames: [['color'], ['background'], ['border'], ['boxShadow'], ['opacity'], ['font']],
+      selectNames: [
+        ['color'],
+        ['background'],
+        ['border'],
+        ['borderRadius'],
+        ['boxShadow'],
+        ['opacity'],
+        ['font'],
+      ],
       getCSS: (themeMeta, themeProps) => {
         const { color: hoverColor } = themeMeta;
         const { propsConfig } = themeProps;
@@ -401,7 +419,15 @@ export const OptionalWrap = ThemeHoc(
       },
     },
     active: {
-      selectNames: [['color'], ['background'], ['border'], ['boxShadow'], ['opacity'], ['font']],
+      selectNames: [
+        ['color'],
+        ['background'],
+        ['border'],
+        ['borderRadius'],
+        ['boxShadow'],
+        ['opacity'],
+        ['font'],
+      ],
       getStyle: (themeMeta, themeProps) => {
         const { color: activeColor, background = {} } = themeMeta;
         const color = activeColor ? activeColor : colorsFunc(themeColor).mouseDownColor;

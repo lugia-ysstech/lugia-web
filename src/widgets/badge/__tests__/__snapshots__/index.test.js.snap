@@ -69,10 +69,10 @@ exports[` Badge css 1`] = `
   text-align: center;
   box-sizing: border-box;
   margin: 0;
+  height: 1.4rem;
 }
 
 .c11 {
-  font-size: 1rem;
   box-sizing: border-box;
   position: absolute;
   -webkit-transform: translateX(50%);
@@ -82,16 +82,34 @@ exports[` Badge css 1`] = `
   -ms-transform-origin: 100%;
   transform-origin: 100%;
   z-index: 10;
-  background-color: #f22735;
+  border-radius: 100%;
+  z-index: 10;
+  font-size: 1rem;
+  width: 1rem;
+  height: 1rem;
   color: #ffffff;
+  box-shadow: 0px 0px 0px 1px #fff;
+  background-color: #f22735;
 }
 
 .c10 {
+  box-sizing: border-box;
+  position: absolute;
+  -webkit-transform: translateX(50%);
+  -ms-transform: translateX(50%);
+  transform: translateX(50%);
+  -webkit-transform-origin: 100%;
+  -ms-transform-origin: 100%;
+  transform-origin: 100%;
+  z-index: 10;
   border-radius: 100%;
   z-index: 10;
+  font-size: 1rem;
   width: 1rem;
   height: 1rem;
-  box-shadow: 0 0 0 0.1rem #fff;
+  color: #ffffff;
+  box-shadow: 0px 0px 0px 1px #fff;
+  background-color: #f22735;
 }
 
 .c3 {
@@ -159,893 +177,825 @@ exports[` Badge css 1`] = `
   <div
     className="c0"
   >
-    <span>
+    <div
+      className="c1"
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      type="default"
+    >
       <div
-        className="c1"
+        className="c2"
         onMouseEnter={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
-        type="default"
+        span={4}
+        width={4.166666666666667}
       >
-        <span>
+        <span
+          className="c3"
+          style={Object {}}
+        >
           <div
-            className="c2"
-            onMouseEnter={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            span={4}
-            width={4.166666666666667}
-          >
-            <span>
-              <span
-                className="c3"
-                style={Object {}}
-              >
-                <div
-                  className="c4"
-                />
-                <span>
-                  <div
-                    className=""
-                    style={
-                      Object {
-                        "position": "absolute",
-                        "right": "-0.5rem",
-                        "top": "-0.5rem",
-                      }
-                    }
-                  >
-                    <span
-                      className="c5"
-                      overflow={false}
-                      style={Object {}}
-                    >
-                      <span
-                        className="c6"
-                        style={Object {}}
-                        y={-400}
-                      >
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          0
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          1
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          2
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          3
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          4
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          5
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          6
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          7
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          8
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          9
-                        </p>
-                      </span>
-                    </span>
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-        </span>
-        <span>
+            className="c4"
+          />
           <div
-            className="c2"
-            onMouseEnter={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            span={4}
-            width={4.166666666666667}
+            className=""
+            style={
+              Object {
+                "position": "absolute",
+                "right": "-0.5rem",
+                "top": "-0.5rem",
+              }
+            }
           >
-            <span>
-              <span
-                className="c3"
-                style={Object {}}
-              >
-                <div
-                  className="c4"
-                />
-                <span>
-                  <div
-                    className=""
-                    style={
-                      Object {
-                        "position": "absolute",
-                        "right": "-0.5rem",
-                        "top": "-0.5rem",
-                      }
-                    }
-                  >
-                    <span
-                      className="c5"
-                      overflow={false}
-                      style={Object {}}
-                    >
-                      <span
-                        className="c8"
-                        style={Object {}}
-                        y={-900}
-                      >
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          0
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          1
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          2
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          3
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          4
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          5
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          6
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          7
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          8
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          9
-                        </p>
-                      </span>
-                      <span
-                        className="c8"
-                        style={Object {}}
-                        y={-900}
-                      >
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          0
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          1
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          2
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          3
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          4
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          5
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          6
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          7
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          8
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          9
-                        </p>
-                      </span>
-                      <span
-                        className="c9"
-                        style={Object {}}
-                        y={-808}
-                      >
-                        +
-                      </span>
-                    </span>
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-        </span>
-        <span>
-          <div
-            className="c2"
-            onMouseEnter={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            span={4}
-            width={4.166666666666667}
-          >
-            <span>
-              <span
-                className="c3"
-                style={Object {}}
-              >
-                <div
-                  className="c4"
-                />
-                <sup
-                  className="c10  c11"
-                  style={Object {}}
-                />
-              </span>
-            </span>
-          </div>
-        </span>
-      </div>
-    </span>
-  </div>
-  <div
-    className="c0"
-  >
-    <span>
-      <div
-        className="c1"
-        onMouseEnter={[Function]}
-        onMouseOut={[Function]}
-        onMouseOver={[Function]}
-        type="default"
-      >
-        <span>
-          <div
-            className="c2"
-            onMouseEnter={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            span={4}
-            width={4.166666666666667}
-          >
-            <span>
-              <span
-                className="c3"
-                style={Object {}}
-              >
-                <div
-                  className="c4"
-                />
-              </span>
-            </span>
-          </div>
-        </span>
-        <span>
-          <div
-            className="c2"
-            onMouseEnter={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            span={4}
-            width={4.166666666666667}
-          >
-            <span>
-              <span
-                className="c3"
-                style={Object {}}
-              >
-                <div
-                  className="c4"
-                />
-                <span>
-                  <div
-                    className=""
-                    style={
-                      Object {
-                        "position": "absolute",
-                        "right": "-0.5rem",
-                        "top": "-0.5rem",
-                      }
-                    }
-                  >
-                    <span
-                      className="c5"
-                      overflow={false}
-                      style={Object {}}
-                    >
-                      <span
-                        className="c12"
-                        style={Object {}}
-                        y={-0}
-                      >
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          0
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          1
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          2
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          3
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          4
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          5
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          6
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          7
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          8
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          9
-                        </p>
-                      </span>
-                    </span>
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-        </span>
-        <span>
-          <div
-            className="c2"
-            onMouseEnter={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            span={4}
-            width={4.166666666666667}
-          >
-            <span>
-              <span
-                className="c3"
-                style={Object {}}
-              >
-                <div
-                  className="c4"
-                />
-                <span>
-                  <div
-                    className=""
-                    style={
-                      Object {
-                        "position": "absolute",
-                        "right": "-0.5rem",
-                        "top": "-0.5rem",
-                      }
-                    }
-                  >
-                    <span
-                      className="c5"
-                      overflow={false}
-                      style={Object {}}
-                    >
-                      <span
-                        className="c12"
-                        style={Object {}}
-                        y={-0}
-                      >
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          0
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          1
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          2
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          3
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          4
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          5
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          6
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          7
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          8
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          9
-                        </p>
-                      </span>
-                    </span>
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-        </span>
-        <span>
-          <div
-            className="c2"
-            onMouseEnter={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            span={4}
-            width={4.166666666666667}
-          >
-            <a
-              href="www.baidu.com"
+            <span
+              className="c5"
+              overflow={false}
+              style={Object {}}
             >
-              <span>
-                <span
-                  className="c3"
+              <span
+                className="c6"
+                style={Object {}}
+                y={-400}
+              >
+                <p
+                  className="c7"
                   style={Object {}}
                 >
-                  <div
-                    className="c4"
-                  />
-                  <sup
-                    className="c10  c11"
-                    style={
-                      Object {
-                        "backgroundColor": "orange",
-                        "height": "2rem",
-                        "position": "absolute",
-                        "right": "0.6rem",
-                        "top": "-0.5rem",
-                        "width": "2rem",
-                      }
-                    }
-                  />
-                </span>
+                  0
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  1
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  2
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  3
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  4
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  5
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  6
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  7
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  8
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  9
+                </p>
               </span>
-            </a>
+            </span>
           </div>
         </span>
       </div>
-    </span>
+      <div
+        className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={4}
+        width={4.166666666666667}
+      >
+        <span
+          className="c3"
+          style={Object {}}
+        >
+          <div
+            className="c4"
+          />
+          <div
+            className=""
+            style={
+              Object {
+                "position": "absolute",
+                "right": "-0.5rem",
+                "top": "-0.5rem",
+              }
+            }
+          >
+            <span
+              className="c5"
+              overflow={false}
+              style={Object {}}
+            >
+              <span
+                className="c8"
+                style={Object {}}
+                y={-900}
+              >
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  0
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  1
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  2
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  3
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  4
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  5
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  6
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  7
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  8
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  9
+                </p>
+              </span>
+              <span
+                className="c8"
+                style={Object {}}
+                y={-900}
+              >
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  0
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  1
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  2
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  3
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  4
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  5
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  6
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  7
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  8
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  9
+                </p>
+              </span>
+              <span
+                className="c9"
+                style={Object {}}
+                y={-808}
+              >
+                +
+              </span>
+            </span>
+          </div>
+        </span>
+      </div>
+      <div
+        className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={4}
+        width={4.166666666666667}
+      >
+        <span
+          className="c3"
+          style={Object {}}
+        >
+          <div
+            className="c4"
+          />
+          <sup
+            className="c10  c11"
+            style={Object {}}
+          />
+        </span>
+      </div>
+    </div>
   </div>
   <div
     className="c0"
   >
-    <span>
+    <div
+      className="c1"
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      type="default"
+    >
       <div
-        className="c1"
+        className="c2"
         onMouseEnter={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
-        type="default"
+        span={4}
+        width={4.166666666666667}
       >
-        <span>
+        <span
+          className="c3"
+          style={Object {}}
+        >
           <div
-            className="c2"
-            onMouseEnter={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            span={4}
-            width={4.166666666666667}
-          >
-            <span>
-              <span
-                className="c3"
-                style={Object {}}
-              >
-                <div
-                  className="c4"
-                />
-                <sup
-                  className="c10  c11"
-                  style={
-                    Object {
-                      "backgroundColor": "green",
-                      "position": "absolute",
-                      "right": "0.2rem",
-                      "top": "-0.5rem",
-                    }
-                  }
-                />
-              </span>
-            </span>
-          </div>
+            className="c4"
+          />
         </span>
-        <span>
+      </div>
+      <div
+        className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={4}
+        width={4.166666666666667}
+      >
+        <span
+          className="c3"
+          style={Object {}}
+        >
           <div
-            className="c2"
-            onMouseEnter={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            span={4}
-            width={4.166666666666667}
-          >
-            <span>
-              <span
-                className="c3"
-                style={Object {}}
-              >
-                <div
-                  className="c4"
-                />
-                <sup
-                  className="c10  c11"
-                  style={
-                    Object {
-                      "backgroundColor": "purple",
-                      "position": "absolute",
-                      "right": "0.2rem",
-                      "top": "-0.5rem",
-                    }
-                  }
-                />
-              </span>
-            </span>
-          </div>
-        </span>
-        <span>
+            className="c4"
+          />
           <div
-            className="c2"
-            onMouseEnter={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            span={4}
-            width={4.166666666666667}
+            className=""
+            style={
+              Object {
+                "position": "absolute",
+                "right": "-0.5rem",
+                "top": "-0.5rem",
+              }
+            }
           >
-            <span>
+            <span
+              className="c5"
+              overflow={false}
+              style={Object {}}
+            >
               <span
-                className="c3"
+                className="c12"
                 style={Object {}}
+                y={-0}
               >
-                <div
-                  className="c4"
-                />
-                <sup
-                  className="c10  c11"
-                  style={
-                    Object {
-                      "backgroundColor": "yellow",
-                      "position": "absolute",
-                      "right": "0.2rem",
-                      "top": "-0.5rem",
-                    }
-                  }
-                />
-              </span>
-            </span>
-          </div>
-        </span>
-        <span>
-          <div
-            className="c2"
-            onMouseEnter={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            span={4}
-            width={4.166666666666667}
-          >
-            <span>
-              <span
-                className="c3"
-                style={Object {}}
-              >
-                <div
-                  className="c4"
-                />
-                <sup
-                  className="c10  c11"
-                  style={
-                    Object {
-                      "backgroundColor": "blue",
-                      "position": "absolute",
-                      "right": "0.2rem",
-                      "top": "-0.5rem",
-                    }
-                  }
-                />
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  0
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  1
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  2
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  3
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  4
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  5
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  6
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  7
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  8
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  9
+                </p>
               </span>
             </span>
           </div>
         </span>
       </div>
-    </span>
+      <div
+        className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={4}
+        width={4.166666666666667}
+      >
+        <span
+          className="c3"
+          style={Object {}}
+        >
+          <div
+            className="c4"
+          />
+          <div
+            className=""
+            style={
+              Object {
+                "position": "absolute",
+                "right": "-0.5rem",
+                "top": "-0.5rem",
+              }
+            }
+          >
+            <span
+              className="c5"
+              overflow={false}
+              style={Object {}}
+            >
+              <span
+                className="c12"
+                style={Object {}}
+                y={-0}
+              >
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  0
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  1
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  2
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  3
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  4
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  5
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  6
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  7
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  8
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  9
+                </p>
+              </span>
+            </span>
+          </div>
+        </span>
+      </div>
+      <div
+        className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={4}
+        width={4.166666666666667}
+      >
+        <a
+          href="www.baidu.com"
+        >
+          <span
+            className="c3"
+            style={Object {}}
+          >
+            <div
+              className="c4"
+            />
+            <sup
+              className="c10  c11"
+              style={
+                Object {
+                  "backgroundColor": "orange",
+                  "height": "2rem",
+                  "position": "absolute",
+                  "right": "0.6rem",
+                  "top": "-0.5rem",
+                  "width": "2rem",
+                }
+              }
+            />
+          </span>
+        </a>
+      </div>
+    </div>
   </div>
   <div
     className="c0"
   >
-    <span>
+    <div
+      className="c1"
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      type="default"
+    >
       <div
-        className="c1"
+        className="c2"
         onMouseEnter={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
-        type="default"
+        span={4}
+        width={4.166666666666667}
       >
-        <span>
+        <span
+          className="c3"
+          style={Object {}}
+        >
           <div
-            className="c2"
-            onMouseEnter={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            span={4}
-            width={4.166666666666667}
+            className="c4"
+          />
+          <sup
+            className="c10  c11"
+            style={
+              Object {
+                "backgroundColor": "green",
+                "position": "absolute",
+                "right": "0.2rem",
+                "top": "-0.5rem",
+              }
+            }
+          />
+        </span>
+      </div>
+      <div
+        className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={4}
+        width={4.166666666666667}
+      >
+        <span
+          className="c3"
+          style={Object {}}
+        >
+          <div
+            className="c4"
+          />
+          <sup
+            className="c10  c11"
+            style={
+              Object {
+                "backgroundColor": "purple",
+                "position": "absolute",
+                "right": "0.2rem",
+                "top": "-0.5rem",
+              }
+            }
+          />
+        </span>
+      </div>
+      <div
+        className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={4}
+        width={4.166666666666667}
+      >
+        <span
+          className="c3"
+          style={Object {}}
+        >
+          <div
+            className="c4"
+          />
+          <sup
+            className="c10  c11"
+            style={
+              Object {
+                "backgroundColor": "yellow",
+                "position": "absolute",
+                "right": "0.2rem",
+                "top": "-0.5rem",
+              }
+            }
+          />
+        </span>
+      </div>
+      <div
+        className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={4}
+        width={4.166666666666667}
+      >
+        <span
+          className="c3"
+          style={Object {}}
+        >
+          <div
+            className="c4"
+          />
+          <sup
+            className="c10  c11"
+            style={
+              Object {
+                "backgroundColor": "blue",
+                "position": "absolute",
+                "right": "0.2rem",
+                "top": "-0.5rem",
+              }
+            }
+          />
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      type="default"
+    >
+      <div
+        className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={4}
+        width={4.166666666666667}
+      >
+        <span
+          className="c3"
+          style={Object {}}
+        >
+          <div
+            className="c4"
+          />
+          <div
+            className=""
+            style={
+              Object {
+                "position": "absolute",
+                "right": "-0.5rem",
+                "top": "-0.5rem",
+              }
+            }
           >
-            <span>
+            <span
+              className="c5"
+              overflow={false}
+              style={Object {}}
+            >
               <span
-                className="c3"
+                className="c12"
                 style={Object {}}
+                y={-0}
               >
-                <div
-                  className="c4"
-                />
-                <span>
-                  <div
-                    className=""
-                    style={
-                      Object {
-                        "position": "absolute",
-                        "right": "-0.5rem",
-                        "top": "-0.5rem",
-                      }
-                    }
-                  >
-                    <span
-                      className="c5"
-                      overflow={false}
-                      style={Object {}}
-                    >
-                      <span
-                        className="c12"
-                        style={Object {}}
-                        y={-0}
-                      >
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          0
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          1
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          2
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          3
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          4
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          5
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          6
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          7
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          8
-                        </p>
-                        <p
-                          className="c7"
-                          style={Object {}}
-                        >
-                          9
-                        </p>
-                      </span>
-                    </span>
-                  </div>
-                </span>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  0
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  1
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  2
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  3
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  4
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  5
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  6
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  7
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  8
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  9
+                </p>
               </span>
-            </span>
-            <span
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-            >
-              <i
-                className="lugia-icon-reminder_plus_square_o   c13"
-                onClick={[Function]}
-                style={Object {}}
-              />
-            </span>
-            <span
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-            >
-              <i
-                className="lugia-icon-reminder_minus_square_o   c13"
-                onClick={[Function]}
-                style={Object {}}
-              />
             </span>
           </div>
         </span>
+        <i
+          className="lugia-icon-reminder_plus_square_o   c13"
+          onClick={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={Object {}}
+        />
+        <i
+          className="lugia-icon-reminder_minus_square_o   c13"
+          onClick={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={Object {}}
+        />
       </div>
-    </span>
+    </div>
   </div>
 </div>
 `;

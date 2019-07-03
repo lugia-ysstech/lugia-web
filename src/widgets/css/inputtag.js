@@ -59,7 +59,15 @@ const OutContainerCSSHoc = CSSComponent({
   tag: 'div',
   className: 'OutContainerCSSHoc',
   normal: {
-    selectNames: [['width'], ['height'], ['border'], ['background'], ['color'], ['boxShadow']],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['border'],
+      ['borderRadius'],
+      ['background'],
+      ['color'],
+      ['boxShadow'],
+    ],
     getCSS: (themeMeta, themeProps) => {
       const { height = Height } = themeMeta;
       return `
@@ -92,7 +100,7 @@ const OutContainerCSSHoc = CSSComponent({
     },
   },
   hover: {
-    selectNames: [['color'], ['background'], ['border'], ['boxShadow']],
+    selectNames: [['color'], ['background'], ['border'], ['borderRadius'], ['boxShadow']],
     getStyle: (themeMeta, themeProps) => {},
     defaultTheme: {
       border: {
@@ -391,6 +399,7 @@ export const ItemContainer = ThemeHoc(
         ['fontSize'],
         ['padding'],
         ['border'],
+        ['borderRadius'],
         ['margin'],
       ],
       getCSS: (themeMeta, themeProps) => {
@@ -402,7 +411,7 @@ export const ItemContainer = ThemeHoc(
       },
     },
     hover: {
-      selectNames: [['background'], ['color'], ['border']],
+      selectNames: [['background'], ['color'], ['borderRadius'], ['border']],
     },
 
     css: css`

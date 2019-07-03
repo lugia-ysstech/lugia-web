@@ -5,7 +5,7 @@
  */
 import colorsFunc from '../css/stateColor';
 import styled, { css } from 'styled-components';
-import CSSComponent, { getBorder, StaticComponent } from '@lugia/theme-css-hoc';
+import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import { px2remcss } from '../css/units';
 import Icon from '../icon';
 
@@ -145,6 +145,7 @@ export const CheckSpan = CSSComponent({
     selectNames: [
       ['opacity'],
       ['border'],
+      ['borderRadius'],
       ['background'],
       ['width'],
       ['height'],
@@ -171,7 +172,7 @@ export const CheckSpan = CSSComponent({
     },
   },
   hover: {
-    selectNames: [['opacity'], ['border'], ['background'], ['color'], ['font']],
+    selectNames: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color'], ['font']],
     defaultTheme: {
       color: themeColor,
       opacity: 1,
@@ -191,7 +192,7 @@ export const CheckSpan = CSSComponent({
     },
   },
   disabled: {
-    selectNames: [['opacity'], ['border'], ['background'], ['color']],
+    selectNames: [['opacity'], ['borderRadius'], ['border'], ['background'], ['color']],
     defaultTheme: {
       color: lightGreyColor,
       opacity: 1,

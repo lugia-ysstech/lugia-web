@@ -22,21 +22,15 @@ import {
 } from './amountUtils';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import { checkNumber } from '../common/Math';
-import CSSComponent, { css } from '../theme/CSSProvider';
+import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import ThemeHoc from '@lugia/theme-hoc';
 import { addPropsConfig } from '../avatar';
 
-const InputContainer = CSSComponent({
+const InputContainer = StaticComponent({
   tag: 'span',
-  className: 'amountInputContainer',
+  className: 'AmountInputContainer',
   normal: {
-    selectNames: [['border'], ['margin'], ['padding']],
-  },
-  hover: {
-    selectNames: [['border']],
-  },
-  disabled: {
-    selectNames: [['boxShadow'], ['background']],
+    selectNames: [],
   },
   css: css`
     position: relative;
@@ -46,14 +40,14 @@ const InputContainer = CSSComponent({
 
 const Title = CSSComponent({
   tag: 'span',
-  className: 'amountInputTitle',
+  className: 'AmountInputTitle',
   normal: {
-    selectNames: [['fontSize']],
+    selectNames: [['fontSize'], ['font'], ['color']],
   },
 });
 const AmountInputPrefix = CSSComponent({
   tag: 'span',
-  className: 'amountInputPrefix',
+  className: 'AmountInputPrefix',
   normal: {
     selectNames: [['fontSize'], ['color']],
   },
@@ -61,16 +55,16 @@ const AmountInputPrefix = CSSComponent({
 Title.displayName = 'toolTip_title';
 const InputTip = CSSComponent({
   extend: ToolTip,
-  className: 'amountInputTip',
+  className: 'AmountInputTip',
   normal: {
-    selectNames: [['opacity']],
-    getStyle(ThemeMeta: Object, ThemeProps: Object) {
+    selectNames: [['opacity'], ['background'], ['width'], ['height']],
+    getThemeMeta(ThemeMeta: Object, ThemeProps: Object) {
       const { propsConfig } = ThemeProps;
       const { value } = propsConfig;
-      const style = {};
       const opacity = value && value.length ? 1 : 0;
-      style.opacity = opacity;
-      return style;
+      return {
+        opacity,
+      };
     },
   },
 });
@@ -229,16 +223,23 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
   };
   render() {
     const { value } = this.state;
-    const theThemeProps = addPropsConfig(this.props.getPartOfThemeProps('AmountTip'), { value });
+    const theThemeProps = addPropsConfig(this.props.getPartOfThemeProps('TooltipContainer'), {
+      value,
+    });
     return (
-      <InputTip title={this.getTitle()} action={'focus'} themeProps={theThemeProps}>
+      <InputTip
+        title={this.getTitle()}
+        action={'focus'}
+        placement={'topLeft'}
+        themeProps={theThemeProps}
+      >
         {this.getInputContainer()}
       </InputTip>
     );
   }
 
   getInputContainer() {
-    const theThemeProps = this.props.getPartOfThemeProps('AmountInputContainer');
+    const theThemeProps = this.props.getPartOfThemeProps(Widget.Input);
     return <InputContainer themeProps={theThemeProps}>{this.generateInput()}</InputContainer>;
   }
 
@@ -254,9 +255,11 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
     } else {
       titleValue = amountPrefix + amountFormatter(value);
     }
+    const theThemeProps = this.props.getPartOfThemeProps('TooltipMessage');
+
     if (transform) {
       return (
-        <Title onClick={this.onTransform} themeProps={themeProps}>
+        <Title onClick={this.onTransform} themeProps={theThemeProps}>
           {titleValue}
         </Title>
       );

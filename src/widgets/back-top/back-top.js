@@ -6,6 +6,7 @@
  *
  */
 import * as React from 'react';
+import { addMouseEvent } from '@lugia/theme-hoc';
 import ThemeProvider from '../theme-provider';
 import Theme from '../theme';
 import Widget from '../consts/index';
@@ -120,12 +121,12 @@ export default ThemeProvider(
         children,
         themeProps,
         getPartOfThemeProps,
-        getPartOfThemeConfig,
+        getPartOfThemeHocProps,
         icon = 'lugia-icon-direction_up',
       } = this.props;
       const { fixed, posRight, posBottom } = this.state;
       return (
-        <div>
+        <div {...addMouseEvent(this)}>
           {fixed ? (
             <BackTop
               themeProps={themeProps}
@@ -139,10 +140,12 @@ export default ThemeProvider(
                 children
               ) : (
                 <BackTopContent themeProps={getPartOfThemeProps('BackTopContent')}>
-                  <IconBox themeProps={themeProps}>
-                    <Theme config={{ [Widget.Icon]: getPartOfThemeConfig('Icon') }}>
-                      <Icons iconClass={icon} themeProps={themeProps} />
-                    </Theme>
+                  <IconBox themeProps={themeProps} {...addMouseEvent(this)}>
+                    <Icons
+                      iconClass={icon}
+                      {...getPartOfThemeHocProps('BackTopIcon')}
+                      {...addMouseEvent(this)}
+                    />
                   </IconBox>
                 </BackTopContent>
               )}

@@ -3,13 +3,15 @@
  * create by guorg
  * @flow
  */
-import { px2emcss } from '../css/units';
+import { px2remcss } from '../css/units';
 import colorsFunc from '../css/stateColor';
-import styled, { css, keyframes } from 'styled-components';
+import { css, keyframes } from 'styled-components';
 import type { ThemeType } from '@lugia/lugia-web';
 import Icon from '../icon';
-import { createGetWidthOrHeight } from '../common/ThemeUtils';
-import { getAttributeFromObject } from '../common/ObjectUtils';
+import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
+
+import { getBorder, getBoxShadow } from '@lugia/theme-utils';
+import { getBorderRadius } from '../theme/CSSProvider';
 
 type IconType = 'confirm' | 'info' | 'success' | 'warning' | 'error';
 type FunctionPropsType = {
@@ -28,6 +30,7 @@ export type ModalProps = {
   footer?: string | React.ReactNode,
   maskClosable?: boolean,
   getTheme: Function,
+  getPartOfThemeProps: Function,
   mask?: boolean,
 } & FunctionPropsType;
 export type ModalState = {
@@ -44,8 +47,7 @@ type CSSProps = {
 };
 
 const FontSize = 1.4;
-const em = px2emcss(FontSize);
-const specialEM = px2emcss(1.6);
+
 const {
   themeColor,
   successColor,
@@ -62,16 +64,20 @@ export const IconInfo = {
   warning: { class: 'lugia-icon-reminder_exclamation_circle', color: warningColor },
 };
 
-export const Wrap = styled.div`
-  display: ${props => (props.visible ? 'block' : 'none')};
-  font-size: ${FontSize}rem;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 99999;
-`;
+export const Wrap = StaticComponent({
+  tag: 'div',
+  className: 'Wrap',
+  css: css`
+    display: ${props => (props.visible ? 'block' : 'none')};
+    font-size: ${FontSize}rem;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 99999;
+  `,
+});
 const getAnimate = (props: CSSProps) => {
   const { closing, opening } = props;
   const OpenKeyframe = keyframes`
@@ -101,117 +107,200 @@ const getAnimate = (props: CSSProps) => {
     `;
   }
 };
-export const ModalMask = styled.div`
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.65);
-  z-index: 99999;
-  ${getAnimate};
-`;
-export const ModalWrap = styled.div`
-  position: fixed;
-  right: 0;
-  left: 0;
-  margin: auto;
-  z-index: 99999;
-`;
 
-const getWidth = (props: CSSProps) => {
-  const { theme = {} } = props;
-  const { width } = theme;
-  if (width && typeof width === 'number') {
-    return createGetWidthOrHeight('width', { fontSize: 1.4 })({ theme });
-  }
+export const ModalMask = StaticComponent({
+  tag: 'div',
+  className: 'ModalMask',
+  css: css`
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.65);
+    z-index: 99999;
+    ${getAnimate};
+  `,
+});
 
-  return `width: ${em(520)};`;
-};
+export const ModalWrap = StaticComponent({
+  tag: 'div',
+  className: 'ModalWrap',
+  css: css`
+    position: fixed;
+    right: 0;
+    left: 0;
+    margin: auto;
+    z-index: 99999;
+  `,
+});
 
-export const Modal = styled.div`
-  box-sizing: border-box;
-  font-size: ${FontSize}rem;
-  position: relative;
-  ${getWidth};
-  top: ${em(100)};
-  margin: 0 auto;
-  z-index: 99999;
-  ${getAnimate};
-`;
+export const Modal = CSSComponent({
+  tag: 'div',
+  className: 'Modal',
+  css: css`
+    box-sizing: border-box;
+    font-size: ${FontSize}rem;
+    position: relative;
+    top: ${px2remcss(100)};
+    margin: 0 auto;
+    z-index: 99999;
+    ${getAnimate};
+  `,
+  normal: {
+    selectNames: [['width']],
+    defaultTheme: {
+      width: 520,
+    },
+  },
+});
 
-const getPadding = (props: CSSProps) => {
-  const { theme = {}, showIcon } = props;
-  const { padding } = theme;
-  const defaultLeft = showIcon ? 50 : 30;
-  if (padding) {
-    if (typeof padding === 'number') {
-      return `padding: ${em(padding)};`;
+export const ModalContent = CSSComponent({
+  tag: 'div',
+  className: 'ModalContent',
+  css: css`
+    position: relative;
+    border: 0;
+    border-radius: ${px2remcss(4)};
+    box-shadow: 0 ${px2remcss(4)} ${px2remcss(12)} rgba(0, 0, 0, 0.15);
+  `,
+  normal: {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['opacity'],
+      ['boxShadow'],
+      ['borderRadius'],
+      ['border'],
+      ['background'],
+      ['padding'],
+    ],
+    defaultTheme: {
+      width: 520,
+      background: { color: '#fff' },
+      boxShadow: getBoxShadow(`0 ${px2remcss(4)} ${px2remcss(12)} rgba(0, 0, 0, 0.15)`),
+      border: getBorder({ width: 0, style: 'solid', color: '#ccc' }),
+      borderRadius: getBorderRadius(4),
+    },
+    getThemeMeta(themeMeta: Object, themeProps: Object): Object {
+      const { propsConfig = {} } = themeProps;
+      const { showIcon } = propsConfig;
+      const defaultLeft = showIcon ? 50 : 30;
+
+      return {
+        padding: {
+          top: 30,
+          right: 30,
+          bottom: 30,
+          left: defaultLeft,
+        },
+      };
+    },
+  },
+});
+
+export const ModalClose = StaticComponent({
+  tag: 'div',
+  className: 'ModalClose',
+  css: css`
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: ${px2remcss(64)};
+    height: ${px2remcss(64)};
+    cursor: pointer;
+    text-align: center;
+    line-height: ${px2remcss(64)};
+  `,
+});
+
+export const ModalTitle = CSSComponent({
+  tag: 'div',
+  className: 'ModalTitle',
+  css: css`
+    border-radius: ${px2remcss(4)} ${px2remcss(4)} 0 0;
+  `,
+  normal: {
+    selectNames: [['font'], ['color'], ['padding']],
+    defaultTheme: {
+      font: { size: 18, weight: 500 },
+      color: blackColor,
+      padding: {
+        top: 0,
+        right: 0,
+        bottom: 16,
+        left: 0,
+      },
+    },
+  },
+});
+
+export const ModalBody = CSSComponent({
+  tag: 'div',
+  className: 'ModalBody',
+  css: css`
+    word-wrap: break-word;
+  `,
+  normal: {
+    selectNames: [['font'], ['color'], ['padding']],
+    defaultTheme: {
+      font: { size: 14 },
+      color: darkGreyColor,
+      padding: {
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+      },
+    },
+  },
+});
+
+export const ModalFooter = StaticComponent({
+  tag: 'div',
+  className: 'ModalFooter',
+  css: css`
+    padding-top: ${px2remcss(22)};
+    border-radius: 0 0 4px 4px;
+    & > button {
+      margin-left: ${px2remcss(14)};
     }
-    const top = getAttributeFromObject(padding, 'top', 30);
-    const right = getAttributeFromObject(padding, 'right', 30);
-    const bottom = getAttributeFromObject(padding, 'bottom', 30);
-    const left = getAttributeFromObject(padding, 'left', defaultLeft);
+    & > button:first-child {
+      margin-left: 0;
+    }
+  `,
+});
 
-    return `padding: ${em(top)} ${em(right)} ${em(bottom)} ${em(left)};`;
-  }
-  return `padding: ${em(30)} ${em(30)} ${em(30)} ${em(defaultLeft)};`;
-};
-
-export const ModalContent = styled.div`
-  position: relative;
-  background-color: #fff;
-  border: 0;
-  border-radius: ${em(4)};
-  box-shadow: 0 ${em(4)} ${em(12)} rgba(0, 0, 0, 0.15);
-  ${props => (props.showIcon ? `padding-left: ${em(20)};` : '')};
-  ${getPadding};
-`;
-export const ModalClose = styled.div`
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: ${em(64)};
-  height: ${em(64)};
-  cursor: pointer;
-  text-align: center;
-  line-height: ${em(64)};
-`;
-export const ModalTitle = styled.div`
-  padding-bottom: ${specialEM(16)};
-  border-radius: ${specialEM(4)} ${specialEM(4)} 0 0;
-  background: #fff;
-  color: ${blackColor};
-  font-size: ${em(16)};
-  font-weight: 500;
-`;
-export const ModalBody = styled.div`
-  color: ${darkGreyColor};
-  word-wrap: break-word;
-`;
-export const ModalFooter = styled.div`
-  padding-top: ${em(22)};
-  border-radius: 0 0 4px 4px;
-  & > button {
-    margin-left: ${em(14)};
-  }
-  & > button:first-child {
-    margin-left: 0;
-  }
-`;
-export const Icons: Object = styled(Icon)`
-  font-size: ${em(16)};
-`;
+export const Icons = CSSComponent({
+  className: 'ModalCloseIcon',
+  extend: Icon,
+  normal: {
+    selectNames: [['color'], ['fontSize']],
+    defaultTheme: {
+      fontSize: 16,
+    },
+  },
+});
 const getIconColor = (props: CSSProps) => {
   const { iconType } = props;
   return `color: ${IconInfo[iconType].color};`;
 };
-export const BigIcons: Object = styled(Icon)`
-  font-size: ${em(20)};
-  position: absolute;
-  left: ${px2emcss(2)(22)};
-  top: ${px2emcss(2)(28)};
-  ${getIconColor};
-`;
+
+export const BigIcons: Object = CSSComponent({
+  className: 'ModalIcon',
+  extend: Icon,
+  normal: {
+    selectNames: [['color'], ['fontSize']],
+    defaultTheme: {
+      fontSize: 20,
+    },
+  },
+  css: css`
+    position: absolute;
+    left: ${px2remcss(22)};
+    top: ${px2remcss(28)};
+    ${getIconColor};
+  `,
+});
