@@ -6,10 +6,12 @@
 
 import colorsFunc from '../css/stateColor';
 import styled, { css } from 'styled-components';
-import CSSComponent, { StaticComponent, getBorder } from '@lugia/theme-css-hoc';
+import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
+
 import { px2remcss } from '../css/units';
 import type { ThemeType } from '@lugia/lugia-web';
 import Icon from '../icon';
+import { getBorderRadius, getBorder } from '../theme/CSSProvider';
 
 const FontSize = 1.4;
 const defaultColor = '#fff';
@@ -198,7 +200,8 @@ export const CheckBoxInnerSpan = CSSComponent({
     selectNames: [['background'], ['border']],
     defaultTheme: {
       background: { color: defaultColor },
-      border: getBorder({ color: borderColor, width: 1, style: 'solid' }, { radius: 2 }),
+      border: getBorder({ color: borderColor, width: 1, style: 'solid' }),
+      borderRadius: getBorderRadius(2),
     },
     getCSS(themeMeta: Object, themeConfig: Object): string {
       const { propsConfig, themeState } = themeConfig;
@@ -256,14 +259,16 @@ export const CheckBoxInnerSpan = CSSComponent({
   hover: {
     selectNames: [['background'], ['border']],
     defaultTheme: {
-      border: getBorder({ color: themeColor, width: 1, style: 'solid' }, { radius: 2 }),
+      border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
+      borderRadius: getBorderRadius(2),
       background: { color: defaultColor },
     },
   },
   disabled: {
     selectNames: [['background'], ['border']],
     defaultTheme: {
-      border: getBorder({ color: borderDisableColor, width: 1, style: 'solid' }, { radius: 2 }),
+      border: getBorder({ color: borderDisableColor, width: 1, style: 'solid' }),
+      borderRadius: getBorderRadius(2),
       background: { color: disableColor },
     },
   },

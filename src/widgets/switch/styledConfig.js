@@ -4,7 +4,7 @@
 
 import colorsFunc from '../css/stateColor';
 import { deepMerge } from '@lugia/object-utils';
-import { getBorder } from '../theme/CSSProvider';
+import { getBorder, getBorderRadius } from '../theme/CSSProvider';
 import { px2remcss } from '../css/units';
 const rem = px2remcss;
 const { themeColor, successColor, dangerColor } = colorsFunc();
@@ -76,7 +76,8 @@ export function getThemeProps(props, value) {
     normal: {
       width: wrapWidth,
       height: wrapHeight,
-      border: getBorder({ color: '', style: '', width: 0 }, { radius: 20 }),
+      border: getBorder({ color: '', style: '', width: 0 }),
+      borderRadius: getBorderRadius(20),
       boxShadow: '0 1px 1px 0 rgba(0, 0, 0, 0.05)',
       fontSize: 12,
       color: 'rgba(255, 255, 255, 0.8)',
@@ -98,7 +99,8 @@ export function getThemeProps(props, value) {
     normal: {
       width: wrapWidth,
       height: wrapHeight,
-      border: getBorder({ color: '', style: '', width: 0 }, { radius: 20 }),
+      border: getBorder({ color: '', style: '', width: 0 }),
+      borderRadius: getBorderRadius(20),
       fontSize: 12,
       color: 'rgba(255, 255, 255, 0.8)',
       font: {
@@ -126,7 +128,8 @@ export function getThemeProps(props, value) {
       background: {
         color: '#fff',
       },
-      border: getBorder({ color: '', style: '', width: 0 }, { radius: '50%' }),
+      border: getBorder({ color: '', style: '', width: 0 }),
+      borderRadius: getBorderRadius('50%'),
       boxShadow: '0 1px 1px 0 rgba(0, 0, 0, 0.05)',
     },
     active: {
@@ -135,7 +138,8 @@ export function getThemeProps(props, value) {
       background: {
         color: '#fff',
       },
-      border: getBorder({ color: '', style: '', width: 0 }, { radius: circleWidth / 2 }),
+      border: getBorder({ color: '', style: '', width: 0 }),
+      borderRadius: getBorderRadius(circleWidth / 2),
     },
     disabled: deepMerge(
       {

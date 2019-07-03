@@ -16,10 +16,13 @@ import {
 } from '../css/input';
 import ToolTip from '../tooltip/index';
 import Icon from '../icon';
-import CSSComponent, { css, getBorder, StaticComponent, getBoxShadow } from '@lugia/theme-css-hoc';
+import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import colorsFunc from '../css/stateColor';
 import { units } from '@lugia/css';
 import { addPropsConfig } from '../avatar/index';
+
+import { getBorder, getBoxShadow } from '@lugia/theme-utils';
+import { getBorderRadius } from '../theme/CSSProvider';
 const { px2remcss } = units;
 const {
   themeColor,
@@ -51,7 +54,8 @@ const CommonInputStyle = CSSComponent({
       cursor: 'text',
       width: 200,
       height: DefaultHeight,
-      border: getBorder({ color: borderColor, width: 1, style: 'solid' }, { radius: 4 }),
+      border: getBorder({ color: borderColor, width: 1, style: 'solid' }),
+      borderRadius: getBorderRadius(4),
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
@@ -84,7 +88,8 @@ const CommonInputStyle = CSSComponent({
   hover: {
     selectNames: [['width'], ['height'], ['padding'], ['border'], ['cursor'], ['background']],
     defaultTheme: {
-      border: getBorder({ color: themeColor, width: 1, style: 'solid' }, { radius: 4 }),
+      border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
+      borderRadius: getBorderRadius(4),
     },
   },
   active: {

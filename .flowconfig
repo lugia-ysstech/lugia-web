@@ -22,6 +22,7 @@ node_modules/@lugia/theme-config/interface
 node_modules/@lugia/theme-hoc/interface
 node_modules/@lugia/theme-core/interface
 node_modules/@lugia/theme-css-hoc/interface
+node_modules/@lugia/theme-utils/interface
 node_modules/@lugia/theme-hoc-devtools/interface
 [options]
 module.name_mapper='^core/\(.*\)$' -> '<PROJECT_ROOT>/src/core/\1'

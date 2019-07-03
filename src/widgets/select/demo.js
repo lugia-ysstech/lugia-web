@@ -9,7 +9,8 @@ import Select from './index';
 import Widget from '../consts/index';
 import Theme from '../theme/index';
 import styled from 'styled-components';
-import { getBorder } from '@lugia/theme-css-hoc';
+import { getBorder } from '@lugia/theme-utils';
+import { getBorderRadius } from '../theme/CSSProvider';
 
 const H2 = styled.h2`
   padding: 20px;
@@ -37,7 +38,8 @@ const config = {
           opacity: 0.6,
           boxShadow: '2px 2px 5px #4d63ff',
           background: { color: '#000' },
-          border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }, { radius: 20 }),
+          border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }),
+          borderRadius: getBorderRadius(20),
         },
         hover: {
           opacity: 1,
@@ -69,7 +71,7 @@ const config = {
           boxShadow: '2px 2px 5px #000',
           font: { size: 20 },
           // background: { color: '#eee' },
-          border: getBorder({}, { radius: 20 }),
+          borderRadius: getBorderRadius(20),
           margin: {
             top: 40,
             left: 100,
@@ -82,7 +84,7 @@ const config = {
         hover: {
           boxShadow: '2px 2px 5px #4d63ff',
           color: '#4d63ff',
-          border: getBorder({}, { radius: 10 }),
+          borderRadius: getBorderRadius(10),
         },
       },
       // TagWrap: {

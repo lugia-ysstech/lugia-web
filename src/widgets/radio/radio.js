@@ -13,7 +13,7 @@ import Widget from '../consts/index';
 import type { RadioProps } from '../css/radio';
 import { RadioChildrenSpan, RadioContent, RadioCircleSpan, RadioWrap } from '../css/radio';
 import colorsFunc from '../css/stateColor';
-import { getBorder } from '@lugia/theme-css-hoc/lib/index';
+import { getBorder, getBorderRadius } from '@lugia/theme-utils';
 
 type RadioState = {
   checked: boolean,
@@ -32,11 +32,13 @@ const defaultEdgeCancelProps = {
       width: 16,
       height: 16,
       background: { color: '#fff' },
-      border: getBorder({ color: cancelColor, width: 1, style: 'solid' }, { radius: 100 }),
+      border: getBorder({ color: cancelColor, width: 1, style: 'solid' }),
+      borderRadius: getBorderRadius(100),
     },
     hover: {
       background: { color: '#fff' },
-      border: getBorder({ color: cancelColor, width: 1, style: 'solid' }, { radius: 100 }),
+      border: getBorder({ color: cancelColor, width: 1, style: 'solid' }),
+      borderRadius: getBorderRadius(100),
     },
   },
 };
@@ -50,18 +52,18 @@ const defaultEdgeCheckedProps = {
       width: 16,
       height: 16,
       background: { color: '#fff' },
-      border: getBorder({ color: themeColor, width: 1, style: 'solid' }, { radius: '100%' }),
+      border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
+      borderRadius: getBorderRadius('100%'),
     },
     hover: {
       background: { color: '#fff' },
-      border: getBorder({ color: themeColor, width: 1, style: 'solid' }, { radius: '100%' }),
+      borderRadius: getBorderRadius('100%'),
+      border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
     },
     disabled: {
       background: { color: disableColor },
-      border: getBorder(
-        { color: borderDisableColor, width: 1, style: 'solid' },
-        { radius: '100%' }
-      ),
+      border: getBorder({ color: borderDisableColor, width: 1, style: 'solid' }),
+      borderRadius: getBorderRadius('100%'),
     },
   },
 };

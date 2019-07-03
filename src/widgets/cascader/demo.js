@@ -6,10 +6,10 @@
  */
 import * as React from 'react';
 import Cascader from './index';
-import Theme from '../theme';
 import styled from 'styled-components';
 import Widget from '../consts/index';
-import { getBorder } from '@lugia/theme-css-hoc';
+import { getBorder } from '@lugia/theme-utils';
+import { getBorderRadius } from '../theme/CSSProvider';
 
 const Box = styled.div`
   padding-bottom: 500px;
@@ -85,7 +85,8 @@ export default class extends React.Component<any, any> {
               opacity: 0.6,
               boxShadow: '2px 2px 5px #4d63ff',
               background: { color: '#000' },
-              border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }, { radius: 20 }),
+              border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }),
+              borderRadius: getBorderRadius(20),
               // padding: {
               //   top: 30,
               //   left: 20,
@@ -150,7 +151,7 @@ export default class extends React.Component<any, any> {
               boxShadow: '2px 2px 5px #000',
               font: { size: 20 },
               // background: { color: '#eee' },
-              border: getBorder({}, { radius: 20 }),
+              borderRadius: getBorderRadius(20),
               // padding: {
               //   left: '20',
               //   right: '30',
@@ -159,7 +160,7 @@ export default class extends React.Component<any, any> {
             hover: {
               boxShadow: '2px 2px 5px #4d63ff',
               color: '#4d63ff',
-              border: getBorder({}, { radius: 10 }),
+              borderRadius: getBorderRadius(10),
             },
           },
           // TagWrap: {

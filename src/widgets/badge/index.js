@@ -11,9 +11,9 @@ import NumberTurn from './numberturn/index';
 
 import ThemeHoc from '@lugia/theme-hoc';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
-import CSSComponent, { css, getBoxShadow } from '@lugia/theme-css-hoc';
+import CSSComponent, { css } from '@lugia/theme-css-hoc';
+import { getBoxShadow } from '@lugia/theme-utils';
 import colorsFunc from '../css/stateColor';
-import { units } from '@lugia/css';
 
 const { dangerColor, defaultColor } = colorsFunc();
 
@@ -21,7 +21,15 @@ export const BaseRedPoint = CSSComponent({
   tag: 'sup',
   className: 'BaseRedPoint',
   normal: {
-    selectNames: [['width'], ['height'], ['background'], ['position'], ['opacity'], ['border']],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['background'],
+      ['position'],
+      ['opacity'],
+      ['border'],
+      ['borderRadius'],
+    ],
     defaultTheme: {
       background: {
         color: dangerColor,
@@ -50,6 +58,7 @@ const Dot: Object = CSSComponent({
       ['position'],
       ['opacity'],
       ['border'],
+      ['borderRadius'],
       ['boxShadow'],
     ],
     defaultTheme: {

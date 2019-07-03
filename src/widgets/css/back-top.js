@@ -4,12 +4,13 @@
  * @flow
  */
 import styled, { css, keyframes } from 'styled-components';
-import { getBorder } from '@lugia/theme-css-hoc';
+import { getBorder } from '@lugia/theme-utils';
 import ThemeHoc from '@lugia/theme-hoc';
 import colorsFunc from '../css/stateColor';
 import { px2remcss } from './units';
 import Icon from '../icon';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
+import { getBorderRadius } from '../theme/CSSProvider';
 
 const { defaultColor, themeColor } = colorsFunc();
 const FontSize = 1.2;
@@ -102,7 +103,8 @@ export const BackTopContent = CSSComponent({
       width: 40,
       height: 40,
       opacity: 1,
-      border: getBorder({ color: '#e8e8e8', width: 1, style: 'solid' }, { radius: 40 }),
+      border: getBorder({ color: '#e8e8e8', width: 1, style: 'solid' }),
+      borderRadius: getBorderRadius(40),
     },
   },
 });

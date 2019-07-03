@@ -11,7 +11,9 @@ import type { TooltipProps, TooltipState } from '../css/tooltip';
 import { Down, Left, Right, Up } from '../css/tooltip';
 import colorsFunc from '../css/stateColor';
 import ThemeHoc from '@lugia/theme-hoc';
-import CSSComponent, { css, getBoxShadow } from '@lugia/theme-css-hoc';
+import CSSComponent, { css } from '@lugia/theme-css-hoc';
+import { getBoxShadow } from '@lugia/theme-utils';
+
 import { units } from '@lugia/css';
 import { addPropsConfig } from '../avatar';
 const { px2remcss } = units;

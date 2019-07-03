@@ -9,7 +9,8 @@ import { css } from 'styled-components';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import { px2remcss } from '../css/units';
 import type { ThemeType } from '@lugia/lugia-web';
-import { getBorder } from '@lugia/theme-css-hoc';
+import { getBorder } from '@lugia/theme-utils';
+import { getBorderRadius } from '../theme/CSSProvider';
 
 const em = px2remcss;
 const {
@@ -211,7 +212,8 @@ export const RadioCircleSpan = CSSComponent({
       return '';
     },
     defaultTheme: {
-      border: getBorder({ color: borderColor, width: 1, style: 'solid' }, { radius: '100%' }),
+      border: getBorder({ color: borderColor, width: 1, style: 'solid' }),
+      borderRadius: getBorderRadius('100%'),
       background: { color: '#fff' },
       width: 16,
       height: 16,
@@ -220,7 +222,8 @@ export const RadioCircleSpan = CSSComponent({
   hover: {
     selectNames: [['background'], ['border']],
     defaultTheme: {
-      border: getBorder({ color: themeColor, width: 1, style: 'solid' }, { radius: '100%' }),
+      border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
+      borderRadius: getBorderRadius('100%'),
       background: { color: '#fff' },
     },
   },
@@ -228,17 +231,16 @@ export const RadioCircleSpan = CSSComponent({
     selectNames: [['background'], ['border']],
     defaultTheme: {
       background: { color: disableColor },
-      border: getBorder(
-        { color: borderDisableColor, width: 1, style: 'solid' },
-        { radius: '100%' }
-      ),
+      border: getBorder({ color: borderDisableColor, width: 1, style: 'solid' }),
+      borderRadius: getBorderRadius('100%'),
     },
   },
   active: {
     selectNames: [],
     defaultTheme: {
-      border: getBorder({ color: themeColor, width: 1, style: 'solid' }, { radius: '100%' }),
+      border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
       background: { color: '#fff' },
+      borderRadius: getBorderRadius('100%'),
     },
   },
 });

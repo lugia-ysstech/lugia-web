@@ -9,7 +9,8 @@ import styled from 'styled-components';
 import BackTop from './back-top';
 import Widget from '../consts/index';
 import Theme from '../theme';
-import { getBorder } from '@lugia/theme-css-hoc';
+import { getBorder } from '@lugia/theme-utils';
+import { getBorderRadius } from '../theme/CSSProvider';
 
 const Demo = styled.div`
   & > div > div {
@@ -36,7 +37,8 @@ export default class AffixDemo extends React.Component<any, any> {
             width: 100,
             height: 100,
             opacity: 0.7,
-            border: getBorder({ color: 'red', width: 1, style: 'solid' }, { radius: 100 }),
+            border: getBorder({ color: 'red', width: 1, style: 'solid' }),
+            borderRadius: getBorderRadius(100),
           },
         },
         BackTopIcon: {

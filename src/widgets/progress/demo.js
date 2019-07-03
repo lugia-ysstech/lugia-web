@@ -5,11 +5,12 @@
  * @flow
  */
 import * as React from 'react';
-import { getBorder, getBoxShadow } from '@lugia/theme-css-hoc';
+import { getBorder, getBoxShadow } from '@lugia/theme-utils';
 import Progress from './progress';
 import Widget from '../consts/index';
 import Button from '../button';
 import Theme from '../theme';
+import { getBorderRadius } from '../theme/CSSProvider';
 
 export default class ProgressDemo extends React.Component<any, any> {
   constructor() {
@@ -63,7 +64,8 @@ export default class ProgressDemo extends React.Component<any, any> {
             background: {
               color: 'green',
             },
-            border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }, { radius: 50 }),
+            border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }),
+            borderRadius: getBorderRadius(50),
             boxShadow: getBoxShadow('1px 2px 2px 2px #e8e8e8'),
           },
         },
@@ -72,7 +74,8 @@ export default class ProgressDemo extends React.Component<any, any> {
             background: {
               color: 'blue',
             },
-            border: getBorder({ color: '#ccc', width: 1, style: 'solid' }, { radius: 50 }),
+            border: getBorder({ color: '#ccc', width: 1, style: 'solid' }),
+            borderRadius: getBorderRadius(50),
             boxShadow: getBoxShadow('1px 2px 2px 2px green'),
             height: 25,
           },
@@ -82,7 +85,8 @@ export default class ProgressDemo extends React.Component<any, any> {
             background: {
               color: 'green',
             },
-            border: getBorder({ color: 'red', width: 1, style: 'solid' }, { radius: 50 }),
+            border: getBorder({ color: 'red', width: 1, style: 'solid' }),
+            borderRadius: getBorderRadius(50),
             boxShadow: getBoxShadow('1px 2px 2px 2px green'),
             height: 25,
           },
@@ -92,7 +96,8 @@ export default class ProgressDemo extends React.Component<any, any> {
             background: {
               color: 'red',
             },
-            border: getBorder({ color: 'green', width: 1, style: 'solid' }, { radius: 50 }),
+            border: getBorder({ color: 'green', width: 1, style: 'solid' }),
+            borderRadius: getBorderRadius(50),
             boxShadow: getBoxShadow('1px 2px 2px 2px red'),
             height: 25,
           },

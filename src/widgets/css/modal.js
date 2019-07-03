@@ -8,7 +8,10 @@ import colorsFunc from '../css/stateColor';
 import { css, keyframes } from 'styled-components';
 import type { ThemeType } from '@lugia/lugia-web';
 import Icon from '../icon';
-import CSSComponent, { getBorder, getBoxShadow, StaticComponent } from '@lugia/theme-css-hoc';
+import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
+
+import { getBorder, getBoxShadow } from '@lugia/theme-utils';
+import { getBorderRadius } from '../theme/CSSProvider';
 
 type IconType = 'confirm' | 'info' | 'success' | 'warning' | 'error';
 type FunctionPropsType = {
@@ -177,7 +180,8 @@ export const ModalContent = CSSComponent({
       width: 520,
       background: { color: '#fff' },
       boxShadow: getBoxShadow(`0 ${px2remcss(4)} ${px2remcss(12)} rgba(0, 0, 0, 0.15)`),
-      border: getBorder({ width: 0, style: 'solid', color: '#ccc' }, { radius: 4 }),
+      border: getBorder({ width: 0, style: 'solid', color: '#ccc' }),
+      borderRadius: getBorderRadius(4),
     },
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
