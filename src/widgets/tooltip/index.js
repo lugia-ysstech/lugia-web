@@ -55,7 +55,14 @@ const Content: Object = CSSComponent({
   tag: 'div',
   className: 'TooltipContent',
   normal: {
-    selectNames: [['background'], ['width'], ['height'], ['boxShadow'], ['border']],
+    selectNames: [
+      ['background'],
+      ['width'],
+      ['height'],
+      ['boxShadow'],
+      ['borderRadius'],
+      ['border'],
+    ],
     defaultTheme: {
       background: { color: superLightColor },
       boxShadow: getBoxShadow('0 0 2 rgba(102, 102, 102, 0.15)'),

@@ -48,6 +48,7 @@ const CommonInputStyle = CSSComponent({
       ['padding'],
       ['background'],
       ['border'],
+      ['borderRadius'],
       ['cursor'],
     ],
     defaultTheme: {
@@ -86,14 +87,22 @@ const CommonInputStyle = CSSComponent({
     },
   },
   hover: {
-    selectNames: [['width'], ['height'], ['padding'], ['border'], ['cursor'], ['background']],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['padding'],
+      ['border'],
+      ['borderRadius'],
+      ['cursor'],
+      ['background'],
+    ],
     defaultTheme: {
       border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
       borderRadius: getBorderRadius(4),
     },
   },
   active: {
-    selectNames: [['boxShadow'], ['border'], ['cursor']],
+    selectNames: [['boxShadow'], ['border'], ['borderRadius'], ['cursor']],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const { propsConfig, themeState } = themeProps;
       const { validateStatus } = propsConfig;
@@ -108,7 +117,7 @@ const CommonInputStyle = CSSComponent({
     },
   },
   disabled: {
-    selectNames: [['cursor'], ['border'], ['background'], ['color']],
+    selectNames: [['cursor'], ['border'], ['borderRadius'], ['background'], ['color']],
     defaultTheme: {
       cursor: 'not-allowed',
       background: { backgroundColor: disableColor },

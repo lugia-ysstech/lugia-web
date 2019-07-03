@@ -96,7 +96,15 @@ export const BackTopContent = CSSComponent({
     position: relative;
   `,
   normal: {
-    selectNames: [['background'], ['color'], ['width'], ['height'], ['opacity'], ['border']],
+    selectNames: [
+      ['background'],
+      ['color'],
+      ['width'],
+      ['height'],
+      ['opacity'],
+      ['border'],
+      ['borderRadius'],
+    ],
     defaultTheme: {
       background: { color: defaultColor },
       color: themeColor,

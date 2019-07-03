@@ -179,7 +179,7 @@ export const RadioCircleSpan = CSSComponent({
     transition: all 0.3s;
   `,
   normal: {
-    selectNames: [['background'], ['border'], ['width'], ['height']],
+    selectNames: [['background'], ['border'], ['borderRadius'], ['width'], ['height']],
     getCSS(themeMeta: Object, themeProps: Object): string {
       const { propsConfig, themeState } = themeProps;
       const { hover } = themeState;
@@ -220,7 +220,7 @@ export const RadioCircleSpan = CSSComponent({
     },
   },
   hover: {
-    selectNames: [['background'], ['border']],
+    selectNames: [['background'], ['borderRadius'], ['border']],
     defaultTheme: {
       border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
       borderRadius: getBorderRadius('100%'),
@@ -228,7 +228,7 @@ export const RadioCircleSpan = CSSComponent({
     },
   },
   disabled: {
-    selectNames: [['background'], ['border']],
+    selectNames: [['background'], ['borderRadius'], ['border']],
     defaultTheme: {
       background: { color: disableColor },
       border: getBorder({ color: borderDisableColor, width: 1, style: 'solid' }),

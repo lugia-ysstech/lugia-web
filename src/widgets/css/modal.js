@@ -172,6 +172,7 @@ export const ModalContent = CSSComponent({
       ['height'],
       ['opacity'],
       ['boxShadow'],
+      ['borderRadius'],
       ['border'],
       ['background'],
       ['padding'],

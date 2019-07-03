@@ -41,7 +41,14 @@ export const SliderBigBox = CSSComponent({
   tag: 'div',
   className: 'SliderBigBox',
   normal: {
-    selectNames: [['border'], ['background'], ['margin'], ['padding'], ['opacity']],
+    selectNames: [
+      ['border'],
+      ['borderRadius'],
+      ['background'],
+      ['margin'],
+      ['padding'],
+      ['opacity'],
+    ],
     getCSS(
       themeMate,
       {
@@ -59,7 +66,7 @@ export const SliderBigBox = CSSComponent({
     selectNames: [],
   },
   disabled: {
-    selectNames: [['border'], ['background'], ['opacity']],
+    selectNames: [['border'], ['borderRadius'], ['background'], ['opacity']],
   },
   css: css`
     box-sizing: border-box;
@@ -113,7 +120,7 @@ export const SliderInner = CSSComponent({
   tag: 'div',
   className: 'SliderPassedWay',
   normal: {
-    selectNames: [['background'], ['border']],
+    selectNames: [['background'], ['borderRadius'], ['border']],
     getCSS(themeMate, themeProps) {
       const { propsConfig } = themeProps;
       const size = getSliderInnerHeight(themeMate, propsConfig);
@@ -291,7 +298,7 @@ export const Tipinner = CSSComponent({
     selectNames: [],
   },
   disabled: {
-    selectNames: [['background'], ['color'], ['border']],
+    selectNames: [['background'], ['color'], ['borderRadius'], ['border']],
     getCSS(themeMate) {
       const { height } = themeMate;
       return `
@@ -338,7 +345,7 @@ export const Tiparrow = CSSComponent({
   tag: 'span',
   className: 'SliderTips',
   normal: {
-    selectNames: [['background'], ['border']],
+    selectNames: [['background'], ['borderRadius'], ['border']],
   },
   hover: {
     selectNames: [],
@@ -347,7 +354,7 @@ export const Tiparrow = CSSComponent({
     selectNames: [],
   },
   disabled: {
-    selectNames: [['background'], ['border']],
+    selectNames: [['background'], ['borderRadius'], ['border']],
   },
   css: css`
     display: inline-block;

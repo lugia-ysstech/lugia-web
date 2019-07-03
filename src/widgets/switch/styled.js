@@ -16,6 +16,7 @@ export const SwitchContainer = CSSProvider({
       ['width'],
       ['height'],
       ['border'],
+      ['borderRadius'],
       ['margin'],
       ['padding'],
       ['background'],
@@ -33,6 +34,7 @@ export const SwitchContainer = CSSProvider({
       ['width'],
       ['height'],
       ['border'],
+      ['borderRadius'],
       ['margin'],
       ['padding'],
       ['background'],
@@ -66,7 +68,7 @@ export const SwitchWrapper = CSSProvider({
     selectNames: [],
   },
   disabled: {
-    selectNames: [['background'], ['border']],
+    selectNames: [['background'], ['borderRadius'], ['border']],
   },
   css: css`
     display: inline-block;
