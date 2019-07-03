@@ -5,6 +5,7 @@
  */
 import styled from 'styled-components';
 import CSSComponent, { StaticComponent, getBorder } from '@lugia/theme-css-hoc';
+import ThemeHoc from '@lugia/theme-hoc';
 import colorsFunc from '../css/stateColor';
 import changeColor from '../css/utilsColor';
 import { px2remcss } from '../css/units';
@@ -25,6 +26,8 @@ import {
   defaultHoverTheme,
   defaultTheme,
   defaultDisabledTheme,
+  SizeTheme,
+  CircleTheme,
 } from '../button/theme';
 
 export type ButtonType = 'default' | 'primary' | 'success' | 'warning' | 'danger';
@@ -60,6 +63,8 @@ export type ButtonOutProps = CSSProps & {
   onMouseDown: Function,
   onMouseLeave: Function,
   getPartOfThemeProps: Function,
+  getPartOfThemeHocProps: Function,
+  themeProps: Object,
 };
 
 type IconLoadingProps = {
@@ -548,11 +553,20 @@ export const ButtonOut = CSSComponent({
   tag: 'button',
   className: 'common-back-top',
   normal: {
-    selectNames: [['color'], ['background'], ['border']],
+    selectNames: [
+      ['color'],
+      ['background'],
+      ['border'],
+      ['font'],
+      ['height'],
+      ['width'],
+      ['padding'],
+      ['borderRadius'],
+    ],
     defaultTheme,
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
-      const { type = 'default', plain, loading } = propsConfig;
+      const { type = 'default', plain, loading, size = 'default', circle } = propsConfig;
       let normalTheme;
       if (loading) {
         if (plain) {
@@ -565,8 +579,11 @@ export const ButtonOut = CSSComponent({
       } else {
         normalTheme = TypeTheme[type] || TypeTheme.default;
       }
+      const sizeTheme = circle
+        ? CircleTheme[size] || CircleTheme.default
+        : SizeTheme[size] || SizeTheme.default;
 
-      return normalTheme;
+      return { ...normalTheme, ...sizeTheme };
     },
   },
   hover: {
@@ -575,14 +592,14 @@ export const ButtonOut = CSSComponent({
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
       const { type = 'default', plain } = propsConfig;
-      let hoverlTheme;
+      let hoverTheme;
       if (plain) {
-        hoverlTheme = PlainHoverTheme[type] || PlainHoverTheme.default;
+        hoverTheme = PlainHoverTheme[type] || PlainHoverTheme.default;
       } else {
-        hoverlTheme = TypeHoverTheme[type] || TypeHoverTheme.default;
+        hoverTheme = TypeHoverTheme[type] || TypeHoverTheme.default;
       }
 
-      return hoverlTheme;
+      return hoverTheme;
     },
   },
   disabled: {
@@ -639,7 +656,6 @@ export const ButtonOut = CSSComponent({
       ${hoverStyle}
     }
     
-    ${getSizeCSS} 
     ${getShapeCSS}
     ${getCircleCSS}
     ${getClickCSS}
@@ -647,15 +663,35 @@ export const ButtonOut = CSSComponent({
 });
 export const ChildrenSpan = styled.span`
   display: inline-block;
-  ${getChildrenLineHeight}
 `;
 
-export const IconWrap: Object = styled(Icon)`
-  vertical-align: -${px2remcss(1.75)} !important;
-  ${getIconStyle};
-  ${getLoadingIconStyle};
-  ${getIconCursor}
-`;
+// export const IconWrap: Object = styled(Icon)`
+//   vertical-align: -${px2remcss(1.75)} !important;
+//   ${getIconStyle};
+//   ${getLoadingIconStyle};
+//   ${getIconCursor}
+// `;
+export const IconWrap: Object = CSSComponent({
+  className: 'IconWrap',
+  extend: Icon,
+  css: css`
+    vertical-align: -${px2remcss(1.75)} !important;
+    ${getIconStyle};
+    ${getLoadingIconStyle};
+    ${getIconCursor};
+  `,
+  normal: {
+    getThemeMeta() {
+      console.log('normal');
+    },
+  },
+  hover: {
+    defaultTheme: { color: 'red' },
+    getThemeMeta() {
+      console.log('hover');
+    },
+  },
+});
 export const CircleIcon: Object = styled(Icon)`
   vertical-align: -${px2remcss(1.75)} !important;
   ${getCircleIconFont};

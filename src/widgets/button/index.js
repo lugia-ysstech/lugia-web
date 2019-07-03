@@ -45,16 +45,36 @@ export default ThemeProvider(
         };
 
         handleChildren = () => {
-          const { children, text, icon, circle, loading, size = 'default', disabled } = this.props;
+          const {
+            children,
+            text,
+            icon,
+            circle,
+            loading,
+            size = 'default',
+            disabled,
+            themeProps,
+            getPartOfThemeHocProps,
+          } = this.props;
           if (circle) {
             const iconType = icon || 'lugia-icon-direction_logout';
-            return <CircleIcon size={size} iconClass={iconType} />;
+            return (
+              <span>
+                <CircleIcon size={size} iconClass={iconType} />
+                {text || children}
+              </span>
+            );
           }
 
           if (loading) {
             return (
               <span>
-                <IconWrap loading iconClass="lugia-icon-financial_loading_o" />
+                <IconWrap
+                  {...getPartOfThemeHocProps('IconWrap')}
+                  loading
+                  iconClass="lugia-icon-financial_loading_o"
+                  themeProps={themeProps}
+                />
                 {text || children}
               </span>
             );
@@ -63,7 +83,12 @@ export default ThemeProvider(
             const hasChildren = !!children || !!text;
             return (
               <span>
-                <IconWrap iconClass={icon} hasChildren={hasChildren} disabled={disabled} />
+                <IconWrap
+                  iconClass={icon}
+                  hasChildren={hasChildren}
+                  disabled={disabled}
+                  themeProps={this.props.getPartOfThemeProps('IconWrap')}
+                />
                 {text || children}
               </span>
             );
@@ -88,6 +113,7 @@ export default ThemeProvider(
             onMouseDown,
             block,
             getPartOfThemeProps,
+            getPartOfThemeHocProps,
           } = this.props;
           const { clicked } = this.state;
           const mouseConfig = {
@@ -125,9 +151,9 @@ export default ThemeProvider(
               onFocus={() => console.log('focus')}
               onBlur={() => console.log('onBlur')}
             >
-              <ChildrenSpan size={size} type={type} plain={plain}>
-                {this.handleChildren()}
-              </ChildrenSpan>
+              {/*<ChildrenSpan size={size} type={type} plain={plain}>*/}
+              {this.handleChildren()}
+              {/*</ChildrenSpan>*/}
             </ButtonOut>
           );
         }
