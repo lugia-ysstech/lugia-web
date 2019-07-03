@@ -18,7 +18,7 @@ import colorsFunc from '../css/stateColor';
 import TestInner from './testInner';
 
 import CSSComponent, { css, keyframes } from '@lugia/theme-css-hoc';
-import { getBorder } from '../theme/CSSProvider';
+import { getBorder } from '@lugia/theme-css-hoc';
 
 const { themeColor, mediumGreyColor, superLightColor, disableColor } = colorsFunc();
 
@@ -459,20 +459,33 @@ export const defaulttestDelayData = [
   },
 ];
 
+const addItem = [
+  { title: '虾滑', content: '虾滑啊啊啊啊' },
+  { title: '萝卜', content: '萝卜啊啊啊啊' },
+  { title: '小油条', content: '小油条啊啊啊啊' },
+  { title: '肥牛', content: '肥牛啊啊啊啊' },
+  { title: '肥羊', content: '肥羊啊啊啊啊' },
+  { title: '地瓜', content: '地瓜啊啊啊啊' },
+  { title: '香菇', content: '香菇啊啊啊啊' },
+];
+
 export default class TabsDemo extends React.Component<any, any> {
   onChange = event => {
     console.log('switch event onChange');
   };
   static getDerivedStateFromProps(nextProps: TabpaneProps, state: TabpaneState) {
     let data = hasActivityValueData;
+    let dataWindow = hasActivityValueData;
     let activityValue = 0;
     if (state) {
       data = state.data;
+      dataWindow = state.dataWindow;
       activityValue = state.activityValue;
     }
     return {
       testDelayData: defaulttestDelayData,
       data,
+      dataWindow,
       activityValue,
     };
   }
@@ -483,10 +496,7 @@ export default class TabsDemo extends React.Component<any, any> {
     const { data } = this.state;
     const newData = [...data];
     const activeIndex = data.length;
-    const item = {
-      title: '萝卜',
-      content: '萝卜啊啊啊啊',
-    };
+    const item = this.getAddItem();
     newData.push(item);
     this.setState({ data: newData, activityValue: activeIndex });
   };
@@ -497,6 +507,17 @@ export default class TabsDemo extends React.Component<any, any> {
       return;
     }
     this.setState({ activityValue: index });
+  };
+  onDelete = index => {
+    const { dataWindow } = this.state;
+    const newDate = [...dataWindow];
+    newDate.splice(index, 1);
+    this.setState({ dataWindow: newDate });
+  };
+
+  getAddItem = () => {
+    const index = Math.floor(Math.random() * 5);
+    return addItem[index];
   };
 
   render() {
@@ -544,7 +565,6 @@ export default class TabsDemo extends React.Component<any, any> {
               color: '#ccc',
             },
           },
-          AddButton: {},
         },
       },
     };
@@ -555,7 +575,7 @@ export default class TabsDemo extends React.Component<any, any> {
             normal: {
               color: themeColor,
               background: {
-                color: '#',
+                color: '#fff',
               },
             },
             disabled: {
@@ -582,12 +602,12 @@ export default class TabsDemo extends React.Component<any, any> {
             },
           },
           AddButton: {
-            normal: {
-              width: 15,
-              height: 15,
-              border: getBorder({ color: '#e8e8e8', width: 1, style: 'solid' }, { radius: 4 }),
+            normal: {},
+            hover: {
+              background: {
+                color: '#ccc',
+              },
             },
-            hover: {},
             disabled: {
               color: '#ccc',
             },
@@ -602,6 +622,27 @@ export default class TabsDemo extends React.Component<any, any> {
             normal: {
               width: 300,
               height: 300,
+            },
+          },
+          AddButton: {
+            normal: {
+              color: '#000',
+              width: 20,
+              height: 20,
+              opacity: 1,
+              background: {
+                color: '#e8e8e8',
+              },
+              boxShadow: { x: 0, y: 0, color: '#e8e8e8', type: 'outset', blur: 1, spread: 1 },
+              border: getBorder({ color: 'blue', width: 1, style: 'solid' }),
+            },
+            hover: {
+              background: {
+                color: '#ccc',
+              },
+            },
+            disabled: {
+              color: '#ccc',
             },
           },
         },
@@ -649,7 +690,7 @@ export default class TabsDemo extends React.Component<any, any> {
         },
       },
     };
-    const { testDelayData, data, activityValue } = this.state;
+    const { testDelayData, data, dataWindow, activityValue } = this.state;
 
     return (
       <div>
@@ -849,7 +890,7 @@ export default class TabsDemo extends React.Component<any, any> {
 
         <Theme config={cardView}>
           <div>
-            <p style={{ titleStyle }}>tabType=card pagedType=single showadd</p>
+            <p style={{ titleStyle }}>tabType=card pagedType=single showadd 非受限 无指定增加项</p>
             <Tabs
               tabType={'card'}
               pagedType={'single'}
@@ -857,6 +898,21 @@ export default class TabsDemo extends React.Component<any, any> {
               onPreClick={onPreClick}
               onNextClick={onNextClick}
               showAddBtn={true}
+              // onAddClick={this.onAddClick}
+              // activityValue={activityValue}
+              // onChange={this.onChange}
+            />
+          </div>
+          <div>
+            <p style={{ titleStyle }}>tabType=card pagedType=single showadd 非受限 有指定增加项</p>
+            <Tabs
+              tabType={'card'}
+              pagedType={'single'}
+              // data={data}
+              onPreClick={onPreClick}
+              onNextClick={onNextClick}
+              showAddBtn={true}
+              getAddItem={this.getAddItem}
               // onAddClick={this.onAddClick}
               // activityValue={activityValue}
               // onChange={this.onChange}
@@ -878,10 +934,9 @@ export default class TabsDemo extends React.Component<any, any> {
               onChange={this.onChange}
             />
           </div>
-
           <br />
           <div>
-            <p style={{ titleStyle }}>defaultData pagedType=single </p>
+            <p style={{ titleStyle }}>defaultData pagedType=single 受限 无增加函数 内部不做处理</p>
             {/*<Switch  />*/}
             <Tabs
               tabType={'card'}
@@ -890,6 +945,8 @@ export default class TabsDemo extends React.Component<any, any> {
               onPreClick={onPreClick}
               onNextClick={onNextClick}
               showAddBtn={true}
+              showDeleteBtn={true}
+              getAddItem={this.getAddItem}
               // onAddClick={this.onAddClick}
               // activityValue={activityValue}
               // onChange={this.onChange}
@@ -908,10 +965,11 @@ export default class TabsDemo extends React.Component<any, any> {
             <Tabs
               tabType={'window'}
               pagedType={'page'}
-              data={hasActivityValueData}
+              data={dataWindow}
               onPreClick={onPreClick}
               onNextClick={onNextClick}
               showDeleteBtn={true}
+              onDeleteClick={this.onDelete}
             />
           </div>
           <p style={{ titleStyle }}>非受限 不传data 展示数据由state 控制</p>

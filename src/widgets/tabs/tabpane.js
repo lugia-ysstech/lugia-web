@@ -25,14 +25,24 @@ const BaseTabHoc = CSSComponent({
   tag: 'div',
   className: 'BaseTab',
   normal: {
-    selectNames: [['color'], ['background'], ['border'], ['margin'], ['padding'], ['font']],
+    selectNames: [
+      ['color'],
+      ['background'],
+      ['border'],
+      ['margin'],
+      ['padding'],
+      ['font'],
+      ['opacity'],
+    ],
     getCSS: (theme: Object, themeProps: Object) => {
-      const { color } = theme;
+      const { color, background } = theme;
       const {
         propsConfig: { isSelect, tabType, tabPosition },
       } = themeProps;
       let display = 'inline-block';
       let textAlign = 'text-align: center';
+      let position = '';
+      let border = '';
       if (isVertical(tabPosition)) {
         display = 'block';
         if (tabPosition === 'left') {
@@ -73,20 +83,27 @@ const BaseTabHoc = CSSComponent({
           }
         `;
       }
+      if (tabType === 'card') {
+        position = 'bottom: -1px;';
+      }
+      if (isSelect && tabType === 'card') {
+        border = `border-bottom: 1px solid ${background ? background.color : '#fff'};`;
+      }
       return css`
         display: ${display};
         ${textAlign}
+        ${position}
+        ${border}
       `;
     },
   },
   hover: {
-    selectNames: [['color'], ['background']],
+    selectNames: [['color'], ['background'], ['border'], ['font'], ['opacity']],
     defaultTheme: {
       color: themeColor,
     },
     getCSS: (theme: Object, themeProps: Object) => {
       console.log('getCSS hover');
-
       const {
         propsConfig: { tabType },
       } = themeProps;
@@ -344,7 +361,7 @@ type TabpaneState = {
 
 type TabpaneProps = {
   title: string,
-  onDeleteClick?: Function,
+  onDelete?: Function,
   icon?: string,
   suffixIcon?: string,
   tabType?: TabType,
@@ -585,9 +602,9 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     }
     return icon;
   }
-  onDeleteClick = (e: Event) => {
-    const { onDeleteClick, index } = this.props;
-    onDeleteClick && onDeleteClick(e, index);
+  onDeleteClick = () => {
+    const { onDelete, index } = this.props;
+    onDelete && onDelete(index);
   };
   getClearButton() {
     const { tabType, themeProps, disabled, showDeleteBtn } = this.props;

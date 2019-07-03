@@ -37,7 +37,7 @@ import { addMouseEvent } from '@lugia/theme-hoc';
 import ThemeHoc from '@lugia/theme-hoc';
 import { deepMerge } from '@lugia/object-utils';
 import colorsFunc from '../css/stateColor';
-import { getBorder } from '@lugia/theme-css-hoc/lib/index';
+import { getBorder } from '@lugia/theme-css-hoc';
 import { findDOMNode } from 'react-dom';
 
 const { superLightColor } = colorsFunc();
@@ -163,25 +163,67 @@ const HTabsContainer = CSSComponent({
   `,
 });
 
-const AddContainer = CSSComponent({
-  tag: 'div',
-  className: 'AddContainer',
-  normal: {
-    selectNames: [],
-  },
-  disabled: {
-    selectNames: [],
-  },
-  css: css`
-    position: relative;
-    width: ${px2remcss(AddButtonSize)};
-    height: ${px2remcss(AddButtonSize)};
-    border: 1px solid ${superLightColor};
-    border-radius: 4px;
-    background: #f8f8f8;
-    line-height: ${px2remcss(AddButtonSize)};
-  `,
-});
+const AddContainer = ThemeHoc(
+  CSSComponent({
+    tag: 'div',
+    className: 'AddButton',
+    normal: {
+      selectNames: [
+        ['width'],
+        ['height'],
+        ['opacity'],
+        ['background'],
+        ['border'],
+        ['boxShadow'],
+        ['color'],
+        ['fontSize'],
+      ],
+      defaultTheme: {
+        width: 18,
+        height: 18,
+        border: getBorder({ color: superLightColor, width: 1, style: 'solid' }),
+        background: {
+          color: '#f8f8f8',
+        },
+        lineHeight: 18,
+        borderRadius: '4px',
+      },
+      getThemeMeta: (theme: Object, themeProps: Object) => {
+        const { height } = theme;
+        return {
+          lineHeight: height,
+        };
+      },
+    },
+    hover: {
+      selectNames: [
+        ['width'],
+        ['height'],
+        ['opacity'],
+        ['background'],
+        ['border'],
+        ['boxShadow'],
+        ['color'],
+        ['fontSize'],
+      ],
+      defaultTheme: {
+        background: {
+          color: '#999',
+        },
+      },
+    },
+    disabled: {
+      selectNames: [],
+    },
+    css: css`
+      position: relative;
+      text-align: center;
+      cursor: pointer;
+    `,
+  }),
+  'AddContainer',
+  { hover: true, active: false }
+);
 
 const AddOutContainer = CSSComponent({
   tag: 'div',
@@ -196,6 +238,7 @@ const AddOutContainer = CSSComponent({
     position: relative;
     text-align: center;
     display: inline-block;
+    margin: 5px;
   `,
 });
 
@@ -385,7 +428,7 @@ type TabsProps = {
   onPreClick?: Function,
   onNextClick?: Function,
   onAddClick?: Function,
-  onDeleteClick?: Function,
+  onDelete?: Function,
   themeProps?: Object,
   viewClass?: string,
   getPartOfThemeHocProps: Function,
@@ -684,9 +727,15 @@ class TabHeader extends Component<TabsProps, TabsState> {
     const { tabType, themeProps, showAddBtn } = this.props;
     const add = 'lugia-icon-reminder_plus';
     if (!matchType(tabType, 'line') && showAddBtn) {
+      const { theme, viewClass } = this.props.getPartOfThemeHocProps('AddButton');
       return (
         <AddOutContainer themeProps={themeProps} tabType={tabType}>
-          <AddContainer themeProps={themeProps} tabType={tabType} onClick={this.onAddClick}>
+          <AddContainer
+            theme={theme}
+            viewClass={viewClass}
+            tabType={tabType}
+            onClick={this.onAddClick}
+          >
             <AddIcon themeProps={themeProps} tabType={tabType} iconClass={add} />
           </AddContainer>
         </AddOutContainer>
@@ -728,7 +777,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
       showDeleteBtn,
       isSelect: !disabled && activityValue === i,
       // getTabpaneWidthOrHeight: this.getTabpaneWidthOrHeight,
-      onDeleteClick: this.onDeleteClick,
+      onDelete: this.onDeleteClick,
       disabled,
       onMouseEnter: this.onTabMouseEnter,
       onMouseLeave: this.onTabMouseLeave,

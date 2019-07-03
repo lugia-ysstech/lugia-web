@@ -17,7 +17,7 @@ import ThemeProvider from '../theme-provider';
 import { px2remcss } from '../css/units';
 import { isVertical } from './utils';
 import { getAttributeFromObject } from '../common/ObjectUtils.js';
-
+import { addMouseEvent } from '@lugia/theme-hoc';
 import Icon from '../icon';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import ThemeHoc from '@lugia/theme-hoc';
@@ -159,6 +159,7 @@ type TabsProps = {
   onDeleteClick: Function,
   showAddBtn?: boolean,
   onAddClick?: Function,
+  getAddItem?: Function,
   pagedType?: PagedType,
   getTabpane?: Function,
   themeProps: Object,
@@ -303,9 +304,15 @@ class TabsBox extends Component<TabsProps, TabsState> {
   };
 
   onDelete = (index: number) => {
-    // this.setState({
-    //   activityValue:index
-    // });
+    const { onDeleteClick } = this.props;
+    onDeleteClick && onDeleteClick(index);
+    if (hasTargetInProps('data', this.props) || hasTargetInProps('children', this.props)) {
+      return;
+    }
+    const { data } = this.props;
+    const newDate = [...data];
+    newDate.splice(index, 1);
+    this.setState({ data: newDate });
   };
 
   onAddClick = (e: Event) => {
@@ -319,10 +326,12 @@ class TabsBox extends Component<TabsProps, TabsState> {
     }
     const { data } = this.state;
     const newData = [...data];
-    newData.push({
-      title: '白菜',
-      content: '白菜啊啊啊啊啊',
-    });
+    const { getAddItem } = this.props;
+    const item = (getAddItem && getAddItem()) || {
+      title: `Tab${data.length}`,
+      content: `Tab${data.length} Content`,
+    };
+    newData.push(item);
     this.setState({
       activityValue: data.length,
       data: newData,
