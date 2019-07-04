@@ -15,11 +15,11 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('tabpaneDemo', () => {
   const themeHocProps = () => true;
-  const themeProps = { themeConfig: {}, themeState: {} };
+  const themeProps = { propsConfig: {}, themeConfig: {}, themeState: {} };
   it('Component JSON', () => {
     const renders = renderer.create(
       <Tabpane
-        themeProps={themeProps}
+        // themeProps={themeProps}
         title={'tabs'}
         getPartOfThemeHocProps={themeHocProps}
         getPartOfThemeProps={themeHocProps}

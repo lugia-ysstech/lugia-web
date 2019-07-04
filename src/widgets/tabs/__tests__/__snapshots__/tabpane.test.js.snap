@@ -1,21 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`tabpaneDemo Component JSON 1`] = `
-.c4 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c0 {
   position: relative;
   cursor: pointer;
   white-space: nowrap;
-  padding: 0 10px 0 20px;
+  padding: 0 20px;
   display: inline-block;
-  padding: 0 10px 0 20px;
   text-align: center;
 }
 
@@ -28,6 +19,7 @@ exports[`tabpaneDemo Component JSON 1`] = `
   -ms-user-select: none;
   user-select: none;
   text-align: left;
+  line-height: 3.5rem;
   height: 3.5rem;
 }
 
@@ -35,23 +27,8 @@ exports[`tabpaneDemo Component JSON 1`] = `
   color: #4d63ff;
 }
 
-.c2 {
-  -webkit-transition: all 0.3s linear 0.1s;
-  transition: all 0.3s linear 0.1s;
-  z-index: 2;
-  opacity: 0;
-  color: #999;
-  opacity: 1;
-  margin-left: 10px;
-}
-
-.c3 {
-  font-size: 1rem;
-  color: #e8e8e8;
-}
-
 <div
-  className="DefaultTabPan  c0"
+  className="c0"
   onClick={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
@@ -67,17 +44,5 @@ exports[`tabpaneDemo Component JSON 1`] = `
   >
     tabs
   </div>
-  <span
-    className="c2"
-    onClick={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-    style={Object {}}
-  >
-    <i
-      className="lugia-icon-reminder_close c3  c4"
-      style={Object {}}
-    />
-  </span>
 </div>
 `;

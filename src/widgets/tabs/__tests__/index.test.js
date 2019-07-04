@@ -13,39 +13,50 @@ import Adapter from 'enzyme-adapter-react-16';
 import Tabs from '../tabs';
 import { hasActivityValueData, defaultData, shortChildren, longChildren } from '../demo';
 import { isVertical } from '../utils';
-import Widgets from '../../consts';
-import Theme from '../../theme/';
+import Widget from '../../consts';
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('tabsDemo', () => {
+  const themeProps = { themeConfig: {}, themeState: {} };
+  const getPartOfThemeProps = () => true;
   const createTabs = (obj?: Object): any => {
     const config = obj
       ? obj
       : { tabType: 'line', tabPosition: 'bottom', data: hasActivityValueData };
-    return <Tabs {...config} />;
+    return (
+      <Tabs
+        {...config}
+        getPartOfThemeHocProps={getPartOfThemeProps}
+        getPartOfThemeProps={getPartOfThemeProps}
+        themeProps={themeProps}
+      />
+    );
   };
   it('Component JSON', () => {
     const renders = renderer.create(<Wrapper />);
     expect(renders.toJSON()).toMatchSnapshot();
   });
   const getCmp = (target: any): Object => {
-    return target
-      .children()
-      .at(0)
-      .children()
-      .at(0)
-      .instance();
+    return (
+      target
+        .children()
+        // .at(0)
+        // .children()
+        // .at(0)
+        .instance()
+    );
+    // return target.state() ;
   };
 
   it('props defaultActivityValue', () => {
-    const target = mount(createTabs({ defaultActivityValue: '2', data: hasActivityValueData }));
+    const target = mount(createTabs({ defaultActivityValue: 2, data: hasActivityValueData }));
     const { activityValue } = getCmp(target).state;
-    expect(activityValue).toBe('2');
+    expect(activityValue).toBe(2);
   });
   it('props activityValue', () => {
-    const target = mount(createTabs({ activityValue: '2', data: hasActivityValueData }));
+    const target = mount(createTabs({ activityValue: 2, data: hasActivityValueData }));
     const { activityValue } = getCmp(target).state;
-    expect(activityValue).toBe('2');
+    expect(activityValue).toBe(2);
   });
   it('props defaultData', () => {
     const target = mount(createTabs({ defaultData }));
@@ -70,54 +81,64 @@ describe('tabsDemo', () => {
   it('props children shortChildren', () => {
     const target = mount(createTabs({ children: shortChildren }));
     const { activityValue } = getCmp(target).state;
-    expect(activityValue).toBe('_key_0');
+    expect(activityValue).toBe(0);
   });
   it('props children longChildren', () => {
     const target = mount(createTabs({ children: longChildren }));
     const { activityValue } = getCmp(target).state;
-    expect(activityValue).toBe('_key_0');
+    expect(activityValue).toBe(0);
   });
   it('props children&&data', () => {
     const target = mount(createTabs({ data: hasActivityValueData, children: shortChildren }));
     const { activityValue } = getCmp(target).state;
-    expect(activityValue).toBe('0');
+    expect(activityValue).toBe(0);
   });
 
   function testOnTabClick(component: any, expIndex: number, expActicityValue: string) {
     it('props onTabClick', () => {
       const target = mount(component);
-      const type = isVertical(component.props.tabPosition) ? 'yTabpane' : 'hTabpane';
+      let onClick = () => true;
+      const changePromise = new Promise(res => {
+        onClick = newValue => {
+          res(newValue);
+        };
+      });
+      // const type = isVertical(component.props.tabPosition) ? 'Tabpane' : 'hTabpane';
+      const type = 'Tabpane';
       const tabpane = target.find(type);
       tabpane.at(expIndex).simulate('click');
+      // expect(tabpane.at(expIndex)).toBe(expActicityValue);
       expect(getCmp(target).state.activityValue).toBe(expActicityValue);
+      // expect(target.state().value).toEqual(1);
+      // expect(await changePromise).toBe(3);
     });
   }
-  testOnTabClick(createTabs(), 0, '0');
-  testOnTabClick(createTabs(), 1, '1');
-  testOnTabClick(createTabs(), 2, '2');
-  testOnTabClick(createTabs(), 3, '3');
-  testOnTabClick(createTabs({ data: hasActivityValueData, tabType: 'card' }), 2, '2');
-  testOnTabClick(createTabs({ data: hasActivityValueData, tabType: 'window' }), 2, '2');
+  testOnTabClick(createTabs(), 0, 0);
+  testOnTabClick(createTabs(), 1, 1);
+  testOnTabClick(createTabs(), 2, 2);
+  testOnTabClick(createTabs(), 3, 3);
+  testOnTabClick(createTabs({ data: hasActivityValueData, tabType: 'card' }), 2, 2);
+  testOnTabClick(createTabs({ data: hasActivityValueData, tabType: 'window' }), 2, 2);
   testOnTabClick(
     createTabs({ data: hasActivityValueData, tabType: 'line', tabPosition: 'left' }),
     1,
-    '1'
+    1
   );
   testOnTabClick(
     createTabs({ data: hasActivityValueData, tabType: 'line', tabPosition: 'right' }),
     2,
-    '2'
+    2
   );
   testOnTabClick(
     createTabs({ data: hasActivityValueData, tabType: 'line', tabPosition: 'top' }),
     3,
-    '3'
+    3
   );
 
   function testActivityValue(component: any, expActicityValue: string) {
     it('props activityValue', () => {
       const target = mount(component);
-      const type = isVertical(component.props.tabPosition) ? 'yTabpane' : 'hTabpane';
+      const type = 'Tabpane';
       const tabpane = target.find(type);
       tabpane.at(2).simulate('click');
       expect(getCmp(target).state.activityValue).toBe(expActicityValue);
@@ -130,7 +151,7 @@ describe('tabsDemo', () => {
     let onAddClick;
     const promise = new Promise(resolve => {
       onAddClick = e => {
-        resolve(add);
+        resolve(e);
       };
     });
     const add = {
@@ -138,9 +159,19 @@ describe('tabsDemo', () => {
       content: 'new tabs content',
     };
     const target = mount(
-      <Tabs data={hasActivityValueData} tabType="card" onAddClick={onAddClick} />
+      <Tabs
+        data={hasActivityValueData}
+        tabType="card"
+        onAddClick={onAddClick}
+        getPartOfThemeHocProps={getPartOfThemeProps}
+        getPartOfThemeProps={getPartOfThemeProps}
+        themeProps={themeProps}
+      />
     );
-    target.find('addIcon').simulate('click', { add });
+    target
+      .find('addBtn')
+      .at(0)
+      .simulate('click');
     expect(await promise).toBe(add);
   });
 
@@ -153,7 +184,14 @@ describe('tabsDemo', () => {
       };
     });
     const target = mount(
-      <Tabs data={hasActivityValueData} onDeleteClick={onDeleteClick} tabType="card" />
+      <Tabs
+        data={hasActivityValueData}
+        onDeleteClick={onDeleteClick}
+        tabType="card"
+        getPartOfThemeHocProps={getPartOfThemeProps}
+        getPartOfThemeProps={getPartOfThemeProps}
+        themeProps={themeProps}
+      />
     );
     const { data, children } = getCmp(target).props;
     target
@@ -174,14 +212,15 @@ describe('tabsDemo', () => {
       };
     });
     const target = mount(
-      <Theme config={{ [Widgets.Tabs]: { width: 500 } }}>
-        <Tabs
-          data={hasActivityValueData}
-          onNextClick={onNextClick}
-          pagedType={'page'}
-          tabType="card"
-        />
-      </Theme>
+      <Tabs
+        data={hasActivityValueData}
+        onNextClick={onNextClick}
+        pagedType={'page'}
+        tabType="card"
+        getPartOfThemeHocProps={getPartOfThemeProps}
+        getPartOfThemeProps={getPartOfThemeProps}
+        themeProps={themeProps}
+      />
     );
     target
       .find('page')
@@ -201,14 +240,15 @@ describe('tabsDemo', () => {
       };
     });
     const target = mount(
-      <Theme config={{ [Widgets.Tabs]: { width: 500 } }}>
-        <Tabs
-          data={hasActivityValueData}
-          onPreClick={onPreClick}
-          pagedType={'page'}
-          tabType="card"
-        />
-      </Theme>
+      <Tabs
+        data={hasActivityValueData}
+        onPreClick={onPreClick}
+        pagedType={'page'}
+        tabType="card"
+        getPartOfThemeHocProps={getPartOfThemeProps}
+        getPartOfThemeProps={getPartOfThemeProps}
+        themeProps={themeProps}
+      />
     );
     target
       .find('page')
@@ -232,7 +272,14 @@ describe('tabsDemo', () => {
       };
     });
     const target = mount(
-      <Tabs data={hasActivityValueData} activityValue="5" onChange={onChange} />
+      <Tabs
+        data={hasActivityValueData}
+        activityValue="5"
+        onChange={onChange}
+        getPartOfThemeHocProps={getPartOfThemeProps}
+        getPartOfThemeProps={getPartOfThemeProps}
+        themeProps={themeProps}
+      />
     );
     const type = isVertical(target.props.tabPosition) ? 'yTabpane' : 'hTabpane';
     const tabpane = target.find(type);
@@ -249,7 +296,15 @@ describe('tabsDemo', () => {
         resolve(e);
       };
     });
-    const target = mount(<Tabs data={hasActivityValueData} onChange={onChange} />);
+    const target = mount(
+      <Tabs
+        data={hasActivityValueData}
+        onChange={onChange}
+        getPartOfThemeHocProps={getPartOfThemeProps}
+        getPartOfThemeProps={getPartOfThemeProps}
+        themeProps={themeProps}
+      />
+    );
     const type = isVertical(target.props.tabPosition) ? 'yTabpane' : 'hTabpane';
     const tabpane = target.find(type);
     tabpane.at(5).simulate('click');
@@ -264,7 +319,15 @@ describe('tabsDemo', () => {
         resolve(e);
       };
     });
-    const target = mount(<Tabs data={hasActivityValueData} onChange={onChange} />);
+    const target = mount(
+      <Tabs
+        data={hasActivityValueData}
+        onChange={onChange}
+        getPartOfThemeHocProps={getPartOfThemeProps}
+        getPartOfThemeProps={getPartOfThemeProps}
+        themeProps={themeProps}
+      />
+    );
     const type = isVertical(target.props.tabPosition) ? 'yTabpane' : 'hTabpane';
     const tabpane = target.find(type);
     getCmp(target).setState({ activityValue: '5' });
@@ -274,7 +337,14 @@ describe('tabsDemo', () => {
     expect(getCmp(target).state.activityValue).toBe('3');
   });
   it('props 受限 data', async () => {
-    const target = mount(<Tabs data={hasActivityValueData} />);
+    const target = mount(
+      <Tabs
+        data={hasActivityValueData}
+        getPartOfThemeHocProps={getPartOfThemeProps}
+        getPartOfThemeProps={getPartOfThemeProps}
+        themeProps={themeProps}
+      />
+    );
     expect(getCmp(target).state.data).toEqual(hasActivityValueData);
     getCmp(target).setState({ data: [] });
     expect(getCmp(target).state.data).toEqual(hasActivityValueData);
@@ -302,7 +372,15 @@ describe('tabsDemo', () => {
       title: 'new tab 1',
     };
     const target = mount(
-      <Tabs tabType="card" onAddClick={onAddClick} onDeleteClick={onDeleteClick} defaultData={[]} />
+      <Tabs
+        tabType="card"
+        onAddClick={onAddClick}
+        onDeleteClick={onDeleteClick}
+        defaultData={[]}
+        getPartOfThemeHocProps={getPartOfThemeProps}
+        getPartOfThemeProps={getPartOfThemeProps}
+        themeProps={themeProps}
+      />
     );
     expect(getCmp(target).state.data).toEqual([]);
     target.find('addIcon').simulate('click');
@@ -334,7 +412,15 @@ describe('tabsDemo', () => {
       title: 'new tab 1',
     };
     const target = mount(
-      <Tabs tabType="card" onAddClick={onAddClick} onDeleteClick={onDeleteClick} defaultData={[]} />
+      <Tabs
+        tabType="card"
+        onAddClick={onAddClick}
+        onDeleteClick={onDeleteClick}
+        defaultData={[]}
+        getPartOfThemeHocProps={getPartOfThemeProps}
+        getPartOfThemeProps={getPartOfThemeProps}
+        themeProps={themeProps}
+      />
     );
     expect(getCmp(target).state.data).toEqual([]);
     target.find('addIcon').simulate('click', { firstItem });
@@ -371,7 +457,15 @@ describe('tabsDemo', () => {
       title: 'new tab 2',
     };
     const target = mount(
-      <Tabs tabType="card" onAddClick={onAddClick} onDeleteClick={onDeleteClick} defaultData={[]} />
+      <Tabs
+        tabType="card"
+        onAddClick={onAddClick}
+        onDeleteClick={onDeleteClick}
+        defaultData={[]}
+        getPartOfThemeHocProps={getPartOfThemeProps}
+        getPartOfThemeProps={getPartOfThemeProps}
+        themeProps={themeProps}
+      />
     );
     expect(getCmp(target).state.data).toEqual([]);
     target.find('addIcon').simulate('click', { firstItem });
@@ -417,7 +511,15 @@ describe('tabsDemo', () => {
       title: 'new tab 2',
     };
     const target = mount(
-      <Tabs tabType="card" onAddClick={onAddClick} onDeleteClick={onDeleteClick} defaultData={[]} />
+      <Tabs
+        tabType="card"
+        onAddClick={onAddClick}
+        onDeleteClick={onDeleteClick}
+        defaultData={[]}
+        getPartOfThemeHocProps={getPartOfThemeProps}
+        getPartOfThemeProps={getPartOfThemeProps}
+        themeProps={themeProps}
+      />
     );
     expect(getCmp(target).state.data).toEqual([]);
     target.find('addIcon').simulate('click', { firstItem });
