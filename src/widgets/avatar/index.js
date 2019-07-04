@@ -22,7 +22,7 @@ const { px2remcss } = units;
 const { borderColor } = colorsFunc();
 const BaseAvatar = CSSComponent({
   tag: 'div',
-  className: 'baseAvatar',
+  className: 'BaseAvatar',
   normal: {
     selectNames: [
       ['color'],
@@ -63,7 +63,7 @@ const BaseAvatar = CSSComponent({
 });
 const AvatarIcon: Object = CSSComponent({
   extend: Icon,
-  className: 'avatarIcon',
+  className: 'AvatarIcon',
   normal: {
     selectNames: [['color'], ['fontSize']],
     defaultTheme: { color: 'white' },
@@ -84,7 +84,7 @@ const AvatarIcon: Object = CSSComponent({
 
 const Name = CSSComponent({
   tag: 'span',
-  className: 'avatarName',
+  className: 'AvatarName',
   normal: {
     selectNames: [['color'], ['width'], ['height'], ['fontSize']],
     defaultTheme: { color: 'white' },
@@ -105,7 +105,7 @@ const Name = CSSComponent({
 });
 const Picture = CSSComponent({
   tag: 'img',
-  className: 'avatarPicture',
+  className: 'AvatarPicture',
   normal: {
     selectNames: [['color'], ['width'], ['height']],
     getCSS(themeMeta: Object, themeProps: Object) {

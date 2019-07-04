@@ -7,8 +7,9 @@ import * as React from 'react';
 import Menu from './index';
 import Theme from '../theme';
 import Widget from '../consts/index';
-import { getBorder } from '@lugia/theme-css-hoc';
+import { getBorder } from '@lugia/theme-utils';
 import styled from 'styled-components';
+import { getBorderRadius } from '../theme/CSSProvider';
 const { MenuItem } = Menu;
 const Placeholder = Menu.Placeholder;
 const computeCanSeeCount = Menu.computeCanSeeCount;
@@ -140,7 +141,8 @@ export default class extends React.Component<any, any> {
             opacity: 0.6,
             boxShadow: '2px 2px 5px #4d63ff',
             background: { color: '#000' },
-            border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }, { radius: 20 }),
+            border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }),
+            borderRadius: getBorderRadius(20),
             // padding: {
             //   top: 30,
             //   left: 20,

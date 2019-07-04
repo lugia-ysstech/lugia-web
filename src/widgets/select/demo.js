@@ -9,9 +9,15 @@ import Select from './index';
 import Widget from '../consts/index';
 import Theme from '../theme/index';
 import styled from 'styled-components';
+import { getBorder } from '@lugia/theme-utils';
+import { getBorderRadius } from '../theme/CSSProvider';
 
 const H2 = styled.h2`
   padding: 20px;
+`;
+
+const Box = styled.div`
+  padding-bottom: 500px;
 `;
 
 const data = (function(t) {
@@ -20,7 +26,135 @@ const data = (function(t) {
     res.push({ value: `key-${i}`, label: `txt${i}` });
   }
   return res;
-})(5);
+})(10);
+
+const config = {
+  [Widget.Select]: {
+    [Widget.Menu]: {
+      MenuWrap: {
+        normal: {
+          width: 300,
+          height: 200,
+          opacity: 0.6,
+          boxShadow: '2px 2px 5px #4d63ff',
+          background: { color: '#000' },
+          border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }),
+          borderRadius: getBorderRadius(20),
+        },
+        hover: {
+          opacity: 1,
+        },
+      },
+      MenuItem: {
+        normal: { color: '#ccc', fontSize: 14, font: { fontWeight: 900 } },
+        hover: {
+          color: '#fff',
+          fontSize: 20,
+          background: { color: 'green' },
+          font: { fontWeight: 400 },
+        },
+        active: {
+          color: 'blue',
+          fontSize: 14,
+          background: { color: 'pink' },
+          font: { fontWeight: 900 },
+        },
+        disabled: { color: 'red', background: { color: '#000' } },
+      },
+    },
+    [Widget.InputTag]: {
+      InputTagWrap: {
+        normal: {
+          width: 340,
+          height: 60,
+          color: '#4d63ff',
+          boxShadow: '2px 2px 5px #000',
+          font: { size: 20 },
+          // background: { color: '#eee' },
+          borderRadius: getBorderRadius(20),
+          margin: {
+            top: 40,
+            left: 100,
+          },
+          // padding: {
+          //   left: '20',
+          //   right: '30',
+          // },
+        },
+        hover: {
+          boxShadow: '2px 2px 5px #4d63ff',
+          color: '#4d63ff',
+          borderRadius: getBorderRadius(10),
+        },
+      },
+      // TagWrap: {
+      //   normal: {
+      //     height: 20,
+      //     margin: {
+      //       left: 50,
+      //       right: 5,
+      //     },
+      //     padding: {
+      //       left: 10,
+      //       right: 10,
+      //     },
+
+      //     // border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }, { radius: 10 }),
+      //   },
+      //   hover: {
+      //     background: { color: 'orange' },
+      //   },
+      // },
+      // TagIcon: {
+      //   normal: {
+      //     font: { fontSize: 14, color: '#999' },
+      //   },
+      //   hover: {
+      //     color: '#4d63ff',
+      //   },
+      // },
+      Icon: {
+        normal: {
+          // color: '#ddd',
+          font: { fontSize: 30 },
+        },
+        hover: { color: '#4d63ff' },
+      },
+      // Menu: {
+      //   MenuWrap: {
+      //     normal: {
+      //       width: 200,
+      //       height: 200,
+      //       opacity: 0.6,
+      //       boxShadow: '2px 2px 5px #4d63ff',
+      //       background: { color: '#000' },
+      //       border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }, { radius: 20 }),
+      //     },
+      //     hover: {
+      //       opacity: 1,
+      //     },
+      //   },
+      //   MenuItem: {
+      //     normal: { color: '#ccc', fontSize: 14, font: { fontWeight: 900 } },
+      //     hover: {
+      //       color: '#fff',
+      //       fontSize: 20,
+      //       background: { color: 'green' },
+      //       font: { fontWeight: 400 },
+      //     },
+      //     active: {
+      //       color: 'blue',
+      //       fontSize: 14,
+      //       background: { color: 'pink' },
+      //       font: { fontWeight: 900 },
+      //     },
+      //     disabled: { color: 'red', background: { color: '#000' } },
+      //   },
+      // },
+    },
+  },
+};
+
 export default class Demo extends React.Component {
   constructor(props) {
     super(props);
@@ -28,48 +162,32 @@ export default class Demo extends React.Component {
     this.state = {
       menu: null,
       value: ['key-a'],
-      config: { [Widget.Select]: { width, autoHeight: true } },
     };
   }
 
-  handleChange = obj => {
-    console.log('obj', obj);
-  };
-
-  onTrigger = () => {
-    console.log('visible');
-  };
-
-  handleQuery = value => {
-    console.log('query', value);
-  };
-
-  handleSelect = obj => {
-    console.log('handleSelect', obj);
-  };
-
   render() {
-    const { config, value, displayValue } = this.state;
+    const { value, displayValue } = this.state;
 
     return (
-      <Theme config={config}>
-        <div>
-          <H2>single</H2>
-          <Select
-            data={data}
-            displayField={'label'}
-            value={value}
-            displayValue={value}
-            throttle={1000}
-            onQuery={this.onQuery}
-            canSearch
-            // onChange={this.handleChange}
-            onTrigger={this.onTrigger}
-            onQuery={this.handleQuery}
-            // onSelect={this.handleSelect}
-          />
+      <Box>
+        <H2>single</H2>
+        <Select
+          theme={config}
+          data={data}
+          displayField={'label'}
+          mutliple
+          // value={value}
+          // displayValue={value}
+          // throttle={1000}
+          // onQuery={this.onQuery}
+          // canSearch
+          // onChange={this.handleChange}
+          // onTrigger={this.onTrigger}
+          // onQuery={this.handleQuery}
+          // onSelect={this.handleSelect}
+        />
 
-          {/* <H2>single search</H2>
+        {/* <H2>single search</H2>
           <Select canSearch displayField={'label'} data={data} />
 
           <Select canSearch displayField={'label'} disabled data={data} />
@@ -105,10 +223,25 @@ export default class Demo extends React.Component {
             onQuery={this.onQuery}
             onChange={this.onChange}
           /> */}
-        </div>
-      </Theme>
+      </Box>
     );
   }
+
+  handleChange = obj => {
+    console.log('obj', obj);
+  };
+
+  onTrigger = () => {
+    console.log('visible');
+  };
+
+  handleQuery = value => {
+    console.log('query', value);
+  };
+
+  handleSelect = obj => {
+    console.log('handleSelect', obj);
+  };
 
   onChange = obj => {
     const { value, displayValue } = obj;

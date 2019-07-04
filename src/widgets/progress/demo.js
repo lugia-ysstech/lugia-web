@@ -5,11 +5,12 @@
  * @flow
  */
 import * as React from 'react';
-import styled from 'styled-components';
+import { getBorder, getBoxShadow } from '@lugia/theme-utils';
 import Progress from './progress';
 import Widget from '../consts/index';
 import Button from '../button';
 import Theme from '../theme';
+import { getBorderRadius } from '../theme/CSSProvider';
 
 export default class ProgressDemo extends React.Component<any, any> {
   constructor() {
@@ -38,27 +39,177 @@ export default class ProgressDemo extends React.Component<any, any> {
   render() {
     const view = {
       [Widget.Progress]: {
-        color: 'red',
-        width: 100,
-        height: 18,
+        ProgressWrap: {
+          normal: {
+            width: 300,
+            height: 50,
+            background: { color: 'red' },
+            opacity: 0.8,
+            margin: {
+              top: 10,
+              right: 10,
+              bottom: 10,
+              left: 10,
+            },
+            padding: {
+              top: 10,
+              right: 10,
+              bottom: 10,
+              left: 10,
+            },
+          },
+        },
+        ProgressOutLine: {
+          normal: {
+            background: {
+              color: 'green',
+            },
+            border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }),
+            borderRadius: getBorderRadius(50),
+            boxShadow: getBoxShadow('1px 2px 2px 2px #e8e8e8'),
+          },
+        },
+        ProgressInnerLine_Default: {
+          normal: {
+            background: {
+              color: 'blue',
+            },
+            border: getBorder({ color: '#ccc', width: 1, style: 'solid' }),
+            borderRadius: getBorderRadius(50),
+            boxShadow: getBoxShadow('1px 2px 2px 2px green'),
+            height: 25,
+          },
+        },
+        ProgressInnerLine_Success: {
+          normal: {
+            background: {
+              color: 'green',
+            },
+            border: getBorder({ color: 'red', width: 1, style: 'solid' }),
+            borderRadius: getBorderRadius(50),
+            boxShadow: getBoxShadow('1px 2px 2px 2px green'),
+            height: 25,
+          },
+        },
+        ProgressInnerLine_Error: {
+          normal: {
+            background: {
+              color: 'red',
+            },
+            border: getBorder({ color: 'green', width: 1, style: 'solid' }),
+            borderRadius: getBorderRadius(50),
+            boxShadow: getBoxShadow('1px 2px 2px 2px red'),
+            height: 25,
+          },
+        },
+        ProgressLineInsideText: {
+          normal: {
+            font: {
+              size: 16,
+              weight: 500,
+            },
+            color: 'red',
+          },
+        },
+        ProgressLineInfoText: {
+          normal: {
+            font: {
+              size: 16,
+              weight: 500,
+            },
+            color: 'green',
+          },
+        },
+        ProgressLineSuccessIcon: {
+          normal: {
+            fontSize: 16,
+            color: 'red',
+          },
+        },
+        ProgressLineErrorIcon: {
+          normal: {
+            fontSize: 20,
+            color: 'green',
+          },
+        },
       },
     };
     const CircleView = {
       [Widget.Progress]: {
-        color: 'red',
+        ProgressCircleText: {
+          normal: {
+            font: {
+              size: 20,
+              weight: 500,
+            },
+            color: 'red',
+          },
+        },
+        ProgressCircleSuccessIcon: {
+          normal: {
+            fontSize: 16,
+            color: 'red',
+          },
+        },
+        ProgressCircleErrorIcon: {
+          normal: {
+            fontSize: 20,
+            color: 'green',
+          },
+        },
+      },
+    };
+    const DashboardView = {
+      [Widget.Progress]: {
+        DashboardText: {
+          normal: {
+            font: {
+              size: 20,
+              weight: 500,
+            },
+            color: 'red',
+          },
+        },
+        ProgressDashboardSuccessIcon: {
+          normal: {
+            fontSize: 16,
+            color: 'red',
+          },
+        },
+        ProgressDashboardErrorIcon: {
+          normal: {
+            fontSize: 20,
+            color: 'green',
+          },
+        },
       },
     };
     return (
       <div>
+        <Theme config={view}>
+          <Progress percent={30} />
+        </Theme>
+        <Theme config={view}>
+          <Progress percent={100} />
+        </Theme>
+        <Theme config={view}>
+          <Progress percent={100} status="error" />
+        </Theme>
+        <Theme config={view}>
+          <Progress percent={60} status="success" />
+        </Theme>
+        <Theme config={view}>
+          <Progress percent={30} showType="inside" active />
+        </Theme>
         <div style={{ width: '300px', margin: '50px' }}>
           <h1>line</h1>
           <p>props: percent={30}</p>
           <br />
           <Progress percent={30} />
           <br />
-          <p>props: percent={30} status="active"</p>
+          <p>props: percent={30}active </p>
           <br />
-          <Progress percent={30} status="active" />
+          <Progress percent={30} active />
           <br />
           <p>props: percent={30} status="success" format= percent => percent + '--'</p>
           <br />
@@ -76,9 +227,9 @@ export default class ProgressDemo extends React.Component<any, any> {
           <br />
           <Progress percent={100} status="error" />
           <br />
-          <p>props: percent=this.state.percent status="active"</p>
+          <p>props: percent=this.state.percent active </p>
           <br />
-          <Progress percent={this.state.percent} status="active" />
+          <Progress percent={this.state.percent} active />
           <Button onClick={() => this.handleClick('add')}>+10</Button>&nbsp;
           <Button onClick={() => this.handleClick('sub')}>-10</Button>
           <br />
@@ -96,9 +247,9 @@ export default class ProgressDemo extends React.Component<any, any> {
             <br />
             <Progress size="small" percent={30} />
             <br />
-            <p>props: size=small percent={30} status="active"</p>
+            <p>props: size=small percent={30} active </p>
             <br />
-            <Progress size="small" percent={30} status="active" />
+            <Progress size="small" percent={30} active />
             <br />
             <p>props: size=small percent={30} status="success"</p>
             <br />
@@ -117,9 +268,9 @@ export default class ProgressDemo extends React.Component<any, any> {
             <br />
             <Progress percent={0} showType="inside" />
             <br />
-            <p>percent={30} showType="inside" status="active"</p>
+            <p>percent={30} showType="inside" active</p>
             <br />
-            <Progress percent={30} showType="inside" status="active" />
+            <Progress percent={30} showType="inside" active />
             <br />
             <p>percent={30} showType="inside"</p>
             <br />
@@ -147,6 +298,15 @@ export default class ProgressDemo extends React.Component<any, any> {
         </div>
 
         <div style={{ margin: '50px' }}>
+          <Theme config={CircleView}>
+            <Progress type="circle" percent={0} />
+          </Theme>
+          <Theme config={CircleView}>
+            <Progress type="circle" status="error" percent={0} />
+          </Theme>
+          <Theme config={CircleView}>
+            <Progress type="circle" percent={100} />
+          </Theme>
           <h1>circle</h1>
           <p>type="circle" props: percent={0}</p>
           <br />
@@ -205,6 +365,15 @@ export default class ProgressDemo extends React.Component<any, any> {
           <br />
           <div style={{ margin: '50px' }}>
             <h1>dashboard</h1>
+            <Theme config={DashboardView}>
+              <Progress type="dashboard" percent={50} />
+            </Theme>
+            <Theme config={DashboardView}>
+              <Progress type="dashboard" status="error" percent={0} />
+            </Theme>
+            <Theme config={DashboardView}>
+              <Progress type="dashboard" percent={100} />
+            </Theme>
             <p>type="dashboard" props: percent={50}</p>
             <br />
             <Progress type="dashboard" percent={50} />

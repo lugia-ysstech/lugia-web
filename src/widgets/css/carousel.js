@@ -280,6 +280,7 @@ export const Indicator = CSSComponent({
       ['width'],
       ['height'],
       ['border'],
+      ['borderRadius'],
       ['boxShadow'],
       ['margin'],
       ['padding'],

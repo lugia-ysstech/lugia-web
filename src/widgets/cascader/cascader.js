@@ -7,8 +7,8 @@ import * as React from 'react';
 import Menu from '../menu';
 import Theme from '../theme';
 import Widget from '../consts/index';
-import styled from 'styled-components';
 import Trigger from '../trigger';
+import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import InputTag from '../inputtag';
 import { getTreeData } from '../menu/utils';
 import { DisplayField, ValueField } from '../consts/props';
@@ -19,10 +19,22 @@ import {
   getInitInputValue,
   getInputValue,
 } from './utils';
-const CascaderContainer = styled.div`
-  display: inline-block;
-  position: relative;
-`;
+
+const CascaderContainer = CSSComponent({
+  tag: 'div',
+  className: 'CascaderContainer',
+  normal: {
+    selectNames: [['width'], ['height'], ['margin']],
+  },
+  hover: {
+    selectNames: [],
+  },
+
+  css: css`
+    display: inline-block;
+    position: relative;
+  `,
+});
 
 type CascaderProps = {
   getTheme: Function,
@@ -103,34 +115,33 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
   render() {
     const { props, state } = this;
     const { popupVisible, inputValue } = state;
-    const { getTheme, placeholder, offsetY, disabled, createPortal } = props;
+    const { getTheme, placeholder, offsetY, disabled, createPortal, getPartOfThemeProps } = props;
     const theme = getTheme();
-    const { width = 200 } = theme;
     return (
       <CascaderContainer
+        themeProps={getPartOfThemeProps(Widget.InputTag)}
         onMouseEnter={this.onMouseEnterContainer}
         onMouseLeave={this.onMouseLeaveContainer}
       >
-        <Theme config={{ [Widget.InputTag]: { width } }}>
-          <Trigger
-            align={'bottomLeft'}
-            offsetY={offsetY}
-            popupVisible={popupVisible}
-            popup={this.getMenu(theme)}
-            createPortal={createPortal}
-            lazy={false}
-          >
-            <InputTag
-              onClick={this.handleClickInputTag}
-              value={inputValue}
-              displayValue={inputValue}
-              mutliple={false}
-              placeholder={placeholder}
-              disabled={disabled}
-              onClear={this.onClear}
-            />
-          </Trigger>
-        </Theme>
+        <Trigger
+          align={'bottomLeft'}
+          offsetY={offsetY}
+          popupVisible={popupVisible}
+          popup={this.getMenu(theme)}
+          createPortal={createPortal}
+          lazy={false}
+        >
+          <InputTag
+            theme={this.getInputtagTheme()}
+            onClick={this.handleClickInputTag}
+            value={inputValue}
+            displayValue={inputValue}
+            mutliple={false}
+            placeholder={placeholder}
+            disabled={disabled}
+            onClear={this.onClear}
+          />
+        </Trigger>
       </CascaderContainer>
     );
   }
@@ -155,21 +166,12 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
     this.setPopupVisible(!checked);
   }
 
-  getMenuWidth = () => {
-    const { menuWidth } = this.props;
-    if (isNaN(menuWidth) || !menuWidth) {
-      return DefaultMenuWidth;
-    }
-    return menuWidth;
-  };
-
   getMenu = (theme: Object) => {
     const { data, action, separator, offsetX, valueField, displayField } = this.props;
     const { popupVisible, expandedPath, selectedKeys } = this.state;
-    const menuWidth = this.getMenuWidth();
 
     return (
-      <Theme config={{ [Widget.Menu]: { width: menuWidth } }}>
+      <Theme config={this.getMenuTheme()}>
         <Menu
           mutliple={false}
           ref={this.menu}
@@ -192,6 +194,23 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
         />
       </Theme>
     );
+  };
+
+  getMenuTheme = () => {
+    const { getPartOfThemeConfig } = this.props;
+    const config = {
+      [Widget.Menu]: getPartOfThemeConfig(Widget.Menu),
+      [Widget.SubMenu]: getPartOfThemeConfig(Widget.SubMenu),
+    };
+    return config;
+  };
+
+  getInputtagTheme = () => {
+    const { getPartOfThemeConfig } = this.props;
+    const config = {
+      [Widget.InputTag]: getPartOfThemeConfig(Widget.InputTag),
+    };
+    return config;
   };
 
   handleIsInMenu = (isInMenuRange: boolean) => {

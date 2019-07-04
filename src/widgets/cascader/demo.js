@@ -6,8 +6,14 @@
  */
 import * as React from 'react';
 import Cascader from './index';
-import Theme from '../theme';
+import styled from 'styled-components';
 import Widget from '../consts/index';
+import { getBorder } from '@lugia/theme-utils';
+import { getBorderRadius } from '../theme/CSSProvider';
+
+const Box = styled.div`
+  padding-bottom: 500px;
+`;
 
 const data = [
   {
@@ -69,33 +75,188 @@ export default class extends React.Component<any, any> {
   }
   render() {
     const { selectedKeys, data } = this.state;
+    const config = {
+      [Widget.Cascader]: {
+        [Widget.Menu]: {
+          MenuWrap: {
+            normal: {
+              width: 200,
+              height: 350,
+              opacity: 0.6,
+              boxShadow: '2px 2px 5px #4d63ff',
+              background: { color: '#000' },
+              border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }),
+              borderRadius: getBorderRadius(20),
+              // padding: {
+              //   top: 30,
+              //   left: 20,
+              //   right: 20,
+              // },
+            },
+            hover: {
+              opacity: 1,
+            },
+          },
+          MenuItem: {
+            normal: { color: '#ccc', fontSize: 14, font: { fontWeight: 900 } },
+            hover: {
+              color: '#fff',
+              fontSize: 20,
+              background: { color: 'green' },
+              font: { fontWeight: 400 },
+            },
+            active: {
+              color: 'blue',
+              fontSize: 14,
+              background: { color: 'pink' },
+              font: { fontWeight: 900 },
+            },
+            disabled: { color: 'red', background: { color: '#000' } },
+          },
+          SelectedMenuItem: {
+            normal: {
+              color: 'blue',
+              font: { fontWeight: 900 },
+              fontSize: 18,
+              background: { color: 'orange' },
+            },
+            hover: { color: '#000', background: { color: 'yellow' } },
+            active: { color: 'green' },
+          },
+          Divider: { normal: { color: 'red' } },
+        },
+        [Widget.SubMenu]: {
+          MenuWrap: {
+            normal: { width: 200, height: 350, fontSize: 14, background: { color: '#ccc' } },
+          },
+          MenuItem: {
+            normal: { color: '#4d63ff' },
+            hover: { color: '#000', background: { color: 'orange' }, font: { fontWeight: 900 } },
+            active: { color: '#999' },
+            disabled: { color: 'red', background: { color: '#000' } },
+          },
+          SelectedMenuItem: {
+            normal: { color: 'blue', font: { fontWeight: 900 }, background: { color: '#ccc' } },
+            hover: { color: '#000', background: { color: 'yellow' } },
+            active: { color: 'green' },
+          },
+        },
+
+        [Widget.InputTag]: {
+          InputTagWrap: {
+            normal: {
+              width: 340,
+              height: 60,
+              color: '#4d63ff',
+              boxShadow: '2px 2px 5px #000',
+              font: { size: 20 },
+              // background: { color: '#eee' },
+              borderRadius: getBorderRadius(20),
+              // padding: {
+              //   left: '20',
+              //   right: '30',
+              // },
+            },
+            hover: {
+              boxShadow: '2px 2px 5px #4d63ff',
+              color: '#4d63ff',
+              borderRadius: getBorderRadius(10),
+            },
+          },
+          // TagWrap: {
+          //   normal: {
+          //     height: 20,
+          //     margin: {
+          //       left: 50,
+          //       right: 5,
+          //     },
+          //     padding: {
+          //       left: 10,
+          //       right: 10,
+          //     },
+
+          //     // border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }, { radius: 10 }),
+          //   },
+          //   hover: {
+          //     background: { color: 'orange' },
+          //   },
+          // },
+          // TagIcon: {
+          //   normal: {
+          //     font: { fontSize: 14, color: '#999' },
+          //   },
+          //   hover: {
+          //     color: '#4d63ff',
+          //   },
+          // },
+          Icon: {
+            normal: {
+              // color: '#ddd',
+              font: { fontSize: 30 },
+            },
+            hover: { color: '#4d63ff' },
+          },
+          // Menu: {
+          //   MenuWrap: {
+          //     normal: {
+          //       width: 200,
+          //       height: 200,
+          //       opacity: 0.6,
+          //       boxShadow: '2px 2px 5px #4d63ff',
+          //       background: { color: '#000' },
+          //       border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }, { radius: 20 }),
+          //     },
+          //     hover: {
+          //       opacity: 1,
+          //     },
+          //   },
+          //   MenuItem: {
+          //     normal: { color: '#ccc', fontSize: 14, font: { fontWeight: 900 } },
+          //     hover: {
+          //       color: '#fff',
+          //       fontSize: 20,
+          //       background: { color: 'green' },
+          //       font: { fontWeight: 400 },
+          //     },
+          //     active: {
+          //       color: 'blue',
+          //       fontSize: 14,
+          //       background: { color: 'pink' },
+          //       font: { fontWeight: 900 },
+          //     },
+          //     disabled: { color: 'red', background: { color: '#000' } },
+          //   },
+          // },
+        },
+      },
+    };
 
     return (
-      <div>
-        <Theme config={{ [Widget.Cascader]: { width: 300, menuWidth: 120 } }}>
-          <Cascader
-            data={data}
-            action={'hover'}
-            value={selectedKeys}
-            // value={null}
-            defaultValue={['a6/a6-2/a6-2-1/suba1/suba2']}
-            separator={'/'}
-            onClick={this.onClick}
-            onChange={this.onChange}
-            disabled={false}
-            showAllLevels={false}
-            placeholder={'请选择'}
-            allowClear={true}
-            onClear={this.onClear}
-          />
-        </Theme>
-      </div>
+      <Box>
+        <Cascader
+          theme={config}
+          data={data}
+          action={'hover'}
+          value={selectedKeys}
+          // value={null}
+          defaultValue={['a6/a6-2/a6-2-1/suba1/suba2']}
+          separator={'/'}
+          onClick={this.onClick}
+          onChange={this.onChange}
+          disabled={false}
+          showAllLevels={false}
+          placeholder={'请选择'}
+          allowClear={true}
+          onClear={this.onClear}
+        />
+      </Box>
     );
   }
 
   onClick = (e: Object, keys: Object) => {
-    const { selectedKeys } = keys;
-    this.setState({ selectedKeys });
+    // const { selectedKeys } = keys;
+    // this.setState({ selectedKeys });
+    console.log('keys', e);
   };
   onChange = (target: Object) => {
     // console.log('target', target);

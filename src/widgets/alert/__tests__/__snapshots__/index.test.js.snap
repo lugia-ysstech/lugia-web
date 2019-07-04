@@ -7,7 +7,6 @@ exports[`Alert css 1`] = `
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  font-size: 1.2rem;
 }
 
 .c1 {
@@ -449,7 +448,8 @@ exports[`Alert css 1`] = `
       type="info"
     >
       <i
-        className="lugia-icon-reminder_close c8 c9"
+        className="lugia-icon-reminder_close c8  c9"
+        style={Object {}}
       />
     </a>
   </div>
@@ -472,7 +472,8 @@ exports[`Alert css 1`] = `
       type="success"
     >
       <i
-        className="lugia-icon-reminder_close c8 c9"
+        className="lugia-icon-reminder_close c8  c9"
+        style={Object {}}
       />
     </a>
   </div>
@@ -524,7 +525,8 @@ exports[`Alert css 1`] = `
     type="info"
   >
     <i
-      className="lugia-icon-reminder_info_circle_o c13 c9"
+      className="lugia-icon-reminder_info_circle_o c13  c9"
+      style={Object {}}
     />
     <span
       className="c2"
@@ -541,7 +543,8 @@ exports[`Alert css 1`] = `
     type="success"
   >
     <i
-      className="lugia-icon-reminder_check_circle_o c15 c9"
+      className="lugia-icon-reminder_check_circle_o c15  c9"
+      style={Object {}}
     />
     <span
       className="c2"
@@ -558,7 +561,8 @@ exports[`Alert css 1`] = `
     type="error"
   >
     <i
-      className="lugia-icon-reminder_close_circle_o c17 c9"
+      className="lugia-icon-reminder_close_circle_o c17  c9"
+      style={Object {}}
     />
     <span
       className="c2"
@@ -575,7 +579,8 @@ exports[`Alert css 1`] = `
     type="warning"
   >
     <i
-      className="lugia-icon-reminder_exclamation_circle_o c19 c9"
+      className="lugia-icon-reminder_exclamation_circle_o c19  c9"
+      style={Object {}}
     />
     <span
       className="c2"
@@ -607,7 +612,8 @@ exports[`Alert css 1`] = `
       type="info"
     >
       <i
-        className="lugia-icon-reminder_close c8 c9"
+        className="lugia-icon-reminder_close c8  c9"
+        style={Object {}}
       />
     </a>
   </div>
@@ -632,7 +638,8 @@ exports[`Alert css 1`] = `
       type="success"
     >
       <i
-        className="lugia-icon-reminder_close c8 c9"
+        className="lugia-icon-reminder_close c8  c9"
+        style={Object {}}
       />
     </a>
   </div>
@@ -688,7 +695,8 @@ exports[`Alert css 1`] = `
     type="info"
   >
     <i
-      className="lugia-icon-reminder_info_circle_o c29 c9"
+      className="lugia-icon-reminder_info_circle_o c29  c9"
+      style={Object {}}
     />
     <span
       className="c21"
@@ -706,7 +714,8 @@ exports[`Alert css 1`] = `
       type="info"
     >
       <i
-        className="lugia-icon-reminder_close c8 c9"
+        className="lugia-icon-reminder_close c8  c9"
+        style={Object {}}
       />
     </a>
   </div>
@@ -716,7 +725,8 @@ exports[`Alert css 1`] = `
     type="success"
   >
     <i
-      className="lugia-icon-reminder_check_circle_o c31 c9"
+      className="lugia-icon-reminder_check_circle_o c31  c9"
+      style={Object {}}
     />
     <span
       className="c21"
@@ -734,7 +744,8 @@ exports[`Alert css 1`] = `
       type="success"
     >
       <i
-        className="lugia-icon-reminder_close c8 c9"
+        className="lugia-icon-reminder_close c8  c9"
+        style={Object {}}
       />
     </a>
   </div>
@@ -744,7 +755,8 @@ exports[`Alert css 1`] = `
     type="error"
   >
     <i
-      className="lugia-icon-reminder_close_circle_o c33 c9"
+      className="lugia-icon-reminder_close_circle_o c33  c9"
+      style={Object {}}
     />
     <span
       className="c21"
@@ -770,7 +782,8 @@ exports[`Alert css 1`] = `
     type="warning"
   >
     <i
-      className="lugia-icon-reminder_exclamation_circle_o c35 c9"
+      className="lugia-icon-reminder_exclamation_circle_o c35  c9"
+      style={Object {}}
     />
     <span
       className="c21"
@@ -796,7 +809,8 @@ exports[`Alert css 1`] = `
     type="info"
   >
     <i
-      className="lugia-icon-logo_twitter c13 c9"
+      className="lugia-icon-logo_twitter c13  c9"
+      style={Object {}}
     />
     <span
       className="c2"
@@ -830,7 +844,8 @@ exports[`Alert css 1`] = `
     type="info"
   >
     <i
-      className="lugia-icon-reminder_info_circle_o c38 c9"
+      className="lugia-icon-reminder_info_circle_o c38  c9"
+      style={Object {}}
     />
     <span
       className="c2"
@@ -847,7 +862,8 @@ exports[`Alert css 1`] = `
     type="info"
   >
     <i
-      className="lugia-icon-reminder_info_circle_o c38 c9"
+      className="lugia-icon-reminder_info_circle_o c38  c9"
+      style={Object {}}
     />
     <span
       className="c2"

@@ -12,7 +12,8 @@ import styled from 'styled-components';
 import request from './request';
 import Widget from '../consts';
 import Theme from '../theme';
-import { getBorder } from '@lugia/theme-css-hoc';
+import { getBorder } from '@lugia/theme-utils';
+import { getBorderRadius } from '../theme/CSSProvider';
 const Title = styled.div`
   font-size: 16px;
   padding: 10px 0 0 10px;
@@ -226,28 +227,32 @@ class UploadDemo extends React.Component<any, any> {
           normal: {
             width: 346,
             height: 30,
-            border: getBorder({ color: '#9482ff', width: 1, style: 'solid' }, { radius: 4 }),
+            border: getBorder({ color: '#9482ff', width: 1, style: 'solid' }),
+            borderRadius: getBorderRadius(4),
           },
           hover: {},
           disabled: {
             background: {
               color: '#ccc',
             },
-            border: getBorder({ color: '#e8e8e8', width: 1, style: 'solid' }, { radius: 4 }),
+            border: getBorder({ color: '#e8e8e8', width: 1, style: 'solid' }),
+            borderRadius: getBorderRadius(4),
           },
         },
         UploadPictureType: {
           normal: {
             width: 80,
             height: 80,
-            border: getBorder({ color: '#9482ff', width: 1, style: 'dashed' }, { radius: 4 }),
+            border: getBorder({ color: '#9482ff', width: 1, style: 'dashed' }),
+            borderRadius: getBorderRadius(4),
           },
           hover: {},
           disabled: {
             background: {
               color: '#f7f9f9',
             },
-            border: getBorder({ color: '#e8e8e8', width: 1, style: 'dashed' }, { radius: 4 }),
+            border: getBorder({ color: '#e8e8e8', width: 1, style: 'dashed' }),
+            borderRadius: getBorderRadius(4),
           },
         },
         UploadLiType: {
@@ -295,20 +300,16 @@ class UploadDemo extends React.Component<any, any> {
           normal: {
             width: 346,
             height: 30,
-            border: getBorder(
-              { color: '#9482ff', width: 1, style: 'solid' },
-              { radius: 4, radiusDirections: ['tl', 'bl'] }
-            ),
+            border: getBorder({ color: '#9482ff', width: 1, style: 'solid' }),
+            borderRadius: getBorderRadius(4, ['tl', 'bl']),
           },
           hover: {},
           disabled: {
             background: {
               color: '#ccc',
             },
-            border: getBorder(
-              { color: '#e8e8e8', width: 1, style: 'solid' },
-              { radius: 4, radiusDirections: ['tl', 'bl'] }
-            ),
+            border: getBorder({ color: '#e8e8e8', width: 1, style: 'solid' }),
+            borderRadius: getBorderRadius(4, ['tl', 'bl']),
           },
         },
       },

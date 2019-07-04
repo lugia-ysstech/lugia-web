@@ -47,7 +47,15 @@ export const MenuContainer = CSSComponent({
   tag: 'ul',
   className: 'MenuContainer',
   normal: {
-    selectNames: [['width'], ['border'], ['opacity'], ['background'], ['boxShadow'], ['padding']],
+    selectNames: [
+      ['width'],
+      ['borderRadius'],
+      ['border'],
+      ['opacity'],
+      ['background'],
+      ['boxShadow'],
+      ['padding'],
+    ],
     getCSS: (themeMeta, themeProps) => {
       const { size, length, autoHeight } = themeProps.propsConfig;
       let { height: themeHeight } = themeMeta;
@@ -70,6 +78,7 @@ export const MenuContainer = CSSComponent({
     overflow: hidden;
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
+    background: #fff;
   `,
 });
 

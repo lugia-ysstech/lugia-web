@@ -40,10 +40,10 @@ const InputContent = ThemeHoc(
     tag: 'div',
     className: 'UploadDefaultType',
     normal: {
-      selectNames: [['width'], ['height'], ['boxShadow'], ['border']],
+      selectNames: [['width'], ['height'], ['boxShadow'], ['borderRadius'], ['border']],
     },
     disabled: {
-      selectNames: [['border'], ['cursor']],
+      selectNames: [['border'], ['borderRadius'], ['cursor']],
       defaultTheme: {
         border: getBorder({ color: '#e8e8e8', width: 1, style: 'solid' }),
         cursor: 'not-allowed',
@@ -92,7 +92,7 @@ const Li = ThemeHoc(
     tag: 'li',
     className: 'UploadListType',
     normal: {
-      selectNames: [['fontSize'], ['color'], ['border']],
+      selectNames: [['fontSize'], ['color'], ['borderRadius'], ['border']],
     },
     hover: {
       selectNames: [['background']],
@@ -130,13 +130,21 @@ const Button = ThemeHoc(
     tag: 'span',
     className: 'UploadButtonType',
     normal: {
-      selectNames: [['background'], ['width'], ['height'], ['boxShadow'], ['border'], ['opacity']],
+      selectNames: [
+        ['background'],
+        ['width'],
+        ['height'],
+        ['boxShadow'],
+        ['borderRadius'],
+        ['border'],
+        ['opacity'],
+      ],
     },
     hover: {
-      selectNames: [['background'], ['boxShadow'], ['border'], ['opacity']],
+      selectNames: [['background'], ['boxShadow'], ['borderRadius'], ['border'], ['opacity']],
     },
     disabled: {
-      selectNames: [['background'], ['border']],
+      selectNames: [['background'], ['borderRadius'], ['border']],
       defaultTheme: {
         cursor: 'not-allowed',
         background: { color: '#ccc' },
@@ -257,17 +265,17 @@ const PictureView = ThemeHoc(
     tag: 'div',
     className: 'UploadPictureType',
     normal: {
-      selectNames: [['width'], ['height'], ['opacity'], ['border']],
+      selectNames: [['width'], ['height'], ['opacity'], ['borderRadius'], ['border']],
       defaultTheme: {
         width: 80,
         height: 80,
       },
     },
     hover: {
-      selectNames: [['background'], ['opacity'], ['border']],
+      selectNames: [['background'], ['opacity'], ['borderRadius'], ['border']],
     },
     disabled: {
-      selectNames: [['background'], ['color'], ['border']],
+      selectNames: [['background'], ['color'], ['borderRadius'], ['border']],
       defaultTheme: {
         cursor: 'not-allowed',
         background: {

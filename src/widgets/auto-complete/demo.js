@@ -1,5 +1,8 @@
 import * as React from 'react';
 import AutoComplete from './';
+import { getBorder } from '@lugia/theme-utils';
+import Widget from '../consts/index';
+import { getBorderRadius } from '../theme/CSSProvider';
 
 const data = [
   'Nikcy Romero',
@@ -53,8 +56,88 @@ export default class AutoCompleteBounded extends React.Component<any, any> {
   }
 
   render() {
+    const config = {
+      [Widget.AutoComplete]: {
+        PreItem: {
+          normal: {
+            height: 50,
+            color: '#000',
+            font: { size: 20 },
+            background: { color: '#333' },
+            opacity: 0.6,
+            padding: { left: 10 },
+            border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }),
+            borderRadius: getBorderRadius(20),
+          },
+          hover: {
+            color: '#4d63ff',
+            background: { color: '#4a8e29' },
+            opacity: 1,
+            border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }),
+            borderRadius: getBorderRadius(20),
+          },
+        },
+        [Widget.Input]: {
+          normal: {
+            width: 300,
+            height: 50,
+          },
+        },
+        [Widget.Menu]: {
+          MenuWrap: {
+            normal: {
+              width: 300,
+              height: 350,
+              opacity: 0.6,
+              boxShadow: '2px 2px 5px #4d63ff',
+              background: { color: '#000' },
+              border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }),
+              borderRadius: getBorderRadius(20),
+            },
+            hover: {
+              opacity: 1,
+            },
+          },
+          MenuItem: {
+            normal: { color: '#ccc', fontSize: 14, font: { fontWeight: 900 } },
+            hover: {
+              color: '#fff',
+              fontSize: 20,
+              background: { color: 'green' },
+              font: { fontWeight: 400 },
+            },
+            active: {
+              color: 'blue',
+              fontSize: 14,
+              background: { color: 'pink' },
+              font: { fontWeight: 900 },
+            },
+            disabled: { color: 'red', background: { color: '#000' } },
+          },
+          SelectedMenuItem: {
+            normal: {
+              color: 'blue',
+              font: { fontWeight: 900 },
+              fontSize: 18,
+              background: { color: 'orange' },
+            },
+            hover: { color: '#000', background: { color: 'yellow' } },
+            active: { color: 'green' },
+          },
+          Divider: { normal: { color: 'red' } },
+        },
+      },
+    };
     const { menuData, value } = this.state;
-    return <AutoComplete showOldValue value={value} data={menuData} onChange={this.onChange} />;
+    return (
+      <AutoComplete
+        theme={config}
+        showOldValue
+        value={value}
+        data={menuData}
+        onChange={this.onChange}
+      />
+    );
   }
 
   onChange = (value: string) => {

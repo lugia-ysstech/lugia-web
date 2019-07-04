@@ -194,6 +194,7 @@ export const TagWrap = ThemeHoc(
         ['color'],
         ['background'],
         ['border'],
+        ['borderRadius'],
         ['width'],
         ['height'],
         ['boxShadow'],
@@ -227,7 +228,15 @@ export const TagWrap = ThemeHoc(
       },
     },
     hover: {
-      selectNames: [['color'], ['background'], ['border'], ['boxShadow'], ['opacity'], ['font']],
+      selectNames: [
+        ['color'],
+        ['background'],
+        ['border'],
+        ['borderRadius'],
+        ['boxShadow'],
+        ['opacity'],
+        ['font'],
+      ],
       getStyle: (themeMeta, themeProps) => {
         const { normal = {}, hover = {}, propsConfig } = themeProps.themeConfig;
         const { type } = propsConfig;
@@ -352,6 +361,7 @@ export const OptionalWrap = ThemeHoc(
         ['color'],
         ['background'],
         ['border'],
+        ['borderRadius'],
         ['width'],
         ['height'],
         ['boxShadow'],
@@ -388,7 +398,15 @@ export const OptionalWrap = ThemeHoc(
       },
     },
     hover: {
-      selectNames: [['color'], ['background'], ['border'], ['boxShadow'], ['opacity'], ['font']],
+      selectNames: [
+        ['color'],
+        ['background'],
+        ['border'],
+        ['borderRadius'],
+        ['boxShadow'],
+        ['opacity'],
+        ['font'],
+      ],
       getCSS: (themeMeta, themeProps) => {
         const { color: hoverColor } = themeMeta;
         const { propsConfig } = themeProps.themeConfig;
@@ -400,7 +418,15 @@ export const OptionalWrap = ThemeHoc(
       },
     },
     active: {
-      selectNames: [['color'], ['background'], ['border'], ['boxShadow'], ['opacity'], ['font']],
+      selectNames: [
+        ['color'],
+        ['background'],
+        ['border'],
+        ['borderRadius'],
+        ['boxShadow'],
+        ['opacity'],
+        ['font'],
+      ],
       getStyle: (themeMeta, themeProps) => {
         const { color: activeColor, background = {} } = themeMeta;
         const color = activeColor ? activeColor : colorsFunc(themeColor).mouseDownColor;

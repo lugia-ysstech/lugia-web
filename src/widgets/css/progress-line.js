@@ -3,13 +3,13 @@
  * create by guorg
  * @flow
  */
-import styled, { css, keyframes } from 'styled-components';
+import { css, keyframes } from 'styled-components';
+import CSSComponent from '@lugia/theme-css-hoc';
 import colorsFunc from '../css/stateColor';
-import { getWidth } from '../common/ThemeUtils';
-import { px2emcss } from './units';
+import { px2remcss } from './units';
 import Icon from '../icon';
 
-type StatusType = 'success' | 'active' | 'error' | 'default';
+type StatusType = 'success' | 'error' | 'default';
 
 export type ProgressProps = {
   type?: 'line' | 'circle' | 'dashboard',
@@ -17,9 +17,12 @@ export type ProgressProps = {
   percent?: number,
   status?: StatusType,
   showInfo?: boolean,
+  active?: boolean,
   format?: Function,
   getTheme: Function,
   showType?: 'default' | 'inside',
+  themeProps: Object,
+  getPartOfThemeProps: Function,
 };
 
 export type ProgressState = {
@@ -29,7 +32,7 @@ export type ProgressState = {
 type CSSProps = {
   type: 'line' | 'circle' | 'dashboard',
   percent: number,
-  status: 'success' | 'active' | 'error',
+  status: 'success' | 'default' | 'error',
   theme: Object,
   showInfo: boolean,
   inside: boolean,
@@ -46,13 +49,6 @@ export const getWrapFontSize = (props: Object) => {
     return 1.2;
   }
   return FontSize;
-};
-export const getEM = (props: Object) => {
-  const { size } = props;
-  if (isSmall(size)) {
-    return px2emcss(1.2);
-  }
-  return px2emcss(FontSize);
 };
 
 export const handlePercent = (per: number) => {
@@ -74,22 +70,46 @@ const BackgroundCSS = {
   },
 };
 
+const activeAnimate = keyframes`
+  0% {
+    opacity: 0.1;
+    width: 0;
+  }
+  20% {
+    opacity: 0.5;
+    width: 0;
+  }
+  100% {
+    opacity: 0;
+    width: 100%;
+  }
+`;
+
 const getProgtrssWidth = (props: CSSProps) => {
   const { showInfo, showType } = props;
-  const em = getEM(props);
   if (showInfo && showType === 'default') {
-    return `width: calc(100% - ${em(30)});`;
+    return `width: calc(100% - ${px2remcss(30)});`;
   }
 
   return 'width: 100%;';
 };
 
-export const ProgressLine = styled.div`
-  ${getProgtrssWidth};
-  display: inline-block;
-  background: #f5f5f5;
-  border-radius: ${props => getEM(props)(50)};
-`;
+export const ProgressLine = CSSComponent({
+  tag: 'div',
+  className: 'ProgressLine',
+  css: css`
+    ${getProgtrssWidth};
+    display: inline-block;
+    border-radius: ${px2remcss(50)};
+    vertical-align: middle;
+  `,
+  normal: {
+    selectNames: [['background'], ['borderRadius'], ['border'], ['boxShadow']],
+    defaultTheme: {
+      background: { color: '#f5f5f5' },
+    },
+  },
+});
 
 const getBackGroundWidth = (props: CSSProps) => {
   const { percent } = props;
@@ -98,152 +118,191 @@ const getBackGroundWidth = (props: CSSProps) => {
   `;
 };
 
-const getStatusCSS = (props: CSSProps) => {
-  const { status = 'default', theme, percent } = props;
-  const { color } = theme;
-  const defaultColor = color ? color : themeColor;
-  const activeAnimate = keyframes`
-    0% {
-      opacity: 0.1;
-      width: 0;
-    }
-    20% {
-      opacity: 0.5;
-      width: 0;
-    }
-    100% {
-      opacity: 0;
-      width: 100%;
-    }
-  `;
+const getHeight = (propsConfig: Object) => {
+  const { size, showType } = propsConfig;
 
-  if (status === 'active') {
-    return css`
-      &::before {
-        content: '';
-        opacity: 0;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: #fff;
-        border-radius: 10px;
-        animation: ${activeAnimate} 2.4s ease infinite;
-      }
-
-      background-color: ${handlePercent(percent) === 100 ? successColor : defaultColor};
-    `;
-  }
-
-  if (handlePercent(percent) === 100) {
-    if (status === 'error') {
-      return `background-color: ${BackgroundCSS.error.background};`;
-    }
-    return `background-color: ${successColor};`;
-  }
-
-  const background = color ? color : BackgroundCSS[status].background;
-
-  return `background-color: ${background};`;
-};
-
-const getBackgroundHeight = (props: CSSProps) => {
-  const { size, theme, showType } = props;
-  const { height } = theme;
-  const em = getEM(props);
-  if (height && typeof height === 'number') {
-    return `height: ${em(height)};`;
-  }
   if (showType === 'inside') {
-    return `height: ${em(16)};`;
+    return 16;
   }
   if (isSmall(size)) {
-    return `height: ${em(6)};`;
+    return 6;
   }
-  return `height: ${em(8)};`;
+  return 8;
 };
+export const ProgressBackground = CSSComponent({
+  tag: 'div',
+  className: 'progress-line-wrap',
+  css: css`
+    transition: all 0.3s;
+    ${getBackGroundWidth};
+    border-radius: ${px2remcss(50)};
+    position: relative;
+    text-align: right;
+    box-sizing: border-box;
+  `,
+  normal: {
+    selectNames: [['height'], ['background'], ['border'], ['borderRadius'], ['boxShadow']],
+    defaultTheme: {
+      background: {
+        color: themeColor,
+      },
+    },
+    getThemeMeta(themeMeta, themeProps): Object {
+      const { propsConfig = {} } = themeProps;
+      const { status } = propsConfig;
+      const height = getHeight(propsConfig);
+      const backgroundCSS = BackgroundCSS[status];
 
-export const ProgressBackground = styled.div`
-  transition: all 0.3s;
-  ${getBackGroundWidth};
-  ${getStatusCSS};
-  ${getBackgroundHeight};
-  border-radius: ${props => getEM(props)(50)};
-  position: relative;
-  text-align: right;
-`;
+      return {
+        background: { color: backgroundCSS ? backgroundCSS.background : themeColor },
+        height,
+      };
+    },
+    getCSS(themeMeta, themeProps): string {
+      const { propsConfig = {} } = themeProps;
+      const { active } = propsConfig;
+      if (active) {
+        return css`
+          &::before {
+            content: '';
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #fff;
+            border-radius: 50%;
+            animation: ${activeAnimate} 2.4s ease infinite;
+          }
+        `;
+      }
+      return '';
+    },
+  },
+});
 
-export const getTextColor = (props: CSSProps) => {
-  const { status, percent = 0 } = props;
+export const getTextColor = (status: 'error' | 'success' | 'default') => {
   if (status === 'error') {
-    return `color: ${dangerColor};`;
+    return dangerColor;
   }
-  if (status === 'success' || handlePercent(percent) === 100) {
-    return `color: ${successColor};`;
+  if (status === 'success') {
+    return successColor;
   }
 
-  return `color: ${mediumGreyColor};`;
+  return mediumGreyColor;
 };
 
-export const CirleSvgTextFontSize = 2.4;
-
-const getTextFont = (props: CSSProps) => {
-  const { size, type } = props;
-  const em = getEM(props);
-  if (type === 'line' && isSmall(size)) {
-    return `font-size: ${em(12)};`;
-  }
-
+export const getTextFont = (propsConfig: Object) => {
+  const { type, size } = propsConfig;
   if (type === 'circle' || type === 'dashboard') {
-    const em = px2emcss(CirleSvgTextFontSize);
     if (isSmall(size)) {
-      return `font-size: ${em(26)};`;
+      return 26;
     }
-    return `font-size: ${em(40)};`;
+    return 40;
   }
-  return `font-size: ${em(14)};`;
+
+  return isSmall(size) ? 12 : 14;
 };
 
-export const ProgressText = styled.span`
-  display: inline-block;
-  ${getTextFont};
-  width: ${props => getEM(props)(20)};
-  ${getTextColor};
-  text-align: left;
-  margin-left: ${props => getEM(props)(10)};
-  white-space: nowrap;
-  word-break: normal;
-  vertical-align: bottom;
-`;
+export const ProgressText = CSSComponent({
+  tag: 'span',
+  className: 'ProgressText',
+  css: css`
+    display: inline-block;
+    width: ${px2remcss(20)};
+    text-align: left;
+    margin-left: ${px2remcss(10)};
+    white-space: nowrap;
+    word-break: normal;
+    vertical-align: middle;
+  `,
+  normal: {
+    selectNames: [['font'], ['color']],
+    defaultTheme: {
+      font: { size: 14 },
+      color: mediumGreyColor,
+    },
+    getThemeMeta(themeMeta, themeProps): Object {
+      const { propsConfig = {} } = themeProps;
+      const { status, size } = propsConfig;
+      const color = getTextColor(status);
+      const fontSize = getTextFont(size);
 
-export const Icons: Object = styled(Icon)`
-  cursor: default;
-  vertical-align: text-bottom !important;
-  ${getTextFont};
-`;
+      return {
+        color,
+        font: { size: fontSize },
+      };
+    },
+  },
+});
+
+export const Icons = CSSComponent({
+  className: 'alert-icon',
+  extend: Icon,
+  normal: {
+    selectNames: [['color'], ['fontSize']],
+    defaultTheme: {
+      fontSize: 14,
+      cursor: 'default',
+    },
+    getThemeMeta(themeMeta, themeProps) {
+      const { propsConfig = {} } = themeProps;
+      const { status } = propsConfig;
+
+      return {
+        color: getTextColor(status),
+        fontSize: getTextFont(propsConfig),
+      };
+    },
+  },
+  css: css`
+    cursor: default;
+    vertical-align: middle !important;
+    ${getTextFont};
+  `,
+});
 
 const getMinWidth = (props: CSSProps) => {
   const { size, type } = props;
-  const em = getEM(props);
   if (type === 'line') {
     const minWidth = isSmall(size) ? 56 : 60;
 
-    return `min-width: ${em(minWidth)};`;
+    return `min-width: ${px2remcss(minWidth)};`;
   }
 };
 
-export const Wrap = styled.div`
-  font-size: ${getWrapFontSize}rem;
-  ${getMinWidth};
-  ${getWidth};
-`;
-export const InsideText = styled.span`
-  display: inline-block;
-  color: #fff;
-  text-align: left;
-  margin: 0 ${props => getEM(props)(6)};
-  white-space: nowrap;
-  word-break: normal;
-  vertical-align: bottom;
-`;
+export const Wrap = CSSComponent({
+  tag: 'div',
+  className: 'progress-line-wrap',
+  css: css`
+    font-size: ${getWrapFontSize}rem;
+    ${getMinWidth};
+  `,
+  normal: {
+    selectNames: [['width'], ['height'], ['margin'], ['padding'], ['background'], ['opacity']],
+    defaultTheme: {
+      opacity: 1,
+    },
+  },
+});
+
+export const InsideText = CSSComponent({
+  tag: 'span',
+  className: 'progress-inside-text',
+  css: css`
+    display: inline-block;
+    text-align: left;
+    margin: 0 ${px2remcss(6)};
+    white-space: nowrap;
+    word-break: normal;
+    vertical-align: bottom;
+  `,
+  normal: {
+    selectNames: [['color'], ['font']],
+    defaultTheme: {
+      color: '#fff',
+      font: { size: 14 },
+    },
+  },
+});

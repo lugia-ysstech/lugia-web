@@ -72,6 +72,7 @@ export default ThemeProvider(
         iconType = 'info',
         getTheme,
         mask = true,
+        getPartOfThemeProps,
       } = this.props;
       const { visible = false, closing, opening } = this.state;
       const view = {
@@ -83,23 +84,36 @@ export default ThemeProvider(
       if (showIcon) {
         footerBtnProps.type = BtnType[iconType];
       }
+
+      const ModalWrapTheme = getPartOfThemeProps('ModalWrap');
+      ModalWrapTheme.propsConfig = {
+        showIcon,
+      };
+      const ModalTitleTheme = getPartOfThemeProps('ModalTitle');
+      const ModalBodyTextTheme = getPartOfThemeProps('ModalContentText');
+      const ModalCloseIconTheme = getPartOfThemeProps('ModalCloseIcon');
+      const ModalIconTheme = getPartOfThemeProps('ModalIcon');
       return (
         <Wrap visible={closing ? true : visible}>
           {mask ? (
             <ModalMask onClick={this.handleMaskClick} closing={closing} opening={opening} />
           ) : null}
           <ModalWrap>
-            <Modal closing={closing} opening={opening} theme={getTheme()}>
-              <ModalContent showIcon={showIcon} theme={getTheme()}>
+            <Modal closing={closing} opening={opening} themeProps={ModalWrapTheme}>
+              <ModalContent showIcon={showIcon} theme={getTheme()} themeProps={ModalWrapTheme}>
                 {showIcon ? (
-                  <BigIcons iconClass={IconInfo[iconType].class} iconType={iconType} />
+                  <BigIcons
+                    themeProps={ModalIconTheme}
+                    iconClass={IconInfo[iconType].class}
+                    iconType={iconType}
+                  />
                 ) : (
                   <ModalClose onClick={this.handleCancel}>
-                    <Icons iconClass="lugia-icon-reminder_close" />
+                    <Icons themeProps={ModalCloseIconTheme} iconClass="lugia-icon-reminder_close" />
                   </ModalClose>
                 )}
-                {title !== null && <ModalTitle>{title}</ModalTitle>}
-                <ModalBody>{children}</ModalBody>
+                {title !== null && <ModalTitle themeProps={ModalTitleTheme}>{title}</ModalTitle>}
+                <ModalBody themeProps={ModalBodyTextTheme}>{children}</ModalBody>
 
                 {this.isInprops('footer') ? (
                   footer

@@ -7,6 +7,6 @@
 
 import Widget from '../consts/index';
 import Cascader from './cascader';
-import ThemeProvider from '../theme-provider';
+import ThemeHoc from '@lugia/theme-hoc';
 
-export default ThemeProvider(Cascader, Widget.Cascader);
+export default ThemeHoc(Cascader, Widget.Cascader, { hover: true });
