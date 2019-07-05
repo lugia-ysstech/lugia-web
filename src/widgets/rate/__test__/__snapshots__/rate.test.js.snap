@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Rate Test css 1`] = `
-.c4 {
+.c3 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -27,7 +27,10 @@ exports[`Rate Test css 1`] = `
 .c2 {
   margin-right: 6px;
   position: relative;
-  margin: 0rem 0.6rem 0rem 0rem;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+  margin-left: 0rem;
+  margin-right: 0.6rem;
 }
 
 .c2 > i.hoverd:hover {
@@ -51,19 +54,74 @@ exports[`Rate Test css 1`] = `
   margin: 0 !important;
 }
 
-.c3 {
-  vertical-align: text-bottom !important;
-  color: #e8e8e8;
-}
-
-.c5 {
+.c4 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
   vertical-align: text-bottom !important;
   color: #e8e8e8;
   position: absolute;
   left: 0;
   bottom: 0;
   z-index: -1;
+}
+
+.c5 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  vertical-align: text-bottom !important;
   color: #e8e8e8;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.c6 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  vertical-align: text-bottom !important;
+  color: #e8e8e8;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.c7 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  vertical-align: text-bottom !important;
+  color: #e8e8e8;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.c8 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  vertical-align: text-bottom !important;
+  color: #e8e8e8;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
 }
 
 <div
@@ -81,31 +139,34 @@ exports[`Rate Test css 1`] = `
       onMouseMove={[Function]}
       style={Object {}}
     >
-      <span
+      <i
+        className="lugia-icon-financial_star default  hoverd iconCharacter    c3"
+        disabled={false}
+        onClick={[Function]}
+        onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-      >
-        <span
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <i
-            className="lugia-icon-financial_star default  hoverd iconCharacter  c3  c4"
-            style={Object {}}
-          />
-        </span>
-      </span>
-      <span>
-        <span
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <i
-            className="lugia-icon-financial_star  default iconCharacter  c5  c4"
-            style={Object {}}
-          />
-        </span>
-      </span>
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "#e8e8e8",
+          }
+        }
+      />
+      <i
+        className="lugia-icon-financial_star  default iconCharacter    c4"
+        disabled={false}
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "#e8e8e8",
+          }
+        }
+      />
     </span>
     <span
       className="c2"
@@ -113,31 +174,34 @@ exports[`Rate Test css 1`] = `
       onMouseMove={[Function]}
       style={Object {}}
     >
-      <span
+      <i
+        className="lugia-icon-financial_star default  hoverd iconCharacter    c3"
+        disabled={false}
+        onClick={[Function]}
+        onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-      >
-        <span
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <i
-            className="lugia-icon-financial_star default  hoverd iconCharacter  c3  c4"
-            style={Object {}}
-          />
-        </span>
-      </span>
-      <span>
-        <span
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <i
-            className="lugia-icon-financial_star  default iconCharacter  c5  c4"
-            style={Object {}}
-          />
-        </span>
-      </span>
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "#e8e8e8",
+          }
+        }
+      />
+      <i
+        className="lugia-icon-financial_star  default iconCharacter    c5"
+        disabled={false}
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "#e8e8e8",
+          }
+        }
+      />
     </span>
     <span
       className="c2"
@@ -145,31 +209,34 @@ exports[`Rate Test css 1`] = `
       onMouseMove={[Function]}
       style={Object {}}
     >
-      <span
+      <i
+        className="lugia-icon-financial_star default  hoverd iconCharacter    c3"
+        disabled={false}
+        onClick={[Function]}
+        onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-      >
-        <span
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <i
-            className="lugia-icon-financial_star default  hoverd iconCharacter  c3  c4"
-            style={Object {}}
-          />
-        </span>
-      </span>
-      <span>
-        <span
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <i
-            className="lugia-icon-financial_star  default iconCharacter  c5  c4"
-            style={Object {}}
-          />
-        </span>
-      </span>
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "#e8e8e8",
+          }
+        }
+      />
+      <i
+        className="lugia-icon-financial_star  default iconCharacter    c6"
+        disabled={false}
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "#e8e8e8",
+          }
+        }
+      />
     </span>
     <span
       className="c2"
@@ -177,31 +244,34 @@ exports[`Rate Test css 1`] = `
       onMouseMove={[Function]}
       style={Object {}}
     >
-      <span
+      <i
+        className="lugia-icon-financial_star default  hoverd iconCharacter    c3"
+        disabled={false}
+        onClick={[Function]}
+        onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-      >
-        <span
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <i
-            className="lugia-icon-financial_star default  hoverd iconCharacter  c3  c4"
-            style={Object {}}
-          />
-        </span>
-      </span>
-      <span>
-        <span
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <i
-            className="lugia-icon-financial_star  default iconCharacter  c5  c4"
-            style={Object {}}
-          />
-        </span>
-      </span>
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "#e8e8e8",
+          }
+        }
+      />
+      <i
+        className="lugia-icon-financial_star  default iconCharacter    c7"
+        disabled={false}
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "#e8e8e8",
+          }
+        }
+      />
     </span>
     <span
       className="c2"
@@ -209,31 +279,34 @@ exports[`Rate Test css 1`] = `
       onMouseMove={[Function]}
       style={Object {}}
     >
-      <span
+      <i
+        className="lugia-icon-financial_star default  hoverd iconCharacter    c3"
+        disabled={false}
+        onClick={[Function]}
+        onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-      >
-        <span
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <i
-            className="lugia-icon-financial_star default  hoverd iconCharacter  c3  c4"
-            style={Object {}}
-          />
-        </span>
-      </span>
-      <span>
-        <span
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <i
-            className="lugia-icon-financial_star  default iconCharacter  c5  c4"
-            style={Object {}}
-          />
-        </span>
-      </span>
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "#e8e8e8",
+          }
+        }
+      />
+      <i
+        className="lugia-icon-financial_star  default iconCharacter    c8"
+        disabled={false}
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "#e8e8e8",
+          }
+        }
+      />
     </span>
   </div>
 </div>
