@@ -671,7 +671,25 @@ class Rate extends React.Component<RateProps, any> {
         },
       };
       resultTheme = deepMerge(obj, resultTheme);
+    } else {
+      const obj = {
+        [resultViewClass]: {
+          hover: {
+            getCSS(themeMeta: Object, themeProps: Object) {
+              return css`
+                animation: ${showUp} 0.3s linear forwards;
+                transform: scale(1.2);
+              `;
+            },
+          },
+          disabled: {
+            color: '#cccccc',
+          },
+        },
+      };
+      resultTheme = deepMerge(obj, resultTheme);
     }
+
     return { theme: resultTheme, viewClass: resultViewClass, markClassName };
   };
 }
