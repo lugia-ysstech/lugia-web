@@ -45,6 +45,20 @@ import ThemeProvider from '../theme-provider';
 import Icon from '../icon';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import { units } from '@lugia/css';
+import { addPropsConfig } from '../avatar';
+import { getBoxShadow } from '@lugia/theme-utils';
+import { deepMerge } from '@lugia/object-utils';
+import colorsFunc from '../css/stateColor';
+import changeColor from '../css/utilsColor';
+const {
+  themeColor,
+  blackColor,
+  successColor,
+  lightGreyColor,
+  dangerColor,
+  defaultColor,
+} = colorsFunc();
+const lightThemeColor = changeColor(themeColor, 20).rgb;
 
 const { px2remcss } = units;
 
@@ -52,13 +66,33 @@ const BaseStep = CSSComponent({
   tag: 'div',
   className: 'AmountInputTitle',
   normal: {
-    selectNames: [],
-    getThemeMeta(themeMeta, themeProps) {},
+    selectNames: [['width'], ['height'], ['background']],
+    getThemeMeta(themeMeta, themeProps) {
+      const { propsConfig } = themeProps;
+      const { size, orientation } = propsConfig;
+      const { width, height } = themeMeta;
+      const type = orientation === 'horizontal' ? 'width' : 'height';
+      let theSize;
+      if (type === 'width') {
+        theSize = width && width > 0 ? width : size === 'normal' ? 212 : 204;
+      } else {
+        theSize = height && height > 0 ? height : size === 'normal' ? 82 : 74;
+      }
+      const a = {
+        type: theSize,
+      };
+      console.log(a, 111111112);
+      return {
+        type: theSize,
+        background: {
+          color: 'red',
+        },
+      };
+    },
   },
   css: css`
     position: relative;
     cursor: pointer;
-    ${getStepOutContanerSize};
     flex: 1;
   `,
 });
@@ -123,19 +157,22 @@ const BaseLine = CSSComponent({
   tag: 'div',
   className: 'AmountInputTitle',
   normal: {
-    selectNames: [],
-    getThemeMeta(themeMeta, themeProps) {
-      const { propsConfig } = themeProps;
-      const { stepType, orientation } = propsConfig;
-      const size = stepType === 'flat' ? px2remcss(6) : px2remcss(1);
-      const theSize =
-        orientation === 'horizontal' ? `height:${size};width:100%;` : `width:${size};height:100%;`;
-      return theSize;
-    },
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['fontSize'],
+      ['font'],
+      ['color'],
+      ['padding'],
+      ['background'],
+      ['border'],
+      ['borderRadius'],
+      ['cursor'],
+      ['boxShadow'],
+    ],
   },
   css: css`
     position: relative;
-    ${getLineSize};
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -146,13 +183,23 @@ const LineContainer = CSSComponent({
   className: 'AmountInputTitle',
   normal: {
     selectNames: [],
-    getThemeMeta(themeMeta, themeProps) {},
+    getCSS(themeMeta, themeProps) {
+      const { propsConfig } = themeProps;
+      const { isFirst, stepType, orientation } = propsConfig;
+      const padding = stepType === 'flat' ? 0 : px2remcss(6);
+      let hsize = padding;
+      let vsize = 0;
+      if (orientation === 'horizontal') {
+        hsize = 0;
+        vsize = padding;
+      }
+      const display = isFirst ? 'width:0;' : 'flex: 1;';
+      return `padding: ${hsize} ${vsize};${display}`;
+    },
   },
   css: css`
     display: inline-block;
     position: relative;
-    ${getShow};
-    ${getLinePadding};
     z-index: 10;
   `,
 });
@@ -160,11 +207,109 @@ const Line = CSSComponent({
   extend: BaseLine,
   className: 'AmountInputTitle',
   normal: {
-    selectNames: [],
-    getThemeMeta(themeMeta, themeProps) {},
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['fontSize'],
+      ['font'],
+      ['color'],
+      ['padding'],
+      ['background'],
+      ['border'],
+      ['borderRadius'],
+      ['cursor'],
+      ['boxShadow'],
+    ],
+    getThemeMeta(themeMeta, themeProps) {
+      const { propsConfig } = themeProps;
+      const { height, width } = themeMeta;
+      const { orientation } = propsConfig;
+      const theHeight = height && height > 0 ? height : orientation === 'horizontal' ? 1 : '100%';
+      const theWidth = width && width > 0 ? width : orientation === 'horizontal' ? '100%' : 1;
+      return {
+        height: theHeight,
+        width: theWidth,
+      };
+    },
+  },
+});
+
+const DotLine = CSSComponent({
+  extend: BaseLine,
+  className: 'AmountInputTitle',
+  normal: {
+    selectNames: [
+      ['border'],
+      ['background'],
+      ['width'],
+      ['height'],
+      ['fontSize'],
+      ['font'],
+      ['color'],
+      ['padding'],
+      ['background'],
+      ['border'],
+      ['borderRadius'],
+      ['cursor'],
+      ['boxShadow'],
+    ],
+    getThemeMeta(themeMeta, themeProps) {
+      const { background } = themeMeta;
+      const { propsConfig } = themeProps;
+      const { orientation, isDashed } = propsConfig;
+      const styled = isDashed ? 'dashed' : 'solid';
+      const direction = orientation === 'horizontal' ? 'bottom' : 'left';
+      const { height, width } = themeMeta;
+      const theHeight = height && height > 0 ? height : orientation === 'horizontal' ? 1 : '100%';
+      const theWidth = width && width > 0 ? width : orientation === 'horizontal' ? '100%' : 1;
+      return {
+        height: theHeight,
+        width: theWidth,
+        border: {
+          [direction]: {
+            width: 1,
+            style: styled,
+            color: background.color,
+          },
+        },
+      };
+    },
+  },
+});
+const FlatLine = CSSComponent({
+  tag: 'div',
+  className: 'AmountInputTitle',
+  normal: {
+    selectNames: [['width'], ['height'], ['boxShadow']],
+    getCSS(themeMeta, themeProps) {
+      // const { propsConfig } = themeProps;
+      // const { height, width, boxShadow } = themeMeta;
+      // const { orientation } = propsConfig;
+      // const theHeight = height && height > 0 ? height : orientation === 'horizontal' ? 6 : '100%';
+      return '';
+    },
+    getThemeMeta(themeMeta, themeProps) {
+      const { propsConfig } = themeProps;
+      const { height, width, boxShadow } = themeMeta;
+      const { orientation } = propsConfig;
+      const theHeight = height && height > 0 ? height : orientation === 'horizontal' ? 6 : '100%';
+      const theWidth = width && width > 0 ? width : orientation === 'horizontal' ? '100%' : 6;
+      const theBoxShadow = boxShadow
+        ? boxShadow
+        : getBoxShadow('0 0 4 rgba(104, 79, 255,0.3) inset');
+      const theThemeMeta = {
+        height: theHeight,
+        width: theWidth,
+        boxShadow: theBoxShadow,
+      };
+      return theThemeMeta;
+    },
   },
   css: css`
-    ${getLineColor};
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     &::before {
       ${getBeforeGap};
     }
@@ -173,18 +318,43 @@ const Line = CSSComponent({
     }
   `,
 });
-
-const DotLine = CSSComponent({
-  extend: BaseLine,
+const NormalFlatLine = CSSComponent({
+  tag: 'div',
   className: 'AmountInputTitle',
   normal: {
-    selectNames: [],
-    getThemeMeta(themeMeta, themeProps) {},
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['fontSize'],
+      ['font'],
+      ['color'],
+      ['padding'],
+      ['background'],
+      ['border'],
+      ['borderRadius'],
+      ['cursor'],
+    ],
+    getThemeMeta(themeMeta, themeProps) {
+      const { propsConfig } = themeProps;
+      const { height, width } = themeMeta;
+      const { orientation } = propsConfig;
+      const theHeight = height && height > 0 ? height : orientation === 'horizontal' ? 6 : '100%';
+      const theWidth = width && width > 0 ? width : orientation === 'horizontal' ? '100%' : 6;
+      const theThemeMeta = {
+        height: theHeight,
+        width: theWidth,
+      };
+      return theThemeMeta;
+    },
   },
   css: css`
-    ${getDotLineSize};
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   `,
 });
+
 const StepHeadContainer = CSSComponent({
   tag: 'div',
   className: 'AmountInputTitle',
@@ -474,13 +644,14 @@ class Step extends React.Component<StepProps, StepState> {
 
   matchLine() {
     const { stepType, isFirst, orientation, themeProps } = this.props;
+    const theThemeProps = addPropsConfig(themeProps, { isFirst, stepType, orientation });
     if (!isFirst)
       return (
         <LineContainer
           orientation={orientation}
           stepType={stepType}
           {...this.getConfigs()}
-          themeProps={themeProps}
+          themeProps={theThemeProps}
         >
           {this.getLine()}
         </LineContainer>
@@ -489,11 +660,57 @@ class Step extends React.Component<StepProps, StepState> {
   }
 
   getLine() {
-    const { isDashed, stepType, isFirst, orientation, themeProps } = this.props;
+    const { isDashed, stepType, isFirst, orientation, stepStatus } = this.props;
+    let resultTheme;
+    switch (stepStatus) {
+      case 'finish':
+        const finishColor =
+          stepType === 'flat'
+            ? lightThemeColor
+            : stepType === 'simple' || stepType === 'dot'
+            ? successColor
+            : themeColor;
+        resultTheme = deepMerge(
+          { themeConfig: { normal: { background: { color: finishColor } } } },
+          this.props.getPartOfThemeProps('StepLine')
+        );
+        break;
+      case 'process':
+        const processColor = stepType === 'flat' ? lightThemeColor : themeColor;
+        resultTheme = deepMerge(
+          { themeConfig: { normal: { background: { color: processColor } } } },
+          this.props.getPartOfThemeProps('StepLine')
+        );
+        break;
+      case 'next':
+        resultTheme = deepMerge(
+          { themeConfig: { normal: { background: { color: themeColor } } } },
+          this.props.getPartOfThemeProps('StepLine')
+        );
+        break;
+      case 'wait':
+        resultTheme = deepMerge(
+          { themeConfig: { normal: { background: { color: lightGreyColor } } } },
+          this.props.getPartOfThemeProps('StepLine')
+        );
+        break;
+      case 'error':
+      default:
+        resultTheme = deepMerge(
+          { themeConfig: { normal: { background: { color: dangerColor } } } },
+          this.props.getPartOfThemeProps('StepLine')
+        );
+        break;
+    }
+    const theThemeProps = addPropsConfig(resultTheme, {
+      orientation,
+      isDashed,
+      stepType,
+    });
     if (stepType === 'dot') {
       return (
         <DotLine
-          themeProps={themeProps}
+          themeProps={theThemeProps}
           {...this.getConfigs()}
           isDashed={isDashed}
           isFirst={isFirst}
@@ -501,12 +718,35 @@ class Step extends React.Component<StepProps, StepState> {
         />
       );
     }
+    if (stepType === 'flat') {
+      if (stepStatus === 'wait' || stepStatus === 'next') {
+        return (
+          <FlatLine
+            themeProps={theThemeProps}
+            {...this.getConfigs()}
+            isDashed={isDashed}
+            isFirst={isFirst}
+            orientation={orientation}
+          />
+        );
+      }
+      return (
+        <NormalFlatLine
+          themeProps={theThemeProps}
+          {...this.getConfigs()}
+          isDashed={isDashed}
+          isFirst={isFirst}
+          orientation={orientation}
+        />
+      );
+    }
+
     return (
       <Line
         {...this.getConfigs()}
         isFirst={isFirst}
         orientation={orientation}
-        themeProps={themeProps}
+        themeProps={theThemeProps}
       />
     );
   }

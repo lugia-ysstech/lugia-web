@@ -72,6 +72,7 @@ type StepsProps = {
   desAlign: AlignType,
   data: Array<Object>,
   defaultData: Array<Object>,
+  themeProps: Object,
 };
 export const defaultData = [
   { title: 'step1', stepStatus: 'finish' },
@@ -106,7 +107,6 @@ class Steps extends Component<StepsProps, StepsState> {
   render() {
     const { themeProps, orientation } = this.props;
     const theThemeProps = addPropsConfig(themeProps, { orientation });
-    console.log(theThemeProps, 1111111111);
     return (
       <OutContainer
         themeProps={theThemeProps}
