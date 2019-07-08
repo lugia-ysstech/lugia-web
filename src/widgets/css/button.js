@@ -208,10 +208,9 @@ export const getClickCSS = (props: ButtonOutProps) => {
   const { type = 'default', size = 'default', shape = 'default', circle = false, themes } = props;
   const { height: sizeHeight } = fetchSize(size);
   const themeColor = getThemeColor(themes);
+  const typeTheme = fetchTypeCSS(themeColor)[type] || fetchTypeCSS(themeColor).default;
   const backGround =
-    type === 'default'
-      ? 'none'
-      : colorsFunc(fetchTypeCSS(themeColor)[type].backgroundColor).mouseDownColor;
+    type === 'default' ? 'none' : colorsFunc(typeTheme.backgroundColor).mouseDownColor;
   const borderRadius = circle
     ? '50%'
     : shape === 'default'
