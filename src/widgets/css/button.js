@@ -29,6 +29,20 @@ import {
   SizeTheme,
   CircleTheme,
   ShapeTheme,
+  textDefaultTheme,
+  textDefaultHoverTheme,
+  textDefaultActiveTheme,
+  textDefaultDisabledTheme,
+  TextTypeTheme,
+  TextTypeHoverTheme,
+  TextTypeActiveTheme,
+  TextTypeDisabledTheme,
+  TextPlainTypeTheme,
+  TextPlainHoverTheme,
+  TextPlainDisabledTypeTheme,
+  TextPlainActiveTypeTheme,
+  TextSizeTheme,
+  TextCircleTheme,
 } from '../button/theme';
 
 export type ButtonType = 'default' | 'primary' | 'success' | 'warning' | 'danger';
@@ -411,10 +425,100 @@ export const ButtonOut = CSSComponent({
     ${getClickCSS}
   `,
 });
-export const Text = styled.span`
-  display: inline-block;
-`;
+// export const Text = styled.span`
+//   display: inline-block;
+// `;
 
+const getTextHoverStyle = (propsConfig: Object = {}) => {
+  const { type = 'default', plain } = propsConfig;
+  let hoverTheme;
+  if (plain) {
+    hoverTheme = TextPlainHoverTheme[type] || TextPlainHoverTheme.default;
+  } else {
+    hoverTheme = TextTypeHoverTheme[type] || TextTypeHoverTheme.default;
+  }
+  return hoverTheme;
+};
+
+export const Text = CSSComponent({
+  className: 'ButtonText',
+  tag: 'span',
+  normal: {
+    selectNames: [['color'], ['font']],
+    defaultTheme: textDefaultTheme,
+    getThemeMeta(themeMeta: Object, themeProps: Object): Object {
+      const { propsConfig = {} } = themeProps;
+      const { type = 'default', plain, loading, size = 'default', circle } = propsConfig;
+      let normalTheme;
+      if (loading) {
+        if (plain) {
+          normalTheme = TextPlainHoverTheme[type] || TextPlainHoverTheme.default;
+        } else {
+          normalTheme = TextTypeHoverTheme[type] || TextTypeHoverTheme.default;
+        }
+      } else if (plain) {
+        normalTheme = TextPlainTypeTheme[type] || TextPlainTypeTheme.default;
+      } else {
+        normalTheme = TextTypeTheme[type] || TextTypeTheme.default;
+      }
+      const sizeTheme = circle
+        ? TextCircleTheme[size] || TextCircleTheme.default
+        : TextSizeTheme[size] || TextSizeTheme.default;
+
+      return { ...normalTheme, ...sizeTheme };
+    },
+  },
+  hover: {
+    selectNames: [['color'], ['font']],
+    defaultTheme: textDefaultHoverTheme,
+    getThemeMeta(themeMeta: Object, themeProps: Object): Object {
+      const { propsConfig = {} } = themeProps;
+
+      return getTextHoverStyle(propsConfig);
+    },
+  },
+  active: {
+    selectNames: [['color'], ['font']],
+    defaultTheme: textDefaultActiveTheme,
+    getThemeMeta(themeMeta: Object, themeProps: Object): Object {
+      const { propsConfig = {} } = themeProps;
+      const { type = 'default', plain } = propsConfig;
+      let activeTheme;
+      if (plain) {
+        activeTheme = TextPlainActiveTypeTheme[type] || TextPlainActiveTypeTheme.default;
+      } else {
+        activeTheme = TextTypeActiveTheme[type] || TextTypeActiveTheme.default;
+      }
+
+      return activeTheme;
+    },
+  },
+  disabled: {
+    selectNames: [['color'], ['font']],
+    defaultTheme: textDefaultDisabledTheme,
+    getThemeMeta(themeMeta: Object, themeProps: Object): Object {
+      const { propsConfig = {} } = themeProps;
+      const { type = 'default', plain } = propsConfig;
+      let disabledTheme;
+      if (plain) {
+        disabledTheme = TextPlainDisabledTypeTheme[type] || TextPlainDisabledTypeTheme.default;
+      } else {
+        disabledTheme = TextTypeDisabledTheme[type] || TextTypeDisabledTheme.default;
+      }
+
+      return disabledTheme;
+    },
+  },
+  focus: {
+    selectNames: [['color'], ['font']],
+    defaultTheme: textDefaultHoverTheme,
+    getThemeMeta(themeMeta: Object, themeProps: Object): Object {
+      const { propsConfig = {} } = themeProps;
+
+      return getTextHoverStyle(propsConfig);
+    },
+  },
+});
 export const IconWrap: Object = styled(Icon)`
   vertical-align: -${px2remcss(1.75)} !important;
   ${getIconStyle};

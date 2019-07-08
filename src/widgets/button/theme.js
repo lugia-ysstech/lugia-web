@@ -29,17 +29,14 @@ const warningColors = changeColor(warningColor, borderReduceS).color;
 const dangerColors = changeColor(dangerColor, borderReduceS).color;
 
 export const defaultTheme = {
-  color: darkGreyColor,
   border: getBorder({ width: 1, style: 'solid', color: lightGreyColor }),
   background: { color: defaultColor },
 };
 export const defaultHoverTheme = {
-  color: hoverColor,
   border: getBorder({ width: 1, style: 'solid', color: hoverColor }),
   background: { color: spiritColor },
 };
 export const defaultActiveTheme = {
-  color: mouseDownColor,
   border: getBorder({ width: 1, style: 'solid', color: mouseDownColor }),
   background: { color: spiritColor },
 };
@@ -47,22 +44,18 @@ export const defaultActiveTheme = {
 export const TypeTheme = {
   default: defaultTheme,
   primary: {
-    color: defaultColor,
     border: 'none',
     background: { color: themeColor },
   },
   success: {
-    color: defaultColor,
     border: 'none',
     background: { color: successColor },
   },
   warning: {
-    color: defaultColor,
     border: 'none',
     background: { color: warningColor },
   },
   danger: {
-    color: defaultColor,
     border: 'none',
     background: { color: dangerColor },
   },
@@ -70,22 +63,18 @@ export const TypeTheme = {
 export const TypeHoverTheme = {
   default: defaultHoverTheme,
   primary: {
-    color: defaultColor,
     border: 'none',
     background: { color: colorsFunc(themeColor).hoverColor },
   },
   success: {
-    color: defaultColor,
     border: 'none',
     background: { color: colorsFunc(successColor).hoverColor },
   },
   warning: {
-    color: defaultColor,
     border: 'none',
     background: { color: colorsFunc(warningColor).hoverColor },
   },
   danger: {
-    color: defaultColor,
     border: 'none',
     background: { color: colorsFunc(dangerColor).hoverColor },
   },
@@ -93,29 +82,24 @@ export const TypeHoverTheme = {
 
 const defaultBorderColor = '#e8e8e8';
 export const defaultDisabledTheme = {
-  color: lightGreyColor,
   background: { color: defaultColor },
   border: getBorder({ width: 1, style: 'solid', color: defaultBorderColor }),
 };
 export const DisabledTypeTheme = {
   default: defaultDisabledTheme,
   primary: {
-    color: defaultColor,
     border: 'none',
     background: { color: changeColor(themeColor, 45).color },
   },
   success: {
-    color: defaultColor,
     border: 'none',
     background: { color: changeColor(successColor, 45).color },
   },
   warning: {
-    color: defaultColor,
     border: 'none',
     background: { color: changeColor(warningColor, 45).color },
   },
   danger: {
-    color: defaultColor,
     border: 'none',
     background: { color: changeColor(dangerColor, 45).color },
   },
@@ -126,22 +110,18 @@ const mouseDownDangerColor = colorsFunc(dangerColor).mouseDownColor;
 export const ActiveTypeTheme = {
   default: defaultActiveTheme,
   primary: {
-    color: defaultColor,
     border: 'none',
     background: { color: mouseDownColor },
   },
   success: {
-    color: defaultColor,
     border: 'none',
     background: { color: mouseDownSuccessColor },
   },
   warning: {
-    color: defaultColor,
     border: 'none',
     background: { color: mouseDownWarningColor },
   },
   danger: {
-    color: defaultColor,
     border: 'none',
     background: { color: mouseDownDangerColor },
   },
@@ -149,54 +129,44 @@ export const ActiveTypeTheme = {
 
 export const PlainTypeTheme = {
   default: {
-    color: defaultColors,
     background: { color: defaultColor },
     border: getBorder({ width: 1, style: 'solid', color: lightGreyColor }),
   },
   primary: {
-    color: themeColor,
     background: { color: changeColor(themeColor, 0, 0, bgReduceA).rgba },
     border: getBorder({ width: 1, style: 'solid', color: themeColor }),
   },
   success: {
-    color: successColor,
     background: { color: changeColor(successColor, 0, 0, bgReduceA).rgba },
     border: getBorder({ width: 1, style: 'solid', color: successColor }),
   },
   warning: {
-    color: warningColor,
     background: { color: changeColor(warningColor, 0, 0, bgReduceA).rgba },
     border: getBorder({ width: 1, style: 'solid', color: warningColor }),
   },
   danger: {
-    color: dangerColor,
     background: { color: changeColor(dangerColor, 0, 0, bgReduceA).rgba },
     border: getBorder({ width: 1, style: 'solid', color: dangerColor }),
   },
 };
 export const PlainHoverTheme = {
   default: {
-    color: hoverColor,
     border: getBorder({ width: 1, style: 'solid', color: hoverColor }),
     background: { color: defaultColor },
   },
   primary: {
-    color: defaultColor,
     border: getBorder({ width: 1, style: 'solid', color: themeColor }),
     background: { color: themeColor },
   },
   success: {
-    color: defaultColor,
     border: getBorder({ width: 1, style: 'solid', color: successColor }),
     background: { color: successColor },
   },
   warning: {
-    color: defaultColor,
     border: getBorder({ width: 1, style: 'solid', color: warningColor }),
     background: { color: warningColor },
   },
   danger: {
-    color: defaultColor,
     border: getBorder({ width: 1, style: 'solid', color: dangerColor }),
     background: { color: dangerColor },
   },
@@ -204,22 +174,18 @@ export const PlainHoverTheme = {
 export const PlainDisabledTypeTheme = {
   default: defaultDisabledTheme,
   primary: {
-    color: primaryColors,
     background: { color: changeColor(themeColor, 0, 0, bgReduceA).rgba },
     border: getBorder({ width: 1, style: 'solid', color: primaryColors }),
   },
   success: {
-    color: successColors,
     background: { color: changeColor(successColor, 0, 0, bgReduceA).rgba },
     border: getBorder({ width: 1, style: 'solid', color: successColors }),
   },
   warning: {
-    color: warningColors,
     background: { color: changeColor(warningColor, 0, 0, bgReduceA).rgba },
     border: getBorder({ width: 1, style: 'solid', color: warningColors }),
   },
   danger: {
-    color: dangerColors,
     background: { color: changeColor(dangerColor, 0, 0, bgReduceA).rgba },
     border: getBorder({ width: 1, style: 'solid', color: dangerColors }),
   },
@@ -227,22 +193,18 @@ export const PlainDisabledTypeTheme = {
 export const PlainActiveTypeTheme = {
   default: defaultActiveTheme,
   primary: {
-    color: defaultColor,
     border: getBorder({ width: 1, style: 'solid', color: mouseDownColor }),
     background: { color: mouseDownColor },
   },
   success: {
-    color: defaultColor,
     border: getBorder({ width: 1, style: 'solid', color: mouseDownSuccessColor }),
     background: { color: mouseDownSuccessColor },
   },
   warning: {
-    color: defaultColor,
     border: getBorder({ width: 1, style: 'solid', color: mouseDownWarningColor }),
     background: { color: mouseDownWarningColor },
   },
   danger: {
-    color: defaultColor,
     border: getBorder({ width: 1, style: 'solid', color: mouseDownDangerColor }),
     background: { color: mouseDownDangerColor },
   },
@@ -313,4 +275,85 @@ export const ShapeTheme = {
   small: {
     borderRadius: getBorderRadius(12),
   },
+};
+
+export const textDefaultTheme = {
+  color: darkGreyColor,
+  font: { size: 14 },
+};
+export const textDefaultHoverTheme = {
+  color: hoverColor,
+};
+export const textDefaultActiveTheme = {
+  color: mouseDownColor,
+};
+export const textDefaultDisabledTheme = {
+  color: lightGreyColor,
+};
+export const TextTypeTheme = {
+  default: textDefaultTheme,
+  primary: { color: defaultColor },
+  success: { color: defaultColor },
+  warning: { color: defaultColor },
+  danger: { color: defaultColor },
+};
+export const TextTypeHoverTheme = {
+  default: textDefaultHoverTheme,
+  primary: { color: defaultColor },
+  success: { color: defaultColor },
+  warning: { color: defaultColor },
+  danger: { color: defaultColor },
+};
+export const TextTypeActiveTheme = {
+  default: { color: mouseDownColor },
+  primary: { color: defaultColor },
+  success: { color: defaultColor },
+  warning: { color: defaultColor },
+  danger: { color: defaultColor },
+};
+export const TextTypeDisabledTheme = {
+  default: { color: lightGreyColor },
+  primary: { color: defaultColor },
+  success: { color: defaultColor },
+  warning: { color: defaultColor },
+  danger: { color: defaultColor },
+};
+export const TextPlainTypeTheme = {
+  default: { color: defaultColors },
+  primary: { color: themeColor },
+  success: { color: successColor },
+  warning: { color: warningColor },
+  danger: { color: dangerColor },
+};
+export const TextPlainHoverTheme = {
+  default: { color: hoverColor },
+  primary: { color: defaultColor },
+  success: { color: defaultColor },
+  warning: { color: defaultColor },
+  danger: { color: defaultColor },
+};
+
+export const TextPlainDisabledTypeTheme = {
+  default: { color: defaultColor },
+  primary: { color: primaryColors },
+  success: { color: successColors },
+  warning: { color: warningColors },
+  danger: { color: dangerColors },
+};
+export const TextPlainActiveTypeTheme = {
+  default: { color: mouseDownColor },
+  primary: { color: defaultColor },
+  success: { color: defaultColor },
+  warning: { color: defaultColor },
+  danger: { color: defaultColor },
+};
+export const TextSizeTheme = {
+  large: { font: { size: 14 } },
+  default: { font: { size: 14 } },
+  small: { font: { size: 12 } },
+};
+export const TextCircleTheme = {
+  large: { font: { size: 14 } },
+  default: { font: { size: 14 } },
+  small: { font: { size: 12 } },
 };

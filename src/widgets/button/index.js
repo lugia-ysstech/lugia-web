@@ -46,6 +46,8 @@ export default ThemeProvider(
 
         handleChildren = () => {
           const {
+            type = 'default',
+            plain,
             children,
             text,
             icon,
@@ -54,25 +56,32 @@ export default ThemeProvider(
             size = 'default',
             disabled,
             themeProps,
-            getPartOfThemeHocProps,
+            getPartOfThemeProps,
           } = this.props;
+          const textTheme = getPartOfThemeProps('ButtonText');
+          textTheme.propsConfig = {
+            type,
+            plain,
+            loading,
+            size,
+            circle,
+          };
           if (circle) {
             const iconType = icon || 'lugia-icon-direction_logout';
             return [
               <CircleIcon size={size} iconClass={iconType} />,
-              <span>{text || children}</span>,
+              <Text themeProps={textTheme}>{text || children}</Text>,
             ];
           }
 
           if (loading) {
             return [
               <IconWrap
-                {...getPartOfThemeHocProps('IconWrap')}
                 loading
                 iconClass="lugia-icon-financial_loading_o"
                 themeProps={themeProps}
               />,
-              <span>{text || children}</span>,
+              <Text themeProps={textTheme}>{text || children}</Text>,
             ];
           }
           if (icon) {
@@ -84,10 +93,10 @@ export default ThemeProvider(
                 disabled={disabled}
                 themeProps={this.props.getPartOfThemeProps('IconWrap')}
               />,
-              <span>{text || children} </span>,
+              <Text themeProps={textTheme}>{text || children} </Text>,
             ];
           }
-          return <span>{text || children}</span>;
+          return <Text themeProps={textTheme}>{text || children}</Text>;
         };
         render() {
           const {
