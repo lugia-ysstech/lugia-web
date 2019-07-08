@@ -8,7 +8,7 @@ exports[` Badge css 1`] = `
   background: #f22735;
   height: 1.4rem;
   border-radius: 0.8rem;
-  line-height: 1.4em;
+  line-height: 1.4rem;
   text-align: center;
   padding: 0 0.4rem;
   font-weight: normal;
@@ -199,66 +199,66 @@ exports[` Badge css 1`] = `
                 style={Object {}}
                 y={-400}
               >
-                <div
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   0
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   1
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   2
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   3
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   4
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   5
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   6
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   7
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   8
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   9
-                </div>
+                </p>
               </span>
             </span>
           </div>
@@ -299,132 +299,132 @@ exports[` Badge css 1`] = `
                 style={Object {}}
                 y={-900}
               >
-                <div
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   0
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   1
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   2
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   3
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   4
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   5
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   6
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   7
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   8
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   9
-                </div>
+                </p>
               </span>
               <span
                 className="c8"
                 style={Object {}}
                 y={-900}
               >
-                <div
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   0
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   1
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   2
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   3
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   4
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   5
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   6
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   7
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   8
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   9
-                </div>
+                </p>
               </span>
               <span
                 className="c9"
@@ -524,66 +524,66 @@ exports[` Badge css 1`] = `
                 style={Object {}}
                 y={-0}
               >
-                <div
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   0
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   1
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   2
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   3
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   4
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   5
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   6
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   7
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   8
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   9
-                </div>
+                </p>
               </span>
             </span>
           </div>
@@ -624,66 +624,66 @@ exports[` Badge css 1`] = `
                 style={Object {}}
                 y={-0}
               >
-                <div
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   0
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   1
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   2
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   3
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   4
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   5
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   6
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   7
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   8
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   9
-                </div>
+                </p>
               </span>
             </span>
           </div>
@@ -904,66 +904,66 @@ exports[` Badge css 1`] = `
                 style={Object {}}
                 y={-0}
               >
-                <div
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   0
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   1
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   2
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   3
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   4
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   5
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   6
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   7
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   8
-                </div>
-                <div
+                </p>
+                <p
                   className="c7"
                   style={Object {}}
                 >
                   9
-                </div>
+                </p>
               </span>
             </span>
           </div>

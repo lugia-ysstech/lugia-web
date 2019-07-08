@@ -40,7 +40,7 @@ const OutInner = CSSComponent({
     const { propsConfig } = themeProps;
     const { bitCnt, overflow } = propsConfig;
     const overWidth = overflow ? 6 : 0;
-    const width = (bitCnt === 1 ? 14 : bitCnt * 6 + 2 * Padding) + overWidth;
+    const width = (bitCnt === 1 ? 14 : bitCnt * 6 + 2 * 4) + overWidth;
     const style = {};
     style.width = width;
     return style;
@@ -52,9 +52,9 @@ const OutInner = CSSComponent({
     background: ${dangerColor};
     height: ${px2remcss(14)};
     border-radius: ${px2remcss(8)};
-    line-height: ${Height};
+    line-height: ${px2remcss(14)};
     text-align: center;
-    padding: 0 ${px2remcss(Padding)};
+    padding: 0 ${px2remcss(4)};
     font-weight: normal;
     white-space: nowrap;
     box-shadow: 0 0 0 ${px2remcss(1)} #fff;
@@ -79,7 +79,7 @@ const BitOut = StaticComponent({
   `,
 });
 const Bit = CSSComponent({
-  tag: 'div',
+  tag: 'p',
   className: 'badgeNumberBit',
   normal: {
     selectNames: [['color'], ['fontSize']],
