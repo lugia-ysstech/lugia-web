@@ -36,7 +36,6 @@ type IconProps = {
   style: Object,
   onClick?: Function,
   getTheme: Function,
-  _lugia_theme_style_: Object,
   themeProps: Object,
   disabled: boolean,
 };
@@ -61,7 +60,6 @@ class Icon extends React.Component<IconProps> {
       iconClass = 'lugia-icon-logo_lugia',
       themeProps,
       className = '',
-      style,
       disabled,
     } = this.props;
     return (
@@ -69,10 +67,8 @@ class Icon extends React.Component<IconProps> {
         className={`${iconClass} ${className}`}
         onClick={this.onClick}
         themeProps={themeProps}
-        style={style}
         disabled={disabled}
         {...addMouseEvent(this)}
-        _lugia_theme_style_={this.props._lugia_theme_style_}
       />
     );
   }

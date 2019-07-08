@@ -79,19 +79,19 @@ exports[`popconfirm Demo Component JSON 1`] = `
 }
 
 .c4::-webkit-input-placeholder {
-  color: #cccccc;
+  color: #ccc;
 }
 
 .c4::-moz-placeholder {
-  color: #cccccc;
+  color: #ccc;
 }
 
 .c4:-ms-input-placeholder {
-  color: #cccccc;
+  color: #ccc;
 }
 
 .c4::placeholder {
-  color: #cccccc;
+  color: #ccc;
 }
 
 .c3 {

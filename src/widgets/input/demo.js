@@ -91,12 +91,28 @@ export class TopInput extends React.Component<any, any> {
   };
   render() {
     const { validateType } = this.props;
+    const topConfig = {
+      [Widget.Input]: {
+        validateTopTip: {
+          TooltipContent: {
+            normal: {
+              background: { color: 'green' },
+            },
+          },
+        },
+        TooltipMessage: {
+          normal: { color: 'black' },
+        },
+      },
+    };
+
     return (
       <Input
         onBlur={this.onBlur}
         onChange={this.onChange}
         validateType={validateType}
         validateStatus={this.state.validateStatus}
+        theme={topConfig}
       />
     );
   }

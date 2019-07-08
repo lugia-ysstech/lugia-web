@@ -23,7 +23,7 @@ const { px2remcss } = units;
 type PopconfirmProps = {
   description: React.Node,
   title: React.Node,
-  content?: React.Node,
+  content: React.Node,
   getTheme: Function,
   onCancel: Function,
   onConfirm: Function,
@@ -46,7 +46,7 @@ type PopconfirmState = {
   visible: boolean,
 };
 const IconContainer: Object = CSSComponent({
-  extend: 'span',
+  tag: 'span',
   className: 'PopconfirmIconContainer ',
   normal: {
     selectNames: [[]],
@@ -84,20 +84,6 @@ const Title = CSSComponent({
     display: inline-block;
   `,
 });
-const HintIcon: Object = ThemeHoc(
-  CSSComponent({
-    extend: Icon,
-    className: 'PopconfirmHintIcon',
-    normal: {
-      selectNames: [['font'], ['fontSize'], ['color']],
-      defaultTheme: {
-        fontSize: 14,
-      },
-    },
-  }),
-  'HintIcon',
-  {}
-);
 const Content = CSSComponent({
   tag: 'div',
   className: 'PopconfirmContent',
@@ -150,58 +136,6 @@ CancelText.displayName = 'cancelText';
 
 OkText.displayName = 'okText';
 
-const BaseButton: Object = ThemeHoc(
-  CSSComponent({
-    extend: Button,
-    className: 'PopconfirmBaseButton',
-    normal: {
-      selectNames: [['width'], ['height'], ['font'], ['fontSize'], ['color'], ['margin']],
-      defaultTheme: {
-        fontSize: 12,
-      },
-    },
-    css: css`
-      display: inline-block;
-    `,
-  }),
-  'BaseButton',
-  { hover: true, active: true }
-);
-const Cancel: Object = ThemeHoc(
-  CSSComponent({
-    extend: BaseButton,
-    className: 'PopconfirmCancel',
-    normal: {
-      selectNames: [['width'], ['height'], ['font'], ['fontSize'], ['color'], ['margin']],
-      defaultTheme: {
-        fontSize: 12,
-        margin: {
-          left: 6,
-        },
-      },
-    },
-  }),
-  'CancelButton',
-  { hover: true, active: true }
-);
-const Confirm: Object = ThemeHoc(
-  CSSComponent({
-    extend: BaseButton,
-    className: 'PopconfirmCancel',
-    normal: {
-      selectNames: [['width'], ['height'], ['font'], ['fontSize'], ['color'], ['margin']],
-      defaultTheme: {
-        fontSize: 12,
-        margin: {
-          left: 6,
-        },
-      },
-    },
-  }),
-  'ConfirmButton',
-  { hover: true, active: true }
-);
-
 class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
   static displayName = Widget.Popconfirm;
   static defaultProps = {
@@ -229,22 +163,22 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
     const textThemeProps = this.props.getPartOfThemeProps('PopconfirmText');
     return (
       <Operation themeProps={PopconfirmOperationThemeProps}>
-        <Cancel
+        <Button
           type={okType}
           size="small"
           onClick={this.onCancel}
           {...this.props.getPartOfThemeHocProps(Widget.Button)}
         >
           <CancelText themeProps={textThemeProps}> {cancelText}</CancelText>
-        </Cancel>
-        <Confirm
+        </Button>
+        <Button
           type={okType}
           size="small"
           onClick={this.onConfirm}
           {...this.props.getPartOfThemeHocProps(Widget.Button)}
         >
           <OkText themeProps={textThemeProps}> {okText}</OkText>
-        </Confirm>
+        </Button>
       </Operation>
     );
   }
@@ -282,7 +216,7 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
 
   getIcon(icon: React.Node): React.Node {
     return ObjectUtils.isString(icon) ? (
-      <HintIcon {...this.props.getPartOfThemeHocProps(Widget.Icon)} iconClass={icon} />
+      <Icon {...this.props.getPartOfThemeHocProps(Widget.Icon)} iconClass={icon} />
     ) : (
       icon
     );
@@ -297,7 +231,7 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
         visible={this.state.visible}
         action={action}
         onVisibleChange={this.onVisibleChange}
-        title={this.getContent()}
+        content={this.getContent()}
         ref={getTarget}
         placement={placement}
       >

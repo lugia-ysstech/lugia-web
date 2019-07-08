@@ -17,35 +17,20 @@ import { getBoxShadow } from '@lugia/theme-utils';
 import { units } from '@lugia/css';
 import { addPropsConfig } from '../avatar';
 const { px2remcss } = units;
-const DefaultMessage = '默认信息';
 const { defaultColor, blackColor } = colorsFunc();
-
-const ToolTrigger: Object = ThemeHoc(
-  CSSComponent({
-    extend: Trigger,
-    className: 'ToolTrigger',
-    normal: {
-      selectNames: [['margin'], ['padding']],
-    },
-    css: css`
-      box-shadow: none;
-      background: transparent;
-    `,
-  }),
-  'ToolTrigger',
-  { hover: true, active: true }
-);
 
 const ContentWrapper: Object = CSSComponent({
   tag: 'div',
   className: 'TooltipContentWrapper',
   normal: {
-    selectNames: [['margin'], ['padding'], ['opacity']],
+    selectNames: [['margin'], ['opacity']],
     defaultTheme: {},
     getCSS(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
       const { direction } = propsConfig;
-      return `padding:${px2remcss(1)};padding-${direction}:${px2remcss(5)};`;
+      return `padding:${px2remcss(1)};padding-${direction}:${px2remcss(
+        5
+      )};background: transparent;box-shadow:none;`;
     },
   },
   css: css`
@@ -58,6 +43,7 @@ const Content: Object = CSSComponent({
   normal: {
     selectNames: [
       ['background'],
+      ['padding'],
       ['width'],
       ['height'],
       ['boxShadow'],
@@ -67,12 +53,19 @@ const Content: Object = CSSComponent({
     defaultTheme: {
       background: { color: defaultColor },
       boxShadow: getBoxShadow('0 0 2 rgba(102, 102, 102, 0.15)'),
+      padding: {
+        top: 6,
+        bottom: 6,
+        left: 8,
+        right: 8,
+      },
     },
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
       const { height } = themeMeta;
       const { size, popArrowType } = propsConfig;
-      const theHeight = height ? height : size === 'large' ? 40 : size === 'small' ? 24 : 32;
+      const theHeight =
+        height && height > 0 ? height : size === 'large' ? 40 : size === 'small' ? 24 : 32;
       if (popArrowType !== 'round')
         return {
           height: theHeight,
@@ -91,7 +84,7 @@ const Arrow: Object = CSSComponent({
   tag: 'div',
   className: 'ToolTipArrow',
   normal: {
-    selectNames: [['fontSize'], ['color'], ['background']],
+    selectNames: [['fontSize'], ['color']],
     defaultTheme: {
       fonSize: 12,
       color: defaultColor,
@@ -99,7 +92,7 @@ const Arrow: Object = CSSComponent({
     getCSS(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
       const { background = {} } = themeMeta;
-      const { direction } = propsConfig;
+      const { direction = Up } = propsConfig;
       const bgColor = background && background.color ? background.color : defaultColor;
       switch (direction) {
         case Up:
@@ -153,7 +146,7 @@ const BaseArrow: Object = CSSComponent({
       const { background = {} } = themeMeta;
       const bgColor = background && background.color ? background.color : defaultColor;
 
-      const { direction, placement } = propsConfig;
+      const { direction = Up, placement } = propsConfig;
       let angle = '';
       switch (direction) {
         case Up:
@@ -253,11 +246,20 @@ const MaskArrow: Object = CSSComponent({
   `,
 });
 
-const Message: Object = CSSComponent({
+const Title: Object = CSSComponent({
   tag: 'div',
-  className: 'TooltipMessage',
+  className: 'TooltipTitle',
   normal: {
-    selectNames: [['color'], ['fontSize'], ['font']],
+    selectNames: [
+      ['opacity'],
+      ['background'],
+      ['width'],
+      ['height'],
+      ['color'],
+      ['font'],
+      ['fontSize'],
+      ['margin'],
+    ],
     defaultTheme: {
       color: blackColor,
       fontSize: 12,
@@ -266,7 +268,33 @@ const Message: Object = CSSComponent({
   css: css`
     box-sizing: border-box;
     user-select: none;
-    line-height: 1;
+    overflow: hidden;
+    text-align: left;
+    text-decoration: none;
+  `,
+});
+const Description: Object = CSSComponent({
+  tag: 'div',
+  className: 'TooltipDescription',
+  normal: {
+    selectNames: [
+      ['opacity'],
+      ['background'],
+      ['width'],
+      ['height'],
+      ['color'],
+      ['font'],
+      ['fontSize'],
+      ['margin'],
+    ],
+    defaultTheme: {
+      color: blackColor,
+      fontSize: 12,
+    },
+  },
+  css: css`
+    box-sizing: border-box;
+    user-select: none;
     overflow: hidden;
     text-align: left;
     text-decoration: none;
@@ -335,47 +363,43 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
     return { visible: state.visible };
   }
   render() {
-    const { placement, action, title, popArrowType, children = <div />, size, style } = this.props;
+    const { placement, action, popArrowType, children = <div />, size } = this.props;
     const { visible } = this.state;
     const direction = this.getDirection(placement);
     const getTarget: Function = cmp => (this.trigger = cmp);
-    const theTitle = title ? title : DefaultMessage;
     const contentThemeProps = addPropsConfig(this.props.getPartOfThemeProps('TooltipContent'), {
       size,
       popArrowType,
       direction,
     });
-    const messageThemeProps = addPropsConfig(this.props.getPartOfThemeProps('TooltipMessage'), {
-      direction,
-    });
-
     return (
-      <ToolTrigger
-        style={style}
-        themeProps={contentThemeProps}
+      <Trigger
         popupVisible={visible}
         align={placement}
         ref={getTarget}
         onPopupVisibleChange={this.onVisibleChange}
         action={action}
         direction={direction}
-        _lugia_theme_style_={this.props._lugia_theme_style_}
         popup={
           <ContentWrapper themeProps={contentThemeProps}>
-            <Content
-              themeProps={contentThemeProps}
-              popArrowType={popArrowType}
-              direction={direction}
-              placement={placement}
-            >
-              {this.getArrow(direction)}
-              <Message themeProps={messageThemeProps}>{theTitle}</Message>
-            </Content>
+            {this.getContent(contentThemeProps, direction)}
           </ContentWrapper>
         }
       >
         {children}
-      </ToolTrigger>
+      </Trigger>
+    );
+  }
+
+  getContent(contentThemeProps, direction) {
+    const { placement, popArrowType, content } = this.props;
+    return (
+      <Content themeProps={contentThemeProps} popArrowType={popArrowType} placement={placement}>
+        {content}
+        {this.getArrow(direction)}
+        {this.getTitle()}
+        {this.getDescription()}
+      </Content>
     );
   }
 
@@ -404,6 +428,24 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
   onVisibleChange = (visible: boolean) => {
     processOnVisibleChange.call(this, visible);
   };
+
+  getTitle(): React$Element<any> | null {
+    const { title } = this.props;
+    const TitleThemeProps = this.props.getPartOfThemeProps('TooltipTitle');
+    if (title) {
+      return <Title themeProps={TitleThemeProps}>{title}</Title>;
+    }
+    return null;
+  }
+
+  getDescription(): React$Element<any> | null {
+    const { description } = this.props;
+    const DescriptionThemeProps = this.props.getPartOfThemeProps('TooltipDescription');
+    if (description) {
+      return <Description themeProps={DescriptionThemeProps}>{description}</Description>;
+    }
+    return null;
+  }
 }
 
 export default ThemeHoc(Tooltip, Widget.Tooltip);

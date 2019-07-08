@@ -16,6 +16,8 @@ const buttonWidth = 80;
 const Direction = styled(Button)`
   width: ${buttonWidth}px;
 `;
+const description = 'this is description';
+const title = 'this is title';
 class InnerCloseDemo extends React.Component<any, any> {
   state = {
     visible: false,
@@ -32,11 +34,10 @@ class InnerCloseDemo extends React.Component<any, any> {
   };
 
   render() {
-    const description = 'this is description';
     return (
       <Popover
         placement="top"
-        title="this is the title"
+        title={title}
         action="click"
         visible={this.state.visible}
         onVisibleChange={this.handleVisibleChange}
@@ -126,20 +127,19 @@ export const WrapperDemo = () => {
   const description = 'this is description';
   const config = {
     [Widget.Popover]: {
-      PopoverTitle: { normal: { background: { color: 'green' }, font: { color: 'white' } } },
-      PopoverDescription: { normal: { background: { color: 'yellow' }, font: { color: 'red' } } },
-      PopoverOperation: { normal: { font: { color: 'purple' } } },
+      PopoverOperation: { normal: { color: 'purple' } },
+      PopoverContent: {
+        TooltipTitle: { normal: { color: 'green' } },
+        TooltipDescription: { normal: { color: 'yellow' } },
+      },
+      [Widget.Button]: { width: buttonWidth },
     },
-    [Widget.Tooltip]: {
-      TooltipContent: { normal: { background: { color: 'pink' }, font: { color: '#333' } } },
-    },
-    [Widget.Button]: { width: buttonWidth },
   };
   return (
     <Wrapper>
       <Theme config={config}>
         <div style={{ marginLeft: 50, whiteSpace: 'nowrap' }}>
-          <Popover placement="topLeft" title={text} action={'click'}>
+          <Popover placement="topLeft" title={text} action={'click'} description={description}>
             <Direction type="primary">TL</Direction>
           </Popover>
           <Popover
