@@ -183,7 +183,7 @@ function fetchTypeCSS(color: string): { [key: ButtonType]: TypeColor } {
 }
 
 function fetchSize(sizeType: string) {
-  const { height, vPadding, dPadding, fontSize } = Size[sizeType];
+  const { height, vPadding, dPadding, fontSize } = Size[sizeType] || Size.default;
   return {
     height: `${px2remcss(height)}`,
     vPadding: `${px2remcss(vPadding)}`,
