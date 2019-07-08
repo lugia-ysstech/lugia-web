@@ -348,7 +348,7 @@ export const ButtonOut = CSSComponent({
     defaultTheme: defaultHoverTheme,
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
-      getHoverStyle(propsConfig);
+      return getHoverStyle(propsConfig);
     },
   },
   disabled: {
@@ -388,7 +388,7 @@ export const ButtonOut = CSSComponent({
     defaultTheme: defaultHoverTheme,
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
-      getHoverStyle(propsConfig);
+      return getHoverStyle(propsConfig);
     },
   },
   css: css`
@@ -411,7 +411,7 @@ export const ButtonOut = CSSComponent({
     ${getClickCSS}
   `,
 });
-export const ChildrenSpan = styled.span`
+export const Text = styled.span`
   display: inline-block;
 `;
 

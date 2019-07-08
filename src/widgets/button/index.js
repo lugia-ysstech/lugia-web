@@ -10,7 +10,7 @@ import { addMouseEvent, addFocusBlurEvent } from '@lugia/theme-hoc';
 import Widget from '../consts/index';
 import DelayHoc from '../common/DelayHoc';
 import MouseEventAdaptor from '../common/MouseEventAdaptor';
-import { ButtonOut, ChildrenSpan, IconWrap, CircleIcon } from '../css/button';
+import { ButtonOut, Text, IconWrap, CircleIcon } from '../css/button';
 import type { ButtonOutProps } from '../css/button';
 
 type ButtonState = { clicked: boolean };
@@ -30,7 +30,6 @@ export default ThemeProvider(
         }
 
         onClick = e => {
-          console.log('click');
           const { onClick, disabled, loading } = this.props;
           if (!disabled && !loading) {
             this.setState({
@@ -59,42 +58,36 @@ export default ThemeProvider(
           } = this.props;
           if (circle) {
             const iconType = icon || 'lugia-icon-direction_logout';
-            return (
-              <span>
-                <CircleIcon size={size} iconClass={iconType} />
-                {text || children}
-              </span>
-            );
+            return [
+              <CircleIcon size={size} iconClass={iconType} />,
+              <span>{text || children}</span>,
+            ];
           }
 
           if (loading) {
-            return (
-              <span>
-                <IconWrap
-                  {...getPartOfThemeHocProps('IconWrap')}
-                  loading
-                  iconClass="lugia-icon-financial_loading_o"
-                  themeProps={themeProps}
-                />
-                {text || children}
-              </span>
-            );
+            return [
+              <IconWrap
+                {...getPartOfThemeHocProps('IconWrap')}
+                loading
+                iconClass="lugia-icon-financial_loading_o"
+                themeProps={themeProps}
+              />,
+              <span>{text || children}</span>,
+            ];
           }
           if (icon) {
             const hasChildren = !!children || !!text;
-            return (
-              <span>
-                <IconWrap
-                  iconClass={icon}
-                  hasChildren={hasChildren}
-                  disabled={disabled}
-                  themeProps={this.props.getPartOfThemeProps('IconWrap')}
-                />
-                {text || children}
-              </span>
-            );
+            return [
+              <IconWrap
+                iconClass={icon}
+                hasChildren={hasChildren}
+                disabled={disabled}
+                themeProps={this.props.getPartOfThemeProps('IconWrap')}
+              />,
+              <span>{text || children} </span>,
+            ];
           }
-          return text || children;
+          return <span>{text || children}</span>;
         };
         render() {
           const {
@@ -114,7 +107,6 @@ export default ThemeProvider(
             onMouseDown,
             block,
             getPartOfThemeProps,
-            getPartOfThemeHocProps,
           } = this.props;
           const { clicked } = this.state;
           const mouseConfig = {
@@ -132,7 +124,7 @@ export default ThemeProvider(
             size,
             circle,
           };
-          console.info(addFocusBlurEvent(this));
+
           return (
             <ButtonOut
               clicked={clicked}
@@ -151,12 +143,8 @@ export default ThemeProvider(
               themeProps={ButtonWrapTheme}
               {...addMouseEvent(this, mouseConfig)}
               {...addFocusBlurEvent(this)}
-              // onFocus={() => console.log('focus')}
-              // onBlur={() => console.log('onBlur')}
             >
-              {/*<ChildrenSpan size={size} type={type} plain={plain}>*/}
               {this.handleChildren()}
-              {/*</ChildrenSpan>*/}
             </ButtonOut>
           );
         }
