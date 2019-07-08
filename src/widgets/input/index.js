@@ -34,6 +34,7 @@ const {
   mediumGreyColor,
   darkGreyColor,
   superLightColor,
+  lightGreyColor,
 } = colorsFunc();
 
 const CommonInputStyle = CSSComponent({
@@ -132,7 +133,7 @@ const CommonInputStyle = CSSComponent({
     transition: all 0.3s;
     outline: none;
     &::placeholder {
-      color: #ccc;
+      color: ${lightGreyColor};
     }
   `,
 });
