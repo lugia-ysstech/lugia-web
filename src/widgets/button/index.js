@@ -100,7 +100,7 @@ export default ThemeProvider(
                     return `
                       vertical-align: -${px2remcss(1.75)} !important;
                       ${getIconStyle({ hasChildren })};
-                      ${getIconCursor({ disabled })} !important;
+                      ${getIconCursor({ disabled })};
                     `;
                   },
                 },

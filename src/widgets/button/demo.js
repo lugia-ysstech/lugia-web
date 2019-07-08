@@ -9,6 +9,7 @@ import Button from './index';
 import styled from 'styled-components';
 import Theme from '../theme';
 import Widget from '../consts';
+import { getBorder, getBorderRadius } from '@lugia/theme-utils';
 
 const Wrapper = styled.div`
   float: left;
@@ -18,10 +19,75 @@ const Wrapper = styled.div`
 export default () => {
   const config = {
     [Widget.Button]: {
-      IconWrap: {
-        // hover: {
-        //   color: 'red',
-        // },
+      ButtonWrap: {
+        normal: {
+          width: 100,
+          height: 50,
+          padding: 9,
+          background: { color: 'orange' },
+          border: getBorder({ width: 2, style: 'solid', color: 'green' }),
+          borderRadius: getBorderRadius(10),
+        },
+        hover: {
+          background: { color: 'yellow' },
+          border: getBorder({ width: 2, style: 'solid', color: 'red' }),
+        },
+        active: {
+          background: { color: 'red' },
+          border: getBorder({ width: 2, style: 'solid', color: 'yellow' }),
+        },
+        disabled: {
+          background: { color: 'green' },
+          border: getBorder({ width: 2, style: 'solid', color: 'pink' }),
+        },
+        focus: {
+          background: { color: 'pink' },
+          border: getBorder({ width: 2, style: 'solid', color: 'green' }),
+        },
+      },
+      ButtonText: {
+        normal: {
+          color: 'black',
+          font: { size: 16, weight: 500 },
+        },
+        hover: {
+          color: 'blue',
+          font: { size: 16, weight: 500 },
+        },
+        active: {
+          color: 'orange',
+          font: { size: 16, weight: 500 },
+        },
+        disabled: {
+          color: 'orange',
+          font: { size: 16, weight: 500 },
+        },
+        focus: {
+          color: 'green',
+          font: { size: 16, weight: 500 },
+        },
+      },
+      ButtonIcon: {
+        normal: {
+          color: 'black',
+          font: { size: 16, weight: 500 },
+        },
+        hover: {
+          color: 'blue',
+          font: { size: 16, weight: 500 },
+        },
+        active: {
+          color: 'orange',
+          font: { size: 16, weight: 500 },
+        },
+        disabled: {
+          color: 'orange',
+          font: { size: 16, weight: 500 },
+        },
+        focus: {
+          color: 'green',
+          font: { size: 16, weight: 500 },
+        },
       },
     },
   };
@@ -137,6 +203,11 @@ export default () => {
           <p>icon Button</p>
           <Theme config={config}>
             <Button icon="lugia-icon-financial_global">Button</Button>
+          </Theme>
+          <Theme config={config}>
+            <Button disabled icon="lugia-icon-financial_global">
+              Button
+            </Button>
           </Theme>
         </Wrapper>
 

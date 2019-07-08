@@ -3,16 +3,12 @@
  * create by guorg
  * @flow
  */
-import styled from 'styled-components';
 import CSSComponent from '@lugia/theme-css-hoc';
 import { getBorderRadius } from '@lugia/theme-utils';
 import colorsFunc from '../css/stateColor';
-import changeColor from '../css/utilsColor';
 import { px2remcss } from '../css/units';
 import { getThemeColor } from '../common/ThemeUtils';
 import { css, keyframes } from 'styled-components';
-import type { MarginType, ThemeType } from '@lugia/lugia-web';
-import Icon from '../icon';
 import {
   TypeTheme,
   DisabledTypeTheme,
@@ -70,7 +66,6 @@ type CSSProps = {
 };
 export type ButtonOutProps = CSSProps & {
   clicked: boolean,
-  themes: ThemeType,
   onMouseOut: Function,
   onMouseEnter: Function,
   onMouseOver: Function,
@@ -297,8 +292,9 @@ export const getCircleIconFont = (props: CSSProps) => {
 export const getIconCursor = (props: CSSProps): ?string => {
   const { disabled } = props;
   if (disabled) {
-    return `cursor: ${cursor};`;
+    return `cursor: ${cursor}; !important`;
   }
+  return '';
 };
 const getHoverStyle = (propsConfig: Object = {}) => {
   const { type = 'default', plain } = propsConfig;
@@ -312,18 +308,9 @@ const getHoverStyle = (propsConfig: Object = {}) => {
 };
 export const ButtonOut = CSSComponent({
   tag: 'button',
-  className: 'common-back-top',
+  className: 'ButtonOut',
   normal: {
-    selectNames: [
-      ['color'],
-      ['background'],
-      ['border'],
-      ['font'],
-      ['height'],
-      ['width'],
-      ['padding'],
-      ['borderRadius'],
-    ],
+    selectNames: [['background'], ['border'], ['height'], ['width'], ['padding'], ['borderRadius']],
     defaultTheme,
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
@@ -359,7 +346,7 @@ export const ButtonOut = CSSComponent({
     },
   },
   hover: {
-    selectNames: [['color'], ['background'], ['border']],
+    selectNames: [['background'], ['border']],
     defaultTheme: defaultHoverTheme,
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
@@ -367,7 +354,7 @@ export const ButtonOut = CSSComponent({
     },
   },
   disabled: {
-    selectNames: [['color'], ['background'], ['border']],
+    selectNames: [['background'], ['border']],
     defaultTheme: { ...defaultDisabledTheme, cursor },
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
@@ -383,7 +370,7 @@ export const ButtonOut = CSSComponent({
     },
   },
   active: {
-    selectNames: [['color'], ['background'], ['border']],
+    selectNames: [['background'], ['border']],
     defaultTheme: defaultActiveTheme,
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
@@ -399,7 +386,7 @@ export const ButtonOut = CSSComponent({
     },
   },
   focus: {
-    selectNames: [['color'], ['background'], ['border']],
+    selectNames: [['background'], ['border']],
     defaultTheme: defaultHoverTheme,
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
@@ -414,7 +401,6 @@ export const ButtonOut = CSSComponent({
     touch-action: manipulation;
     cursor: pointer;
     white-space: nowrap;
-    line-height: 1;
     font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
     user-select: none;
     transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -533,9 +519,3 @@ export const Text = CSSComponent({
     },
   },
 });
-export const IconWrap: Object = styled(Icon)`
-  vertical-align: -${px2remcss(1.75)} !important;
-  ${getIconStyle};
-  ${getLoadingIconStyle};
-  ${getIconCursor}
-`;
