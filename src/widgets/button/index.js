@@ -6,7 +6,7 @@
  */
 import * as React from 'react';
 import ThemeProvider from '../theme-provider';
-import { addMouseEvent } from '@lugia/theme-hoc';
+import { addMouseEvent, addFocusBlurEvent } from '@lugia/theme-hoc';
 import Widget from '../consts/index';
 import DelayHoc from '../common/DelayHoc';
 import MouseEventAdaptor from '../common/MouseEventAdaptor';
@@ -30,6 +30,7 @@ export default ThemeProvider(
         }
 
         onClick = e => {
+          console.log('click');
           const { onClick, disabled, loading } = this.props;
           if (!disabled && !loading) {
             this.setState({
@@ -131,6 +132,7 @@ export default ThemeProvider(
             size,
             circle,
           };
+          console.info(addFocusBlurEvent(this));
           return (
             <ButtonOut
               clicked={clicked}
@@ -148,8 +150,9 @@ export default ThemeProvider(
               block={block}
               themeProps={ButtonWrapTheme}
               {...addMouseEvent(this, mouseConfig)}
-              onFocus={() => console.log('focus')}
-              onBlur={() => console.log('onBlur')}
+              {...addFocusBlurEvent(this)}
+              // onFocus={() => console.log('focus')}
+              // onBlur={() => console.log('onBlur')}
             >
               {/*<ChildrenSpan size={size} type={type} plain={plain}>*/}
               {this.handleChildren()}
@@ -161,5 +164,5 @@ export default ThemeProvider(
     )
   ),
   Widget.Button,
-  { hover: true, active: true }
+  { hover: true, active: true, focus: true }
 );

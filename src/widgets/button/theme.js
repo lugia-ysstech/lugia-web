@@ -3,7 +3,7 @@
  * create by guorg
  * @flow
  */
-import { getBorder, getBorderRadius } from '@lugia/theme-css-hoc';
+import { getBorder, getBorderRadius } from '@lugia/theme-utils';
 import colorsFunc from '../css/stateColor';
 import changeColor from '../css/utilsColor';
 
@@ -303,4 +303,14 @@ export const CircleTheme = {
     font: { size: 12 },
   },
 };
-console.log(getBorderRadius('50%'));
+export const ShapeTheme = {
+  default: {
+    borderRadius: getBorderRadius(16),
+  },
+  large: {
+    borderRadius: getBorderRadius(20),
+  },
+  small: {
+    borderRadius: getBorderRadius(12),
+  },
+};
