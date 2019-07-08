@@ -7,7 +7,6 @@ import CSSComponent from '@lugia/theme-css-hoc';
 import { units } from '@lugia/css';
 import colorsFunc from '../css/stateColor';
 import changeColor from './utilsColor';
-import type { ThemeType } from '@lugia/lugia-web';
 import styled, { css, keyframes } from 'styled-components';
 import Icon from '../icon';
 
@@ -25,6 +24,7 @@ export type AlertProps = {
   icon?: string,
   themeProps: Object,
   getPartOfThemeProps: Function,
+  getPartOfThemeHocProps: Function,
 };
 export type AlertState = {
   visible: boolean,
@@ -53,7 +53,7 @@ const {
   blackColor,
   darkGreyColor,
 } = colorsFunc();
-const TypeCSS = {
+export const TypeCSS = {
   info: {
     color: themeColor,
     background: changeColor(themeColor, 0, 0, 20).rgba,
@@ -156,38 +156,12 @@ export const Alert = CSSComponent({
   },
 });
 
-const getPosition = (props: CSSProps) => {
+export const getPosition = (props: Object) => {
   const { hasDect } = props;
 
   return `top: ${hasDect ? px2remcss(20) : px2remcss(12)};left: ${px2remcss(10)}`;
 };
 
-export const Icons = CSSComponent({
-  className: 'alert-icon',
-  extend: Icon,
-  normal: {
-    selectNames: [['color'], ['fontSize']],
-    defaultTheme: {
-      fontSize: 14,
-      cursor: 'default',
-    },
-    getThemeMeta(themeMeta, themeProps) {
-      const { propsConfig = {} } = themeProps;
-      const { type, hasDect } = propsConfig;
-      const typeCSSTheme = TypeCSS[type];
-      const color = typeCSSTheme ? typeCSSTheme.color : TypeCSS.info.color;
-
-      return {
-        color,
-        fontSize: hasDect ? 20 : 14,
-      };
-    },
-  },
-  css: css`
-    position: absolute;
-    ${getPosition}
-  `,
-});
 export const CloseIcon: Object = styled(Icon)`
   color: ${mediumGreyColor};
 `;
