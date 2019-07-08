@@ -89,8 +89,12 @@ type TypeColor = {
 type ShapeStyle = {
   borderRadius: number,
 };
+type SizeStyle = {
+  height: number,
+  borderRadius: number,
+};
 
-const Size = {
+const Size: { [key: ButtonSize]: SizeStyle } = {
   large: {
     height: 40,
     borderRadius: 20,
@@ -172,7 +176,7 @@ function fetchTypeCSS(color: string): { [key: ButtonType]: TypeColor } {
   };
 }
 
-function fetchSize(sizeType: string) {
+function fetchSize(sizeType: ButtonSize) {
   const { height } = Size[sizeType] || Size.default;
   return {
     height: `${px2remcss(height)}`,
@@ -268,11 +272,6 @@ export const getLoadingIconStyle = (props: IconLoadingProps) => {
       animation: ${spin} 1s infinite linear;
     `;
   }
-};
-export const getCircleIconFont = (props: CSSProps) => {
-  const { size = 'default' } = props;
-  const fontSize = CircleCSS[size].font;
-  return `font-size: ${px2remcss(fontSize)};`;
 };
 export const getIconCursor = (props: CSSProps): ?string => {
   const { disabled } = props;
