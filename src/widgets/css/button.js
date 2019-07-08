@@ -276,7 +276,7 @@ export const getLoadingIconStyle = (props: IconLoadingProps) => {
 export const getIconCursor = (props: CSSProps): ?string => {
   const { disabled } = props;
   if (disabled) {
-    return `cursor: ${cursor}; !important`;
+    return `cursor: ${cursor};`;
   }
   return '';
 };
