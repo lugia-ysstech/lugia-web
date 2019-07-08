@@ -113,6 +113,6 @@
       "active": [["color"]],
       "disabled": [["color"]],
       "focus": [["color"]]
-    },
+    }
   }
 }
