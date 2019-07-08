@@ -7,7 +7,6 @@ import CSSComponent from '@lugia/theme-css-hoc';
 import { getBorderRadius } from '@lugia/theme-utils';
 import colorsFunc from '../css/stateColor';
 import { px2remcss } from '../css/units';
-import { getThemeColor } from '../common/ThemeUtils';
 import { css, keyframes } from 'styled-components';
 import {
   TypeTheme,
@@ -94,24 +93,12 @@ type ShapeStyle = {
 const Size = {
   large: {
     height: 40,
-    vPadding: 13,
-    dPadding: 18,
-    fontSize: 1.4,
-    borderRadius: 20,
   },
   default: {
     height: 32,
-    vPadding: 9,
-    dPadding: 18,
-    fontSize: 1.4,
-    borderRadius: 16,
   },
   small: {
     height: 24,
-    vPadding: 6,
-    dPadding: 14,
-    fontSize: 1.2,
-    borderRadius: 12,
   },
 };
 
@@ -183,12 +170,9 @@ function fetchTypeCSS(color: string): { [key: ButtonType]: TypeColor } {
 }
 
 function fetchSize(sizeType: string) {
-  const { height, vPadding, dPadding, fontSize } = Size[sizeType] || Size.default;
+  const { height } = Size[sizeType] || Size.default;
   return {
     height: `${px2remcss(height)}`,
-    vPadding: `${px2remcss(vPadding)}`,
-    dPadding: `${px2remcss(dPadding)}`,
-    fontSize,
   };
 }
 
@@ -205,9 +189,8 @@ const ShapeCSS: { [key: ButtonSize]: ShapeStyle } = {
 };
 
 export const getClickCSS = (props: ButtonOutProps) => {
-  const { type = 'default', size = 'default', shape = 'default', circle = false, themes } = props;
+  const { type = 'default', size = 'default', shape = 'default', circle = false } = props;
   const { height: sizeHeight } = fetchSize(size);
-  const themeColor = getThemeColor(themes);
   const typeTheme = fetchTypeCSS(themeColor)[type] || fetchTypeCSS(themeColor).default;
   const backGround =
     type === 'default' ? 'none' : colorsFunc(typeTheme.backgroundColor).mouseDownColor;
