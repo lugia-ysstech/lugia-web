@@ -36,13 +36,13 @@ const OutInner = CSSComponent({
     selectNames: [['width'], ['height'], ['fontSize'], ['margin'], ['background'], ['padding']],
     defaultTheme: {},
   },
-  getStyle(themeMeta: Object, themeProps: ThemeProps) {
+  getStyle(themeMeta: Object, themeProps: Object) {
     const { propsConfig } = themeProps;
     const { bitCnt, overflow } = propsConfig;
     const overWidth = overflow ? 6 : 0;
     const width = (bitCnt === 1 ? 14 : bitCnt * 6 + 2 * Padding) + overWidth;
     const style = {};
-    style.width = px2remcss(width);
+    style.width = width;
     return style;
   },
   css: css`
@@ -79,11 +79,11 @@ const BitOut = StaticComponent({
   `,
 });
 const Bit = CSSComponent({
-  tag: 'p',
+  tag: 'div',
   className: 'badgeNumberBit',
   normal: {
     selectNames: [['color'], ['fontSize']],
-    defaultTheme: { height: px2remcss(14) },
+    defaultTheme: { height: 14 },
   },
   css: css`
     height: ${px2remcss(14)};

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Card css 1`] = `
-.c24 {
+.c22 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -9,21 +9,7 @@ exports[`Card css 1`] = `
   cursor: pointer;
 }
 
-.c12 {
-  box-sizing: border-box;
-  display: inline-block;
-  text-align: center;
-  white-space: nowrap;
-  position: relative;
-  color: rgba(0,0,0,0.65);
-  background-color: #cccccc;
-  border-radius: 50%;
-  width: 2.666666666666667em;
-  height: 2.666666666666667em;
-  line-height: 2.666666666666667em;
-}
-
-.c13 {
+.c10 {
   vertical-align: middle;
   width: 6rem;
   height: 6rem;
@@ -44,7 +30,7 @@ exports[`Card css 1`] = `
   flex-direction: row;
 }
 
-.c9 {
+.c7 {
   border: 0.1rem solid #cccccc;
   position: relative;
   display: -webkit-box;
@@ -59,7 +45,7 @@ exports[`Card css 1`] = `
   flex-direction: column;
 }
 
-.c15 {
+.c13 {
   border: 0.1rem solid #cccccc;
   position: relative;
   display: -webkit-box;
@@ -77,66 +63,41 @@ exports[`Card css 1`] = `
   font-size: 1.2rem;
   display: inline-block;
   width: 100%;
-  padding: 1.6rem 0rem 0rem 0rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
 }
 
-.c17 {
+.c15 {
   width: 12rem;
   height: 11.2rem;
 }
 
-.c16 {
+.c14 {
   position: relative;
   width: 20rem;
-  height: 35rem;
+  height: 15rem;
   display: block;
 }
 
-.c18 {
+.c16 {
   position: relative;
-  width: 36rem;
-  height: 20rem;
+  width: 16rem;
+  height: 10rem;
   display: inline-block;
 }
 
-.c10 {
+.c8 {
   position: relative;
   text-align: center;
   width: 16rem;
-  height: 22rem;
-  display: block;
-}
-
-.c14 {
-  position: relative;
-  text-align: center;
-  width: 26rem;
-  height: 18rem;
+  height: 10rem;
   display: block;
 }
 
 .c11 {
-  border-radius: 50%;
-  width: 7rem;
-  height: 7rem;
-  background-color: transparent;
-  padding: 2rem 0;
-}
-
-.c5 {
-  text-align: inherit;
-  display: inline-block;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  font-size: 1.6rem;
-  overflow: hidden;
-  white-space: nowrap;
-  padding: 0rem 0rem NaNrem 0rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  height: 11.2rem;
+  display: block;
 }
 
 .c4 {
@@ -145,15 +106,19 @@ exports[`Card css 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  font-size: 1.6rem;
   overflow: hidden;
   white-space: nowrap;
-  padding: 0rem 0rem NaNrem 0rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  font-size: 1.6rem;
+  padding-top: 0rem;
+  padding-bottom: 0.8rem;
+  padding-left: 0rem;
+  padding-right: 0rem;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
-.c8 {
+.c6 {
   left: 1.4rem;
   position: absolute;
   display: inline-block;
@@ -163,33 +128,25 @@ exports[`Card css 1`] = `
   border-radius: 0.5rem;
 }
 
-.c7 {
+.c5 {
   text-align: inherit;
   font-size: 1.4rem;
-  padding-top: 0.4rem;
   color: #666666;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.c6 {
-  text-align: inherit;
-  font-size: 1.4rem;
   padding-top: 0.4rem;
-  color: #666666;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-bottom: 0rem;
+  padding-left: 0rem;
+  padding-right: 0rem;
 }
 
 .c2 {
-  position: absolute;
   font-size: 1.4rem;
   font-weight: 400;
-  right: 2rem;
   top: 1.6rem;
+  right: 2rem;
+  position: absolute;
 }
 
-.c27 {
+.c25 {
   position: relative;
   cursor: pointer;
   white-space: nowrap;
@@ -206,15 +163,15 @@ exports[`Card css 1`] = `
   box-sizing: border-box;
 }
 
-.c27:hover > div {
+.c25:hover > div {
   color: #4d63ff;
 }
 
-.c27:hover > span > i:first-child {
+.c25:hover > span > i:first-child {
   color: #4d63ff;
 }
 
-.c28 {
+.c26 {
   color: #4d63ff;
   position: relative;
   display: inline-block;
@@ -229,11 +186,11 @@ exports[`Card css 1`] = `
   line-height: 2.8333333333333335em;
 }
 
-.c28:focus {
+.c26:focus {
   color: #4d63ff;
 }
 
-.c29 {
+.c27 {
   position: relative;
   display: inline-block;
   box-sizing: border-box;
@@ -247,18 +204,17 @@ exports[`Card css 1`] = `
   line-height: 2.8333333333333335em;
 }
 
-.c29:focus {
+.c27:focus {
   color: #4d63ff;
 }
 
-.c33 {
+.c31 {
   display: inline-block;
   overflow: hidden;
   width: 100%;
-  height: 100%;
 }
 
-.c30 {
+.c28 {
   background-color: blue;
   position: absolute;
   box-sizing: border-box;
@@ -274,7 +230,7 @@ exports[`Card css 1`] = `
   transition: all 0.3s;
 }
 
-.c22 {
+.c20 {
   position: absolute;
   font-size: 1.2rem;
   display: none;
@@ -288,7 +244,7 @@ exports[`Card css 1`] = `
   left: 0.8333333333333334em;
 }
 
-.c31 {
+.c29 {
   position: absolute;
   font-size: 1.2rem;
   display: none;
@@ -302,21 +258,21 @@ exports[`Card css 1`] = `
   right: 0.8333333333333334em;
 }
 
-.c20 {
+.c18 {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   position: relative;
   width: NaNem;
 }
 
-.c25 {
+.c23 {
   width: 100%;
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
 }
 
-.c26 {
+.c24 {
   height: 2.8333333333333335em;
   display: inline-block;
   box-sizing: border-box;
@@ -328,7 +284,7 @@ exports[`Card css 1`] = `
   transform: translateX(0em);
 }
 
-.c21 {
+.c19 {
   height: 2.8333333333333335em;
   line-height: 2.8333333333333335em;
   position: relative;
@@ -337,7 +293,7 @@ exports[`Card css 1`] = `
   z-index: 99;
 }
 
-.c23 {
+.c21 {
   display: inline-block;
   font-style: normal;
   text-align: center;
@@ -345,7 +301,7 @@ exports[`Card css 1`] = `
   cursor: not-allowed;
 }
 
-.c32 {
+.c30 {
   display: inline-block;
   font-style: normal;
   text-align: center;
@@ -359,18 +315,18 @@ exports[`Card css 1`] = `
   display: inline-block;
 }
 
-.c19 {
+.c17 {
   display: inline-block;
   margin-left: 20px;
 }
 
-.c34 {
+.c32 {
   text-align: center;
   width: 100%;
   height: 100%;
 }
 
-.c35 {
+.c33 {
   text-align: center;
   font-size: 16px;
   color: #666;
@@ -380,13 +336,13 @@ exports[`Card css 1`] = `
   width: 100%;
 }
 
-.c36 {
+.c34 {
   text-align: center;
   color: #4d63ff;
   display: inline-block;
 }
 
-.c37 {
+.c35 {
   position: absolute;
   text-align: center;
   font-size: 14px;
@@ -399,6 +355,38 @@ exports[`Card css 1`] = `
   height: 32px;
   border: 2px solid #4d63ff;
   left: 10%;
+}
+
+.c9 {
+  box-sizing: border-box;
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+  position: relative;
+  color: rgba(0,0,0,0.65);
+  background-color: #cccccc;
+  border-radius: 50%;
+  width: 3.2rem;
+  height: 3.2rem;
+  line-height: 3.2rem;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+.c12 {
+  box-sizing: border-box;
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+  position: relative;
+  color: rgba(0,0,0,0.65);
+  background-color: #cccccc;
+  border-radius: 50%;
+  width: 3.2rem;
+  height: 3.2rem;
+  line-height: 3.2rem;
+  border-radius: 50%;
+  background-color: transparent;
 }
 
 <div
@@ -428,26 +416,37 @@ exports[`Card css 1`] = `
       </div>
       <div
         className="c3"
-        style={Object {}}
+        style={
+          Object {
+            "paddingBottom": "0rem",
+            "paddingLeft": "1rem",
+            "paddingRight": "1rem",
+            "paddingTop": "1.6rem",
+          }
+        }
         type="simple"
       >
         <div
-          className="c4  c5"
+          className="c4"
           style={
             Object {
-              "flexDirection": "row",
               "fontWeight": 500,
-              "textAlign": "",
             }
           }
           type="simple"
         >
           this is title
-           
         </div>
         <div
-          className="c6  c7"
-          style={Object {}}
+          className="c5"
+          style={
+            Object {
+              "paddingBottom": "0rem",
+              "paddingLeft": "1rem",
+              "paddingRight": "1rem",
+              "paddingTop": "0rem",
+            }
+          }
         >
           this is description
            
@@ -473,16 +472,21 @@ exports[`Card css 1`] = `
     >
       <div
         className="c3"
-        style={Object {}}
+        style={
+          Object {
+            "paddingBottom": "0rem",
+            "paddingLeft": "1rem",
+            "paddingRight": "1rem",
+            "paddingTop": "1.6rem",
+          }
+        }
         type="simple"
       >
         <div
-          className="c4  c5"
+          className="c4"
           style={
             Object {
-              "flexDirection": "row",
               "fontWeight": 500,
-              "textAlign": "",
             }
           }
           type="simple"
@@ -490,11 +494,17 @@ exports[`Card css 1`] = `
           <div>
             this is title
           </div>
-           
         </div>
         <div
-          className="c6  c7"
-          style={Object {}}
+          className="c5"
+          style={
+            Object {
+              "paddingBottom": "0rem",
+              "paddingLeft": "1rem",
+              "paddingRight": "1rem",
+              "paddingTop": "0rem",
+            }
+          }
         >
           <div>
             this is description
@@ -541,26 +551,30 @@ exports[`Card css 1`] = `
             </div>,
           ]
         }
-        style={Object {}}
+        style={
+          Object {
+            "paddingBottom": "0rem",
+            "paddingLeft": "1rem",
+            "paddingRight": "1rem",
+            "paddingTop": "1.6rem",
+          }
+        }
         type="tip"
       >
         <div
-          className="c8"
+          className="c6"
           style={Object {}}
         />
         <div
-          className="c4  c5"
+          className="c4"
           style={
             Object {
-              "flexDirection": "row",
               "fontWeight": 500,
-              "textAlign": "",
             }
           }
           type="tip"
         >
           this is title
-           
         </div>
         <div>
           this is description
@@ -578,7 +592,7 @@ exports[`Card css 1`] = `
     className="c0"
   >
     <div
-      className="c9"
+      className="c7"
       style={
         Object {
           "height": "22rem",
@@ -588,16 +602,16 @@ exports[`Card css 1`] = `
       type="avatar"
     >
       <span
-        className="c10"
+        className="c8"
         style={
           Object {
-            "height": "22rem",
+            "height": "10rem",
             "width": "16rem",
           }
         }
       >
         <div
-          className="c11  c12"
+          className="c9"
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -607,10 +621,19 @@ exports[`Card css 1`] = `
           shape="circle"
           size="default"
           src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png"
-          style={Object {}}
+          style={
+            Object {
+              "height": "7rem",
+              "paddingBottom": "2rem",
+              "paddingLeft": "0rem",
+              "paddingRight": "0rem",
+              "paddingTop": "2rem",
+              "width": "7rem",
+            }
+          }
         >
           <img
-            className="c13"
+            className="c10"
             shape="circle"
             src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png"
             style={
@@ -624,26 +647,37 @@ exports[`Card css 1`] = `
       </span>
       <div
         className="c3"
-        style={Object {}}
+        style={
+          Object {
+            "paddingBottom": "0rem",
+            "paddingLeft": "1rem",
+            "paddingRight": "1rem",
+            "paddingTop": "1.6rem",
+          }
+        }
         type="avatar"
       >
         <div
-          className="c4  c5"
+          className="c4"
           style={
             Object {
-              "flexDirection": "row",
               "fontWeight": 500,
-              "textAlign": "",
             }
           }
           type="avatar"
         >
           this is title
-           
         </div>
         <div
-          className="c6  c7"
-          style={Object {}}
+          className="c5"
+          style={
+            Object {
+              "paddingBottom": "0rem",
+              "paddingLeft": "1rem",
+              "paddingRight": "1rem",
+              "paddingTop": "0rem",
+            }
+          }
         >
           this is description
            
@@ -668,16 +702,11 @@ exports[`Card css 1`] = `
       type="avatar"
     >
       <span
-        className="c14"
-        style={
-          Object {
-            "height": "18rem",
-            "width": "26rem",
-          }
-        }
+        className="c11"
+        style={Object {}}
       >
         <div
-          className="c11  c12"
+          className="c12"
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
@@ -687,10 +716,19 @@ exports[`Card css 1`] = `
           shape="circle"
           size="default"
           src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png"
-          style={Object {}}
+          style={
+            Object {
+              "height": "7rem",
+              "paddingBottom": "2rem",
+              "paddingLeft": "0rem",
+              "paddingRight": "0rem",
+              "paddingTop": "2rem",
+              "width": "7rem",
+            }
+          }
         >
           <img
-            className="c13"
+            className="c10"
             shape="circle"
             src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png"
             style={
@@ -704,26 +742,37 @@ exports[`Card css 1`] = `
       </span>
       <div
         className="c3"
-        style={Object {}}
+        style={
+          Object {
+            "paddingBottom": "0rem",
+            "paddingLeft": "1rem",
+            "paddingRight": "1rem",
+            "paddingTop": "1.6rem",
+          }
+        }
         type="avatar"
       >
         <div
-          className="c4  c5"
+          className="c4"
           style={
             Object {
-              "flexDirection": "row",
               "fontWeight": 500,
-              "textAlign": "",
             }
           }
           type="avatar"
         >
           this is title
-           
         </div>
         <div
-          className="c6  c7"
-          style={Object {}}
+          className="c5"
+          style={
+            Object {
+              "paddingBottom": "0rem",
+              "paddingLeft": "1rem",
+              "paddingRight": "1rem",
+              "paddingTop": "0rem",
+            }
+          }
         >
           <div>
             <div>
@@ -742,34 +791,27 @@ exports[`Card css 1`] = `
     className="c0"
   >
     <div
-      className="c15"
+      className="c13"
       style={
         Object {
-          "backgroundColor": "gray",
           "height": "35rem",
-          "margin": "2rem 0rem 0rem 0rem",
           "opacity": 0.8,
-          "padding": "1rem 0rem 0rem 0rem",
           "width": "20rem",
         }
       }
       type="image"
     >
       <div
-        className="c16"
+        className="c14"
         style={
           Object {
-            "backgroundColor": "gray",
-            "height": "35rem",
-            "margin": "2rem 0rem 0rem 0rem",
-            "opacity": 0.8,
-            "padding": "1rem 0rem 0rem 0rem",
+            "height": "15rem",
             "width": "20rem",
           }
         }
       >
         <img
-          className="c17"
+          className="c15"
           src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg"
           style={
             Object {
@@ -781,32 +823,40 @@ exports[`Card css 1`] = `
       </div>
       <div
         className="c3"
-        style={Object {}}
+        style={
+          Object {
+            "paddingBottom": "0rem",
+            "paddingLeft": "1rem",
+            "paddingRight": "1rem",
+            "paddingTop": "1.6rem",
+          }
+        }
         type="image"
       >
         <div
-          className="c4  c5"
+          className="c4"
           style={
             Object {
               "backgroundColor": "red",
               "color": "pink",
-              "flexDirection": "row",
               "fontWeight": 500,
               "height": "2rem",
-              "textAlign": "",
               "width": "10rem",
             }
           }
           type="image"
         >
           this is title
-           
         </div>
         <div
-          className="c6  c7"
+          className="c5"
           style={
             Object {
               "color": "yellow",
+              "paddingBottom": "0rem",
+              "paddingLeft": "1rem",
+              "paddingRight": "1rem",
+              "paddingTop": "0rem",
             }
           }
         >
@@ -833,16 +883,16 @@ exports[`Card css 1`] = `
       type="image"
     >
       <div
-        className="c18"
+        className="c16"
         style={
           Object {
-            "height": "20rem",
-            "width": "36rem",
+            "height": "10rem",
+            "width": "16rem",
           }
         }
       >
         <img
-          className="c17"
+          className="c15"
           src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg"
           style={
             Object {
@@ -854,26 +904,37 @@ exports[`Card css 1`] = `
       </div>
       <div
         className="c3"
-        style={Object {}}
+        style={
+          Object {
+            "paddingBottom": "0rem",
+            "paddingLeft": "1rem",
+            "paddingRight": "1rem",
+            "paddingTop": "1.6rem",
+          }
+        }
         type="image"
       >
         <div
-          className="c4  c5"
+          className="c4"
           style={
             Object {
-              "flexDirection": "row",
               "fontWeight": 500,
-              "textAlign": "",
             }
           }
           type="image"
         >
           this is title
-           
         </div>
         <div
-          className="c6  c7"
-          style={Object {}}
+          className="c5"
+          style={
+            Object {
+              "paddingBottom": "0rem",
+              "paddingLeft": "1rem",
+              "paddingRight": "1rem",
+              "paddingTop": "0rem",
+            }
+          }
         >
           this is description
            
@@ -927,102 +988,113 @@ exports[`Card css 1`] = `
             />
           </ForwardRef>
         }
-        style={Object {}}
+        style={
+          Object {
+            "paddingBottom": "0rem",
+            "paddingLeft": "1rem",
+            "paddingRight": "1rem",
+            "paddingTop": "1.6rem",
+          }
+        }
         type="combo"
       >
         <div
-          className="c19"
+          className="c17"
         >
           <div
-            className="c20"
+            className="c18"
           >
             <div
-              className="c21"
+              className="c19"
             >
               <span
-                className="c22"
+                className="c20"
                 onClick={[Function]}
                 type="pre"
               >
                 <i
-                  className="lugia-icon-direction_Left c23  c24"
+                  className="lugia-icon-direction_Left c21  c22"
                   onClick={[Function]}
+                  onMouseDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
                   style={Object {}}
                 />
               </span>
               <div
-                className="c25"
+                className="c23"
               >
                 <div
-                  className="c26"
+                  className="c24"
                   x={-0}
                 >
                   <div
-                    className="c27"
+                    className="c25"
                     disabled={false}
                     onClick={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                   >
                     <div
-                      className="c28"
+                      className="c26"
                       disabled={false}
                     >
                       Tab1
                     </div>
                   </div>
                   <div
-                    className="c27"
+                    className="c25"
                     disabled={false}
                     onClick={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                   >
                     <div
-                      className="c29"
+                      className="c27"
                       disabled={false}
                     >
                       Tab2
                     </div>
                   </div>
                   <div
-                    className="c27"
+                    className="c25"
                     disabled={false}
                     onClick={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                   >
                     <div
-                      className="c29"
+                      className="c27"
                       disabled={false}
                     >
                       Tab3
                     </div>
                   </div>
                   <div
-                    className="c30"
+                    className="c28"
                     x={20}
                   />
                 </div>
               </div>
               <span
-                className="c31"
+                className="c29"
                 onClick={[Function]}
                 type="next"
               >
                 <i
-                  className="lugia-icon-direction_right c32  c24"
+                  className="lugia-icon-direction_right c30  c22"
                   onClick={[Function]}
+                  onMouseDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
                   style={Object {}}
                 />
               </span>
             </div>
             <div
-              className="c33"
+              className="c31"
             >
               content of Tab1
             </div>
@@ -1050,22 +1122,29 @@ exports[`Card css 1`] = `
       <div
         className="c3"
         content={<AmountCard />}
-        style={Object {}}
+        style={
+          Object {
+            "paddingBottom": "0rem",
+            "paddingLeft": "1rem",
+            "paddingRight": "1rem",
+            "paddingTop": "1.6rem",
+          }
+        }
         type="combo"
       >
         <div
-          className="c34"
+          className="c32"
         >
           <div
-            className="c35"
+            className="c33"
           >
             价格
           </div>
           <div
-            className="c36"
+            className="c34"
           >
             <div
-              className="c36"
+              className="c34"
               style={
                 Object {
                   "fontSize": 32,
@@ -1075,7 +1154,7 @@ exports[`Card css 1`] = `
               9
             </div>
             <div
-              className="c36"
+              className="c34"
               style={
                 Object {
                   "fontSize": 18,
@@ -1086,7 +1165,7 @@ exports[`Card css 1`] = `
             </div>
           </div>
           <button
-            className="c37"
+            className="c35"
           >
             购买
           </button>

@@ -95,47 +95,43 @@ exports[`Divider css 1`] = `
     <p>
       solid 
     </p>
-    <span>
-      <div
-        className="c1"
-        content="solid"
-        style={
-          Object {
-            "height": "0.2rem",
-            "width": "40rem",
-          }
+    <div
+      className="c1"
+      content="solid"
+      style={
+        Object {
+          "height": "0.2rem",
+          "width": "40rem",
         }
+      }
+    >
+      <span
+        className="c2"
+        style={Object {}}
       >
-        <span
-          className="c2"
-          style={Object {}}
-        >
-          solid
-        </span>
-      </div>
-    </span>
+        solid
+      </span>
+    </div>
     <p>
       dashed
     </p>
-    <span>
-      <div
-        className="c3"
-        content="dashed"
-        style={
-          Object {
-            "height": "0.2rem",
-            "width": "40rem",
-          }
+    <div
+      className="c3"
+      content="dashed"
+      style={
+        Object {
+          "height": "0.2rem",
+          "width": "40rem",
         }
+      }
+    >
+      <span
+        className="c2"
+        style={Object {}}
       >
-        <span
-          className="c2"
-          style={Object {}}
-        >
-          dashed
-        </span>
-      </div>
-    </span>
+        dashed
+      </span>
+    </div>
   </div>
   <div
     className="c0"
@@ -143,72 +139,64 @@ exports[`Divider css 1`] = `
     <p>
       position left
     </p>
-    <span>
-      <div
-        className="c1"
-        content="position left"
-        style={
-          Object {
-            "height": "0.2rem",
-            "width": "40rem",
-          }
+    <div
+      className="c1"
+      content="position left"
+      style={
+        Object {
+          "height": "0.2rem",
+          "width": "40rem",
         }
+      }
+    >
+      <span
+        className="c2"
+        style={Object {}}
       >
-        <span
-          className="c2"
-          style={Object {}}
-        >
-          position left
-        </span>
-      </div>
-    </span>
+        position left
+      </span>
+    </div>
     <p>
       position right
     </p>
-    <span>
-      <div
-        className="c1"
-        content="position right"
-        style={
-          Object {
-            "height": "0.2rem",
-            "width": "40rem",
-          }
+    <div
+      className="c1"
+      content="position right"
+      style={
+        Object {
+          "height": "0.2rem",
+          "width": "40rem",
         }
+      }
+    >
+      <span
+        className="c2"
+        style={Object {}}
       >
-        <span
-          className="c2"
-          style={Object {}}
-        >
-          position right
-        </span>
-      </div>
-    </span>
-    <span>
-      <div
-        className="c1"
-        style={
-          Object {
-            "height": "0.2rem",
-            "width": "40rem",
-          }
+        position right
+      </span>
+    </div>
+    <div
+      className="c1"
+      style={
+        Object {
+          "height": "0.2rem",
+          "width": "40rem",
         }
-      />
-    </span>
+      }
+    />
     <p>
       "不用思考.因为我帮你想好了",这是lugia设计的重要原则之一.
     </p>
-    <span>
-      <div
-        className="c1"
-        style={
-          Object {
-            "height": "0.2rem",
-            "width": "40rem",
-          }
+    <div
+      className="c1"
+      style={
+        Object {
+          "height": "0.2rem",
+          "width": "40rem",
         }
-      />
-    </span>
+      }
+    />
   </div>
   <div
     className="c0"
@@ -224,57 +212,49 @@ exports[`Divider css 1`] = `
       }
     >
       text
-      <span>
-        <div
-          className="c4"
-          style={
-            Object {
-              "backgroundColor": "blue",
-              "height": "1rem",
-              "width": "0.2rem",
-            }
+      <div
+        className="c4"
+        style={
+          Object {
+            "backgroundColor": "blue",
+            "height": "1rem",
+            "width": "0.2rem",
           }
-        />
-      </span>
+        }
+      />
       text
-      <span>
-        <div
-          className="c4"
-          style={
-            Object {
-              "backgroundColor": "blue",
-              "height": "1rem",
-              "width": "0.2rem",
-            }
+      <div
+        className="c4"
+        style={
+          Object {
+            "backgroundColor": "blue",
+            "height": "1rem",
+            "width": "0.2rem",
           }
-        />
-      </span>
+        }
+      />
       text
-      <span>
-        <div
-          className="c4"
-          style={
-            Object {
-              "backgroundColor": "blue",
-              "height": "1rem",
-              "width": "0.2rem",
-            }
+      <div
+        className="c4"
+        style={
+          Object {
+            "backgroundColor": "blue",
+            "height": "1rem",
+            "width": "0.2rem",
           }
-        />
-      </span>
+        }
+      />
       text
-      <span>
-        <div
-          className="c4"
-          style={
-            Object {
-              "backgroundColor": "blue",
-              "height": "1rem",
-              "width": "0.2rem",
-            }
+      <div
+        className="c4"
+        style={
+          Object {
+            "backgroundColor": "blue",
+            "height": "1rem",
+            "width": "0.2rem",
           }
-        />
-      </span>
+        }
+      />
       text
     </div>
   </div>

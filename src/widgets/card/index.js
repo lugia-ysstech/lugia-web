@@ -211,46 +211,6 @@ const AvatarContainer = CSSComponent({
   `,
 });
 
-const CardAvatar: Object = ThemeHoc(
-  CSSComponent({
-    extend: Avatar,
-    className: 'CardAvatar',
-    normal: {
-      selectNames: [
-        ['width'],
-        ['height'],
-        ['border'],
-        ['borderRadius'],
-        ['margin'],
-        ['padding'],
-        ['boxShadow'],
-        ['opacity'],
-      ],
-      getThemeMeta(themeMeta: Object, themeProps: Object) {
-        const { imageOrientation } = themeProps;
-        const left = imageOrientation === 'horizontal' ? 20 : 0;
-        return {
-          padding: {
-            top: 20,
-            left,
-            right: left,
-            bottom: 20,
-          },
-        };
-      },
-      defaultTheme: {
-        width: 70,
-        height: 70,
-      },
-    },
-    css: css`
-      border-radius: 50%;
-      background-color: transparent;
-    `,
-  }),
-  'cardAvatar'
-);
-
 const BaseText = CSSComponent({
   tag: 'div',
   className: 'CardBaseText',
@@ -529,14 +489,44 @@ class Card extends React.Component<CardProps, CardState> {
   }
   getAvatar() {
     const { avatar, imageOrientation } = this.props;
-    const { theme, viewClass } = this.props.getPartOfThemeHocProps('SrcAvatar');
+    const { theme: avatarTheme, viewClass } = this.props.getPartOfThemeHocProps('SrcAvatar');
+
+    const newTheme = deepMerge(
+      {
+        [viewClass]: {
+          normal: {
+            getCSS() {
+              return ` border-radius: 50%;
+      background-color: transparent;`;
+            },
+            getThemeMeta(themeMeta: Object, themeProps: Object) {
+              const { propsConfig } = themeProps;
+              const { imageOrientation } = propsConfig;
+              const left = imageOrientation === 'horizontal' ? 20 : 0;
+              return {
+                padding: {
+                  top: 20,
+                  left,
+                  right: left,
+                  bottom: 20,
+                },
+                width: 70,
+                height: 70,
+              };
+            },
+          },
+        },
+      },
+      avatarTheme
+    );
+
     if (ObjectUtils.isString(avatar)) {
       return (
-        <CardAvatar
+        <Avatar
           viewClass={viewClass}
-          theme={theme}
+          theme={newTheme}
           shape={'circle'}
-          imageOrientation={imageOrientation}
+          propsConfig={{ imageOrientation }}
           src={avatar}
         />
       );
