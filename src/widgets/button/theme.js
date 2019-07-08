@@ -219,7 +219,6 @@ export const SizeTheme = {
       bottom: 0,
       left: 18,
     },
-    font: { size: 14 },
   },
   default: {
     height: 32,
@@ -229,7 +228,6 @@ export const SizeTheme = {
       bottom: 0,
       left: 18,
     },
-    font: { size: 14 },
   },
   small: {
     height: 24,
@@ -239,7 +237,6 @@ export const SizeTheme = {
       bottom: 0,
       left: 14,
     },
-    font: { size: 12 },
   },
 };
 export const CircleTheme = {
@@ -248,21 +245,18 @@ export const CircleTheme = {
     height: 40,
     padding: 0,
     borderRadius: getBorderRadius('50%'),
-    font: { size: 14 },
   },
   default: {
     height: 32,
     width: 32,
     padding: 0,
     borderRadius: getBorderRadius('50%'),
-    font: { size: 14 },
   },
   small: {
     height: 24,
     width: 24,
     padding: 0,
     borderRadius: getBorderRadius('50%'),
-    font: { size: 12 },
   },
 };
 export const ShapeTheme = {

@@ -5,13 +5,29 @@
  * @flow
  */
 import * as React from 'react';
+import { deepMerge } from '@lugia/object-utils';
+import { css } from 'styled-components';
 import ThemeProvider from '../theme-provider';
 import { addMouseEvent, addFocusBlurEvent } from '@lugia/theme-hoc';
 import Widget from '../consts/index';
 import DelayHoc from '../common/DelayHoc';
 import MouseEventAdaptor from '../common/MouseEventAdaptor';
-import { ButtonOut, Text, IconWrap, CircleIcon } from '../css/button';
+import {
+  ButtonOut,
+  Text,
+  getTextNormalTheme,
+  getTextHoverStyle,
+  getTextActiveTheme,
+  getTextDisabledTheme,
+  getTextLoadingTheme,
+  getIconStyle,
+  getLoadingIconStyle,
+  getIconCursor,
+} from '../css/button';
 import type { ButtonOutProps } from '../css/button';
+import { TextSizeTheme } from './theme';
+import { px2remcss } from '../css/units';
+import Icon from '../icon';
 
 type ButtonState = { clicked: boolean };
 
@@ -55,10 +71,13 @@ export default ThemeProvider(
             loading,
             size = 'default',
             disabled,
-            themeProps,
             getPartOfThemeProps,
+            getPartOfThemeHocProps,
+            dispatchEvent,
           } = this.props;
+          const hasChildren = !!children || !!text;
           const textTheme = getPartOfThemeProps('ButtonText');
+          const { viewClass, theme } = getPartOfThemeHocProps('ButtonIcon');
           textTheme.propsConfig = {
             type,
             plain,
@@ -66,32 +85,85 @@ export default ThemeProvider(
             size,
             circle,
           };
+          const normalIconFont = TextSizeTheme[size] || TextSizeTheme.default;
+          const normalColor = getTextNormalTheme({ type, plain, loading });
+          const hoverTheme = getTextHoverStyle({ type, plain });
+          const activeTheme = getTextActiveTheme({ type, plain });
+          const disabledTheme = getTextDisabledTheme({ type, plain });
+          const iconTheme = deepMerge(
+            {
+              [viewClass]: {
+                normal: {
+                  ...normalIconFont,
+                  ...normalColor,
+                  getCSS() {
+                    return `
+                      vertical-align: -${px2remcss(1.75)} !important;
+                      ${getIconStyle({ hasChildren })};
+                      ${getIconCursor({ disabled })} !important;
+                    `;
+                  },
+                },
+                hover: hoverTheme,
+                active: activeTheme,
+                disabled: disabledTheme,
+                focus: hoverTheme,
+              },
+            },
+            theme
+          );
           if (circle) {
             const iconType = icon || 'lugia-icon-direction_logout';
+
             return [
-              <CircleIcon size={size} iconClass={iconType} />,
+              <Icon
+                size={size}
+                iconClass={iconType}
+                viewClass={viewClass}
+                theme={iconTheme}
+                {...dispatchEvent(['hover', 'active', 'disabled', 'focus'], 'f2c')}
+              />,
               <Text themeProps={textTheme}>{text || children}</Text>,
             ];
           }
 
           if (loading) {
+            const loadingTheme = getTextLoadingTheme({ plain, type });
+            const iconLoadingTheme = deepMerge(
+              {
+                [viewClass]: {
+                  normal: {
+                    ...loadingTheme,
+                    getCSS() {
+                      return css`
+                        ${getIconStyle({ hasChildren })};
+                        ${getLoadingIconStyle({ loading: true })};
+                      `;
+                    },
+                  },
+                },
+              },
+              theme
+            );
             return [
-              <IconWrap
+              <Icon
                 loading
                 iconClass="lugia-icon-financial_loading_o"
-                themeProps={themeProps}
+                viewClass={viewClass}
+                theme={iconLoadingTheme}
               />,
               <Text themeProps={textTheme}>{text || children}</Text>,
             ];
           }
           if (icon) {
-            const hasChildren = !!children || !!text;
             return [
-              <IconWrap
+              <Icon
                 iconClass={icon}
                 hasChildren={hasChildren}
                 disabled={disabled}
-                themeProps={this.props.getPartOfThemeProps('IconWrap')}
+                viewClass={viewClass}
+                theme={iconTheme}
+                {...dispatchEvent(['hover', 'active', 'disabled', 'focus'], 'f2c')}
               />,
               <Text themeProps={textTheme}>{text || children} </Text>,
             ];

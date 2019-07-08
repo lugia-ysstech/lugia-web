@@ -79,6 +79,7 @@ export type ButtonOutProps = CSSProps & {
   onMouseLeave: Function,
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
+  dispatchEvent: Function,
   themeProps: Object,
 };
 
@@ -425,11 +426,28 @@ export const ButtonOut = CSSComponent({
     ${getClickCSS}
   `,
 });
-// export const Text = styled.span`
-//   display: inline-block;
-// `;
 
-const getTextHoverStyle = (propsConfig: Object = {}) => {
+export const getTextLoadingTheme = (props: Object) => {
+  const { plain, type = 'default' } = props;
+  if (plain) {
+    return TextPlainHoverTheme[type] || TextPlainHoverTheme.default;
+  }
+  return TextTypeHoverTheme[type] || TextTypeHoverTheme.default;
+};
+export const getTextNormalTheme = (propsConfig: Object) => {
+  const { type = 'default', plain, loading } = propsConfig;
+  let normalTheme;
+  if (loading) {
+    normalTheme = getTextLoadingTheme({ plain, type });
+  } else if (plain) {
+    normalTheme = TextPlainTypeTheme[type] || TextPlainTypeTheme.default;
+  } else {
+    normalTheme = TextTypeTheme[type] || TextTypeTheme.default;
+  }
+
+  return normalTheme;
+};
+export const getTextHoverStyle = (propsConfig: Object = {}) => {
   const { type = 'default', plain } = propsConfig;
   let hoverTheme;
   if (plain) {
@@ -439,7 +457,28 @@ const getTextHoverStyle = (propsConfig: Object = {}) => {
   }
   return hoverTheme;
 };
+export const getTextActiveTheme = (propsConfig: Object) => {
+  const { type = 'default', plain } = propsConfig;
+  let activeTheme;
+  if (plain) {
+    activeTheme = TextPlainActiveTypeTheme[type] || TextPlainActiveTypeTheme.default;
+  } else {
+    activeTheme = TextTypeActiveTheme[type] || TextTypeActiveTheme.default;
+  }
 
+  return activeTheme;
+};
+export const getTextDisabledTheme = (propsConfig: Object) => {
+  const { type = 'default', plain } = propsConfig;
+  let disabledTheme;
+  if (plain) {
+    disabledTheme = TextPlainDisabledTypeTheme[type] || TextPlainDisabledTypeTheme.default;
+  } else {
+    disabledTheme = TextTypeDisabledTheme[type] || TextTypeDisabledTheme.default;
+  }
+
+  return disabledTheme;
+};
 export const Text = CSSComponent({
   className: 'ButtonText',
   tag: 'span',
@@ -448,19 +487,8 @@ export const Text = CSSComponent({
     defaultTheme: textDefaultTheme,
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
-      const { type = 'default', plain, loading, size = 'default', circle } = propsConfig;
-      let normalTheme;
-      if (loading) {
-        if (plain) {
-          normalTheme = TextPlainHoverTheme[type] || TextPlainHoverTheme.default;
-        } else {
-          normalTheme = TextTypeHoverTheme[type] || TextTypeHoverTheme.default;
-        }
-      } else if (plain) {
-        normalTheme = TextPlainTypeTheme[type] || TextPlainTypeTheme.default;
-      } else {
-        normalTheme = TextTypeTheme[type] || TextTypeTheme.default;
-      }
+      const { size = 'default', circle } = propsConfig;
+      const normalTheme = getTextNormalTheme(propsConfig);
       const sizeTheme = circle
         ? TextCircleTheme[size] || TextCircleTheme.default
         : TextSizeTheme[size] || TextSizeTheme.default;
@@ -482,15 +510,8 @@ export const Text = CSSComponent({
     defaultTheme: textDefaultActiveTheme,
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
-      const { type = 'default', plain } = propsConfig;
-      let activeTheme;
-      if (plain) {
-        activeTheme = TextPlainActiveTypeTheme[type] || TextPlainActiveTypeTheme.default;
-      } else {
-        activeTheme = TextTypeActiveTheme[type] || TextTypeActiveTheme.default;
-      }
 
-      return activeTheme;
+      return getTextActiveTheme(propsConfig);
     },
   },
   disabled: {
@@ -498,15 +519,8 @@ export const Text = CSSComponent({
     defaultTheme: textDefaultDisabledTheme,
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
-      const { type = 'default', plain } = propsConfig;
-      let disabledTheme;
-      if (plain) {
-        disabledTheme = TextPlainDisabledTypeTheme[type] || TextPlainDisabledTypeTheme.default;
-      } else {
-        disabledTheme = TextTypeDisabledTheme[type] || TextTypeDisabledTheme.default;
-      }
 
-      return disabledTheme;
+      return getTextDisabledTheme(propsConfig);
     },
   },
   focus: {
@@ -524,29 +538,4 @@ export const IconWrap: Object = styled(Icon)`
   ${getIconStyle};
   ${getLoadingIconStyle};
   ${getIconCursor}
-`;
-// export const IconWrap: Object = CSSComponent({
-//   className: 'IconWrap',
-//   extend: Icon,
-//   css: css`
-//     vertical-align: -${px2remcss(1.75)} !important;
-//     ${getIconStyle};
-//     ${getLoadingIconStyle};
-//     ${getIconCursor};
-//   `,
-//   normal: {
-//     getThemeMeta() {
-//       // console.log('normal');
-//     },
-//   },
-//   hover: {
-//     defaultTheme: { color: 'red' },
-//     getThemeMeta() {
-//       // console.log('hover');
-//     },
-//   },
-// });
-export const CircleIcon: Object = styled(Icon)`
-  vertical-align: -${px2remcss(1.75)} !important;
-  ${getCircleIconFont};
 `;
