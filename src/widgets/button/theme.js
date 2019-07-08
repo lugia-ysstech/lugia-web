@@ -328,7 +328,7 @@ export const TextPlainHoverTheme = {
 };
 
 export const TextPlainDisabledTypeTheme = {
-  default: { color: defaultColor },
+  default: { color: lightGreyColor },
   primary: { color: primaryColors },
   success: { color: successColors },
   warning: { color: warningColors },

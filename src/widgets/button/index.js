@@ -204,6 +204,7 @@ export default ThemeProvider(
             loading,
             size,
             circle,
+            shape,
           };
 
           return (
