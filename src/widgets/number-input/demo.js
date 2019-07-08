@@ -76,7 +76,7 @@ const NumberInputDemo = () => {
     [Widget.NumberInput]: {
       Input: { normal: { width: 500, height: 50 } },
       ArrowIconContainer: { normal: { fontSize: 14, width: 40 } },
-      InputArrowIcon: {
+      ArrowIcon: {
         hover: { color: 'blue', fontSize: 20 },
       },
     },

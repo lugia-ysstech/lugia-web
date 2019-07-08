@@ -121,7 +121,7 @@ const CommonInputStyle = CSSComponent({
     selectNames: [['cursor'], ['border'], ['borderRadius'], ['background'], ['color']],
     defaultTheme: {
       cursor: 'not-allowed',
-      background: { color: 'red' },
+      background: { color: disableColor },
       border: getBorder({ color: borderColor, width: 1, style: 'solid' }),
     },
   },

@@ -24,7 +24,7 @@ import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import { checkNumber } from '../common/Math';
 import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import ThemeHoc from '@lugia/theme-hoc';
-import { addPropsConfig } from '../avatar';
+import { deepMerge } from '@lugia/object-utils';
 
 const InputContainer = StaticComponent({
   tag: 'span',
@@ -53,21 +53,6 @@ const AmountInputPrefix = CSSComponent({
   },
 });
 Title.displayName = 'toolTip_title';
-const InputTip = CSSComponent({
-  extend: ToolTip,
-  className: 'AmountInputTip',
-  normal: {
-    selectNames: [['opacity'], ['background'], ['width'], ['height']],
-    getThemeMeta(ThemeMeta: Object, ThemeProps: Object) {
-      const { propsConfig } = ThemeProps;
-      const { value } = propsConfig;
-      const opacity = value && value.length ? 1 : 0;
-      return {
-        opacity,
-      };
-    },
-  },
-});
 
 type AmountInputState = {|
   value: string,
@@ -223,18 +208,36 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
   };
   render() {
     const { value } = this.state;
-    const theThemeProps = addPropsConfig(this.props.getPartOfThemeProps('TooltipContent'), {
-      value,
-    });
+    const { theme: theThemeProps, viewClass } = this.props.getPartOfThemeHocProps('TooltipContent');
+    const newTheme = deepMerge(
+      {
+        [viewClass]: {
+          normal: {
+            getThemeMeta(ThemeMeta: Object, ThemeProps: Object) {
+              const { propsConfig } = ThemeProps;
+              const { value } = propsConfig;
+              const opacity = value && value.length ? 1 : 0;
+              return {
+                opacity,
+              };
+            },
+          },
+        },
+      },
+      theThemeProps
+    );
+
     return (
-      <InputTip
+      <ToolTip
+        propsConfig={{ value }}
         title={this.getTitle()}
         action={'focus'}
         placement={'topLeft'}
-        themeProps={theThemeProps}
+        theme={newTheme}
+        viewClass={viewClass}
       >
         {this.getInputContainer()}
-      </InputTip>
+      </ToolTip>
     );
   }
 
