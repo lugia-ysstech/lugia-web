@@ -93,12 +93,15 @@ type ShapeStyle = {
 const Size = {
   large: {
     height: 40,
+    borderRadius: 20,
   },
   default: {
     height: 32,
+    borderRadius: 16,
   },
   small: {
     height: 24,
+    borderRadius: 12,
   },
 };
 
@@ -240,7 +243,7 @@ export const getClickCSS = (props: ButtonOutProps) => {
     `;
   }
 };
-export const getIconStyle = (props: CSSProps) => {
+export const getIconStyle = (props: Object) => {
   const { hasChildren = true } = props;
   if (!hasChildren) {
     return '';
