@@ -19,6 +19,9 @@ import {
 import Icon from '../icon';
 import colorsFunc from '../css/stateColor';
 
+type LineProps = {
+  getIconTheme: Function,
+} & ProgressProps;
 const { successColor, dangerColor, mediumGreyColor } = colorsFunc();
 
 export const getText = (inside?: boolean, props: Object) => {
@@ -35,9 +38,7 @@ export const getText = (inside?: boolean, props: Object) => {
   } else {
     iconFont = size === 'small' ? 12 : 14;
   }
-  console.log('iconFont', iconFont);
-  console.log('type', type);
-  console.log('size', size);
+
   const iconColor =
     status === 'error' ? dangerColor : status === 'success' ? successColor : mediumGreyColor;
   const iconDefaultTheme = {
@@ -104,7 +105,7 @@ export const getStatus = (props: Object) => {
   return status;
 };
 
-export default class extends React.Component<ProgressProps, ProgressState> {
+export default class extends React.Component<LineProps, ProgressState> {
   render() {
     const {
       type = 'line',

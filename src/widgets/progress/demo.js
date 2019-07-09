@@ -102,15 +102,15 @@ export default class ProgressDemo extends React.Component<any, any> {
             height: 25,
           },
         },
-        // ProgressLineInsideText: {
-        //   normal: {
-        //     font: {
-        //       size: 16,
-        //       weight: 500,
-        //     },
-        //     color: 'red',
-        //   },
-        // },
+        ProgressLineInsideText: {
+          normal: {
+            font: {
+              size: 16,
+              weight: 500,
+            },
+            color: 'red',
+          },
+        },
         ProgressLineInfoText: {
           normal: {
             font: {
