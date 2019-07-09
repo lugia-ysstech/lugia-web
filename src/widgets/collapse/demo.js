@@ -19,30 +19,6 @@ const Wrapper = styled.div`
   border: 1px solid #e8e8e8;
 `;
 
-const view = {
-  [Widget.Panel]: {
-    width: 500,
-    color: '#56f43e',
-    backgroundColor: '#e6f7ff',
-    margin: 50,
-    borderSize: {
-      top: 0,
-      right: 0,
-      bottom: 1,
-      left: 0,
-    },
-  },
-};
-const heightView = {
-  [Widget.Panel]: {
-    height: 100,
-  },
-};
-const spaceHeightView = {
-  [Widget.Panel]: {
-    height: 46,
-  },
-};
 const wrapView = {
   [Widget.Collapse]: {
     width: 500,
@@ -120,33 +96,48 @@ export const PanelDemo = class extends React.Component<any, any> {
             color: 'yellow',
           },
         },
+        PanelContent: {
+          normal: {
+            width: 400,
+            height: 200,
+            background: { color: '#f7f4ef' },
+            padding: {
+              top: 10,
+              right: 10,
+              bottom: 10,
+              left: 30,
+            },
+            color: 'red',
+            font: { size: 16, weight: 300 },
+          },
+        },
       },
     };
     return (
       <div>
         <Wrapper>
-          {/*<Panel value="1" title="LUGIA" />*/}
-          {/*<br />*/}
-          {/*<Panel value="2" open={open} onClick={this.handleClick} title="lugia">*/}
-          {/*<div>PanelContent...</div>*/}
-          {/*<div>PanelContent...</div>*/}
-          {/*</Panel>*/}
-          {/*<br />*/}
-          {/*<Panel value="3" title="LUGIA" disabled>*/}
-          {/*<div>PanelContent...</div>*/}
-          {/*<div>PanelContent...</div>*/}
-          {/*</Panel>*/}
-          {/*<br />*/}
-          {/*<Panel title="LUGIA" disabled open>*/}
-          {/*<div>PanelContent...</div>*/}
-          {/*<div>PanelContent...</div>*/}
-          {/*</Panel>*/}
-          {/*<br />*/}
-          {/*<Panel value="4" showArrow={false} title="LUGIA">*/}
-          {/*<div>PanelContent...</div>*/}
-          {/*<div>PanelContent...</div>*/}
-          {/*</Panel>*/}
-          {/*<br />*/}
+          <Panel value="1" title="LUGIA" />
+          <br />
+          <Panel value="2" open={open} onClick={this.handleClick} title="lugia">
+            <div>PanelContent...</div>
+            <div>PanelContent...</div>
+          </Panel>
+          <br />
+          <Panel value="3" title="LUGIA" disabled>
+            <div>PanelContent...</div>
+            <div>PanelContent...</div>
+          </Panel>
+          <br />
+          <Panel title="LUGIA" disabled open>
+            <div>PanelContent...</div>
+            <div>PanelContent...</div>
+          </Panel>
+          <br />
+          <Panel value="4" showArrow={false} title="LUGIA">
+            <div>PanelContent...</div>
+            <div>PanelContent...</div>
+          </Panel>
+          <br />
           <Theme config={view}>
             <Panel value="4" showArrow={false} title="LUGIA">
               <div>PanelContent...</div>
@@ -168,26 +159,10 @@ export const PanelDemo = class extends React.Component<any, any> {
             </Panel>
           </Theme>
           <br />
-          {/*<Theme config={heightView}>*/}
-          {/*<Panel title="LUGIA">*/}
-          {/*<div>PanelContent...</div>*/}
-          {/*<div>PanelContent...</div>*/}
-          {/*</Panel>*/}
-          {/*</Theme>*/}
-          {/*<br />*/}
-          {/*<Theme config={heightView}>*/}
-          {/*<Panel title="LUGIA" open>*/}
-          {/*<div>PanelContent...</div>*/}
-          {/*<div>PanelContent...</div>*/}
-          {/*</Panel>*/}
-          {/*</Theme>*/}
-          {/*<br />*/}
-          {/*<Theme config={spaceHeightView}>*/}
-          {/*<Panel title="LUGIA" open>*/}
-          {/*<div>PanelContent...</div>*/}
-          {/*<div>PanelContent...</div>*/}
-          {/*</Panel>*/}
-          {/*</Theme>*/}
+          <Theme config={view}>
+            <Panel value="5" title="LUGIA" />
+          </Theme>
+          <br />
         </Wrapper>
       </div>
     );

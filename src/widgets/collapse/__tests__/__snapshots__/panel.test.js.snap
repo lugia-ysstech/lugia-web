@@ -1,13 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Panel Panel CSS 1`] = `
-.c5 {
+.c4 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  font-size: 1.2rem;
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.c8 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-transform: translateY(-50%) rotate(90deg);
+  -ms-transform: translateY(-50%) rotate(90deg);
+  transform: translateY(-50%) rotate(90deg);
 }
 
 .c2 {
@@ -18,18 +41,9 @@ exports[`Panel Panel CSS 1`] = `
   background: #fff;
 }
 
-.c18 {
-  box-sizing: border-box;
-  border-width: 0em 0em 0.07142857142857144em 0em;
-  border-color: #e8e8e8;
-  border-style: solid;
-  background: #e6f7ff;
-}
-
 .c3 {
   box-sizing: border-box;
   position: relative;
-  padding: 1.142857142857143em 0 1.142857142857143em 2.142857142857143em;
   font-size: 1.4rem;
   cursor: pointer;
   line-height: 1;
@@ -37,13 +51,15 @@ exports[`Panel Panel CSS 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
   color: #333333;
+  opacity: 1;
 }
 
-.c13 {
+.c11 {
   box-sizing: border-box;
   position: relative;
-  padding: 1.142857142857143em 0 1.142857142857143em 2.142857142857143em;
   font-size: 1.4rem;
   cursor: not-allowed;
   line-height: 1;
@@ -51,217 +67,80 @@ exports[`Panel Panel CSS 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: #cccccc;
-}
-
-.c15 {
-  box-sizing: border-box;
-  position: relative;
-  padding: 1.142857142857143em 0 1.142857142857143em 1.4285714285714286em;
-  font-size: 1.4rem;
-  cursor: pointer;
-  line-height: 1;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
   color: #333333;
+  opacity: 1;
 }
 
-.c19 {
-  box-sizing: border-box;
-  position: relative;
-  padding: 1.142857142857143em 0 1.142857142857143em 1.4285714285714286em;
+.c5 {
+  color: #333333;
   font-size: 1.4rem;
-  cursor: pointer;
-  line-height: 1;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  color: #56f43e;
-}
-
-.c22 {
-  box-sizing: border-box;
-  position: relative;
-  padding: 1.142857142857143em 0 1.142857142857143em 2.142857142857143em;
-  font-size: 1.4rem;
-  cursor: pointer;
-  line-height: 1;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  color: #56f43e;
-}
-
-.c7 {
-  box-sizing: border-box;
-  overflow: hidden;
-  height: 0em;
-  color: #666666;
-  background: #fff;
-}
-
-.c14 {
-  box-sizing: border-box;
-  overflow: hidden;
-  height: 0em;
-  color: #cccccc;
-  background: #fff;
-}
-
-.c21 {
-  box-sizing: border-box;
-  overflow: hidden;
-  height: 0em;
-  color: #666666;
-  background: #e6f7ff;
-}
-
-.c11 {
-  box-sizing: border-box;
-  overflow: hidden;
-  height: 100%;
-  color: #666666;
-  background: #fff;
-}
-
-.c24 {
-  box-sizing: border-box;
-  overflow: hidden;
-  height: 7.142857142857143em;
-  color: #666666;
-  background: #fff;
-}
-
-.c26 {
-  box-sizing: border-box;
-  overflow: hidden;
-  height: 3.2857142857142856em;
-  color: #666666;
-  background: #fff;
-}
-
-.c8 {
-  box-sizing: border-box;
-  font-weight: 300;
-  line-height: 1.5;
-}
-
-.c12 {
-  box-sizing: border-box;
-  font-weight: 300;
-  line-height: 1.5;
-  padding: 0.4285714285714286em 2.142857142857143em 1.5714285714285716em 2.428571428571429em;
-}
-
-.c16 {
-  box-sizing: border-box;
-  font-weight: 300;
-  line-height: 1.5;
-  padding: 0.4285714285714286em 2.142857142857143em 1.5714285714285716em 1.7142857142857144em;
-}
-
-.c4 {
-  font-size: 1.4rem;
-  display: inline-block;
-  position: absolute;
-  top: 1.142857142857143em;
-  left: 0.7142857142857143em;
-  color: #666;
-}
-
-.c9 {
-  font-size: 1.4rem;
-  display: inline-block;
-  position: absolute;
-  top: 1.142857142857143em;
-  left: 0.7142857142857143em;
-  color: #666;
-  -webkit-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  transform: rotate(90deg);
 }
 
 .c6 {
   box-sizing: border-box;
-  -webkit-transition: left 0.3s;
-  transition: left 0.3s;
-  opacity: 0;
-  width: 1em;
-  height: 0em;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: #fff;
+  overflow: hidden;
+  height: 0rem;
 }
 
-.c20 {
+.c9 {
   box-sizing: border-box;
-  -webkit-transition: left 0.3s;
-  transition: left 0.3s;
-  opacity: 0;
-  width: 1em;
-  height: 0em;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: #e6f7ff;
+  overflow: hidden;
+  height: 100%;
+}
+
+.c7 {
+  box-sizing: border-box;
+  line-height: 1.5;
+  color: #666666;
+  background: #fff;
+  color: #666666;
+  font-size: 1.4rem;
+  font-weight: 300;
+  background-color: #fff;
 }
 
 .c10 {
   box-sizing: border-box;
-  -webkit-transition: left 0.3s;
-  transition: left 0.3s;
-  opacity: 0;
-  width: 1em;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
+  line-height: 1.5;
+  padding: 0.6rem 3rem 2.2rem 3.4rem;
+  color: #666666;
   background: #fff;
+  color: #666666;
+  font-size: 1.4rem;
+  font-weight: 300;
+  background-color: #fff;
 }
 
-.c23 {
+.c12 {
   box-sizing: border-box;
-  -webkit-transition: left 0.3s;
-  transition: left 0.3s;
-  opacity: 0;
-  width: 1em;
-  height: 7.142857142857143em;
-  position: absolute;
-  top: 0;
-  left: 0;
+  line-height: 1.5;
+  padding: 0.6rem 3rem 2.2rem 3.4rem;
+  color: #cccccc;
   background: #fff;
+  color: #666666;
+  font-size: 1.4rem;
+  font-weight: 300;
+  background-color: #fff;
 }
 
-.c25 {
+.c13 {
   box-sizing: border-box;
-  -webkit-transition: left 0.3s;
-  transition: left 0.3s;
-  opacity: 0;
-  width: 1em;
-  height: 3.2857142857142856em;
-  position: absolute;
-  top: 0;
-  left: 0;
+  line-height: 1.5;
+  padding: 0.6rem 3rem 2.2rem 2.4rem;
+  color: #666666;
   background: #fff;
+  color: #666666;
+  font-size: 1.4rem;
+  font-weight: 300;
+  background-color: #fff;
 }
 
 .c1 {
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
   font-size: 1.4rem;
-}
-
-.c17 {
-  -webkit-transition: all 0.2s;
-  transition: all 0.2s;
-  font-size: 1.4rem;
-  margin: 3.5714285714285716em;
-  width: 35.714285714285715em;
 }
 
 .c0 {
@@ -277,6 +156,8 @@ exports[`Panel Panel CSS 1`] = `
   >
     <div
       className="c1"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
     >
       <div
         className="c2"
@@ -285,29 +166,47 @@ exports[`Panel Panel CSS 1`] = `
           className="c3"
           disabled={false}
           onClick={[Function]}
+          style={
+            Object {
+              "paddingBottom": "1.6rem",
+              "paddingLeft": "3rem",
+              "paddingRight": "0rem",
+              "paddingTop": "1.6rem",
+            }
+          }
+          z={true}
         >
           <i
-            className="lugia-icon-direction_caret_right c4 c5"
+            className="lugia-icon-direction_caret_right   c4"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#666",
+                "fontSize": "1.4rem",
+              }
+            }
           />
-          LUGIA
-          <div
-            className="c6"
-            height={null}
-            open={false}
+          <span
+            className="c5"
+            style={Object {}}
           >
-            <i
-              className="lugia-icon-direction_caret_right c4 c5"
-            />
-          </div>
+            LUGIA
+          </span>
         </div>
         <div
-          className="c7"
+          className="c6"
           disabled={false}
           height={null}
           open={false}
         >
           <div
-            className="c8"
+            className="c7"
+            disabled={false}
+            style={Object {}}
           />
         </div>
       </div>
@@ -315,6 +214,8 @@ exports[`Panel Panel CSS 1`] = `
     <br />
     <div
       className="c1"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
     >
       <div
         className="c2"
@@ -323,74 +224,120 @@ exports[`Panel Panel CSS 1`] = `
           className="c3"
           disabled={false}
           onClick={[Function]}
+          style={
+            Object {
+              "paddingBottom": "1.6rem",
+              "paddingLeft": "3rem",
+              "paddingRight": "0rem",
+              "paddingTop": "1.6rem",
+            }
+          }
+          z={true}
         >
           <i
-            className="lugia-icon-direction_caret_right c9 c5"
+            className="lugia-icon-direction_caret_right   c8"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#666",
+                "fontSize": "1.4rem",
+              }
+            }
           />
-          lugia
+          <span
+            className="c5"
+            style={Object {}}
+          >
+            lugia
+          </span>
+        </div>
+        <div
+          className="c9"
+          disabled={false}
+          height={null}
+          open={true}
+        >
           <div
             className="c10"
-            height={null}
-            open={true}
+            disabled={false}
+            style={Object {}}
           >
-            <i
-              className="lugia-icon-direction_caret_right c9 c5"
-            />
+            <div>
+              PanelContent...
+            </div>
+            <div>
+              PanelContent...
+            </div>
           </div>
         </div>
+      </div>
+    </div>
+    <br />
+    <div
+      className="c1"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <div
+        className="c2"
+      >
         <div
           className="c11"
-          disabled={false}
-          height={null}
-          open={true}
-        >
-          <div
-            className="c12"
-          >
-            <div>
-              PanelContent...
-            </div>
-            <div>
-              PanelContent...
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <br />
-    <div
-      className="c1"
-    >
-      <div
-        className="c2"
-      >
-        <div
-          className="c13"
           disabled={true}
           onClick={[Function]}
+          style={
+            Object {
+              "paddingBottom": "1.6rem",
+              "paddingLeft": "3rem",
+              "paddingRight": "0rem",
+              "paddingTop": "1.6rem",
+            }
+          }
+          z={true}
         >
           <i
-            className="lugia-icon-direction_caret_right c4 c5"
+            className="lugia-icon-direction_caret_right   c4"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#666",
+                "fontSize": "1.4rem",
+              }
+            }
           />
-          LUGIA
-          <div
-            className="c6"
-            height={null}
-            open={false}
+          <span
+            className="c5"
+            style={
+              Object {
+                "color": "#cccccc",
+              }
+            }
           >
-            <i
-              className="lugia-icon-direction_caret_right c4 c5"
-            />
-          </div>
+            LUGIA
+          </span>
         </div>
         <div
-          className="c14"
+          className="c6"
           disabled={true}
           height={null}
           open={false}
         >
           <div
             className="c12"
+            disabled={true}
+            style={
+              Object {
+                "color": "#cccccc",
+              }
+            }
           >
             <div>
               PanelContent...
@@ -405,219 +352,65 @@ exports[`Panel Panel CSS 1`] = `
     <br />
     <div
       className="c1"
+      onMouseEnter={[Function]}
       onMouseLeave={[Function]}
-      onMouseMove={[Function]}
-    >
-      <div
-        className="c2"
-        onMouseLeave={[Function]}
-        onMouseMove={[Function]}
-      >
-        <div
-          className="c15"
-          disabled={false}
-          onClick={[Function]}
-        >
-          LUGIA
-          <div
-            className="c6"
-            height={null}
-            open={false}
-          >
-            <i
-              className="lugia-icon-direction_caret_right c4 c5"
-            />
-          </div>
-        </div>
-        <div
-          className="c7"
-          disabled={false}
-          height={null}
-          open={false}
-        >
-          <div
-            className="c16"
-          >
-            <div>
-              PanelContent...
-            </div>
-            <div>
-              PanelContent...
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <br />
-    <div
-      className="c17"
-      onMouseLeave={[Function]}
-      onMouseMove={[Function]}
-    >
-      <div
-        className="c18"
-        onMouseLeave={[Function]}
-        onMouseMove={[Function]}
-      >
-        <div
-          className="c19"
-          disabled={false}
-          onClick={[Function]}
-        >
-          LUGIA
-          <div
-            className="c20"
-            height={null}
-            open={false}
-          >
-            <i
-              className="lugia-icon-direction_caret_right c4 c5"
-            />
-          </div>
-        </div>
-        <div
-          className="c21"
-          disabled={false}
-          height={null}
-          open={false}
-        >
-          <div
-            className="c16"
-          >
-            <div>
-              PanelContent...
-            </div>
-            <div>
-              PanelContent...
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <br />
-    <div
-      className="c17"
-    >
-      <div
-        className="c18"
-      >
-        <div
-          className="c22"
-          disabled={false}
-          onClick={[Function]}
-        >
-          <i
-            className="lugia-icon-direction_caret_right c4 c5"
-          />
-          LUGIA
-          <div
-            className="c20"
-            height={null}
-            open={false}
-          >
-            <i
-              className="lugia-icon-direction_caret_right c4 c5"
-            />
-          </div>
-        </div>
-        <div
-          className="c21"
-          disabled={false}
-          height={null}
-          open={false}
-        >
-          <div
-            className="c12"
-          >
-            <div>
-              PanelContent...
-            </div>
-            <div>
-              PanelContent...
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <br />
-    <div
-      className="c1"
     >
       <div
         className="c2"
       >
         <div
-          className="c3"
-          disabled={false}
+          className="c11"
+          disabled={true}
           onClick={[Function]}
+          style={
+            Object {
+              "paddingBottom": "1.6rem",
+              "paddingLeft": "3rem",
+              "paddingRight": "0rem",
+              "paddingTop": "1.6rem",
+            }
+          }
+          z={true}
         >
           <i
-            className="lugia-icon-direction_caret_right c4 c5"
+            className="lugia-icon-direction_caret_right   c8"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#666",
+                "fontSize": "1.4rem",
+              }
+            }
           />
-          LUGIA
-          <div
-            className="c6"
-            height={null}
-            open={false}
+          <span
+            className="c5"
+            style={
+              Object {
+                "color": "#cccccc",
+              }
+            }
           >
-            <i
-              className="lugia-icon-direction_caret_right c4 c5"
-            />
-          </div>
+            LUGIA
+          </span>
         </div>
         <div
-          className="c7"
-          disabled={false}
-          height={null}
-          open={false}
-        >
-          <div
-            className="c12"
-          >
-            <div>
-              PanelContent...
-            </div>
-            <div>
-              PanelContent...
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <br />
-    <div
-      className="c1"
-    >
-      <div
-        className="c2"
-      >
-        <div
-          className="c3"
-          disabled={false}
-          onClick={[Function]}
-        >
-          <i
-            className="lugia-icon-direction_caret_right c9 c5"
-          />
-          LUGIA
-          <div
-            className="c23"
-            height={null}
-            open={true}
-          >
-            <i
-              className="lugia-icon-direction_caret_right c9 c5"
-            />
-          </div>
-        </div>
-        <div
-          className="c24"
-          disabled={false}
+          className="c9"
+          disabled={true}
           height={null}
           open={true}
         >
           <div
             className="c12"
+            disabled={true}
+            style={
+              Object {
+                "color": "#cccccc",
+              }
+            }
           >
             <div>
               PanelContent...
@@ -632,6 +425,8 @@ exports[`Panel Panel CSS 1`] = `
     <br />
     <div
       className="c1"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
     >
       <div
         className="c2"
@@ -640,29 +435,33 @@ exports[`Panel Panel CSS 1`] = `
           className="c3"
           disabled={false}
           onClick={[Function]}
+          style={
+            Object {
+              "paddingBottom": "1.6rem",
+              "paddingLeft": "2rem",
+              "paddingRight": "0rem",
+              "paddingTop": "1.6rem",
+            }
+          }
+          z={true}
         >
-          <i
-            className="lugia-icon-direction_caret_right c9 c5"
-          />
-          LUGIA
-          <div
-            className="c25"
-            height={null}
-            open={true}
+          <span
+            className="c5"
+            style={Object {}}
           >
-            <i
-              className="lugia-icon-direction_caret_right c9 c5"
-            />
-          </div>
+            LUGIA
+          </span>
         </div>
         <div
-          className="c26"
+          className="c6"
           disabled={false}
           height={null}
-          open={true}
+          open={false}
         >
           <div
-            className="c12"
+            className="c13"
+            disabled={false}
+            style={Object {}}
           >
             <div>
               PanelContent...
@@ -674,6 +473,406 @@ exports[`Panel Panel CSS 1`] = `
         </div>
       </div>
     </div>
+    <br />
+    <div
+      className="c1"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <div
+        className="c2"
+      >
+        <div
+          className="c3"
+          disabled={false}
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "pink",
+              "borderBottomColor": "yellow",
+              "borderBottomLeftRadius": "1rem",
+              "borderBottomRightRadius": "1rem",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.2rem",
+              "borderLeftColor": "yellow",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": "0.2rem",
+              "borderRightColor": "yellow",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.2rem",
+              "borderTopColor": "yellow",
+              "borderTopLeftRadius": "1rem",
+              "borderTopRightRadius": "1rem",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.2rem",
+              "boxShadow": "1px 2px 2px 2px #e8e8e8",
+              "height": "8rem",
+              "opacity": 1,
+              "paddingBottom": "1rem",
+              "paddingLeft": "3rem",
+              "paddingRight": "1rem",
+              "paddingTop": "1rem",
+              "width": "40rem",
+            }
+          }
+          z={true}
+        >
+          <span
+            className="c5"
+            style={
+              Object {
+                "color": "green",
+                "fontSize": "1.6rem",
+                "fontWeight": 300,
+              }
+            }
+          >
+            LUGIA
+          </span>
+        </div>
+        <div
+          className="c6"
+          disabled={false}
+          height={null}
+          open={false}
+        >
+          <div
+            className="c13"
+            disabled={false}
+            style={
+              Object {
+                "backgroundColor": "#f7f4ef",
+                "color": "red",
+                "fontSize": "1.6rem",
+                "fontWeight": 300,
+                "height": "20rem",
+                "paddingBottom": "1rem",
+                "paddingLeft": "3rem",
+                "paddingRight": "1rem",
+                "paddingTop": "1rem",
+                "width": "40rem",
+              }
+            }
+          >
+            <div>
+              PanelContent...
+            </div>
+            <div>
+              PanelContent...
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div
+      className="c1"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <div
+        className="c2"
+      >
+        <div
+          className="c3"
+          disabled={false}
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "pink",
+              "borderBottomColor": "yellow",
+              "borderBottomLeftRadius": "1rem",
+              "borderBottomRightRadius": "1rem",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.2rem",
+              "borderLeftColor": "yellow",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": "0.2rem",
+              "borderRightColor": "yellow",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.2rem",
+              "borderTopColor": "yellow",
+              "borderTopLeftRadius": "1rem",
+              "borderTopRightRadius": "1rem",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.2rem",
+              "boxShadow": "1px 2px 2px 2px #e8e8e8",
+              "height": "8rem",
+              "opacity": 1,
+              "paddingBottom": "1rem",
+              "paddingLeft": "3rem",
+              "paddingRight": "1rem",
+              "paddingTop": "1rem",
+              "width": "40rem",
+            }
+          }
+          z={true}
+        >
+          <i
+            className="lugia-icon-direction_caret_right   c4"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "green",
+                "fontSize": "1.4rem",
+              }
+            }
+          />
+          <span
+            className="c5"
+            style={
+              Object {
+                "color": "green",
+                "fontSize": "1.6rem",
+                "fontWeight": 300,
+              }
+            }
+          >
+            LUGIA
+          </span>
+        </div>
+        <div
+          className="c6"
+          disabled={false}
+          height={null}
+          open={false}
+        >
+          <div
+            className="c10"
+            disabled={false}
+            style={
+              Object {
+                "backgroundColor": "#f7f4ef",
+                "color": "red",
+                "fontSize": "1.6rem",
+                "fontWeight": 300,
+                "height": "20rem",
+                "paddingBottom": "1rem",
+                "paddingLeft": "3rem",
+                "paddingRight": "1rem",
+                "paddingTop": "1rem",
+                "width": "40rem",
+              }
+            }
+          >
+            <div>
+              PanelContent...
+            </div>
+            <div>
+              PanelContent...
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div
+      className="c1"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <div
+        className="c2"
+      >
+        <div
+          className="c11"
+          disabled={true}
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "orange",
+              "borderBottomColor": "green",
+              "borderBottomLeftRadius": "1rem",
+              "borderBottomRightRadius": "1rem",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.2rem",
+              "borderLeftColor": "green",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": "0.2rem",
+              "borderRightColor": "green",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.2rem",
+              "borderTopColor": "green",
+              "borderTopLeftRadius": "1rem",
+              "borderTopRightRadius": "1rem",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.2rem",
+              "boxShadow": "1px 2px 2px 2px #e8e8e8",
+              "height": "8rem",
+              "opacity": 0.8,
+              "paddingBottom": "1rem",
+              "paddingLeft": "3rem",
+              "paddingRight": "1rem",
+              "paddingTop": "1rem",
+              "width": "40rem",
+            }
+          }
+          z={true}
+        >
+          <i
+            className="lugia-icon-direction_caret_right   c4"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "green",
+                "fontSize": "1.4rem",
+              }
+            }
+          />
+          <span
+            className="c5"
+            style={
+              Object {
+                "color": "yellow",
+                "fontSize": "1.6rem",
+                "fontWeight": 300,
+              }
+            }
+          >
+            LUGIA
+          </span>
+        </div>
+        <div
+          className="c6"
+          disabled={true}
+          height={null}
+          open={false}
+        >
+          <div
+            className="c12"
+            disabled={true}
+            style={
+              Object {
+                "backgroundColor": "#f7f4ef",
+                "color": "#cccccc",
+                "fontSize": "1.6rem",
+                "fontWeight": 300,
+                "height": "20rem",
+                "paddingBottom": "1rem",
+                "paddingLeft": "3rem",
+                "paddingRight": "1rem",
+                "paddingTop": "1rem",
+                "width": "40rem",
+              }
+            }
+          >
+            <div>
+              PanelContent...
+            </div>
+            <div>
+              PanelContent...
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div
+      className="c1"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <div
+        className="c2"
+      >
+        <div
+          className="c3"
+          disabled={false}
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "pink",
+              "borderBottomColor": "yellow",
+              "borderBottomLeftRadius": "1rem",
+              "borderBottomRightRadius": "1rem",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.2rem",
+              "borderLeftColor": "yellow",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": "0.2rem",
+              "borderRightColor": "yellow",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.2rem",
+              "borderTopColor": "yellow",
+              "borderTopLeftRadius": "1rem",
+              "borderTopRightRadius": "1rem",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.2rem",
+              "boxShadow": "1px 2px 2px 2px #e8e8e8",
+              "height": "8rem",
+              "opacity": 1,
+              "paddingBottom": "1rem",
+              "paddingLeft": "3rem",
+              "paddingRight": "1rem",
+              "paddingTop": "1rem",
+              "width": "40rem",
+            }
+          }
+          z={true}
+        >
+          <i
+            className="lugia-icon-direction_caret_right   c4"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "green",
+                "fontSize": "1.4rem",
+              }
+            }
+          />
+          <span
+            className="c5"
+            style={
+              Object {
+                "color": "green",
+                "fontSize": "1.6rem",
+                "fontWeight": 300,
+              }
+            }
+          >
+            LUGIA
+          </span>
+        </div>
+        <div
+          className="c6"
+          disabled={false}
+          height={null}
+          open={false}
+        >
+          <div
+            className="c7"
+            disabled={false}
+            style={
+              Object {
+                "backgroundColor": "#f7f4ef",
+                "color": "red",
+                "fontSize": "1.6rem",
+                "fontWeight": 300,
+                "height": "20rem",
+                "paddingBottom": "1rem",
+                "paddingLeft": "3rem",
+                "paddingRight": "1rem",
+                "paddingTop": "1rem",
+                "width": "40rem",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+    <br />
   </div>
 </div>
 `;

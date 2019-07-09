@@ -63,7 +63,6 @@ export default ThemeProvider(
     componentDidMount() {
       this.height = this.panel && this.panel.scrollHeight;
       const headerHeight = this.header && this.header.scrollHeight;
-      console.log(this.height);
       this.setState({
         headerHeight,
       });
@@ -113,6 +112,7 @@ export default ThemeProvider(
       }
       const PanelHeaderTheme = getPartOfThemeProps('PanelHeader', { props: { hover, showArrow } });
       const PanelHeaderTextTheme = getPartOfThemeProps('PanelHeaderText');
+      const PanelContentTheme = getPartOfThemeProps('PanelContent');
       return (
         <Wrap hover={hover} theme={getTheme()} {...addMouseEvent(this, config)}>
           <PanelWrap hover={hover} theme={getTheme()} {...config}>
@@ -123,6 +123,7 @@ export default ThemeProvider(
               hover={hover}
               themeProps={PanelHeaderTheme}
               onClick={this.handlePanelClick}
+              z
               ref={(node: any) => (this.header = node)}
             >
               {showArrow || hover ? (
@@ -137,11 +138,16 @@ export default ThemeProvider(
               closing={closing}
               height={this.height}
               disabled={disabled}
-              theme={getTheme()}
               hover={hover}
               headerHeight={headerHeight}
             >
-              <PanelContent showArrow={showArrow} hover={hover} hasChildren={!!children}>
+              <PanelContent
+                disabled={disabled}
+                showArrow={showArrow}
+                hover={hover}
+                hasChildren={!!children}
+                themeProps={PanelContentTheme}
+              >
                 {children}
               </PanelContent>
             </PanelContentWrap>

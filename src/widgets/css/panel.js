@@ -152,7 +152,8 @@ export const PanelHeader = CSSComponent({
       const { propsConfig = {}, themeConfig = {} } = themeProps;
       const { hover } = propsConfig;
       const { width } = themeMeta;
-      const theWidth = width || themeConfig.normal.width;
+      const { normal = {} } = themeConfig;
+      const theWidth = width || normal.width;
       let widthStyle;
       if (hover) {
         if (theWidth) {
@@ -164,7 +165,7 @@ export const PanelHeader = CSSComponent({
         } else {
           widthStyle = 'calc(100% + 14px)';
         }
-        console.log('widthStyle', widthStyle);
+
         return `width: ${widthStyle} !important;transform: translateX(-14px);`;
       }
     },
@@ -194,11 +195,10 @@ export const PanelHeaderText = CSSComponent({
   },
 });
 const getPanelContent = (props: CSSProps): string => {
-  const { open, opening, closing, headerHeight = 0, theme } = props;
-  const { height: themeHeight } = theme;
+  const { open, opening, closing, headerHeight = 0 } = props;
   const { height: propsHeight } = props;
-  const theHeight = themeHeight ? themeHeight - headerHeight : propsHeight;
-  const openHeight = themeHeight ? px2remcss(themeHeight - headerHeight) : '100%';
+  const theHeight = propsHeight;
+  const openHeight = '100%';
   const OpenKeyframe = keyframes`
     from {
       height: ${px2remcss(0)};
@@ -236,8 +236,8 @@ const getPanelContent = (props: CSSProps): string => {
   `;
 };
 const getContenColor = (props: CSSProps): string => {
-  const { disabled, theme } = props;
-  const backgroundColor = theme.backgroundColor || defaultColor;
+  const { disabled } = props;
+  const backgroundColor = defaultColor;
   if (disabled) {
     return `
       color: ${lightGreyColor};
@@ -269,15 +269,48 @@ export const PanelContentWrap = styled.div`
   box-sizing: border-box;
   overflow: hidden;
   ${getPanelContent};
-  ${getContenColor};
 `;
 
-export const PanelContent = styled.div`
-  box-sizing: border-box;
-  font-weight: 300;
-  line-height: 1.5;
-  ${getContentPadding};
-`;
+// export const PanelContent = styled.div`
+//   box-sizing: border-box;
+//   font-weight: 300;
+//   line-height: 1.5;
+//   ${getContentPadding};
+//   ${getContenColor};
+// `;
+export const PanelContent = CSSComponent({
+  tag: 'div',
+  className: 'PanelContent',
+  css: css`
+    box-sizing: border-box;
+    line-height: 1.5;
+    ${getContentPadding};
+    ${getContenColor};
+  `,
+  normal: {
+    defaultTheme: {
+      font: { size: 14, weight: 300 },
+      color: darkGreyColor,
+      background: { color: defaultColor },
+    },
+    selectNames: [['width'], ['height'], ['background'], ['padding'], ['font'], ['color']],
+    getThemeMeta(themeMeta, themeProps) {
+      const { propsConfig } = themeProps;
+    },
+  },
+  hover: {
+    defaultTheme: {
+      color: blackColor,
+    },
+    selectNames: [['color']],
+  },
+  disabled: {
+    defaultTheme: {
+      color: lightGreyColor,
+    },
+    selectNames: [['color']],
+  },
+});
 
 export const getIconTransform = (props: Object) => {
   const { opening, open, closing } = props;

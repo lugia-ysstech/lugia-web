@@ -3,20 +3,39 @@
 exports[`Collapse Collapse CSS 1`] = `
 .c1 {
   font-size: 1.4rem;
+  opacity: 1;
 }
 
-.c13 {
-  font-size: 1.4rem;
-  margin: 1.4285714285714286em;
-}
-
-.c6 {
+.c9 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  font-size: 1.2rem;
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.c5 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-transform: translateY(-50%) rotate(90deg);
+  -ms-transform: translateY(-50%) rotate(90deg);
+  transform: translateY(-50%) rotate(90deg);
 }
 
 .c3 {
@@ -27,9 +46,9 @@ exports[`Collapse Collapse CSS 1`] = `
   background: #fff;
 }
 
-.c14 {
+.c11 {
   box-sizing: border-box;
-  border-width: 0em;
+  border-width: 0rem;
   border-color: #e8e8e8;
   border-style: solid;
   background: #fff;
@@ -38,7 +57,6 @@ exports[`Collapse Collapse CSS 1`] = `
 .c4 {
   box-sizing: border-box;
   position: relative;
-  padding: 1.142857142857143em 0 1.142857142857143em 2.142857142857143em;
   font-size: 1.4rem;
   cursor: pointer;
   line-height: 1;
@@ -46,77 +64,39 @@ exports[`Collapse Collapse CSS 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
   color: #333333;
+  opacity: 1;
 }
 
-.c12 {
-  box-sizing: border-box;
-  overflow: hidden;
-  height: 0em;
-  color: #666666;
-  background: #fff;
-}
-
-.c8 {
-  box-sizing: border-box;
-  overflow: hidden;
-  height: 100%;
-  color: #666666;
-  background: #fff;
-}
-
-.c9 {
-  box-sizing: border-box;
-  font-weight: 300;
-  line-height: 1.5;
-  padding: 0.4285714285714286em 2.142857142857143em 1.5714285714285716em 2.428571428571429em;
+.c6 {
+  color: #333333;
+  font-size: 1.4rem;
 }
 
 .c10 {
-  font-size: 1.4rem;
-  display: inline-block;
-  position: absolute;
-  top: 1.142857142857143em;
-  left: 0.7142857142857143em;
-  color: #666;
-}
-
-.c5 {
-  font-size: 1.4rem;
-  display: inline-block;
-  position: absolute;
-  top: 1.142857142857143em;
-  left: 0.7142857142857143em;
-  color: #666;
-  -webkit-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  transform: rotate(90deg);
-}
-
-.c11 {
   box-sizing: border-box;
-  -webkit-transition: left 0.3s;
-  transition: left 0.3s;
-  opacity: 0;
-  width: 1em;
-  height: 0em;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: #fff;
+  overflow: hidden;
+  height: 0rem;
 }
 
 .c7 {
   box-sizing: border-box;
-  -webkit-transition: left 0.3s;
-  transition: left 0.3s;
-  opacity: 0;
-  width: 1em;
+  overflow: hidden;
   height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
+}
+
+.c8 {
+  box-sizing: border-box;
+  line-height: 1.5;
+  padding: 0.6rem 3rem 2.2rem 3.4rem;
+  color: #666666;
   background: #fff;
+  color: #666666;
+  font-size: 1.4rem;
+  font-weight: 300;
+  background-color: #fff;
 }
 
 .c2 {
@@ -142,9 +122,39 @@ exports[`Collapse Collapse CSS 1`] = `
     </p>
     <div
       className="c1"
+      style={
+        Object {
+          "backgroundColor": "orange",
+          "borderBottomColor": "green",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.2rem",
+          "borderLeftColor": "green",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.2rem",
+          "borderRightColor": "green",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.2rem",
+          "borderTopColor": "green",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.2rem",
+          "height": "50rem",
+          "marginBottom": "1rem",
+          "marginLeft": "1rem",
+          "marginRight": "1rem",
+          "marginTop": "1rem",
+          "opacity": 1,
+          "paddingBottom": "1rem",
+          "paddingLeft": "1rem",
+          "paddingRight": "1rem",
+          "paddingTop": "1rem",
+          "width": "50rem",
+        }
+      }
     >
       <div
         className="c2"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
       >
         <div
           className="c3"
@@ -153,29 +163,47 @@ exports[`Collapse Collapse CSS 1`] = `
             className="c4"
             disabled={false}
             onClick={[Function]}
+            style={
+              Object {
+                "paddingBottom": "1.6rem",
+                "paddingLeft": "3rem",
+                "paddingRight": "0rem",
+                "paddingTop": "1.6rem",
+              }
+            }
+            z={true}
           >
             <i
-              className="lugia-icon-direction_caret_right c5 c6"
+              className="lugia-icon-direction_caret_right   c5"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={
+                Object {
+                  "color": "#666",
+                  "fontSize": "1.4rem",
+                }
+              }
             />
-            LUGIA
-            <div
-              className="c7"
-              height={null}
-              open={true}
+            <span
+              className="c6"
+              style={Object {}}
             >
-              <i
-                className="lugia-icon-direction_caret_right c5 c6"
-              />
-            </div>
+              LUGIA
+            </span>
           </div>
           <div
-            className="c8"
+            className="c7"
             disabled={false}
             height={null}
             open={true}
           >
             <div
-              className="c9"
+              className="c8"
+              disabled={false}
+              style={Object {}}
             >
               <div>
                 PanelContent...
@@ -189,6 +217,8 @@ exports[`Collapse Collapse CSS 1`] = `
       </div>
       <div
         className="c2"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
       >
         <div
           className="c3"
@@ -197,29 +227,185 @@ exports[`Collapse Collapse CSS 1`] = `
             className="c4"
             disabled={false}
             onClick={[Function]}
+            style={
+              Object {
+                "paddingBottom": "1.6rem",
+                "paddingLeft": "3rem",
+                "paddingRight": "0rem",
+                "paddingTop": "1.6rem",
+              }
+            }
+            z={true}
           >
             <i
-              className="lugia-icon-direction_caret_right c10 c6"
+              className="lugia-icon-direction_caret_right   c9"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={
+                Object {
+                  "color": "#666",
+                  "fontSize": "1.4rem",
+                }
+              }
             />
-            LUGIA
-            <div
-              className="c11"
-              height={null}
-              open={false}
+            <span
+              className="c6"
+              style={Object {}}
             >
-              <i
-                className="lugia-icon-direction_caret_right c10 c6"
-              />
-            </div>
+              LUGIA
+            </span>
           </div>
           <div
-            className="c12"
+            className="c10"
             disabled={false}
             height={null}
             open={false}
           >
             <div
-              className="c9"
+              className="c8"
+              disabled={false}
+              style={Object {}}
+            >
+              <div>
+                PanelContent...
+              </div>
+              <div>
+                PanelContent...
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <p>
+      defaultActiveValue=
+      1
+    </p>
+    <div
+      className="c1"
+      style={Object {}}
+    >
+      <div
+        className="c2"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        <div
+          className="c3"
+        >
+          <div
+            className="c4"
+            disabled={false}
+            onClick={[Function]}
+            style={
+              Object {
+                "paddingBottom": "1.6rem",
+                "paddingLeft": "3rem",
+                "paddingRight": "0rem",
+                "paddingTop": "1.6rem",
+              }
+            }
+            z={true}
+          >
+            <i
+              className="lugia-icon-direction_caret_right   c5"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={
+                Object {
+                  "color": "#666",
+                  "fontSize": "1.4rem",
+                }
+              }
+            />
+            <span
+              className="c6"
+              style={Object {}}
+            >
+              LUGIA
+            </span>
+          </div>
+          <div
+            className="c7"
+            disabled={false}
+            height={null}
+            open={true}
+          >
+            <div
+              className="c8"
+              disabled={false}
+              style={Object {}}
+            >
+              <div>
+                PanelContent...
+              </div>
+              <div>
+                PanelContent...
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="c2"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        <div
+          className="c3"
+        >
+          <div
+            className="c4"
+            disabled={false}
+            onClick={[Function]}
+            style={
+              Object {
+                "paddingBottom": "1.6rem",
+                "paddingLeft": "3rem",
+                "paddingRight": "0rem",
+                "paddingTop": "1.6rem",
+              }
+            }
+            z={true}
+          >
+            <i
+              className="lugia-icon-direction_caret_right   c9"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={
+                Object {
+                  "color": "#666",
+                  "fontSize": "1.4rem",
+                }
+              }
+            />
+            <span
+              className="c6"
+              style={Object {}}
+            >
+              LUGIA
+            </span>
+          </div>
+          <div
+            className="c10"
+            disabled={false}
+            height={null}
+            open={false}
+          >
+            <div
+              className="c8"
+              disabled={false}
+              style={Object {}}
             >
               <div>
                 PanelContent...
@@ -239,9 +425,12 @@ exports[`Collapse Collapse CSS 1`] = `
     </p>
     <div
       className="c1"
+      style={Object {}}
     >
       <div
         className="c2"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
       >
         <div
           className="c3"
@@ -250,29 +439,47 @@ exports[`Collapse Collapse CSS 1`] = `
             className="c4"
             disabled={false}
             onClick={[Function]}
+            style={
+              Object {
+                "paddingBottom": "1.6rem",
+                "paddingLeft": "3rem",
+                "paddingRight": "0rem",
+                "paddingTop": "1.6rem",
+              }
+            }
+            z={true}
           >
             <i
-              className="lugia-icon-direction_caret_right c5 c6"
+              className="lugia-icon-direction_caret_right   c5"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={
+                Object {
+                  "color": "#666",
+                  "fontSize": "1.4rem",
+                }
+              }
             />
-            LUGIA
-            <div
-              className="c7"
-              height={null}
-              open={true}
+            <span
+              className="c6"
+              style={Object {}}
             >
-              <i
-                className="lugia-icon-direction_caret_right c5 c6"
-              />
-            </div>
+              LUGIA
+            </span>
           </div>
           <div
-            className="c8"
+            className="c7"
             disabled={false}
             height={null}
             open={true}
           >
             <div
-              className="c9"
+              className="c8"
+              disabled={false}
+              style={Object {}}
             >
               <div>
                 PanelContent...
@@ -286,6 +493,8 @@ exports[`Collapse Collapse CSS 1`] = `
       </div>
       <div
         className="c2"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
       >
         <div
           className="c3"
@@ -294,29 +503,47 @@ exports[`Collapse Collapse CSS 1`] = `
             className="c4"
             disabled={false}
             onClick={[Function]}
+            style={
+              Object {
+                "paddingBottom": "1.6rem",
+                "paddingLeft": "3rem",
+                "paddingRight": "0rem",
+                "paddingTop": "1.6rem",
+              }
+            }
+            z={true}
           >
             <i
-              className="lugia-icon-direction_caret_right c10 c6"
+              className="lugia-icon-direction_caret_right   c9"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={
+                Object {
+                  "color": "#666",
+                  "fontSize": "1.4rem",
+                }
+              }
             />
-            LUGIA
-            <div
-              className="c11"
-              height={null}
-              open={false}
+            <span
+              className="c6"
+              style={Object {}}
             >
-              <i
-                className="lugia-icon-direction_caret_right c10 c6"
-              />
-            </div>
+              LUGIA
+            </span>
           </div>
           <div
-            className="c12"
+            className="c10"
             disabled={false}
             height={null}
             open={false}
           >
             <div
-              className="c9"
+              className="c8"
+              disabled={false}
+              style={Object {}}
             >
               <div>
                 PanelContent...
@@ -336,9 +563,12 @@ exports[`Collapse Collapse CSS 1`] = `
     </p>
     <div
       className="c1"
+      style={Object {}}
     >
       <div
         className="c2"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
       >
         <div
           className="c3"
@@ -347,29 +577,47 @@ exports[`Collapse Collapse CSS 1`] = `
             className="c4"
             disabled={false}
             onClick={[Function]}
+            style={
+              Object {
+                "paddingBottom": "1.6rem",
+                "paddingLeft": "3rem",
+                "paddingRight": "0rem",
+                "paddingTop": "1.6rem",
+              }
+            }
+            z={true}
           >
             <i
-              className="lugia-icon-direction_caret_right c5 c6"
+              className="lugia-icon-direction_caret_right   c5"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={
+                Object {
+                  "color": "#666",
+                  "fontSize": "1.4rem",
+                }
+              }
             />
-            LUGIA
-            <div
-              className="c7"
-              height={null}
-              open={true}
+            <span
+              className="c6"
+              style={Object {}}
             >
-              <i
-                className="lugia-icon-direction_caret_right c5 c6"
-              />
-            </div>
+              LUGIA
+            </span>
           </div>
           <div
-            className="c8"
+            className="c7"
             disabled={false}
             height={null}
             open={true}
           >
             <div
-              className="c9"
+              className="c8"
+              disabled={false}
+              style={Object {}}
             >
               <div>
                 PanelContent...
@@ -383,6 +631,8 @@ exports[`Collapse Collapse CSS 1`] = `
       </div>
       <div
         className="c2"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
       >
         <div
           className="c3"
@@ -391,29 +641,47 @@ exports[`Collapse Collapse CSS 1`] = `
             className="c4"
             disabled={false}
             onClick={[Function]}
+            style={
+              Object {
+                "paddingBottom": "1.6rem",
+                "paddingLeft": "3rem",
+                "paddingRight": "0rem",
+                "paddingTop": "1.6rem",
+              }
+            }
+            z={true}
           >
             <i
-              className="lugia-icon-direction_caret_right c10 c6"
+              className="lugia-icon-direction_caret_right   c9"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={
+                Object {
+                  "color": "#666",
+                  "fontSize": "1.4rem",
+                }
+              }
             />
-            LUGIA
-            <div
-              className="c11"
-              height={null}
-              open={false}
+            <span
+              className="c6"
+              style={Object {}}
             >
-              <i
-                className="lugia-icon-direction_caret_right c10 c6"
-              />
-            </div>
+              LUGIA
+            </span>
           </div>
           <div
-            className="c12"
+            className="c10"
             disabled={false}
             height={null}
             open={false}
           >
             <div
-              className="c9"
+              className="c8"
+              disabled={false}
+              style={Object {}}
             >
               <div>
                 PanelContent...
@@ -432,9 +700,12 @@ exports[`Collapse Collapse CSS 1`] = `
     </p>
     <div
       className="c1"
+      style={Object {}}
     >
       <div
         className="c2"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
       >
         <div
           className="c3"
@@ -443,29 +714,47 @@ exports[`Collapse Collapse CSS 1`] = `
             className="c4"
             disabled={false}
             onClick={[Function]}
+            style={
+              Object {
+                "paddingBottom": "1.6rem",
+                "paddingLeft": "3rem",
+                "paddingRight": "0rem",
+                "paddingTop": "1.6rem",
+              }
+            }
+            z={true}
           >
             <i
-              className="lugia-icon-direction_caret_right c5 c6"
+              className="lugia-icon-direction_caret_right   c5"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={
+                Object {
+                  "color": "#666",
+                  "fontSize": "1.4rem",
+                }
+              }
             />
-            LUGIA
-            <div
-              className="c7"
-              height={null}
-              open={true}
+            <span
+              className="c6"
+              style={Object {}}
             >
-              <i
-                className="lugia-icon-direction_caret_right c5 c6"
-              />
-            </div>
+              LUGIA
+            </span>
           </div>
           <div
-            className="c8"
+            className="c7"
             disabled={false}
             height={null}
             open={true}
           >
             <div
-              className="c9"
+              className="c8"
+              disabled={false}
+              style={Object {}}
             >
               <div>
                 PanelContent...
@@ -479,6 +768,8 @@ exports[`Collapse Collapse CSS 1`] = `
       </div>
       <div
         className="c2"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
       >
         <div
           className="c3"
@@ -487,29 +778,47 @@ exports[`Collapse Collapse CSS 1`] = `
             className="c4"
             disabled={false}
             onClick={[Function]}
+            style={
+              Object {
+                "paddingBottom": "1.6rem",
+                "paddingLeft": "3rem",
+                "paddingRight": "0rem",
+                "paddingTop": "1.6rem",
+              }
+            }
+            z={true}
           >
             <i
-              className="lugia-icon-direction_caret_right c10 c6"
+              className="lugia-icon-direction_caret_right   c9"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={
+                Object {
+                  "color": "#666",
+                  "fontSize": "1.4rem",
+                }
+              }
             />
-            LUGIA
-            <div
-              className="c11"
-              height={null}
-              open={false}
+            <span
+              className="c6"
+              style={Object {}}
             >
-              <i
-                className="lugia-icon-direction_caret_right c10 c6"
-              />
-            </div>
+              LUGIA
+            </span>
           </div>
           <div
-            className="c12"
+            className="c10"
             disabled={false}
             height={null}
             open={false}
           >
             <div
-              className="c9"
+              className="c8"
+              disabled={false}
+              style={Object {}}
             >
               <div>
                 PanelContent...
@@ -523,6 +832,8 @@ exports[`Collapse Collapse CSS 1`] = `
       </div>
       <div
         className="c2"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
       >
         <div
           className="c3"
@@ -531,29 +842,47 @@ exports[`Collapse Collapse CSS 1`] = `
             className="c4"
             disabled={false}
             onClick={[Function]}
+            style={
+              Object {
+                "paddingBottom": "1.6rem",
+                "paddingLeft": "3rem",
+                "paddingRight": "0rem",
+                "paddingTop": "1.6rem",
+              }
+            }
+            z={true}
           >
             <i
-              className="lugia-icon-direction_caret_right c10 c6"
+              className="lugia-icon-direction_caret_right   c9"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={
+                Object {
+                  "color": "#666",
+                  "fontSize": "1.4rem",
+                }
+              }
             />
-            LUGIA
-            <div
-              className="c11"
-              height={null}
-              open={false}
+            <span
+              className="c6"
+              style={Object {}}
             >
-              <i
-                className="lugia-icon-direction_caret_right c10 c6"
-              />
-            </div>
+              LUGIA
+            </span>
           </div>
           <div
-            className="c12"
+            className="c10"
             disabled={false}
             height={null}
             open={false}
           >
             <div
-              className="c9"
+              className="c8"
+              disabled={false}
+              style={Object {}}
             >
               <div>
                 PanelContent...
@@ -567,6 +896,8 @@ exports[`Collapse Collapse CSS 1`] = `
       </div>
       <div
         className="c2"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
       >
         <div
           className="c3"
@@ -575,29 +906,47 @@ exports[`Collapse Collapse CSS 1`] = `
             className="c4"
             disabled={false}
             onClick={[Function]}
+            style={
+              Object {
+                "paddingBottom": "1.6rem",
+                "paddingLeft": "3rem",
+                "paddingRight": "0rem",
+                "paddingTop": "1.6rem",
+              }
+            }
+            z={true}
           >
             <i
-              className="lugia-icon-direction_caret_right c10 c6"
+              className="lugia-icon-direction_caret_right   c9"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={
+                Object {
+                  "color": "#666",
+                  "fontSize": "1.4rem",
+                }
+              }
             />
-            LUGIA
-            <div
-              className="c11"
-              height={null}
-              open={false}
+            <span
+              className="c6"
+              style={Object {}}
             >
-              <i
-                className="lugia-icon-direction_caret_right c10 c6"
-              />
-            </div>
+              LUGIA
+            </span>
           </div>
           <div
-            className="c12"
+            className="c10"
             disabled={false}
             height={null}
             open={false}
           >
             <div
-              className="c9"
+              className="c8"
+              disabled={false}
+              style={Object {}}
             >
               <div>
                 PanelContent...
@@ -612,41 +961,62 @@ exports[`Collapse Collapse CSS 1`] = `
     </div>
     <br />
     <div
-      className="c13"
+      className="c1"
+      style={Object {}}
     >
       <div
         className="c2"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
       >
         <div
-          className="c14"
+          className="c11"
         >
           <div
             className="c4"
             disabled={false}
             onClick={[Function]}
+            style={
+              Object {
+                "paddingBottom": "1.6rem",
+                "paddingLeft": "3rem",
+                "paddingRight": "0rem",
+                "paddingTop": "1.6rem",
+              }
+            }
+            z={true}
           >
             <i
-              className="lugia-icon-direction_caret_right c5 c6"
+              className="lugia-icon-direction_caret_right   c5"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={
+                Object {
+                  "color": "#666",
+                  "fontSize": "1.4rem",
+                }
+              }
             />
-            LUGIA
-            <div
-              className="c7"
-              height={null}
-              open={true}
+            <span
+              className="c6"
+              style={Object {}}
             >
-              <i
-                className="lugia-icon-direction_caret_right c5 c6"
-              />
-            </div>
+              LUGIA
+            </span>
           </div>
           <div
-            className="c8"
+            className="c7"
             disabled={false}
             height={null}
             open={true}
           >
             <div
-              className="c9"
+              className="c8"
+              disabled={false}
+              style={Object {}}
             >
               <div>
                 PanelContent...
@@ -660,37 +1030,57 @@ exports[`Collapse Collapse CSS 1`] = `
       </div>
       <div
         className="c2"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
       >
         <div
-          className="c14"
+          className="c11"
         >
           <div
             className="c4"
             disabled={false}
             onClick={[Function]}
+            style={
+              Object {
+                "paddingBottom": "1.6rem",
+                "paddingLeft": "3rem",
+                "paddingRight": "0rem",
+                "paddingTop": "1.6rem",
+              }
+            }
+            z={true}
           >
             <i
-              className="lugia-icon-direction_caret_right c10 c6"
+              className="lugia-icon-direction_caret_right   c9"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={
+                Object {
+                  "color": "#666",
+                  "fontSize": "1.4rem",
+                }
+              }
             />
-            LUGIA
-            <div
-              className="c11"
-              height={null}
-              open={false}
+            <span
+              className="c6"
+              style={Object {}}
             >
-              <i
-                className="lugia-icon-direction_caret_right c10 c6"
-              />
-            </div>
+              LUGIA
+            </span>
           </div>
           <div
-            className="c12"
+            className="c10"
             disabled={false}
             height={null}
             open={false}
           >
             <div
-              className="c9"
+              className="c8"
+              disabled={false}
+              style={Object {}}
             >
               <div>
                 PanelContent...
@@ -709,9 +1099,12 @@ exports[`Collapse Collapse CSS 1`] = `
     </p>
     <div
       className="c1"
+      style={Object {}}
     >
       <div
         className="c2"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
       >
         <div
           className="c3"
@@ -720,29 +1113,47 @@ exports[`Collapse Collapse CSS 1`] = `
             className="c4"
             disabled={false}
             onClick={[Function]}
+            style={
+              Object {
+                "paddingBottom": "1.6rem",
+                "paddingLeft": "3rem",
+                "paddingRight": "0rem",
+                "paddingTop": "1.6rem",
+              }
+            }
+            z={true}
           >
             <i
-              className="lugia-icon-direction_caret_right c5 c6"
+              className="lugia-icon-direction_caret_right   c5"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={
+                Object {
+                  "color": "#666",
+                  "fontSize": "1.4rem",
+                }
+              }
             />
-            LUGIA
-            <div
-              className="c7"
-              height={null}
-              open={true}
+            <span
+              className="c6"
+              style={Object {}}
             >
-              <i
-                className="lugia-icon-direction_caret_right c5 c6"
-              />
-            </div>
+              LUGIA
+            </span>
           </div>
           <div
-            className="c8"
+            className="c7"
             disabled={false}
             height={null}
             open={true}
           >
             <div
-              className="c9"
+              className="c8"
+              disabled={false}
+              style={Object {}}
             >
               PanelContent...
             </div>
@@ -751,6 +1162,8 @@ exports[`Collapse Collapse CSS 1`] = `
       </div>
       <div
         className="c2"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
       >
         <div
           className="c3"
@@ -759,29 +1172,47 @@ exports[`Collapse Collapse CSS 1`] = `
             className="c4"
             disabled={false}
             onClick={[Function]}
+            style={
+              Object {
+                "paddingBottom": "1.6rem",
+                "paddingLeft": "3rem",
+                "paddingRight": "0rem",
+                "paddingTop": "1.6rem",
+              }
+            }
+            z={true}
           >
             <i
-              className="lugia-icon-direction_caret_right c10 c6"
+              className="lugia-icon-direction_caret_right   c9"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={
+                Object {
+                  "color": "#666",
+                  "fontSize": "1.4rem",
+                }
+              }
             />
-            LUGIA
-            <div
-              className="c11"
-              height={null}
-              open={false}
+            <span
+              className="c6"
+              style={Object {}}
             >
-              <i
-                className="lugia-icon-direction_caret_right c10 c6"
-              />
-            </div>
+              LUGIA
+            </span>
           </div>
           <div
-            className="c12"
+            className="c10"
             disabled={false}
             height={null}
             open={false}
           >
             <div
-              className="c9"
+              className="c8"
+              disabled={false}
+              style={Object {}}
             >
               PanelContent...
             </div>
@@ -794,9 +1225,12 @@ exports[`Collapse Collapse CSS 1`] = `
     </p>
     <div
       className="c1"
+      style={Object {}}
     >
       <div
         className="c2"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
       >
         <div
           className="c3"
@@ -805,35 +1239,56 @@ exports[`Collapse Collapse CSS 1`] = `
             className="c4"
             disabled={false}
             onClick={[Function]}
+            style={
+              Object {
+                "paddingBottom": "1.6rem",
+                "paddingLeft": "3rem",
+                "paddingRight": "0rem",
+                "paddingTop": "1.6rem",
+              }
+            }
+            z={true}
           >
             <i
-              className="lugia-icon-direction_caret_right c5 c6"
+              className="lugia-icon-direction_caret_right   c5"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={
+                Object {
+                  "color": "#666",
+                  "fontSize": "1.4rem",
+                }
+              }
             />
-            LUGIA
-            <div
-              className="c7"
-              height={null}
-              open={true}
+            <span
+              className="c6"
+              style={Object {}}
             >
-              <i
-                className="lugia-icon-direction_caret_right c5 c6"
-              />
-            </div>
+              LUGIA
+            </span>
           </div>
           <div
-            className="c8"
+            className="c7"
             disabled={false}
             height={null}
             open={true}
           >
             <div
-              className="c9"
+              className="c8"
+              disabled={false}
+              style={Object {}}
             >
               <div
                 className="c1"
+                style={Object {}}
               >
                 <div
                   className="c2"
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
                 >
                   <div
                     className="c3"
@@ -842,29 +1297,47 @@ exports[`Collapse Collapse CSS 1`] = `
                       className="c4"
                       disabled={false}
                       onClick={[Function]}
+                      style={
+                        Object {
+                          "paddingBottom": "1.6rem",
+                          "paddingLeft": "3rem",
+                          "paddingRight": "0rem",
+                          "paddingTop": "1.6rem",
+                        }
+                      }
+                      z={true}
                     >
                       <i
-                        className="lugia-icon-direction_caret_right c5 c6"
+                        className="lugia-icon-direction_caret_right   c5"
+                        onClick={[Function]}
+                        onMouseDown={[Function]}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
+                        onMouseUp={[Function]}
+                        style={
+                          Object {
+                            "color": "#666",
+                            "fontSize": "1.4rem",
+                          }
+                        }
                       />
-                      LUGIA
-                      <div
-                        className="c7"
-                        height={null}
-                        open={true}
+                      <span
+                        className="c6"
+                        style={Object {}}
                       >
-                        <i
-                          className="lugia-icon-direction_caret_right c5 c6"
-                        />
-                      </div>
+                        LUGIA
+                      </span>
                     </div>
                     <div
-                      className="c8"
+                      className="c7"
                       disabled={false}
                       height={null}
                       open={true}
                     >
                       <div
-                        className="c9"
+                        className="c8"
+                        disabled={false}
+                        style={Object {}}
                       >
                         <div>
                           PanelContent...
@@ -878,6 +1351,8 @@ exports[`Collapse Collapse CSS 1`] = `
                 </div>
                 <div
                   className="c2"
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
                 >
                   <div
                     className="c3"
@@ -886,29 +1361,47 @@ exports[`Collapse Collapse CSS 1`] = `
                       className="c4"
                       disabled={false}
                       onClick={[Function]}
+                      style={
+                        Object {
+                          "paddingBottom": "1.6rem",
+                          "paddingLeft": "3rem",
+                          "paddingRight": "0rem",
+                          "paddingTop": "1.6rem",
+                        }
+                      }
+                      z={true}
                     >
                       <i
-                        className="lugia-icon-direction_caret_right c10 c6"
+                        className="lugia-icon-direction_caret_right   c9"
+                        onClick={[Function]}
+                        onMouseDown={[Function]}
+                        onMouseEnter={[Function]}
+                        onMouseLeave={[Function]}
+                        onMouseUp={[Function]}
+                        style={
+                          Object {
+                            "color": "#666",
+                            "fontSize": "1.4rem",
+                          }
+                        }
                       />
-                      LUGIA
-                      <div
-                        className="c11"
-                        height={null}
-                        open={false}
+                      <span
+                        className="c6"
+                        style={Object {}}
                       >
-                        <i
-                          className="lugia-icon-direction_caret_right c10 c6"
-                        />
-                      </div>
+                        LUGIA
+                      </span>
                     </div>
                     <div
-                      className="c12"
+                      className="c10"
                       disabled={false}
                       height={null}
                       open={false}
                     >
                       <div
-                        className="c9"
+                        className="c8"
+                        disabled={false}
+                        style={Object {}}
                       >
                         <div>
                           PanelContent...
@@ -927,6 +1420,8 @@ exports[`Collapse Collapse CSS 1`] = `
       </div>
       <div
         className="c2"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
       >
         <div
           className="c3"
@@ -935,29 +1430,47 @@ exports[`Collapse Collapse CSS 1`] = `
             className="c4"
             disabled={false}
             onClick={[Function]}
+            style={
+              Object {
+                "paddingBottom": "1.6rem",
+                "paddingLeft": "3rem",
+                "paddingRight": "0rem",
+                "paddingTop": "1.6rem",
+              }
+            }
+            z={true}
           >
             <i
-              className="lugia-icon-direction_caret_right c10 c6"
+              className="lugia-icon-direction_caret_right   c9"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={
+                Object {
+                  "color": "#666",
+                  "fontSize": "1.4rem",
+                }
+              }
             />
-            LUGIA
-            <div
-              className="c11"
-              height={null}
-              open={false}
+            <span
+              className="c6"
+              style={Object {}}
             >
-              <i
-                className="lugia-icon-direction_caret_right c10 c6"
-              />
-            </div>
+              LUGIA
+            </span>
           </div>
           <div
-            className="c12"
+            className="c10"
             disabled={false}
             height={null}
             open={false}
           >
             <div
-              className="c9"
+              className="c8"
+              disabled={false}
+              style={Object {}}
             >
               <div>
                 PanelContent...
