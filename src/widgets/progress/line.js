@@ -7,8 +7,8 @@
  */
 import * as React from 'react';
 import type { ProgressProps, ProgressState } from '../css/progress-line';
+import { deepMerge } from '@lugia/object-utils';
 import {
-  Icons,
   InsideText,
   ProgressBackground,
   ProgressLine,
@@ -16,48 +16,76 @@ import {
   Wrap,
   handlePercent,
 } from '../css/progress-line';
+import Icon from '../icon';
+import colorsFunc from '../css/stateColor';
+
+type LineProps = {
+  getIconTheme: Function,
+} & ProgressProps;
+const { successColor, dangerColor, mediumGreyColor } = colorsFunc();
 
 export const getText = (inside?: boolean, props: Object) => {
-  const { percent = 0, format, hasFormat = false, getPartOfThemeProps } = props;
+  const { percent = 0, format, hasFormat = false, getIconTheme } = props;
 
   if (hasFormat && typeof format === 'function') {
     return format(percent);
   }
 
   const { status = 'default', size = 'default', type = 'line' } = props;
-  const config = { size, type };
-  const SuccessIconTheme = getPartOfThemeProps(
-    type === 'line'
-      ? 'ProgressLineSuccessIcon'
-      : type === 'circle'
-      ? 'ProgressCircleSuccessIcon'
-      : 'ProgressDashboardSuccessIcon'
-  );
-  const ErrorIconTheme = getPartOfThemeProps(
-    type === 'line'
-      ? 'ProgressLineErrorIcon'
-      : type === 'circle'
-      ? 'ProgressCircleErrorIcon'
-      : 'ProgressDashboardErrorIcon'
-  );
-  SuccessIconTheme.propsConfig = { size, status, type };
-  ErrorIconTheme.propsConfig = { size, status, type };
+  let iconFont;
+  if (type === 'circle' || type === 'dashboard') {
+    iconFont = size === 'small' ? 26 : 40;
+  } else {
+    iconFont = size === 'small' ? 12 : 14;
+  }
+
+  const iconColor =
+    status === 'error' ? dangerColor : status === 'success' ? successColor : mediumGreyColor;
+  const iconDefaultTheme = {
+    normal: {
+      cursor: 'default',
+      fontSize: iconFont,
+      color: iconColor,
+      getCSS() {
+        return `
+          vertical-align: middle !important;
+        `;
+      },
+    },
+  };
 
   if (status === 'error') {
+    const { viewClass, theme } = getIconTheme('error');
+    const iconTheme = deepMerge(
+      {
+        [viewClass]: iconDefaultTheme,
+      },
+      theme
+    );
+    console.log(iconDefaultTheme);
+    console.log(theme);
+    console.log(iconTheme);
     return (
-      <Icons
-        {...config}
-        themeProps={ErrorIconTheme}
+      <Icon
+        viewClass={viewClass}
+        theme={iconTheme}
         iconClass={inside ? 'lugia-icon-reminder_close' : 'lugia-icon-reminder_close_circle'}
       />
     );
   }
 
   if (status === 'success' || percent >= 100) {
+    const { viewClass, theme } = getIconTheme('success');
+    const iconTheme = deepMerge(
+      {
+        [viewClass]: iconDefaultTheme,
+      },
+      theme
+    );
     return (
-      <Icons
-        {...config}
-        themeProps={SuccessIconTheme}
+      <Icon
+        viewClass={viewClass}
+        theme={iconTheme}
         iconClass={inside ? 'lugia-icon-reminder_check' : 'lugia-icon-reminder_check_circle'}
       />
     );
@@ -77,7 +105,7 @@ export const getStatus = (props: Object) => {
   return status;
 };
 
-export default class extends React.Component<ProgressProps, ProgressState> {
+export default class extends React.Component<LineProps, ProgressState> {
   render() {
     const {
       type = 'line',
@@ -159,7 +187,7 @@ export default class extends React.Component<ProgressProps, ProgressState> {
       status = 'default',
       size = 'default',
       type = 'line',
-      getPartOfThemeProps,
+      getIconTheme,
     } = this.props;
 
     return getText(inside, {
@@ -169,7 +197,7 @@ export default class extends React.Component<ProgressProps, ProgressState> {
       status,
       size,
       type,
-      getPartOfThemeProps,
+      getIconTheme,
     });
   };
 

@@ -123,7 +123,7 @@ export default class ProgressDemo extends React.Component<any, any> {
         ProgressLineSuccessIcon: {
           normal: {
             fontSize: 16,
-            color: 'red',
+            color: 'yellow',
           },
         },
         ProgressLineErrorIcon: {
@@ -301,9 +301,11 @@ export default class ProgressDemo extends React.Component<any, any> {
           <Theme config={CircleView}>
             <Progress type="circle" percent={0} />
           </Theme>
+          <p>theme</p>
           <Theme config={CircleView}>
             <Progress type="circle" status="error" percent={0} />
           </Theme>
+          <p>theme</p>
           <Theme config={CircleView}>
             <Progress type="circle" percent={100} />
           </Theme>

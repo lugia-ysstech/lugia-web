@@ -19,12 +19,16 @@ import {
   ModalBody,
   ModalFooter,
   ModalClose,
-  Icons,
-  BigIcons,
   IconInfo,
+  getIconColor,
 } from '../css/modal';
 import type { ModalProps, ModalState } from '../css/modal';
 import Button from '../button';
+import Icon from '../icon';
+import { px2remcss } from '../css/units';
+import { getIconCursor, getIconStyle } from '../css/button';
+import { deepMerge } from '@lugia/object-utils';
+import { getPosition, TypeCSS } from '../css/alert';
 
 const BtnType = {
   confirm: 'warning',
@@ -60,6 +64,54 @@ export default ThemeProvider(
       }
     }
 
+    getCloseIconTheme = () => {
+      const { getPartOfThemeHocProps } = this.props;
+      const { viewClass, theme } = getPartOfThemeHocProps('ModalCloseIcon');
+      const iconTheme = deepMerge(
+        {
+          [viewClass]: {
+            normal: {
+              fontSize: 16,
+            },
+          },
+        },
+        theme
+      );
+
+      return {
+        viewClass,
+        theme: iconTheme,
+      };
+    };
+
+    getIconTheme = () => {
+      const { getPartOfThemeHocProps, iconType = 'info' } = this.props;
+      const { viewClass, theme } = getPartOfThemeHocProps('ModalIcon');
+      const iconTheme = deepMerge(
+        {
+          [viewClass]: {
+            normal: {
+              fontSize: 20,
+              color: getIconColor({ iconType }),
+              getCSS() {
+                return `
+                  position: absolute;
+                  left: ${px2remcss(22)};
+                  top: ${px2remcss(28)};
+                `;
+              },
+            },
+          },
+        },
+        theme
+      );
+
+      return {
+        viewClass,
+        theme: iconTheme,
+      };
+    };
+
     render() {
       const {
         title,
@@ -73,6 +125,7 @@ export default ThemeProvider(
         getTheme,
         mask = true,
         getPartOfThemeProps,
+        getPartOfThemeHocProps,
       } = this.props;
       const { visible = false, closing, opening } = this.state;
       const view = {
@@ -91,8 +144,6 @@ export default ThemeProvider(
       };
       const ModalTitleTheme = getPartOfThemeProps('ModalTitle');
       const ModalBodyTextTheme = getPartOfThemeProps('ModalContentText');
-      const ModalCloseIconTheme = getPartOfThemeProps('ModalCloseIcon');
-      const ModalIconTheme = getPartOfThemeProps('ModalIcon');
       return (
         <Wrap visible={closing ? true : visible}>
           {mask ? (
@@ -102,14 +153,10 @@ export default ThemeProvider(
             <Modal closing={closing} opening={opening} themeProps={ModalWrapTheme}>
               <ModalContent showIcon={showIcon} theme={getTheme()} themeProps={ModalWrapTheme}>
                 {showIcon ? (
-                  <BigIcons
-                    themeProps={ModalIconTheme}
-                    iconClass={IconInfo[iconType].class}
-                    iconType={iconType}
-                  />
+                  <Icon iconClass={IconInfo[iconType].class} {...this.getIconTheme()} />
                 ) : (
                   <ModalClose onClick={this.handleCancel}>
-                    <Icons themeProps={ModalCloseIconTheme} iconClass="lugia-icon-reminder_close" />
+                    <Icon {...this.getCloseIconTheme()} iconClass="lugia-icon-reminder_close" />
                   </ModalClose>
                 )}
                 {title !== null && <ModalTitle themeProps={ModalTitleTheme}>{title}</ModalTitle>}
@@ -120,12 +167,22 @@ export default ThemeProvider(
                 ) : (
                   <ModalFooter>
                     <Theme config={view}>
-                      <Button onClick={this.handleOk} loading={confirmLoading} {...footerBtnProps}>
+                      <Button
+                        onClick={this.handleOk}
+                        loading={confirmLoading}
+                        {...footerBtnProps}
+                        {...getPartOfThemeHocProps('ModalOkButton')}
+                      >
                         {okText}
                       </Button>
                     </Theme>
                     <Theme config={view}>
-                      <Button onClick={this.handleCancel}>{cancelText}</Button>
+                      <Button
+                        onClick={this.handleCancel}
+                        {...getPartOfThemeHocProps('ModalCancelButton')}
+                      >
+                        {cancelText}
+                      </Button>
                     </Theme>
                   </ModalFooter>
                 )}

@@ -52,26 +52,10 @@ export default class AffixDemo extends React.Component<any, any> {
               bottom: 10,
             },
             margin: {
-              right: 10,
+              right: 0,
               left: 0,
               top: 0,
-              bottom: 10,
-            },
-          },
-          hover: {
-            color: 'red',
-            fontSize: 16,
-            padding: {
-              right: 10,
-              left: 10,
-              top: 10,
-              bottom: 10,
-            },
-            margin: {
-              right: 10,
-              left: 0,
-              top: 0,
-              bottom: 10,
+              bottom: 0,
             },
           },
         },
