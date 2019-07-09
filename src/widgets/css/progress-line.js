@@ -7,7 +7,6 @@ import { css, keyframes } from 'styled-components';
 import CSSComponent from '@lugia/theme-css-hoc';
 import colorsFunc from '../css/stateColor';
 import { px2remcss } from './units';
-import Icon from '../icon';
 
 type StatusType = 'success' | 'error' | 'default';
 
@@ -248,32 +247,6 @@ export const ProgressText = CSSComponent({
   },
 });
 
-// export const Icons = CSSComponent({
-//   className: 'alert-icon',
-//   extend: Icon,
-//   normal: {
-//     selectNames: [['color'], ['fontSize']],
-//     defaultTheme: {
-//       fontSize: 14,
-//       cursor: 'default',
-//     },
-//     getThemeMeta(themeMeta, themeProps) {
-//       const { propsConfig = {} } = themeProps;
-//       const { status } = propsConfig;
-//
-//       return {
-//         color: getTextColor(status),
-//         fontSize: getTextFont(propsConfig),
-//       };
-//     },
-//   },
-//   css: css`
-//     cursor: default;
-//     vertical-align: middle !important;
-//     ${getTextFont};
-//   `,
-// });
-
 const getMinWidth = (props: CSSProps) => {
   const { size, type } = props;
   if (type === 'line') {
@@ -285,7 +258,7 @@ const getMinWidth = (props: CSSProps) => {
 
 export const Wrap = CSSComponent({
   tag: 'div',
-  className: 'progress-line-wrap',
+  className: 'progressLineWrap',
   css: css`
     font-size: ${getWrapFontSize}rem;
     ${getMinWidth};
@@ -300,7 +273,7 @@ export const Wrap = CSSComponent({
 
 export const InsideText = CSSComponent({
   tag: 'span',
-  className: 'progress-inside-text',
+  className: 'ProgressInsideText',
   css: css`
     text-align: left;
     margin: 0 ${px2remcss(6)};
