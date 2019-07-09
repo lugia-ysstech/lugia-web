@@ -217,32 +217,6 @@ export default class ModalDemo extends React.Component<any, any> {
         </Modal>
         <br />
         <br />
-        <Button onClick={this.Click(5)}>ThemeModal</Button>
-        <Theme config={{ [Widgets.Modal]: { padding: 50 } }}>
-          <Modal
-            visible={visable5}
-            onOk={this.loadingClick(5)}
-            title="这是标题！"
-            onCancel={this.buttonClick(5)}
-          >
-            这是内容！
-          </Modal>
-        </Theme>
-        <br />
-        <br />
-        <Button onClick={this.Click(6)}>ThemeModal</Button>
-        <Theme config={{ [Widgets.Modal]: { padding: { left: 100, right: 100 } } }}>
-          <Modal
-            visible={visable6}
-            onOk={this.loadingClick(6)}
-            title="这是标题！"
-            onCancel={this.buttonClick(6)}
-          >
-            这是内容！
-          </Modal>
-        </Theme>
-        <br />
-        <br />
         <Button
           onClick={() =>
             Modal.confirm({

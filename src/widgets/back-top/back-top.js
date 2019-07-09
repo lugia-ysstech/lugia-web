@@ -8,10 +8,10 @@
 import * as React from 'react';
 import { addMouseEvent } from '@lugia/theme-hoc';
 import ThemeProvider from '../theme-provider';
-import Theme from '../theme';
+import Icon from '../icon';
 import Widget from '../consts/index';
 import { getScrollTop } from '../affix/affix';
-import { BackTop, BackTopContent, IconBox, Icons } from '../css/back-top';
+import { BackTop, BackTopContent, IconBox } from '../css/back-top';
 import type { BackTopProps, BackTopState } from '../css/back-top';
 
 export default ThemeProvider(
@@ -141,11 +141,7 @@ export default ThemeProvider(
               ) : (
                 <BackTopContent themeProps={getPartOfThemeProps('BackTopContent')}>
                   <IconBox themeProps={themeProps} {...addMouseEvent(this)}>
-                    <Icons
-                      iconClass={icon}
-                      {...getPartOfThemeHocProps('BackTopIcon')}
-                      {...addMouseEvent(this)}
-                    />
+                    <Icon iconClass={icon} {...getPartOfThemeHocProps('BackTopIcon')} />
                   </IconBox>
                 </BackTopContent>
               )}

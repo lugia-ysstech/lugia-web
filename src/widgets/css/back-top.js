@@ -5,7 +5,6 @@
  */
 import styled, { css, keyframes } from 'styled-components';
 import { getBorder } from '@lugia/theme-utils';
-import ThemeHoc from '@lugia/theme-hoc';
 import colorsFunc from '../css/stateColor';
 import { px2remcss } from './units';
 import Icon from '../icon';
@@ -130,28 +129,3 @@ export const IconBox = CSSComponent({
     transform: translate(-50%, -50%);
   `,
 });
-
-export const Icons = ThemeHoc(
-  CSSComponent({
-    className: 'back-top-icon',
-    extend: Icon,
-    normal: {
-      selectNames: [['color'], ['fontSize'], ['margin'], ['padding']],
-      defaultTheme: {
-        margin: 0,
-        padding: 0,
-      },
-    },
-    hover: {
-      selectNames: [['color'], ['fontSize'], ['margin'], ['padding']],
-    },
-    css: css`
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    `,
-  }),
-  'BackTopIcon',
-  { hover: true, active: false }
-);

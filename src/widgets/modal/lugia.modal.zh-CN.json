@@ -49,5 +49,36 @@
       "args": []
     }
   },
-  "category": ["反馈"]
+  "category": ["反馈"],
+  "theme": {
+    "ModalWrap": {
+      "name": "弹窗整体样式",
+      "desc": "为弹窗配置整体样式",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["opacity"],
+        ["boxShadow"],
+        ["borderRadius"],
+        ["border"],
+        ["background"],
+        ["padding"]
+      ]
+    },
+    "ModalTitle": {
+      "name": "弹窗标题样式",
+      "desc": "为弹窗文字配置样式",
+      "normal": [["font"], ["color"], ["padding"]]
+    },
+    "ModalContentText": {
+      "name": "弹窗内容文本样式",
+      "desc": "为弹窗内容文本配置样式",
+      "normal": [["font"], ["color"], ["padding"]]
+    },
+    "ModalCloseIcon": {
+      "name": "弹窗关闭图标样式",
+      "desc": "为弹窗关闭图标配置样式",
+      "normal": [["fontSize"], ["color"]]
+    }
+  }
 }

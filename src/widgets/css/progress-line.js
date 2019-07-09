@@ -7,7 +7,6 @@ import { css, keyframes } from 'styled-components';
 import CSSComponent from '@lugia/theme-css-hoc';
 import colorsFunc from '../css/stateColor';
 import { px2remcss } from './units';
-import Icon from '../icon';
 
 type StatusType = 'success' | 'error' | 'default';
 
@@ -129,9 +128,16 @@ const getHeight = (propsConfig: Object) => {
   }
   return 8;
 };
+const getLineHeight = (height: number | string) => {
+  if (typeof height === 'number') {
+    return px2remcss(height);
+  }
+
+  return height;
+};
 export const ProgressBackground = CSSComponent({
   tag: 'div',
-  className: 'progress-line-wrap',
+  className: 'ProgressInnerLine',
   css: css`
     transition: all 0.3s;
     ${getBackGroundWidth};
@@ -160,9 +166,13 @@ export const ProgressBackground = CSSComponent({
     },
     getCSS(themeMeta, themeProps): string {
       const { propsConfig = {} } = themeProps;
+      const { height } = themeMeta;
+      const lineHeight = height ? getLineHeight(height) : px2remcss(getHeight(propsConfig));
+      console.log(lineHeight);
       const { active } = propsConfig;
       if (active) {
         return css`
+          line-height: ${lineHeight};
           &::before {
             content: '';
             opacity: 0;
@@ -177,7 +187,7 @@ export const ProgressBackground = CSSComponent({
           }
         `;
       }
-      return '';
+      return `line-height: ${lineHeight};`;
     },
   },
 });
@@ -237,32 +247,6 @@ export const ProgressText = CSSComponent({
   },
 });
 
-export const Icons = CSSComponent({
-  className: 'alert-icon',
-  extend: Icon,
-  normal: {
-    selectNames: [['color'], ['fontSize']],
-    defaultTheme: {
-      fontSize: 14,
-      cursor: 'default',
-    },
-    getThemeMeta(themeMeta, themeProps) {
-      const { propsConfig = {} } = themeProps;
-      const { status } = propsConfig;
-
-      return {
-        color: getTextColor(status),
-        fontSize: getTextFont(propsConfig),
-      };
-    },
-  },
-  css: css`
-    cursor: default;
-    vertical-align: middle !important;
-    ${getTextFont};
-  `,
-});
-
 const getMinWidth = (props: CSSProps) => {
   const { size, type } = props;
   if (type === 'line') {
@@ -274,7 +258,7 @@ const getMinWidth = (props: CSSProps) => {
 
 export const Wrap = CSSComponent({
   tag: 'div',
-  className: 'progress-line-wrap',
+  className: 'progressLineWrap',
   css: css`
     font-size: ${getWrapFontSize}rem;
     ${getMinWidth};
@@ -289,14 +273,12 @@ export const Wrap = CSSComponent({
 
 export const InsideText = CSSComponent({
   tag: 'span',
-  className: 'progress-inside-text',
+  className: 'ProgressInsideText',
   css: css`
-    display: inline-block;
     text-align: left;
     margin: 0 ${px2remcss(6)};
     white-space: nowrap;
     word-break: normal;
-    vertical-align: bottom;
   `,
   normal: {
     selectNames: [['color'], ['font']],
