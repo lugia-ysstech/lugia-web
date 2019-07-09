@@ -7,22 +7,22 @@
 import '../common/shirm';
 import React, { Component } from 'react';
 import Widget from '../consts/index';
-import { TabType, TabPositionType, CardMarginRight } from '../css/tabs';
+import { TabType, TabPositionType } from '../css/tabs';
 import Icon from '../icon';
 import { isVertical, matchType } from './utils';
 import { ObjectUtils } from '@lugia/type-utils';
 
-import CSSComponent, { css, keyframes, getBorder } from '@lugia/theme-css-hoc';
+import CSSComponent, { css, keyframes } from '@lugia/theme-css-hoc';
 import ThemeHoc from '@lugia/theme-hoc';
 
-import { addMouseEvent } from '@lugia/theme-hoc';
 import { deepMerge } from '@lugia/object-utils';
 import colorsFunc from '../css/stateColor';
-import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 
-const { themeColor, mediumGreyColor, superLightColor, disableColor } = colorsFunc();
+import { getBorder } from '@lugia/theme-utils';
 
-const BaseTabHoc = CSSComponent({
+const { themeColor, disableColor } = colorsFunc();
+
+const BaseTab = CSSComponent({
   tag: 'div',
   className: 'DefaultTabPan',
   normal: {
@@ -105,18 +105,14 @@ const BaseTabHoc = CSSComponent({
     },
     getCSS: (theme: Object, themeProps: Object) => {
       const {
-        propsConfig: { tabType },
+        propsConfig: { tabType, showDeleteBtn },
       } = themeProps;
       let cssString = `
         & > span {
           opacity: 1;
         }
-         &  > div {
-          background: 'red';
-        }
-       
       `;
-      if (tabType === 'card') {
+      if (tabType === 'card' && showDeleteBtn === true) {
         cssString += ` & > div {
           transition: all 0.3s linear;
           transform: translateX(-3px);
@@ -128,16 +124,13 @@ const BaseTabHoc = CSSComponent({
     },
   },
   disabled: {
-    selectNames: [],
+    selectNames: [['color'], ['cursor']],
     defaultTheme: {
       cursor: 'not-allowed',
-      color: '#999',
+      color: 'yellow',
     },
-    getCSS: (theme: Object, themeProps: Object) => {
-      const { color } = theme;
+    getCSS(theme: Object, themeProps: Object) {
       return css`
-        color: ${color || '#999'};
-
         & > div.lineTitle::before {
           content: '';
           width: 0;
@@ -156,18 +149,15 @@ const BaseTabHoc = CSSComponent({
     white-space: nowrap;
     padding: 0 20px;
   `,
+  option: { hover: true },
 });
-
-const BaseTab = ThemeHoc(BaseTabHoc, 'BaseTab', { hover: true, active: false });
 
 BaseTab.displayName = 'Tabpane';
 
-const SelectTabHoc = CSSComponent({
-  extend: BaseTabHoc,
+const SelectTab = CSSComponent({
+  extend: BaseTab,
   className: 'SelectTabPan',
 });
-
-const SelectTab = ThemeHoc(SelectTabHoc, 'SelectTab', { hover: true, active: false });
 
 const addWidth = keyframes`
     0% {
@@ -219,6 +209,9 @@ const Title = CSSComponent({
     selectNames: [['color']],
     defaultTheme: {
       color: disableColor,
+    },
+    getThemeMeta: (theme: Object, themeProps: Object) => {
+      // console.log('disabled !!!',theme,themeProps.propsConfig.disabled,themeProps,themeProps.themeState.disabled);
     },
   },
   css: css`
@@ -272,36 +265,6 @@ const CardTitle = CSSComponent({
   `,
 });
 
-const TabIcon = CSSComponent({
-  extend: Icon,
-  className: 'TabIcon',
-  css: css`
-    vertical-align: middle !important;
-    display: inline-block;
-  `,
-  normal: {
-    selectNames: [['color'], ['margin']],
-    defaultTheme: {
-      margin: {
-        left: 4,
-        right: 4,
-      },
-    },
-  },
-  hover: {
-    selectNames: [],
-  },
-  disabled: {
-    selectNames: [['color']],
-    defaultTheme: {
-      color: disableColor,
-    },
-    getCSS: (theme: Object, themeProps: Object) => {
-      return 'cursor: not-allowed';
-    },
-  },
-});
-
 const ClearButtonContainer = CSSComponent({
   tag: 'span',
   className: 'IconContainer',
@@ -331,35 +294,6 @@ const ClearButtonContainer = CSSComponent({
   },
 });
 
-const ClearIcon = ThemeHoc(
-  CSSComponent({
-    extend: Icon,
-    className: 'ClearIcon',
-    css: css`
-      font-size: 1rem;
-    `,
-    normal: {
-      selectNames: [['color']],
-    },
-    hover: {
-      selectNames: [['color']],
-      defaultTheme: {
-        color: mediumGreyColor,
-      },
-    },
-    disabled: {
-      selectNames: [['cursor']],
-      getCSS: (theme: Object, themeProps: Object) => {
-        return 'cursor: not-allowed';
-      },
-    },
-  }),
-  'ClearIcon',
-  { hover: true, active: false }
-);
-
-ClearIcon.displayName = 'deleteIcon';
-
 type TabpaneState = {
   iconClass: string,
 };
@@ -376,9 +310,8 @@ type TabpaneProps = {
   disabled?: boolean,
   showDeleteBtn?: boolean,
   onClick?: Function,
-  onMouseEnter?: Function,
-  onMouseLeave?: Function,
-  getTabpaneWidthOrHeight?: Function,
+  onMouseIn?: Function,
+  onMouseOut?: Function,
   themeProps: Object,
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
@@ -387,11 +320,9 @@ type TabpaneProps = {
 class Tabpane extends Component<TabpaneProps, TabpaneState> {
   static defaultProps = {};
   static displayName = Widget.Tabpane;
-  tabpane: any;
 
   constructor(props: TabpaneProps) {
     super(props);
-    this.tabpane = React.createRef();
   }
 
   static getDerivedStateFromProps(nextProps: TabpaneProps, state: TabpaneState) {
@@ -403,52 +334,59 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
   }
 
   render() {
-    const { title, tabType, tabPosition, isSelect, icon, suffixIcon, disabled } = this.props;
-
-    const { TargetTab, theme, viewClass, titleThemeProps } = this.getHTabPaneThemeProps(
+    const {
+      title,
       tabType,
-      isSelect
+      tabPosition,
+      isSelect,
+      icon,
+      suffixIcon,
+      disabled,
+      showDeleteBtn,
+    } = this.props;
+
+    const { TargetTab, themeProps, iconThemes } = this.getHTabPaneThemeProps(
+      tabType,
+      isSelect,
+      tabPosition,
+      showDeleteBtn,
+      disabled
     );
-    // console.log('nextProps', title,isSelect,viewClass,theme);
-    // const titleThemeProps = this.props.getPartOfThemeProps('DefaultTabPan');
+
     let Target = (
       <TargetTab
-        propsConfig={{ tabType, tabPosition, isSelect }}
-        theme={theme}
-        viewClass={viewClass}
+        themeProps={themeProps}
         disabled={disabled}
         tabType={tabType}
         onClick={this.handleClick}
         isSelect={isSelect}
         tabPosition={tabPosition}
-        ref={this.tabpane}
-        {...addMouseEvent(this, { enter: this.onMouseEnter, leave: this.onMouseLeave })}
-        // onMouseEnter={this.onMouseEnter}
-        // onMouseLeave={this.onMouseLeave}
+        onMouseEnter={this.onMouseEnter}
+        onMouseLeave={this.onMouseLeave}
       >
         {tabType === 'line' ? (
           <Title
             className={'lineTitle'}
-            themeProps={titleThemeProps}
+            themeProps={themeProps}
             tabType={tabType}
             isSelect={isSelect}
             disabled={disabled}
           >
-            {this.getTabIconContainer(icon, titleThemeProps)}
+            {this.getTabIconContainer(icon, iconThemes)}
             {title}
-            {this.getTabIconContainer(suffixIcon, titleThemeProps)}
+            {this.getTabIconContainer(suffixIcon, iconThemes)}
           </Title>
         ) : (
           <CardTitle
             className={'cardTitle'}
-            themeProps={titleThemeProps}
+            themeProps={themeProps}
             tabType={tabType}
             isSelect={isSelect}
             disabled={disabled}
           >
-            {this.getTabIconContainer(icon, titleThemeProps)}
+            {this.getTabIconContainer(icon, iconThemes)}
             {title}
-            {this.getTabIconContainer(suffixIcon, titleThemeProps)}
+            {this.getTabIconContainer(suffixIcon, iconThemes)}
           </CardTitle>
         )}
 
@@ -458,27 +396,23 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     if (matchType(tabType, 'line') && isVertical(tabPosition)) {
       Target = (
         <TargetTab
-          propsConfig={{ tabType, tabPosition, isSelect }}
-          theme={theme}
-          viewClass={viewClass}
+          themeProps={themeProps}
           disabled={disabled}
           tabType={tabType}
           onClick={this.handleClick}
           tabPosition={tabPosition}
           isSelect={isSelect}
-          ref={this.tabpane}
-          {...addMouseEvent(this, { enter: this.onMouseEnter, leave: this.onMouseLeave })}
-          // onMouseEnter={this.onMouseEnter}
-          // onMouseLeave={this.onMouseLeave}
+          onMouseEnter={this.onMouseEnter}
+          onMouseLeave={this.onMouseLeave}
         >
           <Title
             className={'lineTitle'}
-            themeProps={titleThemeProps}
+            themeProps={themeProps}
             tabType={tabType}
             isSelect={isSelect}
             disabled={disabled}
           >
-            {this.getTabIconContainer(icon, titleThemeProps)}
+            {this.getTabIconContainer(icon, iconThemes)}
             {title}
           </Title>
         </TargetTab>
@@ -487,30 +421,50 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     return Target;
   }
 
-  getHTabPaneThemeProps(tabType: ?string, isSelect: ?boolean) {
-    const { viewClass: defaultViewClass, theme: defaultTheme } = this.props.getPartOfThemeHocProps(
-      'DefaultTabPan'
-    );
-    const { viewClass: selectViewClass, theme: selectTheme } = this.props.getPartOfThemeHocProps(
-      'SelectTabPan'
-    );
-    const titleThemeProps = this.props.getPartOfThemeProps('DefaultTabPan');
+  getHTabPaneThemeProps(
+    tabType: ?string,
+    isSelect: ?boolean,
+    tabPosition: ?string,
+    showDeleteBtn: ?boolean,
+    disabled: ?boolean
+  ) {
+    let titleThemeProps = this.props.getPartOfThemeProps('DefaultTabPan', {
+      props: { isSelect, tabType, tabPosition, showDeleteBtn, disabled },
+    });
+    let { theme, viewClass } = this.props.getPartOfThemeHocProps('DefaultTabPan');
+    const themeObj = {
+      [viewClass]: {
+        normal: {
+          getThemeMeta: (theme: Object, themeProps: Object) => {
+            return { margin: { left: 4, right: 4 } };
+          },
+        },
+        disabled: {
+          getThemeMeta: (theme: Object, themeProps: Object) => {
+            return { cursor: 'not-allowed', color: disableColor };
+          },
+        },
+      },
+    };
+    theme = deepMerge(theme, themeObj);
+
+    let selectThemeProps = this.props.getPartOfThemeProps('SelectTabPan', {
+      props: { isSelect, tabType, tabPosition, showDeleteBtn, disabled },
+    });
     const baseDefaultTab = BaseTab;
-    let baseDefaultTheme = defaultTheme;
-    const baseDefaultViewClass = defaultViewClass;
-    let baseSelectTheme = deepMerge(
-      { [selectViewClass]: defaultTheme[defaultViewClass] },
-      selectTheme
-    );
     switch (tabType) {
       case 'card':
         const targetObj = {
-          [baseDefaultViewClass]: {
+          themeConfig: {
             normal: {
               border: getBorder(
                 { color: '#e8e8e8', width: 1, style: 'solid' },
-                { directions: ['l', 'r', 't'], radius: 4, radiusDirections: ['tl', 'tr'] }
+                { directions: ['l', 'r', 't'] }
               ),
+              borderRadius: {
+                topLeft: 4,
+                topRight: 4,
+              },
               margin: {
                 left: 4,
                 right: 4,
@@ -521,9 +475,9 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
             },
           },
         };
-        baseDefaultTheme = deepMerge(targetObj, baseDefaultTheme);
+        titleThemeProps = deepMerge(targetObj, titleThemeProps);
         const cardSelectObj = {
-          [selectViewClass]: {
+          themeConfig: {
             normal: {
               margin: {
                 left: 4,
@@ -531,33 +485,40 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
               },
               border: getBorder(
                 { color: '#e8e8e8', width: 1, style: 'solid' },
-                { directions: ['l', 'r', 't'], radius: 4, radiusDirections: ['tl', 'tr'] }
+                { directions: ['l', 'r', 't'] }
               ),
+              borderRadius: {
+                topLeft: 4,
+                topRight: 4,
+              },
             },
           },
         };
-        baseSelectTheme = deepMerge(cardSelectObj, baseSelectTheme);
+        selectThemeProps = deepMerge(cardSelectObj, selectThemeProps);
         break;
       case 'window':
         const windowSelectObj = {
-          [selectViewClass]: {
+          themeConfig: {
             normal: {
-              border: getBorder({ border: 'none' }, { radius: 4, radiusDirections: ['tl', 'tr'] }),
+              border: getBorder({ border: 'none' }),
+              borderRadius: {
+                topLeft: 4,
+                topRight: 4,
+              },
               background: {
                 color: '#fff',
               },
             },
           },
         };
-        baseSelectTheme = deepMerge(windowSelectObj, baseSelectTheme);
+        selectThemeProps = deepMerge(windowSelectObj, selectThemeProps);
         break;
       default:
         break;
     }
     const TargetTab = isSelect ? SelectTab : baseDefaultTab;
-    const theme = isSelect ? baseSelectTheme : baseDefaultTheme;
-    const viewClass = isSelect ? selectViewClass : baseDefaultViewClass;
-    return { TargetTab, theme, viewClass, titleThemeProps };
+    const themeProps = isSelect ? selectThemeProps : titleThemeProps;
+    return { TargetTab, themeProps, iconThemes: { theme, viewClass } };
   }
 
   componentDidMount() {}
@@ -573,10 +534,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
   getIcon(icon: string, themeProps: Object) {
     const { isSelect, disabled } = this.props;
     if (ObjectUtils.isString(icon)) {
-      // const { viewClass, theme } = themeProps;
-      return (
-        <TabIcon themeProps={themeProps} isSelect={isSelect} iconClass={icon} disabled={disabled} />
-      );
+      return <Icon {...themeProps} isSelect={isSelect} iconClass={icon} disabled={disabled} />;
     }
     return icon;
   }
@@ -585,24 +543,24 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     onDelete && onDelete(index);
   };
   getClearButton() {
-    const { tabType, themeProps, disabled, showDeleteBtn } = this.props;
+    const { tabType, disabled, showDeleteBtn, themeProps } = this.props;
     const { iconClass } = this.state;
-    const cBtnthemeProps = deepMerge({ propsConfig: { tabType } }, themeProps);
-    const { theme, viewClass } = this.props.getPartOfThemeHocProps('DefaultTabPan');
+    const { viewClass, theme } = this.props.getPartOfThemeHocProps('DefaultTabPan');
+    themeProps.propsConfig = { tabType };
     if (!matchType(tabType, 'line') && showDeleteBtn) {
       return (
         <ClearButtonContainer
-          themeProps={cBtnthemeProps}
+          themeProps={themeProps}
           onMouseEnter={this.clearButtonMouseEnter}
           onMouseLeave={this.clearButtonMouseLeave}
-          onClick={this.onDeleteClick}
           tabType={tabType}
         >
-          <ClearIcon
+          <Icon
             theme={theme}
             viewClass={viewClass}
             iconClass={iconClass}
             disabled={disabled}
+            onClick={this.onDeleteClick}
           />
         </ClearButtonContainer>
       );
@@ -616,16 +574,16 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     this.setState({ iconClass: 'lugia-icon-reminder_close' });
   };
   onMouseEnter = (e: Object) => {
-    const { onMouseEnter, index } = this.props;
-    onMouseEnter && onMouseEnter(index);
+    const { onMouseIn, index } = this.props;
+    onMouseIn && onMouseIn(index);
   };
   onMouseLeave = (e: Object) => {
-    const { onMouseLeave, index } = this.props;
-    onMouseLeave && onMouseLeave(index);
+    const { onMouseOut, index } = this.props;
+    onMouseOut && onMouseOut(e, index);
   };
 }
-//
-const TabPanHoc = ThemeHoc(KeyBoardEventAdaptor(Tabpane), Widget.Tabpane, {
+
+const TabPanHoc = ThemeHoc(Tabpane, Widget.Tabs, {
   hover: true,
   active: false,
 });

@@ -14,30 +14,17 @@ import {
   CardBorderAndMarginWidth,
   CardMarginRight,
   WindowMarginLeft,
-  YtabsHeight,
 } from '../css/tabs';
 
-import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
-import ThemeProvider from '../theme-provider';
 import { px2remcss } from '../css/units';
-import {
-  addActivityValue2Data,
-  addWidth2Data,
-  computePage,
-  isVertical,
-  matchType,
-  plusWidth,
-} from './utils';
+import { computePage, isVertical, matchType, plusWidth } from './utils';
 import { getAttributeFromObject } from '../common/ObjectUtils.js';
 
 import Icon from '../icon';
-import { getIndexfromKey, getKeyfromIndex } from '../common/ObjectUtils';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
-import { addMouseEvent } from '@lugia/theme-hoc';
-import ThemeHoc from '@lugia/theme-hoc';
 import { deepMerge } from '@lugia/object-utils';
 import colorsFunc from '../css/stateColor';
-import { getBorder } from '@lugia/theme-css-hoc';
+import { getBorder } from '@lugia/theme-utils';
 import { findDOMNode } from 'react-dom';
 
 const { superLightColor } = colorsFunc();
@@ -55,7 +42,7 @@ const ArrowContainer = CSSComponent({
     font-size: 1.2rem;
     z-index: 5;
   `,
-}); //${getCursor};;
+});
 
 const HBasePage = CSSComponent({
   extend: ArrowContainer,
@@ -76,7 +63,7 @@ const HBasePage = CSSComponent({
     line-height: 35px;
     display: ${props => (props.arrowShow === false ? 'none' : 'block')};
   `,
-}); //${getArrowTop};
+});
 
 const HPrePage = CSSComponent({
   extend: HBasePage,
@@ -148,9 +135,17 @@ const VNextPage = CSSComponent({
 
 const HTabsContainer = CSSComponent({
   tag: 'div',
-  className: 'TitleContainer',
+  className: 'HTabsContainer',
   normal: {
     selectNames: [['width']],
+    getThemeMeta(themeMeta, themeProps) {
+      const { propsConfig: { arrowShow } = {} } = themeProps;
+      if (arrowShow) {
+        return {
+          width: 'calc( 100% - 70px )',
+        };
+      }
+    },
   },
   disabled: {
     selectNames: [],
@@ -163,67 +158,64 @@ const HTabsContainer = CSSComponent({
   `,
 });
 
-const AddContainer = ThemeHoc(
-  CSSComponent({
-    tag: 'div',
-    className: 'AddButton',
-    normal: {
-      selectNames: [
-        ['width'],
-        ['height'],
-        ['opacity'],
-        ['background'],
-        ['border'],
-        ['boxShadow'],
-        ['color'],
-        ['fontSize'],
-      ],
-      defaultTheme: {
-        width: 18,
-        height: 18,
-        border: getBorder({ color: superLightColor, width: 1, style: 'solid' }),
-        background: {
-          color: '#f8f8f8',
-        },
-        lineHeight: 18,
-        borderRadius: '4px',
+const AddContainer = CSSComponent({
+  tag: 'div',
+  className: 'AddButton',
+  normal: {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['opacity'],
+      ['background'],
+      ['border'],
+      ['boxShadow'],
+      ['color'],
+      ['fontSize'],
+    ],
+    defaultTheme: {
+      width: 18,
+      height: 18,
+      border: getBorder({ color: superLightColor, width: 1, style: 'solid' }),
+      background: {
+        color: '#f8f8f8',
       },
-      getThemeMeta: (theme: Object, themeProps: Object) => {
-        const { height } = theme;
-        return {
-          lineHeight: height,
-        };
-      },
+      lineHeight: 18,
+      borderRadius: '4px',
     },
-    hover: {
-      selectNames: [
-        ['width'],
-        ['height'],
-        ['opacity'],
-        ['background'],
-        ['border'],
-        ['boxShadow'],
-        ['color'],
-        ['fontSize'],
-      ],
-      defaultTheme: {
-        background: {
-          color: '#999',
-        },
+    getThemeMeta: (theme: Object, themeProps: Object) => {
+      const { height } = theme;
+      return {
+        lineHeight: height,
+      };
+    },
+  },
+  hover: {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['opacity'],
+      ['background'],
+      ['border'],
+      ['boxShadow'],
+      ['color'],
+      ['fontSize'],
+    ],
+    defaultTheme: {
+      background: {
+        color: '#999',
       },
     },
-    disabled: {
-      selectNames: [],
-    },
-    css: css`
-      position: relative;
-      text-align: center;
-      cursor: pointer;
-    `,
-  }),
-  'AddContainer',
-  { hover: true, active: false }
-);
+    getThemeMeta: (theme: Object, themeProps: Object) => {},
+  },
+  disabled: {
+    selectNames: [],
+  },
+  css: css`
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+  `,
+});
 
 AddContainer.displayName = 'addBtn';
 
@@ -241,26 +233,6 @@ const AddOutContainer = CSSComponent({
     text-align: center;
     display: inline-block;
     margin: 5px;
-  `,
-});
-
-const AddIcon = CSSComponent({
-  extend: Icon,
-  className: 'AddIcon',
-  normal: {
-    selectNames: [],
-  },
-  hover: {
-    selectNames: [],
-  },
-  disabled: {
-    selectNames: [],
-  },
-  css: css`
-    position: relative;
-    transition: all 0.3s linear 0.1s;
-    font-size: 1rem;
-    vertical-align: text-top !important;
   `,
 });
 
@@ -301,6 +273,14 @@ const VTabsContainer = CSSComponent({
   className: 'VTabsContainer',
   normal: {
     selectNames: [['height']],
+    getThemeMeta(themeMeta, themeProps) {
+      const { propsConfig: { arrowShow } = {} } = themeProps;
+      if (arrowShow) {
+        return {
+          height: 'calc( 100% - 48px )',
+        };
+      }
+    },
   },
   disabled: {
     selectNames: [],
@@ -345,9 +325,9 @@ const YscrollerContainer = CSSComponent({
 
 const HTabsOutContainer = CSSComponent({
   tag: 'div',
-  className: 'HTabsOutContainer',
+  className: 'TitleContainer',
   normal: {
-    selectNames: [],
+    selectNames: [['width']],
   },
   disabled: {
     selectNames: [],
@@ -361,9 +341,9 @@ const HTabsOutContainer = CSSComponent({
 
 const VTabsOutContainer = CSSComponent({
   tag: 'div',
-  className: 'VTabsOutContainer',
+  className: 'TitleContainer',
   normal: {
-    selectNames: [],
+    selectNames: [['height']],
   },
   disabled: {
     selectNames: [],
@@ -378,31 +358,6 @@ const VTabsOutContainer = CSSComponent({
   `,
 });
 
-const PageIcon = CSSComponent({
-  extend: Icon,
-  className: 'PageIcon',
-  normal: {
-    selectNames: [],
-  },
-  hover: {
-    selectNames: [],
-  },
-  disabled: {
-    selectNames: [],
-    getCSS: () => {
-      return 'cursor: not-allowed';
-    },
-  },
-  css: css`
-    display: inline-block;
-    font-style: normal;
-    text-align: center;
-    font-size: 1rem;
-  `,
-});
-
-PageIcon.displayName = 'page';
-
 type TabsState = {
   activityValue: number,
   data: Array<Object>,
@@ -411,8 +366,6 @@ type TabsState = {
   pagedCount: number,
   arrowShow: boolean,
   titleSize: Array<number>,
-  oldDataLength: number,
-  allowToCalc: boolean,
 };
 
 type TabsProps = {
@@ -429,7 +382,7 @@ type TabsProps = {
   onNextClick?: Function,
   onAddClick?: Function,
   onDelete?: Function,
-  themeProps?: Object,
+  themeProps: Object,
   viewClass?: string,
   onMouseEnter?: Function,
   onMouseLeave?: Function,
@@ -446,6 +399,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
   };
   titleBox: any;
   titlePanel: any;
+  titlePanelArray: any;
   static displayName = Widget.Tabs;
   offsetWidth: number;
   offsetHeight: number;
@@ -455,7 +409,8 @@ class TabHeader extends Component<TabsProps, TabsState> {
     super(props);
 
     this.titleBox = React.createRef();
-    this.titlePanel = [...Array(props.data.length)].map(() => React.createRef());
+    this.titlePanelArray = [];
+    this.titlePanel = [];
   }
 
   static getDerivedStateFromProps(props: TabsProps, state: TabsState) {
@@ -497,12 +452,11 @@ class TabHeader extends Component<TabsProps, TabsState> {
     };
   }
 
-  shouldComponentUpdate(nextProps: any, nextState: any) {
-    const { allowToCalc } = this.state;
+  componentDidUpdate(nextProps: Object, nextState: Object) {
+    const { allowToCalc, oldDataLength } = this.state;
     if (allowToCalc) {
       this.matchPage();
     }
-    return true;
   }
 
   componentDidMount() {
@@ -526,9 +480,10 @@ class TabHeader extends Component<TabsProps, TabsState> {
       totalPage = computePage(this.offsetWidth, actualWidth);
     }
     const arrowShow = totalPage > 1 && currentPage < totalPage;
-    this.setState({ arrowShow, totalPage, titleSize });
+    this.setState({ arrowShow, totalPage, titleSize, allowToCalc: false });
   }
   render() {
+    this.titlePanel = [...Array(this.props.data.length)].map(() => React.createRef());
     return <React.Fragment>{this.getTabs()}</React.Fragment>;
   }
 
@@ -538,34 +493,37 @@ class TabHeader extends Component<TabsProps, TabsState> {
       return this.getVtabs();
     }
     return this.getHorizonTabPan();
-    // return (<div>123123</div>);
-    // return this.getTestHorizonTabPan();
   }
 
   getVtabs() {
     const { tabPosition, themeProps } = this.props;
-    const { pagedCount, totalPage } = this.state;
+    const { totalPage, arrowShow } = this.state;
     const borderThemeProps = this.props.getPartOfThemeProps('BorderStyle');
     borderThemeProps.propsConfig = { tabPosition };
     const tabsThemeProps = this.props.getPartOfThemeProps('TitleContainer');
-    tabsThemeProps.propsConfig = { tabPosition };
     const moveDistance = this.computeMoveDistance();
-    // const { isDisabledToPrev, isDisabledToNext } = { isDisabledToPrev:false, isDisabledToNext:false};
     const { isDisabledToPrev, isDisabledToNext } = this.getIsAllowToMove(moveDistance);
+    themeProps.propsConfig = { arrowShow };
+
+    const prevPageThemeProps = deepMerge(
+      { themeConfig: { normal: { height: 24 } } },
+      this.props.getPartOfThemeProps('DefaultTabPan')
+    );
 
     return (
       <VTabsOutContainer
-        themeProps={themeProps}
+        themeProps={tabsThemeProps}
         tabPosition={tabPosition}
         showPadding={totalPage > 1}
+        innerRef={node => (this.titleBox = node)}
       >
-        {this.getPrevOrNextPage('prev', themeProps, isDisabledToPrev, isDisabledToNext)}
-        <VTabsContainer themeProps={tabsThemeProps} innerRef={node => (this.titleBox = node)}>
+        {this.getPrevOrNextPage('prev', prevPageThemeProps, isDisabledToPrev, isDisabledToNext)}
+        <VTabsContainer themeProps={themeProps}>
           <YscrollerContainer y={moveDistance} themeProps={borderThemeProps}>
             {this.getChildren()}
           </YscrollerContainer>
         </VTabsContainer>
-        {this.getPrevOrNextPage('next', themeProps, isDisabledToPrev, isDisabledToNext)}
+        {this.getPrevOrNextPage('next', prevPageThemeProps, isDisabledToPrev, isDisabledToNext)}
       </VTabsOutContainer>
     );
   }
@@ -593,7 +551,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
           onClick={this.onPreClick(isDisabledToPrev)}
           {...this.getArrowConfig('pre')}
         >
-          <PageIcon disabled={isDisabledToPrev} themeProps={themeProps} iconClass={arrowUp} />
+          <Icon disabled={isDisabledToPrev} themeProps={themeProps} iconClass={arrowUp} />
         </Target>
       );
     }
@@ -609,7 +567,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
         tabPosition={tabPosition}
         onClick={this.onNextClick(isDisabledToNext)}
       >
-        <PageIcon disabled={isDisabledToNext} themeProps={themeProps} iconClass={arrowDown} />
+        <Icon disabled={isDisabledToNext} themeProps={themeProps} iconClass={arrowDown} />
       </Target>
     );
   }
@@ -651,17 +609,15 @@ class TabHeader extends Component<TabsProps, TabsState> {
 
   getHorizonTabPan() {
     const { tabType, tabPosition, themeProps, showAddBtn } = this.props;
-    const { totalPage } = this.state;
+    const { totalPage, arrowShow } = this.state;
 
     const borderThemeProps = this.props.getPartOfThemeProps('BorderStyle', {
       props: { tabPosition, tabType },
     });
-    const tabsThemeProps = this.props.getPartOfThemeProps('TitleContainer', {
-      props: { tabPosition },
-    });
+    const tabsThemeProps = this.props.getPartOfThemeProps('TitleContainer');
+    themeProps.propsConfig = { arrowShow };
     const moveDistance = this.computeMoveDistance();
     const { isDisabledToPrev, isDisabledToNext } = this.getIsAllowToMove(moveDistance);
-    // const { isDisabledToPrev, isDisabledToNext } = { isDisabledToPrev:false, isDisabledToNext:false};
 
     const prevPageThemeProps = deepMerge(
       { themeConfig: { normal: { height: 35 } } },
@@ -669,13 +625,14 @@ class TabHeader extends Component<TabsProps, TabsState> {
     );
     return (
       <HTabsOutContainer
-        themeProps={themeProps}
+        themeProps={tabsThemeProps}
         tabType={tabType}
         tabPosition={tabPosition}
         showPadding={totalPage > 1}
+        innerRef={node => (this.titleBox = node)}
       >
         {this.getPrevOrNextPage('prev', prevPageThemeProps, isDisabledToPrev, isDisabledToNext)}
-        <HTabsContainer themeProps={tabsThemeProps} innerRef={node => (this.titleBox = node)}>
+        <HTabsContainer themeProps={themeProps}>
           <HscrollerContainer themeProps={borderThemeProps} x={moveDistance}>
             {this.getChildren()}
             {this.getAddButton()}
@@ -686,55 +643,30 @@ class TabHeader extends Component<TabsProps, TabsState> {
     );
   }
 
-  getTestHorizonTabPan() {
-    const { tabType, tabPosition } = this.props;
-
-    const borderThemeProps = this.props.getPartOfThemeProps('BorderStyle', {
-      props: { tabPosition, tabType },
-    });
-    const tabsThemeProps = this.props.getPartOfThemeProps('TitleContainer', {
-      props: { tabPosition },
-    });
-
-    return (
-      <HTabsContainer themeProps={tabsThemeProps} innerRef={node => (this.titleBox = node)}>
-        <HscrollerContainer themeProps={borderThemeProps}>{this.getChildren()}</HscrollerContainer>
-      </HTabsContainer>
-    );
-  }
-
   getChildren() {
     const { data } = this.state;
-    const { getTabpane } = this.props;
-
     return data
-      ? data.map((child, index) => {
-          const target = (
+      ? data.map((child: Object, index: number) => {
+          return (
             <Tabpane
-              ref={this.titlePanel[index]}
+              innerRef={this.titlePanel[index]}
               {...this.props}
               {...this.getTabpaneConfig(child, index)}
             />
           );
-          return getTabpane ? getTabpane(target, index) : target;
         })
-      : null;
+      : '';
   }
 
   getAddButton() {
     const { tabType, themeProps, showAddBtn } = this.props;
     const add = 'lugia-icon-reminder_plus';
     if (!matchType(tabType, 'line') && showAddBtn) {
-      const { theme, viewClass } = this.props.getPartOfThemeHocProps('AddButton');
+      const addBtnthemeProps = this.props.getPartOfThemeProps('AddButton');
       return (
-        <AddOutContainer themeProps={themeProps} tabType={tabType}>
-          <AddContainer
-            theme={theme}
-            viewClass={viewClass}
-            tabType={tabType}
-            onClick={this.onAddClick}
-          >
-            <AddIcon themeProps={themeProps} tabType={tabType} iconClass={add} />
+        <AddOutContainer themeProps={themeProps}>
+          <AddContainer themeProps={addBtnthemeProps} onClick={this.onAddClick}>
+            <Icon iconClass={add} />
           </AddContainer>
         </AddOutContainer>
       );
@@ -749,12 +681,13 @@ class TabHeader extends Component<TabsProps, TabsState> {
 
   getTabpaneConfig(child: React$Element<any>, i: number) {
     const { tabPosition, tabType, showDeleteBtn } = this.props;
-    const { activityValue, data } = this.state;
+    const { activityValue } = this.state;
     const disabled = getAttributeFromObject(
       child,
       'disabled',
       getAttributeFromObject(child.props, 'disabled', false)
     );
+
     return {
       tabPosition,
       tabType,
@@ -774,30 +707,28 @@ class TabHeader extends Component<TabsProps, TabsState> {
       index: i,
       showDeleteBtn,
       isSelect: !disabled && activityValue === i,
-      // getTabpaneWidthOrHeight: this.getTabpaneWidthOrHeight,
       onDelete: this.onDeleteClick,
       disabled,
-      onMouseEnter: this.onTabMouseEnter,
-      onMouseLeave: this.onTabMouseLeave,
     };
   }
 
   getTabpaneWidthOrHeight = () => {
     const { tabPosition } = this.props;
-    const titleSize = this.titlePanel.map((item, index) => {
-      const tabPan = findDOMNode(item.current);
-      if (!tabPan) {
-        return 0;
-      }
+    return this.titlePanel.map(item => {
       let offsetSize = 0;
-      if (isVertical(tabPosition)) {
-        offsetSize = tabPan.offsetHeight;
-      } else {
-        offsetSize = tabPan.offsetWidth;
+      if (item.current) {
+        const tabPan = findDOMNode(item.current.getThemeTarget());
+        if (!tabPan) {
+          return offsetSize;
+        }
+        if (isVertical(tabPosition)) {
+          offsetSize = tabPan.offsetHeight;
+        } else {
+          offsetSize = tabPan.offsetWidth;
+        }
       }
       return offsetSize;
     });
-    return titleSize;
   };
 
   computeMoveDistance() {
@@ -806,6 +737,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
     const currentTabsWidth = plusWidth(pagedCount - 1, titleSize);
     const maxDistance = isVertical(tabPosition) ? this.offsetHeight : this.offsetWidth;
     let distance = totalPage > 1 ? currentPage * maxDistance : 0;
+
     if (pagedCount > 0) {
       if (matchType(tabType, 'card')) {
         distance = currentTabsWidth + CardBorderAndMarginWidth * pagedCount;
@@ -830,9 +762,8 @@ class TabHeader extends Component<TabsProps, TabsState> {
       actualWidth = this.getActualWidth(tabType, titleSize);
       offsetSize = this.offsetWidth;
     }
-    const isDisabledToNext = offsetSize - moveDistance >= actualWidth;
+    const isDisabledToNext = offsetSize - 46 - moveDistance >= actualWidth;
     const isDisabledToPrev = moveDistance === 0;
-
     return { isDisabledToPrev, isDisabledToNext };
   }
 
@@ -855,7 +786,6 @@ class TabHeader extends Component<TabsProps, TabsState> {
       }
       const { onChange } = this.props;
       onChange && onChange(index);
-      // this.setState({ activityValue: index });
     }
   };
 
@@ -873,16 +803,6 @@ class TabHeader extends Component<TabsProps, TabsState> {
     }
     return false;
   }
-
-  onTabMouseEnter = (activityValue: string, e: Event) => {
-    const { onMouseEnter } = this.props;
-    onMouseEnter && onMouseEnter(activityValue, e);
-  };
-
-  onTabMouseLeave = (activityValue: string, e: Event) => {
-    const { onMouseLeave } = this.props;
-    onMouseLeave && onMouseLeave(activityValue, e);
-  };
 
   createNativeClick = (eventName: 'onNextClick' | 'onPreClick', type: EditEventType) => (
     e: Event
@@ -906,8 +826,4 @@ class TabHeader extends Component<TabsProps, TabsState> {
   };
 }
 
-const TargetTabs = ThemeHoc(KeyBoardEventAdaptor(TabHeader), 'TabHeader', {
-  hover: true,
-  active: false,
-});
-export default TargetTabs;
+export default TabHeader;

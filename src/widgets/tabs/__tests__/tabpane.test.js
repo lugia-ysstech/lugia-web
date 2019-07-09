@@ -19,7 +19,7 @@ describe('tabpaneDemo', () => {
   it('Component JSON', () => {
     const renders = renderer.create(
       <Tabpane
-        // themeProps={themeProps}
+        themeProps={themeProps}
         title={'tabs'}
         getPartOfThemeHocProps={themeHocProps}
         getPartOfThemeProps={themeHocProps}

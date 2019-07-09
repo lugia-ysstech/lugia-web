@@ -9,25 +9,17 @@ import React, { Component } from 'react';
 import TabHeader from './tabheader';
 import TabContentInner from './tabcontent';
 import Widget from '../consts/index';
-import { EditEventType, PagedType, TabPositionType, TabType } from '../css/tabs';
-import { AddButtonSize } from '../css/tabs';
-
-import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
-import ThemeProvider from '../theme-provider';
-import { px2remcss } from '../css/units';
+import { PagedType, TabPositionType, TabType } from '../css/tabs';
 import { isVertical } from './utils';
 import { getAttributeFromObject } from '../common/ObjectUtils.js';
-import { addMouseEvent } from '@lugia/theme-hoc';
-import Icon from '../icon';
-import CSSComponent, { css } from '@lugia/theme-css-hoc';
+import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import ThemeHoc from '@lugia/theme-hoc';
-import colorsFunc from '../css/stateColor';
-const { superLightColor } = colorsFunc();
+
 const TabContentContainer = CSSComponent({
   tag: 'div',
   className: 'ContentBlock',
   normal: {
-    selectNames: [],
+    selectNames: [['padding'], ['width'], ['height']],
     getCSS: (theme: Object, themeProps: Object) => {
       const {
         propsConfig: { tabPosition },
@@ -51,7 +43,7 @@ const TabContent = CSSComponent({
   tag: 'div',
   className: 'ContentBlock',
   normal: {
-    selectNames: [['padding'], ['width'], ['height']],
+    selectNames: [],
     getCSS: (theme: Object, themeProps: Object) => {
       const {
         propsConfig: { active, index },
@@ -78,22 +70,7 @@ const TabContent = CSSComponent({
     height: 100%;
     display: none;
   `,
-}); //${getBackgroundShadow};
-
-const ArrowContainer = CSSComponent({
-  tag: 'div',
-  className: 'BaseLine',
-  normal: {
-    selectNames: [],
-  },
-  disabled: {
-    selectNames: [],
-  },
-  css: css`
-    font-size: 1.2rem;
-    z-index: 5;
-  `,
-}); //${getCursor};;
+});
 
 const WindowContainer = CSSComponent({
   tag: 'div',
@@ -118,7 +95,7 @@ const WindowContainer = CSSComponent({
   `,
 });
 
-const OutContainer = CSSComponent({
+const OutContainer = StaticComponent({
   tag: 'div',
   className: 'OutContainer',
   normal: {
@@ -173,11 +150,11 @@ type TabsProps = {
   getPartOfThemeHocProps: Function,
   getPartOfThemeProps: Function,
 };
-function hasTargetInProps(target: string, props: TabsProps) {
+export function hasTargetInProps(target: string, props: TabsProps) {
   return `${target}` in props;
 }
 
-function getDefaultData(props) {
+export function getDefaultData(props) {
   const { defaultData, data, children } = props;
   let configData = [
     { title: 'Tab1', content: 'Tab1 content' },
@@ -236,21 +213,18 @@ class TabsBox extends Component<TabsProps, TabsState> {
     };
   }
 
-  // shouldComponentUpdate(nextProps: any, nextState: any) {
-  //   return true;
-  // }
-
   render() {
     const { themeProps, tabType, tabPosition } = this.props;
-    const outContainerThemeProps = this.props.getPartOfThemeProps('WindowContainer');
     const { activityValue, data } = this.state;
     let target = (
-      <OutContainer themeProps={themeProps}>
+      <OutContainer>
+        {/*<Tabpane title={'disabled测试'} disabled={true} {...this.props} index={0} />*/}
         <TabHeader {...this.getTabHeaderProps()} />
         {this.getChildrenContent()}
       </OutContainer>
     );
     if (tabType === 'window') {
+      const outContainerThemeProps = this.props.getPartOfThemeProps('WindowContainer');
       target = (
         <WindowContainer themeProps={outContainerThemeProps}>
           <OutContainer themeProps={themeProps}>
@@ -272,10 +246,11 @@ class TabsBox extends Component<TabsProps, TabsState> {
       pagedType,
       getTabpane,
       showDeleteBtn,
-      onMouseEnter,
-      onMouseLeave,
+      themeProps,
+      getPartOfThemeHocProps,
+      getPartOfThemeProps,
     } = this.props;
-    const tabHeaderThemes = this.props.getPartOfThemeHocProps('TabHeader');
+
     return {
       activityValue,
       data,
@@ -285,15 +260,15 @@ class TabsBox extends Component<TabsProps, TabsState> {
       pagedType,
       showDeleteBtn,
       getTabpane,
-      onMouseEnter,
-      onMouseLeave,
       onChange: this.onChange,
       onTabClick: this.onTabClick,
       onPreClick: this.onPreClick,
       onNextClick: this.onNextClick,
       onAddClick: this.onAddClick,
       onDelete: this.onDelete,
-      ...tabHeaderThemes,
+      themeProps,
+      getPartOfThemeHocProps,
+      getPartOfThemeProps,
     };
   }
 
@@ -329,7 +304,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
     if (hasTargetInProps('data', this.props) || hasTargetInProps('children', this.props)) {
       return;
     }
-    const { data } = this.props;
+    const { data } = this.state;
     const newDate = [...data];
     newDate.splice(index, 1);
     this.setState({ data: newDate });
@@ -363,8 +338,11 @@ class TabsBox extends Component<TabsProps, TabsState> {
     const { tabPosition, themeProps } = this.props;
     if (data) {
       themeProps.propsConfig = { tabPosition };
+      const contentThemeProps = this.props.getPartOfThemeProps('ContentBlock', {
+        props: { tabPosition },
+      });
       return (
-        <TabContentContainer themeProps={themeProps}>
+        <TabContentContainer themeProps={contentThemeProps}>
           {data.map((child, index) => {
             const content = getAttributeFromObject(
               child,
@@ -376,12 +354,14 @@ class TabsBox extends Component<TabsProps, TabsState> {
               )
             );
             const props = { active: activityValue, index };
-            const contentThemeProps = this.props.getPartOfThemeProps('ContentBlock', { props });
+            const innerContentThemeProps = this.props.getPartOfThemeProps('ContentBlock', {
+              props,
+            });
 
             const { forceRender } = this.props;
             return forceRender ? (
               activityValue === index && (
-                <TabContent themeProps={contentThemeProps}>
+                <TabContent themeProps={innerContentThemeProps}>
                   <TabContentInner
                     {...this.props}
                     themeProps={contentThemeProps}
@@ -391,7 +371,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
                 </TabContent>
               )
             ) : (
-              <TabContent themeProps={contentThemeProps}>
+              <TabContent themeProps={innerContentThemeProps}>
                 <TabContentInner
                   {...this.props}
                   themeProps={contentThemeProps}
@@ -406,7 +386,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
     }
   }
 }
-
+//
 export default ThemeHoc(TabsBox, Widget.Tabs, {
   hover: true,
   active: false,
