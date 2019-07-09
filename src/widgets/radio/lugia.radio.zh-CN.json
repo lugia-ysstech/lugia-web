@@ -50,5 +50,55 @@
     }
   },
   "childrenWidget": ["radio-group"],
-  "category": ["数据录入"]
+  "category": ["数据录入"],
+  "theme": {
+    "RadioWrap": {
+      "name": "Radio整体配置",
+      "desc": "Radio整体配置",
+      "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]],
+      "hover": [["opacity"]],
+      "disabled": [["opacity"]]
+    },
+    "RadioText": {
+      "name": "Radio文字配置",
+      "desc": "Radio文字样式配置",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]],
+      "disabled": [["color"], ["font"]]
+    },
+    "RadioEdgeChecked": {
+      "name": "Radio选中后边框配置",
+      "desc": "Radio选中后边框配置样式",
+      "normal": [["background"], ["border"], ["borderRadius"], ["width"], ["height"]],
+      "hover": [["background"], ["borderRadius"], ["border"]],
+      "disabled": [["background"], ["borderRadius"], ["border"]]
+    },
+    "RadioEdgeUnChecked": {
+      "name": "Radio未选中边框配置",
+      "desc": "Radio未选中边框配置样式",
+      "normal": [["background"], ["border"], ["borderRadius"], ["width"], ["height"]],
+      "hover": [["background"], ["borderRadius"], ["border"]],
+      "disabled": [["background"], ["borderRadius"], ["border"]]
+    },
+    "RadioEdgeCancel": {
+      "name": "Radio未选中边框配置",
+      "desc": "Radio未选中边框配置样式",
+      "normal": [["background"], ["border"], ["borderRadius"], ["width"], ["height"]],
+      "hover": [["background"], ["borderRadius"], ["border"]],
+      "disabled": [["background"], ["borderRadius"], ["border"]]
+    },
+    "RadioInnerChecked": {
+      "name": "Radio选中样式配置",
+      "desc": "Radio选中配置样式",
+      "normal": [["background"], ["width"], ["height"]],
+      "hover": [["background"]],
+      "disabled": [["background"]]
+    },
+    "RadioInnerCancel": {
+      "name": "Radio取消状态样式配置",
+      "desc": "Radio取消状态配置样式",
+      "normal": [["background"], ["width"], ["height"]],
+      "hover": [["background"]]
+    }
+  }
 }
