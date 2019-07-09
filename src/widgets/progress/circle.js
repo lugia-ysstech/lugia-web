@@ -105,7 +105,7 @@ export default class extends React.Component<any, any> {
       status,
       size = 'default',
       type = 'circle',
-      getPartOfThemeProps,
+      getIconTheme,
     } = this.props;
 
     return getText(true, {
@@ -115,7 +115,7 @@ export default class extends React.Component<any, any> {
       status: getStatus({ status, percent }),
       size,
       type,
-      getPartOfThemeProps,
+      getIconTheme,
     });
   };
   getColor = () => {

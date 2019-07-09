@@ -31,6 +31,7 @@ export type ModalProps = {
   maskClosable?: boolean,
   getTheme: Function,
   getPartOfThemeProps: Function,
+  getPartOfThemeHocProps: Function,
   mask?: boolean,
 } & FunctionPropsType;
 export type ModalState = {
@@ -273,34 +274,36 @@ export const ModalFooter = StaticComponent({
   `,
 });
 
-export const Icons = CSSComponent({
-  className: 'ModalCloseIcon',
-  extend: Icon,
-  normal: {
-    selectNames: [['color'], ['fontSize']],
-    defaultTheme: {
-      fontSize: 16,
-    },
-  },
-});
-const getIconColor = (props: CSSProps) => {
+// export const Icons = CSSComponent({
+//   className: 'ModalCloseIcon',
+//   extend: Icon,
+//   normal: {
+//     selectNames: [['color'], ['fontSize']],
+//     defaultTheme: {
+//       fontSize: 16,
+//     },
+//   },
+// });
+export const getIconColor = (props: Object) => {
   const { iconType } = props;
-  return `color: ${IconInfo[iconType].color};`;
+  const typeTheme = IconInfo[iconType] || IconInfo.info;
+
+  return typeTheme.color;
 };
 
-export const BigIcons: Object = CSSComponent({
-  className: 'ModalIcon',
-  extend: Icon,
-  normal: {
-    selectNames: [['color'], ['fontSize']],
-    defaultTheme: {
-      fontSize: 20,
-    },
-  },
-  css: css`
-    position: absolute;
-    left: ${px2remcss(22)};
-    top: ${px2remcss(28)};
-    ${getIconColor};
-  `,
-});
+// export const BigIcons: Object = CSSComponent({
+//   className: 'ModalIcon',
+//   extend: Icon,
+//   normal: {
+//     selectNames: [['color'], ['fontSize']],
+//     defaultTheme: {
+//       fontSize: 20,
+//     },
+//   },
+//   css: css`
+//     position: absolute;
+//     left: ${px2remcss(22)};
+//     top: ${px2remcss(28)};
+//     ${getIconColor};
+//   `,
+// });

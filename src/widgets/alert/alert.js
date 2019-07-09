@@ -10,9 +10,18 @@ import { deepMerge } from '@lugia/object-utils';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import type { AlertProps, AlertState, Type } from '../css/alert';
-import { Alert, CloseIcon, CloseText, Description, Icons, Message } from '../css/alert';
+import {
+  Alert,
+  CloseIcon,
+  CloseText,
+  Description,
+  Message,
+  getPosition,
+  TypeCSS,
+} from '../css/alert';
 import changeColor from '../css/utilsColor';
 import colorsFunc from '../css/stateColor';
+import Icon from '../icon';
 
 const AlertIcons = {
   info: 'lugia-icon-reminder_info_circle_o',
@@ -91,6 +100,36 @@ export default ThemeProvider(
       return TypeThemeProps.info;
     }
 
+    getAlertIconTheme = () => {
+      const { getPartOfThemeHocProps, type = 'info' } = this.props;
+      const { viewClass, theme } = getPartOfThemeHocProps('AlertIcon');
+      const hasDect = this.isInProps('description');
+      const typeTheme = TypeCSS[type] || TypeCSS.info;
+      const iconTheme = deepMerge(
+        {
+          [viewClass]: {
+            normal: {
+              font: { size: hasDect ? 20 : 14 },
+              cursor: 'default',
+              color: typeTheme.color,
+              getCSS() {
+                return `
+                      position: absolute;
+                      ${getPosition({ hasDect })};
+                    `;
+              },
+            },
+          },
+        },
+        theme
+      );
+
+      return {
+        viewClass,
+        theme: iconTheme,
+      };
+    };
+
     render() {
       const {
         type = 'info',
@@ -126,12 +165,7 @@ export default ThemeProvider(
           themeProps={AlertWrapTheme}
         >
           {showIcon ? (
-            <Icons
-              iconClass={icon || AlertIcons[type]}
-              hasDect={hasDect}
-              type={type}
-              themeProps={AlertIconTheme}
-            />
+            <Icon iconClass={icon || AlertIcons[type]} {...this.getAlertIconTheme()} />
           ) : null}
           <Message hasDect={hasDect} showIcon={showIcon} themeProps={AlertMessageTheme}>
             {message}

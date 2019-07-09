@@ -64,5 +64,42 @@
       }
     }
   },
-  "category": ["反馈"]
+  "category": ["反馈"],
+  "theme": {
+    "AlertWrap": {
+      "name": "警告提示整体样式",
+      "desc": "为警告提示配置整体样式",
+      "normal": [
+        ["opacity"],
+        ["margin"],
+        ["padding"],
+        ["width"],
+        ["height"],
+        ["background"],
+        ["border", "left"],
+        ["borderRadius"],
+        ["boxShadow"]
+      ]
+    },
+    "AlertMessage": {
+      "name": "警告提示内容样式",
+      "desc": "为警告提示内容配置样式",
+      "normal": [["color"], ["font"]]
+    },
+    "AlertDescription": {
+      "name": "警告提示辅助性文字样式",
+      "desc": "为警告提示辅助性文字配置样式",
+      "normal": [["color"], ["font"], ["padding"]]
+    },
+    "CloseText": {
+      "name": "警告提示关闭文字样式",
+      "desc": "为警告提示关闭文字配置样式",
+      "normal": [["color"], ["font"]]
+    },
+    "AlertIcon": {
+      "name": "警告提示图标样式",
+      "desc": "为警告提示图标配置样式",
+      "normal": [["color"], ["fontSize"]]
+    }
+  }
 }

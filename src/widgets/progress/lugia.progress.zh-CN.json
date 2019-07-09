@@ -64,5 +64,104 @@
       }
     }
   },
-  "category": ["反馈"]
+  "category": ["反馈"],
+  "designInfo": {
+    "CircleProgress": {
+      "sequence": 1,
+      "title": "圆形进度条",
+      "desc": "圆形进度条",
+      "props": {
+        "type": "circle"
+      },
+      "theme": {
+        "ProgressCircleText": {
+          "name": "圆形进度条文字配置",
+          "desc": "圆形进度条文字配置",
+          "normal": [["color"], ["font"]]
+        },
+        "ProgressCircleSuccessIcon": {
+          "name": "圆形进度条成功图标配置",
+          "desc": "圆形进度条成功图标配置",
+          "normal": [["color"], ["fontSize"]]
+        },
+        "ProgressCircleErrorIcon": {
+          "name": "圆形进度条失败图标配置",
+          "desc": "圆形进度条失败图标配置",
+          "normal": [["color"], ["fontSize"]]
+        }
+      }
+    },
+    "DashboardProgress": {
+      "sequence": 1,
+      "title": "仪表盘进度条",
+      "desc": "仪表盘进度条",
+      "props": {
+        "type": "dashboard"
+      },
+      "theme": {
+        "DashboardText": {
+          "name": "仪表盘进度条文字配置",
+          "desc": "仪表盘进度条文字配置",
+          "normal": [["color"], ["font"]]
+        },
+        "ProgressDashboardSuccessIcon": {
+          "name": "仪表盘进度条成功图标配置",
+          "desc": "仪表盘进度条成功图标配置",
+          "normal": [["color"], ["fontSize"]]
+        },
+        "ProgressDashboardErrorIcon": {
+          "name": "仪表盘进度条失败图标配置",
+          "desc": "仪表盘进度条失败图标配置",
+          "normal": [["color"], ["fontSize"]]
+        }
+      }
+    }
+  },
+  "theme": {
+    "ProgressWrap": {
+      "name": "线性进度条整体配置",
+      "desc": "线性进度条整体配置",
+      "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"], ["opacity"]]
+    },
+    "ProgressOutLine": {
+      "name": "线性进度条底色线配置",
+      "desc": "线性进度条底色线配置",
+      "normal": [["background"], ["borderRadius"], ["border"], ["boxShadow"]]
+    },
+    "ProgressInnerLine_Default": {
+      "name": "线性进度条进度线默认配置",
+      "desc": "线性进度条进度线默认配置",
+      "normal": [["height"], ["background"], ["border"], ["borderRadius"], ["boxShadow"]]
+    },
+    "ProgressInnerLine_Success": {
+      "name": "线性进度条进度线成功配置",
+      "desc": "线性进度条进度线成功配置",
+      "normal": [["height"], ["background"], ["border"], ["borderRadius"], ["boxShadow"]]
+    },
+    "ProgressInnerLine_Error": {
+      "name": "线性进度条进度线失败配置",
+      "desc": "线性进度条进度线失败配置",
+      "normal": [["height"], ["background"], ["border"], ["borderRadius"], ["boxShadow"]]
+    },
+    "ProgressLineInsideText": {
+      "name": "线性进度条内置文本配置",
+      "desc": "线性进度条内置文本配置",
+      "normal": [["color"], ["font"]]
+    },
+    "ProgressLineInfoText": {
+      "name": "线性进度条描述文本配置",
+      "desc": "线性进度条描述文本配置",
+      "normal": [["color"], ["font"]]
+    },
+    "ProgressLineSuccessIcon": {
+      "name": "线性进度条成功图标配置",
+      "desc": "线性进度条成功图标配置",
+      "normal": [["color"], ["fontSize"]]
+    },
+    "ProgressLineErrorIcon": {
+      "name": "线性进度条失败图标配置",
+      "desc": "线性进度条失败图标配置",
+      "normal": [["color"], ["fontSize"]]
+    }
+  }
 }

@@ -28,11 +28,23 @@
   },
   "category": ["其他"],
   "theme": {
-    "normal": [["color"], ["background"], ["width"], ["height"], ["opacity"], ["border"]],
-    "children": {
-      "Icon": {
-        "normal": [["color"], ["fontSize"], ["padding"], ["margin"]]
-      }
+    "BackTopContent": {
+      "name": "返回顶部整体样式",
+      "desc": "配置返回顶部整体样式",
+      "normal": [
+        ["background"],
+        ["color"],
+        ["width"],
+        ["height"],
+        ["opacity"],
+        ["border"],
+        ["borderRadius"]
+      ]
+    },
+    "BackTopIcon": {
+      "name": "返回顶部图标样式",
+      "desc": "配置返回顶部图标样式",
+      "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"]]
     }
   }
 }
