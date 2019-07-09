@@ -468,7 +468,10 @@ class Tree extends React.Component {
     const {
       themeStyle: { TreeUl },
       type,
+      getPartOfThemeHocProps,
+      getPartOfThemeProps,
     } = props;
+
     return (
       <TreeUl
         {...domProps}
@@ -476,6 +479,7 @@ class Tree extends React.Component {
         role="tree-node"
         unselectable="on"
         style={props.style}
+        themeProps={getPartOfThemeProps('TreeWrap')}
       >
         {React.Children.map(props.children, this.renderTreeNode, this)}
       </TreeUl>
