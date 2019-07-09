@@ -262,7 +262,7 @@ export const getIconTransform = (props: Object) => {
 
 export const Wrap = StaticComponent({
   tag: 'div',
-  className: 'PanelContent',
+  className: 'PanelWrap',
   css: css`
     transition: all 0.2s;
     font-size: ${FontSize}rem;

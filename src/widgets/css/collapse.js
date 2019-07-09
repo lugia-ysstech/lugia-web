@@ -46,7 +46,7 @@ const getFirstPanelBorder = (props: CSSProps) => {
 };
 export const Wrap = CSSComponent({
   tag: 'div',
-  className: 'CheckBoxWrap',
+  className: 'CollapseWrap',
   css: css`
     font-size: ${FontSize}rem;
     & > div:first-child {
