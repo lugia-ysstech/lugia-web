@@ -5,87 +5,32 @@
  * @flow
  */
 import * as React from 'react';
-import styled from 'styled-components';
+import { deepMerge } from '@lugia/object-utils';
+import { css } from 'styled-components';
 import ThemeProvider from '../theme-provider';
+import { addMouseEvent, addFocusBlurEvent } from '@lugia/theme-hoc';
 import Widget from '../consts/index';
-import Icon from '../icon';
 import DelayHoc from '../common/DelayHoc';
 import MouseEventAdaptor from '../common/MouseEventAdaptor';
-import { px2emcss } from '../css/units';
-
 import {
-  getTypeCSS,
-  getActiveCSS,
-  getCircleCSS,
-  getClickCSS,
-  getDisabledCSS,
-  getShapeCSS,
-  getSizeCSS,
-  hoverStyle,
-  getThemeStyle,
+  ButtonOut,
+  Text,
+  getTextNormalTheme,
+  getTextHoverStyle,
+  getTextActiveTheme,
+  getTextDisabledTheme,
+  getTextLoadingTheme,
   getIconStyle,
   getLoadingIconStyle,
-  getChildrenLineHeight,
-  getCircleIconFont,
   getIconCursor,
 } from '../css/button';
 import type { ButtonOutProps } from '../css/button';
+import { TextSizeTheme } from './theme';
+import { px2remcss } from '../css/units';
+import Icon from '../icon';
 
-type ButtonState = { clicked: boolean, loading: boolean };
+type ButtonState = { clicked: boolean };
 
-const ButtonOut = styled.button`
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms, Arial, Helvetica, sans-serif;
-  user-select: none;
-  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  ${props => (props.block ? 'width: 100%;' : '')}
-  &:hover {
-    ${hoverStyle}
-  }
-  
-  &:focus {
-    ${hoverStyle}
-  }
-  &:active {
-    ${getActiveCSS}
-  }
-  
-  ${getTypeCSS} 
-  ${getSizeCSS} 
-  ${getShapeCSS}
-  ${getCircleCSS}
-  ${props => (props.loading ? hoverStyle : '')}
-  ${props => (props.loading ? 'pointer-events: none;' : '')}
-  ${getDisabledCSS}
-  ${getClickCSS}
-  ${getThemeStyle}
-`;
-
-const ChildrenSpan = styled.span`
-  display: inline-block;
-  ${getChildrenLineHeight}
-`;
-
-const IconWrap: Object = styled(Icon)`
-  vertical-align: -${props => props.em(1.75)} !important;
-  ${getIconStyle};
-  ${getLoadingIconStyle};
-  ${getIconCursor}
-`;
-const CircleIcon: Object = styled(Icon)`
-  vertical-align: -${props => props.em(1.75)} !important;
-  ${getCircleIconFont};
-`;
 ButtonOut.displayName = 'ButtonWrap';
 
 export default ThemeProvider(
@@ -93,12 +38,11 @@ export default ThemeProvider(
     DelayHoc(
       class extends React.Component<ButtonOutProps, ButtonState> {
         static displayName = 'Button';
-        static getDerivedStateFromProps(nextProps, prevState) {
-          if (!prevState) {
-            return {
-              clicked: false,
-            };
-          }
+        constructor() {
+          super();
+          this.state = {
+            clicked: false,
+          };
         }
 
         onClick = e => {
@@ -117,34 +61,114 @@ export default ThemeProvider(
         };
 
         handleChildren = () => {
-          const { children, text, icon, circle, loading, size = 'default', disabled } = this.props;
-          let em = px2emcss(1.4);
-          if (size === 'small') {
-            em = px2emcss(1.2);
-          }
+          const {
+            type = 'default',
+            plain,
+            children,
+            text,
+            icon,
+            circle,
+            loading,
+            size = 'default',
+            disabled,
+            getPartOfThemeProps,
+            getPartOfThemeHocProps,
+            dispatchEvent,
+          } = this.props;
+          const hasChildren = !!children || !!text;
+          const textTheme = getPartOfThemeProps('ButtonText');
+          const { viewClass, theme } = getPartOfThemeHocProps('ButtonIcon');
+          textTheme.propsConfig = {
+            type,
+            plain,
+            loading,
+            size,
+            circle,
+          };
+          const normalIconFont = TextSizeTheme[size] || TextSizeTheme.default;
+          const normalColor = getTextNormalTheme({ type, plain, loading });
+          const hoverTheme = getTextHoverStyle({ type, plain });
+          const activeTheme = getTextActiveTheme({ type, plain });
+          const disabledTheme = getTextDisabledTheme({ type, plain });
+          const iconTheme = deepMerge(
+            {
+              [viewClass]: {
+                normal: {
+                  ...normalIconFont,
+                  ...normalColor,
+                  getCSS() {
+                    return `
+                      vertical-align: -${px2remcss(1.75)} !important;
+                      ${getIconStyle({ hasChildren })};
+                      ${getIconCursor({ disabled })};
+                    `;
+                  },
+                },
+                hover: hoverTheme,
+                active: activeTheme,
+                disabled: disabledTheme,
+                focus: hoverTheme,
+              },
+            },
+            theme
+          );
           if (circle) {
             const iconType = icon || 'lugia-icon-direction_logout';
-            return <CircleIcon size={size} em={em} iconClass={iconType} />;
+
+            return [
+              <Icon
+                size={size}
+                iconClass={iconType}
+                viewClass={viewClass}
+                theme={iconTheme}
+                {...dispatchEvent(['hover', 'active', 'disabled', 'focus'], 'f2c')}
+              />,
+              <Text themeProps={textTheme}>{text || children}</Text>,
+            ];
           }
 
           if (loading) {
-            return (
-              <span>
-                <IconWrap em={em} loading iconClass="lugia-icon-financial_loading_o" />
-                {text || children}
-              </span>
+            const loadingTheme = getTextLoadingTheme({ plain, type });
+            const iconLoadingTheme = deepMerge(
+              {
+                [viewClass]: {
+                  normal: {
+                    ...loadingTheme,
+                    getCSS() {
+                      return css`
+                        ${getIconStyle({ hasChildren })};
+                        ${getLoadingIconStyle({ loading: true })};
+                      `;
+                    },
+                  },
+                },
+              },
+              theme
             );
+            return [
+              <Icon
+                loading
+                iconClass="lugia-icon-financial_loading_o"
+                viewClass={viewClass}
+                theme={iconLoadingTheme}
+              />,
+              <Text themeProps={textTheme}>{text || children}</Text>,
+            ];
           }
           if (icon) {
-            const hasChildren = !!children || !!text;
-            return (
-              <span>
-                <IconWrap em={em} iconClass={icon} hasChildren={hasChildren} disabled={disabled} />
-                {text || children}
-              </span>
-            );
+            return [
+              <Icon
+                iconClass={icon}
+                hasChildren={hasChildren}
+                disabled={disabled}
+                viewClass={viewClass}
+                theme={iconTheme}
+                {...dispatchEvent(['hover', 'active', 'disabled', 'focus'], 'f2c')}
+              />,
+              <Text themeProps={textTheme}>{text || children} </Text>,
+            ];
           }
-          return text || children;
+          return <Text themeProps={textTheme}>{text || children}</Text>;
         };
         render() {
           const {
@@ -157,17 +181,32 @@ export default ThemeProvider(
             getTheme,
             loading,
             onMouseOut,
-            onMouseEnter,
             onMouseOver,
+            onMouseEnter,
+            onMouseLeave,
             onMouseUp,
             onMouseDown,
             block,
+            getPartOfThemeProps,
           } = this.props;
           const { clicked } = this.state;
-          let em = px2emcss(1.4);
-          if (size === 'small') {
-            em = px2emcss(1.2);
-          }
+          const mouseConfig = {
+            enter: onMouseEnter,
+            leave: onMouseLeave,
+            up: onMouseUp,
+            down: onMouseDown,
+          };
+          const ButtonWrapTheme = getPartOfThemeProps('ButtonWrap');
+          ButtonWrapTheme.propsConfig = {
+            type,
+            plain,
+            disabled,
+            loading,
+            size,
+            circle,
+            shape,
+          };
+
           return (
             <ButtonOut
               clicked={clicked}
@@ -180,22 +219,20 @@ export default ThemeProvider(
               loading={loading}
               onClick={this.onClick}
               onMouseOut={onMouseOut}
-              onMouseEnter={onMouseEnter}
               onMouseOver={onMouseOver}
-              onMouseUp={onMouseUp}
-              onMouseDown={onMouseDown}
               themes={getTheme()}
-              em={em}
               block={block}
+              themeProps={ButtonWrapTheme}
+              {...addMouseEvent(this, mouseConfig)}
+              {...addFocusBlurEvent(this)}
             >
-              <ChildrenSpan em={em} size={size} type={type} plain={plain}>
-                {this.handleChildren()}
-              </ChildrenSpan>
+              {this.handleChildren()}
             </ButtonOut>
           );
         }
       }
     )
   ),
-  Widget.Button
+  Widget.Button,
+  { hover: true, active: true, focus: true }
 );
