@@ -46,10 +46,15 @@ export default ThemeProvider(
       );
     }
     renderChildren = () => {
-      const { children, accordion, data } = this.props;
+      const { children, accordion, data, getPartOfThemeHocProps } = this.props;
       if ((!children && !data) || typeof children === 'string') {
         return (
-          <Panel value="lugia-panel" title="Lugia Panel" onClick={this.handleClick}>
+          <Panel
+            value="lugia-panel"
+            title="Lugia Panel"
+            onClick={this.handleClick}
+            {...getPartOfThemeHocProps('Panel')}
+          >
             Default Panel
           </Panel>
         );
@@ -61,6 +66,7 @@ export default ThemeProvider(
             onClick={this.handleClick}
             open={this.handleOpen(item.value)}
             accordion={accordion}
+            {...getPartOfThemeHocProps('Panel')}
           >
             {item.children}
           </Panel>
@@ -72,6 +78,7 @@ export default ThemeProvider(
             onClick: this.handleClick,
             open: this.handleOpen(child.props.value),
             accordion,
+            ...getPartOfThemeHocProps('Panel'),
           });
         }
       });

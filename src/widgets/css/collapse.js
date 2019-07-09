@@ -54,12 +54,6 @@ const getFirstPanelBorder = (props: CSSProps) => {
     `;
   }
 };
-// export const Wrap = styled.div`
-//   font-size: ${FontSize}rem;
-//   & > div:first-child {
-//     ${getFirstPanelBorder};
-//   }
-// `;
 export const Wrap = CSSComponent({
   tag: 'div',
   className: 'CheckBoxWrap',

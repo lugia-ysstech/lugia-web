@@ -19,16 +19,6 @@ const Wrapper = styled.div`
   border: 1px solid #e8e8e8;
 `;
 
-const wrapView = {
-  [Widget.Collapse]: {
-    width: 500,
-    margin: 20,
-  },
-  [Widget.Panel]: {
-    borderSize: 0,
-  },
-};
-
 export const PanelDemo = class extends React.Component<any, any> {
   constructor() {
     super();
@@ -203,7 +193,7 @@ export const CollapseDemo = class extends React.Component<any, any> {
       [Widget.Collapse]: {
         Wrap: {
           normal: {
-            width: 500,
+            width: 410,
             height: 500,
             background: { color: 'orange' },
             border: getBorder({ color: 'green', width: 2, style: 'solid' }),
@@ -219,6 +209,73 @@ export const CollapseDemo = class extends React.Component<any, any> {
               right: 10,
               bottom: 10,
               left: 10,
+            },
+          },
+        },
+        Panel: {
+          PanelHeader: {
+            normal: {
+              width: 400,
+              height: 80,
+              borderRadius: getBorderRadius(10),
+              background: { color: 'pink' },
+              opacity: 1,
+              border: getBorder({ width: 2, style: 'solid', color: 'yellow' }),
+              boxShadow: getBoxShadow('1px 2px 2px 2px #e8e8e8'),
+              padding: { top: 10, right: 10, bottom: 10, left: 30 },
+            },
+            hover: {
+              borderRadius: getBorderRadius(10),
+              background: { color: 'yellow' },
+              opacity: 0.8,
+              border: getBorder({ width: 2, style: 'solid', color: 'pink' }),
+              boxShadow: getBoxShadow('1px 2px 2px 2px #e8e8e8'),
+            },
+            disabled: {
+              borderRadius: getBorderRadius(10),
+              background: { color: 'orange' },
+              opacity: 0.8,
+              border: getBorder({ width: 2, style: 'solid', color: 'green' }),
+              boxShadow: getBoxShadow('1px 2px 2px 2px #e8e8e8'),
+            },
+          },
+          PanelHeaderText: {
+            normal: {
+              color: 'green',
+              font: { size: 16, weight: 300 },
+            },
+            hover: {
+              color: 'pink',
+            },
+            disabled: {
+              color: 'yellow',
+            },
+          },
+          PanelHeaderIcon: {
+            normal: {
+              color: 'green',
+              fontsSze: 16,
+            },
+            hover: {
+              color: 'pink',
+            },
+            disabled: {
+              color: 'yellow',
+            },
+          },
+          PanelContent: {
+            normal: {
+              width: 400,
+              height: 200,
+              background: { color: '#f7f4ef' },
+              padding: {
+                top: 10,
+                right: 10,
+                bottom: 10,
+                left: 30,
+              },
+              color: 'red',
+              font: { size: 16, weight: 300 },
             },
           },
         },
@@ -296,19 +353,6 @@ export const CollapseDemo = class extends React.Component<any, any> {
               <div>PanelContent...</div>
             </Panel>
           </Collapse>
-          <br />
-          <Theme config={wrapView}>
-            <Collapse activeValue={activeValue} onChange={this.handleChangeActiveValue}>
-              <Panel value="1" title="LUGIA">
-                <div>PanelContent...</div>
-                <div>PanelContent...</div>
-              </Panel>
-              <Panel value="2" title="LUGIA">
-                <div>PanelContent...</div>
-                <div>PanelContent...</div>
-              </Panel>
-            </Collapse>
-          </Theme>
           <br />
           <p>data</p>
           <Collapse defaultActiveValue={defaultActiveValue} data={data} />
