@@ -381,6 +381,7 @@ type TabsProps = {
   viewClass?: string,
   onMouseEnter?: Function,
   onMouseLeave?: Function,
+  getTabpane?: Function,
   getPartOfThemeHocProps: Function,
   getPartOfThemeProps: Function,
 };
@@ -645,15 +646,17 @@ class TabHeader extends Component<TabsProps, TabsState> {
 
   getChildren() {
     const { data } = this.state;
+    const { getTabpane } = this.props;
     return data
       ? data.map((child: Object, index: number) => {
-          return (
+          const Target = (
             <Tabpane
               innerRef={this.titlePanel[index]}
               {...this.props}
               {...this.getTabpaneConfig(child, index)}
             />
           );
+          return getTabpane ? getTabpane(Target, index) : Target;
         })
       : '';
   }
