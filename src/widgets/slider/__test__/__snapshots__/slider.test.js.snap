@@ -1,19 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`default Wrapper 1`] = `
-.c4 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c0 {
   box-sizing: border-box;
   display: inline-block;
   vertical-align: top;
-  height: 40rem;
+  height: NaNrem;
 }
 
 .c11 {
@@ -23,19 +15,12 @@ exports[`default Wrapper 1`] = `
   width: NaNrem;
 }
 
-.c44 {
-  box-sizing: border-box;
-  display: inline-block;
-  vertical-align: top;
-  height: NaNrem;
-}
-
 .c1 {
   box-sizing: border-box;
   font-size: 1.4rem;
   display: inline-block;
   vertical-align: top;
-  padding: 40px 35px 110px 35px;
+  padding: 40px 135px 310px 135px;
 }
 
 .c12 {
@@ -51,10 +36,10 @@ exports[`default Wrapper 1`] = `
   font-size: 1.4rem;
   display: inline-block;
   vertical-align: top;
-  padding: 17px 58px 17px 38px;
+  padding: 17px 58px 17px 58px;
 }
 
-.c45 {
+.c44 {
   box-sizing: border-box;
   font-size: 1.4rem;
   display: inline-block;
@@ -62,7 +47,7 @@ exports[`default Wrapper 1`] = `
   padding: 8px 5px 8px 5px;
 }
 
-.c70 {
+.c69 {
   box-sizing: border-box;
   font-size: 1.4rem;
   display: inline-block;
@@ -226,7 +211,7 @@ exports[`default Wrapper 1`] = `
   transform: translateY(-50%);
 }
 
-.c46 {
+.c45 {
   border-radius: 0.6rem;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -241,7 +226,7 @@ exports[`default Wrapper 1`] = `
   transform: translateX(-50%);
 }
 
-.c48 {
+.c47 {
   border-radius: 0.6rem;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -256,7 +241,7 @@ exports[`default Wrapper 1`] = `
   transform: translateX(-50%);
 }
 
-.c50 {
+.c49 {
   border-radius: 0.6rem;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -271,7 +256,7 @@ exports[`default Wrapper 1`] = `
   transform: translateX(-50%);
 }
 
-.c57 {
+.c56 {
   border-radius: 0.6rem;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -286,7 +271,7 @@ exports[`default Wrapper 1`] = `
   transform: translateX(-50%);
 }
 
-.c63 {
+.c62 {
   border-radius: 0.6rem;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -301,7 +286,7 @@ exports[`default Wrapper 1`] = `
   transform: translateX(-50%);
 }
 
-.c65 {
+.c64 {
   border-radius: 0.6rem;
   position: absolute;
   -webkit-transition: 0.1s;
@@ -466,7 +451,7 @@ exports[`default Wrapper 1`] = `
   transition: 0.1s;
 }
 
-.c47 {
+.c46 {
   border-radius: 50%;
   position: absolute;
   left: 50%;
@@ -480,7 +465,7 @@ exports[`default Wrapper 1`] = `
   transition: 0.1s;
 }
 
-.c49 {
+.c48 {
   border-radius: 50%;
   position: absolute;
   left: 50%;
@@ -494,7 +479,7 @@ exports[`default Wrapper 1`] = `
   transition: 0.1s;
 }
 
-.c51 {
+.c50 {
   border-radius: 50%;
   position: absolute;
   left: 50%;
@@ -508,7 +493,7 @@ exports[`default Wrapper 1`] = `
   transition: 0.1s;
 }
 
-.c58 {
+.c57 {
   border-radius: 50%;
   position: absolute;
   left: 50%;
@@ -522,7 +507,7 @@ exports[`default Wrapper 1`] = `
   transition: 0.1s;
 }
 
-.c64 {
+.c63 {
   border-radius: 50%;
   position: absolute;
   left: 50%;
@@ -536,7 +521,7 @@ exports[`default Wrapper 1`] = `
   transition: 0.1s;
 }
 
-.c66 {
+.c65 {
   border-radius: 50%;
   position: absolute;
   left: 50%;
@@ -1053,7 +1038,7 @@ exports[`default Wrapper 1`] = `
   color: undefined;
 }
 
-.c52 {
+.c51 {
   border-radius: 50%;
   position: absolute;
   z-index: 1;
@@ -1072,13 +1057,51 @@ exports[`default Wrapper 1`] = `
   height: 0.6rem;
 }
 
+.c51::before {
+  display: block;
+  position: absolute;
+}
+
+.c51::before {
+  content: '0';
+  font-size: 1.4rem;
+  line-height: 1;
+  left: calc(100% + 10px);
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  -webkit-transform: translateY(50%);
+  bottom: 50%;
+  color: #333;
+  color: undefined;
+}
+
+.c52 {
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
+  font-size: 1.4rem;
+  left: 50%;
+  bottom: 19%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  border-width: 0.1rem;
+  border-style: solid;
+  border-color: #cccccc;
+  background: #ffffff;
+  width: 0.6rem;
+  height: 0.6rem;
+}
+
 .c52::before {
   display: block;
   position: absolute;
 }
 
 .c52::before {
-  content: '0';
+  content: '10℃';
   font-size: 1.4rem;
   line-height: 1;
   left: calc(100% + 10px);
@@ -1097,44 +1120,6 @@ exports[`default Wrapper 1`] = `
   z-index: 1;
   font-size: 1.4rem;
   left: 50%;
-  bottom: 19%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  border-width: 0.1rem;
-  border-style: solid;
-  border-color: #cccccc;
-  background: #ffffff;
-  width: 0.6rem;
-  height: 0.6rem;
-}
-
-.c53::before {
-  display: block;
-  position: absolute;
-}
-
-.c53::before {
-  content: '10℃';
-  font-size: 1.4rem;
-  line-height: 1;
-  left: calc(100% + 10px);
-  -webkit-transform: translateY(50%);
-  -ms-transform: translateY(50%);
-  transform: translateY(50%);
-  -webkit-transform: translateY(50%);
-  bottom: 50%;
-  color: #333;
-  color: undefined;
-}
-
-.c54 {
-  border-radius: 50%;
-  position: absolute;
-  z-index: 1;
-  font-size: 1.4rem;
-  left: 50%;
   bottom: 39%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
@@ -1148,12 +1133,12 @@ exports[`default Wrapper 1`] = `
   height: 0.6rem;
 }
 
-.c54::before {
+.c53::before {
   display: block;
   position: absolute;
 }
 
-.c54::before {
+.c53::before {
   content: '20℃';
   font-size: 1.4rem;
   line-height: 1;
@@ -1167,7 +1152,7 @@ exports[`default Wrapper 1`] = `
   color: undefined;
 }
 
-.c55 {
+.c54 {
   border-radius: 50%;
   position: absolute;
   z-index: 1;
@@ -1186,12 +1171,12 @@ exports[`default Wrapper 1`] = `
   height: 0.6rem;
 }
 
-.c55::before {
+.c54::before {
   display: block;
   position: absolute;
 }
 
-.c55::before {
+.c54::before {
   content: '40℃';
   font-size: 1.4rem;
   line-height: 1;
@@ -1205,7 +1190,7 @@ exports[`default Wrapper 1`] = `
   color: undefined;
 }
 
-.c56 {
+.c55 {
   border-radius: 50%;
   position: absolute;
   z-index: 1;
@@ -1224,13 +1209,51 @@ exports[`default Wrapper 1`] = `
   height: 0.6rem;
 }
 
-.c56::before {
+.c55::before {
   display: block;
   position: absolute;
 }
 
-.c56::before {
+.c55::before {
   content: '50';
+  font-size: 1.4rem;
+  line-height: 1;
+  left: calc(100% + 10px);
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  -webkit-transform: translateY(50%);
+  bottom: 50%;
+  color: #999;
+  color: undefined;
+}
+
+.c58 {
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
+  font-size: 1.4rem;
+  left: 50%;
+  bottom: -1%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  border-width: 0.1rem;
+  border-style: solid;
+  border-color: transparent;
+  background: none;
+  width: 0.6rem;
+  height: 0.6rem;
+}
+
+.c58::before {
+  display: block;
+  position: absolute;
+}
+
+.c58::before {
+  content: '0℃';
   font-size: 1.4rem;
   line-height: 1;
   left: calc(100% + 10px);
@@ -1249,44 +1272,6 @@ exports[`default Wrapper 1`] = `
   z-index: 1;
   font-size: 1.4rem;
   left: 50%;
-  bottom: -1%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  border-width: 0.1rem;
-  border-style: solid;
-  border-color: transparent;
-  background: none;
-  width: 0.6rem;
-  height: 0.6rem;
-}
-
-.c59::before {
-  display: block;
-  position: absolute;
-}
-
-.c59::before {
-  content: '0℃';
-  font-size: 1.4rem;
-  line-height: 1;
-  left: calc(100% + 10px);
-  -webkit-transform: translateY(50%);
-  -ms-transform: translateY(50%);
-  transform: translateY(50%);
-  -webkit-transform: translateY(50%);
-  bottom: 50%;
-  color: #999;
-  color: undefined;
-}
-
-.c60 {
-  border-radius: 50%;
-  position: absolute;
-  z-index: 1;
-  font-size: 1.4rem;
-  left: 50%;
   bottom: 19%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
@@ -1300,12 +1285,12 @@ exports[`default Wrapper 1`] = `
   height: 0.6rem;
 }
 
-.c60::before {
+.c59::before {
   display: block;
   position: absolute;
 }
 
-.c60::before {
+.c59::before {
   content: '10℃';
   font-size: 1.4rem;
   line-height: 1;
@@ -1319,7 +1304,7 @@ exports[`default Wrapper 1`] = `
   color: undefined;
 }
 
-.c61 {
+.c60 {
   border-radius: 50%;
   position: absolute;
   z-index: 1;
@@ -1338,12 +1323,12 @@ exports[`default Wrapper 1`] = `
   height: 0.6rem;
 }
 
-.c61::before {
+.c60::before {
   display: block;
   position: absolute;
 }
 
-.c61::before {
+.c60::before {
   content: '20℃';
   font-size: 1.4rem;
   line-height: 1;
@@ -1357,7 +1342,7 @@ exports[`default Wrapper 1`] = `
   color: undefined;
 }
 
-.c62 {
+.c61 {
   border-radius: 50%;
   position: absolute;
   z-index: 1;
@@ -1376,12 +1361,12 @@ exports[`default Wrapper 1`] = `
   height: 0.6rem;
 }
 
-.c62::before {
+.c61::before {
   display: block;
   position: absolute;
 }
 
-.c62::before {
+.c61::before {
   content: '50℃';
   font-size: 1.4rem;
   line-height: 1;
@@ -1395,7 +1380,7 @@ exports[`default Wrapper 1`] = `
   color: undefined;
 }
 
-.c67 {
+.c66 {
   border-radius: 50%;
   position: absolute;
   z-index: 1;
@@ -1414,12 +1399,12 @@ exports[`default Wrapper 1`] = `
   height: 0.6rem;
 }
 
-.c67::before {
+.c66::before {
   display: block;
   position: absolute;
 }
 
-.c67::before {
+.c66::before {
   content: '0℃';
   font-size: 1.4rem;
   line-height: 1;
@@ -1433,7 +1418,7 @@ exports[`default Wrapper 1`] = `
   color: undefined;
 }
 
-.c68 {
+.c67 {
   border-radius: 50%;
   position: absolute;
   z-index: 1;
@@ -1452,12 +1437,12 @@ exports[`default Wrapper 1`] = `
   height: 0.6rem;
 }
 
-.c68::before {
+.c67::before {
   display: block;
   position: absolute;
 }
 
-.c68::before {
+.c67::before {
   content: '5';
   font-size: 1.4rem;
   line-height: 1;
@@ -1471,7 +1456,7 @@ exports[`default Wrapper 1`] = `
   color: undefined;
 }
 
-.c69 {
+.c68 {
   border-radius: 50%;
   position: absolute;
   z-index: 1;
@@ -1490,12 +1475,12 @@ exports[`default Wrapper 1`] = `
   height: 0.6rem;
 }
 
-.c69::before {
+.c68::before {
   display: block;
   position: absolute;
 }
 
-.c69::before {
+.c68::before {
   content: '10℃';
   font-size: 1.4rem;
   line-height: 1;
@@ -1517,9 +1502,9 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -11rem;
+  bottom: -31rem;
   color: #999;
-  font-size: 10rem;
+  font-size: 30rem;
 }
 
 .c5 {
@@ -1561,6 +1546,27 @@ exports[`default Wrapper 1`] = `
   font-size: 4rem;
 }
 
+.c70 {
+  position: absolute;
+  line-height: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  bottom: -11rem;
+  color: #999;
+  font-size: 10rem;
+}
+
+.c4 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
 <div
   style={
     Object {
@@ -1580,8 +1586,6 @@ exports[`default Wrapper 1`] = `
         Object {
           "backgroundColor": "yellow",
           "borderBottomColor": "#000",
-          "borderBottomLeftRadius": "0.6rem",
-          "borderBottomRightRadius": "0.6rem",
           "borderBottomStyle": "solid",
           "borderBottomWidth": "0.1rem",
           "borderLeftColor": "#000",
@@ -1591,13 +1595,9 @@ exports[`default Wrapper 1`] = `
           "borderRightStyle": "solid",
           "borderRightWidth": "0.1rem",
           "borderTopColor": "#000",
-          "borderTopLeftRadius": "0.6rem",
-          "borderTopRightRadius": "0.6rem",
           "borderTopStyle": "solid",
           "borderTopWidth": "0.1rem",
-          "margin": "1rem 2rem 3rem 4rem",
           "opacity": 0.5,
-          "padding": "1rem 2rem 3rem 4rem",
         }
       }
     >
@@ -1650,7 +1650,7 @@ exports[`default Wrapper 1`] = `
             style={
               Object {
                 "color": "red",
-                "fontSize": "10rem",
+                "fontSize": "30rem",
               }
             }
             value={
@@ -1660,7 +1660,7 @@ exports[`default Wrapper 1`] = `
             }
           >
             <i
-              className="lugia-icon-financial_smile_o  c4"
+              className="lugia-icon-financial_smile_o   c4"
               onClick={[Function]}
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
@@ -1669,7 +1669,7 @@ exports[`default Wrapper 1`] = `
               style={
                 Object {
                   "color": "red",
-                  "fontSize": "10rem",
+                  "fontSize": "30rem",
                 }
               }
             />
@@ -1689,7 +1689,7 @@ exports[`default Wrapper 1`] = `
             }
           >
             <i
-              className="lugia-icon-financial_sad_o  c4"
+              className="lugia-icon-financial_sad_o   c4"
               onClick={[Function]}
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
@@ -1709,7 +1709,7 @@ exports[`default Wrapper 1`] = `
             style={
               Object {
                 "color": "red",
-                "fontSize": 14,
+                "fontSize": "1.4rem",
                 "fontWeight": 700,
               }
             }
@@ -1720,7 +1720,7 @@ exports[`default Wrapper 1`] = `
             style={
               Object {
                 "color": "blue",
-                "fontSize": 14,
+                "fontSize": "1.4rem",
                 "fontWeight": 700,
               }
             }
@@ -1731,7 +1731,7 @@ exports[`default Wrapper 1`] = `
             style={
               Object {
                 "color": "green",
-                "fontSize": 14,
+                "fontSize": "1.4rem",
                 "fontWeight": 700,
               }
             }
@@ -1754,8 +1754,6 @@ exports[`default Wrapper 1`] = `
               Object {
                 "backgroundColor": "#ef5a5a",
                 "borderBottomColor": "yellow",
-                "borderBottomLeftRadius": "0.5rem",
-                "borderBottomRightRadius": "0.5rem",
                 "borderBottomStyle": "solid",
                 "borderBottomWidth": "0.1rem",
                 "borderLeftColor": "yellow",
@@ -1765,8 +1763,6 @@ exports[`default Wrapper 1`] = `
                 "borderRightStyle": "solid",
                 "borderRightWidth": "0.1rem",
                 "borderTopColor": "yellow",
-                "borderTopLeftRadius": "0.5rem",
-                "borderTopRightRadius": "0.5rem",
                 "borderTopStyle": "solid",
                 "borderTopWidth": "0.1rem",
                 "height": "2rem",
@@ -2981,13 +2977,17 @@ exports[`default Wrapper 1`] = `
             }
           >
             <i
-              className="lugia-icon-financial_smile_o  c4"
+              className="lugia-icon-financial_smile_o   c4"
               onClick={[Function]}
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseUp={[Function]}
-              style={Object {}}
+              style={
+                Object {
+                  "color": "#666",
+                }
+              }
             />
           </span>
           <span
@@ -3000,13 +3000,17 @@ exports[`default Wrapper 1`] = `
             }
           >
             <i
-              className="lugia-icon-financial_sad_o  c4"
+              className="lugia-icon-financial_sad_o   c4"
               onClick={[Function]}
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               onMouseUp={[Function]}
-              style={Object {}}
+              style={
+                Object {
+                  "color": "#666",
+                }
+              }
             />
           </span>
           <div
@@ -3169,13 +3173,13 @@ exports[`default Wrapper 1`] = `
        normal
     </h2>
     <div
-      className="c44"
+      className="c0"
       onMouseDown={[Function]}
       onMouseUp={[Function]}
       style={Object {}}
     >
       <div
-        className="c45"
+        className="c44"
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
@@ -3211,7 +3215,7 @@ exports[`default Wrapper 1`] = `
           }
         >
           <div
-            className="c46"
+            className="c45"
             style={
               Object {
                 "backgroundColor": "#4d63ff",
@@ -3219,7 +3223,7 @@ exports[`default Wrapper 1`] = `
             }
           />
           <span
-            className="c47"
+            className="c46"
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
@@ -3261,13 +3265,13 @@ exports[`default Wrapper 1`] = `
        单滑块value
     </h2>
     <div
-      className="c44"
+      className="c0"
       onMouseDown={[Function]}
       onMouseUp={[Function]}
       style={Object {}}
     >
       <div
-        className="c45"
+        className="c44"
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
@@ -3303,7 +3307,7 @@ exports[`default Wrapper 1`] = `
           }
         >
           <div
-            className="c48"
+            className="c47"
             style={
               Object {
                 "backgroundColor": "#4d63ff",
@@ -3311,7 +3315,7 @@ exports[`default Wrapper 1`] = `
             }
           />
           <span
-            className="c49"
+            className="c48"
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
@@ -3353,13 +3357,13 @@ exports[`default Wrapper 1`] = `
        单滑块
     </h2>
     <div
-      className="c44"
+      className="c0"
       onMouseDown={[Function]}
       onMouseUp={[Function]}
       style={Object {}}
     >
       <div
-        className="c45"
+        className="c44"
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
@@ -3395,7 +3399,7 @@ exports[`default Wrapper 1`] = `
           }
         >
           <div
-            className="c48"
+            className="c47"
             style={
               Object {
                 "backgroundColor": "#4d63ff",
@@ -3403,7 +3407,7 @@ exports[`default Wrapper 1`] = `
             }
           />
           <span
-            className="c49"
+            className="c48"
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
@@ -3445,13 +3449,13 @@ exports[`default Wrapper 1`] = `
        双滑块
     </h2>
     <div
-      className="c44"
+      className="c0"
       onMouseDown={[Function]}
       onMouseUp={[Function]}
       style={Object {}}
     >
       <div
-        className="c45"
+        className="c44"
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
@@ -3489,7 +3493,7 @@ exports[`default Wrapper 1`] = `
           }
         >
           <div
-            className="c50"
+            className="c49"
             style={
               Object {
                 "backgroundColor": "#4d63ff",
@@ -3497,7 +3501,7 @@ exports[`default Wrapper 1`] = `
             }
           />
           <span
-            className="c49"
+            className="c48"
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
@@ -3519,7 +3523,7 @@ exports[`default Wrapper 1`] = `
             
           </span>
           <span
-            className="c51"
+            className="c50"
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
@@ -3562,13 +3566,13 @@ exports[`default Wrapper 1`] = `
        双滑块value
     </h2>
     <div
-      className="c44"
+      className="c0"
       onMouseDown={[Function]}
       onMouseUp={[Function]}
       style={Object {}}
     >
       <div
-        className="c45"
+        className="c44"
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
@@ -3606,7 +3610,7 @@ exports[`default Wrapper 1`] = `
           }
         >
           <div
-            className="c50"
+            className="c49"
             style={
               Object {
                 "backgroundColor": "#4d63ff",
@@ -3614,7 +3618,7 @@ exports[`default Wrapper 1`] = `
             }
           />
           <span
-            className="c49"
+            className="c48"
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
@@ -3636,7 +3640,7 @@ exports[`default Wrapper 1`] = `
             
           </span>
           <span
-            className="c51"
+            className="c50"
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
@@ -3679,13 +3683,13 @@ exports[`default Wrapper 1`] = `
        离散
     </h2>
     <div
-      className="c44"
+      className="c0"
       onMouseDown={[Function]}
       onMouseUp={[Function]}
       style={Object {}}
     >
       <div
-        className="c45"
+        className="c44"
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
@@ -3720,6 +3724,11 @@ exports[`default Wrapper 1`] = `
             ]
           }
         >
+          <span
+            className="c51"
+            data-sign="mask"
+            style={Object {}}
+          />
           <span
             className="c52"
             data-sign="mask"
@@ -3740,13 +3749,8 @@ exports[`default Wrapper 1`] = `
             data-sign="mask"
             style={Object {}}
           />
-          <span
-            className="c56"
-            data-sign="mask"
-            style={Object {}}
-          />
           <div
-            className="c57"
+            className="c56"
             style={
               Object {
                 "backgroundColor": "#4d63ff",
@@ -3754,7 +3758,7 @@ exports[`default Wrapper 1`] = `
             }
           />
           <span
-            className="c58"
+            className="c57"
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
@@ -3796,13 +3800,13 @@ exports[`default Wrapper 1`] = `
        离散
     </h2>
     <div
-      className="c44"
+      className="c0"
       onMouseDown={[Function]}
       onMouseUp={[Function]}
       style={Object {}}
     >
       <div
-        className="c45"
+        className="c44"
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
@@ -3840,6 +3844,11 @@ exports[`default Wrapper 1`] = `
           }
         >
           <span
+            className="c58"
+            data-sign="mask"
+            style={Object {}}
+          />
+          <span
             className="c59"
             data-sign="mask"
             style={Object {}}
@@ -3850,22 +3859,17 @@ exports[`default Wrapper 1`] = `
             style={Object {}}
           />
           <span
+            className="c54"
+            data-sign="mask"
+            style={Object {}}
+          />
+          <span
             className="c61"
             data-sign="mask"
             style={Object {}}
           />
-          <span
-            className="c55"
-            data-sign="mask"
-            style={Object {}}
-          />
-          <span
-            className="c62"
-            data-sign="mask"
-            style={Object {}}
-          />
           <div
-            className="c63"
+            className="c62"
             style={
               Object {
                 "backgroundColor": "#4d63ff",
@@ -3873,7 +3877,7 @@ exports[`default Wrapper 1`] = `
             }
           />
           <span
-            className="c58"
+            className="c57"
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
@@ -3895,7 +3899,7 @@ exports[`default Wrapper 1`] = `
             
           </span>
           <span
-            className="c64"
+            className="c63"
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
@@ -3938,13 +3942,13 @@ exports[`default Wrapper 1`] = `
        disabled
     </h2>
     <div
-      className="c44"
+      className="c0"
       onMouseDown={null}
       onMouseUp={[Function]}
       style={Object {}}
     >
       <div
-        className="c45"
+        className="c44"
         disabled={true}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
@@ -3982,7 +3986,7 @@ exports[`default Wrapper 1`] = `
           }
         >
           <div
-            className="c65"
+            className="c64"
             style={
               Object {
                 "backgroundColor": "#e8e8e8",
@@ -3990,7 +3994,7 @@ exports[`default Wrapper 1`] = `
             }
           />
           <span
-            className="c66"
+            className="c65"
             disabled={true}
             onMouseDown={null}
             onMouseEnter={[Function]}
@@ -4033,13 +4037,13 @@ exports[`default Wrapper 1`] = `
        离散
     </h2>
     <div
-      className="c44"
+      className="c0"
       onMouseDown={[Function]}
       onMouseUp={[Function]}
       style={Object {}}
     >
       <div
-        className="c45"
+        className="c44"
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
@@ -4075,6 +4079,11 @@ exports[`default Wrapper 1`] = `
           }
         >
           <span
+            className="c66"
+            data-sign="mask"
+            style={Object {}}
+          />
+          <span
             className="c67"
             data-sign="mask"
             style={Object {}}
@@ -4084,13 +4093,8 @@ exports[`default Wrapper 1`] = `
             data-sign="mask"
             style={Object {}}
           />
-          <span
-            className="c69"
-            data-sign="mask"
-            style={Object {}}
-          />
           <div
-            className="c46"
+            className="c45"
             style={
               Object {
                 "backgroundColor": "#4d63ff",
@@ -4098,7 +4102,7 @@ exports[`default Wrapper 1`] = `
             }
           />
           <span
-            className="c47"
+            className="c46"
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
@@ -4140,13 +4144,13 @@ exports[`default Wrapper 1`] = `
        icon
     </h2>
     <div
-      className="c44"
+      className="c0"
       onMouseDown={[Function]}
       onMouseUp={[Function]}
       style={Object {}}
     >
       <div
-        className="c70"
+        className="c69"
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
@@ -4182,7 +4186,7 @@ exports[`default Wrapper 1`] = `
           }
         >
           <span
-            className="c3"
+            className="c70"
             style={
               Object {
                 "color": "red",
@@ -4196,7 +4200,7 @@ exports[`default Wrapper 1`] = `
             }
           >
             <i
-              className="lugia-icon-financial_smile_o  c4"
+              className="lugia-icon-financial_smile_o   c4"
               onClick={[Function]}
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
@@ -4225,7 +4229,7 @@ exports[`default Wrapper 1`] = `
             }
           >
             <i
-              className="lugia-icon-financial_sad_o  c4"
+              className="lugia-icon-financial_sad_o   c4"
               onClick={[Function]}
               onMouseDown={[Function]}
               onMouseEnter={[Function]}
@@ -4240,7 +4244,7 @@ exports[`default Wrapper 1`] = `
             />
           </span>
           <div
-            className="c46"
+            className="c45"
             style={
               Object {
                 "backgroundColor": "#4d63ff",
@@ -4248,7 +4252,7 @@ exports[`default Wrapper 1`] = `
             }
           />
           <span
-            className="c47"
+            className="c46"
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
