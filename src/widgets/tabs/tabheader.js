@@ -467,6 +467,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
     if (isVertical(tabPosition)) {
       const actualHeight = this.getActualWidth('line', titleSize);
       totalPage = computePage(this.offsetHeight, actualHeight);
+      console.log('this.scrollBox', titleSize, this.offsetHeight, totalPage);
     } else {
       const actualWidth = this.getActualWidth(tabType, titleSize);
       totalPage = computePage(this.offsetWidth, actualWidth);
@@ -509,12 +510,8 @@ class TabHeader extends Component<TabsProps, TabsState> {
         showPadding={totalPage > 1}
       >
         {this.getPrevOrNextPage('prev', prevPageThemeProps, isDisabledToPrev, isDisabledToNext)}
-        <VTabsContainer themeProps={themeProps}>
-          <YscrollerContainer
-            y={moveDistance}
-            themeProps={borderThemeProps}
-            innerRef={node => (this.scrollBox = node)}
-          >
+        <VTabsContainer themeProps={themeProps} innerRef={node => (this.scrollBox = node)}>
+          <YscrollerContainer y={moveDistance} themeProps={borderThemeProps}>
             {this.getChildren()}
           </YscrollerContainer>
         </VTabsContainer>
