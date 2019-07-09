@@ -389,51 +389,7 @@ const load = keyframes`
   }
 `;
 
-const LoadIcon = ThemeHoc(
-  CSSComponent({
-    extend: Icon,
-    className: 'upload_LoadIcon',
-    normal: {
-      selectNames: [['fontSize'], ['color']],
-    },
-    disabled: {
-      selectNames: [['color'], ['cursor']],
-      defaultTheme: {
-        cursor: 'not-allowed',
-        color: '#999',
-      },
-    },
-    css: css`
-      color: #666;
-      display: inline-block;
-      &.right {
-        position: absolute;
-        right: 8px;
-        top: 50%;
-        transform: translate(0, -50%);
-      }
-      &.delete {
-        display: none;
-      }
-      &.areaIcon {
-        font-size: 30px;
-      }
-      &.success {
-        color: #56c22d;
-      }
-      &.error {
-        color: #f22735;
-      }
-      &.icon-mark {
-        margin: 0 4px 0 0;
-      }
-      &.loading {
-        animation: ${load} 0.8s linear infinite;
-      }
-    `,
-  }),
-  'LoadIcon'
-);
+const LoadIcon = Icon;
 
 const iconClassMap = {
   default: 'lugia-icon-financial_upload right',
@@ -477,10 +433,41 @@ export const getIconByType = (
       break;
     default:
       resultTheme = {};
-      resultViewClass = '';
+      resultViewClass = 'UploadDefaultIcon';
       break;
   }
-
+  resultTheme = deepMerge(
+    {
+      [resultViewClass]: {
+        normal: {
+          getCSS: (themeMeta, themeProps) => {
+            return css`
+              display: inline-block;
+              &.right {
+                position: absolute;
+                right: 8px;
+                top: 50%;
+                transform: translate(0, -50%);
+              }
+              &.delete {
+                display: none;
+              }
+              &.areaIcon {
+                font-size: 30px;
+              }
+              &.icon-mark {
+                margin: 0 4px 0 0;
+              }
+              &.loading {
+                animation: ${load} 0.8s linear infinite;
+              }
+            `;
+          },
+        },
+      },
+    },
+    resultTheme
+  );
   if (type === 1 && status !== 'loading') {
     return '上传';
   }
@@ -632,9 +619,9 @@ class GetElement extends React.Component<DefProps, StateProps> {
 
   componentDidMount() {
     const { dropArea, getChangeInfo } = this;
-    if (!dropArea.current) return;
 
-    const dragDrop = findDOMNode(dropArea.current);
+    if (!dropArea || dropArea.current === null) return;
+    const dragDrop = dropArea;
     if (!dragDrop) return;
     const stopPropagation = (e: Object) => {
       e.stopPropagation();
@@ -681,7 +668,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
     if (!input) {
       return;
     }
-    const element = findDOMNode(input.current);
+    const element = input;
     if (element) {
       this.setState({
         inputElement: element,
@@ -753,7 +740,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
           disabled={disabled}
           status={classNameStatus}
           onClick={handleClickToUpload}
-          ref={this.dropArea}
+          innerRef={node => (this.dropArea = node)}
         >
           {getIconByType(props, classNameStatus)} {defaultText}
         </InputContent>
@@ -776,7 +763,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
             hasBtn="hasBtn"
             disabled={disabled}
             onClick={handleClickToUpload}
-            ref={this.dropArea}
+            innerRef={node => (this.dropArea = node)}
           >
             {defaultText}
             {showFileList ? null : getIconByType(props, 'li-' + classNameStatus)}
@@ -872,6 +859,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
           onClick={handleClickToUpload}
           dragIn={dragIn}
           classNameStatus={classNameStatus}
+          innerRef={node => (this.dropArea = node)}
         >
           {classNameStatus === 'loading'
             ? getIconByType(props, 'area-' + classNameStatus)
@@ -895,7 +883,6 @@ class GetElement extends React.Component<DefProps, StateProps> {
   handleClickToUpload = () => {
     const { inputElement } = this.state;
     const { disabled } = this.props;
-    console.log('inputElement', inputElement, disabled);
     if (disabled || !inputElement) return;
 
     inputElement.click();
