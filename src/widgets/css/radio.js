@@ -75,7 +75,7 @@ const RadioDefaultTheme = {
 
 export const RadioWrap = CSSComponent({
   tag: 'label',
-  className: 'radio-wrap',
+  className: 'RadioWrap',
   css: css`
     line-height: 1.5;
     padding: 0;
@@ -113,7 +113,7 @@ export const RadioWrap = CSSComponent({
 
 export const RadioContent = StaticComponent({
   tag: 'span',
-  className: 'radio-content',
+  className: 'RadioContent',
   css: css`
     margin: 0;
     outline: none;
@@ -125,7 +125,7 @@ export const RadioContent = StaticComponent({
 
 export const RadioChildrenSpan = CSSComponent({
   tag: 'span',
-  className: 'radio-children-span',
+  className: 'RadioChildrenSpan',
   css: css`
     padding-left: ${em(padding)};
   `,
@@ -164,7 +164,7 @@ export const RadioChildrenSpan = CSSComponent({
 
 export const RadioCircleSpan = CSSComponent({
   tag: 'span',
-  className: 'radio-circle-span',
+  className: 'RadioCircleSpan',
   css: css`
     position: relative;
     top: 0;
