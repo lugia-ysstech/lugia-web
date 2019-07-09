@@ -245,7 +245,7 @@ const HscrollerContainer = CSSComponent({
         border = { top: { width, color, style: 'solid' } };
       }
       if (tabType === 'window') {
-        border = { bottom: { width, color, style: 'solid' } };
+        border = { bottom: { width: 0, color: 'transparent', style: 'solid' } };
       }
       return { border };
     },
