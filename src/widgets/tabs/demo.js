@@ -7,20 +7,15 @@
 import * as React from 'react';
 import Tabs from './';
 import Button from '../button';
-import Switch from '../switch';
 import Tabpane from './tabpane';
 import Widget from '../consts/index';
 import Icon from '../icon';
 import Theme from '../theme/';
-import type { TabPositionType, TabType } from '../css/tabs';
-import { addMouseEvent } from '@lugia/theme-hoc';
+
 import colorsFunc from '../css/stateColor';
-import TestInner from './testInner';
+import { getBorder } from '@lugia/theme-utils';
 
-import CSSComponent, { css, keyframes } from '@lugia/theme-css-hoc';
-import { getBorder } from '@lugia/theme-css-hoc';
-
-const { themeColor, mediumGreyColor, superLightColor, disableColor } = colorsFunc();
+const { themeColor } = colorsFunc();
 
 const onPreClick = e => {};
 const onNextClick = e => {};
@@ -523,117 +518,129 @@ export default class TabsDemo extends React.Component<any, any> {
             },
           },
         },
-        TabHeader: {
-          SelectTabPan: {
-            normal: {
-              color: 'red',
-            },
-            disabled: {
-              color: '#ccc',
-            },
+        TabHeader: {},
+        SelectTabPan: {
+          normal: {
+            color: 'red',
           },
-          BorderStyle: {
-            normal: {
-              color: '#FFCCFF',
-              width: 1,
-            },
+          disabled: {
+            color: '#ccc',
           },
-          TitleContainer: {
-            normal: {
-              width: 300,
-              height: 300,
-            },
+        },
+        BorderStyle: {
+          normal: {
+            color: '#FFCCFF',
+            width: 1,
           },
-          DefaultTabPan: {
-            normal: {
-              height: 35,
-            },
-            hover: {
-              color: 'orange',
-            },
-            disabled: {
-              color: '#ccc',
-            },
+        },
+        TitleContainer: {
+          normal: {
+            width: 300,
+            height: 300,
+          },
+        },
+        DefaultTabPan: {
+          normal: {
+            height: 35,
+          },
+          hover: {
+            color: 'orange',
+          },
+          disabled: {
+            color: '#ccc',
+          },
+        },
+        DisabledTabPan: {
+          normal: {
+            color: '#999',
           },
         },
       },
     };
     const cardView = {
       [Widget.Tabs]: {
-        TabHeader: {
-          SelectTabPan: {
-            normal: {
-              color: themeColor,
-              background: {
-                color: '#fff',
-              },
+        TabHeader: {},
+        SelectTabPan: {
+          normal: {
+            color: themeColor,
+            background: {
+              color: '#fff',
             },
-            disabled: {
+          },
+          disabled: {
+            color: '#ccc',
+          },
+        },
+        DefaultTabPan: {
+          normal: {
+            background: {
+              color: 'pink',
+            },
+          },
+          hover: {
+            color: 'orange',
+          },
+          disabled: {
+            color: '#ccc',
+          },
+        },
+        TitleContainer: {
+          normal: {
+            width: 300,
+            // height: 300,
+          },
+        },
+        AddButton: {
+          normal: {},
+          hover: {
+            background: {
               color: '#ccc',
             },
           },
-          DefaultTabPan: {
-            normal: {
-              background: {
-                color: 'pink',
-              },
-            },
-            hover: {
-              color: 'orange',
-            },
-            disabled: {
-              color: '#ccc',
-            },
+          disabled: {
+            color: '#ccc',
           },
-          TitleContainer: {
-            normal: {
-              // width: 300,
-              // height: 300,
-            },
-          },
-          AddButton: {
-            normal: {},
-            hover: {
-              background: {
-                color: '#ccc',
-              },
-            },
-            disabled: {
-              color: '#ccc',
-            },
+        },
+        DisabledTabPan: {
+          normal: {
+            color: '#999',
           },
         },
       },
     };
     const defaultCardView = {
       [Widget.Tabs]: {
-        TabHeader: {
-          TitleContainer: {
-            normal: {
-              width: 300,
-              height: 300,
-            },
+        TabHeader: {},
+        TitleContainer: {
+          normal: {
+            width: 300,
+            height: 300,
           },
-          AddButton: {
-            normal: {
-              color: '#000',
-              width: 20,
-              height: 20,
-              opacity: 1,
-              background: {
-                color: '#e8e8e8',
-              },
-              boxShadow: { x: 0, y: 0, color: '#e8e8e8', type: 'outset', blur: 1, spread: 1 },
-              border: getBorder({ color: 'blue', width: 1, style: 'solid' }),
+        },
+        DisabledTabPan: {
+          normal: {
+            color: '#999',
+          },
+        },
+        AddButton: {
+          normal: {
+            color: '#000',
+            width: 20,
+            height: 20,
+            opacity: 1,
+            background: {
+              color: '#e8e8e8',
             },
-            hover: {
-              background: {
-                color: '#ccc',
-              },
-            },
-            disabled: {
+            boxShadow: { x: 0, y: 0, color: '#e8e8e8', type: 'outset', blur: 1, spread: 1 },
+            border: getBorder({ color: 'blue', width: 1, style: 'solid' }),
+          },
+          hover: {
+            background: {
               color: '#ccc',
             },
+          },
+          disabled: {
+            color: '#ccc',
           },
         },
       },
@@ -654,30 +661,29 @@ export default class TabsDemo extends React.Component<any, any> {
             },
           },
         },
-        TabHeader: {
-          SelectTabPan: {
-            normal: {
-              color: 'green',
-            },
-            disabled: {
-              color: '#ccc',
-            },
+        SelectTabPan: {
+          normal: {
+            color: 'green',
           },
-          DefaultTabPan: {
-            normal: {},
-            hover: {
-              color: 'orange',
-            },
-            disabled: {
-              color: '#ccc',
-            },
-          },
-          TitleContainer: {
-            normal: {
-              width: 316,
-            },
+          disabled: {
+            color: '#ccc',
           },
         },
+        DefaultTabPan: {
+          normal: {},
+          hover: {
+            color: 'orange',
+          },
+          disabled: {
+            color: '#ccc',
+          },
+        },
+        TitleContainer: {
+          normal: {
+            width: 316,
+          },
+        },
+        TabHeader: {},
       },
     };
     const { testDelayData, data, dataWindow, activityValue } = this.state;
@@ -695,7 +701,6 @@ export default class TabsDemo extends React.Component<any, any> {
               pagedType={'single'}
               forceRender={true}
               data={testDelayData}
-              // onChange={this.onChange}
             />
           </div>
           <div>
@@ -722,7 +727,7 @@ export default class TabsDemo extends React.Component<any, any> {
               pagedType={'single'}
               forceRender={false}
             >
-              <Tabpane {...addMouseEvent(this)} title={'酥肉'} content={<div>酥肉啊啊啊 </div>} />
+              <Tabpane title={'酥肉'} content={<div>酥肉啊啊啊 </div>} />
               <Tabpane title={'海带'} content={<div>海带啊啊啊啊 </div>} activityValue={'1'} />
               <Tabpane title={'土豆'} content={'土豆啊啊啊'} activityValue={'2'} />
               <Tabpane title={'火锅'} content={<div>火锅啊啊啊啊</div>} activityValue={'3'} />
@@ -941,7 +946,7 @@ export default class TabsDemo extends React.Component<any, any> {
               // activityValue={activityValue}
               // onChange={this.onChange}
             >
-              <Tabpane {...addMouseEvent(this)} title={'酥肉'} content={<div>酥肉啊啊啊 </div>} />
+              <Tabpane title={'酥肉'} content={<div>酥肉啊啊啊 </div>} />
               <Tabpane title={'海带'} content={<div>海带啊啊啊啊 </div>} activityValue={'1'} />
               <Tabpane title={'土豆'} content={'土豆啊啊啊'} activityValue={'2'} />
               <Tabpane title={'火锅'} content={<div>火锅啊啊啊啊</div>} activityValue={'3'} />
@@ -951,7 +956,7 @@ export default class TabsDemo extends React.Component<any, any> {
 
         <Theme config={windowView}>
           <div>
-            <p style={{ titleStyle }}>tabType=window pagedType=page</p>
+            <p style={{ titleStyle }}>tabType=window pagedType=page 受限 delete</p>
             <Tabs
               tabType={'window'}
               pagedType={'page'}
@@ -959,7 +964,19 @@ export default class TabsDemo extends React.Component<any, any> {
               onPreClick={onPreClick}
               onNextClick={onNextClick}
               showDeleteBtn={true}
-              onDeleteClick={this.onDelete}
+              onDelete={this.onDelete}
+            />
+          </div>
+          <div>
+            <p style={{ titleStyle }}>tabType=window pagedType=page 非受限 delete</p>
+            <Tabs
+              tabType={'window'}
+              pagedType={'page'}
+              // data={dataWindow}
+              onPreClick={onPreClick}
+              onNextClick={onNextClick}
+              showDeleteBtn={true}
+              // onDelete={this.onDelete}
             />
           </div>
           <p style={{ titleStyle }}>非受限 不传data 展示数据由state 控制</p>

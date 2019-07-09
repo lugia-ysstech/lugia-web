@@ -466,8 +466,8 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
                 topRight: 4,
               },
               margin: {
-                left: 4,
-                right: 4,
+                left: 6,
+                right: 6,
               },
               background: {
                 color: '#e8e8e8',
@@ -480,8 +480,8 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
           themeConfig: {
             normal: {
               margin: {
-                left: 4,
-                right: 4,
+                left: 6,
+                right: 6,
               },
               border: getBorder(
                 { color: '#e8e8e8', width: 1, style: 'solid' },

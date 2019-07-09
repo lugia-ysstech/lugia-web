@@ -139,10 +139,17 @@ const HTabsContainer = CSSComponent({
   normal: {
     selectNames: [['width']],
     getThemeMeta(themeMeta, themeProps) {
-      const { propsConfig: { arrowShow } = {} } = themeProps;
+      const { propsConfig: { arrowShow, showAddBtn, addSize } = {} } = themeProps;
       if (arrowShow) {
+        const W = showAddBtn ? (addSize ? addSize + 10 + 'px' : '80px') : '70px';
         return {
-          width: 'calc( 100% - 70px )',
+          width: `calc( 100% - ${W} )`,
+        };
+      }
+      if (showAddBtn) {
+        const W = addSize ? addSize + 10 + 'px' : '30px';
+        return {
+          width: `calc( 100% - ${W} )`,
         };
       }
     },
@@ -214,6 +221,9 @@ const AddContainer = CSSComponent({
     position: relative;
     text-align: center;
     cursor: pointer;
+    float: right;
+    margin: 5px;
+    transform: translateY(25%);
   `,
 });
 
@@ -231,7 +241,7 @@ const AddOutContainer = CSSComponent({
   css: css`
     position: relative;
     text-align: center;
-    display: inline-block;
+    float: left;
     margin: 5px;
   `,
 });
@@ -397,7 +407,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
     pagedType: 'single',
     defaultData: [],
   };
-  titleBox: any;
+  scrollBox: any;
   titlePanel: any;
   titlePanelArray: any;
   static displayName = Widget.Tabs;
@@ -407,8 +417,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
 
   constructor(props: TabsProps) {
     super(props);
-
-    this.titleBox = React.createRef();
+    this.scrollBox = React.createRef();
     this.titlePanelArray = [];
     this.titlePanel = [];
   }
@@ -460,9 +469,9 @@ class TabHeader extends Component<TabsProps, TabsState> {
   }
 
   componentDidMount() {
-    if (this.titleBox) {
-      this.offsetWidth = this.titleBox.offsetWidth;
-      this.offsetHeight = this.titleBox.offsetHeight;
+    if (this.scrollBox) {
+      this.offsetWidth = this.scrollBox.offsetWidth;
+      this.offsetHeight = this.scrollBox.offsetHeight;
     }
     this.matchPage();
   }
@@ -515,11 +524,14 @@ class TabHeader extends Component<TabsProps, TabsState> {
         themeProps={tabsThemeProps}
         tabPosition={tabPosition}
         showPadding={totalPage > 1}
-        innerRef={node => (this.titleBox = node)}
       >
         {this.getPrevOrNextPage('prev', prevPageThemeProps, isDisabledToPrev, isDisabledToNext)}
         <VTabsContainer themeProps={themeProps}>
-          <YscrollerContainer y={moveDistance} themeProps={borderThemeProps}>
+          <YscrollerContainer
+            y={moveDistance}
+            themeProps={borderThemeProps}
+            innerRef={node => (this.scrollBox = node)}
+          >
             {this.getChildren()}
           </YscrollerContainer>
         </VTabsContainer>
@@ -615,8 +627,16 @@ class TabHeader extends Component<TabsProps, TabsState> {
       props: { tabPosition, tabType },
     });
     const tabsThemeProps = this.props.getPartOfThemeProps('TitleContainer');
-    themeProps.propsConfig = { arrowShow };
+
+    let addSize = 0;
+    if (showAddBtn) {
+      const addBtnThemeProps = this.props.getPartOfThemeProps('AddButton');
+      const { themeConfig: { normal: { width } } = {} } = addBtnThemeProps;
+      addSize = width ? width : addSize;
+    }
+    themeProps.propsConfig = { arrowShow, showAddBtn, addSize };
     const moveDistance = this.computeMoveDistance();
+
     const { isDisabledToPrev, isDisabledToNext } = this.getIsAllowToMove(moveDistance);
 
     const prevPageThemeProps = deepMerge(
@@ -629,15 +649,14 @@ class TabHeader extends Component<TabsProps, TabsState> {
         tabType={tabType}
         tabPosition={tabPosition}
         showPadding={totalPage > 1}
-        innerRef={node => (this.titleBox = node)}
       >
         {this.getPrevOrNextPage('prev', prevPageThemeProps, isDisabledToPrev, isDisabledToNext)}
-        <HTabsContainer themeProps={themeProps}>
+        <HTabsContainer themeProps={themeProps} innerRef={node => (this.scrollBox = node)}>
           <HscrollerContainer themeProps={borderThemeProps} x={moveDistance}>
             {this.getChildren()}
-            {this.getAddButton()}
           </HscrollerContainer>
         </HTabsContainer>
+        {this.getAddButton()}
         {this.getPrevOrNextPage('next', prevPageThemeProps, isDisabledToPrev, isDisabledToNext)}
       </HTabsOutContainer>
     );
@@ -659,16 +678,14 @@ class TabHeader extends Component<TabsProps, TabsState> {
   }
 
   getAddButton() {
-    const { tabType, themeProps, showAddBtn } = this.props;
+    const { tabType, showAddBtn } = this.props;
     const add = 'lugia-icon-reminder_plus';
     if (!matchType(tabType, 'line') && showAddBtn) {
       const addBtnthemeProps = this.props.getPartOfThemeProps('AddButton');
       return (
-        <AddOutContainer themeProps={themeProps}>
-          <AddContainer themeProps={addBtnthemeProps} onClick={this.onAddClick}>
-            <Icon iconClass={add} />
-          </AddContainer>
-        </AddOutContainer>
+        <AddContainer themeProps={addBtnthemeProps} onClick={this.onAddClick}>
+          <Icon iconClass={add} />
+        </AddContainer>
       );
     }
     return null;
@@ -735,8 +752,8 @@ class TabHeader extends Component<TabsProps, TabsState> {
     const { currentPage, totalPage, pagedCount, titleSize } = this.state;
     const { tabType, tabPosition } = this.props;
     const currentTabsWidth = plusWidth(pagedCount - 1, titleSize);
-    const maxDistance = isVertical(tabPosition) ? this.offsetHeight : this.offsetWidth;
-    let distance = totalPage > 1 ? currentPage * maxDistance : 0;
+    const scrollDistance = isVertical(tabPosition) ? this.offsetHeight : this.offsetWidth;
+    let distance = totalPage > 1 ? currentPage * scrollDistance : 0;
 
     if (pagedCount > 0) {
       if (matchType(tabType, 'card')) {
