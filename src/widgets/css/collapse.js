@@ -3,10 +3,10 @@
  * create by guorg
  * @flow
  */
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import CSSComponent from '@lugia/theme-css-hoc';
 import { px2emcss } from '../css/units';
 import type { ThemeType } from '@lugia/lugia-web';
-import { getThemeWidthCSS } from '../css/panel';
 import { createGetMargin } from '../common/ThemeUtils';
 
 const FontSize = 1.4;
@@ -54,12 +54,33 @@ const getFirstPanelBorder = (props: CSSProps) => {
     `;
   }
 };
-export const Wrap = styled.div`
-  font-size: ${FontSize}rem;
-  & > div:first-child {
-    ${getFirstPanelBorder};
-  }
-
-  ${getThemeWidthCSS};
-  ${getMargin};
-`;
+// export const Wrap = styled.div`
+//   font-size: ${FontSize}rem;
+//   & > div:first-child {
+//     ${getFirstPanelBorder};
+//   }
+// `;
+export const Wrap = CSSComponent({
+  tag: 'div',
+  className: 'CheckBoxWrap',
+  css: css`
+    font-size: ${FontSize}rem;
+    & > div:first-child {
+      ${getFirstPanelBorder};
+    }
+  `,
+  normal: {
+    defaultTheme: {
+      opacity: 1,
+    },
+    selectNames: [
+      ['opacity'],
+      ['margin'],
+      ['padding'],
+      ['width'],
+      ['height'],
+      ['background'],
+      ['border'],
+    ],
+  },
+});

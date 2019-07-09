@@ -36,9 +36,11 @@ export default ThemeProvider(
     }
 
     render() {
+      const { getPartOfThemeProps } = this.props;
+      const WrapTheme = getPartOfThemeProps('Wrap');
       const panelTheme = this.props.getTheme().svThemeConfigTree.sv_widget_Panel;
       return (
-        <Wrap panelTheme={panelTheme || {}} theme={this.props.getTheme()}>
+        <Wrap panelTheme={panelTheme || {}} themeProps={WrapTheme}>
           {this.renderChildren()}
         </Wrap>
       );
