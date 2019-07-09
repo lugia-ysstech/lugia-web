@@ -30,6 +30,7 @@ const BaseTab = CSSComponent({
       ['color'],
       ['background'],
       ['border'],
+      ['borderRadius'],
       ['margin'],
       ['padding'],
       ['font'],
@@ -209,9 +210,6 @@ const Title = CSSComponent({
     selectNames: [['color']],
     defaultTheme: {
       color: disableColor,
-    },
-    getThemeMeta: (theme: Object, themeProps: Object) => {
-      // console.log('disabled !!!',theme,themeProps.propsConfig.disabled,themeProps,themeProps.themeState.disabled);
     },
   },
   css: css`
@@ -451,6 +449,8 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     let selectThemeProps = this.props.getPartOfThemeProps('SelectTabPan', {
       props: { isSelect, tabType, tabPosition, showDeleteBtn, disabled },
     });
+    selectThemeProps = deepMerge(titleThemeProps, selectThemeProps);
+
     const baseDefaultTab = BaseTab;
     switch (tabType) {
       case 'card':
@@ -466,8 +466,8 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
                 topRight: 4,
               },
               margin: {
-                left: 6,
-                right: 6,
+                left: 4,
+                right: 4,
               },
               background: {
                 color: '#e8e8e8',
@@ -480,8 +480,8 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
           themeConfig: {
             normal: {
               margin: {
-                left: 6,
-                right: 6,
+                left: 4,
+                right: 4,
               },
               border: getBorder(
                 { color: '#e8e8e8', width: 1, style: 'solid' },

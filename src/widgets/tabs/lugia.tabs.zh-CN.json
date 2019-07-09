@@ -138,6 +138,52 @@
   },
   "childrenWidget": ["tabpane","tabcontent"],
   "category": ["数据展示"],
+  "designInfo": {
+    "CardTabs": {
+      "sequence": 1,
+      "title": "分级图标评分",
+      "desc": "按分值等级展示不同图标样式和颜色",
+      "props": {
+        "tabType": "card"
+      },
+      "theme": {
+        "AddButton": {
+          "name": "新增按钮",
+          "desc": "新增按钮样式配置",
+          "normal": [["width"], ["height"], ["opacity"], ["background"], ["border"], ["boxShadow"], ["color"], ["fontSize"]],
+          "hover": [["width"], ["height"], ["opacity"], ["background"], ["border"], ["boxShadow"], ["color"], ["fontSize"]],
+          "clicked": [],
+          "disabled": []
+        }
+      }
+    },
+    "WindowTabs": {
+      "sequence": 1,
+      "title": "分级图标评分",
+      "desc": "按分值等级展示不同图标样式和颜色",
+      "props": {
+        "tabType": "window"
+      },
+      "theme": {
+        "WindowContainer": {
+          "name": "窗口背景区域",
+          "desc": "窗口背景区域样式配置",
+          "normal": [["background"], ["padding"], ["border"], ["borderRadius"], ["opacity"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
+        } ,
+        "AddButton": {
+          "name": "新增按钮",
+          "desc": "新增按钮样式配置",
+          "normal": [["width"], ["height"], ["opacity"], ["background"], ["border"], ["boxShadow"], ["color"], ["fontSize"]],
+          "hover": [["width"], ["height"], ["opacity"], ["background"], ["border"], ["boxShadow"], ["color"], ["fontSize"]],
+          "clicked": [],
+          "disabled": []
+        }
+      }
+    }
+  },
   "theme": {
     "ContentBlock": {
       "name": "content内容区",
@@ -147,32 +193,37 @@
       "clicked": [],
       "disabled": []
     },
-    "TabHeader": {
-      "DefaultTabPan": {
-        "name": "默认标签",
-        "desc": "默认标签样式配置",
-        "normal": [["color"], ["background"], ["border"], ["margin"], ["padding"], ["font"], ["opacity"]],
-        "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
-        "clicked": [],
-        "disabled": []
-      },
-      "SelectTabPan": {
-        "name": "选中标签",
-        "desc": "选中标签样式配置",
-        "normal": [["color"], ["background"], ["border"], ["margin"], ["padding"], ["font"], ["opacity"]],
-        "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
-        "clicked": [],
-        "disabled": []
-      },
-      "TitleContainer": {
-        "name": "头部标签区域",
-        "desc": "头部标签区域宽度配置",
-        "normal": [["width"]],
-        "hover": [],
-        "clicked": [],
-        "disabled": []
-      },
+    "DefaultTabPan": {
+      "name": "默认标签",
+      "desc": "默认标签样式配置",
+      "normal": [["color"], ["background"], ["border"], ["margin"], ["padding"], ["font"], ["opacity"]],
+      "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
+      "clicked": [],
+      "disabled": []
+    },
+    "SelectTabPan": {
+      "name": "选中标签",
+      "desc": "选中标签样式配置",
+      "normal": [["color"], ["background"], ["border"], ["margin"], ["padding"], ["font"], ["opacity"]],
+      "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
+      "clicked": [],
+      "disabled": []
+    },
+    "TitleContainer": {
+      "name": "头部标签区域",
+      "desc": "头部标签区域宽度配置",
+      "normal": [["width"]],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
+    },
+    "BorderStyle": {
+      "name": "默认线",
+      "desc": "默认线样式配置",
+      "normal": [["border"]],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
     }
-
   }
 }

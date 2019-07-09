@@ -141,13 +141,13 @@ const HTabsContainer = CSSComponent({
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig: { arrowShow, showAddBtn, addSize } = {} } = themeProps;
       if (arrowShow) {
-        const W = showAddBtn ? (addSize ? addSize + 10 + 'px' : '80px') : '70px';
+        const W = showAddBtn ? (addSize ? addSize + 8 + 'px' : '80px') : '70px';
         return {
           width: `calc( 100% - ${W} )`,
         };
       }
       if (showAddBtn) {
-        const W = addSize ? addSize + 10 + 'px' : '30px';
+        const W = addSize ? addSize + 8 + 'px' : '30px';
         return {
           width: `calc( 100% - ${W} )`,
         };
@@ -233,20 +233,21 @@ const HscrollerContainer = CSSComponent({
   tag: 'div',
   className: 'HscrollerContainer',
   normal: {
-    selectNames: [],
-    getCSS: (theme: Object, themeProps: Object) => {
+    selectNames: [['border']],
+    getThemeMeta: (theme: Object, themeProps: Object) => {
       const {
         propsConfig: { tabPosition, tabType },
       } = themeProps;
-      const { color = '#e8e8e8', width = 1 } = theme;
-      let border = `border-bottom: ${width}px solid ${color};`;
+      const color = '#e8e8e8',
+        width = 1;
+      let border = { bottom: { width, color, style: 'solid' } };
       if (tabPosition === 'bottom') {
-        border = `border-top: ${width}px solid ${color};`;
+        border = { top: { width, color, style: 'solid' } };
       }
       if (tabType === 'window') {
-        border = `border-bottom: ${0}px solid transparent;`;
+        border = { bottom: { width, color, style: 'solid' } };
       }
-      return border;
+      return { border };
     },
   },
   disabled: {
@@ -291,17 +292,18 @@ const YscrollerContainer = CSSComponent({
   tag: 'div',
   className: 'YscrollerContainer',
   normal: {
-    selectNames: [],
-    getCSS: (theme: Object, themeProps: Object) => {
+    selectNames: [['border']],
+    getThemeMeta: (theme: Object, themeProps: Object) => {
       const {
         propsConfig: { tabPosition },
       } = themeProps;
-      const { color = '#e8e8e8', width = 1 } = theme;
-      let border = `border-left: ${width}px solid ${color};`;
+      const color = '#e8e8e8',
+        width = 1;
+      let border = { left: { width, color, style: 'solid' } };
       if (tabPosition === 'left') {
-        border = `border-right: ${width}px solid ${color};`;
+        border = { right: { width, color, style: 'solid' } };
       }
-      return border;
+      return { border };
     },
   },
   disabled: {
@@ -467,7 +469,6 @@ class TabHeader extends Component<TabsProps, TabsState> {
     if (isVertical(tabPosition)) {
       const actualHeight = this.getActualWidth('line', titleSize);
       totalPage = computePage(this.offsetHeight, actualHeight);
-      console.log('this.scrollBox', titleSize, this.offsetHeight, totalPage);
     } else {
       const actualWidth = this.getActualWidth(tabType, titleSize);
       totalPage = computePage(this.offsetWidth, actualWidth);

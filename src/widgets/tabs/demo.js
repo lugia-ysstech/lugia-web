@@ -518,7 +518,6 @@ export default class TabsDemo extends React.Component<any, any> {
             },
           },
         },
-        TabHeader: {},
         SelectTabPan: {
           normal: {
             color: 'red',
@@ -529,8 +528,14 @@ export default class TabsDemo extends React.Component<any, any> {
         },
         BorderStyle: {
           normal: {
-            color: '#FFCCFF',
-            width: 1,
+            // border:getBorder({ color: '#FFCCFF', width: 1, style: 'solid'})
+            border: {
+              right: {
+                color: '#FFCCFF',
+                width: 1,
+                style: 'solid',
+              },
+            },
           },
         },
         TitleContainer: {
@@ -550,16 +555,151 @@ export default class TabsDemo extends React.Component<any, any> {
             color: '#ccc',
           },
         },
-        DisabledTabPan: {
+      },
+    };
+    const lineViewBot = {
+      [Widget.Tabs]: {
+        ContentBlock: {
           normal: {
-            color: '#999',
+            padding: {
+              top: 10,
+              left: 10,
+              right: 10,
+              bottom: 10,
+            },
+          },
+        },
+        SelectTabPan: {
+          normal: {
+            color: 'red',
+          },
+          disabled: {
+            color: '#ccc',
+          },
+        },
+        BorderStyle: {
+          normal: {
+            // border:getBorder({ color: '#FFCCFF', width: 1, style: 'solid'})
+            border: {
+              bottom: {
+                color: '#FFCCFF',
+                width: 1,
+                style: 'solid',
+              },
+            },
+          },
+        },
+        TitleContainer: {
+          normal: {
+            width: 300,
+            height: 300,
+          },
+        },
+        DefaultTabPan: {
+          normal: {
+            height: 35,
+          },
+          hover: {
+            color: 'orange',
+          },
+          disabled: {
+            color: '#ccc',
+          },
+        },
+      },
+    };
+    const lineViewLeft = {
+      [Widget.Tabs]: {
+        ContentBlock: {
+          normal: {
+            padding: {
+              top: 10,
+              left: 10,
+              right: 10,
+              bottom: 10,
+            },
+          },
+        },
+        SelectTabPan: {
+          normal: {
+            color: 'red',
+          },
+          disabled: {
+            color: '#ccc',
+          },
+        },
+        BorderStyle: {
+          normal: {
+            // border:getBorder({ color: '#FFCCFF', width: 1, style: 'solid'})
+            border: {
+              left: {
+                color: '#FFCCFF',
+                width: 1,
+                style: 'solid',
+              },
+            },
+          },
+        },
+        TitleContainer: {
+          normal: {
+            width: 300,
+            height: 300,
+          },
+        },
+        DefaultTabPan: {
+          normal: {
+            height: 35,
+          },
+          hover: {
+            color: 'orange',
+          },
+          disabled: {
+            color: '#ccc',
+          },
+        },
+      },
+    };
+    const lineViewTop = {
+      [Widget.Tabs]: {
+        ContentBlock: {
+          normal: {
+            padding: {
+              top: 10,
+              left: 10,
+              right: 10,
+              bottom: 10,
+            },
+          },
+        },
+        SelectTabPan: {
+          normal: {
+            color: 'red',
+          },
+          disabled: {
+            color: '#ccc',
+          },
+        },
+        TitleContainer: {
+          normal: {
+            width: 300,
+            height: 300,
+          },
+        },
+        DefaultTabPan: {
+          normal: {
+            height: 35,
+          },
+          hover: {
+            color: 'orange',
+          },
+          disabled: {
+            color: '#ccc',
           },
         },
       },
     };
     const cardView = {
       [Widget.Tabs]: {
-        TabHeader: {},
         SelectTabPan: {
           normal: {
             color: themeColor,
@@ -599,11 +739,6 @@ export default class TabsDemo extends React.Component<any, any> {
           },
           disabled: {
             color: '#ccc',
-          },
-        },
-        DisabledTabPan: {
-          normal: {
-            color: '#999',
           },
         },
       },
@@ -690,7 +825,7 @@ export default class TabsDemo extends React.Component<any, any> {
 
     return (
       <div>
-        <Theme config={lineView}>
+        <Theme config={lineViewBot}>
           <div>
             <p style={{ titleStyle }}>defaultData pagedType=single forceRender=true </p>
             <Tabs
@@ -716,34 +851,7 @@ export default class TabsDemo extends React.Component<any, any> {
               data={testDelayData}
             />
           </div>
-          <div>
-            <p style={{ titleStyle }}>defaultData pagedType=single </p>
-            {/*<Switch  />*/}
-            <Tabs
-              tabType={'line'}
-              tabPosition={'top'}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-              pagedType={'single'}
-              forceRender={false}
-            >
-              <Tabpane title={'酥肉'} content={<div>酥肉啊啊啊 </div>} />
-              <Tabpane title={'海带'} content={<div>海带啊啊啊啊 </div>} activityValue={'1'} />
-              <Tabpane title={'土豆'} content={'土豆啊啊啊'} activityValue={'2'} />
-              <Tabpane title={'火锅'} content={<div>火锅啊啊啊啊</div>} activityValue={'3'} />
-            </Tabs>
-          </div>
-          <div>
-            <p style={{ titleStyle }}>defaultData pagedType=page</p>
-            <Tabs
-              tabType={'line'}
-              tabPosition={'bottom'}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-              children={hasActivityValueChildren}
-              pagedType={'page'}
-            />
-          </div>
+
           <div>
             <p style={{ titleStyle }}>height 60 </p>
             <Tabs
@@ -776,7 +884,55 @@ export default class TabsDemo extends React.Component<any, any> {
           </div>
         </Theme>
 
+        <Theme config={lineViewTop}>
+          <div>
+            <p style={{ titleStyle }}>defaultData pagedType=page</p>
+            <Tabs
+              tabType={'line'}
+              tabPosition={'bottom'}
+              onPreClick={onPreClick}
+              onNextClick={onNextClick}
+              children={hasActivityValueChildren}
+              pagedType={'page'}
+            />
+          </div>
+          <p style={{ titleStyle }}>children tabPosition=bottom</p>
+          <div>
+            <Tabs
+              tabType={'line'}
+              tabPosition={'bottom'}
+              onPreClick={onPreClick}
+              onNextClick={onNextClick}
+              pagedType={'single'}
+              children={longChildren}
+            />
+          </div>
+          <p style={{ titleStyle }}>children tabPosition=bottom</p>
+          <div>
+            <Tabs
+              tabType={'line'}
+              data={defaultData}
+              tabPosition={'bottom'}
+              onPreClick={onPreClick}
+              onNextClick={onNextClick}
+            />
+          </div>
+          <br />
+
+          <br />
+        </Theme>
+
         <Theme config={lineView}>
+          <div>
+            <p style={{ titleStyle }}>data tabPosition=left </p>
+            <Tabs
+              tabType={'line'}
+              tabPosition={'left'}
+              data={hasActivityValueData}
+              onPreClick={onPreClick}
+              onNextClick={onNextClick}
+            />
+          </div>
           <div>
             <p style={{ titleStyle }}>children tabPosition=left pagedType = page</p>
             <Tabs
@@ -799,6 +955,19 @@ export default class TabsDemo extends React.Component<any, any> {
               children={hasActivityValueChildren}
             />
           </div>
+          <div>
+            <p style={{ titleStyle }}>data tabPosition=left </p>
+            <Tabs
+              tabType={'line'}
+              tabPosition={'left'}
+              data={hasActivityValueData}
+              onPreClick={onPreClick}
+              onNextClick={onNextClick}
+            />
+          </div>
+          <br />
+        </Theme>
+        <Theme config={lineViewLeft}>
           <p style={{ titleStyle }}>children tabPosition=right</p>
           <div>
             <Tabs
@@ -808,37 +977,6 @@ export default class TabsDemo extends React.Component<any, any> {
               onNextClick={onNextClick}
               pagedType={'single'}
               children={shortChildren}
-            />
-          </div>
-          <p style={{ titleStyle }}>children tabPosition=bottom</p>
-          <div>
-            <Tabs
-              tabType={'line'}
-              tabPosition={'bottom'}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-              pagedType={'single'}
-              children={longChildren}
-            />
-          </div>
-          <div>
-            <p style={{ titleStyle }}>data tabPosition=top</p>
-            <Tabs
-              tabType={'line'}
-              data={defaultData}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-            />
-          </div>
-          <br />
-          <div>
-            <p style={{ titleStyle }}>data tabPosition=left </p>
-            <Tabs
-              tabType={'line'}
-              tabPosition={'left'}
-              data={hasActivityValueData}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
             />
           </div>
           <br />
@@ -851,17 +989,6 @@ export default class TabsDemo extends React.Component<any, any> {
               onPreClick={onPreClick}
               onNextClick={onNextClick}
               defaultActivityValue={2}
-            />
-          </div>
-          <br />
-          <p style={{ titleStyle }}>children tabPosition=bottom</p>
-          <div>
-            <Tabs
-              tabType={'line'}
-              data={defaultData}
-              tabPosition={'bottom'}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
             />
           </div>
           <br />
