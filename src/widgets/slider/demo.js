@@ -9,7 +9,7 @@ import React, { Component } from 'react';
 import Slider from './index';
 import Widgets from '../consts/index';
 import Theme from '../theme/index';
-import { getBorderRadius, getBorder } from '../theme/CSSProvider';
+import { getBorderRadius, getBorder } from '@lugia/theme-utils';
 export default class Sl extends Component<any> {
   constructor() {
     super();
@@ -159,7 +159,7 @@ export default class Sl extends Component<any> {
                     boxShadow: '0 0 2px 0 red',
                     fontSize: 14,
                     font: {
-                      fontWeight: 'bold',
+                      weight: 'bold',
                     },
                   },
                 },
@@ -168,22 +168,22 @@ export default class Sl extends Component<any> {
                     first: {
                       color: 'red',
                       font: {
-                        fontWeight: 700,
-                        fontSize: 14,
+                        weight: 700,
+                        size: 14,
                       },
                     },
                     nth1: {
                       color: 'blue',
                       font: {
-                        fontWeight: 700,
-                        fontSize: 14,
+                        weight: 700,
+                        size: 14,
                       },
                     },
                     last: {
                       color: 'green',
                       font: {
-                        fontWeight: 700,
-                        fontSize: 14,
+                        weight: 700,
+                        size: 14,
                       },
                     },
                   },
@@ -191,22 +191,22 @@ export default class Sl extends Component<any> {
                     first: {
                       color: '#ccc',
                       font: {
-                        fontWeight: 700,
-                        fontSize: 14,
+                        weight: 700,
+                        size: 14,
                       },
                     },
                     last: {
                       color: '#ccc',
                       font: {
-                        fontWeight: 700,
-                        fontSize: 14,
+                        weight: 700,
+                        size: 14,
                       },
                     },
                     nth2: {
                       color: 'red',
                       font: {
-                        fontWeight: 700,
-                        fontSize: 14,
+                        weight: 700,
+                        size: 14,
                       },
                     },
                   },
