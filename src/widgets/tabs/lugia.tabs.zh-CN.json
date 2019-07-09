@@ -141,8 +141,8 @@
   "designInfo": {
     "CardTabs": {
       "sequence": 1,
-      "title": "分级图标评分",
-      "desc": "按分值等级展示不同图标样式和颜色",
+      "title": "卡片风格",
+      "desc": "卡片风格标签页",
       "props": {
         "tabType": "card"
       },
@@ -159,8 +159,8 @@
     },
     "WindowTabs": {
       "sequence": 1,
-      "title": "分级图标评分",
-      "desc": "按分值等级展示不同图标样式和颜色",
+      "title": "窗口风格",
+      "desc": "窗口风格标签页",
       "props": {
         "tabType": "window"
       },
