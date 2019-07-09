@@ -105,7 +105,7 @@ const getHasCheckCSS = (props: PropsType) => {
 
 export const LabelWrapper = StaticComponent({
   tag: 'label',
-  className: 'label-wrapper',
+  className: 'CheckButtonLabelWrapper',
   css: css`
     position: relative;
     display: ${props => (props.hasCancel ? 'none' : 'inline-block')};
@@ -115,7 +115,7 @@ export const LabelWrapper = StaticComponent({
 });
 export const CheckInput = StaticComponent({
   tag: 'input',
-  className: 'check-input',
+  className: 'CheckButtonCheckInput',
   css: css`
     opacity: 0;
     outline: none;
@@ -126,7 +126,7 @@ export const CheckInput = StaticComponent({
 
 export const CheckSpan = CSSComponent({
   tag: 'span',
-  className: 'check-span',
+  className: 'CheckButtonCheckSpan',
   css: css`
     display: inline-block;
     box-sizing: border-box;
@@ -215,7 +215,7 @@ export const CheckSpan = CSSComponent({
 
 export const CancelSpan = StaticComponent({
   tag: 'span',
-  className: 'cancel-span',
+  className: 'CheckButtonCancelSpan',
   css: css`
     position: absolute;
     top: 0;
