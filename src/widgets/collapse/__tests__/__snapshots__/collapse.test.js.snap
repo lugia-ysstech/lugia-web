@@ -1,49 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Collapse Collapse CSS 1`] = `
-.c1 {
-  font-size: 1.4rem;
-  opacity: 1;
-}
-
-.c9 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  left: 1rem;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
-.c5 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  left: 1rem;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  -webkit-transform: translateY(-50%) rotate(90deg);
-  -ms-transform: translateY(-50%) rotate(90deg);
-  transform: translateY(-50%) rotate(90deg);
-}
-
 .c3 {
   box-sizing: border-box;
+  background: #fff;
   border-color: #e8e8e8;
   border-style: solid;
   border-width: 0 0 1px 0;
-  background: #fff;
 }
 
 .c4 {
@@ -82,9 +45,6 @@ exports[`Collapse Collapse CSS 1`] = `
 .c8 {
   box-sizing: border-box;
   line-height: 1.5;
-  padding: 0.6rem 3rem 2.2rem 3.4rem;
-  color: #666666;
-  background: #fff;
   color: #666666;
   font-size: 1.4rem;
   font-weight: 300;
@@ -95,6 +55,43 @@ exports[`Collapse Collapse CSS 1`] = `
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
   font-size: 1.4rem;
+}
+
+.c9 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.c5 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-transform: translateY(-50%) rotate(90deg);
+  -ms-transform: translateY(-50%) rotate(90deg);
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.c1 {
+  font-size: 1.4rem;
+  opacity: 1;
 }
 
 .c0 {
@@ -184,7 +181,6 @@ exports[`Collapse Collapse CSS 1`] = `
                 "width": "40rem",
               }
             }
-            z={true}
           >
             <i
               className="lugia-icon-direction_caret_right   c5"
@@ -218,6 +214,7 @@ exports[`Collapse Collapse CSS 1`] = `
             disabled={false}
             height={null}
             open={true}
+            style={Object {}}
           >
             <div
               className="c8"
@@ -288,7 +285,6 @@ exports[`Collapse Collapse CSS 1`] = `
                 "width": "40rem",
               }
             }
-            z={true}
           >
             <i
               className="lugia-icon-direction_caret_right   c9"
@@ -322,6 +318,7 @@ exports[`Collapse Collapse CSS 1`] = `
             disabled={false}
             height={null}
             open={false}
+            style={Object {}}
           >
             <div
               className="c8"
@@ -381,7 +378,6 @@ exports[`Collapse Collapse CSS 1`] = `
                 "paddingTop": "1.6rem",
               }
             }
-            z={true}
           >
             <i
               className="lugia-icon-direction_caret_right   c5"
@@ -409,11 +405,19 @@ exports[`Collapse Collapse CSS 1`] = `
             disabled={false}
             height={null}
             open={true}
+            style={Object {}}
           >
             <div
               className="c8"
               disabled={false}
-              style={Object {}}
+              style={
+                Object {
+                  "paddingBottom": "2.2rem",
+                  "paddingLeft": "3.4rem",
+                  "paddingRight": "3rem",
+                  "paddingTop": "0.6rem",
+                }
+              }
             >
               <div>
                 PanelContent...
@@ -445,7 +449,6 @@ exports[`Collapse Collapse CSS 1`] = `
                 "paddingTop": "1.6rem",
               }
             }
-            z={true}
           >
             <i
               className="lugia-icon-direction_caret_right   c9"
@@ -473,11 +476,19 @@ exports[`Collapse Collapse CSS 1`] = `
             disabled={false}
             height={null}
             open={false}
+            style={Object {}}
           >
             <div
               className="c8"
               disabled={false}
-              style={Object {}}
+              style={
+                Object {
+                  "paddingBottom": "2.2rem",
+                  "paddingLeft": "3.4rem",
+                  "paddingRight": "3rem",
+                  "paddingTop": "0.6rem",
+                }
+              }
             >
               <div>
                 PanelContent...
@@ -519,7 +530,6 @@ exports[`Collapse Collapse CSS 1`] = `
                 "paddingTop": "1.6rem",
               }
             }
-            z={true}
           >
             <i
               className="lugia-icon-direction_caret_right   c5"
@@ -547,11 +557,19 @@ exports[`Collapse Collapse CSS 1`] = `
             disabled={false}
             height={null}
             open={true}
+            style={Object {}}
           >
             <div
               className="c8"
               disabled={false}
-              style={Object {}}
+              style={
+                Object {
+                  "paddingBottom": "2.2rem",
+                  "paddingLeft": "3.4rem",
+                  "paddingRight": "3rem",
+                  "paddingTop": "0.6rem",
+                }
+              }
             >
               <div>
                 PanelContent...
@@ -583,7 +601,6 @@ exports[`Collapse Collapse CSS 1`] = `
                 "paddingTop": "1.6rem",
               }
             }
-            z={true}
           >
             <i
               className="lugia-icon-direction_caret_right   c9"
@@ -611,11 +628,19 @@ exports[`Collapse Collapse CSS 1`] = `
             disabled={false}
             height={null}
             open={false}
+            style={Object {}}
           >
             <div
               className="c8"
               disabled={false}
-              style={Object {}}
+              style={
+                Object {
+                  "paddingBottom": "2.2rem",
+                  "paddingLeft": "3.4rem",
+                  "paddingRight": "3rem",
+                  "paddingTop": "0.6rem",
+                }
+              }
             >
               <div>
                 PanelContent...
@@ -657,7 +682,6 @@ exports[`Collapse Collapse CSS 1`] = `
                 "paddingTop": "1.6rem",
               }
             }
-            z={true}
           >
             <i
               className="lugia-icon-direction_caret_right   c5"
@@ -685,11 +709,19 @@ exports[`Collapse Collapse CSS 1`] = `
             disabled={false}
             height={null}
             open={true}
+            style={Object {}}
           >
             <div
               className="c8"
               disabled={false}
-              style={Object {}}
+              style={
+                Object {
+                  "paddingBottom": "2.2rem",
+                  "paddingLeft": "3.4rem",
+                  "paddingRight": "3rem",
+                  "paddingTop": "0.6rem",
+                }
+              }
             >
               <div>
                 PanelContent...
@@ -721,7 +753,6 @@ exports[`Collapse Collapse CSS 1`] = `
                 "paddingTop": "1.6rem",
               }
             }
-            z={true}
           >
             <i
               className="lugia-icon-direction_caret_right   c9"
@@ -749,11 +780,19 @@ exports[`Collapse Collapse CSS 1`] = `
             disabled={false}
             height={null}
             open={false}
+            style={Object {}}
           >
             <div
               className="c8"
               disabled={false}
-              style={Object {}}
+              style={
+                Object {
+                  "paddingBottom": "2.2rem",
+                  "paddingLeft": "3.4rem",
+                  "paddingRight": "3rem",
+                  "paddingTop": "0.6rem",
+                }
+              }
             >
               <div>
                 PanelContent...
@@ -794,7 +833,6 @@ exports[`Collapse Collapse CSS 1`] = `
                 "paddingTop": "1.6rem",
               }
             }
-            z={true}
           >
             <i
               className="lugia-icon-direction_caret_right   c5"
@@ -822,11 +860,19 @@ exports[`Collapse Collapse CSS 1`] = `
             disabled={false}
             height={null}
             open={true}
+            style={Object {}}
           >
             <div
               className="c8"
               disabled={false}
-              style={Object {}}
+              style={
+                Object {
+                  "paddingBottom": "2.2rem",
+                  "paddingLeft": "3.4rem",
+                  "paddingRight": "3rem",
+                  "paddingTop": "0.6rem",
+                }
+              }
             >
               <div>
                 PanelContent...
@@ -858,7 +904,6 @@ exports[`Collapse Collapse CSS 1`] = `
                 "paddingTop": "1.6rem",
               }
             }
-            z={true}
           >
             <i
               className="lugia-icon-direction_caret_right   c9"
@@ -886,11 +931,19 @@ exports[`Collapse Collapse CSS 1`] = `
             disabled={false}
             height={null}
             open={false}
+            style={Object {}}
           >
             <div
               className="c8"
               disabled={false}
-              style={Object {}}
+              style={
+                Object {
+                  "paddingBottom": "2.2rem",
+                  "paddingLeft": "3.4rem",
+                  "paddingRight": "3rem",
+                  "paddingTop": "0.6rem",
+                }
+              }
             >
               <div>
                 PanelContent...
@@ -922,7 +975,6 @@ exports[`Collapse Collapse CSS 1`] = `
                 "paddingTop": "1.6rem",
               }
             }
-            z={true}
           >
             <i
               className="lugia-icon-direction_caret_right   c9"
@@ -950,11 +1002,19 @@ exports[`Collapse Collapse CSS 1`] = `
             disabled={false}
             height={null}
             open={false}
+            style={Object {}}
           >
             <div
               className="c8"
               disabled={false}
-              style={Object {}}
+              style={
+                Object {
+                  "paddingBottom": "2.2rem",
+                  "paddingLeft": "3.4rem",
+                  "paddingRight": "3rem",
+                  "paddingTop": "0.6rem",
+                }
+              }
             >
               <div>
                 PanelContent...
@@ -986,7 +1046,6 @@ exports[`Collapse Collapse CSS 1`] = `
                 "paddingTop": "1.6rem",
               }
             }
-            z={true}
           >
             <i
               className="lugia-icon-direction_caret_right   c9"
@@ -1014,11 +1073,19 @@ exports[`Collapse Collapse CSS 1`] = `
             disabled={false}
             height={null}
             open={false}
+            style={Object {}}
           >
             <div
               className="c8"
               disabled={false}
-              style={Object {}}
+              style={
+                Object {
+                  "paddingBottom": "2.2rem",
+                  "paddingLeft": "3.4rem",
+                  "paddingRight": "3rem",
+                  "paddingTop": "0.6rem",
+                }
+              }
             >
               <div>
                 PanelContent...
@@ -1059,7 +1126,6 @@ exports[`Collapse Collapse CSS 1`] = `
                 "paddingTop": "1.6rem",
               }
             }
-            z={true}
           >
             <i
               className="lugia-icon-direction_caret_right   c5"
@@ -1087,11 +1153,19 @@ exports[`Collapse Collapse CSS 1`] = `
             disabled={false}
             height={null}
             open={true}
+            style={Object {}}
           >
             <div
               className="c8"
               disabled={false}
-              style={Object {}}
+              style={
+                Object {
+                  "paddingBottom": "2.2rem",
+                  "paddingLeft": "3.4rem",
+                  "paddingRight": "3rem",
+                  "paddingTop": "0.6rem",
+                }
+              }
             >
               PanelContent...
             </div>
@@ -1118,7 +1192,6 @@ exports[`Collapse Collapse CSS 1`] = `
                 "paddingTop": "1.6rem",
               }
             }
-            z={true}
           >
             <i
               className="lugia-icon-direction_caret_right   c9"
@@ -1146,11 +1219,19 @@ exports[`Collapse Collapse CSS 1`] = `
             disabled={false}
             height={null}
             open={false}
+            style={Object {}}
           >
             <div
               className="c8"
               disabled={false}
-              style={Object {}}
+              style={
+                Object {
+                  "paddingBottom": "2.2rem",
+                  "paddingLeft": "3.4rem",
+                  "paddingRight": "3rem",
+                  "paddingTop": "0.6rem",
+                }
+              }
             >
               PanelContent...
             </div>
@@ -1185,7 +1266,6 @@ exports[`Collapse Collapse CSS 1`] = `
                 "paddingTop": "1.6rem",
               }
             }
-            z={true}
           >
             <i
               className="lugia-icon-direction_caret_right   c5"
@@ -1213,11 +1293,19 @@ exports[`Collapse Collapse CSS 1`] = `
             disabled={false}
             height={null}
             open={true}
+            style={Object {}}
           >
             <div
               className="c8"
               disabled={false}
-              style={Object {}}
+              style={
+                Object {
+                  "paddingBottom": "2.2rem",
+                  "paddingLeft": "3.4rem",
+                  "paddingRight": "3rem",
+                  "paddingTop": "0.6rem",
+                }
+              }
             >
               <div
                 className="c1"
@@ -1243,7 +1331,6 @@ exports[`Collapse Collapse CSS 1`] = `
                           "paddingTop": "1.6rem",
                         }
                       }
-                      z={true}
                     >
                       <i
                         className="lugia-icon-direction_caret_right   c5"
@@ -1271,11 +1358,19 @@ exports[`Collapse Collapse CSS 1`] = `
                       disabled={false}
                       height={null}
                       open={true}
+                      style={Object {}}
                     >
                       <div
                         className="c8"
                         disabled={false}
-                        style={Object {}}
+                        style={
+                          Object {
+                            "paddingBottom": "2.2rem",
+                            "paddingLeft": "3.4rem",
+                            "paddingRight": "3rem",
+                            "paddingTop": "0.6rem",
+                          }
+                        }
                       >
                         <div>
                           PanelContent...
@@ -1307,7 +1402,6 @@ exports[`Collapse Collapse CSS 1`] = `
                           "paddingTop": "1.6rem",
                         }
                       }
-                      z={true}
                     >
                       <i
                         className="lugia-icon-direction_caret_right   c9"
@@ -1335,11 +1429,19 @@ exports[`Collapse Collapse CSS 1`] = `
                       disabled={false}
                       height={null}
                       open={false}
+                      style={Object {}}
                     >
                       <div
                         className="c8"
                         disabled={false}
-                        style={Object {}}
+                        style={
+                          Object {
+                            "paddingBottom": "2.2rem",
+                            "paddingLeft": "3.4rem",
+                            "paddingRight": "3rem",
+                            "paddingTop": "0.6rem",
+                          }
+                        }
                       >
                         <div>
                           PanelContent...
@@ -1376,7 +1478,6 @@ exports[`Collapse Collapse CSS 1`] = `
                 "paddingTop": "1.6rem",
               }
             }
-            z={true}
           >
             <i
               className="lugia-icon-direction_caret_right   c9"
@@ -1404,11 +1505,19 @@ exports[`Collapse Collapse CSS 1`] = `
             disabled={false}
             height={null}
             open={false}
+            style={Object {}}
           >
             <div
               className="c8"
               disabled={false}
-              style={Object {}}
+              style={
+                Object {
+                  "paddingBottom": "2.2rem",
+                  "paddingLeft": "3.4rem",
+                  "paddingRight": "3rem",
+                  "paddingTop": "0.6rem",
+                }
+              }
             >
               <div>
                 PanelContent...

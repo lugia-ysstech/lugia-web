@@ -8,12 +8,12 @@ import styled, { css, keyframes } from 'styled-components';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import { px2remcss } from '../css/units';
 import changeColor from '../css/utilsColor';
-import { getMargin } from './collapse';
-import Icon from '../icon';
 import type { ThemeType } from '@lugia/lugia-web';
 
 const FontSize = 1.4;
 const defaultColor = '#fff';
+const { themeColor } = colorsFunc();
+const hoverColor = changeColor(themeColor, 0, 0, 10).rgba;
 
 type BasicPropsType = {
   disabled?: boolean,
@@ -26,13 +26,13 @@ type BasicStateType = {
   closing: boolean,
   height: number,
   hover: boolean,
-  headerHeight: number,
 };
 export type PanelProps = {
   title?: string | any,
   value?: string,
   children?: any,
   getTheme: Function,
+  count: number,
   onClick?: Function,
 } & BasicPropsType;
 export type PanelState = BasicStateType;
@@ -44,71 +44,12 @@ type CSSProps = {
 
 const { darkGreyColor, blackColor, lightGreyColor } = colorsFunc();
 
-export const getThemeWidthCSS = (props: CSSProps) => {
-  const { width } = props.theme;
-  if (width) {
-    return `
-      width: ${px2remcss(width)};
-    `;
-  }
-};
-const getThemeBackgroundColorCSS = (props: CSSProps): string => {
-  const { backgroundColor } = props.theme;
-  if (backgroundColor) {
-    return `
-      background: ${backgroundColor};
-    `;
-  }
-
-  return `
-      background: ${defaultColor};
-    `;
-};
-const getThemeBorderWidthCSS = (props: CSSProps): string => {
-  const { borderSize, borderColor } = props.theme;
-  const bdColor = borderColor || '#e8e8e8';
-
-  if (typeof borderSize === 'number') {
-    return `
-      border-width: ${px2remcss(borderSize)};
-      border-color: ${bdColor};
-      border-style: solid;
-    `;
-  }
-  if (typeof borderSize === 'object') {
-    const { top = 0, right = 0, bottom = 0, left = 0 } = borderSize;
-
-    return `
-      border-width: ${px2remcss(top)} ${px2remcss(right)} ${px2remcss(bottom)} ${px2remcss(left)};
-      border-color: ${bdColor};
-      border-style: solid;
-    `;
-  }
-  return `
-    border-color: ${bdColor};
-    border-style: solid;
-    border-width: 0 0 1px 0;
-  `;
-};
-const getBoxShadow = (props: CSSProps) => {
-  const { hover, opening } = props;
-  if (opening) {
-    return '';
-  }
-  const { backgroundColor, borderSize } = props.theme;
-  const color = backgroundColor || defaultColor;
-  const shadowColor = changeColor(color, 0, 30, 20).rgba;
-  if (hover && borderSize) {
-    if ((typeof borderSize === 'number' && borderSize === 0) || !borderSize.bottom) {
-      return `
-      box-shadow: 0px 0px 6px ${shadowColor};
-    `;
-    }
-  }
-};
 export const PanelWrap = styled.div`
   box-sizing: border-box;
-  ${getThemeBorderWidthCSS} ${getThemeBackgroundColorCSS};
+  background: ${defaultColor};
+  border-color: #e8e8e8;
+  border-style: solid;
+  border-width: 0 0 1px;
 `;
 
 export const PanelHeader = CSSComponent({
@@ -148,6 +89,9 @@ export const PanelHeader = CSSComponent({
   },
   hover: {
     selectNames: [['borderRadius'], ['background'], ['opacity'], ['border'], ['boxShadow']],
+    defaultTheme: {
+      background: { color: hoverColor },
+    },
     getCSS(themeMeta, themeProps) {
       const { propsConfig = {}, themeConfig = {} } = themeProps;
       const { hover } = propsConfig;
@@ -195,7 +139,7 @@ export const PanelHeaderText = CSSComponent({
   },
 });
 const getPanelContent = (props: CSSProps): string => {
-  const { open, opening, closing, headerHeight = 0 } = props;
+  const { open, opening, closing } = props;
   const { height: propsHeight } = props;
   const theHeight = propsHeight;
   const openHeight = '100%';
@@ -235,57 +179,23 @@ const getPanelContent = (props: CSSProps): string => {
     height: ${px2remcss(0)};
   `;
 };
-const getContenColor = (props: CSSProps): string => {
-  const { disabled } = props;
-  const backgroundColor = defaultColor;
-  if (disabled) {
-    return `
-      color: ${lightGreyColor};
-      background: ${backgroundColor};
-    `;
-  }
 
-  return `
-      color: ${darkGreyColor};
-      background: ${backgroundColor};
-    `;
-};
-const getContentPadding = (props: CSSProps): string => {
-  const { showArrow, hasChildren } = props;
-  if (!hasChildren) {
-    return '';
-  }
-  if (showArrow) {
-    return `
-     padding: ${px2remcss(6)} ${px2remcss(30)} ${px2remcss(22)} ${px2remcss(34)};
-    `;
-  }
+export const PanelContentWrap = CSSComponent({
+  tag: 'div',
+  className: 'PanelContentWrap',
+  css: css`
+    box-sizing: border-box;
+    overflow: hidden;
+    ${getPanelContent};
+  `,
+});
 
-  return `
-    padding: ${px2remcss(6)} ${px2remcss(30)} ${px2remcss(22)} ${px2remcss(24)};
-  `;
-};
-export const PanelContentWrap = styled.div`
-  box-sizing: border-box;
-  overflow: hidden;
-  ${getPanelContent};
-`;
-
-// export const PanelContent = styled.div`
-//   box-sizing: border-box;
-//   font-weight: 300;
-//   line-height: 1.5;
-//   ${getContentPadding};
-//   ${getContenColor};
-// `;
 export const PanelContent = CSSComponent({
   tag: 'div',
   className: 'PanelContent',
   css: css`
     box-sizing: border-box;
     line-height: 1.5;
-    ${getContentPadding};
-    ${getContenColor};
   `,
   normal: {
     defaultTheme: {
@@ -295,18 +205,33 @@ export const PanelContent = CSSComponent({
     },
     selectNames: [['width'], ['height'], ['background'], ['padding'], ['font'], ['color']],
     getThemeMeta(themeMeta, themeProps) {
-      const { propsConfig } = themeProps;
+      const { propsConfig = {} } = themeProps;
+      const { showArrow, hasChildren } = propsConfig;
+      if (!hasChildren) {
+        return {};
+      }
+
+      return {
+        padding: {
+          top: 6,
+          right: 30,
+          bottom: 22,
+          left: showArrow ? 34 : 24,
+        },
+      };
     },
   },
   hover: {
     defaultTheme: {
       color: blackColor,
+      background: { color: defaultColor },
     },
     selectNames: [['color']],
   },
   disabled: {
     defaultTheme: {
       color: lightGreyColor,
+      background: { color: defaultColor },
     },
     selectNames: [['color']],
   },
@@ -335,28 +260,11 @@ export const getIconTransform = (props: Object) => {
   return 'transform: translateY(-50%);';
 };
 
-// export const IconWrap: Object = styled(Icon)`
-//   position: absolute;
-//   top: 50%;
-//   left: ${px2remcss(10)};
-//   ${getIconTransform};
-// `;
-
-export const HoverIconWrap = styled.div`
-  box-sizing: border-box;
-  transition: left 0.3s;
-  opacity: ${(props: CSSProps) => (props.hover ? '1' : '0')};
-  width: ${px2remcss(14)};
-  ${getPanelContent};
-  position: absolute;
-  top: 0;
-  left: ${(props: CSSProps) => (props.hover ? px2remcss(-10.5) : 0)};
-  ${getThemeBackgroundColorCSS};
-`;
-export const Wrap = styled.div`
-  transition: all 0.2s;
-  font-size: ${FontSize}rem;
-  ${getMargin}
-  ${getThemeWidthCSS}
-  ${getBoxShadow}
-`;
+export const Wrap = StaticComponent({
+  tag: 'div',
+  className: 'PanelContent',
+  css: css`
+    transition: all 0.2s;
+    font-size: ${FontSize}rem;
+  `,
+});

@@ -13,7 +13,6 @@ import Widget from '../consts/index';
 import type { PanelProps, PanelState } from '../css/panel';
 import {
   PanelHeaderText,
-  IconWrap,
   PanelContent,
   PanelContentWrap,
   PanelHeader,
@@ -40,7 +39,6 @@ export default ThemeProvider(
         closing: false,
         height: 0,
         hover: false,
-        headerHeight: 0,
       };
       this.height = 0;
     }
@@ -104,27 +102,34 @@ export default ThemeProvider(
         getTheme,
         showArrow = true,
         getPartOfThemeProps,
+        count,
       } = this.props;
       const config = {};
       if (!showArrow) {
         config.enter = this.changeHover(true);
         config.leave = this.changeHover(false);
       }
+      const isFirst = 'count' in this.props && count === 0;
       const PanelHeaderTheme = getPartOfThemeProps('PanelHeader', { props: { hover, showArrow } });
       const PanelHeaderTextTheme = getPartOfThemeProps('PanelHeaderText');
-      const PanelContentTheme = getPartOfThemeProps('PanelContent');
+      const PanelContentTheme = getPartOfThemeProps('PanelContent', {
+        props: { showArrow, hasChildren: !!children },
+      });
       return (
-        <Wrap hover={hover} theme={getTheme()} {...addMouseEvent(this, config)}>
+        <Wrap
+          isFirst={isFirst}
+          hover={hover}
+          {...addMouseEvent(this, config)}
+          themeProps={getPartOfThemeProps('Wrap')}
+        >
           <PanelWrap hover={hover} theme={getTheme()} {...config}>
             <PanelHeader
               disabled={disabled}
               showArrow={showArrow}
-              theme={getTheme()}
               hover={hover}
               themeProps={PanelHeaderTheme}
               onClick={this.handlePanelClick}
-              z
-              ref={(node: any) => (this.header = node)}
+              innerRef={(node: any) => (this.header = node)}
             >
               {showArrow || hover ? (
                 <Icon iconClass="lugia-icon-direction_caret_right" {...this.getIconTheme()} />
@@ -132,7 +137,7 @@ export default ThemeProvider(
               <PanelHeaderText themeProps={PanelHeaderTextTheme}>{title}</PanelHeaderText>
             </PanelHeader>
             <PanelContentWrap
-              ref={(node: any) => (this.panel = node)}
+              innerRef={(node: any) => (this.panel = node)}
               open={open}
               opening={opening}
               closing={closing}
@@ -140,6 +145,7 @@ export default ThemeProvider(
               disabled={disabled}
               hover={hover}
               headerHeight={headerHeight}
+              themeProps={this.props.themeProps}
             >
               <PanelContent
                 disabled={disabled}
@@ -157,6 +163,7 @@ export default ThemeProvider(
     }
 
     changeHover = hover => () => {
+      console.log('hover');
       this.setState({
         hover,
       });

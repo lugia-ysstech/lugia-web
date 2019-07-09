@@ -1,44 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Panel Panel CSS 1`] = `
-.c4 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  left: 1rem;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
-.c8 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  left: 1rem;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  -webkit-transform: translateY(-50%) rotate(90deg);
-  -ms-transform: translateY(-50%) rotate(90deg);
-  transform: translateY(-50%) rotate(90deg);
-}
-
 .c2 {
   box-sizing: border-box;
+  background: #fff;
   border-color: #e8e8e8;
   border-style: solid;
   border-width: 0 0 1px 0;
-  background: #fff;
 }
 
 .c3 {
@@ -57,7 +25,7 @@ exports[`Panel Panel CSS 1`] = `
   opacity: 1;
 }
 
-.c11 {
+.c10 {
   box-sizing: border-box;
   position: relative;
   font-size: 1.4rem;
@@ -94,44 +62,6 @@ exports[`Panel Panel CSS 1`] = `
   box-sizing: border-box;
   line-height: 1.5;
   color: #666666;
-  background: #fff;
-  color: #666666;
-  font-size: 1.4rem;
-  font-weight: 300;
-  background-color: #fff;
-}
-
-.c10 {
-  box-sizing: border-box;
-  line-height: 1.5;
-  padding: 0.6rem 3rem 2.2rem 3.4rem;
-  color: #666666;
-  background: #fff;
-  color: #666666;
-  font-size: 1.4rem;
-  font-weight: 300;
-  background-color: #fff;
-}
-
-.c12 {
-  box-sizing: border-box;
-  line-height: 1.5;
-  padding: 0.6rem 3rem 2.2rem 3.4rem;
-  color: #cccccc;
-  background: #fff;
-  color: #666666;
-  font-size: 1.4rem;
-  font-weight: 300;
-  background-color: #fff;
-}
-
-.c13 {
-  box-sizing: border-box;
-  line-height: 1.5;
-  padding: 0.6rem 3rem 2.2rem 2.4rem;
-  color: #666666;
-  background: #fff;
-  color: #666666;
   font-size: 1.4rem;
   font-weight: 300;
   background-color: #fff;
@@ -141,6 +71,38 @@ exports[`Panel Panel CSS 1`] = `
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
   font-size: 1.4rem;
+}
+
+.c4 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.c8 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-transform: translateY(-50%) rotate(90deg);
+  -ms-transform: translateY(-50%) rotate(90deg);
+  transform: translateY(-50%) rotate(90deg);
 }
 
 .c0 {
@@ -174,7 +136,6 @@ exports[`Panel Panel CSS 1`] = `
               "paddingTop": "1.6rem",
             }
           }
-          z={true}
         >
           <i
             className="lugia-icon-direction_caret_right   c4"
@@ -202,6 +163,7 @@ exports[`Panel Panel CSS 1`] = `
           disabled={false}
           height={null}
           open={false}
+          style={Object {}}
         >
           <div
             className="c7"
@@ -232,7 +194,6 @@ exports[`Panel Panel CSS 1`] = `
               "paddingTop": "1.6rem",
             }
           }
-          z={true}
         >
           <i
             className="lugia-icon-direction_caret_right   c8"
@@ -260,11 +221,19 @@ exports[`Panel Panel CSS 1`] = `
           disabled={false}
           height={null}
           open={true}
+          style={Object {}}
         >
           <div
-            className="c10"
+            className="c7"
             disabled={false}
-            style={Object {}}
+            style={
+              Object {
+                "paddingBottom": "2.2rem",
+                "paddingLeft": "3.4rem",
+                "paddingRight": "3rem",
+                "paddingTop": "0.6rem",
+              }
+            }
           >
             <div>
               PanelContent...
@@ -286,7 +255,7 @@ exports[`Panel Panel CSS 1`] = `
         className="c2"
       >
         <div
-          className="c11"
+          className="c10"
           disabled={true}
           onClick={[Function]}
           style={
@@ -297,7 +266,6 @@ exports[`Panel Panel CSS 1`] = `
               "paddingTop": "1.6rem",
             }
           }
-          z={true}
         >
           <i
             className="lugia-icon-direction_caret_right   c4"
@@ -329,13 +297,19 @@ exports[`Panel Panel CSS 1`] = `
           disabled={true}
           height={null}
           open={false}
+          style={Object {}}
         >
           <div
-            className="c12"
+            className="c7"
             disabled={true}
             style={
               Object {
+                "backgroundColor": "#fff",
                 "color": "#cccccc",
+                "paddingBottom": "2.2rem",
+                "paddingLeft": "3.4rem",
+                "paddingRight": "3rem",
+                "paddingTop": "0.6rem",
               }
             }
           >
@@ -359,7 +333,7 @@ exports[`Panel Panel CSS 1`] = `
         className="c2"
       >
         <div
-          className="c11"
+          className="c10"
           disabled={true}
           onClick={[Function]}
           style={
@@ -370,7 +344,6 @@ exports[`Panel Panel CSS 1`] = `
               "paddingTop": "1.6rem",
             }
           }
-          z={true}
         >
           <i
             className="lugia-icon-direction_caret_right   c8"
@@ -402,13 +375,19 @@ exports[`Panel Panel CSS 1`] = `
           disabled={true}
           height={null}
           open={true}
+          style={Object {}}
         >
           <div
-            className="c12"
+            className="c7"
             disabled={true}
             style={
               Object {
+                "backgroundColor": "#fff",
                 "color": "#cccccc",
+                "paddingBottom": "2.2rem",
+                "paddingLeft": "3.4rem",
+                "paddingRight": "3rem",
+                "paddingTop": "0.6rem",
               }
             }
           >
@@ -443,7 +422,6 @@ exports[`Panel Panel CSS 1`] = `
               "paddingTop": "1.6rem",
             }
           }
-          z={true}
         >
           <span
             className="c5"
@@ -457,11 +435,19 @@ exports[`Panel Panel CSS 1`] = `
           disabled={false}
           height={null}
           open={false}
+          style={Object {}}
         >
           <div
-            className="c13"
+            className="c7"
             disabled={false}
-            style={Object {}}
+            style={
+              Object {
+                "paddingBottom": "2.2rem",
+                "paddingLeft": "2.4rem",
+                "paddingRight": "3rem",
+                "paddingTop": "0.6rem",
+              }
+            }
           >
             <div>
               PanelContent...
@@ -515,7 +501,6 @@ exports[`Panel Panel CSS 1`] = `
               "width": "40rem",
             }
           }
-          z={true}
         >
           <span
             className="c5"
@@ -535,9 +520,10 @@ exports[`Panel Panel CSS 1`] = `
           disabled={false}
           height={null}
           open={false}
+          style={Object {}}
         >
           <div
-            className="c13"
+            className="c7"
             disabled={false}
             style={
               Object {
@@ -606,7 +592,6 @@ exports[`Panel Panel CSS 1`] = `
               "width": "40rem",
             }
           }
-          z={true}
         >
           <i
             className="lugia-icon-direction_caret_right   c4"
@@ -640,9 +625,10 @@ exports[`Panel Panel CSS 1`] = `
           disabled={false}
           height={null}
           open={false}
+          style={Object {}}
         >
           <div
-            className="c10"
+            className="c7"
             disabled={false}
             style={
               Object {
@@ -679,7 +665,7 @@ exports[`Panel Panel CSS 1`] = `
         className="c2"
       >
         <div
-          className="c11"
+          className="c10"
           disabled={true}
           onClick={[Function]}
           style={
@@ -711,7 +697,6 @@ exports[`Panel Panel CSS 1`] = `
               "width": "40rem",
             }
           }
-          z={true}
         >
           <i
             className="lugia-icon-direction_caret_right   c4"
@@ -745,13 +730,14 @@ exports[`Panel Panel CSS 1`] = `
           disabled={true}
           height={null}
           open={false}
+          style={Object {}}
         >
           <div
-            className="c12"
+            className="c7"
             disabled={true}
             style={
               Object {
-                "backgroundColor": "#f7f4ef",
+                "backgroundColor": "#fff",
                 "color": "#cccccc",
                 "fontSize": "1.6rem",
                 "fontWeight": 300,
@@ -816,7 +802,6 @@ exports[`Panel Panel CSS 1`] = `
               "width": "40rem",
             }
           }
-          z={true}
         >
           <i
             className="lugia-icon-direction_caret_right   c4"
@@ -850,6 +835,7 @@ exports[`Panel Panel CSS 1`] = `
           disabled={false}
           height={null}
           open={false}
+          style={Object {}}
         >
           <div
             className="c7"

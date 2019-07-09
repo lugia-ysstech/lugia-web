@@ -54,31 +54,34 @@ export default ThemeProvider(
             title="Lugia Panel"
             onClick={this.handleClick}
             {...getPartOfThemeHocProps('Panel')}
+            count={0}
           >
             Default Panel
           </Panel>
         );
       }
       if (data && data.length > 0) {
-        return data.map(item => (
+        return data.map((item, index) => (
           <Panel
             {...item}
             onClick={this.handleClick}
             open={this.handleOpen(item.value)}
             accordion={accordion}
             {...getPartOfThemeHocProps('Panel')}
+            count={index}
           >
             {item.children}
           </Panel>
         ));
       }
-      return React.Children.map(children, child => {
+      return React.Children.map(children, (child, index) => {
         if (React.isValidElement(child)) {
           return React.cloneElement(child, {
             onClick: this.handleClick,
             open: this.handleOpen(child.props.value),
             accordion,
             ...getPartOfThemeHocProps('Panel'),
+            count: index,
           });
         }
       });

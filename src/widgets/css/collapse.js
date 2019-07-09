@@ -3,23 +3,13 @@
  * create by guorg
  * @flow
  */
-import styled, { css } from 'styled-components';
+import { css } from 'styled-components';
 import CSSComponent from '@lugia/theme-css-hoc';
 import { px2emcss } from '../css/units';
 import type { ThemeType } from '@lugia/lugia-web';
-import { createGetMargin } from '../common/ThemeUtils';
 
 const FontSize = 1.4;
 const em = px2emcss(FontSize);
-export const getMargin = createGetMargin({
-  fontSize: FontSize,
-  default: {
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-  },
-});
 
 type CollapseDesignProps = {
   data?: Object[],
