@@ -77,7 +77,7 @@ const NumberInputDemo = () => {
       Input: { normal: { width: 500, height: 50 } },
       ArrowIconContainer: { normal: { fontSize: 14, width: 40 } },
       ArrowIcon: {
-        hover: { color: 'blue', fontSize: 20 },
+        hover: { color: 'blue', fontSize: 30 },
       },
     },
   };

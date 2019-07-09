@@ -30,7 +30,7 @@ const ArrowIconContainer = CSSComponent({
       const { propsConfig } = themeProps;
       const { width } = themeMeta;
       const { show, disabled } = propsConfig;
-      const theOpacity = !disabled && show ? 1 : 1;
+      const theOpacity = !disabled && show ? 1 : 0.001;
       const theCursor = !disabled && show ? 'pointer' : 'not-allowed';
       const theWidth = width ? width : 22;
       return {
@@ -270,10 +270,9 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
 
   getStepArrowIconContainer(channel): React$Element<any> {
     const { buttonShow, value, stepHover } = this.state;
-    const { max, min, size, disabled, themeProps } = this.props;
+    const { max, min, size, disabled } = this.props;
     const overMax = Number(value) >= max;
     const belowMin = Number(value) <= min;
-    themeProps.propsConfig = { show: buttonShow, size, hover: stepHover };
 
     const { theme: IconThemeProps, viewClass: IconViewClass } = this.props.getPartOfThemeHocProps(
       'ArrowIcon'
@@ -284,7 +283,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
         [IconViewClass]: {
           normal: {
             cursor: 'pointer',
-            fontSize: 10,
+            fontSize: 20,
             getCSS() {
               return ` position: absolute;
                        top: 50%;
@@ -331,60 +330,51 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
       IconThemeProps
     );
 
+    const theThemeProps = this.props.getPartOfThemeProps('ArrowIconContainer', {
+      props: { show: buttonShow, size, hover: stepHover, disabled },
+    });
+    const arrowIconPlusButtonThemeProps = this.props.getPartOfThemeProps('ArrowIconContainer', {
+      props: { show: buttonShow, size, hover: stepHover, outRange: overMax },
+    });
+    const arrowIconMinusButtonThemeProps = this.props.getPartOfThemeProps('ArrowIconContainer', {
+      props: { show: buttonShow, size, hover: stepHover, outRange: belowMin },
+    });
     return (
-      <ArrowIconContainer
-        disabled={disabled}
-        {...channel.provider}
-        themeProps={this.props.getPartOfThemeProps('ArrowIconContainer')}
-        propsConfig={{ show: buttonShow, size, hover: stepHover }}
-        {...addMouseEvent(this)}
-      >
+      <ArrowIconContainer disabled={disabled} {...channel.provider} themeProps={theThemeProps}>
         <PlusButton
           disabled={disabled}
-          propsConfig={{ show: buttonShow, size, hover: stepHover, outRange: overMax }}
-          themeProps={this.props.getPartOfThemeProps('ArrowIconContainer')}
+          themeProps={arrowIconPlusButtonThemeProps}
           onClick={this.handleClick('plus')}
-          onMouseEnter={this.getButtonMousePos('plus')}
-          onMouseLeave={this.getButtonMousePos('no')}
           {...addMouseEvent(this, {
             enter: this.getButtonMousePos('plus'),
             leave: this.getButtonMousePos('no'),
           })}
         >
           <Icon
+            onClick={this.handleClick('plus')}
             theme={iconTheme}
             viewClass={IconViewClass}
             disabled={disabled}
             propsConfig={{ outRange: overMax }}
             iconClass={PlusClass}
-            {...addMouseEvent(this, {
-              enter: this.getButtonMousePos('plus'),
-              leave: this.getButtonMousePos('no'),
-            })}
           />
         </PlusButton>
         <MinusButton
           disabled={disabled}
-          propsConfig={{ show: buttonShow, size, hover: stepHover, outRange: belowMin }}
-          themeProps={this.props.getPartOfThemeProps('ArrowIconContainer')}
+          themeProps={arrowIconMinusButtonThemeProps}
           onClick={this.handleClick('minus')}
-          onMouseEnter={this.getButtonMousePos('minus')}
-          onMouseLeave={this.getButtonMousePos('no')}
           {...addMouseEvent(this, {
             enter: this.getButtonMousePos('minus'),
             leave: this.getButtonMousePos('no'),
           })}
         >
           <Icon
+            onClick={this.handleClick('minus')}
             theme={iconTheme}
             viewClass={IconViewClass}
             disabled={disabled}
             propsConfig={{ outRange: belowMin }}
             iconClass={MinusClass}
-            {...addMouseEvent(this, {
-              enter: this.getButtonMousePos('minus'),
-              leave: this.getButtonMousePos('no'),
-            })}
           />
         </MinusButton>
       </ArrowIconContainer>
@@ -396,7 +386,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     return (
       <Input
         lugiaConsumers={channel.consumer}
-        ref={this.el}
+        innerRef={this.el}
         {...this.props.getPartOfThemeHocProps('Input')}
         {...this.props}
         value={value}
@@ -408,14 +398,9 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
   }
 
   render() {
-    const { themeProps } = this.props;
     const channel = this.props.createEventChannel(['active', 'hover']);
     return (
-      <InputContainer
-        themeProps={themeProps}
-        onMouseEnter={this.onMouseEnter}
-        onMouseLeave={this.onMouseLeave}
-      >
+      <InputContainer onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
         {this.generateInput(channel)}
         {this.getStepArrowIconContainer(channel)}
       </InputContainer>
@@ -431,7 +416,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
   };
 
   getInputDom() {
-    return findDOMNode(this.el.current).querySelector('input');
+    return findDOMNode(this.el.current.getThemeTarget()).querySelector('input');
   }
 
   handleClick = (click: ClickType) => (event: Event) => {

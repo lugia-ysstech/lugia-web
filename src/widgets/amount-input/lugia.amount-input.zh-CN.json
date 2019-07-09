@@ -191,7 +191,7 @@
       "clicked": [],
       "disabled": []
     },
-    "TooltipMessage": {
+    "TooltipTitle": {
       "name": "金额输入框提示信息文字部分",
       "desc": "金额输入框提示信息文字部分",
       "normal": [["fontSize"], ["font"], ["color"]],

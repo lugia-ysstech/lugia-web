@@ -15,7 +15,6 @@ import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import { getBoxShadow } from '@lugia/theme-utils';
 
 import { units } from '@lugia/css';
-import { addPropsConfig } from '../avatar';
 const { px2remcss } = units;
 const { defaultColor, blackColor } = colorsFunc();
 
@@ -367,10 +366,12 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
     const { visible } = this.state;
     const direction = this.getDirection(placement);
     const getTarget: Function = cmp => (this.trigger = cmp);
-    const contentThemeProps = addPropsConfig(this.props.getPartOfThemeProps('TooltipContent'), {
-      size,
-      popArrowType,
-      direction,
+    const contentThemeProps = this.props.getPartOfThemeProps('TooltipContent', {
+      props: {
+        size,
+        popArrowType,
+        direction,
+      },
     });
     return (
       <Trigger
@@ -405,10 +406,13 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
 
   getArrow(direction) {
     const { placement, popArrowType } = this.props;
-    const theThemeProps = addPropsConfig(this.props.getPartOfThemeProps('TooltipContent'), {
-      direction,
-      placement,
+    const theThemeProps = this.props.getPartOfThemeProps('TooltipContent', {
+      props: {
+        direction,
+        placement,
+      },
     });
+
     if (popArrowType === 'round') {
       return [<NewArrow themeProps={theThemeProps} />, <MaskArrow themeProps={theThemeProps} />];
     }

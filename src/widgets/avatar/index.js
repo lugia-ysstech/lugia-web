@@ -121,11 +121,6 @@ type AvatarProps = {
   getPartOfThemeHocProps: Function,
 };
 type AvatarState = {};
-export function addPropsConfig(themeProps: Object, propsConfig: Object) {
-  const newThemeProps = { ...themeProps };
-  newThemeProps.propsConfig = propsConfig;
-  return newThemeProps;
-}
 class AvatarBox extends React.Component<AvatarProps, AvatarState> {
   static defaultProps = {
     viewClass: Widget.Avatar,
@@ -134,12 +129,17 @@ class AvatarBox extends React.Component<AvatarProps, AvatarState> {
   };
   static displayName = Widget.Avatar;
   getChildren() {
-    const { src, icon, name, size, shape, themeProps } = this.props;
-    themeProps.propsConfig = { size, shape, src, icon };
+    const { src, icon, name, size, shape } = this.props;
+    const theThemeProps = this.props.getPartOfThemeProps('SrcAvatar', {
+      props: {
+        size,
+        shape,
+        src,
+        icon,
+      },
+    });
     if (src !== undefined && src !== null) {
-      return (
-        <Picture src={src} shape={shape} themeProps={this.props.getPartOfThemeProps('SrcAvatar')} />
-      );
+      return <Picture src={src} shape={shape} themeProps={theThemeProps} />;
     } else if (icon !== undefined && icon !== null) {
       const { theme: iconPropsTheme, viewClass } = this.props.getPartOfThemeHocProps('IconAvatar');
       const newTheme = deepMerge(
@@ -178,11 +178,13 @@ class AvatarBox extends React.Component<AvatarProps, AvatarState> {
     }
     let finalName = name + '';
     finalName = finalName.length > 5 ? finalName.substr(0, 5) : finalName;
-    const nameThemeProps = addPropsConfig(this.props.getPartOfThemeProps('FontAvatar'), {
-      size,
-      shape,
-      src,
-      icon,
+    const nameThemeProps = this.props.getPartOfThemeProps('FontAvatar', {
+      props: {
+        size,
+        shape,
+        src,
+        icon,
+      },
     });
 
     return (
@@ -194,15 +196,18 @@ class AvatarBox extends React.Component<AvatarProps, AvatarState> {
   getAvatar() {
     const { props } = this;
     const { themeProps, size, shape, src, icon } = props;
-    themeProps.propsConfig = { size, shape, src, icon };
-    const newPropsTheme = deepMerge(this.props.getPartOfThemeProps('AvatarContainer'), themeProps);
+    const thePropsTheme = deepMerge(
+      this.props.getPartOfThemeProps('AvatarContainer', {
+        props: {
+          size,
+          shape,
+          src,
+          icon,
+        },
+      }),
+      themeProps
+    );
 
-    const thePropsTheme = addPropsConfig(newPropsTheme, {
-      size,
-      shape,
-      src,
-      icon,
-    });
     return (
       <BaseAvatar {...props} themeProps={thePropsTheme}>
         {this.getChildren()}

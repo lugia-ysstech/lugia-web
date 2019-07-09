@@ -11,9 +11,9 @@ exports[`Card css 1`] = `
 
 .c10 {
   vertical-align: middle;
-  width: 6rem;
-  height: 6rem;
-  border-radius: 10%;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
 }
 
 .c1 {
@@ -72,32 +72,32 @@ exports[`Card css 1`] = `
 
 .c14 {
   position: relative;
-  width: 20rem;
-  height: 15rem;
+  width: 100%;
+  height: 11.2rem;
   display: block;
 }
 
 .c16 {
   position: relative;
-  width: 16rem;
-  height: 10rem;
+  width: 12rem;
+  height: 100%;
   display: inline-block;
 }
 
 .c8 {
   position: relative;
   text-align: center;
-  width: 16rem;
-  height: 10rem;
+  width: 100%;
+  height: 11.2rem;
   display: block;
 }
 
 .c11 {
   position: relative;
   text-align: center;
-  width: 100%;
-  height: 11.2rem;
-  display: block;
+  width: 12rem;
+  height: 100%;
+  display: inline-block;
 }
 
 .c4 {
@@ -109,10 +109,6 @@ exports[`Card css 1`] = `
   overflow: hidden;
   white-space: nowrap;
   font-size: 1.6rem;
-  padding-top: 0rem;
-  padding-bottom: 0.8rem;
-  padding-left: 0rem;
-  padding-right: 0rem;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -134,8 +130,8 @@ exports[`Card css 1`] = `
   color: #666666;
   padding-top: 0.4rem;
   padding-bottom: 0rem;
-  padding-left: 0rem;
-  padding-right: 0rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .c2 {
@@ -431,6 +427,10 @@ exports[`Card css 1`] = `
           style={
             Object {
               "fontWeight": 500,
+              "paddingBottom": "0.8rem",
+              "paddingLeft": "1rem",
+              "paddingRight": "1rem",
+              "paddingTop": "0.4rem",
             }
           }
           type="simple"
@@ -464,8 +464,8 @@ exports[`Card css 1`] = `
       className="c1"
       style={
         Object {
-          "height": "20rem",
-          "width": "50rem",
+          "height": "13rem",
+          "width": "35rem",
         }
       }
       type="simple"
@@ -487,6 +487,10 @@ exports[`Card css 1`] = `
           style={
             Object {
               "fontWeight": 500,
+              "paddingBottom": "0.8rem",
+              "paddingLeft": "1rem",
+              "paddingRight": "1rem",
+              "paddingTop": "0.4rem",
             }
           }
           type="simple"
@@ -533,8 +537,8 @@ exports[`Card css 1`] = `
       className="c1"
       style={
         Object {
-          "height": "20rem",
-          "width": "50rem",
+          "height": "13rem",
+          "width": "35rem",
         }
       }
       type="tip"
@@ -554,8 +558,8 @@ exports[`Card css 1`] = `
         style={
           Object {
             "paddingBottom": "0rem",
-            "paddingLeft": "1rem",
-            "paddingRight": "1rem",
+            "paddingLeft": "3rem",
+            "paddingRight": "3rem",
             "paddingTop": "1.6rem",
           }
         }
@@ -570,6 +574,10 @@ exports[`Card css 1`] = `
           style={
             Object {
               "fontWeight": 500,
+              "paddingBottom": "0.8rem",
+              "paddingLeft": "1rem",
+              "paddingRight": "1rem",
+              "paddingTop": "0.4rem",
             }
           }
           type="tip"
@@ -595,20 +603,15 @@ exports[`Card css 1`] = `
       className="c7"
       style={
         Object {
-          "height": "22rem",
-          "width": "16rem",
+          "height": "19rem",
+          "width": "15rem",
         }
       }
       type="avatar"
     >
       <span
         className="c8"
-        style={
-          Object {
-            "height": "10rem",
-            "width": "16rem",
-          }
-        }
+        style={Object {}}
       >
         <div
           className="c9"
@@ -636,12 +639,7 @@ exports[`Card css 1`] = `
             className="c10"
             shape="circle"
             src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png"
-            style={
-              Object {
-                "height": "6rem",
-                "width": "6rem",
-              }
-            }
+            style={Object {}}
           />
         </div>
       </span>
@@ -650,8 +648,8 @@ exports[`Card css 1`] = `
         style={
           Object {
             "paddingBottom": "0rem",
-            "paddingLeft": "1rem",
-            "paddingRight": "1rem",
+            "paddingLeft": "0rem",
+            "paddingRight": "0rem",
             "paddingTop": "1.6rem",
           }
         }
@@ -662,6 +660,10 @@ exports[`Card css 1`] = `
           style={
             Object {
               "fontWeight": 500,
+              "paddingBottom": "0.8rem",
+              "paddingLeft": "1rem",
+              "paddingRight": "1rem",
+              "paddingTop": "0.4rem",
             }
           }
           type="avatar"
@@ -695,8 +697,8 @@ exports[`Card css 1`] = `
       className="c1"
       style={
         Object {
-          "height": "18rem",
-          "width": "26rem",
+          "height": "11.6rem",
+          "width": "32rem",
         }
       }
       type="avatar"
@@ -720,8 +722,8 @@ exports[`Card css 1`] = `
             Object {
               "height": "7rem",
               "paddingBottom": "2rem",
-              "paddingLeft": "0rem",
-              "paddingRight": "0rem",
+              "paddingLeft": "2rem",
+              "paddingRight": "2rem",
               "paddingTop": "2rem",
               "width": "7rem",
             }
@@ -731,12 +733,7 @@ exports[`Card css 1`] = `
             className="c10"
             shape="circle"
             src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png"
-            style={
-              Object {
-                "height": "6rem",
-                "width": "6rem",
-              }
-            }
+            style={Object {}}
           />
         </div>
       </span>
@@ -757,6 +754,10 @@ exports[`Card css 1`] = `
           style={
             Object {
               "fontWeight": 500,
+              "paddingBottom": "0.8rem",
+              "paddingLeft": "1rem",
+              "paddingRight": "1rem",
+              "paddingTop": "0.4rem",
             }
           }
           type="avatar"
@@ -794,8 +795,7 @@ exports[`Card css 1`] = `
       className="c13"
       style={
         Object {
-          "height": "35rem",
-          "opacity": 0.8,
+          "height": "23rem",
           "width": "20rem",
         }
       }
@@ -803,22 +803,12 @@ exports[`Card css 1`] = `
     >
       <div
         className="c14"
-        style={
-          Object {
-            "height": "15rem",
-            "width": "20rem",
-          }
-        }
+        style={Object {}}
       >
         <img
           className="c15"
           src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg"
-          style={
-            Object {
-              "height": "16rem",
-              "width": "20rem",
-            }
-          }
+          style={Object {}}
         />
       </div>
       <div
@@ -837,11 +827,11 @@ exports[`Card css 1`] = `
           className="c4"
           style={
             Object {
-              "backgroundColor": "red",
-              "color": "pink",
               "fontWeight": 500,
-              "height": "2rem",
-              "width": "10rem",
+              "paddingBottom": "0.8rem",
+              "paddingLeft": "1rem",
+              "paddingRight": "1rem",
+              "paddingTop": "0.4rem",
             }
           }
           type="image"
@@ -852,7 +842,6 @@ exports[`Card css 1`] = `
           className="c5"
           style={
             Object {
-              "color": "yellow",
               "paddingBottom": "0rem",
               "paddingLeft": "1rem",
               "paddingRight": "1rem",
@@ -876,30 +865,20 @@ exports[`Card css 1`] = `
       className="c1"
       style={
         Object {
-          "height": "20rem",
-          "width": "36rem",
+          "height": "11.2rem",
+          "width": "32rem",
         }
       }
       type="image"
     >
       <div
         className="c16"
-        style={
-          Object {
-            "height": "10rem",
-            "width": "16rem",
-          }
-        }
+        style={Object {}}
       >
         <img
           className="c15"
           src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg"
-          style={
-            Object {
-              "height": "20rem",
-              "width": "16rem",
-            }
-          }
+          style={Object {}}
         />
       </div>
       <div
@@ -919,6 +898,10 @@ exports[`Card css 1`] = `
           style={
             Object {
               "fontWeight": 500,
+              "paddingBottom": "0.8rem",
+              "paddingLeft": "1rem",
+              "paddingRight": "1rem",
+              "paddingTop": "0.4rem",
             }
           }
           type="image"
@@ -952,8 +935,8 @@ exports[`Card css 1`] = `
       className="c1"
       style={
         Object {
-          "height": "24rem",
-          "width": "40rem",
+          "height": "22rem",
+          "width": "20rem",
         }
       }
       type="combo"
@@ -991,8 +974,8 @@ exports[`Card css 1`] = `
         style={
           Object {
             "paddingBottom": "0rem",
-            "paddingLeft": "1rem",
-            "paddingRight": "1rem",
+            "paddingLeft": "0rem",
+            "paddingRight": "0rem",
             "paddingTop": "1.6rem",
           }
         }
@@ -1125,8 +1108,8 @@ exports[`Card css 1`] = `
         style={
           Object {
             "paddingBottom": "0rem",
-            "paddingLeft": "1rem",
-            "paddingRight": "1rem",
+            "paddingLeft": "0rem",
+            "paddingRight": "0rem",
             "paddingTop": "1.6rem",
           }
         }

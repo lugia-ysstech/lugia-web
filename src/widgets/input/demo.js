@@ -100,7 +100,7 @@ export class TopInput extends React.Component<any, any> {
             },
           },
         },
-        TooltipMessage: {
+        TooltipTitle: {
           normal: { color: 'black' },
         },
       },

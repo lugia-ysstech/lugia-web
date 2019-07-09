@@ -144,7 +144,7 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
   }
 
   getInputDom() {
-    return findDOMNode(this.el.current).querySelector('input');
+    return findDOMNode(this.el.current.getThemeTarget()).querySelector('input');
   }
 
   handleChange = (event: Object) => {
@@ -213,8 +213,8 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
       {
         [viewClass]: {
           normal: {
-            getThemeMeta(ThemeMeta: Object, ThemeProps: Object) {
-              const { propsConfig } = ThemeProps;
+            getThemeMeta(themeMeta: Object, themeProps: Object) {
+              const { propsConfig } = themeProps;
               const { value } = propsConfig;
               const opacity = value && value.length ? 1 : 0;
               return {
@@ -258,7 +258,7 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
     } else {
       titleValue = amountPrefix + amountFormatter(value);
     }
-    const theThemeProps = this.props.getPartOfThemeProps('TooltipMessage');
+    const theThemeProps = this.props.getPartOfThemeProps('TooltipTitle');
 
     if (transform) {
       return (
@@ -291,7 +291,7 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
       <InnerInput
         theme={inputTheme}
         viewClass={inputViewClass}
-        ref={this.el}
+        innerRef={this.el}
         value={actualValue}
         size={size}
         onKeyUp={onKeyUp}

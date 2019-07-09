@@ -13,7 +13,6 @@ import KeyBoardEventAdaptor from '../../common/KeyBoardEventAdaptor';
 import CSSComponent from '../../theme/CSSProvider';
 import StaticComponent from '../../theme/CSSProvider';
 
-import { Height, Padding } from '../../css/badge';
 import { css } from '../../theme/CSSProvider';
 import colorsFunc from '../../css/stateColor';
 import { units } from '@lugia/css';
@@ -36,14 +35,14 @@ const OutInner = CSSComponent({
     selectNames: [['width'], ['height'], ['fontSize'], ['margin'], ['background'], ['padding']],
     defaultTheme: {},
   },
-  getStyle(themeMeta: Object, themeProps: Object) {
+  getThemeMeta(themeMeta: Object, themeProps: Object) {
     const { propsConfig } = themeProps;
     const { bitCnt, overflow } = propsConfig;
     const overWidth = overflow ? 6 : 0;
     const width = (bitCnt === 1 ? 14 : bitCnt * 6 + 2 * 4) + overWidth;
-    const style = {};
-    style.width = width;
-    return style;
+    return {
+      width,
+    };
   },
   css: css`
     overflow: hidden;
@@ -118,7 +117,7 @@ class NumberTurn extends React.Component<NumberTurnProps, NumberTurnState> {
     const { themeProps } = this.props;
     const { count = 0, overflow } = this.state;
     const bitCnt = this.getBitCnt(count);
-    themeProps.propsConfig = { bitCnt, overflow };
+    themeProps.props = { bitCnt, overflow };
     return (
       <NumberBoxContainer themeProps={themeProps}>
         <OutInner themeProps={themeProps} overflow={overflow}>

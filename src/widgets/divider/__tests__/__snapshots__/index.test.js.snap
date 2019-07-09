@@ -14,8 +14,8 @@ exports[`Divider css 1`] = `
   content: '';
   display: table-cell;
   position: relative;
-  width: 40rem;
-  border-top: 0.2rem solid red;
+  width: 50%;
+  border-top: 0.1rem solid #e8e8e8;
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
@@ -25,8 +25,8 @@ exports[`Divider css 1`] = `
   content: '';
   display: table-cell;
   position: relative;
-  width: 40rem;
-  border-top: 0.2rem solid red;
+  width: 50%;
+  border-top: 0.1rem solid #e8e8e8;
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
@@ -45,8 +45,8 @@ exports[`Divider css 1`] = `
   content: '';
   display: table-cell;
   position: relative;
-  width: 40rem;
-  border-top: 0.2rem dashed red;
+  width: 50%;
+  border-top: 0.1rem dashed #e8e8e8;
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
@@ -56,14 +56,107 @@ exports[`Divider css 1`] = `
   content: '';
   display: table-cell;
   position: relative;
-  width: 40rem;
-  border-top: 0.2rem dashed red;
+  width: 50%;
+  border-top: 0.1rem dashed #e8e8e8;
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
 }
 
 .c4 {
+  display: table;
+  white-space: nowrap;
+  text-align: center;
+  background: transparent;
+  font-weight: 500;
+  width: 50rem;
+}
+
+.c4::before {
+  content: '';
+  display: table-cell;
+  position: relative;
+  width: 95%;
+  border-top: 0.1rem solid #e8e8e8;
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+}
+
+.c4::after {
+  content: '';
+  display: table-cell;
+  position: relative;
+  width: 5%;
+  border-top: 0.1rem solid #e8e8e8;
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+}
+
+.c5 {
+  display: table;
+  white-space: nowrap;
+  text-align: center;
+  background: transparent;
+  font-weight: 500;
+  width: 50rem;
+}
+
+.c5::before {
+  content: '';
+  display: table-cell;
+  position: relative;
+  width: 5%;
+  border-top: 0.1rem solid #e8e8e8;
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+}
+
+.c5::after {
+  content: '';
+  display: table-cell;
+  position: relative;
+  width: 95%;
+  border-top: 0.1rem solid #e8e8e8;
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+}
+
+.c6 {
+  display: table;
+  white-space: nowrap;
+  text-align: center;
+  background: transparent;
+  font-weight: 500;
+  width: 50rem;
+}
+
+.c6::before {
+  content: '';
+  display: table-cell;
+  position: relative;
+  width: 100%;
+  border-top: 0.1rem solid #e8e8e8;
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+}
+
+.c6::after {
+  content: '';
+  display: table-cell;
+  position: relative;
+  width: 100%;
+  border-top: 0.1rem solid #e8e8e8;
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+}
+
+.c7 {
   margin: 0 0.6rem;
   display: inline-block;
   height: 100%;
@@ -98,12 +191,7 @@ exports[`Divider css 1`] = `
     <div
       className="c1"
       content="solid"
-      style={
-        Object {
-          "height": "0.2rem",
-          "width": "40rem",
-        }
-      }
+      style={Object {}}
     >
       <span
         className="c2"
@@ -118,12 +206,7 @@ exports[`Divider css 1`] = `
     <div
       className="c3"
       content="dashed"
-      style={
-        Object {
-          "height": "0.2rem",
-          "width": "40rem",
-        }
-      }
+      style={Object {}}
     >
       <span
         className="c2"
@@ -140,14 +223,9 @@ exports[`Divider css 1`] = `
       position left
     </p>
     <div
-      className="c1"
+      className="c4"
       content="position left"
-      style={
-        Object {
-          "height": "0.2rem",
-          "width": "40rem",
-        }
-      }
+      style={Object {}}
     >
       <span
         className="c2"
@@ -160,14 +238,9 @@ exports[`Divider css 1`] = `
       position right
     </p>
     <div
-      className="c1"
+      className="c5"
       content="position right"
-      style={
-        Object {
-          "height": "0.2rem",
-          "width": "40rem",
-        }
-      }
+      style={Object {}}
     >
       <span
         className="c2"
@@ -177,25 +250,15 @@ exports[`Divider css 1`] = `
       </span>
     </div>
     <div
-      className="c1"
-      style={
-        Object {
-          "height": "0.2rem",
-          "width": "40rem",
-        }
-      }
+      className="c6"
+      style={Object {}}
     />
     <p>
       "不用思考.因为我帮你想好了",这是lugia设计的重要原则之一.
     </p>
     <div
-      className="c1"
-      style={
-        Object {
-          "height": "0.2rem",
-          "width": "40rem",
-        }
-      }
+      className="c6"
+      style={Object {}}
     />
   </div>
   <div
@@ -213,47 +276,23 @@ exports[`Divider css 1`] = `
     >
       text
       <div
-        className="c4"
-        style={
-          Object {
-            "backgroundColor": "blue",
-            "height": "1rem",
-            "width": "0.2rem",
-          }
-        }
+        className="c7"
+        style={Object {}}
       />
       text
       <div
-        className="c4"
-        style={
-          Object {
-            "backgroundColor": "blue",
-            "height": "1rem",
-            "width": "0.2rem",
-          }
-        }
+        className="c7"
+        style={Object {}}
       />
       text
       <div
-        className="c4"
-        style={
-          Object {
-            "backgroundColor": "blue",
-            "height": "1rem",
-            "width": "0.2rem",
-          }
-        }
+        className="c7"
+        style={Object {}}
       />
       text
       <div
-        className="c4"
-        style={
-          Object {
-            "backgroundColor": "blue",
-            "height": "1rem",
-            "width": "0.2rem",
-          }
-        }
+        className="c7"
+        style={Object {}}
       />
       text
     </div>

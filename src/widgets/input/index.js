@@ -19,7 +19,6 @@ import Icon from '../icon';
 import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import colorsFunc from '../css/stateColor';
 import { units } from '@lugia/css';
-import { addPropsConfig } from '../avatar/index';
 import { deepMerge } from '@lugia/object-utils';
 
 import { getBorder, getBoxShadow } from '@lugia/theme-utils';
@@ -174,14 +173,13 @@ const TipBottom = CSSComponent({
     defaultTheme: {
       visibility: 'hidden',
     },
-    getStyle(themeMeta: Object, themeProps: Object) {
+    getCSS(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
       const { validateType, validateStatus } = propsConfig;
-      const style = {};
-      style.visibility = isValidateSuccess(validateStatus, validateType, 'bottom')
+      const theVisibility = isValidateSuccess(validateStatus, validateType, 'bottom')
         ? 'visible'
         : 'hidden';
-      return style;
+      return `visibility:${theVisibility}`;
     },
   },
 });
@@ -407,7 +405,7 @@ class TextBox extends Component<InputProps, InputState> {
 
   getInputInner = () => {
     const { validateType, validateStatus, help, themeProps, prefix, size } = this.props;
-    themeProps.propsConfig = { validateType, validateStatus, prefix, size };
+    themeProps.props = { validateType, validateStatus, prefix, size };
     if (validateType === 'bottom') {
       const result = [
         <BaseInputContainer themeProps={themeProps}>
@@ -416,10 +414,9 @@ class TextBox extends Component<InputProps, InputState> {
           {this.generateSuffix()}
         </BaseInputContainer>,
       ];
-      const tipBottomThemeProps = addPropsConfig(
-        this.props.getPartOfThemeProps('validateBottomConfig'),
-        { validateType, validateStatus, prefix, size }
-      );
+      const tipBottomThemeProps = this.props.getPartOfThemeProps('validateBottomConfig', {
+        props: { validateType, validateStatus, prefix, size },
+      });
       result.push(
         <TipBottom themeProps={tipBottomThemeProps}>{this.isValidateError() ? help : ''}</TipBottom>
       );
@@ -454,18 +451,17 @@ class TextBox extends Component<InputProps, InputState> {
               },
             },
           },
-          TooltipMessage: {
+          TooltipTitle: {
             normal: { color: mediumGreyColor },
           },
         },
       },
       topTipThemeProps
     );
-    console.log(newTheme, '111111inputtip');
     if (isValidateSuccess(validateStatus, validateType, 'top')) {
       return (
         <ToolTip
-          propsConfig={(validateType, validateStatus, prefix, size)}
+          propsConfig={{ validateType, validateStatus, prefix, size }}
           theme={newTheme}
           size={size}
           placement={'topLeft'}
@@ -571,11 +567,9 @@ class TextBox extends Component<InputProps, InputState> {
     if (formatter && parser) {
       value = formatter(value);
     }
-    const theThemeProps = addPropsConfig(this.props.getPartOfThemeProps('Input'), {
-      validateType,
-      validateStatus,
-      prefix,
-      size,
+
+    const theThemeProps = this.props.getPartOfThemeProps('Input', {
+      props: { validateType, validateStatus, prefix, size },
     });
     return (
       <CommonInputStyle

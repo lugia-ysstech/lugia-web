@@ -181,13 +181,7 @@ exports[` Badge css 1`] = `
           />
           <div
             className=""
-            style={
-              Object {
-                "position": "absolute",
-                "right": "-0.5rem",
-                "top": "-0.5rem",
-              }
-            }
+            style={Object {}}
           >
             <span
               className="c5"
@@ -281,13 +275,7 @@ exports[` Badge css 1`] = `
           />
           <div
             className=""
-            style={
-              Object {
-                "position": "absolute",
-                "right": "-0.5rem",
-                "top": "-0.5rem",
-              }
-            }
+            style={Object {}}
           >
             <span
               className="c5"
@@ -506,13 +494,7 @@ exports[` Badge css 1`] = `
           />
           <div
             className=""
-            style={
-              Object {
-                "position": "absolute",
-                "right": "-0.5rem",
-                "top": "-0.5rem",
-              }
-            }
+            style={Object {}}
           >
             <span
               className="c5"
@@ -606,13 +588,7 @@ exports[` Badge css 1`] = `
           />
           <div
             className=""
-            style={
-              Object {
-                "position": "absolute",
-                "right": "-0.5rem",
-                "top": "-0.5rem",
-              }
-            }
+            style={Object {}}
           >
             <span
               className="c5"
@@ -711,16 +687,7 @@ exports[` Badge css 1`] = `
               className="c10"
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "orange",
-                  "height": "2rem",
-                  "position": "absolute",
-                  "right": "0.6rem",
-                  "top": "-0.5rem",
-                  "width": "2rem",
-                }
-              }
+              style={Object {}}
             />
           </span>
         </a>
@@ -756,14 +723,7 @@ exports[` Badge css 1`] = `
             className="c10"
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
-            style={
-              Object {
-                "backgroundColor": "green",
-                "position": "absolute",
-                "right": "0.2rem",
-                "top": "-0.5rem",
-              }
-            }
+            style={Object {}}
           />
         </span>
       </div>
@@ -786,14 +746,7 @@ exports[` Badge css 1`] = `
             className="c10"
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
-            style={
-              Object {
-                "backgroundColor": "purple",
-                "position": "absolute",
-                "right": "0.2rem",
-                "top": "-0.5rem",
-              }
-            }
+            style={Object {}}
           />
         </span>
       </div>
@@ -816,14 +769,7 @@ exports[` Badge css 1`] = `
             className="c10"
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
-            style={
-              Object {
-                "backgroundColor": "yellow",
-                "position": "absolute",
-                "right": "0.2rem",
-                "top": "-0.5rem",
-              }
-            }
+            style={Object {}}
           />
         </span>
       </div>
@@ -846,14 +792,7 @@ exports[` Badge css 1`] = `
             className="c10"
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
-            style={
-              Object {
-                "backgroundColor": "blue",
-                "position": "absolute",
-                "right": "0.2rem",
-                "top": "-0.5rem",
-              }
-            }
+            style={Object {}}
           />
         </span>
       </div>
@@ -886,13 +825,7 @@ exports[` Badge css 1`] = `
           />
           <div
             className=""
-            style={
-              Object {
-                "position": "absolute",
-                "right": "-0.5rem",
-                "top": "-0.5rem",
-              }
-            }
+            style={Object {}}
           >
             <span
               className="c5"
