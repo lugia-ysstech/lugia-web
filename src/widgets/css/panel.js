@@ -34,6 +34,7 @@ export type PanelProps = {
   getTheme: Function,
   count: number,
   onClick?: Function,
+  dispatchEvent: Function,
 } & BasicPropsType;
 export type PanelState = BasicStateType;
 type CSSProps = {
@@ -113,6 +114,9 @@ export const PanelHeader = CSSComponent({
         return `width: ${widthStyle} !important;transform: translateX(-14px);`;
       }
     },
+  },
+  disabled: {
+    selectNames: [['borderRadius'], ['background'], ['opacity'], ['border'], ['boxShadow']],
   },
 });
 export const PanelHeaderText = CSSComponent({

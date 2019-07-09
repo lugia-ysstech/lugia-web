@@ -103,6 +103,7 @@ export default ThemeProvider(
         showArrow = true,
         getPartOfThemeProps,
         count,
+        dispatchEvent,
       } = this.props;
       const config = {};
       if (!showArrow) {
@@ -132,7 +133,11 @@ export default ThemeProvider(
               innerRef={(node: any) => (this.header = node)}
             >
               {showArrow || hover ? (
-                <Icon iconClass="lugia-icon-direction_caret_right" {...this.getIconTheme()} />
+                <Icon
+                  iconClass="lugia-icon-direction_caret_right"
+                  {...this.getIconTheme()}
+                  {...dispatchEvent(['hover', 'disabled'], 'f2c')}
+                />
               ) : null}
               <PanelHeaderText themeProps={PanelHeaderTextTheme}>{title}</PanelHeaderText>
             </PanelHeader>
