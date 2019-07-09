@@ -229,23 +229,6 @@ const AddContainer = CSSComponent({
 
 AddContainer.displayName = 'addBtn';
 
-const AddOutContainer = CSSComponent({
-  tag: 'div',
-  className: 'AddContainer',
-  normal: {
-    selectNames: [],
-  },
-  disabled: {
-    selectNames: [],
-  },
-  css: css`
-    position: relative;
-    text-align: center;
-    float: left;
-    margin: 5px;
-  `,
-});
-
 const HscrollerContainer = CSSComponent({
   tag: 'div',
   className: 'HscrollerContainer',
