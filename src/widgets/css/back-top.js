@@ -68,7 +68,7 @@ export const IconWrap: Object = styled(Icon)`
 
 const CommonBackTopStyle = CSSComponent({
   tag: 'div',
-  className: 'common-back-top',
+  className: 'CommonBackTopStyle',
   css: css`
     border: 1px solid #e8e8e8;
     text-align: center;
@@ -79,7 +79,7 @@ const CommonBackTopStyle = CSSComponent({
 
 export const BackTop = StaticComponent({
   tag: 'div',
-  className: 'back-top',
+  className: 'BackTop',
   css: css`
     font-size: ${FontSize}rem;
     ${getFixedCSS};
@@ -90,7 +90,7 @@ export const BackTop = StaticComponent({
 
 export const BackTopContent = CSSComponent({
   extend: CommonBackTopStyle,
-  className: 'back-top-content',
+  className: 'BackTopContent',
   css: css`
     position: relative;
   `,
@@ -118,7 +118,7 @@ export const BackTopContent = CSSComponent({
 
 export const IconBox = CSSComponent({
   tag: 'span',
-  className: 'icon-box',
+  className: 'BackTopIconBox',
   normal: {
     selectNames: [['color']],
   },
