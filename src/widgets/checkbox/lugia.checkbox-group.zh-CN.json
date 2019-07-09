@@ -168,6 +168,96 @@
         "desc": "Checkbox取消状态样式配置",
         "normal": [["color"]]
       }
+    },
+    "CheckButton": {
+      "CheckButtonChecked": {
+        "name": "多选框按钮状选中配置",
+        "desc": "多选框按钮状选中配置",
+        "normal": {
+          "selectNames": [
+            ["opacity"],
+            ["border"],
+            ["borderRadius"],
+            ["background"],
+            ["width"],
+            ["height"],
+            ["color"],
+            ["font"],
+            ["padding"]
+          ],
+          "nth": [
+            ["opacity"],
+            ["border"],
+            ["borderRadius"],
+            ["background"],
+            ["width"],
+            ["height"],
+            ["color"],
+            ["font"],
+            ["padding"]
+          ]
+        },
+        "hover": {
+          "selectNames": [["opacity"], ["border"], ["borderRadius"], ["background"], ["color"]],
+          "nth": [["opacity"], ["border"], ["borderRadius"], ["background"], ["color"]]
+        },
+        "disabled": {
+          "selectNames": [["opacity"], ["border"], ["borderRadius"], ["background"], ["color"]],
+          "nth": [["opacity"], ["border"], ["borderRadius"], ["background"], ["color"]]
+        }
+      },
+      "CheckButtonUnChecked": {
+        "name": "多选框按钮状未选中配置",
+        "desc": "多选框按钮状未选中配置",
+        "normal": {
+          "selectNames": [
+            ["opacity"],
+            ["border"],
+            ["borderRadius"],
+            ["background"],
+            ["width"],
+            ["height"],
+            ["color"],
+            ["font"],
+            ["padding"]
+          ],
+          "nth": [
+            ["opacity"],
+            ["border"],
+            ["borderRadius"],
+            ["background"],
+            ["width"],
+            ["height"],
+            ["color"],
+            ["font"],
+            ["padding"]
+          ]
+        },
+        "hover": {
+          "selectNames": [["opacity"], ["border"], ["borderRadius"], ["background"], ["color"]],
+          "nth": [["opacity"], ["border"], ["borderRadius"], ["background"], ["color"]]
+        },
+        "disabled": {
+          "selectNames": [["opacity"], ["border"], ["borderRadius"], ["background"], ["color"]],
+          "nth": [["opacity"], ["border"], ["borderRadius"], ["background"], ["color"]]
+        }
+      },
+      "CheckButtonCancel": {
+        "name": "多选框按钮状取消项配置",
+        "desc": "多选框按钮状取消状态配置",
+        "normal": [
+          ["opacity"],
+          ["border"],
+          ["borderRadius"],
+          ["background"],
+          ["width"],
+          ["height"],
+          ["color"],
+          ["font"],
+          ["padding"]
+        ],
+        "hover": [["opacity"], ["border"], ["borderRadius"], ["background"], ["color"]]
+      }
     }
   }
 }
