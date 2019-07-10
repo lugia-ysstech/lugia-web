@@ -14,7 +14,6 @@ import { ObjectUtils } from '@lugia/type-utils';
 import { toNumber } from '../common/NumberUtils';
 
 import CSSComponent, { css, keyframes } from '@lugia/theme-css-hoc';
-import ThemeHoc from '@lugia/theme-hoc';
 import { deepMerge } from '@lugia/object-utils';
 
 import colorsFunc from '../css/stateColor';
@@ -97,66 +96,6 @@ const Ratespan = CSSComponent({
 });
 
 Ratespan.displayName = 'sv_rate_Ratespan';
-
-const RateIcon = ThemeHoc(
-  CSSComponent({
-    extend: Icon,
-    className: 'ActiveIcon',
-    css: css`
-      vertical-align: text-bottom !important;
-    `,
-    normal: {
-      selectNames: [['color'], ['fontSize'], ['margin']],
-      defaultTheme: {
-        color: '#e8e8e8',
-      },
-    },
-    hover: {
-      selectNames: [['color']],
-      getCSS(themeMeta: Object, themeProps: Object) {
-        return css`
-          animation: ${showUp} 0.3s linear forwards;
-          transform: scale(1.2);
-        `;
-      },
-    },
-    disabled: {
-      selectNames: [['color']],
-      defaultTheme: {
-        color: '#cccccc',
-      },
-    },
-  }),
-  'RateIcon',
-  { hover: true, active: false }
-);
-
-const RateIconBottom = ThemeHoc(
-  CSSComponent({
-    extend: Icon,
-    className: 'DefaultRateIcon',
-    css: css`
-      vertical-align: text-bottom !important;
-      color: #e8e8e8;
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      z-index: -1;
-    `,
-    normal: {
-      selectNames: [['color'], ['fontSize']],
-      defaultTheme: {
-        color: '#e8e8e8',
-      },
-    },
-    hover: {
-      selectNames: [['color']],
-    },
-  }),
-  'RateIconBottom'
-);
-
-RateIcon.displayName = 'sv_rate_icon';
 
 const RateTextContainer = CSSComponent({
   tag: 'span',
@@ -635,8 +574,36 @@ class Rate extends React.Component<RateProps, any> {
     const { disabled, className } = this.props;
 
     const theClassName = `${defautClass[type]} ${className} ${disabled ? '' : 'hoverd'}`;
+
+    const { theme, viewClass, markClassName } = this.getIconThemeProps(type);
+
+    if (type === 'bottom') {
+      return (
+        <Icon
+          theme={theme}
+          viewClass={viewClass}
+          type={'default'}
+          disabled={disabled}
+          iconClass={`${IconClass.default} ${markClassName}  default iconCharacter `}
+        />
+      );
+    }
+
+    return (
+      <Icon
+        theme={theme}
+        viewClass={viewClass}
+        type={type}
+        disabled={disabled}
+        iconClass={`${IconClass[type]} ${theClassName} ${markClassName} iconCharacter `}
+      />
+    );
+  };
+
+  getIconThemeProps = (type: string) => {
     let resultTheme;
     let resultViewClass;
+    let markClassName;
 
     switch (type) {
       case 'amazed':
@@ -646,6 +613,7 @@ class Rate extends React.Component<RateProps, any> {
         } = this.props.getPartOfThemeHocProps('AmazedIcon');
         resultTheme = amazedIconTheme;
         resultViewClass = amazedIconViewClass;
+        markClassName = 'AmazedIcon';
         break;
       case 'danger':
         const {
@@ -657,6 +625,7 @@ class Rate extends React.Component<RateProps, any> {
           dangerIconTheme
         );
         resultViewClass = dangerIconViewClass;
+        markClassName = 'DangerIcon';
         break;
       case 'half':
       case 'primary':
@@ -664,6 +633,7 @@ class Rate extends React.Component<RateProps, any> {
 
         resultTheme = deepMerge({ [viewClass]: { normal: { color: warningColor } } }, theme);
         resultViewClass = viewClass;
+        markClassName = 'ActiveIcon';
         break;
       case 'bottom':
       default:
@@ -671,31 +641,56 @@ class Rate extends React.Component<RateProps, any> {
           viewClass: RateIconBottomViewClass,
           theme: RateIconBottomTheme,
         } = this.props.getPartOfThemeHocProps('DefaultRateIcon');
-        resultTheme = RateIconBottomTheme;
         resultViewClass = RateIconBottomViewClass;
+        const obj = {
+          [RateIconBottomViewClass]: {
+            normal: {
+              color: '#e8e8e8',
+            },
+          },
+        };
+        resultTheme = deepMerge(obj, RateIconBottomTheme);
+        markClassName = 'DefaultRateIcon';
         break;
     }
+
     if (type === 'bottom') {
-      return (
-        <RateIconBottom
-          theme={resultTheme}
-          viewClass={resultViewClass}
-          type={'default'}
-          disabled={disabled}
-          iconClass={`${IconClass.default}  default iconCharacter `}
-        />
-      );
+      const obj = {
+        [resultViewClass]: {
+          normal: {
+            getCSS: () => {
+              return `              
+              vertical-align: text-bottom !important;
+              color: #e8e8e8;
+              position: absolute;
+              left: 0;
+              bottom: 0;
+              z-index: -1;`;
+            },
+          },
+        },
+      };
+      resultTheme = deepMerge(obj, resultTheme);
+    } else {
+      const obj = {
+        [resultViewClass]: {
+          hover: {
+            getCSS(themeMeta: Object, themeProps: Object) {
+              return css`
+                animation: ${showUp} 0.3s linear forwards;
+                transform: scale(1.2);
+              `;
+            },
+          },
+          disabled: {
+            color: '#cccccc',
+          },
+        },
+      };
+      resultTheme = deepMerge(obj, resultTheme);
     }
 
-    return (
-      <RateIcon
-        theme={resultTheme}
-        viewClass={resultViewClass}
-        type={type}
-        disabled={disabled}
-        iconClass={`${IconClass[type]} ${theClassName} iconCharacter `}
-      />
-    );
+    return { theme: resultTheme, viewClass: resultViewClass, markClassName };
   };
 }
 

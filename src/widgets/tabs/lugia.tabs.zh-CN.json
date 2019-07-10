@@ -13,11 +13,6 @@
       "desc": "默认激活 tab 面板的 key",
       "defaultValue": "0"
     },
-    "viewClass": {
-      "type": "string",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
-    },
     "tabType": {
       "type": "TabType",
       "desc": "可配置三种风格的标签页.可选 线性,卡片,窗口风格",
@@ -40,28 +35,38 @@
     },
     "defaultData": {
       "type": "Array<Object>",
-      "desc": "默认配置标签页需要配置的数据,",
+      "desc": "默认配置标签页需要配置的数据,若有data,以data优先",
       "defaultValue": "undefined"
     },
     "forceRender": {
       "type": "boolean",
-      "desc": "是否一次性显示标签页下的内容",
+      "desc": "切换时是否重新渲染面板",
       "defaultValue": "false"
     },
     "pagedType": {
       "type": "PagedType",
       "desc": "翻页类型,可配置单个滑动,整页滑动",
       "defaultValue": "single"
-    }
+    },
+    "showAddBtn": {
+      "type": "boolean",
+      "desc": "是否显示新增按钮(仅卡片和窗口类型支持)",
+      "defaultValue": "false"
+    },
+    "showDeleteBtn": {
+      "type": "boolean",
+      "desc": "是否显示删除按钮(仅卡片和窗口类型支持)",
+      "defaultValue": "false"
+    },
   },
   "events": {
     "onTabClick": {
-      "desc": "tab 被点击的回调",
+      "desc": "tab 被点击时的回调",
       "args": [
         {
-          "name": "event",
-          "desc": "点击标签页时调用DOM事件",
-          "type": ""
+          "name": "result",
+          "desc": "返回当前被点击是第几的项",
+          "type": "number"
         }
       ]
     },
@@ -69,9 +74,9 @@
       "desc": "tab改变时触发",
       "args": [
         {
-          "name": "event",
-          "desc": "标签页改变内容的DOM事件",
-          "type": "Object"
+          "name": "result",
+          "desc": "标签页改变时当前选中的是第几的项",
+          "type": "number"
         }
       ]
     },
@@ -96,21 +101,31 @@
       ]
     },
     "onAddClick": {
-      "desc": "点击添加按钮后回调",
+      "desc": "点击添加按钮新增标签后回调",
       "args": [
         {
           "name": "event",
-          "desc": "要添加的标签页对象",
+          "desc": "新增标签时的事件",
           "type": "Object"
         }
       ]
     },
-    "onDeleteClick": {
-      "desc": "点击清除按钮后回调",
+    "getAddItem": {
+      "desc": "返回点击添加按钮新增标签的内容",
       "args": [
         {
           "name": "event",
-          "desc": "要删除的标签页对象",
+          "desc": "获取新增标签的内容事件",
+          "type": "Object"
+        }
+      ]
+    },
+    "onDelete": {
+      "desc": "点击清除按钮后删除标签后的回调",
+      "args": [
+        {
+          "name": "event",
+          "desc": "删除标签时的事件",
           "type": "Object"
         }
       ]
@@ -122,5 +137,93 @@
     "TabPositionType": ["top", "bottom", "inner", "default"]
   },
   "childrenWidget": ["tabpane","tabcontent"],
-  "category": ["数据展示"]
+  "category": ["数据展示"],
+  "designInfo": {
+    "CardTabs": {
+      "sequence": 1,
+      "title": "卡片风格",
+      "desc": "卡片风格标签页",
+      "props": {
+        "tabType": "card"
+      },
+      "theme": {
+        "AddButton": {
+          "name": "新增按钮",
+          "desc": "新增按钮样式配置",
+          "normal": [["width"], ["height"], ["opacity"], ["background"], ["border"], ["boxShadow"], ["color"], ["fontSize"]],
+          "hover": [["width"], ["height"], ["opacity"], ["background"], ["border"], ["boxShadow"], ["color"], ["fontSize"]],
+          "clicked": [],
+          "disabled": []
+        }
+      }
+    },
+    "WindowTabs": {
+      "sequence": 1,
+      "title": "窗口风格",
+      "desc": "窗口风格标签页",
+      "props": {
+        "tabType": "window"
+      },
+      "theme": {
+        "WindowContainer": {
+          "name": "窗口背景区域",
+          "desc": "窗口背景区域样式配置",
+          "normal": [["background"], ["padding"], ["border"], ["borderRadius"], ["opacity"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
+        } ,
+        "AddButton": {
+          "name": "新增按钮",
+          "desc": "新增按钮样式配置",
+          "normal": [["width"], ["height"], ["opacity"], ["background"], ["border"], ["boxShadow"], ["color"], ["fontSize"]],
+          "hover": [["width"], ["height"], ["opacity"], ["background"], ["border"], ["boxShadow"], ["color"], ["fontSize"]],
+          "clicked": [],
+          "disabled": []
+        }
+      }
+    }
+  },
+  "theme": {
+    "ContentBlock": {
+      "name": "content内容区",
+      "desc": "ontent内容区的样式配置",
+      "normal": [["padding"],["width"],["height"]],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
+    },
+    "DefaultTabPan": {
+      "name": "默认标签",
+      "desc": "默认标签样式配置",
+      "normal": [["color"], ["background"], ["border"], ["margin"], ["padding"], ["font"], ["opacity"]],
+      "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
+      "clicked": [],
+      "disabled": []
+    },
+    "SelectTabPan": {
+      "name": "选中标签",
+      "desc": "选中标签样式配置",
+      "normal": [["color"], ["background"], ["border"], ["margin"], ["padding"], ["font"], ["opacity"]],
+      "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
+      "clicked": [],
+      "disabled": []
+    },
+    "TitleContainer": {
+      "name": "头部标签区域",
+      "desc": "头部标签区域宽度配置",
+      "normal": [["width"]],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
+    },
+    "BorderStyle": {
+      "name": "默认线",
+      "desc": "默认线样式配置",
+      "normal": [["border"]],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
+    }
+  }
 }

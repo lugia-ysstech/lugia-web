@@ -12,4 +12,5 @@ Tabs.TabPane = TabPane;
 Tabs.TabContent = TabContent;
 
 export { Tabs, TabPane, TabContent };
+
 export default Tabs;
