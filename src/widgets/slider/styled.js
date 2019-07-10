@@ -12,8 +12,7 @@ import {
   iconNormalColor,
   iconChangeColor,
 } from './slider_public_color';
-import CSSComponent from '../theme/CSSProvider';
-import Icon from '../icon';
+import CSSComponent from '@lugia/theme-css-hoc';
 const em = px2remcss;
 type CssTypeProps = {
   background: string,
@@ -56,7 +55,8 @@ export const SliderBigBox = CSSComponent({
       }
     ) {
       const { width } = themeMate;
-      return vertical ? `height:${em(width)}` : `width:${em(width)}`;
+      const newWidth = width ? `${em(width)}` : 'auto';
+      return vertical ? `height:${newWidth}` : `width:${newWidth}`;
     },
   },
   hover: {
@@ -270,9 +270,7 @@ export const Tipinner = CSSComponent({
       const {
         height,
         background: { color },
-        border: {
-          bottom: { color: bottomBorderColor },
-        },
+        border: { bottom: { color: bottomBorderColor } = {} } = {},
         boxShadow,
       } = themeMate;
       return `
@@ -437,7 +435,6 @@ export const Icons = CSSComponent({
 });
 
 export const IconsInner = CSSComponent({
-  extend: Icon,
   className: 'IconsInner',
   normal: {
     selectNames: [['color'], ['font'], ['fontSize']],

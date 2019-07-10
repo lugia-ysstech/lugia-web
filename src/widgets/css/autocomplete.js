@@ -52,16 +52,7 @@ export const OldValueItem = ThemeHoc(
 );
 OldValueItem.displayName = 'oldValueItem';
 
-export const TimeIcon = CSSComponent({
-  extend: Icon,
-  className: 'TimeIcon',
-  normal: {
-    selectNames: [],
-  },
-  css: css`
-    margin: 0;
-  `,
-});
+export const TimeIcon = Icon;
 
 export const OldValueTitle = CSSComponent({
   tag: 'div',

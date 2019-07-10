@@ -23,7 +23,7 @@ import { getThemeProps } from './styledConfig';
 import { findDOMNode } from 'react-dom';
 import { deepMerge } from '@lugia/object-utils';
 import { addMouseEvent } from '@lugia/theme-hoc';
-
+import Icon from '../icon';
 type TypeProps = {
   maxValue?: number,
   minValue?: number,
@@ -369,21 +369,22 @@ class Slider extends Component<TypeProps, TypeState> {
         const nodeHeight = this.getStyleForFalseElement(node[i], 'before', 'height');
         const nodeLeft = this.getStyleForFalseElement(node[i], 'before', 'right');
         const nodeTop = this.getStyleForFalseElement(node[i], 'before', 'bottom');
-        const levelValue = vertical ? Math.abs(parseFloat(nodeLeft) - rangeH) : 0;
-        const verticalValue = vertical ? 0 : Math.abs(parseFloat(nodeTop) - rangeH);
+        const levelValue = vertical ? Math.abs(parseFloat(nodeLeft)) : 0;
+        const verticalValue = vertical ? 0 : Math.abs(parseFloat(nodeTop));
         const levelNode = vertical ? levelValue : parseFloat(nodeWidth) + levelValue;
         const verticalNode = vertical ? parseFloat(nodeHeight) + verticalValue : verticalValue;
         nodeWidths.push(levelNode);
         nodeHeights.push(verticalNode);
       }
     }
+
     return {
       dotWidths: nodeWidths,
       dotHeights: nodeHeights,
     };
   };
   getOffset(vertical: boolean) {
-    const sliderRangeNode = findDOMNode(this.sliderRange.current); //slider react 元素
+    const sliderRangeNode = findDOMNode(this.sliderRange); //slider react 元素
     if (!sliderRangeNode) {
       return { offsetLeft: 0, offsetTop: 0, dotWidths: [], dotHeights: [] };
     }
@@ -413,7 +414,7 @@ class Slider extends Component<TypeProps, TypeState> {
     const marginTop = differValue > 0 ? differValue / 2 : 0;
     let dotMargin = marginTop;
     if (dotWidths && dotWidths.length > 0 && dotHeights && dotHeights.length > 0) {
-      dotMargin = vertical ? Math.max(...dotWidths) : Math.max(...dotHeights);
+      dotMargin = vertical ? Math.max(...dotWidths, marginTop) : Math.max(...dotHeights, marginTop);
     }
     const marginBot = dotMargin;
     return [marginTop, marginBot];
@@ -468,22 +469,30 @@ class Slider extends Component<TypeProps, TypeState> {
           const { fontSize = fontSizeNormal, margin = marginNormal } = style;
           newFontSize = fontSize > 0 && fontSize < 12 ? 12 : fontSize;
           iconDistancen = parseInt(fontSize) + parseInt(margin) + halfBthSize;
-          levelPaddings[index] = iconDistancen;
+          //  levelPaddings[index] = iconDistancen;
           iconSize[index] = fontSize;
         }
         const sliderIcons = index === 0 ? 'IconsFirst' : 'IconsLast';
-        const iconsThemeProps = this.props.getPartOfThemeProps(sliderIcons);
-        iconsThemeProps.themeState.hover = false;
-        iconsThemeProps.themeState.active = false;
+
+        const { viewClass, theme } = this.props.getPartOfThemeHocProps(sliderIcons);
+        const themeProps = this.props.getPartOfThemeProps(sliderIcons);
+
         const {
-          themeConfig: { normal: { font: { fontSize: fontObjSize } = {}, fontSize } = {} },
-        } = iconsThemeProps;
+          themeConfig: { normal: { font: { size: fontObjSize } = {}, fontSize } = {} },
+        } = themeProps;
         const hasFontSize = fontSize || fontObjSize;
         if (hasFontSize) {
           newFontSize = hasFontSize;
           iconSize[index] = hasFontSize;
           iconDistancen = hasFontSize + 10;
-          levelPaddings[index] = hasFontSize + 10;
+
+          if (!vertical) {
+            levelPaddings[index] =
+              levelPaddings[index] > hasFontSize ? levelPaddings[index] : hasFontSize + 10;
+          }
+          if (vertical) {
+            levelPaddings[index] = hasFontSize + 10;
+          }
         }
 
         const iconStyle = {
@@ -492,17 +501,27 @@ class Slider extends Component<TypeProps, TypeState> {
           iconDistancen,
           index,
         };
+        const iconTheme = deepMerge(
+          {
+            [viewClass]: {
+              normal: {
+                color: '#666',
+                fontSize,
+              },
+            },
+          },
+          theme
+        );
+
         iconsChildren.push(
-          <Icons iconStyle={iconStyle} value={value} {...size} themeProps={iconsThemeProps}>
-            <IconsInner iconClass={icon.name} themeProps={iconsThemeProps} />
+          <Icons iconStyle={iconStyle} value={value} {...size} themeProps={themeProps}>
+            <Icon iconClass={icon.name} viewClass={viewClass} theme={iconTheme} />
           </Icons>
         );
       });
     }
-
     return { iconsChildren, levelPaddings, iconSize };
   }
-
   render() {
     const { background, tips = false, icons, vertical = false, disabled, getTheme } = this.props;
     const {
@@ -530,6 +549,7 @@ class Slider extends Component<TypeProps, TypeState> {
       maxValue,
       vertical,
     };
+
     const { iconsChildren, levelPaddings, iconSize } = this.getSliderLevelPaddings(
       vertical,
       icons,
@@ -675,7 +695,9 @@ class Slider extends Component<TypeProps, TypeState> {
         >
           <SliderWrapper
             themeProps={sliderTrackThemeProps}
-            innerRef={this.sliderRange}
+            ref={node => {
+              this.sliderRange = node;
+            }}
             {...size}
             getTheme={getTheme}
           >

@@ -22,18 +22,14 @@ type PropTypes = {
   themeProps: Object,
 };
 
-const Input = ThemeHoc(
-  CSSComponent({
-    tag: 'input',
-    className: 'upload_Input',
-    css: css`
-      width: 100%;
-      display: none;
-    `,
-  }),
-  'Input',
-  { hover: true, active: false }
-);
+const Input = CSSComponent({
+  tag: 'input',
+  className: 'upload_Input',
+  css: css`
+    width: 100%;
+    display: none;
+  `,
+});
 
 class FileInput extends React.Component<PropTypes, any> {
   input: any;
@@ -60,7 +56,7 @@ class FileInput extends React.Component<PropTypes, any> {
     return (
       <Input
         themeProps={themeProps}
-        ref={this.input}
+        ref={node => (this.input = node)}
         accept={accept}
         multiple={multiple}
         onChange={this.handleChange}

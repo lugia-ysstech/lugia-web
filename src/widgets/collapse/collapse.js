@@ -36,40 +36,52 @@ export default ThemeProvider(
     }
 
     render() {
+      const { getPartOfThemeProps } = this.props;
+      const WrapTheme = getPartOfThemeProps('Wrap');
       const panelTheme = this.props.getTheme().svThemeConfigTree.sv_widget_Panel;
       return (
-        <Wrap panelTheme={panelTheme || {}} theme={this.props.getTheme()}>
+        <Wrap panelTheme={panelTheme || {}} themeProps={WrapTheme}>
           {this.renderChildren()}
         </Wrap>
       );
     }
     renderChildren = () => {
-      const { children, accordion, data } = this.props;
+      const { children, accordion, data, getPartOfThemeHocProps } = this.props;
       if ((!children && !data) || typeof children === 'string') {
         return (
-          <Panel value="lugia-panel" title="Lugia Panel" onClick={this.handleClick}>
+          <Panel
+            value="lugia-panel"
+            title="Lugia Panel"
+            onClick={this.handleClick}
+            {...getPartOfThemeHocProps('Panel')}
+            count={0}
+          >
             Default Panel
           </Panel>
         );
       }
       if (data && data.length > 0) {
-        return data.map(item => (
+        return data.map((item, index) => (
           <Panel
             {...item}
             onClick={this.handleClick}
             open={this.handleOpen(item.value)}
             accordion={accordion}
+            {...getPartOfThemeHocProps('Panel')}
+            count={index}
           >
             {item.children}
           </Panel>
         ));
       }
-      return React.Children.map(children, child => {
+      return React.Children.map(children, (child, index) => {
         if (React.isValidElement(child)) {
           return React.cloneElement(child, {
             onClick: this.handleClick,
             open: this.handleOpen(child.props.value),
             accordion,
+            ...getPartOfThemeHocProps('Panel'),
+            count: index,
           });
         }
       });

@@ -386,7 +386,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     return (
       <Input
         lugiaConsumers={channel.consumer}
-        innerRef={this.el}
+        ref={this.el}
         {...this.props.getPartOfThemeHocProps('Input')}
         {...this.props}
         value={value}

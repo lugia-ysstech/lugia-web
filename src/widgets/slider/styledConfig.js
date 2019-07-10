@@ -9,7 +9,7 @@ import {
 } from './slider_public_color';
 import { btnWidthNormal, rangeHeightNormal, rangeWidthNormal } from './slider_public_size';
 import colorsFunc from '../css/stateColor';
-import { getBorder, getBorderRadius } from '../theme/CSSProvider';
+import { getBorder, getBorderRadius } from '@lugia/theme-utils';
 //import {rangeWidthNormal,rangeHeightNormal,btnWidthNormal} from './slider_public_size';
 export const { themeColor } = colorsFunc();
 

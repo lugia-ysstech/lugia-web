@@ -7,6 +7,7 @@
 import '../common/shirm';
 import type { ExpandInfo, NodeId2ExtendInfo, NodeId2SelectInfo, QueryType } from '@lugia/lugia-web';
 import animation from '../common/openAnimation';
+import ThemeHoc from '@lugia/theme-hoc';
 import * as React from 'react';
 import { TreeNode } from './rc-tree';
 import Support from '../common/FormFieldWidgetSupport';
@@ -21,7 +22,7 @@ import { FontSize, FontSizeNumber } from '../css';
 import { px2emcss } from '../css/units';
 
 import {
-  ChildrenUl,
+  SubTreeWrap,
   DefaultHeight,
   Li,
   MenuItemHeight,
@@ -66,7 +67,7 @@ export type TreeProps = {
   getTreeData?: Function,
   splitQuery?: string,
   current: number,
-  data?: Array<RowData>, //
+  data?: Array<RowData>,
   inlineType: 'primary' | 'ellipse',
   blackList: ?(string[]),
   whiteList: ?(string[]),
@@ -74,6 +75,7 @@ export type TreeProps = {
   themeStyle: Object,
   size: 'large' | 'default' | 'bigger',
   shape: 'default' | 'round',
+  switcher: boolean,
 };
 
 export type TreeState = {
@@ -112,6 +114,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     openAnimation: animation,
     inlineType: 'primary',
     shape: 'default',
+    switcher: true,
     themeStyle: {
       MenuItemHeight,
       DefaultHeight,
@@ -120,7 +123,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
       Switcher,
       NullSwitcher,
       Li,
-      ChildrenUl,
+      SubTreeWrap,
       TitleWrap,
       TitleSpan,
       openClassName,
@@ -148,7 +151,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
     this.canSeeCount = 0;
 
     this.createQueryAllTreelUtils(props);
-
     if (this.isEmpty(props)) {
       this.state = {
         start: 0,
@@ -448,12 +450,13 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
   render() {
     const { props, state } = this;
+    console.log('state', state.hasError);
     const empty = <Empty>查无结果</Empty>;
     if (this.isEmpty(props)) {
       return empty;
     }
     if (this.state.hasError) {
-      return <ErrorTooltip>树形数据错误</ErrorTooltip>;
+      // return <ErrorTooltip>树形数据错误</ErrorTooltip>;
     }
     const {
       query,
@@ -465,6 +468,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
       valueField,
       getTreeData,
       themeStyle,
+      getPartOfThemeProps,
+      switcher,
     } = props;
     const { expand, expandedKeys, selectedInfo, start, selectValue = [] } = state;
     const { id2ExtendInfo } = expand;
@@ -727,4 +732,4 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 }
 
-export default ThemeProvider(Tree, Widget.Tree);
+export default ThemeHoc(Tree, Widget.Tree, { hover: true });

@@ -79,7 +79,7 @@ const getButtonCSS = (props: GroupCSSProps) => {
 
 export const Group = CSSComponent({
   tag: 'div',
-  className: 'check-group',
+  className: 'CheckboxGroup',
   css: css`
     ${getButtonCSS};
   `,

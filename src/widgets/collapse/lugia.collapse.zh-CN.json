@@ -60,5 +60,52 @@
     }
   },
   "childrenWidget": ["panel"],
-  "category": ["数据展示"]
+  "category": ["数据展示"],
+  "theme": {
+    "Wrap": {
+      "normal": [
+        ["opacity"],
+        ["margin"],
+        ["padding"],
+        ["width"],
+        ["height"],
+        ["background"],
+        ["border"]
+      ]
+    },
+    "Panel": {
+      "Wrap": {
+        "normal": [["width"]]
+      },
+      "PanelHeader": {
+        "normal": [
+          ["opacity"],
+          ["border"],
+          ["borderRadius"],
+          ["boxShadow"],
+          ["padding"],
+          ["width"],
+          ["height"],
+          ["background"]
+        ],
+        "hover": [["borderRadius"], ["background"], ["opacity"], ["border"], ["boxShadow"]],
+        "disabled": [["borderRadius"], ["background"], ["opacity"], ["border"], ["boxShadow"]]
+      },
+      "PanelHeaderText": {
+        "normal": [["font"], ["color"]],
+        "hover": [["color"]],
+        "disabled": [["color"]]
+      },
+      "PanelHeaderIcon": {
+        "normal": [["fontSize"], ["color"]],
+        "hover": [["color"]],
+        "disabled": [["color"]]
+      },
+      "PanelContent": {
+        "normal": [["width"], ["height"], ["background"], ["padding"], ["font"], ["color"]],
+        "hover": [["color"]],
+        "disabled": [["color"]]
+      }
+    }
+  }
 }

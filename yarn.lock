@@ -1494,10 +1494,10 @@
     "@lugia/object-utils" "^1.0.10"
     "@lugia/theme-hoc-devtools" "^1.0.3"
 
-"@lugia/theme-css-hoc@^1.0.45":
-  version "1.0.45"
-  resolved "http://192.168.102.79:5001/@lugia/theme-css-hoc/download/@lugia/theme-css-hoc-1.0.45.tgz#6ed17c8abc4941f7d1ce97df9a0a92dd78ecebd6"
-  integrity sha1-btF8irxJQffRzpffmgqS3Xjs69Y=
+"@lugia/theme-css-hoc@^1.0.46":
+  version "1.0.46"
+  resolved "http://192.168.102.79:5001/@lugia/theme-css-hoc/download/@lugia/theme-css-hoc-1.0.46.tgz#2b8056b01cec396f71bde35696ded074f73c5e08"
+  integrity sha1-K4BWsBzsOW9xveNWlt7QdPc8Xgg=
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/css" "^1.0.16"
@@ -1514,10 +1514,10 @@
   dependencies:
     "@lugia/react-devtools-core" "^1.0.3"
 
-"@lugia/theme-hoc@^1.0.31":
-  version "1.0.31"
-  resolved "http://192.168.102.79:5001/@lugia/theme-hoc/download/@lugia/theme-hoc-1.0.31.tgz#02e60b0bad546d0db900de03f04e4abf2379c820"
-  integrity sha1-AuYLC61UbQ25AN4D8E5KvyN5yCA=
+"@lugia/theme-hoc@^1.0.32":
+  version "1.0.32"
+  resolved "http://192.168.102.79:5001/@lugia/theme-hoc/download/@lugia/theme-hoc-1.0.32.tgz#560f82e03b8fa9c725aa7f9e92d930e5fef0d6a9"
+  integrity sha1-Vg+C4DuPqcclqn+ektkw5f7w1qk=
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/object-utils" "^1.0.10"
