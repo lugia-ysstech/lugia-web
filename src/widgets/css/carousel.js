@@ -94,18 +94,7 @@ export const NextButton = ThemeHoc(
 
 NextButton.displayName = 'NextButton';
 
-export const SwitchIcon = CSSComponent({
-  extend: Icon,
-  className: 'SwitchIcon',
-  normal: {
-    selectNames: [],
-  },
-  hover: {
-    selectNames: [],
-  },
-  css: `
-  `,
-});
+export const SwitchIcon = Icon;
 
 export const Wrap = CSSComponent({
   tag: 'div',
