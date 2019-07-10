@@ -38,7 +38,7 @@ const TabContentContainer = CSSComponent({
     min-width: 100px;
     min-height: 100px;
   `,
-}); //${getBackgroundShadow};
+});
 const TabContent = CSSComponent({
   tag: 'div',
   className: 'ContentBlock',
@@ -214,11 +214,9 @@ class TabsBox extends Component<TabsProps, TabsState> {
   }
 
   render() {
-    const { themeProps, tabType, tabPosition } = this.props;
-    const { activityValue, data } = this.state;
+    const { themeProps, tabType } = this.props;
     let target = (
       <OutContainer>
-        {/*<Tabpane title={'disabled测试'} disabled={true} {...this.props} index={0} />*/}
         <TabHeader {...this.getTabHeaderProps()} />
         {this.getChildrenContent()}
       </OutContainer>
@@ -386,10 +384,8 @@ class TabsBox extends Component<TabsProps, TabsState> {
     }
   }
 }
-//
+
 export default ThemeHoc(TabsBox, Widget.Tabs, {
   hover: true,
   active: false,
 });
-
-// export default TabsBox;
