@@ -177,8 +177,9 @@ class TreeNode extends React.Component {
       disabled: dataDisabled,
       icon,
       themeStyle,
+      getPartOfThemeProps,
     } = this.props;
-    const { Switcher } = themeStyle;
+    const { Switcher, TitleWrap } = themeStyle;
     const disabled = notCanSelect || dataDisabled;
     const { themeColor } = themeStyle;
     const view = {
@@ -192,14 +193,17 @@ class TreeNode extends React.Component {
               <CommonIcon iconClass={icon} />
             </Switcher>
           ) : null}
-          <CheckBox
-            checked={checked}
-            disabled={disabled}
-            indeterminate={indeterminate}
-            onChange={this.onCheck}
-          >
-            {title}
-          </CheckBox>
+          <TitleWrap themeProps={getPartOfThemeProps('Text')}>
+            <CheckBox
+              theme={this.getCheckBoxTheme()}
+              checked={checked}
+              disabled={disabled}
+              indeterminate={indeterminate}
+              onChange={this.onCheck}
+            >
+              {title}
+            </CheckBox>
+          </TitleWrap>
         </CheckBoxWrap>
       </Theme>
     );
@@ -321,7 +325,7 @@ class TreeNode extends React.Component {
           inlineType={inlineType}
           title={content}
           height={itemHeight}
-          theme={theme}
+          // theme={theme}
           paddingLeft={paddingLeft}
         >
           {icon ? <TextIcon iconClass={icon} /> : null}
@@ -426,6 +430,14 @@ class TreeNode extends React.Component {
       </Li>
     );
   }
+
+  getCheckBoxTheme = () => {
+    const { getPartOfThemeConfig } = this.props;
+    const config = {
+      [Widget.Checkbox]: getPartOfThemeConfig([Widget.Checkbox]),
+    };
+    return config;
+  };
 }
 
 TreeNode.isTreeNode = 1;

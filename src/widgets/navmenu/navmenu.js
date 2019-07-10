@@ -23,7 +23,7 @@ import {
   Switcher,
   NullSwitcher,
   Li,
-  ChildrenUl,
+  SubTreeWrap,
   TitleWrap,
   TitleSpan,
 } from '../css/navmenu';
@@ -76,7 +76,7 @@ const themeStyle = {
   Switcher,
   NullSwitcher,
   Li,
-  ChildrenUl,
+  SubTreeWrap,
   TitleWrap,
   TitleSpan,
   openClassName,
