@@ -13,7 +13,6 @@ import KeyBoardEventAdaptor from '../../common/KeyBoardEventAdaptor';
 import CSSComponent from '../../theme/CSSProvider';
 import StaticComponent from '../../theme/CSSProvider';
 
-import { Height, Padding } from '../../css/badge';
 import { css } from '../../theme/CSSProvider';
 import colorsFunc from '../../css/stateColor';
 import { units } from '@lugia/css';
@@ -36,14 +35,14 @@ const OutInner = CSSComponent({
     selectNames: [['width'], ['height'], ['fontSize'], ['margin'], ['background'], ['padding']],
     defaultTheme: {},
   },
-  getStyle(themeMeta: Object, themeProps: ThemeProps) {
+  getThemeMeta(themeMeta: Object, themeProps: Object) {
     const { propsConfig } = themeProps;
     const { bitCnt, overflow } = propsConfig;
     const overWidth = overflow ? 6 : 0;
-    const width = (bitCnt === 1 ? 14 : bitCnt * 6 + 2 * Padding) + overWidth;
-    const style = {};
-    style.width = px2remcss(width);
-    return style;
+    const width = (bitCnt === 1 ? 14 : bitCnt * 6 + 2 * 4) + overWidth;
+    return {
+      width,
+    };
   },
   css: css`
     overflow: hidden;
@@ -52,9 +51,9 @@ const OutInner = CSSComponent({
     background: ${dangerColor};
     height: ${px2remcss(14)};
     border-radius: ${px2remcss(8)};
-    line-height: ${Height};
+    line-height: ${px2remcss(14)};
     text-align: center;
-    padding: 0 ${px2remcss(Padding)};
+    padding: 0 ${px2remcss(4)};
     font-weight: normal;
     white-space: nowrap;
     box-shadow: 0 0 0 ${px2remcss(1)} #fff;
@@ -83,7 +82,7 @@ const Bit = CSSComponent({
   className: 'badgeNumberBit',
   normal: {
     selectNames: [['color'], ['fontSize']],
-    defaultTheme: { height: px2remcss(14) },
+    defaultTheme: { height: 14 },
   },
   css: css`
     height: ${px2remcss(14)};
@@ -118,7 +117,7 @@ class NumberTurn extends React.Component<NumberTurnProps, NumberTurnState> {
     const { themeProps } = this.props;
     const { count = 0, overflow } = this.state;
     const bitCnt = this.getBitCnt(count);
-    themeProps.propsConfig = { bitCnt, overflow };
+    themeProps.props = { bitCnt, overflow };
     return (
       <NumberBoxContainer themeProps={themeProps}>
         <OutInner themeProps={themeProps} overflow={overflow}>

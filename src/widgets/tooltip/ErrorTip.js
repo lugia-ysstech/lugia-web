@@ -24,7 +24,7 @@ export default class extends React.Component<any, any> {
             },
           },
         },
-        TooltipMessage: {
+        TooltipTitle: {
           normal: {
             color: dangerColor,
             fontSize: 16,

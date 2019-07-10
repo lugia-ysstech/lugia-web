@@ -1,15 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AmountInputDemo Component JSON 1`] = `
-.c7 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
-.c5 {
+.c4 {
   line-height: 1.5;
   display: inline-block;
   font-family: inherit;
@@ -37,38 +29,26 @@ exports[`AmountInputDemo Component JSON 1`] = `
   border-bottom-left-radius: 0.4rem;
 }
 
-.c5::-webkit-input-placeholder {
-  color: #ccc;
+.c4::-webkit-input-placeholder {
+  color: #cccccc;
 }
 
-.c5::-moz-placeholder {
-  color: #ccc;
+.c4::-moz-placeholder {
+  color: #cccccc;
 }
 
-.c5:-ms-input-placeholder {
-  color: #ccc;
+.c4:-ms-input-placeholder {
+  color: #cccccc;
 }
 
-.c5::placeholder {
-  color: #ccc;
+.c4::placeholder {
+  color: #cccccc;
 }
 
 .c2 {
   position: relative;
   display: inline-block;
   outline: none;
-}
-
-.c4 {
-  position: absolute;
-  -webkit-transform: translateY(50%);
-  -ms-transform: translateY(50%);
-  transform: translateY(50%);
-  bottom: 50%;
-  line-height: 1rem;
-  font-size: 1.4em;
-  color: rgba(0,0,0,0.65);
-  left: 1rem;
 }
 
 .c3 {
@@ -83,16 +63,6 @@ exports[`AmountInputDemo Component JSON 1`] = `
   left: 1rem;
 }
 
-.c6 {
-  position: absolute;
-  -webkit-transform: translateY(50%);
-  -ms-transform: translateY(50%);
-  transform: translateY(50%);
-  bottom: 50%;
-  right: 1rem;
-  color: #999999;
-}
-
 .c1 {
   position: relative;
   display: inline-block;
@@ -101,6 +71,20 @@ exports[`AmountInputDemo Component JSON 1`] = `
 .c0 {
   float: left;
   margin-left: 50px;
+}
+
+.c5 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  position: absolute;
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  bottom: 50%;
+  right: 1rem;
 }
 
 <div>
@@ -114,10 +98,6 @@ exports[`AmountInputDemo Component JSON 1`] = `
       className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      style={Object {}}
     >
       <div
         className="c2"
@@ -127,7 +107,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
         onMouseUp={[Function]}
       >
         <span
-          className="c3  c4"
+          className="c3"
           style={Object {}}
         >
           <span
@@ -139,7 +119,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
         </span>
         <input
           autoFocus={false}
-          className="c5"
+          className="c4"
           disabled={false}
           onBlur={[Function]}
           onChange={[Function]}
@@ -150,20 +130,20 @@ exports[`AmountInputDemo Component JSON 1`] = `
           onKeyUp={[Function]}
           placeholder="请填写金额"
           prefix={
-            <CSSComponent
+            <lugia_css_hoc_f
               themeProps={
                 Object {
                   "onLugia": [Function],
                   "propsConfig": Object {},
                   "themeConfig": Object {},
                   "themeState": Object {
-                    "disabled": undefined,
+                    "disabled": false,
                   },
                 }
               }
             >
               ¥
-            </CSSComponent>
+            </lugia_css_hoc_f>
           }
           readOnly={false}
           size="default"
@@ -188,10 +168,6 @@ exports[`AmountInputDemo Component JSON 1`] = `
       className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      style={Object {}}
     >
       <div
         className="c2"
@@ -201,7 +177,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
         onMouseUp={[Function]}
       >
         <span
-          className="c3  c4"
+          className="c3"
           style={Object {}}
         >
           <span
@@ -213,7 +189,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
         </span>
         <input
           autoFocus={false}
-          className="c5"
+          className="c4"
           disabled={false}
           onBlur={[Function]}
           onChange={[Function]}
@@ -224,20 +200,20 @@ exports[`AmountInputDemo Component JSON 1`] = `
           onKeyUp={[Function]}
           placeholder="请填写金额"
           prefix={
-            <CSSComponent
+            <lugia_css_hoc_f
               themeProps={
                 Object {
                   "onLugia": [Function],
                   "propsConfig": Object {},
                   "themeConfig": Object {},
                   "themeState": Object {
-                    "disabled": undefined,
+                    "disabled": false,
                   },
                 }
               }
             >
               ¥
-            </CSSComponent>
+            </lugia_css_hoc_f>
           }
           readOnly={false}
           size="default"
@@ -262,10 +238,6 @@ exports[`AmountInputDemo Component JSON 1`] = `
       className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      style={Object {}}
     >
       <div
         className="c2"
@@ -275,7 +247,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
         onMouseUp={[Function]}
       >
         <span
-          className="c3  c4"
+          className="c3"
           style={Object {}}
         >
           <span
@@ -287,7 +259,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
         </span>
         <input
           autoFocus={false}
-          className="c5"
+          className="c4"
           disabled={true}
           onBlur={[Function]}
           onChange={[Function]}
@@ -298,7 +270,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
           onKeyUp={[Function]}
           placeholder=""
           prefix={
-            <CSSComponent
+            <lugia_css_hoc_f
               themeProps={
                 Object {
                   "onLugia": [Function],
@@ -311,12 +283,13 @@ exports[`AmountInputDemo Component JSON 1`] = `
               }
             >
               ¥
-            </CSSComponent>
+            </lugia_css_hoc_f>
           }
           readOnly={false}
           size="default"
           style={
             Object {
+              "backgroundColor": "#f2f2f2",
               "borderBottomColor": "#cccccc",
               "borderBottomStyle": "solid",
               "borderBottomWidth": "0.1rem",
@@ -353,10 +326,6 @@ exports[`AmountInputDemo Component JSON 1`] = `
       className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      style={Object {}}
     >
       <div
         className="c2"
@@ -366,24 +335,19 @@ exports[`AmountInputDemo Component JSON 1`] = `
         onMouseUp={[Function]}
       >
         <span
-          className="c3  c4"
+          className="c3"
           style={Object {}}
         >
           <span
             className=""
-            style={
-              Object {
-                "color": "blue",
-                "fontSize": "1.4rem",
-              }
-            }
+            style={Object {}}
           >
             ¥
           </span>
         </span>
         <input
           autoFocus={false}
-          className="c5"
+          className="c4"
           disabled={false}
           onBlur={[Function]}
           onChange={[Function]}
@@ -394,38 +358,31 @@ exports[`AmountInputDemo Component JSON 1`] = `
           onKeyUp={[Function]}
           placeholder="请填写金额"
           prefix={
-            <CSSComponent
+            <lugia_css_hoc_f
               themeProps={
                 Object {
                   "onLugia": [Function],
                   "propsConfig": Object {},
-                  "themeConfig": Object {
-                    "__partName": "AmountInputPrefix",
-                    "normal": Object {
-                      "color": "blue",
-                      "fontSize": 14,
-                    },
-                  },
+                  "themeConfig": Object {},
                   "themeState": Object {
-                    "disabled": undefined,
+                    "disabled": false,
                   },
                 }
               }
             >
               ¥
-            </CSSComponent>
+            </lugia_css_hoc_f>
           }
           readOnly={false}
           size="small"
           style={
             Object {
               "color": "#333333",
-              "height": "5rem",
+              "height": "2.4rem",
               "paddingBottom": "0rem",
               "paddingLeft": "3rem",
               "paddingRight": "3.5rem",
               "paddingTop": "0rem",
-              "width": "40rem",
             }
           }
           value=""
@@ -439,10 +396,6 @@ exports[`AmountInputDemo Component JSON 1`] = `
       className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      style={Object {}}
     >
       <div
         className="c2"
@@ -452,24 +405,19 @@ exports[`AmountInputDemo Component JSON 1`] = `
         onMouseUp={[Function]}
       >
         <span
-          className="c3  c4"
+          className="c3"
           style={Object {}}
         >
           <span
             className=""
-            style={
-              Object {
-                "color": "blue",
-                "fontSize": "1.4rem",
-              }
-            }
+            style={Object {}}
           >
             ¥
           </span>
         </span>
         <input
           autoFocus={false}
-          className="c5"
+          className="c4"
           disabled={false}
           onBlur={[Function]}
           onChange={[Function]}
@@ -480,38 +428,31 @@ exports[`AmountInputDemo Component JSON 1`] = `
           onKeyUp={[Function]}
           placeholder="请填写金额"
           prefix={
-            <CSSComponent
+            <lugia_css_hoc_f
               themeProps={
                 Object {
                   "onLugia": [Function],
                   "propsConfig": Object {},
-                  "themeConfig": Object {
-                    "__partName": "AmountInputPrefix",
-                    "normal": Object {
-                      "color": "blue",
-                      "fontSize": 14,
-                    },
-                  },
+                  "themeConfig": Object {},
                   "themeState": Object {
-                    "disabled": undefined,
+                    "disabled": false,
                   },
                 }
               }
             >
               ¥
-            </CSSComponent>
+            </lugia_css_hoc_f>
           }
           readOnly={false}
           size="default"
           style={
             Object {
               "color": "#333333",
-              "height": "5rem",
+              "height": "3.2rem",
               "paddingBottom": "0rem",
               "paddingLeft": "3rem",
               "paddingRight": "3.5rem",
               "paddingTop": "0rem",
-              "width": "40rem",
             }
           }
           value=""
@@ -525,10 +466,6 @@ exports[`AmountInputDemo Component JSON 1`] = `
       className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      style={Object {}}
     >
       <div
         className="c2"
@@ -538,24 +475,19 @@ exports[`AmountInputDemo Component JSON 1`] = `
         onMouseUp={[Function]}
       >
         <span
-          className="c3  c4"
+          className="c3"
           style={Object {}}
         >
           <span
             className=""
-            style={
-              Object {
-                "color": "blue",
-                "fontSize": "1.4rem",
-              }
-            }
+            style={Object {}}
           >
             ¥
           </span>
         </span>
         <input
           autoFocus={false}
-          className="c5"
+          className="c4"
           disabled={true}
           onBlur={[Function]}
           onChange={[Function]}
@@ -566,18 +498,12 @@ exports[`AmountInputDemo Component JSON 1`] = `
           onKeyUp={[Function]}
           placeholder=""
           prefix={
-            <CSSComponent
+            <lugia_css_hoc_f
               themeProps={
                 Object {
                   "onLugia": [Function],
                   "propsConfig": Object {},
-                  "themeConfig": Object {
-                    "__partName": "AmountInputPrefix",
-                    "normal": Object {
-                      "color": "blue",
-                      "fontSize": 14,
-                    },
-                  },
+                  "themeConfig": Object {},
                   "themeState": Object {
                     "disabled": true,
                   },
@@ -585,12 +511,13 @@ exports[`AmountInputDemo Component JSON 1`] = `
               }
             >
               ¥
-            </CSSComponent>
+            </lugia_css_hoc_f>
           }
           readOnly={false}
           size="large"
           style={
             Object {
+              "backgroundColor": "#f2f2f2",
               "borderBottomColor": "#cccccc",
               "borderBottomStyle": "solid",
               "borderBottomWidth": "0.1rem",
@@ -605,12 +532,11 @@ exports[`AmountInputDemo Component JSON 1`] = `
               "borderTopWidth": "0.1rem",
               "color": "#333333",
               "cursor": "not-allowed",
-              "height": "5rem",
+              "height": "4rem",
               "paddingBottom": "0rem",
               "paddingLeft": "3rem",
               "paddingRight": "3.5rem",
               "paddingTop": "0rem",
-              "width": "40rem",
             }
           }
           value=""
@@ -628,10 +554,6 @@ exports[`AmountInputDemo Component JSON 1`] = `
       className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      style={Object {}}
     >
       <div
         className="c2"
@@ -641,7 +563,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
         onMouseUp={[Function]}
       >
         <span
-          className="c3  c4"
+          className="c3"
           style={Object {}}
         >
           <span
@@ -653,7 +575,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
         </span>
         <input
           autoFocus={false}
-          className="c5"
+          className="c4"
           disabled={false}
           onBlur={[Function]}
           onChange={[Function]}
@@ -663,20 +585,20 @@ exports[`AmountInputDemo Component JSON 1`] = `
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           prefix={
-            <CSSComponent
+            <lugia_css_hoc_f
               themeProps={
                 Object {
                   "onLugia": [Function],
                   "propsConfig": Object {},
                   "themeConfig": Object {},
                   "themeState": Object {
-                    "disabled": undefined,
+                    "disabled": false,
                   },
                 }
               }
             >
               ¥
-            </CSSComponent>
+            </lugia_css_hoc_f>
           }
           readOnly={false}
           size="default"
@@ -701,10 +623,6 @@ exports[`AmountInputDemo Component JSON 1`] = `
       className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      style={Object {}}
     >
       <div
         className="c2"
@@ -714,7 +632,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
         onMouseUp={[Function]}
       >
         <span
-          className="c3  c4"
+          className="c3"
           style={Object {}}
         >
           <span
@@ -726,7 +644,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
         </span>
         <input
           autoFocus={false}
-          className="c5"
+          className="c4"
           disabled={false}
           onBlur={[Function]}
           onChange={[Function]}
@@ -736,20 +654,20 @@ exports[`AmountInputDemo Component JSON 1`] = `
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           prefix={
-            <CSSComponent
+            <lugia_css_hoc_f
               themeProps={
                 Object {
                   "onLugia": [Function],
                   "propsConfig": Object {},
                   "themeConfig": Object {},
                   "themeState": Object {
-                    "disabled": undefined,
+                    "disabled": false,
                   },
                 }
               }
             >
               ¥
-            </CSSComponent>
+            </lugia_css_hoc_f>
           }
           readOnly={false}
           size="default"
@@ -766,13 +684,17 @@ exports[`AmountInputDemo Component JSON 1`] = `
           value="123,456"
         />
         <i
-          className="lugia-icon-reminder_close c6  c7"
+          className="lugia-icon-reminder_close   c5"
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
-          style={Object {}}
+          style={
+            Object {
+              "color": "#999999",
+            }
+          }
         />
       </div>
     </span>
@@ -787,10 +709,6 @@ exports[`AmountInputDemo Component JSON 1`] = `
       className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      style={Object {}}
     >
       <div
         className="c2"
@@ -800,7 +718,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
         onMouseUp={[Function]}
       >
         <span
-          className="c3  c4"
+          className="c3"
           style={Object {}}
         >
           <span
@@ -812,7 +730,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
         </span>
         <input
           autoFocus={false}
-          className="c5"
+          className="c4"
           disabled={false}
           onBlur={[Function]}
           onChange={[Function]}
@@ -822,20 +740,20 @@ exports[`AmountInputDemo Component JSON 1`] = `
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           prefix={
-            <CSSComponent
+            <lugia_css_hoc_f
               themeProps={
                 Object {
                   "onLugia": [Function],
                   "propsConfig": Object {},
                   "themeConfig": Object {},
                   "themeState": Object {
-                    "disabled": undefined,
+                    "disabled": false,
                   },
                 }
               }
             >
               ¥
-            </CSSComponent>
+            </lugia_css_hoc_f>
           }
           readOnly={false}
           size="default"
@@ -860,10 +778,6 @@ exports[`AmountInputDemo Component JSON 1`] = `
       className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      style={Object {}}
     >
       <div
         className="c2"
@@ -873,7 +787,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
         onMouseUp={[Function]}
       >
         <span
-          className="c3  c4"
+          className="c3"
           style={Object {}}
         >
           <span
@@ -885,7 +799,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
         </span>
         <input
           autoFocus={false}
-          className="c5"
+          className="c4"
           disabled={false}
           onBlur={[Function]}
           onChange={[Function]}
@@ -895,20 +809,20 @@ exports[`AmountInputDemo Component JSON 1`] = `
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           prefix={
-            <CSSComponent
+            <lugia_css_hoc_f
               themeProps={
                 Object {
                   "onLugia": [Function],
                   "propsConfig": Object {},
                   "themeConfig": Object {},
                   "themeState": Object {
-                    "disabled": undefined,
+                    "disabled": false,
                   },
                 }
               }
             >
               $
-            </CSSComponent>
+            </lugia_css_hoc_f>
           }
           readOnly={false}
           size="default"
@@ -931,7 +845,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
 `;
 
 exports[`AmountInputDemo props: placeholder  1`] = `
-.c4 {
+.c3 {
   line-height: 1.5;
   display: inline-block;
   font-family: inherit;
@@ -959,38 +873,26 @@ exports[`AmountInputDemo props: placeholder  1`] = `
   border-bottom-left-radius: 0.4rem;
 }
 
-.c4::-webkit-input-placeholder {
-  color: #ccc;
+.c3::-webkit-input-placeholder {
+  color: #cccccc;
 }
 
-.c4::-moz-placeholder {
-  color: #ccc;
+.c3::-moz-placeholder {
+  color: #cccccc;
 }
 
-.c4:-ms-input-placeholder {
-  color: #ccc;
+.c3:-ms-input-placeholder {
+  color: #cccccc;
 }
 
-.c4::placeholder {
-  color: #ccc;
+.c3::placeholder {
+  color: #cccccc;
 }
 
 .c1 {
   position: relative;
   display: inline-block;
   outline: none;
-}
-
-.c3 {
-  position: absolute;
-  -webkit-transform: translateY(50%);
-  -ms-transform: translateY(50%);
-  transform: translateY(50%);
-  bottom: 50%;
-  line-height: 1rem;
-  font-size: 1.4em;
-  color: rgba(0,0,0,0.65);
-  left: 1rem;
 }
 
 .c2 {
@@ -1014,10 +916,6 @@ exports[`AmountInputDemo props: placeholder  1`] = `
   className="c0"
   onBlur={[Function]}
   onFocus={[Function]}
-  onMouseDown={[Function]}
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
-  style={Object {}}
 >
   <div
     className="c1"
@@ -1027,7 +925,7 @@ exports[`AmountInputDemo props: placeholder  1`] = `
     onMouseUp={[Function]}
   >
     <span
-      className="c2  c3"
+      className="c2"
       style={Object {}}
     >
       <span
@@ -1039,7 +937,7 @@ exports[`AmountInputDemo props: placeholder  1`] = `
     </span>
     <input
       autoFocus={false}
-      className="c4"
+      className="c3"
       disabled={false}
       onBlur={[Function]}
       onChange={[Function]}
@@ -1050,20 +948,20 @@ exports[`AmountInputDemo props: placeholder  1`] = `
       onKeyUp={[Function]}
       placeholder="请填写内容"
       prefix={
-        <CSSComponent
+        <lugia_css_hoc_f
           themeProps={
             Object {
               "onLugia": [Function],
               "propsConfig": Object {},
               "themeConfig": Object {},
               "themeState": Object {
-                "disabled": undefined,
+                "disabled": false,
               },
             }
           }
         >
           ¥
-        </CSSComponent>
+        </lugia_css_hoc_f>
       }
       readOnly={false}
       size="default"
@@ -1084,7 +982,7 @@ exports[`AmountInputDemo props: placeholder  1`] = `
 `;
 
 exports[`AmountInputDemo props: placeholder  2`] = `
-.c4 {
+.c3 {
   line-height: 1.5;
   display: inline-block;
   font-family: inherit;
@@ -1112,38 +1010,26 @@ exports[`AmountInputDemo props: placeholder  2`] = `
   border-bottom-left-radius: 0.4rem;
 }
 
-.c4::-webkit-input-placeholder {
-  color: #ccc;
+.c3::-webkit-input-placeholder {
+  color: #cccccc;
 }
 
-.c4::-moz-placeholder {
-  color: #ccc;
+.c3::-moz-placeholder {
+  color: #cccccc;
 }
 
-.c4:-ms-input-placeholder {
-  color: #ccc;
+.c3:-ms-input-placeholder {
+  color: #cccccc;
 }
 
-.c4::placeholder {
-  color: #ccc;
+.c3::placeholder {
+  color: #cccccc;
 }
 
 .c1 {
   position: relative;
   display: inline-block;
   outline: none;
-}
-
-.c3 {
-  position: absolute;
-  -webkit-transform: translateY(50%);
-  -ms-transform: translateY(50%);
-  transform: translateY(50%);
-  bottom: 50%;
-  line-height: 1rem;
-  font-size: 1.4em;
-  color: rgba(0,0,0,0.65);
-  left: 1rem;
 }
 
 .c2 {
@@ -1167,10 +1053,6 @@ exports[`AmountInputDemo props: placeholder  2`] = `
   className="c0"
   onBlur={[Function]}
   onFocus={[Function]}
-  onMouseDown={[Function]}
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
-  style={Object {}}
 >
   <div
     className="c1"
@@ -1180,7 +1062,7 @@ exports[`AmountInputDemo props: placeholder  2`] = `
     onMouseUp={[Function]}
   >
     <span
-      className="c2  c3"
+      className="c2"
       style={Object {}}
     >
       <span
@@ -1192,7 +1074,7 @@ exports[`AmountInputDemo props: placeholder  2`] = `
     </span>
     <input
       autoFocus={false}
-      className="c4"
+      className="c3"
       disabled={false}
       onBlur={[Function]}
       onChange={[Function]}
@@ -1203,20 +1085,20 @@ exports[`AmountInputDemo props: placeholder  2`] = `
       onKeyUp={[Function]}
       placeholder=""
       prefix={
-        <CSSComponent
+        <lugia_css_hoc_f
           themeProps={
             Object {
               "onLugia": [Function],
               "propsConfig": Object {},
               "themeConfig": Object {},
               "themeState": Object {
-                "disabled": undefined,
+                "disabled": false,
               },
             }
           }
         >
           ¥
-        </CSSComponent>
+        </lugia_css_hoc_f>
       }
       readOnly={false}
       size="default"

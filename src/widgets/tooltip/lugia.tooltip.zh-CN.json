@@ -100,9 +100,17 @@
           "clicked": [],
           "disabled": []
         },
-        "TooltipMessage": {
-          "name": "文字提示信息文字部分",
-          "desc": "文字提示信息文字部分",
+        "TooltipTitle": {
+          "name": "文字提示信息文字标题部分",
+          "desc": "文字提示信息文字标题部分",
+          "normal": [["fontSize"], ["font"], ["color"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
+        },
+        "TooltipDescription": {
+          "name": "文字提示信息文字描述信息部分",
+          "desc": "文字提示信息文字描述信息部分",
           "normal": [["fontSize"], ["font"], ["color"]],
           "hover": [],
           "clicked": [],
@@ -120,9 +128,17 @@
       "clicked": [],
       "disabled": []
     },
-    "TooltipMessage": {
-      "name": "文字提示信息文字部分",
-      "desc": "文字提示信息文字部分",
+    "TooltipTitle": {
+      "name": "文字提示信息文字标题部分",
+      "desc": "文字提示信息文字标题部分",
+      "normal": [["fontSize"], ["font"], ["color"]],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
+    },
+    "TooltipDescription": {
+      "name": "文字提示信息文字描述信息部分",
+      "desc": "文字提示信息文字描述信息部分",
       "normal": [["fontSize"], ["font"], ["color"]],
       "hover": [],
       "clicked": [],

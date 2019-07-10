@@ -71,7 +71,7 @@ export default () => {
           },
         },
       },
-      TooltipMessage: {
+      TooltipTitle: {
         normal: {
           color: '#4d63ff',
           fontSize: 16,

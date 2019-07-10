@@ -15,11 +15,10 @@ import StaticComponent from '../theme/CSSProvider';
 import ThemeHoc from '../theme-provider/index';
 import colorsFunc from '../css/stateColor';
 import { units } from '@lugia/css';
-import { addPropsConfig } from '../avatar/index';
 import { deepMerge } from '@lugia/object-utils';
 
 const { px2remcss } = units;
-const { blackColor, darkGreyColor, lightGreyColor, defaultColor, themeColor } = colorsFunc();
+const { darkGreyColor, lightGreyColor, defaultColor, themeColor } = colorsFunc();
 const CardOutContainer = CSSComponent({
   tag: 'div',
   className: 'cardOutContainer',
@@ -84,7 +83,8 @@ const Content = CSSComponent({
     ],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const { width, height } = themeMeta;
-      const { type, imageOrientation } = themeProps;
+      const { propsConfig } = themeProps;
+      const { type, imageOrientation } = propsConfig;
       const paddingBottom = 12;
       const paddingTop = 16;
       const paddingLeft =
@@ -190,7 +190,8 @@ const AvatarContainer = CSSComponent({
     ],
     getCSS(themeMeta: Object, themeProps: Object) {
       const { width, height } = themeMeta;
-      const { imageOrientation } = themeProps;
+      const { propsConfig } = themeProps;
+      const { imageOrientation } = propsConfig;
       const theWidth = ObjectUtils.isNumber(width)
         ? px2remcss(width)
         : imageOrientation === 'horizontal'
@@ -211,46 +212,6 @@ const AvatarContainer = CSSComponent({
   `,
 });
 
-const CardAvatar: Object = ThemeHoc(
-  CSSComponent({
-    extend: Avatar,
-    className: 'CardAvatar',
-    normal: {
-      selectNames: [
-        ['width'],
-        ['height'],
-        ['border'],
-        ['borderRadius'],
-        ['margin'],
-        ['padding'],
-        ['boxShadow'],
-        ['opacity'],
-      ],
-      getThemeMeta(themeMeta: Object, themeProps: Object) {
-        const { imageOrientation } = themeProps;
-        const left = imageOrientation === 'horizontal' ? 20 : 0;
-        return {
-          padding: {
-            top: 20,
-            left,
-            right: left,
-            bottom: 20,
-          },
-        };
-      },
-      defaultTheme: {
-        width: 70,
-        height: 70,
-      },
-    },
-    css: css`
-      border-radius: 50%;
-      background-color: transparent;
-    `,
-  }),
-  'cardAvatar'
-);
-
 const BaseText = CSSComponent({
   tag: 'div',
   className: 'CardBaseText',
@@ -267,7 +228,8 @@ const BaseText = CSSComponent({
       ['opacity'],
     ],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
-      const { imageOrientation, type } = themeProps;
+      const { propsConfig } = themeProps;
+      const { imageOrientation, type } = propsConfig;
       const padding =
         type === 'tip'
           ? 30
@@ -304,9 +266,17 @@ const Title = CSSComponent({
       const { propsConfig } = themeProps;
       const { type } = propsConfig;
       const weight = type === 'tip' ? 700 : 500;
+      const left = type === 'tip' ? 0 : 10;
+
       return {
         font: {
           weight,
+        },
+        padding: {
+          top: 4,
+          right: 10,
+          bottom: 8,
+          left,
         },
       };
     },
@@ -318,9 +288,6 @@ const Title = CSSComponent({
       return `text-align:${textAlign};flex-direction:${flexDirection}`;
     },
     defaultTheme: {
-      padding: {
-        bottom: 8,
-      },
       fontSize: 16,
     },
   },
@@ -357,6 +324,8 @@ const Description = CSSComponent({
       color: darkGreyColor,
       padding: {
         top: 4,
+        left: 10,
+        right: 10,
       },
     },
   },
@@ -397,26 +366,21 @@ class Card extends React.Component<CardProps, CardState> {
       case 'avatar':
         const avatarWidth = imageOrientation === 'horizontal' ? 320 : 150;
         const avatarHeight = imageOrientation === 'horizontal' ? 116 : 190;
-        const avatarThemeProps = deepMerge(
-          { themeConfig: { normal: { width: avatarWidth, height: avatarHeight } } },
-          this.props.getPartOfThemeProps('CardContainer')
-        );
+        const avatarThemeProps = {
+          themeConfig: { normal: { width: avatarWidth, height: avatarHeight } },
+        };
         resultTheme = avatarThemeProps;
         break;
       case 'image':
         const imageWidth = imageOrientation === 'horizontal' ? 320 : 200;
         const imageHeight = imageOrientation === 'horizontal' ? 112 : 230;
-        const imageThemeProps = deepMerge(
-          { themeConfig: { normal: { width: imageWidth, height: imageHeight } } },
-          this.props.getPartOfThemeProps('CardContainer')
-        );
+        const imageThemeProps = {
+          themeConfig: { normal: { width: imageWidth, height: imageHeight } },
+        };
         resultTheme = imageThemeProps;
         break;
       case 'combo':
-        const comboThemeProps = deepMerge(
-          { themeConfig: { normal: { width: 200, height: 220 } } },
-          this.props.getPartOfThemeProps('CardContainer')
-        );
+        const comboThemeProps = { themeConfig: { normal: { width: 200, height: 220 } } };
         resultTheme = comboThemeProps;
         break;
       case 'simple':
@@ -428,10 +392,15 @@ class Card extends React.Component<CardProps, CardState> {
         resultTheme = simpleThemeProps;
         break;
     }
-    resultTheme = addPropsConfig(resultTheme, { type, imageOrientation });
-    const cardContentTheme = addPropsConfig(this.props.getPartOfThemeProps('CardContent'), {
-      type,
-      imageOrientation,
+    resultTheme = deepMerge(
+      resultTheme,
+      this.props.getPartOfThemeProps('CardContainer', { props: { type, imageOrientation } })
+    );
+    const cardContentTheme = this.props.getPartOfThemeProps('CardContent', {
+      props: {
+        type,
+        imageOrientation,
+      },
     });
 
     return (
@@ -463,18 +432,16 @@ class Card extends React.Component<CardProps, CardState> {
   getImageContainer() {
     const { type, imageOrientation } = this.props;
 
-    const avatarContainerThemeProps = addPropsConfig(
-      this.props.getPartOfThemeProps('CardAvatarContainer'),
-      {
+    const avatarContainerThemeProps = this.props.getPartOfThemeProps('CardAvatarContainer', {
+      props: {
         imageOrientation,
-      }
-    );
-    const imageContainerThemeProps = addPropsConfig(
-      this.props.getPartOfThemeProps('CardImageContainer'),
-      {
+      },
+    });
+    const imageContainerThemeProps = this.props.getPartOfThemeProps('CardImageContainer', {
+      props: {
         imageOrientation,
-      }
-    );
+      },
+    });
 
     if (type === 'avatar')
       return (
@@ -529,14 +496,44 @@ class Card extends React.Component<CardProps, CardState> {
   }
   getAvatar() {
     const { avatar, imageOrientation } = this.props;
-    const { theme, viewClass } = this.props.getPartOfThemeHocProps('SrcAvatar');
+    const { theme: avatarTheme, viewClass } = this.props.getPartOfThemeHocProps('SrcAvatar');
+
+    const newTheme = deepMerge(
+      {
+        [viewClass]: {
+          normal: {
+            getCSS() {
+              return ` border-radius: 50%;
+      background-color: transparent;`;
+            },
+            getThemeMeta(themeMeta: Object, themeProps: Object) {
+              const { propsConfig } = themeProps;
+              const { imageOrientation } = propsConfig;
+              const left = imageOrientation === 'horizontal' ? 20 : 0;
+              return {
+                padding: {
+                  top: 20,
+                  left,
+                  right: left,
+                  bottom: 20,
+                },
+                width: 70,
+                height: 70,
+              };
+            },
+          },
+        },
+      },
+      avatarTheme
+    );
+
     if (ObjectUtils.isString(avatar)) {
       return (
-        <CardAvatar
+        <Avatar
           viewClass={viewClass}
-          theme={theme}
+          theme={newTheme}
           shape={'circle'}
-          imageOrientation={imageOrientation}
+          propsConfig={{ imageOrientation }}
           src={avatar}
         />
       );

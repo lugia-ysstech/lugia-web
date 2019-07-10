@@ -8,7 +8,7 @@ exports[` Badge css 1`] = `
   background: #f22735;
   height: 1.4rem;
   border-radius: 0.8rem;
-  line-height: 1.4em;
+  line-height: 1.4rem;
   text-align: center;
   padding: 0 0.4rem;
   font-weight: normal;
@@ -52,7 +52,7 @@ exports[` Badge css 1`] = `
   display: inline-block;
 }
 
-.c12 {
+.c11 {
   -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   white-space: nowrap;
@@ -70,26 +70,6 @@ exports[` Badge css 1`] = `
   box-sizing: border-box;
   margin: 0;
   height: 1.4rem;
-}
-
-.c11 {
-  box-sizing: border-box;
-  position: absolute;
-  -webkit-transform: translateX(50%);
-  -ms-transform: translateX(50%);
-  transform: translateX(50%);
-  -webkit-transform-origin: 100%;
-  -ms-transform-origin: 100%;
-  transform-origin: 100%;
-  z-index: 10;
-  border-radius: 100%;
-  z-index: 10;
-  font-size: 1rem;
-  width: 1rem;
-  height: 1rem;
-  color: #ffffff;
-  box-shadow: 0px 0px 0px 1px #fff;
-  background-color: #f22735;
 }
 
 .c10 {
@@ -153,7 +133,7 @@ exports[` Badge css 1`] = `
   margin-left: 0%;
 }
 
-.c13 {
+.c12 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -201,13 +181,7 @@ exports[` Badge css 1`] = `
           />
           <div
             className=""
-            style={
-              Object {
-                "position": "absolute",
-                "right": "-0.5rem",
-                "top": "-0.5rem",
-              }
-            }
+            style={Object {}}
           >
             <span
               className="c5"
@@ -301,13 +275,7 @@ exports[` Badge css 1`] = `
           />
           <div
             className=""
-            style={
-              Object {
-                "position": "absolute",
-                "right": "-0.5rem",
-                "top": "-0.5rem",
-              }
-            }
+            style={Object {}}
           >
             <span
               className="c5"
@@ -473,7 +441,9 @@ exports[` Badge css 1`] = `
             className="c4"
           />
           <sup
-            className="c10  c11"
+            className="c10"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
             style={Object {}}
           />
         </span>
@@ -524,13 +494,7 @@ exports[` Badge css 1`] = `
           />
           <div
             className=""
-            style={
-              Object {
-                "position": "absolute",
-                "right": "-0.5rem",
-                "top": "-0.5rem",
-              }
-            }
+            style={Object {}}
           >
             <span
               className="c5"
@@ -538,7 +502,7 @@ exports[` Badge css 1`] = `
               style={Object {}}
             >
               <span
-                className="c12"
+                className="c11"
                 style={Object {}}
                 y={-0}
               >
@@ -624,13 +588,7 @@ exports[` Badge css 1`] = `
           />
           <div
             className=""
-            style={
-              Object {
-                "position": "absolute",
-                "right": "-0.5rem",
-                "top": "-0.5rem",
-              }
-            }
+            style={Object {}}
           >
             <span
               className="c5"
@@ -638,7 +596,7 @@ exports[` Badge css 1`] = `
               style={Object {}}
             >
               <span
-                className="c12"
+                className="c11"
                 style={Object {}}
                 y={-0}
               >
@@ -726,17 +684,10 @@ exports[` Badge css 1`] = `
               className="c4"
             />
             <sup
-              className="c10  c11"
-              style={
-                Object {
-                  "backgroundColor": "orange",
-                  "height": "2rem",
-                  "position": "absolute",
-                  "right": "0.6rem",
-                  "top": "-0.5rem",
-                  "width": "2rem",
-                }
-              }
+              className="c10"
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              style={Object {}}
             />
           </span>
         </a>
@@ -769,15 +720,10 @@ exports[` Badge css 1`] = `
             className="c4"
           />
           <sup
-            className="c10  c11"
-            style={
-              Object {
-                "backgroundColor": "green",
-                "position": "absolute",
-                "right": "0.2rem",
-                "top": "-0.5rem",
-              }
-            }
+            className="c10"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            style={Object {}}
           />
         </span>
       </div>
@@ -797,15 +743,10 @@ exports[` Badge css 1`] = `
             className="c4"
           />
           <sup
-            className="c10  c11"
-            style={
-              Object {
-                "backgroundColor": "purple",
-                "position": "absolute",
-                "right": "0.2rem",
-                "top": "-0.5rem",
-              }
-            }
+            className="c10"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            style={Object {}}
           />
         </span>
       </div>
@@ -825,15 +766,10 @@ exports[` Badge css 1`] = `
             className="c4"
           />
           <sup
-            className="c10  c11"
-            style={
-              Object {
-                "backgroundColor": "yellow",
-                "position": "absolute",
-                "right": "0.2rem",
-                "top": "-0.5rem",
-              }
-            }
+            className="c10"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            style={Object {}}
           />
         </span>
       </div>
@@ -853,15 +789,10 @@ exports[` Badge css 1`] = `
             className="c4"
           />
           <sup
-            className="c10  c11"
-            style={
-              Object {
-                "backgroundColor": "blue",
-                "position": "absolute",
-                "right": "0.2rem",
-                "top": "-0.5rem",
-              }
-            }
+            className="c10"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            style={Object {}}
           />
         </span>
       </div>
@@ -894,13 +825,7 @@ exports[` Badge css 1`] = `
           />
           <div
             className=""
-            style={
-              Object {
-                "position": "absolute",
-                "right": "-0.5rem",
-                "top": "-0.5rem",
-              }
-            }
+            style={Object {}}
           >
             <span
               className="c5"
@@ -908,7 +833,7 @@ exports[` Badge css 1`] = `
               style={Object {}}
             >
               <span
-                className="c12"
+                className="c11"
                 style={Object {}}
                 y={-0}
               >
@@ -977,7 +902,7 @@ exports[` Badge css 1`] = `
           </div>
         </span>
         <i
-          className="lugia-icon-reminder_plus_square_o   c13"
+          className="lugia-icon-reminder_plus_square_o   c12"
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
@@ -986,7 +911,7 @@ exports[` Badge css 1`] = `
           style={Object {}}
         />
         <i
-          className="lugia-icon-reminder_minus_square_o   c13"
+          className="lugia-icon-reminder_minus_square_o   c12"
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}

@@ -26,7 +26,6 @@ exports[`popover Demo Component JSON 1`] = `
   padding: 0 1.2857142857142858em;
   font-size: 1.4rem;
   border-radius: 0.28571428571428575em;
-  width: 5.714285714285714em;
 }
 
 .c1:hover {
@@ -42,49 +41,6 @@ exports[`popover Demo Component JSON 1`] = `
 }
 
 .c1:active {
-  background-color: #3e4fcc;
-}
-
-.c5 {
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  color: #ffffff;
-  background-color: #4d63ff;
-  border: none;
-  padding: 0 1.2857142857142858em;
-  font-size: 1.4rem;
-  border-radius: 0.28571428571428575em;
-}
-
-.c5:hover {
-  color: #ffffff;
-  border: none;
-  background-color: #8090ff;
-}
-
-.c5:focus {
-  color: #ffffff;
-  border: none;
-  background-color: #8090ff;
-}
-
-.c5:active {
   background-color: #3e4fcc;
 }
 
@@ -141,22 +97,6 @@ exports[`popover Demo Component JSON 1`] = `
   position: relative;
   display: inline-block;
   outline: none;
-  border-top-width: 0rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
 }
 
 .c0 {
@@ -439,7 +379,6 @@ exports[`popover Demo Component JSON 1`] = `
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     onMouseUp={[Function]}
-    style={Object {}}
   >
     <input
       autoFocus={false}
@@ -468,7 +407,7 @@ exports[`popover Demo Component JSON 1`] = `
     />
   </div>
   <button
-    className="c5"
+    className="c1"
     onClick={[Function]}
     onMouseDown={[Function]}
     onMouseEnter={[Function]}
@@ -487,7 +426,7 @@ exports[`popover Demo Component JSON 1`] = `
     </span>
   </button>
   <button
-    className="c5"
+    className="c1"
     onClick={[Function]}
     onMouseDown={[Function]}
     onMouseEnter={[Function]}

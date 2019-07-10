@@ -6,31 +6,59 @@
  */
 import '../common/shirm';
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import Widget from '../consts/index';
 
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import ThemeProvider from '../theme-provider';
-import { getFlexDirection, getWidth } from '../css/steps';
 import type { AlignType, StepType, OrientationType, SizeType } from '../css/steps';
 import Step from './step';
 import { getAttributeFromObject } from '../common/ObjectUtils';
+import CSSComponent, { css } from '@lugia/theme-css-hoc';
+import { addPropsConfig } from '../avatar';
+import { units } from '@lugia/css';
 
-const OutContainer = styled.div`
-  display: inline-block;
-  position: relative;
-  ${getWidth}
-`;
-OutContainer.displayName = Widget.TabsContainer;
+const { px2remcss } = units;
 
-const HStepsOutContainer = styled.div`
-  font-variant: tabular-nums;
-  color: rgba(0, 0, 0, 0.65);
-  box-sizing: border-box;
-  list-style: none;
-  display: flex;
-  ${getFlexDirection};
-`;
+const OutContainer = CSSComponent({
+  tag: 'div',
+  className: 'StepOutContainer',
+  normal: {
+    selectNames: [['width']],
+    getThemeMeta(themeMeta, themeProps) {
+      const { width } = themeMeta;
+      const { propsConfig } = themeProps;
+      const { orientation } = propsConfig;
+      const theWidth =
+        orientation === 'vertical' ? '' : width && width > 0 ? px2remcss(width) : px2remcss(500);
+      return { width: theWidth };
+    },
+  },
+  css: css`
+    display: inline-block;
+    position: relative;
+    font-size: 1.2rem;
+  `,
+});
+
+const HStepsOutContainer = CSSComponent({
+  tag: 'div',
+  className: 'HStepsOutContainer',
+  normal: {
+    selectNames: [['width']],
+    getCSS(themeMeta, themeProps) {
+      const { propsConfig } = themeProps;
+      const { orientation } = propsConfig;
+      const direction = orientation === 'horizontal' ? 'row' : 'column';
+      return ` flex-direction: ${direction};`;
+    },
+  },
+  css: css`
+    font-variant: tabular-nums;
+    box-sizing: border-box;
+    list-style: none;
+    display: flex;
+  `,
+});
 
 type StepsState = {};
 
@@ -44,6 +72,7 @@ type StepsProps = {
   desAlign: AlignType,
   data: Array<Object>,
   defaultData: Array<Object>,
+  themeProps: Object,
 };
 export const defaultData = [
   { title: 'step1', stepStatus: 'finish' },
@@ -76,19 +105,24 @@ class Steps extends Component<StepsProps, StepsState> {
   static getDerivedStateFromProps(props: StepsProps, state: StepsState) {}
 
   render() {
-    const { getTheme, orientation } = this.props;
-
+    const { themeProps, orientation } = this.props;
+    const theThemeProps = addPropsConfig(themeProps, { orientation });
     return (
-      <OutContainer theme={getTheme()} orientation={orientation}>
+      <OutContainer
+        themeProps={theThemeProps}
+        orientation={orientation}
+        viewClass={'stepsContainer'}
+      >
         {this.getHSteps()}
       </OutContainer>
     );
   }
 
   getHSteps() {
-    const { orientation, stepType } = this.props;
+    const { orientation, stepType, themeProps } = this.props;
+    const theThemeProps = addPropsConfig(themeProps, { orientation });
     return (
-      <HStepsOutContainer orientation={orientation} stepType={stepType}>
+      <HStepsOutContainer orientation={orientation} stepType={stepType} themeProps={theThemeProps}>
         {this.getChildren()}
       </HStepsOutContainer>
     );

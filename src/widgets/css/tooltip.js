@@ -21,6 +21,8 @@ export type TooltipProps = {
   action: Array<string>,
   children: React.Node,
   title: React.Node,
+  content: React.Node,
+  description: React.Node,
   getTheme: Function,
   onVisibleChange: Function,
   size: ToolTipSize,

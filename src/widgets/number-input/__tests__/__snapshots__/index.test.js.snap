@@ -1,14 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
-.c9 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c2 {
   line-height: 1.5;
   display: inline-block;
@@ -38,37 +30,25 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
 }
 
 .c2::-webkit-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c2::-moz-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c2:-ms-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c2::placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1 {
   position: relative;
   display: inline-block;
   outline: none;
-}
-
-.c4 {
-  position: absolute;
-  -webkit-transform: translateY(50%);
-  -ms-transform: translateY(50%);
-  transform: translateY(50%);
-  bottom: 50%;
-  line-height: 1rem;
-  font-size: 1.4em;
-  color: rgba(0,0,0,0.65);
-  right: 1rem;
 }
 
 .c3 {
@@ -83,20 +63,7 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
   right: 1rem;
 }
 
-.c8 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-.c5 {
+.c4 {
   border-left: 0.1rem solid #d9d9d9;
   position: absolute;
   height: 96%;
@@ -108,34 +75,6 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
   box-sizing: border-box;
 }
 
-.c11 {
-  text-align: center;
-  color: rgba(0,0,0,0.45);
-  position: relative;
-  -webkit-transition: all pointer 0.1s linear;
-  transition: all pointer 0.1s linear;
-  display: block;
-  width: 100%;
-  font-weight: bold;
-  border-top: 0.1rem solid #d9d9d9;
-  height: 50%;
-  cursor: pointer;
-}
-
-.c10 {
-  text-align: center;
-  color: rgba(0,0,0,0.45);
-  position: relative;
-  -webkit-transition: all pointer 0.1s linear;
-  transition: all pointer 0.1s linear;
-  display: block;
-  width: 100%;
-  font-weight: bold;
-  border-top: 0.1rem solid #d9d9d9;
-  height: 50%;
-  cursor: pointer;
-}
-
 .c7 {
   text-align: center;
   color: rgba(0,0,0,0.45);
@@ -145,11 +84,12 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
   display: block;
   width: 100%;
   font-weight: bold;
+  border-top: 0.1rem solid #d9d9d9;
   height: 50%;
   cursor: pointer;
 }
 
-.c6 {
+.c5 {
   text-align: center;
   color: rgba(0,0,0,0.45);
   position: relative;
@@ -165,6 +105,38 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
 .c0 {
   position: relative;
   display: inline-block;
+}
+
+.c6 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.c8 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 <div
@@ -204,14 +176,14 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
       value={10}
     />
     <span
-      className="c3  c4"
+      className="c3"
       style={Object {}}
     >
       <div />
     </span>
   </div>
   <div
-    className="c5"
+    className="c4"
     disabled={false}
     onMouseDown={[Function]}
     onMouseEnter={[Function]}
@@ -219,13 +191,13 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
     onMouseUp={[Function]}
     style={
       Object {
-        "opacity": 0.01,
+        "opacity": 0.001,
         "width": "2.2rem",
       }
     }
   >
     <span
-      className="c6  c7"
+      className="c5"
       disabled={false}
       onClick={[Function]}
       onMouseDown={[Function]}
@@ -235,7 +207,7 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
       style={Object {}}
     >
       <i
-        className="lugia-icon-direction_up c8  c9"
+        className="lugia-icon-direction_up   c6"
         disabled={false}
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -245,12 +217,13 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
         style={
           Object {
             "cursor": "pointer",
+            "fontSize": "2rem",
           }
         }
       />
     </span>
     <span
-      className="c10  c11"
+      className="c7"
       disabled={false}
       onClick={[Function]}
       onMouseDown={[Function]}
@@ -260,7 +233,7 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
       style={Object {}}
     >
       <i
-        className="lugia-icon-direction_down c8  c9"
+        className="lugia-icon-direction_down   c8"
         disabled={false}
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -270,6 +243,7 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
         style={
           Object {
             "cursor": "pointer",
+            "fontSize": "2rem",
           }
         }
       />
@@ -279,14 +253,6 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
 `;
 
 exports[`NumberInput props: null 1`] = `
-.c9 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c2 {
   line-height: 1.5;
   display: inline-block;
@@ -316,53 +282,25 @@ exports[`NumberInput props: null 1`] = `
 }
 
 .c2::-webkit-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c2::-moz-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c2:-ms-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c2::placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1 {
   position: relative;
   display: inline-block;
   outline: none;
-  border-top-width: 0rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
-}
-
-.c4 {
-  position: absolute;
-  -webkit-transform: translateY(50%);
-  -ms-transform: translateY(50%);
-  transform: translateY(50%);
-  bottom: 50%;
-  line-height: 1rem;
-  font-size: 1.4em;
-  color: rgba(0,0,0,0.65);
-  right: 1rem;
 }
 
 .c3 {
@@ -377,20 +315,7 @@ exports[`NumberInput props: null 1`] = `
   right: 1rem;
 }
 
-.c8 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-.c5 {
+.c4 {
   border-left: 0.1rem solid #d9d9d9;
   position: absolute;
   height: 96%;
@@ -402,34 +327,6 @@ exports[`NumberInput props: null 1`] = `
   box-sizing: border-box;
 }
 
-.c11 {
-  text-align: center;
-  color: rgba(0,0,0,0.45);
-  position: relative;
-  -webkit-transition: all pointer 0.1s linear;
-  transition: all pointer 0.1s linear;
-  display: block;
-  width: 100%;
-  font-weight: bold;
-  border-top: 0.1rem solid #d9d9d9;
-  height: 50%;
-  cursor: pointer;
-}
-
-.c10 {
-  text-align: center;
-  color: rgba(0,0,0,0.45);
-  position: relative;
-  -webkit-transition: all pointer 0.1s linear;
-  transition: all pointer 0.1s linear;
-  display: block;
-  width: 100%;
-  font-weight: bold;
-  border-top: 0.1rem solid #d9d9d9;
-  height: 50%;
-  cursor: pointer;
-}
-
 .c7 {
   text-align: center;
   color: rgba(0,0,0,0.45);
@@ -439,11 +336,12 @@ exports[`NumberInput props: null 1`] = `
   display: block;
   width: 100%;
   font-weight: bold;
+  border-top: 0.1rem solid #d9d9d9;
   height: 50%;
   cursor: pointer;
 }
 
-.c6 {
+.c5 {
   text-align: center;
   color: rgba(0,0,0,0.45);
   position: relative;
@@ -461,11 +359,42 @@ exports[`NumberInput props: null 1`] = `
   display: inline-block;
 }
 
+.c6 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.c8 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
 <div
   className="c0"
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
-  style={Object {}}
 >
   <div
     className="c1"
@@ -473,7 +402,6 @@ exports[`NumberInput props: null 1`] = `
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     onMouseUp={[Function]}
-    style={Object {}}
   >
     <input
       autoFocus={false}
@@ -500,14 +428,14 @@ exports[`NumberInput props: null 1`] = `
       value={10}
     />
     <span
-      className="c3  c4"
+      className="c3"
       style={Object {}}
     >
       <div />
     </span>
   </div>
   <div
-    className="c5"
+    className="c4"
     disabled={false}
     onMouseDown={[Function]}
     onMouseEnter={[Function]}
@@ -515,13 +443,13 @@ exports[`NumberInput props: null 1`] = `
     onMouseUp={[Function]}
     style={
       Object {
-        "opacity": 0.01,
+        "opacity": 0.001,
         "width": "2.2rem",
       }
     }
   >
     <span
-      className="c6  c7"
+      className="c5"
       disabled={false}
       onClick={[Function]}
       onMouseDown={[Function]}
@@ -531,7 +459,7 @@ exports[`NumberInput props: null 1`] = `
       style={Object {}}
     >
       <i
-        className="lugia-icon-direction_up c8  c9"
+        className="lugia-icon-direction_up   c6"
         disabled={false}
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -541,12 +469,13 @@ exports[`NumberInput props: null 1`] = `
         style={
           Object {
             "cursor": "pointer",
+            "fontSize": "2rem",
           }
         }
       />
     </span>
     <span
-      className="c10  c11"
+      className="c7"
       disabled={false}
       onClick={[Function]}
       onMouseDown={[Function]}
@@ -556,7 +485,7 @@ exports[`NumberInput props: null 1`] = `
       style={Object {}}
     >
       <i
-        className="lugia-icon-direction_down c8  c9"
+        className="lugia-icon-direction_down   c8"
         disabled={false}
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -566,6 +495,7 @@ exports[`NumberInput props: null 1`] = `
         style={
           Object {
             "cursor": "pointer",
+            "fontSize": "2rem",
           }
         }
       />
@@ -575,14 +505,6 @@ exports[`NumberInput props: null 1`] = `
 `;
 
 exports[`NumberInput props: placeholder  1`] = `
-.c9 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c2 {
   line-height: 1.5;
   display: inline-block;
@@ -612,37 +534,25 @@ exports[`NumberInput props: placeholder  1`] = `
 }
 
 .c2::-webkit-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c2::-moz-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c2:-ms-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c2::placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1 {
   position: relative;
   display: inline-block;
   outline: none;
-}
-
-.c4 {
-  position: absolute;
-  -webkit-transform: translateY(50%);
-  -ms-transform: translateY(50%);
-  transform: translateY(50%);
-  bottom: 50%;
-  line-height: 1rem;
-  font-size: 1.4em;
-  color: rgba(0,0,0,0.65);
-  right: 1rem;
 }
 
 .c3 {
@@ -657,20 +567,7 @@ exports[`NumberInput props: placeholder  1`] = `
   right: 1rem;
 }
 
-.c8 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-.c5 {
+.c4 {
   border-left: 0.1rem solid #d9d9d9;
   position: absolute;
   height: 96%;
@@ -682,34 +579,6 @@ exports[`NumberInput props: placeholder  1`] = `
   box-sizing: border-box;
 }
 
-.c11 {
-  text-align: center;
-  color: rgba(0,0,0,0.45);
-  position: relative;
-  -webkit-transition: all pointer 0.1s linear;
-  transition: all pointer 0.1s linear;
-  display: block;
-  width: 100%;
-  font-weight: bold;
-  border-top: 0.1rem solid #d9d9d9;
-  height: 50%;
-  cursor: pointer;
-}
-
-.c10 {
-  text-align: center;
-  color: rgba(0,0,0,0.45);
-  position: relative;
-  -webkit-transition: all pointer 0.1s linear;
-  transition: all pointer 0.1s linear;
-  display: block;
-  width: 100%;
-  font-weight: bold;
-  border-top: 0.1rem solid #d9d9d9;
-  height: 50%;
-  cursor: pointer;
-}
-
 .c7 {
   text-align: center;
   color: rgba(0,0,0,0.45);
@@ -719,11 +588,12 @@ exports[`NumberInput props: placeholder  1`] = `
   display: block;
   width: 100%;
   font-weight: bold;
+  border-top: 0.1rem solid #d9d9d9;
   height: 50%;
   cursor: pointer;
 }
 
-.c6 {
+.c5 {
   text-align: center;
   color: rgba(0,0,0,0.45);
   position: relative;
@@ -739,6 +609,38 @@ exports[`NumberInput props: placeholder  1`] = `
 .c0 {
   position: relative;
   display: inline-block;
+}
+
+.c6 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.c8 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 <div
@@ -779,14 +681,14 @@ exports[`NumberInput props: placeholder  1`] = `
       value={10}
     />
     <span
-      className="c3  c4"
+      className="c3"
       style={Object {}}
     >
       <div />
     </span>
   </div>
   <div
-    className="c5"
+    className="c4"
     disabled={false}
     onMouseDown={[Function]}
     onMouseEnter={[Function]}
@@ -794,13 +696,13 @@ exports[`NumberInput props: placeholder  1`] = `
     onMouseUp={[Function]}
     style={
       Object {
-        "opacity": 0.01,
+        "opacity": 0.001,
         "width": "2.2rem",
       }
     }
   >
     <span
-      className="c6  c7"
+      className="c5"
       disabled={false}
       onClick={[Function]}
       onMouseDown={[Function]}
@@ -810,7 +712,7 @@ exports[`NumberInput props: placeholder  1`] = `
       style={Object {}}
     >
       <i
-        className="lugia-icon-direction_up c8  c9"
+        className="lugia-icon-direction_up   c6"
         disabled={false}
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -820,12 +722,13 @@ exports[`NumberInput props: placeholder  1`] = `
         style={
           Object {
             "cursor": "pointer",
+            "fontSize": "2rem",
           }
         }
       />
     </span>
     <span
-      className="c10  c11"
+      className="c7"
       disabled={false}
       onClick={[Function]}
       onMouseDown={[Function]}
@@ -835,7 +738,7 @@ exports[`NumberInput props: placeholder  1`] = `
       style={Object {}}
     >
       <i
-        className="lugia-icon-direction_down c8  c9"
+        className="lugia-icon-direction_down   c8"
         disabled={false}
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -845,6 +748,7 @@ exports[`NumberInput props: placeholder  1`] = `
         style={
           Object {
             "cursor": "pointer",
+            "fontSize": "2rem",
           }
         }
       />
@@ -854,14 +758,6 @@ exports[`NumberInput props: placeholder  1`] = `
 `;
 
 exports[`NumberInput props: placeholder  2`] = `
-.c9 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c2 {
   line-height: 1.5;
   display: inline-block;
@@ -891,37 +787,25 @@ exports[`NumberInput props: placeholder  2`] = `
 }
 
 .c2::-webkit-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c2::-moz-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c2:-ms-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c2::placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1 {
   position: relative;
   display: inline-block;
   outline: none;
-}
-
-.c4 {
-  position: absolute;
-  -webkit-transform: translateY(50%);
-  -ms-transform: translateY(50%);
-  transform: translateY(50%);
-  bottom: 50%;
-  line-height: 1rem;
-  font-size: 1.4em;
-  color: rgba(0,0,0,0.65);
-  right: 1rem;
 }
 
 .c3 {
@@ -936,20 +820,7 @@ exports[`NumberInput props: placeholder  2`] = `
   right: 1rem;
 }
 
-.c8 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-.c5 {
+.c4 {
   border-left: 0.1rem solid #d9d9d9;
   position: absolute;
   height: 96%;
@@ -961,34 +832,6 @@ exports[`NumberInput props: placeholder  2`] = `
   box-sizing: border-box;
 }
 
-.c11 {
-  text-align: center;
-  color: rgba(0,0,0,0.45);
-  position: relative;
-  -webkit-transition: all pointer 0.1s linear;
-  transition: all pointer 0.1s linear;
-  display: block;
-  width: 100%;
-  font-weight: bold;
-  border-top: 0.1rem solid #d9d9d9;
-  height: 50%;
-  cursor: pointer;
-}
-
-.c10 {
-  text-align: center;
-  color: rgba(0,0,0,0.45);
-  position: relative;
-  -webkit-transition: all pointer 0.1s linear;
-  transition: all pointer 0.1s linear;
-  display: block;
-  width: 100%;
-  font-weight: bold;
-  border-top: 0.1rem solid #d9d9d9;
-  height: 50%;
-  cursor: pointer;
-}
-
 .c7 {
   text-align: center;
   color: rgba(0,0,0,0.45);
@@ -998,11 +841,12 @@ exports[`NumberInput props: placeholder  2`] = `
   display: block;
   width: 100%;
   font-weight: bold;
+  border-top: 0.1rem solid #d9d9d9;
   height: 50%;
   cursor: pointer;
 }
 
-.c6 {
+.c5 {
   text-align: center;
   color: rgba(0,0,0,0.45);
   position: relative;
@@ -1018,6 +862,38 @@ exports[`NumberInput props: placeholder  2`] = `
 .c0 {
   position: relative;
   display: inline-block;
+}
+
+.c6 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.c8 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 <div
@@ -1058,14 +934,14 @@ exports[`NumberInput props: placeholder  2`] = `
       value={10}
     />
     <span
-      className="c3  c4"
+      className="c3"
       style={Object {}}
     >
       <div />
     </span>
   </div>
   <div
-    className="c5"
+    className="c4"
     disabled={false}
     onMouseDown={[Function]}
     onMouseEnter={[Function]}
@@ -1073,13 +949,13 @@ exports[`NumberInput props: placeholder  2`] = `
     onMouseUp={[Function]}
     style={
       Object {
-        "opacity": 0.01,
+        "opacity": 0.001,
         "width": "2.2rem",
       }
     }
   >
     <span
-      className="c6  c7"
+      className="c5"
       disabled={false}
       onClick={[Function]}
       onMouseDown={[Function]}
@@ -1089,7 +965,7 @@ exports[`NumberInput props: placeholder  2`] = `
       style={Object {}}
     >
       <i
-        className="lugia-icon-direction_up c8  c9"
+        className="lugia-icon-direction_up   c6"
         disabled={false}
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -1099,12 +975,13 @@ exports[`NumberInput props: placeholder  2`] = `
         style={
           Object {
             "cursor": "pointer",
+            "fontSize": "2rem",
           }
         }
       />
     </span>
     <span
-      className="c10  c11"
+      className="c7"
       disabled={false}
       onClick={[Function]}
       onMouseDown={[Function]}
@@ -1114,7 +991,7 @@ exports[`NumberInput props: placeholder  2`] = `
       style={Object {}}
     >
       <i
-        className="lugia-icon-direction_down c8  c9"
+        className="lugia-icon-direction_down   c8"
         disabled={false}
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -1124,6 +1001,7 @@ exports[`NumberInput props: placeholder  2`] = `
         style={
           Object {
             "cursor": "pointer",
+            "fontSize": "2rem",
           }
         }
       />
@@ -1133,14 +1011,6 @@ exports[`NumberInput props: placeholder  2`] = `
 `;
 
 exports[`NumberInput props: size 1`] = `
-.c9 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c2 {
   line-height: 1.5;
   display: inline-block;
@@ -1170,37 +1040,25 @@ exports[`NumberInput props: size 1`] = `
 }
 
 .c2::-webkit-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c2::-moz-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c2:-ms-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c2::placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1 {
   position: relative;
   display: inline-block;
   outline: none;
-}
-
-.c4 {
-  position: absolute;
-  -webkit-transform: translateY(50%);
-  -ms-transform: translateY(50%);
-  transform: translateY(50%);
-  bottom: 50%;
-  line-height: 1rem;
-  font-size: 1.4em;
-  color: rgba(0,0,0,0.65);
-  right: 1rem;
 }
 
 .c3 {
@@ -1215,20 +1073,7 @@ exports[`NumberInput props: size 1`] = `
   right: 1rem;
 }
 
-.c8 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-.c5 {
+.c4 {
   border-left: 0.1rem solid #d9d9d9;
   position: absolute;
   height: 96%;
@@ -1240,34 +1085,6 @@ exports[`NumberInput props: size 1`] = `
   box-sizing: border-box;
 }
 
-.c11 {
-  text-align: center;
-  color: rgba(0,0,0,0.45);
-  position: relative;
-  -webkit-transition: all pointer 0.1s linear;
-  transition: all pointer 0.1s linear;
-  display: block;
-  width: 100%;
-  font-weight: bold;
-  border-top: 0.1rem solid #d9d9d9;
-  height: 50%;
-  cursor: pointer;
-}
-
-.c10 {
-  text-align: center;
-  color: rgba(0,0,0,0.45);
-  position: relative;
-  -webkit-transition: all pointer 0.1s linear;
-  transition: all pointer 0.1s linear;
-  display: block;
-  width: 100%;
-  font-weight: bold;
-  border-top: 0.1rem solid #d9d9d9;
-  height: 50%;
-  cursor: pointer;
-}
-
 .c7 {
   text-align: center;
   color: rgba(0,0,0,0.45);
@@ -1277,11 +1094,12 @@ exports[`NumberInput props: size 1`] = `
   display: block;
   width: 100%;
   font-weight: bold;
+  border-top: 0.1rem solid #d9d9d9;
   height: 50%;
   cursor: pointer;
 }
 
-.c6 {
+.c5 {
   text-align: center;
   color: rgba(0,0,0,0.45);
   position: relative;
@@ -1297,6 +1115,38 @@ exports[`NumberInput props: size 1`] = `
 .c0 {
   position: relative;
   display: inline-block;
+}
+
+.c6 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.c8 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 <div
@@ -1336,14 +1186,14 @@ exports[`NumberInput props: size 1`] = `
       value={10}
     />
     <span
-      className="c3  c4"
+      className="c3"
       style={Object {}}
     >
       <div />
     </span>
   </div>
   <div
-    className="c5"
+    className="c4"
     disabled={false}
     onMouseDown={[Function]}
     onMouseEnter={[Function]}
@@ -1351,13 +1201,13 @@ exports[`NumberInput props: size 1`] = `
     onMouseUp={[Function]}
     style={
       Object {
-        "opacity": 0.01,
+        "opacity": 0.001,
         "width": "2.2rem",
       }
     }
   >
     <span
-      className="c6  c7"
+      className="c5"
       disabled={false}
       onClick={[Function]}
       onMouseDown={[Function]}
@@ -1367,7 +1217,7 @@ exports[`NumberInput props: size 1`] = `
       style={Object {}}
     >
       <i
-        className="lugia-icon-direction_up c8  c9"
+        className="lugia-icon-direction_up   c6"
         disabled={false}
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -1377,12 +1227,13 @@ exports[`NumberInput props: size 1`] = `
         style={
           Object {
             "cursor": "pointer",
+            "fontSize": "2rem",
           }
         }
       />
     </span>
     <span
-      className="c10  c11"
+      className="c7"
       disabled={false}
       onClick={[Function]}
       onMouseDown={[Function]}
@@ -1392,7 +1243,7 @@ exports[`NumberInput props: size 1`] = `
       style={Object {}}
     >
       <i
-        className="lugia-icon-direction_down c8  c9"
+        className="lugia-icon-direction_down   c8"
         disabled={false}
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -1402,6 +1253,7 @@ exports[`NumberInput props: size 1`] = `
         style={
           Object {
             "cursor": "pointer",
+            "fontSize": "2rem",
           }
         }
       />
@@ -1411,14 +1263,6 @@ exports[`NumberInput props: size 1`] = `
 `;
 
 exports[`NumberInput props: size 2`] = `
-.c9 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c2 {
   line-height: 1.5;
   display: inline-block;
@@ -1448,37 +1292,25 @@ exports[`NumberInput props: size 2`] = `
 }
 
 .c2::-webkit-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c2::-moz-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c2:-ms-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c2::placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1 {
   position: relative;
   display: inline-block;
   outline: none;
-}
-
-.c4 {
-  position: absolute;
-  -webkit-transform: translateY(50%);
-  -ms-transform: translateY(50%);
-  transform: translateY(50%);
-  bottom: 50%;
-  line-height: 1rem;
-  font-size: 1.4em;
-  color: rgba(0,0,0,0.65);
-  right: 1rem;
 }
 
 .c3 {
@@ -1493,20 +1325,7 @@ exports[`NumberInput props: size 2`] = `
   right: 1rem;
 }
 
-.c8 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-.c5 {
+.c4 {
   border-left: 0.1rem solid #d9d9d9;
   position: absolute;
   height: 96%;
@@ -1518,34 +1337,6 @@ exports[`NumberInput props: size 2`] = `
   box-sizing: border-box;
 }
 
-.c11 {
-  text-align: center;
-  color: rgba(0,0,0,0.45);
-  position: relative;
-  -webkit-transition: all pointer 0.1s linear;
-  transition: all pointer 0.1s linear;
-  display: block;
-  width: 100%;
-  font-weight: bold;
-  border-top: 0.1rem solid #d9d9d9;
-  height: 50%;
-  cursor: pointer;
-}
-
-.c10 {
-  text-align: center;
-  color: rgba(0,0,0,0.45);
-  position: relative;
-  -webkit-transition: all pointer 0.1s linear;
-  transition: all pointer 0.1s linear;
-  display: block;
-  width: 100%;
-  font-weight: bold;
-  border-top: 0.1rem solid #d9d9d9;
-  height: 50%;
-  cursor: pointer;
-}
-
 .c7 {
   text-align: center;
   color: rgba(0,0,0,0.45);
@@ -1555,11 +1346,12 @@ exports[`NumberInput props: size 2`] = `
   display: block;
   width: 100%;
   font-weight: bold;
+  border-top: 0.1rem solid #d9d9d9;
   height: 50%;
   cursor: pointer;
 }
 
-.c6 {
+.c5 {
   text-align: center;
   color: rgba(0,0,0,0.45);
   position: relative;
@@ -1575,6 +1367,38 @@ exports[`NumberInput props: size 2`] = `
 .c0 {
   position: relative;
   display: inline-block;
+}
+
+.c6 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.c8 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 <div
@@ -1614,14 +1438,14 @@ exports[`NumberInput props: size 2`] = `
       value={10}
     />
     <span
-      className="c3  c4"
+      className="c3"
       style={Object {}}
     >
       <div />
     </span>
   </div>
   <div
-    className="c5"
+    className="c4"
     disabled={false}
     onMouseDown={[Function]}
     onMouseEnter={[Function]}
@@ -1629,13 +1453,13 @@ exports[`NumberInput props: size 2`] = `
     onMouseUp={[Function]}
     style={
       Object {
-        "opacity": 0.01,
+        "opacity": 0.001,
         "width": "2.2rem",
       }
     }
   >
     <span
-      className="c6  c7"
+      className="c5"
       disabled={false}
       onClick={[Function]}
       onMouseDown={[Function]}
@@ -1645,7 +1469,7 @@ exports[`NumberInput props: size 2`] = `
       style={Object {}}
     >
       <i
-        className="lugia-icon-direction_up c8  c9"
+        className="lugia-icon-direction_up   c6"
         disabled={false}
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -1655,12 +1479,13 @@ exports[`NumberInput props: size 2`] = `
         style={
           Object {
             "cursor": "pointer",
+            "fontSize": "2rem",
           }
         }
       />
     </span>
     <span
-      className="c10  c11"
+      className="c7"
       disabled={false}
       onClick={[Function]}
       onMouseDown={[Function]}
@@ -1670,7 +1495,7 @@ exports[`NumberInput props: size 2`] = `
       style={Object {}}
     >
       <i
-        className="lugia-icon-direction_down c8  c9"
+        className="lugia-icon-direction_down   c8"
         disabled={false}
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -1680,6 +1505,7 @@ exports[`NumberInput props: size 2`] = `
         style={
           Object {
             "cursor": "pointer",
+            "fontSize": "2rem",
           }
         }
       />

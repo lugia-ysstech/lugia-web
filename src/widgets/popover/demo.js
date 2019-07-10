@@ -16,6 +16,8 @@ const buttonWidth = 80;
 const Direction = styled(Button)`
   width: ${buttonWidth}px;
 `;
+const description = 'this is description';
+const title = 'this is title';
 class InnerCloseDemo extends React.Component<any, any> {
   state = {
     visible: false,
@@ -32,11 +34,10 @@ class InnerCloseDemo extends React.Component<any, any> {
   };
 
   render() {
-    const description = 'this is description';
     return (
       <Popover
         placement="top"
-        title="this is the title"
+        title={title}
         action="click"
         visible={this.state.visible}
         onVisibleChange={this.handleVisibleChange}
@@ -49,7 +50,7 @@ class InnerCloseDemo extends React.Component<any, any> {
     );
   }
 }
-class HoverAndClcikDemo extends React.Component<any, any> {
+class HoverAndClickDemo extends React.Component<any, any> {
   state = {
     clicked: false,
     hovered: false,
@@ -81,31 +82,39 @@ class HoverAndClcikDemo extends React.Component<any, any> {
   render() {
     const hoverContent = <div>This is hover content.</div>;
     const clickContent = <div>This is click content.</div>;
+    const config = {
+      [Widget.Popover]: {},
+      [Widget.Tooltip]: {
+        TooltipContent: { normal: { background: { color: 'blue' }, font: { color: '#000' } } },
+      },
+      [Widget.Button]: { width: buttonWidth },
+    };
     return (
-      <Popover
-        style={{ width: 500 }}
-        description={hoverContent}
-        title="This is  hover title"
-        action={'hover'}
-        placement="topLeft"
-        visible={this.state.hovered}
-        onVisibleChange={this.handleHoverChange}
-      >
-        <div>
-          <Popover
-            description={clickContent}
-            title="This is  click title"
-            action={'click'}
-            placement="topLeft"
-            visible={this.state.clicked}
-            clear={'lugia-icon-reminder_close'}
-            onVisibleChange={this.handleClickChange}
-            onClearClick={this.hide}
-          >
-            <Direction type="primary">Hover and click / 悬停并单击</Direction>
-          </Popover>
-        </div>
-      </Popover>
+      <Theme config={config}>
+        <Popover
+          description={hoverContent}
+          title="This is  hover title"
+          action={'hover'}
+          placement="topLeft"
+          visible={this.state.hovered}
+          onVisibleChange={this.handleHoverChange}
+        >
+          <div>
+            <Popover
+              description={clickContent}
+              title="This is  click title"
+              action={'click'}
+              placement="topLeft"
+              visible={this.state.clicked}
+              clear={'lugia-icon-reminder_close'}
+              onVisibleChange={this.handleClickChange}
+              onClearClick={this.hide}
+            >
+              <Direction type="primary">Hover and click / 悬停并单击</Direction>
+            </Popover>
+          </div>
+        </Popover>
+      </Theme>
     );
   }
 }
@@ -117,23 +126,20 @@ export const WrapperDemo = () => {
   const text = 'this is title ';
   const description = 'this is description';
   const config = {
-    [Widget.Tooltip]: {
-      normal: {
-        color: '#fef0ef',
-        font: {
-          fontColor: '#000',
-        },
+    [Widget.Popover]: {
+      PopoverOperation: { normal: { color: 'purple' } },
+      PopoverContent: {
+        TooltipTitle: { normal: { color: 'green' } },
+        TooltipDescription: { normal: { color: 'yellow' } },
       },
-    },
-    [Widget.Button]: {
-      width: buttonWidth,
+      [Widget.Button]: { width: buttonWidth },
     },
   };
   return (
     <Wrapper>
       <Theme config={config}>
         <div style={{ marginLeft: 50, whiteSpace: 'nowrap' }}>
-          <Popover placement="topLeft" title={text} action={'click'}>
+          <Popover placement="topLeft" title={text} action={'click'} description={description}>
             <Direction type="primary">TL</Direction>
           </Popover>
           <Popover
@@ -253,7 +259,7 @@ export default () => {
     <Popover />,
     <WrapperDemo />,
     <Wrapper>
-      <HoverAndClcikDemo /> <InnerCloseDemo />
+      <HoverAndClickDemo /> <InnerCloseDemo />
     </Wrapper>,
   ];
 };

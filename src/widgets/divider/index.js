@@ -14,7 +14,6 @@ import StaticComponent from '../theme/CSSProvider';
 import colorsFunc from '../css/stateColor';
 
 import { units } from '@lugia/css';
-import { addPropsConfig } from '../avatar/index';
 
 const { px2remcss } = units;
 const { borderDisableColor } = colorsFunc();
@@ -132,15 +131,19 @@ class LineBox extends Component<DividerProps, any> {
   getDivider() {
     const { type, position, dashed, content } = this.props;
 
-    const vThemeProps = addPropsConfig(this.props.getPartOfThemeProps('VerticalDivider'), {
-      dashed,
-      position,
-      content,
+    const vThemeProps = this.props.getPartOfThemeProps('VerticalDivider', {
+      props: {
+        dashed,
+        position,
+        content,
+      },
     });
-    const hThemeProps = addPropsConfig(this.props.getPartOfThemeProps('HorizontalDivider'), {
-      dashed,
-      position,
-      content,
+    const hThemeProps = this.props.getPartOfThemeProps('HorizontalDivider', {
+      props: {
+        dashed,
+        position,
+        content,
+      },
     });
 
     if (type === 'vertical') {

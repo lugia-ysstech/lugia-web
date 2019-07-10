@@ -50,39 +50,32 @@ exports[`popconfirm Demo Component JSON 1`] = `
   line-height: 2.142857142857143em;
 }
 
-.c3 {
-  position: relative;
-  display: inline-block;
-}
-
 .c4 {
-  height: 2.666666666666667em;
-  cursor: text;
-  width: 16.666666666666668em;
-  border-radius: 0.33333333333333337em;
-  border: 1px;
-  border-style: solid;
-  border-color: #cccccc;
   line-height: 1.5;
-  font-size: 1.4rem;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  background-image: none;
-  color: #333333;
-  padding-left: 0.8333333333333334em;
-  padding-right: 2.916666666666667em;
   outline: none;
-  min-height: 100%;
-  z-index: 1;
-  position: relative;
-  font-size: 1.2rem;
-}
-
-.c4:hover {
-  border-color: #4d63ff;
+  width: 20rem;
+  height: 3.2rem;
+  cursor: text;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
 }
 
 .c4::-webkit-input-placeholder {
@@ -101,9 +94,10 @@ exports[`popconfirm Demo Component JSON 1`] = `
   color: #ccc;
 }
 
-.c4:focus {
-  border-color: #4d63ff;
-  box-shadow: 0 0 6px rgba(104,79,255,0.2);
+.c3 {
+  position: relative;
+  display: inline-block;
+  outline: none;
 }
 
 .c0 {
@@ -355,9 +349,12 @@ exports[`popconfirm Demo Component JSON 1`] = `
     </button>
   </div>
   <br />
-  <span
+  <div
     className="c3"
-    disabled={false}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
   >
     <input
       autoFocus={false}
@@ -372,9 +369,19 @@ exports[`popconfirm Demo Component JSON 1`] = `
       onKeyUp={[Function]}
       placeholder="聚焦弹出"
       size="default"
+      style={
+        Object {
+          "color": "#333333",
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1rem",
+          "paddingRight": "3.5rem",
+          "paddingTop": "0rem",
+        }
+      }
       value=""
     />
-  </span>
+  </div>
   <button
     className="c1"
     onClick={[Function]}

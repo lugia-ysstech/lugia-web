@@ -41,7 +41,9 @@ export default () => {
     },
   };
   const iconConfig = {
-    IconAvatar: { normal: { color: 'orange', fontSize: 16 } },
+    [Widget.Avatar]: {
+      IconAvatar: { normal: { color: 'purple', fontSize: 16 } },
+    },
   };
   return (
     <div>

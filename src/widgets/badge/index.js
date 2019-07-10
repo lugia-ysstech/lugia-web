@@ -71,6 +71,9 @@ const Dot: Object = CSSComponent({
     border-radius: 100%;
     z-index: 10;
   `,
+  option: {
+    hover: true,
+  },
 });
 
 const Container: Object = CSSComponent({
@@ -137,7 +140,6 @@ class BadgeBox extends Component<BadgeProps, BadgeState> {
       />
     );
   }
-
   render() {
     return (
       <Container themeProps={this.props.getPartOfThemeProps(Widget.Badge)}>

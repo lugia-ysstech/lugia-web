@@ -30,19 +30,19 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
 }
 
 .c1::-webkit-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1::-moz-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1:-ms-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1::placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c0 {
@@ -115,19 +115,19 @@ exports[`Input props: null 1`] = `
 }
 
 .c1::-webkit-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1::-moz-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1:-ms-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1::placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c0 {
@@ -200,19 +200,19 @@ exports[`Input props: placeholder  1`] = `
 }
 
 .c1::-webkit-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1::-moz-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1:-ms-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1::placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c0 {
@@ -286,19 +286,19 @@ exports[`Input props: placeholder  2`] = `
 }
 
 .c1::-webkit-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1::-moz-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1:-ms-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1::placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c0 {
@@ -372,19 +372,19 @@ exports[`Input props: size 1`] = `
 }
 
 .c1::-webkit-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1::-moz-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1:-ms-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1::placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c0 {
@@ -457,19 +457,19 @@ exports[`Input props: size 2`] = `
 }
 
 .c1::-webkit-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1::-moz-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1:-ms-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1::placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c0 {
