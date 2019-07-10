@@ -74,6 +74,9 @@
       ]
     },
     "Panel": {
+      "Wrap": {
+        "normal": [["width"]]
+      },
       "PanelHeader": {
         "normal": [
           ["opacity"],
