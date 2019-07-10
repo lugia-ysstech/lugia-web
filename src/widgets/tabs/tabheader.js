@@ -395,7 +395,6 @@ class TabHeader extends Component<TabsProps, TabsState> {
   };
   scrollBox: any;
   titlePanel: any;
-  titlePanelArray: any;
   static displayName = Widget.Tabs;
   offsetWidth: number;
   offsetHeight: number;
@@ -403,7 +402,6 @@ class TabHeader extends Component<TabsProps, TabsState> {
   constructor(props: TabsProps) {
     super(props);
     this.scrollBox = React.createRef();
-    this.titlePanelArray = [];
     this.titlePanel = [];
   }
 
@@ -447,7 +445,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
   }
 
   componentDidUpdate(nextProps: Object, nextState: Object) {
-    const { allowToCalc, oldDataLength } = this.state;
+    const { allowToCalc } = this.state;
     if (allowToCalc) {
       this.matchPage();
     }
@@ -455,8 +453,8 @@ class TabHeader extends Component<TabsProps, TabsState> {
 
   componentDidMount() {
     if (this.scrollBox) {
-      this.offsetWidth = this.scrollBox.offsetWidth;
-      this.offsetHeight = this.scrollBox.offsetHeight;
+      this.offsetWidth = this.scrollBox.current.offsetWidth;
+      this.offsetHeight = this.scrollBox.current.offsetHeight;
     }
     this.matchPage();
   }
@@ -511,7 +509,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
         showPadding={totalPage > 1}
       >
         {this.getPrevOrNextPage('prev', prevPageThemeProps, isDisabledToPrev, isDisabledToNext)}
-        <VTabsContainer themeProps={themeProps} ref={node => (this.scrollBox = node)}>
+        <VTabsContainer themeProps={themeProps} ref={this.scrollBox}>
           <YscrollerContainer y={moveDistance} themeProps={borderThemeProps}>
             {this.getChildren()}
           </YscrollerContainer>
@@ -632,7 +630,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
         showPadding={totalPage > 1}
       >
         {this.getPrevOrNextPage('prev', prevPageThemeProps, isDisabledToPrev, isDisabledToNext)}
-        <HTabsContainer themeProps={themeProps} ref={node => (this.scrollBox = node)}>
+        <HTabsContainer themeProps={themeProps} ref={this.scrollBox}>
           <HscrollerContainer themeProps={borderThemeProps} x={moveDistance}>
             {this.getChildren()}
           </HscrollerContainer>
@@ -650,7 +648,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
       ? data.map((child: Object, index: number) => {
           const Target = (
             <Tabpane
-              ref={this.titlePanel[index]}
+              ref={node => (this.titlePanel[index] = node)}
               {...this.props}
               {...this.getTabpaneConfig(child, index)}
             />
@@ -716,8 +714,8 @@ class TabHeader extends Component<TabsProps, TabsState> {
     const { tabPosition } = this.props;
     return this.titlePanel.map(item => {
       let offsetSize = 0;
-      if (item.current) {
-        const tabPan = findDOMNode(item.current.getThemeTarget());
+      if (item) {
+        const tabPan = findDOMNode(item.getThemeTarget());
         if (!tabPan) {
           return offsetSize;
         }
