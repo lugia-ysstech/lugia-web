@@ -399,7 +399,6 @@ class TabHeader extends Component<TabsProps, TabsState> {
   static displayName = Widget.Tabs;
   offsetWidth: number;
   offsetHeight: number;
-  titleWidthOrHeight: Array<number>;
 
   constructor(props: TabsProps) {
     super(props);

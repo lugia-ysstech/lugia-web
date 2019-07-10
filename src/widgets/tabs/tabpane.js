@@ -87,9 +87,9 @@ const BaseTab = CSSComponent({
       }
       if (tabType === 'card') {
         position = 'bottom: -1px;';
-      }
-      if (isSelect && tabType === 'card') {
-        border = `border-bottom: 1px solid ${background ? background.color : '#fff'};`;
+        if (isSelect) {
+          border = `border-bottom: 1px solid ${background ? background.color : '#fff'};`;
+        }
       }
       return css`
         display: ${display};
@@ -308,8 +308,8 @@ type TabpaneProps = {
   disabled?: boolean,
   showDeleteBtn?: boolean,
   onClick?: Function,
-  onMouseIn?: Function,
-  onMouseOut?: Function,
+  onMouseEnter?: Function,
+  onMouseLeave?: Function,
   themeProps: Object,
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
@@ -574,17 +574,17 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     this.setState({ iconClass: 'lugia-icon-reminder_close' });
   };
   onMouseEnter = (e: Object) => {
-    const { onMouseIn, index } = this.props;
-    onMouseIn && onMouseIn(index);
+    const { onMouseEnter, index } = this.props;
+    onMouseEnter && onMouseEnter(index);
   };
   onMouseLeave = (e: Object) => {
-    const { onMouseOut, index } = this.props;
-    onMouseOut && onMouseOut(e, index);
+    const { onMouseLeave, index } = this.props;
+    onMouseLeave && onMouseLeave(index);
   };
 }
 
 const TabPanHoc = ThemeHoc(Tabpane, Widget.Tabs, {
-  hover: true,
+  hover: false,
   active: false,
 });
 export default TabPanHoc;
