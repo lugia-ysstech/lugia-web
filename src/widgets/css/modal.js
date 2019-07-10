@@ -67,7 +67,7 @@ export const IconInfo = {
 
 export const Wrap = StaticComponent({
   tag: 'div',
-  className: 'Wrap',
+  className: 'WrapModal',
   css: css`
     display: ${props => (props.visible ? 'block' : 'none')};
     font-size: ${FontSize}rem;
@@ -274,36 +274,9 @@ export const ModalFooter = StaticComponent({
   `,
 });
 
-// export const Icons = CSSComponent({
-//   className: 'ModalCloseIcon',
-//   extend: Icon,
-//   normal: {
-//     selectNames: [['color'], ['fontSize']],
-//     defaultTheme: {
-//       fontSize: 16,
-//     },
-//   },
-// });
 export const getIconColor = (props: Object) => {
   const { iconType } = props;
   const typeTheme = IconInfo[iconType] || IconInfo.info;
 
   return typeTheme.color;
 };
-
-// export const BigIcons: Object = CSSComponent({
-//   className: 'ModalIcon',
-//   extend: Icon,
-//   normal: {
-//     selectNames: [['color'], ['fontSize']],
-//     defaultTheme: {
-//       fontSize: 20,
-//     },
-//   },
-//   css: css`
-//     position: absolute;
-//     left: ${px2remcss(22)};
-//     top: ${px2remcss(28)};
-//     ${getIconColor};
-//   `,
-// });

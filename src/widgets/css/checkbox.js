@@ -93,7 +93,7 @@ const getStyleCSS = (props: CheckBoxType): string => {
 
 export const CheckBoxWrap = CSSComponent({
   tag: 'label',
-  className: 'checkbox-wrap',
+  className: 'CheckBoxWrap',
   css: css`
     font-size: ${FontSize}rem;
     cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
@@ -127,7 +127,7 @@ export const CheckBoxWrap = CSSComponent({
 
 export const CheckBoxContent = StaticComponent({
   tag: 'span',
-  className: 'checkbox-content',
+  className: 'CheckBoxContent',
   css: css`
     margin: 0;
     outline: none;
@@ -139,7 +139,7 @@ export const CheckBoxContent = StaticComponent({
 
 export const CheckBoxLabelSpan = CSSComponent({
   tag: 'span',
-  className: 'checkbox-label-span',
+  className: 'CheckBoxLabelSpan',
   css: css`
     padding-left: ${em(10)};
   `,
@@ -168,7 +168,7 @@ export const CheckBoxLabelSpan = CSSComponent({
 
 export const CheckBoxInput = StaticComponent({
   tag: 'input',
-  className: 'checkbox-input',
+  className: 'CheckBoxInput',
   css: css`
     position: absolute;
     left: 0;
@@ -185,7 +185,7 @@ export const CheckBoxInput = StaticComponent({
 
 export const CheckBoxInnerSpan = CSSComponent({
   tag: 'span',
-  className: 'checkbox-inner-span',
+  className: 'CheckBoxInnerSpan',
   css: css`
     position: relative;
     box-sizing: border-box;
@@ -276,7 +276,7 @@ export const CheckBoxInnerSpan = CSSComponent({
 
 export const HoverSpan = StaticComponent({
   tag: 'span',
-  className: 'checkbox-hover-span',
+  className: 'CheckboxHoverSpan',
   css: css`
     box-sizing: border-box;
     display: block;
