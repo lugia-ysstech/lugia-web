@@ -95,7 +95,6 @@ export default ThemeProvider(
         disabled = false,
         title,
         children,
-        getTheme,
         showArrow = true,
         getPartOfThemeProps,
         dispatchEvent,
@@ -144,7 +143,6 @@ export default ThemeProvider(
     }
 
     changeHover = hover => () => {
-      console.log('hover');
       this.setState({
         hover,
       });

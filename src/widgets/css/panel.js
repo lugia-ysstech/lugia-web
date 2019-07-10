@@ -140,7 +140,6 @@ export const PanelHeaderText = CSSComponent({
     getCSS(themeMeta, themeProps) {
       const { propsConfig = {} } = themeProps;
       const { showArrow } = propsConfig;
-      console.log(showArrow);
       if (!showArrow) {
         return `padding: 0 0 0 ${px2remcss(10)};`;
       }
