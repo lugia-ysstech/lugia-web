@@ -294,7 +294,15 @@ export const ButtonOut = CSSComponent({
   tag: 'button',
   className: 'ButtonOut',
   normal: {
-    selectNames: [['background'], ['border'], ['height'], ['width'], ['padding'], ['borderRadius']],
+    selectNames: [
+      ['background'],
+      ['border'],
+      ['height'],
+      ['width'],
+      ['padding'],
+      ['margin'],
+      ['borderRadius'],
+    ],
     defaultTheme,
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
