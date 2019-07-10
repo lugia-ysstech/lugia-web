@@ -740,7 +740,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
           disabled={disabled}
           status={classNameStatus}
           onClick={handleClickToUpload}
-          innerRef={node => (this.dropArea = node)}
+          ref={node => (this.dropArea = node)}
         >
           {getIconByType(props, classNameStatus)} {defaultText}
         </InputContent>
@@ -763,7 +763,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
             hasBtn="hasBtn"
             disabled={disabled}
             onClick={handleClickToUpload}
-            innerRef={node => (this.dropArea = node)}
+            ref={node => (this.dropArea = node)}
           >
             {defaultText}
             {showFileList ? null : getIconByType(props, 'li-' + classNameStatus)}
@@ -859,7 +859,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
           onClick={handleClickToUpload}
           dragIn={dragIn}
           classNameStatus={classNameStatus}
-          innerRef={node => (this.dropArea = node)}
+          ref={node => (this.dropArea = node)}
         >
           {classNameStatus === 'loading'
             ? getIconByType(props, 'area-' + classNameStatus)

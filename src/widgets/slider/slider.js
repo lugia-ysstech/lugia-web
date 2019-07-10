@@ -695,7 +695,7 @@ class Slider extends Component<TypeProps, TypeState> {
         >
           <SliderWrapper
             themeProps={sliderTrackThemeProps}
-            innerRef={node => {
+            ref={node => {
               this.sliderRange = node;
             }}
             {...size}

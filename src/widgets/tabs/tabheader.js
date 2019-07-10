@@ -511,7 +511,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
         showPadding={totalPage > 1}
       >
         {this.getPrevOrNextPage('prev', prevPageThemeProps, isDisabledToPrev, isDisabledToNext)}
-        <VTabsContainer themeProps={themeProps} innerRef={node => (this.scrollBox = node)}>
+        <VTabsContainer themeProps={themeProps} ref={node => (this.scrollBox = node)}>
           <YscrollerContainer y={moveDistance} themeProps={borderThemeProps}>
             {this.getChildren()}
           </YscrollerContainer>
@@ -632,7 +632,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
         showPadding={totalPage > 1}
       >
         {this.getPrevOrNextPage('prev', prevPageThemeProps, isDisabledToPrev, isDisabledToNext)}
-        <HTabsContainer themeProps={themeProps} innerRef={node => (this.scrollBox = node)}>
+        <HTabsContainer themeProps={themeProps} ref={node => (this.scrollBox = node)}>
           <HscrollerContainer themeProps={borderThemeProps} x={moveDistance}>
             {this.getChildren()}
           </HscrollerContainer>
@@ -650,7 +650,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
       ? data.map((child: Object, index: number) => {
           const Target = (
             <Tabpane
-              innerRef={this.titlePanel[index]}
+              ref={this.titlePanel[index]}
               {...this.props}
               {...this.getTabpaneConfig(child, index)}
             />

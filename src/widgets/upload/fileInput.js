@@ -56,7 +56,7 @@ class FileInput extends React.Component<PropTypes, any> {
     return (
       <Input
         themeProps={themeProps}
-        innerRef={node => (this.input = node)}
+        ref={node => (this.input = node)}
         accept={accept}
         multiple={multiple}
         onChange={this.handleChange}

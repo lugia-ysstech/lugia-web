@@ -116,7 +116,7 @@ export default ThemeProvider(
               disabled={disabled}
               themeProps={PanelHeaderTheme}
               onClick={this.handlePanelClick}
-              innerRef={(node: any) => (this.header = node)}
+              ref={(node: any) => (this.header = node)}
             >
               {showArrow || hover ? (
                 <Icon
@@ -128,7 +128,7 @@ export default ThemeProvider(
               <PanelHeaderText themeProps={PanelHeaderTextTheme}>{title}</PanelHeaderText>
             </PanelHeader>
             <PanelContentWrap
-              innerRef={(node: any) => (this.panel = node)}
+              ref={(node: any) => (this.panel = node)}
               open={open}
               opening={opening}
               closing={closing}

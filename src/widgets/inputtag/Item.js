@@ -40,7 +40,7 @@ class ItemTag extends React.Component<ItemProps, ItemState> {
     return (
       <ItemWrap themeProps={TagWrapThemeProps}>
         <ItemContainer
-          innerRef={c => (this.item = c)}
+          ref={c => (this.item = c)}
           theme={theme}
           viewClass={viewClass}
           className={className}

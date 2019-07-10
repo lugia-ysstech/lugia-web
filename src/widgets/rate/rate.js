@@ -380,7 +380,7 @@ class Rate extends React.Component<RateProps, any> {
           {count.map((x, i) => (
             <Ratespan
               themeProps={themeProps}
-              innerRef={this.ratespan[i]}
+              ref={this.ratespan[i]}
               onMouseMove={e => {
                 this.onMouseMoveOrClick(e, i);
               }}

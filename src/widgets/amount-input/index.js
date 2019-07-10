@@ -291,7 +291,7 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
       <InnerInput
         theme={inputTheme}
         viewClass={inputViewClass}
-        innerRef={this.el}
+        ref={this.el}
         value={actualValue}
         size={size}
         onKeyUp={onKeyUp}

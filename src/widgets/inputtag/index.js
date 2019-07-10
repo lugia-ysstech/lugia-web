@@ -271,7 +271,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
           >
             <InnerContainer themeProps={themeProps}>
               <FlexResBox themeProps={themeProps}>
-                <List themeProps={themeProps} innerRef={cmp => (this.list = cmp)}>
+                <List themeProps={themeProps} ref={cmp => (this.list = cmp)}>
                   {items}
                 </List>
                 {placeholder}
