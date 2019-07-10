@@ -9,8 +9,7 @@ exports[`popover Demo Component JSON 1`] = `
   touch-action: manipulation;
   cursor: pointer;
   white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  font-family: 'Trebuchet MS',Arial,Helvetica,sans-serif;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -20,33 +19,24 @@ exports[`popover Demo Component JSON 1`] = `
   position: relative;
   text-transform: none;
   outline: 0;
-  color: #ffffff;
-  background-color: #4d63ff;
-  border: none;
-  padding: 0 1.2857142857142858em;
-  font-size: 1.4rem;
-  border-radius: 0.28571428571428575em;
-}
-
-.c1:hover {
-  color: #ffffff;
-  border: none;
-  background-color: #8090ff;
-}
-
-.c1:focus {
-  color: #ffffff;
-  border: none;
-  background-color: #8090ff;
-}
-
-.c1:active {
-  background-color: #3e4fcc;
+  background-color: #ffffff;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
 }
 
 .c2 {
-  display: inline-block;
-  line-height: 2.285714285714286em;
+  color: #666666;
+  font-size: 1.4rem;
 }
 
 .c4 {
@@ -116,57 +106,132 @@ exports[`popover Demo Component JSON 1`] = `
   >
     <button
       className="c1"
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       onMouseOut={[Function]}
       onMouseOver={[Function]}
       onMouseUp={[Function]}
       size="default"
+      style={
+        Object {
+          "backgroundColor": "#4d63ff",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomWidth": 0,
+          "borderLeftWidth": 0,
+          "borderRightWidth": 0,
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopWidth": 0,
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
       type="primary"
     >
       <span
         className="c2"
-        size="default"
-        type="primary"
+        style={
+          Object {
+            "color": "#ffffff",
+            "fontSize": "1.4rem",
+          }
+        }
       >
         TL
       </span>
     </button>
     <button
       className="c1"
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       onMouseOut={[Function]}
       onMouseOver={[Function]}
       onMouseUp={[Function]}
       size="default"
+      style={
+        Object {
+          "backgroundColor": "#4d63ff",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomWidth": 0,
+          "borderLeftWidth": 0,
+          "borderRightWidth": 0,
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopWidth": 0,
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
       type="primary"
     >
       <span
         className="c2"
-        size="default"
-        type="primary"
+        style={
+          Object {
+            "color": "#ffffff",
+            "fontSize": "1.4rem",
+          }
+        }
       >
         Top
       </span>
     </button>
     <button
       className="c1"
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       onMouseOut={[Function]}
       onMouseOver={[Function]}
       onMouseUp={[Function]}
       size="default"
+      style={
+        Object {
+          "backgroundColor": "#4d63ff",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomWidth": 0,
+          "borderLeftWidth": 0,
+          "borderRightWidth": 0,
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopWidth": 0,
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
       type="primary"
     >
       <span
         className="c2"
-        size="default"
-        type="primary"
+        style={
+          Object {
+            "color": "#ffffff",
+            "fontSize": "1.4rem",
+          }
+        }
       >
         TR
       </span>
@@ -182,57 +247,132 @@ exports[`popover Demo Component JSON 1`] = `
   >
     <button
       className="c1"
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       onMouseOut={[Function]}
       onMouseOver={[Function]}
       onMouseUp={[Function]}
       size="default"
+      style={
+        Object {
+          "backgroundColor": "#4d63ff",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomWidth": 0,
+          "borderLeftWidth": 0,
+          "borderRightWidth": 0,
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopWidth": 0,
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
       type="primary"
     >
       <span
         className="c2"
-        size="default"
-        type="primary"
+        style={
+          Object {
+            "color": "#ffffff",
+            "fontSize": "1.4rem",
+          }
+        }
       >
         LT
       </span>
     </button>
     <button
       className="c1"
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       onMouseOut={[Function]}
       onMouseOver={[Function]}
       onMouseUp={[Function]}
       size="default"
+      style={
+        Object {
+          "backgroundColor": "#4d63ff",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomWidth": 0,
+          "borderLeftWidth": 0,
+          "borderRightWidth": 0,
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopWidth": 0,
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
       type="primary"
     >
       <span
         className="c2"
-        size="default"
-        type="primary"
+        style={
+          Object {
+            "color": "#ffffff",
+            "fontSize": "1.4rem",
+          }
+        }
       >
         Left
       </span>
     </button>
     <button
       className="c1"
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       onMouseOut={[Function]}
       onMouseOver={[Function]}
       onMouseUp={[Function]}
       size="default"
+      style={
+        Object {
+          "backgroundColor": "#4d63ff",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomWidth": 0,
+          "borderLeftWidth": 0,
+          "borderRightWidth": 0,
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopWidth": 0,
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
       type="primary"
     >
       <span
         className="c2"
-        size="default"
-        type="primary"
+        style={
+          Object {
+            "color": "#ffffff",
+            "fontSize": "1.4rem",
+          }
+        }
       >
         LB
       </span>
@@ -248,57 +388,132 @@ exports[`popover Demo Component JSON 1`] = `
   >
     <button
       className="c1"
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       onMouseOut={[Function]}
       onMouseOver={[Function]}
       onMouseUp={[Function]}
       size="default"
+      style={
+        Object {
+          "backgroundColor": "#4d63ff",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomWidth": 0,
+          "borderLeftWidth": 0,
+          "borderRightWidth": 0,
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopWidth": 0,
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
       type="primary"
     >
       <span
         className="c2"
-        size="default"
-        type="primary"
+        style={
+          Object {
+            "color": "#ffffff",
+            "fontSize": "1.4rem",
+          }
+        }
       >
         RT
       </span>
     </button>
     <button
       className="c1"
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       onMouseOut={[Function]}
       onMouseOver={[Function]}
       onMouseUp={[Function]}
       size="default"
+      style={
+        Object {
+          "backgroundColor": "#4d63ff",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomWidth": 0,
+          "borderLeftWidth": 0,
+          "borderRightWidth": 0,
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopWidth": 0,
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
       type="primary"
     >
       <span
         className="c2"
-        size="default"
-        type="primary"
+        style={
+          Object {
+            "color": "#ffffff",
+            "fontSize": "1.4rem",
+          }
+        }
       >
         Right
       </span>
     </button>
     <button
       className="c1"
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       onMouseOut={[Function]}
       onMouseOver={[Function]}
       onMouseUp={[Function]}
       size="default"
+      style={
+        Object {
+          "backgroundColor": "#4d63ff",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomWidth": 0,
+          "borderLeftWidth": 0,
+          "borderRightWidth": 0,
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopWidth": 0,
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
       type="primary"
     >
       <span
         className="c2"
-        size="default"
-        type="primary"
+        style={
+          Object {
+            "color": "#ffffff",
+            "fontSize": "1.4rem",
+          }
+        }
       >
         RB
       </span>
@@ -315,57 +530,132 @@ exports[`popover Demo Component JSON 1`] = `
   >
     <button
       className="c1"
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       onMouseOut={[Function]}
       onMouseOver={[Function]}
       onMouseUp={[Function]}
       size="default"
+      style={
+        Object {
+          "backgroundColor": "#4d63ff",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomWidth": 0,
+          "borderLeftWidth": 0,
+          "borderRightWidth": 0,
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopWidth": 0,
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
       type="primary"
     >
       <span
         className="c2"
-        size="default"
-        type="primary"
+        style={
+          Object {
+            "color": "#ffffff",
+            "fontSize": "1.4rem",
+          }
+        }
       >
         BL
       </span>
     </button>
     <button
       className="c1"
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       onMouseOut={[Function]}
       onMouseOver={[Function]}
       onMouseUp={[Function]}
       size="default"
+      style={
+        Object {
+          "backgroundColor": "#4d63ff",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomWidth": 0,
+          "borderLeftWidth": 0,
+          "borderRightWidth": 0,
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopWidth": 0,
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
       type="primary"
     >
       <span
         className="c2"
-        size="default"
-        type="primary"
+        style={
+          Object {
+            "color": "#ffffff",
+            "fontSize": "1.4rem",
+          }
+        }
       >
         Bottom
       </span>
     </button>
     <button
       className="c1"
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       onMouseOut={[Function]}
       onMouseOver={[Function]}
       onMouseUp={[Function]}
       size="default"
+      style={
+        Object {
+          "backgroundColor": "#4d63ff",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomWidth": 0,
+          "borderLeftWidth": 0,
+          "borderRightWidth": 0,
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopWidth": 0,
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
       type="primary"
     >
       <span
         className="c2"
-        size="default"
-        type="primary"
+        style={
+          Object {
+            "color": "#ffffff",
+            "fontSize": "1.4rem",
+          }
+        }
       >
         BR
       </span>
@@ -408,38 +698,88 @@ exports[`popover Demo Component JSON 1`] = `
   </div>
   <button
     className="c1"
+    onBlur={[Function]}
     onClick={[Function]}
+    onFocus={[Function]}
     onMouseDown={[Function]}
     onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
     onMouseOut={[Function]}
     onMouseOver={[Function]}
     onMouseUp={[Function]}
     size="default"
+    style={
+      Object {
+        "backgroundColor": "#4d63ff",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderBottomWidth": 0,
+        "borderLeftWidth": 0,
+        "borderRightWidth": 0,
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "borderTopWidth": 0,
+        "height": "3.2rem",
+        "paddingBottom": "0rem",
+        "paddingLeft": "1.8rem",
+        "paddingRight": "1.8rem",
+        "paddingTop": "0rem",
+      }
+    }
     type="primary"
   >
     <span
       className="c2"
-      size="default"
-      type="primary"
+      style={
+        Object {
+          "color": "#ffffff",
+          "fontSize": "1.4rem",
+        }
+      }
     >
        悬停
     </span>
   </button>
   <button
     className="c1"
+    onBlur={[Function]}
     onClick={[Function]}
+    onFocus={[Function]}
     onMouseDown={[Function]}
     onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
     onMouseOut={[Function]}
     onMouseOver={[Function]}
     onMouseUp={[Function]}
     size="default"
+    style={
+      Object {
+        "backgroundColor": "#4d63ff",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderBottomWidth": 0,
+        "borderLeftWidth": 0,
+        "borderRightWidth": 0,
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "borderTopWidth": 0,
+        "height": "3.2rem",
+        "paddingBottom": "0rem",
+        "paddingLeft": "1.8rem",
+        "paddingRight": "1.8rem",
+        "paddingTop": "0rem",
+      }
+    }
     type="primary"
   >
     <span
       className="c2"
-      size="default"
-      type="primary"
+      style={
+        Object {
+          "color": "#ffffff",
+          "fontSize": "1.4rem",
+        }
+      }
     >
       点击
     </span>

@@ -23,6 +23,11 @@
       "desc": "关闭卡片的操作内容",
       "defaultValue": "undefined"
     },
+    "showClearButton": {
+      "type": "boolean",
+      "desc": "是否显示关闭按钮",
+      "defaultValue": "true"
+    },
     "placement": {
       "type": "DirectionType",
       "desc": "气泡卡片显示的位置,十二个方向",
@@ -96,44 +101,49 @@
       "title": "气泡卡片",
       "desc": "气泡卡片",
       "theme": {
-        "TooltipContent": {
-          "name": "气泡卡片框内容部分",
-          "desc": "气泡卡片框内容部分",
-          "normal": [
-            ["opacity"],
-            ["background"],
-            ["width"],
-            ["height"],
-            ["margin"],
-            ["padding"],
-            ["border"]
-          ]
-        },
-        "PopoverTitle": {
-          "name": "气泡卡片标题部分",
-          "desc": "气泡卡片标题部分",
-          "normal": [
-            ["opacity"],
-            ["background"],
-            ["width"],
-            ["height"],
-            ["color"],
-            ["font"],
-            ["fontSize"]
-          ]
-        },
-        "PopoverDescription": {
-          "name": "气泡卡片描述部分",
-          "desc": "气泡卡片描述部分",
-          "normal": [
-            ["opacity"],
-            ["background"],
-            ["width"],
-            ["height"],
-            ["color"],
-            ["font"],
-            ["fontSize"]
-          ]
+        "PopoverContent": {
+          "TooltipContent": {
+            "name": "气泡卡片框内容部分",
+            "desc": "气泡卡片框内容部分",
+            "normal": [
+              ["background"],
+              ["color"],
+              ["padding"],
+              ["font"],
+              ["fontSize"],
+              ["width"],
+              ["height"],
+              ["boxShadow"],
+              ["borderRadius"],
+              ["border"]
+            ]
+          },
+          "TooltipTitle": {
+            "name": "气泡卡片标题部分",
+            "desc": "气泡卡片标题部分",
+            "normal": [
+              ["opacity"],
+              ["background"],
+              ["width"],
+              ["height"],
+              ["color"],
+              ["font"],
+              ["fontSize"]
+            ]
+          },
+          "TooltipDescription": {
+            "name": "气泡卡片描述部分",
+            "desc": "气泡卡片描述部分",
+            "normal": [
+              ["opacity"],
+              ["background"],
+              ["width"],
+              ["height"],
+              ["color"],
+              ["font"],
+              ["fontSize"]
+            ]
+          }
         },
         "PopoverOperation": {
           "name": "气泡卡片操作部分",
@@ -152,44 +162,49 @@
     }
   },
   "theme": {
-    "TooltipContent": {
-      "name": "气泡卡片框内容部分",
-      "desc": "气泡卡片框内容部分",
-      "normal": [
-        ["opacity"],
-        ["background"],
-        ["width"],
-        ["height"],
-        ["margin"],
-        ["padding"],
-        ["border"]
-      ]
-    },
-    "PopoverTitle": {
-      "name": "气泡卡片标题部分",
-      "desc": "气泡卡片标题部分",
-      "normal": [
-        ["opacity"],
-        ["background"],
-        ["width"],
-        ["height"],
-        ["color"],
-        ["font"],
-        ["fontSize"]
-      ]
-    },
-    "PopoverDescription": {
-      "name": "气泡卡片描述部分",
-      "desc": "气泡卡片描述部分",
-      "normal": [
-        ["opacity"],
-        ["background"],
-        ["width"],
-        ["height"],
-        ["color"],
-        ["font"],
-        ["fontSize"]
-      ]
+    "PopoverContent": {
+      "TooltipContent": {
+        "name": "气泡卡片框内容部分",
+        "desc": "气泡卡片框内容部分",
+        "normal": [
+          ["background"],
+          ["color"],
+          ["padding"],
+          ["font"],
+          ["fontSize"],
+          ["width"],
+          ["height"],
+          ["boxShadow"],
+          ["borderRadius"],
+          ["border"]
+        ]
+      },
+      "TooltipTitle": {
+        "name": "气泡卡片标题部分",
+        "desc": "气泡卡片标题部分",
+        "normal": [
+          ["opacity"],
+          ["background"],
+          ["width"],
+          ["height"],
+          ["color"],
+          ["font"],
+          ["fontSize"]
+        ]
+      },
+      "TooltipDescription": {
+        "name": "气泡卡片描述部分",
+        "desc": "气泡卡片描述部分",
+        "normal": [
+          ["opacity"],
+          ["background"],
+          ["width"],
+          ["height"],
+          ["color"],
+          ["font"],
+          ["fontSize"]
+        ]
+      }
     },
     "PopoverOperation": {
       "name": "气泡卡片操作部分",

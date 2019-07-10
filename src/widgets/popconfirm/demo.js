@@ -23,9 +23,6 @@ const IconWrapper = styled.div`
   width: 14px;
   height: 14px;
 `;
-const HintIcon: Object = styled(Icon)`
-  color: white;
-`;
 export class Condition extends React.Component<any, any> {
   state = {
     visible: false,
@@ -84,12 +81,24 @@ export const WrapperDemo = () => {
   const text = '确定删除这个选项吗?';
   const config = {
     [Widget.Popconfirm]: {
-      PopconfirmText: { normal: { color: 'red' } },
       PopconfirmContent: {
         PopoverContent: {
-          TooltipContent: { normal: { background: { color: 'pink' } } },
-          TooltipTitle: { normal: { color: 'green' } },
-          TooltipDescription: { normal: { color: 'yellow' } },
+          TooltipContent: {
+            normal: { background: { color: '#f1f1f1' } },
+          },
+        },
+      },
+      PopconfirmTitle: {
+        normal: {
+          color: 'red',
+          fontSize: 18,
+        },
+      },
+      PopconfirmIcon: {
+        icon: {
+          normal: {
+            color: 'red',
+          },
         },
       },
     },
@@ -160,11 +169,7 @@ export const WrapperDemo = () => {
           cancelText="No"
           okText="yes"
           okType="danger"
-          icon={
-            <IconWrapper style={{ background: 'orange' }}>
-              <HintIcon style={{ color: 'white' }} iconClass={'lugia-icon-reminder_exclamation'} />
-            </IconWrapper>
-          }
+          icon={'lugia-icon-reminder_exclamation'}
         >
           <Direction type="primary">提示</Direction>
         </Popconfirm>
@@ -176,7 +181,7 @@ export const WrapperDemo = () => {
           okType="danger"
           icon={
             <IconWrapper>
-              <HintIcon iconClass={'lugia-icon-reminder_question'} />
+              <Icon iconClass={'lugia-icon-reminder_question'} />
             </IconWrapper>
           }
         >
