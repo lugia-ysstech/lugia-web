@@ -78,19 +78,19 @@ exports[`popover Demo Component JSON 1`] = `
 }
 
 .c4::-webkit-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c4::-moz-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c4:-ms-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c4::placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c3 {

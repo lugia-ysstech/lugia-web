@@ -13,6 +13,7 @@ import { ObjectUtils } from '@lugia/type-utils';
 import { getStateFromProps, processOnVisibleChange } from '../tooltip';
 
 import ThemeHoc from '@lugia/theme-hoc';
+import { deepMerge } from '@lugia/object-utils';
 import CSSComponent, { StaticComponent, css } from '../theme/CSSProvider';
 import { units } from '@lugia/css';
 import colorsFunc from '../css/stateColor';
@@ -43,14 +44,6 @@ const ClearContainer: Object = StaticComponent({
     height: ${px2remcss(10)};
   `,
 });
-// const Clear: Object = CSSComponent({
-//   extend: Icon,
-//   className: 'PopoverClearIcon',
-//   normal: {
-//     selectNames: [['color'], ['fontSize'], ['font']],
-//     defaultTheme: { color: mediumGreyColor, fontSize: 10 },
-//   },
-// });
 const BaseText: Object = CSSComponent({
   tag: 'div',
   className: 'PopoverBaseText',
@@ -87,13 +80,7 @@ const Title: Object = CSSComponent({
       ['fontSize'],
       ['margin'],
     ],
-    defaultTheme: {
-      font: {
-        size: 16,
-        color: blackColor,
-        weight: 500,
-      },
-    },
+    defaultTheme: {},
   },
   css: css`
     display: inline-block;
@@ -207,9 +194,36 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
     const getTarget: Function = cmp => (this.target = cmp);
 
     const { theme: theTheme, viewClass } = this.props.getPartOfThemeHocProps('PopoverContent');
+
+    const tooltipTheme = deepMerge(
+      {
+        [viewClass]: {
+          TooltipContent: {
+            normal: {
+              padding: {
+                top: 6,
+                bottom: 6,
+                left: 8,
+                right: 8,
+              },
+              fontSize: 12,
+            },
+          },
+          TooltipTitle: {
+            normal: {
+              font: {
+                size: 16,
+                weight: 500,
+              },
+            },
+          },
+        },
+      },
+      theTheme
+    );
     return (
       <Tooltip
-        theme={theTheme}
+        theme={tooltipTheme}
         viewClass={viewClass}
         visible={visible}
         action={action}

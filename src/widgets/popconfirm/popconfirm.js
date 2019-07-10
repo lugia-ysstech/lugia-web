@@ -17,6 +17,7 @@ import ThemeHoc from '@lugia/theme-hoc';
 import CSSComponent, { css, StaticComponent } from '../theme/CSSProvider';
 import { units } from '@lugia/css';
 import colorsFunc from '../css/stateColor';
+import { deepMerge } from '@lugia/object-utils';
 const { blackColor } = colorsFunc();
 const { px2remcss } = units;
 
@@ -153,8 +154,7 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
 
   getTitle(): React.Node | null {
     const { title } = this.props;
-    const PopconfirmTitleThemeProps = this.props.getPartOfThemeProps('PopconfirmTitle');
-    return title ? <Title themeProps={PopconfirmTitleThemeProps}>{title} </Title> : null;
+    return title ? title : null;
   }
 
   getOperation(): React.Node | null {
@@ -226,8 +226,41 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
     const { children, action, placement, defaultChildren } = this.props;
     const getTarget: Function = cmp => (this.target = cmp);
     const theChildren = children ? children : defaultChildren;
+
+    const { theme: theTheme, viewClass } = this.props.getPartOfThemeHocProps('PopconfirmContent');
+
+    const popoverTheme = deepMerge(
+      {
+        [viewClass]: {
+          PopoverContent: {
+            TooltipContent: {
+              normal: {
+                padding: {
+                  top: 6,
+                  bottom: 6,
+                  left: 8,
+                  right: 8,
+                },
+                fontSize: 12,
+              },
+            },
+            TooltipTitle: {
+              normal: {
+                font: {
+                  size: 16,
+                  weight: 500,
+                },
+                color: 'red',
+              },
+            },
+          },
+        },
+      },
+      theTheme
+    );
     return (
       <Popover
+        theme={popoverTheme}
         visible={this.state.visible}
         action={action}
         onVisibleChange={this.onVisibleChange}
