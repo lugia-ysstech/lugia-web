@@ -34,7 +34,7 @@ export default ThemeProvider(
     constructor(props) {
       super(props);
       this.state = {
-        open: false,
+        open: undefined,
         opening: false,
         closing: false,
         height: 0,
@@ -60,10 +60,6 @@ export default ThemeProvider(
 
     componentDidMount() {
       this.height = this.panel && this.panel.scrollHeight;
-      const headerHeight = this.header && this.header.scrollHeight;
-      this.setState({
-        headerHeight,
-      });
     }
 
     getIconTheme = () => {
@@ -94,7 +90,7 @@ export default ThemeProvider(
     };
 
     render() {
-      const { opening, closing, open, hover, headerHeight } = this.state;
+      const { opening, closing, open, hover } = this.state;
       const {
         disabled = false,
         title,
@@ -112,7 +108,7 @@ export default ThemeProvider(
       }
       const isFirst = 'count' in this.props && count === 0;
       const PanelHeaderTheme = getPartOfThemeProps('PanelHeader', { props: { hover, showArrow } });
-      const PanelHeaderTextTheme = getPartOfThemeProps('PanelHeaderText');
+      const PanelHeaderTextTheme = getPartOfThemeProps('PanelHeaderText', { props: { showArrow } });
       const PanelContentTheme = getPartOfThemeProps('PanelContent', {
         props: { showArrow, hasChildren: !!children },
       });
@@ -149,7 +145,6 @@ export default ThemeProvider(
               height={this.height}
               disabled={disabled}
               hover={hover}
-              headerHeight={headerHeight}
               themeProps={this.props.themeProps}
             >
               <PanelContent
