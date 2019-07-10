@@ -95,10 +95,8 @@ export default ThemeProvider(
         disabled = false,
         title,
         children,
-        getTheme,
         showArrow = true,
         getPartOfThemeProps,
-        count,
         dispatchEvent,
       } = this.props;
       const config = {};
@@ -106,24 +104,16 @@ export default ThemeProvider(
         config.enter = this.changeHover(true);
         config.leave = this.changeHover(false);
       }
-      const isFirst = 'count' in this.props && count === 0;
       const PanelHeaderTheme = getPartOfThemeProps('PanelHeader', { props: { hover, showArrow } });
       const PanelHeaderTextTheme = getPartOfThemeProps('PanelHeaderText', { props: { showArrow } });
       const PanelContentTheme = getPartOfThemeProps('PanelContent', {
         props: { showArrow, hasChildren: !!children },
       });
       return (
-        <Wrap
-          isFirst={isFirst}
-          hover={hover}
-          {...addMouseEvent(this, config)}
-          themeProps={getPartOfThemeProps('Wrap')}
-        >
-          <PanelWrap hover={hover} theme={getTheme()} {...config}>
+        <Wrap {...addMouseEvent(this, config)} themeProps={getPartOfThemeProps('Wrap')}>
+          <PanelWrap>
             <PanelHeader
               disabled={disabled}
-              showArrow={showArrow}
-              hover={hover}
               themeProps={PanelHeaderTheme}
               onClick={this.handlePanelClick}
               innerRef={(node: any) => (this.header = node)}
@@ -143,19 +133,9 @@ export default ThemeProvider(
               opening={opening}
               closing={closing}
               height={this.height}
-              disabled={disabled}
-              hover={hover}
               themeProps={this.props.themeProps}
             >
-              <PanelContent
-                disabled={disabled}
-                showArrow={showArrow}
-                hover={hover}
-                hasChildren={!!children}
-                themeProps={PanelContentTheme}
-              >
-                {children}
-              </PanelContent>
+              <PanelContent themeProps={PanelContentTheme}>{children}</PanelContent>
             </PanelContentWrap>
           </PanelWrap>
         </Wrap>
@@ -163,7 +143,6 @@ export default ThemeProvider(
     }
 
     changeHover = hover => () => {
-      console.log('hover');
       this.setState({
         hover,
       });

@@ -32,7 +32,6 @@ export type PanelProps = {
   value?: string,
   children?: any,
   getTheme: Function,
-  count: number,
   onClick?: Function,
   dispatchEvent: Function,
 } & BasicPropsType;
@@ -45,13 +44,17 @@ type CSSProps = {
 
 const { darkGreyColor, blackColor, lightGreyColor } = colorsFunc();
 
-export const PanelWrap = styled.div`
-  box-sizing: border-box;
-  background: ${defaultColor};
-  border-color: #e8e8e8;
-  border-style: solid;
-  border-width: 0 0 1px;
-`;
+export const PanelWrap = StaticComponent({
+  tag: 'div',
+  className: 'PanelWrap',
+  css: css`
+    box-sizing: border-box;
+    background: ${defaultColor};
+    border-color: #e8e8e8;
+    border-style: solid;
+    border-width: 0 0 1px;
+  `,
+});
 
 export const PanelHeader = CSSComponent({
   tag: 'div',
@@ -137,7 +140,6 @@ export const PanelHeaderText = CSSComponent({
     getCSS(themeMeta, themeProps) {
       const { propsConfig = {} } = themeProps;
       const { showArrow } = propsConfig;
-      console.log(showArrow);
       if (!showArrow) {
         return `padding: 0 0 0 ${px2remcss(10)};`;
       }
@@ -153,8 +155,7 @@ export const PanelHeaderText = CSSComponent({
   },
 });
 const getPanelContent = (props: CSSProps): string => {
-  const { open, opening, closing } = props;
-  const { height: propsHeight } = props;
+  const { open, opening, closing, height: propsHeight } = props;
   const theHeight = propsHeight;
   const openHeight = '100%';
   const OpenKeyframe = keyframes`
@@ -266,11 +267,14 @@ export const getIconTransform = (props: Object) => {
   return 'transform: translateY(-50%);';
 };
 
-export const Wrap = StaticComponent({
+export const Wrap = CSSComponent({
   tag: 'div',
-  className: 'PanelWrap',
+  className: 'WrapPanel',
   css: css`
     transition: all 0.2s;
     font-size: ${FontSize}rem;
   `,
+  normal: {
+    selectNames: [['width']],
+  },
 });

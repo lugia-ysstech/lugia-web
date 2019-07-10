@@ -120,6 +120,7 @@ exports[`Panel Panel CSS 1`] = `
       className="c1"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
+      style={Object {}}
     >
       <div
         className="c2"
@@ -160,14 +161,11 @@ exports[`Panel Panel CSS 1`] = `
         </div>
         <div
           className="c6"
-          disabled={false}
-          height={null}
-          open={false}
+          height={0}
           style={Object {}}
         >
           <div
             className="c7"
-            disabled={false}
             style={Object {}}
           />
         </div>
@@ -178,6 +176,7 @@ exports[`Panel Panel CSS 1`] = `
       className="c1"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
+      style={Object {}}
     >
       <div
         className="c2"
@@ -218,14 +217,12 @@ exports[`Panel Panel CSS 1`] = `
         </div>
         <div
           className="c9"
-          disabled={false}
-          height={null}
+          height={0}
           open={true}
           style={Object {}}
         >
           <div
             className="c7"
-            disabled={false}
             style={
               Object {
                 "paddingBottom": "2.2rem",
@@ -250,6 +247,7 @@ exports[`Panel Panel CSS 1`] = `
       className="c1"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
+      style={Object {}}
     >
       <div
         className="c2"
@@ -294,18 +292,13 @@ exports[`Panel Panel CSS 1`] = `
         </div>
         <div
           className="c6"
-          disabled={true}
-          height={null}
-          open={false}
+          height={0}
           style={Object {}}
         >
           <div
             className="c7"
-            disabled={true}
             style={
               Object {
-                "backgroundColor": "#fff",
-                "color": "#cccccc",
                 "paddingBottom": "2.2rem",
                 "paddingLeft": "3.4rem",
                 "paddingRight": "3rem",
@@ -328,6 +321,7 @@ exports[`Panel Panel CSS 1`] = `
       className="c1"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
+      style={Object {}}
     >
       <div
         className="c2"
@@ -372,18 +366,14 @@ exports[`Panel Panel CSS 1`] = `
         </div>
         <div
           className="c9"
-          disabled={true}
-          height={null}
+          height={0}
           open={true}
           style={Object {}}
         >
           <div
             className="c7"
-            disabled={true}
             style={
               Object {
-                "backgroundColor": "#fff",
-                "color": "#cccccc",
                 "paddingBottom": "2.2rem",
                 "paddingLeft": "3.4rem",
                 "paddingRight": "3rem",
@@ -406,6 +396,7 @@ exports[`Panel Panel CSS 1`] = `
       className="c1"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
+      style={Object {}}
     >
       <div
         className="c2"
@@ -432,14 +423,11 @@ exports[`Panel Panel CSS 1`] = `
         </div>
         <div
           className="c6"
-          disabled={false}
-          height={null}
-          open={false}
+          height={0}
           style={Object {}}
         >
           <div
             className="c7"
-            disabled={false}
             style={
               Object {
                 "paddingBottom": "2.2rem",
@@ -464,6 +452,11 @@ exports[`Panel Panel CSS 1`] = `
       className="c1"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
+      style={
+        Object {
+          "width": "40rem",
+        }
+      }
     >
       <div
         className="c2"
@@ -517,14 +510,11 @@ exports[`Panel Panel CSS 1`] = `
         </div>
         <div
           className="c6"
-          disabled={false}
-          height={null}
-          open={false}
+          height={0}
           style={Object {}}
         >
           <div
             className="c7"
-            disabled={false}
             style={
               Object {
                 "backgroundColor": "#f7f4ef",
@@ -555,6 +545,11 @@ exports[`Panel Panel CSS 1`] = `
       className="c1"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
+      style={
+        Object {
+          "width": "40rem",
+        }
+      }
     >
       <div
         className="c2"
@@ -622,14 +617,11 @@ exports[`Panel Panel CSS 1`] = `
         </div>
         <div
           className="c6"
-          disabled={false}
-          height={null}
-          open={false}
+          height={0}
           style={Object {}}
         >
           <div
             className="c7"
-            disabled={false}
             style={
               Object {
                 "backgroundColor": "#f7f4ef",
@@ -660,6 +652,11 @@ exports[`Panel Panel CSS 1`] = `
       className="c1"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
+      style={
+        Object {
+          "width": "40rem",
+        }
+      }
     >
       <div
         className="c2"
@@ -727,18 +724,15 @@ exports[`Panel Panel CSS 1`] = `
         </div>
         <div
           className="c6"
-          disabled={true}
-          height={null}
-          open={false}
+          height={0}
           style={Object {}}
         >
           <div
             className="c7"
-            disabled={true}
             style={
               Object {
-                "backgroundColor": "#fff",
-                "color": "#cccccc",
+                "backgroundColor": "#f7f4ef",
+                "color": "red",
                 "fontSize": "1.6rem",
                 "fontWeight": 300,
                 "height": "20rem",
@@ -765,6 +759,11 @@ exports[`Panel Panel CSS 1`] = `
       className="c1"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
+      style={
+        Object {
+          "width": "40rem",
+        }
+      }
     >
       <div
         className="c2"
@@ -832,14 +831,11 @@ exports[`Panel Panel CSS 1`] = `
         </div>
         <div
           className="c6"
-          disabled={false}
-          height={null}
-          open={false}
+          height={0}
           style={Object {}}
         >
           <div
             className="c7"
-            disabled={false}
             style={
               Object {
                 "backgroundColor": "#f7f4ef",
