@@ -52,7 +52,8 @@ export default class Sl extends Component<any> {
                   },
                   SliderContainer: {
                     normal: {
-                      background: { color: 'yellow' }, //width: 400,
+                      background: { color: 'yellow' },
+                      // width: 400,
                       opacity: 0.5,
                       border: getBorder({ style: 'solid', width: 1, color: '#000' }, { radius: 6 }),
                     },

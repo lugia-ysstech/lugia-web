@@ -5,14 +5,14 @@ exports[`default Wrapper 1`] = `
   box-sizing: border-box;
   display: inline-block;
   vertical-align: top;
-  height: NaNrem;
+  height: auto;
 }
 
 .c11 {
   box-sizing: border-box;
   display: inline-block;
   vertical-align: top;
-  width: NaNrem;
+  width: auto;
 }
 
 .c1 {

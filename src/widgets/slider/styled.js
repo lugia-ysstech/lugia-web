@@ -55,7 +55,8 @@ export const SliderBigBox = CSSComponent({
       }
     ) {
       const { width } = themeMate;
-      return vertical ? `height:${em(width)}` : `width:${em(width)}`;
+      const newWidth = width ? `${em(width)}` : 'auto';
+      return vertical ? `height:${newWidth}` : `width:${newWidth}`;
     },
   },
   hover: {
