@@ -32,7 +32,6 @@ export type PanelProps = {
   value?: string,
   children?: any,
   getTheme: Function,
-  count: number,
   onClick?: Function,
   dispatchEvent: Function,
 } & BasicPropsType;
@@ -45,13 +44,17 @@ type CSSProps = {
 
 const { darkGreyColor, blackColor, lightGreyColor } = colorsFunc();
 
-export const PanelWrap = styled.div`
-  box-sizing: border-box;
-  background: ${defaultColor};
-  border-color: #e8e8e8;
-  border-style: solid;
-  border-width: 0 0 1px;
-`;
+export const PanelWrap = StaticComponent({
+  tag: 'div',
+  className: 'PanelWrap',
+  css: css`
+    box-sizing: border-box;
+    background: ${defaultColor};
+    border-color: #e8e8e8;
+    border-style: solid;
+    border-width: 0 0 1px;
+  `,
+});
 
 export const PanelHeader = CSSComponent({
   tag: 'div',
@@ -268,7 +271,7 @@ export const getIconTransform = (props: Object) => {
 
 export const Wrap = StaticComponent({
   tag: 'div',
-  className: 'PanelWrap',
+  className: 'WrapPanel',
   css: css`
     transition: all 0.2s;
     font-size: ${FontSize}rem;
