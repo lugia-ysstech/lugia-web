@@ -90,7 +90,15 @@
     "ButtonWrap": {
       "name": "按钮整体样式",
       "desc": "为按钮配置整体样式",
-      "normal": [["background"], ["border"], ["height"], ["width"], ["padding"], ["borderRadius"]],
+      "normal": [
+        ["background"],
+        ["border"],
+        ["height"],
+        ["width"],
+        ["padding"],
+        ["margin"],
+        ["borderRadius"]
+      ],
       "hover": [["background"], ["border"]],
       "active": [["background"], ["border"]],
       "disabled": [["background"], ["border"]],
