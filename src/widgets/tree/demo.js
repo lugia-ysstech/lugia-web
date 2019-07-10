@@ -5,10 +5,16 @@
  * @flow
  */
 import * as React from 'react';
-import Tree from './';
+import Tree from './index.js';
 import Widget from '../consts/index';
 import Theme from '../theme';
+// import { getBorder } from '@lugia/theme-css-hoc';
+import styled from 'styled-components';
+import CommonIcon from '../icon';
+import { getBorder } from '@lugia/theme-utils';
+import { getBorderRadius } from '../theme/CSSProvider';
 
+const suffix = <CommonIcon iconClass="lugia-icon-direction_caret_down" />;
 const newData = [
   {
     value: 'Components',
@@ -17,30 +23,38 @@ const newData = [
       {
         value: 'General',
         text: 'General',
-        describe: true,
+
         children: [
-          { value: 'Button 按钮', text: 'Button 按钮', icon: 'lugia-icon-financial_add_pic' },
-          { value: 'Icon 图标', text: 'Icon 图标', icon: 'lugia-icon-financial_archive' },
+          {
+            value: 'Button 按钮',
+            text: 'Button 按钮',
+            icon: 'lugia-icon-financial_add_pic',
+            children: [{ value: '皮皮', text: '皮皮' }, { value: '卡卡', text: '卡卡' }],
+          },
+          {
+            value: 'Icon 图标',
+            text: 'Icon 图标',
+            icon: 'lugia-icon-financial_archive',
+            describe: true,
+          },
         ],
       },
-
+      { value: '皮卡丘', text: '皮卡丘' },
       {
         value: 'Layout',
         text: 'Layout',
-        describe: true,
         children: [
           { value: 'Grid 栅格', text: 'Grid 栅格' },
-          { value: 'Layout 布局', text: 'Layout 布局' },
+          { value: 'Layout 布局', text: 'Layout 布局', describe: true },
         ],
       },
 
       {
         value: 'Navigation',
         text: 'Navigation',
-        describe: true,
         children: [
           { value: 'Affix 固钉', text: 'Affix 固钉' },
-          { value: 'Breadcrumb 面包屑', text: 'Breadcrumb 面包屑' },
+          { value: 'Breadcrumb 面包屑', text: 'Breadcrumb 面包屑', describe: true },
           { value: 'Dropdown 下拉菜单', text: 'Dropdown 下拉菜单' },
           { value: 'Menu 导航菜单', text: 'Menu 导航菜单' },
           { value: 'Pagination 分页', text: 'Pagination 分页' },
@@ -125,27 +139,140 @@ const rowData = [
 
 class LimitTree extends React.Component<Object, Object> {
   render() {
-    return [<Tree expandAll {...this.props} onChange={this.onChange} />];
+    return [<Tree {...this.props} onChange={this.onChange} />];
   }
 
   onChange = (value, displayValue) => {};
 }
 
+const data = [
+  { key: '1', title: '选项 1' },
+  { key: '1.1', title: '选项 1.1', pid: '1', path: '1' },
+  { key: '1.1.1', title: '选项 1.1.1', pid: '1.1', path: '1/1.1', isLeaf: true },
+  {
+    key: '1.1.2',
+    title: '选项 1.1.2',
+    pid: '1.1',
+    path: '1/1.1',
+    isLeaf: true,
+    notCanSelect: true,
+  },
+
+  { key: '1.2', title: '选项 1.2', pid: '1', path: '1' },
+  { key: '1.2.1', title: '选项 1.2.1', pid: '1.2', path: '1/1.2', isLeaf: true },
+  { key: '1.2.2', title: '选项 1.2.2', pid: '1.2', path: '1/1.2' },
+  {
+    key: '1.2.2.1',
+    title: '选项 1.2.2.1',
+    pid: '1.2.2',
+    path: '1/1.2/1.2.2',
+    isLeaf: true,
+  },
+
+  {
+    key: '1.2.2.2',
+    title: '选项 1.2.2.2',
+    pid: '1.2.2',
+    path: '1/1.2/1.2.2',
+    isLeaf: true,
+  },
+
+  { key: '1.3', title: '选项 1.3', pid: '1', path: '1', isLeaf: true },
+
+  { key: '2', title: '选项 2' },
+  { key: '2.1', title: '选项 2.1', pid: '2', path: '2', isLeaf: true },
+  { key: '2.2', title: '选项 2.2', pid: '2', path: '2', isLeaf: true },
+];
+
 const config = {
   [Widget.Tree]: {
-    height: 320,
+    TreeWrap: {
+      normal: {
+        width: 500,
+        // height: 600,
+        opacity: 1,
+        background: { color: '#E086BB' },
+        boxShadow: '2px 2px 5px 5px #9C2D6E',
+        border: getBorder({ color: '#9C2D6E', width: 1, style: 'solid' }),
+        borderRadius: getBorderRadius(20),
+        padding: {
+          left: 20,
+          right: 20,
+        },
+        margin: {
+          left: 20,
+        },
+      },
+      hover: {
+        opacity: 0.9,
+        background: { color: '#F51196' },
+        boxShadow: '2px 2px 5px 5px #F51196',
+        border: getBorder({ color: '#F51196', width: 1, style: 'solid' }),
+        borderRadius: getBorderRadius(40),
+      },
+    },
+
+    TreeItem: {
+      TreeItemWrap: {
+        normal: { background: { color: '#21EBE8' }, padding: { left: 30, right: 30 } },
+        hover: {
+          background: { color: '#119E9C' },
+          color: 'white',
+          border: getBorder({ color: '#F51196', width: 1, style: 'solid' }),
+          borderRadius: getBorderRadius(40),
+        },
+        active: { background: { color: '#036664' }, color: '#4d63ff' },
+      },
+      Text: {
+        normal: {
+          color: '#eee',
+          width: 200,
+          background: { color: '#333' },
+          padding: {
+            left: 20,
+          },
+          // border: getBorder({ color: '#F51196', width: 1, style: 'solid' }),
+        },
+        hover: {
+          color: 'orange',
+          background: { color: '#2982F5' },
+          // border: getBorder({ color: '#F75993', width: 1, style: 'solid' }),
+          borderRadius: getBorderRadius(40),
+        },
+        active: { color: 'red' },
+      },
+      // SubTreeWrap: {
+      //   normal: {
+      //     background: { color: '#66eecc' },
+      //   },
+      //   hover: { background: { color: '#bbb' } },
+      // },
+      // [Widget.CheckBox]: {
+      //   normal: {
+      //     color: '#4d63ff',
+      //   },
+      // },
+    },
   },
 };
 export default () => {
-  return [
-    <Theme config={config}>
-      <LimitTree
-        data={newData}
-        translateTreeData={true}
-        expandAll={true}
-        mutliple={true}
-        igronSelectField={'igron'}
-      />
-    </Theme>,
-  ];
+  return (
+    <Tree
+      theme={config}
+      expandAll
+      autoHeight
+      // switcher={false}
+      suffix={suffix}
+      // mutliple
+      data={newData}
+      valueField={'value'}
+      displayField={'text'}
+      translateTreeData
+      // data={rowData}
+      igronSelectField={'notCanSelect'}
+    />
+  );
+  // <Theme config={config}>
+
+  // </Theme>,
 };

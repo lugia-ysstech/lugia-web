@@ -34,7 +34,7 @@ const commonConfig = {
         borderRadius: getBorderRadius(20),
         background: { color: '#ddd' },
         font: {
-          fontSize: 22,
+          size: 22,
           fontWeight: 100,
         },
         margin: {
@@ -59,7 +59,7 @@ const commonConfig = {
       normal: {
         color: '#000',
         font: {
-          fontSize: 30,
+          size: 30,
         },
         margin: {
           left: 20,
@@ -85,7 +85,7 @@ const optionalConfig = {
         borderRadius: getBorderRadius(4),
         background: { color: '#ddd' },
         font: {
-          fontSize: 22,
+          size: 22,
           fontWeight: 100,
         },
         margin: {
@@ -124,7 +124,7 @@ const optionalConfig = {
         borderRadius: getBorderRadius(40),
         background: { color: '#4d63ff' },
         font: {
-          fontSize: 22,
+          size: 22,
           fontWeight: 100,
         },
         margin: {

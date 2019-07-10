@@ -9,7 +9,6 @@ import React from 'react';
 import Widget from '../consts/index';
 import ThemeHoc from '@lugia/theme-hoc';
 import { TagWrap, OptionalWrap, ItemText, CloseButtonWrap, CloseButton } from '../css/tag';
-import { deepMerge } from '@lugia/object-utils';
 
 type shapeType = 'basic' | 'round';
 type styleType = 'customs' | 'primary' | 'basic' | 'presets' | 'optional';
@@ -23,6 +22,8 @@ type TagProps = {
   getTheme: Function,
   type: styleType,
   themeProps: Object,
+  getPartOfThemeHocProps: Function,
+  getPartOfThemeProps: Function,
 };
 
 type TagState = {
@@ -70,10 +71,6 @@ class Tag extends React.Component<TagProps, TagState> {
 
   itemText: Object;
 
-  mergeTheme(theme: Object, viewClass: string, params: Object) {
-    theme[viewClass] = deepMerge(theme[viewClass], { propsConfig: params });
-  }
-
   render() {
     const { isClose, checked } = this.state;
     const {
@@ -92,22 +89,23 @@ class Tag extends React.Component<TagProps, TagState> {
         ? getPartOfThemeHocProps('CheckedTagWrap')
         : getPartOfThemeHocProps('TagWrap');
     const { theme, viewClass } = themeHoc;
-    this.mergeTheme(theme, viewClass, {
+
+    const params = {
       shape,
       type,
       isClose,
       closable,
       checked,
-    });
+    };
 
     return type === 'optional' ? (
-      <OptionalWrap onClick={this.onClick} theme={theme} viewClass={viewClass}>
+      <OptionalWrap propsConfig={params} onClick={this.onClick} theme={theme} viewClass={viewClass}>
         <ItemText themeProps={TagThemeProps} ref={cmp => (this.itemText = cmp)} type={type}>
           {children}
         </ItemText>
       </OptionalWrap>
     ) : (
-      <TagWrap onClick={this.onClick} theme={theme} viewClass={viewClass}>
+      <TagWrap propsConfig={params} onClick={this.onClick} theme={theme} viewClass={viewClass}>
         <ItemText themeProps={TagThemeProps} ref={cmp => (this.itemText = cmp)} type={type}>
           {children}
         </ItemText>

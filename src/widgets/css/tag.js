@@ -36,7 +36,7 @@ const getAnimationCSS = (isClose: boolean) => {
     : 'opacity: 1; transform: scale(1,1)';
 };
 
-const getPadding = (closable: Boolran) => {
+const getPadding = (closable: Boolean) => {
   return closable ? `0 ${px2remcss(5)} 0 ${px2remcss(8)}` : ` 0 ${px2remcss(8)}`;
 };
 
@@ -205,7 +205,7 @@ export const TagWrap = ThemeHoc(
       ],
       getCSS: (themeMeta, themeProps) => {
         const { height, color: themeColor, background: themeBgColor } = themeMeta;
-        const { propsConfig } = themeProps.themeConfig;
+        const { propsConfig } = themeProps;
         const { shape, type, closable, isClose } = propsConfig;
         const radius = getRadius(shape, height);
 
@@ -238,7 +238,8 @@ export const TagWrap = ThemeHoc(
         ['font'],
       ],
       getStyle: (themeMeta, themeProps) => {
-        const { normal = {}, hover = {}, propsConfig } = themeProps.themeConfig;
+        const { themeConfig, propsConfig } = themeProps;
+        const { normal = {}, hover = {} } = themeConfig;
         const { type } = propsConfig;
         const hoverCSS = getHoverCSS(type, {
           normal,
@@ -377,7 +378,7 @@ export const OptionalWrap = ThemeHoc(
           background: themeBgColor,
           border: themeBorder,
         } = themeMeta;
-        const { propsConfig } = themeProps.themeConfig;
+        const { propsConfig } = themeProps;
         const { shape, closable, checked } = propsConfig;
         const radius = getRadius(shape, height);
 
@@ -409,7 +410,7 @@ export const OptionalWrap = ThemeHoc(
       ],
       getCSS: (themeMeta, themeProps) => {
         const { color: hoverColor } = themeMeta;
-        const { propsConfig } = themeProps.themeConfig;
+        const { propsConfig } = themeProps;
         const { checked } = propsConfig;
         const color = hoverColor ? hoverColor : checked ? defaultColor : themeColor;
         return `
