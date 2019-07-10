@@ -98,7 +98,6 @@ export default ThemeProvider(
         getTheme,
         showArrow = true,
         getPartOfThemeProps,
-        count,
         dispatchEvent,
       } = this.props;
       const config = {};
@@ -106,19 +105,13 @@ export default ThemeProvider(
         config.enter = this.changeHover(true);
         config.leave = this.changeHover(false);
       }
-      const isFirst = 'count' in this.props && count === 0;
       const PanelHeaderTheme = getPartOfThemeProps('PanelHeader', { props: { hover, showArrow } });
       const PanelHeaderTextTheme = getPartOfThemeProps('PanelHeaderText', { props: { showArrow } });
       const PanelContentTheme = getPartOfThemeProps('PanelContent', {
         props: { showArrow, hasChildren: !!children },
       });
       return (
-        <Wrap
-          isFirst={isFirst}
-          hover={hover}
-          {...addMouseEvent(this, config)}
-          themeProps={getPartOfThemeProps('Wrap')}
-        >
+        <Wrap {...addMouseEvent(this, config)} themeProps={getPartOfThemeProps('Wrap')}>
           <PanelWrap hover={hover} theme={getTheme()} {...config}>
             <PanelHeader
               disabled={disabled}
