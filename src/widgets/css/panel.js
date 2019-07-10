@@ -103,15 +103,15 @@ export const PanelHeader = CSSComponent({
       if (hover) {
         if (theWidth) {
           if (typeof theWidth === 'number') {
-            widthStyle = px2remcss(theWidth + 14);
+            widthStyle = px2remcss(theWidth + 24);
           } else {
-            widthStyle = `calc(${theWidth} + 14px)`;
+            widthStyle = `calc(${theWidth} + 24px)`;
           }
         } else {
-          widthStyle = 'calc(100% + 14px)';
+          widthStyle = 'calc(100% + 24px)';
         }
 
-        return `width: ${widthStyle} !important;transform: translateX(-14px);`;
+        return `width: ${widthStyle} !important;transform: translateX(-24px);`;
       }
     },
   },
@@ -134,6 +134,16 @@ export const PanelHeaderText = CSSComponent({
       color: blackColor,
     },
     selectNames: [['color']],
+    getCSS(themeMeta, themeProps) {
+      const { propsConfig = {} } = themeProps;
+      const { showArrow } = propsConfig;
+      console.log(showArrow);
+      if (!showArrow) {
+        return `padding: 0 0 0 ${px2remcss(10)};`;
+      }
+
+      return '';
+    },
   },
   disabled: {
     defaultTheme: {
@@ -226,18 +236,10 @@ export const PanelContent = CSSComponent({
     },
   },
   hover: {
-    defaultTheme: {
-      color: blackColor,
-      background: { color: defaultColor },
-    },
-    selectNames: [['color']],
+    selectNames: [['color'], ['background']],
   },
   disabled: {
-    defaultTheme: {
-      color: lightGreyColor,
-      background: { color: defaultColor },
-    },
-    selectNames: [['color']],
+    selectNames: [['color'], ['background']],
   },
 });
 
