@@ -269,11 +269,14 @@ export const getIconTransform = (props: Object) => {
   return 'transform: translateY(-50%);';
 };
 
-export const Wrap = StaticComponent({
+export const Wrap = CSSComponent({
   tag: 'div',
   className: 'WrapPanel',
   css: css`
     transition: all 0.2s;
     font-size: ${FontSize}rem;
   `,
+  normal: {
+    selectNames: [['width']],
+  },
 });

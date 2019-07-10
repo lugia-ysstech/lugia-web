@@ -36,6 +36,12 @@ export const PanelDemo = class extends React.Component<any, any> {
     const { open } = this.state;
     const view = {
       [Widget.Panel]: {
+        Wrap: {
+          normal: {
+            width: 400,
+            height: 100,
+          },
+        },
         PanelHeader: {
           normal: {
             width: 400,

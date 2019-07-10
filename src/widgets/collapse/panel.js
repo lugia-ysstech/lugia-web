@@ -112,7 +112,7 @@ export default ThemeProvider(
       });
       return (
         <Wrap {...addMouseEvent(this, config)} themeProps={getPartOfThemeProps('Wrap')}>
-          <PanelWrap hover={hover} theme={getTheme()} {...config}>
+          <PanelWrap>
             <PanelHeader
               disabled={disabled}
               showArrow={showArrow}
