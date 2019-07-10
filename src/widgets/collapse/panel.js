@@ -115,8 +115,6 @@ export default ThemeProvider(
           <PanelWrap>
             <PanelHeader
               disabled={disabled}
-              showArrow={showArrow}
-              hover={hover}
               themeProps={PanelHeaderTheme}
               onClick={this.handlePanelClick}
               innerRef={(node: any) => (this.header = node)}
@@ -136,19 +134,9 @@ export default ThemeProvider(
               opening={opening}
               closing={closing}
               height={this.height}
-              disabled={disabled}
-              hover={hover}
               themeProps={this.props.themeProps}
             >
-              <PanelContent
-                disabled={disabled}
-                showArrow={showArrow}
-                hover={hover}
-                hasChildren={!!children}
-                themeProps={PanelContentTheme}
-              >
-                {children}
-              </PanelContent>
+              <PanelContent themeProps={PanelContentTheme}>{children}</PanelContent>
             </PanelContentWrap>
           </PanelWrap>
         </Wrap>

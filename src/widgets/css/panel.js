@@ -156,8 +156,7 @@ export const PanelHeaderText = CSSComponent({
   },
 });
 const getPanelContent = (props: CSSProps): string => {
-  const { open, opening, closing } = props;
-  const { height: propsHeight } = props;
+  const { open, opening, closing, height: propsHeight } = props;
   const theHeight = propsHeight;
   const openHeight = '100%';
   const OpenKeyframe = keyframes`
