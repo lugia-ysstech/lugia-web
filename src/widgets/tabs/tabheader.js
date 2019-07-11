@@ -619,7 +619,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
     const { isDisabledToPrev, isDisabledToNext } = this.getIsAllowToMove(moveDistance);
 
     const prevPageThemeProps = deepMerge(
-      { themeConfig: { normal: { height: 35 } } },
+      { themeConfig: { normal: { height: 31 } } },
       this.props.getPartOfThemeProps('DefaultTabPan')
     );
     return (
