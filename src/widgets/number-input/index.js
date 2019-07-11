@@ -357,6 +357,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
             disabled={disabled}
             propsConfig={{ outRange: overMax }}
             iconClass={PlusClass}
+            singleTheme
           />
         </PlusButton>
         <MinusButton
@@ -369,6 +370,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
           })}
         >
           <Icon
+            singleTheme
             onClick={this.handleClick('minus')}
             theme={iconTheme}
             viewClass={IconViewClass}

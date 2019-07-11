@@ -165,7 +165,7 @@ export default ThemeProvider(
           themeProps={AlertWrapTheme}
         >
           {showIcon ? (
-            <Icon iconClass={icon || AlertIcons[type]} {...this.getAlertIconTheme()} />
+            <Icon iconClass={icon || AlertIcons[type]} {...this.getAlertIconTheme()} singleTheme />
           ) : null}
           <Message hasDect={hasDect} showIcon={showIcon} themeProps={AlertMessageTheme}>
             {message}

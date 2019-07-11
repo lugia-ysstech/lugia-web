@@ -70,6 +70,7 @@ export const getText = (inside?: boolean, props: Object) => {
         viewClass={viewClass}
         theme={iconTheme}
         iconClass={inside ? 'lugia-icon-reminder_close' : 'lugia-icon-reminder_close_circle'}
+        singleTheme
       />
     );
   }
@@ -86,6 +87,7 @@ export const getText = (inside?: boolean, props: Object) => {
       <Icon
         viewClass={viewClass}
         theme={iconTheme}
+        singleTheme
         iconClass={inside ? 'lugia-icon-reminder_check' : 'lugia-icon-reminder_check_circle'}
       />
     );

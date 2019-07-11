@@ -5,14 +5,12 @@ import toArray from 'rc-util/lib/Children/toArray';
 import { contextTypes } from './Tree';
 import CommonIcon from '../../icon';
 import CheckBox from '../../checkbox';
-import styled from 'styled-components';
 import Widget from '../../consts';
 import ThemeHoc from '@lugia/theme-hoc';
 import Theme from '../../theme';
 import { getMenuItemHeight, TextIcon } from '../../css/menu';
-import { px2remcss } from '../../css/units';
-import { FontSizeNumber } from '../../css';
-import { FlexWrap, FlexBox, CheckBoxWrap } from '../../css/tree';
+import { CheckBoxWrap, FlexBox, FlexWrap } from '../../css/tree';
+
 const defaultTitle = '---';
 
 // const FlexBox = styled.div`
