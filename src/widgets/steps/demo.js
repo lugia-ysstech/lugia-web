@@ -93,7 +93,12 @@ const VWrapper = styled.div`
 `;
 const view = {
   [Widget.Steps]: {
-    width: 600,
+    StepContainer: {
+      normal: {},
+    },
+    StepLine: {
+      normal: {},
+    },
   },
 };
 const data = [
@@ -108,9 +113,6 @@ export default () => {
     <Theme config={view}>
       <div>
         <Wrapper>
-          <Wrapper>
-            <Steps />
-          </Wrapper>
           <Wrapper>
             <Steps data={data} />
           </Wrapper>

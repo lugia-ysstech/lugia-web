@@ -14,7 +14,6 @@ import type { AlignType, StepType, OrientationType, SizeType } from '../css/step
 import Step from './step';
 import { getAttributeFromObject } from '../common/ObjectUtils';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
-import { addPropsConfig } from '../avatar';
 import { units } from '@lugia/css';
 
 const { px2remcss } = units;
@@ -105,8 +104,12 @@ class Steps extends Component<StepsProps, StepsState> {
   static getDerivedStateFromProps(props: StepsProps, state: StepsState) {}
 
   render() {
-    const { themeProps, orientation } = this.props;
-    const theThemeProps = addPropsConfig(themeProps, { orientation });
+    const { orientation } = this.props;
+    const theThemeProps = this.props.getPartOfThemeProps('StepsContainer', {
+      props: {
+        orientation,
+      },
+    });
     return (
       <OutContainer
         themeProps={theThemeProps}
@@ -119,8 +122,12 @@ class Steps extends Component<StepsProps, StepsState> {
   }
 
   getHSteps() {
-    const { orientation, stepType, themeProps } = this.props;
-    const theThemeProps = addPropsConfig(themeProps, { orientation });
+    const { orientation, stepType } = this.props;
+    const theThemeProps = this.props.getPartOfThemeProps('StepsContainer', {
+      props: {
+        orientation,
+      },
+    });
     return (
       <HStepsOutContainer orientation={orientation} stepType={stepType} themeProps={theThemeProps}>
         {this.getChildren()}
