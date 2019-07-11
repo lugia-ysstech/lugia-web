@@ -126,31 +126,31 @@
           "name": "气泡确认框内容部分",
           "desc": "气泡确认框内容部分",
           "normal": [
-            ["opacity"],
             ["background"],
+            ["color"],
+            ["padding"],
+            ["font"],
+            ["fontSize"],
             ["width"],
             ["height"],
-            ["margin"],
-            ["padding"],
+            ["boxShadow"],
+            ["borderRadius"],
             ["border"]
           ]
         },
-        "PopconfirmTitle": {
-          "name": "气泡确认框标题部分",
-          "desc": "气泡确认框标题部分",
-          "normal": [
-            ["opacity"],
-            ["background"],
-            ["width"],
-            ["height"],
-            ["color"],
-            ["font"],
-            ["fontSize"]
-          ]
+        "PopconfirmButton": {
+          "name": "气泡确认框按钮",
+          "desc": "气泡确认框按钮",
+          "normal": [["opacity"], ["color"], ["font"], ["fontSize"]]
         },
-        "PopconfirmText": {
-          "name": "气泡确认框按钮文字",
-          "desc": "气泡确认框按钮文字",
+        "PopconfirmTitle": {
+          "name": "气泡确认框标题",
+          "desc": "气泡确认框标题",
+          "normal": [ ["color"], ["background"], ["font"], ["fontSize"]]
+        },
+        "PopconfirmIcon": {
+          "name": "气泡确认框标题前图标",
+          "desc": "气泡确认框标题前图标",
           "normal": [["opacity"], ["color"], ["font"], ["fontSize"]]
         }
       }
@@ -161,31 +161,31 @@
       "name": "气泡确认框内容部分",
       "desc": "气泡确认框内容部分",
       "normal": [
-        ["opacity"],
         ["background"],
+        ["color"],
+        ["padding"],
+        ["font"],
+        ["fontSize"],
         ["width"],
         ["height"],
-        ["margin"],
-        ["padding"],
+        ["boxShadow"],
+        ["borderRadius"],
         ["border"]
       ]
     },
     "PopconfirmTitle": {
-      "name": "气泡确认框标题部分",
-      "desc": "气泡确认框标题部分",
-      "normal": [
-        ["opacity"],
-        ["background"],
-        ["width"],
-        ["height"],
-        ["color"],
-        ["font"],
-        ["fontSize"]
-      ]
+      "name": "气泡确认框标题",
+      "desc": "气泡确认框标题",
+      "normal": [ ["color"], ["background"], ["font"], ["fontSize"]]
     },
-    "PopconfirmText": {
-      "name": "气泡确认框按钮文字",
-      "desc": "气泡确认框按钮文字",
+    "PopconfirmButton": {
+      "name": "气泡确认框按钮",
+      "desc": "气泡确认框按钮",
+      "normal": [["opacity"], ["color"], ["font"], ["fontSize"]]
+    },
+    "PopconfirmIcon": {
+      "name": "气泡确认框标题前图标",
+      "desc": "气泡确认框标题前图标",
       "normal": [["opacity"], ["color"], ["font"], ["fontSize"]]
     }
   }

@@ -129,11 +129,12 @@ export const WrapperDemo = () => {
     [Widget.Popover]: {
       PopoverOperation: { normal: { color: 'purple' } },
       PopoverContent: {
+        TooltipContent: { normal: { background: { color: 'pink' } } },
         TooltipTitle: { normal: { color: 'green' } },
         TooltipDescription: { normal: { color: 'yellow' } },
       },
-      [Widget.Button]: { width: buttonWidth },
     },
+    [Widget.Button]: { width: buttonWidth },
   };
   return (
     <Wrapper>

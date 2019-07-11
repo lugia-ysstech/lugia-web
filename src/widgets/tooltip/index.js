@@ -396,10 +396,10 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
     const { placement, popArrowType, content } = this.props;
     return (
       <Content themeProps={contentThemeProps} popArrowType={popArrowType} placement={placement}>
-        {content}
         {this.getArrow(direction)}
         {this.getTitle()}
         {this.getDescription()}
+        {content}
       </Content>
     );
   }

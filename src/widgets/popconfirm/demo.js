@@ -23,9 +23,6 @@ const IconWrapper = styled.div`
   width: 14px;
   height: 14px;
 `;
-const HintIcon: Object = styled(Icon)`
-  color: white;
-`;
 export class Condition extends React.Component<any, any> {
   state = {
     visible: false,
@@ -84,57 +81,73 @@ export const WrapperDemo = () => {
   const text = '确定删除这个选项吗?';
   const config = {
     [Widget.Popconfirm]: {
-      PopconfirmContent: { normal: { font: { color: '#000' }, background: { color: 'green' } } },
-      PopconfirmTitle: { normal: { background: { color: 'red' } } },
-      PopconfirmText: { normal: { color: 'red' } },
+      PopconfirmContent: {
+        PopoverContent: {
+          TooltipContent: {
+            normal: { background: { color: '#f1f1f1' } },
+          },
+        },
+      },
+      PopconfirmTitle: {
+        normal: {
+          color: 'red',
+          fontSize: 18,
+        },
+      },
+      PopconfirmIcon: {
+        icon: {
+          normal: {
+            color: 'red',
+          },
+        },
+      },
     },
-    [Widget.Tooltip]: { TooltipContent: { normal: { background: { color: 'pink' } } } },
   };
   return (
     <Wrapper>
       <Theme config={config}>
         <div style={{ marginLeft: 50, whiteSpace: 'nowrap' }}>
           <Popconfirm placement="topLeft" title={text} action={'click'}>
-            <Direction>TL</Direction>
+            <Direction type="primary">TL</Direction>
           </Popconfirm>
           <Popconfirm placement="top" title={text}>
-            <Direction>Top</Direction>
+            <Direction type="primary">Top</Direction>
           </Popconfirm>
           <Popconfirm placement="topRight" title={text}>
-            <Direction>TR</Direction>
+            <Direction type="primary">TR</Direction>
           </Popconfirm>
         </div>
         <div style={{ width: 70, float: 'left' }}>
           <Popconfirm placement="leftTop" title={text}>
-            <Direction>LT</Direction>
+            <Direction type="primary">LT</Direction>
           </Popconfirm>
           <Popconfirm placement="left" title={text}>
-            <Direction>Left</Direction>
+            <Direction type="primary">Left</Direction>
           </Popconfirm>
           <Popconfirm placement="leftBottom" title={text}>
-            <Direction>LB</Direction>
+            <Direction type="primary">LB</Direction>
           </Popconfirm>
         </div>
         <div style={{ width: 70, marginLeft: 200 }}>
           <Popconfirm placement="rightTop" title={text}>
-            <Direction>RT</Direction>
+            <Direction type="primary">RT</Direction>
           </Popconfirm>
           <Popconfirm placement="right" title={text}>
-            <Direction>Right</Direction>
+            <Direction type="primary">Right</Direction>
           </Popconfirm>
           <Popconfirm placement="rightBottom" title={text}>
-            <Direction>RB</Direction>
+            <Direction type="primary">RB</Direction>
           </Popconfirm>
         </div>
         <div style={{ marginLeft: 50, clear: 'both', whiteSpace: 'nowrap' }}>
           <Popconfirm placement="bottomLeft" title={text}>
-            <Direction>BL</Direction>
+            <Direction type="primary">BL</Direction>
           </Popconfirm>
           <Popconfirm placement="bottom" title={text}>
-            <Direction>Bottom</Direction>
+            <Direction type="primary">Bottom</Direction>
           </Popconfirm>
           <Popconfirm placement="bottomRight" title={text}>
-            <Direction>BR</Direction>
+            <Direction type="primary">BR</Direction>
           </Popconfirm>
         </div>
       </Theme>
@@ -143,10 +156,10 @@ export const WrapperDemo = () => {
         <Input placeholder={'聚焦弹出'} />
       </Popconfirm>
       <Popconfirm title={text} action={'hover'}>
-        <Direction> 悬停</Direction>
+        <Direction type="primary"> 悬停</Direction>
       </Popconfirm>
       <Popconfirm title={text} action={'click'} cancelText="No" okText="yes" okType="danger">
-        <Direction>点击</Direction>
+        <Direction type="primary">点击</Direction>
       </Popconfirm>
       <br />
       <div>
@@ -156,13 +169,9 @@ export const WrapperDemo = () => {
           cancelText="No"
           okText="yes"
           okType="danger"
-          icon={
-            <IconWrapper style={{ background: 'orange' }}>
-              <HintIcon style={{ color: 'white' }} iconClass={'lugia-icon-reminder_exclamation'} />
-            </IconWrapper>
-          }
+          icon={'lugia-icon-reminder_exclamation'}
         >
-          <Direction>提示</Direction>
+          <Direction type="primary">提示</Direction>
         </Popconfirm>
         <Popconfirm
           title={text}
@@ -172,11 +181,11 @@ export const WrapperDemo = () => {
           okType="danger"
           icon={
             <IconWrapper>
-              <HintIcon iconClass={'lugia-icon-reminder_question'} />
+              <Icon iconClass={'lugia-icon-reminder_question'} />
             </IconWrapper>
           }
         >
-          <Direction>危险操作</Direction>
+          <Direction type="primary">危险操作</Direction>
         </Popconfirm>
       </div>
     </Wrapper>
