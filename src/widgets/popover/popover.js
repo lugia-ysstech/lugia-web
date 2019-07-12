@@ -70,7 +70,7 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
     const { clearIcon = 'lugia-icon-reminder_close', showClearButton } = this.props;
     return showClearButton ? (
       <ClearContainer onClick={this.onClearClick}>
-        <Icon {...this.props.getPartOfThemeHocProps(Widget.Icon)} iconClass={clearIcon} />
+        <Icon {...this.props.getPartOfThemeHocProps('PopoverClearIcon')} iconClass={clearIcon} />
       </ClearContainer>
     ) : null;
   }
