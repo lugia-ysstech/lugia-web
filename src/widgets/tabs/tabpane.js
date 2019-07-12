@@ -449,8 +449,11 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     let selectThemeProps = this.props.getPartOfThemeProps('SelectTabPan', {
       props: { isSelect, tabType, tabPosition, showDeleteBtn, disabled },
     });
-    selectThemeProps = deepMerge(titleThemeProps, selectThemeProps);
-
+    selectThemeProps = deepMerge(
+      titleThemeProps,
+      { themeConfig: { normal: { color: themeColor } } },
+      selectThemeProps
+    );
     const baseDefaultTab = BaseTab;
     switch (tabType) {
       case 'card':
@@ -583,7 +586,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
   };
 }
 
-const TabPanHoc = ThemeHoc(Tabpane, Widget.Tabs, {
+const TabPanHoc = ThemeHoc(Tabpane, Widget.Tabpane, {
   hover: false,
   active: false,
 });

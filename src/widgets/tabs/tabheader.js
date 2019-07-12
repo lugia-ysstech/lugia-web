@@ -49,10 +49,6 @@ const HBasePage = CSSComponent({
   className: 'HBasePage',
   normal: {
     selectNames: [],
-    getCSS: (themeMeta: Object, themeProps: Object) => {
-      const { height } = themeMeta;
-      return `line-height: ${height ? height + 'px' : '35px'}`;
-    },
   },
   disabled: {
     selectNames: [],
@@ -60,7 +56,7 @@ const HBasePage = CSSComponent({
   css: css`
     text-align: center;
     width: 24px;
-    line-height: 35px;
+    transform: translateY(50%);
     display: ${props => (props.arrowShow === false ? 'none' : 'block')};
   `,
 });
@@ -105,8 +101,6 @@ const VBasePage = CSSComponent({
   css: css`
     width: 100%;
     text-align: center;
-    height: ${px2remcss(24)};
-    line-height: ${px2remcss(24)};
     display: ${props => (props.arrowShow === false ? 'none' : 'block')};
   `,
 });
@@ -360,7 +354,9 @@ type TabsState = {
   totalPage: number,
   pagedCount: number,
   arrowShow: boolean,
+  allowToCalc: boolean,
   titleSize: Array<number>,
+  oldDataLength: number,
 };
 
 type TabsProps = {
@@ -542,7 +538,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
           onClick={this.onPreClick(isDisabledToPrev)}
           {...this.getArrowConfig('pre')}
         >
-          <Icon disabled={isDisabledToPrev} themeProps={themeProps} iconClass={arrowUp} />
+          <Icon disabled={isDisabledToPrev} iconClass={arrowUp} />
         </Target>
       );
     }
@@ -686,6 +682,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
       getAttributeFromObject(child.props, 'disabled', false)
     );
 
+    const tabHeaderTheme = this.props.getPartOfThemeHocProps('TabHeader');
     return {
       tabPosition,
       tabType,
@@ -707,6 +704,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
       isSelect: !disabled && activityValue === i,
       onDelete: this.onDeleteClick,
       disabled,
+      ...tabHeaderTheme,
     };
   }
 
@@ -765,7 +763,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
     return { isDisabledToPrev, isDisabledToNext };
   }
 
-  getActualWidth(tabType, titleSize) {
+  getActualWidth(tabType: TabType, titleSize: Array<number>) {
     const width = plusWidth(titleSize.length - 1, titleSize);
     return matchType(tabType, 'window')
       ? width + WindowMarginLeft + AddButtonSize

@@ -176,7 +176,6 @@ type RateProps = {
   iconClass?: Object,
   className: any,
   classify?: boolean,
-  getTheme: Function,
   onClick: Function,
   onChange: Function,
   character?: any,
@@ -316,9 +315,6 @@ class Rate extends React.Component<RateProps, any> {
       danger: StarIconClass,
       amazed: StarIconClass,
       half: StarIconClassOpen,
-    },
-    getTheme: () => {
-      return {};
     },
   };
 
@@ -580,6 +576,7 @@ class Rate extends React.Component<RateProps, any> {
     if (type === 'bottom') {
       return (
         <Icon
+          singleTheme
           theme={theme}
           viewClass={viewClass}
           type={'default'}

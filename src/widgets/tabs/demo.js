@@ -518,14 +518,7 @@ export default class TabsDemo extends React.Component<any, any> {
             },
           },
         },
-        SelectTabPan: {
-          normal: {
-            color: 'red',
-          },
-          disabled: {
-            color: '#ccc',
-          },
-        },
+
         BorderStyle: {
           normal: {
             // border:getBorder({ color: '#FFCCFF', width: 1, style: 'solid'})
@@ -544,15 +537,26 @@ export default class TabsDemo extends React.Component<any, any> {
             height: 300,
           },
         },
-        DefaultTabPan: {
-          normal: {
-            height: 31,
+
+        TabHeader: {
+          SelectTabPan: {
+            normal: {
+              color: 'red',
+            },
+            disabled: {
+              color: '#ccc',
+            },
           },
-          hover: {
-            color: 'orange',
-          },
-          disabled: {
-            color: '#ccc',
+          DefaultTabPan: {
+            normal: {
+              height: 31,
+            },
+            hover: {
+              color: 'orange',
+            },
+            disabled: {
+              color: '#ccc',
+            },
           },
         },
       },
@@ -569,12 +573,25 @@ export default class TabsDemo extends React.Component<any, any> {
             },
           },
         },
-        SelectTabPan: {
-          normal: {
-            color: 'red',
+        TabHeader: {
+          SelectTabPan: {
+            normal: {
+              color: 'red',
+            },
+            disabled: {
+              color: '#ccc',
+            },
           },
-          disabled: {
-            color: '#ccc',
+          DefaultTabPan: {
+            normal: {
+              height: 31,
+            },
+            hover: {
+              color: 'orange',
+            },
+            disabled: {
+              color: '#ccc',
+            },
           },
         },
         BorderStyle: {
@@ -595,17 +612,6 @@ export default class TabsDemo extends React.Component<any, any> {
             height: 300,
           },
         },
-        DefaultTabPan: {
-          normal: {
-            height: 31,
-          },
-          hover: {
-            color: 'orange',
-          },
-          disabled: {
-            color: '#ccc',
-          },
-        },
       },
     };
     const lineViewLeft = {
@@ -620,14 +626,6 @@ export default class TabsDemo extends React.Component<any, any> {
             },
           },
         },
-        SelectTabPan: {
-          normal: {
-            color: 'red',
-          },
-          disabled: {
-            color: '#ccc',
-          },
-        },
         BorderStyle: {
           normal: {
             // border:getBorder({ color: '#FFCCFF', width: 1, style: 'solid'})
@@ -640,21 +638,32 @@ export default class TabsDemo extends React.Component<any, any> {
             },
           },
         },
+
         TitleContainer: {
           normal: {
             width: 300,
             height: 300,
           },
         },
-        DefaultTabPan: {
-          normal: {
-            height: 31,
+        TabHeader: {
+          SelectTabPan: {
+            normal: {
+              color: 'red',
+            },
+            disabled: {
+              color: '#ccc',
+            },
           },
-          hover: {
-            color: 'orange',
-          },
-          disabled: {
-            color: '#ccc',
+          DefaultTabPan: {
+            normal: {
+              height: 31,
+            },
+            hover: {
+              color: 'orange',
+            },
+            disabled: {
+              color: '#ccc',
+            },
           },
         },
       },
@@ -671,59 +680,37 @@ export default class TabsDemo extends React.Component<any, any> {
             },
           },
         },
-        SelectTabPan: {
-          normal: {
-            color: 'red',
-          },
-          disabled: {
-            color: '#ccc',
-          },
-        },
         TitleContainer: {
           normal: {
             width: 300,
             height: 300,
           },
         },
-        DefaultTabPan: {
-          normal: {
-            height: 31,
+        TabHeader: {
+          SelectTabPan: {
+            normal: {
+              color: 'red',
+            },
+            disabled: {
+              color: '#ccc',
+            },
           },
-          hover: {
-            color: 'orange',
-          },
-          disabled: {
-            color: '#ccc',
+          DefaultTabPan: {
+            normal: {
+              height: 31,
+            },
+            hover: {
+              color: 'orange',
+            },
+            disabled: {
+              color: '#ccc',
+            },
           },
         },
       },
     };
     const cardView = {
       [Widget.Tabs]: {
-        SelectTabPan: {
-          normal: {
-            color: themeColor,
-            background: {
-              color: '#fff',
-            },
-          },
-          disabled: {
-            color: '#ccc',
-          },
-        },
-        DefaultTabPan: {
-          normal: {
-            background: {
-              color: 'pink',
-            },
-          },
-          hover: {
-            color: 'orange',
-          },
-          disabled: {
-            color: '#ccc',
-          },
-        },
         TitleContainer: {
           normal: {
             width: 300,
@@ -739,6 +726,32 @@ export default class TabsDemo extends React.Component<any, any> {
           },
           disabled: {
             color: '#ccc',
+          },
+        },
+        TabHeader: {
+          SelectTabPan: {
+            normal: {
+              color: 'red',
+              background: {
+                color: '#fff',
+              },
+            },
+            disabled: {
+              color: '#ccc',
+            },
+          },
+          DefaultTabPan: {
+            normal: {
+              background: {
+                color: 'pink',
+              },
+            },
+            hover: {
+              color: 'orange',
+            },
+            disabled: {
+              color: '#ccc',
+            },
           },
         },
       },
@@ -796,29 +809,30 @@ export default class TabsDemo extends React.Component<any, any> {
             },
           },
         },
-        SelectTabPan: {
-          normal: {
-            color: 'green',
-          },
-          disabled: {
-            color: '#ccc',
-          },
-        },
-        DefaultTabPan: {
-          normal: {},
-          hover: {
-            color: 'orange',
-          },
-          disabled: {
-            color: '#ccc',
-          },
-        },
         TitleContainer: {
           normal: {
             width: 316,
           },
         },
-        TabHeader: {},
+        TabHeader: {
+          SelectTabPan: {
+            normal: {
+              color: 'green',
+            },
+            disabled: {
+              color: '#ccc',
+            },
+          },
+          DefaultTabPan: {
+            normal: {},
+            hover: {
+              color: 'orange',
+            },
+            disabled: {
+              color: '#ccc',
+            },
+          },
+        },
       },
     };
     const { testDelayData, data, dataWindow, activityValue } = this.state;
