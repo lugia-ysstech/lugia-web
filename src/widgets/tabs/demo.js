@@ -546,7 +546,7 @@ export default class TabsDemo extends React.Component<any, any> {
         },
         DefaultTabPan: {
           normal: {
-            height: 35,
+            height: 31,
           },
           hover: {
             color: 'orange',
@@ -597,7 +597,7 @@ export default class TabsDemo extends React.Component<any, any> {
         },
         DefaultTabPan: {
           normal: {
-            height: 35,
+            height: 31,
           },
           hover: {
             color: 'orange',
@@ -648,7 +648,7 @@ export default class TabsDemo extends React.Component<any, any> {
         },
         DefaultTabPan: {
           normal: {
-            height: 35,
+            height: 31,
           },
           hover: {
             color: 'orange',
@@ -687,7 +687,7 @@ export default class TabsDemo extends React.Component<any, any> {
         },
         DefaultTabPan: {
           normal: {
-            height: 35,
+            height: 31,
           },
           hover: {
             color: 'orange',

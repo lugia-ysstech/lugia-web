@@ -229,13 +229,13 @@ const CardTitle = CSSComponent({
   normal: {
     selectNames: [['height'], ['lineHeight']],
     defaultTheme: {
-      height: 35,
-      lineHeight: 35,
+      height: 31,
+      lineHeight: 31,
     },
     getStyle: (theme: Object, themeProps: Object) => {
       const { height } = theme;
       return {
-        lineHeight: height ? `${height}px` : '34px',
+        lineHeight: height ? `${height}px` : '32px',
       };
     },
   },
