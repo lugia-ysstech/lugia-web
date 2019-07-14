@@ -95,10 +95,8 @@ export const WrapperDemo = () => {
         },
       },
       PopconfirmIcon: {
-        icon: {
-          normal: {
-            color: 'red',
-          },
+        normal: {
+          color: 'red',
         },
       },
     },
@@ -150,44 +148,45 @@ export const WrapperDemo = () => {
             <Direction type="primary">BR</Direction>
           </Popconfirm>
         </div>
+
+        <br />
+        <Popconfirm title={text} action={'focus'}>
+          <Input placeholder={'聚焦弹出'} />
+        </Popconfirm>
+        <Popconfirm title={text} action={'hover'}>
+          <Direction type="primary"> 悬停</Direction>
+        </Popconfirm>
+        <Popconfirm title={text} action={'click'} cancelText="No" okText="yes" okType="danger">
+          <Direction type="primary">点击</Direction>
+        </Popconfirm>
+        <br />
+        <div>
+          <Popconfirm
+            title={text}
+            action={'click'}
+            cancelText="No"
+            okText="yes"
+            okType="danger"
+            icon={'lugia-icon-reminder_exclamation'}
+          >
+            <Direction type="primary">提示</Direction>
+          </Popconfirm>
+          <Popconfirm
+            title={text}
+            action={'click'}
+            cancelText="No"
+            okText="yes"
+            okType="danger"
+            icon={
+              <IconWrapper>
+                <Icon iconClass={'lugia-icon-reminder_question'} />
+              </IconWrapper>
+            }
+          >
+            <Direction type="primary">危险操作</Direction>
+          </Popconfirm>
+        </div>
       </Theme>
-      <br />
-      <Popconfirm title={text} action={'focus'}>
-        <Input placeholder={'聚焦弹出'} />
-      </Popconfirm>
-      <Popconfirm title={text} action={'hover'}>
-        <Direction type="primary"> 悬停</Direction>
-      </Popconfirm>
-      <Popconfirm title={text} action={'click'} cancelText="No" okText="yes" okType="danger">
-        <Direction type="primary">点击</Direction>
-      </Popconfirm>
-      <br />
-      <div>
-        <Popconfirm
-          title={text}
-          action={'click'}
-          cancelText="No"
-          okText="yes"
-          okType="danger"
-          icon={'lugia-icon-reminder_exclamation'}
-        >
-          <Direction type="primary">提示</Direction>
-        </Popconfirm>
-        <Popconfirm
-          title={text}
-          action={'click'}
-          cancelText="No"
-          okText="yes"
-          okType="danger"
-          icon={
-            <IconWrapper>
-              <Icon iconClass={'lugia-icon-reminder_question'} />
-            </IconWrapper>
-          }
-        >
-          <Direction type="primary">危险操作</Direction>
-        </Popconfirm>
-      </div>
     </Wrapper>
   );
 };

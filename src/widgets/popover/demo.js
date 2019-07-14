@@ -127,7 +127,9 @@ export const WrapperDemo = () => {
   const description = 'this is description';
   const config = {
     [Widget.Popover]: {
-      PopoverOperation: { normal: { color: 'purple' } },
+      PopoverClearIcon: {
+        normal: { color: 'purple' },
+      },
       PopoverContent: {
         TooltipContent: { normal: { background: { color: 'pink' } } },
         TooltipTitle: { normal: { color: 'green' } },

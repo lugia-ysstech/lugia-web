@@ -31,7 +31,7 @@
     "Icon": {
       "name": "图标",
       "desc": "图标",
-      "normal": [["color"], ["margin"], ["fontSize"], ["padding"], ["cursor"]],
+      "normal": [["color"], ["margin"], ["fontSize"],["font"], ["padding"], ["cursor"]],
       "hover": [["color"], ["margin"], ["cursor"]],
       "clicked": [],
       "disabled": [["color"], ["cursor"]]

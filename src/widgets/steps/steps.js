@@ -14,23 +14,19 @@ import type { AlignType, StepType, OrientationType, SizeType } from '../css/step
 import Step from './step';
 import { getAttributeFromObject } from '../common/ObjectUtils';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
-import { addPropsConfig } from '../avatar';
-import { units } from '@lugia/css';
 
-const { px2remcss } = units;
-
-const OutContainer = CSSComponent({
+const StepsOutContainer = CSSComponent({
   tag: 'div',
-  className: 'StepOutContainer',
+  className: 'StepsOutContainer',
   normal: {
-    selectNames: [['width']],
+    selectNames: [['width'], ['height'], ['margin'], ['padding']],
     getThemeMeta(themeMeta, themeProps) {
-      const { width } = themeMeta;
+      const { width, height } = themeMeta;
       const { propsConfig } = themeProps;
       const { orientation } = propsConfig;
-      const theWidth =
-        orientation === 'vertical' ? '' : width && width > 0 ? px2remcss(width) : px2remcss(500);
-      return { width: theWidth };
+      const theWidth = width && width > 0 ? width : '';
+      const theHeight = height && height > 0 ? height : '';
+      return orientation === 'horizontal' ? { width: theWidth } : { height: theHeight };
     },
   },
   css: css`
@@ -44,12 +40,17 @@ const HStepsOutContainer = CSSComponent({
   tag: 'div',
   className: 'HStepsOutContainer',
   normal: {
-    selectNames: [['width']],
+    selectNames: [['width'], ['height']],
     getCSS(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
       const { orientation } = propsConfig;
       const direction = orientation === 'horizontal' ? 'row' : 'column';
       return ` flex-direction: ${direction};`;
+    },
+    getThemeMeta(themeMeta, themeProps) {
+      const { propsConfig } = themeProps;
+      const { orientation } = propsConfig;
+      return orientation === 'horizontal' ? { width: '100%' } : { height: '100%' };
     },
   },
   css: css`
@@ -73,6 +74,8 @@ type StepsProps = {
   data: Array<Object>,
   defaultData: Array<Object>,
   themeProps: Object,
+  getPartOfThemeProps: Function,
+  getPartOfThemeHocProps: Function,
 };
 export const defaultData = [
   { title: 'step1', stepStatus: 'finish' },
@@ -105,22 +108,30 @@ class Steps extends Component<StepsProps, StepsState> {
   static getDerivedStateFromProps(props: StepsProps, state: StepsState) {}
 
   render() {
-    const { themeProps, orientation } = this.props;
-    const theThemeProps = addPropsConfig(themeProps, { orientation });
+    const { orientation } = this.props;
+    const theThemeProps = this.props.getPartOfThemeProps('StepsOutContainer', {
+      props: {
+        orientation,
+      },
+    });
     return (
-      <OutContainer
+      <StepsOutContainer
         themeProps={theThemeProps}
         orientation={orientation}
-        viewClass={'stepsContainer'}
+        viewClass={'StepsOutContainer'}
       >
         {this.getHSteps()}
-      </OutContainer>
+      </StepsOutContainer>
     );
   }
 
   getHSteps() {
-    const { orientation, stepType, themeProps } = this.props;
-    const theThemeProps = addPropsConfig(themeProps, { orientation });
+    const { orientation, stepType } = this.props;
+    const theThemeProps = this.props.getPartOfThemeProps('StepsContainer', {
+      props: {
+        orientation,
+      },
+    });
     return (
       <HStepsOutContainer orientation={orientation} stepType={stepType} themeProps={theThemeProps}>
         {this.getChildren()}
