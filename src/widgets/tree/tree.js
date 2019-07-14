@@ -11,7 +11,6 @@ import ThemeHoc from '@lugia/theme-hoc';
 import * as React from 'react';
 import { TreeNode } from './rc-tree';
 import Support from '../common/FormFieldWidgetSupport';
-import ThemeProvider from '../theme-provider';
 import ThrottleTree from './ThrottleTree';
 import Widget from '../consts/index';
 import './index.css';
@@ -456,7 +455,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
       return empty;
     }
     if (this.state.hasError) {
-      // return <ErrorTooltip>树形数据错误</ErrorTooltip>;
+      return <ErrorTooltip>树形数据错误</ErrorTooltip>;
     }
     const {
       query,

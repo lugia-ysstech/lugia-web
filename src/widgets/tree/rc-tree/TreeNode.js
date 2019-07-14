@@ -5,23 +5,12 @@ import toArray from 'rc-util/lib/Children/toArray';
 import { contextTypes } from './Tree';
 import CommonIcon from '../../icon';
 import CheckBox from '../../checkbox';
-import styled from 'styled-components';
 import Widget from '../../consts';
 import ThemeHoc from '@lugia/theme-hoc';
 import Theme from '../../theme';
 import { getMenuItemHeight, TextIcon } from '../../css/menu';
-import { px2remcss } from '../../css/units';
-import { FontSizeNumber } from '../../css';
 import { FlexWrap, FlexBox, CheckBoxWrap } from '../../css/tree';
 const defaultTitle = '---';
-
-// const FlexBox = styled.div`
-//   display: flex;
-//   border: 1px solid orange;
-//   /* &:hover {
-//     background: pink;
-//   } */
-// `;
 
 class TreeNode extends React.Component {
   static propTypes = {
@@ -154,17 +143,27 @@ class TreeNode extends React.Component {
   };
 
   renderSwitcher(expandedState) {
-    const { themeStyle, describe = false, mutliple, switcher = true } = this.props;
-    if ((describe && !mutliple) || (!mutliple && !switcher)) {
-      return null;
+    const { themeStyle, describe, mutliple, switcher = true } = this.props;
+    if (mutliple || !describe) {
+      const { Switcher, openClassName, closeClassName } = themeStyle;
+      const iconClass = expandedState === 'open' ? openClassName : closeClassName;
+      return (
+        <Switcher
+          mutliple={mutliple}
+          onClick={this.onExpand}
+          expandedState={expandedState}
+          themeProps={this.props.getPartOfThemeProps('Switcher')}
+        >
+          <CommonIcon iconClass={iconClass} />
+        </Switcher>
+      );
     }
+    const { NullSwitcher } = themeStyle;
 
-    const { Switcher, openClassName, closeClassName } = themeStyle;
-    const iconClass = expandedState === 'open' ? openClassName : closeClassName;
     return (
-      <Switcher mutliple={mutliple} onClick={this.onExpand} expandedState={expandedState}>
-        <CommonIcon iconClass={iconClass} />
-      </Switcher>
+      <NullSwitcher themeProps={this.props.getPartOfThemeProps('Switcher')}>
+        <CommonIcon iconClass={'lugia-icon-financial_omit'} />
+      </NullSwitcher>
     );
   }
 
@@ -177,6 +176,7 @@ class TreeNode extends React.Component {
       disabled: dataDisabled,
       icon,
       themeStyle,
+      mutliple,
       getPartOfThemeProps,
     } = this.props;
     const { Switcher, TitleWrap } = themeStyle;
@@ -186,26 +186,20 @@ class TreeNode extends React.Component {
       [Widget.CheckBox]: { color: themeColor },
     };
     return (
-      <Theme config={view}>
-        <CheckBoxWrap>
-          {icon ? (
-            <Switcher>
-              <CommonIcon iconClass={icon} />
-            </Switcher>
-          ) : null}
-          <TitleWrap themeProps={getPartOfThemeProps('Text')}>
-            <CheckBox
-              theme={this.getCheckBoxTheme()}
-              checked={checked}
-              disabled={disabled}
-              indeterminate={indeterminate}
-              onChange={this.onCheck}
-            >
-              {title}
-            </CheckBox>
-          </TitleWrap>
-        </CheckBoxWrap>
-      </Theme>
+      <CheckBoxWrap>
+        {icon ? <CommonIcon iconClass={icon} /> : null}
+        <TitleWrap themeProps={this.getThemeProps('Text', 'SelectedText', { mutliple })}>
+          <CheckBox
+            theme={this.getCheckBoxTheme()}
+            checked={checked}
+            disabled={disabled}
+            indeterminate={indeterminate}
+            onChange={this.onCheck}
+          >
+            {title}
+          </CheckBox>
+        </TitleWrap>
+      </CheckBoxWrap>
     );
   }
 
@@ -277,6 +271,14 @@ class TreeNode extends React.Component {
     return <Switcher>{suffix}</Switcher>;
   }
 
+  getThemeProps(defaultName: string, selectedName: string, params: Object = {}): Object {
+    const { getPartOfThemeProps, mutliple, checked, selected } = this.props;
+    const isChecked = mutliple ? checked : selected;
+    return isChecked
+      ? getPartOfThemeProps(selectedName, { props: params })
+      : getPartOfThemeProps(defaultName, { props: params });
+  }
+
   render() {
     const { props } = this;
     const {
@@ -290,12 +292,12 @@ class TreeNode extends React.Component {
       themeStyle,
       icon,
       size,
-      theme,
       color,
       isLeaf,
       title,
       shape,
       paddingLeft,
+      mutliple,
       getPartOfThemeProps,
     } = this.props;
     const expandedState = props.expanded ? 'open' : 'close';
@@ -314,19 +316,24 @@ class TreeNode extends React.Component {
     }
     const { TitleWrap, NullSwitcher, Li, TitleSpan } = themeStyle;
     const itemHeight = getMenuItemHeight(size);
-    const TextThemeProps = getPartOfThemeProps('Text', { props: { pos } });
 
+    const TextThemeProps = this.getThemeProps('Text', 'SelectedText', {
+      pos,
+      mutliple,
+      shape,
+      selected,
+      describe,
+    });
     const selectHandle = () => {
       const title = (
         <TitleSpan
+          themeProps={TextThemeProps}
           color={color}
           pos={pos}
           selected={selected}
           inlineType={inlineType}
           title={content}
           height={itemHeight}
-          // theme={theme}
-          paddingLeft={paddingLeft}
         >
           {icon ? <TextIcon iconClass={icon} /> : null}
           {content}
@@ -344,7 +351,9 @@ class TreeNode extends React.Component {
 
           if (this.isSelectable()) {
             this.onSelect();
-            this.onExpand();
+            if (!props.describe) {
+              this.onExpand();
+            }
           }
         };
         if (props.draggable) {
@@ -387,20 +396,14 @@ class TreeNode extends React.Component {
 
     const renderNoopSwitcher = () => {
       const { mutliple, switcher } = this.props;
-
-      // return !mutliple && !switcher ? null : (
-      //   <NullSwitcher>
-      //     <CommonIcon iconClass={'lugia-icon-direction_caret_left'} />
-      //   </NullSwitcher>
-      // );
       return (
-        <NullSwitcher>
+        <NullSwitcher themeProps={this.props.getPartOfThemeProps('Switcher')}>
           <CommonIcon iconClass={'lugia-icon-financial_omit'} />
         </NullSwitcher>
       );
     };
 
-    const TreeWrapThemeProps = getPartOfThemeProps('TreeItemWrap', { props: { pos } });
+    const TreeWrapThemeProps = this.getThemeProps('TreeItemWrap', 'SelectedTreeItemWrap', { pos });
     return (
       <Li
         themeProps={TreeWrapThemeProps}
@@ -415,6 +418,7 @@ class TreeNode extends React.Component {
         height={itemHeight}
       >
         <FlexWrap themeProps={TreeWrapThemeProps}>
+          {/* 默认层级padding值加在了flexWrap上，配置的padding值作用在FlexBox，这样不会破坏默认层级padding值 */}
           <FlexBox themeProps={TreeWrapThemeProps}>
             {/* 小箭头*/}
             {canRenderSwitcher ? this.renderSwitcher(expandedState) : renderNoopSwitcher()}
