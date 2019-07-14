@@ -167,6 +167,7 @@ class AvatarBox extends React.Component<AvatarProps, AvatarState> {
       );
       return (
         <Icon
+          singleTheme
           viewClass={viewClass}
           theme={newTheme}
           propsConfig={{ size, shape, src, icon }}

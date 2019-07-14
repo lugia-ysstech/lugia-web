@@ -229,13 +229,13 @@ const CardTitle = CSSComponent({
   normal: {
     selectNames: [['height'], ['lineHeight']],
     defaultTheme: {
-      height: 35,
-      lineHeight: 35,
+      height: 31,
+      lineHeight: 31,
     },
     getStyle: (theme: Object, themeProps: Object) => {
       const { height } = theme;
       return {
-        lineHeight: height ? `${height}px` : '34px',
+        lineHeight: height ? `${height}px` : '32px',
       };
     },
   },
@@ -534,7 +534,15 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
   getIcon(icon: string, themeProps: Object) {
     const { isSelect, disabled } = this.props;
     if (ObjectUtils.isString(icon)) {
-      return <Icon {...themeProps} isSelect={isSelect} iconClass={icon} disabled={disabled} />;
+      return (
+        <Icon
+          {...themeProps}
+          isSelect={isSelect}
+          iconClass={icon}
+          disabled={disabled}
+          singleTheme
+        />
+      );
     }
     return icon;
   }
@@ -556,6 +564,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
           tabType={tabType}
         >
           <Icon
+            singleTheme
             theme={theme}
             viewClass={viewClass}
             iconClass={iconClass}

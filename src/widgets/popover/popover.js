@@ -9,12 +9,11 @@ import Tooltip from '../tooltip/index';
 import Icon from '../icon/index';
 import Widget from '../consts/index';
 import type { PopoverProps, PopoverState } from '../css/popover';
-import { ObjectUtils } from '@lugia/type-utils';
 import { getStateFromProps, processOnVisibleChange } from '../tooltip';
 
 import ThemeHoc from '@lugia/theme-hoc';
 import { deepMerge } from '@lugia/object-utils';
-import { StaticComponent, css } from '../theme/CSSProvider';
+import { css, StaticComponent } from '../theme/CSSProvider';
 import { units } from '@lugia/css';
 
 const { px2remcss } = units;
@@ -70,7 +69,11 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
     const { clearIcon = 'lugia-icon-reminder_close', showClearButton } = this.props;
     return showClearButton ? (
       <ClearContainer onClick={this.onClearClick}>
-        <Icon {...this.props.getPartOfThemeHocProps(Widget.Icon)} iconClass={clearIcon} />
+        <Icon
+          {...this.props.getPartOfThemeHocProps(Widget.Icon)}
+          iconClass={clearIcon}
+          singleTheme
+        />
       </ClearContainer>
     ) : null;
   }

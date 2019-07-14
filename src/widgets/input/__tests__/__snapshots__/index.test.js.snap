@@ -57,6 +57,7 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
+  style={Object {}}
 >
   <input
     autoFocus={false}
@@ -142,6 +143,7 @@ exports[`Input props: null 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
+  style={Object {}}
 >
   <input
     autoFocus={false}
@@ -227,6 +229,7 @@ exports[`Input props: placeholder  1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
+  style={Object {}}
 >
   <input
     autoFocus={false}
@@ -313,6 +316,7 @@ exports[`Input props: placeholder  2`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
+  style={Object {}}
 >
   <input
     autoFocus={false}
@@ -399,6 +403,7 @@ exports[`Input props: size 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
+  style={Object {}}
 >
   <input
     autoFocus={false}
@@ -484,6 +489,7 @@ exports[`Input props: size 2`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
+  style={Object {}}
 >
   <input
     autoFocus={false}

@@ -8,7 +8,8 @@ import CheckBox from '../../checkbox';
 import Widget from '../../consts';
 import ThemeHoc from '@lugia/theme-hoc';
 import { getMenuItemHeight, TextIcon } from '../../css/menu';
-import { FlexWrap, FlexBox, CheckBoxWrap } from '../../css/tree';
+import { CheckBoxWrap, FlexBox, FlexWrap } from '../../css/tree';
+
 const defaultTitle = '---';
 
 class TreeNode extends React.Component {

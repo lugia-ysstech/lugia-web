@@ -515,7 +515,7 @@ class Slider extends Component<TypeProps, TypeState> {
 
         iconsChildren.push(
           <Icons iconStyle={iconStyle} value={value} {...size} themeProps={themeProps}>
-            <Icon iconClass={icon.name} viewClass={viewClass} theme={iconTheme} />
+            <Icon iconClass={icon.name} viewClass={viewClass} theme={iconTheme} singleTheme />
           </Icons>
         );
       });

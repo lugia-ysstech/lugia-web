@@ -1514,10 +1514,10 @@
   dependencies:
     "@lugia/react-devtools-core" "^1.0.3"
 
-"@lugia/theme-hoc@^1.0.32":
-  version "1.0.32"
-  resolved "http://192.168.102.79:5001/@lugia/theme-hoc/download/@lugia/theme-hoc-1.0.32.tgz#560f82e03b8fa9c725aa7f9e92d930e5fef0d6a9"
-  integrity sha1-Vg+C4DuPqcclqn+ektkw5f7w1qk=
+"@lugia/theme-hoc@^1.0.33":
+  version "1.0.33"
+  resolved "http://192.168.102.79:5001/@lugia/theme-hoc/download/@lugia/theme-hoc-1.0.33.tgz#9ed5499469942fd3ecb4431f2c9d1990e5a35da1"
+  integrity sha1-ntVJlGmUL9PstEMfLJ0ZkOWjXaE=
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/object-utils" "^1.0.10"
