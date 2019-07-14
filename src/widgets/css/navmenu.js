@@ -6,9 +6,9 @@
  */
 import colorsFunc from './stateColor';
 import styled from 'styled-components';
-import { px2emcss } from './units';
-
-const em = px2emcss(1.2);
+import { px2remcss } from './units';
+import ThemeHoc from '@lugia/theme-hoc';
+import CSSComponent, { css } from '@lugia/theme-css-hoc';
 export const {
   themeColor,
   darkGreyColor,
@@ -22,29 +22,19 @@ export const DefaultHeight = 1000;
 export const DescribeColor = '#999';
 export const ItemBackgroundColor = '#edf0fe';
 
-// const getSpiritColor = (color: string) => {
-//   const { spiritColor } = colorsFunc(color);
-//   return spiritColor;
-// };
-
-// const getDarkBakcgroundColor = (color: string) => {
-// const darkColor = changeColor(color, -30, 80);
-// return darkColor;
-// };
-
-export const Switcher = styled.span`
-  font-size: ${em(14)};
+export const Switch = styled.span`
+  font-size: ${px2remcss(14)};
   color: ${mediumGreyColor};
   display: inline-block;
   position: absolute;
-  right: ${px2emcss(1.4)(10)};
+  right: ${px2remcss(10)};
   top: 0;
-  margin: 0 ${em(10)};
+  margin: 0 ${px2remcss(10)};
   vertical-align: top;
 `;
-Switcher.displayName = 'switcherButton';
+Switch.displayName = 'switcherButton';
 
-export const NullSwitcher = styled(Switcher)`
+export const NullSwitch = styled(Switch)`
   opacity: 0;
 `;
 
@@ -56,15 +46,12 @@ const getSelectIconOpacity = props => {
   const { selected } = props;
   return `opacity: ${selected ? 1 : 0}`;
 };
-const getChildrenSelected = props => {
-  // 如果子元素有选中，则字体变 900
-};
 
 const getHeight = props => {
   const { pos, height = 40 } = props;
   const num = pos.split('-').length - 2;
-  return `min-height: ${num ? `${em(height)}` : `${em(height)}`};
-  line-height: ${num ? `${em(height)}` : `${em(height)}`}
+  return `min-height: ${num ? `${px2remcss(height)}` : `${px2remcss(height)}`};
+  line-height: ${num ? `${px2remcss(height)}` : `${px2remcss(height)}`}
     `;
 };
 
@@ -75,9 +62,9 @@ const getLiIcon = props => {
     : `
   ::before {
     content: '';
-    width: ${em(6)};
-    border-radius: ${em(4)};
-    height: ${em(MenuItemHeight)};
+    width: ${px2remcss(6)};
+    border-radius: ${px2remcss(4)};
+    height: ${px2remcss(MenuItemHeight)};
     background: ${themeColor};
     opacity: 1;
     transition: all 0.3s;
@@ -90,9 +77,12 @@ const getLiIcon = props => {
 };
 
 const getLiBackground = props => {
-  const { theme, color = themeColor } = props;
-  // const { color: darkBackColor } = getDarkBakcgroundColor(color);
+  const { theme } = props;
   return `background: ${theme === 'dark' ? '#000033' : ''}`;
+};
+
+const getChildrenSelected = props => {
+  // 如果子元素有选中，则字体变 900
 };
 
 export const Li = styled.li`
@@ -109,15 +99,15 @@ export const Li = styled.li`
 `;
 Li.displayName = 'liItem';
 
-const getChildrenUlBackground = props => {
+const getSubTreeWrapBackground = props => {
   const { inlineType } = props;
   return inlineType === 'ellipse' ? '' : `background: ${ItemBackgroundColor} `;
 };
 
-export const ChildrenUl = styled.ul`
+export const SubTreeWrap = styled.ul`
   margin: 0;
   padding: 0;
-  ${getChildrenUlBackground};
+  ${getSubTreeWrapBackground};
 `;
 
 function getSelected(props) {
@@ -155,14 +145,14 @@ const getTitleWrapPadding = props => {
   const { pos } = props;
   const num = pos.split('-').length - 2;
   return num
-    ? `padding: 0 ${px2emcss(1.4)(40)} 0 ${px2emcss(1.4)(10 + num * 10)}`
-    : `padding: 0 ${px2emcss(1.6)(40)} 0 ${px2emcss(1.6)(10 + num * 10)}`;
+    ? `padding: 0 ${px2remcss(40)} 0 ${px2remcss(10 + num * 10)}`
+    : `padding: 0 ${px2remcss(40)} 0 ${px2remcss(10 + num * 10)}`;
 };
 
 const getFontSize = props => {
   const { pos } = props;
   const num = pos.split('-').length - 2;
-  return `font-size: ${num ? em(14) : em(16)}`;
+  return `font-size: ${num ? px2remcss(14) : px2remcss(16)}`;
 };
 
 const getTitleWrapBackground = props => {
@@ -191,14 +181,14 @@ const getBorderRadius = props => {
   const { pos } = props;
   const num = pos.split('-').length - 2;
   return `
-    border-radius: ${num ? em(60) : em(40)};
+    border-radius: ${num ? px2remcss(60) : px2remcss(40)};
   `;
 };
 
 const getTitleSpanPadding = props => {
   const { pos, paddingLeft = 20 } = props;
   const num = pos.split('-').length - 2;
-  return num ? `padding-left: ${px2emcss(1.4)(paddingLeft)}` : `padding-left: ${px2emcss(1.6)(20)}`;
+  return num ? `padding-left: ${px2remcss(paddingLeft)}` : `padding-left: ${px2remcss(20)}`;
 };
 
 const getSelectedBackground = props => {
@@ -214,7 +204,7 @@ const getSelectedBackground = props => {
 const getTitleSpanHeight = props => {
   const { pos } = props;
   const num = pos.split('-').length - 2;
-  return num ? px2emcss(1.4)(32) : px2emcss(1.6)(32);
+  return num ? px2remcss(32) : px2remcss(32);
 };
 
 export const TitleSpan = styled.span`

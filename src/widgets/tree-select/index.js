@@ -11,15 +11,14 @@ import InputTag from '../inputtag';
 import Trigger from '../trigger';
 import Tree from '../tree/index.js';
 import Theme from '../theme';
+import ThemeHoc from '@lugia/theme-hoc';
 import Widget from '../consts/index';
-import ThemeProvider from '../theme-provider';
 import styled from 'styled-components';
 import Support from '../common/FormFieldWidgetSupport';
 import QueryInput from '../common/QueryInput';
 import { themeColor } from '../css/tree';
 import { getNewValueOrOldValue } from '../select';
 import { appendCustomValue, getTheme, setNewValue } from '../common/selectFunction';
-
 import { DefaultHelp } from '../css/input';
 import { FontSizeNumber, FontSize } from '../css';
 import { px2emcss } from '../css/units';
@@ -224,6 +223,14 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     );
   }
 
+  getTreeTheme() {
+    const { getPartOfThemeConfig } = this.props;
+    const config = {
+      [Widget.Tree]: getPartOfThemeConfig('Tree'),
+    };
+    return config;
+  }
+
   getInner(props, state) {
     /* create by ZhangBoPing */
     const {
@@ -276,6 +283,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
         data={data}
         key="tree"
         {...res}
+        theme={this.getTreeTheme()}
         current={current}
         start={start}
         expandAll={expandAll}
@@ -307,7 +315,6 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const getInputTag: Function = (cmp: Object) => {
       this.inputTag = cmp;
     };
-
     return (
       <Trigger
         popup={tree}
@@ -323,6 +330,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
           key="inputtag"
           help={help}
           validateStatus={validateStatus}
+          {...this.props.getPartOfThemeHocProps('InputTag')}
           onFocus={this.onFocus}
           disabled={disabled}
           value={value}
@@ -571,6 +579,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   }
 
   getTree() {
+    console.log('treeCmp', this.treeCmp);
     return this.treeCmp.innerTree.current.getThemeTarget();
   }
 
@@ -582,7 +591,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   }
 
   treeCompontIsEmpty() {
-    return !this.treeCmp || !this.treeCmp.innerTree.current.getThemeTarget();
+    return !this.treeCmp || !this.treeCmp.innerTree.current;
   }
 
   onQueryInputChange = (nextValue: any) => {
@@ -760,4 +769,5 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   }
 }
 
-export default ThemeProvider(TreeSelect, Widget.TreeSelect);
+// export default ThemeProvider(TreeSelect, Widget.TreeSelect);
+export default ThemeHoc(TreeSelect, Widget.TreeSelect, { hover: true });

@@ -98,7 +98,6 @@ class MenuItem extends React.Component<MenuItemProps> {
       getPartOfThemeHocProps,
       getPartOfThemeProps,
     } = this.props;
-
     let theme;
     if (checked) {
       theme = getPartOfThemeHocProps('SelectedItem');

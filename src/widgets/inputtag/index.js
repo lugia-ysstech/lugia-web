@@ -72,6 +72,8 @@ type InputTagProps = {
   onClear?: Function,
   onPopupVisibleChange?: Function,
   prefix?: any,
+  getPartOfThemeHocProps: Function,
+  getPartOfThemeProps: Function,
 };
 const Clear = 'lugia-icon-reminder_close';
 const Pull = 'lugia-icon-direction_down';
@@ -80,10 +82,6 @@ type InputTagState = {
   items: Array<React.Node>,
   value: Object,
   query: string,
-};
-
-const getContentWidth = (w: number, left: number, right: number, size: number) => {
-  return w - left - right - size - 10;
 };
 
 class InputTag extends React.Component<InputTagProps, InputTagState> {
@@ -247,7 +245,6 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
                 {this.getSingleValue()}
                 <FocuInput themeProps={themeProps} />
               </FlexResBox>
-
               {clearButton}
             </SingleInnerContainer>
           </OutContainer>
@@ -362,7 +359,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       <CommonIcon themeProps={themeProps} iconClass={Clear} onClick={this.onClear} />
     );
     return (
-      <IconWrap theme={theme} viewClass={viewClass}>
+      <IconWrap themeProps={themeProps} viewClass={viewClass}>
         {Icon}
       </IconWrap>
     );
@@ -391,6 +388,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   }
 
   getFontWidth(text: string): number {
+    console.log('fontWidth', text, this.fontItem);
     return this.fontItem.getWidth(text);
   }
 
@@ -513,7 +511,6 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
 
   componentDidMount() {
     const offSetWidth = this.getOffSetWidth();
-    console.log('offSetWidth', offSetWidth);
     this.oldWidth = offSetWidth;
 
     this.adaptiveItems(offSetWidth);
@@ -538,12 +535,12 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     left = toNumber(left, 0);
     right = toNumber(right, 0);
     const size = isNumber(fontSize) ? fontSize : FontSize;
-    console.log('list', this.list.offsetWidth);
 
     if (this.isMutliple()) {
       // return typeof width === 'number'
       //   ? getContentWidth(width, left, right, size)
       //   : this.list.offsetWidth;
+      console.log('this.list', this);
       return this.list.offsetWidth;
     }
     return 0;
@@ -633,7 +630,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       const moreItemWidth = this.getMoreItemWidth();
 
       listWidth -= moreItemWidth;
-
+      console.log('listWidth', listWidth);
       let totalWidth = 0;
       const keys = this.getKeys(value);
       const valueLen = keys.length;
