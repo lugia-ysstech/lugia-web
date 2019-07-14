@@ -7,6 +7,7 @@
 import '../common/shirm';
 import * as React from 'react';
 import styled from 'styled-components';
+import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import Support from '../common/FormFieldWidgetSupport';
 import { cacheOnlyFirstCall, getElementPosition } from '../utils';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
@@ -17,9 +18,7 @@ import {
   BarDefaultSizePadding,
   BarHoverBackgroundColor,
 } from '../css/scroller';
-import { px2emcss } from '../css/units';
-
-const em = px2emcss(FontSizeNumber);
+import { px2emcss, px2remcss } from '../css/units';
 
 type ScrollerProps = {
   totalSize: number,
@@ -38,20 +37,65 @@ type ScrollerState = {
 };
 type Direction = 'down' | 'up' | 'none';
 
-const Container = styled.div`
-  position: relative;
-  background: rgba(255, 255, 255, 0);
-  width: ${em(20)};
-  height: ${em(300)};
-  z-index: 996;
-`;
+// const Container = styled.div`
+// position: relative;
+// background: rgba(255, 255, 255, 0);
+// width: ${px2remcss(20)};
+// height: ${px2remcss(300)};
+// z-index: 996;
+// `;
+// StaticComponent
+const Container = StaticComponent({
+  tag: 'div',
+  className: 'Container',
+  normal: {
+    selectNames: [],
+  },
+  hover: {
+    selectNames: [],
+  },
+  css: css`
+    position: relative;
+    background: rgba(255, 255, 255, 0);
+    width: ${px2remcss(20)};
+    height: ${px2remcss(300)};
+    z-index: 996;
+  `,
+});
 
-const XContainer = styled(Container)`
-  height: ${em(BarDefaultSize)};
-`;
-const YContainer = styled(Container)`
-  width: ${em(BarDefaultSize)};
-`;
+// const XContainer = styled(Container)`
+//   height: ${px2remcss(BarDefaultSize)};
+// `;
+
+const XContainer = StaticComponent({
+  extend: Container,
+  className: 'XContainer',
+  normal: {
+    selectNames: [],
+  },
+  hover: {
+    selectNames: [],
+  },
+  css: css`
+    height: ${px2remcss(BarDefaultSize)};
+  `,
+});
+// const YContainer = styled(Container)`
+//   width: ${px2remcss(BarDefaultSize)};
+// `;
+const YContainer = StaticComponent({
+  extend: Container,
+  className: 'YContainer',
+  normal: {
+    selectNames: [],
+  },
+  hover: {
+    selectNames: [],
+  },
+  css: css`
+    width: ${px2remcss(BarDefaultSize)};
+  `,
+});
 const getBackground = props => (props.disabled ? '#898989' : BarBackgroundColor);
 const Bar = styled.div`
   position: absolute;
@@ -59,11 +103,11 @@ const Bar = styled.div`
   left: 0;
   cursor: pointer;
   text-align: center;
-  border-radius: ${em(8)};
+  border-radius: ${px2remcss(8)};
   background: ${getBackground};
   color: #fff;
   font-size: ${FontSize};
-  line-height: ${em(30)};
+  line-height: ${px2remcss(30)};
 
   &:hover {
     background-color: ${BarHoverBackgroundColor};
@@ -74,14 +118,14 @@ const Bar = styled.div`
 
 const scrollerSize = BarDefaultSize - BarDefaultSizePadding;
 const XBar = styled(Bar)`
-  height: ${em(scrollerSize)};
-  margin-bottom: ${em(2)};
-  margin-top: ${em(2)};
+  height: ${px2remcss(scrollerSize)};
+  margin-bottom: ${px2remcss(2)};
+  margin-top: ${px2remcss(2)};
 `;
 const YBar = styled(Bar)`
-  width: ${em(scrollerSize)};
-  margin-left: ${em(2)};
-  margin-right: ${em(2)};
+  width: ${px2remcss(scrollerSize)};
+  margin-left: ${px2remcss(2)};
+  margin-right: ${px2remcss(2)};
 `;
 
 const XScroller = 'x',
@@ -204,7 +248,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
   }
 
   getPX(val: number): string {
-    return `${em(val)}`;
+    return `${px2remcss(val)}`;
   }
 
   componentDidMount() {
@@ -435,7 +479,8 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     this.posGetter = cacheOnlyFirstCall(getElementPosition);
     this.step = step;
     this.maxValue = this.getMaxValue(props);
-    this.fastStep = totalSize / 32;
+    this.fastStep = totalSize / 34;
+    console.log('fastStep', this.fastStep, totalSize);
     this.sliderAbsoulateSize = 0;
   }
 
@@ -453,7 +498,6 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
   getMaxValue(props: ScrollerProps): number {
     const { totalSize, viewSize } = props;
-    console.log('totalSize', totalSize, viewSize);
     return totalSize - viewSize;
   }
 

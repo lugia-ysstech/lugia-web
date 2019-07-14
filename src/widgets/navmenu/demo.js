@@ -166,7 +166,7 @@ export default class LimitDemo extends React.Component<Object, Object> {
           </Theme>
         </Box>
 
-        <Box>
+        {/* <Box>
           <H3>dark主题 ellipse</H3>
           <Theme config={config}>
             <Navmenu
@@ -211,7 +211,7 @@ export default class LimitDemo extends React.Component<Object, Object> {
               onSelect={this.onSelect}
             />
           </Theme>
-        </Box>
+        </Box> */}
       </div>
     );
   }

@@ -8,9 +8,7 @@
 import { px2remcss } from '../css/units';
 import Icon from '../icon';
 import { FontSizeNumber } from '../css';
-import ThemeHoc from '@lugia/theme-hoc';
-import colorsFunc from '../css/stateColor';
-import CSSComponent, { css, keyframes } from '@lugia/theme-css-hoc';
+import CSSComponent, { css } from '@lugia/theme-css-hoc';
 
 export const BarDefaultSize = 12;
 export const DefaultWidth = 250;
@@ -21,21 +19,11 @@ export const ContainerBackgroundColor = '#fbfbfb';
 export const BarBackgroundColor = '#c2c2c2';
 export const BarHoverBackgroundColor = '#7a7a7a';
 
-// const getHeight = (height: number, autoHeight: boolean, totalSize: number) => {
-//   // if (!autoHeight) {
-//   //   return height;
-//   // }
-//   if (autoHeight) {
-//     return totalSize;
-//   }
-//   return height;
-// };
-
 export const ScrollerContainer = CSSComponent({
   tag: 'div',
   className: 'ScrollerContainer',
   normal: {
-    selectNames: [['width']],
+    selectNames: [['width'], ['boxShadow'], ['borderRadius']],
     getCSS: (themeMeta, themeProps) => {
       const { autoHeight, totalSize } = themeProps.propsConfig;
       const { height = DefaultHeight } = themeMeta;
@@ -48,13 +36,16 @@ export const ScrollerContainer = CSSComponent({
   hover: {
     selectNames: [],
   },
-  css: `
+  css: css`
     font-size: ${FontSizeNumber};
     width: ${px2remcss(DefaultWidth)};
     position: relative;
     transition: all 0.5s;
+    overflow: hidden;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
     &:hover > div:nth-child(2) {
-      opacity: 1
+      opacity: 1;
     }
   `,
 });
@@ -65,13 +56,11 @@ export const Col = CSSComponent({
   normal: {
     selectNames: [['width'], ['height']],
   },
-  css: `
-      width: ${px2remcss(DefaultWidth)};
-      font-size: ${FontSizeNumber}rem;
-      position: absolute;
-      display: inline-block;
-      // overflow:hidden;
-    `,
+  css: css`
+    width: ${px2remcss(DefaultWidth)};
+    position: absolute;
+    display: inline-block;
+  `,
 });
 
 export const ScrollerCol = CSSComponent({
@@ -91,11 +80,11 @@ export const ScrollerCol = CSSComponent({
       `;
     },
   },
-  css: `
-        width: ${px2remcss(BarDefaultSize)};
-        position: absolute;
-        display: inline-block;
-        transition: opacity 0.3s;
-        opacity: 0
-      `,
+  css: css`
+    width: ${px2remcss(BarDefaultSize)};
+    position: absolute;
+    display: inline-block;
+    transition: opacity 0.3s;
+    opacity: 0;
+  `,
 });

@@ -32,19 +32,17 @@ export const PadingRight = 20;
 export const Height = 32;
 export const SingleLineHeight = 30;
 export const ItemBackgroundColor = '#edf0fe';
-
 export const ItemContainerBackgroundColor = '#f6f5ff';
 
 export const Container = CSSComponent({
   tag: 'div',
   className: 'Container',
   normal: {
-    selectNames: [['width'], ['height'], ['margin']],
+    selectNames: [['width'], ['height']],
   },
   hover: {
     selectNames: [],
   },
-
   css: css`
     display: inline-block;
     position: relative;
@@ -212,7 +210,7 @@ export const SingleInnerContainer = CSSComponent({
   tag: 'div',
   className: 'SingleInnerContainer',
   normal: {
-    selectNames: [['width'], ['height'], ['padding']],
+    selectNames: [['width'], ['height'], ['padding'], ['font']],
   },
   hover: {
     selectNames: [],
@@ -226,43 +224,25 @@ export const SingleInnerContainer = CSSComponent({
   `,
 });
 
-export const IconWrap = ThemeHoc(
-  CSSComponent({
-    tag: 'div',
-    className: 'IconWrap',
-    normal: {
-      selectNames: [['color'], ['font'], ['fontSize'], ['margin']],
-      getCSS: themeMeta => {},
-    },
-    hover: {
-      selectNames: [['color'], ['fontSize'], ['font']],
-    },
-    css: css`
-      display: inline-block;
-      height: 100%;
-      float: right;
-      position: relative;
-      color: ${lightGreyColor};
-      padding-left: ${px2remcss(10)};
-    `,
-  }),
-  'Icon',
-  { hover: true }
-);
-
-export const CommonIcon = CSSComponent({
-  extend: Icon,
-  className: 'CommonIcon',
+export const IconWrap = CSSComponent({
+  tag: 'div',
+  className: 'IconWrap',
   normal: {
-    selectNames: [],
+    selectNames: [['color'], ['font'], ['fontSize'], ['margin']],
   },
   hover: {
-    selectNames: [],
+    selectNames: [['color'], ['fontSize'], ['font']],
   },
   css: css`
-    margin: 0;
+    display: inline-block;
+    height: 100%;
+    float: right;
+    position: relative;
+    padding-left: ${px2remcss(10)};
   `,
+  option: { hover: true },
 });
+export const CommonIcon = Icon;
 
 export const FlexResBox = CSSComponent({
   tag: 'span',
@@ -438,9 +418,6 @@ export const ItemText = CSSComponent({
   className: 'ItemText',
   normal: {
     selectNames: [['width'], ['height'], ['font']],
-    getCSS: themeMeta => {
-      console.log('themeMeta', themeMeta);
-    },
   },
   hover: {
     selectNames: [],
@@ -490,7 +467,6 @@ export const CloseButtonWrap = ThemeHoc(
     },
     hover: {
       selectNames: [['color']],
-      getCSS: themeMeta => {},
     },
     css: css`
       color: ${mediumGreyColor};
@@ -504,17 +480,5 @@ export const CloseButtonWrap = ThemeHoc(
   { hover: true }
 );
 
-export const CloseButton = CSSComponent({
-  extend: Icon,
-  className: 'CloseButton',
-  normal: {
-    selectNames: [],
-  },
-  hover: {
-    selectNames: [],
-  },
-  css: css`
-    margin: 0;
-  `,
-});
+export const CloseButton = Icon;
 CloseButton.displayName = Widget.InputTagCloseButton;
