@@ -7,7 +7,6 @@ import CommonIcon from '../../icon';
 import CheckBox from '../../checkbox';
 import Widget from '../../consts';
 import ThemeHoc from '@lugia/theme-hoc';
-import Theme from '../../theme';
 import { getMenuItemHeight, TextIcon } from '../../css/menu';
 import { FlexWrap, FlexBox, CheckBoxWrap } from '../../css/tree';
 const defaultTitle = '---';
@@ -142,28 +141,29 @@ class TreeNode extends React.Component {
     this.selectHandle = node;
   };
 
-  renderSwitcher(expandedState) {
-    const { themeStyle, describe, mutliple, switcher = true } = this.props;
+  renderSwitch(expandedState) {
+    const { themeStyle, describe, mutliple, switcher = true, disabled } = this.props;
     if (mutliple || !describe) {
-      const { Switcher, openClassName, closeClassName } = themeStyle;
+      const { Switch, openClassName, closeClassName } = themeStyle;
       const iconClass = expandedState === 'open' ? openClassName : closeClassName;
       return (
-        <Switcher
+        <Switch
           mutliple={mutliple}
+          disabled={disabled}
           onClick={this.onExpand}
           expandedState={expandedState}
-          themeProps={this.props.getPartOfThemeProps('Switcher')}
+          themeProps={this.props.getPartOfThemeProps('Switch')}
         >
           <CommonIcon iconClass={iconClass} />
-        </Switcher>
+        </Switch>
       );
     }
-    const { NullSwitcher } = themeStyle;
+    const { NullSwitch } = themeStyle;
 
     return (
-      <NullSwitcher themeProps={this.props.getPartOfThemeProps('Switcher')}>
+      <NullSwitch themeProps={this.props.getPartOfThemeProps('Switch')}>
         <CommonIcon iconClass={'lugia-icon-financial_omit'} />
-      </NullSwitcher>
+      </NullSwitch>
     );
   }
 
@@ -177,14 +177,9 @@ class TreeNode extends React.Component {
       icon,
       themeStyle,
       mutliple,
-      getPartOfThemeProps,
     } = this.props;
-    const { Switcher, TitleWrap } = themeStyle;
+    const { Switch, TitleWrap } = themeStyle;
     const disabled = notCanSelect || dataDisabled;
-    const { themeColor } = themeStyle;
-    const view = {
-      [Widget.CheckBox]: { color: themeColor },
-    };
     return (
       <CheckBoxWrap>
         {icon ? <CommonIcon iconClass={icon} /> : null}
@@ -266,9 +261,9 @@ class TreeNode extends React.Component {
 
   renderSuffix() {
     const { themeStyle, suffix } = this.props;
-    const { Switcher } = themeStyle;
+    const { Switch } = themeStyle;
 
-    return <Switcher>{suffix}</Switcher>;
+    return <Switch>{suffix}</Switch>;
   }
 
   getThemeProps(defaultName: string, selectedName: string, params: Object = {}): Object {
@@ -296,25 +291,23 @@ class TreeNode extends React.Component {
       isLeaf,
       title,
       shape,
-      paddingLeft,
       mutliple,
-      getPartOfThemeProps,
     } = this.props;
     const expandedState = props.expanded ? 'open' : 'close';
     let iconState = expandedState;
     const disabled = notCanSelect || dataDisabled;
 
-    let canRenderSwitcher = true;
+    let canRenderSwitch = true;
     const content = props.title;
     let newChildren = this.renderChildren(props);
     if (!newChildren || newChildren === props.children) {
       newChildren = null;
       if (isLeaf) {
-        canRenderSwitcher = false;
+        canRenderSwitch = false;
         iconState = 'docu';
       }
     }
-    const { TitleWrap, NullSwitcher, Li, TitleSpan } = themeStyle;
+    const { TitleWrap, NullSwitch, Li, TitleSpan } = themeStyle;
     const itemHeight = getMenuItemHeight(size);
 
     const TextThemeProps = this.getThemeProps('Text', 'SelectedText', {
@@ -377,7 +370,6 @@ class TreeNode extends React.Component {
           describe={describe}
           disabled={disabled}
           notCanSelect={disabled}
-          // theme={theme}
           color={color}
         >
           {title}
@@ -394,12 +386,12 @@ class TreeNode extends React.Component {
       liProps.onDragEnd = this.onDragEnd;
     }
 
-    const renderNoopSwitcher = () => {
+    const renderNoopSwitch = () => {
       const { mutliple, switcher } = this.props;
       return (
-        <NullSwitcher themeProps={this.props.getPartOfThemeProps('Switcher')}>
+        <NullSwitch themeProps={this.props.getPartOfThemeProps('Switch')}>
           <CommonIcon iconClass={'lugia-icon-financial_omit'} />
-        </NullSwitcher>
+        </NullSwitch>
       );
     };
 
@@ -418,15 +410,10 @@ class TreeNode extends React.Component {
         height={itemHeight}
       >
         <FlexWrap themeProps={TreeWrapThemeProps}>
-          {/* 默认层级padding值加在了flexWrap上，配置的padding值作用在FlexBox，这样不会破坏默认层级padding值 */}
           <FlexBox themeProps={TreeWrapThemeProps}>
-            {/* 小箭头*/}
-            {canRenderSwitcher ? this.renderSwitcher(expandedState) : renderNoopSwitcher()}
-            {/* 小方格,多选的时候，text值是传进checkbox的 */}
+            {canRenderSwitch ? this.renderSwitch(expandedState) : renderNoopSwitch()}
             {props.checkable ? this.renderCheckbox() : null}
-            {/* 内容，单选的时候，没有checkbox， */}
             {props.checkable ? null : selectHandle()}
-            {/* 后置图标 */}
             {props.suffix ? this.renderSuffix() : null}
           </FlexBox>
         </FlexWrap>
@@ -438,7 +425,7 @@ class TreeNode extends React.Component {
   getCheckBoxTheme = () => {
     const { getPartOfThemeConfig } = this.props;
     const config = {
-      [Widget.Checkbox]: getPartOfThemeConfig([Widget.Checkbox]),
+      [Widget.Checkbox]: getPartOfThemeConfig('Checkbox'),
     };
     return config;
   };
@@ -446,5 +433,4 @@ class TreeNode extends React.Component {
 
 TreeNode.isTreeNode = 1;
 
-// export default TreeNode;
 export default ThemeHoc(TreeNode, 'TreeItem', { hover: true });

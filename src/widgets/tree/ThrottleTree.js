@@ -124,7 +124,6 @@ class ScrollerTree extends React.Component<any, any> {
         icon,
         switcher,
       } = item;
-      console.log('switcher', switcher);
       const { color, paddingLeft } = this.getTheme();
       const notCanSelect = item[igronSelectField] ? true : false;
       if (children !== undefined) {

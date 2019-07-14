@@ -7,12 +7,8 @@
 import * as React from 'react';
 import Tree from './index.js';
 import Widget from '../consts/index';
-import Theme from '../theme';
-// import { getBorder } from '@lugia/theme-css-hoc';
-import styled from 'styled-components';
 import CommonIcon from '../icon';
-import { getBorder } from '@lugia/theme-utils';
-import { getBorderRadius } from '../theme/CSSProvider';
+import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
 
 const suffix = <CommonIcon iconClass="lugia-icon-direction_caret_down" />;
 const newData = [
@@ -53,7 +49,7 @@ const newData = [
         value: 'Navigation',
         text: 'Navigation',
         children: [
-          { value: 'Affix 固钉', text: 'Affix 固钉' },
+          { value: 'Affix 固钉', text: 'Affix 固钉', disabled: true },
           { value: 'Breadcrumb 面包屑', text: 'Breadcrumb 面包屑', describe: true },
           { value: 'Dropdown 下拉菜单', text: 'Dropdown 下拉菜单' },
           { value: 'Menu 导航菜单', text: 'Menu 导航菜单' },
@@ -189,10 +185,10 @@ const config = {
     TreeWrap: {
       normal: {
         width: 500,
-        // height: 600,
+        height: 600,
         opacity: 1,
         background: { color: '#E086BB' },
-        boxShadow: '2px 2px 5px 5px #9C2D6E',
+        boxShadow: getBoxShadow('2px 2px 5px 5px #9C2D6E'),
         border: getBorder({ color: '#9C2D6E', width: 1, style: 'solid' }),
         borderRadius: getBorderRadius(20),
         padding: {
@@ -206,7 +202,7 @@ const config = {
       hover: {
         opacity: 0.9,
         background: { color: '#F51196' },
-        boxShadow: '2px 2px 5px 5px #F51196',
+        boxShadow: getBoxShadow('2px 2px 5px 5px #F51196'),
         border: getBorder({ color: '#F51196', width: 1, style: 'solid' }),
         borderRadius: getBorderRadius(40),
       },
@@ -214,54 +210,96 @@ const config = {
 
     TreeItem: {
       TreeItemWrap: {
-        normal: { background: { color: '#21EBE8' }, padding: { left: 30, right: 30 } },
+        normal: {
+          background: { color: '#21EBE8' },
+          border: getBorder({ color: '#F51196', width: 1, style: 'solid' }),
+
+          padding: { left: 30, right: 30 },
+        },
         hover: {
           background: { color: '#119E9C' },
           color: 'white',
-          border: getBorder({ color: '#F51196', width: 1, style: 'solid' }),
           borderRadius: getBorderRadius(40),
         },
-        active: { background: { color: '#036664' }, color: '#4d63ff' },
+        active: {
+          background: { color: '#036664' },
+          // color: '#4d63ff',
+        },
+      },
+      SelectedTreeItemWrap: {
+        normal: {
+          background: {
+            color: '#000',
+          },
+        },
       },
       Text: {
         normal: {
-          color: '#eee',
+          color: '#fff',
           width: 200,
           background: { color: '#333' },
+          font: { size: 14 },
           padding: {
             left: 20,
           },
           // border: getBorder({ color: '#F51196', width: 1, style: 'solid' }),
+          borderRadius: getBorderRadius(40),
+          // border: getBorder({ color: '#F51196', width: 1, style: 'solid' }),
         },
         hover: {
-          color: 'orange',
+          color: 'red',
           background: { color: '#2982F5' },
           // border: getBorder({ color: '#F75993', width: 1, style: 'solid' }),
+          borderRadius: getBorderRadius(10),
+        },
+        active: {
+          color: '#fff',
+          background: { color: '#ddd' },
+          // border: getBorder({ color: '#ddd', width: 1, style: 'solid' }),
           borderRadius: getBorderRadius(40),
         },
-        active: { color: 'red' },
       },
-      // SubTreeWrap: {
-      //   normal: {
-      //     background: { color: '#66eecc' },
-      //   },
-      //   hover: { background: { color: '#bbb' } },
-      // },
-      // [Widget.CheckBox]: {
-      //   normal: {
-      //     color: '#4d63ff',
-      //   },
-      // },
+      SelectedText: {
+        normal: {
+          color: 'red',
+          font: { size: 20 },
+        },
+      },
+      SubTreeWrap: {
+        normal: {
+          background: { color: '#66eecc' },
+        },
+        hover: {
+          background: { color: '#bbb' },
+        },
+      },
+      Checkbox: {
+        normal: {
+          color: '#4d63ff',
+        },
+      },
+
+      Switch: {
+        normal: {
+          color: '#F51196',
+          font: {
+            size: 20,
+          },
+        },
+        hover: {
+          color: '#4d63ff',
+        },
+      },
     },
   },
 };
+
 export default () => {
   return (
     <Tree
       theme={config}
       expandAll
-      autoHeight
-      // switcher={false}
+      // autoHeight
       suffix={suffix}
       // mutliple
       data={newData}
@@ -272,7 +310,4 @@ export default () => {
       igronSelectField={'notCanSelect'}
     />
   );
-  // <Theme config={config}>
-
-  // </Theme>,
 };
