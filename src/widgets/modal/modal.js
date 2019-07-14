@@ -9,26 +9,24 @@ import * as React from 'react';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import Theme from '../theme';
-import {
-  Wrap,
-  ModalMask,
-  ModalWrap,
-  Modal,
-  ModalContent,
-  ModalTitle,
-  ModalBody,
-  ModalFooter,
-  ModalClose,
-  IconInfo,
-  getIconColor,
-} from '../css/modal';
 import type { ModalProps, ModalState } from '../css/modal';
+import {
+  getIconColor,
+  IconInfo,
+  Modal,
+  ModalBody,
+  ModalClose,
+  ModalContent,
+  ModalFooter,
+  ModalMask,
+  ModalTitle,
+  ModalWrap,
+  Wrap,
+} from '../css/modal';
 import Button from '../button';
 import Icon from '../icon';
 import { px2remcss } from '../css/units';
-import { getIconCursor, getIconStyle } from '../css/button';
 import { deepMerge } from '@lugia/object-utils';
-import { getPosition, TypeCSS } from '../css/alert';
 
 const BtnType = {
   confirm: 'warning',
@@ -156,7 +154,11 @@ export default ThemeProvider(
                   <Icon iconClass={IconInfo[iconType].class} {...this.getIconTheme()} />
                 ) : (
                   <ModalClose onClick={this.handleCancel}>
-                    <Icon {...this.getCloseIconTheme()} iconClass="lugia-icon-reminder_close" />
+                    <Icon
+                      {...this.getCloseIconTheme()}
+                      iconClass="lugia-icon-reminder_close"
+                      singleTheme
+                    />
                   </ModalClose>
                 )}
                 {title !== null && <ModalTitle themeProps={ModalTitleTheme}>{title}</ModalTitle>}

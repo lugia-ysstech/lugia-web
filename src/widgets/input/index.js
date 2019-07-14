@@ -503,6 +503,7 @@ class TextBox extends Component<InputProps, InputState> {
 
     return (
       <Icon
+        singleTheme
         viewClass={clearViewClass}
         theme={newTheme}
         iconClass={Clear}

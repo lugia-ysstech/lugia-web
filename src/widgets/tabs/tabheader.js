@@ -542,7 +542,12 @@ class TabHeader extends Component<TabsProps, TabsState> {
           onClick={this.onPreClick(isDisabledToPrev)}
           {...this.getArrowConfig('pre')}
         >
-          <Icon disabled={isDisabledToPrev} themeProps={themeProps} iconClass={arrowUp} />
+          <Icon
+            disabled={isDisabledToPrev}
+            themeProps={themeProps}
+            iconClass={arrowUp}
+            singleTheme
+          />
         </Target>
       );
     }
@@ -558,7 +563,12 @@ class TabHeader extends Component<TabsProps, TabsState> {
         tabPosition={tabPosition}
         onClick={this.onNextClick(isDisabledToNext)}
       >
-        <Icon disabled={isDisabledToNext} themeProps={themeProps} iconClass={arrowDown} />
+        <Icon
+          disabled={isDisabledToNext}
+          themeProps={themeProps}
+          iconClass={arrowDown}
+          singleTheme
+        />
       </Target>
     );
   }
@@ -619,7 +629,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
     const { isDisabledToPrev, isDisabledToNext } = this.getIsAllowToMove(moveDistance);
 
     const prevPageThemeProps = deepMerge(
-      { themeConfig: { normal: { height: 35 } } },
+      { themeConfig: { normal: { height: 31 } } },
       this.props.getPartOfThemeProps('DefaultTabPan')
     );
     return (

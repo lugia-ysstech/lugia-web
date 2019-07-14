@@ -9,6 +9,7 @@ import Icon from './';
 import Theme from '../theme';
 import Widget from '../consts/index';
 import '../common/shirm';
+
 const iconData = [
   'lugia-icon-direction_arrow_down',
   'lugia-icon-direction_arrow_left',
@@ -315,17 +316,19 @@ export default () => {
   };
   const view = {
     [Widget.Icon]: {
-      normal: {
-        margin: {
-          left: 10,
-          right: 10,
-          top: 10,
-          bottom: 10,
+      Icon: {
+        normal: {
+          margin: {
+            left: 10,
+            right: 10,
+            top: 10,
+            bottom: 10,
+          },
+          fontSize: 20,
         },
-        fontSize: 20,
-      },
-      hover: {
-        color: '#4d63ff',
+        hover: {
+          color: '#4d63ff',
+        },
       },
     },
   };
