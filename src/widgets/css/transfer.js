@@ -4,13 +4,12 @@
  * @flow
  */
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
-import { px2emcss } from '../css/units';
+import { px2remcss } from '../css/units';
 import type { ThemeType } from '@lugia/lugia-web';
-import styled, { css } from 'styled-components';
+import { css } from 'styled-components';
 import colorsFunc from '../css/stateColor';
 
 const FontSize = 1.2;
-const em = px2emcss(FontSize);
 
 export type TransferProps = {
   getTheme: Function,
@@ -55,7 +54,7 @@ export const TransFer = CSSComponent({
   tag: 'div',
   css: css`
     border: 1px solid ${borderColor};
-    border-radius: ${em(4)};
+    border-radius: ${px2remcss(4)};
     display: inline-block;
     font-size: ${FontSize}rem;
     overflow: hidden;
@@ -83,7 +82,7 @@ export const Check = CSSComponent({
   tag: 'div',
   css: css`
     background: #f8f8f8;
-    padding: ${em(10)};
+    padding: ${px2remcss(10)};
     border-bottom: 1px solid #e8e8e8;
     position: relative;
   `,
@@ -97,9 +96,9 @@ export const CheckText = CSSComponent({
   tag: 'span',
   css: css`
     position: absolute;
-    right: ${em(10)};
+    right: ${px2remcss(10)};
     line-height: 1.5;
-    font-size: ${em(12)};
+    font-size: ${px2remcss(12)};
     color: #ccc;
   `,
   normal: {
@@ -110,14 +109,14 @@ export const CheckText = CSSComponent({
 const getNoDataHeight = (props: CSSProps) => {
   const { height } = props;
 
-  return px2emcss(1.4)(height);
+  return px2remcss(height);
 };
 
 export const NoData = StaticComponent({
   className: 'NoData',
   tag: 'div',
   css: css`
-    font-size: ${em(14)};
+    font-size: ${px2remcss(14)};
     height: ${getNoDataHeight};
     color: #ccc;
     text-align: center;
@@ -143,7 +142,7 @@ export const CancelBoxItem = StaticComponent({
   tag: 'span',
   css: css`
     display: block;
-    padding: ${em(5)};
+    padding: ${px2remcss(5)};
   `,
 });
 
@@ -151,7 +150,7 @@ export const TreeWrap = StaticComponent({
   className: 'TreeWrap',
   tag: 'div',
   css: css`
-    font-size: ${em(12)};
-    height: ${props => em(props.height)};
+    font-size: ${px2remcss(12)};
+    height: ${props => px2remcss(props.height)};
   `,
 });

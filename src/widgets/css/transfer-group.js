@@ -4,12 +4,9 @@
  * @flow
  */
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
-import { px2emcss } from '../css/units';
+import { px2remcss } from '../css/units';
 import type { ThemeType } from '@lugia/lugia-web';
-import styled, { css } from 'styled-components';
-
-const FontSize = 1.2;
-const em = px2emcss(FontSize);
+import { css } from 'styled-components';
 
 export type GroupProps = {
   getTheme: Function,
@@ -71,14 +68,14 @@ export const OperationBtn = StaticComponent({
   tag: 'span',
   css: css`
     display: inline-block;
-    padding: ${em(8)};
+    padding: ${px2remcss(8)};
     position: relative;
     vertical-align: middle;
 
     & > button {
-      margin-bottom: ${em(10)};
-      padding-left: ${em(12)};
-      padding-right: ${em(14)};
+      margin-bottom: ${px2remcss(10)};
+      padding-left: ${px2remcss(12)};
+      padding-right: ${px2remcss(14)};
     }
   `,
 });
