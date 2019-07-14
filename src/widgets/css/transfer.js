@@ -3,7 +3,7 @@
  * create by guorg
  * @flow
  */
-import CSSComponent from '@lugia/theme-css-hoc';
+import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import { px2emcss } from '../css/units';
 import type { ThemeType } from '@lugia/lugia-web';
 import styled, { css } from 'styled-components';
@@ -49,16 +49,7 @@ type CSSProps = {
   height: number,
 };
 const { borderColor } = colorsFunc();
-// export const TransFer = styled.div`
-//   border: 1px solid ${borderColor};
-//   border-radius: ${em(4)};
-//   display: inline-block;
-//   font-size: ${FontSize}rem;
-//   overflow: hidden;
-//   position: relative;
-//   vertical-align: middle;
-//   background: #fff;
-// `;
+
 export const TransFer = CSSComponent({
   className: 'TransFer',
   tag: 'div',
@@ -86,12 +77,7 @@ export const TransFer = CSSComponent({
     ],
   },
 });
-// export const Check = styled.div`
-//   background: #f8f8f8;
-//   padding: ${em(10)};
-//   border-bottom: 1px solid #e8e8e8;
-//   position: relative;
-// `;
+
 export const Check = CSSComponent({
   className: 'Check',
   tag: 'div',
@@ -105,13 +91,7 @@ export const Check = CSSComponent({
     selectNames: [['background'], ['border']],
   },
 });
-// export const CheckText = styled.span`
-//   position: absolute;
-//   right: ${em(10)};
-//   line-height: 1.5;
-//   font-size: ${em(12)};
-//   color: #ccc;
-// `;
+
 export const CheckText = CSSComponent({
   className: 'CheckText',
   tag: 'span',
@@ -132,16 +112,18 @@ const getNoDataHeight = (props: CSSProps) => {
 
   return px2emcss(1.4)(height);
 };
-export const NoData = styled.div`
-  font-size: ${em(14)};
-  height: ${getNoDataHeight};
-  color: #ccc;
-  text-align: center;
-`;
-// export const CancelBox = styled.div`
-//   border-top: 6px solid #f2f2f2;
-//   box-sizing: border-box;
-// `;
+
+export const NoData = StaticComponent({
+  className: 'NoData',
+  tag: 'div',
+  css: css`
+    font-size: ${em(14)};
+    height: ${getNoDataHeight};
+    color: #ccc;
+    text-align: center;
+  `,
+});
+
 export const CancelBox = CSSComponent({
   className: 'CancelBox',
   tag: 'div',
@@ -155,11 +137,21 @@ export const CancelBox = CSSComponent({
     },
   },
 });
-export const CancelBoxItem = styled.span`
-  display: block;
-  padding: ${em(5)};
-`;
-export const TreeWrap = styled.div`
-  font-size: ${em(12)};
-  height: ${props => em(props.height)};
-`;
+
+export const CancelBoxItem = StaticComponent({
+  className: 'CancelBoxItem',
+  tag: 'span',
+  css: css`
+    display: block;
+    padding: ${em(5)};
+  `,
+});
+
+export const TreeWrap = StaticComponent({
+  className: 'TreeWrap',
+  tag: 'div',
+  css: css`
+    font-size: ${em(12)};
+    height: ${props => em(props.height)};
+  `,
+});

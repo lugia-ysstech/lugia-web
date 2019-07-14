@@ -3,10 +3,10 @@
  * create by guorg
  * @flow
  */
-import CSSComponent from '@lugia/theme-css-hoc';
+import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import { px2emcss } from '../css/units';
 import type { ThemeType } from '@lugia/lugia-web';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const FontSize = 1.2;
 const em = px2emcss(FontSize);
@@ -49,11 +49,7 @@ export type GroupState = {
   displayValue: string[],
   enableKeys: string[],
 };
-// export const TransFerWrap = styled.div`
-//   box-sizing: border-box;
-//   font-size: ${FontSize}rem;
-//   position: relative;
-// `;
+
 export const TransFerWrap = CSSComponent({
   className: 'TransFerWrap',
   tag: 'div',
@@ -70,15 +66,19 @@ export const TransFerWrap = CSSComponent({
   },
 });
 
-export const OperationBtn = styled.span`
-  display: inline-block;
-  padding: ${em(8)};
-  position: relative;
-  vertical-align: middle;
+export const OperationBtn = StaticComponent({
+  className: 'OperationBtn',
+  tag: 'span',
+  css: css`
+    display: inline-block;
+    padding: ${em(8)};
+    position: relative;
+    vertical-align: middle;
 
-  & > button {
-    margin-bottom: ${em(10)};
-    padding-left: ${em(12)};
-    padding-right: ${em(14)};
-  }
-`;
+    & > button {
+      margin-bottom: ${em(10)};
+      padding-left: ${em(12)};
+      padding-right: ${em(14)};
+    }
+  `,
+});
