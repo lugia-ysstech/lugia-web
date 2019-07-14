@@ -224,29 +224,6 @@ const Suffix: Object = CSSComponent({
 
 const Clear = 'lugia-icon-reminder_close';
 
-// const ClearButton: Object = ThemeHoc(
-//   CSSComponent({
-//     extend: Icon,
-//     className: 'inputClearButton',
-//     normal: {
-//       selectNames: [['font'], ['fontSize'], ['color']],
-//       defaultTheme: {
-//         color: mediumGreyColor,
-//       },
-//     },
-//     hover: {
-//       selectNames: [['color']],
-//       defaultTheme: {
-//         color: darkGreyColor,
-//       },
-//     },
-//     css: css``,
-//   }),
-//   'ClearButton',
-//   { hover: true, active: true }
-// );
-// ClearButton.displayName = 'ClearButton';
-
 type InputState = {|
   value: string,
   clearButtonShow: boolean,

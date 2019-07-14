@@ -24,6 +24,7 @@ export default () => {
           width: 100,
           height: 50,
           padding: 9,
+          margin: 10,
           background: { color: 'orange' },
           border: getBorder({ width: 2, style: 'solid', color: 'green' }),
           borderRadius: getBorderRadius(10),
