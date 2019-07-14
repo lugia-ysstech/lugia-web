@@ -65,14 +65,15 @@ const Divider = CSSComponent({
       transform: translateY(50%);
     }`;
     },
+    defaultTheme: {
+      width: 500,
+    },
   },
   css: css`
     display: table;
     white-space: nowrap;
     text-align: center;
     background: transparent;
-    font-weight: 500;
-    width: ${px2remcss(500)};
   `,
 });
 const VerticalDivider = StaticComponent({
@@ -88,15 +89,22 @@ const VerticalDivider = StaticComponent({
       ['padding'],
       ['boxShadow'],
     ],
+    defaultTheme: {
+      background: {
+        color: borderDisableColor,
+      },
+      width: 1,
+      height: 10,
+      margin: {
+        left: 6,
+        right: 6,
+      },
+    },
   },
   css: css`
-    margin: 0 ${px2remcss(6)};
     display: inline-block;
-    height: 100%;
-    width: ${px2remcss(1)};
     vertical-align: middle;
     position: relative;
-    background: ${borderDisableColor};
   `,
 });
 const ChildText = StaticComponent({
