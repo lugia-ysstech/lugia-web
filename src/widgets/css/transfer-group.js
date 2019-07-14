@@ -3,6 +3,7 @@
  * create by guorg
  * @flow
  */
+import CSSComponent from '@lugia/theme-css-hoc';
 import { px2emcss } from '../css/units';
 import type { ThemeType } from '@lugia/lugia-web';
 import styled from 'styled-components';
@@ -27,6 +28,8 @@ export type GroupProps = {
   type?: 'tree' | 'panel',
   displayField?: string,
   valueField?: string,
+  getPartOfThemeProps: Function,
+  getPartOfThemeHocProps: Function,
 };
 export type GroupState = {
   inputValue: string,
@@ -46,11 +49,27 @@ export type GroupState = {
   displayValue: string[],
   enableKeys: string[],
 };
-export const TransFerWrap = styled.div`
-  box-sizing: border-box;
-  font-size: ${FontSize}rem;
-  position: relative;
-`;
+// export const TransFerWrap = styled.div`
+//   box-sizing: border-box;
+//   font-size: ${FontSize}rem;
+//   position: relative;
+// `;
+export const TransFerWrap = CSSComponent({
+  className: 'TransFerWrap',
+  tag: 'div',
+  normal: {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['margin'],
+      ['padding'],
+      ['background'],
+      ['border'],
+      ['borderRadius'],
+    ],
+  },
+});
+
 export const OperationBtn = styled.span`
   display: inline-block;
   padding: ${em(8)};

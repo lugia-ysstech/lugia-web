@@ -151,11 +151,21 @@ export default ThemeProvider(
         type = 'panel',
         valueField = ValueField,
         displayField = DisplayField,
-        getTheme,
+        getPartOfThemeProps,
+        getPartOfThemeHocProps,
       } = this.props;
-
+      const TransFerWrapTheme = getPartOfThemeProps('TransferWrap');
+      const TransferPanelTheme = getPartOfThemeProps('TransferPanel');
+      const TransferPanelHeaderCheckboxThemeObj = getPartOfThemeHocProps(
+        'TransferPanelHeaderCheckbox'
+      );
+      const TransferHeaderTextTheme = getPartOfThemeProps('TransferHeaderText');
+      const TransferHeaderTheme = getPartOfThemeProps('TransferHeaderWrap');
+      const TransferCancelBoxTheme = getPartOfThemeProps('TransferCancelBox');
+      const TransferCancelCheckboxThemeObj = getPartOfThemeHocProps('TransferCancelCheckbox');
+      const TransferCancelBoxMenuThemeObj = getPartOfThemeHocProps('TransferCancelBoxMenu');
       return (
-        <TransFerWrap>
+        <TransFerWrap themeProps={TransFerWrapTheme}>
           <TransFer
             key="1"
             direction="Source"
@@ -167,7 +177,11 @@ export default ThemeProvider(
             displayField={displayField}
             valueField={valueField}
             type={type}
-            theme={getTheme()}
+            theme={TransferPanelTheme}
+            checkboxTheme={TransferPanelHeaderCheckboxThemeObj}
+            headerTextTheme={TransferHeaderTextTheme}
+            headerTheme={TransferHeaderTheme}
+            cancelBoxTheme={TransferCancelBoxTheme}
           />
           <TransFerButton
             leftModel={this.sourceModel}
@@ -188,7 +202,13 @@ export default ThemeProvider(
             displayField={displayField}
             valueField={valueField}
             type={type}
-            theme={getTheme()}
+            theme={TransferPanelTheme}
+            checkboxTheme={TransferPanelHeaderCheckboxThemeObj}
+            headerTextTheme={TransferHeaderTextTheme}
+            headerTheme={TransferHeaderTheme}
+            cancelBoxTheme={TransferCancelBoxTheme}
+            cancelCheckboxTheme={TransferCancelCheckboxThemeObj}
+            cancelBoxMenuTheme={TransferCancelBoxMenuThemeObj}
           />
         </TransFerWrap>
       );
