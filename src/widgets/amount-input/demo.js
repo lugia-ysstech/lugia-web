@@ -37,7 +37,7 @@ const Wrapper = styled.div`
 export default () => {
   const view = {
     [Widget.AmountInput]: {
-      [Widget.Input]: {
+      InnerInput: {
         Input: {
           normal: {
             width: 400,

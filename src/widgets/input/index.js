@@ -140,16 +140,28 @@ const CommonInputStyle = CSSComponent({
 const BaseInputContainer = StaticComponent({
   tag: 'span',
   className: 'InputBaseInputContainer',
+  normal: {
+    selectNames: [],
+  },
   css: css`
     position: relative;
     display: inline-block;
   `,
 });
 
-const InputContainer = StaticComponent({
+const InputContainer = CSSComponent({
   tag: 'div',
   className: 'inputContainer',
   normal: {
+    selectNames: [['margin'], ['boxShadow'], ['padding']],
+  },
+  hover: {
+    selectNames: [],
+  },
+  active: {
+    selectNames: [],
+  },
+  disabled: {
     selectNames: [],
   },
   css: css`

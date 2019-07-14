@@ -1,6 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
+.c6 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
 .c2 {
   line-height: 1.5;
   display: inline-block;
@@ -107,38 +123,6 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
   display: inline-block;
 }
 
-.c6 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-
-.c8 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-
 <div
   className="c0"
   onMouseEnter={[Function]}
@@ -150,6 +134,7 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     onMouseUp={[Function]}
+    style={Object {}}
   >
     <input
       autoFocus={false}
@@ -233,7 +218,7 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
       style={Object {}}
     >
       <i
-        className="lugia-icon-direction_down   c8"
+        className="lugia-icon-direction_down   c6"
         disabled={false}
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -253,6 +238,22 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
 `;
 
 exports[`NumberInput props: null 1`] = `
+.c6 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
 .c2 {
   line-height: 1.5;
   display: inline-block;
@@ -359,38 +360,6 @@ exports[`NumberInput props: null 1`] = `
   display: inline-block;
 }
 
-.c6 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-
-.c8 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-
 <div
   className="c0"
   onMouseEnter={[Function]}
@@ -402,6 +371,7 @@ exports[`NumberInput props: null 1`] = `
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     onMouseUp={[Function]}
+    style={Object {}}
   >
     <input
       autoFocus={false}
@@ -485,7 +455,7 @@ exports[`NumberInput props: null 1`] = `
       style={Object {}}
     >
       <i
-        className="lugia-icon-direction_down   c8"
+        className="lugia-icon-direction_down   c6"
         disabled={false}
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -505,6 +475,22 @@ exports[`NumberInput props: null 1`] = `
 `;
 
 exports[`NumberInput props: placeholder  1`] = `
+.c6 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
 .c2 {
   line-height: 1.5;
   display: inline-block;
@@ -611,38 +597,6 @@ exports[`NumberInput props: placeholder  1`] = `
   display: inline-block;
 }
 
-.c6 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-
-.c8 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-
 <div
   className="c0"
   onMouseEnter={[Function]}
@@ -654,6 +608,7 @@ exports[`NumberInput props: placeholder  1`] = `
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     onMouseUp={[Function]}
+    style={Object {}}
   >
     <input
       autoFocus={false}
@@ -738,7 +693,7 @@ exports[`NumberInput props: placeholder  1`] = `
       style={Object {}}
     >
       <i
-        className="lugia-icon-direction_down   c8"
+        className="lugia-icon-direction_down   c6"
         disabled={false}
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -758,6 +713,22 @@ exports[`NumberInput props: placeholder  1`] = `
 `;
 
 exports[`NumberInput props: placeholder  2`] = `
+.c6 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
 .c2 {
   line-height: 1.5;
   display: inline-block;
@@ -864,38 +835,6 @@ exports[`NumberInput props: placeholder  2`] = `
   display: inline-block;
 }
 
-.c6 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-
-.c8 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-
 <div
   className="c0"
   onMouseEnter={[Function]}
@@ -907,6 +846,7 @@ exports[`NumberInput props: placeholder  2`] = `
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     onMouseUp={[Function]}
+    style={Object {}}
   >
     <input
       autoFocus={false}
@@ -991,7 +931,7 @@ exports[`NumberInput props: placeholder  2`] = `
       style={Object {}}
     >
       <i
-        className="lugia-icon-direction_down   c8"
+        className="lugia-icon-direction_down   c6"
         disabled={false}
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -1011,6 +951,22 @@ exports[`NumberInput props: placeholder  2`] = `
 `;
 
 exports[`NumberInput props: size 1`] = `
+.c6 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
 .c2 {
   line-height: 1.5;
   display: inline-block;
@@ -1117,38 +1073,6 @@ exports[`NumberInput props: size 1`] = `
   display: inline-block;
 }
 
-.c6 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-
-.c8 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-
 <div
   className="c0"
   onMouseEnter={[Function]}
@@ -1160,6 +1084,7 @@ exports[`NumberInput props: size 1`] = `
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     onMouseUp={[Function]}
+    style={Object {}}
   >
     <input
       autoFocus={false}
@@ -1243,7 +1168,7 @@ exports[`NumberInput props: size 1`] = `
       style={Object {}}
     >
       <i
-        className="lugia-icon-direction_down   c8"
+        className="lugia-icon-direction_down   c6"
         disabled={false}
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -1263,6 +1188,22 @@ exports[`NumberInput props: size 1`] = `
 `;
 
 exports[`NumberInput props: size 2`] = `
+.c6 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
 .c2 {
   line-height: 1.5;
   display: inline-block;
@@ -1369,38 +1310,6 @@ exports[`NumberInput props: size 2`] = `
   display: inline-block;
 }
 
-.c6 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-
-.c8 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-
 <div
   className="c0"
   onMouseEnter={[Function]}
@@ -1412,6 +1321,7 @@ exports[`NumberInput props: size 2`] = `
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     onMouseUp={[Function]}
+    style={Object {}}
   >
     <input
       autoFocus={false}
@@ -1495,7 +1405,7 @@ exports[`NumberInput props: size 2`] = `
       style={Object {}}
     >
       <i
-        className="lugia-icon-direction_down   c8"
+        className="lugia-icon-direction_down   c6"
         disabled={false}
         onClick={[Function]}
         onMouseDown={[Function]}
