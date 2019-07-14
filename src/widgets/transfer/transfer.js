@@ -190,36 +190,35 @@ export default ThemeProvider(
       const { selectedKeys = [], typeList, treeData, inputValue } = this.state;
       const { type, direction, displayField, valueField } = this.props;
 
-      const { menuView, treeView, wrapHeight } = this.getPanelThemeConfig(direction);
+      const { menuTheme, treeTheme, wrapHeight } = this.getPanelThemeConfig(direction);
+      console.log(menuTheme, treeTheme);
 
       return type === 'panel' ? (
         <div>
-          <Theme config={menuView}>
-            <TransferMenu
-              {...this.props}
-              query={inputValue}
-              {...typeList}
-              selectedKeys={selectedKeys}
-              height={wrapHeight}
-            />
-          </Theme>
+          <TransferMenu
+            {...this.props}
+            query={inputValue}
+            {...typeList}
+            selectedKeys={selectedKeys}
+            height={wrapHeight}
+            menuThemeObj={menuTheme}
+          />
         </div>
       ) : (
         <TreeWrap height={wrapHeight}>
-          <Theme config={treeView}>
-            <Tree
-              displayField={displayField}
-              valueField={valueField}
-              data={treeData}
-              value={selectedKeys}
-              expandAll
-              mutliple
-              onChange={this.handleTreeChange}
-              query={inputValue}
-              {...typeList}
-              getTreeData={this.getTreeData}
-            />
-          </Theme>
+          <Tree
+            displayField={displayField}
+            valueField={valueField}
+            data={treeData}
+            value={selectedKeys}
+            expandAll
+            mutliple
+            onChange={this.handleTreeChange}
+            query={inputValue}
+            {...typeList}
+            getTreeData={this.getTreeData}
+            {...treeTheme}
+          />
         </TreeWrap>
       );
     }
@@ -263,6 +262,9 @@ export default ThemeProvider(
 
     getPanelThemeConfig = direction => {
       const { cancelItem } = this.state;
+      const { menuTheme, treeTheme } = this.props;
+      const { viewClass: menuViewClass, theme: menuThemes } = menuTheme;
+      const { viewClass: treeViewClass, theme: treeThemes } = treeTheme;
       const height = 206;
       const defaultTheme = {
         width: 200,
@@ -273,20 +275,35 @@ export default ThemeProvider(
         defaultTheme.height = height - cancelBoxHeight;
       }
       const wrapHeight = defaultTheme.height;
-      const menuView = {},
-        treeView = {};
+      const menuDefaultView = {
+        [menuViewClass]: {
+          MenuWrap: {
+            normal: { ...defaultTheme, boxShadow: getBoxShadow('0 0') },
+          },
+        },
+      };
+      const treeDefaultView = {
+        [treeViewClass]: {
+          TreeWrap: {
+            normal: defaultTheme,
+          },
+        },
+      };
 
-      menuView[Widget.Menu] = {
-        MenuWrap: {
-          normal: { ...defaultTheme, boxShadow: getBoxShadow('0 0') },
+      const theMenuTheme = deepMerge(menuDefaultView, menuThemes);
+      const theTreeTheme = deepMerge(treeDefaultView, treeThemes);
+      console.log(theMenuTheme, theTreeTheme);
+      return {
+        menuTheme: {
+          viewClass: menuViewClass,
+          theme: theMenuTheme,
         },
-      };
-      treeView[Widget.Tree] = {
-        TreeWrap: {
-          normal: defaultTheme,
+        treeTheme: {
+          viewClass: treeViewClass,
+          theme: theTreeTheme,
         },
+        wrapHeight,
       };
-      return { menuView, treeView, wrapHeight };
     };
 
     getTreeData = (data: Object[]) => {

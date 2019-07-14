@@ -164,6 +164,8 @@ export default ThemeProvider(
       const TransferCancelBoxTheme = getPartOfThemeProps('TransferCancelBox');
       const TransferCancelCheckboxThemeObj = getPartOfThemeHocProps('TransferCancelCheckbox');
       const TransferCancelBoxMenuThemeObj = getPartOfThemeHocProps('TransferCancelBoxMenu');
+      const TransferPanelMenuThemeObj = getPartOfThemeHocProps('TransferPanelMenu');
+      const TransferPanelTreeThemeObj = getPartOfThemeHocProps('TransferPanelTree');
       return (
         <TransFerWrap themeProps={TransFerWrapTheme}>
           <TransFer
@@ -182,6 +184,8 @@ export default ThemeProvider(
             headerTextTheme={TransferHeaderTextTheme}
             headerTheme={TransferHeaderTheme}
             cancelBoxTheme={TransferCancelBoxTheme}
+            menuTheme={TransferPanelMenuThemeObj}
+            treeTheme={TransferPanelTreeThemeObj}
           />
           <TransFerButton
             leftModel={this.sourceModel}
@@ -209,6 +213,8 @@ export default ThemeProvider(
             cancelBoxTheme={TransferCancelBoxTheme}
             cancelCheckboxTheme={TransferCancelCheckboxThemeObj}
             cancelBoxMenuTheme={TransferCancelBoxMenuThemeObj}
+            menuTheme={TransferPanelMenuThemeObj}
+            treeTheme={TransferPanelTreeThemeObj}
           />
         </TransFerWrap>
       );

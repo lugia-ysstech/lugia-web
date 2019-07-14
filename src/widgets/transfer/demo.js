@@ -154,6 +154,16 @@ export default class TransferDemo extends React.Component<any, any> {
             },
           },
         },
+        TransferPanelMenu: {
+          MenuWrap: {
+            normal: { height: 500 },
+          },
+        },
+        TransferPanelTree: {
+          TreeWrap: {
+            normal: { height: 500 },
+          },
+        },
       },
     };
     // height: 400,
