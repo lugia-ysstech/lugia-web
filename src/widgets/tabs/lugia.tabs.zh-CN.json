@@ -210,22 +210,24 @@
       "disabled": []
     },
     "TabHeader":{
-      "DefaultTabPan": {
-        "name": "默认标签",
-        "desc": "默认标签样式配置",
-        "normal": [["color"], ["background"], ["border"], ["margin"], ["padding"], ["font"], ["opacity"]],
-        "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
-        "clicked": [],
-        "disabled": []
-      },
-      "SelectTabPan": {
-        "name": "选中标签",
-        "desc": "选中标签样式配置",
-        "normal": [["color"], ["background"], ["border"], ["margin"], ["padding"], ["font"], ["opacity"]],
-        "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
-        "clicked": [],
-        "disabled": []
-      },
+      "theme":{
+        "DefaultTabPan": {
+          "name": "默认标签",
+          "desc": "默认标签样式配置",
+          "normal": [["color"], ["background"], ["border"], ["margin"], ["padding"], ["font"], ["opacity"]],
+          "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
+          "clicked": [],
+          "disabled": []
+        },
+        "SelectTabPan": {
+          "name": "选中标签",
+          "desc": "选中标签样式配置",
+          "normal": [["color"], ["background"], ["border"], ["margin"], ["padding"], ["font"], ["opacity"]],
+          "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
+          "clicked": [],
+          "disabled": []
+        }
+      }
     }
   }
 }
