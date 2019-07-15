@@ -50,27 +50,48 @@
     "BreadcrumbWrap": {
       "name": "面包屑",
       "desc": "面包屑所在区域面积",
-      "normal": [["width"], ["height"], ["padding"], ["margin"]],
-      "hover": [],
+      "normal": [
+        ["width"],
+        ["height"],
+        ["padding"],
+        ["margin"],
+        ["border"],
+        ["opacity"],
+        ["borderRadius"],
+        ["boxShadow"],
+        ["background"]
+      ],
+      "hover": [["border"], ["borderRadius"], ["boxShadow"], ["background"], ["opacity"]],
       "clicked": [],
       "disabled": []
     },
-    "Text": {
-      "name": "文本",
-      "desc": "面包屑的文本配置",
-      "normal": [["color"], ["fontSize"], ["margin"]],
-      "hover": [["color"]],
-      "clicked": [],
-      "disabled": []
-    },
+    "BreadcrumbItem": {
+      "ItemWrap": {
+        "name": "文本",
+        "desc": "面包屑的文本配置",
+        "normal": [["width"], ["padding"], ["margin"], ["opacity"]],
+        "hover": [],
+        "clicked": [],
+        "disabled": []
+      },
 
-    "Separator": {
-      "name": "分隔符",
-      "desc": "面包屑的分隔符配置",
-      "normal": [["color"], ["fontSize"], ["margin"]],
-      "hover": [],
-      "clicked": [],
-      "disabled": []
+      "Text": {
+        "name": "文本",
+        "desc": "面包屑的文本配置",
+        "normal": [["color"], ["fontSize"], ["margin"], ["padding"], ["font"]],
+        "hover": [["color"], ["font"], ["fontSize"]],
+        "clicked": [],
+        "disabled": []
+      },
+
+      "Separator": {
+        "name": "分隔符",
+        "desc": "面包屑的分隔符配置",
+        "normal": [["color"], ["fontSize"], ["margin"]],
+        "hover": [],
+        "clicked": [],
+        "disabled": []
+      }
     }
   }
 }

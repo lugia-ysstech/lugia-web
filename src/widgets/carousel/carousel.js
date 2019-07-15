@@ -4,8 +4,9 @@
  * @flow
  */
 import * as React from 'react';
-import ThemeHoc from '@lugia/theme-hoc';
 import { toNumber } from '../common/NumberUtils';
+import { addMouseEvent } from '@lugia/theme-hoc';
+import { deepMerge } from '@lugia/object-utils';
 import {
   AllItemsContainer,
   CarouselContainer,
@@ -15,14 +16,16 @@ import {
   ItemWrap,
   NextButton,
   PreButton,
-  SwitchIcon,
   Wrap,
   Empty,
   defaultWidth,
   defaultHeight,
   defaultButtonFontSize,
 } from '../css/carousel';
+import colorsFunc from '../css/stateColor';
 import { limit } from '../common/Math';
+import Icon from '../icon';
+const { lightGreyColor } = colorsFunc();
 
 const defaultDelay = 4000;
 const defaultAnimationTime = 500;
@@ -116,8 +119,11 @@ export default class Carousel extends React.Component<any, CarouselProps> {
     const { getPartOfThemeConfig } = this.props;
     const { normal: PreButtonNormal = {} } = getPartOfThemeConfig('PreButton');
     const { normal: NextButtonNormal = {} } = getPartOfThemeConfig('NextButton');
-    const { fontSize: preButtonFontSize = defaultButtonFontSize } = PreButtonNormal;
-    const { fontSize: nextButtonFontSize = defaultButtonFontSize } = NextButtonNormal;
+    const { font: preButtonFont = {} } = PreButtonNormal;
+    const { size: preButtonFontSize = defaultButtonFontSize } = preButtonFont;
+
+    const { font: nextButtonFont = {} } = NextButtonNormal;
+    const { size: nextButtonFontSize = defaultButtonFontSize } = nextButtonFont;
     this.preButtonFontSize = toNumber(preButtonFontSize, defaultButtonFontSize);
     this.nextButtonFontSize = toNumber(nextButtonFontSize, defaultButtonFontSize);
   }
@@ -150,18 +156,21 @@ export default class Carousel extends React.Component<any, CarouselProps> {
 
   render() {
     this.initPropsConfig();
+    const channel = this.props.createEventChannel(['hover']);
+
     const { getPartOfThemeProps, indicatorType, indicator, switchButton } = this.props;
-    const WrapThemeProps = this.addPropsConfig(getPartOfThemeProps('CarouselWrap'), {
+    const params = {
       indicatorType,
       preButtonFontSize: this.preButtonFontSize,
       nextButtonFontSize: this.nextButtonFontSize,
-    });
+    };
+    const WrapThemeProps = getPartOfThemeProps('CarouselWrap', { props: params });
 
     return (
-      <Wrap themeProps={WrapThemeProps}>
-        <CarouselContainer themeProps={WrapThemeProps}>
+      <Wrap themeProps={WrapThemeProps} {...addMouseEvent(this)}>
+        <CarouselContainer themeProps={WrapThemeProps} lugiaConsumers={channel.consumer}>
           {switchButton ? this.getSwitchButton() : null}
-          {this.getItems()}
+          {this.getItems(channel)}
         </CarouselContainer>
         {this.getIndicatros(indicatorType, indicator)}
       </Wrap>
@@ -173,24 +182,42 @@ export default class Carousel extends React.Component<any, CarouselProps> {
     return isRenderIndicator ? indicators : null;
   }
 
+  getSwitchTheme = (target: string) => {
+    const { getPartOfThemeHocProps } = this.props;
+    const { viewClass, theme } = getPartOfThemeHocProps(target);
+    const { normal = {}, hover = {} } = theme[viewClass];
+    normal.margin = {};
+    normal.padding = {};
+    hover.margin = {};
+    const iconTheme = deepMerge(
+      {
+        [viewClass]: {
+          normal: {
+            font: { size: defaultButtonFontSize },
+            color: lightGreyColor,
+          },
+        },
+      },
+      theme
+    );
+
+    return {
+      viewClass,
+      theme: iconTheme,
+    };
+  };
+
   getSwitchButton = () => {
-    const {
-      indicatorType,
-      children,
-      themePorps,
-      getPartOfThemeProps,
-      getPartOfThemeHocProps,
-    } = this.props;
+    const { indicatorType, children, getPartOfThemeProps } = this.props;
     if (!children || children.length === 0 || indicatorType === 'vertical') {
       return null;
     }
     const PreButtonThemeProps = getPartOfThemeProps('PreButton');
-    const { theme: preTheme, viewClass: preViewClass } = getPartOfThemeHocProps('PreButton');
-
     const preItem = (
-      <PreButton onClick={this.preClick} theme={preTheme} viewClass={preViewClass}>
-        <SwitchIcon
-          themeProps={PreButtonThemeProps}
+      <PreButton onClick={this.preClick} themeProps={PreButtonThemeProps}>
+        <Icon
+          {...this.getSwitchTheme('PreButton')}
+          singleTheme
           iconClass={'lugia-icon-direction_left_circle'}
         />
       </PreButton>
@@ -198,12 +225,11 @@ export default class Carousel extends React.Component<any, CarouselProps> {
 
     const NextButtonThemeProps = getPartOfThemeProps('NextButton');
 
-    const { theme: nextTheme, viewClass: nextViewClass } = getPartOfThemeHocProps('NextButton');
-
     const NextItem = (
-      <NextButton onClick={this.nextClick} theme={nextTheme} viewClass={nextViewClass}>
-        <SwitchIcon
-          themeProps={NextButtonThemeProps}
+      <NextButton onClick={this.nextClick} themeProps={NextButtonThemeProps}>
+        <Icon
+          singleTheme
+          {...this.getSwitchTheme('NextButton')}
           iconClass={'lugia-icon-direction_right_circle'}
         />
       </NextButton>
@@ -219,7 +245,7 @@ export default class Carousel extends React.Component<any, CarouselProps> {
 
   createIndicators = () => {
     let items = [];
-    const { indicatorType, children, getPartOfThemeProps, getPartOfThemeHocProps } = this.props;
+    const { indicatorType, children, getPartOfThemeProps } = this.props;
     if (children) {
       const { start } = this.state;
       const length = children.length;
@@ -333,7 +359,7 @@ export default class Carousel extends React.Component<any, CarouselProps> {
     }
   }
 
-  getItems = () => {
+  getItems = (channel: Object) => {
     const { children, getPartOfThemeProps } = this.props;
     const EmptyThemeProps = getPartOfThemeProps('CarouselWrap');
     if (!children || children.length === 0) {
@@ -354,7 +380,7 @@ export default class Carousel extends React.Component<any, CarouselProps> {
     });
 
     return (
-      <AllItemsContainer themeProps={WrapThemeProps} initStart={initStart}>
+      <AllItemsContainer {...channel.provider} themeProps={WrapThemeProps} initStart={initStart}>
         {this.getChildren(children)}
       </AllItemsContainer>
     );

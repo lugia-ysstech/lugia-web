@@ -66,17 +66,26 @@
     "CarouselWrap": {
       "name": "Carousel的外框",
       "desc": "Carousel的外框",
-      "normal": [["width"], ["height"], ["borderRadius"], ["boxShadow"], ["opacity"], ["margin"]],
-      "hover": [["opacity"], ["boxShadow"]],
+      "normal": [
+        ["width"],
+        ["height"],
+        ["borderRadius"],
+        ["boxShadow"],
+        ["border"],
+        ["opacity"],
+        ["margin"],
+        ["border"],
+        ["padding"]
+      ],
+      "hover": [["opacity"], ["boxShadow"], ["boxShadow"], ["borderRadius"], ["border"]],
       "clicked": [],
       "disabled": []
     },
-
     "PreButton": {
       "name": "左切换按钮",
       "desc": "切换到前一个",
-      "normal": [["fontSize"], ["opacity"], ["color"], ["boxShadow"]],
-      "hover": [["opacity"], ["boxShadow"], ["color"]],
+      "normal": [["font"], ["opacity"], ["color"], ["boxShadow"], ["border"], ["margin"]],
+      "hover": [["opacity"], ["boxShadow"], ["color"], ["border"]],
       "clicked": [],
       "disabled": []
     },
@@ -84,8 +93,8 @@
     "NextButton": {
       "name": "右切换按钮",
       "desc": "切换到后一个",
-      "normal": [["fontSize"], ["opacity"], ["color"], ["boxShadow"]],
-      "hover": [["opacity"], ["boxShadow"], ["color"]],
+      "normal": [["font"], ["opacity"], ["color"], ["boxShadow"], ["border"], ["margin"]],
+      "hover": [["opacity"], ["boxShadow"], ["color"], ["border"]],
       "clicked": [],
       "disabled": []
     },

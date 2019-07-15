@@ -5,7 +5,7 @@
  */
 import { px2remcss } from '../css/units';
 import Icon from '../icon';
-import ThemeHoc from '@lugia/theme-hoc';
+// import ThemeHoc from '@lugia/theme-hoc';
 import colorsFunc from '../css/stateColor';
 import CSSComponent, { css, keyframes } from '@lugia/theme-css-hoc';
 const { lightGreyColor } = colorsFunc();
@@ -22,88 +22,80 @@ const buttonCSS = `
       z-index: 200;
       border-radius: 50%;
       transition: all 0.2s linear;
-      font-size: ${px2remcss(defaultButtonFontSize)};
-      color: ${lightGreyColor};
 `;
 
-export const PreButton = ThemeHoc(
-  CSSComponent({
-    tag: 'span',
-    className: 'PreButton',
-    normal: {
-      selectNames: [['fontSize'], ['opacity'], ['color'], ['boxShadow']],
-      getCSS: (themeMeta, themeProps) => {
-        const { fontSize = defaultButtonFontSize } = themeMeta;
-        return `
-        left: -${px2remcss(fontSize)};
-        width: ${px2remcss(fontSize)};
-        height: ${px2remcss(fontSize)}
+export const PreButton = CSSComponent({
+  tag: 'span',
+  className: 'PreButton',
+  normal: {
+    selectNames: [['boxShadow'], ['margin'], ['border'], ['opacity']],
+    getCSS: (themeMeta, themeProps) => {
+      const { font = {} } = themeMeta;
+      const { size = defaultButtonFontSize } = font;
+      return `
+        left: -${px2remcss(size)};
+        width: ${px2remcss(size)};
+        height: ${px2remcss(size)}
         `;
-      },
-      defaultTheme: {
-        opacity: 0.6,
-      },
     },
-    hover: {
-      selectNames: [['opacity'], ['boxShadow'], ['color']],
-      defaultTheme: {
-        opacity: 1,
-      },
-    },
-    css: `
+    defaultTheme: {},
+  },
+  hover: {
+    selectNames: [['boxShadow'], ['border'], ['opacity']],
+    defaultTheme: {},
+  },
+  css: `
       ${buttonCSS};
   `,
-  }),
-  'PreButton',
-  { hover: true, actived: false }
-);
+  option: { hover: true },
+});
 
 PreButton.displayName = 'preButton';
 
-export const NextButton = ThemeHoc(
-  CSSComponent({
-    tag: 'span',
-    className: 'NextButton',
-    normal: {
-      selectNames: [['fontSize'], ['opacity'], ['color'], ['boxShadow']],
-      defaultTheme: {
-        opacity: 0.6,
-      },
-      getCSS: (themeMeta, themeProps) => {
-        const { fontSize = defaultButtonFontSize } = themeMeta;
-        return `
-        right: -${px2remcss(fontSize)};
-        width: ${px2remcss(fontSize)};
-        height: ${px2remcss(fontSize)}
+export const NextButton = CSSComponent({
+  tag: 'span',
+  className: 'NextButton',
+  normal: {
+    selectNames: [['boxShadow'], ['margin'], ['border'], ['opacity']],
+    getCSS: (themeMeta, themeProps) => {
+      const { font = {} } = themeMeta;
+      const { size = defaultButtonFontSize } = font;
+      return `
+        right: -${px2remcss(size)};
+        width: ${px2remcss(size)};
+        height: ${px2remcss(size)}
         `;
-      },
     },
-    hover: {
-      selectNames: [['opacity'], ['boxShadow'], ['color']],
-      defaultTheme: {
-        opacity: 1,
-      },
-    },
-    css: `
+  },
+  hover: {
+    selectNames: [['boxShadow'], ['border'], ['opacity']],
+  },
+  css: `
       ${buttonCSS};
   `,
-  }),
-  'NextButton',
-  { hover: true, actived: false }
-);
+  option: { hover: true },
+});
 
 NextButton.displayName = 'NextButton';
-
-export const SwitchIcon = Icon;
 
 export const Wrap = CSSComponent({
   tag: 'div',
   className: 'Wrap',
   normal: {
-    selectNames: [['width'], ['height'], ['borderRadius'], ['boxShadow'], ['opacity'], ['margin']],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['borderRadius'],
+      ['boxShadow'],
+      ['border'],
+      ['opacity'],
+      ['margin'],
+      ['border'],
+      ['padding'],
+    ],
   },
   hover: {
-    selectNames: [['opacity'], ['boxShadow']],
+    selectNames: [['opacity'], ['boxShadow'], ['boxShadow'], ['borderRadius'], ['border']],
   },
   css: `
     position: relative;
@@ -111,8 +103,6 @@ export const Wrap = CSSComponent({
     width: ${px2remcss(defaultWidth)};
     height: ${px2remcss(defaultHeight)};
     border-radius: ${px2remcss(0)};
-    opacity: 1;
-    background: #ccc
   `,
 });
 
@@ -121,6 +111,9 @@ export const CarouselContainer = CSSComponent({
   className: 'carouselContainer',
   normal: {
     selectNames: [['width'], ['height']],
+    getCSS: themeMeta => {
+      console.log('propsConfig', themeMeta);
+    },
   },
   hover: {
     selectNames: [],
@@ -129,14 +122,15 @@ export const CarouselContainer = CSSComponent({
       const { preButtonFontSize, nextButtonFontSize } = propsConfig;
       const leftTrans = preButtonFontSize + defaultButtonPadding;
       const rightTrans = nextButtonFontSize + defaultButtonPadding;
-
       return `
-      &:hover > span:nth-child(1) > span:nth-child(1) {
+      &:hover > span:nth-child(1) {
         transform: translate(${px2remcss(leftTrans)}, -50%);
+        opacity: 0.6;
       }
     
-      &:hover > span:nth-child(2) > span:nth-child(1) {
+      &:hover > span:nth-child(2) {
         transform: translate(-${px2remcss(rightTrans)}, -50%);
+        opacity: 0.6;
       }
       `;
     },
