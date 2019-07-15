@@ -52,9 +52,13 @@
   "needExport": true,
   "theme": {
     "Wrap": {
+      "name": "面板整体配置",
+      "desc": "面板整体配置",
       "normal": [["width"]]
     },
     "PanelHeader": {
+      "name": "面板头部配置",
+      "desc": "面板头部样式配置",
       "normal": [
         ["opacity"],
         ["border"],
@@ -69,16 +73,22 @@
       "disabled": [["borderRadius"], ["background"], ["opacity"], ["border"], ["boxShadow"]]
     },
     "PanelHeaderText": {
+      "name": "面板头部文字",
+      "desc": "面板头部文字样式配置",
       "normal": [["font"], ["color"]],
       "hover": [["color"]],
       "disabled": [["color"]]
     },
     "PanelHeaderIcon": {
+      "name": "面板头部图标",
+      "desc": "面板头部图标样式配置",
       "normal": [["fontSize"], ["color"]],
       "hover": [["color"]],
       "disabled": [["color"]]
     },
     "PanelContent": {
+      "name": "面板内容样式",
+      "desc": "面板内容样式配置",
       "normal": [["width"], ["height"], ["background"], ["padding"], ["font"], ["color"]],
       "hover": [["color"]],
       "disabled": [["color"]]
