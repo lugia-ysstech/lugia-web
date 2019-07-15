@@ -6,6 +6,8 @@
  *
  */
 import * as React from 'react';
+import { getBorder, getBoxShadow } from '@lugia/theme-utils';
+import { deepMerge } from '@lugia/object-utils';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import TransferMenu from './transfer-menu';
@@ -20,6 +22,7 @@ import { CancelBox, CancelBoxItem, Check, CheckText, TransFer, TreeWrap } from '
 import { filterEnableKeysFromSelectKeys } from './utils';
 
 const { MenuItem } = Menu;
+const cancelBoxHeight = 70;
 
 export default ThemeProvider(
   class extends React.Component<TransferProps, TransferState> {
@@ -65,7 +68,7 @@ export default ThemeProvider(
     }
 
     createCancelCheckBox = () => {
-      const { displayField, valueField } = this.props;
+      const { displayField, valueField, cancelCheckboxTheme = {} } = this.props;
       const { cancelItem = [] } = this.state;
       const hasCancelItem = cancelItem && cancelItem.length > 0;
       if (hasCancelItem) {
@@ -78,6 +81,7 @@ export default ThemeProvider(
                   value={item[valueField]}
                   cancel
                   handleCancelItemClick={this.cancelItemClick}
+                  {...cancelCheckboxTheme}
                 >
                   {item[displayField]}
                 </CheckBox>
@@ -90,17 +94,45 @@ export default ThemeProvider(
       return null;
     };
 
+    getCancelMenuTheme = () => {
+      const { cancelBoxMenuTheme, needCancelBox = false } = this.props;
+      if (!needCancelBox) {
+        return {};
+      }
+      const { viewClass, theme } = cancelBoxMenuTheme;
+      const defaultCancelMenuTheme = {
+        [viewClass]: {
+          MenuWrap: {
+            normal: {
+              height: cancelBoxHeight,
+              width: 200,
+            },
+          },
+        },
+      };
+      const cancelMenuTheme = deepMerge(defaultCancelMenuTheme, theme);
+
+      return {
+        viewClass,
+        theme: cancelMenuTheme,
+      };
+    };
+
     render() {
       const { selectedKeys = [], treeDataLength, cancelItem } = this.state;
       const { needCancelBox = false, type, title } = this.props;
-      const { theme = {} } = this.props;
-      const { width = 200 } = theme;
+      const {
+        theme = {},
+        checkboxTheme,
+        headerTextTheme,
+        headerTheme,
+        cancelBoxTheme,
+      } = this.props;
+      this.getCancelMenuTheme();
       const cancelBox =
         needCancelBox && cancelItem && cancelItem.length ? (
-          <CancelBox>
-            <Theme config={{ [Widget.Menu]: { height: 70, width } }}>
-              <Menu>{this.createCancelCheckBox()}</Menu>
-            </Theme>
+          <CancelBox themeProps={cancelBoxTheme}>
+            <Menu {...this.getCancelMenuTheme()}>{this.createCancelCheckBox()}</Menu>
           </CancelBox>
         ) : null;
       const dataLength = type === 'panel' ? this.getDataLength() : treeDataLength;
@@ -112,16 +144,17 @@ export default ThemeProvider(
           ? selectKeyLength >= this.getDataLength()
           : selectKeyLength >= treeDataLength;
       return (
-        <TransFer>
-          <Check>
+        <TransFer themeProps={theme}>
+          <Check themeProps={headerTheme}>
             <CheckBox
               onChange={() => this.props.onCheckAll(!checked)}
               checked={checked}
               indeterminate={selectedKeys.length > 0}
+              {...checkboxTheme}
             >
               {title}
             </CheckBox>
-            <CheckText>
+            <CheckText themeProps={headerTextTheme}>
               {selectedKeys.length}/{dataLength}
             </CheckText>
           </Check>
@@ -145,7 +178,7 @@ export default ThemeProvider(
         <Theme config={inputView}>
           <Input
             onChange={this.handleInputChange}
-            placeholder={'搜索您想知道的内容'}
+            placeholder={'搜索你想知道的内容'}
             {...inputConfig}
           />
         </Theme>
@@ -156,36 +189,34 @@ export default ThemeProvider(
       const { selectedKeys = [], typeList, treeData, inputValue } = this.state;
       const { type, direction, displayField, valueField } = this.props;
 
-      const { menuView, treeView, wrapHeight } = this.getPanelThemeConfig(direction);
+      const { menuTheme, treeTheme, wrapHeight } = this.getPanelThemeConfig(direction);
 
       return type === 'panel' ? (
         <div>
-          <Theme config={menuView}>
-            <TransferMenu
-              {...this.props}
-              query={inputValue}
-              {...typeList}
-              selectedKeys={selectedKeys}
-              height={wrapHeight}
-            />
-          </Theme>
+          <TransferMenu
+            {...this.props}
+            query={inputValue}
+            {...typeList}
+            selectedKeys={selectedKeys}
+            height={wrapHeight}
+            menuThemeObj={menuTheme}
+          />
         </div>
       ) : (
         <TreeWrap height={wrapHeight}>
-          <Theme config={treeView}>
-            <Tree
-              displayField={displayField}
-              valueField={valueField}
-              data={treeData}
-              value={selectedKeys}
-              expandAll
-              mutliple
-              onChange={this.handleTreeChange}
-              query={inputValue}
-              {...typeList}
-              getTreeData={this.getTreeData}
-            />
-          </Theme>
+          <Tree
+            displayField={displayField}
+            valueField={valueField}
+            data={treeData}
+            value={selectedKeys}
+            expandAll
+            mutliple
+            onChange={this.handleTreeChange}
+            query={inputValue}
+            {...typeList}
+            getTreeData={this.getTreeData}
+            {...treeTheme}
+          />
         </TreeWrap>
       );
     }
@@ -195,50 +226,82 @@ export default ThemeProvider(
       const { width = 200 } = theme;
       const inputView = {
         [Widget.Input]: {
-          width: width - 16,
-          margin: {
-            top: 8,
-            right: 8,
-            bottom: 16,
-            left: 8,
+          Input: {
+            normal: {
+              width: width - 16,
+              margin: {
+                top: 8,
+                right: 8,
+                bottom: 16,
+                left: 8,
+              },
+              border: getBorder({ width: 1, style: 'solid', color: '#e8e8e8' }),
+            },
           },
-          borderColor: '#e8e8e8',
-        },
-        [Widget.Icon]: {
-          color: '#999999',
+          InputSuffix: {
+            normal: {
+              color: '#999999',
+              fontSize: 12,
+            },
+          },
         },
       };
       return { inputView };
     }
+
+    getCancelBoxHeight = () => {
+      const { getPartOfThemeProps } = this.props;
+      const { themeConfig } = getPartOfThemeProps('TransferCancelBox');
+      const { normal = {} } = themeConfig;
+      const { height = cancelBoxHeight + 6 } = normal;
+
+      return height;
+    };
+
     getPanelThemeConfig = direction => {
-      const { theme = {} } = this.props;
-      const { height = 205, width = 200 } = theme;
-      let wrapHeight = height;
-      const menuView = {},
-        treeView = {};
-      if (direction === 'Source') {
-        menuView[Widget.Menu] = {
-          height,
-          width,
-        };
-        treeView[Widget.Tree] = {
-          height,
-          width,
-        };
-      } else {
-        const { cancelItem } = this.state;
-        const targetHeight = cancelItem && cancelItem.length ? height - 70 : height;
-        wrapHeight = targetHeight;
-        menuView[Widget.Menu] = {
-          height: targetHeight,
-          width,
-        };
-        treeView[Widget.Tree] = {
-          height: targetHeight,
-          width,
-        };
+      const { cancelItem } = this.state;
+      const { menuTheme, treeTheme } = this.props;
+      const { viewClass: menuViewClass, theme: menuThemes } = menuTheme;
+      const { viewClass: treeViewClass, theme: treeThemes } = treeTheme;
+      const height = 206;
+      const defaultTheme = {
+        width: 200,
+        height,
+      };
+      if (direction !== 'Source' && cancelItem && cancelItem.length) {
+        const cancelBoxHeight = this.getCancelBoxHeight();
+        defaultTheme.height = height - cancelBoxHeight;
       }
-      return { menuView, treeView, wrapHeight };
+      const wrapHeight = defaultTheme.height;
+      const menuDefaultView = {
+        [menuViewClass]: {
+          MenuWrap: {
+            normal: { ...defaultTheme, boxShadow: getBoxShadow('0 0') },
+          },
+        },
+      };
+      const treeDefaultView = {
+        [treeViewClass]: {
+          TreeWrap: {
+            normal: defaultTheme,
+          },
+        },
+      };
+
+      const theMenuTheme = deepMerge(menuDefaultView, menuThemes);
+      const theTreeTheme = deepMerge(treeDefaultView, treeThemes);
+
+      return {
+        menuTheme: {
+          viewClass: menuViewClass,
+          theme: theMenuTheme,
+        },
+        treeTheme: {
+          viewClass: treeViewClass,
+          theme: theTreeTheme,
+        },
+        wrapHeight,
+      };
     };
 
     getTreeData = (data: Object[]) => {

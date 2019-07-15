@@ -208,18 +208,20 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
   };
   render() {
     const { value } = this.state;
-    const { theme: theThemeProps, viewClass } = this.props.getPartOfThemeHocProps('TooltipContent');
+    const { theme: theThemeProps, viewClass } = this.props.getPartOfThemeHocProps('AmountTip');
     const newTheme = deepMerge(
       {
         [viewClass]: {
-          normal: {
-            getThemeMeta(themeMeta: Object, themeProps: Object) {
-              const { propsConfig } = themeProps;
-              const { value } = propsConfig;
-              const opacity = value && value.length ? 1 : 0;
-              return {
-                opacity,
-              };
+          TooltipContent: {
+            normal: {
+              getThemeMeta(themeMeta: Object, themeProps: Object) {
+                const { propsConfig } = themeProps;
+                const { value } = propsConfig;
+                const opacity = value && value.length ? 1 : 0;
+                return {
+                  opacity,
+                };
+              },
             },
           },
         },

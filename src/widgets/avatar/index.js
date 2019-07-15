@@ -12,7 +12,7 @@ import { DefaultHeight, LargeHeight, SmallHeight } from '../css/avatar';
 import Icon from '../icon';
 import ThemeHoc from '@lugia/theme-hoc';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
-import CSSComponent, { css } from '../theme/CSSProvider';
+import CSSComponent, { css, getBorderRadius } from '../theme/CSSProvider';
 import { ObjectUtils } from '@lugia/type-utils';
 import colorsFunc from '../css/stateColor';
 import { units } from '@lugia/css';
@@ -35,24 +35,33 @@ const BaseAvatar = CSSComponent({
     ],
     defaultTheme: {
       color: 'rgba(0, 0, 0, 0.65)',
-      background: {
-        color: borderColor,
-      },
     },
     getCSS(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
-      const { width, height, background = {} } = themeMeta;
-      const { size, src, icon, shape } = propsConfig;
-      const { color: backgroundColor } = background;
-      const theBackgroundColor = backgroundColor ? backgroundColor : src || icon ? '' : borderColor;
+      const { size, shape } = propsConfig;
       const theSize =
         size === 'large' ? LargeHeight : size === 'small' ? SmallHeight : DefaultHeight;
-      const theWidth = ObjectUtils.isNumber(width) ? width : theSize;
-      const theHeight = ObjectUtils.isNumber(height) ? height : theSize;
       const theBorderRadius = shape === 'circle' ? '50%' : '10%';
-      return `border-radius:${theBorderRadius};width :${px2remcss(theWidth)};height:${px2remcss(
-        theHeight
-      )}; line-height: ${px2remcss(theSize)};background-color:${theBackgroundColor};`;
+      return `border-radius:${theBorderRadius};
+      line-height: ${px2remcss(theSize)};`;
+    },
+    getThemeMeta(themeMeta: Object, themeProps: Object) {
+      const { propsConfig } = themeProps;
+      const { width, height, background = {} } = themeMeta;
+      const { size, src } = propsConfig;
+      const theBackgroundColor =
+        background && background.color ? background.color : src ? 'none' : borderColor;
+      const theSize =
+        size === 'large' ? LargeHeight : size === 'small' ? SmallHeight : DefaultHeight;
+      const theWidth = width ? width : src ? '' : theSize;
+      const theHeight = height ? height : src ? '' : theSize;
+      return {
+        width: theWidth,
+        height: theHeight,
+        background: {
+          color: theBackgroundColor,
+        },
+      };
     },
   },
   css: css`
@@ -89,19 +98,21 @@ const Picture = CSSComponent({
   tag: 'img',
   className: 'AvatarPicture',
   normal: {
-    selectNames: [['color'], ['width'], ['height']],
-    getCSS(themeMeta: Object, themeProps: Object) {
+    selectNames: [['color'], ['width'], ['height'], ['padding'], ['margin'], ['borderRadius']],
+    getThemeMeta(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
       const { width, height } = themeMeta;
       const { size, shape } = propsConfig;
       const theSize =
         size === 'large' ? LargeHeight : size === 'small' ? SmallHeight : DefaultHeight;
       const theBorderRadius = shape === 'circle' ? '50%' : '10%';
-      const theWidth = ObjectUtils.isNumber(width) ? width : theSize;
-      const theHeight = ObjectUtils.isNumber(height) ? height : theSize;
-      return `width :${px2remcss(theWidth)};height:${px2remcss(
-        theHeight
-      )};border-radius:${theBorderRadius};`;
+      const theWidth = width ? width : theSize;
+      const theHeight = height ? height : theSize;
+      return {
+        width: theWidth,
+        height: theHeight,
+        borderRadius: getBorderRadius(theBorderRadius),
+      };
     },
   },
   css: css`
@@ -196,14 +207,13 @@ class AvatarBox extends React.Component<AvatarProps, AvatarState> {
   }
   getAvatar() {
     const { props } = this;
-    const { themeProps, size, shape, src, icon } = props;
+    const { themeProps, size, shape, src } = props;
     const thePropsTheme = deepMerge(
       this.props.getPartOfThemeProps('AvatarContainer', {
         props: {
           size,
           shape,
           src,
-          icon,
         },
       }),
       themeProps

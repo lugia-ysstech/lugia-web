@@ -130,5 +130,497 @@
       }
     }
   },
-  "category": ["数据录入"]
+  "category": ["数据录入"],
+  "designInfo": {
+    "TransferTree": {
+      "sequence": 1,
+      "title": "树形穿梭框",
+      "desc": "树形穿梭框，展示树形数据",
+      "props": {
+        "type": "tree"
+      },
+      "theme": {
+        "TransferWrap": {
+          "name": "穿梭框整体样式",
+          "desc": "为穿梭框配置整体样式",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["margin"],
+            ["padding"],
+            ["background"],
+            ["border"],
+            ["borderRadius"]
+          ]
+        },
+        "TransferPanel": {
+          "name": "穿梭框面板样式",
+          "desc": "为穿梭框配置左右面板样式",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["margin"],
+            ["padding"],
+            ["background"],
+            ["border"],
+            ["borderRadius"],
+            ["boxShadow"],
+            ["opacity"]
+          ]
+        },
+        "TransferHeaderWrap": {
+          "name": "穿梭框面板头部",
+          "desc": "为穿梭框配置左右面板头部样式",
+          "normal": [["background"], ["border"]]
+        },
+        "TransferPanelHeaderCheckbox": {
+          "name": "穿梭框面板头部Checkbox",
+          "desc": "为穿梭框配置左右面板头部Checkbox样式",
+          "theme": {
+            "CheckboxWrap": {
+              "name": "Checkbox整体配置",
+              "desc": "Checkbox整体配置",
+              "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]],
+              "hover": [["opacity"]],
+              "disabled": [["opacity"]]
+            },
+            "CheckboxText": {
+              "name": "Checkbox文字配置",
+              "desc": "Checkbox文字配置",
+              "normal": [["color"], ["font"]],
+              "hover": [["color"], ["font"]],
+              "disabled": [["color"], ["font"]]
+            },
+            "CheckboxEdgeChecked": {
+              "name": "Checkbox选中后边框配置",
+              "desc": "Checkbox选中后边框配置样式",
+              "normal": [["background"], ["borderRadius"], ["border"]],
+              "hover": [["background"], ["borderRadius"], ["border"]],
+              "disabled": [["background"], ["borderRadius"], ["border"]]
+            },
+            "CheckboxEdgeUnChecked": {
+              "name": "Checkbox未选中边框配置",
+              "desc": "Checkbox未选中边框配置样式",
+              "normal": [["background"], ["borderRadius"], ["border"]],
+              "hover": [["background"], ["borderRadius"], ["border"]],
+              "disabled": [["background"], ["borderRadius"], ["border"]]
+            },
+            "CheckboxEdgeIndeterminate": {
+              "name": "Checkbox半选边框配置",
+              "desc": "Checkbox半选状态边框配置样式",
+              "normal": [["background"], ["borderRadius"], ["border"]],
+              "hover": [["background"], ["borderRadius"], ["border"]],
+              "disabled": [["background"], ["borderRadius"], ["border"]]
+            },
+            "CheckboxInnerChecked": {
+              "name": "Checkbox选中样式配置",
+              "desc": "Checkbox选中样式配置",
+              "normal": [["color"]],
+              "hover": [["color"]],
+              "disabled": [["color"]]
+            },
+            "CheckboxInnerIndeterminate": {
+              "name": "Checkbox半选样式配置",
+              "desc": "Checkbox半选状态样式配置",
+              "normal": [["color"]],
+              "hover": [["color"]],
+              "disabled": [["color"]]
+            }
+          }
+        },
+        "TransferHeaderText": {
+          "name": "穿梭框面板头部文字样式",
+          "desc": "为穿梭框配置左右面板头部文字样式",
+          "normal": [["padding"], ["color"], ["font"]]
+        },
+        "TransferCancelBox": {
+          "name": "穿梭框面板取消项盒子样式",
+          "desc": "为穿梭框配置右面板取消项盒子样式",
+          "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"]]
+        },
+        "TransferCancelCheckbox": {
+          "name": "穿梭框面板取消项盒子样式",
+          "desc": "为穿梭框配置右面板取消项盒子样式",
+          "theme": {
+            "CheckboxWrap": {
+              "name": "Checkbox整体配置",
+              "desc": "Checkbox整体配置",
+              "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]],
+              "hover": [["opacity"]],
+              "disabled": [["opacity"]]
+            },
+            "CheckboxText": {
+              "name": "Checkbox文字配置",
+              "desc": "Checkbox文字配置",
+              "normal": [["color"], ["font"]],
+              "hover": [["color"], ["font"]],
+              "disabled": [["color"], ["font"]]
+            },
+            "CheckboxEdgeCancel": {
+              "name": "Checkbox取消项边框配置",
+              "desc": "Checkbox取消状态边框配置样式",
+              "normal": [["background"], ["borderRadius"], ["border"]]
+            },
+            "CheckboxInnerCancel": {
+              "name": "Checkbox取消状态样式配置",
+              "desc": "Checkbox取消状态样式配置",
+              "normal": [["color"]]
+            }
+          }
+        },
+        "TransferPanelTree": {
+          "name": "穿梭框面板Tree样式",
+          "desc": "为穿梭框配置左右面板Tree样式",
+          "theme": {
+            "TreeWrap": {
+              "name": "树形控件外盒",
+              "desc": "配置树形组件的外盒样式",
+              "normal": [
+                ["width"],
+                ["height"],
+                ["boxShadow"],
+                ["background"],
+                ["opacity"],
+                ["border"],
+                ["borderRadius"],
+                ["margin"],
+                ["padding"]
+              ],
+              "hover": [["boxShadow"], ["background"], ["opacity"], ["border"], ["borderRadius"]],
+              "clicked": [],
+              "disabled": []
+            },
+            "TreeItem": {
+              "theme": {
+                "TreeItemWrap": {
+                  "name": "项的外盒",
+                  "desc": "配置每一项的外盒",
+                  "normal": [
+                    ["background"],
+                    ["border"],
+                    ["borderRadius"],
+                    ["opacity"],
+                    ["color"],
+                    ["padding"]
+                  ],
+                  "hover": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
+                  "active": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
+                  "disabled": []
+                },
+                "SelectedTreeItemWrap": {
+                  "name": "选中项的外盒",
+                  "desc": "配置选中项的外盒",
+                  "normal": [
+                    ["background"],
+                    ["border"],
+                    ["borderRadius"],
+                    ["opacity"],
+                    ["color"],
+                    ["padding"]
+                  ],
+                  "hover": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
+                  "active": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
+                  "disabled": []
+                },
+                "Text": {
+                  "name": "项的文本",
+                  "desc": "配置每一项文本内容的样式",
+                  "normal": [
+                    ["color"],
+                    ["font"],
+                    ["background"],
+                    ["padding"],
+                    ["border"],
+                    ["borderRadius"]
+                  ],
+                  "hover": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
+                  "active": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
+                  "disabled": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]]
+                },
+                "SelectedText": {
+                  "name": "选中项的文本",
+                  "desc": "配置选中项文本内容的样式",
+                  "normal": [
+                    ["color"],
+                    ["font"],
+                    ["background"],
+                    ["padding"],
+                    ["border"],
+                    ["borderRadius"]
+                  ],
+                  "hover": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
+                  "active": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
+                  "disabled": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]]
+                },
+                "Switch": {
+                  "name": "控制器配置",
+                  "desc": "配置控制树节点展开或隐藏的控制器的样式",
+                  "normal": [["color"], ["font"]],
+                  "hover": [["color"], ["font"]],
+                  "active": [["color"], ["font"]],
+                  "disabled": [["color"], ["font"]]
+                },
+                "Checkbox": {
+                  "theme": {
+                    "CheckboxWrap": {
+                      "name": "Checkbox整体配置",
+                      "desc": "Checkbox整体配置",
+                      "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]],
+                      "hover": [["opacity"]],
+                      "disabled": [["opacity"]]
+                    },
+                    "CheckboxText": {
+                      "name": "Checkbox文字配置",
+                      "desc": "Checkbox文字配置",
+                      "normal": [["color"], ["font"]],
+                      "hover": [["color"], ["font"]],
+                      "disabled": [["color"], ["font"]]
+                    },
+                    "CheckboxEdgeChecked": {
+                      "name": "Checkbox选中后边框配置",
+                      "desc": "Checkbox选中后边框配置样式",
+                      "normal": [["background"], ["borderRadius"], ["border"]],
+                      "hover": [["background"], ["borderRadius"], ["border"]],
+                      "disabled": [["background"], ["borderRadius"], ["border"]]
+                    },
+                    "CheckboxEdgeUnChecked": {
+                      "name": "Checkbox未选中边框配置",
+                      "desc": "Checkbox未选中边框配置样式",
+                      "normal": [["background"], ["borderRadius"], ["border"]],
+                      "hover": [["background"], ["borderRadius"], ["border"]],
+                      "disabled": [["background"], ["borderRadius"], ["border"]]
+                    },
+                    "CheckboxInnerChecked": {
+                      "name": "Checkbox选中样式配置",
+                      "desc": "Checkbox选中样式配置",
+                      "normal": [["color"]],
+                      "hover": [["color"]],
+                      "disabled": [["color"]]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "TransferButton": {
+          "name": "穿梭框按钮样式",
+          "desc": "为穿梭框配置按钮样式",
+          "theme": {
+            "ButtonWrap": {
+              "name": "按钮整体样式",
+              "desc": "为按钮配置整体样式",
+              "normal": [
+                ["background"],
+                ["border"],
+                ["height"],
+                ["width"],
+                ["padding"],
+                ["margin"],
+                ["borderRadius"]
+              ],
+              "hover": [["background"], ["border"]],
+              "active": [["background"], ["border"]],
+              "disabled": [["background"], ["border"]],
+              "focus": [["background"], ["border"]]
+            },
+            "ButtonText": {
+              "name": "按钮文字样式",
+              "desc": "为按钮文字配置样式",
+              "normal": [["color"], ["font"]],
+              "hover": [["color"]],
+              "active": [["color"]],
+              "disabled": [["color"]],
+              "focus": [["color"]]
+            },
+            "ButtonIcon": {
+              "name": "按钮图标样式",
+              "desc": "为按钮图标配置样式",
+              "normal": [["color"], ["font"]],
+              "hover": [["color"]],
+              "active": [["color"]],
+              "disabled": [["color"]],
+              "focus": [["color"]]
+            }
+          }
+        }
+      }
+    }
+  },
+  "theme": {
+    "TransferWrap": {
+      "name": "穿梭框整体样式",
+      "desc": "为穿梭框配置整体样式",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["margin"],
+        ["padding"],
+        ["background"],
+        ["border"],
+        ["borderRadius"]
+      ]
+    },
+    "TransferPanel": {
+      "name": "穿梭框面板样式",
+      "desc": "为穿梭框配置左右面板样式",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["margin"],
+        ["padding"],
+        ["background"],
+        ["border"],
+        ["borderRadius"],
+        ["boxShadow"],
+        ["opacity"]
+      ]
+    },
+    "TransferHeaderWrap": {
+      "name": "穿梭框面板头部",
+      "desc": "为穿梭框配置左右面板头部样式",
+      "normal": [["background"], ["border"]]
+    },
+    "TransferPanelHeaderCheckbox": {
+      "name": "穿梭框面板头部Checkbox",
+      "desc": "为穿梭框配置左右面板头部Checkbox样式",
+      "theme": {
+        "CheckboxWrap": {
+          "name": "Checkbox整体配置",
+          "desc": "Checkbox整体配置",
+          "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]],
+          "hover": [["opacity"]],
+          "disabled": [["opacity"]]
+        },
+        "CheckboxText": {
+          "name": "Checkbox文字配置",
+          "desc": "Checkbox文字配置",
+          "normal": [["color"], ["font"]],
+          "hover": [["color"], ["font"]],
+          "disabled": [["color"], ["font"]]
+        },
+        "CheckboxEdgeChecked": {
+          "name": "Checkbox选中后边框配置",
+          "desc": "Checkbox选中后边框配置样式",
+          "normal": [["background"], ["borderRadius"], ["border"]],
+          "hover": [["background"], ["borderRadius"], ["border"]],
+          "disabled": [["background"], ["borderRadius"], ["border"]]
+        },
+        "CheckboxEdgeUnChecked": {
+          "name": "Checkbox未选中边框配置",
+          "desc": "Checkbox未选中边框配置样式",
+          "normal": [["background"], ["borderRadius"], ["border"]],
+          "hover": [["background"], ["borderRadius"], ["border"]],
+          "disabled": [["background"], ["borderRadius"], ["border"]]
+        },
+        "CheckboxEdgeIndeterminate": {
+          "name": "Checkbox半选边框配置",
+          "desc": "Checkbox半选状态边框配置样式",
+          "normal": [["background"], ["borderRadius"], ["border"]],
+          "hover": [["background"], ["borderRadius"], ["border"]],
+          "disabled": [["background"], ["borderRadius"], ["border"]]
+        },
+        "CheckboxInnerChecked": {
+          "name": "Checkbox选中样式配置",
+          "desc": "Checkbox选中样式配置",
+          "normal": [["color"]],
+          "hover": [["color"]],
+          "disabled": [["color"]]
+        },
+        "CheckboxInnerIndeterminate": {
+          "name": "Checkbox半选样式配置",
+          "desc": "Checkbox半选状态样式配置",
+          "normal": [["color"]],
+          "hover": [["color"]],
+          "disabled": [["color"]]
+        }
+      }
+    },
+    "TransferHeaderText": {
+      "name": "穿梭框面板头部文字样式",
+      "desc": "为穿梭框配置左右面板头部文字样式",
+      "normal": [["padding"], ["color"], ["font"]]
+    },
+    "TransferCancelBox": {
+      "name": "穿梭框面板取消项盒子样式",
+      "desc": "为穿梭框配置右面板取消项盒子样式",
+      "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"]]
+    },
+    "TransferCancelCheckbox": {
+      "name": "穿梭框面板取消项盒子样式",
+      "desc": "为穿梭框配置右面板取消项盒子样式",
+      "theme": {
+        "CheckboxWrap": {
+          "name": "Checkbox整体配置",
+          "desc": "Checkbox整体配置",
+          "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]],
+          "hover": [["opacity"]],
+          "disabled": [["opacity"]]
+        },
+        "CheckboxText": {
+          "name": "Checkbox文字配置",
+          "desc": "Checkbox文字配置",
+          "normal": [["color"], ["font"]],
+          "hover": [["color"], ["font"]],
+          "disabled": [["color"], ["font"]]
+        },
+        "CheckboxEdgeCancel": {
+          "name": "Checkbox取消项边框配置",
+          "desc": "Checkbox取消状态边框配置样式",
+          "normal": [["background"], ["borderRadius"], ["border"]]
+        },
+        "CheckboxInnerCancel": {
+          "name": "Checkbox取消状态样式配置",
+          "desc": "Checkbox取消状态样式配置",
+          "normal": [["color"]]
+        }
+      }
+    },
+    "TransferPanelMenu": {
+      "name": "穿梭框面板菜单样式",
+      "desc": "为穿梭框配置左右面板菜单样式",
+      "theme": {}
+    },
+    "TransferButton": {
+      "name": "穿梭框按钮样式",
+      "desc": "为穿梭框配置按钮样式",
+      "theme": {
+        "ButtonWrap": {
+          "name": "按钮整体样式",
+          "desc": "为按钮配置整体样式",
+          "normal": [
+            ["background"],
+            ["border"],
+            ["height"],
+            ["width"],
+            ["padding"],
+            ["margin"],
+            ["borderRadius"]
+          ],
+          "hover": [["background"], ["border"]],
+          "active": [["background"], ["border"]],
+          "disabled": [["background"], ["border"]],
+          "focus": [["background"], ["border"]]
+        },
+        "ButtonText": {
+          "name": "按钮文字样式",
+          "desc": "为按钮文字配置样式",
+          "normal": [["color"], ["font"]],
+          "hover": [["color"]],
+          "active": [["color"]],
+          "disabled": [["color"]],
+          "focus": [["color"]]
+        },
+        "ButtonIcon": {
+          "name": "按钮图标样式",
+          "desc": "为按钮图标配置样式",
+          "normal": [["color"], ["font"]],
+          "hover": [["color"]],
+          "active": [["color"]],
+          "disabled": [["color"]],
+          "focus": [["color"]]
+        }
+      }
+    }
+  }
 }

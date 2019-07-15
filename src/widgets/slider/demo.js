@@ -42,12 +42,8 @@ export default class Sl extends Component<any> {
             config={
               {
                 [Widgets.Slider]: {
-                  IconsFirst: {
+                  Icons: {
                     normal: { color: 'red', fontSize: 300 },
-                    disabled: { color: 'blue', fontSize: 30 },
-                  },
-                  IconsLast: {
-                    normal: { color: 'green', fontSize: 30 },
                     disabled: { color: 'blue', fontSize: 30 },
                   },
                   SliderContainer: {

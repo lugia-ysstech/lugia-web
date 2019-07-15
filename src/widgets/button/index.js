@@ -199,8 +199,8 @@ export default ThemeProvider(
             up: onMouseUp,
             down: onMouseDown,
           };
-          const ButtonWrapTheme = getPartOfThemeProps('ButtonWrap');
-          ButtonWrapTheme.propsConfig = {
+          const buttonWrapTheme = getPartOfThemeProps('ButtonWrap');
+          buttonWrapTheme.propsConfig = {
             type,
             plain,
             disabled,
@@ -225,7 +225,7 @@ export default ThemeProvider(
               onMouseOver={onMouseOver}
               themes={getTheme()}
               block={block}
-              themeProps={ButtonWrapTheme}
+              themeProps={buttonWrapTheme}
               {...addMouseEvent(this, mouseConfig)}
               {...addFocusBlurEvent(this)}
             >

@@ -21,7 +21,7 @@ type BasicPropsType = {
   showArrow?: boolean,
 };
 type BasicStateType = {
-  open: boolean,
+  open: ?boolean,
   opening: boolean,
   closing: boolean,
   height: number,
@@ -34,6 +34,9 @@ export type PanelProps = {
   getTheme: Function,
   onClick?: Function,
   dispatchEvent: Function,
+  getPartOfThemeProps: Function,
+  getPartOfThemeHocProps: Function,
+  themeProps: Object,
 } & BasicPropsType;
 export type PanelState = BasicStateType;
 type CSSProps = {

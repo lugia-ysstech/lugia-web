@@ -151,11 +151,24 @@ export default ThemeProvider(
         type = 'panel',
         valueField = ValueField,
         displayField = DisplayField,
-        getTheme,
+        getPartOfThemeProps,
+        getPartOfThemeHocProps,
       } = this.props;
-
+      const transFerWrapTheme = getPartOfThemeProps('TransferWrap');
+      const transferPanelTheme = getPartOfThemeProps('TransferPanel');
+      const transferPanelHeaderCheckboxThemeObj = getPartOfThemeHocProps(
+        'TransferPanelHeaderCheckbox'
+      );
+      const transferHeaderTextTheme = getPartOfThemeProps('TransferHeaderText');
+      const transferHeaderTheme = getPartOfThemeProps('TransferHeaderWrap');
+      const transferCancelBoxTheme = getPartOfThemeProps('TransferCancelBox');
+      const transferCancelCheckboxThemeObj = getPartOfThemeHocProps('TransferCancelCheckbox');
+      const transferCancelBoxMenuThemeObj = getPartOfThemeHocProps('TransferCancelBoxMenu');
+      const transferPanelMenuThemeObj = getPartOfThemeHocProps('TransferPanelMenu');
+      const transferPanelTreeThemeObj = getPartOfThemeHocProps('TransferPanelTree');
+      const transferButtonThemeObj = getPartOfThemeHocProps('TransferButton');
       return (
-        <TransFerWrap>
+        <TransFerWrap themeProps={transFerWrapTheme}>
           <TransFer
             key="1"
             direction="Source"
@@ -167,13 +180,19 @@ export default ThemeProvider(
             displayField={displayField}
             valueField={valueField}
             type={type}
-            theme={getTheme()}
+            theme={transferPanelTheme}
+            checkboxTheme={transferPanelHeaderCheckboxThemeObj}
+            headerTextTheme={transferHeaderTextTheme}
+            headerTheme={transferHeaderTheme}
+            menuTheme={transferPanelMenuThemeObj}
+            treeTheme={transferPanelTreeThemeObj}
           />
           <TransFerButton
             leftModel={this.sourceModel}
             rightModel={this.targetModel}
             onLeftClick={this.handleToRight}
             onRightClick={this.handleToLeft}
+            theme={transferButtonThemeObj}
           />
           <TransFer
             key="2"
@@ -188,7 +207,15 @@ export default ThemeProvider(
             displayField={displayField}
             valueField={valueField}
             type={type}
-            theme={getTheme()}
+            theme={transferPanelTheme}
+            checkboxTheme={transferPanelHeaderCheckboxThemeObj}
+            headerTextTheme={transferHeaderTextTheme}
+            headerTheme={transferHeaderTheme}
+            cancelBoxTheme={transferCancelBoxTheme}
+            cancelCheckboxTheme={transferCancelCheckboxThemeObj}
+            cancelBoxMenuTheme={transferCancelBoxMenuThemeObj}
+            menuTheme={transferPanelMenuThemeObj}
+            treeTheme={transferPanelTreeThemeObj}
           />
         </TransFerWrap>
       );

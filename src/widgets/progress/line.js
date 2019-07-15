@@ -62,9 +62,7 @@ export const getText = (inside?: boolean, props: Object) => {
       },
       theme
     );
-    console.log(iconDefaultTheme);
-    console.log(theme);
-    console.log(iconTheme);
+
     return (
       <Icon
         viewClass={viewClass}
@@ -119,49 +117,49 @@ export default class extends React.Component<LineProps, ProgressState> {
       active,
       getPartOfThemeProps,
     } = this.props;
-    const ProgressWrapTheme = getPartOfThemeProps('ProgressWrap');
-    const ProgressLineTheme = getPartOfThemeProps('ProgressOutLine');
-    const InnerLineDefaultTheme = getPartOfThemeProps('ProgressInnerLine_Default');
-    const InnerLineSuccessTheme = getPartOfThemeProps('ProgressInnerLine_Success');
-    const InnerLineErrorTheme = getPartOfThemeProps('ProgressInnerLine_Error');
-    const InsideTextTheme = getPartOfThemeProps('ProgressLineInsideText');
-    const InfoTextTheme = getPartOfThemeProps('ProgressLineInfoText');
+    const progressWrapTheme = getPartOfThemeProps('ProgressWrap');
+    const progressLineTheme = getPartOfThemeProps('ProgressOutLine');
+    const innerLineDefaultTheme = getPartOfThemeProps('ProgressInnerLine_Default');
+    const innerLineSuccessTheme = getPartOfThemeProps('ProgressInnerLine_Success');
+    const innerLineErrorTheme = getPartOfThemeProps('ProgressInnerLine_Error');
+    const insideTextTheme = getPartOfThemeProps('ProgressLineInsideText');
+    const infoTextTheme = getPartOfThemeProps('ProgressLineInfoText');
     const progressStatus = getStatus({ status, percent });
-    const ProgressInnerLineTheme =
+    const progressInnerLineTheme =
       progressStatus === 'success'
-        ? InnerLineSuccessTheme
+        ? innerLineSuccessTheme
         : progressStatus === 'error'
-        ? InnerLineErrorTheme
-        : InnerLineDefaultTheme;
-    ProgressInnerLineTheme.propsConfig = {
+        ? innerLineErrorTheme
+        : innerLineDefaultTheme;
+    progressInnerLineTheme.propsConfig = {
       status: progressStatus,
       percent,
       size,
       showType,
       active,
     };
-    InfoTextTheme.propsConfig = {
+    infoTextTheme.propsConfig = {
       status: progressStatus,
       size,
     };
 
     return (
-      <Wrap themeProps={ProgressWrapTheme} size={size} type={type}>
+      <Wrap themeProps={progressWrapTheme} size={size} type={type}>
         <ProgressLine
-          themeProps={ProgressLineTheme}
+          themeProps={progressLineTheme}
           showInfo={showInfo}
           showType={showType}
           size={size}
         >
           <ProgressBackground
-            themeProps={ProgressInnerLineTheme}
+            themeProps={progressInnerLineTheme}
             showType={showType}
             percent={percent}
             status={status}
             size={size}
           >
             {showType === 'default' ? null : (
-              <InsideText showType={showType} size={size} themeProps={InsideTextTheme}>
+              <InsideText showType={showType} size={size} themeProps={insideTextTheme}>
                 {this.getPercentText(true)}
               </InsideText>
             )}
@@ -169,7 +167,7 @@ export default class extends React.Component<LineProps, ProgressState> {
         </ProgressLine>
         {showInfo && showType === 'default' ? (
           <ProgressText
-            themeProps={InfoTextTheme}
+            themeProps={infoTextTheme}
             size={size}
             percent={percent}
             type={type}

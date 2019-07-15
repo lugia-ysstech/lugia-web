@@ -183,7 +183,7 @@ export const RadioCircleSpan = CSSComponent({
     getCSS(themeMeta: Object, themeProps: Object): string {
       const { propsConfig, themeState } = themeProps;
       const { hover } = themeState;
-      const { RadioInnerCheckedTheme: afterThemeConfig, isDisabled, isChecked } = propsConfig;
+      const { radioInnerCheckedTheme: afterThemeConfig, isDisabled, isChecked } = propsConfig;
       if (isChecked) {
         const theme = isDisabled
           ? afterThemeConfig.disabled

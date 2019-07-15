@@ -5,6 +5,7 @@
  * @flow
  */
 import * as React from 'react';
+import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
 import Transfer from './group';
 import Widget from '../consts/index';
 import Theme from '../theme';
@@ -85,12 +86,118 @@ export default class TransferDemo extends React.Component<any, any> {
     const { targetKeys, sourceSelectedKeys, targetSelectedKeys } = this.state;
     const TransferView = {
       [Widget.Transfer]: {
-        height: 400,
-        width: 300,
+        TransferWrap: {
+          normal: {
+            width: 700,
+            height: 500,
+            margin: 10,
+            padding: 10,
+            background: { color: 'orange' },
+            border: getBorder({ width: 1, style: 'solid', color: 'red' }),
+            borderRadius: getBorderRadius(10),
+          },
+        },
+        TransferPanel: {
+          normal: {
+            width: 210,
+            height: 300,
+            margin: 10,
+            padding: 0,
+            background: { color: '#fff' },
+            border: getBorder({ width: 1, style: 'solid', color: 'red' }),
+            borderRadius: getBorderRadius(10),
+            boxShadow: getBoxShadow('0 4px 12px rgba(0, 0, 0, 0.15)'),
+            opacity: 0.8,
+          },
+        },
+        TransferHeaderWrap: {
+          normal: {
+            background: { color: 'pink' },
+            border: getBorder({ width: 1, style: 'solid', color: 'green' }),
+          },
+        },
+        TransferPanelHeaderCheckbox: {
+          CheckboxText: {
+            normal: {
+              color: 'red',
+            },
+          },
+          CheckboxEdgeIndeterminate: {
+            normal: {
+              background: { color: 'red' },
+            },
+          },
+        },
+        TransferHeaderText: {
+          normal: {
+            color: 'green',
+            font: { size: 16, weight: 500 },
+            padding: 0,
+          },
+        },
+        TransferCancelBox: {
+          normal: {
+            width: 200,
+            height: 70,
+            background: 'pink',
+            margin: 0,
+            padding: 0,
+          },
+        },
+        TransferCancelCheckbox: {
+          CheckboxEdgeCancel: {
+            normal: {
+              background: {
+                color: 'pink',
+              },
+            },
+          },
+        },
+        TransferPanelMenu: {
+          MenuWrap: {
+            normal: { height: 500 },
+          },
+        },
+        TransferPanelTree: {
+          TreeWrap: {
+            normal: { height: 500 },
+          },
+        },
+        TransferButton: {
+          ButtonWrap: {
+            normal: {
+              width: 100,
+              height: 50,
+              padding: 9,
+              margin: 10,
+              background: { color: 'orange' },
+              border: getBorder({ width: 2, style: 'solid', color: 'green' }),
+              borderRadius: getBorderRadius(10),
+            },
+            hover: {
+              background: { color: 'yellow' },
+              border: getBorder({ width: 2, style: 'solid', color: 'red' }),
+            },
+            active: {
+              background: { color: 'red' },
+              border: getBorder({ width: 2, style: 'solid', color: 'yellow' }),
+            },
+            disabled: {
+              background: { color: 'green' },
+              border: getBorder({ width: 2, style: 'solid', color: 'pink' }),
+            },
+            focus: {
+              background: { color: 'pink' },
+              border: getBorder({ width: 2, style: 'solid', color: 'green' }),
+            },
+          },
+        },
       },
     };
     return (
       <div style={{ marginLeft: '30px', marginTop: '30px' }}>
+        <Transfer />
+        <Transfer type="tree" />
         <Transfer
           data={data}
           showSearch
@@ -118,6 +225,16 @@ export default class TransferDemo extends React.Component<any, any> {
           />
         </Theme>
 
+        <p>normal tree transfer</p>
+        <Transfer
+          data={treeData}
+          type="tree"
+          sourceSelectedKeys={['2.2.1']}
+          targetSelectedKeys={['2.1.1']}
+          value={['2.1.1']}
+          showSearch
+        />
+        <p>cancel tree transfer</p>
         <Transfer
           data={treeData}
           type="tree"

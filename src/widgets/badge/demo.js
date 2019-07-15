@@ -79,16 +79,14 @@ export default () => {
           height: 20,
         },
       },
-    },
-  };
-  const numberDot = {
-    [Widget.NumberTurn]: {
-      normal: { position: { top: -5, right: -5 } },
+      BadgeNumber: {
+        normal: { position: { top: -5, right: -5 } },
+      },
     },
   };
   return (
     <div>
-      <Theme config={numberDot}>
+      <Theme config={dot}>
         <Wrapper>
           <Row>
             <Col span={4}>

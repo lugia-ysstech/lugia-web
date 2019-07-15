@@ -117,10 +117,16 @@
           "SliderMarks": {
             "name": "离散节点",
             "desc": "离散节点样式配置",
-            "normal": [["color"], ["font"], "fontSize"],
+            "normal": {
+              "selectNames": [["color"], ["font"], "fontSize"],
+              "nth": [["color"], ["font"], "fontSize"]
+            },
             "hover": [],
             "active": [],
-            "disabled": [["color"], ["font"], "fontSize"]
+            "disabled": {
+              "selectNames": [["color"], ["font"], "fontSize"],
+              "nth": [["color"], ["font"], "fontSize"]
+            }
           }
         }
       }

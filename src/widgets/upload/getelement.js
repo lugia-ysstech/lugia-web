@@ -565,7 +565,6 @@ type DefProps = {
   showFileList: boolean,
   disabled?: boolean,
   fileListDone: Array<Object>,
-  getTheme: Function,
   setAutoUploadState: Function,
   setDeleteList: Function,
   areaType: string,

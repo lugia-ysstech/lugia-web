@@ -136,20 +136,20 @@ export default ThemeProvider(
         footerBtnProps.type = BtnType[iconType];
       }
 
-      const ModalWrapTheme = getPartOfThemeProps('ModalWrap');
-      ModalWrapTheme.propsConfig = {
+      const modalWrapTheme = getPartOfThemeProps('ModalWrap');
+      modalWrapTheme.propsConfig = {
         showIcon,
       };
-      const ModalTitleTheme = getPartOfThemeProps('ModalTitle');
-      const ModalBodyTextTheme = getPartOfThemeProps('ModalContentText');
+      const modalTitleTheme = getPartOfThemeProps('ModalTitle');
+      const modalBodyTextTheme = getPartOfThemeProps('ModalContentText');
       return (
         <Wrap visible={closing ? true : visible}>
           {mask ? (
             <ModalMask onClick={this.handleMaskClick} closing={closing} opening={opening} />
           ) : null}
           <ModalWrap>
-            <Modal closing={closing} opening={opening} themeProps={ModalWrapTheme}>
-              <ModalContent showIcon={showIcon} theme={getTheme()} themeProps={ModalWrapTheme}>
+            <Modal closing={closing} opening={opening} themeProps={modalWrapTheme}>
+              <ModalContent showIcon={showIcon} theme={getTheme()} themeProps={modalWrapTheme}>
                 {showIcon ? (
                   <Icon iconClass={IconInfo[iconType].class} {...this.getIconTheme()} />
                 ) : (
@@ -161,8 +161,8 @@ export default ThemeProvider(
                     />
                   </ModalClose>
                 )}
-                {title !== null && <ModalTitle themeProps={ModalTitleTheme}>{title}</ModalTitle>}
-                <ModalBody themeProps={ModalBodyTextTheme}>{children}</ModalBody>
+                {title !== null && <ModalTitle themeProps={modalTitleTheme}>{title}</ModalTitle>}
+                <ModalBody themeProps={modalBodyTextTheme}>{children}</ModalBody>
 
                 {this.isInprops('footer') ? (
                   footer
