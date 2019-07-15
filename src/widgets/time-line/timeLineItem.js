@@ -381,7 +381,7 @@ class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
     const { status } = this.props;
     return (
       <Dot
-        themeProps={this.props.getPartOfThemeProps('TimeLineExplainDot', {
+        themeProps={this.props.getPartOfThemeProps('TimeLineDot', {
           props: {
             status,
           },
