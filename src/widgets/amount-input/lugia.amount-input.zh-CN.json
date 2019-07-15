@@ -131,9 +131,67 @@
       "title": "金额输入框",
       "desc": "金额输入框",
       "theme": {
-        "AmountInputConfig": {
+        "InnerInput": {
+          "theme": {
+            "Input": {
+              "name": "金额输入框",
+              "desc": "金额输入框主体结构",
+              "normal": [
+                ["width"],
+                ["height"],
+                ["fontSize"],
+                ["font"],
+                ["color"],
+                ["padding"],
+                ["background"],
+                ["border"],
+                ["cursor"],
+                ["margin"],
+                ["padding"]
+              ],
+              "hover": [],
+              "clicked": [],
+              "disabled": []
+            }
+          }
+        },
+        "AmountInputPrefix": {
+          "name": "金额输入框主体前缀",
+          "desc": "金额输入框主体前缀",
+          "normal": [["width"], ["height"], ["fontSize"], ["font"], ["color"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
+        },
+        "AmountTip": {
+          "theme": {
+            "TooltipContent": {
+              "name": "输入框提示框外框部分",
+              "desc": "输入框提示框外框部分",
+              "normal": [["opacity"], ["background"], ["width"], ["height"]],
+              "hover": [],
+              "clicked": [],
+              "disabled": []
+            },
+            "TooltipTitle": {
+              "name": "金额输入框提示信息文字部分",
+              "desc": "金额输入框提示信息文字部分",
+              "normal": [["fontSize"], ["font"], ["color"]],
+              "hover": [],
+              "clicked": [],
+              "disabled": []
+            }
+          }
+        }
+      }
+    }
+  },
+  "theme": {
+    "InnerInput": {
+      "theme": {
+        "Input": {
           "name": "金额输入框",
-          "desc": "配置金额输入框展示不同样式",
+          "desc": "金额输入框主体结构",
           "normal": [
             ["width"],
             ["height"],
@@ -147,33 +205,11 @@
             ["margin"],
             ["padding"]
           ],
-          "hover": [["border"], ["background"]],
+          "hover": [],
           "clicked": [],
           "disabled": []
         }
       }
-    }
-  },
-  "theme": {
-    "Input": {
-      "name": "金额输入框",
-      "desc": "金额输入框主体结构",
-      "normal": [
-        ["width"],
-        ["height"],
-        ["fontSize"],
-        ["font"],
-        ["color"],
-        ["padding"],
-        ["background"],
-        ["border"],
-        ["cursor"],
-        ["margin"],
-        ["padding"]
-      ],
-      "hover": [],
-      "clicked": [],
-      "disabled": []
     },
     "AmountInputPrefix": {
       "name": "金额输入框主体前缀",
@@ -183,21 +219,25 @@
       "clicked": [],
       "disabled": []
     },
-    "TooltipContainer": {
-      "name": "输入框提示框外框部分",
-      "desc": "输入框提示框外框部分",
-      "normal": [["opacity"], ["background"], ["width"], ["height"]],
-      "hover": [],
-      "clicked": [],
-      "disabled": []
-    },
-    "TooltipTitle": {
-      "name": "金额输入框提示信息文字部分",
-      "desc": "金额输入框提示信息文字部分",
-      "normal": [["fontSize"], ["font"], ["color"]],
-      "hover": [],
-      "clicked": [],
-      "disabled": []
+    "AmountTip": {
+      "theme": {
+        "TooltipContent": {
+          "name": "输入框提示框外框部分",
+          "desc": "输入框提示框外框部分",
+          "normal": [["opacity"], ["background"], ["width"], ["height"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
+        },
+        "TooltipTitle": {
+          "name": "金额输入框提示信息文字部分",
+          "desc": "金额输入框提示信息文字部分",
+          "normal": [["fontSize"], ["font"], ["color"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
+        }
+      }
     }
   }
 }
