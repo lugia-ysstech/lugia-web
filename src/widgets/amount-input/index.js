@@ -242,7 +242,7 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
   }
 
   getInputContainer() {
-    const theThemeProps = this.props.getPartOfThemeProps(Widget.Input);
+    const theThemeProps = this.props.getPartOfThemeProps('InnerInput');
     return <InputContainer themeProps={theThemeProps}>{this.generateInput()}</InputContainer>;
   }
 
@@ -285,7 +285,7 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
     const thePlaceholder = disabled ? '' : placeholder;
     const actualValue = rmb ? tipTool(parser(value), convertCurrency) : amountFormatter(value);
     const { theme: inputTheme, viewClass: inputViewClass } = this.props.getPartOfThemeHocProps(
-      Widget.Input
+      'InnerInput'
     );
     return (
       <InnerInput

@@ -66,12 +66,6 @@ export const getStepFontColor = (props: Object) => {
       : lightGreyColor;
   return color;
 };
-export const getFinishDisplay = props => {
-  const { stepStatus } = props;
-  const display =
-    stepStatus === 'finish' || stepStatus === 'error' ? 'inline-block' : 'none !important';
-  return `display:  ${display};`;
-};
 export const getShow = props => {
   const { isFirst } = props;
   const display = isFirst ? 'width:0;' : 'flex: 1;';
@@ -275,9 +269,8 @@ function getGapPropsByOperation(orientation: string, type: 'after' | 'before') {
 }
 
 export const getGap = props => {
-  const { stepType, stepStatus, afterDirection, beforeDirection, width, height } = props;
-  if (stepType === 'flat' && (stepStatus === 'next' || stepStatus === 'wait')) {
-    return `
+  const { afterDirection, beforeDirection, width, height } = props;
+  return `
     content: '';
     opacity: 1;
     position: absolute;
@@ -287,7 +280,6 @@ export const getGap = props => {
     background: ${defaultColor};
     height: ${height};
    `;
-  }
 };
 export const getWidth = props => {
   const { theme, orientation } = props;

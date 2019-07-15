@@ -4,7 +4,6 @@
  *
  * @flow
  */
-import type { ThemeType } from '@lugia/lugia-web';
 import type { DirectionType } from '../css/tooltip';
 
 export type PopoverProps = {
@@ -20,6 +19,7 @@ export type PopoverProps = {
   onVisibleChange: Function,
   clearIcon?: React.Node,
   onClearClick?: Function,
+  showClearButton?: boolean,
   defaultChildren: React.Node,
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,

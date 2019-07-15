@@ -123,6 +123,7 @@ export default ThemeProvider(
                   iconClass="lugia-icon-direction_caret_right"
                   {...this.getIconTheme()}
                   {...dispatchEvent(['hover', 'disabled'], 'f2c')}
+                  singleTheme
                 />
               ) : null}
               <PanelHeaderText themeProps={PanelHeaderTextTheme}>{title}</PanelHeaderText>

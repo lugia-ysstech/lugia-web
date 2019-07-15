@@ -582,12 +582,14 @@ class Rate extends React.Component<RateProps, any> {
           type={'default'}
           disabled={disabled}
           iconClass={`${IconClass.default} ${markClassName}  default iconCharacter `}
+          singleTheme
         />
       );
     }
 
     return (
       <Icon
+        singleTheme
         theme={theme}
         viewClass={viewClass}
         type={type}

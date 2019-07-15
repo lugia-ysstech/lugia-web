@@ -140,16 +140,28 @@ const CommonInputStyle = CSSComponent({
 const BaseInputContainer = StaticComponent({
   tag: 'span',
   className: 'InputBaseInputContainer',
+  normal: {
+    selectNames: [],
+  },
   css: css`
     position: relative;
     display: inline-block;
   `,
 });
 
-const InputContainer = StaticComponent({
+const InputContainer = CSSComponent({
   tag: 'div',
   className: 'inputContainer',
   normal: {
+    selectNames: [['margin'], ['boxShadow'], ['padding']],
+  },
+  hover: {
+    selectNames: [],
+  },
+  active: {
+    selectNames: [],
+  },
+  disabled: {
     selectNames: [],
   },
   css: css`
@@ -223,29 +235,6 @@ const Suffix: Object = CSSComponent({
 });
 
 const Clear = 'lugia-icon-reminder_close';
-
-// const ClearButton: Object = ThemeHoc(
-//   CSSComponent({
-//     extend: Icon,
-//     className: 'inputClearButton',
-//     normal: {
-//       selectNames: [['font'], ['fontSize'], ['color']],
-//       defaultTheme: {
-//         color: mediumGreyColor,
-//       },
-//     },
-//     hover: {
-//       selectNames: [['color']],
-//       defaultTheme: {
-//         color: darkGreyColor,
-//       },
-//     },
-//     css: css``,
-//   }),
-//   'ClearButton',
-//   { hover: true, active: true }
-// );
-// ClearButton.displayName = 'ClearButton';
 
 type InputState = {|
   value: string,
@@ -526,6 +515,7 @@ class TextBox extends Component<InputProps, InputState> {
 
     return (
       <Icon
+        singleTheme
         viewClass={clearViewClass}
         theme={newTheme}
         iconClass={Clear}

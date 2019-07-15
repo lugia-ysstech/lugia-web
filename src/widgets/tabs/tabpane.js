@@ -537,7 +537,15 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
   getIcon(icon: string, themeProps: Object) {
     const { isSelect, disabled } = this.props;
     if (ObjectUtils.isString(icon)) {
-      return <Icon {...themeProps} isSelect={isSelect} iconClass={icon} disabled={disabled} />;
+      return (
+        <Icon
+          {...themeProps}
+          isSelect={isSelect}
+          iconClass={icon}
+          disabled={disabled}
+          singleTheme
+        />
+      );
     }
     return icon;
   }
@@ -559,6 +567,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
           tabType={tabType}
         >
           <Icon
+            singleTheme
             theme={theme}
             viewClass={viewClass}
             iconClass={iconClass}

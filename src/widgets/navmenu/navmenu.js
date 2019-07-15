@@ -20,8 +20,8 @@ import { DisplayField, ValueField } from '../consts/props';
 
 import {
   themeColor,
-  Switcher,
-  NullSwitcher,
+  Switch,
+  NullSwitch,
   Li,
   SubTreeWrap,
   TitleWrap,
@@ -73,8 +73,8 @@ const themeStyle = {
   DefaultHeight,
   TreeUl,
   themeColor,
-  Switcher,
-  NullSwitcher,
+  Switch,
+  NullSwitch,
   Li,
   SubTreeWrap,
   TitleWrap,

@@ -19,24 +19,24 @@ import {
   ScrollerCol,
 } from '../css/scroller';
 import { getCanSeeCount } from './support';
-import { px2emcss, px2remcss } from '../css/units';
+import { px2remcss } from '../css/units';
 
 // const em = px2emcss(FontSizeNumber);
 
-const height = props => {
-  const { theme, totalSize, autoHeight = false } = props;
-  const { height: themeHeight } = theme;
-  if (!autoHeight) {
-    return themeHeight
-      ? `height:${px2remcss(themeHeight)};`
-      : `height:${px2remcss(DefaultHeight)};`;
-  }
+// const height = props => {
+//   const { theme, totalSize, autoHeight = false } = props;
+//   const { height: themeHeight } = theme;
+//   if (!autoHeight) {
+//     return themeHeight
+//       ? `height:${px2remcss(themeHeight)};`
+//       : `height:${px2remcss(DefaultHeight)};`;
+//   }
 
-  if (!themeHeight || themeHeight > totalSize) {
-    return `height: ${px2remcss(totalSize)}`;
-  }
-  return `height: ${px2remcss(themeHeight)}`;
-};
+//   if (!themeHeight || themeHeight > totalSize) {
+//     return `height: ${px2remcss(totalSize)}`;
+//   }
+//   return `height: ${px2remcss(themeHeight)}`;
+// };
 
 const getActiveWidth = props => {
   const { theme } = props;
@@ -45,23 +45,23 @@ const getActiveWidth = props => {
   return width;
 };
 
-const width = props => {
-  const width = getActiveWidth(props);
-  return width ? `width:${px2remcss(width)};` : `width:${px2remcss(DefaultWidth)};`;
-};
-const getContentWidthValue = props => {
-  const width = getActiveWidth(props);
-  return width ? width - BarDefaultSize : DefaultWidth - BarDefaultSize;
-};
+// const width = props => {
+//   const width = getActiveWidth(props);
+//   return width ? `width:${px2remcss(width)};` : `width:${px2remcss(DefaultWidth)};`;
+// };
+// const getContentWidthValue = props => {
+//   const width = getActiveWidth(props);
+//   return width ? width - BarDefaultSize : DefaultWidth - BarDefaultSize;
+// };
 
-const getContentWidth = props => {
-  const width = getContentWidthValue(props);
-  return px2remcss(width);
-};
+// const getContentWidth = props => {
+//   const width = getContentWidthValue(props);
+//   return px2remcss(width);
+// };
 
-const scrollerLeft = props => {
-  return `left: ${getContentWidth(props)};`;
-};
+// const scrollerLeft = props => {
+//   return `left: ${getContentWidth(props)};`;
+// };
 
 // const Col = styled.div`
 //   ${width};
@@ -78,13 +78,13 @@ const scrollerLeft = props => {
 //   position: relative;
 // `;
 
-const getOpacity = (props: Object) => {
-  const { isDrag } = props;
-  if (isDrag) {
-    return 'opacity: 1;';
-  }
-  return '';
-};
+// const getOpacity = (props: Object) => {
+//   const { isDrag } = props;
+//   if (isDrag) {
+//     return 'opacity: 1;';
+//   }
+//   return '';
+// };
 // const ScrollerCol = styled(Col)`
 //   ${scrollerLeft};
 //   width: ${px2remcss(BarDefaultSize)};
@@ -138,7 +138,6 @@ export default (
       const { props } = this;
 
       const start = this.getStart(props, this.state);
-      const { getTheme } = props;
       const { level, autoHeight = false, getPartOfThemeProps } = props;
       const themeProps = getPartOfThemeProps(TargetWrapName);
       const totalSize = this.fetchTotalSize();

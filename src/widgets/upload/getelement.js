@@ -7,7 +7,7 @@
  *
  */
 import React from 'react';
-import Icon from '../icon';
+import LoadIcon from '../icon';
 import Progress from '../progress';
 import FileInput from './fileInput';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
@@ -365,8 +365,6 @@ const load = keyframes`
   }
 `;
 
-const LoadIcon = Icon;
-
 const iconClassMap = {
   default: 'lugia-icon-financial_upload right',
   loading: 'lugia-icon-financial_loading_o loading',
@@ -451,6 +449,7 @@ export const getIconByType = (
     const { doFunction, index } = info;
     return (
       <LoadIcon
+        singleTheme
         theme={resultTheme}
         viewClass={resultViewClass}
         iconClass={`${iconClassMap[status]} `}
@@ -466,6 +465,7 @@ export const getIconByType = (
     return (
       <PrevCon themeProps={themeProps}>
         <LoadIcon
+          singleTheme
           disabled={disabled}
           theme={resultTheme}
           viewClass={resultViewClass}
@@ -484,6 +484,7 @@ export const getIconByType = (
   if (status === 'area-loading') {
     return (
       <LoadIcon
+        singleTheme
         disabled={disabled}
         theme={resultTheme}
         viewClass={resultViewClass}
@@ -494,6 +495,7 @@ export const getIconByType = (
   }
   return (
     <LoadIcon
+      singleTheme
       theme={resultTheme}
       viewClass={resultViewClass}
       disabled={disabled}

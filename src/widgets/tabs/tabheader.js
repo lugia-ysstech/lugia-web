@@ -554,7 +554,12 @@ class TabHeader extends Component<TabsProps, TabsState> {
         tabPosition={tabPosition}
         onClick={this.onNextClick(isDisabledToNext)}
       >
-        <Icon disabled={isDisabledToNext} themeProps={themeProps} iconClass={arrowDown} />
+        <Icon
+          disabled={isDisabledToNext}
+          themeProps={themeProps}
+          iconClass={arrowDown}
+          singleTheme
+        />
       </Target>
     );
   }

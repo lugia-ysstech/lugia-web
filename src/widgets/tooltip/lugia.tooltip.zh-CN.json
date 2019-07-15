@@ -88,12 +88,15 @@
           "name": "文字提示框内容部分",
           "desc": "文字提示框内容部分",
           "normal": [
-            ["opacity"],
             ["background"],
+            ["color"],
+            ["padding"],
+            ["font"],
+            ["fontSize"],
             ["width"],
             ["height"],
-            ["margin"],
-            ["padding"],
+            ["boxShadow"],
+            ["borderRadius"],
             ["border"]
           ],
           "hover": [],
@@ -123,7 +126,18 @@
     "TooltipContent": {
       "name": "文字提示框内容部分",
       "desc": "文字提示框内容部分",
-      "normal": [["opacity"], ["background"], ["width"], ["height"], ["margin"], ["padding"]],
+      "normal": [
+        ["background"],
+        ["color"],
+        ["padding"],
+        ["font"],
+        ["fontSize"],
+        ["width"],
+        ["height"],
+        ["boxShadow"],
+        ["borderRadius"],
+        ["border"]
+      ],
       "hover": [],
       "clicked": [],
       "disabled": []
