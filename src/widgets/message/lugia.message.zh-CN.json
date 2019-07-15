@@ -19,5 +19,25 @@
       "defaultValue": "undefined"
     }
   },
-  "category": ["反馈"]
+  "category": ["反馈"],
+  "theme": {
+    "MessageWrap": {
+      "normal": [
+        ["width"],
+        ["height"],
+        ["boxShadow"],
+        ["background"],
+        ["borderRadius"],
+        ["padding"],
+        ["opacity"],
+        ["border"]
+      ]
+    },
+    "MessageText": {
+      "normal": [["color"], ["font"]]
+    },
+    "MessageIcon": {
+      "normal": [["color"], ["font"]]
+    }
+  }
 }
