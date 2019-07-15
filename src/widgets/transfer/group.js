@@ -183,7 +183,6 @@ export default ThemeProvider(
             checkboxTheme={TransferPanelHeaderCheckboxThemeObj}
             headerTextTheme={TransferHeaderTextTheme}
             headerTheme={TransferHeaderTheme}
-            cancelBoxTheme={TransferCancelBoxTheme}
             menuTheme={TransferPanelMenuThemeObj}
             treeTheme={TransferPanelTreeThemeObj}
           />
