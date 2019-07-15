@@ -48,13 +48,30 @@ const Wrapper = styled.div`
 `;
 const view = {
   [Widget.TimeLine]: {
-    height: 300,
+    TimeLineContainer: {
+      normal: {
+        width: 200,
+        height: 300,
+      },
+    },
   },
-  long: {
-    height: 100,
-  },
-  short: {
-    height: 20,
+  [Widget.TimeLineItem]: {
+    TimeLineItemContainer: {
+      normal: {
+        height: 60,
+      },
+    },
+    TimeLineItemTip: {
+      TooltipContent: { normal: { background: { color: 'pink' } } },
+      TooltipTitle: { normal: { color: 'green' } },
+      TooltipDescription: { normal: { color: 'red' } },
+    },
+    TimeLineIcon: {
+      normal: {
+        color: 'red',
+        fontSize: 20,
+      },
+    },
   },
 };
 const data = [
@@ -75,10 +92,10 @@ export const SimpleDemo = () => {
           <p> 调节高度的 简洁样式</p>
           <br />
           <TimeLine>
-            <TimeLineItem viewClass={'long'} time="2018-01-01" />
+            <TimeLineItem time="2018-01-01" />
             <TimeLineItem time="2018-01-02" />
             <TimeLineItem time="2018-01-03" />
-            <TimeLineItem viewClass={'short'} time="2018-01-04" />
+            <TimeLineItem time="2018-01-04" />
             <TimeLineItem time="2018-01-05" />
           </TimeLine>
         </Wrapper>
@@ -176,30 +193,32 @@ export const SimpleDemo = () => {
 };
 export const OtherDemo = () => {
   return (
-    <div>
-      <Wrapper>
-        <p>节点说明样式 </p>
-        <br />
-        <TimeLine>
-          <TimeLineItem time="2018-01-01" />
-          <TimeLineItem time="2018-01-02" timeLineType="explain" />
-          <TimeLineItem time="2018-01-03" />
-          <TimeLineItem time="2018-01-04" timeLineType="explain" />
-          <TimeLineItem time="2018-01-05" />
-        </TimeLine>
-      </Wrapper>
-      <Wrapper>
-        <p>节点说明样式 </p>
-        <br />
-        <TimeLine type="explain">
-          <TimeLineItem time="2018-01-01" description={'description111'} />
-          <TimeLineItem time="2018-01-02" description={'description222'} timeLineType="explain" />
-          <TimeLineItem time="2018-01-03" description={'description333'} />
-          <TimeLineItem time="2018-01-04" description={'description444'} timeLineType="explain" />
-          <TimeLineItem time="2018-01-05" description={'description555'} />
-        </TimeLine>
-      </Wrapper>
-    </div>
+    <Theme config={view}>
+      <div>
+        <Wrapper>
+          <p>节点说明样式 </p>
+          <br />
+          <TimeLine>
+            <TimeLineItem time="2018-01-01" />
+            <TimeLineItem time="2018-01-02" timeLineType="explain" />
+            <TimeLineItem time="2018-01-03" />
+            <TimeLineItem time="2018-01-04" timeLineType="explain" />
+            <TimeLineItem time="2018-01-05" />
+          </TimeLine>
+        </Wrapper>
+        <Wrapper>
+          <p>节点说明样式 </p>
+          <br />
+          <TimeLine type="explain">
+            <TimeLineItem time="2018-01-01" description={'description111'} />
+            <TimeLineItem time="2018-01-02" description={'description222'} timeLineType="explain" />
+            <TimeLineItem time="2018-01-03" description={'description333'} />
+            <TimeLineItem time="2018-01-04" description={'description444'} timeLineType="explain" />
+            <TimeLineItem time="2018-01-05" description={'description555'} />
+          </TimeLine>
+        </Wrapper>
+      </div>
+    </Theme>
   );
 };
 export default () => {
