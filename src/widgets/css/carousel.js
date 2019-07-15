@@ -344,17 +344,6 @@ const getAnimation = (
   return animation;
 };
 
-// const getInitLeft = (isHorizontal: boolean, initStart: number, width: number) => {
-//   const left = initStart * width;
-//   return `left: -${isHorizontal ? px2remcss(left) : 0}`;
-// };
-
-// const getInitTop = (isVertical: boolean, initStart: number, height: number) => {
-
-//   const top = initStart * height;
-//   return `top: -${isVertical ? px2remcss(top) : 0}`;
-// };
-
 export const AllItemsContainer = CSSComponent({
   tag: 'div',
   className: 'AllItemsContainer',
@@ -433,7 +422,7 @@ export const Empty = CSSComponent({
   className: 'empty',
   normal: {
     selectNames: [['width'], ['height']],
-    getCSS: (themeMeta, themeProps) => {
+    getCSS: themeMeta => {
       const { height } = themeMeta;
       return `line-height: ${px2remcss(height)};`;
     },

@@ -139,7 +139,7 @@ export default class extends React.Component<any, any> {
             width: 600,
             height: 350,
             opacity: 0.6,
-            boxShadow: '2px 2px 5px #4d63ff',
+            boxShadow: '2px 2px 5px 5px #4d63ff',
             background: { color: '#000' },
             border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }),
             borderRadius: getBorderRadius(20),

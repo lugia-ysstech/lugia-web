@@ -3,12 +3,10 @@
  * create by guorg
  * @flow
  */
-import { px2emcss } from '../css/units';
+import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
+import { px2remcss } from '../css/units';
 import type { ThemeType } from '@lugia/lugia-web';
-import styled from 'styled-components';
-
-const FontSize = 1.2;
-const em = px2emcss(FontSize);
+import { css } from 'styled-components';
 
 export type GroupProps = {
   getTheme: Function,
@@ -27,6 +25,8 @@ export type GroupProps = {
   type?: 'tree' | 'panel',
   displayField?: string,
   valueField?: string,
+  getPartOfThemeProps: Function,
+  getPartOfThemeHocProps: Function,
 };
 export type GroupState = {
   inputValue: string,
@@ -46,20 +46,36 @@ export type GroupState = {
   displayValue: string[],
   enableKeys: string[],
 };
-export const TransFerWrap = styled.div`
-  box-sizing: border-box;
-  font-size: ${FontSize}rem;
-  position: relative;
-`;
-export const OperationBtn = styled.span`
-  display: inline-block;
-  padding: ${em(8)};
-  position: relative;
-  vertical-align: middle;
 
-  & > button {
-    margin-bottom: ${em(10)};
-    padding-left: ${em(12)};
-    padding-right: ${em(14)};
-  }
-`;
+export const TransFerWrap = CSSComponent({
+  className: 'TransFerWrap',
+  tag: 'div',
+  normal: {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['margin'],
+      ['padding'],
+      ['background'],
+      ['border'],
+      ['borderRadius'],
+    ],
+  },
+});
+
+export const OperationBtn = StaticComponent({
+  className: 'OperationBtn',
+  tag: 'span',
+  css: css`
+    display: inline-block;
+    padding: ${px2remcss(8)};
+    position: relative;
+    vertical-align: middle;
+
+    & > button {
+      margin-bottom: ${px2remcss(10)};
+      padding-left: ${px2remcss(12)};
+      padding-right: ${px2remcss(14)};
+    }
+  `,
+});

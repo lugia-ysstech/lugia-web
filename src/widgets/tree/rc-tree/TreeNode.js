@@ -7,19 +7,10 @@ import CommonIcon from '../../icon';
 import CheckBox from '../../checkbox';
 import Widget from '../../consts';
 import ThemeHoc from '@lugia/theme-hoc';
-import Theme from '../../theme';
 import { getMenuItemHeight, TextIcon } from '../../css/menu';
 import { CheckBoxWrap, FlexBox, FlexWrap } from '../../css/tree';
 
 const defaultTitle = '---';
-
-// const FlexBox = styled.div`
-//   display: flex;
-//   border: 1px solid orange;
-//   /* &:hover {
-//     background: pink;
-//   } */
-// `;
 
 class TreeNode extends React.Component {
   static propTypes = {
@@ -151,18 +142,29 @@ class TreeNode extends React.Component {
     this.selectHandle = node;
   };
 
-  renderSwitcher(expandedState) {
-    const { themeStyle, describe = false, mutliple, switcher = true } = this.props;
-    if ((describe && !mutliple) || (!mutliple && !switcher)) {
-      return null;
+  renderSwitch(expandedState) {
+    const { themeStyle, describe, mutliple, switcher = true, disabled } = this.props;
+    if (mutliple || !describe) {
+      const { Switch, openClassName, closeClassName } = themeStyle;
+      const iconClass = expandedState === 'open' ? openClassName : closeClassName;
+      return (
+        <Switch
+          mutliple={mutliple}
+          disabled={disabled}
+          onClick={this.onExpand}
+          expandedState={expandedState}
+          themeProps={this.props.getPartOfThemeProps('Switch')}
+        >
+          <CommonIcon iconClass={iconClass} />
+        </Switch>
+      );
     }
+    const { NullSwitch } = themeStyle;
 
-    const { Switcher, openClassName, closeClassName } = themeStyle;
-    const iconClass = expandedState === 'open' ? openClassName : closeClassName;
     return (
-      <Switcher mutliple={mutliple} onClick={this.onExpand} expandedState={expandedState}>
-        <CommonIcon iconClass={iconClass} />
-      </Switcher>
+      <NullSwitch themeProps={this.props.getPartOfThemeProps('Switch')}>
+        <CommonIcon iconClass={'lugia-icon-financial_omit'} />
+      </NullSwitch>
     );
   }
 
@@ -175,35 +177,25 @@ class TreeNode extends React.Component {
       disabled: dataDisabled,
       icon,
       themeStyle,
-      getPartOfThemeProps,
+      mutliple,
     } = this.props;
-    const { Switcher, TitleWrap } = themeStyle;
+    const { Switch, TitleWrap } = themeStyle;
     const disabled = notCanSelect || dataDisabled;
-    const { themeColor } = themeStyle;
-    const view = {
-      [Widget.CheckBox]: { color: themeColor },
-    };
     return (
-      <Theme config={view}>
-        <CheckBoxWrap>
-          {icon ? (
-            <Switcher>
-              <CommonIcon iconClass={icon} />
-            </Switcher>
-          ) : null}
-          <TitleWrap themeProps={getPartOfThemeProps('Text')}>
-            <CheckBox
-              theme={this.getCheckBoxTheme()}
-              checked={checked}
-              disabled={disabled}
-              indeterminate={indeterminate}
-              onChange={this.onCheck}
-            >
-              {title}
-            </CheckBox>
-          </TitleWrap>
-        </CheckBoxWrap>
-      </Theme>
+      <CheckBoxWrap>
+        {icon ? <CommonIcon iconClass={icon} /> : null}
+        <TitleWrap themeProps={this.getThemeProps('Text', 'SelectedText', { mutliple })}>
+          <CheckBox
+            theme={this.getCheckBoxTheme()}
+            checked={checked}
+            disabled={disabled}
+            indeterminate={indeterminate}
+            onChange={this.onCheck}
+          >
+            {title}
+          </CheckBox>
+        </TitleWrap>
+      </CheckBoxWrap>
     );
   }
 
@@ -270,9 +262,17 @@ class TreeNode extends React.Component {
 
   renderSuffix() {
     const { themeStyle, suffix } = this.props;
-    const { Switcher } = themeStyle;
+    const { Switch } = themeStyle;
 
-    return <Switcher>{suffix}</Switcher>;
+    return <Switch>{suffix}</Switch>;
+  }
+
+  getThemeProps(defaultName: string, selectedName: string, params: Object = {}): Object {
+    const { getPartOfThemeProps, mutliple, checked, selected } = this.props;
+    const isChecked = mutliple ? checked : selected;
+    return isChecked
+      ? getPartOfThemeProps(selectedName, { props: params })
+      : getPartOfThemeProps(defaultName, { props: params });
   }
 
   render() {
@@ -288,43 +288,46 @@ class TreeNode extends React.Component {
       themeStyle,
       icon,
       size,
-      theme,
       color,
       isLeaf,
       title,
       shape,
-      paddingLeft,
-      getPartOfThemeProps,
+      mutliple,
     } = this.props;
     const expandedState = props.expanded ? 'open' : 'close';
     let iconState = expandedState;
     const disabled = notCanSelect || dataDisabled;
 
-    let canRenderSwitcher = true;
+    let canRenderSwitch = true;
     const content = props.title;
     let newChildren = this.renderChildren(props);
     if (!newChildren || newChildren === props.children) {
       newChildren = null;
       if (isLeaf) {
-        canRenderSwitcher = false;
+        canRenderSwitch = false;
         iconState = 'docu';
       }
     }
-    const { TitleWrap, NullSwitcher, Li, TitleSpan } = themeStyle;
+    const { TitleWrap, NullSwitch, Li, TitleSpan } = themeStyle;
     const itemHeight = getMenuItemHeight(size);
-    const TextThemeProps = getPartOfThemeProps('Text', { props: { pos } });
 
+    const TextThemeProps = this.getThemeProps('Text', 'SelectedText', {
+      pos,
+      mutliple,
+      shape,
+      selected,
+      describe,
+    });
     const selectHandle = () => {
       const title = (
         <TitleSpan
+          themeProps={TextThemeProps}
           color={color}
           pos={pos}
           selected={selected}
           inlineType={inlineType}
           title={content}
           height={itemHeight}
-          // theme={theme}
-          paddingLeft={paddingLeft}
         >
           {icon ? <TextIcon iconClass={icon} /> : null}
           {content}
@@ -342,7 +345,9 @@ class TreeNode extends React.Component {
 
           if (this.isSelectable()) {
             this.onSelect();
-            this.onExpand();
+            if (!props.describe) {
+              this.onExpand();
+            }
           }
         };
         if (props.draggable) {
@@ -366,7 +371,6 @@ class TreeNode extends React.Component {
           describe={describe}
           disabled={disabled}
           notCanSelect={disabled}
-          // theme={theme}
           color={color}
         >
           {title}
@@ -383,22 +387,16 @@ class TreeNode extends React.Component {
       liProps.onDragEnd = this.onDragEnd;
     }
 
-    const renderNoopSwitcher = () => {
+    const renderNoopSwitch = () => {
       const { mutliple, switcher } = this.props;
-
-      // return !mutliple && !switcher ? null : (
-      //   <NullSwitcher>
-      //     <CommonIcon iconClass={'lugia-icon-direction_caret_left'} />
-      //   </NullSwitcher>
-      // );
       return (
-        <NullSwitcher>
+        <NullSwitch themeProps={this.props.getPartOfThemeProps('Switch')}>
           <CommonIcon iconClass={'lugia-icon-financial_omit'} />
-        </NullSwitcher>
+        </NullSwitch>
       );
     };
 
-    const TreeWrapThemeProps = getPartOfThemeProps('TreeItemWrap', { props: { pos } });
+    const TreeWrapThemeProps = this.getThemeProps('TreeItemWrap', 'SelectedTreeItemWrap', { pos });
     return (
       <Li
         themeProps={TreeWrapThemeProps}
@@ -414,13 +412,9 @@ class TreeNode extends React.Component {
       >
         <FlexWrap themeProps={TreeWrapThemeProps}>
           <FlexBox themeProps={TreeWrapThemeProps}>
-            {/* 小箭头*/}
-            {canRenderSwitcher ? this.renderSwitcher(expandedState) : renderNoopSwitcher()}
-            {/* 小方格,多选的时候，text值是传进checkbox的 */}
+            {canRenderSwitch ? this.renderSwitch(expandedState) : renderNoopSwitch()}
             {props.checkable ? this.renderCheckbox() : null}
-            {/* 内容，单选的时候，没有checkbox， */}
             {props.checkable ? null : selectHandle()}
-            {/* 后置图标 */}
             {props.suffix ? this.renderSuffix() : null}
           </FlexBox>
         </FlexWrap>
@@ -432,7 +426,7 @@ class TreeNode extends React.Component {
   getCheckBoxTheme = () => {
     const { getPartOfThemeConfig } = this.props;
     const config = {
-      [Widget.Checkbox]: getPartOfThemeConfig([Widget.Checkbox]),
+      [Widget.Checkbox]: getPartOfThemeConfig('Checkbox'),
     };
     return config;
   };
@@ -440,5 +434,4 @@ class TreeNode extends React.Component {
 
 TreeNode.isTreeNode = 1;
 
-// export default TreeNode;
 export default ThemeHoc(TreeNode, 'TreeItem', { hover: true });

@@ -655,14 +655,14 @@ class Select extends React.Component<SelectProps, SelectState> {
   getInputtagTheme() {
     const { getPartOfThemeConfig } = this.props;
     const config = {
-      [Widget.InputTag]: getPartOfThemeConfig(Widget.InputTag),
+      [Widget.InputTag]: getPartOfThemeConfig('InputTag'),
     };
     return config;
   }
   getMenuTheme() {
     const { getPartOfThemeConfig } = this.props;
     const config = {
-      [Widget.Menu]: getPartOfThemeConfig(Widget.Menu),
+      [Widget.Menu]: getPartOfThemeConfig('Menu'),
     };
     return config;
   }
