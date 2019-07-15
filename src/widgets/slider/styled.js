@@ -358,8 +358,7 @@ export const Dot = CSSComponent({
        &::before{
         content:'${marskText}';
         ${dotTextPosition};
-        color:${color};
-        
+        color:${color};        
        }
       `;
     },
