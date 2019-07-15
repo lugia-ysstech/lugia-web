@@ -3,22 +3,21 @@
  * create by guorg
  * @flow
  */
-import { px2emcss } from '../css/units';
+import { px2remcss } from '../css/units';
 import colorsFunc from '../css/stateColor';
-import styled, { css, keyframes } from 'styled-components';
-import Icon from '../icon';
+import { css, keyframes } from 'styled-components';
+import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 
 export type Type = 'info' | 'success' | 'error' | 'warning' | 'loading';
 export type IconConProps = {
   iconType: Type,
   content: string,
+  textTheme: Object,
+  height: number,
+  iconTheme: Object,
 };
 export type IconConState = {};
 
-const FontSize = 1.4;
-const IconFontSize = 1.6;
-const em = px2emcss(FontSize);
-const iconEM = px2emcss(IconFontSize);
 const { themeColor, successColor, warningColor, dangerColor } = colorsFunc();
 
 export const IconInfo = {
@@ -29,29 +28,43 @@ export const IconInfo = {
   loading: { class: 'lugia-icon-financial_loading_o', color: themeColor },
 };
 
-const getLoadingIconStyle = (props: IconConProps) => {
+const IconSpin = keyframes`
+  0% {
+     transform: rotate(0deg);
+  }
+  100% {
+     transform: rotate(360deg);
+  }
+`;
+export const getLoadingIconStyle = (props: Object): string => {
   const { iconType } = props;
   if (iconType === 'loading') {
-    const IconSpin = keyframes`
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
-    `;
-
     return css`
       animation: ${IconSpin} 1s infinite linear;
     `;
   }
+
+  return '';
 };
-export const Icons: Object = styled(Icon)`
-  color: ${props => IconInfo[props.iconType].color};
-  position: relative;
-  top: ${iconEM(3)};
-  margin-right: ${iconEM(10)};
-  font-size: ${em(16)};
-  cursor: default;
-  ${getLoadingIconStyle};
-`;
+
+export const MessageText = CSSComponent({
+  tag: 'span',
+  className: 'MessageText',
+  normal: {
+    selectNames: [['font'], ['color']],
+    defaultTheme: {
+      color: '#000',
+      font: {
+        size: 14,
+      },
+    },
+  },
+});
+export const MessageTextWrap = StaticComponent({
+  tag: 'span',
+  className: 'MessageTextWrap',
+  css: css`
+    display: inline-block;
+    line-height: ${props => px2remcss(props.height || 20)};
+  `,
+});
