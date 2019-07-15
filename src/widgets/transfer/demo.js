@@ -9,7 +9,6 @@ import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
 import Transfer from './group';
 import Widget from '../consts/index';
 import Theme from '../theme';
-import { px2remcss } from '../css/units';
 
 const data = [
   { text: '选项1', value: '选项1', disabled: false },
@@ -164,12 +163,41 @@ export default class TransferDemo extends React.Component<any, any> {
             normal: { height: 500 },
           },
         },
+        TransferButton: {
+          ButtonWrap: {
+            normal: {
+              width: 100,
+              height: 50,
+              padding: 9,
+              margin: 10,
+              background: { color: 'orange' },
+              border: getBorder({ width: 2, style: 'solid', color: 'green' }),
+              borderRadius: getBorderRadius(10),
+            },
+            hover: {
+              background: { color: 'yellow' },
+              border: getBorder({ width: 2, style: 'solid', color: 'red' }),
+            },
+            active: {
+              background: { color: 'red' },
+              border: getBorder({ width: 2, style: 'solid', color: 'yellow' }),
+            },
+            disabled: {
+              background: { color: 'green' },
+              border: getBorder({ width: 2, style: 'solid', color: 'pink' }),
+            },
+            focus: {
+              background: { color: 'pink' },
+              border: getBorder({ width: 2, style: 'solid', color: 'green' }),
+            },
+          },
+        },
       },
     };
-    // height: 400,
-    // width: 300,
     return (
       <div style={{ marginLeft: '30px', marginTop: '30px' }}>
+        <Transfer />
+        <Transfer type="tree" />
         <Transfer
           data={data}
           showSearch

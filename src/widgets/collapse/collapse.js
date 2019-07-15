@@ -37,13 +37,8 @@ export default ThemeProvider(
 
     render() {
       const { getPartOfThemeProps } = this.props;
-      const WrapTheme = getPartOfThemeProps('Wrap');
-      const panelTheme = this.props.getTheme().svThemeConfigTree.sv_widget_Panel;
-      return (
-        <Wrap panelTheme={panelTheme || {}} themeProps={WrapTheme}>
-          {this.renderChildren()}
-        </Wrap>
-      );
+      const wrapTheme = getPartOfThemeProps('Wrap');
+      return <Wrap themeProps={wrapTheme}>{this.renderChildren()}</Wrap>;
     }
     renderChildren = () => {
       const { children, accordion, data, getPartOfThemeHocProps } = this.props;

@@ -68,7 +68,7 @@ export default ThemeProvider(
     }
 
     createCancelCheckBox = () => {
-      const { displayField, valueField, cancelCheckboxTheme } = this.props;
+      const { displayField, valueField, cancelCheckboxTheme = {} } = this.props;
       const { cancelItem = [] } = this.state;
       const hasCancelItem = cancelItem && cancelItem.length > 0;
       if (hasCancelItem) {
@@ -128,7 +128,6 @@ export default ThemeProvider(
         headerTheme,
         cancelBoxTheme,
       } = this.props;
-      // const { width = 200 } = theme;
       this.getCancelMenuTheme();
       const cancelBox =
         needCancelBox && cancelItem && cancelItem.length ? (
@@ -191,7 +190,6 @@ export default ThemeProvider(
       const { type, direction, displayField, valueField } = this.props;
 
       const { menuTheme, treeTheme, wrapHeight } = this.getPanelThemeConfig(direction);
-      console.log(menuTheme, treeTheme);
 
       return type === 'panel' ? (
         <div>
@@ -292,7 +290,7 @@ export default ThemeProvider(
 
       const theMenuTheme = deepMerge(menuDefaultView, menuThemes);
       const theTreeTheme = deepMerge(treeDefaultView, treeThemes);
-      console.log(theMenuTheme, theTreeTheme);
+
       return {
         menuTheme: {
           viewClass: menuViewClass,

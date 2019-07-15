@@ -98,15 +98,16 @@ export default ThemeProvider(
         showArrow = true,
         getPartOfThemeProps,
         dispatchEvent,
+        themeProps,
       } = this.props;
       const config = {};
       if (!showArrow) {
         config.enter = this.changeHover(true);
         config.leave = this.changeHover(false);
       }
-      const PanelHeaderTheme = getPartOfThemeProps('PanelHeader', { props: { hover, showArrow } });
-      const PanelHeaderTextTheme = getPartOfThemeProps('PanelHeaderText', { props: { showArrow } });
-      const PanelContentTheme = getPartOfThemeProps('PanelContent', {
+      const panelHeaderTheme = getPartOfThemeProps('PanelHeader', { props: { hover, showArrow } });
+      const panelHeaderTextTheme = getPartOfThemeProps('PanelHeaderText', { props: { showArrow } });
+      const panelContentTheme = getPartOfThemeProps('PanelContent', {
         props: { showArrow, hasChildren: !!children },
       });
       return (
@@ -114,7 +115,7 @@ export default ThemeProvider(
           <PanelWrap>
             <PanelHeader
               disabled={disabled}
-              themeProps={PanelHeaderTheme}
+              themeProps={panelHeaderTheme}
               onClick={this.handlePanelClick}
               ref={(node: any) => (this.header = node)}
             >
@@ -126,7 +127,7 @@ export default ThemeProvider(
                   singleTheme
                 />
               ) : null}
-              <PanelHeaderText themeProps={PanelHeaderTextTheme}>{title}</PanelHeaderText>
+              <PanelHeaderText themeProps={panelHeaderTextTheme}>{title}</PanelHeaderText>
             </PanelHeader>
             <PanelContentWrap
               ref={(node: any) => (this.panel = node)}
@@ -134,9 +135,9 @@ export default ThemeProvider(
               opening={opening}
               closing={closing}
               height={this.height}
-              themeProps={this.props.themeProps}
+              themeProps={themeProps}
             >
-              <PanelContent themeProps={PanelContentTheme}>{children}</PanelContent>
+              <PanelContent themeProps={panelContentTheme}>{children}</PanelContent>
             </PanelContentWrap>
           </PanelWrap>
         </Wrap>
@@ -191,7 +192,7 @@ export default ThemeProvider(
       }
     }
 
-    getClickState = (open: boolean): Object => {
+    getClickState = (open: ?boolean): Object => {
       if (open) {
         return { closing: true };
       }

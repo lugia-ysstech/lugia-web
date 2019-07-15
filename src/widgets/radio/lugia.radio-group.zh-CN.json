@@ -94,61 +94,135 @@
       ]
     },
     "Radio": {
-      "RadioWrap": {
-        "name": "Radio整体配置",
-        "desc": "Radio整体配置",
-        "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]],
-        "hover": [["opacity"]],
-        "disabled": [["opacity"]]
-      },
-      "RadioText": {
-        "name": "Radio文字配置",
-        "desc": "Radio文字样式配置",
-        "normal": [["color"], ["font"]],
-        "hover": [["color"], ["font"]],
-        "disabled": [["color"], ["font"]]
-      },
-      "RadioEdgeChecked": {
-        "name": "Radio选中后边框配置",
-        "desc": "Radio选中后边框配置样式",
-        "normal": [["background"], ["border"], ["borderRadius"], ["width"], ["height"]],
-        "hover": [["background"], ["borderRadius"], ["border"]],
-        "disabled": [["background"], ["borderRadius"], ["border"]]
-      },
-      "RadioEdgeUnChecked": {
-        "name": "Radio未选中边框配置",
-        "desc": "Radio未选中边框配置样式",
-        "normal": [["background"], ["border"], ["borderRadius"], ["width"], ["height"]],
-        "hover": [["background"], ["borderRadius"], ["border"]],
-        "disabled": [["background"], ["borderRadius"], ["border"]]
-      },
-      "RadioEdgeCancel": {
-        "name": "Radio未选中边框配置",
-        "desc": "Radio未选中边框配置样式",
-        "normal": [["background"], ["border"], ["borderRadius"], ["width"], ["height"]],
-        "hover": [["background"], ["borderRadius"], ["border"]],
-        "disabled": [["background"], ["borderRadius"], ["border"]]
-      },
-      "RadioInnerChecked": {
-        "name": "Radio选中样式配置",
-        "desc": "Radio选中配置样式",
-        "normal": [["background"], ["width"], ["height"]],
-        "hover": [["background"]],
-        "disabled": [["background"]]
-      },
-      "RadioInnerCancel": {
-        "name": "Radio取消状态样式配置",
-        "desc": "Radio取消状态配置样式",
-        "normal": [["background"], ["width"], ["height"]],
-        "hover": [["background"]]
+      "theme": {
+        "RadioWrap": {
+          "name": "Radio整体配置",
+          "desc": "Radio整体配置",
+          "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]],
+          "hover": [["opacity"]],
+          "disabled": [["opacity"]]
+        },
+        "RadioText": {
+          "name": "Radio文字配置",
+          "desc": "Radio文字样式配置",
+          "normal": [["color"], ["font"]],
+          "hover": [["color"], ["font"]],
+          "disabled": [["color"], ["font"]]
+        },
+        "RadioEdgeChecked": {
+          "name": "Radio选中后边框配置",
+          "desc": "Radio选中后边框配置样式",
+          "normal": [["background"], ["border"], ["borderRadius"], ["width"], ["height"]],
+          "hover": [["background"], ["borderRadius"], ["border"]],
+          "disabled": [["background"], ["borderRadius"], ["border"]]
+        },
+        "RadioEdgeUnChecked": {
+          "name": "Radio未选中边框配置",
+          "desc": "Radio未选中边框配置样式",
+          "normal": [["background"], ["border"], ["borderRadius"], ["width"], ["height"]],
+          "hover": [["background"], ["borderRadius"], ["border"]],
+          "disabled": [["background"], ["borderRadius"], ["border"]]
+        },
+        "RadioEdgeCancel": {
+          "name": "Radio未选中边框配置",
+          "desc": "Radio未选中边框配置样式",
+          "normal": [["background"], ["border"], ["borderRadius"], ["width"], ["height"]],
+          "hover": [["background"], ["borderRadius"], ["border"]],
+          "disabled": [["background"], ["borderRadius"], ["border"]]
+        },
+        "RadioInnerChecked": {
+          "name": "Radio选中样式配置",
+          "desc": "Radio选中配置样式",
+          "normal": [["background"], ["width"], ["height"]],
+          "hover": [["background"]],
+          "disabled": [["background"]]
+        },
+        "RadioInnerCancel": {
+          "name": "Radio取消状态样式配置",
+          "desc": "Radio取消状态配置样式",
+          "normal": [["background"], ["width"], ["height"]],
+          "hover": [["background"]]
+        }
       }
     },
     "CheckButton": {
-      "CheckButtonChecked": {
-        "name": "单选框按钮状选中配置",
-        "desc": "单选框按钮状选中配置",
-        "normal": {
-          "selectNames": [
+      "theme": {
+        "CheckButtonChecked": {
+          "name": "单选框按钮状选中配置",
+          "desc": "单选框按钮状选中配置",
+          "normal": {
+            "selectNames": [
+              ["opacity"],
+              ["border"],
+              ["borderRadius"],
+              ["background"],
+              ["width"],
+              ["height"],
+              ["color"],
+              ["font"],
+              ["padding"]
+            ],
+            "nth": [
+              ["opacity"],
+              ["border"],
+              ["borderRadius"],
+              ["background"],
+              ["width"],
+              ["height"],
+              ["color"],
+              ["font"],
+              ["padding"]
+            ]
+          },
+          "hover": {
+            "selectNames": [["opacity"], ["border"], ["borderRadius"], ["background"], ["color"]],
+            "nth": [["opacity"], ["border"], ["borderRadius"], ["background"], ["color"]]
+          },
+          "disabled": {
+            "selectNames": [["opacity"], ["border"], ["borderRadius"], ["background"], ["color"]],
+            "nth": [["opacity"], ["border"], ["borderRadius"], ["background"], ["color"]]
+          }
+        },
+        "CheckButtonUnChecked": {
+          "name": "单选框按钮状未选中配置",
+          "desc": "单选框按钮状未选中配置",
+          "normal": {
+            "selectNames": [
+              ["opacity"],
+              ["border"],
+              ["borderRadius"],
+              ["background"],
+              ["width"],
+              ["height"],
+              ["color"],
+              ["font"],
+              ["padding"]
+            ],
+            "nth": [
+              ["opacity"],
+              ["border"],
+              ["borderRadius"],
+              ["background"],
+              ["width"],
+              ["height"],
+              ["color"],
+              ["font"],
+              ["padding"]
+            ]
+          },
+          "hover": {
+            "selectNames": [["opacity"], ["border"], ["borderRadius"], ["background"], ["color"]],
+            "nth": [["opacity"], ["border"], ["borderRadius"], ["background"], ["color"]]
+          },
+          "disabled": {
+            "selectNames": [["opacity"], ["border"], ["borderRadius"], ["background"], ["color"]],
+            "nth": [["opacity"], ["border"], ["borderRadius"], ["background"], ["color"]]
+          }
+        },
+        "CheckButtonCancel": {
+          "name": "单选框按钮状取消项配置",
+          "desc": "单选框按钮状取消状态配置",
+          "normal": [
             ["opacity"],
             ["border"],
             ["borderRadius"],
@@ -159,78 +233,8 @@
             ["font"],
             ["padding"]
           ],
-          "nth": [
-            ["opacity"],
-            ["border"],
-            ["borderRadius"],
-            ["background"],
-            ["width"],
-            ["height"],
-            ["color"],
-            ["font"],
-            ["padding"]
-          ]
-        },
-        "hover": {
-          "selectNames": [["opacity"], ["border"], ["borderRadius"], ["background"], ["color"]],
-          "nth": [["opacity"], ["border"], ["borderRadius"], ["background"], ["color"]]
-        },
-        "disabled": {
-          "selectNames": [["opacity"], ["border"], ["borderRadius"], ["background"], ["color"]],
-          "nth": [["opacity"], ["border"], ["borderRadius"], ["background"], ["color"]]
+          "hover": [["opacity"], ["border"], ["borderRadius"], ["background"], ["color"]]
         }
-      },
-      "CheckButtonUnChecked": {
-        "name": "单选框按钮状未选中配置",
-        "desc": "单选框按钮状未选中配置",
-        "normal": {
-          "selectNames": [
-            ["opacity"],
-            ["border"],
-            ["borderRadius"],
-            ["background"],
-            ["width"],
-            ["height"],
-            ["color"],
-            ["font"],
-            ["padding"]
-          ],
-          "nth": [
-            ["opacity"],
-            ["border"],
-            ["borderRadius"],
-            ["background"],
-            ["width"],
-            ["height"],
-            ["color"],
-            ["font"],
-            ["padding"]
-          ]
-        },
-        "hover": {
-          "selectNames": [["opacity"], ["border"], ["borderRadius"], ["background"], ["color"]],
-          "nth": [["opacity"], ["border"], ["borderRadius"], ["background"], ["color"]]
-        },
-        "disabled": {
-          "selectNames": [["opacity"], ["border"], ["borderRadius"], ["background"], ["color"]],
-          "nth": [["opacity"], ["border"], ["borderRadius"], ["background"], ["color"]]
-        }
-      },
-      "CheckButtonCancel": {
-        "name": "单选框按钮状取消项配置",
-        "desc": "单选框按钮状取消状态配置",
-        "normal": [
-          ["opacity"],
-          ["border"],
-          ["borderRadius"],
-          ["background"],
-          ["width"],
-          ["height"],
-          ["color"],
-          ["font"],
-          ["padding"]
-        ],
-        "hover": [["opacity"], ["border"], ["borderRadius"], ["background"], ["color"]]
       }
     }
   }

@@ -235,7 +235,7 @@ export default (
       const { normal = {} } = getPartOfThemeConfig(TargetWrapName);
       let { height } = normal;
       height = !height && height !== 0 ? DefaultHeight : height;
-      const { data } = this.props;
+      const { data = [] } = this.props;
       const allItemHeight = this.itemHeight * data.length;
       return autoHeight ? allItemHeight : height;
     };

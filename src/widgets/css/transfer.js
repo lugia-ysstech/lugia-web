@@ -32,6 +32,16 @@ export type TransferProps = {
   valueField: string,
   model: Object,
   theme: Object,
+  checkboxTheme: Object,
+  headerTextTheme: Object,
+  headerTheme: Object,
+  cancelCheckboxTheme?: Object,
+  cancelBoxMenuTheme?: Object,
+  cancelCheckboxTheme?: Object,
+  getPartOfThemeProps: Function,
+  cancelBoxTheme: Object,
+  menuTheme: Object,
+  treeTheme: Object,
 };
 export type TransferState = {
   inputValue: string,
