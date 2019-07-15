@@ -192,7 +192,7 @@ export default ThemeProvider(
       }
     }
 
-    getClickState = (open: boolean): Object => {
+    getClickState = (open: ?boolean): Object => {
       if (open) {
         return { closing: true };
       }
