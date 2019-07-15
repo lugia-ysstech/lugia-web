@@ -19,7 +19,7 @@ const StepsOutContainer = CSSComponent({
   tag: 'div',
   className: 'StepsOutContainer',
   normal: {
-    selectNames: [['width'], ['height'], ['margin'], ['padding']],
+    selectNames: [['width'], ['height'], ['margin'], ['padding'], ['background'], ['opacity']],
     getThemeMeta(themeMeta, themeProps) {
       const { width, height } = themeMeta;
       const { propsConfig } = themeProps;

@@ -46,7 +46,7 @@ const StepOutContainer = CSSComponent({
   extend: BaseStep,
   className: 'StepOutContainer',
   normal: {
-    selectNames: [['width'], ['height'], ['background']],
+    selectNames: [['width'], ['height']],
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
       const { size, orientation } = propsConfig;
