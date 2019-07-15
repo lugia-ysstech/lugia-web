@@ -51,5 +51,26 @@
     "AlignType": ["center", "left"]
   },
   "childrenWidget": ["step"],
-  "category": ["导航"]
+  "category": ["导航"],
+  "designInfo": {
+    "StepsContainerConfig": {
+      "sequence": 1,
+      "title": "步骤条配置",
+      "desc": "步骤条配置",
+      "theme": {
+        "StepsOutContainer": {
+          "name": "步骤条最外层容器",
+          "desc": "步骤条最外层容器",
+          "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"], ["opacity"]]
+        }
+      }
+    }
+  },
+  "theme": {
+    "StepsOutContainer": {
+      "name": "步骤条最外层容器",
+      "desc": "步骤条最外层容器",
+      "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"], ["opacity"]]
+    }
+  }
 }

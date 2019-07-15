@@ -46,7 +46,7 @@ const StepOutContainer = CSSComponent({
   extend: BaseStep,
   className: 'StepOutContainer',
   normal: {
-    selectNames: [['width'], ['height'], ['background']],
+    selectNames: [['width'], ['height']],
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
       const { size, orientation } = propsConfig;
@@ -54,9 +54,9 @@ const StepOutContainer = CSSComponent({
       const type = orientation === 'horizontal' ? 'width' : 'height';
       let theSize;
       if (type === 'width') {
-        theSize = width && width > 0 ? width : size === 'normal' ? 212 : 204;
+        theSize = width ? width : size === 'normal' ? 212 : 204;
       } else {
-        theSize = height && height > 0 ? height : size === 'normal' ? 82 : 74;
+        theSize = height ? height : size === 'normal' ? 82 : 74;
       }
       return {
         [type]: theSize,
@@ -155,8 +155,8 @@ const SimpleLineContainer = CSSComponent({
       const { height, width } = themeMeta;
       const { propsConfig } = themeProps;
       const { orientation } = propsConfig;
-      const theWidth = width && width > 0 ? width : orientation === 'horizontal' ? '100%' : '';
-      const theHeight = height && height > 0 ? height : orientation === 'horizontal' ? '' : '100%';
+      const theWidth = width ? width : orientation === 'horizontal' ? '100%' : '';
+      const theHeight = height ? height : orientation === 'horizontal' ? '' : '100%';
       if (orientation === 'horizontal')
         return {
           width: theWidth,
@@ -194,8 +194,8 @@ const OtherLineContainer = CSSComponent({
       const { height, width } = themeMeta;
       const { propsConfig } = themeProps;
       const { orientation } = propsConfig;
-      const theWidth = width && width > 0 ? width : orientation === 'horizontal' ? '100%' : '';
-      const theHeight = height && height > 0 ? height : orientation === 'horizontal' ? '' : '100%';
+      const theWidth = width ? width : orientation === 'horizontal' ? '100%' : '';
+      const theHeight = height ? height : orientation === 'horizontal' ? '' : '100%';
       if (orientation === 'horizontal')
         return {
           width: theWidth,
@@ -219,8 +219,8 @@ const Line = CSSComponent({
       const { propsConfig } = themeProps;
       const { height, width } = themeMeta;
       const { orientation } = propsConfig;
-      const theHeight = height && height > 0 ? height : orientation === 'horizontal' ? 2 : '100%';
-      const theWidth = width && width > 0 ? width : orientation === 'horizontal' ? '100%' : 2;
+      const theHeight = height ? height : orientation === 'horizontal' ? 2 : '100%';
+      const theWidth = width ? width : orientation === 'horizontal' ? '100%' : 2;
       return {
         height: theHeight,
         width: theWidth,
@@ -246,8 +246,8 @@ const DotLine = CSSComponent({
       const styled = isDashed ? 'dashed' : 'solid';
       const direction = orientation === 'horizontal' ? 'bottom' : 'left';
       const { height, width } = themeMeta;
-      const theHeight = height && height > 0 ? height : orientation === 'horizontal' ? 2 : '100%';
-      const theWidth = width && width > 0 ? width : orientation === 'horizontal' ? '100%' : 2;
+      const theHeight = height ? height : orientation === 'horizontal' ? 2 : '100%';
+      const theWidth = width ? width : orientation === 'horizontal' ? '100%' : 2;
       const size = orientation === 'horizontal' ? theHeight : theWidth;
       return {
         width: theWidth,
@@ -278,8 +278,8 @@ const FlatLine = CSSComponent({
       const { propsConfig } = themeProps;
       const { height, width, boxShadow } = themeMeta;
       const { orientation } = propsConfig;
-      const theHeight = height && height > 0 ? height : orientation === 'horizontal' ? 6 : '100%';
-      const theWidth = width && width > 0 ? width : orientation === 'horizontal' ? '100%' : 6;
+      const theHeight = height ? height : orientation === 'horizontal' ? 6 : '100%';
+      const theWidth = width ? width : orientation === 'horizontal' ? '100%' : 6;
       const theBoxShadow = '0 0 4 rgba(104, 79, 255,0.3) inset';
       const resBoxShadow = boxShadow ? boxShadow : getBoxShadow(theBoxShadow);
       const theThemeMeta = {
@@ -337,8 +337,8 @@ const NormalFlatLine = CSSComponent({
       const { propsConfig } = themeProps;
       const { height, width } = themeMeta;
       const { orientation } = propsConfig;
-      const theHeight = height && height > 0 ? height : orientation === 'horizontal' ? 6 : '100%';
-      const theWidth = width && width > 0 ? width : orientation === 'horizontal' ? '100%' : 6;
+      const theHeight = height ? height : orientation === 'horizontal' ? 6 : '100%';
+      const theWidth = width ? width : orientation === 'horizontal' ? '100%' : 6;
       return {
         height: theHeight,
         width: theWidth,

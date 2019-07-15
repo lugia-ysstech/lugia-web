@@ -47,19 +47,19 @@ export default () => {
         },
       },
       AmountInputPrefix: { normal: { fontSize: 14, color: 'blue' } },
-    },
-    [Widget.Tooltip]: {
-      TooltipContent: {
-        normal: {
-          background: {
-            color: '#eee',
+      AmountTip: {
+        TooltipContent: {
+          normal: {
+            background: {
+              color: '#eee',
+            },
           },
         },
-      },
-      TooltipTitle: {
-        normal: {
-          color: '#4d63ff',
-          fontSize: 16,
+        TooltipTitle: {
+          normal: {
+            color: '#4d63ff',
+            fontSize: 16,
+          },
         },
       },
     },

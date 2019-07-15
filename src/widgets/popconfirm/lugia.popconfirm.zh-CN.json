@@ -122,21 +122,29 @@
       "title": "气泡确认框",
       "desc": "气泡确认框",
       "theme": {
-        "TooltipContent": {
-          "name": "气泡确认框内容部分",
-          "desc": "气泡确认框内容部分",
-          "normal": [
-            ["background"],
-            ["color"],
-            ["padding"],
-            ["font"],
-            ["fontSize"],
-            ["width"],
-            ["height"],
-            ["boxShadow"],
-            ["borderRadius"],
-            ["border"]
-          ]
+        "PopconfirmContent": {
+          "theme": {
+            "PopoverContent": {
+              "theme": {
+                "TooltipContent": {
+                  "name": "气泡确认框内容部分",
+                  "desc": "气泡确认框内容部分",
+                  "normal": [
+                    ["background"],
+                    ["color"],
+                    ["padding"],
+                    ["font"],
+                    ["fontSize"],
+                    ["width"],
+                    ["height"],
+                    ["boxShadow"],
+                    ["borderRadius"],
+                    ["border"]
+                  ]
+                }
+              }
+            }
+          }
         },
         "PopconfirmButton": {
           "name": "气泡确认框按钮",
@@ -146,7 +154,7 @@
         "PopconfirmTitle": {
           "name": "气泡确认框标题",
           "desc": "气泡确认框标题",
-          "normal": [ ["color"], ["background"], ["font"], ["fontSize"]]
+          "normal": [["color"], ["background"], ["font"], ["fontSize"]]
         },
         "PopconfirmIcon": {
           "name": "气泡确认框标题前图标",
@@ -176,7 +184,7 @@
     "PopconfirmTitle": {
       "name": "气泡确认框标题",
       "desc": "气泡确认框标题",
-      "normal": [ ["color"], ["background"], ["font"], ["fontSize"]]
+      "normal": [["color"], ["background"], ["font"], ["fontSize"]]
     },
     "PopconfirmButton": {
       "name": "气泡确认框按钮",

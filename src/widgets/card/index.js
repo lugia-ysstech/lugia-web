@@ -496,30 +496,27 @@ class Card extends React.Component<CardProps, CardState> {
   }
   getAvatar() {
     const { avatar, imageOrientation } = this.props;
-    const { theme: avatarTheme, viewClass } = this.props.getPartOfThemeHocProps('SrcAvatar');
+    const { theme: avatarTheme, viewClass } = this.props.getPartOfThemeHocProps('CardAvatar');
 
     const newTheme = deepMerge(
       {
         [viewClass]: {
-          normal: {
-            getCSS() {
-              return ` border-radius: 50%;
-      background-color: transparent;`;
-            },
-            getThemeMeta(themeMeta: Object, themeProps: Object) {
-              const { propsConfig } = themeProps;
-              const { imageOrientation } = propsConfig;
-              const left = imageOrientation === 'horizontal' ? 20 : 0;
-              return {
-                padding: {
-                  top: 20,
-                  left,
-                  right: left,
-                  bottom: 20,
-                },
-                width: 70,
-                height: 70,
-              };
+          SrcAvatar: {
+            normal: {
+              getCSS() {
+                return `
+                        background-color: transparent;`;
+              },
+              getThemeMeta(themeMeta: Object, themeProps: Object) {
+                const { propsConfig } = themeProps;
+                const { imageOrientation } = propsConfig;
+                const left = imageOrientation === 'horizontal' ? 20 : 0;
+                return {
+                  margin: {
+                    left,
+                  },
+                };
+              },
             },
           },
         },

@@ -90,13 +90,13 @@
   },
   "theme": {
     "Badge": {
-    "name": "徽标数",
-    "desc": "对徽标数配置样式",
-    "normal": [["width"], ["height"], ["margin"], ["padding"]],
-    "hover": [["width"], ["height"]],
-    "clicked": [],
-    "disabled": []
-  },
+      "name": "徽标数",
+      "desc": "对徽标数配置样式",
+      "normal": [["width"], ["height"], ["margin"], ["padding"]],
+      "hover": [["width"], ["height"]],
+      "clicked": [],
+      "disabled": []
+    },
     "BadgeNumber": {
       "name": "徽标数",
       "desc": "徽标数 显示数字时的样式展示",
@@ -114,7 +114,8 @@
       "hover": [["width"], ["height"], ["background"], ["opacity"], ["color"]],
       "clicked": [],
       "disabled": []
-    }, "BadgeDot": {
+    },
+    "BadgeDot": {
       "name": "徽标数",
       "desc": "徽标数不显示数字时的样式展示",
       "normal": [
@@ -131,6 +132,5 @@
       "clicked": [],
       "disabled": []
     }
+  }
 }
-}
-
