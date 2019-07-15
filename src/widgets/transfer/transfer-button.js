@@ -6,6 +6,7 @@
  *
  */
 import * as React from 'react';
+import { deepMerge } from '@lugia/object-utils';
 import Button from '../button';
 import Widget from '../consts/index';
 import Theme from '../theme';
@@ -16,6 +17,7 @@ type TransferButtonProps = {
   onRightClick: Function,
   leftModel: Object,
   rightModel: Object,
+  theme: Object,
 };
 type TransferButtonState = {
   leftDisabled: boolean,
@@ -48,6 +50,32 @@ export default class TransferButton extends React.Component<
     });
   }
 
+  getButtonTheme = () => {
+    const { theme } = this.props;
+    const { viewClass, theme: buttonTheme } = theme;
+    const defaultTheme = {
+      [viewClass]: {
+        ButtonWrap: {
+          normal: {
+            width: 38,
+            padding: {
+              top: 0,
+              right: 12,
+              bottom: 0,
+              left: 12,
+            },
+          },
+        },
+      },
+    };
+    const theButtonTheme = deepMerge(defaultTheme, buttonTheme);
+
+    return {
+      viewClass,
+      theme: theButtonTheme,
+    };
+  };
+
   render() {
     const { leftDisabled, rightDisabled } = this.state;
     const buttonView = {
@@ -57,24 +85,23 @@ export default class TransferButton extends React.Component<
     };
     return (
       <OperationBtn>
-        <Theme config={buttonView}>
-          <Button
-            icon="lugia-icon-direction_right"
-            onClick={this.handleClick('left')}
-            type="primary"
-            disabled={leftDisabled}
-          />
-        </Theme>
+        <Button
+          icon="lugia-icon-direction_right"
+          onClick={this.handleClick('left')}
+          type="primary"
+          disabled={leftDisabled}
+          {...this.getButtonTheme()}
+        />
 
         <br />
-        <Theme config={buttonView}>
-          <Button
-            icon="lugia-icon-direction_Left"
-            onClick={this.handleClick('right')}
-            type="primary"
-            disabled={rightDisabled}
-          />
-        </Theme>
+
+        <Button
+          icon="lugia-icon-direction_Left"
+          onClick={this.handleClick('right')}
+          type="primary"
+          disabled={rightDisabled}
+          {...this.getButtonTheme()}
+        />
       </OperationBtn>
     );
   }

@@ -166,6 +166,7 @@ export default ThemeProvider(
       const TransferCancelBoxMenuThemeObj = getPartOfThemeHocProps('TransferCancelBoxMenu');
       const TransferPanelMenuThemeObj = getPartOfThemeHocProps('TransferPanelMenu');
       const TransferPanelTreeThemeObj = getPartOfThemeHocProps('TransferPanelTree');
+      const TransferButtonThemeObj = getPartOfThemeHocProps('TransferButton');
       return (
         <TransFerWrap themeProps={TransFerWrapTheme}>
           <TransFer
@@ -191,6 +192,7 @@ export default ThemeProvider(
             rightModel={this.targetModel}
             onLeftClick={this.handleToRight}
             onRightClick={this.handleToLeft}
+            theme={TransferButtonThemeObj}
           />
           <TransFer
             key="2"

@@ -164,6 +164,35 @@ export default class TransferDemo extends React.Component<any, any> {
             normal: { height: 500 },
           },
         },
+        TransferButton: {
+          ButtonWrap: {
+            normal: {
+              width: 100,
+              height: 50,
+              padding: 9,
+              margin: 10,
+              background: { color: 'orange' },
+              border: getBorder({ width: 2, style: 'solid', color: 'green' }),
+              borderRadius: getBorderRadius(10),
+            },
+            hover: {
+              background: { color: 'yellow' },
+              border: getBorder({ width: 2, style: 'solid', color: 'red' }),
+            },
+            active: {
+              background: { color: 'red' },
+              border: getBorder({ width: 2, style: 'solid', color: 'yellow' }),
+            },
+            disabled: {
+              background: { color: 'green' },
+              border: getBorder({ width: 2, style: 'solid', color: 'pink' }),
+            },
+            focus: {
+              background: { color: 'pink' },
+              border: getBorder({ width: 2, style: 'solid', color: 'green' }),
+            },
+          },
+        },
       },
     };
     // height: 400,
