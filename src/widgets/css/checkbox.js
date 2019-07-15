@@ -49,6 +49,7 @@ export type CheckBoxProps = {
   styles?: 'default' | 'vertical',
   handleCancelItemClick: Function,
   getPartOfThemeProps: Function,
+  getPartOfThemeConfig: Function,
   themeProps: Object,
 } & ForGroupType;
 type CheckBoxType = CheckBoxProps & CSStype;
