@@ -171,82 +171,79 @@
           "disabled": []
         },
         "TreeItem": {
-          "TreeItemWrap": {
-            "name": "项的外盒",
-            "desc": "配置每一项的外盒",
-            "normal": [
-              ["background"],
-              ["border"],
-              ["borderRadius"],
-              ["opacity"],
-              ["color"],
-              ["padding"]
-            ],
-            "hover": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
-            "active": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
-            "disabled": []
-          },
-
-          "SelectedTreeItemWrap": {
-            "name": "选中项的外盒",
-            "desc": "配置选中项的外盒",
-            "normal": [
-              ["background"],
-              ["border"],
-              ["borderRadius"],
-              ["opacity"],
-              ["color"],
-              ["padding"]
-            ],
-            "hover": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
-            "active": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
-            "disabled": []
-          },
-
-          "Text": {
-            "name": "项的文本",
-            "desc": "配置每一项文本内容的样式",
-            "normal": [
-              ["color"],
-              ["font"],
-              ["background"],
-              ["padding"],
-              ["border"],
-              ["borderRadius"]
-            ],
-            "hover": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
-            "active": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
-            "disabled": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]]
-          },
-
-          "SelectedText": {
-            "name": "选中项的文本",
-            "desc": "配置选中项文本内容的样式",
-            "normal": [
-              ["color"],
-              ["font"],
-              ["background"],
-              ["padding"],
-              ["border"],
-              ["borderRadius"]
-            ],
-            "hover": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
-            "active": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
-            "disabled": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]]
-          },
-
-          "Switch": {
-            "name": "控制器配置",
-            "desc": "配置控制树节点展开或隐藏的控制器的样式",
-            "normal": [["color"], ["font"]],
-            "hover": [["color"], ["font"]],
-            "active": [["color"], ["font"]],
-            "disabled": [["color"], ["font"]]
+          "theme": {
+            "TreeItemWrap": {
+              "name": "项的外盒",
+              "desc": "配置每一项的外盒",
+              "normal": [
+                ["background"],
+                ["border"],
+                ["borderRadius"],
+                ["opacity"],
+                ["color"],
+                ["padding"]
+              ],
+              "hover": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
+              "active": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
+              "disabled": []
+            },
+            "SelectedTreeItemWrap": {
+              "name": "选中项的外盒",
+              "desc": "配置选中项的外盒",
+              "normal": [
+                ["background"],
+                ["border"],
+                ["borderRadius"],
+                ["opacity"],
+                ["color"],
+                ["padding"]
+              ],
+              "hover": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
+              "active": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
+              "disabled": []
+            },
+            "Text": {
+              "name": "项的文本",
+              "desc": "配置每一项文本内容的样式",
+              "normal": [
+                ["color"],
+                ["font"],
+                ["background"],
+                ["padding"],
+                ["border"],
+                ["borderRadius"]
+              ],
+              "hover": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
+              "active": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
+              "disabled": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]]
+            },
+            "SelectedText": {
+              "name": "选中项的文本",
+              "desc": "配置选中项文本内容的样式",
+              "normal": [
+                ["color"],
+                ["font"],
+                ["background"],
+                ["padding"],
+                ["border"],
+                ["borderRadius"]
+              ],
+              "hover": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
+              "active": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
+              "disabled": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]]
+            },
+            "Switch": {
+              "name": "控制器配置",
+              "desc": "配置控制树节点展开或隐藏的控制器的样式",
+              "normal": [["color"], ["font"]],
+              "hover": [["color"], ["font"]],
+              "active": [["color"], ["font"]],
+              "disabled": [["color"], ["font"]]
+            }
           }
         }
       }
     },
-
     "MutlipleTree": {
       "sequence": 2,
       "title": "多选树形控件",
@@ -274,120 +271,118 @@
           "disabled": []
         },
         "TreeItem": {
-          "TreeItemWrap": {
-            "name": "项的外盒",
-            "desc": "配置每一项的外盒",
-            "normal": [
-              ["background"],
-              ["border"],
-              ["borderRadius"],
-              ["opacity"],
-              ["color"],
-              ["padding"]
-            ],
-            "hover": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
-            "active": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
-            "disabled": []
-          },
-
-          "SelectedTreeItemWrap": {
-            "name": "选中项的外盒",
-            "desc": "配置选中项的外盒",
-            "normal": [
-              ["background"],
-              ["border"],
-              ["borderRadius"],
-              ["opacity"],
-              ["color"],
-              ["padding"]
-            ],
-            "hover": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
-            "active": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
-            "disabled": []
-          },
-
-          "Text": {
-            "name": "项的文本",
-            "desc": "配置每一项文本内容的样式",
-            "normal": [
-              ["color"],
-              ["font"],
-              ["background"],
-              ["padding"],
-              ["border"],
-              ["borderRadius"]
-            ],
-            "hover": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
-            "active": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
-            "disabled": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]]
-          },
-
-          "SelectedText": {
-            "name": "选中项的文本",
-            "desc": "配置选中项文本内容的样式",
-            "normal": [
-              ["color"],
-              ["font"],
-              ["background"],
-              ["padding"],
-              ["border"],
-              ["borderRadius"]
-            ],
-            "hover": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
-            "active": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
-            "disabled": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]]
-          },
-
-          "Switch": {
-            "name": "控制器配置",
-            "desc": "配置控制树节点展开或隐藏的控制器的样式",
-            "normal": [["color"], ["font"]],
-            "hover": [["color"], ["font"]],
-            "active": [["color"], ["font"]],
-            "disabled": [["color"], ["font"]]
-          },
-
-          "Checkbox": {
-            "CheckboxWrap": {
-              "name": "Checkbox整体配置",
-              "desc": "Checkbox整体配置",
-              "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]],
-              "hover": [["opacity"]],
-              "disabled": [["opacity"]]
+          "theme": {
+            "TreeItemWrap": {
+              "name": "项的外盒",
+              "desc": "配置每一项的外盒",
+              "normal": [
+                ["background"],
+                ["border"],
+                ["borderRadius"],
+                ["opacity"],
+                ["color"],
+                ["padding"]
+              ],
+              "hover": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
+              "active": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
+              "disabled": []
             },
-            "CheckboxText": {
-              "name": "Checkbox文字配置",
-              "desc": "Checkbox文字配置",
+            "SelectedTreeItemWrap": {
+              "name": "选中项的外盒",
+              "desc": "配置选中项的外盒",
+              "normal": [
+                ["background"],
+                ["border"],
+                ["borderRadius"],
+                ["opacity"],
+                ["color"],
+                ["padding"]
+              ],
+              "hover": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
+              "active": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
+              "disabled": []
+            },
+            "Text": {
+              "name": "项的文本",
+              "desc": "配置每一项文本内容的样式",
+              "normal": [
+                ["color"],
+                ["font"],
+                ["background"],
+                ["padding"],
+                ["border"],
+                ["borderRadius"]
+              ],
+              "hover": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
+              "active": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
+              "disabled": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]]
+            },
+            "SelectedText": {
+              "name": "选中项的文本",
+              "desc": "配置选中项文本内容的样式",
+              "normal": [
+                ["color"],
+                ["font"],
+                ["background"],
+                ["padding"],
+                ["border"],
+                ["borderRadius"]
+              ],
+              "hover": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
+              "active": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
+              "disabled": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]]
+            },
+            "Switch": {
+              "name": "控制器配置",
+              "desc": "配置控制树节点展开或隐藏的控制器的样式",
               "normal": [["color"], ["font"]],
               "hover": [["color"], ["font"]],
+              "active": [["color"], ["font"]],
               "disabled": [["color"], ["font"]]
             },
-            "CheckboxEdgeChecked": {
-              "name": "Checkbox选中后边框配置",
-              "desc": "Checkbox选中后边框配置样式",
-              "normal": [["background"], ["borderRadius"], ["border"]],
-              "hover": [["background"], ["borderRadius"], ["border"]],
-              "disabled": [["background"], ["borderRadius"], ["border"]]
-            },
-            "CheckboxEdgeUnChecked": {
-              "name": "Checkbox未选中边框配置",
-              "desc": "Checkbox未选中边框配置样式",
-              "normal": [["background"], ["borderRadius"], ["border"]],
-              "hover": [["background"], ["borderRadius"], ["border"]],
-              "disabled": [["background"], ["borderRadius"], ["border"]]
-            },
-            "CheckboxInnerChecked": {
-              "name": "Checkbox选中样式配置",
-              "desc": "Checkbox选中样式配置",
-              "normal": [["color"]],
-              "hover": [["color"]],
-              "disabled": [["color"]]
+            "Checkbox": {
+              "theme": {
+                "CheckboxWrap": {
+                  "name": "Checkbox整体配置",
+                  "desc": "Checkbox整体配置",
+                  "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]],
+                  "hover": [["opacity"]],
+                  "disabled": [["opacity"]]
+                },
+                "CheckboxText": {
+                  "name": "Checkbox文字配置",
+                  "desc": "Checkbox文字配置",
+                  "normal": [["color"], ["font"]],
+                  "hover": [["color"], ["font"]],
+                  "disabled": [["color"], ["font"]]
+                },
+                "CheckboxEdgeChecked": {
+                  "name": "Checkbox选中后边框配置",
+                  "desc": "Checkbox选中后边框配置样式",
+                  "normal": [["background"], ["borderRadius"], ["border"]],
+                  "hover": [["background"], ["borderRadius"], ["border"]],
+                  "disabled": [["background"], ["borderRadius"], ["border"]]
+                },
+                "CheckboxEdgeUnChecked": {
+                  "name": "Checkbox未选中边框配置",
+                  "desc": "Checkbox未选中边框配置样式",
+                  "normal": [["background"], ["borderRadius"], ["border"]],
+                  "hover": [["background"], ["borderRadius"], ["border"]],
+                  "disabled": [["background"], ["borderRadius"], ["border"]]
+                },
+                "CheckboxInnerChecked": {
+                  "name": "Checkbox选中样式配置",
+                  "desc": "Checkbox选中样式配置",
+                  "normal": [["color"]],
+                  "hover": [["color"]],
+                  "disabled": [["color"]]
+                }
+              }
             }
           }
         }
       }
     },
-
     "theme": {
       "TreeWrap": {
         "name": "树形控件外盒",
@@ -408,114 +403,113 @@
         "disabled": []
       },
       "TreeItem": {
-        "TreeItemWrap": {
-          "name": "项的外盒",
-          "desc": "配置每一项的外盒",
-          "normal": [
-            ["background"],
-            ["border"],
-            ["borderRadius"],
-            ["opacity"],
-            ["color"],
-            ["padding"]
-          ],
-          "hover": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
-          "active": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
-          "disabled": []
-        },
-
-        "SelectedTreeItemWrap": {
-          "name": "选中项的外盒",
-          "desc": "配置选中项的外盒",
-          "normal": [
-            ["background"],
-            ["border"],
-            ["borderRadius"],
-            ["opacity"],
-            ["color"],
-            ["padding"]
-          ],
-          "hover": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
-          "active": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
-          "disabled": []
-        },
-
-        "Text": {
-          "name": "项的文本",
-          "desc": "配置每一项文本内容的样式",
-          "normal": [
-            ["color"],
-            ["font"],
-            ["background"],
-            ["padding"],
-            ["border"],
-            ["borderRadius"]
-          ],
-          "hover": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
-          "active": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
-          "disabled": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]]
-        },
-
-        "SelectedText": {
-          "name": "选中项的文本",
-          "desc": "配置选中项文本内容的样式",
-          "normal": [
-            ["color"],
-            ["font"],
-            ["background"],
-            ["padding"],
-            ["border"],
-            ["borderRadius"]
-          ],
-          "hover": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
-          "active": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
-          "disabled": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]]
-        },
-
-        "Switch": {
-          "name": "控制器配置",
-          "desc": "配置控制树节点展开或隐藏的控制器的样式",
-          "normal": [["color"], ["font"]],
-          "hover": [["color"], ["font"]],
-          "active": [["color"], ["font"]],
-          "disabled": [["color"], ["font"]]
-        },
-
-        "Checkbox": {
-          "CheckboxWrap": {
-            "name": "Checkbox整体配置",
-            "desc": "Checkbox整体配置",
-            "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]],
-            "hover": [["opacity"]],
-            "disabled": [["opacity"]]
+        "theme": {
+          "TreeItemWrap": {
+            "name": "项的外盒",
+            "desc": "配置每一项的外盒",
+            "normal": [
+              ["background"],
+              ["border"],
+              ["borderRadius"],
+              ["opacity"],
+              ["color"],
+              ["padding"]
+            ],
+            "hover": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
+            "active": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
+            "disabled": []
           },
-          "CheckboxText": {
-            "name": "Checkbox文字配置",
-            "desc": "Checkbox文字配置",
+          "SelectedTreeItemWrap": {
+            "name": "选中项的外盒",
+            "desc": "配置选中项的外盒",
+            "normal": [
+              ["background"],
+              ["border"],
+              ["borderRadius"],
+              ["opacity"],
+              ["color"],
+              ["padding"]
+            ],
+            "hover": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
+            "active": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
+            "disabled": []
+          },
+          "Text": {
+            "name": "项的文本",
+            "desc": "配置每一项文本内容的样式",
+            "normal": [
+              ["color"],
+              ["font"],
+              ["background"],
+              ["padding"],
+              ["border"],
+              ["borderRadius"]
+            ],
+            "hover": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
+            "active": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
+            "disabled": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]]
+          },
+          "SelectedText": {
+            "name": "选中项的文本",
+            "desc": "配置选中项文本内容的样式",
+            "normal": [
+              ["color"],
+              ["font"],
+              ["background"],
+              ["padding"],
+              ["border"],
+              ["borderRadius"]
+            ],
+            "hover": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
+            "active": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
+            "disabled": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]]
+          },
+          "Switch": {
+            "name": "控制器配置",
+            "desc": "配置控制树节点展开或隐藏的控制器的样式",
             "normal": [["color"], ["font"]],
             "hover": [["color"], ["font"]],
+            "active": [["color"], ["font"]],
             "disabled": [["color"], ["font"]]
           },
-          "CheckboxEdgeChecked": {
-            "name": "Checkbox选中后边框配置",
-            "desc": "Checkbox选中后边框配置样式",
-            "normal": [["background"], ["borderRadius"], ["border"]],
-            "hover": [["background"], ["borderRadius"], ["border"]],
-            "disabled": [["background"], ["borderRadius"], ["border"]]
-          },
-          "CheckboxEdgeUnChecked": {
-            "name": "Checkbox未选中边框配置",
-            "desc": "Checkbox未选中边框配置样式",
-            "normal": [["background"], ["borderRadius"], ["border"]],
-            "hover": [["background"], ["borderRadius"], ["border"]],
-            "disabled": [["background"], ["borderRadius"], ["border"]]
-          },
-          "CheckboxInnerChecked": {
-            "name": "Checkbox选中样式配置",
-            "desc": "Checkbox选中样式配置",
-            "normal": [["color"]],
-            "hover": [["color"]],
-            "disabled": [["color"]]
+          "Checkbox": {
+            "theme": {
+              "CheckboxWrap": {
+                "name": "Checkbox整体配置",
+                "desc": "Checkbox整体配置",
+                "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]],
+                "hover": [["opacity"]],
+                "disabled": [["opacity"]]
+              },
+              "CheckboxText": {
+                "name": "Checkbox文字配置",
+                "desc": "Checkbox文字配置",
+                "normal": [["color"], ["font"]],
+                "hover": [["color"], ["font"]],
+                "disabled": [["color"], ["font"]]
+              },
+              "CheckboxEdgeChecked": {
+                "name": "Checkbox选中后边框配置",
+                "desc": "Checkbox选中后边框配置样式",
+                "normal": [["background"], ["borderRadius"], ["border"]],
+                "hover": [["background"], ["borderRadius"], ["border"]],
+                "disabled": [["background"], ["borderRadius"], ["border"]]
+              },
+              "CheckboxEdgeUnChecked": {
+                "name": "Checkbox未选中边框配置",
+                "desc": "Checkbox未选中边框配置样式",
+                "normal": [["background"], ["borderRadius"], ["border"]],
+                "hover": [["background"], ["borderRadius"], ["border"]],
+                "disabled": [["background"], ["borderRadius"], ["border"]]
+              },
+              "CheckboxInnerChecked": {
+                "name": "Checkbox选中样式配置",
+                "desc": "Checkbox选中样式配置",
+                "normal": [["color"]],
+                "hover": [["color"]],
+                "disabled": [["color"]]
+              }
+            }
           }
         }
       }

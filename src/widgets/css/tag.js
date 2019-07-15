@@ -4,13 +4,11 @@
  *
  * @flow
  */
-import ThemeHoc from '@lugia/theme-hoc';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
-import CommonIcon from '../icon';
 import colorsFunc from '../css/stateColor';
 import { px2remcss } from '../css/units';
 import { FontSize } from '../css';
-import { isNumber } from '../common/NumberUtils';
+import { isNumber, toNumber } from '../common/NumberUtils';
 
 export const {
   themeColor,
@@ -41,7 +39,7 @@ const getPadding = (closable: Boolean) => {
 };
 
 const getRadius = (shape: shapeType, height: number) => {
-  height = isNumber(height) ? height : defaultHeight;
+  height = toNumber(height, defaultHeight);
   return shape === 'round' ? `${px2remcss(height)}` : `${px2remcss(borderRadius)}`;
 };
 
@@ -106,9 +104,8 @@ const getDefaultCSS = (type: styleType, params: Object) => {
 };
 
 const getLineHeight = (height: number) => {
-  return isNumber(height) ? height - 2 : defaultHeight - 2;
+  return toNumber(height, defaultHeight);
 };
-
 const getHoverBgColorFromNormalOrHover = (params: Object, defaultBgColor: string) => {
   const { normal, hover } = params;
   const { background: hoverBg = {} } = hover;
@@ -185,96 +182,96 @@ const getHoverCSS = (type: styleType, params: Object) => {
     : getCustomsHoverCSS(params);
 };
 
-export const TagWrap = ThemeHoc(
-  CSSComponent({
-    tag: 'div',
-    className: 'tagContianer',
-    normal: {
-      selectNames: [
-        ['color'],
-        ['background'],
-        ['border'],
-        ['borderRadius'],
-        ['width'],
-        ['height'],
-        ['boxShadow'],
-        ['opacity'],
-        ['font'],
-        ['margin'],
-        ['padding'],
-      ],
-      getCSS: (themeMeta, themeProps) => {
-        const { height, color: themeColor, background: themeBgColor } = themeMeta;
-        const { propsConfig } = themeProps;
-        const { shape, type, closable, isClose } = propsConfig;
-        const radius = getRadius(shape, height);
+export const TagWrap = CSSComponent({
+  tag: 'div',
+  className: 'tagContianer',
+  normal: {
+    selectNames: [
+      ['color'],
+      ['background'],
+      ['border'],
+      ['borderRadius'],
+      ['width'],
+      ['height'],
+      ['boxShadow'],
+      ['opacity'],
+      ['font'],
+      ['margin'],
+      ['padding'],
+    ],
+    getCSS: (themeMeta, themeProps) => {
+      const { height, color: themeColor, background: themeBgColor } = themeMeta;
+      const { propsConfig } = themeProps;
+      const { shape, type, closable, isClose } = propsConfig;
+      const radius = getRadius(shape, height);
 
-        const { color, background, border } = getDefaultCSS(type, {
-          color: themeColor,
-          background: themeBgColor,
-        });
-        const padding = getPadding(closable);
-        const closeCSS = getAnimationCSS(isClose);
+      const { color, background, border } = getDefaultCSS(type, {
+        color: themeColor,
+        background: themeBgColor,
+      });
+      const padding = getPadding(closable);
+      const closeCSS = getAnimationCSS(isClose);
 
-        return `
+      return `
           border-radius: ${radius};
           color: ${color};
           background: ${background};
           border: ${border};
-          line-height: ${px2remcss(getLineHeight(height))};
           padding: ${padding};
           ${closeCSS}
         `;
-      },
     },
-    hover: {
-      selectNames: [
-        ['color'],
-        ['background'],
-        ['border'],
-        ['borderRadius'],
-        ['boxShadow'],
-        ['opacity'],
-        ['font'],
-      ],
-      getStyle: (themeMeta, themeProps) => {
-        const { themeConfig, propsConfig } = themeProps;
-        const { normal = {}, hover = {} } = themeConfig;
-        const { type } = propsConfig;
-        const hoverCSS = getHoverCSS(type, {
-          normal,
-          hover,
-        });
-        return {
-          ...hoverCSS,
-        };
-      },
+  },
+  hover: {
+    selectNames: [
+      ['color'],
+      ['background'],
+      ['border'],
+      ['borderRadius'],
+      ['boxShadow'],
+      ['opacity'],
+      ['font'],
+    ],
+    getStyle: (themeMeta, themeProps) => {
+      const { themeConfig, propsConfig } = themeProps;
+      const { normal = {}, hover = {} } = themeConfig;
+      const { type } = propsConfig;
+      const hoverCSS = getHoverCSS(type, {
+        normal,
+        hover,
+      });
+      return {
+        ...hoverCSS,
+      };
     },
-    active: {
-      selectNames: [],
-    },
-    css: css`
-      display: inline-block;
-      height: ${px2remcss(defaultHeight)};
-      border-radius: ${getRadius};
-      font-size: ${FontSize};
-      cursor: pointer;
-      overflow: hidden;
-      user-select: none;
-      text-align: center;
-      vertical-align: top;
-      transition: all 0.15s ease-in;
-    `,
-  }),
-  'TagWrap',
-  { hover: true, active: false }
-);
+  },
+  active: {
+    selectNames: [],
+  },
+  css: css`
+    display: inline-block;
+    height: ${px2remcss(defaultHeight)};
+    border-radius: ${getRadius};
+    font-size: ${FontSize};
+    cursor: pointer;
+    overflow: hidden;
+    user-select: none;
+    text-align: center;
+    vertical-align: top;
+    transition: all 0.15s ease-in;
+  `,
+  option: { hover: true, active: true },
+});
 
 export const ItemText = CSSComponent({
   tag: 'span',
   className: 'ItemText',
   normal: {
     selectNames: [],
+    getCSS: themeMeta => {
+      const { height } = themeMeta;
+      return `line-height: ${px2remcss(getLineHeight(height))}`;
+    },
   },
   hover: {
     selectNames: [],
@@ -295,17 +292,17 @@ export const CloseButtonWrap = CSSComponent({
   tag: 'span',
   className: 'CloseButtonWrap',
   normal: {
-    selectNames: [['font'], ['margin'], ['color']],
+    selectNames: [['margin']],
     getCSS: themeMeta => {
       const { font = {} } = themeMeta;
-      const { fontSize = 16 } = font;
+      const { size = 16 } = font;
       return `
-        width: ${px2remcss(fontSize)}
+        width: ${px2remcss(size)}
       `;
     },
   },
   hover: {
-    selectNames: [['font'], ['color']],
+    selectNames: [],
   },
   active: {
     selectNames: [],
@@ -314,32 +311,12 @@ export const CloseButtonWrap = CSSComponent({
     display: inline-block;
     position: relative;
     box-sizing: content-box;
-    height: 100%;
-    margin-left: ${px2remcss(5)};
-  `,
-});
-
-export const CloseButton = CSSComponent({
-  extend: CommonIcon,
-  className: 'CloseButton',
-  normal: {
-    selectNames: [],
-  },
-  hover: {
-    selectNames: [],
-  },
-  active: {
-    selectNames: [],
-  },
-  css: css`
-    position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -48%);
-    transition: all 0.15s ease-in;
+    transform: translateY(-45%);
+    margin-left: ${px2remcss(5)};
+    transition: all 0.3s;
   `,
 });
-CloseButton.displayName = 'tagCloseButton';
 
 const getOptionalCSS = (checked: Boolean, params: Object) => {
   const defaultBackgroundColor = checked ? themeColor : 'transparent';
@@ -353,101 +330,97 @@ const getOptionalCSS = (checked: Boolean, params: Object) => {
   };
 };
 
-export const OptionalWrap = ThemeHoc(
-  CSSComponent({
-    tag: 'div',
-    className: 'OptionalWrap',
-    normal: {
-      selectNames: [
-        ['color'],
-        ['background'],
-        ['border'],
-        ['borderRadius'],
-        ['width'],
-        ['height'],
-        ['boxShadow'],
-        ['opacity'],
-        ['font'],
-        ['margin'],
-        ['padding'],
-      ],
-      getCSS: (themeMeta, themeProps) => {
-        const {
-          height,
-          color: themeColor,
-          background: themeBgColor,
-          border: themeBorder,
-        } = themeMeta;
-        const { propsConfig } = themeProps;
-        const { shape, closable, checked } = propsConfig;
-        const radius = getRadius(shape, height);
+export const OptionalWrap = CSSComponent({
+  tag: 'div',
+  className: 'OptionalWrap',
+  normal: {
+    selectNames: [
+      ['color'],
+      ['background'],
+      ['border'],
+      ['borderRadius'],
+      ['width'],
+      ['height'],
+      ['boxShadow'],
+      ['opacity'],
+      ['font'],
+      ['margin'],
+      ['padding'],
+    ],
+    getCSS: (themeMeta, themeProps) => {
+      const {
+        height,
+        color: themeColor,
+        background: themeBgColor,
+        border: themeBorder,
+      } = themeMeta;
+      const { propsConfig } = themeProps;
+      const { shape, closable, checked } = propsConfig;
+      const radius = getRadius(shape, height);
 
-        const { color, background, border } = getOptionalCSS(checked, {
-          color: themeColor,
-          background: themeBgColor,
-          border: themeBorder,
-        });
-        const padding = getPadding(closable);
-        return `
+      const { color, background, border } = getOptionalCSS(checked, {
+        color: themeColor,
+        background: themeBgColor,
+        border: themeBorder,
+      });
+      const padding = getPadding(closable);
+      return `
           border-radius: ${radius};
           color: ${color};
           background: ${background};
           border: ${border};
-          line-height: ${px2remcss(getLineHeight(height))};
           padding: ${padding};
         `;
-      },
     },
-    hover: {
-      selectNames: [
-        ['color'],
-        ['background'],
-        ['border'],
-        ['borderRadius'],
-        ['boxShadow'],
-        ['opacity'],
-        ['font'],
-      ],
-      getCSS: (themeMeta, themeProps) => {
-        const { color: hoverColor } = themeMeta;
-        const { propsConfig } = themeProps;
-        const { checked } = propsConfig;
-        const color = hoverColor ? hoverColor : checked ? defaultColor : themeColor;
-        return `
+  },
+  hover: {
+    selectNames: [
+      ['color'],
+      ['background'],
+      ['border'],
+      ['borderRadius'],
+      ['boxShadow'],
+      ['opacity'],
+      ['font'],
+    ],
+    getCSS: (themeMeta, themeProps) => {
+      const { color: hoverColor } = themeMeta;
+      const { propsConfig } = themeProps;
+      const { checked } = propsConfig;
+      const color = hoverColor ? hoverColor : checked ? defaultColor : themeColor;
+      return `
         color: ${color};
         `;
-      },
     },
-    active: {
-      selectNames: [
-        ['color'],
-        ['background'],
-        ['border'],
-        ['borderRadius'],
-        ['boxShadow'],
-        ['opacity'],
-        ['font'],
-      ],
-      getStyle: (themeMeta, themeProps) => {
-        const { color: activeColor, background = {} } = themeMeta;
-        const color = activeColor ? activeColor : colorsFunc(themeColor).mouseDownColor;
-        const backgroundColor = background.color ? background.color : themeColor;
-        return { color, backgroundColor };
-      },
+  },
+  active: {
+    selectNames: [
+      ['color'],
+      ['background'],
+      ['border'],
+      ['borderRadius'],
+      ['boxShadow'],
+      ['opacity'],
+      ['font'],
+    ],
+    getStyle: (themeMeta, themeProps) => {
+      const { color: activeColor, background = {} } = themeMeta;
+      const color = activeColor ? activeColor : colorsFunc(themeColor).mouseDownColor;
+      const backgroundColor = background.color ? background.color : themeColor;
+      return { color, backgroundColor };
     },
-    css: css`
-      display: inline-block;
-      height: ${px2remcss(defaultHeight)};
-      border-radius: ${getRadius};
-      font-size: ${FontSize};
-      cursor: pointer;
-      overflow: hidden;
-      user-select: none;
-      text-align: center;
-      vertical-align: top;
-      transition: all 0.15s ease-in;
-    `,
-  }),
-  'OptionalWrap',
-  { hover: true, active: true }
-);
+  },
+  css: css`
+    display: inline-block;
+    height: ${px2remcss(defaultHeight)};
+    border-radius: ${getRadius};
+    font-size: ${FontSize};
+    cursor: pointer;
+    overflow: hidden;
+    user-select: none;
+    text-align: center;
+    vertical-align: top;
+    transition: all 0.15s ease-in;
+  `,
+  option: { hover: true, active: true },
+});

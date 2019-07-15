@@ -6,7 +6,7 @@
 
 import * as React from 'react';
 import ThemeHoc from '@lugia/theme-hoc';
-import { ALink, CommonSpan, SeparatorSpan } from '../css/breadcrumb';
+import { ALink, CommonSpan, SeparatorSpan, ItemWrap } from '../css/breadcrumb';
 
 export type BreadcrumbItemProps = {
   separator?: string | React.Element<any>,
@@ -24,22 +24,26 @@ class BreadcrumbItem extends React.Component<BreadcrumbItemProps, any> {
   };
 
   render() {
-    const { separator, children, isLastItem, href, textThemeHoc, separatorThemeProps } = this.props;
-
+    const {
+      separator,
+      children,
+      getPartOfThemeProps,
+      // isLastItem,
+      href,
+    } = this.props;
     let Link = CommonSpan;
     if ('href' in this.props) {
       Link = ALink;
     }
 
-    const { theme, viewClass } = textThemeHoc;
-
-    return [
-      <Link href={href} theme={theme} viewClass={viewClass}>
-        {children}
-      </Link>,
-      <SeparatorSpan themeProps={separatorThemeProps}>{separator}</SeparatorSpan>,
-    ];
+    return (
+      <ItemWrap themeProps={getPartOfThemeProps('ItemWrap')}>
+        <Link href={href} themeProps={getPartOfThemeProps('Text')}>
+          {children}
+        </Link>
+        <SeparatorSpan themeProps={getPartOfThemeProps('Separator')}>{separator}</SeparatorSpan>
+      </ItemWrap>
+    );
   }
 }
-
-export default BreadcrumbItem;
+export default ThemeHoc(BreadcrumbItem, 'BreadcrumbItem', { hover: true });

@@ -5,10 +5,9 @@
  */
 import * as React from 'react';
 import Carousel from './index';
-import { getBorder } from '@lugia/theme-utils';
+import { getBorder, getBoxShadow, getBorderRadius } from '@lugia/theme-utils';
 import styled from 'styled-components';
 import Widget from '../consts/index';
-import { getBorderRadius } from '../theme/CSSProvider';
 
 const data = [
   'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1543751358232&di=f7fd14870cb6028086f7bb55d479df53&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F4%2F586b090b7f42b.jpg',
@@ -100,24 +99,44 @@ export default class SkeletonDemo extends React.Component<any, any> {
   render() {
     const config = {
       [Widget.Carousel]: {
-        CarouselWrap: { normal: { width: 700, height: 350 } },
+        CarouselWrap: {
+          normal: {
+            width: 700,
+            height: 350,
+            padding: { left: 10 },
+            border: getBorder({ color: '#9482ff', width: 1, style: 'solid' }),
+            boxShadow: getBoxShadow('0px 0px 5px 5px yellow'),
+            borderRadius: getBorderRadius(20),
+          },
+        },
         PreButton: {
           normal: {
             color: 'blue',
-            fontSize: 60,
+            font: {
+              size: 60,
+            },
             opacity: 0.2,
-            boxShadow: '0px 0px 5px 5px yellow',
+            boxShadow: getBoxShadow('0px 0px 5px 5px yellow'),
+            margin: {
+              left: 30,
+            },
+            padding: { left: 30 },
           },
           hover: { opacity: 1 },
         },
         NextButton: {
           normal: {
             color: 'yellow',
-            fontSize: 60,
+            font: {
+              size: 60,
+            },
+            margin: {
+              right: 30,
+            },
             opacity: 0.2,
-            boxShadow: '2px 2px 5px 5px blue',
+            boxShadow: getBoxShadow('0px 0px 5px 5px blue'),
           },
-          hover: { opacity: 1, color: 'green' },
+          hover: { opacity: 1 },
         },
         Indicator: {
           normal: {
@@ -125,8 +144,8 @@ export default class SkeletonDemo extends React.Component<any, any> {
             width: 20,
             opacity: 0.5,
             background: { color: 'pink' },
-            boxShadow: '2px 2px 5px 5px yellow',
-            border: getBorder({ color: '#9482ff', width: 0, style: 'solid' }),
+            boxShadow: getBoxShadow('0px 0px 5px 5px blue'),
+            border: getBorder({ color: '#9482ff', width: 1, style: 'solid' }),
             borderRadius: getBorderRadius(20),
             margin: {
               left: 10,
@@ -137,6 +156,10 @@ export default class SkeletonDemo extends React.Component<any, any> {
           },
           hover: {
             background: { color: 'orange' },
+            opacity: 1,
+            borderRadius: getBorderRadius(3),
+            border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }),
+            boxShadow: getBoxShadow('0px 0px 5px 5px orange'),
           },
         },
       },

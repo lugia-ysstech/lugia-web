@@ -256,11 +256,8 @@ export default class extends React.Component<any, any> {
   onClick = (e: Object, keys: Object) => {
     // const { selectedKeys } = keys;
     // this.setState({ selectedKeys });
-    console.log('keys', e);
   };
-  onChange = (target: Object) => {
-    // console.log('target', target);
-  };
+  onChange = (target: Object) => {};
 
   onClear = () => {
     this.setState({ selectedKeys: [] });

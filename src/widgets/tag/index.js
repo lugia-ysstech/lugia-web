@@ -8,7 +8,9 @@
 import React from 'react';
 import Widget from '../consts/index';
 import ThemeHoc from '@lugia/theme-hoc';
-import { TagWrap, OptionalWrap, ItemText, CloseButtonWrap, CloseButton } from '../css/tag';
+import Icon from '../icon';
+import { deepMerge } from '@lugia/object-utils';
+import { TagWrap, OptionalWrap, ItemText, CloseButtonWrap } from '../css/tag';
 
 type shapeType = 'basic' | 'round';
 type styleType = 'customs' | 'primary' | 'basic' | 'presets' | 'optional';
@@ -22,8 +24,8 @@ type TagProps = {
   getTheme: Function,
   type: styleType,
   themeProps: Object,
-  getPartOfThemeHocProps: Function,
   getPartOfThemeProps: Function,
+  getPartOfThemeHocProps: Function,
 };
 
 type TagState = {
@@ -73,22 +75,7 @@ class Tag extends React.Component<TagProps, TagState> {
 
   render() {
     const { isClose, checked } = this.state;
-    const {
-      getPartOfThemeProps,
-      type,
-      shape,
-      closable = false,
-      children,
-      getPartOfThemeHocProps,
-    } = this.props;
-    const TagThemeProps = getPartOfThemeProps('Tag');
-    const CloseThemeProps = getPartOfThemeProps('CloseButton');
-
-    const themeHoc =
-      type === 'optional' && checked
-        ? getPartOfThemeHocProps('CheckedTagWrap')
-        : getPartOfThemeHocProps('TagWrap');
-    const { theme, viewClass } = themeHoc;
+    const { getPartOfThemeProps, type, shape, closable = false, children } = this.props;
 
     const params = {
       shape,
@@ -98,21 +85,27 @@ class Tag extends React.Component<TagProps, TagState> {
       checked,
     };
 
+    const themeProps =
+      type === 'optional' && checked
+        ? getPartOfThemeProps('CheckedTagWrap', { props: params })
+        : getPartOfThemeProps('TagWrap', { props: params });
+    console.log('Tag', getPartOfThemeProps('Tag'));
     return type === 'optional' ? (
-      <OptionalWrap propsConfig={params} onClick={this.onClick} theme={theme} viewClass={viewClass}>
-        <ItemText themeProps={TagThemeProps} ref={cmp => (this.itemText = cmp)} type={type}>
+      <OptionalWrap onClick={this.onClick} themeProps={themeProps}>
+        <ItemText themeProps={themeProps} ref={cmp => (this.itemText = cmp)} type={type}>
           {children}
         </ItemText>
       </OptionalWrap>
     ) : (
-      <TagWrap propsConfig={params} onClick={this.onClick} theme={theme} viewClass={viewClass}>
-        <ItemText themeProps={TagThemeProps} ref={cmp => (this.itemText = cmp)} type={type}>
+      <TagWrap onClick={this.onClick} themeProps={themeProps}>
+        <ItemText themeProps={themeProps} ref={cmp => (this.itemText = cmp)} type={type}>
           {children}
         </ItemText>
         {closable ? (
-          <CloseButtonWrap themeProps={CloseThemeProps}>
-            <CloseButton
-              themeProps={CloseThemeProps}
+          <CloseButtonWrap themeProps={getPartOfThemeProps('CloseButton')}>
+            <Icon
+              {...this.getCloseTheme('CloseButton')}
+              singleTheme
               iconClass="lugia-icon-reminder_close"
               onClick={this.onCloseClick.bind(this)}
             />
@@ -122,8 +115,33 @@ class Tag extends React.Component<TagProps, TagState> {
     );
   }
 
+  getCloseTheme = (target: string) => {
+    const { getPartOfThemeHocProps } = this.props;
+    const { viewClass, theme } = getPartOfThemeHocProps(target);
+    const { normal = {}, hover = {} } = theme[viewClass];
+    normal.margin = {};
+    normal.padding = {};
+    hover.margin = {};
+    const iconTheme = deepMerge(
+      {
+        [viewClass]: {
+          normal: {
+            font: { size: 16 },
+          },
+        },
+      },
+      theme
+    );
+
+    return {
+      viewClass,
+      theme: iconTheme,
+    };
+  };
+
   onCloseClick(e) {
     e.stopPropagation();
+
     this.setState({
       isClose: true,
     });

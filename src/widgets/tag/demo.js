@@ -5,11 +5,9 @@
  */
 import Tag from './';
 import Widget from '../consts/index';
-import Theme from '../theme';
 import styled from 'styled-components';
 import React from 'react';
-import { getBorder } from '@lugia/theme-utils';
-import { getBorderRadius } from '../theme/CSSProvider';
+import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
 
 const Box = styled.div`
   display: inline-block;
@@ -29,7 +27,7 @@ const commonConfig = {
         height: 60,
         color: '#000',
         opacity: 1,
-        boxShadow: '2px 2px 5px #4d63ff',
+        boxShadow: getBoxShadow('2px 2px 5px #4d63ff'),
         border: getBorder({ color: '#ddd', width: 1, style: 'solid' }),
         borderRadius: getBorderRadius(20),
         background: { color: '#ddd' },
@@ -49,7 +47,7 @@ const commonConfig = {
       hover: {
         color: '#fff',
         opacity: 0.7,
-        boxShadow: '2px 2px 10px #8d030f',
+        boxShadow: getBoxShadow('2px 2px 5px #8d030f'),
         background: { color: '#ff0000' },
         border: getBorder({ color: '#ff0000', width: 1, style: 'solid' }),
         borderRadius: getBorderRadius(4),
@@ -57,16 +55,16 @@ const commonConfig = {
     },
     CloseButton: {
       normal: {
-        color: '#000',
+        color: 'red',
         font: {
-          size: 30,
+          size: 20,
         },
         margin: {
           left: 20,
         },
       },
       hover: {
-        color: '#ccc',
+        color: '#4d63ff',
       },
     },
   },
@@ -80,7 +78,7 @@ const optionalConfig = {
         height: 60,
         color: '#000',
         opacity: 1,
-        boxShadow: '2px 2px 5px #4d63ff',
+        boxShadow: getBoxShadow('2px 2px 5px #4d63ff'),
         border: getBorder({ color: '#ddd', width: 1, style: 'solid' }),
         borderRadius: getBorderRadius(4),
         background: { color: '#ddd' },
@@ -100,7 +98,7 @@ const optionalConfig = {
       hover: {
         color: '#00cc99',
         opacity: 0.7,
-        boxShadow: '2px 2px 10px #8d030f',
+        boxShadow: getBoxShadow('2px 2px 5px #8d030f'),
         background: { color: '#ffccff' },
         border: getBorder({ color: '#ff0000', width: 1, style: 'solid' }),
         borderRadius: getBorderRadius(4),
@@ -119,7 +117,7 @@ const optionalConfig = {
         height: 60,
         color: '#7fe0c0',
         opacity: 1,
-        boxShadow: '2px 2px 5px #4d63ff',
+        boxShadow: getBoxShadow('2px 2px 5px #4d63ff'),
         border: getBorder({ color: '#ffff00', width: 1, style: 'solid' }),
         borderRadius: getBorderRadius(40),
         background: { color: '#4d63ff' },
@@ -139,7 +137,7 @@ const optionalConfig = {
       hover: {
         color: '#32da9f',
         opacity: 0.7,
-        boxShadow: '2px 2px 10px #8d030f',
+        boxShadow: getBoxShadow('2px 2px 5px #8d030f'),
         background: { color: '#ffff00' },
         border: getBorder({ color: '#ff0000', width: 1, style: 'solid' }),
         borderRadius: getBorderRadius(4),

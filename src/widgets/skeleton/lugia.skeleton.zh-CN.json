@@ -55,5 +55,97 @@
     }
   },
 
-  "category": ["反馈"]
+  "category": ["反馈"],
+  "theme": {
+    "Wrap": {
+      "name": "Skeleton的外框",
+      "desc": "配置Skeleton的外框样式",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["margin"],
+        ["padding"],
+        ["background"],
+        ["border"],
+        ["boxShadow"],
+        ["borderRadius"]
+      ],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
+    },
+    "Title": {
+      "name": "标题",
+      "desc": "配置标题样式",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["background"],
+        ["border"],
+        ["opacity"],
+        ["boxShadow"],
+        ["borderRadius"]
+      ],
+      "hover": [["background"], ["border"], ["opacity"], ["boxShadow"], ["borderRadius"]],
+      "clicked": [],
+      "disabled": []
+    },
+
+    "Paragraph": {
+      "name": "段落",
+      "desc": "配置段落样式",
+      "normal": {
+        "selectNames": [
+          ["width"],
+          ["height"],
+          ["background"],
+          ["border"],
+          ["opacity"],
+          ["boxShadow"],
+          ["borderRadius"]
+        ],
+        "nth": [
+          ["width"],
+          ["height"],
+          ["background"],
+          ["border"],
+          ["opacity"],
+          ["boxShadow"],
+          ["borderRadius"]
+        ]
+      },
+      "hover": {
+        "selectNames": [["background"], ["border"], ["opacity"], ["boxShadow"], ["borderRadius"]],
+        "nth": [["background"], ["border"], ["opacity"], ["boxShadow"], ["borderRadius"]]
+      },
+      "clicked": [],
+      "disabled": []
+    },
+
+    "Avatar": {
+      "name": "头像",
+      "desc": "配置头像样式",
+      "normal": [
+        ["margin"],
+        ["width"],
+        ["border"],
+        ["background"],
+        ["border"],
+        ["opacity"],
+        ["cursor"],
+        ["boxShadow"],
+        ["borderRadius"]
+      ],
+      "hover": [
+        ["border"],
+        ["opacity"],
+        ["background"],
+        ["border"],
+        ["boxShadow"],
+        ["borderRadius"]
+      ],
+      "clicked": [],
+      "disabled": []
+    }
+  }
 }

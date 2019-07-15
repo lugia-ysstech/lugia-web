@@ -7,7 +7,6 @@
 import React from 'react';
 import Item from './Item';
 import Widget from '../consts/index';
-import { findDOMNode } from 'react-dom';
 import { HiddenItem } from '../css/inputtag';
 
 type FontItemState = {
@@ -61,8 +60,7 @@ export default class extends React.Component<any, FontItemState> {
   }
   componentDidUpdate() {
     if (this.item) {
-      // this.width = findDOMNode(this.item).offsetWidth;
-      this.width = this.item.getThemeTarget().item.offsetWidth;
+      this.width = this.item.getThemeTarget().item.getThemeTarget().offsetWidth;
     }
   }
 }

@@ -3,6 +3,7 @@ import Breadcrumb from './index';
 import styled from 'styled-components';
 import Widget from '../consts/index';
 import Icon from '../icon';
+import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
 
 const Hr = styled.div`
   height: 2px;
@@ -38,34 +39,59 @@ export default class Demo extends React.Component<any, any> {
       [Widget.Breadcrumb]: {
         BreadcrumbWrap: {
           normal: {
-            width: 1000,
-            height: 200,
+            width: 800,
+            // height: 200,
             padding: {
-              top: 80,
+              left: 10,
             },
             margin: {
-              left: 80,
+              left: 10,
+              right: 10,
+              top: 10,
+              bottom: 10,
             },
-          },
-        },
-
-        Text: {
-          normal: {
-            color: '#ccc',
-            fontSize: 20,
+            background: {
+              color: '#000',
+            },
+            boxShadow: getBoxShadow('2px 2px 5px 5px #9C2D6E'),
+            border: getBorder({ color: '#9C2D6E', width: 1, style: 'solid' }),
+            borderRadius: getBorderRadius(20),
           },
           hover: {
-            color: '#999',
+            background: {
+              color: '#9C2D6E',
+            },
+            boxShadow: getBoxShadow('2px 2px 5px 5px #9C2D6E'),
+            border: getBorder({ color: '#9C2D6E', width: 1, style: 'solid' }),
+            borderRadius: getBorderRadius(10),
           },
         },
+        BreadcrumbItem: {
+          ItemWrap: {
+            normal: {
+              color: '#4d63ff',
+              width: 150,
+              padding: {
+                left: 10,
+              },
+            },
+          },
 
-        Separator: {
-          normal: {
-            color: '#666',
-            fontSize: 20,
-            margin: {
-              left: 30,
-              right: 20,
+          Text: {
+            normal: {
+              color: '#ccc',
+              // fontSize: 20,
+            },
+            hover: {
+              color: '#fff',
+              fontSize: 20,
+            },
+          },
+
+          Separator: {
+            normal: {
+              color: '#666',
+              fontSize: 20,
             },
           },
         },
