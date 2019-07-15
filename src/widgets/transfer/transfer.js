@@ -128,7 +128,6 @@ export default ThemeProvider(
         headerTheme,
         cancelBoxTheme,
       } = this.props;
-      // const { width = 200 } = theme;
       this.getCancelMenuTheme();
       const cancelBox =
         needCancelBox && cancelItem && cancelItem.length ? (
