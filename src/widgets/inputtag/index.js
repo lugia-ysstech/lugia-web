@@ -118,6 +118,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       query: '',
       value: this.fetchValueObject(props),
     };
+    this.fontItem = React.createRef();
   }
 
   shouldComponentUpdate(nextPros: InputTagProps, nextState: InputTagState) {
@@ -201,12 +202,12 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     const clearButton = this.getClearButton();
     const placeholder = this.getPlaceholder();
     const FontItemThemeProps = props.getPartOfThemeProps('TagWrap');
-    const fillFontItem: Function = (cmp: Object): any => (this.fontItem = cmp);
+
     const font = (
       <FontItem
         themeProps={FontItemThemeProps}
         theme={this.getTagItemTheme()}
-        ref={fillFontItem}
+        ref={this.fontItem}
         key="fontItem"
       />
     );
@@ -388,8 +389,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   }
 
   getFontWidth(text: string): number {
-    console.log('fontWidth', text, this.fontItem);
-    return this.fontItem.getWidth(text);
+    return this.fontItem.current.getWidth(text);
   }
 
   onClick = (e: Object) => {
@@ -540,7 +540,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       // return typeof width === 'number'
       //   ? getContentWidth(width, left, right, size)
       //   : this.list.offsetWidth;
-      console.log('this.list', this);
+      console.log('this.list', this.list);
       return this.list.offsetWidth;
     }
     return 0;
