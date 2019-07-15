@@ -202,29 +202,31 @@
       "disabled": [["border"], ["cursor"]]
     },
     "UploadList": {
-      "UploadLiType": {
-        "name": "上传文件列表",
-        "desc": "上传列表的行样式",
-        "normal": [["width"],["height"],["background"], ["border"],["color"]],
-        "hover": [["border"],["background"],["color"]],
-        "clicked": [],
-        "disabled": [["background"],["color"]]
-      },
-      "UploadListSuccessIcon": {
-        "name": "上传成功图标样式",
-        "desc": "上传成功时列表图标的样式",
-        "normal": [["color"]],
-        "hover": [],
-        "clicked": [],
-        "disabled": []
-      },
-      "UploadListFailedIcon": {
-        "name": "上传失败图标样式",
-        "desc": "上传失败时列表图标的样式",
-        "normal": [["color"]],
-        "hover": [],
-        "clicked": [],
-        "disabled": []
+      "theme":{
+        "UploadLiType": {
+          "name": "上传文件列表",
+          "desc": "上传列表的行样式",
+          "normal": [["width"],["height"],["background"], ["border"],["color"]],
+          "hover": [["border"],["background"],["color"]],
+          "clicked": [],
+          "disabled": [["background"],["color"]]
+        },
+        "UploadListSuccessIcon": {
+          "name": "上传成功图标样式",
+          "desc": "上传成功时列表图标的样式",
+          "normal": [["color"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
+        },
+        "UploadListFailedIcon": {
+          "name": "上传失败图标样式",
+          "desc": "上传失败时列表图标的样式",
+          "normal": [["color"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
+        }
       }
     }
 

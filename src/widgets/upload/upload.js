@@ -25,7 +25,6 @@ type UploadProps = {
   limit?: number,
   data?: Object,
   areaType?: string,
-  getTheme: Function,
   multiple?: boolean,
   fileList?: Array<Object>,
   showFileList?: boolean,
@@ -106,9 +105,6 @@ class Upload extends React.Component<UploadProps, StateProps> {
     onComplete: loop,
     onFail: loop,
     onChange: loop,
-    getTheme: () => {
-      return {};
-    },
   };
 
   static getDerivedStateFromProps(defProps: UploadProps, stateProps: StateProps) {
