@@ -38,6 +38,10 @@ export type TransferProps = {
   cancelCheckboxTheme?: Object,
   cancelBoxMenuTheme?: Object,
   cancelCheckboxTheme?: Object,
+  getPartOfThemeProps: Function,
+  cancelBoxTheme: Object,
+  menuTheme: Object,
+  treeTheme: Object,
 };
 export type TransferState = {
   inputValue: string,

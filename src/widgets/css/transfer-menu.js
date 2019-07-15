@@ -18,6 +18,7 @@ export type TransferMenuProps = {
   filterOption?: Function,
   selectedKeys: string[],
   height: number,
+  menuThemeObj: Object,
 };
 export type TransferMenuState = {
   mapData: Object,

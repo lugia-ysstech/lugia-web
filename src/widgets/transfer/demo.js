@@ -9,7 +9,6 @@ import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
 import Transfer from './group';
 import Widget from '../consts/index';
 import Theme from '../theme';
-import { px2remcss } from '../css/units';
 
 const data = [
   { text: '选项1', value: '选项1', disabled: false },
@@ -195,10 +194,10 @@ export default class TransferDemo extends React.Component<any, any> {
         },
       },
     };
-    // height: 400,
-    // width: 300,
     return (
       <div style={{ marginLeft: '30px', marginTop: '30px' }}>
+        <Transfer />
+        <Transfer type="tree" />
         <Transfer
           data={data}
           showSearch
