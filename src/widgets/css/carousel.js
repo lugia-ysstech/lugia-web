@@ -4,11 +4,7 @@
  * @flow
  */
 import { px2remcss } from '../css/units';
-import Icon from '../icon';
-// import ThemeHoc from '@lugia/theme-hoc';
-import colorsFunc from '../css/stateColor';
 import CSSComponent, { css, keyframes } from '@lugia/theme-css-hoc';
-const { lightGreyColor } = colorsFunc();
 
 export const defaultWidth = 400;
 export const defaultHeight = 200;
@@ -38,7 +34,6 @@ export const PreButton = CSSComponent({
         height: ${px2remcss(size)}
         `;
     },
-    defaultTheme: {},
   },
   hover: {
     selectNames: [['boxShadow'], ['border'], ['opacity']],
@@ -93,16 +88,17 @@ export const Wrap = CSSComponent({
       ['border'],
       ['padding'],
     ],
+    defaultTheme: {
+      width: defaultWidth,
+      height: defaultHeight,
+    },
   },
   hover: {
     selectNames: [['opacity'], ['boxShadow'], ['boxShadow'], ['borderRadius'], ['border']],
   },
-  css: `
+  css: css`
     position: relative;
     box-sizing: content-box;
-    width: ${px2remcss(defaultWidth)};
-    height: ${px2remcss(defaultHeight)};
-    border-radius: ${px2remcss(0)};
   `,
 });
 
@@ -111,6 +107,10 @@ export const CarouselContainer = CSSComponent({
   className: 'carouselContainer',
   normal: {
     selectNames: [['width'], ['height']],
+    defaultTheme: {
+      width: defaultWidth,
+      height: defaultHeight,
+    },
   },
   hover: {
     selectNames: [],
@@ -132,7 +132,7 @@ export const CarouselContainer = CSSComponent({
       `;
     },
   },
-  css: `
+  css: css`
     overflow: hidden;
     position: relative;
     width: ${px2remcss(defaultWidth)};
@@ -399,7 +399,7 @@ export const ItemWrap = CSSComponent({
   hover: {
     selectNames: [],
   },
-  css: `
+  css: css`
     overflow: hidden;
     vertical-align: top;
     display: inline-block;
@@ -422,7 +422,7 @@ export const Empty = CSSComponent({
   hover: {
     selectNames: [],
   },
-  css: `
+  css: css`
     display: block;
     width: ${px2remcss(defaultWidth)};
     height: ${px2remcss(defaultHeight)};
@@ -430,6 +430,6 @@ export const Empty = CSSComponent({
     text-align: center;
     background: #161651;
     color: #fff;
-    font-size: 12px;
+    font-size: ${px2remcss(12)};
   `,
 });

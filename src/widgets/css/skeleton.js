@@ -5,7 +5,6 @@
  */
 import CSSComponent, { css, keyframes } from '@lugia/theme-css-hoc';
 import { px2remcss } from '../css/units';
-import { toNumber } from '../common/NumberUtils';
 import colorsFunc from '../css/stateColor';
 
 const { disableColor, superLightColor } = colorsFunc();
@@ -21,11 +20,24 @@ export const SkeletonWrap = CSSComponent({
   tag: 'div',
   className: 'skeletonWrap',
   normal: {
-    selectNames: [['width'], ['height']],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['margin'],
+      ['padding'],
+      ['background'],
+      ['border'],
+      ['boxShadow'],
+      ['borderRadius'],
+    ],
+    defaultTheme: {
+      width: 800,
+    },
   },
-  css: `
+  css: css`
     display: inline-block;
-    width: ${px2remcss(800)};
+    overflow: hidden;
+    box-sizing: content-box;
   `,
 });
 
@@ -33,7 +45,7 @@ export const SkeletonContainer = CSSComponent({
   tag: 'div',
   className: 'skeletonContainer',
   normal: {
-    selectNames: [['width'], ['height'], ['margin'], ['padding']],
+    selectNames: [['width'], ['height']],
   },
   css: `
     display: flex;
@@ -72,35 +84,30 @@ const getCommonAnimation = (width: number) => {
 
 export const AnimationItem = CSSComponent({
   tag: 'div',
-  className: 'animationItem',
+  className: 'AnimationItem',
   normal: {
-    selectNames: [],
+    selectNames: [['width'], ['height']],
     getCSS: (themeMeta, themeProps) => {
-      const { propsConfig } = themeProps;
-      const { width } = propsConfig;
+      const { width = 40 } = themeMeta;
       const animationCSS = getCommonAnimation(width);
       return css`
         animation: ${animationCSS} 1s linear infinite;
       `;
     },
     getStyle: (themeMeta, themeProps) => {
-      const { propsConfig } = themeProps;
-      const { width, height } = propsConfig;
+      const { width } = themeMeta;
       return {
-        width: px2remcss(width),
-        height: px2remcss(height),
         boxShadow: `0 0 ${px2remcss(width)} ${px2remcss(width)} ${disableColor}`,
       };
     },
   },
-  css: `
+  css: css`
     border-radius: 50%;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     background: ${disableColor};
-    width: ${px2remcss(200)};
-    height: ${px2remcss(200)};
+    opacity: 0.5;
   `,
 });
 
@@ -112,7 +119,7 @@ export const AvatarContainer = CSSComponent({
   tag: 'div',
   className: 'avatarContainer',
   normal: {
-    selectNames: [],
+    selectNames: [['margin']],
   },
   css: `
     display: inline-block;
@@ -121,27 +128,52 @@ export const AvatarContainer = CSSComponent({
   `,
 });
 
-export const CommonAvatar = CSSComponent({
+export const Avatar = CSSComponent({
   tag: 'div',
   className: 'avatar',
   normal: {
-    selectNames: [['width']],
+    selectNames: [
+      ['width'],
+      ['border'],
+      ['background'],
+      ['border'],
+      ['opacity'],
+      ['cursor'],
+      ['boxShadow'],
+      ['borderRadius'],
+    ],
     getStyle: themeMeta => {
       const { width } = themeMeta;
       return {
         height: width,
       };
     },
+    defaultTheme: {
+      background: {
+        color: superLightColor,
+      },
+      width: 32,
+      height: 32,
+    },
   },
-  css: `
+  hover: {
+    selectNames: [
+      ['border'],
+      ['opacity'],
+      ['background'],
+      ['border'],
+      ['boxShadow'],
+      ['borderRadius'],
+    ],
+  },
+  css: css`
     display: inline-block;
-    width: ${px2remcss(32)};
-    height: ${px2remcss(32)};
-    background: ${superLightColor};
     position: relative;
     border-radius: 50%;
-    overflow: hidden
+    overflow: hidden;
+    transition: all 0.3s;
   `,
+  option: { hover: true },
 });
 
 /**
@@ -152,7 +184,7 @@ export const ParagraphWrap = CSSComponent({
   tag: 'div',
   className: 'paragraphWrap',
   normal: {
-    selectNames: [],
+    selectNames: [['margin']],
     getStyle: (themeMeta, themeProps) => {
       const { propsConfig } = themeProps;
       const { type } = propsConfig;
@@ -169,36 +201,48 @@ export const ParagraphWrap = CSSComponent({
   `,
 });
 
-const getParagraphWidth = (type: 'title' | 'paragraph', width: any, lastItem: boolean) => {
-  if (!width && !lastItem) {
-    return;
+const getParagraphWidth = (type: 'title' | 'paragraph', lastItem: boolean) => {
+  if (type === 'title') {
+    return 400;
   }
-  const defaultWidth = type === 'title' ? 400 : lastItem ? 400 : 600;
-  return toNumber(width, defaultWidth);
+  return lastItem ? 400 : '';
 };
 
 export const CommonParagraph = CSSComponent({
   tag: 'div',
   className: 'commonParagraph',
   normal: {
-    selectNames: [],
-
-    getStyle: (themeMate, themeProps) => {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['background'],
+      ['border'],
+      ['opacity'],
+      ['boxShadow'],
+      ['borderRadius'],
+    ],
+    getCSS: (themeMeta, themeProps) => {
       const { propsConfig } = themeProps;
-      const { type, width, lastItem } = propsConfig;
-      const activeWidth = getParagraphWidth(type, width, lastItem);
-
-      return {
-        width: activeWidth,
-      };
+      const { type, lastItem } = propsConfig;
+      const defaultWidth = getParagraphWidth(type, lastItem);
+      return defaultWidth ? `width: ${px2remcss(defaultWidth)}` : '';
+    },
+    defaultTheme: {
+      height: 16,
+      background: {
+        color: superLightColor,
+      },
     },
   },
-  css: `
-    height: ${px2remcss(16)};
-    background: ${superLightColor};
+  hover: {
+    selectNames: [['background'], ['border'], ['opacity'], ['boxShadow'], ['borderRadius']],
+  },
+  css: css`
     position: relative;
-    overflow: hidden
+    overflow: hidden;
+    transition: all 0.3s;
   `,
+  option: { hover: true },
 });
 
 /**
@@ -209,25 +253,52 @@ export const PictrueContainer = CSSComponent({
   tag: 'div',
   className: 'pictrueContainer',
   normal: {
-    selectNames: [],
+    selectNames: [['margin']],
   },
-  css: `
+  css: css`
     display: inline-block;
-    vertical-align: top
+    vertical-align: top;
+    padding-right: ${px2remcss(10)};
   `,
 });
 
-export const CommonPicture = CSSComponent({
+export const Picture = CSSComponent({
   tag: 'div',
   className: 'picture',
   normal: {
-    selectNames: [['width'], ['height']],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['border'],
+      ['background'],
+      ['border'],
+      ['opacity'],
+      ['cursor'],
+      ['boxShadow'],
+      ['borderRadius'],
+    ],
+    defaultTheme: {
+      background: {
+        color: superLightColor,
+      },
+      width: defaultPictureWidth,
+      height: defaultPictureHeight,
+    },
   },
-  css: `
-    width: ${px2remcss(defaultPictureWidth)};
-    height: ${px2remcss(defaultPictureHeight)};
-    background: ${superLightColor};
+  hover: {
+    selectNames: [
+      ['border'],
+      ['opacity'],
+      ['background'],
+      ['border'],
+      ['boxShadow'],
+      ['borderRadius'],
+    ],
+  },
+  css: css`
     position: relative;
-    overflow: hidden
+    transition: all 0.3s;
+    overflow: hidden;
   `,
+  option: { hover: true },
 });

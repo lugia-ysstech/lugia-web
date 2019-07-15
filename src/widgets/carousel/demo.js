@@ -144,8 +144,8 @@ export default class SkeletonDemo extends React.Component<any, any> {
             width: 20,
             opacity: 0.5,
             background: { color: 'pink' },
-            boxShadow: '2px 2px 5px 5px yellow',
-            border: getBorder({ color: '#9482ff', width: 0, style: 'solid' }),
+            boxShadow: getBoxShadow('0px 0px 5px 5px blue'),
+            border: getBorder({ color: '#9482ff', width: 1, style: 'solid' }),
             borderRadius: getBorderRadius(20),
             margin: {
               left: 10,
@@ -156,6 +156,10 @@ export default class SkeletonDemo extends React.Component<any, any> {
           },
           hover: {
             background: { color: 'orange' },
+            opacity: 1,
+            borderRadius: getBorderRadius(3),
+            border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }),
+            boxShadow: getBoxShadow('0px 0px 5px 5px orange'),
           },
         },
       },
