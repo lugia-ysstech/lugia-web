@@ -108,7 +108,6 @@ export default ThemeProvider(
         data,
         disabled,
         styles,
-        themeProps,
         getPartOfThemeProps,
       } = this.props;
       if (!cache) {

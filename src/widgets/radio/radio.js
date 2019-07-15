@@ -114,37 +114,37 @@ export default ThemeProvider(
         getPartOfThemeConfig,
       } = this.props;
       const { checked } = this.state;
-      const RadioWrapTheme = getPartOfThemeProps('RadioWrap');
-      const RadioTextTheme = getPartOfThemeProps('RadioText');
-      const RadioEdgeCheckedTheme = getPartOfThemeProps('RadioEdgeChecked');
-      const RadioEdgeUnCheckedTheme = getPartOfThemeProps('RadioEdgeUnChecked');
-      const RadioEdgeCancelTheme = getPartOfThemeProps('RadioEdgeCancel');
-      const RadioInnerCheckedTheme = getPartOfThemeConfig('RadioInnerChecked');
-      const RadioInnerCancelTheme = getPartOfThemeConfig('RadioInnerChecked');
-      const CircleEdgeTheme = cancel
-        ? deepMerge(defaultEdgeCancelProps, RadioEdgeCancelTheme)
+      const radioWrapTheme = getPartOfThemeProps('RadioWrap');
+      const radioTextTheme = getPartOfThemeProps('RadioText');
+      const radioEdgeCheckedTheme = getPartOfThemeProps('RadioEdgeChecked');
+      const radioEdgeUnCheckedTheme = getPartOfThemeProps('RadioEdgeUnChecked');
+      const radioEdgeCancelTheme = getPartOfThemeProps('RadioEdgeCancel');
+      const radioInnerCheckedTheme = getPartOfThemeConfig('RadioInnerChecked');
+      const radioInnerCancelTheme = getPartOfThemeConfig('RadioInnerChecked');
+      const circleEdgeTheme = cancel
+        ? deepMerge(defaultEdgeCancelProps, radioEdgeCancelTheme)
         : checked
-        ? deepMerge(defaultEdgeCheckedProps, RadioEdgeCheckedTheme)
-        : RadioEdgeUnCheckedTheme;
+        ? deepMerge(defaultEdgeCheckedProps, radioEdgeCheckedTheme)
+        : radioEdgeUnCheckedTheme;
       if (checked) {
-        CircleEdgeTheme.propsConfig.RadioInnerCheckedTheme = deepMerge(
+        circleEdgeTheme.propsConfig.radioInnerCheckedTheme = deepMerge(
           defaultProps,
-          RadioInnerCheckedTheme
+          radioInnerCheckedTheme
         );
       }
       if (cancel) {
-        CircleEdgeTheme.propsConfig.RadioInnerCheckedTheme = deepMerge(
+        circleEdgeTheme.propsConfig.radioInnerCheckedTheme = deepMerge(
           defaultInnerCancelProps,
-          RadioInnerCancelTheme
+          radioInnerCancelTheme
         );
       }
-      CircleEdgeTheme.propsConfig.isChecked = checked;
-      CircleEdgeTheme.propsConfig.isCancel = cancel;
-      CircleEdgeTheme.propsConfig.isDisabled = disabled;
+      circleEdgeTheme.propsConfig.isChecked = checked;
+      circleEdgeTheme.propsConfig.isCancel = cancel;
+      circleEdgeTheme.propsConfig.isDisabled = disabled;
 
       return (
         <RadioWrap
-          themeProps={RadioWrapTheme}
+          themeProps={radioWrapTheme}
           onClick={this.handleClick(value)}
           styles={styles}
           disabled={disabled}
@@ -153,13 +153,13 @@ export default ThemeProvider(
         >
           <RadioContent themeProps={themeProps}>
             <RadioCircleSpan
-              themeProps={CircleEdgeTheme}
+              themeProps={circleEdgeTheme}
               cancel={cancel}
               disabled={disabled}
               checked={checked}
             />
           </RadioContent>
-          <RadioChildrenSpan themeProps={RadioTextTheme}>{children}</RadioChildrenSpan>
+          <RadioChildrenSpan themeProps={radioTextTheme}>{children}</RadioChildrenSpan>
         </RadioWrap>
       );
     }
