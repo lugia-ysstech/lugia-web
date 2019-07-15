@@ -74,9 +74,18 @@
             ["opacity"],
             ["font"],
             ["margin"],
-            ["padding"]
+            ["padding"],
+            ["borderRadius"]
           ],
-          "hover": [["color"], ["background"], ["border"], ["boxShadow"], ["opacity"], ["font"]],
+          "hover": [
+            ["color"],
+            ["borderRadius"],
+            ["background"],
+            ["border"],
+            ["boxShadow"],
+            ["opacity"],
+            ["font"]
+          ],
           "active": [],
           "clicked": [],
           "disabled": []
@@ -84,7 +93,7 @@
       }
     },
     "ClosableTag": {
-      "sequence": 1,
+      "sequence": 2,
       "title": "可关闭标签",
       "desc": "点击关闭按钮可隐藏标签",
       "props": {
@@ -98,6 +107,7 @@
             ["color"],
             ["background"],
             ["border"],
+            ["borderRadius"],
             ["width"],
             ["height"],
             ["boxShadow"],
@@ -106,24 +116,34 @@
             ["margin"],
             ["padding"]
           ],
-          "hover": [["color"], ["background"], ["border"], ["boxShadow"], ["opacity"], ["font"]],
+          "hover": [
+            ["color"],
+            ["background"],
+            ["borderRadius"],
+            ["border"],
+            ["boxShadow"],
+            ["opacity"],
+            ["font"]
+          ],
           "active": [],
           "clicked": [],
           "disabled": []
         },
+
         "CloseButton": {
-          "name": "隐藏图标",
-          "desc": "隐藏图标的样式配置",
-          "normal": [["font"], ["color"]],
-          "hover": [],
+          "name": "关闭按钮",
+          "desc": "隐藏按钮的样式配置",
+          "normal": [["font"], ["color"], ["margin"]],
+          "hover": [["font"], ["color"]],
           "active": [],
           "clicked": [],
           "disabled": []
         }
       }
     },
+
     "ChooseTag": {
-      "sequence": 1,
+      "sequence": 3,
       "title": "可选择标签",
       "desc": "点击标签可配置选中样式",
       "props": {
@@ -140,13 +160,30 @@
             ["width"],
             ["height"],
             ["boxShadow"],
+            ["borderRadius"],
             ["opacity"],
             ["font"],
             ["margin"],
             ["padding"]
           ],
-          "hover": [["color"], ["background"], ["border"], ["boxShadow"], ["opacity"], ["font"]],
-          "active": [["color"], ["background"], ["border"], ["boxShadow"], ["opacity"], ["font"]],
+          "hover": [
+            ["color"],
+            ["borderRadius"],
+            ["background"],
+            ["border"],
+            ["boxShadow"],
+            ["opacity"],
+            ["font"]
+          ],
+          "active": [
+            ["color"],
+            ["borderRadius"],
+            ["background"],
+            ["border"],
+            ["boxShadow"],
+            ["opacity"],
+            ["font"]
+          ],
           "clicked": [],
           "disabled": []
         },
@@ -164,16 +201,34 @@
             ["opacity"],
             ["font"],
             ["margin"],
-            ["padding"]
+            ["padding"],
+            ["borderRadius"]
           ],
-          "hover": [["color"], ["background"], ["border"], ["boxShadow"], ["opacity"], ["font"]],
-          "active": [["color"], ["background"], ["border"], ["boxShadow"], ["opacity"], ["font"]],
+          "hover": [
+            ["color"],
+            ["background"],
+            ["border"],
+            ["boxShadow"],
+            ["opacity"],
+            ["font"],
+            ["borderRadius"]
+          ],
+          "active": [
+            ["color"],
+            ["background"],
+            ["border"],
+            ["boxShadow"],
+            ["opacity"],
+            ["font"],
+            ["borderRadius"]
+          ],
           "clicked": [],
           "disabled": []
         }
       }
     }
   },
+
   "theme": {
     "TagWrap": {
       "name": "标签区域",
@@ -188,9 +243,18 @@
         ["opacity"],
         ["font"],
         ["margin"],
-        ["padding"]
+        ["padding"],
+        ["borderRadius"]
       ],
-      "hover": [["color"], ["background"], ["border"], ["boxShadow"], ["opacity"], ["font"]],
+      "hover": [
+        ["color"],
+        ["background"],
+        ["border"],
+        ["boxShadow"],
+        ["opacity"],
+        ["font"],
+        ["borderRadius"]
+      ],
       "active": [],
       "clicked": [],
       "disabled": []
@@ -208,18 +272,35 @@
         ["opacity"],
         ["font"],
         ["margin"],
-        ["padding"]
+        ["padding"],
+        ["borderRadius"]
       ],
-      "hover": [["color"], ["background"], ["border"], ["boxShadow"], ["opacity"], ["font"]],
-      "active": [["color"], ["background"], ["border"], ["boxShadow"], ["opacity"], ["font"]],
+      "hover": [
+        ["color"],
+        ["background"],
+        ["border"],
+        ["boxShadow"],
+        ["opacity"],
+        ["font"],
+        ["borderRadius"]
+      ],
+      "active": [
+        ["color"],
+        ["background"],
+        ["border"],
+        ["boxShadow"],
+        ["opacity"],
+        ["font"],
+        ["borderRadius"]
+      ],
       "clicked": [],
       "disabled": []
     },
     "CloseButton": {
       "name": "隐藏图标",
       "desc": "隐藏图标的样式配置",
-      "normal": [["font"], ["color"]],
-      "hover": [],
+      "normal": [["font"], ["color"], ["margin"]],
+      "hover": [["font"], ["color"]],
       "active": [],
       "clicked": [],
       "disabled": []
