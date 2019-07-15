@@ -193,11 +193,15 @@
             ["padding"]
           ]
         },
-        "SrcAvatar": {
-          "name": "卡片头像资源",
-          "desc": "配置卡片头像资源",
-          "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"]],
-          "hover": [["width"], ["height"], ["background"]]
+        "CardAvatar": {
+          "theme": {
+            "SrcAvatar": {
+              "name": "卡片头像资源",
+              "desc": "配置卡片头像资源",
+              "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"]],
+              "hover": [["width"], ["height"], ["background"]]
+            }
+          }
         }
       }
     },
@@ -488,11 +492,15 @@
         ["color"]
       ]
     },
-    "SrcAvatar": {
-      "name": "卡片头像资源",
-      "desc": "配置卡片头像资源",
-      "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"]],
-      "hover": [["width"], ["height"], ["background"]]
+    "CardAvatar": {
+      "theme": {
+        "SrcAvatar": {
+          "name": "卡片头像资源",
+          "desc": "配置卡片头像资源",
+          "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"]],
+          "hover": [["width"], ["height"], ["background"]]
+        }
+      }
     },
     "CardImage": {
       "name": "卡片图片",

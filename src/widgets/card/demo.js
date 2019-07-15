@@ -182,12 +182,13 @@ export default () => {
           height: 100,
         },
       },
-    },
-    [Widget.Avatar]: {
-      SrcAvatar: {
-        normal: {
-          width: 60,
-          height: 60,
+
+      CardAvatar: {
+        SrcAvatar: {
+          normal: {
+            width: 80,
+            height: 80,
+          },
         },
       },
     },
@@ -200,12 +201,13 @@ export default () => {
           height: 180,
         },
       },
-    },
-    [Widget.Avatar]: {
-      SrcAvatar: {
-        normal: {
-          width: 60,
-          height: 60,
+
+      CardAvatar: {
+        SrcAvatar: {
+          normal: {
+            width: 80,
+            height: 80,
+          },
         },
       },
     },

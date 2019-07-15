@@ -130,13 +130,11 @@ class BadgeBox extends Component<BadgeProps, BadgeState> {
 
   getNumberTurn(count: ?number) {
     const { overflowCount } = this.props;
-    const numberThemeProps = this.props.getPartOfThemeHocProps(Widget.NumberTurn);
     return (
       <NumberTurn
         count={count}
         overflowCount={overflowCount}
-        theme={numberThemeProps}
-        viewClass={Widget.NumberTurn}
+        {...this.props.getPartOfThemeHocProps('BadgeNumber')}
       />
     );
   }
