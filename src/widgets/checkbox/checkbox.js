@@ -32,13 +32,11 @@ type CheckBoxState = {
 
 const {
   themeColor,
-  borderColor,
-  borderDisableColor,
+
   disableColor,
   disabledColor,
   lightGreyColor,
 } = colorsFunc();
-const defaultColor = '#fff';
 const defaultEdgeCancelProps = {
   themeConfig: {
     normal: {
@@ -151,50 +149,50 @@ export default ThemeProvider(
         config.leave = this.handleMouseLeave;
       }
 
-      const CheckboxWrapProps = getPartOfThemeProps('CheckboxWrap');
-      const CircleEdgeCheckedTheme = getPartOfThemeProps('CheckboxEdgeChecked');
-      const CircleEdgeUnCheckedTheme = getPartOfThemeProps('CheckboxEdgeUnChecked');
-      const CircleEdgeCancelTheme = getPartOfThemeProps('CheckboxEdgeCancel');
-      const CircleEdgeIndeterminateTheme = getPartOfThemeProps('CheckboxEdgeIndeterminate');
+      const checkboxWrapProps = getPartOfThemeProps('CheckboxWrap');
+      const circleEdgeCheckedTheme = getPartOfThemeProps('CheckboxEdgeChecked');
+      const circleEdgeUnCheckedTheme = getPartOfThemeProps('CheckboxEdgeUnChecked');
+      const circleEdgeCancelTheme = getPartOfThemeProps('CheckboxEdgeCancel');
+      const circleEdgeIndeterminateTheme = getPartOfThemeProps('CheckboxEdgeIndeterminate');
       const checkboxTextTheme = getPartOfThemeProps('CheckboxText');
-      const CircleEdgeTheme = cancel
-        ? deepMerge(defaultEdgeCancelProps, CircleEdgeCancelTheme)
+      const circleEdgeTheme = cancel
+        ? deepMerge(defaultEdgeCancelProps, circleEdgeCancelTheme)
         : checked
-        ? deepMerge(defaultEdgeTheme, CircleEdgeCheckedTheme)
+        ? deepMerge(defaultEdgeTheme, circleEdgeCheckedTheme)
         : indeterminate
-        ? deepMerge(defaultEdgeTheme, CircleEdgeIndeterminateTheme)
-        : CircleEdgeUnCheckedTheme;
-      const CircleInnerCheckedTheme = getPartOfThemeConfig('CheckboxInnerChecked');
-      const CircleInnerCancelTheme = getPartOfThemeConfig('CheckboxInnerCancel');
-      const CircleInnerIndeterminateTheme = getPartOfThemeConfig('CheckboxInnerIndeterminate');
-      CircleEdgeTheme.propsConfig.checkboxInnerCheckedTheme = defaultInnerTheme;
+        ? deepMerge(defaultEdgeTheme, circleEdgeIndeterminateTheme)
+        : circleEdgeUnCheckedTheme;
+      const circleInnerCheckedTheme = getPartOfThemeConfig('CheckboxInnerChecked');
+      const circleInnerCancelTheme = getPartOfThemeConfig('CheckboxInnerCancel');
+      const circleInnerIndeterminateTheme = getPartOfThemeConfig('CheckboxInnerIndeterminate');
+      circleEdgeTheme.propsConfig.checkboxInnerCheckedTheme = defaultInnerTheme;
       if (indeterminate) {
-        CircleEdgeTheme.propsConfig.checkboxInnerCheckedTheme = deepMerge(
+        circleEdgeTheme.propsConfig.checkboxInnerCheckedTheme = deepMerge(
           defaultInnerTheme,
-          CircleInnerIndeterminateTheme
+          circleInnerIndeterminateTheme
         );
-        CircleEdgeTheme.propsConfig.isIndeterminate = indeterminate;
+        circleEdgeTheme.propsConfig.isIndeterminate = indeterminate;
       }
       if (checked) {
-        CircleEdgeTheme.propsConfig.checkboxInnerCheckedTheme = deepMerge(
+        circleEdgeTheme.propsConfig.checkboxInnerCheckedTheme = deepMerge(
           defaultInnerTheme,
-          CircleInnerCheckedTheme
+          circleInnerCheckedTheme
         );
-        CircleEdgeTheme.propsConfig.isChecked = checked;
+        circleEdgeTheme.propsConfig.isChecked = checked;
       }
       if (cancel) {
-        CircleEdgeTheme.propsConfig.checkboxInnerCheckedTheme = deepMerge(
+        circleEdgeTheme.propsConfig.checkboxInnerCheckedTheme = deepMerge(
           defaultInnerTheme,
-          CircleInnerCancelTheme
+          circleInnerCancelTheme
         );
-        CircleEdgeTheme.propsConfig.isCancel = cancel;
+        circleEdgeTheme.propsConfig.isCancel = cancel;
       }
-      CircleEdgeTheme.propsConfig.isDisabled = disabled;
-      CircleEdgeTheme.propsConfig.hasChecked = hasChecked;
+      circleEdgeTheme.propsConfig.isDisabled = disabled;
+      circleEdgeTheme.propsConfig.hasChecked = hasChecked;
 
       return (
         <CheckBoxWrap
-          themeProps={CheckboxWrapProps}
+          themeProps={checkboxWrapProps}
           onClick={this.handleClick(value)}
           disabled={disabled}
           cancel={cancel}
@@ -210,7 +208,7 @@ export default ThemeProvider(
               </HoverSpan>
             ) : (
               <CheckBoxInnerSpan
-                themeProps={CircleEdgeTheme}
+                themeProps={circleEdgeTheme}
                 cancel={cancel}
                 disabled={disabled}
                 checked={checked}
