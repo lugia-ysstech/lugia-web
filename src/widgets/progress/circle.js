@@ -50,10 +50,10 @@ export default class extends React.Component<any, any> {
       strokeWidth,
       fill: 'none',
     };
-    const CircleTextTheme = getPartOfThemeProps('ProgressCircleText');
-    const DashboardTextTheme = getPartOfThemeProps('DashboardText');
-    const TextTheme = type === 'circle' ? CircleTextTheme : DashboardTextTheme;
-    TextTheme.propsConfig = { status: getStatus({ status, percent }) };
+    const circleTextTheme = getPartOfThemeProps('ProgressCircleText');
+    const dashboardTextTheme = getPartOfThemeProps('DashboardText');
+    const textTheme = type === 'circle' ? circleTextTheme : dashboardTextTheme;
+    textTheme.propsConfig = { status: getStatus({ status, percent }) };
     return (
       <SvgInner size={size}>
         {type === 'circle' ? (
@@ -75,7 +75,7 @@ export default class extends React.Component<any, any> {
           </svg>
         )}
 
-        <SvgText themeProps={TextTheme} percent={percent} status={status} size={size}>
+        <SvgText themeProps={textTheme} percent={percent} status={status} size={size}>
           {this.getPercentText()}
         </SvgText>
       </SvgInner>
