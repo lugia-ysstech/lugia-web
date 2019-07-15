@@ -136,71 +136,67 @@ const getItemCheckedCSS = (checked: Boolean, checkedCSS: string) => {
   };
 };
 
-export const ItemWrap = ThemeHoc(
-  CSSComponent({
-    tag: 'li',
-    className: 'ItemWrap',
-    normal: {
-      selectNames: [['color'], ['font'], ['fontSize'], ['background'], ['opacity']],
-      defaultTheme: {
-        cursor: 'pointer',
-      },
-      getCSS: (themeMeta, themeProps) => {
-        const { propsConfig } = themeProps.themeConfig;
-        const { checked, checkedCSS, size } = propsConfig;
-        const height = getMenuItemHeight(size);
-        const { color, backgroundColor, fontWeight } = getItemCheckedCSS(checked, checkedCSS);
-        return `
+export const ItemWrap = CSSComponent({
+  tag: 'li',
+  className: 'ItemWrap',
+  normal: {
+    selectNames: [['color'], ['font'], ['fontSize'], ['background'], ['opacity']],
+    defaultTheme: {
+      cursor: 'pointer',
+    },
+    getCSS: (themeMeta, themeProps) => {
+      const { propsConfig } = themeProps;
+      const { checked, checkedCSS, size } = propsConfig;
+      const height = getMenuItemHeight(size);
+      const { color, backgroundColor, fontWeight } = getItemCheckedCSS(checked, checkedCSS);
+      return `
         color: ${color};
         background: ${backgroundColor};
         font-weight: ${fontWeight};
         height: ${px2remcss(height)}
         `;
+    },
+  },
+  hover: {
+    selectNames: [['color'], ['font'], ['fontSize'], ['background'], ['opacity']],
+    defaultTheme: {
+      font: {
+        fontWeight: 900,
+      },
+      background: {
+        color: ItemBackgroundColor,
+      },
+      color: blackColor,
+    },
+  },
+  active: {
+    selectNames: [['color'], ['font'], ['fontSize'], ['background'], ['opacity']],
+    getCSS: (themeMeta, themeProps) => {},
+  },
+  disabled: {
+    selectNames: [['color'], ['font'], ['background'], ['opacity']],
+    defaultTheme: {
+      cursor: 'not-allowed',
+      color: lightGreyColor,
+      font: {
+        fontWeight: 500,
       },
     },
-    hover: {
-      selectNames: [['color'], ['font'], ['fontSize'], ['background'], ['opacity']],
-      defaultTheme: {
-        font: {
-          fontWeight: 900,
-        },
-        background: {
-          color: ItemBackgroundColor,
-        },
-        color: blackColor,
-      },
-    },
-    active: {
-      selectNames: [['color'], ['font'], ['fontSize'], ['background'], ['opacity']],
-      getCSS: (themeMeta, themeProps) => {},
-    },
-    disabled: {
-      selectNames: [['color'], ['font'], ['background'], ['opacity']],
-      defaultTheme: {
-        cursor: 'not-allowed',
-        color: lightGreyColor,
-        font: {
-          fontWeight: 500,
-        },
-      },
-      getCSS: (themeMeta, themeProps) => {},
-    },
-    css: css`
-      box-sizing: border-box;
-      position: relative;
-      display: block;
-      font-weight: 100;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      transition: all 0.3s ease;
-      font-size: ${px2remcss(12)};
-    `,
-  }),
-
-  'ItemWrap',
-  { hover: true, active: true }
-);
+    getCSS: (themeMeta, themeProps) => {},
+  },
+  css: css`
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    font-weight: 100;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: all 0.3s ease;
+    font-size: ${px2remcss(12)};
+  `,
+  option: { hover: true, active: true },
+});
 
 export const DividerWrap = CSSComponent({
   tag: 'div',

@@ -98,13 +98,8 @@ class MenuItem extends React.Component<MenuItemProps> {
       getPartOfThemeHocProps,
       getPartOfThemeProps,
     } = this.props;
-    let theme;
-    if (checked) {
-      theme = getPartOfThemeHocProps('SelectedItem');
-    } else {
-      theme = getPartOfThemeHocProps('Item');
-    }
-    const { viewClass, theme: itemTheme } = theme;
+
+    // const { viewClass, theme: itemTheme } = theme;
     let title = '';
     React.Children.forEach(children, (item: Object) => {
       if (ObjectUtils.isString(item)) {
@@ -112,12 +107,25 @@ class MenuItem extends React.Component<MenuItemProps> {
       }
     });
     const isCheckbox = checkedCSS === 'checkbox';
-    this.mergeTheme(itemTheme, viewClass, {
-      size,
-      checkedCSS,
-      checked,
-    });
 
+    let themeProps;
+    if (checked) {
+      themeProps = getPartOfThemeProps('SelectedItem', {
+        props: {
+          size,
+          checkedCSS,
+          checked,
+        },
+      });
+    } else {
+      themeProps = getPartOfThemeProps('Item', {
+        props: {
+          size,
+          checkedCSS,
+          checked,
+        },
+      });
+    }
     const ItemThemeProps = getPartOfThemeProps('Item');
     const DividerThemeProps = getPartOfThemeProps('Divider');
 
@@ -127,8 +135,7 @@ class MenuItem extends React.Component<MenuItemProps> {
         onMouseEnter={onMouseEnter}
         title={title}
         disabled={disabled}
-        viewClass={viewClass}
-        theme={itemTheme}
+        themeProps={themeProps}
       >
         {divided && !isFirst ? (
           <DividerWrap themeProps={DividerThemeProps}>
