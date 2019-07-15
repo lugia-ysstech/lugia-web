@@ -71,7 +71,7 @@
   "category": ["数据录入"],
   "theme": {
     "Switch_SwitchOpen": {
-      "name": "开关组件打开的样式",
+      "name": "组件打开",
       "desc": "开关组件打开的样式配置",
       "normal": [
         ["width"],
@@ -89,7 +89,7 @@
       "disabled": [["background"], ["border"]]
     },
     "Switch_SwitchClosed": {
-      "name": "开关组件打开的样式",
+      "name": "组件关闭",
       "desc": "开关组件打开的样式配置",
       "normal": [
         ["width"],
@@ -107,6 +107,8 @@
       "disabled": [["background"], ["border"]]
     },
     "SwitchButton": {
+      "name": "按钮",
+      "desc": "按钮的样式配置",
       "normal": [
         ["width"],
         ["height"],
@@ -128,6 +130,8 @@
       "disabled": [["background"], ["border"], ["width"], ["height"], ["borderRadius"]]
     },
     "SwitchContainer": {
+      "name": "开关整体",
+      "desc": "开关整体的样式配置",
       "normal": [
         ["width"],
         ["height"],

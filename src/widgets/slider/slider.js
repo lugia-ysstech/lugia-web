@@ -469,10 +469,9 @@ class Slider extends Component<TypeProps, TypeState> {
           const { fontSize = fontSizeNormal, margin = marginNormal } = style;
           newFontSize = fontSize > 0 && fontSize < 12 ? 12 : fontSize;
           iconDistancen = parseInt(fontSize) + parseInt(margin) + halfBthSize;
-          //  levelPaddings[index] = iconDistancen;
           iconSize[index] = fontSize;
         }
-        const sliderIcons = index === 0 ? 'IconsFirst' : 'IconsLast';
+        const sliderIcons = 'Icons';
 
         const { viewClass, theme } = this.props.getPartOfThemeHocProps(sliderIcons);
         const themeProps = this.props.getPartOfThemeProps(sliderIcons);

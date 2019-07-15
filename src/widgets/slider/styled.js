@@ -38,7 +38,7 @@ type CssTypeProps = {
 const transitionTime = '0.1';
 export const SliderBigBox = CSSComponent({
   tag: 'div',
-  className: 'SliderBigBox',
+  className: 'SliderContainer',
   normal: {
     selectNames: [
       ['border'],
@@ -76,6 +76,7 @@ export const SliderBigBox = CSSComponent({
 });
 export const SliderBox = CSSComponent({
   tag: 'div',
+  className: 'Div',
   normal: {
     selectNames: [],
   },
@@ -247,7 +248,7 @@ export const Tips = CSSComponent({
 });
 export const Tipinner = CSSComponent({
   tag: 'span',
-  className: 'SliderTips',
+  className: 'SliderTipsInner',
   normal: {
     selectNames: [
       ['width'],
@@ -339,29 +340,9 @@ export const Tipinner = CSSComponent({
     }
   `,
 });
-export const Tiparrow = CSSComponent({
-  tag: 'span',
-  className: 'SliderTips',
-  normal: {
-    selectNames: [['background'], ['borderRadius'], ['border']],
-  },
-  hover: {
-    selectNames: [],
-  },
-  active: {
-    selectNames: [],
-  },
-  disabled: {
-    selectNames: [['background'], ['borderRadius'], ['border']],
-  },
-  css: css`
-    display: inline-block;
-    vertical-align: top;
-  `,
-});
 export const Dot = CSSComponent({
   tag: 'span',
-  className: 'Dot',
+  className: 'SliderMarks',
   normal: {
     selectNames: [['color'], ['font']],
     getCSS(themeMate, { propsConfig }) {
@@ -413,17 +394,18 @@ export const Dot = CSSComponent({
 });
 export const Icons = CSSComponent({
   tag: 'span',
+  className: 'Icons',
   normal: {
-    className: [],
+    selectNames: [],
   },
   hover: {
-    className: [],
+    selectNames: [],
   },
   active: {
-    className: [],
+    selectNames: [],
   },
   disabled: {
-    className: [],
+    selectNames: [],
   },
   css: css`
     position: absolute;
