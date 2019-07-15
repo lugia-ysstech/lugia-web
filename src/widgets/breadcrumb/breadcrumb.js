@@ -28,6 +28,8 @@ export type BreadcrumbProps = {
   renderItem?: RenderFunc,
   lastSeparator: string | React.Element<any>,
   themeProps: Object,
+  getPartOfThemeProps: Function,
+  getPartOfThemeConfig: Function,
   children: React.ChildrenArray<React.Element<any>>,
 };
 
@@ -41,7 +43,7 @@ function defaultRenderItem(
   breadCrumbItemConfig: breadCrumbItemConfig,
   separator: string | React.Element<any>,
   lastSeparator: string | React.Element<any>,
-  config: Object
+  itemTheme: Object
 ): Object {
   return breadCrumbItemConfig.map(item => {
     const { href, title, isLast } = item;
@@ -51,7 +53,7 @@ function defaultRenderItem(
         separator={isLast ? lastSeparator : separator}
         href={href}
         isLastItem={isLast}
-        {...config}
+        theme={itemTheme}
       >
         {title}
       </BreadcrumbItem>
@@ -104,15 +106,12 @@ export default class Breadcrumb extends React.Component<BreadcrumbProps, any> {
     return result;
   }
 
-  getChildrenThemeProps = () => {
-    const { getPartOfThemeProps, getPartOfThemeHocProps } = this.props;
-    const textThemeHoc = getPartOfThemeHocProps('Text');
-    const separatorThemeProps = getPartOfThemeProps('Separator');
-
-    return {
-      textThemeHoc,
-      separatorThemeProps,
+  getItemTheme = () => {
+    const { getPartOfThemeConfig } = this.props;
+    const config = {
+      BreadcrumbItem: getPartOfThemeConfig('BreadcrumbItem'),
     };
+    return config;
   };
 
   render() {
@@ -127,21 +126,20 @@ export default class Breadcrumb extends React.Component<BreadcrumbProps, any> {
       getPartOfThemeProps,
     } = this.props;
 
-    const { textThemeHoc, separatorThemeProps } = this.getChildrenThemeProps();
     const wrapThemeProps = getPartOfThemeProps('BreadcrumbWrap');
-    const config = { textThemeHoc, separatorThemeProps, wrapThemeProps };
+    const itemTheme = this.getItemTheme();
     if (!routes && !children) {
       crumbs = [
-        <BreadcrumbItem {...config} separator={separator}>
+        <BreadcrumbItem theme={itemTheme} separator={separator}>
           首页
         </BreadcrumbItem>,
-        <BreadcrumbItem {...config} separator={separator}>
+        <BreadcrumbItem theme={itemTheme} separator={separator}>
           一级面包屑
         </BreadcrumbItem>,
-        <BreadcrumbItem {...config} separator={separator}>
+        <BreadcrumbItem theme={itemTheme} separator={separator}>
           二级面包屑
         </BreadcrumbItem>,
-        <BreadcrumbItem {...config} separator={''} isLastItem>
+        <BreadcrumbItem theme={itemTheme} separator={''} isLastItem>
           三级面包屑
         </BreadcrumbItem>,
       ];
@@ -151,7 +149,7 @@ export default class Breadcrumb extends React.Component<BreadcrumbProps, any> {
       const breadCrumbItemConfig = this.getBreadCrumbItemConfig(routes, params);
       return (
         <BreadcrumbContainer themeProps={wrapThemeProps}>
-          {renderItem(breadCrumbItemConfig, separator, lastSeparator, config)}
+          {renderItem(breadCrumbItemConfig, separator, lastSeparator, itemTheme)}
         </BreadcrumbContainer>
       );
     }
@@ -171,8 +169,7 @@ export default class Breadcrumb extends React.Component<BreadcrumbProps, any> {
           isLastItem: isLast,
           href,
           key: index,
-          textThemeHoc,
-          separatorThemeProps,
+          theme: itemTheme,
         });
       });
     } else {
@@ -181,8 +178,7 @@ export default class Breadcrumb extends React.Component<BreadcrumbProps, any> {
           separator: lastSeparator,
           isLastItem: true,
           key: 'one',
-          textThemeHoc,
-          separatorThemeProps,
+          theme: itemTheme,
         }));
     }
     return <BreadcrumbContainer themeProps={wrapThemeProps}>{crumbs}</BreadcrumbContainer>;
