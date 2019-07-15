@@ -142,16 +142,16 @@ export default ThemeProvider(
       } = this.props;
       const { visible, height, animateStart } = this.state;
       const hasDect = this.isInProps('description');
-      const AlertWrapTheme = getPartOfThemeProps('AlertWrap');
-      const AlertMessageTheme = getPartOfThemeProps('AlertMessage');
-      const AlertDescriptionTheme = getPartOfThemeProps('AlertDescription');
-      const AlertIconTheme = getPartOfThemeProps('AlertIcon');
-      AlertIconTheme.propsConfig = { hasDect, type };
+      const alertWrapTheme = getPartOfThemeProps('AlertWrap');
+      const alertMessageTheme = getPartOfThemeProps('AlertMessage');
+      const alertDescriptionTheme = getPartOfThemeProps('AlertDescription');
+      const alertIconTheme = getPartOfThemeProps('AlertIcon');
+      alertIconTheme.propsConfig = { hasDect, type };
       const defaultAlertTheme = this.getDefaultTheme(type);
-      AlertWrapTheme.themeConfig = deepMerge(defaultAlertTheme, AlertWrapTheme.themeConfig);
-      AlertWrapTheme.propsConfig.hasDect = hasDect;
-      AlertWrapTheme.propsConfig.showIcon = showIcon;
-      AlertMessageTheme.propsConfig.hasDect = hasDect;
+      alertWrapTheme.themeConfig = deepMerge(defaultAlertTheme, alertWrapTheme.themeConfig);
+      alertWrapTheme.propsConfig.hasDect = hasDect;
+      alertWrapTheme.propsConfig.showIcon = showIcon;
+      alertMessageTheme.propsConfig.hasDect = hasDect;
 
       return visible ? (
         <Alert
@@ -162,15 +162,15 @@ export default ThemeProvider(
           animateStart={animateStart}
           height={height}
           hasDect={hasDect}
-          themeProps={AlertWrapTheme}
+          themeProps={alertWrapTheme}
         >
           {showIcon ? (
             <Icon iconClass={icon || AlertIcons[type]} {...this.getAlertIconTheme()} singleTheme />
           ) : null}
-          <Message hasDect={hasDect} showIcon={showIcon} themeProps={AlertMessageTheme}>
+          <Message hasDect={hasDect} showIcon={showIcon} themeProps={alertMessageTheme}>
             {message}
           </Message>
-          <Description showIcon={showIcon} themeProps={AlertDescriptionTheme}>
+          <Description showIcon={showIcon} themeProps={alertDescriptionTheme}>
             {description}
           </Description>
           {closable && this.getCloseText()}
