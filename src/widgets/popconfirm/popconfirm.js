@@ -206,7 +206,7 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
 
   getIcon(icon: React.Node): React.Node {
     return ObjectUtils.isString(icon) ? (
-      <Icon {...this.props.getPartOfThemeHocProps('PopconfirmIcon')} iconClass={icon} />
+      <Icon {...this.props.getPartOfThemeHocProps('PopconfirmIcon')} iconClass={icon} singleTheme />
     ) : (
       icon
     );

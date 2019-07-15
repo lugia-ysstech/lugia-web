@@ -12,6 +12,7 @@ import SearchIcon from '../icon/SearchIcon';
 import PullIcon from '../icon/PullIcon';
 import styled from 'styled-components';
 import { fixControlledValue } from '../utils';
+import Theme from '../theme';
 
 export class LimitInput extends React.Component<any, any> {
   constructor(props: any) {
@@ -138,7 +139,6 @@ const InputDemo = () => {
           height: 40,
           margin: { top: 20 },
         },
-
         disabled: { background: { color: 'gray' } },
       },
       InputSuffix: { normal: { color: 'red', fontSize: 12 } },
@@ -155,16 +155,18 @@ const InputDemo = () => {
   };
   return (
     <div>
-      <Wrapper>
-        <p>字体色值</p>
-        <Input value="色值:#333333" theme={register} />
-        <p>default input</p>
-        <Input placeholder={'请填写内容'} theme={register} />
-        <p>autoFocus</p>
-        <Input placeholder={'请填写内容'} autoFoucs />
-        <p>禁用状态 </p>
-        <Input theme={register} size={'default'} disabled={true} />
-      </Wrapper>
+      <Theme config={register}>
+        <Wrapper>
+          <p>字体色值</p>
+          <Input value="色值:#333333" />
+          <p>default input</p>
+          <Input placeholder={'请填写内容'} />
+          <p>autoFocus</p>
+          <Input placeholder={'请填写内容'} autoFoucs />
+          <p>禁用状态 </p>
+          <Input theme={register} size={'default'} disabled={true} />
+        </Wrapper>
+      </Theme>
       <Wrapper>
         <p>small size</p>
         <Input size={'small'} placeholder={'small Input'} />

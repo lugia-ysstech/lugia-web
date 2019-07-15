@@ -117,6 +117,7 @@ export default ThemeProvider(
 
             return [
               <Icon
+                singleTheme
                 size={size}
                 iconClass={iconType}
                 viewClass={viewClass}
@@ -147,6 +148,7 @@ export default ThemeProvider(
             );
             return [
               <Icon
+                singleTheme
                 loading
                 iconClass="lugia-icon-financial_loading_o"
                 viewClass={viewClass}
@@ -158,6 +160,7 @@ export default ThemeProvider(
           if (icon) {
             return [
               <Icon
+                singleTheme
                 iconClass={icon}
                 hasChildren={hasChildren}
                 disabled={disabled}
