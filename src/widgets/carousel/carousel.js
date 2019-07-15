@@ -147,11 +147,9 @@ export default class Carousel extends React.Component<any, CarouselProps> {
     };
   };
 
-  addPropsConfig(themeProps: Object, propsConfig: Object) {
-    const newThemeProps = { ...themeProps };
-
-    newThemeProps.propsConfig = propsConfig;
-    return newThemeProps;
+  addPropsConfig(name: string, params: Object) {
+    const { getPartOfThemeProps } = this.props;
+    return getPartOfThemeProps(name, { props: params });
   }
 
   render() {
@@ -252,7 +250,7 @@ export default class Carousel extends React.Component<any, CarouselProps> {
       items = children.map((item, index) => {
         const checked = start === index || (index === 0 && start === length);
 
-        const IndicatorThemeProps = this.addPropsConfig(getPartOfThemeProps('Indicator'), {
+        const IndicatorThemeProps = this.addPropsConfig('Indicator', {
           indicatorType,
           checked,
           animationTime: this.animationTime,
@@ -269,7 +267,7 @@ export default class Carousel extends React.Component<any, CarouselProps> {
         );
       });
     }
-    const IndicatorContainerThemeProps = this.addPropsConfig(getPartOfThemeProps('Indicator'), {
+    const IndicatorContainerThemeProps = this.addPropsConfig('Indicator', {
       indicatorType,
       width: this.width,
       height: this.height,
@@ -368,7 +366,7 @@ export default class Carousel extends React.Component<any, CarouselProps> {
     const { start: nextStart } = this.state;
     const { start: initStart, switchType } = this.props;
     const len = children.length;
-    const WrapThemeProps = this.addPropsConfig(EmptyThemeProps, {
+    const WrapThemeProps = this.addPropsConfig('CarouselWrap', {
       len,
       switchType,
       initStart,
@@ -416,7 +414,7 @@ export default class Carousel extends React.Component<any, CarouselProps> {
   getItemWrap(param: { switchType: SwitchType, start: number, index: number, item: any }) {
     const { switchType, start, index, item } = param;
     const checked = start === index;
-    const ItemWrapThemeProps = this.addPropsConfig(this.props.getPartOfThemeProps('CarouselWrap'), {
+    const ItemWrapThemeProps = this.addPropsConfig('CarouselWrap', {
       checked,
       switchType,
       width: this.width,

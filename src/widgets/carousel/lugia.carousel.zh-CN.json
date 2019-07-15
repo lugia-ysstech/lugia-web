@@ -102,8 +102,16 @@
     "Indicator": {
       "name": "轮播指示器",
       "desc": "显示当前轮播所在位置",
-      "normal": [["width"], ["height"], ["border"], ["boxShadow"], ["margin"], ["opacity"]],
-      "hover": [["background"]],
+      "normal": [
+        ["background"],
+        ["width"],
+        ["height"],
+        ["border"],
+        ["boxShadow"],
+        ["margin"],
+        ["opacity"]
+      ],
+      "hover": [["background"], ["opacity"], ["border"], ["boxShadow"], ["borderRadius"]],
       "clicked": [],
       "disabled": []
     }

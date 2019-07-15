@@ -111,9 +111,6 @@ export const CarouselContainer = CSSComponent({
   className: 'carouselContainer',
   normal: {
     selectNames: [['width'], ['height']],
-    getCSS: themeMeta => {
-      console.log('propsConfig', themeMeta);
-    },
   },
   hover: {
     selectNames: [],
@@ -286,11 +283,12 @@ export const Indicator = CSSComponent({
     },
   },
   hover: {
-    selectNames: [['opacity']],
+    selectNames: [['opacity'], ['border'], ['borderRadius'], ['boxShadow']],
   },
   css: `
     border-radius: ${px2remcss(2)};
   `,
+  option: { hover: true },
 });
 
 Indicator.displayName = 'indicator';
