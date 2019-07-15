@@ -22,6 +22,8 @@
   "category": ["反馈"],
   "theme": {
     "MessageWrap": {
+      "name": "Message整体样式配置",
+      "desc": "为Message整体配置样式",
       "normal": [
         ["width"],
         ["height"],
@@ -34,9 +36,13 @@
       ]
     },
     "MessageText": {
+      "name": "Message文字样式配置",
+      "desc": "为Message文字配置样式",
       "normal": [["color"], ["font"]]
     },
     "MessageIcon": {
+      "name": "Message图标样式配置",
+      "desc": "为Message图标配置样式",
       "normal": [["color"], ["font"]]
     }
   }
