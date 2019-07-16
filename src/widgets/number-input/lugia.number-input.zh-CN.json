@@ -186,8 +186,8 @@
     "ValidateStatus": ["success", "error"],
     "InputValidateType": ["top", "bottom", "inner", "default"],
     "ChangeType": {
-      "newValue": "string",
-      "oldValue": "string",
+      "newValue": "number",
+      "oldValue": "number",
       "event": "SyntheticEvent"
     }
   },

@@ -53,9 +53,9 @@ describe('NumberInput', () => {
     onChange = mockFunc.getFunction();
   });
 
-  const defaultValue = '10';
-  const firstValue = '20';
-  const changeValue = '30';
+  const defaultValue = 10;
+  const firstValue = 20;
+  const changeValue = 30;
 
   it('props: null', () => {
     expect(renderer.create(<NumberInput />).toJSON()).toMatchSnapshot();
@@ -163,9 +163,9 @@ describe('NumberInput', () => {
 
   it('props: value changed Limited NumberInput no changed', () => {
     const component = mount(<LimitNumberInputBox value={firstValue} />);
-    assertInputValue(component, firstValue);
+    assertInputValue(component, firstValue + '');
     component.setProps({ value: changeValue });
-    assertInputValue(component, firstValue);
+    assertInputValue(component, firstValue + '');
   });
   it('props: defaultValue', () => {
     class LimitNumberInput extends React.Component<any, any> {
@@ -175,13 +175,13 @@ describe('NumberInput', () => {
     }
 
     const component = mount(<LimitNumberInput defaultValue={defaultValue} />);
-    assertInputValue(component, defaultValue);
+    assertInputValue(component, defaultValue + '');
     component.find('input').simulate('change', { target: { value: changeValue } });
-    assertInputValue(component, changeValue);
+    assertInputValue(component, changeValue + '');
   });
   it('props: defaultValue & value', () => {
     const component = mount(<NumberInput defaultValue={defaultValue} value={firstValue} />);
-    assertInputValue(component, firstValue);
+    assertInputValue(component, firstValue + '');
   });
 
   function getInputComponent(target) {
@@ -200,9 +200,9 @@ describe('NumberInput', () => {
     title: string,
     clickPlusCount: number,
     clickMinusCount: number,
-    defaultValue: string,
+    defaultValue: number,
     step: number,
-    expectValue: string,
+    expectValue: number,
   }) {
     it(`${config.title}`, () => {
       const component = mount(
@@ -218,58 +218,58 @@ describe('NumberInput', () => {
     title: 'clickPlusCount 1 clickMinusCount 0',
     clickPlusCount: 1,
     clickMinusCount: 0,
-    defaultValue: '10',
+    defaultValue: 10,
     step: 5,
-    expectValue: '15',
+    expectValue: 15,
   });
 
   testClickButton({
     title: 'clickPlusCount 0 clickMinusCount 1',
     clickPlusCount: 0,
     clickMinusCount: 1,
-    defaultValue: '10',
+    defaultValue: 10,
     step: 5,
-    expectValue: '5',
+    expectValue: 5,
   });
   testClickButton({
     title: 'clickPlusCount 1 clickMinusCount 1',
     clickPlusCount: 1,
     clickMinusCount: 1,
-    defaultValue: '10',
+    defaultValue: 10,
     step: 5,
-    expectValue: '10',
+    expectValue: 10,
   });
   testClickButton({
     title: 'clickPlusCount 3 clickMinusCount 2',
     clickPlusCount: 3,
     clickMinusCount: 2,
-    defaultValue: '10',
+    defaultValue: 10,
     step: 5,
-    expectValue: '15',
+    expectValue: 15,
   });
   testClickButton({
     title: 'clickPlusCount 10 clickMinusCount 0',
     clickPlusCount: 10,
     clickMinusCount: 0,
-    defaultValue: '10',
+    defaultValue: 10,
     step: 5,
-    expectValue: '60',
+    expectValue: 60,
   });
   testClickButton({
     title: 'clickPlusCount 0 clickMinusCount 10',
     clickPlusCount: 0,
     clickMinusCount: 10,
-    defaultValue: '10',
+    defaultValue: 10,
     step: 5,
-    expectValue: '-40',
+    expectValue: -40,
   });
   testClickButton({
     title: 'clickPlusCount 5 clickMinusCount 5',
     clickPlusCount: 5,
     clickMinusCount: 5,
-    defaultValue: '10',
+    defaultValue: 10,
     step: 5,
-    expectValue: '10',
+    expectValue: 10,
   });
 
   function mutipleClickButton(component, button: string, count: number) {
@@ -282,13 +282,13 @@ describe('NumberInput', () => {
     props: {
       max: number,
       min: number,
-      defaultValue: string,
+      defaultValue: number,
       step: number,
     },
     title: string,
     clickPlusCount: number,
     clickMinusCount: number,
-    expectValue: string,
+    expectValue: number,
   }) {
     it(` ${config.title} max ${config.props.max}, min ${config.props.min}, defaultValue ${
       config.props.defaultValue
@@ -302,7 +302,7 @@ describe('NumberInput', () => {
 
   testMaxAndMin({
     props: {
-      defaultValue: '1',
+      defaultValue: 1,
       step: 5,
       max: 10,
       min: 0,
@@ -310,11 +310,11 @@ describe('NumberInput', () => {
     title: 'test max only click plus',
     clickPlusCount: 2,
     clickMinusCount: 0,
-    expectValue: '10',
+    expectValue: 10,
   });
   testMaxAndMin({
     props: {
-      defaultValue: '10',
+      defaultValue: 10,
       step: 1,
       max: 10,
       min: 0,
@@ -322,11 +322,11 @@ describe('NumberInput', () => {
     title: 'test max click  plus>minus',
     clickPlusCount: 2,
     clickMinusCount: 1,
-    expectValue: '9',
+    expectValue: 9,
   });
   testMaxAndMin({
     props: {
-      defaultValue: '10',
+      defaultValue: 10,
       step: 5,
       max: 10,
       min: 0,
@@ -334,11 +334,11 @@ describe('NumberInput', () => {
     title: 'test max click click plus>minus',
     clickPlusCount: 5,
     clickMinusCount: 1,
-    expectValue: '5',
+    expectValue: 5,
   });
   testMaxAndMin({
     props: {
-      defaultValue: '10',
+      defaultValue: 10,
       step: 2,
       min: 1,
       max: 100,
@@ -346,11 +346,11 @@ describe('NumberInput', () => {
     title: 'test min only click plus',
     clickPlusCount: 0,
     clickMinusCount: 5,
-    expectValue: '1',
+    expectValue: 1,
   });
   testMaxAndMin({
     props: {
-      defaultValue: '10',
+      defaultValue: 10,
       step: 5,
       min: 1,
       max: 100,
@@ -358,11 +358,11 @@ describe('NumberInput', () => {
     title: 'test min  click minus>plus',
     clickPlusCount: 2,
     clickMinusCount: 5,
-    expectValue: '1',
+    expectValue: 1,
   });
   testMaxAndMin({
     props: {
-      defaultValue: '10',
+      defaultValue: 10,
       step: 5,
       min: 0,
       max: 100,
@@ -370,7 +370,7 @@ describe('NumberInput', () => {
     title: 'test min  click plus<minus',
     clickPlusCount: 2,
     clickMinusCount: 6,
-    expectValue: '0',
+    expectValue: 0,
   });
 
   function testDisabled(
@@ -378,7 +378,7 @@ describe('NumberInput', () => {
     disabled: boolean,
     clickPlusCount: number,
     clickMinusCount: number,
-    expectValue: string | number
+    expectValue: number
   ) {
     it(`props :disabled  click ${click}`, () => {
       const component = mount(<NumberInput disabled={disabled} defaultValue="10" step={5} />);
@@ -390,40 +390,40 @@ describe('NumberInput', () => {
   //disabled 直接抛出onchange.newValue
   testDisabled('plus', true, 10, 0, 10);
   testDisabled('minus', true, 0, 10, 10);
-  testDisabled('plus', false, 10, 0, '60');
-  testDisabled('minus', false, 0, 10, '-40');
+  testDisabled('plus', false, 10, 0, 60);
+  testDisabled('minus', false, 0, 10, -40);
 
   function testStep(
     step: number,
     clickPlusCount: number,
     clickMinusCount: number,
-    expectValue: string
+    expectValue: number
   ) {
     it(` prop :step ${step}  `, () => {
-      const component = mount(<NumberInput step={step} defaultValue="10" />);
+      const component = mount(<NumberInput step={step} defaultValue={10} />);
       mutipleClickButton(component, 'Plus', clickPlusCount);
       mutipleClickButton(component, 'Minus', clickMinusCount);
       expect(getInputComponent(component).state.value).toBe(expectValue);
     });
   }
 
-  testStep(3, 10, 0, '40');
-  testStep(5, 10, 5, '35');
-  testStep(0, 10, 20, '10');
-  testStep(-1, 10, 20, '20');
+  testStep(3, 10, 0, 40);
+  testStep(5, 10, 5, 35);
+  testStep(0, 10, 20, 10);
+  testStep(-1, 10, 20, 20);
 
   function testFormatterAndParser(
     props: {
       formatter: Function,
       parser: Function,
-      defaultValue: string,
+      defaultValue: number,
       step: number,
       max: number,
       min: number,
     },
     clickPlusCount: number,
     clickMinusCount: number,
-    expectValue: string,
+    expectValue: number,
     expectFormatterValue: string
   ) {
     it('props :formatter&&parser', () => {
@@ -445,42 +445,42 @@ describe('NumberInput', () => {
     {
       formatter,
       parser,
-      defaultValue: '10000',
+      defaultValue: 10000,
       step: 50000,
       max: 1000000,
       min: 10000,
     },
     5,
     2,
-    '160000',
+    160000,
     '$160,000'
   );
   testFormatterAndParser(
     {
       formatter: value => `${value}%`,
       parser: value => value.replace('%', ''),
-      defaultValue: '10',
+      defaultValue: 10,
       step: 5,
       max: 100,
       min: 10,
     },
     5,
     2,
-    '25',
+    25,
     '25%'
   );
 
   function testPrecision(
     props: {
       precision: number,
-      defaultValue: string,
+      defaultValue: number,
       step: number,
       max: number,
       min: number,
     },
     clickPlusCount: number,
     clickMinusCount: number,
-    expectValue: string
+    expectValue: number
   ) {
     it(`props :precision ${props.precision}`, () => {
       const component = mount(<NumberInput {...props} />);
@@ -493,58 +493,58 @@ describe('NumberInput', () => {
   testPrecision(
     {
       precision: 0,
-      defaultValue: '10',
+      defaultValue: 10,
       step: 5,
       max: 100,
       min: 10,
     },
     5,
     2,
-    '25'
+    25
   );
   testPrecision(
     {
       precision: 2,
-      defaultValue: '1.5',
+      defaultValue: 1.5,
       step: 0.5,
       max: 10,
       min: 1,
     },
     4,
     2,
-    '2.5'
+    2.5
   );
   testPrecision(
     {
       precision: 3,
-      defaultValue: '1.05',
+      defaultValue: 1.05,
       step: 0.05,
       max: 10,
       min: 1,
     },
     4,
     2,
-    '1.15'
+    1.15
   );
   testPrecision(
     {
       precision: 4,
-      defaultValue: '1.05',
+      defaultValue: 1.05,
       step: 0.005,
       max: 10,
       min: 1,
     },
     5,
     2,
-    '1.065'
+    1.065
   );
 
   function testOnChange(
     config: {
       title: string,
-      keyPressValue: string,
-      stateValue: string | number,
-      changeEventValue: string,
+      keyPressValue: number,
+      stateValue: number,
+      changeEventValue: number,
     },
     props: Object
   ) {
@@ -571,28 +571,28 @@ describe('NumberInput', () => {
   testOnChange(
     {
       title: 'props: onchange change value  ',
-      keyPressValue: '20',
-      stateValue: '20',
-      changeEventValue: '20',
+      keyPressValue: 20,
+      stateValue: 20,
+      changeEventValue: 20,
     },
-    { step: 5, max: 100, defaultValue: '10', min: 10 }
+    { step: 5, max: 100, defaultValue: 10, min: 10 }
   );
   testOnChange(
     {
       title: 'props: onchange change value 30  ',
-      keyPressValue: '30',
-      stateValue: '30',
-      changeEventValue: '30',
+      keyPressValue: 30,
+      stateValue: 30,
+      changeEventValue: 30,
     },
-    { step: 5, max: 100, defaultValue: '10', min: 10 }
+    { step: 5, max: 100, defaultValue: 10, min: 10 }
   );
   testOnChange(
     {
       title: 'props: onchange change value 50  ',
-      keyPressValue: '50',
-      stateValue: '50',
-      changeEventValue: '50',
+      keyPressValue: 50,
+      stateValue: 50,
+      changeEventValue: 50,
     },
-    { step: 5, max: 100, defaultValue: '10', min: 10 }
+    { step: 5, max: 100, defaultValue: 10, min: 10 }
   );
 });
