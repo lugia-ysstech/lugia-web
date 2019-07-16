@@ -157,7 +157,7 @@ const InputContainer = StaticComponent({
   `,
 });
 type NumberInputState = {|
-  value: string,
+  value: number,
   buttonShow: boolean,
   disabled: boolean,
   stepHover: ClickType,
@@ -174,15 +174,15 @@ export type NumberInputProps = {
   help: string,
   placeholder?: string,
   getTheme: Function,
-  onChange?: ({ newValue: string | number, oldValue: string | number, event: Event }) => void,
+  onChange?: ({ newValue: number, oldValue: number, event: Event }) => void,
   onKeyUp?: (event: KeyboardEvent) => void,
   onKeyDown?: (event: KeyboardEvent) => void,
   onKeyPress?: (event: KeyboardEvent) => void,
   onFocus?: (event: UIEvent) => void,
   onBlur?: (event: UIEvent) => void,
   onEnter?: (event: UIEvent) => void,
-  defaultValue?: string,
-  value?: string,
+  defaultValue?: number,
+  value?: number,
   step: number,
   onMouseEnter?: Function,
   onMouseLeave?: Function,
@@ -212,7 +212,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     validateType: 'default',
     size: 'default',
     precision: 0,
-    defaultValue: '10',
+    defaultValue: 10,
     step: 1,
 
     formatter: (value: string) => {
@@ -241,7 +241,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
       const theValue = hasValueInprops
         ? value
         : defaultValue
-        ? limit(Number(defaultValue), [min, max])
+        ? limit(defaultValue, [min, max])
         : '';
       const theDisabled = hasDisabledInprops ? disabled : false;
       return {
@@ -412,8 +412,8 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
   onBlur = (event: UIEvent) => {
     const { onBlur, min, max } = this.props;
     const { value } = this.state;
-    const finalValue = limit(Number(value), [min, max]);
-    this.setValue(finalValue + '', event);
+    const finalValue = limit(value, [min, max]);
+    this.setValue(finalValue, event);
     onBlur && onBlur(event);
   };
 
@@ -429,11 +429,11 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
   };
 
   handleChange = (event: Object) => {
-    const value = event.newValue === '' ? '' : event.newValue;
-    this.setValue(checkNumber(value), event);
+    const value = event.newValue;
+    this.setValue(Number(checkNumber(value + '')), event);
   };
 
-  setValue(value: string, event: any): void {
+  setValue(value: number, event: any): void {
     const oldValue = this.state.value;
     const { disabled, onChange } = this.props;
 
@@ -457,7 +457,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     value = Number(value);
     step = click === 'plus' ? Number(step) : step * -1;
     const finalValue = accAdd(value, step, precision);
-    this.setValue(limit(finalValue, [min, max]) + '', event);
+    this.setValue(limit(finalValue, [min, max]), event);
   }
 }
 
