@@ -59,6 +59,7 @@
     "create-info": "lugia-create-info"
   },
   "devDependencies": {
+    "styled-components": "4.2.0",
     "@lugia/jverify": "1.0.6",
     "@lugia/lugiax-router": "^1.0.10",
     "@lugia/mega-scripts": "^1.3.35",
