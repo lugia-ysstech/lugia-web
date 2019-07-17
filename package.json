@@ -32,11 +32,11 @@
     "rc-table": "^6.4.0",
     "rc-util": "4.0.4",
     "react-error-overlay": "1.0.9",
-    "styled-components": "^4.2.0",
     "warning": "3.0.0"
   },
   "peerDependencies": {
     "react": ">16.0.0",
+    "styled-components": "4.2.0",
     "react-dom": ">16.0.0"
   },
   "author": "ysstech",
