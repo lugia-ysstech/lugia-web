@@ -1,16 +1,16 @@
 {
   "name": "@lugia/lugia-web",
-  "version": "1.1.0-1",
+  "version": "1.1.0-2",
   "dependencies": {
     "@lugia/css": "^1.0.15",
     "@lugia/devtools-material": "^1.0.6",
     "@lugia/math": "^1.0.7",
     "@lugia/object-utils": "1.0.11",
     "@lugia/ramada": "^1.0.1",
-    "@lugia/theme-config": "1.0.24",
-    "@lugia/theme-core": "1.0.24",
-    "@lugia/theme-css-hoc": "1.0.47",
-    "@lugia/theme-hoc": "1.0.35",
+    "@lugia/theme-config": "1.0.26",
+    "@lugia/theme-core": "1.0.26",
+    "@lugia/theme-css-hoc": "1.0.49",
+    "@lugia/theme-hoc": "1.0.37",
     "@lugia/theme-hoc-devtools": "1.0.4",
     "@lugia/theme-utils": "1.0.4",
     "@lugia/type-utils": "^1.0.4",
@@ -36,8 +36,8 @@
   },
   "peerDependencies": {
     "react": ">16.8.0",
-    "styled-components": "4.2.0",
-    "react-dom": ">16.0.0"
+    "react-dom": ">16.0.0",
+    "styled-components": "4.2.0"
   },
   "author": "ysstech",
   "scripts": {
@@ -59,7 +59,6 @@
     "create-info": "lugia-create-info"
   },
   "devDependencies": {
-    "styled-components": "4.2.0",
     "@lugia/jverify": "1.0.6",
     "@lugia/lugiax-router": "^1.0.10",
     "@lugia/mega-scripts": "^1.3.35",
@@ -117,6 +116,7 @@
     "react-test-renderer": "^16.8.6",
     "rimraf": "^2.6.2",
     "shx": "0.2.2",
+    "styled-components": "4.2.0",
     "stylelint": "^9.3.0",
     "stylelint-config-standard": "17.0.0",
     "stylelint-processor-styled-components": "0.2.1",
