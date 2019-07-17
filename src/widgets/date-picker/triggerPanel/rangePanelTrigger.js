@@ -6,11 +6,15 @@ import Trigger from '../../trigger/index';
 import RangeInput from '../panel/RangeInput';
 import PageFooter from '../panel/PageFooter';
 import { getDerivedForInput } from '../utils/getDerived';
-import { RangeWrap } from '../styled/styled';
+import { RangeWrap, PanelWrap } from '../styled/styled';
 import SwitchPanelMode from '../mode';
 import { differMonthAndYear, getIndexInRange, getCurrentPageDates } from '../utils/differUtils';
 import { formatValueIsValid, getIsSame } from '../utils/booleanUtils';
 import { getformatSymbol } from '../utils/utils';
+import getThemeProps from '../themeConfig/themeConfig';
+import Theme from '../../theme';
+import Widget from '../../consts/index';
+import { addMouseEvent } from '@lugia/theme-hoc';
 type TypeProps = {
   defaultValue?: Array<string>,
   value?: Array<string>,
@@ -376,6 +380,7 @@ class Range extends Component {
     this.monthAndYear = [...panelValue];
     this.panelDatesArray = getCurrentPageDates(panelValue, format);
   }
+
   render() {
     const {
       value,
@@ -389,7 +394,7 @@ class Range extends Component {
       rangeValue,
       valueIsValid,
     } = this.state;
-    const { disabled, readOnly, theme, mode } = this.props;
+    const { disabled, readOnly, theme, mode, getPartOfThemeProps } = this.props;
     const { monthAndYear } = this;
     const showTimeBtnIsDisabled = valueIsValid ? true : false;
     const { differAmonth, differAyear } = differMonthAndYear(monthAndYear);
@@ -405,10 +410,19 @@ class Range extends Component {
       timeChange: this.timeChange,
       format,
     };
+    const themeProps = getThemeProps({ mode, getPartOfThemeProps }, 'FacePanelContain');
+
     return (
       <Trigger
+        createPortal={true}
         popup={
-          <RangeWrap {...theme} isTime={status === 'showTime'} mode={mode}>
+          <RangeWrap
+            {...addMouseEvent(this)}
+            {...theme}
+            isTime={status === 'showTime'}
+            mode={mode}
+            themeProps={themeProps}
+          >
             <SwitchPanel
               {...this.props}
               value={monthAndYear[0]}
@@ -421,6 +435,7 @@ class Range extends Component {
               choseDayIndex={choseDayIndex && choseDayIndex[0]}
               model={this.targetModeFirst}
               timeValue={value[0]}
+              themeProps={themeProps}
             />
             <SwitchPanel
               {...this.props}
@@ -433,6 +448,7 @@ class Range extends Component {
               choseDayIndex={choseDayIndex && choseDayIndex[1]}
               model={this.targetModeSecond}
               timeValue={value[1]}
+              themeProps={themeProps}
             />
             <PageFooter
               {...this.props}
@@ -451,6 +467,7 @@ class Range extends Component {
         hideAction={['click']}
       >
         <RangeInput
+          {...this.props}
           placeholder={this.state.placeholder}
           value={value}
           onClick={this.onClickTrigger}
