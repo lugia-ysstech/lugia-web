@@ -57,7 +57,7 @@
       "type": "boolean",
       "desc": "是否显示删除按钮(仅卡片和窗口类型支持)",
       "defaultValue": "false"
-    },
+    }
   },
   "events": {
     "onTabClick": {
