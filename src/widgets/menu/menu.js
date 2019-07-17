@@ -779,20 +779,14 @@ class Menu extends React.Component<MenuProps, MenuState> {
   };
 
   forceAlign() {
-    this.trigger && this.trigger.getThemeTarget().forceAlign();
-    if (this.SubMenu && this.SubMenu.current) {
-      console.log(
-        'childMenu',
-        this.SubMenu.current
-          .getThemeTarget()
-          .svtarget.getThemeTarget()
-          .scrollerTarget.forceAlign()
-      );
-      // this.SubMenu.getThemeTarget().scrollerTarget.forceAlign();
+    this.trigger && this.trigger.getThemeTarget() && this.trigger.getThemeTarget().forceAlign(); // toDO 判断用if
+
+    if (this.SubMenu && this.SubMenu.current && this.SubMenu.current.getThemeTarget()) {
+      // toDO 判断用if
       this.SubMenu.current
         .getThemeTarget()
         .svtarget.getThemeTarget()
-        .scrollerTarget.forceAlign();
+        .scrollerTarget.current.forceAlign();
     }
   }
 
