@@ -7,9 +7,9 @@ import { getTheme } from '../utils/utils';
 export default ThemeProvider(
   class DatePicker extends Component {
     render() {
-      const theme = getTheme(this.props);
-      return <DateInput {...this.props} theme={theme} mode={'date'} />;
+      return <DateInput {...this.props} mode={'date'} />;
     }
   },
-  Widget.DatePicker
+  Widget.DatePicker,
+  { hover: true, active: true }
 );

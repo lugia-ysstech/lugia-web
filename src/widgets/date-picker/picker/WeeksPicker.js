@@ -10,5 +10,6 @@ export default ThemeProvider(
       return <DateInput {...this.props} theme={theme} mode={'week'} />;
     }
   },
-  Widget.WeeksPicker
+  Widget.WeeksPicker,
+  { hover: true, active: true }
 );

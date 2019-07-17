@@ -10,5 +10,6 @@ export default ThemeProvider(
       return <DateInput {...this.props} theme={theme} mode={'month'} />;
     }
   },
-  Widget.MonthPicker
+  Widget.MonthPicker,
+  { hover: true, active: true }
 );

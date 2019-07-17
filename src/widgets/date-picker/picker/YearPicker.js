@@ -10,5 +10,6 @@ export default ThemeProvider(
       return <DateInput {...this.props} theme={theme} mode={'year'} />;
     }
   },
-  Widget.YearPicker
+  Widget.YearPicker,
+  { hover: true, active: true }
 );

@@ -11,5 +11,6 @@ export default ThemeProvider(
       return <Range {...this.props} theme={theme} mode={'range'} />;
     }
   },
-  Widget.RangePicker
+  Widget.RangePicker,
+  { hover: true, active: true }
 );
