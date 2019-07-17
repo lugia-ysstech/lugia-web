@@ -14,6 +14,7 @@ type TypeProps = {
   mode?: string,
   model: Object,
   year: number,
+  themeProps?: Object,
 };
 type TypeState = {
   showYears: boolean,
@@ -78,9 +79,10 @@ class Year extends Component<TypeProps, TypeState> {
   };
   render() {
     const { showYears, start, end, title } = this.state;
-    const { step = 12, theme } = this.props;
+    const { step = 12, theme, themeProps } = this.props;
+    console.log('Year.js', themeProps);
     return (
-      <DateWrapper {...theme} mode={this.props.mode}>
+      <DateWrapper themeProps={themeProps} {...theme} mode={this.props.mode}>
         <div>
           <Head
             {...this.props}
@@ -91,6 +93,7 @@ class Year extends Component<TypeProps, TypeState> {
             title={title}
             step={step}
             mode={'year'}
+            themeProps={themeProps}
           />
           <FacePanel
             {...this.props}
@@ -101,6 +104,7 @@ class Year extends Component<TypeProps, TypeState> {
             step={step}
             title={title}
             mode={'year'}
+            themeProps={themeProps}
           />
         </div>
       </DateWrapper>

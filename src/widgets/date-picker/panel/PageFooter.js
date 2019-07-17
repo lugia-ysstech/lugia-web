@@ -119,7 +119,8 @@ class PageFooter extends Component<TypeProps, TypeState> {
     footerChange && footerChange(status);
   };
   render() {
-    const { extraFooter, buttonOptions, theme } = this.props;
+    const { extraFooter, buttonOptions, theme, themeProps } = this.props;
+
     let ChildrenNode;
     if (buttonOptions && buttonOptions.options) {
       const optionsKeys = [];
@@ -137,7 +138,7 @@ class PageFooter extends Component<TypeProps, TypeState> {
           newItemValue = newOptions;
         }
         return (
-          <FooterBtn buttonOptions onClick={this.handleClick(newItemValue)}>
+          <FooterBtn themeProps={themeProps} buttonOptions onClick={this.handleClick(newItemValue)}>
             {item}
           </FooterBtn>
         );
@@ -167,25 +168,38 @@ class PageFooter extends Component<TypeProps, TypeState> {
     }
     const { showTimeBtnIsDisabled } = this.props;
     const newChildrenNode = (isDate || isRange) && buttonOptions ? ChildrenNode : '';
+    console.log('PageFooter.js', themeProps);
     return (
-      <FooterWrap {...theme} showFooter={showFooter}>
+      <FooterWrap {...theme} showFooter={showFooter} themeProps={themeProps}>
         {showFooter ? (
           <Footer {...this.props}>
             {showExtraFooter ? (
-              <ExtraFooter extraFooter>{extraFooter && extraFooter.message}</ExtraFooter>
+              <ExtraFooter themeProps={themeProps} extraFooter>
+                {extraFooter && extraFooter.message}
+              </ExtraFooter>
             ) : (
               ''
             )}
             {newChildrenNode}
             {isShowToday ? (
-              <FooterBtn showToday onClick={this.handleClick(newTodayValue)}>
+              <FooterBtn
+                themeProps={themeProps}
+                showToday
+                onClick={this.handleClick(newTodayValue)}
+              >
                 {showTodayMessage}
               </FooterBtn>
             ) : (
               ''
             )}
             {isOnOk ? (
-              <FooterBtn onOk background border onClick={this.onOkClick('onOk')}>
+              <FooterBtn
+                themeProps={themeProps}
+                onOk
+                background
+                border
+                onClick={this.onOkClick('onOk')}
+              >
                 {onOkMessage}
               </FooterBtn>
             ) : (
@@ -193,6 +207,7 @@ class PageFooter extends Component<TypeProps, TypeState> {
             )}
             {isShowTime ? (
               <FooterBtn
+                themeProps={themeProps}
                 showTime
                 showTimeButton={showTimeBtnIsDisabled}
                 onClick={this.statusClick(showTimeBtnIsDisabled ? status : '')}

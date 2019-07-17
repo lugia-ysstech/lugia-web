@@ -35,11 +35,18 @@ class WeekDays extends Component<TypeProps, null> {
     const localeData = moment.localeData();
     const firstDayOfWeek = localeData.firstDayOfWeek();
     const { newWeeks } = this.getnewWeeks(this.props, firstDayOfWeek);
+    const { themeProps } = this.props;
+    console.log('week.js', themeProps);
     return (
-      <HeaderWeekBox>
+      <HeaderWeekBox themeProps={themeProps}>
         {newWeeks.map((currentValue, index) => {
           return (
-            <HeaderWeek {...this.props} key={index} onClick={this.handleClick}>
+            <HeaderWeek
+              themeProps={themeProps}
+              {...this.props}
+              key={index}
+              onClick={this.handleClick}
+            >
               {newWeeks[index]}
             </HeaderWeek>
           );

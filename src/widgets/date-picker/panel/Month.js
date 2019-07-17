@@ -68,8 +68,10 @@ class Month extends Component<TypeProps, TypeState> {
   render() {
     const { month, year } = this.state;
     const { theme } = this.props;
+    const { themeProps } = this.props;
+    console.log('Month.js', themeProps);
     return (
-      <DateWrapper {...theme}>
+      <DateWrapper {...theme} themeProps={themeProps}>
         <div>
           <Head
             {...this.props}
@@ -77,8 +79,15 @@ class Month extends Component<TypeProps, TypeState> {
             headOnChange={this.headOnChange}
             start={year}
             mode={'month'}
+            themeProps={themeProps}
           />
-          <FacePanel {...this.props} onChange={this.panelChange} mode={'month'} month={month} />
+          <FacePanel
+            {...this.props}
+            onChange={this.panelChange}
+            mode={'month'}
+            month={month}
+            themeProps={themeProps}
+          />
         </div>
       </DateWrapper>
     );
