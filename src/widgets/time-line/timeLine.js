@@ -7,24 +7,26 @@
 import '../common/shirm';
 import * as React from 'react';
 import { Component } from 'react';
-import styled from 'styled-components';
 import Widget from '../consts/index';
 
 import ThemeProvider from '../theme-provider';
 import type { TimeLineMode } from '../css/time-line';
-import { getContainerHeight, getContainerWidth } from '../css/time-line';
 import TimeLineItem from './timeLineItem';
 import { getAttributeFromObject } from '../common/ObjectUtils';
 import moment from 'moment';
+import CSSComponent, { css } from '@lugia/theme-css-hoc';
 
-const OutContainer = styled.div`
-  ${getContainerHeight};
-`;
+const OutContainer = CSSComponent({
+  tag: 'div',
+  className: 'TimeLineContainer',
+  normal: {
+    selectNames: [['width'], ['height'], ['padding'], ['margin']],
+    defaultTheme: {
+      width: 200,
+    },
+  },
+});
 
-const Wrapper = styled.div`
-  ${getContainerHeight};
-  ${getContainerWidth};
-`;
 type TimeLineState = {};
 
 type TimeLineProps = {
@@ -71,12 +73,8 @@ class TimeLine extends Component<TimeLineProps, TimeLineState> {
   static getDerivedStateFromProps(props: TimeLineProps, state: TimeLineState) {}
 
   render() {
-    const { getTheme } = this.props;
-    return (
-      <Wrapper>
-        <OutContainer theme={getTheme()}>{this.getChildren()}</OutContainer>
-      </Wrapper>
-    );
+    const theThemeProps = this.props.getPartOfThemeProps('TimeLineContainer', {});
+    return <OutContainer themeProps={theThemeProps}>{this.getChildren()}</OutContainer>;
   }
 
   getChildren() {

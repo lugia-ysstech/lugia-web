@@ -48,6 +48,7 @@ const Content: Object = CSSComponent({
       ['boxShadow'],
       ['borderRadius'],
       ['border'],
+      ['opacity'],
     ],
     defaultTheme: {
       background: { color: defaultColor },
@@ -375,6 +376,7 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
     });
     return (
       <Trigger
+        createPortal={true}
         popupVisible={visible}
         align={placement}
         ref={getTarget}
