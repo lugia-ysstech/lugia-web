@@ -9,6 +9,7 @@ import Item from './item';
 import '../common/shirm';
 import ThemeHoc from '@lugia/theme-hoc';
 import * as React from 'react';
+import { deepMerge } from '@lugia/object-utils';
 import {
   DefaultHeight,
   DefaultMenuItemHeight,
@@ -19,7 +20,6 @@ import {
   RightIcon,
   TextIcon,
 } from '../css/menu';
-import ThemeProvider from '../theme-provider';
 import ThrolleScroller from '../scroller/ThrottleScroller';
 import Widget from '../consts/index';
 import Theme from '../theme';
@@ -99,6 +99,8 @@ export type MenuProps = {
   autoHeight?: boolean,
   expandedPathInProps?: boolean,
   divided: boolean,
+  getPartOfThemeProps: Function,
+  getPartOfThemeHocProps: Function,
 };
 const EmptyData = [];
 
@@ -110,13 +112,6 @@ export type MenuState = {
   indexOffsetY: number,
   expandedPathInProps: boolean,
 };
-
-function addPropsConfig(themeProps: Object, propsConfig: Object) {
-  const newThemeProps = { ...themeProps };
-
-  newThemeProps.propsConfig = propsConfig;
-  return newThemeProps;
-}
 
 let SubMenu = () => <div />;
 
@@ -147,6 +142,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
   clickOutsideHandler: Function | null;
   touchOutsideHandler: Function | null;
   childMenu: any;
+  SubMenu: Object;
 
   constructor(props: MenuProps) {
     super(props);
@@ -165,6 +161,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     this.updataExpandedData(this.state, this.props);
     this.allChildData = getInitAllChildData(props, this.state);
     this.level2MenuInstance = {};
+    this.SubMenu = React.createRef();
   }
 
   static getDerivedStateFromProps(props: MenuProps, state: MenuState) {
@@ -209,16 +206,15 @@ class Menu extends React.Component<MenuProps, MenuState> {
   render() {
     const { props } = this;
     const items = this.getItems(props);
-
-    const { data = [], size, autoHeight = false, getPartOfThemeProps } = props;
+    const { data = [], autoHeight = false, getPartOfThemeProps, menuItemHeight } = props;
     const length = data ? data.length : 0;
-    const menuItemHeight = getMenuItemHeight(size);
-    const WrapThemeProps = addPropsConfig(getPartOfThemeProps('MenuWrap'), {
-      length,
-      size,
-      autoHeight,
+    const WrapThemeProps = getPartOfThemeProps('MenuWrap', {
+      props: {
+        length,
+        menuItemHeight,
+        autoHeight,
+      },
     });
-
     const bodyContent = (
       <MenuContainer themeProps={WrapThemeProps} level={this.props.level}>
         {items}
@@ -265,7 +261,13 @@ class Menu extends React.Component<MenuProps, MenuState> {
     end = Math.round(end);
     if (data && data.length > 0) {
       return this.computeItems(data, start, end, (obj: Object, isFirst: boolean) => {
-        const { valueField, displayField, size, divided: propsDivided, getTheme } = this.props;
+        const {
+          valueField,
+          displayField,
+          size,
+          divided: propsDivided,
+          menuItemHeight,
+        } = this.props;
 
         const { [valueField]: key, [displayField]: value, disabled, children, icon, divided } = obj;
         const { getPrefix, getSuffix } = props;
@@ -292,7 +294,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
             disabled={disabled}
             checkedCSS={checkedCSS}
             divided={divided || propsDivided}
-            theme={this.getItemTheme()}
+            menuItemHeight={menuItemHeight}
+            {...this.props.getPartOfThemeHocProps('MenuItem')}
             isFirst={isFirst}
           >
             {prefix}
@@ -311,20 +314,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
       return this.computeItems(children, start, end, (obj: Object) => obj);
     }
 
-    const { width } = this.getTheme();
-    return [
-      <Theme config={{ [Widget.Empty]: { width } }}>
-        <Empty />
-      </Theme>,
-    ];
-  }
-
-  getTheme() {
-    const { getTheme } = this.props;
-    const theme = getTheme();
-    const { width = DefaultWidth } = theme;
-    theme.width = width;
-    return theme;
+    return [<Empty />];
   }
 
   getItemTheme() {
@@ -619,12 +609,19 @@ class Menu extends React.Component<MenuProps, MenuState> {
     const x = offsetX === 0 || offsetX ? offsetX : 4;
     const y = offsetY === 0 || offsetY ? offsetY : null;
     const subMenuItenHeight = getMenuItemHeight(subsize);
+    const config = {
+      Szf: {
+        Szf: this.props.getPartOfThemeConfig('SubMenu'),
+      },
+    };
 
     return (
       <SubMenu
         mutliple={mutliple}
         size={subsize}
         subsize={subsize}
+        theme={config}
+        viewClass={'Szf'}
         autoHeight={autoHeight}
         menuItemHeight={subMenuItenHeight}
         displayField={displayField}
@@ -639,7 +636,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
         onMouseEnter={onMouseEnter}
         onChange={onChange}
         onExpandPathChange={onExpandPathChange}
-        ref={cmp => (this.childMenu = cmp)}
+        ref={this.SubMenu}
         data={childrenData}
         offsetX={x}
         offsetY={y}
@@ -656,6 +653,15 @@ class Menu extends React.Component<MenuProps, MenuState> {
         expandedPathInProps={this.getExpandedPathInProps()}
       />
     );
+  }
+
+  getSubMenuTheme() {
+    const { getPartOfThemeConfig, level } = this.props;
+    const config = {
+      [Widget.Menu]: getPartOfThemeConfig('SubMenu'),
+    };
+    console.log('config', level, getPartOfThemeConfig('SubMenu'));
+    return config;
   }
 
   isRoot() {
@@ -774,8 +780,19 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
   forceAlign() {
     this.trigger && this.trigger.getThemeTarget().forceAlign();
-    if (this.childMenu) {
-      this.childMenu.getThemeTarget().scrollerTarget.forceAlign();
+    if (this.SubMenu && this.SubMenu.current) {
+      console.log(
+        'childMenu',
+        this.SubMenu.current
+          .getThemeTarget()
+          .svtarget.getThemeTarget()
+          .scrollerTarget.forceAlign()
+      );
+      // this.SubMenu.getThemeTarget().scrollerTarget.forceAlign();
+      this.SubMenu.current
+        .getThemeTarget()
+        .svtarget.getThemeTarget()
+        .scrollerTarget.forceAlign();
     }
   }
 
@@ -851,9 +868,13 @@ class Menu extends React.Component<MenuProps, MenuState> {
   };
 }
 
-const Result = ThemeHoc(ThrolleScroller(Menu, MenuItemHeight, 'MenuWrap'), Widget.Menu, {
-  hover: true,
-});
+const Result = ThemeHoc(
+  ThrolleScroller(Menu, MenuItemHeight, 'MenuWrap', ['MenuItem', 'MenuItemWrap']),
+  Widget.Menu,
+  {
+    hover: true,
+  }
+);
 
 Result.Placeholder = Placeholder;
 Result.computeCanSeeCount = (
@@ -870,11 +891,23 @@ SubMenu = ThemeHoc(
 
     render() {
       const { props } = this;
-      const { getTheme } = props;
+      const { SubMenu } = props.getPartOfThemeConfig('Szf');
+
+      const { getPartOfThemeHocProps } = props;
+      let { viewClass, theme } = getPartOfThemeHocProps('Szf');
+      if (!SubMenu) {
+        theme = deepMerge(
+          {
+            [viewClass]: {
+              SubMenu: theme[viewClass],
+            },
+          },
+          theme
+        );
+      }
+
       return (
-        <Theme config={{ [Widget.Menu]: getTheme() }}>
-          <Result {...props} ref={cmp => (this.svtarget = cmp)} />
-        </Theme>
+        <Result {...props} theme={theme} viewClass={viewClass} ref={cmp => (this.svtarget = cmp)} />
       );
     }
   },

@@ -6,7 +6,6 @@
  */
 import type { SizeType } from '../menu/item';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
-import ThemeHoc from '@lugia/theme-hoc';
 import colorsFunc from './stateColor';
 import styled from 'styled-components';
 import { px2remcss } from '../css/units';
@@ -47,39 +46,36 @@ export const MenuContainer = CSSComponent({
   tag: 'ul',
   className: 'MenuContainer',
   normal: {
-    selectNames: [
-      ['width'],
-      ['borderRadius'],
-      ['border'],
-      ['opacity'],
-      ['background'],
-      ['boxShadow'],
-      ['padding'],
-    ],
+    selectNames: [['width'], ['background'], ['padding']],
     getCSS: (themeMeta, themeProps) => {
-      const { size, length, autoHeight } = themeProps.propsConfig;
+      const { menuItemHeight, length, autoHeight } = themeProps.propsConfig;
       let { height: themeHeight } = themeMeta;
       themeHeight = !themeHeight && themeHeight !== 0 ? DefaultHeight : themeHeight;
-      const height = autoHeight ? getMenuItemHeight(size) * length : themeHeight;
+      const height = autoHeight ? menuItemHeight * length : themeHeight;
       return `height: ${px2remcss(height)};
       `;
     },
+    defaultTheme: {
+      background: {
+        color: '#fff',
+      },
+      width: DefaultWidth,
+    },
   },
   hover: {
-    selectNames: [['opacity']],
+    selectNames: [['background']],
   },
   css: css`
-    width: ${px2remcss(DefaultWidth)};
     outline: none;
     margin: 0;
     user-select: none;
     padding-left: 0;
     list-style: none;
     overflow: hidden;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s;
     border-radius: 4px;
-    background: #fff;
   `,
+  option: { hover: true },
 });
 
 const getIcon = props => {
@@ -95,7 +91,6 @@ const getIcon = props => {
       content: "${SelectIcon}";
       color: transparent;
       display: inline-block;
-      // font-size: ${12};
       transform: scale(.83333333) rotate(0deg);
       zoom: 1;
       transition: all .2s ease;
@@ -110,19 +105,6 @@ const getIcon = props => {
     `
     }
   `;
-};
-
-const getHoverCSS = (props: Object) => {
-  const { disabled, theme } = props;
-  const { hover } = theme;
-
-  return disabled
-    ? ''
-    : `&:hover {
-    font-weight: ${hover ? hover.fontWeight : 900};
-    background: ${hover ? hover.background : ItemBackgroundColor};
-    color: ${hover ? hover.color : blackColor};
-  }`;
 };
 
 const getItemCheckedCSS = (checked: Boolean, checkedCSS: string) => {
@@ -140,25 +122,45 @@ export const ItemWrap = CSSComponent({
   tag: 'li',
   className: 'ItemWrap',
   normal: {
-    selectNames: [['color'], ['font'], ['fontSize'], ['background'], ['opacity']],
+    selectNames: [
+      ['color'],
+      ['height'],
+      ['font'],
+      ['cursor'],
+      ['border'],
+      ['borderRadius'],
+      ['padding'],
+      ['fontSize'],
+      ['background'],
+      ['opacity'],
+    ],
     defaultTheme: {
       cursor: 'pointer',
     },
     getCSS: (themeMeta, themeProps) => {
       const { propsConfig } = themeProps;
-      const { checked, checkedCSS, size } = propsConfig;
-      const height = getMenuItemHeight(size);
+      const { checked, checkedCSS, menuItemHeight } = propsConfig;
       const { color, backgroundColor, fontWeight } = getItemCheckedCSS(checked, checkedCSS);
       return `
         color: ${color};
         background: ${backgroundColor};
         font-weight: ${fontWeight};
-        height: ${px2remcss(height)}
+        height: ${px2remcss(menuItemHeight)};
+        line-height:${px2remcss(menuItemHeight)};
+        box-sizing: border-box;
         `;
     },
   },
   hover: {
-    selectNames: [['color'], ['font'], ['fontSize'], ['background'], ['opacity']],
+    selectNames: [
+      ['color'],
+      ['font'],
+      ['fontSize'],
+      ['background'],
+      ['opacity'],
+      ['border'],
+      ['borderRadius'],
+    ],
     defaultTheme: {
       font: {
         fontWeight: 900,
@@ -170,11 +172,28 @@ export const ItemWrap = CSSComponent({
     },
   },
   active: {
-    selectNames: [['color'], ['font'], ['fontSize'], ['background'], ['opacity']],
+    selectNames: [
+      ['color'],
+      ['font'],
+      ['fontSize'],
+      ['background'],
+      ['opacity'],
+      ['border'],
+      ['borderRadius'],
+    ],
     getCSS: (themeMeta, themeProps) => {},
   },
   disabled: {
-    selectNames: [['color'], ['font'], ['background'], ['opacity']],
+    selectNames: [
+      ['color'],
+      ['font'],
+      ['cursor'],
+      ['borderRadius'],
+      ['padding'],
+      ['fontSize'],
+      ['background'],
+      ['opacity'],
+    ],
     defaultTheme: {
       cursor: 'not-allowed',
       color: lightGreyColor,
@@ -182,33 +201,37 @@ export const ItemWrap = CSSComponent({
         fontWeight: 500,
       },
     },
-    getCSS: (themeMeta, themeProps) => {},
+    getCSS: (themeMeta, themeProps) => {
+      const { height = DefaultMenuItemHeight } = themeMeta;
+      return `line-height:${px2remcss(height)}`;
+    },
   },
   css: css`
     box-sizing: border-box;
     position: relative;
-    display: block;
     font-weight: 100;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     transition: all 0.3s ease;
     font-size: ${px2remcss(12)};
+    line-height: ${px2remcss(DefaultMenuItemHeight)};
   `,
-  option: { hover: true, active: true },
+  option: { hover: true, active: true, disabled: true },
 });
 
 export const DividerWrap = CSSComponent({
   tag: 'div',
   className: 'DividerWrap',
   normal: {
-    selectNames: [],
+    selectNames: [['background']],
   },
   css: css`
     position: absolute;
-    left: 0;
     top: 0;
+    left: 0;
     width: 100%;
+    background: #666;
     height: ${px2remcss(1)};
   `,
 });
@@ -227,7 +250,7 @@ export const TextContainer = CSSComponent({
   },
   css: css`
     padding: ${px2remcss(0)} ${px2remcss(8)};
-    position: absolute;
+    position: relative;
     left: 0;
     top: 50%;
     transform: translateY(-50%);

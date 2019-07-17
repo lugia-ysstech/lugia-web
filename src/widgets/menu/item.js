@@ -31,6 +31,7 @@ export type MenuItemProps = {
   checkedCSS?: 'none' | 'background' | 'mark' | 'checkbox',
   theme: Object,
   isFirst: boolean,
+  menuItemHeight: number,
 };
 
 const getIcon = props => {
@@ -72,10 +73,6 @@ class MenuItem extends React.Component<MenuItemProps> {
   };
   static displayName = Widget.MenuItem;
 
-  mergeTheme(theme: Object, viewClass: string, params: Object) {
-    theme[viewClass] = deepMerge(theme[viewClass], { propsConfig: params });
-  }
-
   getDividerTheme() {
     // const { getPartOfThemeConfig } = this.props;
     return {
@@ -95,11 +92,10 @@ class MenuItem extends React.Component<MenuItemProps> {
       size,
       divided,
       isFirst,
+      menuItemHeight,
       getPartOfThemeHocProps,
       getPartOfThemeProps,
     } = this.props;
-
-    // const { viewClass, theme: itemTheme } = theme;
     let title = '';
     React.Children.forEach(children, (item: Object) => {
       if (ObjectUtils.isString(item)) {
@@ -110,19 +106,25 @@ class MenuItem extends React.Component<MenuItemProps> {
 
     let themeProps;
     if (checked) {
-      themeProps = getPartOfThemeProps('SelectedItem', {
+      themeProps = getPartOfThemeProps('SelectedMenuItemWrap', {
         props: {
-          size,
           checkedCSS,
           checked,
+          menuItemHeight,
         },
       });
+      const { themeConfig } = themeProps;
+      const { normal = {} } = themeConfig;
+      normal.height = '';
+      if (normal.height) {
+        delete normal.height;
+      }
     } else {
-      themeProps = getPartOfThemeProps('Item', {
+      themeProps = getPartOfThemeProps('MenuItemWrap', {
         props: {
-          size,
           checkedCSS,
           checked,
+          menuItemHeight,
         },
       });
     }
@@ -137,29 +139,20 @@ class MenuItem extends React.Component<MenuItemProps> {
         disabled={disabled}
         themeProps={themeProps}
       >
-        {divided && !isFirst ? (
-          <DividerWrap themeProps={DividerThemeProps}>
-            <Theme config={this.getDividerTheme()}>
-              <Divider />
-            </Theme>
-          </DividerWrap>
-        ) : null}
+        {divided && !isFirst ? <DividerWrap themeProps={DividerThemeProps} /> : null}
         {isCheckbox ? (
           <TextContainer themeProps={ItemThemeProps}>
-            <Theme
-              config={
-                {
-                  // checkbox 还未完成，暂时只能等待checkbox完成后再配置
-                }
-              }
+            <CheckBox
+              {...getPartOfThemeHocProps('Checkbox')}
+              checked={checked}
+              disabled={disabled}
+              onChange={onClick}
             >
-              <CheckBox checked={checked} disabled={disabled} onChange={onClick}>
-                {children}
-              </CheckBox>
-            </Theme>
+              {children}
+            </CheckBox>
           </TextContainer>
         ) : (
-          <TextContainer themeProps={ItemThemeProps}>{children}</TextContainer>
+          <TextContainer themeProps={themeProps}>{children}</TextContainer>
         )}
       </ItemWrap>
     );
