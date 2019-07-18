@@ -185,7 +185,7 @@ const config = {
     TreeWrap: {
       normal: {
         width: 500,
-        height: 600,
+        height: 290,
         opacity: 1,
         background: { color: '#E086BB' },
         boxShadow: getBoxShadow('2px 2px 5px 5px #9C2D6E'),
@@ -212,7 +212,7 @@ const config = {
       TreeItemWrap: {
         normal: {
           background: { color: '#21EBE8' },
-          border: getBorder({ color: '#F51196', width: 1, style: 'solid' }),
+          // border: getBorder({ color: '#F51196', width: 1, style: 'solid' }),
 
           padding: { left: 30, right: 30 },
         },
@@ -296,18 +296,21 @@ const config = {
 
 export default () => {
   return (
-    <Tree
-      theme={config}
-      expandAll
-      // autoHeight
-      suffix={suffix}
-      // mutliple
-      data={newData}
-      valueField={'value'}
-      displayField={'text'}
-      translateTreeData
-      // data={rowData}
-      igronSelectField={'notCanSelect'}
-    />
+    <div>
+      <Tree
+        theme={config}
+        expandAll
+        // autoHeight
+        suffix={suffix}
+        // mutliple
+        // data={newData}
+        // valueField={'value'}
+        // displayField={'text'}
+        // translateTreeData
+        // data={rowData}
+        data={data}
+        igronSelectField={'notCanSelect'}
+      />
+    </div>
   );
 };

@@ -16,6 +16,7 @@ import { adjustValue } from '../utils';
 import { FontSizeNumber } from '../css';
 import { px2emcss } from '../css/units';
 import { getMenuItemHeight } from '../css/menu';
+import { TreeItemHeight } from '../css/tree';
 
 type RowData = { [key: string]: any };
 
@@ -77,7 +78,10 @@ class ScrollerTree extends React.Component<any, any> {
       const { rows, parentCount } = utils.slice(data, start, end - start, id2ExtendInfo);
       const nodes = utils.generateTreeNode(rows);
       const itemHeight = getMenuItemHeight(size);
-      const top = -parentCount * itemHeight;
+      console.log('itemHeight', itemHeight);
+      // 显示不全最后一项++++++++++++++++++++++++++++++++++++++++++++++++++++++++，
+      const top = -parentCount * 35;
+      // console.log('offsetTop', top);
       const treeNodes = this.loopNode(nodes);
       const treeTheme = this.getTheme();
       if (hasScroller) {
@@ -125,6 +129,7 @@ class ScrollerTree extends React.Component<any, any> {
         switcher,
       } = item;
       const { color, paddingLeft } = this.getTheme();
+      console.log('themeProps', getPartOfThemeHocProps('TreeItem'));
       const notCanSelect = item[igronSelectField] ? true : false;
       if (children !== undefined) {
         return (
@@ -173,4 +178,7 @@ class ScrollerTree extends React.Component<any, any> {
   };
 }
 
-export default ThrottleScroller(ScrollerTree, 34, 'TreeWrap');
+export default ThrottleScroller(ScrollerTree, TreeItemHeight, 'TreeWrap', [
+  'TreeItem',
+  'TreeItemWrap',
+]);
