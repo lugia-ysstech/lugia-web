@@ -64,6 +64,7 @@ type CascaderState = {
   inputValue: string[],
   treeData: Array<Object>,
   selectedKeys: string[],
+  getPartOfThemeProps: Function,
 };
 
 const DefaultMenuWidth = 150;

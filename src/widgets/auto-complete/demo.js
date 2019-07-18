@@ -58,7 +58,7 @@ export default class AutoCompleteBounded extends React.Component<any, any> {
   render() {
     const config = {
       [Widget.AutoComplete]: {
-        PreItem: {
+        OldItem: {
           normal: {
             height: 50,
             color: '#000',
@@ -77,13 +77,17 @@ export default class AutoCompleteBounded extends React.Component<any, any> {
             borderRadius: getBorderRadius(20),
           },
         },
-        [Widget.Input]: {
-          normal: {
-            width: 300,
-            height: 50,
+        Input: {
+          Input: {
+            normal: {
+              width: 500,
+              height: 80,
+              margin: { top: 20 },
+            },
+            disabled: { background: { color: 'gray' } },
           },
         },
-        [Widget.Menu]: {
+        Menu: {
           MenuWrap: {
             normal: {
               width: 300,
