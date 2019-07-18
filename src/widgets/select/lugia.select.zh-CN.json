@@ -324,21 +324,6 @@
                     ["font"]
                   ],
                   "disabled": []
-                },
-                "Text": {
-                  "name": "项的文本",
-                  "desc": "配置每一项文本内容的样式",
-                  "normal": [
-                    ["color"],
-                    ["font"],
-                    ["background"],
-                    ["padding"],
-                    ["border"],
-                    ["borderRadius"]
-                  ],
-                  "hover": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
-                  "active": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
-                  "disabled": []
                 }
               }
             }
@@ -586,21 +571,6 @@
                     ["font"]
                   ],
                   "disabled": []
-                },
-                "Text": {
-                  "name": "项的文本",
-                  "desc": "配置每一项文本内容的样式",
-                  "normal": [
-                    ["color"],
-                    ["font"],
-                    ["background"],
-                    ["padding"],
-                    ["border"],
-                    ["borderRadius"]
-                  ],
-                  "hover": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
-                  "active": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
-                  "disabled": []
                 }
               }
             }
@@ -835,21 +805,6 @@
                 ["color"],
                 ["font"]
               ],
-              "disabled": []
-            },
-            "Text": {
-              "name": "项的文本",
-              "desc": "配置每一项文本内容的样式",
-              "normal": [
-                ["color"],
-                ["font"],
-                ["background"],
-                ["padding"],
-                ["border"],
-                ["borderRadius"]
-              ],
-              "hover": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
-              "active": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
               "disabled": []
             }
           }

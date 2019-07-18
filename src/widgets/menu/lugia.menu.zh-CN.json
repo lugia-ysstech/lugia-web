@@ -267,21 +267,7 @@
               ],
               "disabled": []
             },
-            "Text": {
-              "name": "项的文本",
-              "desc": "配置每一项文本内容的样式",
-              "normal": [
-                ["color"],
-                ["font"],
-                ["background"],
-                ["padding"],
-                ["border"],
-                ["borderRadius"]
-              ],
-              "hover": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
-              "active": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
-              "disabled": []
-            },
+
             "Divider": {
               "name": "分割线",
               "desc": "配置每项之间的分割线，当divided为true时生效",
@@ -430,21 +416,7 @@
               ],
               "disabled": []
             },
-            "Text": {
-              "name": "项的文本",
-              "desc": "配置每一项文本内容的样式",
-              "normal": [
-                ["color"],
-                ["font"],
-                ["background"],
-                ["padding"],
-                ["border"],
-                ["borderRadius"]
-              ],
-              "hover": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
-              "active": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
-              "disabled": []
-            },
+
             "Divider": {
               "name": "分割线",
               "desc": "配置每项之间的分割线，当divided为true时生效",
@@ -594,21 +566,422 @@
               ],
               "disabled": []
             },
-            "Text": {
-              "name": "项的文本",
-              "desc": "配置每一项文本内容的样式",
-              "normal": [
-                ["color"],
-                ["font"],
-                ["background"],
-                ["padding"],
-                ["border"],
-                ["borderRadius"]
-              ],
-              "hover": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
-              "active": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
+
+            "Divider": {
+              "name": "分割线",
+              "desc": "配置每项之间的分割线，当divided为true时生效",
+              "normal": [["background"]],
+              "hover": [],
+              "active": [],
               "disabled": []
             },
+
+            "Checkbox": {
+              "theme": {
+                "CheckboxWrap": {
+                  "name": "Checkbox整体配置",
+                  "desc": "Checkbox整体配置",
+                  "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]],
+                  "hover": [["opacity"]],
+                  "disabled": [["opacity"]]
+                },
+                "CheckboxText": {
+                  "name": "Checkbox文字配置",
+                  "desc": "Checkbox文字配置",
+                  "normal": [["color"], ["font"]],
+                  "hover": [["color"], ["font"]],
+                  "disabled": [["color"], ["font"]]
+                },
+                "CheckboxEdgeChecked": {
+                  "name": "Checkbox选中后边框配置",
+                  "desc": "Checkbox选中后边框配置样式",
+                  "normal": [["background"], ["borderRadius"], ["border"]],
+                  "hover": [["background"], ["borderRadius"], ["border"]],
+                  "disabled": [["background"], ["borderRadius"], ["border"]]
+                },
+                "CheckboxEdgeUnChecked": {
+                  "name": "Checkbox未选中边框配置",
+                  "desc": "Checkbox未选中边框配置样式",
+                  "normal": [["background"], ["borderRadius"], ["border"]],
+                  "hover": [["background"], ["borderRadius"], ["border"]],
+                  "disabled": [["background"], ["borderRadius"], ["border"]]
+                },
+                "CheckboxInnerChecked": {
+                  "name": "Checkbox选中样式配置",
+                  "desc": "Checkbox选中样式配置",
+                  "normal": [["color"]],
+                  "hover": [["color"]],
+                  "disabled": [["color"]]
+                }
+              }
+            }
+          }
+        },
+
+        "SubMenu": {
+          "theme": {
+            "MenuWrap": {
+              "name": "菜单外盒",
+              "desc": "配置菜单组件的外盒样式",
+              "normal": [
+                ["width"],
+                ["height"],
+                ["boxShadow"],
+                ["background"],
+                ["opacity"],
+                ["border"],
+                ["borderRadius"],
+                ["margin"],
+                ["padding"]
+              ],
+              "hover": [["boxShadow"], ["background"], ["opacity"], ["border"], ["borderRadius"]],
+              "clicked": [],
+              "disabled": []
+            },
+
+            "MenuItem": {
+              "theme": {
+                "MenuItemWrap": {
+                  "name": "项的外盒",
+                  "desc": "配置每一项的外盒",
+                  "normal": [
+                    ["height"],
+                    ["background"],
+                    ["border"],
+                    ["borderRadius"],
+                    ["opacity"],
+                    ["color"],
+                    ["padding"]
+                  ],
+                  "hover": [
+                    ["background"],
+                    ["border"],
+                    ["borderRadius"],
+                    ["opacity"],
+                    ["color"],
+                    ["font"]
+                  ],
+                  "active": [
+                    ["background"],
+                    ["border"],
+                    ["borderRadius"],
+                    ["opacity"],
+                    ["color"],
+                    ["font"]
+                  ],
+                  "disabled": [
+                    ["background"],
+                    ["color"],
+                    ["borderRadius"],
+                    ["opacity"],
+                    ["padding"],
+                    ["font"]
+                  ]
+                },
+                "SelectedMenuItemWrap": {
+                  "name": "选中项的外盒",
+                  "desc": "配置选中项的外盒",
+                  "normal": [
+                    ["background"],
+                    ["border"],
+                    ["borderRadius"],
+                    ["opacity"],
+                    ["color"],
+                    ["padding"],
+                    ["font"]
+                  ],
+                  "hover": [
+                    ["background"],
+                    ["border"],
+                    ["borderRadius"],
+                    ["opacity"],
+                    ["color"],
+                    ["font"]
+                  ],
+                  "active": [
+                    ["background"],
+                    ["border"],
+                    ["borderRadius"],
+                    ["opacity"],
+                    ["color"],
+                    ["font"]
+                  ],
+                  "disabled": []
+                },
+
+                "Divider": {
+                  "name": "分割线",
+                  "desc": "配置每项之间的分割线，当divided为true时生效",
+                  "normal": [["background"]],
+                  "hover": [],
+                  "active": [],
+                  "disabled": []
+                },
+
+                "Checkbox": {
+                  "theme": {
+                    "CheckboxWrap": {
+                      "name": "Checkbox整体配置",
+                      "desc": "Checkbox整体配置",
+                      "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]],
+                      "hover": [["opacity"]],
+                      "disabled": [["opacity"]]
+                    },
+                    "CheckboxText": {
+                      "name": "Checkbox文字配置",
+                      "desc": "Checkbox文字配置",
+                      "normal": [["color"], ["font"]],
+                      "hover": [["color"], ["font"]],
+                      "disabled": [["color"], ["font"]]
+                    },
+                    "CheckboxEdgeChecked": {
+                      "name": "Checkbox选中后边框配置",
+                      "desc": "Checkbox选中后边框配置样式",
+                      "normal": [["background"], ["borderRadius"], ["border"]],
+                      "hover": [["background"], ["borderRadius"], ["border"]],
+                      "disabled": [["background"], ["borderRadius"], ["border"]]
+                    },
+                    "CheckboxEdgeUnChecked": {
+                      "name": "Checkbox未选中边框配置",
+                      "desc": "Checkbox未选中边框配置样式",
+                      "normal": [["background"], ["borderRadius"], ["border"]],
+                      "hover": [["background"], ["borderRadius"], ["border"]],
+                      "disabled": [["background"], ["borderRadius"], ["border"]]
+                    },
+                    "CheckboxInnerChecked": {
+                      "name": "Checkbox选中样式配置",
+                      "desc": "Checkbox选中样式配置",
+                      "normal": [["color"]],
+                      "hover": [["color"]],
+                      "disabled": [["color"]]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "theme": {
+    "MenuWrap": {
+      "name": "菜单外盒",
+      "desc": "配置菜单组件的外盒样式",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["boxShadow"],
+        ["background"],
+        ["opacity"],
+        ["border"],
+        ["borderRadius"],
+        ["margin"],
+        ["padding"]
+      ],
+      "hover": [["boxShadow"], ["background"], ["opacity"], ["border"], ["borderRadius"]],
+      "clicked": [],
+      "disabled": []
+    },
+    "MenuItem": {
+      "theme": {
+        "MenuItemWrap": {
+          "name": "项的外盒",
+          "desc": "配置每一项的外盒",
+          "normal": [
+            ["height"],
+            ["background"],
+            ["border"],
+            ["borderRadius"],
+            ["opacity"],
+            ["color"],
+            ["padding"]
+          ],
+          "hover": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"], ["font"]],
+          "active": [
+            ["background"],
+            ["border"],
+            ["borderRadius"],
+            ["opacity"],
+            ["color"],
+            ["font"]
+          ],
+          "disabled": [
+            ["background"],
+            ["color"],
+            ["borderRadius"],
+            ["opacity"],
+            ["padding"],
+            ["font"]
+          ]
+        },
+        "SelectedMenuItemWrap": {
+          "name": "选中项的外盒",
+          "desc": "配置选中项的外盒",
+          "normal": [
+            ["background"],
+            ["border"],
+            ["borderRadius"],
+            ["opacity"],
+            ["color"],
+            ["padding"],
+            ["font"]
+          ],
+          "hover": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"], ["font"]],
+          "active": [
+            ["background"],
+            ["border"],
+            ["borderRadius"],
+            ["opacity"],
+            ["color"],
+            ["font"]
+          ],
+          "disabled": []
+        },
+
+        "Divider": {
+          "name": "分割线",
+          "desc": "配置每项之间的分割线，当divided为true时生效",
+          "normal": [["background"]],
+          "hover": [],
+          "active": [],
+          "disabled": []
+        },
+
+        "Checkbox": {
+          "theme": {
+            "CheckboxWrap": {
+              "name": "Checkbox整体配置",
+              "desc": "Checkbox整体配置",
+              "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]],
+              "hover": [["opacity"]],
+              "disabled": [["opacity"]]
+            },
+            "CheckboxText": {
+              "name": "Checkbox文字配置",
+              "desc": "Checkbox文字配置",
+              "normal": [["color"], ["font"]],
+              "hover": [["color"], ["font"]],
+              "disabled": [["color"], ["font"]]
+            },
+            "CheckboxEdgeChecked": {
+              "name": "Checkbox选中后边框配置",
+              "desc": "Checkbox选中后边框配置样式",
+              "normal": [["background"], ["borderRadius"], ["border"]],
+              "hover": [["background"], ["borderRadius"], ["border"]],
+              "disabled": [["background"], ["borderRadius"], ["border"]]
+            },
+            "CheckboxEdgeUnChecked": {
+              "name": "Checkbox未选中边框配置",
+              "desc": "Checkbox未选中边框配置样式",
+              "normal": [["background"], ["borderRadius"], ["border"]],
+              "hover": [["background"], ["borderRadius"], ["border"]],
+              "disabled": [["background"], ["borderRadius"], ["border"]]
+            },
+            "CheckboxInnerChecked": {
+              "name": "Checkbox选中样式配置",
+              "desc": "Checkbox选中样式配置",
+              "normal": [["color"]],
+              "hover": [["color"]],
+              "disabled": [["color"]]
+            }
+          }
+        }
+      }
+    },
+
+    "SubMenu": {
+      "theme": {
+        "MenuWrap": {
+          "name": "菜单外盒",
+          "desc": "配置菜单组件的外盒样式",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["boxShadow"],
+            ["background"],
+            ["opacity"],
+            ["border"],
+            ["borderRadius"],
+            ["margin"],
+            ["padding"]
+          ],
+          "hover": [["boxShadow"], ["background"], ["opacity"], ["border"], ["borderRadius"]],
+          "clicked": [],
+          "disabled": []
+        },
+
+        "MenuItem": {
+          "theme": {
+            "MenuItemWrap": {
+              "name": "项的外盒",
+              "desc": "配置每一项的外盒",
+              "normal": [
+                ["height"],
+                ["background"],
+                ["border"],
+                ["borderRadius"],
+                ["opacity"],
+                ["color"],
+                ["padding"]
+              ],
+              "hover": [
+                ["background"],
+                ["border"],
+                ["borderRadius"],
+                ["opacity"],
+                ["color"],
+                ["font"]
+              ],
+              "active": [
+                ["background"],
+                ["border"],
+                ["borderRadius"],
+                ["opacity"],
+                ["color"],
+                ["font"]
+              ],
+              "disabled": [
+                ["background"],
+                ["color"],
+                ["borderRadius"],
+                ["opacity"],
+                ["padding"],
+                ["font"]
+              ]
+            },
+            "SelectedMenuItemWrap": {
+              "name": "选中项的外盒",
+              "desc": "配置选中项的外盒",
+              "normal": [
+                ["background"],
+                ["border"],
+                ["borderRadius"],
+                ["opacity"],
+                ["color"],
+                ["padding"],
+                ["font"]
+              ],
+              "hover": [
+                ["background"],
+                ["border"],
+                ["borderRadius"],
+                ["opacity"],
+                ["color"],
+                ["font"]
+              ],
+              "active": [
+                ["background"],
+                ["border"],
+                ["borderRadius"],
+                ["opacity"],
+                ["color"],
+                ["font"]
+              ],
+              "disabled": []
+            },
+
             "Divider": {
               "name": "分割线",
               "desc": "配置每项之间的分割线，当divided为true时生效",
