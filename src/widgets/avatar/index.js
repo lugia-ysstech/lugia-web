@@ -20,6 +20,21 @@ import { deepMerge } from '@lugia/object-utils';
 
 const { px2remcss } = units;
 const { borderColor } = colorsFunc();
+const Container = CSSComponent({
+  tag: 'div',
+  className: 'Container',
+  normal: {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['boxShadow'],
+      ['opacity'],
+      ['background'],
+      ['padding'],
+      ['margin'],
+    ],
+  },
+});
 const BaseAvatar = CSSComponent({
   tag: 'div',
   className: 'BaseAvatar',
@@ -220,9 +235,11 @@ class AvatarBox extends React.Component<AvatarProps, AvatarState> {
     );
 
     return (
-      <BaseAvatar {...props} themeProps={thePropsTheme}>
-        {this.getChildren()}
-      </BaseAvatar>
+      <Container themeProps={this.props.getPartOfThemeProps('Container')}>
+        <BaseAvatar {...props} themeProps={thePropsTheme}>
+          {this.getChildren()}
+        </BaseAvatar>
+      </Container>
     );
   }
   render() {

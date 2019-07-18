@@ -17,6 +17,21 @@ import { units } from '@lugia/css';
 
 const { px2remcss } = units;
 const { borderDisableColor } = colorsFunc();
+const Container = CSSComponent({
+  tag: 'div',
+  className: 'Container',
+  normal: {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['boxShadow'],
+      ['opacity'],
+      ['background'],
+      ['padding'],
+      ['margin'],
+    ],
+  },
+});
 const Divider = CSSComponent({
   tag: 'div',
   className: 'HorizontalDivider',
@@ -155,12 +170,18 @@ class LineBox extends Component<DividerProps, any> {
     });
 
     if (type === 'vertical') {
-      return <VerticalDivider themeProps={vThemeProps} />;
+      return (
+        <Container themeProps={this.props.getPartOfThemeProps('Container')}>
+          <VerticalDivider themeProps={vThemeProps} />
+        </Container>
+      );
     }
     return (
-      <Divider dashed={dashed} position={position} content={content} themeProps={hThemeProps}>
-        {this.getChildText()}
-      </Divider>
+      <Container themeProps={this.props.getPartOfThemeProps('Container')}>
+        <Divider dashed={dashed} position={position} content={content} themeProps={hThemeProps}>
+          {this.getChildText()}
+        </Divider>
+      </Container>
     );
   }
   render() {

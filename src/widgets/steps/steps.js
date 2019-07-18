@@ -14,7 +14,21 @@ import type { AlignType, StepType, OrientationType, SizeType } from '../css/step
 import Step from './step';
 import { getAttributeFromObject } from '../common/ObjectUtils';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
-
+const Container = CSSComponent({
+  tag: 'div',
+  className: 'Container',
+  normal: {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['boxShadow'],
+      ['opacity'],
+      ['background'],
+      ['padding'],
+      ['margin'],
+    ],
+  },
+});
 const StepsOutContainer = CSSComponent({
   tag: 'div',
   className: 'StepsOutContainer',
@@ -115,13 +129,15 @@ class Steps extends Component<StepsProps, StepsState> {
       },
     });
     return (
-      <StepsOutContainer
-        themeProps={theThemeProps}
-        orientation={orientation}
-        viewClass={'StepsOutContainer'}
-      >
-        {this.getHSteps()}
-      </StepsOutContainer>
+      <Container themeProps={this.props.getPartOfThemeProps('Container')}>
+        <StepsOutContainer
+          themeProps={theThemeProps}
+          orientation={orientation}
+          viewClass={'StepsOutContainer'}
+        >
+          {this.getHSteps()}
+        </StepsOutContainer>
+      </Container>
     );
   }
 

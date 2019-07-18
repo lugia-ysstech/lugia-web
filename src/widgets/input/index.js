@@ -36,6 +36,22 @@ const {
   lightGreyColor,
 } = colorsFunc();
 
+const Container = CSSComponent({
+  tag: 'div',
+  className: 'Container',
+  normal: {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['boxShadow'],
+      ['opacity'],
+      ['background'],
+      ['padding'],
+      ['margin'],
+    ],
+  },
+});
+
 const CommonInputStyle = CSSComponent({
   tag: 'input',
   className: 'InnerInput',
@@ -449,20 +465,24 @@ class TextBox extends Component<InputProps, InputState> {
     );
     if (isValidateSuccess(validateStatus, validateType, 'top')) {
       return (
-        <ToolTip
-          propsConfig={{ validateType, validateStatus, prefix, size }}
-          theme={newTheme}
-          size={size}
-          placement={'topLeft'}
-          switch
-          title={help}
-          action={['focus']}
-        >
-          {result}
-        </ToolTip>
+        <Container themeProps={this.props.getPartOfThemeProps('Container')}>
+          <ToolTip
+            propsConfig={{ validateType, validateStatus, prefix, size }}
+            theme={newTheme}
+            size={size}
+            placement={'topLeft'}
+            switch
+            title={help}
+            action={['focus']}
+          >
+            {result}
+          </ToolTip>
+        </Container>
       );
     }
-    return result;
+    return (
+      <Container themeProps={this.props.getPartOfThemeProps('Container')}>{result} </Container>
+    );
   }
 
   generatePrefix(): React$Element<any> | null {
