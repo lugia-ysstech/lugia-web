@@ -21,7 +21,7 @@
   },
   "category": ["反馈"],
   "theme": {
-    "MessageWrap": {
+    "Container": {
       "name": "Message整体样式配置",
       "desc": "为Message整体配置样式",
       "normal": [

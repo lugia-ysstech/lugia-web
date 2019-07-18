@@ -72,7 +72,7 @@
   "childrenWidget": ["checkbox-group"],
   "category": ["数据录入"],
   "theme": {
-    "CheckboxWrap": {
+    "Container": {
       "name": "Checkbox整体配置",
       "desc": "Checkbox整体配置",
       "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]],

@@ -118,7 +118,7 @@
     }
   },
   "theme": {
-    "ProgressWrap": {
+    "Container": {
       "name": "线性进度条整体配置",
       "desc": "线性进度条整体配置",
       "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"], ["opacity"]]

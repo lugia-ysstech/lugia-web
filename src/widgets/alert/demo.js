@@ -20,7 +20,7 @@ export default class AlertDemo extends React.Component<any, any> {
   render() {
     const view = {
       [Widget.Alert]: {
-        AlertWrap: {
+        Container: {
           normal: {
             width: 200,
             height: 200,

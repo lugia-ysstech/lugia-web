@@ -36,7 +36,7 @@ export class RadioDemo extends React.Component<any, any> {
   render() {
     const view = {
       [Widget.Radio]: {
-        RadioWrap: {
+        Container: {
           normal: {
             opacity: 0.6,
             width: 100,
@@ -253,7 +253,7 @@ export class RadioGroupDemo extends React.Component<any, any> {
     const radioView = {
       [Widget.RadioGroup]: {
         Radio: {
-          RadioWrap: {
+          Container: {
             normal: {
               opacity: 0.6,
               width: 100,
@@ -374,7 +374,7 @@ export class RadioGroupDemo extends React.Component<any, any> {
           },
         },
         Radio: {
-          RadioWrap: {
+          Container: {
             normal: {
               opacity: 0.6,
               width: 100,

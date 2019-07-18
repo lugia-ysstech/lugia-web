@@ -49,7 +49,7 @@ export class CheckboxDemo extends React.Component<any, any> {
   render() {
     const view = {
       [Widget.Checkbox]: {
-        CheckboxWrap: {
+        Container: {
           normal: {
             opacity: 1,
             width: 100,
@@ -291,7 +291,7 @@ export const CheckboxGroupDemo = class extends React.Component<any, any> {
           },
         },
         Checkbox: {
-          CheckboxWrap: {
+          Container: {
             normal: {
               opacity: 1,
               width: 100,

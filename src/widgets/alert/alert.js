@@ -142,7 +142,7 @@ export default ThemeProvider(
       } = this.props;
       const { visible, height, animateStart } = this.state;
       const hasDect = this.isInProps('description');
-      const alertWrapTheme = getPartOfThemeProps('AlertWrap');
+      const alertWrapTheme = getPartOfThemeProps('Container');
       const alertMessageTheme = getPartOfThemeProps('AlertMessage');
       const alertDescriptionTheme = getPartOfThemeProps('AlertDescription');
       const alertIconTheme = getPartOfThemeProps('AlertIcon');

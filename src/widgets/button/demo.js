@@ -19,7 +19,7 @@ const Wrapper = styled.div`
 export default () => {
   const config = {
     [Widget.Button]: {
-      ButtonWrap: {
+      Container: {
         normal: {
           width: 100,
           height: 50,

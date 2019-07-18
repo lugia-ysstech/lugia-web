@@ -114,7 +114,7 @@ export default ThemeProvider(
         getPartOfThemeConfig,
       } = this.props;
       const { checked } = this.state;
-      const radioWrapTheme = getPartOfThemeProps('RadioWrap');
+      const radioWrapTheme = getPartOfThemeProps('Container');
       const radioTextTheme = getPartOfThemeProps('RadioText');
       const radioEdgeCheckedTheme = getPartOfThemeProps('RadioEdgeChecked');
       const radioEdgeUnCheckedTheme = getPartOfThemeProps('RadioEdgeUnChecked');

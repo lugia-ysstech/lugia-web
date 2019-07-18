@@ -87,7 +87,7 @@
   },
   "category": ["通用"],
   "theme": {
-    "ButtonWrap": {
+    "Container": {
       "name": "按钮整体样式",
       "desc": "为按钮配置整体样式",
       "normal": [

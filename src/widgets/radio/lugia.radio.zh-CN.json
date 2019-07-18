@@ -52,7 +52,7 @@
   "childrenWidget": ["radio-group"],
   "category": ["数据录入"],
   "theme": {
-    "RadioWrap": {
+    "Container": {
       "name": "Radio整体配置",
       "desc": "Radio整体配置",
       "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]],
