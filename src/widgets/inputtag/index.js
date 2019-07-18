@@ -233,8 +233,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
           onClick={this.onClick}
         >
           <OutContainer
-            theme={ContainerTheme}
-            viewClass={viewClass}
+            themeProps={themeProps}
             focus={focus}
             disabled={disabled}
             validateStatus={validateStatus}
@@ -261,8 +260,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
           onClick={this.onClick}
         >
           <OutContainer
-            theme={ContainerTheme}
-            viewClass={viewClass}
+            themeProps={themeProps}
             focus={focus}
             disabled={disabled}
             validateStatus={validateStatus}
@@ -290,7 +288,6 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
             onPopupVisibleChange={this.onPopupVisibleChange}
             action={[]}
             query={query}
-            needQueryInput // 此处是否显示查询框
             hideAction={['click']}
             ref={cmp => {
               this.dropMenu = cmp;
@@ -352,18 +349,13 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   };
 
   getClearButton() {
-    const { viewClass } = this.props.getPartOfThemeHocProps('Icon');
-    const themeProps = this.props.getPartOfThemeProps('Icon');
+    const themeProps = this.props.getPartOfThemeProps('SwitchIcon');
     const Icon = this.isEmpty() ? (
       <CommonIcon themeProps={themeProps} iconClass={Pull} />
     ) : (
       <CommonIcon themeProps={themeProps} iconClass={Clear} onClick={this.onClear} />
     );
-    return (
-      <IconWrap themeProps={themeProps} viewClass={viewClass}>
-        {Icon}
-      </IconWrap>
-    );
+    return <IconWrap themeProps={themeProps}>{Icon}</IconWrap>;
   }
 
   getPlaceholder() {

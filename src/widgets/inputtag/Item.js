@@ -16,6 +16,7 @@ type ItemProps = {
   children: any,
   onClick?: Function,
   onCloseClick?: Function,
+  getPartOfThemeProps: Function,
 };
 
 type ItemState = {};
@@ -25,31 +26,21 @@ class ItemTag extends React.Component<ItemProps, ItemState> {
   width: number;
   static displayName = Widget.InputTagItem;
   render() {
-    const {
-      className,
-      closeable = true,
-      onClick,
-      onCloseClick,
-      getPartOfThemeHocProps,
-      getPartOfThemeProps,
-    } = this.props;
+    const { className, closeable = true, onClick, onCloseClick, getPartOfThemeProps } = this.props;
 
     const TagWrapThemeProps = getPartOfThemeProps('TagWrap');
-    const { theme, viewClass } = getPartOfThemeHocProps('TagWrap');
-    const { theme: IconTheme, viewClass: IconViewClass } = getPartOfThemeHocProps('TagIcon');
     return (
       <ItemWrap themeProps={TagWrapThemeProps}>
         <ItemContainer
           ref={c => (this.item = c)}
-          theme={theme}
-          viewClass={viewClass}
+          themeProps={TagWrapThemeProps}
           className={className}
           closeable={closeable}
           onClick={onClick}
         >
           <ItemText themeProps={TagWrapThemeProps}>{this.props.children}</ItemText>
           {closeable ? (
-            <CloseButtonWrap theme={IconTheme} viewClass={IconViewClass}>
+            <CloseButtonWrap themeProps={getPartOfThemeProps('TagIcon')}>
               <CloseButton
                 themeProps={TagWrapThemeProps}
                 iconClass="lugia-icon-reminder_close_circle"
