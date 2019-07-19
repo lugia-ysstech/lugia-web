@@ -3,53 +3,49 @@ import Icon from '../icon';
 import colorsFunc from '../css/stateColor';
 import styled from 'styled-components';
 import { px2remcss } from '../css/units';
-import ThemeHoc from '@lugia/theme-hoc';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
 
 const { disableColor, mediumGreyColor } = colorsFunc();
 
-export const OldValueItem = ThemeHoc(
-  CSSComponent({
-    tag: 'div',
-    className: 'OldValueItem',
-    normal: {
-      selectNames: [
-        ['width'],
-        ['height'],
-        ['color'],
-        ['background'],
-        ['padding'],
-        ['opacity'],
-        ['font'],
-        ['border'],
-        ['borderRadius'],
-      ],
-      getCSS: themeMeta => {
-        const { height = MenuItemHeight } = themeMeta;
-        return `line-height: ${px2remcss(height)}`;
-      },
+export const OldValueItem = CSSComponent({
+  tag: 'div',
+  className: 'OldValueItem',
+  normal: {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['color'],
+      ['background'],
+      ['padding'],
+      ['margin'],
+      ['opacity'],
+      ['font'],
+      ['border'],
+      ['borderRadius'],
+    ],
+    getCSS: themeMeta => {
+      const { height = MenuItemHeight } = themeMeta;
+      return `line-height: ${px2remcss(height)}`;
     },
-    hover: {
-      selectNames: [['color'], ['background'], ['opacity'], ['border'], ['borderRadius']],
-    },
-    css: css`
-      transition: all 0.3s;
-      width: 100%;
-      height: ${px2remcss(MenuItemHeight)};
-      line-height: ${px2remcss(MenuItemHeight)};
-      padding: 0 ${px2remcss(10)};
-      background: ${disableColor};
-      color: ${mediumGreyColor};
-      font-size: ${px2remcss(14)};
-      position: relative;
-      cursor: pointer;
-      overflow: hidden;
-    `,
-  }),
-
-  'ItemWrap',
-  { hover: true, active: true }
-);
+  },
+  hover: {
+    selectNames: [['color'], ['background'], ['opacity'], ['border'], ['borderRadius'], ['font']],
+  },
+  css: css`
+    transition: all 0.3s;
+    width: 100%;
+    height: ${px2remcss(MenuItemHeight)};
+    line-height: ${px2remcss(MenuItemHeight)};
+    padding: 0 ${px2remcss(10)};
+    background: ${disableColor};
+    color: ${mediumGreyColor};
+    font-size: ${px2remcss(14)};
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+  `,
+  option: { hover: true },
+});
 OldValueItem.displayName = 'oldValueItem';
 
 export const TimeIcon = Icon;

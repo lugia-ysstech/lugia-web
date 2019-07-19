@@ -7,18 +7,18 @@
 import '../common/shirm';
 import * as React from 'react';
 import styled from 'styled-components';
-import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
+import { css, StaticComponent } from '@lugia/theme-css-hoc';
 import Support from '../common/FormFieldWidgetSupport';
 import { cacheOnlyFirstCall, getElementPosition } from '../utils';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
-import { FontSize, FontSizeNumber } from '../css';
+import { FontSize } from '../css';
 import {
   BarBackgroundColor,
   BarDefaultSize,
   BarDefaultSizePadding,
   BarHoverBackgroundColor,
 } from '../css/scroller';
-import { px2emcss, px2remcss } from '../css/units';
+import { px2remcss } from '../css/units';
 
 type ScrollerProps = {
   totalSize: number,
@@ -36,15 +36,6 @@ type ScrollerState = {
   sliderSize: number,
 };
 type Direction = 'down' | 'up' | 'none';
-
-// const Container = styled.div`
-// position: relative;
-// background: rgba(255, 255, 255, 0);
-// width: ${px2remcss(20)};
-// height: ${px2remcss(300)};
-// z-index: 996;
-// `;
-// StaticComponent
 const Container = StaticComponent({
   tag: 'div',
   className: 'Container',
@@ -63,10 +54,6 @@ const Container = StaticComponent({
   `,
 });
 
-// const XContainer = styled(Container)`
-//   height: ${px2remcss(BarDefaultSize)};
-// `;
-
 const XContainer = StaticComponent({
   extend: Container,
   className: 'XContainer',
@@ -80,9 +67,6 @@ const XContainer = StaticComponent({
     height: ${px2remcss(BarDefaultSize)};
   `,
 });
-// const YContainer = styled(Container)`
-//   width: ${px2remcss(BarDefaultSize)};
-// `;
 const YContainer = StaticComponent({
   extend: Container,
   className: 'YContainer',

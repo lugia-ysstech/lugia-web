@@ -149,7 +149,7 @@ export default ThemeProvider(
         config.leave = this.handleMouseLeave;
       }
 
-      const checkboxWrapProps = getPartOfThemeProps('CheckboxWrap');
+      const checkboxWrapProps = getPartOfThemeProps('Container');
       const circleEdgeCheckedTheme = getPartOfThemeProps('CheckboxEdgeChecked');
       const circleEdgeUnCheckedTheme = getPartOfThemeProps('CheckboxEdgeUnChecked');
       const circleEdgeCancelTheme = getPartOfThemeProps('CheckboxEdgeCancel');

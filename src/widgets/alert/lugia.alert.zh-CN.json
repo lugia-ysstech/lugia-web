@@ -66,7 +66,7 @@
   },
   "category": ["反馈"],
   "theme": {
-    "AlertWrap": {
+    "Container": {
       "name": "警告提示整体样式",
       "desc": "为警告提示配置整体样式",
       "normal": [

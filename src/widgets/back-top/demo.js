@@ -30,7 +30,7 @@ export default class AffixDemo extends React.Component<any, any> {
   render() {
     const view = {
       [Widget.BackTop]: {
-        BackTopContent: {
+        Container: {
           normal: {
             color: 'red',
             background: { color: 'orange' },

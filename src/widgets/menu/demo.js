@@ -5,11 +5,9 @@
  */
 import * as React from 'react';
 import Menu from './index';
-import Theme from '../theme';
 import Widget from '../consts/index';
-import { getBorder } from '@lugia/theme-utils';
+import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
 import styled from 'styled-components';
-import { getBorderRadius } from '../theme/CSSProvider';
 const { MenuItem } = Menu;
 const Placeholder = Menu.Placeholder;
 const computeCanSeeCount = Menu.computeCanSeeCount;
@@ -54,7 +52,7 @@ const data = [
 ];
 
 const items = [];
-for (let i = 0; i < 100000; i++) {
+for (let i = 0; i < 20; i++) {
   items.push({ text: i, value: i, disabled: false });
 }
 const hasChildrenData = [
@@ -115,11 +113,19 @@ const hasChildrenData = [
   { text: '一级菜单10', value: '一级菜单10', disabled: false },
 ];
 
+const theme = {
+  [Widget.Menu]: {
+    MenuItem: {
+      MenuItemWrap: { normal: { height: 50 } },
+    },
+  },
+};
+
 export default class extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
-      items,
+      // items,
       // selectedKeys: ['一级菜单6/次级菜单6-2/三级菜单a/sub1'],
       // expandedPath: ['一级菜单6/次级菜单6-2/三级菜单a/sub1'],
       selectedKeys: [],
@@ -130,102 +136,223 @@ export default class extends React.Component<any, any> {
   }
 
   render() {
-    const { items = [], selectedKeys, expandedPath } = this.state;
-    const checkedKey = '4';
-    const config = {
+    const { selectedKeys, expandedPath } = this.state;
+
+    const theme = {
       [Widget.Menu]: {
         MenuWrap: {
           normal: {
-            width: 600,
-            height: 350,
-            opacity: 0.6,
-            boxShadow: '2px 2px 5px 5px #4d63ff',
-            background: { color: '#000' },
-            border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }),
+            width: 300,
+            height: 400,
+            // opacity: 0.7,
+            background: {
+              color: '#ccc',
+            },
+            padding: {
+              left: 10,
+              top: 30,
+              //   right: 30,
+            },
+            margin: {
+              left: 20,
+              top: 20,
+            },
+            border: getBorder({ color: '#ff3366', width: 1, style: 'solid' }),
             borderRadius: getBorderRadius(20),
-            // padding: {
-            //   top: 30,
-            //   left: 20,
-            //   right: 20,
-            // },
+            boxShadow: getBoxShadow('2px 2px 2px 4px #ff3366'),
           },
           hover: {
-            opacity: 1,
+            background: {
+              color: '#ff66cc',
+            },
+            // opacity: 1,
+            border: getBorder({ color: '#ff66cc', width: 1, style: 'solid' }),
+            borderRadius: getBorderRadius(20),
+            boxShadow: getBoxShadow('2px 2px 2px 4px #ff66cc'),
           },
         },
         MenuItem: {
-          normal: { color: '#ccc', fontSize: 14, font: { fontWeight: 900 } },
-          hover: {
-            color: '#fff',
-            fontSize: 20,
-            background: { color: 'green' },
-            font: { fontWeight: 400 },
+          MenuItemWrap: {
+            normal: {
+              height: 60,
+              background: { color: '#ff99cc' },
+              color: '#cc00cc',
+              // border: getBorder({ color: '#ff66cc', width: 1, style: 'solid' }),
+              borderRadius: getBorderRadius(20),
+              padding: {
+                left: 60,
+                top: 0,
+              },
+              font: {
+                size: 16,
+              },
+            },
+            hover: {
+              color: '#fff',
+              background: {
+                color: '#660066',
+              },
+              opacity: 0.9,
+              font: {
+                fontWeight: 900,
+              },
+              // border: getBorder({ color: '#ff66cc', width: 1, style: 'solid' }),
+              borderRadius: getBorderRadius(20),
+            },
+
+            active: {
+              color: '#4d63ff',
+              background: {
+                color: 'ff0099',
+              },
+              opacity: 0.9,
+              font: {
+                fontWeight: 900,
+              },
+              // border: getBorder({ color: '#660033', width: 1, style: 'solid' }),
+              borderRadius: getBorderRadius(60),
+            },
+
+            disabled: {
+              background: { color: '#ff99cc' },
+              color: 'red',
+              borderRadius: getBorderRadius(60),
+              opacity: 0.7,
+              padding: {
+                left: 30,
+                top: 0,
+              },
+              font: {
+                size: 26,
+              },
+            },
           },
-          active: {
-            color: 'blue',
-            fontSize: 14,
-            background: { color: 'pink' },
-            font: { fontWeight: 900 },
+
+          SelectedMenuItemWrap: {
+            normal: {
+              height: 80,
+              background: { color: '#cc00ff' },
+              color: '#fff',
+              // border: getBorder({ color: '#660033', width: 1, style: 'solid' }),
+              borderRadius: getBorderRadius(80),
+              padding: {
+                left: 30,
+              },
+              font: {
+                size: 20,
+              },
+            },
+            hover: {
+              color: '#4d63ff',
+              background: {
+                color: '#ffffcc',
+              },
+              opacity: 1,
+              font: {
+                fontWeight: 900,
+              },
+              // border: getBorder({ color: '#336699', width: 1, style: 'solid' }),
+              borderRadius: getBorderRadius(60),
+            },
+
+            active: {
+              color: '#cc0000',
+              background: {
+                color: 'ff9900',
+              },
+              opacity: 1,
+              font: {
+                fontWeight: 900,
+              },
+              // border: getBorder({ color: '#000033', width: 1, style: 'solid' }),
+              borderRadius: getBorderRadius(0),
+            },
           },
-          disabled: { color: 'red', background: { color: '#000' } },
-        },
-        SelectedMenuItem: {
-          normal: {
-            color: 'blue',
-            font: { fontWeight: 900 },
-            fontSize: 18,
-            background: { color: 'orange' },
+
+          Divider: {
+            normal: { background: { color: 'red' } },
           },
-          hover: { color: '#000', background: { color: 'yellow' } },
-          active: { color: 'green' },
+
+          Checkbox: {
+            CheckboxText: {
+              normal: {
+                color: 'red',
+                font: { fontSize: 22, fontWeight: 500 },
+              },
+              hover: { color: 'green', font: { fontSize: 16, fontWeight: 500 } },
+              disabled: { color: 'yellow', font: { fontSize: 16, fontWeight: 500 } },
+            },
+          },
         },
-        Divider: { normal: { color: 'red' } },
-      },
-      [Widget.SubMenu]: {
-        MenuWrap: { normal: { width: 200, height: 350, fontSize: 14 } },
-        MenuItem: {
-          normal: { color: '#4d63ff' },
-          hover: { color: '#000', background: { color: 'orange' }, font: { fontWeight: 900 } },
-          active: { color: '#999' },
-          disabled: { color: 'red', background: { color: '#000' } },
-        },
-        SelectedMenuItem: {
-          normal: { color: 'blue', font: { fontWeight: 900 }, background: { color: '#ccc' } },
-          hover: { color: '#000', background: { color: 'yellow' } },
-          active: { color: 'green' },
+
+        SubMenu: {
+          MenuWrap: {
+            normal: {
+              width: 100,
+              background: {
+                color: '#660033',
+              },
+            },
+          },
+
+          MenuItem: {
+            MenuItemWrap: {
+              normal: {
+                color: '#fff',
+              },
+            },
+          },
+
+          SubMenu: {
+            MenuWrap: {
+              normal: {
+                width: 200,
+                background: {
+                  color: '#777777',
+                },
+              },
+            },
+          },
         },
       },
     };
+
     return (
       <div>
         <Box>
-          <Menu divided theme={config} mutliple={false} data={data} />
+          <Menu
+            theme={theme}
+            autoHeight
+            checkedCSS={'checkbox'}
+            divided
+            mutliple={true}
+            data={data}
+          />
         </Box>
 
         <Box>
-          <Menu divided theme={config} mutliple data={data} />
+          <Menu divided theme={theme} mutliple data={data} />
         </Box>
 
         <MenuWrap>
           <H2>级联嵌套菜单 </H2>
           <Box>
-            <Theme config={config}>
-              <Menu
-                separator={'/'}
-                mutliple={false}
-                popupVisible={true}
-                // action={'click'}
-                action={'hover'}
-                expandedPath={expandedPath}
-                selectedKeys={selectedKeys}
-                handleIsInMenu={this.handleIsInMenu}
-                data={hasChildrenData}
-                offsetY={0}
-                onExpandPathChange={this.onExpandPathChange}
-                onClick={this.onClick}
-                autoHeight
-              />
-            </Theme>
+            <Menu
+              theme={theme}
+              separator={'/'}
+              mutliple={false}
+              // popupVisible={false}
+              // action={'click'}
+              action={'hover'}
+              expandedPath={expandedPath}
+              selectedKeys={selectedKeys}
+              handleIsInMenu={this.handleIsInMenu}
+              data={hasChildrenData}
+              offsetY={0}
+              onExpandPathChange={this.onExpandPathChange}
+              onClick={this.onClick}
+              autoHeight
+            />
           </Box>
           <Button onClick={this.btnClick}>hello</Button>
         </MenuWrap>

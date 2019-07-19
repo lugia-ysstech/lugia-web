@@ -90,5 +90,170 @@
     }
   },
   "type": {},
-  "category": ["数据录入"]
+  "category": ["数据录入"],
+
+  "theme": {
+    "Input": {
+      "theme": {
+        "Input": {
+          "name": "输入框主体",
+          "desc": "输入框主体结构",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["fontSize"],
+            ["font"],
+            ["color"],
+            ["padding"],
+            ["background"],
+            ["border"],
+            ["cursor"],
+            ["margin"],
+            ["padding"]
+          ],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
+        },
+        "InputSuffix": {
+          "name": "后缀图标",
+          "desc": "输入框后缀自定义图标",
+          "normal": [["color"], ["fontSize"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
+        },
+        "InputPrefix": {
+          "name": "前缀图标",
+          "desc": "输入框前缀自定义图标",
+          "normal": [["color"], ["fontSize"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
+        },
+        "InputClearButton": {
+          "name": "输入框清除图标",
+          "desc": "输入框后缀清除图标",
+          "normal": [["color"], ["fontSize"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
+        }
+      }
+    },
+
+    "OldItem": {
+      "name": "展示上一次选中的值",
+      "desc": "配置展示上一次选中值的样式",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["color"],
+        ["background"],
+        ["padding"],
+        ["margin"],
+        ["opacity"],
+        ["font"],
+        ["border"],
+        ["borderRadius"]
+      ],
+      "hover": [["color"], ["background"], ["opacity"], ["font"], ["border"], ["borderRadius"]],
+      "clicked": [],
+      "disabled": []
+    },
+
+    "Menu": {
+      "theme": {
+        "MenuWrap": {
+          "name": "菜单外盒",
+          "desc": "配置菜单组件的外盒样式",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["boxShadow"],
+            ["background"],
+            ["opacity"],
+            ["border"],
+            ["borderRadius"],
+            ["margin"],
+            ["padding"]
+          ],
+          "hover": [["boxShadow"], ["background"], ["opacity"], ["border"], ["borderRadius"]],
+          "clicked": [],
+          "disabled": []
+        },
+        "MenuItem": {
+          "theme": {
+            "MenuItemWrap": {
+              "name": "项的外盒",
+              "desc": "配置每一项的外盒",
+              "normal": [
+                ["height"],
+                ["background"],
+                ["border"],
+                ["borderRadius"],
+                ["opacity"],
+                ["color"],
+                ["padding"]
+              ],
+              "hover": [
+                ["background"],
+                ["border"],
+                ["borderRadius"],
+                ["opacity"],
+                ["color"],
+                ["font"]
+              ],
+              "active": [
+                ["background"],
+                ["border"],
+                ["borderRadius"],
+                ["opacity"],
+                ["color"],
+                ["font"]
+              ],
+              "disabled": [
+                ["background"],
+                ["color"],
+                ["borderRadius"],
+                ["opacity"],
+                ["padding"],
+                ["font"]
+              ]
+            },
+            "SelectedMenuItemWrap": {
+              "name": "选中项的外盒",
+              "desc": "配置选中项的外盒",
+              "normal": [
+                ["background"],
+                ["border"],
+                ["borderRadius"],
+                ["opacity"],
+                ["color"],
+                ["padding"],
+                ["font"]
+              ],
+              "hover": [
+                ["background"],
+                ["border"],
+                ["borderRadius"],
+                ["opacity"],
+                ["color"],
+                ["font"]
+              ],
+              "active": [
+                ["background"],
+                ["border"],
+                ["borderRadius"],
+                ["opacity"],
+                ["color"],
+                ["font"]
+              ],
+              "disabled": []
+            }
+          }
+        }
+      }
+    }
+  }
 }

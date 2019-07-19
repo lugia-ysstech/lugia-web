@@ -12,10 +12,9 @@ import Keys from '../consts/KeyBoard';
 import Widget from '../consts/index';
 import { DisplayField, ValueField } from '../consts/props';
 import { OldValueItem, OldValueTitle, TimeIcon, EmptyBox } from '../css/autocomplete';
-import { DefaultWidth, MenuItemHeight } from '../css/menu';
+import { MenuItemHeight } from '../css/menu';
 import ThemeHoc from '@lugia/theme-hoc';
 import { findDOMNode } from 'react-dom';
-import styled from 'styled-components';
 const ScrollerStep = 30;
 
 type AutoCompleteProps = {
@@ -32,12 +31,15 @@ type AutoCompleteProps = {
   placeholder?: string,
   prefix?: React$Element<any>,
   suffix?: React$Element<any>,
+  getPartOfThemeProps: Function,
+  getPartOfThemeHocProps: Function,
 };
 
 type AutoCompleteState = {
   menuData: String[],
   preSelectValue: string,
   value: string,
+  getPartOfThemeConfig: Function,
 };
 
 export default ShortKeyBoard(
@@ -80,8 +82,7 @@ export default ShortKeyBoard(
       render() {
         const { props, state } = this;
         const { value } = state;
-        const { disabled, placeholder, prefix, suffix } = props;
-        const { width = DefaultWidth } = props.getTheme();
+        const { disabled, placeholder, prefix, suffix, getPartOfThemeHocProps } = props;
         const data = this.getMenuData();
         const len = data.length;
         const menuLen = Math.min(5, len);
@@ -95,7 +96,7 @@ export default ShortKeyBoard(
               this.getOldValueItem(),
               <Menu
                 data={data}
-                theme={this.getMenuTheme()}
+                {...getPartOfThemeHocProps('Menu')}
                 mutliple={false}
                 selectedKeys={value}
                 onClick={this.menuItemClickHandler}
@@ -112,10 +113,11 @@ export default ShortKeyBoard(
             action={disabled ? [] : ['focus']}
             hideAction={['focus']}
             popup={menu}
+            offsetY={4}
             ref={this.triggerEl}
           >
             <Input
-              theme={this.getInputTheme()}
+              {...getPartOfThemeHocProps('Input')}
               value={value}
               disabled={disabled}
               ref={this.inputEl}
@@ -136,11 +138,10 @@ export default ShortKeyBoard(
         if (preSelectValue === '') {
           return null;
         }
-        const { showOldValue, getPartOfThemeHocProps, getPartOfThemeProps } = this.props;
-        const { theme, viewClass } = getPartOfThemeHocProps('PreItem');
-        const themeProps = getPartOfThemeProps('PreItem');
+        const { showOldValue, getPartOfThemeProps } = this.props;
+        const themeProps = getPartOfThemeProps('OldItem');
         return showOldValue ? (
-          <OldValueItem onClick={this.handleClickOldValueItem} theme={theme} viewClass={viewClass}>
+          <OldValueItem onClick={this.handleClickOldValueItem} themeProps={themeProps}>
             <TimeIcon themeProps={themeProps} iconClass={'lugia-icon-reminder_clock_circle_o'} />
             <OldValueTitle themeProps={themeProps}>{preSelectValue}</OldValueTitle>
           </OldValueItem>
@@ -206,7 +207,7 @@ export default ShortKeyBoard(
       }
 
       getInputDom(): Object {
-        return findDOMNode(this.inputEl.current).querySelector('input');
+        return findDOMNode(this.inputEl.current.getThemeTarget()).querySelector('input');
       }
 
       enterValue: string;
@@ -253,22 +254,6 @@ export default ShortKeyBoard(
       onChangeHandle(value: string) {
         const { onChange } = this.props;
         onChange && onChange(value);
-      }
-
-      getMenuTheme() {
-        const { getPartOfThemeConfig } = this.props;
-        const config = {
-          [Widget.Menu]: getPartOfThemeConfig(Widget.Menu),
-        };
-        return config;
-      }
-
-      getInputTheme() {
-        const { getPartOfThemeConfig } = this.props;
-        const config = {
-          [Widget.Input]: getPartOfThemeConfig(Widget.Input),
-        };
-        return config;
       }
 
       onUp() {}

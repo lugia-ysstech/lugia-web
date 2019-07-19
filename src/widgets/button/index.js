@@ -199,7 +199,7 @@ export default ThemeProvider(
             up: onMouseUp,
             down: onMouseDown,
           };
-          const buttonWrapTheme = getPartOfThemeProps('ButtonWrap');
+          const buttonWrapTheme = getPartOfThemeProps('Container');
           buttonWrapTheme.propsConfig = {
             type,
             plain,

@@ -39,7 +39,7 @@ export default class ProgressDemo extends React.Component<any, any> {
   render() {
     const view = {
       [Widget.Progress]: {
-        ProgressWrap: {
+        Container: {
           normal: {
             width: 300,
             height: 50,
