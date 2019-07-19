@@ -178,7 +178,7 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
   }
 
   getContent() {
-    const contentThemeProps = this.props.getPartOfThemeProps('TooltipContent');
+    const contentThemeProps = this.props.getPartOfThemeProps('Container');
     return (
       <Content themeProps={contentThemeProps}>
         {this.getIconContainer()}
@@ -223,7 +223,7 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
       {
         [viewClass]: {
           PopoverContent: {
-            TooltipContent: {
+            Container: {
               normal: {
                 fontSize: 12,
               },

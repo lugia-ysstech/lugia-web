@@ -18,6 +18,22 @@ import { units } from '@lugia/css';
 const { px2remcss } = units;
 const { defaultColor, blackColor } = colorsFunc();
 
+const Container = CSSComponent({
+  tag: 'div',
+  className: 'Container',
+  normal: {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['boxShadow'],
+      ['opacity'],
+      ['background'],
+      ['padding'],
+      ['margin'],
+    ],
+  },
+});
+
 const ContentWrapper: Object = CSSComponent({
   tag: 'div',
   className: 'TooltipContentWrapper',
@@ -84,11 +100,7 @@ const Arrow: Object = CSSComponent({
   tag: 'div',
   className: 'ToolTipArrow',
   normal: {
-    selectNames: [['fontSize'], ['color']],
-    defaultTheme: {
-      fonSize: 12,
-      color: defaultColor,
-    },
+    selectNames: [['background']],
     getCSS(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
       const { background = {} } = themeMeta;
@@ -124,8 +136,15 @@ const Arrow: Object = CSSComponent({
         border-left-color: ${bgColor};
       `;
         default:
-          return '';
+          return 'background:transparent';
       }
+    },
+    getThemeMeta() {
+      return {
+        background: {
+          color: 'transparent',
+        },
+      };
     },
   },
   css: css`
@@ -367,7 +386,7 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
     const { visible } = this.state;
     const direction = this.getDirection(placement);
     const getTarget: Function = cmp => (this.trigger = cmp);
-    const contentThemeProps = this.props.getPartOfThemeProps('TooltipContent', {
+    const contentThemeProps = this.props.getPartOfThemeProps('Container', {
       props: {
         size,
         popArrowType,
@@ -408,13 +427,12 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
 
   getArrow(direction) {
     const { placement, popArrowType } = this.props;
-    const theThemeProps = this.props.getPartOfThemeProps('TooltipContent', {
+    const theThemeProps = this.props.getPartOfThemeProps('Container', {
       props: {
         direction,
         placement,
       },
     });
-
     if (popArrowType === 'round') {
       return [<NewArrow themeProps={theThemeProps} />, <MaskArrow themeProps={theThemeProps} />];
     }

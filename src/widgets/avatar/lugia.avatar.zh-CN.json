@@ -105,10 +105,10 @@
     }
   },
   "theme": {
-    "AvatarContainer": {
+    "Container": {
       "name": "头像",
-      "desc": "对头像配置样式",
-      "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"]],
+      "desc": "对头像外部容器配置样式",
+      "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"],["opacity"],["boxShadow"]],
       "hover": [["width"], ["height"]],
       "clicked": [],
       "disabled": []

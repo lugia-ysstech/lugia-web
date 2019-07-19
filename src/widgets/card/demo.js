@@ -79,7 +79,7 @@ class AmountCard extends React.Component<Object, Object> {
 export default () => {
   const view = {
     [Widget.Card]: {
-      CardContainer: {
+      Container: {
         normal: { width: 500, height: 200 },
         hover: {
           background: {
@@ -100,7 +100,7 @@ export default () => {
   };
   const imageVCard = {
     [Widget.Card]: {
-      CardContainer: {
+      Container: {
         normal: {
           width: 200,
           height: 350,
@@ -143,7 +143,7 @@ export default () => {
   };
   const imageHCard = {
     [Widget.Card]: {
-      CardContainer: {
+      Container: {
         normal: {
           width: 360,
           height: 200,
@@ -165,7 +165,7 @@ export default () => {
   };
   const avatarVCard = {
     [Widget.Card]: {
-      CardContainer: {
+      Container: {
         normal: {
           width: 160,
           height: 220,
@@ -190,7 +190,7 @@ export default () => {
   };
   const avatarHCard = {
     [Widget.Card]: {
-      CardContainer: {
+      Container: {
         normal: {
           width: 260,
           height: 180,
@@ -210,7 +210,7 @@ export default () => {
 
   const price = {
     [Widget.Card]: {
-      CardContainer: {
+      Container: {
         normal: { width: 200, height: 220 },
         hover: {
           background: {
@@ -222,7 +222,7 @@ export default () => {
   };
   const tabsCard = {
     [Widget.Card]: {
-      CardContainer: {
+      Container: {
         normal: { width: 400, height: 240 },
       },
     },

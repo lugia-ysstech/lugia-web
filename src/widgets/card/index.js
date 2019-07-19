@@ -21,7 +21,7 @@ const { px2remcss } = units;
 const { darkGreyColor, lightGreyColor, defaultColor, themeColor } = colorsFunc();
 const CardOutContainer = CSSComponent({
   tag: 'div',
-  className: 'cardOutContainer',
+  className: 'CardOutContainer',
   normal: {
     selectNames: [
       ['width'],
@@ -395,7 +395,7 @@ class Card extends React.Component<CardProps, CardState> {
     }
     resultTheme = deepMerge(
       resultTheme,
-      this.props.getPartOfThemeProps('CardContainer', { props: { type, imageOrientation } })
+      this.props.getPartOfThemeProps('Container', { props: { type, imageOrientation } })
     );
     const cardContentTheme = this.props.getPartOfThemeProps('CardContent', {
       props: {

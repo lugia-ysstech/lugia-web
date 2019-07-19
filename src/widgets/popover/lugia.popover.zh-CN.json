@@ -103,7 +103,7 @@
       "theme": {
         "PopoverContent": {
           "theme": {
-            "TooltipContent": {
+            "Container": {
               "name": "气泡卡片框内容部分",
               "desc": "气泡卡片框内容部分",
               "normal": [
@@ -166,7 +166,7 @@
   "theme": {
     "PopoverContent": {
       "theme": {
-        "TooltipContent": {
+        "Container": {
           "name": "气泡卡片框内容部分",
           "desc": "气泡卡片框内容部分",
           "normal": [

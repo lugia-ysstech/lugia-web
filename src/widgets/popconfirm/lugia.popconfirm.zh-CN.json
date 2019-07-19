@@ -126,7 +126,7 @@
           "theme": {
             "PopoverContent": {
               "theme": {
-                "TooltipContent": {
+                "Container": {
                   "name": "气泡确认框内容部分",
                   "desc": "气泡确认框内容部分",
                   "normal": [
@@ -165,7 +165,7 @@
     }
   },
   "theme": {
-    "TooltipContent": {
+    "Container": {
       "name": "气泡确认框内容部分",
       "desc": "气泡确认框内容部分",
       "normal": [
