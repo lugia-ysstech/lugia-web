@@ -9,8 +9,6 @@ import Card from './index';
 import styled from 'styled-components';
 import Theme from '../theme';
 import Tabs from '../tabs/tabs';
-import Input from '../input';
-import Button from '../button';
 import Widget from '../consts';
 
 const Wrapper = styled.div`
@@ -79,23 +77,20 @@ class AmountCard extends React.Component<Object, Object> {
 }
 
 export default () => {
-  const avatar = {
+  const view = {
     [Widget.Card]: {
       CardContainer: {
-        normal: { width: 300, height: 160 },
+        normal: { width: 500, height: 200 },
         hover: {
           background: {
             color: 'red',
           },
         },
       },
-    },
-  };
-  const view = {
-    [Widget.Card]: {
-      CardContainer: {
-        normal: { width: 500, height: 200 },
-        hover: {
+      CardTitleTipLine: {
+        normal: {
+          width: 8,
+          height: 30,
           background: {
             color: 'red',
           },

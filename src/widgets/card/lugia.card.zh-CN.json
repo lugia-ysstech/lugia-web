@@ -335,6 +335,11 @@
             ["margin"],
             ["padding"]
           ]
+        },
+        "CardTitleTipLine": {
+          "name": "卡片标题提示",
+          "desc": "卡片标题提示配置",
+          "normal": [["width"], ["height"], ["background"]]
         }
       }
     },
@@ -517,6 +522,11 @@
         ["opacity"]
       ],
       "hover": [["width"], ["height"], ["background"]]
+    },
+    "CardTitleTipLine": {
+      "name": "卡片标题提示",
+      "desc": "卡片标题提示配置",
+      "normal": [["width"], ["height"], ["background"]]
     }
   }
 }
