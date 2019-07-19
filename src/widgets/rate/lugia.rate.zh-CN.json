@@ -39,11 +39,6 @@
         "half": "lugia-icon-finacial_half_star"
       }
     },
-    "className":{
-      "type": "string",
-      "desc": "自定义样式类名",
-      "defaultValue": ""
-    },
     "value":{
       "type": "number",
       "desc": "当前分值",
@@ -102,7 +97,7 @@
         "DangerIcon": {
           "name": "低分值样式",
           "desc": "选中的图标数少于一半时的样式配置",
-          "normal": [["color"],["margin"]],
+          "normal": [["color"]],
           "hover": [],
           "clicked": [],
           "disabled": []
@@ -110,7 +105,7 @@
         "AmazedIcon": {
           "name": "高分值样式",
           "desc": "选中的图标数超过一半时的样式配置",
-          "normal": [["color"],["margin"]],
+          "normal": [["color"]],
           "hover": [],
           "clicked": [],
           "disabled": []
@@ -128,7 +123,7 @@
         "ActiveTextIcon": {
           "name": "选中的文字",
           "desc": "选中的文字的样式配置",
-          "normal": [["color"],["margin"], ["fontSize"]],
+          "normal": [["color"]],
           "hover": [],
           "clicked": [],
           "disabled": []
@@ -148,7 +143,7 @@
     "ActiveIcon": {
         "name": "选中的图标",
         "desc": "选中的星星的样式",
-        "normal": [["color"],["margin"], ["fontSize"]],
+        "normal": [["color"]],
         "hover": [],
         "clicked": [],
         "disabled": []

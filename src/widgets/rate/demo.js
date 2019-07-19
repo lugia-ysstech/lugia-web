@@ -35,12 +35,11 @@ class RateDemo extends React.Component<any, any> {
         disabled: false,
         allowHalf: false,
         classify: false,
-        onClick: (newValue: number, oldValue: number) => {
+        onClick: (e, res) => {
+          const { newValue } = res;
           this.setStateValue('defaultProps', 'value', newValue);
         },
-        onChange: (newValue: number, oldValue: number) => {
-          this.setStateValue('defaultProps', 'value', newValue);
-        },
+        onChange: (e, res) => {},
       },
       defaultProps1: {
         count: 5,
@@ -49,12 +48,11 @@ class RateDemo extends React.Component<any, any> {
         disabled: false,
         allowHalf: true,
         classify: false,
-        onClick: (newValue: number, oldValue: number) => {
+        onClick: (e, res) => {
+          const { newValue } = res;
           this.setStateValue('defaultProps1', 'value', newValue);
         },
-        onChange: (newValue: number, oldValue: number) => {
-          this.setStateValue('defaultProps1', 'value', newValue);
-        },
+        onChange: (e, res) => {},
       },
       defaultProps2: {
         count: 5,
@@ -63,12 +61,11 @@ class RateDemo extends React.Component<any, any> {
         disabled: false,
         allowHalf: true,
         classify: true,
-        onClick: (newValue: number, oldValue: number) => {
+        onClick: (e, res) => {
+          const { newValue } = res;
           this.setStateValue('defaultProps2', 'value', newValue);
         },
-        onChange: (newValue: number, oldValue: number) => {
-          this.setStateValue('defaultProps2', 'value', newValue);
-        },
+        onChange: (e, res) => {},
       },
       defaultProps3: {
         count: 5,
@@ -77,12 +74,11 @@ class RateDemo extends React.Component<any, any> {
         disabled: true,
         allowHalf: true,
         className: 'cccc',
-        onClick: (newValue: number, oldValue: number) => {
+        onClick: (e, res) => {
+          const { newValue } = res;
           this.setStateValue('defaultProps3', 'value', newValue);
         },
-        onChange: (newValue: number, oldValue: number) => {
-          this.setStateValue('defaultProps3', 'value', newValue);
-        },
+        onChange: (e, res) => {},
       },
       defaultProps4: {
         count: 5,
@@ -97,12 +93,11 @@ class RateDemo extends React.Component<any, any> {
           amazed: 'lugia-icon-financial_smile',
         },
         className: 'cccc',
-        onClick: (newValue: number, oldValue: number) => {
+        onClick: (e, res) => {
+          const { newValue } = res;
           this.setStateValue('defaultProps4', 'value', newValue);
         },
-        onChange: (newValue: number, oldValue: number) => {
-          this.setStateValue('defaultProps4', 'value', newValue);
-        },
+        onChange: (e, res) => {},
       },
       defaultProps5: {
         count: 5,
@@ -116,12 +111,11 @@ class RateDemo extends React.Component<any, any> {
           danger: 'lugia-icon-financial_sad',
           amazed: 'lugia-icon-financial_smile',
         },
-        onClick: (newValue: number, oldValue: number) => {
+        onClick: (e, res) => {
+          const { newValue } = res;
           this.setStateValue('defaultProps5', 'value', newValue);
         },
-        onChange: (newValue: number, oldValue: number) => {
-          this.setStateValue('defaultProps5', 'value', newValue);
-        },
+        onChange: (e, res) => {},
       },
       defaultProps6: {
         count: 5,
@@ -135,20 +129,18 @@ class RateDemo extends React.Component<any, any> {
           danger: 'lugia-icon-financial_sad',
           amazed: 'lugia-icon-financial_smile',
         },
-        onClick: (newValue: number, oldValue: number) => {
+        onClick: (e, res) => {
+          const { newValue } = res;
           this.setStateValue('defaultProps6', 'value', newValue);
         },
-        onChange: (newValue: number, oldValue: number) => {
-          this.setStateValue('defaultProps6', 'value', newValue);
-        },
+        onChange: (e, res) => {},
       },
       defaultProps7: {
-        onClick: (newValue: number, oldValue: number) => {
+        onClick: (e, res) => {
+          const { newValue } = res;
           this.setStateValue('defaultProps7', 'value', newValue);
         },
-        onChange: (newValue: number, oldValue: number) => {
-          this.setStateValue('defaultProps7', 'value', newValue);
-        },
+        onChange: (e, res) => {},
       },
       defaultProps8: 8,
     };
@@ -159,9 +151,6 @@ class RateDemo extends React.Component<any, any> {
         ActiveIcon: {
           normal: {
             color: `${warningColor}`,
-            margin: {
-              right: 36,
-            },
           },
           disabled: {
             color: '#ccc',
@@ -182,7 +171,7 @@ class RateDemo extends React.Component<any, any> {
           normal: {
             color: `${warningColor}`,
             margin: {
-              right: 36,
+              right: 80,
             },
           },
           disabled: {
@@ -193,7 +182,7 @@ class RateDemo extends React.Component<any, any> {
           normal: {
             color: '#e8e8e8',
             margin: {
-              right: 36,
+              right: 10,
             },
           },
           disabled: {

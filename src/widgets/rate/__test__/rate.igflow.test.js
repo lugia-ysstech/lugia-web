@@ -1,5 +1,5 @@
 import Adapter from 'enzyme-adapter-react-16';
-import { createCalssArray, calcValue } from '../rate';
+import { createIconTypeArray, calcValue } from '../rate';
 import Enzyme from 'enzyme';
 import 'jest-styled-components';
 
@@ -15,8 +15,8 @@ describe('Rate igflow Test', () => {
       starNum: index,
       allowHalf: isallowHalf,
     };
-    it('Function createArr', () => {
-      const res = createCalssArray(num, condition);
+    it('Function createIconTypeArray', () => {
+      const res = createIconTypeArray(num, condition);
       expect(res).toEqual(expectation);
     });
   }
