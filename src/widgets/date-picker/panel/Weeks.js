@@ -102,7 +102,6 @@ class Weeks extends Component<TypeProps, TypeState> {
   render() {
     const { year, secondTitle, isWeekInner, weeks, step } = this.state;
     const { theme, themeProps } = this.props;
-    console.log('Weeks.js', themeProps);
     return (
       <DateWrapper themeProps={themeProps} {...theme} mode={this.props.mode}>
         <div>

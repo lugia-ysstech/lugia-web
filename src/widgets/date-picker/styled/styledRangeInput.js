@@ -62,7 +62,7 @@ export const RangeInputInner = CSSComponent({
   normal: {
     selectNames: [],
     getCSS(themeMate, themeConfig) {
-      console.log(themeMate, themeConfig);
+      //  console.log(themeMate, themeConfig);
     },
   },
   hover: {
@@ -99,7 +99,7 @@ export const RangeMiddleSpan = CSSComponent({
     getCSS(themeMate) {
       const {
         width,
-        border: { left: { width: leftWidth = 1 } = {}, right: { width: rightWidth = 1 } = {} },
+        border: { left: { width: leftWidth = 1 } = {}, right: { width: rightWidth = 1 } = {} } = {},
       } = ({} = themeMate);
       return `
         width:${em((width - leftWidth - rightWidth) * 0.1)}
@@ -110,7 +110,7 @@ export const RangeMiddleSpan = CSSComponent({
     selectNames: [],
     getCSS(themeMate, themeConfig) {
       const {
-        border: { left: { width: leftWidth = 1 } = {}, right: { width: rightWidth = 1 } = {} },
+        border: { left: { width: leftWidth = 1 } = {}, right: { width: rightWidth = 1 } = {} } = {},
       } = ({} = themeMate);
       const {
         propsConfig: { width },

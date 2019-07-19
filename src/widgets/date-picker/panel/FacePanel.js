@@ -50,7 +50,6 @@ class FacePanel extends Component<TypeProps, any> {
     };
     const ChildrenData = this.getChildrenData(this.props, childDatas);
     const { themeProps } = this.props;
-    console.log('FacePanel.js', themeProps);
     return (
       <DatePanel themeProps={themeProps}>
         {ChildrenData.map((current: any, index: number) => {

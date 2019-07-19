@@ -56,10 +56,8 @@ export const DateWrapper = CSSComponent({
     selectNames: [],
     getCSS(themeMate, themeConfig) {
       const { width: themeMateWidth } = themeMate;
-      console.log(themeMate);
       const { propsConfig } = themeConfig;
       const { width } = getThemeProperty({ ...propsConfig, width: themeMateWidth });
-      console.log(themeMate, width, propsConfig);
       return `
         width:${em(width)}
       `;
@@ -281,7 +279,6 @@ export const DateChild = CSSComponent({
       const { width } = themeMeta;
       const { propsConfig } = themeConfig;
       const { weekTitleWidth } = getThemeProperty({ ...propsConfig, width });
-      console.log(weekTitleWidth);
       return `
         width:${em(weekTitleWidth)};
       `;
@@ -421,9 +418,7 @@ export const RangeWrap = CSSComponent({
     getCSS(themeMate, themeConfig) {
       const { width } = themeMate;
       const { propsConfig } = themeConfig;
-      console.log(propsConfig);
       const { rangeWrapWidth } = getThemeProperty({ ...propsConfig, width });
-      console.log(rangeWrapWidth);
       return `
         width:${em(rangeWrapWidth)};
       `;
@@ -468,7 +463,7 @@ export const RangeInputWrap = CSSComponent({
   normal: {
     selectNames: [],
     getCSS(themeMate, themeConfig) {
-      console.log(themeMate, themeConfig);
+      // console.log(themeMate, themeConfig);
     },
   },
   hover: {
@@ -494,7 +489,7 @@ export const RangeInputInner = CSSComponent({
   normal: {
     selectNames: [],
     getCSS(themeMate, themeConfig) {
-      console.log(themeMate, themeConfig);
+      //  console.log(themeMate, themeConfig);
     },
   },
   hover: {
@@ -527,7 +522,7 @@ export const RangeMiddleSpan = CSSComponent({
   normal: {
     selectNames: [],
     getCSS(themeMate, themeConfig) {
-      console.log(themeMate, themeConfig);
+      // console.log(themeMate, themeConfig);
     },
   },
   hover: {

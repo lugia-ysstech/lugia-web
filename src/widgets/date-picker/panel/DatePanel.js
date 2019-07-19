@@ -140,7 +140,6 @@ class Dates extends Component<TypeProps, any> {
     } = this.props;
     const { isWeeks, isRange } = modeStyle(mode);
     const { themeProps } = this.props;
-    console.log('DatePanel.js', themeProps);
     const dateChildren = days.map((currentValue, index) => {
       let rangeChose = false;
       if (rangeRenderIndex && rangeRenderIndex.length !== 0) {

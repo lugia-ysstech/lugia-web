@@ -109,7 +109,6 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
     const { isWeek, isMonth, isYear, isTime, isTimes } = modeStyle(mode);
     const { value, month, timeValue } = this.state;
     let { year, weeks } = this.state;
-    console.log('switchPanel', themeProps);
     const config = {
       ...this.props,
       format,

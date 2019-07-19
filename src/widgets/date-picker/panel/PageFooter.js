@@ -97,8 +97,16 @@ class PageFooter extends Component<TypeProps, TypeState> {
   }
 
   handleClick = (value: string | Array<string>) => (e: any) => {
-    const { onChange } = this.props;
-    onChange && onChange({ newValue: value, event: e });
+    const { onChange, mode } = this.props;
+    const { isDate, isRange } = modeStyle(mode);
+    let newValue = value;
+    if (isDate && typeof value !== 'string') {
+      newValue = '';
+    }
+    if (isRange && (!Array.isArray(value) || (Array.isArray(value) && value.length < 2))) {
+      newValue = ['', ''];
+    }
+    onChange && onChange({ newValue, event: e });
   };
   onOkClick = (status: string) => () => {
     this.publicOnChange('onOk');
@@ -168,7 +176,6 @@ class PageFooter extends Component<TypeProps, TypeState> {
     }
     const { showTimeBtnIsDisabled } = this.props;
     const newChildrenNode = (isDate || isRange) && buttonOptions ? ChildrenNode : '';
-    console.log('PageFooter.js', themeProps);
     return (
       <FooterWrap {...theme} showFooter={showFooter} themeProps={themeProps}>
         {showFooter ? (

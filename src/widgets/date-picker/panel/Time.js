@@ -135,13 +135,16 @@ class Time extends Component<TypeProps, TypeState> {
       hasTimeWrapBorder,
       themeProps,
     };
-    console.log('Time.js', themeProps);
     const { TimeColWidth } = getThemeProperty(config);
 
     return (
       <Theme config={{ [Widget.Menu]: { width: TimeColWidth } }}>
         <TimeWrap {...config}>
-          {isTime ? '' : <TimeTitle>{moment(value).format('YYYY年MM月DD日')}</TimeTitle>}
+          {isTime ? (
+            ''
+          ) : (
+            <TimeTitle themeProps={themeProps}>{moment(value).format('YYYY年MM月DD日')}</TimeTitle>
+          )}
           {isTime && !hasHour ? (
             ''
           ) : (

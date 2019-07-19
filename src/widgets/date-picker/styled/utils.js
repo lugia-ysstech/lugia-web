@@ -24,14 +24,13 @@ export const themeColor = {
 export function getThemeProperty(props: Object) {
   const { hasTimeWrapBorder, hasItemNumber = 3 } = props;
   const { isRange, isTime } = modeStyle(props.mode);
-  const normalWidth = isRange ? 420 : 200;
+  const normalWidth = isRange ? 420 : 300;
   const { width = normalWidth, color, backgroundColor } = props;
   const rangeWrapWidth = width >= 600 ? width : 600;
   const newWidth = isRange ? rangeWrapWidth / 2 : isTime ? width : width * 1;
   const TimeWrapWidth = isRange && hasTimeWrapBorder ? newWidth - 1 : newWidth;
   const TimeColWidth = TimeWrapWidth / hasItemNumber;
   const weekTitleWidth = (newWidth - DateWrapperPadding.left * 2 - 2) / 7;
-  console.log(props);
   return {
     width: newWidth,
     TimeWrapWidth,

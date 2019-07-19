@@ -80,7 +80,6 @@ class Year extends Component<TypeProps, TypeState> {
   render() {
     const { showYears, start, end, title } = this.state;
     const { step = 12, theme, themeProps } = this.props;
-    console.log('Year.js', themeProps);
     return (
       <DateWrapper themeProps={themeProps} {...theme} mode={this.props.mode}>
         <div>

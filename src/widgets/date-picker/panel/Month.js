@@ -69,7 +69,6 @@ class Month extends Component<TypeProps, TypeState> {
     const { month, year } = this.state;
     const { theme } = this.props;
     const { themeProps } = this.props;
-    console.log('Month.js', themeProps);
     return (
       <DateWrapper {...theme} themeProps={themeProps}>
         <div>

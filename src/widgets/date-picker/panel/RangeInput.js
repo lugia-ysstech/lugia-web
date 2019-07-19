@@ -111,7 +111,13 @@ class RangeInput extends Component<TypeProps, TypeState> {
     const inputPrefixProps = getThemeProps({ mode, getPartOfThemeProps }, 'InputPrefix');
     const clearButtonProps = getThemeProps({ mode, getPartOfThemeProps }, 'ClearButton');
     const {
-      themeConfig: { normal, hover, focus, active, disabled: styleDisabled },
+      themeConfig: {
+        normal = {},
+        hover = {},
+        focus = {},
+        active = {},
+        disabled: styleDisabled = {},
+      },
     } = inputContainProps;
     const {
       width,
@@ -131,9 +137,11 @@ class RangeInput extends Component<TypeProps, TypeState> {
         bottom: { width: hoverBorderWidthB = 1 } = {},
       } = {},
     } = hover;
+
     const { themeConfig: inputPrefixThemeConfig } = inputPrefixProps;
     const { themeConfig: clearButtonThemeConfig } = clearButtonProps;
     inputContainProps.propsConfig.width = width;
+
     return (
       <Theme
         config={{
@@ -156,6 +164,12 @@ class RangeInput extends Component<TypeProps, TypeState> {
                 ...inputPublicConfig(active),
               },
               disabled: {
+                border: {
+                  top: { width: 0, style: '', color: '' },
+                  right: { width: 0, style: '', color: '' },
+                  bottom: { width: 0, style: '', color: '' },
+                  left: { width: 0, style: '', color: '' },
+                },
                 ...this.getInputStyle(styleDisabled),
               },
             },

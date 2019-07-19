@@ -36,7 +36,6 @@ class WeekDays extends Component<TypeProps, null> {
     const firstDayOfWeek = localeData.firstDayOfWeek();
     const { newWeeks } = this.getnewWeeks(this.props, firstDayOfWeek);
     const { themeProps } = this.props;
-    console.log('week.js', themeProps);
     return (
       <HeaderWeekBox themeProps={themeProps}>
         {newWeeks.map((currentValue, index) => {

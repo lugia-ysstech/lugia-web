@@ -160,7 +160,7 @@ class DateInput extends Component<TypeProps, TypeState> {
                     format={format}
                     onChange={this.onChange}
                     footerChange={this.footerChange}
-                    setTreePopupVisible={this.setTreePopupVisible}
+                    setPopupVisible={this.setPopupVisible}
                     showTimeBtnIsDisabled={showTimeBtnIsDisabled}
                     model={this.pageFooterChange}
                   />
@@ -209,11 +209,12 @@ class DateInput extends Component<TypeProps, TypeState> {
       if ((showTime || onOk) && !(isWeek || isYear || isMonth)) {
         visible = true;
       }
+      this.setModeState(newValue, format, isWeeks || isWeek);
     }
-    this.setModeState(newValue, format, isWeeks || isWeek);
+
     onChange && onChange({ event, newValue, oldValue: this.oldValue });
     this.setState({ value: newValue, isValid });
-    !isTime && this.setTreePopupVisible(visible);
+    !isTime && this.setPopupVisible(visible);
   };
   setModeState = (value: string, format: string, isWeeks: boolean) => {
     const newFormat = isWeeks ? 'YYYY-MM-DD' : format;
@@ -293,17 +294,15 @@ class DateInput extends Component<TypeProps, TypeState> {
       status === 'showDate' && this.targetMode.onChange({ value: panelValue });
       stateData = { status };
     }
-    this.setTreePopupVisible(visible);
+    this.setPopupVisible(visible);
     this.setState(stateData);
   };
   timeChange = (obj: Object) => {
     const { value } = obj;
     this.setState({ value });
   };
-  setTreePopupVisible(visible: boolean) {
-    if (this.trigger.current && this.trigger.current.getThemeTarget()) {
-      this.trigger.current.getThemeTarget().setPopupVisible(visible);
-    }
+  setPopupVisible(visible: boolean) {
+    this.trigger.current && this.trigger.current.setPopupVisible(visible);
   }
 }
 
