@@ -32,6 +32,7 @@ const BaseAvatar = CSSComponent({
       ['margin'],
       ['padding'],
       ['opacity'],
+      ['boxShadow'],
     ],
     defaultTheme: {
       color: 'rgba(0, 0, 0, 0.65)',
@@ -209,7 +210,7 @@ class AvatarBox extends React.Component<AvatarProps, AvatarState> {
     const { props } = this;
     const { themeProps, size, shape, src } = props;
     const thePropsTheme = deepMerge(
-      this.props.getPartOfThemeProps('AvatarContainer', {
+      this.props.getPartOfThemeProps('Container', {
         props: {
           size,
           shape,

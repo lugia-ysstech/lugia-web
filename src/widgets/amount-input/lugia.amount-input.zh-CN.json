@@ -134,24 +134,43 @@
         "InnerInput": {
           "theme": {
             "Input": {
-              "name": "金额输入框",
-              "desc": "金额输入框主体结构",
+              "name": "金额输入框主体",
+              "desc": "金额输入框主体",
               "normal": [
                 ["width"],
                 ["height"],
                 ["fontSize"],
                 ["font"],
                 ["color"],
-                ["padding"],
                 ["background"],
                 ["border"],
+                ["cursor"]
+              ],
+              "hover": [
+                ["width"],
+                ["height"],
+                ["padding"],
+                ["border"],
+                ["borderRadius"],
                 ["cursor"],
+                ["background"]
+              ],
+              "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"]],
+              "disabled": [["cursor"], ["border"], ["borderRadius"], ["background"]]
+            },
+            "Container": {
+              "name": "输入框外部容器",
+              "desc": "输入框外部容器",
+              "normal": [
+                ["width"],
+                ["height"],
+                ["background"],
+                ["border"],
+                ["borderRadius"],
+                ["boxShadow"],
                 ["margin"],
                 ["padding"]
-              ],
-              "hover": [],
-              "clicked": [],
-              "disabled": []
+              ]
             }
           }
         },
@@ -165,7 +184,7 @@
         },
         "AmountTip": {
           "theme": {
-            "TooltipContent": {
+            "Container": {
               "name": "输入框提示框外框部分",
               "desc": "输入框提示框外框部分",
               "normal": [["opacity"], ["background"], ["width"], ["height"]],
@@ -189,8 +208,22 @@
   "theme": {
     "InnerInput": {
       "theme": {
+        "Container": {
+          "name": "输入框外部容器",
+          "desc": "输入框外部容器",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["background"],
+            ["border"],
+            ["borderRadius"],
+            ["boxShadow"],
+            ["margin"],
+            ["padding"]
+          ]
+        },
         "Input": {
-          "name": "金额输入框",
+          "name": "金额输入框主体",
           "desc": "金额输入框主体结构",
           "normal": [
             ["width"],
@@ -198,16 +231,21 @@
             ["fontSize"],
             ["font"],
             ["color"],
-            ["padding"],
             ["background"],
             ["border"],
-            ["cursor"],
-            ["margin"],
-            ["padding"]
+            ["cursor"]
           ],
-          "hover": [],
-          "clicked": [],
-          "disabled": []
+          "hover": [
+            ["width"],
+            ["height"],
+            ["padding"],
+            ["border"],
+            ["borderRadius"],
+            ["cursor"],
+            ["background"]
+          ],
+          "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"]],
+          "disabled": [["cursor"], ["border"], ["borderRadius"], ["background"]]
         }
       }
     },
@@ -221,7 +259,7 @@
     },
     "AmountTip": {
       "theme": {
-        "TooltipContent": {
+        "Container": {
           "name": "输入框提示框外框部分",
           "desc": "输入框提示框外框部分",
           "normal": [["opacity"], ["background"], ["width"], ["height"]],

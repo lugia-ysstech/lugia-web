@@ -13,7 +13,7 @@ import { getStateFromProps, processOnVisibleChange } from '../tooltip';
 
 import ThemeHoc from '@lugia/theme-hoc';
 import { deepMerge } from '@lugia/object-utils';
-import { css, StaticComponent } from '../theme/CSSProvider';
+import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import { units } from '@lugia/css';
 
 const { px2remcss } = units;
@@ -98,7 +98,7 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
     const tooltipTheme = deepMerge(
       {
         [viewClass]: {
-          TooltipContent: {
+          Container: {
             normal: {
               padding: {
                 top: 12,

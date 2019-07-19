@@ -40,15 +40,19 @@ export default () => {
       InnerInput: {
         Input: {
           normal: {
-            width: 400,
-            height: 50,
             opacity: 0.8,
+          },
+        },
+        Container: {
+          normal: {
+            width: 300,
+            height: 30,
           },
         },
       },
       AmountInputPrefix: { normal: { fontSize: 14, color: 'blue' } },
       AmountTip: {
-        TooltipContent: {
+        Container: {
           normal: {
             background: {
               color: '#eee',
