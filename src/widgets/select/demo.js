@@ -321,6 +321,7 @@ export default class Demo extends React.Component {
         <H2>single</H2>
         <Select
           theme={config}
+          createPortal
           data={data}
           displayField={'label'}
           mutliple

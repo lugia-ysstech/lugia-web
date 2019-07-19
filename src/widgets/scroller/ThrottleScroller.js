@@ -7,7 +7,6 @@
 import * as React from 'react';
 import Scroller from './index';
 import Widget from '../consts/index';
-import { toNumber } from '../common/NumberUtils';
 import { DefaultHeight, ScrollerContainer, Col, ScrollerCol } from '../css/scroller';
 import { getCanSeeCount } from './support';
 
@@ -86,7 +85,7 @@ export default (
             start={0}
             end={length}
             canSeeCount={length}
-            menuItemHeight={this.itemHeight}
+            itemHeight={this.itemHeight}
             ref={this.scrollerTarget}
           />
         );
@@ -97,7 +96,6 @@ export default (
 
       const end = this.fetchEnd(start);
       const canSeeCount = this.canSeeCount();
-      const menuItemHeight = this.itemHeight;
 
       return pack([
         <Col themeProps={themeProps} level={level}>
@@ -106,7 +104,7 @@ export default (
             canSeeCount={canSeeCount}
             start={start}
             end={end}
-            menuItemHeight={this.itemHeight}
+            itemHeight={this.itemHeight}
             ref={this.scrollerTarget}
           />
         </Col>,
@@ -115,7 +113,7 @@ export default (
             ref={cmp => (this.scroller = cmp)}
             type={type}
             onDrag={this.onDrag}
-            value={menuItemHeight * start}
+            value={this.itemHeight * start}
             viewSize={viewSize}
             totalSize={totalSize}
             onChange={this.onScroller}
@@ -167,9 +165,6 @@ export default (
 
     fetchTotalSize(): number {
       const { length } = this.getTarget();
-      const { normal = {} } = this.props.getPartOfThemeConfig(TargetWrapName);
-      const { padding = {} } = normal;
-      const { top } = padding;
       return length * this.itemHeight;
     }
 
@@ -192,11 +187,10 @@ export default (
     }
 
     onWheel = (e: Object) => {
-      // if (this.isNeedScroller()) {
-      console.log('ccc', e.preventDefault);
-      e.stopPropagation && e.stopPropagation();
-      e.preventDefault && e.preventDefault();
-      // }
+      if (this.isNeedScroller()) {
+        e.stopPropagation();
+        e.preventDefault();
+      }
       this.scroller && this.scroller.onWheel && this.scroller.onWheel.call(this.scroller, e);
     };
 
