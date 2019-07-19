@@ -46,7 +46,7 @@ export const MenuContainer = CSSComponent({
   tag: 'ul',
   className: 'MenuContainer',
   normal: {
-    selectNames: [['width'], ['background'], ['padding']],
+    selectNames: [['width'], ['background'], ['padding', 'left'], ['padding', 'right']],
     getCSS: (themeMeta, themeProps) => {
       const { menuItemHeight, length, autoHeight } = themeProps.propsConfig;
       let { height: themeHeight } = themeMeta;
@@ -73,7 +73,6 @@ export const MenuContainer = CSSComponent({
     list-style: none;
     overflow: hidden;
     transition: all 0.3s;
-    border-radius: 4px;
   `,
   option: { hover: true },
 });
@@ -181,7 +180,6 @@ export const ItemWrap = CSSComponent({
       ['border'],
       ['borderRadius'],
     ],
-    getCSS: (themeMeta, themeProps) => {},
   },
   disabled: {
     selectNames: [

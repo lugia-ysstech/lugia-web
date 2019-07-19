@@ -22,7 +22,6 @@ import {
 } from '../css/menu';
 import ThrolleScroller from '../scroller/ThrottleScroller';
 import Widget from '../consts/index';
-import Theme from '../theme';
 import Empty from '../empty';
 import Trigger from '../trigger';
 import { findDOMNode } from 'react-dom';
@@ -206,12 +205,12 @@ class Menu extends React.Component<MenuProps, MenuState> {
   render() {
     const { props } = this;
     const items = this.getItems(props);
-    const { data = [], autoHeight = false, getPartOfThemeProps, menuItemHeight } = props;
+    const { data = [], autoHeight = false, getPartOfThemeProps, itemHeight } = props;
     const length = data ? data.length : 0;
     const WrapThemeProps = getPartOfThemeProps('MenuWrap', {
       props: {
         length,
-        menuItemHeight,
+        itemHeight,
         autoHeight,
       },
     });
@@ -232,11 +231,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     const activeOffsetX = getTargetOrDefaultTarget(isOffsetX, offsetX, 4);
 
     const isOffsetY = !!(offsetY === 0 || offsetY);
-    const activeOffsetY = getTargetOrDefaultTarget(
-      isOffsetY,
-      offsetY,
-      indexOffsetY * menuItemHeight
-    );
+    const activeOffsetY = getTargetOrDefaultTarget(isOffsetY, offsetY, indexOffsetY * itemHeight);
 
     const { popupVisible = false, childData } = this.state;
     return (
@@ -261,13 +256,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     end = Math.round(end);
     if (data && data.length > 0) {
       return this.computeItems(data, start, end, (obj: Object, isFirst: boolean) => {
-        const {
-          valueField,
-          displayField,
-          size,
-          divided: propsDivided,
-          menuItemHeight,
-        } = this.props;
+        const { valueField, displayField, size, divided: propsDivided, itemHeight } = this.props;
 
         const { [valueField]: key, [displayField]: value, disabled, children, icon, divided } = obj;
         const { getPrefix, getSuffix } = props;
@@ -294,7 +283,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
             disabled={disabled}
             checkedCSS={checkedCSS}
             divided={divided || propsDivided}
-            menuItemHeight={menuItemHeight}
+            menuItemHeight={itemHeight}
             {...this.props.getPartOfThemeHocProps('MenuItem')}
             isFirst={isFirst}
           >

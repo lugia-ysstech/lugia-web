@@ -7,13 +7,10 @@
 import * as React from 'react';
 import ThemeHoc from '@lugia/theme-hoc';
 import Widget from '../consts/index';
-import Divider from '../divider';
 import { FontSize } from '../css';
 import { px2remcss } from '../css/units';
-import { deepMerge } from '@lugia/object-utils';
 import { SelectIcon, ItemWrap, DividerWrap, TextContainer } from '../css/menu';
 import CheckBox from '../checkbox';
-import Theme from '../theme';
 
 const Utils = require('@lugia/type-utils');
 const { ObjectUtils } = Utils;
@@ -32,6 +29,8 @@ export type MenuItemProps = {
   theme: Object,
   isFirst: boolean,
   menuItemHeight: number,
+  getPartOfThemeHocProps: Function,
+  getPartOfThemeProps: Function,
 };
 
 const getIcon = props => {
@@ -72,13 +71,6 @@ class MenuItem extends React.Component<MenuItemProps> {
     divided: false,
   };
   static displayName = Widget.MenuItem;
-
-  getDividerTheme() {
-    // const { getPartOfThemeConfig } = this.props;
-    return {
-      // Divider没有完成，所以没办法配置
-    };
-  }
 
   render() {
     const {
