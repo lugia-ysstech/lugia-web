@@ -24,9 +24,8 @@ class Tree extends React.Component<any, any> {
 
   render() {
     const { props } = this;
-
     const data = this.getTreeData();
-    return <InnerTree ref={this.innerTree} {...props} data={data} />;
+    return <InnerTree {...props} ref={this.innerTree} data={data} />;
   }
 
   getTreeData = () => {

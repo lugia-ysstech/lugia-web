@@ -16,8 +16,9 @@ export const {
   hoverColor,
   spiritColor,
   mouseDownColor,
+  lightGreyColor,
 } = colorsFunc();
-export const MenuItemHeight = 34;
+export const TreeItemHeight = 35;
 export const DefaultHeight = 250;
 export const ItemBackgroundColor = '#edf0fe';
 
@@ -69,21 +70,17 @@ export const TreeUl = CSSComponent({
   tag: 'ul',
   className: 'TreeUl',
   normal: {
-    selectNames: [
-      ['width'],
-      ['height'],
-      ['boxShadow'],
-      ['background'],
-      ['opacity'],
-      ['border'],
-      ['borderRadius'],
-      ['margin'],
-      ['padding'],
-    ],
-    getCSS: themeMeta => {},
+    selectNames: [['width'], ['background'], ['padding', 'left'], ['padding', 'right']],
+    getCSS: (themeMeta, themeProps) => {
+      const { propsConfig } = themeProps;
+      const { top } = propsConfig;
+      return `
+        top: ${px2remcss(top)}
+      `;
+    },
   },
   hover: {
-    selectNames: [['boxShadow'], ['background'], ['opacity'], ['border'], ['borderRadius']],
+    selectNames: [['background']],
   },
   active: {
     selectNames: [],
@@ -92,6 +89,7 @@ export const TreeUl = CSSComponent({
     margin: 0;
     overflow: hidden;
     transition: all 0.3s;
+    position: relative;
   `,
   option: { hover: true },
 });
@@ -109,22 +107,85 @@ export const Li = StaticComponent({
     selectNames: [],
   },
   css: css`
-    min-height: ${px2remcss(MenuItemHeight)};
-    line-height: ${px2remcss(MenuItemHeight)};
+    min-height: ${px2remcss(30)};
     list-style: none;
     white-space: nowrap;
     outline: 0;
     user-select: none;
+    box-sizing: border-box;
+    overflow: hidden;
   `,
 });
 Li.displayName = 'liItem';
+
+const getSelectIconOpacity = selected => {
+  return `opacity: ${selected ? 1 : 0}`;
+};
+
+const getLiIcon = (inlineType, itemHeight, selected) => {
+  const opacity = getSelectIconOpacity(selected);
+  console.log('opacity', opacity);
+  return inlineType === 'ellipse'
+    ? ''
+    : `
+  ::before {
+    content: '';
+    width: ${px2remcss(6)};
+    border-radius: ${px2remcss(4)};
+    height: ${px2remcss(itemHeight)};
+    background: ${themeColor};
+    transition: all 0.3s;
+    position: absolute;
+    left: 0;
+    top: 0;
+    ${opacity}
+  }
+  `;
+};
+
+export const NavLi = CSSComponent({
+  tag: 'li',
+  className: 'NavLi',
+  normal: {
+    selectNames: [],
+    getCSS: (themeMeta, themeProps) => {
+      const { propsConfig } = themeProps;
+      const { inlineType, itemHeight, selected } = propsConfig;
+      const selectedCSS = getLiIcon(inlineType, itemHeight, selected);
+      return `${selectedCSS}`;
+    },
+  },
+  hover: {
+    selectNames: [],
+  },
+  active: {
+    selectNames: [],
+  },
+  css: css`
+    list-style: none;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    outline: 0;
+    user-select: none;
+    box-sizing: border-box;
+  `,
+});
+NavLi.displayName = 'NavLi';
 
 export const SubTreeWrap = CSSComponent({
   tag: 'ul',
   className: 'SubTreeWrap',
   normal: {
-    selectNames: [['width'], ['background'], ['opacity'], ['border'], ['margin'], ['padding']],
-    getCSS: (themeMeta, themeProps) => {},
+    selectNames: [
+      ['width'],
+      ['background'],
+      ['opacity'],
+      ['border'],
+      ['margin'],
+      ['padding', 'left'],
+      ['padding', 'right'],
+    ],
   },
   hover: {
     selectNames: [['background'], ['opacity'], ['border']],
@@ -144,20 +205,26 @@ const getNormalBgColor = (selected: boolean) => {
   return selected ? `${hoverColor}` : '';
 };
 
-const getHoverBgCSS = (mutliple: boolean) => {
-  return !mutliple ? `${hoverColor}` : '';
-};
-
-const getActiveBgCSS = (mutliple: boolean) => {
-  return !mutliple ? `${hoverColor}` : '';
-};
-
 export const TitleWrap = CSSComponent({
   tag: 'div',
   className: 'TitleWrap',
   normal: {
-    selectNames: [['color'], ['font'], ['background'], ['padding'], ['border'], ['borderRadius']],
-    getCSS: (themeMeta, themeProps) => {},
+    selectNames: [
+      ['height'],
+      ['color'],
+      ['font'],
+      ['background'],
+      ['padding', 'left'],
+      ['padding', 'left'],
+      ['border'],
+      ['borderRadius'],
+    ],
+    getCSS: (themeMeta, themeProps) => {
+      const { propsConfig } = themeProps;
+      const { itemHeight } = propsConfig;
+      const { height = itemHeight } = themeMeta;
+      return `line-height: ${px2remcss(height)}`;
+    },
     getThemeMeta: (themeMeta, themeProps) => {
       const { propsConfig } = themeProps;
       const { shape, selected } = propsConfig;
@@ -175,9 +242,11 @@ export const TitleWrap = CSSComponent({
     getThemeMeta: (themeMeta, themeProps) => {
       const { propsConfig } = themeProps;
       const { mutliple } = propsConfig;
+      const color = !mutliple ? `${hoverColor}` : '';
+
       return {
         background: {
-          color: getHoverBgCSS(mutliple),
+          color,
         },
       };
     },
@@ -187,16 +256,24 @@ export const TitleWrap = CSSComponent({
     getThemeMeta: (themeMeta, themeProps) => {
       const { propsConfig } = themeProps;
       const { mutliple } = propsConfig;
+      const color = !mutliple ? `${hoverColor}` : '';
 
       return {
         background: {
-          color: getActiveBgCSS(mutliple),
+          color,
         },
       };
     },
   },
   disabled: {
     selectNames: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
+    defaultTheme: {
+      cursor: 'not-allowed',
+      color: lightGreyColor,
+      font: {
+        fontWeight: 500,
+      },
+    },
     getCSS: () => {
       return {
         color: `${mediumGreyColor}`,
@@ -207,11 +284,13 @@ export const TitleWrap = CSSComponent({
   css: css`
     flex: 1;
     overflow: hidden;
+    display: inline-block;
+    height: 100%;
     vertical-align: top;
     padding-left: ${px2remcss(10)};
     transition: all 0.3s;
   `,
-  option: { hover: true, active: true },
+  option: { hover: true, active: true, disabled: true },
 });
 
 export const TitleSpan = CSSComponent({
@@ -248,24 +327,28 @@ export const FlexWrap = CSSComponent({
   tag: 'div',
   className: 'FlexWrap',
   normal: {
-    selectNames: [['background'], ['border'], ['borderRadius'], ['opacity'], ['color']],
+    selectNames: [['background'], ['height'], ['border'], ['borderRadius'], ['opacity']],
     getCSS: (themeMeta, themeProps) => {
-      const { pos } = themeProps.propsConfig;
+      const { pos, itemHeight } = themeProps.propsConfig;
       const paddingLeft = getFlexBoxPaddingLeft(pos);
       return `
-          padding-left: ${px2remcss(paddingLeft)}
+          padding-left: ${px2remcss(paddingLeft)};
+          line-height: ${px2remcss(itemHeight)};
+          height: ${px2remcss(itemHeight)}
         `;
     },
   },
   hover: {
-    selectNames: [['background'], ['border'], ['borderRadius'], ['opacity'], ['color']],
+    selectNames: [['background'], ['border'], ['borderRadius'], ['opacity']],
   },
   active: {
-    selectNames: [['background'], ['border'], ['borderRadius'], ['opacity'], ['color']],
+    selectNames: [['background'], ['border'], ['borderRadius'], ['opacity']],
   },
   css: css`
     transition: all 0.3s;
     cursor: pointer;
+    box-sizing: border-box;
+    overflow: hidden;
   `,
   option: { hover: true, active: true },
 });
@@ -274,7 +357,7 @@ export const FlexBox = CSSComponent({
   tag: 'div',
   className: 'FlexBox',
   normal: {
-    selectNames: [['padding']],
+    selectNames: [['padding', 'left'], ['padding', 'right']],
   },
   hover: {
     selectNames: [],
@@ -284,23 +367,8 @@ export const FlexBox = CSSComponent({
   },
   css: css`
     display: flex;
+    align-items: center;
     box-sizing: border-box;
-  `,
-});
-
-export const CheckBoxWrap = StaticComponent({
-  tag: 'div',
-  className: 'CheckBoxWrap',
-  normal: {
-    selectNames: [],
-  },
-  hover: {
-    selectNames: [],
-  },
-  active: {
-    selectNames: [],
-  },
-  css: css`
-    flex: 1;
+    padding-right: ${px2remcss(10)};
   `,
 });

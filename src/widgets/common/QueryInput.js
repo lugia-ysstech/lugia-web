@@ -95,6 +95,7 @@ type QueryInputProps = {
   isCheckedAll?: boolean,
   onCheckAll?: Function,
   canSearch: boolean,
+  width?: number,
 };
 
 type QueryInputState = {
@@ -129,7 +130,7 @@ class QueryInput extends React.Component<QueryInputProps, QueryInputState> {
       return null;
     }
 
-    const { query, onQueryInputChange, refreshValue, onQueryInputKeyDown } = props;
+    const { query, onQueryInputChange, refreshValue, onQueryInputKeyDown, width } = props;
 
     const { state } = this;
     const {
@@ -139,15 +140,13 @@ class QueryInput extends React.Component<QueryInputProps, QueryInputState> {
       toShowCheckAllButtonIng,
     } = state;
 
-    const view = {
+    const theme = {
       [Widget.Input]: {
-        borderSize: {
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
+        Input: {
+          normal: {
+            width,
+          },
         },
-        borderRadius: 0,
       },
     };
 
@@ -167,19 +166,20 @@ class QueryInput extends React.Component<QueryInputProps, QueryInputState> {
             {this.getSearchInputButton()}
           </CheckAllContainer>
           <SearchInputContainer>
-            <Theme config={view}>
-              <QueryInputContainer>
-                <Input
-                  key="queryInput"
-                  placeholder="请输入查询条件"
-                  value={query}
-                  onChange={onQueryInputChange}
-                  onKeyDown={onQueryInputKeyDown}
-                  prefix={this.getQueryInputPrefix()}
-                  suffix={this.getQueryInputSuffix()}
-                />
-              </QueryInputContainer>
-            </Theme>
+            {/* <Theme config={view}> */}
+            <QueryInputContainer>
+              <Input
+                key="queryInput"
+                theme={theme}
+                placeholder="请输入查询条件"
+                value={query}
+                onChange={onQueryInputChange}
+                onKeyDown={onQueryInputKeyDown}
+                prefix={this.getQueryInputPrefix()}
+                suffix={this.getQueryInputSuffix()}
+              />
+            </QueryInputContainer>
+            {/* </Theme> */}
           </SearchInputContainer>
         </InnerContainer>
       </OutContainer>
