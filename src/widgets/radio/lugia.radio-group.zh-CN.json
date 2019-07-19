@@ -95,7 +95,7 @@
     },
     "Radio": {
       "theme": {
-        "RadioWrap": {
+        "Container": {
           "name": "Radio整体配置",
           "desc": "Radio整体配置",
           "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]],

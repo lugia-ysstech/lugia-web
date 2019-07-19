@@ -61,7 +61,7 @@ export default ThemeProvider(
         getPartOfThemeHocProps,
       } = this.props;
       const { visible, opening, closing } = this.state;
-      const messageTheme = getPartOfThemeProps('MessageWrap');
+      const messageTheme = getPartOfThemeProps('Container');
       const messageTextTheme = getPartOfThemeProps('MessageText');
       const messageIconThemeObj = getPartOfThemeHocProps('MessageIcon');
       const { themeConfig: { normal: { height = 40 } = {} } = {} } = messageTheme;

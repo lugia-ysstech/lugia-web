@@ -117,7 +117,7 @@ export default class extends React.Component<LineProps, ProgressState> {
       active,
       getPartOfThemeProps,
     } = this.props;
-    const progressWrapTheme = getPartOfThemeProps('ProgressWrap');
+    const progressWrapTheme = getPartOfThemeProps('Container');
     const progressLineTheme = getPartOfThemeProps('ProgressOutLine');
     const innerLineDefaultTheme = getPartOfThemeProps('ProgressInnerLine_Default');
     const innerLineSuccessTheme = getPartOfThemeProps('ProgressInnerLine_Success');
