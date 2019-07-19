@@ -28,7 +28,7 @@
   },
   "category": ["其他"],
   "theme": {
-    "BackTopContent": {
+    "Container": {
       "name": "返回顶部整体样式",
       "desc": "配置返回顶部整体样式",
       "normal": [

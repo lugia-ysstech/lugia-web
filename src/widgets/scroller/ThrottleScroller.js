@@ -5,97 +5,10 @@
  * @flow
  */
 import * as React from 'react';
-import styled from 'styled-components';
 import Scroller from './index';
 import Widget from '../consts/index';
-import { FontSizeNumber } from '../css';
-import { toNumber } from '../common/NumberUtils';
-import {
-  BarDefaultSize,
-  DefaultHeight,
-  DefaultWidth,
-  ScrollerContainer,
-  Col,
-  ScrollerCol,
-} from '../css/scroller';
+import { DefaultHeight, ScrollerContainer, Col, ScrollerCol } from '../css/scroller';
 import { getCanSeeCount } from './support';
-import { px2remcss } from '../css/units';
-
-// const em = px2emcss(FontSizeNumber);
-
-// const height = props => {
-//   const { theme, totalSize, autoHeight = false } = props;
-//   const { height: themeHeight } = theme;
-//   if (!autoHeight) {
-//     return themeHeight
-//       ? `height:${px2remcss(themeHeight)};`
-//       : `height:${px2remcss(DefaultHeight)};`;
-//   }
-
-//   if (!themeHeight || themeHeight > totalSize) {
-//     return `height: ${px2remcss(totalSize)}`;
-//   }
-//   return `height: ${px2remcss(themeHeight)}`;
-// };
-
-const getActiveWidth = props => {
-  const { theme } = props;
-
-  const { width } = theme;
-  return width;
-};
-
-// const width = props => {
-//   const width = getActiveWidth(props);
-//   return width ? `width:${px2remcss(width)};` : `width:${px2remcss(DefaultWidth)};`;
-// };
-// const getContentWidthValue = props => {
-//   const width = getActiveWidth(props);
-//   return width ? width - BarDefaultSize : DefaultWidth - BarDefaultSize;
-// };
-
-// const getContentWidth = props => {
-//   const width = getContentWidthValue(props);
-//   return px2remcss(width);
-// };
-
-// const scrollerLeft = props => {
-//   return `left: ${getContentWidth(props)};`;
-// };
-
-// const Col = styled.div`
-//   ${width};
-//   font-size: ${FontSizeNumber}rem;
-//   position: absolute;
-//   display: inline-block;
-// `;
-
-// const ScrollerContainer = styled.div`
-//   overflow: hidden;
-//   font-size: ${FontSizeNumber}rem;
-//   ${height};
-//   ${width};
-//   position: relative;
-// `;
-
-// const getOpacity = (props: Object) => {
-//   const { isDrag } = props;
-//   if (isDrag) {
-//     return 'opacity: 1;';
-//   }
-//   return '';
-// };
-// const ScrollerCol = styled(Col)`
-//   ${scrollerLeft};
-//   width: ${px2remcss(BarDefaultSize)};
-//   opacity: 0;
-//   ${ScrollerContainer}:hover & {
-//     opacity: 1;
-//   }
-
-//   ${getOpacity};
-//   transition: opacity 0.3s;
-// `;
 
 type ThrottleScrollerState = {
   start: number,
@@ -103,7 +16,8 @@ type ThrottleScrollerState = {
 export default (
   Target: React.ComponentType<any>,
   MenuItemHeight: number,
-  TargetWrapName: string
+  TargetWrapName: string,
+  TargetItemNames: string[]
 ) => {
   return class ThrottleScroller extends React.Component<any, ThrottleScrollerState> {
     static displayName = Widget.ThrottleScroller;
@@ -126,12 +40,18 @@ export default (
         start: 0,
       };
       this.itemHeight = this.getActiveItemHeight(props);
+      this.scrollerTarget = React.createRef();
     }
 
     getActiveItemHeight = (props: Object) => {
-      const { menuItemHeight } = props;
-      const menuItemHeightIsInProps = 'menuItemHeight' in props;
-      return menuItemHeightIsInProps ? menuItemHeight : MenuItemHeight;
+      const { getPartOfThemeConfig } = props;
+      const ItemName = TargetItemNames[0];
+      const ItemWrapName = TargetItemNames[1];
+      const themeConfig = getPartOfThemeConfig(ItemName);
+      const ItemWrapThemeConfig = themeConfig[ItemWrapName] ? themeConfig[ItemWrapName] : {};
+      const { normal = {} } = ItemWrapThemeConfig;
+      const { height = MenuItemHeight } = normal;
+      return height;
     };
 
     render() {
@@ -139,13 +59,15 @@ export default (
 
       const start = this.getStart(props, this.state);
       const { level, autoHeight = false, getPartOfThemeProps } = props;
-      const themeProps = getPartOfThemeProps(TargetWrapName);
       const totalSize = this.fetchTotalSize();
-      themeProps.propsConfig = {
-        isDrag: this.isDrag,
-        autoHeight,
-        totalSize,
-      };
+      const themeProps = getPartOfThemeProps(TargetWrapName, {
+        props: {
+          isDrag: this.isDrag,
+          autoHeight,
+          totalSize,
+        },
+      });
+
       const pack = (element: Object | Array<Object>) => {
         return (
           <ScrollerContainer themeProps={themeProps} onWheel={this.onWheel}>
@@ -154,7 +76,7 @@ export default (
         );
       };
 
-      if (!this.isNeedScroller()) {
+      if (!this.isNeedScroller() || autoHeight) {
         const { length } = this.getTarget();
         //TODO: 待测试
         return pack(
@@ -163,7 +85,8 @@ export default (
             start={0}
             end={length}
             canSeeCount={length}
-            ref={cmp => (this.scrollerTarget = cmp)}
+            itemHeight={this.itemHeight}
+            ref={this.scrollerTarget}
           />
         );
       }
@@ -173,7 +96,6 @@ export default (
 
       const end = this.fetchEnd(start);
       const canSeeCount = this.canSeeCount();
-      const menuItemHeight = this.itemHeight;
 
       return pack([
         <Col themeProps={themeProps} level={level}>
@@ -182,7 +104,8 @@ export default (
             canSeeCount={canSeeCount}
             start={start}
             end={end}
-            ref={cmp => (this.scrollerTarget = cmp)}
+            itemHeight={this.itemHeight}
+            ref={this.scrollerTarget}
           />
         </Col>,
         <ScrollerCol level={level} themeProps={themeProps} isDrag={this.isDrag}>
@@ -190,7 +113,7 @@ export default (
             ref={cmp => (this.scroller = cmp)}
             type={type}
             onDrag={this.onDrag}
-            value={menuItemHeight * start}
+            value={this.itemHeight * start}
             viewSize={viewSize}
             totalSize={totalSize}
             onChange={this.onScroller}
@@ -242,11 +165,7 @@ export default (
 
     fetchTotalSize(): number {
       const { length } = this.getTarget();
-      const { normal = {} } = this.props.getPartOfThemeConfig(TargetWrapName);
-      const { padding = {} } = normal;
-      const { top } = padding;
-
-      return length * this.itemHeight + toNumber(top, 0) + 10;
+      return length * this.itemHeight;
     }
 
     getTarget(): Array<any> {
@@ -269,8 +188,8 @@ export default (
 
     onWheel = (e: Object) => {
       if (this.isNeedScroller()) {
-        e.stopPropagation && e.stopPropagation();
-        e.preventDefault && e.preventDefault();
+        e.stopPropagation();
+        e.preventDefault();
       }
       this.scroller && this.scroller.onWheel && this.scroller.onWheel.call(this.scroller, e);
     };

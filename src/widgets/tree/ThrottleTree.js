@@ -8,7 +8,7 @@
 import animation from '../common/openAnimation';
 import * as React from 'react';
 import Widget from '../consts/index';
-import RcTree, { TreeNode } from './rc-tree';
+import LugiaTree, { TreeNode } from './rc-tree';
 import ThrottleScroller from '../scroller/ThrottleScroller';
 import './index.css';
 import TreeUtils from './utils';
@@ -16,6 +16,7 @@ import { adjustValue } from '../utils';
 import { FontSizeNumber } from '../css';
 import { px2emcss } from '../css/units';
 import { getMenuItemHeight } from '../css/menu';
+import { TreeItemHeight } from '../css/tree';
 
 type RowData = { [key: string]: any };
 
@@ -69,14 +70,14 @@ class ScrollerTree extends React.Component<any, any> {
     const { data, size } = this.props;
 
     if (data) {
-      const { mutliple, onExpand, utils, onSelect, id2ExtendInfo } = this.props;
+      const { mutliple, onExpand, utils, onSelect, id2ExtendInfo, itemHeight } = this.props;
       let { start, end } = this.props;
       start = Math.round(start);
       end = Math.round(end);
       const hasScroller = data.length > end;
       const { rows, parentCount } = utils.slice(data, start, end - start, id2ExtendInfo);
       const nodes = utils.generateTreeNode(rows);
-      const itemHeight = getMenuItemHeight(size);
+      // 显示不全最后一项++++++++++++++++++++++++++++++++++++++++++++++++++++++++，
       const top = -parentCount * itemHeight;
       const treeNodes = this.loopNode(nodes);
       const treeTheme = this.getTheme();
@@ -86,7 +87,7 @@ class ScrollerTree extends React.Component<any, any> {
         }
       }
       return (
-        <RcTree
+        <LugiaTree
           {...this.props}
           onSelect={onSelect}
           top={top}
@@ -94,26 +95,32 @@ class ScrollerTree extends React.Component<any, any> {
           checkable={mutliple ? <span /> : mutliple}
         >
           {treeNodes}
-        </RcTree>
+        </LugiaTree>
       );
     }
     return null;
   }
 
   getTheme() {
-    const { getTheme, themeStyle } = this.props;
-    const { DefaultHeight, MenuItemHeight } = themeStyle;
+    const { getTheme } = this.props;
     const theme = getTheme();
 
-    const { height = DefaultHeight } = theme;
-    theme.height = adjustValue(height, MenuItemHeight);
     return theme;
   }
 
   loopNode = (data: Array<RowData>) => {
-    const { igronSelectField, themeStyle, inlineType, size, shape, ...res } = this.props;
+    const { igronSelectField, inlineType, shape } = this.props;
     return data.map(item => {
-      const { selectable, displayField, valueField, mutliple, getPartOfThemeHocProps } = this.props;
+      const {
+        selectable,
+        displayField,
+        valueField,
+        mutliple,
+        itemHeight,
+        getPartOfThemeHocProps,
+        showSwitch,
+        __navmenu,
+      } = this.props;
       const {
         children,
         [valueField]: key,
@@ -122,16 +129,18 @@ class ScrollerTree extends React.Component<any, any> {
         describe = false,
         disabled,
         icon,
-        switcher,
+        suffix,
       } = item;
-      const { color, paddingLeft } = this.getTheme();
       const notCanSelect = item[igronSelectField] ? true : false;
       if (children !== undefined) {
         return (
           <TreeNode
             {...getPartOfThemeHocProps('TreeItem')}
-            themeStyle={themeStyle}
+            showSwitch={showSwitch}
+            suffix={suffix}
+            __navmenu={__navmenu}
             key={key}
+            itemHeight={itemHeight}
             inlineType={inlineType}
             shape={shape}
             title={title}
@@ -142,9 +151,6 @@ class ScrollerTree extends React.Component<any, any> {
             selectable={selectable}
             notCanSelect={notCanSelect}
             icon={icon}
-            size={size}
-            color={color}
-            paddingLeft={paddingLeft}
           >
             {this.loopNode(children)}
           </TreeNode>
@@ -153,9 +159,12 @@ class ScrollerTree extends React.Component<any, any> {
       return (
         <TreeNode
           {...getPartOfThemeHocProps('TreeItem')}
-          themeStyle={themeStyle}
+          showSwitch={showSwitch}
+          suffix={suffix}
+          __navmenu={__navmenu}
           key={key}
           title={title}
+          itemHeight={itemHeight}
           inlineType={inlineType}
           mutliple={mutliple}
           shape={shape}
@@ -164,13 +173,13 @@ class ScrollerTree extends React.Component<any, any> {
           disabled={disabled}
           selectable={selectable}
           icon={icon}
-          size={size}
-          color={color}
-          paddingLeft={paddingLeft}
         />
       );
     });
   };
 }
 
-export default ThrottleScroller(ScrollerTree, 34, 'TreeWrap');
+export default ThrottleScroller(ScrollerTree, TreeItemHeight, 'TreeWrap', [
+  'TreeItem',
+  'TreeItemWrap',
+]);

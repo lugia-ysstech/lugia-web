@@ -219,12 +219,14 @@ export function recurTreeData(
         describe,
         icon,
         disabled,
+        suffix,
       } = item;
       const newObj = {};
       newObj.describe = describe;
       newObj.icon = icon;
       newObj.disabled = disabled;
       newObj.pid = parentKey;
+      newObj.suffix = suffix;
       newObj[valueField] = value;
       newObj[displayField] = text;
       let path;

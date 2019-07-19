@@ -45,6 +45,7 @@ export const Container = CSSComponent({
   },
   css: css`
     display: inline-block;
+    vertical-align: top;
     position: relative;
     width: ${px2remcss(250)};
     transition: all 0.3s;
@@ -53,9 +54,9 @@ export const Container = CSSComponent({
 });
 Container.displayName = 'InputTagWrap';
 
-const OutContainerCSSHoc = CSSComponent({
+export const OutContainer = CSSComponent({
   tag: 'div',
-  className: 'OutContainerCSSHoc',
+  className: 'OutContainer',
   normal: {
     selectNames: [
       ['width'],
@@ -65,6 +66,7 @@ const OutContainerCSSHoc = CSSComponent({
       ['background'],
       ['color'],
       ['boxShadow'],
+      ['opacity'],
     ],
     getCSS: (themeMeta, themeProps) => {
       const { height = Height } = themeMeta;
@@ -98,7 +100,14 @@ const OutContainerCSSHoc = CSSComponent({
     },
   },
   hover: {
-    selectNames: [['color'], ['background'], ['border'], ['borderRadius'], ['boxShadow']],
+    selectNames: [
+      ['color'],
+      ['background'],
+      ['border'],
+      ['borderRadius'],
+      ['boxShadow'],
+      ['opacity'],
+    ],
     getStyle: (themeMeta, themeProps) => {},
     defaultTheme: {
       border: {
@@ -166,18 +175,8 @@ const OutContainerCSSHoc = CSSComponent({
     font-size: ${px2remcss(12)};
     transition: all 0.3s;
   `,
+  option: { hover: true },
 });
-
-export const OutContainer = ThemeHoc(
-  class extends React.Component<any, any> {
-    render() {
-      const { themeProps } = this.props;
-      return <OutContainerCSSHoc {...this.props} />;
-    }
-  },
-  'OutContainer',
-  { hover: true }
-);
 
 export const InnerContainer = CSSComponent({
   tag: 'div',
@@ -228,10 +227,10 @@ export const IconWrap = CSSComponent({
   tag: 'div',
   className: 'IconWrap',
   normal: {
-    selectNames: [['color'], ['font'], ['fontSize'], ['margin']],
+    selectNames: [['color'], ['font'], ['fontSize'], ['margin'], ['opacity']],
   },
   hover: {
-    selectNames: [['color'], ['fontSize'], ['font']],
+    selectNames: [['color'], ['fontSize'], ['font'], ['opacity']],
   },
   css: css`
     display: inline-block;
@@ -239,6 +238,7 @@ export const IconWrap = CSSComponent({
     float: right;
     position: relative;
     padding-left: ${px2remcss(10)};
+    transition: all 0.3s;
   `,
   option: { hover: true },
 });
@@ -353,7 +353,7 @@ export const ItemWrap = CSSComponent({
   tag: 'span',
   className: 'ItemWrap',
   normal: {
-    selectNames: [],
+    selectNames: [['height']],
   },
   hover: {
     selectNames: [],
@@ -365,53 +365,60 @@ export const ItemWrap = CSSComponent({
   `,
 });
 
-export const ItemContainer = ThemeHoc(
-  CSSComponent({
-    tag: 'div',
-    className: 'ItemContainer',
-    normal: {
-      selectNames: [
-        ['width'],
-        ['height'],
-        ['background'],
-        ['color'],
-        ['font'],
-        ['fontSize'],
-        ['padding'],
-        ['border'],
-        ['borderRadius'],
-        ['margin'],
-      ],
-      getCSS: (themeMeta, themeProps) => {
-        const { height = 20 } = themeMeta;
-        return `
+export const ItemContainer = CSSComponent({
+  tag: 'div',
+  className: 'ItemContainer',
+  normal: {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['background'],
+      ['color'],
+      ['font'],
+      ['fontSize'],
+      ['padding'],
+      ['border'],
+      ['borderRadius'],
+      ['boxShadow'],
+      ['margin'],
+      ['opacity'],
+    ],
+    getCSS: (themeMeta, themeProps) => {
+      const { height = 20 } = themeMeta;
+      return `
           line-height: ${px2remcss(height)};
           border-radius: ${px2remcss(height)};
         `;
-      },
     },
-    hover: {
-      selectNames: [['background'], ['color'], ['borderRadius'], ['border']],
-    },
+  },
+  hover: {
+    selectNames: [
+      ['background'],
+      ['color'],
+      ['borderRadius'],
+      ['border'],
+      ['font'],
+      ['opacity'],
+      ['boxShadow'],
+    ],
+  },
 
-    css: css`
-      padding: 0 ${px2remcss(5)};
-      height: ${px2remcss(20)};
-      font-size: ${px2remcss(12)};
-      margin-right: ${px2remcss(5)};
-      user-select: none;
-      background: ${ItemBackgroundColor};
-      color: ${darkGreyColor};
-      cursor: default;
-      display: flex;
-      overflow: hidden;
-      transition: all 0.3s;
-      box-sizing: border-box;
-    `,
-  }),
-  'ItemContainer',
-  { hover: true }
-);
+  css: css`
+    padding: 0 ${px2remcss(5)};
+    height: ${px2remcss(20)};
+    font-size: ${px2remcss(12)};
+    margin-right: ${px2remcss(5)};
+    user-select: none;
+    background: ${ItemBackgroundColor};
+    color: ${darkGreyColor};
+    cursor: default;
+    display: flex;
+    overflow: hidden;
+    transition: all 0.3s;
+    box-sizing: border-box;
+  `,
+  option: { hover: true },
+});
 
 export const ItemText = CSSComponent({
   tag: 'span',
@@ -450,35 +457,32 @@ export const HiddenItem = CSSComponent({
   `,
 });
 
-export const CloseButtonWrap = ThemeHoc(
-  CSSComponent({
-    tag: 'li',
-    className: 'CloseButtonWrap',
-    normal: {
-      selectNames: [['color'], ['font'], ['fontSize']],
-      getCSS: (themeMeta, themeProps) => {
-        const { font = {} } = themeMeta;
-        const { fontSize = 12 } = font;
-        const size = isNumber(fontSize) ? fontSize : 12;
-        return `
+export const CloseButtonWrap = CSSComponent({
+  tag: 'li',
+  className: 'CloseButtonWrap',
+  normal: {
+    selectNames: [['color'], ['font'], ['fontSize']],
+    getCSS: (themeMeta, themeProps) => {
+      const { font = {} } = themeMeta;
+      const { fontSize = 12 } = font;
+      const size = isNumber(fontSize) ? fontSize : 12;
+      return `
         width:${px2remcss(size)}
         `;
-      },
     },
-    hover: {
-      selectNames: [['color']],
-    },
-    css: css`
-      color: ${mediumGreyColor};
-      position: relative;
-      font-size: ${px2remcss(12)};
-      margin-left: ${px2remcss(5)};
-      height: 100%;
-    `,
-  }),
-  'TagIcon',
-  { hover: true }
-);
+  },
+  hover: {
+    selectNames: [['color']],
+  },
+  css: css`
+    color: ${mediumGreyColor};
+    position: relative;
+    font-size: ${px2remcss(12)};
+    margin-left: ${px2remcss(5)};
+    height: 100%;
+  `,
+  option: { hover: true },
+});
 
 export const CloseButton = Icon;
 CloseButton.displayName = Widget.InputTagCloseButton;

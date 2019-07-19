@@ -139,7 +139,7 @@ export default ThemeProvider(
               {children ? (
                 children
               ) : (
-                <BackTopContent themeProps={getPartOfThemeProps('BackTopContent')}>
+                <BackTopContent themeProps={getPartOfThemeProps('Container')}>
                   <IconBox themeProps={themeProps} {...addMouseEvent(this)}>
                     <Icon iconClass={icon} {...getPartOfThemeHocProps('BackTopIcon')} singleTheme />
                   </IconBox>

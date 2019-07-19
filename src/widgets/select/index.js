@@ -23,7 +23,6 @@ import {
 import { DisplayField, ValueField } from '../consts/props';
 import { appendCustomValue, isCanInput, isMutliple, setNewValue } from '../common/selectFunction';
 import { toMatchFromType } from '../common/StringUtils';
-import { px2remcss } from '../css/units';
 import ThemeHoc from '@lugia/theme-hoc';
 
 type ValidateStatus = 'success' | 'error';
@@ -67,6 +66,7 @@ type SelectProps = {
   children?: any,
   query: string | number,
   prefix?: any,
+  getPartOfThemeConfig: Function,
 };
 
 type SelectState = {
@@ -324,10 +324,14 @@ class Select extends React.Component<SelectProps, SelectState> {
     const getMenu: Function = (cmp: Object) => {
       this.menuCmp = cmp;
     };
+    const { MenuWrap = {} } = this.props.getPartOfThemeConfig('Menu');
+    const { normal = {} } = MenuWrap;
+    const { width = 250 } = normal;
 
     const menu = [
       <QueryInput
         query={query}
+        width={width}
         onQueryInputChange={this.onQueryInputChange}
         onQueryInputKeyDown={this.onQueryInputKeyDown}
         refreshValue={this.refreshValue}

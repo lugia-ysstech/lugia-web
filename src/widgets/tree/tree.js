@@ -22,12 +22,12 @@ import { px2emcss } from '../css/units';
 
 import {
   SubTreeWrap,
-  DefaultHeight,
+  // DefaultHeight,
   Li,
   MenuItemHeight,
   NullSwitch,
   Switch,
-  themeColor,
+  // themeColor,
   TitleSpan,
   TitleWrap,
   TreeUl,
@@ -71,10 +71,10 @@ export type TreeProps = {
   blackList: ?(string[]),
   whiteList: ?(string[]),
   searchType?: QueryType,
-  themeStyle: Object,
   size: 'large' | 'default' | 'bigger',
   shape: 'default' | 'round',
-  switcher: boolean,
+  showSwitch: boolean,
+  __navmenu: boolean,
 };
 
 export type TreeState = {
@@ -113,21 +113,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
     openAnimation: animation,
     inlineType: 'primary',
     shape: 'default',
-    switcher: true,
-    themeStyle: {
-      MenuItemHeight,
-      DefaultHeight,
-      TreeUl,
-      themeColor,
-      Switch,
-      NullSwitch,
-      Li,
-      SubTreeWrap,
-      TitleWrap,
-      TitleSpan,
-      openClassName,
-      closeClassName,
-    },
+    showSwitch: true,
+    __navmenu: false,
   };
 
   static TreeNode: TreeNode;
@@ -449,14 +436,13 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
   render() {
     const { props, state } = this;
-    console.log('state', state.hasError);
     const empty = <Empty>查无结果</Empty>;
     if (this.isEmpty(props)) {
       return empty;
     }
-    if (this.state.hasError) {
-      return <ErrorTooltip>树形数据错误</ErrorTooltip>;
-    }
+    // if (this.state.hasError) {
+    //   return <ErrorTooltip>树形数据错误</ErrorTooltip>;
+    // }
     const {
       query,
       current,
@@ -466,9 +452,9 @@ class Tree extends React.Component<TreeProps, TreeState> {
       searchType = 'include',
       valueField,
       getTreeData,
-      themeStyle,
       getPartOfThemeProps,
-      switcher,
+      showSwitch,
+      suffix,
     } = props;
     const { expand, expandedKeys, selectedInfo, start, selectValue = [] } = state;
     const { id2ExtendInfo } = expand;
@@ -510,7 +496,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
         halfCheckedKeys={Object.keys(halfchecked)}
         utils={utils}
         expandedKeys={expandedKeys}
-        menuItemHeight={themeStyle.MenuItemHeight}
         onExpand={this.onExpand}
       />
     );
