@@ -177,13 +177,12 @@ const TipBottom = CSSComponent({
   css: css`
     display: block;
     transform: translateY(50%);
-    font-size: 1em;
-    color: ${dangerColor};
   `,
   normal: {
-    selectNames: [['color']],
+    selectNames: [['color'], ['font'], ['fontSize']],
     defaultTheme: {
-      visibility: 'hidden',
+      color: dangerColor,
+      fontSize: 10,
     },
     getCSS(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
