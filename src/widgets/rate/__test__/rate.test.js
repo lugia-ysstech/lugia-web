@@ -5,7 +5,14 @@
 
 import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
-import Rate, { calcValue, getClass, getClassNames, getIconClass, multipleValue } from '../rate';
+import Rate, {
+  calcValue,
+  getClass,
+  getClassNames,
+  getIconClass,
+  multipleValue,
+  getMultiple,
+} from '../rate';
 import Enzyme, { mount } from 'enzyme';
 import renderer from 'react-test-renderer';
 import 'jest-styled-components';
@@ -130,6 +137,17 @@ describe('Rate Test', () => {
   checkMultipleValue(2, {}, 2);
   checkMultipleValue(2, { max: 15, count: 5 }, 6);
 
+  function checkGetMultiple(props: Object, expectation) {
+    it('Function getMultiple', () => {
+      const res = getMultiple(props);
+      expect(res).toEqual(expectation);
+    });
+  }
+  checkGetMultiple({ max: 10 }, 2);
+  checkGetMultiple({}, 1);
+  checkGetMultiple({ max: 10, count: 5 }, 2);
+  checkGetMultiple({ max: 30, count: 10 }, 3);
+
   function checkSetHalf(arr: Array<string>, value: number, Classify: boolean, expectation) {
     it('Function getClassNames', () => {
       const res = getClassNames(arr, value, Classify);
@@ -234,36 +252,35 @@ describe('Rate Test', () => {
     checkGetIconClass(v.iconClass, iconArr[i].excp);
   });
 
-  function setValue(
-    val: number,
-    starNum: number,
-    cou: Array<string>,
-    current: number,
-    hasClicked?: boolean,
-    expectation
-  ) {
+  function setValue(setValObj, expectation) {
     it('Function setValue', () => {
-      target.instance().setValue(val, starNum, cou, current, hasClicked);
+      target.instance().setValue(setValObj);
       expect(target.state().value).toEqual(expectation.value);
-      expect(target.state().count).toEqual(expectation.count);
+      expect(target.state().iconTypeArray).toEqual(expectation.iconTypeArray);
       expect(target.state().starNum).toEqual(expectation.starNum);
     });
   }
 
-  setValue(1, 1, ['primary', 'default', 'default'], 0, true, {
-    value: 1,
-    starNum: 1,
-    current: 0,
-    count: ['primary', 'default', 'default'],
-  });
+  setValue(
+    { value: 1, starNum: 1, iconTypeArray: ['primary', 'default', 'default'], current: 0 },
+    {
+      value: 1,
+      starNum: 1,
+      current: 0,
+      iconTypeArray: ['primary', 'default', 'default'],
+    }
+  );
 
-  setValue(2, 2, ['primary', 'primary', 'default'], 1, undefined, {
-    value: 2,
-    starNum: 2,
-    current: 1,
-    count: ['primary', 'primary', 'default'],
-  });
-
+  setValue(
+    { value: 2, starNum: 2, iconTypeArray: ['primary', 'primary', 'default'], current: 1 },
+    {
+      value: 2,
+      starNum: 2,
+      current: 1,
+      iconTypeArray: ['primary', 'primary', 'default'],
+    }
+  );
+  //
   function findRate(target, index) {
     return target.find('sv_rate_Ratespan').at(index);
   }
@@ -271,7 +288,7 @@ describe('Rate Test', () => {
   it('Function:onClick limit value', async () => {
     let onClick = () => true;
     const changePromise = new Promise(res => {
-      onClick = (newValue, oldValue) => {
+      onClick = (e, { newValue, oldValue }) => {
         res(newValue);
       };
     });
@@ -296,7 +313,7 @@ describe('Rate Test', () => {
   it('Function:onClick limit value allowHalf', async () => {
     let onClick = () => true;
     const changePromise = new Promise(res => {
-      onClick = (newValue, oldValue) => {
+      onClick = (e, { newValue, oldValue }) => {
         res(newValue);
       };
     });
@@ -333,7 +350,7 @@ describe('Rate Test', () => {
   it('Function:onClick unlimit value', async () => {
     let onClick = () => true;
     const changePromise = new Promise(res => {
-      onClick = (newValue, oldValue) => {
+      onClick = (e, { newValue, oldValue }) => {
         res(newValue);
       };
     });
@@ -379,7 +396,7 @@ describe('Rate Test', () => {
   it('Function:onClick unlimit -> limit  value', async () => {
     let onClick = () => true;
     const changePromise = new Promise(res => {
-      onClick = (newValue, oldValue) => {
+      onClick = (e, { newValue, oldValue }) => {
         res(newValue);
       };
     });
@@ -403,7 +420,7 @@ describe('Rate Test', () => {
   it('Function:onClick unlimit -> limit  value', async () => {
     let onClick = () => true;
     const changePromise = new Promise(res => {
-      onClick = (newValue, oldValue) => {
+      onClick = (e, { newValue, oldValue }) => {
         res(newValue);
       };
     });
@@ -437,7 +454,7 @@ describe('Rate Test', () => {
     expect(target.state().value).toEqual(0);
   });
 
-  it('Function:onMouseMoveOrClick limit ', async () => {
+  it('Function:onMouseMove limit ', async () => {
     const target = mount(
       <Rate
         getPartOfThemeProps={getPartOfThemeProps}
@@ -446,20 +463,20 @@ describe('Rate Test', () => {
         value={4}
       />
     );
-    target.instance().onMouseMoveOrClick({ pageX: 10 }, 2);
+    target.instance().onMouseMove({ pageX: 10 }, 2);
     expect(target.state().value).toEqual(4);
   });
 
   it('Function:onMouseMoveOrClick unlimit value', async () => {
-    target.instance().onMouseMoveOrClick({ pageX: 10 }, 2);
+    target.instance().onMouseMove({ pageX: 10 }, 2);
     expect(target.state().value).toEqual(3);
   });
 
   it('Function:onMouseMoveOrClick unlimit ->limit ', async () => {
-    target.instance().onMouseMoveOrClick({ pageX: 10 }, 2);
+    target.instance().onMouseMove({ pageX: 10 }, 2);
     expect(target.state().value).toEqual(3);
     target.setProps({ value: 2 });
-    target.instance().onMouseMoveOrClick({ pageX: 10 }, 4);
+    target.instance().onMouseMove({ pageX: 10 }, 4);
     expect(target.state().value).toEqual(2);
   });
 
@@ -492,7 +509,7 @@ describe('Rate Test', () => {
   it('Function:mouseLeave onClick unlimit value', async () => {
     let onClick = () => true;
     const changePromise = new Promise(res => {
-      onClick = (newValue, oldValue) => {
+      onClick = (e, { newValue, oldValue }) => {
         res(newValue);
       };
     });
@@ -515,7 +532,7 @@ describe('Rate Test', () => {
   it('Function:mouseLeave onClick limit value', async () => {
     let onClick = () => true;
     const changePromise = new Promise(res => {
-      onClick = (newValue, oldValue) => {
+      onClick = (e, { newValue, oldValue }) => {
         res(newValue);
       };
     });

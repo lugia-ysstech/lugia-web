@@ -13,7 +13,7 @@ import { getElementPosition } from '../utils';
 import { ObjectUtils } from '@lugia/type-utils';
 import { toNumber } from '../common/NumberUtils';
 
-import CSSComponent, { css, keyframes } from '@lugia/theme-css-hoc';
+import CSSComponent, { css, keyframes, StaticComponent } from '@lugia/theme-css-hoc';
 import { deepMerge } from '@lugia/object-utils';
 
 import colorsFunc from '../css/stateColor';
@@ -29,7 +29,7 @@ const showUp = keyframes`
   }
 `;
 
-const Container = CSSComponent({
+const Container = StaticComponent({
   tag: 'div',
   className: 'characterContainer',
   normal: {
@@ -46,15 +46,22 @@ const Container = CSSComponent({
   `,
 });
 
-const RateBox = CSSComponent({
+const RateBox = StaticComponent({
   tag: 'div',
   className: 'RateBox',
   normal: {
     selectNames: [['width'], ['margin'], ['height'], ['padding'], ['fontSize']],
+    getThemeMeta(themeMeta, themeProps) {
+      const {
+        normal: { fontSize },
+      } = themeMeta;
+      return {
+        fontSize: fontSize || 20,
+      };
+    },
   },
   css: css`
     position: relative;
-    overflow: hidden;
     display: inline-block;
     vertical-align: middle;
   `,
@@ -67,7 +74,7 @@ const Ratespan = CSSComponent({
   tag: 'span',
   className: 'starBox',
   normal: {
-    selectNames: [['color'], ['font'], ['fontSize']],
+    selectNames: [['color'], ['font'], ['fontSize'], ['margin']],
     defaultTheme: {
       margin: {
         right: 6,
@@ -77,12 +84,20 @@ const Ratespan = CSSComponent({
       return '&:last-child { margin: 0 !important;}';
     },
   },
+  hover: {
+    selectNames: [],
+    getCSS(themeMeta: Object, themeProps: Object) {
+      return css`
+        i {
+          animation: ${showUp} 0.3s linear forwards;
+          transform: scale(1.2);
+        }
+      `;
+    },
+  },
   css: css`
     margin-right: 6px;
     position: relative;
-    & > i.hoverd:hover {
-      transform: scale(1.2);
-    }
     & > i.bottom {
       position: absolute;
       left: 0;
@@ -93,6 +108,7 @@ const Ratespan = CSSComponent({
       vertical-align: text-bottom !important;
     }
   `,
+  option: { hover: true },
 });
 
 Ratespan.displayName = 'sv_rate_Ratespan';
@@ -101,7 +117,7 @@ const RateTextContainer = CSSComponent({
   tag: 'span',
   className: 'RateTextContainer',
   normal: {
-    selectNames: [['margin']],
+    selectNames: [],
   },
   css: css`
     position: relative;
@@ -112,9 +128,10 @@ const RateText = CSSComponent({
   tag: 'span',
   className: 'ActiveTextIcon',
   normal: {
-    selectNames: [['color'], ['fontSize']],
+    selectNames: [['color']],
     defaultTheme: {
       color: '#e8e8e8',
+      fontSize: 20,
     },
   },
   disabled: {
@@ -143,6 +160,7 @@ const RateTextBottom = CSSComponent({
     selectNames: [['color'], ['fontSize']],
     defaultTheme: {
       color: '#e8e8e8',
+      fontSize: 20,
     },
   },
   disabled: {
@@ -170,11 +188,11 @@ const defautClass = {
 type RateProps = {
   count?: number,
   max?: number,
+  defaultValue?: number,
   value?: number,
   disabled?: boolean,
   allowHalf: boolean,
   iconClass?: Object,
-  className: any,
   classify?: boolean,
   onClick: Function,
   onChange: Function,
@@ -197,7 +215,7 @@ export function getFontSize(count: number, width: number, height: number): numbe
   return fontRes > verticalHeight ? verticalHeight : fontRes;
 }
 
-export const createCalssArray = (num: number | string, condition?: Object): Array<string> => {
+export const createIconTypeArray = (num: number | string, condition?: Object): Array<string> => {
   const classNames = getDefaultClassNames(toNumber(num, 0));
 
   if (!condition) return classNames;
@@ -223,8 +241,8 @@ export const getMultiple = (props: Object): number => {
   if (!props) {
     return 0;
   }
-  const { max, count } = props;
-  return max && count ? max / count : 1;
+  const { max, count = 5 } = props;
+  return max ? max / count : 1;
 };
 
 export const multipleValue = (props: Object, val?: number): number => {
@@ -235,8 +253,9 @@ export const multipleValue = (props: Object, val?: number): number => {
   if (val) {
     return val * multiple;
   }
-  const { value = 0 } = props;
-  return value / multiple;
+  const { value, defaultValue } = props;
+  const resValue = value || defaultValue || 0;
+  return resValue / multiple;
 };
 
 export const getClass = (starNum: number, mid: number, classify: boolean): string => {
@@ -299,6 +318,16 @@ const getReturnObj = (state: Object, multiple: number) => {
 };
 const loop = () => true;
 
+const getDefaultTheme = (viewClass: string, theme: Object, defaultViewClass: string) => {
+  if (!viewClass) {
+    return {};
+  }
+  if (!theme || !defaultViewClass) {
+    return { [viewClass]: {} };
+  }
+  return { [viewClass]: theme[defaultViewClass] };
+};
+
 class Rate extends React.Component<RateProps, any> {
   ratespan: any;
   temporary: string;
@@ -306,7 +335,6 @@ class Rate extends React.Component<RateProps, any> {
     disabled: false,
     allowHalf: false,
     classify: false,
-    className: '',
     onClick: loop,
     onChange: loop,
     iconClass: {
@@ -342,12 +370,14 @@ class Rate extends React.Component<RateProps, any> {
       allowHalf,
       classify: defProps.classify,
     };
-    const { value, count = 5, disabled } = defProps;
-    const classNames = createCalssArray(count, condition);
+    const { value, count = 5, disabled, defaultValue } = defProps;
+    const iconTypeArray = createIconTypeArray(count, condition);
     if (!currentState) {
-      const theValue = calcValue(value, allowHalf);
+      const val = value || defaultValue;
+      const theValue = calcValue(val, allowHalf);
       return {
-        count: classNames,
+        count,
+        iconTypeArray,
         value: theValue,
         starNum,
         current: value === 0 ? null : starNum,
@@ -357,31 +387,40 @@ class Rate extends React.Component<RateProps, any> {
     if (disabled) {
       return;
     }
+    const isClick = currentState.hasClick;
+    let newTconTypeArray = currentState.iconTypeArray;
+    if (isClick) {
+      newTconTypeArray = iconTypeArray;
+    }
     return {
-      count: 'count' in defProps ? classNames : currentState.count,
+      count: 'value' in defProps ? count : currentState.count,
+      iconTypeArray: newTconTypeArray,
       value: 'value' in defProps ? value : currentState.value,
-      starNum: 'starNum' in defProps ? starNum : currentState.starNum,
+      starNum: 'value' in defProps ? starNum : currentState.starNum,
       current: 'current' in currentState ? currentState.current : -1,
       hasClick: 'hasClick' in currentState ? currentState.hasClick : false,
     };
   }
 
   render() {
-    const { themeProps, count: propsCount } = this.props;
-    const { count } = this.state;
-    this.ratespan = [...Array(count.length)].map(() => React.createRef());
+    const { iconTypeArray, count } = this.state;
+    const { character } = this.props;
+    this.ratespan = [...Array(count)].map(() => React.createRef());
+    const defaultTextIconThemeProps = ObjectUtils.isString(character)
+      ? this.props.getPartOfThemeProps('DefaultTextIcon')
+      : this.props.getPartOfThemeProps('DefaultRateIcon');
     return (
-      <Container themeProps={themeProps} onMouseLeave={this.mouseLeave}>
-        <RateBox themeProps={themeProps}>
-          {count.map((x, i) => (
+      <Container onMouseLeave={this.mouseLeave}>
+        <RateBox>
+          {iconTypeArray.map((x, i) => (
             <Ratespan
-              themeProps={themeProps}
-              ref={this.ratespan[i]}
+              themeProps={defaultTextIconThemeProps}
+              ref={node => (this.ratespan[i] = node)}
               onMouseMove={e => {
-                this.onMouseMoveOrClick(e, i);
+                this.onMouseMove(e, i);
               }}
               onClick={e => {
-                this.onMouseMoveOrClick(e, i, true);
+                this.onClick(e, i, true);
               }}
             >
               {this.getElement(x, i)}
@@ -392,86 +431,18 @@ class Rate extends React.Component<RateProps, any> {
     );
   }
 
-  onMouseMoveOrClick = (e: Object, i: number, hasClick?: boolean = false) => {
-    const { disabled } = this.props;
-    if (disabled) return;
-    const { offsetLeft, offsetWidth } = this.getOffset(i);
-    const starCount = this.getStarCount(i, offsetLeft, offsetWidth, e.pageX);
-    const { classify } = this.props;
-    const { count, current } = this.state;
-    const classNames = getClassNames(count, starCount, !!classify);
-
-    if (hasClick) {
-      this.handleClick(e, starCount, classNames, current);
-    } else {
-      const { hasClick } = this.state;
-      const multiple = getMultiple(this.props);
-      this.setValue(starCount * multiple, starCount, classNames, current, hasClick);
-    }
-    this.doExportChange(getReturnObj(this.state, multipleValue(this.props, starCount)));
-  };
-
-  mouseLeave = (e: Object) => {
-    const { props } = this;
-
-    const { disabled } = props;
-    if (disabled) {
-      return;
-    }
-    const { current } = this.state;
-
-    const temporary = this.getTemporary();
-    if (temporary) {
-      const { value, count, starNum } = temporary;
-      this.setValue(value, starNum, count, current, false);
-      this.doExportChange(getReturnObj(this.state, multipleValue(props, current)));
-      return;
-    }
-
-    const { hasClick } = this.state;
-    const { count = 5 } = props;
-    const classNames = createCalssArray(count);
-    this.setValue(0, 0, classNames, current, hasClick);
-    this.doExportChange(getReturnObj(this.state, multipleValue(props, 0)));
-  };
-
-  getTemporary = () => {
-    if (!this.temporary) {
-      return null;
-    }
-    return JSON.parse(this.temporary);
-  };
-
-  getStarCount = (
-    index: number,
-    offsetLeft: number,
-    offsetWidth: number,
-    pageX: number
-  ): number => {
-    const { allowHalf } = this.props;
-    if (allowHalf && isLeft(offsetLeft, offsetWidth, pageX)) {
-      return calcValue(index + 0.5, allowHalf);
-    }
-    return calcValue(index + 1, allowHalf);
-  };
-
-  getOffset(index: number) {
-    let reactNode = null;
-    if (this.ratespan[index]) {
-      reactNode = this.ratespan[index].current.querySelector('.iconCharacter');
-    }
-    return getOffsetInfo(reactNode);
-  }
-
   getElement = (x: string, index: number) => {
-    const { className, iconClass, disabled, character } = this.props;
+    const { iconClass, disabled, character } = this.props;
     const IconClass = getIconClass(iconClass);
-    const theClassName = `${defautClass[x]} ${className} iconCharacter ${disabled ? '' : 'hoverd'}`;
-    const { starNum } = this.state;
+    const theClassName = `${defautClass[x]}  iconCharacter ${disabled ? '' : 'hoverd'}`;
     if (ObjectUtils.isString(character)) {
-      const activeTextIconThemeProps = this.props.getPartOfThemeProps('ActiveTextIcon');
       const defaultTextIconThemeProps = this.props.getPartOfThemeProps('DefaultTextIcon');
-      const themeProps = index < starNum ? activeTextIconThemeProps : defaultTextIconThemeProps;
+      const activeTextIconThemeProps = deepMerge(
+        { themeConfig: { normal: { color: warningColor } } },
+        defaultTextIconThemeProps,
+        this.props.getPartOfThemeProps('ActiveTextIcon')
+      );
+      const themeProps = x !== 'default' ? activeTextIconThemeProps : defaultTextIconThemeProps;
       return (
         <React.Fragment>
           <RateTextContainer themeProps={themeProps}>
@@ -506,10 +477,22 @@ class Rate extends React.Component<RateProps, any> {
     );
   };
 
+  onClick = (e: Object, i: number) => {
+    const { disabled } = this.props;
+    if (disabled) return;
+    const { offsetLeft, offsetWidth } = this.getOffset(i);
+    const starCount = this.getStarCount(i, offsetLeft, offsetWidth, e.pageX);
+    const { iconTypeArray, current } = this.state;
+    const { classify } = this.props;
+    const newIconTypeArray = getClassNames(iconTypeArray, starCount, !!classify);
+    this.handleClick(e, starCount, newIconTypeArray, current);
+  };
+
   handleClick = (e: Object, val: number, classNames: Array<string>, index: number) => {
     const { state } = this;
     const { current } = state;
     let hasClicked = true;
+    let newIconTypeArray = classNames;
     index = val;
 
     const { props } = this;
@@ -517,59 +500,137 @@ class Rate extends React.Component<RateProps, any> {
     if (index === current) {
       const { allowHalf } = props;
       val = calcValue(0, allowHalf);
-
       index = -1;
       hasClicked = false;
-      classNames = getDefaultClassNames(classNames.length);
+      newIconTypeArray = getDefaultClassNames(classNames.length);
       this.updateTemporary(null);
     }
     const multiple = getMultiple(props);
-    this.setValue(val * multiple, val, classNames, index, hasClicked);
 
+    let setValObj = {
+      value: val * multiple,
+      starNum: val,
+      iconTypeArray: newIconTypeArray,
+      current: index,
+    };
+    if ('value' in props) {
+      setValObj = {
+        hasClick: hasClicked,
+      };
+    }
+    this.setValue(setValObj, true);
     const { onClick } = props;
-    const { newValue, oldValue } = getReturnObj(state, multipleValue(props, val));
-    onClick(newValue, oldValue);
+    onClick(e, getReturnObj(this.state, multipleValue(props, val)));
   };
 
-  setValue = (
-    val: number,
-    starNum: number,
-    count: Array<string>,
+  onMouseMove = (e: Object, i: number) => {
+    const { disabled } = this.props;
+    if (disabled) return;
+    const { offsetLeft, offsetWidth } = this.getOffset(i);
+    const starCount = this.getStarCount(i, offsetLeft, offsetWidth, e.pageX);
+    const { classify } = this.props;
+    const { iconTypeArray, current } = this.state;
+    const newIconTypeArray = getClassNames(iconTypeArray, starCount, !!classify);
+
+    const { hasClick } = this.state;
+    const multiple = getMultiple(this.props);
+    const setValObj = {
+      value: starCount * multiple,
+      starNum: starCount,
+      iconTypeArray: newIconTypeArray,
+      current,
+      hasClick,
+    };
+    this.setValue(setValObj);
+
+    this.doExportChange(e, getReturnObj(this.state, multipleValue(this.props, starCount)));
+  };
+
+  getOffset(index: number) {
+    let reactNode = null;
+    if (this.ratespan[index]) {
+      reactNode = this.ratespan[index];
+    }
+    return getOffsetInfo(reactNode);
+  }
+
+  getStarCount = (
     index: number,
-    hasClick: boolean
-  ) => {
-    this.setState(
-      {
-        value: val,
-        starNum,
-        count,
-        current: index,
-        hasClick,
-      },
-      () => {
-        if (hasClick) {
-          this.saveState();
-          this.setState({
-            hasClick: false,
-          });
-        }
-      }
-    );
+    offsetLeft: number,
+    offsetWidth: number,
+    pageX: number
+  ): number => {
+    const { allowHalf } = this.props;
+    if (allowHalf && isLeft(offsetLeft, offsetWidth, pageX)) {
+      return calcValue(index + 0.5, allowHalf);
+    }
+    return calcValue(index + 1, allowHalf);
   };
 
-  doExportChange = (resValue: Object) => {
-    const { newValue, oldValue } = resValue;
+  mouseLeave = (e: Object) => {
+    const { props } = this;
+
+    const { disabled } = props;
+    if (disabled) {
+      return;
+    }
+    const { current } = this.state;
+
+    const temporary = this.getTemporary();
+    if (temporary) {
+      const { value, iconTypeArray, starNum, current } = temporary;
+      const setValObj = {
+        value,
+        starNum,
+        iconTypeArray,
+        current,
+      };
+      this.setValue(setValObj);
+      this.doExportChange(e, getReturnObj(this.state, multipleValue(props, current)));
+      return;
+    }
+
+    const { count = 5 } = props;
+    const setValObj = {
+      value: 0,
+      starNum: 0,
+      iconTypeArray: createIconTypeArray(count),
+      current,
+    };
+    this.setValue(setValObj);
+    this.doExportChange(e, getReturnObj(this.state, multipleValue(props, 0)));
+  };
+
+  getTemporary = () => {
+    if (!this.temporary) {
+      return null;
+    }
+    return JSON.parse(this.temporary);
+  };
+
+  doExportChange = (e: Object, resValue: Object) => {
     const { onChange, disabled } = this.props;
     if (disabled) {
       return;
     }
-    onChange && onChange(newValue, oldValue);
+    onChange && onChange(e, resValue);
+  };
+
+  setValue = (obj: Object, hasClick?: boolean = false) => {
+    this.setState({ ...obj }, () => {
+      if (hasClick) {
+        this.saveState();
+        this.setState({
+          hasClick: false,
+        });
+      }
+    });
   };
 
   getRateIcon = (type: string, IconClass: Object) => {
-    const { disabled, className } = this.props;
+    const { disabled } = this.props;
 
-    const theClassName = `${defautClass[type]} ${className} ${disabled ? '' : 'hoverd'}`;
+    const theClassName = `${defautClass[type]}  ${disabled ? '' : 'hoverd'}`;
 
     const { theme, viewClass, markClassName } = this.getIconThemeProps(type);
 
@@ -582,7 +643,6 @@ class Rate extends React.Component<RateProps, any> {
           type={'default'}
           disabled={disabled}
           iconClass={`${IconClass.default} ${markClassName}  default iconCharacter `}
-          singleTheme
         />
       );
     }
@@ -603,6 +663,10 @@ class Rate extends React.Component<RateProps, any> {
     let resultTheme;
     let resultViewClass;
     let markClassName;
+    const {
+      viewClass: RateIconBottomViewClass,
+      theme: RateIconBottomTheme,
+    } = this.props.getPartOfThemeHocProps('DefaultRateIcon');
 
     switch (type) {
       case 'amazed':
@@ -610,7 +674,11 @@ class Rate extends React.Component<RateProps, any> {
           viewClass: amazedIconViewClass,
           theme: amazedIconTheme,
         } = this.props.getPartOfThemeHocProps('AmazedIcon');
-        resultTheme = amazedIconTheme;
+        resultTheme = deepMerge(
+          getDefaultTheme(amazedIconViewClass, RateIconBottomTheme, RateIconBottomViewClass),
+          { [amazedIconViewClass]: { normal: { color: dangerColor } } },
+          amazedIconTheme
+        );
         resultViewClass = amazedIconViewClass;
         markClassName = 'AmazedIcon';
         break;
@@ -620,6 +688,7 @@ class Rate extends React.Component<RateProps, any> {
           theme: dangerIconTheme,
         } = this.props.getPartOfThemeHocProps('DangerIcon');
         resultTheme = deepMerge(
+          getDefaultTheme(dangerIconViewClass, RateIconBottomTheme, RateIconBottomViewClass),
           { [dangerIconViewClass]: { normal: { color: dangerColor } } },
           dangerIconTheme
         );
@@ -629,17 +698,16 @@ class Rate extends React.Component<RateProps, any> {
       case 'half':
       case 'primary':
         const { viewClass, theme } = this.props.getPartOfThemeHocProps('ActiveIcon');
-
-        resultTheme = deepMerge({ [viewClass]: { normal: { color: warningColor } } }, theme);
+        resultTheme = deepMerge(
+          getDefaultTheme(viewClass, RateIconBottomTheme, RateIconBottomViewClass),
+          { [viewClass]: { normal: { color: warningColor } } },
+          theme
+        );
         resultViewClass = viewClass;
         markClassName = 'ActiveIcon';
         break;
       case 'bottom':
       default:
-        const {
-          viewClass: RateIconBottomViewClass,
-          theme: RateIconBottomTheme,
-        } = this.props.getPartOfThemeHocProps('DefaultRateIcon');
         resultViewClass = RateIconBottomViewClass;
         const obj = {
           [RateIconBottomViewClass]: {
@@ -688,8 +756,12 @@ class Rate extends React.Component<RateProps, any> {
       };
       resultTheme = deepMerge(obj, resultTheme);
     }
-
+    resultTheme = this.IconThemePropsFilter(resultTheme, resultViewClass);
     return { theme: resultTheme, viewClass: resultViewClass, markClassName };
+  };
+
+  IconThemePropsFilter = (resultTheme: Object, viewClass: string) => {
+    return deepMerge(resultTheme, { [viewClass]: { normal: { margin: 0 } } });
   };
 }
 

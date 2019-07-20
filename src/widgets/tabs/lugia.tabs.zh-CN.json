@@ -136,7 +136,7 @@
     "PagedType": ["single", "page"],
     "TabPositionType": ["top", "bottom", "inner", "default"]
   },
-  "childrenWidget": ["tabpane","tabcontent"],
+  "childrenWidget": ["tabpane"],
   "category": ["数据展示"],
   "designInfo": {
     "CardTabs": {
