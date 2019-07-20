@@ -107,6 +107,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
           action={action}
           offsetY={offsetY}
           lazy={false}
+          createPortal
           hideAction={hideAction}
           onPopupVisibleChange={this.onPopupVisibleChange}
           popupVisible={this.state.visible}

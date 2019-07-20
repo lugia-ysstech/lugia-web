@@ -292,6 +292,166 @@
           }
         }
       }
+    },
+
+    "HorizontalNavMenu": {
+      "sequence": 3,
+      "title": "顶部导航菜单",
+      "desc": "水平的导航菜单",
+      "props": {
+        "mode": "horizontal"
+      },
+      "theme": {
+        "Tabs": {
+          "theme": {
+            "TitleContainer": {
+              "name": "头部标签区域",
+              "desc": "头部标签区域宽度配置",
+              "normal": [["width"]],
+              "hover": [],
+              "clicked": [],
+              "disabled": []
+            },
+            "BorderStyle": {
+              "name": "默认线",
+              "desc": "默认线样式配置",
+              "normal": [["border"]],
+              "hover": [],
+              "clicked": [],
+              "disabled": []
+            },
+            "TabHeader": {
+              "theme": {
+                "DefaultTabPan": {
+                  "name": "默认标签",
+                  "desc": "默认标签样式配置",
+                  "normal": [
+                    ["color"],
+                    ["background"],
+                    ["border"],
+                    ["margin"],
+                    ["padding"],
+                    ["font"],
+                    ["opacity"]
+                  ],
+                  "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
+                  "clicked": [],
+                  "disabled": []
+                },
+                "SelectTabPan": {
+                  "name": "选中标签",
+                  "desc": "选中标签样式配置",
+                  "normal": [
+                    ["color"],
+                    ["background"],
+                    ["border"],
+                    ["margin"],
+                    ["padding"],
+                    ["font"],
+                    ["opacity"]
+                  ],
+                  "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
+                  "clicked": [],
+                  "disabled": []
+                }
+              }
+            }
+          }
+        },
+        "Menu": {
+          "theme": {
+            "MenuWrap": {
+              "name": "菜单外盒",
+              "desc": "配置菜单组件的外盒样式",
+              "normal": [
+                ["width"],
+                ["height"],
+                ["boxShadow"],
+                ["background"],
+                ["opacity"],
+                ["border"],
+                ["borderRadius"],
+                ["margin"],
+                ["padding"]
+              ],
+              "hover": [["boxShadow"], ["background"], ["opacity"], ["border"], ["borderRadius"]],
+              "clicked": [],
+              "disabled": []
+            },
+            "MenuItem": {
+              "theme": {
+                "MenuItemWrap": {
+                  "name": "项的外盒",
+                  "desc": "配置每一项的外盒",
+                  "normal": [
+                    ["height"],
+                    ["background"],
+                    ["border"],
+                    ["borderRadius"],
+                    ["opacity"],
+                    ["color"],
+                    ["padding"]
+                  ],
+                  "hover": [
+                    ["background"],
+                    ["border"],
+                    ["borderRadius"],
+                    ["opacity"],
+                    ["color"],
+                    ["font"]
+                  ],
+                  "active": [
+                    ["background"],
+                    ["border"],
+                    ["borderRadius"],
+                    ["opacity"],
+                    ["color"],
+                    ["font"]
+                  ],
+                  "disabled": [
+                    ["background"],
+                    ["color"],
+                    ["borderRadius"],
+                    ["opacity"],
+                    ["padding"],
+                    ["font"]
+                  ]
+                },
+                "SelectedMenuItemWrap": {
+                  "name": "选中项的外盒",
+                  "desc": "配置选中项的外盒",
+                  "normal": [
+                    ["background"],
+                    ["border"],
+                    ["borderRadius"],
+                    ["opacity"],
+                    ["color"],
+                    ["padding"],
+                    ["font"]
+                  ],
+                  "hover": [
+                    ["background"],
+                    ["border"],
+                    ["borderRadius"],
+                    ["opacity"],
+                    ["color"],
+                    ["font"]
+                  ],
+                  "active": [
+                    ["background"],
+                    ["border"],
+                    ["borderRadius"],
+                    ["opacity"],
+                    ["color"],
+                    ["font"]
+                  ],
+                  "disabled": []
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
 
@@ -478,6 +638,62 @@
               "hover": [["color"], ["font"]],
               "active": [["color"], ["font"]],
               "disabled": [["color"], ["font"]]
+            }
+          }
+        }
+      }
+    },
+    "Tabs": {
+      "theme": {
+        "TitleContainer": {
+          "name": "头部标签区域",
+          "desc": "头部标签区域宽度配置",
+          "normal": [["width"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
+        },
+        "BorderStyle": {
+          "name": "默认线",
+          "desc": "默认线样式配置",
+          "normal": [["border"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
+        },
+        "TabHeader": {
+          "theme": {
+            "DefaultTabPan": {
+              "name": "默认标签",
+              "desc": "默认标签样式配置",
+              "normal": [
+                ["color"],
+                ["background"],
+                ["border"],
+                ["margin"],
+                ["padding"],
+                ["font"],
+                ["opacity"]
+              ],
+              "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
+              "clicked": [],
+              "disabled": []
+            },
+            "SelectTabPan": {
+              "name": "选中标签",
+              "desc": "选中标签样式配置",
+              "normal": [
+                ["color"],
+                ["background"],
+                ["border"],
+                ["margin"],
+                ["padding"],
+                ["font"],
+                ["opacity"]
+              ],
+              "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
+              "clicked": [],
+              "disabled": []
             }
           }
         }
