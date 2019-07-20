@@ -333,12 +333,15 @@ class TabsBox extends Component<TabsProps, TabsState> {
 
   getChildrenContent() {
     const { activityValue, data } = this.state;
-    const { tabPosition, themeProps } = this.props;
+    const { tabPosition, themeProps, hideContent } = this.props;
     if (data) {
       themeProps.propsConfig = { tabPosition };
       const contentThemeProps = this.props.getPartOfThemeProps('ContentBlock', {
         props: { tabPosition },
       });
+      if (hideContent) {
+        return;
+      }
       return (
         <TabContentContainer themeProps={contentThemeProps}>
           {data.map((child, index) => {
