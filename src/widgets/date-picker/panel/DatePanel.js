@@ -40,6 +40,7 @@ type TypeProps = {
   fromat: string,
   rangeRenderIndex: Array<number>,
   rangeChoseDayIndex: Array<number>,
+  themeProps?: Object,
 };
 class Dates extends Component<TypeProps, any> {
   static displayName = 'Dates';
@@ -138,6 +139,7 @@ class Dates extends Component<TypeProps, any> {
       choseDayIndex,
     } = this.props;
     const { isWeeks, isRange } = modeStyle(mode);
+    const { themeProps } = this.props;
     const dateChildren = days.map((currentValue, index) => {
       let rangeChose = false;
       if (rangeRenderIndex && rangeRenderIndex.length !== 0) {
@@ -149,7 +151,7 @@ class Dates extends Component<TypeProps, any> {
       const rangeStartIndex = rangeRenderIndex && rangeRenderIndex[0];
       return (
         <DateChild
-          {...theme}
+          themeProps={themeProps}
           value={value}
           todayDate={todayDate}
           mode={mode}
@@ -180,6 +182,7 @@ class Dates extends Component<TypeProps, any> {
           onClick={this.onDateChange(index, currentValue)}
         >
           <DateChildInner
+            themeProps={themeProps}
             {...theme}
             mode={mode}
             key={index}
@@ -200,6 +203,7 @@ class Dates extends Component<TypeProps, any> {
     });
     return (
       <DatePanel
+        themeProps={themeProps}
         onMouseOver={isWeeks || isRange ? this.mouseOver : ''}
         onMouseOut={isWeeks || isRange ? this.mouseOut : ''}
       >

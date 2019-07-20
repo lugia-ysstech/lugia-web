@@ -70,7 +70,7 @@
   },
   "category": ["数据录入"],
   "designInfo": {
-    "SingleSlider": {
+    "SingleHorizontalSlider": {
       "sequence": 1,
       "title": "单个滑块的样式",
       "desc": "单个滑块的样式配置",
@@ -80,7 +80,7 @@
       },
       "theme": {}
     },
-    "SingleSlider": {
+    "SingleVerticalSlider": {
       "sequence": 2,
       "title": "单个滑块的样式",
       "desc": "单个滑块的样式配置",
@@ -171,7 +171,14 @@
       "normal": [
         ["width"],
         ["height"],
-        ["border"],
+        ["border", "top", "color"],
+        ["border", "top", "style"],
+        ["border", "right", "style"],
+        ["border", "right", "color"],
+        ["border", "bottom", "color"],
+        ["border", "bottom", "style"],
+        ["border", "left", "style"],
+        ["border", "left", "color"],
         ["borderRadius"],
         ["background"],
         ["boxShadow"],
@@ -182,7 +189,15 @@
       ],
       "hover": [],
       "active": [],
-      "disabled": [["background"], ["color"], ["border"]]
+      "disabled": [
+        ["background"],
+        ["color"],
+        ["boxShadow"],
+        ["border", "top", "color"],
+        ["border", "right", "color"],
+        ["border", "bottom", "color"],
+        ["border", "left", "color"]
+      ]
     }
   }
 }

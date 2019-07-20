@@ -84,9 +84,9 @@
       "title": "文字提示",
       "desc": "文字提示",
       "theme": {
-        "TooltipContent": {
-          "name": "文字提示框内容部分",
-          "desc": "文字提示框内容部分",
+        "Container": {
+          "name": "文字提示框容器部分",
+          "desc": "文字提示框容器部分",
           "normal": [
             ["background"],
             ["color"],
@@ -123,9 +123,9 @@
     }
   },
   "theme": {
-    "TooltipContent": {
-      "name": "文字提示框内容部分",
-      "desc": "文字提示框内容部分",
+    "Container": {
+      "name": "文字提示框容器部分",
+      "desc": "文字提示框容器部分",
       "normal": [
         ["background"],
         ["color"],

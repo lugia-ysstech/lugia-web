@@ -5,6 +5,7 @@
 import React, { Component } from 'react';
 import Icon from '../../icon/index';
 import { DateHeader, HeaderTop, HeaderTopArrow, HeaderTopText } from '../styled/styled';
+import getThemeProps from '../themeConfig/themeConfig';
 const moment = require('moment');
 type TypeProps = {
   onChange?: Function,
@@ -107,16 +108,30 @@ class Head extends Component<TypeProps, TypeState> {
   };
   render() {
     const { title, secondTitle } = this.state;
+    const { themeProps, getPartOfThemeHocProps, getPartOfThemeProps } = this.props;
+    const headYearTextTheme = getThemeProps({ getPartOfThemeProps }, 'HeadYearText');
+    const headWeekTextTheme = getThemeProps({ getPartOfThemeProps }, 'HeadWeekText');
+    const { viewClass: singleViewClass, theme: singleTheme } = getPartOfThemeHocProps(
+      'HeadSingleArrow'
+    );
+    const singleArrowConfig = {
+      viewClass: singleViewClass,
+      theme: singleTheme,
+    };
     return (
-      <DateHeader width={200}>
-        <HeaderTop>
-          <HeaderTopArrow position={'left'} onClick={this.changeYear(-1)}>
-            <Icon iconClass={'lugia-icon-direction_Left'} />
+      <DateHeader themeProps={themeProps}>
+        <HeaderTop themeProps={themeProps}>
+          <HeaderTopArrow themeProps={themeProps} position={'left'} onClick={this.changeYear(-1)}>
+            <Icon iconClass={'lugia-icon-direction_Left'} {...singleArrowConfig} />
           </HeaderTopArrow>
-          <HeaderTopText onClick={this.headClick}>{title}</HeaderTopText>
-          <HeaderTopText onClick={this.secondHeadClick}>{secondTitle}</HeaderTopText>
-          <HeaderTopArrow position={'right'} onClick={this.changeYear(1)}>
-            <Icon iconClass={'lugia-icon-direction_right'} />
+          <HeaderTopText themeProps={headYearTextTheme} onClick={this.headClick}>
+            {title}
+          </HeaderTopText>
+          <HeaderTopText themeProps={headWeekTextTheme} onClick={this.secondHeadClick}>
+            {secondTitle}
+          </HeaderTopText>
+          <HeaderTopArrow themeProps={themeProps} position={'right'} onClick={this.changeYear(1)}>
+            <Icon iconClass={'lugia-icon-direction_right'} {...singleArrowConfig} />
           </HeaderTopArrow>
         </HeaderTop>
       </DateHeader>

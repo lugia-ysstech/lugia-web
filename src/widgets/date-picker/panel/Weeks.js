@@ -19,6 +19,7 @@ type TypeProps = {
   theme?: Object,
   year: number,
   weeks: number,
+  themeProps?: Object,
 };
 type TypeState = {
   year: number,
@@ -100,9 +101,9 @@ class Weeks extends Component<TypeProps, TypeState> {
   }
   render() {
     const { year, secondTitle, isWeekInner, weeks, step } = this.state;
-    const { theme } = this.props;
+    const { theme, themeProps } = this.props;
     return (
-      <DateWrapper {...theme} mode={this.props.mode}>
+      <DateWrapper themeProps={themeProps} {...theme} mode={this.props.mode}>
         <div>
           <Head
             {...this.props}
@@ -113,6 +114,7 @@ class Weeks extends Component<TypeProps, TypeState> {
             onChange={this.arrorChange}
             onHeadChange={this.onHeadChange}
             headOnChange={this.headOnChange}
+            themeProps={themeProps}
           />
           <FacePanel
             {...this.props}
@@ -122,6 +124,7 @@ class Weeks extends Component<TypeProps, TypeState> {
             weeks={weeks}
             step={step}
             onChange={this.panelChange}
+            themeProps={themeProps}
           />
         </div>
       </DateWrapper>

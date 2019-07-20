@@ -85,7 +85,7 @@ export const SwitchText = CSSProvider({
   tag: 'span',
   className: 'SwitchText',
   normal: {
-    selectNames: [['fontSize'], ['color'], ['padding']],
+    selectNames: [['fontSize'], ['color']],
     getCSS(themeMeta, themeProps) {
       const { fontSize, fontWeight, color } = themeMeta;
       const {
@@ -164,6 +164,27 @@ export const SwitchCircle = CSSProvider({
   },
   disabled: {
     selectNames: [['background'], ['border'], ['width'], ['height'], ['borderRadius']],
+    getCSS(themeMeta, themeProps) {
+      const { height, width } = themeMeta;
+      const {
+        propsConfig: { switchButtonPosition },
+      } = themeProps;
+      const circleIconRotateDiameter = Math.min(width, height);
+      const widthIsLarge = width >= height;
+      return `
+          ${switchButtonPosition};
+          & > *:first-child {
+            height:${em(height)};    
+            
+            ::before{
+              display:inline-block;
+              width:${em(circleIconRotateDiameter)};
+              height:${em(circleIconRotateDiameter)};
+              ${widthIsLarge ? '' : 'vertical-align: -webkit-baseline-middle;'};              
+            }        
+          }
+        `;
+    },
   },
   css: css`
     position: absolute;

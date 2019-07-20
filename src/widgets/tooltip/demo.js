@@ -64,7 +64,7 @@ const ToolTipRVWrapper = styled(ToolTipBaseWrapper)`
 export default () => {
   const config = {
     [Widget.Tooltip]: {
-      TooltipContent: {
+      Container: {
         normal: {
           background: {
             color: '#ddd',

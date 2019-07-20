@@ -1,14 +1,11 @@
-//import type { ChangeEventParam } from '@lugia/lugia-web';
 import React, { Component } from 'react';
 import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
 import DateInput from '../date-picker/triggerPanel/singlePanelTrigger';
-import { getTheme } from '../date-picker/utils/utils';
 export default ThemeProvider(
   class TimePicker extends Component {
     render() {
-      const theme = getTheme(this.props);
-      return <DateInput {...this.props} theme={theme} mode={'time'} />;
+      return <DateInput {...this.props} mode={'time'} />;
     }
   },
   Widget.TimePicker
