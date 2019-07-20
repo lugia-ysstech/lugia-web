@@ -19,8 +19,8 @@ exports[`tabpaneDemo Component JSON 1`] = `
   -ms-user-select: none;
   user-select: none;
   text-align: left;
-  line-height: 3.5rem;
-  height: 3.5rem;
+  line-height: 3.1rem;
+  height: 3.1rem;
 }
 
 .c1:focus {
@@ -38,7 +38,7 @@ exports[`tabpaneDemo Component JSON 1`] = `
     className="cardTitle  c1"
     style={
       Object {
-        "lineHeight": "34px",
+        "lineHeight": "32px",
       }
     }
   >

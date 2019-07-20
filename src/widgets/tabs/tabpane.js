@@ -429,12 +429,14 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     let titleThemeProps = this.props.getPartOfThemeProps('DefaultTabPan', {
       props: { isSelect, tabType, tabPosition, showDeleteBtn, disabled },
     });
+
     let { theme, viewClass } = this.props.getPartOfThemeHocProps('DefaultTabPan');
+    const { icon, suffixIcon } = this.props;
     const themeObj = {
       [viewClass]: {
         normal: {
           getThemeMeta: (theme: Object, themeProps: Object) => {
-            return { margin: { left: 4, right: 4 } };
+            return { margin: { left: suffixIcon ? 10 : 0, right: icon ? 10 : 0 } };
           },
         },
         disabled: {
@@ -445,7 +447,6 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
       },
     };
     theme = deepMerge(theme, themeObj);
-
     let selectThemeProps = this.props.getPartOfThemeProps('SelectTabPan', {
       props: { isSelect, tabType, tabPosition, showDeleteBtn, disabled },
     });

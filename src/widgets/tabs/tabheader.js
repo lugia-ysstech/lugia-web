@@ -452,7 +452,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
   }
 
   componentDidMount() {
-    if (this.scrollBox) {
+    if (this.scrollBox.current) {
       this.offsetWidth = this.scrollBox.current.offsetWidth;
       this.offsetHeight = this.scrollBox.current.offsetHeight;
     }
