@@ -1,6 +1,6 @@
 {
   "name": "@lugia/lugia-web",
-  "version": "1.1.0-3",
+  "version": "1.1.0-4",
   "dependencies": {
     "@lugia/css": "1.0.17",
     "@lugia/devtools-material": "^1.0.6",
@@ -8,10 +8,10 @@
     "@lugia/object-utils": "1.0.11",
     "@lugia/ramada": "^1.0.1",
     "@lugia/theme-config": "1.0.27",
-    "@lugia/theme-core": "1.0.27",
-    "@lugia/theme-css-hoc": "1.0.50",
+    "@lugia/theme-core": "1.0.28",
+    "@lugia/theme-css-hoc": "1.0.51",
     "@lugia/theme-hoc": "1.0.38",
-    "@lugia/theme-hoc-devtools": "1.0.4",
+    "@lugia/theme-hoc-devtools": "1.0.5",
     "@lugia/theme-utils": "1.0.5",
     "@lugia/type-utils": "^1.0.4",
     "babel-polyfill": "6.26.0",
