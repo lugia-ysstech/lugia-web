@@ -72,6 +72,10 @@ export default class extends React.Component<any, any> {
       selectedKeys: 'a6/a6-2/a6-2-1/suba1/suba2',
       data,
     };
+    this.target = React.createContext();
+  }
+  componentDidMount() {
+    window.target = this.target.current;
   }
   render() {
     const { selectedKeys, data } = this.state;
@@ -235,6 +239,7 @@ export default class extends React.Component<any, any> {
       <Box>
         <Cascader
           theme={config}
+          ref={this.target}
           data={data}
           action={'hover'}
           value={selectedKeys}

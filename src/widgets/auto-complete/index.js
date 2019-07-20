@@ -132,7 +132,9 @@ export default ShortKeyBoard(
           </Trigger>
         );
       }
-
+      setPopupVisible(popupVisible: boolean) {
+        this.triggerEl.current && this.triggerEl.current.setPopupVisible(popupVisible);
+      }
       getOldValueItem() {
         const { preSelectValue = '' } = this.state;
         if (preSelectValue === '') {

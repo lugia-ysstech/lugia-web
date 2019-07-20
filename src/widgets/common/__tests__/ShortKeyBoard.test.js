@@ -2,25 +2,15 @@
 import * as React from 'react';
 import Enzyme, { mount, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import ShortKeyBoard from '../ShortKeyBoard';
+import { getMethod, matchKeyCode, pickMethod } from '../ShortKeyBoard';
 import Keys from '../../consts/KeyBoard';
 
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('ShortKeyBoard', (keyConfig: Object[] = []) => {
-  const createShortBoardCompent = function() {
-    const Target = ShortKeyBoard(() => {
-      return <div />;
-    }, keyConfig);
-    const cmp = mount(<Target />);
-    return cmp;
-  };
   it('getMethod', () => {
-    const cmp = createShortBoardCompent();
-
-    const instance = cmp.instance();
     expect(
-      instance.getMethod(
+      getMethod(
         [
           {
             ctrlKey: true,
@@ -44,11 +34,8 @@ describe('ShortKeyBoard', (keyConfig: Object[] = []) => {
     ).toEqual([['onUp', 'onDown'], ['onChange']]);
   });
   it('getMethod method is empty', () => {
-    const cmp = createShortBoardCompent();
-
-    const instance = cmp.instance();
     expect(
-      instance.getMethod(
+      getMethod(
         [
           {
             ctrlKey: true,
@@ -72,7 +59,7 @@ describe('ShortKeyBoard', (keyConfig: Object[] = []) => {
     ).toEqual([['onUp', 'onDown'], []]);
 
     expect(
-      instance.getMethod(
+      getMethod(
         [
           {
             ctrlKey: true,
@@ -96,7 +83,7 @@ describe('ShortKeyBoard', (keyConfig: Object[] = []) => {
     ).toEqual([['onUp', 'onDown'], []]);
 
     expect(
-      instance.getMethod(
+      getMethod(
         [
           {
             ctrlKey: true,
@@ -120,14 +107,11 @@ describe('ShortKeyBoard', (keyConfig: Object[] = []) => {
     ).toEqual([['onUp', 'onDown'], []]);
   });
   it('getMethod param is empty', () => {
-    const cmp = createShortBoardCompent();
-
-    const instance = cmp.instance();
-    expect(instance.getMethod(null, {})).toEqual([]);
-    expect(instance.getMethod([], {})).toEqual([]);
-    expect(instance.getMethod(undefined)).toEqual([]);
+    expect(getMethod(null, {})).toEqual([]);
+    expect(getMethod([], {})).toEqual([]);
+    expect(getMethod(undefined)).toEqual([]);
     expect(
-      instance.getMethod(
+      getMethod(
         [
           {
             ctrlKey: true,
@@ -147,8 +131,6 @@ describe('ShortKeyBoard', (keyConfig: Object[] = []) => {
     ).toEqual([]);
   });
   it('matchKeyCode is Equal', () => {
-    const cmp = createShortBoardCompent();
-    const instance = cmp.instance();
     const source = {
       keyCode: Keys.UP,
       altKey: false,
@@ -161,11 +143,9 @@ describe('ShortKeyBoard', (keyConfig: Object[] = []) => {
       shiftKey: true,
       ctrlKey: true,
     };
-    expect(instance.matchKeyCode(source)(target)).toBeTruthy();
+    expect(matchKeyCode(source)(target)).toBeTruthy();
   });
   it('matchKeyCode no Equal', () => {
-    const cmp = createShortBoardCompent();
-    const instance = cmp.instance();
     const source = {
       keyCode: Keys.UP,
       altKey: true,
@@ -178,12 +158,10 @@ describe('ShortKeyBoard', (keyConfig: Object[] = []) => {
       shiftKey: true,
       ctrlKey: true,
     };
-    expect(instance.matchKeyCode(source)(target)).toBeFalsy();
+    expect(matchKeyCode(source)(target)).toBeFalsy();
   });
 
   it('matchKeyCode attr is undefined', () => {
-    const cmp = createShortBoardCompent();
-    const instance = cmp.instance();
     const source = {
       keyCode: Keys.UP,
       altKey: false,
@@ -193,28 +171,22 @@ describe('ShortKeyBoard', (keyConfig: Object[] = []) => {
     const target = {
       keyCode: Keys.UP,
     };
-    expect(instance.matchKeyCode(source)(target)).toBeTruthy();
+    expect(matchKeyCode(source)(target)).toBeTruthy();
   });
 
   it('pickMethod param is empty', () => {
-    const cmp = createShortBoardCompent();
-    const instance = cmp.instance();
-
-    expect(instance.pickMethod({ method: null })).toEqual([]);
-    expect(instance.pickMethod({ method: [] })).toEqual([]);
-    expect(instance.pickMethod({ method: undefined })).toEqual([]);
-    expect(instance.pickMethod({ method: '' })).toEqual([]);
-    expect(instance.pickMethod({ method: '   ' })).toEqual([]);
-    expect(instance.pickMethod({ method: '   hello' })).toEqual(['hello']);
-    expect(instance.pickMethod({ method: ['', 'hello', ''] })).toEqual(['hello']);
-    expect(instance.pickMethod({ method: [null, 'hello', undefined] })).toEqual(['hello']);
-    expect(instance.pickMethod({ method: ['', '   ', 'hello'] })).toEqual(['hello']);
+    expect(pickMethod({ method: null })).toEqual([]);
+    expect(pickMethod({ method: [] })).toEqual([]);
+    expect(pickMethod({ method: undefined })).toEqual([]);
+    expect(pickMethod({ method: '' })).toEqual([]);
+    expect(pickMethod({ method: '   ' })).toEqual([]);
+    expect(pickMethod({ method: '   hello' })).toEqual(['hello']);
+    expect(pickMethod({ method: ['', 'hello', ''] })).toEqual(['hello']);
+    expect(pickMethod({ method: [null, 'hello', undefined] })).toEqual(['hello']);
+    expect(pickMethod({ method: ['', '   ', 'hello'] })).toEqual(['hello']);
   });
   it('pickMethod param ', () => {
-    const cmp = createShortBoardCompent();
-    const instance = cmp.instance();
-
-    expect(instance.pickMethod({ method: 'a' })).toEqual(['a']);
+    expect(pickMethod({ method: 'a' })).toEqual(['a']);
   });
   it('composeTest', () => {
     // const Target = ShortKeyBoard(() => {
