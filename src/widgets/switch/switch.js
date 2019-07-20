@@ -184,9 +184,11 @@ class Switch extends React.Component<TypeProps, TypeState> {
             <Theme
               config={{
                 [Widgets.Icon]: {
-                  normal: {
-                    color: switchBackground.color,
-                    fontSize: Math.min(circleWidth, circleHeight) - 4,
+                  Icon: {
+                    normal: {
+                      color: switchBackground.color,
+                      fontSize: Math.min(circleWidth, circleHeight) - 4,
+                    },
                   },
                 },
               }}

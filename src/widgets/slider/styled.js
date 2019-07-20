@@ -216,9 +216,11 @@ export const Tips = CSSComponent({
   normal: {
     selectNames: [],
     getCSS(themeMate) {
-      const { height } = themeMate;
+      const { height, padding: { top = 0, bottom = 0 } = {} } = themeMate;
+      const paddingHeight = top * 1 + bottom * 1;
+      const positionTop = paddingHeight > height ? paddingHeight : height;
       return `
-        top: -${em(height + 10)};
+        top: -${em(positionTop + 10)};
       `;
     },
   },
@@ -230,12 +232,6 @@ export const Tips = CSSComponent({
   },
   disabled: {
     selectNames: [],
-    getCSS(themeMate) {
-      const { height } = themeMate;
-      return `
-        top: -${em(height + 10)};
-      `;
-    },
   },
   css: css`
     font-size: ${em(14)};
@@ -253,7 +249,14 @@ export const Tipinner = CSSComponent({
     selectNames: [
       ['width'],
       ['height'],
-      ['border'],
+      ['border', 'top', 'color'],
+      ['border', 'top', 'style'],
+      ['border', 'right', 'style'],
+      ['border', 'right', 'color'],
+      ['border', 'bottom', 'color'],
+      ['border', 'bottom', 'style'],
+      ['border', 'left', 'style'],
+      ['border', 'left', 'color'],
       ['borderRadius'],
       ['background'],
       ['boxShadow'],
@@ -268,24 +271,23 @@ export const Tipinner = CSSComponent({
         propsConfig: { tipsText },
       }
     ) {
-      const {
-        height,
-        background: { color },
-        border: { bottom: { color: bottomBorderColor } = {} } = {},
-        boxShadow,
-      } = themeMate;
+      const { height, padding: { top = 0, bottom = 0 } = {} } = themeMate;
+
+      const paddingHeight = top * 1 + bottom * 1;
+      const lineHeight = paddingHeight > height ? paddingHeight : height;
       return `
-        line-height:${em(height)};
+        line-height:${em(lineHeight)};
         &::before{
           content:'${tipsText}';
-          background:${color};          
+          ${getTipsArrowBorder(themeMate).background}; 
+         ${getTipsArrowBorder(themeMate).borderRadius};      
         };
         
         &::after {
-          background:${color};
-          border-right-color:${bottomBorderColor};
-          border-bottom-color:${bottomBorderColor};
-          box-shadow:${boxShadow};
+         ${getTipsArrowBorder(themeMate).border};                   
+          ${getTipsArrowBorder(themeMate).boxShadow};                   
+          ${getTipsArrowBorder(themeMate).borderRadius};                   
+          ${getTipsArrowBorder(themeMate).background}; 
         }
       `;
     },
@@ -297,11 +299,31 @@ export const Tipinner = CSSComponent({
     selectNames: [],
   },
   disabled: {
-    selectNames: [['background'], ['color'], ['borderRadius'], ['border']],
+    selectNames: [
+      ['background'],
+      ['color'],
+      ['boxShadow'],
+      ['border', 'top', 'color'],
+      ['border', 'right', 'color'],
+      ['border', 'bottom', 'color'],
+      ['border', 'left', 'color'],
+    ],
     getCSS(themeMate) {
       const { height } = themeMate;
       return `
         line-height:${em(height)};
+        
+        &::before{
+          ${getTipsArrowBorder(themeMate).background}; 
+         ${getTipsArrowBorder(themeMate).borderRadius};      
+        };
+        
+        &::after {
+          ${getTipsArrowBorder(themeMate).border};                   
+          ${getTipsArrowBorder(themeMate).boxShadow};                   
+          ${getTipsArrowBorder(themeMate).borderRadius};                   
+          ${getTipsArrowBorder(themeMate).background};                   
+        }
       `;
     },
   },
@@ -340,6 +362,36 @@ export const Tipinner = CSSComponent({
     }
   `,
 });
+function getTipsArrowBorder(themeMate) {
+  console.log(themeMate);
+  const {
+    background: { color = '' } = {},
+    border: {
+      bottom: { color: bottomBorderColor = '', style: bottomBorderStyle = 'solid' } = {},
+    } = {},
+    boxShadow: { color: boxShadowColor = '', x = 0, y = 0, blur = 0, spread = 0 } = {},
+    borderRadius: { topLeft = 0, topRight = 0, bottomRight = 0, bottomLeft = 0 } = {},
+  } = themeMate;
+  const border = `
+    border-style:solid;      
+    border-right-color:${bottomBorderColor};
+    border-right-style:${bottomBorderStyle};
+    border-bottom-color:${bottomBorderColor};
+    border-bottom-style:${bottomBorderStyle};
+    border-width:1px;  
+  `;
+  const boxShadow = `box-shadow:${boxShadowColor} ${em(x)} ${em(y)} ${em(blur)} ${em(spread)};`;
+  const borderRadius = `border-radius:${em(topLeft)} ${em(topRight)} ${em(bottomRight)} ${em(
+    bottomLeft
+  )};`;
+  const background = `background:${color};`;
+  return {
+    border,
+    boxShadow,
+    borderRadius,
+    background,
+  };
+}
 export const Dot = CSSComponent({
   tag: 'span',
   className: 'SliderMarks',

@@ -655,11 +655,11 @@ class Slider extends Component<TypeProps, TypeState> {
           {...size}
           key={i}
         >
-          {showTip && btnDisabled ? (
+          {showTip && btnDisabled && !this.props.disabled ? (
             <Tips themeProps={sliderTipsThemeProps}>
-              <Tipinner themeProps={deepMerge(sliderTipsThemeProps, { propsConfig: { tipsText } })}>
-                {tipsText}
-              </Tipinner>
+              <Tipinner
+                themeProps={deepMerge(sliderTipsThemeProps, { propsConfig: { tipsText } })}
+              />
             </Tips>
           ) : (
             ''
