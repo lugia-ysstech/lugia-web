@@ -112,21 +112,21 @@
           "5": "5℃",
           "10": "10℃",
           "15": "15℃"
-        },
-        "theme": {
-          "SliderMarks": {
-            "name": "离散节点",
-            "desc": "离散节点样式配置",
-            "normal": {
-              "selectNames": [["color"], ["font"], "fontSize"],
-              "nth": [["color"], ["font"], "fontSize"]
-            },
-            "hover": [],
-            "active": [],
-            "disabled": {
-              "selectNames": [["color"], ["font"], "fontSize"],
-              "nth": [["color"], ["font"], "fontSize"]
-            }
+        }
+      },
+      "theme": {
+        "SliderMarks": {
+          "name": "离散节点",
+          "desc": "离散节点样式配置",
+          "normal": {
+            "selectNames": [["color"], ["font"], "fontSize"],
+            "nth": [["color"], ["font"], "fontSize"]
+          },
+          "hover": [],
+          "active": [],
+          "disabled": {
+            "selectNames": [["color"], ["font"], "fontSize"],
+            "nth": [["color"], ["font"], "fontSize"]
           }
         }
       }
@@ -184,8 +184,7 @@
         ["boxShadow"],
         ["color"],
         ["font"],
-        ["fontSize"],
-        ["padding"]
+        ["fontSize"]
       ],
       "hover": [],
       "active": [],
