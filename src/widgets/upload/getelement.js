@@ -11,7 +11,8 @@ import LoadIcon from '../icon';
 import Progress from '../progress';
 import FileInput from './fileInput';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
-import CSSComponent, { css, keyframes, getBorder } from '../theme/CSSProvider';
+import CSSComponent, { css, keyframes } from '../theme/CSSProvider';
+import { getBorderRadius, getBorder } from '@lugia/theme-utils';
 import { deepMerge } from '@lugia/object-utils';
 
 import { getListIconType } from '../css/upload';
@@ -37,6 +38,24 @@ const InputContent = CSSComponent({
   className: 'UploadDefaultType',
   normal: {
     selectNames: [['width'], ['height'], ['boxShadow'], ['borderRadius'], ['border']],
+    defaultTheme: {
+      borderRadius: getBorderRadius(4),
+    },
+    getThemeMeta(themeMeta, themeProps) {
+      const {
+        propsConfig: { areaType },
+      } = themeProps;
+      if (areaType === 'both') {
+        return {
+          borderRadius: {
+            topLeft: 4,
+            topRight: 0,
+            bottomLeft: 4,
+            bottomRight: 0,
+          },
+        };
+      }
+    },
   },
   disabled: {
     selectNames: [['border'], ['borderRadius'], ['cursor']],
@@ -61,6 +80,9 @@ const InputContent = CSSComponent({
 const Ul = CSSComponent({
   tag: 'ul',
   className: 'upload_Ul',
+  disabled: {
+    selectNames: [],
+  },
   css: css`
     min-width: 366px;
     padding: 6px 0 0;
@@ -78,16 +100,19 @@ const ProgressCon = CSSComponent({
 
 const Li = CSSComponent({
   tag: 'li',
-  className: 'UploadListType',
+  className: 'UploadLiType',
   normal: {
     selectNames: [['fontSize'], ['color'], ['borderRadius'], ['border']],
   },
   hover: {
-    selectNames: [['background']],
+    selectNames: [['background'], ['color']],
     defaultTheme: {
       background: { color: '#f2f2f2' },
       cursor: 'pointer',
     },
+  },
+  disabled: {
+    selectNames: [],
   },
   css: css`
     height: 36px;
@@ -123,7 +148,38 @@ const Button = CSSComponent({
       ['borderRadius'],
       ['border'],
       ['opacity'],
+      ['lineHeight'],
     ],
+    defaultTheme: {
+      width: 100,
+      borderRadius: getBorderRadius(4),
+      height: 30,
+      background: {
+        color: themeColor,
+      },
+    },
+    getCSS(themeMeta, themeProps) {
+      const { height } = themeMeta;
+      if (height) {
+        return `line-height: ${height}px`;
+      }
+    },
+    getThemeMeta(themeMeta, themeProps) {
+      const {
+        propsConfig: { areaType },
+      } = themeProps;
+      if (areaType === 'both') {
+        return {
+          borderRadius: {
+            topLeft: 0,
+            topRight: 4,
+            bottomLeft: 0,
+            bottomRight: 4,
+          },
+          width: 60,
+        };
+      }
+    },
   },
   hover: {
     selectNames: [['background'], ['boxShadow'], ['borderRadius'], ['border'], ['opacity']],
@@ -137,11 +193,7 @@ const Button = CSSComponent({
     },
   },
   css: css`
-    width: 60px;
-    height: 30px;
-    background-color: ${themeColor};
     display: inline-block;
-    border-radius: 0 4px 4px 0;
     float: right;
     text-align: center;
     color: #fff;
@@ -158,8 +210,6 @@ const PrevCon = CSSComponent({
     selectNames: [],
   },
   css: css`
-    width: 15px;
-    height: 15px;
     display: inline-block;
     position: relative;
     vertical-align: middle;
@@ -247,7 +297,7 @@ const PictureView = CSSComponent({
   tag: 'div',
   className: 'UploadPictureType',
   normal: {
-    selectNames: [['width'], ['height'], ['opacity'], ['borderRadius'], ['border']],
+    selectNames: [['background'], ['width'], ['height'], ['opacity'], ['borderRadius'], ['border']],
     defaultTheme: {
       width: 80,
       height: 80,
@@ -287,6 +337,10 @@ const AreaView = CSSComponent({
   className: 'UploadAreaType',
   normal: {
     selectNames: [['width'], ['height'], ['fontSize'], ['color']],
+    defaultTheme: {
+      width: 300,
+      height: 150,
+    },
   },
   disabled: {
     selectNames: [['color']],
@@ -537,11 +591,17 @@ const getDefaultSize = (size: string) => {
   }
 };
 
-const getFileList = (data: Array<Object>, close: Function, themeProps: Object, props: Object) => {
+const getFileList = (
+  data: Array<Object>,
+  close: Function,
+  themeProps: Object,
+  props: Object,
+  disabled: boolean
+) => {
   if (!data || data.length === 0) return;
   const liThemeProps = props.getPartOfThemeProps('UploadLiType');
   return (
-    <Ul themeProps={themeProps}>
+    <Ul themeProps={themeProps} disabled={disabled}>
       {data.map((item, index) => {
         return (
           <Li status={item.status} themeProps={liThemeProps}>
@@ -664,13 +724,13 @@ class GetElement extends React.Component<DefProps, StateProps> {
   };
 
   render() {
-    const { showFileList, fileListDone, themeProps } = this.props;
+    const { showFileList, fileListDone, themeProps, disabled } = this.props;
     const liThemeProps = this.props.getPartOfThemeProps('UploadLiType');
     return (
       <React.Fragment>
         <Container themeProps={themeProps}>{this.getElement()}</Container>
         {showFileList
-          ? getFileList(fileListDone, this.handleClickToDelete, liThemeProps, this.props)
+          ? getFileList(fileListDone, this.handleClickToDelete, liThemeProps, this.props, disabled)
           : null}
       </React.Fragment>
     );
@@ -685,7 +745,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
     const children = this.getChildren(areaType, props, classNameStatus, dragIn);
     const { inputId, disabled, accept, multiple } = props;
     const { getRegisterInput, getChangeInfo } = this;
-    const themeProps = this.props.getPartOfThemeProps('UploadDefaultType');
+    const themeProps = this.props.getPartOfThemeProps('UploadDefaultType', { props: { areaType } });
     return (
       <React.Fragment>
         <FileInput
@@ -707,7 +767,9 @@ class GetElement extends React.Component<DefProps, StateProps> {
     if (areaType === 'default') {
       const { handleClickToUpload } = this;
       const { defaultText, disabled } = props;
-      const defaultThemeProps = this.props.getPartOfThemeProps('UploadDefaultType');
+      const defaultThemeProps = this.props.getPartOfThemeProps('UploadDefaultType', {
+        props: { areaType },
+      });
 
       children = (
         <InputContent
@@ -724,8 +786,12 @@ class GetElement extends React.Component<DefProps, StateProps> {
     if (areaType === 'both') {
       const { handleClickToSubmit, handleClickToUpload } = this;
       const { defaultText, showFileList, disabled } = this.props;
-      const buttonThemeProps = this.props.getPartOfThemeProps('UploadButtonType');
-      const defaultThemeProps = this.props.getPartOfThemeProps('UploadDefaultType');
+      const buttonThemeProps = this.props.getPartOfThemeProps('UploadButtonType', {
+        props: { areaType },
+      });
+      const defaultThemeProps = this.props.getPartOfThemeProps('UploadDefaultType', {
+        props: { areaType },
+      });
       children = (
         <React.Fragment>
           <InputContent
@@ -737,7 +803,11 @@ class GetElement extends React.Component<DefProps, StateProps> {
             ref={this.dropArea}
           >
             {defaultText}
-            {showFileList ? null : getIconByType(props, 'li-' + classNameStatus)}
+            {showFileList
+              ? null
+              : classNameStatus === 'success' || classNameStatus === 'fail'
+              ? getIconByType(props, 'li-' + classNameStatus)
+              : null}
           </InputContent>
           <Button themeProps={buttonThemeProps} disabled={disabled} onClick={handleClickToSubmit}>
             {getIconByType(props, classNameStatus, { type: 1 })}
@@ -748,7 +818,9 @@ class GetElement extends React.Component<DefProps, StateProps> {
     if (areaType === 'button') {
       const { disabled } = props;
       const { handleClickToUpload } = this;
-      const buttonThemeProps = this.props.getPartOfThemeProps('UploadButtonType');
+      const buttonThemeProps = this.props.getPartOfThemeProps('UploadButtonType', {
+        props: { areaType },
+      });
       children = (
         <Button themeProps={buttonThemeProps} disabled={disabled} onClick={handleClickToUpload}>
           点击上传
@@ -814,7 +886,6 @@ class GetElement extends React.Component<DefProps, StateProps> {
         <AreaView
           themeProps={themeProps}
           disabled={disabled}
-          size={'bigger'}
           onClick={handleClickToUpload}
           dragIn={dragIn}
           classNameStatus={classNameStatus}

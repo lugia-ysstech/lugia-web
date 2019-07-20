@@ -132,7 +132,6 @@
           "desc": "按钮上传类型的样式配置",
           "normal": [["background"], ["width"], ["height"], ["boxShadow"], ["border"], ["opacity"]],
           "hover": [["background"], ["boxShadow"], ["border"], ["opacity"]],
-          "clicked": [],
           "disabled": [["background"], ["border"]]
         }
       }
@@ -148,9 +147,8 @@
         "UploadPictureType": {
           "name": "图片上传区域",
           "desc": "图片上传类型的样式配置",
-          "normal": [["width"], ["height"], ["opacity"], ["border"]],
+          "normal": [["background"],["width"], ["height"], ["opacity"], ["border"]],
           "hover": [["background"], ["opacity"], ["border"]],
-          "clicked": [],
           "disabled": [["background"], ["color"], ["border"]]
         }
       }
@@ -167,8 +165,6 @@
           "name": "拖拽区域",
           "desc": "区域拖拽上传类型的样式配置",
           "normal": [["width"], ["height"], ["fontSize"],["color"]],
-          "hover": [],
-          "clicked": [],
           "disabled": [["color"]]
         }
       }
@@ -185,8 +181,6 @@
           "name": "按钮",
           "desc": "按钮部分的样式配置",
           "normal": [["width"], ["height"], ["fontSize"],["color"]],
-          "hover": [],
-          "clicked": [],
           "disabled": [["color"]]
         }
       }
@@ -198,7 +192,6 @@
       "desc": "默认上传框的样式",
       "normal": [["width"], ["height"], ["boxShadow"], ["border"]],
       "hover": [["boxShadow"], ["border"]],
-      "clicked": [],
       "disabled": [["border"], ["cursor"]]
     },
     "UploadList": {
@@ -206,31 +199,21 @@
         "UploadLiType": {
           "name": "上传文件列表",
           "desc": "上传列表的行样式",
-          "normal": [["width"],["height"],["background"], ["border"],["color"]],
-          "hover": [["border"],["background"],["color"]],
-          "clicked": [],
-          "disabled": [["background"],["color"]]
+          "normal": [["width"],["height"],["background"], ["border"],["color"],["fontSize"]],
+          "hover": [["border"],["background"],["color"]]
         },
         "UploadListSuccessIcon": {
           "name": "上传成功图标样式",
           "desc": "上传成功时列表图标的样式",
-          "normal": [["color"]],
-          "hover": [],
-          "clicked": [],
-          "disabled": []
+          "normal": [["color"],["fontSize"]]
         },
         "UploadListFailedIcon": {
           "name": "上传失败图标样式",
           "desc": "上传失败时列表图标的样式",
-          "normal": [["color"]],
-          "hover": [],
-          "clicked": [],
-          "disabled": []
+          "normal": [["color"],["fontSize"]]
         }
       }
     }
-
-
 
   }
 
