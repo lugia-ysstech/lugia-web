@@ -1486,17 +1486,17 @@
     "@babel/runtime" "^7.4.5"
     "@lugia/object-utils" "^1.0.11"
 
-"@lugia/theme-css-hoc@1.0.52":
-  version "1.0.52"
-  resolved "http://192.168.102.79:5001/@lugia/theme-css-hoc/download/@lugia/theme-css-hoc-1.0.52.tgz#7958fcc917f82408817f0579d7f0c002a658a462"
-  integrity sha1-eVj8yRf4JAiBfwV51/DAAqZYpGI=
+"@lugia/theme-css-hoc@1.0.53":
+  version "1.0.53"
+  resolved "http://192.168.102.79:5001/@lugia/theme-css-hoc/download/@lugia/theme-css-hoc-1.0.53.tgz#c2638c82798d634347e499b5a669f06cf4a5eb8a"
+  integrity sha1-wmOMgnmNY0NH5Jm1pmnwbPSl64o=
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/css" "^1.0.17"
     "@lugia/object-utils" "^1.0.11"
     "@lugia/ramada" "^1.0.1"
     "@lugia/theme-core" "^1.0.29"
-    "@lugia/theme-utils" "^1.0.5"
+    "@lugia/theme-utils" "^1.0.6"
     decamelize "^3.2.0"
 
 "@lugia/theme-hoc-devtools@1.0.6", "@lugia/theme-hoc-devtools@^1.0.6":
@@ -1516,10 +1516,10 @@
     "@lugia/theme-core" "^1.0.29"
     "@lugia/theme-hoc-devtools" "^1.0.6"
 
-"@lugia/theme-utils@^1.0.5":
-  version "1.0.5"
-  resolved "http://192.168.102.79:5001/@lugia/theme-utils/download/@lugia/theme-utils-1.0.5.tgz#47b6694148da3e74e8f0dc607a22b97484729ecf"
-  integrity sha1-R7ZpQUjaPnTo8NxgeiK5dIRyns8=
+"@lugia/theme-utils@1.0.6", "@lugia/theme-utils@^1.0.6":
+  version "1.0.6"
+  resolved "http://192.168.102.79:5001/@lugia/theme-utils/download/@lugia/theme-utils-1.0.6.tgz#528e8e4c147a47b835577c872c246b206d8f7ef2"
+  integrity sha1-Uo6OTBR6R7g1V3yHLCRrIG2PfvI=
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/css" "^1.0.17"
