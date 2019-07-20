@@ -16,6 +16,7 @@ import {
   HeaderTopText,
 } from '../styled/styled';
 import moment from 'moment';
+import getThemeProps from '../themeConfig/themeConfig';
 type TypeProps = {
   value?: string,
   firstWeekDay?: number,
@@ -130,42 +131,69 @@ class Date extends Component<TypeProps, TypeState> {
     const { year, month } = this.state;
     const { firstWeekDay, maxDay, value } = this.state;
     const { lang, mode } = this.props;
-    const { index, differAmonth, differAyear, theme, choseDayIndex } = this.props;
+    const {
+      index,
+      differAmonth,
+      differAyear,
+      theme,
+      choseDayIndex,
+      getPartOfThemeProps,
+      getPartOfThemeHocProps,
+    } = this.props;
     const { days } = this.state;
     const { firstDayIndex } = getFirstDayIndex(days);
+    const { themeProps } = this.props;
+
+    const themeProp = getThemeProps({ mode, getPartOfThemeProps }, 'PanelTitle');
+    const headYearTextTheme = getThemeProps({ mode, getPartOfThemeProps }, 'HeadYearText');
+    const headMonthTextTheme = getThemeProps({ mode, getPartOfThemeProps }, 'HeadMonthText');
+    const { viewClass: singleViewClass, theme: singleTheme } = getPartOfThemeHocProps(
+      'HeadSingleArrow'
+    );
+    const { viewClass: doubleViewClass, theme: doubleTheme } = getPartOfThemeHocProps(
+      'HeadDoubleArrow'
+    );
+    const singleArrowConfig = {
+      viewClass: singleViewClass,
+      theme: singleTheme,
+    };
+    const doubleArrowConfig = {
+      viewClass: doubleViewClass,
+      theme: doubleTheme,
+    };
     return (
-      <DateWrapper {...theme} mode={mode}>
+      <DateWrapper mode={mode} themeProps={themeProps}>
         <div>
-          <DateHeader>
-            <HeaderTop {...theme}>
+          <DateHeader themeProps={themeProps}>
+            <HeaderTop themeProps={themeProps}>
               {differAyear && index === 1 ? (
                 ''
               ) : (
                 <HeaderTopArrow
+                  themeProps={themeProps}
                   position={'left'}
-                  {...theme}
                   onClick={this.getDaysInMonth('year', 'subtract')}
                 >
-                  <Icon iconClass={'lugia-icon-direction_double_right'} />
+                  <Icon iconClass={'lugia-icon-direction_double_right'} {...doubleArrowConfig} />
                 </HeaderTopArrow>
               )}
               {differAmonth && index === 1 ? (
                 ''
               ) : (
                 <HeaderTopArrow
+                  themeProps={themeProps}
                   position={'left'}
-                  {...theme}
                   margin={20}
                   onClick={this.getDaysInMonth('month', 'subtract')}
                 >
-                  <Icon iconClass={'lugia-icon-direction_Left'} />
+                  <Icon iconClass={'lugia-icon-direction_Left'} {...singleArrowConfig} />
                 </HeaderTopArrow>
               )}
 
-              <HeaderTopText {...theme} onClick={this.onChangeYear}>
+              <HeaderTopText themeProps={headYearTextTheme} onClick={this.onChangeYear}>
                 {year}年
               </HeaderTopText>
-              <HeaderTopText {...theme} onClick={this.onChangeMonth}>
+              <HeaderTopText themeProps={headMonthTextTheme} onClick={this.onChangeMonth}>
                 {month + 1}月
               </HeaderTopText>
               {differAyear && index === 0 ? (
@@ -173,26 +201,27 @@ class Date extends Component<TypeProps, TypeState> {
               ) : (
                 <HeaderTopArrow
                   position={'right'}
-                  {...theme}
+                  themeProps={themeProps}
                   onClick={this.getDaysInMonth('year', 'add')}
                 >
-                  <Icon iconClass={'lugia-icon-direction_double_left'} />
+                  <Icon iconClass={'lugia-icon-direction_double_left'} {...doubleArrowConfig} />
                 </HeaderTopArrow>
               )}
               {differAmonth && index === 0 ? (
                 ''
               ) : (
                 <HeaderTopArrow
+                  themeProps={themeProps}
                   position={'right'}
-                  {...theme}
                   margin={20}
                   onClick={this.getDaysInMonth('month', 'add')}
                 >
-                  <Icon iconClass={'lugia-icon-direction_right'} />
+                  <Icon iconClass={'lugia-icon-direction_right'} {...singleArrowConfig} />
                 </HeaderTopArrow>
               )}
             </HeaderTop>
             <WeekDays
+              themeProps={themeProps}
               firstWeekDay={firstWeekDay}
               lang={lang}
               onChangeWeek={this.onChangeWeek}
@@ -204,7 +233,6 @@ class Date extends Component<TypeProps, TypeState> {
             {...this.props}
             {...this.state}
             mode={this.props.mode}
-            {...theme}
             firstDayIndex={firstDayIndex}
             choseDayIndex={choseDayIndex}
             maxDay={maxDay}
@@ -212,6 +240,7 @@ class Date extends Component<TypeProps, TypeState> {
             onDateChange={this.onDateChange}
             onMouseOver={this.onMouseOver}
             onMouseOut={this.onMouseOut}
+            themeProps={themeProps}
           />
         </div>
       </DateWrapper>

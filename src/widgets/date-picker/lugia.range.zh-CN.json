@@ -33,37 +33,36 @@
       "desc": "只读input",
       "defaultValue": "false"
     },
-    "selectToday":{
+    "selectToday": {
       "type": "boolean",
       "desc": "是否默认选中今天日期",
       "defaultValue": "false"
     },
-    "showToday":{
+    "showToday": {
       "type": "boolean | Object",
       "desc": "是否展示'今天'按钮 | showToday={message:'XXX'} 可以指定按钮文本 ",
       "defaultValue": "false"
     },
-    "showTime":{
+    "showTime": {
       "type": "boolean | Object",
       "desc": "为组件增加时间选择功能 | showTime={message:{showTime:'XXX',showDate:'XXX'}} 可以指定按钮切换文本",
       "defaultValue": "false"
     },
-    "extraFooter":{
+    "extraFooter": {
       "type": "Object",
       "desc": "在面板中添加额外的页脚 extraFooter={message:'XXX',style:{...}}",
       "defaultValue": "无"
     },
-    "buttonOptions":{
+    "buttonOptions": {
       "type": "Object",
       "desc": "自定义页脚展示的一些按钮 buttonOptions={{options: { buttonNameXXX:自定义时间, buttonNameXXX:自定义时间}}} ",
       "defaultValue": "无"
     },
-    "step":{
+    "step": {
       "type": "number",
       "desc": "设置周,年的展示步长",
       "defaultValue": "false"
     }
-
   },
   "events": {
     "onChange": {
@@ -76,17 +75,17 @@
         }
       ]
     },
-    "onOk":{
+    "onOk": {
       "desc": "点击确定按钮的回掉onOk={function()} | onOk={message:'XXX',Function:function()} 可指定onOk按钮显示的文本",
-      "args":[]
+      "args": []
     },
-    "onFocus":{
+    "onFocus": {
       "desc": "输入框获取焦点",
-      "args":[]
+      "args": []
     },
-    "onBlur":{
+    "onBlur": {
       "desc": "输入框失去焦点",
-      "args":[]
+      "args": []
     }
   },
   "type": {
@@ -98,5 +97,22 @@
   },
   "category": ["数据录入"],
   "componentName": "RangePicker",
-  "needExport": true
+  "needExport": true,
+  "theme": {
+    "RangeInputInner": {
+      "name": "输入框",
+      "desc": "",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["border"],
+        ["boxShadow"],
+        ["borderRadius"],
+        ["background"]
+      ],
+      "hover": [["border", "color"], ["boxShadow"], ["borderRadius"], ["background"]],
+      "active": [["border", "color"], ["boxShadow"], ["borderRadius"], ["background"]],
+      "disabled": [["border", "color"], ["boxShadow"], ["borderRadius"], ["background"]]
+    }
+  }
 }

@@ -10,6 +10,8 @@ import moment from 'moment';
 import DatePicker, { momentConfig } from './index';
 import Theme from '../theme';
 import Widget from '../consts/index';
+import NumberInput from '../number-input';
+import { getBorder, getBoxShadow } from '@lugia/theme-utils';
 const { MonthPicker, YearPicker, WeekPicker, WeeksPicker, RangePicker } = DatePicker;
 
 //如需指定周开始是星期几，请配置momentConfig，此函数接受一个number类型参数，表示周开始是星期几
@@ -19,7 +21,7 @@ export default class Sl extends Component<any> {
   constructor() {
     super();
     this.state = {
-      value: '',
+      value: '2019-07-12',
       rangeValue: ['', ''],
       currentValue: 0,
       btnWidth: 20,
@@ -50,16 +52,199 @@ export default class Sl extends Component<any> {
     console.log(obj);
     this.setState({ rangeValue: newValue });
   };
+
   render() {
     const dateFormate = 'YYYY年MM月DD日';
+    const config = {
+      FacePanelContain: {
+        normal: {
+          boxShadow: {
+            x: 0,
+            y: 0,
+            color: 'red',
+            type: 'outset',
+            blur: 1,
+            spread: 1,
+          },
+          background: {
+            color: 'green',
+          },
+          width: 300,
+          height: 200,
+        },
+      },
+      InputContain: {
+        normal: {
+          width: 300,
+          height: 100,
+          border: getBorder({ style: 'solid', width: 2, color: 'red' }),
+          background: {
+            color: 'yellow',
+          },
+          boxShadow: {
+            x: 2,
+            y: 2,
+            blur: 3,
+            spread: 3,
+            color: 'green',
+            type: 'outset',
+          },
+          fontSize: 16,
+          color: 'red',
+        },
+        hover: {
+          border: getBorder({ style: 'solid', width: 5, color: 'pink' }),
+          background: {
+            color: 'green',
+          },
+        },
+      },
+      InputPrefix: { normal: { color: 'pink', fontSize: 16 } },
+      ClearButton: { normal: { color: 'red', fontSize: 14 } },
+      HeadSingleArrow: {
+        normal: {
+          color: 'red',
+          fontSize: 16,
+        },
+        hover: {
+          color: 'yellow',
+          fontSize: 18,
+        },
+        active: {
+          color: '#333',
+          fontSize: 14,
+        },
+        disabled: {
+          color: '#ccc',
+          fontSize: 14,
+        },
+      },
+      HeadDoubleArrow: {
+        normal: {
+          color: 'yellow',
+          fontSize: 16,
+        },
+        hover: {
+          color: 'red',
+          fontSize: 18,
+        },
+        active: {
+          color: '#ccc',
+          fontSize: 14,
+        },
+        disabled: {
+          color: 'blue',
+          fontSize: 14,
+        },
+      },
+      HeadYearText: {
+        normal: {
+          color: 'yellow',
+          fontSize: 16,
+        },
+        hover: {
+          color: 'red',
+          fontSize: 18,
+        },
+        active: {
+          color: '#ccc',
+          fontSize: 14,
+        },
+        disabled: {
+          color: 'blue',
+          fontSize: 14,
+        },
+      },
+      HeadMonthText: {
+        normal: {
+          color: 'red',
+          fontSize: 16,
+        },
+        hover: {
+          color: 'pink',
+          fontSize: 18,
+        },
+        active: {
+          color: '#ccc',
+          fontSize: 14,
+        },
+        disabled: {
+          color: 'blue',
+          fontSize: 14,
+        },
+      },
+      HeadWeekText: {
+        normal: {
+          color: 'red',
+          fontSize: 16,
+        },
+        hover: {
+          color: 'pink',
+          fontSize: 18,
+        },
+        active: {
+          color: '#ccc',
+          fontSize: 14,
+        },
+        disabled: {
+          color: 'blue',
+          fontSize: 14,
+        },
+      },
+
+      WeekText: {
+        normal: {
+          color: 'red',
+          fontSize: 16,
+        },
+        hover: {
+          color: 'pink',
+          fontSize: 18,
+        },
+        active: {
+          color: '#ccc',
+          fontSize: 14,
+        },
+        disabled: {
+          color: 'blue',
+          fontSize: 14,
+        },
+      },
+    };
     return (
       <div>
         <div style={{ margin: '30px', overflow: 'hidden' }}>
           <h2 style={{ margin: '10px' }}>Date</h2>
           <div style={{ float: 'left', marginRight: '30px' }}>
             <h2>date-normal-selectToday-theme</h2>
-            <Theme config={{ [Widget.DatePicker]: { width: 200, color: '#e05959' } }}>
+            <Theme
+              config={{
+                [Widget.DatePicker]: {
+                  ...config,
+                },
+                [Widget.RangePicker]: {
+                  ...config,
+                },
+                [Widget.MonthPicker]: {
+                  ...config,
+                },
+                [Widget.YearPicker]: {
+                  ...config,
+                },
+                [Widget.WeekPicker]: {
+                  ...config,
+                },
+                [Widget.WeeksPicker]: {
+                  ...config,
+                },
+              }}
+            >
               <DatePicker value={this.state.value} onChange={this.chengedate} step={9} />
+              <RangePicker />
+              {/*<MonthPicker />*/}
+              {/*<YearPicker />*/}
+              {/*<WeekPicker />*/}
+              {/*<WeeksPicker />*/}
             </Theme>
           </div>
           <div style={{ float: 'left', marginRight: '30px' }}>
@@ -349,6 +534,7 @@ export default class Sl extends Component<any> {
                 onFocus={this.onFocus}
                 onBlur={this.onBlur}
                 showTime
+                format={'YYYY-MM-DD HH:mm:ss'}
                 buttonOptions={{
                   options: { today: '2015-02-03 00:00:00', 此刻: '2015-02-05 00:00:00' },
                 }}
@@ -366,7 +552,7 @@ export default class Sl extends Component<any> {
               showToday
               showTime={function s() {}}
               buttonOptions={{
-                options: { today: '2015-02-03 00:00:00', 此刻: '2015-02-05 00:00:00' },
+                options: { today: '2015-02-03 00:00:00', 此刻: ['2015-02-05 00:00:00'] },
               }}
               extraFooter={{ message: 'extraFooter' }}
               format={'YYYY-MM-DD HH:mm:ss'}

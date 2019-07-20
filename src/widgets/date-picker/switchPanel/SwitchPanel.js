@@ -102,7 +102,7 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
   }
   render() {
     let { mode, from, format, panelStates, choseDayIndex } = this.state;
-    const { status } = this.props;
+    const { status, themeProps } = this.props;
     if (status === 'showTime') {
       mode = 'time';
     }
@@ -115,6 +115,7 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
       from,
       panelStates,
       value,
+      themeProps,
     };
     if (isWeek) {
       const weekObj = getWeeksRangeInDates(moment(value, 'YYYY-MM-DD'));
