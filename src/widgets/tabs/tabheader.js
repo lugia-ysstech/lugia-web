@@ -183,6 +183,10 @@ const AddContainer = CSSComponent({
       lineHeight: 18,
       borderRadius: '4px',
     },
+    getCSS: (theme: Object, themeProps: Object) => {
+      const { height } = theme;
+      return `line-height: ${height}px`;
+    },
     getThemeMeta: (theme: Object, themeProps: Object) => {
       const { height } = theme;
       return {
