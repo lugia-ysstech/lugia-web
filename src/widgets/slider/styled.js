@@ -12,7 +12,7 @@ import {
   iconNormalColor,
   iconChangeColor,
 } from './slider_public_color';
-import CSSComponent from '@lugia/theme-css-hoc';
+import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 const em = px2remcss;
 type CssTypeProps = {
   background: string,
@@ -74,7 +74,7 @@ export const SliderBigBox = CSSComponent({
     vertical-align: top;
   `,
 });
-export const SliderBox = CSSComponent({
+export const SliderBox = StaticComponent({
   tag: 'div',
   className: 'Div',
   normal: {
