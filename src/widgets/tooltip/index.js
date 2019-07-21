@@ -18,22 +18,6 @@ import { units } from '@lugia/css';
 const { px2remcss } = units;
 const { defaultColor, blackColor } = colorsFunc();
 
-const Container = CSSComponent({
-  tag: 'div',
-  className: 'Container',
-  normal: {
-    selectNames: [
-      ['width'],
-      ['height'],
-      ['boxShadow'],
-      ['opacity'],
-      ['background'],
-      ['padding'],
-      ['margin'],
-    ],
-  },
-});
-
 const ContentWrapper: Object = CSSComponent({
   tag: 'div',
   className: 'TooltipContentWrapper',

@@ -53,10 +53,28 @@
   "childrenWidget": ["step"],
   "category": ["导航"],
   "designInfo": {
-    "StepsContainerConfig": {
+    "HSteps": {
       "sequence": 1,
-      "title": "步骤条配置",
-      "desc": "步骤条配置",
+      "title": "水平步骤条",
+      "desc": "水平步骤条配置",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "theme": {
+        "StepsOutContainer": {
+          "name": "步骤条最外层容器",
+          "desc": "步骤条最外层容器",
+          "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"], ["opacity"]]
+        }
+      }
+    },
+    "VSteps": {
+      "sequence": 2,
+      "title": "垂直步骤条",
+      "desc": "垂直步骤条配置",
+      "props": {
+        "orientation": "vertical"
+      },
       "theme": {
         "StepsOutContainer": {
           "name": "步骤条最外层容器",

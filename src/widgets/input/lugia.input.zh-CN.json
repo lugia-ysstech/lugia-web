@@ -196,7 +196,7 @@
         "validateType": "top"
       },
       "theme": {
-        "validateTopConfig": {
+        "validateTop": {
           "name": "顶部校验",
           "desc": "校验信息在顶部显示",
           "normal": [["color"], ["background"], ["font"]],
@@ -206,7 +206,7 @@
         }
       }
     },
-    "ValidateBottomConfig": {
+    "ValidateBottom": {
       "sequence": 2,
       "title": "校验类型的输入框",
       "desc": "按照校验类型的不同来展示不同样式的输入框",
@@ -214,7 +214,7 @@
         "validateType": "bottom"
       },
       "theme": {
-        "validateBottomConfig": {
+        "validateBottom": {
           "name": "底部校验",
           "desc": "校验信息在底部显示",
           "normal": [["color"]],

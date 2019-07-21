@@ -44,20 +44,6 @@
   },
   "childrenWidget": ["timeLineItem"],
   "category": ["数据展示"],
-  "designInfo": {
-    "TimeLineConfig": {
-      "sequence": 1,
-      "title": "时间轴配置",
-      "desc": "时间轴配置",
-      "theme": {
-        "StepsOutContainer": {
-          "name": "时间轴最外层容器",
-          "desc": "时间轴最外层容器",
-          "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"]]
-        }
-      }
-    }
-  },
   "theme": {
     "StepsOutContainer": {
       "name": "时间轴最外层容器",

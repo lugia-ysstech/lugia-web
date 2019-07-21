@@ -35,7 +35,7 @@
   },
   "category": ["其他"],
   "designInfo": {
-    "HorizontalDividerConfig": {
+    "HorizontalDivider": {
       "sequence": 1,
       "title": "水平分割线",
       "desc": "水平分割线",
@@ -58,7 +58,7 @@
         }
       }
     },
-    "VerticalDividerConfig": {
+    "VerticalDivider": {
       "sequence": 2,
       "title": "垂直分割线",
       "desc": "垂直分割线",
