@@ -45,8 +45,8 @@ type NavMenuProps = {
   themeStyle: 'light' | 'dark',
   separator?: string,
   autoHeight: boolean,
-  size: 'large' | 'default' | 'bigger',
   getPartOfThemeHocProps: Function,
+  activityValue: number,
 };
 
 type NavMenuState = {

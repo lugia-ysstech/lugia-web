@@ -25,7 +25,6 @@ export default class extends React.Component<any, FontItemState> {
       text: '',
     };
     this.width = 0;
-    this.fillItem = React.createRef();
   }
 
   async getWidth(text: string): Promise<number> {
@@ -43,9 +42,13 @@ export default class extends React.Component<any, FontItemState> {
   render() {
     const { text } = this.state;
 
+    const fillItem: Function = (cmp: Object): void => {
+      this.item = cmp;
+    };
+
     return (
       <HiddenItem themeProps={this.props.themeProps}>
-        <Item {...this.props} ref={this.fillItem}>
+        <Item {...this.props} ref={fillItem}>
           {text}
         </Item>
       </HiddenItem>
@@ -57,7 +60,8 @@ export default class extends React.Component<any, FontItemState> {
   }
   componentDidUpdate() {
     if (this.item) {
-      this.width = this.item.getThemeTarget().item.getThemeTarget().offsetWidth;
+      // this.width = findDOMNode(this.item).offsetWidth;
+      this.width = this.item.getThemeTarget().item.offsetWidth;
     }
   }
 }

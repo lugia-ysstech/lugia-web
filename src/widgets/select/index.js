@@ -13,6 +13,7 @@ import Menu from '../menu';
 import styled from 'styled-components';
 import Widget from '../consts/index';
 import QueryInput from '../common/QueryInput';
+import { deepMerge } from '@lugia/object-utils';
 import {
   didUpdate,
   getDisplayValue,
@@ -324,8 +325,9 @@ class Select extends React.Component<SelectProps, SelectState> {
     const getMenu: Function = (cmp: Object) => {
       this.menuCmp = cmp;
     };
-    const { MenuWrap = {} } = this.props.getPartOfThemeConfig('Menu');
-    const { normal = {} } = MenuWrap;
+
+    const { InputTagWrap = {} } = this.props.getPartOfThemeConfig('InputTag');
+    const { normal = {} } = InputTagWrap;
     const { width = 250 } = normal;
 
     const menu = [
@@ -366,7 +368,7 @@ class Select extends React.Component<SelectProps, SelectState> {
           onPopupVisibleChange={this.onMenuPopupVisibleChange}
         >
           <InputTag
-            theme={this.getInputtagTheme()}
+            {...this.props.getPartOfThemeHocProps('InputTag')}
             ref={getInputTag}
             prefix={prefix}
             key="inputtag"
@@ -393,7 +395,7 @@ class Select extends React.Component<SelectProps, SelectState> {
     const menuData = this.updateMenuData(data, query, searchType);
     return (
       <Menu
-        theme={this.getMenuTheme()}
+        {...this.getMenuTheme()}
         displayField={displayField}
         valueField={valueField}
         data={menuData}
@@ -656,20 +658,37 @@ class Select extends React.Component<SelectProps, SelectState> {
     return totalLimitCount === value.length;
   }
 
-  getInputtagTheme() {
-    const { getPartOfThemeConfig } = this.props;
-    const config = {
-      [Widget.InputTag]: getPartOfThemeConfig('InputTag'),
+  mergeTheme = (target: string, defaultTheme: Object) => {
+    const { viewClass, theme } = this.props.getPartOfThemeHocProps(target);
+
+    const themeHoc = deepMerge(
+      {
+        [viewClass]: { ...defaultTheme },
+      },
+      theme
+    );
+
+    const newTheme = {
+      viewClass,
+      theme: themeHoc,
     };
-    return config;
-  }
-  getMenuTheme() {
+    return newTheme;
+  };
+
+  getMenuTheme = () => {
     const { getPartOfThemeConfig } = this.props;
-    const config = {
-      [Widget.Menu]: getPartOfThemeConfig('Menu'),
+    const { InputTagWrap = {} } = getPartOfThemeConfig('InputTag');
+    const { normal = {} } = InputTagWrap;
+    const { width = 250 } = normal;
+    const defaultMenuTheme = {
+      MenuWrap: {
+        normal: {
+          width,
+        },
+      },
     };
-    return config;
-  }
+    return this.mergeTheme('Menu', defaultMenuTheme);
+  };
 }
 
 export default ThemeHoc(Select, Widget.Select, { hover: true });
