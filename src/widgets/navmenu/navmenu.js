@@ -47,6 +47,7 @@ type NavMenuProps = {
   autoHeight: boolean,
   getPartOfThemeHocProps: Function,
   activityValue: number,
+  switchIconNames?: Object,
 };
 
 type NavMenuState = {
@@ -68,6 +69,10 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     inlineType: 'primary',
     separator: '|',
     autoHeight: true,
+    switchIconNames: {
+      open: 'lugia-icon-direction_up',
+      close: 'lugia-icon-direction_down',
+    },
   };
 
   treeData: Array<Object>;
@@ -341,6 +346,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       displayField,
       autoHeight,
       themeStyle,
+      switchIconNames,
     } = this.props;
     const treeData = this.treeData;
 
@@ -349,6 +355,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       <MenuWrap>
         <Tree
           {...treeTheme}
+          switchIconNames={switchIconNames}
           expandAll={inlineExpandAll}
           showSwitch={false}
           autoHeight={autoHeight}

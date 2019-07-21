@@ -133,6 +133,16 @@ const treeTheme = {
           height: 400,
         },
       },
+      TreeItem: {
+        Switch: {
+          normal: {
+            color: 'red',
+            font: {
+              size: 20,
+            },
+          },
+        },
+      },
     },
   },
 };
@@ -246,6 +256,10 @@ export default class LimitDemo extends React.Component<Object, Object> {
             inlineExpandAll={true}
             onChange={this.onChange}
             onSelect={this.onSelect}
+            switchIconNames={{
+              open: 'lugia-icon-direction_caret_up',
+              close: 'lugia-icon-direction_caret_down',
+            }}
           />
 
           <Navmenu

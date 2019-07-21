@@ -20,24 +20,10 @@ import styled from 'styled-components';
 import { FontSize, FontSizeNumber } from '../css';
 import { px2emcss } from '../css/units';
 
-import {
-  SubTreeWrap,
-  // DefaultHeight,
-  Li,
-  MenuItemHeight,
-  NullSwitch,
-  Switch,
-  // themeColor,
-  TitleSpan,
-  TitleWrap,
-  TreeUl,
-} from '../css/tree';
-
 const em = px2emcss(FontSizeNumber);
 
 type RowData = { [key: string]: any };
 export type TreeProps = {
-  getTheme: Function,
   start: number,
   end: number,
   query: string,
@@ -75,6 +61,7 @@ export type TreeProps = {
   shape: 'default' | 'round',
   showSwitch: boolean,
   __navmenu: boolean,
+  switchIconNames?: Object,
 };
 
 export type TreeState = {
@@ -115,6 +102,10 @@ class Tree extends React.Component<TreeProps, TreeState> {
     shape: 'default',
     showSwitch: true,
     __navmenu: false,
+    switchIconNames: {
+      open: 'lugia-icon-direction_caret_down',
+      close: 'lugia-icon-direction_caret_right',
+    },
   };
 
   static TreeNode: TreeNode;
