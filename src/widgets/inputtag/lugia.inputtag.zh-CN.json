@@ -10,18 +10,17 @@
     },
     "placeholder": {
       "type": "string",
-      "desc": "占位符",
-      "defaultValue": "undefined"
+      "desc": "占位符"
     },
     "disabled": {
       "type": "boolean",
       "desc": "是否禁选",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "mutliple": {
       "type": "boolean",
       "desc": "是否多选",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "valueField": {
       "type": "string",
@@ -35,24 +34,20 @@
     },
     "value": {
       "type": "string | string[] | number | number[]",
-      "desc": "指定当前选中的条目",
-      "defaultValue": "undefined"
+      "desc": "指定当前选中的条目"
     },
     "defaultValue": {
       "type": "string | string[] | number | number[]",
-      "desc": "初始状态下指定当前选中的条目,只生效一次",
-      "defaultValue": "undefined"
+      "desc": "初始状态下指定当前选中的条目,只生效一次"
     },
     "displayValue": {
       "type": "string | string[] | number | number[]",
-      "desc": "指定当前选中的条目的displayValue值",
-      "defaultValue": "undefined"
+      "desc": "指定当前选中的条目的displayValue值"
     },
 
     "defaultDisplayValue": {
       "type": "string | string[] | number | number[]",
-      "desc": "初始状态下指定当前选中的条目的displayValue值,只生效一次",
-      "defaultValue": "undefined"
+      "desc": "初始状态下指定当前选中的条目的displayValue值,只生效一次"
     }
   },
   "events": {

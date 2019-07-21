@@ -5,33 +5,30 @@
   "props": {
     "value": {
       "type": "string",
-      "desc": "指定Panel面板value值",
-      "defaultValue": "undefined"
+      "desc": "指定Panel面板value值"
     },
     "title": {
       "type": "string | React.node",
-      "desc": "指定Panel面板头部内容",
-      "defaultValue": "undefined"
+      "desc": "指定Panel面板头部内容"
     },
     "children": {
       "type": "string | React.node",
-      "desc": "Panel面板内容",
-      "defaultValue": "undefined"
+      "desc": "Panel面板内容"
     },
     "disabled": {
       "type": "boolean",
       "desc": "Panel面板是否禁用",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "open": {
       "type": "boolean",
       "desc": "Panel面板是否展开",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "showArrow": {
       "type": "boolean",
       "desc": "Panel面板是否展示箭头",
-      "defaultValue": "true"
+      "defaultValue": true
     }
   },
   "events": {

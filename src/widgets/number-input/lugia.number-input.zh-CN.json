@@ -6,12 +6,11 @@
     "disabled": {
       "type": "boolean",
       "desc": "禁用状态,是否不可用",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "viewClass": {
       "type": "string",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
+      "desc": "用于配置通用主题属性"
     },
     "size": {
       "type": "InputSize",
@@ -30,33 +29,29 @@
     },
     "help": {
       "type": "string",
-      "desc": "input校验提示信息",
-      "defaultValue": "undefined"
+      "desc": "input校验提示信息"
     },
     "placeholder": {
       "type": "string",
-      "desc": "input输入提示信息",
-      "defaultValue": "undefined"
+      "desc": "input输入提示信息"
     },
     "defaultValue": {
       "type": "string",
-      "desc": "默认显示内容",
-      "defaultValue": "undefined"
+      "desc": "默认显示内容"
     },
     "value": {
       "type": "string",
-      "desc": "显示内容",
-      "defaultValue": "undefined"
+      "desc": "显示内容"
     },
     "max": {
       "type": "number",
       "desc": "输入最大值限制",
-      "defaultValue": "Infinity"
+      "defaultValue": Infinity
     },
     "min": {
       "type": "number",
       "desc": "输入最小值限制",
-      "defaultValue": "-Infinity"
+      "defaultValue": -Infinity
     },
     "step": {
       "type": "number",
@@ -66,17 +61,15 @@
     "precision": {
       "type": "number",
       "desc": "数值精度,默认0",
-      "defaultValue": "0"
+      "defaultValue": 0
     },
     "formatter": {
       "type": "function",
-      "desc": "格式化显示内容的匹配规则,需与 parser 属性配套使用",
-      "defaultValue": "undefined"
+      "desc": "格式化显示内容的匹配规则,需与 parser 属性配套使用"
     },
     "parser": {
       "type": "function",
-      "desc": "解析格式化显示内容的规则,需与 formatter 属性配套使用",
-      "defaultValue": "undefined"
+      "desc": "解析格式化显示内容的规则,需与 formatter 属性配套使用"
     }
   },
   "events": {

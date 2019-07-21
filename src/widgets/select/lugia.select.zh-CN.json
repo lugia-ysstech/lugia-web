@@ -5,28 +5,27 @@
   "props": {
     "data": {
       "type": "[{valueField: '', displayField: ''}]",
-      "desc": "生成选择项的数据",
-      "defaultValue": "undefined"
+      "desc": "生成选择项的数据"
     },
     "mutliple": {
       "type": "boolean",
       "desc": "是否多选",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "canSearch": {
       "type": "boolean",
       "desc": "是否支持查询",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "throttle": {
       "type": "number",
       "desc": "查询的延迟时间，单位为毫秒",
-      "defaultValue": "100"
+      "defaultValue": 100
     },
     "canInput": {
       "type": "boolean",
       "desc": "是否支持自定义值,只有在canSearch为true时才生效",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "valueField": {
       "type": "string",
@@ -41,7 +40,7 @@
     "disabled": {
       "type": "boolean",
       "desc": "是否禁选",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "validateStatus": {
       "type": "ValidateStatus",
@@ -50,13 +49,11 @@
     },
     "limitCount": {
       "type": "number",
-      "desc": "多选时最多个数",
-      "defaultValue": "undefined"
+      "desc": "多选时最多个数"
     },
     "placeholder": {
       "type": "string",
-      "desc": "占位符",
-      "defaultValue": "undefined"
+      "desc": "占位符"
     },
     "searchType": {
       "type": "start | end | include | eql",
@@ -65,23 +62,19 @@
     },
     "value": {
       "type": "string | string[] | number | number[]",
-      "desc": "指定当前选中的条目",
-      "defaultValue": "undefined"
+      "desc": "指定当前选中的条目"
     },
     "displayValue": {
       "type": "string | string[] | number | number[]",
-      "desc": "指定当前选中的条目的displayValue值",
-      "defaultValue": "undefined"
+      "desc": "指定当前选中的条目的displayValue值"
     },
     "defaultValue": {
       "type": "string | string[] | number | number[]",
-      "desc": "初始状态下指定当前选中的条目,只生效一次",
-      "defaultValue": "undefined"
+      "desc": "初始状态下指定当前选中的条目,只生效一次"
     },
     "defaultDisplayValue": {
       "type": "string | string[] | number | number[]",
-      "desc": "初始状态下指定当前选中的条目的displayValue值,只生效一次",
-      "defaultValue": "undefined"
+      "desc": "初始状态下指定当前选中的条目的displayValue值,只生效一次"
     }
   },
   "events": {
@@ -191,7 +184,7 @@
       "title": "单项选择器",
       "desc": "支持单项选择",
       "props": {
-        "mutliple": "false"
+        "mutliple": false
       },
       "theme": {
         "InputTag": {
@@ -337,7 +330,7 @@
       "title": "多项选择器",
       "desc": "支持多项选择",
       "props": {
-        "mutliple": "true"
+        "mutliple": true
       },
       "theme": {
         "InputTag": {

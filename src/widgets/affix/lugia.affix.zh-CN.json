@@ -6,17 +6,16 @@
     "offsetTop": {
       "type": "number",
       "desc": "距离指定容器顶部达到指定偏移量后触发",
-      "defaultValue": "0"
+      "defaultValue": 0
     },
     "offsetBottom": {
       "type": "number",
       "desc": "距离指定容器底部达到指定偏移量后触发",
-      "defaultValue": "0"
+      "defaultValue": 0
     },
     "target": {
       "type": "Function",
-      "desc": "设置Affix组件监听滚功事件的元素，返回值为对应的DOM元素",
-      "defaultValue": "undefined"
+      "desc": "设置Affix组件监听滚功事件的元素，返回值为对应的DOM元素"
     }
   },
   "events": {

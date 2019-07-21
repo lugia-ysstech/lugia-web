@@ -5,13 +5,11 @@
   "props": {
     "defaultValue": {
       "type": "Array<string>",
-      "desc": "日期默认显示值",
-      "defaultValue": "undefined"
+      "desc": "日期默认显示值"
     },
     "value": {
       "type": "Array<string>",
-      "desc": "日期显示值",
-      "defaultValue": "undefined"
+      "desc": "日期显示值"
     },
     "format": {
       "type": "string",
@@ -20,33 +18,32 @@
     },
     "placeholder": {
       "type": "Array<string>",
-      "desc": "input输入提示信息",
-      "defaultValue": "undefined"
+      "desc": "input输入提示信息"
     },
     "disabled": {
       "type": "boolean",
       "desc": "禁用状态,是否不可用",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "readOnly": {
       "type": "boolean",
       "desc": "只读input",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "selectToday": {
       "type": "boolean",
       "desc": "是否默认选中今天日期",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "showToday": {
       "type": "boolean | Object",
       "desc": "是否展示'今天'按钮 | showToday={message:'XXX'} 可以指定按钮文本 ",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "showTime": {
       "type": "boolean | Object",
       "desc": "为组件增加时间选择功能 | showTime={message:{showTime:'XXX',showDate:'XXX'}} 可以指定按钮切换文本",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "extraFooter": {
       "type": "Object",
@@ -61,7 +58,7 @@
     "step": {
       "type": "number",
       "desc": "设置周,年的展示步长",
-      "defaultValue": "false"
+      "defaultValue": false
     }
   },
   "events": {

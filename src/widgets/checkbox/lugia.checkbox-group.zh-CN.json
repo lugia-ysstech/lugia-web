@@ -5,63 +5,52 @@
   "props": {
     "defaultValue": {
       "type": "string[]",
-      "desc": "指定CheckboxGroup初始选中值",
-      "defaultValue": "undefined"
+      "desc": "指定CheckboxGroup初始选中值"
     },
     "value": {
       "type": "string[]",
-      "desc": "指定CheckboxGroup选中值",
-      "defaultValue": "undefined"
+      "desc": "指定CheckboxGroup选中值"
     },
     "disabled": {
       "type": "boolean",
-      "desc": "指定CheckboxGroup是否禁用",
-      "defaultValue": "undefined"
+      "desc": "指定CheckboxGroup是否禁用"
     },
     "data": {
       "type": "Object[]",
-      "desc": "指定 Checkbox 组件展示值",
-      "defaultValue": "undefined"
+      "desc": "指定 Checkbox 组件展示值"
     },
     "displayField": {
       "type": "string",
-      "desc": "指定CheckboxGroup展示字段值",
-      "defaultValue": "undefined"
+      "desc": "指定CheckboxGroup展示字段值"
     },
     "valueField": {
       "type": "string",
       "desc": "指定 Checkbox 组件 value 值",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "displayValue": {
       "type": "string[]",
-      "desc": "指定CheckboxGroup选中值备用项，与value相对应，value中有不存在的值，将展示 displayValue 中对应值",
-      "defaultValue": "undefined"
+      "desc": "指定CheckboxGroup选中值备用项，与value相对应，value中有不存在的值，将展示 displayValue 中对应值"
     },
     "defaultDisplayValue": {
       "type": "string[]",
-      "desc": "指定CheckboxGroup选中值初始备用项，与value相对应，value中有不存在的值，将展示 displayValue 中对应值",
-      "defaultValue": "undefined"
+      "desc": "指定CheckboxGroup选中值初始备用项，与value相对应，value中有不存在的值，将展示 displayValue 中对应值"
     },
     "styles": {
       "type": "CheckboxType",
-      "desc": "指定CheckboxGroup中Checkbox展示方向，可选值为 vertical 或不设",
-      "defaultValue": "undefined"
+      "desc": "指定CheckboxGroup中Checkbox展示方向，可选值为 vertical 或不设"
     },
     "childType": {
       "type": "CheckboxGroupChildType",
-      "desc": "指定CheckboxGroup展示类型，可设置为 button 或不设",
-      "defaultValue": "undefined"
+      "desc": "指定CheckboxGroup展示类型，可设置为 button 或不设"
     },
     "size": {
       "type": "CheckboxButtonSizeType",
-      "desc": "指定CheckboxGroup大小，仅展示类型为button 时生效，可设置为 small、large、bigger 或不设",
-      "defaultValue": "undefined"
+      "desc": "指定CheckboxGroup大小，仅展示类型为button 时生效，可设置为 small、large、bigger 或不设"
     },
     "cache": {
       "type": "boolean",
-      "desc": "指定CheckboxGroup中实时更新data 数据源信息",
-      "defaultValue": "undefined"
+      "desc": "指定CheckboxGroup中实时更新data 数据源信息"
     }
   },
   "events": {

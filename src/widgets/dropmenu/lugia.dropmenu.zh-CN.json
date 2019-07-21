@@ -15,15 +15,13 @@
     },
     "menus": {
       "type": "React.Node",
-      "desc": "弹出项组件",
-      "defaultValue": "undefined"
+      "desc": "弹出项组件"
     },
     "align": {
       "type": "React.Node",
       "desc": "弹出方向",
-      "defaultValue": "'topLeft | top | topRight | bottomLeft | bottom | bottomRight'"
-    }
-  },
+      "defaultValue": "bottom"
+    },
   "events": {
     "onPopupVisibleChange": {
       "desc": "弹出项展开/隐藏时触发",

@@ -17,30 +17,28 @@
     "data": {
       "type": "[{valueField: '', displayField: '', children}]",
       "desc": "生成选择项的数据",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "mutliple": {
       "type": "boolean",
       "desc": "是否多选",
-      "defaultValue": "false"
+      "defaultValue": false
     },
 
     "start": {
       "type": "number",
       "desc": "开始展示数据的索引值",
-      "defaultValue": "0"
+      "defaultValue": 0
     },
 
     "selectedKeys": {
       "type": "string | string[] | number | number[]",
-      "desc": "指定当前选中的项",
-      "defaultValue": "undefined"
+      "desc": "指定当前选中的项"
     },
 
     "defaultSelectedKeys": {
       "type": "string | string[] | number | number[]",
-      "desc": "默认指定当前选中的项,仅第一次生效",
-      "defaultValue": "undefined"
+      "desc": "默认指定当前选中的项,仅第一次生效"
     },
 
     "checkedCSS": {
@@ -52,25 +50,23 @@
     "limitCount": {
       "type": "number",
       "desc": "多选时的最大选中数",
-      "defaultValue": "999999"
+      "defaultValue": 999999
     },
 
     "offsety": {
       "type": "number",
       "desc": "菜单间的间隔",
-      "defaultValue": "4"
+      "defaultValue": 4
     },
 
     "autoHeight": {
       "type": "boolean",
-      "desc": "根据data数量，自动计算菜单高度",
-      "defaultValue": "undefined"
+      "desc": "根据data数量，自动计算菜单高度"
     },
 
     "expandedPath": {
       "type": "string[]",
-      "desc": "层级菜单时展开的数据",
-      "defaultValue": "undefined"
+      "desc": "层级菜单时展开的数据"
     },
     "separator": {
       "type": "string",
@@ -80,12 +76,11 @@
     "offsetX": {
       "type": "number",
       "desc": "层级菜单时，菜单间的间隔",
-      "defaultValue": "4"
+      "defaultValue": 4
     },
     "offsetY": {
       "type": "string",
-      "desc": "层级菜单时，子菜单相对父级菜单的top值",
-      "defaultValue": "undefined"
+      "desc": "层级菜单时，子菜单相对父级菜单的top值"
     },
     "action": {
       "type": "click | hover",
@@ -105,7 +100,7 @@
     "popupVisible": {
       "type": "boolean",
       "desc": "层级菜单,是否允许打开子菜单",
-      "defaultValue": "true"
+      "defaultValue": true
     }
   },
   "events": {
@@ -177,7 +172,7 @@
       "title": "单选菜单",
       "desc": "单项选择的菜单",
       "props": {
-        "mutliple": "false"
+        "mutliple": false
       },
       "theme": {
         "MenuWrap": {
@@ -325,7 +320,7 @@
       "title": "多选菜单",
       "desc": "多项选择的菜单",
       "props": {
-        "mutliple": "true"
+        "mutliple": true
       },
 
       "theme": {
@@ -475,7 +470,7 @@
       "title": "级联菜单",
       "desc": "支持展开的菜单",
       "props": {
-        "mutliple": "true"
+        "mutliple": true
       },
 
       "theme": {

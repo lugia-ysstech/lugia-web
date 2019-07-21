@@ -6,7 +6,7 @@
     "start": {
       "type": "number",
       "desc": "开始展示数据的索引值",
-      "defaultValue": "0"
+      "defaultValue": 0
     },
     "query": {
       "type": "string",
@@ -16,23 +16,23 @@
     "mutliple": {
       "type": "boolean",
       "desc": "是否多选",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "limitCount": {
       "type": "number",
       "desc": "多选时的最大选中数",
-      "defaultValue": "999999"
+      "defaultValue": 999999
     },
 
     "expandAll": {
       "type": "boolean",
       "desc": "是否展开所有子元素",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "onlySelectLeaf": {
       "type": "boolean",
       "desc": "是否只能选择根节点选项",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "valueField": {
       "type": "string",
@@ -46,23 +46,20 @@
     },
     "value": {
       "type": "string | string[] | number | number[]",
-      "desc": "指定当前选中的条目的valueField值",
-      "defaultValue": "undefined"
+      "desc": "指定当前选中的条目的valueField值"
     },
     "displayValue": {
       "type": "string | string[] | number | number[]",
-      "desc": "指定当前选中的条目的displayField值",
-      "defaultValue": "undefined"
+      "desc": "指定当前选中的条目的displayField值"
     },
     "data": {
       "type": "Array<Object>",
       "desc": "生成选择项的数据",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "igronSelectField": {
       "type": "string",
-      "desc": "指定不可选的标识",
-      "defaultValue": "undefined"
+      "desc": "指定不可选的标识"
     },
 
     "searchType": {
@@ -80,7 +77,7 @@
     "translateTreeData": {
       "type": "boolean",
       "desc": "是否开启嵌套数据生成Tree",
-      "defaultValue": "false"
+      "defaultValue": false
     }
   },
   "events": {
@@ -149,7 +146,7 @@
       "title": "单选树形控件",
       "desc": "单项选择的树形控件",
       "props": {
-        "mutliple": "false"
+        "mutliple": false
       },
       "theme": {
         "TreeWrap": {
@@ -249,7 +246,7 @@
       "title": "多选树形控件",
       "desc": "多项选择的树形控件",
       "props": {
-        "mutliple": "true"
+        "mutliple": true
       },
       "theme": {
         "TreeWrap": {

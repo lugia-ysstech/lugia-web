@@ -6,17 +6,16 @@
     "disabled": {
       "type": "boolean",
       "desc": "禁用状态,是否不可用",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "transform": {
       "type": "boolean",
       "desc": "是否开启转换,仅在amountPrefix='¥'时生效",
-      "defaultValue": "true"
+      "defaultValue": true
     },
     "viewClass": {
       "type": "string",
-      "desc": "用于配置主题属性",
-      "defaultValue": "undefined"
+      "desc": "用于配置主题属性"
     },
     "size": {
       "type": "InputSize",
@@ -25,8 +24,7 @@
     },
     "placeholder": {
       "type": "string",
-      "desc": "input输入提示信息",
-      "defaultValue": "undefined"
+      "desc": "input输入提示信息"
     },
     "amountPrefix": {
       "type": "string",
@@ -35,13 +33,11 @@
     },
     "defaultValue": {
       "type": "string",
-      "desc": "默认显示内容",
-      "defaultValue": "undefined"
+      "desc": "默认显示内容"
     },
     "value": {
       "type": "string",
-      "desc": "显示内容",
-      "defaultValue": "undefined"
+      "desc": "显示内容"
     }
   },
   "events": {

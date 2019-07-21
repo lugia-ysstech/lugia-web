@@ -5,8 +5,7 @@
   "props": {
     "children": {
       "type": "React.Node",
-      "desc": "气泡卡片需要包含的子组件",
-      "defaultValue": "undefined"
+      "desc": "气泡卡片需要包含的子组件"
     },
     "stepType": {
       "type": "StepType",
@@ -35,38 +34,33 @@
     },
     "stepNumber": {
       "type": "number",
-      "desc": "步骤条位置",
-      "defaultValue": "undefined"
+      "desc": "步骤条位置"
     },
     "stepStatus": {
       "type": "StepStatus",
-      "desc": "步骤条状态,已完成,进行中,下一个,等待中,异常多种状态",
-      "defaultValue": "undefined"
+      "desc": "步骤条状态,已完成,进行中,下一个,等待中,异常多种状态"
     },
     "title": {
       "type": "React.Node",
-      "desc": "步骤条显示的标题",
-      "defaultValue": "undefined"
+      "desc": "步骤条显示的标题"
     },
     "description": {
       "type": "React.Node",
-      "desc": "步骤条显示的信息描述",
-      "defaultValue": "undefined"
+      "desc": "步骤条显示的信息描述"
     },
     "icon": {
       "type": "string",
-      "desc": "步骤条显示的图标",
-      "defaultValue": "undefined"
+      "desc": "步骤条显示的图标"
     },
     "isFirst": {
       "type": "boolean",
       "desc": "该步骤是否是第一步",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "isDashed": {
       "type": "boolean",
       "desc": "步骤条进度是否用虚线显示",
-      "defaultValue": "false"
+      "defaultValue": false
     }
   },
   "type": {

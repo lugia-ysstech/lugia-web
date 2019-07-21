@@ -6,52 +6,49 @@
     "title": {
       "type": "boolean",
       "desc": "是否展示标题占位符",
-      "defaultValue": "true"
+      "defaultValue": true
     },
     "titleWidth": {
       "type": "number | string",
       "desc": "标题占位符的宽度, 只有在titile为true时生效",
-      "defaultValue": "176"
+      "defaultValue": 176
     },
     "avatar": {
       "type": "boolean",
       "desc": "是否展示头像占位符",
-      "defaultValue": "true"
+      "defaultValue": true
     },
     "paragraph": {
       "type": "{ rows: number }",
       "desc": "段落占位符的数目",
-      "defaultValue": "{ rows: 3 }"
+      "defaultValue": { "rows": 3 }
     },
     "paragraphWidth": {
       "type": "number | string | string[] | number[]",
-      "desc": "设置段落占位图的宽度，若为数组时则为对应的每行宽度，反之则是最后一行的宽度",
-      "defaultValue": "undefined"
+      "desc": "设置段落占位图的宽度，若为数组时则为对应的每行宽度，反之则是最后一行的宽度"
     },
     "loading": {
       "type": "boolean",
       "desc": "是否展示占位符组合",
-      "defaultValue": "true"
+      "defaultValue": true
     },
     "picture": {
       "type": "boolean",
       "desc": "是否展示图片占位符",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "pictureWidth": {
       "type": "number | string",
-      "desc": "图片占位符的宽度",
-      "defaultValue": "undefined"
+      "desc": "图片占位符的宽度"
     },
     "pictureHeight": {
       "type": "number | string",
-      "desc": "图片占位符的高度",
-      "defaultValue": "undefined"
+      "desc": "图片占位符的高度"
     },
     "animation": {
       "type": "boolean",
       "desc": "是否展示动画效果",
-      "defaultValue": "false"
+      "defaultValue": false
     }
   },
 

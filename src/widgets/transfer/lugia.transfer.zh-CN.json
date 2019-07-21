@@ -5,48 +5,39 @@
   "props": {
     "data": {
       "type": "Object[]",
-      "desc": "左右两个面板数据源",
-      "defaultValue": "undefined"
+      "desc": "左右两个面板数据源"
     },
     "showSearch": {
       "type": "boolean",
-      "desc": "是否展示搜索框",
-      "defaultValue": "undefined"
+      "desc": "是否展示搜索框"
     },
     "filterOption": {
       "type": "Function",
-      "desc": "搜索条件函数，接收 inputValue 和 option 两个参数，可以自定义筛选条件",
-      "defaultValue": "undefined"
+      "desc": "搜索条件函数，接收 inputValue 和 option 两个参数，可以自定义筛选条件"
     },
     "value": {
       "type": "string[]",
-      "desc": "显示在右侧面板数据集合",
-      "defaultValue": "undefined"
+      "desc": "显示在右侧面板数据集合"
     },
     "defaultValue": {
       "type": "string[]",
-      "desc": "显示在右侧面板初始数据集合",
-      "defaultValue": "undefined"
+      "desc": "显示在右侧面板初始数据集合"
     },
     "sourceSelectedKeys": {
       "type": "string[]",
-      "desc": "左侧面板选中值的集合",
-      "defaultValue": "undefined"
+      "desc": "左侧面板选中值的集合"
     },
     "targetSelectedKeys": {
       "type": "string[]",
-      "desc": "右侧面板选中值的集合",
-      "defaultValue": "undefined"
+      "desc": "右侧面板选中值的集合"
     },
     "defaultSourceSelectedKeys": {
       "type": "string[]",
-      "desc": "左侧面板初始选中值的集合",
-      "defaultValue": "undefined"
+      "desc": "左侧面板初始选中值的集合"
     },
     "defaultTargetSelectedKeys": {
       "type": "string[]",
-      "desc": "右侧面板初始选中值的集合",
-      "defaultValue": "undefined"
+      "desc": "右侧面板初始选中值的集合"
     },
     "type": {
       "type": "TransferType",

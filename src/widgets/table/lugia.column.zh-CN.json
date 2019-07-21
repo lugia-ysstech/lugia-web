@@ -10,48 +10,40 @@
     },
     "colSpan": {
       "type": "number",
-      "desc": "表头列合并,设置为 0 时，不渲染",
-      "defaultValue": "undefined"
+      "desc": "表头列合并,设置为 0 时，不渲染"
     },
     "dataIndex": {
       "type": "string",
-      "desc": "列数据在数据项中对应的 key",
-      "defaultValue": "undefined"
+      "desc": "列数据在数据项中对应的 key"
     },
     "fixed": {
       "type": "boolean | string",
       "desc": "列是否固定",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "key": {
       "type": "string",
-      "desc": "指定每一行唯一的 key 值",
-      "defaultValue": "undefined"
+      "desc": "指定每一行唯一的 key 值"
     },
     "render": {
       "type": "Function(text, record, index) {}",
-      "desc": "生成复杂数据的渲染函数，参数分别为当前行的值、当前行的数据、当前行的索引，@return里面可以设置表格行/列合并",
-      "defaultValue": "undefined"
+      "desc": "生成复杂数据的渲染函数，参数分别为当前行的值、当前行的数据、当前行的索引，@return里面可以设置表格行/列合并"
     },
     "title": {
       "type": "React.node",
-      "desc": "列头显示文字",
-      "defaultValue": "undefined"
+      "desc": "列头显示文字"
     },
     "width": {
       "type": "string | number",
-      "desc": "列宽度",
-      "defaultValue": "undefined"
+      "desc": "列宽度"
     },
     "onCell": {
       "type": "Function(record, rowIndex)",
-      "desc": "设置单元格属性",
-      "defaultValue": "undefined"
+      "desc": "设置单元格属性"
     },
     "onHeaderCell": {
       "type": "Function(record, rowIndex)",
-      "desc": "设置单元格属性",
-      "defaultValue": "undefined"
+      "desc": "设置单元格属性"
     }
   },
   "event": {
@@ -82,7 +74,7 @@
     }
   },
   "type": {
-    "AlignType": ["left" , "right" , "center"]
+    "AlignType": ["left", "right", "center"]
   },
   "category": ["数据展示"]
 }

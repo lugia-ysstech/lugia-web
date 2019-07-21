@@ -5,28 +5,24 @@
   "props": {
     "checked": {
       "type": "boolean",
-      "desc": "单选框是否选中",
-      "defaultValue": "undefined"
+      "desc": "单选框是否选中"
     },
     "defaultChecked": {
       "type": "boolean",
-      "desc": "单选框初始是否选中",
-      "defaultValue": "undefined"
+      "desc": "单选框初始是否选中"
     },
     "disabled": {
       "type": "boolean",
-      "desc": "单选框是否禁用",
-      "defaultValue": "undefined"
+      "desc": "单选框是否禁用"
     },
     "value": {
       "type": "string",
       "desc": "单选框的 value 值",
-      "defaultValue": "true"
+      "defaultValue": true
     },
     "children": {
       "type": "string | React.node",
-      "desc": "Radio展示内容",
-      "defaultValue": "undefined"
+      "desc": "Radio展示内容"
     }
   },
   "event": {

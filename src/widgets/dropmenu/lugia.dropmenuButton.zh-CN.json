@@ -6,7 +6,7 @@
     "disabled": {
       "type": "boolean",
       "desc": "是否禁选",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "type": {
       "type": "customs | basic | primary",
@@ -15,8 +15,7 @@
     },
     "text": {
       "type": "string",
-      "desc": "下拉菜单按钮的文本",
-      "defaultValue": "undefined"
+      "desc": "下拉菜单按钮的文本"
     },
     "direction": {
       "type": "up | bottom",
@@ -26,7 +25,7 @@
     "divided": {
       "type": "boolean",
       "desc": "是否有分割线",
-      "defaultValue": "true"
+      "defaultValue": true
     }
   },
   "events": {

@@ -5,13 +5,12 @@
   "props": {
     "activityValue": {
       "type": "string",
-      "desc": "当前激活 tab 面板的 key",
-      "defaultValue": "undefined"
+      "desc": "当前激活 tab 面板的 key"
     },
     "defaultActivityValue": {
       "type": "string",
       "desc": "默认激活 tab 面板的 key",
-      "defaultValue": "0"
+      "defaultValue": 0
     },
     "tabType": {
       "type": "TabType",
@@ -25,23 +24,20 @@
     },
     "children": {
       "type": "React$Element<any>",
-      "desc": "配置标签页需要包含的子组件,若有data,以data优先",
-      "defaultValue": "undefined"
+      "desc": "配置标签页需要包含的子组件,若有data,以data优先"
     },
     "data": {
       "type": "Array<Object>",
-      "desc": "配置标签页需要配置的数据,",
-      "defaultValue": "undefined"
+      "desc": "配置标签页需要配置的数据,"
     },
     "defaultData": {
       "type": "Array<Object>",
-      "desc": "默认配置标签页需要配置的数据,若有data,以data优先",
-      "defaultValue": "undefined"
+      "desc": "默认配置标签页需要配置的数据,若有data,以data优先"
     },
     "forceRender": {
       "type": "boolean",
       "desc": "切换时是否重新渲染面板",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "pagedType": {
       "type": "PagedType",
@@ -51,12 +47,12 @@
     "showAddBtn": {
       "type": "boolean",
       "desc": "是否显示新增按钮(仅卡片和窗口类型支持)",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "showDeleteBtn": {
       "type": "boolean",
       "desc": "是否显示删除按钮(仅卡片和窗口类型支持)",
-      "defaultValue": "false"
+      "defaultValue": false
     }
   },
   "events": {
@@ -150,14 +146,31 @@
         "AddButton": {
           "name": "新增按钮",
           "desc": "新增按钮样式配置",
-          "normal": [["width"], ["height"], ["opacity"], ["background"], ["border"], ["boxShadow"], ["color"], ["fontSize"]],
-          "hover": [["width"], ["height"], ["opacity"], ["background"], ["border"], ["boxShadow"], ["color"], ["fontSize"]]
+          "normal": [
+            ["width"],
+            ["height"],
+            ["opacity"],
+            ["background"],
+            ["border"],
+            ["boxShadow"],
+            ["color"],
+            ["fontSize"]
+          ],
+          "hover": [
+            ["width"],
+            ["height"],
+            ["opacity"],
+            ["background"],
+            ["border"],
+            ["boxShadow"],
+            ["color"],
+            ["fontSize"]
+          ]
         },
         "ContentBlock": {
           "name": "content内容区",
           "desc": "content内容区的样式配置",
-          "normal": [["background"],["padding"],["width"],["height"]]
-
+          "normal": [["background"], ["padding"], ["width"], ["height"]]
         },
         "TitleContainer": {
           "name": "头部标签区域",
@@ -169,19 +182,35 @@
           "desc": "默认线样式配置",
           "normal": [["border"]]
         },
-        "TabHeader":{
-          "theme":{
+        "TabHeader": {
+          "theme": {
             "DefaultTabPan": {
               "name": "默认标签",
               "desc": "默认标签样式配置",
-              "normal": [["color"], ["background"], ["border"], ["margin"], ["padding"], ["font"], ["opacity"]],
+              "normal": [
+                ["color"],
+                ["background"],
+                ["border"],
+                ["margin"],
+                ["padding"],
+                ["font"],
+                ["opacity"]
+              ],
               "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
               "disabled": [["color"], ["background"]]
             },
             "SelectTabPan": {
               "name": "选中标签",
               "desc": "选中标签样式配置",
-              "normal": [["color"], ["background"], ["border"], ["margin"], ["padding"], ["font"], ["opacity"]],
+              "normal": [
+                ["color"],
+                ["background"],
+                ["border"],
+                ["margin"],
+                ["padding"],
+                ["font"],
+                ["opacity"]
+              ],
               "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
               "disabled": [["color"], ["background"]]
             }
@@ -201,37 +230,70 @@
           "name": "窗口背景区域",
           "desc": "窗口背景区域样式配置",
           "normal": [["background"], ["padding"], ["border"], ["borderRadius"], ["opacity"]]
-        } ,
+        },
         "AddButton": {
           "name": "新增按钮",
           "desc": "新增按钮样式配置",
-          "normal": [["width"], ["height"], ["opacity"], ["background"], ["border"], ["boxShadow"], ["color"], ["fontSize"]],
-          "hover": [["width"], ["height"], ["opacity"], ["background"], ["border"], ["boxShadow"], ["color"], ["fontSize"]]
+          "normal": [
+            ["width"],
+            ["height"],
+            ["opacity"],
+            ["background"],
+            ["border"],
+            ["boxShadow"],
+            ["color"],
+            ["fontSize"]
+          ],
+          "hover": [
+            ["width"],
+            ["height"],
+            ["opacity"],
+            ["background"],
+            ["border"],
+            ["boxShadow"],
+            ["color"],
+            ["fontSize"]
+          ]
         },
         "ContentBlock": {
           "name": "content内容区",
           "desc": "content内容区的样式配置",
-          "normal": [["background"],["padding"],["width"],["height"]]
-
+          "normal": [["background"], ["padding"], ["width"], ["height"]]
         },
         "TitleContainer": {
           "name": "头部标签区域",
           "desc": "头部标签区域宽度配置",
           "normal": [["width"]]
         },
-        "TabHeader":{
-          "theme":{
+        "TabHeader": {
+          "theme": {
             "DefaultTabPan": {
               "name": "默认标签",
               "desc": "默认标签样式配置",
-              "normal": [["color"], ["background"], ["border"], ["margin"], ["padding"], ["font"], ["opacity"]],
+              "normal": [
+                ["color"],
+                ["background"],
+                ["border"],
+                ["margin"],
+                ["padding"],
+                ["font"],
+                ["opacity"]
+              ],
               "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
               "disabled": [["color"], ["background"]]
             },
             "SelectTabPan": {
               "name": "选中标签",
               "desc": "选中标签样式配置",
-              "normal": [["color"], ["background"], ["border"], ["margin"], ["padding"], ["font"], ["opacity"]],
+              "normal": [
+                ["color"],
+                ["background"],
+                ["border"],
+                ["margin"],
+                ["padding"],
+                ["font"],
+                ["opacity"]
+              ],
               "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
               "disabled": [["color"], ["background"]]
             }
@@ -244,8 +306,7 @@
     "ContentBlock": {
       "name": "content内容区",
       "desc": "content内容区的样式配置",
-      "normal": [["background"],["padding"],["width"],["height"]]
-
+      "normal": [["background"], ["padding"], ["width"], ["height"]]
     },
     "TitleContainer": {
       "name": "头部标签区域",
@@ -257,19 +318,35 @@
       "desc": "默认线样式配置",
       "normal": [["border"]]
     },
-    "TabHeader":{
-      "theme":{
+    "TabHeader": {
+      "theme": {
         "DefaultTabPan": {
           "name": "默认标签",
           "desc": "默认标签样式配置",
-          "normal": [["color"], ["background"], ["border"], ["margin"], ["padding"], ["font"], ["opacity"]],
+          "normal": [
+            ["color"],
+            ["background"],
+            ["border"],
+            ["margin"],
+            ["padding"],
+            ["font"],
+            ["opacity"]
+          ],
           "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
           "disabled": [["color"], ["background"]]
         },
         "SelectTabPan": {
           "name": "选中标签",
           "desc": "选中标签样式配置",
-          "normal": [["color"], ["background"], ["border"], ["margin"], ["padding"], ["font"], ["opacity"]],
+          "normal": [
+            ["color"],
+            ["background"],
+            ["border"],
+            ["margin"],
+            ["padding"],
+            ["font"],
+            ["opacity"]
+          ],
           "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
           "disabled": [["color"], ["background"]]
         }

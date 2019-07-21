@@ -5,8 +5,7 @@
   "props": {
     "viewClass": {
       "type": "string",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
+      "desc": "用于配置通用主题属性"
     },
     "size": {
       "type": "AvatarSize",
@@ -15,18 +14,15 @@
     },
     "name": {
       "type": "string",
-      "desc": "头像显示内容",
-      "defaultValue": "undefined"
+      "desc": "头像显示内容"
     },
     "icon": {
       "type": "string",
-      "desc": "头像显示图标资源",
-      "defaultValue": "undefined"
+      "desc": "头像显示图标资源"
     },
     "src": {
       "type": "string",
-      "desc": "头像显示图片资源",
-      "defaultValue": "undefined"
+      "desc": "头像显示图片资源"
     },
     "shape": {
       "type": "AvatarShape",
@@ -108,7 +104,15 @@
     "Container": {
       "name": "头像",
       "desc": "对头像外部容器配置样式",
-      "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"],["opacity"],["boxShadow"]],
+      "normal": [
+        ["width"],
+        ["height"],
+        ["margin"],
+        ["padding"],
+        ["background"],
+        ["opacity"],
+        ["boxShadow"]
+      ],
       "hover": [["width"], ["height"]],
       "clicked": [],
       "disabled": []

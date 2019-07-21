@@ -5,32 +5,30 @@
   "props": {
     "action": {
       "type": "hover | click",
-      "desc": "展开子菜单的方式",
-      "defaultValue": "undefined"
+      "desc": "展开子菜单的方式"
     },
 
     "offsetX": {
       "type": "number",
       "desc": "菜单间的间隔",
-      "defaultValue": "2"
+      "defaultValue": 2
     },
 
     "offsetY": {
       "type": "number",
       "desc": "显示框与菜单的间隔",
-      "defaultValue": "5"
+      "defaultValue": 5
     },
 
     "placeholder": {
       "type": "string",
-      "desc": "显示框占位符",
-      "defaultValue": "undefined"
+      "desc": "显示框占位符"
     },
 
     "menuWidth": {
       "type": "number",
       "desc": "层级菜单的宽度",
-      "defaultValue": "150"
+      "defaultValue": 150
     },
 
     "valueField": {
@@ -46,8 +44,7 @@
 
     "data": {
       "type": "[{valueField: '', displayField: ''}]",
-      "desc": "级联选择的数据",
-      "defaultValue": "undefined"
+      "desc": "级联选择的数据"
     },
 
     "separator": {
@@ -58,32 +55,30 @@
 
     "value": {
       "type": "string | string[] | number | number[]",
-      "desc": "指定当前选中的条目",
-      "defaultValue": "undefined"
+      "desc": "指定当前选中的条目"
     },
 
     "displayValue": {
       "type": "string | string[] | number | number[]",
-      "desc": "指定当前选中的条目的displayValue值",
-      "defaultValue": "undefined"
+      "desc": "指定当前选中的条目的displayValue值"
     },
 
     "disabled": {
       "type": "boolean",
       "desc": "是否禁选",
-      "defaultValue": "false"
+      "defaultValue": false
     },
 
     "allowClear": {
       "type": "boolean",
       "desc": "是否允许清空选中值",
-      "defaultValue": "true"
+      "defaultValue": true
     },
 
     "showAllLevels": {
       "type": "boolean",
       "desc": "是否显示所有层级关系的值",
-      "defaultValue": "true"
+      "defaultValue": true
     }
   },
   "events": {

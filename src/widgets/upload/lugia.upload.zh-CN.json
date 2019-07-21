@@ -5,8 +5,7 @@
   "props": {
     "data": {
       "type": "Object",
-      "desc": "上传时附带的额外参数",
-      "defaultValue": "undefined"
+      "desc": "上传时附带的额外参数"
     },
     "areaType": {
       "type": "UploadType",
@@ -16,49 +15,46 @@
     "disabled": {
       "type": "boolean",
       "desc": "禁用状态",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "limit": {
       "type": "number",
-      "desc": "一次性可允许上传的最大文件数",
-      "defaultValue": "undefined"
+      "desc": "一次性可允许上传的最大文件数"
     },
     "multiple": {
       "type": "boolean",
       "desc": "是否允许多个文件上传",
-      "defaultValue": "false"
+      "defaultValue": false
     },
-    "showFileList":{
+    "showFileList": {
       "type": "boolean",
       "desc": "是否显示上传列表",
-      "defaultValue": "false"
+      "defaultValue": false
     },
-    "fileList":{
+    "fileList": {
       "type": "array",
       "desc": "上传的文件列表,如 [{ id: 1, name: 'header.jpg', status: 'done' }]",
-      "defaultValue":"undefined"
+      "defaultValue": undefined
     },
-    "withCredentials":{
+    "withCredentials": {
       "type": "boolean",
       "desc": "上传请求时是否允许携带cookie凭证",
-      "defaultValue": "false"
+      "defaultValue": false
     },
-    "autoUpload":{
+    "autoUpload": {
       "type": "boolean",
       "desc": "是否允许自动上传",
-      "defaultValue": "true"
+      "defaultValue": true
     },
-    "url":{
+    "url": {
       "type": "string",
-      "desc": "上传的请求地址(必填参数)",
-      "defaultValue": "undefined"
+      "desc": "上传的请求地址(必填参数)"
     },
-    "size":{
+    "size": {
       "type": "UploadSize",
       "desc": "picture类型可配置的三种尺寸(small/default/large)",
       "defaultValue": "default"
     }
-
   },
   "events": {
     "onProgress": {
@@ -111,11 +107,10 @@
         }
       ]
     }
-
   },
   "type": {
     "UploadSize": ["small", "default", "large"],
-    "UploadType":["default","both","button","picture","area"]
+    "UploadType": ["default", "both", "button", "picture", "area"]
   },
   "category": ["数据录入"],
   "designInfo": {
@@ -147,7 +142,7 @@
         "UploadPictureType": {
           "name": "图片上传区域",
           "desc": "图片上传类型的样式配置",
-          "normal": [["background"],["width"], ["height"], ["opacity"], ["border"]],
+          "normal": [["background"], ["width"], ["height"], ["opacity"], ["border"]],
           "hover": [["background"], ["opacity"], ["border"]],
           "disabled": [["background"], ["color"], ["border"]]
         }
@@ -164,7 +159,7 @@
         "UploadAreaType": {
           "name": "拖拽区域",
           "desc": "区域拖拽上传类型的样式配置",
-          "normal": [["width"], ["height"], ["fontSize"],["color"]],
+          "normal": [["width"], ["height"], ["fontSize"], ["color"]],
           "disabled": [["color"]]
         }
       }
@@ -180,7 +175,7 @@
         "UploadButtonType": {
           "name": "按钮",
           "desc": "按钮部分的样式配置",
-          "normal": [["width"], ["height"], ["fontSize"],["color"]],
+          "normal": [["width"], ["height"], ["fontSize"], ["color"]],
           "disabled": [["color"]]
         }
       }
@@ -195,26 +190,24 @@
       "disabled": [["border"], ["cursor"]]
     },
     "UploadList": {
-      "theme":{
+      "theme": {
         "UploadLiType": {
           "name": "上传文件列表",
           "desc": "上传列表的行样式",
-          "normal": [["width"],["height"],["background"], ["border"],["color"],["fontSize"]],
-          "hover": [["border"],["background"],["color"]]
+          "normal": [["width"], ["height"], ["background"], ["border"], ["color"], ["fontSize"]],
+          "hover": [["border"], ["background"], ["color"]]
         },
         "UploadListSuccessIcon": {
           "name": "上传成功图标样式",
           "desc": "上传成功时列表图标的样式",
-          "normal": [["color"],["fontSize"]]
+          "normal": [["color"], ["fontSize"]]
         },
         "UploadListFailedIcon": {
           "name": "上传失败图标样式",
           "desc": "上传失败时列表图标的样式",
-          "normal": [["color"],["fontSize"]]
+          "normal": [["color"], ["fontSize"]]
         }
       }
     }
-
   }
-
 }

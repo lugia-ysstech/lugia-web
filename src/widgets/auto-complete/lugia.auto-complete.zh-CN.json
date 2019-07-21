@@ -6,45 +6,40 @@
     "data": {
       "type": "string[]",
       "desc": "自动补全的数据",
-      "defaultValue": "[]"
+      "defaultValue": []
     },
 
     "value": {
       "type": "string",
-      "desc": "给定输入框的值",
-      "defaultValue": "undefined"
+      "desc": "给定输入框的值"
     },
 
     "defaultValue": {
       "type": "string",
-      "desc": "默认输入框的值，仅第一次生效",
-      "defaultValue": "undefined"
+      "desc": "默认输入框的值，仅第一次生效"
     },
 
     "showOldValue": {
       "type": "boolean",
       "desc": "是否显示上一次选中的值",
-      "defaultValue": "true"
+      "defaultValue": true
     },
     "placeholder": {
       "type": "string",
-      "desc": "input输入提示信息",
-      "defaultValue": "undefined"
+      "desc": "input输入提示信息"
     },
     "showAllLevels": {
       "type": "boolean",
       "desc": "是否显示所有层级关系的值",
-      "defaultValue": "true"
+      "defaultValue": true
     },
     "prefix": {
       "type": "ReactNode",
-      "desc": "输入框前缀",
-      "defaultValue": "undefined"
+      "desc": "输入框前缀"
     },
     "suffix": {
       "type": "ReactNode",
-      "desc": "输入框后缀",
-      "defaultValue": "undefined"
+      "desc": "输入框后缀"
     }
   },
   "events": {

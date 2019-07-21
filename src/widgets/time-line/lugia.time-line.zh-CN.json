@@ -5,33 +5,29 @@
   "props": {
     "children": {
       "type": "React.Node",
-      "desc": "时间轴需要包含的子组件",
-      "defaultValue": "undefined"
+      "desc": "时间轴需要包含的子组件"
     },
     "data": {
       "type": "Array<Object>",
-      "desc": "时间轴填充的数据",
-      "defaultValue": "undefined"
+      "desc": "时间轴填充的数据"
     },
     "defaultData": {
       "type": "Array<Object>",
-      "desc": "时间轴填充的默认显示数据",
-      "defaultValue": "undefined"
+      "desc": "时间轴填充的默认显示数据"
     },
     "reverse": {
       "type": "boolean",
       "desc": "控制节点排序，false 正序,true 倒序",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "pending": {
       "type": "boolean",
       "desc": "最后一个是否是幽灵节点",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "pendingDot": {
       "type": "React.Node",
-      "desc": "当最后一个是幽灵节点时,指定其图标资源",
-      "defaultValue": "undefined"
+      "desc": "当最后一个是幽灵节点时,指定其图标资源"
     },
     "mode": {
       "type": "TimeLineMode",

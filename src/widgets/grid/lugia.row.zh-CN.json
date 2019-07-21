@@ -5,28 +5,24 @@
   "props": {
     "type": {
       "type": "RowType",
-      "desc": "布局方式，可设为 flex 或不设",
-      "defaultValue": "undefined"
+      "desc": "布局方式，可设为 flex 或不设"
     },
     "justify": {
       "type": "JustifyType",
-      "desc": "flex 布局下的水平排列方式，可设置为 start、end、center、spaceAround、spaceBetween",
-      "defaultValue": "undefined"
+      "desc": "flex 布局下的水平排列方式，可设置为 start、end、center、spaceAround、spaceBetween"
     },
     "align": {
       "type": "AlignType",
-      "desc": "flex 布局下的垂直排列方式，可设置为 top、middle、bottom",
-      "defaultValue": "undefined"
+      "desc": "flex 布局下的垂直排列方式，可设置为 top、middle、bottom"
     },
     "gutter": {
       "type": "number | Object",
-      "desc": "栅格之间的间隔，可写为 number 格式 或支持响应式 对象写法：{xs: 8,sm: 16,md: 24}",
-      "defaultValue": "undefined"
+      "desc": "栅格之间的间隔，可写为 number 格式 或支持响应式 对象写法：{xs: 8,sm: 16,md: 24}"
     },
     "data": {
       "type": "Object[]",
       "desc": "指定栅格 data 属性，仅用于设计器",
-      "defaultValue": "undefined",
+
       "designOnly": true
     }
   },
