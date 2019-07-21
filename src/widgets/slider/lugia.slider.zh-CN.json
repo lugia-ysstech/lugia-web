@@ -6,12 +6,12 @@
     "maxValue": {
       "type": "number",
       "desc": "最大值限制",
-      "defaultValue": Infinity
+      "defaultValue": 999999999999
     },
     "minValue": {
       "type": "number",
       "desc": "最小值限制",
-      "defaultValue": -Infinity
+      "defaultValue": -999999999999
     },
     "defaultValue": {
       "type": "number | Array<number>",

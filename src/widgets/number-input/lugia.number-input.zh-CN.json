@@ -46,12 +46,12 @@
     "max": {
       "type": "number",
       "desc": "输入最大值限制",
-      "defaultValue": Infinity
+      "defaultValue": 999999999999
     },
     "min": {
       "type": "number",
       "desc": "输入最小值限制",
-      "defaultValue": -Infinity
+      "defaultValue": -999999999999
     },
     "step": {
       "type": "number",
