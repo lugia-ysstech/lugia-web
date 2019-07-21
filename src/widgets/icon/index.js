@@ -9,21 +9,6 @@ import '../css/font/lugia-icon.css';
 import Widget from '../consts/index';
 import ThemeHoc, { addMouseEvent } from '@lugia/theme-hoc';
 import CSSComponent, { css } from '../theme/CSSProvider';
-const Container = CSSComponent({
-  tag: 'div',
-  className: 'Container',
-  normal: {
-    selectNames: [
-      ['width'],
-      ['height'],
-      ['boxShadow'],
-      ['opacity'],
-      ['background'],
-      ['padding'],
-      ['margin'],
-    ],
-  },
-});
 
 const IconTag = CSSComponent({
   tag: 'i',
@@ -82,15 +67,13 @@ class Icon extends React.Component<IconProps> {
       singleTheme = false,
     } = this.props;
     return (
-      <Container themeProps={this.props.getPartOfThemeProps('Container')}>
-        <IconTag
-          className={`${iconClass} ${className}`}
-          onClick={this.onClick}
-          themeProps={singleTheme ? themeProps : getPartOfThemeProps('Icon')}
-          disabled={disabled}
-          {...addMouseEvent(this)}
-        />
-      </Container>
+      <IconTag
+        className={`${iconClass} ${className}`}
+        onClick={this.onClick}
+        themeProps={singleTheme ? themeProps : getPartOfThemeProps('Icon')}
+        disabled={disabled}
+        {...addMouseEvent(this)}
+      />
     );
   }
 }

@@ -21,22 +21,6 @@ import { deepMerge } from '@lugia/object-utils';
 
 const { px2remcss } = units;
 
-const Container = CSSComponent({
-  tag: 'div',
-  className: 'Container',
-  normal: {
-    selectNames: [
-      ['width'],
-      ['height'],
-      ['boxShadow'],
-      ['opacity'],
-      ['background'],
-      ['padding'],
-      ['margin'],
-    ],
-  },
-});
-
 const ArrowIconContainer = CSSComponent({
   tag: 'div',
   className: 'ArrowIconContainer',
@@ -418,12 +402,10 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
   render() {
     const channel = this.props.createEventChannel(['active', 'hover']);
     return (
-      <Container themeProps={this.props.getPartOfThemeProps('Container')}>
-        <InputContainer onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
-          {this.generateInput(channel)}
-          {this.getStepArrowIconContainer(channel)}
-        </InputContainer>
-      </Container>
+      <InputContainer onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
+        {this.generateInput(channel)}
+        {this.getStepArrowIconContainer(channel)}
+      </InputContainer>
     );
   }
 

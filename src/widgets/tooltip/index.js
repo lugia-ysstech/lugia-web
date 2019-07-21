@@ -18,22 +18,6 @@ import { units } from '@lugia/css';
 const { px2remcss } = units;
 const { defaultColor, blackColor } = colorsFunc();
 
-const Container = CSSComponent({
-  tag: 'div',
-  className: 'Container',
-  normal: {
-    selectNames: [
-      ['width'],
-      ['height'],
-      ['boxShadow'],
-      ['opacity'],
-      ['background'],
-      ['padding'],
-      ['margin'],
-    ],
-  },
-});
-
 const ContentWrapper: Object = CSSComponent({
   tag: 'div',
   className: 'TooltipContentWrapper',
@@ -394,24 +378,22 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
       },
     });
     return (
-      <Container themeProps={this.props.getPartOfThemeProps('Container')}>
-        <Trigger
-          createPortal={true}
-          popupVisible={visible}
-          align={placement}
-          ref={getTarget}
-          onPopupVisibleChange={this.onVisibleChange}
-          action={action}
-          direction={direction}
-          popup={
-            <ContentWrapper themeProps={contentThemeProps}>
-              {this.getContent(contentThemeProps, direction)}
-            </ContentWrapper>
-          }
-        >
-          {children}
-        </Trigger>
-      </Container>
+      <Trigger
+        createPortal={true}
+        popupVisible={visible}
+        align={placement}
+        ref={getTarget}
+        onPopupVisibleChange={this.onVisibleChange}
+        action={action}
+        direction={direction}
+        popup={
+          <ContentWrapper themeProps={contentThemeProps}>
+            {this.getContent(contentThemeProps, direction)}
+          </ContentWrapper>
+        }
+      >
+        {children}
+      </Trigger>
     );
   }
 

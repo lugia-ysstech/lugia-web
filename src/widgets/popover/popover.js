@@ -18,22 +18,6 @@ import { units } from '@lugia/css';
 
 const { px2remcss } = units;
 
-const Container = CSSComponent({
-  tag: 'div',
-  className: 'Container',
-  normal: {
-    selectNames: [
-      ['width'],
-      ['height'],
-      ['boxShadow'],
-      ['opacity'],
-      ['background'],
-      ['padding'],
-      ['margin'],
-    ],
-  },
-});
-
 const ClearContainer: Object = StaticComponent({
   tag: 'div',
   className: 'PopoverIconContainer',
@@ -138,23 +122,21 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
       theTheme
     );
     return (
-      <Container themeProps={this.props.getPartOfThemeProps('Container')}>
-        <Tooltip
-          theme={tooltipTheme}
-          viewClass={viewClass}
-          visible={visible}
-          action={action}
-          onVisibleChange={this.onVisibleChange}
-          popArrowType={'round'}
-          placement={placement}
-          content={this.getContent()}
-          title={this.getTitle()}
-          description={this.getDescription()}
-          ref={getTarget}
-        >
-          {children}
-        </Tooltip>
-      </Container>
+      <Tooltip
+        theme={tooltipTheme}
+        viewClass={viewClass}
+        visible={visible}
+        action={action}
+        onVisibleChange={this.onVisibleChange}
+        popArrowType={'round'}
+        placement={placement}
+        content={this.getContent()}
+        title={this.getTitle()}
+        description={this.getDescription()}
+        ref={getTarget}
+      >
+        {children}
+      </Tooltip>
     );
   }
 

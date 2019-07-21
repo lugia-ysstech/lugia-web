@@ -16,22 +16,6 @@ import { getAttributeFromObject } from '../common/ObjectUtils';
 import moment from 'moment';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
 
-const Container = CSSComponent({
-  tag: 'div',
-  className: 'Container',
-  normal: {
-    selectNames: [
-      ['width'],
-      ['height'],
-      ['boxShadow'],
-      ['opacity'],
-      ['background'],
-      ['padding'],
-      ['margin'],
-    ],
-  },
-});
-
 const OutContainer = CSSComponent({
   tag: 'div',
   className: 'TimeLineContainer',
@@ -90,11 +74,7 @@ class TimeLine extends Component<TimeLineProps, TimeLineState> {
 
   render() {
     const theThemeProps = this.props.getPartOfThemeProps('TimeLineContainer', {});
-    return (
-      <Container themeProps={this.props.getPartOfThemeProps('Container')}>
-        <OutContainer themeProps={theThemeProps}>{this.getChildren()}</OutContainer>
-      </Container>
-    );
+    return <OutContainer themeProps={theThemeProps}>{this.getChildren()}</OutContainer>;
   }
 
   getChildren() {
