@@ -78,50 +78,6 @@
     ]
   },
   "category": ["数据展示"],
-  "designInfo": {
-    "ToolTipConfig": {
-      "sequence": 1,
-      "title": "文字提示",
-      "desc": "文字提示",
-      "theme": {
-        "Container": {
-          "name": "文字提示框容器部分",
-          "desc": "文字提示框容器部分",
-          "normal": [
-            ["background"],
-            ["color"],
-            ["padding"],
-            ["font"],
-            ["fontSize"],
-            ["width"],
-            ["height"],
-            ["boxShadow"],
-            ["borderRadius"],
-            ["border"]
-          ],
-          "hover": [],
-          "clicked": [],
-          "disabled": []
-        },
-        "TooltipTitle": {
-          "name": "文字提示信息文字标题部分",
-          "desc": "文字提示信息文字标题部分",
-          "normal": [["fontSize"], ["font"], ["color"]],
-          "hover": [],
-          "clicked": [],
-          "disabled": []
-        },
-        "TooltipDescription": {
-          "name": "文字提示信息文字描述信息部分",
-          "desc": "文字提示信息文字描述信息部分",
-          "normal": [["fontSize"], ["font"], ["color"]],
-          "hover": [],
-          "clicked": [],
-          "disabled": []
-        }
-      }
-    }
-  },
   "theme": {
     "Container": {
       "name": "文字提示框容器部分",

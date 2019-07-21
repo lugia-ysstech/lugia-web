@@ -40,7 +40,7 @@
   },
   "category": ["数据展示"],
   "designInfo": {
-    "AvatarIconConfig": {
+    "AvatarIcon": {
       "sequence": 1,
       "title": "头像样式类型",
       "desc": "按头像样式类型不同选择显示不同头像",
@@ -58,7 +58,7 @@
         }
       }
     },
-    "AvatarSrcConfig": {
+    "AvatarSrc": {
       "sequence": 2,
       "title": "头像样式类型",
       "desc": "按头像样式类型不同选择显示不同头像",
@@ -77,7 +77,7 @@
         }
       }
     },
-    "AvatarFontConfig": {
+    "AvatarFont": {
       "sequence": 3,
       "title": "头像样式类型",
       "desc": "按头像样式类型不同选择显示不同头像",

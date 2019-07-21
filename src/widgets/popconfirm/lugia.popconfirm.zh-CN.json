@@ -116,54 +116,6 @@
     "ButtonType": ["default", "primary", "success", "warning", "danger"]
   },
   "category": ["反馈"],
-  "designInfo": {
-    "PopconfirmConfig": {
-      "sequence": 1,
-      "title": "气泡确认框",
-      "desc": "气泡确认框",
-      "theme": {
-        "PopconfirmContent": {
-          "theme": {
-            "PopoverContent": {
-              "theme": {
-                "Container": {
-                  "name": "气泡确认框内容部分",
-                  "desc": "气泡确认框内容部分",
-                  "normal": [
-                    ["background"],
-                    ["color"],
-                    ["padding"],
-                    ["font"],
-                    ["fontSize"],
-                    ["width"],
-                    ["height"],
-                    ["boxShadow"],
-                    ["borderRadius"],
-                    ["border"]
-                  ]
-                }
-              }
-            }
-          }
-        },
-        "PopconfirmButton": {
-          "name": "气泡确认框按钮",
-          "desc": "气泡确认框按钮",
-          "normal": [["opacity"], ["color"], ["font"], ["fontSize"]]
-        },
-        "PopconfirmTitle": {
-          "name": "气泡确认框标题",
-          "desc": "气泡确认框标题",
-          "normal": [["color"], ["background"], ["font"], ["fontSize"]]
-        },
-        "PopconfirmIcon": {
-          "name": "气泡确认框标题前图标",
-          "desc": "气泡确认框标题前图标",
-          "normal": [["opacity"], ["color"], ["font"], ["fontSize"]]
-        }
-      }
-    }
-  },
   "theme": {
     "Container": {
       "name": "气泡确认框内容部分",

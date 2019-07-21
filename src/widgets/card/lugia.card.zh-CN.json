@@ -65,7 +65,7 @@
   },
   "category": ["数据展示"],
   "designInfo": {
-    "SimpleCardConfig": {
+    "SimpleCard": {
       "sequence": 1,
       "title": "卡片样式类型",
       "desc": "按卡片类型不同选择显示不同卡片样式",
@@ -130,7 +130,7 @@
         }
       }
     },
-    "AvatarCardConfig": {
+    "AvatarCard": {
       "sequence": 2,
       "title": "卡片样式类型",
       "desc": "按卡片类型不同选择显示不同卡片样式",
@@ -205,7 +205,7 @@
         }
       }
     },
-    "AvatarImageConfig": {
+    "AvatarImage": {
       "sequence": 3,
       "title": "卡片样式类型",
       "desc": "按卡片类型不同选择显示不同卡片样式",
@@ -286,7 +286,7 @@
         }
       }
     },
-    "TipCardConfig": {
+    "TipCard": {
       "sequence": 4,
       "title": "卡片样式类型",
       "desc": "按卡片类型不同选择显示不同卡片样式",
@@ -343,7 +343,7 @@
         }
       }
     },
-    "ComboCardConfig": {
+    "ComboCard": {
       "sequence": 5,
       "title": "卡片样式类型",
       "desc": "按卡片类型不同选择显示不同卡片样式",
