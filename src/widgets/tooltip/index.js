@@ -396,6 +396,9 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
       </Trigger>
     );
   }
+  setPopupVisible(popupVisible: boolean) {
+    this.trigger && this.trigger.setPopupVisible(popupVisible);
+  }
 
   getContent(contentThemeProps, direction) {
     const { placement, popArrowType, content } = this.props;
