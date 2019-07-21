@@ -5,28 +5,24 @@
   "props": {
     "activityValue": {
       "type": "string",
-      "desc": "当前激活 tab 面板的 key",
-      "defaultValue": "undefined"
+      "desc": "当前激活 tab 面板的 key"
     },
     "title": {
       "type": "string",
-      "desc": "标签页标题",
-      "defaultValue": "undefined"
+      "desc": "标签页标题"
     },
     "index": {
       "type": "number",
       "desc": "标识当前是第几项",
-      "defaultValue": "0"
+      "defaultValue": 0
     },
     "icon": {
       "type": "string | React$Element<any>",
-      "desc": "位于标题前的图标资源",
-      "defaultValue": "undefined"
+      "desc": "位于标题前的图标资源"
     },
     "suffixIcon": {
       "type": "string | React$Element<any>",
-      "desc": "位于标题后的图标资源",
-      "defaultValue": "undefined"
+      "desc": "位于标题后的图标资源"
     },
     "tabType": {
       "type": "TabType",
@@ -41,17 +37,17 @@
     "isSelect": {
       "type": "boolean",
       "desc": "标签页是否被选中",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "disabled": {
       "type": "boolean",
       "desc": "标签页是否被禁用",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "showDeleteBtn": {
       "type": "boolean",
       "desc": "是否显示删除按钮",
-      "defaultValue": "false"
+      "defaultValue": false
     }
   },
   "events": {
@@ -105,7 +101,15 @@
     "DefaultTabPan": {
       "name": "默认标签",
       "desc": "默认标签样式配置",
-      "normal": [["color"], ["background"], ["border"], ["margin"], ["padding"], ["font"], ["opacity"]],
+      "normal": [
+        ["color"],
+        ["background"],
+        ["border"],
+        ["margin"],
+        ["padding"],
+        ["font"],
+        ["opacity"]
+      ],
       "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
       "clicked": [],
       "disabled": []
@@ -113,7 +117,15 @@
     "SelectTabPan": {
       "name": "选中标签",
       "desc": "选中标签样式配置",
-      "normal": [["color"], ["background"], ["border"], ["margin"], ["padding"], ["font"], ["opacity"]],
+      "normal": [
+        ["color"],
+        ["background"],
+        ["border"],
+        ["margin"],
+        ["padding"],
+        ["font"],
+        ["opacity"]
+      ],
       "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
       "clicked": [],
       "disabled": []

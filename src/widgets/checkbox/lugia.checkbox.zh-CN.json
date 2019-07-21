@@ -5,38 +5,32 @@
   "props": {
     "checked": {
       "type": "boolean",
-      "desc": "指定Checkbox是否选中",
-      "defaultValue": "undefined"
+      "desc": "指定Checkbox是否选中"
     },
     "defaultChecked": {
       "type": "boolean",
-      "desc": "指定Checkbox初始是否选中",
-      "defaultValue": "undefined"
+      "desc": "指定Checkbox初始是否选中"
     },
     "disabled": {
       "type": "boolean",
-      "desc": "指定Checkbox是否禁用",
-      "defaultValue": "undefined"
+      "desc": "指定Checkbox是否禁用"
     },
     "indeterminate": {
       "type": "boolean",
-      "desc": "设置半选状态，只用于样式控制",
-      "defaultValue": "undefined"
+      "desc": "设置半选状态，只用于样式控制"
     },
     "value": {
       "type": "string",
-      "desc": "组件value值",
-      "defaultValue": "undefined"
+      "desc": "组件value值"
     },
     "styles": {
       "type": "CheckboxType",
       "desc": "Checkbox展示方向，可选值为 vertical 或不设",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "children": {
       "type": "string | React.node",
-      "desc": "Checkbox展示内容",
-      "defaultValue": "undefined"
+      "desc": "Checkbox展示内容"
     }
   },
   "events": {
@@ -72,7 +66,7 @@
   "childrenWidget": ["checkbox-group"],
   "category": ["数据录入"],
   "theme": {
-    "CheckboxWrap": {
+    "Container": {
       "name": "Checkbox整体配置",
       "desc": "Checkbox整体配置",
       "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]],

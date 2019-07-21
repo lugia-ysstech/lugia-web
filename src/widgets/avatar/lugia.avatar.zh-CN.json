@@ -5,8 +5,7 @@
   "props": {
     "viewClass": {
       "type": "string",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
+      "desc": "用于配置通用主题属性"
     },
     "size": {
       "type": "AvatarSize",
@@ -15,18 +14,15 @@
     },
     "name": {
       "type": "string",
-      "desc": "头像显示内容",
-      "defaultValue": "undefined"
+      "desc": "头像显示内容"
     },
     "icon": {
       "type": "string",
-      "desc": "头像显示图标资源",
-      "defaultValue": "undefined"
+      "desc": "头像显示图标资源"
     },
     "src": {
       "type": "string",
-      "desc": "头像显示图片资源",
-      "defaultValue": "undefined"
+      "desc": "头像显示图片资源"
     },
     "shape": {
       "type": "AvatarShape",
@@ -40,7 +36,7 @@
   },
   "category": ["数据展示"],
   "designInfo": {
-    "AvatarIconConfig": {
+    "AvatarIcon": {
       "sequence": 1,
       "title": "头像样式类型",
       "desc": "按头像样式类型不同选择显示不同头像",
@@ -58,7 +54,7 @@
         }
       }
     },
-    "AvatarSrcConfig": {
+    "AvatarSrc": {
       "sequence": 2,
       "title": "头像样式类型",
       "desc": "按头像样式类型不同选择显示不同头像",
@@ -77,7 +73,7 @@
         }
       }
     },
-    "AvatarFontConfig": {
+    "AvatarFont": {
       "sequence": 3,
       "title": "头像样式类型",
       "desc": "按头像样式类型不同选择显示不同头像",
@@ -105,10 +101,18 @@
     }
   },
   "theme": {
-    "AvatarContainer": {
+    "Container": {
       "name": "头像",
-      "desc": "对头像配置样式",
-      "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"]],
+      "desc": "对头像外部容器配置样式",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["margin"],
+        ["padding"],
+        ["background"],
+        ["opacity"],
+        ["boxShadow"]
+      ],
       "hover": [["width"], ["height"]],
       "clicked": [],
       "disabled": []

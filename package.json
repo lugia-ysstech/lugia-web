@@ -1,18 +1,17 @@
 {
   "name": "@lugia/lugia-web",
-  "version": "1.1.0-1",
+  "version": "1.1.0-17",
   "dependencies": {
-    "@lugia/css": "^1.0.15",
-    "@lugia/devtools-material": "^1.0.6",
+    "@lugia/css": "^1.0.17",
+    "@lugia/devtools-material": "1.0.20",
     "@lugia/math": "^1.0.7",
-    "@lugia/object-utils": "1.0.11",
-    "@lugia/ramada": "^1.0.1",
-    "@lugia/theme-config": "1.0.24",
-    "@lugia/theme-core": "1.0.24",
-    "@lugia/theme-css-hoc": "1.0.47",
-    "@lugia/theme-hoc": "1.0.35",
-    "@lugia/theme-hoc-devtools": "1.0.4",
-    "@lugia/theme-utils": "1.0.4",
+    "@lugia/object-utils": "^1.0.11",
+    "@lugia/theme-config": "1.0.29",
+    "@lugia/theme-core": "1.0.29",
+    "@lugia/theme-css-hoc": "1.0.53",
+    "@lugia/theme-hoc": "1.0.40",
+    "@lugia/theme-hoc-devtools": "1.0.6",
+    "@lugia/theme-utils": "1.0.6",
     "@lugia/type-utils": "^1.0.4",
     "babel-polyfill": "6.26.0",
     "classnames": "2.2.5",
@@ -36,8 +35,8 @@
   },
   "peerDependencies": {
     "react": ">16.8.0",
-    "styled-components": "4.2.0",
-    "react-dom": ">16.0.0"
+    "react-dom": ">16.0.0",
+    "styled-components": "4.2.0"
   },
   "author": "ysstech",
   "scripts": {
@@ -55,11 +54,11 @@
     "test": "node scripts/test.js --env=jsdom",
     "cover": "node scripts/test.js --env=jsdom  --coverage",
     "clean": "npx shx rm -rf dist/ interface/ npm-shrinkwrap.all.json",
+    "create": "node scripts/create.js",
     "dist": "node scripts/create.js && npm run clean && npx cross-env BABEL_ENV=production gulp ",
     "create-info": "lugia-create-info"
   },
   "devDependencies": {
-    "styled-components": "4.2.0",
     "@lugia/jverify": "1.0.6",
     "@lugia/lugiax-router": "^1.0.10",
     "@lugia/mega-scripts": "^1.3.35",
@@ -117,6 +116,7 @@
     "react-test-renderer": "^16.8.6",
     "rimraf": "^2.6.2",
     "shx": "0.2.2",
+    "styled-components": "4.2.0",
     "stylelint": "^9.3.0",
     "stylelint-config-standard": "17.0.0",
     "stylelint-processor-styled-components": "0.2.1",

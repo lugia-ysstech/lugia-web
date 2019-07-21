@@ -283,7 +283,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
         [IconViewClass]: {
           normal: {
             cursor: 'pointer',
-            fontSize: 20,
+            fontSize: 10,
             getCSS() {
               return ` position: absolute;
                        top: 50%;

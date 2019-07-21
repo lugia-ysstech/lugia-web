@@ -46,11 +46,11 @@ const CommonInputStyle = CSSComponent({
       ['fontSize'],
       ['font'],
       ['color'],
-      ['padding'],
       ['background'],
       ['border'],
       ['borderRadius'],
       ['cursor'],
+      ['padding'],
     ],
     defaultTheme: {
       cursor: 'text',
@@ -118,7 +118,7 @@ const CommonInputStyle = CSSComponent({
     },
   },
   disabled: {
-    selectNames: [['cursor'], ['border'], ['borderRadius'], ['background'], ['color']],
+    selectNames: [['cursor'], ['border'], ['borderRadius'], ['background']],
     defaultTheme: {
       cursor: 'not-allowed',
       background: { color: disableColor },
@@ -153,7 +153,16 @@ const InputContainer = CSSComponent({
   tag: 'div',
   className: 'inputContainer',
   normal: {
-    selectNames: [['margin'], ['boxShadow'], ['padding']],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['background'],
+      ['border'],
+      ['borderRadius'],
+      ['boxShadow'],
+      ['margin'],
+      ['padding'],
+    ],
   },
   hover: {
     selectNames: [],
@@ -177,13 +186,12 @@ const TipBottom = CSSComponent({
   css: css`
     display: block;
     transform: translateY(50%);
-    font-size: 1em;
-    color: ${dangerColor};
   `,
   normal: {
-    selectNames: [['color']],
+    selectNames: [['color'], ['font'], ['fontSize']],
     defaultTheme: {
-      visibility: 'hidden',
+      color: dangerColor,
+      fontSize: 10,
     },
     getCSS(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
@@ -384,7 +392,7 @@ class TextBox extends Component<InputProps, InputState> {
   }
 
   getInputContainer(fetcher: Function) {
-    const theThemeProps = this.props.getPartOfThemeProps('Input');
+    const theThemeProps = this.props.getPartOfThemeProps('Container');
     return (
       <InputContainer themeProps={theThemeProps} {...addMouseEvent(this)}>
         {fetcher()}
@@ -403,7 +411,7 @@ class TextBox extends Component<InputProps, InputState> {
           {this.generateSuffix()}
         </BaseInputContainer>,
       ];
-      const tipBottomThemeProps = this.props.getPartOfThemeProps('validateBottomConfig', {
+      const tipBottomThemeProps = this.props.getPartOfThemeProps('validateBottom', {
         props: { validateType, validateStatus, prefix, size },
       });
       result.push(
@@ -421,27 +429,24 @@ class TextBox extends Component<InputProps, InputState> {
     const { props } = this;
     const { validateType, size, help, validateStatus, prefix } = props;
     const result = this.getInputContent();
-    const {
-      theme: topTipThemeProps,
-      viewClass: validateTopTip,
-    } = this.props.getPartOfThemeHocProps('ValidateTopTip');
+    const { theme: topTipThemeProps, viewClass } = this.props.getPartOfThemeHocProps(
+      'ValidateTopTip'
+    );
 
     const newTheme = deepMerge(
       {
-        [validateTopTip]: {
-          TooltipContent: {
+        [viewClass]: {
+          Container: {
             normal: {
+              background: { color: superLightColor },
               getCSS() {
-                return `position: relative;
+                return `
               display: inline-block;`;
-              },
-              getThemeMeta() {
-                return { background: { color: superLightColor } };
               },
             },
           },
           TooltipTitle: {
-            normal: { color: mediumGreyColor },
+            normal: { color: dangerColor },
           },
         },
       },
@@ -452,11 +457,11 @@ class TextBox extends Component<InputProps, InputState> {
         <ToolTip
           propsConfig={{ validateType, validateStatus, prefix, size }}
           theme={newTheme}
-          size={size}
-          placement={'topLeft'}
-          switch
+          viewClass={viewClass}
           title={help}
-          action={['focus']}
+          action={['click']}
+          popArrowType={'round'}
+          placement={'topLeft'}
         >
           {result}
         </ToolTip>
@@ -558,9 +563,12 @@ class TextBox extends Component<InputProps, InputState> {
       value = formatter(value);
     }
 
-    const theThemeProps = this.props.getPartOfThemeProps('Input', {
-      props: { validateType, validateStatus, prefix, size },
-    });
+    const theThemeProps = deepMerge(
+      this.props.getPartOfThemeProps('Input', {
+        props: { validateType, validateStatus, prefix, size },
+      }),
+      this.props.getPartOfThemeProps('Container')
+    );
     return (
       <CommonInputStyle
         themeProps={theThemeProps}

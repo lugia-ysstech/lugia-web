@@ -42,7 +42,7 @@ export default class MessageDemo extends React.Component<any, any> {
 export const MessageStyle = () => {
   const messageView = {
     [Widget.Message]: {
-      MessageWrap: {
+      Container: {
         normal: {
           width: 200,
           height: 50,

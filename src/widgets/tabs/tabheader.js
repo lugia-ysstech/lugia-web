@@ -183,6 +183,10 @@ const AddContainer = CSSComponent({
       lineHeight: 18,
       borderRadius: '4px',
     },
+    getCSS: (theme: Object, themeProps: Object) => {
+      const { height } = theme;
+      return `line-height: ${height}px`;
+    },
     getThemeMeta: (theme: Object, themeProps: Object) => {
       const { height } = theme;
       return {
@@ -448,7 +452,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
   }
 
   componentDidMount() {
-    if (this.scrollBox) {
+    if (this.scrollBox.current) {
       this.offsetWidth = this.scrollBox.current.offsetWidth;
       this.offsetHeight = this.scrollBox.current.offsetHeight;
     }
@@ -611,8 +615,11 @@ class TabHeader extends Component<TabsProps, TabsState> {
     let addSize = 0;
     if (showAddBtn) {
       const addBtnThemeProps = this.props.getPartOfThemeProps('AddButton');
-      const { themeConfig: { normal: { width } } = {} } = addBtnThemeProps;
-      addSize = width ? width : addSize;
+      const { themeConfig: { normal } = {} } = addBtnThemeProps;
+      if (normal) {
+        const { width } = normal;
+        addSize = width ? width : addSize;
+      }
     }
     themeProps.propsConfig = { arrowShow, showAddBtn, addSize };
     const moveDistance = this.computeMoveDistance();

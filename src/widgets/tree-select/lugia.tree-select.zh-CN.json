@@ -11,7 +11,7 @@
     "data": {
       "type": "Array<Object>",
       "desc": "生成选择项的数据",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "valueField": {
       "type": "string",
@@ -26,12 +26,12 @@
     "translateTreeData": {
       "type": "boolean",
       "desc": "是否开启嵌套数据生成Tree",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "start": {
       "type": "number",
       "desc": "开始展示数据的索引值",
-      "defaultValue": "0"
+      "defaultValue": 0
     },
     "query": {
       "type": "string",
@@ -41,50 +41,46 @@
     "mutliple": {
       "type": "boolean",
       "desc": "是否多选",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "limitCount": {
       "type": "number",
       "desc": "多选时的最大选中数",
-      "defaultValue": "999999"
+      "defaultValue": 999999
     },
     "expandAll": {
       "type": "boolean",
       "desc": "是否展开所有子元素",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "onlySelectLeaf": {
       "type": "boolean",
       "desc": "是否只能选择根节点选项",
-      "defaultValue": "false"
+      "defaultValue": false
     },
 
     "label": {
       "type": "string",
-      "desc": "标注文本",
-      "defaultValue": "undefined"
+      "desc": "标注文本"
     },
 
     "value": {
       "type": "string | string[] | number | number[]",
-      "desc": "指定当前选中的条目的valueField值",
-      "defaultValue": "undefined"
+      "desc": "指定当前选中的条目的valueField值"
     },
     "displayValue": {
       "type": "string | string[] | number | number[]",
-      "desc": "指定当前选中的条目的displayField值",
-      "defaultValue": "undefined"
+      "desc": "指定当前选中的条目的displayField值"
     },
     "disabled": {
       "type": "boolean",
       "desc": "是否禁选",
-      "defaultValue": "false"
+      "defaultValue": false
     },
 
     "placeholder": {
       "type": "string",
-      "desc": "占位符",
-      "defaultValue": "undefined"
+      "desc": "占位符"
     },
 
     "mode": {
@@ -95,17 +91,17 @@
     "canSearch": {
       "type": "boolean",
       "desc": "是否支持查询",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "throttle": {
       "type": "number",
       "desc": "检索数据的延迟,单位为毫秒",
-      "defaultValue": "200"
+      "defaultValue": 200
     },
     "canInput": {
       "type": "boolean",
       "desc": "是否支持自定义值,只有在canSearch为true时才生效",
-      "defaultValue": "false"
+      "defaultValue": false
     }
   },
   "events": {

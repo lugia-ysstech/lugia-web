@@ -13,10 +13,12 @@ import SwitchPanel from '../switchPanel/SwitchPanel';
 import { getValueFromWeekToDate } from '../utils/differUtils';
 import { getformatSymbol, getNewProps } from '../utils/utils';
 import { formatValueIsValid, modeStyle } from '../utils/booleanUtils';
-
+import { PanelWrap } from '../styled/styled';
 import Theme from '../../theme';
 import Widget from '../../consts/index';
 import SwitchPanelMode from '../mode';
+import getThemeProps from '../themeConfig/themeConfig';
+import { addMouseEvent } from '@lugia/theme-hoc';
 type TypeProps = {
   defaultValue?: string,
   value?: string,
@@ -85,7 +87,7 @@ class DateInput extends Component<TypeProps, TypeState> {
     this.normalStyleValueObj = getformatSymbol(value);
   }
   render() {
-    const { disabled, readOnly, theme } = this.props;
+    const { disabled, readOnly, getPartOfThemeProps, getPartOfThemeHocProps } = this.props;
     const {
       value,
       status,
@@ -103,40 +105,67 @@ class DateInput extends Component<TypeProps, TypeState> {
     const newProps = getNewProps(this.props);
     const { mode } = this.props;
     const { isTime } = modeStyle(mode);
+    const themeProps = getThemeProps({ mode, getPartOfThemeProps }, 'FacePanelContain');
+    const inputContainProps = getThemeProps({ mode, getPartOfThemeProps }, 'InputContain');
+    const inputPrefixProps = getThemeProps({ mode, getPartOfThemeProps }, 'InputPrefix');
+    const clearButtonProps = getThemeProps({ mode, getPartOfThemeProps }, 'ClearButton');
+    const { themeConfig } = inputContainProps;
+    const { themeConfig: inputPrefixThemeConfig } = inputPrefixProps;
+    const { themeConfig: clearButtonThemeConfig } = clearButtonProps;
+
     return (
-      <Theme config={{ [Widget.Input]: { ...theme } }}>
+      <Theme
+        config={{
+          [Widget.Input]: {
+            Input: {
+              ...themeConfig,
+            },
+            InputPrefix: {
+              ...inputPrefixThemeConfig,
+            },
+            ClearButton: {
+              ...clearButtonThemeConfig,
+            },
+          },
+        }}
+      >
         <Trigger
+          createPortal={true}
           popup={
             <React.Fragment>
-              <SwitchPanel
-                {...newProps}
-                hasStateValue={hasStateValue}
-                onChange={this.onChange}
-                status={status}
-                value={panelValue}
-                timeValue={value}
-                format={format}
-                timeChange={this.timeChange}
-                model={this.targetMode}
-                isScroll={isScroll}
-                valueIsValid={valueIsValid}
-                index={0}
-                hasOldValue={hasOldValue}
-                isStartOfWeek={isStartOfWeek}
-              />
-              {isTime ? (
-                ''
-              ) : (
-                <PageFooter
-                  {...this.props}
-                  format={format}
+              <PanelWrap themeProps={themeProps} {...addMouseEvent(this)}>
+                <SwitchPanel
+                  {...newProps}
+                  hasStateValue={hasStateValue}
                   onChange={this.onChange}
-                  footerChange={this.footerChange}
-                  setTreePopupVisible={this.setTreePopupVisible}
-                  showTimeBtnIsDisabled={showTimeBtnIsDisabled}
-                  model={this.pageFooterChange}
+                  status={status}
+                  value={panelValue}
+                  timeValue={value}
+                  format={format}
+                  timeChange={this.timeChange}
+                  model={this.targetMode}
+                  isScroll={isScroll}
+                  valueIsValid={valueIsValid}
+                  index={0}
+                  hasOldValue={hasOldValue}
+                  isStartOfWeek={isStartOfWeek}
+                  themeProps={themeProps}
                 />
-              )}
+
+                {isTime ? (
+                  ''
+                ) : (
+                  <PageFooter
+                    {...this.props}
+                    format={format}
+                    onChange={this.onChange}
+                    footerChange={this.footerChange}
+                    setPopupVisible={this.setPopupVisible}
+                    showTimeBtnIsDisabled={showTimeBtnIsDisabled}
+                    model={this.pageFooterChange}
+                  />
+                )}
+              </PanelWrap>
             </React.Fragment>
           }
           align="bottomLeft"
@@ -180,11 +209,12 @@ class DateInput extends Component<TypeProps, TypeState> {
       if ((showTime || onOk) && !(isWeek || isYear || isMonth)) {
         visible = true;
       }
+      this.setModeState(newValue, format, isWeeks || isWeek);
     }
-    this.setModeState(newValue, format, isWeeks || isWeek);
+
     onChange && onChange({ event, newValue, oldValue: this.oldValue });
     this.setState({ value: newValue, isValid });
-    !isTime && this.setTreePopupVisible(visible);
+    !isTime && this.setPopupVisible(visible);
   };
   setModeState = (value: string, format: string, isWeeks: boolean) => {
     const newFormat = isWeeks ? 'YYYY-MM-DD' : format;
@@ -264,17 +294,15 @@ class DateInput extends Component<TypeProps, TypeState> {
       status === 'showDate' && this.targetMode.onChange({ value: panelValue });
       stateData = { status };
     }
-    this.setTreePopupVisible(visible);
+    this.setPopupVisible(visible);
     this.setState(stateData);
   };
   timeChange = (obj: Object) => {
     const { value } = obj;
     this.setState({ value });
   };
-  setTreePopupVisible(visible: boolean) {
-    if (this.trigger.current && this.trigger.current.getThemeTarget()) {
-      this.trigger.current.getThemeTarget().setPopupVisible(visible);
-    }
+  setPopupVisible(visible: boolean) {
+    this.trigger.current && this.trigger.current.setPopupVisible(visible);
   }
 }
 

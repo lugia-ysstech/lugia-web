@@ -45,6 +45,7 @@ const Title = CSSComponent({
     selectNames: [['fontSize'], ['font'], ['color']],
   },
 });
+
 const AmountInputPrefix = CSSComponent({
   tag: 'span',
   className: 'AmountInputPrefix',
@@ -212,7 +213,7 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
     const newTheme = deepMerge(
       {
         [viewClass]: {
-          TooltipContent: {
+          Container: {
             normal: {
               getThemeMeta(themeMeta: Object, themeProps: Object) {
                 const { propsConfig } = themeProps;
@@ -235,6 +236,7 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
         title={this.getTitle()}
         action={'focus'}
         placement={'topLeft'}
+        popArrowType={'round'}
         theme={newTheme}
         viewClass={viewClass}
       >

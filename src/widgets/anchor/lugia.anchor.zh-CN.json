@@ -6,17 +6,16 @@
     "affix": {
       "type": "boolean",
       "desc": "是否固定在窗口",
-      "defaultValue": "true"
+      "defaultValue": true
     },
     "offsetTop": {
       "type": "number",
       "desc": "距离窗口顶部达到指定值后触发",
-      "defaultValue": "0"
+      "defaultValue": 0
     },
     "offsetBottom": {
       "type": "number",
-      "desc": "距离窗口底部达到指定值后触发",
-      "defaultValue": "undefined"
+      "desc": "距离窗口底部达到指定值后触发"
     },
     "slideType": {
       "type": "SlideType",
@@ -26,7 +25,7 @@
     "slideLine": {
       "type": "boolean",
       "desc": "是否展示分割线",
-      "defaultValue": "true"
+      "defaultValue": true
     }
   },
   "type": {

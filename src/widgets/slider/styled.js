@@ -12,7 +12,7 @@ import {
   iconNormalColor,
   iconChangeColor,
 } from './slider_public_color';
-import CSSComponent from '@lugia/theme-css-hoc';
+import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 const em = px2remcss;
 type CssTypeProps = {
   background: string,
@@ -74,7 +74,7 @@ export const SliderBigBox = CSSComponent({
     vertical-align: top;
   `,
 });
-export const SliderBox = CSSComponent({
+export const SliderBox = StaticComponent({
   tag: 'div',
   className: 'Div',
   normal: {
@@ -230,12 +230,6 @@ export const Tips = CSSComponent({
   },
   disabled: {
     selectNames: [],
-    getCSS(themeMate) {
-      const { height } = themeMate;
-      return `
-        top: -${em(height + 10)};
-      `;
-    },
   },
   css: css`
     font-size: ${em(14)};
@@ -253,14 +247,20 @@ export const Tipinner = CSSComponent({
     selectNames: [
       ['width'],
       ['height'],
-      ['border'],
+      ['border', 'top', 'color'],
+      ['border', 'top', 'style'],
+      ['border', 'right', 'style'],
+      ['border', 'right', 'color'],
+      ['border', 'bottom', 'color'],
+      ['border', 'bottom', 'style'],
+      ['border', 'left', 'style'],
+      ['border', 'left', 'color'],
       ['borderRadius'],
       ['background'],
       ['boxShadow'],
       ['color'],
       ['font'],
       ['fontSize'],
-      ['padding'],
     ],
     getCSS(
       themeMate,
@@ -268,24 +268,22 @@ export const Tipinner = CSSComponent({
         propsConfig: { tipsText },
       }
     ) {
-      const {
-        height,
-        background: { color },
-        border: { bottom: { color: bottomBorderColor } = {} } = {},
-        boxShadow,
-      } = themeMate;
+      const { height } = themeMate;
       return `
-        line-height:${em(height)};
+        height:${em(height - 2)};
+        line-height:${em(height - 2)};
+        
         &::before{
-          content:'${tipsText}';
-          background:${color};          
+         content:'${tipsText}';
+         ${getTipsArrowBorder(themeMate).background}; 
+         ${getTipsArrowBorder(themeMate).borderRadius};      
         };
         
         &::after {
-          background:${color};
-          border-right-color:${bottomBorderColor};
-          border-bottom-color:${bottomBorderColor};
-          box-shadow:${boxShadow};
+         ${getTipsArrowBorder(themeMate).border};                   
+          ${getTipsArrowBorder(themeMate).boxShadow};                   
+          ${getTipsArrowBorder(themeMate).borderRadius};                   
+          ${getTipsArrowBorder(themeMate).background}; 
         }
       `;
     },
@@ -297,22 +295,39 @@ export const Tipinner = CSSComponent({
     selectNames: [],
   },
   disabled: {
-    selectNames: [['background'], ['color'], ['borderRadius'], ['border']],
+    selectNames: [
+      ['background'],
+      ['color'],
+      ['boxShadow'],
+      ['border', 'top', 'color'],
+      ['border', 'right', 'color'],
+      ['border', 'bottom', 'color'],
+      ['border', 'left', 'color'],
+    ],
     getCSS(themeMate) {
-      const { height } = themeMate;
-      return `
-        line-height:${em(height)};
+      return `           
+        &::before{
+          ${getTipsArrowBorder(themeMate).background}; 
+         ${getTipsArrowBorder(themeMate).borderRadius};      
+        };
+        
+        &::after {
+          ${getTipsArrowBorder(themeMate).border};                   
+          ${getTipsArrowBorder(themeMate).boxShadow};                   
+          ${getTipsArrowBorder(themeMate).borderRadius};                   
+          ${getTipsArrowBorder(themeMate).background};                   
+        }
       `;
     },
   },
   css: css`
     display: block;
-    min-width: ${em(25)};
-    padding: 0 ${em(3)};
+    min-width: ${em(40)};
+    padding: ${em(3)} ${em(3)};
     user-select: none;
     -webkit-user-select: none;
     position: relative;
-
+    border-width: 1px;
     &::before {
       content: '';
       display: block;
@@ -325,6 +340,7 @@ export const Tipinner = CSSComponent({
       border-radius: ${em(3)};
       padding: 0 ${em(3)};
       text-align: center;
+      overflow: hidden;
     }
 
     &::after {
@@ -336,10 +352,38 @@ export const Tipinner = CSSComponent({
       left: 50%;
       bottom: -${em(3)};
       transform: translateX(-50%) rotate(45deg);
-      border: 1px solid transparent;
     }
   `,
 });
+function getTipsArrowBorder(themeMate) {
+  const {
+    background: { color = '' } = {},
+    border: {
+      bottom: { color: bottomBorderColor = '', style: bottomBorderStyle = 'solid' } = {},
+    } = {},
+    boxShadow: { color: boxShadowColor = '', x = 0, y = 0, blur = 0, spread = 0 } = {},
+    borderRadius: { topLeft = 3, topRight = 3, bottomRight = 3, bottomLeft = 3 } = {},
+  } = themeMate;
+  const border = `
+    border-style:solid;      
+    border-right-color:${bottomBorderColor};
+    border-right-style:${bottomBorderStyle};
+    border-bottom-color:${bottomBorderColor};
+    border-bottom-style:${bottomBorderStyle};
+    border-width:1px;  
+  `;
+  const boxShadow = `box-shadow:${boxShadowColor} ${em(x)} ${em(y)} ${em(blur)} ${em(spread)};`;
+  const borderRadius = `border-radius:${em(topLeft)} ${em(topRight)} ${em(bottomRight)} ${em(
+    bottomLeft
+  )};`;
+  const background = `background:${color};`;
+  return {
+    border,
+    boxShadow,
+    borderRadius,
+    background,
+  };
+}
 export const Dot = CSSComponent({
   tag: 'span',
   className: 'SliderMarks',

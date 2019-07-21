@@ -86,6 +86,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
   checked: boolean;
   mouseInTarget: boolean;
   menu: Object;
+  trigger: Object;
 
   constructor(props: CascaderProps) {
     super(props);
@@ -125,6 +126,9 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
         onMouseLeave={this.onMouseLeaveContainer}
       >
         <Trigger
+          ref={cmp => {
+            this.trigger = cmp;
+          }}
           align={'bottomLeft'}
           offsetY={offsetY}
           popupVisible={popupVisible}
@@ -147,7 +151,11 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
     );
   }
 
-  setPopupVisible(popupVisible: boolean, otherTarget?: Object = {}) {
+  setPopupVisible(popupVisible: boolean) {
+    this.trigger && this.trigger.setPopupVisible(popupVisible);
+  }
+
+  setPopupVisibleInner(popupVisible: boolean, otherTarget?: Object = {}) {
     this.checked = popupVisible;
     this.setState({ popupVisible, ...otherTarget });
   }
@@ -164,7 +172,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
   };
 
   changeCheckedAndSetVisible(checked: boolean) {
-    this.setPopupVisible(!checked);
+    this.setPopupVisibleInner(!checked);
   }
 
   getMenu = (theme: Object) => {
@@ -242,7 +250,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
       return;
     }
     if (!isInMenuRange && checked) {
-      this.setPopupVisible(false, { expandedPath: this.state.value });
+      this.setPopupVisibleInner(false, { expandedPath: this.state.value });
     }
   };
 
@@ -251,7 +259,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
 
     let inputValueState = {};
     if (!item || !item.children || item.children.length === 0) {
-      this.setPopupVisible(false);
+      this.setPopupVisibleInner(false);
 
       const { showAllLevels } = this.props;
       if (showAllLevels === false) {
@@ -299,7 +307,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
       return;
     }
 
-    this.setPopupVisible(false, { expandedPath: [], value: [], inputValue: [] });
+    this.setPopupVisibleInner(false, { expandedPath: [], value: [], inputValue: [] });
   };
 
   onChange = (target: Object) => {

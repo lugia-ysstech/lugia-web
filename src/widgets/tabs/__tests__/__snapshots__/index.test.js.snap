@@ -67,7 +67,6 @@ exports[`tabsDemo Component JSON 1`] = `
   -webkit-transform: translateX(0rem);
   -ms-transform: translateX(0rem);
   transform: translateX(0rem);
-  border-bottom: 1px solid #e8e8e8;
 }
 
 .c1 {
@@ -130,7 +129,13 @@ exports[`tabsDemo Component JSON 1`] = `
     >
       <div
         className="c3"
-        style={Object {}}
+        style={
+          Object {
+            "borderBottomColor": "#e8e8e8",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+          }
+        }
         x={-0}
       >
         <div
@@ -139,7 +144,11 @@ exports[`tabsDemo Component JSON 1`] = `
           onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={Object {}}
+          style={
+            Object {
+              "color": "#4d63ff",
+            }
+          }
         >
           <div
             className="lineTitle  c5"

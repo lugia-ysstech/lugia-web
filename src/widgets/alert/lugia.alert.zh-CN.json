@@ -6,37 +6,33 @@
     "type": {
       "type": "AlertType",
       "desc": "指定警告提示的样式，有四种可以选择：success、error、info、warning",
-      "defaultValue": "0"
+      "defaultValue": 0
     },
     "message": {
       "type": "React.node",
-      "desc": "警告提示内容",
-      "defaultValue": "undefined"
+      "desc": "警告提示内容"
     },
     "showIcon": {
       "type": "boolean",
       "desc": "是否展示图标",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "closeText": {
       "type": "React.node",
-      "desc": "自定义关闭按钮",
-      "defaultValue": "undefined"
+      "desc": "自定义关闭按钮"
     },
     "closable": {
       "type": "boolean",
       "desc": "是否显示关闭按钮",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "description": {
       "type": "React.node",
-      "desc": "提示内容的辅助性文字介绍",
-      "defaultValue": "undefined"
+      "desc": "提示内容的辅助性文字介绍"
     },
     "icon": {
       "type": "string",
-      "desc": "自定义图标，showIcon 为 true 时有效",
-      "defaultValue": "undefined"
+      "desc": "自定义图标，showIcon 为 true 时有效"
     }
   },
   "events": {
@@ -66,7 +62,7 @@
   },
   "category": ["反馈"],
   "theme": {
-    "AlertWrap": {
+    "Container": {
       "name": "警告提示整体样式",
       "desc": "为警告提示配置整体样式",
       "normal": [

@@ -49,12 +49,23 @@ class FacePanel extends Component<TypeProps, any> {
       years,
     };
     const ChildrenData = this.getChildrenData(this.props, childDatas);
+    const { themeProps } = this.props;
     return (
-      <DatePanel>
+      <DatePanel themeProps={themeProps}>
         {ChildrenData.map((current: any, index: number) => {
           return (
-            <OtherChild {...theme} onClick={this.panelClick(current)} key={index} column={column}>
-              <OtherChildText {...theme} isChose={current.value === equalValue}>
+            <OtherChild
+              themeProps={themeProps}
+              {...theme}
+              onClick={this.panelClick(current)}
+              key={index}
+              column={column}
+            >
+              <OtherChildText
+                themeProps={themeProps}
+                {...theme}
+                isChose={current.value === equalValue}
+              >
                 {current.text}
               </OtherChildText>
             </OtherChild>

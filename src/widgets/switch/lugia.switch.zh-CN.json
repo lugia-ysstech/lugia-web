@@ -6,42 +6,40 @@
     "defaultValue": {
       "type": "boolean",
       "desc": "默认开关状态",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "value": {
       "type": "boolean",
       "desc": "开关状态",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "data": {
       "type": "Object",
-      "desc": "开关配置的展示信息",
-      "defaultValue": "undefined"
+      "desc": "开关配置的展示信息"
     },
     "size": {
       "type": "string",
-      "desc": "设置开关大小",
-      "defaultValue": "undefined"
+      "desc": "设置开关大小"
     },
     "isInverse": {
       "type": "boolean",
       "desc": "开关翻转",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "loading": {
       "type": "boolean",
       "desc": "是否配置加载",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "autoFocus": {
       "type": "boolean",
       "desc": "是否自动聚焦",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "disabled": {
       "type": "boolean",
       "desc": "禁用状态,是否不可用",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "displayFiled": {
       "type": "string",

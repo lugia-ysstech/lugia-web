@@ -6,12 +6,11 @@
     "disabled": {
       "type": "boolean",
       "desc": "禁用状态,是否不可用",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "viewClass": {
       "type": "string",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
+      "desc": "用于配置通用主题属性"
     },
     "size": {
       "type": "InputSize",
@@ -30,53 +29,45 @@
     },
     "help": {
       "type": "string",
-      "desc": "input校验提示信息",
-      "defaultValue": "undefined"
+      "desc": "input校验提示信息"
     },
     "placeholder": {
       "type": "string",
-      "desc": "input输入提示信息",
-      "defaultValue": "undefined"
+      "desc": "input输入提示信息"
     },
     "prefix": {
       "type": "React$Element<any>",
-      "desc": "带有前缀的 input",
-      "defaultValue": "undefined"
+      "desc": "带有前缀的 input"
     },
     "suffix": {
       "type": "React$Element<any>",
-      "desc": "带有后缀的 input",
-      "defaultValue": "undefined"
+      "desc": "带有后缀的 input"
     },
     "defaultValue": {
       "type": "string",
-      "desc": "默认显示内容",
-      "defaultValue": "undefined"
+      "desc": "默认显示内容"
     },
     "value": {
       "type": "string",
-      "desc": "显示内容",
-      "defaultValue": "undefined"
+      "desc": "显示内容"
     },
     "formatter": {
       "type": "function",
-      "desc": "格式化显示内容的匹配规则,需与 parser 属性配套使用",
-      "defaultValue": "undefined"
+      "desc": "格式化显示内容的匹配规则,需与 parser 属性配套使用"
     },
     "parser": {
       "type": "function",
-      "desc": "解析格式化显示内容的规则,需与 formatter 属性配套使用",
-      "defaultValue": "undefined"
+      "desc": "解析格式化显示内容的规则,需与 formatter 属性配套使用"
     },
     "readOnly": {
       "type": "boolean",
       "desc": "只读input",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "autoFocus": {
       "type": "boolean",
       "desc": "是否自动获取焦点",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "type": {
       "type": "string",
@@ -196,7 +187,7 @@
         "validateType": "top"
       },
       "theme": {
-        "validateTopConfig": {
+        "validateTop": {
           "name": "顶部校验",
           "desc": "校验信息在顶部显示",
           "normal": [["color"], ["background"], ["font"]],
@@ -206,7 +197,7 @@
         }
       }
     },
-    "ValidateBottomConfig": {
+    "ValidateBottom": {
       "sequence": 2,
       "title": "校验类型的输入框",
       "desc": "按照校验类型的不同来展示不同样式的输入框",
@@ -214,7 +205,7 @@
         "validateType": "bottom"
       },
       "theme": {
-        "validateBottomConfig": {
+        "validateBottom": {
           "name": "底部校验",
           "desc": "校验信息在底部显示",
           "normal": [["color"]],
@@ -226,6 +217,20 @@
     }
   },
   "theme": {
+    "Container": {
+      "name": "输入框外部容器",
+      "desc": "输入框外部容器",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["background"],
+        ["border"],
+        ["borderRadius"],
+        ["boxShadow"],
+        ["margin"],
+        ["padding"]
+      ]
+    },
     "Input": {
       "name": "输入框主体",
       "desc": "输入框主体结构",
@@ -235,16 +240,21 @@
         ["fontSize"],
         ["font"],
         ["color"],
-        ["padding"],
         ["background"],
         ["border"],
-        ["cursor"],
-        ["margin"],
-        ["padding"]
+        ["cursor"]
       ],
-      "hover": [],
-      "clicked": [],
-      "disabled": []
+      "hover": [
+        ["width"],
+        ["height"],
+        ["padding"],
+        ["border"],
+        ["borderRadius"],
+        ["cursor"],
+        ["background"]
+      ],
+      "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"]],
+      "disabled": [["cursor"], ["border"], ["borderRadius"], ["background"]]
     },
     "InputSuffix": {
       "name": "后缀图标",

@@ -10,23 +10,19 @@
     },
     "trigger": {
       "type": "React.node",
-      "desc": "指定 Aside 收起元素",
-      "defaultValue": "undefined"
+      "desc": "指定 Aside 收起元素"
     },
     "reverseArrow": {
       "type": "string",
-      "desc": "触发响应式的断点，可选 xs、sm、md、lg、xl、xxl",
-      "defaultValue": "undefined"
+      "desc": "触发响应式的断点，可选 xs、sm、md、lg、xl、xxl"
     },
     "collapsedWidth": {
       "type": "number",
-      "desc": "收缩宽度",
-      "defaultValue": "undefined"
+      "desc": "收缩宽度"
     },
     "collapsed": {
       "type": "boolean",
-      "desc": "当前收缩状态",
-      "defaultValue": "undefined"
+      "desc": "当前收缩状态"
     }
   },
   "type": {

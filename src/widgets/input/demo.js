@@ -95,26 +95,27 @@ export class TopInput extends React.Component<any, any> {
     const topConfig = {
       [Widget.Input]: {
         validateTopTip: {
-          TooltipContent: {
+          Container: {
             normal: {
-              background: { color: 'green' },
+              background: { color: 'gray' },
             },
           },
-        },
-        TooltipTitle: {
-          normal: { color: 'black' },
+          TooltipTitle: {
+            normal: { color: 'red' },
+          },
         },
       },
     };
 
     return (
-      <Input
-        onBlur={this.onBlur}
-        onChange={this.onChange}
-        validateType={validateType}
-        validateStatus={this.state.validateStatus}
-        theme={topConfig}
-      />
+      <Theme config={topConfig}>
+        <Input
+          onBlur={this.onBlur}
+          onChange={this.onChange}
+          validateType={validateType}
+          validateStatus={this.state.validateStatus}
+        />
+      </Theme>
     );
   }
 }
@@ -133,11 +134,16 @@ const Wrapper = styled.div`
 const InputDemo = () => {
   const register = {
     [Widget.Input]: {
+      Container: {
+        normal: {
+          width: 500,
+          height: 40,
+        },
+      },
       Input: {
         normal: {
           width: 300,
           height: 40,
-          margin: { top: 20 },
         },
         disabled: { background: { color: 'gray' } },
       },

@@ -6,47 +6,43 @@
     "maxValue": {
       "type": "number",
       "desc": "最大值限制",
-      "defaultValue": "Infinity"
+      "defaultValue": 999999999999
     },
     "minValue": {
       "type": "number",
       "desc": "最小值限制",
-      "defaultValue": "-Infinity"
+      "defaultValue": -999999999999
     },
     "defaultValue": {
       "type": "number | Array<number>",
-      "desc": "滑动输入条默认显示值，值为number时,为单滑块，值为Array时,为双滑块",
-      "defaultValue": "undefined"
+      "desc": "滑动输入条默认显示值，值为number时,为单滑块，值为Array时,为双滑块"
     },
     "value": {
       "type": "number | Array<number>",
-      "desc": "滑动输入条显示值,值为number时,为单滑块，值为Array时,为双滑块",
-      "defaultValue": "undefined"
+      "desc": "滑动输入条显示值,值为number时,为单滑块，值为Array时,为双滑块"
     },
     "disabled": {
       "type": "boolean",
       "desc": "禁用状态,是否不可用",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "tips": {
       "type": "boolean | string | number",
       "desc": "boolean 是否显示提示信息,number|string指定显示的文本内容,可自定义显示的文本格式",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "vertical": {
       "type": "boolean",
       "desc": "是否垂直显示",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "icons": {
       "type": "Array<Object>,",
-      "desc": "显示的图标资源",
-      "defaultValue": "undefined"
+      "desc": "显示的图标资源"
     },
     "marks": {
       "type": "{ [key: number]: string | Object }",
-      "desc": "刻度标记,key的类型必须为number且每个标签可以单独设置样式",
-      "defaultValue": "undefined"
+      "desc": "刻度标记,key的类型必须为number且每个标签可以单独设置样式"
     }
   },
   "events": {
@@ -70,7 +66,7 @@
   },
   "category": ["数据录入"],
   "designInfo": {
-    "SingleSlider": {
+    "SingleHorizontalSlider": {
       "sequence": 1,
       "title": "单个滑块的样式",
       "desc": "单个滑块的样式配置",
@@ -78,9 +74,75 @@
         "defaultValue": 2,
         "value": 2
       },
-      "theme": {}
+      "theme": {
+        "SliderContainer": {
+          "name": "滑块组件外盒",
+          "desc": "为滑块组件外盒配置样式",
+          "normal": [["border"], ["background"], ["margin"], ["padding"], ["opacity"]],
+          "hover": [],
+          "active": [],
+          "disabled": [["border"], ["background"], ["opacity"]]
+        },
+        "SliderTrack": {
+          "name": "滑块轨道样式",
+          "desc": "为滑块轨道配置样式",
+          "normal": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]],
+          "hover": [["background"]],
+          "active": [["background"]],
+          "disabled": [["background"]]
+        },
+        "SliderPassedWay": {
+          "name": "滑块滑过的区间轨道",
+          "desc": "滑块滑过的区间轨道样式配置",
+          "normal": [["background"], ["border"], ["height"]],
+          "hover": [["background"], ["border"], ["height"]],
+          "active": [["background"], ["border"], ["height"]],
+          "disabled": [["background"], ["border"], ["height"]]
+        },
+        "SliderButton": {
+          "name": "滑块的样式",
+          "desc": "滑块的样式配置",
+          "normal": [["width"], ["height"], ["background"], ["border"], ["borderRadius"]],
+          "hover": [["width"], ["height"], ["background"], ["border"], ["borderRadius"]],
+          "active": [["width"], ["height"], ["background"], ["border"], ["borderRadius"]],
+          "disabled": [["width"], ["height"], ["background"], ["border"], ["borderRadius"]]
+        },
+        "SliderTips": {
+          "name": "提示框",
+          "desc": "提示框样式配置",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["border", "top", "color"],
+            ["border", "top", "style"],
+            ["border", "right", "style"],
+            ["border", "right", "color"],
+            ["border", "bottom", "color"],
+            ["border", "bottom", "style"],
+            ["border", "left", "style"],
+            ["border", "left", "color"],
+            ["borderRadius"],
+            ["background"],
+            ["boxShadow"],
+            ["color"],
+            ["font"],
+            ["fontSize"]
+          ],
+          "hover": [],
+          "active": [],
+          "disabled": [
+            ["background"],
+            ["color"],
+            ["boxShadow"],
+            ["border", "top", "color"],
+            ["border", "right", "color"],
+            ["border", "bottom", "color"],
+            ["border", "left", "color"]
+          ]
+        }
+      }
     },
-    "SingleSlider": {
+    "SingleVerticalSlider": {
       "sequence": 2,
       "title": "单个滑块的样式",
       "desc": "单个滑块的样式配置",
@@ -89,7 +151,73 @@
         "value": 2,
         "vertical": true
       },
-      "theme": {}
+      "theme": {
+        "SliderContainer": {
+          "name": "滑块组件外盒",
+          "desc": "为滑块组件外盒配置样式",
+          "normal": [["border"], ["background"], ["margin"], ["padding"], ["opacity"]],
+          "hover": [],
+          "active": [],
+          "disabled": [["border"], ["background"], ["opacity"]]
+        },
+        "SliderTrack": {
+          "name": "滑块轨道样式",
+          "desc": "为滑块轨道配置样式",
+          "normal": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]],
+          "hover": [["background"]],
+          "active": [["background"]],
+          "disabled": [["background"]]
+        },
+        "SliderPassedWay": {
+          "name": "滑块滑过的区间轨道",
+          "desc": "滑块滑过的区间轨道样式配置",
+          "normal": [["background"], ["border"], ["height"]],
+          "hover": [["background"], ["border"], ["height"]],
+          "active": [["background"], ["border"], ["height"]],
+          "disabled": [["background"], ["border"], ["height"]]
+        },
+        "SliderButton": {
+          "name": "滑块的样式",
+          "desc": "滑块的样式配置",
+          "normal": [["width"], ["height"], ["background"], ["border"], ["borderRadius"]],
+          "hover": [["width"], ["height"], ["background"], ["border"], ["borderRadius"]],
+          "active": [["width"], ["height"], ["background"], ["border"], ["borderRadius"]],
+          "disabled": [["width"], ["height"], ["background"], ["border"], ["borderRadius"]]
+        },
+        "SliderTips": {
+          "name": "提示框",
+          "desc": "提示框样式配置",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["border", "top", "color"],
+            ["border", "top", "style"],
+            ["border", "right", "style"],
+            ["border", "right", "color"],
+            ["border", "bottom", "color"],
+            ["border", "bottom", "style"],
+            ["border", "left", "style"],
+            ["border", "left", "color"],
+            ["borderRadius"],
+            ["background"],
+            ["boxShadow"],
+            ["color"],
+            ["font"],
+            ["fontSize"]
+          ],
+          "hover": [],
+          "active": [],
+          "disabled": [
+            ["background"],
+            ["color"],
+            ["boxShadow"],
+            ["border", "top", "color"],
+            ["border", "right", "color"],
+            ["border", "bottom", "color"],
+            ["border", "left", "color"]
+          ]
+        }
+      }
     },
     "DoubleSlider": {
       "sequence": 3,
@@ -99,7 +227,73 @@
         "defaultValue": [5, 15],
         "value": [5, 15]
       },
-      "theme": {}
+      "theme": {
+        "SliderContainer": {
+          "name": "滑块组件外盒",
+          "desc": "为滑块组件外盒配置样式",
+          "normal": [["border"], ["background"], ["margin"], ["padding"], ["opacity"]],
+          "hover": [],
+          "active": [],
+          "disabled": [["border"], ["background"], ["opacity"]]
+        },
+        "SliderTrack": {
+          "name": "滑块轨道样式",
+          "desc": "为滑块轨道配置样式",
+          "normal": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]],
+          "hover": [["background"]],
+          "active": [["background"]],
+          "disabled": [["background"]]
+        },
+        "SliderPassedWay": {
+          "name": "滑块滑过的区间轨道",
+          "desc": "滑块滑过的区间轨道样式配置",
+          "normal": [["background"], ["border"], ["height"]],
+          "hover": [["background"], ["border"], ["height"]],
+          "active": [["background"], ["border"], ["height"]],
+          "disabled": [["background"], ["border"], ["height"]]
+        },
+        "SliderButton": {
+          "name": "滑块的样式",
+          "desc": "滑块的样式配置",
+          "normal": [["width"], ["height"], ["background"], ["border"], ["borderRadius"]],
+          "hover": [["width"], ["height"], ["background"], ["border"], ["borderRadius"]],
+          "active": [["width"], ["height"], ["background"], ["border"], ["borderRadius"]],
+          "disabled": [["width"], ["height"], ["background"], ["border"], ["borderRadius"]]
+        },
+        "SliderTips": {
+          "name": "提示框",
+          "desc": "提示框样式配置",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["border", "top", "color"],
+            ["border", "top", "style"],
+            ["border", "right", "style"],
+            ["border", "right", "color"],
+            ["border", "bottom", "color"],
+            ["border", "bottom", "style"],
+            ["border", "left", "style"],
+            ["border", "left", "color"],
+            ["borderRadius"],
+            ["background"],
+            ["boxShadow"],
+            ["color"],
+            ["font"],
+            ["fontSize"]
+          ],
+          "hover": [],
+          "active": [],
+          "disabled": [
+            ["background"],
+            ["color"],
+            ["boxShadow"],
+            ["border", "top", "color"],
+            ["border", "right", "color"],
+            ["border", "bottom", "color"],
+            ["border", "left", "color"]
+          ]
+        }
+      }
     },
     "MarksSlider": {
       "sequence": 4,
@@ -109,24 +303,89 @@
         "defaultValue": 10,
         "value": 10,
         "marks": {
-          "5": "5℃",
-          "10": "10℃",
+          5: "5℃",
+          10: "10℃",
           "15": "15℃"
+        }
+      },
+      "theme": {
+        "SliderContainer": {
+          "name": "滑块组件外盒",
+          "desc": "为滑块组件外盒配置样式",
+          "normal": [["border"], ["background"], ["margin"], ["padding"], ["opacity"]],
+          "hover": [],
+          "active": [],
+          "disabled": [["border"], ["background"], ["opacity"]]
         },
-        "theme": {
-          "SliderMarks": {
-            "name": "离散节点",
-            "desc": "离散节点样式配置",
-            "normal": {
-              "selectNames": [["color"], ["font"], "fontSize"],
-              "nth": [["color"], ["font"], "fontSize"]
-            },
-            "hover": [],
-            "active": [],
-            "disabled": {
-              "selectNames": [["color"], ["font"], "fontSize"],
-              "nth": [["color"], ["font"], "fontSize"]
-            }
+        "SliderTrack": {
+          "name": "滑块轨道样式",
+          "desc": "为滑块轨道配置样式",
+          "normal": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]],
+          "hover": [["background"]],
+          "active": [["background"]],
+          "disabled": [["background"]]
+        },
+        "SliderPassedWay": {
+          "name": "滑块滑过的区间轨道",
+          "desc": "滑块滑过的区间轨道样式配置",
+          "normal": [["background"], ["border"], ["height"]],
+          "hover": [["background"], ["border"], ["height"]],
+          "active": [["background"], ["border"], ["height"]],
+          "disabled": [["background"], ["border"], ["height"]]
+        },
+        "SliderButton": {
+          "name": "滑块的样式",
+          "desc": "滑块的样式配置",
+          "normal": [["width"], ["height"], ["background"], ["border"], ["borderRadius"]],
+          "hover": [["width"], ["height"], ["background"], ["border"], ["borderRadius"]],
+          "active": [["width"], ["height"], ["background"], ["border"], ["borderRadius"]],
+          "disabled": [["width"], ["height"], ["background"], ["border"], ["borderRadius"]]
+        },
+        "SliderTips": {
+          "name": "提示框",
+          "desc": "提示框样式配置",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["border", "top", "color"],
+            ["border", "top", "style"],
+            ["border", "right", "style"],
+            ["border", "right", "color"],
+            ["border", "bottom", "color"],
+            ["border", "bottom", "style"],
+            ["border", "left", "style"],
+            ["border", "left", "color"],
+            ["borderRadius"],
+            ["background"],
+            ["boxShadow"],
+            ["color"],
+            ["font"],
+            ["fontSize"]
+          ],
+          "hover": [],
+          "active": [],
+          "disabled": [
+            ["background"],
+            ["color"],
+            ["boxShadow"],
+            ["border", "top", "color"],
+            ["border", "right", "color"],
+            ["border", "bottom", "color"],
+            ["border", "left", "color"]
+          ]
+        },
+        "SliderMarks": {
+          "name": "离散节点",
+          "desc": "离散节点样式配置",
+          "normal": {
+            "selectNames": [["color"], ["font"], "fontSize"],
+            "nth": [["color"], ["font"], "fontSize"]
+          },
+          "hover": [],
+          "active": [],
+          "disabled": {
+            "selectNames": [["color"], ["font"], "fontSize"],
+            "nth": [["color"], ["font"], "fontSize"]
           }
         }
       }
@@ -171,18 +430,32 @@
       "normal": [
         ["width"],
         ["height"],
-        ["border"],
+        ["border", "top", "color"],
+        ["border", "top", "style"],
+        ["border", "right", "style"],
+        ["border", "right", "color"],
+        ["border", "bottom", "color"],
+        ["border", "bottom", "style"],
+        ["border", "left", "style"],
+        ["border", "left", "color"],
         ["borderRadius"],
         ["background"],
         ["boxShadow"],
         ["color"],
         ["font"],
-        ["fontSize"],
-        ["padding"]
+        ["fontSize"]
       ],
       "hover": [],
       "active": [],
-      "disabled": [["background"], ["color"], ["border"]]
+      "disabled": [
+        ["background"],
+        ["color"],
+        ["boxShadow"],
+        ["border", "top", "color"],
+        ["border", "right", "color"],
+        ["border", "bottom", "color"],
+        ["border", "left", "color"]
+      ]
     }
   }
 }

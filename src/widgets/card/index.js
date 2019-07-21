@@ -21,7 +21,7 @@ const { px2remcss } = units;
 const { darkGreyColor, lightGreyColor, defaultColor, themeColor } = colorsFunc();
 const CardOutContainer = CSSComponent({
   tag: 'div',
-  className: 'cardOutContainer',
+  className: 'CardOutContainer',
   normal: {
     selectNames: [
       ['width'],
@@ -298,19 +298,23 @@ const Title = CSSComponent({
     white-space: nowrap;
   `,
 });
-const TitleTipLine = StaticComponent({
+const TitleTipLine = CSSComponent({
   tag: 'div',
   className: 'CardTitleTipLine',
   normal: {
-    selectNames: [],
+    selectNames: [['width'], ['height'], ['background']],
+    defaultTheme: {
+      height: 20,
+      width: 5,
+      background: {
+        color: themeColor,
+      },
+    },
   },
   css: css`
     left: ${px2remcss(14)};
     position: absolute;
     display: inline-block;
-    height: ${px2remcss(20)};
-    width: ${px2remcss(5)};
-    background: ${themeColor};
     border-radius: ${px2remcss(5)};
   `,
 });
@@ -385,16 +389,13 @@ class Card extends React.Component<CardProps, CardState> {
         break;
       case 'simple':
       default:
-        const simpleThemeProps = deepMerge(
-          { themeConfig: { normal: { width: 350, height: 130 } } },
-          this.props.getPartOfThemeProps('CardContainer')
-        );
+        const simpleThemeProps = { themeConfig: { normal: { width: 350, height: 130 } } };
         resultTheme = simpleThemeProps;
         break;
     }
     resultTheme = deepMerge(
       resultTheme,
-      this.props.getPartOfThemeProps('CardContainer', { props: { type, imageOrientation } })
+      this.props.getPartOfThemeProps('Container', { props: { type, imageOrientation } })
     );
     const cardContentTheme = this.props.getPartOfThemeProps('CardContent', {
       props: {
@@ -425,7 +426,7 @@ class Card extends React.Component<CardProps, CardState> {
   getTitleTipLine() {
     const { type } = this.props;
     return type === 'tip' ? (
-      <TitleTipLine themeProps={this.props.getPartOfThemeProps('CardContainer')} />
+      <TitleTipLine themeProps={this.props.getPartOfThemeProps('CardTitleTipLine')} />
     ) : null;
   }
 

@@ -123,7 +123,7 @@ class Time extends Component<TypeProps, TypeState> {
   render() {
     const { hours, minutes, seconds } = this.times;
     const { keys, starts } = this.state;
-    const { theme, mode, value, hasTimeWrapBorder } = this.props;
+    const { theme, mode, value, hasTimeWrapBorder, themeProps } = this.props;
     const { isTime } = modeStyle(mode);
     const { format } = this.state;
     const { hasHour, hasMinutes, hasSeconds, hasItemNumber } =
@@ -133,13 +133,18 @@ class Time extends Component<TypeProps, TypeState> {
       hasItemNumber,
       mode,
       hasTimeWrapBorder,
+      themeProps,
     };
     const { TimeColWidth } = getThemeProperty(config);
 
     return (
       <Theme config={{ [Widget.Menu]: { width: TimeColWidth } }}>
         <TimeWrap {...config}>
-          {isTime ? '' : <TimeTitle>{moment(value).format('YYYY年MM月DD日')}</TimeTitle>}
+          {isTime ? (
+            ''
+          ) : (
+            <TimeTitle themeProps={themeProps}>{moment(value).format('YYYY年MM月DD日')}</TimeTitle>
+          )}
           {isTime && !hasHour ? (
             ''
           ) : (

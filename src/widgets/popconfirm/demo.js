@@ -83,7 +83,7 @@ export const WrapperDemo = () => {
     [Widget.Popconfirm]: {
       PopconfirmContent: {
         PopoverContent: {
-          TooltipContent: {
+          Container: {
             normal: { background: { color: '#f1f1f1' } },
           },
         },
@@ -97,6 +97,13 @@ export const WrapperDemo = () => {
       PopconfirmIcon: {
         normal: {
           color: 'red',
+        },
+      },
+    },
+    [Widget.Button]: {
+      Container: {
+        normal: {
+          width: 80,
         },
       },
     },

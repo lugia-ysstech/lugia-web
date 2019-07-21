@@ -5,58 +5,47 @@
   "props": {
     "getThemeByDisplayName": {
       "type": "Function",
-      "desc": "用于配置组件内部图片的通用主题属性",
-      "defaultValue": "undefined"
+      "desc": "用于配置组件内部图片的通用主题属性"
     },
     "viewClass": {
       "type": "string",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
+      "desc": "用于配置通用主题属性"
     },
     "title": {
       "type": "React.Node",
-      "desc": "卡片标题显示内容",
-      "defaultValue": "undefined"
+      "desc": "卡片标题显示内容"
     },
     "description": {
       "type": "React.Node",
-      "desc": "卡片描述显示内容",
-      "defaultValue": "undefined"
+      "desc": "卡片描述显示内容"
     },
     "operation": {
       "type": "React.Node",
-      "desc": "卡片可操作内容",
-      "defaultValue": "undefined"
+      "desc": "卡片可操作内容"
     },
     "image": {
       "type": "React.Node",
-      "desc": "卡片片显示内容",
-      "defaultValue": "undefined"
+      "desc": "卡片片显示内容"
     },
     "avatar": {
       "type": "React.Node",
-      "desc": "卡片头像显示内容",
-      "defaultValue": "undefined"
+      "desc": "卡片头像显示内容"
     },
     "content": {
       "type": "React.Node",
-      "desc": "整个卡片显示内容",
-      "defaultValue": "undefined"
+      "desc": "整个卡片显示内容"
     },
     "children": {
       "type": "React.Node",
-      "desc": "卡片的children 可作为content显示,但优先于content显示",
-      "defaultValue": "undefined"
+      "desc": "卡片的children 可作为content显示,但优先于content显示"
     },
     "type": {
       "type": "CardType",
-      "desc": "卡片风格 可配置 简洁,头像,图片,组合卡片几种风格",
-      "defaultValue": "undefined"
+      "desc": "卡片风格 可配置 简洁,头像,图片,组合卡片几种风格"
     },
     "imageOrientation": {
       "type": "ImageOrientation",
-      "desc": "当选择头像或图片卡片风格时,可配置图像的方向.水平,或垂直",
-      "defaultValue": "undefined"
+      "desc": "当选择头像或图片卡片风格时,可配置图像的方向.水平,或垂直"
     }
   },
   "type": {
@@ -65,7 +54,7 @@
   },
   "category": ["数据展示"],
   "designInfo": {
-    "SimpleCardConfig": {
+    "SimpleCard": {
       "sequence": 1,
       "title": "卡片样式类型",
       "desc": "按卡片类型不同选择显示不同卡片样式",
@@ -73,7 +62,7 @@
         "type": "simple"
       },
       "theme": {
-        "CardContainer": {
+        "Container": {
           "name": "卡片容器整体",
           "desc": "配置卡片容器整体",
           "normal": [
@@ -130,7 +119,7 @@
         }
       }
     },
-    "AvatarCardConfig": {
+    "AvatarCard": {
       "sequence": 2,
       "title": "卡片样式类型",
       "desc": "按卡片类型不同选择显示不同卡片样式",
@@ -138,7 +127,7 @@
         "type": "avatar"
       },
       "theme": {
-        "CardContainer": {
+        "Container": {
           "name": "卡片容器整体",
           "desc": "配置卡片容器整体",
           "normal": [
@@ -205,7 +194,7 @@
         }
       }
     },
-    "AvatarImageConfig": {
+    "AvatarImage": {
       "sequence": 3,
       "title": "卡片样式类型",
       "desc": "按卡片类型不同选择显示不同卡片样式",
@@ -213,7 +202,7 @@
         "type": "image"
       },
       "theme": {
-        "CardContainer": {
+        "Container": {
           "name": "卡片容器整体",
           "desc": "配置卡片容器整体",
           "normal": [
@@ -286,7 +275,7 @@
         }
       }
     },
-    "TipCardConfig": {
+    "TipCard": {
       "sequence": 4,
       "title": "卡片样式类型",
       "desc": "按卡片类型不同选择显示不同卡片样式",
@@ -294,7 +283,7 @@
         "type": "tip"
       },
       "theme": {
-        "CardContainer": {
+        "Container": {
           "name": "卡片容器整体",
           "desc": "配置卡片容器整体",
           "normal": [
@@ -335,10 +324,15 @@
             ["margin"],
             ["padding"]
           ]
+        },
+        "CardTitleTipLine": {
+          "name": "卡片标题提示",
+          "desc": "卡片标题提示配置",
+          "normal": [["width"], ["height"], ["background"]]
         }
       }
     },
-    "ComboCardConfig": {
+    "ComboCard": {
       "sequence": 5,
       "title": "卡片样式类型",
       "desc": "按卡片类型不同选择显示不同卡片样式",
@@ -346,7 +340,7 @@
         "type": "combo"
       },
       "theme": {
-        "CardContainer": {
+        "Container": {
           "name": "卡片容器整体",
           "desc": "配置卡片容器整体",
           "normal": [
@@ -421,7 +415,7 @@
     }
   },
   "theme": {
-    "CardContainer": {
+    "Container": {
       "name": "卡片容器整体",
       "desc": "配置卡片容器整体",
       "normal": [
@@ -517,6 +511,11 @@
         ["opacity"]
       ],
       "hover": [["width"], ["height"], ["background"]]
+    },
+    "CardTitleTipLine": {
+      "name": "卡片标题提示",
+      "desc": "卡片标题提示配置",
+      "normal": [["width"], ["height"], ["background"]]
     }
   }
 }

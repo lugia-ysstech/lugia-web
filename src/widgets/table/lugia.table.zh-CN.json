@@ -5,48 +5,40 @@
   "props": {
     "columns": {
       "type": "Object[]",
-      "desc": "表格每一行展示的内容",
-      "defaultValue": "undefined"
+      "desc": "表格每一行展示的内容"
     },
     "data": {
       "type": "Object[]",
-      "desc": "数据源，指定 table 组件的数据",
-      "defaultValue": "undefined"
+      "desc": "数据源，指定 table 组件的数据"
     },
     "defaultExpandedRowKeys": {
       "type": "string[]",
-      "desc": "初始展开的行的集合",
-      "defaultValue": "undefined"
+      "desc": "初始展开的行的集合"
     },
     "expandedRowKeys": {
       "type": "string[]",
-      "desc": "展开的行的集合",
-      "defaultValue": "undefined"
+      "desc": "展开的行的集合"
     },
     "defaultExpandAllRows": {
       "type": "boolean",
-      "desc": "初始是否展开所有的行",
-      "defaultValue": "undefined"
+      "desc": "初始是否展开所有的行"
     },
     "expandedRowRender": {
       "type": "Function(recode, index, indent, expanded):ReactNode",
-      "desc": "额外的展开行",
-      "defaultValue": "undefined"
+      "desc": "额外的展开行"
     },
     "useFixedHeader": {
       "type": "boolean",
-      "desc": "固定 Table 标题，使其固定在最上方",
-      "defaultValue": "undefined"
+      "desc": "固定 Table 标题，使其固定在最上方"
     },
     "footer": {
       "type": "Function(currentPageData)",
-      "desc": "表格尾部",
-      "defaultValue": "undefined"
+      "desc": "表格尾部"
     },
     "indentSize": {
       "type": "number",
       "desc": "展示树形数据时，每层缩进的宽度，以 px 为单位",
-      "defaultValue": "15"
+      "defaultValue": 15
     },
     "rowKey": {
       "type": "{ x: number | true, y: number }",
@@ -56,22 +48,19 @@
     "showHeader": {
       "type": "boolean",
       "desc": "是否展示标头",
-      "defaultValue": "true"
+      "defaultValue": true
     },
     "title": {
       "type": "Function(currentPageData)",
-      "desc": "表格标题",
-      "defaultValue": "undefined"
+      "desc": "表格标题"
     },
     "onHeaderRow": {
       "type": "Function(column, index)",
-      "desc": "设置头部行属性",
-      "defaultValue": "undefined"
+      "desc": "设置头部行属性"
     },
     "onRow": {
       "type": "Function(record, index)",
-      "desc": "设置行属性",
-      "defaultValue": "undefined"
+      "desc": "设置行属性"
     }
   },
   "event": {
@@ -92,7 +81,8 @@
           "name": "expanded",
           "desc": "当前是否展开",
           "type": "boolean"
-        },{
+        },
+        {
           "name": "record",
           "desc": "当前行数据",
           "type": "Object"

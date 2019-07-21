@@ -10,8 +10,7 @@
     },
     "needEnlarge": {
       "type": "boolean",
-      "desc": "指定Layout嵌套组件中是否有被放大元素",
-      "defaultValue": "undefined"
+      "desc": "指定Layout嵌套组件中是否有被放大元素"
     }
   },
   "type": {

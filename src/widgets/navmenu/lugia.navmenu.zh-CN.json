@@ -5,8 +5,7 @@
   "props": {
     "data": {
       "type": "[{valueField: '', displayField: ''}]",
-      "desc": "生成选择项的数据",
-      "defaultValue": "undefined"
+      "desc": "生成选择项的数据"
     },
     "valueField": {
       "type": "string",
@@ -20,8 +19,7 @@
     },
     "value": {
       "type": "string | string[] | number | number[]",
-      "desc": "指定当前选中的条目",
-      "defaultValue": "undefined"
+      "desc": "指定当前选中的条目"
     },
     "mode": {
       "type": "vertical | inline| horizontal",
@@ -41,7 +39,7 @@
     "inlineExpandAll": {
       "type": "boolean",
       "desc": "菜单类型为inline(内嵌模式)时,是否展开所有子元素,默认为true",
-      "defaultValue": "true"
+      "defaultValue": true
     },
 
     "separator": {

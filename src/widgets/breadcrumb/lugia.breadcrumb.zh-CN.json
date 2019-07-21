@@ -15,13 +15,11 @@
     },
     "routes": {
       "type": "Array<{path: , title: }>",
-      "desc": "生成面包屑数据对象的数组，path是跳转路径，title是面包屑展示文本",
-      "defaultValue": "undefined"
+      "desc": "生成面包屑数据对象的数组，path是跳转路径，title是面包屑展示文本"
     },
     "params": {
       "type": "Object",
-      "desc": "可配置的参数",
-      "defaultValue": "undefined"
+      "desc": "可配置的参数"
     }
   },
   "events": {

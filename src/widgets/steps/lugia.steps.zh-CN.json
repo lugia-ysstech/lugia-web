@@ -5,18 +5,15 @@
   "props": {
     "children": {
       "type": "React.Node",
-      "desc": "步骤条需要包含的子组件",
-      "defaultValue": "undefined"
+      "desc": "步骤条需要包含的子组件"
     },
     "data": {
       "type": "Array<Object>",
-      "desc": "步骤条填充的数据",
-      "defaultValue": "undefined"
+      "desc": "步骤条填充的数据"
     },
     "defaultData": {
       "type": "Array<Object>",
-      "desc": "步骤条填充的默认显示数据",
-      "defaultValue": "undefined"
+      "desc": "步骤条填充的默认显示数据"
     },
     "stepType": {
       "type": "StepType",
@@ -53,10 +50,28 @@
   "childrenWidget": ["step"],
   "category": ["导航"],
   "designInfo": {
-    "StepsContainerConfig": {
+    "HSteps": {
       "sequence": 1,
-      "title": "步骤条配置",
-      "desc": "步骤条配置",
+      "title": "水平步骤条",
+      "desc": "水平步骤条配置",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "theme": {
+        "StepsOutContainer": {
+          "name": "步骤条最外层容器",
+          "desc": "步骤条最外层容器",
+          "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"], ["opacity"]]
+        }
+      }
+    },
+    "VSteps": {
+      "sequence": 2,
+      "title": "垂直步骤条",
+      "desc": "垂直步骤条配置",
+      "props": {
+        "orientation": "vertical"
+      },
       "theme": {
         "StepsOutContainer": {
           "name": "步骤条最外层容器",

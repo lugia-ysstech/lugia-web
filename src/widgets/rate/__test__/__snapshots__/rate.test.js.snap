@@ -9,17 +9,29 @@ exports[`Rate Test css 1`] = `
   cursor: pointer;
 }
 
+.c4 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  vertical-align: text-bottom !important;
+  color: #e8e8e8;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
 .c0 {
   position: relative;
   min-height: 20px;
   white-space: nowrap;
   display: inline-block;
-  font-size: 18px;
 }
 
 .c1 {
   position: relative;
-  overflow: hidden;
   display: inline-block;
   vertical-align: middle;
 }
@@ -31,12 +43,6 @@ exports[`Rate Test css 1`] = `
   margin-bottom: 0rem;
   margin-left: 0rem;
   margin-right: 0.6rem;
-}
-
-.c2 > i.hoverd:hover {
-  -webkit-transform: scale(1.2);
-  -ms-transform: scale(1.2);
-  transform: scale(1.2);
 }
 
 .c2 > i.bottom {
@@ -54,93 +60,23 @@ exports[`Rate Test css 1`] = `
   margin: 0 !important;
 }
 
-.c4 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  vertical-align: text-bottom !important;
-  color: #e8e8e8;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  z-index: -1;
-}
-
-.c5 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  vertical-align: text-bottom !important;
-  color: #e8e8e8;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  z-index: -1;
-}
-
-.c6 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  vertical-align: text-bottom !important;
-  color: #e8e8e8;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  z-index: -1;
-}
-
-.c7 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  vertical-align: text-bottom !important;
-  color: #e8e8e8;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  z-index: -1;
-}
-
-.c8 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  vertical-align: text-bottom !important;
-  color: #e8e8e8;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  z-index: -1;
-}
-
 <div
   className="c0"
   onMouseLeave={[Function]}
-  style={Object {}}
 >
   <div
     className="c1"
-    style={Object {}}
   >
     <span
       className="c2"
       onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       onMouseMove={[Function]}
       style={Object {}}
     >
       <i
-        className="lugia-icon-financial_star default  hoverd iconCharacter    c3"
+        className="lugia-icon-financial_star default  hoverd DefaultRateIcon iconCharacter    c3"
         disabled={false}
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -154,7 +90,7 @@ exports[`Rate Test css 1`] = `
         }
       />
       <i
-        className="lugia-icon-financial_star  default iconCharacter    c4"
+        className="lugia-icon-financial_star DefaultRateIcon  default iconCharacter    c4"
         disabled={false}
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -171,11 +107,13 @@ exports[`Rate Test css 1`] = `
     <span
       className="c2"
       onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       onMouseMove={[Function]}
       style={Object {}}
     >
       <i
-        className="lugia-icon-financial_star default  hoverd iconCharacter    c3"
+        className="lugia-icon-financial_star default  hoverd DefaultRateIcon iconCharacter    c3"
         disabled={false}
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -189,7 +127,7 @@ exports[`Rate Test css 1`] = `
         }
       />
       <i
-        className="lugia-icon-financial_star  default iconCharacter    c5"
+        className="lugia-icon-financial_star DefaultRateIcon  default iconCharacter    c4"
         disabled={false}
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -206,11 +144,13 @@ exports[`Rate Test css 1`] = `
     <span
       className="c2"
       onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       onMouseMove={[Function]}
       style={Object {}}
     >
       <i
-        className="lugia-icon-financial_star default  hoverd iconCharacter    c3"
+        className="lugia-icon-financial_star default  hoverd DefaultRateIcon iconCharacter    c3"
         disabled={false}
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -224,7 +164,7 @@ exports[`Rate Test css 1`] = `
         }
       />
       <i
-        className="lugia-icon-financial_star  default iconCharacter    c6"
+        className="lugia-icon-financial_star DefaultRateIcon  default iconCharacter    c4"
         disabled={false}
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -241,11 +181,13 @@ exports[`Rate Test css 1`] = `
     <span
       className="c2"
       onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       onMouseMove={[Function]}
       style={Object {}}
     >
       <i
-        className="lugia-icon-financial_star default  hoverd iconCharacter    c3"
+        className="lugia-icon-financial_star default  hoverd DefaultRateIcon iconCharacter    c3"
         disabled={false}
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -259,7 +201,7 @@ exports[`Rate Test css 1`] = `
         }
       />
       <i
-        className="lugia-icon-financial_star  default iconCharacter    c7"
+        className="lugia-icon-financial_star DefaultRateIcon  default iconCharacter    c4"
         disabled={false}
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -276,11 +218,13 @@ exports[`Rate Test css 1`] = `
     <span
       className="c2"
       onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       onMouseMove={[Function]}
       style={Object {}}
     >
       <i
-        className="lugia-icon-financial_star default  hoverd iconCharacter    c3"
+        className="lugia-icon-financial_star default  hoverd DefaultRateIcon iconCharacter    c3"
         disabled={false}
         onClick={[Function]}
         onMouseDown={[Function]}
@@ -294,7 +238,7 @@ exports[`Rate Test css 1`] = `
         }
       />
       <i
-        className="lugia-icon-financial_star  default iconCharacter    c8"
+        className="lugia-icon-financial_star DefaultRateIcon  default iconCharacter    c4"
         disabled={false}
         onClick={[Function]}
         onMouseDown={[Function]}

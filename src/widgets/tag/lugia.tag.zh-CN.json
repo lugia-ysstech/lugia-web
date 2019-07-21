@@ -6,7 +6,7 @@
     "closable": {
       "type": "boolean",
       "desc": "标签是否可关闭",
-      "defaultValue": "true"
+      "defaultValue": true
     },
     "shape": {
       "type": " basic | round ",
@@ -58,7 +58,7 @@
       "title": "基本标签",
       "desc": "展示标签",
       "props": {
-        "closable": "false"
+        "closable": false
       },
       "theme": {
         "TagWrap": {
@@ -97,7 +97,7 @@
       "title": "可关闭标签",
       "desc": "点击关闭按钮可隐藏标签",
       "props": {
-        "closable": "true"
+        "closable": true
       },
       "theme": {
         "TagWrap": {

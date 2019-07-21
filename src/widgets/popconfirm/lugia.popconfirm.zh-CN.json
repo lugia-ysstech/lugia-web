@@ -5,38 +5,33 @@
   "props": {
     "title": {
       "type": "React.Node",
-      "desc": "确认框标题显示内容",
-      "defaultValue": "undefined"
+      "desc": "确认框标题显示内容"
     },
     "description": {
       "type": "React.Node",
-      "desc": "确认框描述显示内容",
-      "defaultValue": "undefined"
+      "desc": "确认框描述显示内容"
     },
     "content": {
       "type": "React.Node",
-      "desc": "整个确认框显示内容",
-      "defaultValue": "undefined"
+      "desc": "整个确认框显示内容"
     },
     "icon": {
       "type": "React.Node",
-      "desc": "确认框的标题的图标",
-      "defaultValue": "undefined"
+      "desc": "确认框的标题的图标"
     },
     "placement": {
       "type": "DirectionType",
-      "desc": "气泡确认框显示的位置,十二个方向",
-      "defaultValue": "undefined"
+      "desc": "气泡确认框显示的位置,十二个方向"
     },
     "visible": {
       "type": "boolean",
       "desc": "是否显示出来",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "defaultVisible": {
       "type": "boolean",
       "desc": "默认是否显示出来",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "action": {
       "type": "Array<string>",
@@ -45,8 +40,7 @@
     },
     "children": {
       "type": "React.Node",
-      "desc": "气泡确认框需要包含的子组件",
-      "defaultValue": "undefined"
+      "desc": "气泡确认框需要包含的子组件"
     },
     "okType": {
       "type": "ButtonType",
@@ -116,56 +110,8 @@
     "ButtonType": ["default", "primary", "success", "warning", "danger"]
   },
   "category": ["反馈"],
-  "designInfo": {
-    "PopconfirmConfig": {
-      "sequence": 1,
-      "title": "气泡确认框",
-      "desc": "气泡确认框",
-      "theme": {
-        "PopconfirmContent": {
-          "theme": {
-            "PopoverContent": {
-              "theme": {
-                "TooltipContent": {
-                  "name": "气泡确认框内容部分",
-                  "desc": "气泡确认框内容部分",
-                  "normal": [
-                    ["background"],
-                    ["color"],
-                    ["padding"],
-                    ["font"],
-                    ["fontSize"],
-                    ["width"],
-                    ["height"],
-                    ["boxShadow"],
-                    ["borderRadius"],
-                    ["border"]
-                  ]
-                }
-              }
-            }
-          }
-        },
-        "PopconfirmButton": {
-          "name": "气泡确认框按钮",
-          "desc": "气泡确认框按钮",
-          "normal": [["opacity"], ["color"], ["font"], ["fontSize"]]
-        },
-        "PopconfirmTitle": {
-          "name": "气泡确认框标题",
-          "desc": "气泡确认框标题",
-          "normal": [["color"], ["background"], ["font"], ["fontSize"]]
-        },
-        "PopconfirmIcon": {
-          "name": "气泡确认框标题前图标",
-          "desc": "气泡确认框标题前图标",
-          "normal": [["opacity"], ["color"], ["font"], ["fontSize"]]
-        }
-      }
-    }
-  },
   "theme": {
-    "TooltipContent": {
+    "Container": {
       "name": "气泡确认框内容部分",
       "desc": "气泡确认框内容部分",
       "normal": [

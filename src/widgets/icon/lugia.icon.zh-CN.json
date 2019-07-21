@@ -5,13 +5,11 @@
   "props": {
     "viewClass": {
       "type": "string",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
+      "desc": "用于配置通用主题属性"
     },
     "iconClass": {
       "type": "string",
-      "desc": "图标资源,需从图标库中获取.",
-      "defaultValue": "undefined"
+      "desc": "图标资源,需从图标库中获取."
     }
   },
   "events": {
@@ -31,7 +29,7 @@
     "Icon": {
       "name": "图标",
       "desc": "图标",
-      "normal": [["color"], ["margin"], ["fontSize"],["font"], ["padding"], ["cursor"]],
+      "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
       "hover": [["color"], ["margin"], ["cursor"]],
       "clicked": [],
       "disabled": [["color"], ["cursor"]]
