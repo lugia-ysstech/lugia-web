@@ -26,21 +26,6 @@ import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import ThemeHoc from '@lugia/theme-hoc';
 import { deepMerge } from '@lugia/object-utils';
 
-const Container = CSSComponent({
-  tag: 'div',
-  className: 'Container',
-  normal: {
-    selectNames: [
-      ['width'],
-      ['height'],
-      ['boxShadow'],
-      ['opacity'],
-      ['background'],
-      ['padding'],
-      ['margin'],
-    ],
-  },
-});
 const InputContainer = StaticComponent({
   tag: 'span',
   className: 'AmountInputContainer',
@@ -246,18 +231,17 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
     );
 
     return (
-      <Container themeProps={this.props.getPartOfThemeProps('Container')}>
-        <ToolTip
-          propsConfig={{ value }}
-          title={this.getTitle()}
-          action={'focus'}
-          placement={'topLeft'}
-          theme={newTheme}
-          viewClass={viewClass}
-        >
-          {this.getInputContainer()}
-        </ToolTip>
-      </Container>
+      <ToolTip
+        propsConfig={{ value }}
+        title={this.getTitle()}
+        action={'focus'}
+        placement={'topLeft'}
+        popArrowType={'round'}
+        theme={newTheme}
+        viewClass={viewClass}
+      >
+        {this.getInputContainer()}
+      </ToolTip>
     );
   }
 
