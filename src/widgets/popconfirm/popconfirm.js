@@ -46,6 +46,22 @@ type PopconfirmProps = {
 type PopconfirmState = {
   visible: boolean,
 };
+const Container = CSSComponent({
+  tag: 'div',
+  className: 'Container',
+  normal: {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['boxShadow'],
+      ['opacity'],
+      ['background'],
+      ['padding'],
+      ['margin'],
+    ],
+  },
+});
+
 const IconContainer: Object = StaticComponent({
   tag: 'span',
   className: 'PopconfirmIconContainer ',
@@ -234,19 +250,21 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
       theTheme
     );
     return (
-      <Popover
-        theme={popoverTheme}
-        viewClass={viewClass}
-        showClearButton={false}
-        visible={this.state.visible}
-        action={action}
-        onVisibleChange={this.onVisibleChange}
-        content={this.getContent()}
-        ref={getTarget}
-        placement={placement}
-      >
-        {theChildren}
-      </Popover>
+      <Container themeProps={this.props.getPartOfThemeProps('Container')}>
+        <Popover
+          theme={popoverTheme}
+          viewClass={viewClass}
+          showClearButton={false}
+          visible={this.state.visible}
+          action={action}
+          onVisibleChange={this.onVisibleChange}
+          content={this.getContent()}
+          ref={getTarget}
+          placement={placement}
+        >
+          {theChildren}
+        </Popover>
+      </Container>
     );
   }
 

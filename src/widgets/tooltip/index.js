@@ -394,22 +394,24 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
       },
     });
     return (
-      <Trigger
-        createPortal={true}
-        popupVisible={visible}
-        align={placement}
-        ref={getTarget}
-        onPopupVisibleChange={this.onVisibleChange}
-        action={action}
-        direction={direction}
-        popup={
-          <ContentWrapper themeProps={contentThemeProps}>
-            {this.getContent(contentThemeProps, direction)}
-          </ContentWrapper>
-        }
-      >
-        {children}
-      </Trigger>
+      <Container themeProps={this.props.getPartOfThemeProps('Container')}>
+        <Trigger
+          createPortal={true}
+          popupVisible={visible}
+          align={placement}
+          ref={getTarget}
+          onPopupVisibleChange={this.onVisibleChange}
+          action={action}
+          direction={direction}
+          popup={
+            <ContentWrapper themeProps={contentThemeProps}>
+              {this.getContent(contentThemeProps, direction)}
+            </ContentWrapper>
+          }
+        >
+          {children}
+        </Trigger>
+      </Container>
     );
   }
 

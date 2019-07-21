@@ -16,7 +16,21 @@ import { getBoxShadow } from '@lugia/theme-utils';
 import colorsFunc from '../css/stateColor';
 
 const { dangerColor, defaultColor } = colorsFunc();
-
+const Container = CSSComponent({
+  tag: 'div',
+  className: 'Container',
+  normal: {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['boxShadow'],
+      ['opacity'],
+      ['background'],
+      ['padding'],
+      ['margin'],
+    ],
+  },
+});
 export const BaseRedPoint = CSSComponent({
   tag: 'sup',
   className: 'BaseRedPoint',
@@ -76,7 +90,7 @@ const Dot: Object = CSSComponent({
   },
 });
 
-const Container: Object = CSSComponent({
+const BadgeContainer: Object = CSSComponent({
   tag: 'span',
   className: 'BadgeContainer',
   normal: {
@@ -140,9 +154,11 @@ class BadgeBox extends Component<BadgeProps, BadgeState> {
   }
   render() {
     return (
-      <Container themeProps={this.props.getPartOfThemeProps(Widget.Badge)}>
-        {this.props.children}
-        {this.getDot()}
+      <Container themeProps={this.props.getPartOfThemeProps('Container')}>
+        <BadgeContainer themeProps={this.props.getPartOfThemeProps('BadgeDot')}>
+          {this.props.children}
+          {this.getDot()}
+        </BadgeContainer>{' '}
       </Container>
     );
   }
