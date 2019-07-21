@@ -120,6 +120,7 @@ class ScrollerTree extends React.Component<any, any> {
         getPartOfThemeHocProps,
         showSwitch,
         __navmenu,
+        switchIconNames,
       } = this.props;
       const {
         children,
@@ -131,6 +132,7 @@ class ScrollerTree extends React.Component<any, any> {
         icon,
         suffix,
       } = item;
+
       const notCanSelect = item[igronSelectField] ? true : false;
       if (children !== undefined) {
         return (
@@ -139,6 +141,7 @@ class ScrollerTree extends React.Component<any, any> {
             showSwitch={showSwitch}
             suffix={suffix}
             __navmenu={__navmenu}
+            switchIconNames={switchIconNames}
             key={key}
             itemHeight={itemHeight}
             inlineType={inlineType}
@@ -162,6 +165,7 @@ class ScrollerTree extends React.Component<any, any> {
           showSwitch={showSwitch}
           suffix={suffix}
           __navmenu={__navmenu}
+          switchIconNames={switchIconNames}
           key={key}
           title={title}
           itemHeight={itemHeight}

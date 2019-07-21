@@ -5,7 +5,6 @@
  * @flow
  */
 import '../common/shirm';
-
 import * as React from 'react';
 import styled from 'styled-components';
 import ThemeHoc from '@lugia/theme-hoc';
@@ -13,6 +12,7 @@ import Item from './ItemOption';
 import Icon from '../icon';
 import MoreItem from './MoreItem';
 import FontItem from './FontItem';
+import { deepMerge } from '@lugia/object-utils';
 import { toNumber, isNumber } from '../common/NumberUtils';
 import Widget from '../consts/index';
 import { ValueField } from '../consts/props';
@@ -212,17 +212,9 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       />
     );
     const { focus } = state;
-    const {
-      getTheme,
-      disabled,
-      validateStatus,
-      prefix,
-      getPartOfThemeHocProps,
-      getPartOfThemeProps,
-    } = props;
+    const { getTheme, disabled, validateStatus, prefix, getPartOfThemeProps } = props;
 
     const themeProps = getPartOfThemeProps('InputTagWrap');
-    const { theme: ContainerTheme, viewClass } = getPartOfThemeHocProps('InputTagWrap');
     if (!this.isMutliple()) {
       result = this.generateOutter(
         <Container
@@ -389,6 +381,37 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     onClick && onClick(e);
   };
 
+  mergeTheme = (target: string, defaultTheme: Object) => {
+    const { viewClass, theme } = this.props.getPartOfThemeHocProps(target);
+
+    const themeHoc = deepMerge(
+      {
+        [viewClass]: { ...defaultTheme },
+      },
+      theme
+    );
+
+    const newTheme = {
+      viewClass,
+      theme: themeHoc,
+    };
+    return newTheme;
+  };
+
+  getInputTagMenuTheme = () => {
+    const { getPartOfThemeConfig } = this.props;
+    const { normal = {} } = getPartOfThemeConfig('InputTagWrap');
+    const { width = 250 } = normal;
+    const defaultMenuTheme = {
+      MenuWrap: {
+        normal: {
+          width,
+        },
+      },
+    };
+    return this.mergeTheme('Menu', defaultMenuTheme);
+  };
+
   getItems(query: string) {
     const { value } = this.state;
     const items = [];
@@ -404,11 +427,10 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
         }
       }
     }
-    const themeConfig = this.props.getPartOfThemeConfig('Menu');
-    const menuConfig = {
-      [Widget.Menu]: themeConfig,
-    };
-    return <Menu theme={menuConfig} data={items} step={30} getSuffix={this.getIcon} />;
+
+    return (
+      <Menu {...this.getInputTagMenuTheme()} data={items} step={30} getSuffix={this.getIcon} />
+    );
   }
 
   valueKeys: Array<string>;
@@ -597,6 +619,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
 
       listWidth -= moreItemWidth;
       let totalWidth = 0;
+
       const keys = this.getKeys(value);
       const valueLen = keys.length;
       for (let i = 0; i < valueLen; i++) {
@@ -640,7 +663,6 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     return (
       <MoreItem
         theme={this.getTagItemTheme()}
-        // ref={cmp => (this.moreItem = cmp)}
         themeProps={this.props.getPartOfThemeProps('TagWrap')}
         items={this.props.value}
         onClick={this.onMoreClick}

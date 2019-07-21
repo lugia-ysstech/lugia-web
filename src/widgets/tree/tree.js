@@ -8,6 +8,7 @@ import '../common/shirm';
 import type { ExpandInfo, NodeId2ExtendInfo, NodeId2SelectInfo, QueryType } from '@lugia/lugia-web';
 import animation from '../common/openAnimation';
 import ThemeHoc from '@lugia/theme-hoc';
+import Empty from '../empty';
 import * as React from 'react';
 import { TreeNode } from './rc-tree';
 import Support from '../common/FormFieldWidgetSupport';
@@ -20,24 +21,10 @@ import styled from 'styled-components';
 import { FontSize, FontSizeNumber } from '../css';
 import { px2emcss } from '../css/units';
 
-import {
-  SubTreeWrap,
-  // DefaultHeight,
-  Li,
-  MenuItemHeight,
-  NullSwitch,
-  Switch,
-  // themeColor,
-  TitleSpan,
-  TitleWrap,
-  TreeUl,
-} from '../css/tree';
-
 const em = px2emcss(FontSizeNumber);
 
 type RowData = { [key: string]: any };
 export type TreeProps = {
-  getTheme: Function,
   start: number,
   end: number,
   query: string,
@@ -75,6 +62,7 @@ export type TreeProps = {
   shape: 'default' | 'round',
   showSwitch: boolean,
   __navmenu: boolean,
+  switchIconNames?: Object,
 };
 
 export type TreeState = {
@@ -85,14 +73,14 @@ export type TreeState = {
   selectValue?: Array<string>,
   hasError: boolean,
 };
-const Empty = styled.span`
+const EmptyBox = styled.span`
   font-size: ${FontSize};
   line-height: ${em(20)};
   text-align: center;
   display: block;
 `;
 
-const ErrorTooltip = styled(Empty)`
+const ErrorTooltip = styled(EmptyBox)`
   color: red;
 `;
 
@@ -115,6 +103,10 @@ class Tree extends React.Component<TreeProps, TreeState> {
     shape: 'default',
     showSwitch: true,
     __navmenu: false,
+    switchIconNames: {
+      open: 'lugia-icon-direction_caret_down',
+      close: 'lugia-icon-direction_caret_right',
+    },
   };
 
   static TreeNode: TreeNode;
@@ -436,13 +428,13 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
   render() {
     const { props, state } = this;
-    const empty = <Empty>查无结果</Empty>;
+    const empty = <Empty />;
     if (this.isEmpty(props)) {
       return empty;
     }
-    // if (this.state.hasError) {
-    //   return <ErrorTooltip>树形数据错误</ErrorTooltip>;
-    // }
+    if (this.state.hasError) {
+      return <ErrorTooltip>树形数据错误</ErrorTooltip>;
+    }
     const {
       query,
       current,
