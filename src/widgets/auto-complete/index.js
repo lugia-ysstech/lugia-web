@@ -132,8 +132,8 @@ export default ShortKeyBoard(
           </Trigger>
         );
       }
-      setPopupVisible(popupVisible: boolean) {
-        this.triggerEl.current && this.triggerEl.current.setPopupVisible(popupVisible);
+      setPopupVisible(...rest: any[]) {
+        this.triggerEl.current && this.triggerEl.current.setPopupVisible(...rest);
       }
       getOldValueItem() {
         const { preSelectValue = '' } = this.state;

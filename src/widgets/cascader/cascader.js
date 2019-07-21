@@ -151,8 +151,8 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
     );
   }
 
-  setPopupVisible(popupVisible: boolean) {
-    this.trigger && this.trigger.setPopupVisible(popupVisible);
+  setPopupVisible(...rest: any[]) {
+    this.trigger && this.trigger.setPopupVisible(...rest);
   }
 
   setPopupVisibleInner(popupVisible: boolean, otherTarget?: Object = {}) {

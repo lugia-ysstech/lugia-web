@@ -301,8 +301,8 @@ class DateInput extends Component<TypeProps, TypeState> {
     const { value } = obj;
     this.setState({ value });
   };
-  setPopupVisible(visible: boolean) {
-    this.trigger.current && this.trigger.current.setPopupVisible(visible);
+  setPopupVisible(...rest: any[]) {
+    this.trigger.current && this.trigger.current.setPopupVisible(...rest);
   }
 }
 

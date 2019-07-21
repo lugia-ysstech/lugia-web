@@ -689,12 +689,9 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     e.stopPropagation();
   };
 
-  setPopupVisible(visible: boolean) {
-    if (this.dropMenu && this.dropMenu.getThemeTarget() && this.dropMenu.getThemeTarget().trigger) {
-      this.dropMenu
-        .getThemeTarget()
-        .trigger.getThemeTarget()
-        .setPopupVisible(visible);
+  setPopupVisible(...rest: any[]) {
+    if (this.dropMenu) {
+      this.dropMenu.setPopupVisible(...rest);
     }
   }
 
