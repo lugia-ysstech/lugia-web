@@ -1,9 +1,9 @@
 {
   "name": "@lugia/lugia-web",
-  "version": "1.1.0-21",
+  "version": "1.1.0-22",
   "dependencies": {
     "@lugia/css": "^1.0.17",
-    "@lugia/devtools-material": "^1.0.25",
+    "@lugia/devtools-material": "^1.0.27",
     "@lugia/math": "^1.0.7",
     "@lugia/object-utils": "^1.0.11",
     "@lugia/theme-config": "1.0.30",
