@@ -254,7 +254,6 @@ class TreeNode extends React.Component {
         }
       }
 
-      const { inlineType, getPartOfThemeProps } = this.props;
       newChildren = (
         <Animate
           {...animProps}
@@ -264,10 +263,9 @@ class TreeNode extends React.Component {
         >
           {!props.expanded ? null : (
             <SubTreeWrap
-              themeProps={getPartOfThemeProps('SubTreeWrap')}
+              themeProps={this.props.getPartOfThemeProps('SubTreeWrap')}
               data-expanded={props.expanded}
               propsConfig={{ expanded: props.expanded }}
-              inlineType={inlineType}
             >
               {React.Children.map(
                 children,
@@ -342,6 +340,8 @@ class TreeNode extends React.Component {
       shape,
       selected,
       describe,
+      inlineType,
+      __navmenu,
     });
     const selectHandle = () => {
       const title = (

@@ -461,7 +461,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     }
     this.preClickTime = 0;
     this.preTouchTime = 0;
-    e.preventDefault();
+    e.preventDefault && e.preventDefault();
     const nextVisible = !this.state.popupVisible;
     if ((this.isClickToHide() && !nextVisible) || (nextVisible && this.isClickToShow())) {
       this.setPopupVisible(!this.state.popupVisible);
