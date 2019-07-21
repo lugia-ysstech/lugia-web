@@ -33,8 +33,7 @@
     },
     "fileList": {
       "type": "array",
-      "desc": "上传的文件列表,如 [{ id: 1, name: 'header.jpg', status: 'done' }]",
-      "defaultValue": undefined
+      "desc": "上传的文件列表,如 [{ id: 1, name: 'header.jpg', status: 'done' }]"
     },
     "withCredentials": {
       "type": "boolean",

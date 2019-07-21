@@ -22,19 +22,19 @@
       "desc": "弹出方向",
       "defaultValue": "bottom"
     },
-  "events": {
-    "onPopupVisibleChange": {
-      "desc": "弹出项展开/隐藏时触发",
-      "args": [
-        {
-          "name": "popupVisible",
-          "desc": "展开/隐藏时的popupVisible值",
-          "type": "boolean"
-        }
-      ]
-    }
-  },
-
-  "childrenWidget": ["dropmenuButton"],
-  "category": ["数据录入"]
+    "events": {
+      "onPopupVisibleChange": {
+        "desc": "弹出项展开/隐藏时触发",
+        "args": [
+          {
+            "name": "popupVisible",
+            "desc": "展开/隐藏时的popupVisible值",
+            "type": "boolean"
+          }
+        ]
+      }
+    },
+    "childrenWidget": ["dropmenuButton"],
+    "category": ["数据录入"]
+  }
 }
