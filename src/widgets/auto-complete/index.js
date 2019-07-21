@@ -109,6 +109,7 @@ export default ShortKeyBoard(
 
         return (
           <Trigger
+            themePass
             align={'bottomLeft'}
             action={disabled ? [] : ['focus']}
             hideAction={['focus']}

@@ -129,6 +129,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
           ref={cmp => {
             this.trigger = cmp;
           }}
+          themePass
           align={'bottomLeft'}
           offsetY={offsetY}
           popupVisible={popupVisible}

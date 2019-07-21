@@ -353,6 +353,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     };
     return (
       <Trigger
+        themePass
         popup={tree}
         onPopupVisibleChange={this.onTreePopupVisibleChange}
         align="bottomLeft"

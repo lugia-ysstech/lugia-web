@@ -1469,52 +1469,52 @@
     react "^16.4.0"
     react-dom "^16.4.0"
 
-"@lugia/theme-config@1.0.30":
-  version "1.0.30"
-  resolved "http://192.168.102.79:5001/@lugia/theme-config/download/@lugia/theme-config-1.0.30.tgz#da92155f5c0579f17907bd67dc3507533edf4128"
-  integrity sha1-2pIVX1wFefF5B71n3DUHUz7fQSg=
+"@lugia/theme-config@1.0.32":
+  version "1.0.32"
+  resolved "http://192.168.102.79:5001/@lugia/theme-config/download/@lugia/theme-config-1.0.32.tgz#0d7e9d3f585fe84424f4184990d4142f9b8fa70d"
+  integrity sha1-DX6dP1hf6EQk9BhJkNQUL5uPpw0=
   dependencies:
     "@babel/runtime" "^7.4.5"
-    "@lugia/theme-core" "^1.0.30"
+    "@lugia/theme-core" "^1.0.32"
     prop-types "^15.7.2"
 
-"@lugia/theme-core@1.0.30", "@lugia/theme-core@^1.0.30":
-  version "1.0.30"
-  resolved "http://192.168.102.79:5001/@lugia/theme-core/download/@lugia/theme-core-1.0.30.tgz#8d2ae5d9b7d8334a67c5360bc7f394616398464c"
-  integrity sha1-jSrl2bfYM0pnxTYLx/OUYWOYRkw=
+"@lugia/theme-core@1.0.32", "@lugia/theme-core@^1.0.32":
+  version "1.0.32"
+  resolved "http://192.168.102.79:5001/@lugia/theme-core/download/@lugia/theme-core-1.0.32.tgz#1f7931a697eecc3991cded52a11867f43eb5a6f5"
+  integrity sha1-H3kxppfuzDmRze1SoRhn9D61pvU=
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/object-utils" "^1.0.11"
 
-"@lugia/theme-css-hoc@1.0.54":
-  version "1.0.54"
-  resolved "http://192.168.102.79:5001/@lugia/theme-css-hoc/download/@lugia/theme-css-hoc-1.0.54.tgz#a23144f2b9292e69ddb6a1e9d0703e7293b67409"
-  integrity sha1-ojFE8rkpLmndtqHp0HA+cpO2dAk=
+"@lugia/theme-css-hoc@1.0.56":
+  version "1.0.56"
+  resolved "http://192.168.102.79:5001/@lugia/theme-css-hoc/download/@lugia/theme-css-hoc-1.0.56.tgz#7021d69aeebf29c49e928679c65bc4885e0391d0"
+  integrity sha1-cCHWmu6/KcSekoZ5xlvEiF4DkdA=
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/css" "^1.0.17"
     "@lugia/object-utils" "^1.0.11"
     "@lugia/ramada" "^1.0.1"
-    "@lugia/theme-core" "^1.0.30"
+    "@lugia/theme-core" "^1.0.32"
     "@lugia/theme-utils" "^1.0.6"
     decamelize "^3.2.0"
 
-"@lugia/theme-hoc-devtools@1.0.6", "@lugia/theme-hoc-devtools@^1.0.6":
-  version "1.0.6"
-  resolved "http://192.168.102.79:5001/@lugia/theme-hoc-devtools/download/@lugia/theme-hoc-devtools-1.0.6.tgz#dd8fbe2b129035a14a75d6adb7359879a382fd3e"
-  integrity sha1-3Y++KxKQNaFKddattzWYeaOC/T4=
+"@lugia/theme-hoc-devtools@1.0.7", "@lugia/theme-hoc-devtools@^1.0.7":
+  version "1.0.7"
+  resolved "http://192.168.102.79:5001/@lugia/theme-hoc-devtools/download/@lugia/theme-hoc-devtools-1.0.7.tgz#01dd36ae9715a3df743a3563022cf6401017cac9"
+  integrity sha1-Ad02rpcVo990OjVjAiz2QBAXysk=
   dependencies:
     "@lugia/react-devtools-core" "^1.0.3"
 
-"@lugia/theme-hoc@1.0.41":
-  version "1.0.41"
-  resolved "http://192.168.102.79:5001/@lugia/theme-hoc/download/@lugia/theme-hoc-1.0.41.tgz#a022759058d218590f5f243f7405bbabdc501755"
-  integrity sha1-oCJ1kFjSGFkPXyQ/dAW7q9xQF1U=
+"@lugia/theme-hoc@1.0.43":
+  version "1.0.43"
+  resolved "http://192.168.102.79:5001/@lugia/theme-hoc/download/@lugia/theme-hoc-1.0.43.tgz#a225e442097693c898d60f5a3f6fb06a56ee1035"
+  integrity sha1-oiXkQgl2k8iY1g9aP2+walbuEDU=
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/object-utils" "^1.0.11"
-    "@lugia/theme-core" "^1.0.30"
-    "@lugia/theme-hoc-devtools" "^1.0.6"
+    "@lugia/theme-core" "^1.0.32"
+    "@lugia/theme-hoc-devtools" "^1.0.7"
 
 "@lugia/theme-utils@1.0.6", "@lugia/theme-utils@^1.0.6":
   version "1.0.6"

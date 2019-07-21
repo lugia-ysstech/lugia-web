@@ -358,6 +358,7 @@ class Select extends React.Component<SelectProps, SelectState> {
     return (
       <SelectContainer>
         <Trigger
+          themePass
           popup={menu}
           key="trigger"
           offsetY={4}

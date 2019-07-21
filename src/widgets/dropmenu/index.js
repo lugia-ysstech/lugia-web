@@ -102,6 +102,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
     return (
       <Theme config={menuConfig}>
         <Trigger
+          themePass
           ref={cmp => (this.trigger = cmp)}
           align={align}
           action={action}

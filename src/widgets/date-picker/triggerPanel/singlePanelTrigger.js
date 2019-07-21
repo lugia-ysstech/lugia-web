@@ -130,6 +130,7 @@ class DateInput extends Component<TypeProps, TypeState> {
         }}
       >
         <Trigger
+          themePass
           createPortal={true}
           popup={
             <React.Fragment>

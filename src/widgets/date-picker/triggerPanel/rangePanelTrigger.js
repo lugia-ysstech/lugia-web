@@ -415,6 +415,7 @@ class Range extends Component {
 
     return (
       <Trigger
+        themePass
         createPortal={true}
         popup={
           <RangeWrap

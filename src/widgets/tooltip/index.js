@@ -372,6 +372,7 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
     });
     return (
       <Trigger
+        themePass
         createPortal={true}
         popupVisible={visible}
         align={placement}
