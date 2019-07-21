@@ -216,11 +216,9 @@ export const Tips = CSSComponent({
   normal: {
     selectNames: [],
     getCSS(themeMate) {
-      const { height, padding: { top = 0, bottom = 0 } = {} } = themeMate;
-      const paddingHeight = top * 1 + bottom * 1;
-      const positionTop = paddingHeight > height ? paddingHeight : height;
+      const { height } = themeMate;
       return `
-        top: -${em(positionTop + 10)};
+        top: -${em(height + 10)};
       `;
     },
   },
@@ -263,7 +261,6 @@ export const Tipinner = CSSComponent({
       ['color'],
       ['font'],
       ['fontSize'],
-      ['padding'],
     ],
     getCSS(
       themeMate,
@@ -271,15 +268,14 @@ export const Tipinner = CSSComponent({
         propsConfig: { tipsText },
       }
     ) {
-      const { height, padding: { top = 0, bottom = 0 } = {} } = themeMate;
-
-      const paddingHeight = top * 1 + bottom * 1;
-      const lineHeight = paddingHeight > height ? paddingHeight : height;
+      const { height } = themeMate;
       return `
-        line-height:${em(lineHeight)};
+        height:${em(height - 2)};
+        line-height:${em(height - 2)};
+        
         &::before{
-          content:'${tipsText}';
-          ${getTipsArrowBorder(themeMate).background}; 
+         content:'${tipsText}';
+         ${getTipsArrowBorder(themeMate).background}; 
          ${getTipsArrowBorder(themeMate).borderRadius};      
         };
         
@@ -309,10 +305,7 @@ export const Tipinner = CSSComponent({
       ['border', 'left', 'color'],
     ],
     getCSS(themeMate) {
-      const { height } = themeMate;
-      return `
-        line-height:${em(height)};
-        
+      return `           
         &::before{
           ${getTipsArrowBorder(themeMate).background}; 
          ${getTipsArrowBorder(themeMate).borderRadius};      
@@ -329,12 +322,12 @@ export const Tipinner = CSSComponent({
   },
   css: css`
     display: block;
-    min-width: ${em(25)};
-    padding: 0 ${em(3)};
+    min-width: ${em(40)};
+    padding: ${em(3)} ${em(3)};
     user-select: none;
     -webkit-user-select: none;
     position: relative;
-
+    border-width: 1px;
     &::before {
       content: '';
       display: block;
@@ -347,6 +340,7 @@ export const Tipinner = CSSComponent({
       border-radius: ${em(3)};
       padding: 0 ${em(3)};
       text-align: center;
+      overflow: hidden;
     }
 
     &::after {
@@ -358,19 +352,17 @@ export const Tipinner = CSSComponent({
       left: 50%;
       bottom: -${em(3)};
       transform: translateX(-50%) rotate(45deg);
-      border: 1px solid transparent;
     }
   `,
 });
 function getTipsArrowBorder(themeMate) {
-  console.log(themeMate);
   const {
     background: { color = '' } = {},
     border: {
       bottom: { color: bottomBorderColor = '', style: bottomBorderStyle = 'solid' } = {},
     } = {},
     boxShadow: { color: boxShadowColor = '', x = 0, y = 0, blur = 0, spread = 0 } = {},
-    borderRadius: { topLeft = 0, topRight = 0, bottomRight = 0, bottomLeft = 0 } = {},
+    borderRadius: { topLeft = 3, topRight = 3, bottomRight = 3, bottomLeft = 3 } = {},
   } = themeMate;
   const border = `
     border-style:solid;      
