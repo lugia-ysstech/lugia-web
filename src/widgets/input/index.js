@@ -50,6 +50,7 @@ const CommonInputStyle = CSSComponent({
       ['border'],
       ['borderRadius'],
       ['cursor'],
+      ['padding'],
     ],
     defaultTheme: {
       cursor: 'text',
@@ -410,7 +411,7 @@ class TextBox extends Component<InputProps, InputState> {
           {this.generateSuffix()}
         </BaseInputContainer>,
       ];
-      const tipBottomThemeProps = this.props.getPartOfThemeProps('validateBottomConfig', {
+      const tipBottomThemeProps = this.props.getPartOfThemeProps('validateBottom', {
         props: { validateType, validateStatus, prefix, size },
       });
       result.push(
@@ -457,10 +458,10 @@ class TextBox extends Component<InputProps, InputState> {
           propsConfig={{ validateType, validateStatus, prefix, size }}
           theme={newTheme}
           viewClass={viewClass}
-          size={size}
-          placement={'topLeft'}
           title={help}
           action={['click']}
+          popArrowType={'round'}
+          placement={'topLeft'}
         >
           {result}
         </ToolTip>
