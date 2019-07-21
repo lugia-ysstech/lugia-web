@@ -84,7 +84,7 @@ const Arrow: Object = CSSComponent({
   tag: 'div',
   className: 'ToolTipArrow',
   normal: {
-    selectNames: [['background']],
+    selectNames: [],
     getCSS(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
       const { background = {} } = themeMeta;
@@ -122,13 +122,6 @@ const Arrow: Object = CSSComponent({
         default:
           return 'background:transparent';
       }
-    },
-    getThemeMeta() {
-      return {
-        background: {
-          color: 'transparent',
-        },
-      };
     },
   },
   css: css`
@@ -395,6 +388,9 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
         {children}
       </Trigger>
     );
+  }
+  setPopupVisible(popupVisible: boolean) {
+    this.trigger && this.trigger.setPopupVisible(popupVisible);
   }
 
   getContent(contentThemeProps, direction) {
