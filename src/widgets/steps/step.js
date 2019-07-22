@@ -80,7 +80,6 @@ const Title = CSSComponent({
       ['padding'],
       ['margin'],
     ],
-    getThemeMeta(themeMeta, themeProps) {},
     defaultTheme: {
       fontSize: 14,
     },
@@ -102,7 +101,6 @@ const Description = CSSComponent({
       ['padding'],
       ['margin'],
     ],
-    getThemeMeta(themeMeta, themeProps) {},
   },
   css: css`
     margin-top: ${px2remcss(6)};
@@ -142,14 +140,14 @@ const SimpleLineContainer = CSSComponent({
       const { propsConfig } = themeProps;
       const { isFirst, stepType, orientation } = propsConfig;
       const padding = stepType === 'flat' ? 0 : px2remcss(6);
-      let hsize = padding;
-      let vsize = 0;
+      let hSize = padding;
+      let vSize = 0;
       if (orientation === 'horizontal') {
-        hsize = 0;
-        vsize = padding;
+        hSize = 0;
+        vSize = padding;
       }
       const display = isFirst ? 'width:0;' : 'flex: 1;';
-      return `padding: ${hsize} ${vsize};${display}`;
+      return `padding: ${hSize} ${vSize};${display}`;
     },
     getThemeMeta(themeMeta, themeProps) {
       const { height, width } = themeMeta;
@@ -181,14 +179,14 @@ const OtherLineContainer = CSSComponent({
       const { propsConfig } = themeProps;
       const { isFirst, orientation } = propsConfig;
       const padding = px2remcss(6);
-      let hsize = padding;
-      let vsize = 0;
+      let hSize = padding;
+      let vSize = 0;
       if (orientation === 'horizontal') {
-        hsize = 0;
-        vsize = padding;
+        hSize = 0;
+        vSize = padding;
       }
       const display = isFirst ? 'width:0;' : 'flex: 1;';
-      return `padding: ${hsize} ${vsize};${display}`;
+      return `padding: ${hSize} ${vSize};${display}`;
     },
     getThemeMeta(themeMeta, themeProps) {
       const { height, width } = themeMeta;
@@ -219,8 +217,8 @@ const Line = CSSComponent({
       const { propsConfig } = themeProps;
       const { height, width } = themeMeta;
       const { orientation } = propsConfig;
-      const theHeight = height ? height : orientation === 'horizontal' ? 2 : '100%';
-      const theWidth = width ? width : orientation === 'horizontal' ? '100%' : 2;
+      const theHeight = height ? height : orientation === 'horizontal' ? 1 : '100%';
+      const theWidth = width ? width : orientation === 'horizontal' ? '100%' : 1;
       return {
         height: theHeight,
         width: theWidth,
@@ -246,8 +244,8 @@ const DotLine = CSSComponent({
       const styled = isDashed ? 'dashed' : 'solid';
       const direction = orientation === 'horizontal' ? 'bottom' : 'left';
       const { height, width } = themeMeta;
-      const theHeight = height ? height : orientation === 'horizontal' ? 2 : '100%';
-      const theWidth = width ? width : orientation === 'horizontal' ? '100%' : 2;
+      const theHeight = height ? height : orientation === 'horizontal' ? 1 : '100%';
+      const theWidth = width ? width : orientation === 'horizontal' ? '100%' : 1;
       const size = orientation === 'horizontal' ? theHeight : theWidth;
       return {
         width: theWidth,
@@ -280,7 +278,7 @@ const FlatLine = CSSComponent({
       const { orientation } = propsConfig;
       const theHeight = height ? height : orientation === 'horizontal' ? 6 : '100%';
       const theWidth = width ? width : orientation === 'horizontal' ? '100%' : 6;
-      const theBoxShadow = '0 0 4 rgba(104, 79, 255,0.3) inset';
+      const theBoxShadow = '0 0 2 rgba(104, 79, 255,0.3) inset';
       const resBoxShadow = boxShadow ? boxShadow : getBoxShadow(theBoxShadow);
       const theThemeMeta = {
         height: theHeight,
@@ -669,16 +667,34 @@ class Step extends React.Component<StepProps, StepState> {
       : { color };
   }
 
+  getStepFontColor(stepStatus: StepStatus, stepType: StepType) {
+    let resultConfigColor;
+    switch (stepStatus) {
+      case 'error':
+        const errorColor = dangerColor;
+        resultConfigColor = errorColor;
+        break;
+      case 'finish':
+        const finishColor = stepType === 'flat' ? lightThemeColor : blackColor;
+        resultConfigColor = finishColor;
+        break;
+      case 'process':
+        const processColor = blackColor;
+        resultConfigColor = processColor;
+        break;
+      case 'next':
+      case 'wait':
+      default:
+        resultConfigColor = lightGreyColor;
+        break;
+    }
+    return resultConfigColor;
+  }
   getStepStatusColor(stepStatus: StepStatus, stepType: StepType) {
     let resultConfigColor;
     switch (stepStatus) {
       case 'finish':
-        const finishColor =
-          stepType === 'flat'
-            ? lightThemeColor
-            : stepType === 'simple' || stepType === 'dot'
-            ? successColor
-            : themeColor;
+        const finishColor = stepType === 'flat' ? lightThemeColor : successColor;
         resultConfigColor = finishColor;
         break;
       case 'process':
@@ -735,7 +751,7 @@ class Step extends React.Component<StepProps, StepState> {
     const { stepStatus } = this.state;
     if (description && description !== undefined) {
       const resultTheme = this.getThemeNormalConfig(
-        this.getThemeColorConfig('color', this.getStepStatusColor(stepStatus, stepType))
+        this.getThemeColorConfig('color', this.getStepFontColor(stepStatus, stepType))
       );
       const desThemeProps = deepMerge(
         resultTheme,
@@ -763,8 +779,9 @@ class Step extends React.Component<StepProps, StepState> {
     });
 
     const resultTheme = this.getThemeNormalConfig(
-      this.getThemeColorConfig('color', this.getStepStatusColor(stepStatus, stepType))
+      this.getThemeColorConfig('color', this.getStepFontColor(stepStatus, stepType))
     );
+
     const titleThemeProps = deepMerge(resultTheme, this.props.getPartOfThemeProps('StepTitle'));
     return (
       <Content
@@ -825,7 +842,7 @@ class Step extends React.Component<StepProps, StepState> {
   }
 
   matcLine() {
-    const { stepType, isFirst, orientation, themeProps } = this.props;
+    const { stepType, isFirst, orientation } = this.props;
     if (isFirst) {
       return null;
     }
@@ -838,7 +855,15 @@ class Step extends React.Component<StepProps, StepState> {
     });
 
     if (stepType === 'icon' || stepType === 'dot') {
-      return <OtherLineContainer themeProps={themeProps}>{this.getOtherLine()}</OtherLineContainer>;
+      return (
+        <OtherLineContainer
+          themeProps={this.props.getPartOfThemeProps('LineContainer', {
+            props: { orientation, isFirst },
+          })}
+        >
+          {this.getOtherLine()}
+        </OtherLineContainer>
+      );
     }
     return (
       <SimpleLineContainer themeProps={theThemeProps}>{this.getSimpleLine()}</SimpleLineContainer>
@@ -857,6 +882,7 @@ class Step extends React.Component<StepProps, StepState> {
           orientation,
           isDashed,
           stepType,
+          stepStatus,
         },
       })
     );
@@ -880,6 +906,7 @@ class Step extends React.Component<StepProps, StepState> {
           orientation,
           isDashed,
           stepType,
+          stepStatus,
         },
       })
     );
@@ -924,7 +951,7 @@ class Step extends React.Component<StepProps, StepState> {
       const boxShadowConfig =
         stepType === 'flat' && (stepStatus === 'wait' || stepStatus === 'next')
           ? this.getThemeNormalConfig({
-              boxShadow: getBoxShadow('0 0 4 rgba(104, 79, 255,0.3) inset'),
+              boxShadow: getBoxShadow('0 0 2 rgba(104, 79, 255,0.3) inset'),
             })
           : {};
 
@@ -984,6 +1011,7 @@ class Step extends React.Component<StepProps, StepState> {
                   : themeColor;
                 return {
                   color: theColor,
+                  fontSize: 18,
                 };
               },
             },
@@ -1038,7 +1066,9 @@ class Step extends React.Component<StepProps, StepState> {
                 const theFontSize = fontSize ? fontSize : size === 'normal' ? 32 : 24;
                 const theColor = color
                   ? color
-                  : stepStatus === 'finish' || stepStatus === 'process' || stepStatus === 'next'
+                  : stepStatus === 'finish'
+                  ? successColor
+                  : stepStatus === 'process' || stepStatus === 'next'
                   ? themeColor
                   : stepStatus === 'wait'
                   ? lightGreyColor
