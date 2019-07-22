@@ -27,6 +27,13 @@ const Invalid = [
   'message',
   'notification',
   'design-responsive',
+  'affix',
+  'anchor',
+  'drawer',
+  'grid',
+  'layout',
+  'modal',
+  'back-top',
 ];
 
-createDesignInfo(tartgetPath,Invalid);
+createDesignInfo(tartgetPath, Invalid);
