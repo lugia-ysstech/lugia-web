@@ -126,6 +126,7 @@
   },
   "category": ["数据录入"],
   "theme": {
+    "name": "金额输入框",
     "InnerInput": {
       "theme": {
         "Container": {
