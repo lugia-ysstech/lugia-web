@@ -449,14 +449,32 @@ export const getIconByType = (
       const { viewClass: successViewClass, theme: successTheme } = props.getPartOfThemeHocProps(
         'UploadListSuccessIcon'
       );
-      resultTheme = successTheme;
+      resultTheme = deepMerge(
+        {
+          [successViewClass]: {
+            normal: {
+              color: '#56c22d',
+            },
+          },
+        },
+        successTheme
+      );
       resultViewClass = successViewClass;
       break;
     case 'li-fail':
       const { viewClass: failViewClass, theme: failTheme } = props.getPartOfThemeHocProps(
         'UploadListFailedIcon'
       );
-      resultTheme = failTheme;
+      resultTheme = deepMerge(
+        {
+          [failViewClass]: {
+            normal: {
+              color: '#f22735',
+            },
+          },
+        },
+        failTheme
+      );
       resultViewClass = failViewClass;
       break;
     default:
