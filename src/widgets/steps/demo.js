@@ -58,13 +58,6 @@ const vThemeConfig = {
     },
   },
 };
-// border-radius: 50%;
-// position: absolute;
-// width: 0.6rem;
-// height: 0.4rem;
-// background: #ffffff;
-// top: 0.1rem;
-// box-shadow: 0 0 2px white;
 const singleThemeConfig = {
   [Widget.Step]: {
     StepLine: {
