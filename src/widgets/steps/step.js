@@ -619,7 +619,7 @@ class Step extends React.Component<StepProps, StepState> {
 
   static getDerivedStateFromProps(props: StepProps, state: StepState) {
     const { currentStepNumber, stepNumber, stepStatus } = props;
-    const hasStatusInprops = 'stepStatus' in props;
+    const hasStatusInprops = stepStatus && stepStatus !== undefined;
     const theStepStatus = hasStatusInprops
       ? stepStatus
       : currentStepNumber > stepNumber
@@ -806,7 +806,8 @@ class Step extends React.Component<StepProps, StepState> {
   }
 
   getStepHead() {
-    const { isFirst, stepType, size, orientation, stepStatus } = this.props;
+    const { isFirst, stepType, size, orientation } = this.props;
+    const { stepStatus } = this.state;
 
     if (stepType === 'dot') {
       const resultTheme = this.getThemeNormalConfig(
@@ -871,7 +872,8 @@ class Step extends React.Component<StepProps, StepState> {
   }
 
   getSimpleLine() {
-    const { isDashed, stepType, orientation, stepStatus } = this.props;
+    const { isDashed, stepType, orientation } = this.props;
+    const { stepStatus } = this.state;
     const resultTheme = this.getThemeNormalConfig(
       this.getThemeColorConfig('background', this.getStepStatusColor(stepStatus, stepType))
     );
@@ -895,7 +897,8 @@ class Step extends React.Component<StepProps, StepState> {
     return <Line themeProps={theThemeProps} />;
   }
   getOtherLine() {
-    const { isDashed, stepType, orientation, stepStatus } = this.props;
+    const { isDashed, stepType, orientation } = this.props;
+    const { stepStatus } = this.state;
     const resultTheme = this.getThemeNormalConfig(
       this.getThemeColorConfig('background', this.getStepStatusColor(stepStatus, stepType))
     );
@@ -1103,9 +1106,7 @@ class Step extends React.Component<StepProps, StepState> {
   }
 
   getStepValue(stepNumber: number, stepStatus: StepStatus): number {
-    return (stepStatus === 'finish' || stepStatus === 'process') && stepNumber > 0
-      ? stepNumber
-      : '';
+    return (stepStatus === 'finish' || stepStatus === 'process') && stepNumber > 0 ? stepNumber : 0;
   }
 
   getStepNumber() {
