@@ -483,6 +483,44 @@ exports[`stepsDemo Component JSON 1`] = `
   flex-direction: column;
 }
 
+.c43 {
+  display: inline-block;
+  margin-bottom: 0;
+  box-sizing: border-box;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: 'Trebuchet MS',Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  background-color: #ffffff;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
+}
+
+.c44 {
+  color: #666666;
+  font-size: 1.4rem;
+}
+
 .c0 {
   text-align: left;
   margin: 50px;
@@ -492,6 +530,21 @@ exports[`stepsDemo Component JSON 1`] = `
   text-align: left;
   margin: 50px;
   display: inline-block;
+}
+
+.c45 {
+  width: 600px;
+  margin-top: 50px;
+  border: 1px solid #ccc;
+  height: 100px;
+}
+
+.c41 {
+  margin-left: 50px;
+}
+
+.c42 {
+  margin-bottom: 30px;
 }
 
 <div>
@@ -531,8 +584,8 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c5"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "height": "3.2rem",
+                    "width": "3.2rem",
                   }
                 }
               >
@@ -555,8 +608,8 @@ exports[`stepsDemo Component JSON 1`] = `
                       "borderTopColor": "#56c22d",
                       "borderTopStyle": "solid",
                       "borderTopWidth": "0.1rem",
-                      "height": "4rem",
-                      "width": "4rem",
+                      "height": "3.2rem",
+                      "width": "3.2rem",
                     }
                   }
                 >
@@ -597,8 +650,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c10"
                     style={
                       Object {
-                        "color": "blue",
-                        "fontSize": "1.6rem",
+                        "color": "#333333",
                       }
                     }
                   >
@@ -632,8 +684,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c12"
                   style={
                     Object {
-                      "height": "4rem",
-                      "width": "4rem",
+                      "width": "100%",
                     }
                   }
                 >
@@ -641,7 +692,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c13"
                     style={
                       Object {
-                        "backgroundColor": "red",
+                        "backgroundColor": "#4d63ff",
                         "height": "0.1rem",
                         "width": "100%",
                       }
@@ -652,130 +703,8 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c5"
                   style={
                     Object {
-                      "height": "4rem",
-                      "width": "4rem",
-                    }
-                  }
-                >
-                  <div
-                    className="c6"
-                    orientation="horizontal"
-                    size="normal"
-                    style={
-                      Object {
-                        "backgroundColor": "#ffffff",
-                        "borderBottomColor": "#56c22d",
-                        "borderBottomStyle": "solid",
-                        "borderBottomWidth": "0.1rem",
-                        "borderLeftColor": "#56c22d",
-                        "borderLeftStyle": "solid",
-                        "borderLeftWidth": "0.1rem",
-                        "borderRightColor": "#56c22d",
-                        "borderRightStyle": "solid",
-                        "borderRightWidth": "0.1rem",
-                        "borderTopColor": "#56c22d",
-                        "borderTopStyle": "solid",
-                        "borderTopWidth": "0.1rem",
-                        "height": "4rem",
-                        "width": "4rem",
-                      }
-                    }
-                  >
-                    <i
-                      className="lugia-icon-reminder_check   c7"
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      style={
-                        Object {
-                          "color": "#56c22d",
-                          "fontSize": "1.8rem",
-                        }
-                      }
-                    />
-                  </div>
-                  <div
-                    className="c8"
-                    orientation="horizontal"
-                    size="normal"
-                    style={Object {}}
-                  >
-                    <div
-                      className="c9"
-                      orientation="horizontal"
-                      size="normal"
-                      style={
-                        Object {
-                          "color": "#333333",
-                        }
-                      }
-                    >
-                      title1111
-                    </div>
-                    <div
-                      className="c10"
-                      style={
-                        Object {
-                          "color": "blue",
-                          "fontSize": "1.6rem",
-                        }
-                      }
-                    >
-                      description111
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            className="c11"
-            style={
-              Object {
-                "width": "10rem",
-              }
-            }
-          >
-            <div
-              className="c3"
-              style={
-                Object {
-                  "width": "100%",
-                }
-              }
-            >
-              <div
-                className="c4"
-                style={Object {}}
-              >
-                <div
-                  className="c12"
-                  style={
-                    Object {
-                      "height": "4rem",
-                      "width": "4rem",
-                    }
-                  }
-                >
-                  <div
-                    className="c13"
-                    style={
-                      Object {
-                        "backgroundColor": "red",
-                        "height": "0.1rem",
-                        "width": "100%",
-                      }
-                    }
-                  />
-                </div>
-                <div
-                  className="c5"
-                  style={
-                    Object {
-                      "height": "4rem",
-                      "width": "4rem",
+                      "height": "3.2rem",
+                      "width": "3.2rem",
                     }
                   }
                 >
@@ -798,8 +727,8 @@ exports[`stepsDemo Component JSON 1`] = `
                         "borderTopColor": "#4d63ff",
                         "borderTopStyle": "solid",
                         "borderTopWidth": "0.1rem",
-                        "height": "4rem",
-                        "width": "4rem",
+                        "height": "3.2rem",
+                        "width": "3.2rem",
                       }
                     }
                   >
@@ -822,13 +751,13 @@ exports[`stepsDemo Component JSON 1`] = `
                       size="normal"
                       style={
                         Object {
-                          "color": "red",
+                          "color": "#ffffff",
                           "fontSize": "2rem",
                           "fontWeight": 700,
                         }
                       }
                     >
-                      3
+                      2
                     </div>
                   </div>
                   <div
@@ -853,8 +782,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       className="c10"
                       style={
                         Object {
-                          "color": "blue",
-                          "fontSize": "1.6rem",
+                          "color": "#333333",
                         }
                       }
                     >
@@ -889,8 +817,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c12"
                   style={
                     Object {
-                      "height": "4rem",
-                      "width": "4rem",
+                      "width": "100%",
                     }
                   }
                 >
@@ -898,7 +825,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c13"
                     style={
                       Object {
-                        "backgroundColor": "red",
+                        "backgroundColor": "#4d63ff",
                         "height": "0.1rem",
                         "width": "100%",
                       }
@@ -909,8 +836,8 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c5"
                   style={
                     Object {
-                      "height": "4rem",
-                      "width": "4rem",
+                      "height": "2rem",
+                      "width": "2rem",
                     }
                   }
                 >
@@ -933,8 +860,8 @@ exports[`stepsDemo Component JSON 1`] = `
                         "borderTopColor": "#4d63ff",
                         "borderTopStyle": "solid",
                         "borderTopWidth": "0.1rem",
-                        "height": "4rem",
-                        "width": "4rem",
+                        "height": "2rem",
+                        "width": "2rem",
                       }
                     }
                   >
@@ -957,13 +884,13 @@ exports[`stepsDemo Component JSON 1`] = `
                       size="normal"
                       style={
                         Object {
-                          "color": "red",
+                          "color": "#ffffff",
                           "fontSize": "2rem",
                           "fontWeight": 700,
                         }
                       }
                     >
-                      
+                      0
                     </div>
                   </div>
                   <div
@@ -988,8 +915,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       className="c10"
                       style={
                         Object {
-                          "color": "blue",
-                          "fontSize": "1.6rem",
+                          "color": "#cccccc",
                         }
                       }
                     >
@@ -1024,8 +950,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c12"
                   style={
                     Object {
-                      "height": "4rem",
-                      "width": "4rem",
+                      "width": "100%",
                     }
                   }
                 >
@@ -1033,7 +958,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c13"
                     style={
                       Object {
-                        "backgroundColor": "red",
+                        "backgroundColor": "#cccccc",
                         "height": "0.1rem",
                         "width": "100%",
                       }
@@ -1044,8 +969,8 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c5"
                   style={
                     Object {
-                      "height": "4rem",
-                      "width": "4rem",
+                      "height": "2rem",
+                      "width": "2rem",
                     }
                   }
                 >
@@ -1068,8 +993,8 @@ exports[`stepsDemo Component JSON 1`] = `
                         "borderTopColor": "#cccccc",
                         "borderTopStyle": "solid",
                         "borderTopWidth": "0.1rem",
-                        "height": "4rem",
-                        "width": "4rem",
+                        "height": "2rem",
+                        "width": "2rem",
                       }
                     }
                   >
@@ -1092,13 +1017,13 @@ exports[`stepsDemo Component JSON 1`] = `
                       size="normal"
                       style={
                         Object {
-                          "color": "red",
+                          "color": "#ffffff",
                           "fontSize": "2rem",
                           "fontWeight": 700,
                         }
                       }
                     >
-                      
+                      0
                     </div>
                   </div>
                   <div
@@ -1123,8 +1048,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       className="c10"
                       style={
                         Object {
-                          "color": "blue",
-                          "fontSize": "1.6rem",
+                          "color": "#cccccc",
                         }
                       }
                     >
@@ -1159,8 +1083,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c12"
                   style={
                     Object {
-                      "height": "4rem",
-                      "width": "4rem",
+                      "width": "100%",
                     }
                   }
                 >
@@ -1168,7 +1091,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c13"
                     style={
                       Object {
-                        "backgroundColor": "red",
+                        "backgroundColor": "#f22735",
                         "height": "0.1rem",
                         "width": "100%",
                       }
@@ -1179,8 +1102,8 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c5"
                   style={
                     Object {
-                      "height": "4rem",
-                      "width": "4rem",
+                      "height": "3.2rem",
+                      "width": "3.2rem",
                     }
                   }
                 >
@@ -1203,8 +1126,8 @@ exports[`stepsDemo Component JSON 1`] = `
                         "borderTopColor": "#f22735",
                         "borderTopStyle": "solid",
                         "borderTopWidth": "0.1rem",
-                        "height": "4rem",
-                        "width": "4rem",
+                        "height": "3.2rem",
+                        "width": "3.2rem",
                       }
                     }
                   >
@@ -1245,8 +1168,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       className="c10"
                       style={
                         Object {
-                          "color": "blue",
-                          "fontSize": "1.6rem",
+                          "color": "#f22735",
                         }
                       }
                     >
@@ -1293,8 +1215,8 @@ exports[`stepsDemo Component JSON 1`] = `
               className="c5"
               style={
                 Object {
-                  "height": "4rem",
-                  "width": "4rem",
+                  "height": "3.2rem",
+                  "width": "3.2rem",
                 }
               }
             >
@@ -1317,8 +1239,8 @@ exports[`stepsDemo Component JSON 1`] = `
                     "borderTopColor": "#56c22d",
                     "borderTopStyle": "solid",
                     "borderTopWidth": "0.1rem",
-                    "height": "4rem",
-                    "width": "4rem",
+                    "height": "3.2rem",
+                    "width": "3.2rem",
                   }
                 }
               >
@@ -1359,8 +1281,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c10"
                   style={
                     Object {
-                      "color": "blue",
-                      "fontSize": "1.6rem",
+                      "color": "#333333",
                     }
                   }
                 >
@@ -1394,8 +1315,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c12"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "width": "100%",
                   }
                 }
               >
@@ -1403,7 +1323,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "#56c22d",
                       "height": "0.1rem",
                       "width": "100%",
                     }
@@ -1414,8 +1334,8 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c5"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "height": "3.2rem",
+                    "width": "3.2rem",
                   }
                 }
               >
@@ -1438,8 +1358,8 @@ exports[`stepsDemo Component JSON 1`] = `
                       "borderTopColor": "#56c22d",
                       "borderTopStyle": "solid",
                       "borderTopWidth": "0.1rem",
-                      "height": "4rem",
-                      "width": "4rem",
+                      "height": "3.2rem",
+                      "width": "3.2rem",
                     }
                   }
                 >
@@ -1480,8 +1400,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c10"
                     style={
                       Object {
-                        "color": "blue",
-                        "fontSize": "1.6rem",
+                        "color": "#333333",
                       }
                     }
                   >
@@ -1516,8 +1435,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c12"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "width": "100%",
                   }
                 }
               >
@@ -1525,7 +1443,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "#4d63ff",
                       "height": "0.1rem",
                       "width": "100%",
                     }
@@ -1536,8 +1454,8 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c5"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "height": "3.2rem",
+                    "width": "3.2rem",
                   }
                 }
               >
@@ -1560,8 +1478,8 @@ exports[`stepsDemo Component JSON 1`] = `
                       "borderTopColor": "#4d63ff",
                       "borderTopStyle": "solid",
                       "borderTopWidth": "0.1rem",
-                      "height": "4rem",
-                      "width": "4rem",
+                      "height": "3.2rem",
+                      "width": "3.2rem",
                     }
                   }
                 >
@@ -1584,7 +1502,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     size="normal"
                     style={
                       Object {
-                        "color": "red",
+                        "color": "#ffffff",
                         "fontSize": "2rem",
                         "fontWeight": 700,
                       }
@@ -1615,8 +1533,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c10"
                     style={
                       Object {
-                        "color": "blue",
-                        "fontSize": "1.6rem",
+                        "color": "#333333",
                       }
                     }
                   >
@@ -1651,8 +1568,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c12"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "width": "100%",
                   }
                 }
               >
@@ -1660,7 +1576,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "#4d63ff",
                       "height": "0.1rem",
                       "width": "100%",
                     }
@@ -1671,8 +1587,8 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c5"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "height": "2rem",
+                    "width": "2rem",
                   }
                 }
               >
@@ -1695,8 +1611,8 @@ exports[`stepsDemo Component JSON 1`] = `
                       "borderTopColor": "#4d63ff",
                       "borderTopStyle": "solid",
                       "borderTopWidth": "0.1rem",
-                      "height": "4rem",
-                      "width": "4rem",
+                      "height": "2rem",
+                      "width": "2rem",
                     }
                   }
                 >
@@ -1719,13 +1635,13 @@ exports[`stepsDemo Component JSON 1`] = `
                     size="normal"
                     style={
                       Object {
-                        "color": "red",
+                        "color": "#ffffff",
                         "fontSize": "2rem",
                         "fontWeight": 700,
                       }
                     }
                   >
-                    
+                    0
                   </div>
                 </div>
                 <div
@@ -1750,8 +1666,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c10"
                     style={
                       Object {
-                        "color": "blue",
-                        "fontSize": "1.6rem",
+                        "color": "#cccccc",
                       }
                     }
                   >
@@ -1786,8 +1701,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c12"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "width": "100%",
                   }
                 }
               >
@@ -1795,7 +1709,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "#cccccc",
                       "height": "0.1rem",
                       "width": "100%",
                     }
@@ -1806,8 +1720,8 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c5"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "height": "2rem",
+                    "width": "2rem",
                   }
                 }
               >
@@ -1830,8 +1744,8 @@ exports[`stepsDemo Component JSON 1`] = `
                       "borderTopColor": "#cccccc",
                       "borderTopStyle": "solid",
                       "borderTopWidth": "0.1rem",
-                      "height": "4rem",
-                      "width": "4rem",
+                      "height": "2rem",
+                      "width": "2rem",
                     }
                   }
                 >
@@ -1854,13 +1768,13 @@ exports[`stepsDemo Component JSON 1`] = `
                     size="normal"
                     style={
                       Object {
-                        "color": "red",
+                        "color": "#ffffff",
                         "fontSize": "2rem",
                         "fontWeight": 700,
                       }
                     }
                   >
-                    
+                    0
                   </div>
                 </div>
                 <div
@@ -1885,8 +1799,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c10"
                     style={
                       Object {
-                        "color": "blue",
-                        "fontSize": "1.6rem",
+                        "color": "#cccccc",
                       }
                     }
                   >
@@ -1921,8 +1834,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c12"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "width": "100%",
                   }
                 }
               >
@@ -1930,7 +1842,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "#f22735",
                       "height": "0.1rem",
                       "width": "100%",
                     }
@@ -1941,8 +1853,8 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c5"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "height": "3.2rem",
+                    "width": "3.2rem",
                   }
                 }
               >
@@ -1965,8 +1877,8 @@ exports[`stepsDemo Component JSON 1`] = `
                       "borderTopColor": "#f22735",
                       "borderTopStyle": "solid",
                       "borderTopWidth": "0.1rem",
-                      "height": "4rem",
-                      "width": "4rem",
+                      "height": "3.2rem",
+                      "width": "3.2rem",
                     }
                   }
                 >
@@ -2007,8 +1919,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c10"
                     style={
                       Object {
-                        "color": "blue",
-                        "fontSize": "1.6rem",
+                        "color": "#f22735",
                       }
                     }
                   >
@@ -2058,8 +1969,8 @@ exports[`stepsDemo Component JSON 1`] = `
               className="c5"
               style={
                 Object {
-                  "height": "4rem",
-                  "width": "4rem",
+                  "height": "3.2rem",
+                  "width": "3.2rem",
                 }
               }
             >
@@ -2082,8 +1993,8 @@ exports[`stepsDemo Component JSON 1`] = `
                     "borderTopColor": "#56c22d",
                     "borderTopStyle": "solid",
                     "borderTopWidth": "0.1rem",
-                    "height": "4rem",
-                    "width": "4rem",
+                    "height": "3.2rem",
+                    "width": "3.2rem",
                   }
                 }
               >
@@ -2124,8 +2035,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c10"
                   style={
                     Object {
-                      "color": "blue",
-                      "fontSize": "1.6rem",
+                      "color": "#333333",
                     }
                   }
                 >
@@ -2159,8 +2069,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c12"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "width": "100%",
                   }
                 }
               >
@@ -2168,7 +2077,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "#56c22d",
                       "height": "0.1rem",
                       "width": "100%",
                     }
@@ -2179,8 +2088,8 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c5"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "height": "3.2rem",
+                    "width": "3.2rem",
                   }
                 }
               >
@@ -2203,8 +2112,8 @@ exports[`stepsDemo Component JSON 1`] = `
                       "borderTopColor": "#56c22d",
                       "borderTopStyle": "solid",
                       "borderTopWidth": "0.1rem",
-                      "height": "4rem",
-                      "width": "4rem",
+                      "height": "3.2rem",
+                      "width": "3.2rem",
                     }
                   }
                 >
@@ -2245,8 +2154,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c10"
                     style={
                       Object {
-                        "color": "blue",
-                        "fontSize": "1.6rem",
+                        "color": "#333333",
                       }
                     }
                   >
@@ -2281,8 +2189,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c12"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "width": "100%",
                   }
                 }
               >
@@ -2290,7 +2197,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "#4d63ff",
                       "height": "0.1rem",
                       "width": "100%",
                     }
@@ -2301,8 +2208,8 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c5"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "height": "3.2rem",
+                    "width": "3.2rem",
                   }
                 }
               >
@@ -2325,8 +2232,8 @@ exports[`stepsDemo Component JSON 1`] = `
                       "borderTopColor": "#4d63ff",
                       "borderTopStyle": "solid",
                       "borderTopWidth": "0.1rem",
-                      "height": "4rem",
-                      "width": "4rem",
+                      "height": "3.2rem",
+                      "width": "3.2rem",
                     }
                   }
                 >
@@ -2349,7 +2256,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     size="normal"
                     style={
                       Object {
-                        "color": "red",
+                        "color": "#ffffff",
                         "fontSize": "2rem",
                         "fontWeight": 700,
                       }
@@ -2380,8 +2287,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c10"
                     style={
                       Object {
-                        "color": "blue",
-                        "fontSize": "1.6rem",
+                        "color": "#333333",
                       }
                     }
                   >
@@ -2416,8 +2322,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c12"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "width": "100%",
                   }
                 }
               >
@@ -2425,7 +2330,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "#4d63ff",
                       "height": "0.1rem",
                       "width": "100%",
                     }
@@ -2436,8 +2341,8 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c5"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "height": "2rem",
+                    "width": "2rem",
                   }
                 }
               >
@@ -2460,8 +2365,8 @@ exports[`stepsDemo Component JSON 1`] = `
                       "borderTopColor": "#4d63ff",
                       "borderTopStyle": "solid",
                       "borderTopWidth": "0.1rem",
-                      "height": "4rem",
-                      "width": "4rem",
+                      "height": "2rem",
+                      "width": "2rem",
                     }
                   }
                 >
@@ -2484,13 +2389,13 @@ exports[`stepsDemo Component JSON 1`] = `
                     size="normal"
                     style={
                       Object {
-                        "color": "red",
+                        "color": "#ffffff",
                         "fontSize": "2rem",
                         "fontWeight": 700,
                       }
                     }
                   >
-                    
+                    0
                   </div>
                 </div>
                 <div
@@ -2515,8 +2420,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c10"
                     style={
                       Object {
-                        "color": "blue",
-                        "fontSize": "1.6rem",
+                        "color": "#cccccc",
                       }
                     }
                   >
@@ -2551,8 +2455,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c12"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "width": "100%",
                   }
                 }
               >
@@ -2560,7 +2463,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "#cccccc",
                       "height": "0.1rem",
                       "width": "100%",
                     }
@@ -2571,8 +2474,8 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c5"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "height": "2rem",
+                    "width": "2rem",
                   }
                 }
               >
@@ -2595,8 +2498,8 @@ exports[`stepsDemo Component JSON 1`] = `
                       "borderTopColor": "#cccccc",
                       "borderTopStyle": "solid",
                       "borderTopWidth": "0.1rem",
-                      "height": "4rem",
-                      "width": "4rem",
+                      "height": "2rem",
+                      "width": "2rem",
                     }
                   }
                 >
@@ -2619,13 +2522,13 @@ exports[`stepsDemo Component JSON 1`] = `
                     size="normal"
                     style={
                       Object {
-                        "color": "red",
+                        "color": "#ffffff",
                         "fontSize": "2rem",
                         "fontWeight": 700,
                       }
                     }
                   >
-                    
+                    0
                   </div>
                 </div>
                 <div
@@ -2650,8 +2553,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c10"
                     style={
                       Object {
-                        "color": "blue",
-                        "fontSize": "1.6rem",
+                        "color": "#cccccc",
                       }
                     }
                   >
@@ -2686,8 +2588,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c12"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "width": "100%",
                   }
                 }
               >
@@ -2695,7 +2596,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "#f22735",
                       "height": "0.1rem",
                       "width": "100%",
                     }
@@ -2706,8 +2607,8 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c5"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "height": "3.2rem",
+                    "width": "3.2rem",
                   }
                 }
               >
@@ -2730,8 +2631,8 @@ exports[`stepsDemo Component JSON 1`] = `
                       "borderTopColor": "#f22735",
                       "borderTopStyle": "solid",
                       "borderTopWidth": "0.1rem",
-                      "height": "4rem",
-                      "width": "4rem",
+                      "height": "3.2rem",
+                      "width": "3.2rem",
                     }
                   }
                 >
@@ -2772,8 +2673,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c10"
                     style={
                       Object {
-                        "color": "blue",
-                        "fontSize": "1.6rem",
+                        "color": "#f22735",
                       }
                     }
                   >
@@ -2823,8 +2723,8 @@ exports[`stepsDemo Component JSON 1`] = `
               className="c5"
               style={
                 Object {
-                  "height": "4rem",
-                  "width": "4rem",
+                  "height": "2.4rem",
+                  "width": "2.4rem",
                 }
               }
             >
@@ -2847,8 +2747,8 @@ exports[`stepsDemo Component JSON 1`] = `
                     "borderTopColor": "#56c22d",
                     "borderTopStyle": "solid",
                     "borderTopWidth": "0.1rem",
-                    "height": "4rem",
-                    "width": "4rem",
+                    "height": "2.4rem",
+                    "width": "2.4rem",
                   }
                 }
               >
@@ -2913,8 +2813,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c12"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "width": "100%",
                   }
                 }
               >
@@ -2922,7 +2821,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "#56c22d",
                       "height": "0.1rem",
                       "width": "100%",
                     }
@@ -2933,8 +2832,8 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c5"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "height": "2.4rem",
+                    "width": "2.4rem",
                   }
                 }
               >
@@ -2957,8 +2856,8 @@ exports[`stepsDemo Component JSON 1`] = `
                       "borderTopColor": "#56c22d",
                       "borderTopStyle": "solid",
                       "borderTopWidth": "0.1rem",
-                      "height": "4rem",
-                      "width": "4rem",
+                      "height": "2.4rem",
+                      "width": "2.4rem",
                     }
                   }
                 >
@@ -3024,8 +2923,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c12"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "width": "100%",
                   }
                 }
               >
@@ -3033,7 +2931,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "#4d63ff",
                       "height": "0.1rem",
                       "width": "100%",
                     }
@@ -3044,8 +2942,8 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c5"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "height": "2.4rem",
+                    "width": "2.4rem",
                   }
                 }
               >
@@ -3068,8 +2966,8 @@ exports[`stepsDemo Component JSON 1`] = `
                       "borderTopColor": "#4d63ff",
                       "borderTopStyle": "solid",
                       "borderTopWidth": "0.1rem",
-                      "height": "4rem",
-                      "width": "4rem",
+                      "height": "2.4rem",
+                      "width": "2.4rem",
                     }
                   }
                 >
@@ -3092,7 +2990,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     size="mini"
                     style={
                       Object {
-                        "color": "red",
+                        "color": "#ffffff",
                         "fontSize": "1.2rem",
                         "fontWeight": 700,
                       }
@@ -3148,8 +3046,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c12"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "width": "100%",
                   }
                 }
               >
@@ -3157,7 +3054,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "#4d63ff",
                       "height": "0.1rem",
                       "width": "100%",
                     }
@@ -3168,8 +3065,8 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c5"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "height": "1.2rem",
+                    "width": "1.2rem",
                   }
                 }
               >
@@ -3192,8 +3089,8 @@ exports[`stepsDemo Component JSON 1`] = `
                       "borderTopColor": "#4d63ff",
                       "borderTopStyle": "solid",
                       "borderTopWidth": "0.1rem",
-                      "height": "4rem",
-                      "width": "4rem",
+                      "height": "1.2rem",
+                      "width": "1.2rem",
                     }
                   }
                 >
@@ -3216,13 +3113,13 @@ exports[`stepsDemo Component JSON 1`] = `
                     size="mini"
                     style={
                       Object {
-                        "color": "red",
+                        "color": "#ffffff",
                         "fontSize": "1.2rem",
                         "fontWeight": 700,
                       }
                     }
                   >
-                    
+                    0
                   </div>
                 </div>
                 <div
@@ -3272,8 +3169,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c12"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "width": "100%",
                   }
                 }
               >
@@ -3281,7 +3177,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "#cccccc",
                       "height": "0.1rem",
                       "width": "100%",
                     }
@@ -3292,8 +3188,8 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c5"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "height": "1.2rem",
+                    "width": "1.2rem",
                   }
                 }
               >
@@ -3316,8 +3212,8 @@ exports[`stepsDemo Component JSON 1`] = `
                       "borderTopColor": "#cccccc",
                       "borderTopStyle": "solid",
                       "borderTopWidth": "0.1rem",
-                      "height": "4rem",
-                      "width": "4rem",
+                      "height": "1.2rem",
+                      "width": "1.2rem",
                     }
                   }
                 >
@@ -3340,13 +3236,13 @@ exports[`stepsDemo Component JSON 1`] = `
                     size="mini"
                     style={
                       Object {
-                        "color": "red",
+                        "color": "#ffffff",
                         "fontSize": "1.2rem",
                         "fontWeight": 700,
                       }
                     }
                   >
-                    
+                    0
                   </div>
                 </div>
                 <div
@@ -3396,8 +3292,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c12"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "width": "100%",
                   }
                 }
               >
@@ -3405,7 +3300,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "#f22735",
                       "height": "0.1rem",
                       "width": "100%",
                     }
@@ -3416,8 +3311,8 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c5"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "height": "2.4rem",
+                    "width": "2.4rem",
                   }
                 }
               >
@@ -3440,8 +3335,8 @@ exports[`stepsDemo Component JSON 1`] = `
                       "borderTopColor": "#f22735",
                       "borderTopStyle": "solid",
                       "borderTopWidth": "0.1rem",
-                      "height": "4rem",
-                      "width": "4rem",
+                      "height": "2.4rem",
+                      "width": "2.4rem",
                     }
                   }
                 >
@@ -3522,8 +3417,8 @@ exports[`stepsDemo Component JSON 1`] = `
               className="c5"
               style={
                 Object {
-                  "height": "4rem",
-                  "width": "4rem",
+                  "height": "2.4rem",
+                  "width": "2.4rem",
                 }
               }
             >
@@ -3534,8 +3429,8 @@ exports[`stepsDemo Component JSON 1`] = `
                 style={
                   Object {
                     "backgroundColor": "rgb(128,144,255)",
-                    "height": "4rem",
-                    "width": "4rem",
+                    "height": "2.4rem",
+                    "width": "2.4rem",
                   }
                 }
               >
@@ -3600,8 +3495,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c17"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "width": "100%",
                   }
                 }
               >
@@ -3609,7 +3503,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c18"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "rgb(128,144,255)",
                       "height": "0.6rem",
                       "width": "100%",
                     }
@@ -3620,8 +3514,8 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c5"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "height": "2.4rem",
+                    "width": "2.4rem",
                   }
                 }
               >
@@ -3632,8 +3526,8 @@ exports[`stepsDemo Component JSON 1`] = `
                   style={
                     Object {
                       "backgroundColor": "rgb(128,144,255)",
-                      "height": "4rem",
-                      "width": "4rem",
+                      "height": "2.4rem",
+                      "width": "2.4rem",
                     }
                   }
                 >
@@ -3699,8 +3593,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c17"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "width": "100%",
                   }
                 }
               >
@@ -3708,7 +3601,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c18"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "rgb(128,144,255)",
                       "height": "0.6rem",
                       "width": "100%",
                     }
@@ -3719,8 +3612,8 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c5"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "height": "2.4rem",
+                    "width": "2.4rem",
                   }
                 }
               >
@@ -3731,8 +3624,8 @@ exports[`stepsDemo Component JSON 1`] = `
                   style={
                     Object {
                       "backgroundColor": "rgb(128,144,255)",
-                      "height": "4rem",
-                      "width": "4rem",
+                      "height": "2.4rem",
+                      "width": "2.4rem",
                     }
                   }
                 >
@@ -3755,7 +3648,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     size="mini"
                     style={
                       Object {
-                        "color": "red",
+                        "color": "#ffffff",
                         "fontSize": "1.2rem",
                         "fontWeight": 700,
                       }
@@ -3811,8 +3704,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c17"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "width": "100%",
                   }
                 }
               >
@@ -3820,7 +3712,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c19"
                   style={
                     Object {
-                      "boxShadow": "0px 0px 4px 0px rgba(104, 79, 255,0.3) inset",
+                      "boxShadow": "0px 0px 2px 0px rgba(104, 79, 255,0.3) inset",
                       "height": "0.6rem",
                       "width": "100%",
                     }
@@ -3831,8 +3723,8 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c20"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "height": "2.4rem",
+                    "width": "2.4rem",
                   }
                 }
               >
@@ -3843,9 +3735,9 @@ exports[`stepsDemo Component JSON 1`] = `
                   style={
                     Object {
                       "backgroundColor": "#ffffff",
-                      "boxShadow": "0px 0px 4px 0px rgba(104, 79, 255,0.3) inset",
-                      "height": "4rem",
-                      "width": "4rem",
+                      "boxShadow": "0px 0px 2px 0px rgba(104, 79, 255,0.3) inset",
+                      "height": "2.4rem",
+                      "width": "2.4rem",
                     }
                   }
                 >
@@ -3868,13 +3760,13 @@ exports[`stepsDemo Component JSON 1`] = `
                     size="mini"
                     style={
                       Object {
-                        "color": "red",
+                        "color": "#ffffff",
                         "fontSize": "1.2rem",
                         "fontWeight": 700,
                       }
                     }
                   >
-                    
+                    0
                   </div>
                 </div>
                 <div
@@ -3924,8 +3816,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c17"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "width": "100%",
                   }
                 }
               >
@@ -3933,7 +3824,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c19"
                   style={
                     Object {
-                      "boxShadow": "0px 0px 4px 0px rgba(104, 79, 255,0.3) inset",
+                      "boxShadow": "0px 0px 2px 0px rgba(104, 79, 255,0.3) inset",
                       "height": "0.6rem",
                       "width": "100%",
                     }
@@ -3944,8 +3835,8 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c20"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "height": "2.4rem",
+                    "width": "2.4rem",
                   }
                 }
               >
@@ -3956,9 +3847,9 @@ exports[`stepsDemo Component JSON 1`] = `
                   style={
                     Object {
                       "backgroundColor": "#ffffff",
-                      "boxShadow": "0px 0px 4px 0px rgba(104, 79, 255,0.3) inset",
-                      "height": "4rem",
-                      "width": "4rem",
+                      "boxShadow": "0px 0px 2px 0px rgba(104, 79, 255,0.3) inset",
+                      "height": "2.4rem",
+                      "width": "2.4rem",
                     }
                   }
                 >
@@ -3981,13 +3872,13 @@ exports[`stepsDemo Component JSON 1`] = `
                     size="mini"
                     style={
                       Object {
-                        "color": "red",
+                        "color": "#ffffff",
                         "fontSize": "1.2rem",
                         "fontWeight": 700,
                       }
                     }
                   >
-                    
+                    0
                   </div>
                 </div>
                 <div
@@ -4037,8 +3928,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c17"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "width": "100%",
                   }
                 }
               >
@@ -4046,7 +3936,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c18"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "#f22735",
                       "height": "0.6rem",
                       "width": "100%",
                     }
@@ -4057,8 +3947,8 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c5"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "height": "2.4rem",
+                    "width": "2.4rem",
                   }
                 }
               >
@@ -4069,8 +3959,8 @@ exports[`stepsDemo Component JSON 1`] = `
                   style={
                     Object {
                       "backgroundColor": "#f22735",
-                      "height": "4rem",
-                      "width": "4rem",
+                      "height": "2.4rem",
+                      "width": "2.4rem",
                     }
                   }
                 >
@@ -4151,8 +4041,8 @@ exports[`stepsDemo Component JSON 1`] = `
               className="c5"
               style={
                 Object {
-                  "height": "4rem",
-                  "width": "4rem",
+                  "height": "3.2rem",
+                  "width": "3.2rem",
                 }
               }
             >
@@ -4163,8 +4053,8 @@ exports[`stepsDemo Component JSON 1`] = `
                 style={
                   Object {
                     "backgroundColor": "rgb(128,144,255)",
-                    "height": "4rem",
-                    "width": "4rem",
+                    "height": "3.2rem",
+                    "width": "3.2rem",
                   }
                 }
               >
@@ -4229,8 +4119,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c17"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "width": "100%",
                   }
                 }
               >
@@ -4238,7 +4127,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c18"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "rgb(128,144,255)",
                       "height": "0.6rem",
                       "width": "100%",
                     }
@@ -4249,8 +4138,8 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c5"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "height": "3.2rem",
+                    "width": "3.2rem",
                   }
                 }
               >
@@ -4261,8 +4150,8 @@ exports[`stepsDemo Component JSON 1`] = `
                   style={
                     Object {
                       "backgroundColor": "rgb(128,144,255)",
-                      "height": "4rem",
-                      "width": "4rem",
+                      "height": "3.2rem",
+                      "width": "3.2rem",
                     }
                   }
                 >
@@ -4328,8 +4217,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c17"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "width": "100%",
                   }
                 }
               >
@@ -4337,7 +4225,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c18"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "rgb(128,144,255)",
                       "height": "0.6rem",
                       "width": "100%",
                     }
@@ -4348,8 +4236,8 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c5"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "height": "3.2rem",
+                    "width": "3.2rem",
                   }
                 }
               >
@@ -4360,8 +4248,8 @@ exports[`stepsDemo Component JSON 1`] = `
                   style={
                     Object {
                       "backgroundColor": "rgb(128,144,255)",
-                      "height": "4rem",
-                      "width": "4rem",
+                      "height": "3.2rem",
+                      "width": "3.2rem",
                     }
                   }
                 >
@@ -4384,7 +4272,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     size="normal"
                     style={
                       Object {
-                        "color": "red",
+                        "color": "#ffffff",
                         "fontSize": "2rem",
                         "fontWeight": 700,
                       }
@@ -4440,8 +4328,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c17"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "width": "100%",
                   }
                 }
               >
@@ -4449,7 +4336,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c19"
                   style={
                     Object {
-                      "boxShadow": "0px 0px 4px 0px rgba(104, 79, 255,0.3) inset",
+                      "boxShadow": "0px 0px 2px 0px rgba(104, 79, 255,0.3) inset",
                       "height": "0.6rem",
                       "width": "100%",
                     }
@@ -4460,8 +4347,8 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c20"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "height": "3.2rem",
+                    "width": "3.2rem",
                   }
                 }
               >
@@ -4472,9 +4359,9 @@ exports[`stepsDemo Component JSON 1`] = `
                   style={
                     Object {
                       "backgroundColor": "#ffffff",
-                      "boxShadow": "0px 0px 4px 0px rgba(104, 79, 255,0.3) inset",
-                      "height": "4rem",
-                      "width": "4rem",
+                      "boxShadow": "0px 0px 2px 0px rgba(104, 79, 255,0.3) inset",
+                      "height": "3.2rem",
+                      "width": "3.2rem",
                     }
                   }
                 >
@@ -4497,13 +4384,13 @@ exports[`stepsDemo Component JSON 1`] = `
                     size="normal"
                     style={
                       Object {
-                        "color": "red",
+                        "color": "#ffffff",
                         "fontSize": "2rem",
                         "fontWeight": 700,
                       }
                     }
                   >
-                    
+                    0
                   </div>
                 </div>
                 <div
@@ -4553,8 +4440,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c17"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "width": "100%",
                   }
                 }
               >
@@ -4562,7 +4448,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c19"
                   style={
                     Object {
-                      "boxShadow": "0px 0px 4px 0px rgba(104, 79, 255,0.3) inset",
+                      "boxShadow": "0px 0px 2px 0px rgba(104, 79, 255,0.3) inset",
                       "height": "0.6rem",
                       "width": "100%",
                     }
@@ -4573,8 +4459,8 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c20"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "height": "3.2rem",
+                    "width": "3.2rem",
                   }
                 }
               >
@@ -4585,9 +4471,9 @@ exports[`stepsDemo Component JSON 1`] = `
                   style={
                     Object {
                       "backgroundColor": "#ffffff",
-                      "boxShadow": "0px 0px 4px 0px rgba(104, 79, 255,0.3) inset",
-                      "height": "4rem",
-                      "width": "4rem",
+                      "boxShadow": "0px 0px 2px 0px rgba(104, 79, 255,0.3) inset",
+                      "height": "3.2rem",
+                      "width": "3.2rem",
                     }
                   }
                 >
@@ -4610,13 +4496,13 @@ exports[`stepsDemo Component JSON 1`] = `
                     size="normal"
                     style={
                       Object {
-                        "color": "red",
+                        "color": "#ffffff",
                         "fontSize": "2rem",
                         "fontWeight": 700,
                       }
                     }
                   >
-                    
+                    0
                   </div>
                 </div>
                 <div
@@ -4666,8 +4552,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c17"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "width": "100%",
                   }
                 }
               >
@@ -4675,7 +4560,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c18"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "#f22735",
                       "height": "0.6rem",
                       "width": "100%",
                     }
@@ -4686,8 +4571,8 @@ exports[`stepsDemo Component JSON 1`] = `
                 className="c5"
                 style={
                   Object {
-                    "height": "4rem",
-                    "width": "4rem",
+                    "height": "3.2rem",
+                    "width": "3.2rem",
                   }
                 }
               >
@@ -4698,8 +4583,8 @@ exports[`stepsDemo Component JSON 1`] = `
                   style={
                     Object {
                       "backgroundColor": "#f22735",
-                      "height": "4rem",
-                      "width": "4rem",
+                      "height": "3.2rem",
+                      "width": "3.2rem",
                     }
                   }
                 >
@@ -4821,8 +4706,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c10"
                   style={
                     Object {
-                      "color": "blue",
-                      "fontSize": "1.6rem",
+                      "color": "#333333",
                     }
                   }
                 >
@@ -4864,7 +4748,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "#56c22d",
                       "height": "0.1rem",
                       "width": "100%",
                     }
@@ -4916,8 +4800,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c10"
                     style={
                       Object {
-                        "color": "blue",
-                        "fontSize": "1.6rem",
+                        "color": "#333333",
                       }
                     }
                   >
@@ -4960,7 +4843,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "#4d63ff",
                       "height": "0.1rem",
                       "width": "100%",
                     }
@@ -5012,8 +4895,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c10"
                     style={
                       Object {
-                        "color": "blue",
-                        "fontSize": "1.6rem",
+                        "color": "#333333",
                       }
                     }
                   >
@@ -5056,7 +4938,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "#4d63ff",
                       "height": "0.1rem",
                       "width": "100%",
                     }
@@ -5108,8 +4990,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c10"
                     style={
                       Object {
-                        "color": "blue",
-                        "fontSize": "1.6rem",
+                        "color": "#cccccc",
                       }
                     }
                   >
@@ -5152,7 +5033,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "#cccccc",
                       "height": "0.1rem",
                       "width": "100%",
                     }
@@ -5204,8 +5085,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c10"
                     style={
                       Object {
-                        "color": "blue",
-                        "fontSize": "1.6rem",
+                        "color": "#cccccc",
                       }
                     }
                   >
@@ -5248,7 +5128,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "#f22735",
                       "height": "0.1rem",
                       "width": "100%",
                     }
@@ -5300,8 +5180,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c10"
                     style={
                       Object {
-                        "color": "blue",
-                        "fontSize": "1.6rem",
+                        "color": "#f22735",
                       }
                     }
                   >
@@ -5413,7 +5292,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c28"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "#56c22d",
                       "height": "0.1rem",
                       "width": "100%",
                     }
@@ -5487,7 +5366,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c28"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "#4d63ff",
                       "height": "0.1rem",
                       "width": "100%",
                     }
@@ -5561,7 +5440,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c28"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "#4d63ff",
                       "height": "0.1rem",
                       "width": "100%",
                     }
@@ -5635,7 +5514,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c28"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "#cccccc",
                       "height": "0.1rem",
                       "width": "100%",
                     }
@@ -5709,7 +5588,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c28"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "#f22735",
                       "height": "0.1rem",
                       "width": "100%",
                     }
@@ -5852,7 +5731,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c28"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "#56c22d",
                       "height": "0.1rem",
                       "width": "100%",
                     }
@@ -5926,7 +5805,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c28"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "#4d63ff",
                       "height": "0.1rem",
                       "width": "100%",
                     }
@@ -6000,7 +5879,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c28"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "#4d63ff",
                       "height": "0.1rem",
                       "width": "100%",
                     }
@@ -6074,7 +5953,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c28"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "#cccccc",
                       "height": "0.1rem",
                       "width": "100%",
                     }
@@ -6148,7 +6027,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c28"
                   style={
                     Object {
-                      "backgroundColor": "red",
+                      "backgroundColor": "#f22735",
                       "height": "0.1rem",
                       "width": "100%",
                     }
@@ -6202,7 +6081,18 @@ exports[`stepsDemo Component JSON 1`] = `
     <div
       className="c1"
       orientation="vertical"
-      style={Object {}}
+      style={
+        Object {
+          "marginBottom": "3rem",
+          "marginLeft": "3rem",
+          "marginRight": "3rem",
+          "marginTop": "3rem",
+          "paddingBottom": "3rem",
+          "paddingLeft": "3rem",
+          "paddingRight": "3rem",
+          "paddingTop": "3rem",
+        }
+      }
     >
       <div
         className="c30"
@@ -6309,7 +6199,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "7.4rem",
+              "height": "10rem",
             }
           }
         >
@@ -6338,7 +6228,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "#56c22d",
+                      "backgroundColor": "red",
                       "height": "100%",
                       "width": "0.1rem",
                     }
@@ -6430,7 +6320,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "7.4rem",
+              "height": "10rem",
             }
           }
         >
@@ -6459,7 +6349,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "#4d63ff",
+                      "backgroundColor": "purple",
                       "height": "100%",
                       "width": "0.1rem",
                     }
@@ -6564,7 +6454,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "7.4rem",
+              "height": "10rem",
             }
           }
         >
@@ -6593,7 +6483,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "#4d63ff",
+                      "backgroundColor": "red",
                       "height": "100%",
                       "width": "0.1rem",
                     }
@@ -6658,7 +6548,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       }
                     }
                   >
-                    
+                    0
                   </div>
                 </div>
                 <div
@@ -6698,7 +6588,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "7.4rem",
+              "height": "10rem",
             }
           }
         >
@@ -6727,7 +6617,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "#cccccc",
+                      "backgroundColor": "red",
                       "height": "100%",
                       "width": "0.1rem",
                     }
@@ -6792,7 +6682,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       }
                     }
                   >
-                    
+                    0
                   </div>
                 </div>
                 <div
@@ -6832,7 +6722,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "7.4rem",
+              "height": "10rem",
             }
           }
         >
@@ -6861,7 +6751,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "#f22735",
+                      "backgroundColor": "red",
                       "height": "100%",
                       "width": "0.1rem",
                     }
@@ -6961,7 +6851,18 @@ exports[`stepsDemo Component JSON 1`] = `
     <div
       className="c1"
       orientation="vertical"
-      style={Object {}}
+      style={
+        Object {
+          "marginBottom": "3rem",
+          "marginLeft": "3rem",
+          "marginRight": "3rem",
+          "marginTop": "3rem",
+          "paddingBottom": "3rem",
+          "paddingLeft": "3rem",
+          "paddingRight": "3rem",
+          "paddingTop": "3rem",
+        }
+      }
     >
       <div
         className="c30"
@@ -7068,7 +6969,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "8.2rem",
+              "height": "10rem",
             }
           }
         >
@@ -7097,7 +6998,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "#56c22d",
+                      "backgroundColor": "red",
                       "height": "100%",
                       "width": "0.1rem",
                     }
@@ -7189,7 +7090,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "8.2rem",
+              "height": "10rem",
             }
           }
         >
@@ -7218,7 +7119,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "#4d63ff",
+                      "backgroundColor": "red",
                       "height": "100%",
                       "width": "0.1rem",
                     }
@@ -7323,7 +7224,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "8.2rem",
+              "height": "10rem",
             }
           }
         >
@@ -7352,7 +7253,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "#4d63ff",
+                      "backgroundColor": "red",
                       "height": "100%",
                       "width": "0.1rem",
                     }
@@ -7417,7 +7318,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       }
                     }
                   >
-                    
+                    0
                   </div>
                 </div>
                 <div
@@ -7457,7 +7358,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "8.2rem",
+              "height": "10rem",
             }
           }
         >
@@ -7486,7 +7387,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "#cccccc",
+                      "backgroundColor": "red",
                       "height": "100%",
                       "width": "0.1rem",
                     }
@@ -7551,7 +7452,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       }
                     }
                   >
-                    
+                    0
                   </div>
                 </div>
                 <div
@@ -7591,7 +7492,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "8.2rem",
+              "height": "10rem",
             }
           }
         >
@@ -7620,7 +7521,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "#f22735",
+                      "backgroundColor": "red",
                       "height": "100%",
                       "width": "0.1rem",
                     }
@@ -7720,7 +7621,18 @@ exports[`stepsDemo Component JSON 1`] = `
     <div
       className="c1"
       orientation="vertical"
-      style={Object {}}
+      style={
+        Object {
+          "marginBottom": "3rem",
+          "marginLeft": "3rem",
+          "marginRight": "3rem",
+          "marginTop": "3rem",
+          "paddingBottom": "3rem",
+          "paddingLeft": "3rem",
+          "paddingRight": "3rem",
+          "paddingTop": "3rem",
+        }
+      }
     >
       <div
         className="c30"
@@ -7827,7 +7739,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "8.2rem",
+              "height": "10rem",
             }
           }
         >
@@ -7856,7 +7768,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "#56c22d",
+                      "backgroundColor": "red",
                       "height": "100%",
                       "width": "0.1rem",
                     }
@@ -7948,7 +7860,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "8.2rem",
+              "height": "10rem",
             }
           }
         >
@@ -7977,7 +7889,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "#4d63ff",
+                      "backgroundColor": "red",
                       "height": "100%",
                       "width": "0.1rem",
                     }
@@ -8082,7 +7994,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "8.2rem",
+              "height": "10rem",
             }
           }
         >
@@ -8111,7 +8023,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "#4d63ff",
+                      "backgroundColor": "red",
                       "height": "100%",
                       "width": "0.1rem",
                     }
@@ -8176,7 +8088,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       }
                     }
                   >
-                    
+                    0
                   </div>
                 </div>
                 <div
@@ -8216,7 +8128,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "8.2rem",
+              "height": "10rem",
             }
           }
         >
@@ -8245,7 +8157,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "#cccccc",
+                      "backgroundColor": "red",
                       "height": "100%",
                       "width": "0.1rem",
                     }
@@ -8310,7 +8222,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       }
                     }
                   >
-                    
+                    0
                   </div>
                 </div>
                 <div
@@ -8350,7 +8262,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "8.2rem",
+              "height": "10rem",
             }
           }
         >
@@ -8379,7 +8291,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "#f22735",
+                      "backgroundColor": "red",
                       "height": "100%",
                       "width": "0.1rem",
                     }
@@ -8479,7 +8391,18 @@ exports[`stepsDemo Component JSON 1`] = `
     <div
       className="c1"
       orientation="vertical"
-      style={Object {}}
+      style={
+        Object {
+          "marginBottom": "3rem",
+          "marginLeft": "3rem",
+          "marginRight": "3rem",
+          "marginTop": "3rem",
+          "paddingBottom": "3rem",
+          "paddingLeft": "3rem",
+          "paddingRight": "3rem",
+          "paddingTop": "3rem",
+        }
+      }
     >
       <div
         className="c30"
@@ -8574,7 +8497,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "8.2rem",
+              "height": "10rem",
             }
           }
         >
@@ -8603,7 +8526,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c18"
                   style={
                     Object {
-                      "backgroundColor": "rgb(128,144,255)",
+                      "backgroundColor": "red",
                       "height": "100%",
                       "width": "0.6rem",
                     }
@@ -8683,7 +8606,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "8.2rem",
+              "height": "10rem",
             }
           }
         >
@@ -8712,7 +8635,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c18"
                   style={
                     Object {
-                      "backgroundColor": "rgb(128,144,255)",
+                      "backgroundColor": "red",
                       "height": "100%",
                       "width": "0.6rem",
                     }
@@ -8805,7 +8728,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "8.2rem",
+              "height": "10rem",
             }
           }
         >
@@ -8834,7 +8757,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c36"
                   style={
                     Object {
-                      "boxShadow": "0px 0px 4px 0px rgba(104, 79, 255,0.3) inset",
+                      "boxShadow": "0px 0px 2px 0px rgba(104, 79, 255,0.3) inset",
                       "height": "100%",
                       "width": "0.6rem",
                     }
@@ -8857,7 +8780,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   style={
                     Object {
                       "backgroundColor": "#ffffff",
-                      "boxShadow": "0px 0px 4px 0px rgba(104, 79, 255,0.3) inset",
+                      "boxShadow": "0px 0px 2px 0px rgba(104, 79, 255,0.3) inset",
                       "height": "3.2rem",
                       "width": "3.2rem",
                     }
@@ -8888,7 +8811,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       }
                     }
                   >
-                    
+                    0
                   </div>
                 </div>
                 <div
@@ -8928,7 +8851,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "8.2rem",
+              "height": "10rem",
             }
           }
         >
@@ -8957,7 +8880,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c36"
                   style={
                     Object {
-                      "boxShadow": "0px 0px 4px 0px rgba(104, 79, 255,0.3) inset",
+                      "boxShadow": "0px 0px 2px 0px rgba(104, 79, 255,0.3) inset",
                       "height": "100%",
                       "width": "0.6rem",
                     }
@@ -8980,7 +8903,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   style={
                     Object {
                       "backgroundColor": "#ffffff",
-                      "boxShadow": "0px 0px 4px 0px rgba(104, 79, 255,0.3) inset",
+                      "boxShadow": "0px 0px 2px 0px rgba(104, 79, 255,0.3) inset",
                       "height": "3.2rem",
                       "width": "3.2rem",
                     }
@@ -9011,7 +8934,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       }
                     }
                   >
-                    
+                    0
                   </div>
                 </div>
                 <div
@@ -9051,7 +8974,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "8.2rem",
+              "height": "10rem",
             }
           }
         >
@@ -9080,7 +9003,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c18"
                   style={
                     Object {
-                      "backgroundColor": "#f22735",
+                      "backgroundColor": "red",
                       "height": "100%",
                       "width": "0.6rem",
                     }
@@ -9168,7 +9091,18 @@ exports[`stepsDemo Component JSON 1`] = `
     <div
       className="c1"
       orientation="vertical"
-      style={Object {}}
+      style={
+        Object {
+          "marginBottom": "3rem",
+          "marginLeft": "3rem",
+          "marginRight": "3rem",
+          "marginTop": "3rem",
+          "paddingBottom": "3rem",
+          "paddingLeft": "3rem",
+          "paddingRight": "3rem",
+          "paddingTop": "3rem",
+        }
+      }
     >
       <div
         className="c30"
@@ -9250,7 +9184,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "7.4rem",
+              "height": "10rem",
             }
           }
         >
@@ -9279,7 +9213,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "#56c22d",
+                      "backgroundColor": "red",
                       "height": "100%",
                       "width": "0.1rem",
                     }
@@ -9346,7 +9280,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "7.4rem",
+              "height": "10rem",
             }
           }
         >
@@ -9375,7 +9309,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "#4d63ff",
+                      "backgroundColor": "red",
                       "height": "100%",
                       "width": "0.1rem",
                     }
@@ -9442,7 +9376,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "7.4rem",
+              "height": "10rem",
             }
           }
         >
@@ -9471,7 +9405,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "#4d63ff",
+                      "backgroundColor": "red",
                       "height": "100%",
                       "width": "0.1rem",
                     }
@@ -9538,7 +9472,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "7.4rem",
+              "height": "10rem",
             }
           }
         >
@@ -9567,7 +9501,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "#cccccc",
+                      "backgroundColor": "red",
                       "height": "100%",
                       "width": "0.1rem",
                     }
@@ -9634,7 +9568,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "7.4rem",
+              "height": "10rem",
             }
           }
         >
@@ -9663,7 +9597,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c13"
                   style={
                     Object {
-                      "backgroundColor": "#f22735",
+                      "backgroundColor": "red",
                       "height": "100%",
                       "width": "0.1rem",
                     }
@@ -9738,7 +9672,18 @@ exports[`stepsDemo Component JSON 1`] = `
     <div
       className="c1"
       orientation="vertical"
-      style={Object {}}
+      style={
+        Object {
+          "marginBottom": "3rem",
+          "marginLeft": "3rem",
+          "marginRight": "3rem",
+          "marginTop": "3rem",
+          "paddingBottom": "3rem",
+          "paddingLeft": "3rem",
+          "paddingRight": "3rem",
+          "paddingTop": "3rem",
+        }
+      }
     >
       <div
         className="c30"
@@ -9799,7 +9744,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "8.2rem",
+              "height": "10rem",
             }
           }
         >
@@ -9828,7 +9773,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c28"
                   style={
                     Object {
-                      "backgroundColor": "#56c22d",
+                      "backgroundColor": "red",
                       "height": "100%",
                       "width": "0.1rem",
                     }
@@ -9874,7 +9819,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "8.2rem",
+              "height": "10rem",
             }
           }
         >
@@ -9903,7 +9848,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c28"
                   style={
                     Object {
-                      "backgroundColor": "#4d63ff",
+                      "backgroundColor": "red",
                       "height": "100%",
                       "width": "0.1rem",
                     }
@@ -9949,7 +9894,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "8.2rem",
+              "height": "10rem",
             }
           }
         >
@@ -9978,7 +9923,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c28"
                   style={
                     Object {
-                      "backgroundColor": "#4d63ff",
+                      "backgroundColor": "red",
                       "height": "100%",
                       "width": "0.1rem",
                     }
@@ -10024,7 +9969,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "8.2rem",
+              "height": "10rem",
             }
           }
         >
@@ -10053,7 +9998,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c28"
                   style={
                     Object {
-                      "backgroundColor": "#cccccc",
+                      "backgroundColor": "red",
                       "height": "100%",
                       "width": "0.1rem",
                     }
@@ -10099,7 +10044,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "8.2rem",
+              "height": "10rem",
             }
           }
         >
@@ -10128,7 +10073,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c28"
                   style={
                     Object {
-                      "backgroundColor": "#f22735",
+                      "backgroundColor": "red",
                       "height": "100%",
                       "width": "0.1rem",
                     }
@@ -10182,7 +10127,18 @@ exports[`stepsDemo Component JSON 1`] = `
     <div
       className="c1"
       orientation="vertical"
-      style={Object {}}
+      style={
+        Object {
+          "marginBottom": "3rem",
+          "marginLeft": "3rem",
+          "marginRight": "3rem",
+          "marginTop": "3rem",
+          "paddingBottom": "3rem",
+          "paddingLeft": "3rem",
+          "paddingRight": "3rem",
+          "paddingTop": "3rem",
+        }
+      }
     >
       <div
         className="c30"
@@ -10253,7 +10209,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "8.2rem",
+              "height": "10rem",
             }
           }
         >
@@ -10282,7 +10238,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c28"
                   style={
                     Object {
-                      "backgroundColor": "#56c22d",
+                      "backgroundColor": "red",
                       "height": "100%",
                       "width": "0.1rem",
                     }
@@ -10338,7 +10294,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "8.2rem",
+              "height": "10rem",
             }
           }
         >
@@ -10367,7 +10323,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c28"
                   style={
                     Object {
-                      "backgroundColor": "#4d63ff",
+                      "backgroundColor": "red",
                       "height": "100%",
                       "width": "0.1rem",
                     }
@@ -10423,7 +10379,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "8.2rem",
+              "height": "10rem",
             }
           }
         >
@@ -10452,7 +10408,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c28"
                   style={
                     Object {
-                      "backgroundColor": "#4d63ff",
+                      "backgroundColor": "red",
                       "height": "100%",
                       "width": "0.1rem",
                     }
@@ -10508,7 +10464,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "8.2rem",
+              "height": "10rem",
             }
           }
         >
@@ -10537,7 +10493,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c28"
                   style={
                     Object {
-                      "backgroundColor": "#cccccc",
+                      "backgroundColor": "red",
                       "height": "100%",
                       "width": "0.1rem",
                     }
@@ -10593,7 +10549,7 @@ exports[`stepsDemo Component JSON 1`] = `
           className="c11"
           style={
             Object {
-              "height": "8.2rem",
+              "height": "10rem",
             }
           }
         >
@@ -10622,7 +10578,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   className="c28"
                   style={
                     Object {
-                      "backgroundColor": "#f22735",
+                      "backgroundColor": "red",
                       "height": "100%",
                       "width": "0.1rem",
                     }
@@ -10676,6 +10632,466 @@ exports[`stepsDemo Component JSON 1`] = `
         </div>
       </div>
     </div>
+  </div>
+  <div
+    className="c41"
+  >
+    <div
+      className="c42"
+    >
+      <button
+        className="c43"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        onMouseUp={[Function]}
+        size="default"
+        style={
+          Object {
+            "backgroundColor": "#4d63ff",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomWidth": 0,
+            "borderLeftWidth": 0,
+            "borderRightWidth": 0,
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopWidth": 0,
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+          }
+        }
+        type="primary"
+      >
+        <span
+          className="c44"
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          pre
+        </span>
+      </button>
+      <button
+        className="c43"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        onMouseUp={[Function]}
+        size="default"
+        style={
+          Object {
+            "backgroundColor": "#4d63ff",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomWidth": 0,
+            "borderLeftWidth": 0,
+            "borderRightWidth": 0,
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopWidth": 0,
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+          }
+        }
+        type="primary"
+      >
+        <span
+          className="c44"
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          Next
+        </span>
+      </button>
+    </div>
+    <div
+      className="c1"
+      orientation="horizontal"
+      style={
+        Object {
+          "width": "60rem",
+        }
+      }
+    >
+      <div
+        className="c2"
+        orientation="horizontal"
+        style={
+          Object {
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          className="c3"
+          style={
+            Object {
+              "width": "3.2rem",
+            }
+          }
+        >
+          <div
+            className="c4"
+            style={Object {}}
+          >
+            <div
+              className="c5"
+              style={
+                Object {
+                  "height": "3.2rem",
+                  "width": "3.2rem",
+                }
+              }
+            >
+              <div
+                className="c6"
+                orientation="horizontal"
+                size="normal"
+                style={
+                  Object {
+                    "backgroundColor": "#4d63ff",
+                    "borderBottomColor": "#4d63ff",
+                    "borderBottomStyle": "solid",
+                    "borderBottomWidth": "0.1rem",
+                    "borderLeftColor": "#4d63ff",
+                    "borderLeftStyle": "solid",
+                    "borderLeftWidth": "0.1rem",
+                    "borderRightColor": "#4d63ff",
+                    "borderRightStyle": "solid",
+                    "borderRightWidth": "0.1rem",
+                    "borderTopColor": "#4d63ff",
+                    "borderTopStyle": "solid",
+                    "borderTopWidth": "0.1rem",
+                    "height": "3.2rem",
+                    "width": "3.2rem",
+                  }
+                }
+              >
+                <i
+                  className="   c7"
+                  onClick={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  style={
+                    Object {
+                      "color": "#4d63ff",
+                      "fontSize": "1.8rem",
+                    }
+                  }
+                />
+                <div
+                  className="c14"
+                  size="normal"
+                  style={
+                    Object {
+                      "color": "#ffffff",
+                      "fontSize": "2rem",
+                      "fontWeight": 700,
+                    }
+                  }
+                >
+                  1
+                </div>
+              </div>
+              <div
+                className="c8"
+                orientation="horizontal"
+                size="normal"
+                style={Object {}}
+              >
+                <div
+                  className="c9"
+                  orientation="horizontal"
+                  size="normal"
+                  style={
+                    Object {
+                      "color": "#cccccc",
+                    }
+                  }
+                >
+                  First
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c11"
+          style={
+            Object {
+              "width": "21.2rem",
+            }
+          }
+        >
+          <div
+            className="c3"
+            style={
+              Object {
+                "width": "100%",
+              }
+            }
+          >
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c12"
+                style={
+                  Object {
+                    "width": "100%",
+                  }
+                }
+              >
+                <div
+                  className="c13"
+                  style={
+                    Object {
+                      "backgroundColor": "#cccccc",
+                      "height": "0.1rem",
+                      "width": "100%",
+                    }
+                  }
+                />
+              </div>
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "height": "2rem",
+                    "width": "2rem",
+                  }
+                }
+              >
+                <div
+                  className="c6"
+                  orientation="horizontal"
+                  size="normal"
+                  style={
+                    Object {
+                      "backgroundColor": "#ffffff",
+                      "borderBottomColor": "#cccccc",
+                      "borderBottomStyle": "solid",
+                      "borderBottomWidth": "0.1rem",
+                      "borderLeftColor": "#cccccc",
+                      "borderLeftStyle": "solid",
+                      "borderLeftWidth": "0.1rem",
+                      "borderRightColor": "#cccccc",
+                      "borderRightStyle": "solid",
+                      "borderRightWidth": "0.1rem",
+                      "borderTopColor": "#cccccc",
+                      "borderTopStyle": "solid",
+                      "borderTopWidth": "0.1rem",
+                      "height": "2rem",
+                      "width": "2rem",
+                    }
+                  }
+                >
+                  <i
+                    className="   c7"
+                    onClick={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    onMouseUp={[Function]}
+                    style={
+                      Object {
+                        "color": "#4d63ff",
+                        "fontSize": "1.8rem",
+                      }
+                    }
+                  />
+                  <div
+                    className="c14"
+                    size="normal"
+                    style={
+                      Object {
+                        "color": "#ffffff",
+                        "fontSize": "2rem",
+                        "fontWeight": 700,
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                </div>
+                <div
+                  className="c8"
+                  orientation="horizontal"
+                  size="normal"
+                  style={Object {}}
+                >
+                  <div
+                    className="c9"
+                    orientation="horizontal"
+                    size="normal"
+                    style={
+                      Object {
+                        "color": "#cccccc",
+                      }
+                    }
+                  >
+                    Second
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="c11"
+          style={
+            Object {
+              "width": "21.2rem",
+            }
+          }
+        >
+          <div
+            className="c3"
+            style={
+              Object {
+                "width": "100%",
+              }
+            }
+          >
+            <div
+              className="c4"
+              style={Object {}}
+            >
+              <div
+                className="c12"
+                style={
+                  Object {
+                    "width": "100%",
+                  }
+                }
+              >
+                <div
+                  className="c13"
+                  style={
+                    Object {
+                      "backgroundColor": "#cccccc",
+                      "height": "0.1rem",
+                      "width": "100%",
+                    }
+                  }
+                />
+              </div>
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "height": "2rem",
+                    "width": "2rem",
+                  }
+                }
+              >
+                <div
+                  className="c6"
+                  orientation="horizontal"
+                  size="normal"
+                  style={
+                    Object {
+                      "backgroundColor": "#ffffff",
+                      "borderBottomColor": "#cccccc",
+                      "borderBottomStyle": "solid",
+                      "borderBottomWidth": "0.1rem",
+                      "borderLeftColor": "#cccccc",
+                      "borderLeftStyle": "solid",
+                      "borderLeftWidth": "0.1rem",
+                      "borderRightColor": "#cccccc",
+                      "borderRightStyle": "solid",
+                      "borderRightWidth": "0.1rem",
+                      "borderTopColor": "#cccccc",
+                      "borderTopStyle": "solid",
+                      "borderTopWidth": "0.1rem",
+                      "height": "2rem",
+                      "width": "2rem",
+                    }
+                  }
+                >
+                  <i
+                    className="   c7"
+                    onClick={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    onMouseUp={[Function]}
+                    style={
+                      Object {
+                        "color": "#4d63ff",
+                        "fontSize": "1.8rem",
+                      }
+                    }
+                  />
+                  <div
+                    className="c14"
+                    size="normal"
+                    style={
+                      Object {
+                        "color": "#ffffff",
+                        "fontSize": "2rem",
+                        "fontWeight": 700,
+                      }
+                    }
+                  >
+                    0
+                  </div>
+                </div>
+                <div
+                  className="c8"
+                  orientation="horizontal"
+                  size="normal"
+                  style={Object {}}
+                >
+                  <div
+                    className="c9"
+                    orientation="horizontal"
+                    size="normal"
+                    style={
+                      Object {
+                        "color": "#cccccc",
+                      }
+                    }
+                  >
+                    Last
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="c45"
+    />
   </div>
 </div>
 `;

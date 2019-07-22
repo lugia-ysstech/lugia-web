@@ -260,6 +260,13 @@ const Title: Object = CSSComponent({
       color: blackColor,
       fontSize: 12,
     },
+    getCSS(themeMeta, themeProps) {
+      const { propsConfig } = themeProps;
+      const { description } = propsConfig;
+      if (description) {
+        return `margin-bottom:${px2remcss(12)}`;
+      }
+    },
   },
   css: css`
     box-sizing: border-box;
@@ -435,8 +442,12 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
   };
 
   getTitle(): React$Element<any> | null {
-    const { title } = this.props;
-    const TitleThemeProps = this.props.getPartOfThemeProps('TooltipTitle');
+    const { title, description } = this.props;
+    const TitleThemeProps = this.props.getPartOfThemeProps('TooltipTitle', {
+      props: {
+        description,
+      },
+    });
     if (title) {
       return <Title themeProps={TitleThemeProps}>{title}</Title>;
     }

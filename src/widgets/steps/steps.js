@@ -156,7 +156,7 @@ class Steps extends Component<StepsProps, StepsState> {
       stepStatus: getAttributeFromObject(
         child,
         'stepStatus',
-        getAttributeFromObject(child.props, 'stepStatus', 'wait')
+        getAttributeFromObject(child.props, 'stepStatus', undefined)
       ),
       description: getAttributeFromObject(
         child,

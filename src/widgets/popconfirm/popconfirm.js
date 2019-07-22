@@ -134,7 +134,7 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
     const ButtonTheme = deepMerge(
       {
         [viewClass]: {
-          ButtonWrap: {
+          Container: {
             normal: {
               margin: {
                 left: 6,
