@@ -79,6 +79,51 @@
           "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"], ["opacity"]]
         }
       }
+    },
+    "FlatSteps": {
+      "sequence": 3,
+      "title": "半扁平步骤条",
+      "desc": "半扁平步骤条配置",
+      "props": {
+        "stepType": "flat"
+      },
+      "theme": {
+        "StepsOutContainer": {
+          "name": "步骤条最外层容器",
+          "desc": "步骤条最外层容器",
+          "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"], ["opacity"]]
+        }
+      }
+    },
+    "IconSteps": {
+      "sequence": 4,
+      "title": "图标步骤条",
+      "desc": "图标步骤条步骤条配置",
+      "props": {
+        "stepType": "icon"
+      },
+      "theme": {
+        "StepsOutContainer": {
+          "name": "步骤条最外层容器",
+          "desc": "步骤条最外层容器",
+          "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"], ["opacity"]]
+        }
+      }
+    },
+    "DotSteps": {
+      "sequence": 5,
+      "title": "点状步骤条",
+      "desc": "点状步骤条配置",
+      "props": {
+        "stepType": "dot"
+      },
+      "theme": {
+        "StepsOutContainer": {
+          "name": "步骤条最外层容器",
+          "desc": "步骤条最外层容器",
+          "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"], ["opacity"]]
+        }
+      }
     }
   },
   "theme": {

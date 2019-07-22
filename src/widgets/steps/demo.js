@@ -32,32 +32,6 @@ const hThemeConfig = {
         width: 100,
       },
     },
-    StepLine: {
-      normal: {
-        background: {
-          color: 'red',
-        },
-      },
-    },
-
-    StepInnerContainer: {
-      normal: {
-        width: 40,
-        height: 40,
-      },
-    },
-    StepNumber: {
-      normal: {
-        color: 'red',
-        fontSize: 30,
-      },
-    },
-    StepDescription: {
-      normal: {
-        color: 'blue',
-        fontSize: 16,
-      },
-    },
   },
 };
 const vThemeConfig = {
@@ -82,12 +56,6 @@ const vThemeConfig = {
         },
       },
     },
-    StepInnerContainer: {
-      normal: {
-        width: 40,
-        height: 40,
-      },
-    },
   },
 };
 const singleThemeConfig = {
@@ -99,20 +67,14 @@ const singleThemeConfig = {
         },
       },
     },
-    StepInnerContainer: {
-      normal: {
-        width: 60,
-        height: 60,
-      },
-    },
   },
 };
 const data = [
-  { title: 'this is title1111', description: 'this is step description111', stepStatus: 'finish' },
-  { title: 'this is title222', description: 'this is step description2', stepStatus: 'process' },
-  { title: 'this is title33', description: 'this is step description33', stepStatus: 'next' },
-  { title: 'this is title444', description: 'this is step description444', stepStatus: 'wait' },
-  { title: 'this is title555', description: 'this is step description5555', stepStatus: 'error' },
+  { title: 'title1111', description: 'description111', stepStatus: 'finish' },
+  { title: 'title222', description: 'description2', stepStatus: 'process' },
+  { title: 'title33', description: 'description33', stepStatus: 'next' },
+  { title: 'title444', description: 'description444', stepStatus: 'wait' },
+  { title: 'title555', description: 'description5555', stepStatus: 'error' },
 ];
 export default () => {
   return (
@@ -124,122 +86,120 @@ export default () => {
           </Wrapper>
           <p>带有描述</p>
           <Steps orientation="horizontal" size={'normal'}>
-            <Step
-              title="this is title1"
-              description={'this is step description111'}
-              stepStatus="finish"
-            />
-            <Step
-              title="this is title2"
-              description={'this is step description2'}
-              stepStatus="process"
-            />
-            <Step
-              title="this is title3"
-              description={'this is step description33'}
-              stepStatus="next"
-            />
-            <Step
-              title="this is title4"
-              description={'this is step description444'}
-              stepStatus="wait"
-            />
-            <Step
-              title="this is title5"
-              description={'this is step description5555'}
-              stepStatus="error"
-            />
+            <Step title="title1" description={'description111'} stepStatus="finish" />
+            <Step title="title1" description={'description111'} stepStatus="finish" />
+            <Step title="title2" description={'description2'} stepStatus="process" />
+            <Step title="title3" description={'description33'} stepStatus="next" />
+            <Step title="title4" description={'description444'} stepStatus="wait" />
+            <Step title="title5" description={'description5555'} stepStatus="error" />
           </Steps>
         </Wrapper>
         <Wrapper>
           <p>带有描述 居中显示</p>
           <Steps orientation="horizontal" size={'normal'} desAlign={'center'}>
-            <Step
-              title="this is title1"
-              description={'this is step description111'}
-              stepStatus="finish"
-            />
-            <Step
-              title="this is title2"
-              description={'this is step description2'}
-              stepStatus="process"
-            />
-            <Step
-              title="this is title3"
-              description={'this is step description33'}
-              stepStatus="next"
-            />
-            <Step
-              title="this is title4"
-              description={'this is step description444'}
-              stepStatus="wait"
-            />
-            <Step
-              title="this is title5"
-              description={'this is step description5555'}
-              stepStatus="error"
-            />
+            <Step title="title1" description={'description111'} stepStatus="finish" />
+            <Step title="title1" description={'description111'} stepStatus="finish" />
+            <Step title="title2" description={'description2'} stepStatus="process" />
+            <Step title="title3" description={'description33'} stepStatus="next" />
+            <Step title="title4" description={'description444'} stepStatus="wait" />
+            <Step title="title5" description={'description5555'} stepStatus="error" />
           </Steps>
         </Wrapper>
         <Wrapper>
           <p>简洁风格 size mini</p>
           <Steps orientation="horizontal" stepType={'simple'} size={'mini'}>
-            <Step title="this is title1" stepStatus="finish" />
-            <Step title="this is title2" stepStatus="process" />
-            <Step title="this is title3" stepStatus="next" />
-            <Step title="this is title4" stepStatus="wait" />
-            <Step title="this is title5" stepStatus="error" />
+            <Step title="title1" stepStatus="finish" />
+            <Step title="title1" stepStatus="finish" />
+            <Step title="title2" stepStatus="process" />
+            <Step title="title3" stepStatus="next" />
+            <Step title="title4" stepStatus="wait" />
+            <Step title="title5" stepStatus="error" />
           </Steps>
         </Wrapper>
         <Wrapper>
           <p>半扁平风格</p>
           <Steps orientation="horizontal" stepType={'flat'} size={'mini'}>
-            <Step title="this is title1" stepStatus="finish" />
-            <Step title="this is title2" stepStatus="process" />
-            <Step title="this is title3" stepStatus="next" />
-            <Step title="this is title4" stepStatus="wait" />
-            <Step title="this is title5" stepStatus="error" />
+            <Step title="title1" stepStatus="finish" />
+            <Step title="title1" stepStatus="finish" />
+            <Step title="title2" stepStatus="process" />
+            <Step title="title3" stepStatus="next" />
+            <Step title="title4" stepStatus="wait" />
+            <Step title="title5" stepStatus="error" />
           </Steps>
         </Wrapper>
         <Wrapper>
           <p>半扁平风格</p>
           <Steps orientation="horizontal" stepType={'flat'} size={'normal'}>
-            <Step title="this is title1" stepStatus="finish" />
-            <Step title="this is title2" stepStatus="process" />
-            <Step title="this is title3" stepStatus="next" />
-            <Step title="this is title4" stepStatus="wait" />
-            <Step title="this is title5" stepStatus="error" />
+            <Step title="title1" stepStatus="finish" />
+            <Step title="title1" stepStatus="finish" />
+            <Step title="title2" stepStatus="process" />
+            <Step title="title3" stepStatus="next" />
+            <Step title="title4" stepStatus="wait" />
+            <Step title="title5" stepStatus="error" />
           </Steps>
         </Wrapper>
 
         <Wrapper>
           <p>icon</p>
           <Steps orientation="horizontal" stepType={'icon'} size={'mini'}>
-            <Step icon={'lugia-icon-financial_cloud'} stepStatus="finish" />
-            <Step icon={'lugia-icon-financial_cloud'} stepStatus="process" />
-            <Step icon={'lugia-icon-financial_cloud'} stepStatus="next" />
-            <Step icon={'lugia-icon-financial_cloud'} stepStatus="wait" />
-            <Step icon={'lugia-icon-financial_cloud'} stepStatus="error" />
+            <Step
+              icon={'lugia-icon-financial_cloud'}
+              stepStatus="finish"
+              title="title1"
+              description={'description111'}
+            />
+            <Step
+              icon={'lugia-icon-financial_upload_cloud'}
+              stepStatus="finish"
+              title="title2"
+              description={'description2'}
+            />
+            <Step
+              icon={'lugia-icon-financial_download_cloud'}
+              stepStatus="process"
+              title="title3"
+              description={'description3'}
+            />
+            <Step
+              icon={'lugia-icon-financial_download_cloud'}
+              stepStatus="next"
+              title="title4"
+              description={'description4'}
+            />
+            <Step
+              icon={'lugia-icon-financial_cloud'}
+              stepStatus="wait"
+              title="title5"
+              description={'description5'}
+            />
+            <Step
+              icon={'lugia-icon-financial_cloud'}
+              stepStatus="error"
+              title="title5"
+              description={'description5'}
+            />
           </Steps>
         </Wrapper>
         <Wrapper>
           <p>点状 虚线</p>
           <Steps orientation="horizontal" stepType={'dot'}>
-            <Step title="this is title1" stepStatus="finish" />
-            <Step title="this is title2" stepStatus="process" isDashed={true} />
-            <Step title="this is title3" stepStatus="next" isDashed={true} />
-            <Step title="this is title4" stepStatus="wait" isDashed={true} />
-            <Step title="this is title5" stepStatus="error" isDashed={true} />
+            <Step title="title1" stepStatus="finish" />
+            <Step title="title1" stepStatus="finish" />
+            <Step title="title2" stepStatus="process" isDashed={true} />
+            <Step title="title3" stepStatus="next" isDashed={true} />
+            <Step title="title4" stepStatus="wait" isDashed={true} />
+            <Step title="title5" stepStatus="error" isDashed={true} />
           </Steps>
         </Wrapper>
         <Wrapper>
           <p>点状 实线</p>
           <Steps orientation="horizontal" stepType={'dot'}>
-            <Step title="this is title1" stepStatus="finish" />
-            <Step title="this is title2" stepStatus="process" />
-            <Step title="this is title3" stepStatus="next" />
-            <Step title="this is title4" stepStatus="wait" />
-            <Step title="this is title5" stepStatus="error" />
+            <Step title="title1" stepStatus="finish" />
+            <Step title="title1" stepStatus="finish" />
+            <Step title="title2" stepStatus="process" />
+            <Step title="title3" stepStatus="next" />
+            <Step title="title4" stepStatus="wait" />
+            <Step title="title5" stepStatus="error" />
           </Steps>
         </Wrapper>
       </Theme>
@@ -248,174 +208,115 @@ export default () => {
           <p>简洁风格 size mini</p>
 
           <Steps orientation="vertical" stepType="simple" size="mini">
+            <Step title="title1" stepStatus="finish" description="description1" />
+            <Step title="title1" stepStatus="finish" description="description1" />
             <Step
-              title="this is title1"
-              stepStatus="finish"
-              description="this is step description1"
-            />
-            <Step
-              title="this is title2"
+              title="title2"
               stepStatus="process"
-              description="this is step description2"
+              description="description2"
               theme={singleThemeConfig}
             />
-            <Step
-              title="this is title3"
-              stepStatus="next"
-              description="this is step description3"
-            />
-            <Step
-              title="this is title4"
-              stepStatus="wait"
-              description="this is step description4"
-            />
-            <Step
-              title="this is title5"
-              stepStatus="error"
-              description="this is step description5"
-            />
+            <Step title="title3" stepStatus="next" description="description3" />
+            <Step title="title4" stepStatus="wait" description="description4" />
+            <Step title="title5" stepStatus="error" description="description5" />
           </Steps>
         </VWrapper>
         <VWrapper>
           <p>简洁风格 size normal</p>
 
           <Steps orientation="vertical" stepType="simple" size="normal">
-            <Step
-              title="this is title1"
-              stepStatus="finish"
-              description="this is step description1"
-            />
-            <Step
-              title="this is title2"
-              stepStatus="process"
-              description="this is step description2"
-            />
-            <Step
-              title="this is title3"
-              stepStatus="next"
-              description="this is step description3"
-            />
-            <Step
-              title="this is title4"
-              stepStatus="wait"
-              description="this is step description4"
-            />
-            <Step
-              title="this is title5"
-              stepStatus="error"
-              description="this is step description5"
-            />
+            <Step title="title1" stepStatus="finish" description="description1" />
+            <Step title="title1" stepStatus="finish" description="description1" />
+            <Step title="title2" stepStatus="process" description="description2" />
+            <Step title="title3" stepStatus="next" description="description3" />
+            <Step title="title4" stepStatus="wait" description="description4" />
+            <Step title="title5" stepStatus="error" description="description5" />
           </Steps>
         </VWrapper>
         <VWrapper>
           <p>带有描述</p>
           <Steps orientation="vertical" stepType="simple" size={'normal'}>
-            <Step
-              title="this is title1"
-              description={'this is step description111'}
-              stepStatus="finish"
-            />
-            <Step
-              title="this is title2"
-              description={'this is step description2'}
-              stepStatus="process"
-            />
-            <Step
-              title="this is title3"
-              description={'this is step description33'}
-              stepStatus="next"
-            />
-            <Step
-              title="this is title4"
-              description={'this is step description444'}
-              stepStatus="wait"
-            />
-            <Step
-              title="this is title5"
-              description={'this is step description5555'}
-              stepStatus="error"
-            />
+            <Step title="title1" description={'description111'} stepStatus="finish" />
+            <Step title="title1" description={'description111'} stepStatus="finish" />
+            <Step title="title2" description={'description2'} stepStatus="process" />
+            <Step title="title3" description={'description33'} stepStatus="next" />
+            <Step title="title4" description={'description444'} stepStatus="wait" />
+            <Step title="title5" description={'description5555'} stepStatus="error" />
           </Steps>
         </VWrapper>
         <VWrapper>
           <p>半扁平风格 size normal</p>
 
           <Steps orientation="vertical" stepType="flat" size="normal">
-            <Step
-              title="this is title1"
-              stepStatus="finish"
-              description="this is step description1"
-            />
-            <Step
-              title="this is title2"
-              stepStatus="process"
-              description="this is step description2"
-            />
-            <Step
-              title="this is title3"
-              stepStatus="next"
-              description="this is step description3"
-            />
-            <Step
-              title="this is title4"
-              stepStatus="wait"
-              description="this is step description4"
-            />
-            <Step
-              title="this is title5"
-              stepStatus="error"
-              description="this is step description5"
-            />
+            <Step title="title1" stepStatus="finish" description="description1" />
+            <Step title="title1" stepStatus="finish" description="description1" />
+            <Step title="title2" stepStatus="process" description="description2" />
+            <Step title="title3" stepStatus="next" description="description3" />
+            <Step title="title4" stepStatus="wait" description="description4" />
+            <Step title="title5" stepStatus="error" description="description5" />
           </Steps>
         </VWrapper>
         <VWrapper>
           <p>icon</p>
           <Steps orientation="vertical" stepType={'icon'} size={'mini'}>
-            <Step icon={'lugia-icon-financial_cloud'} title="this is title1" stepStatus="finish" />
-            <Step icon={'lugia-icon-financial_cloud'} title="this is title2" stepStatus="process" />
-            <Step icon={'lugia-icon-financial_cloud'} title="333" stepStatus="next" />
-            <Step icon={'lugia-icon-financial_cloud'} title="this is title4" stepStatus="wait" />
-            <Step icon={'lugia-icon-financial_cloud'} title="this is title5" stepStatus="error" />
+            <Step
+              icon={'lugia-icon-financial_cloud'}
+              stepStatus="finish"
+              title="title1"
+              description={'description111'}
+            />
+            <Step
+              icon={'lugia-icon-financial_upload_cloud'}
+              stepStatus="finish"
+              title="title2"
+              description={'description2'}
+            />
+            <Step
+              icon={'lugia-icon-financial_download_cloud'}
+              stepStatus="process"
+              title="title3"
+              description={'description3'}
+            />
+            <Step
+              icon={'lugia-icon-financial_download_cloud'}
+              stepStatus="next"
+              title="title4"
+              description={'description4'}
+            />
+            <Step
+              icon={'lugia-icon-financial_cloud'}
+              stepStatus="wait"
+              title="title5"
+              description={'description5'}
+            />
+            <Step
+              icon={'lugia-icon-financial_cloud'}
+              stepStatus="error"
+              title="title5"
+              description={'description5'}
+            />
           </Steps>
         </VWrapper>
         <VWrapper>
           <p>点状 虚线 size normal</p>
           <Steps orientation="vertical" stepType={'dot'}>
-            <Step title="this is title1" stepStatus="finish" />
-            <Step title="this is title2" stepStatus="process" isDashed={true} />
-            <Step title="this is title3" stepStatus="next" isDashed={true} />
-            <Step title="this is title4" stepStatus="wait" isDashed={true} />
-            <Step title="this is title5" stepStatus="error" isDashed={true} />
+            <Step title="title1" stepStatus="finish" />
+            <Step title="title1" stepStatus="finish" isDashed={true} />
+            <Step title="title2" stepStatus="process" isDashed={true} />
+            <Step title="title3" stepStatus="next" isDashed={true} />
+            <Step title="title4" stepStatus="wait" isDashed={true} />
+            <Step title="title5" stepStatus="error" isDashed={true} />
           </Steps>
         </VWrapper>
         <VWrapper>
           <p>点状风格 size normal</p>
           <Steps orientation="vertical" stepType="dot" size="normal">
-            <Step
-              title="this is title1"
-              stepStatus="finish"
-              description="this is step description1"
-            />
-            <Step
-              title="this is title2"
-              stepStatus="process"
-              description="this is step description2"
-            />
-            <Step
-              title="this is title3"
-              stepStatus="next"
-              description="this is step description3"
-            />
-            <Step
-              title="this is title4"
-              stepStatus="wait"
-              description="this is step description4"
-            />
-            <Step
-              title="this is title5"
-              stepStatus="error"
-              description="this is step description5"
-            />
+            <Step title="title1" stepStatus="finish" description="description1" />
+            <Step title="title1" stepStatus="finish" description="description1" />
+            <Step title="title2" stepStatus="process" description="description2" />
+            <Step title="title3" stepStatus="next" description="description3" />
+            <Step title="title4" stepStatus="wait" description="description4" />
+            <Step title="title5" stepStatus="error" description="description5" />
           </Steps>
         </VWrapper>
       </Theme>

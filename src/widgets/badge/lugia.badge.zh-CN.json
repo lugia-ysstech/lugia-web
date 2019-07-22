@@ -28,7 +28,7 @@
   },
   "category": ["数据展示"],
   "designInfo": {
-    "BadgeDotConfig": {
+    "BadgeDot": {
       "sequence": 1,
       "title": "徽标数",
       "desc": "徽标数为0时,设置不显示数字时,显示的小点",
@@ -55,7 +55,7 @@
         }
       }
     },
-    "BadgeNumberConfig": {
+    "BadgeNumber": {
       "sequence": 2,
       "title": "徽标数",
       "desc": "徽标数大于0时,显示的数字",
