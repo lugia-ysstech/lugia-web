@@ -4,38 +4,40 @@
  * @flow
  */
 import * as React from 'react';
-import { px2emcss } from '../css/units';
-import { FontSizeNumber } from '../css';
 import Widget from '../consts/index';
 import styled from 'styled-components';
-// import logo from './empty.png';
-
-const em = px2emcss(FontSizeNumber);
+import logo from './empty.png';
+import { px2remcss } from '../css/units';
 
 const getEmptyContainerWidth = props => {
   const { width } = props;
-  return `width: ${width ? em(width) : em(180)}`;
+  return `width: ${width ? px2remcss(width) : px2remcss(200)}`;
 };
 
 const EmptyContainer = styled.div`
   ${getEmptyContainerWidth};
-  padding: ${em(32)} 0;
+  height: ${px2remcss(250)};
+  padding-top: ${px2remcss(80)};
   box-sizing: border-box;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
 `;
 
-const EmptyWrap = styled.div`
-  height: ${em(70)};
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: auto ${em(70)};
+const Img = styled.div`
   width: 100%;
+  height: ${px2remcss(80)};
+  text-align: center;
+  & > img {
+    height: 100%;
+  }
 `;
 
 const TextWrap = styled.div`
   text-align: center;
-  font-size: ${em(12)};
+  font-size: ${px2remcss(12)};
   color: #ccc;
-  margin-top: ${em(8)};
+  margin-top: ${px2remcss(8)};
 `;
 export default class Empty extends React.Component<any, any> {
   static displayName = Widget.Empty;
@@ -47,11 +49,12 @@ export default class Empty extends React.Component<any, any> {
   };
 
   render() {
-    const { getTheme } = this.props;
-    const { width } = getTheme();
+    const { width } = this.props;
     return (
       <EmptyContainer width={width}>
-        <EmptyWrap />
+        <Img>
+          <img src={logo} />
+        </Img>
         <TextWrap>暂无数据</TextWrap>
       </EmptyContainer>
     );

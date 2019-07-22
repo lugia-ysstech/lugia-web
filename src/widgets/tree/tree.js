@@ -58,7 +58,6 @@ export type TreeProps = {
   blackList: ?(string[]),
   whiteList: ?(string[]),
   searchType?: QueryType,
-  size: 'large' | 'default' | 'bigger',
   shape: 'default' | 'round',
   showSwitch: boolean,
   __navmenu: boolean,
@@ -83,9 +82,6 @@ const EmptyBox = styled.span`
 const ErrorTooltip = styled(EmptyBox)`
   color: red;
 `;
-
-const openClassName = 'lugia-icon-direction_caret_down';
-const closeClassName = 'lugia-icon-direction_caret_right';
 
 class Tree extends React.Component<TreeProps, TreeState> {
   static displayName = Widget.Tree;
@@ -166,7 +162,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
       const { data = [] } = props;
       return data;
     }
-    const { data = [] } = this;
     return this.getViewData();
   }
 
@@ -444,9 +439,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
       searchType = 'include',
       valueField,
       getTreeData,
-      getPartOfThemeProps,
-      showSwitch,
-      suffix,
     } = props;
     const { expand, expandedKeys, selectedInfo, start, selectValue = [] } = state;
     const { id2ExtendInfo } = expand;

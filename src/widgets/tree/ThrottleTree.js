@@ -1,21 +1,16 @@
 /**
  *
- * create by ligx
+ * create by szfeng
  *
  * @flow
  */
 
 import animation from '../common/openAnimation';
 import * as React from 'react';
-import Widget from '../consts/index';
 import LugiaTree, { TreeNode } from './rc-tree';
 import ThrottleScroller from '../scroller/ThrottleScroller';
 import './index.css';
 import TreeUtils from './utils';
-import { adjustValue } from '../utils';
-import { FontSizeNumber } from '../css';
-import { px2emcss } from '../css/units';
-import { getMenuItemHeight } from '../css/menu';
 import { TreeItemHeight } from '../css/tree';
 
 type RowData = { [key: string]: any };
@@ -67,7 +62,7 @@ class ScrollerTree extends React.Component<any, any> {
   };
 
   render() {
-    const { data, size } = this.props;
+    const { data } = this.props;
 
     if (data) {
       const { mutliple, onExpand, utils, onSelect, id2ExtendInfo, itemHeight } = this.props;
@@ -77,7 +72,6 @@ class ScrollerTree extends React.Component<any, any> {
       const hasScroller = data.length > end;
       const { rows, parentCount } = utils.slice(data, start, end - start, id2ExtendInfo);
       const nodes = utils.generateTreeNode(rows);
-      // 显示不全最后一项++++++++++++++++++++++++++++++++++++++++++++++++++++++++，
       const top = -parentCount * itemHeight;
       const treeNodes = this.loopNode(nodes);
       const treeTheme = this.getTheme();
