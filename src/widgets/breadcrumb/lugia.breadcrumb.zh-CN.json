@@ -64,6 +64,7 @@
       "disabled": []
     },
     "BreadcrumbItem": {
+      "name": "面包屑单项配置",
       "theme": {
         "ItemWrap": {
           "name": "文本",

@@ -194,6 +194,7 @@
           "disabled": []
         },
         "MenuItem": {
+          "name": "单选菜单项配置",
           "theme": {
             "MenuItemWrap": {
               "name": "项的外盒",
@@ -273,6 +274,7 @@
             },
 
             "Checkbox": {
+              "name": "单选菜单选择器配置",
               "theme": {
                 "CheckboxWrap": {
                   "name": "Checkbox整体配置",
@@ -343,6 +345,7 @@
           "disabled": []
         },
         "MenuItem": {
+          "name": "多选菜单项配置",
           "theme": {
             "MenuItemWrap": {
               "name": "项的外盒",
@@ -422,6 +425,7 @@
             },
 
             "Checkbox": {
+              "name": "多选菜单选择器配置",
               "theme": {
                 "CheckboxWrap": {
                   "name": "Checkbox整体配置",
@@ -467,10 +471,10 @@
 
     "CascaderMenu": {
       "sequence": 3,
-      "title": "级联菜单",
+      "title": "多级菜单",
       "desc": "支持展开的菜单",
       "props": {
-        "mutliple": true
+        "mutliple": false
       },
 
       "theme": {
@@ -493,6 +497,7 @@
           "disabled": []
         },
         "MenuItem": {
+          "name": "多级菜单项配置",
           "theme": {
             "MenuItemWrap": {
               "name": "项的外盒",
@@ -569,51 +574,12 @@
               "hover": [],
               "active": [],
               "disabled": []
-            },
-
-            "Checkbox": {
-              "theme": {
-                "CheckboxWrap": {
-                  "name": "Checkbox整体配置",
-                  "desc": "Checkbox整体配置",
-                  "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]],
-                  "hover": [["opacity"]],
-                  "disabled": [["opacity"]]
-                },
-                "CheckboxText": {
-                  "name": "Checkbox文字配置",
-                  "desc": "Checkbox文字配置",
-                  "normal": [["color"], ["font"]],
-                  "hover": [["color"], ["font"]],
-                  "disabled": [["color"], ["font"]]
-                },
-                "CheckboxEdgeChecked": {
-                  "name": "Checkbox选中后边框配置",
-                  "desc": "Checkbox选中后边框配置样式",
-                  "normal": [["background"], ["borderRadius"], ["border"]],
-                  "hover": [["background"], ["borderRadius"], ["border"]],
-                  "disabled": [["background"], ["borderRadius"], ["border"]]
-                },
-                "CheckboxEdgeUnChecked": {
-                  "name": "Checkbox未选中边框配置",
-                  "desc": "Checkbox未选中边框配置样式",
-                  "normal": [["background"], ["borderRadius"], ["border"]],
-                  "hover": [["background"], ["borderRadius"], ["border"]],
-                  "disabled": [["background"], ["borderRadius"], ["border"]]
-                },
-                "CheckboxInnerChecked": {
-                  "name": "Checkbox选中样式配置",
-                  "desc": "Checkbox选中样式配置",
-                  "normal": [["color"]],
-                  "hover": [["color"]],
-                  "disabled": [["color"]]
-                }
-              }
             }
           }
         },
 
         "SubMenu": {
+          "name": "子菜单配置",
           "theme": {
             "MenuWrap": {
               "name": "菜单外盒",
@@ -635,6 +601,7 @@
             },
 
             "MenuItem": {
+              "name": "子菜单的项配置",
               "theme": {
                 "MenuItemWrap": {
                   "name": "项的外盒",
@@ -711,46 +678,6 @@
                   "hover": [],
                   "active": [],
                   "disabled": []
-                },
-
-                "Checkbox": {
-                  "theme": {
-                    "CheckboxWrap": {
-                      "name": "Checkbox整体配置",
-                      "desc": "Checkbox整体配置",
-                      "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]],
-                      "hover": [["opacity"]],
-                      "disabled": [["opacity"]]
-                    },
-                    "CheckboxText": {
-                      "name": "Checkbox文字配置",
-                      "desc": "Checkbox文字配置",
-                      "normal": [["color"], ["font"]],
-                      "hover": [["color"], ["font"]],
-                      "disabled": [["color"], ["font"]]
-                    },
-                    "CheckboxEdgeChecked": {
-                      "name": "Checkbox选中后边框配置",
-                      "desc": "Checkbox选中后边框配置样式",
-                      "normal": [["background"], ["borderRadius"], ["border"]],
-                      "hover": [["background"], ["borderRadius"], ["border"]],
-                      "disabled": [["background"], ["borderRadius"], ["border"]]
-                    },
-                    "CheckboxEdgeUnChecked": {
-                      "name": "Checkbox未选中边框配置",
-                      "desc": "Checkbox未选中边框配置样式",
-                      "normal": [["background"], ["borderRadius"], ["border"]],
-                      "hover": [["background"], ["borderRadius"], ["border"]],
-                      "disabled": [["background"], ["borderRadius"], ["border"]]
-                    },
-                    "CheckboxInnerChecked": {
-                      "name": "Checkbox选中样式配置",
-                      "desc": "Checkbox选中样式配置",
-                      "normal": [["color"]],
-                      "hover": [["color"]],
-                      "disabled": [["color"]]
-                    }
-                  }
                 }
               }
             }
@@ -780,6 +707,7 @@
       "disabled": []
     },
     "MenuItem": {
+      "name": "菜单项配置",
       "theme": {
         "MenuItemWrap": {
           "name": "项的外盒",
@@ -845,6 +773,7 @@
         },
 
         "Checkbox": {
+          "name": "菜单项中的选择器配置",
           "theme": {
             "CheckboxWrap": {
               "name": "Checkbox整体配置",
