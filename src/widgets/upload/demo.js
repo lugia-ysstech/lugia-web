@@ -145,6 +145,35 @@ class UploadDemo extends React.Component<any, any> {
       disabled: true,
       onChange: res => {},
     };
+    const defaultProps13 = {
+      areaType: 'both',
+      inputId: 'upload2',
+      url: 'http://localhost:7001/upload',
+      showFileList: true,
+      fileList: [
+        {
+          id: 1,
+          name: '文件11111.jpg',
+          status: 'done',
+          url: 'http://pic18.nipic.com/20120204/8339340_144203764154_2.jpg',
+        },
+        {
+          id: 2,
+          name: '文件2222.mp4',
+          status: 'fail',
+          url: 'http://pic18.nipic.com/20120204/8339340_14420376454_2.mp4',
+        },
+        {
+          id: 3,
+          name: '文件33333.doc',
+          status: 'done',
+          url: 'http://pic18.nipic.com/20120204/8339340_144203764154_2.doc',
+        },
+      ],
+      multiple: true,
+      autoUpload: false,
+      onChange: res => {},
+    };
     const defaultProps3 = {
       areaType: 'picture',
       inputId: 'upload3',
@@ -329,6 +358,11 @@ class UploadDemo extends React.Component<any, any> {
 
     return (
       <div>
+        <Title>Both： </Title>
+        <Upload {...defaultProps2} />
+        <Title>Both disabled： </Title>
+        <Upload {...defaultProps13} />
+
         <Theme config={config}>
           <Title>默认： </Title>
           <Upload {...defaultProps} />

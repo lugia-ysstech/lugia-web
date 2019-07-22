@@ -1,6 +1,6 @@
 /**
  *
- * create by ligx
+ * create by szfeng
  *
  * @flow
  */
@@ -10,19 +10,18 @@ import React from 'react';
 import InputTag from '../inputtag';
 import Trigger from '../trigger';
 import Tree from '../tree/index.js';
-import Theme from '../theme';
 import ThemeHoc from '@lugia/theme-hoc';
 import Widget from '../consts/index';
 import { deepMerge } from '@lugia/object-utils';
 import styled from 'styled-components';
 import Support from '../common/FormFieldWidgetSupport';
 import QueryInput from '../common/QueryInput';
-import { themeColor } from '../css/tree';
 import { getNewValueOrOldValue } from '../select';
 import { appendCustomValue, getTheme, setNewValue } from '../common/selectFunction';
 import { DefaultHelp } from '../css/input';
-import { FontSizeNumber, FontSize } from '../css';
+import { FontSizeNumber } from '../css';
 import { px2emcss } from '../css/units';
+import Empty from '../empty';
 
 const em = px2emcss(FontSizeNumber);
 
@@ -74,18 +73,6 @@ type TreeSelectState = {
   themeConfig: Object,
 };
 
-// const Text = styled.span`
-//   color: white;
-//   font-size: ${FontSize};
-//   width: 100%;
-//   height: ${em(22)};
-//   line-height: ${em(22)};
-//   background: ${themeColor};
-//   padding: 0 ${em(10)};
-//   position: absolute;
-//   border-radius: ${em(3)};
-// `;
-
 const Label = styled.span`
   display: inline-block;
   text-overflow: ellipsis;
@@ -93,16 +80,6 @@ const Label = styled.span`
   overflow: hidden;
   white-space: nowrap;
   float: left;
-`;
-const FloatLeft = styled.div`
-  float: left;
-`;
-const ClearFloat = styled.div`
-  clear: both;
-  height: 0;
-  width: 0;
-  line-height: 0;
-  font-size: 0;
 `;
 
 Text.displayName = Widget.TreeSelectLimitTitle;
@@ -256,16 +233,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     return this.mergeTheme('Tree', defaultMenuTheme);
   };
 
-  getTreeTheme() {
-    const { getPartOfThemeConfig } = this.props;
-    const config = {
-      [Widget.Tree]: getPartOfThemeConfig('Tree'),
-    };
-    return config;
-  }
-
   getInner(props, state) {
-    /* create by ZhangBoPing */
     const {
       data,
       disabled,
@@ -284,16 +252,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     } = props;
     const { onSelect, ...res } = props;
 
-    const {
-      current,
-      start,
-      treeFilter,
-      value,
-      displayValue,
-      selectCount,
-      query,
-      selectAll,
-    } = state;
+    const { current, start, treeFilter, value, displayValue, query, selectAll } = state;
 
     const getTree: Function = (cmp: Object) => {
       this.treeCmp = cmp;
@@ -301,49 +260,45 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const { InputTagWrap = {} } = this.props.getPartOfThemeConfig('InputTag');
     const { normal = {} } = InputTagWrap;
     const { width = 250 } = normal;
-    const tree = [
-      <QueryInput
-        query={query}
-        width={width}
-        onQueryInputChange={this.onQueryInputChange}
-        onQueryInputKeyDown={this.onQueryInputKeyDown}
-        refreshValue={this.onRefresh}
-        addClick={this.onAdd}
-        isCheckedAll={selectAll}
-        onCheckAll={this.onSelectAll}
-        canSearch={canSearch}
-        mutliple={mutliple}
-        canInput={canInput}
-      />,
-      <Tree
-        data={data}
-        key="tree"
-        {...res}
-        {...this.getTreeTheme()}
-        current={current}
-        start={start}
-        expandAll={expandAll}
-        onScroller={this.onScroller}
-        query={treeFilter}
-        ref={getTree}
-        value={value}
-        onChange={this.onTreeChange}
-        valueField={valueField}
-        displayField={displayField}
-        displayValue={displayValue}
-        igronSelectField={igronSelectField}
-        translateTreeData={translateTreeData}
-      />,
-    ];
-
-    // if (this.isMutliple()) {
-    //   let str = `已选择${selectCount}个结点`;
-    //   const { limitCount } = props;
-    //   if (limitCount != undefined) {
-    //     str += `,最多可选${limitCount}个结点`;
-    //   }
-    //   tree.push(<Text key="selInfo">{str}.</Text>);
-    // }
+    const tree =
+      data && data.length !== 0 ? (
+        [
+          <QueryInput
+            query={query}
+            width={width}
+            onQueryInputChange={this.onQueryInputChange}
+            onQueryInputKeyDown={this.onQueryInputKeyDown}
+            refreshValue={this.onRefresh}
+            addClick={this.onAdd}
+            isCheckedAll={selectAll}
+            onCheckAll={this.onSelectAll}
+            canSearch={canSearch}
+            mutliple={mutliple}
+            canInput={canInput}
+          />,
+          <Tree
+            data={data}
+            key="tree"
+            {...res}
+            {...this.getTreeTheme()}
+            current={current}
+            start={start}
+            expandAll={expandAll}
+            onScroller={this.onScroller}
+            query={treeFilter}
+            ref={getTree}
+            value={value}
+            onChange={this.onTreeChange}
+            valueField={valueField}
+            displayField={displayField}
+            displayValue={displayValue}
+            igronSelectField={igronSelectField}
+            translateTreeData={translateTreeData}
+          />,
+        ]
+      ) : (
+        <Empty width={width} />
+      );
 
     const getTreeTriger: Function = (cmp: Object) => {
       this.treeTriger = cmp;
@@ -358,6 +313,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
         onPopupVisibleChange={this.onTreePopupVisibleChange}
         align="bottomLeft"
         key="trigger"
+        offsetY={4}
         ref={getTreeTriger}
         createPortal={createPortal}
         action={disabled ? [] : ['click']}
@@ -387,23 +343,9 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
   }
 
   render() {
-    /* update by ZhangBoPing */
     const { props, state } = this;
 
-    const { label } = props;
-    const { themeConfig } = state;
-
-    return (
-      <Theme config={themeConfig} key="treesel_theme">
-        {label
-          ? [
-              this.getLabel(props),
-              <FloatLeft key="floatLeft">{this.getInner(props, state)}</FloatLeft>,
-              <ClearFloat key="clearFloat" />,
-            ]
-          : this.getInner(props, state)}
-      </Theme>
-    );
+    return this.getInner(props, state);
   }
 
   onFocus = () => {};
