@@ -6,7 +6,7 @@
     "disabled": {
       "type": "boolean",
       "desc": "按钮是否禁用，true 禁用 false 可用",
-      "defaultValue": true
+      "defaultValue": false
     },
     "shape": {
       "type": "ButtonShape",
