@@ -182,8 +182,9 @@
           "desc": "默认线样式配置",
           "normal": [["border"]]
         },
-        "TabHeader": {
-          "theme": {
+        "TabHeader":{
+          "name":"标签配置",
+          "theme":{
             "DefaultTabPan": {
               "name": "默认标签",
               "desc": "默认标签样式配置",
@@ -265,8 +266,9 @@
           "desc": "头部标签区域宽度配置",
           "normal": [["width"]]
         },
-        "TabHeader": {
-          "theme": {
+        "TabHeader":{
+          "name":"标签配置",
+          "theme":{
             "DefaultTabPan": {
               "name": "默认标签",
               "desc": "默认标签样式配置",
@@ -318,8 +320,9 @@
       "desc": "默认线样式配置",
       "normal": [["border"]]
     },
-    "TabHeader": {
-      "theme": {
+    "TabHeader":{
+      "name":"标签配置",
+      "theme":{
         "DefaultTabPan": {
           "name": "默认标签",
           "desc": "默认标签样式配置",
