@@ -170,6 +170,7 @@
           "normal": [["border"]]
         },
         "TabHeader":{
+          "name":"标签配置",
           "theme":{
             "DefaultTabPan": {
               "name": "默认标签",
@@ -220,6 +221,7 @@
           "normal": [["width"]]
         },
         "TabHeader":{
+          "name":"标签配置",
           "theme":{
             "DefaultTabPan": {
               "name": "默认标签",
@@ -258,6 +260,7 @@
       "normal": [["border"]]
     },
     "TabHeader":{
+      "name":"标签配置",
       "theme":{
         "DefaultTabPan": {
           "name": "默认标签",

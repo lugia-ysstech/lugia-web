@@ -133,6 +133,27 @@
           "normal": [["background"], ["width"], ["height"], ["boxShadow"], ["border"], ["opacity"]],
           "hover": [["background"], ["boxShadow"], ["border"], ["opacity"]],
           "disabled": [["background"], ["border"]]
+        },
+        "UploadList": {
+          "name":"上传文件列表",
+          "theme":{
+            "UploadLiType": {
+              "name": "上传文件列表",
+              "desc": "上传列表的行样式",
+              "normal": [["width"],["height"],["background"], ["border"],["color"],["fontSize"]],
+              "hover": [["border"],["background"],["color"]]
+            },
+            "UploadListSuccessIcon": {
+              "name": "上传成功图标样式",
+              "desc": "上传成功时列表图标的样式",
+              "normal": [["color"],["fontSize"]]
+            },
+            "UploadListFailedIcon": {
+              "name": "上传失败图标样式",
+              "desc": "上传失败时列表图标的样式",
+              "normal": [["color"],["fontSize"]]
+            }
+          }
         }
       }
     },
@@ -150,6 +171,27 @@
           "normal": [["background"],["width"], ["height"], ["opacity"], ["border"]],
           "hover": [["background"], ["opacity"], ["border"]],
           "disabled": [["background"], ["color"], ["border"]]
+        },
+        "UploadList": {
+          "name":"上传文件列表",
+          "theme":{
+            "UploadLiType": {
+              "name": "上传文件列表",
+              "desc": "上传列表的行样式",
+              "normal": [["width"],["height"],["background"], ["border"],["color"],["fontSize"]],
+              "hover": [["border"],["background"],["color"]]
+            },
+            "UploadListSuccessIcon": {
+              "name": "上传成功图标样式",
+              "desc": "上传成功时列表图标的样式",
+              "normal": [["color"],["fontSize"]]
+            },
+            "UploadListFailedIcon": {
+              "name": "上传失败图标样式",
+              "desc": "上传失败时列表图标的样式",
+              "normal": [["color"],["fontSize"]]
+            }
+          }
         }
       }
     },
@@ -166,6 +208,27 @@
           "desc": "区域拖拽上传类型的样式配置",
           "normal": [["width"], ["height"], ["fontSize"],["color"]],
           "disabled": [["color"]]
+        },
+        "UploadList": {
+          "name":"上传文件列表",
+          "theme":{
+            "UploadLiType": {
+              "name": "上传文件列表",
+              "desc": "上传列表的行样式",
+              "normal": [["width"],["height"],["background"], ["border"],["color"],["fontSize"]],
+              "hover": [["border"],["background"],["color"]]
+            },
+            "UploadListSuccessIcon": {
+              "name": "上传成功图标样式",
+              "desc": "上传成功时列表图标的样式",
+              "normal": [["color"],["fontSize"]]
+            },
+            "UploadListFailedIcon": {
+              "name": "上传失败图标样式",
+              "desc": "上传失败时列表图标的样式",
+              "normal": [["color"],["fontSize"]]
+            }
+          }
         }
       }
     },
@@ -182,6 +245,34 @@
           "desc": "按钮部分的样式配置",
           "normal": [["width"], ["height"], ["fontSize"],["color"]],
           "disabled": [["color"]]
+        },
+        "UploadDefaultType": {
+          "name": "input文件拖入框",
+          "desc": "默认上传框的样式",
+          "normal": [["width"], ["height"], ["boxShadow"], ["border"]],
+          "hover": [["boxShadow"], ["border"]],
+          "disabled": [["border"], ["cursor"]]
+        },
+        "UploadList": {
+          "name":"上传文件列表",
+          "theme":{
+            "UploadLiType": {
+              "name": "上传文件列表",
+              "desc": "上传列表的行样式",
+              "normal": [["width"],["height"],["background"], ["border"],["color"],["fontSize"]],
+              "hover": [["border"],["background"],["color"]]
+            },
+            "UploadListSuccessIcon": {
+              "name": "上传成功图标样式",
+              "desc": "上传成功时列表图标的样式",
+              "normal": [["color"],["fontSize"]]
+            },
+            "UploadListFailedIcon": {
+              "name": "上传失败图标样式",
+              "desc": "上传失败时列表图标的样式",
+              "normal": [["color"],["fontSize"]]
+            }
+          }
         }
       }
     }
@@ -195,6 +286,7 @@
       "disabled": [["border"], ["cursor"]]
     },
     "UploadList": {
+      "name":"上传文件列表",
       "theme":{
         "UploadLiType": {
           "name": "上传文件列表",
