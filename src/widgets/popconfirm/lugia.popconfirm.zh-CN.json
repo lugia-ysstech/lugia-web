@@ -111,21 +111,26 @@
   },
   "category": ["反馈"],
   "theme": {
-    "Container": {
-      "name": "气泡确认框内容部分",
-      "desc": "气泡确认框内容部分",
-      "normal": [
-        ["background"],
-        ["color"],
-        ["padding"],
-        ["font"],
-        ["fontSize"],
-        ["width"],
-        ["height"],
-        ["boxShadow"],
-        ["borderRadius"],
-        ["border"]
-      ]
+    "PopconfirmContent": {
+      "theme": {
+        "name": "气泡卡片框容器",
+        "Container": {
+          "name": "气泡确认框内容部分",
+          "desc": "气泡确认框内容部分",
+          "normal": [
+            ["background"],
+            ["color"],
+            ["padding"],
+            ["font"],
+            ["fontSize"],
+            ["width"],
+            ["height"],
+            ["boxShadow"],
+            ["borderRadius"],
+            ["border"]
+          ]
+        }
+      }
     },
     "PopconfirmTitle": {
       "name": "气泡确认框标题",
