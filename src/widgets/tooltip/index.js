@@ -372,6 +372,7 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
     });
     return (
       <Trigger
+        themePass
         createPortal={true}
         popupVisible={visible}
         align={placement}
@@ -389,8 +390,8 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
       </Trigger>
     );
   }
-  setPopupVisible(popupVisible: boolean) {
-    this.trigger && this.trigger.setPopupVisible(popupVisible);
+  setPopupVisible(...rest: any[]) {
+    this.trigger && this.trigger.setPopupVisible(...rest);
   }
 
   getContent(contentThemeProps, direction) {

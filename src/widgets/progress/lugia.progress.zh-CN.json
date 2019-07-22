@@ -10,38 +10,35 @@
     },
     "size": {
       "type": "ProgressSizeType",
-      "desc": "进度条大小，可设置为 small 或不设",
-      "defaultValue": "undefined"
+      "desc": "进度条大小，可设置为 small 或不设"
     },
     "percent": {
       "type": "number",
       "desc": "百分比",
-      "defaultValue": "0"
+      "defaultValue": 0
     },
     "status": {
       "type": "ProgressStatusType",
       "desc": "进度条状态，可设置为success、error或不设",
-      "defaultValue": "true"
+      "defaultValue": true
     },
     "active": {
       "type": "boolean",
       "desc": "进度条状态是否激活状态，仅生效于 type = line",
-      "defaultValue": "true"
+      "defaultValue": true
     },
     "showInfo": {
       "type": "boolean",
       "desc": "是否显示进度数值或状态图标",
-      "defaultValue": "true"
+      "defaultValue": true
     },
     "format": {
       "type": "Function",
-      "desc": "进度条展示内容模板函数",
-      "defaultValue": "undefined"
+      "desc": "进度条展示内容模板函数"
     },
     "showType": {
       "type": "ProgressShowType",
-      "desc": "进度条展示内容展示位置，可设置为 inside 或不设",
-      "defaultValue": "undefined"
+      "desc": "进度条展示内容展示位置，可设置为 inside 或不设"
     }
   },
   "type": {

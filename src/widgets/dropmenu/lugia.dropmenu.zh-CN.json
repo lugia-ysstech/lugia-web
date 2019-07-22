@@ -15,13 +15,12 @@
     },
     "menus": {
       "type": "React.Node",
-      "desc": "弹出项组件",
-      "defaultValue": "undefined"
+      "desc": "弹出项组件"
     },
     "align": {
       "type": "React.Node",
       "desc": "弹出方向",
-      "defaultValue": "'topLeft | top | topRight | bottomLeft | bottom | bottomRight'"
+      "defaultValue": "bottom"
     }
   },
   "events": {
@@ -36,7 +35,6 @@
       ]
     }
   },
-
   "childrenWidget": ["dropmenuButton"],
   "category": ["数据录入"]
 }

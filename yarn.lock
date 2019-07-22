@@ -1210,10 +1210,10 @@
     redux-immutable "^4.0.0"
     redux-saga "^0.16.0"
 
-"@lugia/devtools-material@1.0.20":
-  version "1.0.20"
-  resolved "http://192.168.102.79:5001/@lugia/devtools-material/download/@lugia/devtools-material-1.0.20.tgz#7a3655f38135bb3fafa0af5a1e1701e2955f02c5"
-  integrity sha1-ejZV84E1uz+voK9aHhcB4pVfAsU=
+"@lugia/devtools-material@^1.0.27":
+  version "1.0.27"
+  resolved "http://192.168.102.79:5001/@lugia/devtools-material/download/@lugia/devtools-material-1.0.27.tgz#b23c7a758b5cc54b56455d0310a393538d330267"
+  integrity sha1-sjx6dYtcxUtWRV0DEKOTU40zAmc=
   dependencies:
     babel-runtime "^6.26.0"
     immutable "^3.8.2"
@@ -1469,52 +1469,52 @@
     react "^16.4.0"
     react-dom "^16.4.0"
 
-"@lugia/theme-config@1.0.29":
-  version "1.0.29"
-  resolved "http://192.168.102.79:5001/@lugia/theme-config/download/@lugia/theme-config-1.0.29.tgz#4273b34008edeefb68319ea0451b7afcfb7b5b17"
-  integrity sha1-QnOzQAjt7vtoMZ6gRRt6/Pt7Wxc=
+"@lugia/theme-config@1.0.32":
+  version "1.0.32"
+  resolved "http://192.168.102.79:5001/@lugia/theme-config/download/@lugia/theme-config-1.0.32.tgz#0d7e9d3f585fe84424f4184990d4142f9b8fa70d"
+  integrity sha1-DX6dP1hf6EQk9BhJkNQUL5uPpw0=
   dependencies:
     "@babel/runtime" "^7.4.5"
-    "@lugia/theme-core" "^1.0.29"
+    "@lugia/theme-core" "^1.0.32"
     prop-types "^15.7.2"
 
-"@lugia/theme-core@1.0.29", "@lugia/theme-core@^1.0.29":
-  version "1.0.29"
-  resolved "http://192.168.102.79:5001/@lugia/theme-core/download/@lugia/theme-core-1.0.29.tgz#2823cf524f0557f386d62db0a0f79ccf006933d3"
-  integrity sha1-KCPPUk8FV/OG1i2woPeczwBpM9M=
+"@lugia/theme-core@1.0.32", "@lugia/theme-core@^1.0.32":
+  version "1.0.32"
+  resolved "http://192.168.102.79:5001/@lugia/theme-core/download/@lugia/theme-core-1.0.32.tgz#1f7931a697eecc3991cded52a11867f43eb5a6f5"
+  integrity sha1-H3kxppfuzDmRze1SoRhn9D61pvU=
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/object-utils" "^1.0.11"
 
-"@lugia/theme-css-hoc@1.0.53":
-  version "1.0.53"
-  resolved "http://192.168.102.79:5001/@lugia/theme-css-hoc/download/@lugia/theme-css-hoc-1.0.53.tgz#c2638c82798d634347e499b5a669f06cf4a5eb8a"
-  integrity sha1-wmOMgnmNY0NH5Jm1pmnwbPSl64o=
+"@lugia/theme-css-hoc@1.0.56":
+  version "1.0.56"
+  resolved "http://192.168.102.79:5001/@lugia/theme-css-hoc/download/@lugia/theme-css-hoc-1.0.56.tgz#7021d69aeebf29c49e928679c65bc4885e0391d0"
+  integrity sha1-cCHWmu6/KcSekoZ5xlvEiF4DkdA=
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/css" "^1.0.17"
     "@lugia/object-utils" "^1.0.11"
     "@lugia/ramada" "^1.0.1"
-    "@lugia/theme-core" "^1.0.29"
+    "@lugia/theme-core" "^1.0.32"
     "@lugia/theme-utils" "^1.0.6"
     decamelize "^3.2.0"
 
-"@lugia/theme-hoc-devtools@1.0.6", "@lugia/theme-hoc-devtools@^1.0.6":
-  version "1.0.6"
-  resolved "http://192.168.102.79:5001/@lugia/theme-hoc-devtools/download/@lugia/theme-hoc-devtools-1.0.6.tgz#dd8fbe2b129035a14a75d6adb7359879a382fd3e"
-  integrity sha1-3Y++KxKQNaFKddattzWYeaOC/T4=
+"@lugia/theme-hoc-devtools@1.0.7", "@lugia/theme-hoc-devtools@^1.0.7":
+  version "1.0.7"
+  resolved "http://192.168.102.79:5001/@lugia/theme-hoc-devtools/download/@lugia/theme-hoc-devtools-1.0.7.tgz#01dd36ae9715a3df743a3563022cf6401017cac9"
+  integrity sha1-Ad02rpcVo990OjVjAiz2QBAXysk=
   dependencies:
     "@lugia/react-devtools-core" "^1.0.3"
 
-"@lugia/theme-hoc@1.0.40":
-  version "1.0.40"
-  resolved "http://192.168.102.79:5001/@lugia/theme-hoc/download/@lugia/theme-hoc-1.0.40.tgz#2c1fed666fa094a8cec13d7127f3e88c4d8b61e6"
-  integrity sha1-LB/tZm+glKjOwT1xJ/PojE2LYeY=
+"@lugia/theme-hoc@1.0.43":
+  version "1.0.43"
+  resolved "http://192.168.102.79:5001/@lugia/theme-hoc/download/@lugia/theme-hoc-1.0.43.tgz#a225e442097693c898d60f5a3f6fb06a56ee1035"
+  integrity sha1-oiXkQgl2k8iY1g9aP2+walbuEDU=
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/object-utils" "^1.0.11"
-    "@lugia/theme-core" "^1.0.29"
-    "@lugia/theme-hoc-devtools" "^1.0.6"
+    "@lugia/theme-core" "^1.0.32"
+    "@lugia/theme-hoc-devtools" "^1.0.7"
 
 "@lugia/theme-utils@1.0.6", "@lugia/theme-utils@^1.0.6":
   version "1.0.6"

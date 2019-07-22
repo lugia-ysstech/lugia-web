@@ -462,13 +462,13 @@ export const CloseButtonWrap = CSSComponent({
   className: 'CloseButtonWrap',
   normal: {
     selectNames: [['color'], ['font'], ['fontSize']],
-    getCSS: (themeMeta, themeProps) => {
+    getThemeMeta: (themeMeta, themeProps) => {
       const { font = {} } = themeMeta;
       const { fontSize = 12 } = font;
       const size = isNumber(fontSize) ? fontSize : 12;
-      return `
-        width:${px2remcss(size)}
-        `;
+      return {
+        width: size,
+      };
     },
   },
   hover: {

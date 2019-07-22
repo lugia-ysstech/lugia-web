@@ -5,13 +5,12 @@
   "props": {
     "viewClass": {
       "type": "string",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
+      "desc": "用于配置通用主题属性"
     },
     "showZero": {
       "type": "boolean",
       "desc": "当数值为 0 时，是否展示 Badge",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "overflowCount": {
       "type": "number",
@@ -20,13 +19,11 @@
     },
     "children": {
       "type": "React$Element<any>",
-      "desc": "可作为显示徽标数的子组件",
-      "defaultValue": "undefined"
+      "desc": "可作为显示徽标数的子组件"
     },
     "count": {
       "type": "number",
-      "desc": "展示的数字，大于封顶数时 显示为${overflowCount}+,为 0 时隐藏",
-      "defaultValue": "undefined"
+      "desc": "展示的数字，大于封顶数时 显示为${overflowCount}+,为 0 时隐藏"
     }
   },
   "category": ["数据展示"],
@@ -36,7 +33,7 @@
       "title": "徽标数",
       "desc": "徽标数为0时,设置不显示数字时,显示的小点",
       "props": {
-        "showZero": "false"
+        "showZero": false
       },
       "theme": {
         "BadgeDot": {

@@ -5,18 +5,15 @@
   "props": {
     "defaultValue": {
       "type": "string",
-      "desc": "单选框初始选中值",
-      "defaultValue": "undefined"
+      "desc": "单选框初始选中值"
     },
     "value": {
       "type": "string",
-      "desc": "单选框选中值",
-      "defaultValue": "undefined"
+      "desc": "单选框选中值"
     },
     "data": {
       "type": "Object[]",
-      "desc": "单选框信息",
-      "defaultValue": "undefined"
+      "desc": "单选框信息"
     },
     "displayField": {
       "type": "string",
@@ -30,23 +27,19 @@
     },
     "displayValue": {
       "type": "string",
-      "desc": "单选框的 value 备用值，value 找不到时展示",
-      "defaultValue": "undefined"
+      "desc": "单选框的 value 备用值，value 找不到时展示"
     },
     "styles": {
       "type": "RadioStylesType",
-      "desc": "单选框的展示方向，可选值为 vertical 或不设",
-      "defaultValue": "undefined"
+      "desc": "单选框的展示方向，可选值为 vertical 或不设"
     },
     "childType": {
       "type": "RadioChildType",
-      "desc": "指定Radio展示类型，可设置为 button 或不设",
-      "defaultValue": "undefined"
+      "desc": "指定Radio展示类型，可设置为 button 或不设"
     },
     "size": {
       "type": "RadioButtonSizeType",
-      "desc": "指定 Radio 大小，仅展示类型为button 时生效，可设置为 small、large、bigger 或不设",
-      "defaultValue": "undefined"
+      "desc": "指定 Radio 大小，仅展示类型为button 时生效，可设置为 small、large、bigger 或不设"
     }
   },
   "event": {

@@ -243,7 +243,7 @@ export default class Carousel extends React.Component<any, CarouselProps> {
 
   createIndicators = () => {
     let items = [];
-    const { indicatorType, children, getPartOfThemeProps } = this.props;
+    const { indicatorType, children } = this.props;
     if (children) {
       const { start } = this.state;
       const length = children.length;

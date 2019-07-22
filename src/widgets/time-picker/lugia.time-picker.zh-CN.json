@@ -5,13 +5,11 @@
   "props": {
     "defaultValue": {
       "type": "string",
-      "desc": "时间默认显示值",
-      "defaultValue": "undefined"
+      "desc": "时间默认显示值"
     },
     "value": {
       "type": "string",
-      "desc": "时间显示值",
-      "defaultValue": "undefined"
+      "desc": "时间显示值"
     },
     "format": {
       "type": "string",
@@ -20,18 +18,17 @@
     },
     "placeholder": {
       "type": "string",
-      "desc": "input输入提示信息",
-      "defaultValue": "undefined"
+      "desc": "input输入提示信息"
     },
     "disabled": {
       "type": "boolean",
       "desc": "禁用状态,是否不可用",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "readOnly": {
       "type": "boolean",
       "desc": "只读input",
-      "defaultValue": "false"
+      "defaultValue": false
     }
   },
   "events": {
@@ -45,13 +42,13 @@
         }
       ]
     },
-    "onFocus":{
+    "onFocus": {
       "desc": "输入框获取焦点",
-      "args":[]
+      "args": []
     },
-    "onBlur":{
+    "onBlur": {
       "desc": "输入框失去焦点",
-      "args":[]
+      "args": []
     }
   },
   "type": {

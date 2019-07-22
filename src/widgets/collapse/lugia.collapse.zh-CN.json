@@ -5,28 +5,24 @@
   "props": {
     "activeValue": {
       "type": "string | string[]",
-      "desc": "当前展开面板的 value值 或者 value 集合",
-      "defaultValue": "undefined"
+      "desc": "当前展开面板的 value值 或者 value 集合"
     },
     "defaultActiveValue": {
       "type": "string | string[]",
-      "desc": "初始时展开面板的 value值 或者 value 集合",
-      "defaultValue": "undefined"
+      "desc": "初始时展开面板的 value值 或者 value 集合"
     },
     "showArrow": {
       "type": "boolean",
-      "desc": "是否展示面板箭头",
-      "defaultValue": "undefined"
+      "desc": "是否展示面板箭头"
     },
     "accordion": {
       "type": "boolean",
-      "desc": "设置是否为手风琴模式",
-      "defaultValue": "undefined"
+      "desc": "设置是否为手风琴模式"
     },
     "data": {
       "type": "Object[]",
       "desc": "指定折叠面板data数据源，仅用于设计器",
-      "defaultValue": "undefined",
+
       "designOnly": true
     }
   },

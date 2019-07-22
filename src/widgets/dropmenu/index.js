@@ -102,6 +102,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
     return (
       <Theme config={menuConfig}>
         <Trigger
+          themePass
           ref={cmp => (this.trigger = cmp)}
           align={align}
           action={action}
@@ -118,8 +119,8 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
       </Theme>
     );
   }
-  setPopupVisible(popupVisible: boolean) {
-    this.trigger && this.trigger.setPopupVisible(popupVisible);
+  setPopupVisible(...rest: any[]) {
+    this.trigger && this.trigger.setPopupVisible(...rest);
   }
   ejectOnClick = (menu: Object): Object => {
     const newChildProps = {};

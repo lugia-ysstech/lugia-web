@@ -415,6 +415,7 @@ class Range extends Component {
 
     return (
       <Trigger
+        themePass
         createPortal={true}
         popup={
           <RangeWrap
@@ -485,8 +486,8 @@ class Range extends Component {
       </Trigger>
     );
   }
-  setPopupVisible(visible: boolean) {
-    this.trigger.current && this.trigger.current.setPopupVisible(visible);
+  setPopupVisible(...rest: any[]) {
+    this.trigger.current && this.trigger.current.setPopupVisible(...rest);
   }
 }
 export default Range;

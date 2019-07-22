@@ -5,23 +5,20 @@
   "props": {
     "title": {
       "type": "React.node",
-      "desc": "标题",
-      "defaultValue": "undefined"
+      "desc": "标题"
     },
     "duration": {
       "type": "number",
       "desc": "自定义演示关闭",
-      "defaultValue": "4.5"
+      "defaultValue": 4.5
     },
     "description": {
       "type": "React.node",
-      "desc": "通知提醒内容",
-      "defaultValue": "undefined"
+      "desc": "通知提醒内容"
     },
     "icon": {
       "type": "string",
-      "desc": "自定义图标",
-      "defaultValue": "undefined"
+      "desc": "自定义图标"
     },
     "placement": {
       "type": "PlacementType",
