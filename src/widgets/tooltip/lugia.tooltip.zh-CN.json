@@ -36,23 +36,19 @@
     },
     "children": {
       "type": "React.Node",
-      "desc": "气泡提示框需要包含的子组件",
-      "defaultValue": "undefined"
+      "desc": "气泡提示框需要包含的子组件"
     },
     "title": {
       "type": "React.Node",
-      "desc": "配置气泡提示框需要显示的标题",
-      "defaultValue": "undefined"
+      "desc": "配置气泡提示框需要显示的标题"
     },
     "description": {
       "type": "React.Node",
-      "desc": "配置气泡提示框需要显示的描述",
-      "defaultValue": "undefined"
+      "desc": "配置气泡提示框需要显示的描述"
     },
     "content": {
       "type": "React.Node",
-      "desc": "配置气泡提示框需要显示的自定义内容",
-      "defaultValue": "undefined"
+      "desc": "配置气泡提示框需要显示的自定义内容"
     }
   },
   "events": {
