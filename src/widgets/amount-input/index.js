@@ -236,6 +236,7 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
         title={this.getTitle()}
         action={'focus'}
         placement={'topLeft'}
+        popArrowType={'round'}
         theme={newTheme}
         viewClass={viewClass}
       >

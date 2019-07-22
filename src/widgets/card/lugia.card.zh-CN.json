@@ -5,58 +5,47 @@
   "props": {
     "getThemeByDisplayName": {
       "type": "Function",
-      "desc": "用于配置组件内部图片的通用主题属性",
-      "defaultValue": "undefined"
+      "desc": "用于配置组件内部图片的通用主题属性"
     },
     "viewClass": {
       "type": "string",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
+      "desc": "用于配置通用主题属性"
     },
     "title": {
       "type": "React.Node",
-      "desc": "卡片标题显示内容",
-      "defaultValue": "undefined"
+      "desc": "卡片标题显示内容"
     },
     "description": {
       "type": "React.Node",
-      "desc": "卡片描述显示内容",
-      "defaultValue": "undefined"
+      "desc": "卡片描述显示内容"
     },
     "operation": {
       "type": "React.Node",
-      "desc": "卡片可操作内容",
-      "defaultValue": "undefined"
+      "desc": "卡片可操作内容"
     },
     "image": {
       "type": "React.Node",
-      "desc": "卡片片显示内容",
-      "defaultValue": "undefined"
+      "desc": "卡片片显示内容"
     },
     "avatar": {
       "type": "React.Node",
-      "desc": "卡片头像显示内容",
-      "defaultValue": "undefined"
+      "desc": "卡片头像显示内容"
     },
     "content": {
       "type": "React.Node",
-      "desc": "整个卡片显示内容",
-      "defaultValue": "undefined"
+      "desc": "整个卡片显示内容"
     },
     "children": {
       "type": "React.Node",
-      "desc": "卡片的children 可作为content显示,但优先于content显示",
-      "defaultValue": "undefined"
+      "desc": "卡片的children 可作为content显示,但优先于content显示"
     },
     "type": {
       "type": "CardType",
-      "desc": "卡片风格 可配置 简洁,头像,图片,组合卡片几种风格",
-      "defaultValue": "undefined"
+      "desc": "卡片风格 可配置 简洁,头像,图片,组合卡片几种风格"
     },
     "imageOrientation": {
       "type": "ImageOrientation",
-      "desc": "当选择头像或图片卡片风格时,可配置图像的方向.水平,或垂直",
-      "defaultValue": "undefined"
+      "desc": "当选择头像或图片卡片风格时,可配置图像的方向.水平,或垂直"
     }
   },
   "type": {
@@ -65,7 +54,7 @@
   },
   "category": ["数据展示"],
   "designInfo": {
-    "SimpleCardConfig": {
+    "SimpleCard": {
       "sequence": 1,
       "title": "卡片样式类型",
       "desc": "按卡片类型不同选择显示不同卡片样式",
@@ -130,7 +119,7 @@
         }
       }
     },
-    "AvatarCardConfig": {
+    "AvatarCard": {
       "sequence": 2,
       "title": "卡片样式类型",
       "desc": "按卡片类型不同选择显示不同卡片样式",
@@ -205,7 +194,7 @@
         }
       }
     },
-    "AvatarImageConfig": {
+    "AvatarImage": {
       "sequence": 3,
       "title": "卡片样式类型",
       "desc": "按卡片类型不同选择显示不同卡片样式",
@@ -286,7 +275,7 @@
         }
       }
     },
-    "TipCardConfig": {
+    "TipCard": {
       "sequence": 4,
       "title": "卡片样式类型",
       "desc": "按卡片类型不同选择显示不同卡片样式",
@@ -343,7 +332,7 @@
         }
       }
     },
-    "ComboCardConfig": {
+    "ComboCard": {
       "sequence": 5,
       "title": "卡片样式类型",
       "desc": "按卡片类型不同选择显示不同卡片样式",

@@ -249,7 +249,8 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   };
   isFirstShow: boolean;
 
-  setPopupVisible(popupVisible: boolean) {
+  setPopupVisible(popupVisible: boolean, forcePopup?: boolean) {
+    this.forcePopup = forcePopup;
     this.clearDelayTimer();
     this.setFirstShow(popupVisible);
     if (this.state.popupVisible !== popupVisible) {
@@ -461,18 +462,19 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     }
     this.preClickTime = 0;
     this.preTouchTime = 0;
-    e.preventDefault();
+    e.preventDefault && e.preventDefault();
     const nextVisible = !this.state.popupVisible;
     if ((this.isClickToHide() && !nextVisible) || (nextVisible && this.isClickToShow())) {
       this.setPopupVisible(!this.state.popupVisible);
     }
   };
 
+  forcePopup: boolean;
   onDocumentClick = (e: Object) => {
     const target = e.target;
     const root = findDOMNode(this);
     const popupNode = this.getPopupDomNode();
-    if (!contains(root, target) && !contains(popupNode, target)) {
+    if (!contains(root, target) && !contains(popupNode, target) && !this.forcePopup) {
       this.close();
     }
   };

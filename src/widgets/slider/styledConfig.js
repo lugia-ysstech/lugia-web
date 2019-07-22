@@ -58,7 +58,6 @@ function getSliderTrackThemeProps(getPartOfThemeProps, vertical) {
   const {
     themeConfig: { normal = {}, hover = {}, active = {}, disabled = {} },
   } = sliderTrackThemeProps;
-
   const sliderNormalTheme = {
     normal: {
       width: rangeWidthNormal,
@@ -109,7 +108,10 @@ function getSliderTrackThemeProps(getPartOfThemeProps, vertical) {
     disabled,
   });
 
-  sliderTrackThemeProps.themeConfig = sliderTrackTheme;
+  sliderTrackThemeProps.themeConfig = deepMerge(
+    sliderTrackThemeProps.themeConfig,
+    sliderTrackTheme
+  );
   return {
     sliderTrackThemeProps,
     width,

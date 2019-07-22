@@ -5,43 +5,38 @@
   "props": {
     "title": {
       "type": "React.Node",
-      "desc": "卡片标题显示内容",
-      "defaultValue": "undefined"
+      "desc": "卡片标题显示内容"
     },
     "description": {
       "type": "React.Node",
-      "desc": "卡片描述显示内容",
-      "defaultValue": "undefined"
+      "desc": "卡片描述显示内容"
     },
     "content": {
       "type": "React.Node",
-      "desc": "整个卡片显示内容",
-      "defaultValue": "undefined"
+      "desc": "整个卡片显示内容"
     },
     "clear": {
       "type": "React.Node",
-      "desc": "关闭卡片的操作内容",
-      "defaultValue": "undefined"
+      "desc": "关闭卡片的操作内容"
     },
     "showClearButton": {
       "type": "boolean",
       "desc": "是否显示关闭按钮",
-      "defaultValue": "true"
+      "defaultValue": true
     },
     "placement": {
       "type": "DirectionType",
-      "desc": "气泡卡片显示的位置,十二个方向",
-      "defaultValue": "undefined"
+      "desc": "气泡卡片显示的位置,十二个方向"
     },
     "visible": {
       "type": "boolean",
       "desc": "是否显示出来",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "defaultVisible": {
       "type": "boolean",
       "desc": "默认是否显示出来",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "action": {
       "type": "Array<string>",
@@ -50,8 +45,7 @@
     },
     "children": {
       "type": "React.Node",
-      "desc": "气泡卡片需要包含的子组件",
-      "defaultValue": "undefined"
+      "desc": "气泡卡片需要包含的子组件"
     }
   },
   "events": {
@@ -95,74 +89,6 @@
     ]
   },
   "category": ["数据展示"],
-  "designInfo": {
-    "PopoverConfig": {
-      "sequence": 1,
-      "title": "气泡卡片",
-      "desc": "气泡卡片",
-      "theme": {
-        "PopoverContent": {
-          "theme": {
-            "Container": {
-              "name": "气泡卡片框内容部分",
-              "desc": "气泡卡片框内容部分",
-              "normal": [
-                ["background"],
-                ["color"],
-                ["padding"],
-                ["font"],
-                ["fontSize"],
-                ["width"],
-                ["height"],
-                ["boxShadow"],
-                ["borderRadius"],
-                ["border"]
-              ]
-            },
-            "TooltipTitle": {
-              "name": "气泡卡片标题部分",
-              "desc": "气泡卡片标题部分",
-              "normal": [
-                ["opacity"],
-                ["background"],
-                ["width"],
-                ["height"],
-                ["color"],
-                ["font"],
-                ["fontSize"]
-              ]
-            },
-            "TooltipDescription": {
-              "name": "气泡卡片描述部分",
-              "desc": "气泡卡片描述部分",
-              "normal": [
-                ["opacity"],
-                ["background"],
-                ["width"],
-                ["height"],
-                ["color"],
-                ["font"],
-                ["fontSize"]
-              ]
-            }
-          }
-        },
-        "PopoverClearIcon": {
-          "name": "气泡卡片操作图标",
-          "desc": "气泡卡片操作图标",
-          "normal": [
-            ["opacity"],
-            ["background"],
-            ["width"],
-            ["height"],
-            ["color"],
-            ["font"],
-            ["fontSize"]
-          ]
-        }
-      }
-    }
-  },
   "theme": {
     "PopoverContent": {
       "theme": {

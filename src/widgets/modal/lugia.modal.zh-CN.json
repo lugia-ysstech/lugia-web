@@ -5,13 +5,11 @@
   "props": {
     "title": {
       "type": "React.node",
-      "desc": "标题",
-      "defaultValue": "undefined"
+      "desc": "标题"
     },
     "visible": {
       "type": "boolean",
-      "desc": "Modal 是否可见",
-      "defaultValue": "undefined"
+      "desc": "Modal 是否可见"
     },
     "cancelText": {
       "type": "string",
@@ -25,18 +23,16 @@
     },
     "confirmLoading": {
       "type": "boolean",
-      "desc": "确定按钮是否 loading",
-      "defaultValue": "undefined"
+      "desc": "确定按钮是否 loading"
     },
     "footer": {
       "type": "React.node",
-      "desc": "自定义底部内容，不需要底部内容可设置为 null",
-      "defaultValue": "undefined"
+      "desc": "自定义底部内容，不需要底部内容可设置为 null"
     },
     "maskClosable": {
       "type": "boolean",
       "desc": "点击蒙层是否允许关闭",
-      "defaultValue": "true"
+      "defaultValue": true
     }
   },
   "events": {

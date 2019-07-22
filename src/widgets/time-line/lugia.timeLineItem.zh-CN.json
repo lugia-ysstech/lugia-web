@@ -6,18 +6,15 @@
   "props": {
     "time": {
       "type": "string",
-      "desc": "时间轴显示的时间",
-      "defaultValue": "undefined"
+      "desc": "时间轴显示的时间"
     },
     "description": {
       "type": "string",
-      "desc": "时间轴显示的节点描述",
-      "defaultValue": "undefined"
+      "desc": "时间轴显示的节点描述"
     },
     "icon": {
       "type": "string",
-      "desc": "时间轴显示的节点图标资源",
-      "defaultValue": "undefined"
+      "desc": "时间轴显示的节点图标资源"
     },
     "direction": {
       "type": "string",
@@ -27,7 +24,7 @@
     "isLast": {
       "type": "boolean",
       "desc": "是否是最后一个时间节点",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "status": {
       "type": "TimeLineStatus",
@@ -36,18 +33,16 @@
     },
     "timeLineType": {
       "type": "TimeLineType",
-      "desc": "时间节点的风格 可配置 图标风格和隐藏解释类型",
-      "defaultValue": "undefined"
+      "desc": "时间节点的风格 可配置 图标风格和隐藏解释类型"
     },
     "pending": {
       "type": "boolean",
       "desc": "最后一个是否是幽灵节点",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "pendingDot": {
       "type": "React.Node",
-      "desc": "当最后一个是幽灵节点时,指定其图标资源",
-      "defaultValue": "undefined"
+      "desc": "当最后一个是幽灵节点时,指定其图标资源"
     }
   },
   "type": {

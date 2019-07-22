@@ -6,22 +6,21 @@
     "defaultStart": {
       "type": "number",
       "desc": "幻灯片初始状态开始激活的索引，默认从0开始",
-      "defaultValue": "0"
+      "defaultValue": 0
     },
     "start": {
       "type": "number",
-      "desc": "手动切换,指定幻灯片开始的索引",
-      "defaultValue": "undefined"
+      "desc": "手动切换,指定幻灯片开始的索引"
     },
     "autoPlay": {
       "type": "boolean",
       "desc": "是否自动切换",
-      "defaultValue": "true"
+      "defaultValue": true
     },
     "delay": {
       "type": "number",
       "desc": "自动切换的时间间隔，单位为毫秒",
-      "defaultValue": "3000"
+      "defaultValue": 3000
     },
     "indicatorType": {
       "type": "horizontal | vertical | outside",
@@ -36,7 +35,7 @@
     "animationTime": {
       "type": "number",
       "desc": "单次动画执行的时间，单位为毫秒",
-      "defaultValue": "500"
+      "defaultValue": 500
     },
     "action": {
       "type": "hover | click",

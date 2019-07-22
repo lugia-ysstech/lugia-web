@@ -10,28 +10,26 @@
     },
     "title": {
       "type": "React.node",
-      "desc": "抽屉的标题",
-      "defaultValue": "undefined"
+      "desc": "抽屉的标题"
     },
     "visible": {
       "type": "boolean",
-      "desc": "抽屉是否展示",
-      "defaultValue": "undefined"
+      "desc": "抽屉是否展示"
     },
     "mask": {
       "type": "boolean",
       "desc": "是否展示遮罩层",
-      "defaultValue": "true"
+      "defaultValue": true
     },
     "maskClosable": {
       "type": "boolean",
       "desc": "点击遮罩层是否允许关闭抽屉",
-      "defaultValue": "true"
+      "defaultValue": true
     },
     "closable": {
       "type": "boolean",
       "desc": "是否展示抽屉右上角关闭按钮",
-      "defaultValue": "false"
+      "defaultValue": false
     }
   },
   "events": {

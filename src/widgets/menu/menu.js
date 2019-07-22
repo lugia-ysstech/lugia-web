@@ -236,6 +236,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     const { popupVisible = false, childData } = this.state;
     return (
       <Trigger
+        themePass
         ref={cmp => (this.trigger = cmp)}
         align={'rightTop'}
         lazy={false}

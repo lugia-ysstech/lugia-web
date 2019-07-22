@@ -6,15 +6,22 @@
  */
 import * as React from 'react';
 import Tree from '../tree';
-import Widget from '../consts/index';
-import Theme from '../theme';
+import { deepMerge } from '@lugia/object-utils';
+import DropMenu from '../dropmenu';
 import Menu from '../menu';
 import Tabs from '../tabs';
 import styled from 'styled-components';
-import Trigger from '../trigger';
 import { getTreeData } from '../menu/utils';
 import { getValue, getInitExpandedPath } from '../cascader/utils';
 import { DisplayField, ValueField } from '../consts/props';
+import {
+  PrimaryLightTheme,
+  EllipseLightTheme,
+  PrimaryDarkTheme,
+  EllipseDarkTheme,
+  LightMenuTheme,
+  DarkMenuTheme,
+} from '../css/navmenu';
 import Icon from '../icon';
 
 const MenuWrap = styled.div`
@@ -35,10 +42,12 @@ type NavMenuProps = {
   onClick?: Function,
   valueField?: string,
   displayField?: string,
-  theme: 'light' | 'dark',
+  themeStyle: 'light' | 'dark',
   separator?: string,
-  size: 'large' | 'default' | 'bigger',
+  autoHeight: boolean,
   getPartOfThemeHocProps: Function,
+  activityValue: number,
+  switchIconNames?: Object,
 };
 
 type NavMenuState = {
@@ -46,8 +55,7 @@ type NavMenuState = {
   popupVisible: boolean,
   value: string[],
   expandedPath: string[],
-  activityValue: string,
-  showMenuKey: string,
+  activityValue: number,
   isInTabs: boolean,
 };
 
@@ -57,9 +65,14 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     valueField: 'value',
     displayField: 'text',
     inlineExpandAll: true,
-    theme: 'light',
+    themeStyle: 'light',
     inlineType: 'primary',
     separator: '|',
+    autoHeight: true,
+    switchIconNames: {
+      open: 'lugia-icon-direction_up',
+      close: 'lugia-icon-direction_down',
+    },
   };
 
   treeData: Array<Object>;
@@ -71,8 +84,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       popupVisible: false,
       value: getValue(props, null),
       expandedPath: getInitExpandedPath(props),
-      showMenuKey: '',
-      activityValue: '',
+      activityValue: props.activityValue ? props.activityValue : 0,
       isInTabs: false,
     };
     this.treeData = getTreeData(this.props);
@@ -107,20 +119,18 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
   };
 
   getVerticalNavMenu = () => {
-    const { data, displayField, valueField, separator, getPartOfThemeHocProps } = this.props;
+    const { data, displayField, valueField, separator, autoHeight, themeStyle } = this.props;
     const { popupVisible, value, expandedPath } = this.state;
     return (
       <MenuWrap>
         <Menu
-          {...getPartOfThemeHocProps('Menu')}
+          {...this.getMenuTheme(themeStyle)}
           data={data}
           separator={separator}
-          autoHeight={true}
+          autoHeight={autoHeight}
           popupVisible={popupVisible}
           valueField={valueField}
           displayField={displayField}
-          size={'large'}
-          subsize={'bigger'}
           action={'hover'}
           mutliple={false}
           handleIsInMenu={this.handleIsInMenu}
@@ -168,10 +178,10 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     return (
       <Tabs
         tabType={'line'}
+        theme={this.props.getPartOfThemeHocProps('Tabs')}
         tabPosition={'top'}
+        hideContent={true}
         onTabClick={this.onTabClick}
-        onTabMouseEnter={this.onTabMouseEnter}
-        onTabMouseLeave={this.onTabMouseLeave}
         data={tabsData}
         activityValue={this.state.activityValue}
         getTabpane={this.getTabpane}
@@ -180,94 +190,88 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
   };
 
   getTabpane = (target: Object, i: number) => {
-    const { popupVisible } = this.state;
     const popup = this.getHorizontaMenu(i);
     return (
-      <Trigger
+      <DropMenu
         offsetY={4}
         align={'bottomLeft'}
-        createPortal
-        popup={popup}
-        action={'hover'}
-        hideAction={'hover'}
-        popupVisible={popupVisible}
+        menus={popup}
+        action={'click'}
+        hideAction={'click'}
       >
         {target}
-      </Trigger>
+      </DropMenu>
     );
   };
 
   getHorizontaMenu = (i: number) => {
-    const { data = [], valueField = ValueField } = this.props;
-    const { showMenuKey } = this.state;
+    const { data = [], autoHeight, getPartOfThemeHocProps } = this.props;
     const { children } = data[i];
-    if (!children || children.length === 0 || showMenuKey !== data[i][valueField]) {
-      return <div />;
+    if (!children || children.length === 0) {
+      return <span />;
     }
     return (
-      <Theme config={{ [Widget.Menu]: { width: 120 } }}>
-        <Menu
-          action={'hover'}
-          autoHeight
-          data={children}
-          onClick={this.onClickTabsMenu}
-          handleIsInMenu={this.tabsHandleIsInMenu}
-        />
-      </Theme>
+      <Menu
+        action={'hover'}
+        {...getPartOfThemeHocProps('Menu')}
+        autoHeight={autoHeight}
+        data={children}
+        onClick={this.onClickTabsMenu}
+      />
     );
   };
 
-  getParentValueField = (text: string) => {
-    const { valueField } = this.props;
-    return this.treeData.filter(treeItem => text === treeItem[valueField])[0].path.split('/')[0];
+  getParentTarget = (text: string) => {
+    const { valueField, data = [] } = this.props;
+    const key = this.treeData
+      .filter(treeItem => text === treeItem[valueField])[0]
+      .path.split('/')[0];
+    let index;
+    let parentItem;
+    data.forEach((item, i) => {
+      if (item[valueField] === key) {
+        index = i;
+        parentItem = item;
+      }
+    });
+    return {
+      parentItem,
+      index,
+    };
   };
 
   onClickTabsMenu = (event: Object, keys: string[], item: Object) => {
     const { valueField } = this.props;
     const { children } = item;
     if (!children || children.length === 0) {
-      const activityValue = this.getParentValueField(item[valueField]);
-      this.setState({ activityValue });
-      this.exposeOnChange(item);
-      setTimeout(() => {
-        this.setState({ popupVisible: false });
-      }, 100);
+      const { parentItem, index } = this.getParentTarget(item[valueField]);
+      this.setState({ activityValue: index });
+      this.exposeOnChange({
+        item,
+        index,
+        parentItem,
+      });
     }
   };
 
-  isHasChildren = (activeKeys: string) => {
-    const { data = [], valueField = ValueField } = this.props;
-    // const children = data.filter(item => item[valueField] === activeKeys)[0].children;
-    const children = data[activeKeys].children;
-
+  isHasChildren = (index: number) => {
+    const { data = [] } = this.props;
+    const children = data[index].children;
     return !!children && !!children.length;
   };
 
-  getExposeTabsItem = (activityValue: string): Object => {
-    const { data = [], valueField = ValueField } = this.props;
-    return data.find(item => item[valueField] === activityValue);
-  };
-
-  onTabClick = (activityValue: string) => {
-    const isHasChildren = this.isHasChildren(activityValue);
-    console.log('isHasChildren', isHasChildren);
+  onTabClick = (index: number) => {
+    const isHasChildren = this.isHasChildren(index);
     if (!isHasChildren) {
-      const item = this.getExposeTabsItem(activityValue);
-      this.exposeOnChange(item);
-      this.setState({ activityValue });
-    } else {
-      return;
+      const { data } = this.props;
+      const target = {
+        item: data[index],
+        index,
+        parrentItem: data[index],
+      };
+      this.exposeOnChange(target);
+      this.setState({ activityValue: index });
     }
-  };
-
-  onTabMouseEnter = (activeKey: string) => {
-    const isHasChildren = this.isHasChildren(activeKey);
-    const popupVisible = isHasChildren ? true : false;
-    this.setState({ popupVisible, showMenuKey: activeKey, isInTabs: true });
-  };
-
-  onTabMouseLeave = (activeKey: string) => {
-    this.setState({ isInTabs: false });
   };
 
   getTabsData = () => {
@@ -276,8 +280,8 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     data.forEach((item, i) => {
       const target = {};
       target.title = item[displayField];
-      target.content = <div />;
       target.activityValue = item[valueField];
+      target.disabled = item.disabled;
       const { children = [] } = item;
       if (children && children.length !== 0) {
         target.suffixIcon = <Icon iconClass={'lugia-icon-direction_down'} />;
@@ -287,6 +291,52 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     return tabsData;
   };
 
+  mergeTheme = (target: string, defaultTheme: Object) => {
+    const { viewClass, theme } = this.props.getPartOfThemeHocProps(target);
+
+    const themeHoc = deepMerge(
+      {
+        [viewClass]: { ...defaultTheme },
+      },
+      theme
+    );
+
+    const treeTheme = {
+      viewClass,
+      theme: themeHoc,
+    };
+    return treeTheme;
+  };
+
+  getMenuTheme = (themeStyle: 'light' | 'dark') => {
+    let defaultTheme;
+    if (themeStyle === 'dark') {
+      defaultTheme = DarkMenuTheme;
+    } else {
+      defaultTheme = LightMenuTheme;
+    }
+
+    return this.mergeTheme('Menu', defaultTheme);
+  };
+
+  getTreeTheme = (inlineType: 'primary' | 'ellipse', themeStyle: 'light' | 'dark') => {
+    let defaultTheme;
+    if (inlineType === 'ellipse') {
+      if (themeStyle === 'dark') {
+        defaultTheme = EllipseDarkTheme;
+      } else {
+        defaultTheme = EllipseLightTheme;
+      }
+    } else {
+      if (themeStyle === 'dark') {
+        defaultTheme = PrimaryDarkTheme;
+      } else {
+        defaultTheme = PrimaryLightTheme;
+      }
+    }
+    return this.mergeTheme('Tree', defaultTheme);
+  };
+
   getInlineNavMenu = () => {
     const { value } = this.state;
     const {
@@ -294,18 +344,21 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       inlineExpandAll,
       valueField,
       displayField,
-      getPartOfThemeHocProps,
+      autoHeight,
+      themeStyle,
+      switchIconNames,
     } = this.props;
     const treeData = this.treeData;
-    const suffix = 'M';
+
+    const treeTheme = this.getTreeTheme(inlineType, themeStyle);
     return (
       <MenuWrap>
         <Tree
-          {...getPartOfThemeHocProps('Tree')}
+          {...treeTheme}
+          switchIconNames={switchIconNames}
           expandAll={inlineExpandAll}
           showSwitch={false}
-          autoHeight={true}
-          suffix={suffix}
+          autoHeight={autoHeight}
           __navmenu
           inlineType={inlineType}
           data={treeData}
@@ -329,16 +382,6 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     obj[valueField] = treeItem[valueField];
     obj[displayField] = treeItem[displayField];
     return obj;
-  };
-
-  tabsHandleIsInMenu = (isInMenu: boolean) => {
-    const { isInTabs } = this.state;
-    if (isInTabs || isInMenu) {
-      return;
-    }
-    setTimeout(() => {
-      this.setState({ popupVisible: false });
-    }, 220);
   };
 
   handleIsInMenu = (isInMenu: boolean) => {

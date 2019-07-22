@@ -79,7 +79,11 @@ export default () => {
       },
     },
     [Widget.Button]: {
-      width: buttonWidth,
+      Container: {
+        normal: {
+          width: buttonWidth,
+        },
+      },
     },
   };
   return (

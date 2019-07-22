@@ -7,7 +7,7 @@ import CommonIcon from '../../icon';
 import CheckBox from '../../checkbox';
 import Widget from '../../consts';
 import ThemeHoc from '@lugia/theme-hoc';
-import { getMenuItemHeight, TextIcon } from '../../css/menu';
+import { TextIcon } from '../../css/menu';
 import {
   FlexBox,
   FlexWrap,
@@ -24,8 +24,6 @@ const defaultTitle = '---';
 const openClassName = 'lugia-icon-direction_caret_down';
 const closeClassName = 'lugia-icon-direction_caret_right';
 
-const navOpenClassName = 'lugia-icon-direction_up';
-const navCloseClassName = 'lugia-icon-direction_down';
 class TreeNode extends React.Component {
   static propTypes = {
     prefixCls: PropTypes.string,
@@ -157,8 +155,8 @@ class TreeNode extends React.Component {
   };
 
   renderSwitch(expandedState) {
-    const { describe, mutliple, switcher = true, disabled, __navmenu } = this.props;
-    console.log('__navmenu 11', __navmenu);
+    const { describe, mutliple, disabled, __navmenu, switchIconNames } = this.props;
+    console.log('switchIconNames', switchIconNames);
     if (describe) {
       return (
         <NullSwitch themeProps={this.props.getPartOfThemeProps('Switch')}>
@@ -167,12 +165,9 @@ class TreeNode extends React.Component {
       );
     }
     if (mutliple || !describe || __navmenu) {
-      let iconClass;
-      if (__navmenu) {
-        iconClass = expandedState === 'open' ? navOpenClassName : navCloseClassName;
-      } else {
-        iconClass = expandedState === 'open' ? openClassName : closeClassName;
-      }
+      const { open, close } = switchIconNames;
+      const iconClass = expandedState === 'open' ? open : close;
+
       return (
         <Switch
           mutliple={mutliple}
@@ -254,7 +249,6 @@ class TreeNode extends React.Component {
         }
       }
 
-      const { inlineType, getPartOfThemeProps } = this.props;
       newChildren = (
         <Animate
           {...animProps}
@@ -264,10 +258,9 @@ class TreeNode extends React.Component {
         >
           {!props.expanded ? null : (
             <SubTreeWrap
-              themeProps={getPartOfThemeProps('SubTreeWrap')}
+              themeProps={this.props.getPartOfThemeProps('SubTreeWrap')}
               data-expanded={props.expanded}
               propsConfig={{ expanded: props.expanded }}
-              inlineType={inlineType}
             >
               {React.Children.map(
                 children,
@@ -342,6 +335,8 @@ class TreeNode extends React.Component {
       shape,
       selected,
       describe,
+      inlineType,
+      __navmenu,
     });
     const selectHandle = () => {
       const title = (

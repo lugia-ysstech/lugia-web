@@ -5,12 +5,12 @@
  */
 import * as React from 'react';
 import Menu from '../menu';
-import Theme from '../theme';
 import Widget from '../consts/index';
 import Trigger from '../trigger';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import InputTag from '../inputtag';
 import { getTreeData } from '../menu/utils';
+import { deepMerge } from '@lugia/object-utils';
 import { DisplayField, ValueField } from '../consts/props';
 import {
   isHasValue,
@@ -86,6 +86,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
   checked: boolean;
   mouseInTarget: boolean;
   menu: Object;
+  trigger: Object;
 
   constructor(props: CascaderProps) {
     super(props);
@@ -125,6 +126,10 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
         onMouseLeave={this.onMouseLeaveContainer}
       >
         <Trigger
+          ref={cmp => {
+            this.trigger = cmp;
+          }}
+          themePass
           align={'bottomLeft'}
           offsetY={offsetY}
           popupVisible={popupVisible}
@@ -133,7 +138,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
           lazy={false}
         >
           <InputTag
-            theme={this.getInputtagTheme()}
+            {...this.props.getPartOfThemeHocProps('InputTag')}
             onClick={this.handleClickInputTag}
             value={inputValue}
             displayValue={inputValue}
@@ -147,7 +152,11 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
     );
   }
 
-  setPopupVisible(popupVisible: boolean, otherTarget?: Object = {}) {
+  setPopupVisible(...rest: any[]) {
+    this.trigger && this.trigger.setPopupVisible(...rest);
+  }
+
+  setPopupVisibleInner(popupVisible: boolean, otherTarget?: Object = {}) {
     this.checked = popupVisible;
     this.setState({ popupVisible, ...otherTarget });
   }
@@ -164,7 +173,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
   };
 
   changeCheckedAndSetVisible(checked: boolean) {
-    this.setPopupVisible(!checked);
+    this.setPopupVisibleInner(!checked);
   }
 
   getMenu = (theme: Object) => {
@@ -172,38 +181,60 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
     const { popupVisible, expandedPath, selectedKeys } = this.state;
 
     return (
-      <Theme config={this.getMenuTheme()}>
-        <Menu
-          mutliple={false}
-          ref={this.menu}
-          action={action}
-          popupVisible={popupVisible}
-          onChange={this.onChange}
-          handleIsInMenu={this.handleIsInMenu}
-          data={data}
-          displayField={displayField}
-          valueField={valueField}
-          onClick={this.onClick}
-          separator={separator}
-          selectedKeys={selectedKeys}
-          expandedPath={expandedPath}
-          offsetX={offsetX}
-          offsetY={0}
-          onMouseEnter={this.onMouseEnter}
-          onMouseLeave={this.onMouseLeave}
-          onExpandPathChange={this.onExpandPathChange}
-        />
-      </Theme>
+      <Menu
+        {...this.getMenuTheme()}
+        mutliple={false}
+        ref={this.menu}
+        action={action}
+        popupVisible={popupVisible}
+        onChange={this.onChange}
+        handleIsInMenu={this.handleIsInMenu}
+        data={data}
+        displayField={displayField}
+        valueField={valueField}
+        onClick={this.onClick}
+        separator={separator}
+        selectedKeys={selectedKeys}
+        expandedPath={expandedPath}
+        offsetX={offsetX}
+        offsetY={0}
+        onMouseEnter={this.onMouseEnter}
+        onMouseLeave={this.onMouseLeave}
+        onExpandPathChange={this.onExpandPathChange}
+      />
     );
+  };
+
+  mergeTheme = (target: string, defaultTheme: Object) => {
+    const { viewClass, theme } = this.props.getPartOfThemeHocProps(target);
+
+    const themeHoc = deepMerge(
+      {
+        [viewClass]: { ...defaultTheme },
+      },
+      theme
+    );
+
+    const newTheme = {
+      viewClass,
+      theme: themeHoc,
+    };
+    return newTheme;
   };
 
   getMenuTheme = () => {
     const { getPartOfThemeConfig } = this.props;
-    const config = {
-      [Widget.Menu]: getPartOfThemeConfig(Widget.Menu),
-      [Widget.SubMenu]: getPartOfThemeConfig(Widget.SubMenu),
+    const { InputTagWrap = {} } = getPartOfThemeConfig('InputTag');
+    const { normal = {} } = InputTagWrap;
+    const { width = 250 } = normal;
+    const defaultMenuTheme = {
+      MenuWrap: {
+        normal: {
+          width,
+        },
+      },
     };
-    return config;
+    return this.mergeTheme('Menu', defaultMenuTheme);
   };
 
   getInputtagTheme = () => {
@@ -220,7 +251,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
       return;
     }
     if (!isInMenuRange && checked) {
-      this.setPopupVisible(false, { expandedPath: this.state.value });
+      this.setPopupVisibleInner(false, { expandedPath: this.state.value });
     }
   };
 
@@ -229,7 +260,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
 
     let inputValueState = {};
     if (!item || !item.children || item.children.length === 0) {
-      this.setPopupVisible(false);
+      this.setPopupVisibleInner(false);
 
       const { showAllLevels } = this.props;
       if (showAllLevels === false) {
@@ -277,7 +308,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
       return;
     }
 
-    this.setPopupVisible(false, { expandedPath: [], value: [], inputValue: [] });
+    this.setPopupVisibleInner(false, { expandedPath: [], value: [], inputValue: [] });
   };
 
   onChange = (target: Object) => {

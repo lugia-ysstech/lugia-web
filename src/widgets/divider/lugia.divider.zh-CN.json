@@ -5,23 +5,20 @@
   "props": {
     "viewClass": {
       "type": "string",
-      "desc": "用于配置通用主题属性",
-      "defaultValue": "undefined"
+      "desc": "用于配置通用主题属性"
     },
     "position": {
       "type": "DividerPosition",
-      "desc": "分割线中显示内容的位置,与content 配合使用",
-      "defaultValue": "undefined"
+      "desc": "分割线中显示内容的位置,与content 配合使用"
     },
     "dashed": {
       "type": "boolean",
       "desc": "分割线是否是虚线",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "content": {
       "type": "string",
-      "desc": "分割线中可添加显示的内容",
-      "defaultValue": "undefined"
+      "desc": "分割线中可添加显示的内容"
     },
     "type": {
       "type": "DividerType",
@@ -35,7 +32,7 @@
   },
   "category": ["其他"],
   "designInfo": {
-    "HorizontalDividerConfig": {
+    "HorizontalDivider": {
       "sequence": 1,
       "title": "水平分割线",
       "desc": "水平分割线",
@@ -58,7 +55,7 @@
         }
       }
     },
-    "VerticalDividerConfig": {
+    "VerticalDivider": {
       "sequence": 2,
       "title": "垂直分割线",
       "desc": "垂直分割线",

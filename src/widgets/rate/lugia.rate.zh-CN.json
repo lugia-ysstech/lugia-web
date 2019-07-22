@@ -6,29 +6,29 @@
     "count": {
       "type": "number",
       "desc": "展示的 star 总数",
-      "defaultValue": "5"
+      "defaultValue": 5
     },
     "max": {
       "type": "number",
       "desc": "最大分值",
-      "defaultValue": "5"
+      "defaultValue": 5
     },
     "disabled": {
       "type": "boolean",
       "desc": "禁用状态,不可进行交互",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "allowHalf": {
       "type": "boolean",
       "desc": "是否允许半选",
-      "defaultValue": "false"
+      "defaultValue": false
     },
-    "classify":{
+    "classify": {
       "type": "boolean",
       "desc": "是否区分颜色",
-      "defaultValue": "false"
+      "defaultValue": false
     },
-    "iconClass":{
+    "iconClass": {
       "type": "object",
       "desc": "自定义图标对象",
       "defaultValue": {
@@ -39,17 +39,15 @@
         "half": "lugia-icon-finacial_half_star"
       }
     },
-    "value":{
+    "value": {
       "type": "number",
       "desc": "当前分值",
-      "defaultValue": "0"
+      "defaultValue": 0
     },
-    "character":{
+    "character": {
       "type": "string | React$Element<any>",
-      "desc": "自定义展示字符",
-      "defaultValue": "undefined"
+      "desc": "自定义展示字符"
     }
-
   },
   "events": {
     "onClick": {
@@ -82,7 +80,6 @@
         }
       ]
     }
-
   },
   "category": ["数据录入"],
   "designInfo": {
@@ -147,7 +144,7 @@
         "DefaultTextIcon": {
           "name": "默认的文字的",
           "desc": "默认的文字的样式配置",
-          "normal": [["color"],["margin"], ["fontSize"]],
+          "normal": [["color"], ["margin"], ["fontSize"]],
           "hover": [],
           "clicked": [],
           "disabled": []
@@ -157,21 +154,20 @@
   },
   "theme": {
     "ActiveIcon": {
-        "name": "选中的图标",
-        "desc": "选中的星星的样式",
-        "normal": [["color"]],
-        "hover": [],
-        "clicked": [],
-        "disabled": []
+      "name": "选中的图标",
+      "desc": "选中的星星的样式",
+      "normal": [["color"]],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
     },
     "DefaultRateIcon": {
-        "name": "默认的图标",
-        "desc": "默认的星星的样式",
-        "normal": [["color"],["margin"], ["fontSize"]],
-        "hover": [],
-        "clicked": [],
-        "disabled": []
+      "name": "默认的图标",
+      "desc": "默认的星星的样式",
+      "normal": [["color"], ["margin"], ["fontSize"]],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
     }
   }
-
 }

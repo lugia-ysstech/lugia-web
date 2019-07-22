@@ -205,6 +205,14 @@ const getNormalBgColor = (selected: boolean) => {
   return selected ? `${hoverColor}` : '';
 };
 
+const getNavNolmalBgColor = (selected: boolean, inlineType: 'primary' | 'ellipse') => {
+  return !selected
+    ? ''
+    : inlineType === 'primary'
+    ? ''
+    : `linear-gradient(to right, ${themeColor}, #808eff)`;
+};
+
 export const TitleWrap = CSSComponent({
   tag: 'div',
   className: 'TitleWrap',
@@ -221,18 +229,21 @@ export const TitleWrap = CSSComponent({
     ],
     getCSS: (themeMeta, themeProps) => {
       const { propsConfig } = themeProps;
-      const { itemHeight } = propsConfig;
+      const { itemHeight, selected, inlineType, __navmenu } = propsConfig;
       const { height = itemHeight } = themeMeta;
-      return `line-height: ${px2remcss(height)}`;
+      const bgColor = __navmenu
+        ? getNavNolmalBgColor(selected, inlineType)
+        : getNormalBgColor(selected);
+      return css`
+        line-height: ${px2remcss(height)};
+        background: ${bgColor};
+      `;
     },
     getThemeMeta: (themeMeta, themeProps) => {
       const { propsConfig } = themeProps;
-      const { shape, selected } = propsConfig;
-      const borderRadius = shape === 'round' ? 99999 : 4;
+      const { shape, inlineType } = propsConfig;
+      const borderRadius = shape === 'round' || inlineType === 'ellipse' ? 99999 : 4;
       return {
-        background: {
-          color: getNormalBgColor(selected),
-        },
         borderRadius: getBorderRadius(borderRadius),
       };
     },
@@ -288,7 +299,7 @@ export const TitleWrap = CSSComponent({
     height: 100%;
     vertical-align: top;
     padding-left: ${px2remcss(10)};
-    transition: all 0.3s;
+    transition: all 0.2s;
   `,
   option: { hover: true, active: true, disabled: true },
 });

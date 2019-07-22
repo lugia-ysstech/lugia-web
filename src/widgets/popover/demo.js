@@ -139,7 +139,13 @@ export const WrapperDemo = () => {
         TooltipDescription: { normal: { color: 'yellow' } },
       },
     },
-    [Widget.Button]: { width: buttonWidth },
+    [Widget.Button]: {
+      Container: {
+        normal: {
+          width: buttonWidth,
+        },
+      },
+    },
   };
   return (
     <Wrapper>

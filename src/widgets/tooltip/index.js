@@ -18,22 +18,6 @@ import { units } from '@lugia/css';
 const { px2remcss } = units;
 const { defaultColor, blackColor } = colorsFunc();
 
-const Container = CSSComponent({
-  tag: 'div',
-  className: 'Container',
-  normal: {
-    selectNames: [
-      ['width'],
-      ['height'],
-      ['boxShadow'],
-      ['opacity'],
-      ['background'],
-      ['padding'],
-      ['margin'],
-    ],
-  },
-});
-
 const ContentWrapper: Object = CSSComponent({
   tag: 'div',
   className: 'TooltipContentWrapper',
@@ -100,7 +84,7 @@ const Arrow: Object = CSSComponent({
   tag: 'div',
   className: 'ToolTipArrow',
   normal: {
-    selectNames: [['background']],
+    selectNames: [],
     getCSS(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
       const { background = {} } = themeMeta;
@@ -138,13 +122,6 @@ const Arrow: Object = CSSComponent({
         default:
           return 'background:transparent';
       }
-    },
-    getThemeMeta() {
-      return {
-        background: {
-          color: 'transparent',
-        },
-      };
     },
   },
   css: css`
@@ -395,6 +372,7 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
     });
     return (
       <Trigger
+        themePass
         createPortal={true}
         popupVisible={visible}
         align={placement}
@@ -411,6 +389,9 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
         {children}
       </Trigger>
     );
+  }
+  setPopupVisible(...rest: any[]) {
+    this.trigger && this.trigger.setPopupVisible(...rest);
   }
 
   getContent(contentThemeProps, direction) {

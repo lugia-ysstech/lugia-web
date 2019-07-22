@@ -20,8 +20,7 @@
     },
     "plain": {
       "type": "boolean",
-      "desc": "是否为朴素按钮",
-      "defaultValue": "undefined"
+      "desc": "是否为朴素按钮"
     },
     "size": {
       "type": "ButtonSize",
@@ -30,28 +29,24 @@
     },
     "loading": {
       "type": "boolean",
-      "desc": "设置按钮加载状态",
-      "defaultValue": "undefined"
+      "desc": "设置按钮加载状态"
     },
     "circle": {
       "type": "boolean",
-      "desc": "设置圆形按钮",
-      "defaultValue": "undefined"
+      "desc": "设置圆形按钮"
     },
     "icon": {
       "type": "string",
-      "desc": "设置按钮图标类型",
-      "defaultValue": "undefined"
+      "desc": "设置按钮图标类型"
     },
     "text": {
       "type": "string | React.node",
-      "desc": "设置按钮的文本内容",
-      "defaultValue": "undefined"
+      "desc": "设置按钮的文本内容"
     },
     "block": {
       "type": "boolean",
       "desc": "按钮宽度为父元素宽度",
-      "defaultValue": "false"
+      "defaultValue": false
     }
   },
   "events": {

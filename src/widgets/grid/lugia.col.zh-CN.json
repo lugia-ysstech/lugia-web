@@ -6,27 +6,23 @@
     "span": {
       "type": "number",
       "desc": "栅格占位格数，共 24格",
-      "defaultValue": "1"
+      "defaultValue": 1
     },
     "offset": {
       "type": "number",
-      "desc": "栅格左侧的间隔格数，间隔内不可以有栅格",
-      "defaultValue": "undefined"
+      "desc": "栅格左侧的间隔格数，间隔内不可以有栅格"
     },
     "pull": {
       "type": "number",
-      "desc": "栅格向左移动格数",
-      "defaultValue": "undefined"
+      "desc": "栅格向左移动格数"
     },
     "push": {
       "type": "number",
-      "desc": "栅格向右移动格数",
-      "defaultValue": "undefined"
+      "desc": "栅格向右移动格数"
     },
     "order": {
       "type": "number",
-      "desc": "栅格的顺序，flex 布局下有效",
-      "defaultValue": "undefined"
+      "desc": "栅格的顺序，flex 布局下有效"
     }
   },
   "category": ["布局"],

@@ -89,7 +89,6 @@ class Tag extends React.Component<TagProps, TagState> {
       type === 'optional' && checked
         ? getPartOfThemeProps('CheckedTagWrap', { props: params })
         : getPartOfThemeProps('TagWrap', { props: params });
-    console.log('Tag', getPartOfThemeProps('Tag'));
     return type === 'optional' ? (
       <OptionalWrap onClick={this.onClick} themeProps={themeProps}>
         <ItemText themeProps={themeProps} ref={cmp => (this.itemText = cmp)} type={type}>

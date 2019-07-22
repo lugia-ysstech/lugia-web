@@ -72,10 +72,16 @@ export function getThemeProps(props, value) {
   const closedcolor = getBackground(props, false);
   const { getInternalThemeProps } = props;
   const nessecaryProps = (getInternalThemeProps && getInternalThemeProps()) || {};
+  const {
+    themeConfig: { normal: { width: closedWidth, height: closedHeight } = {} } = {},
+  } = closed;
+  const { themeConfig: { normal: { width: openWidth, height: openHeight } = {} } = {} } = open;
+  // const {themeConfig:closedThemeConfig}=closed;
+  // const {themeConfig:openThemeConfig}=open;
   const defaultOpenThemeProps = {
     normal: {
-      width: wrapWidth,
-      height: wrapHeight,
+      width: closedWidth || wrapWidth,
+      height: closedHeight || wrapHeight,
       border: getBorder({ color: '', style: '', width: 0 }),
       borderRadius: getBorderRadius(20),
       boxShadow: '0 1px 1px 0 rgba(0, 0, 0, 0.05)',
@@ -97,8 +103,8 @@ export function getThemeProps(props, value) {
 
   const defaultClosedThemeProps = {
     normal: {
-      width: wrapWidth,
-      height: wrapHeight,
+      width: openWidth || wrapWidth,
+      height: openHeight || wrapHeight,
       border: getBorder({ color: '', style: '', width: 0 }),
       borderRadius: getBorderRadius(20),
       fontSize: 12,

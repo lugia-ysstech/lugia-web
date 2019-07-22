@@ -675,7 +675,6 @@ class Slider extends Component<TypeProps, TypeState> {
       dotWidths,
       dotHeights
     );
-    const { themeProps } = this.props;
     return (
       <SliderBigBox
         themeProps={sliderContainerThemeProps}
@@ -684,7 +683,6 @@ class Slider extends Component<TypeProps, TypeState> {
       >
         <SliderBox
           {...size}
-          themeProps={themeProps}
           iconSize={iconSize}
           levelPaddings={levelPaddings}
           sliderVerticalPaddings={sliderVerticalPaddings}

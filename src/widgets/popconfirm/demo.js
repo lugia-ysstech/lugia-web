@@ -100,6 +100,13 @@ export const WrapperDemo = () => {
         },
       },
     },
+    [Widget.Button]: {
+      Container: {
+        normal: {
+          width: 80,
+        },
+      },
+    },
   };
   return (
     <Wrapper>

@@ -6,7 +6,7 @@
     "visibilityHeight": {
       "type": "number",
       "desc": "页面滚动高度达到指定值后出现BackTop",
-      "defaultValue": "400"
+      "defaultValue": 400
     },
     "target": {
       "type": "Function",
