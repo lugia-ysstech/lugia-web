@@ -168,7 +168,6 @@ export const ProgressBackground = CSSComponent({
       const { propsConfig = {} } = themeProps;
       const { height } = themeMeta;
       const lineHeight = height ? getLineHeight(height) : px2remcss(getHeight(propsConfig));
-      console.log(lineHeight);
       const { active } = propsConfig;
       if (active) {
         return css`

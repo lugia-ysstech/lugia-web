@@ -13,5 +13,4 @@ export function inputContainTheme(props) {
 
   const themeProps = getPartOfThemeProps('InputContain');
   themeProps.propsConfig = { mode };
-  console.log(themeProps);
 }

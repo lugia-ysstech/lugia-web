@@ -156,7 +156,6 @@ class TreeNode extends React.Component {
 
   renderSwitch(expandedState) {
     const { describe, mutliple, disabled, __navmenu, switchIconNames } = this.props;
-    console.log('switchIconNames', switchIconNames);
     if (describe) {
       return (
         <NullSwitch themeProps={this.props.getPartOfThemeProps('Switch')}>

@@ -464,7 +464,6 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     this.step = step;
     this.maxValue = this.getMaxValue(props);
     this.fastStep = totalSize / 34;
-    console.log('fastStep', this.fastStep, totalSize);
     this.sliderAbsoulateSize = 0;
   }
 
