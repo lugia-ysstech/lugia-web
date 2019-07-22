@@ -233,6 +233,8 @@ class RateDemo extends React.Component<any, any> {
     };
     return (
       <div>
+        <Rate {...this.state.defaultProps2} disabled={true} character="啊" />
+        <TextBox>{this.state.defaultProps2.value} 颗星</TextBox>
         <div>
           <Theme config={configGlobal}>
             <TitleBox>基础用法 default：</TitleBox>
