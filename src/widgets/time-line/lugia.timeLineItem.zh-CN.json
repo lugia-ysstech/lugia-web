@@ -51,7 +51,7 @@
   },
   "category": ["数据展示"],
   "designInfo": {
-    "SimpleDotConfig": {
+    "SimpleTimeDot": {
       "sequence": 1,
       "title": "点状类型时间轴",
       "desc": "点状类型时间轴",
@@ -84,7 +84,7 @@
         }
       }
     },
-    "ExplainDotConfig": {
+    "ExplainTimeDot": {
       "sequence": 2,
       "title": "隐藏的解释时间点",
       "desc": "隐藏的解释时间点配置",
@@ -144,7 +144,7 @@
         }
       }
     },
-    "IconConfig": {
+    "TimeIcon": {
       "sequence": 3,
       "title": "图标类型的时间点",
       "desc": "图标类型的时间点配置",

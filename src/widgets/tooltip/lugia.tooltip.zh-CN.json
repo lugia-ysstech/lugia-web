@@ -10,17 +10,18 @@
     },
     "placement": {
       "type": "DirectionType",
-      "desc": "气泡提示框显示的位置,十二个方向"
+      "desc": "气泡提示框显示的位置,十二个方向",
+      "defaultValue": "undefined"
     },
     "visible": {
       "type": "boolean",
       "desc": "是否显示出来",
-      "defaultValue": false
+      "defaultValue": "false"
     },
     "defaultVisible": {
       "type": "boolean",
       "desc": "默认是否显示出来",
-      "defaultValue": false
+      "defaultValue": "false"
     },
 
     "popArrowType": {
@@ -30,7 +31,7 @@
     },
     "action": {
       "type": "Array<string>",
-      "desc": "页签位置，可配置 click,hover,focus",
+      "desc": "触发提示的动作，可配置 click,hover,focus",
       "defaultValue": "click"
     },
     "children": {
@@ -39,7 +40,15 @@
     },
     "title": {
       "type": "React.Node",
-      "desc": "配置气泡提示框需要显示的内容"
+      "desc": "配置气泡提示框需要显示的标题"
+    },
+    "description": {
+      "type": "React.Node",
+      "desc": "配置气泡提示框需要显示的描述"
+    },
+    "content": {
+      "type": "React.Node",
+      "desc": "配置气泡提示框需要显示的自定义内容"
     }
   },
   "events": {

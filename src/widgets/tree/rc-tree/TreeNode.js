@@ -21,8 +21,6 @@ import {
 } from '../../css/tree';
 
 const defaultTitle = '---';
-const openClassName = 'lugia-icon-direction_caret_down';
-const closeClassName = 'lugia-icon-direction_caret_right';
 
 class TreeNode extends React.Component {
   static propTypes = {
@@ -303,7 +301,6 @@ class TreeNode extends React.Component {
       pos,
       describe = false,
       icon,
-      size,
       color,
       isLeaf,
       title,
@@ -407,7 +404,6 @@ class TreeNode extends React.Component {
     }
 
     const renderNoopSwitch = () => {
-      const { mutliple, showSwitch } = this.props;
       return (
         <NullSwitch themeProps={this.props.getPartOfThemeProps('Switch')}>
           <CommonIcon iconClass={'lugia-icon-financial_omit'} />
@@ -451,7 +447,6 @@ class TreeNode extends React.Component {
               : renderNoopSwitch()}
             {props.checkable ? this.renderCheckbox() : null}
             {props.checkable ? null : selectHandle()}
-            {/* {props.suffix ? this.renderSuffix(props.suffix) : null} */}
             {!__navmenu
               ? null
               : canRenderSwitch
