@@ -11,7 +11,6 @@ import Avatar from '../avatar';
 import type { CardProps, CardState } from '../css/card';
 import { ObjectUtils } from '@lugia/type-utils';
 import CSSComponent, { css } from '../theme/CSSProvider';
-import StaticComponent from '../theme/CSSProvider';
 import ThemeHoc from '../theme-provider/index';
 import colorsFunc from '../css/stateColor';
 import { units } from '@lugia/css';
@@ -32,7 +31,6 @@ const CardOutContainer = CSSComponent({
       ['borderRadius'],
       ['margin'],
       ['padding'],
-      ['boxShadow'],
       ['opacity'],
     ],
     defaultTheme: {
@@ -77,7 +75,6 @@ const Content = CSSComponent({
       ['borderRadius'],
       ['margin'],
       ['padding'],
-      ['boxShadow'],
       ['opacity'],
       ['color'],
     ],

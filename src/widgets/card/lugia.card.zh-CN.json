@@ -130,12 +130,13 @@
         }
       }
     },
-    "AvatarCard": {
+    "HAvatarCard": {
       "sequence": 2,
-      "title": "卡片样式类型",
-      "desc": "按卡片类型不同选择显示不同卡片样式",
+      "title": "横向头像卡片",
+      "desc": "横向头像卡片样式",
       "props": {
-        "type": "avatar"
+        "type": "avatar",
+        "imageOrientation": "horizontal"
       },
       "theme": {
         "Container": {
@@ -205,10 +206,168 @@
         }
       }
     },
-    "AvatarImage": {
+    "HImageCard": {
       "sequence": 3,
-      "title": "卡片样式类型",
-      "desc": "按卡片类型不同选择显示不同卡片样式",
+      "title": "横向图片卡片",
+      "desc": "横向图片卡片样式",
+      "props": {
+        "type": "image",
+        "imageOrientation": "horizontal"
+      },
+      "theme": {
+        "Container": {
+          "name": "卡片容器整体",
+          "desc": "配置卡片容器整体",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["background"],
+            ["boxShadow"],
+            ["border"],
+            ["margin"],
+            ["padding"],
+            ["boxShadow"],
+            ["opacity"]
+          ],
+          "hover": [["background"], ["border"], ["boxShadow"], ["opacity"]]
+        },
+        "CardTitle": {
+          "name": "卡片标题",
+          "desc": "配置卡片标题",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["color"],
+            ["font"],
+            ["background"],
+            ["margin"],
+            ["padding"]
+          ]
+        },
+        "CardDescription": {
+          "name": "卡片内容描述",
+          "desc": "配置卡片内容描述",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["color"],
+            ["font"],
+            ["background"],
+            ["margin"],
+            ["padding"]
+          ]
+        },
+        "CardOperation": {
+          "name": "卡片操作按钮",
+          "desc": "配置卡片操作按钮",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["color"],
+            ["font"],
+            ["background"],
+            ["margin"],
+            ["padding"]
+          ]
+        },
+        "CardImage": {
+          "name": "卡片图片",
+          "desc": "配置卡片图片",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["background"],
+            ["borderRadius"],
+            ["border"],
+            ["margin"],
+            ["padding"],
+            ["boxShadow"],
+            ["opacity"]
+          ],
+          "hover": [["width"], ["height"], ["background"]]
+        }
+      }
+    },
+    "VAvatarCard": {
+      "sequence": 4,
+      "title": "垂直头像卡片样式",
+      "desc": "垂直头像卡片不同选择显示不同卡片样式",
+      "props": {
+        "type": "avatar",
+        "imageOrientation": "vertical"
+      },
+      "theme": {
+        "Container": {
+          "name": "卡片容器整体",
+          "desc": "配置卡片容器整体",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["background"],
+            ["boxShadow"],
+            ["border"],
+            ["margin"],
+            ["padding"],
+            ["boxShadow"],
+            ["opacity"]
+          ],
+          "hover": [["background"], ["border"], ["boxShadow"], ["opacity"]]
+        },
+        "CardTitle": {
+          "name": "卡片标题",
+          "desc": "配置卡片标题",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["color"],
+            ["font"],
+            ["background"],
+            ["margin"],
+            ["padding"]
+          ]
+        },
+        "CardDescription": {
+          "name": "卡片内容描述",
+          "desc": "配置卡片内容描述",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["color"],
+            ["font"],
+            ["background"],
+            ["margin"],
+            ["padding"]
+          ]
+        },
+        "CardOperation": {
+          "name": "卡片操作按钮",
+          "desc": "配置卡片操作按钮",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["color"],
+            ["font"],
+            ["background"],
+            ["margin"],
+            ["padding"]
+          ]
+        },
+        "CardAvatar": {
+          "theme": {
+            "SrcAvatar": {
+              "name": "卡片头像资源",
+              "desc": "配置卡片头像资源",
+              "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"]],
+              "hover": [["width"], ["height"], ["background"]]
+            }
+          }
+        }
+      }
+    },
+    "VImageCard": {
+      "sequence": 5,
+      "title": "垂直图片卡片样式",
+      "desc": "垂直图片卡片样式",
       "props": {
         "type": "image"
       },
@@ -286,67 +445,10 @@
         }
       }
     },
-    "TipCard": {
-      "sequence": 4,
-      "title": "卡片样式类型",
-      "desc": "按卡片类型不同选择显示不同卡片样式",
-      "props": {
-        "type": "tip"
-      },
-      "theme": {
-        "Container": {
-          "name": "卡片容器整体",
-          "desc": "配置卡片容器整体",
-          "normal": [
-            ["width"],
-            ["height"],
-            ["background"],
-            ["boxShadow"],
-            ["border"],
-            ["margin"],
-            ["padding"],
-            ["boxShadow"],
-            ["opacity"]
-          ],
-          "hover": [["background"], ["border"], ["boxShadow"], ["opacity"]]
-        },
-        "CardTitle": {
-          "name": "卡片标题",
-          "desc": "配置卡片标题",
-          "normal": [
-            ["width"],
-            ["height"],
-            ["color"],
-            ["font"],
-            ["background"],
-            ["margin"],
-            ["padding"]
-          ]
-        },
-        "CardDescription": {
-          "name": "卡片内容描述",
-          "desc": "配置卡片内容描述",
-          "normal": [
-            ["width"],
-            ["height"],
-            ["color"],
-            ["font"],
-            ["background"],
-            ["margin"],
-            ["padding"]
-          ]
-        },
-        "CardTitleTipLine": {
-          "name": "卡片标题提示",
-          "desc": "卡片标题提示配置",
-          "normal": [["width"], ["height"], ["background"]]
-        }
-      }
-    },
     "ComboCard": {
-      "sequence": 5,
-      "title": "卡片样式类型",
-      "desc": "按卡片类型不同选择显示不同卡片样式",
+      "sequence":6,
+      "title": "组合卡片样式",
+      "desc": "组合卡片样式",
       "props": {
         "type": "combo"
       },
