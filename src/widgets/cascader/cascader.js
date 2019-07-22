@@ -10,6 +10,7 @@ import Trigger from '../trigger';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import InputTag from '../inputtag';
 import { getTreeData } from '../menu/utils';
+import Empty from '../empty';
 import { deepMerge } from '@lugia/object-utils';
 import { DisplayField, ValueField } from '../consts/props';
 import {
@@ -117,11 +118,16 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
   render() {
     const { props, state } = this;
     const { popupVisible, inputValue } = state;
-    const { getTheme, placeholder, offsetY, disabled, createPortal, getPartOfThemeProps } = props;
-    const theme = getTheme();
+    const { placeholder, offsetY, disabled, createPortal, getPartOfThemeProps, data } = props;
+
+    const { InputTagWrap = {} } = this.props.getPartOfThemeConfig('InputTag');
+    const { normal = {} } = InputTagWrap;
+    const { width = 250 } = normal;
+
+    const menu = data && data.length !== 0 ? this.getMenu() : <Empty width={width} />;
     return (
       <CascaderContainer
-        themeProps={getPartOfThemeProps(Widget.InputTag)}
+        themeProps={getPartOfThemeProps('InputTag')}
         onMouseEnter={this.onMouseEnterContainer}
         onMouseLeave={this.onMouseLeaveContainer}
       >
@@ -133,7 +139,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
           align={'bottomLeft'}
           offsetY={offsetY}
           popupVisible={popupVisible}
-          popup={this.getMenu(theme)}
+          popup={menu}
           createPortal={createPortal}
           lazy={false}
         >
@@ -176,7 +182,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
     this.setPopupVisibleInner(!checked);
   }
 
-  getMenu = (theme: Object) => {
+  getMenu = () => {
     const { data, action, separator, offsetX, valueField, displayField } = this.props;
     const { popupVisible, expandedPath, selectedKeys } = this.state;
 
