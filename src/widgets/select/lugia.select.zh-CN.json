@@ -4,7 +4,7 @@
   "desc": "选项过多时，弹出下拉菜单给用户选择操作",
   "props": {
     "data": {
-      "type": "[{valueField: '', displayField: ''}]",
+      "type": "Object[]",
       "desc": "生成选择项的数据"
     },
     "mutliple": {
@@ -654,6 +654,7 @@
         },
 
         "Menu": {
+          "name": "多选展示框菜单配置",
           "theme": {
             "MenuWrap": {
               "name": "菜单外盒",
@@ -674,6 +675,7 @@
               "disabled": []
             },
             "MenuItem": {
+              "name": "弹开菜单项配置",
               "theme": {
                 "MenuItemWrap": {
                   "name": "项的外盒",
@@ -712,6 +714,7 @@
     },
 
     "Menu": {
+      "name": "选择器菜单配置",
       "theme": {
         "MenuWrap": {
           "name": "菜单外盒",
@@ -732,6 +735,7 @@
           "disabled": []
         },
         "MenuItem": {
+          "name": "选择器菜单项配置",
           "theme": {
             "MenuItemWrap": {
               "name": "项的外盒",

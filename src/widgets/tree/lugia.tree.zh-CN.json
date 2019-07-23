@@ -168,6 +168,7 @@
           "disabled": []
         },
         "TreeItem": {
+          "name": "单选树的项配置",
           "theme": {
             "TreeItemWrap": {
               "name": "项的外盒",
@@ -236,6 +237,22 @@
               "hover": [["color"], ["font"]],
               "active": [["color"], ["font"]],
               "disabled": [["color"], ["font"]]
+            },
+            "SubTreeWrap": {
+              "name": "展开项的外盒配置",
+              "desc": "展开项下的子树的外盒配置",
+              "normal": [
+                ["width"],
+                ["background"],
+                ["opacity"],
+                ["border"],
+                ["margin"],
+                ["padding", "left"],
+                ["padding", "right"]
+              ],
+              "hover": [["background"], ["opacity"], ["border"]],
+              "active": [],
+              "disabled": []
             }
           }
         }
@@ -268,6 +285,7 @@
           "disabled": []
         },
         "TreeItem": {
+          "name": "多选树的项配置",
           "theme": {
             "TreeItemWrap": {
               "name": "项的外盒",
@@ -338,6 +356,7 @@
               "disabled": [["color"], ["font"]]
             },
             "Checkbox": {
+              "name": "多选树的选择框配置",
               "theme": {
                 "CheckboxWrap": {
                   "name": "Checkbox整体配置",
@@ -375,6 +394,22 @@
                   "disabled": [["color"]]
                 }
               }
+            },
+            "SubTreeWrap": {
+              "name": "展开项的外盒配置",
+              "desc": "展开项下的子树的外盒配置",
+              "normal": [
+                ["width"],
+                ["background"],
+                ["opacity"],
+                ["border"],
+                ["margin"],
+                ["padding", "left"],
+                ["padding", "right"]
+              ],
+              "hover": [["background"], ["opacity"], ["border"]],
+              "active": [],
+              "disabled": []
             }
           }
         }
@@ -401,6 +436,7 @@
       "disabled": []
     },
     "TreeItem": {
+      "name": "树形控件项的配置",
       "theme": {
         "TreeItemWrap": {
           "name": "项的外盒",
@@ -471,6 +507,7 @@
           "disabled": [["color"], ["font"]]
         },
         "Checkbox": {
+          "name": "多选树的选择框配置",
           "theme": {
             "CheckboxWrap": {
               "name": "Checkbox整体配置",
@@ -508,6 +545,22 @@
               "disabled": [["color"]]
             }
           }
+        },
+        "SubTreeWrap": {
+          "name": "展开项的外盒配置",
+          "desc": "展开项下的子树的外盒配置",
+          "normal": [
+            ["width"],
+            ["background"],
+            ["opacity"],
+            ["border"],
+            ["margin"],
+            ["padding", "left"],
+            ["padding", "right"]
+          ],
+          "hover": [["background"], ["opacity"], ["border"]],
+          "active": [],
+          "disabled": []
         }
       }
     }
