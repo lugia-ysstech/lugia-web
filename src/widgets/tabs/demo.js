@@ -56,7 +56,7 @@ export class TabsLimitdemo extends React.Component<any, any> {
     hasActivityValueData[0] = {
       title: ' changed Tab1',
       content: 'Content of changed Tab1',
-      activityValue: '-1',
+      key: '-1',
     };
     this.setState({ data: hasActivityValueData });
   };
@@ -66,8 +66,9 @@ export class TabsLimitdemo extends React.Component<any, any> {
     this.setState({ data });
   };
 
-  onDeleteClick = (activityValue: string) => {
+  onDeleteClick = (res: Object) => {
     const { data } = this.state;
+    const { activityValue } = res;
     let newdata = [];
     if (data.length > 1) {
       newdata = data.filter(child => {
@@ -146,7 +147,7 @@ export const hasActivityValueData = [
   {
     title: 'Tab1',
     content: <div>1111111111</div>,
-    activityValue: '0',
+    key: '0',
   },
   {
     title: 'Tab2',
@@ -155,10 +156,10 @@ export const hasActivityValueData = [
         <div>222222</div>
       </div>
     ),
-    activityValue: '1',
+    key: '1',
   },
   {
-    activityValue: '2',
+    key: '2',
     title: 'Tab3',
     content: (
       <div>
@@ -169,7 +170,7 @@ export const hasActivityValueData = [
     ),
   },
   {
-    activityValue: '3',
+    key: '3',
     title: 'Tab4',
     disabled: true,
     content: (
@@ -182,29 +183,29 @@ export const hasActivityValueData = [
     ),
   },
   {
-    activityValue: '4',
+    key: '4',
     title: 'Tab5',
     content: 55555,
   },
   {
-    activityValue: '5',
+    key: '5',
     title: 'Tab6',
     content: 66666,
   },
   {
-    activityValue: '6',
+    key: '6',
     title: 'Tab7',
     content: 77777,
   },
   {
-    activityValue: '7',
+    key: '7',
     title: 'Tab8',
     content: 888888,
   },
 ];
 export const children = [
-  <Tabpane title={'1111'} content={'11111'} activityValue={'0'} />,
-  <Tabpane title={'2222'} content={<div>2222</div>} activityValue={'1'} />,
+  <Tabpane title={'1111'} content={'11111'} key={'0'} />,
+  <Tabpane title={'2222'} content={<div>2222</div>} key={'1'} />,
   <Tabpane
     title={'3333'}
     content={
@@ -214,7 +215,7 @@ export const children = [
         </div>
       </div>
     }
-    activityValue={'2'}
+    key={'2'}
   />,
   <Tabpane
     title={'4444'}
@@ -225,7 +226,7 @@ export const children = [
         </div>
       </div>
     }
-    activityValue={'3'}
+    key={'3'}
   />,
   <Tabpane
     title={'555555'}
@@ -236,7 +237,7 @@ export const children = [
         </div>
       </div>
     }
-    activityValue={'4'}
+    key={'4'}
   />,
   <Tabpane
     title={'666666'}
@@ -247,7 +248,7 @@ export const children = [
         </div>
       </div>
     }
-    activityValue={'5'}
+    key={'5'}
   />,
 ];
 export const longChildren = [
@@ -300,7 +301,7 @@ export const shortChildren = [
     content={'11111111111111111111111111'}
     icon={'lugia-icon-financial_archive'}
   />,
-  <Tabpane title={'2222'} content={<div>22222222222222</div>} activityValue={'1'} />,
+  <Tabpane title={'2222'} content={<div>22222222222222</div>} key={'1'} />,
   <Tabpane
     title={'3333'}
     content={
@@ -310,12 +311,12 @@ export const shortChildren = [
         </div>
       </div>
     }
-    activityValue={'2'}
+    key={'2'}
   />,
 ];
 const hasActivityValueChildren = [
-  <Tabpane title={'11111'} content={'1111'} activityValue={'0'} />,
-  <Tabpane title={'2222'} content={<div>2222</div>} activityValue={'1'} />,
+  <Tabpane title={'11111'} content={'1111'} key={'0'} />,
+  <Tabpane title={'2222'} content={<div>2222</div>} key={'1'} />,
   <Tabpane
     title={'3333'}
     content={
@@ -325,7 +326,7 @@ const hasActivityValueChildren = [
         </div>
       </div>
     }
-    activityValue={'2'}
+    key={'2'}
   />,
   <Tabpane
     title={'44444'}
@@ -336,7 +337,7 @@ const hasActivityValueChildren = [
         </div>
       </div>
     }
-    activityValue={'3'}
+    key={'3'}
   />,
   <Tabpane
     title={'55555'}
@@ -347,7 +348,7 @@ const hasActivityValueChildren = [
         </div>
       </div>
     }
-    activityValue={'4'}
+    key={'4'}
   />,
   <Tabpane
     title={'66666'}
@@ -358,7 +359,7 @@ const hasActivityValueChildren = [
         </div>
       </div>
     }
-    activityValue={'5'}
+    key={'5'}
   />,
   <Tabpane
     title={'7777777'}
@@ -369,7 +370,7 @@ const hasActivityValueChildren = [
         </div>
       </div>
     }
-    activityValue={'6'}
+    key={'6'}
   />,
   <Tabpane
     title={'8888888'}
@@ -380,7 +381,7 @@ const hasActivityValueChildren = [
         </div>
       </div>
     }
-    activityValue={'7'}
+    key={'7'}
   />,
   <Tabpane
     title={'999999'}
@@ -391,7 +392,7 @@ const hasActivityValueChildren = [
         </div>
       </div>
     }
-    activityValue={'8'}
+    key={'8'}
   />,
   <Tabpane
     title={'10101010'}
@@ -402,7 +403,7 @@ const hasActivityValueChildren = [
         </div>
       </div>
     }
-    activityValue={'9'}
+    key={'9'}
   />,
   <Tabpane
     title={'1111111'}
@@ -413,7 +414,7 @@ const hasActivityValueChildren = [
         </div>
       </div>
     }
-    activityValue={'10'}
+    key={'10'}
   />,
   <Tabpane
     title={'12121212'}
@@ -424,7 +425,7 @@ const hasActivityValueChildren = [
         </div>
       </div>
     }
-    activityValue={'11'}
+    key={'11'}
   />,
   <Tabpane
     title={'131313'}
@@ -435,7 +436,7 @@ const hasActivityValueChildren = [
         </div>
       </div>
     }
-    activityValue={'12'}
+    key={'12'}
   />,
 ];
 export const defaulttestDelayData = [
@@ -480,24 +481,29 @@ export default class TabsDemo extends React.Component<any, any> {
   onAddClick = () => {
     const { data } = this.state;
     const newData = [...data];
-    const activeIndex = data.length;
+    const activeIndex = `Tab${data.length}`;
     const item = this.getAddItem();
     newData.push(item);
     this.setState({ data: newData, activityValue: activeIndex });
   };
 
-  onChange = index => {
+  onChange = res => {
     const { activityValue } = this.state;
-    if (index === activityValue) {
+    const { activityValue: newActivityValue } = res;
+    if (newActivityValue === activityValue) {
       return;
     }
-    this.setState({ activityValue: index });
+    this.setState({ activityValue: newActivityValue });
   };
-  onDelete = index => {
+  onDelete = res => {
     const { dataWindow } = this.state;
+    const { index } = res;
     const newDate = [...dataWindow];
     newDate.splice(index, 1);
     this.setState({ dataWindow: newDate });
+  };
+  onTabClick = res => {
+    console.log('onTabClick', res);
   };
 
   getAddItem = () => {
@@ -1104,9 +1110,9 @@ export default class TabsDemo extends React.Component<any, any> {
               // onChange={this.onChange}
             >
               <Tabpane title={'酥肉'} content={<div>酥肉啊啊啊 </div>} />
-              <Tabpane title={'海带'} content={<div>海带啊啊啊啊 </div>} activityValue={'1'} />
-              <Tabpane title={'土豆'} content={'土豆啊啊啊'} activityValue={'2'} />
-              <Tabpane title={'火锅'} content={<div>火锅啊啊啊啊</div>} activityValue={'3'} />
+              <Tabpane title={'海带'} content={<div>海带啊啊啊啊 </div>} key={'1'} />
+              <Tabpane title={'土豆'} content={'土豆啊啊啊'} key={'2'} />
+              <Tabpane title={'火锅'} content={<div>火锅啊啊啊啊</div>} key={'3'} />
             </Tabs>
           </div>
         </Theme>
@@ -1122,6 +1128,7 @@ export default class TabsDemo extends React.Component<any, any> {
               onNextClick={onNextClick}
               showDeleteBtn={true}
               onDelete={this.onDelete}
+              onTabClick={this.onTabClick}
             />
           </div>
           <div>
