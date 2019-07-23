@@ -93,12 +93,5 @@
     }
   },
   "childrenWidget": ["month", "year", "week", "weeks", "range"],
-  "category": ["数据录入"],
-  "theme": {
-    "FacePanelContain": {
-      "name": "面板",
-      "desc": "设置面板整体样式",
-      "normal": [["boxShadow", "color"], ["background", "color"]]
-    }
-  }
+  "category": ["数据录入"]
 }
