@@ -9,7 +9,13 @@ import ThemeHoc from '@lugia/theme-hoc';
 import Widget from '../consts/index';
 import { FontSize } from '../css';
 import { px2remcss } from '../css/units';
-import { SelectIcon, ItemWrap, DividerWrap, TextContainer } from '../css/menu';
+import {
+  SelectIcon,
+  ItemWrap,
+  DividerWrap,
+  TextContainer,
+  DefaultMenuItemHeight,
+} from '../css/menu';
 import CheckBox from '../checkbox';
 
 const Utils = require('@lugia/type-utils');
@@ -82,7 +88,7 @@ class MenuItem extends React.Component<MenuItemProps> {
       checkedCSS,
       divided,
       isFirst,
-      menuItemHeight,
+      menuItemHeight = DefaultMenuItemHeight,
       getPartOfThemeHocProps,
       getPartOfThemeProps,
     } = this.props;

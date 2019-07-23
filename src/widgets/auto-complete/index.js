@@ -6,6 +6,7 @@
 import * as React from 'react';
 import Menu from '../menu';
 import Input from '../input';
+import { deepMerge } from '@lugia/object-utils';
 import Trigger from '../trigger';
 import ShortKeyBoard from '../common/ShortKeyBoard';
 import Keys from '../consts/KeyBoard';
@@ -96,7 +97,7 @@ export default ShortKeyBoard(
               this.getOldValueItem(),
               <Menu
                 data={data}
-                {...getPartOfThemeHocProps('Menu')}
+                {...this.getMenuTheme()}
                 mutliple={false}
                 selectedKeys={value}
                 onClick={this.menuItemClickHandler}
@@ -258,6 +259,29 @@ export default ShortKeyBoard(
         const { onChange } = this.props;
         onChange && onChange(value);
       }
+
+      getMenuTheme = () => {
+        const { viewClass, theme } = this.props.getPartOfThemeHocProps('Menu');
+
+        const themeHoc = deepMerge(
+          {
+            [viewClass]: {
+              MenuWrap: {
+                normal: {
+                  width: 200,
+                },
+              },
+            },
+          },
+          theme
+        );
+
+        const treeTheme = {
+          viewClass,
+          theme: themeHoc,
+        };
+        return treeTheme;
+      };
 
       onUp() {}
     },
