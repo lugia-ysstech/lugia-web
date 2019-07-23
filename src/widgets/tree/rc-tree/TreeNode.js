@@ -199,7 +199,7 @@ class TreeNode extends React.Component {
     const disabled = notCanSelect || dataDisabled;
     return (
       <TitleWrap
-        disabled
+        disabled={disabled}
         themeProps={this.getThemeProps('Text', 'SelectedText', { mutliple, itemHeight })}
       >
         {icon ? <TextIcon iconClass={icon} /> : null}
@@ -416,7 +416,6 @@ class TreeNode extends React.Component {
           selected={selected}
           describe={describe}
           disabled={disabled}
-          // notCanSelect={disabled}
         >
           {title}
         </TitleWrap>

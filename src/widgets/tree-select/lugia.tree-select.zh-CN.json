@@ -56,7 +56,7 @@
     "onlySelectLeaf": {
       "type": "boolean",
       "desc": "是否只能选择根节点选项",
-      "defaultValue": false
+      "defaultValue": true
     },
 
     "label": {

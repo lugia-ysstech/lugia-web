@@ -13,17 +13,11 @@ import Tree from '../tree/index.js';
 import ThemeHoc from '@lugia/theme-hoc';
 import Widget from '../consts/index';
 import { deepMerge } from '@lugia/object-utils';
-import styled from 'styled-components';
 import Support from '../common/FormFieldWidgetSupport';
 import QueryInput from '../common/QueryInput';
 import { getNewValueOrOldValue } from '../select';
 import { appendCustomValue, getTheme, setNewValue } from '../common/selectFunction';
 import { DefaultHelp } from '../css/input';
-import { FontSizeNumber } from '../css';
-import { px2emcss } from '../css/units';
-import Empty from '../empty';
-
-const em = px2emcss(FontSizeNumber);
 
 type ValidateStatus = 'success' | 'error';
 
@@ -73,15 +67,6 @@ type TreeSelectState = {
   themeConfig: Object,
 };
 
-const Label = styled.span`
-  display: inline-block;
-  text-overflow: ellipsis;
-  width: ${props => (props.size ? `${em(props.size)}` : 'auto')};
-  overflow: hidden;
-  white-space: nowrap;
-  float: left;
-`;
-
 Text.displayName = Widget.TreeSelectLimitTitle;
 
 const DefaultLimitCount = 999999;
@@ -92,7 +77,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       return {};
     },
     mutliple: false,
-    onlySelectLeaf: false,
+    onlySelectLeaf: true,
     canInput: false,
     valueField: 'value',
     displayField: 'text',
@@ -191,16 +176,6 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     }
   }
 
-  getLabel(props) {
-    /* create by ZhangBoPing */
-    const { label, labelSize } = props;
-    return (
-      <Label key="textLabel" size={labelSize}>
-        {label}
-      </Label>
-    );
-  }
-
   mergeTheme = (target: string, defaultTheme: Object) => {
     const { viewClass, theme } = this.props.getPartOfThemeHocProps(target);
 
@@ -260,45 +235,42 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const { InputTagWrap = {} } = this.props.getPartOfThemeConfig('InputTag');
     const { normal = {} } = InputTagWrap;
     const { width = 250 } = normal;
-    const tree =
+    const tree = [
       data && data.length !== 0 ? (
-        [
-          <QueryInput
-            query={query}
-            width={width}
-            onQueryInputChange={this.onQueryInputChange}
-            onQueryInputKeyDown={this.onQueryInputKeyDown}
-            refreshValue={this.onRefresh}
-            addClick={this.onAdd}
-            isCheckedAll={selectAll}
-            onCheckAll={this.onSelectAll}
-            canSearch={canSearch}
-            mutliple={mutliple}
-            canInput={canInput}
-          />,
-          <Tree
-            data={data}
-            key="tree"
-            {...res}
-            {...this.getTreeTheme()}
-            current={current}
-            start={start}
-            expandAll={expandAll}
-            onScroller={this.onScroller}
-            query={treeFilter}
-            ref={getTree}
-            value={value}
-            onChange={this.onTreeChange}
-            valueField={valueField}
-            displayField={displayField}
-            displayValue={displayValue}
-            igronSelectField={igronSelectField}
-            translateTreeData={translateTreeData}
-          />,
-        ]
-      ) : (
-        <Empty width={width} />
-      );
+        <QueryInput
+          query={query}
+          width={width}
+          onQueryInputChange={this.onQueryInputChange}
+          onQueryInputKeyDown={this.onQueryInputKeyDown}
+          refreshValue={this.onRefresh}
+          addClick={this.onAdd}
+          isCheckedAll={selectAll}
+          onCheckAll={this.onSelectAll}
+          canSearch={canSearch}
+          mutliple={mutliple}
+          canInput={canInput}
+        />
+      ) : null,
+      <Tree
+        data={data}
+        key="tree"
+        {...res}
+        {...this.getTreeTheme()}
+        current={current}
+        start={start}
+        expandAll={expandAll}
+        onScroller={this.onScroller}
+        query={treeFilter}
+        ref={getTree}
+        value={value}
+        onChange={this.onTreeChange}
+        valueField={valueField}
+        displayField={displayField}
+        displayValue={displayValue}
+        igronSelectField={igronSelectField}
+        translateTreeData={translateTreeData}
+      />,
+    ];
 
     const getTreeTriger: Function = (cmp: Object) => {
       this.treeTriger = cmp;

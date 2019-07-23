@@ -10,7 +10,6 @@ import Trigger from '../trigger';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import InputTag from '../inputtag';
 import { getTreeData } from '../menu/utils';
-import Empty from '../empty';
 import { deepMerge } from '@lugia/object-utils';
 import { DisplayField, ValueField } from '../consts/props';
 import {
@@ -124,7 +123,6 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
     const { normal = {} } = InputTagWrap;
     const { width = 250 } = normal;
 
-    const menu = data && data.length !== 0 ? this.getMenu() : <Empty width={width} />;
     return (
       <CascaderContainer
         themeProps={getPartOfThemeProps('InputTag')}
@@ -141,7 +139,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
           hideAction={['click']}
           offsetY={offsetY}
           popupVisible={popupVisible}
-          popup={menu}
+          popup={this.getMenu()}
           createPortal={createPortal}
           lazy={false}
           onPopupVisibleChange={this.onPopupVisibleChange}

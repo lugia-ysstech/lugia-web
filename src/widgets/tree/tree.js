@@ -423,7 +423,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
   render() {
     const { props, state } = this;
-    const empty = <Empty />;
+
+    const empty = <Empty themeProps={props.getPartOfThemeProps('TreeWrap')} />;
     if (this.isEmpty(props)) {
       return empty;
     }
