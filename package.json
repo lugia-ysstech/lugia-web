@@ -7,7 +7,7 @@
     "@lugia/object-utils": "^1.0.11",
     "@lugia/theme-config": "1.0.32",
     "@lugia/theme-core": "1.0.32",
-    "@lugia/theme-css-hoc": "1.0.56",
+    "@lugia/theme-css-hoc": "^1.0.58",
     "@lugia/theme-hoc": "1.0.43",
     "@lugia/theme-hoc-devtools": "1.0.7",
     "@lugia/theme-utils": "1.0.6",

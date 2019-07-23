@@ -1486,10 +1486,10 @@
     "@babel/runtime" "^7.4.5"
     "@lugia/object-utils" "^1.0.11"
 
-"@lugia/theme-css-hoc@1.0.56":
-  version "1.0.56"
-  resolved "http://192.168.102.79:5001/@lugia/theme-css-hoc/download/@lugia/theme-css-hoc-1.0.56.tgz#7021d69aeebf29c49e928679c65bc4885e0391d0"
-  integrity sha1-cCHWmu6/KcSekoZ5xlvEiF4DkdA=
+"@lugia/theme-css-hoc@^1.0.58":
+  version "1.0.58"
+  resolved "http://192.168.102.79:5001/@lugia/theme-css-hoc/download/@lugia/theme-css-hoc-1.0.58.tgz#91284728a2a782a65231c622550b9715575bca3b"
+  integrity sha1-kShHKKKngqZSMcYiVQuXFVdbyjs=
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/css" "^1.0.17"
