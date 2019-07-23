@@ -88,8 +88,23 @@
   "category": ["数据录入"],
 
   "theme": {
-    "Input": {
+    "AutoInput": {
+      "name": "自动完成输入框",
       "theme": {
+        "Container": {
+          "name": "输入框外部容器",
+          "desc": "输入框外部容器",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["background"],
+            ["border"],
+            ["borderRadius"],
+            ["boxShadow"],
+            ["margin"],
+            ["padding"]
+          ]
+        },
         "Input": {
           "name": "输入框主体",
           "desc": "输入框主体结构",

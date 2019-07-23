@@ -118,7 +118,7 @@ export default ShortKeyBoard(
             ref={this.triggerEl}
           >
             <Input
-              {...getPartOfThemeHocProps('Input')}
+              {...getPartOfThemeHocProps('AutoInput')}
               value={value}
               disabled={disabled}
               ref={this.inputEl}
