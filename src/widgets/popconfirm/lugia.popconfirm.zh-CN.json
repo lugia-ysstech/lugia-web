@@ -112,8 +112,8 @@
   "category": ["反馈"],
   "theme": {
     "PopconfirmContent": {
+      "name": "气泡卡片框容器",
       "theme": {
-        "name": "气泡卡片框容器",
         "Container": {
           "name": "气泡确认框内容部分",
           "desc": "气泡确认框内容部分",

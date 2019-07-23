@@ -184,6 +184,7 @@
           ]
         },
         "CardAvatar": {
+          "name": "卡片头像",
           "theme": {
             "SrcAvatar": {
               "name": "卡片头像资源",
@@ -342,6 +343,7 @@
           ]
         },
         "CardAvatar": {
+          "name": "卡片头像",
           "theme": {
             "SrcAvatar": {
               "name": "卡片头像资源",
@@ -589,6 +591,7 @@
       ]
     },
     "CardAvatar": {
+      "name": "卡片头像",
       "theme": {
         "SrcAvatar": {
           "name": "卡片头像资源",
