@@ -85,8 +85,8 @@ export default ThemeProvider(
           if (scrollTop <= 0) {
             clearInterval(timer);
           }
-          this.scrollerBodyTo(scrollTop - 50);
-        }, 10);
+          this.scrollerBodyTo(scrollTop - 200);
+        }, 20);
       }
     };
 

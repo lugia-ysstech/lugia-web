@@ -6,11 +6,12 @@
     "type": {
       "type": "ProgressType",
       "desc": "进度条类型，line、circle、dashboard",
-      "defaultValue": "right"
+      "defaultValue": "line"
     },
     "size": {
       "type": "ProgressSizeType",
-      "desc": "进度条大小，可设置为 small 或不设"
+      "desc": "进度条大小，可设置为 small 或不设",
+      "defaultValue": "default"
     },
     "percent": {
       "type": "number",
@@ -20,12 +21,12 @@
     "status": {
       "type": "ProgressStatusType",
       "desc": "进度条状态，可设置为success、error或不设",
-      "defaultValue": true
+      "defaultValue": "default"
     },
     "active": {
       "type": "boolean",
-      "desc": "进度条状态是否激活状态，仅生效于 type = line",
-      "defaultValue": true
+      "desc": "进度条状态是否激活状态，仅生效于线性进度条(type = line)",
+      "defaultValue": false
     },
     "showInfo": {
       "type": "boolean",
@@ -38,13 +39,14 @@
     },
     "showType": {
       "type": "ProgressShowType",
-      "desc": "进度条展示内容展示位置，可设置为 inside 或不设"
+      "desc": "进度条展示内容展示位置，可设置为 inside 或不设",
+      "defaultValue": "default"
     }
   },
   "type": {
     "ProgressType": ["line", "circle", "dashboard"],
     "ProgressSizeType": ["default", "small"],
-    "ProgressStatusType": ["success", "error", "default", "active"],
+    "ProgressStatusType": ["success", "error", "default"],
     "ProgressShowType": ["default", "inside"],
     "ProgressStyle": {
       "color": {

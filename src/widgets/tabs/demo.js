@@ -533,7 +533,7 @@ export default class TabsDemo extends React.Component<any, any> {
         },
         TitleContainer: {
           normal: {
-            width: 300,
+            width: 330,
             height: 300,
           },
         },
@@ -608,7 +608,7 @@ export default class TabsDemo extends React.Component<any, any> {
         },
         TitleContainer: {
           normal: {
-            width: 300,
+            width: 330,
             height: 300,
           },
         },
@@ -641,7 +641,7 @@ export default class TabsDemo extends React.Component<any, any> {
 
         TitleContainer: {
           normal: {
-            width: 300,
+            width: 330,
             height: 300,
           },
         },
@@ -682,7 +682,7 @@ export default class TabsDemo extends React.Component<any, any> {
         },
         TitleContainer: {
           normal: {
-            width: 300,
+            width: 330,
             height: 300,
           },
         },
@@ -713,7 +713,7 @@ export default class TabsDemo extends React.Component<any, any> {
       [Widget.Tabs]: {
         TitleContainer: {
           normal: {
-            width: 300,
+            width: 330,
             // height: 300,
           },
         },
@@ -761,7 +761,7 @@ export default class TabsDemo extends React.Component<any, any> {
         TabHeader: {},
         TitleContainer: {
           normal: {
-            width: 300,
+            width: 330,
             height: 300,
           },
         },
@@ -839,6 +839,22 @@ export default class TabsDemo extends React.Component<any, any> {
 
     return (
       <div>
+        <Theme config={cardView}>
+          <div>
+            <p style={{ titleStyle }}>tabType=card pagedType=single</p>
+            <Tabs
+              tabType={'card'}
+              pagedType={'single'}
+              data={hasActivityValueData}
+              onPreClick={onPreClick}
+              onNextClick={onNextClick}
+              showDeleteBtn={true}
+            />
+          </div>
+          <br />
+          <br />
+        </Theme>
+        <Tabs tabType={'card'} />
         <Theme config={lineViewBot}>
           <div>
             <p style={{ titleStyle }}>defaultData pagedType=single forceRender=true </p>

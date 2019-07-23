@@ -442,7 +442,12 @@ class Rate extends React.Component<RateProps, any> {
         defaultTextIconThemeProps,
         this.props.getPartOfThemeProps('ActiveTextIcon')
       );
-      const themeProps = x !== 'default' ? activeTextIconThemeProps : defaultTextIconThemeProps;
+      const themeProps =
+        x !== 'default'
+          ? activeTextIconThemeProps
+          : deepMerge(defaultTextIconThemeProps, {
+              themeConfig: { disabled: { color: '#e8e8e8' } },
+            });
       return (
         <React.Fragment>
           <RateTextContainer themeProps={themeProps}>

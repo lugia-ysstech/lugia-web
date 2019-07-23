@@ -471,6 +471,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
       const actualWidth = this.getActualWidth(tabType, titleSize);
       totalPage = computePage(this.offsetWidth, actualWidth);
     }
+
     const arrowShow = totalPage > 1 && currentPage < totalPage;
     this.setState({ arrowShow, totalPage, titleSize, allowToCalc: false });
   }
@@ -777,11 +778,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
 
   getActualWidth(tabType: TabType, titleSize: Array<number>) {
     const width = plusWidth(titleSize.length - 1, titleSize);
-    return matchType(tabType, 'window')
-      ? width + WindowMarginLeft + AddButtonSize
-      : matchType(tabType, 'card')
-      ? width + (titleSize.length + 1) * CardMarginRight + AddButtonSize
-      : width;
+    return matchType(tabType, 'window') ? width + WindowMarginLeft + AddButtonSize : width;
   }
 
   onTabClick = (index: number) => {
