@@ -50,23 +50,8 @@
   "childrenWidget": ["step"],
   "category": ["导航"],
   "designInfo": {
-    "HSteps": {
-      "sequence": 1,
-      "title": "水平步骤条",
-      "desc": "水平步骤条配置",
-      "props": {
-        "orientation": "horizontal"
-      },
-      "theme": {
-        "StepsOutContainer": {
-          "name": "步骤条最外层容器",
-          "desc": "步骤条最外层容器",
-          "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"], ["opacity"]]
-        }
-      }
-    },
     "VSteps": {
-      "sequence": 2,
+      "sequence": 1,
       "title": "垂直步骤条",
       "desc": "垂直步骤条配置",
       "props": {
@@ -77,11 +62,62 @@
           "name": "步骤条最外层容器",
           "desc": "步骤条最外层容器",
           "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"], ["opacity"]]
+        },
+        "Step": {
+          "name": "单个步骤配置",
+          "theme": {
+            "StepOutContainer": {
+              "name": "单个步骤外部",
+              "desc": "单个步骤外部容器配置",
+              "normal": [["width"], ["height"]]
+            },
+            "StepLine": {
+              "name": "步骤间连接线",
+              "desc": "步骤间连接线的配置",
+              "normal": [["width"], ["height"], ["background"]]
+            },
+            "StepInnerContainer": {
+              "name": "单个步骤内部",
+              "desc": "单个步骤内部容器配置",
+              "normal": [["width"], ["height"], ["background"]]
+            },
+            "StepTitle": {
+              "name": "步骤标题",
+              "desc": "配置步骤标题",
+              "normal": [
+                ["fontSize"],
+                ["font"],
+                ["color"],
+                ["width"],
+                ["height"],
+                ["padding"],
+                ["margin"]
+              ]
+            },
+            "StepDescription": {
+              "name": "步骤条内容描述",
+              "desc": "配置步骤条内容描述",
+              "normal": [
+                ["fontSize"],
+                ["font"],
+                ["color"],
+                ["width"],
+                ["height"],
+                ["padding"],
+                ["margin"]
+              ]
+            },
+            "StepInnerIcon": {
+              "name": "步骤条内容图标",
+              "desc": "配置步骤条内容图标",
+              "normal": [["fontSize"], ["font"], ["color"]]
+            }
+          }
         }
       }
     },
     "FlatSteps": {
-      "sequence": 3,
+      "sequence": 2,
       "title": "半扁平步骤条",
       "desc": "半扁平步骤条配置",
       "props": {
@@ -92,11 +128,62 @@
           "name": "步骤条最外层容器",
           "desc": "步骤条最外层容器",
           "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"], ["opacity"]]
+        },
+        "Step": {
+          "name": "单个步骤配置",
+          "theme": {
+            "StepOutContainer": {
+              "name": "单个步骤外部",
+              "desc": "单个步骤外部容器配置",
+              "normal": [["width"], ["height"]]
+            },
+            "StepLine": {
+              "name": "步骤间连接线",
+              "desc": "步骤间连接线的配置",
+              "normal": [["width"], ["height"], ["background"]]
+            },
+            "StepInnerContainer": {
+              "name": "单个步骤内部",
+              "desc": "单个步骤内部容器配置",
+              "normal": [["width"], ["height"], ["background"]]
+            },
+            "StepTitle": {
+              "name": "步骤标题",
+              "desc": "配置步骤标题",
+              "normal": [
+                ["fontSize"],
+                ["font"],
+                ["color"],
+                ["width"],
+                ["height"],
+                ["padding"],
+                ["margin"]
+              ]
+            },
+            "StepDescription": {
+              "name": "步骤条内容描述",
+              "desc": "配置步骤条内容描述",
+              "normal": [
+                ["fontSize"],
+                ["font"],
+                ["color"],
+                ["width"],
+                ["height"],
+                ["padding"],
+                ["margin"]
+              ]
+            },
+            "StepInnerIcon": {
+              "name": "步骤条内容图标",
+              "desc": "配置步骤条内容图标",
+              "normal": [["fontSize"], ["font"], ["color"]]
+            }
+          }
         }
       }
     },
     "IconSteps": {
-      "sequence": 4,
+      "sequence": 3,
       "title": "图标步骤条",
       "desc": "图标步骤条步骤条配置",
       "props": {
@@ -107,11 +194,62 @@
           "name": "步骤条最外层容器",
           "desc": "步骤条最外层容器",
           "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"], ["opacity"]]
+        },
+        "Step": {
+          "name": "单个步骤配置",
+          "theme": {
+            "StepOutContainer": {
+              "name": "单个步骤外部",
+              "desc": "单个步骤外部容器配置",
+              "normal": [["width"], ["height"]]
+            },
+            "StepLine": {
+              "name": "步骤间连接线",
+              "desc": "步骤间连接线的配置",
+              "normal": [["width"], ["height"], ["background"]]
+            },
+            "StepInnerContainer": {
+              "name": "单个步骤内部",
+              "desc": "单个步骤内部容器配置",
+              "normal": [["width"], ["height"], ["background"]]
+            },
+            "StepTitle": {
+              "name": "步骤标题",
+              "desc": "配置步骤标题",
+              "normal": [
+                ["fontSize"],
+                ["font"],
+                ["color"],
+                ["width"],
+                ["height"],
+                ["padding"],
+                ["margin"]
+              ]
+            },
+            "StepDescription": {
+              "name": "步骤条内容描述",
+              "desc": "配置步骤条内容描述",
+              "normal": [
+                ["fontSize"],
+                ["font"],
+                ["color"],
+                ["width"],
+                ["height"],
+                ["padding"],
+                ["margin"]
+              ]
+            },
+            "StepIcon": {
+              "name": "步骤条图标",
+              "desc": "配置步骤条图标",
+              "normal": [["fontSize"], ["font"], ["color"]]
+            }
+          }
         }
       }
     },
     "DotSteps": {
-      "sequence": 5,
+      "sequence": 4,
       "title": "点状步骤条",
       "desc": "点状步骤条配置",
       "props": {
@@ -122,6 +260,52 @@
           "name": "步骤条最外层容器",
           "desc": "步骤条最外层容器",
           "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"], ["opacity"]]
+        },
+        "Step": {
+          "name": "单个步骤配置",
+          "theme": {
+            "StepOutContainer": {
+              "name": "单个步骤外部",
+              "desc": "单个步骤外部容器配置",
+              "normal": [["width"], ["height"]]
+            },
+            "StepLine": {
+              "name": "步骤间连接线",
+              "desc": "步骤间连接线的配置",
+              "normal": [["width"], ["height"], ["background"]]
+            },
+            "StepDot": {
+              "name": "点状步骤",
+              "desc": "点状步骤配置",
+              "normal": [["width"], ["height"], ["background"]]
+            },
+            "StepTitle": {
+              "name": "步骤标题",
+              "desc": "配置步骤标题",
+              "normal": [
+                ["fontSize"],
+                ["font"],
+                ["color"],
+                ["width"],
+                ["height"],
+                ["padding"],
+                ["margin"]
+              ]
+            },
+            "StepDescription": {
+              "name": "步骤条内容描述",
+              "desc": "配置步骤条内容描述",
+              "normal": [
+                ["fontSize"],
+                ["font"],
+                ["color"],
+                ["width"],
+                ["height"],
+                ["padding"],
+                ["margin"]
+              ]
+            }
+          }
         }
       }
     }
@@ -131,6 +315,67 @@
       "name": "步骤条最外层容器",
       "desc": "步骤条最外层容器",
       "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"], ["opacity"]]
+    },
+    "Step": {
+      "name": "单个步骤配置",
+      "theme": {
+        "StepOutContainer": {
+          "name": "单个步骤外部",
+          "desc": "单个步骤外部容器配置",
+          "normal": [["width"], ["height"]]
+        },
+        "StepLine": {
+          "name": "步骤间连接线",
+          "desc": "步骤间连接线的配置",
+          "normal": [["width"], ["height"], ["background"]]
+        },
+        "StepInnerContainer": {
+          "name": "单个步骤内部",
+          "desc": "单个步骤内部容器配置",
+          "normal": [["width"], ["height"], ["background"]]
+        },
+        "StepTitle": {
+          "name": "步骤标题",
+          "desc": "配置步骤标题",
+          "normal": [
+            ["fontSize"],
+            ["font"],
+            ["color"],
+            ["width"],
+            ["height"],
+            ["padding"],
+            ["margin"]
+          ]
+        },
+        "StepDescription": {
+          "name": "步骤条内容描述",
+          "desc": "配置步骤条内容描述",
+          "normal": [
+            ["fontSize"],
+            ["font"],
+            ["color"],
+            ["width"],
+            ["height"],
+            ["padding"],
+            ["margin"]
+          ]
+        },
+        "StepInnerIcon": {
+          "name": "步骤条内容图标",
+          "desc": "配置步骤条内容图标",
+          "normal": [["fontSize"], ["font"], ["color"]]
+        },
+        "StepIcon": {
+          "name": "步骤条图标",
+          "desc": "配置步骤条图标",
+          "normal": [["fontSize"], ["font"], ["color"]]
+        },
+        "StepDot": {
+          "name": "点状步骤",
+          "desc": "点状步骤配置",
+          "normal": [["width"], ["height"], ["background"]]
+        }
+      }
     }
   }
 }

@@ -38,12 +38,28 @@
   "designInfo": {
     "AvatarIcon": {
       "sequence": 1,
-      "title": "头像样式类型",
-      "desc": "按头像样式类型不同选择显示不同头像",
+      "title": "图标头像",
+      "desc": "使用图标样式展示头像",
       "props": {
         "icon": "iconClass"
       },
       "theme": {
+        "Container": {
+          "name": "头像",
+          "desc": "对头像外部容器配置样式",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["margin"],
+            ["padding"],
+            ["background"],
+            ["opacity"],
+            ["boxShadow"]
+          ],
+          "hover": [["width"], ["height"]],
+          "clicked": [],
+          "disabled": []
+        },
         "IconAvatar": {
           "name": "图标样式头像",
           "desc": "使用图标样式展示头像",
@@ -54,46 +70,43 @@
         }
       }
     },
-    "AvatarSrc": {
-      "sequence": 2,
-      "title": "头像样式类型",
-      "desc": "按头像样式类型不同选择显示不同头像",
-
-      "props": {
-        "src": ""
-      },
-      "theme": {
-        "SrcAvatar": {
-          "name": "图片资源头像",
-          "desc": "使用图片资源展示头像",
-          "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"]],
-          "hover": [["width"], ["height"], ["background"]],
-          "clicked": [],
-          "disabled": []
-        }
-      }
-    },
     "AvatarFont": {
-      "sequence": 3,
-      "title": "头像样式类型",
-      "desc": "按头像样式类型不同选择显示不同头像",
+      "sequence": 2,
+      "title": "文字头像",
+      "desc": "文字头像",
       "props": {
         "name": ""
       },
       "theme": {
-        "AvatarSrc": {
-          "name": "文字头像",
-          "desc": "使用文字展示头像",
+        "Container": {
+          "name": "头像",
+          "desc": "对头像外部容器配置样式",
           "normal": [
             ["width"],
             ["height"],
             ["margin"],
             ["padding"],
-            ["font"],
+            ["background"],
+            ["opacity"],
+            ["boxShadow"]
+          ],
+          "hover": [["width"], ["height"]],
+          "clicked": [],
+          "disabled": []
+        },
+        "FontAvatar": {
+          "name": "头像文字",
+          "desc": "对头像文字配置样式",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["margin"],
+            ["padding"],
+            ["fontSize"],
             ["color"],
             ["background"]
           ],
-          "hover": [["width"], ["height"], ["font"], ["color"], ["background"]],
+          "hover": [["width"], ["height"], ["fontSize"], ["color"], ["background"]],
           "clicked": [],
           "disabled": []
         }

@@ -11,7 +11,7 @@ import NumberTurn from './numberturn/index';
 
 import ThemeHoc from '@lugia/theme-hoc';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
-import CSSComponent, { css } from '@lugia/theme-css-hoc';
+import CSSComponent, { StaticComponent, css } from '@lugia/theme-css-hoc';
 import { getBoxShadow } from '@lugia/theme-utils';
 import colorsFunc from '../css/stateColor';
 
@@ -76,12 +76,9 @@ const Dot: Object = CSSComponent({
   },
 });
 
-const Container: Object = CSSComponent({
+const Container: Object = StaticComponent({
   tag: 'span',
   className: 'BadgeContainer',
-  normal: {
-    selectNames: [['padding'], ['margin'], ['position'], ['opacity']],
-  },
   css: css`
     background: transparent;
     box-sizing: border-box;
@@ -140,7 +137,7 @@ class BadgeBox extends Component<BadgeProps, BadgeState> {
   }
   render() {
     return (
-      <Container themeProps={this.props.getPartOfThemeProps(Widget.Badge)}>
+      <Container>
         {this.props.children}
         {this.getDot()}
       </Container>
