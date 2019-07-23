@@ -124,7 +124,6 @@ const getSelectIconOpacity = selected => {
 
 const getLiIcon = (inlineType, itemHeight, selected) => {
   const opacity = getSelectIconOpacity(selected);
-  console.log('opacity', opacity);
   return inlineType === 'ellipse'
     ? ''
     : `

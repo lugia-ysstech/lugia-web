@@ -60,9 +60,6 @@ export const SwitchWrapper = CSSProvider({
       ['color'],
       ['font'],
     ],
-    getCSS(a, b) {
-      console.log(a, b);
-    },
   },
   hover: {
     selectNames: [],

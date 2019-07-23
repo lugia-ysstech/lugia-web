@@ -137,11 +137,14 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
           }}
           themePass
           align={'bottomLeft'}
+          action={disabled ? [] : this.props.action || ['click']}
+          hideAction={['click']}
           offsetY={offsetY}
           popupVisible={popupVisible}
           popup={menu}
           createPortal={createPortal}
           lazy={false}
+          onPopupVisibleChange={this.onPopupVisibleChange}
         >
           <InputTag
             {...this.props.getPartOfThemeHocProps('InputTag')}
@@ -157,6 +160,9 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
       </CascaderContainer>
     );
   }
+  onPopupVisibleChange = (visible: boolean) => {
+    this.setPopupVisibleInner(visible);
+  };
 
   setPopupVisible(...rest: any[]) {
     this.trigger && this.trigger.setPopupVisible(...rest);

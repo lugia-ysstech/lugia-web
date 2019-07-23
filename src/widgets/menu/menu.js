@@ -13,8 +13,6 @@ import { deepMerge } from '@lugia/object-utils';
 import {
   DefaultHeight,
   DefaultMenuItemHeight,
-  DefaultWidth,
-  getMenuItemHeight,
   MenuContainer,
   MenuItemHeight,
   RightIcon,
@@ -75,14 +73,12 @@ export type MenuProps = {
   onMouseEnter?: Function,
   onExpandPathChange?: Function,
   limitCount?: number,
-  size: 'large' | 'default' | 'bigger',
   checkedCSS: 'none' | 'background' | 'mark' | 'checkbox',
   offsetX: number,
   offsetY: number,
   popupVisible?: boolean,
   separator: string,
   action: 'hover' | 'click',
-  subsize: 'large' | 'default' | 'bigger',
   mouseDownInMenus?: Function,
   pushMenuInstance?: Function,
   deleteMenuInstance?: Function,
@@ -129,7 +125,6 @@ class Menu extends React.Component<MenuProps, MenuState> {
     getTheme: () => {
       return {};
     },
-    size: 'default',
   };
   static displayName = Widget.Menu;
   isSelect: Function;
@@ -257,7 +252,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     end = Math.round(end);
     if (data && data.length > 0) {
       return this.computeItems(data, start, end, (obj: Object, isFirst: boolean) => {
-        const { valueField, displayField, size, divided: propsDivided, itemHeight } = this.props;
+        const { valueField, displayField, divided: propsDivided, itemHeight } = this.props;
 
         const { [valueField]: key, [displayField]: value, disabled, children, icon, divided } = obj;
         const { getPrefix, getSuffix } = props;
@@ -280,7 +275,6 @@ class Menu extends React.Component<MenuProps, MenuState> {
         const result = (
           <Item
             key={key}
-            size={size}
             disabled={disabled}
             checkedCSS={checkedCSS}
             divided={divided || propsDivided}
@@ -591,14 +585,12 @@ class Menu extends React.Component<MenuProps, MenuState> {
       displayField,
       valueField,
       mutliple,
-      subsize,
       autoHeight,
     } = this.props;
 
     const { selectedKeys, expandedPath } = this.state;
     const x = offsetX === 0 || offsetX ? offsetX : 4;
     const y = offsetY === 0 || offsetY ? offsetY : null;
-    const subMenuItenHeight = getMenuItemHeight(subsize);
     const config = {
       Szf: {
         Szf: this.props.getPartOfThemeConfig('SubMenu'),
@@ -608,12 +600,9 @@ class Menu extends React.Component<MenuProps, MenuState> {
     return (
       <SubMenu
         mutliple={mutliple}
-        size={subsize}
-        subsize={subsize}
         theme={config}
         viewClass={'Szf'}
         autoHeight={autoHeight}
-        menuItemHeight={subMenuItenHeight}
         displayField={displayField}
         valueField={valueField}
         popupVisible={popupVisible}

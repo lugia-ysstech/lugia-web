@@ -43,7 +43,7 @@
     },
 
     "data": {
-      "type": "[{valueField: '', displayField: ''}]",
+      "type": "Object[]",
       "desc": "级联选择的数据"
     },
 
@@ -119,6 +119,7 @@
 
   "theme": {
     "InputTag": {
+      "name": "选中数据展示框",
       "theme": {
         "InputTagWrap": {
           "name": "Inputtag的外盒",
@@ -161,6 +162,7 @@
     },
 
     "Menu": {
+      "name": "菜单配置",
       "theme": {
         "MenuWrap": {
           "name": "菜单外盒",
@@ -181,6 +183,7 @@
           "disabled": []
         },
         "MenuItem": {
+          "name": "菜单项配置",
           "theme": {
             "MenuItemWrap": {
               "name": "项的外盒",
@@ -253,6 +256,7 @@
         },
 
         "SubMenu": {
+          "name": "子菜单配置",
           "theme": {
             "MenuWrap": {
               "name": "菜单外盒",
@@ -274,6 +278,7 @@
             },
 
             "MenuItem": {
+              "name": "子菜单项配置",
               "theme": {
                 "MenuItemWrap": {
                   "name": "项的外盒",

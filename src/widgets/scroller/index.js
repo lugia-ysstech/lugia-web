@@ -117,7 +117,7 @@ const XScroller = 'x',
 const Down = 'down';
 const Up = 'up';
 const None = 'none';
-const DefaultStep = 30;
+const DefaultStep = 60;
 
 class Scroller extends React.Component<ScrollerProps, ScrollerState> {
   static defaultProps = {
@@ -464,7 +464,6 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     this.step = step;
     this.maxValue = this.getMaxValue(props);
     this.fastStep = totalSize / 34;
-    console.log('fastStep', this.fastStep, totalSize);
     this.sliderAbsoulateSize = 0;
   }
 

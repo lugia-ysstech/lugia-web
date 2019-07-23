@@ -143,16 +143,20 @@ export const IconLoading = styled.span`
   display: block;
   width: ${props => props.size}px;
   height: ${props => props.size}px;
-  animation: rotate ${props => props.time}s linear infinite;
+  ${props => getAnimation(props)};
   font-size: ${props => props.size}px;
   color: ${props => props.color};
-
-  @keyframes rotate {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+`;
+const getAnimation = props => {
+  return css`
+    animation: ${rotate} ${props.time}s linear infinite;
+  `;
+};
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 `;

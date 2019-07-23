@@ -88,5 +88,16 @@
       ]
     }
   },
+  "designInfo": {
+    "SimplePagination": {
+      "sequence": 1,
+      "title": "简洁分页",
+      "desc": "简洁分页",
+      "props": {
+        "simple": true
+      },
+      "theme": {}
+    }
+  },
   "category": ["导航"]
 }

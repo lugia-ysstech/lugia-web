@@ -45,8 +45,8 @@ export const getButtonSize = (props: CommonNumberInputProps) => {
     size === 'large'
       ? ButtonWrapperLargeHeight
       : size === 'small'
-        ? ButtonWrapperSmallHeight
-        : ButtonWrapperDefaultHeight
+      ? ButtonWrapperSmallHeight
+      : ButtonWrapperDefaultHeight
   };`;
 };
 
