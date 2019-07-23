@@ -17,7 +17,12 @@
     },
     "data": {
       "type": "Object[]",
-      "desc": "指定 Checkbox 组件展示值"
+      "desc": "指定 Checkbox 组件展示值",
+      "defaultValue": [
+        { "text": "选项1", "value": "1" },
+        { "text": "选项2", "value": "2" },
+        { "text": "选项3", "value": "3" }
+      ]
     },
     "displayField": {
       "type": "string",
