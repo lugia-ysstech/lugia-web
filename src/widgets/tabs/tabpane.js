@@ -550,7 +550,8 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     }
     return icon;
   }
-  onDeleteClick = () => {
+  onDeleteClick = e => {
+    e.stopPropagation();
     const { onDelete, index } = this.props;
     onDelete && onDelete(index);
   };
