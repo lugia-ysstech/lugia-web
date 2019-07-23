@@ -19,7 +19,6 @@ export type CardProps = {
   viewClass: string,
   description: React.Node,
   title: React.Node,
-  operation: React.Node,
   image: React.Node,
   avatar: React.Node,
   content: React.Node,

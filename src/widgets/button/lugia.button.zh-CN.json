@@ -41,7 +41,8 @@
     },
     "text": {
       "type": "string | React.node",
-      "desc": "设置按钮的文本内容"
+      "desc": "设置按钮的文本内容",
+      "defaultValue": "Button"
     },
     "block": {
       "type": "boolean",

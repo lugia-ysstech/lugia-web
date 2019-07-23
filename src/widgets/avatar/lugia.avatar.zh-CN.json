@@ -41,7 +41,7 @@
       "title": "图标头像",
       "desc": "使用图标样式展示头像",
       "props": {
-        "icon": "iconClass"
+        "icon": "lugia-icon-financial_user"
       },
       "theme": {
         "Container": {
@@ -75,7 +75,7 @@
       "title": "文字头像",
       "desc": "文字头像",
       "props": {
-        "name": ""
+        "name": "Lugia"
       },
       "theme": {
         "Container": {

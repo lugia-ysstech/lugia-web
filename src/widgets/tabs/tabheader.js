@@ -352,7 +352,7 @@ const VTabsOutContainer = CSSComponent({
 });
 
 type TabsState = {
-  activityValue: number,
+  activityValue: string,
   data: Array<Object>,
   currentPage: number,
   totalPage: number,
@@ -364,7 +364,7 @@ type TabsState = {
 };
 
 type TabsProps = {
-  activityValue: number,
+  activityValue: string,
   tabPosition?: TabPositionType,
   tabType?: TabType,
   data: Array<Object>,
@@ -694,7 +694,11 @@ class TabHeader extends Component<TabsProps, TabsState> {
       'disabled',
       getAttributeFromObject(child.props, 'disabled', false)
     );
-
+    const key = getAttributeFromObject(
+      child,
+      'key',
+      getAttributeFromObject(child.props, 'key', false)
+    );
     const tabHeaderTheme = this.props.getPartOfThemeHocProps('TabHeader');
     return {
       tabPosition,
@@ -712,9 +716,10 @@ class TabHeader extends Component<TabsProps, TabsState> {
       ),
       onClick: this.onTabClick,
       activityValue,
+      keyVal: key,
       index: i,
       showDeleteBtn,
-      isSelect: !disabled && activityValue === i,
+      isSelect: !disabled && activityValue === key,
       onDelete: this.onDeleteClick,
       disabled,
       ...tabHeaderTheme,
@@ -781,23 +786,27 @@ class TabHeader extends Component<TabsProps, TabsState> {
     return matchType(tabType, 'window') ? width + WindowMarginLeft + AddButtonSize : width;
   }
 
-  onTabClick = (index: number) => {
+  onTabClick = (res: Object) => {
+    const { index } = res;
     if (!this.getTabpaneDisabled(index)) {
       const { onTabClick } = this.props;
       const { activityValue } = this.state;
-      onTabClick && onTabClick(index);
-      if (activityValue === index) {
+      onTabClick && onTabClick(res);
+      const { activityValue: newActivityValue } = res;
+      if (activityValue === newActivityValue) {
         return;
       }
       const { onChange } = this.props;
-      onChange && onChange(index);
+
+      onChange && onChange(res);
     }
   };
 
-  onDeleteClick = (index: number) => {
+  onDeleteClick = (res: Object) => {
+    const { index } = res;
     if (!this.getTabpaneDisabled(index)) {
       const { onDelete } = this.props;
-      onDelete && onDelete(index);
+      onDelete && onDelete(res);
     }
   };
 

@@ -1,6 +1,143 @@
 import colorsFunc from './stateColor';
 export const { themeColor } = colorsFunc();
 
+// mode : horizontal
+// 水平导航菜单默认样式
+// themeStyle: light
+export const HorizontalLightTheme = {
+  TitleContainer: {},
+  TabHeader: {
+    SelectTabPan: {
+      normal: {
+        color: themeColor,
+      },
+    },
+    DefaultTabPan: {
+      normal: {
+        height: 60,
+      },
+    },
+  },
+};
+
+// themeStyle: dark
+
+export const HorizontalDarkTheme = {
+  TitleContainer: {},
+  TabHeader: {
+    SelectTabPan: {
+      normal: {
+        color: themeColor,
+      },
+    },
+    DefaultTabPan: {
+      normal: {
+        height: 60,
+        color: '#fff',
+        background: {
+          color: '#000033',
+        },
+        font: {
+          weight: 900,
+        },
+      },
+    },
+  },
+};
+
+export const LightTabsMenuTheme = {
+  MenuWrap: {
+    normal: {
+      background: {
+        color: '',
+      },
+    },
+  },
+  MenuItem: {
+    MenuItemWrap: {
+      normal: {
+        height: 40,
+      },
+    },
+    SelectedMenuItemWrap: {
+      normal: {
+        color: themeColor,
+      },
+    },
+  },
+};
+
+// themeStyle: dark
+
+export const DarkTabsMenuTheme = {
+  MenuWrap: {
+    normal: {
+      background: {
+        color: 'rgba(0, 0, 51, 0.7)',
+      },
+    },
+  },
+  MenuItem: {
+    MenuItemWrap: {
+      normal: {
+        height: 40,
+        color: '#fff',
+      },
+      hover: {
+        color: '#fff',
+        background: {
+          color: 'rgba(255, 255, 255, 0.3)',
+        },
+      },
+    },
+    SelectedMenuItemWrap: {
+      normal: {
+        color: themeColor,
+      },
+      hover: {
+        color: '#fff',
+        background: {
+          color: 'rgba(255, 255, 255, 0.3)',
+        },
+      },
+    },
+  },
+  SubMenu: {
+    MenuWrap: {
+      normal: {
+        background: {
+          color: 'rgba(0, 0, 51, 0.7)',
+        },
+      },
+    },
+    MenuItem: {
+      MenuItemWrap: {
+        normal: {
+          height: 40,
+          color: '#fff',
+        },
+        hover: {
+          color: '#fff',
+          background: {
+            color: 'rgba(255, 255, 255, 0.3)',
+          },
+        },
+      },
+      SelectedMenuItemWrap: {
+        normal: {
+          color: themeColor,
+        },
+        hover: {
+          color: '#fff',
+          background: {
+            color: 'rgba(255, 255, 255, 0.3)',
+          },
+        },
+      },
+    },
+  },
+};
+
 // mode : inline
 // 内嵌导航菜单默认样式
 // themeStyle: light

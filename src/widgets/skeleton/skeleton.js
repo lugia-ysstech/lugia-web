@@ -29,8 +29,6 @@ type SkeletonProps = {
   loading?: boolean,
   children?: any,
   picture?: boolean,
-  pictureWidth?: number | string,
-  pictureHeight?: number | string,
   animation?: boolean,
   getPartOfThemeProps: Function,
 };
