@@ -95,7 +95,7 @@ export default ThemeProvider(
     };
 
     getCancelMenuTheme = () => {
-      const { cancelBoxMenuTheme, needCancelBox = false } = this.props;
+      const { cancelBoxMenuTheme = {}, needCancelBox = false } = this.props;
       if (!needCancelBox) {
         return {};
       }
@@ -128,7 +128,6 @@ export default ThemeProvider(
         headerTheme,
         cancelBoxTheme,
       } = this.props;
-      this.getCancelMenuTheme();
       const cancelBox =
         needCancelBox && cancelItem && cancelItem.length ? (
           <CancelBox themeProps={cancelBoxTheme}>
