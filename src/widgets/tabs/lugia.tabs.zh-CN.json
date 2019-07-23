@@ -137,7 +137,7 @@
   "designInfo": {
     "CardTabs": {
       "sequence": 1,
-      "title": "卡片风格",
+      "title": "卡片风格标签页",
       "desc": "卡片风格标签页",
       "props": {
         "tabType": "card"
@@ -221,7 +221,7 @@
     },
     "WindowTabs": {
       "sequence": 1,
-      "title": "窗口风格",
+      "title": "窗口风格标签页",
       "desc": "窗口风格标签页",
       "props": {
         "tabType": "window"
