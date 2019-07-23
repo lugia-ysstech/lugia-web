@@ -122,8 +122,8 @@
   },
   "category": ["数据录入"],
   "theme": {
-    "name": "金额输入框",
     "InnerInput": {
+      "name": "金额输入框",
       "theme": {
         "Container": {
           "name": "输入框外部容器",
@@ -175,6 +175,7 @@
       "disabled": []
     },
     "AmountTip": {
+      "name": "金额切换提示",
       "theme": {
         "Container": {
           "name": "输入框提示框外框部分",
