@@ -175,6 +175,7 @@
       "disabled": []
     },
     "AmountTip": {
+      "name": "金额切换提示",
       "theme": {
         "Container": {
           "name": "输入框提示框外框部分",
