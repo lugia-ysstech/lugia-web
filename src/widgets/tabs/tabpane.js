@@ -304,6 +304,8 @@ type TabpaneProps = {
   tabType?: TabType,
   tabPosition?: TabPositionType,
   index: number,
+  activityValue: string,
+  keyVal: string,
   isSelect?: boolean,
   disabled?: boolean,
   showDeleteBtn?: boolean,
@@ -342,7 +344,6 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
       disabled,
       showDeleteBtn,
     } = this.props;
-
     const { TargetTab, themeProps, iconThemes } = this.getHTabPaneThemeProps(
       tabType,
       isSelect,
@@ -528,8 +529,8 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
   componentDidMount() {}
 
   handleClick = () => {
-    const { index, onClick, disabled } = this.props;
-    if (!disabled) onClick && onClick(index);
+    const { index, onClick, disabled, keyVal } = this.props;
+    if (!disabled) onClick && onClick({ index, activityValue: keyVal });
   };
 
   getTabIconContainer(icon: ?string, themeProps?: Object = {}) {
@@ -550,9 +551,10 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     }
     return icon;
   }
-  onDeleteClick = () => {
-    const { onDelete, index } = this.props;
-    onDelete && onDelete(index);
+  onDeleteClick = e => {
+    e.stopPropagation();
+    const { onDelete, index, keyVal } = this.props;
+    onDelete && onDelete({ index, activityValue: keyVal });
   };
   getClearButton() {
     const { tabType, disabled, showDeleteBtn, themeProps } = this.props;
@@ -587,12 +589,12 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     this.setState({ iconClass: 'lugia-icon-reminder_close' });
   };
   onMouseEnter = (e: Object) => {
-    const { onMouseEnter, index } = this.props;
-    onMouseEnter && onMouseEnter(index);
+    const { onMouseEnter, index, keyVal } = this.props;
+    onMouseEnter && onMouseEnter({ index, activityValue: keyVal });
   };
   onMouseLeave = (e: Object) => {
-    const { onMouseLeave, index } = this.props;
-    onMouseLeave && onMouseLeave(index);
+    const { onMouseLeave, index, keyVal } = this.props;
+    onMouseLeave && onMouseLeave({ index, activityValue: keyVal });
   };
 }
 

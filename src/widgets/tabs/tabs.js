@@ -46,9 +46,9 @@ const TabContent = CSSComponent({
     selectNames: [],
     getCSS: (theme: Object, themeProps: Object) => {
       const {
-        propsConfig: { active, index },
+        propsConfig: { active, key },
       } = themeProps;
-      if (active === index) {
+      if (active === key) {
         return `
         display:block;
         z-index:10;
@@ -115,7 +115,7 @@ const OutContainer = StaticComponent({
 OutContainer.displayName = Widget.TabsContainer;
 
 type TabsState = {
-  activityValue: number,
+  activityValue: string,
   data: Array<Object>,
   currentPage: number,
   totalPage: number,
@@ -125,8 +125,8 @@ type TabsState = {
 };
 
 type TabsProps = {
-  activityValue?: number,
-  defaultActivityValue?: number,
+  activityValue?: string,
+  defaultActivityValue?: string,
   onTabClick?: Function,
   tabPosition?: TabPositionType,
   tabType?: TabType,
@@ -153,13 +153,24 @@ type TabsProps = {
 export function hasTargetInProps(target: string, props: TabsProps) {
   return `${target}` in props;
 }
+export function setKeyValue(data: Array<Object>) {
+  const newData = [...data];
+  return newData.map((item, index) => {
+    const newItem = { ...item };
+    const { key } = newItem;
+    if (!key) {
+      newItem.key = `Tab${index + 1}`;
+    }
+    return newItem;
+  });
+}
 
-export function getDefaultData(props) {
+export function getDefaultData(props: Object) {
   const { defaultData, data, children } = props;
   let configData = [
-    { title: 'Tab1', content: 'Tab1 content' },
-    { title: 'Tab2', content: 'Tab2 content' },
-    { title: 'Tab3', content: 'Tab3 content' },
+    { title: 'Tab1', content: 'Tab1 content', key: 'Tab1' },
+    { title: 'Tab2', content: 'Tab2 content', key: 'Tab2' },
+    { title: 'Tab3', content: 'Tab3 content', key: 'Tab3' },
   ];
   if (hasTargetInProps('data', props) && Array.isArray(data)) {
     configData = data ? data : [];
@@ -173,7 +184,7 @@ export function getDefaultData(props) {
       configData = defaultData ? defaultData : configData;
     }
   }
-  return configData;
+  return setKeyValue(configData);
 }
 
 class TabsBox extends Component<TabsProps, TabsState> {
@@ -193,8 +204,9 @@ class TabsBox extends Component<TabsProps, TabsState> {
 
   static getDerivedStateFromProps(props: TabsProps, state: TabsState) {
     const { activityValue, defaultActivityValue, data } = props;
-    let theActivityValue = activityValue || defaultActivityValue || 0;
+
     let theData = getDefaultData(props);
+    let theActivityValue = activityValue || defaultActivityValue || theData[0].key;
     if (state) {
       theActivityValue = hasTargetInProps('activityValue', props)
         ? theActivityValue
@@ -270,20 +282,21 @@ class TabsBox extends Component<TabsProps, TabsState> {
     };
   }
 
-  onChange = (index: number) => {
+  onChange = (res: Object) => {
     const { onChange } = this.props;
-    onChange && onChange(index);
+    onChange && onChange(res);
     if (hasTargetInProps('activityValue', this.props)) {
       return;
     }
+    const { activityValue } = res;
     this.setState({
-      activityValue: index,
+      activityValue,
     });
   };
 
-  onTabClick = (index: number) => {
+  onTabClick = (res: Object) => {
     const { onTabClick } = this.props;
-    onTabClick && onTabClick(index);
+    onTabClick && onTabClick(res);
   };
 
   onPreClick = (e: Event) => {
@@ -296,14 +309,15 @@ class TabsBox extends Component<TabsProps, TabsState> {
     onNextClick && onNextClick(e);
   };
 
-  onDelete = (index: number) => {
+  onDelete = (res: Object) => {
     const { onDelete } = this.props;
-    onDelete && onDelete(index);
+    onDelete && onDelete(res);
     if (hasTargetInProps('data', this.props) || hasTargetInProps('children', this.props)) {
       return;
     }
     const { data } = this.state;
     const newDate = [...data];
+    const { index } = res;
     newDate.splice(index, 1);
     this.setState({ data: newDate });
   };
@@ -323,11 +337,12 @@ class TabsBox extends Component<TabsProps, TabsState> {
     const item = (getAddItem && getAddItem()) || {
       title: `Tab${data.length + 1}`,
       content: `Tab${data.length + 1} Content`,
+      key: `Tab${data.length + 1}`,
     };
     newData.push(item);
     this.setState({
-      activityValue: data.length,
-      data: newData,
+      activityValue: item.key || `Tab${data.length + 1}`,
+      data: setKeyValue(newData),
     });
   };
 
@@ -354,20 +369,28 @@ class TabsBox extends Component<TabsProps, TabsState> {
                 getAttributeFromObject(child, 'children', undefined)
               )
             );
-            const props = { active: activityValue, index };
+            const key = getAttributeFromObject(
+              child,
+              'key',
+              getAttributeFromObject(
+                child.props,
+                'key',
+                getAttributeFromObject(child, 'children', undefined)
+              )
+            );
+            const props = { active: activityValue, key };
             const innerContentThemeProps = this.props.getPartOfThemeProps('ContentBlock', {
               props,
             });
-
             const { forceRender } = this.props;
             return forceRender ? (
-              activityValue === index && (
+              activityValue === key && (
                 <TabContent themeProps={innerContentThemeProps}>
                   <TabContentInner
                     {...this.props}
                     themeProps={contentThemeProps}
                     content={content}
-                    forceRender={forceRender && index === activityValue}
+                    forceRender={forceRender && key === activityValue}
                   />
                 </TabContent>
               )
@@ -377,7 +400,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
                   {...this.props}
                   themeProps={contentThemeProps}
                   content={content}
-                  forceRender={forceRender && index === activityValue}
+                  forceRender={forceRender && key === activityValue}
                 />
               </TabContent>
             );
