@@ -331,6 +331,23 @@ const Description = CSSComponent({
     },
   },
 });
+const Operation = CSSComponent({
+  tag: 'div',
+  className: 'CardOperation',
+  normal: {
+    selectNames: [['width'], ['height'], ['color'], ['font'], ['position']],
+    defaultTheme: {
+      font: {
+        weight: 400,
+        size: 14,
+      },
+      position: {
+        right: 20,
+        top: 16,
+      },
+    },
+  },
+});
 
 class Card extends React.Component<CardProps, CardState> {
   static defaultProps = {
@@ -386,6 +403,7 @@ class Card extends React.Component<CardProps, CardState> {
 
     return (
       <CardOutContainer themeProps={resultTheme} type={type} imageOrientation={imageOrientation}>
+        {this.getDetails('operation')}
         {this.getImageContainer()}
         <Content
           themeProps={cardContentTheme}
@@ -438,9 +456,14 @@ class Card extends React.Component<CardProps, CardState> {
     return null;
   }
   getDetails(information: string): React.Node | null {
-    const { title, description, content, children, type } = this.props;
+    const { operation, title, description, content, children, type } = this.props;
     const hasNoContent = !(content && children);
     switch (information) {
+      case 'operation':
+        const operationThemeProps = this.props.getPartOfThemeProps('CardOperation');
+        return hasNoContent && operation ? (
+          <Operation themeProps={operationThemeProps}>{operation}</Operation>
+        ) : null;
       case 'title':
         const titleThemeProps = this.props.getPartOfThemeProps('CardTitle');
         return title ? (
