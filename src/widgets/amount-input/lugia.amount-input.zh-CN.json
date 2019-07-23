@@ -131,10 +131,6 @@
           "normal": [
             ["width"],
             ["height"],
-            ["background"],
-            ["border"],
-            ["borderRadius"],
-            ["boxShadow"],
             ["margin"],
             ["padding"]
           ]

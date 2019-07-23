@@ -153,16 +153,7 @@ const InputContainer = CSSComponent({
   tag: 'div',
   className: 'inputContainer',
   normal: {
-    selectNames: [
-      ['width'],
-      ['height'],
-      ['background'],
-      ['border'],
-      ['borderRadius'],
-      ['boxShadow'],
-      ['margin'],
-      ['padding'],
-    ],
+    selectNames: [['width'], ['height'], ['margin'], ['padding']],
   },
   hover: {
     selectNames: [],
