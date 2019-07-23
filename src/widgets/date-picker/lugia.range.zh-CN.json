@@ -94,22 +94,5 @@
   },
   "category": ["数据录入"],
   "componentName": "RangePicker",
-  "needExport": true,
-  "theme": {
-    "RangeInputInner": {
-      "name": "输入框",
-      "desc": "",
-      "normal": [
-        ["width"],
-        ["height"],
-        ["border"],
-        ["boxShadow"],
-        ["borderRadius"],
-        ["background"]
-      ],
-      "hover": [["border", "color"], ["boxShadow"], ["borderRadius"], ["background"]],
-      "active": [["border", "color"], ["boxShadow"], ["borderRadius"], ["background"]],
-      "disabled": [["border", "color"], ["boxShadow"], ["borderRadius"], ["background"]]
-    }
-  }
+  "needExport": true
 }
