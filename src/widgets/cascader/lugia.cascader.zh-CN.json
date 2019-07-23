@@ -43,7 +43,7 @@
     },
 
     "data": {
-      "type": "[{valueField: '', displayField: ''}]",
+      "type": "Object[]",
       "desc": "级联选择的数据"
     },
 

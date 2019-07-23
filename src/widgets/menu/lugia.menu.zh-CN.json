@@ -15,7 +15,7 @@
     },
 
     "data": {
-      "type": "[{valueField: '', displayField: '', children}]",
+      "type": "Object[]",
       "desc": "生成选择项的数据",
       "defaultValue": false
     },
