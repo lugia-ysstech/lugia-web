@@ -69,7 +69,7 @@ const view = {
     TimeLineIcon: {
       normal: {
         color: 'red',
-        fontSize: 20,
+        fontSize: 16,
       },
     },
   },
@@ -209,10 +209,15 @@ export const OtherDemo = () => {
         <Wrapper>
           <p>节点说明样式 </p>
           <br />
-          <TimeLine type="explain">
+          <TimeLine>
             <TimeLineItem time="2018-01-01" description={'description111'} />
             <TimeLineItem time="2018-01-02" description={'description222'} timeLineType="explain" />
-            <TimeLineItem time="2018-01-03" description={'description333'} />
+            <TimeLineItem
+              time="2018-01-03"
+              description={'description333'}
+              timeLineType="icon"
+              icon={'lugia-icon-financial_Hourglass'}
+            />
             <TimeLineItem time="2018-01-04" description={'description444'} timeLineType="explain" />
             <TimeLineItem time="2018-01-05" description={'description555'} />
           </TimeLine>
