@@ -77,8 +77,7 @@ export const MenuContainer = CSSComponent({
   option: { hover: true },
 });
 
-const getIcon = props => {
-  const { checkedCSS } = props;
+const getIcon = checkedCSS => {
   return `
     ${
       checkedCSS !== 'mark'
@@ -140,6 +139,7 @@ export const ItemWrap = CSSComponent({
       const { propsConfig } = themeProps;
       const { checked, checkedCSS, menuItemHeight } = propsConfig;
       const { color, backgroundColor, fontWeight } = getItemCheckedCSS(checked, checkedCSS);
+
       return `
         color: ${color};
         background: ${backgroundColor};

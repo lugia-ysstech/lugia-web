@@ -73,7 +73,7 @@ export type MenuProps = {
   onMouseEnter?: Function,
   onExpandPathChange?: Function,
   limitCount?: number,
-  checkedCSS: 'none' | 'background' | 'mark' | 'checkbox',
+  checkedCSS: 'none' | 'background' | 'checkbox',
   offsetX: number,
   offsetY: number,
   popupVisible?: boolean,
@@ -299,18 +299,6 @@ class Menu extends React.Component<MenuProps, MenuState> {
     }
 
     return [<Empty />];
-  }
-
-  getItemTheme() {
-    const { getPartOfThemeConfig } = this.props;
-    return {
-      [Widget.MenuItem]: {
-        Item: getPartOfThemeConfig('MenuItem'),
-        SelectedItem: getPartOfThemeConfig('SelectedMenuItem'),
-        CheckBox: getPartOfThemeConfig('CheckBox'),
-        Divider: getPartOfThemeConfig('Divider'),
-      },
-    };
   }
 
   computeItems(data: Array<Object>, start: number, end: number, getItem: Function): Array<Object> {

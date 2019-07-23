@@ -7,15 +7,8 @@
 import * as React from 'react';
 import ThemeHoc from '@lugia/theme-hoc';
 import Widget from '../consts/index';
-import { FontSize } from '../css';
-import { px2remcss } from '../css/units';
-import {
-  SelectIcon,
-  ItemWrap,
-  DividerWrap,
-  TextContainer,
-  DefaultMenuItemHeight,
-} from '../css/menu';
+import { deepMerge } from '@lugia/object-utils';
+import { ItemWrap, DividerWrap, TextContainer, DefaultMenuItemHeight } from '../css/menu';
 import CheckBox from '../checkbox';
 
 const Utils = require('@lugia/type-utils');
@@ -38,36 +31,6 @@ export type MenuItemProps = {
   getPartOfThemeProps: Function,
 };
 
-const getIcon = props => {
-  const { checkedCSS } = props;
-  return `
-    ${
-      checkedCSS !== 'mark'
-        ? ''
-        : `
-    &::after {
-      font-family: "sviconfont" !important;
-      text-rendering: optimizeLegibility;
-      content: "${SelectIcon}";
-      color: transparent;
-      display: inline-block;
-      font-size: ${FontSize};
-      transform: scale(.83333333) rotate(0deg);
-      zoom: 1;
-      transition: all .2s ease;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      right: ${px2remcss(12)};
-      font-weight: 700;
-      font-size: ${px2remcss(16)};
-      text-shadow: 0 0.1px 0, 0.1px 0 0, 0 -0.1px 0, -0.1px 0;
-    }
-    `
-    }
-  `;
-};
-
 class MenuItem extends React.Component<MenuItemProps> {
   static defaultProps = {
     checked: false,
@@ -77,10 +40,39 @@ class MenuItem extends React.Component<MenuItemProps> {
   };
   static displayName = Widget.MenuItem;
 
+  mergeTheme = (target: string, defaultTheme: Object) => {
+    const { viewClass, theme } = this.props.getPartOfThemeHocProps(target);
+
+    const themeHoc = deepMerge(
+      {
+        [viewClass]: { ...defaultTheme },
+      },
+      theme
+    );
+
+    const treeTheme = {
+      viewClass,
+      theme: themeHoc,
+    };
+    return treeTheme;
+  };
+
+  getCheckBoxTheme() {
+    const defaultTheme = {
+      CheckboxText: {
+        normal: {
+          font: { size: 13, fontWeight: 500 },
+        },
+        hover: { font: { size: 13, fontWeight: 500 } },
+        disabled: { font: { size: 13, fontWeight: 500 } },
+      },
+    };
+    return this.mergeTheme('Checkbox', defaultTheme);
+  }
+
   render() {
     const {
       children,
-      mutliple,
       checked,
       onClick,
       disabled,
@@ -89,7 +81,6 @@ class MenuItem extends React.Component<MenuItemProps> {
       divided,
       isFirst,
       menuItemHeight = DefaultMenuItemHeight,
-      getPartOfThemeHocProps,
       getPartOfThemeProps,
     } = this.props;
     let title = '';
@@ -139,7 +130,7 @@ class MenuItem extends React.Component<MenuItemProps> {
         {isCheckbox ? (
           <TextContainer themeProps={ItemThemeProps}>
             <CheckBox
-              {...getPartOfThemeHocProps('Checkbox')}
+              {...this.getCheckBoxTheme()}
               checked={checked}
               disabled={disabled}
               onChange={onClick}

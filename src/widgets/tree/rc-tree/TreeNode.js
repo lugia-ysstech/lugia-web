@@ -5,7 +5,7 @@ import toArray from 'rc-util/lib/Children/toArray';
 import { contextTypes } from './Tree';
 import CommonIcon from '../../icon';
 import CheckBox from '../../checkbox';
-import Widget from '../../consts';
+import { deepMerge } from '@lugia/object-utils';
 import ThemeHoc from '@lugia/theme-hoc';
 import { TextIcon } from '../../css/menu';
 import {
@@ -202,9 +202,9 @@ class TreeNode extends React.Component {
         disabled
         themeProps={this.getThemeProps('Text', 'SelectedText', { mutliple, itemHeight })}
       >
-        {icon ? <CommonIcon iconClass={icon} /> : null}
+        {icon ? <TextIcon iconClass={icon} /> : null}
         <CheckBox
-          theme={this.getCheckBoxTheme()}
+          {...this.getCheckBoxTheme()}
           checked={checked}
           disabled={disabled}
           indeterminate={indeterminate}
@@ -214,6 +214,36 @@ class TreeNode extends React.Component {
         </CheckBox>
       </TitleWrap>
     );
+  }
+
+  mergeTheme = (target: string, defaultTheme: Object) => {
+    const { viewClass, theme } = this.props.getPartOfThemeHocProps(target);
+
+    const themeHoc = deepMerge(
+      {
+        [viewClass]: { ...defaultTheme },
+      },
+      theme
+    );
+
+    const treeTheme = {
+      viewClass,
+      theme: themeHoc,
+    };
+    return treeTheme;
+  };
+
+  getCheckBoxTheme() {
+    const defaultTheme = {
+      CheckboxText: {
+        normal: {
+          font: { size: 13, fontWeight: 500 },
+        },
+        hover: { font: { size: 13, fontWeight: 500 } },
+        disabled: { font: { size: 13, fontWeight: 500 } },
+      },
+    };
+    return this.mergeTheme('Checkbox', defaultTheme);
   }
 
   renderChildren(props) {
@@ -386,8 +416,7 @@ class TreeNode extends React.Component {
           selected={selected}
           describe={describe}
           disabled={disabled}
-          notCanSelect={disabled}
-          color={color}
+          // notCanSelect={disabled}
         >
           {title}
         </TitleWrap>
@@ -458,14 +487,6 @@ class TreeNode extends React.Component {
       </ItemWrap>
     );
   }
-
-  getCheckBoxTheme = () => {
-    const { getPartOfThemeConfig } = this.props;
-    const config = {
-      [Widget.Checkbox]: getPartOfThemeConfig('Checkbox'),
-    };
-    return config;
-  };
 }
 
 TreeNode.isTreeNode = 1;
