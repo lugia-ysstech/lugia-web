@@ -191,9 +191,9 @@ export function mapGetAllChildData(
 
 export function getTreeData(props: Object) {
   const newData = [];
-  const { data, valueField = 'value', displayField = 'text' } = props;
+  const { data, valueField = 'value', displayField = 'text', igronSelectField } = props;
   if (data && data.length > 0) {
-    recurTreeData(data, newData, {}, { displayField, valueField });
+    recurTreeData(data, newData, {}, igronSelectField, { displayField, valueField });
   }
   return newData;
 }
@@ -205,30 +205,25 @@ export function recurTreeData(
     parentKey?: string,
     parentPath?: string[],
   },
+  igronSelectField: string,
   opt?: { onAdd?: Function, displayField?: string, valueField?: string } = {}
 ) {
   const { parentKey, parentPath = [] } = recursion;
   const { displayField = 'text', valueField = 'value' } = opt;
   const { onAdd } = opt;
+
   inTreeChildData &&
     inTreeChildData.forEach(item => {
-      const {
-        children,
-        [valueField]: value,
-        [displayField]: text,
-        describe,
-        icon,
-        disabled,
-        suffix,
-      } = item;
+      const { children, [valueField]: value, [displayField]: text, describe, icon, suffix } = item;
       const newObj = {};
       newObj.describe = describe;
       newObj.icon = icon;
-      newObj.disabled = disabled;
+      newObj[igronSelectField] = item[igronSelectField];
       newObj.pid = parentKey;
       newObj.suffix = suffix;
       newObj[valueField] = value;
       newObj[displayField] = text;
+
       let path;
       if (!parentKey) {
         path = [];
@@ -248,6 +243,7 @@ export function recurTreeData(
           children,
           outTreeRowData,
           { parentKey: item[valueField], parentPath: path },
+          igronSelectField,
           opt
         );
       }

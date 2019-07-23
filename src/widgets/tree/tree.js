@@ -95,6 +95,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     query: '',
     current: -1,
     openAnimation: animation,
+    igronSelectField: 'disabled',
     inlineType: 'primary',
     shape: 'default',
     showSwitch: true,

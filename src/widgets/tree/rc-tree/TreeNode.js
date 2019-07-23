@@ -189,14 +189,12 @@ class TreeNode extends React.Component {
     const {
       checked,
       halfChecked: indeterminate,
-      notCanSelect,
       title,
-      disabled: dataDisabled,
+      disabled,
       icon,
       mutliple,
       itemHeight,
     } = this.props;
-    const disabled = notCanSelect || dataDisabled;
     return (
       <TitleWrap
         disabled={disabled}
@@ -325,8 +323,7 @@ class TreeNode extends React.Component {
     const {
       checked,
       selected,
-      notCanSelect,
-      disabled: dataDisabled,
+      disabled,
       inlineType,
       pos,
       describe = false,
@@ -342,7 +339,6 @@ class TreeNode extends React.Component {
     } = this.props;
     const expandedState = props.expanded ? 'open' : 'close';
     let iconState = expandedState;
-    const disabled = notCanSelect || dataDisabled;
 
     let canRenderSwitch = true;
     const content = props.title;
