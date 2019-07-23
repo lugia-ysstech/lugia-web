@@ -21,6 +21,7 @@ const EmptyContainer = styled.div`
   box-sizing: border-box;
   border-radius: 4px;
   background: #fff;
+  user-select: none;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
 `;
 

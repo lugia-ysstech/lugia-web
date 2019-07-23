@@ -53,47 +53,8 @@
   "category": ["数据展示"],
 
   "designInfo": {
-    "BasicTag": {
-      "sequence": 1,
-      "title": "基本标签",
-      "desc": "展示标签",
-      "props": {
-        "closable": false
-      },
-      "theme": {
-        "TagWrap": {
-          "name": "标签区域",
-          "desc": "标签内的样式配置",
-          "normal": [
-            ["color"],
-            ["background"],
-            ["border"],
-            ["width"],
-            ["height"],
-            ["boxShadow"],
-            ["opacity"],
-            ["font"],
-            ["margin"],
-            ["padding"],
-            ["borderRadius"]
-          ],
-          "hover": [
-            ["color"],
-            ["borderRadius"],
-            ["background"],
-            ["border"],
-            ["boxShadow"],
-            ["opacity"],
-            ["font"]
-          ],
-          "active": [],
-          "clicked": [],
-          "disabled": []
-        }
-      }
-    },
     "ClosableTag": {
-      "sequence": 2,
+      "sequence": 1,
       "title": "可关闭标签",
       "desc": "点击关闭按钮可隐藏标签",
       "props": {
@@ -143,7 +104,7 @@
     },
 
     "ChooseTag": {
-      "sequence": 3,
+      "sequence": 2,
       "title": "可选择标签",
       "desc": "点击标签可配置选中样式",
       "props": {
@@ -248,59 +209,13 @@
       ],
       "hover": [
         ["color"],
+        ["borderRadius"],
         ["background"],
         ["border"],
         ["boxShadow"],
         ["opacity"],
-        ["font"],
-        ["borderRadius"]
+        ["font"]
       ],
-      "active": [],
-      "clicked": [],
-      "disabled": []
-    },
-    "CheckedTagWrap": {
-      "name": "选中标签区域",
-      "desc": "选中后的标签内的样式配置",
-      "normal": [
-        ["color"],
-        ["background"],
-        ["border"],
-        ["width"],
-        ["height"],
-        ["boxShadow"],
-        ["opacity"],
-        ["font"],
-        ["margin"],
-        ["padding"],
-        ["borderRadius"]
-      ],
-      "hover": [
-        ["color"],
-        ["background"],
-        ["border"],
-        ["boxShadow"],
-        ["opacity"],
-        ["font"],
-        ["borderRadius"]
-      ],
-      "active": [
-        ["color"],
-        ["background"],
-        ["border"],
-        ["boxShadow"],
-        ["opacity"],
-        ["font"],
-        ["borderRadius"]
-      ],
-      "clicked": [],
-      "disabled": []
-    },
-    "CloseButton": {
-      "name": "隐藏图标",
-      "desc": "隐藏图标的样式配置",
-      "normal": [["font"], ["color"], ["margin"]],
-      "hover": [["font"], ["color"]],
       "active": [],
       "clicked": [],
       "disabled": []
