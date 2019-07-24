@@ -45,15 +45,17 @@ function defaultRenderItem(
   lastSeparator: string | React.Element<any>,
   itemTheme: Object
 ): Object {
-  return breadCrumbItemConfig.map(item => {
+  return breadCrumbItemConfig.map((item, index) => {
     const { href, title, isLast } = item;
 
     return (
       <BreadcrumbItem
+        index={index}
         separator={isLast ? lastSeparator : separator}
         href={href}
         isLastItem={isLast}
         theme={itemTheme}
+        count={breadCrumbItemConfig.length}
       >
         {title}
       </BreadcrumbItem>
@@ -130,16 +132,16 @@ export default class Breadcrumb extends React.Component<BreadcrumbProps, any> {
     const itemTheme = this.getItemTheme();
     if (!routes && !children) {
       crumbs = [
-        <BreadcrumbItem theme={itemTheme} separator={separator}>
+        <BreadcrumbItem theme={itemTheme} index={0} count={4} separator={separator}>
           首页
         </BreadcrumbItem>,
-        <BreadcrumbItem theme={itemTheme} separator={separator}>
+        <BreadcrumbItem theme={itemTheme} index={1} count={4} separator={separator}>
           一级面包屑
         </BreadcrumbItem>,
-        <BreadcrumbItem theme={itemTheme} separator={separator}>
+        <BreadcrumbItem theme={itemTheme} index={2} count={4} separator={separator}>
           二级面包屑
         </BreadcrumbItem>,
-        <BreadcrumbItem theme={itemTheme} separator={''} isLastItem>
+        <BreadcrumbItem theme={itemTheme} index={3} count={4} separator={''} isLastItem>
           三级面包屑
         </BreadcrumbItem>,
       ];
@@ -165,11 +167,13 @@ export default class Breadcrumb extends React.Component<BreadcrumbProps, any> {
         const { isLast, href } = childrenPro[index];
 
         return cloneElement(element, {
+          index,
           separator: isLast ? lastSeparator : separator,
           isLastItem: isLast,
           href,
           key: index,
           theme: itemTheme,
+          count: children.length,
         });
       });
     } else {
@@ -177,6 +181,8 @@ export default class Breadcrumb extends React.Component<BreadcrumbProps, any> {
         (crumbs = cloneElement(children, {
           separator: lastSeparator,
           isLastItem: true,
+          index: 0,
+          count: 1,
           key: 'one',
           theme: itemTheme,
         }));

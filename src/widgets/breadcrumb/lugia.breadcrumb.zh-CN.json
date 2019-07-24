@@ -78,7 +78,15 @@
         "Text": {
           "name": "文本",
           "desc": "面包屑的文本配置",
-          "normal": [["color"], ["fontSize"], ["margin"], ["padding"], ["font"]],
+          "normal": [
+            ["color"],
+            ["fontSize"],
+            ["margin", "left"],
+            ["margin", "right"],
+            ["padding", "left"],
+            ["padding", "right"],
+            ["font"]
+          ],
           "hover": [["color"], ["font"], ["fontSize"]],
           "clicked": [],
           "disabled": []
@@ -87,7 +95,14 @@
         "Separator": {
           "name": "分隔符",
           "desc": "面包屑的分隔符配置",
-          "normal": [["color"], ["fontSize"], ["margin"]],
+          "normal": [
+            ["color"],
+            ["fontSize"],
+            ["margin", "left"],
+            ["margin", "right"],
+            ["padding", "left"],
+            ["padding", "right"]
+          ],
           "hover": [],
           "clicked": [],
           "disabled": []
