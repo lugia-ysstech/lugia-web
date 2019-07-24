@@ -148,7 +148,7 @@ export default ThemeProvider(
       };
       return (
         <Theme config={this.getChildTheme()}>
-          <Group themeProps={getPartOfThemeProps('Group')} childType={childType}>
+          <Group themeProps={getPartOfThemeProps('Container')} childType={childType}>
             {handleCreate(_this, 'checkbox', childType)}
           </Group>
         </Theme>
