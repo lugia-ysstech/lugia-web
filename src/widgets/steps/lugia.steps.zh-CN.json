@@ -26,7 +26,7 @@
       "defaultValue": "normal"
     },
     "orientation": {
-      "type": "SizeType",
+      "type": "OrientationType",
       "desc": "步骤条方向,可选择水平,垂直",
       "defaultValue": "horizontal"
     },
