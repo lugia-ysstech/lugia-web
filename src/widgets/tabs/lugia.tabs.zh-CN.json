@@ -168,13 +168,13 @@
           ]
         },
         "ContentBlock": {
-          "name": "content内容区",
-          "desc": "content内容区的样式配置",
+          "name": "内容区域",
+          "desc": "内容区域的样式配置",
           "normal": [["background"], ["padding"], ["width"], ["height"]]
         },
         "TitleContainer": {
-          "name": "头部标签区域",
-          "desc": "头部标签区域宽度配置",
+          "name": "顶部容器区域",
+          "desc": "顶部容器区域宽度配置",
           "normal": [["width"]]
         },
         "BorderStyle": {
@@ -257,13 +257,13 @@
           ]
         },
         "ContentBlock": {
-          "name": "content内容区",
-          "desc": "content内容区的样式配置",
+          "name": "内容区域",
+          "desc": "内容区域的样式配置",
           "normal": [["background"], ["padding"], ["width"], ["height"]]
         },
         "TitleContainer": {
-          "name": "头部标签区域",
-          "desc": "头部标签区域宽度配置",
+          "name": "顶部容器区域",
+          "desc": "顶部容器区域宽度配置",
           "normal": [["width"]]
         },
         "TabHeader":{
@@ -306,13 +306,13 @@
   },
   "theme": {
     "ContentBlock": {
-      "name": "content内容区",
-      "desc": "content内容区的样式配置",
+      "name": "内容区域",
+      "desc": "内容区域的样式配置",
       "normal": [["background"], ["padding"], ["width"], ["height"]]
     },
     "TitleContainer": {
-      "name": "头部标签区域",
-      "desc": "头部标签区域宽度配置",
+      "name": "顶部容器区域",
+      "desc": "顶部容器区域宽度配置",
       "normal": [["width"]]
     },
     "BorderStyle": {

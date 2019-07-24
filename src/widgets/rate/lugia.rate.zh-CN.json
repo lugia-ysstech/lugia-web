@@ -88,11 +88,16 @@
       "title": "分级图标评分",
       "desc": "按分值等级展示不同图标样式和颜色",
       "props": {
-        "classify": true
+        "classify": true,
+        "iconClass": {
+          "default": "lugia-icon-financial_meh",
+          "danger": "lugia-icon-financial_sad",
+          "amazed": "lugia-icon-financial_smile"
+        }
       },
       "theme": {
         "ActiveIcon": {
-          "name": "选中的图标",
+          "name": "选中状态的图标",
           "desc": "选中的星星的样式",
           "normal": [["color"]],
           "hover": [],
@@ -100,7 +105,7 @@
           "disabled": []
         },
         "DefaultRateIcon": {
-          "name": "默认的图标",
+          "name": "默认状态的图标",
           "desc": "默认的星星的样式",
           "normal": [["color"],["margin"], ["fontSize"]],
           "hover": [],
@@ -134,7 +139,7 @@
       },
       "theme": {
         "ActiveTextIcon": {
-          "name": "选中的文字",
+          "name": "选中状态的文字",
           "desc": "选中的文字的样式配置",
           "normal": [["color"]],
           "hover": [],
@@ -142,7 +147,7 @@
           "disabled": []
         },
         "DefaultTextIcon": {
-          "name": "默认的文字的",
+          "name": "默认状态的文字的",
           "desc": "默认的文字的样式配置",
           "normal": [["color"], ["margin"], ["fontSize"]],
           "hover": [],
@@ -154,7 +159,7 @@
   },
   "theme": {
     "ActiveIcon": {
-      "name": "选中的图标",
+      "name": "选中状态的图标",
       "desc": "选中的星星的样式",
       "normal": [["color"]],
       "hover": [],
@@ -162,7 +167,7 @@
       "disabled": []
     },
     "DefaultRateIcon": {
-      "name": "默认的图标",
+      "name": "默认状态的图标",
       "desc": "默认的星星的样式",
       "normal": [["color"], ["margin"], ["fontSize"]],
       "hover": [],
