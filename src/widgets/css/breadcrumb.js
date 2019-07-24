@@ -25,6 +25,7 @@ export const CommonSpan = CSSComponent({
   css: css`
     font-size: ${FontSize};
     transition: font-size 0.3s;
+    color: ${DefaultColor};
   `,
   option: { hover: true },
 });
@@ -117,6 +118,6 @@ export const ItemWrap = CSSComponent({
     display: inline-block;
     padding: 0;
     box-sizing: border-box;
-    vertical-align: center;
+    vertical-align: top;
   `,
 });

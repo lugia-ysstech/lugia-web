@@ -18,6 +18,7 @@ export const {
   mouseDownColor,
   lightGreyColor,
 } = colorsFunc();
+
 export const TreeItemHeight = 35;
 export const DefaultHeight = 250;
 export const ItemBackgroundColor = '#edf0fe';
@@ -201,7 +202,7 @@ export const SubTreeWrap = CSSComponent({
 });
 
 const getNormalBgColor = (selected: boolean) => {
-  return selected ? `${hoverColor}` : '';
+  return selected ? 'rgba(77,99,255,0.2)' : '';
 };
 
 const getNavNolmalBgColor = (selected: boolean, inlineType: 'primary' | 'ellipse') => {
@@ -252,7 +253,7 @@ export const TitleWrap = CSSComponent({
     getThemeMeta: (themeMeta, themeProps) => {
       const { propsConfig } = themeProps;
       const { mutliple } = propsConfig;
-      const color = !mutliple ? `${hoverColor}` : '';
+      const color = !mutliple ? `${spiritColor}` : '';
 
       return {
         background: {
@@ -263,17 +264,6 @@ export const TitleWrap = CSSComponent({
   },
   active: {
     selectNames: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
-    getThemeMeta: (themeMeta, themeProps) => {
-      const { propsConfig } = themeProps;
-      const { mutliple } = propsConfig;
-      const color = !mutliple ? `${hoverColor}` : '';
-
-      return {
-        background: {
-          color,
-        },
-      };
-    },
   },
   disabled: {
     selectNames: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
@@ -284,13 +274,8 @@ export const TitleWrap = CSSComponent({
         fontWeight: 500,
       },
     },
-    getCSS: () => {
-      return {
-        color: `${mediumGreyColor}`,
-        cursor: 'not-allowed',
-      };
-    },
   },
+
   css: css`
     flex: 1;
     overflow: hidden;
@@ -300,7 +285,7 @@ export const TitleWrap = CSSComponent({
     padding-left: ${px2remcss(10)};
     transition: all 0.2s;
   `,
-  option: { hover: true, active: true, disabled: true },
+  option: { hover: true, active: true, diabled: true },
 });
 
 export const TitleSpan = CSSComponent({

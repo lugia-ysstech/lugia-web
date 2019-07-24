@@ -101,8 +101,11 @@ export default class Demo extends React.Component<any, any> {
     return (
       <div>
         <Hr />
+        <Breadcrumb />
+        <Hr />
+
         {/*Breadcrumb 和 Breadcrumb.Item配合使用，使用href属性时，可跳转 */}
-        <Breadcrumb separator={'>'} theme={config}>
+        <Breadcrumb separator={'>'}>
           <Breadcrumb.Item href="a">主页</Breadcrumb.Item>
           <Breadcrumb.Item href="b">一级菜单</Breadcrumb.Item>
           <Breadcrumb.Item href="c">二级菜单</Breadcrumb.Item>
@@ -129,7 +132,7 @@ export default class Demo extends React.Component<any, any> {
             <CommonIcon iconClass="lugia-icon-financial_smile" type="user" />
           </Breadcrumb.Item>
           <Breadcrumb.Item>
-            <span>二级面包屑菜单</span>
+            <span>三级面包屑菜单</span>
             <CommonIcon iconClass="lugia-icon-logo_apple" type="user" />
           </Breadcrumb.Item>
         </Breadcrumb>

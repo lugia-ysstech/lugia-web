@@ -103,7 +103,7 @@ class ScrollerTree extends React.Component<any, any> {
   }
 
   loopNode = (data: Array<RowData>) => {
-    const { igronSelectField, inlineType, shape } = this.props;
+    const { inlineType, shape } = this.props;
     return data.map(item => {
       const {
         selectable,
@@ -115,6 +115,7 @@ class ScrollerTree extends React.Component<any, any> {
         showSwitch,
         __navmenu,
         switchIconNames,
+        igronSelectField,
       } = this.props;
       const {
         children,
@@ -122,12 +123,11 @@ class ScrollerTree extends React.Component<any, any> {
         [displayField]: title,
         isLeaf,
         describe = false,
-        disabled,
         icon,
         suffix,
       } = item;
 
-      const notCanSelect = item[igronSelectField] ? true : false;
+      const disabled = item[igronSelectField] ? true : false;
       if (children !== undefined) {
         return (
           <TreeNode
@@ -146,7 +146,6 @@ class ScrollerTree extends React.Component<any, any> {
             describe={describe}
             disabled={disabled}
             selectable={selectable}
-            notCanSelect={notCanSelect}
             icon={icon}
           >
             {this.loopNode(children)}
@@ -167,7 +166,6 @@ class ScrollerTree extends React.Component<any, any> {
           mutliple={mutliple}
           shape={shape}
           isLeaf={isLeaf}
-          notCanSelect={notCanSelect}
           disabled={disabled}
           selectable={selectable}
           icon={icon}

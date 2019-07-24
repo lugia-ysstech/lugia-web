@@ -95,6 +95,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     query: '',
     current: -1,
     openAnimation: animation,
+    igronSelectField: 'disabled',
     inlineType: 'primary',
     shape: 'default',
     showSwitch: true,
@@ -423,7 +424,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
   render() {
     const { props, state } = this;
-    const empty = <Empty />;
+
+    const empty = <Empty themeProps={props.getPartOfThemeProps('TreeWrap')} />;
     if (this.isEmpty(props)) {
       return empty;
     }

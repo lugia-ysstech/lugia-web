@@ -42,7 +42,7 @@
     },
 
     "checkedCSS": {
-      "type": "background | checkbox | mark | none",
+      "type": "background | checkbox | none",
       "desc": "选中项的样式",
       "defaultValue": "none"
     },

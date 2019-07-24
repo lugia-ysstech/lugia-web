@@ -22,6 +22,7 @@ export const {
   lightGreyColor,
   dangerColor,
   defaultColor,
+  disableColor,
 } = colorsFunc();
 
 export const FontSize = 12;
@@ -67,6 +68,7 @@ export const OutContainer = CSSComponent({
       ['color'],
       ['boxShadow'],
       ['opacity'],
+      ['cursor'],
     ],
     getCSS: (themeMeta, themeProps) => {
       const { height = Height } = themeMeta;
@@ -75,6 +77,7 @@ export const OutContainer = CSSComponent({
       `;
     },
     defaultTheme: {
+      cursor: 'pointer',
       border: {
         top: {
           color: lightGreyColor,
@@ -107,6 +110,7 @@ export const OutContainer = CSSComponent({
       ['borderRadius'],
       ['boxShadow'],
       ['opacity'],
+      ['cursor'],
     ],
     getStyle: (themeMeta, themeProps) => {},
     defaultTheme: {
@@ -140,28 +144,10 @@ export const OutContainer = CSSComponent({
   disabled: {
     selectNames: [],
     defaultTheme: {
-      border: {
-        top: {
-          color: lightGreyColor,
-          style: 'solid',
-          width: 1,
-        },
-        left: {
-          color: lightGreyColor,
-          style: 'solid',
-          width: 1,
-        },
-        bottom: {
-          color: lightGreyColor,
-          style: 'solid',
-          width: 1,
-        },
-        right: {
-          color: lightGreyColor,
-          style: 'solid',
-          width: 1,
-        },
+      background: {
+        color: disableColor,
       },
+      cursor: 'not-allowed',
     },
   },
 
@@ -175,7 +161,7 @@ export const OutContainer = CSSComponent({
     font-size: ${px2remcss(12)};
     transition: all 0.3s;
   `,
-  option: { hover: true },
+  option: { hover: true, disabled: true },
 });
 
 export const InnerContainer = CSSComponent({

@@ -47,6 +47,7 @@ const ClearMenuItemButton: Object = styled(Icon)`
   right: ${px2remcss(FontSize)};
   position: absolute;
   transform: translateY(-50%);
+  font-size: ${px2remcss(16)};
   color: ${lightGreyColor};
 `;
 
@@ -116,6 +117,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       focus: false,
       items: [],
       query: '',
+      popupVisible: false,
       value: this.fetchValueObject(props),
     };
     this.fontItem = React.createRef();
@@ -219,7 +221,6 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       result = this.generateOutter(
         <Container
           themeProps={themeProps}
-          disabled={disabled}
           theme={getTheme()}
           ref={cmp => (this.container = cmp)}
           onClick={this.onClick}
@@ -278,7 +279,8 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
             menus={this.getItems(query)}
             onQuery={this.onQueryInput}
             onPopupVisibleChange={this.onPopupVisibleChange}
-            action={[]}
+            popupVisible={this.state.popupVisible}
+            action={['click']}
             query={query}
             hideAction={['click']}
             ref={cmp => {
@@ -406,6 +408,19 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       MenuWrap: {
         normal: {
           width,
+        },
+      },
+      MenuItem: {
+        MenuItemWrap: {
+          normal: {
+            color: '#222',
+          },
+          hover: {
+            color: '#222',
+            background: {
+              color: '',
+            },
+          },
         },
       },
     };
@@ -698,7 +713,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   onPopupVisibleChange = (visible: boolean) => {
     const { onPopupVisibleChange } = this.props;
     if (visible === true) {
-      this.setState({ query: '' });
+      this.setState({ visible });
     }
     onPopupVisibleChange && onPopupVisibleChange(visible);
   };
