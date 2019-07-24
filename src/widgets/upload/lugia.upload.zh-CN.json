@@ -130,7 +130,7 @@
           "disabled": [["background"], ["border"]]
         },
         "UploadList": {
-          "name":"上传文件列表",
+          "name":"上传列表",
           "theme":{
             "UploadLiType": {
               "name": "上传文件列表",
@@ -168,7 +168,7 @@
           "disabled": [["background"], ["color"], ["border"]]
         },
         "UploadList": {
-          "name":"上传文件列表",
+          "name":"上传列表",
           "theme":{
             "UploadLiType": {
               "name": "上传文件列表",
@@ -199,13 +199,13 @@
       },
       "theme": {
         "UploadAreaType": {
-          "name": "拖拽区域",
+          "name": "文件上传区域",
           "desc": "区域拖拽上传类型的样式配置",
           "normal": [["width"], ["height"], ["fontSize"], ["color"]],
           "disabled": [["color"]]
         },
         "UploadList": {
-          "name":"上传文件列表",
+          "name":"上传列表",
           "theme":{
             "UploadLiType": {
               "name": "上传文件列表",
@@ -242,14 +242,14 @@
           "disabled": [["color"]]
         },
         "UploadDefaultType": {
-          "name": "input文件拖入框",
+          "name": "文件上传区域",
           "desc": "默认上传框的样式",
           "normal": [["width"], ["height"], ["boxShadow"], ["border"]],
           "hover": [["boxShadow"], ["border"]],
           "disabled": [["border"], ["cursor"]]
         },
         "UploadList": {
-          "name":"上传文件列表",
+          "name":"上传列表",
           "theme":{
             "UploadLiType": {
               "name": "上传文件列表",
@@ -274,14 +274,14 @@
   },
   "theme": {
     "UploadDefaultType": {
-      "name": "input文件拖入框",
+      "name": "文件上传区域",
       "desc": "默认上传框的样式",
       "normal": [["width"], ["height"], ["boxShadow"], ["border"]],
       "hover": [["boxShadow"], ["border"]],
       "disabled": [["border"], ["cursor"]]
     },
     "UploadList": {
-      "name":"上传文件列表",
+      "name":"上传列表",
       "theme":{
         "UploadLiType": {
           "name": "上传文件列表",
