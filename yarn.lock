@@ -1257,10 +1257,10 @@
     react-redux "^5.0.7"
     react-router "^4.3.1"
 
-"@lugia/math@^1.0.7":
-  version "1.0.7"
-  resolved "http://192.168.102.79:5001/@lugia/math/download/@lugia/math-1.0.7.tgz#902aa881d8321aec1051ec0c386dd930348ce92e"
-  integrity sha1-kCqogdgyGuwQUewMOG3ZMDSM6S4=
+"@lugia/math@1.0.8":
+  version "1.0.8"
+  resolved "http://192.168.102.79:5001/@lugia/math/download/@lugia/math-1.0.8.tgz#c82818fc22bbfd2d98d33ac1ad39ab165116e8ef"
+  integrity sha1-yCgY/CK7/S2Y0zrBrTmrFlEW6O8=
   dependencies:
     "@babel/runtime" "^7.4.5"
 
@@ -1446,6 +1446,13 @@
     deepmerge "^3.2.0"
     is-plain-object "^3.0.0"
 
+"@lugia/ramada@1.0.2":
+  version "1.0.2"
+  resolved "http://192.168.102.79:5001/@lugia/ramada/download/@lugia/ramada-1.0.2.tgz#a5e8e4fd1681ff85849688e6f70b72a312c6ad26"
+  integrity sha1-pejk/RaB/4WElojm9wtyoxLGrSY=
+  dependencies:
+    "@babel/runtime" "^7.4.5"
+
 "@lugia/ramada@^1.0.1":
   version "1.0.1"
   resolved "http://192.168.102.79:5001/@lugia/ramada/download/@lugia/ramada-1.0.1.tgz#24e81b17f83796ab29a192db0134a5aae86c9d1f"
@@ -1486,10 +1493,10 @@
     "@babel/runtime" "^7.4.5"
     "@lugia/object-utils" "^1.0.11"
 
-"@lugia/theme-css-hoc@1.0.56":
-  version "1.0.56"
-  resolved "http://192.168.102.79:5001/@lugia/theme-css-hoc/download/@lugia/theme-css-hoc-1.0.56.tgz#7021d69aeebf29c49e928679c65bc4885e0391d0"
-  integrity sha1-cCHWmu6/KcSekoZ5xlvEiF4DkdA=
+"@lugia/theme-css-hoc@^1.0.58":
+  version "1.0.58"
+  resolved "http://192.168.102.79:5001/@lugia/theme-css-hoc/download/@lugia/theme-css-hoc-1.0.58.tgz#91284728a2a782a65231c622550b9715575bca3b"
+  integrity sha1-kShHKKKngqZSMcYiVQuXFVdbyjs=
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/css" "^1.0.17"

@@ -133,7 +133,7 @@ export const RadioChildrenSpan = CSSComponent({
     selectNames: [['color'], ['font'], ['padding']],
     defaultTheme: {
       color: blackColor,
-      font: { fontSize: em(14) },
+      font: { size: 14 },
       padding: {
         top: 0,
         right: 0,

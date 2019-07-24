@@ -16,6 +16,7 @@ export type BreadcrumbItemProps = {
   lastSeparator?: string | React.Element<any>,
   textThemeHoc: Object,
   separatorThemeProps: Object,
+  getPartOfThemeProps: Function,
 };
 
 class BreadcrumbItem extends React.Component<BreadcrumbItemProps, any> {

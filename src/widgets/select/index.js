@@ -10,7 +10,6 @@ import * as React from 'react';
 import InputTag from '../inputtag';
 import Trigger from '../trigger';
 import Menu from '../menu';
-import Empty from '../empty';
 import styled from 'styled-components';
 import Widget from '../consts/index';
 import QueryInput from '../common/QueryInput';
@@ -332,27 +331,24 @@ class Select extends React.Component<SelectProps, SelectState> {
     const { normal = {} } = InputTagWrap;
     const { width = 250 } = normal;
 
-    const menu =
+    const menu = [
       data && data.length !== 0 ? (
-        [
-          <QueryInput
-            query={query}
-            width={width}
-            onQueryInputChange={this.onQueryInputChange}
-            onQueryInputKeyDown={this.onQueryInputKeyDown}
-            refreshValue={this.refreshValue}
-            addClick={this.addClick}
-            isCheckedAll={isCheckedAll}
-            onCheckAll={this.onCheckAll}
-            canSearch={canSearch}
-            mutliple={mutliple}
-            canInput={canInput}
-          />,
-          this.getMenuItems(getMenu),
-        ]
-      ) : (
-        <Empty width={width} />
-      );
+        <QueryInput
+          query={query}
+          width={width}
+          onQueryInputChange={this.onQueryInputChange}
+          onQueryInputKeyDown={this.onQueryInputKeyDown}
+          refreshValue={this.refreshValue}
+          addClick={this.addClick}
+          isCheckedAll={isCheckedAll}
+          onCheckAll={this.onCheckAll}
+          canSearch={canSearch}
+          mutliple={mutliple}
+          canInput={canInput}
+        />
+      ) : null,
+      this.getMenuItems(getMenu),
+    ];
 
     const getMenuTriger: Function = (cmp: Object) => {
       this.menuTriger = cmp;

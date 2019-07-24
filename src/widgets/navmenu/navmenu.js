@@ -15,6 +15,10 @@ import { getTreeData } from '../menu/utils';
 import { getValue, getInitExpandedPath } from '../cascader/utils';
 import { DisplayField, ValueField } from '../consts/props';
 import {
+  HorizontalLightTheme,
+  HorizontalDarkTheme,
+  DarkTabsMenuTheme,
+  LightTabsMenuTheme,
   PrimaryLightTheme,
   EllipseLightTheme,
   PrimaryDarkTheme,
@@ -178,7 +182,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     return (
       <Tabs
         tabType={'line'}
-        theme={this.props.getPartOfThemeHocProps('Tabs')}
+        {...this.getTabsTheme(this.props.themeStyle)}
         tabPosition={'top'}
         hideContent={true}
         onTabClick={this.onTabClick}
@@ -205,7 +209,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
   };
 
   getHorizontaMenu = (i: number) => {
-    const { data = [], autoHeight, getPartOfThemeHocProps } = this.props;
+    const { data = [], autoHeight, themeStyle } = this.props;
     const { children } = data[i];
     if (!children || children.length === 0) {
       return <span />;
@@ -213,7 +217,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     return (
       <Menu
         action={'hover'}
-        {...getPartOfThemeHocProps('Menu')}
+        {...this.getTabsMenuTheme(themeStyle)}
         autoHeight={autoHeight}
         data={children}
         onClick={this.onClickTabsMenu}
@@ -306,6 +310,28 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       theme: themeHoc,
     };
     return treeTheme;
+  };
+
+  getTabsTheme = (themeStyle: 'light' | 'dark') => {
+    let defaultTheme;
+    if (themeStyle === 'dark') {
+      defaultTheme = HorizontalDarkTheme;
+    } else {
+      defaultTheme = HorizontalLightTheme;
+    }
+
+    return this.mergeTheme('Tabs', defaultTheme);
+  };
+
+  getTabsMenuTheme = (themeStyle: 'light' | 'dark') => {
+    let defaultTheme;
+    if (themeStyle === 'dark') {
+      defaultTheme = DarkTabsMenuTheme;
+    } else {
+      defaultTheme = LightTabsMenuTheme;
+    }
+
+    return this.mergeTheme('Menu', defaultTheme);
   };
 
   getMenuTheme = (themeStyle: 'light' | 'dark') => {

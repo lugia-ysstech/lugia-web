@@ -39,6 +39,7 @@ const InnerContainer = styled.div`
 
 const CheckAllContainer = styled.div`
   height: ${DefaultHeight};
+  background: #fff;
   width: 100%;
   position: absolute;
   line-height: ${DefaultHeight};

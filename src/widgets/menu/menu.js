@@ -73,7 +73,7 @@ export type MenuProps = {
   onMouseEnter?: Function,
   onExpandPathChange?: Function,
   limitCount?: number,
-  checkedCSS: 'none' | 'background' | 'mark' | 'checkbox',
+  checkedCSS: 'none' | 'background' | 'checkbox',
   offsetX: number,
   offsetY: number,
   popupVisible?: boolean,
@@ -202,6 +202,9 @@ class Menu extends React.Component<MenuProps, MenuState> {
     const items = this.getItems(props);
     const { data = [], autoHeight = false, getPartOfThemeProps, itemHeight } = props;
     const length = data ? data.length : 0;
+    if (!data || length === 0) {
+      return <Empty themeProps={this.props.getPartOfThemeProps('MenuWrap')} />;
+    }
     const WrapThemeProps = getPartOfThemeProps('MenuWrap', {
       props: {
         length,
@@ -297,20 +300,6 @@ class Menu extends React.Component<MenuProps, MenuState> {
     if (children && children.length > 0) {
       return this.computeItems(children, start, end, (obj: Object) => obj);
     }
-
-    return [<Empty />];
-  }
-
-  getItemTheme() {
-    const { getPartOfThemeConfig } = this.props;
-    return {
-      [Widget.MenuItem]: {
-        Item: getPartOfThemeConfig('MenuItem'),
-        SelectedItem: getPartOfThemeConfig('SelectedMenuItem'),
-        CheckBox: getPartOfThemeConfig('CheckBox'),
-        Divider: getPartOfThemeConfig('Divider'),
-      },
-    };
   }
 
   computeItems(data: Array<Object>, start: number, end: number, getItem: Function): Array<Object> {

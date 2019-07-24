@@ -34,6 +34,7 @@ export const OldValueItem = CSSComponent({
   css: css`
     transition: all 0.3s;
     width: 100%;
+    overflow: hidden;
     height: ${px2remcss(MenuItemHeight)};
     line-height: ${px2remcss(MenuItemHeight)};
     padding: 0 ${px2remcss(10)};

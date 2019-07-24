@@ -16,7 +16,7 @@
     "type": {
       "type": "ButtonType",
       "desc": "支持多种不同的按钮风格，可选值为 primary、success、warning、danger 或者不设",
-      "defaultValue": "default"
+      "defaultValue": "primary"
     },
     "plain": {
       "type": "boolean",
@@ -179,7 +179,9 @@
       "desc": "圆形图标按钮",
       "props": {
         "circle": true,
-        "icon": "lugia-icon-logo_lugia"
+        "icon": "lugia-icon-logo_lugia",
+        "text": "",
+        "type": "primary"
       },
       "theme": {
         "Container": {
