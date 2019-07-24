@@ -364,16 +364,6 @@
           "name": "步骤条内容图标",
           "desc": "配置步骤条内容图标",
           "normal": [["fontSize"], ["font"], ["color"]]
-        },
-        "StepIcon": {
-          "name": "步骤条图标",
-          "desc": "配置步骤条图标",
-          "normal": [["fontSize"], ["font"], ["color"]]
-        },
-        "StepDot": {
-          "name": "点状步骤",
-          "desc": "点状步骤配置",
-          "normal": [["width"], ["height"], ["background"]]
         }
       }
     }

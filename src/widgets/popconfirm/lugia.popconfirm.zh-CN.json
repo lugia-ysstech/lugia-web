@@ -5,7 +5,8 @@
   "props": {
     "title": {
       "type": "React.Node",
-      "desc": "确认框标题显示内容"
+      "desc": "确认框标题显示内容",
+      "defaultValue": "确定要删除吗"
     },
     "description": {
       "type": "React.Node",

@@ -70,18 +70,5 @@
         ["boxShadow"]
       ]
     },
-    "VerticalDivider": {
-      "name": "垂直分割线",
-      "desc": "分割线为垂直类型时的配置",
-      "normal": [
-        ["width"],
-        ["height"],
-        ["background"],
-        ["opacity"],
-        ["margin"],
-        ["padding"],
-        ["boxShadow"]
-      ]
-    }
   }
 }
