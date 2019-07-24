@@ -179,6 +179,40 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
 
   getHorizontalNavMenu = () => {
     const tabsData = this.getTabsData();
+    if (tabsData.length === 0) {
+      const defaultTabsData = [
+        {
+          title: '皮卡丘',
+          activityValue: '皮卡丘',
+        },
+        {
+          title: '独角虫',
+          activityValue: '独角虫',
+        },
+        {
+          title: '小拉达',
+          activityValue: '小拉达',
+        },
+        {
+          title: '尼多兰',
+          activityValue: '尼多兰',
+        },
+        {
+          title: '皮皮',
+          activityValue: '皮皮',
+        },
+      ];
+      return (
+        <Tabs
+          tabType={'line'}
+          {...this.getTabsTheme(this.props.themeStyle)}
+          tabPosition={'top'}
+          hideContent={true}
+          data={defaultTabsData}
+        />
+      );
+    }
+    console.log('tabsData', tabsData);
     return (
       <Tabs
         tabType={'line'}
