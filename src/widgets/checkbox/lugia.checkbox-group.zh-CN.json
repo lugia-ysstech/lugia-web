@@ -110,6 +110,8 @@
           ]
         },
         "CheckButton": {
+          "name": "配置按钮checkbox样式",
+          "desc": "配置按钮Radio样式",
           "theme": {
             "CheckButtonChecked": {
               "name": "多选框按钮状选中配置",

@@ -99,6 +99,8 @@
           ]
         },
         "CheckButton": {
+          "name": "配置按钮Radio样式",
+          "desc": "配置按钮Radio样式",
           "theme": {
             "CheckButtonChecked": {
               "name": "单选框按钮状选中配置",
@@ -234,6 +236,8 @@
       ]
     },
     "Radio": {
+      "name": "配置Radio样式",
+      "desc": "配置Radio样式",
       "theme": {
         "Container": {
           "name": "Radio整体配置",
