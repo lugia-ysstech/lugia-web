@@ -238,7 +238,7 @@ export const TextContainer = CSSComponent({
   tag: 'div',
   className: 'TextContainer',
   normal: {
-    selectNames: [],
+    selectNames: [['height']],
   },
   hover: {
     selectNames: [],
@@ -249,6 +249,7 @@ export const TextContainer = CSSComponent({
   css: css`
     padding: ${px2remcss(0)} ${px2remcss(8)};
     position: relative;
+    box-sizing: border-box;
     left: 0;
     top: 50%;
     transform: translateY(-50%);
