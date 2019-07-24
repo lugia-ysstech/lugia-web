@@ -5,11 +5,13 @@
   "props": {
     "title": {
       "type": "React.Node",
-      "desc": "卡片标题显示内容"
+      "desc": "卡片标题显示内容",
+      "defaultValue": "This is title!"
     },
     "description": {
       "type": "React.Node",
-      "desc": "卡片描述显示内容"
+      "desc": "卡片描述显示内容",
+      "defaultValue": "This is description!"
     },
     "content": {
       "type": "React.Node",

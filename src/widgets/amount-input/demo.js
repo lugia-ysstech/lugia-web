@@ -47,9 +47,6 @@ export default () => {
           normal: {
             width: 300,
             height: 30,
-            border: {
-              top: 10,
-            },
           },
         },
       },

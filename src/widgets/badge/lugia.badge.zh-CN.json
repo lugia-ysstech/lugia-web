@@ -59,24 +59,6 @@
     }
   },
   "theme": {
-    "BadgeNumber": {
-      "name": "数字徽标",
-      "desc": "徽标数 显示数字时的样式展示",
-      "normal": [
-        ["width"],
-        ["height"],
-        ["background"],
-        ["position"],
-        ["opacity"],
-        ["color"],
-        ["margin"],
-        ["padding"],
-        ["boxShadow"]
-      ],
-      "hover": [["width"], ["height"], ["background"], ["opacity"], ["color"]],
-      "clicked": [],
-      "disabled": []
-    },
     "BadgeDot": {
       "name": "点状徽标",
       "desc": "徽标数不显示数字时的样式展示",

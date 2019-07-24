@@ -146,11 +146,11 @@
             ["color"],
             ["background"],
             ["border"],
-            ["cursor"]
+            ["borderRadius"],
+            ["cursor"],
+            ["opacity"]
           ],
           "hover": [
-            ["width"],
-            ["height"],
             ["padding"],
             ["border"],
             ["borderRadius"],
@@ -158,14 +158,14 @@
             ["background"]
           ],
           "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"]],
-          "disabled": [["cursor"], ["border"], ["borderRadius"], ["background"]]
+          "disabled": [["cursor"], ["border"],  ["background"]]
         }
       }
     },
     "AmountInputPrefix": {
       "name": "金额输入框主体前缀",
       "desc": "金额输入框主体前缀",
-      "normal": [["width"], ["height"], ["fontSize"], ["font"], ["color"]],
+      "normal": [["fontSize"], ["font"], ["color"]],
       "hover": [],
       "clicked": [],
       "disabled": []
