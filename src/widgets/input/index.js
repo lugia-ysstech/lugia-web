@@ -546,8 +546,6 @@ class TextBox extends Component<InputProps, InputState> {
       }),
       this.props.getPartOfThemeProps('Container')
     );
-    console.log('Input', this.props.getPartOfThemeProps('Input'));
-    console.log('InputContainer', this.props.getPartOfThemeProps('Container'));
     return (
       <CommonInputStyle
         themeProps={theThemeProps}
