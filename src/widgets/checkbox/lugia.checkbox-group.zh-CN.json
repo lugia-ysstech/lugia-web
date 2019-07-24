@@ -89,8 +89,8 @@
   "designInfo": {
     "CheckboxButtonGroup": {
       "sequence": 1,
-      "title": "朴素按钮",
-      "desc": "朴素按钮",
+      "title": "按钮状多选框组",
+      "desc": "按钮形状的多选框组",
       "props": {
         "childType": "button"
       },
