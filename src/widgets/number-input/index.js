@@ -30,7 +30,7 @@ const ArrowIconContainer = CSSComponent({
       const { propsConfig } = themeProps;
       const { width } = themeMeta;
       const { show, disabled } = propsConfig;
-      const theOpacity = !disabled && show ? 1 : 0.001;
+      const theOpacity = !disabled && show ? 1 : 0;
       const theCursor = !disabled && show ? 'pointer' : 'not-allowed';
       const theWidth = width ? width : 22;
       return {
