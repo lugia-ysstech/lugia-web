@@ -128,12 +128,7 @@
         "Container": {
           "name": "输入框外部容器",
           "desc": "输入框外部容器",
-          "normal": [
-            ["width"],
-            ["height"],
-            ["margin"],
-            ["padding"]
-          ]
+          "normal": [["width"], ["height"], ["margin"], ["padding"]]
         },
         "Input": {
           "name": "金额输入框主体",
@@ -146,19 +141,12 @@
             ["color"],
             ["background"],
             ["border"],
-            ["borderRadius"],
             ["cursor"],
             ["opacity"]
           ],
-          "hover": [
-            ["padding"],
-            ["border"],
-            ["borderRadius"],
-            ["cursor"],
-            ["background"]
-          ],
+          "hover": [["border"], ["borderRadius"], ["cursor"], ["background"], ["opacity"]],
           "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"]],
-          "disabled": [["cursor"], ["border"],  ["background"]]
+          "disabled": [["cursor"], ["border"], ["background"]]
         }
       }
     },
