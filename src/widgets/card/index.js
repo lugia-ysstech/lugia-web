@@ -260,9 +260,10 @@ const Title = CSSComponent({
       ['fontSize'],
     ],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
+      const { font } = themeMeta;
       const { propsConfig } = themeProps;
       const { type } = propsConfig;
-      const weight = type === 'tip' ? 700 : 500;
+      const weight = font && font.weight ? font.weight : type === 'tip' ? 700 : 500;
       const left = type === 'tip' ? 0 : 10;
 
       return {
@@ -272,7 +273,6 @@ const Title = CSSComponent({
         padding: {
           top: 4,
           right: 10,
-          bottom: 8,
           left,
         },
       };
@@ -282,7 +282,7 @@ const Title = CSSComponent({
       const { imageOrientation, type } = propsConfig;
       const textAlign = type === 'avatar' && imageOrientation === 'vertical' ? 'center' : '';
       const flexDirection = imageOrientation === 'vertical' ? 'column' : 'row';
-      return `text-align:${textAlign};flex-direction:${flexDirection}`;
+      return `text-align:${textAlign};flex-direction:${flexDirection};`;
     },
     defaultTheme: {
       fontSize: 16,
@@ -293,6 +293,16 @@ const Title = CSSComponent({
     flex: 1;
     overflow: hidden;
     white-space: nowrap;
+  `,
+});
+const TitleTipContainer = CSSComponent({
+  tag: 'div',
+  className: 'CardTitleTipLineContainer',
+  normal: {
+    selectNames: [['height']],
+  },
+  css: css`
+    display: inline-block;
   `,
 });
 const TitleTipLine = CSSComponent({
@@ -309,8 +319,8 @@ const TitleTipLine = CSSComponent({
     },
   },
   css: css`
-    left: ${px2remcss(14)};
-    position: absolute;
+    left: ${px2remcss(-14)};
+    position: relative;
     display: inline-block;
     border-radius: ${px2remcss(5)};
   `,
@@ -319,15 +329,18 @@ const Description = CSSComponent({
   extend: BaseText,
   className: 'cardDescription',
   normal: {
-    selectNames: [['width'], ['height'], ['color'], ['font'], ['fontSize']],
+    selectNames: [['width'], ['height'], ['color'], ['font'], ['fontSize'], ['padding']],
     defaultTheme: {
       fontSize: 14,
       color: darkGreyColor,
-      padding: {
-        top: 4,
-        left: 10,
-        right: 10,
-      },
+    },
+    getThemeMeta(themeMeta: Object, themeProps: Object) {
+      const { propsConfig } = themeProps;
+      const { type } = propsConfig;
+      const paddingLeft = type === 'tip' ? 5 : 10;
+      return {
+        padding: { left: paddingLeft, right: 10, top: 14 },
+      };
     },
   },
 });
@@ -411,8 +424,10 @@ class Card extends React.Component<CardProps, CardState> {
           type={type}
           content={content}
         >
-          {this.getTitleTipLine()}
-          {this.getDetails('title')}
+          <TitleTipContainer themeProps={this.props.getPartOfThemeProps('CardTitleTipLine')}>
+            {this.getTitleTipLine()}
+            {this.getDetails('title')}
+          </TitleTipContainer>
           {this.getDetails('description')}
           {this.getContent()}
         </Content>
@@ -465,14 +480,16 @@ class Card extends React.Component<CardProps, CardState> {
           <Operation themeProps={operationThemeProps}>{operation}</Operation>
         ) : null;
       case 'title':
-        const titleThemeProps = this.props.getPartOfThemeProps('CardTitle');
+        const titleThemeProps = this.props.getPartOfThemeProps('CardTitle', { props: { type } });
         return title ? (
           <Title type={type} themeProps={titleThemeProps}>
             {title}
           </Title>
         ) : null;
       case 'description':
-        const descriptionThemeProps = this.props.getPartOfThemeProps('CardDescription');
+        const descriptionThemeProps = this.props.getPartOfThemeProps('CardDescription', {
+          props: { type },
+        });
         return hasNoContent && description ? (
           <Description themeProps={descriptionThemeProps}>{description} </Description>
         ) : null;
