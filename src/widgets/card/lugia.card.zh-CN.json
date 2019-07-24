@@ -13,11 +13,13 @@
     },
     "title": {
       "type": "React.Node",
-      "desc": "卡片标题显示内容"
+      "desc": "卡片标题显示内容",
+      "defaultValue": "This is title!"
     },
     "description": {
       "type": "React.Node",
-      "desc": "卡片描述显示内容"
+      "desc": "卡片描述显示内容",
+      "defaultValue": "This is description!"
     },
     "operation": {
       "type": "React.Node",
@@ -372,7 +374,7 @@
       }
     },
     "ComboCard": {
-      "sequence":5,
+      "sequence": 5,
       "title": "自定义组合卡片",
       "desc": "组合卡片样式",
       "props": {
@@ -463,12 +465,13 @@
         ["background"],
         ["boxShadow"],
         ["border"],
+        ["borderRadius"],
         ["margin"],
         ["padding"],
         ["boxShadow"],
         ["opacity"]
       ],
-      "hover": [["background"], ["border"], ["boxShadow"], ["opacity"]]
+      "hover": [["background"], ["border"], ["borderRadius"], ["boxShadow"], ["opacity"]]
     },
     "CardTitle": {
       "name": "卡片标题",
@@ -508,49 +511,6 @@
         ["margin"],
         ["padding"]
       ]
-    },
-    "CardContent": {
-      "name": "卡片内容按钮",
-      "desc": "配置卡片内容",
-      "normal": [
-        ["width"],
-        ["height"],
-        ["background"],
-        ["boxShadow"],
-        ["border"],
-        ["margin"],
-        ["padding"],
-        ["boxShadow"],
-        ["opacity"],
-        ["color"]
-      ]
-    },
-    "CardAvatar": {
-      "name": "卡片头像",
-      "theme": {
-        "SrcAvatar": {
-          "name": "卡片头像资源",
-          "desc": "配置卡片头像资源",
-          "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"]],
-          "hover": [["width"], ["height"], ["background"]]
-        }
-      }
-    },
-    "CardImage": {
-      "name": "卡片图片",
-      "desc": "配置卡片图片",
-      "normal": [
-        ["width"],
-        ["height"],
-        ["background"],
-        ["borderRadius"],
-        ["border"],
-        ["margin"],
-        ["padding"],
-        ["boxShadow"],
-        ["opacity"]
-      ],
-      "hover": [["width"], ["height"], ["background"]]
     },
     "CardTitleTipLine": {
       "name": "卡片标题提示",

@@ -68,13 +68,7 @@ const CommonInputStyle = CSSComponent({
         : isValidateSuccess(validateStatus, validateType, 'inner')
         ? dangerColor
         : blackColor;
-      const theHeight = height
-        ? height
-        : size === 'large'
-        ? LargeHeight
-        : size === 'small'
-        ? SmallHeight
-        : DefaultHeight;
+      const theHeight = height ? height : size === 'large' ? 40 : size === 'small' ? 24 : 32;
       const paddingLeft = prefix ? 30 : width && width < 200 ? width / 20 : 10;
       const paddingRight = width && width < 200 ? 15 + width / 10 : 35;
       return {
@@ -88,15 +82,7 @@ const CommonInputStyle = CSSComponent({
     },
   },
   hover: {
-    selectNames: [
-      ['width'],
-      ['height'],
-      ['padding'],
-      ['border'],
-      ['borderRadius'],
-      ['cursor'],
-      ['background'],
-    ],
+    selectNames: [['padding'], ['border'], ['borderRadius'], ['cursor'], ['background']],
     defaultTheme: {
       border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
       borderRadius: getBorderRadius(4),
@@ -118,7 +104,7 @@ const CommonInputStyle = CSSComponent({
     },
   },
   disabled: {
-    selectNames: [['cursor'], ['border'], ['borderRadius'], ['background']],
+    selectNames: [['cursor'], ['border'], ['background']],
     defaultTheme: {
       cursor: 'not-allowed',
       background: { color: disableColor },
@@ -560,6 +546,8 @@ class TextBox extends Component<InputProps, InputState> {
       }),
       this.props.getPartOfThemeProps('Container')
     );
+    console.log('Input', this.props.getPartOfThemeProps('Input'));
+    console.log('InputContainer', this.props.getPartOfThemeProps('Container'));
     return (
       <CommonInputStyle
         themeProps={theThemeProps}

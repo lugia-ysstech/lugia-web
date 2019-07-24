@@ -182,12 +182,7 @@
     "Container": {
       "name": "输入框外部容器",
       "desc": "输入框外部容器",
-      "normal": [
-        ["width"],
-        ["height"],
-        ["margin"],
-        ["padding"]
-      ]
+      "normal": [["width"], ["height"], ["margin"], ["padding"]]
     },
     "Input": {
       "name": "输入框主体",
@@ -202,17 +197,9 @@
         ["border"],
         ["cursor"]
       ],
-      "hover": [
-        ["width"],
-        ["height"],
-        ["padding"],
-        ["border"],
-        ["borderRadius"],
-        ["cursor"],
-        ["background"]
-      ],
+      "hover": [["padding"], ["border"], ["borderRadius"], ["cursor"], ["background"]],
       "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"]],
-      "disabled": [["cursor"], ["border"], ["borderRadius"], ["background"]]
+      "disabled": [["cursor"], ["border"], ["background"]]
     },
     "InputSuffix": {
       "name": "后缀图标",

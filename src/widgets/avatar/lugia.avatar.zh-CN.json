@@ -14,7 +14,8 @@
     },
     "name": {
       "type": "string",
-      "desc": "头像显示内容"
+      "desc": "头像显示内容",
+      "defaultValue": "Lugia"
     },
     "icon": {
       "type": "string",
@@ -70,12 +71,12 @@
         }
       }
     },
-    "AvatarFont": {
+    "AvatarSrc": {
       "sequence": 2,
-      "title": "文字头像",
-      "desc": "文字头像",
+      "title": "图片头像",
+      "desc": "使用图片资源展示头像",
       "props": {
-        "name": "Lugia"
+        "src": ""
       },
       "theme": {
         "Container": {
@@ -94,19 +95,11 @@
           "clicked": [],
           "disabled": []
         },
-        "FontAvatar": {
-          "name": "头像文字",
-          "desc": "对头像文字配置样式",
-          "normal": [
-            ["width"],
-            ["height"],
-            ["margin"],
-            ["padding"],
-            ["fontSize"],
-            ["color"],
-            ["background"]
-          ],
-          "hover": [["width"], ["height"], ["fontSize"], ["color"], ["background"]],
+        "SrcAvatar": {
+          "name": "头像图片",
+          "desc": "对头像图片配置样式",
+          "normal": [["width"], ["height"], ["margin"], ["padding"], ["fontSize"], ["background"]],
+          "hover": [["width"], ["height"], ["fontSize"], ["background"]],
           "clicked": [],
           "disabled": []
         }
@@ -127,22 +120,6 @@
         ["boxShadow"]
       ],
       "hover": [["width"], ["height"]],
-      "clicked": [],
-      "disabled": []
-    },
-    "IconAvatar": {
-      "name": "头像图标",
-      "desc": "对头像图标配置样式",
-      "normal": [["color"], ["margin"], ["fontSize"], ["background"], ["padding"]],
-      "hover": [["color"], ["background"], ["fontSize"]],
-      "clicked": [],
-      "disabled": []
-    },
-    "SrcAvatar": {
-      "name": "头像图片",
-      "desc": "对头像图片配置样式",
-      "normal": [["width"], ["height"], ["margin"], ["padding"], ["fontSize"], ["background"]],
-      "hover": [["width"], ["height"], ["fontSize"], ["background"]],
       "clicked": [],
       "disabled": []
     },
