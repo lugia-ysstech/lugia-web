@@ -8,22 +8,11 @@ import VisibleBox from '../common/VisibleBox';
 import { ZIndex } from '../common/MaskBox';
 import styled from 'styled-components';
 
-const getWidth = props => {
-  const { theme = {} } = props;
-  const { width } = theme;
-  return `width: ${width ? `${width}px;` : ';'}`;
-};
-
 const getZIndex = props => {
   const { theme = {} } = props;
   const { zIndex } = theme;
-  return zIndex ? `z-index: ${zIndex ? zIndex : ZIndex + 1};` : 'z-index: 9999;';
+  return zIndex ? `z-index: ${zIndex ? zIndex : ZIndex + 1};` : 'z-index: 999999;';
 };
-
-/* ${getWidth}; */
-/* background-color: pink; */
-/* box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2); */
-/* overflow: hidden; */
 
 const PopupInnerBox = styled(VisibleBox)`
   position: absolute;

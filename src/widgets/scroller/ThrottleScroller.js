@@ -71,7 +71,7 @@ export default (
     scrollerTarget: ?Object;
 
     itemHeight: number;
-
+    viewSize: number;
     isDrag: boolean;
 
     constructor(props: any) {
@@ -81,6 +81,7 @@ export default (
       };
       this.itemHeight = this.getActiveItemHeight(props);
       this.scrollerTarget = React.createRef();
+      this.viewSize = this.fetchViewSize();
     }
 
     getActiveItemHeight = (props: Object) => {
@@ -132,7 +133,6 @@ export default (
       }
 
       const { type, step } = props;
-      const viewSize = this.fetchViewSize();
 
       const end = this.fetchEnd(start);
       const canSeeCount = this.canSeeCount();
@@ -154,7 +154,7 @@ export default (
             type={type}
             onDrag={this.onDrag}
             value={this.itemHeight * start}
-            viewSize={viewSize}
+            viewSize={this.viewSize}
             totalSize={totalSize}
             onChange={this.onScroller}
             step={step}
@@ -190,7 +190,7 @@ export default (
     }
 
     canSeeCount(): number {
-      return getCanSeeCount(this.fetchViewSize(), this.itemHeight);
+      return getCanSeeCount(this.viewSize, this.itemHeight);
     }
 
     fetchViewSize = () => {
@@ -205,7 +205,13 @@ export default (
 
     fetchTotalSize(): number {
       const { length } = this.getTarget();
-      return length * this.itemHeight;
+      let remainder;
+      if (this.viewSize % this.itemHeight === 0) {
+        remainder = 0;
+      } else {
+        remainder = this.viewSize % this.itemHeight;
+      }
+      return length * this.itemHeight + remainder;
     }
 
     getTarget(): Array<any> {

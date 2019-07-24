@@ -115,9 +115,7 @@ class MenuItem extends React.Component<MenuItemProps> {
         },
       });
     }
-    const ItemThemeProps = getPartOfThemeProps('Item');
     const DividerThemeProps = getPartOfThemeProps('Divider');
-
     const target = (
       <ItemWrap
         onClick={onClick}
@@ -128,7 +126,7 @@ class MenuItem extends React.Component<MenuItemProps> {
       >
         {divided && !isFirst ? <DividerWrap themeProps={DividerThemeProps} /> : null}
         {isCheckbox ? (
-          <TextContainer themeProps={ItemThemeProps}>
+          <TextContainer themeProps={themeProps}>
             <CheckBox
               {...this.getCheckBoxTheme()}
               checked={checked}

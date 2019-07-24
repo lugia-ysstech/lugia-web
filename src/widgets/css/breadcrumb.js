@@ -14,18 +14,29 @@ export const CommonSpan = CSSComponent({
   tag: 'span',
   className: 'commonSpan',
   normal: {
-    selectNames: [['color'], ['fontSize'], ['margin'], ['padding'], ['font']],
+    selectNames: [['color'], ['fontSize'], ['font'], ['margin'], ['padding'], ['font']],
+    getThemeMeta(themeMeta, themeConfig) {
+      const { propsConfig } = themeConfig;
+      const { isLastItem } = propsConfig;
+      const color = isLastItem ? '#000' : DefaultColor;
+      return {
+        color,
+      };
+    },
   },
   hover: {
-    selectNames: [['color'], ['font'], ['fontSize']],
+    selectNames: [['color'], ['font'], ['fontSize'], ['font']],
     defaultTheme: {
       color: HoverDefaultColor,
     },
   },
   css: css`
+    display: inline-block;
     font-size: ${FontSize};
     transition: font-size 0.3s;
-    color: ${DefaultColor};
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   `,
   option: { hover: true },
 });
@@ -34,7 +45,23 @@ export const ALink = CSSComponent({
   tag: 'a',
   className: 'aLink',
   normal: {
-    selectNames: [['color'], ['fontSize'], ['margin'], ['padding'], ['font']],
+    selectNames: [
+      ['color'],
+      ['fontSize'],
+      ['font'],
+      ['margin', 'left'],
+      ['margin', 'right'],
+      ['padding', 'left'],
+      ['padding', 'right'],
+    ],
+    getThemeMeta(themeMeta, themeConfig) {
+      const { propsConfig } = themeConfig;
+      const { isLastItem } = propsConfig;
+      const color = isLastItem ? '#000' : DefaultColor;
+      return {
+        color,
+      };
+    },
   },
   hover: {
     selectNames: [['color'], ['font'], ['fontSize']],
@@ -45,8 +72,10 @@ export const ALink = CSSComponent({
 
   css: css`
     text-decoration: none;
-    color: ${DefaultColor};
     transition: font-size 0.3s;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   `,
   option: { hover: true },
 });
@@ -55,7 +84,23 @@ export const SeparatorSpan = CSSComponent({
   tag: 'span',
   className: 'separatorSpan',
   normal: {
-    selectNames: [['color'], ['fontSize'], ['margin']],
+    selectNames: [
+      ['color'],
+      ['fontSize'],
+      ['font'],
+      ['margin', 'left'],
+      ['margin', 'right'],
+      ['padding', 'left'],
+      ['padding', 'right'],
+    ],
+    getThemeMeta(themeMeta, themeConfig) {
+      const { propsConfig } = themeConfig;
+      const { isLastItem } = propsConfig;
+      const color = isLastItem ? '#000' : DefaultColor;
+      return {
+        color,
+      };
+    },
   },
 
   css: css`
@@ -63,7 +108,6 @@ export const SeparatorSpan = CSSComponent({
     display: inline-block;
     margin-left: ${separatorMarginLeft};
     margin-right: ${separatorMarginRight};
-    color: ${DefaultColor};
   `,
 });
 
@@ -119,5 +163,24 @@ export const ItemWrap = CSSComponent({
     padding: 0;
     box-sizing: border-box;
     vertical-align: top;
+  `,
+});
+
+export const FlexBox = CSSComponent({
+  tag: 'div',
+  className: 'breadcrumbContainer',
+  normal: {
+    selectNames: [],
+  },
+  hover: {
+    selectNames: [],
+  },
+  css: css`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
   `,
 });
