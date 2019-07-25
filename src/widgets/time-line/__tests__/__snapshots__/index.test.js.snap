@@ -2274,7 +2274,7 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={
               Object {
                 "color": "red",
-                "fontSize": "2rem",
+                "fontSize": "1.6rem",
               }
             }
           />

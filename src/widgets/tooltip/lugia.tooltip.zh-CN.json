@@ -29,7 +29,7 @@
       "defaultValue": "sharp"
     },
     "action": {
-      "type": "Array<string>",
+      "type": "ActionType",
       "desc": "触发提示的动作，可配置 click,hover,focus",
       "defaultValue": "click"
     },
@@ -64,6 +64,7 @@
     }
   },
   "type": {
+    "ActionType": ["click","hover","focus" ],
     "ToolTipSize": ["small", "default", "large"],
     "PopArrowType": ["sharp", "round"],
     "DirectionType": [

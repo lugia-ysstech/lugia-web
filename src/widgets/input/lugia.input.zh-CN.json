@@ -14,7 +14,7 @@
     },
     "size": {
       "type": "InputSize",
-      "desc": "可配置三种尺寸大小的input ('大' , '默认' , '小'),高度分别为 40px、32px 和 24px。",
+      "desc": "可配置三种尺寸大小的input ('large' , 'default' , 'small'),高度分别为 40px、32px 和 24px。",
       "defaultValue": "default"
     },
     "validateStatus": {

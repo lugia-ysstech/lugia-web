@@ -41,7 +41,7 @@
     },
     "type": {
       "type": "CardType",
-      "desc": "卡片风格 可配置 简洁,头像,图片,组合卡片几种风格"
+      "desc": "卡片风格 可配置 简洁,头像,图片,标题提示,自定义组合卡片几种风格"
     },
     "imageOrientation": {
       "type": "ImageOrientation",

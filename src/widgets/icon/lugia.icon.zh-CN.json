@@ -10,6 +10,11 @@
     "iconClass": {
       "type": "string",
       "desc": "图标资源,需从图标库中获取."
+    },
+    "disabled": {
+      "type": "boolean",
+      "desc": "禁用状态,是否不可用",
+      "defaultValue": false
     }
   },
   "events": {
