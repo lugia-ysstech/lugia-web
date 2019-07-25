@@ -103,13 +103,8 @@ class StepsDemo extends React.Component<Object, Object> {
 const hThemeConfig = {
   [Widget.Steps]: {
     StepsOutContainer: {
-      normal: {},
-    },
-  },
-  [Widget.Step]: {
-    StepOutContainer: {
       normal: {
-        width: 100,
+        width: 800,
       },
     },
   },
@@ -118,17 +113,7 @@ const vThemeConfig = {
   [Widget.Steps]: {
     StepsOutContainer: {
       normal: {
-        padding: 30,
-        margin: 30,
-      },
-    },
-  },
-  [Widget.Step]: {
-    StepLine: {
-      normal: {
-        background: {
-          color: 'red',
-        },
+        margin: 10,
       },
     },
   },
