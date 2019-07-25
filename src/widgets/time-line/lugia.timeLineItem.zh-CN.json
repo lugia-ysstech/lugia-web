@@ -13,7 +13,7 @@
       "desc": "时间轴显示的节点描述"
     },
     "icon": {
-      "type": "string",
+      "type": "icon",
       "desc": "时间轴显示的节点图标资源"
     },
     "direction": {
@@ -41,7 +41,7 @@
       "defaultValue": false
     },
     "pendingDot": {
-      "type": "React.Node",
+      "type": "icon",
       "desc": "当最后一个是幽灵节点时,指定其图标资源"
     }
   },

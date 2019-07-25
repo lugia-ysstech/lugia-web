@@ -394,9 +394,6 @@ class Card extends React.Component<CardProps, CardState> {
         resultTheme = imageThemeProps;
         break;
       case 'combo':
-        const comboThemeProps = { themeConfig: { normal: { width: 200, height: 220 } } };
-        resultTheme = comboThemeProps;
-        break;
       case 'simple':
       default:
         const simpleThemeProps = { themeConfig: { normal: { width: 350, height: 130 } } };

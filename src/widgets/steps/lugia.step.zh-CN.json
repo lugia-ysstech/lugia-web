@@ -49,7 +49,7 @@
       "desc": "步骤条显示的信息描述"
     },
     "icon": {
-      "type": "string",
+      "type": "icon",
       "desc": "步骤条显示的图标"
     },
     "isFirst": {

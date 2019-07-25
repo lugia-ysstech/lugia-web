@@ -20,6 +20,42 @@ import { deepMerge } from '@lugia/object-utils';
 
 const { px2remcss } = units;
 const { borderColor } = colorsFunc();
+
+const AvatarWrapper = CSSComponent({
+  tag: 'div',
+  className: 'AvatarWrapper',
+  normal: {
+    selectNames: [['width'], ['height']],
+    getCSS(themeMeta: Object, themeProps: Object) {
+      const { propsConfig } = themeProps;
+      const { height } = themeMeta;
+      const { size } = propsConfig;
+      const theSize = height
+        ? height
+        : size === 'large'
+        ? LargeHeight
+        : size === 'small'
+        ? SmallHeight
+        : DefaultHeight;
+      return `
+      line-height: ${px2remcss(theSize)};`;
+    },
+    getThemeMeta(themeMeta: Object, themeProps: Object) {
+      const { propsConfig } = themeProps;
+      const { height } = themeMeta;
+      const { size } = propsConfig;
+      const theSize =
+        size === 'large' ? LargeHeight : size === 'small' ? SmallHeight : DefaultHeight;
+      const theHeight = height ? height : theSize;
+      return {
+        height: theHeight,
+      };
+    },
+  },
+  css: css`
+    text-align: center;
+  `,
+});
 const BaseAvatar = CSSComponent({
   tag: 'div',
   className: 'BaseAvatar',
@@ -103,12 +139,10 @@ const Picture = CSSComponent({
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
       const { width, height } = themeMeta;
-      const { size, shape } = propsConfig;
-      const theSize =
-        size === 'large' ? LargeHeight : size === 'small' ? SmallHeight : DefaultHeight;
+      const { shape } = propsConfig;
       const theBorderRadius = shape === 'circle' ? '50%' : '10%';
-      const theWidth = width ? width : theSize;
-      const theHeight = height ? height : theSize;
+      const theWidth = width ? width : '100%';
+      const theHeight = height ? height : '100%';
       return {
         width: theWidth,
         height: theHeight,
@@ -151,7 +185,11 @@ class AvatarBox extends React.Component<AvatarProps, AvatarState> {
       },
     });
     if (src !== undefined && src !== null) {
-      return <Picture src={src} shape={shape} themeProps={theThemeProps} />;
+      return (
+        <span>
+          <Picture src={src} shape={shape} themeProps={theThemeProps} />
+        </span>
+      );
     } else if (icon !== undefined && icon !== null) {
       const { theme: iconPropsTheme, viewClass } = this.props.getPartOfThemeHocProps('IconAvatar');
       const newTheme = deepMerge(
@@ -177,16 +215,25 @@ class AvatarBox extends React.Component<AvatarProps, AvatarState> {
         },
         iconPropsTheme
       );
+      const thePropsTheme = this.props.getPartOfThemeProps('Container', {
+        props: {
+          size,
+          shape,
+          src,
+        },
+      });
       return (
-        <Icon
-          singleTheme
-          viewClass={viewClass}
-          theme={newTheme}
-          propsConfig={{ size, shape, src, icon }}
-          size={size}
-          iconClass={icon}
-          shape={shape}
-        />
+        <AvatarWrapper themeProps={thePropsTheme}>
+          <Icon
+            singleTheme
+            viewClass={viewClass}
+            theme={newTheme}
+            propsConfig={{ size, shape, src, icon }}
+            size={size}
+            iconClass={icon}
+            shape={shape}
+          />
+        </AvatarWrapper>
       );
     }
     let finalName = name + '';
@@ -199,26 +246,31 @@ class AvatarBox extends React.Component<AvatarProps, AvatarState> {
         icon,
       },
     });
-
+    const thePropsTheme = this.props.getPartOfThemeProps('Container', {
+      props: {
+        size,
+        shape,
+        src,
+      },
+    });
     return (
-      <Name size={size} themeProps={nameThemeProps}>
-        {finalName}
-      </Name>
+      <AvatarWrapper themeProps={thePropsTheme}>
+        <Name size={size} themeProps={nameThemeProps}>
+          {finalName}
+        </Name>
+      </AvatarWrapper>
     );
   }
   getAvatar() {
     const { props } = this;
-    const { themeProps, size, shape, src } = props;
-    const thePropsTheme = deepMerge(
-      this.props.getPartOfThemeProps('Container', {
-        props: {
-          size,
-          shape,
-          src,
-        },
-      }),
-      themeProps
-    );
+    const { size, shape, src } = props;
+    const thePropsTheme = this.props.getPartOfThemeProps('Container', {
+      props: {
+        size,
+        shape,
+        src,
+      },
+    });
 
     return (
       <BaseAvatar {...props} themeProps={thePropsTheme}>

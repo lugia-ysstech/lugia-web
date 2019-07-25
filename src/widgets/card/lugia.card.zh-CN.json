@@ -13,13 +13,11 @@
     },
     "title": {
       "type": "React.Node",
-      "desc": "卡片标题显示内容",
-      "defaultValue": "This is title!"
+      "desc": "卡片标题显示内容"
     },
     "description": {
       "type": "React.Node",
-      "desc": "卡片描述显示内容",
-      "defaultValue": "This is description!"
+      "desc": "卡片描述显示内容"
     },
     "operation": {
       "type": "React.Node",
@@ -43,7 +41,7 @@
     },
     "type": {
       "type": "CardType",
-      "desc": "卡片风格 可配置 简洁,头像,图片,组合卡片几种风格"
+      "desc": "卡片风格 可配置 简洁,头像,图片,标题提示,自定义组合卡片几种风格"
     },
     "imageOrientation": {
       "type": "ImageOrientation",
