@@ -105,26 +105,7 @@
             ["padding"]
           ]
         },
-        "Input": {
-          "name": "输入框主体",
-          "desc": "输入框主体结构",
-          "normal": [
-            ["width"],
-            ["height"],
-            ["fontSize"],
-            ["font"],
-            ["color"],
-            ["padding"],
-            ["background"],
-            ["border"],
-            ["cursor"],
-            ["margin"],
-            ["padding"]
-          ],
-          "hover": [],
-          "clicked": [],
-          "disabled": []
-        },
+
         "InputSuffix": {
           "name": "后缀图标",
           "desc": "输入框后缀自定义图标",

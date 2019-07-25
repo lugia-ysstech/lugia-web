@@ -128,6 +128,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     const isChange =
       state.items !== nextState.items ||
       props.value !== nextPros.value ||
+      props.value.length !== nextPros.value.length ||
       props.svThemVersion !== nextPros.svThemVersion ||
       props.mutliple !== nextPros.mutliple ||
       props.validateStatus !== nextPros.validateStatus ||
@@ -136,7 +137,8 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       (this.needMoreItem && state.query !== nextState.query) ||
       state.value !== nextState.value ||
       state.focus !== nextState.focus ||
-      props.displayValue !== nextPros.displayValue;
+      props.displayValue !== nextPros.displayValue ||
+      props.displayValue.length !== nextPros.displayValue.length;
     return isChange;
   }
 
