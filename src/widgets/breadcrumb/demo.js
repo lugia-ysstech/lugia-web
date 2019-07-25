@@ -39,7 +39,7 @@ export default class Demo extends React.Component<any, any> {
       [Widget.Breadcrumb]: {
         BreadcrumbWrap: {
           normal: {
-            width: 800,
+            // width: 800,
             // height: 200,
             padding: {
               left: 10,
@@ -69,20 +69,27 @@ export default class Demo extends React.Component<any, any> {
         BreadcrumbItem: {
           ItemWrap: {
             normal: {
-              color: '#4d63ff',
-              width: 150,
+              width: 120,
               padding: {
                 left: 10,
               },
+              margin: {},
+              nth0: { width: 200 },
             },
           },
 
           Text: {
             normal: {
               color: '#ccc',
-              // fontSize: 20,
+              fontSize: 15,
+              last: {
+                color: '#4d63ff',
+              },
             },
             hover: {
+              font: {
+                size: 26,
+              },
               color: '#fff',
               fontSize: 20,
             },
@@ -92,6 +99,14 @@ export default class Demo extends React.Component<any, any> {
             normal: {
               color: '#666',
               fontSize: 20,
+              margin: {
+                top: 10,
+                left: 20,
+                right: 20,
+              },
+              last: {
+                color: '#4d63ff',
+              },
             },
           },
         },
@@ -105,7 +120,7 @@ export default class Demo extends React.Component<any, any> {
         <Hr />
 
         {/*Breadcrumb 和 Breadcrumb.Item配合使用，使用href属性时，可跳转 */}
-        <Breadcrumb separator={'>'}>
+        <Breadcrumb separator={'>'} lastSeparator={'!'}>
           <Breadcrumb.Item href="a">主页</Breadcrumb.Item>
           <Breadcrumb.Item href="b">一级菜单</Breadcrumb.Item>
           <Breadcrumb.Item href="c">二级菜单</Breadcrumb.Item>
@@ -119,7 +134,13 @@ export default class Demo extends React.Component<any, any> {
         </Breadcrumb>
         <Hr />
         {/* 传入routes路由属性，使用默认的 renderItem函数,生成面包屑组件 */}
-        <Breadcrumb theme={config} separator={'>'} params={{ id: 1 }} routes={routes} />
+        <Breadcrumb
+          theme={config}
+          separator={'>'}
+          lastSeparator={'!'}
+          params={{ id: 1 }}
+          routes={routes}
+        />
         <Hr />
         {/* 传入Icon图标 */}
         <Breadcrumb theme={config}>

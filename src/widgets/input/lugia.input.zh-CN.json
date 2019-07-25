@@ -195,9 +195,10 @@
         ["color"],
         ["background"],
         ["border"],
-        ["cursor"]
+        ["cursor"],
+        ["opacity"]
       ],
-      "hover": [["padding"], ["border"], ["borderRadius"], ["cursor"], ["background"]],
+      "hover": [ ["border"], ["borderRadius"], ["cursor"], ["background"], ["opacity"]],
       "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"]],
       "disabled": [["cursor"], ["border"], ["background"]]
     },

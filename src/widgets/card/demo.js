@@ -90,15 +90,6 @@ export default () => {
           },
         },
       },
-      CardTitleTipLine: {
-        normal: {
-          width: 8,
-          height: 30,
-          background: {
-            color: 'red',
-          },
-        },
-      },
     },
   };
   const imageVCard = {
@@ -283,7 +274,7 @@ export default () => {
           <Card
             type={'tip'}
             title={'this is title'}
-            content={[<div>{'this is description'}</div>, <div>{'this is description'}</div>]}
+            description={[<div>{'this is description'}</div>, <div>{'this is description'}</div>]}
             shadow={'always'}
           />
         </Wrapper>
