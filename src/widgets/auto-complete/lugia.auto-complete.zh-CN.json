@@ -8,7 +8,11 @@
       "desc": "自动补全的数据",
       "defaultValue": []
     },
-
+    "createPortal": {
+      "type": "boolean",
+      "desc": "是否全局弹出下拉框",
+      "defaultValue": true
+    },
     "value": {
       "type": "string",
       "desc": "给定输入框的值"

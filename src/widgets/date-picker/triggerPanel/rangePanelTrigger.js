@@ -24,6 +24,7 @@ type TypeProps = {
   onChange?: Function,
   onFocus?: Function,
   onBlur?: Function,
+  createPortal?: boolean,
   showTime?: any,
   onOk?: any,
   theme: Object,
@@ -416,7 +417,7 @@ class Range extends Component {
     return (
       <Trigger
         themePass
-        createPortal={true}
+        createPortal={this.props.createPortal}
         popup={
           <RangeWrap
             {...addMouseEvent(this)}

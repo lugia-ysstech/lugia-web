@@ -65,6 +65,7 @@ declare module '@lugia/lugia-web' {
     width?: WidthType,
     height?: HeightType,
     margin?: MarginType,
+    padding?: MarginType,
     color?: ColorType,
     borderColor?: ColorType,
     backgroundColor?: ColorType,
