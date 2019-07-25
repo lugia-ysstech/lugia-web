@@ -27,7 +27,7 @@
     },
     "stepType": {
       "type": "StepType",
-      "desc": "步骤条风格 有 简洁,半扁平,图标,点状四种风格可供选择",
+      "desc": "步骤条风格 有 简洁,半扁平,图标,点状四种风格可供选择", 
       "defaultValue": "simple"
     },
     "size": {

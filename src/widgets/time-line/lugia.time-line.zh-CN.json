@@ -34,7 +34,7 @@
       "defaultValue": false
     },
     "pendingDot": {
-      "type": "React.Node",
+      "type": "icon",
       "desc": "当最后一个是幽灵节点时,指定其图标资源"
     },
     "mode": {
