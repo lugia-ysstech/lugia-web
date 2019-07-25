@@ -13,11 +13,11 @@
     },
     "title": {
       "type": "React.Node",
-      "desc": "卡片标题显示内容",
+      "desc": "卡片标题显示内容"
     },
     "description": {
       "type": "React.Node",
-      "desc": "卡片描述显示内容",
+      "desc": "卡片描述显示内容"
     },
     "operation": {
       "type": "React.Node",
