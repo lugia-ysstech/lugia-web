@@ -38,7 +38,7 @@
     "extraFooter": {
       "type": "Object",
       "desc": "在面板中添加额外的页脚 extraFooter={message:'XXX',style:{...}}",
-      "defaultValue": "无"
+      "defaultValue": ""
     }
   },
   "events": {

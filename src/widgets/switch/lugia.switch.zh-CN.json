@@ -14,12 +14,14 @@
       "defaultValue": false
     },
     "data": {
-      "type": "Object",
+      "type": "Object[]",
+      "meta": [{ "key": "text", "title": "显示文本", "type": "any" }],
       "desc": "开关配置的展示信息"
     },
+
     "size": {
-      "type": "string",
-      "desc": "设置开关大小"
+      "type": "sizeType",
+      "desc": "设置开关大小 default | small"
     },
     "isInverse": {
       "type": "boolean",
@@ -60,6 +62,7 @@
     }
   },
   "type": {
+    "sizeType": ["default", "small"],
     "ChangeType": {
       "newValue": "string",
       "oldValue": "string",
