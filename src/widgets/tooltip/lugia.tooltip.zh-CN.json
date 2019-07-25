@@ -24,7 +24,7 @@
     },
 
     "popArrowType": {
-      "type": "popArrowType",
+      "type": "PopArrowType",
       "desc": "可配置两种风格的箭头. 尖角,圆角",
       "defaultValue": "sharp"
     },
