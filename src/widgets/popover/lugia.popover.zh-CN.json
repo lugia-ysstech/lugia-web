@@ -41,7 +41,7 @@
       "defaultValue": false
     },
     "action": {
-      "type": "Array<string>",
+      "type": "ActionType",
       "desc": "页签位置，可配置 click,hover,focus",
       "defaultValue": "click"
     },
@@ -73,6 +73,7 @@
     }
   },
   "type": {
+    "ActionType": ["click","hover","focus" ],
     "DirectionType": [
       "left",
       "leftTop",

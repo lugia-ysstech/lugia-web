@@ -8,8 +8,13 @@
       "desc": "用于配置通用主题属性"
     },
     "iconClass": {
-      "type": "string",
+      "type": "icon",
       "desc": "图标资源,需从图标库中获取."
+    },
+    "disabled": {
+      "type": "boolean",
+      "desc": "禁用状态,是否不可用",
+      "defaultValue": false
     }
   },
   "events": {

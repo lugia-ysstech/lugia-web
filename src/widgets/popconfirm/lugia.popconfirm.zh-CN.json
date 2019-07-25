@@ -17,7 +17,7 @@
       "desc": "整个确认框显示内容"
     },
     "icon": {
-      "type": "React.Node",
+      "type": "icon",
       "desc": "确认框的标题的图标"
     },
     "placement": {
@@ -35,7 +35,7 @@
       "defaultValue": false
     },
     "action": {
-      "type": "Array<string>",
+      "type": "ActionType",
       "desc": "页签位置，可配置 click,hover,focus",
       "defaultValue": "click"
     },
@@ -108,6 +108,10 @@
       "bottomRight",
       "bottomLeft"
     ],
+    "ActionType": [
+      "click",
+      "hover",
+      "focus" ],
     "ButtonType": ["default", "primary", "success", "warning", "danger"]
   },
   "category": ["反馈"],

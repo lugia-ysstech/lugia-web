@@ -8,12 +8,20 @@
       "desc": "时间轴需要包含的子组件"
     },
     "data": {
-      "type": "Array<Object>",
-      "desc": "时间轴填充的数据"
+      "type": "object[]",
+      "desc": "时间轴填充的数据",
+      "meta": [
+        { "key": "time", "title": "时间节点信息", "type": "string" },
+        { "key": "description", "title": "时间节点详细描述", "type": "string" }
+      ]
     },
     "defaultData": {
-      "type": "Array<Object>",
-      "desc": "时间轴填充的默认显示数据"
+      "type": "object[]",
+      "desc": "时间轴填充的默认显示数据",
+      "meta": [
+        { "key": "time", "title": "时间节点信息", "type": "string" },
+        { "key": "description", "title": "时间节点详细描述", "type": "string" }
+      ]
     },
     "reverse": {
       "type": "boolean",
@@ -26,7 +34,7 @@
       "defaultValue": false
     },
     "pendingDot": {
-      "type": "React.Node",
+      "type": "icon",
       "desc": "当最后一个是幽灵节点时,指定其图标资源"
     },
     "mode": {
