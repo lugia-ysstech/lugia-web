@@ -10,7 +10,7 @@
     "data": {
       "type": "object[]",
       "desc": "时间轴填充的数据",
-      "displayKeys": [
+      "meta": [
         { "key": "time", "title": "时间节点信息", "type": "string" },
         { "key": "description", "title": "时间节点详细描述", "type": "string" }
       ]
@@ -18,7 +18,7 @@
     "defaultData": {
       "type": "object[]",
       "desc": "时间轴填充的默认显示数据",
-      "displayKeys": [
+      "meta": [
         { "key": "time", "title": "时间节点信息", "type": "string" },
         { "key": "description", "title": "时间节点详细描述", "type": "string" }
       ]

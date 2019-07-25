@@ -10,7 +10,7 @@
     "data": {
       "type": "object[]",
       "desc": "步骤条填充的数据",
-      "displayKeys": [
+      "meta": [
         { "key": "title", "title": "步骤条标题", "type": "string" },
         { "key": "description", "title": "步骤条描述", "type": "string" },
         { "key": "stepStatus", "title": "步骤条状态", "type": "StepStatus" }
@@ -19,7 +19,7 @@
     "defaultData": {
       "type": "object[]",
       "desc": "步骤条填充的默认显示数据",
-      "displayKeys": [
+      "meta": [
         { "key": "title", "title": "步骤条标题", "type": "string" },
         { "key": "description", "title": "步骤条描述", "type": "string" },
         { "key": "stepStatus", "title": "步骤条状态", "type": "StepStatus" }
