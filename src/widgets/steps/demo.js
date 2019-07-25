@@ -42,9 +42,6 @@ const StepDescription = styled.div`
   border: 1px solid #ccc;
   height: 100px;
 `;
-const Warpper = styled.div`
-  margin-left: 50px;
-`;
 const ButtonContainer = styled.div`
   margin-bottom: 30px;
 `;
@@ -81,7 +78,7 @@ class StepsDemo extends React.Component<Object, Object> {
       },
     };
     return (
-      <Warpper>
+      <Wrapper>
         <Theme config={view}>
           <ButtonContainer>
             <Button type="primary" onClick={() => this.pre()}>
@@ -98,7 +95,7 @@ class StepsDemo extends React.Component<Object, Object> {
           </Steps>
           <StepDescription>{description}</StepDescription>
         </Theme>
-      </Warpper>
+      </Wrapper>
     );
   }
 }
@@ -127,11 +124,6 @@ const vThemeConfig = {
     },
   },
   [Widget.Step]: {
-    StepOutContainer: {
-      normal: {
-        height: 100,
-      },
-    },
     StepLine: {
       normal: {
         background: {
