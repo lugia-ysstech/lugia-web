@@ -51,6 +51,7 @@ const CommonInputStyle = CSSComponent({
       ['borderRadius'],
       ['cursor'],
       ['padding'],
+      ['opacity'],
     ],
     defaultTheme: {
       cursor: 'text',
@@ -82,7 +83,14 @@ const CommonInputStyle = CSSComponent({
     },
   },
   hover: {
-    selectNames: [['padding'], ['border'], ['borderRadius'], ['cursor'], ['background']],
+    selectNames: [
+      ['padding'],
+      ['border'],
+      ['borderRadius'],
+      ['cursor'],
+      ['background'],
+      ['opacity'],
+    ],
     defaultTheme: {
       border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
       borderRadius: getBorderRadius(4),
