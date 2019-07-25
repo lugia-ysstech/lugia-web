@@ -3,6 +3,11 @@
   "title": "年选择器",
   "desc": "用于年选择,",
   "props": {
+    "createPortal": {
+      "type": "boolean",
+      "desc": "是否全局弹出下拉框",
+      "defaultValue": true
+    },
     "defaultValue": {
       "type": "string",
       "desc": "日期默认显示值"

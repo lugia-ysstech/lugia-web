@@ -11,6 +11,11 @@
       "type": "Array<string>",
       "desc": "日期显示值"
     },
+    "createPortal": {
+      "type": "boolean",
+      "desc": "是否全局弹出下拉框",
+      "defaultValue": true
+    },
     "format": {
       "type": "string",
       "desc": "用于指定输入框日期显示的格式",

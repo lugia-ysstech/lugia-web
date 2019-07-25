@@ -4,7 +4,7 @@ import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import React, { Component } from 'react';
 import Widget from '../consts/index';
 import ThemeHoc, { addMouseEvent } from '@lugia/theme-hoc';
-import { fixControlledValue } from '.././utils';
+import { fixControlledValue } from '../utils';
 import type { InputSize, InputValidateType, ValidateStatus } from '../css/input';
 import {
   DefaultHelp,

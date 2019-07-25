@@ -17,6 +17,11 @@
       "desc": "是否支持查询",
       "defaultValue": false
     },
+    "createPortal": {
+      "type": "boolean",
+      "desc": "是否全局弹出下拉框",
+      "defaultValue": true
+    },
     "throttle": {
       "type": "number",
       "desc": "查询的延迟时间，单位为毫秒",
@@ -188,6 +193,7 @@
       },
       "theme": {
         "InputTag": {
+          "name": "数据展示框",
           "theme": {
             "InputTagWrap": {
               "name": "Inputtag的外盒",
@@ -267,6 +273,7 @@
             },
 
             "Menu": {
+              "name": "隐藏更多选中项的菜单",
               "theme": {
                 "MenuWrap": {
                   "name": "菜单外盒",
@@ -293,6 +300,7 @@
                   "disabled": []
                 },
                 "MenuItem": {
+                  "name": "菜单项配置",
                   "theme": {
                     "MenuItemWrap": {
                       "name": "项的外盒",
@@ -331,6 +339,7 @@
         },
 
         "Menu": {
+          "name": "弹开菜单",
           "theme": {
             "MenuWrap": {
               "name": "菜单外盒",
@@ -351,6 +360,7 @@
               "disabled": []
             },
             "MenuItem": {
+              "name": "菜单项配置",
               "theme": {
                 "MenuItemWrap": {
                   "name": "项的外盒",
@@ -429,6 +439,7 @@
 
   "theme": {
     "InputTag": {
+      "name": "数据展示框",
       "theme": {
         "InputTagWrap": {
           "name": "Inputtag的外盒",
@@ -471,6 +482,7 @@
     },
 
     "Menu": {
+      "name": "弹开菜单",
       "theme": {
         "MenuWrap": {
           "name": "菜单外盒",
@@ -491,6 +503,7 @@
           "disabled": []
         },
         "MenuItem": {
+          "name": "菜单项配置",
           "theme": {
             "MenuItemWrap": {
               "name": "项的外盒",

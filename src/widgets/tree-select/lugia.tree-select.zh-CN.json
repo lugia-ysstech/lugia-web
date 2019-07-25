@@ -13,6 +13,11 @@
       "desc": "生成选择项的数据",
       "defaultValue": false
     },
+    "createPortal": {
+      "type": "boolean",
+      "desc": "是否全局弹出下拉框",
+      "defaultValue": true
+    },
     "valueField": {
       "type": "string",
       "desc": "data数据的value值的名称",
@@ -306,6 +311,7 @@
         },
 
         "Tree": {
+          "name": "弹开树形控件配置",
           "theme": {
             "TreeWrap": {
               "name": "树形控件外盒",
@@ -326,6 +332,7 @@
               "disabled": []
             },
             "TreeItem": {
+              "name": "树形控件项配置",
               "theme": {
                 "TreeItemWrap": {
                   "name": "项的外盒",
@@ -448,6 +455,7 @@
     },
 
     "Tree": {
+      "name": "弹开树形控件配置",
       "theme": {
         "TreeWrap": {
           "name": "树形控件外盒",
@@ -468,6 +476,7 @@
           "disabled": []
         },
         "TreeItem": {
+          "name": "树形控件项配置",
           "theme": {
             "TreeItemWrap": {
               "name": "项的外盒",
