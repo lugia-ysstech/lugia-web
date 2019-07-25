@@ -29,8 +29,15 @@
       "defaultValue": false
     },
     "iconClass": {
-      "type": "object",
+      "type": "object[]",
       "desc": "自定义图标对象",
+      "meta":[
+        {"key":"default","title":"默认图标名称","type":"string"},
+        {"key":"primary","title":"选中状态图标名称","type":"string"},
+        {"key":"danger","title":"低分值图标名称","type":"string"},
+        {"key":"amazed","title":"高分值图标名称","type":"string"},
+        {"key":"half","title":"半星图标名称","type":"string"}
+      ],
       "defaultValue": {
         "default": "lugia-icon-financial_star",
         "primary": "lugia-icon-financial_star",

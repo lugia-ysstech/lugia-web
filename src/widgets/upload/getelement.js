@@ -625,7 +625,7 @@ const getFileList = (
           <Li status={item.status} themeProps={liThemeProps}>
             {getIconByType(props, getListIconType(item.name), item)}
             <span>{item.name}</span>
-            {getIconByType(props, 'li-' + item.status)}
+            {item.status !== 'loading' && getIconByType(props, 'li-' + item.status)}
             {getIconByType(props, 'li-delete', { doFunction: close, index })}
             {getProgress(item, themeProps)}
           </Li>
