@@ -53,8 +53,12 @@
       "desc": "指定当前选中的条目的displayField值"
     },
     "data": {
-      "type": "Array<Object>",
+      "type": "object[]",
       "desc": "生成选择项的数据",
+      "meta": [
+        { "key": "value", "title": "value值", "type": "string" },
+        { "key": "text", "title": "文本值", "type": "string" }
+      ],
       "defaultValue": false
     },
     "igronSelectField": {

@@ -625,7 +625,7 @@ const getFileList = (
           <Li status={item.status} themeProps={liThemeProps}>
             {getIconByType(props, getListIconType(item.name), item)}
             <span>{item.name}</span>
-            {getIconByType(props, 'li-' + item.status)}
+            {item.status !== 'loading' && getIconByType(props, 'li-' + item.status)}
             {getIconByType(props, 'li-delete', { doFunction: close, index })}
             {getProgress(item, themeProps)}
           </Li>
@@ -762,6 +762,10 @@ class GetElement extends React.Component<DefProps, StateProps> {
     const { classNameStatus, dragIn } = state;
     const children = this.getChildren(areaType, props, classNameStatus, dragIn);
     const { inputId, disabled, accept, multiple } = props;
+    let acceptType = accept;
+    if (areaType === 'picture' && !accept) {
+      acceptType = 'image/*';
+    }
     const { getRegisterInput, getChangeInfo } = this;
     const themeProps = this.props.getPartOfThemeProps('UploadDefaultType', { props: { areaType } });
     return (
@@ -771,7 +775,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
           id={inputId}
           multiple={multiple}
           disabled={disabled}
-          accept={accept}
+          accept={acceptType}
           getChangeInfo={getChangeInfo}
           getRegisterInput={getRegisterInput}
         />

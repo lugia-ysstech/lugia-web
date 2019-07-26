@@ -35,6 +35,7 @@ type AutoCompleteProps = {
   suffix?: React$Element<any>,
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
+  getPartOfThemeConfig: Function,
 };
 
 type AutoCompleteState = {
@@ -264,13 +265,15 @@ export default ShortKeyBoard(
 
       getMenuTheme = () => {
         const { viewClass, theme } = this.props.getPartOfThemeHocProps('Menu');
-
+        const { Container = {} } = this.props.getPartOfThemeConfig('AutoInput');
+        const { normal = {} } = Container;
+        const { width = 200 } = normal;
         const themeHoc = deepMerge(
           {
             [viewClass]: {
               MenuWrap: {
                 normal: {
-                  width: 200,
+                  width,
                 },
               },
             },

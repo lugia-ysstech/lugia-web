@@ -14,8 +14,12 @@
       "defaultValue": ""
     },
     "routes": {
-      "type": "Array<{path: , title: }>",
-      "desc": "生成面包屑数据对象的数组，path是跳转路径，title是面包屑展示文本"
+      "type": "object[]",
+      "desc": "生成面包屑数据对象的数组，path是跳转路径，title是面包屑展示文本",
+      "meta": [
+        { "key": "path", "title": "跳转路径", "type": "string" },
+        { "key": "title", "title": "展示文本", "type": "string" }
+      ]
     },
     "params": {
       "type": "Object",

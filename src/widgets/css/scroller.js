@@ -31,6 +31,7 @@ export const ScrollerContainer = CSSComponent({
       ['borderRadius'],
     ],
     getCSS: (themeMeta, themeProps) => {
+      console.log('themeMeta height', themeMeta);
       const { autoHeight, totalSize } = themeProps.propsConfig;
       const { height = DefaultHeight } = themeMeta;
       const activeHeight = autoHeight ? totalSize : height;

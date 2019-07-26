@@ -1,15 +1,13 @@
 /**
  * UI颜色公共值
- * create by ligx
+ * create by szfeng
  *
  * @flow
  */
 
 import { px2remcss } from '../css/units';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
-import ThemeHoc from '@lugia/theme-hoc';
 import colorsFunc from './stateColor';
-import * as React from 'react';
 import Widget from '../consts/index';
 import Icon from '../icon';
 import { isNumber } from '../common/NumberUtils';
@@ -362,11 +360,13 @@ export const ItemContainer = CSSComponent({
       ['color'],
       ['font'],
       ['fontSize'],
-      ['padding'],
       ['border'],
       ['borderRadius'],
       ['boxShadow'],
-      ['margin'],
+      ['padding', 'left'],
+      ['padding', 'right'],
+      ['margin', 'left'],
+      ['margin', 'right'],
       ['opacity'],
     ],
     getCSS: (themeMeta, themeProps) => {
@@ -447,7 +447,7 @@ export const CloseButtonWrap = CSSComponent({
   tag: 'li',
   className: 'CloseButtonWrap',
   normal: {
-    selectNames: [['color'], ['font'], ['fontSize']],
+    selectNames: [['color'], ['font'], ['fontSize'], ['opacity']],
     getThemeMeta: (themeMeta, themeProps) => {
       const { font = {} } = themeMeta;
       const { fontSize = 12 } = font;
@@ -458,7 +458,7 @@ export const CloseButtonWrap = CSSComponent({
     },
   },
   hover: {
-    selectNames: [['color']],
+    selectNames: [['color'], ['font'], ['fontSize'], ['opacity']],
   },
   css: css`
     color: ${mediumGreyColor};
