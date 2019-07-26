@@ -236,7 +236,7 @@ const DotLine = CSSComponent({
   tag: 'div',
   className: 'StepDotLine',
   normal: {
-    selectNames: [['background'], ['width'], ['height']],
+    selectNames: [['width'], ['height'], ['border']],
     getThemeMeta(themeMeta, themeProps) {
       const { background = {} } = themeMeta;
       const { propsConfig } = themeProps;
@@ -252,7 +252,7 @@ const DotLine = CSSComponent({
         height: theHeight,
         border: {
           [direction]: {
-            width: [size],
+            width: size,
             style: styled,
             color: background.color,
           },
