@@ -236,7 +236,7 @@ const DotLine = CSSComponent({
   tag: 'div',
   className: 'StepDotLine',
   normal: {
-    selectNames: [['background'], ['width'], ['height']],
+    selectNames: [['width'], ['height'], ['border']],
     getThemeMeta(themeMeta, themeProps) {
       const { background = {} } = themeMeta;
       const { propsConfig } = themeProps;
@@ -252,7 +252,7 @@ const DotLine = CSSComponent({
         height: theHeight,
         border: {
           [direction]: {
-            width: [size],
+            width: size,
             style: styled,
             color: background.color,
           },
@@ -757,18 +757,14 @@ class Step extends React.Component<StepProps, StepState> {
         resultTheme,
         this.props.getPartOfThemeProps('StepDescription')
       );
-      return (
-        <Description themeProps={desThemeProps} stepStatus={stepStatus}>
-          {description}
-        </Description>
-      );
+      return <Description themeProps={desThemeProps}>{description}</Description>;
     }
     return null;
   }
 
   getContent() {
-    const { title, description, size, orientation, desAlign, stepType, stepStatus } = this.props;
-
+    const { title, size, orientation, desAlign, stepType } = this.props;
+    const { stepStatus } = this.state;
     const contentThemeProps = this.props.getPartOfThemeProps('StepOutContainer', {
       props: {
         size,
@@ -786,20 +782,11 @@ class Step extends React.Component<StepProps, StepState> {
     return (
       <Content
         themeProps={contentThemeProps}
-        {...this.getConfigs()}
         orientation={orientation}
         size={size}
         desAlign={desAlign}
       >
-        <Title
-          themeProps={titleThemeProps}
-          {...this.getConfigs()}
-          orientation={orientation}
-          size={size}
-          description={description}
-        >
-          {title}
-        </Title>
+        <Title themeProps={titleThemeProps}>{title}</Title>
         {this.getDesc()}
       </Content>
     );
