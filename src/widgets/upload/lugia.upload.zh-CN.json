@@ -54,6 +54,10 @@
       "type": "string",
       "desc": "上传的请求地址(必填参数)"
     },
+    "accept": {
+      "type": "string",
+      "desc": "指定上传文件类型"
+    },
     "size": {
       "type": "UploadSize",
       "desc": "picture类型可配置的三种尺寸(small/default/large)",
