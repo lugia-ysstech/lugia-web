@@ -5,10 +5,12 @@
   "props": {
     "columns": {
       "type": "Object[]",
+      "meta": [],
       "desc": "表格每一行展示的内容"
     },
     "data": {
       "type": "Object[]",
+      "meta": [],
       "desc": "数据源，指定 table 组件的数据"
     },
     "defaultExpandedRowKeys": {
