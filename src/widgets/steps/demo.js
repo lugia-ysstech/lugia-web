@@ -24,26 +24,25 @@ const VWrapper = styled.div`
 
 const steps = [
   {
-    title: 'First',
-    description: 'First-content',
+    title: 'First Step',
+    description: 'First Step Content',
   },
   {
-    title: 'Second',
-    description: 'Second-content',
+    title: 'Second Step',
+    description: 'Second  Step Content',
   },
   {
-    title: 'Last',
-    description: 'Third-content',
+    title: 'Last Step',
+    description: 'Third  Step Content',
   },
 ];
 const StepDescription = styled.div`
-  width: 600px;
-  margin-top: 50px;
+  width: 400px;
+  margin-top: 40px;
   border: 1px solid #ccc;
   height: 100px;
-`;
-const ButtonContainer = styled.div`
-  margin-bottom: 30px;
+  text-align: center;
+  padding-top: 20px;
 `;
 
 class StepsDemo extends React.Component<Object, Object> {
@@ -67,12 +66,23 @@ class StepsDemo extends React.Component<Object, Object> {
     const { currentStepNumber } = this.state;
     const matchCurrentNumber = currentStepNumber > 0 && currentStepNumber <= 3;
     const theCurrentStepNumber = matchCurrentNumber ? currentStepNumber : 1;
-    const description = matchCurrentNumber ? steps[theCurrentStepNumber - 1].content : '';
+    const description = matchCurrentNumber ? steps[theCurrentStepNumber - 1].description : '';
     const view = {
       [Widget.Steps]: {
         StepsOutContainer: {
           normal: {
-            width: 600,
+            width: 400,
+          },
+        },
+      },
+      [Widget.Button]: {
+        Container: {
+          normal: {
+            width: 80,
+            margin: {
+              top: 10,
+              left: 10,
+            },
           },
         },
       },
@@ -80,20 +90,18 @@ class StepsDemo extends React.Component<Object, Object> {
     return (
       <Wrapper>
         <Theme config={view}>
-          <ButtonContainer>
-            <Button type="primary" onClick={() => this.pre()}>
-              pre
-            </Button>
-            <Button type="primary" onClick={() => this.next()}>
-              Next
-            </Button>
-          </ButtonContainer>
           <Steps currentStepNumber={currentStepNumber} stepType={'simple'} size={'normal'}>
             {steps.map((item, i) => (
               <Step currentStepNumber={currentStepNumber} title={item.title} />
             ))}
           </Steps>
           <StepDescription>{description}</StepDescription>
+          <Button type="primary" onClick={() => this.pre()}>
+            pre
+          </Button>
+          <Button type="primary" onClick={() => this.next()}>
+            Next
+          </Button>
         </Theme>
       </Wrapper>
     );
