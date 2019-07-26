@@ -4,7 +4,7 @@
   "desc": "上传组件,可通过文件选择和拖拽上传",
   "props": {
     "data": {
-      "type": "Object",
+      "type": "object",
       "desc": "上传时附带的额外参数"
     },
     "areaType": {
@@ -32,8 +32,13 @@
       "defaultValue": false
     },
     "fileList": {
-      "type": "array",
-      "desc": "上传的文件列表,如 [{ id: 1, name: 'header.jpg', status: 'done' }]"
+      "type": "object[]",
+      "desc": "上传的文件列表,如 [{ id: 1, name: 'header.jpg', status: 'done' }]",
+      "meta":[
+        {"key":"id","title":"文件唯一标识","type":"number"},
+        {"key":"name","title":"文件名","type":"string"},
+        {"key":"status","title":"文件传输状态","type":"FileType"}
+      ]
     },
     "withCredentials": {
       "type": "boolean",
@@ -48,6 +53,10 @@
     "url": {
       "type": "string",
       "desc": "上传的请求地址(必填参数)"
+    },
+    "accept": {
+      "type": "string",
+      "desc": "指定上传文件类型"
     },
     "size": {
       "type": "UploadSize",
@@ -110,7 +119,8 @@
   },
   "type": {
     "UploadSize": ["small", "default", "large"],
-    "UploadType": ["default", "both", "button", "picture", "area"]
+    "UploadType": ["default", "both", "button", "picture", "area"],
+    "FileType": ["done", "fail"]
   },
   "category": ["数据录入"],
   "designInfo": {

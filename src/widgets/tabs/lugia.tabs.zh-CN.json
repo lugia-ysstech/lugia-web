@@ -27,11 +27,11 @@
       "desc": "配置标签页需要包含的子组件,若有data,以data优先"
     },
     "data": {
-      "type": "Array<Object>",
-      "desc": "配置标签页需要配置的数据,"
+      "type": "object[]",
+      "desc": "配置标签页需要配置的数据"
     },
     "defaultData": {
-      "type": "Array<Object>",
+      "type": "object[]",
       "desc": "默认配置标签页需要配置的数据,若有data,以data优先"
     },
     "forceRender": {
