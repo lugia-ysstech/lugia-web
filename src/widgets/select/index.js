@@ -357,7 +357,6 @@ class Select extends React.Component<SelectProps, SelectState> {
     const getInputTag: Function = (cmp: Object) => {
       this.inputTag = cmp;
     };
-
     return (
       <SelectContainer>
         <Trigger
@@ -376,8 +375,8 @@ class Select extends React.Component<SelectProps, SelectState> {
             ref={getInputTag}
             prefix={prefix}
             key="inputtag"
-            value={[...value]}
-            displayValue={[...displayValue]}
+            value={value}
+            displayValue={displayValue}
             validateStatus={validateStatus}
             onChange={this.onInputTagChange}
             onPopupVisibleChange={this.onInputTagPopupVisibleChange}
@@ -610,7 +609,7 @@ class Select extends React.Component<SelectProps, SelectState> {
   onMenuPopupVisibleChange = (visible: boolean) => {
     if (visible) {
       const { onTrigger } = this.props;
-      onTrigger && onTrigger();
+      onTrigger && onTrigger(visible);
       this.onQueryInputChange({ newValue: '' });
     }
     this.menuVisible = visible;

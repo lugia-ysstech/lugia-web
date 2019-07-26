@@ -212,7 +212,6 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
         />
       );
     }
-    console.log('tabsData', tabsData);
     return (
       <Tabs
         tabType={'line'}
@@ -331,7 +330,6 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
 
   mergeTheme = (target: string, defaultTheme: Object) => {
     const { viewClass, theme } = this.props.getPartOfThemeHocProps(target);
-
     const themeHoc = deepMerge(
       {
         [viewClass]: { ...defaultTheme },
