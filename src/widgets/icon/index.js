@@ -33,7 +33,6 @@ const IconTag = CSSComponent({
 type IconProps = {
   className?: string,
   iconClass: string,
-  style: Object,
   onClick?: Function,
   getTheme: Function,
   themeProps: Object,

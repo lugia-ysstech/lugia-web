@@ -189,16 +189,7 @@
     "Container": {
       "name": "输入框外部容器",
       "desc": "输入框外部容器",
-      "normal": [
-        ["width"],
-        ["height"],
-        ["background"],
-        ["border"],
-        ["borderRadius"],
-        ["boxShadow"],
-        ["margin"],
-        ["padding"]
-      ]
+      "normal": [["width"], ["height"], ["margin"], ["padding"]]
     },
     "Input": {
       "name": "数字输入框中输入框部分",
@@ -209,15 +200,12 @@
         ["fontSize"],
         ["font"],
         ["color"],
-        ["padding"],
         ["background"],
         ["border"],
         ["cursor"],
-        ["margin"],
-        ["padding"],
         ["opacity"]
       ],
-      "hover": [["font"], ["color"], ["background"], ["border"], ["cursor"]],
+      "hover": [["border"], ["borderRadius"], ["cursor"], ["background"], ["opacity"]],
       "clicked": [["font"], ["color"], ["background"], ["border"], ["cursor"]],
       "disabled": [["font"], ["color"], ["background"], ["border"], ["cursor"]]
     },

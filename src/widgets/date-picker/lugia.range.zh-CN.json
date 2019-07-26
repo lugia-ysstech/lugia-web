@@ -4,12 +4,19 @@
   "desc": "用于日期范围选择,",
   "props": {
     "defaultValue": {
-      "type": "Array<string>",
+      "type": "string[]",
+      "meta": [{ "key": "value", "type": "string" }],
       "desc": "日期默认显示值"
     },
     "value": {
-      "type": "Array<string>",
+      "type": "string[]",
+      "meta": [{ "key": "value", "type": "string" }],
       "desc": "日期显示值"
+    },
+    "createPortal": {
+      "type": "boolean",
+      "desc": "是否全局弹出下拉框",
+      "defaultValue": true
     },
     "format": {
       "type": "string",
@@ -17,8 +24,10 @@
       "defaultValue": "YYYY-MM-DD"
     },
     "placeholder": {
-      "type": "Array<string>",
-      "desc": "input输入提示信息"
+      "type": "string[]",
+      "meta": [{ "key": "value", "type": "string" }],
+      "desc": "input输入提示信息",
+      "defaultValue": "[\"开始时间\",\"结束时间\"]"
     },
     "disabled": {
       "type": "boolean",
@@ -48,12 +57,12 @@
     "extraFooter": {
       "type": "Object",
       "desc": "在面板中添加额外的页脚 extraFooter={message:'XXX',style:{...}}",
-      "defaultValue": "无"
+      "defaultValue": ""
     },
     "buttonOptions": {
       "type": "Object",
       "desc": "自定义页脚展示的一些按钮 buttonOptions={{options: { buttonNameXXX:自定义时间, buttonNameXXX:自定义时间}}} ",
-      "defaultValue": "无"
+      "defaultValue": ""
     },
     "step": {
       "type": "number",
@@ -94,22 +103,5 @@
   },
   "category": ["数据录入"],
   "componentName": "RangePicker",
-  "needExport": true,
-  "theme": {
-    "RangeInputInner": {
-      "name": "输入框",
-      "desc": "",
-      "normal": [
-        ["width"],
-        ["height"],
-        ["border"],
-        ["boxShadow"],
-        ["borderRadius"],
-        ["background"]
-      ],
-      "hover": [["border", "color"], ["boxShadow"], ["borderRadius"], ["background"]],
-      "active": [["border", "color"], ["boxShadow"], ["borderRadius"], ["background"]],
-      "disabled": [["border", "color"], ["boxShadow"], ["borderRadius"], ["background"]]
-    }
-  }
+  "needExport": true
 }

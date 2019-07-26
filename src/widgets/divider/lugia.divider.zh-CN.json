@@ -32,31 +32,8 @@
   },
   "category": ["其他"],
   "designInfo": {
-    "HorizontalDivider": {
-      "sequence": 1,
-      "title": "水平分割线",
-      "desc": "水平分割线",
-      "props": {
-        "type": "horizontal"
-      },
-      "theme": {
-        "HorizontalDivider": {
-          "name": "水平分割线",
-          "desc": "分割线为水平类型时的配置",
-          "normal": [
-            ["width"],
-            ["height"],
-            ["background"],
-            ["opacity"],
-            ["margin"],
-            ["padding"],
-            ["boxShadow"]
-          ]
-        }
-      }
-    },
     "VerticalDivider": {
-      "sequence": 2,
+      "sequence": 1,
       "title": "垂直分割线",
       "desc": "垂直分割线",
       "props": {
@@ -83,19 +60,6 @@
     "HorizontalDivider": {
       "name": "水平分割线",
       "desc": "分割线为水平类型时的配置",
-      "normal": [
-        ["width"],
-        ["height"],
-        ["background"],
-        ["opacity"],
-        ["margin"],
-        ["padding"],
-        ["boxShadow"]
-      ]
-    },
-    "VerticalDivider": {
-      "name": "垂直分割线",
-      "desc": "分割线为垂直类型时的配置",
       "normal": [
         ["width"],
         ["height"],

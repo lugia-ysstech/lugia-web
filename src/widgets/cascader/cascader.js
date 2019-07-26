@@ -84,6 +84,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
   };
 
   checked: boolean;
+  forcePopup: boolean;
   mouseInTarget: boolean;
   menu: Object;
   trigger: Object;
@@ -159,14 +160,21 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
     );
   }
   onPopupVisibleChange = (visible: boolean) => {
-    this.setPopupVisibleInner(visible);
+    const { data } = this.props;
+    if (this.forcePopup || !data || data.length === 0) {
+      this.setPopupVisibleInner(visible);
+    }
   };
 
-  setPopupVisible(...rest: any[]) {
-    this.trigger && this.trigger.setPopupVisible(...rest);
+  setPopupVisible(visible: boolean, force?: boolean) {
+    this.forcePopup = !!force;
+    this.trigger && this.trigger.setPopupVisible(visible, force);
   }
 
   setPopupVisibleInner(popupVisible: boolean, otherTarget?: Object = {}) {
+    if (!popupVisible && this.forcePopup) {
+      return;
+    }
     this.checked = popupVisible;
     this.setState({ popupVisible, ...otherTarget });
   }

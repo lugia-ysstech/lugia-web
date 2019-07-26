@@ -11,6 +11,11 @@
       "type": "string",
       "desc": "日期显示值"
     },
+    "createPortal": {
+      "type": "boolean",
+      "desc": "是否全局弹出下拉框",
+      "defaultValue": true
+    },
     "format": {
       "type": "string",
       "desc": "用于指定输入框日期显示的格式",
@@ -43,12 +48,12 @@
     "extraFooter": {
       "type": "Object",
       "desc": "在面板中添加额外的页脚 extraFooter={message:'XXX',style:{...}}",
-      "defaultValue": "无"
+      "defaultValue": ""
     },
     "buttonOptions": {
       "type": "Object",
       "desc": "自定义页脚展示的一些按钮 buttonOptions={{options: { buttonNameXXX:自定义时间, buttonNameXXX:自定义时间}}} ",
-      "defaultValue": "无"
+      "defaultValue": ""
     },
     "step": {
       "type": "number",

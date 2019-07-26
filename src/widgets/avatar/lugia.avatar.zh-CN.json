@@ -9,15 +9,16 @@
     },
     "size": {
       "type": "AvatarSize",
-      "desc": "可配置三种尺寸大小的input ('大' , '默认' , '小'),高度分别为 40px、32px 和 24px。",
+      "desc": "可配置三种尺寸大小的input ('large' , 'default' , 'small'),高度分别为 40px、32px 和 24px。",
       "defaultValue": "default"
     },
     "name": {
       "type": "string",
-      "desc": "头像显示内容"
+      "desc": "头像显示内容",
+      "defaultValue": "Lugia"
     },
     "icon": {
-      "type": "string",
+      "type": "icon",
       "desc": "头像显示图标资源"
     },
     "src": {
@@ -38,12 +39,28 @@
   "designInfo": {
     "AvatarIcon": {
       "sequence": 1,
-      "title": "头像样式类型",
-      "desc": "按头像样式类型不同选择显示不同头像",
+      "title": "图标头像",
+      "desc": "使用图标样式展示头像",
       "props": {
-        "icon": "iconClass"
+        "icon": "lugia-icon-financial_user"
       },
       "theme": {
+        "Container": {
+          "name": "头像",
+          "desc": "对头像外部容器配置样式",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["margin"],
+            ["padding"],
+            ["background"],
+            ["opacity"],
+            ["boxShadow"]
+          ],
+          "hover": [["width"], ["height"]],
+          "clicked": [],
+          "disabled": []
+        },
         "IconAvatar": {
           "name": "图标样式头像",
           "desc": "使用图标样式展示头像",
@@ -56,44 +73,33 @@
     },
     "AvatarSrc": {
       "sequence": 2,
-      "title": "头像样式类型",
-      "desc": "按头像样式类型不同选择显示不同头像",
-
+      "title": "图片头像",
+      "desc": "使用图片资源展示头像",
       "props": {
         "src": ""
       },
       "theme": {
-        "SrcAvatar": {
-          "name": "图片资源头像",
-          "desc": "使用图片资源展示头像",
-          "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"]],
-          "hover": [["width"], ["height"], ["background"]],
-          "clicked": [],
-          "disabled": []
-        }
-      }
-    },
-    "AvatarFont": {
-      "sequence": 3,
-      "title": "头像样式类型",
-      "desc": "按头像样式类型不同选择显示不同头像",
-      "props": {
-        "name": ""
-      },
-      "theme": {
-        "AvatarSrc": {
-          "name": "文字头像",
-          "desc": "使用文字展示头像",
+        "Container": {
+          "name": "头像",
+          "desc": "对头像外部容器配置样式",
           "normal": [
             ["width"],
             ["height"],
             ["margin"],
             ["padding"],
-            ["font"],
-            ["color"],
-            ["background"]
+            ["background"],
+            ["opacity"],
+            ["boxShadow"]
           ],
-          "hover": [["width"], ["height"], ["font"], ["color"], ["background"]],
+          "hover": [["width"], ["height"]],
+          "clicked": [],
+          "disabled": []
+        },
+        "SrcAvatar": {
+          "name": "头像图片",
+          "desc": "对头像图片配置样式",
+          "normal": [["width"], ["height"], ["margin"], ["padding"], ["fontSize"], ["background"]],
+          "hover": [["width"], ["height"], ["fontSize"], ["background"]],
           "clicked": [],
           "disabled": []
         }
@@ -114,22 +120,6 @@
         ["boxShadow"]
       ],
       "hover": [["width"], ["height"]],
-      "clicked": [],
-      "disabled": []
-    },
-    "IconAvatar": {
-      "name": "头像图标",
-      "desc": "对头像图标配置样式",
-      "normal": [["color"], ["margin"], ["fontSize"], ["background"], ["padding"]],
-      "hover": [["color"], ["background"], ["fontSize"]],
-      "clicked": [],
-      "disabled": []
-    },
-    "SrcAvatar": {
-      "name": "头像图片",
-      "desc": "对头像图片配置样式",
-      "normal": [["width"], ["height"], ["margin"], ["padding"], ["fontSize"], ["background"]],
-      "hover": [["width"], ["height"], ["fontSize"], ["background"]],
       "clicked": [],
       "disabled": []
     },

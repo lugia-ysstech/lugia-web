@@ -41,7 +41,7 @@
     },
     "type": {
       "type": "CardType",
-      "desc": "卡片风格 可配置 简洁,头像,图片,组合卡片几种风格"
+      "desc": "卡片风格 可配置 简洁,头像,图片,标题提示,自定义组合卡片几种风格"
     },
     "imageOrientation": {
       "type": "ImageOrientation",
@@ -54,75 +54,10 @@
   },
   "category": ["数据展示"],
   "designInfo": {
-    "SimpleCard": {
-      "sequence": 1,
-      "title": "卡片样式类型",
-      "desc": "按卡片类型不同选择显示不同卡片样式",
-      "props": {
-        "type": "simple"
-      },
-      "theme": {
-        "Container": {
-          "name": "卡片容器整体",
-          "desc": "配置卡片容器整体",
-          "normal": [
-            ["width"],
-            ["height"],
-            ["background"],
-            ["boxShadow"],
-            ["border"],
-            ["margin"],
-            ["padding"],
-            ["boxShadow"],
-            ["opacity"]
-          ],
-          "hover": [["background"], ["border"], ["boxShadow"], ["opacity"]]
-        },
-        "CardTitle": {
-          "name": "卡片标题",
-          "desc": "配置卡片标题",
-          "normal": [
-            ["width"],
-            ["height"],
-            ["color"],
-            ["font"],
-            ["background"],
-            ["margin"],
-            ["padding"]
-          ]
-        },
-        "CardDescription": {
-          "name": "卡片内容描述",
-          "desc": "配置卡片内容描述",
-          "normal": [
-            ["width"],
-            ["height"],
-            ["color"],
-            ["font"],
-            ["background"],
-            ["margin"],
-            ["padding"]
-          ]
-        },
-        "CardOperation": {
-          "name": "卡片操作按钮",
-          "desc": "配置卡片操作按钮",
-          "normal": [
-            ["width"],
-            ["height"],
-            ["color"],
-            ["font"],
-            ["background"],
-            ["margin"],
-            ["padding"]
-          ]
-        }
-      }
-    },
     "HAvatarCard": {
-      "sequence": 2,
-      "title": "横向头像卡片",
-      "desc": "横向头像卡片样式",
+      "sequence": 1,
+      "title": "水平头像卡片",
+      "desc": "水平头像卡片样式",
       "props": {
         "type": "avatar",
         "imageOrientation": "horizontal"
@@ -197,9 +132,9 @@
       }
     },
     "HImageCard": {
-      "sequence": 3,
-      "title": "横向图片卡片",
-      "desc": "横向图片卡片样式",
+      "sequence": 2,
+      "title": "水平图片卡片",
+      "desc": "水平图片卡片样式",
       "props": {
         "type": "image",
         "imageOrientation": "horizontal"
@@ -279,8 +214,8 @@
       }
     },
     "VAvatarCard": {
-      "sequence": 4,
-      "title": "垂直头像卡片样式",
+      "sequence": 3,
+      "title": "垂直头像卡片",
       "desc": "垂直头像卡片不同选择显示不同卡片样式",
       "props": {
         "type": "avatar",
@@ -356,8 +291,8 @@
       }
     },
     "VImageCard": {
-      "sequence": 5,
-      "title": "垂直图片卡片样式",
+      "sequence": 4,
+      "title": "垂直图片卡片",
       "desc": "垂直图片卡片样式",
       "props": {
         "type": "image"
@@ -437,8 +372,8 @@
       }
     },
     "ComboCard": {
-      "sequence":6,
-      "title": "组合卡片样式",
+      "sequence": 5,
+      "title": "自定义组合卡片",
       "desc": "组合卡片样式",
       "props": {
         "type": "combo"
@@ -528,12 +463,13 @@
         ["background"],
         ["boxShadow"],
         ["border"],
+        ["borderRadius"],
         ["margin"],
         ["padding"],
         ["boxShadow"],
         ["opacity"]
       ],
-      "hover": [["background"], ["border"], ["boxShadow"], ["opacity"]]
+      "hover": [["background"], ["border"], ["borderRadius"], ["boxShadow"], ["opacity"]]
     },
     "CardTitle": {
       "name": "卡片标题",
@@ -573,49 +509,6 @@
         ["margin"],
         ["padding"]
       ]
-    },
-    "CardContent": {
-      "name": "卡片内容按钮",
-      "desc": "配置卡片内容",
-      "normal": [
-        ["width"],
-        ["height"],
-        ["background"],
-        ["boxShadow"],
-        ["border"],
-        ["margin"],
-        ["padding"],
-        ["boxShadow"],
-        ["opacity"],
-        ["color"]
-      ]
-    },
-    "CardAvatar": {
-      "name": "卡片头像",
-      "theme": {
-        "SrcAvatar": {
-          "name": "卡片头像资源",
-          "desc": "配置卡片头像资源",
-          "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"]],
-          "hover": [["width"], ["height"], ["background"]]
-        }
-      }
-    },
-    "CardImage": {
-      "name": "卡片图片",
-      "desc": "配置卡片图片",
-      "normal": [
-        ["width"],
-        ["height"],
-        ["background"],
-        ["borderRadius"],
-        ["border"],
-        ["margin"],
-        ["padding"],
-        ["boxShadow"],
-        ["opacity"]
-      ],
-      "hover": [["width"], ["height"], ["background"]]
     },
     "CardTitleTipLine": {
       "name": "卡片标题提示",

@@ -22,6 +22,7 @@ type AutoCompleteProps = {
   getTheme: Function,
   data: String[],
   showOldValue: boolean,
+  createPortal?: boolean,
   value?: string,
   defaultValue?: string,
   onChange?: Function,
@@ -111,6 +112,7 @@ export default ShortKeyBoard(
 
         return (
           <Trigger
+            createPortal={this.props.createPortal}
             themePass
             align={'bottomLeft'}
             action={disabled ? [] : ['focus']}

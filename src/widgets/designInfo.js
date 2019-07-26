@@ -1,10 +1,7 @@
-import Affix from './affix';
 import Alert from './alert';
 import AmountInput from './amount-input';
-import Anchor from './anchor';
 import AutoComplete from './auto-complete';
 import Avatar from './avatar';
-import BackTop from './back-top';
 import Badge from './badge';
 import Breadcrumb from './breadcrumb';
 import Button from './button';
@@ -15,15 +12,11 @@ import Checkbox from './checkbox';
 import Collapse from './collapse';
 import DatePicker from './date-picker';
 import Divider from './divider';
-import Drawer from './drawer';
 import Dropmenu from './dropmenu';
-import Grid from './grid';
 import Icon from './icon';
 import Input from './input';
-import Layout from './layout';
 import Loading from './loading';
 import Menu from './menu';
-import Modal from './modal';
 import NavMenu from './navmenu';
 import NumberInput from './number-input';
 import Pagination from './pagination';
@@ -48,40 +41,6 @@ import Tree from './tree';
 import TreeSelect from './tree-select';
 import Upload from './upload';
 export default [
-  {
-    meta: {
-      widgetName: 'Affix',
-      title: '固钉',
-      desc: '将元素展示在可视区域。',
-      props: {
-        offsetTop: {
-          type: 'number',
-          desc: '距离指定容器顶部达到指定偏移量后触发',
-          defaultValue: 0,
-        },
-        offsetBottom: {
-          type: 'number',
-          desc: '距离指定容器底部达到指定偏移量后触发',
-          defaultValue: 0,
-        },
-        target: {
-          type: 'Function',
-          desc: '设置Affix组件监听滚功事件的元素，返回值为对应的DOM元素',
-        },
-      },
-      events: {
-        onChange: {
-          desc: '固定状态发生改变时触发',
-          args: [{ name: 'affixed', desc: '当前固定状态', type: 'boolean' }],
-        },
-      },
-      category: ['导航'],
-      childrenWidget: [],
-    },
-    target: Affix,
-    screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAYCAYAAAAVibZIAAAAAXNSR0IArs4c6QAAA2VJREFUOBGllV1oXEUUx8+ZvdmNmk0fUl+MUGhKquLaF6ElCiqCSgq2UCgNiG20JaHdXW3uNiWV7M5utDEm29LdpGlaDERbBB8EfShIac1DaaUKafoh2i9KUSp+BDWRJLt753gmMsvNzQ0kdB72zPznzG/mzJxzF2EZzU7nXwWHPrAssb0nGb2+2FKx2ISfnk3FvgaBw8WS+i4h+98lIvTzWxZUAxCI1+ANRdSUSOXPtMsTj3vBy4K2dw08qQjSKGBbNT79HAo879D0mJ3MNbnBvsd3O5i+lJ8HJ9Wv3xKIjw9logNGT2T611NJfcrX8n0YqnZL2fzXkqF2Kt8DBJFsJtZogMa2yf56JHUdCO9TAJuXFP6+zNEX+FG2h0KVzQZkrH4sJBpAxG4hsBUVRX1Puv/DoRXObPFFcFQ9Cb2G9ggh4n2p6JcGZqydzO8FoKawiDRI+VJJ6/OgthxaCTArQcGbPHeJ7+kKuyhQ9AuHfdiAjN2fyUeKDo0GrOCG3s7Wm0a37FQuXYHWiApAhVMsnAEBXwUrq+q6D7z1u3Hys7nc6dDdP26fQiE63EDta/HlThTJucSP4HCoHYdkbNgP4tXu/XnrIId5Nytjx71zgsM6Yln0Mt/Lb6DU6x0Hhx/1OnnH+7qG6gggiqJip3dOj+devycZH19Vs+ZZTuY7szNT44l0bqOfs9F6O1tuE+A9AbTaaG5bTql4vHGWQ2njtHiDHBzk3DuW6P3kEbezuy8QPlPkbHFrpl+GGqFPxs6FRdUzQBRWU39f1hVj5jz2Ry7ZVR5tbrgAqlVdamsfC+7gruASPKszRMpvLD1XbojTnJC+kfhC9cKf7hfS/Hi3AuKhJzhXGybV1QvtXUfXlqGOWoMI5dws69zxhdpy4HkkeLsyGNrxkdz1c5+MvsLgU6VS6YIt87s1QAFu4uXn3TDTn1dRWpTyZPU/NDHOp7CzMv6FcdTWlseeAlU4yRvMEFJtNUbqTGm6/RacdBIm+nmnc16gXpSVrT/U14bW82d6lH0e/hev8WkXtnlQ/ovYynE1hDHwzkLX/5WWlpYiV90BEcDNSlGbX9qVw3/v/cHa6UJxTFhiU18yenEx6FL0uZPqb+JMoTjC9zj4oEC9aUD/zARq1inC18IY2TU6OqK09iDtP3tyRN/UQch7AAAAAElFTkSuQmCC',
-  },
   {
     meta: {
       widgetName: 'Alert',
@@ -155,7 +114,7 @@ export default [
     },
     target: Alert,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADYAAAARCAYAAACW7F9TAAAAAXNSR0IArs4c6QAAAfRJREFUSA1j9E35v5/hP4PDP0YGE4ZhAhiZGT4xgTw1TPwD98b/vwx8THDeMGOMemyoRSgLLgeL8FyR+PuP9e/7b+qvQWp4ue4JsDF/4mH8z/KHGuLffki/4+O4K/nys8VdkPmM/38zi/KfUHv5wfYGIyjnUwhwJkUmpo88Evx7ZnJxPORnY/7MJs2/Yyon60tJaon//svzS5D3fK2c0FZbkB+UxFek83Pd8aeGp0DmMfom/weHDrbiXkF0TQAb83ub/wwsr/79Y/1w91XMLJAmaokLc1+RFOM7OPXbT6lZnBwvou6/jk7++ZvvN8gOSgHOGAMZ/OB1yAYgxczE+EP3zouY2TDLqCX+9qvO86+/pOZycTxufv3ZvIZangK5E6/HRHkvSTEx/pJjYPjPKi5wWAPmMWqJ///HwMjJ+srz3z+2CwKc17xg5lODxukxFqbvLMK8R9u+/FLq/fhdv16I+1ITF+sLHmqJgxyvLLEs6d9/lpd3X8VnsjB/tpYW3GVGDU+BzMBZKiqIrsr/84fz0pO3nsdACrmYH22UEdpS+4+B9RU1xL/8UVjJyvLB/cm7yLg//zj/vP1kWivMd3IiD6dS0pfvKm9BdlIC8BYelBg80HpxJsWBdhil9o96jNIQpLd+JgZGhgP0tpTW9jGzMXwEAMZJTRvuLdfjAAAAAElFTkSuQmCC',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGwAAAAkCAYAAABsbd/MAAAAAXNSR0IArs4c6QAAAT5JREFUaAXt2zGKAkEUhOE3reIRDL2EZzAbEDY0FCPP4xE8gZln8BKGe4RlmZm1BaETm4JNquEfEAffQ4r66EScbnecvoYxzhGxer5i7GKT37m8GphF/C5TPFKJ5RWRNGUDQ8TiZ4x1en74OlnlkHvPBjJaBuNqqAHAGsLKUQEDrLEGGovLCQOssQYai8sJawxs/t+8++31rnzH5da/fkFx21eyO+1wwpw0hCyACSU5rQDmpCFkAUwoyWkFMCcNIQtgQklOK4A5aQhZABNKcloBzElDyAKYUJLTCmBOGkIWwISSnFYAc9IQsgAmlOS0ApiThpCl6w/TVO7xz9+yDb97TpifSTURYNV6/IaA+ZlUEwFWrcdvCJifSTURYNV6/IaA+ZlUE2Ww7+oGQ5sG8lOYaZbiBJqNyccg70dm/wDViifzwPhGcQAAAABJRU5ErkJggg==',
   },
   {
     meta: {
@@ -217,20 +176,12 @@ export default [
       category: ['数据录入'],
       theme: {
         InnerInput: {
+          name: '金额输入框',
           theme: {
             Container: {
               name: '输入框外部容器',
               desc: '输入框外部容器',
-              normal: [
-                ['width'],
-                ['height'],
-                ['background'],
-                ['border'],
-                ['borderRadius'],
-                ['boxShadow'],
-                ['margin'],
-                ['padding'],
-              ],
+              normal: [['width'], ['height'], ['margin'], ['padding']],
             },
             Input: {
               name: '金额输入框主体',
@@ -244,30 +195,24 @@ export default [
                 ['background'],
                 ['border'],
                 ['cursor'],
+                ['opacity'],
               ],
-              hover: [
-                ['width'],
-                ['height'],
-                ['padding'],
-                ['border'],
-                ['borderRadius'],
-                ['cursor'],
-                ['background'],
-              ],
+              hover: [['border'], ['borderRadius'], ['cursor'], ['background'], ['opacity']],
               active: [['boxShadow'], ['border'], ['borderRadius'], ['cursor']],
-              disabled: [['cursor'], ['border'], ['borderRadius'], ['background']],
+              disabled: [['cursor'], ['border'], ['background']],
             },
           },
         },
         AmountInputPrefix: {
           name: '金额输入框主体前缀',
           desc: '金额输入框主体前缀',
-          normal: [['width'], ['height'], ['fontSize'], ['font'], ['color']],
+          normal: [['fontSize'], ['font'], ['color']],
           hover: [],
           clicked: [],
           disabled: [],
         },
         AmountTip: {
+          name: '金额切换提示',
           theme: {
             Container: {
               name: '输入框提示框外框部分',
@@ -296,31 +241,12 @@ export default [
   },
   {
     meta: {
-      widgetName: 'Anchor',
-      title: '锚点',
-      desc: '用于跳转到页面指定位置。',
-      props: {
-        affix: { type: 'boolean', desc: '是否固定在窗口', defaultValue: true },
-        offsetTop: { type: 'number', desc: '距离窗口顶部达到指定值后触发', defaultValue: 0 },
-        offsetBottom: { type: 'number', desc: '距离窗口底部达到指定值后触发' },
-        slideType: { type: 'SlideType', desc: '分割线样式', defaultValue: 'circle' },
-        slideLine: { type: 'boolean', desc: '是否展示分割线', defaultValue: true },
-      },
-      type: { SlideType: ['circle', 'line'] },
-      category: ['其他'],
-      childrenWidget: [],
-    },
-    target: Anchor,
-    screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAbCAYAAAAK5R1TAAAAAXNSR0IArs4c6QAAAkBJREFUWAntl89rE0EUx9+bHdomUSRISXLQ2kvxJOJBjPRP0L/AIkIFicgm0mxJMbTTmhZbe4hJsZcKgngRbwUPInio6M1TTz15UJqgHgpNY5PsvO5oF0KZ8VD2sIXMafmw++Y778d+GbyT7+y/XOb90LUelVaGAKzOfDHzQ+GphcogtawzFqd2EFxGBuq8uTu0ILKbKr4QH/kebF5uQnzrNPw+f5RH4cFXvDlOtP4CUX3gr7woX0KJb/mAle5vxRoN2vmCDPOS6GcQPEqpjQZtbzCGpcUZe92ZqcwDUjwGqZyOPxXZ+1qhSrAjnt0FCTeAwXfvFL+WRFYEyQti9YIrW+8RcJZQ5s6dZaO2be+bOFOb65Z3ijVAsEjCtSjYc/47QfEnIvMNvIxKoFcc+S0lUu1h4kahxcfVYQIY8bLZtwcrV3yhQXEhiIGkMS/+JxfcMT++iWtLL8Sbvn+9wgQi1dyOfM2ikXTkT7wZBF8s3NtxRKUIRMMxTGV25fZnL7uFZWF/MHGtUK8/y0hES7O5h+qkk9PlCQJM/+3XIDjHKrn0PHEqftVxbjemRPViW8p3YMGENxeloxwZvw7jk22vwidg1Wq1EyHUOExhyzHXCQqlM6nSJ5PJ8DuTTqjKcs+ZDnvN5EAmbhymoBzIFMfkQCaOutKH0pl0QkPpTEqo7hcVNmbs0Z7QY2ag50z/u2Md686km3pVnZ4zHfaoyYFM3Dj1JkcJipscyMSxXq9vJRKJke5hDKUzdQv0n8PoTAcW86a2P+7yQQAAAABJRU5ErkJggg==',
-  },
-  {
-    meta: {
       widgetName: 'AutoComplete',
       title: '自动完成',
       desc: '需要自动完成数据时使用',
       props: {
         data: { type: 'string[]', desc: '自动补全的数据', defaultValue: [] },
+        createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', defaultValue: true },
         value: { type: 'string', desc: '给定输入框的值' },
         defaultValue: { type: 'string', desc: '默认输入框的值，仅第一次生效' },
         showOldValue: { type: 'boolean', desc: '是否显示上一次选中的值', defaultValue: true },
@@ -350,8 +276,23 @@ export default [
       type: {},
       category: ['数据录入'],
       theme: {
-        Input: {
+        AutoInput: {
+          name: '自动完成输入框',
           theme: {
+            Container: {
+              name: '输入框外部容器',
+              desc: '输入框外部容器',
+              normal: [
+                ['width'],
+                ['height'],
+                ['background'],
+                ['border'],
+                ['borderRadius'],
+                ['boxShadow'],
+                ['margin'],
+                ['padding'],
+              ],
+            },
             Input: {
               name: '输入框主体',
               desc: '输入框主体结构',
@@ -515,7 +456,7 @@ export default [
     },
     target: AutoComplete,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAUCAYAAADLP76nAAAAAXNSR0IArs4c6QAAAmFJREFUSA3VV89rE0EUfm/ZtI2JPxp/VayCBXtQsPof2FMsbUChhBYV0UMSbClVSiNYwmi1iFGoQdlkL2IQNtgiUmmhFy96EM89qVXBwloslto0aWN2nzOeQkj2EBbivsO+mW+Y975vZmd4g6qqdgGASkSt3DvGEHGJkw3J/KPyTjgUCs05hj0nmkqlujlvVTTIScRLuQruUingxHZdBCSTyY92LVZdBPAL46ijBdhFXsQRt1BVG2WJVtnVaEzcDOvxeNrzc3P9sCTjD9ii3ffYwGe+knhj/Mmxtv37lpqbd/qCQf9XEUx7NX9ou/wnm8u5dpViPjf88vv9G1UT1jBgKYAf8SOFrbzGWOrkcnZVAaTFbYb7QdbMv4myxxeitx6dIBP6dH3v6R2+9efa9OwdlGDVLBSSuULbGQMX06XYGsdq4Gg5xfIMxGNDb1GSkhtm/h0SHfRCxxhj4RWUpYsmFZ/xDYg2NLj6GessepvwMpAZp6KhoEu+EgweL1TCLNnUMGgpQMTjW/SSANtBwhlBVGAHvC0fhOe2cHds4LtoBAKBFe6+AGC+/1zXt2qYwO00SwGMPW0qEmmShMNk0mD0dqJDJNfX9ElAmAcCz0gsERaY9uJ1L3dZjr/PTM1crYYJ3E6zFJCl3w95soX7bCiBANcMgzKjscR5TrzTA+7rjS7pEgKNTyppPwANt+zxjvT19kwQwdnM1GxPOaZNz52yk/y/WPUoJRRFsaV8qVspwYuwT3bthOUvZFeS8jiRSKS9HKu1XxcBtZKtNM/5AsTLhh+G7krq/mdMcBbc0elPyr/Pc/9zE47MSAAAAABJRU5ErkJggg==',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAAAoCAYAAAABk/85AAAAAXNSR0IArs4c6QAAAd9JREFUaAXtmzFOw0AQRbMRkn2FiAu4o+EA1CBRUlDgznZJgzgDoqF03DlFCkokqDkADZ0vgHwFuzIzgS3QyNJusbNI/paiVUaj+Zv3vatk4zErutq2PR7H8XGapjN6u+EYrmAEemPMe5Ikd3mefxmGPwzDBwWfyIBdWZZ9MGkUXm232w2xviHWt2manpqmafbE5bMoigfw0SNA3O9J7WTN2w7f+XrSUGICzJzZ85KYgCQOAWa/jiMNVUsABlgSkUYYEAm8lYUBlkSkEQZEAm9lF29AXdev/LJAtMcjbcH/pkffxc9jzmnxKyAmfNaGAZEd8N6C9s8vTr+cr68uDX823/yu65zqZ1l2qO+bH5m3kMcKEEh0AzBAl7dQgwECiW4ABujyFmowQCDRDcAAXd5CDQYIJLoBGKDLW6jBAIFENwADdHkLNRggkOgGYIAub6EGAwQS3YD3aag95XSdpm++PeV0re+b71pXKw8rQIv0jA4MmAGjFfbegrQmpqVDTyq/kZbTn0Ah5rR4A6qquggB1rUmtiBXUoHyYEAgsK5lYYArqUB5bEDPbTOB6qPsDIFf5v2aG8a4Z2kmD+FABJj5gT2a9AIRninLdz7Dp0cif5r0OA9tqjO0woT/tKl+A4luf1rTokgdAAAAAElFTkSuQmCC',
   },
   {
     meta: {
@@ -529,7 +470,7 @@ export default [
           desc: "可配置三种尺寸大小的input ('大' , '默认' , '小'),高度分别为 40px、32px 和 24px。",
           defaultValue: 'default',
         },
-        name: { type: 'string', desc: '头像显示内容' },
+        name: { type: 'string', desc: '头像显示内容', defaultValue: 'Lugia' },
         icon: { type: 'string', desc: '头像显示图标资源' },
         src: { type: 'string', desc: '头像显示图片资源' },
         shape: { type: 'AvatarShape', desc: '头像显示形状风格', defaultValue: 'circle' },
@@ -539,10 +480,26 @@ export default [
       designInfo: {
         AvatarIcon: {
           sequence: 1,
-          title: '头像样式类型',
-          desc: '按头像样式类型不同选择显示不同头像',
-          props: { icon: 'iconClass' },
+          title: '图标头像',
+          desc: '使用图标样式展示头像',
+          props: { icon: 'lugia-icon-financial_user' },
           theme: {
+            Container: {
+              name: '头像',
+              desc: '对头像外部容器配置样式',
+              normal: [
+                ['width'],
+                ['height'],
+                ['margin'],
+                ['padding'],
+                ['background'],
+                ['opacity'],
+                ['boxShadow'],
+              ],
+              hover: [['width'], ['height']],
+              clicked: [],
+              disabled: [],
+            },
             IconAvatar: {
               name: '图标样式头像',
               desc: '使用图标样式展示头像',
@@ -555,39 +512,38 @@ export default [
         },
         AvatarSrc: {
           sequence: 2,
-          title: '头像样式类型',
-          desc: '按头像样式类型不同选择显示不同头像',
+          title: '图片头像',
+          desc: '使用图片资源展示头像',
           props: { src: '' },
           theme: {
-            SrcAvatar: {
-              name: '图片资源头像',
-              desc: '使用图片资源展示头像',
-              normal: [['width'], ['height'], ['margin'], ['padding'], ['background']],
-              hover: [['width'], ['height'], ['background']],
-              clicked: [],
-              disabled: [],
-            },
-          },
-        },
-        AvatarFont: {
-          sequence: 3,
-          title: '头像样式类型',
-          desc: '按头像样式类型不同选择显示不同头像',
-          props: { name: '' },
-          theme: {
-            AvatarSrc: {
-              name: '文字头像',
-              desc: '使用文字展示头像',
+            Container: {
+              name: '头像',
+              desc: '对头像外部容器配置样式',
               normal: [
                 ['width'],
                 ['height'],
                 ['margin'],
                 ['padding'],
-                ['font'],
-                ['color'],
+                ['background'],
+                ['opacity'],
+                ['boxShadow'],
+              ],
+              hover: [['width'], ['height']],
+              clicked: [],
+              disabled: [],
+            },
+            SrcAvatar: {
+              name: '头像图片',
+              desc: '对头像图片配置样式',
+              normal: [
+                ['width'],
+                ['height'],
+                ['margin'],
+                ['padding'],
+                ['fontSize'],
                 ['background'],
               ],
-              hover: [['width'], ['height'], ['font'], ['color'], ['background']],
+              hover: [['width'], ['height'], ['fontSize'], ['background']],
               clicked: [],
               disabled: [],
             },
@@ -608,22 +564,6 @@ export default [
             ['boxShadow'],
           ],
           hover: [['width'], ['height']],
-          clicked: [],
-          disabled: [],
-        },
-        IconAvatar: {
-          name: '头像图标',
-          desc: '对头像图标配置样式',
-          normal: [['color'], ['margin'], ['fontSize'], ['background'], ['padding']],
-          hover: [['color'], ['background'], ['fontSize']],
-          clicked: [],
-          disabled: [],
-        },
-        SrcAvatar: {
-          name: '头像图片',
-          desc: '对头像图片配置样式',
-          normal: [['width'], ['height'], ['margin'], ['padding'], ['fontSize'], ['background']],
-          hover: [['width'], ['height'], ['fontSize'], ['background']],
           clicked: [],
           disabled: [],
         },
@@ -648,13 +588,13 @@ export default [
     },
     target: Avatar,
     screenshot:
-      'data:image/png;base64,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',
+      'data:image/png;base64,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',
   },
   {
     meta: {
       widgetName: 'Avatar',
-      title: '头像样式类型',
-      desc: '按头像样式类型不同选择显示不同头像',
+      title: '图标头像',
+      desc: '使用图标样式展示头像',
       props: {
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
         size: {
@@ -662,14 +602,34 @@ export default [
           desc: "可配置三种尺寸大小的input ('大' , '默认' , '小'),高度分别为 40px、32px 和 24px。",
           defaultValue: 'default',
         },
-        name: { type: 'string', desc: '头像显示内容' },
-        icon: { type: 'string', desc: '头像显示图标资源', defaultValue: 'iconClass' },
+        name: { type: 'string', desc: '头像显示内容', defaultValue: 'Lugia' },
+        icon: {
+          type: 'string',
+          desc: '头像显示图标资源',
+          defaultValue: 'lugia-icon-financial_user',
+        },
         src: { type: 'string', desc: '头像显示图片资源' },
         shape: { type: 'AvatarShape', desc: '头像显示形状风格', defaultValue: 'circle' },
       },
       type: { AvatarSize: ['small', 'default', 'large'], AvatarShape: ['circle', 'square'] },
       category: ['数据展示'],
       theme: {
+        Container: {
+          name: '头像',
+          desc: '对头像外部容器配置样式',
+          normal: [
+            ['width'],
+            ['height'],
+            ['margin'],
+            ['padding'],
+            ['background'],
+            ['opacity'],
+            ['boxShadow'],
+          ],
+          hover: [['width'], ['height']],
+          clicked: [],
+          disabled: [],
+        },
         IconAvatar: {
           name: '图标样式头像',
           desc: '使用图标样式展示头像',
@@ -684,13 +644,13 @@ export default [
     },
     target: Avatar,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+      'data:image/png;base64,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',
   },
   {
     meta: {
       widgetName: 'Avatar',
-      title: '头像样式类型',
-      desc: '按头像样式类型不同选择显示不同头像',
+      title: '图片头像',
+      desc: '使用图片资源展示头像',
       props: {
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
         size: {
@@ -698,19 +658,39 @@ export default [
           desc: "可配置三种尺寸大小的input ('大' , '默认' , '小'),高度分别为 40px、32px 和 24px。",
           defaultValue: 'default',
         },
-        name: { type: 'string', desc: '头像显示内容' },
-        icon: { type: 'string', desc: '头像显示图标资源', defaultValue: 'iconClass' },
+        name: { type: 'string', desc: '头像显示内容', defaultValue: 'Lugia' },
+        icon: {
+          type: 'string',
+          desc: '头像显示图标资源',
+          defaultValue: 'lugia-icon-financial_user',
+        },
         src: { type: 'string', desc: '头像显示图片资源', defaultValue: '' },
         shape: { type: 'AvatarShape', desc: '头像显示形状风格', defaultValue: 'circle' },
       },
       type: { AvatarSize: ['small', 'default', 'large'], AvatarShape: ['circle', 'square'] },
       category: ['数据展示'],
       theme: {
+        Container: {
+          name: '头像',
+          desc: '对头像外部容器配置样式',
+          normal: [
+            ['width'],
+            ['height'],
+            ['margin'],
+            ['padding'],
+            ['background'],
+            ['opacity'],
+            ['boxShadow'],
+          ],
+          hover: [['width'], ['height']],
+          clicked: [],
+          disabled: [],
+        },
         SrcAvatar: {
-          name: '图片资源头像',
-          desc: '使用图片资源展示头像',
-          normal: [['width'], ['height'], ['margin'], ['padding'], ['background']],
-          hover: [['width'], ['height'], ['background']],
+          name: '头像图片',
+          desc: '对头像图片配置样式',
+          normal: [['width'], ['height'], ['margin'], ['padding'], ['fontSize'], ['background']],
+          hover: [['width'], ['height'], ['fontSize'], ['background']],
           clicked: [],
           disabled: [],
         },
@@ -720,101 +700,7 @@ export default [
     },
     target: Avatar,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
-  },
-  {
-    meta: {
-      widgetName: 'Avatar',
-      title: '头像样式类型',
-      desc: '按头像样式类型不同选择显示不同头像',
-      props: {
-        viewClass: { type: 'string', desc: '用于配置通用主题属性' },
-        size: {
-          type: 'AvatarSize',
-          desc: "可配置三种尺寸大小的input ('大' , '默认' , '小'),高度分别为 40px、32px 和 24px。",
-          defaultValue: 'default',
-        },
-        name: { type: 'string', desc: '头像显示内容', defaultValue: '' },
-        icon: { type: 'string', desc: '头像显示图标资源', defaultValue: 'iconClass' },
-        src: { type: 'string', desc: '头像显示图片资源', defaultValue: '' },
-        shape: { type: 'AvatarShape', desc: '头像显示形状风格', defaultValue: 'circle' },
-      },
-      type: { AvatarSize: ['small', 'default', 'large'], AvatarShape: ['circle', 'square'] },
-      category: ['数据展示'],
-      theme: {
-        AvatarSrc: {
-          name: '文字头像',
-          desc: '使用文字展示头像',
-          normal: [
-            ['width'],
-            ['height'],
-            ['margin'],
-            ['padding'],
-            ['font'],
-            ['color'],
-            ['background'],
-          ],
-          hover: [['width'], ['height'], ['font'], ['color'], ['background']],
-          clicked: [],
-          disabled: [],
-        },
-      },
-      childrenWidget: [],
-      aliasName: 'AvatarFont',
-    },
-    target: Avatar,
-    screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
-  },
-  {
-    meta: {
-      widgetName: 'BackTop',
-      title: '回到顶部',
-      desc: '返回页面顶部。',
-      props: {
-        visibilityHeight: {
-          type: 'number',
-          desc: '页面滚动高度达到指定值后出现BackTop',
-          defaultValue: 400,
-        },
-        target: {
-          type: 'Function',
-          desc: '设置监听滚动事件的元素，返回值为DOM元素的函数',
-          defaultValue: '() => window',
-        },
-      },
-      type: {
-        BackTopStyle: {
-          color: { type: 'string', desc: '组件颜色' },
-          backgroundColor: { type: 'string', desc: '组件背景颜色' },
-        },
-      },
-      category: ['其他'],
-      theme: {
-        Container: {
-          name: '返回顶部整体样式',
-          desc: '配置返回顶部整体样式',
-          normal: [
-            ['background'],
-            ['color'],
-            ['width'],
-            ['height'],
-            ['opacity'],
-            ['border'],
-            ['borderRadius'],
-          ],
-        },
-        BackTopIcon: {
-          name: '返回顶部图标样式',
-          desc: '配置返回顶部图标样式',
-          normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding']],
-        },
-      },
-      childrenWidget: [],
-    },
-    target: BackTop,
-    screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAxBJREFUWAnNmDuPElEUxy/DQIAAQUKEAArhUdiQAB2rJYXRxmZLv4GxMPFDmFhs9lvY2Ggsxo5dOiCh2R7JbrBxQ8nT/38yMw6zPAYQhpsM93XuOT/OuXMf4xJbpm63+2g8Hr+az+d1DH2KJ+lyuZJUg7ZbZHx6aFM8Hs/3Uqn0h312k8uuYKvVegOD7yD/Ao9sc9wEcg3AXVar1a92xmwE6nQ6Z7PZ7BNganYUrpIBVFOSpI/lcvl6lQzbVwIBwN1utz8jf79OwbZ9ALuoVCofkE+XjV0KBK9EptPpFwzgPDlEUtxu9zm8dW9V/gCIMAhRE555ZhX+n3V46AYhrFmhJLMRhomeOTQMbdKGZsttZlgA4pxB56HCZLarl+uaTb3+b1LzbQLxldFzxALm03P97TM8xFf7iAwLpsy2VSBt0dtrnVmwsGUF86lGBg5TgdDAFdjRpDO4uDeNRqPfoLG7HRwKfOL1eh9Lk8nk9QnA8E/KZJHgqr1f80QiIWKx2N6eI4uMnyf7aIpGoyKVSnGhEwi9GA6HO6sjCye1epbZRUsoFBLZbFYdiq1A5HI54ff7d1Glj0lKULQTkM/nE/l8XhBET1jgRKFQEJicetNWOVk4h+ZbjYIwToKiWCwKAlgTYQi1rM8qa62ThSG7s3asq2OH3ugFho3hM3tvnU5T3x2BeAa2nWgoEAhslA+HwyKTyWyUswjccjHsWRpXVtPptAgGgwKb8EoZc0ckEhHxeFwMBgNz87pyT0YIfmJze7tOSu/r9/uCz6ESQqxIsix/gwHeDpxOE16bJO3e1HCaBvYbZOGk5ttw6TSQzmCsajiPXGMZcORMBJgmLpJndIrqIbWAS5xTXuIFUrdtAPFMC9ILveNYOW3q52naNELGCkLmRuh+oLj3kYT6bCQFoXoJKGNhMzzEwezAHnSO/MaGsr1EaEOzZcBQ4QIQG+C+e94oUVRYP1BSaIO2rPoXQmbuZPhO5mODGexkPseYoVjW7m7Of7CygvHaxNsBQlrHw/P4g096mLC/8CjcJ7f9pPcXEQosy1UKiCgAAAAASUVORK5CYII=',
+      'data:image/png;base64,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',
   },
   {
     meta: {
@@ -837,34 +723,9 @@ export default [
       },
       category: ['数据展示'],
       designInfo: {
-        BadgeDotConfig: {
+        BadgeNumber: {
           sequence: 1,
-          title: '徽标数',
-          desc: '徽标数为0时,设置不显示数字时,显示的小点',
-          props: { showZero: false },
-          theme: {
-            BadgeDot: {
-              name: '徽标数',
-              desc: '徽标数不显示数字时的样式展示',
-              normal: [
-                ['width'],
-                ['height'],
-                ['background'],
-                ['position'],
-                ['opacity'],
-                ['margin'],
-                ['padding'],
-                ['boxShadow'],
-              ],
-              hover: [['width'], ['height'], ['background'], ['opacity']],
-              clicked: [],
-              disabled: [],
-            },
-          },
-        },
-        BadgeNumberConfig: {
-          sequence: 2,
-          title: '徽标数',
+          title: '数字徽标',
           desc: '徽标数大于0时,显示的数字',
           props: { showZero: true, count: 1 },
           theme: {
@@ -890,34 +751,8 @@ export default [
         },
       },
       theme: {
-        Badge: {
-          name: '徽标数',
-          desc: '对徽标数配置样式',
-          normal: [['width'], ['height'], ['margin'], ['padding']],
-          hover: [['width'], ['height']],
-          clicked: [],
-          disabled: [],
-        },
-        BadgeNumber: {
-          name: '徽标数',
-          desc: '徽标数 显示数字时的样式展示',
-          normal: [
-            ['width'],
-            ['height'],
-            ['background'],
-            ['position'],
-            ['opacity'],
-            ['color'],
-            ['margin'],
-            ['padding'],
-            ['boxShadow'],
-          ],
-          hover: [['width'], ['height'], ['background'], ['opacity'], ['color']],
-          clicked: [],
-          disabled: [],
-        },
         BadgeDot: {
-          name: '徽标数',
+          name: '点状徽标',
           desc: '徽标数不显示数字时的样式展示',
           normal: [
             ['width'],
@@ -943,53 +778,7 @@ export default [
   {
     meta: {
       widgetName: 'Badge',
-      title: '徽标数',
-      desc: '徽标数为0时,设置不显示数字时,显示的小点',
-      props: {
-        viewClass: { type: 'string', desc: '用于配置通用主题属性' },
-        showZero: { type: 'boolean', desc: '当数值为 0 时，是否展示 Badge', defaultValue: false },
-        overflowCount: {
-          type: 'number',
-          desc: '超过 overflowCount 的会显示为 ${overflowCount}+，默认的 overflowCount 为 99',
-          defaultValue: 99,
-        },
-        children: { type: 'React$Element<any>', desc: '可作为显示徽标数的子组件' },
-        count: {
-          type: 'number',
-          desc: '展示的数字，大于封顶数时 显示为${overflowCount}+,为 0 时隐藏',
-        },
-      },
-      category: ['数据展示'],
-      theme: {
-        BadgeDot: {
-          name: '徽标数',
-          desc: '徽标数不显示数字时的样式展示',
-          normal: [
-            ['width'],
-            ['height'],
-            ['background'],
-            ['position'],
-            ['opacity'],
-            ['margin'],
-            ['padding'],
-            ['boxShadow'],
-          ],
-          hover: [['width'], ['height'], ['background'], ['opacity']],
-          clicked: [],
-          disabled: [],
-        },
-      },
-      childrenWidget: [],
-      aliasName: 'BadgeDotConfig',
-    },
-    target: Badge,
-    screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
-  },
-  {
-    meta: {
-      widgetName: 'Badge',
-      title: '徽标数',
+      title: '数字徽标',
       desc: '徽标数大于0时,显示的数字',
       props: {
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
@@ -1028,11 +817,11 @@ export default [
         },
       },
       childrenWidget: [],
-      aliasName: 'BadgeNumberConfig',
+      aliasName: 'BadgeNumber',
     },
     target: Badge,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAAAXNSR0IArs4c6QAAAk9JREFUSA29lr9PFEEUx79vb44ECJWJJpggFgZiYULiyWG8XGIgoVITr5G/xMLGxIIWa2sqSYitFaEApSCxMBIj0AAVFeIJd7fje7M7l9llud279e4Vu/PjzfvszM7M+xIy2Pn9uRnfb74AqKKB2zxkPBx2TMARoDc9T62Pft/aTQvH/tfb2dRsTZP/DhpT13s5PYQ90t6bsb0vH53WSDERWH/w6G7jEqvQuhzxzloh2i4OYWn429eD+JArwLPpuapGa41hN+LOXdWJTgmFl2M/tjbccRGgwIDmZ61RdJ16LROhAagFF9oGhsu4k3tm8a/jmfLyluzyerY//Gf5ltEGc9/8a0zssM0AZTd2u0FocgKFJ2XQrZtu+OQybz7D4F4DNFs/2TWxtVh7jtFPqxj58B6q+jjRJ95oGUoOdavVTD9nhQLUfBXFVzWo8sN4vPQ6n2VhqeAGSff3pu9heGXZOLZ+/oJ3ZwI01N1mFhYvKVXScYGHf3SC+uu3+PNsCbi4yDrM8aOKCu9GpzG56O8f4nyxBjT4aPVowlI81l7EncPU/3buz9Y73j6H2fxze2kBHucOkz3Aicd3G+ezwZiweIZ6czA4oUii5kw9KKCwPCMLOFP3HcoMYZldKrKg30DLMECjQVgW9A3Ksa3OkYNvTDRI45IyJ+Dfpad2aOd3kID5LgzMzFCKkpFFgwSyIOzN+ZJYEtNmewnXBkol0B5qAfxVUs9lJkZUz0i8CFAaBCoahKG9/9NAJpZc8SSxxdoiKqhGnwMTwlEs8D+l/j/87s6odJWxqQAAAABJRU5ErkJggg==',
   },
   {
     meta: {
@@ -1083,6 +872,7 @@ export default [
           disabled: [],
         },
         BreadcrumbItem: {
+          name: '面包屑单项配置',
           theme: {
             ItemWrap: {
               name: '文本',
@@ -1095,7 +885,15 @@ export default [
             Text: {
               name: '文本',
               desc: '面包屑的文本配置',
-              normal: [['color'], ['fontSize'], ['margin'], ['padding'], ['font']],
+              normal: [
+                ['color'],
+                ['fontSize'],
+                ['margin', 'left'],
+                ['margin', 'right'],
+                ['padding', 'left'],
+                ['padding', 'right'],
+                ['font'],
+              ],
               hover: [['color'], ['font'], ['fontSize']],
               clicked: [],
               disabled: [],
@@ -1103,7 +901,14 @@ export default [
             Separator: {
               name: '分隔符',
               desc: '面包屑的分隔符配置',
-              normal: [['color'], ['fontSize'], ['margin']],
+              normal: [
+                ['color'],
+                ['fontSize'],
+                ['margin', 'left'],
+                ['margin', 'right'],
+                ['padding', 'left'],
+                ['padding', 'right'],
+              ],
               hover: [],
               clicked: [],
               disabled: [],
@@ -1115,7 +920,7 @@ export default [
     },
     target: Breadcrumb,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAAKCAYAAAAdIbZyAAAAAXNSR0IArs4c6QAAAqRJREFUOBG1VF9IU2EUP+fbnVuWFvZSkZQpFb2UJNRDIINoiRNz6twdtNSnCISCek4oQjB6WERkJYbQ5r2uqbNrEbSgggpfeykqn/qPOXKY98++vm9w43KZcHP4vZzv/H7n33fOPRdgjU4y+XBHJpMRSgkvSY/qnPgTJ0arsVGN/A2fz6evxpf7JJPKdgPUC0781+QRkpQ+QhFeOilgJRs1b3S7AEdW4q24EJ94XF21Dub9fn9OURRPdhm3AhLDCSa2Nc1Zg5l3HeEUlnkumropJWlmT2fn8XeISNmnUiUIKASD/u8mb0pKKSbk6cOhUMtlE+Oyr6/P83VhaZs8eucT18Phnmq3e/M8AU3bOZ9VRzmYzRnXQdPrHWPcyXYmJ19UINBKsfXYZxsFOurBMXn6HNsVr4HahK7DersN1+PyjA+QPrNzsVhM1TU11h7uOdTWFd29TI17f2o3aETsDDxHgDf3pfQ4S54TQy0pp5g9CdeX1F9dCGSsGCd2BAYoQOOXH4sSQbgWCvkLHbXbIugnaVl5obFWjk/Qi94eA/RB9sibHiS9cn+/WtgJAu5xRAgAEf4ld4pZk/A7pdBSV7Mlbce5zotgeSZYsw5WlLueFrNJpTKbAMETaT36rRgfjw/9RMCPLNpSIjEyx20I3wM22ttsDxrzhjHI9EqnmD2JJCn7WJHvGxoaNDvH9URKqWWTiFJwdS/kjFvFbJb13xGCGC/GcSwYjnawVi1SwFdBMXqGYyS7aFxl7bkrdjS/ZiO+xPQhpxgPYD15NHoJdQ1bMfMuSW/L8po+7KLC6Uio+QlQ/JCQpwpFmDZcskc2YT6gWDHz3h7p3cUmfXaj13X+wN6aK+wHcKI9HK03+ZLl7Oysm+3VVCmBEg/S++Py1MD/xvgLkkpdsAabHFgAAAAASUVORK5CYII=',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAAAUCAYAAAByKzjvAAAAAXNSR0IArs4c6QAAAslJREFUWAntWUFrE0EUfm82sVIpHioiigfRQ6DoTfBkUSjbmqbapG6bilhTT977c7SKksQhCaRJMJJDBT14yEUPUlDswYPiwVYwxCbuPl8ChYgkZLOTZAruJcvOfN97b76Z92YmAP+foY4ADtW6C+NSFk44QHMCfCnLmv7uAtq3rgmZDxJgbdkKlno14ovLDeoGvGzNNcXqd/92vtjo3GdH7wkyH7T22dra6sr/QCDQ9N9t/1Zbre/Z7Ouxyt7OMwGwxt//EaBbO4zX/yEiAUQrQPDYstDWweNqbWeR/TBG/EcSXvw5EALIdGGKp/npQwIeeglWJZYnxSogpOfnr+x64T0QAjgcLCK+WlgIffASrCpsPFWc4AlxCcjwPCG0FyCXyx3j9HOdEP/K/aoGsycepx7jgrIdvTmz2RO+BaS9AJUq3CKEvfExf6rF76G9lstlPw/+bUCxzquyqw1AJ2e1F8ABWEXApGmalU6BDKrt4/bXEAGNg9//SIVNrQVIpjcuAtB5FN5zrYrBanA06hEAlqI3zM8qOH0qSPrF4TiCg3XeL0WuvemXDTe8UuZO2UAmooi6wXXqq+0K4OI7ikRLnGs97zQ6DYCbNhvxDtejXUFnsm5wnfpqK8DPKkW4wo0eNvxPOgUwqDbe9yPvxmJA+NSyJmqq7GorAN+xcPGFfDhsflMVrBeeZCo/ycX3LAif0hWpZQ2QsnjOxvplnm0hL4OmFts4DEI5ujDzTiWvlivAxtpdXu5fDAgWVQbbK5eUpaN8DxVBUl+PtBNASjI42BVA1ObizRa/mrseASPxXkVsh9NOABsK01x8T/Jxc72d0wP/znt/vgrJWNbUD9W2m3fkqkm98CVkLtM4afL/D5NeeFRh46nnF8CpvzUMcXUxMrupinefR6sVkMm8OM6zfxaE+ly7H7DrX+d3jNPhJyscfOka2wXgD1IN5EWLZvuGAAAAAElFTkSuQmCC',
   },
   {
     meta: {
@@ -1126,7 +931,7 @@ export default [
         disabled: {
           type: 'boolean',
           desc: '按钮是否禁用，true 禁用 false 可用',
-          defaultValue: true,
+          defaultValue: false,
         },
         shape: {
           type: 'ButtonShape',
@@ -1136,7 +941,7 @@ export default [
         type: {
           type: 'ButtonType',
           desc: '支持多种不同的按钮风格，可选值为 primary、success、warning、danger 或者不设',
-          defaultValue: 'default',
+          defaultValue: 'primary',
         },
         plain: { type: 'boolean', desc: '是否为朴素按钮' },
         size: {
@@ -1147,7 +952,231 @@ export default [
         loading: { type: 'boolean', desc: '设置按钮加载状态' },
         circle: { type: 'boolean', desc: '设置圆形按钮' },
         icon: { type: 'string', desc: '设置按钮图标类型' },
-        text: { type: 'string | React.node', desc: '设置按钮的文本内容' },
+        text: { type: 'string | React.node', desc: '设置按钮的文本内容', defaultValue: 'Button' },
+        block: { type: 'boolean', desc: '按钮宽度为父元素宽度', defaultValue: false },
+      },
+      events: {
+        onClick: {
+          desc: '点击按钮时触发',
+          args: [{ name: 'event', desc: '点击的DOM事件', type: 'Object' }],
+        },
+      },
+      type: {
+        ButtonShape: ['default', 'round'],
+        ButtonType: ['default', 'primary', 'success', 'warning', 'danger'],
+        ButtonSize: ['default', 'small', 'large'],
+        ButtonStyle: {
+          width: { type: 'number', desc: '组件宽度' },
+          margin: { type: 'number | Object', desc: '组件外间距' },
+          color: { type: 'string', desc: '组件颜色' },
+        },
+      },
+      category: ['通用'],
+      designInfo: {
+        PlainButton: {
+          sequence: 1,
+          title: '朴素按钮',
+          desc: '朴素按钮',
+          props: { plain: true },
+          theme: {
+            Container: {
+              name: '按钮整体样式',
+              desc: '为按钮配置整体样式',
+              normal: [
+                ['background'],
+                ['border'],
+                ['height'],
+                ['width'],
+                ['padding'],
+                ['margin'],
+                ['borderRadius'],
+              ],
+              hover: [['background'], ['border']],
+              active: [['background'], ['border']],
+              disabled: [['background'], ['border']],
+              focus: [['background'], ['border']],
+            },
+            ButtonText: {
+              name: '按钮文字样式',
+              desc: '为按钮文字配置样式',
+              normal: [['color'], ['font']],
+              hover: [['color']],
+              active: [['color']],
+              disabled: [['color']],
+              focus: [['color']],
+            },
+            ButtonIcon: {
+              name: '按钮图标样式',
+              desc: '为按钮图标配置样式',
+              normal: [['color'], ['font']],
+              hover: [['color']],
+              active: [['color']],
+              disabled: [['color']],
+              focus: [['color']],
+            },
+          },
+        },
+        IconButton: {
+          sequence: 1,
+          title: '图标按钮',
+          desc: '图标按钮',
+          props: { icon: 'lugia-icon-logo_lugia' },
+          theme: {
+            Container: {
+              name: '按钮整体样式',
+              desc: '为按钮配置整体样式',
+              normal: [
+                ['background'],
+                ['border'],
+                ['height'],
+                ['width'],
+                ['padding'],
+                ['margin'],
+                ['borderRadius'],
+              ],
+              hover: [['background'], ['border']],
+              active: [['background'], ['border']],
+              disabled: [['background'], ['border']],
+              focus: [['background'], ['border']],
+            },
+            ButtonText: {
+              name: '按钮文字样式',
+              desc: '为按钮文字配置样式',
+              normal: [['color'], ['font']],
+              hover: [['color']],
+              active: [['color']],
+              disabled: [['color']],
+              focus: [['color']],
+            },
+            ButtonIcon: {
+              name: '按钮图标样式',
+              desc: '为按钮图标配置样式',
+              normal: [['color'], ['font']],
+              hover: [['color']],
+              active: [['color']],
+              disabled: [['color']],
+              focus: [['color']],
+            },
+          },
+        },
+        CircleButton: {
+          sequence: 1,
+          title: '圆形图标按钮',
+          desc: '圆形图标按钮',
+          props: { circle: true, icon: 'lugia-icon-logo_lugia', text: '', type: 'primary' },
+          theme: {
+            Container: {
+              name: '按钮整体样式',
+              desc: '为按钮配置整体样式',
+              normal: [
+                ['background'],
+                ['border'],
+                ['height'],
+                ['width'],
+                ['padding'],
+                ['margin'],
+                ['borderRadius'],
+              ],
+              hover: [['background'], ['border']],
+              active: [['background'], ['border']],
+              disabled: [['background'], ['border']],
+              focus: [['background'], ['border']],
+            },
+            ButtonText: {
+              name: '按钮文字样式',
+              desc: '为按钮文字配置样式',
+              normal: [['color'], ['font']],
+              hover: [['color']],
+              active: [['color']],
+              disabled: [['color']],
+              focus: [['color']],
+            },
+            ButtonIcon: {
+              name: '按钮图标样式',
+              desc: '为按钮图标配置样式',
+              normal: [['color'], ['font']],
+              hover: [['color']],
+              active: [['color']],
+              disabled: [['color']],
+              focus: [['color']],
+            },
+          },
+        },
+      },
+      theme: {
+        Container: {
+          name: '按钮整体样式',
+          desc: '为按钮配置整体样式',
+          normal: [
+            ['background'],
+            ['border'],
+            ['height'],
+            ['width'],
+            ['padding'],
+            ['margin'],
+            ['borderRadius'],
+          ],
+          hover: [['background'], ['border']],
+          active: [['background'], ['border']],
+          disabled: [['background'], ['border']],
+          focus: [['background'], ['border']],
+        },
+        ButtonText: {
+          name: '按钮文字样式',
+          desc: '为按钮文字配置样式',
+          normal: [['color'], ['font']],
+          hover: [['color']],
+          active: [['color']],
+          disabled: [['color']],
+          focus: [['color']],
+        },
+        ButtonIcon: {
+          name: '按钮图标样式',
+          desc: '为按钮图标配置样式',
+          normal: [['color'], ['font']],
+          hover: [['color']],
+          active: [['color']],
+          disabled: [['color']],
+          focus: [['color']],
+        },
+      },
+      childrenWidget: [],
+    },
+    target: Button,
+    screenshot:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGgAAAAsCAYAAACJ1f3bAAAAAXNSR0IArs4c6QAABXpJREFUeAHtXGtsVEUU/nYptiQ8pCJqUQgWEQXBCkYiKKtCBGPVICH4iChW1CjGGKwmJvpDjAlqhESNBqiSAFUxaIgvEEKrtUSBagWkPhDFQimUFlroI7TW83V6vdvu7KbUvfcO6Zxk7507Z3bmzPnmnDNn7rYhCM3Mab2wGVgsxUhrKy5gnaVgNBAKoUJGLkgBctctD5WHCM4poBStSA9GJDuqVgMhVPcGxoXbLMeCo9VRoJWCCbEJixCRQAWxgyfSQCRsY04i/QTLIza0IEsGa8ACZDA4FM0CZAEyXAOGi2ctyAJkuAYMF89akAXIcA0YLp6cyXlHQ84HBp+j7/9YLVBxGGhs0vNtrdKApwBNnwLcPi2+qk/JYdOXhcB7awGWu0tjRwEpMpOSXbE9JOLFtjavxlOAnOk+/jxQd9J5AlLPAi4bAUzMArJvAnpJJHx7tcs/nVK/vsCihUD++liAEvFOZ4wg2/qySagRd1Zz3P0cOgJs2SpHte8A1ceAG68F5D2IJY0GfLEgzbhtVS0tQPEOYMYNQJpYVYPEowH9gCvEZZX9DlTVdPxmWiowYSyw728BVnjjpdwnTbUZmgFMvlqVf9gNZI3W87aWABzXodEjgZHDgUEDgf3yqmxXGXCg0uGqe7RM9Y3AVWOAUZkA42jJTuAPkccrChQgTmrYEGCPgEFwnOfch5V1FW1Tdc717P7ymlF470rM+r5UlR3epAkAP6SnFsXnzVkA1DfIghCwH7sPmHKNsuzKKmDadeJuewErPwLWb1J98UoZOe6KD4CbrwfSBcyT4rLPlQ3QPXcAy/KBz7e47ZNZ8gWgVHk12CQW4lAfUc6YS1UMungo8Ooyh9P1+4FDwG05AOPM6iUqBjEOOZSIxzaP3iuAjgeW5gGbi9W3UgScR6Q+Zw5wvA4o/M7pTd3vnwWskTE+FfC4oDiHJ+cBc+8EuJhqT3Rsn4wnXwDKe0UvapNM8ln5JcTev/R8r2q5KCITgU82uuBwrGZxfW+sBEYMU0r/druqc+Sgla39zHkSd/iLAmbmdOAScZM7drq8ZJV8AWiJrFK6FYe4UjNFCdwCv/S0rMjNwKqPHa73d47LTclXRfqxNkn9/LuBjPMkLh1022z42i07pW0/yY9uBKB4+Z7Trrt3XwDiJOo6mX+RrE7SjIhyN3RZ3Nn5QUygSdxN6uigJNAktosG6Ei1qo++cqNA6u2RJn3ZZqsp6K9crdxVXXm5nu9FbWOj6pWxUUfcQJBMOOUIHKAwJRB30/JPm07+c4UZg9Vz9JWuKRlULtZKYizSUWZ7fXmFjutvXeAAZU9VJwm/7VMTZyAmMdeIJsYM+vrO1NysahjXOlM8XrHkQifqgdm3yitl6Tea+vcFeERVugfQubTotn6UPfKcHUVnrtHQ7lbI4dEOVy+Pe4ZfBOz+1Q3YPBLaLjErSwB64gH5iaXEJW5fZ92idznsl4krcyDGjqOSwP74sxo/Ho/xkOd/zIOek7xo3RdA5VG1e5s3W+QTrSx/v+McgnryBaD5d8VOr1byjMOilLwPgQ2Fsp1ttwS2fGsVsPAhYOok9WGMYp7xmuRLb74Y2xcTV1rXgrmS1e93AWLLeLyN36gElSC9/IzbZ9le4IXX1Um7WxtcKZT9oPz6ylAalK6OYP4s11tPssTmMQ/H4o4tOh1IVv//px9fLKi7AlbJtpYfr4lnfp3P/bwes6v9B75J6KqgPbWdBchw5C1AFiDDNWC4eNaCLECGa8Bw8awFWYAM14Dh4lkLsgAZrgHDxQu3/12+4WL2TPGIDV1cQc+c/hkx64KwnJbmyhtNH44kzwiFmCOkYEJswvx3I/JqfpyYU751d8HjQwyIBTEhNv8Cj+2Jti0hYhwAAAAASUVORK5CYII=',
+  },
+  {
+    meta: {
+      widgetName: 'Button',
+      title: '朴素按钮',
+      desc: '朴素按钮',
+      props: {
+        disabled: {
+          type: 'boolean',
+          desc: '按钮是否禁用，true 禁用 false 可用',
+          defaultValue: false,
+        },
+        shape: {
+          type: 'ButtonShape',
+          desc: '设置按钮形状，可以设置为 circle 或者不设',
+          defaultValue: 'default',
+        },
+        type: {
+          type: 'ButtonType',
+          desc: '支持多种不同的按钮风格，可选值为 primary、success、warning、danger 或者不设',
+          defaultValue: 'primary',
+        },
+        plain: { type: 'boolean', desc: '是否为朴素按钮', defaultValue: true },
+        size: {
+          type: 'ButtonSize',
+          desc: '设置按钮大小，可选值为 small、large、bigger 或者不设',
+          defaultValue: 'default',
+        },
+        loading: { type: 'boolean', desc: '设置按钮加载状态' },
+        circle: { type: 'boolean', desc: '设置圆形按钮' },
+        icon: { type: 'string', desc: '设置按钮图标类型' },
+        text: { type: 'string | React.node', desc: '设置按钮的文本内容', defaultValue: 'Button' },
         block: { type: 'boolean', desc: '按钮宽度为父元素宽度', defaultValue: false },
       },
       events: {
@@ -1205,10 +1234,199 @@ export default [
         },
       },
       childrenWidget: [],
+      aliasName: 'PlainButton',
     },
     target: Button,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAUCAYAAADLP76nAAAAAXNSR0IArs4c6QAAAopJREFUSA3tl0tIVWEQx3/nappSlhaVr4ooelhCWmCPTdBGyqgW4iIMem1yEwRBBCVErYVa1KoWRYsWRougNkGtzAJTUEukzDRTKsWePm7/OR+Xk+DjdJXkQgP3njnfmZlv/vOf+TjH2388Wjoa5Xo0Sh4JJJ5HZ8TjhLfvWPRdoiUfq7MPIlGTNxCWeySGJlGv/wHMNnPJYRJISYGsBYFl7ycYGQnuZ1MLBaBgDRw6AE2tEFHTZS9xeu3DiVPfuQW6PkJ7ByQlQUUZ3Kqd2D7eJ6EAWPDGFrhxN9im5jzcewSZYmZgEIaHBc6DRZnSxU7RRkh9BZ/7tbZQ9wXwpA46ulyMFbkwLx1ev4FfQw5kZoaYHXX2bW+DvSbTQg+xzly/knMEuXAdfBnwjzEqD0KOGDFJS4Oqw7BqOeQug4K10vOhpAgy5sP2YgfySLljtLgQLp+BdPktFvCLp6F8j+zEXvUpF3Oq/9AMbNVmtgkCkp8NDx5PHPp5I2xS8vW6Wts1iokNq+HOfYFMdf7VNc5/9w7Ytll2shkSi9duu/VzVdovC/o0b5NJaAB1DWNb6OxJaG4bG9pYmkqMnfc9gZXNSOkuB6CzO1i3g8JabyoAoVsoCO00G8wfP6Fbg2pDbWLDHhO9XxlZvkTV17Gb1nZYmedayR4WrocXTb5ZXH+hGSgRzTlLlYeyssRaVP0PvfC0Xn1f6frbAMXkZbP6ea87tRqk92tmbD6u3JTPM6i5AD19miuV8NJVHdOqdjzilR3VG8UMiA3it+/hAyWrdHM1D4Nfw/uMZxmagfGc/1z7m+TNz47dQf2mK3HPwHQ3nin/xAdgHwUzVY1/Hcdyj/ifZQkIwk9en5S/AQh6o/E9CMWVAAAAAElFTkSuQmCC',
+      'data:image/png;base64,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',
+  },
+  {
+    meta: {
+      widgetName: 'Button',
+      title: '图标按钮',
+      desc: '图标按钮',
+      props: {
+        disabled: {
+          type: 'boolean',
+          desc: '按钮是否禁用，true 禁用 false 可用',
+          defaultValue: false,
+        },
+        shape: {
+          type: 'ButtonShape',
+          desc: '设置按钮形状，可以设置为 circle 或者不设',
+          defaultValue: 'default',
+        },
+        type: {
+          type: 'ButtonType',
+          desc: '支持多种不同的按钮风格，可选值为 primary、success、warning、danger 或者不设',
+          defaultValue: 'primary',
+        },
+        plain: { type: 'boolean', desc: '是否为朴素按钮', defaultValue: true },
+        size: {
+          type: 'ButtonSize',
+          desc: '设置按钮大小，可选值为 small、large、bigger 或者不设',
+          defaultValue: 'default',
+        },
+        loading: { type: 'boolean', desc: '设置按钮加载状态' },
+        circle: { type: 'boolean', desc: '设置圆形按钮' },
+        icon: { type: 'string', desc: '设置按钮图标类型', defaultValue: 'lugia-icon-logo_lugia' },
+        text: { type: 'string | React.node', desc: '设置按钮的文本内容', defaultValue: 'Button' },
+        block: { type: 'boolean', desc: '按钮宽度为父元素宽度', defaultValue: false },
+      },
+      events: {
+        onClick: {
+          desc: '点击按钮时触发',
+          args: [{ name: 'event', desc: '点击的DOM事件', type: 'Object' }],
+        },
+      },
+      type: {
+        ButtonShape: ['default', 'round'],
+        ButtonType: ['default', 'primary', 'success', 'warning', 'danger'],
+        ButtonSize: ['default', 'small', 'large'],
+        ButtonStyle: {
+          width: { type: 'number', desc: '组件宽度' },
+          margin: { type: 'number | Object', desc: '组件外间距' },
+          color: { type: 'string', desc: '组件颜色' },
+        },
+      },
+      category: ['通用'],
+      theme: {
+        Container: {
+          name: '按钮整体样式',
+          desc: '为按钮配置整体样式',
+          normal: [
+            ['background'],
+            ['border'],
+            ['height'],
+            ['width'],
+            ['padding'],
+            ['margin'],
+            ['borderRadius'],
+          ],
+          hover: [['background'], ['border']],
+          active: [['background'], ['border']],
+          disabled: [['background'], ['border']],
+          focus: [['background'], ['border']],
+        },
+        ButtonText: {
+          name: '按钮文字样式',
+          desc: '为按钮文字配置样式',
+          normal: [['color'], ['font']],
+          hover: [['color']],
+          active: [['color']],
+          disabled: [['color']],
+          focus: [['color']],
+        },
+        ButtonIcon: {
+          name: '按钮图标样式',
+          desc: '为按钮图标配置样式',
+          normal: [['color'], ['font']],
+          hover: [['color']],
+          active: [['color']],
+          disabled: [['color']],
+          focus: [['color']],
+        },
+      },
+      childrenWidget: [],
+      aliasName: 'IconButton',
+    },
+    target: Button,
+    screenshot:
+      'data:image/png;base64,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',
+  },
+  {
+    meta: {
+      widgetName: 'Button',
+      title: '圆形图标按钮',
+      desc: '圆形图标按钮',
+      props: {
+        disabled: {
+          type: 'boolean',
+          desc: '按钮是否禁用，true 禁用 false 可用',
+          defaultValue: false,
+        },
+        shape: {
+          type: 'ButtonShape',
+          desc: '设置按钮形状，可以设置为 circle 或者不设',
+          defaultValue: 'default',
+        },
+        type: {
+          type: 'ButtonType',
+          desc: '支持多种不同的按钮风格，可选值为 primary、success、warning、danger 或者不设',
+          defaultValue: 'primary',
+        },
+        plain: { type: 'boolean', desc: '是否为朴素按钮', defaultValue: true },
+        size: {
+          type: 'ButtonSize',
+          desc: '设置按钮大小，可选值为 small、large、bigger 或者不设',
+          defaultValue: 'default',
+        },
+        loading: { type: 'boolean', desc: '设置按钮加载状态' },
+        circle: { type: 'boolean', desc: '设置圆形按钮', defaultValue: true },
+        icon: { type: 'string', desc: '设置按钮图标类型', defaultValue: 'lugia-icon-logo_lugia' },
+        text: { type: 'string | React.node', desc: '设置按钮的文本内容', defaultValue: '' },
+        block: { type: 'boolean', desc: '按钮宽度为父元素宽度', defaultValue: false },
+      },
+      events: {
+        onClick: {
+          desc: '点击按钮时触发',
+          args: [{ name: 'event', desc: '点击的DOM事件', type: 'Object' }],
+        },
+      },
+      type: {
+        ButtonShape: ['default', 'round'],
+        ButtonType: ['default', 'primary', 'success', 'warning', 'danger'],
+        ButtonSize: ['default', 'small', 'large'],
+        ButtonStyle: {
+          width: { type: 'number', desc: '组件宽度' },
+          margin: { type: 'number | Object', desc: '组件外间距' },
+          color: { type: 'string', desc: '组件颜色' },
+        },
+      },
+      category: ['通用'],
+      theme: {
+        Container: {
+          name: '按钮整体样式',
+          desc: '为按钮配置整体样式',
+          normal: [
+            ['background'],
+            ['border'],
+            ['height'],
+            ['width'],
+            ['padding'],
+            ['margin'],
+            ['borderRadius'],
+          ],
+          hover: [['background'], ['border']],
+          active: [['background'], ['border']],
+          disabled: [['background'], ['border']],
+          focus: [['background'], ['border']],
+        },
+        ButtonText: {
+          name: '按钮文字样式',
+          desc: '为按钮文字配置样式',
+          normal: [['color'], ['font']],
+          hover: [['color']],
+          active: [['color']],
+          disabled: [['color']],
+          focus: [['color']],
+        },
+        ButtonIcon: {
+          name: '按钮图标样式',
+          desc: '为按钮图标配置样式',
+          normal: [['color'], ['font']],
+          hover: [['color']],
+          active: [['color']],
+          disabled: [['color']],
+          focus: [['color']],
+        },
+      },
+      childrenWidget: [],
+      aliasName: 'CircleButton',
+    },
+    target: Button,
+    screenshot:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAYAAAAehFoBAAAAAXNSR0IArs4c6QAABPNJREFUWAnVWV1sFFUU/u7SIhQlIqJYNJJqTIjyoJBo1RqMRTTQRa00Rt9UCNX491D65JP4AjURSbo+KIkxIYYGAotEDH0qKv5gYqyYIBF/UpafBxoLEqOB8ftmdteZ3dnde3fZdj3JZO7cOfec75577jl3zhjUQJ7nmeQLuNsAKz2gDR5ajUErRbay7cHgpOchw3uGPMfJsy89iK+MMWxWR5TjTqt7vU5qXMMrSVjznSQYnKLSNK+hPSkz7DSWzE6Au3q9ezhgE63W4aoojp+rcZCT3rA3Zb6Mex/XZwW4u9dr+wfYTKBPxAmptY/AdzUDfTtT5nglWRUBa/kvATu49HMqCavpvcF4Auip5CbkKU10gZdo1f11BysINIh0SWdpRGV8OLnee5v+9Uq5wfV6x2Xfkn7XvBonP9Yl/Fl6eCduwKT1GbzMzbi1UF8RYD9kcWlo3WmFzJP5TGAXuRkfKfTpCGBFg7+Bw5Piszaz50acDiwNR4/IplPoahiwmhA3oo8pNLm8hZUUyHAo9K5xmgbtueQStvDmxkFYhCSPzbewnxw8HChis+jgxkDHEuDeu4CFC4CZVwDjE8APx4ADnwO/ZSyEWLAkDJZrAzaJlwG7x2JMEcuC64H+tQHQsVPAEYK88Bcw7xqgsx1YtQz4ZAR4b4hbnumyFmLUWsPxw03ZI2IX/deJbuQZbVOfP1kMvA+MHI4Ol6Wfe5LnzmXAdXOBjamAN8pl/0R4SWJdb6rZbNPo+VtfB66axVT4JnD2j9KKV9wPvPgM8OEenif3l+azesPNR9fASivmENNDXG5ZeHB7ebAa8ulnwDejQPcKYNbMkJAqmsKaoKnbXMd2LAWO/Qoc+s5u5Ae7gZYZwJI77PhLcQlrgr6rTxonarsJGP3JfsjvjBQT54FbOK4mItYEw5Iz4BYu7bkLbqrPk38GN2ItJKxKHM6AJ84Bc6+2V61YPWc2cOK0/ZgSnASsr1tH+vFn+uPtgHasDS2+jQmFPlxzEiHWBD9DT9ooDfMMfwHcMA94fHm4N77dxEPq8wz5Ajt6NJ7HupdYE8xyFOVG3x4BdD29CpD1SlGCDreWOVQpe9tO4JLzWkYlC6ss7AxYYga2AWP0yY38kFFGu7IlKvzWm4G3+oFHHwj6FzkHz6g8/4lYm+iGqsg405/c9f0DwXJ3PchzA68xOpfOEkrF2pSZM8Abg8EqPJVNT9s/dlaVHyCsVaXmvIRsY/61QPudXHrGm+ZmAudB6Jcx4Ovv/zv0PNsNPNYJfLQPqBo0U7PJHn4yjBVMtvWlmkCzxMW6nBKH8WjqdH2hBtK18Xazmib3ePg+N43CKKz+eZgPQ/TjdW4iquMW6DNngw3rIkEYxc97QMleb4RhoyP33Eh3ZsqD6ZTx441Ss0+08IZcu9HuYWx5wPoq5Ux2NRpYYcp9MQtbHrAeGJH66CTjajcEEYuPKQQmAlgVFnb00LEvhnimpCkMwhKu+ghIBLA69CnNOPea2lNJwlBYVxOeIsDqVNWQM9yi9lSQdAtDnO5YwGL067MseU6me/i6qLNUbVi4yFOe/le/DDQV+dF0ljzrGfIkWzrifLbQnBUtHB7gF12CkizLI5eBDFi1QF84zlaS6gQ4Jyxbpe/hTlaJy+2Upx+LHvbSqjtsLJrTmbtXBTg3uOyv24Ap43+CXcZft/8CttKNGdzDdCsAAAAASUVORK5CYII=',
   },
   {
     meta: {
@@ -1218,8 +1436,12 @@ export default [
       props: {
         getThemeByDisplayName: { type: 'Function', desc: '用于配置组件内部图片的通用主题属性' },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
-        title: { type: 'React.Node', desc: '卡片标题显示内容' },
-        description: { type: 'React.Node', desc: '卡片描述显示内容' },
+        title: { type: 'React.Node', desc: '卡片标题显示内容', defaultValue: 'This is title!' },
+        description: {
+          type: 'React.Node',
+          desc: '卡片描述显示内容',
+          defaultValue: 'This is description!',
+        },
         operation: { type: 'React.Node', desc: '卡片可操作内容' },
         image: { type: 'React.Node', desc: '卡片片显示内容' },
         avatar: { type: 'React.Node', desc: '卡片头像显示内容' },
@@ -1240,74 +1462,11 @@ export default [
       },
       category: ['数据展示'],
       designInfo: {
-        SimpleCard: {
+        HAvatarCard: {
           sequence: 1,
-          title: '卡片样式类型',
-          desc: '按卡片类型不同选择显示不同卡片样式',
-          props: { type: 'simple' },
-          theme: {
-            Container: {
-              name: '卡片容器整体',
-              desc: '配置卡片容器整体',
-              normal: [
-                ['width'],
-                ['height'],
-                ['background'],
-                ['boxShadow'],
-                ['border'],
-                ['margin'],
-                ['padding'],
-                ['boxShadow'],
-                ['opacity'],
-              ],
-              hover: [['background'], ['border'], ['boxShadow'], ['opacity']],
-            },
-            CardTitle: {
-              name: '卡片标题',
-              desc: '配置卡片标题',
-              normal: [
-                ['width'],
-                ['height'],
-                ['color'],
-                ['font'],
-                ['background'],
-                ['margin'],
-                ['padding'],
-              ],
-            },
-            CardDescription: {
-              name: '卡片内容描述',
-              desc: '配置卡片内容描述',
-              normal: [
-                ['width'],
-                ['height'],
-                ['color'],
-                ['font'],
-                ['background'],
-                ['margin'],
-                ['padding'],
-              ],
-            },
-            CardOperation: {
-              name: '卡片操作按钮',
-              desc: '配置卡片操作按钮',
-              normal: [
-                ['width'],
-                ['height'],
-                ['color'],
-                ['font'],
-                ['background'],
-                ['margin'],
-                ['padding'],
-              ],
-            },
-          },
-        },
-        AvatarCard: {
-          sequence: 2,
-          title: '卡片样式类型',
-          desc: '按卡片类型不同选择显示不同卡片样式',
-          props: { type: 'avatar' },
+          title: '水平头像卡片',
+          desc: '水平头像卡片样式',
+          props: { type: 'avatar', imageOrientation: 'horizontal' },
           theme: {
             Container: {
               name: '卡片容器整体',
@@ -1365,6 +1524,7 @@ export default [
               ],
             },
             CardAvatar: {
+              name: '卡片头像',
               theme: {
                 SrcAvatar: {
                   name: '卡片头像资源',
@@ -1376,10 +1536,163 @@ export default [
             },
           },
         },
-        AvatarImage: {
+        HImageCard: {
+          sequence: 2,
+          title: '水平图片卡片',
+          desc: '水平图片卡片样式',
+          props: { type: 'image', imageOrientation: 'horizontal' },
+          theme: {
+            Container: {
+              name: '卡片容器整体',
+              desc: '配置卡片容器整体',
+              normal: [
+                ['width'],
+                ['height'],
+                ['background'],
+                ['boxShadow'],
+                ['border'],
+                ['margin'],
+                ['padding'],
+                ['boxShadow'],
+                ['opacity'],
+              ],
+              hover: [['background'], ['border'], ['boxShadow'], ['opacity']],
+            },
+            CardTitle: {
+              name: '卡片标题',
+              desc: '配置卡片标题',
+              normal: [
+                ['width'],
+                ['height'],
+                ['color'],
+                ['font'],
+                ['background'],
+                ['margin'],
+                ['padding'],
+              ],
+            },
+            CardDescription: {
+              name: '卡片内容描述',
+              desc: '配置卡片内容描述',
+              normal: [
+                ['width'],
+                ['height'],
+                ['color'],
+                ['font'],
+                ['background'],
+                ['margin'],
+                ['padding'],
+              ],
+            },
+            CardOperation: {
+              name: '卡片操作按钮',
+              desc: '配置卡片操作按钮',
+              normal: [
+                ['width'],
+                ['height'],
+                ['color'],
+                ['font'],
+                ['background'],
+                ['margin'],
+                ['padding'],
+              ],
+            },
+            CardImage: {
+              name: '卡片图片',
+              desc: '配置卡片图片',
+              normal: [
+                ['width'],
+                ['height'],
+                ['background'],
+                ['borderRadius'],
+                ['border'],
+                ['margin'],
+                ['padding'],
+                ['boxShadow'],
+                ['opacity'],
+              ],
+              hover: [['width'], ['height'], ['background']],
+            },
+          },
+        },
+        VAvatarCard: {
           sequence: 3,
-          title: '卡片样式类型',
-          desc: '按卡片类型不同选择显示不同卡片样式',
+          title: '垂直头像卡片',
+          desc: '垂直头像卡片不同选择显示不同卡片样式',
+          props: { type: 'avatar', imageOrientation: 'vertical' },
+          theme: {
+            Container: {
+              name: '卡片容器整体',
+              desc: '配置卡片容器整体',
+              normal: [
+                ['width'],
+                ['height'],
+                ['background'],
+                ['boxShadow'],
+                ['border'],
+                ['margin'],
+                ['padding'],
+                ['boxShadow'],
+                ['opacity'],
+              ],
+              hover: [['background'], ['border'], ['boxShadow'], ['opacity']],
+            },
+            CardTitle: {
+              name: '卡片标题',
+              desc: '配置卡片标题',
+              normal: [
+                ['width'],
+                ['height'],
+                ['color'],
+                ['font'],
+                ['background'],
+                ['margin'],
+                ['padding'],
+              ],
+            },
+            CardDescription: {
+              name: '卡片内容描述',
+              desc: '配置卡片内容描述',
+              normal: [
+                ['width'],
+                ['height'],
+                ['color'],
+                ['font'],
+                ['background'],
+                ['margin'],
+                ['padding'],
+              ],
+            },
+            CardOperation: {
+              name: '卡片操作按钮',
+              desc: '配置卡片操作按钮',
+              normal: [
+                ['width'],
+                ['height'],
+                ['color'],
+                ['font'],
+                ['background'],
+                ['margin'],
+                ['padding'],
+              ],
+            },
+            CardAvatar: {
+              name: '卡片头像',
+              theme: {
+                SrcAvatar: {
+                  name: '卡片头像资源',
+                  desc: '配置卡片头像资源',
+                  normal: [['width'], ['height'], ['margin'], ['padding'], ['background']],
+                  hover: [['width'], ['height'], ['background']],
+                },
+              },
+            },
+          },
+        },
+        VImageCard: {
+          sequence: 4,
+          title: '垂直图片卡片',
+          desc: '垂直图片卡片样式',
           props: { type: 'image' },
           theme: {
             Container: {
@@ -1455,65 +1768,10 @@ export default [
             },
           },
         },
-        TipCard: {
-          sequence: 4,
-          title: '卡片样式类型',
-          desc: '按卡片类型不同选择显示不同卡片样式',
-          props: { type: 'tip' },
-          theme: {
-            Container: {
-              name: '卡片容器整体',
-              desc: '配置卡片容器整体',
-              normal: [
-                ['width'],
-                ['height'],
-                ['background'],
-                ['boxShadow'],
-                ['border'],
-                ['margin'],
-                ['padding'],
-                ['boxShadow'],
-                ['opacity'],
-              ],
-              hover: [['background'], ['border'], ['boxShadow'], ['opacity']],
-            },
-            CardTitle: {
-              name: '卡片标题',
-              desc: '配置卡片标题',
-              normal: [
-                ['width'],
-                ['height'],
-                ['color'],
-                ['font'],
-                ['background'],
-                ['margin'],
-                ['padding'],
-              ],
-            },
-            CardDescription: {
-              name: '卡片内容描述',
-              desc: '配置卡片内容描述',
-              normal: [
-                ['width'],
-                ['height'],
-                ['color'],
-                ['font'],
-                ['background'],
-                ['margin'],
-                ['padding'],
-              ],
-            },
-            CardTitleTipLine: {
-              name: '卡片标题提示',
-              desc: '卡片标题提示配置',
-              normal: [['width'], ['height'], ['background']],
-            },
-          },
-        },
         ComboCard: {
           sequence: 5,
-          title: '卡片样式类型',
-          desc: '按卡片类型不同选择显示不同卡片样式',
+          title: '自定义组合卡片',
+          desc: '组合卡片样式',
           props: { type: 'combo' },
           theme: {
             Container: {
@@ -1600,12 +1858,13 @@ export default [
             ['background'],
             ['boxShadow'],
             ['border'],
+            ['borderRadius'],
             ['margin'],
             ['padding'],
             ['boxShadow'],
             ['opacity'],
           ],
-          hover: [['background'], ['border'], ['boxShadow'], ['opacity']],
+          hover: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
         },
         CardTitle: {
           name: '卡片标题',
@@ -1646,48 +1905,6 @@ export default [
             ['padding'],
           ],
         },
-        CardContent: {
-          name: '卡片内容按钮',
-          desc: '配置卡片内容',
-          normal: [
-            ['width'],
-            ['height'],
-            ['background'],
-            ['boxShadow'],
-            ['border'],
-            ['margin'],
-            ['padding'],
-            ['boxShadow'],
-            ['opacity'],
-            ['color'],
-          ],
-        },
-        CardAvatar: {
-          theme: {
-            SrcAvatar: {
-              name: '卡片头像资源',
-              desc: '配置卡片头像资源',
-              normal: [['width'], ['height'], ['margin'], ['padding'], ['background']],
-              hover: [['width'], ['height'], ['background']],
-            },
-          },
-        },
-        CardImage: {
-          name: '卡片图片',
-          desc: '配置卡片图片',
-          normal: [
-            ['width'],
-            ['height'],
-            ['background'],
-            ['borderRadius'],
-            ['border'],
-            ['margin'],
-            ['padding'],
-            ['boxShadow'],
-            ['opacity'],
-          ],
-          hover: [['width'], ['height'], ['background']],
-        },
         CardTitleTipLine: {
           name: '卡片标题提示',
           desc: '卡片标题提示配置',
@@ -1698,115 +1915,22 @@ export default [
     },
     target: Card,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADYAAAAeCAYAAABnuu2GAAAAAXNSR0IArs4c6QAAA9ZJREFUWAntWFlPU0EU/roApYCCYIOIILhhiihrVBITlGhMICYQH/TJxIQX/4S/wsT4YIwvyoNCoqIWISi4YKlaqdXaQoGWrWwFLIXS1jljeoM6hZq0BpFJ2jv3u+eeOd+cbXJlBoNBFwgEqrGBhlwub1USKa1Wu4FoASaTqVq+oRitILNJbMVm/BPT/8tjM+45jI5PSp6ZnfuG4dEJLC754Bxxwedb5s+Wl/383ru4hJGxSbhn56V3xl1TmHHPs59YlyQYo4nQY0Tg+q37MFvsWGRG37jdzOb9iFMq8OBpJ5pbnnNzHuo60fSoA0qFAhbbAH/Hs+CFtd+Bazfv4ZtngW+GSFeM+EhqFQ0NDVc1Go0E0CQ5KRFJ6kS0PHvFPDEBhVyOupoqsP6AvXnZHJ+emYPxkw2XLtRw+dzsHbD2OfD56wD0782oqiyBtiA/rC6ZTPbTmtG8cblcEHqMFikvPohMTToz1I762iqEDEndmoIzJ49x46tPlCNj21ZuE9lJcja7E2lM5nhFkWRrOF2SQAwmYYlNTrkxNDyGxEQVjCartHQwGMQHk4V5Qs08ZgVr8NKzXrMNqoR4DDMvU46FRjhdoeexuAqJ+f1+3G3S4bB2Ly7WnUZbZw+GnGN8/XY2p4Jw5XI9vN5FtHa85TgVlyftb3D+3ClUlGhxp6kVVFxW0xULQiGdQmKP216zouHD2VPHkZOdiUoWVo3NrbBYB9Hx0sDzjTxWX3sSXd1GmFm4NjIiFHJ7du8EhSiNh7ouhNNFlTSWQ6bX64Mb8KwYvnjEcjf/hm6laBEP6z9UBalw0KBeRvlClS8aeAIrMJ6FBWxJSeb6qSBR3qYkJwnxtNQtXO5P/oQ55mMkXrzqwRJr1FT1ul4b+ILRwqkfGt5/wuiYi9tq/mLDwKCT90kR/ieEQrLCBk0lm04TX212TE27QTuWuyuLl/Jo4OR1DeuRbw29iI+Lg8M5ioqyIk5MhId6aMjota6rNujcnJ2gECFiBfvzJV3RwtUszAv25UH/rhdlJYc4KVokHC4ZEOFEGIr0rsfjxfy8h4fi9MyspC5aOCkccowgIz2NX6UFVsFXyqw1FxILBILo7jGiqPAASosL0cN2lU700cLJqM+WPl6cKo+WslybgGvix0klHL4WkV+fC3PsIzsyqdUq5OflQKVKgJ8VkD67A9MsLKOBq+LjWLO342jFESgUcmxnXuvWG6FWqWDrH/oNz87KhFIpLOC/8uH3lGObDVq4NesYFObYOrY3YtM2iUW8VetEcNNj68QREZuhpA/49K074jf+AUHGSfcdNwCwOhJLWKwAAAAASUVORK5CYII=',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHYAAABICAYAAAAj1wHMAAAAAXNSR0IArs4c6QAABPlJREFUeAHtnbtuE0EUhuM4gImRkGi4tFGUhjfgGWiQKGhCw3vwIlRpUIScFHT0PERqJC4NFCgXCeIw/8j/6pzx2ETJemaz+kcazjmzZ27/l1lIsqwHa4vLYPElXemQAhe5teTg5drQd1F7bly1rU6BLMgwnWu3sKzPZdk2+rTMkS2jAMHRYlbrcxWxbYNRYgkvZ9mGLtZPhlDYggIWHHxUaG7bMU0aN2AsIPqwuYqB2A5fZbUKEChmoZ9aXuNKLtITm4O6HrLRTmuh2nwOKnt9BXgCrSXMaRgePiwLYrBg/hrAEg6TCI4gYW3ldVrbj77s1RVo4IQh4NsKmNCdUHHN+iGMZWBPLEFZOwxpgEpLwDYHvkr7CligBAiIqOehQnfa4DYFubEQEgHeCq13Qr0b6r1Q7+/t7T09Pj6enJ+ff79QqaIAtAcDsACTGRswAisw4+Ejz0geAcDiBN8OdRTqONQIdTqd/qyyG006pwBYGLhgBFZgBnZgGMGSLi1vtaCPuhG+St5tbm6+CL5KRxQ4OTk5GI/Hb8Jy/oaK2zEqb9PxFg6QaXGQR6PRszRBcV0FZkx4CMnLLcqCtQn010N56HooqK7AjAnYkRPWZP14T04XygTa9LribihAPrRuVfbE8gITadku2y0FyIfWrS4FiySWbAdelK2uQMrHssveirFiJtFW34UWMKcA2dC6hPTEuosKbq4C9keK6S6yXwlpUhq///AxbcrGr14+j+2rzs9O3p/GhYx0YvsD2e1EYJ0c/QkEtj8s3U4E1snRn0Bg+8PS7URgnRz9CQS2PyzdTgTWydGfQGD7w9LtRGCdHP0JBLY/LN1OBNbJ0Z9AYPvD0u1EYJ0c/QkEtj8s3U7w+zxWQObzxHiyPNbwxPJX10NBJxQYDAZPwkL+mGqfL77Qie0EpvYXIbDta9qJEQW2ExjaX4TAtq9pJ0YU2E5gaH8Ry55SvNJsR0dHl+q3s7MT8256/qU2WyFJJ7aC6CWmFNgSKleYQ2AriF5iSoEtoXKFOQS2guglphTYEipXmENgK4heYkqBLaFyhTkEtoLoJaYU2BIqV5hDYCuIXmJKgS2hcoU5BLaC6CWmXAa2eT1qiYVojispsJDRMrBXmkmduqEAn1CEBWQ+pYjf0/IpxW/dWKpWYRUITyk+DjGfUkzfgjr3lKI92vH1qHYw+Z1SIOVj2WXfzMYOtJ3ajRbTKEA+tM0FOLm/Y5lI6zoo6IwC5EPrFmbB2gT64U3l0x+uh4LqCsyY4I3i5IQ1WX/piY2vIj87O/tcfSdagFNgxsS9Kt4lhIAnlrRp2Wk6mUzehv+/8yvtqLiOAmABJmH2hlHwyY02fnuDb3VQrKW/dnh4+Htra+tge3v70XA4fBD+mY2PbFEprABuv6enp5/29/df7+7ufgnT8wMeCBO2KQBIiPRp+X2ttfBRmUPbDCinNQUsMPj2hBIqbZobP6uFK3HEQyNidGSn/0EFZJXrK2A5UHtaCxc+262NK8BPmNBooSBGQUe2syPb2J7a2FF/XFsBMrDWMoCfgrWTzn0aJToAFgdEMmHyGtqQQ6iIVVanAHQnD/qpxezMiSuxcHI+26yljwGsHwfUH60qYGERJiZge2qbaxaM9bk620afljmyZRRYCDGZPublIOXa0HdRezKuwhUrQMDpNK59Gaxl19JBFddTwAHlMv4BuKNH7aSdPRQAAAAASUVORK5CYII=',
   },
   {
     meta: {
       widgetName: 'Card',
-      title: '卡片样式类型',
-      desc: '按卡片类型不同选择显示不同卡片样式',
+      title: '水平头像卡片',
+      desc: '水平头像卡片样式',
       props: {
         getThemeByDisplayName: { type: 'Function', desc: '用于配置组件内部图片的通用主题属性' },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
-        title: { type: 'React.Node', desc: '卡片标题显示内容' },
-        description: { type: 'React.Node', desc: '卡片描述显示内容' },
-        operation: { type: 'React.Node', desc: '卡片可操作内容' },
-        image: { type: 'React.Node', desc: '卡片片显示内容' },
-        avatar: { type: 'React.Node', desc: '卡片头像显示内容' },
-        content: { type: 'React.Node', desc: '整个卡片显示内容' },
-        children: {
+        title: { type: 'React.Node', desc: '卡片标题显示内容', defaultValue: 'This is title!' },
+        description: {
           type: 'React.Node',
-          desc: '卡片的children 可作为content显示,但优先于content显示',
+          desc: '卡片描述显示内容',
+          defaultValue: 'This is description!',
         },
-        type: {
-          type: 'CardType',
-          desc: '卡片风格 可配置 简洁,头像,图片,组合卡片几种风格',
-          defaultValue: 'simple',
-        },
-        imageOrientation: {
-          type: 'ImageOrientation',
-          desc: '当选择头像或图片卡片风格时,可配置图像的方向.水平,或垂直',
-        },
-      },
-      type: {
-        CardType: ['simple', 'avatar', 'image', 'combo', 'tip'],
-        ImageOrientation: ['horizontal', 'vertical'],
-      },
-      category: ['数据展示'],
-      theme: {
-        Container: {
-          name: '卡片容器整体',
-          desc: '配置卡片容器整体',
-          normal: [
-            ['width'],
-            ['height'],
-            ['background'],
-            ['boxShadow'],
-            ['border'],
-            ['margin'],
-            ['padding'],
-            ['boxShadow'],
-            ['opacity'],
-          ],
-          hover: [['background'], ['border'], ['boxShadow'], ['opacity']],
-        },
-        CardTitle: {
-          name: '卡片标题',
-          desc: '配置卡片标题',
-          normal: [
-            ['width'],
-            ['height'],
-            ['color'],
-            ['font'],
-            ['background'],
-            ['margin'],
-            ['padding'],
-          ],
-        },
-        CardDescription: {
-          name: '卡片内容描述',
-          desc: '配置卡片内容描述',
-          normal: [
-            ['width'],
-            ['height'],
-            ['color'],
-            ['font'],
-            ['background'],
-            ['margin'],
-            ['padding'],
-          ],
-        },
-        CardOperation: {
-          name: '卡片操作按钮',
-          desc: '配置卡片操作按钮',
-          normal: [
-            ['width'],
-            ['height'],
-            ['color'],
-            ['font'],
-            ['background'],
-            ['margin'],
-            ['padding'],
-          ],
-        },
-      },
-      childrenWidget: [],
-      aliasName: 'SimpleCard',
-    },
-    target: Card,
-    screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHAAAABACAYAAADCmvPmAAAAAXNSR0IArs4c6QAAA/JJREFUeAHtnE1yEzEQheMQwMRUseQS3IBbcAbuwUVYZW9uwV1gA6ukssA2eip/Uy1Z4/zZk8j1VKV0q9WS2u9Ds0Ozs/E2G5/yzDMosGmd2YLUimntWLy1r2NPV6AJLG1bxCOU6HN8jOFjybE9rAIAwmr36HNajl0wqiyQWpaYlkS/2sLDBygQAclXl7Yxru3q8QAggsCXbXVtRFy+22EUAJx2w68tc5y4qW9gC955ylYcG+HFfDa1vb8C3KhogbZO28iXpWkszck/E0AgkAQggMnGzjw2rsO3vVuBAUJKlR+7oElf4Gku+mmY2yzeQIBE+yqlCR4WkDFHvtvjFYjgACVY6qvUpS82uUNTbm7AANTrFH2b+rvU36f+4erq6tP19fVytVr92rgdVQFpLK2lubTfMhALMREbLhPcMmENBFA38k3q89QXqWd46/X6z1Gr9uY7CkjzAFEsxERsxEisMkAoYvlEirL6RfrX8P3y8vJL8t0mVuDm5ubHYrH4mo79l7o+o+p8XvOnV8DqVsCcz+ef6wSPp1Fgqz2XCi7F4RFgTMA/T+1jscKDyRTYai9G8NDZ0c/f0rogErD1vMfTKgAHbHF6vIFMkIglbvs8CsABW1RRA1QSrbmASdvJFKg5REbNT6gqIwk7WbU+aEcBGGCLhPoGFpMevHwF9gFsEn/5P+kkKxxlsQ/gSSpxaj/KADsnaoAG2LkCnZfvG2iAnSvQefm+gQbYuQKdl+8baICdK9B5+b6BBti5Ap2X7xtogJ0r0Hn5voEG2LkCnZfvG2iAnSvQefm+gQbYuQKdl+8baICdK9B5+b6BBti5Ap2X7xtogJ0r0Hn5voEnDHB4xqLz33gK5Y+y8A3sHO8YQIhjO/+ZXZcPA2zxY2qAMUl+HBcLPZhMgZpDwaQGqKpYgJ2sUh/UVAAO2CLJAAs5XuQAcNiiyAgwJuCnF5/Wv4sVHkymwFZ7vcwED50d/eYjByTkJ51ub29/TlaxDyoU2GpfPK1VJKQBNxBoWBatl8vlt/QS2996ocfHVUCaS/t0ysAi+fDB5iL0H+jVBVMP3Pm5yZ23A6cLPPS5SeAlbsMbXMQAGq18dXKwWu/2OAW4Tdh443idEEsONr89ybEKxqaxFpJ8FzzBdLu/AlFvNMZGiPKJR5tP0uOhCkbxNVbTQuIsJEa8tnmh/9xbAbSONmotvwYYN995tV4LBIUNlQw05hRTDvA0dnu6AtIX3fFrq1PIySdGCC2fWLT42iD6eUP/eZQCEQrQtBHx2g5zEUD0qSLG8LHk2B5WgVFY1TE5rwWjFdPasXi1r4cHUgCQ9XZFfB+UfXP1ph4fX4ECHMf9B+7uSnwWzloNAAAAAElFTkSuQmCC',
-  },
-  {
-    meta: {
-      widgetName: 'Card',
-      title: '卡片样式类型',
-      desc: '按卡片类型不同选择显示不同卡片样式',
-      props: {
-        getThemeByDisplayName: { type: 'Function', desc: '用于配置组件内部图片的通用主题属性' },
-        viewClass: { type: 'string', desc: '用于配置通用主题属性' },
-        title: { type: 'React.Node', desc: '卡片标题显示内容' },
-        description: { type: 'React.Node', desc: '卡片描述显示内容' },
         operation: { type: 'React.Node', desc: '卡片可操作内容' },
         image: { type: 'React.Node', desc: '卡片片显示内容' },
         avatar: { type: 'React.Node', desc: '卡片头像显示内容' },
@@ -1823,6 +1947,7 @@ export default [
         imageOrientation: {
           type: 'ImageOrientation',
           desc: '当选择头像或图片卡片风格时,可配置图像的方向.水平,或垂直',
+          defaultValue: 'horizontal',
         },
       },
       type: {
@@ -1887,6 +2012,7 @@ export default [
           ],
         },
         CardAvatar: {
+          name: '卡片头像',
           theme: {
             SrcAvatar: {
               name: '卡片头像资源',
@@ -1898,22 +2024,26 @@ export default [
         },
       },
       childrenWidget: [],
-      aliasName: 'AvatarCard',
+      aliasName: 'HAvatarCard',
     },
     target: Card,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHYAAABICAYAAAAj1wHMAAAAAXNSR0IArs4c6QAAB7JJREFUeAHtnc1uVDcUxx3yQUICQQGUpAhYIMSGN+gzdFOpi27opu/RF+mKTYWqwKK77vsQLFFEkoJIJMp3Pqh/Jv/B17nX92NmMlxyjuQ5x8fHx57zH/vajmcy5appqrrISr6iCHwq60sZeGU66lbpy/yabnwRKAXSN1fQx2DFsroV6ySLy8b46URAwInTaiyrF0E3o1zCBV4Zl44qsZy4sOwIIhADh0wi5rGeZtL8AJgYIMnwsoQj6ZGNxhsBAUorklOuMvXkUzpiy0A9563Ri8egxvZyanz4CGgExlxgHnn3yHARebCQvQNYgSMjAScg4XFSuXhcT7Lx7hEYgONdIMcJMIm7QKUsln020FQ8YgVUzKe9GaCKC+DYBtlo9BGIARWAgEg69Im4i3txQNgGEkgCcNZrz/u04NOST8sPHjy49+bNm43Dw8OdT0YTiQCxBwOwAJNjbMAIrMBMg094BuTJACwjeM6neZ8WfQqgHh0d7U7k3VijJyIAFhG4YARWYAZ2YBiAFbrimmpBnzTjPyW/X7hw4UcvG30lEXj79u2jxcXFX313DnxiOiZpmg5TOECmVAB5fn7++9TA8pONwDEmGoTCq9CpGNjYQPI5T6uFGpaZeASOMQE74USfYjnMyWlHZSCellv+64iA8BEv9Cre7qhAhuLSt+YfPnxwr1+/dv6Z4A4ODkLCyczMTEj+2e2Wlpbc+fMs7IxaRkD4iBeqSwlnaA8WTV5mCT3rl2XbnrciwHzx4oX7+PFjo3pzc3Pu2rVrAeRGFczITU1Nrfsw7B+ndBF14khRIQNoSPxzruZ1f3/fbW9vu3fv3tVYFov5ADx79swtLCy49fV1NzvLZ8qoJgLCRrxgHi+eCgVtM4D59OnT1qDG7YzCR+zvLMtlz1jFo/SToMKYA8jm5qbz03as7iT7E5bg68aNG2EEVzn548+/qooK+p9/+iHkx21faPT0MpUYDT1imX6ZRkcBquKBL3zi26hbBIYGlmcqo6yO/N4rrH5ZASPXET7xbdQtArmpuNYjq9+6hZJfvbmVlRXnj8AGoxoddXd3d7Nt4Bs7tkRG7SIwFLBsaepobW2Npbnb2dkZbH/Y3ly9etVRhj5HtGHA5iJUXlY/J5bXcxw+1O1TL1265Kanp93W1lbBlnroOKi4ePFiRQuf1djSllG7CHQGlimyjgA2N93u7e05bOqoSVt1Ps5aeWdgOSbMEdMvi6TcqGYkMqKxzVFdW7m6Z7WsM7Cc/eZI25/cClhlsq3yV9dWVb2zrB8bsASVEZl7hlLW5PlpwLb/iHYGtklTeoay1UkJXd0zOK1j+eYR6LzdYUWbe37SBcrZzrCt4TlJ4nnKYT+JsianS7Rl1C4CnSPWBFi6wp6VZyjTLmBC1GV6pazugEP2oaK9NI5AZ2D5I3lutcpql5EKqM+fP3fv3793/oZd6BiLJn9vx12+fDkcPjByc8eStGXULgKdn7G50yCm29XV1TAaOYjgAyBQ6R4yOsoAHNvclifXVru3e3asOwPLYT5TaRkJiNzhhOq9fPkygFq2wMKGNuzqjKLVnHMyoATIuhoTrsX4PFdjtqrccSLEn9dS0mLp1atXaVFpfnl5ebCYSg2uX79uZ8VpUHzez3DfeaarMfD4fnHl1ZgSVydVjEwWROkCiG1Om70nHxCm5JTwrdGfllk+H4HOU7HcckeJhVJMHDrkFkOxLTK26UEFPvFt1C0CQwPLxTOmy9zip23X8IVPu9TWNnJf7IcGFldMmdxRSkful2aaS/iou+/U3NvZtRwJsIQPcG/duhV413COwkfXtr+1ep0PKMoCwdR58+bNcJ1l3BfGnzx5UtaFE7q7d+8GXd/tT7yxGsVIgVVbrGRJLIhY8XIYwSpZK2WOFEn2FQ9FbPR8LMCqmxwskK5cuSKV8VOKwMiesafUX2umYQQM2IaB6puZAds3xBr214BtGKi+mRmwfUOsYX8N2IaB6puZAds3xBr214BtGKi+mRmwfUOsYX8N2IaB6puZAds3xBr2Nwfs8D8o0bATZtY5ApUY5YDt3JpVnHwEdEMRDsi6pchffTr/gNfk39a33wN/fSj7A17piI2HNnKc//aj1a93mOJTwCoFlremCuL9ertnp7fCR7zwzg3YQjh6lRGg4oXOx8DGBpL912yO/i3UsMzEI3CMCd9wE070KZZLf69YBuGnyP0N/X8m/k6sA4UIHGNS+Kn4goHPaMQKTHFVOtrY2PjNf39nL61o+clEACzAxLc+wMjLwk08bG/Y6kAxl+weP3783+3btx/duXNnzV/mXvHLbPuZtM/xOtVXpl//Ham/Hz58+Mv9+/c3feP6Bw8CEz4gABSIksUZzexrY45Mko24VxmNOAIxYMjxCBWo4qlt+F8t6k8Bca8kT0VVqgMVkI2Gj0CMg2IvHoOLLH3MQw84YUIZg0IeoqL0qiid9CkPFe1l6AgIg5jHGCCnwMaNnvh+LBUASw4xFpgqQ4eNQCVvNL4IEHfhITnltC6b0JMYnDJZuphLxkEsB4f2MtIIxGAJTBqQPuWDshiYWFbvYp1kcdkYP50IVIKYNB/sykAq01G3Sp/4teyYIyCA02YK+hxYubLUqeUnF4ECoOrG/33awIznBx6tAAAAAElFTkSuQmCC',
   },
   {
     meta: {
       widgetName: 'Card',
-      title: '卡片样式类型',
-      desc: '按卡片类型不同选择显示不同卡片样式',
+      title: '水平图片卡片',
+      desc: '水平图片卡片样式',
       props: {
         getThemeByDisplayName: { type: 'Function', desc: '用于配置组件内部图片的通用主题属性' },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
-        title: { type: 'React.Node', desc: '卡片标题显示内容' },
-        description: { type: 'React.Node', desc: '卡片描述显示内容' },
+        title: { type: 'React.Node', desc: '卡片标题显示内容', defaultValue: 'This is title!' },
+        description: {
+          type: 'React.Node',
+          desc: '卡片描述显示内容',
+          defaultValue: 'This is description!',
+        },
         operation: { type: 'React.Node', desc: '卡片可操作内容' },
         image: { type: 'React.Node', desc: '卡片片显示内容' },
         avatar: { type: 'React.Node', desc: '卡片头像显示内容' },
@@ -1930,6 +2060,7 @@ export default [
         imageOrientation: {
           type: 'ImageOrientation',
           desc: '当选择头像或图片卡片风格时,可配置图像的方向.水平,或垂直',
+          defaultValue: 'horizontal',
         },
       },
       type: {
@@ -2011,22 +2142,26 @@ export default [
         },
       },
       childrenWidget: [],
-      aliasName: 'AvatarImage',
+      aliasName: 'HImageCard',
     },
     target: Card,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHYAAABICAYAAAAj1wHMAAAAAXNSR0IArs4c6QAAB8BJREFUeAHtnftvVEUUx093+3J5tchDSisKYimEAmLl0dCEBB8xmhiIJiQNiX+J8S8xIU34wWBMNDFBfFJoCAWUpwUBgVJoYSkIbJeWbp0z9LudO7273OXOdu/imeT2nDlzZubs+XTund7e3a2g3KUid5O0RCgDE36x+MHzs3HfXHa/ccVWvAz4glTTeewmLFNHWKYNOiR8RM5MBgAOkmc1dUShbZWoWRLw/CRs3MXUrSGk6iADJjjW+eCcm3aexq5nwZiAoLP0O3gg2FmXUtwMACjPAt2WaEMkE/aK9YMaU95shzShmv4YVGT4DGAFmhIwM2p41lmicJ1ZwJ8YLODACeAAkqV5oB3S7Add5PNnIAtHDcG6eTBMzjugcpupq6ouFeaKBShTxpUbQ4UEYNOHdSnuM2ACBUCGyMe4OjjvkErNFvbVKzZrmVS4AwBqqF1d+95e3ND41YOHqYZ0+jFDjkzZ/enHkYmlmIFkMpnBdDp9eP/+/V/s2bPn+uRcGqLSGTZ03cTgzGKuxCzU2ll1B27fGW6KGlQz8Bddj8ViixOJxM7Ozs7f9+7d26ReL86iJrNsGgDWbPSsWF6po2Nj8Mt2FKU0GaioqKjftWvXl2p2ZoLD5qcb7AjhpDvx6dd2kHppM1BbW9uuIrCheoLiRhQA5Tr0mJx+kZ7oSD4tq2iYHThxcKaed8V6HLmnlEhlAHwgPcGZKxYNcISEXWS0MgA+kJ7obLDshOLbAY0iS54Bm4/JzvdUzBHDCbLkr0ICmJYBsIH0ONgr1tMolfLNgHlL0X4Vvr8JtlPU6/u+/i5QiLiDVWz/QMEEd8rJSFZs8CSWlaeALStcwYMVsMFzVVaeArascAUPVsAGz1VZeQrYssIVPFgBGzxXZeWZ7+/YQC9kx/Z2WrhgfiDfQp1u37lLB385XGg38VcZCL1iiwWV6RRz7BedfugVywkaHR2lb78/6DRXn3y0g6qrq52O+X8azAlYfopqfJwfmHtaGpcuoZfn19GtwSEaHErCXJD0PJlVUE9x5gw4AWumclXzCtrQulqbVq96gw4dOUb9N26ZLqLPQAZCX2PtGFe8/ir9++Ah/fhzN42NjdFyVZcy8xlwDpZPyVVVlVQ3by7F4nHPKdp+ebW1NVRZGanHlO0Qy7buHOyZcxepRm162ja20kQmQ+f7LvkmJ66gb+/YTFve2eDbLsZwGXB+je2/cZN+OPAb1dfPI/47NJUa8Y1wU9s6vap5Za9pWUlnz1/09QtrxP9Zg45TbP+gcYT1c75iOaDZs2fRtesDOaGuenMFLWtaSneSw/QolaK1a5ppySuLwr4W6W9kwDnYhiWLqKO9jTase7ozNubS6uJFC2hdawuNjKT1jvnQkV5S70uhrZveUr8QCdtd6s+ZAadgeaVuUYDU2xCoeeVyem1ZoyesROIlat+8kSYmJuhQTy+ph9FpePg+HTt+St2MqKJtW9uIr71SwmfAGVje3fJKra6qolNn/iL1fh+9gaqvm6ujjMdjGlxNTTUdP3mGkuo0jHLlaj9d+PuKvuZualsPs8gQGXAClp+o2qyAzJs7h/ouXtYboZ6jJygeewqTbw3yLnm+2lBdunKNLl2+Oi3kE3+cVZutpLr2NlCLuskhJVwGnOyKGVxTYwMN3U7SyT/P6YgGbg7R6XMXqFVtjD54dxvNSiQoeXeYek+c9o2YT8/dPcfp/R0d1Lq2Rb3b081Nxb6+Pt/5bGNzc7M2Rc3fjjNo3cmK5cn4z5pudd1kQChnFdj+gVsa6oi6nmKjhHZb8jW3W92C5DHUG4/sZqkXkAEn2eNdLW+GHj8enTZ1z9GTdO/+Azqs2nkn/KySvHtPXYP9V/Wz+kr7VAacnIqfPHlC9xU8vx0tr76ffj2iby36tU+FMqX9c/UGrV+7Wu+Up6yiFZIBJ2D5GvvZzg8LmVd8i5yB0Kdivm1YrFLMsYsVc1TGDb1i5ZmkqKD0xhF6xXqHk1pUMiBgo0LCcRwC1nFCozKcgI0KCcdxCFjHCY3KcAI2KiQcxyFgHSc0KsPlAzt1Nz8q0UocdgZyMsoH1h5E6mWUgVx3nvCbAFlGL8kbKv7P6rXmrkXNP3ek2c8n9mVkr1jTiXWznmcOaSpBBmw+HlY2WI4PHSBLELNMGSAD4APp6SJgPekoqwqAQnqCN8GaDtAz6v01U++P9HSVSqkywN8PoObG9wAwKy5gpismWG0wHLhjZs7sxAAaREYjA/ylD8xm8vAARYQAi0ZIdMoMDvR/rp4V5rqUCGRAPWo0zN/koULJMlI6uEFO+wwKNLDkjuOdnbt704/uvbdwQf11OS2rjJSo8Ok3lUp909XV1TH59Sx8iWRGJrNsdPysNz5BEzokr2Z8BQgk2/iAD6QySXGcARMYFhpWKaBC2r6ejyrgRrNwnTui07OgMmQp4TNgckDuIQEWEnZT6gj4zhMbTShc58KdYUdH2GC3pe4oP0JnAAxMaTJgnVnABj9MPO3bKNmBYZmOgIk27sw+gMp1KcXLAOcdPKDbkmeHj47EhOOnw2ZK6DyAqesB5YfTDJiwAJMngN2W2TYTjKkjOtMGHRI+ImcmAzkhWtNrPz9Ifjbum8tujSvVImcAgO1pPPZ8sPK12YNKvXQZ8ABFGP8BzHM/e6UEUkwAAAAASUVORK5CYII=',
   },
   {
     meta: {
       widgetName: 'Card',
-      title: '卡片样式类型',
-      desc: '按卡片类型不同选择显示不同卡片样式',
+      title: '垂直头像卡片',
+      desc: '垂直头像卡片不同选择显示不同卡片样式',
       props: {
         getThemeByDisplayName: { type: 'Function', desc: '用于配置组件内部图片的通用主题属性' },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
-        title: { type: 'React.Node', desc: '卡片标题显示内容' },
-        description: { type: 'React.Node', desc: '卡片描述显示内容' },
+        title: { type: 'React.Node', desc: '卡片标题显示内容', defaultValue: 'This is title!' },
+        description: {
+          type: 'React.Node',
+          desc: '卡片描述显示内容',
+          defaultValue: 'This is description!',
+        },
         operation: { type: 'React.Node', desc: '卡片可操作内容' },
         image: { type: 'React.Node', desc: '卡片片显示内容' },
         avatar: { type: 'React.Node', desc: '卡片头像显示内容' },
@@ -2038,11 +2173,12 @@ export default [
         type: {
           type: 'CardType',
           desc: '卡片风格 可配置 简洁,头像,图片,组合卡片几种风格',
-          defaultValue: 'tip',
+          defaultValue: 'avatar',
         },
         imageOrientation: {
           type: 'ImageOrientation',
           desc: '当选择头像或图片卡片风格时,可配置图像的方向.水平,或垂直',
+          defaultValue: 'vertical',
         },
       },
       type: {
@@ -2093,29 +2229,170 @@ export default [
             ['padding'],
           ],
         },
-        CardTitleTipLine: {
-          name: '卡片标题提示',
-          desc: '卡片标题提示配置',
-          normal: [['width'], ['height'], ['background']],
+        CardOperation: {
+          name: '卡片操作按钮',
+          desc: '配置卡片操作按钮',
+          normal: [
+            ['width'],
+            ['height'],
+            ['color'],
+            ['font'],
+            ['background'],
+            ['margin'],
+            ['padding'],
+          ],
+        },
+        CardAvatar: {
+          name: '卡片头像',
+          theme: {
+            SrcAvatar: {
+              name: '卡片头像资源',
+              desc: '配置卡片头像资源',
+              normal: [['width'], ['height'], ['margin'], ['padding'], ['background']],
+              hover: [['width'], ['height'], ['background']],
+            },
+          },
         },
       },
       childrenWidget: [],
-      aliasName: 'TipCard',
+      aliasName: 'VAvatarCard',
     },
     target: Card,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+      'data:image/png;base64,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',
   },
   {
     meta: {
       widgetName: 'Card',
-      title: '卡片样式类型',
-      desc: '按卡片类型不同选择显示不同卡片样式',
+      title: '垂直图片卡片',
+      desc: '垂直图片卡片样式',
       props: {
         getThemeByDisplayName: { type: 'Function', desc: '用于配置组件内部图片的通用主题属性' },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
-        title: { type: 'React.Node', desc: '卡片标题显示内容' },
-        description: { type: 'React.Node', desc: '卡片描述显示内容' },
+        title: { type: 'React.Node', desc: '卡片标题显示内容', defaultValue: 'This is title!' },
+        description: {
+          type: 'React.Node',
+          desc: '卡片描述显示内容',
+          defaultValue: 'This is description!',
+        },
+        operation: { type: 'React.Node', desc: '卡片可操作内容' },
+        image: { type: 'React.Node', desc: '卡片片显示内容' },
+        avatar: { type: 'React.Node', desc: '卡片头像显示内容' },
+        content: { type: 'React.Node', desc: '整个卡片显示内容' },
+        children: {
+          type: 'React.Node',
+          desc: '卡片的children 可作为content显示,但优先于content显示',
+        },
+        type: {
+          type: 'CardType',
+          desc: '卡片风格 可配置 简洁,头像,图片,组合卡片几种风格',
+          defaultValue: 'image',
+        },
+        imageOrientation: {
+          type: 'ImageOrientation',
+          desc: '当选择头像或图片卡片风格时,可配置图像的方向.水平,或垂直',
+          defaultValue: 'vertical',
+        },
+      },
+      type: {
+        CardType: ['simple', 'avatar', 'image', 'combo', 'tip'],
+        ImageOrientation: ['horizontal', 'vertical'],
+      },
+      category: ['数据展示'],
+      theme: {
+        Container: {
+          name: '卡片容器整体',
+          desc: '配置卡片容器整体',
+          normal: [
+            ['width'],
+            ['height'],
+            ['background'],
+            ['boxShadow'],
+            ['border'],
+            ['margin'],
+            ['padding'],
+            ['boxShadow'],
+            ['opacity'],
+          ],
+          hover: [['background'], ['border'], ['boxShadow'], ['opacity']],
+        },
+        CardTitle: {
+          name: '卡片标题',
+          desc: '配置卡片标题',
+          normal: [
+            ['width'],
+            ['height'],
+            ['color'],
+            ['font'],
+            ['background'],
+            ['margin'],
+            ['padding'],
+          ],
+        },
+        CardDescription: {
+          name: '卡片内容描述',
+          desc: '配置卡片内容描述',
+          normal: [
+            ['width'],
+            ['height'],
+            ['color'],
+            ['font'],
+            ['background'],
+            ['margin'],
+            ['padding'],
+          ],
+        },
+        CardOperation: {
+          name: '卡片操作按钮',
+          desc: '配置卡片操作按钮',
+          normal: [
+            ['width'],
+            ['height'],
+            ['color'],
+            ['font'],
+            ['background'],
+            ['margin'],
+            ['padding'],
+          ],
+        },
+        CardImage: {
+          name: '卡片图片',
+          desc: '配置卡片图片',
+          normal: [
+            ['width'],
+            ['height'],
+            ['background'],
+            ['borderRadius'],
+            ['border'],
+            ['margin'],
+            ['padding'],
+            ['boxShadow'],
+            ['opacity'],
+          ],
+          hover: [['width'], ['height'], ['background']],
+        },
+      },
+      childrenWidget: [],
+      aliasName: 'VImageCard',
+    },
+    target: Card,
+    screenshot:
+      'data:image/png;base64,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',
+  },
+  {
+    meta: {
+      widgetName: 'Card',
+      title: '自定义组合卡片',
+      desc: '组合卡片样式',
+      props: {
+        getThemeByDisplayName: { type: 'Function', desc: '用于配置组件内部图片的通用主题属性' },
+        viewClass: { type: 'string', desc: '用于配置通用主题属性' },
+        title: { type: 'React.Node', desc: '卡片标题显示内容', defaultValue: 'This is title!' },
+        description: {
+          type: 'React.Node',
+          desc: '卡片描述显示内容',
+          defaultValue: 'This is description!',
+        },
         operation: { type: 'React.Node', desc: '卡片可操作内容' },
         image: { type: 'React.Node', desc: '卡片片显示内容' },
         avatar: { type: 'React.Node', desc: '卡片头像显示内容' },
@@ -2132,6 +2409,7 @@ export default [
         imageOrientation: {
           type: 'ImageOrientation',
           desc: '当选择头像或图片卡片风格时,可配置图像的方向.水平,或垂直',
+          defaultValue: 'vertical',
         },
       },
       type: {
@@ -2217,7 +2495,7 @@ export default [
     },
     target: Card,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHAAAABACAYAAADCmvPmAAAAAXNSR0IArs4c6QAAA/JJREFUeAHtnE1yEzEQheMQwMRUseQS3IBbcAbuwUVYZW9uwV1gA6ukssA2eip/Uy1Z4/zZk8j1VKV0q9WS2u9Ds0Ozs/E2G5/yzDMosGmd2YLUimntWLy1r2NPV6AJLG1bxCOU6HN8jOFjybE9rAIAwmr36HNajl0wqiyQWpaYlkS/2sLDBygQAclXl7Yxru3q8QAggsCXbXVtRFy+22EUAJx2w68tc5y4qW9gC955ylYcG+HFfDa1vb8C3KhogbZO28iXpWkszck/E0AgkAQggMnGzjw2rsO3vVuBAUJKlR+7oElf4Gku+mmY2yzeQIBE+yqlCR4WkDFHvtvjFYjgACVY6qvUpS82uUNTbm7AANTrFH2b+rvU36f+4erq6tP19fVytVr92rgdVQFpLK2lubTfMhALMREbLhPcMmENBFA38k3q89QXqWd46/X6z1Gr9uY7CkjzAFEsxERsxEisMkAoYvlEirL6RfrX8P3y8vJL8t0mVuDm5ubHYrH4mo79l7o+o+p8XvOnV8DqVsCcz+ef6wSPp1Fgqz2XCi7F4RFgTMA/T+1jscKDyRTYai9G8NDZ0c/f0rogErD1vMfTKgAHbHF6vIFMkIglbvs8CsABW1RRA1QSrbmASdvJFKg5REbNT6gqIwk7WbU+aEcBGGCLhPoGFpMevHwF9gFsEn/5P+kkKxxlsQ/gSSpxaj/KADsnaoAG2LkCnZfvG2iAnSvQefm+gQbYuQKdl+8baICdK9B5+b6BBti5Ap2X7xtogJ0r0Hn5voEG2LkCnZfvG2iAnSvQefm+gQbYuQKdl+8baICdK9B5+b6BBti5Ap2X7xtogJ0r0Hn5voEnDHB4xqLz33gK5Y+y8A3sHO8YQIhjO/+ZXZcPA2zxY2qAMUl+HBcLPZhMgZpDwaQGqKpYgJ2sUh/UVAAO2CLJAAs5XuQAcNiiyAgwJuCnF5/Wv4sVHkymwFZ7vcwED50d/eYjByTkJ51ub29/TlaxDyoU2GpfPK1VJKQBNxBoWBatl8vlt/QS2996ocfHVUCaS/t0ysAi+fDB5iL0H+jVBVMP3Pm5yZ23A6cLPPS5SeAlbsMbXMQAGq18dXKwWu/2OAW4Tdh443idEEsONr89ybEKxqaxFpJ8FzzBdLu/AlFvNMZGiPKJR5tP0uOhCkbxNVbTQuIsJEa8tnmh/9xbAbSONmotvwYYN995tV4LBIUNlQw05hRTDvA0dnu6AtIX3fFrq1PIySdGCC2fWLT42iD6eUP/eZQCEQrQtBHx2g5zEUD0qSLG8LHk2B5WgVFY1TE5rwWjFdPasXi1r4cHUgCQ9XZFfB+UfXP1ph4fX4ECHMf9B+7uSnwWzloNAAAAAElFTkSuQmCC',
   },
   {
     meta: {
@@ -2316,7 +2594,7 @@ export default [
     },
     target: Carousel,
     screenshot:
-      'data:image/png;base64,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',
+      'data:image/png;base64,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',
   },
   {
     meta: {
@@ -2335,7 +2613,7 @@ export default [
           desc: 'data数据的displayValue值的名称',
           defaultValue: 'text',
         },
-        data: { type: "[{valueField: '', displayField: ''}]", desc: '级联选择的数据' },
+        data: { type: 'Object[]', desc: '级联选择的数据' },
         separator: { type: 'string', desc: '自定义级联数据分隔符', defaultValue: '|' },
         value: { type: 'string | string[] | number | number[]', desc: '指定当前选中的条目' },
         displayValue: {
@@ -2376,6 +2654,7 @@ export default [
       category: ['数据录入'],
       theme: {
         InputTag: {
+          name: '选中数据展示框',
           theme: {
             InputTagWrap: {
               name: 'Inputtag的外盒',
@@ -2416,6 +2695,7 @@ export default [
           },
         },
         Menu: {
+          name: '菜单配置',
           theme: {
             MenuWrap: {
               name: '菜单外盒',
@@ -2436,6 +2716,7 @@ export default [
               disabled: [],
             },
             MenuItem: {
+              name: '菜单项配置',
               theme: {
                 MenuItemWrap: {
                   name: '项的外盒',
@@ -2507,6 +2788,7 @@ export default [
               },
             },
             SubMenu: {
+              name: '子菜单配置',
               theme: {
                 MenuWrap: {
                   name: '菜单外盒',
@@ -2527,6 +2809,7 @@ export default [
                   disabled: [],
                 },
                 MenuItem: {
+                  name: '子菜单项配置',
                   theme: {
                     MenuItemWrap: {
                       name: '项的外盒',
@@ -2708,7 +2991,7 @@ export default [
     },
     target: Checkbox,
     screenshot:
-      'data:image/png;base64,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',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAYCAYAAABKtPtEAAAAAXNSR0IArs4c6QAAAd1JREFUWAntWL9Lw0AU/i5J/wEHsdYfoEs2R0cLuhZEF6HgYgXBrYUOLjqog4Mi6iY4uvk39F9wEApdHBSdRFs3hfhe2qMRkjMkF21SH5Qcl3ff3fe9d5feEyBbqTgTn8ARNYuOgzz3RTUh8ERjGxZQv7kUD1FxfmucYPIfwC0cjGidVOAlB8wNugiGG3nd5FlJwuxllVZddYMZBFjUDerBSxLbM030phV3z6umVmE3m01HNVa+s21bcDspf86AobZ/AYY6/EReSwbk6KM/M5lOKWMLYJpAdRNYXwXoT1DqLJYATL5WAfKjwOkVffpDneuDpRElbzST5MfHgL0T4LUdDeevRwVmwOw0sDDvvzw37SnyaSfP7AIFMGg/b5WB0tJ3EST5AkV+9zi9kZesAgVo3QP7Z8BaiURY7Lqb5F3dACT5t46ESe9TeQbctYDDc2Bnu0uQt0WBLsu857NAnlkFZoCMqSvCBVBeBqYK2Uh7yY2fygyQjixC7QDovANt+mXJQgnAhB+fs0S7z+XHLdB3zWbL4hqe6t4eh3avPugLIe/5vi99OpPy5wxo+MynqytJbC1rNOgQqIMKmFrQvCCE6WJ7+wawbXDVlqu3lK7XqpQNu3bGYKw0VISZ0xdB62tJJ1pYqQAAAABJRU5ErkJggg==',
   },
   {
     meta: {
@@ -2719,7 +3002,15 @@ export default [
         defaultValue: { type: 'string[]', desc: '指定CheckboxGroup初始选中值' },
         value: { type: 'string[]', desc: '指定CheckboxGroup选中值' },
         disabled: { type: 'boolean', desc: '指定CheckboxGroup是否禁用' },
-        data: { type: 'Object[]', desc: '指定 Checkbox 组件展示值' },
+        data: {
+          type: 'Object[]',
+          desc: '指定 Checkbox 组件展示值',
+          defaultValue: [
+            { text: '选项1', value: '1' },
+            { text: '选项2', value: '2' },
+            { text: '选项3', value: '3' },
+          ],
+        },
         displayField: { type: 'string', desc: '指定CheckboxGroup展示字段值' },
         valueField: { type: 'string', desc: '指定 Checkbox 组件 value 值', defaultValue: false },
         displayValue: {
@@ -2769,9 +3060,151 @@ export default [
         },
       },
       category: ['数据录入'],
+      designInfo: {
+        CheckboxButtonGroup: {
+          sequence: 1,
+          title: '按钮状多选框组',
+          desc: '按钮形状的多选框组',
+          props: { childType: 'button' },
+          theme: {
+            Container: {
+              name: 'Checkbox组整体配置',
+              desc: 'Checkbox组整体配置',
+              normal: [
+                ['opacity'],
+                ['border'],
+                ['borderRadius'],
+                ['background'],
+                ['width'],
+                ['height'],
+                ['margin'],
+                ['padding'],
+              ],
+            },
+            CheckButton: {
+              name: '配置按钮checkbox样式',
+              desc: '配置按钮Radio样式',
+              theme: {
+                CheckButtonChecked: {
+                  name: '多选框按钮状选中配置',
+                  desc: '多选框按钮状选中配置',
+                  normal: {
+                    selectNames: [
+                      ['opacity'],
+                      ['border'],
+                      ['borderRadius'],
+                      ['background'],
+                      ['width'],
+                      ['height'],
+                      ['color'],
+                      ['font'],
+                      ['padding'],
+                    ],
+                    nth: [
+                      ['opacity'],
+                      ['border'],
+                      ['borderRadius'],
+                      ['background'],
+                      ['width'],
+                      ['height'],
+                      ['color'],
+                      ['font'],
+                      ['padding'],
+                    ],
+                  },
+                  hover: {
+                    selectNames: [
+                      ['opacity'],
+                      ['border'],
+                      ['borderRadius'],
+                      ['background'],
+                      ['color'],
+                    ],
+                    nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
+                  },
+                  disabled: {
+                    selectNames: [
+                      ['opacity'],
+                      ['border'],
+                      ['borderRadius'],
+                      ['background'],
+                      ['color'],
+                    ],
+                    nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
+                  },
+                },
+                CheckButtonUnChecked: {
+                  name: '多选框按钮状未选中配置',
+                  desc: '多选框按钮状未选中配置',
+                  normal: {
+                    selectNames: [
+                      ['opacity'],
+                      ['border'],
+                      ['borderRadius'],
+                      ['background'],
+                      ['width'],
+                      ['height'],
+                      ['color'],
+                      ['font'],
+                      ['padding'],
+                    ],
+                    nth: [
+                      ['opacity'],
+                      ['border'],
+                      ['borderRadius'],
+                      ['background'],
+                      ['width'],
+                      ['height'],
+                      ['color'],
+                      ['font'],
+                      ['padding'],
+                    ],
+                  },
+                  hover: {
+                    selectNames: [
+                      ['opacity'],
+                      ['border'],
+                      ['borderRadius'],
+                      ['background'],
+                      ['color'],
+                    ],
+                    nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
+                  },
+                  disabled: {
+                    selectNames: [
+                      ['opacity'],
+                      ['border'],
+                      ['borderRadius'],
+                      ['background'],
+                      ['color'],
+                    ],
+                    nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
+                  },
+                },
+                CheckButtonCancel: {
+                  name: '多选框按钮状取消项配置',
+                  desc: '多选框按钮状取消状态配置',
+                  normal: [
+                    ['opacity'],
+                    ['border'],
+                    ['borderRadius'],
+                    ['background'],
+                    ['width'],
+                    ['height'],
+                    ['color'],
+                    ['font'],
+                    ['padding'],
+                  ],
+                  hover: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
+                },
+              },
+            },
+          },
+        },
+      },
       needExport: true,
       theme: {
-        Group: {
+        Container: {
           name: 'Checkbox组整体配置',
           desc: 'Checkbox组整体配置',
           normal: [
@@ -2848,104 +3281,12 @@ export default [
             },
           },
         },
-        CheckButton: {
-          theme: {
-            CheckButtonChecked: {
-              name: '多选框按钮状选中配置',
-              desc: '多选框按钮状选中配置',
-              normal: {
-                selectNames: [
-                  ['opacity'],
-                  ['border'],
-                  ['borderRadius'],
-                  ['background'],
-                  ['width'],
-                  ['height'],
-                  ['color'],
-                  ['font'],
-                  ['padding'],
-                ],
-                nth: [
-                  ['opacity'],
-                  ['border'],
-                  ['borderRadius'],
-                  ['background'],
-                  ['width'],
-                  ['height'],
-                  ['color'],
-                  ['font'],
-                  ['padding'],
-                ],
-              },
-              hover: {
-                selectNames: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
-                nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
-              },
-              disabled: {
-                selectNames: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
-                nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
-              },
-            },
-            CheckButtonUnChecked: {
-              name: '多选框按钮状未选中配置',
-              desc: '多选框按钮状未选中配置',
-              normal: {
-                selectNames: [
-                  ['opacity'],
-                  ['border'],
-                  ['borderRadius'],
-                  ['background'],
-                  ['width'],
-                  ['height'],
-                  ['color'],
-                  ['font'],
-                  ['padding'],
-                ],
-                nth: [
-                  ['opacity'],
-                  ['border'],
-                  ['borderRadius'],
-                  ['background'],
-                  ['width'],
-                  ['height'],
-                  ['color'],
-                  ['font'],
-                  ['padding'],
-                ],
-              },
-              hover: {
-                selectNames: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
-                nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
-              },
-              disabled: {
-                selectNames: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
-                nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
-              },
-            },
-            CheckButtonCancel: {
-              name: '多选框按钮状取消项配置',
-              desc: '多选框按钮状取消状态配置',
-              normal: [
-                ['opacity'],
-                ['border'],
-                ['borderRadius'],
-                ['background'],
-                ['width'],
-                ['height'],
-                ['color'],
-                ['font'],
-                ['padding'],
-              ],
-              hover: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
-            },
-          },
-        },
       },
       parentWidget: 'Checkbox',
     },
     target: Checkbox.Group,
     screenshot:
-      'data:image/png;base64,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',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAA6CAYAAAAA0F95AAAAAXNSR0IArs4c6QAAAltJREFUaAXtWr9Lw0AYfUnbf8BBrPUH6NLN0dGCrgXRRSi4WEFwa6GDiw7q4KCIugmObv4N/RcchEKXDopOoq2bQvy+tEcrJLGklzZJv4M2R3L37t677+6a6zNAaaNozfwAZ5TNWRbSfM9vMgy8Ut1qEqg83BrPfnGGVc9g8t/AIyxMaG3UwHsKWAq7CKY98rrJs5KE2YkqrbrqBjMJMKcbtAcvSOyeZvxnk4POea+mvbBrtZrlVVc9y2azBueDKs8RMNZJBBjr4SfyWiIgRZv+wmw0pRxYgEQCKO0C25sA/QiKXBpIACZfLgLpSeDyjrb+vtb1cGlEwesvKfLTU8DRBfDR9Icz6lquEbA4D6wsO3fPDnsa+aiTZ3auApg0n/cKQH7trwiKfIZG/vA8uiOvWLkKUG8Ax1fAVp5EWG0XT1Dp0g6gyH+2FEx0r55rwFMdOL0GDvbbBHlaZOhlmed8HMgzK9cIUGNqi3ADFNaBuUw8wl5x46tnBKiCLEL5BGh9AU36xCn1JQATfnmLE+0ul3+nQLdoPHNJPsPzem8fhHbnfNARQr3nOz50uBlUeY6AqkN7um4Fia2ljyYtAhXQAaYWtF4QwrSxe++FMG/yqS2f3lK43nuFbL99ZwzGisKJcL+cpJwoIAqIAqKAKCAKiAKiQBwVsP/KEIeIOEQ022N4rohDxF4xcvZ3iL/EIRLiwRlK18b+UFQE0BFn4hARh4g4RMQhomMtGQWG6y4gDpGGOEQgDhGalOIQ6YggDhFxiIxikwq+TXGIkMbVAHUOEltLt8UhMu4OkV80EdaRb+T6RQAAAABJRU5ErkJggg==',
   },
   {
     meta: {
@@ -3039,7 +3380,7 @@ export default [
     },
     target: Collapse,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAAiCAYAAADPuYByAAAAAXNSR0IArs4c6QAAAm5JREFUWAntWL+LE1EQzr63yQkRCSkkEoQrFGwVsRGx1gjhFLbKBdIkrXZnJ4iV18hhkQTTJCkuCHc2UQS7s9C/4ErBFMkhFkdC4mX3rd8s7F0IL2YO934E9kGYl+/Nznw7md35iBHBqtVqV03T/J3P5wftdnup1+tdcV3X4WCFQuEHxTiLJSip4zjLo9GoTvtOp7MxHo9vcjG65qyW4Scul8trhmHcRsV/lkqlZ4RzMT/Gysrq5QPhXBTCtAlTyjZjSva3tup7vk+Q1qs8BZRSvgfxR0KITT8BF/P9jai4bpryqxTuLn2iUu6oJfeafx609SpPfY52+QTya0iwHo/HM8lk8g8Hy+Vy+5OkstbqQylFKxIxbKXG1vZm8/PkeZB7r/IguY6WeYd2+YbgLweDQYWLTZP50Kq3lWtnXdvJniTx6bzh97ACzAoY3W7XZfqeP7dFJU+8D9/z56+s8xktNHlTd3//I9SgifZjsZgJkedJAkiMG5jUexwMc2ZXx2cWpiVPosy27Te46DGG1QbsRwyxXxwMSnRnOBxuN5vNTL/ff4Dr7kByvOJgyPN0FlEd7r1tUqnUoUDznbiiTOdXrVbvQWo8R6xoIpHIWJZ1wMX8/PPsPx9YrijT+aXT6e9Ivowb+ELEiQgXm0d68lz7wJJQU0pV4Xgf9nWj0bjExSg46SKYF2iZu/hlbh0HI1/u0pLnijKdX6VSeYKKXygWiy3YIm7gLVomx8GoSFzinl84pI5VruCctW0TXPiTjaR9z4dDKhxSs9suHFLTw4xqFQ6p2R1zdBIOqaNanOpuoYdUSP5Ue2Ui2UL/b/MXjaZyeNqsf/MAAAAASUVORK5CYII=',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFwAAABKCAYAAAA2YDPeAAAAAXNSR0IArs4c6QAAAxhJREFUeAHt3LFvElEcB/B33HuANWloYuzUyQ7s/gOsROOGMXQhNtaayKKLSRPj0rFdcCg1NQyWQTYTw3r/gDuDW+NAYgI22gL3jvMdaS8HPfRe3jss+CUh3L37/X7v7nMvR7nCM4imR/3jJzdKqeLDB4YXd93io+y7jpiEjiKoEV0A4NGttEQCXAtj9CI0LLRQKNzgRnrfNcivbvvOK8t6w8Pi0CYvcGWE5/P51CCRfmcytk0pfbmy+vVtLpcLPTHy3SFjDNzDTi/fOhLQG5zbhHNOEpQ9zayuHdzd2mLgUhfwwUulUlpg18TI3hg6DjEMY/T0liljm2unvff5cjml3uX/XcG/VHTPnB1iuHnHtr9Nkog2r+l+qt3ZEa+vJ7djPbqAD25TZ5+dJfcoS4Z+gLHtgWEvDUYfWqKXR+SkgA/+uV7vTG7Eun4B/xquvzQqhgkAPEwlxjaAx4gbVhrgYSoxtgE8RlyUhgAEIAABCEAAAvMjoO1mVKvVCr3pdUmRzWZHfS1K3OVxyb7i73BZMcV4gCsCyqYDXFZMMR7gioCy6QCXFVOMB7gioGw6wGXFFOMBrggomw5wWTHFeIArAsqmA1xWTDEe4IqAsukAlxVDPAQgAAEIQAACEFhIAaNarf7xf5ELedQ4KAhAAAIQgAAEIAABCPxbAW3fLbxuM/zI7s+sTgPuh89K+qIfgAN8xgIz7s7/rf29YnFFTG7gsr9MboDf5KudIR+ccfMFSfEyJ87P0JIpcpPxREVsw/QdoUDRGn3wzJK5++PcWRcT1DxyxExAwYdJqTc70If+7cxusB3L8gL+m2atVuv1Tr+XxGQ0xwnTJK7rjp7eMrfto5Pl9ONmpdKX7wIZQQEf3GtsNpt9gb4pRvMxpYyIua/IkNvVbvtk+8vh4WhaoGAyluUFxsC9dA89Oew9ESP9QMDvddrrzy3LGr/GyPeDjAsB/xoeFGk0Gudi/VmwDct6BK6McD1lUWWaAMCnycTUDvCYYKeVBfg0mZjaAR4TLMpCAAIQgAAEIACB+RLAt2fn63xhb2UFfgM/fOFDMF5giQAAAABJRU5ErkJggg==',
   },
   {
     meta: {
@@ -3108,7 +3449,7 @@ export default [
     },
     target: Collapse.Panel,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfQAAACuCAYAAADAtP+vAAAAAXNSR0IArs4c6QAADSpJREFUeAHt3d+PHWUZB/D3nd2lYCsXarjzisS/wUtjYkxDSAjBGGKihPBDSaQNiSSUC5uoNPFKTbyg8UJNFKUKhQK1YARDdKOwEJVqAKGIxdKl1bbQ7m7PmXmd95SNjcTxMD3bnTn7OclmN31nZp/n807zzbwz52y89957U/AiQIAAAQIEei1Q9Lp6xRMgQIAAAQIjAYHuRCBAgAABAlMgINCnYBK1QIAAAQIEBLpzgAABAgQITIHAbIxx+xT0oQUCBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQ2IgCcSM23bWeH3jgwBUr5cq2rtU1iXo2zWz69rXXfnpxnGPdt2ffV0NIl4yzba+2iTMPXn/dVc+OU/N9P3vkxpCqK8fZtk/bFDE+89nrrt47Ts0/vv/RT8VYfmKcbXu1TYxHr7/u6u/0qmbF9kpgtlfVTmmxZ8PgipTCjmlsr+7tvrqvsQK9NvhKve3maXMoQnWo7mmsQA9V9bkUwienzaAM4Xt1T2MFeg7zafz/EFN4oTYQ6NN2cneon6JDtSiFAAECBAgQaCkg0FvC2Y0AAQIECHRJQKB3aTbUQoAAAQIEWgoI9JZwdiNAgAABAl0SEOhdmg21ECBAgACBlgICvSWc3QgQIECAQJcEBHqXZkMtBAgQIECgpYBAbwlnNwIECBAg0CUBgd6l2VALAQIECBBoKSDQW8LZjQABAgQIdElAoHdpNtRCgAAB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IECAQJOAQG/SMUaAAAECBHoiINB7MlHKJECAAAECTQICvUnHGAECBAgQ6ImAQO/JRCmTAAECBAg0CQj0Jh1jBAgQIECgJwICvScTpUwCBAgQINAkINCbdIwRIECAAIGeCAj0nkyUMgkQIECAQJOAQG/SMUaAAAECBHoiINB7MlHKJECAAAECTQICvUnHGAECBAgQ6ImAQO/JRCmTAAECBAg0CQj0Jh1jBAgQIECgJwICvScTpUwCBAgQINAkINCbdIwRIECAAIGeCAj0nkyUMgkQIECAQJOAQG/SMUaAAAECBHoiMNuTOqe6zEvCpUfOhqXt09hk7m3cvoqY7gwpzo27fV+2q+Lc/Li1xlh8N6b08Ljb92W7FMIL49Y6k+IjVQiL427fm+1iONabWhVKgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECCwIQTi7t2739kQnWqSAAECBAhMscBsSmnzFPenNQIECBAgsCEEig3RpSYJECBAgMCUCwj0KZ9g7REgQIDAxhAQ6BtjnnVJgAABAlMuMFsUxd1T3qP2CBAgQIAAAQIECBAgQIAAAQIECBAgQIAAAQIECBAgQIAAAQIECBAgQIAAAQIECBAgQKAvAv8G55z1E2+GrwIAAAAASUVORK5CYII=',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFwAAAAgCAYAAACfDx/iAAAAAXNSR0IArs4c6QAAAYxJREFUaAXt2r9Kw0AcB/DLn0ulgtTFJ+jbCI4imUQRFHTxAdw6dspiCkIGm8FsgmTNC/gUnQpCVcQmvUvjpdDQYEKachEL30BI7nf3+1345DgyRLFtOyE4IAABCEAAAhCAAAQgAIG/FFBkTeY+Pa/1PW8eHy3m/G/jZTlU1VGrBqBfrgDA5XpWVgN4JZHcAfqy3KFp7tNvI6HUKNyLGZsprD1TXlx3sszBtb5ABk65dkta/IaT+KuwTIvsUq5aou+usB/BtQQy8E5b631M465G6UnMeS5Z03XCOX+MDjq9XAcatQWyPdxxnDD8fDuNGRuqmkaSJFmc6T1n7GG0t3PmW1ZUewYk5AQy8DTq+34k0M/Fah7qOiW6WNlzzuz38ejydTBguUw0NhLIgacVUnRjHl6IlX4v4PuTcfc6CIL8HrPRVEhKBbI9fJXD87ypaF+txnAvR+DXCpdTFlXKBABeJtNQHOANwZaVBXiZTENxgDcEi7IQgAAEIAABCEBguwQU/D27XS8MT1tT4AfnvHa6k28jHQAAAABJRU5ErkJggg==',
   },
   {
     meta: {
@@ -3118,6 +3459,7 @@ export default [
       props: {
         defaultValue: { type: 'string', desc: '日期默认显示值' },
         value: { type: 'string', desc: '日期显示值' },
+        createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', defaultValue: true },
         format: {
           type: 'string',
           desc: '用于指定输入框日期显示的格式',
@@ -3173,13 +3515,6 @@ export default [
         'DatePicker.RangePicker',
       ],
       category: ['数据录入'],
-      theme: {
-        FacePanelContain: {
-          name: '面板',
-          desc: '设置面板整体样式',
-          normal: [['boxShadow', 'color'], ['background', 'color']],
-        },
-      },
     },
     target: DatePicker,
     screenshot:
@@ -3193,6 +3528,7 @@ export default [
       props: {
         defaultValue: { type: 'string', desc: '日期默认显示值' },
         value: { type: 'string', desc: '日期显示值' },
+        createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', defaultValue: true },
         format: { type: 'string', desc: '用于指定输入框日期显示的格式', defaultValue: 'YYYY-MM' },
         placeholder: { type: 'string', desc: 'input输入提示信息' },
         disabled: { type: 'boolean', desc: '禁用状态,是否不可用', defaultValue: false },
@@ -3227,6 +3563,7 @@ export default [
       title: '年选择器',
       desc: '用于年选择,',
       props: {
+        createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', defaultValue: true },
         defaultValue: { type: 'string', desc: '日期默认显示值' },
         value: { type: 'string', desc: '日期显示值' },
         format: { type: 'string', desc: '用于指定输入框日期显示的格式', defaultValue: 'YYYY' },
@@ -3266,6 +3603,7 @@ export default [
       props: {
         defaultValue: { type: 'string', desc: '日期默认显示值' },
         value: { type: 'string', desc: '日期显示值' },
+        createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', defaultValue: true },
         format: { type: 'string', desc: '用于指定输入框日期显示的格式', defaultValue: 'YYYY-WW' },
         placeholder: { type: 'string', desc: 'input输入提示信息' },
         disabled: { type: 'boolean', desc: '禁用状态,是否不可用', defaultValue: false },
@@ -3318,6 +3656,7 @@ export default [
       title: '周选择器',
       desc: '用于周选择,',
       props: {
+        createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', defaultValue: true },
         defaultValue: { type: 'string', desc: '日期默认显示值' },
         value: { type: 'string', desc: '日期显示值' },
         format: { type: 'string', desc: '用于指定输入框日期显示的格式', defaultValue: 'YYYY-WW' },
@@ -3357,6 +3696,7 @@ export default [
       props: {
         defaultValue: { type: 'Array<string>', desc: '日期默认显示值' },
         value: { type: 'Array<string>', desc: '日期显示值' },
+        createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', defaultValue: true },
         format: {
           type: 'string',
           desc: '用于指定输入框日期显示的格式',
@@ -3413,23 +3753,6 @@ export default [
       category: ['数据录入'],
       componentName: 'RangePicker',
       needExport: true,
-      theme: {
-        RangeInputInner: {
-          name: '输入框',
-          desc: '',
-          normal: [
-            ['width'],
-            ['height'],
-            ['border'],
-            ['boxShadow'],
-            ['borderRadius'],
-            ['background'],
-          ],
-          hover: [['border', 'color'], ['boxShadow'], ['borderRadius'], ['background']],
-          active: [['border', 'color'], ['boxShadow'], ['borderRadius'], ['background']],
-          disabled: [['border', 'color'], ['boxShadow'], ['borderRadius'], ['background']],
-        },
-      },
       parentWidget: 'DatePicker',
     },
     target: DatePicker.RangePicker,
@@ -3455,29 +3778,8 @@ export default [
       type: { DividerPosition: ['left', 'right'], DividerType: ['horizontal', 'vertical'] },
       category: ['其他'],
       designInfo: {
-        HorizontalDivider: {
-          sequence: 1,
-          title: '水平分割线',
-          desc: '水平分割线',
-          props: { type: 'horizontal' },
-          theme: {
-            HorizontalDivider: {
-              name: '水平分割线',
-              desc: '分割线为水平类型时的配置',
-              normal: [
-                ['width'],
-                ['height'],
-                ['background'],
-                ['opacity'],
-                ['margin'],
-                ['padding'],
-                ['boxShadow'],
-              ],
-            },
-          },
-        },
         VerticalDivider: {
-          sequence: 2,
+          sequence: 1,
           title: '垂直分割线',
           desc: '垂直分割线',
           props: { type: 'vertical' },
@@ -3512,65 +3814,12 @@ export default [
             ['boxShadow'],
           ],
         },
-        VerticalDivider: {
-          name: '垂直分割线',
-          desc: '分割线为垂直类型时的配置',
-          normal: [
-            ['width'],
-            ['height'],
-            ['background'],
-            ['opacity'],
-            ['margin'],
-            ['padding'],
-            ['boxShadow'],
-          ],
-        },
       },
       childrenWidget: [],
     },
     target: Divider,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADYAAAAECAYAAADF98x7AAAAAXNSR0IArs4c6QAAAD9JREFUKBVjPHfunOe/f/9mMTAwyADxcABPmJiY0hjPnDnzGOib4eIpWMQ8YYKxhhsNjDWmNKCnngwjj4GTIgAlig6h5+7aEgAAAABJRU5ErkJggg==',
-  },
-  {
-    meta: {
-      widgetName: 'Divider',
-      title: '水平分割线',
-      desc: '水平分割线',
-      props: {
-        viewClass: { type: 'string', desc: '用于配置通用主题属性' },
-        position: { type: 'DividerPosition', desc: '分割线中显示内容的位置,与content 配合使用' },
-        dashed: { type: 'boolean', desc: '分割线是否是虚线', defaultValue: false },
-        content: { type: 'string', desc: '分割线中可添加显示的内容' },
-        type: {
-          type: 'DividerType',
-          desc: '分割线的风格 水平或者 垂直',
-          defaultValue: 'horizontal',
-        },
-      },
-      type: { DividerPosition: ['left', 'right'], DividerType: ['horizontal', 'vertical'] },
-      category: ['其他'],
-      theme: {
-        HorizontalDivider: {
-          name: '水平分割线',
-          desc: '分割线为水平类型时的配置',
-          normal: [
-            ['width'],
-            ['height'],
-            ['background'],
-            ['opacity'],
-            ['margin'],
-            ['padding'],
-            ['boxShadow'],
-          ],
-        },
-      },
-      childrenWidget: [],
-      aliasName: 'HorizontalDivider',
-    },
-    target: Divider,
-    screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAAACCAYAAACnpNlpAAAAAXNSR0IArs4c6QAAACJJREFUKBVjPHPmzFYGBgYvIB4F9A+BbUz0t3PURqQQ+A8AQvAFHGBapi0AAAAASUVORK5CYII=',
   },
   {
     meta: {
@@ -3606,35 +3855,7 @@ export default [
     },
     target: Divider,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
-  },
-  {
-    meta: {
-      widgetName: 'Drawer',
-      title: '抽屉',
-      desc: '在屏幕边缘出现的浮层面板。',
-      props: {
-        placement: { type: 'PlacementType', desc: '抽屉的方向', defaultValue: 'right' },
-        title: { type: 'React.node', desc: '抽屉的标题' },
-        visible: { type: 'boolean', desc: '抽屉是否展示' },
-        mask: { type: 'boolean', desc: '是否展示遮罩层', defaultValue: true },
-        maskClosable: { type: 'boolean', desc: '点击遮罩层是否允许关闭抽屉', defaultValue: true },
-        closable: { type: 'boolean', desc: '是否展示抽屉右上角关闭按钮', defaultValue: false },
-      },
-      events: { onClose: { desc: '抽屉关闭时的回调', args: [] } },
-      type: {
-        PlacementType: ['top', 'right', 'left', 'bottom'],
-        DrawerStyle: {
-          width: { type: 'number', desc: 'Drawer的宽度' },
-          height: { type: 'number', desc: 'Drawer的高度，在 placement 为 top 或 bottom 时使用' },
-        },
-      },
-      category: ['反馈'],
-      childrenWidget: [],
-    },
-    target: Drawer,
-    screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADUAAAAoCAYAAABerrI1AAAAAXNSR0IArs4c6QAAAilJREFUaAXtmM1LG0EYxp/Nxg9spcWkxVStFUkQkSIhByk9SYpQPHnw0IP/nBQRkVJaEKsEDxKVBttSPLQSgriWYBrNhyabr40zU1wkcRMWTGcis4fMvJN3Mu/veWZ2lyiRSKSKe3Y5KU8gEFB4c8Xj8TsRV9M0OHjDtGJ9CdUKVVvxm8I5lb3I4TKnM9ZSqYzkeQZ6oYhU+sLk/3uWRrlcMePajnBQ6ewlFlfWkc8XsBbaw8GvGKpGFcsfQ9D+JPDt529sbH2Fw2FdOrv71ZLyjAc9TzA54cXSh010d3Vi9s0rAqDgbXCKQO7CIIDv5oJszKpOa1yrGf9h3DsygLNUFqOkpUD08jx1sdbd9wi9D3tY3+pDOCh6Vj5v7GD6tZ9stUMkkilWe2h7Hy+G+kHP2Y+DqBUPGxdu+22Fv4O64X/pw4Oebnz6EsaUfxzHJ6dYmJ9BLq/j/eomBjxulncbnUJfk+QbxW3SCDYm3JkqFkumRAXSbxabyTc6wp2pDHlO5fUCOjuc7PbdQdpGsafffQPnX1c4p9yux9AJ1HkqA1pws7iOiAwI55RhGGTLFQFFQaVi0KZhrKr1vggHFY1pGB56BtWp4jB6BFVVG8ZjvpE6s4SD8o4+N4usLbhZfD2x3rvrb9q4lVDtYp50SjrFUQG5/TiKb2tp6ZQtuTgmS6c4im9raemULbk4JkunOIpva2nplC25OCZLpziKb2tp9l+6rRltkHwFZ9nVoB1yH58AAAAASUVORK5CYII=',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAABACAYAAAAwJqZDAAAAAXNSR0IArs4c6QAAAClJREFUKBVjPHPmzFYGIGABYi8QgwlEgMAoYzQQwAkBS0oApZZtQPwfAC8nBZy6TqPcAAAAAElFTkSuQmCC',
   },
   {
     meta: {
@@ -3659,73 +3880,6 @@ export default [
     target: Dropmenu,
     screenshot:
       'data:image/png;base64,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',
-  },
-  {
-    meta: {
-      widgetName: 'Grid',
-      title: '栅格',
-      desc: '栅格',
-      childrenWidget: ['Grid.Col', 'Grid.Row'],
-      category: ['布局'],
-      empty: true,
-    },
-    target: Grid,
-    screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
-  },
-  {
-    meta: {
-      widgetName: 'Grid.Col',
-      title: '栅格',
-      desc: '栅格。',
-      props: {
-        span: { type: 'number', desc: '栅格占位格数，共 24格', defaultValue: 1 },
-        offset: { type: 'number', desc: '栅格左侧的间隔格数，间隔内不可以有栅格' },
-        pull: { type: 'number', desc: '栅格向左移动格数' },
-        push: { type: 'number', desc: '栅格向右移动格数' },
-        order: { type: 'number', desc: '栅格的顺序，flex 布局下有效' },
-      },
-      category: ['布局'],
-      needExport: true,
-      parentWidget: 'Grid',
-    },
-    target: Grid.Col,
-    screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
-  },
-  {
-    meta: {
-      widgetName: 'Grid.Row',
-      title: '栅格',
-      desc: '栅格。',
-      props: {
-        type: { type: 'RowType', desc: '布局方式，可设为 flex 或不设' },
-        justify: {
-          type: 'JustifyType',
-          desc: 'flex 布局下的水平排列方式，可设置为 start、end、center、spaceAround、spaceBetween',
-        },
-        align: {
-          type: 'AlignType',
-          desc: 'flex 布局下的垂直排列方式，可设置为 top、middle、bottom',
-        },
-        gutter: {
-          type: 'number | Object',
-          desc: '栅格之间的间隔，可写为 number 格式 或支持响应式 对象写法：{xs: 8,sm: 16,md: 24}',
-        },
-        data: { type: 'Object[]', desc: '指定栅格 data 属性，仅用于设计器', designOnly: true },
-      },
-      type: {
-        RowType: ['flex', 'default'],
-        JustifyType: ['start', 'end', 'center', 'spaceAround', 'spaceBetween'],
-        AlignType: ['top', 'middle', 'bottom'],
-      },
-      category: ['布局'],
-      needExport: true,
-      parentWidget: 'Grid',
-    },
-    target: Grid.Row,
-    screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
   },
   {
     meta: {
@@ -3757,7 +3911,7 @@ export default [
     },
     target: Icon,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+      'data:image/png;base64,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',
   },
   {
     meta: {
@@ -3839,54 +3993,11 @@ export default [
         ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
       },
       category: ['数据录入'],
-      designInfo: {
-        ValidateTopConfig: {
-          sequence: 1,
-          title: '校验类型的输入框',
-          desc: '按照校验类型的不同来展示不同样式的输入框',
-          props: { validateType: 'top' },
-          theme: {
-            validateTop: {
-              name: '顶部校验',
-              desc: '校验信息在顶部显示',
-              normal: [['color'], ['background'], ['font']],
-              hover: [],
-              clicked: [],
-              disabled: [],
-            },
-          },
-        },
-        ValidateBottom: {
-          sequence: 2,
-          title: '校验类型的输入框',
-          desc: '按照校验类型的不同来展示不同样式的输入框',
-          props: { validateType: 'bottom' },
-          theme: {
-            validateBottom: {
-              name: '底部校验',
-              desc: '校验信息在底部显示',
-              normal: [['color']],
-              hover: [],
-              clicked: [],
-              disabled: [],
-            },
-          },
-        },
-      },
       theme: {
         Container: {
           name: '输入框外部容器',
           desc: '输入框外部容器',
-          normal: [
-            ['width'],
-            ['height'],
-            ['background'],
-            ['border'],
-            ['borderRadius'],
-            ['boxShadow'],
-            ['margin'],
-            ['padding'],
-          ],
+          normal: [['width'], ['height'], ['margin'], ['padding']],
         },
         Input: {
           name: '输入框主体',
@@ -3900,18 +4011,11 @@ export default [
             ['background'],
             ['border'],
             ['cursor'],
+            ['opacity'],
           ],
-          hover: [
-            ['width'],
-            ['height'],
-            ['padding'],
-            ['border'],
-            ['borderRadius'],
-            ['cursor'],
-            ['background'],
-          ],
+          hover: [['border'], ['borderRadius'], ['cursor'], ['background'], ['opacity']],
           active: [['boxShadow'], ['border'], ['borderRadius'], ['cursor']],
-          disabled: [['cursor'], ['border'], ['borderRadius'], ['background']],
+          disabled: [['cursor'], ['border'], ['background']],
         },
         InputSuffix: {
           name: '后缀图标',
@@ -3946,264 +4050,6 @@ export default [
   },
   {
     meta: {
-      widgetName: 'Input',
-      title: '校验类型的输入框',
-      desc: '按照校验类型的不同来展示不同样式的输入框',
-      props: {
-        disabled: { type: 'boolean', desc: '禁用状态,是否不可用', defaultValue: false },
-        viewClass: { type: 'string', desc: '用于配置通用主题属性' },
-        size: {
-          type: 'InputSize',
-          desc: "可配置三种尺寸大小的input ('大' , '默认' , '小'),高度分别为 40px、32px 和 24px。",
-          defaultValue: 'default',
-        },
-        validateStatus: {
-          type: 'ValidateStatus',
-          desc: "input校验状态, 'success' 成功 | 'error'错误",
-          defaultValue: 'success',
-        },
-        validateType: {
-          type: 'InputValidateType',
-          desc: "input校验信息显示类型, 'top' | 'bottom' | 'inner' | 'default'",
-          defaultValue: 'top',
-        },
-        help: { type: 'string', desc: 'input校验提示信息' },
-        placeholder: { type: 'string', desc: 'input输入提示信息' },
-        prefix: { type: 'React$Element<any>', desc: '带有前缀的 input' },
-        suffix: { type: 'React$Element<any>', desc: '带有后缀的 input' },
-        defaultValue: { type: 'string', desc: '默认显示内容' },
-        value: { type: 'string', desc: '显示内容' },
-        formatter: { type: 'function', desc: '格式化显示内容的匹配规则,需与 parser 属性配套使用' },
-        parser: { type: 'function', desc: '解析格式化显示内容的规则,需与 formatter 属性配套使用' },
-        readOnly: { type: 'boolean', desc: '只读input', defaultValue: false },
-        autoFocus: { type: 'boolean', desc: '是否自动获取焦点', defaultValue: false },
-        type: { type: 'string', desc: 'input类型', defaultValue: 'text' },
-      },
-      events: {
-        onClick: {
-          desc: '点击输入框时触发',
-          args: [{ name: 'event', desc: '点击的DOM事件', type: 'SyntheticEvent' }],
-        },
-        onChange: {
-          desc: '内容改变时触发',
-          args: [{ name: 'event', desc: '改变内容的DOM事件', type: 'ChangeType' }],
-        },
-        onKeyUp: {
-          desc: '键盘按下去并松开后执行',
-          args: [{ name: 'event', desc: '改变键盘输入的内容', type: 'KeyboardEvent' }],
-        },
-        onKeyDown: {
-          desc: '键盘按下任何键时触发',
-          args: [{ name: 'event', desc: '改变键盘输入的内容', type: 'KeyboardEvent' }],
-        },
-        onKeyPress: {
-          desc: '键盘按下任何键时触发',
-          args: [{ name: 'event', desc: '改变键盘输入的内容', type: 'KeyboardEvent' }],
-        },
-        onFocus: {
-          desc: '输入框获得焦点时触发',
-          args: [{ name: 'event', desc: '获取焦点的DOM事件', type: 'FocusEvent' }],
-        },
-        onBlur: {
-          desc: '输入框失去焦点时触发',
-          args: [{ name: 'event', desc: '失去焦点的DOM事件', type: 'FocusEvent' }],
-        },
-        onClear: {
-          desc: '清除输入框内容时触发',
-          args: [{ name: 'event', desc: '清除输入框内容事件', type: 'Object' }],
-        },
-        onEnter: {
-          desc: '当键入回车时触发事件',
-          args: [{ name: 'event', desc: '当键入回车时触发', type: 'KeyboardEvent' }],
-        },
-      },
-      type: {
-        InputSize: ['small', 'default', 'large'],
-        ValidateStatus: ['success', 'error'],
-        InputValidateType: ['top', 'bottom', 'inner', 'default'],
-        ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
-      },
-      category: ['数据录入'],
-      theme: {
-        validateTop: {
-          name: '顶部校验',
-          desc: '校验信息在顶部显示',
-          normal: [['color'], ['background'], ['font']],
-          hover: [],
-          clicked: [],
-          disabled: [],
-        },
-      },
-      childrenWidget: [],
-      aliasName: 'ValidateTopConfig',
-    },
-    target: Input,
-    screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
-  },
-  {
-    meta: {
-      widgetName: 'Input',
-      title: '校验类型的输入框',
-      desc: '按照校验类型的不同来展示不同样式的输入框',
-      props: {
-        disabled: { type: 'boolean', desc: '禁用状态,是否不可用', defaultValue: false },
-        viewClass: { type: 'string', desc: '用于配置通用主题属性' },
-        size: {
-          type: 'InputSize',
-          desc: "可配置三种尺寸大小的input ('大' , '默认' , '小'),高度分别为 40px、32px 和 24px。",
-          defaultValue: 'default',
-        },
-        validateStatus: {
-          type: 'ValidateStatus',
-          desc: "input校验状态, 'success' 成功 | 'error'错误",
-          defaultValue: 'success',
-        },
-        validateType: {
-          type: 'InputValidateType',
-          desc: "input校验信息显示类型, 'top' | 'bottom' | 'inner' | 'default'",
-          defaultValue: 'bottom',
-        },
-        help: { type: 'string', desc: 'input校验提示信息' },
-        placeholder: { type: 'string', desc: 'input输入提示信息' },
-        prefix: { type: 'React$Element<any>', desc: '带有前缀的 input' },
-        suffix: { type: 'React$Element<any>', desc: '带有后缀的 input' },
-        defaultValue: { type: 'string', desc: '默认显示内容' },
-        value: { type: 'string', desc: '显示内容' },
-        formatter: { type: 'function', desc: '格式化显示内容的匹配规则,需与 parser 属性配套使用' },
-        parser: { type: 'function', desc: '解析格式化显示内容的规则,需与 formatter 属性配套使用' },
-        readOnly: { type: 'boolean', desc: '只读input', defaultValue: false },
-        autoFocus: { type: 'boolean', desc: '是否自动获取焦点', defaultValue: false },
-        type: { type: 'string', desc: 'input类型', defaultValue: 'text' },
-      },
-      events: {
-        onClick: {
-          desc: '点击输入框时触发',
-          args: [{ name: 'event', desc: '点击的DOM事件', type: 'SyntheticEvent' }],
-        },
-        onChange: {
-          desc: '内容改变时触发',
-          args: [{ name: 'event', desc: '改变内容的DOM事件', type: 'ChangeType' }],
-        },
-        onKeyUp: {
-          desc: '键盘按下去并松开后执行',
-          args: [{ name: 'event', desc: '改变键盘输入的内容', type: 'KeyboardEvent' }],
-        },
-        onKeyDown: {
-          desc: '键盘按下任何键时触发',
-          args: [{ name: 'event', desc: '改变键盘输入的内容', type: 'KeyboardEvent' }],
-        },
-        onKeyPress: {
-          desc: '键盘按下任何键时触发',
-          args: [{ name: 'event', desc: '改变键盘输入的内容', type: 'KeyboardEvent' }],
-        },
-        onFocus: {
-          desc: '输入框获得焦点时触发',
-          args: [{ name: 'event', desc: '获取焦点的DOM事件', type: 'FocusEvent' }],
-        },
-        onBlur: {
-          desc: '输入框失去焦点时触发',
-          args: [{ name: 'event', desc: '失去焦点的DOM事件', type: 'FocusEvent' }],
-        },
-        onClear: {
-          desc: '清除输入框内容时触发',
-          args: [{ name: 'event', desc: '清除输入框内容事件', type: 'Object' }],
-        },
-        onEnter: {
-          desc: '当键入回车时触发事件',
-          args: [{ name: 'event', desc: '当键入回车时触发', type: 'KeyboardEvent' }],
-        },
-      },
-      type: {
-        InputSize: ['small', 'default', 'large'],
-        ValidateStatus: ['success', 'error'],
-        InputValidateType: ['top', 'bottom', 'inner', 'default'],
-        ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
-      },
-      category: ['数据录入'],
-      theme: {
-        validateBottom: {
-          name: '底部校验',
-          desc: '校验信息在底部显示',
-          normal: [['color']],
-          hover: [],
-          clicked: [],
-          disabled: [],
-        },
-      },
-      childrenWidget: [],
-      aliasName: 'ValidateBottom',
-    },
-    target: Input,
-    screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
-  },
-  {
-    meta: {
-      widgetName: 'Layout',
-      title: '布局',
-      desc: '页面整体布局。',
-      props: {
-        direction: {
-          type: 'LayoutDirectionType',
-          desc: '指定Layout嵌套组件排列顺序，row 横向排列，column 纵向排列',
-          defaultValue: 'column',
-        },
-        needEnlarge: { type: 'boolean', desc: '指定Layout嵌套组件中是否有被放大元素' },
-      },
-      type: {
-        LayoutDirectionType: ['row', 'column'],
-        LayoutStyle: {
-          width: { type: 'number', desc: 'Layout 宽度' },
-          margin: { type: 'number | Object', desc: 'Layout 间距' },
-        },
-      },
-      childrenWidget: ['Layout.Aside'],
-      category: ['布局'],
-    },
-    target: Layout,
-    screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
-  },
-  {
-    meta: {
-      widgetName: 'Layout.Aside',
-      title: '侧边栏',
-      desc: '页面整体布局-侧边栏。',
-      props: {
-        collapsible: { type: 'boolean', desc: '指定 Aside 是否可以收起', defaultValue: 'column' },
-        trigger: { type: 'React.node', desc: '指定 Aside 收起元素' },
-        reverseArrow: { type: 'string', desc: '触发响应式的断点，可选 xs、sm、md、lg、xl、xxl' },
-        collapsedWidth: { type: 'number', desc: '收缩宽度' },
-        collapsed: { type: 'boolean', desc: '当前收缩状态' },
-      },
-      type: {
-        LayoutDirectionType: ['row', 'column'],
-        AsideStyle: {
-          height: { type: 'number', desc: 'Aside 高度' },
-          backgroundColor: { type: 'string', desc: 'Aside 背景色' },
-        },
-      },
-      events: {
-        onCollapse: {
-          desc: '展开-收起时的回调函数',
-          args: [{ name: 'collapsed', desc: '收起状态', type: 'boolean' }],
-        },
-        onBreakpoint: {
-          desc: '触发响应式时的回调函数',
-          args: [{ name: 'broken', desc: '收起状态', type: 'boolean' }],
-        },
-      },
-      category: ['布局'],
-      needExport: true,
-      parentWidget: 'Layout',
-    },
-    target: Layout.Aside,
-    screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
-  },
-  {
-    meta: {
       widgetName: 'Loading',
       title: '加载中',
       desc: '用于页面和区块的加载中状态',
@@ -4235,11 +4081,7 @@ export default [
           desc: 'data数据的displayValue值的名称',
           defaultValue: 'text',
         },
-        data: {
-          type: "[{valueField: '', displayField: '', children}]",
-          desc: '生成选择项的数据',
-          defaultValue: false,
-        },
+        data: { type: 'Object[]', desc: '生成选择项的数据', defaultValue: false },
         mutliple: { type: 'boolean', desc: '是否多选', defaultValue: false },
         start: { type: 'number', desc: '开始展示数据的索引值', defaultValue: 0 },
         selectedKeys: { type: 'string | string[] | number | number[]', desc: '指定当前选中的项' },
@@ -4248,7 +4090,7 @@ export default [
           desc: '默认指定当前选中的项,仅第一次生效',
         },
         checkedCSS: {
-          type: 'background | checkbox | mark | none',
+          type: 'background | checkbox | none',
           desc: '选中项的样式',
           defaultValue: 'none',
         },
@@ -4305,152 +4147,8 @@ export default [
       },
       category: ['数据录入'],
       designInfo: {
-        SingleMenu: {
-          sequence: 1,
-          title: '单选菜单',
-          desc: '单项选择的菜单',
-          props: { mutliple: false },
-          theme: {
-            MenuWrap: {
-              name: '菜单外盒',
-              desc: '配置菜单组件的外盒样式',
-              normal: [
-                ['width'],
-                ['height'],
-                ['boxShadow'],
-                ['background'],
-                ['opacity'],
-                ['border'],
-                ['borderRadius'],
-                ['margin'],
-                ['padding'],
-              ],
-              hover: [['boxShadow'], ['background'], ['opacity'], ['border'], ['borderRadius']],
-              clicked: [],
-              disabled: [],
-            },
-            MenuItem: {
-              theme: {
-                MenuItemWrap: {
-                  name: '项的外盒',
-                  desc: '配置每一项的外盒',
-                  normal: [
-                    ['height'],
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['padding'],
-                  ],
-                  hover: [
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['font'],
-                  ],
-                  active: [
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['font'],
-                  ],
-                  disabled: [
-                    ['background'],
-                    ['color'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['padding'],
-                    ['font'],
-                  ],
-                },
-                SelectedMenuItemWrap: {
-                  name: '选中项的外盒',
-                  desc: '配置选中项的外盒',
-                  normal: [
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['padding'],
-                    ['font'],
-                  ],
-                  hover: [
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['font'],
-                  ],
-                  active: [
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['font'],
-                  ],
-                  disabled: [],
-                },
-                Divider: {
-                  name: '分割线',
-                  desc: '配置每项之间的分割线，当divided为true时生效',
-                  normal: [['background']],
-                  hover: [],
-                  active: [],
-                  disabled: [],
-                },
-                Checkbox: {
-                  theme: {
-                    CheckboxWrap: {
-                      name: 'Checkbox整体配置',
-                      desc: 'Checkbox整体配置',
-                      normal: [['opacity'], ['margin'], ['padding'], ['width'], ['height']],
-                      hover: [['opacity']],
-                      disabled: [['opacity']],
-                    },
-                    CheckboxText: {
-                      name: 'Checkbox文字配置',
-                      desc: 'Checkbox文字配置',
-                      normal: [['color'], ['font']],
-                      hover: [['color'], ['font']],
-                      disabled: [['color'], ['font']],
-                    },
-                    CheckboxEdgeChecked: {
-                      name: 'Checkbox选中后边框配置',
-                      desc: 'Checkbox选中后边框配置样式',
-                      normal: [['background'], ['borderRadius'], ['border']],
-                      hover: [['background'], ['borderRadius'], ['border']],
-                      disabled: [['background'], ['borderRadius'], ['border']],
-                    },
-                    CheckboxEdgeUnChecked: {
-                      name: 'Checkbox未选中边框配置',
-                      desc: 'Checkbox未选中边框配置样式',
-                      normal: [['background'], ['borderRadius'], ['border']],
-                      hover: [['background'], ['borderRadius'], ['border']],
-                      disabled: [['background'], ['borderRadius'], ['border']],
-                    },
-                    CheckboxInnerChecked: {
-                      name: 'Checkbox选中样式配置',
-                      desc: 'Checkbox选中样式配置',
-                      normal: [['color']],
-                      hover: [['color']],
-                      disabled: [['color']],
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
         MutlipleMenu: {
-          sequence: 2,
+          sequence: 1,
           title: '多选菜单',
           desc: '多项选择的菜单',
           props: { mutliple: true },
@@ -4474,6 +4172,7 @@ export default [
               disabled: [],
             },
             MenuItem: {
+              name: '多选菜单项配置',
               theme: {
                 MenuItemWrap: {
                   name: '项的外盒',
@@ -4551,6 +4250,7 @@ export default [
                   disabled: [],
                 },
                 Checkbox: {
+                  name: '多选菜单选择器配置',
                   theme: {
                     CheckboxWrap: {
                       name: 'Checkbox整体配置',
@@ -4595,9 +4295,9 @@ export default [
         },
         CascaderMenu: {
           sequence: 3,
-          title: '级联菜单',
+          title: '多级菜单',
           desc: '支持展开的菜单',
-          props: { mutliple: true },
+          props: { mutliple: false },
           theme: {
             MenuWrap: {
               name: '菜单外盒',
@@ -4618,6 +4318,7 @@ export default [
               disabled: [],
             },
             MenuItem: {
+              name: '多级菜单项配置',
               theme: {
                 MenuItemWrap: {
                   name: '项的外盒',
@@ -4694,48 +4395,10 @@ export default [
                   active: [],
                   disabled: [],
                 },
-                Checkbox: {
-                  theme: {
-                    CheckboxWrap: {
-                      name: 'Checkbox整体配置',
-                      desc: 'Checkbox整体配置',
-                      normal: [['opacity'], ['margin'], ['padding'], ['width'], ['height']],
-                      hover: [['opacity']],
-                      disabled: [['opacity']],
-                    },
-                    CheckboxText: {
-                      name: 'Checkbox文字配置',
-                      desc: 'Checkbox文字配置',
-                      normal: [['color'], ['font']],
-                      hover: [['color'], ['font']],
-                      disabled: [['color'], ['font']],
-                    },
-                    CheckboxEdgeChecked: {
-                      name: 'Checkbox选中后边框配置',
-                      desc: 'Checkbox选中后边框配置样式',
-                      normal: [['background'], ['borderRadius'], ['border']],
-                      hover: [['background'], ['borderRadius'], ['border']],
-                      disabled: [['background'], ['borderRadius'], ['border']],
-                    },
-                    CheckboxEdgeUnChecked: {
-                      name: 'Checkbox未选中边框配置',
-                      desc: 'Checkbox未选中边框配置样式',
-                      normal: [['background'], ['borderRadius'], ['border']],
-                      hover: [['background'], ['borderRadius'], ['border']],
-                      disabled: [['background'], ['borderRadius'], ['border']],
-                    },
-                    CheckboxInnerChecked: {
-                      name: 'Checkbox选中样式配置',
-                      desc: 'Checkbox选中样式配置',
-                      normal: [['color']],
-                      hover: [['color']],
-                      disabled: [['color']],
-                    },
-                  },
-                },
               },
             },
             SubMenu: {
+              name: '子菜单配置',
               theme: {
                 MenuWrap: {
                   name: '菜单外盒',
@@ -4756,6 +4419,7 @@ export default [
                   disabled: [],
                 },
                 MenuItem: {
+                  name: '子菜单的项配置',
                   theme: {
                     MenuItemWrap: {
                       name: '项的外盒',
@@ -4832,45 +4496,6 @@ export default [
                       active: [],
                       disabled: [],
                     },
-                    Checkbox: {
-                      theme: {
-                        CheckboxWrap: {
-                          name: 'Checkbox整体配置',
-                          desc: 'Checkbox整体配置',
-                          normal: [['opacity'], ['margin'], ['padding'], ['width'], ['height']],
-                          hover: [['opacity']],
-                          disabled: [['opacity']],
-                        },
-                        CheckboxText: {
-                          name: 'Checkbox文字配置',
-                          desc: 'Checkbox文字配置',
-                          normal: [['color'], ['font']],
-                          hover: [['color'], ['font']],
-                          disabled: [['color'], ['font']],
-                        },
-                        CheckboxEdgeChecked: {
-                          name: 'Checkbox选中后边框配置',
-                          desc: 'Checkbox选中后边框配置样式',
-                          normal: [['background'], ['borderRadius'], ['border']],
-                          hover: [['background'], ['borderRadius'], ['border']],
-                          disabled: [['background'], ['borderRadius'], ['border']],
-                        },
-                        CheckboxEdgeUnChecked: {
-                          name: 'Checkbox未选中边框配置',
-                          desc: 'Checkbox未选中边框配置样式',
-                          normal: [['background'], ['borderRadius'], ['border']],
-                          hover: [['background'], ['borderRadius'], ['border']],
-                          disabled: [['background'], ['borderRadius'], ['border']],
-                        },
-                        CheckboxInnerChecked: {
-                          name: 'Checkbox选中样式配置',
-                          desc: 'Checkbox选中样式配置',
-                          normal: [['color']],
-                          hover: [['color']],
-                          disabled: [['color']],
-                        },
-                      },
-                    },
                   },
                 },
               },
@@ -4898,6 +4523,7 @@ export default [
           disabled: [],
         },
         MenuItem: {
+          name: '单选菜单项配置',
           theme: {
             MenuItemWrap: {
               name: '项的外盒',
@@ -4975,371 +4601,7 @@ export default [
               disabled: [],
             },
             Checkbox: {
-              theme: {
-                CheckboxWrap: {
-                  name: 'Checkbox整体配置',
-                  desc: 'Checkbox整体配置',
-                  normal: [['opacity'], ['margin'], ['padding'], ['width'], ['height']],
-                  hover: [['opacity']],
-                  disabled: [['opacity']],
-                },
-                CheckboxText: {
-                  name: 'Checkbox文字配置',
-                  desc: 'Checkbox文字配置',
-                  normal: [['color'], ['font']],
-                  hover: [['color'], ['font']],
-                  disabled: [['color'], ['font']],
-                },
-                CheckboxEdgeChecked: {
-                  name: 'Checkbox选中后边框配置',
-                  desc: 'Checkbox选中后边框配置样式',
-                  normal: [['background'], ['borderRadius'], ['border']],
-                  hover: [['background'], ['borderRadius'], ['border']],
-                  disabled: [['background'], ['borderRadius'], ['border']],
-                },
-                CheckboxEdgeUnChecked: {
-                  name: 'Checkbox未选中边框配置',
-                  desc: 'Checkbox未选中边框配置样式',
-                  normal: [['background'], ['borderRadius'], ['border']],
-                  hover: [['background'], ['borderRadius'], ['border']],
-                  disabled: [['background'], ['borderRadius'], ['border']],
-                },
-                CheckboxInnerChecked: {
-                  name: 'Checkbox选中样式配置',
-                  desc: 'Checkbox选中样式配置',
-                  normal: [['color']],
-                  hover: [['color']],
-                  disabled: [['color']],
-                },
-              },
-            },
-          },
-        },
-        SubMenu: {
-          theme: {
-            MenuWrap: {
-              name: '菜单外盒',
-              desc: '配置菜单组件的外盒样式',
-              normal: [
-                ['width'],
-                ['height'],
-                ['boxShadow'],
-                ['background'],
-                ['opacity'],
-                ['border'],
-                ['borderRadius'],
-                ['margin'],
-                ['padding'],
-              ],
-              hover: [['boxShadow'], ['background'], ['opacity'], ['border'], ['borderRadius']],
-              clicked: [],
-              disabled: [],
-            },
-            MenuItem: {
-              theme: {
-                MenuItemWrap: {
-                  name: '项的外盒',
-                  desc: '配置每一项的外盒',
-                  normal: [
-                    ['height'],
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['padding'],
-                  ],
-                  hover: [
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['font'],
-                  ],
-                  active: [
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['font'],
-                  ],
-                  disabled: [
-                    ['background'],
-                    ['color'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['padding'],
-                    ['font'],
-                  ],
-                },
-                SelectedMenuItemWrap: {
-                  name: '选中项的外盒',
-                  desc: '配置选中项的外盒',
-                  normal: [
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['padding'],
-                    ['font'],
-                  ],
-                  hover: [
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['font'],
-                  ],
-                  active: [
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['font'],
-                  ],
-                  disabled: [],
-                },
-                Divider: {
-                  name: '分割线',
-                  desc: '配置每项之间的分割线，当divided为true时生效',
-                  normal: [['background']],
-                  hover: [],
-                  active: [],
-                  disabled: [],
-                },
-                Checkbox: {
-                  theme: {
-                    CheckboxWrap: {
-                      name: 'Checkbox整体配置',
-                      desc: 'Checkbox整体配置',
-                      normal: [['opacity'], ['margin'], ['padding'], ['width'], ['height']],
-                      hover: [['opacity']],
-                      disabled: [['opacity']],
-                    },
-                    CheckboxText: {
-                      name: 'Checkbox文字配置',
-                      desc: 'Checkbox文字配置',
-                      normal: [['color'], ['font']],
-                      hover: [['color'], ['font']],
-                      disabled: [['color'], ['font']],
-                    },
-                    CheckboxEdgeChecked: {
-                      name: 'Checkbox选中后边框配置',
-                      desc: 'Checkbox选中后边框配置样式',
-                      normal: [['background'], ['borderRadius'], ['border']],
-                      hover: [['background'], ['borderRadius'], ['border']],
-                      disabled: [['background'], ['borderRadius'], ['border']],
-                    },
-                    CheckboxEdgeUnChecked: {
-                      name: 'Checkbox未选中边框配置',
-                      desc: 'Checkbox未选中边框配置样式',
-                      normal: [['background'], ['borderRadius'], ['border']],
-                      hover: [['background'], ['borderRadius'], ['border']],
-                      disabled: [['background'], ['borderRadius'], ['border']],
-                    },
-                    CheckboxInnerChecked: {
-                      name: 'Checkbox选中样式配置',
-                      desc: 'Checkbox选中样式配置',
-                      normal: [['color']],
-                      hover: [['color']],
-                      disabled: [['color']],
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-      childrenWidget: [],
-    },
-    target: Menu,
-    screenshot:
-      'data:image/png;base64,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',
-  },
-  {
-    meta: {
-      widgetName: 'Menu',
-      title: '单选菜单',
-      desc: '单项选择的菜单',
-      props: {
-        valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'value' },
-        displayField: {
-          type: 'string',
-          desc: 'data数据的displayValue值的名称',
-          defaultValue: 'text',
-        },
-        data: {
-          type: "[{valueField: '', displayField: '', children}]",
-          desc: '生成选择项的数据',
-          defaultValue: false,
-        },
-        mutliple: { type: 'boolean', desc: '是否多选', defaultValue: false },
-        start: { type: 'number', desc: '开始展示数据的索引值', defaultValue: 0 },
-        selectedKeys: { type: 'string | string[] | number | number[]', desc: '指定当前选中的项' },
-        defaultSelectedKeys: {
-          type: 'string | string[] | number | number[]',
-          desc: '默认指定当前选中的项,仅第一次生效',
-        },
-        checkedCSS: {
-          type: 'background | checkbox | mark | none',
-          desc: '选中项的样式',
-          defaultValue: 'none',
-        },
-        limitCount: { type: 'number', desc: '多选时的最大选中数', defaultValue: 999999 },
-        offsety: { type: 'number', desc: '菜单间的间隔', defaultValue: 4 },
-        autoHeight: { type: 'boolean', desc: '根据data数量，自动计算菜单高度' },
-        expandedPath: { type: 'string[]', desc: '层级菜单时展开的数据' },
-        separator: { type: 'string', desc: '层级菜单时连接层级数据的分隔符', defaultValue: '|' },
-        offsetX: { type: 'number', desc: '层级菜单时，菜单间的间隔', defaultValue: 4 },
-        offsetY: { type: 'string', desc: '层级菜单时，子菜单相对父级菜单的top值' },
-        action: {
-          type: 'click | hover',
-          desc: '层级菜单时，展开子菜单的方式',
-          defaultValue: 'click',
-        },
-        size: {
-          type: 'large | default | bigger',
-          desc: '设置列表项的高度',
-          defaultValue: 'default',
-        },
-        subsize: {
-          type: 'large | default | bigger',
-          desc: '设置子菜单列表项的高度',
-          defaultValue: 'default',
-        },
-        popupVisible: { type: 'boolean', desc: '层级菜单,是否允许打开子菜单', defaultValue: true },
-      },
-      events: {
-        onChange: {
-          desc: '选中项发生变化时触发',
-          args: [{ name: 'keys', desc: '所有的选中值', type: 'Object' }],
-        },
-        onClick: {
-          desc: '点击列表项时触发',
-          args: [
-            { name: 'event', desc: '选中DOM的事件对象', type: 'Object' },
-            { name: 'keys', desc: '所有的选中值', type: 'Object' },
-            { name: 'item', desc: '当前选中项的数据', type: 'Object' },
-          ],
-        },
-        onMouseEnter: {
-          desc: '鼠标进入列表项时触发',
-          args: [
-            { name: 'event', desc: '选中DOM的事件对象', type: 'Object' },
-            { name: 'item', desc: '当前鼠标进入的列表项数据', type: 'Object' },
-          ],
-        },
-        onExpandPathChange: {
-          desc: '层级菜单展开项发生改变时触发',
-          args: [
-            { name: 'expandedPath', desc: '通过separator连接的各级展开数据', type: 'string[]' },
-          ],
-        },
-      },
-      category: ['数据录入'],
-      theme: {
-        MenuWrap: {
-          name: '菜单外盒',
-          desc: '配置菜单组件的外盒样式',
-          normal: [
-            ['width'],
-            ['height'],
-            ['boxShadow'],
-            ['background'],
-            ['opacity'],
-            ['border'],
-            ['borderRadius'],
-            ['margin'],
-            ['padding'],
-          ],
-          hover: [['boxShadow'], ['background'], ['opacity'], ['border'], ['borderRadius']],
-          clicked: [],
-          disabled: [],
-        },
-        MenuItem: {
-          theme: {
-            MenuItemWrap: {
-              name: '项的外盒',
-              desc: '配置每一项的外盒',
-              normal: [
-                ['height'],
-                ['background'],
-                ['border'],
-                ['borderRadius'],
-                ['opacity'],
-                ['color'],
-                ['padding'],
-              ],
-              hover: [
-                ['background'],
-                ['border'],
-                ['borderRadius'],
-                ['opacity'],
-                ['color'],
-                ['font'],
-              ],
-              active: [
-                ['background'],
-                ['border'],
-                ['borderRadius'],
-                ['opacity'],
-                ['color'],
-                ['font'],
-              ],
-              disabled: [
-                ['background'],
-                ['color'],
-                ['borderRadius'],
-                ['opacity'],
-                ['padding'],
-                ['font'],
-              ],
-            },
-            SelectedMenuItemWrap: {
-              name: '选中项的外盒',
-              desc: '配置选中项的外盒',
-              normal: [
-                ['background'],
-                ['border'],
-                ['borderRadius'],
-                ['opacity'],
-                ['color'],
-                ['padding'],
-                ['font'],
-              ],
-              hover: [
-                ['background'],
-                ['border'],
-                ['borderRadius'],
-                ['opacity'],
-                ['color'],
-                ['font'],
-              ],
-              active: [
-                ['background'],
-                ['border'],
-                ['borderRadius'],
-                ['opacity'],
-                ['color'],
-                ['font'],
-              ],
-              disabled: [],
-            },
-            Divider: {
-              name: '分割线',
-              desc: '配置每项之间的分割线，当divided为true时生效',
-              normal: [['background']],
-              hover: [],
-              active: [],
-              disabled: [],
-            },
-            Checkbox: {
+              name: '单选菜单选择器配置',
               theme: {
                 CheckboxWrap: {
                   name: 'Checkbox整体配置',
@@ -5382,11 +4644,10 @@ export default [
         },
       },
       childrenWidget: [],
-      aliasName: 'SingleMenu',
     },
     target: Menu,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABMCAYAAACbHRIPAAAAAXNSR0IArs4c6QAAAtFJREFUeAHtnT9KA0EUxvdfVAKBCHb2SSUEcgIhrQdIlTN4EQVvkMYcwDbgCQIBq6QXLAQLMUSSoPvCCotMscx8s29Cvq2WceZ7b3+/TERWmDjKr/F4fLnZbO7z28FutzuXMV71EEjT9COvNG00Grej0eg1LmS89Pv9VqfTyZrNZj2dsMqewGq1ipbL5XY2m33mUq4y2Rkio9frZWRUPwHZAAX7Vi7lPslbGMjOqL8VViwTKBwMEvmdwa+pMhqde3EgLmSH8AqIAIUEJENaoRAKCYxAYO1wh1BIYAQCa4c7JDAh1n8QLhaLSo/S7Xb38w59fqWHBUziDgFAREZQCJImIItCABCRERSCpAnIohAARGQEhSBpArIoBAARGUEhSJqALAoBQERGUAiSJiCLQgAQkREUgqQJyKIQAERkBIUgaQKyKAQAERlh/T7k7z1H1WYOfX7V53Sdxx3iShC8nkLAQF3jKMSVIHg9hYCBusZRiCtB8HoKAQN1jaMQV4Lg9RQCBuoaRyGuBMHrs6/vVvT2Dk5lnBUBccEdYoXO3yIK8cfWKplCrLD5W0Qh/thaJVOIFTZ/iyjEH1urZAqxwuZvEYX4Y2uVTCFW2Pwtsn6n/vz8VKmr6+ub/bxjm18JjmESd4gBiuYQhWjSN9SmEAMUzSEK0aRvqE0hBiiaQxSiSd9Qm0IMUDSHKESTvqE2hRigaA5RiCZ9Q20KMUDRHKIQTfqG2hRigKI5RCGa9A21KcQARXMovnt4/BkOh5o9sHZBYDKZ8D8XQ/s08CsrMCMUEpqQJP4JrKXjbUdcJEmyO14CgT25uEhO0nVuJbDOjrAdcbB3Eefb5KIdRWenUZRSTO0fBWEu7MWBuMjkHL31enXebvG4vNptlArK8XniQvbEVM7RK/2MtwoECgfTRE6YlEMN5/P5VizxqpeAMBf2xcGSt7GU59Gr9UooV/t/9Oov796X9Hh6uxgAAAAASUVORK5CYII=',
   },
   {
     meta: {
@@ -5400,11 +4661,7 @@ export default [
           desc: 'data数据的displayValue值的名称',
           defaultValue: 'text',
         },
-        data: {
-          type: "[{valueField: '', displayField: '', children}]",
-          desc: '生成选择项的数据',
-          defaultValue: false,
-        },
+        data: { type: 'Object[]', desc: '生成选择项的数据', defaultValue: false },
         mutliple: { type: 'boolean', desc: '是否多选', defaultValue: true },
         start: { type: 'number', desc: '开始展示数据的索引值', defaultValue: 0 },
         selectedKeys: { type: 'string | string[] | number | number[]', desc: '指定当前选中的项' },
@@ -5413,7 +4670,7 @@ export default [
           desc: '默认指定当前选中的项,仅第一次生效',
         },
         checkedCSS: {
-          type: 'background | checkbox | mark | none',
+          type: 'background | checkbox | none',
           desc: '选中项的样式',
           defaultValue: 'none',
         },
@@ -5489,6 +4746,7 @@ export default [
           disabled: [],
         },
         MenuItem: {
+          name: '多选菜单项配置',
           theme: {
             MenuItemWrap: {
               name: '项的外盒',
@@ -5566,6 +4824,7 @@ export default [
               disabled: [],
             },
             Checkbox: {
+              name: '多选菜单选择器配置',
               theme: {
                 CheckboxWrap: {
                   name: 'Checkbox整体配置',
@@ -5612,12 +4871,12 @@ export default [
     },
     target: Menu,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+      'data:image/png;base64,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',
   },
   {
     meta: {
       widgetName: 'Menu',
-      title: '级联菜单',
+      title: '多级菜单',
       desc: '支持展开的菜单',
       props: {
         valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'value' },
@@ -5626,12 +4885,8 @@ export default [
           desc: 'data数据的displayValue值的名称',
           defaultValue: 'text',
         },
-        data: {
-          type: "[{valueField: '', displayField: '', children}]",
-          desc: '生成选择项的数据',
-          defaultValue: false,
-        },
-        mutliple: { type: 'boolean', desc: '是否多选', defaultValue: true },
+        data: { type: 'Object[]', desc: '生成选择项的数据', defaultValue: false },
+        mutliple: { type: 'boolean', desc: '是否多选', defaultValue: false },
         start: { type: 'number', desc: '开始展示数据的索引值', defaultValue: 0 },
         selectedKeys: { type: 'string | string[] | number | number[]', desc: '指定当前选中的项' },
         defaultSelectedKeys: {
@@ -5639,7 +4894,7 @@ export default [
           desc: '默认指定当前选中的项,仅第一次生效',
         },
         checkedCSS: {
-          type: 'background | checkbox | mark | none',
+          type: 'background | checkbox | none',
           desc: '选中项的样式',
           defaultValue: 'none',
         },
@@ -5715,6 +4970,7 @@ export default [
           disabled: [],
         },
         MenuItem: {
+          name: '多级菜单项配置',
           theme: {
             MenuItemWrap: {
               name: '项的外盒',
@@ -5791,48 +5047,10 @@ export default [
               active: [],
               disabled: [],
             },
-            Checkbox: {
-              theme: {
-                CheckboxWrap: {
-                  name: 'Checkbox整体配置',
-                  desc: 'Checkbox整体配置',
-                  normal: [['opacity'], ['margin'], ['padding'], ['width'], ['height']],
-                  hover: [['opacity']],
-                  disabled: [['opacity']],
-                },
-                CheckboxText: {
-                  name: 'Checkbox文字配置',
-                  desc: 'Checkbox文字配置',
-                  normal: [['color'], ['font']],
-                  hover: [['color'], ['font']],
-                  disabled: [['color'], ['font']],
-                },
-                CheckboxEdgeChecked: {
-                  name: 'Checkbox选中后边框配置',
-                  desc: 'Checkbox选中后边框配置样式',
-                  normal: [['background'], ['borderRadius'], ['border']],
-                  hover: [['background'], ['borderRadius'], ['border']],
-                  disabled: [['background'], ['borderRadius'], ['border']],
-                },
-                CheckboxEdgeUnChecked: {
-                  name: 'Checkbox未选中边框配置',
-                  desc: 'Checkbox未选中边框配置样式',
-                  normal: [['background'], ['borderRadius'], ['border']],
-                  hover: [['background'], ['borderRadius'], ['border']],
-                  disabled: [['background'], ['borderRadius'], ['border']],
-                },
-                CheckboxInnerChecked: {
-                  name: 'Checkbox选中样式配置',
-                  desc: 'Checkbox选中样式配置',
-                  normal: [['color']],
-                  hover: [['color']],
-                  disabled: [['color']],
-                },
-              },
-            },
           },
         },
         SubMenu: {
+          name: '子菜单配置',
           theme: {
             MenuWrap: {
               name: '菜单外盒',
@@ -5853,6 +5071,7 @@ export default [
               disabled: [],
             },
             MenuItem: {
+              name: '子菜单的项配置',
               theme: {
                 MenuItemWrap: {
                   name: '项的外盒',
@@ -5929,45 +5148,6 @@ export default [
                   active: [],
                   disabled: [],
                 },
-                Checkbox: {
-                  theme: {
-                    CheckboxWrap: {
-                      name: 'Checkbox整体配置',
-                      desc: 'Checkbox整体配置',
-                      normal: [['opacity'], ['margin'], ['padding'], ['width'], ['height']],
-                      hover: [['opacity']],
-                      disabled: [['opacity']],
-                    },
-                    CheckboxText: {
-                      name: 'Checkbox文字配置',
-                      desc: 'Checkbox文字配置',
-                      normal: [['color'], ['font']],
-                      hover: [['color'], ['font']],
-                      disabled: [['color'], ['font']],
-                    },
-                    CheckboxEdgeChecked: {
-                      name: 'Checkbox选中后边框配置',
-                      desc: 'Checkbox选中后边框配置样式',
-                      normal: [['background'], ['borderRadius'], ['border']],
-                      hover: [['background'], ['borderRadius'], ['border']],
-                      disabled: [['background'], ['borderRadius'], ['border']],
-                    },
-                    CheckboxEdgeUnChecked: {
-                      name: 'Checkbox未选中边框配置',
-                      desc: 'Checkbox未选中边框配置样式',
-                      normal: [['background'], ['borderRadius'], ['border']],
-                      hover: [['background'], ['borderRadius'], ['border']],
-                      disabled: [['background'], ['borderRadius'], ['border']],
-                    },
-                    CheckboxInnerChecked: {
-                      name: 'Checkbox选中样式配置',
-                      desc: 'Checkbox选中样式配置',
-                      normal: [['color']],
-                      hover: [['color']],
-                      disabled: [['color']],
-                    },
-                  },
-                },
               },
             },
           },
@@ -5978,63 +5158,7 @@ export default [
     },
     target: Menu,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
-  },
-  {
-    meta: {
-      widgetName: 'Modal',
-      title: '对话框',
-      desc: 'Modal 对话框。',
-      props: {
-        title: { type: 'React.node', desc: '标题' },
-        visible: { type: 'boolean', desc: 'Modal 是否可见' },
-        cancelText: { type: 'string', desc: '取消按钮文字', defaultValue: '取消' },
-        okText: { type: 'string', desc: '确认按钮文字', defaultValue: '确定' },
-        confirmLoading: { type: 'boolean', desc: '确定按钮是否 loading' },
-        footer: { type: 'React.node', desc: '自定义底部内容，不需要底部内容可设置为 null' },
-        maskClosable: { type: 'boolean', desc: '点击蒙层是否允许关闭', defaultValue: true },
-      },
-      events: {
-        onOk: { desc: '点击确定时的回调', args: [] },
-        onCancel: { desc: '点击取消时的回调', args: [] },
-      },
-      category: ['反馈'],
-      theme: {
-        ModalWrap: {
-          name: '弹窗整体样式',
-          desc: '为弹窗配置整体样式',
-          normal: [
-            ['width'],
-            ['height'],
-            ['opacity'],
-            ['boxShadow'],
-            ['borderRadius'],
-            ['border'],
-            ['background'],
-            ['padding'],
-          ],
-        },
-        ModalTitle: {
-          name: '弹窗标题样式',
-          desc: '为弹窗文字配置样式',
-          normal: [['font'], ['color'], ['padding']],
-        },
-        ModalContentText: {
-          name: '弹窗内容文本样式',
-          desc: '为弹窗内容文本配置样式',
-          normal: [['font'], ['color'], ['padding']],
-        },
-        ModalCloseIcon: {
-          name: '弹窗关闭图标样式',
-          desc: '为弹窗关闭图标配置样式',
-          normal: [['fontSize'], ['color']],
-        },
-      },
-      childrenWidget: [],
-    },
-    target: Modal,
-    screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADkAAAAiCAYAAADlCXHdAAAAAXNSR0IArs4c6QAAAuFJREFUWAntWc9rE0EU/vZH1Kab2ioJ2mio9FArEQvtwUMOKioi/kAoIvWil+Kf4cE/ohehB1GkIloULwa0SFUMSSupqC2ITdOapNq0qW1Mml33LSQE2ilkMod1zRx2l8fsN+9737y3szNSLBY7bxjGsK7rXjisybKckSTphhSNRtOBQMCraZrDKAK5XA6JRCIjk4JOJEiKeTweED/ZcfJtQahBcoug/JMmleV1djkHszqhxdNsdfm9to58vgBFkYXYNc2NZXMMn3ePha/rBhZSi2jf54UksbziszOna/5PAXfvjWJtPY+NjRKGHzxDdiUHUXZVUfD4+St8mflueR4e+4Dox8/CCRK4Mjg4eNvn820Kkdbshsul4s27ScwtpK0I9x47DFF2WZbQ2XEAI0/DcDftwuTUNK5dOWPNkk3O1GFIp9NgKkm4fT3d0A0Ds3MpnAz1VYYSZW9r9eBEqBcjo2FcvXzaTAWlMobIh21JLmVXsPgri1KphPkfmcq4ouxm/DAZn0bHwf2YiH+t4It+YJIslXQ8fPISF86G0H/pFB6Z0aZ8FGUnIq/Ho9jd0oybAxfN3JzFzLc50fwsPGZOvgiPo7VFw/G+IDxmJSQ130emkJhPCbFrWhPG3sZwvf8cVFXBoUC7FdSj3Z3YucMljCzlpBSJRIxgMCgM1G5A8Xh8+8JjN4d5/WHmJC+gHd9rkLSjKjw+/RdKMhfoE59kDN1X8XOJb7W8t83ArYEN9BzRreCvrq4imUyiWCzyiGEuMV3w+/3g+cFnkqyHILGg4BDG0J2CRYoI8jpJALSVQRhdXV0WXi0X5nTlVbB68GoMUpBHhTIebWXwzgImyTK4E+4Nkk5QkTgwlaTqWG+rxqDqSMWDt9G7hMHTmNWVyn89Fbb8CSk7RZVVxCekjFfLvfEXUku07NyXmZN2drpW3xoka42YXfubm+Rypp7Sbldi5BfxIn4qHVKaZ3iOPoT9C0cKxNBk3ItpAAAAAElFTkSuQmCC',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHAAAABMCAYAAAC1WDOdAAAAAXNSR0IArs4c6QAAA/NJREFUeAHtncFr02AYxr+lrYVKkQ1hsh5EDxsTB4X9BYNeBfHiRQiiXrz1LxmIpzHE4s2LiNfA/oJCoBdbdpK1sMsmrRZKmuL7hmSEsZe02zJ8vr2BLembr9nzPL+8KSXtviVDS6vVqgVBsEubjTAMl7lmy1IoFE7Ji1cqlZqu6/bTvnzfr81ms8g3rSF8O44T+aF1s16v95dieJ3t7e3q+vp6sVKppD3Cb4/HY9Pr9abtdntEELcSiDG8ztraWnVlZaVI+yC8UqOZk5OT6WAwGBHELYc7j+ERTevgMRE+Idkbe4yvMhEo7jyGt7q6CgOPhfOJxppZO3twqNbgzotcWfwr9thIWWxw56UeQ23G2hvF4biyTD9mOIbSfwmx7LFy9jrHr3kol82LzLJ29sAdqAtwAgoQGB5LV4AKEDwBcPnagQoQPAFw+dqB4AAz38geHPyYy+LOzrNoXN7j5xJzDYO63e5cR9nY2IjG5T1eEqMdKCUDUleAIKAkmdYAnEwmkker69YA/Pb9q+l0fKthXWTOGoDD4W/z+cse3fv7eZFPa2vWAHQKBRMEE7P/6aM5POxZC+y8MWsAsjG6vWL+jv+Yvf0P5ujo13mvVj62CmBCKJgGJginyUOr15lv5JHc02dE6CMHZfP29Xvz6OFjJOmX1mpNB87C0BRLd8wbgre5+fTSgaA90RqA1eo94756Z57cInh8sllzCX3x/KUpl8toDXRlvdZ04G2Ex/StAXjlUxn0AAoQFFwiO/M1MLnPlzwha533+Ky/f137k/t88x4v7/GSDu1AKRmQugIEASXJVIBSMiB1BQgCSpKpAKVkQOoKEASUJFMBSsmA1BUgCChJpgKUkgGpF++WR+bBfRC1V5TJXm1btAPBiSpABQieALh87UAFCJ4AuHztQAUIngC4fO1ABQieALj8zM/E5P3d70WPf1N5L6or7/GSb72ESsmA1BUgCChJpgKUkgGpK0AQUJJMBSglA1JXgCCgJJkKUEoGpK4AQUBJMhWglAxIXQGCgJJkKkApGZC6AgQBJclUgFIyIHUFCAJKkqkApWRA6pn3A/P+7veix7+pXBfVlfd4ybd2oJQMSF0BgoCSZCpAKRmQugIEASXJVIBSMiB1BQgCSpKpAKVkQOr0z94LpzxVt+0Le4znlI+s8nzsPKU36sLa2QN3oMfzrKMamVd37NFLjfd4PvbUY6jNWLvn0GzIzXa7PfJ9f2pjJ7In9sYe2WtCic7e5mAwGB0fH0+ROpG1smbWzh6W2FCr1arRjl3abIRheDZVd2IWeR1fNj2G57puP+2FwNZoronIN0/pnd73v27zZZO0eQyvXq/3/wFI4CMUoIX4vwAAAABJRU5ErkJggg==',
   },
   {
     meta: {
@@ -6042,7 +5166,7 @@ export default [
       title: '导航菜单',
       desc: '为页面提供导航功能的菜单',
       props: {
-        data: { type: "[{valueField: '', displayField: ''}]", desc: '生成选择项的数据' },
+        data: { type: 'Object[]', desc: '生成选择项的数据' },
         valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'value' },
         displayField: {
           type: 'string',
@@ -6060,7 +5184,7 @@ export default [
           desc: '菜单类型为inline(内嵌模式)时,支持两种风格',
           defaultValue: 'primary',
         },
-        theme: {
+        themeStyle: {
           type: 'light | dark',
           desc: '菜单类型为inline(内嵌模式)时,支持两种主题',
           defaultValue: 'light',
@@ -6092,13 +5216,72 @@ export default [
       },
       category: ['导航'],
       designInfo: {
-        VerticalNavMenu: {
+        HorizontalNavMenu: {
           sequence: 1,
-          title: '垂直导航菜单',
-          desc: '子菜单从右侧弹开',
-          props: { mode: 'vertical' },
+          title: '顶部导航菜单',
+          desc: '水平的导航菜单',
+          props: { mode: 'horizontal' },
           theme: {
+            Tabs: {
+              name: '水平导航配置',
+              theme: {
+                TitleContainer: {
+                  name: '头部标签区域',
+                  desc: '头部标签区域宽度配置',
+                  normal: [['width']],
+                  hover: [],
+                  clicked: [],
+                  disabled: [],
+                },
+                BorderStyle: {
+                  name: '默认线',
+                  desc: '默认线样式配置',
+                  normal: [['border']],
+                  hover: [],
+                  clicked: [],
+                  disabled: [],
+                },
+                TabHeader: {
+                  name: '标签配置',
+                  theme: {
+                    DefaultTabPan: {
+                      name: '默认标签',
+                      desc: '默认标签样式配置',
+                      normal: [
+                        ['color'],
+                        ['background'],
+                        ['border'],
+                        ['margin'],
+                        ['padding'],
+                        ['font'],
+                        ['opacity'],
+                      ],
+                      hover: [['color'], ['background'], ['border'], ['font'], ['opacity']],
+                      clicked: [],
+                      disabled: [],
+                    },
+                    SelectTabPan: {
+                      name: '选中标签',
+                      desc: '选中标签样式配置',
+                      normal: [
+                        ['color'],
+                        ['background'],
+                        ['border'],
+                        ['margin'],
+                        ['padding'],
+                        ['font'],
+                        ['opacity'],
+                      ],
+                      hover: [['color'], ['background'], ['border'], ['font'], ['opacity']],
+                      clicked: [],
+                      disabled: [],
+                    },
+                  },
+                },
+              },
+            },
             Menu: {
+              name: '弹出菜单配置',
               theme: {
                 MenuWrap: {
                   name: '菜单外盒',
@@ -6119,6 +5302,7 @@ export default [
                   disabled: [],
                 },
                 MenuItem: {
+                  name: '菜单项配置',
                   theme: {
                     MenuItemWrap: {
                       name: '项的外盒',
@@ -6189,21 +5373,343 @@ export default [
                     },
                   },
                 },
+                SubMenu: {
+                  name: '子菜单配置',
+                  theme: {
+                    MenuWrap: {
+                      name: '菜单外盒',
+                      desc: '配置菜单组件的外盒样式',
+                      normal: [
+                        ['width'],
+                        ['height'],
+                        ['boxShadow'],
+                        ['background'],
+                        ['opacity'],
+                        ['border'],
+                        ['borderRadius'],
+                        ['margin'],
+                        ['padding'],
+                      ],
+                      hover: [
+                        ['boxShadow'],
+                        ['background'],
+                        ['opacity'],
+                        ['border'],
+                        ['borderRadius'],
+                      ],
+                      clicked: [],
+                      disabled: [],
+                    },
+                    MenuItem: {
+                      name: '子菜单的项配置',
+                      theme: {
+                        MenuItemWrap: {
+                          name: '项的外盒',
+                          desc: '配置每一项的外盒',
+                          normal: [
+                            ['height'],
+                            ['background'],
+                            ['border'],
+                            ['borderRadius'],
+                            ['opacity'],
+                            ['color'],
+                            ['padding'],
+                          ],
+                          hover: [
+                            ['background'],
+                            ['border'],
+                            ['borderRadius'],
+                            ['opacity'],
+                            ['color'],
+                            ['font'],
+                          ],
+                          active: [
+                            ['background'],
+                            ['border'],
+                            ['borderRadius'],
+                            ['opacity'],
+                            ['color'],
+                            ['font'],
+                          ],
+                          disabled: [
+                            ['background'],
+                            ['color'],
+                            ['borderRadius'],
+                            ['opacity'],
+                            ['padding'],
+                            ['font'],
+                          ],
+                        },
+                        SelectedMenuItemWrap: {
+                          name: '选中项的外盒',
+                          desc: '配置选中项的外盒',
+                          normal: [
+                            ['background'],
+                            ['border'],
+                            ['borderRadius'],
+                            ['opacity'],
+                            ['color'],
+                            ['padding'],
+                            ['font'],
+                          ],
+                          hover: [
+                            ['background'],
+                            ['border'],
+                            ['borderRadius'],
+                            ['opacity'],
+                            ['color'],
+                            ['font'],
+                          ],
+                          active: [
+                            ['background'],
+                            ['border'],
+                            ['borderRadius'],
+                            ['opacity'],
+                            ['color'],
+                            ['font'],
+                          ],
+                          disabled: [],
+                        },
+                        Divider: {
+                          name: '分割线',
+                          desc: '配置每项之间的分割线，当divided为true时生效',
+                          normal: [['background']],
+                          hover: [],
+                          active: [],
+                          disabled: [],
+                        },
+                      },
+                    },
+                  },
+                },
               },
             },
           },
         },
-        InlineNavMenu: {
+        VerticalNavMenu: {
           sequence: 2,
+          title: '垂直导航菜单',
+          desc: '子菜单从右侧弹开',
+          props: { mode: 'vertical' },
+          theme: {
+            Menu: {
+              name: '垂直导航菜单配置',
+              theme: {
+                MenuWrap: {
+                  name: '菜单外盒',
+                  desc: '配置菜单组件的外盒样式',
+                  normal: [
+                    ['width'],
+                    ['height'],
+                    ['boxShadow'],
+                    ['background'],
+                    ['opacity'],
+                    ['border'],
+                    ['borderRadius'],
+                    ['margin'],
+                    ['padding'],
+                  ],
+                  hover: [['boxShadow'], ['background'], ['opacity'], ['border'], ['borderRadius']],
+                  clicked: [],
+                  disabled: [],
+                },
+                MenuItem: {
+                  name: '菜单项配置',
+                  theme: {
+                    MenuItemWrap: {
+                      name: '项的外盒',
+                      desc: '配置每一项的外盒',
+                      normal: [
+                        ['height'],
+                        ['background'],
+                        ['border'],
+                        ['borderRadius'],
+                        ['opacity'],
+                        ['color'],
+                        ['padding'],
+                      ],
+                      hover: [
+                        ['background'],
+                        ['border'],
+                        ['borderRadius'],
+                        ['opacity'],
+                        ['color'],
+                        ['font'],
+                      ],
+                      active: [
+                        ['background'],
+                        ['border'],
+                        ['borderRadius'],
+                        ['opacity'],
+                        ['color'],
+                        ['font'],
+                      ],
+                      disabled: [
+                        ['background'],
+                        ['color'],
+                        ['borderRadius'],
+                        ['opacity'],
+                        ['padding'],
+                        ['font'],
+                      ],
+                    },
+                    SelectedMenuItemWrap: {
+                      name: '选中项的外盒',
+                      desc: '配置选中项的外盒',
+                      normal: [
+                        ['background'],
+                        ['border'],
+                        ['borderRadius'],
+                        ['opacity'],
+                        ['color'],
+                        ['padding'],
+                        ['font'],
+                      ],
+                      hover: [
+                        ['background'],
+                        ['border'],
+                        ['borderRadius'],
+                        ['opacity'],
+                        ['color'],
+                        ['font'],
+                      ],
+                      active: [
+                        ['background'],
+                        ['border'],
+                        ['borderRadius'],
+                        ['opacity'],
+                        ['color'],
+                        ['font'],
+                      ],
+                      disabled: [],
+                    },
+                  },
+                },
+                SubMenu: {
+                  name: '弹开子菜单配置',
+                  theme: {
+                    MenuWrap: {
+                      name: '菜单外盒',
+                      desc: '配置菜单组件的外盒样式',
+                      normal: [
+                        ['width'],
+                        ['height'],
+                        ['boxShadow'],
+                        ['background'],
+                        ['opacity'],
+                        ['border'],
+                        ['borderRadius'],
+                        ['margin'],
+                        ['padding'],
+                      ],
+                      hover: [
+                        ['boxShadow'],
+                        ['background'],
+                        ['opacity'],
+                        ['border'],
+                        ['borderRadius'],
+                      ],
+                      clicked: [],
+                      disabled: [],
+                    },
+                    MenuItem: {
+                      name: '子菜单的项配置',
+                      theme: {
+                        MenuItemWrap: {
+                          name: '项的外盒',
+                          desc: '配置每一项的外盒',
+                          normal: [
+                            ['height'],
+                            ['background'],
+                            ['border'],
+                            ['borderRadius'],
+                            ['opacity'],
+                            ['color'],
+                            ['padding'],
+                          ],
+                          hover: [
+                            ['background'],
+                            ['border'],
+                            ['borderRadius'],
+                            ['opacity'],
+                            ['color'],
+                            ['font'],
+                          ],
+                          active: [
+                            ['background'],
+                            ['border'],
+                            ['borderRadius'],
+                            ['opacity'],
+                            ['color'],
+                            ['font'],
+                          ],
+                          disabled: [
+                            ['background'],
+                            ['color'],
+                            ['borderRadius'],
+                            ['opacity'],
+                            ['padding'],
+                            ['font'],
+                          ],
+                        },
+                        SelectedMenuItemWrap: {
+                          name: '选中项的外盒',
+                          desc: '配置选中项的外盒',
+                          normal: [
+                            ['background'],
+                            ['border'],
+                            ['borderRadius'],
+                            ['opacity'],
+                            ['color'],
+                            ['padding'],
+                            ['font'],
+                          ],
+                          hover: [
+                            ['background'],
+                            ['border'],
+                            ['borderRadius'],
+                            ['opacity'],
+                            ['color'],
+                            ['font'],
+                          ],
+                          active: [
+                            ['background'],
+                            ['border'],
+                            ['borderRadius'],
+                            ['opacity'],
+                            ['color'],
+                            ['font'],
+                          ],
+                          disabled: [],
+                        },
+                        Divider: {
+                          name: '分割线',
+                          desc: '配置每项之间的分割线，当divided为true时生效',
+                          normal: [['background']],
+                          hover: [],
+                          active: [],
+                          disabled: [],
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+        InlineEllipseNavMenu: {
+          sequence: 3,
           title: '内嵌导航菜单',
-          desc: '点击菜单收起或展开子菜单',
-          props: { mode: 'inline' },
+          desc: '点击菜单收起或展开子菜单,ellipse样式',
+          props: { mode: 'inline', inlineType: 'ellipse' },
           theme: {
             Tree: {
+              name: '内嵌导航菜单配置',
               theme: {
                 TreeWrap: {
-                  name: '树形控件外盒',
-                  desc: '配置树形组件的外盒样式',
+                  name: '内嵌导航菜单外盒',
+                  desc: '配置内嵌导航菜单的外盒样式',
                   normal: [
                     ['width'],
                     ['height'],
@@ -6220,6 +5726,7 @@ export default [
                   disabled: [],
                 },
                 TreeItem: {
+                  name: '内嵌导航菜单项配置',
                   theme: {
                     TreeItemWrap: {
                       name: '项的外盒',
@@ -6301,75 +5808,358 @@ export default [
                       active: [['color'], ['font']],
                       disabled: [['color'], ['font']],
                     },
+                    SubTreeWrap: {
+                      name: '嵌套中的导航菜单外盒',
+                      desc: '配置嵌套中的导航菜单外盒的样式',
+                      normal: [
+                        ['width'],
+                        ['background'],
+                        ['opacity'],
+                        ['border'],
+                        ['margin'],
+                        ['padding', 'left'],
+                        ['padding', 'right'],
+                      ],
+                      hover: [['background'], ['opacity'], ['border']],
+                      active: [],
+                      disabled: [],
+                    },
                   },
                 },
               },
             },
           },
         },
-        HorizontalNavMenu: {
-          sequence: 3,
-          title: '顶部导航菜单',
-          desc: '水平的导航菜单',
-          props: { mode: 'horizontal' },
+      },
+      theme: {
+        Tree: {
+          name: '内嵌导航菜单配置',
           theme: {
-            Tabs: {
+            TreeWrap: {
+              name: '内嵌导航菜单外盒',
+              desc: '配置内嵌导航菜单的外盒样式',
+              normal: [
+                ['width'],
+                ['height'],
+                ['boxShadow'],
+                ['background'],
+                ['opacity'],
+                ['border'],
+                ['borderRadius'],
+                ['margin'],
+                ['padding'],
+              ],
+              hover: [['boxShadow'], ['background'], ['opacity'], ['border'], ['borderRadius']],
+              clicked: [],
+              disabled: [],
+            },
+            TreeItem: {
+              name: '内嵌导航菜单项配置',
               theme: {
-                TitleContainer: {
-                  name: '头部标签区域',
-                  desc: '头部标签区域宽度配置',
-                  normal: [['width']],
-                  hover: [],
-                  clicked: [],
+                TreeItemWrap: {
+                  name: '项的外盒',
+                  desc: '配置每一项的外盒',
+                  normal: [
+                    ['background'],
+                    ['border'],
+                    ['borderRadius'],
+                    ['opacity'],
+                    ['color'],
+                    ['padding'],
+                  ],
+                  hover: [['background'], ['border'], ['borderRadius'], ['opacity'], ['color']],
+                  active: [['background'], ['border'], ['borderRadius'], ['opacity'], ['color']],
                   disabled: [],
                 },
-                BorderStyle: {
-                  name: '默认线',
-                  desc: '默认线样式配置',
-                  normal: [['border']],
-                  hover: [],
-                  clicked: [],
+                SelectedTreeItemWrap: {
+                  name: '选中项的外盒',
+                  desc: '配置选中项的外盒',
+                  normal: [
+                    ['background'],
+                    ['border'],
+                    ['borderRadius'],
+                    ['opacity'],
+                    ['color'],
+                    ['padding'],
+                  ],
+                  hover: [['background'], ['border'], ['borderRadius'], ['opacity'], ['color']],
+                  active: [['background'], ['border'], ['borderRadius'], ['opacity'], ['color']],
                   disabled: [],
                 },
-                TabHeader: {
-                  theme: {
-                    DefaultTabPan: {
-                      name: '默认标签',
-                      desc: '默认标签样式配置',
-                      normal: [
-                        ['color'],
-                        ['background'],
-                        ['border'],
-                        ['margin'],
-                        ['padding'],
-                        ['font'],
-                        ['opacity'],
-                      ],
-                      hover: [['color'], ['background'], ['border'], ['font'], ['opacity']],
-                      clicked: [],
-                      disabled: [],
-                    },
-                    SelectTabPan: {
-                      name: '选中标签',
-                      desc: '选中标签样式配置',
-                      normal: [
-                        ['color'],
-                        ['background'],
-                        ['border'],
-                        ['margin'],
-                        ['padding'],
-                        ['font'],
-                        ['opacity'],
-                      ],
-                      hover: [['color'], ['background'], ['border'], ['font'], ['opacity']],
-                      clicked: [],
-                      disabled: [],
-                    },
-                  },
+                Text: {
+                  name: '项的文本',
+                  desc: '配置每一项文本内容的样式',
+                  normal: [
+                    ['color'],
+                    ['font'],
+                    ['background'],
+                    ['padding'],
+                    ['border'],
+                    ['borderRadius'],
+                  ],
+                  hover: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
+                  active: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
+                  disabled: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
+                },
+                SelectedText: {
+                  name: '选中项的文本',
+                  desc: '配置选中项文本内容的样式',
+                  normal: [
+                    ['color'],
+                    ['font'],
+                    ['background'],
+                    ['padding'],
+                    ['border'],
+                    ['borderRadius'],
+                  ],
+                  hover: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
+                  active: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
+                  disabled: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
+                },
+                Switch: {
+                  name: '控制器配置',
+                  desc: '配置控制树节点展开或隐藏的控制器的样式',
+                  normal: [['color'], ['font']],
+                  hover: [['color'], ['font']],
+                  active: [['color'], ['font']],
+                  disabled: [['color'], ['font']],
+                },
+                SubTreeWrap: {
+                  name: '嵌套中的导航菜单外盒',
+                  desc: '配置嵌套中的导航菜单外盒的样式',
+                  normal: [
+                    ['width'],
+                    ['background'],
+                    ['opacity'],
+                    ['border'],
+                    ['margin'],
+                    ['padding', 'left'],
+                    ['padding', 'right'],
+                  ],
+                  hover: [['background'], ['opacity'], ['border']],
+                  active: [],
+                  disabled: [],
                 },
               },
             },
-            Menu: {
+          },
+        },
+      },
+      childrenWidget: [],
+    },
+    target: NavMenu,
+    screenshot:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFwAAABMCAYAAADgOdDDAAAAAXNSR0IArs4c6QAAArhJREFUeAHt289rE0EUB/DZIRVE/4D2ov+Gd4u3RipYsFiP+i/0T6j/hmktNYdAipfoQcGbf4WnXHoQRUH2xzizNrBofPMCX162+g2ETOe9fTP72WHZ7KbFy1fT4BSv/b1hkdL6lq+Yeq9SfK9m8x9MhuDGB5ngBDcWMB6OK9wYfGA83j8x3L2DgxvXf7jnReE24yVe2d2peCm34Vwx/34tHM5Go2/dWGoT/HcRxd8Jcvjw8Www2DjxvrjZNE27lffexfaXsqz2Z6PjP7BTEk8pCuBlKdPx8bQsywdVXX8OIbj0rqrqoinrYYy9XrZN6iP432QU/RH2javqvcj9NYJfuNrtTsaj99KmBJd0FLFJRK+a+q4LzfZk/OJDbhOew3NCivj52clHRVqbwhWulQLlERwEqS1DcK0UKI/gIEiWoQAFKEABClCAAhSgAAX6K1DcfxaeNIU7SlP0wR02wb3r73Sv/sz8JfZW3JWtBfzV363+7kH6ap+wF69ue9HHT6AA76UAMTWlCK5RAuYQHIipKUVwjRIwh+BATE2p1R8ie/dJLNy42218XXni5NYf5Ao3PgYEJ7ixgPFwXOEENxYwHo4rnODGAsbDcYUT3FjAeDiucIIbCxgPxxVOcGMB4+FWv1u4uBuYm+i68nLzWnOcpxTjA5DA550xu+1ON5soAZ9+/BOLJej5ZRtVm3WWCAzaX1oFdyfFfv0D85IsdsEEeA6HUeoKEVznBMsiOIxSV2jl6/BH2+fiU/vTtzvtU/u+5+l48Flc4XhTsSLBRR58kOB4U7EiwUUefJDgeFOxIsFFHnyQ4HhTsSLBRR58kOB4U7EiwUUefJDgeFOxIsFFHnyQ4HhTsWKx8zTcEjMYhApwhUM588UInjeCZhAcypkvRvC8ETSD4FDOfDGC542gGQSHcuaL/QThMZ6aOXl76wAAAABJRU5ErkJggg==',
+  },
+  {
+    meta: {
+      widgetName: 'NavMenu',
+      title: '顶部导航菜单',
+      desc: '水平的导航菜单',
+      props: {
+        data: { type: 'Object[]', desc: '生成选择项的数据' },
+        valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'value' },
+        displayField: {
+          type: 'string',
+          desc: 'data数据的displayValue值的名称',
+          defaultValue: 'text',
+        },
+        value: { type: 'string | string[] | number | number[]', desc: '指定当前选中的条目' },
+        mode: {
+          type: 'vertical | inline| horizontal',
+          desc: '菜单类型，支持垂直、内嵌和水平模式',
+          defaultValue: 'horizontal',
+        },
+        inlineType: {
+          type: 'primary | ellipse',
+          desc: '菜单类型为inline(内嵌模式)时,支持两种风格',
+          defaultValue: 'primary',
+        },
+        themeStyle: {
+          type: 'light | dark',
+          desc: '菜单类型为inline(内嵌模式)时,支持两种主题',
+          defaultValue: 'light',
+        },
+        inlineExpandAll: {
+          type: 'boolean',
+          desc: '菜单类型为inline(内嵌模式)时,是否展开所有子元素,默认为true',
+          defaultValue: true,
+        },
+        separator: {
+          type: 'string',
+          desc: '自定义层级分隔符,只有在mode为 vertical 时,传入级联数据生效 ',
+          defaultValue: '|',
+        },
+      },
+      events: {
+        onClick: {
+          desc: 'mode为vertical时生效,点击选中项时触发',
+          args: [{ name: 'target', desc: '点击项所包含的数据信息', type: 'Object' }],
+        },
+        onChange: {
+          desc: '选中值改变时触发',
+          args: [{ name: 'target', desc: '改变的值,所包含的数据信息', type: 'Object' }],
+        },
+        onSelect: {
+          desc: 'mode为inline时生效,选中项时触发',
+          args: [{ name: 'target', desc: '选中项所包含的数据信息', type: 'Object' }],
+        },
+      },
+      category: ['导航'],
+      theme: {
+        Tabs: {
+          name: '水平导航配置',
+          theme: {
+            TitleContainer: {
+              name: '头部标签区域',
+              desc: '头部标签区域宽度配置',
+              normal: [['width']],
+              hover: [],
+              clicked: [],
+              disabled: [],
+            },
+            BorderStyle: {
+              name: '默认线',
+              desc: '默认线样式配置',
+              normal: [['border']],
+              hover: [],
+              clicked: [],
+              disabled: [],
+            },
+            TabHeader: {
+              name: '标签配置',
+              theme: {
+                DefaultTabPan: {
+                  name: '默认标签',
+                  desc: '默认标签样式配置',
+                  normal: [
+                    ['color'],
+                    ['background'],
+                    ['border'],
+                    ['margin'],
+                    ['padding'],
+                    ['font'],
+                    ['opacity'],
+                  ],
+                  hover: [['color'], ['background'], ['border'], ['font'], ['opacity']],
+                  clicked: [],
+                  disabled: [],
+                },
+                SelectTabPan: {
+                  name: '选中标签',
+                  desc: '选中标签样式配置',
+                  normal: [
+                    ['color'],
+                    ['background'],
+                    ['border'],
+                    ['margin'],
+                    ['padding'],
+                    ['font'],
+                    ['opacity'],
+                  ],
+                  hover: [['color'], ['background'], ['border'], ['font'], ['opacity']],
+                  clicked: [],
+                  disabled: [],
+                },
+              },
+            },
+          },
+        },
+        Menu: {
+          name: '弹出菜单配置',
+          theme: {
+            MenuWrap: {
+              name: '菜单外盒',
+              desc: '配置菜单组件的外盒样式',
+              normal: [
+                ['width'],
+                ['height'],
+                ['boxShadow'],
+                ['background'],
+                ['opacity'],
+                ['border'],
+                ['borderRadius'],
+                ['margin'],
+                ['padding'],
+              ],
+              hover: [['boxShadow'], ['background'], ['opacity'], ['border'], ['borderRadius']],
+              clicked: [],
+              disabled: [],
+            },
+            MenuItem: {
+              name: '菜单项配置',
+              theme: {
+                MenuItemWrap: {
+                  name: '项的外盒',
+                  desc: '配置每一项的外盒',
+                  normal: [
+                    ['height'],
+                    ['background'],
+                    ['border'],
+                    ['borderRadius'],
+                    ['opacity'],
+                    ['color'],
+                    ['padding'],
+                  ],
+                  hover: [
+                    ['background'],
+                    ['border'],
+                    ['borderRadius'],
+                    ['opacity'],
+                    ['color'],
+                    ['font'],
+                  ],
+                  active: [
+                    ['background'],
+                    ['border'],
+                    ['borderRadius'],
+                    ['opacity'],
+                    ['color'],
+                    ['font'],
+                  ],
+                  disabled: [
+                    ['background'],
+                    ['color'],
+                    ['borderRadius'],
+                    ['opacity'],
+                    ['padding'],
+                    ['font'],
+                  ],
+                },
+                SelectedMenuItemWrap: {
+                  name: '选中项的外盒',
+                  desc: '配置选中项的外盒',
+                  normal: [
+                    ['background'],
+                    ['border'],
+                    ['borderRadius'],
+                    ['opacity'],
+                    ['color'],
+                    ['padding'],
+                    ['font'],
+                  ],
+                  hover: [
+                    ['background'],
+                    ['border'],
+                    ['borderRadius'],
+                    ['opacity'],
+                    ['color'],
+                    ['font'],
+                  ],
+                  active: [
+                    ['background'],
+                    ['border'],
+                    ['borderRadius'],
+                    ['opacity'],
+                    ['color'],
+                    ['font'],
+                  ],
+                  disabled: [],
+                },
+              },
+            },
+            SubMenu: {
+              name: '子菜单配置',
               theme: {
                 MenuWrap: {
                   name: '菜单外盒',
@@ -6390,6 +6180,7 @@ export default [
                   disabled: [],
                 },
                 MenuItem: {
+                  name: '子菜单的项配置',
                   theme: {
                     MenuItemWrap: {
                       name: '项的外盒',
@@ -6458,6 +6249,14 @@ export default [
                       ],
                       disabled: [],
                     },
+                    Divider: {
+                      name: '分割线',
+                      desc: '配置每项之间的分割线，当divided为true时生效',
+                      normal: [['background']],
+                      hover: [],
+                      active: [],
+                      disabled: [],
+                    },
                   },
                 },
               },
@@ -6465,256 +6264,12 @@ export default [
           },
         },
       },
-      theme: {
-        Menu: {
-          theme: {
-            MenuWrap: {
-              name: '菜单外盒',
-              desc: '配置菜单组件的外盒样式',
-              normal: [
-                ['width'],
-                ['height'],
-                ['boxShadow'],
-                ['background'],
-                ['opacity'],
-                ['border'],
-                ['borderRadius'],
-                ['margin'],
-                ['padding'],
-              ],
-              hover: [['boxShadow'], ['background'], ['opacity'], ['border'], ['borderRadius']],
-              clicked: [],
-              disabled: [],
-            },
-            MenuItem: {
-              theme: {
-                MenuItemWrap: {
-                  name: '项的外盒',
-                  desc: '配置每一项的外盒',
-                  normal: [
-                    ['height'],
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['padding'],
-                  ],
-                  hover: [
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['font'],
-                  ],
-                  active: [
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['font'],
-                  ],
-                  disabled: [
-                    ['background'],
-                    ['color'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['padding'],
-                    ['font'],
-                  ],
-                },
-                SelectedMenuItemWrap: {
-                  name: '选中项的外盒',
-                  desc: '配置选中项的外盒',
-                  normal: [
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['padding'],
-                    ['font'],
-                  ],
-                  hover: [
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['font'],
-                  ],
-                  active: [
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['font'],
-                  ],
-                  disabled: [],
-                },
-              },
-            },
-          },
-        },
-        Tree: {
-          theme: {
-            TreeWrap: {
-              name: '树形控件外盒',
-              desc: '配置树形组件的外盒样式',
-              normal: [
-                ['width'],
-                ['height'],
-                ['boxShadow'],
-                ['background'],
-                ['opacity'],
-                ['border'],
-                ['borderRadius'],
-                ['margin'],
-                ['padding'],
-              ],
-              hover: [['boxShadow'], ['background'], ['opacity'], ['border'], ['borderRadius']],
-              clicked: [],
-              disabled: [],
-            },
-            TreeItem: {
-              theme: {
-                TreeItemWrap: {
-                  name: '项的外盒',
-                  desc: '配置每一项的外盒',
-                  normal: [
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['padding'],
-                  ],
-                  hover: [['background'], ['border'], ['borderRadius'], ['opacity'], ['color']],
-                  active: [['background'], ['border'], ['borderRadius'], ['opacity'], ['color']],
-                  disabled: [],
-                },
-                SelectedTreeItemWrap: {
-                  name: '选中项的外盒',
-                  desc: '配置选中项的外盒',
-                  normal: [
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['padding'],
-                  ],
-                  hover: [['background'], ['border'], ['borderRadius'], ['opacity'], ['color']],
-                  active: [['background'], ['border'], ['borderRadius'], ['opacity'], ['color']],
-                  disabled: [],
-                },
-                Text: {
-                  name: '项的文本',
-                  desc: '配置每一项文本内容的样式',
-                  normal: [
-                    ['color'],
-                    ['font'],
-                    ['background'],
-                    ['padding'],
-                    ['border'],
-                    ['borderRadius'],
-                  ],
-                  hover: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
-                  active: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
-                  disabled: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
-                },
-                SelectedText: {
-                  name: '选中项的文本',
-                  desc: '配置选中项文本内容的样式',
-                  normal: [
-                    ['color'],
-                    ['font'],
-                    ['background'],
-                    ['padding'],
-                    ['border'],
-                    ['borderRadius'],
-                  ],
-                  hover: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
-                  active: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
-                  disabled: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
-                },
-                Switch: {
-                  name: '控制器配置',
-                  desc: '配置控制树节点展开或隐藏的控制器的样式',
-                  normal: [['color'], ['font']],
-                  hover: [['color'], ['font']],
-                  active: [['color'], ['font']],
-                  disabled: [['color'], ['font']],
-                },
-              },
-            },
-          },
-        },
-        Tabs: {
-          theme: {
-            TitleContainer: {
-              name: '头部标签区域',
-              desc: '头部标签区域宽度配置',
-              normal: [['width']],
-              hover: [],
-              clicked: [],
-              disabled: [],
-            },
-            BorderStyle: {
-              name: '默认线',
-              desc: '默认线样式配置',
-              normal: [['border']],
-              hover: [],
-              clicked: [],
-              disabled: [],
-            },
-            TabHeader: {
-              theme: {
-                DefaultTabPan: {
-                  name: '默认标签',
-                  desc: '默认标签样式配置',
-                  normal: [
-                    ['color'],
-                    ['background'],
-                    ['border'],
-                    ['margin'],
-                    ['padding'],
-                    ['font'],
-                    ['opacity'],
-                  ],
-                  hover: [['color'], ['background'], ['border'], ['font'], ['opacity']],
-                  clicked: [],
-                  disabled: [],
-                },
-                SelectTabPan: {
-                  name: '选中标签',
-                  desc: '选中标签样式配置',
-                  normal: [
-                    ['color'],
-                    ['background'],
-                    ['border'],
-                    ['margin'],
-                    ['padding'],
-                    ['font'],
-                    ['opacity'],
-                  ],
-                  hover: [['color'], ['background'], ['border'], ['font'], ['opacity']],
-                  clicked: [],
-                  disabled: [],
-                },
-              },
-            },
-          },
-        },
-      },
       childrenWidget: [],
+      aliasName: 'HorizontalNavMenu',
     },
     target: NavMenu,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAcCAYAAAAeC42RAAAAAXNSR0IArs4c6QAAA6RJREFUWAntll1sFFUUx885c6cf7KKNH0hVFIkSooklfr0YQjXGpYFKWumGohAjaZqIqZJQW7UpYwE1Lg+wTRVjommB7NJuS2HKCia+aDHQBx+MD5iAmNRYQwm6dtptZ+fe470kJrx1eGg0cU8yuzO/uefe/5xzc8/Bt5zkvcIule+/2zyRSPRFJmen7iOBv8Mc3/6hs+MiM2P7np6Hy1XFeJ7+XPb4qiUX4vG47NjT/YCQJVOO03wV/gXD1q7kGg5UKkrlqz2e/QSQL0WhfL+n8t9bJF5mCB5lBZsjVFU9zT+4gHjWIjglJWcR8cmPnJZfF0J3Xd3WJT7JKJEIzPxKBaJEWd7x44evmGdKdLZ8i0SHplV+FJnviUJVh4kiCtqqOOjVAW8rKbEbHeeZQJTiNmBuklJl9Ac2LZRoIwxtekgISweJL5jLtqxRVcoPmnfGyPwIgCEGXAmEJ41AwyqjS8fMv7Yf93XsGDc3H7zTMskA5/QVjQB9Y9hC2VB/71lg2E5EisjyAdUrJ9JHvvtnPXKcL8oC5hQRvsmKX2/rSlaZlxO5iQOAcEY7R3Z1JpsNa+1MNiLwSs17PeZPDVtIO9F/OKuzvpEDuXH42NGvblwLd+0+2IMAFYn33niptfNAAyN2EeNeBt4dobLVgeXfNVdQ53VutoGCPpvg2fsry366+Ft+DJC6E07L5zdOWLwvRqAYgf95BDA1fGbZbeVwLRaLTWez2dLcHFbq00KGYVYB/xICRX197Ho1y2TcVUrZV8KwRYusy55n3R2Pxy6bHBgdi0XBm5mxK+ZjRpuAQmH5NZ8Pat/63LTs1uf2l7qsXw3FwBqdDeTwyMjI+qkZrvEVPCVA7QvDXqyp2ZnOuMlU5tReJPhD+f6hGX/FOomX+uZjOT1OH+EA6X63XQE8Qcjjmxte2HkzLDUwsgaA32YGW8CK9fH4I35Y5rruHd4sDOk2ogC2vb2xruaXsOx6ySewM4iwAUgcM6KNhWW3RmhMZ2m5nuhrI9r4hmW1tbWms/xZdyZ5I9r4hmVk9rXEwmd6X69VUib08y1hmVko58n9TOQw8tPpQfexm2GpfneTHu/pFuJceuDka8Y3LEM9sJsJz2/ZtOFIesB9Xqf8Ve0/GYYR8YBkXLelobZpcPB0pS/9Ic16JNPa+ZhN3FxQ+PHSOxc/V11d7eu1TyNaSWbZPh/TO6PNfGTRihEoRuA/GIFiyS+W/JBtQLHkF0t+yJL/N+U1WhXsXjeoAAAAAElFTkSuQmCC',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGIAAABMCAYAAACWA2JIAAAAAXNSR0IArs4c6QAABYdJREFUeAHtXM1u3FQUtqdJSTOVWIJ4gWz6BixB7BqJSnRR0R0LHoFd17wBC9gkLQiiECkRC8IKCVY8QV6AH6kCRJUoaMYznO9qvtG5rl2PPR77mJwr3Zz77+/H9jhzZyZNVkxffnM6X2Xoo4f7KcbVHb/K2quMuf/xfCWcZ5+lAWfd8atgaDJm1GSSz2lfATeifU0brehGNJKt/UluRPuaNlrRjWgkW/uTttpf8uas+N7jx+M7/yafyvPXm/KoNtHM5ZFsO0nS365uzz85Pzy81H1FZTeiSJUV2yDw/gcfnm9tbT8bjdK7s9kszByNRomU/5lMpo/OD59WmoBJfmtaUfSyYadHT08nk8mDaZb9PZd/YZCn0+nz2STbl77vyubl292IvCIN6iL4D8k0eyg2vBAjnidZ8v7J0eGPdZZyI+qo9YqxJ2LGdJa9k8xn754cHfz0iqGFXf4aUShLs8azr5/90mymv0Y01a31eX5ral3SZgu6Ec10a32WG9G6pM0WDO/JN5u68VmWsa1DvnC/xCLZMkxl7euI0sXcQuHlwFG7JXJFWHQby4xdiLjOMSg0I9bSZa4d2qz+H0GxiyLbQESXSazPqIVGGRkYdTvw5etJuureMmb3kb76/n4fh934Mc++SPWD0lxXNn5wP0CkQHQ1R5VoWHcVjQFlZpwkKCPqzH5G6Q4J9T6Svs2grDPeF9cZfajrMVJNEkuvERRWx1uCESYw0hA9pi8DoJ9OWlwKThMyGQicjPl5ut5bmaJScNnZSl6TfEfyXcmvHxwc3Lu8vDzOsux3eZt5EAlYgRnYwWHBBZzADRx5cpG/NPWbCARG4Aq9LXlH8lhyMEF2u/4chPoFIIFdmQFO4AaO4ArOgT/+9J1oBCJvPThbkLfkrPp8d3f3Qd8g1zn+1dXVt+Px+CNZYyoZtydk3rbCLQ3ErSUaE0zZ2dl52xrAungWHHiSkV+0jMUXawAkWNmHH70RIV5ULi4uipqXbXt7e6Hc17glECksOMAI8kI3y7giwq0A0VIiQEZL2NbBQj6M0VqWb02FgCP0w6qQD2OE3poRAMlUCJidA4x5PpqryVsTNCZIxgHq/hJkcmGMBli7IiJwN6li2YjCM2fg5pRysmzEwDWvB9+NqKfXxka7ERuTtt7CbkQ9vTY22o3YmLT1FnYj6um1sdFuxMakrbdw6XNtvWXWGg0MyDgpuA+BHayQZa/lVykPPqVp+paQwPfsmPW+hH+Kw4rDfmsy4oQb4UYYUcAIDL8ijBhhac+6liQW9qJrAa4Y7FdEhUBddbsRXSldcRw3okKgrrrdiK6UrjiOG1EhUFfdbkRXSlccx42oEKirbjeiK6UrjuNGVAjUVbdlI8KnpLsSoqPjlHKybERH2tg4jFUjeOYw2lBrPRTkwhitZs0IDRJlXY+AD7CS5xNxs7ZnjRMjfHdOIt4Z3pY96z8GKPpLkGXPGt98wn41vkfH79Itv0dn7YoAAZ45jGj7PyTyYYw4WTJCA2RZvh07G/wVseCgf3EAJpBjMMSSETxDCDBcttfX1z+zY6hxwWF5GxIe4BglK0ZQfEaCnh0fHz+R14m/ItQDqgA7OAjkJScpkyejCUb5D5jhg2U37icgrDw14YygIYy4WvEEpSPKyBzDKE29J57djPoK4C8NMHIMo6lfpwEonVAHcIKtMgGm9JE0bmJl1GagzHYdA2YLn+IAKC0i6kgAznYCZxvb8zFM7OEPMeuoMaOcN0LDnFswIgIkFYhLQuij+GjTwrOMMZYSDQAmlvORfUvclshoLCwXRbaBhC4vSfVYgOBMFB91tufjss8SkSIsuo1lRhK2GktFzwEO4yySKsNU1p7jZa5KQ/LAonbL5Cxjy4tapx4ZwIn/AbCzpKCpu66XAAAAAElFTkSuQmCC',
   },
   {
     meta: {
@@ -6722,7 +6277,7 @@ export default [
       title: '垂直导航菜单',
       desc: '子菜单从右侧弹开',
       props: {
-        data: { type: "[{valueField: '', displayField: ''}]", desc: '生成选择项的数据' },
+        data: { type: 'Object[]', desc: '生成选择项的数据' },
         valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'value' },
         displayField: {
           type: 'string',
@@ -6740,7 +6295,7 @@ export default [
           desc: '菜单类型为inline(内嵌模式)时,支持两种风格',
           defaultValue: 'primary',
         },
-        theme: {
+        themeStyle: {
           type: 'light | dark',
           desc: '菜单类型为inline(内嵌模式)时,支持两种主题',
           defaultValue: 'light',
@@ -6773,6 +6328,7 @@ export default [
       category: ['导航'],
       theme: {
         Menu: {
+          name: '垂直导航菜单配置',
           theme: {
             MenuWrap: {
               name: '菜单外盒',
@@ -6793,6 +6349,7 @@ export default [
               disabled: [],
             },
             MenuItem: {
+              name: '菜单项配置',
               theme: {
                 MenuItemWrap: {
                   name: '项的外盒',
@@ -6863,6 +6420,109 @@ export default [
                 },
               },
             },
+            SubMenu: {
+              name: '弹开子菜单配置',
+              theme: {
+                MenuWrap: {
+                  name: '菜单外盒',
+                  desc: '配置菜单组件的外盒样式',
+                  normal: [
+                    ['width'],
+                    ['height'],
+                    ['boxShadow'],
+                    ['background'],
+                    ['opacity'],
+                    ['border'],
+                    ['borderRadius'],
+                    ['margin'],
+                    ['padding'],
+                  ],
+                  hover: [['boxShadow'], ['background'], ['opacity'], ['border'], ['borderRadius']],
+                  clicked: [],
+                  disabled: [],
+                },
+                MenuItem: {
+                  name: '子菜单的项配置',
+                  theme: {
+                    MenuItemWrap: {
+                      name: '项的外盒',
+                      desc: '配置每一项的外盒',
+                      normal: [
+                        ['height'],
+                        ['background'],
+                        ['border'],
+                        ['borderRadius'],
+                        ['opacity'],
+                        ['color'],
+                        ['padding'],
+                      ],
+                      hover: [
+                        ['background'],
+                        ['border'],
+                        ['borderRadius'],
+                        ['opacity'],
+                        ['color'],
+                        ['font'],
+                      ],
+                      active: [
+                        ['background'],
+                        ['border'],
+                        ['borderRadius'],
+                        ['opacity'],
+                        ['color'],
+                        ['font'],
+                      ],
+                      disabled: [
+                        ['background'],
+                        ['color'],
+                        ['borderRadius'],
+                        ['opacity'],
+                        ['padding'],
+                        ['font'],
+                      ],
+                    },
+                    SelectedMenuItemWrap: {
+                      name: '选中项的外盒',
+                      desc: '配置选中项的外盒',
+                      normal: [
+                        ['background'],
+                        ['border'],
+                        ['borderRadius'],
+                        ['opacity'],
+                        ['color'],
+                        ['padding'],
+                        ['font'],
+                      ],
+                      hover: [
+                        ['background'],
+                        ['border'],
+                        ['borderRadius'],
+                        ['opacity'],
+                        ['color'],
+                        ['font'],
+                      ],
+                      active: [
+                        ['background'],
+                        ['border'],
+                        ['borderRadius'],
+                        ['opacity'],
+                        ['color'],
+                        ['font'],
+                      ],
+                      disabled: [],
+                    },
+                    Divider: {
+                      name: '分割线',
+                      desc: '配置每项之间的分割线，当divided为true时生效',
+                      normal: [['background']],
+                      hover: [],
+                      active: [],
+                      disabled: [],
+                    },
+                  },
+                },
+              },
+            },
           },
         },
       },
@@ -6871,15 +6531,15 @@ export default [
     },
     target: NavMenu,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGIAAABACAYAAADhwaIzAAAAAXNSR0IArs4c6QAABWZJREFUeAHtXDFvFEcUvjXn2HKkSEiRQgpql/kBQSCaNChIjmWiwNlVCv5BSpQuPyG1fSGCxEGCDjokqvwC12mgSopgLM63x/vG+63eDHO+W3u9frPekebemzezM9/3vp29861vs4ePn056c5S7d25nGHbW42dBwfrEMmtsSv0LKYFtM9Z+C8i5nZoQj+gVKGUhpgkwLX5eWoWJJz4vnpwQk4nDTzJMrm7Tp+WYpq2X6GJxHSM+F0tOiCCbJBOzjOEQ7QdT1NrUiYaPirV1HAuG7V5qQuiE0oeNVRBmHH5ThQJgPfq0jAEXxXB+akKACArAozDRsPgEqC37OE5b+HUWJlVbJj+XheDDsqANfByf1I4AcF2YaC0AfFb20/LYcB7GT2rLZMoE8HVF8rEeRUCf9qXpSpbcjlBv1kww7CWpEIB2lhiOfc0vWgAmHElHHUsFTlpxy4KxSe2IEnnhgBgT7kTY3t6+ur6+/vPy8vLXCwsLX4QHNNnO8/zNwcHBq93d3QdbW1v/FGu7pIsPcei7ruR2REFI74ZShMFg8DLLssvFmHM1OBFWVla+E0w3Bcj1QgwkH5X4SzFAIqUiBBx2Eil3BHaCFRF0QoEJ2CRWYhWf+Gldpz4uJZ8kHEFcjqyCL7BRCOL24KIzqXL0h7U7o4CbpORKcL7vCcclscCGXBOvxu4OTU4IRZikaFWXSZc4aT2QCKZSHIGd35+MN39YWxLQ+KDBuigfa1/HiOzt7cXCZWx1ddX5dY8rFygcea+4Iu5I6qGq/Hg7SXVH6BMoeoYV/C2ZEKfmkPSbNZJMMrSWEh9iIUZarz/VHeGRaEOjDUJEzzCj4kzF2gYhjOa8Gqz+t/eLT+Yzjnv2a+bUrDp+xrRdd5GBbkcYORU6IToh4hn4ZnPz03hPu6PmdsTK++yX2xuDW+1O+8fszAkhX3N/ubjYf7i2sXnjY7jtjZgTQu42jOTbys96l7I/1za2rrU39T4zc0IAntxm7MmXZJ/LHegna98PvvIht7Nl+1Zp1ls6nEw+OU3q+e3qrDnqHjdrvbDf5I6QSxNuiP7XO8zXnz367e8QdBvb5naE/Pm+mOeT/8eH4ztP/xi+aGPSY5zM7Qj5wuX1aDS6d5FEgDDmdsS7pd5Pz3eGb2NnTZtj5nbE852dCyeCyR1R91lf973oeeerysPcjqhKoC3j+7zPMC+hquPnnfeij+t2hJEzoBOiE8JIBozA6HZEJ4SRDBiB0T/rZ2tUnd9IXhqH0V2aGk95fME2COF+QhSnZy46FWsbhDCX7ZMASl0InmG0J8lBU8cQI623bqpCaDLwddsjaKgR4vQwm7sfUSFxJEYbPbTue9HzzhcBQ5y03pBUdwRIkBCtR8xggzhpPYjJCXH0P+nlpYik5D9w8jceM0ONAhufNgDMKMTuGskJ4VAfvZCI+0EgHreg+ky5Bbbyh4sCjmKUOFMTQgi4n2l4IgibHM+8kF+W/lsyM+IAE7ABo6rET5vsjxlJABYEx3jWxXA4vL6/v/+XhcsUMAALMBXP4cCTaYBVY5fmUUn9UxOIobhtAsJSf5Q2djoq4rpK88yKTjBPEO4CisA2+r2SnBDyP7EgoInAB1FY1FkiuAlkXF0lxEIcsEw8re6j73CkJASA6ySijQKSjJMcY4yH1h1Y4wuxaKuxwAcmxjiOECYpCUHQsCCC5GpCTD77MA5jKALaTRSsT1z0QwscHOMwNQ3SLXrKF42ZfswyhuW0f8rljz1cJ5fJxwGMh7bsawrgsegrdsYw6xh92orT1zZ8atKDFdy48wYbYKrUnIZ9WrzS5DUOpiDhlF7cGugQ7Dzt1Dh4ApDgBzAdpOJdUvDcAAAAAElFTkSuQmCC',
   },
   {
     meta: {
       widgetName: 'NavMenu',
       title: '内嵌导航菜单',
-      desc: '点击菜单收起或展开子菜单',
+      desc: '点击菜单收起或展开子菜单,ellipse样式',
       props: {
-        data: { type: "[{valueField: '', displayField: ''}]", desc: '生成选择项的数据' },
+        data: { type: 'Object[]', desc: '生成选择项的数据' },
         valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'value' },
         displayField: {
           type: 'string',
@@ -6895,9 +6555,9 @@ export default [
         inlineType: {
           type: 'primary | ellipse',
           desc: '菜单类型为inline(内嵌模式)时,支持两种风格',
-          defaultValue: 'primary',
+          defaultValue: 'ellipse',
         },
-        theme: {
+        themeStyle: {
           type: 'light | dark',
           desc: '菜单类型为inline(内嵌模式)时,支持两种主题',
           defaultValue: 'light',
@@ -6930,10 +6590,11 @@ export default [
       category: ['导航'],
       theme: {
         Tree: {
+          name: '内嵌导航菜单配置',
           theme: {
             TreeWrap: {
-              name: '树形控件外盒',
-              desc: '配置树形组件的外盒样式',
+              name: '内嵌导航菜单外盒',
+              desc: '配置内嵌导航菜单的外盒样式',
               normal: [
                 ['width'],
                 ['height'],
@@ -6950,6 +6611,7 @@ export default [
               disabled: [],
             },
             TreeItem: {
+              name: '内嵌导航菜单项配置',
               theme: {
                 TreeItemWrap: {
                   name: '项的外盒',
@@ -7019,217 +6681,20 @@ export default [
                   active: [['color'], ['font']],
                   disabled: [['color'], ['font']],
                 },
-              },
-            },
-          },
-        },
-      },
-      childrenWidget: [],
-      aliasName: 'InlineNavMenu',
-    },
-    target: NavMenu,
-    screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
-  },
-  {
-    meta: {
-      widgetName: 'NavMenu',
-      title: '顶部导航菜单',
-      desc: '水平的导航菜单',
-      props: {
-        data: { type: "[{valueField: '', displayField: ''}]", desc: '生成选择项的数据' },
-        valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'value' },
-        displayField: {
-          type: 'string',
-          desc: 'data数据的displayValue值的名称',
-          defaultValue: 'text',
-        },
-        value: { type: 'string | string[] | number | number[]', desc: '指定当前选中的条目' },
-        mode: {
-          type: 'vertical | inline| horizontal',
-          desc: '菜单类型，支持垂直、内嵌和水平模式',
-          defaultValue: 'horizontal',
-        },
-        inlineType: {
-          type: 'primary | ellipse',
-          desc: '菜单类型为inline(内嵌模式)时,支持两种风格',
-          defaultValue: 'primary',
-        },
-        theme: {
-          type: 'light | dark',
-          desc: '菜单类型为inline(内嵌模式)时,支持两种主题',
-          defaultValue: 'light',
-        },
-        inlineExpandAll: {
-          type: 'boolean',
-          desc: '菜单类型为inline(内嵌模式)时,是否展开所有子元素,默认为true',
-          defaultValue: true,
-        },
-        separator: {
-          type: 'string',
-          desc: '自定义层级分隔符,只有在mode为 vertical 时,传入级联数据生效 ',
-          defaultValue: '|',
-        },
-      },
-      events: {
-        onClick: {
-          desc: 'mode为vertical时生效,点击选中项时触发',
-          args: [{ name: 'target', desc: '点击项所包含的数据信息', type: 'Object' }],
-        },
-        onChange: {
-          desc: '选中值改变时触发',
-          args: [{ name: 'target', desc: '改变的值,所包含的数据信息', type: 'Object' }],
-        },
-        onSelect: {
-          desc: 'mode为inline时生效,选中项时触发',
-          args: [{ name: 'target', desc: '选中项所包含的数据信息', type: 'Object' }],
-        },
-      },
-      category: ['导航'],
-      theme: {
-        Tabs: {
-          theme: {
-            TitleContainer: {
-              name: '头部标签区域',
-              desc: '头部标签区域宽度配置',
-              normal: [['width']],
-              hover: [],
-              clicked: [],
-              disabled: [],
-            },
-            BorderStyle: {
-              name: '默认线',
-              desc: '默认线样式配置',
-              normal: [['border']],
-              hover: [],
-              clicked: [],
-              disabled: [],
-            },
-            TabHeader: {
-              theme: {
-                DefaultTabPan: {
-                  name: '默认标签',
-                  desc: '默认标签样式配置',
+                SubTreeWrap: {
+                  name: '嵌套中的导航菜单外盒',
+                  desc: '配置嵌套中的导航菜单外盒的样式',
                   normal: [
-                    ['color'],
+                    ['width'],
                     ['background'],
+                    ['opacity'],
                     ['border'],
                     ['margin'],
-                    ['padding'],
-                    ['font'],
-                    ['opacity'],
+                    ['padding', 'left'],
+                    ['padding', 'right'],
                   ],
-                  hover: [['color'], ['background'], ['border'], ['font'], ['opacity']],
-                  clicked: [],
-                  disabled: [],
-                },
-                SelectTabPan: {
-                  name: '选中标签',
-                  desc: '选中标签样式配置',
-                  normal: [
-                    ['color'],
-                    ['background'],
-                    ['border'],
-                    ['margin'],
-                    ['padding'],
-                    ['font'],
-                    ['opacity'],
-                  ],
-                  hover: [['color'], ['background'], ['border'], ['font'], ['opacity']],
-                  clicked: [],
-                  disabled: [],
-                },
-              },
-            },
-          },
-        },
-        Menu: {
-          theme: {
-            MenuWrap: {
-              name: '菜单外盒',
-              desc: '配置菜单组件的外盒样式',
-              normal: [
-                ['width'],
-                ['height'],
-                ['boxShadow'],
-                ['background'],
-                ['opacity'],
-                ['border'],
-                ['borderRadius'],
-                ['margin'],
-                ['padding'],
-              ],
-              hover: [['boxShadow'], ['background'], ['opacity'], ['border'], ['borderRadius']],
-              clicked: [],
-              disabled: [],
-            },
-            MenuItem: {
-              theme: {
-                MenuItemWrap: {
-                  name: '项的外盒',
-                  desc: '配置每一项的外盒',
-                  normal: [
-                    ['height'],
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['padding'],
-                  ],
-                  hover: [
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['font'],
-                  ],
-                  active: [
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['font'],
-                  ],
-                  disabled: [
-                    ['background'],
-                    ['color'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['padding'],
-                    ['font'],
-                  ],
-                },
-                SelectedMenuItemWrap: {
-                  name: '选中项的外盒',
-                  desc: '配置选中项的外盒',
-                  normal: [
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['padding'],
-                    ['font'],
-                  ],
-                  hover: [
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['font'],
-                  ],
-                  active: [
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['font'],
-                  ],
+                  hover: [['background'], ['opacity'], ['border']],
+                  active: [],
                   disabled: [],
                 },
               },
@@ -7238,11 +6703,11 @@ export default [
         },
       },
       childrenWidget: [],
-      aliasName: 'HorizontalNavMenu',
+      aliasName: 'InlineEllipseNavMenu',
     },
     target: NavMenu,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+      'data:image/png;base64,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',
   },
   {
     meta: {
@@ -7331,16 +6796,7 @@ export default [
         Container: {
           name: '输入框外部容器',
           desc: '输入框外部容器',
-          normal: [
-            ['width'],
-            ['height'],
-            ['background'],
-            ['border'],
-            ['borderRadius'],
-            ['boxShadow'],
-            ['margin'],
-            ['padding'],
-          ],
+          normal: [['width'], ['height'], ['margin'], ['padding']],
         },
         Input: {
           name: '数字输入框中输入框部分',
@@ -7351,15 +6807,12 @@ export default [
             ['fontSize'],
             ['font'],
             ['color'],
-            ['padding'],
             ['background'],
             ['border'],
             ['cursor'],
-            ['margin'],
-            ['padding'],
             ['opacity'],
           ],
-          hover: [['font'], ['color'], ['background'], ['border'], ['cursor']],
+          hover: [['border'], ['borderRadius'], ['cursor'], ['background'], ['opacity']],
           clicked: [['font'], ['color'], ['background'], ['border'], ['cursor']],
           disabled: [['font'], ['color'], ['background'], ['border'], ['cursor']],
         },
@@ -7467,12 +6920,76 @@ export default [
           ],
         },
       },
+      designInfo: {
+        SimplePagination: {
+          sequence: 1,
+          title: '简洁分页',
+          desc: '简洁分页',
+          props: { simple: true },
+          theme: {},
+        },
+      },
       category: ['导航'],
       childrenWidget: [],
     },
     target: Pagination,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADYAAAAJCAYAAAB5ad+lAAAAAXNSR0IArs4c6QAAAkJJREFUOBHVVE1oE0EU3pldW4RGLVZFPAgaiiDouba3UhER2mgaCyX2YH4uBe2h9NqLBwuF9pg/PCQLda2kvUQsaPDiUel5aaMXNSImQiHg7s74TWBkKbuJ23rpwux78973Pd57M28UJeCXyWTOB6S04bqu94N7+SDcXC53Lp/Ph4NwiQTfjc0Mc4uZ5XLxu7S5ZalUOtFqteYYY7PpdPqM29dNR0GLhJBLwP3EupBKpSa7caQ/m82uQA9xzvcQI5xMJu9AcumXMhKJn2W9PLy5VnovbFT8xmPx2w5h67+p0yf2Xh+Kukcp3ULQL15+P5toCDg3UMwDrMdIsF4oFIb88G47Tuki9n3gPUQzH0HfhW3EjZG6yJ0wsj5xf/qmsGkTU9OjlFADJ4G8NVsC90t06pmwoYP7XR33aMhxBF5wga7Ytv3JtfdVE4nEZzgT1WpVq9Vqg5ZlXVVVdceL0M6d8FOUHjMik/FxjTjUVjQiCurxIhzWhobUEaNuGIbabDafQP+IE/gaJK5pmmPAixMzQ6HQj85crnGVabT8oviOMSumcKXJmK11Jh3Mixk7iaJe4kqaKGr+X6OIRwPcAXBeYd0Cr95oNKJefJE7Bu+X47DYxpr+pj1jG8/1LU55tIepe16k/2AzcIWe4vQKQWKBcxr4VclBY8S19pxxkbvKaXTTKFYE/u+rKMndJGZsG9273g0n/ej6NczvWyT1QdoglxHjtWvvq+LElsAVTz3Dw/MNj8isL/ioOSqVSq9YQfL+A4IQ3yaxKeeZAAAAAElFTkSuQmCC',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGwAAAASCAYAAAC+Tjt8AAAAAXNSR0IArs4c6QAABQNJREFUWAntmGtoXEUUx++dvRuTbU02JrWgaG0pRbEiovhIVVSQUm124zZZkpBE8gYtKIh+8EO/SL9IRVCxzQvJ05DUNI92P0iJ2GpALfrJakFbbKpiW0xEbR67O9ffhGya3r20u7m7bYIZGO7MmTnnf+acOWfmjqatlhVlAT3d2jY1Nd2t6/r6hoaGz9ONpeS3trZui0ajD4KZZ5rmqYyMjFB1dfVkOrHBES0tLdvB3Ep7LfW02+0O1dTUXEg1rq3DikornjKj5vmh/u6TTgBZRJmU8iNk/NHY2LjBiaxr8eKoW8BqxVgvMPcfapSaQ72IIdkvDYdop7ywxo1g9lIfBudfACTtm2n/Tfs1cFuSBS0sK7vXiBj5h/o74za5sAorLKl8RujGoBDaJutYov3m5uYCIqsXA3aheCRRPifzwGqGfwd4FRgpJzc391YhxPPQxjFgl4p0J/LteEOh0E3gfsLYFup2cNd6vd58hQvmKWj7ceijdrxXoxlSbNTdYtAXLH/SOu8Kh/mCVU+7XaJfCD3H1LRZ6+RE+hjmTpT9EsM9S/XD820ifE7mqA0C5i5kvIvRusGVwWBwtr6+PkT7Lege6otOMOx4x8fHfdAfoDaRQT5Vcxbh7kEnFw4NKHoyRdle6MJrCPdBf2lFwWLeBYcpZ7mEflDTNZVaFs9Jtn0JI73MTtuA8Q4ny7yU+RjmMcXHzu6x8jOmdJhCp3usYynob0HuD9QPrLLAVekswtg661gi/Tkf6No6obkG/KWVj8R4DNWIOUufdxYLj40n/WWnXYTpw6QZHTBgFHV2HM7Ozv7ZKoZLR97s7GwWBjxjHXPaZ617kaFqXMGGAYyu7Hs0bjBBgnIactYLTQz4Siv9w72dJwxfScVmoZsDLNrrMLISVCP104jkA0hVNa6Ew+E3FZH1HYkbTDGhvb09b2Zm5g6wnsOWjXxHPR7PiBOYeafdJkx9KFBeXmAYbhmWUeMSQr1OBC9HXs7T3ei1G8N149Ql7/RE1zY9PX2WuR6iWW2Qo5yh6qrv6Hy5jG16ImHhFgM9Pb9I3fRz0P3mJBVeFnzjWx0dHWu4iLSjyfvUQc7T+uuhlcvlehycnTjpAE7byg1xlKi73Qm28gn+/1OaemC4v+unuTNM5UYOtgC5ckjlTCcAN5qXqLpvamqqD6Ntor7OLn+HL/sx/aWuru47UFQ9grP2ks6+J+peof/GUtBjzopKs3i4r+MzJWPhdjHU2/mV1KIBzdQurNRII6qCOOdr1rWG3b6NNLgvnc7CKbX8sBfaOYONcg76GPhBu/Fr0eZ8QGQtdpbiWXCY6gz1do1FZLhYmnKSJ5AMRVspBeMVk4Y+Rt9vsrKyHqqtrT2Rbt2JoCqewd67Co46z5KObmV7Kc2/wlFZEousGMYVDlPE4b6eY2ZYFkWEPBObtNy/pMF8jLcfPc9mZmbuqKqqOn+ddFYXmbvYLHE/x21tbfczpv4Pv0hWF27zp6UZKRrp7xy18s6dYVai3RuWdc5y6pN26tnI+XzHuFa/hAHt1DtHmlIRmLLC89e+iYmJXWyWTtKxH8G8EolfibonIpHIHvSZRK+kz6/5N9yTdoraOsxu4nKmYRT1PMRtyvSpaqcrxjsOPaUO4xlqis2xE8y3kV3JV6XIGPyIYRiv8mL/e4yQii/pcrWkwgKk5RyiazNOE1x4fuQMVa/1q+X/boH/ANUeDtd7j99mAAAAAElFTkSuQmCC',
+  },
+  {
+    meta: {
+      widgetName: 'Pagination',
+      title: '简洁分页',
+      desc: '简洁分页',
+      props: {
+        current: { type: 'number', desc: '当前页数' },
+        defaultCurrent: { type: 'number', desc: '默认的当前页数', defaultValue: 1 },
+        total: { type: 'number', desc: '数据总数', defaultValue: 0 },
+        pageSize: { type: 'number', desc: '每页的条数', defaultValue: 10 },
+        defaultPageSize: { type: 'number', desc: '默认的每页条数', defaultValue: 10 },
+        pageSizeOptions: {
+          type: 'string[]',
+          desc: '指定每页可以显示多少条',
+          defaultValue: ['10', '20', '30', '40'],
+        },
+        showQuickJumper: { type: 'boolean', desc: '是否可以快速跳转至某页', defaultValue: false },
+        showTotal: { type: 'Function(total, range)', desc: '用于显示数据总量和当前数据顺序' },
+        hideOnSinglePage: {
+          type: 'boolean',
+          desc: '只有一页时是否隐藏分页器',
+          defaultValue: false,
+        },
+        showSizeChanger: {
+          type: 'boolean',
+          desc: '是否显示可以改变 pageSize',
+          defaultValue: false,
+        },
+        simple: { type: 'boolean', desc: '当添加该属性时，显示为简单分页', defaultValue: true },
+      },
+      event: {
+        onChange: {
+          desc: '页码改变的回调，参数是改变后的页码及每页条数',
+          args: [
+            { name: 'page', desc: '页码改变后的页码', type: 'number' },
+            { name: 'pageSize', desc: '每页条数', type: 'number' },
+          ],
+        },
+        onShowSizeChange: {
+          desc: 'pageSize 变化的回调',
+          args: [
+            { name: 'current', desc: '当前页数', type: 'number' },
+            { name: 'size', desc: '每页条数', type: 'number' },
+          ],
+        },
+      },
+      category: ['导航'],
+      childrenWidget: [],
+      aliasName: 'SimplePagination',
+      theme: {},
+    },
+    target: Pagination,
+    screenshot:
+      'data:image/png;base64,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',
   },
   {
     meta: {
@@ -7480,7 +6997,7 @@ export default [
       title: '气泡确认框',
       desc: '气泡式的确认框',
       props: {
-        title: { type: 'React.Node', desc: '确认框标题显示内容' },
+        title: { type: 'React.Node', desc: '确认框标题显示内容', defaultValue: '确定要删除吗' },
         description: { type: 'React.Node', desc: '确认框描述显示内容' },
         content: { type: 'React.Node', desc: '整个确认框显示内容' },
         icon: { type: 'React.Node', desc: '确认框的标题的图标' },
@@ -7532,21 +7049,26 @@ export default [
       },
       category: ['反馈'],
       theme: {
-        Container: {
-          name: '气泡确认框内容部分',
-          desc: '气泡确认框内容部分',
-          normal: [
-            ['background'],
-            ['color'],
-            ['padding'],
-            ['font'],
-            ['fontSize'],
-            ['width'],
-            ['height'],
-            ['boxShadow'],
-            ['borderRadius'],
-            ['border'],
-          ],
+        PopconfirmContent: {
+          name: '气泡卡片框容器',
+          theme: {
+            Container: {
+              name: '气泡确认框内容部分',
+              desc: '气泡确认框内容部分',
+              normal: [
+                ['background'],
+                ['color'],
+                ['padding'],
+                ['font'],
+                ['fontSize'],
+                ['width'],
+                ['height'],
+                ['boxShadow'],
+                ['borderRadius'],
+                ['border'],
+              ],
+            },
+          },
         },
         PopconfirmTitle: {
           name: '气泡确认框标题',
@@ -7576,8 +7098,12 @@ export default [
       title: '气泡卡片',
       desc: '气泡式的卡片浮层',
       props: {
-        title: { type: 'React.Node', desc: '卡片标题显示内容' },
-        description: { type: 'React.Node', desc: '卡片描述显示内容' },
+        title: { type: 'React.Node', desc: '卡片标题显示内容', defaultValue: 'This is title!' },
+        description: {
+          type: 'React.Node',
+          desc: '卡片描述显示内容',
+          defaultValue: 'This is description!',
+        },
         content: { type: 'React.Node', desc: '整个卡片显示内容' },
         clear: { type: 'React.Node', desc: '关闭卡片的操作内容' },
         showClearButton: { type: 'boolean', desc: '是否显示关闭按钮', defaultValue: true },
@@ -7622,6 +7148,7 @@ export default [
       category: ['数据展示'],
       theme: {
         PopoverContent: {
+          name: '气泡卡片框容器',
           theme: {
             Container: {
               name: '气泡卡片框内容部分',
@@ -7696,31 +7223,36 @@ export default [
         type: {
           type: 'ProgressType',
           desc: '进度条类型，line、circle、dashboard',
-          defaultValue: 'right',
+          defaultValue: 'line',
         },
-        size: { type: 'ProgressSizeType', desc: '进度条大小，可设置为 small 或不设' },
+        size: {
+          type: 'ProgressSizeType',
+          desc: '进度条大小，可设置为 small 或不设',
+          defaultValue: 'default',
+        },
         percent: { type: 'number', desc: '百分比', defaultValue: 0 },
         status: {
           type: 'ProgressStatusType',
           desc: '进度条状态，可设置为success、error或不设',
-          defaultValue: true,
+          defaultValue: 'default',
         },
         active: {
           type: 'boolean',
-          desc: '进度条状态是否激活状态，仅生效于 type = line',
-          defaultValue: true,
+          desc: '进度条状态是否激活状态，仅生效于线性进度条(type = line)',
+          defaultValue: false,
         },
         showInfo: { type: 'boolean', desc: '是否显示进度数值或状态图标', defaultValue: true },
         format: { type: 'Function', desc: '进度条展示内容模板函数' },
         showType: {
           type: 'ProgressShowType',
           desc: '进度条展示内容展示位置，可设置为 inside 或不设',
+          defaultValue: 'default',
         },
       },
       type: {
         ProgressType: ['line', 'circle', 'dashboard'],
         ProgressSizeType: ['default', 'small'],
-        ProgressStatusType: ['success', 'error', 'default', 'active'],
+        ProgressStatusType: ['success', 'error', 'default'],
         ProgressShowType: ['default', 'inside'],
         ProgressStyle: {
           color: { type: 'string', desc: 'Progress的颜色' },
@@ -7737,18 +7269,18 @@ export default [
           props: { type: 'circle' },
           theme: {
             ProgressCircleText: {
-              name: '圆形进度条文字配置',
-              desc: '圆形进度条文字配置',
+              name: '进度条文字配置',
+              desc: '进度条文字配置',
               normal: [['color'], ['font']],
             },
             ProgressCircleSuccessIcon: {
-              name: '圆形进度条成功图标配置',
-              desc: '圆形进度条成功图标配置',
+              name: '进度条成功图标配置',
+              desc: '进度条成功图标配置',
               normal: [['color'], ['fontSize']],
             },
             ProgressCircleErrorIcon: {
-              name: '圆形进度条失败图标配置',
-              desc: '圆形进度条失败图标配置',
+              name: '进度条失败图标配置',
+              desc: '进度条失败图标配置',
               normal: [['color'], ['fontSize']],
             },
           },
@@ -7760,18 +7292,18 @@ export default [
           props: { type: 'dashboard' },
           theme: {
             DashboardText: {
-              name: '仪表盘进度条文字配置',
+              name: '进度条文字配置',
               desc: '仪表盘进度条文字配置',
               normal: [['color'], ['font']],
             },
             ProgressDashboardSuccessIcon: {
-              name: '仪表盘进度条成功图标配置',
-              desc: '仪表盘进度条成功图标配置',
+              name: '进度条成功图标配置',
+              desc: '进度条成功图标配置',
               normal: [['color'], ['fontSize']],
             },
             ProgressDashboardErrorIcon: {
-              name: '仪表盘进度条失败图标配置',
-              desc: '仪表盘进度条失败图标配置',
+              name: '进度条失败图标配置',
+              desc: '进度条失败图标配置',
               normal: [['color'], ['fontSize']],
             },
           },
@@ -7779,48 +7311,48 @@ export default [
       },
       theme: {
         Container: {
-          name: '线性进度条整体配置',
-          desc: '线性进度条整体配置',
+          name: '进度条整体配置',
+          desc: '进度条整体配置',
           normal: [['width'], ['height'], ['margin'], ['padding'], ['background'], ['opacity']],
         },
         ProgressOutLine: {
-          name: '线性进度条底色线配置',
-          desc: '线性进度条底色线配置',
+          name: '进度条底色线配置',
+          desc: '进度条底色线配置',
           normal: [['background'], ['borderRadius'], ['border'], ['boxShadow']],
         },
         ProgressInnerLine_Default: {
-          name: '线性进度条进度线默认配置',
-          desc: '线性进度条进度线默认配置',
+          name: '进度条进度线默认配置',
+          desc: '进度条进度线默认配置',
           normal: [['height'], ['background'], ['border'], ['borderRadius'], ['boxShadow']],
         },
         ProgressInnerLine_Success: {
-          name: '线性进度条进度线成功配置',
-          desc: '线性进度条进度线成功配置',
+          name: '进度条进度线成功配置',
+          desc: '进度条进度线成功配置',
           normal: [['height'], ['background'], ['border'], ['borderRadius'], ['boxShadow']],
         },
         ProgressInnerLine_Error: {
-          name: '线性进度条进度线失败配置',
-          desc: '线性进度条进度线失败配置',
+          name: '进度条进度线失败配置',
+          desc: '进度条进度线失败配置',
           normal: [['height'], ['background'], ['border'], ['borderRadius'], ['boxShadow']],
         },
         ProgressLineInsideText: {
-          name: '线性进度条内置文本配置',
-          desc: '线性进度条内置文本配置',
+          name: '进度条内置文本配置',
+          desc: '进度条内置文本配置',
           normal: [['color'], ['font']],
         },
         ProgressLineInfoText: {
-          name: '线性进度条描述文本配置',
-          desc: '线性进度条描述文本配置',
+          name: '进度条描述文本配置',
+          desc: '进度条描述文本配置',
           normal: [['color'], ['font']],
         },
         ProgressLineSuccessIcon: {
-          name: '线性进度条成功图标配置',
-          desc: '线性进度条成功图标配置',
+          name: '进度条成功图标配置',
+          desc: '进度条成功图标配置',
           normal: [['color'], ['fontSize']],
         },
         ProgressLineErrorIcon: {
-          name: '线性进度条失败图标配置',
-          desc: '线性进度条失败图标配置',
+          name: '进度条失败图标配置',
+          desc: '进度条失败图标配置',
           normal: [['color'], ['fontSize']],
         },
       },
@@ -7828,7 +7360,7 @@ export default [
     },
     target: Progress,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADYAAAAECAYAAADF98x7AAAAAXNSR0IArs4c6QAAAF1JREFUKBVj7J/9tfbsNY66j5+YWBgGMRDk/8sQF/CJQUftF15XMjIyPgHiNMaYwr+/B7unYD4Bea6r7A2Mi5MGeY4Jp+wQl2Ay1vrRxM/3789g9wcsKRJyJywpAgCTPxynb2FUvQAAAABJRU5ErkJggg==',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAAAMCAYAAACdrrgZAAAAAXNSR0IArs4c6QAAAUhJREFUWAljZICC////M3ZO/7Hg4VOWoNfvmLl//mJkhMkNB5qd7R+DtPhfBhuT7wy2QExvwMjI+AUYxleB9s4VFxefA+T/B7kBHMgzFn/Rv3aHfd/9JyxC9HbYQNinqfyLITn0IwM/77+BsB5k5z5mZuYYUVHR50yglD+SAh/k++t32RjmruYHMQcKOP39+3cJKOyZOcUrFl66yWYxUC4ZKHvfvGdmEOT/xyAv9WegnKD49evXp0ygMn+gXDDQ9h45wznQTkhmAlW4A+2KgbL/6UvmgbIabC+wItZmGlAXjFrOwCQq9PfrSA0HULN0IAGoWcokL/1n3UA6YiDtBvUJBhjMZSrP5EhQlPnzboAdQnfrQX2BgeiQIXl0H6hDxgTqkWmp/HQaSZEA64ghBQa9meCOGCjs4cMNoE7B6FAE7eIBGNhYhyIADBh+CzX59GYAAAAASUVORK5CYII=',
   },
   {
     meta: {
@@ -7841,29 +7373,34 @@ export default [
           desc: '进度条类型，line、circle、dashboard',
           defaultValue: 'circle',
         },
-        size: { type: 'ProgressSizeType', desc: '进度条大小，可设置为 small 或不设' },
+        size: {
+          type: 'ProgressSizeType',
+          desc: '进度条大小，可设置为 small 或不设',
+          defaultValue: 'default',
+        },
         percent: { type: 'number', desc: '百分比', defaultValue: 0 },
         status: {
           type: 'ProgressStatusType',
           desc: '进度条状态，可设置为success、error或不设',
-          defaultValue: true,
+          defaultValue: 'default',
         },
         active: {
           type: 'boolean',
-          desc: '进度条状态是否激活状态，仅生效于 type = line',
-          defaultValue: true,
+          desc: '进度条状态是否激活状态，仅生效于线性进度条(type = line)',
+          defaultValue: false,
         },
         showInfo: { type: 'boolean', desc: '是否显示进度数值或状态图标', defaultValue: true },
         format: { type: 'Function', desc: '进度条展示内容模板函数' },
         showType: {
           type: 'ProgressShowType',
           desc: '进度条展示内容展示位置，可设置为 inside 或不设',
+          defaultValue: 'default',
         },
       },
       type: {
         ProgressType: ['line', 'circle', 'dashboard'],
         ProgressSizeType: ['default', 'small'],
-        ProgressStatusType: ['success', 'error', 'default', 'active'],
+        ProgressStatusType: ['success', 'error', 'default'],
         ProgressShowType: ['default', 'inside'],
         ProgressStyle: {
           color: { type: 'string', desc: 'Progress的颜色' },
@@ -7874,18 +7411,18 @@ export default [
       category: ['反馈'],
       theme: {
         ProgressCircleText: {
-          name: '圆形进度条文字配置',
-          desc: '圆形进度条文字配置',
+          name: '进度条文字配置',
+          desc: '进度条文字配置',
           normal: [['color'], ['font']],
         },
         ProgressCircleSuccessIcon: {
-          name: '圆形进度条成功图标配置',
-          desc: '圆形进度条成功图标配置',
+          name: '进度条成功图标配置',
+          desc: '进度条成功图标配置',
           normal: [['color'], ['fontSize']],
         },
         ProgressCircleErrorIcon: {
-          name: '圆形进度条失败图标配置',
-          desc: '圆形进度条失败图标配置',
+          name: '进度条失败图标配置',
+          desc: '进度条失败图标配置',
           normal: [['color'], ['fontSize']],
         },
       },
@@ -7894,7 +7431,7 @@ export default [
     },
     target: Progress,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+      'data:image/png;base64,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',
   },
   {
     meta: {
@@ -7907,29 +7444,34 @@ export default [
           desc: '进度条类型，line、circle、dashboard',
           defaultValue: 'dashboard',
         },
-        size: { type: 'ProgressSizeType', desc: '进度条大小，可设置为 small 或不设' },
+        size: {
+          type: 'ProgressSizeType',
+          desc: '进度条大小，可设置为 small 或不设',
+          defaultValue: 'default',
+        },
         percent: { type: 'number', desc: '百分比', defaultValue: 0 },
         status: {
           type: 'ProgressStatusType',
           desc: '进度条状态，可设置为success、error或不设',
-          defaultValue: true,
+          defaultValue: 'default',
         },
         active: {
           type: 'boolean',
-          desc: '进度条状态是否激活状态，仅生效于 type = line',
-          defaultValue: true,
+          desc: '进度条状态是否激活状态，仅生效于线性进度条(type = line)',
+          defaultValue: false,
         },
         showInfo: { type: 'boolean', desc: '是否显示进度数值或状态图标', defaultValue: true },
         format: { type: 'Function', desc: '进度条展示内容模板函数' },
         showType: {
           type: 'ProgressShowType',
           desc: '进度条展示内容展示位置，可设置为 inside 或不设',
+          defaultValue: 'default',
         },
       },
       type: {
         ProgressType: ['line', 'circle', 'dashboard'],
         ProgressSizeType: ['default', 'small'],
-        ProgressStatusType: ['success', 'error', 'default', 'active'],
+        ProgressStatusType: ['success', 'error', 'default'],
         ProgressShowType: ['default', 'inside'],
         ProgressStyle: {
           color: { type: 'string', desc: 'Progress的颜色' },
@@ -7940,18 +7482,18 @@ export default [
       category: ['反馈'],
       theme: {
         DashboardText: {
-          name: '仪表盘进度条文字配置',
+          name: '进度条文字配置',
           desc: '仪表盘进度条文字配置',
           normal: [['color'], ['font']],
         },
         ProgressDashboardSuccessIcon: {
-          name: '仪表盘进度条成功图标配置',
-          desc: '仪表盘进度条成功图标配置',
+          name: '进度条成功图标配置',
+          desc: '进度条成功图标配置',
           normal: [['color'], ['fontSize']],
         },
         ProgressDashboardErrorIcon: {
-          name: '仪表盘进度条失败图标配置',
-          desc: '仪表盘进度条失败图标配置',
+          name: '进度条失败图标配置',
+          desc: '进度条失败图标配置',
           normal: [['color'], ['fontSize']],
         },
       },
@@ -7960,7 +7502,7 @@ export default [
     },
     target: Progress,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFIAAABICAYAAABlYaJmAAAAAXNSR0IArs4c6QAAFjVJREFUeAHlXAd8FNW6n9mWvukFAiSU0IvS9dI7oahXgdCkho5I83oNQgRiwQe8KwqCQARRn3Dtgogogg+kPZAgLYpSQgjp2WT77sz9f0tmnZndTTahJb7z+539zvnOd875zn++02eWZR6g27OH90lMZM1yFea8ZFlTUKKax/M8q1QwjELB8AqW53t0NJ2cMjKwq1y+JsRV91OJ1FRe5V/PNFFXyk7MyVc9/PMVE4/6A+U6WO2MoszAAkJWSHIEOJ7xERhiuvBV69JQrW1MfB3bru7t7Wvi4kKKxOn3I3xfgJwynw8LibL8cOEW38qQ4wuAbjulgmeKioriQkNDrwq88pRb0vjtmL8v75ZfXMqMy7zim3Asg1ny9WEuZfmbpmsJcdbtSUMDV7Isa3FX1t3mORt1twsWl1c/mNFl3VI3MZjIyv502XlK5kaOvdefnNshs0VxU86juJ+fPVvOn7aRVxcWKxsJfF2Zgj3xi0/ch3sCXjx+qmSSwL/XVNKwe1VZaiprCw/hvnQtn2Uyr/kMkfOLihm3QIYGsTLLZZii80wXm51Vysto3cRq6dw+eJucf6/idxXIlLWmRRs+KDvgTtnrecrl7vjZuYrOLnwlU+zCAyMi2Pq7nB8VZk+S8yjerpnlC3RrkzztX9v5BpjENHL+ncbvCpALVvP15660Xsi45PP698f8eh09VTBZrtiXb7HnwoK5LDkf3bseGiYZq3nOFUi1imeiIzgXizRb+X7yMiND7XyvTobn5fwR83m/42f4c8vesOQdOV7cV55+J/E7BjJljfWFrGvcH1eyVM1JEZNZwXx/zH8twHGZYX00zAa5slez1cr8/Py2Er7GFcigAI6BhUkmG1oFFJYoG0vyItKxlflidHT0ZTk/OtS6SadnA09f0Gg37Ar69oMvddvkD1Gex9v4HQE5d6V9aUamKs1oVkjGqGMZPtpvf9S9LFeiyKJ4S6Vk7GI+Jgfm/B+qRDEvzo1FagM5Rq1W54rlMgqYjlYrK7FmstyuD9mWi+UoPPGffPMbueoxAr+4VMF+uDvw6dWbjVdKS0ujBH516R0BmVOgeDM4kC+VV87xLLP/qO8zUDBSnLbrNbYkIsx2VMyj8LUsZX8xb9061iwHXBvAcyEh0vVhTITNZXxs38JS+nAr7U5xeRRWq2yf2myMrL0sc/iMb+yRU/ZkuXxV47KCq5Z911q20NeHHQAr4OQ5L/yuUe05yL0r5xsMqjQ571ahqrWcp1bzkh2Pvy9nlMtYLYzkAVB62+bmdzEESPSZu9w2OSfv9tAjL2NID/2PA3uGuOgkl6ssfkdAUuGb09ijMZH8c+4q2n80YPD164WS8S8hiPkm0F9qxVm5qlAszEPEZeDhSGZcPz9pnhE7eWWhTpkgzhNX18r17qxYIeZNS+X9C0rYN8Q8Idy9vfHGlBGBLpOVkF4V6jWQL6zl6xQWFga7K3z9MuXqulG23fK0nHwlu/eI5n/EfKwpueAg7iMxz2JhzXa7vY6Y1yBe0bRJUya8S2smvms7S5vQEPYRcbrpINPcIhsfH25hPhoUFJQnllOz1k2lekWAmEfhFo0sxgmPcR3u1s6HlVfgLj5mJh+qCuKuNmlg5cb93diuUV35lo5hRqTymkAz91t+kaK+uIxAf45ZOLF4ZMe24bsE/rA5fMP4KNuhBnWsx2Oj7W+NGR70vZBWFTp3Bd84wM/8fFGJarhOr4hYOrOgT4uEyINCGVOX8C3yC/lzdo6VtLNOhI2bMEzX7W9dwn8SZMWUJh+DwRCDmT9DzK8oLKnAnSBtwZgsLvNmniKe0ts2tRgmDrN0SkgIOi+XxzotFgc1lw1GVrL06dnJWLBwsl8Mnr5Nnuduxdem8yHzJ7GShXzyi9ZLGBubiusI8OP58cN1s4b0DnlbzBfCeXl5TdE79kJXf6VS2SEiIuKGkFYRrbRrK29a9wkgUkEZmRr/jR9rTp85V9JFXjAmnxthIeyTdOwlTjue4Rv2y4WigWLe3Q7LQZy93DZVDqIChySP9y3b6gnEnJycrgDxCHRriPVltM1m+8Tdetid7hUCOXelZU5WjrqXPOOlKxrNlk/8/vfwyYIB8rQNy9jdsVG2NQI/PtZmerJ/yaQ2LcNcxlBB5l5QjlMejwjlJOvOwd0MJ5OGaqe6qw8gDgefhphwUXrn3NzcdaK4x6DHro1dgyKbs/14M1f1qKfc9aJtXNIQ/eienUNc1m0zlloPNY23qId1Nw1MSAjXeSrjXvJpWPLNs71/5Ybqqc5tjHkpM/3i0WVdllG3bt2aAT3ehPVJNhaCbsgzCOPlN0LcHfUIpCD8TJp5WXaO+kWz1fWEhWQiQ238mCH6mf26hWwU8tQ0+vwq64ApT+jO44FmyXWDxa3kOC5FzhfiAJE2HLMB5HsCzx2tFEjKlJzKN+Ws9v25BUrJjCwUGKrl+LFD9SkDe2hfEXg1ndIeGyBuBp3gSVeAuBfb0ulhYWHXPMkI/ArHSEHonVQ2s75aGd+onnW9UslLJhKSKdIp2G2fB6Z99b3ujncIQp33kn6yXxcOEL+qAMRCgDgBVjjYGxBJV6+AJEFaSP9riWZ2XDTbJSKEyyee2BG8GhXzq5hXE8M09j/a2pAKEN2uIgDgv+FbAsTtVdFf0rUnpvK+nRPKUkYMMK2KjIx0OYwQCnYM4rnWHTgCG4ELKZaWFaMTdVuShoa4nRGFfDWF0mEKFtw/A8y6gk4ALwfhWQDwU4FXbTrnJfvyYTN4flaq1Zr+77L3PW0JhQrmpVkHjn/OXvr2+/rTUEryUASZmkrRtbthtrZi2cPDby0uLg6tTFe00Reyfd3JORtPQIxfzBWWlCmchwdYD9o7tbZ8OvBR+4x69bQF7gogK05fxtjwRO/ZrsVdvXeDB1CSofcVWOG3FZWn0+nCjUbjLGA0B/JhCoWiAXrsTXEeJ5DTl/KjsnMZyQGDIBgTYbd3amXc3a8PO61RdKDklFqQ+StSWG0TgDcffiLa5y+0EWAuBfgrhDhRJ5AzllmP3bilcr2IEknjoonr1Ma8r3d749Rmzbzbg4qy15ogujxtQhbBPwYQ3U3I1wEkLe6d554OIOfO5X2yGb5MfizlqeWRoRzXvb1+38SngoaIC/MkXxv4BBgs8HHoughhyZGdB/0fiYmJOSqkOdB+4w3GgiOySc0aWg/jksksJHqieUUKRalB2eKvAiLN4gAxEwB+7CWIeB9JMVSMj4oiAIQW2TvIoyD2+dfMA1gl+8zNAmUPvMXg8m4OXmhiHmpuWU15/wqODoPRnSWXcu7aRYYDfE6A7sW28mOxjHOMFDPF4QWvWB7GNerCgmLFwJt5SjoZYdskWCxpCzTBKFByHSDOV9vCmMGXQGfJBEJtQBtpdt4HC9yr0Wj2BQcHFxJf7ioFUpxh3qt8gwC1eVGzeGvehCeDXCoVy9a2MO6M4i0Wy+/Q2warO0zAge7FpHKmxrRly5YtQVDK3ewn0XHPnj0+O3fuVEqY1Yhs3LgxAt65XPG2CJyO94IP8lZeLIfXN/EOp2gaFyfeaRiNmYMypqP8VqjHAvo9/MLk5OQL4rI3bdrUE+nLwaNTdzNkDsEi5kydOvWqWK4cHDphouXJNZzMvDh58mTJlcc777xTD+NXBtLaIe26OP+9DLOzX7Luw8V5r9BgvkgbwF0P8ucuBQVxJ6PCrT8M7hFyFo2q1o4F4PwD4LyE/C+gAT8iTCDRziDAx8fnoQkTJjh2SgCH+PvB3wvwtkAuGEDMAy8Kvvv06dOdOwjIboVcV/h5kOmP9El4tzJm5MiRzokC9VIZBcj3HNLvm1OZLEx8boFKnZ3nUJyU7wA/hjTY8QXHz11hMYYEcnnaQP6PoAD+bNsEPv3RTgGnKd2TS09Pp/HmZQAzBtYnXL2egLWcBAA/mUymscjruGsGKOsQPoO3KJIEQADYd+BlIG0p6Ex4BuCwyJ8IOnfatGnfbt++/QjKWYA9Mj0Iumdhtm7d2tJqtQ4PDAyUXHhRWnUd6vPDu0kNoHc8yohDnBbijjDiURhDHXfrCrz0FAGGW4f7YPbKDbX/z5d84g79n2+v3Yf85uYV2We7FRYx0ZhpqOySCERHKuJHwU/E7ZxjIQvroS7fCYlpAogkCGvKh9x6BJPwUHyJt3nz5uaQjcbD+YXiTz/9tB7kMuR6UZwcLquo278+duzYIgejGj9YT67EDP4R/DEsiXLgDbgQu4i6afKhW4B/go6GfxSetpCOsV9lMrMu68SK6vf3szu7mic5FE6L1c8pfceOHVps+HujwfQSwElY09eifDTWMb6+vodEPEcQZfyAwApYdkvQU7AIGi9ps1AP/gLSyULrgF5CnIEVdwNpjyXKKIpX16G8icgbS/kRJlKZo7W4RcFx0teRK8sVEmTzZgCvB+Cuo3Eper0+ByCsAYifgXcFVpgsqqMOeKXl1iVi46UntTq7nFGHKKzUANkfURY9JLLQ3iD+kKNhgNZ7r4EsmzRpkmNtS0ATvxouvyp5MMtrSF4B0L2uEO8r8LFR3JWKKsLyxQ/pdLZH+9Z28HUAQmNMCsT7AH4jQPgbKLlINNjtDSO6f8ltEcY59KBbp4D3JB7Qb8hHb+QuAnDFiD+OOIbZkG0YCkIQ/xQPTAeaBe8YY8vL8obQkOG1g563u/Zn693fDnp6oiwbXZm929FAkmkB7Jpi7DOSVkQPHDgwKzMzswesaj5Yh1EHjWVuhxaMsw4+wHO+PYHl0HHkqY8HEa9SqW6S9dG6E4vpV1DnP2icBYAEdkPEOyBvJHrCIYC7H7K/gu+No5WKD+rxKacaoshIPEcY1LG1FhfmwhASkbkywARRCUVjLGhMPio7LIAoCPTu3dsGCzmCeNdy3k3Uo6WFeGJiIo1/YhdNEaRLxuRyvf4QBDFrTwavAGPvF8RDvQNB0hHPBM1EfZkYZ4nnFZCYhWdAtkKHOsgKNXiAPjAWx5WMRyArLKmSRFT0GxrnmG3diAYi3dGdYTGnYZ1sVlYWAXtQLAt+N5RhwkR0UcwXhwES7V5S4UcQn2Z4WHJrlPsbxcvdryiHVgZ3zaE8OoeksZi8wzn6txC5WxQVpQOsXljr0brU6dAlw5DWF96x/KHlEBJp1p3nFEKAAEL+ZPhPxo0b53YMJXkA9izICVgfWTlDXR15MtCdm1KcHOpqBn/8duze/VZokXR1Gd3C+IhJz/Ywmtn2eiPbrG0zy+FRQ4IqHMDRmPeh8kIse74GeDO1Wu3ZkpKSlmjgOjTKjvSVQpMQpx3IJwBvFehG+GD4FPCj4J1y4Enctm3bws1m80LI0LLH6RD/BuUnod50WHUnhJsA8G+cAhUEIIvs1RvSHDP21s8M9Q1lbB+DgemqNzKt9UZFfEmpMrygROlrtUln9R4djEWLk/3DKtDHkUTWB+A+RKQPvOOBQcnDCE8uH78ccvSDMXUsyCo0pG458yImk/FTpkw5WR53IchDL2ppUdZUcSIdkGBh/jbqGoTyCgDiK7D8dLGMpzAW408B/PXIS7uqs5AjmoFX+86DOiZNT3nZ2an2tGs5ihc8Ccj58XWtzMvzzVHyN2PlckKcuika0wIKXqUdi8B3RwFOUzS+FHKSCcadLAB7hMbPO9nFyMvFLmY96nfpbQCR9vI07mYgPQP0LOrOwHLLOemxYxfzo3Sl7m8P5RVRnF4G+K9FRaMSGoXvdJdem3kAkraCzarQhiW4t0kjeZXFwvzkbUbc53ANY61XrucoHSc33uarDXLYodTFUFQVEGmyOyW0zTFGjlnAlZQaWK3AFFN8jmZrUNf2S0y47b2+nQLeSkhw/VBdLF9bw7BEJcbI3ujGozAMPYF2hFfUFsjxOA4MR/emTcXtSUAbaD9dalD1vJ2RZ+rF2I31o23HYqJsb0/6e+BOlsXnVH9xVz4O7kcz99M4CQvtD0oHILT9pJWExIF3UQCREhyzKe6z32tc39YmNsr6Qx28tjzuMS3Nrg43WQj8P6IA1Ybmfk0egGkwdg4iS0V8OOLClvbzO4Yk7b/56NR15o8zM/O73HFhNaAAgOPVwQ3k/ADqk/A7MQw8JFbdqwKEDCs38LF6g2Xrb1fV/UwWVjGom+H6rLH+cTReCDK1jQIU6sJr0IYXsc/+rLr6ewVk6gY+3qg3b718zaen2fLny6kaNc/MG1eyoEeX0LXVVeBB5gOAvrCss6BNyvU4DkBTACiNlVVyFQL5/BpTE96uSP/1qupvVpv06ymhFny2ZpwzWhcFVybwagsFiCswQy9xo++BckC9Xho6Jht5QcvfNLfSlTFbLl5Wd7bjdFGeLsTxEj7XuL51U20EEVZIk8g4oS0y2hvpR3Bv8xUAXQILPSNLd4m6gDRvpXXn1WzVU3Z8sO8iLWK0a2bO79bBNHBQjxDnolSUXCuCeIE0Aq9Avwtlh3hSGEACU/4jLL6XwmA8nmm6HKPhVjGjIhDpW76hPct2rXjWJ6Y2g0jA4VQqH9Y2DMEF8BbiyR1AJINKAj0PC54lTxfiLkBqihWv44+KDIKAmCbEWfTjhxsSp48OGokn5byUJxl6BfqF1aaDP53SDRfnqUlhgKGCl3xyTBaH/fJa3L08grBHi0M+fGPL7vPUHrfdd9ZL9vnXbyrWCJk0agb/WmI8OGe8XyIKMwp8gY6YxQeGRdjPZecqG+A1aW5Ef92sAT3D6GyxxriCggItjtfoU+cAdNPB7r7awORDp/cb4F3GTrR7Nax3kacGuQWShKemWE/cKlB1bFDHZunV0ThjxBBturtC6O+6WH/7hVsFSudpeEgQx48aXJY6tE/wcnd57jcPINYHiLsBUBuqG6AcAZiD3IFJ6ejCT4O8BXnHLgby2bj2bYmPl0oo3Z1z6dqCUEGxalDn1sYvnkkyxnoCccZKPpbz5S6LQaT89A8mBcUs3cM8cAcwlADxOwFEUgjhR7Hs+cbTm2ewvO0AugMAPA1Pm42JFYFIZXq0SEqsyC1exSfk5NlPF5cqJWMO5aH/ilic7NcQSlgrKuN+paHLTgBw78rrg34/4SR+UHi4+693AbgGeRMBbKU7nmoB+WyapX1ekfIw/rPH5aYQ/5Jnnj5O17hZ/T+/eoBC0PnBbiPRXbdBD+qyEge9jgLMgZ7AlAhXEPHYtT3lWbzK2h1/+nHUHYj0lewTfUxPiUGkch40iKQD1oCzoAfdWEocwO2KK9x9NBlJEqoYqRKQi141Dbt6Q3kAl2NqeT0qJc880U+/pnsX7VfytJoQB4j0KspIeOddtEivLgRmZZ8MiuRdgl53bfqDNrWCy8Grfm6f3LCe+uPTRgfW+GM1dHF8bclvcEHiNuM4Zuf+1enmXlsk/vjDGOCv6IfFussE0qm1qTA5KaC3B+VqFBsTB13V0nrSnWuDGb6Vu4TKeF4DSQW9s4I9oQ1iHw4O5JwnPVhn2ob01NPrJW53Q5Up8CDSYXX0Mefv4roRL8PuhmZor098xPmrBCRlBJjnzGZFo8gw7gb+mot/oq95Yoc2ERfEhdb0MK0JAVoSwBN61zWsG3thgf7Dfded9tbr39M/ft8rvosV4phsPvx38n8VrE4V/wGqYovD6pnE3wAAAABJRU5ErkJggg==',
   },
   {
     meta: {
@@ -8042,7 +7584,7 @@ export default [
     },
     target: Radio,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAAUCAYAAADV9o4UAAAAAXNSR0IArs4c6QAAA0JJREFUWAnlWE1oE0EUfrPZ2pbqoVA0mIKHQEQoWIoHUc+CPWjtwYNCDq2m0Co9VaxijYIo7amghybxkODRals0h4Lk4E0k4EHUlArSWusf1P5Igs2u39tkk92amt12oYYOTGbm7fe9nW/e/G0ElUiBgFo1n6U2VVCbIDoEyN48bE4leiVUGnO7aCwUEr9L0CvCBF3mdOqCelpVaQjZa35ibglB08h942HxxPykMloF4cGgKiVn6S4E99npOsQPtTTSlWBQKHZ4W42V9Q5sRDRzeaDA5XRZ+62QHy3iPL0VhR5vps+SRO2VNO2FtpEp9Lbcmi43KLzm3RIdsLvhhcPhRvg+KknSu87OztfG90QikX2qqh4WQrxBueAkTtJ27zIbmbEzXK+tIerxE+1uKD7hgWNfRYu1msfj+QZRfaurq8+j0ahHZ8Xj8WpFUSbwbDibzf5wGifxkaW/zErJoq9dJHK5iBZ+mhl2fTG7tbU1I8vyGVTlTCbzEEIlts/MzAyi3oSZcK6rq+uz0zhx8rz6HtHy8cvKJRZ9tYfo63eiezFtYzNRMN1TExGx32S02MCUb0eERwEfQE4iP0W+CdFBlIXkFI6FL0H4Tt1zS1NO2Oy8bsmVNdW5SK8nmlEQvgzhu8xM662RkZFhrOceRHoRrGQgEDiO9l/HpBM4bVoZu9ZQjyHvJfK4i1YroovoTdX6wf6FXA/BvaVE571vGsfC5/LOtGLyBdH4JNH1S7in7iHaUYVI/2N6G7lrfa15VrYJoQOIdh2AHHFe44ULlpHsBE7muzecmtb4s0TuNf3dRMsrRJ++EN0vsaaNneF63tdas6V2KBQ6ASBfgu5AWBKiH8HGt8hBowOncBJ/cBgd63UWH0ee/mhNNPPW86X7XK/kYwxCY8gvfT7fDaztUYh/APxtCD2i85zEbfkFJpFIyKlUKgGhB3GsNXd0dHxgobFYrC6dTnPka10uV7PX6110EifxTQu7sa0PEz0CxpJ92L21MX9qauoWimMQ3q2LZrvf71+B7SyqbhxzUadxhc0Dxxo2k40NAEQP4RirqI+UwnHGn5YsgEfbTmIOc+1w/gdsIeJ6Z7bdHxG6cC63w19PfwC+sGNmMz1+7QAAAABJRU5ErkJggg==',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAYCAYAAABKtPtEAAAAAXNSR0IArs4c6QAAAyxJREFUWAnlWE1rU0EUvTNpdFN/gKG46SYouPIXuBBETFPBnZtCBIOtVKHQnXUXKGixlQgW3LgTbBopggt/gStByaYbKf0D1UVNk/GcmzdJJW0+BnzNIwNhXt6ce949986bd2eM9Gh3FtxU40hmmiK3jMg0oJkIvu9Edq3ITmpCtj+sm70eNCM9BF3dLTfvMq4hz4yTOQhNdSM6d0DQcEbempQ8rW6Y/c5IMq66ApArupw4eQfhFzBYFyMV9BVr5euEExV4ZCTTbMo1YPLA5tGngTkA9l61bKrJkN7y8p8AzDxwj5DNF86JxcCWTctSZd3s9hKUX3DTzbqsIgizxkgTs+bx9mvzspfNKI21A6CZh+jIuWVkcpXXt++7KxBVQKZvIMOXdNzJT1x/RrA2P74x33kP9kvoSjqOYPSbCbVaDTHr37LZrPr4v/BYx+A83nmd9sg8/qr4uyvuXK7gNiD+G2bEIry9jH5Sf63rRY4RQ2wUsGXOHnIpZ399Z47QAHDBg0C+81sUQkGHe/IJYh6qoFPc5BgxxPogkINc5DzFbKRuW37qkMk5OF7nO0/vIOg5hF0f1FNiaUM8OchFTnIPynFWOMvvPDKW4mrPBY/vPJwpBjhUpK0umuAiJ7kDeGI1sSxy+ERkraI9FjxO7WG9oA2yXjjO5bmH5YoTz88dKzzhd14fzNU+tEW2nstzh9LFYcdMa3nri5z2py7k6dFnss3VKZ1D2GKxGXqqD+LV4STfqGQ0BqBd3qrLLHJCW2Sb+i0XI4qR3xtYrNZa6rK2V6dR4YXqR97V1nN57mC+GAyxXskOnwNn89qjvGVNP+yzacPS+DiX5x6WK0685X4eL2wDEchzYxPV9uUAJ8q0JQe5yEnuAJ5YTSwPM7ifxwxIc1fHp5+fkifI6JdBPSGWNsRHO8M0OZNwUMJFUHiYgYwdIAiz3NW9XzF/IOgmhL3i1CbmpMYxYoilDW3JQS5ynmQzavc0AHqSg8OMSGzJB6G6aeaRyau4vwZRP9D/0l/reo1jxHjxEFdSDh6MJOR0CLo6bawPRHwYkP3xPRJrB2GcD0V9ENiPw7H4X629g775Is/PAAAAAElFTkSuQmCC',
   },
   {
     meta: {
@@ -8052,7 +7594,15 @@ export default [
       props: {
         defaultValue: { type: 'string', desc: '单选框初始选中值' },
         value: { type: 'string', desc: '单选框选中值' },
-        data: { type: 'Object[]', desc: '单选框信息' },
+        data: {
+          type: 'Object[]',
+          desc: '单选框信息',
+          defaultValue: [
+            { text: '选项1', value: '1' },
+            { text: '选项2', value: '2' },
+            { text: '选项3', value: '3' },
+          ],
+        },
         displayField: { type: 'string', desc: '单选框的 显示字段值', defaultValue: 'text' },
         valueField: { type: 'string', desc: '单选框的 value 值', defaultValue: 'value' },
         displayValue: { type: 'string', desc: '单选框的 value 备用值，value 找不到时展示' },
@@ -8085,9 +7635,151 @@ export default [
         },
       },
       category: ['数据录入'],
+      designInfo: {
+        RadioButtonGroup: {
+          sequence: 1,
+          title: '按钮状单选框组',
+          desc: '按钮形状的单选框组',
+          props: { childType: 'button' },
+          theme: {
+            Container: {
+              name: 'Radio组整体配置',
+              desc: 'Radio组整体配置',
+              normal: [
+                ['opacity'],
+                ['border'],
+                ['borderRadius'],
+                ['background'],
+                ['width'],
+                ['height'],
+                ['margin'],
+                ['padding'],
+              ],
+            },
+            CheckButton: {
+              name: '配置按钮Radio样式',
+              desc: '配置按钮Radio样式',
+              theme: {
+                CheckButtonChecked: {
+                  name: '单选框按钮状选中配置',
+                  desc: '单选框按钮状选中配置',
+                  normal: {
+                    selectNames: [
+                      ['opacity'],
+                      ['border'],
+                      ['borderRadius'],
+                      ['background'],
+                      ['width'],
+                      ['height'],
+                      ['color'],
+                      ['font'],
+                      ['padding'],
+                    ],
+                    nth: [
+                      ['opacity'],
+                      ['border'],
+                      ['borderRadius'],
+                      ['background'],
+                      ['width'],
+                      ['height'],
+                      ['color'],
+                      ['font'],
+                      ['padding'],
+                    ],
+                  },
+                  hover: {
+                    selectNames: [
+                      ['opacity'],
+                      ['border'],
+                      ['borderRadius'],
+                      ['background'],
+                      ['color'],
+                    ],
+                    nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
+                  },
+                  disabled: {
+                    selectNames: [
+                      ['opacity'],
+                      ['border'],
+                      ['borderRadius'],
+                      ['background'],
+                      ['color'],
+                    ],
+                    nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
+                  },
+                },
+                CheckButtonUnChecked: {
+                  name: '单选框按钮状未选中配置',
+                  desc: '单选框按钮状未选中配置',
+                  normal: {
+                    selectNames: [
+                      ['opacity'],
+                      ['border'],
+                      ['borderRadius'],
+                      ['background'],
+                      ['width'],
+                      ['height'],
+                      ['color'],
+                      ['font'],
+                      ['padding'],
+                    ],
+                    nth: [
+                      ['opacity'],
+                      ['border'],
+                      ['borderRadius'],
+                      ['background'],
+                      ['width'],
+                      ['height'],
+                      ['color'],
+                      ['font'],
+                      ['padding'],
+                    ],
+                  },
+                  hover: {
+                    selectNames: [
+                      ['opacity'],
+                      ['border'],
+                      ['borderRadius'],
+                      ['background'],
+                      ['color'],
+                    ],
+                    nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
+                  },
+                  disabled: {
+                    selectNames: [
+                      ['opacity'],
+                      ['border'],
+                      ['borderRadius'],
+                      ['background'],
+                      ['color'],
+                    ],
+                    nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
+                  },
+                },
+                CheckButtonCancel: {
+                  name: '单选框按钮状取消项配置',
+                  desc: '单选框按钮状取消状态配置',
+                  normal: [
+                    ['opacity'],
+                    ['border'],
+                    ['borderRadius'],
+                    ['background'],
+                    ['width'],
+                    ['height'],
+                    ['color'],
+                    ['font'],
+                    ['padding'],
+                  ],
+                  hover: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
+                },
+              },
+            },
+          },
+        },
+      },
       needExport: true,
       theme: {
-        Group: {
+        Container: {
           name: 'Radio组整体配置',
           desc: 'Radio组整体配置',
           normal: [
@@ -8102,6 +7794,8 @@ export default [
           ],
         },
         Radio: {
+          name: '配置Radio样式',
+          desc: '配置Radio样式',
           theme: {
             Container: {
               name: 'Radio整体配置',
@@ -8153,104 +7847,12 @@ export default [
             },
           },
         },
-        CheckButton: {
-          theme: {
-            CheckButtonChecked: {
-              name: '单选框按钮状选中配置',
-              desc: '单选框按钮状选中配置',
-              normal: {
-                selectNames: [
-                  ['opacity'],
-                  ['border'],
-                  ['borderRadius'],
-                  ['background'],
-                  ['width'],
-                  ['height'],
-                  ['color'],
-                  ['font'],
-                  ['padding'],
-                ],
-                nth: [
-                  ['opacity'],
-                  ['border'],
-                  ['borderRadius'],
-                  ['background'],
-                  ['width'],
-                  ['height'],
-                  ['color'],
-                  ['font'],
-                  ['padding'],
-                ],
-              },
-              hover: {
-                selectNames: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
-                nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
-              },
-              disabled: {
-                selectNames: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
-                nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
-              },
-            },
-            CheckButtonUnChecked: {
-              name: '单选框按钮状未选中配置',
-              desc: '单选框按钮状未选中配置',
-              normal: {
-                selectNames: [
-                  ['opacity'],
-                  ['border'],
-                  ['borderRadius'],
-                  ['background'],
-                  ['width'],
-                  ['height'],
-                  ['color'],
-                  ['font'],
-                  ['padding'],
-                ],
-                nth: [
-                  ['opacity'],
-                  ['border'],
-                  ['borderRadius'],
-                  ['background'],
-                  ['width'],
-                  ['height'],
-                  ['color'],
-                  ['font'],
-                  ['padding'],
-                ],
-              },
-              hover: {
-                selectNames: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
-                nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
-              },
-              disabled: {
-                selectNames: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
-                nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
-              },
-            },
-            CheckButtonCancel: {
-              name: '单选框按钮状取消项配置',
-              desc: '单选框按钮状取消状态配置',
-              normal: [
-                ['opacity'],
-                ['border'],
-                ['borderRadius'],
-                ['background'],
-                ['width'],
-                ['height'],
-                ['color'],
-                ['font'],
-                ['padding'],
-              ],
-              hover: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
-            },
-          },
-        },
       },
       parentWidget: 'Radio',
     },
     target: Radio.Group,
     screenshot:
-      'data:image/png;base64,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',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAA8CAYAAADWibxkAAAAAXNSR0IArs4c6QAABW1JREFUaAXtWstqHEcUraqeTjbWB0SIbLQRCUQg6QuyCAST8SiQnTcCBSz8wA4ItLO9EwgSEzsoEIM22gWikYIIZOEvGAkUcNDGm2D0A0pAzjwq51xVjaSMPI9WzaPdXdBUz9S9p+499b5dWrVJX961E/WautFQ6rpWahKi4078yCr1yii1GxXU9i9P9es2MCNdBL9aU/GOHbd19VhbtQBHo1aJs38AULdabehIPdx5po/OStLx1kJAcckWlVWbcHwMhVWlVRl52RhVKVglDta0Gm801BxkSpAtIY8hcwzZmzvreicdrp9aeYGAG7fsPbTmd9Yqg4ItE6vl8lP9qp1Dpbt2slFVayBhXmvVQK95sP2j/r6dziiVNQmQlofTzrgVtOQa37/42n4MpxbR0p+hhT+Ucqv+wvvvIOv5rz/pl/wP+svIVqUcZHTqCYeHh+Csc5qamhIb+yWPeQzGY8xLt0fL46c4/9Uj+15x0T6D83+gR9yHtR8hvybP6ft9llGGso6wFfYeYglmZ/+GLiEEcMKDgxzzW3SEDr15rX6DM7fFobeYyTLKUNaTQAxiEfMtaiP1t+FSh5ZcgOFVjnlaB4e+hWOfdmspZalDeWIQi5jE7hZjWHKG6zxaLOJszwmPYx7GLCUwaIm6MmkCi5jEToAzUBXDTQ5rRKuVJceEx67dqxXUQasvnsfy2L1iDVKeyx13eIrrvFTM2T5pcroey2MnhRuEHltatrd+k9Nc6pLU7pbJJtbZ1jkJ2kB0eu7q3Vj15hpHVDoSCWhub8VkbnKSJqcb/aM+cBAjfzYwmK1lq8u9vRiNHV5S/9HuouuxPHZivAEoYr5Su6wHxpYkx/aWe/pe66YOt8bnsTx2r1iDlDc8z2PA1sFAiQcbt7dfT2DEOnWJQSxiEjsBzkBVDIMZPM+jB8Q81bH29yfUN2jRF91aQlnqUN6dDGNipiFQwklQMZiBFjsGCfM81f38SP8Lhz6HYz+wa1PmssQyylCWOtQlBrGIeZnOqP0nBEgkB8EM5+yqJ2Hnub6DlvwE/z+BU38i/1ue0/cnLKOMdx7OrQoGAyMpiQ7Br7OU6YCIpwGtn92QWJOELAdFPQnMsxAWP+9v/p4zkDOQM5AzkDOQM5AzkDOQM5AzkB0GLsQD/u/2wcHBRK1W4/e969baSa21fETB+xHeGU3eLRQK29PT0+/WHaH9/X1cgWk8hoMLeNreEUJ5Hc+GMebhzMzMyH8HgK0XUksPgPNFOL8JqTE8VTz8aFpGS1fiOBYHq9XqOHoGvyMwlM4nxnMMEm6ChPTeEapUKvfQtXFHyBrkW8iX5+bm2t4Rgg6HxhpkcUdIN5A/gE767gix5WF8847Q7OyshMjRsl2lvb295h0hEDHfqSf0685Pr3eKJCrsxvwmCODvlV6dJ0NOB3eErOEQImZXzA1ZSAhwE94Yu30S570P1CUGfo85TF80srnhUgfrONtX0XpyR+gq1joMTp4LDvsqcH3XNW6d51JX7jThdWONw+DKETnsbtSGJsMhIHeEkNPoUMljeexQuMFxcM8PX3ORuM6HQvdYHjsUbj9wuN7LbO03OSEq8VgeOwRmvzBkFQgNHkVRyw4zdB2h8DgEmtvbUKAnJydyR8hjh8LtBw6HgGx13d4+SB0ey2MHAe0TCIeA3BFCzkNNqOSxPHYo3OA4hud5oPJIW+LB5qo1OAwSUHfYV4Xsq75xwYwN1BKjy/Z0ALrMMofB4/FGGgIlsgowmAGDjzFpzbtT3WW+dfyPusQglsPsqDNsASGAkRwGM9B6vBC1moQEfxwmhguMpCI6dGG9znRAxHfFTIfEzpGQ3aCoJ4F5FsLi/wGwPbJ73Y3raAAAAABJRU5ErkJggg==',
   },
   {
     meta: {
@@ -8295,12 +7897,35 @@ export default [
       },
       category: ['数据录入'],
       designInfo: {
-        ClassifyConfig: {
+        ClassifyRate: {
           sequence: 1,
           title: '分级图标评分',
           desc: '按分值等级展示不同图标样式和颜色',
-          props: { classify: true },
+          props: {
+            classify: true,
+            iconClass: {
+              default: 'lugia-icon-financial_meh',
+              danger: 'lugia-icon-financial_sad',
+              amazed: 'lugia-icon-financial_smile',
+            },
+          },
           theme: {
+            ActiveIcon: {
+              name: '选中状态的图标',
+              desc: '选中的星星的样式',
+              normal: [['color']],
+              hover: [],
+              clicked: [],
+              disabled: [],
+            },
+            DefaultRateIcon: {
+              name: '默认状态的图标',
+              desc: '默认的星星的样式',
+              normal: [['color'], ['margin'], ['fontSize']],
+              hover: [],
+              clicked: [],
+              disabled: [],
+            },
             DangerIcon: {
               name: '低分值样式',
               desc: '选中的图标数少于一半时的样式配置',
@@ -8319,14 +7944,14 @@ export default [
             },
           },
         },
-        TextConfig: {
+        TextRate: {
           sequence: 2,
           title: '文字评分',
           desc: '按分值等级展示不同图标样式和颜色',
           props: { character: '好' },
           theme: {
             ActiveTextIcon: {
-              name: '选中的文字',
+              name: '选中状态的文字',
               desc: '选中的文字的样式配置',
               normal: [['color']],
               hover: [],
@@ -8334,7 +7959,7 @@ export default [
               disabled: [],
             },
             DefaultTextIcon: {
-              name: '默认的文字的',
+              name: '默认状态的文字的',
               desc: '默认的文字的样式配置',
               normal: [['color'], ['margin'], ['fontSize']],
               hover: [],
@@ -8346,7 +7971,7 @@ export default [
       },
       theme: {
         ActiveIcon: {
-          name: '选中的图标',
+          name: '选中状态的图标',
           desc: '选中的星星的样式',
           normal: [['color']],
           hover: [],
@@ -8354,7 +7979,7 @@ export default [
           disabled: [],
         },
         DefaultRateIcon: {
-          name: '默认的图标',
+          name: '默认状态的图标',
           desc: '默认的星星的样式',
           normal: [['color'], ['margin'], ['fontSize']],
           hover: [],
@@ -8383,11 +8008,9 @@ export default [
           type: 'object',
           desc: '自定义图标对象',
           defaultValue: {
-            default: 'lugia-icon-financial_star',
-            primary: 'lugia-icon-financial_star',
-            danger: 'lugia-icon-financial_star',
-            amazed: 'lugia-icon-financial_star',
-            half: 'lugia-icon-finacial_half_star',
+            default: 'lugia-icon-financial_meh',
+            danger: 'lugia-icon-financial_sad',
+            amazed: 'lugia-icon-financial_smile',
           },
         },
         value: { type: 'number', desc: '当前分值', defaultValue: 0 },
@@ -8411,6 +8034,22 @@ export default [
       },
       category: ['数据录入'],
       theme: {
+        ActiveIcon: {
+          name: '选中状态的图标',
+          desc: '选中的星星的样式',
+          normal: [['color']],
+          hover: [],
+          clicked: [],
+          disabled: [],
+        },
+        DefaultRateIcon: {
+          name: '默认状态的图标',
+          desc: '默认的星星的样式',
+          normal: [['color'], ['margin'], ['fontSize']],
+          hover: [],
+          clicked: [],
+          disabled: [],
+        },
         DangerIcon: {
           name: '低分值样式',
           desc: '选中的图标数少于一半时的样式配置',
@@ -8429,11 +8068,11 @@ export default [
         },
       },
       childrenWidget: [],
-      aliasName: 'ClassifyConfig',
+      aliasName: 'ClassifyRate',
     },
     target: Rate,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+      'data:image/png;base64,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',
   },
   {
     meta: {
@@ -8450,11 +8089,9 @@ export default [
           type: 'object',
           desc: '自定义图标对象',
           defaultValue: {
-            default: 'lugia-icon-financial_star',
-            primary: 'lugia-icon-financial_star',
-            danger: 'lugia-icon-financial_star',
-            amazed: 'lugia-icon-financial_star',
-            half: 'lugia-icon-finacial_half_star',
+            default: 'lugia-icon-financial_meh',
+            danger: 'lugia-icon-financial_sad',
+            amazed: 'lugia-icon-financial_smile',
           },
         },
         value: { type: 'number', desc: '当前分值', defaultValue: 0 },
@@ -8483,7 +8120,7 @@ export default [
       category: ['数据录入'],
       theme: {
         ActiveTextIcon: {
-          name: '选中的文字',
+          name: '选中状态的文字',
           desc: '选中的文字的样式配置',
           normal: [['color']],
           hover: [],
@@ -8491,7 +8128,7 @@ export default [
           disabled: [],
         },
         DefaultTextIcon: {
-          name: '默认的文字的',
+          name: '默认状态的文字的',
           desc: '默认的文字的样式配置',
           normal: [['color'], ['margin'], ['fontSize']],
           hover: [],
@@ -8500,11 +8137,11 @@ export default [
         },
       },
       childrenWidget: [],
-      aliasName: 'TextConfig',
+      aliasName: 'TextRate',
     },
     target: Rate,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+      'data:image/png;base64,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',
   },
   {
     meta: {
@@ -8512,9 +8149,10 @@ export default [
       title: '选择器',
       desc: '选项过多时，弹出下拉菜单给用户选择操作',
       props: {
-        data: { type: "[{valueField: '', displayField: ''}]", desc: '生成选择项的数据' },
+        data: { type: 'Object[]', desc: '生成选择项的数据' },
         mutliple: { type: 'boolean', desc: '是否多选', defaultValue: false },
         canSearch: { type: 'boolean', desc: '是否支持查询', defaultValue: false },
+        createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', defaultValue: true },
         throttle: { type: 'number', desc: '查询的延迟时间，单位为毫秒', defaultValue: 100 },
         canInput: {
           type: 'boolean',
@@ -8590,154 +8228,14 @@ export default [
       },
       category: ['数据录入'],
       designInfo: {
-        SingleSelect: {
-          sequence: 1,
-          title: '单项选择器',
-          desc: '支持单项选择',
-          props: { mutliple: false },
-          theme: {
-            InputTag: {
-              theme: {
-                InputTagWrap: {
-                  name: 'Inputtag的外盒',
-                  desc: '配置展示选中数据的外盒样式',
-                  normal: [
-                    ['width'],
-                    ['height'],
-                    ['margin'],
-                    ['padding'],
-                    ['color'],
-                    ['background'],
-                    ['border'],
-                    ['boxShadow'],
-                    ['borderRadius'],
-                    ['font'],
-                    ['opacity'],
-                  ],
-                  hover: [
-                    ['color'],
-                    ['background'],
-                    ['border'],
-                    ['boxShadow'],
-                    ['borderRadius'],
-                    ['font'],
-                    ['opacity'],
-                  ],
-                  active: [],
-                  disabled: [],
-                },
-                SwitchIcon: {
-                  name: '下拉图标',
-                  desc: '配置下拉或清除按钮的图标样式',
-                  normal: [['color'], ['background'], ['font'], ['margin'], ['opacity']],
-                  hover: [['color'], ['font'], ['opacity']],
-                  active: [],
-                  disabled: [],
-                },
-              },
-            },
-            Menu: {
-              theme: {
-                MenuWrap: {
-                  name: '菜单外盒',
-                  desc: '配置菜单组件的外盒样式',
-                  normal: [
-                    ['width'],
-                    ['height'],
-                    ['boxShadow'],
-                    ['background'],
-                    ['opacity'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['margin'],
-                    ['padding'],
-                  ],
-                  hover: [['boxShadow'], ['background'], ['opacity'], ['border'], ['borderRadius']],
-                  clicked: [],
-                  disabled: [],
-                },
-                MenuItem: {
-                  theme: {
-                    MenuItemWrap: {
-                      name: '项的外盒',
-                      desc: '配置每一项的外盒',
-                      normal: [
-                        ['height'],
-                        ['background'],
-                        ['border'],
-                        ['borderRadius'],
-                        ['opacity'],
-                        ['color'],
-                        ['padding'],
-                      ],
-                      hover: [
-                        ['background'],
-                        ['border'],
-                        ['borderRadius'],
-                        ['opacity'],
-                        ['color'],
-                        ['font'],
-                      ],
-                      active: [
-                        ['background'],
-                        ['border'],
-                        ['borderRadius'],
-                        ['opacity'],
-                        ['color'],
-                        ['font'],
-                      ],
-                      disabled: [
-                        ['background'],
-                        ['color'],
-                        ['borderRadius'],
-                        ['opacity'],
-                        ['padding'],
-                        ['font'],
-                      ],
-                    },
-                    SelectedMenuItemWrap: {
-                      name: '选中项的外盒',
-                      desc: '配置选中项的外盒',
-                      normal: [
-                        ['background'],
-                        ['border'],
-                        ['borderRadius'],
-                        ['opacity'],
-                        ['color'],
-                        ['padding'],
-                        ['font'],
-                      ],
-                      hover: [
-                        ['background'],
-                        ['border'],
-                        ['borderRadius'],
-                        ['opacity'],
-                        ['color'],
-                        ['font'],
-                      ],
-                      active: [
-                        ['background'],
-                        ['border'],
-                        ['borderRadius'],
-                        ['opacity'],
-                        ['color'],
-                        ['font'],
-                      ],
-                      disabled: [],
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
         MutlipleSelect: {
-          sequence: 2,
+          sequence: 1,
           title: '多项选择器',
           desc: '支持多项选择',
           props: { mutliple: true },
           theme: {
             InputTag: {
+              name: '数据展示框',
               theme: {
                 InputTagWrap: {
                   name: 'Inputtag的外盒',
@@ -8813,6 +8311,7 @@ export default [
                   disabled: [],
                 },
                 Menu: {
+                  name: '隐藏更多选中项的菜单',
                   theme: {
                     MenuWrap: {
                       name: '菜单外盒',
@@ -8839,6 +8338,7 @@ export default [
                       disabled: [],
                     },
                     MenuItem: {
+                      name: '菜单项配置',
                       theme: {
                         MenuItemWrap: {
                           name: '项的外盒',
@@ -8876,6 +8376,7 @@ export default [
               },
             },
             Menu: {
+              name: '弹开菜单',
               theme: {
                 MenuWrap: {
                   name: '菜单外盒',
@@ -8896,6 +8397,7 @@ export default [
                   disabled: [],
                 },
                 MenuItem: {
+                  name: '菜单项配置',
                   theme: {
                     MenuItemWrap: {
                       name: '项的外盒',
@@ -8973,322 +8475,7 @@ export default [
       },
       theme: {
         InputTag: {
-          theme: {
-            InputTagWrap: {
-              name: 'Inputtag的外盒',
-              desc: '配置展示选中数据的外盒样式',
-              normal: [
-                ['width'],
-                ['height'],
-                ['margin'],
-                ['padding'],
-                ['color'],
-                ['background'],
-                ['border'],
-                ['boxShadow'],
-                ['borderRadius'],
-                ['font'],
-                ['opacity'],
-              ],
-              hover: [
-                ['color'],
-                ['background'],
-                ['border'],
-                ['boxShadow'],
-                ['borderRadius'],
-                ['font'],
-                ['opacity'],
-              ],
-              active: [],
-              disabled: [],
-            },
-            SwitchIcon: {
-              name: '下拉图标',
-              desc: '配置下拉或清除按钮的图标样式',
-              normal: [['margin'], ['padding'], ['color'], ['font'], ['opacity']],
-              hover: [['color'], ['font'], ['opacity']],
-              active: [],
-              disabled: [],
-            },
-            TagWrap: {
-              name: '标签',
-              desc: '配置展示选中项的标签样式',
-              normal: [
-                ['width'],
-                ['height'],
-                ['background'],
-                ['color'],
-                ['font'],
-                ['fontSize'],
-                ['padding'],
-                ['border'],
-                ['borderRadius'],
-                ['boxShadow'],
-                ['margin'],
-                ['opacity'],
-              ],
-              hover: [
-                ['background'],
-                ['color'],
-                ['borderRadius'],
-                ['border'],
-                ['font'],
-                ['opacity'],
-                ['boxShadow'],
-              ],
-              active: [],
-              disabled: [],
-            },
-            TagIcon: {
-              name: '标签删除按钮',
-              desc: '配置标签删除按钮样式',
-              normal: [['margin'], ['padding'], ['color'], ['font'], ['opacity']],
-              hover: [['color'], ['font'], ['opacity']],
-              active: [],
-              disabled: [],
-            },
-            Menu: {
-              theme: {
-                MenuWrap: {
-                  name: '菜单外盒',
-                  desc: '配置菜单组件的外盒样式',
-                  normal: [
-                    ['width'],
-                    ['height'],
-                    ['boxShadow'],
-                    ['background'],
-                    ['opacity'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['margin'],
-                    ['padding'],
-                  ],
-                  hover: [['boxShadow'], ['background'], ['opacity'], ['border'], ['borderRadius']],
-                  clicked: [],
-                  disabled: [],
-                },
-                MenuItem: {
-                  theme: {
-                    MenuItemWrap: {
-                      name: '项的外盒',
-                      desc: '配置每一项的外盒',
-                      normal: [
-                        ['height'],
-                        ['background'],
-                        ['border'],
-                        ['borderRadius'],
-                        ['opacity'],
-                        ['color'],
-                        ['padding'],
-                      ],
-                      hover: [
-                        ['background'],
-                        ['border'],
-                        ['borderRadius'],
-                        ['opacity'],
-                        ['color'],
-                        ['font'],
-                      ],
-                      active: [
-                        ['background'],
-                        ['border'],
-                        ['borderRadius'],
-                        ['opacity'],
-                        ['color'],
-                        ['font'],
-                      ],
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
-        Menu: {
-          theme: {
-            MenuWrap: {
-              name: '菜单外盒',
-              desc: '配置菜单组件的外盒样式',
-              normal: [
-                ['width'],
-                ['height'],
-                ['boxShadow'],
-                ['background'],
-                ['opacity'],
-                ['border'],
-                ['borderRadius'],
-                ['margin'],
-                ['padding'],
-              ],
-              hover: [['boxShadow'], ['background'], ['opacity'], ['border'], ['borderRadius']],
-              clicked: [],
-              disabled: [],
-            },
-            MenuItem: {
-              theme: {
-                MenuItemWrap: {
-                  name: '项的外盒',
-                  desc: '配置每一项的外盒',
-                  normal: [
-                    ['height'],
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['padding'],
-                  ],
-                  hover: [
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['font'],
-                  ],
-                  active: [
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['font'],
-                  ],
-                  disabled: [
-                    ['background'],
-                    ['color'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['padding'],
-                    ['font'],
-                  ],
-                },
-                SelectedMenuItemWrap: {
-                  name: '选中项的外盒',
-                  desc: '配置选中项的外盒',
-                  normal: [
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['padding'],
-                    ['font'],
-                  ],
-                  hover: [
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['font'],
-                  ],
-                  active: [
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['font'],
-                  ],
-                  disabled: [],
-                },
-              },
-            },
-          },
-        },
-      },
-      childrenWidget: [],
-    },
-    target: Select,
-    screenshot:
-      'data:image/png;base64,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',
-  },
-  {
-    meta: {
-      widgetName: 'Select',
-      title: '单项选择器',
-      desc: '支持单项选择',
-      props: {
-        data: { type: "[{valueField: '', displayField: ''}]", desc: '生成选择项的数据' },
-        mutliple: { type: 'boolean', desc: '是否多选', defaultValue: false },
-        canSearch: { type: 'boolean', desc: '是否支持查询', defaultValue: false },
-        throttle: { type: 'number', desc: '查询的延迟时间，单位为毫秒', defaultValue: 100 },
-        canInput: {
-          type: 'boolean',
-          desc: '是否支持自定义值,只有在canSearch为true时才生效',
-          defaultValue: false,
-        },
-        valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'value' },
-        displayField: {
-          type: 'string',
-          desc: 'data数据的displayValue值的名称',
-          defaultValue: 'text',
-        },
-        disabled: { type: 'boolean', desc: '是否禁选', defaultValue: false },
-        validateStatus: {
-          type: 'ValidateStatus',
-          desc: "input校验状态, 'success' 成功 | 'error'错误",
-          defaultValue: 'success',
-        },
-        limitCount: { type: 'number', desc: '多选时最多个数' },
-        placeholder: { type: 'string', desc: '占位符' },
-        searchType: {
-          type: 'start | end | include | eql',
-          desc: '查询的方式',
-          defaultValue: 'include',
-        },
-        value: { type: 'string | string[] | number | number[]', desc: '指定当前选中的条目' },
-        displayValue: {
-          type: 'string | string[] | number | number[]',
-          desc: '指定当前选中的条目的displayValue值',
-        },
-        defaultValue: {
-          type: 'string | string[] | number | number[]',
-          desc: '初始状态下指定当前选中的条目,只生效一次',
-        },
-        defaultDisplayValue: {
-          type: 'string | string[] | number | number[]',
-          desc: '初始状态下指定当前选中的条目的displayValue值,只生效一次',
-        },
-      },
-      events: {
-        onChange: {
-          desc: '选中项发生变化时触发',
-          args: [
-            { name: 'event', desc: '点击的DOM事件', type: 'Object' },
-            { name: 'newDisplayValue', desc: '所有选中项的displayField的集合', type: 'string[]' },
-            { name: 'newItem', desc: '所有选中项的数据的集合', type: 'Object[]' },
-            { name: 'newValue', desc: '所有选中项的valueField的集合', type: 'string[]' },
-            { name: 'oldItem', desc: '改变之前所有选中项的数据的集合', type: 'Object[]' },
-            { name: 'oldValue', desc: '改变之前所有选中项的valueField的集合', type: 'string[]' },
-          ],
-        },
-        onTrigger: { desc: '菜单展开是触发' },
-        onQuery: {
-          desc: '键盘按下任何键时触发',
-          args: [{ name: 'query', desc: '输入的搜索关键字', type: 'string' }],
-        },
-        onClear: {
-          desc: '清除输入框内容时触发',
-          args: [{ name: 'event', desc: '清除输入框内容事件', type: 'Object' }],
-        },
-        onSelect: {
-          desc: '选中时触发',
-          args: [
-            { name: 'event', desc: '点击的DOM事件', type: 'Object' },
-            { name: 'newDisplayValue', desc: '所有选中项的displayField的集合', type: 'string[]' },
-            { name: 'newItem', desc: '所有选中项的数据的集合', type: 'Object[]' },
-            { name: 'newValue', desc: '所有选中项的valueField的集合', type: 'string[]' },
-            { name: 'oldItem', desc: '改变之前所有选中项的数据的集合', type: 'Object[]' },
-            { name: 'oldValue', desc: '改变之前所有选中项的valueField的集合', type: 'string[]' },
-          ],
-        },
-        onRefresh: { desc: '点击刷新按钮时触发' },
-      },
-      category: ['数据录入'],
-      theme: {
-        InputTag: {
+          name: '数据展示框',
           theme: {
             InputTagWrap: {
               name: 'Inputtag的外盒',
@@ -9329,6 +8516,7 @@ export default [
           },
         },
         Menu: {
+          name: '弹开菜单',
           theme: {
             MenuWrap: {
               name: '菜单外盒',
@@ -9349,6 +8537,7 @@ export default [
               disabled: [],
             },
             MenuItem: {
+              name: '菜单项配置',
               theme: {
                 MenuItemWrap: {
                   name: '项的外盒',
@@ -9423,11 +8612,10 @@ export default [
         },
       },
       childrenWidget: [],
-      aliasName: 'SingleSelect',
     },
     target: Select,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABkCAYAAAB5CTUuAAAAAXNSR0IArs4c6QAAA9dJREFUeAHtnD9sEzEUh8+hUoLEwIQU2GAgGwNZ2GCuYGRBkAEpUaeiSilbe+0GRVU7oURiSBEMHYuY6caSDmxh6AiRmBhAJBJg/AIeuDvHR332C9EvUnR379l+1++Lr+39iYjUq9frXRiPx1tSyutqs0oxvLwRGAohDsvlcrvRaHwQBH80GvVVcEcJ2Gu1WkNvpTFw1Ol0qor1PcX6QaVSqYtut/tScXnXbDYfgU84Aor7Q1XtSokOO/TJD1calYgAMSf2NCUkkPAQIPYlntKoqglAgCbBtIQAJvC6LARoEkxLCGACr8tCgCbBtIQAJvC6LARoEkxLCGACr8tCgCZxwmV7bWe/vb7TS3anGOWS8eQ2BCSJ/ON29ez5hpTR5dV4N9ZdaZ1ilNMx03LBlEA8H4GVldvf4vjpra9y/HZ1bfeYeqmTbHfPlMrXKGcbBTPARihHPo6XPi2IU4vqrOYWvWmdYjm6RhCQh5LHNhBQAFx1CDr3Xf54LaKoTW9ap1ieoSEgD6Upbba3909/+Tk+kFLsPd5cfk5vWqcY5aZ0naQgwEbIkh9+/tgTInr/ZHN5QzeldYpRTseMS1wRM6LxnsAVMe+I7QVwCLIz8toCArzitQ8OAXZGXltAgFe89sEhwM7IawsI8IrXPjgE2Bl5bQEBXvHaBycBQ/UfGZ4JsLMqtMUf5sOSulf9kO5XL3R0DGYlQMwn7PGAhpVVoQ3ok0/w1VWz3w9o0Oh4RKlQxrbB/n5EKdm63+/jeYEklAK36/W6umYz5QUBU+A4prLY4s9QR6iu3SHAlaBjfwhwBOjaHQJcCTr2hwBHgK7dIcCVoGN/CHAE6NodAlwJOvaHAEeArt0hwJWgY/8TPx8wGAymnjOq1WqTcx7z0s6Rs7E7ZoARTZgEBIThbKwCAUY0YRIQEIazsQoEGNGESUBAGM7GKhBgRBMmAQFhOBurQIARTZgEBIThbKwCAUY0TImsWyeYdmXuymaxxQxg1gwBEMBMgLk8ZgAEMBNgLo8ZAAHMBJjLZ14TXlySF5n3a07LH6V+LhyCUkjCBiAgLO9UNQhIIQkbgICwvFPVICCFJGwAAsLyTlWDgBSSsIHM/wPy7MKdG68m35Nsavvizc1LlONqZ9qvWYtjBjAbgQAIYCbAXB4zAAKYCTCXxwyAAGYCzOUxAyCAmQBzecwACGAmwFw+9f1ldP/i+rOrk/M4zPs2d+U37h8dJ78zDocgZs0QAAHMBJjLYwZAADOBWSuf9RTHrO3j/7o/WWxxCGK2CQEQwEyAuTxmALOAzNtSsn5ZMO/n3Jb/Bd7pDF8dPZZKAAAAAElFTkSuQmCC',
   },
   {
     meta: {
@@ -9435,9 +8623,10 @@ export default [
       title: '多项选择器',
       desc: '支持多项选择',
       props: {
-        data: { type: "[{valueField: '', displayField: ''}]", desc: '生成选择项的数据' },
+        data: { type: 'Object[]', desc: '生成选择项的数据' },
         mutliple: { type: 'boolean', desc: '是否多选', defaultValue: true },
         canSearch: { type: 'boolean', desc: '是否支持查询', defaultValue: false },
+        createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', defaultValue: true },
         throttle: { type: 'number', desc: '查询的延迟时间，单位为毫秒', defaultValue: 100 },
         canInput: {
           type: 'boolean',
@@ -9514,6 +8703,7 @@ export default [
       category: ['数据录入'],
       theme: {
         InputTag: {
+          name: '数据展示框',
           theme: {
             InputTagWrap: {
               name: 'Inputtag的外盒',
@@ -9589,6 +8779,7 @@ export default [
               disabled: [],
             },
             Menu: {
+              name: '隐藏更多选中项的菜单',
               theme: {
                 MenuWrap: {
                   name: '菜单外盒',
@@ -9609,6 +8800,7 @@ export default [
                   disabled: [],
                 },
                 MenuItem: {
+                  name: '菜单项配置',
                   theme: {
                     MenuItemWrap: {
                       name: '项的外盒',
@@ -9646,6 +8838,7 @@ export default [
           },
         },
         Menu: {
+          name: '弹开菜单',
           theme: {
             MenuWrap: {
               name: '菜单外盒',
@@ -9666,6 +8859,7 @@ export default [
               disabled: [],
             },
             MenuItem: {
+              name: '菜单项配置',
               theme: {
                 MenuItemWrap: {
                   name: '项的外盒',
@@ -9744,7 +8938,7 @@ export default [
     },
     target: Select,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABkCAYAAAB5CTUuAAAAAXNSR0IArs4c6QAABU5JREFUeAHtXb9rHEcYnT1O0R2GRLYaH0YuZFUJwc0Ft+6D3ASnMlJh0Fmu3IS0akMaVYlPkEIhqLBJY/0Dag2XIgSnkl1YmHNhWXKIOSkSt5nvkgnK7Oz8kOfHrfUOjt359pvvvX3vZndvblfKGH+tr69fOjw8/DbP8+u82aIYXsEU6GdZtjU5OfnV4uLii4zEPzg46PHgKjfgx06n0w8GjcKs2+22uNYLXOt7jUajna2trW1wXX5dWlr6BvrEU4Dr/jVHu1qjww598uNBA4kUIM1JexoSOSRJowBpX0sDDVShAAwQSiRawoBEwgvYulhxWa6s5LUnb9jU0TE7Pzxm59iQfTDMmBczazmvVmN/1ers7USd7X3yEdtfWcmGLvxEbhV4Oot283Z+oddnnw4GbO74iE0Pc9bwJT4JR7WoJtUmDMIiTCGq7bIqPK0N4JdM2fxSfnkwweZYxiZthXjnPI5FmIRNHEz1qsJT7Ie1ATc6bIZfM10UHWMvCZs4mHCrwlPsh9U5gIbzQBJ/83v2WBRRLeeX2TWK2+apasgxMoFz+fPhD9lreRu1q8LzJHfjCKAT2aBu/uSdLBpynbgQJxmjKjxl3oUdkRPoaifqMV8mILf5OWHESYpXhadE23zpSJeacqfUbRUnVWwcecqcjCNgdJ0v9wrYnp3+6e6Hzd9b9KZ1FZSKkyqm6usrdlqeMr75JMy/ZPFDULTXzv4X3ZnzD+4R4M7el6tKYOIkv6rCU+JtHAFSPpqeFTAbwKcFPGNqy81M/dx59fazDXrTujJZxUkVU3b2Ezw1TwneeAiiOZnhEWtI/YI1n+3e+k4U/2Pw8X/rIkZL4nSyLWJV4FngLQfkNk2IybHUbRUnVWwcecqcjIcgmo1kOTuUOyZrcy4jThKBqvCUaJu/B9BUcPOY7cgdU7WJi2p6uio8Zd0y+l2S34pivNAczUZK80FysdBt/qvAy8217LkOpyo8aR+cfhN+1GU7JIBu50NuI2ziYMKoCk+xH8ZzgEjkNxPl9OlrHrHtqOcEfswnTMImDoJP2bIqPAV/awNEB5oKbrfYb80m265PsN1axg5GPyOKhHdcUi2qSbUJg7DKpp91UFXhifuCdC4G3uZ0DgjM5cyWdz4EnVmlAu04DAgkrG1ZMqDPj0V4JsBWMU95/2rer/HLti3+XvBUF2UsFSDNR9rjAQ1LxTyl0SefxOf3L/3zgAbVxSNKntS1K/P/R5TkPr1ez/htU+6Dtr0C7XZbP+8GA+zFdM1UaYvLUFcVPefDAM+CupaDAa6Kec6HAZ4FdS0HA1wV85wPAzwL6loOBrgq5jkfBngW1LUcDHBVzHM+DPAsqGs5472hZQXn7+TaOaPN+9lozmPc88r2L1YcIyCW0iU4MKBEmFhhGBBL6RIcGFAiTKwwDIildAkODCgRJlYYBsRSugQHBpQIEysMA2IpXYIDA0qEiRWGAbGUtsVR3Tph2xd5egVU2mIE6DULvhUGBJdYDwAD9PoE3woDgkusB4ABen2Cb4UBwSXWA8AAvT7Btyp/E/58OZ8NjnwmAX4p7DVGQEGSuAEYEFfvAhoMKEgSNwAD4updQIMBBUniBmBAXL0LaDCgIEncgPJ7gA0F/oeVnury+L8iuULbU+XpuI3TNoyAxG7AABiQWIHE8BgBMCCxAonhMQJgQGIFEsNjBMCAxAokhscIgAGJFUgMf+q5IDHXY+KfKs/Ea1y24xCU2AkYAAMSK5AYHiMABiRWYNzgVU9xjBvHqvJRaYtDUGI3YQAMSKxAYniMgMQGKKciVCeLxDzfW/i/AbYIHc/YldztAAAAAElFTkSuQmCC',
   },
   {
     meta: {
@@ -9753,25 +8947,14 @@ export default [
       desc: '在等待加载内容时，提供一个占位的图形组合',
       props: {
         title: { type: 'boolean', desc: '是否展示标题占位符', defaultValue: true },
-        titleWidth: {
-          type: 'number | string',
-          desc: '标题占位符的宽度, 只有在titile为true时生效',
-          defaultValue: 176,
-        },
         avatar: { type: 'boolean', desc: '是否展示头像占位符', defaultValue: true },
         paragraph: {
           type: '{ rows: number }',
           desc: '段落占位符的数目',
           defaultValue: { rows: 3 },
         },
-        paragraphWidth: {
-          type: 'number | string | string[] | number[]',
-          desc: '设置段落占位图的宽度，若为数组时则为对应的每行宽度，反之则是最后一行的宽度',
-        },
         loading: { type: 'boolean', desc: '是否展示占位符组合', defaultValue: true },
         picture: { type: 'boolean', desc: '是否展示图片占位符', defaultValue: false },
-        pictureWidth: { type: 'number | string', desc: '图片占位符的宽度' },
-        pictureHeight: { type: 'number | string', desc: '图片占位符的高度' },
         animation: { type: 'boolean', desc: '是否展示动画效果', defaultValue: false },
       },
       category: ['反馈'],
@@ -9869,7 +9052,7 @@ export default [
     },
     target: Skeleton,
     screenshot:
-      'data:image/png;base64,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gAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIFBToraevubm50VOnTu2fmZnZs55+7EuAAAECBDazwMjIyPEdO3Yc6fV6L12qw0UF+vT09HWzs7O3xWC3xuP6CPRdlzqw/QgQIECAAIGlAhHo/4k1T8fj0X6/f3BsbOyZpVus/tWaAn1qauqWCO/74nHD6l1pIUCAAAECBEoKRMA/GY97xsfHH8v1e8FAjyC/Ia7IvxmdvD3XkXYCBAgQIEBgwwT+FFfsn49gf3K1EVYN9MnJyQ/EFfmDsePoajtbT4AAAQIECFQTSL9f/9i+fft+sdKI/ZVWHj169P4I859FmzBfCcg6AgQIECBQXyBl8s9TRq809LJAjyvzr8SGd620sXUECBAgQIDAZRe463xWLylkyS332OA90fqbuDpfsn7JHr4gQIAAAQIELqtAvFBuLgp478TExO8GhSwEd4T5tRHkT0XDVYNGSwIECBAgQKCzAi9EsL8+Qv0fqcKFW+4R5vfF18K8s/OmMAIECBAgsETgqvPZPb9y/go9PjDmxnh72mG32pdA+YIAAQIECHRaIN16j7ez3RQfQPPE/BV6hPm9wrzTc6Y4AgQIECCwTCBld8rw1NCPL9Il+83LtrKCAAECBAgQ6LxAyvCU5f34NLgU5t5v3vkpUyABAgQIEFhRYDRlebpCv2XFZisJECBAgACBJgRSlqffoV/bRLWKJECAAAECBFYTuLYfr5A7sFqr9QQIECBAgED3BVKWpyt0gd79uVIhAQIECBC4kMCB9Dv0V15oC20ECBAgQIBAtwVSls+/D73bZaqOAAECBAgQyAkI9JyQdgIECBAg0ICAQG9gkpRIgAABAgRyAgI9J6SdAAECBAg0ICDQG5gkJRIgQIAAgZyAQM8JaSdAgAABAg0ICPQGJkmJBAgQIEAgJyDQc0LaCRAgQIBAAwICvYFJUiIBAgQIEMgJCPSckHYC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',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAAA+CAYAAADUHB6/AAAAAXNSR0IArs4c6QAAAXtJREFUeAHt2sFNw0AQhWGvi7AvUBCNUBSNpCC42E0YT6SR5uBr8luaHyns4gMv+z18wJmx7/vXcRw/5+tjavA1xvg7X9/LsjzucNyxbdtvF/wEjxLWdf3Mn8l17oYf2Hc680y2b/Y0WQD8V2ABFgALwPHeARYAC8Dx3gEWAAvA8d4BdAHxbzn8Ht4ef6czz/Fg6k5v6NVtxFnjzK/O8fcroIACCiiggAIKKKCAAgoooMCVwOg2F3SFQFzLRyIt54II8KvMKKHlXNAVBnEt5pP8PICQL5kWUDCIrQUQ6iXTAgoGsbUAQr1kWkDBILYWQKiXTAsoGMTWAgj1khljKe3mgsr50e3zUcT5rdVcECpewgM/7MsltwoooIACCiiggAIKKKCAAgo0EHAuCCo5H0U4FwQVELFRgnNBYAHOBYH4Ge0HMikBrRYAwWesBaQEtFoABJ+xFpAS0GoBEHzGWkBKQKsFQPAZ61xQSgDr81FEzKbEBshvHRnmYf8PX7pZeVbwHVQAAAAASUVORK5CYII=',
   },
   {
     meta: {
@@ -9909,84 +9092,11 @@ export default [
       type: { ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' } },
       category: ['数据录入'],
       designInfo: {
-        SingleHorizontalSlider: {
-          sequence: 1,
-          title: '单个滑块的样式',
-          desc: '单个滑块的样式配置',
-          props: { defaultValue: 2, value: 2 },
-          theme: {
-            SliderContainer: {
-              name: '滑块组件外盒',
-              desc: '为滑块组件外盒配置样式',
-              normal: [['border'], ['background'], ['margin'], ['padding'], ['opacity']],
-              hover: [],
-              active: [],
-              disabled: [['border'], ['background'], ['opacity']],
-            },
-            SliderTrack: {
-              name: '滑块轨道样式',
-              desc: '为滑块轨道配置样式',
-              normal: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
-              hover: [['background']],
-              active: [['background']],
-              disabled: [['background']],
-            },
-            SliderPassedWay: {
-              name: '滑块滑过的区间轨道',
-              desc: '滑块滑过的区间轨道样式配置',
-              normal: [['background'], ['border'], ['height']],
-              hover: [['background'], ['border'], ['height']],
-              active: [['background'], ['border'], ['height']],
-              disabled: [['background'], ['border'], ['height']],
-            },
-            SliderButton: {
-              name: '滑块的样式',
-              desc: '滑块的样式配置',
-              normal: [['width'], ['height'], ['background'], ['border'], ['borderRadius']],
-              hover: [['width'], ['height'], ['background'], ['border'], ['borderRadius']],
-              active: [['width'], ['height'], ['background'], ['border'], ['borderRadius']],
-              disabled: [['width'], ['height'], ['background'], ['border'], ['borderRadius']],
-            },
-            SliderTips: {
-              name: '提示框',
-              desc: '提示框样式配置',
-              normal: [
-                ['width'],
-                ['height'],
-                ['border', 'top', 'color'],
-                ['border', 'top', 'style'],
-                ['border', 'right', 'style'],
-                ['border', 'right', 'color'],
-                ['border', 'bottom', 'color'],
-                ['border', 'bottom', 'style'],
-                ['border', 'left', 'style'],
-                ['border', 'left', 'color'],
-                ['borderRadius'],
-                ['background'],
-                ['boxShadow'],
-                ['color'],
-                ['font'],
-                ['fontSize'],
-              ],
-              hover: [],
-              active: [],
-              disabled: [
-                ['background'],
-                ['color'],
-                ['boxShadow'],
-                ['border', 'top', 'color'],
-                ['border', 'right', 'color'],
-                ['border', 'bottom', 'color'],
-                ['border', 'left', 'color'],
-              ],
-            },
-          },
-        },
         SingleVerticalSlider: {
           sequence: 2,
           title: '单个滑块的样式',
           desc: '单个滑块的样式配置',
-          props: { defaultValue: 2, value: 2, vertical: true },
+          props: { defaultValue: 2, vertical: true },
           theme: {
             SliderContainer: {
               name: '滑块组件外盒',
@@ -10059,7 +9169,7 @@ export default [
           sequence: 3,
           title: '双滑块的样式',
           desc: '双滑块的样式配置',
-          props: { defaultValue: [5, 15], value: [5, 15] },
+          props: { defaultValue: [5, 15] },
           theme: {
             SliderContainer: {
               name: '滑块组件外盒',
@@ -10132,7 +9242,7 @@ export default [
           sequence: 4,
           title: '离散值样式',
           desc: '带有离散值节点的样式配置',
-          props: { defaultValue: 10, value: 10, marks: { 5: '5℃', 10: '10℃', 15: '15℃' } },
+          props: { defaultValue: 10, marks: { 5: '5℃', 10: '10℃', 15: '15℃' } },
           theme: {
             SliderContainer: {
               name: '滑块组件外盒',
@@ -10287,119 +9397,6 @@ export default [
     },
     target: Slider,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
-  },
-  {
-    meta: {
-      widgetName: 'Slider',
-      title: '单个滑块的样式',
-      desc: '单个滑块的样式配置',
-      props: {
-        maxValue: { type: 'number', desc: '最大值限制', defaultValue: 999999999999 },
-        minValue: { type: 'number', desc: '最小值限制', defaultValue: -999999999999 },
-        defaultValue: {
-          type: 'number | Array<number>',
-          desc: '滑动输入条默认显示值，值为number时,为单滑块，值为Array时,为双滑块',
-          defaultValue: 2,
-        },
-        value: {
-          type: 'number | Array<number>',
-          desc: '滑动输入条显示值,值为number时,为单滑块，值为Array时,为双滑块',
-          defaultValue: 2,
-        },
-        disabled: { type: 'boolean', desc: '禁用状态,是否不可用', defaultValue: false },
-        tips: {
-          type: 'boolean | string | number',
-          desc: 'boolean 是否显示提示信息,number|string指定显示的文本内容,可自定义显示的文本格式',
-          defaultValue: false,
-        },
-        vertical: { type: 'boolean', desc: '是否垂直显示', defaultValue: false },
-        icons: { type: 'Array<Object>,', desc: '显示的图标资源' },
-        marks: {
-          type: '{ [key: number]: string | Object }',
-          desc: '刻度标记,key的类型必须为number且每个标签可以单独设置样式',
-        },
-      },
-      events: {
-        onChange: {
-          desc: '滑动输入条值改变时触发',
-          args: [{ name: 'event', desc: '滑动输入条值触发的事件', type: 'ChangeType' }],
-        },
-      },
-      type: { ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' } },
-      category: ['数据录入'],
-      theme: {
-        SliderContainer: {
-          name: '滑块组件外盒',
-          desc: '为滑块组件外盒配置样式',
-          normal: [['border'], ['background'], ['margin'], ['padding'], ['opacity']],
-          hover: [],
-          active: [],
-          disabled: [['border'], ['background'], ['opacity']],
-        },
-        SliderTrack: {
-          name: '滑块轨道样式',
-          desc: '为滑块轨道配置样式',
-          normal: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
-          hover: [['background']],
-          active: [['background']],
-          disabled: [['background']],
-        },
-        SliderPassedWay: {
-          name: '滑块滑过的区间轨道',
-          desc: '滑块滑过的区间轨道样式配置',
-          normal: [['background'], ['border'], ['height']],
-          hover: [['background'], ['border'], ['height']],
-          active: [['background'], ['border'], ['height']],
-          disabled: [['background'], ['border'], ['height']],
-        },
-        SliderButton: {
-          name: '滑块的样式',
-          desc: '滑块的样式配置',
-          normal: [['width'], ['height'], ['background'], ['border'], ['borderRadius']],
-          hover: [['width'], ['height'], ['background'], ['border'], ['borderRadius']],
-          active: [['width'], ['height'], ['background'], ['border'], ['borderRadius']],
-          disabled: [['width'], ['height'], ['background'], ['border'], ['borderRadius']],
-        },
-        SliderTips: {
-          name: '提示框',
-          desc: '提示框样式配置',
-          normal: [
-            ['width'],
-            ['height'],
-            ['border', 'top', 'color'],
-            ['border', 'top', 'style'],
-            ['border', 'right', 'style'],
-            ['border', 'right', 'color'],
-            ['border', 'bottom', 'color'],
-            ['border', 'bottom', 'style'],
-            ['border', 'left', 'style'],
-            ['border', 'left', 'color'],
-            ['borderRadius'],
-            ['background'],
-            ['boxShadow'],
-            ['color'],
-            ['font'],
-            ['fontSize'],
-          ],
-          hover: [],
-          active: [],
-          disabled: [
-            ['background'],
-            ['color'],
-            ['boxShadow'],
-            ['border', 'top', 'color'],
-            ['border', 'right', 'color'],
-            ['border', 'bottom', 'color'],
-            ['border', 'left', 'color'],
-          ],
-        },
-      },
-      childrenWidget: [],
-      aliasName: 'SingleHorizontalSlider',
-    },
-    target: Slider,
-    screenshot:
       'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAAAMCAYAAACURRhjAAAAAXNSR0IArs4c6QAAATVJREFUWAljZKAz+P//P6N/GkMKwz+GZAZGBm2w9f8ZrjIwMczdOIthDiMj4386O2lQWcdIT9cEpf2X/POPYcn//wxO2OxlZGTYx8LEELNuFuNzbPIjQYyJXp4E5Qx8kQFyByiiIGr+0zWh0CsMiLGHbhECKqZw5Qxkh4LUgIs0ZMERxGbsnPq+9tJt3rpPn5lZBou/5SS/M+TGPBoszqGLO4B15xOgRWlMgy0yQL5/+ZadLoEwmCwBFukyQPfMoluRNZg8P5jdwqSn+rmJj/fvn8HkSHHhn4PJOXRxC6zIoltrxi/1f+r/fwyziPEdIxND2qbZjLOJUTvc1NAtQsAdwlSGPYRaWqC+yMbZDC4jtYNItzoEFMCgTh8owHGlaljHcKRGBihc6JZDYJEwOnQCCwnsNACQY2aZbif/3QAAAABJRU5ErkJggg==',
   },
   {
@@ -10418,7 +9415,6 @@ export default [
         value: {
           type: 'number | Array<number>',
           desc: '滑动输入条显示值,值为number时,为单滑块，值为Array时,为双滑块',
-          defaultValue: 2,
         },
         disabled: { type: 'boolean', desc: '禁用状态,是否不可用', defaultValue: false },
         tips: {
@@ -10513,7 +9509,7 @@ export default [
     },
     target: Slider,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAABICAYAAADCvBSdAAAAAXNSR0IArs4c6QAAAUtJREFUSA3tVT1LxEAQfbMciLXFIXh9wH8hNjYq1naa/VE57azFq2zEfyGkV5ArrEWQjDt7zjFJduW4UvaamX0fk+TNkRAGv/OaTzpGI7Aj+Ic5PVrJxB6kFzEzDmKPaJxZjbMH6VU87FU3MiiRq8WQS8biJSWbRq4vKeWSsfi/SomZ6bTm2j6g9IIJp3hsLjzvf3e4Cy+xIyVsJcLzxOHyvqF3J+6/xGKUQSsNU7wN7lYvXzs11ZODd+hwlSKTWNA6EA6TZAoM2i02zXhJDUtiQevgcJskU2DQksR6VuMptwP1yS4Wcxw7ImJZigBKDqsuTrTrlccreVzPpp/N8mMneqZ7X3hd7vpFgxsRC7g26NS2bSOh56qqepotYtVRG9ZyhU2CKimVlDIJlL9GJpgeXFLqxZE5jFIKH4431dpesZEhEF6Ev2KvQq0/IHlmzosgeUAAAAAASUVORK5CYII=',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAABICAYAAADCvBSdAAAAAXNSR0IArs4c6QAAAUlJREFUSA3tlbFKBEEMhpNwINYWx4HWW/gWYmOhB9Z2585DjV5nLRwWNuJbWGztgVxhLYJsTNaNxB3GlStlFpZk/v2Svfkz3CIMrqZpTkSKvRyqqrr3CPlFn0dm3tdb1lb4jSUFPdgBPreKpMAe5GIpyDnj9eKSdyOXF5dyzni9uOTdyOXFpZwzXkdbyLcA5wEuD6ZvcfO608nTvXd43uyGVYRrRGQVu4LzwLOPFm6Y4cga+IgIjxOCi9uIL6Sdf4O1UBt9MYx4VnPNbfot82+wHAkCQQsLE0ajsCS7OBwFDRB2i7PE8GQNRqOwBATLUdAAYbEbWA0PuRkYq7NYXcEx6QR1KCrYw2G0wSmbHI3hTNT75Gj4jqcL+XHuultKf3dtYaur/kta3lBcyjhQjkbGmB/yv3RJ/oXWtkufm5ZsmhCCgnprbqDFT/1EZ6Gh7GFYAAAAAElFTkSuQmCC',
   },
   {
     meta: {
@@ -10531,7 +9527,6 @@ export default [
         value: {
           type: 'number | Array<number>',
           desc: '滑动输入条显示值,值为number时,为单滑块，值为Array时,为双滑块',
-          defaultValue: [5, 15],
         },
         disabled: { type: 'boolean', desc: '禁用状态,是否不可用', defaultValue: false },
         tips: {
@@ -10626,7 +9621,7 @@ export default [
     },
     target: Slider,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAAAMCAYAAACURRhjAAAAAXNSR0IArs4c6QAAAWpJREFUWAntWLFOwzAQfZciIeYOqBLqD/AXiKULlZi70Xjja9gc2DojtTPqXzBkrZAqBmZUiebIhUbq0AQ7NtgSeHFkn8/P753PdgieCjPTWGGKAjcgnFduGc9I8DDXuCci9jSVFzex4iUfq7tWPPgoMGPGxSF/RFgeJZg8alof6v/ttpjxJq5kSKS1iSH+RagvG/YSAC6YY8frLIikqaadsU+c2FQpbb8xwHfseCnP81HJiy4j56wLP3ezIVbrE6OhvV6B7dY5BozmajKywTAcvON2smpy5bW9PGNfSodK2OkshiB6fTuWyqiEFkNA2mCwWZsRAS1Guw2hw4ZrC8C/2iWCqN126cTBaX9jPE7SRehig8Fmba7rqlOW863nKuWUC2gTQJRALTLKTGx/yiZ2vM6CyDVynOLpu5uWvEXmGS5DPxBjx+t8hgjB8ugTwpuiun4YhhZD8MWO13mH1CJUkff/66Smo3P9CadOwUsbddD7AAAAAElFTkSuQmCC',
   },
   {
     meta: {
@@ -10644,7 +9639,6 @@ export default [
         value: {
           type: 'number | Array<number>',
           desc: '滑动输入条显示值,值为number时,为单滑块，值为Array时,为双滑块',
-          defaultValue: 10,
         },
         disabled: { type: 'boolean', desc: '禁用状态,是否不可用', defaultValue: false },
         tips: {
@@ -10754,7 +9748,7 @@ export default [
     },
     target: Slider,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAAAMCAYAAACURRhjAAAAAXNSR0IArs4c6QAAAVlJREFUWAljZBjh4P///4z+aQwpDP8YkhkYGbTBwfGf4SoDE8PcjbMY5jAyMv6nZxAx0tOywWZXUNp/yT//GJb8/8/ghM1tjIwM+1iYGGLWzWJ8jk2eFmJMtDB0KJgJyhn4IgPkB1BEQdT8p1vCHbERAiqmcOUM5AQFUgMu0pAFachm7Jz6vvbSbd66T5+ZWWhoD4bRRjoMDDlxEOEpixgYzl3BUDJoBOQkvzPkxjyiqXuAddUToAVpTAMRGSCfgSJDRAiCYRFDUx9TYPjLt+wU6CZOK7AIlQGqnDViiyzigon+qpj0VD838fH+/UNvq0HF1Jt3EAxiD2YgLvyT5s6DFVl0az3Q3EckWuCX+j/1/z+GWcRoY2RiSNs0m3E2MWopVTNiIwTcIUxl2EOopQXqi2yczeBCrw7iiK1DQAEM6vSBAhxXqoZ1DOkVGSB3jNgcAouEwTZ0AgBQEHKZgwK00AAAAABJRU5ErkJggg==',
   },
   {
     meta: {
@@ -10776,7 +9770,7 @@ export default [
           defaultValue: 'normal',
         },
         orientation: {
-          type: 'SizeType',
+          type: 'OrientationType',
           desc: '步骤条方向,可选择水平,垂直',
           defaultValue: 'horizontal',
         },
@@ -10796,21 +9790,8 @@ export default [
       childrenWidget: [],
       category: ['导航'],
       designInfo: {
-        HSteps: {
-          sequence: 1,
-          title: '水平步骤条',
-          desc: '水平步骤条配置',
-          props: { orientation: 'horizontal' },
-          theme: {
-            StepsOutContainer: {
-              name: '步骤条最外层容器',
-              desc: '步骤条最外层容器',
-              normal: [['width'], ['height'], ['margin'], ['padding'], ['background'], ['opacity']],
-            },
-          },
-        },
         VSteps: {
-          sequence: 2,
+          sequence: 1,
           title: '垂直步骤条',
           desc: '垂直步骤条配置',
           props: { orientation: 'vertical' },
@@ -10820,6 +9801,244 @@ export default [
               desc: '步骤条最外层容器',
               normal: [['width'], ['height'], ['margin'], ['padding'], ['background'], ['opacity']],
             },
+            Step: {
+              name: '单个步骤配置',
+              theme: {
+                StepOutContainer: {
+                  name: '单个步骤外部',
+                  desc: '单个步骤外部容器配置',
+                  normal: [['width'], ['height']],
+                },
+                StepLine: {
+                  name: '步骤间连接线',
+                  desc: '步骤间连接线的配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+                StepInnerContainer: {
+                  name: '单个步骤内部',
+                  desc: '单个步骤内部容器配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+                StepTitle: {
+                  name: '步骤标题',
+                  desc: '配置步骤标题',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                StepDescription: {
+                  name: '步骤条内容描述',
+                  desc: '配置步骤条内容描述',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                StepInnerIcon: {
+                  name: '步骤条内容图标',
+                  desc: '配置步骤条内容图标',
+                  normal: [['fontSize'], ['font'], ['color']],
+                },
+              },
+            },
+          },
+        },
+        FlatSteps: {
+          sequence: 2,
+          title: '半扁平步骤条',
+          desc: '半扁平步骤条配置',
+          props: { stepType: 'flat' },
+          theme: {
+            StepsOutContainer: {
+              name: '步骤条最外层容器',
+              desc: '步骤条最外层容器',
+              normal: [['width'], ['height'], ['margin'], ['padding'], ['background'], ['opacity']],
+            },
+            Step: {
+              name: '单个步骤配置',
+              theme: {
+                StepOutContainer: {
+                  name: '单个步骤外部',
+                  desc: '单个步骤外部容器配置',
+                  normal: [['width'], ['height']],
+                },
+                StepLine: {
+                  name: '步骤间连接线',
+                  desc: '步骤间连接线的配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+                StepInnerContainer: {
+                  name: '单个步骤内部',
+                  desc: '单个步骤内部容器配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+                StepTitle: {
+                  name: '步骤标题',
+                  desc: '配置步骤标题',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                StepDescription: {
+                  name: '步骤条内容描述',
+                  desc: '配置步骤条内容描述',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                StepInnerIcon: {
+                  name: '步骤条内容图标',
+                  desc: '配置步骤条内容图标',
+                  normal: [['fontSize'], ['font'], ['color']],
+                },
+              },
+            },
+          },
+        },
+        IconSteps: {
+          sequence: 3,
+          title: '图标步骤条',
+          desc: '图标步骤条步骤条配置',
+          props: { stepType: 'icon' },
+          theme: {
+            StepsOutContainer: {
+              name: '步骤条最外层容器',
+              desc: '步骤条最外层容器',
+              normal: [['width'], ['height'], ['margin'], ['padding'], ['background'], ['opacity']],
+            },
+            Step: {
+              name: '单个步骤配置',
+              theme: {
+                StepOutContainer: {
+                  name: '单个步骤外部',
+                  desc: '单个步骤外部容器配置',
+                  normal: [['width'], ['height']],
+                },
+                StepLine: {
+                  name: '步骤间连接线',
+                  desc: '步骤间连接线的配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+                StepInnerContainer: {
+                  name: '单个步骤内部',
+                  desc: '单个步骤内部容器配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+                StepTitle: {
+                  name: '步骤标题',
+                  desc: '配置步骤标题',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                StepDescription: {
+                  name: '步骤条内容描述',
+                  desc: '配置步骤条内容描述',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                StepIcon: {
+                  name: '步骤条图标',
+                  desc: '配置步骤条图标',
+                  normal: [['fontSize'], ['font'], ['color']],
+                },
+              },
+            },
+          },
+        },
+        DotSteps: {
+          sequence: 4,
+          title: '点状步骤条',
+          desc: '点状步骤条配置',
+          props: { stepType: 'dot' },
+          theme: {
+            StepsOutContainer: {
+              name: '步骤条最外层容器',
+              desc: '步骤条最外层容器',
+              normal: [['width'], ['height'], ['margin'], ['padding'], ['background'], ['opacity']],
+            },
+            Step: {
+              name: '单个步骤配置',
+              theme: {
+                StepOutContainer: {
+                  name: '单个步骤外部',
+                  desc: '单个步骤外部容器配置',
+                  normal: [['width'], ['height']],
+                },
+                StepLine: {
+                  name: '步骤间连接线',
+                  desc: '步骤间连接线的配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+                StepDot: {
+                  name: '点状步骤',
+                  desc: '点状步骤配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+                StepTitle: {
+                  name: '步骤标题',
+                  desc: '配置步骤标题',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                StepDescription: {
+                  name: '步骤条内容描述',
+                  desc: '配置步骤条内容描述',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+              },
+            },
           },
         },
       },
@@ -10829,59 +10048,58 @@ export default [
           desc: '步骤条最外层容器',
           normal: [['width'], ['height'], ['margin'], ['padding'], ['background'], ['opacity']],
         },
+        Step: {
+          name: '单个步骤配置',
+          theme: {
+            StepOutContainer: {
+              name: '单个步骤外部',
+              desc: '单个步骤外部容器配置',
+              normal: [['width'], ['height']],
+            },
+            StepLine: {
+              name: '步骤间连接线',
+              desc: '步骤间连接线的配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            StepInnerContainer: {
+              name: '单个步骤内部',
+              desc: '单个步骤内部容器配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            StepTitle: {
+              name: '步骤标题',
+              desc: '配置步骤标题',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            StepDescription: {
+              name: '步骤条内容描述',
+              desc: '配置步骤条内容描述',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            StepInnerIcon: {
+              name: '步骤条内容图标',
+              desc: '配置步骤条内容图标',
+              normal: [['fontSize'], ['font'], ['color']],
+            },
+          },
+        },
       },
-    },
-    target: Steps,
-    screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADYAAAAOCAYAAABkbO8dAAAAAXNSR0IArs4c6QAAAr9JREFUSA3VVj1ok0EYfu9LAlaCTc0kbgatopsNah0KokNBGhHEQIpL87eIOjk4qJsODuKQ5Eu+QUgwZhBaQRctVCgoKWaxiIWCm3SIGhLIkJ/P573m2ksswQ6p5ODj7t577+55vvfueU/QkJVMJnOw0WhMCSF8DN227XWXy7UUDod/6lSE6sBBBKIUpjbNkaCT0m7TKhlkzZuUwUK28v1ftWmawXa7/QxYi8DzlXGgfQJtv2EYN6PRaF5hk8SuRu1DzTZlbZsuqAG9FoIWnQbNvjLFD92+l+1kMpkHiesOh2McBNb0vUH4WKvVeguCxXg8HuQxgyO1E6mx0e2pTHjTx96K8Pbo4FscKeD0e73e/YpULpcbS6VS8jiyDWOnmDj7MiIxE7EjdptMBW9kH1HgEtFlxG72jrJu1sKg6EJapLutg+0xgWq1uoajdl6RAqEHiM4R7Mz36jDs1xgFRw5HddnpdI4b8k6xtVMmTxOVVonKv5VFq/n+7XGp1WpT2HJFkcpmswdAahL9G/huI0oblmWdY1jsg36RxcUphUKThffLfZArUenjMoAhH4hIoeC16/X6CKJ3V9vneLPZ/K76HV+foQy7rROJhPwdg6zV2jq2SCSyAWkvFQoFB47eIxApxWKxv0RNzMzZH4HwjD6Z20/vE9162G2FcnxasMTZbutge7hPV3C8YlC7abUTbKMg9BzfaxC1lJ1r/Iw3qNIG5yl9oG97N759F/r3QbfbvQTvCRYGbVYBsv+4lxT7gKyfE7bA3xCBCL3rzWG9EeNcNp+mi5io3UhtqwE2ATiIPPWC5b5SqRyF8i0Cx2dtyycej+dDuVz+AsL3ICJ5mZeGKEH7AXya1U8jJWUexL+B7EuVoCUxdpKRG5InFeCugMTWkwr9iR2fVExsWAon7E5uk68O4F7nexgKhX7pHP4AEktdGJxQMiEAAAAASUVORK5CYII=',
-  },
-  {
-    meta: {
-      widgetName: 'Steps',
-      title: '水平步骤条',
-      desc: '水平步骤条配置',
-      props: {
-        children: { type: 'React.Node', desc: '步骤条需要包含的子组件' },
-        data: { type: 'Array<Object>', desc: '步骤条填充的数据' },
-        defaultData: { type: 'Array<Object>', desc: '步骤条填充的默认显示数据' },
-        stepType: {
-          type: 'StepType',
-          desc: '步骤条风格 有 简洁,半扁平,图标,点状四种风格可供选择',
-          defaultValue: 'simple',
-        },
-        size: {
-          type: 'SizeType',
-          desc: '步骤条尺寸,有正常和迷你 两种尺寸可供选择',
-          defaultValue: 'normal',
-        },
-        orientation: {
-          type: 'SizeType',
-          desc: '步骤条方向,可选择水平,垂直',
-          defaultValue: 'horizontal',
-        },
-        desAlign: {
-          type: 'AlignType',
-          desc: '步骤条描述信息的对齐位置 ,可选择左对齐,居中对齐',
-          defaultValue: 'left',
-        },
-        currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', defaultValue: 0 },
-      },
-      type: {
-        StepType: ['simple', 'flat', 'icon', 'dot'],
-        SizeType: ['normal', 'mini'],
-        OrientationType: ['horizontal', 'vertical'],
-        AlignType: ['center', 'left'],
-      },
-      childrenWidget: [],
-      category: ['导航'],
-      theme: {
-        StepsOutContainer: {
-          name: '步骤条最外层容器',
-          desc: '步骤条最外层容器',
-          normal: [['width'], ['height'], ['margin'], ['padding'], ['background'], ['opacity']],
-        },
-      },
-      aliasName: 'HSteps',
     },
     target: Steps,
     screenshot:
@@ -10907,7 +10125,7 @@ export default [
           defaultValue: 'normal',
         },
         orientation: {
-          type: 'SizeType',
+          type: 'OrientationType',
           desc: '步骤条方向,可选择水平,垂直',
           defaultValue: 'vertical',
         },
@@ -10932,12 +10150,367 @@ export default [
           desc: '步骤条最外层容器',
           normal: [['width'], ['height'], ['margin'], ['padding'], ['background'], ['opacity']],
         },
+        Step: {
+          name: '单个步骤配置',
+          theme: {
+            StepOutContainer: {
+              name: '单个步骤外部',
+              desc: '单个步骤外部容器配置',
+              normal: [['width'], ['height']],
+            },
+            StepLine: {
+              name: '步骤间连接线',
+              desc: '步骤间连接线的配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            StepInnerContainer: {
+              name: '单个步骤内部',
+              desc: '单个步骤内部容器配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            StepTitle: {
+              name: '步骤标题',
+              desc: '配置步骤标题',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            StepDescription: {
+              name: '步骤条内容描述',
+              desc: '配置步骤条内容描述',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            StepInnerIcon: {
+              name: '步骤条内容图标',
+              desc: '配置步骤条内容图标',
+              normal: [['fontSize'], ['font'], ['color']],
+            },
+          },
+        },
       },
       aliasName: 'VSteps',
     },
     target: Steps,
     screenshot:
       'data:image/png;base64,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',
+  },
+  {
+    meta: {
+      widgetName: 'Steps',
+      title: '半扁平步骤条',
+      desc: '半扁平步骤条配置',
+      props: {
+        children: { type: 'React.Node', desc: '步骤条需要包含的子组件' },
+        data: { type: 'Array<Object>', desc: '步骤条填充的数据' },
+        defaultData: { type: 'Array<Object>', desc: '步骤条填充的默认显示数据' },
+        stepType: {
+          type: 'StepType',
+          desc: '步骤条风格 有 简洁,半扁平,图标,点状四种风格可供选择',
+          defaultValue: 'flat',
+        },
+        size: {
+          type: 'SizeType',
+          desc: '步骤条尺寸,有正常和迷你 两种尺寸可供选择',
+          defaultValue: 'normal',
+        },
+        orientation: {
+          type: 'OrientationType',
+          desc: '步骤条方向,可选择水平,垂直',
+          defaultValue: 'vertical',
+        },
+        desAlign: {
+          type: 'AlignType',
+          desc: '步骤条描述信息的对齐位置 ,可选择左对齐,居中对齐',
+          defaultValue: 'left',
+        },
+        currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', defaultValue: 0 },
+      },
+      type: {
+        StepType: ['simple', 'flat', 'icon', 'dot'],
+        SizeType: ['normal', 'mini'],
+        OrientationType: ['horizontal', 'vertical'],
+        AlignType: ['center', 'left'],
+      },
+      childrenWidget: [],
+      category: ['导航'],
+      theme: {
+        StepsOutContainer: {
+          name: '步骤条最外层容器',
+          desc: '步骤条最外层容器',
+          normal: [['width'], ['height'], ['margin'], ['padding'], ['background'], ['opacity']],
+        },
+        Step: {
+          name: '单个步骤配置',
+          theme: {
+            StepOutContainer: {
+              name: '单个步骤外部',
+              desc: '单个步骤外部容器配置',
+              normal: [['width'], ['height']],
+            },
+            StepLine: {
+              name: '步骤间连接线',
+              desc: '步骤间连接线的配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            StepInnerContainer: {
+              name: '单个步骤内部',
+              desc: '单个步骤内部容器配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            StepTitle: {
+              name: '步骤标题',
+              desc: '配置步骤标题',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            StepDescription: {
+              name: '步骤条内容描述',
+              desc: '配置步骤条内容描述',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            StepInnerIcon: {
+              name: '步骤条内容图标',
+              desc: '配置步骤条内容图标',
+              normal: [['fontSize'], ['font'], ['color']],
+            },
+          },
+        },
+      },
+      aliasName: 'FlatSteps',
+    },
+    target: Steps,
+    screenshot:
+      'data:image/png;base64,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',
+  },
+  {
+    meta: {
+      widgetName: 'Steps',
+      title: '图标步骤条',
+      desc: '图标步骤条步骤条配置',
+      props: {
+        children: { type: 'React.Node', desc: '步骤条需要包含的子组件' },
+        data: { type: 'Array<Object>', desc: '步骤条填充的数据' },
+        defaultData: { type: 'Array<Object>', desc: '步骤条填充的默认显示数据' },
+        stepType: {
+          type: 'StepType',
+          desc: '步骤条风格 有 简洁,半扁平,图标,点状四种风格可供选择',
+          defaultValue: 'icon',
+        },
+        size: {
+          type: 'SizeType',
+          desc: '步骤条尺寸,有正常和迷你 两种尺寸可供选择',
+          defaultValue: 'normal',
+        },
+        orientation: {
+          type: 'OrientationType',
+          desc: '步骤条方向,可选择水平,垂直',
+          defaultValue: 'vertical',
+        },
+        desAlign: {
+          type: 'AlignType',
+          desc: '步骤条描述信息的对齐位置 ,可选择左对齐,居中对齐',
+          defaultValue: 'left',
+        },
+        currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', defaultValue: 0 },
+      },
+      type: {
+        StepType: ['simple', 'flat', 'icon', 'dot'],
+        SizeType: ['normal', 'mini'],
+        OrientationType: ['horizontal', 'vertical'],
+        AlignType: ['center', 'left'],
+      },
+      childrenWidget: [],
+      category: ['导航'],
+      theme: {
+        StepsOutContainer: {
+          name: '步骤条最外层容器',
+          desc: '步骤条最外层容器',
+          normal: [['width'], ['height'], ['margin'], ['padding'], ['background'], ['opacity']],
+        },
+        Step: {
+          name: '单个步骤配置',
+          theme: {
+            StepOutContainer: {
+              name: '单个步骤外部',
+              desc: '单个步骤外部容器配置',
+              normal: [['width'], ['height']],
+            },
+            StepLine: {
+              name: '步骤间连接线',
+              desc: '步骤间连接线的配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            StepInnerContainer: {
+              name: '单个步骤内部',
+              desc: '单个步骤内部容器配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            StepTitle: {
+              name: '步骤标题',
+              desc: '配置步骤标题',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            StepDescription: {
+              name: '步骤条内容描述',
+              desc: '配置步骤条内容描述',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            StepIcon: {
+              name: '步骤条图标',
+              desc: '配置步骤条图标',
+              normal: [['fontSize'], ['font'], ['color']],
+            },
+          },
+        },
+      },
+      aliasName: 'IconSteps',
+    },
+    target: Steps,
+    screenshot:
+      'data:image/png;base64,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',
+  },
+  {
+    meta: {
+      widgetName: 'Steps',
+      title: '点状步骤条',
+      desc: '点状步骤条配置',
+      props: {
+        children: { type: 'React.Node', desc: '步骤条需要包含的子组件' },
+        data: { type: 'Array<Object>', desc: '步骤条填充的数据' },
+        defaultData: { type: 'Array<Object>', desc: '步骤条填充的默认显示数据' },
+        stepType: {
+          type: 'StepType',
+          desc: '步骤条风格 有 简洁,半扁平,图标,点状四种风格可供选择',
+          defaultValue: 'dot',
+        },
+        size: {
+          type: 'SizeType',
+          desc: '步骤条尺寸,有正常和迷你 两种尺寸可供选择',
+          defaultValue: 'normal',
+        },
+        orientation: {
+          type: 'OrientationType',
+          desc: '步骤条方向,可选择水平,垂直',
+          defaultValue: 'vertical',
+        },
+        desAlign: {
+          type: 'AlignType',
+          desc: '步骤条描述信息的对齐位置 ,可选择左对齐,居中对齐',
+          defaultValue: 'left',
+        },
+        currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', defaultValue: 0 },
+      },
+      type: {
+        StepType: ['simple', 'flat', 'icon', 'dot'],
+        SizeType: ['normal', 'mini'],
+        OrientationType: ['horizontal', 'vertical'],
+        AlignType: ['center', 'left'],
+      },
+      childrenWidget: [],
+      category: ['导航'],
+      theme: {
+        StepsOutContainer: {
+          name: '步骤条最外层容器',
+          desc: '步骤条最外层容器',
+          normal: [['width'], ['height'], ['margin'], ['padding'], ['background'], ['opacity']],
+        },
+        Step: {
+          name: '单个步骤配置',
+          theme: {
+            StepOutContainer: {
+              name: '单个步骤外部',
+              desc: '单个步骤外部容器配置',
+              normal: [['width'], ['height']],
+            },
+            StepLine: {
+              name: '步骤间连接线',
+              desc: '步骤间连接线的配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            StepDot: {
+              name: '点状步骤',
+              desc: '点状步骤配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            StepTitle: {
+              name: '步骤标题',
+              desc: '配置步骤标题',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            StepDescription: {
+              name: '步骤条内容描述',
+              desc: '配置步骤条内容描述',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+          },
+        },
+      },
+      aliasName: 'DotSteps',
+    },
+    target: Steps,
+    screenshot:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAAAOCAYAAADdeGlVAAAAAXNSR0IArs4c6QAAAh9JREFUWAntWLFOwzAQvTNjFX6hA6ytYC4sVVfSDYm1E+wVH4HYw9QViTGsFQt0btWuXfoLVIz0uHPrEkqSJm6pUwlLkR37zn6Xi8/3jBAprbea9wHvbSL0gehYDyGOESksweF956w3jYg7b/q35NEU2gjgM5g5XoAxAYTowX14h3uLl22al6tetT6bQYeIyqYvWiPiRCloPdaGL9F+V+2La6oDQgcIYvHy2ITHWs8PuJd4tWPEKZ8z6rIhS0fFfnAEOlDYcO0c7RSALmNMxwtsEUDDtXNs8KIOXzQdJe2UVQfJzimhV3EV1hbha5S4U34BhgmHtYqrsGaLV83PlPjwtWqjvIsDRSdubBd9cqZkdooGDGWtswtwMWvY4lVsZDNmvtQunRykSvzhoAVejneSHLgplngVERzlRmwythhFjqckjxna9N3MY2pEC7zfGZuZZlkHQUDymI5N3808prbFq8wE/3WxvgBevlb7fHCc5IKFOHg6H57m0tmSsH9Dfd6PufDyXzsIA9wrvErIY95vZqOTd40keY45ufHa6CStn7ffZm3RUcLoJQXOuqBOl1knq/y25YTRa/KYdWImmlonq/yW5WzxKuEjwujZWHbUmsIyIuuKwwg6zUeY0XNzPV6RYVlXHGYTvPrwFyYvjD5t58hYEVi/GLtg8o3UnSNXMgVg/bZ4f1xpmEtM/suayzR6Dy4xBW8kLS38JWYWvF8waEIl3I2eYgAAAABJRU5ErkJggg==',
   },
   {
     meta: {
@@ -11108,7 +10681,7 @@ export default [
     },
     target: Table,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADoAAAApCAYAAABk+TodAAAAAXNSR0IArs4c6QAAA6RJREFUaAXtmE1oE0EUx99sU0s1bbEpWmNLRWioNyu5SEELHoIoatGoRQ+eih69eRQ86s2Tn2AtWEOVlEpCBbEiqC1VxA8IUcFSLUpJaZoUTdNNnFmYMNPMwiQzh7XJQnhv38777XuZ2Z0/i6anp/NQAYeL9Ojz+bS0Ojc3B16vVwuLQHTx4vE4GNqqcjiIa3QptQzkR47MShbmE4vw528GEgtJK5bHi5zEVvA1mcNJPK7RxaU03LgXhiS24cgLmHr3GQA3NxiKQuzrDEy+/QSPn0yAYXBptj07iVczMDBw2ePxWMU2NbrBNHMQffYasqsmnDx6AOrqasG7tQVGoy9h5scvOHM8AO5N9cLmUqkUNDQ0FK45hZdIJIqf0V2dHdby7dzZBi5XjVW0t7XF8j2bm6AZ/0o5nMLj1uAqnsVHeGnu27sb3n/8ArM/f1s9jT9/A9txswgheDX1QbpPJ/Gs7YVW/nRiCi/LjdDbswfI7JGme3u6If5tFs6f67NeTLeHxqCjvRXavFtomq11Eg8RwVDdR23n6v+7YM2orrLdbjek02ldONDK06l1Y7GYVt2si0d65F5GD8Lj7c31sBAIBJYjkUhdMoO2ATJMmVh/38HvoqmUZdrls0wVFre9QDa7YyG5cp/Ak8vmdawauqVjbEWsL8tkc+x8BZb1jPr9fkTZw6GxSzkAv4Hys6eDRy6SuGyMLLWurq4Cq1QmHU+tiCdbC2UQS5YuP6M4aEDtCNYFh8FwPaSDZWN0/Fqrms/yymVxjZLn0kTZW/i53J8zzav4vFE2xhbD+qr5ulhco8m0eS2P0J3+E4cmDQRX8PlN2RhbEOur5mtjVcr2ws0o+++tN7+qjMqZUV1Kht5bF69IGdEbsFZFjRCOaj5bC/XLYXLPaDAY3EBhBaugRiyGan6hEMYpg8kpo2Onzl7II2N+dHhwhME6ShnRukpRSEJlhHI5bpYJuFw1QotSzacc1pbK5JrKLCXuhkNDIRaoqmxU89laqF8Ok2s0Go1mKIxaVWWjmk/rYG1ZzEpRRlXBwC4VWV/XBk/vp4tXJBhkN2LR5xW7TyGyTLt82jSxKizuZST92US0YbMVsb5orCjG5tj5ojxRTJDPCQZyXXYjFo0jS636KUXi84xgIopCpQoFCuCWruxGLBpHgWutaKwotjZPdC7KE8VEuVyjshuxaJwITmKisaKYXT4bF+WJYmxOwa8UwcDNaKH7dehoVUZO/n/+Af4e9AJpIkjUAAAAAElFTkSuQmCC',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHQAAABWCAYAAAAe/rIaAAAAAXNSR0IArs4c6QAAA3lJREFUeAHtnU+KE0EUxqsyEwcccOXGnCA7LyDElQwoQpAowclcwyt4hawzGkRBUBcybszaC+QEwV1cKILJdE868mUxM92vKjTx1fPL5qW7Xld97/ulupv+Q/xwOMxdAp9Op+Mmk4kapdr0wBhfAO33+1hWG2ezmWu1Wmr0adNTGDMej11DjUMUUosDBFqLjXo6IVA9LGpRQqC12Kink31JyqfPXytTHh3dX7fXnVc5aEWjFh2QuGs9nKFw3kgkUCMgUQaBwgkjkUCNgEQZBAonjEQCNQISZRAonDASCdQISJRBoHDCSCRQIyBRBoHCCSORQI2ARBkECieMRAI1AhJlECicMBL5kNiWIPmQ2JbGcbM4B7jLjfNLfTaBqkcUJ5BA4/xSn02g6hHFCVw/9VecsaXw0aZTm541w1ReVppOp6peqtKmp4BZsOQuN4VdU4RGAo0wK4VUAk2BUoRGAo0wK4VUAk2BUoRGAo0wK4VU8e2z0CKk0/h2u+2LvkLzQse9nBfaf2je5f5jl0PHCc2TxucMlRxKrJ1AEwMmyRWBPhgMDqVO2K7HARHozT/+5ePe8UM9kqmkygERqHP5nWZz/3W3N+hUdcQ2HQ6IQFdXxBeNRuOW2/Pvur2TezpkU0WZAyLQYsMsy5z3/rbbc++7z47vlnXG9f/egSCgG5neHSxdfmOzzC/qHAgCutrlutWu94dbZk8+vnn1TV0VFLRxQLxStLq808yy/Of58vzph7enXzZb8otKB8QZmufu+2KxeE6YKvldESXO0N8H7sXZ6PTXlS25QqUD4gw9G40IUyW660WJQK/fjGu1OkCgWslsqUs8hob2i/udUn5ontRPWXto/6F5ZeOErg8dJzRPGpczVHIosXYCTQyYJJdAJYcSa/fSsyyJ1fNfy53P53/fh0jBBW0/PG16CoZ8tyWFX3KkRh5DIw3Tnk6g2glF6iPQSMO0pxOodkKR+gg00jDt6eK1XOn0HNcg687b1jgtOqB/13o4Q+G8kUigRkCiDAKFE0YigRoBiTIIFE4YiQRqBCTKIFA4YSQSqBGQKINA4YSRSKBGQKIMAoUTRiKBGgGJMggUThiJBGoEJMogUDhhJIr3Q3G/U6q37jxpvLJ2LTqgb9d6OEPhvJFIoEZAogwChRNGIoEaAYky1idFqfx3izad2vQUUC8AS7fTjJ7GXgUAAAAASUVORK5CYII=',
   },
   {
     meta: {
@@ -11194,7 +10767,7 @@ export default [
       designInfo: {
         CardTabs: {
           sequence: 1,
-          title: '卡片风格',
+          title: '卡片风格标签页',
           desc: '卡片风格标签页',
           props: { tabType: 'card' },
           theme: {
@@ -11223,17 +10796,18 @@ export default [
               ],
             },
             ContentBlock: {
-              name: 'content内容区',
-              desc: 'content内容区的样式配置',
+              name: '内容区域',
+              desc: '内容区域的样式配置',
               normal: [['background'], ['padding'], ['width'], ['height']],
             },
             TitleContainer: {
-              name: '头部标签区域',
-              desc: '头部标签区域宽度配置',
+              name: '顶部容器区域',
+              desc: '顶部容器区域宽度配置',
               normal: [['width']],
             },
             BorderStyle: { name: '默认线', desc: '默认线样式配置', normal: [['border']] },
             TabHeader: {
+              name: '标签配置',
               theme: {
                 DefaultTabPan: {
                   name: '默认标签',
@@ -11271,7 +10845,7 @@ export default [
         },
         WindowTabs: {
           sequence: 1,
-          title: '窗口风格',
+          title: '窗口风格标签页',
           desc: '窗口风格标签页',
           props: { tabType: 'window' },
           theme: {
@@ -11305,16 +10879,17 @@ export default [
               ],
             },
             ContentBlock: {
-              name: 'content内容区',
-              desc: 'content内容区的样式配置',
+              name: '内容区域',
+              desc: '内容区域的样式配置',
               normal: [['background'], ['padding'], ['width'], ['height']],
             },
             TitleContainer: {
-              name: '头部标签区域',
-              desc: '头部标签区域宽度配置',
+              name: '顶部容器区域',
+              desc: '顶部容器区域宽度配置',
               normal: [['width']],
             },
             TabHeader: {
+              name: '标签配置',
               theme: {
                 DefaultTabPan: {
                   name: '默认标签',
@@ -11353,13 +10928,14 @@ export default [
       },
       theme: {
         ContentBlock: {
-          name: 'content内容区',
-          desc: 'content内容区的样式配置',
+          name: '内容区域',
+          desc: '内容区域的样式配置',
           normal: [['background'], ['padding'], ['width'], ['height']],
         },
-        TitleContainer: { name: '头部标签区域', desc: '头部标签区域宽度配置', normal: [['width']] },
+        TitleContainer: { name: '顶部容器区域', desc: '顶部容器区域宽度配置', normal: [['width']] },
         BorderStyle: { name: '默认线', desc: '默认线样式配置', normal: [['border']] },
         TabHeader: {
+          name: '标签配置',
           theme: {
             DefaultTabPan: {
               name: '默认标签',
@@ -11397,12 +10973,12 @@ export default [
     },
     target: Tabs,
     screenshot:
-      'data:image/png;base64,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',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAAAaCAYAAABFPynYAAAAAXNSR0IArs4c6QAAALxJREFUaAXtmsEJhDAABI3VpBmr8GMj9nBgGTaTFqxC0QrmDm5RHN8Dm8y8ApYOfsO07wRdP6Wc3L95cpZfmNYaumet9brntzw9U09BuawBw2R94zXDYFVZ0DBZ33jNMFhVFjRM1jdeMwxWlQUNk/WN1wyDVWVBw2R94zXDYFVZ0DBZ33jNMFhVFjRM1jdeMwxWlQUNk/WN1wyDVQlqQAMa0IAGNKABDbzPQBlG9r/YU9Us8/bIo/uOuWm2A9ZDGN6y2llBAAAAAElFTkSuQmCC',
   },
   {
     meta: {
       widgetName: 'Tabs',
-      title: '卡片风格',
+      title: '卡片风格标签页',
       desc: '卡片风格标签页',
       props: {
         activityValue: { type: 'string', desc: '当前激活 tab 面板的 key' },
@@ -11506,13 +11082,14 @@ export default [
           ],
         },
         ContentBlock: {
-          name: 'content内容区',
-          desc: 'content内容区的样式配置',
+          name: '内容区域',
+          desc: '内容区域的样式配置',
           normal: [['background'], ['padding'], ['width'], ['height']],
         },
-        TitleContainer: { name: '头部标签区域', desc: '头部标签区域宽度配置', normal: [['width']] },
+        TitleContainer: { name: '顶部容器区域', desc: '顶部容器区域宽度配置', normal: [['width']] },
         BorderStyle: { name: '默认线', desc: '默认线样式配置', normal: [['border']] },
         TabHeader: {
+          name: '标签配置',
           theme: {
             DefaultTabPan: {
               name: '默认标签',
@@ -11551,12 +11128,12 @@ export default [
     },
     target: Tabs,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAAAkCAYAAAB7T08FAAAAAXNSR0IArs4c6QAAAiBJREFUaAXtmrFSwkAQhkkGBigoLIGKloHOB7CgtbWwkA4stfAhGAoshQ5fwdbCB7CDnkqgs7AABod4y2SZcyfMXAriZvxtLnu3kv//v1yiRi9jfY3H4+pms+kHQXBhpsvWUpoOF57nveXz+Yd2u/1hCyd/2+12YPy1drvdmb32V8e+738ava+5XO7e1uuxIBK9Xq/fTdOjEf7c7XYXvJamcTgclo2HG+PhrlAonLPZEMqk0WiWarVatlgsqrC1Wq0ys9nsezqdfBk4TdabZXW0UwhKp9Pp8Vwax/CC6o1Gowx5Mh6uyQftFIJSr9cPnjX4owsk1FQycAZG0xXp8lkc3b5op3Cd9pG8kCf2YY5btFO41jaSNtLIug5gzEQ5rbcvNmOPoZfDc5KeKVpuX7ZOPiZt9nPPBsM9GBUkADAKIERJAJioVBTMAYwCCFESACYqFQVzsX98vLwNAhfdL0/e/pfXU/e7aInTM5//+mPB0W+tVKr7tbj9Rz9QLGDHiEC0lACjhYTQATAiEC0lwGghIXQAjAhESwkwWkgIHQAjAtFSAowWEkIHwIhAtJQAo4WE0AEwIhAtJcBoISF0AIwIREsJMFpICB0AIwLRUgKMFhJCB8CIQLSUsd9g8ptJVwOn7nfV4drHbyZP1e/6udgxrkkl3AcwCQfuejqAcU0q4T6ASThw19MBjGtSCfd5y+XS6f/EEtb170+HHaP0EvgBC0CU69uckSwAAAAASUVORK5CYII=',
   },
   {
     meta: {
       widgetName: 'Tabs',
-      title: '窗口风格',
+      title: '窗口风格标签页',
       desc: '窗口风格标签页',
       props: {
         activityValue: { type: 'string', desc: '当前激活 tab 面板的 key' },
@@ -11665,12 +11242,13 @@ export default [
           ],
         },
         ContentBlock: {
-          name: 'content内容区',
-          desc: 'content内容区的样式配置',
+          name: '内容区域',
+          desc: '内容区域的样式配置',
           normal: [['background'], ['padding'], ['width'], ['height']],
         },
-        TitleContainer: { name: '头部标签区域', desc: '头部标签区域宽度配置', normal: [['width']] },
+        TitleContainer: { name: '顶部容器区域', desc: '顶部容器区域宽度配置', normal: [['width']] },
         TabHeader: {
+          name: '标签配置',
           theme: {
             DefaultTabPan: {
               name: '默认标签',
@@ -11709,7 +11287,7 @@ export default [
     },
     target: Tabs,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGoAAAAsCAYAAACNIC3mAAAAAXNSR0IArs4c6QAAAwRJREFUeAHtm8Fu2kAQhteAMKI4alR8aE7ceJu+R5+o79G34ZpK6SFUqQI5gALU/5Cfjq0e7G3AYzQrbXYx6/X/z7ezShRvEt7K8/PqUBR+9NZABJIkCTc3WQIpA+rRkNhnyzFda2EUBS296D6vWfGl9UKT1kdQ4ghf/KtaMdJEB0yz4j4GYb/fyzTaZ5N5zzWWWqstpBf1AFAlSDCiKw2dS+A55qXZXq8ngNjiWfADf7pFv82i9UIrq9KUMKPkGgzsdjsxMZl8CGmahn6/r8Z3pwsfm80mrFZr8QPzKISUZRNT/qh3vX4RvdCqY09QCbMIq2s6/SRUMbirBSbH47HAeHxcCiB6yfO8CMIRHK+13VLvaDQKy+Uv0YtMK4psfSe13AqQSVx9bYt/j+fDCzxhxaJmWWYOkvZJvcx8fkdQCUFhu7u2MhwOT6DSdGjeHhgoUJJW3PpkXwQsvS+ad1RTIDzBOMpgcLJc8+7LD4NesEBlYUbxs7dGI1ACpQka1Rst6+jt7wqNnuhCN1ZZlEBdSIM/JiICDioiaG3c4qDaiHrEM6N/Bfrytd7Tvn87jjv3+Hpq6o9aLBa1Bs/ncxnXdHytydUgzygVDMtdB2WZjtLmoFQwLHcdlGU6SpuDUsGw3HVQlukobQ5KBcNy10FZpqO0OSgVDMtdB2WZjtLmoFQwLHcdlGU6SpuDUsGw3HVQlukobQ5KBcNy10FZpqO0OSgVDMtdvNyH2ite+33dbrfh7u6zZb2NteFtHrzTd3//ozgwEMJsNms8Rxs3PDz8DHhxNM+n+C/83jOqDQoRz3RQEUFr4xYH1UbUI55Zegvp7ZhHxDT2b+mat6pezyj7a0wUnjIKBK/pXFQ1/l07pQIWOqsI6nDNoOCtw6DkZAP/jkqenn7v8PcGTuWhRa2eKKiuUuufAYiVuwV9wZs1f0wWaMXCQnt7+xGHqOVUPOJdyigMsGbifxYFYWEO696oFTrRL0opo3ABRb5RrVy8gh/Vg1H0adUa9bK9WjBWAcTqOvwBKxYu8iYMxIMAAAAASUVORK5CYII=',
   },
   {
     meta: {
@@ -11749,45 +11327,8 @@ export default [
       type: { shape: ['basic', 'round'], type: ['customs', 'primary', 'basic', 'presets'] },
       category: ['数据展示'],
       designInfo: {
-        BasicTag: {
-          sequence: 1,
-          title: '基本标签',
-          desc: '展示标签',
-          props: { closable: false },
-          theme: {
-            TagWrap: {
-              name: '标签区域',
-              desc: '标签内的样式配置',
-              normal: [
-                ['color'],
-                ['background'],
-                ['border'],
-                ['width'],
-                ['height'],
-                ['boxShadow'],
-                ['opacity'],
-                ['font'],
-                ['margin'],
-                ['padding'],
-                ['borderRadius'],
-              ],
-              hover: [
-                ['color'],
-                ['borderRadius'],
-                ['background'],
-                ['border'],
-                ['boxShadow'],
-                ['opacity'],
-                ['font'],
-              ],
-              active: [],
-              clicked: [],
-              disabled: [],
-            },
-          },
-        },
         ClosableTag: {
-          sequence: 2,
+          sequence: 1,
           title: '可关闭标签',
           desc: '点击关闭按钮可隐藏标签',
           props: { closable: true },
@@ -11833,7 +11374,7 @@ export default [
           },
         },
         ChooseTag: {
-          sequence: 3,
+          sequence: 2,
           title: '可选择标签',
           desc: '点击标签可配置选中样式',
           props: { type: 'optional' },
@@ -11934,126 +11475,6 @@ export default [
           ],
           hover: [
             ['color'],
-            ['background'],
-            ['border'],
-            ['boxShadow'],
-            ['opacity'],
-            ['font'],
-            ['borderRadius'],
-          ],
-          active: [],
-          clicked: [],
-          disabled: [],
-        },
-        CheckedTagWrap: {
-          name: '选中标签区域',
-          desc: '选中后的标签内的样式配置',
-          normal: [
-            ['color'],
-            ['background'],
-            ['border'],
-            ['width'],
-            ['height'],
-            ['boxShadow'],
-            ['opacity'],
-            ['font'],
-            ['margin'],
-            ['padding'],
-            ['borderRadius'],
-          ],
-          hover: [
-            ['color'],
-            ['background'],
-            ['border'],
-            ['boxShadow'],
-            ['opacity'],
-            ['font'],
-            ['borderRadius'],
-          ],
-          active: [
-            ['color'],
-            ['background'],
-            ['border'],
-            ['boxShadow'],
-            ['opacity'],
-            ['font'],
-            ['borderRadius'],
-          ],
-          clicked: [],
-          disabled: [],
-        },
-        CloseButton: {
-          name: '隐藏图标',
-          desc: '隐藏图标的样式配置',
-          normal: [['font'], ['color'], ['margin']],
-          hover: [['font'], ['color']],
-          active: [],
-          clicked: [],
-          disabled: [],
-        },
-      },
-      childrenWidget: [],
-    },
-    target: Tag,
-    screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAUCAYAAADLP76nAAAAAXNSR0IArs4c6QAAAxRJREFUSA3VV01LalEUXZaZWPRhWFSPEqkoMTCsSYOggsKoSTRvVP+oySNwUk4aNHAUVOCooJAIMgp1kAaVSBR9U/Tu2nB82VPrRDzywPXcvc/HXvvstffxmi4uLvyvr6+/jecXSqiZTKaU8cybzs/Pk6UGXp0znSgrVfB0gtjLlDel2n/ZgbW1NVxfX4vfT09PuL29zXnu7++zZ8LxYDDIE8vqXl5e/tFlBzVezBpzc6am02k8Pz+Lbnd3F8fHxznjNTU1mJ6eFt3W1hYSiQQWFxdh8BZWqxVutxvxeFx0nET92NgY2tracvb5SDCdnZ39PZaPZhvjNzc32NnZwf7+Pjo7O9Hd3Q2Xy1VwJSOzsLCAubk5WVNdXQ2fzyfAp6amJGqRSAQzMzMF9yg2oB2BiooKNDY24uHhAQ0NDaBslOK8NqqqqkCqTE5Oor6+XoCnUimsrKxIFBhBOn95eZl3/WeU2g5UVlaCwHiyZrMZlMPhsNi6urrC3d0dmpubRfZ4POjp6RG6UK+o5vf7hTKrq6uoq6vD8PDwZ7DmnaNNIe6yvLwM5gCNDw0NoampCY+PjzDuFJycnKC/v19OmI7ydDc3N2FQVfhN+pSXlwsYRod0ZH44HA5MTEzAbrfnBVpIqe0AgW9sbEgCj4yMYG9vT8DSMKNBB0gX0mNwcFByhhRjVNbX1/PiGB0dxenpqcxhjug07TIai8Xk1GmE1YR0ODg4EJoow11dXTg6OhKRgMjzaDSKgYEBMHEzmQzGx8flvb29XcZYEHTB04C2A6RAS0uLwirlkyAsFktWR2rxHmCiq8aobG9vi9ja2iollAJLbLEqptYX6rUdeAuUmx4eHqKvr0/2V/cChY6ODjBabLzAnE4namtr5d3r9Ur0kskkbDabUO7tJSeLPvmjnQNq36WlJUk6XlisRqFQSKLBy6i3t1eqFCnGRA0EAmpZ0X52dlYcKzrp3eCXHWB1IXhVUfh3ge19hN7Z+3ZR+x5QCMjpt+1/A1e2tXNALfwpfRk/Cn4KGF0c8kFj/MyXohPETOx/ANA9TtYdx1gqAAAAAElFTkSuQmCC',
-  },
-  {
-    meta: {
-      widgetName: 'Tag',
-      title: '基本标签',
-      desc: '展示标签',
-      props: {
-        closable: { type: 'boolean', desc: '标签是否可关闭', defaultValue: false },
-        shape: {
-          type: ' basic | round ',
-          desc: '标签的圆角, basic为4px圆角,round为圆角标签',
-          defaultValue: 'basic',
-        },
-        type: {
-          type: 'customs | primary | basic | presets | optional',
-          desc: '标签的主题样式',
-          defaultValue: 'customs',
-        },
-      },
-      events: {
-        onClick: {
-          desc: '点击按钮时触发',
-          args: [
-            { name: 'event', desc: '点击的DOM事件', type: 'Object' },
-            {
-              name: 'checked',
-              desc: '是否选中标签，只有在可选择标签( type: optional )生效',
-              type: 'boolean',
-            },
-          ],
-        },
-        onClose: {
-          desc: '关闭标签时触发',
-          args: [{ name: 'event', desc: '改变内容的DOM事件', type: 'Object' }],
-        },
-      },
-      type: { shape: ['basic', 'round'], type: ['customs', 'primary', 'basic', 'presets'] },
-      category: ['数据展示'],
-      theme: {
-        TagWrap: {
-          name: '标签区域',
-          desc: '标签内的样式配置',
-          normal: [
-            ['color'],
-            ['background'],
-            ['border'],
-            ['width'],
-            ['height'],
-            ['boxShadow'],
-            ['opacity'],
-            ['font'],
-            ['margin'],
-            ['padding'],
-            ['borderRadius'],
-          ],
-          hover: [
-            ['color'],
             ['borderRadius'],
             ['background'],
             ['border'],
@@ -12067,11 +11488,10 @@ export default [
         },
       },
       childrenWidget: [],
-      aliasName: 'BasicTag',
     },
     target: Tag,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFYAAAAkCAYAAAATvM09AAAAAXNSR0IArs4c6QAABE1JREFUaAXtmskvLF8Ux7/dZiJinoMQCSG/hRBWLEQsrEhEIiwsrazY+Ave0spfgCCxImKIMUIMIRJjEGIOj5hnr773pyrV0d7T/d6tX/28OkmnTp07dN9Pnzr33JOyQZHT09O4p6enb4pa8Pr6Gk2bJa4RsNlsB8qIYU9Pz/rQ0NBdG6E+Pj4uKMYQ16ayen9A4LuXl9c/9jdPtaB+QMkNcwiZ2pWBBW4Mtob8nECB3YqpPyfkTiuZ0mMtkUDAAisBKqe0wFpgJRGQNK2npHm1aQ8PD3F1daXd/0pJTk6Gkmz/qpvp26WDHRsbw+Li4qdBNDY2wtvb+9P9zdrRpnjUq8wfd319jfv7e4ev6Ovrw9LSEurq6hzsvAkJ+RpnFekeGxAQAH704uvrK26/CkT92lRdOlj1i9y50tu3t7exs7MjwkNkZCTS09OdxuDn52esrq5if38fSiEEiYmJSEhIwPHxsfikpaUJuzu/w50xpgSrnFzQ1dWF+fl5KAUNREVF4ejoCA8PD4iLi0NVVRX8/Py09V5cXKCtrQ27u7sICwuDv78/xsfHkZmZKZ6W0dFRNDQ0WGCnpqYE1Ly8PBQVFcHDwwNKYQOzs7Po7u7GyMgIiouLNbAdHR3CK6urq5GSkiLs/BM6OzuxsrKi9TNSMeUBgSBzc3M1qATCxzs7O1t44+bmpsZofX1dhIv8/HwNKhuZWZSWluLl5UXra6RiylBAgHq5ubkRmQUhRUdHiziqtvPxp2RkZKgm7cpNkh7sSrqnDf5NxZRguSamY5OTk9jb24NSiHdYpo+Pj3Z/fn4u9MDAQM2mV4KCgvS3hummBDsxMYHe3l7hhZWVlQgODga9z263i01tY2NDA6QCPTg4QHx8vGZXFWYW/4WYDiwzgqGhIfBoW15e/o7J2dmZg40pGGVtbe0dWKZg+njsMFDyjek2L9YVeFJzdnhYXl4GPVMvzGuZYjE1Ozk50Zr4B9Hrb29vNZuRiuk8lo824+LCwoLYeOi5fJzn5uZEusWkn4UdVZhBlJWVobW1Fc3NzcJrmccyNhN4Tk6OyGnV/kZdTQeWC6+oqMDg4CDa29vBx5mpE+NnTU0NpqenHcCyf2xsLGprazEzMyPaCJvpFzMFhhUKDxpGivQizO8s5u7uju88iJMXYTkTgr+8vBT5rbOqGA8PW1tbqK+vdzZcms10MVa/UmYC9MaPoLIvwTY1NaGlpUU/VOj8Y5hBxMTEvGuTbTBlKHBl0fTSrKws8Bjc09OD1NRUREREiI1sYGBAbF6FhYWuTPlH+po6FHx2hfTa/v5+EWNZI1AlPDwcJSUlSEpKUk2GXb8EWJUWCzWsdDEE8FChr4CpfYy6/u9DgR4UCzXO8l99H6N0U29eRkGQ8T0WWBlUlTntb+91Spr+75yWTOmxw3/n8qWueth68fjP8/33xWO+1s03kBX3bbXCgvuUyY4MyZJMfwDg9JE83I7P/AAAAABJRU5ErkJggg==',
   },
   {
     meta: {
@@ -12155,7 +11575,7 @@ export default [
     },
     target: Tag,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFYAAAAkCAYAAAATvM09AAAAAXNSR0IArs4c6QAABQNJREFUaAXtWusvJFkUP93eLWK19ysIMWHJTCKEmWzIrLUma7O7JFYifPDRJ5/44i+Yjz75C7DY2M2GMR7juUI8QuyiCZZ4h9HxaK/G1O+aqlSvNttV07XFTJ2kU6fOPfd03V+de+7v3pSOONnb24uwWq0vOTXr+vo6FDZNpCGg0+k2uR69rq6ulf7+/ms6gHpxcTHFGY3SQmnedyDw1s3N7bH+faZqoN6BkgyzEZjquY5ZMjprXT6MQJZeq6kfRkhOKzBFxmqiAAIasAqAipAasBqwCiGgUFhXZ8Xd2tqio6Mjh8PFxsYSR6od9n9ojk4DdmBggKanpx0ef3V1Nbm7uzvs/9AcdVymXTvjoY+Pj+ns7MwmVEdHB83MzFBFRYWNHTdG46e9J3Faxnp7exN+YvH09GS3nzqI4jHzutOA5QPKuSLbV1ZWaHV1lZWH4OBgSkxMtFuDLy8vyWQy0cbGBnEHHhQdHU1RUVG0s7PDfgkJCcwu5zmc2UdVYLkdCrW0tNDk5CRxBxcUEhJC29vbdH5+ThEREVRSUkJeXl7CeA8ODqihoYHW1tYoICCADAYDDQ4OUnJyMpst/f39VFVVJQvYP17/yfVzoRdfpwv/B+VV9zBZrZf0/bfPbOz/daMqsCMjIwzUjIwMysnJIRcXF24QVhofH6fW1lbq6+uj3NxcYQxNTU0sK0tLSykuLo7Z8RKam5tpbm5O8JOjANBffn9DQ6N/0dPUJBYC+lvzIf38w3PJIVXdIADI9PR0AVQ8PaZ3amoqy8alpSVhQAsLC6xcZGZmCqCiEcwiPz+frq6uBF85CrL1pxdf0d+mZZox/cN+0GFDm1RRNWMBoFgsFgtjFgApNDSU1VG+HdMfkpR0k028HVcskshgKXRP3J/XDQZPKvgukxp+e8NMRT8+517wzQLM+zh6VRVYPCTo2PDwMK2vrxN34G7z3B4eHsK92Wxmuo+Pj2ATK76+vuJb1XVVgR0aGqL29naWhcXFxeTn58eyT6/Xs0VtcXFRAIgHdHNzkyIjIwU7r4BZfKxYLKf0a2sfZT19wkJBL87/RlbWqgYsGEFPTw9ha1tYWHgLk/39fRsbKBhkfn7+FrCgYOJ6bNPRwRus/C2vBujLRzGU+Cia9TIfHDEbFi+pdVa1xQvnCtip2ds8zM7OEjJTLOC1oFigZru7u0ITXhCy/uTkRLDJUUCrjF/4CIwAMcAOYEObVFEtYzG1URenpqbYwoPMxXSemJhgdAukHwc7vIBBFBQUUH19PdXW1rKsBY9FbQbgaWlpjNPy/lKvd/HUf/NaR+OqBiwesKioiLq7u6mxsZEwnUGdUD/LyspodHTUBlj4h4eHU3l5OY2NjbE2gA36BaaAsgLBRuM+iNMOYT5mMKenp/i2ge28AJY9AfCHh4eM39o7FcPmYXl5mSorK+11/99tqtVY8UjBQ5GNd4EKXwBbU1NDdXV14q5Mx4sBgwgLC7vVppZB1VIgZdDI0pSUFMI2uK2tjeLj4ykoKIgtZF1dXWzxys7OlhJSUd97UQocHSGytrOzk9VYnBHwEhgYSHl5eRQTE8ObVL8+KGB5tHBQg5MulABsKsQnYLyP2tcHUwrEQOGgxh7/Ffuord+LxUttEJT4fw1YJVDlYurff9epUPjPMywwRcb2fp7DV3TUvdqHx87H9+bDY3zWjS+QufSt18qCfJSBHTAElsD0HWeM0rz8yDIwAAAAAElFTkSuQmCC',
   },
   {
     meta: {
@@ -12275,7 +11695,7 @@ export default [
     },
     target: Tag,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+      'data:image/png;base64,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',
   },
   {
     meta: {
@@ -12302,17 +11722,186 @@ export default [
       type: { TimeLineMode: ['right', 'alternate'] },
       childrenWidget: [],
       category: ['数据展示'],
+      designInfo: {
+        PendingDotTimeLine: {
+          sequence: 1,
+          title: '幽灵节点时间轴',
+          desc: '幽灵节点时间轴配置',
+          props: { pending: true, pendingDot: 'lugia-icon-financial_abort' },
+          theme: {
+            TimeLineContainer: {
+              name: '时间轴最外层容器',
+              desc: '时间轴最外层容器',
+              normal: [['width'], ['height'], ['margin'], ['padding'], ['background']],
+            },
+            TimeLine: {
+              name: '单个时间节点配置',
+              theme: {
+                TimeLineIcon: {
+                  normal: {
+                    name: '步骤条内容图标',
+                    desc: '步骤间连接线的配置',
+                    normal: [['font'], ['fontSize'], ['color']],
+                  },
+                },
+                TimeLineItemContainer: {
+                  name: '时间点外层容器',
+                  desc: '时间点外层容器配置',
+                  normal: [['width'], ['height'], ['margin'], ['padding']],
+                },
+                TimeLineItemLine: {
+                  name: '步骤间连接线',
+                  desc: '步骤间连接线的配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+              },
+            },
+          },
+        },
+      },
       theme: {
-        StepsOutContainer: {
+        TimeLineContainer: {
           name: '时间轴最外层容器',
           desc: '时间轴最外层容器',
           normal: [['width'], ['height'], ['margin'], ['padding'], ['background']],
+        },
+        TimeLine: {
+          name: '单个时间节点配置',
+          theme: {
+            TimeLineDot: {
+              name: '时间点',
+              desc: '时间点配置',
+              normal: [['width'], ['height'], ['background'], ['boxShadow'], ['border']],
+            },
+            TimeLineItemContainer: {
+              name: '时间点外层容器',
+              desc: '时间点外层容器配置',
+              normal: [['width'], ['height'], ['margin'], ['padding']],
+            },
+            TimeLineExplainDot: {
+              name: '隐藏的解释时间点',
+              desc: '隐藏的解释时间点配置',
+              normal: [['width'], ['height'], ['background'], ['boxShadow'], ['border']],
+            },
+            TimeLineItemTip: {
+              name: '隐藏信息弹框',
+              theme: {
+                Container: {
+                  name: '隐藏的解释时间点显示容器',
+                  desc: '隐藏的解释时间点显示容器配置',
+                  normal: [['width'], ['height'], ['background'], ['boxShadow'], ['border']],
+                },
+                TooltipTitle: {
+                  name: '隐藏的解释时间点标题',
+                  desc: '隐藏的解释时间点标题配置',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                TooltipDescription: {
+                  name: '隐藏的解释时间点描述',
+                  desc: '隐藏的解释时间点描述配置',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+              },
+            },
+            TimeLineItemLine: {
+              name: '步骤间连接线',
+              desc: '步骤间连接线的配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            TimeLineIcon: {
+              normal: {
+                name: '步骤条内容图标',
+                desc: '步骤间连接线的配置',
+                normal: [['font'], ['fontSize'], ['color']],
+              },
+            },
+          },
         },
       },
     },
     target: TimeLine,
     screenshot:
-      'data:image/png;base64,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',
+      'data:image/png;base64,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',
+  },
+  {
+    meta: {
+      widgetName: 'TimeLine',
+      title: '幽灵节点时间轴',
+      desc: '幽灵节点时间轴配置',
+      props: {
+        children: { type: 'React.Node', desc: '时间轴需要包含的子组件' },
+        data: { type: 'Array<Object>', desc: '时间轴填充的数据' },
+        defaultData: { type: 'Array<Object>', desc: '时间轴填充的默认显示数据' },
+        reverse: {
+          type: 'boolean',
+          desc: '控制节点排序，false 正序,true 倒序',
+          defaultValue: false,
+        },
+        pending: { type: 'boolean', desc: '最后一个是否是幽灵节点', defaultValue: true },
+        pendingDot: {
+          type: 'React.Node',
+          desc: '当最后一个是幽灵节点时,指定其图标资源',
+          defaultValue: 'lugia-icon-financial_abort',
+        },
+        mode: {
+          type: 'TimeLineMode',
+          desc: '时间轴 描述信息的显示位置 ,可选择右侧或者交错显示.',
+          defaultValue: 'right',
+        },
+      },
+      type: { TimeLineMode: ['right', 'alternate'] },
+      childrenWidget: [],
+      category: ['数据展示'],
+      theme: {
+        TimeLineContainer: {
+          name: '时间轴最外层容器',
+          desc: '时间轴最外层容器',
+          normal: [['width'], ['height'], ['margin'], ['padding'], ['background']],
+        },
+        TimeLine: {
+          name: '单个时间节点配置',
+          theme: {
+            TimeLineIcon: {
+              normal: {
+                name: '步骤条内容图标',
+                desc: '步骤间连接线的配置',
+                normal: [['font'], ['fontSize'], ['color']],
+              },
+            },
+            TimeLineItemContainer: {
+              name: '时间点外层容器',
+              desc: '时间点外层容器配置',
+              normal: [['width'], ['height'], ['margin'], ['padding']],
+            },
+            TimeLineItemLine: {
+              name: '步骤间连接线',
+              desc: '步骤间连接线的配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+          },
+        },
+      },
+      aliasName: 'PendingDotTimeLine',
+    },
+    target: TimeLine,
+    screenshot:
+      'data:image/png;base64,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',
   },
   {
     meta: {
@@ -12355,8 +11944,8 @@ export default [
           defaultValue: 'default',
         },
         placement: { type: 'DirectionType', desc: '气泡提示框显示的位置,十二个方向' },
-        visible: { type: 'boolean', desc: '是否显示出来', defaultValue: false },
-        defaultVisible: { type: 'boolean', desc: '默认是否显示出来', defaultValue: false },
+        visible: { type: 'boolean', desc: '是否显示出来', defaultValue: 'false' },
+        defaultVisible: { type: 'boolean', desc: '默认是否显示出来', defaultValue: 'false' },
         popArrowType: {
           type: 'popArrowType',
           desc: '可配置两种风格的箭头. 尖角,圆角',
@@ -12364,11 +11953,17 @@ export default [
         },
         action: {
           type: 'Array<string>',
-          desc: '页签位置，可配置 click,hover,focus',
+          desc: '触发提示的动作，可配置 click,hover,focus',
           defaultValue: 'click',
         },
         children: { type: 'React.Node', desc: '气泡提示框需要包含的子组件' },
-        title: { type: 'React.Node', desc: '配置气泡提示框需要显示的内容' },
+        title: {
+          type: 'React.Node',
+          desc: '配置气泡提示框需要显示的标题',
+          defaultValue: 'prompt text',
+        },
+        description: { type: 'React.Node', desc: '配置气泡提示框需要显示的描述' },
+        content: { type: 'React.Node', desc: '配置气泡提示框需要显示的自定义内容' },
       },
       events: {
         onVisibleChange: {
@@ -13021,7 +12616,7 @@ export default [
     },
     target: Transfer,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADYAAAAgCAYAAABZyotbAAAAAXNSR0IArs4c6QAAAu1JREFUWAntWc9rE0EUfjO7CTQI2oMFmwqWilQpCJqTOSgoPYiYRmostMGDufXuxbP/RS+lFmoMjRHxR6X+QkUhf4AQLx4iqIc2GgLtZnedl0rYjW/rzu5OKdqBkJ3vvfe9983swtsdVq1WY4yx2wBQsG27X/wHGoJjTQTOCY5bqVTKkCFRUYOOohKJxGwymUzEYjGZely+hmH01+v12VarhfhNl/EvExU1cJGzEFYU1o2LgjzIh3PJEXkNHG+/MDvlFIA8QW5nFTXgju3K0fjRBMNod2ozTRPWG02gMK/iSWEUAYV5kUaBrzV+QunB8w7Vw5U38OXrd6Awr1ykMIqAwrxIe/FsNj+QmZo504tvNz9y+BAkBw/C0vIziItb/MSxYaAwLw5SGEVAYV6kvfgmN/cxi5Umrk2P99q2m4+NjsDHT59h7PhI143CukbHBSkM7RQBhTm4PC8519vA4ADnsWL2av6sp6PDgM9V+dFLKMxchqcvPsDGxiZQmCPEdUkKowgozMXka2Lrtmbpflwfr76H0ydHYWhwAM6lT0HlyWugMC8uMglFkOjr+yNRLnPBi9eFW1Zb51xrmKZ1o1JcXHUZPSaXxtNdy9HhIcCfc1CY004KC0vqTIDXcUtrMptPLhfn3/baVM1JYVEnK5cXvglO/O3YIJ+xHcuuMNGeMIWLq4R6b8eULKtC0v9rx6hOnsIULnhoanLHqE6ewmSzX8ldT2OnLxsXxJ8URnXyFCaTMJPLXzSZVcJOXyYuqC8pDMmoTp7C/CSemJo+r2m8yAD2dzp9P0EhfUhhVCdPYX5zM5OLd3y29Z7vNyikHymM6u4pzG/u8r2FV5Zl5MCGdez0/caF8SOTRN3dY4H37y6uiM8Dk3FDa4Yp2G8sKcxvsKxfZenOO9mYoP7krRiUbDfF/bvC8DBBfHePZLGR5/fhhBSfihpwx+bEYUIrrDiMRx7kk1K15Rx5DToe++AJSa1Wi+wYSVaYihp+Aag75nvoG9nhAAAAAElFTkSuQmCC',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGwAAABACAYAAAD/CJKAAAAAAXNSR0IArs4c6QAAA/BJREFUeAHtnV1rE0EUhmcmGy8CxSqIoBeiSAuKUKggeOEXvW1SQ1PS2tjf0F/ib6iptTQltultwY8LQbBQEIQWUbxQEMEPhFx0N7POiVnTi7Iza7LxzGEWSrd7zp688z57sml2YDhT29LS0lnf9x+o3YlWq3UCjv3vLZPJfFcatrPZ7OLCwsKnQeixwQfeEflmfHx8aGRkxMvlcoPwRvsazWaT7e/vBzs7O78UtCtpQ7PFBw86C2CNjY15WhcHmAAXTkfTkIIG3T+T5svb4oNQJkxAZ6VpRi+1O9omeqlheK4VPgi4Z2F5GzzKWNA2iPuqLT5Ah7nNIgccMItggVQHzAGzzAHL5LoOswyY8cf5vb09o6GNjo6285LmGxVHkJR0XEnzdUN0HaZzCFncAUMGRCfHAdM5hCzugCEDopPjgOkcQhYnBWxydvby3VLlJjKP+yqHFDBPivM8KzbyM3M3+uoSomKkgIWMHQguhj2RXS+U568j8rlvUkgBA1eklIxxdkqwTL1Qrlzrm1NICpEDFkHjnJ1W3VbPlytXkXjdFxkkgf2FxtgZEfLN4tzcub64haAIWWBdb8Nc4Its92+798gCE0KwMGTfZMiLjdryO7sxddWTBBbBaslwurH28Gl3uPbvkQMGsJjqLIqw4HIzfh4WPecyvUaT5pvWjcvjjB2TMvzpt2Rpq1ZNpbOSjitpftz4IGYMTFcIQ1z9C/ae82Bqq7b8DIOeNDSQArZZe/RWmQQ/ZDdy9zCypDoDc8AsI+yAOWCWOWCZXNdhDphlDlgm13WYA4bHgany/K1C6d4lPIp6V0K2wyZLlTuCexvqq8ULvduEp4LxNx2Pa1tGqmdLk+28pPlGxQ2T8jP3b3uC14TgxwPJDgxPM0pLOlc+ab5OBLkOA1gZwdfVvI6T7fkdOgcsi5MCFsFS8zlIwoJry/gtEfuFmC/NXxQ8rHPOhyl2VuQ/mQ7zstJX89ua0cCo/iYDrL6y8lHysKAmk35uP3UmSowMMODTWK2+lqEsqsk3X6hCIwUMoG2uVl9J1iqqeR1fKUIjB+wPtOWXgfSnVbf9gHkecIzKRhIYwGmsrbwIfTkVCPmBCiwYB5mP9UdBeVKrPj/quM3HyHaYzVDitDtgce4gjDlgCKHESXLA4txBGHPAEEKJk2T8KTF6zhVX7HAsaf7hczHvJ50rnzRfN3bXYTqHkMUdMGRAdHIcMJ1DyOIOGDIgOjkOmM4hZHEBa5zAshlYN9DWWYclVYm2+AAdtg1rnKTqRg/FO9q2eyhheqoVPghYPQgWpNnd3Q0wdRpoAU2dxXIWTV3/1zxbfFDP99xyVBFkG5aj+g1B5HJrMuaaRQAAAABJRU5ErkJggg==',
   },
   {
     meta: {
@@ -13409,7 +13004,7 @@ export default [
     },
     target: Transfer,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGwAAABACAYAAAD/CJKAAAAAAXNSR0IArs4c6QAABIxJREFUeAHtnd9LFFEUx8+9O7PqgmRSBPUQRSgUlWRIRESFr+4u0oqaZhDRL4x+/CH9DeZm4oqlvgr9eAiCNPtBoETRQ0EEVgQ+NLN3umfbpV3YCzPjTN17uQO64/Xs2e/3fObMzjpXLgG+jY2N7XAc5zbf7S4Wi5txTJYtkUh841oWbNu+MTIy8ikOXSr5J2Wxrzs7O5vb2tqsVCoVR01C51xfX4fV1VV3cXHxJ4e2P2poqvm3sLMQVkdHhxW6qjE+EQ+gsrZmDg3PAn1Rvpxq/ik3342dFWUR4shV1tgdQ26l/FN8z5LtNFgPCmqM4/1VNf/YYWZTqAIGmEKwUKoBZoApVgHF5JoOUwxY6Mv5lZUVX1bb29tLcUHjfSX/j0FB/QSNF1kzHSaqjKTjBpikYESyDDBRZSQdN8AkBSOSVXPRsbb2DZZevgLbsmviHdeBQwcPQGurVHdeajRG8YMK/muANaWa4PnSMrx49QaKrluqQcKyOKz9cOzokShqEmuOnoGBfZZrbblfGH8c5oVU8F9zSmxqbIRb165A16EOIIQA/wZHuw7DzdHL0NjQEKYG//Q5FqO7iE0fpPsGj4d5YRX813QYmuQ3CWH08gUglEIyacOl8+fA4l2mwuYB/EoQ2mJRezrTP5Sdncw/Dapbdv91SSSTSbh+9WLJK+XgVNoYY/zMAFupl5jJ9A9nZifHnwXVL7N/IQ0EpRqsChiExs/m2yihM+n+4cOV8SCPsvoXAgtiTsbYEjSA7dQjs72Dgztl1BhGk7bA/hbDS7kOrf2c8veXyu1pCwxPaZ4Ha8wjvXOF/DvlyAgEawmsAqvIvNNzU3ceCrwrOawdsNKFEu8sHWHhEVb3st7PoVe5z+UnFmOCxvvNWx3HP+onGfN+OEWWmy+Mx9pZQf0Eja/2Vb0fGlh1Eln2+dX8e0Lc7Hwh/0gWTVHr0ArYbOHuW14g/NJ20+49TFtSZWMGmGKEDTADTLEKKCbXdJgBplgFFJNrOswAk6cC2f6hE5ncmb3yKNq4Em07rCc3fIoS6wH/o/3ujZdJngyh/9JxrzDvy8VArqcUFzTeV3JBULrv7EmLkgKlZJPL4JcgbEPDQefKB40XidOuwxBWgpJpPq+jtTS/Q+Rc0XGtgFVg8fkcWsLCYyz0KVG2AzSdG9pDiTfD51O26NhZlXpr02GWzRw+v229YkzXR22AzUxMfGTEy/DJpJ9Ld501JaYNMOQzNzn+nHmsl0+++aIrNK2AITSc6cug2AsefNURmnbA/kDLP3WZc5p323ec54FjumxaAkM4c1MTTzyHZV3KPugCC31oc1lfD0rY/xOrl0uWMW07TJYCR63DAIu6ojHnM8BiLnDU6Q2wqCsacz4DLOYCR50+9FVi5T6XX0FB4/3m/V9xQefKB40X+TIdJqqMpOMGmKRgRLIMMFFlJB03wCQFI5JlgIkqI+k4xbVNcLkM2TfUWF6HJVKpqvnHDlvAtU0irUIMycoaF2JIrZR/iqsG4UI0y8vLroydhppQW3mxnBtRA1PNP7+/Z5ajUmk5qt+y57ArB79yGQAAAABJRU5ErkJggg==',
   },
   {
     meta: {
@@ -13488,106 +13083,8 @@ export default [
       },
       category: ['数据录入'],
       designInfo: {
-        SingleTree: {
-          sequence: 1,
-          title: '单选树形控件',
-          desc: '单项选择的树形控件',
-          props: { mutliple: false },
-          theme: {
-            TreeWrap: {
-              name: '树形控件外盒',
-              desc: '配置树形组件的外盒样式',
-              normal: [
-                ['width'],
-                ['height'],
-                ['boxShadow'],
-                ['background'],
-                ['opacity'],
-                ['border'],
-                ['borderRadius'],
-                ['margin'],
-                ['padding'],
-              ],
-              hover: [['boxShadow'], ['background'], ['opacity'], ['border'], ['borderRadius']],
-              clicked: [],
-              disabled: [],
-            },
-            TreeItem: {
-              theme: {
-                TreeItemWrap: {
-                  name: '项的外盒',
-                  desc: '配置每一项的外盒',
-                  normal: [
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['padding'],
-                  ],
-                  hover: [['background'], ['border'], ['borderRadius'], ['opacity'], ['color']],
-                  active: [['background'], ['border'], ['borderRadius'], ['opacity'], ['color']],
-                  disabled: [],
-                },
-                SelectedTreeItemWrap: {
-                  name: '选中项的外盒',
-                  desc: '配置选中项的外盒',
-                  normal: [
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['padding'],
-                  ],
-                  hover: [['background'], ['border'], ['borderRadius'], ['opacity'], ['color']],
-                  active: [['background'], ['border'], ['borderRadius'], ['opacity'], ['color']],
-                  disabled: [],
-                },
-                Text: {
-                  name: '项的文本',
-                  desc: '配置每一项文本内容的样式',
-                  normal: [
-                    ['color'],
-                    ['font'],
-                    ['background'],
-                    ['padding'],
-                    ['border'],
-                    ['borderRadius'],
-                  ],
-                  hover: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
-                  active: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
-                  disabled: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
-                },
-                SelectedText: {
-                  name: '选中项的文本',
-                  desc: '配置选中项文本内容的样式',
-                  normal: [
-                    ['color'],
-                    ['font'],
-                    ['background'],
-                    ['padding'],
-                    ['border'],
-                    ['borderRadius'],
-                  ],
-                  hover: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
-                  active: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
-                  disabled: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
-                },
-                Switch: {
-                  name: '控制器配置',
-                  desc: '配置控制树节点展开或隐藏的控制器的样式',
-                  normal: [['color'], ['font']],
-                  hover: [['color'], ['font']],
-                  active: [['color'], ['font']],
-                  disabled: [['color'], ['font']],
-                },
-              },
-            },
-          },
-        },
         MutlipleTree: {
-          sequence: 2,
+          sequence: 1,
           title: '多选树形控件',
           desc: '多项选择的树形控件',
           props: { mutliple: true },
@@ -13611,6 +13108,7 @@ export default [
               disabled: [],
             },
             TreeItem: {
+              name: '多选树的项配置',
               theme: {
                 TreeItemWrap: {
                   name: '项的外盒',
@@ -13681,6 +13179,7 @@ export default [
                   disabled: [['color'], ['font']],
                 },
                 Checkbox: {
+                  name: '多选树的选择框配置',
                   theme: {
                     CheckboxWrap: {
                       name: 'Checkbox整体配置',
@@ -13719,6 +13218,22 @@ export default [
                     },
                   },
                 },
+                SubTreeWrap: {
+                  name: '展开项的外盒配置',
+                  desc: '展开项下的子树的外盒配置',
+                  normal: [
+                    ['width'],
+                    ['background'],
+                    ['opacity'],
+                    ['border'],
+                    ['margin'],
+                    ['padding', 'left'],
+                    ['padding', 'right'],
+                  ],
+                  hover: [['background'], ['opacity'], ['border']],
+                  active: [],
+                  disabled: [],
+                },
               },
             },
           },
@@ -13744,6 +13259,7 @@ export default [
           disabled: [],
         },
         TreeItem: {
+          name: '单选树的项配置',
           theme: {
             TreeItemWrap: {
               name: '项的外盒',
@@ -13813,44 +13329,21 @@ export default [
               active: [['color'], ['font']],
               disabled: [['color'], ['font']],
             },
-            Checkbox: {
-              theme: {
-                CheckboxWrap: {
-                  name: 'Checkbox整体配置',
-                  desc: 'Checkbox整体配置',
-                  normal: [['opacity'], ['margin'], ['padding'], ['width'], ['height']],
-                  hover: [['opacity']],
-                  disabled: [['opacity']],
-                },
-                CheckboxText: {
-                  name: 'Checkbox文字配置',
-                  desc: 'Checkbox文字配置',
-                  normal: [['color'], ['font']],
-                  hover: [['color'], ['font']],
-                  disabled: [['color'], ['font']],
-                },
-                CheckboxEdgeChecked: {
-                  name: 'Checkbox选中后边框配置',
-                  desc: 'Checkbox选中后边框配置样式',
-                  normal: [['background'], ['borderRadius'], ['border']],
-                  hover: [['background'], ['borderRadius'], ['border']],
-                  disabled: [['background'], ['borderRadius'], ['border']],
-                },
-                CheckboxEdgeUnChecked: {
-                  name: 'Checkbox未选中边框配置',
-                  desc: 'Checkbox未选中边框配置样式',
-                  normal: [['background'], ['borderRadius'], ['border']],
-                  hover: [['background'], ['borderRadius'], ['border']],
-                  disabled: [['background'], ['borderRadius'], ['border']],
-                },
-                CheckboxInnerChecked: {
-                  name: 'Checkbox选中样式配置',
-                  desc: 'Checkbox选中样式配置',
-                  normal: [['color']],
-                  hover: [['color']],
-                  disabled: [['color']],
-                },
-              },
+            SubTreeWrap: {
+              name: '展开项的外盒配置',
+              desc: '展开项下的子树的外盒配置',
+              normal: [
+                ['width'],
+                ['background'],
+                ['opacity'],
+                ['border'],
+                ['margin'],
+                ['padding', 'left'],
+                ['padding', 'right'],
+              ],
+              hover: [['background'], ['opacity'], ['border']],
+              active: [],
+              disabled: [],
             },
           },
         },
@@ -13859,182 +13352,7 @@ export default [
     },
     target: Tree,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAjCAYAAADWtVmPAAAAAXNSR0IArs4c6QAAA7lJREFUWAntWN9rFFcUPufeO5tYlm7BGmoeGiwqviilfdCAb1Is1LTJ1t1mo1kMyT8gEfpQKIuofSgWH1qhaQvNJupm1mwiWqGluoimfSy0FPLQSh8iSkyLLRtidufe0zupE6brFu/FzULDDgxn5pvz6zszd/i4CIbH5ORXHVIqL5nsuuOHuO7VTQAsxrms2ODJ5Ou/GJa0cmOm3svEYh5CsVD4dmOxWGz1QH4jsdJhi5vWs/XDbLbQxjlFpSM9P5hXuJASS+l0fL46WS5/eYiADgDgnH62kEp0ZXwfW9yPqffBWAvfho4zI6Bl1j/BEbfQYVtrFepNdH2ucU4Ee3oPHjge+NjiQVw9LTv8zlszRGqQCJVOXCaljvSnur+rVcR1v94ChNv1s0hu8uorgY8tHsTV02KQbPzC1D7GyetLxm8EWNi67s8RD27fZEgZQnEPlDzHobUToH3JBk8mX/sznLde16tEnpTwvHv5jCZBvYk3j/q+5/NXhoFIE4E5G7wv2XXwSbWaz5sTaE6gOYH1PwHj36/JKOJ9gx1cVLx8NrsiLBMDA5ugwmJSgRY+5nh+/AtrYVlXIm+n0rsUwUWIQGeMscUHS+p7gXiMkO7b4Bdzo9dMBhf2MSbS09PfVmYyyphYEZdKeSKieGlqauxf4jKeSg9pLaaFJc0h4EIhl834BW3xcJMm18YyXgvJbULwGc5o1j8dzm+pFnpMXBYuZP8RloB7du14aVVY2uImzYd9jIkU3NEZIBhkjCnGeBlQHbmUG39MXCb6h7boAtu1b+Sn2V9XhaUtHm7S5Nr40wqSdfce2oeSeVP5sRsBFthEJhPxZm/f1J9WhiPc03L6nHhWC8t2LSwt8PzIiLWwtCYSNF3L9qTSZ0ghTU+MrgjLeKp/WCnoRIZzNvj0xFhTWNYa8P8Kq+unFWb+xhC9Gr5f62vjv9ZaN/K0+dcNEfG0kzCJ55XiC4COlGLvfd8f6YfnUM1HUeltAAtc8f3+NlTNoyFvBGkhypa+/FTJH2OaQISXzn4iyr9ttsVrMngENmyxO0snu0Hd3at3kuaBWh5Uoh+M+D3Y4v9FpiFvxC9e2fDetN514UClneVnjn8WNGSLB3HVtmFEhHe9HWH5RSJyxLK7I2jEFg/iqm1DFjuxvwR7OHHK4y+fZvz531n52gmSuwek0/bQBld8a6maQHDfkDXiLB4b1luy5EU//Mgv7Cy+f5joj52IrfM2uBf9+N2g8WrbECLVRdfivmFrZC2aD+dcN0T+BteOozdt+9xRAAAAAElFTkSuQmCC',
-  },
-  {
-    meta: {
-      widgetName: 'Tree',
-      title: '单选树形控件',
-      desc: '单项选择的树形控件',
-      props: {
-        start: { type: 'number', desc: '开始展示数据的索引值', defaultValue: 0 },
-        query: { type: 'string', desc: '用于过滤数据的关键字', defaultValue: " '' " },
-        mutliple: { type: 'boolean', desc: '是否多选', defaultValue: false },
-        limitCount: { type: 'number', desc: '多选时的最大选中数', defaultValue: 999999 },
-        expandAll: { type: 'boolean', desc: '是否展开所有子元素', defaultValue: false },
-        onlySelectLeaf: { type: 'boolean', desc: '是否只能选择根节点选项', defaultValue: false },
-        valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'key' },
-        displayField: {
-          type: 'string',
-          desc: 'data数据的displayValue值的名称',
-          defaultValue: 'title',
-        },
-        value: {
-          type: 'string | string[] | number | number[]',
-          desc: '指定当前选中的条目的valueField值',
-        },
-        displayValue: {
-          type: 'string | string[] | number | number[]',
-          desc: '指定当前选中的条目的displayField值',
-        },
-        data: { type: 'Array<Object>', desc: '生成选择项的数据', defaultValue: false },
-        igronSelectField: { type: 'string', desc: '指定不可选的标识' },
-        searchType: {
-          type: 'start | end | include | eql',
-          desc: '生成过滤数据的方式',
-          defaultValue: 'include',
-        },
-        shpale: {
-          type: 'default | round',
-          desc: '单选树形控件,选中时的样式',
-          defaultValue: 'default',
-        },
-        translateTreeData: {
-          type: 'boolean',
-          desc: '是否开启嵌套数据生成Tree',
-          defaultValue: false,
-        },
-      },
-      events: {
-        onScroller: {
-          desc: '滚动条滚动时触发',
-          args: [
-            { name: 'start', desc: '显示区域内，第一个树节点所在数据中的索引值', type: 'number' },
-            { name: 'end', desc: '显示区域内，最后树节点所在数据中的索引值', type: 'number' },
-          ],
-        },
-        onExpand: {
-          desc: '展开/收起节点时触发',
-          args: [
-            { name: 'expandedKeys', desc: '所有展开节点的valueField值的集合', type: 'string[]' },
-            { name: 'data', desc: '所有的树形数据信息', type: 'Array<Object>' },
-          ],
-        },
-        onSelect: {
-          desc: '选择树节点时触发',
-          args: [{ name: 'selectValue', desc: '所有选中项的valueField值的集合', type: 'string[]' }],
-        },
-        onChange: {
-          desc: '选中节点发生改变时触发',
-          args: [
-            { name: 'selectValue', desc: '所有选中项的valueField值的集合', type: 'string[]' },
-            {
-              name: 'selectDisplayValue',
-              desc: '所有选中项的displayField值的集合',
-              type: 'string[]',
-            },
-          ],
-        },
-      },
-      category: ['数据录入'],
-      theme: {
-        TreeWrap: {
-          name: '树形控件外盒',
-          desc: '配置树形组件的外盒样式',
-          normal: [
-            ['width'],
-            ['height'],
-            ['boxShadow'],
-            ['background'],
-            ['opacity'],
-            ['border'],
-            ['borderRadius'],
-            ['margin'],
-            ['padding'],
-          ],
-          hover: [['boxShadow'], ['background'], ['opacity'], ['border'], ['borderRadius']],
-          clicked: [],
-          disabled: [],
-        },
-        TreeItem: {
-          theme: {
-            TreeItemWrap: {
-              name: '项的外盒',
-              desc: '配置每一项的外盒',
-              normal: [
-                ['background'],
-                ['border'],
-                ['borderRadius'],
-                ['opacity'],
-                ['color'],
-                ['padding'],
-              ],
-              hover: [['background'], ['border'], ['borderRadius'], ['opacity'], ['color']],
-              active: [['background'], ['border'], ['borderRadius'], ['opacity'], ['color']],
-              disabled: [],
-            },
-            SelectedTreeItemWrap: {
-              name: '选中项的外盒',
-              desc: '配置选中项的外盒',
-              normal: [
-                ['background'],
-                ['border'],
-                ['borderRadius'],
-                ['opacity'],
-                ['color'],
-                ['padding'],
-              ],
-              hover: [['background'], ['border'], ['borderRadius'], ['opacity'], ['color']],
-              active: [['background'], ['border'], ['borderRadius'], ['opacity'], ['color']],
-              disabled: [],
-            },
-            Text: {
-              name: '项的文本',
-              desc: '配置每一项文本内容的样式',
-              normal: [
-                ['color'],
-                ['font'],
-                ['background'],
-                ['padding'],
-                ['border'],
-                ['borderRadius'],
-              ],
-              hover: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
-              active: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
-              disabled: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
-            },
-            SelectedText: {
-              name: '选中项的文本',
-              desc: '配置选中项文本内容的样式',
-              normal: [
-                ['color'],
-                ['font'],
-                ['background'],
-                ['padding'],
-                ['border'],
-                ['borderRadius'],
-              ],
-              hover: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
-              active: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
-              disabled: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
-            },
-            Switch: {
-              name: '控制器配置',
-              desc: '配置控制树节点展开或隐藏的控制器的样式',
-              normal: [['color'], ['font']],
-              hover: [['color'], ['font']],
-              active: [['color'], ['font']],
-              disabled: [['color'], ['font']],
-            },
-          },
-        },
-      },
-      childrenWidget: [],
-      aliasName: 'SingleTree',
-    },
-    target: Tree,
-    screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF4AAABGCAYAAABFVyOYAAAAAXNSR0IArs4c6QAAAxRJREFUeAHt2j1v2kAYB/Az2CaCqEo69BNkyN5+i1QdowiWvBSRSgkDH6BiYczEkqSKlCHOULaqFWs+QNNuLVK7RFmKlDbpGwHbcLVRiQy6eMg/2Cn9IyHsOz/3HD9OBnGPJsBHo9GQYUPMz89rfn9c14XNLc6+RJzJ/+fchI/p0yd8TPC6ZVmztp2WdsZR3qvN34Zmmi0tl8udxzTHiUyrC326lDLEZkpM/VK9Q5mRGSGnq17fc1U/224moNutbxUzfX9O08SSaghNioOz5klF1ce2mwskVlZW2l+bJ8tSSmt0GCnk3s+LL6vFYrEz2sdzTKD/5erDevhrQfyeFDufPrxfLxQKDpaC0SqBq181Pn5T6+Q9/G0h5dbnj+82yuWyqwpiGy6gB4coLS5eeufPgm08Ho/A1Yofz/Ac9ToBwl8nM+Z2wo8ZmMNTgAIUoAAFKEABClCAAhSgAAX+TYF+zctdmPrhy1fKPd/B3LKLT/pzve3rBuNH/cr/aqIW/5uP8ISPSSCmtEM7UDeZw0I2O2u0TGkYpvIe7Ti25qRt7c3hIetyAsAwvOEmSyLlbrqiq6zLESmRMdwE63IC6P4hDD+TTla+X3bnkoax1HWH98aTui5c1z3oPJhhXc4IPPzlur+/327/OFvuOo6VSCa9AgWvGsd7+seu4+yd3ptarVerrMu5bXh/vHq93vHw17zVbem6IXRvpfdcZ+eiebp+vLvLupwRdP8UXvGDMX18s9fOeyt/2/sAts6bcxtHR0fD957BxXzF7/FBw1qtxrqcIEjI8a2t+JAc7FIIEF6BEkUT4aNQZg4KUIACFKAABSgwsQJ3Zs914al8OLHKijfG3/EKlCiaCB+FsiIH4RUoUTQRPgplRQ7CK1CiaIL3XKOYpJ/j9QvxNizX47x4NI7rwnIifVzxiB4QS3gADwklPKIHxBIewENCCY/oAbGEB/CQUMIjekAs4QE8JJTwiB4QS3gADwklPKIHxBIewENCCY/oAbHccwXwkFCueEQPiCU8gIeEEh7RA2IJD+AhoYRH9IDYP12R2WcI4/UOAAAAAElFTkSuQmCC',
   },
   {
     meta: {
@@ -14132,6 +13450,7 @@ export default [
           disabled: [],
         },
         TreeItem: {
+          name: '多选树的项配置',
           theme: {
             TreeItemWrap: {
               name: '项的外盒',
@@ -14202,6 +13521,7 @@ export default [
               disabled: [['color'], ['font']],
             },
             Checkbox: {
+              name: '多选树的选择框配置',
               theme: {
                 CheckboxWrap: {
                   name: 'Checkbox整体配置',
@@ -14240,6 +13560,22 @@ export default [
                 },
               },
             },
+            SubTreeWrap: {
+              name: '展开项的外盒配置',
+              desc: '展开项下的子树的外盒配置',
+              normal: [
+                ['width'],
+                ['background'],
+                ['opacity'],
+                ['border'],
+                ['margin'],
+                ['padding', 'left'],
+                ['padding', 'right'],
+              ],
+              hover: [['background'], ['opacity'], ['border']],
+              active: [],
+              disabled: [],
+            },
           },
         },
       },
@@ -14248,7 +13584,7 @@ export default [
     },
     target: Tree,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF4AAABICAYAAAB/XULoAAAAAXNSR0IArs4c6QAABVZJREFUeAHtnEFoHFUYgP+3O7NbkmpNq8RQwUsPOYiGuN73XvHgIUiC0rSNttIGSWn1JAHJoUpLSQRtNBBCN8UEepDKqoguih5kG1M8mIOX0pYaCG1pmjTZmd3xf9uZsrvMZGfmvdn3dvcNLDv73v//73/f+/fN7D8/S4DD8eZR6wUT4FM0lbYs6PFjkhC4g3I5DeDMla/JLT86rSRDWCdDoRsA18GCvaFsEbirA7zSbvAx4NiOcqSHhU6HRl2TlL8tg26erKysWG7tTltvb285ePzKOXqi32McHEhLYoODG40zwQze756+05R42NjJvox9zOBlnFQz+KRlMpmuQqHDKnQarntpYkMnicQmGRoautcME2oWHzXQdo8ldTiZhF0P3Zy2Oq1OsHZPYd/Hbv2qLRwBrbB5dyLRsfcA3le/5WaCWHBpbfXGhFufagtPQBseHt6anJw8tK/7xSIhZKjSlAXWzMP7/x0fHR3FW3V/x/PPARwe8JZ9sA7w+Zx3f7v0lO/jEew2wj+C8MGBX7Lg4r///HVifHwcb9X9HxuPAK797S3/aNu7r516nvyAovDPLyyMdFvJdfxFsoHQPwoKnYJbxyvFD7+2E8Jwc30CnqqPDQxgvMLxcKaUVhAC6j4+CC2Osszg7Swjk0s8bDA5IECZGTz6nOPgNw8bHNxonAmVFm4c66qRmCOe5tFpPh23i8tBtgwqS3XaMRdftQLqgyKgCCgCioAioAgoAk1NgPk+nufs26k+Rxrw7VafU5Wd5Bm9QW1FXZ8zv/Ct6zNlx8/BgTfKQchbzrFf+878y7XWIMPnNIOuo8rDhmMr0ndpwPOoreFhI1LaFcalAV/hk6/TPU8BdD/rS1RKIeY9/uDgYJe+mbB0PeG6hxpGgRgdBfLd/Dy3upyuPQAfHgO48j3A6pqUXOs6xQxeN+NjkDRPmlB0rcuBJHTqZoxbXQ6Ffgah//wHwJ/X685PWgHmreaZjvgEAZKN6/p+LFGoetltV7e7uwLV5cTQq/6XAOI13jnQf0HoP/4mLVNfjtVMzZdOldDs7OzW1oO1Q0XDyMTicbDwCkdf9Nw0jJmbT+86nJ2aClTUgerw2ssA778NQBeBHq0Enc6HGTw1ks1mtxH+EdM0M5qmg6ZpUDKNi/dXbx67Nj3tuxiK2qIHBT99GaBYAngPq+ZpkdTpdwFaIdIfz5ATeGqMwk+UtkYw8r/EBTh3b/XAiVwuF6gYynGKvlP4X1xC+EWAT04B/PR7828vlfNjvrhWGltcXORal0Phz3yDBVK4n9+4VTlS859z2WqixEC3m1aDTnlJAz7Ig3KvheZhw8s273ZpwOPEchwmx8MGBzfqm1Bp4fqMIpGQJuJVfU4k66uMKgKKgCKgCAggIM1dTdRzP3jUejXqMYLYl+auJojTrSCrwAtaRQVeEHiu2UnWOSwvL+/HlPJnaCeNL1//9IRyj//pSdNO9/X13cbPTXFIA96Gno/FYhdKpdKpVCpFgdY98vl8D+q8gwuWRxupZoEvDXga6RR6f3//2bq0KwTsBTq7tLQE9rfF9Z+eKlRcT69+BXnXDrvx9RFI0VO/cjvZon0y7fFpjPS5eg579du6aa9+2dplAt/jd3txg2jr+r0uuJloaJtM4Bs6cdGDKfCCVkCBV+AFERA0rIp4BV4QAUHDqohX4AUREDSsingFHu7QhFdYDraur8Ra2DF46skU8TmaZQw7OVs3F1a/0XrSPHOtSQvP+c3bOGlhTJJ9gHX5nmlh2Z65SgOeRlyUD0IU+EZ/p+3xZAMv0x4vaEnEDKvAi+Eu1RMoQQjEDPs/KBq+RLysf5kAAAAASUVORK5CYII=',
   },
   {
     meta: {
@@ -14262,6 +13598,7 @@ export default [
           defaultValue: 'success',
         },
         data: { type: 'Array<Object>', desc: '生成选择项的数据', defaultValue: false },
+        createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', defaultValue: true },
         valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'key' },
         displayField: {
           type: 'string',
@@ -14278,7 +13615,7 @@ export default [
         mutliple: { type: 'boolean', desc: '是否多选', defaultValue: false },
         limitCount: { type: 'number', desc: '多选时的最大选中数', defaultValue: 999999 },
         expandAll: { type: 'boolean', desc: '是否展开所有子元素', defaultValue: false },
-        onlySelectLeaf: { type: 'boolean', desc: '是否只能选择根节点选项', defaultValue: false },
+        onlySelectLeaf: { type: 'boolean', desc: '是否只能选择根节点选项', defaultValue: true },
         label: { type: 'string', desc: '标注文本' },
         value: {
           type: 'string | string[] | number | number[]',
@@ -14327,170 +13664,17 @@ export default [
       },
       category: ['数据录入'],
       designInfo: {
-        SingleTreeSelect: {
-          sequence: 1,
-          title: '单项树形选择',
-          desc: '支持单项树形选择',
-          props: { mutliple: false },
-          theme: {
-            InputTag: {
-              theme: {
-                InputTagWrap: {
-                  name: 'Inputtag的外盒',
-                  desc: '配置展示选中数据的外盒样式',
-                  normal: [
-                    ['width'],
-                    ['height'],
-                    ['margin'],
-                    ['padding'],
-                    ['color'],
-                    ['background'],
-                    ['border'],
-                    ['boxShadow'],
-                    ['borderRadius'],
-                    ['font'],
-                    ['opacity'],
-                  ],
-                  hover: [
-                    ['color'],
-                    ['background'],
-                    ['border'],
-                    ['boxShadow'],
-                    ['borderRadius'],
-                    ['font'],
-                    ['opacity'],
-                  ],
-                  active: [],
-                  disabled: [],
-                },
-                SwitchIcon: {
-                  name: '下拉图标',
-                  desc: '配置下拉或清除按钮的图标样式',
-                  normal: [['color'], ['background'], ['font'], ['margin'], ['opacity']],
-                  hover: [['color'], ['font'], ['opacity']],
-                  active: [],
-                  disabled: [],
-                },
-              },
-            },
-            Tree: {
-              theme: {
-                TreeWrap: {
-                  name: '树形控件外盒',
-                  desc: '配置树形组件的外盒样式',
-                  normal: [
-                    ['width'],
-                    ['height'],
-                    ['boxShadow'],
-                    ['background'],
-                    ['opacity'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['margin'],
-                    ['padding'],
-                  ],
-                  hover: [['boxShadow'], ['background'], ['opacity'], ['border'], ['borderRadius']],
-                  clicked: [],
-                  disabled: [],
-                },
-                TreeItem: {
-                  theme: {
-                    TreeItemWrap: {
-                      name: '项的外盒',
-                      desc: '配置每一项的外盒',
-                      normal: [
-                        ['background'],
-                        ['border'],
-                        ['borderRadius'],
-                        ['opacity'],
-                        ['color'],
-                        ['padding'],
-                      ],
-                      hover: [['background'], ['border'], ['borderRadius'], ['opacity'], ['color']],
-                      active: [
-                        ['background'],
-                        ['border'],
-                        ['borderRadius'],
-                        ['opacity'],
-                        ['color'],
-                      ],
-                      disabled: [],
-                    },
-                    SelectedTreeItemWrap: {
-                      name: '选中项的外盒',
-                      desc: '配置选中项的外盒',
-                      normal: [
-                        ['background'],
-                        ['border'],
-                        ['borderRadius'],
-                        ['opacity'],
-                        ['color'],
-                        ['padding'],
-                      ],
-                      hover: [['background'], ['border'], ['borderRadius'], ['opacity'], ['color']],
-                      active: [
-                        ['background'],
-                        ['border'],
-                        ['borderRadius'],
-                        ['opacity'],
-                        ['color'],
-                      ],
-                      disabled: [],
-                    },
-                    Text: {
-                      name: '项的文本',
-                      desc: '配置每一项文本内容的样式',
-                      normal: [
-                        ['color'],
-                        ['font'],
-                        ['background'],
-                        ['padding'],
-                        ['border'],
-                        ['borderRadius'],
-                      ],
-                      hover: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
-                      active: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
-                      disabled: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
-                    },
-                    SelectedText: {
-                      name: '选中项的文本',
-                      desc: '配置选中项文本内容的样式',
-                      normal: [
-                        ['color'],
-                        ['font'],
-                        ['background'],
-                        ['padding'],
-                        ['border'],
-                        ['borderRadius'],
-                      ],
-                      hover: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
-                      active: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
-                      disabled: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
-                    },
-                    Switch: {
-                      name: '控制器配置',
-                      desc: '配置控制树节点展开或隐藏的控制器的样式',
-                      normal: [['color'], ['font']],
-                      hover: [['color'], ['font']],
-                      active: [['color'], ['font']],
-                      disabled: [['color'], ['font']],
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
         MutlipleTreeSelect: {
-          sequence: 2,
+          sequence: 1,
           title: '多项树形选择',
           desc: '支持多项树形选择',
           props: { mutliple: true },
           theme: {
             InputTag: {
+              name: '多选树形选择的展示框',
               theme: {
                 InputTagWrap: {
-                  name: 'Inputtag的外盒',
+                  name: '展示框的外盒',
                   desc: '配置展示选中数据的外盒样式',
                   normal: [
                     ['width'],
@@ -14563,6 +13747,7 @@ export default [
                   disabled: [],
                 },
                 Menu: {
+                  name: '多选展示框的弹开菜单',
                   theme: {
                     MenuWrap: {
                       name: '菜单外盒',
@@ -14589,6 +13774,7 @@ export default [
                       disabled: [],
                     },
                     MenuItem: {
+                      name: '菜单项的配置',
                       theme: {
                         MenuItemWrap: {
                           name: '项的外盒',
@@ -14626,6 +13812,7 @@ export default [
               },
             },
             Tree: {
+              name: '弹开树形控件配置',
               theme: {
                 TreeWrap: {
                   name: '树形控件外盒',
@@ -14646,6 +13833,7 @@ export default [
                   disabled: [],
                 },
                 TreeItem: {
+                  name: '树形控件项配置',
                   theme: {
                     TreeItemWrap: {
                       name: '项的外盒',
@@ -14736,9 +13924,10 @@ export default [
       },
       theme: {
         InputTag: {
+          name: '树形选择器的展示框',
           theme: {
             InputTagWrap: {
-              name: 'Inputtag的外盒',
+              name: '展示框的外盒',
               desc: '配置展示选中数据的外盒样式',
               normal: [
                 ['width'],
@@ -14776,6 +13965,7 @@ export default [
           },
         },
         Tree: {
+          name: '弹开树形控件配置',
           theme: {
             TreeWrap: {
               name: '树形控件外盒',
@@ -14796,6 +13986,7 @@ export default [
               disabled: [],
             },
             TreeItem: {
+              name: '树形控件项配置',
               theme: {
                 TreeItemWrap: {
                   name: '项的外盒',
@@ -14874,226 +14065,7 @@ export default [
     },
     target: TreeSelect,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAhCAYAAACfiCi5AAAAAXNSR0IArs4c6QAAAtZJREFUWAntWE1oE1EQnveSUisitfgXtSjiQUVaAnvxJJ5CkrYoGDFntYIHwVsp6MFCL/ak4CG1J8GfWrAYSCt4UPSihCAiHkVs0JOlKY2abnfXN9kuTZZ9b1/YTcJCAmH3fTNv9puZ3Z2ZJYVCIa7regYADrF/kH5FSuloGMmHQqFr0Wg0FyT2+Xw+WQ08OzGCRLyWK3KntUAQzwPvQFgU9RvjX279Wjl6+1+lx1FvW/ffjUjvtzv3Jk9NiOw0UybMgIg8kkLHUKeZBN1sO0bW2sSLvCXHo13nyfyr/r4eWI7FYuVcLtddqpAIEKrJYOnz8e+1tmXOhRngGRg4DnDsMEeqqkeWS+uPUFoqa/dB3YiCLMYxKYKlHNi9C4AQ08zgCVbxIgA/fjqbTaeG3jHVj49ns3MEjHL64vALWczZohiVcgAJnz0NMHgS4MA+gMW3AOsq3zCFrjnm8BDQ8DNLSxaz9GWPUg58+gqwusbI7zXJ6zrfPN73GlGn2X1/Rte0u2y9UxbjW+VLpBzA7fnPAAtvAAyXul1a06YMQmbSF5IfKIEJts7IYnyafAnBcqwoyuYdXq+Yuv5Htb9l6jUAsBY8f7C9y463Yu3aSmCRQoI8MlYh48lbgneauZaEmX8R6YeYb6K9EnSgyG6jZHtpNH71Tc5FEvSRsnHXOzs6EaiLgGMFrtMQLM5dNeK6ARnWXjh+kmENXZG1E6Pz02RBYMaTyNNrVEQeWaFjqOOJoctm4UTmsrdKsFEdvyc2TxngkW/lxObpGRi+bDbXOLH9XjFbbZzYDu4HeP1+a+jJzljznOny09nsGBspFEqMpUupkZuIymL2oPmSgXZObL5kAKOiDADs6TMnNvvQU5uB6peKsrbIJrYxQ9eneneEsI2psA8ArlgikVhtSgbQaLsmNk8ZGLliLPFqgBUprAUvH5J+a+330dMzgEUKCfJIWYWMJ/cD/w/VReSMk9N1nwAAAABJRU5ErkJggg==',
-  },
-  {
-    meta: {
-      widgetName: 'TreeSelect',
-      title: '单项树形选择',
-      desc: '支持单项树形选择',
-      props: {
-        validateStatus: {
-          type: 'ValidateStatus',
-          desc: "input校验状态, 'success' 成功 | 'error'错误",
-          defaultValue: 'success',
-        },
-        data: { type: 'Array<Object>', desc: '生成选择项的数据', defaultValue: false },
-        valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'key' },
-        displayField: {
-          type: 'string',
-          desc: 'data数据的displayValue值的名称',
-          defaultValue: 'title',
-        },
-        translateTreeData: {
-          type: 'boolean',
-          desc: '是否开启嵌套数据生成Tree',
-          defaultValue: false,
-        },
-        start: { type: 'number', desc: '开始展示数据的索引值', defaultValue: 0 },
-        query: { type: 'string', desc: '搜索框关键字', defaultValue: " '' " },
-        mutliple: { type: 'boolean', desc: '是否多选', defaultValue: false },
-        limitCount: { type: 'number', desc: '多选时的最大选中数', defaultValue: 999999 },
-        expandAll: { type: 'boolean', desc: '是否展开所有子元素', defaultValue: false },
-        onlySelectLeaf: { type: 'boolean', desc: '是否只能选择根节点选项', defaultValue: false },
-        label: { type: 'string', desc: '标注文本' },
-        value: {
-          type: 'string | string[] | number | number[]',
-          desc: '指定当前选中的条目的valueField值',
-        },
-        displayValue: {
-          type: 'string | string[] | number | number[]',
-          desc: '指定当前选中的条目的displayField值',
-        },
-        disabled: { type: 'boolean', desc: '是否禁选', defaultValue: false },
-        placeholder: { type: 'string', desc: '占位符' },
-        mode: {
-          type: 'local | remote',
-          desc: '指定检索是本地检索还是远程检索',
-          defaultValue: 'local',
-        },
-        canSearch: { type: 'boolean', desc: '是否支持查询', defaultValue: false },
-        throttle: { type: 'number', desc: '检索数据的延迟,单位为毫秒', defaultValue: 200 },
-        canInput: {
-          type: 'boolean',
-          desc: '是否支持自定义值,只有在canSearch为true时才生效',
-          defaultValue: false,
-        },
-      },
-      events: {
-        onSelect: {
-          desc: '选择树节点时触发',
-          args: [
-            { name: 'Target', desc: '所有选中项的valueField值和dispalyField值', type: 'Object' },
-          ],
-        },
-        onChange: {
-          desc: '选中节点发生改变时触发',
-          args: [
-            { name: 'Target', desc: '所有选中项的valueField值和dispalyField值', type: 'Object' },
-          ],
-        },
-        onQuery: {
-          desc: '搜索框的值改变时触发',
-          args: [{ name: 'query', desc: '搜索框中的值', type: 'string' }],
-        },
-        onRefresh: {
-          desc: '点击刷新按钮时触发',
-          args: [{ name: 'event', desc: '刷新内容事件', type: 'bject' }],
-        },
-      },
-      category: ['数据录入'],
-      theme: {
-        InputTag: {
-          theme: {
-            InputTagWrap: {
-              name: 'Inputtag的外盒',
-              desc: '配置展示选中数据的外盒样式',
-              normal: [
-                ['width'],
-                ['height'],
-                ['margin'],
-                ['padding'],
-                ['color'],
-                ['background'],
-                ['border'],
-                ['boxShadow'],
-                ['borderRadius'],
-                ['font'],
-                ['opacity'],
-              ],
-              hover: [
-                ['color'],
-                ['background'],
-                ['border'],
-                ['boxShadow'],
-                ['borderRadius'],
-                ['font'],
-                ['opacity'],
-              ],
-              active: [],
-              disabled: [],
-            },
-            SwitchIcon: {
-              name: '下拉图标',
-              desc: '配置下拉或清除按钮的图标样式',
-              normal: [['color'], ['background'], ['font'], ['margin'], ['opacity']],
-              hover: [['color'], ['font'], ['opacity']],
-              active: [],
-              disabled: [],
-            },
-          },
-        },
-        Tree: {
-          theme: {
-            TreeWrap: {
-              name: '树形控件外盒',
-              desc: '配置树形组件的外盒样式',
-              normal: [
-                ['width'],
-                ['height'],
-                ['boxShadow'],
-                ['background'],
-                ['opacity'],
-                ['border'],
-                ['borderRadius'],
-                ['margin'],
-                ['padding'],
-              ],
-              hover: [['boxShadow'], ['background'], ['opacity'], ['border'], ['borderRadius']],
-              clicked: [],
-              disabled: [],
-            },
-            TreeItem: {
-              theme: {
-                TreeItemWrap: {
-                  name: '项的外盒',
-                  desc: '配置每一项的外盒',
-                  normal: [
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['padding'],
-                  ],
-                  hover: [['background'], ['border'], ['borderRadius'], ['opacity'], ['color']],
-                  active: [['background'], ['border'], ['borderRadius'], ['opacity'], ['color']],
-                  disabled: [],
-                },
-                SelectedTreeItemWrap: {
-                  name: '选中项的外盒',
-                  desc: '配置选中项的外盒',
-                  normal: [
-                    ['background'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['opacity'],
-                    ['color'],
-                    ['padding'],
-                  ],
-                  hover: [['background'], ['border'], ['borderRadius'], ['opacity'], ['color']],
-                  active: [['background'], ['border'], ['borderRadius'], ['opacity'], ['color']],
-                  disabled: [],
-                },
-                Text: {
-                  name: '项的文本',
-                  desc: '配置每一项文本内容的样式',
-                  normal: [
-                    ['color'],
-                    ['font'],
-                    ['background'],
-                    ['padding'],
-                    ['border'],
-                    ['borderRadius'],
-                  ],
-                  hover: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
-                  active: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
-                  disabled: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
-                },
-                SelectedText: {
-                  name: '选中项的文本',
-                  desc: '配置选中项文本内容的样式',
-                  normal: [
-                    ['color'],
-                    ['font'],
-                    ['background'],
-                    ['padding'],
-                    ['border'],
-                    ['borderRadius'],
-                  ],
-                  hover: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
-                  active: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
-                  disabled: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
-                },
-                Switch: {
-                  name: '控制器配置',
-                  desc: '配置控制树节点展开或隐藏的控制器的样式',
-                  normal: [['color'], ['font']],
-                  hover: [['color'], ['font']],
-                  active: [['color'], ['font']],
-                  disabled: [['color'], ['font']],
-                },
-              },
-            },
-          },
-        },
-      },
-      childrenWidget: [],
-      aliasName: 'SingleTreeSelect',
-    },
-    target: TreeSelect,
-    screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAABPVJREFUeAHtnE1oG0cUx2clraTapjg9BNxeDfWtF1966z2Qowk2reOE2AkkThE4vbnbgA9tPnDwoZEgYKWRD/YtEHzVrRe3pZfGoe0hhFZVyIfTJo5Wu/JknpIBab3yaJWdXVL9BcvMvjfznv377wfatyODiU+xWPzItu1LnPPPxO4I2fDRRqBiGEY5k8ksTE9P/2UQ/FqttiWMy0KAm3NzcxVtqRGY5fP5EcH6C8H6y2w2O24UCoU1weXX2dnZb8EnOgKC+1ci2ycJuuzQkR9damQiAsSc2NMpwYEkHgLEPhFPamSVBCCAJBFTCwFiAi/TQgBJIqYWAsQEXqaFAJJETC0EiAm8TAsBJImYWggQE3iZFgJIEj22C4vL6wtfLxe908lGPq/duw8BvEQC7o8MfzjNOfv4gnXNklOpTzbySVunNtXJAXt3BHK5iZeW9f3RF9z+8cLitT9plnjI9vlQIvMp+VRRcAaoCHXht6wzD1NG8oh4qnmJNuqTrYupDAJ0Q0njGAgQAlxxCTrs8sYdg7EF2qhPtm5CQ4BuKB0w5urV9fee79m3OTdufnfx/A+0UZ9s5DtgatMFAVSEFP7Kzt9Fw2D3Ll88/40cSn2ykU/aOraoiHVEo92Biph2xOoEuASpGWkdAQG04lUHhwBqRlpHQACteNXBIYCakdYREEArXnVwCKBmpHUEBNCKVx2cBKiIb2RYE6BmFeqIN8wrCfGuepneVw81OoIpCRDzJnss0FCyCnUAHfkEX1TNXi/QoOhYohQqY1WwtiVKqsHwgwAIgAAIgAAIgMD/k4B4iyLaz/b29oGrMsfGxpp/U1zjoqXB8GJW1MC9+fAwzksk4n0IEDFwb7rAb0eXSqVD9foArw86vtfy9AvTSKd3jampqafeZNjfTyCwACw1lMuY7FyGZZ/vDydezR7kg4wPrQjfop8ftnYCgQWo7z5ZSg98MCpevTvWHur1nsHZrUfV+0t+Ptj2Ewh8D5iZmak9rt4/Lh6nlrzhOOM3/tv558T8/Lzt9WHfn0BgASgMARYinGwVYY+z/O+//XJa/OCT458KVj8CPQlAgUiEqmGfEiJcF2tyrvxx9+ezlmW5fklg60wg8D2gNVRuorkG6kyrDf1gBHo+A4KlwehOBCBAJzIR2SFARKCRBgRAAARAAARAAARAoJVA5DXh1uRv019bv+1bj5AxJyeONv+3sMfJ+GG1+B4QFske40CAHsGFNQ0ChEWyxzhv9TS0l5xHJicPmbtpbppp32u449QNZ6Bu3Flb64uacuQCmG4yxzLuOZc1fGvKLMMGTTfRNzXlyAUYHkguPXvZGE2a5rGG216/SaZSzHXdW/bh4b6pKUd+D1hdXa3V/n10vOE4pUQyST9w19yo7zrOjQfvZ09srqz0TU05cgHovrG5uWkLEU6Ko72USpksJY78PdfJ71QfnP6pUOirmnIsAkgR0nu1U+JMuC6EuPK0Onq2XC63X5N6ucu/Y3Mivwe08tnY2KDf1ezrmnJsZ0CrEP3chwAxqw8BYhYA6UEABEAABEAABECgPwm8szXhbuXa2tryrTvI+ePj400GYY+T8VUtvgeoCGn2QwDNgFXhIYCKkGY/BNAMWBUeAqgIafZDAM2AVeEhgIqQZj8E0AxYFR4CqAhp9kMAzYBV4SGAipBmPwTQDFgVHgKoCGn2vwI8ZJYTBLgZjgAAAABJRU5ErkJggg==',
   },
   {
     meta: {
@@ -15107,6 +14079,7 @@ export default [
           defaultValue: 'success',
         },
         data: { type: 'Array<Object>', desc: '生成选择项的数据', defaultValue: false },
+        createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', defaultValue: true },
         valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'key' },
         displayField: {
           type: 'string',
@@ -15123,7 +14096,7 @@ export default [
         mutliple: { type: 'boolean', desc: '是否多选', defaultValue: true },
         limitCount: { type: 'number', desc: '多选时的最大选中数', defaultValue: 999999 },
         expandAll: { type: 'boolean', desc: '是否展开所有子元素', defaultValue: false },
-        onlySelectLeaf: { type: 'boolean', desc: '是否只能选择根节点选项', defaultValue: false },
+        onlySelectLeaf: { type: 'boolean', desc: '是否只能选择根节点选项', defaultValue: true },
         label: { type: 'string', desc: '标注文本' },
         value: {
           type: 'string | string[] | number | number[]',
@@ -15173,9 +14146,10 @@ export default [
       category: ['数据录入'],
       theme: {
         InputTag: {
+          name: '多选树形选择的展示框',
           theme: {
             InputTagWrap: {
-              name: 'Inputtag的外盒',
+              name: '展示框的外盒',
               desc: '配置展示选中数据的外盒样式',
               normal: [
                 ['width'],
@@ -15248,6 +14222,7 @@ export default [
               disabled: [],
             },
             Menu: {
+              name: '多选展示框的弹开菜单',
               theme: {
                 MenuWrap: {
                   name: '菜单外盒',
@@ -15268,6 +14243,7 @@ export default [
                   disabled: [],
                 },
                 MenuItem: {
+                  name: '菜单项的配置',
                   theme: {
                     MenuItemWrap: {
                       name: '项的外盒',
@@ -15305,6 +14281,7 @@ export default [
           },
         },
         Tree: {
+          name: '弹开树形控件配置',
           theme: {
             TreeWrap: {
               name: '树形控件外盒',
@@ -15325,6 +14302,7 @@ export default [
               disabled: [],
             },
             TreeItem: {
+              name: '树形控件项配置',
               theme: {
                 TreeItemWrap: {
                   name: '项的外盒',
@@ -15404,7 +14382,7 @@ export default [
     },
     target: TreeSelect,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+      'data:image/png;base64,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',
   },
   {
     meta: {
@@ -15487,6 +14465,34 @@ export default [
               hover: [['background'], ['boxShadow'], ['border'], ['opacity']],
               disabled: [['background'], ['border']],
             },
+            UploadList: {
+              name: '上传列表',
+              theme: {
+                UploadLiType: {
+                  name: '上传文件列表',
+                  desc: '上传列表的行样式',
+                  normal: [
+                    ['width'],
+                    ['height'],
+                    ['background'],
+                    ['border'],
+                    ['color'],
+                    ['fontSize'],
+                  ],
+                  hover: [['border'], ['background'], ['color']],
+                },
+                UploadListSuccessIcon: {
+                  name: '上传成功图标样式',
+                  desc: '上传成功时列表图标的样式',
+                  normal: [['color'], ['fontSize']],
+                },
+                UploadListFailedIcon: {
+                  name: '上传失败图标样式',
+                  desc: '上传失败时列表图标的样式',
+                  normal: [['color'], ['fontSize']],
+                },
+              },
+            },
           },
         },
         PictureTypeUpload: {
@@ -15502,6 +14508,34 @@ export default [
               hover: [['background'], ['opacity'], ['border']],
               disabled: [['background'], ['color'], ['border']],
             },
+            UploadList: {
+              name: '上传列表',
+              theme: {
+                UploadLiType: {
+                  name: '上传文件列表',
+                  desc: '上传列表的行样式',
+                  normal: [
+                    ['width'],
+                    ['height'],
+                    ['background'],
+                    ['border'],
+                    ['color'],
+                    ['fontSize'],
+                  ],
+                  hover: [['border'], ['background'], ['color']],
+                },
+                UploadListSuccessIcon: {
+                  name: '上传成功图标样式',
+                  desc: '上传成功时列表图标的样式',
+                  normal: [['color'], ['fontSize']],
+                },
+                UploadListFailedIcon: {
+                  name: '上传失败图标样式',
+                  desc: '上传失败时列表图标的样式',
+                  normal: [['color'], ['fontSize']],
+                },
+              },
+            },
           },
         },
         AreaTypeUpload: {
@@ -15511,10 +14545,38 @@ export default [
           props: { areaType: 'area' },
           theme: {
             UploadAreaType: {
-              name: '拖拽区域',
+              name: '文件上传区域',
               desc: '区域拖拽上传类型的样式配置',
               normal: [['width'], ['height'], ['fontSize'], ['color']],
               disabled: [['color']],
+            },
+            UploadList: {
+              name: '上传列表',
+              theme: {
+                UploadLiType: {
+                  name: '上传文件列表',
+                  desc: '上传列表的行样式',
+                  normal: [
+                    ['width'],
+                    ['height'],
+                    ['background'],
+                    ['border'],
+                    ['color'],
+                    ['fontSize'],
+                  ],
+                  hover: [['border'], ['background'], ['color']],
+                },
+                UploadListSuccessIcon: {
+                  name: '上传成功图标样式',
+                  desc: '上传成功时列表图标的样式',
+                  normal: [['color'], ['fontSize']],
+                },
+                UploadListFailedIcon: {
+                  name: '上传失败图标样式',
+                  desc: '上传失败时列表图标的样式',
+                  normal: [['color'], ['fontSize']],
+                },
+              },
             },
           },
         },
@@ -15530,18 +14592,54 @@ export default [
               normal: [['width'], ['height'], ['fontSize'], ['color']],
               disabled: [['color']],
             },
+            UploadDefaultType: {
+              name: '文件上传区域',
+              desc: '默认上传框的样式',
+              normal: [['width'], ['height'], ['boxShadow'], ['border']],
+              hover: [['boxShadow'], ['border']],
+              disabled: [['border'], ['cursor']],
+            },
+            UploadList: {
+              name: '上传列表',
+              theme: {
+                UploadLiType: {
+                  name: '上传文件列表',
+                  desc: '上传列表的行样式',
+                  normal: [
+                    ['width'],
+                    ['height'],
+                    ['background'],
+                    ['border'],
+                    ['color'],
+                    ['fontSize'],
+                  ],
+                  hover: [['border'], ['background'], ['color']],
+                },
+                UploadListSuccessIcon: {
+                  name: '上传成功图标样式',
+                  desc: '上传成功时列表图标的样式',
+                  normal: [['color'], ['fontSize']],
+                },
+                UploadListFailedIcon: {
+                  name: '上传失败图标样式',
+                  desc: '上传失败时列表图标的样式',
+                  normal: [['color'], ['fontSize']],
+                },
+              },
+            },
           },
         },
       },
       theme: {
         UploadDefaultType: {
-          name: 'input文件拖入框',
+          name: '文件上传区域',
           desc: '默认上传框的样式',
           normal: [['width'], ['height'], ['boxShadow'], ['border']],
           hover: [['boxShadow'], ['border']],
           disabled: [['border'], ['cursor']],
         },
         UploadList: {
+          name: '上传列表',
           theme: {
             UploadLiType: {
               name: '上传文件列表',
@@ -15566,7 +14664,7 @@ export default [
     },
     target: Upload,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAAaCAYAAAAe97TpAAAAAXNSR0IArs4c6QAAAtBJREFUWAntl01oE0EUx7ubxI8chIiCHjRH0aIobVEQUVARRMSDgkIwGvIBHhQverOtVSoWPZsPkkYiSOitByFiQfAiLSQaFT9O4sGLShQSGvLlb0MK6bBJN8w2sOLC5M28/5t9/zdv5mV2IBaLHYxEIiPhcLgxwGMlCe9vtGMKP6cbjcbnUCj0UQvCSg/cB1VVLWsrn7MScZEr/Auq3W73ioDFxm61Wq0mLUZapPv1n8iEvZWJvWJ4smMO3QjvuEHRGEbWFUVZ4BDe8/v9Wdl3C/NXJxMctqs4ytAWOHPnCOA87U29Xp8DCwkkZIdu0zMByf2wuk0GDghlex5sFuwVWXodDAbNqoqrkonrrPqkEEBztdHl2VIPGVxrKsz5Ma86sfJKNBodgtdR+s878SOIDPgJbgr7tDmd7HrQm5MJtsluAshD6hlZyHIOvnQigc0nbN7XarUMc3LxeHxXJ1uDevkzAYnNVLgXEJui8jxA1pecp1KpDaVS6bHT6bzo8Xj+aHpsfiGOE4xKEDeZO5dMJge9Xu/PpXk9SvlMVCqVOxCaCQQCU+0BoFMI4AnyZLFYnNfG7eQ0Ww73JPrZcrk82o712Jc/E5A5QkuIjqlA4xDcATYNtkkbizbauDX3kB5mUCefCYhugch30SG6bQ6H4wz63/SfIreLNtq4NXerHmZQZ0om8jjTqtKyh61y2efzfWhtox+U10vLDFoD/gCHsXmnhxnUyWeClUxA4m46nV6v5xS8Cl7Vw6hqTvQT4NN6uEGdW+FFOVZJ6u7Efp+ByE6cjtlstiz9xW4ECGwdNkNkYZx+lqxd6GbfDYN/gZIu/z0BibMEEsDZFYjtQa7t5hibRci/pd1nbrybrQHM/f/LzsAq9cNEvjr1g+UKPuSr0woO+gE3MzHBjXJjP7yZ7UPjTXFIKNT3NYVCIcoV+RZV4yXysFUkN+FHLpfr1F+2/OkPfg65aAAAAABJRU5ErkJggg==',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGIAAAAoCAYAAAAFZi8EAAAAAXNSR0IArs4c6QAAAmJJREFUaAXtm7FuGkEQhucACWiOElmxhWPSnAtbjniAlFi8Q0p4gjxElMYtdORBYpc2smwJXFDYMhAkg6CBCAHV+eYsQrQ6eZfodjmhf6QTt7OzM+vvZxc3Y5Fn9Xr9w3K5/OG67hdvuMc+mF4CqVSKstksnZ19pnQ6TRaLsFgsbi3LuvCE+FmpVF70bmE72afTP+52KgdXnc/n1Ok8U7vdpmLxnBJ8EliEcrn8PXgJvDoI8ClwnGM/9f39HcX4OuKToKMYcsoJHB5+pOFwSDEvdG9XryM5hu1H8Mnwfhp8Iba/G+wAQkTlO8BXEywCBCBEBETgLUAICBERAhHZBk4EhIgIgQ230Wq1iJ+wLRF2wl3O1+126eHhTQTbtimXy4X25+JqUkQ5Ho/p5ub6bzS/sy8sgxCKJEejER0d5Skej/sPv7MvLMPVpEjScRw/stfreZ8uFQoFxZVqYTgRapy0R0EI7YjVCkAINU7aoyCEdsRqBSCEGiftURBCQPz09Ej9/m/Bqz7ktZxjU8O/rwKxRqNBmUyG9vcPhJm34enpSaB/5Ww2mzSZTCif/7RyKX1CCCVM66BNAa9Xvv+Gq+l9PsZmcSICUM9mM7q8/BUwI3fx2v8xCCFQs+0MTacTGgwGwoz6kHNsahBCIFYqlQSPmSF+I8xwllaBEFJEZgIghBnO0ioQQorITACEMMNZWgVCSBGZCYAQZjhLq7AQL9VqFX1zUlR6AriFi/vpYl7b1pX3fNVTBlllBLiPjpsaE8lk8hs3M9ZqNdrlZkYZENPzYjOjxRtAe69pGci/jv5t730FH5Cl9CKkbTsAAAAASUVORK5CYII=',
   },
   {
     meta: {
@@ -15636,13 +14734,34 @@ export default [
           hover: [['background'], ['boxShadow'], ['border'], ['opacity']],
           disabled: [['background'], ['border']],
         },
+        UploadList: {
+          name: '上传列表',
+          theme: {
+            UploadLiType: {
+              name: '上传文件列表',
+              desc: '上传列表的行样式',
+              normal: [['width'], ['height'], ['background'], ['border'], ['color'], ['fontSize']],
+              hover: [['border'], ['background'], ['color']],
+            },
+            UploadListSuccessIcon: {
+              name: '上传成功图标样式',
+              desc: '上传成功时列表图标的样式',
+              normal: [['color'], ['fontSize']],
+            },
+            UploadListFailedIcon: {
+              name: '上传失败图标样式',
+              desc: '上传失败时列表图标的样式',
+              normal: [['color'], ['fontSize']],
+            },
+          },
+        },
       },
       childrenWidget: [],
       aliasName: 'ButtonTypeUpload',
     },
     target: Upload,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAAAoCAYAAAABk/85AAAAAXNSR0IArs4c6QAABC1JREFUaAXtm1tolEcUx3+75mJsLbUqWg1qsQ+mBWNBqaBiqLb40FYbKwUVbTAURaRGSLBBEC9YbfvijfQhQksLVh98EH3yJRQfLC2W1ntLgsZ4qXejQdHoeo6zy7fL7vclu/Hb+br5DiQ7c87MmZn/mTlzziQbQai6NlbeDd9IsSoW43XlheQPApEIV0RzSxE0HGiOdEQU/MfwFzFe82fIUGtGBCLcKobK6POdH4KfESNfmYK5Yh+VQap8HShU7oVAVTT0+V74+CtT7PUEhGQRgdAAFsHXoUMDhAawjIDl4QN3AirehElv9Q2VcpdUclw5qP4gUeAMMO8DWFKdO0RlpfBdI3z+abqOxZ/AwrnpfJucwBmgr2DMmg6DyuDX39I1VYyHM/+m821y5EmicEjeWfjwPThxFtouSpr5lbO2AQNg8Mswc6q4uLcdfqK0/xD8cSJRy99nQRlg8kQYNQL27DMAduizV5zeGAOP5dHr1D8JTupn14PUer5qBWOAkhKoEb//3w34/W8D344fHBgbV8LdTkjmOVJ7pUAaQMEcPdIdlOs34ZHs5mSq/Qw0+jnbarh6GUfiN5y6n8oK2H/Y3A/J/ZLLDx/C01gyx/9yIA0wZhQ0bXZffP0WONfmyKe+A3NmCnhPHd6ujTB8qFPX0tL55ieV69TqNkHrBaeej1IgDXDpKuz80X357Zcc2auvwKqlcFJ8+/0u0LrS7p+gRB7clarnQLGsdJ9ctF509ZqX1B9ZIA3wQFzB6SzCxbv3YctuWLHIAen4SVMuFXe2ehk074VjfzryoJQCaYBswLkjF+varWb3Z+o3bbLZ/a3tMHJ4phaGp5e3PA/nnf73BlDEOuUEuNHsacYA29e7tTD8Ravhnoce7965SwvCAF7Lb5acQBO0TFQk0dGXNaCnqEvuDxtU8AZoE9eTidQoa2qhrAwav81/+JmYUzxSTlQL73PEMLmg6+UJ4l3QfEBJ34rWrYKJE2DTdnMCjCT/vwv+BGgUpHdEnURCNQvgyFGYMcXkDJpPXJOkziZZMcDY0VDkMvJLg2CgZLHjx3rD8uQJnO/wbqPS9suwtclEQB/PhnnvQ6no/+Ug3Ljdc3+/W0Q+Wpb/4GvPtvQsNduFdt6DxXWpveq/MHobvk7lJ9eGDgF9ttDw9IIkdE0/Z5dzJOt6EWWXffgiVLvr2CB+tziepbq38pboCciFbsqu3/a9+avbckncyuXNKZukL5cxvfpYOQFeE+qLTMNKJLrpln856w1p++4cDdkb/b1pY+UE9GZiubTJFsxs2+cyp576FHwY2hMAtuWhASxbIDRAaADLCFgePjwBoQEsI2B5+Gj8O0uWp9E/h1fs1QW19M/lB2LVLVHJxBoke7wViOn0p0kI5op9VL8qKc8ylXIc9obuyP8doBgr1oq5Yv8MBondA5KVCuQAAAAASUVORK5CYII=',
   },
   {
     meta: {
@@ -15712,13 +14831,34 @@ export default [
           hover: [['background'], ['opacity'], ['border']],
           disabled: [['background'], ['color'], ['border']],
         },
+        UploadList: {
+          name: '上传列表',
+          theme: {
+            UploadLiType: {
+              name: '上传文件列表',
+              desc: '上传列表的行样式',
+              normal: [['width'], ['height'], ['background'], ['border'], ['color'], ['fontSize']],
+              hover: [['border'], ['background'], ['color']],
+            },
+            UploadListSuccessIcon: {
+              name: '上传成功图标样式',
+              desc: '上传成功时列表图标的样式',
+              normal: [['color'], ['fontSize']],
+            },
+            UploadListFailedIcon: {
+              name: '上传失败图标样式',
+              desc: '上传失败时列表图标的样式',
+              normal: [['color'], ['fontSize']],
+            },
+          },
+        },
       },
       childrenWidget: [],
       aliasName: 'PictureTypeUpload',
     },
     target: Upload,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAAXNSR0IArs4c6QAAAsNJREFUaAXtm7+LE0EUx7ObTUi0spAgHHrCCcErrrE+/wQLO4tIQn7AXXNcoeBfIFhZXJFfBi20Ew78B7S2EPW000gOT0VLLUKS9fNC5oplU8Tcze6OMzDMzpvdfe/73nx3dt8kqRSl1+vlpG2329vNZtOXKn0pBvS/tlqtPd/3HcHjAnJlOBx+7HQ6a5PJ5IcIDSsXHMd5TQWz7zoAvgHQPQT79Xp92zCwMntXC4XC0WAw2ALj+jTMTNtMPp/Plkql36YBFjwE9TLRfUcdpJjfj6WaCDQMkwfq0mzgdtgJpsh4Rl0SLJ7rukYDVQEbj8d9OZ5yWAlNbqFtf4rPctjQMFsOGxrYY1iWw7jC6OXJcvh4sht6YDlsOWzY1Lbv0oYFdC4c+z081zUJH4iUw7MM6VXP895XKpVPOnyp1mFPvodFIRlLba+WZElvklq6PxqNdlD9UAdg8K2KHsthHd6OQofisFer1Z5EYYBunSThv4jOSDisG6zo08Jh+QbFs+eDAJleKzPZxW63ey04zkPtGzPvMChfpq/lexhg9zCyPs9QntS7PKl3Q8YfILsTIv9nkRYOk+R/C6gXQSuRrSErEv0D2s/BcfofQmRLiRSHnSjWYXTelXUYI3bglpZ1WHnLrsPKE6a1WjgcJ6cpDtt1WEdU8PZP9BzQ/tKhT3RoWYfngeGlosuYVG1FcdjuD2tzeUSK7DockeNPXa3l8Km7OCYKLIdjEogTN8Ny+MRdGtMbWg7HNDBLm2U5vLQLE3IDy+GEBGphM/9bDjv8weMR7ipms9lb5XK5v7DrEnABOXCXdNJETJVE/FME+VwuV+X/S7Kb+D0BGBYyEYzPuOAcvzjYkgifaTQaf9jU2mCf5006nb5erVZfIX/JSZtJ72cymXX4WySobaK84QpYcRfCTZojOTapEMSzzNrn7HNdoT38C3EgHuewecblAAAAAElFTkSuQmCC',
   },
   {
     meta: {
@@ -15782,10 +14922,31 @@ export default [
       category: ['数据录入'],
       theme: {
         UploadAreaType: {
-          name: '拖拽区域',
+          name: '文件上传区域',
           desc: '区域拖拽上传类型的样式配置',
           normal: [['width'], ['height'], ['fontSize'], ['color']],
           disabled: [['color']],
+        },
+        UploadList: {
+          name: '上传列表',
+          theme: {
+            UploadLiType: {
+              name: '上传文件列表',
+              desc: '上传列表的行样式',
+              normal: [['width'], ['height'], ['background'], ['border'], ['color'], ['fontSize']],
+              hover: [['border'], ['background'], ['color']],
+            },
+            UploadListSuccessIcon: {
+              name: '上传成功图标样式',
+              desc: '上传成功时列表图标的样式',
+              normal: [['color'], ['fontSize']],
+            },
+            UploadListFailedIcon: {
+              name: '上传失败图标样式',
+              desc: '上传失败时列表图标的样式',
+              normal: [['color'], ['fontSize']],
+            },
+          },
         },
       },
       childrenWidget: [],
@@ -15793,7 +14954,7 @@ export default [
     },
     target: Upload,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+      'data:image/png;base64,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',
   },
   {
     meta: {
@@ -15862,12 +15023,40 @@ export default [
           normal: [['width'], ['height'], ['fontSize'], ['color']],
           disabled: [['color']],
         },
+        UploadDefaultType: {
+          name: '文件上传区域',
+          desc: '默认上传框的样式',
+          normal: [['width'], ['height'], ['boxShadow'], ['border']],
+          hover: [['boxShadow'], ['border']],
+          disabled: [['border'], ['cursor']],
+        },
+        UploadList: {
+          name: '上传列表',
+          theme: {
+            UploadLiType: {
+              name: '上传文件列表',
+              desc: '上传列表的行样式',
+              normal: [['width'], ['height'], ['background'], ['border'], ['color'], ['fontSize']],
+              hover: [['border'], ['background'], ['color']],
+            },
+            UploadListSuccessIcon: {
+              name: '上传成功图标样式',
+              desc: '上传成功时列表图标的样式',
+              normal: [['color'], ['fontSize']],
+            },
+            UploadListFailedIcon: {
+              name: '上传失败图标样式',
+              desc: '上传失败时列表图标的样式',
+              normal: [['color'], ['fontSize']],
+            },
+          },
+        },
       },
       childrenWidget: [],
       aliasName: 'BothTypeUpload',
     },
     target: Upload,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGoAAAAoCAYAAAAWsW/wAAAAAXNSR0IArs4c6QAAAtVJREFUeAHtXM9rE1EQ/l6IJGcpmFiLeKgHPYhSBBElF/Gm4E0PBkGSgyh6aI+Cx9aLRxO8pCjeqnjzxyFUQRAR/BNEY3LynLSFdaa7wZA+X7PLe+zbZea0nTcz+8339b0N204UyDqdzvxoNHocBEGNfqyyL4fWV0p1S6XScr1e7+n6u3Y7OLIDrNFaLQjS5UEp9AlHtwisbDxTvxSLNBwOv1ITT0io9WazyQG5s1arVaUeb1KP98vl8tK0WCzSNvAdAQ561bzCnwPAqSLvJBap0WisegXQMpjoF3C13W6De6byNyZvsbuTfBOJARKmHYW1Ah93vJMmQef5mnvlnjU96nyasFRctQLdtprX405HadTrnudw2s8kHdaxj7GxUGIZYECEyoBIDFGEEqEywkBGYMqOEqEywkBGYMqOyohQ9CrJbIPBIDBHhKuVSkXxlev4WbCkGXP9Snj3l2/sothXKLu3y3e1i2eBsVC9AbD5xV6/cvRZ4vL4MeDerX/F+Jp9tkyEssTkiUXgwydgi17Bj7bCa/bZMjn6LDH5+l1Y6PwSvfCmp/rTF5YKR2VkR9nl01k1EcoZtXYLi1B2+XRWTYRyRq3dwiKUXT6dVROhYlJ76QJw7kzMpIlwzuUacU0+nsdk7G4d+NEDPn/TJz5/FX4816/Sf9RcBY7OA+8//i9C7xeh9Lwk9r7dTJxqTJSjz0iPP4uyoxJocWgOePQgQSKlcG4SE6FisvbzN7BwGDh9MmbiRDjXiGv7CjX+O9OshV3Hz4rDVdydh64qm+vKM8rMjzerIpQ3UpiBiFBmfrxZFaG8kcIMRIQy8+PNqgjljRRmICKUmR9vVlmoPo9NeoPIMZCo1z3jr9HMrOO7JyvP2Ao8gMyzrclKZC+Le+WeNch1Pk1YKq5ukafEediaZ1t5bDKv04fTw9bTdNMrmpVthcs+DlszNsWA5esLQtl8/vqCv5ouyP4AgUX3AAAAAElFTkSuQmCC',
   },
 ];

@@ -4,8 +4,8 @@
   "desc": "用于页面和区块的加载中状态",
   "props": {
     "size": {
-      "type": "small|default|large",
-      "desc": "Loading尺寸大小",
+      "type": "sizeType",
+      "desc": "Loading尺寸大小 small|default|large",
       "defaultValue": "default"
     },
     "delay": {
@@ -33,6 +33,9 @@
       "type": "any",
       "desc": "与children属性一样，在Loading组件内嵌入内容"
     }
+  },
+  "type": {
+    "sizeType": ["default", "small", "large"]
   },
   "category": ["其他"]
 }

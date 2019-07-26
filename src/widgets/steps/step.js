@@ -111,18 +111,18 @@ const Content = CSSComponent({
   tag: 'div',
   className: 'StepContent',
   normal: {
-    selectNames: [['margin']],
+    selectNames: [],
     getCSS(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
       const { size, stepType, orientation, desAlign } = propsConfig;
       const dir = orientation === 'horizontal' ? 'top' : 'left';
-      const top =
-        stepType === 'dot' ? px2remcss(10) : size === 'normal' ? px2remcss(30) : px2remcss(20);
-      const position = orientation === 'horizontal' ? `top: ${top};` : `left:${top};`;
+      const position = orientation !== 'horizontal' ? `left:${px2remcss(5)};` : '';
+      const top = stepType === 'dot' ? 20 : size === 'normal' ? 40 : 30;
       const textAlign = orientation === 'horizontal' && desAlign === 'center' ? 'center' : 'left';
-      const transform =
-        textAlign === 'center' ? `transform: translateX(-40%);width:${px2remcss(150)};` : '';
-      return `margin-${dir}: ${px2remcss(10)};${position}text-align: ${textAlign};${transform}`;
+      const transform = textAlign === 'center' ? 'transform: translateX(-40%);' : '';
+      return `width:${px2remcss(200)};margin-${dir}: ${px2remcss(
+        top
+      )};${position}text-align: ${textAlign};${transform}`;
     },
   },
   css: css`
@@ -769,7 +769,7 @@ class Step extends React.Component<StepProps, StepState> {
   getContent() {
     const { title, description, size, orientation, desAlign, stepType, stepStatus } = this.props;
 
-    const contentThemeProps = this.props.getPartOfThemeProps('StepContent', {
+    const contentThemeProps = this.props.getPartOfThemeProps('StepOutContainer', {
       props: {
         size,
         stepType,

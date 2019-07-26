@@ -25,6 +25,7 @@ type TypeProps = {
   placeholder?: string,
   format?: string,
   disabled?: boolean,
+  createPortal?: boolean,
   readOnly?: boolean,
   onChange?: Function,
   onFocus?: Function,
@@ -131,7 +132,7 @@ class DateInput extends Component<TypeProps, TypeState> {
       >
         <Trigger
           themePass
-          createPortal={true}
+          createPortal={this.props.createPortal}
           popup={
             <React.Fragment>
               <PanelWrap themeProps={themeProps} {...addMouseEvent(this)}>

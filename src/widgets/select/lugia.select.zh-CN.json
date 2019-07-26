@@ -17,6 +17,11 @@
       "desc": "是否支持查询",
       "defaultValue": false
     },
+    "createPortal": {
+      "type": "boolean",
+      "desc": "是否全局弹出下拉框",
+      "defaultValue": true
+    },
     "throttle": {
       "type": "number",
       "desc": "查询的延迟时间，单位为毫秒",

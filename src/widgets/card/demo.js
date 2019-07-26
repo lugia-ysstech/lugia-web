@@ -80,17 +80,11 @@ export default () => {
   const view = {
     [Widget.Card]: {
       Container: {
-        normal: { width: 500, height: 200 },
-        hover: {
-          background: {
-            color: 'red',
-          },
-        },
-      },
-      CardTitleTipLine: {
         normal: {
-          width: 8,
-          height: 30,
+          width: 500,
+          height: 200,
+        },
+        hover: {
           background: {
             color: 'red',
           },
@@ -121,7 +115,7 @@ export default () => {
       },
       CardDescription: {
         normal: {
-          color: 'yellow',
+          color: 'blue',
         },
       },
       CardTitle: {
@@ -129,9 +123,6 @@ export default () => {
           width: 100,
           height: 20,
           color: 'pink',
-          background: {
-            color: 'red',
-          },
         },
       },
       CardOperation: {
@@ -175,6 +166,9 @@ export default () => {
         normal: {
           width: 160,
           height: 100,
+          margin: {
+            top: 20,
+          },
         },
       },
 
@@ -196,7 +190,13 @@ export default () => {
           height: 180,
         },
       },
-
+      CardAvatarContainer: {
+        normal: {
+          margin: {
+            top: 10,
+          },
+        },
+      },
       CardAvatar: {
         SrcAvatar: {
           normal: {
@@ -274,7 +274,7 @@ export default () => {
           <Card
             type={'tip'}
             title={'this is title'}
-            content={[<div>{'this is description'}</div>, <div>{'this is description'}</div>]}
+            description={[<div>{'this is description'}</div>, <div>{'this is description'}</div>]}
             shadow={'always'}
           />
         </Wrapper>

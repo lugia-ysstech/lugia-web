@@ -346,15 +346,19 @@ class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
                         transform: rotate(359deg);
                       }
                   `;
-              return css`
+              const commonCSS = `
                 position: absolute;
                 user-select: none;
                 text-align: center;
                 font-size: 1.4rem;
                 left: ${px2remcss(3.5)};
-                z-index: ${index};
-                animation: ${loading} 1s linear infinite;
-              `;
+                z-index: ${index};`;
+              return pending
+                ? css`
+                    ${commonCSS};
+                    animation: ${loading} 1s linear infinite;
+                  `
+                : `${commonCSS}`;
             },
           },
         },

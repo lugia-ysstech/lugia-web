@@ -19,7 +19,7 @@
     },
     "size": {
       "type": "InputSize",
-      "desc": "可配置三种尺寸大小的input ('大' , '默认' , '小'),高度分别为 40px、32px 和 24px。",
+      "desc": "可配置三种尺寸大小的input ('large' , 'default' , 'small'),高度分别为 40px、32px 和 24px。",
       "defaultValue": "default"
     },
     "placeholder": {
@@ -27,7 +27,7 @@
       "desc": "input输入提示信息"
     },
     "amountPrefix": {
-      "type": "string",
+      "type": "PrefixType",
       "desc": "货币种类,默认'¥'",
       "defaultValue": "¥"
     },
@@ -114,6 +114,7 @@
   },
   "type": {
     "InputSize": ["small", "default", "large"],
+    "PrefixType": ["¥", "$"],
     "ChangeType": {
       "newValue": "string",
       "oldValue": "string",
@@ -128,16 +129,7 @@
         "Container": {
           "name": "输入框外部容器",
           "desc": "输入框外部容器",
-          "normal": [
-            ["width"],
-            ["height"],
-            ["background"],
-            ["border"],
-            ["borderRadius"],
-            ["boxShadow"],
-            ["margin"],
-            ["padding"]
-          ]
+          "normal": [["width"], ["height"], ["margin"], ["padding"]]
         },
         "Input": {
           "name": "金额输入框主体",
@@ -150,26 +142,19 @@
             ["color"],
             ["background"],
             ["border"],
-            ["cursor"]
-          ],
-          "hover": [
-            ["width"],
-            ["height"],
-            ["padding"],
-            ["border"],
-            ["borderRadius"],
             ["cursor"],
-            ["background"]
+            ["opacity"]
           ],
+          "hover": [["border"], ["borderRadius"], ["cursor"], ["background"], ["opacity"]],
           "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"]],
-          "disabled": [["cursor"], ["border"], ["borderRadius"], ["background"]]
+          "disabled": [["cursor"], ["border"], ["background"]]
         }
       }
     },
     "AmountInputPrefix": {
       "name": "金额输入框主体前缀",
       "desc": "金额输入框主体前缀",
-      "normal": [["width"], ["height"], ["fontSize"], ["font"], ["color"]],
+      "normal": [["fontSize"], ["font"], ["color"]],
       "hover": [],
       "clicked": [],
       "disabled": []

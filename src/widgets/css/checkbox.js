@@ -26,6 +26,7 @@ const {
   borderColor,
   disableColor,
   borderDisableColor,
+  padding,
 } = colorsFunc();
 
 export type CSStype = {
@@ -148,7 +149,13 @@ export const CheckBoxLabelSpan = CSSComponent({
     selectNames: [['color'], ['font']],
     defaultTheme: {
       color: blackColor,
-      font: { fontSize: 14 },
+      font: { size: 14 },
+      padding: {
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: padding,
+      },
     },
   },
   hover: {

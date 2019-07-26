@@ -4,7 +4,7 @@ import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import React, { Component } from 'react';
 import Widget from '../consts/index';
 import ThemeHoc, { addMouseEvent } from '@lugia/theme-hoc';
-import { fixControlledValue } from '.././utils';
+import { fixControlledValue } from '../utils';
 import type { InputSize, InputValidateType, ValidateStatus } from '../css/input';
 import {
   DefaultHelp,
@@ -51,6 +51,7 @@ const CommonInputStyle = CSSComponent({
       ['borderRadius'],
       ['cursor'],
       ['padding'],
+      ['opacity'],
     ],
     defaultTheme: {
       cursor: 'text',
@@ -68,13 +69,7 @@ const CommonInputStyle = CSSComponent({
         : isValidateSuccess(validateStatus, validateType, 'inner')
         ? dangerColor
         : blackColor;
-      const theHeight = height
-        ? height
-        : size === 'large'
-        ? LargeHeight
-        : size === 'small'
-        ? SmallHeight
-        : DefaultHeight;
+      const theHeight = height ? height : size === 'large' ? 40 : size === 'small' ? 24 : 32;
       const paddingLeft = prefix ? 30 : width && width < 200 ? width / 20 : 10;
       const paddingRight = width && width < 200 ? 15 + width / 10 : 35;
       return {
@@ -89,13 +84,12 @@ const CommonInputStyle = CSSComponent({
   },
   hover: {
     selectNames: [
-      ['width'],
-      ['height'],
       ['padding'],
       ['border'],
       ['borderRadius'],
       ['cursor'],
       ['background'],
+      ['opacity'],
     ],
     defaultTheme: {
       border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
@@ -118,7 +112,7 @@ const CommonInputStyle = CSSComponent({
     },
   },
   disabled: {
-    selectNames: [['cursor'], ['border'], ['borderRadius'], ['background']],
+    selectNames: [['cursor'], ['border'], ['background']],
     defaultTheme: {
       cursor: 'not-allowed',
       background: { color: disableColor },
@@ -153,16 +147,7 @@ const InputContainer = CSSComponent({
   tag: 'div',
   className: 'inputContainer',
   normal: {
-    selectNames: [
-      ['width'],
-      ['height'],
-      ['background'],
-      ['border'],
-      ['borderRadius'],
-      ['boxShadow'],
-      ['margin'],
-      ['padding'],
-    ],
+    selectNames: [['width'], ['height'], ['margin'], ['padding']],
   },
   hover: {
     selectNames: [],

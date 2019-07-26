@@ -49,7 +49,7 @@
       "desc": "步骤条显示的信息描述"
     },
     "icon": {
-      "type": "string",
+      "type": "icon",
       "desc": "步骤条显示的图标"
     },
     "isFirst": {
@@ -72,9 +72,9 @@
   },
   "category": ["导航"],
   "designInfo": {
-    "SimpleStepsConfig": {
+    "SimpleSteps": {
       "sequence": 1,
-      "title": "简洁类型步骤条",
+      "title": "简洁步骤条",
       "desc": "简洁类型步骤条",
       "props": {
         "type": "simple"
@@ -128,10 +128,10 @@
         }
       }
     },
-    "FlatStepsConfig": {
+    "FlatSteps": {
       "sequence": 2,
-      "title": "扁平化类型步骤条",
-      "desc": "扁平化类型步骤条",
+      "title": "半扁平化步骤条",
+      "desc": "半扁平化类型步骤条",
       "props": {
         "type": "flat"
       },
@@ -184,9 +184,9 @@
         }
       }
     },
-    "IconStepsConfig": {
+    "IconSteps": {
       "sequence": 3,
-      "title": "图标类型步骤条",
+      "title": "图标步骤条",
       "desc": "图标类型步骤条",
       "props": {
         "type": "icon"
@@ -240,9 +240,9 @@
         }
       }
     },
-    "DotConfig": {
+    "DotSteps": {
       "sequence": 4,
-      "title": "步骤条样式类型",
+      "title": "点状",
       "desc": "按步骤条类型不同选择显示不同步骤条样式",
       "props": {
         "type": "dot"

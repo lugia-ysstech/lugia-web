@@ -8,12 +8,20 @@
       "desc": "时间轴需要包含的子组件"
     },
     "data": {
-      "type": "Array<Object>",
-      "desc": "时间轴填充的数据"
+      "type": "object[]",
+      "desc": "时间轴填充的数据",
+      "meta": [
+        { "key": "time", "title": "时间节点信息", "type": "string" },
+        { "key": "description", "title": "时间节点详细描述", "type": "string" }
+      ]
     },
     "defaultData": {
-      "type": "Array<Object>",
-      "desc": "时间轴填充的默认显示数据"
+      "type": "object[]",
+      "desc": "时间轴填充的默认显示数据",
+      "meta": [
+        { "key": "time", "title": "时间节点信息", "type": "string" },
+        { "key": "description", "title": "时间节点详细描述", "type": "string" }
+      ]
     },
     "reverse": {
       "type": "boolean",
@@ -26,7 +34,7 @@
       "defaultValue": false
     },
     "pendingDot": {
-      "type": "React.Node",
+      "type": "icon",
       "desc": "当最后一个是幽灵节点时,指定其图标资源"
     },
     "mode": {
@@ -40,11 +48,119 @@
   },
   "childrenWidget": ["timeLineItem"],
   "category": ["数据展示"],
+  "designInfo": {
+    "PendingDotTimeLine": {
+      "sequence": 1,
+      "title": "幽灵节点时间轴",
+      "desc": "幽灵节点时间轴配置",
+      "props": {
+        "pending": true,
+        "pendingDot": "lugia-icon-financial_abort"
+      },
+      "theme": {
+        "TimeLineContainer": {
+          "name": "时间轴最外层容器",
+          "desc": "时间轴最外层容器",
+          "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"]]
+        },
+        "TimeLine": {
+          "name": "单个时间节点配置",
+          "theme": {
+            "TimeLineIcon": {
+              "normal": {
+                "name": "步骤条内容图标",
+                "desc": "步骤间连接线的配置",
+                "normal": [["font"], ["fontSize"], ["color"]]
+              }
+            },
+            "TimeLineItemContainer": {
+              "name": "时间点外层容器",
+              "desc": "时间点外层容器配置",
+              "normal": [["width"], ["height"], ["margin"], ["padding"]]
+            },
+            "TimeLineItemLine": {
+              "name": "步骤间连接线",
+              "desc": "步骤间连接线的配置",
+              "normal": [["width"], ["height"], ["background"]]
+            }
+          }
+        }
+      }
+    }
+  },
   "theme": {
-    "StepsOutContainer": {
+    "TimeLineContainer": {
       "name": "时间轴最外层容器",
       "desc": "时间轴最外层容器",
       "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"]]
+    },
+    "TimeLine": {
+      "name": "单个时间节点配置",
+      "theme": {
+        "TimeLineDot": {
+          "name": "时间点",
+          "desc": "时间点配置",
+          "normal": [["width"], ["height"], ["background"], ["boxShadow"], ["border"]]
+        },
+        "TimeLineItemContainer": {
+          "name": "时间点外层容器",
+          "desc": "时间点外层容器配置",
+          "normal": [["width"], ["height"], ["margin"], ["padding"]]
+        },
+        "TimeLineExplainDot": {
+          "name": "隐藏的解释时间点",
+          "desc": "隐藏的解释时间点配置",
+          "normal": [["width"], ["height"], ["background"], ["boxShadow"], ["border"]]
+        },
+        "TimeLineItemTip": {
+          "name": "隐藏信息弹框",
+          "theme": {
+            "Container": {
+              "name": "隐藏的解释时间点显示容器",
+              "desc": "隐藏的解释时间点显示容器配置",
+              "normal": [["width"], ["height"], ["background"], ["boxShadow"], ["border"]]
+            },
+            "TooltipTitle": {
+              "name": "隐藏的解释时间点标题",
+              "desc": "隐藏的解释时间点标题配置",
+              "normal": [
+                ["fontSize"],
+                ["font"],
+                ["color"],
+                ["width"],
+                ["height"],
+                ["padding"],
+                ["margin"]
+              ]
+            },
+            "TooltipDescription": {
+              "name": "隐藏的解释时间点描述",
+              "desc": "隐藏的解释时间点描述配置",
+              "normal": [
+                ["fontSize"],
+                ["font"],
+                ["color"],
+                ["width"],
+                ["height"],
+                ["padding"],
+                ["margin"]
+              ]
+            }
+          }
+        },
+        "TimeLineItemLine": {
+          "name": "步骤间连接线",
+          "desc": "步骤间连接线的配置",
+          "normal": [["width"], ["height"], ["background"]]
+        },
+        "TimeLineIcon": {
+          "normal": {
+            "name": "步骤条内容图标",
+            "desc": "步骤间连接线的配置",
+            "normal": [["font"], ["fontSize"], ["color"]]
+          }
+        }
+      }
     }
   }
 }
