@@ -147,14 +147,6 @@ export const LoadingTip = styled.p`
   text-align: center;
   color: ${props => props.color};
 `;
-export const IconLoading = styled.span`
-  display: block;
-  width: ${props => props.size}px;
-  height: ${props => props.size}px;
-  animation: ${props => getAnimation(props)} ${props => props.time}s linear infinite;
-  font-size: ${props => props.size}px;
-  color: ${props => props.color};
-`;
 const rotate = keyframes`
   from {
     transform: rotate(0deg);
@@ -165,4 +157,12 @@ const rotate = keyframes`
 `;
 const getAnimation = css`
   ${rotate};
+`;
+export const IconLoading = styled.span`
+  display: block;
+  width: ${props => props.size}px;
+  height: ${props => props.size}px;
+  animation: ${getAnimation} ${props => props.time}s linear infinite;
+  font-size: ${props => props.size}px;
+  color: ${props => props.color};
 `;
