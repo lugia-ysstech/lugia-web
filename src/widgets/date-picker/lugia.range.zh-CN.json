@@ -27,7 +27,7 @@
       "type": "string[]",
       "meta": [{ "key": "value", "type": "string" }],
       "desc": "input输入提示信息",
-      "defaultValue": "[\"开始时间\",\"结束时间\"]"
+      "defaultValue": ["开始时间", "结束时间"]
     },
     "disabled": {
       "type": "boolean",
