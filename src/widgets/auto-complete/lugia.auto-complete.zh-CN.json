@@ -6,7 +6,8 @@
     "data": {
       "type": "string[]",
       "desc": "自动补全的数据",
-      "defaultValue": []
+      "defaultValue": [],
+      "meta": []
     },
     "createPortal": {
       "type": "boolean",

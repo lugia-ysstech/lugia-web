@@ -4,8 +4,8 @@
  *
  * @flow
  */
-import colorsFunc from '../css/stateColor';
-import { px2remcss } from '../css/units';
+import colorsFunc from './stateColor';
+import { px2remcss } from './units';
 import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import { getBorderRadius } from '@lugia/theme-utils';
 

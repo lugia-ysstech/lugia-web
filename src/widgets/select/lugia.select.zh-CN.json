@@ -5,7 +5,11 @@
   "props": {
     "data": {
       "type": "Object[]",
-      "desc": "生成选择项的数据"
+      "desc": "生成选择项的数据",
+      "meta": [
+        { "key": "value", "title": "value值", "type": "string" },
+        { "key": "text", "title": "文本值", "type": "string" }
+      ]
     },
     "mutliple": {
       "type": "boolean",
@@ -243,12 +247,14 @@
                 ["color"],
                 ["font"],
                 ["fontSize"],
-                ["padding"],
                 ["border"],
                 ["borderRadius"],
                 ["boxShadow"],
-                ["margin"],
-                ["opacity"]
+                ["opacity"],
+                ["padding", "left"],
+                ["padding", "right"],
+                ["margin", "left"],
+                ["margin", "right"]
               ],
               "hover": [
                 ["background"],
@@ -266,8 +272,8 @@
             "TagIcon": {
               "name": "标签删除按钮",
               "desc": "配置标签删除按钮样式",
-              "normal": [["margin"], ["padding"], ["color"], ["font"], ["opacity"]],
-              "hover": [["color"], ["font"], ["opacity"]],
+              "normal": [["color"], ["font"], ["fontSize"], ["opacity"]],
+              "hover": [["color"], ["font"], ["fontSize"], ["opacity"]],
               "active": [],
               "disabled": []
             },

@@ -25,12 +25,6 @@
       "desc": "显示框占位符"
     },
 
-    "menuWidth": {
-      "type": "number",
-      "desc": "层级菜单的宽度",
-      "defaultValue": 150
-    },
-
     "valueField": {
       "type": "string",
       "desc": "data数据的value值的名称",
@@ -44,7 +38,11 @@
 
     "data": {
       "type": "Object[]",
-      "desc": "级联选择的数据"
+      "desc": "级联选择的数据",
+      "meta": [
+        { "key": "value", "title": "value值", "type": "string" },
+        { "key": "text", "title": "文本值", "type": "string" }
+      ]
     },
 
     "separator": {

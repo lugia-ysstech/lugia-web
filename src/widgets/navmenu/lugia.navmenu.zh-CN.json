@@ -3,10 +3,6 @@
   "title": "导航菜单",
   "desc": "为页面提供导航功能的菜单",
   "props": {
-    "data": {
-      "type": "Object[]",
-      "desc": "生成选择项的数据"
-    },
     "valueField": {
       "type": "string",
       "desc": "data数据的value值的名称",
@@ -16,6 +12,14 @@
       "type": "string",
       "desc": "data数据的displayValue值的名称",
       "defaultValue": "text"
+    },
+    "data": {
+      "type": "Object[]",
+      "desc": "生成选择项的数据",
+      "meta": [
+        { "key": "value", "title": "value值", "type": "string" },
+        { "key": "text", "title": "文本值", "type": "string" }
+      ]
     },
     "value": {
       "type": "string | string[] | number | number[]",

@@ -55,7 +55,6 @@ type CascaderProps = {
   createPortal?: boolean,
   showAllLevels?: boolean,
   allowClear?: boolean,
-  menuWidth: number,
 };
 type CascaderState = {
   popupVisible: boolean,
@@ -80,7 +79,6 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
     valueField: ValueField,
     allowClear: true,
     createPortal: false,
-    menuWidth: DefaultMenuWidth,
   };
 
   checked: boolean;
