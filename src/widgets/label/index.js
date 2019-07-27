@@ -1,7 +1,7 @@
 /**
- * 漂浮弹出框
- * 参考rc-trigger
- * @author zenjava
+ *
+ *
+ * create by lyq
  * @flow
  */
 import '../common/shirm';
