@@ -461,19 +461,27 @@ class TabHeader extends Component<TabsProps, TabsState> {
 
   matchPage() {
     const titleSize = this.getTabpaneWidthOrHeight();
-    const { currentPage } = this.state;
-    const { tabPosition, tabType } = this.props;
-    let totalPage;
+    const { allowToCalc } = this.state;
+    let { currentPage } = this.state;
+    const { tabPosition, tabType, pagedType } = this.props;
+    let offsetSize;
+    let actualSize;
     if (isVertical(tabPosition)) {
-      const actualHeight = this.getActualWidth('line', titleSize);
-      totalPage = computePage(this.offsetHeight, actualHeight);
+      offsetSize = this.offsetHeight;
+      actualSize = this.getActualWidth('line', titleSize);
     } else {
-      const actualWidth = this.getActualWidth(tabType, titleSize);
-      totalPage = computePage(this.offsetWidth, actualWidth);
+      offsetSize = this.offsetWidth;
+      actualSize = this.getActualWidth(tabType, titleSize);
     }
-
-    const arrowShow = totalPage > 1 && currentPage < totalPage;
-    this.setState({ arrowShow, totalPage, titleSize, allowToCalc: false });
+    const totalPage =
+      pagedType === 'page' ? computePage(offsetSize - 50, actualSize) : titleSize.length;
+    const arrowShow = offsetSize < actualSize;
+    if (allowToCalc) {
+      currentPage = pagedType === 'page' ? totalPage : titleSize.length - 1;
+    }
+    this.setState({ arrowShow, totalPage, currentPage, titleSize, allowToCalc: false }, () => {
+      this.handleChangePage();
+    });
   }
   render() {
     this.titlePanel = [...Array(this.props.data.length)].map(() => React.createRef());
@@ -584,14 +592,8 @@ class TabHeader extends Component<TabsProps, TabsState> {
   }
 
   handleChangePage = (type: EditEventType) => {
-    let { currentPage, totalPage, pagedCount, titleSize } = this.state;
-    const { pagedType } = this.props;
-    if (pagedType === 'page') {
-      currentPage = this.getPagedCount(currentPage, totalPage, type);
-    } else {
-      pagedCount = this.getPagedCount(pagedCount, titleSize.length, type);
-    }
-
+    let { currentPage, totalPage, pagedCount } = this.state;
+    currentPage = this.getPagedCount(currentPage, totalPage, type);
     this.setState({ currentPage, pagedCount });
   };
 
@@ -746,21 +748,26 @@ class TabHeader extends Component<TabsProps, TabsState> {
   };
 
   computeMoveDistance() {
-    const { currentPage, totalPage, pagedCount, titleSize } = this.state;
-    const { tabType, tabPosition } = this.props;
-    const currentTabsWidth = plusWidth(pagedCount - 1, titleSize);
-    const scrollDistance = isVertical(tabPosition) ? this.offsetHeight : this.offsetWidth;
-    let distance = totalPage > 1 ? currentPage * scrollDistance : 0;
-
-    if (pagedCount > 0) {
-      if (matchType(tabType, 'card')) {
-        distance = currentTabsWidth + CardBorderAndMarginWidth * pagedCount;
-      } else if (matchType(tabType, 'window')) {
-        distance = currentTabsWidth + WindowMarginLeft;
-      } else {
-        distance = currentTabsWidth;
-      }
+    const { currentPage, totalPage, titleSize } = this.state;
+    const { pagedType } = this.props;
+    let distance = 0;
+    if (pagedType === 'single') {
+      titleSize.forEach((item, index) => {
+        if (currentPage !== 0 && index < currentPage) {
+          distance += item;
+        }
+      });
+    } else {
+      const pageIndex = Math.ceil(titleSize.length / totalPage) * currentPage;
+      titleSize.forEach((item, index) => {
+        if (currentPage !== 0 && index < pageIndex) {
+          distance += item;
+        }
+      });
+      const first = currentPage === 0 ? 0 : titleSize[0];
+      distance += first;
     }
+    distance = Math.max(0, distance);
     return -distance;
   }
 
@@ -776,7 +783,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
       actualWidth = this.getActualWidth(tabType, titleSize);
       offsetSize = this.offsetWidth;
     }
-    const isDisabledToNext = offsetSize - 46 - moveDistance >= actualWidth;
+    const isDisabledToNext = moveDistance >= actualWidth;
     const isDisabledToPrev = moveDistance === 0;
     return { isDisabledToPrev, isDisabledToNext };
   }
