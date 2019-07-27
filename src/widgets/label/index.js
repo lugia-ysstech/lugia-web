@@ -42,7 +42,7 @@ type TriggerState = {};
 
 class Label extends React.Component<TriggerProps, TriggerState> {
   render() {
-    const { text, children } = this.props;
+    const { text = 'this is a Label', children } = this.props;
     const target = children ? children : text;
     const themeProps = this.props.getPartOfThemeProps('LabelConfig');
     return (
