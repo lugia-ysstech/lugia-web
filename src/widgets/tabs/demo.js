@@ -481,7 +481,7 @@ export default class TabsDemo extends React.Component<any, any> {
   onAddClick = () => {
     const { data } = this.state;
     const newData = [...data];
-    const activeIndex = `Tab${data.length}`;
+    const activeIndex = `Tab${data.length + 1}`;
     const item = this.getAddItem();
     newData.push(item);
     this.setState({ data: newData, activityValue: activeIndex });
