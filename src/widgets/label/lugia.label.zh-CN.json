@@ -5,7 +5,8 @@
   "props": {
     "text": {
       "type": "string",
-      "desc": "文本内容"
+      "desc": "文本内容",
+      "defaultValue": "Label"
     }
   },
   "events": {},

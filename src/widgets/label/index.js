@@ -15,10 +15,18 @@ const LabelContainer = CSSComponent({
   tag: 'div',
   className: 'LabelConfig',
   normal: {
-    selectNames: [['color'], ['font'], ['lineHeight'], ['margin'], ['padding'], ['cursor']],
+    selectNames: [
+      ['color'],
+      ['font'],
+      ['fontSize'],
+      ['lineHeight'],
+      ['margin'],
+      ['padding'],
+      ['cursor'],
+    ],
   },
   hover: {
-    selectNames: [['color'], ['font'], ['margin'], ['padding'], ['cursor']],
+    selectNames: [['color'], ['font'], ['fontSize'], ['margin'], ['padding'], ['cursor']],
   },
   disabled: {
     selectNames: [['cursor']],
@@ -42,7 +50,7 @@ type TriggerState = {};
 
 class Label extends React.Component<TriggerProps, TriggerState> {
   render() {
-    const { text = 'this is a Label', children } = this.props;
+    const { text, children } = this.props;
     const target = children ? children : text;
     const themeProps = this.props.getPartOfThemeProps('LabelConfig');
     return (
