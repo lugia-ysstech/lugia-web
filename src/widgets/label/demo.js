@@ -27,7 +27,7 @@ class LabelDemo extends React.Component<PropsType, StateType> {
   render() {
     const config = {
       [Widget.Label]: {
-        Label: {
+        LabelConfig: {
           normal: {
             color: 'orange',
             font: {

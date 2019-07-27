@@ -13,7 +13,7 @@ import CSSComponent, { css } from '@lugia/theme-css-hoc';
 
 const LabelContainer = CSSComponent({
   tag: 'div',
-  className: 'Label',
+  className: 'LabelConfig',
   normal: {
     selectNames: [['color'], ['font'], ['lineHeight'], ['margin'], ['padding'], ['cursor']],
   },
@@ -44,7 +44,7 @@ class Label extends React.Component<TriggerProps, TriggerState> {
   render() {
     const { text, children } = this.props;
     const target = children ? children : text;
-    const themeProps = this.props.getPartOfThemeProps('Label');
+    const themeProps = this.props.getPartOfThemeProps('LabelConfig');
     return (
       <React.Fragment>
         <LabelContainer themeProps={themeProps}>{target}</LabelContainer>
