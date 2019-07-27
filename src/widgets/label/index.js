@@ -15,10 +15,18 @@ const LabelContainer = CSSComponent({
   tag: 'div',
   className: 'LabelConfig',
   normal: {
-    selectNames: [['color'], ['font'], ['lineHeight'], ['margin'], ['padding'], ['cursor']],
+    selectNames: [
+      ['color'],
+      ['font'],
+      ['fontSize'],
+      ['lineHeight'],
+      ['margin'],
+      ['padding'],
+      ['cursor'],
+    ],
   },
   hover: {
-    selectNames: [['color'], ['font'], ['margin'], ['padding'], ['cursor']],
+    selectNames: [['color'], ['font'], ['fontSize'], ['margin'], ['padding'], ['cursor']],
   },
   disabled: {
     selectNames: [['cursor']],

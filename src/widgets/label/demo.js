@@ -65,6 +65,8 @@ class LabelDemo extends React.Component<PropsType, StateType> {
         <Label text={'的身份回到'} />
         <LabelBox>默认文本 children:</LabelBox>
         <Label>科幻电视剧</Label>
+        <LabelBox>默认文本 无参数:</LabelBox>
+        <Label />
       </div>
     );
   }
