@@ -36,11 +36,11 @@
       "desc": "input输入提示信息"
     },
     "prefix": {
-      "type": "React$Element<any>",
+      "type": "icon",
       "desc": "带有前缀的 input"
     },
     "suffix": {
-      "type": "React$Element<any>",
+      "type": "icon",
       "desc": "带有后缀的 input"
     },
     "defaultValue": {
@@ -195,12 +195,30 @@
         ["color"],
         ["background"],
         ["border"],
+        ["borderRadius"],
         ["cursor"],
         ["opacity"]
       ],
-      "hover": [ ["border"], ["borderRadius"], ["cursor"], ["background"], ["opacity"]],
-      "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"]],
-      "disabled": [["cursor"], ["border"], ["background"]]
+      "hover": [
+        ["border"],
+        ["borderRadius"],
+        ["cursor"],
+        ["background"],
+        ["opacity"],
+        ["boxShadow"]
+      ],
+      "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"], ["background"]],
+      "disabled": [
+        ["fontSize"],
+        ["font"],
+        ["color"],
+        ["background"],
+        ["border"],
+        ["borderRadius"],
+        ["cursor"],
+        ["padding"],
+        ["opacity"]
+      ]
     },
     "InputSuffix": {
       "name": "后缀图标",

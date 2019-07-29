@@ -202,12 +202,30 @@
         ["color"],
         ["background"],
         ["border"],
+        ["borderRadius"],
         ["cursor"],
         ["opacity"]
       ],
-      "hover": [["border"], ["borderRadius"], ["cursor"], ["background"], ["opacity"]],
-      "clicked": [["font"], ["color"], ["background"], ["border"], ["cursor"]],
-      "disabled": [["font"], ["color"], ["background"], ["border"], ["cursor"]]
+      "hover": [
+        ["border"],
+        ["borderRadius"],
+        ["cursor"],
+        ["background"],
+        ["opacity"],
+        ["boxShadow"]
+      ],
+      "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"], ["background"]],
+      "disabled": [
+        ["fontSize"],
+        ["font"],
+        ["color"],
+        ["background"],
+        ["border"],
+        ["borderRadius"],
+        ["cursor"],
+        ["padding"],
+        ["opacity"]
+      ]
     },
     "ArrowIconContainer": {
       "name": "数字输入框步长图标包裹框",

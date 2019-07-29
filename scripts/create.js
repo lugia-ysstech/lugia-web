@@ -34,6 +34,10 @@ const Invalid = [
   'layout',
   'modal',
   'back-top',
+  'popover',
+  'popconfirm',
+  'tooltip',
+  'collapse',
 ];
 
 createDesignInfo(tartgetPath, Invalid);

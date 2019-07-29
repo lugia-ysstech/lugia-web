@@ -90,6 +90,7 @@ const CommonInputStyle = CSSComponent({
       ['cursor'],
       ['background'],
       ['opacity'],
+      ['boxShadow'],
     ],
     defaultTheme: {
       border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
@@ -97,7 +98,7 @@ const CommonInputStyle = CSSComponent({
     },
   },
   active: {
-    selectNames: [['boxShadow'], ['border'], ['borderRadius'], ['cursor']],
+    selectNames: [['boxShadow'], ['border'], ['borderRadius'], ['cursor'], ['background']],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const { propsConfig, themeState } = themeProps;
       const { validateStatus } = propsConfig;
@@ -112,7 +113,17 @@ const CommonInputStyle = CSSComponent({
     },
   },
   disabled: {
-    selectNames: [['cursor'], ['border'], ['background']],
+    selectNames: [
+      ['fontSize'],
+      ['font'],
+      ['color'],
+      ['background'],
+      ['border'],
+      ['borderRadius'],
+      ['cursor'],
+      ['padding'],
+      ['opacity'],
+    ],
     defaultTheme: {
       cursor: 'not-allowed',
       background: { color: disableColor },

@@ -86,12 +86,11 @@ const BaseAvatar = CSSComponent({
       const { propsConfig } = themeProps;
       const { width, height, background = {} } = themeMeta;
       const { size, src } = propsConfig;
-      const theBackgroundColor =
-        background && background.color ? background.color : src ? 'none' : borderColor;
+      const theBackgroundColor = background && background.color ? background.color : borderColor;
       const theSize =
         size === 'large' ? LargeHeight : size === 'small' ? SmallHeight : DefaultHeight;
-      const theWidth = width ? width : src ? '' : theSize;
-      const theHeight = height ? height : src ? '' : theSize;
+      const theWidth = width ? width : src ? '100%' : theSize;
+      const theHeight = height ? height : src ? '100%' : theSize;
       return {
         width: theWidth,
         height: theHeight,
@@ -187,7 +186,7 @@ class AvatarBox extends React.Component<AvatarProps, AvatarState> {
     if (src !== undefined && src !== null) {
       return (
         <span>
-          <Picture src={src} shape={shape} themeProps={theThemeProps} />
+          <Picture alt={''} src={src} shape={shape} themeProps={theThemeProps} />
         </span>
       );
     } else if (icon !== undefined && icon !== null) {
@@ -263,12 +262,11 @@ class AvatarBox extends React.Component<AvatarProps, AvatarState> {
   }
   getAvatar() {
     const { props } = this;
-    const { size, shape, src } = props;
+    const { size, shape } = props;
     const thePropsTheme = this.props.getPartOfThemeProps('Container', {
       props: {
         size,
         shape,
-        src,
       },
     });
 

@@ -132,8 +132,8 @@
           "normal": [["width"], ["height"], ["margin"], ["padding"]]
         },
         "Input": {
-          "name": "金额输入框主体",
-          "desc": "金额输入框主体结构",
+          "name": "数字输入框中输入框部分",
+          "desc": "数字输入框中输入框部分",
           "normal": [
             ["width"],
             ["height"],
@@ -142,12 +142,23 @@
             ["color"],
             ["background"],
             ["border"],
+            ["borderRadius"],
             ["cursor"],
             ["opacity"]
           ],
-          "hover": [["border"], ["borderRadius"], ["cursor"], ["background"], ["opacity"]],
-          "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"]],
-          "disabled": [["cursor"], ["border"], ["background"]]
+          "hover": [ ["border"], ["borderRadius"], ["cursor"], ["background"], ["opacity"], ["boxShadow"]],
+          "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"],["background"]],
+          "disabled": [
+            ["fontSize"],
+            ["font"],
+            ["color"],
+            ["background"],
+            ["border"],
+            ["borderRadius"],
+            ["cursor"],
+            ["padding"],
+            ["opacity"]
+          ]
         }
       }
     },
