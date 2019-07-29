@@ -36,11 +36,11 @@
       "desc": "input输入提示信息"
     },
     "prefix": {
-      "type": "React$Element<any>",
+      "type": "icon",
       "desc": "带有前缀的 input"
     },
     "suffix": {
-      "type": "React$Element<any>",
+      "type": "icon",
       "desc": "带有后缀的 input"
     },
     "defaultValue": {
@@ -195,6 +195,7 @@
         ["color"],
         ["background"],
         ["border"],
+        ["borderRadius"],
         ["cursor"],
         ["opacity"]
       ],
