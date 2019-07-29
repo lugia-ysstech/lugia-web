@@ -94,7 +94,10 @@ export type MenuProps = {
   autoHeight?: boolean,
   expandedPathInProps?: boolean,
   divided: boolean,
+  theme: Object,
+  itemHeight: number,
   getPartOfThemeProps: Function,
+  getPartOfThemeConfig: Function,
   getPartOfThemeHocProps: Function,
 };
 const EmptyData = [];
@@ -175,6 +178,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
     const { props, state } = this;
     const dataChanged = props.data !== nextProps.data || props.children !== nextProps.children;
     const selectedChange = state.selectedKeys !== nextState.selectedKeys;
+
+    const themeChange = nextProps.theme !== props.theme;
     if (dataChanged || selectedChange) {
       this.updateIsSelect(nextState, nextProps);
     }
@@ -193,7 +198,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
       props.start !== nextProps.start ||
       props.svThemVersion !== nextProps.svThemVersion ||
       selectedChange ||
-      expandedPathChanged
+      expandedPathChanged ||
+      themeChange
     );
   }
 
@@ -628,7 +634,6 @@ class Menu extends React.Component<MenuProps, MenuState> {
     const config = {
       [Widget.Menu]: getPartOfThemeConfig('SubMenu'),
     };
-    console.log('config', level, getPartOfThemeConfig('SubMenu'));
     return config;
   }
 
