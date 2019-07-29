@@ -146,9 +146,19 @@
             ["cursor"],
             ["opacity"]
           ],
-          "hover": [ ["border"], ["borderRadius"], ["cursor"], ["background"], ["opacity"]],
-          "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"]],
-          "disabled": [["cursor"], ["border"], ["background"]]
+          "hover": [ ["border"], ["borderRadius"], ["cursor"], ["background"], ["opacity"], ["boxShadow"]],
+          "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"],["background"]],
+          "disabled": [
+            ["fontSize"],
+            ["font"],
+            ["color"],
+            ["background"],
+            ["border"],
+            ["borderRadius"],
+            ["cursor"],
+            ["padding"],
+            ["opacity"]
+          ]
         }
       }
     },
