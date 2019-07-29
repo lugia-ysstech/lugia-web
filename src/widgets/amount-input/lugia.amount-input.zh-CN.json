@@ -132,8 +132,8 @@
           "normal": [["width"], ["height"], ["margin"], ["padding"]]
         },
         "Input": {
-          "name": "数字输入框中输入框部分",
-          "desc": "数字输入框中输入框部分",
+          "name": "金额输入框中输入框部分",
+          "desc": "金额输入框中输入框部分",
           "normal": [
             ["width"],
             ["height"],
@@ -146,8 +146,15 @@
             ["cursor"],
             ["opacity"]
           ],
-          "hover": [ ["border"], ["borderRadius"], ["cursor"], ["background"], ["opacity"], ["boxShadow"]],
-          "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"],["background"]],
+          "hover": [
+            ["border"],
+            ["borderRadius"],
+            ["cursor"],
+            ["background"],
+            ["opacity"],
+            ["boxShadow"]
+          ],
+          "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"], ["background"]],
           "disabled": [
             ["fontSize"],
             ["font"],
