@@ -63,9 +63,6 @@ export default (
     static displayName = Widget.ThrottleScroller;
     static defaultProps = {
       mutliple: false,
-      getTheme: () => {
-        return {};
-      },
     };
     scroller: ?Object;
     scrollerTarget: ?Object;
@@ -84,6 +81,10 @@ export default (
       this.viewSize = this.fetchViewSize();
     }
 
+    componentWillUpdate() {
+      this.viewSize = this.fetchViewSize();
+    }
+
     getActiveItemHeight = (props: Object) => {
       const { getPartOfThemeConfig } = props;
       const ItemName = TargetItemNames[0];
@@ -97,7 +98,6 @@ export default (
 
     render() {
       const { props } = this;
-
       const start = this.getStart(props, this.state);
       const { level, autoHeight = false, getPartOfThemeProps } = props;
       const totalSize = this.fetchTotalSize();

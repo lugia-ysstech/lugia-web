@@ -62,6 +62,7 @@ export type TreeProps = {
   showSwitch: boolean,
   __navmenu: boolean,
   switchIconNames?: Object,
+  getPartOfThemeProps: Function,
 };
 
 export type TreeState = {
@@ -350,25 +351,28 @@ class Tree extends React.Component<TreeProps, TreeState> {
     return query === '';
   }
 
-  shouldComponentUpdate(nexProps: TreeProps, nextState: TreeState) {
+  shouldComponentUpdate(nextProps: TreeProps, nextState: TreeState) {
     const { props } = this;
-    const dataChanged = props.data !== nexProps.data;
-    const blackListChange = props.blackList !== nexProps.blackList;
-    const whiteListChange = props.whiteList !== nexProps.whiteList;
+    const dataChanged = props.data !== nextProps.data;
+    const blackListChange = props.blackList !== nextProps.blackList;
+    const whiteListChange = props.whiteList !== nextProps.whiteList;
+    const themeChange = nextProps.theme !== props.theme;
+
     const { state } = this;
     return (
-      props.query !== nexProps.query ||
+      props.query !== nextProps.query ||
       dataChanged ||
       blackListChange ||
       whiteListChange ||
-      props.current != nexProps.current ||
+      props.current !== nextProps.current ||
       state.hasError !== nextState.hasError ||
       state.start !== nextState.start ||
-      props.svThemVersion !== nexProps.svThemVersion ||
-      props.mutliple !== nexProps.mutliple ||
+      props.svThemVersion !== nextProps.svThemVersion ||
+      props.mutliple !== nextProps.mutliple ||
       state.selectValue !== nextState.selectValue ||
       state.expand !== nextState.expand ||
-      state.selectedInfo !== nextState.selectedInfo
+      state.selectedInfo !== nextState.selectedInfo ||
+      themeChange
     );
   }
 
@@ -424,7 +428,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
   render() {
     const { props, state } = this;
-
     const empty = <Empty themeProps={props.getPartOfThemeProps('TreeWrap')} />;
     if (this.isEmpty(props)) {
       return empty;
