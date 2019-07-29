@@ -103,13 +103,15 @@ export default class extends React.Component<ResponsiveProps, ResponsiveState> {
     if (windowWidthRange === 'default') {
       return {};
     }
-    const { width, height, point } = mode2LayoutData[windowWidthRange][widgetId];
-
-    return {
-      width,
-      height,
-      point,
-    };
+    const widgetId2Layout = mode2LayoutData[windowWidthRange];
+    if (!widgetId2Layout) {
+      return {};
+    }
+    const layoutData = widgetId2Layout[widgetId];
+    if (!layoutData) {
+      return {};
+    }
+    return layoutData;
   };
 
   render() {
