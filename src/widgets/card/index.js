@@ -35,7 +35,7 @@ const CardOutContainer = CSSComponent({
     ],
     defaultTheme: {
       background: {
-        backgroundColor: defaultColor,
+        color: defaultColor,
       },
     },
     getCSS(themeMeta: Object, themeProps: Object) {
