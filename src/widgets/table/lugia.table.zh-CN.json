@@ -5,7 +5,12 @@
   "props": {
     "columns": {
       "type": "Object[]",
-      "meta": [],
+      "meta": [
+        { "key": "title", "title": "表头文本", "type": "string" },
+        { "key": "key", "title": "对应key", "type": "any" },
+        { "key": "dataIndex", "title": "指定展示项", "type": "any" },
+        { "key": "width", "title": "列宽", "type": "any" }
+      ],
       "desc": "表格每一行展示的内容"
     },
     "data": {
