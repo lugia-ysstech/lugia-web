@@ -63,7 +63,6 @@ class ScrollerTree extends React.Component<any, any> {
 
   render() {
     const { data } = this.props;
-
     if (data) {
       const { mutliple, onExpand, utils, onSelect, id2ExtendInfo, itemHeight } = this.props;
       let { start, end } = this.props;
@@ -116,6 +115,7 @@ class ScrollerTree extends React.Component<any, any> {
         __navmenu,
         switchIconNames,
         igronSelectField,
+        onlySelectLeaf,
       } = this.props;
       const {
         children,
@@ -146,6 +146,7 @@ class ScrollerTree extends React.Component<any, any> {
             describe={describe}
             disabled={disabled}
             selectable={selectable}
+            onlySelectLeaf={onlySelectLeaf}
             icon={icon}
           >
             {this.loopNode(children)}
@@ -168,6 +169,7 @@ class ScrollerTree extends React.Component<any, any> {
           isLeaf={isLeaf}
           disabled={disabled}
           selectable={selectable}
+          onlySelectLeaf={onlySelectLeaf}
           icon={icon}
         />
       );
