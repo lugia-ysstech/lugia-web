@@ -336,9 +336,10 @@ class TreeNode extends React.Component {
       itemHeight,
       showSwitch,
       __navmenu,
+      expanded,
+      onlySelectLeaf,
     } = this.props;
-    const expandedState = props.expanded ? 'open' : 'close';
-    let iconState = expandedState;
+    const expandedState = expanded ? 'open' : 'close';
 
     let canRenderSwitch = true;
     const content = props.title;
@@ -347,7 +348,6 @@ class TreeNode extends React.Component {
       newChildren = null;
       if (isLeaf) {
         canRenderSwitch = false;
-        iconState = 'docu';
       }
     }
 
@@ -387,7 +387,7 @@ class TreeNode extends React.Component {
 
           if (this.isSelectable()) {
             this.onSelect();
-            if (!props.describe) {
+            if ((!props.describe && onlySelectLeaf) || expandedState === 'close') {
               this.onExpand();
             }
           }

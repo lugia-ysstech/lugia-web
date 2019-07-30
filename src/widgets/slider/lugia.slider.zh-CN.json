@@ -15,12 +15,12 @@
     },
     "defaultValue": {
       "type": "number | number[]",
-      "meta": [{ "key": "value", "type": "any" }],
+      "meta": [{ "key": "value", "type": "number" }],
       "desc": "滑动输入条默认显示值，值为number时,为单滑块，值为Array时,为双滑块"
     },
     "value": {
       "type": "number | number[]",
-      "meta": [{ "key": "value", "type": "any" }],
+      "meta": [{ "key": "value", "type": "number" }],
       "desc": "滑动输入条显示值,值为number时,为单滑块，值为Array时,为双滑块"
     },
     "disabled": {
@@ -303,14 +303,14 @@
           "name": "离散节点",
           "desc": "离散节点样式配置",
           "normal": {
-            "selectNames": [["color"], ["font"], "fontSize"],
-            "nth": [["color"], ["font"], "fontSize"]
+            "selectNames": [["color"], ["font"], ["fontSize"]],
+            "nth": [["color"], ["font"], ["fontSize"]]
           },
           "hover": [],
           "active": [],
           "disabled": {
-            "selectNames": [["color"], ["font"], "fontSize"],
-            "nth": [["color"], ["font"], "fontSize"]
+            "selectNames": [["color"], ["font"], ["fontSize"]],
+            "nth": [["color"], ["font"], ["fontSize"]]
           }
         }
       }

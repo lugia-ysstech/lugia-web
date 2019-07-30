@@ -247,6 +247,7 @@
       ]
     },
     "Checkbox": {
+      "name": "单个多选框配置",
       "theme": {
         "Container": {
           "name": "Checkbox整体配置",

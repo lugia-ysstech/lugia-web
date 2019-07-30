@@ -159,6 +159,7 @@
     },
 
     "Menu": {
+      "name": "菜单配置",
       "theme": {
         "MenuWrap": {
           "name": "菜单外盒",
