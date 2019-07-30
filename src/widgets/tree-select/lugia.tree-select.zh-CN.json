@@ -45,7 +45,7 @@
     "query": {
       "type": "string",
       "desc": "搜索框关键字",
-      "defaultValue": " '' "
+      "defaultValue": ""
     },
     "mutliple": {
       "type": "boolean",

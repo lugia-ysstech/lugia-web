@@ -11,7 +11,7 @@
     "query": {
       "type": "string",
       "desc": "用于过滤数据的关键字",
-      "defaultValue": " '' "
+      "defaultValue": ""
     },
     "mutliple": {
       "type": "boolean",
