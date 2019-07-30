@@ -106,6 +106,9 @@ export default class extends React.Component<NotificationProps, NotificationStat
     if (parentDom && rootDom) {
       unmountComponentAtNode(parentDom);
       rootDom.removeChild(parentDom);
+      if (!rootDom.children.length) {
+        document.body && document.body.removeChild(rootDom);
+      }
     }
   };
 }
