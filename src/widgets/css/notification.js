@@ -105,11 +105,13 @@ export const Title = styled.div`
   margin-bottom: ${iconEM(8)};
   line-height: ${iconEM(24)};
   display: inline-block;
+  word-break: break-all;
 `;
 export const Text = styled.div`
   font-size: ${em(14)};
   font-weight: 500;
   color: ${darkGreyColor};
+  word-break: break-all;
 `;
 export const CloseIcon: Object = styled(Icon)`
   font-size: ${em(14)};
