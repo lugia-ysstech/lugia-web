@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Avatar css 1`] = `
-.c5 {
+.c7 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -11,6 +11,21 @@ exports[`Avatar css 1`] = `
   text-align: center;
   text-transform: none;
   vertical-align: middle !important;
+}
+
+.c2 {
+  text-align: center;
+  line-height: 3.2rem;
+}
+
+.c6 {
+  text-align: center;
+  line-height: 2.4rem;
+}
+
+.c9 {
+  text-align: center;
+  line-height: 4rem;
 }
 
 .c1 {
@@ -24,7 +39,7 @@ exports[`Avatar css 1`] = `
   line-height: 3.2rem;
 }
 
-.c3 {
+.c4 {
   box-sizing: border-box;
   display: inline-block;
   text-align: center;
@@ -35,7 +50,7 @@ exports[`Avatar css 1`] = `
   line-height: 3.2rem;
 }
 
-.c4 {
+.c5 {
   box-sizing: border-box;
   display: inline-block;
   text-align: center;
@@ -43,28 +58,6 @@ exports[`Avatar css 1`] = `
   position: relative;
   color: rgba(0,0,0,0.65);
   border-radius: 10%;
-  line-height: 2.4rem;
-}
-
-.c6 {
-  box-sizing: border-box;
-  display: inline-block;
-  text-align: center;
-  white-space: nowrap;
-  position: relative;
-  color: rgba(0,0,0,0.65);
-  border-radius: 10%;
-  line-height: 4rem;
-}
-
-.c7 {
-  box-sizing: border-box;
-  display: inline-block;
-  text-align: center;
-  white-space: nowrap;
-  position: relative;
-  color: rgba(0,0,0,0.65);
-  border-radius: 50%;
   line-height: 2.4rem;
 }
 
@@ -75,11 +68,33 @@ exports[`Avatar css 1`] = `
   white-space: nowrap;
   position: relative;
   color: rgba(0,0,0,0.65);
+  border-radius: 10%;
+  line-height: 4rem;
+}
+
+.c10 {
+  box-sizing: border-box;
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+  position: relative;
+  color: rgba(0,0,0,0.65);
+  border-radius: 50%;
+  line-height: 2.4rem;
+}
+
+.c11 {
+  box-sizing: border-box;
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+  position: relative;
+  color: rgba(0,0,0,0.65);
   border-radius: 50%;
   line-height: 4rem;
 }
 
-.c2 {
+.c3 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -89,7 +104,7 @@ exports[`Avatar css 1`] = `
   height: 3.2rem;
 }
 
-.c9 {
+.c12 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -99,7 +114,7 @@ exports[`Avatar css 1`] = `
   height: 2.4rem;
 }
 
-.c10 {
+.c13 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -109,11 +124,11 @@ exports[`Avatar css 1`] = `
   height: 4rem;
 }
 
-.c11 {
+.c14 {
   vertical-align: middle;
 }
 
-.c13 {
+.c16 {
   overflow: hidden;
   color: white;
   display: inline-block;
@@ -128,7 +143,7 @@ exports[`Avatar css 1`] = `
   box-shadow: 0 0 0 0.1rem #fff;
 }
 
-.c14 {
+.c17 {
   -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   white-space: nowrap;
@@ -140,7 +155,7 @@ exports[`Avatar css 1`] = `
   display: inline-block;
 }
 
-.c16 {
+.c19 {
   -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   white-space: nowrap;
@@ -152,7 +167,7 @@ exports[`Avatar css 1`] = `
   display: inline-block;
 }
 
-.c15 {
+.c18 {
   height: 1.4rem;
   text-align: center;
   box-sizing: border-box;
@@ -160,7 +175,7 @@ exports[`Avatar css 1`] = `
   height: 1.4rem;
 }
 
-.c17 {
+.c20 {
   box-sizing: border-box;
   position: absolute;
   -webkit-transform: translateX(50%);
@@ -180,7 +195,7 @@ exports[`Avatar css 1`] = `
   background-color: #f22735;
 }
 
-.c12 {
+.c15 {
   background: transparent;
   box-sizing: border-box;
   position: relative;
@@ -200,15 +215,6 @@ exports[`Avatar css 1`] = `
   >
     <div
       className="c1"
-      name="l"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      shape="square"
-      size="default"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
@@ -217,29 +223,29 @@ exports[`Avatar css 1`] = `
         }
       }
     >
-      <span
+      <div
         className="c2"
-        size="default"
         style={
           Object {
-            "color": "red",
+            "height": "3.2rem",
           }
         }
       >
-        l
-      </span>
+        <span
+          className="c3"
+          size="default"
+          style={
+            Object {
+              "color": "red",
+            }
+          }
+        >
+          l
+        </span>
+      </div>
     </div>
     <div
       className="c1"
-      name="lu"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      shape="square"
-      size="default"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
@@ -248,29 +254,29 @@ exports[`Avatar css 1`] = `
         }
       }
     >
-      <span
+      <div
         className="c2"
-        size="default"
         style={
           Object {
-            "color": "red",
+            "height": "3.2rem",
           }
         }
       >
-        lu
-      </span>
+        <span
+          className="c3"
+          size="default"
+          style={
+            Object {
+              "color": "red",
+            }
+          }
+        >
+          lu
+        </span>
+      </div>
     </div>
     <div
       className="c1"
-      name="lug"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      shape="square"
-      size="default"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
@@ -279,29 +285,29 @@ exports[`Avatar css 1`] = `
         }
       }
     >
-      <span
+      <div
         className="c2"
-        size="default"
         style={
           Object {
-            "color": "red",
+            "height": "3.2rem",
           }
         }
       >
-        lug
-      </span>
+        <span
+          className="c3"
+          size="default"
+          style={
+            Object {
+              "color": "red",
+            }
+          }
+        >
+          lug
+        </span>
+      </div>
     </div>
     <div
       className="c1"
-      name="lugia"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      shape="square"
-      size="default"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
@@ -310,30 +316,30 @@ exports[`Avatar css 1`] = `
         }
       }
     >
-      <span
+      <div
         className="c2"
-        size="default"
         style={
           Object {
-            "color": "red",
+            "height": "3.2rem",
           }
         }
       >
-        lugia
-      </span>
+        <span
+          className="c3"
+          size="default"
+          style={
+            Object {
+              "color": "red",
+            }
+          }
+        >
+          lugia
+        </span>
+      </div>
     </div>
     <br />
     <div
-      className="c3"
-      name="l"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      shape="circle"
-      size="default"
+      className="c4"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
@@ -342,29 +348,29 @@ exports[`Avatar css 1`] = `
         }
       }
     >
-      <span
+      <div
         className="c2"
-        size="default"
         style={
           Object {
-            "color": "red",
+            "height": "3.2rem",
           }
         }
       >
-        l
-      </span>
+        <span
+          className="c3"
+          size="default"
+          style={
+            Object {
+              "color": "red",
+            }
+          }
+        >
+          l
+        </span>
+      </div>
     </div>
     <div
-      className="c3"
-      name="lu"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      shape="circle"
-      size="default"
+      className="c4"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
@@ -373,29 +379,29 @@ exports[`Avatar css 1`] = `
         }
       }
     >
-      <span
+      <div
         className="c2"
-        size="default"
         style={
           Object {
-            "color": "red",
+            "height": "3.2rem",
           }
         }
       >
-        lu
-      </span>
+        <span
+          className="c3"
+          size="default"
+          style={
+            Object {
+              "color": "red",
+            }
+          }
+        >
+          lu
+        </span>
+      </div>
     </div>
     <div
-      className="c3"
-      name="lug"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      shape="circle"
-      size="default"
+      className="c4"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
@@ -404,29 +410,29 @@ exports[`Avatar css 1`] = `
         }
       }
     >
-      <span
+      <div
         className="c2"
-        size="default"
         style={
           Object {
-            "color": "red",
+            "height": "3.2rem",
           }
         }
       >
-        lug
-      </span>
+        <span
+          className="c3"
+          size="default"
+          style={
+            Object {
+              "color": "red",
+            }
+          }
+        >
+          lug
+        </span>
+      </div>
     </div>
     <div
-      className="c3"
-      name="lugia"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      shape="circle"
-      size="default"
+      className="c4"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
@@ -435,32 +441,33 @@ exports[`Avatar css 1`] = `
         }
       }
     >
-      <span
+      <div
         className="c2"
-        size="default"
         style={
           Object {
-            "color": "red",
+            "height": "3.2rem",
           }
         }
       >
-        lugia
-      </span>
+        <span
+          className="c3"
+          size="default"
+          style={
+            Object {
+              "color": "red",
+            }
+          }
+        >
+          lugia
+        </span>
+      </div>
     </div>
   </div>
   <div
     className="c0"
   >
     <div
-      className="c4"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      shape="square"
-      size="small"
+      className="c5"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
@@ -469,31 +476,32 @@ exports[`Avatar css 1`] = `
         }
       }
     >
-      <i
-        className="lugia-icon-financial_user   c5"
-        onClick={[Function]}
-        onMouseDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
+      <div
+        className="c6"
         style={
           Object {
-            "color": "purple",
-            "fontSize": "1.2rem",
+            "height": "2.4rem",
           }
         }
-      />
+      >
+        <i
+          className="lugia-icon-financial_user   c7"
+          onClick={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "color": "purple",
+              "fontSize": "1.2rem",
+            }
+          }
+        />
+      </div>
     </div>
     <div
       className="c1"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      shape="square"
-      size="default"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
@@ -502,131 +510,32 @@ exports[`Avatar css 1`] = `
         }
       }
     >
-      <i
-        className="lugia-icon-financial_user   c5"
-        onClick={[Function]}
-        onMouseDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
+      <div
+        className="c2"
         style={
           Object {
-            "color": "purple",
-            "fontSize": "1.8rem",
+            "height": "3.2rem",
           }
         }
-      />
-    </div>
-    <div
-      className="c6"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      shape="square"
-      size="large"
-      style={
-        Object {
-          "backgroundColor": "#e2e2e2",
-          "height": "4rem",
-          "width": "4rem",
-        }
-      }
-    >
-      <i
-        className="lugia-icon-financial_user   c5"
-        onClick={[Function]}
-        onMouseDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        style={
-          Object {
-            "color": "purple",
-            "fontSize": "2.2rem",
+      >
+        <i
+          className="lugia-icon-financial_user   c7"
+          onClick={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "color": "purple",
+              "fontSize": "1.8rem",
+            }
           }
-        }
-      />
-    </div>
-    <br />
-    <div
-      className="c7"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      shape="circle"
-      size="small"
-      style={
-        Object {
-          "backgroundColor": "#e2e2e2",
-          "height": "2.4rem",
-          "width": "2.4rem",
-        }
-      }
-    >
-      <i
-        className="lugia-icon-financial_user   c5"
-        onClick={[Function]}
-        onMouseDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        style={
-          Object {
-            "color": "orange",
-            "fontSize": "1.2rem",
-          }
-        }
-      />
-    </div>
-    <div
-      className="c3"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      shape="circle"
-      size="default"
-      style={
-        Object {
-          "backgroundColor": "#e2e2e2",
-          "height": "3.2rem",
-          "width": "3.2rem",
-        }
-      }
-    >
-      <i
-        className="lugia-icon-financial_user   c5"
-        onClick={[Function]}
-        onMouseDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        style={
-          Object {
-            "color": "orange",
-            "fontSize": "1.8rem",
-          }
-        }
-      />
+        />
+      </div>
     </div>
     <div
       className="c8"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      shape="circle"
-      size="large"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
@@ -635,36 +544,139 @@ exports[`Avatar css 1`] = `
         }
       }
     >
-      <i
-        className="lugia-icon-financial_user   c5"
-        onClick={[Function]}
-        onMouseDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
+      <div
+        className="c9"
         style={
           Object {
-            "color": "orange",
-            "fontSize": "2.2rem",
+            "height": "4rem",
           }
         }
-      />
+      >
+        <i
+          className="lugia-icon-financial_user   c7"
+          onClick={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "color": "purple",
+              "fontSize": "2.2rem",
+            }
+          }
+        />
+      </div>
+    </div>
+    <br />
+    <div
+      className="c10"
+      style={
+        Object {
+          "backgroundColor": "#e2e2e2",
+          "height": "2.4rem",
+          "width": "2.4rem",
+        }
+      }
+    >
+      <div
+        className="c6"
+        style={
+          Object {
+            "height": "2.4rem",
+          }
+        }
+      >
+        <i
+          className="lugia-icon-financial_user   c7"
+          onClick={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "color": "orange",
+              "fontSize": "1.2rem",
+            }
+          }
+        />
+      </div>
+    </div>
+    <div
+      className="c4"
+      style={
+        Object {
+          "backgroundColor": "#e2e2e2",
+          "height": "3.2rem",
+          "width": "3.2rem",
+        }
+      }
+    >
+      <div
+        className="c2"
+        style={
+          Object {
+            "height": "3.2rem",
+          }
+        }
+      >
+        <i
+          className="lugia-icon-financial_user   c7"
+          onClick={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "color": "orange",
+              "fontSize": "1.8rem",
+            }
+          }
+        />
+      </div>
+    </div>
+    <div
+      className="c11"
+      style={
+        Object {
+          "backgroundColor": "#e2e2e2",
+          "height": "4rem",
+          "width": "4rem",
+        }
+      }
+    >
+      <div
+        className="c9"
+        style={
+          Object {
+            "height": "4rem",
+          }
+        }
+      >
+        <i
+          className="lugia-icon-financial_user   c7"
+          onClick={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "color": "orange",
+              "fontSize": "2.2rem",
+            }
+          }
+        />
+      </div>
     </div>
   </div>
   <div
     className="c0"
   >
     <div
-      className="c4"
-      name="lugia"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      shape="square"
-      size="small"
+      className="c5"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
@@ -673,29 +685,29 @@ exports[`Avatar css 1`] = `
         }
       }
     >
-      <span
-        className="c9"
-        size="small"
+      <div
+        className="c6"
         style={
           Object {
-            "color": "blue",
+            "height": "2.4rem",
           }
         }
       >
-        lugia
-      </span>
+        <span
+          className="c12"
+          size="small"
+          style={
+            Object {
+              "color": "blue",
+            }
+          }
+        >
+          lugia
+        </span>
+      </div>
     </div>
     <div
       className="c1"
-      name="lugia"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      shape="square"
-      size="default"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
@@ -704,123 +716,29 @@ exports[`Avatar css 1`] = `
         }
       }
     >
-      <span
+      <div
         className="c2"
-        size="default"
         style={
           Object {
-            "color": "blue",
+            "height": "3.2rem",
           }
         }
       >
-        lugia
-      </span>
-    </div>
-    <div
-      className="c6"
-      name="lugia"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      shape="square"
-      size="large"
-      style={
-        Object {
-          "backgroundColor": "#e2e2e2",
-          "height": "4rem",
-          "width": "4rem",
-        }
-      }
-    >
-      <span
-        className="c10"
-        size="large"
-        style={
-          Object {
-            "color": "blue",
+        <span
+          className="c3"
+          size="default"
+          style={
+            Object {
+              "color": "blue",
+            }
           }
-        }
-      >
-        lugia
-      </span>
-    </div>
-    <br />
-    <div
-      className="c7"
-      name="lugia"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      shape="circle"
-      size="small"
-      style={
-        Object {
-          "backgroundColor": "#e2e2e2",
-          "height": "2.4rem",
-          "width": "2.4rem",
-        }
-      }
-    >
-      <span
-        className="c9"
-        size="small"
-        style={
-          Object {
-            "color": "red",
-          }
-        }
-      >
-        lugia
-      </span>
-    </div>
-    <div
-      className="c3"
-      name="lugia"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      shape="circle"
-      size="default"
-      style={
-        Object {
-          "backgroundColor": "#e2e2e2",
-          "height": "3.2rem",
-          "width": "3.2rem",
-        }
-      }
-    >
-      <span
-        className="c2"
-        size="default"
-        style={
-          Object {
-            "color": "red",
-          }
-        }
-      >
-        lugia
-      </span>
+        >
+          lugia
+        </span>
+      </div>
     </div>
     <div
       className="c8"
-      name="lugia"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      shape="circle"
-      size="large"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
@@ -829,17 +747,120 @@ exports[`Avatar css 1`] = `
         }
       }
     >
-      <span
-        className="c10"
-        size="large"
+      <div
+        className="c9"
         style={
           Object {
-            "color": "red",
+            "height": "4rem",
           }
         }
       >
-        lugia
-      </span>
+        <span
+          className="c13"
+          size="large"
+          style={
+            Object {
+              "color": "blue",
+            }
+          }
+        >
+          lugia
+        </span>
+      </div>
+    </div>
+    <br />
+    <div
+      className="c10"
+      style={
+        Object {
+          "backgroundColor": "#e2e2e2",
+          "height": "2.4rem",
+          "width": "2.4rem",
+        }
+      }
+    >
+      <div
+        className="c6"
+        style={
+          Object {
+            "height": "2.4rem",
+          }
+        }
+      >
+        <span
+          className="c12"
+          size="small"
+          style={
+            Object {
+              "color": "red",
+            }
+          }
+        >
+          lugia
+        </span>
+      </div>
+    </div>
+    <div
+      className="c4"
+      style={
+        Object {
+          "backgroundColor": "#e2e2e2",
+          "height": "3.2rem",
+          "width": "3.2rem",
+        }
+      }
+    >
+      <div
+        className="c2"
+        style={
+          Object {
+            "height": "3.2rem",
+          }
+        }
+      >
+        <span
+          className="c3"
+          size="default"
+          style={
+            Object {
+              "color": "red",
+            }
+          }
+        >
+          lugia
+        </span>
+      </div>
+    </div>
+    <div
+      className="c11"
+      style={
+        Object {
+          "backgroundColor": "#e2e2e2",
+          "height": "4rem",
+          "width": "4rem",
+        }
+      }
+    >
+      <div
+        className="c9"
+        style={
+          Object {
+            "height": "4rem",
+          }
+        }
+      >
+        <span
+          className="c13"
+          size="large"
+          style={
+            Object {
+              "color": "red",
+            }
+          }
+        >
+          lugia
+        </span>
+      </div>
     </div>
   </div>
   <div
@@ -847,15 +868,6 @@ exports[`Avatar css 1`] = `
   >
     <div
       className="c1"
-      name="lugia"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      shape="square"
-      size="default"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
@@ -864,28 +876,29 @@ exports[`Avatar css 1`] = `
         }
       }
     >
-      <span
+      <div
         className="c2"
-        size="default"
         style={
           Object {
-            "color": "red",
+            "height": "3.2rem",
           }
         }
       >
-        lugia
-      </span>
+        <span
+          className="c3"
+          size="default"
+          style={
+            Object {
+              "color": "red",
+            }
+          }
+        >
+          lugia
+        </span>
+      </div>
     </div>
     <div
       className="c1"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      shape="square"
-      size="default"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
@@ -894,66 +907,59 @@ exports[`Avatar css 1`] = `
         }
       }
     >
-      <i
-        className="lugia-icon-financial_user   c5"
-        onClick={[Function]}
-        onMouseDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
+      <div
+        className="c2"
         style={
           Object {
-            "color": "orange",
-            "fontSize": "1.8rem",
+            "height": "3.2rem",
           }
         }
-      />
+      >
+        <i
+          className="lugia-icon-financial_user   c7"
+          onClick={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "color": "orange",
+              "fontSize": "1.8rem",
+            }
+          }
+        />
+      </div>
     </div>
     <div
       className="c1"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      shape="square"
-      size="default"
-      src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/master/lugiaweb%E7%BB%84%E4%BB%B6/%E5%A4%B4%E5%83%8F/32.jpg"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
         }
       }
     >
-      <img
-        className="c11"
-        shape="square"
-        src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/master/lugiaweb%E7%BB%84%E4%BB%B6/%E5%A4%B4%E5%83%8F/32.jpg"
-        style={
-          Object {
-            "borderBottomLeftRadius": "10%",
-            "borderBottomRightRadius": "10%",
-            "borderTopLeftRadius": "10%",
-            "borderTopRightRadius": "10%",
-            "height": "4rem",
-            "width": "4rem",
+      <span>
+        <img
+          alt=""
+          className="c14"
+          src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/master/lugiaweb%E7%BB%84%E4%BB%B6/%E5%A4%B4%E5%83%8F/32.jpg"
+          style={
+            Object {
+              "borderBottomLeftRadius": "10%",
+              "borderBottomRightRadius": "10%",
+              "borderTopLeftRadius": "10%",
+              "borderTopRightRadius": "10%",
+              "height": "4rem",
+              "width": "4rem",
+            }
           }
-        }
-      />
+        />
+      </span>
     </div>
     <br />
     <div
-      className="c3"
-      name="lugia"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      shape="circle"
-      size="default"
+      className="c4"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
@@ -962,28 +968,29 @@ exports[`Avatar css 1`] = `
         }
       }
     >
-      <span
+      <div
         className="c2"
-        size="default"
         style={
           Object {
-            "color": "red",
+            "height": "3.2rem",
           }
         }
       >
-        lugia
-      </span>
+        <span
+          className="c3"
+          size="default"
+          style={
+            Object {
+              "color": "red",
+            }
+          }
+        >
+          lugia
+        </span>
+      </div>
     </div>
     <div
-      className="c3"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      shape="circle"
-      size="default"
+      className="c4"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
@@ -992,73 +999,65 @@ exports[`Avatar css 1`] = `
         }
       }
     >
-      <i
-        className="lugia-icon-financial_user   c5"
-        onClick={[Function]}
-        onMouseDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
+      <div
+        className="c2"
         style={
           Object {
-            "color": "orange",
-            "fontSize": "1.8rem",
+            "height": "3.2rem",
           }
         }
-      />
+      >
+        <i
+          className="lugia-icon-financial_user   c7"
+          onClick={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "color": "orange",
+              "fontSize": "1.8rem",
+            }
+          }
+        />
+      </div>
     </div>
     <div
-      className="c3"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      shape="circle"
-      size="default"
-      src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/master/lugiaweb%E7%BB%84%E4%BB%B6/%E5%A4%B4%E5%83%8F/32.jpg"
+      className="c4"
       style={
         Object {
           "backgroundColor": "#e2e2e2",
         }
       }
     >
-      <img
-        className="c11"
-        shape="circle"
-        src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/master/lugiaweb%E7%BB%84%E4%BB%B6/%E5%A4%B4%E5%83%8F/32.jpg"
-        style={
-          Object {
-            "borderBottomLeftRadius": "50%",
-            "borderBottomRightRadius": "50%",
-            "borderTopLeftRadius": "50%",
-            "borderTopRightRadius": "50%",
-            "height": "4rem",
-            "width": "4rem",
+      <span>
+        <img
+          alt=""
+          className="c14"
+          src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/master/lugiaweb%E7%BB%84%E4%BB%B6/%E5%A4%B4%E5%83%8F/32.jpg"
+          style={
+            Object {
+              "borderBottomLeftRadius": "50%",
+              "borderBottomRightRadius": "50%",
+              "borderTopLeftRadius": "50%",
+              "borderTopRightRadius": "50%",
+              "height": "4rem",
+              "width": "4rem",
+            }
           }
-        }
-      />
+        />
+      </span>
     </div>
   </div>
   <div
     className="c0"
   >
     <span
-      className="c12"
-      style={Object {}}
+      className="c15"
     >
       <div
-        className="c6"
-        name="lugia"
-        onBlur={[Function]}
-        onClick={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        shape="square"
-        size="large"
+        className="c8"
         style={
           Object {
             "backgroundColor": "#cccccc",
@@ -1067,13 +1066,22 @@ exports[`Avatar css 1`] = `
           }
         }
       >
-        <span
-          className="c10"
-          size="large"
-          style={Object {}}
+        <div
+          className="c9"
+          style={
+            Object {
+              "height": "4rem",
+            }
+          }
         >
-          lugia
-        </span>
+          <span
+            className="c13"
+            size="large"
+            style={Object {}}
+          >
+            lugia
+          </span>
+        </div>
       </div>
       <div
         className=""
@@ -1086,137 +1094,137 @@ exports[`Avatar css 1`] = `
         }
       >
         <span
-          className="c13"
+          className="c16"
           overflow={false}
           style={Object {}}
         >
           <span
-            className="c14"
+            className="c17"
             style={Object {}}
             y={-100}
           >
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               0
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               1
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               2
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               3
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               4
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               5
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               6
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               7
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               8
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               9
             </p>
           </span>
           <span
-            className="c16"
+            className="c19"
             style={Object {}}
             y={-0}
           >
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               0
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               1
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               2
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               3
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               4
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               5
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               6
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               7
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               8
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               9
@@ -1228,20 +1236,10 @@ exports[`Avatar css 1`] = `
     <br />
     <br />
     <span
-      className="c12"
-      style={Object {}}
+      className="c15"
     >
       <div
-        className="c6"
-        name="lugia"
-        onBlur={[Function]}
-        onClick={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        shape="square"
-        size="large"
+        className="c8"
         style={
           Object {
             "backgroundColor": "#cccccc",
@@ -1250,16 +1248,25 @@ exports[`Avatar css 1`] = `
           }
         }
       >
-        <span
-          className="c10"
-          size="large"
-          style={Object {}}
+        <div
+          className="c9"
+          style={
+            Object {
+              "height": "4rem",
+            }
+          }
         >
-          lugia
-        </span>
+          <span
+            className="c13"
+            size="large"
+            style={Object {}}
+          >
+            lugia
+          </span>
+        </div>
       </div>
       <sup
-        className="c17"
+        className="c20"
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         style={
@@ -1278,19 +1285,10 @@ exports[`Avatar css 1`] = `
     className="c0"
   >
     <span
-      className="c12"
-      style={Object {}}
+      className="c15"
     >
       <div
-        className="c8"
-        onBlur={[Function]}
-        onClick={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        shape="circle"
-        size="large"
+        className="c11"
         style={
           Object {
             "backgroundColor": "#cccccc",
@@ -1299,19 +1297,28 @@ exports[`Avatar css 1`] = `
           }
         }
       >
-        <i
-          className="lugia-icon-financial_user   c5"
-          onClick={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
+        <div
+          className="c9"
           style={
             Object {
-              "fontSize": "2.2rem",
+              "height": "4rem",
             }
           }
-        />
+        >
+          <i
+            className="lugia-icon-financial_user   c7"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "fontSize": "2.2rem",
+              }
+            }
+          />
+        </div>
       </div>
       <div
         className=""
@@ -1324,137 +1331,137 @@ exports[`Avatar css 1`] = `
         }
       >
         <span
-          className="c13"
+          className="c16"
           overflow={false}
           style={Object {}}
         >
           <span
-            className="c14"
+            className="c17"
             style={Object {}}
             y={-100}
           >
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               0
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               1
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               2
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               3
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               4
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               5
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               6
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               7
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               8
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               9
             </p>
           </span>
           <span
-            className="c16"
+            className="c19"
             style={Object {}}
             y={-0}
           >
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               0
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               1
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               2
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               3
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               4
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               5
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               6
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               7
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               8
             </p>
             <p
-              className="c15"
+              className="c18"
               style={Object {}}
             >
               9
@@ -1466,19 +1473,10 @@ exports[`Avatar css 1`] = `
     <br />
     <br />
     <span
-      className="c12"
-      style={Object {}}
+      className="c15"
     >
       <div
-        className="c8"
-        onBlur={[Function]}
-        onClick={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyPress={[Function]}
-        onKeyUp={[Function]}
-        shape="circle"
-        size="large"
+        className="c11"
         style={
           Object {
             "backgroundColor": "#cccccc",
@@ -1487,22 +1485,31 @@ exports[`Avatar css 1`] = `
           }
         }
       >
-        <i
-          className="lugia-icon-financial_user   c5"
-          onClick={[Function]}
-          onMouseDown={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
+        <div
+          className="c9"
           style={
             Object {
-              "fontSize": "2.2rem",
+              "height": "4rem",
             }
           }
-        />
+        >
+          <i
+            className="lugia-icon-financial_user   c7"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "fontSize": "2.2rem",
+              }
+            }
+          />
+        </div>
       </div>
       <sup
-        className="c17"
+        className="c20"
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         style={

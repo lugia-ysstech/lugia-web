@@ -194,7 +194,9 @@ export default () => {
         normal: {
           margin: {
             top: 10,
+            left: 10,
           },
+          width: 80,
         },
       },
       CardAvatar: {

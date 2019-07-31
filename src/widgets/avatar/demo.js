@@ -61,14 +61,34 @@ export default () => {
         </Wrapper>
         <Wrapper>
           <Theme config={iconConfig}>
-            <Avatar shape={'square'} icon={'lugia-icon-financial_user'} size={'small'} />
-            <Avatar shape={'square'} icon={'lugia-icon-financial_user'} size={'default'} />
-            <Avatar shape={'square'} icon={'lugia-icon-financial_user'} size={'large'} />
+            <Avatar
+              shape={'square'}
+              type="icon"
+              icon={'lugia-icon-financial_user'}
+              size={'small'}
+            />
+            <Avatar
+              shape={'square'}
+              type="icon"
+              icon={'lugia-icon-financial_user'}
+              size={'default'}
+            />
+            <Avatar
+              shape={'square'}
+              type="icon"
+              icon={'lugia-icon-financial_user'}
+              size={'large'}
+            />
           </Theme>
           <br />
-          <Avatar shape={'circle'} icon={'lugia-icon-financial_user'} size={'small'} />
-          <Avatar shape={'circle'} icon={'lugia-icon-financial_user'} size={'default'} />
-          <Avatar shape={'circle'} icon={'lugia-icon-financial_user'} size={'large'} />
+          <Avatar shape={'circle'} type="icon" icon={'lugia-icon-financial_user'} size={'small'} />
+          <Avatar
+            shape={'circle'}
+            type="icon"
+            icon={'lugia-icon-financial_user'}
+            size={'default'}
+          />
+          <Avatar shape={'circle'} type="icon" icon={'lugia-icon-financial_user'} size={'large'} />
         </Wrapper>
         <Wrapper>
           <Theme
@@ -89,17 +109,19 @@ export default () => {
         </Wrapper>
         <Wrapper>
           <Avatar shape={'square'} name={'lugia'} msgNum={1} />
-          <Avatar shape={'square'} icon={'lugia-icon-financial_user'} msgNum={2} />
+          <Avatar shape={'square'} type="icon" icon={'lugia-icon-financial_user'} msgNum={2} />
           <Avatar
             shape={'square'}
+            type="img"
             src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/master/lugiaweb%E7%BB%84%E4%BB%B6/%E5%A4%B4%E5%83%8F/32.jpg"
             msgNum={99}
           />
           <br />
           <Avatar shape={'circle'} name={'lugia'} />
-          <Avatar shape={'circle'} icon={'lugia-icon-financial_user'} />
+          <Avatar shape={'circle'} type="icon" icon={'lugia-icon-financial_user'} />
           <Avatar
             shape={'circle'}
+            type="img"
             src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/master/lugiaweb%E7%BB%84%E4%BB%B6/%E5%A4%B4%E5%83%8F/32.jpg"
             msgNum={99}
           />
@@ -123,12 +145,12 @@ export default () => {
       <Wrapper>
         <Theme config={badgeConfig}>
           <Badge viewClass="badgeConfig" count={10}>
-            <Avatar icon={'lugia-icon-financial_user'} size={'large'} />
+            <Avatar icon={'lugia-icon-financial_user'} size={'large'} type="icon" />
           </Badge>
           <br />
           <br />
           <Badge viewClass="badgeConfig" dot={true}>
-            <Avatar icon={'lugia-icon-financial_user'} size={'large'} />
+            <Avatar icon={'lugia-icon-financial_user'} size={'large'} type="icon" />
           </Badge>
         </Theme>
       </Wrapper>

@@ -171,7 +171,7 @@ const ImageContainer = CSSComponent({
 });
 
 const AvatarContainer = CSSComponent({
-  tag: 'span',
+  tag: 'div',
   className: 'CardAvatarContainer',
   normal: {
     selectNames: [
@@ -539,6 +539,7 @@ class Card extends React.Component<CardProps, CardState> {
     if (ObjectUtils.isString(avatar)) {
       return (
         <Avatar
+          type="img"
           viewClass={viewClass}
           theme={newTheme}
           shape={'circle'}
