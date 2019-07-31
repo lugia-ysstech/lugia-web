@@ -75,6 +75,7 @@ type InputTagProps = {
   prefix?: any,
   getPartOfThemeHocProps: Function,
   getPartOfThemeProps: Function,
+  getPartOfThemeConfig: Function,
 };
 const Clear = 'lugia-icon-reminder_close';
 const Pull = 'lugia-icon-direction_down';
@@ -83,6 +84,7 @@ type InputTagState = {
   items: Array<React.Node>,
   value: Object,
   query: string,
+  popupVisible: boolean,
 };
 
 class InputTag extends React.Component<InputTagProps, InputTagState> {
@@ -557,6 +559,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
 
   getOffSetWidth() {
     if (this.isMutliple()) {
+      console.log('fontWidth list', this.list.offsetWidth);
       return this.list.offsetWidth;
     }
     return 0;
@@ -576,8 +579,6 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     if (!margin) {
       return 5;
     }
-    // 此处有bug，因为margin中设置类似{left: '20'}时生效，但是如果{left: 'a'}不能转成数字的字符串
-    // 此时四个方向的margin都不能生效，但是还是会加起来
     const { left, right } = margin;
     return toNumber(left, 0) + toNumber(right, 0);
   }
@@ -589,7 +590,6 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     if (!padding) {
       return 10;
     }
-    // 此处有bug，同margin
     const { left, right } = padding;
     return toNumber(left, 0) + toNumber(right, 0);
   }
@@ -617,12 +617,12 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     const width = this.getTagWidth();
     // offsetWidth 多了 3px，所以为了不引起bug，先加5px
     if (width) {
-      return width + margin + 5;
+      return width + margin;
     }
 
     const padding = this.getTagPadding();
     const fontSize = this.getTagFontSize();
-    return margin + padding + fontSize + 5;
+    return margin + padding + fontSize;
   }
 
   async adaptiveItems(listWidth: number): Promise<boolean> {
@@ -633,7 +633,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     const { value } = this.state;
     if (value) {
       const moreItemWidth = this.getMoreItemWidth();
-
+      console.log('fontWidth', listWidth, moreItemWidth);
       listWidth -= moreItemWidth;
       let totalWidth = 0;
 
@@ -649,6 +649,14 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
         const fontWidth = await this.getFontWidth(text);
 
         totalWidth += fontWidth + this.getTagMargin();
+        console.log(
+          'fontWidth',
+          moreItemWidth,
+          fontWidth,
+          this.getTagMargin(),
+          totalWidth,
+          listWidth
+        );
         if (totalWidth > listWidth) {
           break;
         } else {

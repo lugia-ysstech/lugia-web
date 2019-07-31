@@ -35,6 +35,7 @@ export const EmptyContainer = CSSComponent({
     justify-content: center;
     height: ${px2remcss(250)};
     width: ${px2remcss(250)};
+    transition: all 0.3s;
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
   `,
 });

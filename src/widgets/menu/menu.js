@@ -208,9 +208,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     const items = this.getItems(props);
     const { data = [], autoHeight = false, getPartOfThemeProps, itemHeight } = props;
     const length = data ? data.length : 0;
-    if (!data || length === 0) {
-      return <Empty themeProps={this.props.getPartOfThemeProps('MenuWrap')} />;
-    }
+
     const WrapThemeProps = getPartOfThemeProps('MenuWrap', {
       props: {
         length,
@@ -305,6 +303,10 @@ class Menu extends React.Component<MenuProps, MenuState> {
     const { children } = props;
     if (children && children.length > 0) {
       return this.computeItems(children, start, end, (obj: Object) => obj);
+    }
+
+    if (!data || data.length === 0) {
+      return <Empty themeProps={this.props.getPartOfThemeProps('MenuWrap')} />;
     }
   }
 
