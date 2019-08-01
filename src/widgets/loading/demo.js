@@ -14,10 +14,8 @@ class LoadingDemo extends React.Component {
   onChange = obj => {
     const { newValue } = obj;
     this.setState({ loading: newValue });
-    console.log(newValue);
   };
   render() {
-    console.log(this.state.loading);
     return (
       <div>
         <Theme config={{ [Widgets.Loading]: { width: 400, color: 'red' } }}>
@@ -26,6 +24,7 @@ class LoadingDemo extends React.Component {
         </Theme>
         <h2>small</h2>
         <Loading size={'small'} />
+        <Loading scale />
         <h2>large</h2>
         <Loading size={'large'} />
         <h2>default</h2>
