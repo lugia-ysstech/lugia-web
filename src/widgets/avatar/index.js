@@ -85,12 +85,12 @@ const BaseAvatar = CSSComponent({
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
       const { width, height, background = {} } = themeMeta;
-      const { size, src } = propsConfig;
+      const { size, type } = propsConfig;
       const theBackgroundColor = background && background.color ? background.color : borderColor;
       const theSize =
         size === 'large' ? LargeHeight : size === 'small' ? SmallHeight : DefaultHeight;
-      const theWidth = width ? width : src ? '100%' : theSize;
-      const theHeight = height ? height : src ? '100%' : theSize;
+      const theWidth = width ? width : type === 'img' ? '' : theSize;
+      const theHeight = height ? height : type === 'img' ? '' : theSize;
       return {
         width: theWidth,
         height: theHeight,
@@ -134,7 +134,7 @@ const Picture = CSSComponent({
   tag: 'img',
   className: 'AvatarPicture',
   normal: {
-    selectNames: [['color'], ['width'], ['height'], ['padding'], ['margin'], ['borderRadius']],
+    selectNames: [['color'], ['width'], ['height'], ['padding'], ['borderRadius']],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
       const { width, height } = themeMeta;
@@ -160,6 +160,7 @@ type AvatarProps = {
   size?: AvatarSize,
   src?: string,
   icon?: string,
+  type: AvatarType,
   name: string,
   themeProps: Object,
   getPartOfThemeProps: Function,
@@ -171,25 +172,24 @@ class AvatarBox extends React.Component<AvatarProps, AvatarState> {
     viewClass: Widget.Avatar,
     shape: 'circle',
     size: 'default',
+    type: 'text',
   };
   static displayName = Widget.Avatar;
   getChildren() {
-    const { src, icon, name, size, shape } = this.props;
+    const { src, icon, name, size, shape, type } = this.props;
     const theThemeProps = this.props.getPartOfThemeProps('SrcAvatar', {
       props: {
         size,
         shape,
-        src,
-        icon,
       },
     });
-    if (src !== undefined && src !== null) {
+    if (type === 'img') {
       return (
         <span>
-          <Picture alt={''} src={src} shape={shape} themeProps={theThemeProps} />
+          <Picture alt={''} src={src} themeProps={theThemeProps} />
         </span>
       );
-    } else if (icon !== undefined && icon !== null) {
+    } else if (type === 'icon') {
       const { theme: iconPropsTheme, viewClass } = this.props.getPartOfThemeHocProps('IconAvatar');
       const newTheme = deepMerge(
         {
@@ -205,9 +205,7 @@ class AvatarBox extends React.Component<AvatarProps, AvatarState> {
                 const { propsConfig } = themeProps;
                 const { size } = propsConfig;
                 const theFontSize = size === 'large' ? 22 : size === 'small' ? 12 : 18;
-                return {
-                  fontSize: theFontSize,
-                };
+                return { fontSize: theFontSize };
               },
             },
           },
@@ -240,9 +238,6 @@ class AvatarBox extends React.Component<AvatarProps, AvatarState> {
     const nameThemeProps = this.props.getPartOfThemeProps('FontAvatar', {
       props: {
         size,
-        shape,
-        src,
-        icon,
       },
     });
     const thePropsTheme = this.props.getPartOfThemeProps('Container', {
@@ -262,19 +257,16 @@ class AvatarBox extends React.Component<AvatarProps, AvatarState> {
   }
   getAvatar() {
     const { props } = this;
-    const { size, shape } = props;
+    const { size, shape, type } = props;
     const thePropsTheme = this.props.getPartOfThemeProps('Container', {
       props: {
         size,
         shape,
+        type,
       },
     });
 
-    return (
-      <BaseAvatar {...props} themeProps={thePropsTheme}>
-        {this.getChildren()}
-      </BaseAvatar>
-    );
+    return <BaseAvatar themeProps={thePropsTheme}>{this.getChildren()}</BaseAvatar>;
   }
   render() {
     return this.getAvatar();
