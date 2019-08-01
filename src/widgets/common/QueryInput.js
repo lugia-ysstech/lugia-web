@@ -19,18 +19,17 @@ import {
   IsShowSearchInputHandle,
   themeColor,
 } from '../css/queryInput';
-import { px2emcss } from '../css/units';
-
-const em = px2emcss(1.2);
+import { px2remcss } from '../css/units';
 
 const OutContainer = styled.div`
-  height: ${DefaultHeight};
+  height: ${px2remcss(DefaultHeight)};
   position: relative;
   overflow: hidden;
 `;
 
 const InnerContainer = styled.div`
   width: 100%;
+  width: ${props => px2remcss(props.width)};
   position: absolute;
   left: 0;
   top: 0;
@@ -38,23 +37,23 @@ const InnerContainer = styled.div`
 `;
 
 const CheckAllContainer = styled.div`
-  height: ${DefaultHeight};
+  height: ${px2remcss(DefaultHeight)};
   background: #fff;
   width: 100%;
   position: absolute;
-  line-height: ${DefaultHeight};
+  line-height: ${px2remcss(DefaultHeight)};
 `;
 
 const SearchInputContainer = styled.div`
   position: absolute;
   width: 100%;
-  top: ${DefaultHeight};
+  top: ${px2remcss(DefaultHeight)};
 `;
 
 const CheckAllButton = styled.span`
   color: ${getCheckAllButtonColor};
-  margin-left: ${em(10)};
-  font-size: ${em(16)};
+  margin-left: ${px2remcss(10)};
+  font-size: ${px2remcss(16)};
 `;
 
 CheckAllButton.displayName = 'CheckAllButton';
@@ -71,18 +70,18 @@ const AppendValueButton = ShowCheckAllButton;
 AppendValueButton.displayName = 'addIcon';
 
 const RefreshButton = styled(ShowCheckAllButton)`
-  margin-left: ${em(10)};
-  font-size: ${em(16)};
+  margin-left: ${px2remcss(10)};
+  font-size: ${px2remcss(16)};
 `;
 RefreshButton.displayName = 'RefreshButton';
 
 const SearchButton = styled(ShowCheckAllButton)`
   position: absolute;
   top: 50%;
-  right: ${em(10)};
+  right: ${px2remcss(10)};
   transform: translateY(-50%);
-  z-index: 2;
-  font-size: ${em(16)};
+  z-index: 200;
+  font-size: ${px2remcss(16)};
 `;
 SearchButton.displayName = 'SearchButton';
 
@@ -126,7 +125,6 @@ class QueryInput extends React.Component<QueryInputProps, QueryInputState> {
     const { props } = this;
 
     const mutliple = isMutliple(props);
-
     if (!mutliple && !isCanSearch(props)) {
       return null;
     }
@@ -158,6 +156,7 @@ class QueryInput extends React.Component<QueryInputProps, QueryInputState> {
           showCheckAllButton={showCheckAllButton}
           toShowSearchInputIng={toShowSearchInputIng}
           toShowCheckAllButtonIng={toShowCheckAllButtonIng}
+          width={width}
         >
           <CheckAllContainer>
             {mutliple ? this.getCheckAllButton() : null}
@@ -189,8 +188,8 @@ class QueryInput extends React.Component<QueryInputProps, QueryInputState> {
 
   getQueryInputPrefix() {
     return (
-      <ShowCheckAllButton>
-        <CommonIcon iconClass={'lugia-icon-direction_arrow_up'} onClick={this.onHideSearchInput} />
+      <ShowCheckAllButton onClick={this.onHideSearchInput}>
+        <CommonIcon iconClass={'lugia-icon-direction_arrow_up'} />
       </ShowCheckAllButton>
     );
   }

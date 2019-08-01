@@ -72,16 +72,12 @@ export default class extends React.Component<any, any> {
       selectedKeys: 'a6/a6-2/a6-2-1/suba1/suba2',
       data,
     };
-    this.target = React.createContext();
-  }
-  componentDidMount() {
-    window.target = this.target.current;
   }
   render() {
     const { selectedKeys, data } = this.state;
     const config = {
       [Widget.Cascader]: {
-        [Widget.Menu]: {
+        Menu: {
           MenuWrap: {
             normal: {
               width: 200,
@@ -91,11 +87,6 @@ export default class extends React.Component<any, any> {
               background: { color: '#000' },
               border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }),
               borderRadius: getBorderRadius(20),
-              // padding: {
-              //   top: 30,
-              //   left: 20,
-              //   right: 20,
-              // },
             },
             hover: {
               opacity: 1,
@@ -146,91 +137,22 @@ export default class extends React.Component<any, any> {
           },
         },
 
-        [Widget.InputTag]: {
+        InputTag: {
           InputTagWrap: {
             normal: {
-              width: 340,
+              width: 500,
               height: 60,
               color: '#4d63ff',
               boxShadow: '2px 2px 5px #000',
               font: { size: 20 },
-              // background: { color: '#eee' },
               borderRadius: getBorderRadius(20),
-              // padding: {
-              //   left: '20',
-              //   right: '30',
-              // },
-            },
-            hover: {
-              boxShadow: '2px 2px 5px #4d63ff',
-              color: '#4d63ff',
-              borderRadius: getBorderRadius(10),
+              hover: {
+                boxShadow: '2px 2px 5px #4d63ff',
+                color: '#4d63ff',
+                borderRadius: getBorderRadius(10),
+              },
             },
           },
-          // TagWrap: {
-          //   normal: {
-          //     height: 20,
-          //     margin: {
-          //       left: 50,
-          //       right: 5,
-          //     },
-          //     padding: {
-          //       left: 10,
-          //       right: 10,
-          //     },
-
-          //     // border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }, { radius: 10 }),
-          //   },
-          //   hover: {
-          //     background: { color: 'orange' },
-          //   },
-          // },
-          // TagIcon: {
-          //   normal: {
-          //     font: { fontSize: 14, color: '#999' },
-          //   },
-          //   hover: {
-          //     color: '#4d63ff',
-          //   },
-          // },
-          Icon: {
-            normal: {
-              // color: '#ddd',
-              font: { fontSize: 30 },
-            },
-            hover: { color: '#4d63ff' },
-          },
-          // Menu: {
-          //   MenuWrap: {
-          //     normal: {
-          //       width: 200,
-          //       height: 200,
-          //       opacity: 0.6,
-          //       boxShadow: '2px 2px 5px #4d63ff',
-          //       background: { color: '#000' },
-          //       border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }, { radius: 20 }),
-          //     },
-          //     hover: {
-          //       opacity: 1,
-          //     },
-          //   },
-          //   MenuItem: {
-          //     normal: { color: '#ccc', fontSize: 14, font: { fontWeight: 900 } },
-          //     hover: {
-          //       color: '#fff',
-          //       fontSize: 20,
-          //       background: { color: 'green' },
-          //       font: { fontWeight: 400 },
-          //     },
-          //     active: {
-          //       color: 'blue',
-          //       fontSize: 14,
-          //       background: { color: 'pink' },
-          //       font: { fontWeight: 900 },
-          //     },
-          //     disabled: { color: 'red', background: { color: '#000' } },
-          //   },
-          // },
         },
       },
     };
@@ -239,11 +161,9 @@ export default class extends React.Component<any, any> {
       <Box>
         <Cascader
           theme={config}
-          ref={this.target}
           data={data}
           action={'hover'}
           value={selectedKeys}
-          // value={null}
           defaultValue={['a6/a6-2/a6-2-1/suba1/suba2']}
           separator={'/'}
           onClick={this.onClick}
