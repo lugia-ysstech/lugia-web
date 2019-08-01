@@ -180,6 +180,7 @@
           "disabled": []
         },
         "MenuItem": {
+          "name": "菜单项的配置",
           "theme": {
             "MenuItemWrap": {
               "name": "项的外盒",
