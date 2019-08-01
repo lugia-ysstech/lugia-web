@@ -8,8 +8,7 @@ import * as React from 'react';
 import Cascader from './index';
 import styled from 'styled-components';
 import Widget from '../consts/index';
-import { getBorder } from '@lugia/theme-utils';
-import { getBorderRadius } from '../theme/CSSProvider';
+import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
 
 const Box = styled.div`
   padding-bottom: 500px;
@@ -72,165 +71,186 @@ export default class extends React.Component<any, any> {
       selectedKeys: 'a6/a6-2/a6-2-1/suba1/suba2',
       data,
     };
-    this.target = React.createContext();
-  }
-  componentDidMount() {
-    window.target = this.target.current;
   }
   render() {
     const { selectedKeys, data } = this.state;
     const config = {
       [Widget.Cascader]: {
-        [Widget.Menu]: {
+        Menu: {
           MenuWrap: {
             normal: {
               width: 200,
-              height: 350,
-              opacity: 0.6,
-              boxShadow: '2px 2px 5px #4d63ff',
-              background: { color: '#000' },
-              border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }),
+              height: 300,
+              // opacity: 0.7,
+              background: {
+                color: '#ccc',
+              },
+              padding: {
+                left: 10,
+                top: 30,
+                //   right: 30,
+              },
+              margin: {
+                left: 20,
+                top: 20,
+              },
+              border: getBorder({ color: '#ff3366', width: 1, style: 'solid' }),
               borderRadius: getBorderRadius(20),
-              // padding: {
-              //   top: 30,
-              //   left: 20,
-              //   right: 20,
-              // },
+              boxShadow: getBoxShadow('2px 2px 2px 4px #ff3366'),
             },
             hover: {
-              opacity: 1,
+              background: {
+                color: '#ff66cc',
+              },
+              // opacity: 1,
+              border: getBorder({ color: '#ff66cc', width: 1, style: 'solid' }),
+              borderRadius: getBorderRadius(20),
+              boxShadow: getBoxShadow('2px 2px 2px 4px #ff66cc'),
             },
           },
           MenuItem: {
-            normal: { color: '#ccc', fontSize: 14, font: { fontWeight: 900 } },
-            hover: {
-              color: '#fff',
-              fontSize: 20,
-              background: { color: 'green' },
-              font: { fontWeight: 400 },
-            },
-            active: {
-              color: 'blue',
-              fontSize: 14,
-              background: { color: 'pink' },
-              font: { fontWeight: 900 },
-            },
-            disabled: { color: 'red', background: { color: '#000' } },
-          },
-          SelectedMenuItem: {
-            normal: {
-              color: 'blue',
-              font: { fontWeight: 900 },
-              fontSize: 18,
-              background: { color: 'orange' },
-            },
-            hover: { color: '#000', background: { color: 'yellow' } },
-            active: { color: 'green' },
-          },
-          Divider: { normal: { color: 'red' } },
-        },
-        [Widget.SubMenu]: {
-          MenuWrap: {
-            normal: { width: 200, height: 350, fontSize: 14, background: { color: '#ccc' } },
-          },
-          MenuItem: {
-            normal: { color: '#4d63ff' },
-            hover: { color: '#000', background: { color: 'orange' }, font: { fontWeight: 900 } },
-            active: { color: '#999' },
-            disabled: { color: 'red', background: { color: '#000' } },
-          },
-          SelectedMenuItem: {
-            normal: { color: 'blue', font: { fontWeight: 900 }, background: { color: '#ccc' } },
-            hover: { color: '#000', background: { color: 'yellow' } },
-            active: { color: 'green' },
-          },
-        },
+            MenuItemWrap: {
+              normal: {
+                height: 60,
+                background: { color: '#ff99cc' },
+                color: '#cc00cc',
+                // border: getBorder({ color: '#ff66cc', width: 1, style: 'solid' }),
+                borderRadius: getBorderRadius(20),
+                padding: {
+                  left: 60,
+                  top: 0,
+                },
+                font: {
+                  size: 16,
+                },
+              },
+              hover: {
+                color: '#fff',
+                background: {
+                  color: '#660066',
+                },
+                opacity: 0.9,
+                font: {
+                  fontWeight: 900,
+                },
+                // border: getBorder({ color: '#ff66cc', width: 1, style: 'solid' }),
+                borderRadius: getBorderRadius(20),
+              },
 
-        [Widget.InputTag]: {
-          InputTagWrap: {
-            normal: {
-              width: 340,
-              height: 60,
-              color: '#4d63ff',
-              boxShadow: '2px 2px 5px #000',
-              font: { size: 20 },
-              // background: { color: '#eee' },
-              borderRadius: getBorderRadius(20),
-              // padding: {
-              //   left: '20',
-              //   right: '30',
-              // },
-            },
-            hover: {
-              boxShadow: '2px 2px 5px #4d63ff',
-              color: '#4d63ff',
-              borderRadius: getBorderRadius(10),
-            },
-          },
-          // TagWrap: {
-          //   normal: {
-          //     height: 20,
-          //     margin: {
-          //       left: 50,
-          //       right: 5,
-          //     },
-          //     padding: {
-          //       left: 10,
-          //       right: 10,
-          //     },
+              active: {
+                color: '#4d63ff',
+                background: {
+                  color: 'ff0099',
+                },
+                opacity: 0.9,
+                font: {
+                  fontWeight: 900,
+                },
+                // border: getBorder({ color: '#660033', width: 1, style: 'solid' }),
+                borderRadius: getBorderRadius(60),
+              },
 
-          //     // border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }, { radius: 10 }),
-          //   },
-          //   hover: {
-          //     background: { color: 'orange' },
-          //   },
-          // },
-          // TagIcon: {
-          //   normal: {
-          //     font: { fontSize: 14, color: '#999' },
-          //   },
-          //   hover: {
-          //     color: '#4d63ff',
-          //   },
-          // },
-          Icon: {
-            normal: {
-              // color: '#ddd',
-              font: { fontSize: 30 },
+              disabled: {
+                background: { color: '#ff99cc' },
+                color: 'red',
+                borderRadius: getBorderRadius(60),
+                opacity: 0.7,
+                padding: {
+                  left: 30,
+                  top: 0,
+                },
+                font: {
+                  size: 26,
+                },
+              },
             },
-            hover: { color: '#4d63ff' },
+
+            SelectedMenuItemWrap: {
+              normal: {
+                height: 80,
+                background: { color: '#cc00ff' },
+                color: '#fff',
+                // border: getBorder({ color: '#660033', width: 1, style: 'solid' }),
+                borderRadius: getBorderRadius(80),
+                padding: {
+                  left: 30,
+                },
+                font: {
+                  size: 20,
+                },
+              },
+              hover: {
+                color: '#4d63ff',
+                background: {
+                  color: '#ffffcc',
+                },
+                opacity: 1,
+                font: {
+                  fontWeight: 900,
+                },
+                // border: getBorder({ color: '#336699', width: 1, style: 'solid' }),
+                borderRadius: getBorderRadius(60),
+              },
+
+              active: {
+                color: '#cc0000',
+                background: {
+                  color: 'ff9900',
+                },
+                opacity: 1,
+                font: {
+                  fontWeight: 900,
+                },
+                // border: getBorder({ color: '#000033', width: 1, style: 'solid' }),
+                borderRadius: getBorderRadius(0),
+              },
+            },
+
+            Divider: {
+              normal: { background: { color: 'red' } },
+            },
+
+            Checkbox: {
+              CheckboxText: {
+                normal: {
+                  color: 'red',
+                  font: { fontSize: 22, fontWeight: 500 },
+                },
+                hover: { color: 'green', font: { fontSize: 16, fontWeight: 500 } },
+                disabled: { color: 'yellow', font: { fontSize: 16, fontWeight: 500 } },
+              },
+            },
           },
-          // Menu: {
-          //   MenuWrap: {
-          //     normal: {
-          //       width: 200,
-          //       height: 200,
-          //       opacity: 0.6,
-          //       boxShadow: '2px 2px 5px #4d63ff',
-          //       background: { color: '#000' },
-          //       border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }, { radius: 20 }),
-          //     },
-          //     hover: {
-          //       opacity: 1,
-          //     },
-          //   },
-          //   MenuItem: {
-          //     normal: { color: '#ccc', fontSize: 14, font: { fontWeight: 900 } },
-          //     hover: {
-          //       color: '#fff',
-          //       fontSize: 20,
-          //       background: { color: 'green' },
-          //       font: { fontWeight: 400 },
-          //     },
-          //     active: {
-          //       color: 'blue',
-          //       fontSize: 14,
-          //       background: { color: 'pink' },
-          //       font: { fontWeight: 900 },
-          //     },
-          //     disabled: { color: 'red', background: { color: '#000' } },
-          //   },
-          // },
+
+          SubMenu: {
+            MenuWrap: {
+              normal: {
+                width: 100,
+                background: {
+                  color: '#660033',
+                },
+              },
+            },
+
+            MenuItem: {
+              MenuItemWrap: {
+                normal: {
+                  color: '#fff',
+                },
+              },
+            },
+
+            SubMenu: {
+              MenuWrap: {
+                normal: {
+                  width: 200,
+                  background: {
+                    color: '#777777',
+                  },
+                },
+              },
+            },
+          },
         },
       },
     };
@@ -239,11 +259,9 @@ export default class extends React.Component<any, any> {
       <Box>
         <Cascader
           theme={config}
-          ref={this.target}
           data={data}
           action={'hover'}
           value={selectedKeys}
-          // value={null}
           defaultValue={['a6/a6-2/a6-2-1/suba1/suba2']}
           separator={'/'}
           onClick={this.onClick}

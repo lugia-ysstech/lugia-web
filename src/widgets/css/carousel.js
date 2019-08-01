@@ -39,8 +39,9 @@ export const PreButton = CSSComponent({
     selectNames: [['boxShadow'], ['border'], ['opacity']],
     defaultTheme: {},
   },
-  css: `
-      ${buttonCSS};
+  css: css`
+    ${buttonCSS};
+    z-index: 1000;
   `,
   option: { hover: true },
 });
@@ -65,8 +66,9 @@ export const NextButton = CSSComponent({
   hover: {
     selectNames: [['boxShadow'], ['border'], ['opacity']],
   },
-  css: `
-      ${buttonCSS};
+  css: css`
+    ${buttonCSS};
+    z-index: 1000;
   `,
   option: { hover: true },
 });

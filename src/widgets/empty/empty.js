@@ -13,15 +13,7 @@ export const EmptyContainer = CSSComponent({
   tag: 'div',
   className: 'EmptyContainer',
   normal: {
-    selectNames: [
-      ['width'],
-      ['height'],
-      ['background'],
-      ['opacity'],
-      ['border'],
-      ['boxShadow'],
-      ['borderRadius'],
-    ],
+    selectNames: [['width'], ['height'], ['background'], ['opacity'], ['border'], ['borderRadius']],
   },
   hover: {
     selectNames: [],

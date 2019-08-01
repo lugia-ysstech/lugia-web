@@ -72,7 +72,6 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     themeStyle: 'light',
     inlineType: 'primary',
     separator: '|',
-    autoHeight: true,
     switchIconNames: {
       open: 'lugia-icon-direction_up',
       close: 'lugia-icon-direction_down',
@@ -123,7 +122,14 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
   };
 
   getVerticalNavMenu = () => {
-    const { data, displayField, valueField, separator, autoHeight, themeStyle } = this.props;
+    const {
+      data,
+      displayField,
+      valueField,
+      separator,
+      autoHeight = false,
+      themeStyle,
+    } = this.props;
     const { popupVisible, value, expandedPath } = this.state;
     return (
       <MenuWrap>
@@ -242,7 +248,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
   };
 
   getHorizontaMenu = (i: number) => {
-    const { data = [], autoHeight, themeStyle } = this.props;
+    const { data = [], autoHeight = true, themeStyle } = this.props;
     const { children } = data[i];
     if (!children || children.length === 0) {
       return <span />;
@@ -402,7 +408,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       inlineExpandAll,
       valueField,
       displayField,
-      autoHeight,
+      autoHeight = true,
       themeStyle,
       switchIconNames,
     } = this.props;
