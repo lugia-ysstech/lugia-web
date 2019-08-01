@@ -42,9 +42,6 @@ export const circleKeyframes = keyframes`
 const circleKeyframesAnimation = css`
   ${circleKeyframes};
 `;
-const circleKeyframesAnimationDelay = css`
-  animation-delay: 0.6s;
-`;
 const getStyled = (props?: CssProps) => {
   const { width, color, circleDiameter, delay, scale } = props;
   const LodingWrapperStyle = `
@@ -65,22 +62,22 @@ const getStyled = (props?: CssProps) => {
     animation-timing-function: cubic-bezier(0.28, 0.8, 0.69, 1);
     animation-delay: ${delay}s;
   `;
-  const LodingInnerCircleStyle = `
+  const scaleAnimation = css`
+    transform: scale(1.2);
+    animation: ${circleKeyframesAnimation} 2.5s infinite;
+    animation-delay: 0.6s;
+  `;
+  const LodingInnerCircleStyle = css`
     display: block;
     width: ${em(circleDiameter)};
     height: ${em(circleDiameter)};
     background: ${color};
     border-radius: 50%;
-    ${
-      scale
-        ? `transform:scale(1.2);
-          animation: ${circleKeyframesAnimation} 2.5s infinite;
-          ${circleKeyframesAnimationDelay};
-        `
-        : `
+    ${scale
+      ? scaleAnimation
+      : `
         transform:scale(1);
-        `
-    }
+        `}
   `;
   return {
     LodingWrapperStyle,
@@ -155,14 +152,16 @@ const rotate = keyframes`
     transform: rotate(360deg);
   }
 `;
-const getAnimation = css`
-  ${rotate};
-`;
+const getAnimation = time => {
+  return css`
+    animation: ${rotate} ${time}s linear infinite;
+  `;
+};
 export const IconLoading = styled.span`
   display: block;
   width: ${props => props.size}px;
   height: ${props => props.size}px;
-  animation: ${getAnimation} ${props => props.time}s linear infinite;
+  ${props => getAnimation(props.time)};
   font-size: ${props => props.size}px;
   color: ${props => props.color};
 `;
