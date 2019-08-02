@@ -7,7 +7,6 @@ import * as React from 'react';
 import Navmenu from './';
 import Widget from '../consts/index';
 import styled from 'styled-components';
-import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
 
 const Box = styled.div`
   display: inline-block;
@@ -150,24 +149,33 @@ const treeTheme = {
 const tabsTheme = {
   [Widget.NavMenu]: {
     Tabs: {
+      TitleContainer: {
+        normal: {
+          background: '#000033',
+        },
+      },
       TabHeader: {
         SelectTabPan: {
           normal: {
-            color: 'red',
+            color: '#4d63ff',
           },
-          disabled: {
-            color: '#ccc',
-          },
+          // disabled: {
+          //   color: '#ccc',
+          // },
         },
         DefaultTabPan: {
           normal: {
-            height: 31,
+            height: 60,
+            color: '#fff',
             background: {
-              color: 'red',
+              color: '#000033',
+            },
+            font: {
+              weight: 900,
             },
           },
           hover: {
-            color: 'orange',
+            color: '#4d63ff',
           },
           disabled: {
             color: '#ccc',
@@ -178,35 +186,90 @@ const tabsTheme = {
   },
 };
 
+const Button = styled.div`
+  display: inline-block;
+  width: 100px;
+  height: 50px;
+  background: orange;
+`;
+const testTheme = {
+  [Widget.NavMenu]: {
+    Tree: {
+      TreeWrap: {
+        normal: {
+          height: 500,
+        },
+      },
+    },
+  },
+};
 export default class LimitDemo extends React.Component<Object, Object> {
   all: boolean;
 
   constructor(props) {
     super(props);
-    this.state = { value: ['Affix 固钉'], activityValue: 3 };
+    this.state = { value: ['Affix 固钉'], activityValue: '项目实战', height: 500, testTheme };
   }
 
   tabsOnChange = (target: Object) => {
-    const { index: activityValue } = target;
-    this.setState({ activityValue });
+    const { item } = target;
+    const { value } = item;
+    // const { activityValue } = target;
+    this.setState({ activityValue: value });
+  };
+
+  // onClickButton = () => {
+  //   this.setState({
+  //     height: 800,
+  //     data: newData,
+  //   });
+  // };
+
+  componentDidMount() {
+    this.getWindowHeight();
+    window.onresize = () => {
+      this.getWindowHeight();
+    };
+  }
+
+  getWindowHeight = () => {
+    const viewHeight = document.body.clientHeight - 122;
+
+    this.setState({});
   };
 
   render() {
     return (
       <div>
         <HoriBox>
+          <H3>horizontal水平导航菜单</H3>
           <Navmenu
             data={horiData}
-            theme={tabsTheme}
+            // theme={tabsTheme}
+            // themeStyle={'dark'}
             activityValue={this.state.activityValue}
             mode={'horizontal'}
             onChange={this.tabsOnChange}
           />
         </HoriBox>
+
+        <HoriBox>
+          <H3>horizontal水平导航菜单</H3>
+          <Navmenu
+            data={horiData}
+            themeStyle={'dark'}
+            // activityValue={this.state.activityValue}
+            mode={'horizontal'}
+            // onChange={this.tabsOnChange}
+          />
+        </HoriBox>
         <div>
           <Box>
             <H3>light主题</H3>
-            <Navmenu data={horiData} mode={'vertical'} />
+            <Navmenu
+              //  data={horiData}
+              mode={'vertical'}
+            />
           </Box>
         </div>
         <div>
@@ -214,19 +277,20 @@ export default class LimitDemo extends React.Component<Object, Object> {
             <H3>dark主题</H3>
             <Navmenu
               // autoHeight={false}
-              data={horiData}
+              // data={horiData}
               themeStyle={'dark'}
               mode={'vertical'}
             />
           </Box>
         </div>
+
         <Box>
           <H3>light主题</H3>
           <Navmenu
             inlineType={'primary'}
             theme={treeTheme}
             mode={'inline'}
-            data={newData}
+            // data={newData}
             value={this.state.value}
             inlineExpandAll={true}
             onChange={this.onChange}

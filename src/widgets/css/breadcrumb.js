@@ -76,6 +76,7 @@ export const ALink = CSSComponent({
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    font-size: ${FontSize};
   `,
   option: { hover: true },
 });
