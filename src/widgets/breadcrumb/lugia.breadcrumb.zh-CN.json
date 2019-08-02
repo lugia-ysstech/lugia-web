@@ -71,10 +71,16 @@
       "name": "面包屑单项配置",
       "theme": {
         "ItemWrap": {
-          "name": "文本",
+          "name": "单项外盒",
           "desc": "面包屑的文本配置",
-          "normal": [["width"], ["padding"], ["margin"], ["opacity"]],
-          "hover": [],
+          "normal": {
+            "selectNames": [["width"], ["padding"], ["margin"], ["opacity"]],
+            "nth": [["width"], ["padding"], ["margin"], ["opacity"]]
+          },
+          "hover": {
+            "selectNames": [["width"], ["padding"], ["margin"], ["opacity"]],
+            "nth": [["width"], ["padding"], ["margin"], ["opacity"]]
+          },
           "clicked": [],
           "disabled": []
         },
@@ -82,16 +88,46 @@
         "Text": {
           "name": "文本",
           "desc": "面包屑的文本配置",
-          "normal": [
-            ["color"],
-            ["fontSize"],
-            ["margin", "left"],
-            ["margin", "right"],
-            ["padding", "left"],
-            ["padding", "right"],
-            ["font"]
-          ],
-          "hover": [["color"], ["font"], ["fontSize"]],
+          "normal": {
+            "selectNames": [
+              ["color"],
+              ["fontSize"],
+              ["margin", "left"],
+              ["margin", "right"],
+              ["padding", "left"],
+              ["padding", "right"],
+              ["font"]
+            ],
+            "nth": [
+              ["color"],
+              ["fontSize"],
+              ["margin", "left"],
+              ["margin", "right"],
+              ["padding", "left"],
+              ["padding", "right"],
+              ["font"]
+            ]
+          },
+          "hover": {
+            "selectNames": [
+              ["color"],
+              ["fontSize"],
+              ["margin", "left"],
+              ["margin", "right"],
+              ["padding", "left"],
+              ["padding", "right"],
+              ["font"]
+            ],
+            "nth": [
+              ["color"],
+              ["fontSize"],
+              ["margin", "left"],
+              ["margin", "right"],
+              ["padding", "left"],
+              ["padding", "right"],
+              ["font"]
+            ]
+          },
           "clicked": [],
           "disabled": []
         },
@@ -99,14 +135,24 @@
         "Separator": {
           "name": "分隔符",
           "desc": "面包屑的分隔符配置",
-          "normal": [
-            ["color"],
-            ["fontSize"],
-            ["margin", "left"],
-            ["margin", "right"],
-            ["padding", "left"],
-            ["padding", "right"]
-          ],
+          "normal": {
+            "selectNames": [
+              ["color"],
+              ["fontSize"],
+              ["margin", "left"],
+              ["margin", "right"],
+              ["padding", "left"],
+              ["padding", "right"]
+            ],
+            "nth": [
+              ["color"],
+              ["fontSize"],
+              ["margin", "left"],
+              ["margin", "right"],
+              ["padding", "left"],
+              ["padding", "right"]
+            ]
+          },
           "hover": [],
           "clicked": [],
           "disabled": []

@@ -87,7 +87,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       popupVisible: false,
       value: getValue(props, null),
       expandedPath: getInitExpandedPath(props),
-      activityValue: props.activityValue ? props.activityValue : 0,
+      activityValue: props.activityValue ? props.activityValue : '',
       isInTabs: false,
     };
     this.treeData = getTreeData(this.props);
@@ -288,7 +288,8 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     const { children } = item;
     if (!children || children.length === 0) {
       const { parentItem, index } = this.getParentTarget(item[valueField]);
-      this.setState({ activityValue: index });
+      const activityValue = parentItem[valueField];
+      this.setState({ activityValue });
       this.exposeOnChange({
         item,
         index,
@@ -300,10 +301,13 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
   isHasChildren = (index: number) => {
     const { data = [] } = this.props;
     const children = data[index].children;
+    // console.log('data', data, index);
     return !!children && !!children.length;
   };
 
-  onTabClick = (index: number) => {
+  onTabClick = (obj: Object) => {
+    const { index, activityValue } = obj;
+    console.log('obj', obj);
     const isHasChildren = this.isHasChildren(index);
     if (!isHasChildren) {
       const { data } = this.props;
@@ -313,7 +317,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
         parrentItem: data[index],
       };
       this.exposeOnChange(target);
-      this.setState({ activityValue: index });
+      this.setState({ activityValue });
     }
   };
 
@@ -323,7 +327,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     data.forEach((item, i) => {
       const target = {};
       target.title = item[displayField];
-      target.activityValue = item[valueField];
+      target.key = item[valueField];
       target.disabled = item.disabled;
       const { children = [] } = item;
       if (children && children.length !== 0) {
