@@ -86,6 +86,10 @@ exports[`Rate Test css 1`] = `
         style={
           Object {
             "color": "#e8e8e8",
+            "marginBottom": "0rem",
+            "marginLeft": "0rem",
+            "marginRight": "0rem",
+            "marginTop": "0rem",
           }
         }
       />
@@ -100,6 +104,10 @@ exports[`Rate Test css 1`] = `
         style={
           Object {
             "color": "#e8e8e8",
+            "marginBottom": "0rem",
+            "marginLeft": "0rem",
+            "marginRight": "0rem",
+            "marginTop": "0rem",
           }
         }
       />
@@ -123,6 +131,10 @@ exports[`Rate Test css 1`] = `
         style={
           Object {
             "color": "#e8e8e8",
+            "marginBottom": "0rem",
+            "marginLeft": "0rem",
+            "marginRight": "0rem",
+            "marginTop": "0rem",
           }
         }
       />
@@ -137,6 +149,10 @@ exports[`Rate Test css 1`] = `
         style={
           Object {
             "color": "#e8e8e8",
+            "marginBottom": "0rem",
+            "marginLeft": "0rem",
+            "marginRight": "0rem",
+            "marginTop": "0rem",
           }
         }
       />
@@ -160,6 +176,10 @@ exports[`Rate Test css 1`] = `
         style={
           Object {
             "color": "#e8e8e8",
+            "marginBottom": "0rem",
+            "marginLeft": "0rem",
+            "marginRight": "0rem",
+            "marginTop": "0rem",
           }
         }
       />
@@ -174,6 +194,10 @@ exports[`Rate Test css 1`] = `
         style={
           Object {
             "color": "#e8e8e8",
+            "marginBottom": "0rem",
+            "marginLeft": "0rem",
+            "marginRight": "0rem",
+            "marginTop": "0rem",
           }
         }
       />
@@ -197,6 +221,10 @@ exports[`Rate Test css 1`] = `
         style={
           Object {
             "color": "#e8e8e8",
+            "marginBottom": "0rem",
+            "marginLeft": "0rem",
+            "marginRight": "0rem",
+            "marginTop": "0rem",
           }
         }
       />
@@ -211,6 +239,10 @@ exports[`Rate Test css 1`] = `
         style={
           Object {
             "color": "#e8e8e8",
+            "marginBottom": "0rem",
+            "marginLeft": "0rem",
+            "marginRight": "0rem",
+            "marginTop": "0rem",
           }
         }
       />
@@ -234,6 +266,10 @@ exports[`Rate Test css 1`] = `
         style={
           Object {
             "color": "#e8e8e8",
+            "marginBottom": "0rem",
+            "marginLeft": "0rem",
+            "marginRight": "0rem",
+            "marginTop": "0rem",
           }
         }
       />
@@ -248,6 +284,10 @@ exports[`Rate Test css 1`] = `
         style={
           Object {
             "color": "#e8e8e8",
+            "marginBottom": "0rem",
+            "marginLeft": "0rem",
+            "marginRight": "0rem",
+            "marginTop": "0rem",
           }
         }
       />

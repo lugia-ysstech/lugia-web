@@ -5,7 +5,7 @@
 
 import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
-import Rate, {
+import {
   calcValue,
   getClass,
   getClassNames,
@@ -13,6 +13,7 @@ import Rate, {
   multipleValue,
   getMultiple,
 } from '../rate';
+import Rate from '../index';
 import Enzyme, { mount } from 'enzyme';
 import renderer from 'react-test-renderer';
 import 'jest-styled-components';
@@ -22,15 +23,11 @@ const { mockObject, VerifyOrder, VerifyOrderConfig } = require('@lugia/jverify')
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('Rate Test', () => {
-  const themeProps = { themeConfig: {}, themeState: {} };
+  const themeProps = { themeConfig: {}, themeState: {}, onLugia: () => true };
   const getPartOfThemeProps = () => true;
-  const target = mount(
-    <Rate
-      getPartOfThemeProps={getPartOfThemeProps}
-      getPartOfThemeHocProps={getPartOfThemeProps}
-      themeProps={themeProps}
-    />
-  );
+  const getCmp = (target: any): Object => {
+    return target.children().instance();
+  };
 
   it('css', () => {
     const target = (
@@ -64,7 +61,7 @@ describe('Rate Test', () => {
         value={4}
       />
     );
-    expect(target.state().value).toEqual(4);
+    expect(getCmp(target).state.value).toEqual(4);
   });
 
   it('disabled=true', () => {
@@ -76,10 +73,10 @@ describe('Rate Test', () => {
         disabled={true}
       />
     );
-    expect(target.props().disabled).toEqual(true);
-    expect(target.state().value).toEqual(0);
+    expect(getCmp(target).props.disabled).toEqual(true);
+    expect(getCmp(target).state.value).toEqual(0);
     findRate(target, 3).simulate('click', {}, 3);
-    expect(target.state().value).toEqual(0);
+    expect(getCmp(target).state.value).toEqual(0);
   });
 
   it('allowHalf=true', () => {
@@ -92,8 +89,8 @@ describe('Rate Test', () => {
         value={3.5}
       />
     );
-    expect(target.props().allowHalf).toEqual(true);
-    expect(target.state().value).toEqual(3.5);
+    expect(getCmp(target).props.allowHalf).toEqual(true);
+    expect(getCmp(target).state.value).toEqual(3.5);
   });
 
   it('allowHalf=false value=3.5 ->3', () => {
@@ -106,8 +103,8 @@ describe('Rate Test', () => {
         value={3.5}
       />
     );
-    expect(target.props().allowHalf).toEqual(false);
-    expect(target.state().value).toEqual(3);
+    expect(getCmp(target).props.allowHalf).toEqual(false);
+    expect(getCmp(target).state.value).toEqual(3);
   });
 
   function checkInitValue(props: Object, expectation) {
@@ -254,10 +251,17 @@ describe('Rate Test', () => {
 
   function setValue(setValObj, expectation) {
     it('Function setValue', () => {
-      target.instance().setValue(setValObj);
-      expect(target.state().value).toEqual(expectation.value);
-      expect(target.state().iconTypeArray).toEqual(expectation.iconTypeArray);
-      expect(target.state().starNum).toEqual(expectation.starNum);
+      const target = mount(
+        <Rate
+          getPartOfThemeProps={getPartOfThemeProps}
+          getPartOfThemeHocProps={getPartOfThemeProps}
+          themeProps={themeProps}
+        />
+      );
+      getCmp(target).setValue(setValObj);
+      expect(getCmp(target).state.value).toEqual(expectation.value);
+      expect(getCmp(target).state.iconTypeArray).toEqual(expectation.iconTypeArray);
+      expect(getCmp(target).state.starNum).toEqual(expectation.starNum);
     });
   }
 
@@ -303,10 +307,10 @@ describe('Rate Test', () => {
     );
 
     target.setProps({ value: 1 });
-    expect(target.state().value).toEqual(1);
+    expect(getCmp(target).state.value).toEqual(1);
 
     findRate(target, 2).simulate('click', {}, 2, false);
-    expect(target.state().value).toEqual(1);
+    expect(getCmp(target).state.value).toEqual(1);
     expect(await changePromise).toBe(3);
   });
 
@@ -329,21 +333,21 @@ describe('Rate Test', () => {
     );
     const order = VerifyOrder.create();
     const mockGetOffset = mockObject.create(
-      target.instance(),
+      getCmp(target),
       VerifyOrderConfig.create('offset', order)
     );
     const getOffset = mockGetOffset.mockFunction('getOffset');
     getOffset.forever({ offsetLeft: 76, offsetWidth: 18 });
 
     findRate(target, 2).simulate('click', { pageX: 80 }, 2, true);
-    expect(target.state().value).toEqual(4);
+    expect(getCmp(target).state.value).toEqual(4);
     expect(await changePromise).toBe(2.5);
 
     target.setProps({ value: 2 });
-    expect(target.state().value).toEqual(2);
+    expect(getCmp(target).state.value).toEqual(2);
 
     findRate(target, 2).simulate('click', { pageX: 80 }, 2, true);
-    expect(target.state().value).toEqual(2);
+    expect(getCmp(target).state.value).toEqual(2);
     expect(await changePromise).toBe(2.5);
   });
 
@@ -364,7 +368,7 @@ describe('Rate Test', () => {
     );
 
     findRate(target, 3).simulate('click', {}, 3, true);
-    expect(target.state().value).toEqual(4);
+    expect(getCmp(target).state.value).toEqual(4);
     expect(await changePromise).toBe(4);
   });
 
@@ -380,17 +384,17 @@ describe('Rate Test', () => {
 
     const order = VerifyOrder.create();
     const mockGetOffset = mockObject.create(
-      target.instance(),
+      getCmp(target),
       VerifyOrderConfig.create('offset', order)
     );
     const getOffset = mockGetOffset.mockFunction('getOffset');
     getOffset.forever({ offsetLeft: 76, offsetWidth: 18 });
 
     findRate(target, 2).simulate('click', { pageX: 80 }, 2, true);
-    expect(target.state().value).toEqual(2.5);
+    expect(getCmp(target).state.value).toEqual(2.5);
 
     findRate(target, 0).simulate('click', { pageX: 13 }, 0, true);
-    expect(target.state().value).toEqual(0.5);
+    expect(getCmp(target).state.value).toEqual(0.5);
   });
 
   it('Function:onClick unlimit -> limit  value', async () => {
@@ -410,11 +414,11 @@ describe('Rate Test', () => {
     );
 
     findRate(target, 3).simulate('click', {}, 3);
-    expect(target.state().value).toEqual(4);
+    expect(getCmp(target).state.value).toEqual(4);
     expect(await changePromise).toBe(4);
 
     target.setProps({ value: 2 });
-    expect(target.state().value).toEqual(2);
+    expect(getCmp(target).state.value).toEqual(2);
   });
 
   it('Function:onClick unlimit -> limit  value', async () => {
@@ -434,9 +438,9 @@ describe('Rate Test', () => {
     );
 
     target.setProps({ value: 2 });
-    expect(target.state().value).toEqual(2);
+    expect(getCmp(target).state.value).toEqual(2);
     findRate(target, 2).simulate('click', {}, 2);
-    expect(target.state().value).toEqual(2);
+    expect(getCmp(target).state.value).toEqual(2);
     expect(await changePromise).toBe(3);
   });
 
@@ -449,9 +453,9 @@ describe('Rate Test', () => {
         disabled={true}
       />
     );
-    expect(target.state().value).toEqual(0);
+    expect(getCmp(target).state.value).toEqual(0);
     findRate(target, 2).simulate('click', {}, 2);
-    expect(target.state().value).toEqual(0);
+    expect(getCmp(target).state.value).toEqual(0);
   });
 
   it('Function:onMouseMove limit ', async () => {
@@ -463,21 +467,35 @@ describe('Rate Test', () => {
         value={4}
       />
     );
-    target.instance().onMouseMove({ pageX: 10 }, 2);
-    expect(target.state().value).toEqual(4);
+    getCmp(target).onMouseMove({ pageX: 10 }, 2);
+    expect(getCmp(target).state.value).toEqual(4);
   });
 
   it('Function:onMouseMoveOrClick unlimit value', async () => {
-    target.instance().onMouseMove({ pageX: 10 }, 2);
-    expect(target.state().value).toEqual(3);
+    const target = mount(
+      <Rate
+        getPartOfThemeProps={getPartOfThemeProps}
+        getPartOfThemeHocProps={getPartOfThemeProps}
+        themeProps={themeProps}
+      />
+    );
+    getCmp(target).onMouseMove({ pageX: 10 }, 2);
+    expect(getCmp(target).state.value).toEqual(3);
   });
 
   it('Function:onMouseMoveOrClick unlimit ->limit ', async () => {
-    target.instance().onMouseMove({ pageX: 10 }, 2);
-    expect(target.state().value).toEqual(3);
+    const target = mount(
+      <Rate
+        getPartOfThemeProps={getPartOfThemeProps}
+        getPartOfThemeHocProps={getPartOfThemeProps}
+        themeProps={themeProps}
+      />
+    );
+    getCmp(target).onMouseMove({ pageX: 10 }, 2);
+    expect(getCmp(target).state.value).toEqual(3);
     target.setProps({ value: 2 });
-    target.instance().onMouseMove({ pageX: 10 }, 4);
-    expect(target.state().value).toEqual(2);
+    getCmp(target).onMouseMove({ pageX: 10 }, 4);
+    expect(getCmp(target).state.value).toEqual(2);
   });
 
   it('Function:mouseLeave lilmit', async () => {
@@ -489,9 +507,9 @@ describe('Rate Test', () => {
         value={4}
       />
     );
-    target.instance().mouseLeave({});
-    expect(target.state().value).toEqual(4);
-    expect(target.state().starNum).toEqual(4);
+    getCmp(target).mouseLeave({});
+    expect(getCmp(target).state.value).toEqual(4);
+    expect(getCmp(target).state.starNum).toEqual(4);
   });
   it('Function:mouseLeave unlilmit', async () => {
     const target = mount(
@@ -501,9 +519,9 @@ describe('Rate Test', () => {
         themeProps={themeProps}
       />
     );
-    target.instance().mouseLeave({});
-    expect(target.state().value).toEqual(0);
-    expect(target.state().starNum).toEqual(0);
+    getCmp(target).mouseLeave({});
+    expect(getCmp(target).state.value).toEqual(0);
+    expect(getCmp(target).state.starNum).toEqual(0);
   });
 
   it('Function:mouseLeave onClick unlimit value', async () => {
@@ -523,10 +541,10 @@ describe('Rate Test', () => {
     );
 
     findRate(target, 3).simulate('click', {}, 3, true);
-    expect(target.state().value).toEqual(4);
+    expect(getCmp(target).state.value).toEqual(4);
     expect(await changePromise).toBe(4);
-    target.instance().mouseLeave({});
-    expect(target.state().value).toEqual(4);
+    getCmp(target).mouseLeave({});
+    expect(getCmp(target).state.value).toEqual(4);
   });
 
   it('Function:mouseLeave onClick limit value', async () => {
@@ -546,10 +564,10 @@ describe('Rate Test', () => {
       />
     );
     findRate(target, 3).simulate('click', {}, 3, true);
-    expect(target.state().value).toEqual(5);
+    expect(getCmp(target).state.value).toEqual(5);
     expect(await changePromise).toBe(4);
-    target.instance().mouseLeave({});
-    expect(target.state().value).toEqual(5);
+    getCmp(target).mouseLeave({});
+    expect(getCmp(target).state.value).toEqual(5);
   });
   it('getClass', () => {
     expect(getClass(100, 1000, false)).toBe('primary');

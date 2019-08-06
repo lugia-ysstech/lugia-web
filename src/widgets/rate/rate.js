@@ -191,11 +191,11 @@ type RateProps = {
   defaultValue?: number,
   value?: number,
   disabled?: boolean,
-  allowHalf: boolean,
+  allowHalf?: boolean,
   iconClass?: Object,
   classify?: boolean,
-  onClick: Function,
-  onChange: Function,
+  onClick?: Function,
+  onChange?: Function,
   character?: any,
   themeProps: Object,
   getPartOfThemeProps: Function,
@@ -420,7 +420,7 @@ class Rate extends React.Component<RateProps, any> {
                 this.onMouseMove(e, i);
               }}
               onClick={e => {
-                this.onClick(e, i, true);
+                this.onClick(e, i);
               }}
             >
               {this.getElement(x, i)}
@@ -493,13 +493,10 @@ class Rate extends React.Component<RateProps, any> {
     this.handleClick(e, starCount, newIconTypeArray, current);
   };
 
-  handleClick = (e: Object, val: number, classNames: Array<string>, index: number) => {
-    const { state } = this;
-    const { current } = state;
+  handleClick = (e: Object, val: number, classNames: Array<string>, current: number) => {
     let hasClicked = true;
     let newIconTypeArray = classNames;
-    index = val;
-
+    let index = val;
     const { props } = this;
 
     if (index === current) {
@@ -512,16 +509,14 @@ class Rate extends React.Component<RateProps, any> {
     }
     const multiple = getMultiple(props);
 
-    let setValObj = {
+    const setValObj = {
       value: val * multiple,
       starNum: val,
       iconTypeArray: newIconTypeArray,
       current: index,
     };
     if ('value' in props) {
-      setValObj = {
-        hasClick: hasClicked,
-      };
+      setValObj.hasClick = hasClicked;
     }
     this.setValue(setValObj, true);
     const { onClick } = props;

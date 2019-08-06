@@ -140,7 +140,10 @@ class RateDemo extends React.Component<any, any> {
           const { newValue } = res;
           this.setStateValue('defaultProps7', 'value', newValue);
         },
-        onChange: (e, res) => {},
+        onChange: (e, res) => {
+          const { newValue } = res;
+          this.setStateValue('defaultProps7', 'value', newValue);
+        },
       },
       defaultProps8: 8,
     };
