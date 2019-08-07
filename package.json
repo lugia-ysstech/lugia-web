@@ -1,6 +1,6 @@
 {
   "name": "@lugia/lugia-web",
-  "version": "1.1.0-52",
+  "version": "1.1.0-53",
   "dependencies": {
     "@lugia/css": "1.0.18",
     "@lugia/math": "1.0.8",
