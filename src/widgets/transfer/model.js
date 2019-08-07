@@ -122,7 +122,7 @@ export default class TransferModel extends EventEmitter<TransferModelEventType> 
   }
 
   getList(): string[] {
-    return this.list;
+    return this.list || [];
   }
 
   getTypeList(): Object {
