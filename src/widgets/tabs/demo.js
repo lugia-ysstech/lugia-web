@@ -858,9 +858,10 @@ export default class TabsDemo extends React.Component<any, any> {
             />
           </div>
           <br />
-          <br />
         </Theme>
         <Tabs tabType={'card'} />
+        <br />
+        <Tabs tabType={'window'} />
         <Theme config={lineViewBot}>
           <div>
             <p style={{ titleStyle }}>defaultData pagedType=single forceRender=true </p>
