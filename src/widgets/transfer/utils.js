@@ -14,7 +14,7 @@ export function getTruthValue(
   state: ?Object,
   defaultTarget: string
 ) {
-  const inProps = target in props;
+  const inProps = target in props && typeof props[target] !== 'undefined' && props[target] !== null;
   const result = inProps ? props[target] : state ? state[target] : props[defaultTarget] || [];
 
   return result;
