@@ -42,6 +42,7 @@ const ALL_HANDLERS: Array<EventName> = [
 
 type TriggerProps = {
   getTheme: Function,
+  lazy?: boolean,
   onClick?: Function,
   _onClick?: Function,
   onMouseDown?: Function,
@@ -96,6 +97,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     className: '',
     showAction: [],
     hideAction: [],
+    lazy: true,
     getTheme() {
       return {};
     },
@@ -183,8 +185,9 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     );
   }
 
-  componentWillReceiveProps({ popupVisible }: Object) {
+  componentWillReceiveProps({ popupVisible }: TriggerProps, state: TriggerState) {
     if (popupVisible !== undefined) {
+      this.setFirstShow(popupVisible);
       this.setState({
         popupVisible,
       });
@@ -244,9 +247,12 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
   getRootDomNode = () => {
     return findDOMNode(this);
   };
+  isFirstShow: boolean;
 
-  setPopupVisible(popupVisible: boolean) {
+  setPopupVisible(popupVisible: boolean, forcePopup?: boolean) {
+    this.forcePopup = forcePopup;
     this.clearDelayTimer();
+    this.setFirstShow(popupVisible);
     if (this.state.popupVisible !== popupVisible) {
       if (!('popupVisible' in this.props)) {
         this.setState({
@@ -254,6 +260,12 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
         });
       }
       this.props.onPopupVisibleChange(popupVisible);
+    }
+  }
+
+  setFirstShow(popupVisible: boolean) {
+    if (!this.isFirstShow && popupVisible) {
+      this.isFirstShow = popupVisible;
     }
   }
 
@@ -337,7 +349,13 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     const portal = this.props.createPortal
       ? createPortal(this.getComponent(), this.getContainer())
       : this.getComponent();
-    return [React.cloneElement(child, newChildProps), portal];
+
+    return (
+      <React.Fragment>
+        {React.cloneElement(child, newChildProps)}
+        {this.props.lazy ? (this.isFirstShow ? portal : null) : portal}
+      </React.Fragment>
+    );
   }
 
   isClickToShow() {
@@ -444,18 +462,19 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     }
     this.preClickTime = 0;
     this.preTouchTime = 0;
-    e.preventDefault();
+    e.preventDefault && e.preventDefault();
     const nextVisible = !this.state.popupVisible;
     if ((this.isClickToHide() && !nextVisible) || (nextVisible && this.isClickToShow())) {
       this.setPopupVisible(!this.state.popupVisible);
     }
   };
 
+  forcePopup: boolean;
   onDocumentClick = (e: Object) => {
     const target = e.target;
     const root = findDOMNode(this);
     const popupNode = this.getPopupDomNode();
-    if (!contains(root, target) && !contains(popupNode, target)) {
+    if (!contains(root, target) && !contains(popupNode, target) && !this.forcePopup) {
       this.close();
     }
   };
@@ -474,6 +493,7 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
     const callback = this.props[type];
     callback && callback(e);
   }
+
   forceAlign() {
     this.component.forceAlign();
   }

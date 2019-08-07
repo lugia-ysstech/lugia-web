@@ -1,118 +1,230 @@
 /*
-* by wangcuixia
-* */
-import styled from 'styled-components';
+ * by wangcuixia
+ * */
+import { css } from 'styled-components';
 import colorsFunc from '../css/stateColor';
-import { px2emcss } from '../css/units';
-const em = px2emcss(1.2);
-const { themeColor, successColor, dangerColor } = colorsFunc();
-const { disabledColor } = colorsFunc(themeColor);
-type CssProps = {
-  size?: string,
-  isMouseDown?: boolean,
-  value?: boolean,
-};
+import CSSProvider from '../theme/CSSProvider';
+import { px2remcss } from '../css/units';
+const em = px2remcss;
 
-const normalSize = {
-  width: 38,
-  height: 20,
-};
+const { themeColor } = colorsFunc();
+export const SwitchContainer = CSSProvider({
+  tag: 'span',
+  className: 'SwitchContainer',
+  normal: {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['border'],
+      ['borderRadius'],
+      ['margin'],
+      ['padding'],
+      ['background'],
+      ['opacity'],
+    ],
+  },
+  hover: {
+    selectNames: [],
+  },
+  active: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['border'],
+      ['borderRadius'],
+      ['margin'],
+      ['padding'],
+      ['background'],
+      ['opacity'],
+    ],
+  },
+  css: css`
+    display: inline-block;
+  `,
+});
+export const SwitchWrapper = CSSProvider({
+  tag: 'span',
+  className: 'Switch',
+  normal: {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['background'],
+      ['fontSize'],
+      ['borderRadius'],
+      ['border'],
+      ['boxShadow'],
+      ['color'],
+      ['font'],
+    ],
+  },
+  hover: {
+    selectNames: [],
+  },
+  active: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [['background'], ['borderRadius'], ['border']],
+  },
+  css: css`
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    vertical-align: middle;
+    &:focus {
+      outline: none;
+    }
+  `,
+});
 
-const smallSize = {
-  width: 30,
-  height: 16,
-};
+export const SwitchText = CSSProvider({
+  tag: 'span',
+  className: 'SwitchText',
+  normal: {
+    selectNames: [['fontSize'], ['color']],
+    getCSS(themeMeta, themeProps) {
+      const { fontSize, fontWeight, color } = themeMeta;
+      const {
+        propsConfig: { textPosition, textBox },
+      } = themeProps;
+      return `
+          
+          & > *:first-child {
+          ${textBox};
+            ${textPosition};
+            font-size:${em(fontSize)};
+            font-weight:${fontWeight};
+            color:${color};
+            & > *:first-child{
+              font-size:${em(fontSize)};
+              font-weight:${fontWeight};
+              color:${color};
+            }
+          }         
+        `;
+    },
+  },
+  hover: {
+    selectNames: [],
+  },
+  active: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
+  css: css`
+    user-select: none;
+    & > *:first-child {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      text-align: center;
+      font-style: normal;
+      font-size: ${em(12)};
+      color: #fff;
+      line-height: ${em(12)};
+    }
+  `,
+});
 
-const normallCircleSize = {
-  width: 14,
-  height: 14,
-};
+export const SwitchCircle = CSSProvider({
+  tag: 'span',
+  className: 'SwitchButton',
+  normal: {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['background'],
+      ['borderRadius'],
+      ['border'],
+      ['boxShadow'],
+      ['color'],
+    ],
+    getCSS(themeMeta, themeProps) {
+      const { height } = themeMeta;
+      const {
+        propsConfig: { switchButtonPosition },
+      } = themeProps;
+      return `
+          ${switchButtonPosition};
+          & > *:first-child {
+            height:${em(height)};            
+          }
+        `;
+    },
+  },
+  hover: {
+    selectNames: [],
+  },
+  active: {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['background'],
+      ['borderRadius'],
+      ['border'],
+      ['boxShadow'],
+    ],
+  },
+  disabled: {
+    selectNames: [['background'], ['border'], ['width'], ['height'], ['borderRadius']],
+    getCSS(themeMeta, themeProps) {
+      const { height, width } = themeMeta;
+      const {
+        propsConfig: { switchButtonPosition },
+      } = themeProps;
+      const circleIconRotateDiameter = Math.min(width, height);
+      const widthIsLarge = width >= height;
+      return `
+          ${switchButtonPosition};
+          & > *:first-child {
+            height:${em(height)};    
+            
+            ::before{
+              display:inline-block;
+              width:${em(circleIconRotateDiameter)};
+              height:${em(circleIconRotateDiameter)};
+              ${widthIsLarge ? '' : 'vertical-align: -webkit-baseline-middle;'};              
+            }        
+          }
+        `;
+    },
+  },
+  css: css`
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transition: 1s;
+    -webkit-transition: all 0.2s;
+    & > *:first-child {
+      display: block;
+      color: ${themeColor};
+      animation: rotate 1.5s linear infinite;
+      position: relative;
+      & > *:first-child {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+      &::before {
+        transform: scale(0.65);
+      }
+    }
 
-const smallCircleSize = {
-  width: 12,
-  height: 12,
-};
-
-const togglesize = {
-  width: 18,
-};
-const getSwitchWrapper = (props, size) => {
-  const { height, width } = getStyled(props)[size];
-  const heightEm = em(height);
-  return `
-    width: ${em(width)};
-    height: ${heightEm};
-    line-height: ${heightEm};
-`;
-};
-
-export const SwitchWrapper = styled.span`
-  font-size: ${em(12)};
-  box-sizing: border-box;
-  display: inline-block;
-  ${props => getSwitchWrapper(props, 'switchWrapperSize')}  
-  border-radius: ${em(20)};
-  background: ${props =>
-    (props.loading
-      ? `${disabledColor}`
-      : props.disabled
-        ? `${disabledColor}`
-        : props.value
-          ? props.isInverse
-            ? `${successColor}`
-            : `${themeColor}`
-          : props.isInverse
-            ? `${dangerColor}`
-            : props.isInverse !== undefined
-              ? `${themeColor}`
-              : '#ccc')};
-  position: relative;
-  text-align: ${props => (props.value ? 'left' : 'right')};
-  padding: 0 ${em(4)};  
-  color: rgba(255, 255, 255, 0.8);
-  cursor: pointer;
-  vertical-align: middle;
-  &:focus {
-    outline: none;
-  }
-`;
-
-export const SwitchCircle = styled.span`
-  ${props => getSwitchWrapper(props, 'circleSize')}  
-  border-radius: ${props => (props.isMouseDown ? `${em(7)}` : '50%')};
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
-  background: #fff;
-  position: absolute;
-  ${props => getStyled(props).position};
-  top: 50%;
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  transition: 1s;
-  -webkit-transition: all 0.2s;
-`;
-
-const getStyled = (props: CssProps) => {
-  const { size, isMouseDown, value } = props;
-  const normallPosition = (normalSize.height - normallCircleSize.height) / 2;
-  const smallPosition = (smallSize.height - smallCircleSize.height) / 2;
-  let distance = normallPosition;
-  let switchWrapperSize = normalSize;
-  let circleSize = normallCircleSize;
-  if (size == 'small') {
-    switchWrapperSize = smallSize;
-    circleSize = smallCircleSize;
-    distance = smallPosition;
-  }
-  distance = em(distance);
-  const position = `
-    ${value ? `right: ${distance};` : `left:${distance};`}
-  `;
-  if (isMouseDown) {
-    circleSize = Object.assign({}, circleSize, togglesize);
-  }
-  return {
-    position,
-    switchWrapperSize,
-    circleSize,
-  };
-};
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  `,
+});

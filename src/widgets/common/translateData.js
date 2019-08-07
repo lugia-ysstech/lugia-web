@@ -104,7 +104,6 @@ export function getItems(
 
   if (value.length > 0) {
     const { updateHanlder, needUpdate = (val: any) => false, getMapData } = handler;
-    console.log(value);
     value.forEach(val => {
       if (needUpdate(val)) {
         updateMapData(params.props, params.state.displayValue, updateHanlder);
@@ -126,12 +125,16 @@ export function getItems(
   return { items, displayValue };
 }
 
-export function handleCreate(params: Object, type: 'radio' | 'checkbox') {
+export function handleCreate(
+  params: Object,
+  type: 'radio' | 'checkbox',
+  childType: 'default' | 'button'
+) {
   const { children, data = [] } = params.props;
   const result = [];
 
   if (children) {
-    return renderChildren(params, type);
+    return renderChildren(params, type, childType);
   }
 
   const pushItem = (cancel: boolean) => item => {
@@ -159,21 +162,32 @@ export function updateMapData(
   updateHandler({ cancelItem, cancelItemData, dataItem });
 }
 
-function renderChildren(params: Object, type: 'radio' | 'checkbox') {
+function renderChildren(
+  params: Object,
+  type: 'radio' | 'checkbox',
+  childType: 'default' | 'button'
+) {
   let { value } = params.state;
   if (!value) {
     value = type === 'radio' ? '' : [];
   }
   const { children, disabled, styles } = params.props;
-  return React.Children.map(children, child => {
+  const childrenCount = React.Children.count(children);
+  return React.Children.map(children, (child, index) => {
     if (React.isValidElement(child)) {
+      let change = 'onChangeForGroup';
+      if (childType === 'button') {
+        change = 'onChange';
+      }
       return React.cloneElement(child, {
-        onChange: type === 'radio' ? params.handleChange()() : params.handleChange(),
+        [change]: type === 'radio' ? params.handleChange()() : params.handleChange(),
         checked:
           type === 'radio' ? value === child.props.value : value.indexOf(child.props.value) !== -1,
         disabled: disabled || child.props.disabled,
         styles: styles || child.props.styles,
         hasValue: params.hasValueProps(),
+        childrenCount,
+        childrenIndex: index,
       });
     }
   });
@@ -189,23 +203,21 @@ export const getDisplayValue = (
   }
   value = toArray(value);
   const { cancelItemData = {}, dataItem = {}, displayField } = cache;
-  return value.map(
-    (v: string): string => {
-      const dataDisplayValue = getItem(dataItem, v, displayField);
-      if (dataDisplayValue) {
-        return dataDisplayValue;
-      }
-      const cancelDisplayValue = getItem(cancelItemData, v, displayField);
-      if (cancelDisplayValue) {
-        return cancelDisplayValue;
-      }
-      const cancelItem = cancelItemData[v];
-      if (cancelItem) {
-        return cancelItem[displayField];
-      }
-      return v;
+  return value.map((v: string): string => {
+    const dataDisplayValue = getItem(dataItem, v, displayField);
+    if (dataDisplayValue) {
+      return dataDisplayValue;
     }
-  );
+    const cancelDisplayValue = getItem(cancelItemData, v, displayField);
+    if (cancelDisplayValue) {
+      return cancelDisplayValue;
+    }
+    const cancelItem = cancelItemData[v];
+    if (cancelItem) {
+      return cancelItem[displayField];
+    }
+    return v;
+  });
 };
 
 function getItem(itemMap: Object, v: string, displayField: string) {
@@ -242,10 +254,10 @@ export const getValueAndDisplayValue = function(props: Object, state: ?Object): 
     displayValue: isDisplayValue
       ? displayValue
       : isInit
-        ? defaultDisplayValue
-        : sDisplayValue
-          ? sDisplayValue
-          : undefined,
+      ? defaultDisplayValue
+      : sDisplayValue
+      ? sDisplayValue
+      : undefined,
   };
   if (result.displayValue && result.displayValue.length === 0) {
     result.displayValue = undefined;

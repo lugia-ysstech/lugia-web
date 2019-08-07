@@ -10,6 +10,7 @@ import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import type { CollapseProps, CollapseState } from '../css/collapse';
 import { Wrap } from '../css/collapse';
+import Panel from './panel';
 
 function handleStateValue(value: string | string[], accordion?: boolean): string[] {
   if (Array.isArray(value)) {
@@ -21,6 +22,7 @@ function handleStateValue(value: string | string[], accordion?: boolean): string
   }
   return [value];
 }
+
 export default ThemeProvider(
   class extends React.Component<CollapseProps, CollapseState> {
     static getDerivedStateFromProps(props, state) {
@@ -34,21 +36,47 @@ export default ThemeProvider(
     }
 
     render() {
-      const panelTheme = this.props.getTheme().svThemeConfigTree.sv_widget_Panel;
-      return (
-        <Wrap panelTheme={panelTheme || {}} theme={this.props.getTheme()}>
-          {this.renderChildren()}
-        </Wrap>
-      );
+      const { getPartOfThemeProps } = this.props;
+      const wrapTheme = getPartOfThemeProps('Wrap');
+      return <Wrap themeProps={wrapTheme}>{this.renderChildren()}</Wrap>;
     }
     renderChildren = () => {
-      const { children, accordion } = this.props;
-      return React.Children.map(children, child => {
+      const { children, accordion, data, getPartOfThemeHocProps } = this.props;
+      if ((!children && !data) || typeof children === 'string') {
+        return (
+          <Panel
+            value="lugia-panel"
+            title="Lugia Panel"
+            onClick={this.handleClick}
+            {...getPartOfThemeHocProps('Panel')}
+            count={0}
+          >
+            Default Panel
+          </Panel>
+        );
+      }
+      if (data && data.length > 0) {
+        return data.map((item, index) => (
+          <Panel
+            {...item}
+            onClick={this.handleClick}
+            open={this.handleOpen(item.value)}
+            accordion={accordion}
+            {...getPartOfThemeHocProps('Panel')}
+            count={index}
+          >
+            {item.children}
+          </Panel>
+        ));
+      }
+      return React.Children.map(children, (child, index) => {
         if (React.isValidElement(child)) {
           return React.cloneElement(child, {
             onClick: this.handleClick,
             open: this.handleOpen(child.props.value),
             accordion,
+            ...getPartOfThemeHocProps('Panel'),
+            count: index,
           });
         }
       });

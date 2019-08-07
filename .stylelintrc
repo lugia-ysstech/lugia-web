@@ -6,7 +6,9 @@
   "syntax": "scss",
   "rules": {
     "declaration-block-semicolon-newline-after": null,
+
     "no-eol-whitespace": null,
-    "rule-empty-line-before": null
+    "rule-empty-line-before": null,
+    "indentation": null
   }
 }

@@ -74,7 +74,7 @@ export const Trigger = styled.div`
   ${getWidth};
   ${getCollapsedWidth} cursor: pointer;
 `;
-export const IconWrap = styled(Icon)`
+export const IconWrap: Object = styled(Icon)`
   color: #fff;
 `;
 export const ChildrenWrap = styled.div`

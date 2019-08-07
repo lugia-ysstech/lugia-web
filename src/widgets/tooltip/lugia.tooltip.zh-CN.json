@@ -1,0 +1,125 @@
+{
+  "widgetName": "Tooltip",
+  "title": "文字提示",
+  "desc": "简单的文字气泡提示框",
+  "props": {
+    "size": {
+      "type": "ToolTipSize",
+      "desc": "可配置三种尺寸大小的input ('大' , '默认' , '小'),高度分别为 40px、32px 和 24px。",
+      "defaultValue": "default"
+    },
+    "placement": {
+      "type": "DirectionType",
+      "desc": "气泡提示框显示的位置,十二个方向"
+    },
+    "visible": {
+      "type": "boolean",
+      "desc": "是否显示出来",
+      "defaultValue": "false"
+    },
+    "defaultVisible": {
+      "type": "boolean",
+      "desc": "默认是否显示出来",
+      "defaultValue": "false"
+    },
+
+    "popArrowType": {
+      "type": "PopArrowType",
+      "desc": "可配置两种风格的箭头. 尖角,圆角",
+      "defaultValue": "sharp"
+    },
+    "action": {
+      "type": "ActionType",
+      "desc": "触发提示的动作，可配置 click,hover,focus",
+      "defaultValue": "click"
+    },
+    "children": {
+      "type": "React.Node",
+      "desc": "气泡提示框需要包含的子组件"
+    },
+    "title": {
+      "type": "React.Node",
+      "desc": "配置气泡提示框需要显示的标题",
+      "defaultValue": "prompt text"
+    },
+    "description": {
+      "type": "React.Node",
+      "desc": "配置气泡提示框需要显示的描述"
+    },
+    "content": {
+      "type": "React.Node",
+      "desc": "配置气泡提示框需要显示的自定义内容"
+    }
+  },
+  "events": {
+    "onVisibleChange": {
+      "desc": "气泡提示框改变时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "气泡提示框显示改变的DOM事件",
+          "type": "Object"
+        }
+      ]
+    }
+  },
+  "type": {
+    "ActionType": ["click","hover","focus" ],
+    "ToolTipSize": ["small", "default", "large"],
+    "PopArrowType": ["sharp", "round"],
+    "DirectionType": [
+      "left",
+      "leftTop",
+      "leftBottom",
+      "right",
+      "rightTop",
+      "rightBottom",
+      "top",
+      "bottom",
+      "topLeft",
+      "top",
+      "topRight",
+      "bottom",
+      "bottomRight",
+      "bottomLeft"
+    ]
+  },
+  "category": ["数据展示"],
+  "theme": {
+    "Container": {
+      "name": "文字提示框容器部分",
+      "desc": "文字提示框容器部分",
+      "normal": [
+        ["background"],
+        ["color"],
+        ["padding"],
+        ["font"],
+        ["fontSize"],
+        ["width"],
+        ["height"],
+        ["boxShadow"],
+        ["borderRadius"],
+        ["border"]
+      ],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
+    },
+    "TooltipTitle": {
+      "name": "文字提示信息文字标题部分",
+      "desc": "文字提示信息文字标题部分",
+      "normal": [["fontSize"], ["font"], ["color"]],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
+    },
+    "TooltipDescription": {
+      "name": "文字提示信息文字描述信息部分",
+      "desc": "文字提示信息文字描述信息部分",
+      "normal": [["fontSize"], ["font"], ["color"]],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
+    }
+  }
+}

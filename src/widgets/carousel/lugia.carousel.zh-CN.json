@@ -1,0 +1,118 @@
+{
+  "widgetName": "Carousel",
+  "title": "走马灯",
+  "desc": "常用于展示一组图片或卡片轮播",
+  "props": {
+    "defaultStart": {
+      "type": "number",
+      "desc": "幻灯片初始状态开始激活的索引，默认从0开始",
+      "defaultValue": 0
+    },
+    "start": {
+      "type": "number",
+      "desc": "手动切换,指定幻灯片开始的索引"
+    },
+    "autoPlay": {
+      "type": "boolean",
+      "desc": "是否自动切换",
+      "defaultValue": true
+    },
+    "delay": {
+      "type": "number",
+      "desc": "自动切换的时间间隔，单位为毫秒",
+      "defaultValue": 3000
+    },
+    "indicatorType": {
+      "type": "horizontal | vertical | outside",
+      "desc": "指示器的显示方式",
+      "defaultValue": "horizontal"
+    },
+    "switchType": {
+      "type": "horizontal | vertical | fade",
+      "desc": "动画切换的方式",
+      "defaultValue": "horizontal"
+    },
+    "animationTime": {
+      "type": "number",
+      "desc": "单次动画执行的时间，单位为毫秒",
+      "defaultValue": 500
+    },
+    "action": {
+      "type": "hover | click",
+      "desc": "指示器触发切换的方式",
+      "defaultValue": "hover"
+    }
+  },
+  "events": {
+    "onChange": {
+      "desc": "触发指示器切换或点击切换按钮时触发",
+      "args": [
+        {
+          "name": "newValue",
+          "desc": "切换到下一次面板的索引值",
+          "type": "number"
+        },
+        {
+          "name": "oldValue",
+          "desc": "本次的索引值",
+          "type": "number"
+        }
+      ]
+    }
+  },
+  "category": ["数据展示"],
+  "theme": {
+    "CarouselWrap": {
+      "name": "Carousel的外框",
+      "desc": "Carousel的外框",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["borderRadius"],
+        ["boxShadow"],
+        ["border"],
+        ["opacity"],
+        ["margin"],
+        ["border"],
+        ["padding"]
+      ],
+      "hover": [["opacity"], ["boxShadow"], ["boxShadow"], ["borderRadius"], ["border"]],
+      "clicked": [],
+      "disabled": []
+    },
+    "PreButton": {
+      "name": "左切换按钮",
+      "desc": "切换到前一个",
+      "normal": [["font"], ["opacity"], ["color"], ["boxShadow"], ["border"], ["margin"]],
+      "hover": [["opacity"], ["boxShadow"], ["color"], ["border"]],
+      "clicked": [],
+      "disabled": []
+    },
+
+    "NextButton": {
+      "name": "右切换按钮",
+      "desc": "切换到后一个",
+      "normal": [["font"], ["opacity"], ["color"], ["boxShadow"], ["border"], ["margin"]],
+      "hover": [["opacity"], ["boxShadow"], ["color"], ["border"]],
+      "clicked": [],
+      "disabled": []
+    },
+
+    "Indicator": {
+      "name": "轮播指示器",
+      "desc": "显示当前轮播所在位置",
+      "normal": [
+        ["background"],
+        ["width"],
+        ["height"],
+        ["border"],
+        ["boxShadow"],
+        ["margin"],
+        ["opacity"]
+      ],
+      "hover": [["background"], ["opacity"], ["border"], ["boxShadow"], ["borderRadius"]],
+      "clicked": [],
+      "disabled": []
+    }
+  }
+}

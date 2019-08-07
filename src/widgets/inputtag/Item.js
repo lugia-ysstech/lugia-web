@@ -5,60 +5,51 @@
  * @flow
  */
 import React from 'react';
-import styled from 'styled-components';
-import '../css/sv.css';
-import { ItemContainer, ItemText } from './ItemTag';
 import Widget from '../consts/index';
-import { FontSize, FontSizeNumber } from '../css';
-import CommonIcon from '../icon';
-import { mediumGreyColor, darkGreyColor } from '../css/inputtag';
-import { px2emcss } from '../css/units';
-const em = px2emcss(FontSizeNumber);
+import ThemeHoc from '@lugia/theme-hoc';
 
-const CloseButton = styled(CommonIcon)`
-  font-size: ${FontSize};
-  color: ${mediumGreyColor};
-  position: absolute;
-  padding: 0 0 0 ${em(5)};
-  right: ${em(4)};
-  top: 50%;
-  transform: translateY(-50%);
-  zoom: 1;
-  transition: all 0.3s;
-  :hover {
-    color: ${darkGreyColor};
-  }
-`;
+import { ItemContainer, ItemText, CloseButtonWrap, ItemWrap, CloseButton } from '../css/inputtag';
 
-CloseButton.displayName = Widget.InputTagCloseButton;
 type ItemProps = {
   className?: string,
   closeable?: boolean,
   children: any,
   onClick?: Function,
   onCloseClick?: Function,
+  getPartOfThemeProps: Function,
 };
 
 type ItemState = {};
-export default class extends React.Component<ItemProps, ItemState> {
+class ItemTag extends React.Component<ItemProps, ItemState> {
   list: Object;
   item: ?HTMLElement;
   width: number;
   static displayName = Widget.InputTagItem;
   render() {
-    const { className, closeable = true, onClick, onCloseClick } = this.props;
+    const { className, closeable = true, onClick, onCloseClick, getPartOfThemeProps } = this.props;
+
+    const TagWrapThemeProps = getPartOfThemeProps('TagWrap');
     return (
-      <ItemContainer
-        className={className}
-        closeable={closeable}
-        innerRef={c => (this.item = c)}
-        onClick={onClick}
-      >
-        <ItemText>{this.props.children}</ItemText>
-        {closeable ? (
-          <CloseButton iconClass="lugia-icon-reminder_close_circle" onClick={onCloseClick} />
-        ) : null}
-      </ItemContainer>
+      <ItemWrap themeProps={TagWrapThemeProps}>
+        <ItemContainer
+          ref={c => (this.item = c)}
+          themeProps={TagWrapThemeProps}
+          className={className}
+          closeable={closeable}
+          onClick={onClick}
+        >
+          <ItemText themeProps={TagWrapThemeProps}>{this.props.children}</ItemText>
+          {closeable ? (
+            <CloseButtonWrap themeProps={getPartOfThemeProps('TagIcon')}>
+              <CloseButton
+                themeProps={TagWrapThemeProps}
+                iconClass="lugia-icon-reminder_close_circle"
+                onClick={onCloseClick}
+              />
+            </CloseButtonWrap>
+          ) : null}
+        </ItemContainer>
+      </ItemWrap>
     );
   }
 
@@ -80,3 +71,4 @@ export default class extends React.Component<ItemProps, ItemState> {
     return this.width;
   }
 }
+export default ThemeHoc(ItemTag, 'ItemTag', { hover: true, active: false });

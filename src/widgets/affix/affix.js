@@ -51,8 +51,9 @@ export default class extends React.Component<AffixProps, AffixState> {
 
         return;
       }
+      this.addWindowListener();
       window.addEventListener('scroll', this.addWindowListener);
-    }, 100);
+    }, 0);
   }
 
   addWindowListener = () => {
@@ -125,7 +126,7 @@ export default class extends React.Component<AffixProps, AffixState> {
             offset: offsetBottom,
           });
         }
-        if (scrollTop + winHeight >= defaultTop + affixHeight) {
+        if (scrollTop + winHeight - offsetBottom >= defaultTop + affixHeight) {
           this.setState({
             fixed: false,
           });
@@ -151,6 +152,13 @@ export default class extends React.Component<AffixProps, AffixState> {
     switch (type) {
       case OffsetTop:
         const fixedTargetOffsetTop = offsetTop + targetScroll;
+        if (defaultDistance >= fixedTargetOffsetTop) {
+          this.setState({
+            fixed: false,
+          });
+          break;
+        }
+
         if (affixTop - targetTop < fixedTargetOffsetTop) {
           this.setState({
             fixed: true,
@@ -159,12 +167,6 @@ export default class extends React.Component<AffixProps, AffixState> {
           break;
         }
 
-        if (defaultDistance >= fixedTargetOffsetTop) {
-          this.setState({
-            fixed: false,
-          });
-          break;
-        }
         break;
 
       case OffsetBottom:
@@ -231,7 +233,7 @@ export default class extends React.Component<AffixProps, AffixState> {
     const { contentWidth, contentHeight } = this;
     return (
       <div style={fixed ? { width: contentWidth, height: contentHeight } : null}>
-        <Affix innerRef={node => (this.affix = node)} fixed={fixed} {...this.getOffsetValue()}>
+        <Affix ref={node => (this.affix = node)} fixed={fixed} {...this.getOffsetValue()}>
           {children}
         </Affix>
       </div>

@@ -1,0 +1,103 @@
+{
+  "widgetName": "Pagination",
+  "title": "分页",
+  "desc": "分页组件，分页展示数据。",
+  "props": {
+    "current": {
+      "type": "number",
+      "desc": "当前页数"
+    },
+    "defaultCurrent": {
+      "type": "number",
+      "desc": "默认的当前页数",
+      "defaultValue": 1
+    },
+    "total": {
+      "type": "number",
+      "desc": "数据总数",
+      "defaultValue": 0
+    },
+    "pageSize": {
+      "type": "number",
+      "desc": "每页的条数",
+      "defaultValue": 10
+    },
+    "defaultPageSize": {
+      "type": "number",
+      "desc": "默认的每页条数",
+      "defaultValue": 10
+    },
+    "pageSizeOptions": {
+      "type": "string[]",
+      "desc": "指定每页可以显示多少条",
+      "defaultValue": ["10", "20", "30", "40"]
+    },
+    "showQuickJumper": {
+      "type": "boolean",
+      "desc": "是否可以快速跳转至某页",
+      "defaultValue": false
+    },
+    "showTotal": {
+      "type": "Function(total, range)",
+      "desc": "用于显示数据总量和当前数据顺序"
+    },
+    "hideOnSinglePage": {
+      "type": "boolean",
+      "desc": "只有一页时是否隐藏分页器",
+      "defaultValue": false
+    },
+    "showSizeChanger": {
+      "type": "boolean",
+      "desc": "是否显示可以改变 pageSize",
+      "defaultValue": false
+    },
+    "simple": {
+      "type": "boolean",
+      "desc": "当添加该属性时，显示为简单分页"
+    }
+  },
+  "event": {
+    "onChange": {
+      "desc": "页码改变的回调，参数是改变后的页码及每页条数",
+      "args": [
+        {
+          "name": "page",
+          "desc": "页码改变后的页码",
+          "type": "number"
+        },
+        {
+          "name": "pageSize",
+          "desc": "每页条数",
+          "type": "number"
+        }
+      ]
+    },
+    "onShowSizeChange": {
+      "desc": "pageSize 变化的回调",
+      "args": [
+        {
+          "name": "current",
+          "desc": "当前页数",
+          "type": "number"
+        },
+        {
+          "name": "size",
+          "desc": "每页条数",
+          "type": "number"
+        }
+      ]
+    }
+  },
+  "designInfo": {
+    "SimplePagination": {
+      "sequence": 1,
+      "title": "简洁分页",
+      "desc": "简洁分页",
+      "props": {
+        "simple": true
+      },
+      "theme": {}
+    }
+  },
+  "category": ["导航"]
+}

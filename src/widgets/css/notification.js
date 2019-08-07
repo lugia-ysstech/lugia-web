@@ -5,12 +5,10 @@
  */
 import { px2emcss } from '../css/units';
 import colorsFunc from '../css/stateColor';
-import styled, { keyframes } from 'styled-components';
-import type { Type } from './component-iconwrap';
+import styled, { css, keyframes } from 'styled-components';
 import Icon from '../icon';
 
 export type NotificationProps = {
-  iconType?: Type,
   duration?: number | null,
   title: string | React.ReactNode,
   description: string | React.ReactNode,
@@ -20,8 +18,8 @@ export type NotificationProps = {
 } & ForTestType &
   ForRemoveType;
 type ForRemoveType = {
-  parentDom: any,
-  rootDom: any,
+  parentDom?: any,
+  rootDom?: any,
 };
 export type NotificationState = {
   visible: boolean,
@@ -58,7 +56,7 @@ const getAnimate = (props: CSSProps) => {
     0% {
       ${Direction}: ${value};
     }
-    
+
     50% {
       ${Direction}: ${zero};
     }
@@ -68,20 +66,20 @@ const getAnimate = (props: CSSProps) => {
       opacity: 1;
       ${Direction}: ${zero};
     }
-    
+
     50% {
       opacity: 0.2;
       ${Direction}: ${value};
     }
   `;
   if (opening) {
-    return `
-      animation:${openAnimate} .3s ease-in;
+    return css`
+      animation: ${openAnimate} 0.3s ease-in;
     `;
   }
   if (closing) {
-    return `
-      animation:${closeAnimate} .4s ease-in;
+    return css`
+      animation: ${closeAnimate} 0.4s ease-in;
     `;
   }
 };
@@ -107,13 +105,15 @@ export const Title = styled.div`
   margin-bottom: ${iconEM(8)};
   line-height: ${iconEM(24)};
   display: inline-block;
+  word-break: break-all;
 `;
 export const Text = styled.div`
   font-size: ${em(14)};
   font-weight: 500;
   color: ${darkGreyColor};
+  word-break: break-all;
 `;
-export const CloseIcon = styled(Icon)`
+export const CloseIcon: Object = styled(Icon)`
   font-size: ${em(14)};
 `;
 export const CloseIconWrap = styled.div`
@@ -125,11 +125,11 @@ export const CloseIconWrap = styled.div`
   cursor: pointer;
 `;
 const leftIconEM = px2emcss(2);
-export const Icons = styled(Icon)`
+export const Icons: Object = styled(Icon)`
   position: absolute;
   font-size: ${em(20)};
   line-height: ${leftIconEM(22)};
-  top: ${leftIconEM(20)};
+  top: ${leftIconEM(26)};
   left: ${leftIconEM(20)};
   cursor: default;
   color: ${props => props.iconColor || themeColor};

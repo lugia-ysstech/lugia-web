@@ -1,0 +1,74 @@
+{
+  "widgetName": "Divider",
+  "title": "分割线",
+  "desc": "区隔内容的分割线",
+  "props": {
+    "viewClass": {
+      "type": "string",
+      "desc": "用于配置通用主题属性"
+    },
+    "position": {
+      "type": "DividerPosition",
+      "desc": "分割线中显示内容的位置,与content 配合使用"
+    },
+    "dashed": {
+      "type": "boolean",
+      "desc": "分割线是否是虚线",
+      "defaultValue": false
+    },
+    "content": {
+      "type": "string",
+      "desc": "分割线中可添加显示的内容"
+    },
+    "type": {
+      "type": "DividerType",
+      "desc": "分割线的风格 水平或者 垂直",
+      "defaultValue": "horizontal"
+    }
+  },
+  "type": {
+    "DividerPosition": ["left", "right"],
+    "DividerType": ["horizontal", "vertical"]
+  },
+  "category": ["其他"],
+  "designInfo": {
+    "VerticalDivider": {
+      "sequence": 1,
+      "title": "垂直分割线",
+      "desc": "垂直分割线",
+      "props": {
+        "type": "vertical"
+      },
+      "theme": {
+        "VerticalDivider": {
+          "name": "垂直分割线",
+          "desc": "分割线为垂直类型时的配置",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["background"],
+            ["opacity"],
+            ["margin"],
+            ["padding"],
+            ["boxShadow"]
+          ]
+        }
+      }
+    }
+  },
+  "theme": {
+    "HorizontalDivider": {
+      "name": "水平分割线",
+      "desc": "分割线为水平类型时的配置",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["background"],
+        ["opacity"],
+        ["margin"],
+        ["padding"],
+        ["boxShadow"]
+      ]
+    }
+  }
+}

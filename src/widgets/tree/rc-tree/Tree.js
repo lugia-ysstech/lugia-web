@@ -5,7 +5,6 @@ import warning from 'warning';
 import { getOffset, isInclude, traverseTreeNodes, updateCheckState } from './util';
 import { TreeUl } from '../../css/tree';
 function noop() {}
-
 export const contextTypes = {
   rcTree: PropTypes.shape({
     selectable: PropTypes.bool,
@@ -466,7 +465,7 @@ class Tree extends React.Component {
       domProps.tabIndex = '0';
       domProps.onKeyDown = this.onKeyDown;
     }
-
+    const { getPartOfThemeProps, top } = props;
     return (
       <TreeUl
         {...domProps}
@@ -474,6 +473,7 @@ class Tree extends React.Component {
         role="tree-node"
         unselectable="on"
         style={props.style}
+        themeProps={getPartOfThemeProps('TreeWrap', { props: { top } })}
       >
         {React.Children.map(props.children, this.renderTreeNode, this)}
       </TreeUl>

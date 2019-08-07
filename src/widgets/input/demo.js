@@ -5,7 +5,6 @@
  * @flow
  */
 import * as React from 'react';
-import Theme from '../theme';
 import Input from './';
 import Widget from '../consts/index';
 import ClearIcon from '../icon/ClearIcon';
@@ -13,6 +12,7 @@ import SearchIcon from '../icon/SearchIcon';
 import PullIcon from '../icon/PullIcon';
 import styled from 'styled-components';
 import { fixControlledValue } from '../utils';
+import Theme from '../theme';
 
 export class LimitInput extends React.Component<any, any> {
   constructor(props: any) {
@@ -55,7 +55,8 @@ export class ValidateInput extends React.Component<any, any> {
   render() {
     const { validateType } = this.props;
     const value = this.state.value;
-    const validateStatus = value.indexOf(',') === -1 ? 'success' : 'error';
+    const validateStatus = value.indexOf('a') === -1 ? 'success' : 'error';
+
     return (
       <Input onChange={this.onChange} validateType={validateType} validateStatus={validateStatus} />
     );
@@ -86,18 +87,35 @@ export class TopInput extends React.Component<any, any> {
     this.props.onChange({ newValue: value });
   };
   onBlur = (event: UIEvent) => {
-    const validateStatus = this.state.value.indexOf(',') === -1 ? 'success' : 'error';
+    const validateStatus = this.state.value.indexOf('a') === -1 ? 'success' : 'error';
     this.setState({ validateStatus });
   };
   render() {
     const { validateType } = this.props;
+    const topConfig = {
+      [Widget.Input]: {
+        validateTopTip: {
+          Container: {
+            normal: {
+              background: { color: 'gray' },
+            },
+          },
+          TooltipTitle: {
+            normal: { color: 'red' },
+          },
+        },
+      },
+    };
+
     return (
-      <Input
-        onBlur={this.onBlur}
-        onChange={this.onChange}
-        validateType={validateType}
-        validateStatus={this.state.validateStatus}
-      />
+      <Theme config={topConfig}>
+        <Input
+          onBlur={this.onBlur}
+          onChange={this.onChange}
+          validateType={validateType}
+          validateStatus={this.state.validateStatus}
+        />
+      </Theme>
     );
   }
 }
@@ -110,21 +128,28 @@ export class DefaultValueInput extends React.Component<any, any> {
 const Wrapper = styled.div`
   float: left;
   margin-left: 50px;
+  margin-top: 20px;
 `;
 
 const InputDemo = () => {
-  const view = {
+  const register = {
     [Widget.Input]: {
-      width: 260,
-      margin: 15,
-    },
-    [Widget.Tooltip]: {
-      color: '#999999',
-      fontColor: '#ffffff',
-    },
-    register: {
-      width: 140,
-      maigin: 10,
+      Container: {
+        normal: {
+          width: 500,
+          height: 40,
+        },
+      },
+      Input: {
+        normal: {
+          width: 300,
+          height: 40,
+        },
+        disabled: { background: { color: 'gray' } },
+      },
+      InputSuffix: { normal: { color: 'red', fontSize: 12 } },
+      InputPrefix: { normal: { color: 'pink', fontSize: 16 } },
+      ClearButton: { normal: { color: 'red', fontSize: 14 } },
     },
   };
   const onChange = (cmpName: string) => (value: any) => {};
@@ -136,50 +161,50 @@ const InputDemo = () => {
   };
   return (
     <div>
-      <Wrapper>
-        <Theme config={{ register: { width: 150, margin: 15 } }}>
+      <Theme config={register}>
+        <Wrapper>
           <p>字体色值</p>
-          <Input viewClass="register" disabled={true} value="色值:#333333" />
+          <Input value="色值:#333333" />
           <p>default input</p>
           <Input placeholder={'请填写内容'} />
+          <p>autoFocus</p>
+          <Input placeholder={'请填写内容'} autoFoucs />
           <p>禁用状态 </p>
-          <Input size={'default'} disabled={true} />
-        </Theme>
-      </Wrapper>
-      <Theme config={view}>
-        <Wrapper>
-          <p>small size</p>
-          <Input size={'small'} placeholder={'small Input'} />
-          <p>default size</p>
-          <Input placeholder={'default Input'} />
-          <p>large size</p>
-          <Input size={'large'} placeholder={'large Input'} />
-        </Wrapper>
-        <Wrapper>
-          <p>delete</p>
-          <Input viewClass="register" suffix={<ClearIcon />} />
-          <p>search</p>
-          <Input prefix={<SearchIcon />} viewClass="register" suffix={<ClearIcon />} />
-          <p>pull</p>
-          <Input viewClass="register" suffix={<PullIcon />} />
-        </Wrapper>
-        <Wrapper>
-          <p>受限Input</p>
-          <LimitInput onChange={onChange('limit')} />
-          <p>有默认值的 受限Input</p>
-          <DefaultValueInput onChange={onChange('limit')} />
-          <p>formatter input</p>
-          <Input placeholder={'请填写金额'} formatter={formatter} parser={parser} />
-        </Wrapper>
-        <Wrapper>
-          <p>校验信息显示类型 top</p>
-          <TopInput viewClass="register" validateType="top" onChange={onChange('limit')} />
-          <p>校验信息显示类型 bottom</p>
-          <ValidateInput viewClass="register" validateType="bottom" onChange={onChange('limit')} />
-          <p>校验信息显示类型 inner</p>
-          <ValidateInput viewClass="register" validateType="inner" onChange={onChange('limit')} />
+          <Input theme={register} size={'default'} disabled={true} />
         </Wrapper>
       </Theme>
+      <Wrapper>
+        <p>small size</p>
+        <Input size={'small'} placeholder={'small Input'} />
+        <p>default size</p>
+        <Input placeholder={'default Input'} />
+        <p>large size</p>
+        <Input size={'large'} placeholder={'large Input'} />
+      </Wrapper>
+      <Wrapper>
+        <p>delete</p>
+        <Input suffix={<ClearIcon />} />
+        <p>search</p>
+        <Input prefix={<SearchIcon />} theme={register} suffix={<ClearIcon />} />
+        <p>pull</p>
+        <Input suffix={<PullIcon />} />
+      </Wrapper>
+      <Wrapper>
+        <p>受限Input</p>
+        <LimitInput onChange={onChange('limit')} />
+        <p>有默认值的 受限Input</p>
+        <DefaultValueInput onChange={onChange('limit')} />
+        <p>formatter input</p>
+        <Input placeholder={'请填写金额'} formatter={formatter} parser={parser} />
+      </Wrapper>
+      <Wrapper>
+        <p>校验信息显示类型 top 输入值 是否含有a</p>
+        <TopInput validateType="top" onChange={onChange('limit')} />
+        <p>校验信息显示类型 bottom 输入值 是否含有a</p>
+        <ValidateInput validateType="bottom" onChange={onChange('limit')} />
+        <p>校验信息显示类型 inner 输入值 是否含有a </p>
+        <ValidateInput validateType="inner" onChange={onChange('limit')} />
+      </Wrapper>
     </div>
   );
 };

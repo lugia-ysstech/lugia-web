@@ -5,31 +5,37 @@
  */
 
 import colorsFunc from '../css/stateColor';
-import styled from 'styled-components';
-import { px2emcss } from '../css/units';
+import styled, { css } from 'styled-components';
+import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
+
+import { px2remcss } from '../css/units';
 import type { ThemeType } from '@lugia/lugia-web';
 import Icon from '../icon';
+import { getBorder, getBorderRadius } from '../theme/CSSProvider';
 
 const FontSize = 1.4;
 const defaultColor = '#fff';
-const em = px2emcss(FontSize);
+const em = px2remcss;
 const {
   themeColor,
   mediumGreyColor,
-  borderColor,
-  borderDisableColor,
-  disableColor,
-  disabledColor,
   marginToDifferentElement,
   marginToPeerElementForY,
   blackColor,
   lightGreyColor,
+  borderColor,
+  disableColor,
+  borderDisableColor,
+  padding,
 } = colorsFunc();
 
 export type CSStype = {
   themes: ThemeType,
   hasChecked: boolean,
   hasCancel: boolean,
+};
+type ForGroupType = {
+  onChangeForGroup: (event: Object, value: any) => any,
 };
 export type CheckBoxProps = {
   checked?: boolean,
@@ -38,86 +44,34 @@ export type CheckBoxProps = {
   indeterminate?: boolean,
   cancel?: boolean,
   getTheme: Function,
-  onChange?: (event: Object, val: any) => any,
+  onChange?: (event: Object, checked: boolean) => any,
   value?: string,
   children?: any,
   styles?: 'default' | 'vertical',
   handleCancelItemClick: Function,
-};
+  getPartOfThemeProps: Function,
+  getPartOfThemeConfig: Function,
+  themeProps: Object,
+} & ForGroupType;
 type CheckBoxType = CheckBoxProps & CSStype;
 
-const getColors = (props: CheckBoxType): string => {
-  const {
-    checked = false,
-    hasChecked = false,
-    themes,
-    disabled,
-    indeterminate,
-    cancel = false,
-  } = props;
-  const ComThemeColor = themes.color || themeColor;
-  if (disabled) {
-    return `
-        background-color: ${disableColor};
-        border: 1px solid ${borderDisableColor};
-      `;
-  }
-  if (cancel) {
-    return `
-        background-color: ${disabledColor};
-        border: 1px solid ${disabledColor};
-    `;
-  }
-  if (checked || indeterminate) {
-    return `
-    background-color: ${ComThemeColor};
-    border: 1px solid ${ComThemeColor};
-    `;
-  }
-  return `
-  background-color: ${defaultColor};
-  border: 1px solid ${hasChecked ? ComThemeColor : borderColor};
-  `;
-};
-const hoverStyle = (props: CheckBoxType): string => {
-  const { disabled, themes, cancel } = props;
-  const ComThemeColor = themes.color || themeColor;
-  if (cancel) {
-    return '';
-  }
-  return `
-    border: 1px solid ${disabled ? borderDisableColor : ComThemeColor};
-  `;
-};
-const getAfterTransform = (props: CheckBoxType): string => {
+const getAfterTransform = (props: { checked: boolean, indeterminate: boolean }): string => {
   const { checked, indeterminate } = props;
   if (checked) {
     return `
-      left: ${em(5)};
-      top: ${em(2)};
-      width: ${em(6)};
-      height: ${em(10)};
-      transform: rotate(45deg) scale(1);
+      transform: translate(-50%, -50%) rotate(45deg) scale(1);
       transition: all .2s cubic-bezier(.71,-.46,.88,.6);
   `;
   }
   if (indeterminate) {
     return `
-      left: ${em(3)};
-      top: ${em(7)};
-      width: ${em(10)};
-      height: ${em(1)};
-      transform: scale(1);
+      transform: translate(-50%, -50%) scale(1);
       transition: all .2s cubic-bezier(.03,.86,.56,.87);
     `;
   }
   return `
-    left: ${em(5)};
-    top: ${em(2)};
-    width: ${em(6)};
-    height: ${em(10)};
-    transform: rotate(45deg) scale(0);
-    transition: all .1s cubic-bezier(.71,-.46,.88,.6);
+    transform: translate(-50%, -50%) rotate(45deg) scale(0);
+    transition: all .2s cubic-bezier(.71,-.46,.88,.6);
   `;
 };
 const getStyleCSS = (props: CheckBoxType): string => {
@@ -138,92 +92,207 @@ const getStyleCSS = (props: CheckBoxType): string => {
     margin-right: ${em(marginToDifferentElement)};
   `;
 };
-const getThemeMargin = (props: CheckBoxType): string => {
-  const { margin } = props.themes;
-  if (margin) {
-    if (typeof margin === 'number') {
-      return `margin: ${em(margin)};`;
-    }
-    if (typeof margin === 'object') {
-      const { top, right, bottom, left } = margin;
-      if (top && right && bottom && left) {
-        return `margin: ${em(top)} ${em(right)} ${em(bottom)} ${em(left)};`;
-      }
-    }
-  }
-  return '';
-};
 
-export const CheckBoxWrap = styled.label`
-  font-size: ${FontSize}rem;
-  cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
-  color: ${props => (props.disabled ? lightGreyColor : blackColor)};
-  width: ${props => (props.themes.width ? em(props.themes.width) : 'none')};
-  box-sizing: border-box;
-  padding: 0;
-  list-style: none;
-  display: inline-block;
-  position: relative;
-  white-space: nowrap;
-  ${getStyleCSS} ${getThemeMargin};
-
-  &:hover > span span {
-    ${hoverStyle};
-  }
-`;
-export const CheckBoxContent = styled.span`
-  margin: 0;
-  outline: none;
-  line-height: 1;
-  vertical-align: text-bottom;
-  display: inline-block;
-`;
-export const CheckBoxLabelSpan = styled.span`
-  padding-left: ${em(10)};
-`;
-export const CheckBoxInput = styled.input`
-  position: absolute;
-  left: 0;
-  z-index: 1;
-  cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
-  opacity: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-`;
-export const CheckBoxInnerSpan = styled.span`
-  position: relative;
-  box-sizing: border-box;
-  top: 0;
-  left: 0;
-  display: block;
-  width: ${em(18)};
-  height: ${em(18)};
-  border-radius: ${em(2)};
-  ${getColors} transition: all 0.3s;
-
-  &:hover {
-    ${hoverStyle};
-  }
-  &::after {
-    position: absolute;
+export const CheckBoxWrap = CSSComponent({
+  tag: 'label',
+  className: 'CheckBoxWrap',
+  css: css`
+    font-size: ${FontSize}rem;
+    cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
     box-sizing: border-box;
-    ${getAfterTransform} display: table;
-    border: ${em(2)} solid ${props => (props.disabled ? lightGreyColor : defaultColor)};
-    border-top: 0;
-    border-left: 0;
-    content: ' ';
-  }
-`;
-export const HoverSpan = styled.span`
-  box-sizing: border-box;
-  display: block;
-  width: ${em(18)};
-  height: ${em(18)};
-`;
-export const IconWrap = styled(Icon)`
+    padding: 0;
+    list-style: none;
+    display: inline-block;
+    position: relative;
+    white-space: nowrap;
+    ${getStyleCSS};
+  `,
+  normal: {
+    defaultTheme: {
+      opacity: 1,
+    },
+    selectNames: [['opacity'], ['margin'], ['padding'], ['width'], ['height']],
+  },
+  hover: {
+    defaultTheme: {
+      opacity: 1,
+    },
+    selectNames: [['opacity']],
+  },
+  disabled: {
+    defaultTheme: {
+      opacity: 1,
+    },
+    selectNames: [['opacity']],
+  },
+});
+
+export const CheckBoxContent = StaticComponent({
+  tag: 'span',
+  className: 'CheckBoxContent',
+  css: css`
+    margin: 0;
+    outline: none;
+    line-height: 1;
+    vertical-align: text-bottom;
+    display: inline-block;
+  `,
+});
+
+export const CheckBoxLabelSpan = CSSComponent({
+  tag: 'span',
+  className: 'CheckBoxLabelSpan',
+  css: css`
+    padding-left: ${em(10)};
+  `,
+  normal: {
+    selectNames: [['color'], ['font']],
+    defaultTheme: {
+      color: blackColor,
+      font: { size: 14 },
+      padding: {
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: padding,
+      },
+    },
+  },
+  hover: {
+    selectNames: [['color'], ['font']],
+    defaultTheme: {
+      color: blackColor,
+      font: { fontSize: 14 },
+    },
+  },
+  disabled: {
+    selectNames: [['color'], ['font']],
+    defaultTheme: {
+      color: lightGreyColor,
+      font: { fontSize: 14 },
+    },
+  },
+});
+
+export const CheckBoxInput = StaticComponent({
+  tag: 'input',
+  className: 'CheckBoxInput',
+  css: css`
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
+    opacity: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  `,
+});
+
+export const CheckBoxInnerSpan = CSSComponent({
+  tag: 'span',
+  className: 'CheckBoxInnerSpan',
+  css: css`
+    position: relative;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    display: block;
+    width: ${em(18)};
+    height: ${em(18)};
+    transition: all 0.3s;
+  `,
+  normal: {
+    selectNames: [['background'], ['borderRadius'], ['border']],
+    defaultTheme: {
+      background: { color: defaultColor },
+      border: getBorder({ color: borderColor, width: 1, style: 'solid' }),
+      borderRadius: getBorderRadius(2),
+    },
+    getCSS(themeMeta: Object, themeConfig: Object): string {
+      const { propsConfig, themeState } = themeConfig;
+      const { hover } = themeState;
+      const {
+        checkboxInnerCheckedTheme,
+        isCancel,
+        isDisabled,
+        isChecked,
+        isIndeterminate,
+        hasChecked,
+      } = propsConfig;
+      if (isCancel || isChecked || isIndeterminate) {
+        const {
+          normal: normalTheme,
+          hover: hoverTheme,
+          disabled: disabledTheme,
+        } = checkboxInnerCheckedTheme;
+        const defaultWidth = isChecked ? 6 : isIndeterminate ? 10 : 6;
+        const defaultHeight = isChecked ? 10 : isIndeterminate ? 1 : 10;
+        const colors = isDisabled
+          ? disabledTheme.color
+          : hover
+          ? hoverTheme.color
+          : normalTheme.color;
+
+        return css`
+          &::after {
+            position: absolute;
+            box-sizing: border-box;
+            ${getAfterTransform({
+              indeterminate: isIndeterminate,
+              checked: isChecked || isCancel,
+            })};
+            left: 50%;
+            top: 50%;
+            width: ${em(defaultWidth)};
+            height: ${em(defaultHeight)};
+            display: table;
+            border: ${em(2)} solid ${colors};
+            border-top: 0;
+            border-left: 0;
+            content: ' ';
+          }
+        `;
+      }
+
+      if (hasChecked) {
+        return `border: 1px solid ${themeColor};`;
+      }
+
+      return '';
+    },
+  },
+  hover: {
+    selectNames: [['background'], ['borderRadius'], ['border']],
+    defaultTheme: {
+      border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
+      borderRadius: getBorderRadius(2),
+      background: { color: defaultColor },
+    },
+  },
+  disabled: {
+    selectNames: [['background'], ['borderRadius'], ['border']],
+    defaultTheme: {
+      border: getBorder({ color: borderDisableColor, width: 1, style: 'solid' }),
+      borderRadius: getBorderRadius(2),
+      background: { color: disableColor },
+    },
+  },
+});
+
+export const HoverSpan = StaticComponent({
+  tag: 'span',
+  className: 'CheckboxHoverSpan',
+  css: css`
+    box-sizing: border-box;
+    display: block;
+    width: ${em(18)};
+    height: ${em(18)};
+  `,
+});
+export const IconWrap: Object = styled(Icon)`
   vertical-align: text-bottom !important;
   font-size: ${em(18)};
   color: ${mediumGreyColor};

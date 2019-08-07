@@ -1,24 +1,88 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Loading color 1`] = `
+exports[`Loading demo 1`] = `
 .c0 {
-  font-size: 1.2rem;
+  display: inline-block;
+}
+
+.c41 {
+  display: inline-block;
+  position: relative;
+}
+
+.c41::after {
+  content: '';
+  width: 100%;
+  height: 100%;
   position: absolute;
-  width: 16.666666666666668em;
-  height: 16.666666666666668em;
+  left: 0;
+  top: 0;
+  background: rgba(255,255,255,0.5);
+}
+
+.c1 {
+  display: inline-block;
+}
+
+.c42 {
+  display: inline-block;
+  position: absolute;
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
-  -webkit-transform: translate(-50%,-50%);
+  z-index: 2;
 }
 
-.c1 {
-  height: 16.666666666666668em;
-  width: 1.875em;
+.c2 {
+  font-size: 1.2rem;
+  width: 3em;
+  height: 3em;
+  position: relative;
+}
+
+.c13 {
+  font-size: 1.2rem;
+  width: 8.333333333333334em;
+  height: 8.333333333333334em;
+  position: relative;
+}
+
+.c24 {
+  font-size: 1.2rem;
+  width: 5.333333333333334em;
+  height: 5.333333333333334em;
+  position: relative;
+}
+
+.c39 {
+  font-size: 1.2rem;
+  width: 5.333333333333334em;
+  height: 5.333333333333334em;
+  position: relative;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.c43 {
+  font-size: 1.2rem;
+  width: 8.333333333333334em;
+  height: 8.333333333333334em;
+  position: relative;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.c3 {
+  height: 3em;
+  width: 0.45000000000000007em;
   position: absolute;
-  left: 7.395833333333334em;
+  left: 1.2750000000000001em;
   top: 0;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -27,19 +91,19 @@ exports[`Loading color 1`] = `
   -webkit-transform: rotate(0deg);
   -ms-transform: rotate(0deg);
   transform: rotate(0deg);
-  -webkit-animation: fDQPTE 2.5s infinite;
-  animation: fDQPTE 2.5s infinite;
+  -webkit-animation: fDQPTE 3s infinite;
+  animation: fDQPTE 3s infinite;
   -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
   animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
   -webkit-animation-delay: 0.7s;
   animation-delay: 0.7s;
 }
 
-.c3 {
-  height: 16.666666666666668em;
-  width: 1.6875em;
+.c5 {
+  height: 3em;
+  width: 0.405em;
   position: absolute;
-  left: 7.489583333333334em;
+  left: 1.2975em;
   top: 0;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -48,19 +112,19 @@ exports[`Loading color 1`] = `
   -webkit-transform: rotate(0deg);
   -ms-transform: rotate(0deg);
   transform: rotate(0deg);
-  -webkit-animation: fDQPTE 2.5s infinite;
-  animation: fDQPTE 2.5s infinite;
+  -webkit-animation: fDQPTE 3s infinite;
+  animation: fDQPTE 3s infinite;
   -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
   animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
   -webkit-animation-delay: 0.7999999999999999s;
   animation-delay: 0.7999999999999999s;
 }
 
-.c5 {
-  height: 16.666666666666668em;
-  width: 1.5187500000000003em;
+.c7 {
+  height: 3em;
+  width: 0.36450000000000005em;
   position: absolute;
-  left: 7.5739583333333345em;
+  left: 1.31775em;
   top: 0;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -69,19 +133,19 @@ exports[`Loading color 1`] = `
   -webkit-transform: rotate(0deg);
   -ms-transform: rotate(0deg);
   transform: rotate(0deg);
-  -webkit-animation: fDQPTE 2.5s infinite;
-  animation: fDQPTE 2.5s infinite;
+  -webkit-animation: fDQPTE 3s infinite;
+  animation: fDQPTE 3s infinite;
   -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
   animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
   -webkit-animation-delay: 0.8999999999999999s;
   animation-delay: 0.8999999999999999s;
 }
 
-.c7 {
-  height: 16.666666666666668em;
-  width: 1.3668750000000005em;
+.c9 {
+  height: 3em;
+  width: 0.32805000000000006em;
   position: absolute;
-  left: 7.649895833333333em;
+  left: 1.3359750000000001em;
   top: 0;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -90,19 +154,19 @@ exports[`Loading color 1`] = `
   -webkit-transform: rotate(0deg);
   -ms-transform: rotate(0deg);
   transform: rotate(0deg);
-  -webkit-animation: fDQPTE 2.5s infinite;
-  animation: fDQPTE 2.5s infinite;
+  -webkit-animation: fDQPTE 3s infinite;
+  animation: fDQPTE 3s infinite;
   -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
   animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
   -webkit-animation-delay: 0.9999999999999999s;
   animation-delay: 0.9999999999999999s;
 }
 
-.c9 {
-  height: 16.666666666666668em;
-  width: 1.2301875000000004em;
+.c11 {
+  height: 3em;
+  width: 0.29524500000000004em;
   position: absolute;
-  left: 7.718239583333334em;
+  left: 1.3523775em;
   top: 0;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -111,30 +175,229 @@ exports[`Loading color 1`] = `
   -webkit-transform: rotate(0deg);
   -ms-transform: rotate(0deg);
   transform: rotate(0deg);
-  -webkit-animation: fDQPTE 2.5s infinite;
-  animation: fDQPTE 2.5s infinite;
+  -webkit-animation: fDQPTE 3s infinite;
+  animation: fDQPTE 3s infinite;
   -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
   animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
   -webkit-animation-delay: 1.0999999999999999s;
   animation-delay: 1.0999999999999999s;
 }
 
-.c2 {
-  display: block;
-  width: 1.875em;
-  height: 1.875em;
-  background: red;
-  border-radius: 50%;
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
+.c14 {
+  height: 8.333333333333334em;
+  width: 1.2750000000000001em;
+  position: absolute;
+  left: 3.5291666666666672em;
+  top: 0;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-animation: fDQPTE 3s infinite;
+  animation: fDQPTE 3s infinite;
+  -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
+  animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
+  -webkit-animation-delay: 0.7s;
+  animation-delay: 0.7s;
+}
+
+.c16 {
+  height: 8.333333333333334em;
+  width: 1.1475000000000002em;
+  position: absolute;
+  left: 3.5929166666666674em;
+  top: 0;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-animation: fDQPTE 3s infinite;
+  animation: fDQPTE 3s infinite;
+  -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
+  animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
+  -webkit-animation-delay: 0.7999999999999999s;
+  animation-delay: 0.7999999999999999s;
+}
+
+.c18 {
+  height: 8.333333333333334em;
+  width: 1.03275em;
+  position: absolute;
+  left: 3.650291666666667em;
+  top: 0;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-animation: fDQPTE 3s infinite;
+  animation: fDQPTE 3s infinite;
+  -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
+  animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
+  -webkit-animation-delay: 0.8999999999999999s;
+  animation-delay: 0.8999999999999999s;
+}
+
+.c20 {
+  height: 8.333333333333334em;
+  width: 0.929475em;
+  position: absolute;
+  left: 3.7019291666666665em;
+  top: 0;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-animation: fDQPTE 3s infinite;
+  animation: fDQPTE 3s infinite;
+  -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
+  animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
+  -webkit-animation-delay: 0.9999999999999999s;
+  animation-delay: 0.9999999999999999s;
+}
+
+.c22 {
+  height: 8.333333333333334em;
+  width: 0.8365275em;
+  position: absolute;
+  left: 3.7484029166666666em;
+  top: 0;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-animation: fDQPTE 3s infinite;
+  animation: fDQPTE 3s infinite;
+  -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
+  animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
+  -webkit-animation-delay: 1.0999999999999999s;
+  animation-delay: 1.0999999999999999s;
+}
+
+.c25 {
+  height: 5.333333333333334em;
+  width: 0.8250000000000001em;
+  position: absolute;
+  left: 2.254166666666667em;
+  top: 0;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-animation: fDQPTE 3s infinite;
+  animation: fDQPTE 3s infinite;
+  -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
+  animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
+  -webkit-animation-delay: 0.7s;
+  animation-delay: 0.7s;
+}
+
+.c27 {
+  height: 5.333333333333334em;
+  width: 0.7425em;
+  position: absolute;
+  left: 2.295416666666667em;
+  top: 0;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-animation: fDQPTE 3s infinite;
+  animation: fDQPTE 3s infinite;
+  -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
+  animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
+  -webkit-animation-delay: 0.7999999999999999s;
+  animation-delay: 0.7999999999999999s;
+}
+
+.c29 {
+  height: 5.333333333333334em;
+  width: 0.6682500000000001em;
+  position: absolute;
+  left: 2.332541666666667em;
+  top: 0;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-animation: fDQPTE 3s infinite;
+  animation: fDQPTE 3s infinite;
+  -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
+  animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
+  -webkit-animation-delay: 0.8999999999999999s;
+  animation-delay: 0.8999999999999999s;
+}
+
+.c31 {
+  height: 5.333333333333334em;
+  width: 0.6014250000000001em;
+  position: absolute;
+  left: 2.3659541666666666em;
+  top: 0;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-animation: fDQPTE 3s infinite;
+  animation: fDQPTE 3s infinite;
+  -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
+  animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
+  -webkit-animation-delay: 0.9999999999999999s;
+  animation-delay: 0.9999999999999999s;
+}
+
+.c33 {
+  height: 5.333333333333334em;
+  width: 0.5412825000000001em;
+  position: absolute;
+  left: 2.396025416666667em;
+  top: 0;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-animation: fDQPTE 3s infinite;
+  animation: fDQPTE 3s infinite;
+  -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
+  animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
+  -webkit-animation-delay: 1.0999999999999999s;
+  animation-delay: 1.0999999999999999s;
 }
 
 .c4 {
   display: block;
-  width: 1.6875em;
-  height: 1.6875em;
-  background: red;
+  width: 0.45000000000000007em;
+  height: 0.45000000000000007em;
+  background: #4d63ff;
   border-radius: 50%;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
@@ -143,9 +406,9 @@ exports[`Loading color 1`] = `
 
 .c6 {
   display: block;
-  width: 1.5187500000000003em;
-  height: 1.5187500000000003em;
-  background: red;
+  width: 0.405em;
+  height: 0.405em;
+  background: #4d63ff;
   border-radius: 50%;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
@@ -154,9 +417,9 @@ exports[`Loading color 1`] = `
 
 .c8 {
   display: block;
-  width: 1.3668750000000005em;
-  height: 1.3668750000000005em;
-  background: red;
+  width: 0.36450000000000005em;
+  height: 0.36450000000000005em;
+  background: #4d63ff;
   border-radius: 50%;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
@@ -165,530 +428,758 @@ exports[`Loading color 1`] = `
 
 .c10 {
   display: block;
-  width: 1.2301875000000004em;
-  height: 1.2301875000000004em;
-  background: red;
+  width: 0.32805000000000006em;
+  height: 0.32805000000000006em;
+  background: #4d63ff;
   border-radius: 50%;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
 }
 
-<div
-  className="c0"
-  width={200}
->
-  <div
-    className="c1"
-    width={200}
-  >
-    <span
-      className="c2"
-      color="red"
-      scale={false}
-    />
-  </div>
-  <div
-    className="c3"
-    width={200}
-  >
-    <span
-      className="c4"
-      color="red"
-      scale=""
-    />
-  </div>
-  <div
-    className="c5"
-    width={200}
-  >
-    <span
-      className="c6"
-      color="red"
-      scale=""
-    />
-  </div>
-  <div
-    className="c7"
-    width={200}
-  >
-    <span
-      className="c8"
-      color="red"
-      scale=""
-    />
-  </div>
-  <div
-    className="c9"
-    width={200}
-  >
-    <span
-      className="c10"
-      color="red"
-      scale=""
-    />
-  </div>
-</div>
-`;
+.c12 {
+  display: block;
+  width: 0.29524500000000004em;
+  height: 0.29524500000000004em;
+  background: #4d63ff;
+  border-radius: 50%;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
 
-exports[`Loading width 1`] = `
-.c0 {
+.c15 {
+  display: block;
+  width: 1.2750000000000001em;
+  height: 1.2750000000000001em;
+  background: #4d63ff;
+  border-radius: 50%;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.c17 {
+  display: block;
+  width: 1.1475000000000002em;
+  height: 1.1475000000000002em;
+  background: #4d63ff;
+  border-radius: 50%;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.c19 {
+  display: block;
+  width: 1.03275em;
+  height: 1.03275em;
+  background: #4d63ff;
+  border-radius: 50%;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.c21 {
+  display: block;
+  width: 0.929475em;
+  height: 0.929475em;
+  background: #4d63ff;
+  border-radius: 50%;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.c23 {
+  display: block;
+  width: 0.8365275em;
+  height: 0.8365275em;
+  background: #4d63ff;
+  border-radius: 50%;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.c26 {
+  display: block;
+  width: 0.8250000000000001em;
+  height: 0.8250000000000001em;
+  background: #4d63ff;
+  border-radius: 50%;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.c28 {
+  display: block;
+  width: 0.7425em;
+  height: 0.7425em;
+  background: #4d63ff;
+  border-radius: 50%;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.c30 {
+  display: block;
+  width: 0.6682500000000001em;
+  height: 0.6682500000000001em;
+  background: #4d63ff;
+  border-radius: 50%;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.c32 {
+  display: block;
+  width: 0.6014250000000001em;
+  height: 0.6014250000000001em;
+  background: #4d63ff;
+  border-radius: 50%;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.c34 {
+  display: block;
+  width: 0.5412825000000001em;
+  height: 0.5412825000000001em;
+  background: #4d63ff;
+  border-radius: 50%;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.c40 {
+  font-size: 1.4rem;
+  line-height: 2em;
+  text-align: center;
+  color: #4d63ff;
+}
+
+.c35 {
+  display: block;
+  width: 36px;
+  height: 36px;
+  -webkit-animation: rotate 3s linear infinite;
+  animation: rotate 3s linear infinite;
+  font-size: 36px;
+  color: #4d63ff;
+}
+
+.c37 {
+  display: block;
+  width: 100px;
+  height: 100px;
+  -webkit-animation: rotate 3s linear infinite;
+  animation: rotate 3s linear infinite;
+  font-size: 100px;
+  color: #4d63ff;
+}
+
+.c38 {
+  display: block;
+  width: 64px;
+  height: 64px;
+  -webkit-animation: rotate 3s linear infinite;
+  animation: rotate 3s linear infinite;
+  font-size: 64px;
+  color: #4d63ff;
+}
+
+.c36 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
   font-size: 1.2rem;
-  position: absolute;
+}
+
+.c44 {
+  position: relative;
+  box-sizing: border-box;
+  font-size: 1.4rem;
+  overflow: hidden;
+  padding: 0.8571428571428572em 0.7142857142857143em 0.8571428571428572em 0.7142857142857143em;
+  line-height: 1;
+  border-radius: 0.28571428571428575em;
+  border-left: 0.28571428571428575em solid #4d63ff;
+  background: rgba(77,99,255,0.2);
+}
+
+.c45 {
+  color: #333333;
+  vertical-align: text-bottom;
+  font-size: 1em;
+}
+
+.c46 {
+  display: block;
+  color: #666666;
+  font-size: 1em;
+}
+
+.c47 {
+  font-size: 1em;
+  box-sizing: border-box;
+  display: inline-block;
+  width: 3.1666666666666665em;
+  height: 1.6666666666666667em;
+  line-height: 1.6666666666666667em;
+  border-radius: 1.6666666666666667em;
+  background: #ccc;
+  position: relative;
+  text-align: right;
+  padding: 0 0.33333333333333337em;
+  color: rgba(255,255,255,0.8);
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.c47:focus {
+  outline: none;
+}
+
+.c48 > *:first-child {
+  display: inline-block;
+  line-height: 1.6666666666666667em;
+}
+
+.c48 > *:first-child::before {
+  line-height: 1.6666666666666667em;
+}
+
+.c49 {
   width: 1.1666666666666667em;
   height: 1.1666666666666667em;
-  left: 50%;
+  line-height: 1.1666666666666667em;
+  border-radius: 50%;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.05);
+  background: #fff;
+  position: absolute;
+  left: 0.25em;
   top: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  -webkit-transform: translate(-50%,-50%);
-}
-
-.c1 {
-  height: 1.1666666666666667em;
-  width: 0.15em;
-  position: absolute;
-  left: 0.5083333333333333em;
-  top: 0;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
-  -webkit-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-animation: fDQPTE 2.5s infinite;
-  animation: fDQPTE 2.5s infinite;
-  -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
-  animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
-  -webkit-animation-delay: 0.7s;
-  animation-delay: 0.7s;
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-transition: all 0.2s;
 }
 
-.c3 {
-  height: 1.1666666666666667em;
-  width: 0.135em;
-  position: absolute;
-  left: 0.5158333333333334em;
-  top: 0;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -webkit-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-animation: fDQPTE 2.5s infinite;
-  animation: fDQPTE 2.5s infinite;
-  -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
-  animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
-  -webkit-animation-delay: 0.7999999999999999s;
-  animation-delay: 0.7999999999999999s;
-}
-
-.c5 {
-  height: 1.1666666666666667em;
-  width: 0.12150000000000001em;
-  position: absolute;
-  left: 0.5225833333333334em;
-  top: 0;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -webkit-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-animation: fDQPTE 2.5s infinite;
-  animation: fDQPTE 2.5s infinite;
-  -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
-  animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
-  -webkit-animation-delay: 0.8999999999999999s;
-  animation-delay: 0.8999999999999999s;
-}
-
-.c7 {
-  height: 1.1666666666666667em;
-  width: 0.10935000000000003em;
-  position: absolute;
-  left: 0.5286583333333333em;
-  top: 0;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -webkit-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-animation: fDQPTE 2.5s infinite;
-  animation: fDQPTE 2.5s infinite;
-  -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
-  animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
-  -webkit-animation-delay: 0.9999999999999999s;
-  animation-delay: 0.9999999999999999s;
-}
-
-.c9 {
-  height: 1.1666666666666667em;
-  width: 0.09841500000000003em;
-  position: absolute;
-  left: 0.5341258333333334em;
-  top: 0;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -webkit-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-animation: fDQPTE 2.5s infinite;
-  animation: fDQPTE 2.5s infinite;
-  -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
-  animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
-  -webkit-animation-delay: 1.0999999999999999s;
-  animation-delay: 1.0999999999999999s;
-}
-
-.c2 {
+.c49 > *:first-child {
   display: block;
-  width: 0.15em;
-  height: 0.15em;
-  background: #13bef7;
-  border-radius: 50%;
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
+  color: #ccc;
+  line-height: 1.1666666666666667em;
+  -webkit-animation: rotate 1.5s linear infinite;
+  animation: rotate 1.5s linear infinite;
 }
 
-.c4 {
-  display: block;
-  width: 0.135em;
-  height: 0.135em;
-  background: #13bef7;
-  border-radius: 50%;
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
+.c49 > *:first-child::before {
+  -webkit-transform: scale(0.65);
+  -ms-transform: scale(0.65);
+  transform: scale(0.65);
+  line-height: 1.1666666666666667em;
 }
 
-.c6 {
-  display: block;
-  width: 0.12150000000000001em;
-  height: 0.12150000000000001em;
-  background: #13bef7;
-  border-radius: 50%;
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-}
-
-.c8 {
-  display: block;
-  width: 0.10935000000000003em;
-  height: 0.10935000000000003em;
-  background: #13bef7;
-  border-radius: 50%;
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-}
-
-.c10 {
-  display: block;
-  width: 0.09841500000000003em;
-  height: 0.09841500000000003em;
-  background: #13bef7;
-  border-radius: 50%;
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-}
-
-<div
-  className="c0"
-  width={14}
->
+<div>
+  <h2>
+    Theme delay
+  </h2>
   <div
-    className="c1"
-    width={14}
+    className="c0"
   >
-    <span
-      className="c2"
-      color="#13bef7"
-      scale={false}
-    />
+    
+  </div>
+  <h2>
+    small
+  </h2>
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+    >
+      <div
+        className="c2"
+        width={36}
+      >
+        <div
+          className="c3"
+          width={36}
+        >
+          <span
+            className="c4"
+            color="#4d63ff"
+            scale={false}
+          />
+        </div>
+        <div
+          className="c5"
+          width={36}
+        >
+          <span
+            className="c6"
+            color="#4d63ff"
+            scale=""
+          />
+        </div>
+        <div
+          className="c7"
+          width={36}
+        >
+          <span
+            className="c8"
+            color="#4d63ff"
+            scale=""
+          />
+        </div>
+        <div
+          className="c9"
+          width={36}
+        >
+          <span
+            className="c10"
+            color="#4d63ff"
+            scale=""
+          />
+        </div>
+        <div
+          className="c11"
+          width={36}
+        >
+          <span
+            className="c12"
+            color="#4d63ff"
+            scale=""
+          />
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <h2>
+    large
+  </h2>
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+    >
+      <div
+        className="c13"
+        width={100}
+      >
+        <div
+          className="c14"
+          width={100}
+        >
+          <span
+            className="c15"
+            color="#4d63ff"
+            scale={false}
+          />
+        </div>
+        <div
+          className="c16"
+          width={100}
+        >
+          <span
+            className="c17"
+            color="#4d63ff"
+            scale=""
+          />
+        </div>
+        <div
+          className="c18"
+          width={100}
+        >
+          <span
+            className="c19"
+            color="#4d63ff"
+            scale=""
+          />
+        </div>
+        <div
+          className="c20"
+          width={100}
+        >
+          <span
+            className="c21"
+            color="#4d63ff"
+            scale=""
+          />
+        </div>
+        <div
+          className="c22"
+          width={100}
+        >
+          <span
+            className="c23"
+            color="#4d63ff"
+            scale=""
+          />
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <h2>
+    default
+  </h2>
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+    >
+      <div
+        className="c24"
+        width={64}
+      >
+        <div
+          className="c25"
+          width={64}
+        >
+          <span
+            className="c26"
+            color="#4d63ff"
+            scale={false}
+          />
+        </div>
+        <div
+          className="c27"
+          width={64}
+        >
+          <span
+            className="c28"
+            color="#4d63ff"
+            scale=""
+          />
+        </div>
+        <div
+          className="c29"
+          width={64}
+        >
+          <span
+            className="c30"
+            color="#4d63ff"
+            scale=""
+          />
+        </div>
+        <div
+          className="c31"
+          width={64}
+        >
+          <span
+            className="c32"
+            color="#4d63ff"
+            scale=""
+          />
+        </div>
+        <div
+          className="c33"
+          width={64}
+        >
+          <span
+            className="c34"
+            color="#4d63ff"
+            scale=""
+          />
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <h2>
+    icon small
+  </h2>
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+    >
+      <div
+        className="c2"
+        width={36}
+      >
+        <span
+          className="c35"
+          color="#4d63ff"
+          size={36}
+        >
+          <i
+            className="lugia-icon-financial_loading_o  c36"
+          />
+        </span>
+      </div>
+      
+    </div>
+  </div>
+  <h2>
+    icon large
+  </h2>
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+    >
+      <div
+        className="c13"
+        width={100}
+      >
+        <span
+          className="c37"
+          color="#4d63ff"
+          size={100}
+        >
+          <i
+            className="lugia-icon-financial_loading_o  c36"
+          />
+        </span>
+      </div>
+      
+    </div>
+  </div>
+  <h2>
+    icon default
+  </h2>
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+    >
+      <div
+        className="c24"
+        width={64}
+      >
+        <span
+          className="c38"
+          color="#4d63ff"
+          size={64}
+        >
+          <i
+            className="lugia-icon-financial_loading_o  c36"
+          />
+        </span>
+      </div>
+      
+    </div>
+  </div>
+  <h2>
+    加载中...
+  </h2>
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+    >
+      <div
+        className="c39"
+        width={64}
+      >
+        <div
+          className="c25"
+          width={64}
+        >
+          <span
+            className="c26"
+            color="#4d63ff"
+            scale={false}
+          />
+        </div>
+        <div
+          className="c27"
+          width={64}
+        >
+          <span
+            className="c28"
+            color="#4d63ff"
+            scale=""
+          />
+        </div>
+        <div
+          className="c29"
+          width={64}
+        >
+          <span
+            className="c30"
+            color="#4d63ff"
+            scale=""
+          />
+        </div>
+        <div
+          className="c31"
+          width={64}
+        >
+          <span
+            className="c32"
+            color="#4d63ff"
+            scale=""
+          />
+        </div>
+        <div
+          className="c33"
+          width={64}
+        >
+          <span
+            className="c34"
+            color="#4d63ff"
+            scale=""
+          />
+        </div>
+      </div>
+      <p
+        className="c40"
+        color="#4d63ff"
+      >
+        加载中.....
+      </p>
+    </div>
   </div>
   <div
-    className="c3"
-    width={14}
+    className="c41"
   >
-    <span
-      className="c4"
-      color="#13bef7"
-      scale=""
-    />
+    LugiaLugia Lugia Lugia Lugia Lugia 
+    <div
+      className="c42"
+    >
+      <div
+        className="c43"
+        width={100}
+      >
+        <div
+          className="c14"
+          width={100}
+        >
+          <span
+            className="c15"
+            color="#4d63ff"
+            scale={false}
+          />
+        </div>
+        <div
+          className="c16"
+          width={100}
+        >
+          <span
+            className="c17"
+            color="#4d63ff"
+            scale=""
+          />
+        </div>
+        <div
+          className="c18"
+          width={100}
+        >
+          <span
+            className="c19"
+            color="#4d63ff"
+            scale=""
+          />
+        </div>
+        <div
+          className="c20"
+          width={100}
+        >
+          <span
+            className="c21"
+            color="#4d63ff"
+            scale=""
+          />
+        </div>
+        <div
+          className="c22"
+          width={100}
+        >
+          <span
+            className="c23"
+            color="#4d63ff"
+            scale=""
+          />
+        </div>
+      </div>
+      <p
+        className="c40"
+        color="#4d63ff"
+      >
+        正在加载中.....
+      </p>
+    </div>
   </div>
   <div
-    className="c5"
-    width={14}
+    className="c0"
   >
-    <span
-      className="c6"
-      color="#13bef7"
-      scale=""
-    />
+    <div
+      className="c44"
+      height={null}
+      type="info"
+    >
+      <span
+        className="c45"
+      >
+        Lugia 的诞生就是要树立金融行业大前端解决方案的标杆。 我们提供的不仅仅是设计规范、开源组件库、可视化开发套件......而是将设计、开发、工程， 有机高效的演变为一种适应多端、多层的前端设计语言。Lugia 的目标是降低开发成本，提升开发质量， 为前端开发人员赋能，让用户体验 知性。Lugia 的诞生就是要树立金融行业大前端解决方案的标杆。 我们提供的不仅仅是设计规范、开源组件库、可视化开发套件......而是将设计、开发、工程， 有机高效的演变为一种适应多端、多层的前端设计语言。Lugia 的目标是降低开发成本，提升开发质量， 为前端开发人员赋能，让用户体验 知性。Lugia 的诞生就是要树立金融行业大前端解决方案的标杆。 我们提供的不仅仅是设计规范、开源组件库、可视化开发套件......而是将设计、开发、工程， 有机高效的演变为一种适应多端、多层的前端设计语言。Lugia 的目标是降低开发成本，提升开发质量， 为前端开发人员赋能，让用户体验 知性。Lugia 的诞生就是要树立金融行业大前端解决方案的标杆。 我们提供的不仅仅是设计规范、开源组件库、可视化开发套件......而是将设计、开发、工程， 有机高效的演变为一种适应多端、多层的前端设计语言。Lugia 的目标是降低开发成本，提升开发质量， 为前端开发人员赋能，让用户体验 知性。Lugia 的诞生就是要树立金融行业大前端解决方案的标杆。 我们提供的不仅仅是设计规范、开源组件库、可视化开发套件......而是将设计、开发、工程， 有机高效的演变为一种适应多端、多层的前端设计语言。Lugia 的目标是降低开发成本，提升开发质量， 为前端开发人员赋能，让用户体验 知性。Lugia 的诞生就是要树立金融行业大前端解决方案的标杆。 我们提供的不仅仅是设计规范、开源组件库、可视化开发套件......而是将设计、开发、工程， 有机高效的演变为一种适应多端、多层的前端设计语言。Lugia 的目标是降低开发成本，提升开发质量， 为前端开发人员赋能，让用户体验 知性。Lugia 的诞生就是要树立金融行业大前端解决方案的标杆。 我们提供的不仅仅是设计规范、开源组件库、可视化开发套件......而是将设计、开发、工程， 有机高效的演变为一种适应多端、多层的前端设计语言。Lugia 的目标是降低开发成本，提升开发质量， 为前端开发人员赋能，让用户体验 知性。Lugia 的诞生就是要树立金融行业大前端解决方案的标杆。 我们提供的不仅仅是设计规范、开源组件库、可视化开发套件......而是将设计、开发、工程， 有机高效的演变为一种适应多端、多层的前端设计语言。Lugia 的目标是降低开发成本，提升开发质量， 为前端开发人员赋能，让用户体验 知性。Lugia 的诞生就是要树立金融行业大前端解决方案的标杆。 我们提供的不仅仅是设计规范、开源组件库、可视化开发套件......而是将设计、开发、工程， 有机高效的演变为一种适应多端、多层的前端设计语言。Lugia 的目标是降低开发成本，提升开发质量， 为前端开发人员赋能，让用户体验 知性。Lugia 的诞生就是要树立金融行业大前端解决方案的标杆。 我们提供的不仅仅是设计规范、开源组件库、可视化开发套件......而是将设计、开发、工程， 有机高效的演变为一种适应多端、多层的前端设计语言。Lugia 的目标是降低开发成本，提升开发质量， 为前端开发人员赋能，让用户体验 知性。Lugia 的诞生就是要树立金融行业大前端解决方案的标杆。 我们提供的不仅仅是设计规范、开源组件库、可视化开发套件......而是将设计、开发、工程， 有机高效的演变为一种适应多端、多层的前端设计语言。Lugia 的目标是降低开发成本，提升开发质量， 为前端开发人员赋能，让用户体验 知性。Lugia 的诞生就是要树立金融行业大前端解决方案的标杆。 我们提供的不仅仅是设计规范、开源组件库、可视化开发套件......而是将设计、开发、工程， 有机高效的演变为一种适应多端、多层的前端设计语言。Lugia 的目标是降低开发成本，提升开发质量， 为前端开发人员赋能，让用户体验 知性。
+      </span>
+      <span
+        className="c46"
+      />
+    </div>
+    
   </div>
   <div
-    className="c7"
-    width={14}
+    className="c0"
+  >
+    <div
+      className="c44"
+      height={null}
+      type="info"
+    >
+      <span
+        className="c45"
+      >
+        Lugia 的诞生就是要树立金融行业大前端解决方案的标杆。 我们提供的不仅仅是设计规范、开源组件库、可视化开发套件......而是将设计、开发、工程， 有机高效的演变为一种适应多端、多层的前端设计语言。Lugia 的目标是降低开发成本，提升开发质量， 为前端开发人员赋能，让用户体验 知性。Lugia 的诞生就是要树立金融行业大前端解决方案的标杆。 我们提供的不仅仅是设计规范、开源组件库、可视化开发套件......而是将设计、开发、工程， 有机高效的演变为一种适应多端、多层的前端设计语言。Lugia 的目标是降低开发成本，提升开发质量， 为前端开发人员赋能，让用户体验 知性。Lugia 的诞生就是要树立金融行业大前端解决方案的标杆。 我们提供的不仅仅是设计规范、开源组件库、可视化开发套件......而是将设计、开发、工程， 有机高效的演变为一种适应多端、多层的前端设计语言。Lugia 的目标是降低开发成本，提升开发质量， 为前端开发人员赋能，让用户体验 知性。Lugia 的诞生就是要树立金融行业大前端解决方案的标杆。 我们提供的不仅仅是设计规范、开源组件库、可视化开发套件......而是将设计、开发、工程， 有机高效的演变为一种适应多端、多层的前端设计语言。Lugia 的目标是降低开发成本，提升开发质量， 为前端开发人员赋能，让用户体验 知性。Lugia 的诞生就是要树立金融行业大前端解决方案的标杆。 我们提供的不仅仅是设计规范、开源组件库、可视化开发套件......而是将设计、开发、工程， 有机高效的演变为一种适应多端、多层的前端设计语言。Lugia 的目标是降低开发成本，提升开发质量， 为前端开发人员赋能，让用户体验 知性。Lugia 的诞生就是要树立金融行业大前端解决方案的标杆。 我们提供的不仅仅是设计规范、开源组件库、可视化开发套件......而是将设计、开发、工程， 有机高效的演变为一种适应多端、多层的前端设计语言。Lugia 的目标是降低开发成本，提升开发质量， 为前端开发人员赋能，让用户体验 知性。Lugia 的诞生就是要树立金融行业大前端解决方案的标杆。 我们提供的不仅仅是设计规范、开源组件库、可视化开发套件......而是将设计、开发、工程， 有机高效的演变为一种适应多端、多层的前端设计语言。Lugia 的目标是降低开发成本，提升开发质量， 为前端开发人员赋能，让用户体验 知性。Lugia 的诞生就是要树立金融行业大前端解决方案的标杆。 我们提供的不仅仅是设计规范、开源组件库、可视化开发套件......而是将设计、开发、工程， 有机高效的演变为一种适应多端、多层的前端设计语言。Lugia 的目标是降低开发成本，提升开发质量， 为前端开发人员赋能，让用户体验 知性。Lugia 的诞生就是要树立金融行业大前端解决方案的标杆。 我们提供的不仅仅是设计规范、开源组件库、可视化开发套件......而是将设计、开发、工程， 有机高效的演变为一种适应多端、多层的前端设计语言。Lugia 的目标是降低开发成本，提升开发质量， 为前端开发人员赋能，让用户体验 知性。Lugia 的诞生就是要树立金融行业大前端解决方案的标杆。 我们提供的不仅仅是设计规范、开源组件库、可视化开发套件......而是将设计、开发、工程， 有机高效的演变为一种适应多端、多层的前端设计语言。Lugia 的目标是降低开发成本，提升开发质量， 为前端开发人员赋能，让用户体验 知性。Lugia 的诞生就是要树立金融行业大前端解决方案的标杆。 我们提供的不仅仅是设计规范、开源组件库、可视化开发套件......而是将设计、开发、工程， 有机高效的演变为一种适应多端、多层的前端设计语言。Lugia 的目标是降低开发成本，提升开发质量， 为前端开发人员赋能，让用户体验 知性。Lugia 的诞生就是要树立金融行业大前端解决方案的标杆。 我们提供的不仅仅是设计规范、开源组件库、可视化开发套件......而是将设计、开发、工程， 有机高效的演变为一种适应多端、多层的前端设计语言。Lugia 的目标是降低开发成本，提升开发质量， 为前端开发人员赋能，让用户体验 知性。
+      </span>
+      <span
+        className="c46"
+      />
+    </div>
+    
+  </div>
+  <span
+    className="c47"
+    onKeyDown={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    tabIndex={0}
+    value={false}
   >
     <span
-      className="c8"
-      color="#13bef7"
-      scale=""
-    />
-  </div>
-  <div
-    className="c9"
-    width={14}
-  >
+      className="c48"
+      value={false}
+    >
+      
+    </span>
     <span
-      className="c10"
-      color="#13bef7"
-      scale=""
-    />
-  </div>
-</div>
-`;
-
-exports[`Loading 没有设置属性 1`] = `
-.c0 {
-  font-size: 1.2rem;
-  position: absolute;
-  width: 16.666666666666668em;
-  height: 16.666666666666668em;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  -webkit-transform: translate(-50%,-50%);
-}
-
-.c1 {
-  height: 16.666666666666668em;
-  width: 1.875em;
-  position: absolute;
-  left: 7.395833333333334em;
-  top: 0;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -webkit-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-animation: fDQPTE 2.5s infinite;
-  animation: fDQPTE 2.5s infinite;
-  -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
-  animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
-  -webkit-animation-delay: 0.7s;
-  animation-delay: 0.7s;
-}
-
-.c3 {
-  height: 16.666666666666668em;
-  width: 1.6875em;
-  position: absolute;
-  left: 7.489583333333334em;
-  top: 0;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -webkit-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-animation: fDQPTE 2.5s infinite;
-  animation: fDQPTE 2.5s infinite;
-  -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
-  animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
-  -webkit-animation-delay: 0.7999999999999999s;
-  animation-delay: 0.7999999999999999s;
-}
-
-.c5 {
-  height: 16.666666666666668em;
-  width: 1.5187500000000003em;
-  position: absolute;
-  left: 7.5739583333333345em;
-  top: 0;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -webkit-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-animation: fDQPTE 2.5s infinite;
-  animation: fDQPTE 2.5s infinite;
-  -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
-  animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
-  -webkit-animation-delay: 0.8999999999999999s;
-  animation-delay: 0.8999999999999999s;
-}
-
-.c7 {
-  height: 16.666666666666668em;
-  width: 1.3668750000000005em;
-  position: absolute;
-  left: 7.649895833333333em;
-  top: 0;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -webkit-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-animation: fDQPTE 2.5s infinite;
-  animation: fDQPTE 2.5s infinite;
-  -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
-  animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
-  -webkit-animation-delay: 0.9999999999999999s;
-  animation-delay: 0.9999999999999999s;
-}
-
-.c9 {
-  height: 16.666666666666668em;
-  width: 1.2301875000000004em;
-  position: absolute;
-  left: 7.718239583333334em;
-  top: 0;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -webkit-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-animation: fDQPTE 2.5s infinite;
-  animation: fDQPTE 2.5s infinite;
-  -webkit-animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
-  animation-timing-function: cubic-bezier(0.28,0.8,0.69,1);
-  -webkit-animation-delay: 1.0999999999999999s;
-  animation-delay: 1.0999999999999999s;
-}
-
-.c2 {
-  display: block;
-  width: 1.875em;
-  height: 1.875em;
-  background: #13bef7;
-  border-radius: 50%;
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-}
-
-.c4 {
-  display: block;
-  width: 1.6875em;
-  height: 1.6875em;
-  background: #13bef7;
-  border-radius: 50%;
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-}
-
-.c6 {
-  display: block;
-  width: 1.5187500000000003em;
-  height: 1.5187500000000003em;
-  background: #13bef7;
-  border-radius: 50%;
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-}
-
-.c8 {
-  display: block;
-  width: 1.3668750000000005em;
-  height: 1.3668750000000005em;
-  background: #13bef7;
-  border-radius: 50%;
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-}
-
-.c10 {
-  display: block;
-  width: 1.2301875000000004em;
-  height: 1.2301875000000004em;
-  background: #13bef7;
-  border-radius: 50%;
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-}
-
-<div
-  className="c0"
-  width={200}
->
-  <div
-    className="c1"
-    width={200}
-  >
-    <span
-      className="c2"
-      color="#13bef7"
-      scale={false}
-    />
-  </div>
-  <div
-    className="c3"
-    width={200}
-  >
-    <span
-      className="c4"
-      color="#13bef7"
-      scale=""
-    />
-  </div>
-  <div
-    className="c5"
-    width={200}
-  >
-    <span
-      className="c6"
-      color="#13bef7"
-      scale=""
-    />
-  </div>
-  <div
-    className="c7"
-    width={200}
-  >
-    <span
-      className="c8"
-      color="#13bef7"
-      scale=""
-    />
-  </div>
-  <div
-    className="c9"
-    width={200}
-  >
-    <span
-      className="c10"
-      color="#13bef7"
-      scale=""
-    />
-  </div>
+      className="c49"
+      value={false}
+    >
+      
+    </span>
+  </span>
 </div>
 `;

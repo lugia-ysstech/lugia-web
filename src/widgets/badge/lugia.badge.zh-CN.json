@@ -1,0 +1,80 @@
+{
+  "widgetName": "Badge",
+  "title": "徽标数",
+  "desc": "图标右上角的圆形徽标数字",
+  "props": {
+    "viewClass": {
+      "type": "string",
+      "desc": "用于配置通用主题属性"
+    },
+    "showZero": {
+      "type": "boolean",
+      "desc": "当数值为 0 时，是否展示 Badge",
+      "defaultValue": false
+    },
+    "overflowCount": {
+      "type": "number",
+      "desc": "超过 overflowCount 的会显示为 ${overflowCount}+，默认的 overflowCount 为 99",
+      "defaultValue": 99
+    },
+    "children": {
+      "type": "React$Element<any>",
+      "desc": "可作为显示徽标数的子组件"
+    },
+    "count": {
+      "type": "number",
+      "desc": "展示的数字，大于封顶数时 显示为${overflowCount}+,为 0 时隐藏"
+    }
+  },
+  "category": ["数据展示"],
+  "designInfo": {
+    "BadgeNumber": {
+      "sequence": 1,
+      "title": "数字徽标",
+      "desc": "徽标数大于0时,显示的数字",
+      "props": {
+        "showZero": true,
+        "count": 1
+      },
+      "theme": {
+        "BadgeNumber": {
+          "name": "徽标数",
+          "desc": "徽标数 显示数字时的样式展示",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["background"],
+            ["position"],
+            ["opacity"],
+            ["color"],
+            ["margin"],
+            ["padding"],
+            ["boxShadow"]
+          ],
+          "hover": [["width"], ["height"], ["background"], ["opacity"], ["color"]],
+          "clicked": [],
+          "disabled": []
+        }
+      }
+    }
+  },
+  "theme": {
+    "BadgeDot": {
+      "name": "点状徽标",
+      "desc": "徽标数不显示数字时的样式展示",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["background"],
+        ["position"],
+        ["opacity"],
+        ["margin"],
+        ["padding"],
+        ["boxShadow"]
+      ],
+      "hover": [["width"], ["height"], ["background"], ["opacity"]],
+      "clicked": [],
+      "disabled": []
+    }
+  }
+}

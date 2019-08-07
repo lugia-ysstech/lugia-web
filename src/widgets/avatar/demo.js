@@ -18,61 +18,86 @@ const Wrapper = styled.div`
   padding: 20px;
 `;
 export default () => {
-  const view = {
-    [Widget.Avatar]: {
-      color: 'white',
-      backgroundColor: '#cccccc',
-      margin: 10,
-    },
+  const badgeConfig = {
     [Widget.Badge]: {
-      position: { right: 20, top: 10 },
+      BadgeDot: {
+        normal: {
+          position: { right: 0, top: -3 },
+        },
+      },
     },
-    register: {},
+    [Widget.NumberTurn]: {
+      normal: {
+        position: { right: 0, top: -3 },
+      },
+    },
+  };
+  const config = {
+    [Widget.Avatar]: {
+      Container: { normal: { background: { color: '#e2e2e2' } } },
+      IconAvatar: { normal: { color: 'orange' } },
+      SrcAvatar: { normal: { width: 40, height: 40 } },
+      FontAvatar: { normal: { color: 'red' } },
+    },
+  };
+  const iconConfig = {
+    [Widget.Avatar]: {
+      IconAvatar: { normal: { color: 'purple', fontSize: 16 } },
+    },
   };
   return (
     <div>
-      <Theme config={view}>
+      <Theme config={config}>
         <Wrapper>
-          <Theme config={{ register: {} }}>
-            <Avatar viewClass="register" shape={'square'} name={'l'} />
-            <Avatar viewClass="register" shape={'square'} name={'lu'} />
-            <Avatar viewClass="register" shape={'square'} name={'lug'} />
-            <Avatar viewClass="register" shape={'square'} name={'lugia'} />
-            <br />
-            <Avatar shape={'circle'} name={'l'} />
-            <Avatar shape={'circle'} name={'lu'} />
-            <Avatar shape={'circle'} name={'lug'} />
-            <Avatar shape={'circle'} name={'lugia'} />
-          </Theme>
+          <Avatar shape={'square'} name={'l'} />
+          <Avatar shape={'square'} name={'lu'} />
+          <Avatar viewClass="config" shape={'square'} name={'lug'} />
+          <Avatar viewClass="config" shape={'square'} name={'lugia'} />
+          <br />
+          <Avatar shape={'circle'} name={'l'} />
+          <Avatar shape={'circle'} name={'lu'} />
+          <Avatar viewClass="config" shape={'circle'} name={'lug'} />
+          <Avatar viewClass="config" shape={'circle'} name={'lugia'} />
         </Wrapper>
         <Wrapper>
-          <Theme config={{ register: { color: 'white', backgroundColor: '#4d63ff' } }}>
+          <Theme config={iconConfig}>
             <Avatar
-              viewClass="register"
               shape={'square'}
+              type="icon"
               icon={'lugia-icon-financial_user'}
               size={'small'}
             />
             <Avatar
-              viewClass="register"
               shape={'square'}
+              type="icon"
               icon={'lugia-icon-financial_user'}
               size={'default'}
             />
             <Avatar
-              viewClass="register"
               shape={'square'}
+              type="icon"
               icon={'lugia-icon-financial_user'}
               size={'large'}
             />
           </Theme>
           <br />
-          <Avatar shape={'circle'} icon={'lugia-icon-financial_user'} size={'small'} />
-          <Avatar shape={'circle'} icon={'lugia-icon-financial_user'} size={'default'} />
-          <Avatar shape={'circle'} icon={'lugia-icon-financial_user'} size={'large'} />
+          <Avatar shape={'circle'} type="icon" icon={'lugia-icon-financial_user'} size={'small'} />
+          <Avatar
+            shape={'circle'}
+            type="icon"
+            icon={'lugia-icon-financial_user'}
+            size={'default'}
+          />
+          <Avatar shape={'circle'} type="icon" icon={'lugia-icon-financial_user'} size={'large'} />
         </Wrapper>
         <Wrapper>
-          <Theme config={{ register: { color: 'white', backgroundColor: '#4d63ff' } }}>
+          <Theme
+            config={{
+              register: {
+                FontAvatar: { normal: { color: 'blue' } },
+              },
+            }}
+          >
             <Avatar viewClass="register" shape={'square'} size={'small'} name={'lugia'} />
             <Avatar viewClass="register" shape={'square'} size={'default'} name={'lugia'} />
             <Avatar viewClass="register" shape={'square'} size={'large'} name={'lugia'} />
@@ -84,45 +109,49 @@ export default () => {
         </Wrapper>
         <Wrapper>
           <Avatar shape={'square'} name={'lugia'} msgNum={1} />
-          <Avatar shape={'square'} icon={'lugia-icon-financial_user'} msgNum={2} />
+          <Avatar shape={'square'} type="icon" icon={'lugia-icon-financial_user'} msgNum={2} />
           <Avatar
             shape={'square'}
+            type="img"
             src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/master/lugiaweb%E7%BB%84%E4%BB%B6/%E5%A4%B4%E5%83%8F/32.jpg"
             msgNum={99}
           />
           <br />
           <Avatar shape={'circle'} name={'lugia'} />
-          <Avatar shape={'circle'} icon={'lugia-icon-financial_user'} />
+          <Avatar shape={'circle'} type="icon" icon={'lugia-icon-financial_user'} />
           <Avatar
             shape={'circle'}
+            type="img"
             src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/master/lugiaweb%E7%BB%84%E4%BB%B6/%E5%A4%B4%E5%83%8F/32.jpg"
             msgNum={99}
           />
         </Wrapper>
       </Theme>
-      <Wrapper>
-        <Badge count={10}>
-          <Avatar shape={'square'} size={'large'} name={'lugia'} />
-        </Badge>
-        <br />
-        <br />
-        <Badge dot={true}>
-          <Avatar shape={'square'} size={'large'} name={'lugia'} />
-        </Badge>
 
-        <Theme config={view}>
+      <Wrapper>
+        <Theme config={badgeConfig}>
+          <Badge count={10}>
+            <Avatar shape={'square'} size={'large'} name={'lugia'} />
+          </Badge>
           <br />
           <br />
-          <Theme config={{ register: { position: { right: 15, top: 8 } } }}>
-            <Badge viewClass="register" count={10}>
-              <Avatar icon={'lugia-icon-financial_user'} size={'large'} />
-            </Badge>
-            <br />
-            <br />
-            <Badge dot={true}>
-              <Avatar icon={'lugia-icon-financial_user'} size={'large'} />
-            </Badge>
-          </Theme>
+          <Badge dot={true}>
+            <Avatar shape={'square'} size={'large'} name={'lugia'} />
+          </Badge>
+        </Theme>
+        <br />
+        <br />
+      </Wrapper>
+      <Wrapper>
+        <Theme config={badgeConfig}>
+          <Badge viewClass="badgeConfig" count={10}>
+            <Avatar icon={'lugia-icon-financial_user'} size={'large'} type="icon" />
+          </Badge>
+          <br />
+          <br />
+          <Badge viewClass="badgeConfig" dot={true}>
+            <Avatar icon={'lugia-icon-financial_user'} size={'large'} type="icon" />
+          </Badge>
         </Theme>
       </Wrapper>
     </div>

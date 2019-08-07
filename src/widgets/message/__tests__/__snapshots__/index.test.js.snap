@@ -1,15 +1,80 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Message css 1`] = `
+.c2 {
+  font-size: 1.4rem;
+  text-align: center;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  padding: 0.8rem;
+}
+
+.c3 {
+  display: inline-block;
+  -webkit-animation: hJDLVB 0.3s ease-in;
+  animation: hJDLVB 0.3s ease-in;
+  opacity: 1;
+  box-shadow: 0px 0px 6px 0px rgba(102,102,102,0.2);
+  font-size: 1.4rem;
+  background-color: #fff;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.c5 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+  top: 0.3rem;
+  margin-right: 1rem;
+}
+
+.c8 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+  top: 0.3rem;
+  margin-right: 1rem;
+  -webkit-animation: iECmZH 1s infinite linear;
+  animation: iECmZH 1s infinite linear;
+}
+
+.c6 {
+  color: #000;
+  font-size: 1.4rem;
+}
+
+.c4 {
+  display: inline-block;
+  line-height: 3rem;
+}
+
+.c7 {
+  display: inline-block;
+  line-height: 2rem;
+}
+
 .c0 {
   display: inline-block;
   margin-bottom: 0;
+  box-sizing: border-box;
   text-align: center;
   touch-action: manipulation;
   cursor: pointer;
   white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  font-family: 'Trebuchet MS',Arial,Helvetica,sans-serif;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -19,31 +84,24 @@ exports[`Message css 1`] = `
   position: relative;
   text-transform: none;
   outline: 0;
-  vertical-align: bottom;
-  color: #666666;
   background-color: #ffffff;
-  border: 1px solid #cccccc;
-  height: 2.666666666666667em;
-  padding: 0.8333333333333334em;
-  font-size: 1em;
-  border-radius: 0.33333333333333337em;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
 }
 
-.c0:hover {
-  color: #9482ff;
-  border: 1px solid #9482ff;
-  background-color: rgba(104,79,255,0.05);
-}
-
-.c0:focus {
-  color: #9482ff;
-  border: 1px solid #9482ff;
-  background-color: rgba(104,79,255,0.05);
-}
-
-.c0:active {
-  color: #533fcc;
-  border: 1px solid #533fcc;
+.c1 {
+  color: #666666;
+  font-size: 1.4rem;
 }
 
 <div>
@@ -51,9 +109,52 @@ exports[`Message css 1`] = `
   <br />
   <button
     className="c0"
+    onBlur={[Function]}
     onClick={[Function]}
+    onFocus={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    size="default"
+    style={
+      Object {
+        "backgroundColor": "#ffffff",
+        "borderBottomColor": "#cccccc",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": "0.1rem",
+        "borderLeftColor": "#cccccc",
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "0.1rem",
+        "borderRightColor": "#cccccc",
+        "borderRightStyle": "solid",
+        "borderRightWidth": "0.1rem",
+        "borderTopColor": "#cccccc",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "borderTopStyle": "solid",
+        "borderTopWidth": "0.1rem",
+        "height": "3.2rem",
+        "paddingBottom": "0rem",
+        "paddingLeft": "1.8rem",
+        "paddingRight": "1.8rem",
+        "paddingTop": "0rem",
+      }
+    }
   >
-    <span>
+    <span
+      className="c1"
+      style={
+        Object {
+          "color": "#666666",
+          "fontSize": "1.4rem",
+        }
+      }
+    >
       普通提示
     </span>
   </button>
@@ -61,9 +162,52 @@ exports[`Message css 1`] = `
   <br />
   <button
     className="c0"
+    onBlur={[Function]}
     onClick={[Function]}
+    onFocus={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    size="default"
+    style={
+      Object {
+        "backgroundColor": "#ffffff",
+        "borderBottomColor": "#cccccc",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": "0.1rem",
+        "borderLeftColor": "#cccccc",
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "0.1rem",
+        "borderRightColor": "#cccccc",
+        "borderRightStyle": "solid",
+        "borderRightWidth": "0.1rem",
+        "borderTopColor": "#cccccc",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "borderTopStyle": "solid",
+        "borderTopWidth": "0.1rem",
+        "height": "3.2rem",
+        "paddingBottom": "0rem",
+        "paddingLeft": "1.8rem",
+        "paddingRight": "1.8rem",
+        "paddingTop": "0rem",
+      }
+    }
   >
-    <span>
+    <span
+      className="c1"
+      style={
+        Object {
+          "color": "#666666",
+          "fontSize": "1.4rem",
+        }
+      }
+    >
       成功提示
     </span>
   </button>
@@ -71,9 +215,52 @@ exports[`Message css 1`] = `
   <br />
   <button
     className="c0"
+    onBlur={[Function]}
     onClick={[Function]}
+    onFocus={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    size="default"
+    style={
+      Object {
+        "backgroundColor": "#ffffff",
+        "borderBottomColor": "#cccccc",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": "0.1rem",
+        "borderLeftColor": "#cccccc",
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "0.1rem",
+        "borderRightColor": "#cccccc",
+        "borderRightStyle": "solid",
+        "borderRightWidth": "0.1rem",
+        "borderTopColor": "#cccccc",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "borderTopStyle": "solid",
+        "borderTopWidth": "0.1rem",
+        "height": "3.2rem",
+        "paddingBottom": "0rem",
+        "paddingLeft": "1.8rem",
+        "paddingRight": "1.8rem",
+        "paddingTop": "0rem",
+      }
+    }
   >
-    <span>
+    <span
+      className="c1"
+      style={
+        Object {
+          "color": "#666666",
+          "fontSize": "1.4rem",
+        }
+      }
+    >
       错误提示
     </span>
   </button>
@@ -81,9 +268,52 @@ exports[`Message css 1`] = `
   <br />
   <button
     className="c0"
+    onBlur={[Function]}
     onClick={[Function]}
+    onFocus={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    size="default"
+    style={
+      Object {
+        "backgroundColor": "#ffffff",
+        "borderBottomColor": "#cccccc",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": "0.1rem",
+        "borderLeftColor": "#cccccc",
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "0.1rem",
+        "borderRightColor": "#cccccc",
+        "borderRightStyle": "solid",
+        "borderRightWidth": "0.1rem",
+        "borderTopColor": "#cccccc",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "borderTopStyle": "solid",
+        "borderTopWidth": "0.1rem",
+        "height": "3.2rem",
+        "paddingBottom": "0rem",
+        "paddingLeft": "1.8rem",
+        "paddingRight": "1.8rem",
+        "paddingTop": "0rem",
+      }
+    }
   >
-    <span>
+    <span
+      className="c1"
+      style={
+        Object {
+          "color": "#666666",
+          "fontSize": "1.4rem",
+        }
+      }
+    >
       警告提示
     </span>
   </button>
@@ -91,11 +321,316 @@ exports[`Message css 1`] = `
   <br />
   <button
     className="c0"
+    onBlur={[Function]}
     onClick={[Function]}
+    onFocus={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    size="default"
+    style={
+      Object {
+        "backgroundColor": "#ffffff",
+        "borderBottomColor": "#cccccc",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": "0.1rem",
+        "borderLeftColor": "#cccccc",
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "0.1rem",
+        "borderRightColor": "#cccccc",
+        "borderRightStyle": "solid",
+        "borderRightWidth": "0.1rem",
+        "borderTopColor": "#cccccc",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+        "borderTopStyle": "solid",
+        "borderTopWidth": "0.1rem",
+        "height": "3.2rem",
+        "paddingBottom": "0rem",
+        "paddingLeft": "1.8rem",
+        "paddingRight": "1.8rem",
+        "paddingTop": "0rem",
+      }
+    }
   >
-    <span>
+    <span
+      className="c1"
+      style={
+        Object {
+          "color": "#666666",
+          "fontSize": "1.4rem",
+        }
+      }
+    >
       加载提示
     </span>
   </button>
+  <div
+    style={
+      Object {
+        "marginLeft": "50px",
+      }
+    }
+  >
+    <div
+      className="c2"
+    >
+      <div
+        className="c3"
+        style={
+          Object {
+            "backgroundColor": "green",
+            "borderBottomColor": "red",
+            "borderBottomLeftRadius": "0.6rem",
+            "borderBottomRightRadius": "0.6rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "red",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "red",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "red",
+            "borderTopLeftRadius": "0.6rem",
+            "borderTopRightRadius": "0.6rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "boxShadow": "0px 0px 0px 0px",
+            "height": "5rem",
+            "opacity": 0.8,
+            "paddingBottom": "1rem",
+            "paddingLeft": "1rem",
+            "paddingRight": "1rem",
+            "paddingTop": "1rem",
+            "width": "20rem",
+          }
+        }
+      >
+        <span
+          className="c4"
+          height={30}
+        >
+          <i
+            className="lugia-icon-reminder_info_circle   c5"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "pink",
+                "cursor": "default",
+                "fontSize": "1.8rem",
+              }
+            }
+          />
+          <span
+            className="c6"
+            style={
+              Object {
+                "color": "red",
+                "fontSize": "1.6rem",
+                "fontWeight": 600,
+              }
+            }
+          >
+            hello world
+          </span>
+        </span>
+      </div>
+    </div>
+    <br />
+    <br />
+    <div
+      className="c2"
+    >
+      <div
+        className="c3"
+        style={Object {}}
+      >
+        <span
+          className="c7"
+          height={20}
+        >
+          <i
+            className="lugia-icon-reminder_info_circle   c5"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#4d63ff",
+                "cursor": "default",
+                "fontSize": "1.6rem",
+              }
+            }
+          />
+          <span
+            className="c6"
+            style={Object {}}
+          >
+            hello world
+          </span>
+        </span>
+      </div>
+    </div>
+    <br />
+    <br />
+    <div
+      className="c2"
+    >
+      <div
+        className="c3"
+        style={Object {}}
+      >
+        <span
+          className="c7"
+          height={20}
+        >
+          <i
+            className="lugia-icon-reminder_check_circle   c5"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#56c22d",
+                "cursor": "default",
+                "fontSize": "1.6rem",
+              }
+            }
+          />
+          <span
+            className="c6"
+            style={Object {}}
+          >
+            hello world
+          </span>
+        </span>
+      </div>
+    </div>
+    <br />
+    <br />
+    <div
+      className="c2"
+    >
+      <div
+        className="c3"
+        style={Object {}}
+      >
+        <span
+          className="c7"
+          height={20}
+        >
+          <i
+            className="lugia-icon-reminder_close_circle   c5"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#f22735",
+                "cursor": "default",
+                "fontSize": "1.6rem",
+              }
+            }
+          />
+          <span
+            className="c6"
+            style={Object {}}
+          >
+            hello world
+          </span>
+        </span>
+      </div>
+    </div>
+    <br />
+    <br />
+    <div
+      className="c2"
+    >
+      <div
+        className="c3"
+        style={Object {}}
+      >
+        <span
+          className="c7"
+          height={20}
+        >
+          <i
+            className="lugia-icon-reminder_exclamation_circle   c5"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#f8ac30",
+                "cursor": "default",
+                "fontSize": "1.6rem",
+              }
+            }
+          />
+          <span
+            className="c6"
+            style={Object {}}
+          >
+            hello world
+          </span>
+        </span>
+      </div>
+    </div>
+    <br />
+    <br />
+    <div
+      className="c2"
+    >
+      <div
+        className="c3"
+        style={Object {}}
+      >
+        <span
+          className="c7"
+          height={20}
+        >
+          <i
+            className="lugia-icon-financial_loading_o   c8"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#4d63ff",
+                "cursor": "default",
+                "fontSize": "1.6rem",
+              }
+            }
+          />
+          <span
+            className="c6"
+            style={Object {}}
+          >
+            hello world
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
 </div>
 `;

@@ -41,7 +41,7 @@ class Popup extends React.Component<PopupProps> {
   savePopupRef: Function;
   saveAlignRef: Function;
   popupInstance: Element | null;
-  alignInstance: ?React.Element<any>;
+  alignInstance: ?Object;
 
   constructor(props: PopupProps) {
     super(props);
@@ -128,6 +128,9 @@ class Popup extends React.Component<PopupProps> {
       );
     }
     return maskElement;
+  }
+  forceAlign() {
+    this.alignInstance && this.alignInstance.forceAlign();
   }
 
   getZIndexStyle() {

@@ -1,0 +1,47 @@
+{
+  "widgetName": "Message",
+  "title": "全局提示",
+  "desc": "全局提示，展示操作反馈信息。",
+  "props": {
+    "content": {
+      "type": "React.node",
+      "desc": "提示消息的内容"
+    },
+    "time": {
+      "type": "number",
+      "desc": "自动延时关闭，单位为 秒",
+      "defaultValue": 2
+    },
+    "callBack": {
+      "type": "Function",
+      "desc": "关闭时的回调"
+    }
+  },
+  "category": ["反馈"],
+  "theme": {
+    "Container": {
+      "name": "Message整体样式配置",
+      "desc": "为Message整体配置样式",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["boxShadow"],
+        ["background"],
+        ["borderRadius"],
+        ["padding"],
+        ["opacity"],
+        ["border"]
+      ]
+    },
+    "MessageText": {
+      "name": "Message文字样式配置",
+      "desc": "为Message文字配置样式",
+      "normal": [["color"], ["font"]]
+    },
+    "MessageIcon": {
+      "name": "Message图标样式配置",
+      "desc": "为Message图标配置样式",
+      "normal": [["color"], ["font"]]
+    }
+  }
+}

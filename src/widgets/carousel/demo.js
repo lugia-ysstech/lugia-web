@@ -5,8 +5,8 @@
  */
 import * as React from 'react';
 import Carousel from './index';
+import { getBorder, getBoxShadow, getBorderRadius } from '@lugia/theme-utils';
 import styled from 'styled-components';
-import Theme from '../theme';
 import Widget from '../consts/index';
 
 const data = [
@@ -68,8 +68,7 @@ class CarouselLimtDemo extends React.Component<any, any> {
   }
 
   onChange = (param: Object) => {
-    const { newValue, oldValue } = param;
-    // console.info('onAfter', oldValue, newValue);
+    const { newValue } = param;
     this.setState({ start: newValue });
   };
 
@@ -98,76 +97,139 @@ export default class SkeletonDemo extends React.Component<any, any> {
   }
 
   render() {
-    const config = { [Widget.Carousel]: { width: 700, height: 350 } };
+    const config = {
+      [Widget.Carousel]: {
+        CarouselWrap: {
+          normal: {
+            width: 700,
+            height: 350,
+            padding: { left: 10 },
+            border: getBorder({ color: '#9482ff', width: 1, style: 'solid' }),
+            boxShadow: getBoxShadow('0px 0px 5px 5px yellow'),
+            borderRadius: getBorderRadius(20),
+          },
+        },
+        PreButton: {
+          normal: {
+            color: 'blue',
+            font: {
+              size: 60,
+            },
+            opacity: 0.2,
+            boxShadow: getBoxShadow('0px 0px 5px 5px yellow'),
+            margin: {
+              left: 30,
+            },
+            padding: { left: 30 },
+          },
+          hover: { opacity: 1 },
+        },
+        NextButton: {
+          normal: {
+            color: 'yellow',
+            font: {
+              size: 60,
+            },
+            margin: {
+              right: 30,
+            },
+            opacity: 0.2,
+            boxShadow: getBoxShadow('0px 0px 5px 5px blue'),
+          },
+          hover: { opacity: 1 },
+        },
+        Indicator: {
+          normal: {
+            height: 20,
+            width: 20,
+            opacity: 0.5,
+            background: { color: 'pink' },
+            boxShadow: getBoxShadow('0px 0px 5px 5px blue'),
+            border: getBorder({ color: '#9482ff', width: 1, style: 'solid' }),
+            borderRadius: getBorderRadius(20),
+            margin: {
+              left: 10,
+              right: 10,
+              top: 10,
+              bottom: 10,
+            },
+          },
+          hover: {
+            background: { color: 'orange' },
+            opacity: 1,
+            borderRadius: getBorderRadius(3),
+            border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }),
+            boxShadow: getBoxShadow('0px 0px 5px 5px orange'),
+          },
+        },
+      },
+    };
+
     return (
       <div>
-        {/* <H2>3s自动切换</H2>
+        <H2>3s自动切换</H2>
         <DemoWrap>
-          <Theme config={config}>
-            <Carousel autoPlay={true} delay={3000}>
-              {this.getItemWrap()}
-            </Carousel>
-          </Theme>
+          <Carousel theme={config} defaultStart={2} autoPlay={false} delay={3000}>
+            {this.getItemWrap()}
+          </Carousel>
         </DemoWrap>
 
         <H2>水平切换 指示器在外部 indicatorType=outside</H2>
         <DemoWrap>
-          <Theme config={config}>
-            <Carousel autoPlay={true} delay={3000} indicatorType={'outside'}>
-              {this.getItemWrap()}
-            </Carousel>
-          </Theme>
+          <Carousel theme={config} autoPlay={true} delay={3000} indicatorType={'outside'}>
+            {this.getItemWrap()}
+          </Carousel>
         </DemoWrap>
 
         <H2>垂直切换 switchType === vertical indicatorType=vertical</H2>
         <DemoWrap>
-          <Theme config={config}>
-            <Carousel
-              autoPlay={true}
-              delay={3000}
-              switchType={'vertical'}
-              indicatorType={'vertical'}
-            >
-              {this.getItemWrap()}
-            </Carousel>
-          </Theme>
+          <Carousel
+            theme={config}
+            autoPlay={true}
+            delay={3000}
+            switchType={'vertical'}
+            indicatorType={'vertical'}
+          >
+            {this.getItemWrap()}
+          </Carousel>
         </DemoWrap>
 
         <H2>透明度切换 switchType === fade indicatorType=vertical</H2>
         <DemoWrap>
-          <Theme config={config}>
-            <Carousel
-              animationTime={1000}
-              autoPlay={true}
-              deafultStart={3}
-              delay={3000}
-              switchType={'fade'}
-            >
-              {this.getItemWrap()}
-            </Carousel>
-          </Theme>
+          <Carousel
+            theme={config}
+            animationTime={1000}
+            autoPlay={false}
+            deafultStart={3}
+            delay={3000}
+            switchType={'fade'}
+          >
+            {this.getItemWrap()}
+          </Carousel>
         </DemoWrap>
 
         <h2>图片轮播图 deafultStart=2 从索引值为2的图开始</h2>
         <DemoWrap>
-          <Theme config={config}>
-            <Carousel autoPlay={true} delay={3000} deafultStart={2}>
-              {getImgWrap()}
-            </Carousel>
-          </Theme>
-        </DemoWrap> */}
+          <Carousel theme={config} autoPlay={true} delay={3000} defaultStart={2}>
+            {getImgWrap()}
+          </Carousel>
+        </DemoWrap>
 
         <h2>受限</h2>
         <CarouselLimtDemo />
 
-        {/* <h2>图片轮播图 switchType === fade 透明度切换</h2>
+        <h2>图片轮播图 switchType === fade 透明度切换</h2>
         <DemoWrap>
-          <Theme config={config}>
-            <Carousel autoPlay={true} switchType={'fade'} delay={3000} deafultStart={2}>
-              {getImgWrap()}
-            </Carousel>
-          </Theme>
-        </DemoWrap> */}
+          <Carousel
+            theme={config}
+            autoPlay={true}
+            switchType={'fade'}
+            delay={3000}
+            deafultStart={2}
+          >
+            {getImgWrap()}
+          </Carousel>
+        </DemoWrap>
       </div>
     );
   }

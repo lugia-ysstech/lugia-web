@@ -1,0 +1,40 @@
+{
+  "widgetName": "Dropmenu",
+  "title": "下拉菜单",
+  "desc": "选项过多时，弹出下拉菜单给用户选择操作",
+  "props": {
+    "action": {
+      "type": "click | hover",
+      "desc": "弹出项的打开方式",
+      "defaultValue": "click"
+    },
+    "hideAction": {
+      "type": "click | hover",
+      "desc": "弹出项的隐藏方式",
+      "defaultValue": "click"
+    },
+    "menus": {
+      "type": "React.Node",
+      "desc": "弹出项组件"
+    },
+    "align": {
+      "type": "React.Node",
+      "desc": "弹出方向",
+      "defaultValue": "bottom"
+    }
+  },
+  "events": {
+    "onPopupVisibleChange": {
+      "desc": "弹出项展开/隐藏时触发",
+      "args": [
+        {
+          "name": "popupVisible",
+          "desc": "展开/隐藏时的popupVisible值",
+          "type": "boolean"
+        }
+      ]
+    }
+  },
+  "childrenWidget": ["dropmenuButton"],
+  "category": ["数据录入"]
+}

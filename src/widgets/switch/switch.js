@@ -1,14 +1,19 @@
 /*
-*
-* by wangcuixia
-* @flow
-*2018/7/9
-* */
+ *
+ * by wangcuixia
+ * @flow
+ *2018/7/9
+ * */
 import * as React from 'react';
-import { SwitchWrapper, SwitchCircle } from './styled';
-import Loading from '../loading/loading';
+import Icon from '../icon/index';
+import { SwitchContainer, SwitchWrapper, SwitchText, SwitchCircle } from './styled';
 import { ENTER, LEFT_ARROW, RIGHT_ARROW, SPACE } from '../consts/KeyCode';
 import { DisplayField } from '../consts/props';
+import { getThemeProps } from './styledConfig';
+import { findDOMNode } from 'react-dom';
+import Widgets from '../consts/index';
+import Theme from '../theme/index';
+import { addMouseEvent } from '@lugia/theme-hoc';
 
 type TypeProps = {
   value?: boolean,
@@ -22,9 +27,9 @@ type TypeProps = {
   autoFocus?: boolean,
   onChange?: any,
   displayFiled?: string,
+  getPartOfThemeProps: Function,
 };
 type TypeState = {
-  isMouseDown?: boolean,
   items?: Array<Object>,
   value?: boolean,
   displayFiled?: string,
@@ -36,7 +41,10 @@ function getItem(value, items) {
   const item = value ? items[0] : items[1];
   return item;
 }
+
 class Switch extends React.Component<TypeProps, TypeState> {
+  static displayName = 'SwitchComponent';
+
   switchNode: any;
   constructor() {
     super();
@@ -65,7 +73,6 @@ class Switch extends React.Component<TypeProps, TypeState> {
     const text = getItem(value, items)[displayFiled];
     if (!preState) {
       return {
-        isMouseDown: false,
         value,
         text,
         items,
@@ -77,17 +84,11 @@ class Switch extends React.Component<TypeProps, TypeState> {
       items,
     };
   }
-  mousedown = () => {
-    this.setState({
-      isMouseDown: true,
-    });
-  };
+
   mouseup = (event?: any) => {
-    this.setState({
-      isMouseDown: false,
-    });
     this.updateChecked(event, !this.state.value);
   };
+
   updateChecked(event?: any, value?: boolean): void {
     if (this.state.value === value) {
       return;
@@ -99,7 +100,10 @@ class Switch extends React.Component<TypeProps, TypeState> {
       function() {
         const { onChange } = this.props;
         if (onChange) {
-          const { value, items } = this.state;
+          let { value, items } = this.state;
+          if ('value' in this.props) {
+            value = !value;
+          }
           const newItem = getItem(value, items);
           const oldItem = getItem(!value, items);
           const opens = {
@@ -115,56 +119,85 @@ class Switch extends React.Component<TypeProps, TypeState> {
     );
   }
   handleKeyDown = (event: SyntheticKeyboardEvent<EventTarget>): void => {
+    const { disabled, loading } = this.props;
+    if (disabled || loading) {
+      return;
+    }
     const { value } = this.state;
     const key = event.keyCode;
     if (key === LEFT_ARROW) this.updateChecked(event, false);
     if (key === RIGHT_ARROW) this.updateChecked(event, true);
     if (key === SPACE || key === ENTER) this.updateChecked(event, !value);
   };
+
   focus(): void {
-    if (this.switchNode.current) {
-      this.switchNode.current.focus();
+    const switchNode = findDOMNode(this.switchNode.current);
+    if (switchNode && switchNode.focus) {
+      switchNode.focus();
     }
   }
 
   blur(): void {
-    if (this.switchNode.current) {
-      this.switchNode.current.blur();
+    const switchNode = findDOMNode(this.switchNode.current);
+    if (switchNode) {
+      switchNode.blur();
     }
   }
   componentDidMount() {
-    const { autoFocus, disabled } = this.props;
-    if (autoFocus && !disabled) {
+    const { autoFocus, disabled, loading } = this.props;
+    if (autoFocus && !disabled && !loading) {
       this.focus();
     }
   }
   render() {
-    const { isMouseDown, value, text } = this.state;
-    const { isInverse, size, disabled, loading } = this.props;
+    const { value, text } = this.state;
+    const { disabled, loading } = this.props;
     const isabled = !disabled && !loading;
     const switchTabIndex = disabled ? NO_TAB_INDEX : TAB_INDEX;
-    const config = {
-      isMouseDown,
-      value,
-      size,
-      disabled,
-      loading,
-    };
+    const { switchThemeProps, childrenThemeProps, SwitchContainerThemeProps } = getThemeProps(
+      this.props,
+      value
+    );
+    const {
+      themeConfig: {
+        disabled: { background: switchBackground },
+      },
+    } = switchThemeProps;
+    const {
+      themeConfig: {
+        disabled: { width: circleWidth, height: circleHeight },
+      },
+    } = childrenThemeProps;
     return (
-      <SwitchWrapper
-        onMouseDown={isabled ? this.mousedown : null}
-        onMouseUp={isabled ? this.mouseup : null}
-        onKeyDown={isabled ? this.handleKeyDown : null}
-        innerRef={this.switchNode}
-        isInverse={isInverse}
-        tabIndex={switchTabIndex}
-        {...config}
-      >
-        {text}
-        <SwitchCircle {...config}>
-          {loading ? <Loading width={10} color={'#ccc'} /> : ''}
-        </SwitchCircle>
-      </SwitchWrapper>
+      <SwitchContainer themeProps={SwitchContainerThemeProps} {...addMouseEvent(this)}>
+        <SwitchWrapper
+          onMouseUp={isabled ? this.mouseup : null}
+          onKeyDown={isabled ? this.handleKeyDown : null}
+          ref={this.switchNode}
+          tabIndex={switchTabIndex}
+          themeProps={switchThemeProps}
+        >
+          <SwitchText themeProps={switchThemeProps}>
+            {typeof text === 'string' ? <i>{text}</i> : text}
+          </SwitchText>
+          <SwitchCircle themeProps={childrenThemeProps}>
+            <Theme
+              config={{
+                [Widgets.Icon]: {
+                  Icon: {
+                    normal: {
+                      color: switchBackground.color,
+                      fontSize: Math.min(circleWidth, circleHeight) - 4,
+                    },
+                  },
+                },
+              }}
+            >
+              {loading ? <Icon iconClass="lugia-icon-financial_loading_o" /> : ''}
+            </Theme>
+          </SwitchCircle>
+        </SwitchWrapper>
+      </SwitchContainer>
     );
   }
 }

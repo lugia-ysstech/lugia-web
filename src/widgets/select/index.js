@@ -10,11 +10,10 @@ import * as React from 'react';
 import InputTag from '../inputtag';
 import Trigger from '../trigger';
 import Menu from '../menu';
-import Theme from '../theme';
-import '../css/sv.css';
+import styled from 'styled-components';
 import Widget from '../consts/index';
-import ThemeProvider from '../theme-provider';
 import QueryInput from '../common/QueryInput';
+import { deepMerge } from '@lugia/object-utils';
 import {
   didUpdate,
   getDisplayValue,
@@ -23,28 +22,31 @@ import {
   updateMapData,
 } from '../common/translateData';
 import { DisplayField, ValueField } from '../consts/props';
-import {
-  appendCustomValue,
-  getTheme,
-  isCanInput,
-  isMutliple,
-  setNewValue,
-} from '../common/selectFunction';
+import { appendCustomValue, isCanInput, isMutliple, setNewValue } from '../common/selectFunction';
 import { toMatchFromType } from '../common/StringUtils';
+import ThemeHoc from '@lugia/theme-hoc';
 
 type ValidateStatus = 'success' | 'error';
 type RowData = { [key: string]: any };
+
+export function getNewValueOrOldValue(v: string[], mutliple: boolean) {
+  return mutliple ? v : v[0];
+}
+
+const SelectContainer = styled.div`
+  display: inline-block;
+`;
 
 type SelectProps = {
   getTheme?: Function,
   mutliple: boolean,
   canInput: boolean,
+  valueField?: string,
   displayField?: string,
   data?: Object[],
   mode?: 'local' | 'remote',
   throttle?: number,
   disabled?: boolean,
-  valueField?: string,
   validateStatus: ValidateStatus,
   canSearch: boolean,
   splitQuery: string,
@@ -54,13 +56,18 @@ type SelectProps = {
   onChange?: Function,
   onTrigger?: Function,
   onQuery?: Function,
+  onClear?: Function,
   onSelect?: Function,
   onRefresh?: Function,
   value?: string[],
   displayValue?: string[],
   defaultValue?: string[],
   defaultDisplayValue?: string[],
+  createPortal?: boolean,
   children?: any,
+  query: string | number,
+  prefix?: any,
+  getPartOfThemeConfig: Function,
 };
 
 type SelectState = {
@@ -68,7 +75,6 @@ type SelectState = {
   displayValue: Array<string>,
   data: Array<Object>,
   length: number,
-  menuData: Array<Object>,
   disabled: boolean,
   query: string,
   validateStatus: ValidateStatus,
@@ -78,6 +84,13 @@ type SelectState = {
 
 const ScrollerStep = 30;
 
+function getQuery(propsQuery: string | number, stateQuery?: string) {
+  if (propsQuery || propsQuery === 0 || propsQuery === '0') {
+    return propsQuery.toString();
+  }
+  return stateQuery ? stateQuery : '';
+}
+
 class Select extends React.Component<SelectProps, SelectState> {
   static defaultProps = {
     getTheme() {
@@ -85,6 +98,7 @@ class Select extends React.Component<SelectProps, SelectState> {
     },
     mutliple: false,
     canInput: false,
+    createPortal: false,
     displayField: DisplayField,
     valueField: ValueField,
     mode: 'local',
@@ -93,6 +107,8 @@ class Select extends React.Component<SelectProps, SelectState> {
     validateStatus: 'success',
     canSearch: false,
     splitQuery: ',',
+    searchType: 'include',
+    query: '',
   };
   static displayName = Widget.Select;
 
@@ -128,11 +144,10 @@ class Select extends React.Component<SelectProps, SelectState> {
   }
 
   static getDerivedStateFromProps(props: SelectProps, state: SelectState) {
-    const { data = [], validateStatus = 'success' } = props;
+    const { data = [], validateStatus = 'success', query } = props;
     const length = data.length;
 
     const { value, displayValue } = getValueAndDisplayValue(props, state);
-
     const theValue = value ? value : [];
 
     if (!state) {
@@ -141,8 +156,7 @@ class Select extends React.Component<SelectProps, SelectState> {
         displayValue,
         data,
         length,
-        menuData: data,
-        query: '',
+        query: getQuery(query),
         validateStatus,
         isCheckedAll: false,
       };
@@ -153,6 +167,7 @@ class Select extends React.Component<SelectProps, SelectState> {
       displayValue,
       data,
       length,
+      query: getQuery(query, state.query),
       validateStatus,
     };
   }
@@ -202,6 +217,7 @@ class Select extends React.Component<SelectProps, SelectState> {
       (_, nextState) => nextState.displayValue,
       this.updateMapData
     );
+
     this.displayValue = nextState.displayValue;
     if (needUpdate && !this.displayValue) {
       this.updateDisplayValue(nextState.value);
@@ -210,9 +226,9 @@ class Select extends React.Component<SelectProps, SelectState> {
   }
 
   isLimit(): boolean {
-    const { length } = this.state;
-    const { limitCount = length } = this.props;
-    return this.state.value.length >= limitCount;
+    const { value } = this.state;
+    const limitCount = this.getLimitCount();
+    return value.length >= limitCount;
   }
 
   render() {
@@ -232,21 +248,30 @@ class Select extends React.Component<SelectProps, SelectState> {
   }
 
   refreshValue = (event: Object) => {
-    const { searchType, onRefresh } = this.props;
-    this.onQueryInputChange('');
+    const { onRefresh } = this.props;
+    this.onQueryInputChange({ newValue: '' });
     const value = [];
     const displayValue = [];
-    this.search('', searchType);
-    this.setValue(value, displayValue, {});
+    this.setValue(value, displayValue, { query: '' });
     this.onChangeHandle({ value, displayValue, event });
     onRefresh && onRefresh();
   };
 
+  getLimitCount = () => {
+    const { limitCount } = this.props;
+    const { length } = this.state;
+    const totalLimitCount = length + this.cancelItem.length;
+    if (limitCount && limitCount > totalLimitCount) {
+      return totalLimitCount;
+    }
+    return limitCount ? limitCount : totalLimitCount;
+  };
+
   onCheckAll = (event: Object) => {
-    const { props, state } = this;
+    const { state } = this;
     const { data, isCheckedAll, length, value } = state;
     const { displayValue } = this;
-    const { limitCount } = props;
+    const limitCount = this.getLimitCount();
 
     if (isCheckedAll) {
       this.setValue([], [], {});
@@ -259,7 +284,7 @@ class Select extends React.Component<SelectProps, SelectState> {
 
       if (limitCount >= 0) {
         const needItemLen = limitCount - value.length;
-        for (let i = 0; i < limitCount; i++) {
+        for (let i = 0; i < length; i++) {
           const item = data[i];
           if (this.getInChecked(item[key])) {
             continue;
@@ -284,7 +309,17 @@ class Select extends React.Component<SelectProps, SelectState> {
 
   fetchRenderItems() {
     const { props, state } = this;
-    const { disabled, validateStatus, placeholder, mutliple, canSearch, canInput } = props;
+    const {
+      disabled,
+      validateStatus,
+      placeholder,
+      mutliple,
+      canSearch,
+      canInput,
+      createPortal,
+      prefix,
+      data,
+    } = props;
     const { displayValue = [] } = this;
     const { value = [], query, isCheckedAll } = state;
 
@@ -292,19 +327,26 @@ class Select extends React.Component<SelectProps, SelectState> {
       this.menuCmp = cmp;
     };
 
+    const { InputTagWrap = {} } = this.props.getPartOfThemeConfig('InputTag');
+    const { normal = {} } = InputTagWrap;
+    const { width = 250 } = normal;
+
     const menu = [
-      <QueryInput
-        query={query}
-        onQueryInputChange={this.onQueryInputChange}
-        onQueryInputKeyDown={this.onQueryInputKeyDown}
-        refreshValue={this.refreshValue}
-        addClick={this.addClick}
-        isCheckedAll={isCheckedAll}
-        onCheckAll={this.onCheckAll}
-        canSearch={canSearch}
-        mutliple={mutliple}
-        canInput={canInput}
-      />,
+      data && data.length !== 0 ? (
+        <QueryInput
+          query={query}
+          width={width}
+          onQueryInputChange={this.onQueryInputChange}
+          onQueryInputKeyDown={this.onQueryInputKeyDown}
+          refreshValue={this.refreshValue}
+          addClick={this.addClick}
+          isCheckedAll={isCheckedAll}
+          onCheckAll={this.onCheckAll}
+          canSearch={canSearch}
+          mutliple={mutliple}
+          canInput={canInput}
+        />
+      ) : null,
       this.getMenuItems(getMenu),
     ];
 
@@ -315,42 +357,48 @@ class Select extends React.Component<SelectProps, SelectState> {
     const getInputTag: Function = (cmp: Object) => {
       this.inputTag = cmp;
     };
-
     return (
-      <Theme config={getTheme(props, Widget.Menu)} key="select_theme">
+      <SelectContainer>
         <Trigger
+          themePass
           popup={menu}
-          align="bottomLeft"
           key="trigger"
+          offsetY={4}
           ref={getMenuTriger}
+          createPortal={createPortal}
           action={disabled ? [] : ['click']}
           hideAction={['click']}
           onPopupVisibleChange={this.onMenuPopupVisibleChange}
         >
           <InputTag
+            {...this.props.getPartOfThemeHocProps('InputTag')}
             ref={getInputTag}
+            prefix={prefix}
             key="inputtag"
-            value={[...value]}
-            displayValue={[...displayValue]}
+            value={value}
+            displayValue={displayValue}
             validateStatus={validateStatus}
             onChange={this.onInputTagChange}
             onPopupVisibleChange={this.onInputTagPopupVisibleChange}
             disabled={disabled}
             placeholder={placeholder}
             mutliple={isMutliple(props)}
+            onClear={this.onClear}
           />
         </Trigger>
-      </Theme>
+      </SelectContainer>
     );
   }
 
   getMenuItems(getMenu?: Function) {
     const { state, props } = this;
-    const { menuData, value } = state;
-    const { displayField, valueField, limitCount } = props;
+    const { value, query, data } = state;
+    const { displayField, valueField, limitCount, searchType } = props;
 
+    const menuData = this.updateMenuData(data, query, searchType);
     return (
       <Menu
+        {...this.getMenuTheme()}
         displayField={displayField}
         valueField={valueField}
         data={menuData}
@@ -400,12 +448,16 @@ class Select extends React.Component<SelectProps, SelectState> {
     } else {
       const key = selectedKeys;
       const nextDisplayValue = this.getSingleItemDisplayValue(this.dataItem[key]);
-      this.setState({
-        value: key,
-        displayValue: [nextDisplayValue],
-      });
       this.onChangeHandle({ value: key, displayValue, event });
       this.setSelectMenuPopupVisible(false);
+      const valueIsInProps = 'value' in props;
+
+      if (!valueIsInProps) {
+        this.setState({
+          value: key,
+          displayValue: [nextDisplayValue],
+        });
+      }
     }
   };
 
@@ -417,8 +469,8 @@ class Select extends React.Component<SelectProps, SelectState> {
 
   onQueryInputChange = (nextValue: any) => {
     const { props, state } = this;
-
     const { newValue } = nextValue;
+
     const value = newValue ? newValue : '';
 
     if (value === state.query) {
@@ -432,7 +484,8 @@ class Select extends React.Component<SelectProps, SelectState> {
     this.setState({ query: value });
 
     const doQuery = () => {
-      const { onQuery, mode } = props;
+      const { onQuery, mode = 'local' } = props;
+
       if (mode === 'local') {
         this.getCurrentRow(value);
       }
@@ -440,6 +493,7 @@ class Select extends React.Component<SelectProps, SelectState> {
     };
 
     const { throttle = -1 } = props;
+
     if (throttle > 0) {
       this.queryHandle = setTimeout(doQuery, throttle);
     } else {
@@ -447,19 +501,19 @@ class Select extends React.Component<SelectProps, SelectState> {
     }
   };
 
-  getCurrentRow(value: string) {
-    this.search(value, this.props.searchType);
+  getCurrentRow(query: string) {
+    this.setState({ query });
   }
 
-  search(query: string, searchType?: QueryType = 'include') {
-    const { data } = this.state;
+  updateMenuData(data: Array<Object>, query: string | number, searchType?: QueryType = 'include') {
     const { displayField = DisplayField } = this.props;
     let menuData;
     const queryAll = query === '' || !query;
-    const queryChanging = query !== this.state.query;
-    if (queryAll) {
+    const isQueryZero = query === 0 || query === '0';
+
+    if (queryAll && !isQueryZero) {
       menuData = data;
-    } else if (queryChanging) {
+    } else {
       const queryArray = this.getQueryArray(query);
       const rowSet = [];
       const len = data.length;
@@ -477,15 +531,15 @@ class Select extends React.Component<SelectProps, SelectState> {
         menuData = rowSet.reverse();
       }
     }
-    this.setState({ menuData });
+    return menuData;
   }
 
-  getQueryArray(query: string): Array<string> {
+  getQueryArray(query: string | number): Array<string> {
     const { splitQuery } = this.props;
     if (splitQuery) {
-      return query.split(splitQuery);
+      return query.toString().split(splitQuery);
     }
-    return [query];
+    return [query.toString()];
   }
 
   onQueryInputKeyDown = (e: Object) => {
@@ -493,6 +547,11 @@ class Select extends React.Component<SelectProps, SelectState> {
     if (isEnter) {
       this.appendValue();
     }
+  };
+
+  onClear = (e: Object) => {
+    const { onClear } = this.props;
+    onClear && onClear(e);
   };
 
   appendValue() {
@@ -508,9 +567,13 @@ class Select extends React.Component<SelectProps, SelectState> {
       const newDisplayValueArray = [...newDisplayValue];
 
       this.setValue(newValueArray, newDisplayValueArray, {});
-      this.onQueryInputChange('');
+      this.onQueryInputChange({ newValue: '' });
       this.onChangeHandle({ value: newValueArray, displayValue: newDisplayValueArray });
     }
+  }
+
+  setPopupVisible(...rest: any[]) {
+    this.menuTriger && this.menuTriger.setPopupVisible(...rest);
   }
 
   onInputTagChange = ({ value, displayValue }: Object) => {
@@ -546,8 +609,8 @@ class Select extends React.Component<SelectProps, SelectState> {
   onMenuPopupVisibleChange = (visible: boolean) => {
     if (visible) {
       const { onTrigger } = this.props;
-      onTrigger && onTrigger();
-      this.onQueryInputChange('');
+      onTrigger && onTrigger(visible);
+      this.onQueryInputChange({ newValue: '' });
     }
     this.menuVisible = visible;
   };
@@ -572,14 +635,18 @@ class Select extends React.Component<SelectProps, SelectState> {
   }
 
   onChangeHandle(targetObj: Object) {
-    const { onChange, onSelect } = this.props;
+    const { onChange, onSelect, mutliple } = this.props;
 
-    const { value: newValue, displayValue: newDisplayValue, event = null } = targetObj;
-    const isCheckedAll = this.getIsCheckedAll(newValue);
+    const { value: nextValue, displayValue: nextDisplayValue, event = null } = targetObj;
+    const isCheckedAll = this.getIsCheckedAll(nextValue);
 
-    const { value: oldValue = [] } = this.state;
-    const { items: oldItem } = this.getItem(oldValue, false);
-    const { items: newItem } = this.getItem(newValue, false);
+    const { value: preValue = [] } = this.state;
+    const { items: oldItem } = this.getItem(preValue, false);
+    const { items: newItem } = this.getItem(nextValue, false);
+    const newValue = getNewValueOrOldValue(nextValue, mutliple);
+    const newDisplayValue = getNewValueOrOldValue(nextDisplayValue, mutliple);
+    const oldValue = getNewValueOrOldValue(preValue, mutliple);
+
     const obj = {
       newValue,
       oldValue,
@@ -594,13 +661,41 @@ class Select extends React.Component<SelectProps, SelectState> {
   }
 
   getIsCheckedAll(value: string[]) {
-    const { props } = this;
-    const { limitCount } = props;
-    const { length } = this.state;
-
-    const totalLimitCount = limitCount ? limitCount : this.cancelItem.length + length;
+    const totalLimitCount = this.getLimitCount();
     return totalLimitCount === value.length;
   }
+
+  mergeTheme = (target: string, defaultTheme: Object) => {
+    const { viewClass, theme } = this.props.getPartOfThemeHocProps(target);
+
+    const themeHoc = deepMerge(
+      {
+        [viewClass]: { ...defaultTheme },
+      },
+      theme
+    );
+
+    const newTheme = {
+      viewClass,
+      theme: themeHoc,
+    };
+    return newTheme;
+  };
+
+  getMenuTheme = () => {
+    const { getPartOfThemeConfig } = this.props;
+    const { InputTagWrap = {} } = getPartOfThemeConfig('InputTag');
+    const { normal = {} } = InputTagWrap;
+    const { width = 250 } = normal;
+    const defaultMenuTheme = {
+      MenuWrap: {
+        normal: {
+          width,
+        },
+      },
+    };
+    return this.mergeTheme('Menu', defaultMenuTheme);
+  };
 }
 
-export default ThemeProvider(Select, Widget.Select);
+export default ThemeHoc(Select, Widget.Select, { hover: true });

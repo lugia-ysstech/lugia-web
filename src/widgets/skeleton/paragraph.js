@@ -9,8 +9,6 @@ import { AnimationItem, CommonParagraph, ParagraphWrap } from '../css/skeleton';
 type ParagraphProps = {
   type: 'title' | 'pragraph',
   lastItem: boolean,
-  paragraphWidth?: number,
-  titleWidth?: number,
   animation?: boolean,
 };
 
@@ -23,16 +21,12 @@ export default class Paragraph extends React.Component<any, ParagraphProps> {
   static displayName = 'ParagraphItem';
 
   render() {
-    const { type, lastItem, paragraphWidth, titleWidth, animation } = this.props;
+    const { animation, themeProps } = this.props;
+
     return (
-      <ParagraphWrap
-        type={type}
-        lastItem={lastItem}
-        paragraphWidth={paragraphWidth}
-        titleWidth={titleWidth}
-      >
-        <CommonParagraph>
-          {animation ? <AnimationItem width={60} height={60} /> : null}
+      <ParagraphWrap themeProps={themeProps}>
+        <CommonParagraph themeProps={themeProps}>
+          {animation ? <AnimationItem themeProps={themeProps} /> : null}
         </CommonParagraph>
       </ParagraphWrap>
     );

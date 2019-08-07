@@ -1,0 +1,55 @@
+{
+  "widgetName": "Drawer",
+  "title": "抽屉",
+  "desc": "在屏幕边缘出现的浮层面板。",
+  "props": {
+    "placement": {
+      "type": "PlacementType",
+      "desc": "抽屉的方向",
+      "defaultValue": "right"
+    },
+    "title": {
+      "type": "React.node",
+      "desc": "抽屉的标题"
+    },
+    "visible": {
+      "type": "boolean",
+      "desc": "抽屉是否展示"
+    },
+    "mask": {
+      "type": "boolean",
+      "desc": "是否展示遮罩层",
+      "defaultValue": true
+    },
+    "maskClosable": {
+      "type": "boolean",
+      "desc": "点击遮罩层是否允许关闭抽屉",
+      "defaultValue": true
+    },
+    "closable": {
+      "type": "boolean",
+      "desc": "是否展示抽屉右上角关闭按钮",
+      "defaultValue": false
+    }
+  },
+  "events": {
+    "onClose": {
+      "desc": "抽屉关闭时的回调",
+      "args": []
+    }
+  },
+  "type": {
+    "PlacementType": ["top", "right", "left", "bottom"],
+    "DrawerStyle": {
+      "width": {
+        "type": "number",
+        "desc": "Drawer的宽度"
+      },
+      "height": {
+        "type": "number",
+        "desc": "Drawer的高度，在 placement 为 top 或 bottom 时使用"
+      }
+    }
+  },
+  "category": ["反馈"]
+}

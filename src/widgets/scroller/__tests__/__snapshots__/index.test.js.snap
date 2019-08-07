@@ -3,7 +3,7 @@
 exports[`Scroller props defaultValue: 0 & 50 type: x & y 1`] = `
 .c0 {
   position: relative;
-  background: #fbfbfb;
+  background: rgba(255,255,255,0);
   width: 1.6666666666666667em;
   height: 25em;
   z-index: 996;
@@ -62,7 +62,7 @@ exports[`Scroller props defaultValue: 0 & 50 type: x & y 1`] = `
 exports[`Scroller props defaultValue: 0 & 50 type: x & y 2`] = `
 .c0 {
   position: relative;
-  background: #fbfbfb;
+  background: rgba(255,255,255,0);
   width: 1.6666666666666667em;
   height: 25em;
   z-index: 996;
@@ -121,7 +121,7 @@ exports[`Scroller props defaultValue: 0 & 50 type: x & y 2`] = `
 exports[`Scroller props defaultValue: 0 & 50 type: x & y 3`] = `
 .c0 {
   position: relative;
-  background: #fbfbfb;
+  background: rgba(255,255,255,0);
   width: 1.6666666666666667em;
   height: 25em;
   z-index: 996;
@@ -180,7 +180,7 @@ exports[`Scroller props defaultValue: 0 & 50 type: x & y 3`] = `
 exports[`Scroller props defaultValue: 0 & 50 type: x & y 4`] = `
 .c0 {
   position: relative;
-  background: #fbfbfb;
+  background: rgba(255,255,255,0);
   width: 1.6666666666666667em;
   height: 25em;
   z-index: 996;
@@ -239,7 +239,7 @@ exports[`Scroller props defaultValue: 0 & 50 type: x & y 4`] = `
 exports[`Scroller props value: 0 & 50 type: x & y 1`] = `
 .c0 {
   position: relative;
-  background: #fbfbfb;
+  background: rgba(255,255,255,0);
   width: 1.6666666666666667em;
   height: 25em;
   z-index: 996;
@@ -298,7 +298,7 @@ exports[`Scroller props value: 0 & 50 type: x & y 1`] = `
 exports[`Scroller props value: 0 & 50 type: x & y 2`] = `
 .c0 {
   position: relative;
-  background: #fbfbfb;
+  background: rgba(255,255,255,0);
   width: 1.6666666666666667em;
   height: 25em;
   z-index: 996;
@@ -357,7 +357,7 @@ exports[`Scroller props value: 0 & 50 type: x & y 2`] = `
 exports[`Scroller props value: 0 & 50 type: x & y 3`] = `
 .c0 {
   position: relative;
-  background: #fbfbfb;
+  background: rgba(255,255,255,0);
   width: 1.6666666666666667em;
   height: 25em;
   z-index: 996;
@@ -416,7 +416,7 @@ exports[`Scroller props value: 0 & 50 type: x & y 3`] = `
 exports[`Scroller props value: 0 & 50 type: x & y 4`] = `
 .c0 {
   position: relative;
-  background: #fbfbfb;
+  background: rgba(255,255,255,0);
   width: 1.6666666666666667em;
   height: 25em;
   z-index: 996;
@@ -475,7 +475,7 @@ exports[`Scroller props value: 0 & 50 type: x & y 4`] = `
 exports[`Scroller props value: 0 & 50 type: x & y 5`] = `
 .c0 {
   position: relative;
-  background: #fbfbfb;
+  background: rgba(255,255,255,0);
   width: 1.6666666666666667em;
   height: 25em;
   z-index: 996;

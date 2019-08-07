@@ -67,3 +67,13 @@ export function fixControlledValue(value: any) {
   }
   return value;
 }
+
+export function createExistMap(items: ?(string[])): { [key: string]: boolean } {
+  if (!items || !items.length) {
+    return {};
+  }
+  return items.reduce((exist: Object, key: string) => {
+    exist[key] = true;
+    return exist;
+  }, {});
+}

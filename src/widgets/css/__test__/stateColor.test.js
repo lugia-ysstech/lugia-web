@@ -15,7 +15,7 @@ const { create } = mockFunction;
 const defaultColor = '#684fff';
 
 const DefaultCommonStyle = {
-  themeColor: '#684fff', //主题色
+  themeColor: '#4d63ff', //主题色
   successColor: '#56c22d', //成功色
   warningColor: '#f8ac30', //警告色
   dangerColor: '#f22735', //危险色

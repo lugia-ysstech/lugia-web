@@ -4,5 +4,11 @@
  * @flow
  */
 import Breadcrumb from './breadcrumb';
+import Widget from '../consts/index';
+import ThemeHoc from '@lugia/theme-hoc';
+import BreadcrumbItem from './breadcrumbItem';
 
-export default Breadcrumb;
+const Result = ThemeHoc(Breadcrumb, Widget.Breadcrumb, { hover: true });
+Result.Item = BreadcrumbItem;
+
+export default Result;

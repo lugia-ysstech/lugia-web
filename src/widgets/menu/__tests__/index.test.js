@@ -2,14 +2,14 @@
 
 import * as React from 'react';
 import chai from 'chai';
-import Menu from '../index';
+import Menu from '../index.js';
 import Widgets from '../../consts/index';
 import Widget from '../../consts/index';
 import 'jest-styled-components';
 import renderer from 'react-test-renderer';
 import Theme from '../../theme';
 
-import Enzyme, { mount, render } from 'enzyme';
+import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 Enzyme.configure({ adapter: new Adapter() });
@@ -126,25 +126,25 @@ describe('Menu', () => {
         .find(MenuItem)
         .at(0)
         .prop('checked')
-    ).to.be.false;
+    ).to.be.true;
     exp(
       dom
         .find(MenuItem)
         .at(1)
         .prop('checked')
-    ).to.be.false;
+    ).to.be.true;
     exp(
       dom
         .find(MenuItem)
         .at(2)
         .prop('checked')
-    ).to.be.true;
+    ).to.be.false;
     exp(
       dom
         .find(MenuItem)
         .at(3)
         .prop('checked')
-    ).to.be.true;
+    ).to.be.false;
   });
 
   it('DropMenu single onClick selectedKeys: 1 2', () => {
@@ -195,7 +195,7 @@ describe('Menu', () => {
         .find(MenuItem)
         .at(1)
         .prop('checked')
-    ).to.be.false;
+    ).to.be.true;
     exp(
       dom
         .find(MenuItem)
@@ -207,7 +207,7 @@ describe('Menu', () => {
         .find(MenuItem)
         .at(3)
         .prop('checked')
-    ).to.be.true;
+    ).to.be.false;
   });
 
   it('compute see count', () => {
@@ -265,14 +265,10 @@ describe('Menu', () => {
     expect(wraper.toJSON()).toMatchSnapshot();
   });
 
-  it('props: data ', () => {
-    createMenuPropsDataCase({});
-  });
-
   it('props: data & getPrefix & getSuffix ', () => {
     const items = [];
     for (let i = 0; i < 10; i++) {
-      items.push({ key: `k${i}`, value: `v${i}` });
+      items.push({ text: `v${i}`, value: `v${i}` });
     }
     const prefixItems = [];
     const getPrefix = item => {
@@ -288,13 +284,14 @@ describe('Menu', () => {
 
     exp(cmp.find('.lgx_prefix').length).to.be.equal(10);
     exp(cmp.find('.lgx_suffix').length).to.be.equal(10);
-    exp(prefixItems).to.be.eql(items);
-    exp(suffixItems).to.be.eql(items);
+    expect(prefixItems).toEqual(items);
+    expect(suffixItems).toEqual(items);
   });
+
   it('props: data  & getSuffix ', () => {
     const items = [];
     for (let i = 0; i < 10; i++) {
-      items.push({ key: `k${i}`, value: `v${i}` });
+      items.push({ text: `v${i}`, value: `v${i}` });
     }
     const suffixItems = [];
     const getSuffix = item => {
@@ -309,7 +306,7 @@ describe('Menu', () => {
   it('props: data & getPrefix  ', () => {
     const items = [];
     for (let i = 0; i < 10; i++) {
-      items.push({ key: `k${i}`, value: `v${i}` });
+      items.push({ text: `v${i}`, value: `v${i}` });
     }
     const prefixItems = [];
     const getPrefix = item => {
@@ -319,13 +316,13 @@ describe('Menu', () => {
     const cmp = createMenuPropsDataCase({ getPrefix });
 
     exp(cmp.find('.lgx_prefix').length).to.be.equal(10);
-    exp(prefixItems).to.be.eql(items);
+    expect(prefixItems).toEqual(items);
   });
 
   function createMenuPropsDataCase(props: Object) {
     const items = [];
     for (let i = 0; i < 10; i++) {
-      items.push({ key: `k${i}`, value: `v${i}` });
+      items.push({ text: `v${i}`, value: `v${i}` });
     }
     const cmp = mount(
       <Theme config={{ [Widget.Menu]: { width: 200, height: 350 } }}>

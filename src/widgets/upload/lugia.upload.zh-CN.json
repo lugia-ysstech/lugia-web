@@ -1,0 +1,315 @@
+{
+  "widgetName": "Upload",
+  "title": "上传",
+  "desc": "上传组件,可通过文件选择和拖拽上传",
+  "props": {
+    "data": {
+      "type": "object",
+      "desc": "上传时附带的额外参数"
+    },
+    "areaType": {
+      "type": "UploadType",
+      "desc": "文件列表的类型 支持5种类型(default/both/button/picture/area)",
+      "defaultValue": "default"
+    },
+    "disabled": {
+      "type": "boolean",
+      "desc": "禁用状态",
+      "defaultValue": false
+    },
+    "limit": {
+      "type": "number",
+      "desc": "一次性可允许上传的最大文件数"
+    },
+    "multiple": {
+      "type": "boolean",
+      "desc": "是否允许多个文件上传",
+      "defaultValue": false
+    },
+    "showFileList": {
+      "type": "boolean",
+      "desc": "是否显示上传列表",
+      "defaultValue": false
+    },
+    "fileList": {
+      "type": "object[]",
+      "desc": "上传的文件列表,如 [{ id: 1, name: 'header.jpg', status: 'done' }]",
+      "meta":[
+        {"key":"id","title":"文件唯一标识","type":"number"},
+        {"key":"name","title":"文件名","type":"string"},
+        {"key":"status","title":"文件传输状态","type":"FileType"}
+      ]
+    },
+    "withCredentials": {
+      "type": "boolean",
+      "desc": "上传请求时是否允许携带cookie凭证",
+      "defaultValue": false
+    },
+    "autoUpload": {
+      "type": "boolean",
+      "desc": "是否允许自动上传",
+      "defaultValue": true
+    },
+    "url": {
+      "type": "string",
+      "desc": "上传的请求地址(必填参数)"
+    },
+    "accept": {
+      "type": "string",
+      "desc": "指定上传文件类型"
+    },
+    "size": {
+      "type": "UploadSize",
+      "desc": "picture类型可配置的三种尺寸(small/default/large)",
+      "defaultValue": "default"
+    }
+
+  },
+  "events": {
+    "onProgress": {
+      "desc": "上传进行中时触发",
+      "args": [
+        {
+          "name": "result",
+          "desc": "上传进行中服务器响应内容",
+          "type": "Object"
+        }
+      ]
+    },
+    "onSuccess": {
+      "desc": "上传成功时触发",
+      "args": [
+        {
+          "name": "result",
+          "desc": "上传成功后服务器响应内容",
+          "type": "Object"
+        }
+      ]
+    },
+    "onComplete": {
+      "desc": "上传完成时触发",
+      "args": [
+        {
+          "name": "result",
+          "desc": "上传完成后服务器响应内容",
+          "type": "Object"
+        }
+      ]
+    },
+    "onChange": {
+      "desc": "添加上传文件时触发",
+      "args": [
+        {
+          "name": "result",
+          "desc": "选中文件",
+          "type": "Object"
+        }
+      ]
+    },
+    "onFail": {
+      "desc": "上传失败时触发",
+      "args": [
+        {
+          "name": "result",
+          "desc": "上传失败后服务器响应内容",
+          "type": "Object"
+        }
+      ]
+    }
+  },
+  "type": {
+    "UploadSize": ["small", "default", "large"],
+    "UploadType": ["default", "both", "button", "picture", "area"],
+    "FileType": ["done", "fail"]
+  },
+  "category": ["数据录入"],
+  "designInfo": {
+    "ButtonTypeUpload": {
+      "sequence": 1,
+      "title": "按钮上传",
+      "desc": "按钮上传模式的配置项",
+      "props": {
+        "areaType": "button"
+      },
+      "theme": {
+        "UploadButtonType": {
+          "name": "按钮",
+          "desc": "按钮上传类型的样式配置",
+          "normal": [["background"], ["width"], ["height"], ["boxShadow"], ["border"], ["opacity"]],
+          "hover": [["background"], ["boxShadow"], ["border"], ["opacity"]],
+          "disabled": [["background"], ["border"]]
+        },
+        "UploadList": {
+          "name":"上传列表",
+          "theme":{
+            "UploadLiType": {
+              "name": "上传文件列表",
+              "desc": "上传列表的行样式",
+              "normal": [["width"],["height"],["background"], ["border"],["color"],["fontSize"]],
+              "hover": [["border"],["background"],["color"]]
+            },
+            "UploadListSuccessIcon": {
+              "name": "上传成功图标样式",
+              "desc": "上传成功时列表图标的样式",
+              "normal": [["color"],["fontSize"]]
+            },
+            "UploadListFailedIcon": {
+              "name": "上传失败图标样式",
+              "desc": "上传失败时列表图标的样式",
+              "normal": [["color"],["fontSize"]]
+            }
+          }
+        }
+      }
+    },
+    "PictureTypeUpload": {
+      "sequence": 2,
+      "title": "图片上传",
+      "desc": "图片上传模式的配置项，仅支持图片",
+      "props": {
+        "areaType": "picture"
+      },
+      "theme": {
+        "UploadPictureType": {
+          "name": "图片上传区域",
+          "desc": "图片上传类型的样式配置",
+          "normal": [["background"], ["width"], ["height"], ["opacity"], ["border"]],
+          "hover": [["background"], ["opacity"], ["border"]],
+          "disabled": [["background"], ["color"], ["border"]]
+        },
+        "UploadList": {
+          "name":"上传列表",
+          "theme":{
+            "UploadLiType": {
+              "name": "上传文件列表",
+              "desc": "上传列表的行样式",
+              "normal": [["width"],["height"],["background"], ["border"],["color"],["fontSize"]],
+              "hover": [["border"],["background"],["color"]]
+            },
+            "UploadListSuccessIcon": {
+              "name": "上传成功图标样式",
+              "desc": "上传成功时列表图标的样式",
+              "normal": [["color"],["fontSize"]]
+            },
+            "UploadListFailedIcon": {
+              "name": "上传失败图标样式",
+              "desc": "上传失败时列表图标的样式",
+              "normal": [["color"],["fontSize"]]
+            }
+          }
+        }
+      }
+    },
+    "AreaTypeUpload": {
+      "sequence": 3,
+      "title": "区域拖拽上传",
+      "desc": "大面积区域拖拽上传模式的配置项",
+      "props": {
+        "areaType": "area"
+      },
+      "theme": {
+        "UploadAreaType": {
+          "name": "文件上传区域",
+          "desc": "区域拖拽上传类型的样式配置",
+          "normal": [["width"], ["height"], ["fontSize"], ["color"]],
+          "disabled": [["color"]]
+        },
+        "UploadList": {
+          "name":"上传列表",
+          "theme":{
+            "UploadLiType": {
+              "name": "上传文件列表",
+              "desc": "上传列表的行样式",
+              "normal": [["width"],["height"],["background"], ["border"],["color"],["fontSize"]],
+              "hover": [["border"],["background"],["color"]]
+            },
+            "UploadListSuccessIcon": {
+              "name": "上传成功图标样式",
+              "desc": "上传成功时列表图标的样式",
+              "normal": [["color"],["fontSize"]]
+            },
+            "UploadListFailedIcon": {
+              "name": "上传失败图标样式",
+              "desc": "上传失败时列表图标的样式",
+              "normal": [["color"],["fontSize"]]
+            }
+          }
+        }
+      }
+    },
+    "BothTypeUpload": {
+      "sequence": 4,
+      "title": "带按钮的拖拽上传",
+      "desc": "带按钮的拖拽上传模式的配置项",
+      "props": {
+        "areaType": "both"
+      },
+      "theme": {
+        "UploadButtonType": {
+          "name": "按钮",
+          "desc": "按钮部分的样式配置",
+          "normal": [["width"], ["height"], ["fontSize"], ["color"]],
+          "disabled": [["color"]]
+        },
+        "UploadDefaultType": {
+          "name": "文件上传区域",
+          "desc": "默认上传框的样式",
+          "normal": [["width"], ["height"], ["boxShadow"], ["border"]],
+          "hover": [["boxShadow"], ["border"]],
+          "disabled": [["border"], ["cursor"]]
+        },
+        "UploadList": {
+          "name":"上传列表",
+          "theme":{
+            "UploadLiType": {
+              "name": "上传文件列表",
+              "desc": "上传列表的行样式",
+              "normal": [["width"],["height"],["background"], ["border"],["color"],["fontSize"]],
+              "hover": [["border"],["background"],["color"]]
+            },
+            "UploadListSuccessIcon": {
+              "name": "上传成功图标样式",
+              "desc": "上传成功时列表图标的样式",
+              "normal": [["color"],["fontSize"]]
+            },
+            "UploadListFailedIcon": {
+              "name": "上传失败图标样式",
+              "desc": "上传失败时列表图标的样式",
+              "normal": [["color"],["fontSize"]]
+            }
+          }
+        }
+      }
+    }
+  },
+  "theme": {
+    "UploadDefaultType": {
+      "name": "文件上传区域",
+      "desc": "默认上传框的样式",
+      "normal": [["width"], ["height"], ["boxShadow"], ["border"]],
+      "hover": [["boxShadow"], ["border"]],
+      "disabled": [["border"], ["cursor"]]
+    },
+    "UploadList": {
+      "name":"上传列表",
+      "theme":{
+        "UploadLiType": {
+          "name": "上传文件列表",
+          "desc": "上传列表的行样式",
+          "normal": [["width"], ["height"], ["background"], ["border"], ["color"], ["fontSize"]],
+          "hover": [["border"], ["background"], ["color"]]
+        },
+        "UploadListSuccessIcon": {
+          "name": "上传成功图标样式",
+          "desc": "上传成功时列表图标的样式",
+          "normal": [["color"], ["fontSize"]]
+        },
+        "UploadListFailedIcon": {
+          "name": "上传失败图标样式",
+          "desc": "上传失败时列表图标的样式",
+          "normal": [["color"], ["fontSize"]]
+        }
+      }
+    }
+  }
+}

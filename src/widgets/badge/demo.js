@@ -18,6 +18,10 @@ const Box = styled.div`
   background: #ccc;
   margin-left: 10px;
 `;
+const Wrapper = styled.div`
+  margin-left: 10px;
+  margin-top: 50px;
+`;
 
 class Turn extends React.Component<any, any> {
   constructor(props) {
@@ -33,49 +37,76 @@ class Turn extends React.Component<any, any> {
   };
 
   render() {
+    const config = {
+      [Widget.NumberTurn]: {
+        normal: { position: { top: -5, right: -5 } },
+      },
+    };
     return (
-      <Row>
-        <Col span={4}>
-          <Badge count={this.state.count} showZero overflowCount={9}>
-            <Box />
-          </Badge>
-          <Icon
-            style={{ fontSize: '2em' }}
-            iconClass="lugia-icon-reminder_plus_square_o"
-            onClick={this.click('plus')}
-          />
-          <Icon iconClass="lugia-icon-reminder_minus_square_o" onClick={this.click('minus')} />
-        </Col>
-      </Row>
+      <Wrapper>
+        <Theme config={config}>
+          <Row>
+            <Col span={4}>
+              <Badge count={this.state.count} showZero overflowCount={99}>
+                <Box />
+              </Badge>
+              <Icon
+                style={{ fontSize: '2em' }}
+                iconClass="lugia-icon-reminder_plus_square_o"
+                onClick={this.click('plus')}
+              />
+              <Icon
+                style={{ fontSize: '2em' }}
+                iconClass="lugia-icon-reminder_minus_square_o"
+                onClick={this.click('minus')}
+              />
+            </Col>
+          </Row>
+        </Theme>
+      </Wrapper>
     );
   }
 }
 
 export default () => {
-  const view = {
-    [Widget.Badge]: { backgroundColor: 'orange', color: 'black' },
+  const dot = {
+    [Widget.Badge]: {
+      BadgeDot: {
+        normal: {
+          position: { top: -5, right: 6 },
+          background: { color: 'orange' },
+          width: 20,
+          height: 20,
+        },
+      },
+      BadgeNumber: {
+        normal: { position: { top: -5, right: -5 } },
+      },
+    },
   };
   return (
     <div>
-      <Theme config={{ [Widget.Row]: { margin: 50 } }}>
-        <Row>
-          <Col span={4}>
-            <Badge count={4}>
-              <Box />
-            </Badge>
-          </Col>
-          <Col span={4}>
-            <Badge count={99}>
-              <Box />
-            </Badge>
-          </Col>
-          <Col span={4}>
-            <Badge>
-              <Box />
-            </Badge>
-          </Col>
-        </Row>
-        <Theme config={view}>
+      <Theme config={dot}>
+        <Wrapper>
+          <Row>
+            <Col span={4}>
+              <Badge count={4}>
+                <Box />
+              </Badge>
+            </Col>
+            <Col span={4}>
+              <Badge count={99}>
+                <Box />
+              </Badge>
+            </Col>
+            <Col span={4}>
+              <Badge>
+                <Box />
+              </Badge>
+            </Col>
+          </Row>
+        </Wrapper>
+        <Wrapper>
           <Row>
             <Col span={4}>
               <Badge count={0}>
@@ -94,45 +125,93 @@ export default () => {
             </Col>
             <Col span={4}>
               <a href="www.baidu.com">
-                <Badge>
-                  <Box />
-                </Badge>
+                <Theme config={dot}>
+                  <Badge viewClass="dot">
+                    <Box />
+                  </Badge>
+                </Theme>
               </a>
             </Col>
           </Row>
-        </Theme>
+        </Wrapper>
+      </Theme>
+      <Wrapper>
         <Row>
           <Col span={4}>
-            <Theme config={{ green: { backgroundColor: 'green' } }}>
+            <Theme
+              config={{
+                green: {
+                  BadgeDot: {
+                    normal: {
+                      position: { top: -5, right: 2 },
+                      background: { color: 'green' },
+                    },
+                  },
+                },
+              }}
+            >
               <Badge viewClass="green">
                 <Box />
               </Badge>
-            </Theme>{' '}
+            </Theme>
           </Col>
           <Col span={4}>
-            <Theme config={{ purple: { backgroundColor: 'purple' } }}>
+            <Theme
+              config={{
+                purple: {
+                  BadgeDot: {
+                    normal: {
+                      position: { top: -5, right: 2 },
+                      background: { color: 'purple' },
+                    },
+                  },
+                },
+              }}
+            >
               <Badge viewClass="purple">
                 <Box />
               </Badge>
-            </Theme>{' '}
+            </Theme>
           </Col>
           <Col span={4}>
-            <Theme config={{ yellow: { backgroundColor: 'yellow' } }}>
+            <Theme
+              config={{
+                yellow: {
+                  BadgeDot: {
+                    normal: {
+                      position: { top: -5, right: 2 },
+                      background: { color: 'yellow' },
+                    },
+                  },
+                },
+              }}
+            >
               <Badge viewClass="yellow">
                 <Box />
               </Badge>
-            </Theme>{' '}
+            </Theme>
           </Col>
           <Col span={4}>
-            <Theme config={{ blue: { backgroundColor: 'blue' } }}>
+            <Theme
+              config={{
+                blue: {
+                  BadgeDot: {
+                    normal: {
+                      position: { top: -5, right: 2 },
+                      background: { color: 'blue' },
+                    },
+                  },
+                },
+              }}
+            >
               <Badge viewClass="blue">
                 <Box />
               </Badge>
             </Theme>
           </Col>
         </Row>
-        <Turn />
-      </Theme>
+      </Wrapper>
+      <Turn />
     </div>
   );
 };

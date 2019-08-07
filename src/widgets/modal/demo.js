@@ -5,8 +5,12 @@
  * @flow
  */
 import * as React from 'react';
+import { getBorder, getBoxShadow } from '@lugia/theme-utils';
 import Modal from './index';
 import Button from '../button';
+import Theme from '../theme';
+import Widgets from '../consts';
+import { getBorderRadius } from '../theme/CSSProvider';
 
 class ModalBox extends React.Component<any, any> {
   constructor() {
@@ -54,6 +58,9 @@ export default class ModalDemo extends React.Component<any, any> {
       visable2: false,
       visable3: false,
       visable4: false,
+      visable5: false,
+      visable6: false,
+      visable7: false,
     };
   }
 
@@ -79,9 +86,88 @@ export default class ModalDemo extends React.Component<any, any> {
   };
 
   render() {
-    const { visable1, visable2, visable3, visable4, confirmLoading } = this.state;
+    const {
+      visable1,
+      visable2,
+      visable3,
+      visable4,
+      visable5,
+      visable6,
+      visable7,
+      confirmLoading,
+    } = this.state;
+    const view = {
+      [Widgets.Modal]: {
+        ModalWrap: {
+          normal: {
+            width: 800,
+            height: 500,
+            border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }),
+            borderRadius: getBorderRadius(50),
+            opacity: 0.8,
+            boxShadow: getBoxShadow('1px 2px 2px 2px #e8e8e8'),
+            background: { color: 'orange' },
+            padding: {
+              top: 30,
+              right: 30,
+              bottom: 30,
+              left: 50,
+            },
+          },
+        },
+        ModalTitle: {
+          normal: {
+            color: 'green',
+            font: { size: 18, weight: 500 },
+            padding: {
+              top: 30,
+              right: 30,
+              bottom: 30,
+              left: 0,
+            },
+          },
+        },
+        ModalContentText: {
+          normal: {
+            color: 'green',
+            font: { size: 18, weight: 500 },
+            padding: {
+              top: 30,
+              right: 30,
+              bottom: 30,
+              left: 0,
+            },
+          },
+        },
+        ModalCloseIcon: {
+          normal: {
+            color: 'green',
+            fontSize: 18,
+          },
+        },
+        // ModalIcon: {
+        //   normal: {
+        //     color: 'orange',
+        //     fontSize: 18,
+        //   },
+        // },
+      },
+    };
     return (
       <div>
+        <Button onClick={this.Click(7)}>Theme Modal</Button>
+        <Theme config={view}>
+          <Modal
+            visible={visable7}
+            title="这是标题！"
+            onOk={this.buttonClick(7)}
+            onCancel={this.buttonClick(7)}
+          >
+            这是内容！
+          </Modal>
+        </Theme>
+        <br />
+        <br />
         <Button onClick={this.Click(4)}>Modal</Button>
         <Modal
           visible={visable4}
@@ -124,13 +210,23 @@ export default class ModalDemo extends React.Component<any, any> {
               自定义页脚
             </Button>,
           ]}
+          onCancel={this.buttonClick(3)}
           title="这是标题！"
         >
           这是内容！
         </Modal>
         <br />
         <br />
-        <Button onClick={() => Modal.confirm({ title: 'confirm', content: 'this confirm text!' })}>
+        <Button
+          onClick={() =>
+            Modal.confirm({
+              title: 'confirm',
+              content: 'this confirm text!',
+              onOk: () => console.log('ok'),
+              onCancel: () => console.log('onCancel'),
+            })
+          }
+        >
           confirm
         </Button>
         <br />

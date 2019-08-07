@@ -1,11 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`timeLineDemo Component JSON 1`] = `
-.c1 {
-  width: 1.6666666666666667em;
+.c11 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  position: absolute;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  font-size: 1.4rem;
+  left: 0.35rem;
+  z-index: 1;
+  -webkit-animation: yqACP 1s linear infinite;
+  animation: yqACP 1s linear infinite;
 }
 
-.c21 {
+.c12 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -15,181 +30,118 @@ exports[`timeLineDemo Component JSON 1`] = `
 
 .c2 {
   position: relative;
-  height: 8.333333333333334em;
   width: 100%;
 }
 
 .c8 {
-  position: relative;
-  height: 3.5000000000000004em;
-  width: 100%;
-}
-
-.c10 {
-  position: relative;
-  height: 1.6666666666666667em;
-  width: 100%;
-}
-
-.c13 {
-  position: relative;
-  height: 4.500000000000001em;
-  width: 100%;
+  line-height: 1.5;
+  color: #666666;
 }
 
 .c7 {
   text-align: inherit;
-  font-size: 1.4rem;
-  max-width: 12.5em;
+  max-width: 15rem;
   overflow: hidden;
   white-space: nowrap;
   color: #333333;
 }
 
-.c15 {
+.c6 {
   text-align: inherit;
-  font-size: 1.4rem;
-  max-width: 12.5em;
+  max-width: 15rem;
   overflow: hidden;
   white-space: nowrap;
-  line-height: 1.5;
-  color: #666666;
-}
-
-.c6 {
   position: absolute;
+  width: 100%;
   top: 0;
   text-align: left;
-  left: 0;
-  margin-left: 2.0833333333333335em;
+  left: 2rem;
 }
 
-.c17 {
+.c10 {
+  text-align: inherit;
+  max-width: 15rem;
+  overflow: hidden;
+  white-space: nowrap;
   position: absolute;
+  width: 100%;
   top: 0;
   text-align: right;
-  right: 0;
-  margin-right: 2.0833333333333335em;
+  right: 100%;
 }
 
 .c3 {
   position: relative;
-  width: 1.6666666666666667em;
+  width: 2rem;
   text-align: center;
 }
 
 .c5 {
   position: relative;
-  left: 0.8333333333333334em;
-  height: 8.333333333333334em;
-  border-left: 0.08333333333333334em solid #e8e8e8;
+  left: 1rem;
   z-index: 2;
+  border-left: 0.1rem solid #e8e8e8;
 }
 
 .c9 {
   position: relative;
-  left: 0.8333333333333334em;
-  height: 100%;
-  border-left: 0.08333333333333334em solid #e8e8e8;
+  left: 1rem;
   z-index: 2;
-}
-
-.c11 {
-  position: relative;
-  left: 0.8333333333333334em;
-  height: 1.6666666666666667em;
-  border-left: 0.08333333333333334em solid #e8e8e8;
-  z-index: 2;
-}
-
-.c12 {
-  position: relative;
-  left: 0.8333333333333334em;
-  height: 100%;
-  border-left: 0.08333333333333334em solid #e8e8e8;
   display: none;
-  z-index: 2;
-}
-
-.c14 {
-  position: relative;
-  left: 0.8333333333333334em;
-  height: inherit;
-  border-left: 0.08333333333333334em solid #e8e8e8;
-  z-index: 2;
-}
-
-.c16 {
-  position: relative;
-  left: 0.8333333333333334em;
-  height: inherit;
-  border-left: 0.08333333333333334em solid #e8e8e8;
-  display: none;
-  z-index: 2;
+  border-left: 0.1rem solid #e8e8e8;
 }
 
 .c4 {
   position: absolute;
-  background: #4d63ff;
-  width: 0.8333333333333334em;
-  height: 0.8333333333333334em;
-  left: 0.45833333333333337em;
+  left: 0.55rem;
   z-index: 3;
   border-radius: 50%;
   -webkit-transition: all 0.3s linear 0.1s;
   transition: all 0.3s linear 0.1s;
+  width: 1rem;
+  height: 1rem;
 }
 
-.c18 {
-  position: absolute;
-  background: #56c22d;
-  width: 0.8333333333333334em;
-  height: 0.8333333333333334em;
-  left: 0.45833333333333337em;
-  z-index: 3;
-  border-radius: 50%;
-  -webkit-transition: all 0.3s linear 0.1s;
-  transition: all 0.3s linear 0.1s;
+.c1 {
+  width: 20rem;
 }
 
-.c19 {
-  position: absolute;
-  background: #f22735;
-  width: 0.8333333333333334em;
-  height: 0.8333333333333334em;
-  left: 0.45833333333333337em;
-  z-index: 3;
-  border-radius: 50%;
-  -webkit-transition: all 0.3s linear 0.1s;
-  transition: all 0.3s linear 0.1s;
-}
-
-.c20 {
-  position: absolute;
+.c13 {
+  display: inline-block;
+  margin-bottom: 0;
+  box-sizing: border-box;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: 'Trebuchet MS',Arial,Helvetica,sans-serif;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  text-align: center;
-  font-size: 1.4rem;
-  background: #ffffff;
-  z-index: 3;
-  left: 0.2916666666666667em;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  background-color: #ffffff;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
 }
 
-.c22 {
-  position: absolute;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  text-align: center;
+.c14 {
+  color: #666666;
   font-size: 1.4rem;
-  background: #ffffff;
-  z-index: 1;
-  left: 0.2916666666666667em;
-  -webkit-animation: rotate 1s linear infinite;
-  animation: rotate 1s linear infinite;
 }
 
 .c0 {
@@ -203,32 +155,338 @@ exports[`timeLineDemo Component JSON 1`] = `
   <div
     className="c0"
   >
+    <div
+      className="c1"
+      style={
+        Object {
+          "height": "30rem",
+          "width": "20rem",
+        }
+      }
+    >
+      <div
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
+      >
+        <div
+          className="c3"
+          style={Object {}}
+        >
+          <div
+            className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
+          />
+        </div>
+        <div
+          className="c5"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
+        />
+        <div
+          className="c6"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
+        >
+          <div
+            className="c7"
+            style={Object {}}
+          >
+            2018-01-01
+             
+          </div>
+          <div
+            className="c8"
+            style={Object {}}
+          >
+            description111
+             
+          </div>
+        </div>
+      </div>
+      <div
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
+      >
+        <div
+          className="c3"
+          style={Object {}}
+        >
+          <div
+            className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
+          />
+        </div>
+        <div
+          className="c5"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
+        />
+        <div
+          className="c6"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
+        >
+          <div
+            className="c7"
+            style={Object {}}
+          >
+            2018-01-02
+             
+          </div>
+          <div
+            className="c8"
+            style={Object {}}
+          >
+            description222
+             
+          </div>
+        </div>
+      </div>
+      <div
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
+      >
+        <div
+          className="c3"
+          style={Object {}}
+        >
+          <div
+            className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
+          />
+        </div>
+        <div
+          className="c5"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
+        />
+        <div
+          className="c6"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
+        >
+          <div
+            className="c7"
+            style={Object {}}
+          >
+            2018-01-03
+             
+          </div>
+          <div
+            className="c8"
+            style={Object {}}
+          >
+            description333
+             
+          </div>
+        </div>
+      </div>
+      <div
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
+      >
+        <div
+          className="c3"
+          style={Object {}}
+        >
+          <div
+            className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
+          />
+        </div>
+        <div
+          className="c5"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
+        />
+        <div
+          className="c6"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
+        >
+          <div
+            className="c7"
+            style={Object {}}
+          >
+            2018-01-04
+             
+          </div>
+          <div
+            className="c8"
+            style={Object {}}
+          >
+            description444
+             
+          </div>
+        </div>
+      </div>
+      <div
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
+      >
+        <div
+          className="c3"
+          style={Object {}}
+        >
+          <div
+            className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
+          />
+        </div>
+        <div
+          className="c9"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
+        />
+        <div
+          className="c6"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
+        >
+          <div
+            className="c7"
+            style={Object {}}
+          >
+            2018-01-05
+             
+          </div>
+          <div
+            className="c8"
+            style={Object {}}
+          >
+            description555
+             
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c0"
+  >
     <p>
        调节高度的 简洁样式
     </p>
     <br />
     <div
       className="c1"
+      style={
+        Object {
+          "height": "30rem",
+          "width": "20rem",
+        }
+      }
     >
       <div
         className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
           className="c5"
+          style={
+            Object {
+              "height": "100%",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-01
              
@@ -236,24 +494,45 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c8"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c9"
+          className="c5"
+          style={
+            Object {
+              "height": "100%",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-02
              
@@ -261,24 +540,45 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c8"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c9"
+          className="c5"
+          style={
+            Object {
+              "height": "100%",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-03
              
@@ -286,24 +586,45 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c10"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c11"
+          className="c5"
+          style={
+            Object {
+              "height": "100%",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-04
              
@@ -311,24 +632,45 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c8"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c12"
+          className="c9"
+          style={
+            Object {
+              "height": "100%",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-05
              
@@ -346,32 +688,60 @@ exports[`timeLineDemo Component JSON 1`] = `
     <br />
     <div
       className="c1"
+      style={
+        Object {
+          "height": "30rem",
+          "width": "20rem",
+        }
+      }
     >
       <div
-        className="c13"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c14"
+          className="c5"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-01
              
           </div>
           <div
-            className="c15"
+            className="c8"
+            style={Object {}}
           >
             description111
              
@@ -379,30 +749,52 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c13"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c14"
+          className="c5"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-02
              
           </div>
           <div
-            className="c15"
+            className="c8"
+            style={Object {}}
           >
             description222
              
@@ -410,30 +802,52 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c13"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c14"
+          className="c5"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-03
              
           </div>
           <div
-            className="c15"
+            className="c8"
+            style={Object {}}
           >
             description333
              
@@ -441,30 +855,52 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c13"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c14"
+          className="c5"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-04
              
           </div>
           <div
-            className="c15"
+            className="c8"
+            style={Object {}}
           >
             description444
              
@@ -472,30 +908,52 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c13"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c16"
+          className="c9"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-05
              
           </div>
           <div
-            className="c15"
+            className="c8"
+            style={Object {}}
           >
             description555
              
@@ -513,26 +971,53 @@ exports[`timeLineDemo Component JSON 1`] = `
     <br />
     <div
       className="c1"
+      style={
+        Object {
+          "height": "30rem",
+          "width": "20rem",
+        }
+      }
     >
       <div
-        className="c8"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c9"
+          className="c5"
+          style={
+            Object {
+              "height": "100%",
+            }
+          }
         />
         <div
-          className="c17"
-          direction="left"
+          className="c10"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-01
              
@@ -540,24 +1025,45 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c8"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c9"
+          className="c5"
+          style={
+            Object {
+              "height": "100%",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-02
              
@@ -565,24 +1071,45 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c8"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c9"
+          className="c5"
+          style={
+            Object {
+              "height": "100%",
+            }
+          }
         />
         <div
-          className="c17"
-          direction="left"
+          className="c10"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-03
              
@@ -590,24 +1117,45 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c8"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c9"
+          className="c5"
+          style={
+            Object {
+              "height": "100%",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-04
              
@@ -615,24 +1163,45 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c8"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c12"
+          className="c9"
+          style={
+            Object {
+              "height": "100%",
+            }
+          }
         />
         <div
-          className="c17"
-          direction="left"
+          className="c10"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-05
              
@@ -650,32 +1219,60 @@ exports[`timeLineDemo Component JSON 1`] = `
     <br />
     <div
       className="c1"
+      style={
+        Object {
+          "height": "30rem",
+          "width": "20rem",
+        }
+      }
     >
       <div
-        className="c13"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c14"
+          className="c5"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
         />
         <div
-          className="c17"
-          direction="left"
+          className="c10"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-01
              
           </div>
           <div
-            className="c15"
+            className="c8"
+            style={Object {}}
           >
             description111
              
@@ -683,30 +1280,52 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c13"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c14"
+          className="c5"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-02
              
           </div>
           <div
-            className="c15"
+            className="c8"
+            style={Object {}}
           >
             description222
              
@@ -714,30 +1333,52 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c13"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c14"
+          className="c5"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
         />
         <div
-          className="c17"
-          direction="left"
+          className="c10"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-03
              
           </div>
           <div
-            className="c15"
+            className="c8"
+            style={Object {}}
           >
             description333
              
@@ -745,30 +1386,52 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c13"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c14"
+          className="c5"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-04
              
           </div>
           <div
-            className="c15"
+            className="c8"
+            style={Object {}}
           >
             description444
              
@@ -776,30 +1439,52 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c13"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c16"
+          className="c9"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
         />
         <div
-          className="c17"
-          direction="left"
+          className="c10"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-05
              
           </div>
           <div
-            className="c15"
+            className="c8"
+            style={Object {}}
           >
             description555
              
@@ -817,26 +1502,53 @@ exports[`timeLineDemo Component JSON 1`] = `
     <br />
     <div
       className="c1"
+      style={
+        Object {
+          "height": "30rem",
+          "width": "20rem",
+        }
+      }
     >
       <div
-        className="c8"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
-            className="c18"
+            className="c4"
+            style={
+              Object {
+                "backgroundColor": "#56c22d",
+              }
+            }
           />
         </div>
         <div
-          className="c9"
+          className="c5"
+          style={
+            Object {
+              "height": "100%",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-01
              
@@ -844,24 +1556,45 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c8"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c9"
+          className="c5"
+          style={
+            Object {
+              "height": "100%",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-02
              
@@ -869,24 +1602,45 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c8"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
-            className="c19"
+            className="c4"
+            style={
+              Object {
+                "backgroundColor": "#f22735",
+              }
+            }
           />
         </div>
         <div
-          className="c9"
+          className="c5"
+          style={
+            Object {
+              "height": "100%",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-03
              
@@ -894,24 +1648,45 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c8"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c9"
+          className="c5"
+          style={
+            Object {
+              "height": "100%",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-04
              
@@ -919,24 +1694,45 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c8"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c12"
+          className="c9"
+          style={
+            Object {
+              "height": "100%",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-05
              
@@ -954,34 +1750,60 @@ exports[`timeLineDemo Component JSON 1`] = `
     <br />
     <div
       className="c1"
+      style={
+        Object {
+          "height": "30rem",
+          "width": "20rem",
+        }
+      }
     >
       <div
-        className="c13"
-        type="icon"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
-          <i
-            className="lugia-icon-financial_progress c20 c21"
+          <div
+            className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c14"
-          type="icon"
+          className="c5"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-01
              
           </div>
           <div
-            className="c15"
+            className="c8"
+            style={Object {}}
           >
             description111
              
@@ -989,30 +1811,52 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c13"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c14"
+          className="c5"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-02
              
           </div>
           <div
-            className="c15"
+            className="c8"
+            style={Object {}}
           >
             description222
              
@@ -1020,30 +1864,52 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c13"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c14"
+          className="c5"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-03
              
           </div>
           <div
-            className="c15"
+            className="c8"
+            style={Object {}}
           >
             description333
              
@@ -1051,32 +1917,52 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c13"
-        type="icon"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
-          <i
-            className="lugia-icon-financial_progress c20 c21"
+          <div
+            className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c14"
-          type="icon"
+          className="c5"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-04
              
           </div>
           <div
-            className="c15"
+            className="c8"
+            style={Object {}}
           >
             description444
              
@@ -1084,30 +1970,52 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c13"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c16"
+          className="c9"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-05
              
           </div>
           <div
-            className="c15"
+            className="c8"
+            style={Object {}}
           >
             description555
              
@@ -1125,32 +2033,60 @@ exports[`timeLineDemo Component JSON 1`] = `
     <br />
     <div
       className="c1"
+      style={
+        Object {
+          "height": "30rem",
+          "width": "20rem",
+        }
+      }
     >
       <div
-        className="c13"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c14"
+          className="c5"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-01
              
           </div>
           <div
-            className="c15"
+            className="c8"
+            style={Object {}}
           >
             description111
              
@@ -1158,30 +2094,52 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c13"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c14"
+          className="c5"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-02
              
           </div>
           <div
-            className="c15"
+            className="c8"
+            style={Object {}}
           >
             description222
              
@@ -1189,30 +2147,52 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c13"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c14"
+          className="c5"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-03
              
           </div>
           <div
-            className="c15"
+            className="c8"
+            style={Object {}}
           >
             description333
              
@@ -1220,30 +2200,52 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c13"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c14"
+          className="c5"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-04
              
           </div>
           <div
-            className="c15"
+            className="c8"
+            style={Object {}}
           >
             description444
              
@@ -1251,30 +2253,58 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c13"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <i
-            className="lugia-icon-financial_loading_o c22 c21"
+            className="lugia-icon-financial_loading_o   c11"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "red",
+                "fontSize": "1.6rem",
+              }
+            }
           />
         </div>
         <div
-          className="c16"
+          className="c9"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-05
              
           </div>
           <div
-            className="c15"
+            className="c8"
+            style={Object {}}
           >
             description555
              
@@ -1292,32 +2322,60 @@ exports[`timeLineDemo Component JSON 1`] = `
     <br />
     <div
       className="c1"
+      style={
+        Object {
+          "height": "30rem",
+          "width": "20rem",
+        }
+      }
     >
       <div
-        className="c13"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c14"
+          className="c5"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-01
              
           </div>
           <div
-            className="c15"
+            className="c8"
+            style={Object {}}
           >
             description111
              
@@ -1325,30 +2383,52 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c13"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c14"
+          className="c5"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-02
              
           </div>
           <div
-            className="c15"
+            className="c8"
+            style={Object {}}
           >
             description222
              
@@ -1356,30 +2436,52 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c13"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c14"
+          className="c5"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-03
              
           </div>
           <div
-            className="c15"
+            className="c8"
+            style={Object {}}
           >
             description333
              
@@ -1387,30 +2489,52 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c13"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c14"
+          className="c5"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-04
              
           </div>
           <div
-            className="c15"
+            className="c8"
+            style={Object {}}
           >
             description444
              
@@ -1418,30 +2542,53 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c13"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <i
-            className="lugia-icon-financial_abort  c21"
+            className="lugia-icon-financial_abort   c12"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={Object {}}
           />
         </div>
         <div
-          className="c16"
+          className="c9"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-05
              
           </div>
           <div
-            className="c15"
+            className="c8"
+            style={Object {}}
           >
             description555
              
@@ -1458,39 +2605,105 @@ exports[`timeLineDemo Component JSON 1`] = `
     }
   >
     <button
+      className="c13"
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      onMouseUp={[Function]}
+      size="default"
+      style={
+        Object {
+          "backgroundColor": "#4d63ff",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomWidth": 0,
+          "borderLeftWidth": 0,
+          "borderRightWidth": 0,
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopWidth": 0,
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
       type="primary"
     >
-      点击反转
+      <span
+        className="c14"
+        style={
+          Object {
+            "color": "#ffffff",
+            "fontSize": "1.4rem",
+          }
+        }
+      >
+        点击反转
+      </span>
     </button>
     <div
       className="c1"
+      style={
+        Object {
+          "height": "30rem",
+          "width": "20rem",
+        }
+      }
     >
       <div
-        className="c13"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c14"
+          className="c5"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-01
              
           </div>
           <div
-            className="c15"
+            className="c8"
+            style={Object {}}
           >
             description111
              
@@ -1498,30 +2711,52 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c13"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c14"
+          className="c5"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-02
              
           </div>
           <div
-            className="c15"
+            className="c8"
+            style={Object {}}
           >
             description222
              
@@ -1529,30 +2764,52 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c13"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c14"
+          className="c5"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-03
              
           </div>
           <div
-            className="c15"
+            className="c8"
+            style={Object {}}
           >
             description333
              
@@ -1560,30 +2817,52 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c13"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c14"
+          className="c5"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-04
              
           </div>
           <div
-            className="c15"
+            className="c8"
+            style={Object {}}
           >
             description444
              
@@ -1591,30 +2870,52 @@ exports[`timeLineDemo Component JSON 1`] = `
         </div>
       </div>
       <div
-        className="c13"
+        className="c2"
+        style={
+          Object {
+            "height": "6rem",
+          }
+        }
       >
         <div
           className="c3"
+          style={Object {}}
         >
           <div
             className="c4"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+              }
+            }
           />
         </div>
         <div
-          className="c16"
+          className="c9"
+          style={
+            Object {
+              "height": "inherit",
+            }
+          }
         />
         <div
           className="c6"
-          direction="right"
+          style={
+            Object {
+              "height": "6rem",
+            }
+          }
         >
           <div
             className="c7"
+            style={Object {}}
           >
             2018-01-05
              
           </div>
           <div
-            className="c15"
+            className="c8"
+            style={Object {}}
           >
             description555
              
@@ -1623,6 +2924,5 @@ exports[`timeLineDemo Component JSON 1`] = `
       </div>
     </div>
   </div>
-  ,
 </div>
 `;

@@ -1,0 +1,158 @@
+{
+  "widgetName": "Switch",
+  "title": "开关",
+  "desc": "开关选择器",
+  "props": {
+    "defaultValue": {
+      "type": "boolean",
+      "desc": "默认开关状态",
+      "defaultValue": false
+    },
+    "value": {
+      "type": "boolean",
+      "desc": "开关状态",
+      "defaultValue": false
+    },
+    "data": {
+      "type": "Object[]",
+      "meta": [{ "key": "text", "title": "显示文本", "type": "any" }],
+      "desc": "开关配置的展示信息"
+    },
+
+    "size": {
+      "type": "sizeType",
+      "desc": "设置开关大小 default | small"
+    },
+    "isInverse": {
+      "type": "boolean",
+      "desc": "开关翻转",
+      "defaultValue": false
+    },
+    "loading": {
+      "type": "boolean",
+      "desc": "是否配置加载",
+      "defaultValue": false
+    },
+    "autoFocus": {
+      "type": "boolean",
+      "desc": "是否自动聚焦",
+      "defaultValue": false
+    },
+    "disabled": {
+      "type": "boolean",
+      "desc": "禁用状态,是否不可用",
+      "defaultValue": false
+    },
+    "displayFiled": {
+      "type": "string",
+      "desc": "匹配需要显示的文本,读取data中需要显示的内容名",
+      "defaultValue": "text"
+    }
+  },
+  "events": {
+    "onChange": {
+      "desc": "开关状态改变时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "改变状态触发的DOM事件",
+          "type": "ChangeType"
+        }
+      ]
+    }
+  },
+  "type": {
+    "sizeType": ["default", "small"],
+    "ChangeType": {
+      "newValue": "string",
+      "oldValue": "string",
+      "event": "SyntheticEvent"
+    }
+  },
+  "category": ["数据录入"],
+  "theme": {
+    "Switch_SwitchOpen": {
+      "name": "组件打开",
+      "desc": "开关组件打开的样式配置",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["background"],
+        ["fontSize"],
+        ["borderRadius"],
+        ["border"],
+        ["boxShadow"],
+        ["color"],
+        ["font"]
+      ],
+      "hover": [],
+      "active": [],
+      "disabled": [["background"], ["border"]]
+    },
+    "Switch_SwitchClosed": {
+      "name": "组件关闭",
+      "desc": "开关组件打开的样式配置",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["background"],
+        ["fontSize"],
+        ["borderRadius"],
+        ["border"],
+        ["boxShadow"],
+        ["color"],
+        ["font"]
+      ],
+      "hover": [],
+      "active": [],
+      "disabled": [["background"], ["border"]]
+    },
+    "SwitchButton": {
+      "name": "按钮",
+      "desc": "按钮的样式配置",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["background"],
+        ["borderRadius"],
+        ["border"],
+        ["boxShadow"],
+        ["color"]
+      ],
+      "hover": [],
+      "active": [
+        ["width"],
+        ["height"],
+        ["background"],
+        ["borderRadius"],
+        ["border"],
+        ["boxShadow"]
+      ],
+      "disabled": [["background"], ["border"], ["width"], ["height"], ["borderRadius"]]
+    },
+    "SwitchContainer": {
+      "name": "开关整体",
+      "desc": "开关整体的样式配置",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["border"],
+        ["margin"],
+        ["padding"],
+        ["background"],
+        ["opacity"]
+      ],
+      "hover": [],
+      "active": [],
+      "disabled": [
+        ["width"],
+        ["height"],
+        ["border"],
+        ["margin"],
+        ["padding"],
+        ["background"],
+        ["opacity"]
+      ]
+    }
+  }
+}

@@ -16,8 +16,8 @@ type IconProps = {
   checked: boolean,
 };
 
-const UnCheck = 'sv-icon-android-checkbox-out1';
-const Checked = 'sv-icon-android-checkbox';
+const UnCheck = 'lugia-icon-reminder_close_square_o';
+const Checked = 'lugia-icon-reminder_check_square_o';
 
 class CheckIcon extends React.Component<IconProps> {
   static displayName = Widget.CheckIcon;

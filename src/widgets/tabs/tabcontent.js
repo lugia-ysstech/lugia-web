@@ -6,28 +6,30 @@
  */
 import '../common/shirm';
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import Widget from '../consts/index';
 import type { TabType, TabPositionType } from '../css/tabs';
+import { addMouseEvent } from '@lugia/theme-hoc';
+import { isVertical, matchType } from './utils';
+import CSSComponent, { css, keyframes } from '@lugia/theme-css-hoc';
 
-import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
-import ThemeProvider from '../theme-provider';
-import { getContentPosition } from '../css/tabs';
-
-const ContentContainer = styled.div`
-  position: absolute;
-  display: inline-block;
-  overflow: hidden;
-  width: 100%;
-  ${getContentPosition};
-`;
+const ContentContainer = CSSComponent({
+  tag: 'div',
+  className: 'ContentContainer',
+  normal: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
+  css: '',
+}); //${getContentPosition};
 
 type TabContentState = {};
 type TabContentProps = {
   content: React$Element<any>,
   tabType: TabType,
-  tabPosition: TabPositionType,
-  activityKey: string,
+  themeProps: Object,
+  forceRender: boolean,
 };
 
 class TabContent extends Component<TabContentProps, TabContentState> {
@@ -39,15 +41,9 @@ class TabContent extends Component<TabContentProps, TabContentState> {
   }
 
   render() {
-    const { tabPosition, content, activityKey } = this.props;
-
-    return (
-      <ContentContainer activityKey={activityKey} tabPosition={tabPosition}>
-        {content}
-      </ContentContainer>
-    );
+    const { content, themeProps } = this.props;
+    return <ContentContainer themeProps={themeProps}>{content}</ContentContainer>;
   }
 }
 
-const TargetTabContent = ThemeProvider(KeyBoardEventAdaptor(TabContent), Widget.TabContent);
-export default TargetTabContent;
+export default TabContent;

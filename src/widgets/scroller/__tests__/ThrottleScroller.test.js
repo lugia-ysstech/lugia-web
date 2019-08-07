@@ -282,7 +282,7 @@ describe('ThrottleScroller', function() {
     });
     const cmp = mount(<Target />);
     cmp.render();
-    exp(cmp.html()).to.be.equal('<div>1</div>');
+    exp(cmp.html()).to.be.equal('<div class="sc-gzVnrw duvRXJ"><div>1</div></div>');
   });
 
   it('有滚动条 滚动条的属性是否正确 scroler.type is default y', () => {
@@ -317,12 +317,14 @@ describe('ThrottleScroller', function() {
     cmp = cmp.setState({ start: 1 });
     exp(cmp.find(SVScroller).length).to.be.equal(1);
     exp(cmp.find(SVScroller).props().onChange).to.be.equal(_this.onScroller);
+    exp(cmp.find(SVScroller).props().onDrag).to.be.equal(_this.onDrag);
     expect(cmp.find(SVScroller).props()).toEqual({
       viewSize,
       totalSize,
       value: 0,
       type: type ? type : 'y',
       onChange: _this.onScroller,
+      onDrag: _this.onDrag,
       throttle: 100,
       step: 30,
     });
@@ -336,7 +338,8 @@ describe('ThrottleScroller', function() {
 
     const mockFunction = mockScroller.mockFunction('onWheel');
     mockFunction.returned(true);
-    const event = { target: 'ligx' };
+    const event = { target: 'ligx', stopPropagation: () => {}, preventDefault: () => {} };
+
     _this.onWheel(event);
     exp(mockFunction.getCallContext(0)).to.be.equal(scroller);
     exp(mockFunction.getCallArgs(0)).to.be.eql([event]);

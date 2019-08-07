@@ -9,7 +9,7 @@ import chai from 'chai';
 import 'jest-styled-components';
 import Enzyme, { mount, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import Tree from '../';
+import Tree from '../tree.js';
 import { createTestComponent } from '@lugia/react-test-utils';
 import renderer from 'react-test-renderer';
 import Widget from '../../consts/index';
@@ -116,7 +116,7 @@ describe('Tree', () => {
     const Target = <LimitTree defaultValue="1" data={rowData} mutliple onChange={onChange} />;
     const cmp = mount(Target);
     expect(renderer.create(Target).toJSON()).toMatchSnapshot();
-    const chkBox = cmp.find(Widget.CheckBox);
+    const chkBox = cmp.find(Widget.Checkbox);
     chkBox.at(1).simulate('click', {});
     chkBox.at(1).simulate('click', {});
     chkBox.at(3).simulate('click', {});
@@ -146,7 +146,7 @@ describe('Tree', () => {
     const cmp = mount(Target);
     expect(renderer.create(Target).toJSON()).toMatchSnapshot();
 
-    const chkBox = cmp.find(Widget.CheckBox);
+    const chkBox = cmp.find(Widget.Checkbox);
     chkBox.at(1).simulate('click', {});
     chkBox.at(1).simulate('click', {});
     chkBox.at(3).simulate('click', {});
@@ -163,14 +163,14 @@ describe('Tree', () => {
 
   function getCheckedItem(cmp: Object) {
     return cmp
-      .find(Widget.CheckBox)
+      .find(Widget.Checkbox)
       .map(item => item.props().checked)
       .filter(v => v === true);
   }
 
   function getHalfCheckedItem(cmp: Object) {
     return cmp
-      .find(Widget.CheckBox)
+      .find(Widget.Checkbox)
       .map(item => item.props().indeterminate)
       .filter(v => v === true);
   }
@@ -434,7 +434,7 @@ describe('Tree', () => {
     const cmp = mount(
       <ExpandAllTree data={rowData} defaultValue={'1,1.1,1.2'.split(',')} mutliple />
     );
-    const chkBoxes = cmp.find(Widget.CheckBox);
+    const chkBoxes = cmp.find(Widget.Checkbox);
     exp(chkBoxes.at(0).props().indeterminate).to.be.true;
     exp(chkBoxes.at(1).props().checked).to.be.true;
     exp(chkBoxes.at(2).props().indeterminate).to.be.true;
@@ -442,7 +442,7 @@ describe('Tree', () => {
 
   it('props: value 1  mutliple: true', () => {
     const cmp = mount(<ExpandAllTree data={rowData} value="1" mutliple />);
-    const chkBoxes = cmp.find(Widget.CheckBox);
+    const chkBoxes = cmp.find(Widget.Checkbox);
     exp(chkBoxes.at(0).props().indeterminate).to.be.true;
     exp(chkBoxes.at(1).props().checked).to.be.false;
     exp(chkBoxes.at(2).props().indeterminate).to.be.false;
@@ -451,7 +451,7 @@ describe('Tree', () => {
   it('props: defaultValue: 1,1.1,1.2 & value 1  mutliple: true', () => {
     const cmp = mount(<ExpandAllTree data={rowData} defaultValue="1,1.1,1.2" value="1" mutliple />);
 
-    const chkBoxes = cmp.find(Widget.CheckBox);
+    const chkBoxes = cmp.find(Widget.Checkbox);
     exp(chkBoxes.at(0).props().indeterminate).to.be.true;
     exp(chkBoxes.at(1).props().checked).to.be.false;
     exp(chkBoxes.at(2).props().indeterminate).to.be.false;
@@ -488,7 +488,7 @@ describe('Tree', () => {
         <Tree mutliple={true} expandAll data={rowData} onChange={onChange} onlySelectLeaf />
       );
       cmp
-        .find(Widget.CheckBox)
+        .find(Widget.Checkbox)
         .at(5)
         .simulate('click', {});
       exp(getSelectedItem(cmp).length).to.be.equal(0);
@@ -507,7 +507,7 @@ describe('Tree', () => {
         <Tree mutliple={true} expandAll data={rowData} onChange={onChange} limitCount={1} />
       );
       cmp
-        .find(Widget.CheckBox)
+        .find(Widget.Checkbox)
         .at(5)
         .simulate('click', {});
 
@@ -623,7 +623,7 @@ describe('Tree', () => {
         <Tree mutliple={mutliple} expandAll data={data} igronSelectField={'igron'} />
       );
       cmp
-        .find(mutliple ? Widget.CheckBox : 'titleSpan')
+        .find(mutliple ? Widget.Checkbox : 'titleSpan')
         .at(target)
         .simulate('click', {});
       exp(getCheckedItem(cmp).length, '全选').to.be.equal(all);
@@ -642,15 +642,17 @@ describe('Tree', () => {
     exp(getCheckedItem(cmp).length, '全选结点必须为0').to.be.equal(0);
     exp(getHalfCheckedItem(cmp).length, '半选书必须为0').to.be.equal(0);
     exp(getSelectedItem(cmp).length, '单选数应该为0').to.be.equal(0);
-    target.getThemeTarget().setState({ start: 17 }, () => {});
+    target.getThemeTarget().setState({ start: 23 }, () => {});
+    //  之前用例错是因为 start为17时，并没有使滚动条到最下部
     // 让滚动条到最下部
-    // cmp.update();
-    // exp(getCheckedItem(cmp).length, '全选结点必须为0').to.be.equal(1);
-    // exp(getHalfCheckedItem(cmp).length, '半选书必须为0').to.be.equal(1);
-    // exp(getSelectedItem(cmp).length, '单选数应该为0').to.be.equal(0);
-    // const chkBox = cmp.find(Widget.CheckBox);
-    // exp(chkBox.at(chkBox.length - 4).props().indeterminate, '3被半选上').to.be.true;
-    // exp(chkBox.at(chkBox.length - 2).props().checked, '3.2被全选上').to.be.true;
+    cmp.update();
+    exp(getCheckedItem(cmp).length, '全选结点必须为0').to.be.equal(1);
+    exp(getHalfCheckedItem(cmp).length, '半选书必须为0').to.be.equal(2);
+    exp(getSelectedItem(cmp).length, '单选数应该为0').to.be.equal(0);
+    const chkBox = cmp.find(Widget.Checkbox);
+    console.log('chkBox.at(chkBox.length - 4).props()', chkBox.at(chkBox.length - 4).props());
+    exp(chkBox.at(chkBox.length - 4).props().indeterminate, '3被半选上').to.be.true;
+    exp(chkBox.at(chkBox.length - 2).props().checked, '3.2被全选上').to.be.true;
   });
 
   it('mutliple: false ,  value： 在不可见的位置', () => {
@@ -663,17 +665,15 @@ describe('Tree', () => {
     exp(getCheckedItem(cmp).length, '全选结点必须为0').to.be.equal(0);
     exp(getHalfCheckedItem(cmp).length, '半选书必须为0').to.be.equal(0);
     exp(getSelectedItem(cmp).length, '单选数应该为0').to.be.equal(0);
-    target.getThemeTarget().setState({ start: 17 }, () => {});
-
-    target.getThemeTarget().setState({ start: 17 }, () => {});
+    target.getThemeTarget().setState({ start: 23 }, () => {});
 
     // 触发滚动条到最底部
-    // cmp.update();
-    // exp(getCheckedItem(cmp).length, '全选结点必须为0').to.be.equal(0);
-    // exp(getHalfCheckedItem(cmp).length, '半选书必须为0').to.be.equal(0);
-    // exp(getSelectedItem(cmp).length, '单选数应该为0').to.be.equal(1);
-    // const rows = cmp.find('titleSpan');
-    // exp(rows.at(rows.length - 2).props().selected).to.be.true;
+    cmp.update();
+    exp(getCheckedItem(cmp).length, '全选结点必须为0').to.be.equal(0);
+    exp(getHalfCheckedItem(cmp).length, '半选书必须为0').to.be.equal(0);
+    exp(getSelectedItem(cmp).length, '单选数应该为0').to.be.equal(1);
+    const rows = cmp.find('titleSpan');
+    exp(rows.at(rows.length - 2).props().selected).to.be.true;
   });
 
   it('props:  expandAll:true | false,  mutliple: true , query:  1.3.2.1  & 1.3.2.1.1 & 1.3', () => {
@@ -683,14 +683,13 @@ describe('Tree', () => {
 
   it('props:  expandAll:true | false,  mutliple: false , query:  1.3.2.1  & 1.3.2.1.1 & 1.3', () => {
     createMutlipleTreeQueryCase(true, false);
-    // createMutlipleTreeQueryCase(false, false);
+    createMutlipleTreeQueryCase(false, false);
   });
 
   function createMutlipleTreeQueryCase(expandAll: boolean, mutliple: boolean) {
     const cmp = mount(<Tree data={rowData} expandAll={expandAll} mutliple={mutliple} />);
 
     cmp.setProps({ query: '1.3.2.1' });
-
     cmp.update();
     const getValue = () =>
       cmp
@@ -709,8 +708,9 @@ describe('Tree', () => {
 
     cmp.update();
 
-    exp(getValue()).to.be.equal('1,1.3,1.3.1,1.3.1.1,1.3.1.2,1.3.2,1.3.2.1,1.3.2.2,1.3.3');
-    exp(cmp.find('liItem').length).to.be.equal(9);
+    exp(getValue()).to.be.equal('1,1.3,1.3.1,1.3.1.1,1.3.1.2,1.3.2,1.3.2.1,1.3.2.2');
+    // 因为CSS默认Tree的高度和每一项的Item的高度都改变了，所以tree默认最多只能显示8个
+    exp(cmp.find('liItem').length).to.be.equal(8);
   }
 
   it('expandAll: false 折叠测试', () => {
@@ -914,7 +914,7 @@ describe('Tree', () => {
     exp(getHalfCheckedItem(cmp).length).to.be.equal(0);
 
     cmp
-      .find(Widget.CheckBox)
+      .find(Widget.Checkbox)
       .at(0)
       .simulate('click', { shiftKey: true });
     cmp.update();
@@ -922,7 +922,7 @@ describe('Tree', () => {
     exp(getHalfCheckedItem(cmp).length).to.be.equal(1);
     exp(
       cmp
-        .find(Widget.CheckBox)
+        .find(Widget.Checkbox)
         .at(0)
         .props().indeterminate
     ).to.be.true;
@@ -934,18 +934,18 @@ describe('Tree', () => {
     exp(getHalfCheckedItem(cmp).length).to.be.equal(0);
 
     cmp
-      .find(Widget.CheckBox)
+      .find(Widget.Checkbox)
       .at(0)
       .simulate('click');
-    // cmp.update();
-    exp(getCheckedItem(cmp).length).to.be.equal(9);
-    exp(getHalfCheckedItem(cmp).length).to.be.equal(9);
+    cmp.update();
+    exp(getCheckedItem(cmp).length).to.be.equal(8);
+    exp(getHalfCheckedItem(cmp).length).to.be.equal(8);
 
     cmp
-      .find(Widget.CheckBox)
+      .find(Widget.Checkbox)
       .at(0)
       .simulate('click', { shiftKey: true });
-    // cmp.update();
+    cmp.update();
     exp(getCheckedItem(cmp).length).to.be.equal(0);
     exp(getHalfCheckedItem(cmp).length).to.be.equal(0);
   });
@@ -964,13 +964,13 @@ describe('Tree', () => {
     exp(getCheckedItem(cmp).length).to.be.equal(1);
     exp(
       cmp
-        .find(Widget.CheckBox)
+        .find(Widget.Checkbox)
         .at(5)
         .props().indeterminate
     ).to.be.true;
     exp(
       cmp
-        .find(Widget.CheckBox)
+        .find(Widget.Checkbox)
         .at(6)
         .props().indeterminate
     ).to.be.true;
@@ -1006,55 +1006,60 @@ describe('Tree', () => {
     exp(target.getThemeTarget().state.start, '恢复到原来的底部位置').to.be.equal(17);
   });
 
-  // it('多次查询', () => {
-  //   const context = {
-  //     config: {
-  //       [Widget.Tree]: {
-  //         height: 1000,
-  //       },
-  //     },
-  //   };
-  //   const cmp = mount(<Tree data={rowData} expandAll={true} mutliple={true} />, { context });
+  it('多次查询', () => {
+    const context = {
+      config: {
+        [Widget.Tree]: {
+          height: 1100,
+        },
+      },
+    };
+    const cmp = mount(<Tree data={rowData} expandAll={true} mutliple={true} />, {
+      context,
+    });
 
-  //   const sepator = ',';
-  //   const getValue = () =>
-  //     cmp
-  //       .find('liItem')
-  //       .map(node => node.props().title)
-  //       .join(sepator);
-  //   const getTitle = item => item.title;
-  //   exp(getValue()).to.be.equal(rowData.map(getTitle).join(sepator));
-  //   cmp.setProps({ query: '3' });
+    const sepator = ',';
+    const getValue = () =>
+      cmp
+        .find('liItem')
+        .map(node => node.props().title)
+        .join(sepator);
+    const getTitle = item => item.title;
 
-  //   const query3Result = '1,1.3,1.3.1,1.3.1.1,1.3.1.2,1.3.2,1.3.2.1,1.3.2.2,1.3.3,3,3.1,3.2'.split(
-  //     ','
-  //   );
+    exp(getValue()).to.be.equal(rowData.map(getTitle).join(sepator));
+    cmp.setProps({ query: '3' });
 
-  //   exp(getValue()).to.be.equal(query3Result.join(','));
-  //   cmp.setProps({ value: query3Result });
-  //   exp(getCheckedItem(cmp).length).to.be.equal(query3Result.length);
+    const query3Result = '1,1.3,1.3.1,1.3.1.1,1.3.1.2,1.3.2,1.3.2.1,1.3.2.2,1.3.3,3,3.1,3.2'.split(
+      ','
+    );
 
-  //   const query2Result = '1,1.2,1.2.1,1.2.2,1.2.2.1,1.2.2.1.1,1.2.2.1.2,1.2.2.2,1.3,1.3.1,1.3.1.2,1.3.2,1.3.2.1,1.3.2.2,2,2.1,2.1.1,2.1.2,2.1.2.1,2.2,2.2.1,2.2.1.1,2.2.1.2,2.2.2,3,3.2'.split(
-  //     ','
-  //   );
-  //   cmp.setProps({ query: '2' });
-  //   exp(getValue()).to.be.equal(query2Result.join(','));
+    exp(getValue()).to.be.equal(query3Result.join(','));
+    cmp.setProps({ value: query3Result });
+    exp(getCheckedItem(cmp).length).to.be.equal(query3Result.length);
 
-  //   const value = {};
-  //   const callback = v => {
-  //     value[v] = true;
-  //   };
-  //   query3Result.forEach(callback);
-  //   query2Result.forEach(callback);
-  //   const mergerValue = Object.keys(value);
-  //   cmp.setProps({ value: mergerValue });
+    const query2Result = '1,1.2,1.2.1,1.2.2,1.2.2.1,1.2.2.1.1,1.2.2.1.2,1.2.2.2,1.3,1.3.1,1.3.1.2,1.3.2,1.3.2.1,1.3.2.2,2,2.1,2.1.1,2.1.2,2.1.2.1,2.2,2.2.1,2.2.1.1,2.2.1.2,2.2.2,3,3.2'.split(
+      ','
+    );
+    cmp.setProps({ query: '2' });
+    exp(getValue()).to.be.equal(query2Result.join(','));
 
-  //   cmp.setProps({ query: '' });
-  //   exp(getValue()).to.be.equal(rowData.map(getTitle).join(sepator));
-  //   exp(getCheckedItem(cmp).length + getHalfCheckedItem(cmp).length).to.be.equal(
-  //     mergerValue.length
-  //   );
-  // });
+    const value = {};
+    const callback = v => {
+      value[v] = true;
+    };
+    query3Result.forEach(callback);
+    query2Result.forEach(callback);
+    const mergerValue = Object.keys(value);
+
+    cmp.setProps({ value: mergerValue });
+
+    cmp.setProps({ query: '' });
+    cmp.update();
+
+    exp(getValue()).to.be.equal(rowData.map(getTitle).join(sepator));
+    exp(getHalfCheckedItem(cmp).length).to.be.equal(mergerValue.length);
+    exp(getCheckedItem(cmp).length).to.be.equal(mergerValue.length - 1);
+  });
 
   it('height 为200的边界情况', () => {
     const cmp = mount(<Tree data={rowData} expandAll={true} start={23} />);

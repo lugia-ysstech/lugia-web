@@ -1,463 +1,264 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Card css 1`] = `
-.c26 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
-
 .c10 {
-  font-variant: tabular-nums;
-  color: rgba(0,0,0,0.65);
   box-sizing: border-box;
   display: inline-block;
   text-align: center;
-  background: #cccccc;
   white-space: nowrap;
   position: relative;
-  width: 6.666666666666667em;
-  height: 6.666666666666667em;
-  line-height: 2.666666666666667em;
+  color: rgba(0,0,0,0.65);
   border-radius: 50%;
+  line-height: 3.2rem;
 }
 
 .c11 {
-  border-radius: 50%;
-  width: 6.666666666666667em;
-  height: 6.666666666666667em;
+  vertical-align: middle;
+  background-color: transparent;
 }
 
 .c1 {
+  border: 0.1rem solid #cccccc;
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 29.166666666666668em;
-  height: 10.833333333333334em;
-  box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
-  border: 0.08333333333333334em solid #e8e8e8;
-  background: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.6rem rgba(0,0,50,0.1);
+  background-color: #ffffff;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  border-radius: 0.4166666666666667em;
 }
 
-.c6 {
+.c8 {
+  border: 0.1rem solid #cccccc;
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 25em;
-  height: 16.666666666666668em;
-  box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
-  border: 0.08333333333333334em solid #e8e8e8;
-  background: #ffffff;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  border-radius: 0.4166666666666667em;
-}
-
-.c7 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 26.666666666666668em;
-  height: 9.666666666666666em;
-  border: 0.08333333333333334em solid #e8e8e8;
-  background: #ffffff;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  border-radius: 0.4166666666666667em;
-}
-
-.c7:hover {
-  box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
-}
-
-.c12 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 12.5em;
-  height: 15.833333333333334em;
-  border: 0.08333333333333334em solid #e8e8e8;
-  background: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.6rem rgba(0,0,50,0.1);
+  background-color: #ffffff;
+  text-align: center;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  border-radius: 0.4166666666666667em;
 }
 
-.c12:hover {
-  box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
+.c13 {
+  border: 0.1rem solid #cccccc;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.6rem rgba(0,0,50,0.1);
+  background-color: #ffffff;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c3 {
+  font-size: 1.2rem;
+  display: inline-block;
+  width: 100%;
+}
+
+.c15 {
+  width: 12rem;
+  height: 11.2rem;
+}
+
+.c14 {
+  position: relative;
+  width: 20rem;
+  height: 15rem;
+  display: block;
 }
 
 .c16 {
   position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 26.666666666666668em;
-  height: 9.333333333333334em;
-  border: 0.08333333333333334em solid #e8e8e8;
-  background: #ffffff;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  border-radius: 0.4166666666666667em;
-}
-
-.c16:hover {
-  box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
-}
-
-.c18 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 16.666666666666668em;
-  height: 19.166666666666668em;
-  border: 0.08333333333333334em solid #e8e8e8;
-  background: #ffffff;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  border-radius: 0.4166666666666667em;
-}
-
-.c18:hover {
-  box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
-}
-
-.c20 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 58.333333333333336em;
-  height: 25em;
-  border: 0.08333333333333334em solid #e8e8e8;
-  background: #ffffff;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  border-radius: 0.4166666666666667em;
-}
-
-.c20:hover {
-  box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
-}
-
-.c39 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 16.666666666666668em;
-  height: 18.333333333333336em;
-  border: 0.08333333333333334em solid #e8e8e8;
-  background: #ffffff;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  border-radius: 0.4166666666666667em;
-}
-
-.c39:hover {
-  box-shadow: 0 0 0.5em rgba(0,0,50,0.1);
-}
-
-.c3 {
-  margin-left: 1.3333333333333335em;
-  font-size: 1.2rem;
-  margin-bottom: 1.1666666666666667em;
-  margin-top: 1.5em;
+  width: 16rem;
+  height: 10rem;
   display: inline-block;
-  width: inherit;
-  height: inherit;
-}
-
-.c15 {
-  font-size: 1.2rem;
-  text-align: center;
-  display: inline-block;
-  width: inherit;
-  height: inherit;
-}
-
-.c21 {
-  font-size: 1.2rem;
-  margin-bottom: 1.1666666666666667em;
-  margin-top: 1.5em;
-  display: inline-block;
-  width: inherit;
-  height: inherit;
-}
-
-.c17 {
-  width: inherit;
-  height: inherit;
-}
-
-.c8 {
-  position: relative;
-  width: 10em;
-  height: inherit;
-  display: inline-block;
-  text-align: center;
-}
-
-.c13 {
-  position: relative;
-  width: inherit;
-  height: 9.333333333333334em;
-  display: block;
-  text-align: center;
-}
-
-.c19 {
-  position: relative;
-  width: 16.666666666666668em;
-  height: 10.833333333333334em;
-  display: block;
-  text-align: center;
 }
 
 .c9 {
-  margin: 1.6666666666666667em 1.6666666666666667em;
-  border-radius: 50%;
+  position: relative;
+  text-align: center;
+  width: 16rem;
+  height: 10rem;
+  display: block;
 }
 
-.c14 {
-  margin: 1.6666666666666667em 0;
-  border-radius: 50%;
+.c12 {
+  position: relative;
+  text-align: center;
+  width: 8rem;
+  height: 100%;
+  display: inline-block;
 }
 
-.c4 {
+.c5 {
   text-align: inherit;
   display: inline-block;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  font-size: 1.6rem;
-  font-weight: 500;
-  color: #333333;
   overflow: hidden;
   white-space: nowrap;
+  font-size: 1.6rem;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
-.c5 {
+.c4 {
+  display: inline-block;
+}
+
+.c7 {
+  left: -1.4rem;
+  position: relative;
+  display: inline-block;
+  border-radius: 0.5rem;
+  width: 0.5rem;
+  height: 2rem;
+  background-color: #4d63ff;
+}
+
+.c6 {
   text-align: inherit;
   font-size: 1.4rem;
-  margin-top: 1em;
   color: #666666;
 }
 
 .c2 {
-  position: absolute;
   font-size: 1.4rem;
   font-weight: 400;
-  right: 1.6666666666666667em;
-  top: 1.3333333333333335em;
-}
-
-.c29 {
-  position: relative;
-  cursor: pointer;
-  white-space: nowrap;
-  display: inline-block;
-  padding: 0 1.6666666666666667em 0 1.6666666666666667em;
-  line-height: 2.5em;
-  box-shadow: 0 0 0.5em none;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  background: none;
-  z-index: 5;
-  box-sizing: border-box;
-}
-
-.c29:hover > div {
-  color: #4d63ff;
-}
-
-.c29:hover > span > i:first-child {
-  color: #4d63ff;
-}
-
-.c32 {
-  color: #4d63ff;
-  position: relative;
-  display: inline-block;
-  box-sizing: border-box;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  text-align: left;
-  padding: 0 0em 0 0.8333333333333334em;
-  height: 2.666666666666667em;
-  line-height: 2.666666666666667em;
-}
-
-.c32:focus {
-  color: #4d63ff;
-}
-
-.c34 {
-  color: none;
-  position: relative;
-  display: inline-block;
-  box-sizing: border-box;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  text-align: left;
-  padding: 0 0em 0 0.8333333333333334em;
-  height: 2.666666666666667em;
-  line-height: 2.666666666666667em;
-}
-
-.c34:focus {
-  color: #4d63ff;
-}
-
-.c31 {
-  color: #4d63ff;
-  display: inline-block;
-}
-
-.c33 {
-  color: none;
-  display: inline-block;
-}
-
-.c30 {
-  display: inline-block;
-  height: 1em;
-  width: 1em;
-}
-
-.c38 {
+  top: 1.6rem;
+  right: 2rem;
   position: absolute;
-  display: inline-block;
-  overflow: hidden;
-  width: 100%;
-}
-
-.c35 {
-  background-color: blue;
-  position: absolute;
-  box-sizing: border-box;
-  z-index: 3;
-  border-radius: 0.16666666666666669em;
-  height: 0.16666666666666669em;
-  width: 8.333333333333334em;
-  bottom: 0;
-  -webkit-transform: translateX(1.6666666666666667em);
-  -ms-transform: translateX(1.6666666666666667em);
-  transform: translateX(1.6666666666666667em);
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
 }
 
 .c24 {
-  position: absolute;
-  font-size: 1.2rem;
-  display: none;
-  z-index: 5;
-  cursor: not-allowed;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  line-height: 100%;
-  top: 50%;
-  left: 0.8333333333333334em;
-}
-
-.c36 {
-  position: absolute;
-  font-size: 1.2rem;
-  display: none;
-  z-index: 5;
+  position: relative;
   cursor: pointer;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  line-height: 100%;
-  top: 50%;
-  right: 0.8333333333333334em;
+  white-space: nowrap;
+  padding: 0 20px;
+  display: inline-block;
+  text-align: center;
 }
 
 .c22 {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
   position: relative;
-  width: NaNem;
-  height: NaNem;
+  cursor: pointer;
+  white-space: nowrap;
+  padding: 0 20px;
+  display: inline-block;
+  text-align: center;
 }
 
-.c27 {
+.c22 > div::before {
+  content: '';
+  background: #4d63ff;
+  border-radius: 2px;
+  position: absolute;
+  bottom: -1px;
   width: 100%;
+  height: 2px;
+  left: 50%;
+  -webkit-animation: gaMprO 0.2s linear forwards;
+  animation: gaMprO 0.2s linear forwards;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.c23 {
+  position: relative;
   display: inline-block;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 4.2rem;
+  height: 4.2rem;
+}
+
+.c23:focus {
+  color: #4d63ff;
+}
+
+.c20 {
+  width: 100%;
   white-space: nowrap;
   overflow: hidden;
+  float: left;
 }
 
-.c28 {
-  height: 2.8333333333333335em;
+.c21 {
   display: inline-block;
   box-sizing: border-box;
   white-space: nowrap;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
-  -webkit-transform: translateX(0em);
-  -ms-transform: translateX(0em);
-  transform: translateX(0em);
+  -webkit-transform: translateX(0rem);
+  -ms-transform: translateX(0rem);
+  transform: translateX(0rem);
 }
 
-.c23 {
-  height: 2.8333333333333335em;
-  line-height: 2.8333333333333335em;
+.c19 {
   position: relative;
-  border-bottom: 0.08333333333333334em solid #e8e8e8;
-  background: none;
-  padding: 0 2em;
-  margin: 1.6666666666666667em 0;
   z-index: 99;
+  overflow: hidden;
 }
 
 .c25 {
-  display: inline-block;
-  font-style: normal;
-  text-align: center;
-  font-size: 1rem;
-  cursor: not-allowed;
+  position: relative;
+  padding: 10px;
+  min-width: 100px;
+  min-height: 100px;
 }
 
-.c37 {
+.c26 {
+  overflow: hidden;
+  background: #fff;
+  padding: 10px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  display: block;
+  z-index: 10;
+}
+
+.c27 {
+  overflow: hidden;
+  background: #fff;
+  padding: 10px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.c18 {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
   display: inline-block;
-  font-style: normal;
-  text-align: center;
-  font-size: 1rem;
-  cursor: pointer;
 }
 
 .c0 {
@@ -466,27 +267,34 @@ exports[`Card css 1`] = `
   display: inline-block;
 }
 
-.c40 {
+.c17 {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.c28 {
   text-align: center;
   width: 100%;
   height: 100%;
 }
 
-.c41 {
+.c29 {
   text-align: center;
   font-size: 16px;
   color: #666;
-  margin-bottom: 26px;
+  height: 45px;
+  padding-top: 34px;
+  padding-bottom: 26px;
   width: 100%;
 }
 
-.c42 {
+.c30 {
   text-align: center;
   color: #4d63ff;
   display: inline-block;
 }
 
-.c43 {
+.c31 {
   position: absolute;
   text-align: center;
   font-size: 14px;
@@ -512,25 +320,62 @@ exports[`Card css 1`] = `
   >
     <div
       className="c1"
+      style={
+        Object {
+          "height": "13rem",
+          "width": "35rem",
+        }
+      }
       type="simple"
     >
       <div
         className="c2"
+        style={Object {}}
       >
         操作
       </div>
       <div
         className="c3"
+        style={
+          Object {
+            "paddingBottom": "0rem",
+            "paddingLeft": "1rem",
+            "paddingRight": "1rem",
+            "paddingTop": "1.6rem",
+          }
+        }
         type="simple"
       >
         <div
           className="c4"
+          style={Object {}}
         >
-          this is title
-           
+          <div
+            className="c5"
+            style={
+              Object {
+                "fontWeight": 500,
+                "paddingBottom": "0rem",
+                "paddingLeft": "1rem",
+                "paddingRight": "1rem",
+                "paddingTop": "0.4rem",
+              }
+            }
+            type="simple"
+          >
+            this is title
+          </div>
         </div>
         <div
-          className="c5"
+          className="c6"
+          style={
+            Object {
+              "paddingBottom": "0rem",
+              "paddingLeft": "1rem",
+              "paddingRight": "1rem",
+              "paddingTop": "1.4rem",
+            }
+          }
         >
           this is description
            
@@ -545,33 +390,140 @@ exports[`Card css 1`] = `
     className="c0"
   >
     <div
-      className="c6"
+      className="c1"
+      style={
+        Object {
+          "height": "20rem",
+          "width": "50rem",
+        }
+      }
       type="simple"
     >
       <div
-        className="c2"
-      />
-      <div
         className="c3"
+        style={
+          Object {
+            "paddingBottom": "0rem",
+            "paddingLeft": "1rem",
+            "paddingRight": "1rem",
+            "paddingTop": "1.6rem",
+          }
+        }
         type="simple"
       >
         <div
           className="c4"
+          style={Object {}}
+        >
+          <div
+            className="c5"
+            style={
+              Object {
+                "fontWeight": 500,
+                "paddingBottom": "0rem",
+                "paddingLeft": "1rem",
+                "paddingRight": "1rem",
+                "paddingTop": "0.4rem",
+              }
+            }
+            type="simple"
+          >
+            <div>
+              this is title
+            </div>
+          </div>
+        </div>
+        <div
+          className="c6"
+          style={
+            Object {
+              "paddingBottom": "0rem",
+              "paddingLeft": "1rem",
+              "paddingRight": "1rem",
+              "paddingTop": "1.4rem",
+            }
+          }
         >
           <div>
+            this is description
+          </div>
+          <div>
+            this is description
+          </div>
+          <div>
+            this is description
+          </div>
+          <div>
+            this is description
+          </div>
+           
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>
+    tip样式
+  </p>
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+      style={
+        Object {
+          "height": "20rem",
+          "width": "50rem",
+        }
+      }
+      type="tip"
+    >
+      <div
+        className="c3"
+        style={
+          Object {
+            "paddingBottom": "0rem",
+            "paddingLeft": "3rem",
+            "paddingRight": "3rem",
+            "paddingTop": "1.6rem",
+          }
+        }
+        type="tip"
+      >
+        <div
+          className="c4"
+          style={Object {}}
+        >
+          <div
+            className="c7"
+            style={Object {}}
+          />
+          <div
+            className="c5"
+            style={
+              Object {
+                "fontWeight": 700,
+                "paddingBottom": "0rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "1rem",
+                "paddingTop": "0.4rem",
+              }
+            }
+            type="tip"
+          >
             this is title
           </div>
-           
         </div>
         <div
-          className="c5"
+          className="c6"
+          style={
+            Object {
+              "paddingBottom": "0rem",
+              "paddingLeft": "0.5rem",
+              "paddingRight": "1rem",
+              "paddingTop": "1.4rem",
+            }
+          }
         >
-          <div>
-            this is description
-          </div>
-          <div>
-            this is description
-          </div>
           <div>
             this is description
           </div>
@@ -590,54 +542,97 @@ exports[`Card css 1`] = `
     className="c0"
   >
     <div
-      className="c7"
+      className="c8"
+      style={
+        Object {
+          "height": "22rem",
+          "width": "16rem",
+        }
+      }
       type="avatar"
     >
       <div
-        className="c2"
-      />
-      <div
-        className="c8"
-        size={
+        className="c9"
+        style={
           Object {
-            "height": undefined,
-            "width": undefined,
+            "height": "10rem",
+            "marginBottom": "0rem",
+            "marginLeft": "0rem",
+            "marginRight": "0rem",
+            "marginTop": "2rem",
+            "width": "16rem",
+          }
+        }
+      >
+        <div
+          className="c10"
+          style={
+            Object {
+              "backgroundColor": "#cccccc",
+            }
+          }
+        >
+          <span>
+            <img
+              alt=""
+              className="c11"
+              src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png"
+              style={
+                Object {
+                  "borderBottomLeftRadius": "50%",
+                  "borderBottomRightRadius": "50%",
+                  "borderTopLeftRadius": "50%",
+                  "borderTopRightRadius": "50%",
+                  "height": "8rem",
+                  "width": "8rem",
+                }
+              }
+            />
+          </span>
+        </div>
+      </div>
+      <div
+        className="c3"
+        style={
+          Object {
+            "paddingBottom": "0rem",
+            "paddingLeft": "0rem",
+            "paddingRight": "0rem",
+            "paddingTop": "1.6rem",
           }
         }
         type="avatar"
       >
-        <span
-          className="c9 c10"
-          name="lugia"
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          shape="circle"
-          size="default"
-          src="https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=7878a9471d38534398c28f73f27adb1b/738b4710b912c8fc8e9cace6f1039245d68821a9.jpg"
-        >
-          <img
-            className="c11"
-            shape="circle"
-            src="https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=7878a9471d38534398c28f73f27adb1b/738b4710b912c8fc8e9cace6f1039245d68821a9.jpg"
-          />
-        </span>
-      </div>
-      <div
-        className="c3"
-        type="avatar"
-      >
         <div
           className="c4"
+          style={Object {}}
         >
-          this is title
-           
+          <div
+            className="c5"
+            style={
+              Object {
+                "fontWeight": 500,
+                "paddingBottom": "0rem",
+                "paddingLeft": "1rem",
+                "paddingRight": "1rem",
+                "paddingTop": "0.4rem",
+              }
+            }
+            type="avatar"
+          >
+            this is title
+          </div>
         </div>
         <div
-          className="c5"
+          className="c6"
+          style={
+            Object {
+              "paddingBottom": "0rem",
+              "paddingLeft": "1rem",
+              "paddingRight": "1rem",
+              "paddingTop": "1.4rem",
+            }
+          }
         >
           this is description
            
@@ -652,54 +647,190 @@ exports[`Card css 1`] = `
     className="c0"
   >
     <div
-      className="c12"
+      className="c1"
+      style={
+        Object {
+          "height": "18rem",
+          "width": "26rem",
+        }
+      }
       type="avatar"
     >
       <div
-        className="c2"
-      />
-      <div
-        className="c13"
-        size={
+        className="c12"
+        style={
           Object {
-            "height": undefined,
-            "width": undefined,
+            "marginBottom": "0rem",
+            "marginLeft": "1rem",
+            "marginRight": "0rem",
+            "marginTop": "1rem",
+            "width": "8rem",
+          }
+        }
+      >
+        <div
+          className="c10"
+          style={
+            Object {
+              "backgroundColor": "#cccccc",
+            }
+          }
+        >
+          <span>
+            <img
+              alt=""
+              className="c11"
+              src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png"
+              style={
+                Object {
+                  "borderBottomLeftRadius": "50%",
+                  "borderBottomRightRadius": "50%",
+                  "borderTopLeftRadius": "50%",
+                  "borderTopRightRadius": "50%",
+                  "height": "8rem",
+                  "width": "8rem",
+                }
+              }
+            />
+          </span>
+        </div>
+      </div>
+      <div
+        className="c3"
+        style={
+          Object {
+            "paddingBottom": "0rem",
+            "paddingLeft": "1rem",
+            "paddingRight": "1rem",
+            "paddingTop": "1.6rem",
           }
         }
         type="avatar"
       >
-        <span
-          className="c14 c10"
-          name="lugia"
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          shape="circle"
-          size="default"
-          src="https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=7878a9471d38534398c28f73f27adb1b/738b4710b912c8fc8e9cace6f1039245d68821a9.jpg"
+        <div
+          className="c4"
+          style={Object {}}
         >
-          <img
-            className="c11"
-            shape="circle"
-            src="https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=7878a9471d38534398c28f73f27adb1b/738b4710b912c8fc8e9cace6f1039245d68821a9.jpg"
-          />
-        </span>
+          <div
+            className="c5"
+            style={
+              Object {
+                "fontWeight": 500,
+                "paddingBottom": "0rem",
+                "paddingLeft": "1rem",
+                "paddingRight": "1rem",
+                "paddingTop": "0.4rem",
+              }
+            }
+            type="avatar"
+          >
+            this is title
+          </div>
+        </div>
+        <div
+          className="c6"
+          style={
+            Object {
+              "paddingBottom": "0rem",
+              "paddingLeft": "1rem",
+              "paddingRight": "1rem",
+              "paddingTop": "1.4rem",
+            }
+          }
+        >
+          <div>
+            <div>
+              this is description
+            </div>
+          </div>
+           
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>
+    图片样式
+  </p>
+  <div
+    className="c0"
+  >
+    <div
+      className="c13"
+      style={
+        Object {
+          "height": "35rem",
+          "opacity": 0.8,
+          "width": "20rem",
+        }
+      }
+      type="image"
+    >
+      <div
+        className="c14"
+        style={
+          Object {
+            "height": "15rem",
+            "width": "20rem",
+          }
+        }
+      >
+        <img
+          className="c15"
+          src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg"
+          style={
+            Object {
+              "height": "16rem",
+              "width": "20rem",
+            }
+          }
+        />
       </div>
       <div
-        className="c15"
-        type="avatar"
+        className="c3"
+        style={
+          Object {
+            "paddingBottom": "0rem",
+            "paddingLeft": "1rem",
+            "paddingRight": "1rem",
+            "paddingTop": "1.6rem",
+          }
+        }
+        type="image"
       >
         <div
           className="c4"
+          style={Object {}}
         >
-          this is title
-           
+          <div
+            className="c5"
+            style={
+              Object {
+                "color": "pink",
+                "fontWeight": 500,
+                "height": "2rem",
+                "paddingBottom": "0rem",
+                "paddingLeft": "1rem",
+                "paddingRight": "1rem",
+                "paddingTop": "0.4rem",
+                "width": "10rem",
+              }
+            }
+            type="image"
+          >
+            this is title
+          </div>
         </div>
         <div
-          className="c5"
+          className="c6"
+          style={
+            Object {
+              "color": "blue",
+              "paddingBottom": "0rem",
+              "paddingLeft": "1rem",
+              "paddingRight": "1rem",
+              "paddingTop": "1.4rem",
+            }
+          }
         >
           this is description
            
@@ -714,86 +845,77 @@ exports[`Card css 1`] = `
     className="c0"
   >
     <div
-      className="c16"
+      className="c1"
+      style={
+        Object {
+          "height": "20rem",
+          "width": "36rem",
+        }
+      }
       type="image"
     >
       <div
-        className="c2"
-      />
-      <div
-        className="c8"
-        size={
+        className="c16"
+        style={
           Object {
-            "height": undefined,
-            "width": undefined,
+            "height": "10rem",
+            "width": "16rem",
           }
         }
-        type="image"
       >
         <img
-          className="c17"
-          src="https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=4f88e0c6b3de9c82b268f1dd0de8eb6f/f9198618367adab4973d1fbc8bd4b31c8601e464.jpg"
+          className="c15"
+          src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg"
+          style={
+            Object {
+              "height": "20rem",
+              "width": "16rem",
+            }
+          }
         />
       </div>
       <div
         className="c3"
-        type="image"
-      >
-        <div
-          className="c4"
-        >
-          this is title
-           
-        </div>
-        <div
-          className="c5"
-        >
-          this is description
-           
-        </div>
-      </div>
-    </div>
-  </div>
-  <p>
-    图片样式
-  </p>
-  <div
-    className="c0"
-  >
-    <div
-      className="c18"
-      type="image"
-    >
-      <div
-        className="c2"
-      />
-      <div
-        className="c19"
-        size={
+        style={
           Object {
-            "height": 130,
-            "width": 200,
+            "paddingBottom": "0rem",
+            "paddingLeft": "1rem",
+            "paddingRight": "1rem",
+            "paddingTop": "1.6rem",
           }
         }
         type="image"
       >
-        <img
-          className="c17"
-          src="https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=4f88e0c6b3de9c82b268f1dd0de8eb6f/f9198618367adab4973d1fbc8bd4b31c8601e464.jpg"
-        />
-      </div>
-      <div
-        className="c3"
-        type="image"
-      >
         <div
           className="c4"
+          style={Object {}}
         >
-          this is title
-           
+          <div
+            className="c5"
+            style={
+              Object {
+                "fontWeight": 500,
+                "paddingBottom": "0rem",
+                "paddingLeft": "1rem",
+                "paddingRight": "1rem",
+                "paddingTop": "0.4rem",
+              }
+            }
+            type="image"
+          >
+            this is title
+          </div>
         </div>
         <div
-          className="c5"
+          className="c6"
+          style={
+            Object {
+              "paddingBottom": "0rem",
+              "paddingLeft": "1rem",
+              "paddingRight": "1rem",
+              "paddingTop": "1.4rem",
+            }
+          }
         >
           this is description
            
@@ -808,188 +930,189 @@ exports[`Card css 1`] = `
     className="c0"
   >
     <div
-      className="c20"
+      className="c1"
+      style={
+        Object {
+          "height": "24rem",
+          "width": "40rem",
+        }
+      }
       type="combo"
     >
       <div
         className="c2"
+        style={Object {}}
       >
         操作
       </div>
       <div
-        className="c21"
+        className="c3"
         content={
-          <sv_widget_ThemeWrapWidgetsv_widget_Tabs
-            data={
-              Array [
-                Object {
-                  "content": 1111,
-                  "icon": "lugia-icon-financial_archive",
-                  "title": 1111111111,
-                },
-                Object {
-                  "content": 22222,
-                  "icon": "lugia-icon-financial_archive",
-                  "title": 22222222222,
-                },
-                Object {
-                  "content": 333,
-                  "icon": "lugia-icon-financial_archive",
-                  "title": 3333333,
-                },
-                Object {
-                  "content": 4444444,
-                  "icon": "lugia-icon-financial_archive",
-                  "title": 44444444,
-                },
-                Object {
-                  "content": 5555555,
-                  "icon": "lugia-icon-financial_archive",
-                  "title": 55555555,
-                },
-              ]
-            }
-          />
+          <ForwardRef>
+            <ForwardRef
+              data={
+                Array [
+                  Object {
+                    "content": "content of Tab1",
+                    "title": "Tab1",
+                  },
+                  Object {
+                    "content": "content of Tab2",
+                    "title": "Tab2",
+                  },
+                  Object {
+                    "content": "content of Tab3",
+                    "title": "Tab3",
+                  },
+                ]
+              }
+            />
+          </ForwardRef>
+        }
+        style={
+          Object {
+            "paddingBottom": "0rem",
+            "paddingLeft": "0rem",
+            "paddingRight": "0rem",
+            "paddingTop": "1.6rem",
+          }
         }
         type="combo"
       >
         <div
-          className="c22"
+          className="c4"
+          style={Object {}}
+        />
+        <div
+          className="c17"
         >
           <div
-            className="c23"
+            className="c18"
           >
-            <span
-              className="c24"
-              onClick={[Function]}
-              type="pre"
-            >
-              <i
-                className="lugia-icon-direction_Left c25 c26"
-              />
-            </span>
             <div
-              className="c27"
+              className="c19"
+              style={Object {}}
             >
               <div
-                className="c28"
-                x={-0}
+                className="c20"
+                style={Object {}}
               >
                 <div
-                  className="c29"
-                  onClick={[Function]}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
+                  className="c21"
+                  style={
+                    Object {
+                      "borderBottomColor": "#e8e8e8",
+                      "borderBottomStyle": "solid",
+                      "borderBottomWidth": "0.1rem",
+                    }
+                  }
+                  x={-0}
                 >
-                  <span
-                    className="c30"
-                  >
-                    <i
-                      className="lugia-icon-financial_archive c31 c26"
-                    />
-                  </span>
                   <div
-                    className="c32"
+                    className="c22"
+                    disabled={false}
+                    onClick={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    style={
+                      Object {
+                        "color": "#4d63ff",
+                      }
+                    }
                   >
-                    1111111111
+                    <div
+                      className="lineTitle  c23"
+                      disabled={false}
+                      style={
+                        Object {
+                          "lineHeight": "3.4rem",
+                        }
+                      }
+                    >
+                      Tab1
+                    </div>
+                  </div>
+                  <div
+                    className="c24"
+                    disabled={false}
+                    onClick={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    style={Object {}}
+                  >
+                    <div
+                      className="lineTitle  c23"
+                      disabled={false}
+                      style={
+                        Object {
+                          "lineHeight": "3.4rem",
+                        }
+                      }
+                    >
+                      Tab2
+                    </div>
+                  </div>
+                  <div
+                    className="c24"
+                    disabled={false}
+                    onClick={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    style={Object {}}
+                  >
+                    <div
+                      className="lineTitle  c23"
+                      disabled={false}
+                      style={
+                        Object {
+                          "lineHeight": "3.4rem",
+                        }
+                      }
+                    >
+                      Tab3
+                    </div>
                   </div>
                 </div>
-                <div
-                  className="c29"
-                  onClick={[Function]}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                >
-                  <span
-                    className="c30"
-                  >
-                    <i
-                      className="lugia-icon-financial_archive c33 c26"
-                    />
-                  </span>
-                  <div
-                    className="c34"
-                  >
-                    22222222222
-                  </div>
-                </div>
-                <div
-                  className="c29"
-                  onClick={[Function]}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                >
-                  <span
-                    className="c30"
-                  >
-                    <i
-                      className="lugia-icon-financial_archive c33 c26"
-                    />
-                  </span>
-                  <div
-                    className="c34"
-                  >
-                    3333333
-                  </div>
-                </div>
-                <div
-                  className="c29"
-                  onClick={[Function]}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                >
-                  <span
-                    className="c30"
-                  >
-                    <i
-                      className="lugia-icon-financial_archive c33 c26"
-                    />
-                  </span>
-                  <div
-                    className="c34"
-                  >
-                    44444444
-                  </div>
-                </div>
-                <div
-                  className="c29"
-                  onClick={[Function]}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                >
-                  <span
-                    className="c30"
-                  >
-                    <i
-                      className="lugia-icon-financial_archive c33 c26"
-                    />
-                  </span>
-                  <div
-                    className="c34"
-                  >
-                    55555555
-                  </div>
-                </div>
-                <div
-                  className="c35"
-                  x={20}
-                />
               </div>
             </div>
-            <span
-              className="c36"
-              onClick={[Function]}
-              type="next"
+            <div
+              className="c25"
+              style={Object {}}
             >
-              <i
-                className="lugia-icon-direction_right c37 c26"
-              />
-            </span>
-          </div>
-          <div
-            className="c38"
-          >
-            1111
+              <div
+                className="c26"
+                style={Object {}}
+              >
+                <div
+                  className=""
+                  style={Object {}}
+                >
+                  content of Tab1
+                </div>
+              </div>
+              <div
+                className="c27"
+                style={Object {}}
+              >
+                <div
+                  className=""
+                  style={Object {}}
+                >
+                  content of Tab2
+                </div>
+              </div>
+              <div
+                className="c27"
+                style={Object {}}
+              >
+                <div
+                  className=""
+                  style={Object {}}
+                >
+                  content of Tab3
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1002,30 +1125,45 @@ exports[`Card css 1`] = `
     className="c0"
   >
     <div
-      className="c39"
+      className="c1"
+      style={
+        Object {
+          "height": "22rem",
+          "width": "20rem",
+        }
+      }
       type="combo"
     >
       <div
-        className="c2"
-      />
-      <div
-        className="c21"
+        className="c3"
         content={<AmountCard />}
+        style={
+          Object {
+            "paddingBottom": "0rem",
+            "paddingLeft": "0rem",
+            "paddingRight": "0rem",
+            "paddingTop": "1.6rem",
+          }
+        }
         type="combo"
       >
         <div
-          className="c40"
+          className="c4"
+          style={Object {}}
+        />
+        <div
+          className="c28"
         >
           <div
-            className="c41"
+            className="c29"
           >
             价格
           </div>
           <div
-            className="c42"
+            className="c30"
           >
             <div
-              className="c42"
+              className="c30"
               style={
                 Object {
                   "fontSize": 32,
@@ -1035,7 +1173,7 @@ exports[`Card css 1`] = `
               9
             </div>
             <div
-              className="c42"
+              className="c30"
               style={
                 Object {
                   "fontSize": 18,
@@ -1046,7 +1184,7 @@ exports[`Card css 1`] = `
             </div>
           </div>
           <button
-            className="c43"
+            className="c31"
           >
             购买
           </button>

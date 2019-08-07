@@ -54,9 +54,10 @@ describe('AmountInputDemo', () => {
   const defaultValue = 1234;
   const firstValue = '4321';
   const changeValue = '5678';
-  const displayValue = '¥1,234';
-  const displayFirstValue = '¥4,321';
-  const displayChangeValue = '¥5,678';
+  const displayValue = '1,234';
+  const activedValue = '¥1,234';
+  const displayFirstValue = '4,321';
+  const displayChangeValue = '5,678';
   const displayAmountDefaultValue = '壹仟贰佰叁拾肆元整';
   const displayAmountFirstValue = '壹仟贰佰叁拾肆元整';
   const displayAmountChangeValue = '伍仟陆佰柒拾捌元整';
@@ -221,13 +222,20 @@ describe('AmountInputDemo', () => {
   });
   it('props: value 壹仟贰佰叁拾肆元整 onChange LimitAmountInput changed', () => {
     const component = mount(<LimitAmountInput value={displayAmountDefaultValue} />);
-    const getToolTip = () => component.children().find('sv_widget_Tooltip');
-    const getToolTipValue = function() {
+    const getToolTip = () => component.children().find('lugia_widget_Tooltip');
+    const getToolTipValue = () => {
       return getToolTip().props().title.props.children;
     };
     assertInputValue(component, displayAmountDefaultValue);
-    expect(getToolTipValue()).toBe(displayValue);
-    clickToolTip(getToolTip());
+    expect(getToolTipValue()).toBe(activedValue);
+    component
+      .find('lugia_widget_AmountInput')
+      .at(0)
+      .simulate('focus');
+    component
+      .find('toolTip_title')
+      .at(0)
+      .simulate('click');
     assertInputValue(component, displayValue);
     expect(getToolTipValue()).toBe(displayAmountDefaultValue);
     component.find('input').simulate('change', { target: { value: changeValue } });
@@ -283,20 +291,27 @@ describe('AmountInputDemo', () => {
 
   it('onTransform defaultValue: 1234', () => {
     const component = mount(<AmountInput defaultValue={defaultValue} />);
-    const getToolTip = () => component.children().find('sv_widget_Tooltip');
-
+    const getToolTip = () => component.children().find('lugia_widget_Tooltip');
     const getToolTipValue = function() {
       return getToolTip().props().title.props.children;
     };
-
+    component
+      .find('lugia_widget_AmountInput')
+      .at(0)
+      .simulate('focus');
     expect(getToolTipValue()).toBe(displayAmountDefaultValue);
+    component
+      .find('toolTip_title')
+      .at(0)
+      .simulate('click');
 
-    clickToolTip(getToolTip());
     expect(getInputComponent(component).state.value).toBe(defaultValue + '');
     assertInputValue(component, displayAmountDefaultValue);
-    expect(getToolTipValue()).toBe(displayValue);
-
-    clickToolTip(getToolTip());
+    expect(getToolTipValue()).toBe(activedValue);
+    component
+      .find('toolTip_title')
+      .at(0)
+      .simulate('click');
     expect(getInputComponent(component).state.value).toBe(defaultValue + '');
     assertInputValue(component, displayValue);
     expect(getToolTipValue()).toBe(displayAmountDefaultValue);
@@ -313,11 +328,4 @@ describe('AmountInputDemo', () => {
     component.setProps({ value: newValue });
     expect(getInputComponent(component).state.value).toBe(newValue);
   });
-
-  function clickToolTip(toolTip: Object) {
-    toolTip
-      .find('span')
-      .at(2)
-      .simulate('click');
-  }
 });

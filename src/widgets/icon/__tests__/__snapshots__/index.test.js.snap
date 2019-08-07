@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Icon iconClass: sv-icon-close 1`] = `
+exports[`Icon iconClass: lugia-icon-reminder_close_circle_o 1`] = `
 .c0 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -10,6 +10,12 @@ exports[`Icon iconClass: sv-icon-close 1`] = `
 }
 
 <i
-  className="sv-icon-close  c0"
+  className="lugia-icon-reminder_close_circle_o   c0"
+  onClick={[Function]}
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  style={Object {}}
 />
 `;

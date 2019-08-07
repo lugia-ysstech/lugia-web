@@ -1,22 +1,32 @@
 /*
-* by wangcuixia
-* @flow
-* */
+ * by wangcuixia
+ * @flow
+ * */
 import React, { Component } from 'react';
-import Icon from '../icon/index';
-import Widget from '../consts/index';
 import { getElementPosition } from '../utils';
 import { getMinAndMax, limit, limitToSet, sortable } from '../common/Math';
-import { Button, Dot, Icons, SliderInner, SliderWrapper, Tiparrow, Tipinner, Tips } from './styled';
-
+import {
+  Button,
+  Dot,
+  Icons,
+  SliderInner,
+  SliderBigBox,
+  SliderBox,
+  SliderWrapper,
+  Tipinner,
+  Tips,
+  IconsInner,
+} from './styled';
+import { getChangeValue } from './utils';
+import { iconStyles, rangeHeightNormal } from './slider_public_size';
+import { getThemeProps } from './styledConfig';
+import { findDOMNode } from 'react-dom';
+import { deepMerge } from '@lugia/object-utils';
+import { addMouseEvent } from '@lugia/theme-hoc';
+import Icon from '../icon';
 type TypeProps = {
-  btnWidth?: number | string,
-  btnHeight?: number | string,
-  rangeW?: number | string,
-  rangeH?: number | string,
   maxValue?: number,
   minValue?: number,
-  background?: string,
   defaultValue?: number | Array<number>,
   disabled?: boolean,
   value?: number | Array<number>,
@@ -34,6 +44,7 @@ type TypeState = {
   offsetLeft: number, //值在挂载完就固定了，元素距离窗口左边的距离
   offsetTop: number, //值在挂载完就固定了，元素距离窗口顶部的距离
   value: Array<number>,
+  changeValue: Array<number>,
   disabled?: boolean,
   index?: number,
   moveValue?: number,
@@ -42,11 +53,12 @@ type TypeState = {
   maxValue: number,
   marks: { [key: number]: string | Object },
   isInBall: boolean,
+  dotWidths: Array<number>,
+  dotHeights: Array<number>,
 };
-Button.displayName = 'Button';
-Button.displayName = 'SliderWrapper';
 
 class Slider extends Component<TypeProps, TypeState> {
+  static displayName = 'SliderComponent';
   sliderRange: any;
   style: {
     background?: string,
@@ -54,13 +66,11 @@ class Slider extends Component<TypeProps, TypeState> {
     btnHeight: number,
     rangeW: number,
     rangeH: number,
-    // maxValue: number,
-    // minValue: number,
     SliderInnerWidth: number,
     SliderInnerLeft: number,
   };
   oldValue: Array<number>;
-
+  sliderHeight = rangeHeightNormal;
   constructor() {
     super();
     this.sliderRange = React.createRef();
@@ -120,6 +130,7 @@ class Slider extends Component<TypeProps, TypeState> {
         offsetLeft: 0, //值在挂载完就固定了，元素距离窗口左边的距离
         offsetTop: 0, //值在挂载完就固定了，元素距离窗口顶部的距离
         value: newValue,
+        changeValue: value,
         disabled,
         index: 0,
         moveValue: 0,
@@ -128,8 +139,13 @@ class Slider extends Component<TypeProps, TypeState> {
         maxValue: parseFloat(maxValue),
         marks: newMarks,
         isInBall: false,
+        dotWidths: [],
       };
     }
+    return {
+      value: newValue,
+      changeValue: preState && getChangeValue(preState.changeValue, minValue, maxValue),
+    };
   }
 
   ballIndex: number;
@@ -145,16 +161,21 @@ class Slider extends Component<TypeProps, TypeState> {
     const { disabled } = this.props;
     this.pageX = pageX;
     this.pageY = pageY;
-    if (!this.props.value && !disabled) {
+    if (!disabled) {
       setTimeout(() => (this.draging = isInBall), 0);
       if (!isInBall) {
-        this.publicmove(pageX, pageY, index);
+        this.publicmove(pageX, pageY, index, e);
       }
       this.ballIndex = index;
       this.setState({ changeBackground: true });
     }
   };
-  publicmove = (pageX: number, pageY: number, index: number) => {
+  publicmove = (
+    pageX: number,
+    pageY: number,
+    index: number,
+    e: SyntheticMouseEvent<HTMLButtonElement>
+  ) => {
     const { marksKeys, value } = this.state;
     const { moveValue } = this.getMoveState(pageX, pageY);
     if (value && value.length === 1) {
@@ -162,57 +183,67 @@ class Slider extends Component<TypeProps, TypeState> {
     }
     const { markValue } = this.getMarkValue(marksKeys, moveValue);
     value[index] = marksKeys.length > 0 ? markValue : moveValue;
-    this.setState({
-      value,
-      moveValue, //用于marks 时dot节点css样式的判断
-      index,
-      changeBackground: true,
-    });
+    this.setState(
+      {
+        value,
+        changeValue: value,
+        moveValue, //用于marks 时dot节点css样式的判断
+        index,
+        changeBackground: true,
+      },
+      () => {
+        this.onchange(e);
+      }
+    );
   };
-
+  getItem(length: number, val: Array<number>, marks: Object) {
+    const first = val && marks[val[0]];
+    const second = val && marks[val[1]];
+    return length === 2 ? [first, second] : first;
+  }
+  getNewValue(lengthISOne: boolean, value: Array<number>, join?: string) {
+    let newVal = lengthISOne ? value && value[0] : value;
+    if (join) {
+      newVal = lengthISOne ? value : value && value.join(',');
+    }
+    return newVal;
+  }
   onchange(event: SyntheticMouseEvent<HTMLButtonElement>) {
     const { onChange } = this.props;
-    const { marks, marksKeys, value } = this.state;
+    const { marks, marksKeys, changeValue } = this.state;
     const { oldValue } = this;
-    const newValue = value.sort(sortable);
+    const newValue = changeValue.sort(sortable);
     const oldVal = oldValue && oldValue.sort(sortable);
     const { length } = newValue;
-
-    function getItem(val) {
-      const first = marks[val[0]];
-      const second = marks[val[1]];
-      return length === 2 ? [first, second] : first;
-    }
-
+    const lengthISOne = length === 1;
     const data: Object = {
-      oldValue: length === 1 ? oldValue && oldValue[0] : oldValue,
-      newValue: length === 1 ? value[0] : value,
+      oldValue: this.getNewValue(lengthISOne, oldValue),
+      newValue: this.getNewValue(lengthISOne, changeValue),
       event,
     };
-    const changeNewVal = length === 1 ? newValue : newValue.join(',');
-    const changeOldVal = length === 1 ? oldValue : oldValue.join(',');
+    const changeNewVal = this.getNewValue(lengthISOne, newValue, 'join');
+    const changeOldVal = this.getNewValue(lengthISOne, oldValue, 'join');
     if (changeNewVal === changeOldVal) {
       return;
     }
-
     if (marksKeys.length > 0) {
-      data.newItem = getItem(value);
-      data.oldItem = getItem(oldVal);
+      data.newItem = this.getItem(length, changeValue, marks);
+      data.oldItem = this.getItem(length, oldVal, marks);
     }
     onChange && onChange(data);
   }
 
   mouseup = (event: SyntheticMouseEvent<HTMLButtonElement>) => {
-    const { disabled, value } = this.props;
-    if (!disabled && !value) {
+    const { disabled } = this.props;
+    if (!disabled) {
       this.setState({ changeBackground: false });
       this.onchange(event);
     }
   };
   mouseenter = (index: number) => () => {
-    const { disabled, value } = this.props;
+    const { disabled } = this.props;
     let changeBackground = true;
-    if (disabled || value) {
+    if (disabled) {
       changeBackground = false;
     }
     this.setState({ index, changeBackground, isInBall: true });
@@ -222,8 +253,9 @@ class Slider extends Component<TypeProps, TypeState> {
   };
   getMoveState = (pageX: number, pageY: number) => {
     const { offsetLeft, offsetTop, maxValue, minValue } = this.state;
+
     const { rangeW } = this.style;
-    const { vertical } = this.props;
+    const { vertical = false } = this.props;
     let move = pageX - offsetLeft;
     if (vertical) {
       move = rangeW - (pageY - offsetTop);
@@ -263,16 +295,24 @@ class Slider extends Component<TypeProps, TypeState> {
     }
     return { markValue };
   };
-
   componentDidMount() {
     this.addDocListener();
-    const { disabled, value } = this.props;
-    const { offsetLeft, offsetTop } = this.getOffset();
-    this.setState({
-      offsetLeft,
-      offsetTop,
-    });
-    if (disabled && value) {
+    const { disabled, vertical = false } = this.props;
+    const { dotWidths, dotHeights } = this.getOffset(vertical);
+    this.setState(
+      {
+        dotWidths,
+        dotHeights,
+      },
+      () => {
+        const { offsetLeft, offsetTop } = this.getOffset(vertical);
+        this.setState({
+          offsetLeft,
+          offsetTop,
+        });
+      }
+    );
+    if (disabled) {
       this.mousedown = null;
     }
   }
@@ -295,7 +335,7 @@ class Slider extends Component<TypeProps, TypeState> {
       if (samePoint) {
         return;
       }
-      this.publicmove(pageX, pageY, this.ballIndex);
+      this.publicmove(pageX, pageY, this.ballIndex, e);
     }
   };
 
@@ -308,15 +348,49 @@ class Slider extends Component<TypeProps, TypeState> {
       this.setState({ changeBackground: false });
     }
   };
-
-  getOffset() {
-    const sliderRangeNode = this.sliderRange.current; //slider react 元素
-    if (!sliderRangeNode) {
-      return { offsetLeft: 0, offsetTop: 0 };
+  getStyleForFalseElement = (node: any, falseElement: string, type: string) => {
+    return window.getComputedStyle(node, `:${falseElement}`)[type];
+  };
+  getDotSize = (vertical: boolean, node: any) => {
+    if (!node) {
+      return {
+        dotWidths: [],
+        dotHeights: [],
+      };
+    }
+    const { length } = node;
+    const nodeWidths = [];
+    const nodeHeights = [];
+    const rangeH = this.sliderHeight - 2; //1 是mask的border
+    for (let i = 0; i < length; i++) {
+      const sign = node[i].getAttribute('data-sign');
+      if (sign === 'mask') {
+        const nodeWidth = this.getStyleForFalseElement(node[i], 'before', 'width');
+        const nodeHeight = this.getStyleForFalseElement(node[i], 'before', 'height');
+        const nodeLeft = this.getStyleForFalseElement(node[i], 'before', 'right');
+        const nodeTop = this.getStyleForFalseElement(node[i], 'before', 'bottom');
+        const levelValue = vertical ? Math.abs(parseFloat(nodeLeft)) : 0;
+        const verticalValue = vertical ? 0 : Math.abs(parseFloat(nodeTop));
+        const levelNode = vertical ? levelValue : parseFloat(nodeWidth) + levelValue;
+        const verticalNode = vertical ? parseFloat(nodeHeight) + verticalValue : verticalValue;
+        nodeWidths.push(levelNode);
+        nodeHeights.push(verticalNode);
+      }
     }
 
+    return {
+      dotWidths: nodeWidths,
+      dotHeights: nodeHeights,
+    };
+  };
+  getOffset(vertical: boolean) {
+    const sliderRangeNode = findDOMNode(this.sliderRange); //slider react 元素
+    if (!sliderRangeNode) {
+      return { offsetLeft: 0, offsetTop: 0, dotWidths: [], dotHeights: [] };
+    }
+    const { dotWidths, dotHeights } = this.getDotSize(vertical, sliderRangeNode.children);
     const { x, y } = getElementPosition(sliderRangeNode);
-    return { offsetLeft: x, offsetTop: y };
+    return { offsetLeft: x, offsetTop: y, dotWidths, dotHeights };
   }
 
   getMoveValue = (val: number, circleWidth: number) => {
@@ -324,21 +398,168 @@ class Slider extends Component<TypeProps, TypeState> {
     const { rangeW } = this.style;
     const proportion = val / (maxValue - minValue); //比例
     const btnMove = ((proportion * rangeW - circleWidth / 2) / rangeW) * 100; //比例转化成px计算按钮中心点的位置；
+
     return { btnMove };
   };
+  getSliderVerticalPaddings(
+    vertical: boolean,
+    rangeH: number,
+    verticalBtnSize: number,
+    iconSize: Array<number>,
+    dotWidths: Array<number>,
+    dotHeights: Array<number>
+  ): Array<number> {
+    const maxSize = Math.max(...iconSize, verticalBtnSize);
+    const differValue = maxSize - rangeH;
+    const marginTop = differValue > 0 ? differValue / 2 : 0;
+    let dotMargin = marginTop;
+    if (dotWidths && dotWidths.length > 0 && dotHeights && dotHeights.length > 0) {
+      dotMargin = vertical ? Math.max(...dotWidths, marginTop) : Math.max(...dotHeights, marginTop);
+    }
+    const marginBot = dotMargin;
+    return [marginTop, marginBot];
+  }
+  getLevePadding = (
+    vertical: boolean,
+    dotWidths: Array<number>,
+    dotHeights: Array<number>,
+    numbers: number
+  ): Array<number> => {
+    const hasDot = dotWidths && dotWidths.length > 0 && dotHeights && dotHeights.length > 0;
+    const dotWidthsFir = hasDot ? (vertical ? dotHeights[0] : dotWidths[0]) : 0;
+    const dotWidthsSec = hasDot
+      ? vertical
+        ? dotHeights[dotHeights.length - 1]
+        : dotWidths[dotWidths.length - 1]
+      : 0;
+    let levelPaddingFir = numbers;
+    let levelPaddingSec = numbers;
+    const dotHalfWidthFir = dotWidthsFir / 2;
+    const dotHalfWidthSec = dotWidthsSec / 2;
+    if (dotHalfWidthFir > numbers) {
+      levelPaddingFir = dotHalfWidthFir;
+    }
+    if (dotHalfWidthSec > numbers) {
+      levelPaddingSec = vertical ? dotHalfWidthFir : dotHalfWidthSec;
+    }
+    return [levelPaddingFir, levelPaddingSec];
+  };
+  getSliderLevelPaddings(
+    vertical: boolean,
+    icons?: Array<Object>,
+    value: Array<number>,
+    size: Object,
+    btnSize: number,
+    dotWidths: Array<number>,
+    dotHeights: Array<number>
+  ): Object {
+    const hasIconsProps = 'icons' in this.props;
+    const iconsChildren = [];
+    const { fontSizeNormal, marginNormal } = iconStyles;
+    const halfBthSize = btnSize / 2;
+    const numbers = hasIconsProps ? marginNormal + fontSizeNormal + halfBthSize : halfBthSize;
+    const levelPaddings = this.getLevePadding(vertical, dotWidths, dotHeights, numbers);
+    const iconSize = hasIconsProps ? [fontSizeNormal, fontSizeNormal] : [0, 0];
+    if (hasIconsProps && value.length === 1 && Array.isArray(icons) && icons.length > 0) {
+      icons.forEach((icon, index) => {
+        const { style } = icon;
+        let iconDistancen = numbers;
+        let newFontSize = fontSizeNormal;
+        if (style) {
+          const { fontSize = fontSizeNormal, margin = marginNormal } = style;
+          newFontSize = fontSize > 0 && fontSize < 12 ? 12 : fontSize;
+          iconDistancen = parseInt(fontSize) + parseInt(margin) + halfBthSize;
+          iconSize[index] = fontSize;
+        }
+        const sliderIcons = 'Icons';
 
+        const { viewClass, theme } = this.props.getPartOfThemeHocProps(sliderIcons);
+        const themeProps = this.props.getPartOfThemeProps(sliderIcons);
+
+        const {
+          themeConfig: { normal: { font: { size: fontObjSize } = {}, fontSize } = {} },
+        } = themeProps;
+        const hasFontSize = fontSize || fontObjSize;
+        if (hasFontSize) {
+          newFontSize = hasFontSize;
+          iconSize[index] = hasFontSize;
+          iconDistancen = hasFontSize + 10;
+
+          if (!vertical) {
+            levelPaddings[index] =
+              levelPaddings[index] > hasFontSize ? levelPaddings[index] : hasFontSize + 10;
+          }
+          if (vertical) {
+            levelPaddings[index] = hasFontSize + 10;
+          }
+        }
+
+        const iconStyle = {
+          ...icon,
+          fontSize: newFontSize,
+          iconDistancen,
+          index,
+        };
+        const iconTheme = deepMerge(
+          {
+            [viewClass]: {
+              normal: {
+                color: '#666',
+                fontSize,
+              },
+            },
+          },
+          theme
+        );
+
+        iconsChildren.push(
+          <Icons iconStyle={iconStyle} value={value} {...size} themeProps={themeProps}>
+            <Icon iconClass={icon.name} viewClass={viewClass} theme={iconTheme} singleTheme />
+          </Icons>
+        );
+      });
+    }
+    return { iconsChildren, levelPaddings, iconSize };
+  }
   render() {
-    const { background, tips = false, icons, vertical, disabled, getTheme } = this.props;
-    const styleSlider = getTheme();
-    const styleSliderButton = styleSlider.svThemeConfigTree[Widget.SliderButton];
+    const { background, tips = false, icons, vertical = false, disabled, getTheme } = this.props;
     const {
-      rangeW = styleSlider.width || 300,
-      rangeH = styleSlider.height || 6,
-      btnWidth = (styleSliderButton && styleSliderButton.width) || 20,
-      btnHeight = (styleSliderButton && styleSliderButton.height) || 20,
-    } = this.props;
+      sliderTipsThemeProps,
+      sliderContainerThemeProps,
+      sliderPassedWayThemeProps: { sliderPassedWayThemeProps },
+      buttonThemeProps: { sliderButtonThemeProps, width: btnWidth, height: btnHeight },
+      sliderTrackThemeProps: { sliderTrackThemeProps, width: sliderWidth, height: sliderHeight },
+    } = getThemeProps(this.props);
+    this.sliderHeight = sliderHeight;
+    const {
+      value,
+      index,
+      moveValue,
+      minValue,
+      maxValue,
+      marksKeys,
+      marks,
+      isInBall,
+      dotWidths,
+      dotHeights,
+    } = this.state;
+    const iconPropsSize = {
+      minValue,
+      maxValue,
+      vertical,
+    };
 
-    const { value, index, moveValue, minValue, maxValue, marksKeys, marks, isInBall } = this.state;
+    const { iconsChildren, levelPaddings, iconSize } = this.getSliderLevelPaddings(
+      vertical,
+      icons,
+      value,
+      iconPropsSize,
+      btnWidth - sliderHeight > 0 ? btnWidth : 0,
+      dotWidths,
+      dotHeights
+    );
+    const rangeW = sliderWidth;
+    const rangeH = sliderHeight;
 
     this.style = {
       background,
@@ -349,7 +570,6 @@ class Slider extends Component<TypeProps, TypeState> {
       SliderInnerWidth: 0,
       SliderInnerLeft: 0,
     };
-
     function getSliderInnerSIze(name: 'left' | 'width') {
       const { length } = value;
       let difVal = length === 2 ? Math.abs(value[0] - value[1]) : value[0] - minValue;
@@ -365,6 +585,7 @@ class Slider extends Component<TypeProps, TypeState> {
 
     const dots = [];
     if (marksKeys.length > 0) {
+      const { getPartOfThemeProps } = this.props;
       for (let i = 0; i < marksKeys.length; i++) {
         const dotIndex = marksKeys[i];
         const dotVal = dotIndex - minValue;
@@ -381,7 +602,19 @@ class Slider extends Component<TypeProps, TypeState> {
           rangeW: this.style.rangeW,
           rangeH: this.style.rangeH,
         };
-        dots.push(<Dot marksData={data} key={dotIndex} getTheme={getTheme} />);
+        const sliderMarksName = 'SliderMarks';
+        const sliderMarksThemeProps = getPartOfThemeProps(sliderMarksName, {
+          selector: { index: i, count: marksKeys.length },
+        });
+        dots.push(
+          <Dot
+            data-sign={'mask'}
+            key={dotIndex}
+            themeProps={deepMerge(sliderMarksThemeProps, {
+              propsConfig: { marksData: data || [] },
+            })}
+          />
+        );
       }
     }
 
@@ -395,29 +628,38 @@ class Slider extends Component<TypeProps, TypeState> {
       btnDisabled: true,
       middleVal: 0,
     };
-
     const children = value.map((val, i) => {
       const realyVal = val - minValue;
       size.moveX = this.getMoveValue(realyVal, size.btnWidth).btnMove;
       if (vertical) {
-        size.moveY = this.getMoveValue(realyVal, size.btnHeight).btnMove;
+        size.moveY = this.getMoveValue(realyVal, btnWidth).btnMove;
       }
       const btnDisabled = index === i;
       size.btnDisabled = btnDisabled;
+      const tipsText = tips && (typeof tips === 'string' || typeof tips === 'number') ? tips : val;
       return (
         <Button
+          themeProps={deepMerge(sliderButtonThemeProps, {
+            propsConfig: {
+              vertical,
+              moveX: size.moveX,
+              moveY: size.moveY,
+              btnDisabled: size.btnDisabled,
+              changeBackground: this.state.changeBackground,
+            },
+          })}
           onMouseDown={mousedown}
           onMouseUp={mouseup}
           onMouseEnter={mouseenter(i)}
           onMouseLeave={mouseleave}
           {...size}
           key={i}
-          getTheme={getTheme}
         >
-          {showTip && btnDisabled ? (
-            <Tips>
-              <Tipinner>{val}</Tipinner>
-              <Tiparrow />
+          {showTip && btnDisabled && !this.props.disabled ? (
+            <Tips themeProps={sliderTipsThemeProps}>
+              <Tipinner
+                themeProps={deepMerge(sliderTipsThemeProps, { propsConfig: { tipsText } })}
+              />
             </Tips>
           ) : (
             ''
@@ -425,35 +667,47 @@ class Slider extends Component<TypeProps, TypeState> {
         </Button>
       );
     });
-
-    const hasIconsProps = 'icons' in this.props;
-    let iconsChildren = null;
-    if (hasIconsProps && value.length === 1 && Array.isArray(icons) && icons.length > 0) {
-      iconsChildren = icons.map((icon, index) => {
-        const iconStyle = {
-          ...icon,
-          index,
-        };
-        return (
-          <Icons iconStyle={iconStyle} {...size} getTheme={getTheme}>
-            <Icon iconClass={icon.name} />
-          </Icons>
-        );
-      });
-    }
+    const sliderVerticalPaddings = this.getSliderVerticalPaddings(
+      vertical,
+      rangeH,
+      btnHeight,
+      iconSize,
+      dotWidths,
+      dotHeights
+    );
     return (
-      <SliderWrapper
-        innerRef={this.sliderRange}
+      <SliderBigBox
+        themeProps={sliderContainerThemeProps}
         onMouseDown={mousedown}
         onMouseUp={mouseup}
-        {...size}
-        getTheme={getTheme}
       >
-        {iconsChildren}
-        {dots}
-        <SliderInner {...size} getTheme={getTheme} />
-        {children}
-      </SliderWrapper>
+        <SliderBox
+          {...size}
+          iconSize={iconSize}
+          levelPaddings={levelPaddings}
+          sliderVerticalPaddings={sliderVerticalPaddings}
+          onMouseDown={mousedown}
+          onMouseUp={mouseup}
+          {...addMouseEvent(this)}
+        >
+          <SliderWrapper
+            themeProps={sliderTrackThemeProps}
+            ref={node => {
+              this.sliderRange = node;
+            }}
+            {...size}
+            getTheme={getTheme}
+          >
+            {iconsChildren}
+            {dots}
+            <SliderInner
+              themeProps={deepMerge(sliderPassedWayThemeProps, { propsConfig: size })}
+              getTheme={getTheme}
+            />
+            {children}
+          </SliderWrapper>
+        </SliderBox>
+      </SliderBigBox>
     );
   }
 }

@@ -6,225 +6,577 @@
  */
 import '../common/shirm';
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import Widget from '../consts/index';
-import type { TabType, TabPositionType } from '../css/tabs';
-import {
-  getClearButtonColor,
-  getTabpaneHoverColor,
-  getTabpaneIconHoverColor,
-  getSelectColor,
-  getTabpaneFocusShadow,
-  getTitlePadding,
-  getTabpanePadding,
-  getTabpaneBackground,
-  getTabpaneBorder,
-  getTabpaneMarginRight,
-  getTabpaneBorderTopRadius,
-  getTabpaneHoverTransform,
-  getTabpaneBottom,
-  getTabpaneLeft,
-  getClearButtonShow,
-} from '../css/tabs';
-
-import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
-import ThemeProvider from '../theme-provider';
-import { px2emcss } from '../css/units';
+import { TabType, TabPositionType } from '../css/tabs';
 import Icon from '../icon';
 import { isVertical, matchType } from './utils';
+import { ObjectUtils } from '@lugia/type-utils';
 
-const em = px2emcss(1.2);
+import CSSComponent, { css, keyframes } from '@lugia/theme-css-hoc';
+import ThemeHoc from '@lugia/theme-hoc';
 
-const BaseTab = styled.div`
-  position: relative;
-  cursor: pointer;
-  white-space: nowrap;
-`;
-const VTab = BaseTab.extend`
-  text-align: ${props => (matchType(props.tabPosition, 'left') ? 'right' : 'left')};
-  padding: 0 ${em(10)};
-  display: block;
-  &:hover > div {
-    ${getTabpaneHoverColor};
-  }
-`;
-VTab.displayName = 'yTabpane';
-const HTab = BaseTab.extend`
-  display: inline-block;
-  ${getTabpanePadding};
-  line-height: ${em(30)};
-  ${getTabpaneFocusShadow};
-  ${getTabpaneBorderTopRadius};
-  ${getTabpaneBottom};
-  ${getTabpaneLeft};
-  ${getTabpaneBackground};
-  ${getTabpaneBorder};
-  ${getTabpaneMarginRight};
-  z-index: 5;
-  box-sizing: border-box;
-  &:hover > div {
-    ${getTabpaneHoverTransform};
-    ${getTabpaneHoverColor};
-  }
+import { deepMerge } from '@lugia/object-utils';
+import colorsFunc from '../css/stateColor';
 
-  &:hover > span > i:first-child {
-    ${getTabpaneIconHoverColor};
-  }
-`;
-HTab.displayName = 'hTabpane';
-const Title = styled.div`
-  ${getSelectColor};
-  position: relative;
-  display: inline-block;
-  box-sizing: border-box;
-  user-select: none;
-  text-align: left;
-  ${getTitlePadding};
-  height: ${em(32)};
-  line-height: ${em(32)};
-  &:focus {
-    ${getTabpaneHoverColor};
-  }
+import { getBorder } from '@lugia/theme-utils';
+
+const { themeColor, disableColor } = colorsFunc();
+
+const BaseTab = CSSComponent({
+  tag: 'div',
+  className: 'DefaultTabPan',
+  normal: {
+    selectNames: [
+      ['color'],
+      ['background'],
+      ['border'],
+      ['borderRadius'],
+      ['margin'],
+      ['padding'],
+      ['font'],
+      ['opacity'],
+    ],
+    getCSS: (theme: Object, themeProps: Object) => {
+      const { color, background } = theme;
+      const {
+        propsConfig: { isSelect, tabType, tabPosition },
+      } = themeProps;
+      let display = 'inline-block';
+      let textAlign = 'text-align: center';
+      let position = '';
+      let border = '';
+      if (isVertical(tabPosition)) {
+        display = 'block';
+        if (tabPosition === 'left') {
+          textAlign = 'text-align: right';
+        } else {
+          textAlign = 'text-align: left';
+        }
+      }
+      if (isSelect && tabType === 'line') {
+        let cssString = css`
+          width: 100%;
+          height: 2px;
+          left: 50%;
+          animation: ${addWidth} 0.2s linear forwards;
+          transform: translateX(-50%);
+        `;
+        let pos = tabPosition === 'top' ? 'bottom: -1px;' : 'top: -1px;';
+        if (isVertical(tabPosition)) {
+          pos = tabPosition === 'left' ? 'right: -21px;' : 'left: -21px;';
+          cssString = css`
+            width: 2px;
+            height: 100%;
+            top: 50%;
+            animation: ${addHeight} 0.2s linear forwards;
+            transform: translateY(-50%);
+          `;
+        }
+        return css`
+          display: ${display};
+          ${textAlign}
+          & > div::before {
+            content: '';
+            background: ${color || themeColor};
+            border-radius: 2px;
+            position: absolute;
+            ${pos}
+            ${cssString}
+          }
+        `;
+      }
+      if (tabType === 'card') {
+        position = 'bottom: -1px;';
+        if (isSelect) {
+          border = `border-bottom: 1px solid ${background ? background.color : '#fff'};`;
+        }
+      }
+      return css`
+        display: ${display};
+        ${textAlign}
+        ${position}
+        ${border}
+      `;
+    },
+  },
+  hover: {
+    selectNames: [['color'], ['background'], ['border'], ['font'], ['opacity']],
+    defaultTheme: {
+      color: themeColor,
+    },
+    getCSS: (theme: Object, themeProps: Object) => {
+      const {
+        propsConfig: { tabType, showDeleteBtn },
+      } = themeProps;
+      let cssString = `
+        & > span {
+          opacity: 1;
+        }
+      `;
+      if (tabType === 'card' && showDeleteBtn === true) {
+        cssString += ` & > div {
+          transition: all 0.3s linear;
+          transform: translateX(-3px);
+        }`;
+      }
+      return css`
+        ${cssString}
+      `;
+    },
+  },
+  disabled: {
+    selectNames: [['color'], ['cursor']],
+    defaultTheme: {
+      cursor: 'not-allowed',
+      color: 'yellow',
+    },
+    getCSS(theme: Object, themeProps: Object) {
+      return css`
+        & > div.lineTitle::before {
+          content: '';
+          width: 0;
+          height: 0;
+        }
+        & > div.cardTitle {
+          transition: none;
+          transform: none;
+        }
+      `;
+    },
+  },
+  css: css`
+    position: relative;
+    cursor: pointer;
+    white-space: nowrap;
+    padding: 0 20px;
+  `,
+  option: { hover: true },
+});
+
+BaseTab.displayName = 'Tabpane';
+
+const SelectTab = CSSComponent({
+  extend: BaseTab,
+  className: 'SelectTabPan',
+});
+
+const addWidth = keyframes`
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
 `;
 
-const TabIcon: Object = styled(Icon)`
-  ${getSelectColor};
-  display: inline-block;
-`;
-const IconContainer = styled.span`
-  display: inline-block;
-  height: ${em(12)};
-  width: ${em(12)};
-`;
-const ClearButtonContainer = styled.span`
-  ${getClearButtonShow};
-  transition: all 0.3s linear 0.1s;
-  z-index: 2;
-  display: inline-block;
+const addHeight = keyframes`
+    0% {
+      height: 0;
+    }
+    100% {
+      height: 100%;
+    }
 `;
 
-const ClearIcon: Object = styled(Icon)`
-  font-size: 1rem;
-  &:hover {
-    ${getClearButtonColor};
-  }
-`;
-ClearIcon.displayName = 'deleteIcon';
+const Title = CSSComponent({
+  tag: 'div',
+  className: 'TitleLine',
+  normal: {
+    selectNames: [['height'], ['lineHeight']],
+    defaultTheme: {
+      height: 42,
+      lineHeight: 42,
+    },
+    getStyle: (theme: Object, themeProps: Object) => {
+      const { height } = theme;
+      return {
+        lineHeight: height ? `${height}px` : '3.4rem',
+      };
+    },
+    getThemeMeta: (theme: Object, themeProps: Object) => {
+      const { height } = theme;
+      return {
+        lineHeight: height ? `${height}` : '3.4rem',
+      };
+    },
+  },
+  hover: {
+    selectNames: [['color']],
+    defaultTheme: {
+      color: themeColor,
+    },
+  },
+  disabled: {
+    selectNames: [['color']],
+    defaultTheme: {
+      color: disableColor,
+    },
+  },
+  css: css`
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    user-select: none;
+    &:focus {
+      color: ${themeColor};
+    }
+  `,
+});
+
+const CardTitle = CSSComponent({
+  tag: 'div',
+  className: 'TitleCard',
+  normal: {
+    selectNames: [['height'], ['lineHeight']],
+    defaultTheme: {
+      height: 31,
+      lineHeight: 31,
+    },
+    getStyle: (theme: Object, themeProps: Object) => {
+      const { height } = theme;
+      return {
+        lineHeight: height ? `${height}px` : '32px',
+      };
+    },
+  },
+  hover: {
+    selectNames: [['color']],
+    defaultTheme: {
+      color: themeColor,
+    },
+  },
+  disabled: {
+    selectNames: [['color']],
+    defaultTheme: {
+      color: disableColor,
+    },
+  },
+  css: css`
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    user-select: none;
+    text-align: left;
+    &:focus {
+      color: ${themeColor};
+    }
+  `,
+});
+
+const ClearButtonContainer = CSSComponent({
+  tag: 'span',
+  className: 'IconContainer',
+  css: css`
+    transition: all 0.3s linear 0.1s;
+    z-index: 2;
+    opacity: 0;
+    color: #999;
+  `,
+  normal: {
+    selectNames: [],
+    getCSS: (a, themeProps) => {
+      const {
+        propsConfig: { tabType },
+      } = themeProps;
+      if (tabType !== 'card') {
+        return 'opacity: 1;margin-left:10px;';
+      }
+    },
+  },
+  hover: {
+    selectNames: [],
+  },
+
+  disabled: {
+    selectNames: [],
+  },
+});
+
 type TabpaneState = {
-  clearButtonShow: boolean,
   iconClass: string,
 };
 
 type TabpaneProps = {
   title: string,
-  onDeleteClick: Function,
-  icon: string,
-  tabType: TabType,
-  tabPosition: TabPositionType,
-  activityKey: string,
-  isSelect: boolean,
-  onClick: Function,
-  getTabpaneWidth: Function,
+  onDelete?: Function,
+  icon?: string,
+  suffixIcon?: string,
+  tabType?: TabType,
+  tabPosition?: TabPositionType,
+  index: number,
+  activityValue: string,
+  keyVal: string,
+  isSelect?: boolean,
+  disabled?: boolean,
+  showDeleteBtn?: boolean,
+  onClick?: Function,
+  onMouseEnter?: Function,
+  onMouseLeave?: Function,
+  themeProps: Object,
+  getPartOfThemeProps: Function,
+  getPartOfThemeHocProps: Function,
 };
 
 class Tabpane extends Component<TabpaneProps, TabpaneState> {
   static defaultProps = {};
   static displayName = Widget.Tabpane;
-  tabpane: any;
-  offsetWidth: number;
 
   constructor(props: TabpaneProps) {
     super(props);
-    this.tabpane = React.createRef();
-    this.offsetWidth = 0;
   }
 
   static getDerivedStateFromProps(nextProps: TabpaneProps, state: TabpaneState) {
     if (!state) {
       return {
-        clearButtonShow: false,
         iconClass: 'lugia-icon-reminder_close',
       };
     }
   }
 
   render() {
-    const { title, tabType, tabPosition, isSelect } = this.props;
-    if (matchType(tabType, 'line') && isVertical(tabPosition)) {
-      return (
-        <VTab tabPosition={tabPosition} onClick={this.handleClick} isSelect={isSelect}>
-          <Title isSelect={isSelect}>{title}</Title>
-        </VTab>
-      );
-    }
-    return this.getHTabpane();
-  }
+    const {
+      title,
+      tabType,
+      tabPosition,
+      isSelect,
+      icon,
+      suffixIcon,
+      disabled,
+      showDeleteBtn,
+    } = this.props;
+    const { TargetTab, themeProps, iconThemes } = this.getHTabPaneThemeProps(
+      tabType,
+      isSelect,
+      tabPosition,
+      showDeleteBtn,
+      disabled
+    );
 
-  getHTabpane() {
-    const { title, tabType, isSelect } = this.props;
-    const Target = (
-      <HTab
+    let Target = (
+      <TargetTab
+        themeProps={themeProps}
+        disabled={disabled}
         tabType={tabType}
         onClick={this.handleClick}
         isSelect={isSelect}
-        innerRef={cmp => (this.tabpane = cmp)}
+        tabPosition={tabPosition}
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
       >
-        {this.getTabIcon()}
-        <Title isHasIcon={this.getTabIcon() !== null} tabType={tabType} isSelect={isSelect}>
-          {title}
-        </Title>
+        {tabType === 'line' ? (
+          <Title
+            className={'lineTitle'}
+            themeProps={themeProps}
+            tabType={tabType}
+            isSelect={isSelect}
+            disabled={disabled}
+          >
+            {this.getTabIconContainer(icon, iconThemes)}
+            {title}
+            {this.getTabIconContainer(suffixIcon, iconThemes)}
+          </Title>
+        ) : (
+          <CardTitle
+            className={'cardTitle'}
+            themeProps={themeProps}
+            tabType={tabType}
+            isSelect={isSelect}
+            disabled={disabled}
+          >
+            {this.getTabIconContainer(icon, iconThemes)}
+            {title}
+            {this.getTabIconContainer(suffixIcon, iconThemes)}
+          </CardTitle>
+        )}
+
         {this.getClearButton()}
-      </HTab>
+      </TargetTab>
     );
+    if (matchType(tabType, 'line') && isVertical(tabPosition)) {
+      Target = (
+        <TargetTab
+          themeProps={themeProps}
+          disabled={disabled}
+          tabType={tabType}
+          onClick={this.handleClick}
+          tabPosition={tabPosition}
+          isSelect={isSelect}
+          onMouseEnter={this.onMouseEnter}
+          onMouseLeave={this.onMouseLeave}
+        >
+          <Title
+            className={'lineTitle'}
+            themeProps={themeProps}
+            tabType={tabType}
+            isSelect={isSelect}
+            disabled={disabled}
+          >
+            {this.getTabIconContainer(icon, iconThemes)}
+            {title}
+          </Title>
+        </TargetTab>
+      );
+    }
     return Target;
   }
 
-  componentDidMount() {
-    this.getContainerWidth();
+  getHTabPaneThemeProps(
+    tabType: ?string,
+    isSelect: ?boolean,
+    tabPosition: ?string,
+    showDeleteBtn: ?boolean,
+    disabled: ?boolean
+  ) {
+    let titleThemeProps = this.props.getPartOfThemeProps('DefaultTabPan', {
+      props: { isSelect, tabType, tabPosition, showDeleteBtn, disabled },
+    });
+
+    let { theme, viewClass } = this.props.getPartOfThemeHocProps('DefaultTabPan');
+    const { icon, suffixIcon } = this.props;
+    const themeObj = {
+      [viewClass]: {
+        normal: {
+          getThemeMeta: (theme: Object, themeProps: Object) => {
+            return { margin: { left: suffixIcon ? 10 : 0, right: icon ? 10 : 0 } };
+          },
+        },
+        disabled: {
+          getThemeMeta: (theme: Object, themeProps: Object) => {
+            return { cursor: 'not-allowed', color: disableColor };
+          },
+        },
+      },
+    };
+    theme = deepMerge(theme, themeObj);
+    let selectThemeProps = this.props.getPartOfThemeProps('SelectTabPan', {
+      props: { isSelect, tabType, tabPosition, showDeleteBtn, disabled },
+    });
+    selectThemeProps = deepMerge(
+      titleThemeProps,
+      { themeConfig: { normal: { color: themeColor } } },
+      selectThemeProps
+    );
+    const baseDefaultTab = BaseTab;
+    switch (tabType) {
+      case 'card':
+        const targetObj = {
+          themeConfig: {
+            normal: {
+              border: getBorder(
+                { color: '#e8e8e8', width: 1, style: 'solid' },
+                { directions: ['l', 'r', 't'] }
+              ),
+              borderRadius: {
+                topLeft: 4,
+                topRight: 4,
+              },
+              margin: {
+                left: 4,
+                right: 4,
+              },
+              background: {
+                color: '#e8e8e8',
+              },
+            },
+          },
+        };
+        titleThemeProps = deepMerge(targetObj, titleThemeProps);
+        const cardSelectObj = {
+          themeConfig: {
+            normal: {
+              margin: {
+                left: 4,
+                right: 4,
+              },
+              border: getBorder(
+                { color: '#e8e8e8', width: 1, style: 'solid' },
+                { directions: ['l', 'r', 't'] }
+              ),
+              borderRadius: {
+                topLeft: 4,
+                topRight: 4,
+              },
+            },
+          },
+        };
+        selectThemeProps = deepMerge(cardSelectObj, selectThemeProps);
+        break;
+      case 'window':
+        const windowSelectObj = {
+          themeConfig: {
+            normal: {
+              border: getBorder({ border: 'none' }),
+              borderRadius: {
+                topLeft: 4,
+                topRight: 4,
+              },
+              background: {
+                color: '#fff',
+              },
+            },
+          },
+        };
+        selectThemeProps = deepMerge(windowSelectObj, selectThemeProps);
+        break;
+      default:
+        break;
+    }
+    const TargetTab = isSelect ? SelectTab : baseDefaultTab;
+    const themeProps = isSelect ? selectThemeProps : titleThemeProps;
+    return { TargetTab, themeProps, iconThemes: { theme, viewClass } };
   }
 
-  onMouseEnter = () => {
-    this.setState({ clearButtonShow: true });
-  };
-
-  onMouseLeave = () => {
-    this.setState({ clearButtonShow: false });
-  };
+  componentDidMount() {}
 
   handleClick = () => {
-    const { activityKey, onClick } = this.props;
-    onClick && onClick(activityKey);
+    const { index, onClick, disabled, keyVal } = this.props;
+    if (!disabled) onClick && onClick({ index, activityValue: keyVal });
   };
-  getTabIcon() {
-    const { icon, isSelect } = this.props;
-    if (icon) {
+
+  getTabIconContainer(icon: ?string, themeProps?: Object = {}) {
+    return icon ? this.getIcon(icon, themeProps) : null;
+  }
+  getIcon(icon: string, themeProps: Object) {
+    const { isSelect, disabled } = this.props;
+    if (ObjectUtils.isString(icon)) {
       return (
-        <IconContainer>
-          <TabIcon isSelect={isSelect} iconClass={icon} />
-        </IconContainer>
+        <Icon
+          {...themeProps}
+          isSelect={isSelect}
+          iconClass={icon}
+          disabled={disabled}
+          singleTheme
+        />
       );
     }
-    return null;
+    return icon;
   }
-  onDeleteClick = (e: Event) => {
-    const { onDeleteClick, activityKey } = this.props;
-    onDeleteClick && onDeleteClick(e, activityKey);
+  onDeleteClick = e => {
+    e.stopPropagation();
+    const { onDelete, index, keyVal } = this.props;
+    onDelete && onDelete({ index, activityValue: keyVal });
   };
   getClearButton() {
-    const { tabType } = this.props;
-    const { clearButtonShow, iconClass } = this.state;
-    if (!matchType(tabType, 'line')) {
+    const { tabType, disabled, showDeleteBtn, themeProps } = this.props;
+    const { iconClass } = this.state;
+    const { viewClass, theme } = this.props.getPartOfThemeHocProps('DefaultTabPan');
+    themeProps.propsConfig = { tabType };
+    if (!matchType(tabType, 'line') && showDeleteBtn) {
       return (
         <ClearButtonContainer
+          themeProps={themeProps}
           onMouseEnter={this.clearButtonMouseEnter}
           onMouseLeave={this.clearButtonMouseLeave}
-          onClick={this.onDeleteClick}
           tabType={tabType}
-          show={clearButtonShow}
         >
-          <ClearIcon iconClass={iconClass} />
+          <Icon
+            singleTheme
+            theme={theme}
+            viewClass={viewClass}
+            iconClass={iconClass}
+            disabled={disabled}
+            onClick={this.onDeleteClick}
+          />
         </ClearButtonContainer>
       );
     }
@@ -236,15 +588,18 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
   clearButtonMouseLeave = () => {
     this.setState({ iconClass: 'lugia-icon-reminder_close' });
   };
-
-  getContainerWidth() {
-    if (this.tabpane) {
-      this.offsetWidth = this.tabpane.offsetWidth;
-    }
-    const { getTabpaneWidth } = this.props;
-    getTabpaneWidth && getTabpaneWidth(this.offsetWidth);
-  }
+  onMouseEnter = (e: Object) => {
+    const { onMouseEnter, index, keyVal } = this.props;
+    onMouseEnter && onMouseEnter({ index, activityValue: keyVal });
+  };
+  onMouseLeave = (e: Object) => {
+    const { onMouseLeave, index, keyVal } = this.props;
+    onMouseLeave && onMouseLeave({ index, activityValue: keyVal });
+  };
 }
 
-const TargetTabpano = ThemeProvider(KeyBoardEventAdaptor(Tabpane), Widget.Tabpane);
-export default TargetTabpano;
+const TabPanHoc = ThemeHoc(Tabpane, Widget.Tabpane, {
+  hover: false,
+  active: false,
+});
+export default TabPanHoc;

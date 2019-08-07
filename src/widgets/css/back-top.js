@@ -3,21 +3,26 @@
  * create by guorg
  * @flow
  */
-import styled from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
+import { getBorder } from '@lugia/theme-utils';
 import colorsFunc from '../css/stateColor';
-import { getThemeColor } from '../common/ThemeUtils';
-import { px2emcss } from './units';
+import { px2remcss } from './units';
 import Icon from '../icon';
+import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
+import { getBorderRadius } from '../theme/CSSProvider';
 
-const { defaultColor } = colorsFunc();
+const { defaultColor, themeColor } = colorsFunc();
 const FontSize = 1.2;
-const em = px2emcss(FontSize);
+const em = px2remcss;
 
 export type BackTopProps = {
   visibilityHeight?: number,
   children?: any,
-  getTheme: Function,
+  getPartOfThemeProps: Function,
+  getPartOfThemeHocProps: Function,
   target?: Function,
+  themeProps: Object,
+  icon?: string,
 };
 export type BackTopState = {
   fixed: boolean,
@@ -33,9 +38,20 @@ type CSSProps = {
 };
 
 const getFixedCSS = (props: CSSProps) => {
+  const ShowKeyframe = keyframes`
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  `;
   const { fixed } = props;
   if (fixed) {
-    return 'position: fixed;';
+    return css`
+      position: fixed;
+      animation: ${ShowKeyframe} 0.4s;
+    `;
   }
 };
 const getLeftOrRight = (props: CSSProps) => {
@@ -45,28 +61,71 @@ const getLeftOrRight = (props: CSSProps) => {
   }
   return `right: ${em(posRight)};bottom: ${em(posBottom)}`;
 };
-export const BackTop = styled.div`
-  ${getFixedCSS} ${getLeftOrRight};
-  cursor: pointer;
-`;
 
-const getBackgroundCSS = (props: CSSProps) => {
-  const { backgroundColor = defaultColor } = props.theme;
-
-  return `background-color: ${backgroundColor}`;
-};
-export const BackTopContent = styled.div`
-  width: ${em(40)};
-  height: ${em(40)};
-  line-height: ${em(40)};
-  border-radius: ${em(40)};
-  border: 1px solid #e8e8e8;
-  color: ${props => getThemeColor(props.theme)};
-  text-align: center;
-  overflow: hidden;
-  box-shadow: 0 0 ${em(4)} #e8e8e8;
-  ${getBackgroundCSS};
-`;
-export const IconWrap = styled(Icon)`
+export const IconWrap: Object = styled(Icon)`
   vertical-align: bottom !important;
 `;
+
+const CommonBackTopStyle = CSSComponent({
+  tag: 'div',
+  className: 'CommonBackTopStyle',
+  css: css`
+    border: 1px solid #e8e8e8;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 0 ${em(4)} #e8e8e8;
+  `,
+});
+
+export const BackTop = StaticComponent({
+  tag: 'div',
+  className: 'BackTop',
+  css: css`
+    font-size: ${FontSize}rem;
+    ${getFixedCSS};
+    ${getLeftOrRight};
+    cursor: pointer;
+  `,
+});
+
+export const BackTopContent = CSSComponent({
+  extend: CommonBackTopStyle,
+  className: 'BackTopContent',
+  css: css`
+    position: relative;
+  `,
+  normal: {
+    selectNames: [
+      ['background'],
+      ['color'],
+      ['width'],
+      ['height'],
+      ['opacity'],
+      ['border'],
+      ['borderRadius'],
+    ],
+    defaultTheme: {
+      background: { color: defaultColor },
+      color: themeColor,
+      width: 40,
+      height: 40,
+      opacity: 1,
+      border: getBorder({ color: '#e8e8e8', width: 1, style: 'solid' }),
+      borderRadius: getBorderRadius(40),
+    },
+  },
+});
+
+export const IconBox = CSSComponent({
+  tag: 'span',
+  className: 'BackTopIconBox',
+  normal: {
+    selectNames: [['color']],
+  },
+  css: css`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  `,
+});

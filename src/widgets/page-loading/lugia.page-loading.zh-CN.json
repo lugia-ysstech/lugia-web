@@ -1,0 +1,17 @@
+{
+  "widgetName": "PageLoading",
+  "title": "页面加载",
+  "desc": "用于页面加载",
+  "props": {
+    "loading": {
+      "type": "boolean",
+      "desc": "是否加载loading",
+      "defaultValue": false
+    },
+    "time": {
+      "type": "number",
+      "desc": "动画完成的时间(秒)"
+    }
+  },
+  "category": ["数据录入"]
+}

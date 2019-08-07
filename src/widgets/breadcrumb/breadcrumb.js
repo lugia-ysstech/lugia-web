@@ -7,6 +7,8 @@ import * as React from 'react';
 import { cloneElement } from 'react';
 import BreadcrumbItem from './breadcrumbItem';
 import { getHrefs, replaceStr } from '../common/StringUtils';
+import { BreadcrumbContainer } from '../css/breadcrumb';
+import Widget from '../consts/index';
 
 export type Route = {
   path: string,
@@ -21,10 +23,13 @@ export type RenderFunc = (
 
 export type BreadcrumbProps = {
   routes?: Array<Route>,
-  params?: any,
+  params?: Object,
   separator: string | React.Element<any>,
   renderItem?: RenderFunc,
   lastSeparator: string | React.Element<any>,
+  themeProps: Object,
+  getPartOfThemeProps: Function,
+  getPartOfThemeConfig: Function,
   children: React.ChildrenArray<React.Element<any>>,
 };
 
@@ -37,16 +42,20 @@ function isNotHref(target: Object) {
 function defaultRenderItem(
   breadCrumbItemConfig: breadCrumbItemConfig,
   separator: string | React.Element<any>,
-  lastSeparator: string | React.Element<any>
-) {
-  return breadCrumbItemConfig.map(item => {
+  lastSeparator: string | React.Element<any>,
+  itemTheme: Object
+): Object {
+  return breadCrumbItemConfig.map((item, index) => {
     const { href, title, isLast } = item;
 
     return (
       <BreadcrumbItem
+        index={index}
         separator={isLast ? lastSeparator : separator}
         href={href}
         isLastItem={isLast}
+        theme={itemTheme}
+        count={breadCrumbItemConfig.length}
       >
         {title}
       </BreadcrumbItem>
@@ -60,6 +69,7 @@ export default class Breadcrumb extends React.Component<BreadcrumbProps, any> {
     lastSeparator: '',
   };
   static Item = BreadcrumbItem;
+  static displayName = Widget.Breadcrumb;
 
   getRealityHrefs(href: string, param: Object, item: Object): string | void {
     if (!isNotHref(item)) {
@@ -75,17 +85,15 @@ export default class Breadcrumb extends React.Component<BreadcrumbProps, any> {
     const paths = routerConfig.map(({ path }) => path);
     const hrefs = getHrefs(paths);
 
-    return routerConfig.map(
-      (item: Object, i: number, data: Object[]): Object => {
-        const { title, href = hrefs[i] } = item;
+    return routerConfig.map((item: Object, i: number, data: Object[]): Object => {
+      const { title, href = hrefs[i] } = item;
 
-        return {
-          href: this.getRealityHrefs(href, param, item),
-          title: replaceStr(title, param),
-          isLast: i === data.length - 1,
-        };
-      }
-    );
+      return {
+        href: this.getRealityHrefs(href, param, item),
+        title: replaceStr(title, param),
+        isLast: i === data.length - 1,
+      };
+    });
   }
 
   getChildConfig(children: React.ChildrenArray<React.Element<any>>) {
@@ -98,6 +106,14 @@ export default class Breadcrumb extends React.Component<BreadcrumbProps, any> {
     return result;
   }
 
+  getItemTheme = () => {
+    const { getPartOfThemeConfig } = this.props;
+    const config = {
+      BreadcrumbItem: getPartOfThemeConfig('BreadcrumbItem'),
+    };
+    return config;
+  };
+
   render() {
     let crumbs;
     const {
@@ -106,15 +122,38 @@ export default class Breadcrumb extends React.Component<BreadcrumbProps, any> {
       routes,
       params = {},
       renderItem = defaultRenderItem,
+      children,
+      getPartOfThemeProps,
     } = this.props;
+
+    const wrapThemeProps = getPartOfThemeProps('BreadcrumbWrap');
+    const itemTheme = this.getItemTheme();
+    if (!routes && !children) {
+      crumbs = [
+        <BreadcrumbItem theme={itemTheme} index={0} count={4} separator={separator}>
+          首页
+        </BreadcrumbItem>,
+        <BreadcrumbItem theme={itemTheme} index={1} count={4} separator={separator}>
+          一级面包屑
+        </BreadcrumbItem>,
+        <BreadcrumbItem theme={itemTheme} index={2} count={4} separator={separator}>
+          二级面包屑
+        </BreadcrumbItem>,
+        <BreadcrumbItem theme={itemTheme} index={3} count={4} separator={''} isLastItem>
+          三级面包屑
+        </BreadcrumbItem>,
+      ];
+    }
 
     if (routes && routes.length > 0) {
       const breadCrumbItemConfig = this.getBreadCrumbItemConfig(routes, params);
-
-      return renderItem(breadCrumbItemConfig, separator, lastSeparator);
+      return (
+        <BreadcrumbContainer themeProps={wrapThemeProps}>
+          {renderItem(breadCrumbItemConfig, separator, lastSeparator, itemTheme)}
+        </BreadcrumbContainer>
+      );
     }
 
-    const { children } = this.props;
     if (Array.isArray(children)) {
       const childConfig = this.getChildConfig(children);
       const childrenPro = this.getBreadCrumbItemConfig(childConfig, params);
@@ -126,10 +165,13 @@ export default class Breadcrumb extends React.Component<BreadcrumbProps, any> {
         const { isLast, href } = childrenPro[index];
 
         return cloneElement(element, {
+          index,
           separator: isLast ? lastSeparator : separator,
           isLastItem: isLast,
           href,
           key: index,
+          theme: itemTheme,
+          count: children.length,
         });
       });
     } else {
@@ -137,10 +179,12 @@ export default class Breadcrumb extends React.Component<BreadcrumbProps, any> {
         (crumbs = cloneElement(children, {
           separator: lastSeparator,
           isLastItem: true,
+          index: 0,
+          count: 1,
           key: 'one',
+          theme: itemTheme,
         }));
     }
-
-    return <div>{crumbs}</div>;
+    return <BreadcrumbContainer themeProps={wrapThemeProps}>{crumbs}</BreadcrumbContainer>;
   }
 }

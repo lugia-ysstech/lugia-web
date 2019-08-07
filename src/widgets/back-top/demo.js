@@ -9,6 +9,8 @@ import styled from 'styled-components';
 import BackTop from './back-top';
 import Widget from '../consts/index';
 import Theme from '../theme';
+import { getBorder } from '@lugia/theme-utils';
+import { getBorderRadius } from '../theme/CSSProvider';
 
 const Demo = styled.div`
   & > div > div {
@@ -28,8 +30,35 @@ export default class AffixDemo extends React.Component<any, any> {
   render() {
     const view = {
       [Widget.BackTop]: {
-        color: 'red',
-        backgroundColor: 'orange',
+        Container: {
+          normal: {
+            color: 'red',
+            background: { color: 'orange' },
+            width: 100,
+            height: 100,
+            opacity: 0.7,
+            border: getBorder({ color: 'red', width: 1, style: 'solid' }),
+            borderRadius: getBorderRadius(100),
+          },
+        },
+        BackTopIcon: {
+          normal: {
+            color: 'green',
+            fontSize: 16,
+            padding: {
+              right: 10,
+              left: 10,
+              top: 10,
+              bottom: 10,
+            },
+            margin: {
+              right: 0,
+              left: 0,
+              top: 0,
+              bottom: 0,
+            },
+          },
+        },
       },
     };
     return (

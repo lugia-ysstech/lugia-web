@@ -10,7 +10,7 @@ import 'jest-styled-components';
 import Enzyme, { mount, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import CheckBox from '../';
-import { CheckBoxDemo } from '../demo';
+import { CheckboxDemo } from '../demo';
 import renderer from 'react-test-renderer';
 import { delay } from '@lugia/react-test-utils';
 
@@ -32,7 +32,7 @@ describe('CheckBox', () => {
   };
 
   it('CheckBox CSS', () => {
-    const target = <CheckBoxDemo />;
+    const target = <CheckboxDemo />;
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
   });
 
@@ -70,30 +70,31 @@ describe('CheckBox', () => {
 
   it('CheckBox props: disabled  & onChange', () => {
     let triggerCnt = 0;
-    const value = 'hello';
+    let value = false;
     const handleChange = (_, val) => {
       triggerCnt++;
-      expect(val).toBe(value);
+      value = val;
     };
     const config = { disabled: true, onChange: handleChange, value };
 
     const target = createTarget(config);
 
-    function expectAfterClick(result: number) {
+    function expectAfterClick(result: number, val: boolean) {
       const label = target.find('label');
       label.at(0).simulate('click');
       expect(triggerCnt).toBe(result);
+      expect(value).toBe(val);
     }
 
-    expectAfterClick(0);
-    expectAfterClick(0);
+    expectAfterClick(0, false);
+    expectAfterClick(0, false);
 
     target.setProps({ disabled: false });
 
-    expectAfterClick(1);
-    expectAfterClick(2);
+    expectAfterClick(1, true);
+    expectAfterClick(2, false);
 
     target.setProps({ disabled: true });
-    expectAfterClick(2);
+    expectAfterClick(2, false);
   });
 });

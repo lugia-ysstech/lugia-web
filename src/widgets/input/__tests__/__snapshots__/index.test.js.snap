@@ -1,68 +1,66 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Input props: getTheme: width:100,margin:10, 1`] = `
-.c0 {
-  position: relative;
-  display: inline-block;
-  margin: 0.8333333333333334em;
-}
-
 .c1 {
-  height: 2.666666666666667em;
-  cursor: text;
-  width: 8.333333333333334em;
-  border-radius: 0.33333333333333337em;
-  border: 1px;
-  border-style: solid;
-  border-color: #cccccc;
   line-height: 1.5;
-  font-size: 1.4rem;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  background-image: none;
-  color: #333333;
-  padding-left: 0.4166666666666667em;
-  padding-right: 2.0833333333333335em;
   outline: none;
-  min-height: 100%;
-  z-index: 1;
-  position: relative;
-  font-size: 1.2rem;
-}
-
-.c1:hover {
-  border-color: #4d63ff;
+  width: 20rem;
+  height: 3.2rem;
+  cursor: text;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
 }
 
 .c1::-webkit-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1::-moz-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1:-ms-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1::placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
-.c1:focus {
-  border-color: #4d63ff;
-  box-shadow: 0 0 6px rgba(104,79,255,0.2);
+.c0 {
+  position: relative;
+  display: inline-block;
+  outline: none;
 }
 
-<span
+<div
   className="c0"
-  disabled={false}
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  style={Object {}}
 >
   <input
+    autoFocus={false}
     className="c1"
     disabled={false}
     onBlur={[Function]}
@@ -73,73 +71,82 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
     onKeyPress={[Function]}
     onKeyUp={[Function]}
     size="default"
+    style={
+      Object {
+        "color": "#333333",
+        "height": "3.2rem",
+        "paddingBottom": "0rem",
+        "paddingLeft": "1rem",
+        "paddingRight": "3.5rem",
+        "paddingTop": "0rem",
+      }
+    }
     value=""
   />
-</span>
+</div>
 `;
 
 exports[`Input props: null 1`] = `
-.c0 {
-  position: relative;
-  display: inline-block;
-}
-
 .c1 {
-  height: 2.666666666666667em;
-  cursor: text;
-  width: 16.666666666666668em;
-  border-radius: 0.33333333333333337em;
-  border: 1px;
-  border-style: solid;
-  border-color: #cccccc;
   line-height: 1.5;
-  font-size: 1.4rem;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  background-image: none;
-  color: #333333;
-  padding-left: 0.8333333333333334em;
-  padding-right: 2.916666666666667em;
   outline: none;
-  min-height: 100%;
-  z-index: 1;
-  position: relative;
-  font-size: 1.2rem;
-}
-
-.c1:hover {
-  border-color: #4d63ff;
+  width: 20rem;
+  height: 3.2rem;
+  cursor: text;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
 }
 
 .c1::-webkit-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1::-moz-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1:-ms-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1::placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
-.c1:focus {
-  border-color: #4d63ff;
-  box-shadow: 0 0 6px rgba(104,79,255,0.2);
+.c0 {
+  position: relative;
+  display: inline-block;
+  outline: none;
 }
 
-<span
+<div
   className="c0"
-  disabled={false}
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  style={Object {}}
 >
   <input
+    autoFocus={false}
     className="c1"
     disabled={false}
     onBlur={[Function]}
@@ -150,73 +157,82 @@ exports[`Input props: null 1`] = `
     onKeyPress={[Function]}
     onKeyUp={[Function]}
     size="default"
+    style={
+      Object {
+        "color": "#333333",
+        "height": "3.2rem",
+        "paddingBottom": "0rem",
+        "paddingLeft": "1rem",
+        "paddingRight": "3.5rem",
+        "paddingTop": "0rem",
+      }
+    }
     value=""
   />
-</span>
+</div>
 `;
 
 exports[`Input props: placeholder  1`] = `
-.c0 {
-  position: relative;
-  display: inline-block;
-}
-
 .c1 {
-  height: 2.666666666666667em;
-  cursor: text;
-  width: 16.666666666666668em;
-  border-radius: 0.33333333333333337em;
-  border: 1px;
-  border-style: solid;
-  border-color: #cccccc;
   line-height: 1.5;
-  font-size: 1.4rem;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  background-image: none;
-  color: #333333;
-  padding-left: 0.8333333333333334em;
-  padding-right: 2.916666666666667em;
   outline: none;
-  min-height: 100%;
-  z-index: 1;
-  position: relative;
-  font-size: 1.2rem;
-}
-
-.c1:hover {
-  border-color: #4d63ff;
+  width: 20rem;
+  height: 3.2rem;
+  cursor: text;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
 }
 
 .c1::-webkit-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1::-moz-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1:-ms-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1::placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
-.c1:focus {
-  border-color: #4d63ff;
-  box-shadow: 0 0 6px rgba(104,79,255,0.2);
+.c0 {
+  position: relative;
+  display: inline-block;
+  outline: none;
 }
 
-<span
+<div
   className="c0"
-  disabled={false}
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  style={Object {}}
 >
   <input
+    autoFocus={false}
     className="c1"
     disabled={false}
     onBlur={[Function]}
@@ -228,73 +244,82 @@ exports[`Input props: placeholder  1`] = `
     onKeyUp={[Function]}
     placeholder="请填写内容"
     size="default"
+    style={
+      Object {
+        "color": "#333333",
+        "height": "3.2rem",
+        "paddingBottom": "0rem",
+        "paddingLeft": "1rem",
+        "paddingRight": "3.5rem",
+        "paddingTop": "0rem",
+      }
+    }
     value=""
   />
-</span>
+</div>
 `;
 
 exports[`Input props: placeholder  2`] = `
-.c0 {
-  position: relative;
-  display: inline-block;
-}
-
 .c1 {
-  height: 2.666666666666667em;
-  cursor: text;
-  width: 16.666666666666668em;
-  border-radius: 0.33333333333333337em;
-  border: 1px;
-  border-style: solid;
-  border-color: #cccccc;
   line-height: 1.5;
-  font-size: 1.4rem;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  background-image: none;
-  color: #333333;
-  padding-left: 0.8333333333333334em;
-  padding-right: 2.916666666666667em;
   outline: none;
-  min-height: 100%;
-  z-index: 1;
-  position: relative;
-  font-size: 1.2rem;
-}
-
-.c1:hover {
-  border-color: #4d63ff;
+  width: 20rem;
+  height: 3.2rem;
+  cursor: text;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
 }
 
 .c1::-webkit-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1::-moz-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1:-ms-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1::placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
-.c1:focus {
-  border-color: #4d63ff;
-  box-shadow: 0 0 6px rgba(104,79,255,0.2);
+.c0 {
+  position: relative;
+  display: inline-block;
+  outline: none;
 }
 
-<span
+<div
   className="c0"
-  disabled={false}
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  style={Object {}}
 >
   <input
+    autoFocus={false}
     className="c1"
     disabled={false}
     onBlur={[Function]}
@@ -306,73 +331,82 @@ exports[`Input props: placeholder  2`] = `
     onKeyUp={[Function]}
     placeholder=""
     size="default"
+    style={
+      Object {
+        "color": "#333333",
+        "height": "3.2rem",
+        "paddingBottom": "0rem",
+        "paddingLeft": "1rem",
+        "paddingRight": "3.5rem",
+        "paddingTop": "0rem",
+      }
+    }
     value=""
   />
-</span>
+</div>
 `;
 
 exports[`Input props: size 1`] = `
-.c0 {
-  position: relative;
-  display: inline-block;
-}
-
 .c1 {
-  height: 2em;
-  cursor: text;
-  width: 16.666666666666668em;
-  border-radius: 0.33333333333333337em;
-  border: 1px;
-  border-style: solid;
-  border-color: #cccccc;
   line-height: 1.5;
-  font-size: 1.4rem;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  background-image: none;
-  color: #333333;
-  padding-left: 0.8333333333333334em;
-  padding-right: 2.916666666666667em;
   outline: none;
-  min-height: 100%;
-  z-index: 1;
-  position: relative;
-  font-size: 1.2rem;
-}
-
-.c1:hover {
-  border-color: #4d63ff;
+  width: 20rem;
+  height: 3.2rem;
+  cursor: text;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
 }
 
 .c1::-webkit-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1::-moz-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1:-ms-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1::placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
-.c1:focus {
-  border-color: #4d63ff;
-  box-shadow: 0 0 6px rgba(104,79,255,0.2);
+.c0 {
+  position: relative;
+  display: inline-block;
+  outline: none;
 }
 
-<span
+<div
   className="c0"
-  disabled={false}
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  style={Object {}}
 >
   <input
+    autoFocus={false}
     className="c1"
     disabled={false}
     onBlur={[Function]}
@@ -383,73 +417,82 @@ exports[`Input props: size 1`] = `
     onKeyPress={[Function]}
     onKeyUp={[Function]}
     size="small"
+    style={
+      Object {
+        "color": "#333333",
+        "height": "2.4rem",
+        "paddingBottom": "0rem",
+        "paddingLeft": "1rem",
+        "paddingRight": "3.5rem",
+        "paddingTop": "0rem",
+      }
+    }
     value=""
   />
-</span>
+</div>
 `;
 
 exports[`Input props: size 2`] = `
-.c0 {
-  position: relative;
-  display: inline-block;
-}
-
 .c1 {
-  height: 3.3333333333333335em;
-  cursor: text;
-  width: 16.666666666666668em;
-  border-radius: 0.33333333333333337em;
-  border: 1px;
-  border-style: solid;
-  border-color: #cccccc;
   line-height: 1.5;
-  font-size: 1.4rem;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  background-image: none;
-  color: #333333;
-  padding-left: 0.8333333333333334em;
-  padding-right: 2.916666666666667em;
   outline: none;
-  min-height: 100%;
-  z-index: 1;
-  position: relative;
-  font-size: 1.2rem;
-}
-
-.c1:hover {
-  border-color: #4d63ff;
+  width: 20rem;
+  height: 3.2rem;
+  cursor: text;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
 }
 
 .c1::-webkit-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1::-moz-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1:-ms-input-placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
 .c1::placeholder {
-  color: #ccc;
+  color: #cccccc;
 }
 
-.c1:focus {
-  border-color: #4d63ff;
-  box-shadow: 0 0 6px rgba(104,79,255,0.2);
+.c0 {
+  position: relative;
+  display: inline-block;
+  outline: none;
 }
 
-<span
+<div
   className="c0"
-  disabled={false}
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  style={Object {}}
 >
   <input
+    autoFocus={false}
     className="c1"
     disabled={false}
     onBlur={[Function]}
@@ -460,7 +503,17 @@ exports[`Input props: size 2`] = `
     onKeyPress={[Function]}
     onKeyUp={[Function]}
     size="large"
+    style={
+      Object {
+        "color": "#333333",
+        "height": "4rem",
+        "paddingBottom": "0rem",
+        "paddingLeft": "1rem",
+        "paddingRight": "3.5rem",
+        "paddingTop": "0rem",
+      }
+    }
     value=""
   />
-</span>
+</div>
 `;

@@ -6,40 +6,97 @@
  */
 import '../common/shirm';
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import Widget from '../consts/index';
-import { px2emcss } from '../css/units';
-import { BaseRedPoint, dotRight, dotTop, getDotSize } from '../css/badge';
 import NumberTurn from './numberturn/index';
 
-import ThemeProvider from '../theme-provider';
+import ThemeHoc from '@lugia/theme-hoc';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
-import Theme from '../theme';
+import CSSComponent, { StaticComponent, css } from '@lugia/theme-css-hoc';
+import { getBoxShadow } from '@lugia/theme-utils';
+import colorsFunc from '../css/stateColor';
 
-const em = px2emcss(1.2);
+const { dangerColor, defaultColor } = colorsFunc();
 
-const Dot = BaseRedPoint.extend`
-  ${dotRight};
-  ${dotTop};
-  ${getDotSize};
-  border-radius: 100%;
-  z-index: 10;
-  box-shadow: 0 0 0 ${em(1)} #fff;
-`;
-const Container = styled.span`
-  background: transparent;
-  box-sizing: border-box;
-  position: relative;
-  display: inline-block;
-`;
+export const BaseRedPoint = CSSComponent({
+  tag: 'sup',
+  className: 'BaseRedPoint',
+  normal: {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['background'],
+      ['position'],
+      ['opacity'],
+      ['border'],
+      ['borderRadius'],
+    ],
+    defaultTheme: {
+      background: {
+        color: dangerColor,
+      },
+      color: defaultColor,
+      fontSize: 10,
+    },
+  },
+  css: css`
+    box-sizing: border-box;
+    position: absolute;
+    transform: translateX(50%);
+    transform-origin: 100%;
+    z-index: 10;
+  `,
+});
+
+const Dot: Object = CSSComponent({
+  extend: BaseRedPoint,
+  className: 'BadgeDot',
+  normal: {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['background'],
+      ['position'],
+      ['opacity'],
+      ['border'],
+      ['borderRadius'],
+      ['boxShadow'],
+    ],
+    defaultTheme: {
+      boxShadow: getBoxShadow('0 0 0 1 #fff'),
+      height: 10,
+      width: 10,
+    },
+  },
+  css: css`
+    border-radius: 100%;
+    z-index: 10;
+  `,
+  option: {
+    hover: true,
+  },
+});
+
+const Container: Object = StaticComponent({
+  tag: 'span',
+  className: 'BadgeContainer',
+  css: css`
+    background: transparent;
+    box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+  `,
+});
 
 type BadgeProps = {
-  className?: string,
+  viewClass?: string,
   getTheme: Function,
   count?: number,
   showZero?: boolean,
   children: React$Element<any>,
   overflowCount: number,
+  themeProps: Object,
+  getPartOfThemeProps: Function,
+  getPartOfThemeHocProps: Function,
 };
 type BadgeState = {};
 
@@ -52,9 +109,8 @@ class BadgeBox extends Component<BadgeProps, BadgeState> {
   static displayName = Widget.Badge;
 
   getDot() {
-    const { showZero, count, getTheme } = this.props;
+    const { showZero = false, count = 0 } = this.props;
 
-    const theme = getTheme();
     const hasCount = 'count' in this.props;
     const hasShowZero = 'showZero' in this.props;
     const isZero = count === 0 || !count;
@@ -66,19 +122,19 @@ class BadgeBox extends Component<BadgeProps, BadgeState> {
       return showZero || !isZero ? this.getNumberTurn(count) : null;
     }
 
-    return <Dot theme={theme} />;
+    return <Dot themeProps={this.props.getPartOfThemeProps('BadgeDot')} />;
   }
 
   getNumberTurn(count: ?number) {
-    const { getTheme, overflowCount } = this.props;
-    const numberView = { [Widget.NumberTurn]: getTheme() };
+    const { overflowCount } = this.props;
     return (
-      <Theme config={numberView}>
-        <NumberTurn count={count} overflowCount={overflowCount} />
-      </Theme>
+      <NumberTurn
+        count={count}
+        overflowCount={overflowCount}
+        {...this.props.getPartOfThemeHocProps('BadgeNumber')}
+      />
     );
   }
-
   render() {
     return (
       <Container>
@@ -89,5 +145,5 @@ class BadgeBox extends Component<BadgeProps, BadgeState> {
   }
 }
 
-const Badge = ThemeProvider(KeyBoardEventAdaptor(BadgeBox), Widget.Badge);
+const Badge = ThemeHoc(KeyBoardEventAdaptor(BadgeBox), Widget.Badge);
 export default Badge;

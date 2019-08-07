@@ -48,10 +48,10 @@ export const getStepBackgroundColor = (props: Object) => {
     (stepStatus === 'finish' || stepStatus === 'process') && stepType === 'flat'
       ? lightThemeColor
       : stepStatus === 'process'
-        ? themeColor
-        : stepStatus === 'error' && stepType === 'flat'
-          ? dangerColor
-          : defaultColor;
+      ? themeColor
+      : stepStatus === 'error' && stepType === 'flat'
+      ? dangerColor
+      : defaultColor;
   return color;
 };
 export const getStepFontColor = (props: Object) => {
@@ -60,17 +60,11 @@ export const getStepFontColor = (props: Object) => {
     stepStatus === 'error'
       ? dangerColor
       : stepStatus === 'finish' && stepType === 'flat'
-        ? lightThemeColor
-        : stepStatus === 'finish' || stepStatus === 'process'
-          ? blackColor
-          : lightGreyColor;
+      ? lightThemeColor
+      : stepStatus === 'finish' || stepStatus === 'process'
+      ? blackColor
+      : lightGreyColor;
   return color;
-};
-export const getFinishDisplay = props => {
-  const { stepStatus } = props;
-  const display =
-    stepStatus === 'finish' || stepStatus === 'error' ? 'inline-block' : 'none !important';
-  return `display:  ${display};`;
 };
 export const getShow = props => {
   const { isFirst } = props;
@@ -83,10 +77,10 @@ export const getFinishIconColor = props => {
     stepType === 'flat' && (stepStatus === 'finish' || stepStatus === 'error')
       ? defaultColor
       : stepStatus === 'finish'
-        ? successColor
-        : stepStatus === 'error'
-          ? dangerColor
-          : themeColor;
+      ? successColor
+      : stepStatus === 'error'
+      ? dangerColor
+      : themeColor;
   return color;
 };
 
@@ -112,7 +106,7 @@ export const getIndex = props => {
 };
 export const getStepNumberSize = props => {
   const { size } = props;
-  const fontSize = size === 'normal' ? '1.8rem' : '1.6rem';
+  const fontSize = size === 'normal' ? '2rem' : '1.2rem';
   return fontSize;
 };
 export const getStepSize = props => {
@@ -131,10 +125,10 @@ export const getStepSize = props => {
         size === 'normal' && stepType === 'flat'
           ? em(32)
           : size === 'mini' && stepType === 'flat'
-            ? em(24)
-            : size === 'normal'
-              ? em(20)
-              : em(12);
+          ? em(24)
+          : size === 'normal'
+          ? em(20)
+          : em(12);
       break;
     default:
       break;
@@ -184,10 +178,10 @@ export const getStepContainerWidth = props => {
     stepType === 'dot' && isFirst
       ? em(12)
       : size === 'normal' && isFirst
-        ? em(32)
-        : size === 'mini' && isFirst
-          ? em(24)
-          : '100%';
+      ? em(32)
+      : size === 'mini' && isFirst
+      ? em(24)
+      : '100%';
   return `width:${width};`;
 };
 export const getLinePadding = props => {
@@ -275,9 +269,8 @@ function getGapPropsByOperation(orientation: string, type: 'after' | 'before') {
 }
 
 export const getGap = props => {
-  const { stepType, stepStatus, afterDirection, beforeDirection, width, height } = props;
-  if (stepType === 'flat' && (stepStatus === 'next' || stepStatus === 'wait')) {
-    return `
+  const { afterDirection, beforeDirection, width, height } = props;
+  return `
     content: '';
     opacity: 1;
     position: absolute;
@@ -287,5 +280,10 @@ export const getGap = props => {
     background: ${defaultColor};
     height: ${height};
    `;
-  }
+};
+export const getWidth = props => {
+  const { theme, orientation } = props;
+  const { width } = theme;
+  const theWidth = orientation === 'vertical' ? '' : em(width) ? em(width) : em(500);
+  return ` width: ${theWidth};`;
 };

@@ -3,18 +3,46 @@
  * create by guorg
  * @flow
  */
+import CSSComponent from '@lugia/theme-css-hoc';
+import { getBorderRadius } from '@lugia/theme-utils';
 import colorsFunc from '../css/stateColor';
-import changeColor from '../css/utilsColor';
-import { getThemeColor } from '../common/ThemeUtils';
-import { keyframes } from 'styled-components';
-import { px2emcss } from '../css/units';
-import type { MarginType, ThemeType } from '@lugia/lugia-web';
+import { px2remcss } from '../css/units';
+import { css, keyframes } from 'styled-components';
+import {
+  TypeTheme,
+  DisabledTypeTheme,
+  PlainTypeTheme,
+  PlainDisabledTypeTheme,
+  TypeHoverTheme,
+  ActiveTypeTheme,
+  PlainHoverTheme,
+  PlainActiveTypeTheme,
+  defaultActiveTheme,
+  defaultHoverTheme,
+  defaultTheme,
+  defaultDisabledTheme,
+  SizeTheme,
+  CircleTheme,
+  ShapeTheme,
+  textDefaultTheme,
+  textDefaultHoverTheme,
+  textDefaultActiveTheme,
+  textDefaultDisabledTheme,
+  TextTypeTheme,
+  TextTypeHoverTheme,
+  TextTypeActiveTheme,
+  TextTypeDisabledTheme,
+  TextPlainTypeTheme,
+  TextPlainHoverTheme,
+  TextPlainDisabledTypeTheme,
+  TextPlainActiveTypeTheme,
+  TextSizeTheme,
+  TextCircleTheme,
+} from '../button/theme';
 
-const em = px2emcss(1.2);
-
-type ButtonType = 'default' | 'primary' | 'success' | 'warning' | 'danger';
+export type ButtonType = 'default' | 'primary' | 'success' | 'warning' | 'danger';
 type ButtonShape = 'default' | 'round';
-type ButtonSize = 'default' | 'small' | 'large' | 'bigger';
+type ButtonSize = 'default' | 'small' | 'large';
 
 type CSSProps = {
   shape?: ButtonShape,
@@ -25,15 +53,28 @@ type CSSProps = {
   circle?: boolean,
   disabled?: boolean,
   children?: (SyntheticEvent<HTMLButtonElement>) => any,
+  text?: string | React.ReactNode,
   icon?: string,
   onClick?: (SyntheticEvent<HTMLButtonElement>) => any,
   getTheme: Function,
   viewClass?: string,
   loading?: boolean,
+  em: Function,
+  hasChildren?: boolean,
+  block?: boolean,
 };
 export type ButtonOutProps = CSSProps & {
   clicked: boolean,
-  themes: ThemeType,
+  onMouseOut: Function,
+  onMouseEnter: Function,
+  onMouseOver: Function,
+  onMouseUp: Function,
+  onMouseDown: Function,
+  onMouseLeave: Function,
+  getPartOfThemeProps: Function,
+  getPartOfThemeHocProps: Function,
+  dispatchEvent: Function,
+  themeProps: Object,
 };
 
 type IconLoadingProps = {
@@ -46,33 +87,25 @@ type TypeColor = {
   border: string,
 };
 type ShapeStyle = {
-  borderRadius: string,
+  borderRadius: number,
+};
+type SizeStyle = {
+  height: number,
+  borderRadius: number,
 };
 
-const Size = {
-  bigger: {
-    height: 42,
-    padding: 14,
-    fontSize: 14,
-    borderRadius: 21,
-  },
+const Size: { [key: ButtonSize]: SizeStyle } = {
   large: {
-    height: 38,
-    padding: 12,
-    fontSize: 14,
-    borderRadius: 19,
+    height: 40,
+    borderRadius: 20,
   },
   default: {
     height: 32,
-    padding: 10,
-    fontSize: 12,
     borderRadius: 16,
   },
   small: {
-    height: 28,
-    padding: 8,
-    fontSize: 12,
-    borderRadius: 14,
+    height: 24,
+    borderRadius: 12,
   },
 };
 
@@ -80,21 +113,33 @@ const NotCircleSize = {
   width: 32,
   borderRadius: 4,
 };
+const CircleCSS = {
+  default: {
+    font: 16,
+  },
+  small: {
+    font: 12,
+  },
+  large: {
+    font: 18,
+  },
+};
 const {
-  themeColor: globalThemeColor,
+  themeColor,
   successColor,
   warningColor,
   dangerColor,
-  lightGreyColor: disableColor,
-  darkGreyColor: defaultColor,
+  lightGreyColor,
+  darkGreyColor,
   defaultColor: white,
 } = colorsFunc();
+const cursor = 'not-allowed';
 
 function fetchType(type: string): Object {
   if (type === 'default') {
     return {
-      color: defaultColor,
-      border: `1px solid ${disableColor}`,
+      color: darkGreyColor,
+      border: `1px solid ${lightGreyColor}`,
     };
   }
   return {
@@ -104,7 +149,7 @@ function fetchType(type: string): Object {
 }
 
 function fetchTypeCSS(color: string): { [key: ButtonType]: TypeColor } {
-  const defaultColor = color || globalThemeColor;
+  const defaultColor = color || themeColor;
   const defaultTypeStyle = fetchType('default');
   const otherTypeStyle = fetchType('other');
   return {
@@ -131,273 +176,87 @@ function fetchTypeCSS(color: string): { [key: ButtonType]: TypeColor } {
   };
 }
 
-function fetchPlainCSS(color: string): { [key: ButtonType]: TypeColor } {
-  const defaultColor = color || globalThemeColor;
-  const bgReduce = 55;
-  const borderReduceS = 45;
+function fetchSize(sizeType: ButtonSize) {
+  const { height } = Size[sizeType] || Size.default;
   return {
-    default: {
-      color: defaultColor,
-      backgroundColor: white,
-      border: `1px solid ${disableColor}`,
-    },
-    primary: {
-      color: defaultColor,
-      backgroundColor: changeColor(defaultColor, bgReduce).color, //正常颜色下调s 55%
-      border: `1px solid ${changeColor(defaultColor, borderReduceS).color}`, //正常颜色下调s 45%
-    },
-    success: {
-      color: successColor,
-      backgroundColor: changeColor(successColor, bgReduce).color, //正常颜色下调s 55%
-      border: `1px solid ${changeColor(successColor, borderReduceS).color}`, //正常颜色下调s 45%
-    },
-    warning: {
-      color: warningColor,
-      backgroundColor: changeColor(warningColor, bgReduce).color, //正常颜色下调s 55%
-      border: `1px solid ${changeColor(warningColor, borderReduceS).color}`, //正常颜色下调s 45%
-    },
-    danger: {
-      color: dangerColor,
-      backgroundColor: changeColor(dangerColor, bgReduce).color, //正常颜色下调s 55%
-      border: `1px solid ${changeColor(dangerColor, borderReduceS).color}`, //正常颜色下调s 45%
-    },
-  };
-}
-
-function fetchSize(sizeType: string) {
-  const size = Size[sizeType];
-  return {
-    height: `${em(size.height)}`,
-    padding: `${em(size.padding)}`,
-    fontSize: `${em(size.fontSize)}`,
+    height: `${px2remcss(height)}`,
   };
 }
 
 const ShapeCSS: { [key: ButtonSize]: ShapeStyle } = {
-  bigger: {
-    borderRadius: `${em(Size.bigger.borderRadius)}`,
-  },
   default: {
-    borderRadius: `${em(Size.default.borderRadius)}`,
+    borderRadius: Size.default.borderRadius,
   },
   large: {
-    borderRadius: `${em(Size.large.borderRadius)}`,
+    borderRadius: Size.large.borderRadius,
   },
   small: {
-    borderRadius: `${em(Size.small.borderRadius)}`,
+    borderRadius: Size.small.borderRadius,
   },
 };
 
-export const getTypeCSS = (props: ButtonOutProps) => {
-  const { type = 'default', plain, themes = {} } = props;
-  const themeColor = getThemeColor(themes);
-  const { color, backgroundColor, border } = plain
-    ? fetchPlainCSS(themeColor)[type]
-    : fetchTypeCSS(themeColor)[type];
-  return `
-    color: ${color};
-    background-color: ${backgroundColor};
-    border: ${border};
-  `;
-};
-
-export const getShapeCSS = (props: ButtonOutProps) => {
-  const { shape = 'default', size = 'default' } = props;
-  let borderRadius = `${em(21)}`;
-  if (shape === 'default') {
-    borderRadius = `${em(4)}`;
-  } else {
-    borderRadius = ShapeCSS[size].borderRadius;
-  }
-  return `
-    border-radius: ${borderRadius};
-  `;
-};
-export const getDisabledCSS = (props: ButtonOutProps) => {
-  let backgroundColor = '',
-    color = '',
-    border = '';
-  const cursor = 'not-allowed';
-  const { disabled, type = 'default', themes } = props;
-  const themeColor = getThemeColor(themes);
-  const colorChange = fetchTypeCSS(themeColor)[type].backgroundColor;
-  if (type === 'default') {
-    color = disableColor;
-    border = '1px solid #e8e8e8';
-    backgroundColor = white;
-  } else {
-    color = white;
-    border = 'none';
-    backgroundColor = changeColor(colorChange, 45).color; //orange: 正常色S下调45%
-  }
-  if (disabled) {
-    return `
-      background-color: ${backgroundColor};
-      color: ${color};
-      border: ${border};
-      cursor: ${cursor};
-      &:hover{
-        background-color: ${backgroundColor};
-        color: ${color};
-        border: ${border};
-      };
-    `;
-  }
-};
-export const getSizeCSS = (props: ButtonOutProps) => {
-  const { size = 'default' } = props;
-  const { height, padding, fontSize } = fetchSize(size);
-
-  return `
-    height: ${height};
-    padding: ${padding};
-    font-size: ${fontSize};
-  `;
-};
-export const getCircleCSS = (props: ButtonOutProps) => {
-  const { circle = false } = props;
-  const borderRadius = '50%';
-  const width = `${em(NotCircleSize.width)}`;
-  if (circle) {
-    return `
-      width: ${width};
-      border-radius: ${borderRadius};
-      padding: 0;
-  `;
-  }
-};
 export const getClickCSS = (props: ButtonOutProps) => {
-  const { type = 'default', size = 'default', shape = 'default', circle = false, themes } = props;
+  const { type = 'default', size = 'default', shape = 'default', circle = false } = props;
   const { height: sizeHeight } = fetchSize(size);
-  const themeColor = getThemeColor(themes);
+  const typeTheme = fetchTypeCSS(themeColor)[type] || fetchTypeCSS(themeColor).default;
   const backGround =
-    type === 'default'
-      ? 'none'
-      : colorsFunc(fetchTypeCSS(themeColor)[type].backgroundColor).mouseDownColor;
+    type === 'default' ? 'none' : colorsFunc(typeTheme.backgroundColor).mouseDownColor;
   const borderRadius = circle
     ? '50%'
     : shape === 'default'
-      ? em(NotCircleSize.borderRadius)
-      : ShapeCSS[size].borderRadius;
+    ? px2remcss(NotCircleSize.borderRadius)
+    : px2remcss(ShapeCSS[size].borderRadius);
 
   const clickAnimate = keyframes`
-  0% {
-    width: 0;
-    height: 0;
-    background: ${backGround};
-    border-radius: 0;
-    opacity: 0;
-  }
-  50% {
-    width: 100%;
-    height: ${sizeHeight};
-    background: ${backGround};
-    opacity: 0.15;
-    border-radius: ${borderRadius};
-  }
-  100% {
-    width: 100%;
-    height: ${sizeHeight};
-    background: ${backGround};
-    opacity: 0;
-    border-radius: ${borderRadius};
-  }
-`;
+    0% {
+      width: 0;
+      height: 0;
+      background: ${backGround};
+      border-radius: 0;
+      opacity: 0;
+    }
+    50% {
+      width: 100%;
+      height: ${sizeHeight};
+      background: ${backGround};
+      opacity: 0.15;
+      border-radius: ${borderRadius};
+    }
+    100% {
+      width: 100%;
+      height: ${sizeHeight};
+      background: ${backGround};
+      opacity: 0;
+      border-radius: ${borderRadius};
+    }
+  `;
   const { clicked } = props;
   if (clicked) {
-    return `&::after{
-                content: '';
-                height: 0;
-                border: 0;
-                position: absolute;
-                z-index: 50;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%);
-                animation: ${clickAnimate} .5s linear;
-            }`;
-  }
-};
-export const getActiveCSS = (props: ButtonOutProps) => {
-  const { type = 'default', themes } = props;
-  const themeColor = getThemeColor(themes);
-  if (type === 'default') {
-    const color = colorsFunc(themeColor).mouseDownColor;
-    return `
-      color: ${color};
-      border: 1px solid ${color};
+    return css`
+      &::after {
+        content: '';
+        height: 0;
+        border: 0;
+        position: absolute;
+        z-index: 50;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        animation: ${clickAnimate} 0.5s linear;
+      }
     `;
   }
-
-  return `
-    background-color: ${colorsFunc(fetchTypeCSS(themeColor)[type].backgroundColor).mouseDownColor};
-  `;
 };
-export const hoverStyle = (props: ButtonOutProps) => {
-  const { type = 'default', plain = false, themes } = props;
-  let color = '',
-    border = '',
-    backgroundColor = '';
-  const themeColor = getThemeColor(themes);
-
-  const typeBgcolor = fetchTypeCSS(themeColor)[type].backgroundColor;
-
-  if (type === 'default') {
-    const colorInfo = colorsFunc(themeColor ? themeColor : globalThemeColor);
-    const defaultColor = colorInfo.hoverColor;
-
-    color = defaultColor; //red:正常色s下调20%
-    border = `1px solid ${defaultColor}`; //red:正常色s下调20%
-    backgroundColor = plain ? white : colorInfo.spiritColor; //ccc:正常色透明度5%
-  } else if (plain) {
-    color = white;
-    border = fetchPlainCSS(themeColor)[type].border;
-    backgroundColor = typeBgcolor;
-  } else {
-    color = white;
-    border = 'none';
-    backgroundColor = colorsFunc(typeBgcolor).hoverColor; //red: 正常色s下调20%
+export const getIconStyle = (props: Object) => {
+  const { hasChildren = true } = props;
+  if (!hasChildren) {
+    return '';
   }
-
   return `
-    color: ${color};
-    border: ${border};
-    background-color: ${backgroundColor};  
+    margin-right: ${px2remcss(10)};
   `;
 };
-
-const getMarginCSS = (margin?: MarginType): string => {
-  let marginCss = '';
-  if (margin) {
-    if (typeof margin === 'number') {
-      marginCss = em(margin);
-    }
-    if (typeof margin === 'object') {
-      const { top = 0, right = 0, bottom = 0, left = 0 } = margin;
-      marginCss = `${em(top)} ${em(right)} ${em(bottom)} ${em(left)}`;
-    }
-  }
-  return marginCss;
-};
-export const getThemeStyle = (props: ButtonOutProps) => {
-  const { themes } = props;
-  const { width, color, margin } = themes;
-  const marginCss = getMarginCSS(margin);
-  const withCss = width && typeof width === 'number' ? em(width) : '';
-  const colorCss = color ? color : '';
-  return `
-    margin: ${marginCss};
-    width: ${withCss};
-    color: ${colorCss};
-  `;
-};
-export const getIconStyle = () => {
-  return `
-    margin-right: ${em(10)};
-  `;
-};
-export const getLoadingIconStyle = (props: IconLoadingProps) => {
-  const IconSoin = keyframes`
+const spin = keyframes`
     0% {
       transform: rotate(0deg);
     }
@@ -405,10 +264,250 @@ export const getLoadingIconStyle = (props: IconLoadingProps) => {
       transform: rotate(360deg);
     }
   `;
+
+export const getLoadingIconStyle = (props: IconLoadingProps) => {
   const { loading = false } = props;
   if (loading) {
-    return `
-      animation: ${IconSoin} 1s infinite linear;
+    return css`
+      animation: ${spin} 1s infinite linear;
     `;
   }
 };
+export const getIconCursor = (props: Object): string => {
+  const { disabled } = props;
+  if (disabled) {
+    return `cursor: ${cursor};`;
+  }
+  return '';
+};
+const getHoverStyle = (propsConfig: Object = {}) => {
+  const { type = 'default', plain } = propsConfig;
+  let hoverTheme;
+  if (plain) {
+    hoverTheme = PlainHoverTheme[type] || PlainHoverTheme.default;
+  } else {
+    hoverTheme = TypeHoverTheme[type] || TypeHoverTheme.default;
+  }
+  return hoverTheme;
+};
+export const ButtonOut = CSSComponent({
+  tag: 'button',
+  className: 'ButtonOut',
+  normal: {
+    selectNames: [
+      ['background'],
+      ['border'],
+      ['height'],
+      ['width'],
+      ['padding'],
+      ['margin'],
+      ['borderRadius'],
+    ],
+    defaultTheme,
+    getThemeMeta(themeMeta: Object, themeProps: Object): Object {
+      const { propsConfig = {} } = themeProps;
+      const {
+        type = 'default',
+        plain,
+        loading,
+        size = 'default',
+        circle,
+        shape = 'default',
+      } = propsConfig;
+      let normalTheme;
+      if (loading) {
+        if (plain) {
+          normalTheme = PlainHoverTheme[type] || PlainHoverTheme.default;
+        } else {
+          normalTheme = TypeHoverTheme[type] || TypeHoverTheme.default;
+        }
+      } else if (plain) {
+        normalTheme = PlainTypeTheme[type] || PlainTypeTheme.default;
+      } else {
+        normalTheme = TypeTheme[type] || TypeTheme.default;
+      }
+      const sizeTheme = circle
+        ? CircleTheme[size] || CircleTheme.default
+        : SizeTheme[size] || SizeTheme.default;
+      const shapeTheme =
+        shape === 'round'
+          ? ShapeTheme[size] || ShapeTheme.default
+          : { borderRadius: getBorderRadius(4) };
+
+      return { ...normalTheme, ...shapeTheme, ...sizeTheme };
+    },
+  },
+  hover: {
+    selectNames: [['background'], ['border']],
+    defaultTheme: defaultHoverTheme,
+    getThemeMeta(themeMeta: Object, themeProps: Object): Object {
+      const { propsConfig = {} } = themeProps;
+      return getHoverStyle(propsConfig);
+    },
+  },
+  disabled: {
+    selectNames: [['background'], ['border']],
+    defaultTheme: { ...defaultDisabledTheme, cursor },
+    getThemeMeta(themeMeta: Object, themeProps: Object): Object {
+      const { propsConfig = {} } = themeProps;
+      const { type = 'default', plain } = propsConfig;
+      let disabledTheme;
+      if (plain) {
+        disabledTheme = PlainDisabledTypeTheme[type] || PlainDisabledTypeTheme.default;
+      } else {
+        disabledTheme = DisabledTypeTheme[type] || DisabledTypeTheme.default;
+      }
+
+      return disabledTheme;
+    },
+  },
+  active: {
+    selectNames: [['background'], ['border']],
+    defaultTheme: defaultActiveTheme,
+    getThemeMeta(themeMeta: Object, themeProps: Object): Object {
+      const { propsConfig = {} } = themeProps;
+      const { type = 'default', plain } = propsConfig;
+      let activeTheme;
+      if (plain) {
+        activeTheme = PlainActiveTypeTheme[type] || PlainActiveTypeTheme.default;
+      } else {
+        activeTheme = ActiveTypeTheme[type] || ActiveTypeTheme.default;
+      }
+
+      return activeTheme;
+    },
+  },
+  focus: {
+    selectNames: [['background'], ['border']],
+    defaultTheme: defaultHoverTheme,
+    getThemeMeta(themeMeta: Object, themeProps: Object): Object {
+      const { propsConfig = {} } = themeProps;
+      return getHoverStyle(propsConfig);
+    },
+  },
+  css: css`
+    display: inline-block;
+    margin-bottom: 0;
+    box-sizing: border-box;
+    text-align: center;
+    touch-action: manipulation;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+    user-select: none;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    position: relative;
+    text-transform: none;
+    outline: 0;
+    ${props => (props.block ? 'width: 100%;' : '')}
+    ${props => (props.loading ? 'pointer-events: none;' : '')}
+    ${getClickCSS}
+  `,
+});
+
+export const getTextLoadingTheme = (props: Object) => {
+  const { plain, type = 'default' } = props;
+  if (plain) {
+    return TextPlainHoverTheme[type] || TextPlainHoverTheme.default;
+  }
+  return TextTypeHoverTheme[type] || TextTypeHoverTheme.default;
+};
+export const getTextNormalTheme = (propsConfig: Object) => {
+  const { type = 'default', plain, loading } = propsConfig;
+  let normalTheme;
+  if (loading) {
+    normalTheme = getTextLoadingTheme({ plain, type });
+  } else if (plain) {
+    normalTheme = TextPlainTypeTheme[type] || TextPlainTypeTheme.default;
+  } else {
+    normalTheme = TextTypeTheme[type] || TextTypeTheme.default;
+  }
+
+  return normalTheme;
+};
+export const getTextHoverStyle = (propsConfig: Object = {}) => {
+  const { type = 'default', plain } = propsConfig;
+  let hoverTheme;
+  if (plain) {
+    hoverTheme = TextPlainHoverTheme[type] || TextPlainHoverTheme.default;
+  } else {
+    hoverTheme = TextTypeHoverTheme[type] || TextTypeHoverTheme.default;
+  }
+  return hoverTheme;
+};
+export const getTextActiveTheme = (propsConfig: Object) => {
+  const { type = 'default', plain } = propsConfig;
+  let activeTheme;
+  if (plain) {
+    activeTheme = TextPlainActiveTypeTheme[type] || TextPlainActiveTypeTheme.default;
+  } else {
+    activeTheme = TextTypeActiveTheme[type] || TextTypeActiveTheme.default;
+  }
+
+  return activeTheme;
+};
+export const getTextDisabledTheme = (propsConfig: Object) => {
+  const { type = 'default', plain } = propsConfig;
+  let disabledTheme;
+  if (plain) {
+    disabledTheme = TextPlainDisabledTypeTheme[type] || TextPlainDisabledTypeTheme.default;
+  } else {
+    disabledTheme = TextTypeDisabledTheme[type] || TextTypeDisabledTheme.default;
+  }
+
+  return disabledTheme;
+};
+export const Text = CSSComponent({
+  className: 'ButtonText',
+  tag: 'span',
+  normal: {
+    selectNames: [['color'], ['font']],
+    defaultTheme: textDefaultTheme,
+    getThemeMeta(themeMeta: Object, themeProps: Object): Object {
+      const { propsConfig = {} } = themeProps;
+      const { size = 'default', circle } = propsConfig;
+      const normalTheme = getTextNormalTheme(propsConfig);
+      const sizeTheme = circle
+        ? TextCircleTheme[size] || TextCircleTheme.default
+        : TextSizeTheme[size] || TextSizeTheme.default;
+
+      return { ...normalTheme, ...sizeTheme };
+    },
+  },
+  hover: {
+    selectNames: [['color'], ['font']],
+    defaultTheme: textDefaultHoverTheme,
+    getThemeMeta(themeMeta: Object, themeProps: Object): Object {
+      const { propsConfig = {} } = themeProps;
+
+      return getTextHoverStyle(propsConfig);
+    },
+  },
+  active: {
+    selectNames: [['color'], ['font']],
+    defaultTheme: textDefaultActiveTheme,
+    getThemeMeta(themeMeta: Object, themeProps: Object): Object {
+      const { propsConfig = {} } = themeProps;
+
+      return getTextActiveTheme(propsConfig);
+    },
+  },
+  disabled: {
+    selectNames: [['color'], ['font']],
+    defaultTheme: textDefaultDisabledTheme,
+    getThemeMeta(themeMeta: Object, themeProps: Object): Object {
+      const { propsConfig = {} } = themeProps;
+
+      return getTextDisabledTheme(propsConfig);
+    },
+  },
+  focus: {
+    selectNames: [['color'], ['font']],
+    defaultTheme: textDefaultHoverTheme,
+    getThemeMeta(themeMeta: Object, themeProps: Object): Object {
+      const { propsConfig = {} } = themeProps;
+
+      return getTextHoverStyle(propsConfig);
+    },
+  },
+});

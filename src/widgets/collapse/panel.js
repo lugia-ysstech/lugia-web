@@ -7,17 +7,21 @@
  */
 import * as React from 'react';
 import ThemeProvider from '../theme-provider';
+import { deepMerge } from '@lugia/object-utils';
+import { addMouseEvent } from '@lugia/theme-hoc';
 import Widget from '../consts/index';
 import type { PanelProps, PanelState } from '../css/panel';
 import {
-  HoverIconWrap,
-  IconWrap,
+  PanelHeaderText,
   PanelContent,
   PanelContentWrap,
   PanelHeader,
   PanelWrap,
   Wrap,
+  getIconTransform,
 } from '../css/panel';
+import { px2remcss } from '../css/units';
+import Icon from '../icon';
 
 PanelHeader.displayName = 'Panel';
 
@@ -30,12 +34,11 @@ export default ThemeProvider(
     constructor(props) {
       super(props);
       this.state = {
-        open: false,
+        open: undefined,
         opening: false,
         closing: false,
         height: 0,
         hover: false,
-        headerHeight: 0,
       };
       this.height = 0;
     }
@@ -57,69 +60,84 @@ export default ThemeProvider(
 
     componentDidMount() {
       this.height = this.panel && this.panel.scrollHeight;
-      const headerHeight = this.header && this.header.scrollHeight;
-      this.setState({
-        headerHeight,
-      });
     }
 
+    getIconTheme = () => {
+      const { getPartOfThemeHocProps } = this.props;
+      const { opening, closing, open } = this.state;
+      const { viewClass, theme } = getPartOfThemeHocProps('PanelHeaderIcon');
+      const iconTheme = deepMerge(
+        {
+          [viewClass]: {
+            normal: {
+              color: '#666',
+              fontSize: 14,
+              getCSS() {
+                return `position: absolute;
+                  top: 50%;
+                  left: ${px2remcss(10)};
+                  transition: all 0.3s;
+                  ${getIconTransform({ opening, open, closing })}
+                `;
+              },
+            },
+          },
+        },
+        theme
+      );
+
+      return { viewClass, theme: iconTheme };
+    };
+
     render() {
-      const { opening, closing, open, hover, headerHeight } = this.state;
-      const { disabled = false, header, children, getTheme, showArrow = true } = this.props;
+      const { opening, closing, open, hover } = this.state;
+      const {
+        disabled = false,
+        title,
+        children,
+        showArrow = true,
+        getPartOfThemeProps,
+        dispatchEvent,
+        themeProps,
+      } = this.props;
       const config = {};
       if (!showArrow) {
-        config.onMouseMove = this.changeHover(true);
-        config.onMouseLeave = this.changeHover(false);
+        config.enter = this.changeHover(true);
+        config.leave = this.changeHover(false);
       }
+      const panelHeaderTheme = getPartOfThemeProps('PanelHeader', { props: { hover, showArrow } });
+      const panelHeaderTextTheme = getPartOfThemeProps('PanelHeaderText', { props: { showArrow } });
+      const panelContentTheme = getPartOfThemeProps('PanelContent', {
+        props: { showArrow, hasChildren: !!children },
+      });
       return (
-        <Wrap hover={hover} theme={getTheme()} {...config}>
-          <PanelWrap hover={hover} theme={getTheme()} {...config}>
+        <Wrap {...addMouseEvent(this, config)} themeProps={getPartOfThemeProps('Wrap')}>
+          <PanelWrap>
             <PanelHeader
               disabled={disabled}
-              showArrow={showArrow}
-              theme={getTheme()}
+              themeProps={panelHeaderTheme}
               onClick={this.handlePanelClick}
-              innerRef={(node: any) => (this.header = node)}
+              ref={(node: any) => (this.header = node)}
             >
-              {showArrow ? (
-                <IconWrap
-                  open={open}
+              {showArrow || hover ? (
+                <Icon
                   iconClass="lugia-icon-direction_caret_right"
-                  opening={opening}
-                  closing={closing}
+                  {...this.getIconTheme()}
+                  {...dispatchEvent(['hover', 'disabled'], 'f2c')}
+                  singleTheme
                 />
               ) : null}
-              {header}
-              <HoverIconWrap
-                theme={getTheme()}
-                hover={hover}
-                open={open}
-                headerHeight={headerHeight}
-                height={this.height}
-                opening={opening}
-                closing={closing}
-              >
-                <IconWrap
-                  open={open}
-                  iconClass="lugia-icon-direction_caret_right"
-                  opening={opening}
-                  closing={closing}
-                />
-              </HoverIconWrap>
+              <PanelHeaderText themeProps={panelHeaderTextTheme}>{title}</PanelHeaderText>
             </PanelHeader>
             <PanelContentWrap
-              innerRef={(node: any) => (this.panel = node)}
+              ref={(node: any) => (this.panel = node)}
               open={open}
               opening={opening}
               closing={closing}
               height={this.height}
-              disabled={disabled}
-              theme={getTheme()}
-              hover={hover}
+              themeProps={themeProps}
             >
-              <PanelContent showArrow={showArrow} hover={hover}>
-                {children}
-              </PanelContent>
+              <PanelContent themeProps={panelContentTheme}>{children}</PanelContent>
             </PanelContentWrap>
           </PanelWrap>
         </Wrap>
@@ -174,12 +192,13 @@ export default ThemeProvider(
       }
     }
 
-    getClickState = (open: boolean): Object => {
+    getClickState = (open: ?boolean): Object => {
       if (open) {
         return { closing: true };
       }
       return { opening: true };
     };
   },
-  Widget.Panel
+  Widget.Panel,
+  { hover: true }
 );

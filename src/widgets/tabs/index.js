@@ -8,5 +8,9 @@ import Tabs from './tabs';
 import TabPane from './tabpane';
 import TabContent from './tabcontent';
 
+Tabs.TabPane = TabPane;
+Tabs.TabContent = TabContent;
+
 export { Tabs, TabPane, TabContent };
-export default { Tabs, TabPane, TabContent };
+
+export default Tabs;

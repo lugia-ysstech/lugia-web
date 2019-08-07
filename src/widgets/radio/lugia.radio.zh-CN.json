@@ -1,0 +1,100 @@
+{
+  "widgetName": "Radio",
+  "title": "单选框",
+  "desc": "单选框。",
+  "props": {
+    "checked": {
+      "type": "boolean",
+      "desc": "单选框是否选中"
+    },
+    "defaultChecked": {
+      "type": "boolean",
+      "desc": "单选框初始是否选中"
+    },
+    "disabled": {
+      "type": "boolean",
+      "desc": "单选框是否禁用"
+    },
+    "value": {
+      "type": "string",
+      "desc": "单选框的 value 值",
+      "defaultValue": true
+    },
+    "children": {
+      "type": "string | React.node",
+      "desc": "Radio展示内容"
+    }
+  },
+  "event": {
+    "onChange": {
+      "desc": "单选框改变时的回调",
+      "args": [
+        {
+          "name": "value",
+          "desc": "Radio 改变时 value、displayValue 和 item 对应的值",
+          "type": "Object"
+        }
+      ]
+    }
+  },
+  "type": {
+    "RadioStyle": {
+      "color": {
+        "type": "string",
+        "desc": "Radio的颜色"
+      }
+    }
+  },
+  "childrenWidget": ["radio-group"],
+  "category": ["数据录入"],
+  "theme": {
+    "Container": {
+      "name": "Radio整体配置",
+      "desc": "Radio整体配置",
+      "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]],
+      "hover": [["opacity"]],
+      "disabled": [["opacity"]]
+    },
+    "RadioText": {
+      "name": "Radio文字配置",
+      "desc": "Radio文字样式配置",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]],
+      "disabled": [["color"], ["font"]]
+    },
+    "RadioEdgeChecked": {
+      "name": "Radio选中后边框配置",
+      "desc": "Radio选中后边框配置样式",
+      "normal": [["background"], ["border"], ["borderRadius"], ["width"], ["height"]],
+      "hover": [["background"], ["borderRadius"], ["border"]],
+      "disabled": [["background"], ["borderRadius"], ["border"]]
+    },
+    "RadioEdgeUnChecked": {
+      "name": "Radio未选中边框配置",
+      "desc": "Radio未选中边框配置样式",
+      "normal": [["background"], ["border"], ["borderRadius"], ["width"], ["height"]],
+      "hover": [["background"], ["borderRadius"], ["border"]],
+      "disabled": [["background"], ["borderRadius"], ["border"]]
+    },
+    "RadioEdgeCancel": {
+      "name": "Radio未选中边框配置",
+      "desc": "Radio未选中边框配置样式",
+      "normal": [["background"], ["border"], ["borderRadius"], ["width"], ["height"]],
+      "hover": [["background"], ["borderRadius"], ["border"]],
+      "disabled": [["background"], ["borderRadius"], ["border"]]
+    },
+    "RadioInnerChecked": {
+      "name": "Radio选中样式配置",
+      "desc": "Radio选中配置样式",
+      "normal": [["background"], ["width"], ["height"]],
+      "hover": [["background"]],
+      "disabled": [["background"]]
+    },
+    "RadioInnerCancel": {
+      "name": "Radio取消状态样式配置",
+      "desc": "Radio取消状态配置样式",
+      "normal": [["background"], ["width"], ["height"]],
+      "hover": [["background"]]
+    }
+  }
+}

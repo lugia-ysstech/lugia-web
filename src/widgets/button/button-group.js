@@ -9,7 +9,6 @@ export default ThemeProvider(
       if (child === null) {
         return;
       }
-      console.info('group child', child);
       // const SPACE = needInserted ? ' ' : '';
       // const SPACE =' ';
       // if (typeof child !== 'string' && typeof child !== 'number' &&

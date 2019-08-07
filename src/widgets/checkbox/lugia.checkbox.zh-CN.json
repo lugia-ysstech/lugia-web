@@ -1,0 +1,129 @@
+{
+  "widgetName": "Checkbox",
+  "title": "多选框",
+  "desc": "多选框。",
+  "props": {
+    "checked": {
+      "type": "boolean",
+      "desc": "指定Checkbox是否选中"
+    },
+    "defaultChecked": {
+      "type": "boolean",
+      "desc": "指定Checkbox初始是否选中"
+    },
+    "disabled": {
+      "type": "boolean",
+      "desc": "指定Checkbox是否禁用"
+    },
+    "indeterminate": {
+      "type": "boolean",
+      "desc": "设置半选状态，只用于样式控制"
+    },
+    "value": {
+      "type": "string",
+      "desc": "组件value值"
+    },
+    "styles": {
+      "type": "CheckboxType",
+      "desc": "Checkbox展示方向，可选值为 vertical 或不设",
+      "defaultValue": false
+    },
+    "children": {
+      "type": "string | React.node",
+      "desc": "Checkbox展示内容"
+    }
+  },
+  "events": {
+    "onChange": {
+      "desc": "Checkbox改变时回调",
+      "args": [
+        {
+          "name": "event",
+          "desc": "关闭时的DOM事件",
+          "type": "Object"
+        },
+        {
+          "name": "checked",
+          "desc": "当前是否选中",
+          "type": "boolean"
+        }
+      ]
+    }
+  },
+  "type": {
+    "CheckboxType": ["default", "vertical"],
+    "CheckboxStyle": {
+      "width": {
+        "type": "number",
+        "desc": "Checkbox宽度"
+      },
+      "color": {
+        "type": "string",
+        "desc": "Checkbox颜色"
+      }
+    }
+  },
+  "childrenWidget": ["checkbox-group"],
+  "category": ["数据录入"],
+  "theme": {
+    "Container": {
+      "name": "Checkbox整体配置",
+      "desc": "Checkbox整体配置",
+      "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]],
+      "hover": [["opacity"]],
+      "disabled": [["opacity"]]
+    },
+    "CheckboxText": {
+      "name": "Checkbox文字配置",
+      "desc": "Checkbox文字配置",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]],
+      "disabled": [["color"], ["font"]]
+    },
+    "CheckboxEdgeChecked": {
+      "name": "Checkbox选中后边框配置",
+      "desc": "Checkbox选中后边框配置样式",
+      "normal": [["background"], ["borderRadius"], ["border"]],
+      "hover": [["background"], ["borderRadius"], ["border"]],
+      "disabled": [["background"], ["borderRadius"], ["border"]]
+    },
+    "CheckboxEdgeUnChecked": {
+      "name": "Checkbox未选中边框配置",
+      "desc": "Checkbox未选中边框配置样式",
+      "normal": [["background"], ["borderRadius"], ["border"]],
+      "hover": [["background"], ["borderRadius"], ["border"]],
+      "disabled": [["background"], ["borderRadius"], ["border"]]
+    },
+    "CheckboxEdgeIndeterminate": {
+      "name": "Checkbox半选边框配置",
+      "desc": "Checkbox半选状态边框配置样式",
+      "normal": [["background"], ["borderRadius"], ["border"]],
+      "hover": [["background"], ["borderRadius"], ["border"]],
+      "disabled": [["background"], ["borderRadius"], ["border"]]
+    },
+    "CheckboxEdgeCancel": {
+      "name": "Checkbox取消项边框配置",
+      "desc": "Checkbox取消状态边框配置样式",
+      "normal": [["background"], ["borderRadius"], ["border"]]
+    },
+    "CheckboxInnerChecked": {
+      "name": "Checkbox选中样式配置",
+      "desc": "Checkbox选中样式配置",
+      "normal": [["color"]],
+      "hover": [["color"]],
+      "disabled": [["color"]]
+    },
+    "CheckboxInnerIndeterminate": {
+      "name": "Checkbox半选样式配置",
+      "desc": "Checkbox半选状态样式配置",
+      "normal": [["color"]],
+      "hover": [["color"]],
+      "disabled": [["color"]]
+    },
+    "CheckboxInnerCancel": {
+      "name": "Checkbox取消状态样式配置",
+      "desc": "Checkbox取消状态样式配置",
+      "normal": [["color"]]
+    }
+  }
+}

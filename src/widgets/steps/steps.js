@@ -6,44 +6,89 @@
  */
 import '../common/shirm';
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import Widget from '../consts/index';
 
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import ThemeProvider from '../theme-provider';
-import { getFlexDirection } from '../css/steps';
-import type { AlignType } from '../css/steps';
+import type { AlignType, StepType, OrientationType, SizeType } from '../css/steps';
+import Step from './step';
+import { getAttributeFromObject } from '../common/ObjectUtils';
+import CSSComponent, { css } from '@lugia/theme-css-hoc';
 
-const OutContainer = styled.div`
-  display: inline-block;
-  position: relative;
-`;
-OutContainer.displayName = Widget.TabsContainer;
+const StepsOutContainer = CSSComponent({
+  tag: 'div',
+  className: 'StepsOutContainer',
+  normal: {
+    selectNames: [['width'], ['height'], ['margin'], ['padding'], ['background'], ['opacity']],
+    getThemeMeta(themeMeta, themeProps) {
+      const { width, height } = themeMeta;
+      const { propsConfig } = themeProps;
+      const { orientation } = propsConfig;
+      const theWidth = width && width > 0 ? width : '';
+      const theHeight = height && height > 0 ? height : '';
+      return orientation === 'horizontal' ? { width: theWidth } : { height: theHeight };
+    },
+  },
+  css: css`
+    display: inline-block;
+    position: relative;
+    font-size: 1.2rem;
+  `,
+});
 
-const HStepsOutContainer = styled.div`
-  font-variant: tabular-nums;
-  color: rgba(0, 0, 0, 0.65);
-  box-sizing: border-box;
-  list-style: none;
-  display: flex;
-  ${getFlexDirection};
-`;
+const HStepsOutContainer = CSSComponent({
+  tag: 'div',
+  className: 'HStepsOutContainer',
+  normal: {
+    selectNames: [['width'], ['height']],
+    getCSS(themeMeta, themeProps) {
+      const { propsConfig } = themeProps;
+      const { orientation } = propsConfig;
+      const direction = orientation === 'horizontal' ? 'row' : 'column';
+      return ` flex-direction: ${direction};`;
+    },
+    getThemeMeta(themeMeta, themeProps) {
+      const { propsConfig } = themeProps;
+      const { orientation } = propsConfig;
+      return orientation === 'horizontal' ? { width: '100%' } : { height: '100%' };
+    },
+  },
+  css: css`
+    font-variant: tabular-nums;
+    box-sizing: border-box;
+    list-style: none;
+    display: flex;
+  `,
+});
 
 type StepsState = {};
 
 type StepsProps = {
-  title: string,
-  icon: string,
-  description: string,
-  stepType: string,
+  stepType: StepType,
   currentStepNumber: number,
-  status: string,
-  orientation: string,
-  size: string,
+  orientation: OrientationType,
+  size: SizeType,
   getTheme: Function,
   children: React$Element<any>,
   desAlign: AlignType,
+  data: Array<Object>,
+  defaultData: Array<Object>,
+  themeProps: Object,
+  getPartOfThemeProps: Function,
+  getPartOfThemeHocProps: Function,
 };
+export const defaultData = [
+  { title: 'step1', stepStatus: 'finish' },
+  {
+    title: 'step2',
+    stepStatus: 'process',
+  },
+  {
+    title: 'step3',
+    stepStatus: 'next',
+  },
+  { title: 'step4', stepStatus: 'wait' },
+];
 
 class Steps extends Component<StepsProps, StepsState> {
   static defaultProps = {
@@ -52,6 +97,7 @@ class Steps extends Component<StepsProps, StepsState> {
     size: 'normal',
     orientation: 'horizontal',
     desAlign: 'left',
+    defaultData,
   };
   static displayName = Widget.Steps;
 
@@ -62,37 +108,89 @@ class Steps extends Component<StepsProps, StepsState> {
   static getDerivedStateFromProps(props: StepsProps, state: StepsState) {}
 
   render() {
-    const { getTheme } = this.props;
-
-    return <OutContainer theme={getTheme()}>{this.getHSteps()}</OutContainer>;
+    const { orientation } = this.props;
+    const theThemeProps = this.props.getPartOfThemeProps('StepsOutContainer', {
+      props: {
+        orientation,
+      },
+    });
+    return (
+      <StepsOutContainer
+        themeProps={theThemeProps}
+        orientation={orientation}
+        viewClass={'StepsOutContainer'}
+      >
+        {this.getHSteps()}
+      </StepsOutContainer>
+    );
   }
 
   getHSteps() {
     const { orientation, stepType } = this.props;
+    const theThemeProps = this.props.getPartOfThemeProps('StepsContainer', {
+      props: {
+        orientation,
+      },
+    });
     return (
-      <HStepsOutContainer orientation={orientation} stepType={stepType}>
+      <HStepsOutContainer orientation={orientation} stepType={stepType} themeProps={theThemeProps}>
         {this.getChildren()}
       </HStepsOutContainer>
     );
   }
+  getStepsConfig(child: Object, i: number) {
+    const { orientation, stepType, size, currentStepNumber, desAlign } = this.props;
+    return {
+      orientation,
+      stepType,
+      size,
+      stepNumber: i + 1,
+      isFirst: i === 0,
+      currentStepNumber,
+      desAlign,
+      title: getAttributeFromObject(
+        child,
+        'title',
+        getAttributeFromObject(child.props, 'title', '')
+      ),
+      stepStatus: getAttributeFromObject(
+        child,
+        'stepStatus',
+        getAttributeFromObject(child.props, 'stepStatus', undefined)
+      ),
+      description: getAttributeFromObject(
+        child,
+        'description',
+        getAttributeFromObject(child.props, 'description', '')
+      ),
+      icon: getAttributeFromObject(child, 'icon', getAttributeFromObject(child.props, 'icon', '')),
+      isDashed: getAttributeFromObject(
+        child,
+        'isDashed',
+        getAttributeFromObject(child.props, 'isDashed', false)
+      ),
+    };
+  }
 
   getChildren() {
-    const { children, orientation, stepType, size, currentStepNumber, desAlign } = this.props;
-    if (Array.isArray(children) && children.length > 0) {
-      return React.Children.map(children, (child, i) => {
-        return [
-          React.cloneElement(child, {
-            orientation,
-            stepType,
-            size,
-            stepNumber: i + 1,
-            isFirst: i === 0,
-            currentStepNumber,
-            desAlign,
-          }),
-        ];
-      });
-    }
+    const { children, data, defaultData } = this.props;
+    return data
+      ? this.data2Step(data)
+      : Array.isArray(children) && children.length > 0
+      ? React.Children.map(children, (child, i) => {
+          return React.cloneElement(child, this.getStepsConfig(child, i));
+        })
+      : this.data2Step(defaultData);
+  }
+
+  data2Step(data: Array<Object>) {
+    return data.map((child, i) => {
+      return this.getStep(child, i);
+    });
+  }
+
+  getStep(child: Object, i: number) {
+    return <Step {...this.getStepsConfig(child, i)} />;
   }
 }
 

@@ -5,10 +5,13 @@
  * @flow
  *
  */
+import { recurTreeData } from '../menu/utils';
+import { createExistMap } from '../utils';
+
 export function getTruthValue(
   target: string,
   props: Object,
-  state?: Object,
+  state: ?Object,
   defaultTarget: string
 ) {
   const inProps = target in props;
@@ -16,7 +19,12 @@ export function getTruthValue(
 
   return result;
 }
-export function getSourceDataAndTargetData(data: Object[], targetKeys: string[]): Object {
+
+export function getPanelSourceDataAndTargetData(
+  data: ?(Object[]),
+  targetKeys: ?(string[]),
+  valueField: ?string
+): Object {
   const sourceData = [],
     targetData = [],
     mapData = {},
@@ -24,24 +32,38 @@ export function getSourceDataAndTargetData(data: Object[], targetKeys: string[])
     targetCheckKeys = [],
     sourceCheckKeys = [];
 
-  if (data && data.length > 0) {
-    data.forEach(item => {
-      mapData[item.value] = item;
-      const inTarget = targetKeys.includes(item.value);
-      if (inTarget) {
-        targetData.push(item);
-        if (!item.disabled) {
-          targetCheckKeys.push(item.value);
-        }
-      } else {
-        sourceData.push(item);
-        sourceKeys.push(item.value);
-        if (!item.disabled) {
-          sourceCheckKeys.push(item.value);
-        }
-      }
-    });
+  if (!data || !targetKeys || !valueField) {
+    return {
+      sourceData,
+      targetData,
+      mapData,
+      sourceKeys,
+      targetCheckKeys,
+      sourceCheckKeys,
+    };
   }
+
+  const existMap = createExistMap(targetKeys);
+
+  data.forEach(item => {
+    const key = item[valueField];
+    mapData[key] = item;
+    const inTarget = existMap[key];
+    const isEnable = !item.disabled;
+    if (inTarget) {
+      targetData.push(item);
+      if (isEnable) {
+        targetCheckKeys.push(key);
+      }
+    } else {
+      sourceData.push(item);
+      sourceKeys.push(key);
+      if (isEnable) {
+        sourceCheckKeys.push(key);
+      }
+    }
+  });
+
   return {
     sourceData,
     targetData,
@@ -51,65 +73,128 @@ export function getSourceDataAndTargetData(data: Object[], targetKeys: string[])
     sourceCheckKeys,
   };
 }
-export function splitSelectKeys(mapData: Object, selectKey: string[]): Object {
+
+export function splitSelectKeys(mapData: ?Object, selectKey: ?(string[])): Object {
   const validKeys = [],
     disabledKeys = [];
-  if (selectKey && selectKey.length > 0) {
-    selectKey.forEach(item => {
-      const disabled = mapData[item].disabled;
-      if (!disabled) {
-        validKeys.push(item);
-      } else {
-        disabledKeys.push(item);
-      }
-    });
+  if (!mapData || !selectKey) {
+    return { validKeys, disabledKeys };
   }
-  return { validKeys, disabledKeys };
-}
-export function isContained(a: Array<any>, b: string[]) {
-  if (!(a instanceof Array) || !(b instanceof Array)) return false;
-  if (a.length < b.length) return false;
-  const aStr = a.toString();
-  for (let i = 0, len = b.length; i < len; i++) {
-    if (aStr.indexOf(b[i]) === -1) return false;
-  }
-  return true;
-}
-export function forData(
-  data: Object[],
-  target: Object[],
-  parentKey?: string[],
-  parentPath?: string[]
-) {
-  data.map((item, index) => {
-    const { children } = item;
-    const newObj = {};
-    newObj.key = item.value;
-    newObj.title = item.text;
-    let pidArr;
-    if (!parentKey) {
-      newObj.pid = undefined;
-      newObj.path = undefined;
-      pidArr = [];
-    } else {
-      newObj.pid = parentKey;
-      if (parentPath.indexOf(parentKey) === -1) {
-        parentPath.push(parentKey);
-      }
-      pidArr = [...parentPath];
-      newObj.path = pidArr.join('/');
-    }
 
-    if (!children || children.length === 0) {
-      newObj.isLeaf = true;
-      target.push(newObj);
+  selectKey.forEach(item => {
+    const theItem = mapData && mapData[item];
+    const disabled = theItem && theItem.disabled;
+    if (disabled) {
+      disabledKeys.push(item);
     } else {
-      newObj.alwaysExpanded = item.alwaysExpanded;
-      target.push(newObj);
-      forData(children, target, item.value, pidArr);
+      validKeys.push(item);
     }
   });
+  return { validKeys, disabledKeys };
 }
-// export function forData(){
-//
-// };
+
+export function isContained(sourceItems: string[], childItems: string[]): boolean {
+  if (!Array.isArray(sourceItems) || !Array.isArray(childItems)) {
+    return false;
+  }
+
+  const childLen = childItems.length;
+  if (childLen === 0) {
+    return true;
+  }
+
+  if (sourceItems.length < childLen) {
+    return false;
+  }
+  const existMap = createExistMap(sourceItems);
+  return childItems.every(item => existMap[item]);
+}
+
+export function getTreeData(
+  data: Object[],
+  opt: { displayField: string, valueField: string }
+): Object {
+  const target = [],
+    mapData = {},
+    enableKeys = [];
+  const { displayField, valueField } = opt;
+  recurTreeData(
+    data,
+    target,
+    {},
+    {
+      onAdd(newItem) {
+        const { isLeaf } = newItem;
+        const key = newItem[valueField];
+        if (isLeaf) {
+          if (!newItem.disabled) {
+            enableKeys.push(key);
+          }
+        }
+        mapData[key] = newItem;
+      },
+      displayField,
+      valueField,
+    }
+  );
+  return { target, mapData, enableKeys };
+}
+
+export function getCancelItem(
+  value: ?(string[]),
+  mapData: Object,
+  field: Object,
+  displayValue?: string[]
+): Object[] {
+  const cancelItem = [];
+
+  if (!value || !value.length) {
+    return cancelItem;
+  }
+
+  const { valueField = 'value', displayField = 'text' } = field;
+  if (!displayValue || !displayValue.length) {
+    return cancelItem;
+  }
+
+  value.forEach((item, index) => {
+    if (!mapData[item]) {
+      cancelItem.push({
+        [displayField]: displayValue && displayValue[index],
+        [valueField]: item,
+      });
+    }
+  });
+  return cancelItem;
+}
+
+export function getKeys(data: ?(Object[]), valueField: ?string): string[] {
+  if (!data || !valueField) {
+    return [];
+  }
+  return data.map(item => {
+    if (!item) {
+      return '';
+    }
+    const res = item[valueField];
+    return res ? res : '';
+  });
+}
+export function filterEnableKeysFromSelectKeys(
+  list: ?(string[]),
+  selectKeys: string[],
+  direction: 'Source' | 'Target'
+): string[] {
+  if (!list || !list.length) {
+    return selectKeys;
+  }
+  if (!selectKeys || !selectKeys.length) {
+    return [];
+  }
+
+  const existMap = createExistMap(list);
+  if (direction === 'Source') {
+    return selectKeys.filter(item => !existMap[item]);
+  }
+  return selectKeys.filter(item => existMap[item]);
+}

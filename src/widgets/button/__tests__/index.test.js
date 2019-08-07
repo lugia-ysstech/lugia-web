@@ -29,9 +29,7 @@ describe('Button', () => {
     const target = mount(<Button type="success">hello</Button>);
     const button = target.find('button').at(0);
     const cmpButton = target
-      .children()
-      .at(0)
-      .children()
+      .find('Button')
       .at(0)
       .instance();
     expect(cmpButton.state.clicked).toBe(false);
@@ -50,9 +48,7 @@ describe('Button', () => {
       </Button>
     );
     const cmpButton = target
-      .children()
-      .at(0)
-      .children()
+      .find('Button')
       .at(0)
       .instance();
     expect(cmpButton.props.loading).toBe(true);
@@ -65,9 +61,7 @@ describe('Button', () => {
       </Button>
     );
     const cmpButton = target
-      .children()
-      .at(0)
-      .children()
+      .find('Button')
       .at(0)
       .instance();
     expect(cmpButton.props.loading).toBe(true);
@@ -89,7 +83,7 @@ describe('Button', () => {
     );
     const target = { px: 'hello' };
     cmp
-      .find('hello')
+      .find('ButtonWrap')
       .at(0)
       .simulate('click', { target });
 

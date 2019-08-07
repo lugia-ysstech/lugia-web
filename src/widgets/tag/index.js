@@ -6,23 +6,40 @@
  */
 
 import React from 'react';
-import '../css/sv.css';
 import Widget from '../consts/index';
-import ThemeProvider from '../theme-provider';
-import { TagContainer, ItemText, CloseButtonWrap, CloseButton } from '../css/tag';
+import ThemeHoc from '@lugia/theme-hoc';
+import Icon from '../icon';
+import { deepMerge } from '@lugia/object-utils';
+import { TagWrap, OptionalWrap, ItemText, CloseButtonWrap } from '../css/tag';
 
+type shapeType = 'basic' | 'round';
+type styleType = 'customs' | 'primary' | 'basic' | 'presets' | 'optional';
 type TagProps = {
-  closeable?: boolean,
+  closable?: boolean,
+  checked: boolean,
   children: any,
   onClick?: Function,
   onClose?: Function,
-  shape: string,
+  shape: shapeType,
   getTheme: Function,
-  type: string,
+  type: styleType,
+  themeProps: Object,
+  getPartOfThemeProps: Function,
+  getPartOfThemeHocProps: Function,
 };
 
 type TagState = {
   isClose: boolean,
+  checked: boolean,
+};
+
+const getChecked = (props: TagProps, state: any) => {
+  const isCheckedInProps = 'checked' in props;
+  if (isCheckedInProps) {
+    return props.checked;
+  }
+
+  return state ? state.checked : false;
 };
 
 class Tag extends React.Component<TagProps, TagState> {
@@ -31,45 +48,99 @@ class Tag extends React.Component<TagProps, TagState> {
     getTheme: () => {
       return {};
     },
+    closable: false,
     shape: 'basic',
     type: 'customs',
   };
   constructor(props: TagProps) {
     super(props);
+
     this.state = {
       isClose: false,
+      checked: getChecked(props, null),
+    };
+  }
+
+  static getDerivedStateFromProps(props: TagProps, state: TagState) {
+    if (!state) {
+      return {};
+    }
+
+    return {
+      checked: getChecked(props, state),
     };
   }
 
   itemText: Object;
+
   render() {
-    const { isClose } = this.state;
-    const { type, getTheme, shape, closeable = true, children } = this.props;
-    const Theme = getTheme();
-    return (
-      <TagContainer
-        closeable={closeable}
-        onClick={this.onClick}
-        shape={shape}
-        isClose={isClose}
-        type={type}
-        Theme={Theme}
-      >
-        <ItemText innerRef={cmp => (this.itemText = cmp)}>{children}</ItemText>
-        {closeable ? (
-          <CloseButtonWrap>
-            <CloseButton
+    const { isClose, checked } = this.state;
+    const { getPartOfThemeProps, type, shape, closable = false, children } = this.props;
+
+    const params = {
+      shape,
+      type,
+      isClose,
+      closable,
+      checked,
+    };
+
+    const themeProps =
+      type === 'optional' && checked
+        ? getPartOfThemeProps('CheckedTagWrap', { props: params })
+        : getPartOfThemeProps('TagWrap', { props: params });
+    return type === 'optional' ? (
+      <OptionalWrap onClick={this.onClick} themeProps={themeProps}>
+        <ItemText themeProps={themeProps} ref={cmp => (this.itemText = cmp)} type={type}>
+          {children}
+        </ItemText>
+      </OptionalWrap>
+    ) : (
+      <TagWrap onClick={this.onClick} themeProps={themeProps}>
+        <ItemText themeProps={themeProps} ref={cmp => (this.itemText = cmp)} type={type}>
+          {children}
+        </ItemText>
+        {closable ? (
+          <CloseButtonWrap themeProps={getPartOfThemeProps('CloseButton')}>
+            <Icon
+              {...this.getCloseTheme('CloseButton')}
+              singleTheme
               iconClass="lugia-icon-reminder_close"
               onClick={this.onCloseClick.bind(this)}
             />
           </CloseButtonWrap>
         ) : null}
-      </TagContainer>
+      </TagWrap>
     );
   }
 
+  getCloseTheme = (target: string) => {
+    const { getPartOfThemeHocProps } = this.props;
+    const { viewClass, theme } = getPartOfThemeHocProps(target);
+    const { normal = {}, hover = {} } = theme[viewClass];
+    normal.margin = {};
+    normal.padding = {};
+    hover.margin = {};
+    const iconTheme = deepMerge(
+      {
+        [viewClass]: {
+          normal: {
+            font: { size: 16 },
+          },
+        },
+      },
+      theme
+    );
+
+    return {
+      viewClass,
+      theme: iconTheme,
+    };
+  };
+
   onCloseClick(e) {
     e.stopPropagation();
+
     this.setState({
       isClose: true,
     });
@@ -79,10 +150,12 @@ class Tag extends React.Component<TagProps, TagState> {
     }, 150);
   }
 
-  onClick = () => {
+  onClick = (e: Object) => {
+    const { checked } = this.state;
+    this.setState({ checked: !checked });
     const { onClick } = this.props;
-    onClick && onClick();
+    onClick && onClick(e, !checked);
   };
 }
 
-export default ThemeProvider(Tag, Widget.Tag);
+export default ThemeHoc(Tag, Widget.Tag, { hover: true, active: true });

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Modal css 1`] = `
-.c8 {
+.c9 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -9,15 +9,18 @@ exports[`Modal css 1`] = `
   cursor: pointer;
 }
 
-.c1 {
+.c2 {
   display: none;
+  font-size: 1.4rem;
   position: fixed;
   top: 0;
+  bottom: 0;
   left: 0;
-  z-index: 1000;
+  right: 0;
+  z-index: 99999;
 }
 
-.c2 {
+.c3 {
   position: fixed;
   width: 100%;
   height: 100%;
@@ -26,82 +29,106 @@ exports[`Modal css 1`] = `
   left: 0;
   right: 0;
   background-color: rgba(0,0,0,0.65);
-  z-index: 1000;
-}
-
-.c3 {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1000;
+  z-index: 99999;
 }
 
 .c4 {
-  box-sizing: border-box;
-  font-size: 1.4rem;
-  position: relative;
-  width: 37.142857142857146em;
-  top: 7.142857142857143em;
-  margin: 0 auto;
-  z-index: 1000;
+  position: fixed;
+  right: 0;
+  left: 0;
+  margin: auto;
+  z-index: 99999;
 }
 
 .c5 {
+  box-sizing: border-box;
+  font-size: 1.4rem;
   position: relative;
-  background-color: #fff;
-  border: 0;
-  border-radius: 0.28571428571428575em;
-  box-shadow: 0 0.28571428571428575em 0.8571428571428572em rgba(0,0,0,0.15);
+  top: 10rem;
+  margin: 0 auto;
+  z-index: 99999;
+  width: 52rem;
 }
 
 .c6 {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 4.571428571428572em;
-  height: 4.571428571428572em;
-  cursor: pointer;
-  text-align: center;
-  line-height: 4.571428571428572em;
-}
-
-.c9 {
-  padding: 1.875em 5em 1em 1.875em;
-  border-radius: 0.25em 0.25em 0 0;
-  background: #fff;
-  color: #333333;
-  font-size: 1.142857142857143em;
-  font-weight: 500;
-}
-
-.c10 {
-  padding: 0 5.714285714285714em 0 2.142857142857143em;
-  color: #666666;
-  word-wrap: break-word;
-}
-
-.c11 {
-  padding: 1.5714285714285716em 5.714285714285714em 1.8571428571428574em 2.142857142857143em;
-  border-radius: 0 0 4px 4px;
-}
-
-.c11 > button {
-  margin-left: 1em;
-}
-
-.c11 > button:first-child {
-  margin-left: 0;
+  position: relative;
+  border: 0;
+  border-radius: 0.4rem;
+  box-shadow: 0 0.4rem 1.2rem rgba(0,0,0,0.15);
+  width: 52rem;
+  box-shadow: 0px 0px 0px 0px;
+  background-color: #fff;
+  border-top-width: 0rem;
+  border-top-style: solid;
+  border-top-color: #ccc;
+  border-bottom-width: 0rem;
+  border-bottom-style: solid;
+  border-bottom-color: #ccc;
+  border-left-width: 0rem;
+  border-left-style: solid;
+  border-left-color: #ccc;
+  border-right-width: 0rem;
+  border-right-style: solid;
+  border-right-color: #ccc;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
 }
 
 .c7 {
-  font-size: 1.142857142857143em;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 6.4rem;
+  height: 6.4rem;
+  cursor: pointer;
+  text-align: center;
+  line-height: 6.4rem;
+}
+
+.c10 {
+  border-radius: 0.4rem 0.4rem 0 0;
+  color: #333333;
+  font-size: 1.8rem;
+  font-weight: 500;
+  padding-top: 0rem;
+  padding-bottom: 1.6rem;
+  padding-left: 0rem;
+  padding-right: 0rem;
+}
+
+.c11 {
+  word-wrap: break-word;
+  color: #666666;
+  font-size: 1.4rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-left: 0rem;
+  padding-right: 0rem;
+}
+
+.c12 {
+  padding-top: 2.2rem;
+  border-radius: 0 0 4px 4px;
+}
+
+.c12 > button {
+  margin-left: 1.4rem;
+}
+
+.c12 > button:first-child {
+  margin-left: 0;
+}
+
+.c8 {
+  font-size: 1.6rem;
 }
 
 .c0 {
   display: inline-block;
   margin-bottom: 0;
+  box-sizing: border-box;
   text-align: center;
   touch-action: manipulation;
   cursor: pointer;
@@ -117,81 +144,35 @@ exports[`Modal css 1`] = `
   position: relative;
   text-transform: none;
   outline: 0;
-  vertical-align: bottom;
   color: #666666;
   background-color: #ffffff;
   border: 1px solid #cccccc;
-  height: 2.666666666666667em;
-  padding: 0.8333333333333334em;
-  font-size: 1em;
-  border-radius: 0.33333333333333337em;
+  padding: 0 1.2857142857142858em;
+  font-size: 1.4rem;
+  border-radius: 0.28571428571428575em;
 }
 
 .c0:hover {
-  color: #9482ff;
-  border: 1px solid #9482ff;
-  background-color: rgba(104,79,255,0.05);
+  color: #8090ff;
+  border: 1px solid #8090ff;
+  background-color: rgba(77,99,255,0.05);
 }
 
 .c0:focus {
-  color: #9482ff;
-  border: 1px solid #9482ff;
-  background-color: rgba(104,79,255,0.05);
+  color: #8090ff;
+  border: 1px solid #8090ff;
+  background-color: rgba(77,99,255,0.05);
 }
 
 .c0:active {
-  color: #533fcc;
-  border: 1px solid #533fcc;
-}
-
-.c12 {
-  display: inline-block;
-  margin-bottom: 0;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  vertical-align: bottom;
-  color: #ffffff;
-  background-color: #684fff;
-  border: none;
-  height: 2.666666666666667em;
-  padding: 0.8333333333333334em;
-  font-size: 1em;
-  border-radius: 0.33333333333333337em;
-  width: 6.666666666666667em;
-}
-
-.c12:hover {
-  color: #ffffff;
-  border: none;
-  background-color: #9482ff;
-}
-
-.c12:focus {
-  color: #ffffff;
-  border: none;
-  background-color: #9482ff;
-}
-
-.c12:active {
-  background-color: #533fcc;
+  color: #3e4fcc;
+  border: 1px solid #3e4fcc;
 }
 
 .c13 {
   display: inline-block;
   margin-bottom: 0;
+  box-sizing: border-box;
   text-align: center;
   touch-action: manipulation;
   cursor: pointer;
@@ -207,138 +188,284 @@ exports[`Modal css 1`] = `
   position: relative;
   text-transform: none;
   outline: 0;
-  vertical-align: bottom;
-  color: #666666;
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
-  height: 2.666666666666667em;
-  padding: 0.8333333333333334em;
-  font-size: 1em;
-  border-radius: 0.33333333333333337em;
-  width: 6.666666666666667em;
+  color: #ffffff;
+  background-color: #4d63ff;
+  border: none;
+  padding: 0 1.2857142857142858em;
+  font-size: 1.4rem;
+  border-radius: 0.28571428571428575em;
+  width: 5.714285714285714em;
 }
 
 .c13:hover {
-  color: #9482ff;
-  border: 1px solid #9482ff;
-  background-color: rgba(104,79,255,0.05);
+  color: #ffffff;
+  border: none;
+  background-color: #8090ff;
 }
 
 .c13:focus {
-  color: #9482ff;
-  border: 1px solid #9482ff;
-  background-color: rgba(104,79,255,0.05);
+  color: #ffffff;
+  border: none;
+  background-color: #8090ff;
 }
 
 .c13:active {
-  color: #533fcc;
-  border: 1px solid #533fcc;
+  background-color: #3e4fcc;
+}
+
+.c15 {
+  display: inline-block;
+  margin-bottom: 0;
+  box-sizing: border-box;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  color: #666666;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  padding: 0 1.2857142857142858em;
+  font-size: 1.4rem;
+  border-radius: 0.28571428571428575em;
+  width: 5.714285714285714em;
+}
+
+.c15:hover {
+  color: #8090ff;
+  border: 1px solid #8090ff;
+  background-color: rgba(77,99,255,0.05);
+}
+
+.c15:focus {
+  color: #8090ff;
+  border: 1px solid #8090ff;
+  background-color: rgba(77,99,255,0.05);
+}
+
+.c15:active {
+  color: #3e4fcc;
+  border: 1px solid #3e4fcc;
+}
+
+.c16 {
+  display: inline-block;
+  margin-bottom: 0;
+  box-sizing: border-box;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  color: #ffffff;
+  background-color: #4d63ff;
+  border: none;
+  padding: 0 1.2857142857142858em;
+  font-size: 1.4rem;
+  border-radius: 0.28571428571428575em;
+}
+
+.c16:hover {
+  color: #ffffff;
+  border: none;
+  background-color: #8090ff;
+}
+
+.c16:focus {
+  color: #ffffff;
+  border: none;
+  background-color: #8090ff;
+}
+
+.c16:active {
+  background-color: #3e4fcc;
+}
+
+.c1 {
+  display: inline-block;
+  line-height: 2.142857142857143em;
 }
 
 .c14 {
   display: inline-block;
-  margin-bottom: 0;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  vertical-align: bottom;
-  color: #ffffff;
-  background-color: #684fff;
-  border: none;
-  height: 2.666666666666667em;
-  padding: 0.8333333333333334em;
-  font-size: 1em;
-  border-radius: 0.33333333333333337em;
-}
-
-.c14:hover {
-  color: #ffffff;
-  border: none;
-  background-color: #9482ff;
-}
-
-.c14:focus {
-  color: #ffffff;
-  border: none;
-  background-color: #9482ff;
-}
-
-.c14:active {
-  background-color: #533fcc;
+  line-height: 2.285714285714286em;
 }
 
 <div>
   <button
     className="c0"
     onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    size="default"
   >
-    <span>
-      Modal
+    <span
+      className="c1"
+      size="default"
+    >
+      Theme Modal
     </span>
   </button>
   <div
-    className="c1"
+    className="c2"
   >
     <div
-      className="c2"
+      className="c3"
       onClick={[Function]}
     />
     <div
-      className="c3"
+      className="c4"
     >
       <div
-        className="c4"
+        className="c5"
+        style={
+          Object {
+            "width": "80rem",
+          }
+        }
       >
         <div
-          className="c5"
+          className="c6"
+          style={
+            Object {
+              "backgroundColor": "orange",
+              "borderBottomColor": "#4d63ff",
+              "borderBottomLeftRadius": "5rem",
+              "borderBottomRightRadius": "5rem",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "borderLeftColor": "#4d63ff",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": "0.1rem",
+              "borderRightColor": "#4d63ff",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.1rem",
+              "borderTopColor": "#4d63ff",
+              "borderTopLeftRadius": "5rem",
+              "borderTopRightRadius": "5rem",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.1rem",
+              "boxShadow": "1px 2px 2px 2px #e8e8e8",
+              "height": "50rem",
+              "opacity": 0.8,
+              "paddingBottom": "3rem",
+              "paddingLeft": "5rem",
+              "paddingRight": "3rem",
+              "paddingTop": "3rem",
+              "width": "80rem",
+            }
+          }
         >
           <div
-            className="c6"
+            className="c7"
             onClick={[Function]}
           >
             <i
-              className="lugia-icon-reminder_close c7 c8"
+              className="lugia-icon-reminder_close c8  c9"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={
+                Object {
+                  "color": "green",
+                  "fontSize": "1.8rem",
+                }
+              }
             />
           </div>
           <div
-            className="c9"
+            className="c10"
+            style={
+              Object {
+                "color": "green",
+                "fontSize": "1.8rem",
+                "fontWeight": 500,
+                "paddingBottom": "3rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "3rem",
+                "paddingTop": "3rem",
+              }
+            }
           >
             这是标题！
           </div>
           <div
-            className="c10"
+            className="c11"
+            style={
+              Object {
+                "color": "green",
+                "fontSize": "1.8rem",
+                "fontWeight": 500,
+                "paddingBottom": "3rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "3rem",
+                "paddingTop": "3rem",
+              }
+            }
           >
             这是内容！
           </div>
           <div
-            className="c11"
+            className="c12"
           >
             <button
-              className="c12"
+              className="c13"
               onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              onMouseUp={[Function]}
+              size="default"
               type="primary"
             >
-              <span>
+              <span
+                className="c14"
+                size="default"
+                type="primary"
+              >
                 确定
               </span>
             </button>
             <button
-              className="c13"
+              className="c15"
               onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              onMouseUp={[Function]}
+              size="default"
             >
-              <span>
+              <span
+                className="c1"
+                size="default"
+              >
                 取消
               </span>
             </button>
@@ -352,83 +479,249 @@ exports[`Modal css 1`] = `
   <button
     className="c0"
     onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    size="default"
   >
-    <span>
+    <span
+      className="c1"
+      size="default"
+    >
       Modal
     </span>
   </button>
   <div
-    className="c1"
+    className="c2"
   >
     <div
-      className="c2"
+      className="c3"
       onClick={[Function]}
     />
     <div
-      className="c3"
+      className="c4"
     >
       <div
-        className="c4"
+        className="c5"
+        style={Object {}}
       >
         <div
-          className="c5"
+          className="c6"
+          style={
+            Object {
+              "paddingBottom": "3rem",
+              "paddingLeft": "3rem",
+              "paddingRight": "3rem",
+              "paddingTop": "3rem",
+            }
+          }
         >
           <div
-            className="c6"
+            className="c7"
             onClick={[Function]}
           >
             <i
-              className="lugia-icon-reminder_close c7 c8"
+              className="lugia-icon-reminder_close c8  c9"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={Object {}}
             />
           </div>
           <div
-            className="c9"
+            className="c10"
+            style={Object {}}
           >
             这是标题！
           </div>
           <div
+            className="c11"
+            style={Object {}}
+          >
+            这是内容！
+          </div>
+          <div
+            className="c12"
+          >
+            <button
+              className="c13"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              onMouseUp={[Function]}
+              size="default"
+              type="primary"
+            >
+              <span
+                className="c14"
+                size="default"
+                type="primary"
+              >
+                确定
+              </span>
+            </button>
+            <button
+              className="c15"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              onMouseUp={[Function]}
+              size="default"
+            >
+              <span
+                className="c1"
+                size="default"
+              >
+                取消
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <button
+    className="c0"
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    size="default"
+  >
+    <span
+      className="c1"
+      size="default"
+    >
+      Modal
+    </span>
+  </button>
+  <div
+    className="c2"
+  >
+    <div
+      className="c3"
+      onClick={[Function]}
+    />
+    <div
+      className="c4"
+    >
+      <div
+        className="c5"
+        style={Object {}}
+      >
+        <div
+          className="c6"
+          style={
+            Object {
+              "paddingBottom": "3rem",
+              "paddingLeft": "3rem",
+              "paddingRight": "3rem",
+              "paddingTop": "3rem",
+            }
+          }
+        >
+          <div
+            className="c7"
+            onClick={[Function]}
+          >
+            <i
+              className="lugia-icon-reminder_close c8  c9"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={Object {}}
+            />
+          </div>
+          <div
             className="c10"
+            style={Object {}}
+          >
+            这是标题！
+          </div>
+          <div
+            className="c11"
+            style={Object {}}
           >
             <div>
               <button
                 className="c0"
                 onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
+                onMouseUp={[Function]}
+                size="default"
               >
-                <span>
+                <span
+                  className="c1"
+                  size="default"
+                >
                   弹出
                 </span>
               </button>
               <div
-                className="c1"
+                className="c2"
               >
                 <div
-                  className="c2"
+                  className="c3"
                   onClick={[Function]}
                 />
                 <div
-                  className="c3"
+                  className="c4"
                 >
                   <div
-                    className="c4"
+                    className="c5"
+                    style={Object {}}
                   >
                     <div
-                      className="c5"
+                      className="c6"
+                      style={
+                        Object {
+                          "paddingBottom": "3rem",
+                          "paddingLeft": "3rem",
+                          "paddingRight": "3rem",
+                          "paddingTop": "3rem",
+                        }
+                      }
                     >
                       <div
-                        className="c6"
+                        className="c7"
                         onClick={[Function]}
                       >
                         <i
-                          className="lugia-icon-reminder_close c7 c8"
+                          className="lugia-icon-reminder_close c8  c9"
+                          onClick={[Function]}
+                          onMouseDown={[Function]}
+                          onMouseEnter={[Function]}
+                          onMouseLeave={[Function]}
+                          onMouseUp={[Function]}
+                          style={Object {}}
                         />
                       </div>
                       <div
-                        className="c9"
+                        className="c10"
+                        style={Object {}}
                       >
                         另一个对话框！
                       </div>
                       <div
-                        className="c10"
+                        className="c11"
+                        style={Object {}}
                       >
                         <div
                           style={
@@ -442,22 +735,41 @@ exports[`Modal css 1`] = `
                         </div>
                       </div>
                       <div
-                        className="c11"
+                        className="c12"
                       >
                         <button
-                          className="c12"
+                          className="c13"
                           onClick={[Function]}
+                          onMouseDown={[Function]}
+                          onMouseEnter={[Function]}
+                          onMouseOut={[Function]}
+                          onMouseOver={[Function]}
+                          onMouseUp={[Function]}
+                          size="default"
                           type="primary"
                         >
-                          <span>
+                          <span
+                            className="c14"
+                            size="default"
+                            type="primary"
+                          >
                             确定
                           </span>
                         </button>
                         <button
-                          className="c13"
+                          className="c15"
                           onClick={[Function]}
+                          onMouseDown={[Function]}
+                          onMouseEnter={[Function]}
+                          onMouseOut={[Function]}
+                          onMouseOver={[Function]}
+                          onMouseUp={[Function]}
+                          size="default"
                         >
-                          <span>
+                          <span
+                            className="c1"
+                            size="default"
+                          >
                             取消
                           </span>
                         </button>
@@ -469,22 +781,41 @@ exports[`Modal css 1`] = `
             </div>
           </div>
           <div
-            className="c11"
+            className="c12"
           >
             <button
-              className="c12"
+              className="c13"
               onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              onMouseUp={[Function]}
+              size="default"
               type="primary"
             >
-              <span>
+              <span
+                className="c14"
+                size="default"
+                type="primary"
+              >
                 确定
               </span>
             </button>
             <button
-              className="c13"
+              className="c15"
               onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              onMouseUp={[Function]}
+              size="default"
             >
-              <span>
+              <span
+                className="c1"
+                size="default"
+              >
                 取消
               </span>
             </button>
@@ -498,62 +829,107 @@ exports[`Modal css 1`] = `
   <button
     className="c0"
     onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    size="default"
   >
-    <span>
+    <span
+      className="c1"
+      size="default"
+    >
       异步关闭
     </span>
   </button>
   <div
-    className="c1"
+    className="c2"
   >
     <div
-      className="c2"
+      className="c3"
       onClick={[Function]}
     />
     <div
-      className="c3"
+      className="c4"
     >
       <div
-        className="c4"
+        className="c5"
+        style={Object {}}
       >
         <div
-          className="c5"
+          className="c6"
+          style={
+            Object {
+              "paddingBottom": "3rem",
+              "paddingLeft": "3rem",
+              "paddingRight": "3rem",
+              "paddingTop": "3rem",
+            }
+          }
         >
           <div
-            className="c6"
+            className="c7"
             onClick={[Function]}
           >
             <i
-              className="lugia-icon-reminder_close c7 c8"
+              className="lugia-icon-reminder_close c8  c9"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={Object {}}
             />
           </div>
           <div
-            className="c9"
+            className="c10"
+            style={Object {}}
           >
             这是标题！
           </div>
           <div
-            className="c10"
+            className="c11"
+            style={Object {}}
           >
             这是内容！
           </div>
           <div
-            className="c11"
+            className="c12"
           >
             <button
-              className="c12"
+              className="c13"
               onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              onMouseUp={[Function]}
+              size="default"
               type="primary"
             >
-              <span>
+              <span
+                className="c14"
+                size="default"
+                type="primary"
+              >
                 确定
               </span>
             </button>
             <button
-              className="c13"
+              className="c15"
               onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              onMouseUp={[Function]}
+              size="default"
             >
-              <span>
+              <span
+                className="c1"
+                size="default"
+              >
                 取消
               </span>
             </button>
@@ -567,55 +943,201 @@ exports[`Modal css 1`] = `
   <button
     className="c0"
     onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    size="default"
   >
-    <span>
+    <span
+      className="c1"
+      size="default"
+    >
       自定义页脚
     </span>
   </button>
   <div
-    className="c1"
+    className="c2"
   >
     <div
-      className="c2"
+      className="c3"
       onClick={[Function]}
     />
     <div
-      className="c3"
+      className="c4"
     >
       <div
-        className="c4"
+        className="c5"
+        style={Object {}}
       >
         <div
-          className="c5"
+          className="c6"
+          style={
+            Object {
+              "paddingBottom": "3rem",
+              "paddingLeft": "3rem",
+              "paddingRight": "3rem",
+              "paddingTop": "3rem",
+            }
+          }
         >
           <div
-            className="c6"
+            className="c7"
             onClick={[Function]}
           >
             <i
-              className="lugia-icon-reminder_close c7 c8"
+              className="lugia-icon-reminder_close c8  c9"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={Object {}}
             />
           </div>
           <div
-            className="c9"
+            className="c10"
+            style={Object {}}
           >
             这是标题！
           </div>
           <div
+            className="c11"
+            style={Object {}}
+          >
+            这是内容！
+          </div>
+          <button
+            className="c16"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            onMouseUp={[Function]}
+            size="default"
+            type="primary"
+          >
+            <span
+              className="c14"
+              size="default"
+              type="primary"
+            >
+              自定义页脚
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <button
+    className="c0"
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    size="default"
+  >
+    <span
+      className="c1"
+      size="default"
+    >
+      ThemeModal
+    </span>
+  </button>
+  <div
+    className="c2"
+  >
+    <div
+      className="c3"
+      onClick={[Function]}
+    />
+    <div
+      className="c4"
+    >
+      <div
+        className="c5"
+        style={Object {}}
+      >
+        <div
+          className="c6"
+          style={
+            Object {
+              "paddingBottom": "3rem",
+              "paddingLeft": "3rem",
+              "paddingRight": "3rem",
+              "paddingTop": "3rem",
+            }
+          }
+        >
+          <div
+            className="c7"
+            onClick={[Function]}
+          >
+            <i
+              className="lugia-icon-reminder_close c8  c9"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={Object {}}
+            />
+          </div>
+          <div
             className="c10"
+            style={Object {}}
+          >
+            这是标题！
+          </div>
+          <div
+            className="c11"
+            style={Object {}}
           >
             这是内容！
           </div>
           <div
-            className="c11"
+            className="c12"
           >
             <button
-              className="c14"
+              className="c13"
               onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              onMouseUp={[Function]}
+              size="default"
               type="primary"
             >
-              <span>
-                自定义页脚
+              <span
+                className="c14"
+                size="default"
+                type="primary"
+              >
+                确定
+              </span>
+            </button>
+            <button
+              className="c15"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              onMouseUp={[Function]}
+              size="default"
+            >
+              <span
+                className="c1"
+                size="default"
+              >
+                取消
               </span>
             </button>
           </div>
@@ -628,8 +1150,131 @@ exports[`Modal css 1`] = `
   <button
     className="c0"
     onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    size="default"
   >
-    <span>
+    <span
+      className="c1"
+      size="default"
+    >
+      ThemeModal
+    </span>
+  </button>
+  <div
+    className="c2"
+  >
+    <div
+      className="c3"
+      onClick={[Function]}
+    />
+    <div
+      className="c4"
+    >
+      <div
+        className="c5"
+        style={Object {}}
+      >
+        <div
+          className="c6"
+          style={
+            Object {
+              "paddingBottom": "3rem",
+              "paddingLeft": "3rem",
+              "paddingRight": "3rem",
+              "paddingTop": "3rem",
+            }
+          }
+        >
+          <div
+            className="c7"
+            onClick={[Function]}
+          >
+            <i
+              className="lugia-icon-reminder_close c8  c9"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              style={Object {}}
+            />
+          </div>
+          <div
+            className="c10"
+            style={Object {}}
+          >
+            这是标题！
+          </div>
+          <div
+            className="c11"
+            style={Object {}}
+          >
+            这是内容！
+          </div>
+          <div
+            className="c12"
+          >
+            <button
+              className="c13"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              onMouseUp={[Function]}
+              size="default"
+              type="primary"
+            >
+              <span
+                className="c14"
+                size="default"
+                type="primary"
+              >
+                确定
+              </span>
+            </button>
+            <button
+              className="c15"
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              onMouseUp={[Function]}
+              size="default"
+            >
+              <span
+                className="c1"
+                size="default"
+              >
+                取消
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <button
+    className="c0"
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    size="default"
+  >
+    <span
+      className="c1"
+      size="default"
+    >
       confirm
     </span>
   </button>
@@ -638,8 +1283,17 @@ exports[`Modal css 1`] = `
   <button
     className="c0"
     onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    size="default"
   >
-    <span>
+    <span
+      className="c1"
+      size="default"
+    >
       info
     </span>
   </button>
@@ -648,8 +1302,17 @@ exports[`Modal css 1`] = `
   <button
     className="c0"
     onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    size="default"
   >
-    <span>
+    <span
+      className="c1"
+      size="default"
+    >
       success
     </span>
   </button>
@@ -658,8 +1321,17 @@ exports[`Modal css 1`] = `
   <button
     className="c0"
     onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    size="default"
   >
-    <span>
+    <span
+      className="c1"
+      size="default"
+    >
       error
     </span>
   </button>
@@ -668,8 +1340,17 @@ exports[`Modal css 1`] = `
   <button
     className="c0"
     onClick={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    size="default"
   >
-    <span>
+    <span
+      className="c1"
+      size="default"
+    >
       warning
     </span>
   </button>

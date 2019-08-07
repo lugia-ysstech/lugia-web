@@ -4,8 +4,7 @@
  * @flow
  */
 import { px2emcss } from '../css/units';
-import colorsFunc from '../css/stateColor';
-import styled, { keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 type Direction = 'top' | 'right' | 'bottom' | 'left';
 export type DrawerProps = {
@@ -15,7 +14,6 @@ export type DrawerProps = {
   mask?: boolean,
   maskClosable?: boolean,
   closable?: boolean,
-  maskClosable?: boolean,
   onClose?: Function,
   children: any,
   getTheme: Function,
@@ -106,23 +104,33 @@ const getDrawerAnimate = (props: CSSProps): string => {
   const closeFrom = `${Direction}: 0;`;
   const closeTo = `${Direction}: ${em(-(distance + 8))};`;
   const OpenKeyframe = keyframes`
-    from { ${openFrom} }
-    to { ${openTo} }
+    from {
+      ${openFrom}
+    }
+    to {
+      ${openTo}
+    }
   `;
   const CloseKeyframe = keyframes`
-    from { ${closeFrom} }
-    to { ${closeTo} }
+    from {
+      ${closeFrom}
+    }
+    to {
+      ${closeTo}
+    }
   `;
   if (opening) {
-    return `
-      ${Direction}: 0;
-      animation: ${OpenKeyframe} .3s;
+    const zero = `${Direction}: 0;`;
+    return css`
+      ${zero}
+      animation: ${OpenKeyframe} 0.3s;
     `;
   }
   if (closing) {
-    return `
+    return css`
       ${Direction}: ${em(-(distance + 8))};
-      animation: ${CloseKeyframe} .3s;
+
+      animation: ${CloseKeyframe} 0.3s;
     `;
   }
   if (open) {

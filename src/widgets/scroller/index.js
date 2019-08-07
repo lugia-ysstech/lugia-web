@@ -7,23 +7,23 @@
 import '../common/shirm';
 import * as React from 'react';
 import styled from 'styled-components';
+import { css, StaticComponent } from '@lugia/theme-css-hoc';
 import Support from '../common/FormFieldWidgetSupport';
 import { cacheOnlyFirstCall, getElementPosition } from '../utils';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
-import { FontSize, FontSizeNumber } from '../css';
+import { FontSize } from '../css';
 import {
+  BarBackgroundColor,
   BarDefaultSize,
   BarDefaultSizePadding,
-  ContainerBackgroundColor,
-  BarBackgroundColor,
   BarHoverBackgroundColor,
 } from '../css/scroller';
-import { px2emcss } from '../css/units';
-const em = px2emcss(FontSizeNumber);
+import { px2remcss } from '../css/units';
 
 type ScrollerProps = {
   totalSize: number,
   viewSize: number,
+  onDrag?: Function,
   type?: 'x' | 'y',
   onChange?: Function,
   value?: number,
@@ -36,21 +36,50 @@ type ScrollerState = {
   sliderSize: number,
 };
 type Direction = 'down' | 'up' | 'none';
+const Container = StaticComponent({
+  tag: 'div',
+  className: 'Container',
+  normal: {
+    selectNames: [],
+  },
+  hover: {
+    selectNames: [],
+  },
+  css: css`
+    position: relative;
+    background: rgba(255, 255, 255, 0);
+    width: ${px2remcss(20)};
+    height: ${px2remcss(300)};
+    z-index: 996;
+  `,
+});
 
-const Container = styled.div`
-  position: relative;
-  background: ${ContainerBackgroundColor};
-  width: ${em(20)};
-  height: ${em(300)};
-  z-index: 996;
-`;
-
-const XContainer = Container.extend`
-  height: ${em(BarDefaultSize)};
-`;
-const YContainer = Container.extend`
-  width: ${em(BarDefaultSize)};
-`;
+const XContainer = StaticComponent({
+  extend: Container,
+  className: 'XContainer',
+  normal: {
+    selectNames: [],
+  },
+  hover: {
+    selectNames: [],
+  },
+  css: css`
+    height: ${px2remcss(BarDefaultSize)};
+  `,
+});
+const YContainer = StaticComponent({
+  extend: Container,
+  className: 'YContainer',
+  normal: {
+    selectNames: [],
+  },
+  hover: {
+    selectNames: [],
+  },
+  css: css`
+    width: ${px2remcss(BarDefaultSize)};
+  `,
+});
 const getBackground = props => (props.disabled ? '#898989' : BarBackgroundColor);
 const Bar = styled.div`
   position: absolute;
@@ -58,11 +87,11 @@ const Bar = styled.div`
   left: 0;
   cursor: pointer;
   text-align: center;
-  border-radius: ${em(8)};
+  border-radius: ${px2remcss(8)};
   background: ${getBackground};
   color: #fff;
   font-size: ${FontSize};
-  line-height: ${em(30)};
+  line-height: ${px2remcss(30)};
 
   &:hover {
     background-color: ${BarHoverBackgroundColor};
@@ -72,15 +101,15 @@ const Bar = styled.div`
 `;
 
 const scrollerSize = BarDefaultSize - BarDefaultSizePadding;
-const XBar = Bar.extend`
-  height: ${em(scrollerSize)};
-  margin-bottom: ${em(2)};
-  margin-top: ${em(2)};
+const XBar = styled(Bar)`
+  height: ${px2remcss(scrollerSize)};
+  margin-bottom: ${px2remcss(2)};
+  margin-top: ${px2remcss(2)};
 `;
-const YBar = Bar.extend`
-  width: ${em(scrollerSize)};
-  margin-left: ${em(2)};
-  margin-right: ${em(2)};
+const YBar = styled(Bar)`
+  width: ${px2remcss(scrollerSize)};
+  margin-left: ${px2remcss(2)};
+  margin-right: ${px2remcss(2)};
 `;
 
 const XScroller = 'x',
@@ -88,7 +117,7 @@ const XScroller = 'x',
 const Down = 'down';
 const Up = 'up';
 const None = 'none';
-const DefaultStep = 30;
+const DefaultStep = 60;
 
 class Scroller extends React.Component<ScrollerProps, ScrollerState> {
   static defaultProps = {
@@ -182,7 +211,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     return (
       <TargetContainer
         style={style}
-        innerRef={getScroller}
+        ref={getScroller}
         onMouseMove={this.onContainerMouseMove}
         onMouseDown={this.onContainerMouseDown}
         onMouseUp={this.onContainerMouseUp}
@@ -203,7 +232,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
   }
 
   getPX(val: number): string {
-    return `${em(val)}`;
+    return `${px2remcss(val)}`;
   }
 
   componentDidMount() {
@@ -217,7 +246,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
       }
       if (this.bodyMouseUpHandle === undefined) {
         this.bodyMouseUpHandle = this.bindDoc('mouseup', () => {
-          this.isDrag = false;
+          this.changeDrag(false);
         });
       }
     }
@@ -231,7 +260,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     e.preventDefault();
     e.stopPropagation();
     this.sliderAbsoulateSize = this.getPos(e) - this.getCurrentPos();
-    this.isDrag = true;
+    this.changeDrag(true);
   };
 
   getDirection(fx: number): Direction {
@@ -270,8 +299,14 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     }
     this.processDomEvent(this.getPos(e));
     this.clearMove();
-    this.isDrag = false;
+    this.changeDrag(false);
   };
+
+  changeDrag(val: boolean) {
+    this.isDrag = val;
+    const { onDrag } = this.props;
+    onDrag && onDrag(this.isDrag);
+  }
 
   getPos(e: Object) {
     const arg = this.posGetter.func(this.htmlScroller);
@@ -295,10 +330,13 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
   onSliderBarMouseUp = (e: Object) => {
     e.preventDefault();
     e.stopPropagation();
-    this.isDrag = false;
+    this.changeDrag(false);
   };
 
   onContainerMouseOut = () => {
+    if (this.isDrag) {
+      return;
+    }
     this.clearMove();
   };
 
@@ -360,7 +398,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
 
     this.setValue(newValue);
     this.lastFx = fx;
-    this.lastTime = now;
+    this.lastTime = Number(now);
   };
 
   getMoveStep(fx: Direction, step: number): number {
@@ -377,7 +415,6 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     const min = Math.max(0, theValue);
     const max = this.maxValue;
     const value = Math.min(min, max);
-
     this.setState({ value }, () => {
       this.scrolling(value);
     });
@@ -426,7 +463,7 @@ class Scroller extends React.Component<ScrollerProps, ScrollerState> {
     this.posGetter = cacheOnlyFirstCall(getElementPosition);
     this.step = step;
     this.maxValue = this.getMaxValue(props);
-    this.fastStep = totalSize / 32;
+    this.fastStep = totalSize / 34;
     this.sliderAbsoulateSize = 0;
   }
 

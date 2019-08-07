@@ -1,0 +1,41 @@
+{
+  "widgetName": "Loading",
+  "title": "加载中",
+  "desc": "用于页面和区块的加载中状态",
+  "props": {
+    "size": {
+      "type": "sizeType",
+      "desc": "Loading尺寸大小 small|default|large",
+      "defaultValue": "default"
+    },
+    "delay": {
+      "type": "number",
+      "desc": "延迟加载时间"
+    },
+    "scale": {
+      "type": "boolean",
+      "desc": "是否缩放",
+      "defaultValue": false
+    },
+    "iconClass": {
+      "type": "string",
+      "desc": "自定义Loading,iconClass接受一个图标名的字符串"
+    },
+    "tip": {
+      "type": "string",
+      "desc": "自定义Loading加载文本"
+    },
+    "children": {
+      "type": "any",
+      "desc": "Loading组件允许内嵌容器"
+    },
+    "data": {
+      "type": "any",
+      "desc": "与children属性一样，在Loading组件内嵌入内容"
+    }
+  },
+  "type": {
+    "sizeType": ["default", "small", "large"]
+  },
+  "category": ["其他"]
+}

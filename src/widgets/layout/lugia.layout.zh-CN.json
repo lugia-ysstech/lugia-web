@@ -1,0 +1,31 @@
+{
+  "widgetName": "Layout",
+  "title": "布局",
+  "desc": "页面整体布局。",
+  "props": {
+    "direction": {
+      "type": "LayoutDirectionType",
+      "desc": "指定Layout嵌套组件排列顺序，row 横向排列，column 纵向排列",
+      "defaultValue": "column"
+    },
+    "needEnlarge": {
+      "type": "boolean",
+      "desc": "指定Layout嵌套组件中是否有被放大元素"
+    }
+  },
+  "type": {
+    "LayoutDirectionType": ["row", "column"],
+    "LayoutStyle": {
+      "width": {
+        "type": "number",
+        "desc": "Layout 宽度"
+      },
+      "margin": {
+        "type": "number | Object",
+        "desc": "Layout 间距"
+      }
+    }
+  },
+  "childrenWidget": ["aside"],
+  "category": ["布局"]
+}

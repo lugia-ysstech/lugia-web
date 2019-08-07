@@ -5,17 +5,20 @@ import toArray from 'rc-util/lib/Children/toArray';
 import { contextTypes } from './Tree';
 import CommonIcon from '../../icon';
 import CheckBox from '../../checkbox';
+import { deepMerge } from '@lugia/object-utils';
+import ThemeHoc from '@lugia/theme-hoc';
+import { TextIcon } from '../../css/menu';
 import {
-  themeColor,
-  Switcher,
-  NullSwitcher,
-  Li,
-  ChildrenUl,
+  FlexBox,
+  FlexWrap,
+  SubTreeWrap,
   TitleWrap,
+  Switch,
+  NullSwitch,
   TitleSpan,
+  Li,
+  NavLi,
 } from '../../css/tree';
-import Widget from '../../consts';
-import Theme from '../../theme';
 
 const defaultTitle = '---';
 
@@ -149,26 +152,57 @@ class TreeNode extends React.Component {
     this.selectHandle = node;
   };
 
-  renderSwitcher(props, expandedState) {
-    const iconClass =
-      expandedState === 'open'
-        ? 'lugia-icon-direction_caret_down'
-        : 'lugia-icon-direction_caret_right';
+  renderSwitch(expandedState) {
+    const { describe, mutliple, disabled, __navmenu, switchIconNames } = this.props;
+    if (describe) {
+      return (
+        <NullSwitch themeProps={this.props.getPartOfThemeProps('Switch')}>
+          <CommonIcon iconClass={'lugia-icon-financial_omit'} />
+        </NullSwitch>
+      );
+    }
+    if (mutliple || !describe || __navmenu) {
+      const { open, close } = switchIconNames;
+      const iconClass = expandedState === 'open' ? open : close;
+
+      return (
+        <Switch
+          mutliple={mutliple}
+          disabled={disabled}
+          onClick={this.onExpand}
+          expandedState={expandedState}
+          themeProps={this.props.getPartOfThemeProps('Switch')}
+        >
+          <CommonIcon iconClass={iconClass} />
+        </Switch>
+      );
+    }
+
     return (
-      <Switcher onClick={props.disabled ? null : this.onExpand} expandedState={expandedState}>
-        <CommonIcon iconClass={iconClass} />
-      </Switcher>
+      <NullSwitch themeProps={this.props.getPartOfThemeProps('Switch')}>
+        <CommonIcon iconClass={'lugia-icon-financial_omit'} />
+      </NullSwitch>
     );
   }
 
-  renderCheckbox(props) {
-    const { checked, halfChecked: indeterminate, notCanSelect: disabled, title } = props;
-    const view = {
-      [Widget.CheckBox]: { color: themeColor },
-    };
+  renderCheckbox() {
+    const {
+      checked,
+      halfChecked: indeterminate,
+      title,
+      disabled,
+      icon,
+      mutliple,
+      itemHeight,
+    } = this.props;
     return (
-      <Theme config={view}>
+      <TitleWrap
+        disabled={disabled}
+        themeProps={this.getThemeProps('Text', 'SelectedText', { mutliple, itemHeight })}
+      >
+        {icon ? <TextIcon iconClass={icon} /> : null}
         <CheckBox
+          {...this.getCheckBoxTheme()}
           checked={checked}
           disabled={disabled}
           indeterminate={indeterminate}
@@ -176,8 +210,38 @@ class TreeNode extends React.Component {
         >
           {title}
         </CheckBox>
-      </Theme>
+      </TitleWrap>
     );
+  }
+
+  mergeTheme = (target: string, defaultTheme: Object) => {
+    const { viewClass, theme } = this.props.getPartOfThemeHocProps(target);
+
+    const themeHoc = deepMerge(
+      {
+        [viewClass]: { ...defaultTheme },
+      },
+      theme
+    );
+
+    const treeTheme = {
+      viewClass,
+      theme: themeHoc,
+    };
+    return treeTheme;
+  };
+
+  getCheckBoxTheme() {
+    const defaultTheme = {
+      CheckboxText: {
+        normal: {
+          font: { size: 13, fontWeight: 500 },
+        },
+        hover: { font: { size: 13, fontWeight: 500 } },
+        disabled: { font: { size: 13, fontWeight: 500 } },
+      },
+    };
+    return this.mergeTheme('Checkbox', defaultTheme);
   }
 
   renderChildren(props) {
@@ -192,11 +256,12 @@ class TreeNode extends React.Component {
       children = toArray(props.children).filter(item => !!item);
     }
     let newChildren = children;
+
     if (
       children &&
       ((Array.isArray(children) &&
         children.length &&
-        children.every(item => item.type && item.type.isTreeNode)) ||
+        children.every(item => item.type && item.type.__OrginalWidget__.isTreeNode)) ||
         (children.type && children.type.isTreeNode))
     ) {
       const animProps = {};
@@ -217,7 +282,11 @@ class TreeNode extends React.Component {
           component=""
         >
           {!props.expanded ? null : (
-            <ChildrenUl data-expanded={props.expanded}>
+            <SubTreeWrap
+              themeProps={this.props.getPartOfThemeProps('SubTreeWrap')}
+              data-expanded={props.expanded}
+              propsConfig={{ expanded: props.expanded }}
+            >
               {React.Children.map(
                 children,
                 (item, index) => {
@@ -225,7 +294,7 @@ class TreeNode extends React.Component {
                 },
                 props.root
               )}
-            </ChildrenUl>
+            </SubTreeWrap>
           )}
         </Animate>
       );
@@ -233,24 +302,79 @@ class TreeNode extends React.Component {
     return newChildren;
   }
 
+  renderSuffix(suffix: Object) {
+    return <Switch themeProps={this.props.getPartOfThemeProps('Switch')}>{suffix}</Switch>;
+  }
+
+  isChecked() {
+    const { mutliple, checked, selected } = this.props;
+    return mutliple ? checked : selected;
+  }
+
+  getThemeProps(defaultName: string, selectedName: string, params: Object = {}): Object {
+    const { getPartOfThemeProps } = this.props;
+    return this.isChecked()
+      ? getPartOfThemeProps(selectedName, { props: params })
+      : getPartOfThemeProps(defaultName, { props: params });
+  }
+
   render() {
     const { props } = this;
-    const expandedState = props.expanded ? 'open' : 'close';
-    let iconState = expandedState;
+    const {
+      checked,
+      selected,
+      disabled,
+      inlineType,
+      pos,
+      describe = false,
+      icon,
+      color,
+      isLeaf,
+      title,
+      shape,
+      mutliple,
+      itemHeight,
+      showSwitch,
+      __navmenu,
+      expanded,
+      onlySelectLeaf,
+    } = this.props;
+    const expandedState = expanded ? 'open' : 'close';
 
-    let canRenderSwitcher = true;
+    let canRenderSwitch = true;
     const content = props.title;
     let newChildren = this.renderChildren(props);
     if (!newChildren || newChildren === props.children) {
       newChildren = null;
-      if (props.isLeaf) {
-        canRenderSwitcher = false;
-        iconState = 'docu';
+      if (isLeaf) {
+        canRenderSwitch = false;
       }
     }
 
+    const TextThemeProps = this.getThemeProps('Text', 'SelectedText', {
+      pos,
+      mutliple,
+      shape,
+      selected,
+      describe,
+      inlineType,
+      __navmenu,
+    });
     const selectHandle = () => {
-      const title = <TitleSpan title={content}>{content}</TitleSpan>;
+      const title = (
+        <TitleSpan
+          themeProps={TextThemeProps}
+          color={color}
+          pos={pos}
+          selected={selected}
+          inlineType={inlineType}
+          title={content}
+          height={itemHeight}
+        >
+          {icon ? <TextIcon iconClass={icon} /> : null}
+          {content}
+        </TitleSpan>
+      );
       const domProps = {
         onMouseEnter: this.onMouseEnter,
         onMouseLeave: this.onMouseLeave,
@@ -263,6 +387,9 @@ class TreeNode extends React.Component {
 
           if (this.isSelectable()) {
             this.onSelect();
+            if ((!props.describe && onlySelectLeaf) || expandedState === 'close') {
+              this.onExpand();
+            }
           }
         };
         if (props.draggable) {
@@ -272,15 +399,19 @@ class TreeNode extends React.Component {
         }
       }
 
-      const { checked, selected, notCanSelect } = this.props;
       return (
         <TitleWrap
+          themeProps={TextThemeProps}
           ref={this.saveSelectHandle}
           title={typeof content === 'string' ? content : ''}
           {...domProps}
+          pos={props.pos}
+          inlineType={inlineType}
+          shape={shape}
           checked={checked}
           selected={selected}
-          notCanSelect={notCanSelect}
+          describe={describe}
+          disabled={disabled}
         >
           {title}
         </TitleWrap>
@@ -296,32 +427,63 @@ class TreeNode extends React.Component {
       liProps.onDragEnd = this.onDragEnd;
     }
 
-    const renderNoopSwitcher = () => (
-      <NullSwitcher>
-        <CommonIcon iconClass={'lugia-icon-direction_caret_down'} />
-      </NullSwitcher>
-    );
+    const renderNoopSwitch = () => {
+      return (
+        <NullSwitch themeProps={this.props.getPartOfThemeProps('Switch')}>
+          <CommonIcon iconClass={'lugia-icon-financial_omit'} />
+        </NullSwitch>
+      );
+    };
+    const TreeItemWrapThemeProps = this.getThemeProps('TreeItemWrap', 'SelectedTreeItemWrap', {
+      pos,
+      itemHeight,
+      inlineType,
+      selected,
+    });
 
+    if (this.isChecked()) {
+      const { themeConfig } = TreeItemWrapThemeProps;
+      const { normal = {} } = themeConfig;
+      if (normal.height) {
+        delete normal.height;
+      }
+    }
+    const ItemWrap = __navmenu ? NavLi : Li;
     return (
-      <Li
+      <ItemWrap
+        themeProps={TreeItemWrapThemeProps}
         unselectable="on"
+        inlineType={inlineType}
         {...liProps}
-        isLeaf={props.isLeaf}
-        selected={props.selected}
-        title={props.title}
+        pos={pos}
+        isLeaf={isLeaf}
+        selected={selected}
+        title={title}
+        color={color}
+        height={itemHeight}
       >
-        {/* 小箭头*/}
-        {canRenderSwitcher ? this.renderSwitcher(props, expandedState) : renderNoopSwitcher()}
-        {/* 小方格 */}
-        {props.checkable ? this.renderCheckbox(props) : null}
-        {/* 内容 */}
-        {props.checkable ? null : selectHandle()}
+        <FlexWrap themeProps={TreeItemWrapThemeProps}>
+          <FlexBox themeProps={TreeItemWrapThemeProps}>
+            {(!showSwitch && !mutliple) || __navmenu
+              ? null
+              : canRenderSwitch
+              ? this.renderSwitch(expandedState)
+              : renderNoopSwitch()}
+            {props.checkable ? this.renderCheckbox() : null}
+            {props.checkable ? null : selectHandle()}
+            {!__navmenu
+              ? null
+              : canRenderSwitch
+              ? this.renderSwitch(expandedState)
+              : renderNoopSwitch()}
+          </FlexBox>
+        </FlexWrap>
         {newChildren}
-      </Li>
+      </ItemWrap>
     );
   }
 }
 
 TreeNode.isTreeNode = 1;
 
-export default TreeNode;
+export default ThemeHoc(TreeNode, 'TreeItem', { hover: true });

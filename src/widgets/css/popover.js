@@ -4,32 +4,26 @@
  *
  * @flow
  */
-import type { ThemeType } from '@lugia/lugia-web';
-import colorsFunc from '../css/stateColor';
 import type { DirectionType } from '../css/tooltip';
-const { mediumGreyColor } = colorsFunc();
 
 export type PopoverProps = {
   description: React.Node,
   title: React.Node,
   content?: React.Node,
-  operation: React.Node,
   getTheme: Function,
   placement: DirectionType,
-  action: 'hover' | 'click' | 'focus',
+  action: Array<string>,
   children: React.Node,
   visible: boolean,
-  defaultVisible: boolean,
+  defaultVisible?: boolean,
   onVisibleChange: Function,
-  clear?: React.Node,
+  clearIcon?: React.Node,
   onClearClick?: Function,
+  showClearButton?: boolean,
+  defaultChildren: React.Node,
+  getPartOfThemeProps: Function,
+  getPartOfThemeHocProps: Function,
 };
 export type PopoverState = {
   visible: boolean,
-};
-
-export const getIconColor = (props: Object) => {
-  const { theme } = props;
-  const { fontColor } = theme;
-  return fontColor ? fontColor : mediumGreyColor;
 };

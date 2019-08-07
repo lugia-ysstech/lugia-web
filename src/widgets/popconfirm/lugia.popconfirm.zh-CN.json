@@ -1,0 +1,156 @@
+{
+  "widgetName": "Popconfirm",
+  "title": "气泡确认框",
+  "desc": "气泡式的确认框",
+  "props": {
+    "title": {
+      "type": "React.Node",
+      "desc": "确认框标题显示内容",
+      "defaultValue": "确定要删除吗"
+    },
+    "description": {
+      "type": "React.Node",
+      "desc": "确认框描述显示内容"
+    },
+    "content": {
+      "type": "React.Node",
+      "desc": "整个确认框显示内容"
+    },
+    "icon": {
+      "type": "icon",
+      "desc": "确认框的标题的图标"
+    },
+    "placement": {
+      "type": "DirectionType",
+      "desc": "气泡确认框显示的位置,十二个方向"
+    },
+    "visible": {
+      "type": "boolean",
+      "desc": "是否显示出来",
+      "defaultValue": false
+    },
+    "defaultVisible": {
+      "type": "boolean",
+      "desc": "默认是否显示出来",
+      "defaultValue": false
+    },
+    "action": {
+      "type": "ActionType",
+      "desc": "页签位置，可配置 click,hover,focus",
+      "defaultValue": "click"
+    },
+    "children": {
+      "type": "React.Node",
+      "desc": "气泡确认框需要包含的子组件"
+    },
+    "okType": {
+      "type": "ButtonType",
+      "desc": "气泡确认框确认按钮的类型",
+      "defaultValue": "primary"
+    },
+    "cancelText": {
+      "type": "string",
+      "desc": "取消按钮文字",
+      "defaultValue": "取消"
+    },
+    "okText": {
+      "type": "string",
+      "desc": "确认按钮文字",
+      "defaultValue": "确定"
+    }
+  },
+  "events": {
+    "onVisibleChange": {
+      "desc": "气泡确认框改变时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "气泡确认框显示改变的DOM事件",
+          "type": "Object"
+        }
+      ]
+    },
+    "onCancel": {
+      "desc": "气泡确认框点击取消时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "气泡确认框点击取消的DOM事件",
+          "type": "Object"
+        }
+      ]
+    },
+    "onConfirm": {
+      "desc": "气泡确认框关闭时时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "气泡确认框点击确认的DOM事件",
+          "type": "Object"
+        }
+      ]
+    }
+  },
+  "type": {
+    "DirectionType": [
+      "left",
+      "leftTop",
+      "leftBottom",
+      "right",
+      "rightTop",
+      "rightBottom",
+      "top",
+      "bottom",
+      "topLeft",
+      "top",
+      "topRight",
+      "bottom",
+      "bottomRight",
+      "bottomLeft"
+    ],
+    "ActionType": [
+      "click",
+      "hover",
+      "focus" ],
+    "ButtonType": ["default", "primary", "success", "warning", "danger"]
+  },
+  "category": ["反馈"],
+  "theme": {
+    "PopconfirmContent": {
+      "name": "气泡卡片框容器",
+      "theme": {
+        "Container": {
+          "name": "气泡确认框内容部分",
+          "desc": "气泡确认框内容部分",
+          "normal": [
+            ["background"],
+            ["color"],
+            ["padding"],
+            ["font"],
+            ["fontSize"],
+            ["width"],
+            ["height"],
+            ["boxShadow"],
+            ["borderRadius"],
+            ["border"]
+          ]
+        }
+      }
+    },
+    "PopconfirmTitle": {
+      "name": "气泡确认框标题",
+      "desc": "气泡确认框标题",
+      "normal": [["color"], ["background"], ["font"], ["fontSize"]]
+    },
+    "PopconfirmButton": {
+      "name": "气泡确认框按钮",
+      "desc": "气泡确认框按钮",
+      "normal": [["opacity"], ["color"], ["font"], ["fontSize"]]
+    },
+    "PopconfirmIcon": {
+      "name": "气泡确认框标题前图标",
+      "desc": "气泡确认框标题前图标",
+      "normal": [["opacity"], ["color"], ["font"], ["fontSize"]]
+    }
+  }
+}

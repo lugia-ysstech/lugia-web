@@ -98,19 +98,26 @@ describe('DropMenuButton', () => {
     };
 
   it('type: default, divided={true}; action = hover , click MenuItem && hover LeftButton', async () => {
-    const Demo = getTarget('hover', true, 'default');
+    const Demo = getTarget('hover', true, 'customs');
     const cmp = mount(<Demo />);
 
     pullButtonMouseEnter(cmp);
     exp(cmp.state().visible).to.be.equal(true);
+    await delay(100);
+    cmp.update();
+
     pullButtonMouseLeave(cmp);
     await delay(100);
     exp(cmp.state().visible).to.be.equal(false);
 
+    await delay(200);
+    cmp.update();
     pullButtonMouseEnter(cmp);
     exp(cmp.state().visible).to.be.equal(true);
+    await delay(200);
+    cmp.update();
     clickMenuItem(cmp, 1);
-    await delay(100);
+    await delay(200);
     exp(cmp.state().visible).to.be.equal(false);
 
     hoverLeftButton(cmp);
@@ -121,21 +128,38 @@ describe('DropMenuButton', () => {
     const Demo = getTarget('click', true, 'default');
     const cmp = mount(<Demo />);
 
+    exp(cmp.state().visible).to.be.equal(false);
+
     pullButtonClick(cmp);
     exp(cmp.state().visible).to.be.equal(true);
+
+    cmp.update();
+    await delay(300);
+
     pullButtonClick(cmp);
-    await delay(100);
     exp(cmp.state().visible).to.be.equal(false);
+
+    cmp.update();
+    await delay(300);
 
     pullButtonClick(cmp);
     exp(cmp.state().visible).to.be.equal(true);
     clickMenuItem(cmp, 1);
-    await delay(100);
+
+    cmp.update();
+    await delay(300);
+
     exp(cmp.state().visible).to.be.equal(false);
+
+    cmp.update();
+    await delay(300);
 
     clickLeftButton(cmp);
     exp(cmp.state().visible).to.be.equal(false);
-    await delay(100);
+
+    cmp.update();
+    await delay(300);
+
     exp(cmp.state().clickedState).to.be.equal(true);
   });
 
@@ -143,16 +167,30 @@ describe('DropMenuButton', () => {
     const Demo = getTarget('hover', false, 'primary');
     const cmp = mount(<Demo />);
 
-    NoDividedButtonMouseEnter(cmp);
-    exp(cmp.state().visible).to.be.equal(true);
-    NoDividedButtonMouseLeave(cmp);
-    await delay(100);
     exp(cmp.state().visible).to.be.equal(false);
 
     NoDividedButtonMouseEnter(cmp);
     exp(cmp.state().visible).to.be.equal(true);
+
+    cmp.update();
+    await delay(300);
+
+    NoDividedButtonMouseLeave(cmp);
+
+    cmp.update();
+    await delay(300);
+
+    exp(cmp.state().visible).to.be.equal(false);
+
+    NoDividedButtonMouseEnter(cmp);
+
+    cmp.update();
+    await delay(300);
+
+    exp(cmp.state().visible).to.be.equal(true);
+
     clickMenuItem(cmp, 1);
-    await delay(100);
+
     exp(cmp.state().visible).to.be.equal(false);
   });
 
@@ -160,50 +198,82 @@ describe('DropMenuButton', () => {
     const Demo = getTarget('click', false, 'primary');
     const cmp = mount(<Demo />);
 
+    exp(cmp.state().visible).to.be.equal(false);
     NoDividedButtonClick(cmp);
     exp(cmp.state().visible).to.be.equal(true);
+
+    cmp.update();
+    await delay(300);
+
     NoDividedButtonClick(cmp);
-    await delay(100);
+
+    cmp.update();
+    await delay(300);
+
     exp(cmp.state().visible).to.be.equal(false);
+
+    cmp.update();
+    await delay(300);
 
     NoDividedButtonClick(cmp);
     exp(cmp.state().visible).to.be.equal(true);
+
     clickMenuItem(cmp, 1);
-    await delay(100);
     exp(cmp.state().visible).to.be.equal(false);
   });
 
   it('type: basic, action = hover , hover MenuItem', async () => {
     const Demo = getTarget('hover', false, 'basic');
     const cmp = mount(<Demo />);
-
-    BasicButtonMouseEnter(cmp);
-    exp(cmp.state().visible).to.be.equal(true);
-    BasicButtonMouseLeave(cmp);
-    await delay(100);
     exp(cmp.state().visible).to.be.equal(false);
 
     BasicButtonMouseEnter(cmp);
     exp(cmp.state().visible).to.be.equal(true);
+
+    cmp.update();
+    await delay(300);
+
+    BasicButtonMouseLeave(cmp);
+
+    cmp.update();
+    await delay(300);
+
+    exp(cmp.state().visible).to.be.equal(false);
+
+    cmp.update();
+    await delay(300);
+
+    BasicButtonMouseEnter(cmp);
+    exp(cmp.state().visible).to.be.equal(true);
+
+    cmp.update();
+    await delay(300);
+
     clickMenuItem(cmp, 1);
-    await delay(100);
     exp(cmp.state().visible).to.be.equal(false);
   });
 
   it('type: basic, action = click , click MenuItem', async () => {
     const Demo = getTarget('click', false, 'basic');
     const cmp = mount(<Demo />);
-
-    BasicButtonClick(cmp);
-    exp(cmp.state().visible).to.be.equal(true);
-    BasicButtonClick(cmp);
-    await delay(100);
     exp(cmp.state().visible).to.be.equal(false);
 
     BasicButtonClick(cmp);
     exp(cmp.state().visible).to.be.equal(true);
+
+    cmp.update();
+    await delay(300);
+
+    BasicButtonClick(cmp);
+    exp(cmp.state().visible).to.be.equal(false);
+
+    cmp.update();
+    await delay(300);
+
+    BasicButtonClick(cmp);
+    exp(cmp.state().visible).to.be.equal(true);
+
     clickMenuItem(cmp, 1);
-    await delay(100);
     exp(cmp.state().visible).to.be.equal(false);
   });
 

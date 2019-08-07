@@ -1,0 +1,80 @@
+{
+  "widgetName": "Modal",
+  "title": "对话框",
+  "desc": "Modal 对话框。",
+  "props": {
+    "title": {
+      "type": "React.node",
+      "desc": "标题"
+    },
+    "visible": {
+      "type": "boolean",
+      "desc": "Modal 是否可见"
+    },
+    "cancelText": {
+      "type": "string",
+      "desc": "取消按钮文字",
+      "defaultValue": "取消"
+    },
+    "okText": {
+      "type": "string",
+      "desc": "确认按钮文字",
+      "defaultValue": "确定"
+    },
+    "confirmLoading": {
+      "type": "boolean",
+      "desc": "确定按钮是否 loading"
+    },
+    "footer": {
+      "type": "React.node",
+      "desc": "自定义底部内容，不需要底部内容可设置为 null"
+    },
+    "maskClosable": {
+      "type": "boolean",
+      "desc": "点击蒙层是否允许关闭",
+      "defaultValue": true
+    }
+  },
+  "events": {
+    "onOk": {
+      "desc": "点击确定时的回调",
+      "args": []
+    },
+    "onCancel": {
+      "desc": "点击取消时的回调",
+      "args": []
+    }
+  },
+  "category": ["反馈"],
+  "theme": {
+    "ModalWrap": {
+      "name": "弹窗整体样式",
+      "desc": "为弹窗配置整体样式",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["opacity"],
+        ["boxShadow"],
+        ["borderRadius"],
+        ["border"],
+        ["background"],
+        ["padding"]
+      ]
+    },
+    "ModalTitle": {
+      "name": "弹窗标题样式",
+      "desc": "为弹窗文字配置样式",
+      "normal": [["font"], ["color"], ["padding"]]
+    },
+    "ModalContentText": {
+      "name": "弹窗内容文本样式",
+      "desc": "为弹窗内容文本配置样式",
+      "normal": [["font"], ["color"], ["padding"]]
+    },
+    "ModalCloseIcon": {
+      "name": "弹窗关闭图标样式",
+      "desc": "为弹窗关闭图标配置样式",
+      "normal": [["fontSize"], ["color"]]
+    }
+  }
+}

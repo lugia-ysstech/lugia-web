@@ -11,6 +11,7 @@ import Widget from '../consts/index';
 import type { RowProps, RowState, screensType } from '../css/row';
 import { RowWrap } from '../css/row';
 import MouseEventAdaptor from '../common/MouseEventAdaptor';
+import Col from './col';
 import { ColWrap } from '../css/col';
 
 let enquire;
@@ -114,7 +115,14 @@ export default ThemeProvider(
       };
 
       renderChildren = (scrrenSize?: string, gutter?: number | Object) => {
-        const { children, equable = 24 } = this.props;
+        const { children, equable = 24, data } = this.props;
+        if (data && data.length > 0) {
+          return data.map(item => (
+            <Col {...item} scrrenSize={scrrenSize} gutter={gutter} equable={equable}>
+              {item.children}
+            </Col>
+          ));
+        }
         return React.Children.map(children, child => {
           if (React.isValidElement(child)) {
             return React.cloneElement(child, {

@@ -8,15 +8,22 @@
  */
 import React, { Component } from 'react';
 import Switch from './index';
+import Icon from '../icon/index';
+import Widgets from '../consts/index';
+import Theme from '../theme/index';
+import { getBorderRadius, getBorder } from '../theme/CSSProvider';
 
 type TypeState = {
   load?: boolean,
+  value: boolean,
 };
 export default class Sw extends Component<any, TypeState> {
   constructor() {
     super();
     this.state = {
       load: false,
+      value: true,
+      disabled: true,
     };
   }
   handleClick() {
@@ -24,15 +31,110 @@ export default class Sw extends Component<any, TypeState> {
       load: !this.state.load,
     });
   }
-  change = (item?: Object) => {
-    console.log(item);
+  change = (item: Object) => {
+    const { newValue } = item;
+    this.setState({ value: newValue });
   };
   render() {
     return (
       <div className="demo-switch" style={{ margin: '20px' }}>
         <section style={{ marginBottom: '20px' }}>
           <h3>normal</h3>
-          <Switch />
+          <Theme
+            config={{
+              [Widgets.Switch]: {
+                Switch_SwitchOpen: {
+                  normal: {
+                    width: 150,
+                    height: 40,
+                    fontSize: 20,
+                    color: '#fff',
+                    background: {
+                      color: 'red',
+                    },
+                    border: getBorder({ color: '#ddd', width: 1, style: 'solid' }),
+                  },
+                  disabled: {
+                    background: {
+                      color: 'blue',
+                    },
+                  },
+                },
+                Switch_SwitchClosed: {
+                  normal: {
+                    width: 150,
+                    height: 40,
+                    fontSize: 20,
+                    color: '#000',
+                    background: {
+                      color: 'green',
+                    },
+                  },
+                  disabled: {
+                    background: {
+                      color: 'pink',
+                    },
+                  },
+                },
+                SwitchButton: {
+                  normal: {
+                    width: 30,
+                    height: 30,
+                    background: {
+                      color: 'blue',
+                    },
+                    borderRadius: getBorderRadius(40),
+                    color: 'red',
+                  },
+                  active: {
+                    width: 40,
+                    height: 30,
+                    background: {
+                      color: 'yellow',
+                    },
+                    borderRadius: getBorderRadius(30),
+                  },
+                  disabled: {
+                    background: {
+                      color: 'yellow',
+                    },
+                  },
+                },
+                SwitchContainer: {
+                  normal: {
+                    width: 200,
+                    height: 60,
+                    margin: {
+                      top: 10,
+                      right: 10,
+                      bottom: 10,
+                      left: 10,
+                    },
+                    padding: {
+                      top: 10,
+                      right: 10,
+                      bottom: 10,
+                      left: 10,
+                    },
+                    border: getBorder({ color: '#ddd', width: 1, style: 'solid' }),
+                    //opacity: 0.5,
+                  },
+                },
+              },
+            }}
+          >
+            <Switch
+              onChange={this.change}
+              //disabled
+              // autoFocus
+              loading
+              data={[
+                { text: <Icon className={'lugia-icon-reminder_check'} /> },
+                { text: '国' },
+                { text: '日' },
+              ]}
+            />
+          </Theme>
         </section>
         <section style={{ marginBottom: '20px' }}>
           <h3>size=‘small’</h3>
@@ -127,6 +229,18 @@ export default class Sw extends Component<any, TypeState> {
           <h3>onChange value false</h3>
           <Switch data={[{ text: '年' }, { text: '月' }]} value={false} onChange={this.change} />
         </section>
+        <section style={{ marginBottom: '20px' }}>
+          <h3>onChange value false</h3>
+          <Switch
+            data={[
+              { text: <Icon className={'lugia-icon-reminder_check'} /> },
+              { text: <Icon className={'lugia-icon-reminder_close'} /> },
+            ]}
+            value={this.state.value}
+            onChange={this.change}
+          />
+        </section>
+
         <section style={{ marginBottom: '20px' }}>
           <h3>loading</h3>
           <Switch loading />

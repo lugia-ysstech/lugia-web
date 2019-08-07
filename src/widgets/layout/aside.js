@@ -97,6 +97,7 @@ export default ThemeProvider(
                   <div>{children}</div>
                   {collapsible && trigger !== null ? (
                     <Trigger
+                      themePass
                       theme={getTheme()}
                       collapsed={collapsed}
                       onClick={this.handleTriggerClick}

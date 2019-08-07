@@ -12,7 +12,7 @@ import Affix from '../affix/index';
 import type { AnchorProps, AnchorState } from '../css/anchor';
 import { Anchor, Circle } from '../css/anchor';
 
-export const AnchorContext = React.createContext({
+export const AnchorContext: Object = React.createContext({
   links: [],
   getLinks: undefined,
   activeLink: undefined,
@@ -35,10 +35,22 @@ export default ThemeProvider(
     }
 
     componentDidMount() {
+      this.initScroll();
       setTimeout(() => {
         window.addEventListener('scroll', this.addWindowScrollListener);
       }, 100);
     }
+    initScroll = () => {
+      const href = window && window.location.href;
+      if (href) {
+        const id = href.split('#')[1];
+        const dom = document.getElementById(id);
+        if (dom) {
+          this.handleLinkClick(undefined, `#${id}`);
+          dom.scrollIntoView({ block: 'start', behavior: 'smooth' });
+        }
+      }
+    };
 
     addWindowScrollListener = () => {
       if (this.isClick) {
@@ -81,16 +93,22 @@ export default ThemeProvider(
     }
 
     render() {
-      const { affix = true, offsetTop = 0, children, slideType = 'circle' } = this.props;
+      const {
+        affix = true,
+        offsetTop = 0,
+        children,
+        slideType = 'circle',
+        slideLine = true,
+      } = this.props;
       const { activeLink } = this.state;
       let index;
       if (activeLink) {
         index = this.links ? this.links.indexOf(activeLink) : 0;
       }
       const element = (
-        <Anchor slideType={slideType}>
+        <Anchor slideType={slideType} slideLine={slideLine}>
           {children}
-          {slideType === 'none' ? null : <Circle slideType={slideType} index={index} />}
+          <Circle slideType={slideType} index={index} />
         </Anchor>
       );
       return (
@@ -107,7 +125,7 @@ export default ThemeProvider(
       );
     }
 
-    handleLinkClick = (e: Event, href: string) => {
+    handleLinkClick = (e: ?Event, href: string) => {
       this.isClick = true;
       this.setState({ activeLink: href });
       setTimeout(() => {

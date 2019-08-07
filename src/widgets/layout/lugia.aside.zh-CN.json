@@ -1,0 +1,53 @@
+{
+  "widgetName": "Aside",
+  "title": "侧边栏",
+  "desc": "页面整体布局-侧边栏。",
+  "props": {
+    "collapsible": {
+      "type": "boolean",
+      "desc": "指定 Aside 是否可以收起",
+      "defaultValue": "column"
+    },
+    "trigger": {
+      "type": "React.node",
+      "desc": "指定 Aside 收起元素"
+    },
+    "reverseArrow": {
+      "type": "string",
+      "desc": "触发响应式的断点，可选 xs、sm、md、lg、xl、xxl"
+    },
+    "collapsedWidth": {
+      "type": "number",
+      "desc": "收缩宽度"
+    },
+    "collapsed": {
+      "type": "boolean",
+      "desc": "当前收缩状态"
+    }
+  },
+  "type": {
+    "LayoutDirectionType": ["row", "column"],
+    "AsideStyle": {
+      "height": {
+        "type": "number",
+        "desc": "Aside 高度"
+      },
+      "backgroundColor": {
+        "type": "string",
+        "desc": "Aside 背景色"
+      }
+    }
+  },
+  "events": {
+    "onCollapse": {
+      "desc": "展开-收起时的回调函数",
+      "args": [{ "name": "collapsed", "desc": "收起状态", "type": "boolean" }]
+    },
+    "onBreakpoint": {
+      "desc": "触发响应式时的回调函数",
+      "args": [{ "name": "broken", "desc": "收起状态", "type": "boolean" }]
+    }
+  },
+  "category": ["布局"],
+  "needExport": true
+}

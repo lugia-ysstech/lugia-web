@@ -7,18 +7,15 @@ exports[`Divider css 1`] = `
   text-align: center;
   background: transparent;
   font-weight: 500;
-  color: #e8e8e8;
-  margin: 2em 0.8333333333333334em;
-  height: 0.08333333333333334em;
+  width: 50rem;
 }
 
 .c1::before {
   content: '';
   display: table-cell;
   position: relative;
-  top: 50%;
   width: 50%;
-  border-top: 0.08333333333333334em solid #e8e8e8;
+  border-top: 0.1rem solid #e8e8e8;
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
@@ -28,9 +25,8 @@ exports[`Divider css 1`] = `
   content: '';
   display: table-cell;
   position: relative;
-  top: 50%;
   width: 50%;
-  border-top: 0.08333333333333334em solid #e8e8e8;
+  border-top: 0.1rem solid #e8e8e8;
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
@@ -42,18 +38,15 @@ exports[`Divider css 1`] = `
   text-align: center;
   background: transparent;
   font-weight: 500;
-  color: #e8e8e8;
-  margin: 2em 0.8333333333333334em;
-  height: 0.08333333333333334em;
+  width: 50rem;
 }
 
 .c3::before {
   content: '';
   display: table-cell;
   position: relative;
-  top: 50%;
   width: 50%;
-  border-top: 0.08333333333333334em dashed #e8e8e8;
+  border-top: 0.1rem dashed #e8e8e8;
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
@@ -63,9 +56,8 @@ exports[`Divider css 1`] = `
   content: '';
   display: table-cell;
   position: relative;
-  top: 50%;
   width: 50%;
-  border-top: 0.08333333333333334em dashed #e8e8e8;
+  border-top: 0.1rem dashed #e8e8e8;
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
@@ -77,18 +69,15 @@ exports[`Divider css 1`] = `
   text-align: center;
   background: transparent;
   font-weight: 500;
-  color: #e8e8e8;
-  margin: 2em 0.8333333333333334em;
-  height: 0.08333333333333334em;
+  width: 50rem;
 }
 
 .c4::before {
   content: '';
   display: table-cell;
   position: relative;
-  top: 50%;
-  width: 5%;
-  border-top: 0.08333333333333334em solid #e8e8e8;
+  width: 95%;
+  border-top: 0.1rem solid #e8e8e8;
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
@@ -98,9 +87,8 @@ exports[`Divider css 1`] = `
   content: '';
   display: table-cell;
   position: relative;
-  top: 50%;
-  width: 95%;
-  border-top: 0.08333333333333334em solid #e8e8e8;
+  width: 5%;
+  border-top: 0.1rem solid #e8e8e8;
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
@@ -112,18 +100,15 @@ exports[`Divider css 1`] = `
   text-align: center;
   background: transparent;
   font-weight: 500;
-  color: #e8e8e8;
-  margin: 2em 0.8333333333333334em;
-  height: 0.08333333333333334em;
+  width: 50rem;
 }
 
 .c5::before {
   content: '';
   display: table-cell;
   position: relative;
-  top: 50%;
-  width: 95%;
-  border-top: 0.08333333333333334em solid #e8e8e8;
+  width: 5%;
+  border-top: 0.1rem solid #e8e8e8;
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
@@ -133,9 +118,8 @@ exports[`Divider css 1`] = `
   content: '';
   display: table-cell;
   position: relative;
-  top: 50%;
-  width: 5%;
-  border-top: 0.08333333333333334em solid #e8e8e8;
+  width: 95%;
+  border-top: 0.1rem solid #e8e8e8;
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
@@ -147,18 +131,15 @@ exports[`Divider css 1`] = `
   text-align: center;
   background: transparent;
   font-weight: 500;
-  color: #e8e8e8;
-  margin: 2em 0.8333333333333334em;
-  height: 0.08333333333333334em;
+  width: 50rem;
 }
 
 .c6::before {
   content: '';
   display: table-cell;
   position: relative;
-  top: 50%;
   width: 100%;
-  border-top: 0.08333333333333334em solid #e8e8e8;
+  border-top: 0.1rem solid #e8e8e8;
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
@@ -168,19 +149,18 @@ exports[`Divider css 1`] = `
   content: '';
   display: table-cell;
   position: relative;
-  top: 50%;
   width: 100%;
-  border-top: 0.08333333333333334em solid #e8e8e8;
+  border-top: 0.1rem solid #e8e8e8;
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
 }
 
 .c7 {
-  margin: 0 0.5em;
+  margin: 0 0.6rem;
   display: inline-block;
   height: 100%;
-  width: 0.08333333333333334em;
+  width: 0.1rem;
   vertical-align: middle;
   position: relative;
   background: #e8e8e8;
@@ -193,7 +173,7 @@ exports[`Divider css 1`] = `
   background: transparent;
   font-weight: 500;
   color: rgba(0,0,0,0.85);
-  margin: 0 0.5em;
+  margin: 0 0.6rem;
 }
 
 .c0 {
@@ -211,9 +191,11 @@ exports[`Divider css 1`] = `
     <div
       className="c1"
       content="solid"
+      style={Object {}}
     >
       <span
         className="c2"
+        style={Object {}}
       >
         solid
       </span>
@@ -224,9 +206,11 @@ exports[`Divider css 1`] = `
     <div
       className="c3"
       content="dashed"
+      style={Object {}}
     >
       <span
         className="c2"
+        style={Object {}}
       >
         dashed
       </span>
@@ -241,9 +225,11 @@ exports[`Divider css 1`] = `
     <div
       className="c4"
       content="position left"
+      style={Object {}}
     >
       <span
         className="c2"
+        style={Object {}}
       >
         position left
       </span>
@@ -254,21 +240,25 @@ exports[`Divider css 1`] = `
     <div
       className="c5"
       content="position right"
+      style={Object {}}
     >
       <span
         className="c2"
+        style={Object {}}
       >
         position right
       </span>
     </div>
     <div
       className="c6"
+      style={Object {}}
     />
     <p>
       "不用思考.因为我帮你想好了",这是lugia设计的重要原则之一.
     </p>
     <div
       className="c6"
+      style={Object {}}
     />
   </div>
   <div
@@ -287,18 +277,22 @@ exports[`Divider css 1`] = `
       text
       <div
         className="c7"
+        style={Object {}}
       />
       text
       <div
         className="c7"
+        style={Object {}}
       />
       text
       <div
         className="c7"
+        style={Object {}}
       />
       text
       <div
         className="c7"
+        style={Object {}}
       />
       text
     </div>

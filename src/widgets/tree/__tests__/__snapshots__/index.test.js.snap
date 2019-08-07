@@ -1,48 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
-.c6 {
-  font-size: 1em;
-  color: #999999;
-  display: inline-block;
-  margin: 0 0.8333333333333334em;
-  vertical-align: top;
-}
-
-.c14 {
-  font-size: 1em;
-  color: #999999;
-  display: inline-block;
-  margin: 0 0.8333333333333334em;
-  vertical-align: top;
-  opacity: 0;
-}
-
-.c4 {
-  padding-right: 1.5em;
-  margin: 0;
-}
-
-.c5 {
-  min-height: 2.5em;
-  line-height: 2.5em;
-  list-style: none;
-  white-space: nowrap;
-  outline: 0;
-  overflow: hidden;
-}
-
-.c13 {
-  margin: 0;
-  padding: 0 0 0 1.5em;
-}
-
 .c7 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
+  font-size: 1.2rem;
 }
 
 .c8 {
@@ -61,7 +26,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
 }
 
 .c8:hover > span span {
-  border: 1px solid #684fff;
+  border: 1px solid #4d63ff;
 }
 
 .c9 {
@@ -105,7 +70,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
 }
 
 .c15:hover {
-  border: 1px solid #684fff;
+  border: 1px solid #4d63ff;
 }
 
 .c15::after {
@@ -136,14 +101,14 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
   width: 1.2857142857142858em;
   height: 1.2857142857142858em;
   border-radius: 0.14285714285714288em;
-  background-color: #684fff;
-  border: 1px solid #684fff;
+  background-color: #4d63ff;
+  border: 1px solid #4d63ff;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 
 .c11:hover {
-  border: 1px solid #684fff;
+  border: 1px solid #4d63ff;
 }
 
 .c11::after {
@@ -167,7 +132,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
 
 .c17 {
   position: relative;
-  background: #fbfbfb;
+  background: rgba(255,255,255,0);
   width: 1.6666666666666667em;
   height: 25em;
   z-index: 996;
@@ -197,24 +162,26 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
 }
 
 .c2 {
-  width: 19.833333333333336em;
+  width: 20.833333333333336em;
+  font-size: 1.2rem;
   position: absolute;
   display: inline-block;
 }
 
 .c1 {
   overflow: hidden;
+  font-size: 1.2rem;
   height: 20.833333333333336em;
   width: 20.833333333333336em;
   position: relative;
 }
 
 .c16 {
-  width: 19.833333333333336em;
+  width: 20.833333333333336em;
+  font-size: 1.2rem;
   position: absolute;
   display: inline-block;
   left: 19.833333333333336em;
-  height: 20.833333333333336em;
   width: 1em;
   opacity: 0;
   -webkit-transition: opacity 0.3s;
@@ -227,9 +194,48 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
 
 .c3 {
   position: relative;
-  top: NaNem;
+  top: 0em;
   width: 100%;
   padding: 0;
+}
+
+.c6 {
+  font-size: 1em;
+  color: #999999;
+  display: inline-block;
+  margin-left: 0.4166666666666667em;
+  vertical-align: top;
+  margin-right: 0.8333333333333334em;
+}
+
+.c14 {
+  font-size: 1em;
+  color: #999999;
+  display: inline-block;
+  margin-left: 0.4166666666666667em;
+  vertical-align: top;
+  margin-right: 0;
+  opacity: 0;
+}
+
+.c4 {
+  margin: 0;
+  overflow: hidden;
+  padding-right: 1.6666666666666667em;
+}
+
+.c5 {
+  min-height: 2.8333333333333335em;
+  line-height: 2.8333333333333335em;
+  list-style: none;
+  padding-right: 1em;
+  white-space: nowrap;
+  outline: 0;
+}
+
+.c13 {
+  margin: 0;
+  padding: 0 0 0 1.5em;
 }
 
 <div
@@ -246,6 +252,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
     >
       <li
         className="c5"
+        height={35}
         selected={false}
         title="1"
         unselectable="on"
@@ -291,6 +298,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
         >
           <li
             className="c5"
+            height={35}
             selected={false}
             title="1.1"
             unselectable="on"
@@ -332,6 +340,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
           </li>
           <li
             className="c5"
+            height={35}
             selected={false}
             title="1.2"
             unselectable="on"
@@ -377,6 +386,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
             >
               <li
                 className="c5"
+                height={35}
                 selected={false}
                 title="1.2.1"
                 unselectable="on"
@@ -418,6 +428,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
               </li>
               <li
                 className="c5"
+                height={35}
                 selected={false}
                 title="1.2.2"
                 unselectable="on"
@@ -463,6 +474,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                 >
                   <li
                     className="c5"
+                    height={35}
                     selected={false}
                     title="1.2.2.1"
                     unselectable="on"
@@ -508,6 +520,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                     >
                       <li
                         className="c5"
+                        height={35}
                         selected={false}
                         title="1.2.2.1.1"
                         unselectable="on"
@@ -549,6 +562,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                       </li>
                       <li
                         className="c5"
+                        height={35}
                         selected={false}
                         title="1.2.2.1.2"
                         unselectable="on"
@@ -590,47 +604,6 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
                       </li>
                     </ul>
                   </li>
-                  <li
-                    className="c5"
-                    selected={false}
-                    title="1.2.2.2"
-                    unselectable="on"
-                  >
-                    <span
-                      className="c14"
-                    >
-                      <i
-                        className="lugia-icon-direction_caret_down  c7"
-                      />
-                    </span>
-                    <label
-                      className="c8"
-                      disabled={false}
-                      onClick={[Function]}
-                    >
-                      <span
-                        className="c9"
-                        onClick={null}
-                      >
-                        <input
-                          className="c10"
-                          disabled={false}
-                          onBlur={[Function]}
-                          type="checkbox"
-                        />
-                        <span
-                          checked={false}
-                          className="c15"
-                          disabled={false}
-                        />
-                      </span>
-                      <span
-                        className="c12"
-                      >
-                        1.2.2.2
-                      </span>
-                    </label>
-                  </li>
                 </ul>
               </li>
             </ul>
@@ -661,7 +634,7 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "height": "5.583333333333334em",
+            "height": "4.916666666666667em",
             "top": "0em",
           }
         }
@@ -672,321 +645,279 @@ exports[`Tree props: defaultValue: 1 mutliple: true onChange监听 1`] = `
 `;
 
 exports[`Tree props: query: 2.1.2.1 expandAll: true mutliple: false 1`] = `
-.c3 {
-  font-size: 1em;
-  color: #999999;
-  display: inline-block;
-  margin: 0 0.8333333333333334em;
-  vertical-align: top;
-}
-
-.c8 {
-  font-size: 1em;
-  color: #999999;
-  display: inline-block;
-  margin: 0 0.8333333333333334em;
-  vertical-align: top;
-  opacity: 0;
-}
-
-.c1 {
-  padding-right: 1.5em;
-  margin: 0;
-}
-
-.c2 {
-  min-height: 2.5em;
-  line-height: 2.5em;
-  list-style: none;
-  white-space: nowrap;
-  outline: 0;
-  overflow: hidden;
-}
-
-.c7 {
-  margin: 0;
-  padding: 0 0 0 1.5em;
-}
-
 .c5 {
-  box-sizing: border-box;
-  width: 100%;
-  overflow: hidden;
-  padding-left: 0.5em;
-  display: inline-block;
-  cursor: pointer;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  vertical-align: top;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-  font-size: 1.1666666666666667em;
-  color: #666666;
-}
-
-.c5:hover {
-  background-color: #edf0fe;
-}
-
-.c6 {
-  opacity: 1;
-}
-
-.c4 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
+  font-size: 1.2rem;
 }
 
 .c0 {
+  overflow: hidden;
+  font-size: 1.2rem;
+  height: 20.833333333333336em;
+  width: 20.833333333333336em;
   position: relative;
-  top: NaNem;
+}
+
+.c1 {
+  position: relative;
+  top: 0em;
   width: 100%;
   padding: 0;
 }
 
-<ul
-  className="rc-tree c0 rc-tree-show-line c1"
-  role="tree-node"
-  unselectable="on"
->
-  <li
-    className="c2"
-    selected={false}
-    title="2"
-    unselectable="on"
-  >
-    <span
-      className="c3"
-      onClick={[Function]}
-    >
-      <i
-        className="lugia-icon-direction_caret_down  c4"
-      />
-    </span>
-    <span
-      className="c5"
-      onClick={[Function]}
-      onContextMenu={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      selected={false}
-      title="2"
-    >
-      <span
-        className="c6"
-        title="2"
-      >
-        2
-      </span>
-    </span>
-    <ul
-      className="c7"
-      data-expanded={true}
-    >
-      <li
-        className="c2"
-        selected={false}
-        title="2.1"
-        unselectable="on"
-      >
-        <span
-          className="c3"
-          onClick={[Function]}
-        >
-          <i
-            className="lugia-icon-direction_caret_down  c4"
-          />
-        </span>
-        <span
-          className="c5"
-          onClick={[Function]}
-          onContextMenu={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          selected={false}
-          title="2.1"
-        >
-          <span
-            className="c6"
-            title="2.1"
-          >
-            2.1
-          </span>
-        </span>
-        <ul
-          className="c7"
-          data-expanded={true}
-        >
-          <li
-            className="c2"
-            selected={false}
-            title="2.1.2"
-            unselectable="on"
-          >
-            <span
-              className="c3"
-              onClick={[Function]}
-            >
-              <i
-                className="lugia-icon-direction_caret_down  c4"
-              />
-            </span>
-            <span
-              className="c5"
-              onClick={[Function]}
-              onContextMenu={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              selected={false}
-              title="2.1.2"
-            >
-              <span
-                className="c6"
-                title="2.1.2"
-              >
-                2.1.2
-              </span>
-            </span>
-            <ul
-              className="c7"
-              data-expanded={true}
-            >
-              <li
-                className="c2"
-                selected={false}
-                title="2.1.2.1"
-                unselectable="on"
-              >
-                <span
-                  className="c8"
-                >
-                  <i
-                    className="lugia-icon-direction_caret_down  c4"
-                  />
-                </span>
-                <span
-                  className="c5"
-                  onClick={[Function]}
-                  onContextMenu={[Function]}
-                  onMouseEnter={[Function]}
-                  onMouseLeave={[Function]}
-                  selected={false}
-                  title="2.1.2.1"
-                >
-                  <span
-                    className="c6"
-                    title="2.1.2.1"
-                  >
-                    2.1.2.1
-                  </span>
-                </span>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-`;
-
-exports[`Tree props: value: 1 mutliple: false onChange监听 limit 1`] = `
-Array [
-  .c6 {
+.c4 {
   font-size: 1em;
   color: #999999;
   display: inline-block;
-  margin: 0 0.8333333333333334em;
+  margin-left: 0.4166666666666667em;
   vertical-align: top;
+  margin-right: 0;
 }
 
-.c11 {
+.c9 {
   font-size: 1em;
   color: #999999;
   display: inline-block;
-  margin: 0 0.8333333333333334em;
+  margin-left: 0.4166666666666667em;
   vertical-align: top;
+  margin-right: 0;
   opacity: 0;
 }
 
-.c4 {
-  padding-right: 1.5em;
+.c2 {
   margin: 0;
+  overflow: hidden;
+  padding-right: 1.6666666666666667em;
 }
 
-.c5 {
-  min-height: 2.5em;
-  line-height: 2.5em;
+.c3 {
+  min-height: 2.8333333333333335em;
+  line-height: 2.8333333333333335em;
   list-style: none;
+  padding-right: 1em;
   white-space: nowrap;
   outline: 0;
-  overflow: hidden;
 }
 
-.c10 {
+.c8 {
   margin: 0;
   padding: 0 0 0 1.5em;
 }
 
-.c12 {
-  box-sizing: border-box;
+.c6 {
   width: 100%;
   overflow: hidden;
-  padding-left: 0.5em;
+  vertical-align: top;
   display: inline-block;
-  cursor: pointer;
   -webkit-text-decoration: none;
   text-decoration: none;
-  vertical-align: top;
+  box-sizing: border-box;
+  padding-left: 0.8333333333333334em;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
   font-size: 1.1666666666666667em;
-  color: #666666;
-}
-
-.c12:hover {
-  background-color: #edf0fe;
-}
-
-.c8 {
-  box-sizing: border-box;
-  width: 100%;
-  overflow: hidden;
-  padding-left: 0.5em;
-  display: inline-block;
   cursor: pointer;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  vertical-align: top;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-  font-size: 1.1666666666666667em;
   color: #666666;
-  background-color: #edf0fe;
+  border-radius: 0.33333333333333337em;
 }
 
-.c8:hover {
-  background-color: #edf0fe;
-}
-
-.c9 {
-  opacity: 1;
+.c6:hover {
+  background-color: rgba(77,99,255,0.05);
 }
 
 .c7 {
+  opacity: 1;
+}
+
+<div
+  className="c0"
+  onWheel={[Function]}
+>
+  <ul
+    className="rc-tree c1 rc-tree-show-line c2"
+    role="tree-node"
+    unselectable="on"
+  >
+    <li
+      className="c3"
+      height={35}
+      selected={false}
+      title="2"
+      unselectable="on"
+    >
+      <span
+        className="c4"
+        onClick={[Function]}
+      >
+        <i
+          className="lugia-icon-direction_caret_down  c5"
+        />
+      </span>
+      <span
+        className="c6"
+        disabled={false}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        selected={false}
+        shape="default"
+        title="2"
+      >
+        <span
+          className="c7"
+          height={35}
+          selected={false}
+          title="2"
+        >
+          2
+        </span>
+      </span>
+      <ul
+        className="c8"
+        data-expanded={true}
+      >
+        <li
+          className="c3"
+          height={35}
+          selected={false}
+          title="2.1"
+          unselectable="on"
+        >
+          <span
+            className="c4"
+            onClick={[Function]}
+          >
+            <i
+              className="lugia-icon-direction_caret_down  c5"
+            />
+          </span>
+          <span
+            className="c6"
+            disabled={false}
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            selected={false}
+            shape="default"
+            title="2.1"
+          >
+            <span
+              className="c7"
+              height={35}
+              selected={false}
+              title="2.1"
+            >
+              2.1
+            </span>
+          </span>
+          <ul
+            className="c8"
+            data-expanded={true}
+          >
+            <li
+              className="c3"
+              height={35}
+              selected={false}
+              title="2.1.2"
+              unselectable="on"
+            >
+              <span
+                className="c4"
+                onClick={[Function]}
+              >
+                <i
+                  className="lugia-icon-direction_caret_down  c5"
+                />
+              </span>
+              <span
+                className="c6"
+                disabled={false}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                selected={false}
+                shape="default"
+                title="2.1.2"
+              >
+                <span
+                  className="c7"
+                  height={35}
+                  selected={false}
+                  title="2.1.2"
+                >
+                  2.1.2
+                </span>
+              </span>
+              <ul
+                className="c8"
+                data-expanded={true}
+              >
+                <li
+                  className="c3"
+                  height={35}
+                  selected={false}
+                  title="2.1.2.1"
+                  unselectable="on"
+                >
+                  <span
+                    className="c9"
+                  >
+                    <i
+                      className="lugia-icon-direction_caret_down  c5"
+                    />
+                  </span>
+                  <span
+                    className="c6"
+                    disabled={false}
+                    onClick={[Function]}
+                    onContextMenu={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    selected={false}
+                    shape="default"
+                    title="2.1.2.1"
+                  >
+                    <span
+                      className="c7"
+                      height={35}
+                      selected={false}
+                      title="2.1.2.1"
+                    >
+                      2.1.2.1
+                    </span>
+                  </span>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Tree props: value: 1 mutliple: false onChange监听 limit 1`] = `
+Array [
+  .c7 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
+  font-size: 1.2rem;
 }
 
 .c14 {
   position: relative;
-  background: #fbfbfb;
+  background: rgba(255,255,255,0);
   width: 1.6666666666666667em;
   height: 25em;
   z-index: 996;
@@ -1016,24 +947,26 @@ Array [
 }
 
 .c2 {
-  width: 19.833333333333336em;
+  width: 20.833333333333336em;
+  font-size: 1.2rem;
   position: absolute;
   display: inline-block;
 }
 
 .c1 {
   overflow: hidden;
+  font-size: 1.2rem;
   height: 20.833333333333336em;
   width: 20.833333333333336em;
   position: relative;
 }
 
 .c13 {
-  width: 19.833333333333336em;
+  width: 20.833333333333336em;
+  font-size: 1.2rem;
   position: absolute;
   display: inline-block;
   left: 19.833333333333336em;
-  height: 20.833333333333336em;
   width: 1em;
   opacity: 0;
   -webkit-transition: opacity 0.3s;
@@ -1046,9 +979,91 @@ Array [
 
 .c3 {
   position: relative;
-  top: NaNem;
+  top: 0em;
   width: 100%;
   padding: 0;
+}
+
+.c6 {
+  font-size: 1em;
+  color: #999999;
+  display: inline-block;
+  margin-left: 0.4166666666666667em;
+  vertical-align: top;
+  margin-right: 0;
+}
+
+.c11 {
+  font-size: 1em;
+  color: #999999;
+  display: inline-block;
+  margin-left: 0.4166666666666667em;
+  vertical-align: top;
+  margin-right: 0;
+  opacity: 0;
+}
+
+.c4 {
+  margin: 0;
+  overflow: hidden;
+  padding-right: 1.6666666666666667em;
+}
+
+.c5 {
+  min-height: 2.8333333333333335em;
+  line-height: 2.8333333333333335em;
+  list-style: none;
+  padding-right: 1em;
+  white-space: nowrap;
+  outline: 0;
+}
+
+.c10 {
+  margin: 0;
+  padding: 0 0 0 1.5em;
+}
+
+.c12 {
+  width: 100%;
+  overflow: hidden;
+  vertical-align: top;
+  display: inline-block;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  padding-left: 0.8333333333333334em;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  font-size: 1.1666666666666667em;
+  cursor: pointer;
+  color: #666666;
+  border-radius: 0.33333333333333337em;
+}
+
+.c12:hover {
+  background-color: rgba(77,99,255,0.05);
+}
+
+.c8 {
+  width: 100%;
+  overflow: hidden;
+  vertical-align: top;
+  display: inline-block;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  padding-left: 0.8333333333333334em;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  font-size: 1.1666666666666667em;
+  cursor: pointer;
+  color: #666666;
+  border-radius: 0.33333333333333337em;
+  background-color: rgba(77,99,255,0.2);
+}
+
+.c9 {
+  opacity: 1;
 }
 
 <div
@@ -1065,6 +1080,7 @@ Array [
       >
         <li
           className="c5"
+          height={35}
           selected={true}
           title="1"
           unselectable="on"
@@ -1079,15 +1095,19 @@ Array [
           </span>
           <span
             className="c8"
+            disabled={false}
             onClick={[Function]}
             onContextMenu={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             selected={true}
+            shape="default"
             title="1"
           >
             <span
               className="c9"
+              height={35}
+              selected={true}
               title="1"
             >
               1
@@ -1099,6 +1119,7 @@ Array [
           >
             <li
               className="c5"
+              height={35}
               selected={false}
               title="1.1"
               unselectable="on"
@@ -1112,15 +1133,19 @@ Array [
               </span>
               <span
                 className="c12"
+                disabled={false}
                 onClick={[Function]}
                 onContextMenu={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 selected={false}
+                shape="default"
                 title="1.1"
               >
                 <span
                   className="c9"
+                  height={35}
+                  selected={false}
                   title="1.1"
                 >
                   1.1
@@ -1129,6 +1154,7 @@ Array [
             </li>
             <li
               className="c5"
+              height={35}
               selected={false}
               title="1.2"
               unselectable="on"
@@ -1143,15 +1169,19 @@ Array [
               </span>
               <span
                 className="c12"
+                disabled={false}
                 onClick={[Function]}
                 onContextMenu={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 selected={false}
+                shape="default"
                 title="1.2"
               >
                 <span
                   className="c9"
+                  height={35}
+                  selected={false}
                   title="1.2"
                 >
                   1.2
@@ -1163,6 +1193,7 @@ Array [
               >
                 <li
                   className="c5"
+                  height={35}
                   selected={false}
                   title="1.2.1"
                   unselectable="on"
@@ -1176,15 +1207,19 @@ Array [
                   </span>
                   <span
                     className="c12"
+                    disabled={false}
                     onClick={[Function]}
                     onContextMenu={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                     selected={false}
+                    shape="default"
                     title="1.2.1"
                   >
                     <span
                       className="c9"
+                      height={35}
+                      selected={false}
                       title="1.2.1"
                     >
                       1.2.1
@@ -1193,6 +1228,7 @@ Array [
                 </li>
                 <li
                   className="c5"
+                  height={35}
                   selected={false}
                   title="1.2.2"
                   unselectable="on"
@@ -1207,15 +1243,19 @@ Array [
                   </span>
                   <span
                     className="c12"
+                    disabled={false}
                     onClick={[Function]}
                     onContextMenu={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                     selected={false}
+                    shape="default"
                     title="1.2.2"
                   >
                     <span
                       className="c9"
+                      height={35}
+                      selected={false}
                       title="1.2.2"
                     >
                       1.2.2
@@ -1227,6 +1267,7 @@ Array [
                   >
                     <li
                       className="c5"
+                      height={35}
                       selected={false}
                       title="1.2.2.1"
                       unselectable="on"
@@ -1241,15 +1282,19 @@ Array [
                       </span>
                       <span
                         className="c12"
+                        disabled={false}
                         onClick={[Function]}
                         onContextMenu={[Function]}
                         onMouseEnter={[Function]}
                         onMouseLeave={[Function]}
                         selected={false}
+                        shape="default"
                         title="1.2.2.1"
                       >
                         <span
                           className="c9"
+                          height={35}
+                          selected={false}
                           title="1.2.2.1"
                         >
                           1.2.2.1
@@ -1261,6 +1306,7 @@ Array [
                       >
                         <li
                           className="c5"
+                          height={35}
                           selected={false}
                           title="1.2.2.1.1"
                           unselectable="on"
@@ -1274,15 +1320,19 @@ Array [
                           </span>
                           <span
                             className="c12"
+                            disabled={false}
                             onClick={[Function]}
                             onContextMenu={[Function]}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
                             selected={false}
+                            shape="default"
                             title="1.2.2.1.1"
                           >
                             <span
                               className="c9"
+                              height={35}
+                              selected={false}
                               title="1.2.2.1.1"
                             >
                               1.2.2.1.1
@@ -1291,6 +1341,7 @@ Array [
                         </li>
                         <li
                           className="c5"
+                          height={35}
                           selected={false}
                           title="1.2.2.1.2"
                           unselectable="on"
@@ -1304,15 +1355,19 @@ Array [
                           </span>
                           <span
                             className="c12"
+                            disabled={false}
                             onClick={[Function]}
                             onContextMenu={[Function]}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
                             selected={false}
+                            shape="default"
                             title="1.2.2.1.2"
                           >
                             <span
                               className="c9"
+                              height={35}
+                              selected={false}
                               title="1.2.2.1.2"
                             >
                               1.2.2.1.2
@@ -1320,36 +1375,6 @@ Array [
                           </span>
                         </li>
                       </ul>
-                    </li>
-                    <li
-                      className="c5"
-                      selected={false}
-                      title="1.2.2.2"
-                      unselectable="on"
-                    >
-                      <span
-                        className="c11"
-                      >
-                        <i
-                          className="lugia-icon-direction_caret_down  c7"
-                        />
-                      </span>
-                      <span
-                        className="c12"
-                        onClick={[Function]}
-                        onContextMenu={[Function]}
-                        onMouseEnter={[Function]}
-                        onMouseLeave={[Function]}
-                        selected={false}
-                        title="1.2.2.2"
-                      >
-                        <span
-                          className="c9"
-                          title="1.2.2.2"
-                        >
-                          1.2.2.2
-                        </span>
-                      </span>
                     </li>
                   </ul>
                 </li>
@@ -1381,7 +1406,7 @@ Array [
           onMouseUp={[Function]}
           style={
             Object {
-              "height": "5.583333333333334em",
+              "height": "4.916666666666667em",
               "top": "0em",
             }
           }
@@ -1396,48 +1421,13 @@ Array [
 `;
 
 exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
-.c6 {
-  font-size: 1em;
-  color: #999999;
-  display: inline-block;
-  margin: 0 0.8333333333333334em;
-  vertical-align: top;
-}
-
-.c14 {
-  font-size: 1em;
-  color: #999999;
-  display: inline-block;
-  margin: 0 0.8333333333333334em;
-  vertical-align: top;
-  opacity: 0;
-}
-
-.c4 {
-  padding-right: 1.5em;
-  margin: 0;
-}
-
-.c5 {
-  min-height: 2.5em;
-  line-height: 2.5em;
-  list-style: none;
-  white-space: nowrap;
-  outline: 0;
-  overflow: hidden;
-}
-
-.c13 {
-  margin: 0;
-  padding: 0 0 0 1.5em;
-}
-
 .c7 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
+  font-size: 1.2rem;
 }
 
 .c8 {
@@ -1456,7 +1446,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
 }
 
 .c8:hover > span span {
-  border: 1px solid #684fff;
+  border: 1px solid #4d63ff;
 }
 
 .c9 {
@@ -1500,7 +1490,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
 }
 
 .c15:hover {
-  border: 1px solid #684fff;
+  border: 1px solid #4d63ff;
 }
 
 .c15::after {
@@ -1531,14 +1521,14 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
   width: 1.2857142857142858em;
   height: 1.2857142857142858em;
   border-radius: 0.14285714285714288em;
-  background-color: #684fff;
-  border: 1px solid #684fff;
+  background-color: #4d63ff;
+  border: 1px solid #4d63ff;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 
 .c11:hover {
-  border: 1px solid #684fff;
+  border: 1px solid #4d63ff;
 }
 
 .c11::after {
@@ -1562,7 +1552,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
 
 .c17 {
   position: relative;
-  background: #fbfbfb;
+  background: rgba(255,255,255,0);
   width: 1.6666666666666667em;
   height: 25em;
   z-index: 996;
@@ -1592,24 +1582,26 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
 }
 
 .c2 {
-  width: 19.833333333333336em;
+  width: 20.833333333333336em;
+  font-size: 1.2rem;
   position: absolute;
   display: inline-block;
 }
 
 .c1 {
   overflow: hidden;
+  font-size: 1.2rem;
   height: 20.833333333333336em;
   width: 20.833333333333336em;
   position: relative;
 }
 
 .c16 {
-  width: 19.833333333333336em;
+  width: 20.833333333333336em;
+  font-size: 1.2rem;
   position: absolute;
   display: inline-block;
   left: 19.833333333333336em;
-  height: 20.833333333333336em;
   width: 1em;
   opacity: 0;
   -webkit-transition: opacity 0.3s;
@@ -1622,9 +1614,48 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
 
 .c3 {
   position: relative;
-  top: NaNem;
+  top: 0em;
   width: 100%;
   padding: 0;
+}
+
+.c6 {
+  font-size: 1em;
+  color: #999999;
+  display: inline-block;
+  margin-left: 0.4166666666666667em;
+  vertical-align: top;
+  margin-right: 0.8333333333333334em;
+}
+
+.c14 {
+  font-size: 1em;
+  color: #999999;
+  display: inline-block;
+  margin-left: 0.4166666666666667em;
+  vertical-align: top;
+  margin-right: 0;
+  opacity: 0;
+}
+
+.c4 {
+  margin: 0;
+  overflow: hidden;
+  padding-right: 1.6666666666666667em;
+}
+
+.c5 {
+  min-height: 2.8333333333333335em;
+  line-height: 2.8333333333333335em;
+  list-style: none;
+  padding-right: 1em;
+  white-space: nowrap;
+  outline: 0;
+}
+
+.c13 {
+  margin: 0;
+  padding: 0 0 0 1.5em;
 }
 
 <div
@@ -1641,6 +1672,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
     >
       <li
         className="c5"
+        height={35}
         selected={false}
         title="1"
         unselectable="on"
@@ -1686,6 +1718,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
         >
           <li
             className="c5"
+            height={35}
             selected={false}
             title="1.1"
             unselectable="on"
@@ -1727,6 +1760,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
           </li>
           <li
             className="c5"
+            height={35}
             selected={false}
             title="1.2"
             unselectable="on"
@@ -1772,6 +1806,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
             >
               <li
                 className="c5"
+                height={35}
                 selected={false}
                 title="1.2.1"
                 unselectable="on"
@@ -1813,6 +1848,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
               </li>
               <li
                 className="c5"
+                height={35}
                 selected={false}
                 title="1.2.2"
                 unselectable="on"
@@ -1858,6 +1894,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                 >
                   <li
                     className="c5"
+                    height={35}
                     selected={false}
                     title="1.2.2.1"
                     unselectable="on"
@@ -1903,6 +1940,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                     >
                       <li
                         className="c5"
+                        height={35}
                         selected={false}
                         title="1.2.2.1.1"
                         unselectable="on"
@@ -1944,6 +1982,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                       </li>
                       <li
                         className="c5"
+                        height={35}
                         selected={false}
                         title="1.2.2.1.2"
                         unselectable="on"
@@ -1985,47 +2024,6 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
                       </li>
                     </ul>
                   </li>
-                  <li
-                    className="c5"
-                    selected={false}
-                    title="1.2.2.2"
-                    unselectable="on"
-                  >
-                    <span
-                      className="c14"
-                    >
-                      <i
-                        className="lugia-icon-direction_caret_down  c7"
-                      />
-                    </span>
-                    <label
-                      className="c8"
-                      disabled={false}
-                      onClick={[Function]}
-                    >
-                      <span
-                        className="c9"
-                        onClick={null}
-                      >
-                        <input
-                          className="c10"
-                          disabled={false}
-                          onBlur={[Function]}
-                          type="checkbox"
-                        />
-                        <span
-                          checked={false}
-                          className="c15"
-                          disabled={false}
-                        />
-                      </span>
-                      <span
-                        className="c12"
-                      >
-                        1.2.2.2
-                      </span>
-                    </label>
-                  </li>
                 </ul>
               </li>
             </ul>
@@ -2056,7 +2054,7 @@ exports[`Tree props: value: 1 mutliple: true onChange监听 limit 1`] = `
         onMouseUp={[Function]}
         style={
           Object {
-            "height": "5.583333333333334em",
+            "height": "4.916666666666667em",
             "top": "0em",
           }
         }

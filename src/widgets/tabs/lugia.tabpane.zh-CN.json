@@ -1,0 +1,134 @@
+{
+  "widgetName": "Tabpane",
+  "title": "单个标签页",
+  "desc": "单个标签页组件",
+  "props": {
+    "activityValue": {
+      "type": "string",
+      "desc": "当前激活 tab 面板的 key"
+    },
+    "title": {
+      "type": "string",
+      "desc": "标签页标题"
+    },
+    "index": {
+      "type": "number",
+      "desc": "标识当前是第几项",
+      "defaultValue": 0
+    },
+    "icon": {
+      "type": "string | React$Element<any>",
+      "desc": "位于标题前的图标资源"
+    },
+    "suffixIcon": {
+      "type": "string | React$Element<any>",
+      "desc": "位于标题后的图标资源"
+    },
+    "tabType": {
+      "type": "TabType",
+      "desc": "可配置三种风格的标签页.可选 线性,卡片,窗口风格",
+      "defaultValue": "line"
+    },
+    "tabPosition": {
+      "type": "TabPositionType",
+      "desc": "页签位置，可配置 左,右,上,下",
+      "defaultValue": "top"
+    },
+    "isSelect": {
+      "type": "boolean",
+      "desc": "标签页是否被选中",
+      "defaultValue": false
+    },
+    "disabled": {
+      "type": "boolean",
+      "desc": "标签页是否被禁用",
+      "defaultValue": false
+    },
+    "showDeleteBtn": {
+      "type": "boolean",
+      "desc": "是否显示删除按钮",
+      "defaultValue": false
+    }
+  },
+  "events": {
+    "onClick": {
+      "desc": "tab 被点击的回调",
+      "args": [
+        {
+          "name": "result",
+          "desc": "返回当前被点击是第几的项",
+          "type": "Object"
+        }
+      ]
+    },
+    "onDelete": {
+      "desc": "点击清除按钮后回调",
+      "args": [
+        {
+          "name": "event",
+          "desc": "返回当前被删除的是第几的项",
+          "type": "Object"
+        }
+      ]
+    },
+    "onMouseEnter": {
+      "desc": "鼠标移入标签时触发的事件",
+      "args": [
+        {
+          "name": "event",
+          "desc": "返回当前移入的是第几的项",
+          "type": "Object"
+        }
+      ]
+    },
+    "onMouseLeave": {
+      "desc": "鼠标移出标签时触发的事件",
+      "args": [
+        {
+          "name": "event",
+          "desc": "返回当前移出的是第几的项",
+          "type": "Object"
+        }
+      ]
+    }
+  },
+  "type": {
+    "TabType": ["line", "card", "window"],
+    "TabPositionType": ["top", "bottom", "inner", "default"]
+  },
+  "category": ["数据展示"],
+  "theme": {
+    "DefaultTabPan": {
+      "name": "默认标签",
+      "desc": "默认标签样式配置",
+      "normal": [
+        ["color"],
+        ["background"],
+        ["border"],
+        ["margin"],
+        ["padding"],
+        ["font"],
+        ["opacity"]
+      ],
+      "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
+      "clicked": [],
+      "disabled": []
+    },
+    "SelectTabPan": {
+      "name": "选中标签",
+      "desc": "选中标签样式配置",
+      "normal": [
+        ["color"],
+        ["background"],
+        ["border"],
+        ["margin"],
+        ["padding"],
+        ["font"],
+        ["opacity"]
+      ],
+      "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
+      "clicked": [],
+      "disabled": []
+    }
+  }
+}

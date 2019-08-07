@@ -1,0 +1,98 @@
+{
+  "widgetName": "WeekPicker",
+  "title": "周选择器",
+  "desc": "用于周选择,",
+  "props": {
+    "defaultValue": {
+      "type": "string",
+      "desc": "日期默认显示值"
+    },
+    "value": {
+      "type": "string",
+      "desc": "日期显示值"
+    },
+    "createPortal": {
+      "type": "boolean",
+      "desc": "是否全局弹出下拉框",
+      "defaultValue": true
+    },
+    "format": {
+      "type": "string",
+      "desc": "用于指定输入框日期显示的格式",
+      "defaultValue": "YYYY-WW"
+    },
+    "placeholder": {
+      "type": "string",
+      "desc": "input输入提示信息"
+    },
+    "disabled": {
+      "type": "boolean",
+      "desc": "禁用状态,是否不可用",
+      "defaultValue": false
+    },
+    "readOnly": {
+      "type": "boolean",
+      "desc": "只读input",
+      "defaultValue": false
+    },
+    "selectToday": {
+      "type": "boolean",
+      "desc": "是否默认选中今天日期",
+      "defaultValue": false
+    },
+    "showToday": {
+      "type": "boolean | Object",
+      "desc": "是否展示'今天'按钮 | showToday={message:'XXX'} 可以指定按钮文本 ",
+      "defaultValue": false
+    },
+    "extraFooter": {
+      "type": "Object",
+      "desc": "在面板中添加额外的页脚 extraFooter={message:'XXX',style:{...}}",
+      "defaultValue": ""
+    },
+    "buttonOptions": {
+      "type": "Object",
+      "desc": "自定义页脚展示的一些按钮 buttonOptions={{options: { buttonNameXXX:自定义时间, buttonNameXXX:自定义时间}}} ",
+      "defaultValue": ""
+    },
+    "step": {
+      "type": "number",
+      "desc": "设置周,年的展示步长",
+      "defaultValue": false
+    }
+  },
+  "events": {
+    "onChange": {
+      "desc": "时间值发生变化时的回调",
+      "args": [
+        {
+          "name": "event",
+          "desc": "时间值发生变化时的回调",
+          "type": "ChangeType"
+        }
+      ]
+    },
+    "onOk": {
+      "desc": "点击确定按钮的回掉onOk={function()} | onOk={message:'XXX',Function:function()} 可指定onOk按钮显示的文本",
+      "args": []
+    },
+    "onFocus": {
+      "desc": "输入框获取焦点",
+      "args": []
+    },
+    "onBlur": {
+      "desc": "输入框失去焦点",
+      "args": []
+    }
+  },
+  "type": {
+    "ChangeType": {
+      "newValue": "string",
+      "oldValue": "string",
+      "event": "SyntheticEvent"
+    }
+  },
+  "category": ["数据录入"],
+  "componentName": "WeekPicker",
+  "needExport": true
+}

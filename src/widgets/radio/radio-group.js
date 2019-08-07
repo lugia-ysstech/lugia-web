@@ -6,7 +6,6 @@
  *
  */
 import { DisplayField, ValueField } from '../consts/props';
-
 import * as React from 'react';
 import ThemeProvider from '../theme-provider';
 import Radio from './radio';
@@ -20,7 +19,7 @@ import {
   updateMapData,
 } from '../common/translateData';
 import Theme from '../theme';
-import { Group } from '../checkbox/checkbox-group';
+import { Group } from '../css/checkbox-group';
 
 type RadioGroupProps = {
   defaultValue?: string,
@@ -28,16 +27,17 @@ type RadioGroupProps = {
   data?: Array<Object>,
   value?: string,
   onChange?: Function,
-  size?: string,
   displayField?: string,
   valueField?: string,
   displayValue?: string,
   children?: any,
-  getTheme: Function,
   styles: 'default' | 'vertical',
   cache?: boolean,
   childType?: 'default' | 'button',
   size?: 'default' | 'small' | 'large' | 'bigger',
+  themeProps: Object,
+  getPartOfThemeProps: Function,
+  getPartOfThemeConfig: Function,
 };
 type RadioGroupState = {
   value: string,
@@ -47,6 +47,7 @@ type RadioGroupState = {
 
 export default ThemeProvider(
   class extends React.Component<RadioGroupProps, RadioGroupState> {
+    static displayName = 'RadioGroup';
     oldItem: Object;
     cancelItem: Array<Object>;
 
@@ -102,12 +103,12 @@ export default ThemeProvider(
       const disV = typeof displayValue === 'string' ? [displayValue] : [];
       const {
         cache = true,
-        getTheme,
         childType = 'default',
         children,
         data,
         disabled,
         styles,
+        getPartOfThemeProps,
       } = this.props;
       if (!cache) {
         updateMapData(this.props, disV, this.updateMapData);
@@ -127,10 +128,11 @@ export default ThemeProvider(
         hasValueProps: () => this.hasValueProps(),
         cancelItem: this.cancelItem,
       };
+
       return (
         <Theme config={this.getChildTheme()}>
-          <Group themes={getTheme()} childType={childType}>
-            {handleCreate(_this, 'radio')}
+          <Group themeProps={getPartOfThemeProps('Container')} childType={childType}>
+            {handleCreate(_this, 'radio', childType)}
           </Group>
         </Theme>
       );
@@ -170,7 +172,7 @@ export default ThemeProvider(
       }
       return (
         <Radio
-          onChange={this.handleChange(item)}
+          onChangeForGroup={this.handleChange(item)}
           key={itemValue}
           value={itemValue}
           checked={itemValue === value}
@@ -229,10 +231,11 @@ export default ThemeProvider(
       };
     };
     getChildTheme(): Object {
-      const { getTheme } = this.props;
+      const { getPartOfThemeConfig } = this.props;
+
       return {
-        [Widget.Radio]: getTheme(),
-        [Widget.CheckButton]: getTheme(),
+        [Widget.Radio]: getPartOfThemeConfig('Radio'),
+        [Widget.CheckButton]: getPartOfThemeConfig('CheckButton'),
       };
     }
   },

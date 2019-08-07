@@ -1,0 +1,94 @@
+{
+  "widgetName": "Panel",
+  "title": "Panel 面板",
+  "desc": "Panel 面板。",
+  "props": {
+    "value": {
+      "type": "string",
+      "desc": "指定Panel面板value值"
+    },
+    "title": {
+      "type": "string | React.node",
+      "desc": "指定Panel面板头部内容"
+    },
+    "children": {
+      "type": "string | React.node",
+      "desc": "Panel面板内容"
+    },
+    "disabled": {
+      "type": "boolean",
+      "desc": "Panel面板是否禁用",
+      "defaultValue": false
+    },
+    "open": {
+      "type": "boolean",
+      "desc": "Panel面板是否展开",
+      "defaultValue": false
+    },
+    "showArrow": {
+      "type": "boolean",
+      "desc": "Panel面板是否展示箭头",
+      "defaultValue": true
+    }
+  },
+  "events": {
+    "onClick": {
+      "desc": "Panel面板点击事件回调",
+      "args": [
+        {
+          "name": "value",
+          "desc": "Panel面板点击时 value的值",
+          "type": "string"
+        }
+      ]
+    }
+  },
+  "type": {},
+  "category": ["数据展示"],
+  "componentName": "Panel",
+  "needExport": true,
+  "theme": {
+    "Wrap": {
+      "name": "面板整体配置",
+      "desc": "面板整体配置",
+      "normal": [["width"]]
+    },
+    "PanelHeader": {
+      "name": "面板头部配置",
+      "desc": "面板头部样式配置",
+      "normal": [
+        ["opacity"],
+        ["border"],
+        ["borderRadius"],
+        ["boxShadow"],
+        ["padding"],
+        ["width"],
+        ["height"],
+        ["background"]
+      ],
+      "hover": [["borderRadius"], ["background"], ["opacity"], ["border"], ["boxShadow"]],
+      "disabled": [["borderRadius"], ["background"], ["opacity"], ["border"], ["boxShadow"]]
+    },
+    "PanelHeaderText": {
+      "name": "面板头部文字",
+      "desc": "面板头部文字样式配置",
+      "normal": [["font"], ["color"]],
+      "hover": [["color"]],
+      "disabled": [["color"]]
+    },
+    "PanelHeaderIcon": {
+      "name": "面板头部图标",
+      "desc": "面板头部图标样式配置",
+      "normal": [["fontSize"], ["color"]],
+      "hover": [["color"]],
+      "disabled": [["color"]]
+    },
+    "PanelContent": {
+      "name": "面板内容样式",
+      "desc": "面板内容样式配置",
+      "normal": [["width"], ["height"], ["background"], ["padding"], ["font"], ["color"]],
+      "hover": [["color"]],
+      "disabled": [["color"]]
+    }
+  }
+}

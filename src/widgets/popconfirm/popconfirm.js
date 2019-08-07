@@ -8,22 +8,23 @@ import * as React from 'react';
 import Button from '../button/index';
 import Popover from '../popover/index';
 import Icon from '../icon/index';
-import Theme from '../theme/index';
 import Widget from '../consts/index';
-import styled from 'styled-components';
-import { getTitleColor } from '../css/card';
-import { px2emcss } from '../css/units';
 import type { DirectionType } from '../css/tooltip';
-import ThemeProvider from '../theme-provider';
+import type { ButtonType } from '../css/button';
 import { ObjectUtils } from '@lugia/type-utils';
 import { getStateFromProps, processOnVisibleChange } from '../tooltip';
-
-const em = px2emcss(1.2);
+import ThemeHoc from '@lugia/theme-hoc';
+import CSSComponent, { css, StaticComponent } from '../theme/CSSProvider';
+import { units } from '@lugia/css';
+import colorsFunc from '../css/stateColor';
+import { deepMerge } from '@lugia/object-utils';
+const { blackColor } = colorsFunc();
+const { px2remcss } = units;
 
 type PopconfirmProps = {
   description: React.Node,
   title: React.Node,
-  content?: React.Node,
+  content: React.Node,
   getTheme: Function,
   onCancel: Function,
   onConfirm: Function,
@@ -36,60 +37,73 @@ type PopconfirmProps = {
   icon: React.Node,
   cancelText: string,
   okText: string,
-  okType: string,
+  okType: ButtonType,
+  defaultChildren: React.Node,
+  themeProps: Object,
+  getPartOfThemeHocProps: Function,
+  getPartOfThemeProps: Function,
 };
 type PopconfirmState = {
   visible: boolean,
 };
-const IconContainer = styled.div`
-  position: relative;
-  width: ${em(15)};
-  height: ${em(15)};
-  display: inline-block;
-  margin-right: ${em(6)};
-  text-align: center;
-  top: 50%;
-  transform: translateY(-50%);
-`;
-const Title = styled.div`
-  text-align: inherit;
-  white-space: nowrap;
-  overflow: hidden;
-  display: inline-block;
-  font-size: 1.6rem;
-  font-weight: 500;
-  ${getTitleColor};
-`;
-const HintIcon = styled(Icon)`
-  font-size: 1.4rem;
-`;
-const Basetext = styled.div`
-  font-size: 1.2rem;
-  display: block;
-`;
-const Content = Basetext.extend``;
-const Operation = Basetext.extend`
-  margin-top: ${em(12)};
-  text-align: right;
-`;
-const CancelText = Basetext.extend``;
-
-CancelText.displayName = 'cancelText';
-
-const OkText = Basetext.extend``;
-
-CancelText.displayName = 'okText';
-
-const BaseButton = styled(Button)`
-  font-size: 1.2rem;
-  display: inline-block;
-`;
-const Cancel = BaseButton.extend`
-  font-size: 1.2rem;
-`;
-const Confirm = BaseButton.extend`
-  font-size: 1.2rem;
-`;
+const IconContainer: Object = StaticComponent({
+  tag: 'span',
+  className: 'PopconfirmIconContainer ',
+  normal: {
+    selectNames: [],
+  },
+  css: css`
+    position: relative;
+    display: inline-block;
+    margin-right: ${px2remcss(6)};
+    text-align: center;
+  `,
+});
+const Title = CSSComponent({
+  tag: 'span',
+  className: 'PopconfirmTitle',
+  normal: {
+    selectNames: [['font'], ['fontSize'], ['color'], ['background']],
+    defaultTheme: {
+      font: {
+        size: 16,
+        color: blackColor,
+        weight: 500,
+      },
+    },
+  },
+  css: css`
+    text-align: inherit;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+  `,
+});
+const Content = CSSComponent({
+  tag: 'div',
+  className: 'PopconfirmContent',
+  normal: {
+    selectNames: [['font'], ['fontSize'], ['color'], ['margin'], ['padding'], ['background']],
+    defaultTheme: {
+      fontSize: 12,
+    },
+  },
+  css: css`
+    display: block;
+  `,
+});
+const Operation = StaticComponent({
+  tag: 'div',
+  className: 'PopconfirmOperation',
+  normal: {
+    selectNames: [],
+  },
+  css: css`
+    padding-top: ${px2remcss(12)};
+    display: block;
+    text-align: right;
+  `,
+});
 
 class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
   static displayName = Widget.Popconfirm;
@@ -108,39 +122,67 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
 
   getTitle(): React.Node | null {
     const { title } = this.props;
-    return title ? <Title>{title} </Title> : null;
+    return title ? (
+      <Title themeProps={this.props.getPartOfThemeProps('PopconfirmTitle')}>{title}</Title>
+    ) : null;
   }
 
   getOperation(): React.Node | null {
     const { cancelText = '取消', okText = '确定', okType = 'primary' } = this.props;
-    const margin = {
-      [Widget.Button]: {
-        margin: {
-          left: 6,
+    const { theme: theTheme, viewClass } = this.props.getPartOfThemeHocProps('PopconfirmButton');
+
+    const ButtonTheme = deepMerge(
+      {
+        [viewClass]: {
+          Container: {
+            normal: {
+              margin: {
+                left: 6,
+              },
+            },
+          },
+          ButtonText: {
+            normal: {
+              font: {
+                size: 16,
+                weight: 500,
+              },
+            },
+          },
         },
       },
-    };
+      theTheme
+    );
     return (
-      <Theme config={margin}>
-        <Operation>
-          <Cancel size="small" onClick={this.onCancel}>
-            <CancelText> {cancelText}</CancelText>
-          </Cancel>
-          <Confirm type={okType} size="small" onClick={this.onConfirm}>
-            <OkText> {okText}</OkText>
-          </Confirm>
-        </Operation>
-      </Theme>
+      <Operation>
+        <Button
+          theme={ButtonTheme}
+          viewClass={viewClass}
+          type={okType}
+          size="small"
+          onClick={this.onCancel}
+        >
+          {cancelText}
+        </Button>
+        <Button
+          theme={ButtonTheme}
+          viewClass={viewClass}
+          type={okType}
+          size="small"
+          onClick={this.onConfirm}
+        >
+          {okText}
+        </Button>
+      </Operation>
     );
   }
 
   getContent() {
+    const contentThemeProps = this.props.getPartOfThemeProps('Container');
     return (
-      <Content>
-        <div>
-          {this.getIconContainer()}
-          {this.getTitle()}
-        </div>
+      <Content themeProps={contentThemeProps}>
+        {this.getIconContainer()}
+        {this.getTitle()}
         {this.getOperation()}
       </Content>
     );
@@ -163,23 +205,47 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
   }
 
   getIcon(icon: React.Node): React.Node {
-    return ObjectUtils.isString(icon) ? <HintIcon iconClass={icon}> </HintIcon> : icon;
+    return ObjectUtils.isString(icon) ? (
+      <Icon {...this.props.getPartOfThemeHocProps('PopconfirmIcon')} iconClass={icon} singleTheme />
+    ) : (
+      icon
+    );
   }
 
   render() {
-    const { children, action, placement, getTheme } = this.props;
+    const { children, action, placement = 'topLeft', defaultChildren } = this.props;
     const getTarget: Function = cmp => (this.target = cmp);
+    const theChildren = children ? children : defaultChildren;
+
+    const { theme: theTheme, viewClass } = this.props.getPartOfThemeHocProps('PopconfirmContent');
+
+    const popoverTheme = deepMerge(
+      {
+        [viewClass]: {
+          PopoverContent: {
+            Container: {
+              normal: {
+                fontSize: 12,
+              },
+            },
+          },
+        },
+      },
+      theTheme
+    );
     return (
       <Popover
+        theme={popoverTheme}
+        viewClass={viewClass}
+        showClearButton={false}
         visible={this.state.visible}
         action={action}
         onVisibleChange={this.onVisibleChange}
-        theme={getTheme()}
-        title={this.getContent()}
+        content={this.getContent()}
         ref={getTarget}
         placement={placement}
       >
-        {children}
+        {theChildren}
       </Popover>
     );
   }
@@ -189,4 +255,4 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
   };
 }
 
-export default ThemeProvider(Popconfirm, Widget.Popconfirm);
+export default ThemeHoc(Popconfirm, Widget.Popconfirm);

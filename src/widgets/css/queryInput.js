@@ -4,21 +4,22 @@
  * @flow
  */
 
-import { keyframes } from 'styled-components';
+import { css, keyframes } from 'styled-components';
 import colorsFunc from '../css/stateColor';
 import * as InputCSS from './input';
+import { px2remcss } from '../css/units';
 
 export const { themeColor, darkGreyColor } = colorsFunc();
 
 export const checkAllButtonAnimate = (fromHeight: any, toHeight: any) => {
   const animate = keyframes`
-  from {
-    transform: translateY(-${fromHeight});
-  }
-  to {
-    transform: translateY(-${toHeight});
-  }
-`;
+    from {
+      transform: translateY(-${px2remcss(fromHeight)});
+    }
+    to {
+      transform: translateY(-${px2remcss(toHeight)});
+    }
+  `;
   return animate;
 };
 
@@ -33,19 +34,18 @@ export function IsShowSearchInputHandle(props: Object): string {
     toShowSearchInputIng,
     toShowCheckAllButtonIng,
   } = props;
-
   if (toShowSearchInputIng) {
-    return `
-        animation: ${checkAllButtonAnimate(0, InputCSS.DefaultHeight)} .4s linear;
-        animation-fill-mode: forwards;
-          `;
+    return css`
+      animation: ${checkAllButtonAnimate(0, InputCSS.DefaultHeight)} 0.4s linear;
+      animation-fill-mode: forwards;
+    `;
   }
 
   if (toShowCheckAllButtonIng) {
-    return `
-        animation: ${checkAllButtonAnimate(InputCSS.DefaultHeight, 0)} .4s linear;
-        animation-fill-mode: forwards
-          `;
+    return css`
+      animation: ${checkAllButtonAnimate(InputCSS.DefaultHeight, 0)} 0.4s linear;
+      animation-fill-mode: forwards;
+    `;
   }
 
   if (showCheckAllButton) {
@@ -56,7 +56,7 @@ export function IsShowSearchInputHandle(props: Object): string {
 
   if (showSearchInput) {
     return `
-      transform: translateY(-${InputCSS.DefaultHeight});
+      transform: translateY(-${px2remcss(InputCSS.DefaultHeight)});
         `;
   }
   return '';

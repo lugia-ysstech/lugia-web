@@ -6,15 +6,17 @@
  *
  */
 import * as React from 'react';
+import { addMouseEvent } from '@lugia/theme-hoc';
 import ThemeProvider from '../theme-provider';
-import Widget from '../consts/index';
 import Icon from '../icon';
+import Widget from '../consts/index';
 import { getScrollTop } from '../affix/affix';
-import { BackTop, BackTopContent } from '../css/back-top';
+import { BackTop, BackTopContent, IconBox } from '../css/back-top';
 import type { BackTopProps, BackTopState } from '../css/back-top';
 
 export default ThemeProvider(
   class extends React.Component<BackTopProps, BackTopState> {
+    static displayName = 'BackTop';
     constructor(props) {
       super(props);
       this.state = {
@@ -83,8 +85,8 @@ export default ThemeProvider(
           if (scrollTop <= 0) {
             clearInterval(timer);
           }
-          this.scrollerBodyTo(scrollTop - 50);
-        }, 10);
+          this.scrollerBodyTo(scrollTop - 200);
+        }, 20);
       }
     };
 
@@ -108,18 +110,26 @@ export default ThemeProvider(
       if (this.hasTarget()) {
         const { target } = this.props;
         if (target && typeof target === 'function') {
-          target().removeEventListener('scroll', this.addTargetListener);
+          const targetDom = target();
+          targetDom && targetDom.removeEventListener('scroll', this.addTargetListener);
         }
       }
     }
 
     render() {
-      const { children, getTheme } = this.props;
+      const {
+        children,
+        themeProps,
+        getPartOfThemeProps,
+        getPartOfThemeHocProps,
+        icon = 'lugia-icon-direction_up',
+      } = this.props;
       const { fixed, posRight, posBottom } = this.state;
       return (
-        <div>
+        <div {...addMouseEvent(this)}>
           {fixed ? (
             <BackTop
+              themeProps={themeProps}
               fixed={fixed}
               posRight={posRight}
               posBottom={posBottom}
@@ -129,8 +139,10 @@ export default ThemeProvider(
               {children ? (
                 children
               ) : (
-                <BackTopContent theme={getTheme()}>
-                  <Icon iconClass="lugia-icon-direction_up" />
+                <BackTopContent themeProps={getPartOfThemeProps('Container')}>
+                  <IconBox themeProps={themeProps} {...addMouseEvent(this)}>
+                    <Icon iconClass={icon} {...getPartOfThemeHocProps('BackTopIcon')} singleTheme />
+                  </IconBox>
                 </BackTopContent>
               )}
             </BackTop>

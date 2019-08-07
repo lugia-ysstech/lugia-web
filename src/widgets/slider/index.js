@@ -9,4 +9,4 @@
 import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
 import Slider from './slider';
-export default ThemeProvider(Slider, Widget.Slider);
+export default ThemeProvider(Slider, Widget.Slider, { active: true, hover: true });

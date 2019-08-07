@@ -19,7 +19,12 @@ export default class NotificationDemo extends React.Component<any, any> {
     notification[type]({ title: '今天天气很好！', description: '因为今天的太阳很大。' });
   };
   customIconOpen = (icon: string) => {
-    notification.open({ title: '今天天气很好！', description: '因为今天的太阳很大。', icon });
+    notification.open({
+      title: '今天天气很好！',
+      description: '因为今天的太阳很大。',
+      icon,
+      duration: 0,
+    });
   };
   placementOpen = (placement: 'bottomLeft' | 'bottomRight' | 'topLeft') => {
     notification.open({
@@ -53,12 +58,10 @@ export default class NotificationDemo extends React.Component<any, any> {
         </Button>
         <br />
         <br />
-        <Button onClick={() => this.placementOpen('bottomLeft')}>
-          自定义方向-bottomLeft
-        </Button>&nbsp;&nbsp;
-        <Button onClick={() => this.placementOpen('bottomRight')}>
-          自定义方向-bottomRight
-        </Button>&nbsp;&nbsp;
+        <Button onClick={() => this.placementOpen('bottomLeft')}>自定义方向-bottomLeft</Button>
+        &nbsp;&nbsp;
+        <Button onClick={() => this.placementOpen('bottomRight')}>自定义方向-bottomRight</Button>
+        &nbsp;&nbsp;
         <Button onClick={() => this.placementOpen('topLeft')}>自定义方向-topLeft</Button>
       </div>
     );

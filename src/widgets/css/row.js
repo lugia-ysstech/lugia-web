@@ -16,6 +16,7 @@ type BaseProps = {
 };
 type ForDesignType = {
   equable?: number,
+  data?: Object[],
 };
 export type RowProps = {
   onMouseEnter?: Function,

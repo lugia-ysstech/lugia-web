@@ -5,8 +5,8 @@
  */
 
 import * as React from 'react';
-
-import { ALink, CommonSpan, SeparatorSpan } from '../css/breadcrumb';
+import ThemeHoc from '@lugia/theme-hoc';
+import { ALink, CommonSpan, SeparatorSpan, ItemWrap, FlexBox } from '../css/breadcrumb';
 
 export type BreadcrumbItemProps = {
   separator?: string | React.Element<any>,
@@ -14,23 +14,45 @@ export type BreadcrumbItemProps = {
   isLastItem?: boolean,
   children: React.Node,
   lastSeparator?: string | React.Element<any>,
+  textThemeHoc: Object,
+  separatorThemeProps: Object,
+  getPartOfThemeProps: Function,
 };
 
-export default class BreadcrumbItem extends React.Component<BreadcrumbItemProps, any> {
+class BreadcrumbItem extends React.Component<BreadcrumbItemProps, any> {
   static defaultProps = {
     separator: '/',
   };
 
   render() {
-    const { separator, children, isLastItem, href } = this.props;
+    const { separator, children, getPartOfThemeProps, isLastItem, href, index, count } = this.props;
     let Link = CommonSpan;
     if ('href' in this.props) {
       Link = ALink;
     }
-    const config = { isLastItem, href };
-    return [
-      <Link {...config}>{children}</Link>,
-      <SeparatorSpan {...config}>{separator}</SeparatorSpan>,
-    ];
+    return (
+      <ItemWrap themeProps={getPartOfThemeProps('ItemWrap', { selector: { index, count } })}>
+        <FlexBox themeProps={getPartOfThemeProps('ItemWrap', { selector: { index, count } })}>
+          <Link
+            href={href}
+            themeProps={getPartOfThemeProps('Text', {
+              selector: { index, count },
+              props: { isLastItem },
+            })}
+          >
+            {children}
+          </Link>
+          <SeparatorSpan
+            themeProps={getPartOfThemeProps('Separator', {
+              selector: { index, count },
+              props: { isLastItem },
+            })}
+          >
+            {separator}
+          </SeparatorSpan>
+        </FlexBox>
+      </ItemWrap>
+    );
   }
 }
+export default ThemeHoc(BreadcrumbItem, 'BreadcrumbItem', { hover: true });

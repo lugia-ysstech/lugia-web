@@ -1,7 +1,7 @@
 /**
- * 下拉菜单
- * by ligx
- * @flow
+ *
+ * create by szfeng
+ *
  */
 import * as React from 'react';
 import styled from 'styled-components';
@@ -11,12 +11,15 @@ import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import '../common/shirm';
 import Input from '../input';
+import DropMenuButton from './dropmenuButton';
 import QueryInput, { QueryInputPadding } from '../common/QueryInputContainer';
 import { DefaultHeight, DefaultWidth, Height, lightGreyColor, MenuItemHeight } from '../css/menu';
 import { adjustValue } from '../utils';
 import { px2emcss } from '../css/units';
 
 const em = px2emcss(1.2);
+
+const alignType = 'topLeft | top | topRight | bottomLeft | bottom | bottomRight';
 
 type DropMenuProps = {
   action: Array<string>,
@@ -28,11 +31,19 @@ type DropMenuProps = {
   getTheme: Function,
   query: string,
   needQueryInput: boolean,
-  align: string,
+  align: alignType,
 };
+
+const getShadow = props => {
+  const { theme } = props;
+  const { boxShadow } = theme;
+
+  const isHasBoxShadow = typeof boxShadow !== undefined;
+  return `box-shadow: ${isHasBoxShadow ? boxShadow : `0 ${em(1)} ${em(6)} ${lightGreyColor}`}`;
+};
+
 const MenuContainer = styled.div`
-  background-color: #fff;
-  box-shadow: 0 ${em(1)} ${em(6)} ${lightGreyColor};
+  padding: 0;
   border-radius: ${em(4)};
   box-sizing: border-box;
 `;
@@ -42,10 +53,10 @@ type DropMenuState = {
 
 class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   static defaultProps = {
-    action: ['click'],
-    hideAction: ['click'],
+    action: 'click',
+    hideAction: 'click',
     needQueryInput: false,
-    align: 'bottomLeft',
+    align: 'bottom',
     getTheme() {
       return {};
     },
@@ -58,11 +69,18 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   constructor(props: DropMenuProps) {
     super(props);
     this.state = { filter: '', visible: false };
+    this.isLeaf = true;
   }
 
   render() {
     const { menus, children, action, hideAction, align } = this.props;
-    const { width = DefaultWidth, height = DefaultHeight } = this.props.getTheme();
+
+    if (!children) {
+      return <DropMenuButton>下拉菜单</DropMenuButton>;
+    }
+
+    const theme = this.props.getTheme();
+    const { width = DefaultWidth, height = DefaultHeight } = theme;
     const offsetY = this.getOffSetY(align);
     const queryInputWidth = width;
     const oldMenuHeight = height - (Height + 2 * QueryInputPadding);
@@ -76,7 +94,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
 
     const popup = [
       this.isNeedQueryInput(),
-      <MenuContainer key="menus">
+      <MenuContainer key="menus" theme={theme}>
         {React.cloneElement(menu, this.ejectOnClick(menu))}
       </MenuContainer>,
     ];
@@ -84,10 +102,13 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
     return (
       <Theme config={menuConfig}>
         <Trigger
+          themePass
           ref={cmp => (this.trigger = cmp)}
           align={align}
           action={action}
           offsetY={offsetY}
+          lazy={false}
+          createPortal
           hideAction={hideAction}
           onPopupVisibleChange={this.onPopupVisibleChange}
           popupVisible={this.state.visible}
@@ -98,22 +119,29 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
       </Theme>
     );
   }
-
+  setPopupVisible(...rest: any[]) {
+    this.trigger && this.trigger.setPopupVisible(...rest);
+  }
   ejectOnClick = (menu: Object): Object => {
     const newChildProps = {};
-
     if (!menu.props.onClick) {
       newChildProps.onClick = this.onMenuClick;
     } else {
       newChildProps.onClick = (...rest) => {
         menu.props.onClick.call(menu, ...rest);
-        this.onMenuClick();
+        this.onMenuClick(...rest);
       };
     }
     return newChildProps;
   };
-  onMenuClick = () => {
-    this.onPopupVisibleChange(false);
+  onMenuClick = (e: Object, keys: string[], items: Object) => {
+    const { children } = items;
+    if (!children || children.length === 0) {
+      this.isLeaf = true;
+      this.onPopupVisibleChange(false);
+    } else {
+      this.isLeaf = false;
+    }
   };
 
   getOffSetY = (align: string) => {
@@ -137,11 +165,20 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
     const { onQuery } = this.props;
     onQuery && onQuery(value);
   };
+
   onPopupVisibleChange = (visible: boolean) => {
     const { onPopupVisibleChange } = this.props;
-    this.setState({ visible });
-    onPopupVisibleChange && onPopupVisibleChange(visible);
+    if (this.isLeaf) {
+      setTimeout(() => {
+        this.setState({ visible });
+      }, 200);
+      onPopupVisibleChange && onPopupVisibleChange(visible);
+    }
   };
 }
 
-export default ThemeProvider(DropMenu, Widget.DropMenu);
+const Result = ThemeProvider(DropMenu, Widget.DropMenu);
+
+Result.Button = DropMenuButton;
+
+export default Result;

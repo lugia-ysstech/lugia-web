@@ -74,10 +74,17 @@ const Wrapper = styled.div`
 const NumberInputDemo = () => {
   const view = {
     [Widget.NumberInput]: {
-      width: 260,
-    },
-    register: {
-      width: 340,
+      Input: { normal: { width: 500, height: 50 } },
+      Container: {
+        normal: {
+          width: 800,
+          height: 40,
+        },
+      },
+      ArrowIconContainer: { normal: { fontSize: 14, width: 40 } },
+      ArrowIcon: {
+        hover: { color: 'blue', fontSize: 30 },
+      },
     },
   };
   const onChange = (cmpName: string) => (value: any) => {};
@@ -90,24 +97,26 @@ const NumberInputDemo = () => {
   return (
     <div>
       <Wrapper>
-        <p>small size</p>
-        <NumberInput size={'small'} placeholder="small NumberInput" />
-        <p>default size</p>
-        <NumberInput placeholder="default NumberInput" />
-        <p>large size</p>
-        <NumberInput size={'large'} placeholder="large NumberInput" />
-        <p>禁用状态 </p>
-        <NumberInput disabled={true} />
-        <p>可控制disabled 的numberInput</p>
-        <DisabledNumberInput />
+        <Theme config={view}>
+          <p>small size</p>
+          <NumberInput size={'small'} placeholder="small NumberInput" max={5} />
+          <p>default size</p>
+          <NumberInput placeholder="default NumberInput" />
+          <p>large size</p>
+          <NumberInput size={'large'} placeholder="large NumberInput" />
+          <p>禁用状态 </p>
+          <NumberInput disabled={true} />
+          <p>可控制disabled 的numberInput</p>
+          <DisabledNumberInput />
+        </Theme>
       </Wrapper>
       <Wrapper>
         <p>max 1 min 0.001 step 0.005 </p>
         <NumberInput max={1} min={0.001} step={0.005} defaultValue="0.05" precision={3} />
         <p>max 10 min 0.01 step 0.05 </p>
         <NumberInput max={10} min={0.01} step={0.05} defaultValue="1" precision={2} />
-        <p>max 100 min 9 step 5 </p>
-        <NumberInput max={100} min={9} step={5} defaultValue="10" precision={1} />
+        <p>max 30 min 9 step 5 </p>
+        <NumberInput max={30} min={9} step={5} defaultValue="10" precision={1} />
         <p>max 100 min -100 step -2 </p>
         <NumberInput max={100} min={-100} step={-2} />
       </Wrapper>
@@ -130,10 +139,10 @@ const NumberInputDemo = () => {
           <NumberInput
             formatter={value => `${value}%`}
             parser={value => value.replace('%', '')}
-            defaultValue={10}
-            max={100}
-            min={5}
-            step={5}
+            defaultValue={50}
+            max={70}
+            min={30}
+            step={10}
           />
         </Wrapper>
       </Theme>

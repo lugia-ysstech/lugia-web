@@ -1,0 +1,102 @@
+{
+  "widgetName": "Table",
+  "title": "表格",
+  "desc": "Table  表格。",
+  "props": {
+    "columns": {
+      "type": "Object[]",
+      "meta": [
+        { "key": "title", "title": "表头文本", "type": "string" },
+        { "key": "key", "title": "对应key", "type": "any" },
+        { "key": "dataIndex", "title": "指定展示项", "type": "any" },
+        { "key": "width", "title": "列宽", "type": "number" }
+      ],
+      "desc": "表格每一行展示的内容"
+    },
+    "data": {
+      "type": "Object[]",
+      "meta": [],
+      "desc": "数据源，指定 table 组件的数据"
+    },
+    "defaultExpandedRowKeys": {
+      "type": "string[]",
+      "desc": "初始展开的行的集合"
+    },
+    "expandedRowKeys": {
+      "type": "string[]",
+      "desc": "展开的行的集合"
+    },
+    "defaultExpandAllRows": {
+      "type": "boolean",
+      "desc": "初始是否展开所有的行"
+    },
+    "expandedRowRender": {
+      "type": "Function(recode, index, indent, expanded):ReactNode",
+      "desc": "额外的展开行"
+    },
+    "useFixedHeader": {
+      "type": "boolean",
+      "desc": "固定 Table 标题，使其固定在最上方"
+    },
+    "footer": {
+      "type": "Function(currentPageData)",
+      "desc": "表格尾部"
+    },
+    "indentSize": {
+      "type": "number",
+      "desc": "展示树形数据时，每层缩进的宽度，以 px 为单位",
+      "defaultValue": 15
+    },
+    "rowKey": {
+      "type": "{ x: number | true, y: number }",
+      "desc": "表格行 key 的取值，可以是字符串或一个函数",
+      "defaultValue": "key"
+    },
+    "showHeader": {
+      "type": "boolean",
+      "desc": "是否展示标头",
+      "defaultValue": true
+    },
+    "title": {
+      "type": "Function(currentPageData)",
+      "desc": "表格标题"
+    },
+    "onHeaderRow": {
+      "type": "Function(column, index)",
+      "desc": "设置头部行属性"
+    },
+    "onRow": {
+      "type": "Function(record, index)",
+      "desc": "设置行属性"
+    }
+  },
+  "event": {
+    "onExpandedRowsChange": {
+      "desc": "展开的行改变时的回调",
+      "args": [
+        {
+          "name": "expandedRows",
+          "desc": "当前展开的行",
+          "type": "string[]"
+        }
+      ]
+    },
+    "onExpand": {
+      "desc": "点击展开图标时触发",
+      "args": [
+        {
+          "name": "expanded",
+          "desc": "当前是否展开",
+          "type": "boolean"
+        },
+        {
+          "name": "record",
+          "desc": "当前行数据",
+          "type": "Object"
+        }
+      ]
+    }
+  },
+  "childrenWidget": ["column"],
+  "category": ["数据展示"]
+}

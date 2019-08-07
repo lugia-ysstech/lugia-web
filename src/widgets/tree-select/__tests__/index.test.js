@@ -22,53 +22,54 @@ Enzyme.configure({ adapter: new Adapter() });
 
 const { expect: exp } = chai;
 const rowData = [
-  { key: '1', title: '1' },
-  { key: '1.1', title: '1.1', pid: '1', path: '1', isLeaf: true },
-  { key: '1.2', title: '1.2', pid: '1', path: '1' },
-  { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', isLeaf: true },
-  { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2' },
-  { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2' },
+  { value: '1', text: '1' },
+  { value: '1.1', text: '1.1', pid: '1', path: '1', isLeaf: true },
+  { value: '1.2', text: '1.2', pid: '1', path: '1' },
+  { value: '1.2.1', text: '1.2.1', pid: '1.2', path: '1/1.2', isLeaf: true },
+  { value: '1.2.2', text: '1.2.2', pid: '1.2', path: '1/1.2' },
+  { value: '1.2.2.1', text: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2' },
   {
-    key: '1.2.2.1.1',
-    title: '1.2.2.1.1',
+    value: '1.2.2.1.1',
+    text: '1.2.2.1.1',
     pid: '1.2.2.1',
     path: '1/1.2/1.2.2/1.2.2.1',
     isLeaf: true,
   },
   {
-    key: '1.2.2.1.2',
-    title: '1.2.2.1.2',
+    value: '1.2.2.1.2',
+    text: '1.2.2.1.2',
     pid: '1.2.2.1',
     path: '1/1.2/1.2.2/1.2.2.1',
     isLeaf: true,
   },
-  { key: '1.2.2.2', title: '1.2.2.2', pid: '1.2.2', path: '1/1.2/1.2.2', isLeaf: true },
+  { value: '1.2.2.2', text: '1.2.2.2', pid: '1.2.2', path: '1/1.2/1.2.2', isLeaf: true },
 
-  { key: '1.3', title: '1.3', pid: '1', path: '1' },
-  { key: '1.3.1', title: '1.3.1', pid: '1.3', path: '1/1.3' },
-  { key: '1.3.1.1', title: '1.3.1.1', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true },
-  { key: '1.3.1.2', title: '1.3.1.2', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true },
-  { key: '1.3.2', title: '1.3.2', pid: '1.3', path: '1/1.3' },
-  { key: '1.3.2.1', title: '1.3.2.1', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true },
-  { key: '1.3.2.2', title: '1.3.2.2', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true },
-  { key: '1.3.3', title: '1.3.3', pid: '1.3', path: '1/1.3', isLeaf: true },
+  { value: '1.3', text: '1.3', pid: '1', path: '1' },
+  { value: '1.3.1', text: '1.3.1', pid: '1.3', path: '1/1.3' },
+  { value: '1.3.1.1', text: '1.3.1.1', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true },
+  { value: '1.3.1.2', text: '1.3.1.2', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true },
+  { value: '1.3.2', text: '1.3.2', pid: '1.3', path: '1/1.3' },
+  { value: '1.3.2.1', text: '1.3.2.1', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true },
+  { value: '1.3.2.2', text: '1.3.2.2', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true },
+  { value: '1.3.3', text: '1.3.3', pid: '1.3', path: '1/1.3', isLeaf: true },
 
-  { key: '2', title: '2' },
-  { key: '2.1', title: '2.1', pid: '2', path: '2' },
-  { key: '2.1.1', title: '2.1.1', pid: '2.1', path: '2/2.1', isLeaf: true },
-  { key: '2.1.2', title: '2.1.2', pid: '2.1', path: '2/2.1' },
-  { key: '2.1.2.1', title: '2.1.2.1', pid: '2.1.2', path: '2/2.1/2.1.2', isLeaf: true },
-  { key: '2.2', title: '2.2', pid: '2', path: '2' },
-  { key: '2.2.1', title: '2.2.1', pid: '2.2', path: '2/2.2' },
-  { key: '2.2.1.1', title: '2.2.1.1', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true },
-  { key: '2.2.1.2', title: '2.2.1.2', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true },
-  { key: '2.2.2', title: '2.2.2', pid: '2.2', path: '2/2.2', isLeaf: true },
+  { value: '2', text: '2' },
+  { value: '2.1', text: '2.1', pid: '2', path: '2' },
+  { value: '2.1.1', text: '2.1.1', pid: '2.1', path: '2/2.1', isLeaf: true },
+  { value: '2.1.2', text: '2.1.2', pid: '2.1', path: '2/2.1' },
+  { value: '2.1.2.1', text: '2.1.2.1', pid: '2.1.2', path: '2/2.1/2.1.2', isLeaf: true },
+  { value: '2.2', text: '2.2', pid: '2', path: '2' },
+  { value: '2.2.1', text: '2.2.1', pid: '2.2', path: '2/2.2' },
+  { value: '2.2.1.1', text: '2.2.1.1', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true },
+  { value: '2.2.1.2', text: '2.2.1.2', pid: '2.2.1', path: '2/2.2/2.2.1', isLeaf: true },
+  { value: '2.2.2', text: '2.2.2', pid: '2.2', path: '2/2.2', isLeaf: true },
 
-  { key: '3', title: '3' },
-  { key: '3.1', title: '3.1', pid: '3', path: '3', isLeaf: true },
-  { key: '3.2', title: '3.2', pid: '3', path: '3', isLeaf: true },
-  { key: '4', title: '4', isLeaf: true },
+  { value: '3', text: '3' },
+  { value: '3.1', text: '3.1', pid: '3', path: '3', isLeaf: true },
+  { value: '3.2', text: '3.2', pid: '3', path: '3', isLeaf: true },
+  { value: '4', text: '4', isLeaf: true },
 ];
+
 const SelectedIcon = 'SelectedIcon';
 
 describe('TreeSelect', () => {
@@ -83,18 +84,21 @@ describe('TreeSelect', () => {
     exp(cmp.find(Trigger).length).to.be.equal(1);
   });
   it('getTheme 获取下拉树各部件的样式信息 并且 配置了组件的样式， 则组件要加上自部件的样式设置', () => {
-    const styleConfig = {
-      width: 500,
-    };
+    const styleConfig = { width: 500 };
     const svThemeConfigTree = { [Widget.TreeSelect]: styleConfig };
     const expResult: Object = {
       [Widget.Tree]: Object.assign(
         {},
         styleConfig,
         { svThemeConfigTree },
-        { height: adjustValue(DefaultHeight, MenuItemHeight) }
+        { height: adjustValue(DefaultHeight, MenuItemHeight) - 2 }
       ),
-      [Widget.Trigger]: Object.assign({}, styleConfig, { svThemeConfigTree }),
+      [Widget.Trigger]: Object.assign(
+        //减去边框2px？
+        {},
+        styleConfig,
+        { svThemeConfigTree }
+      ),
       [Widget.InputTag]: Object.assign({}, styleConfig, { svThemeConfigTree }),
       [Widget.Input]: Object.assign(
         {},
@@ -112,22 +116,21 @@ describe('TreeSelect', () => {
 
     const expResult: Object = {
       [Widget.Tree]: {
-        height: adjustValue(DefaultHeight, MenuItemHeight),
+        height: adjustValue(DefaultHeight, MenuItemHeight) - 2,
         svThemeConfigTree: { [Widget.TreeSelect]: {} },
+        width: 200,
       },
-      [Widget.Trigger]: { svThemeConfigTree: { [Widget.TreeSelect]: {} } },
-      [Widget.InputTag]: { svThemeConfigTree: { [Widget.TreeSelect]: {} } },
-      [Widget.Input]: { svThemeConfigTree: { [Widget.TreeSelect]: {} } },
+      [Widget.Trigger]: { svThemeConfigTree: { [Widget.TreeSelect]: {} }, width: 200 },
+      [Widget.InputTag]: { svThemeConfigTree: { [Widget.TreeSelect]: {} }, width: 200 },
+      [Widget.Input]: { svThemeConfigTree: { [Widget.TreeSelect]: {} }, width: 200 },
       [SelectedIcon]: { color: '#d9d9d9', hoverColor: '#108ee9' },
-    };
+    }; //减去边框2px？
 
     createThemeCase(styleConfig, expResult);
   });
 
   function createThemeCase(styleConfig: Object, expResult: Object) {
-    const config = {
-      [Widget.TreeSelect]: styleConfig,
-    };
+    const config = { [Widget.TreeSelect]: styleConfig };
 
     class TestDemo extends React.Component<any, any> {
       treeSelect: Object;
@@ -172,6 +175,7 @@ describe('TreeSelect', () => {
   it('测试查询功能 remote', async () => {
     const cmp = mount(<TreeSelect canSearch data={rowData} throttle={0} mode="remote" />);
     const firstValue = 'helloworld';
+    showTrigger(cmp);
     changeQuery(cmp, firstValue);
     exp(getTreeQuery(cmp)).to.be.equal('');
     exp(getQueryInputValue(cmp)).to.be.equal(firstValue);
@@ -193,6 +197,7 @@ describe('TreeSelect', () => {
       const txt = '100';
       changeQuery(cmp, txt);
       queryInputEnter(cmp);
+
       mutliple
         ? exp(cmp.find(Widget.InputTagItem).text()).to.be.equal(txt)
         : exp(getInputTagValue(cmp)[0]).to.be.equal(txt);
@@ -271,7 +276,7 @@ describe('TreeSelect', () => {
 
     exp(findSelectAllButton(cmp).props().isCheckedAll).to.be.true;
 
-    const value = rowData.filter((item: Object) => item.isLeaf).map(item => item.key);
+    const value = rowData.filter((item: Object) => item.isLeaf).map(item => item.value);
     checkTreeSelectValue(cmp, value);
   });
 
@@ -285,7 +290,9 @@ describe('TreeSelect', () => {
 
     exp(findSelectAllButton(cmp).props().isCheckedAll).to.be.true;
 
-    const value = rowData.filter((item: Object, index: number) => index < 5).map(item => item.key);
+    const value = rowData
+      .filter((item: Object, index: number) => index < 5)
+      .map(item => item.value);
     checkTreeSelectValue(cmp, value);
   });
 
@@ -301,7 +308,9 @@ describe('TreeSelect', () => {
     queryInputEnter(cmp);
     exp(findSelectAllButton(cmp).props().isCheckedAll).to.be.true;
 
-    const value = rowData.filter((item: Object, index: number) => index < 5).map(item => item.key);
+    const value = rowData
+      .filter((item: Object, index: number) => index < 5)
+      .map(item => item.value);
     checkTreeSelectValue(cmp, value);
   });
 
@@ -327,8 +336,9 @@ describe('TreeSelect', () => {
     exp(findSelectAllButton(cmp).props().isCheckedAll).to.be.true;
     const expValue = rowData
       .filter((item: Object, index: number) => index < 3)
-      .map(item => item.key);
+      .map(item => item.value);
     checkTreeSelectValue(cmp, [...value, ...expValue], limit);
+    cmp.update();
     selctedAll(cmp);
     exp(findSelectAllButton(cmp).props().isCheckedAll).to.be.false;
     checkTreeSelectValue(cmp, value, limit);
@@ -387,7 +397,12 @@ describe('TreeSelect', () => {
     }
 
     onChange = obj => {
-      this.setState(obj);
+      const { newValue, newDisplayValue } = obj;
+      const newObj = {
+        value: newValue,
+        displayValue: newDisplayValue,
+      };
+      this.setState(newObj);
     };
   }
 
@@ -520,7 +535,14 @@ describe('TreeSelect', () => {
     exp(getQueryInputValue(cmp)).to.be.equal('');
     checkTreeSelectValue(cmp, []);
     exp(await refreshResult).to.be.eql(true);
-    exp(await changeReuslt).to.be.eql({ value: [], displayValue: [] });
+    const newObj = {
+      newValue: [],
+      oldValue: ['我么啊啊'],
+      newItem: [],
+      oldItem: [],
+      newDisplayValue: [],
+    };
+    expect(await changeReuslt).toEqual(newObj);
   });
 
   it('非受限 没有值直接刷新 操作', () => {
@@ -587,10 +609,15 @@ describe('TreeSelect', () => {
 
       const result = await changeReuslt;
 
-      exp(result).to.be.eql({
-        value: [],
-        displayValue: [],
-      });
+      const newObj = {
+        newValue: [],
+        oldValue: ['我么啊啊'],
+        newItem: [],
+        oldItem: [],
+        newDisplayValue: [],
+      };
+      expect(result).toEqual(newObj);
+
       checkTreeSelectValue(cmp, [value]);
     });
   });
@@ -630,10 +657,15 @@ describe('TreeSelect', () => {
 
       const result = await changeReuslt;
 
-      exp(result).to.be.eql({
-        value: [],
-        displayValue: [],
-      });
+      const newObj = {
+        newValue: [],
+        oldValue: ['我么啊啊'],
+        newItem: [],
+        oldItem: [],
+        newDisplayValue: [],
+      };
+      expect(result).toEqual(newObj);
+
       checkTreeSelectValue(cmp, [], limit);
     });
   });
@@ -663,10 +695,15 @@ describe('TreeSelect', () => {
     selctedAll(cmp);
     checkTreeSelectValue(cmp, [value]);
     const result = await changeReuslt;
-    exp(result).to.be.eql({
-      value: [value, ...getAllRowDataValue(rowData)],
-      displayValue: [displayValue, ...getAllRowDataDisplayValue(rowData)],
-    });
+
+    const newObj = {
+      newValue: [value, ...getAllRowDataValue(rowData)],
+      oldValue: [value],
+      newItem: [...rowData],
+      oldItem: [],
+      newDisplayValue: [displayValue, ...getAllRowDataDisplayValue(rowData)],
+    };
+    expect(result).toEqual(newObj);
   });
 
   it('受限组件 canInput: true  手工添加项 onChange', async () => {
@@ -696,10 +733,15 @@ describe('TreeSelect', () => {
     queryInputEnter(cmp);
     checkTreeSelectValue(cmp, [value]);
     const result = await changeReuslt;
-    exp(result).to.be.eql({
-      value: [value, txt],
-      displayValue: [displayValue, txt],
-    });
+
+    const newObj = {
+      newValue: [value, txt],
+      oldValue: [value],
+      newItem: [],
+      oldItem: [],
+      newDisplayValue: [displayValue, txt],
+    };
+    expect(result).toEqual(newObj);
   });
 
   it('非受限组件 选择全部  onChange', async () => {
@@ -728,13 +770,18 @@ describe('TreeSelect', () => {
     checkTreeSelectValue(cmp, [value]);
 
     const result = await changeReuslt;
-    exp(result).to.be.eql({
-      value: [value, ...getAllRowDataValue(rowData)],
-      displayValue: [displayValue, ...getAllRowDataDisplayValue(rowData)],
-    });
+
+    const newObj = {
+      newValue: [value, ...getAllRowDataValue(rowData)],
+      oldValue: [value],
+      newItem: [...rowData],
+      oldItem: [],
+      newDisplayValue: [displayValue, ...getAllRowDataDisplayValue(rowData)],
+    };
+    expect(result).toEqual(newObj);
   });
 
-  it('非受限组件 选择全部  onChange', async () => {
+  it('受限组件 选择全部  onChange', async () => {
     let onChange;
     const changeReuslt = new Promise(resolve => {
       onChange = arg => {
@@ -760,20 +807,24 @@ describe('TreeSelect', () => {
     const allValue = [value, ...getAllRowDataValue(rowData)];
 
     checkTreeSelectValue(cmp, allValue);
-
     const result = await changeReuslt;
-    exp(result).to.be.eql({
-      value: allValue,
-      displayValue: [displayValue, ...getAllRowDataDisplayValue(rowData)],
-    });
+
+    const newObj = {
+      newValue: allValue,
+      oldValue: [value],
+      newItem: [...rowData],
+      oldItem: [],
+      newDisplayValue: [displayValue, ...getAllRowDataDisplayValue(rowData)],
+    };
+    expect(result).toEqual(newObj);
   });
 
   function getAllRowDataValue(data) {
-    return data.map(item => item.key);
+    return data.map(item => item.value);
   }
 
   function getAllRowDataDisplayValue(data) {
-    return data.map(item => item.title);
+    return data.map(item => item.text);
   }
 
   it('selectAll limitCount: 5 caninput 先输入再选全部', async () => {
@@ -788,7 +839,9 @@ describe('TreeSelect', () => {
     exp(findSelectAllButton(cmp).props().isCheckedAll).to.be.false;
     selctedAll(cmp);
     exp(findSelectAllButton(cmp).props().isCheckedAll).to.be.true;
-    const value = rowData.filter((item: Object, index: number) => index < 4).map(item => item.key);
+    const value = rowData
+      .filter((item: Object, index: number) => index < 4)
+      .map(item => item.value);
     checkTreeSelectValue(cmp, ['100', ...value]);
   });
 
@@ -796,8 +849,11 @@ describe('TreeSelect', () => {
     let onSelect;
     const selAllPromise = new Promise(res => {
       const result = [];
-      onSelect = v => {
-        result.push(v);
+      onSelect = (value, text) => {
+        const target = {};
+        target.value = value;
+        target.displayValue = text;
+        result.push(target);
         if (result.length === 2) {
           res(result);
         }
@@ -816,27 +872,32 @@ describe('TreeSelect', () => {
 
     showTrigger(cmp);
     cmp
-      .find(Widget.CheckBox)
+      .find(Widget.Checkbox)
       .at(0)
       .simulate('click');
-    const value = rowData.filter((item: Object, index: number) => index < 5).map(item => item.key);
+    const value = rowData
+      .filter((item: Object, index: number) => index < 5)
+      .map(item => item.value);
     const displayValue = rowData
       .filter((item: Object, index: number) => index < 5)
-      .map(item => item.title);
+      .map(item => item.text);
     cmp
-      .find(Widget.CheckBox)
+      .find(Widget.Checkbox)
       .at(0)
       .simulate('click');
     const result = await selAllPromise;
-    exp(result).to.be.eql([{ value, displayValue }, { value: [], displayValue: [] }]);
+    expect(result).toEqual([{ value, displayValue }, { value: [], displayValue: [] }]);
   });
 
   it('单选 选择第一个 onSelect 事件', async () => {
     let onSelect;
     const selAllPromise = new Promise(res => {
       const result = [];
-      onSelect = v => {
-        result.push(v);
+      onSelect = (value, text) => {
+        const target = {};
+        target.value = value;
+        target.displayValue = text;
+        result.push(target);
         if (result.length === 2) {
           res(result);
         }
@@ -858,24 +919,29 @@ describe('TreeSelect', () => {
       .find('titleSpan')
       .at(0)
       .simulate('click');
-    const value = rowData.filter((item: Object, index: number) => index < 1).map(item => item.key);
+    const value = rowData
+      .filter((item: Object, index: number) => index < 1)
+      .map(item => item.value);
     const displayValue = rowData
       .filter((item: Object, index: number) => index < 1)
-      .map(item => item.title);
+      .map(item => item.text);
     cmp
       .find('titleSpan')
       .at(0)
       .simulate('click');
     const result = await selAllPromise;
-    exp(result).to.be.eql([{ value, displayValue }, { value: [''], displayValue: [''] }]);
+    expect(result).toEqual([{ value, displayValue }, { value: [''], displayValue: [''] }]);
   });
 
   it('selectAll onSelect 事件', async () => {
     let onSelect;
     const selAllPromise = new Promise(res => {
       const result = [];
-      onSelect = v => {
-        result.push(v);
+      onSelect = (value, text) => {
+        const target = {};
+        target.value = value;
+        target.displayValue = text;
+        result.push(target);
         if (result.length === 2) {
           res(result);
         }
@@ -894,73 +960,75 @@ describe('TreeSelect', () => {
 
     showTrigger(cmp);
     selctedAll(cmp);
-    const value = rowData.filter((item: Object, index: number) => index < 5).map(item => item.key);
+    const value = rowData
+      .filter((item: Object, index: number) => index < 5)
+      .map(item => item.value);
     const displayValue = rowData
       .filter((item: Object, index: number) => index < 5)
-      .map(item => item.title);
+      .map(item => item.text);
     selctedAll(cmp);
     const result = await selAllPromise;
     const expRes = [{ value, displayValue }, { value: [], displayValue: [] }];
-    exp(result).to.be.eql(expRes);
+    expect(result).toEqual(expRes);
   });
 
   it('没有任何结点可以选择的情况  全选框状态应该是未选中', async () => {
     const rowData = [
-      { key: '1', title: '1' },
-      { key: '2', title: '2' },
-      { key: '3', title: '3' },
-      { key: '4', title: '4' },
-      { key: '5', title: '5' },
-      { key: '6', title: '6' },
-      { key: '7', title: '7' },
-      { key: '8', title: '8' },
-      { key: '9', title: '9' },
-      { key: '10', title: '10' },
-      { key: '11', title: '11' },
-      { key: '12', title: '12' },
-      { key: '13', title: '13' },
-      { key: '14', title: '14' },
-      { key: '15', title: '15' },
-      { key: '16', title: '16' },
-      { key: '17', title: '17' },
-      { key: '18', title: '18' },
-      { key: '19', title: '19' },
-      { key: '20', title: '20' },
-      { key: '21', title: '21' },
-      { key: '22', title: '22' },
-      { key: '23', title: '23' },
-      { key: '24', title: '24' },
-      { key: '25', title: '25' },
-      { key: '26', title: '26' },
-      { key: '27', title: '27' },
-      { key: '28', title: '28' },
-      { key: '29', title: '29' },
-      { key: '30', title: '30' },
-      { key: '31', title: '31' },
-      { key: '32', title: '32' },
-      { key: '33', title: '33' },
-      { key: '34', title: '34' },
-      { key: '35', title: '35' },
-      { key: '36', title: '36' },
-      { key: '37', title: '37' },
-      { key: '38', title: '38' },
-      { key: '39', title: '39' },
-      { key: '40', title: '40' },
-      { key: '41', title: '41' },
-      { key: '42', title: '42' },
-      { key: '43', title: '43' },
-      { key: '44', title: '44' },
-      { key: '45', title: '45' },
-      { key: '46', title: '46' },
-      { key: '47', title: '47' },
-      { key: '48', title: '48' },
-      { key: '49', title: '49' },
-      { key: '50', title: '50' },
-      { key: '51', title: '51' },
-      { key: '52', title: '52' },
-      { key: '53', title: '53' },
-      { key: '54', title: '54' },
-      { key: '55', title: '55' },
+      { value: '1', text: '1' },
+      { value: '2', text: '2' },
+      { value: '3', text: '3' },
+      { value: '4', text: '4' },
+      { value: '5', text: '5' },
+      { value: '6', text: '6' },
+      { value: '7', text: '7' },
+      { value: '8', text: '8' },
+      { value: '9', text: '9' },
+      { value: '10', text: '10' },
+      { value: '11', text: '11' },
+      { value: '12', text: '12' },
+      { value: '13', text: '13' },
+      { value: '14', text: '14' },
+      { value: '15', text: '15' },
+      { value: '16', text: '16' },
+      { value: '17', text: '17' },
+      { value: '18', text: '18' },
+      { value: '19', text: '19' },
+      { value: '20', text: '20' },
+      { value: '21', text: '21' },
+      { value: '22', text: '22' },
+      { value: '23', text: '23' },
+      { value: '24', text: '24' },
+      { value: '25', text: '25' },
+      { value: '26', text: '26' },
+      { value: '27', text: '27' },
+      { value: '28', text: '28' },
+      { value: '29', text: '29' },
+      { value: '30', text: '30' },
+      { value: '31', text: '31' },
+      { value: '32', text: '32' },
+      { value: '33', text: '33' },
+      { value: '34', text: '34' },
+      { value: '35', text: '35' },
+      { value: '36', text: '36' },
+      { value: '37', text: '37' },
+      { value: '38', text: '38' },
+      { value: '39', text: '39' },
+      { value: '40', text: '40' },
+      { value: '41', text: '41' },
+      { value: '42', text: '42' },
+      { value: '43', text: '43' },
+      { value: '44', text: '44' },
+      { value: '45', text: '45' },
+      { value: '46', text: '46' },
+      { value: '47', text: '47' },
+      { value: '48', text: '48' },
+      { value: '49', text: '49' },
+      { value: '50', text: '50' },
+      { value: '51', text: '51' },
+      { value: '52', text: '52' },
+      { value: '53', text: '53' },
+      { value: '54', text: '54' },
+      { value: '55', text: '55' },
     ];
     const cmp = mount(
       <TreeSelect
@@ -986,6 +1054,9 @@ describe('TreeSelect', () => {
     showTrigger(cmp);
     queryInputDown(cmp);
     queryInputShift(cmp);
+    showTrigger(cmp);
+    showTrigger(cmp);
+    cmp.update();
     checkTreeSelectValue(cmp, ['1']);
   });
 
@@ -1014,9 +1085,9 @@ describe('TreeSelect', () => {
     queryInputCtrl(cmp);
     const expectResult = rowData
       .filter(item => {
-        return item.key == '1' || (item.path && item.path.startsWith('1'));
+        return item.value == '1' || (item.path && item.path.startsWith('1'));
       })
-      .map(item => item.key);
+      .map(item => item.value);
     checkTreeSelectValue(cmp, expectResult);
   });
 
@@ -1089,10 +1160,13 @@ describe('TreeSelect', () => {
         expandAll={true}
       />
     );
+
     const old = 'hello';
+    showTrigger(cmp);
     changeQuery(cmp, old);
     showTrigger(cmp);
     showTrigger(cmp);
+    cmp.update();
     exp(await queryEventData).to.be.eql([old, '']);
   });
 

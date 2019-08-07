@@ -9,68 +9,104 @@ import type { ThemeType } from '@lugia/lugia-web';
 import colorsFunc from '../css/stateColor';
 import { ObjectUtils } from '@lugia/type-utils';
 
-const { blackColor, darkGreyColor, superLightColor, defaultColor } = colorsFunc();
+const { blackColor, darkGreyColor, lightGreyColor, defaultColor, themeColor } = colorsFunc();
 const FontSize = 1.2;
 const em = px2emcss(FontSize);
 
-export type shadowType = 'always' | 'hover' | 'never';
-export type CardType = 'simple' | 'avatar' | 'image' | 'combo';
+export type CardType = 'simple' | 'avatar' | 'image' | 'combo' | 'tip';
 export type ImageOrientation = 'horizontal' | 'vertical';
 export type CardProps = {
-  avatar: React.Node,
-  className: string,
+  viewClass: string,
   description: React.Node,
   title: React.Node,
-  operation: React.Node,
   image: React.Node,
   avatar: React.Node,
   content: React.Node,
+  children?: React.Node,
   getTheme: Function,
   getThemeByDisplayName: Function,
   type: CardType,
   imageOrientation: ImageOrientation,
-  shadow: shadowType,
+  themeProps: Object,
+  getPartOfThemeProps: Function,
+  getPartOfThemeHocProps: Function,
+  getPartOfThemeConfig: Function,
 };
 export type CardState = {};
 
-export const getCardContainerSize = (props: Object) => {
+const paddingBottom = 12;
+const paddingTop = 26;
+
+export const getCardContainerSizeNumber = (props: Object) => {
   const { theme, imageOrientation, type } = props;
   const { width, height } = theme;
+
   let theWidth = 0;
   let theHeight = 0;
   if ((width && typeof width === 'number') || (height && typeof height === 'number')) {
-    theWidth = em(width);
-    theHeight = em(height);
-    return `width:${theWidth};height:${theHeight};`;
+    theWidth = width;
+    theHeight = height;
+    return { width: theWidth, height: theHeight };
   }
 
   switch (type) {
     case 'simple':
-      theWidth = em(350);
-      theHeight = em(130);
+      theWidth = 350;
+      theHeight = 130;
       break;
     case 'avatar':
-      theWidth = imageOrientation === 'horizontal' ? em(320) : em(150);
-      theHeight = imageOrientation === 'horizontal' ? em(116) : em(190);
+      theWidth = imageOrientation === 'horizontal' ? 320 : 150;
+      theHeight = imageOrientation === 'horizontal' ? 116 : 190;
       break;
     case 'image':
-      theWidth = imageOrientation === 'horizontal' ? em(320) : em(200);
-      theHeight = imageOrientation === 'horizontal' ? em(112) : em(230);
+      theWidth = imageOrientation === 'horizontal' ? 320 : 200;
+      theHeight = imageOrientation === 'horizontal' ? 112 : 230;
       break;
     case 'combo':
-      theWidth = em(200);
-      theHeight = em(220);
+      theWidth = 200;
+      theHeight = 220;
       break;
     default:
       break;
   }
-  return `width: ${theWidth};height:${theHeight};`;
+  return { width: em(theWidth), height: em(theHeight) };
 };
 
-export const getCardContainerShadow = (props: Object) => {
-  const { shadow } = props;
+export const getCardContainerSize = (props: Object) => {
+  const { imageOrientation, type, width, height } = props;
+
+  let theWidth = 0;
+  let theHeight = 0;
+  if ((width && typeof width === 'number') || (height && typeof height === 'number')) {
+    theWidth = width;
+    theHeight = height;
+  }
+  switch (type) {
+    case 'simple':
+      theWidth = 350;
+      theHeight = 130;
+      break;
+    case 'avatar':
+      theWidth = imageOrientation === 'horizontal' ? 320 : 150;
+      theHeight = imageOrientation === 'horizontal' ? 116 : 190;
+      break;
+    case 'image':
+      theWidth = imageOrientation === 'horizontal' ? 320 : 200;
+      theHeight = imageOrientation === 'horizontal' ? 112 : 230;
+      break;
+    case 'combo':
+      theWidth = 200;
+      theHeight = 220;
+      break;
+    default:
+      break;
+  }
+  return `width: ${em(theWidth)}; height: ${em(theHeight)}`;
+};
+
+export const getCardContainerShadow = () => {
   const boxShadow = `box-shadow: 0 0 ${em(6)} rgba(0, 0, 50,0.1);`;
-  return shadow === 'always' ? `${boxShadow}` : shadow === 'hover' ? `&:hover {${boxShadow}};` : '';
+  return boxShadow;
 };
 export const getImageContainerSize = (props: Object) => {
   const { imageOrientation, size } = props;
@@ -103,29 +139,50 @@ export const getOutContainerDirection = (props: Object) => {
 export const getTitleColor = () => {
   return `color:${blackColor};`;
 };
-export const getDescripitionColor = () => {
+export const getFontWeight = (props: Object) => {
+  const { type } = props;
+  const weight = type === 'tip' ? 700 : 500;
+  return `font-weight:${weight}`;
+};
+export const getDescriptionColor = () => {
   return `color:${darkGreyColor};`;
 };
 export const getCardContainerBorder = () => {
-  return `border:${em(1)} solid ${superLightColor};`;
+  return `border:${em(1)} solid ${lightGreyColor};`;
 };
-export const getCardContainerBackground = () => {
-  return `background: ${defaultColor};`;
+export const getCardContainerBackground = (props: Object) => {
+  const { theme } = props;
+  const { backgroundColor } = theme;
+  const theBackgroundColor = backgroundColor ? backgroundColor : defaultColor;
+  return `background: ${theBackgroundColor};`;
+};
+export const getTipLineBackground = () => {
+  return `background: ${themeColor};`;
 };
 export const getContentTextAlign = (props: Object) => {
   const { type, imageOrientation } = props;
   if (type === 'avatar' && imageOrientation === 'vertical') return 'text-align:center;';
   return `
-  margin-bottom: ${em(14)};
-  margin-top: ${em(18)};`;
+  padding-bottom: ${em(paddingBottom)};
+  padding-top: ${em(paddingTop)};`;
 };
-export const getContentMargin = (props: Object) => {
+
+export const getContentPadding = (props: Object) => {
+  return `padding-left: ${em(getContentPaddingLeft(props))};
+  padding-right: ${em(getContentPaddingLeft(props))};`;
+};
+
+function getContentPaddingLeft(props: Object) {
   const { type, imageOrientation } = props;
-  if ((type === 'avatar' && imageOrientation === 'vertical') || type === 'combo') return '';
-  return `margin-left: ${em(16)}`;
-};
-export const getAvatarMargin = (props: Object) => {
+  return type === 'tip'
+    ? 30
+    : (type === 'avatar' && imageOrientation === 'vertical') || type === 'combo'
+    ? 0
+    : 10;
+}
+
+export const getAvatarPadding = (props: Object) => {
   const { imageOrientation } = props;
   const left = imageOrientation === 'horizontal' ? em(20) : 0;
-  return `margin: ${em(20)}  ${left};`;
+  return `padding: ${em(20)}  ${left};`;
 };

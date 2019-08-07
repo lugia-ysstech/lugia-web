@@ -24,10 +24,7 @@ describe('BackTop', () => {
   });
   it('BackTop needFixed ', () => {
     const target = mount(<BackTop />);
-    const backTopElement = target
-      .children()
-      .at(0)
-      .instance();
+    const backTopElement = target.find('BackTop').instance();
 
     expect(backTopElement.needFixed(100, 50)).toBe(true);
     expect(backTopElement.needFixed(50, 100)).toBe(false);

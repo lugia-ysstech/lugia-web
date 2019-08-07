@@ -4,16 +4,16 @@
  * @flow
  */
 import colorsFunc from '../css/stateColor';
-import styled, { keyframes } from 'styled-components';
-import { px2emcss } from '../css/units';
+import styled, { css, keyframes } from 'styled-components';
+import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
+import { px2remcss } from '../css/units';
 import changeColor from '../css/utilsColor';
-import { getMargin } from './collapse';
-import Icon from '../icon';
 import type { ThemeType } from '@lugia/lugia-web';
 
 const FontSize = 1.4;
-const em = px2emcss(FontSize);
 const defaultColor = '#fff';
+const { themeColor } = colorsFunc();
+const hoverColor = changeColor(themeColor, 0, 0, 10).rgba;
 
 type BasicPropsType = {
   disabled?: boolean,
@@ -21,248 +21,263 @@ type BasicPropsType = {
   showArrow?: boolean,
 };
 type BasicStateType = {
-  open: boolean,
+  open: ?boolean,
   opening: boolean,
   closing: boolean,
   height: number,
   hover: boolean,
-  headerHeight: number,
 };
 export type PanelProps = {
-  header?: string | any,
+  title?: string | any,
   value?: string,
   children?: any,
   getTheme: Function,
   onClick?: Function,
+  dispatchEvent: Function,
+  getPartOfThemeProps: Function,
+  getPartOfThemeHocProps: Function,
+  themeProps: Object,
 } & BasicPropsType;
 export type PanelState = BasicStateType;
 type CSSProps = {
   theme: ThemeType,
+  hasChildren?: boolean,
 } & BasicPropsType &
   BasicStateType;
 
 const { darkGreyColor, blackColor, lightGreyColor } = colorsFunc();
 
-export const getThemeWidthCSS = (props: CSSProps) => {
-  const { width } = props.theme;
-  if (width) {
-    return `
-      width: ${em(width)};
-    `;
-  }
-};
-const getThemeBackgroundColorCSS = (props: CSSProps): string => {
-  const { backgroundColor } = props.theme;
-  if (backgroundColor) {
-    return `
-      background: ${backgroundColor};
-    `;
-  }
-
-  return `
-      background: ${defaultColor};
-    `;
-};
-const getThemeBorderWidthCSS = (props: CSSProps): string => {
-  const { borderSize, borderColor } = props.theme;
-  const bdColor = borderColor || '#e8e8e8';
-
-  if (typeof borderSize === 'number') {
-    return `
-      border-width: ${em(borderSize)};
-      border-color: ${bdColor};
-      border-style: solid;
-    `;
-  }
-  if (typeof borderSize === 'object') {
-    const { top = 0, right = 0, bottom = 0, left = 0 } = borderSize;
-
-    return `
-      border-width: ${em(top)} ${em(right)} ${em(bottom)} ${em(left)};
-      border-color: ${bdColor};
-      border-style: solid;
-    `;
-  }
-  return `
-    border-color: ${bdColor};
+export const PanelWrap = StaticComponent({
+  tag: 'div',
+  className: 'PanelWrap',
+  css: css`
+    box-sizing: border-box;
+    background: ${defaultColor};
+    border-color: #e8e8e8;
     border-style: solid;
-    border-width: 0 0 1px 0;
-  `;
-};
-const getBoxShadow = (props: CSSProps) => {
-  const { hover, opening } = props;
-  if (opening) {
-    return '';
-  }
-  const { backgroundColor, borderSize } = props.theme;
-  const color = backgroundColor || defaultColor;
-  const shadowColor = changeColor(color, 0, 30, 20).rgba;
-  if (hover && borderSize) {
-    if ((typeof borderSize === 'number' && borderSize === 0) || !borderSize.bottom) {
-      return `
-      box-shadow: 0px 0px 6px ${shadowColor};
-    `;
-    }
-  }
-};
-export const PanelWrap = styled.div`
-  box-sizing: border-box;
-  ${getThemeBorderWidthCSS} ${getThemeBackgroundColorCSS};
-`;
+    border-width: 0 0 1px;
+  `,
+});
 
-const getColorCSS = (props: CSSProps): string => {
-  const { disabled, theme } = props;
-  const color = theme.color || blackColor;
-  if (disabled) {
-    return `
-      color: ${lightGreyColor};
-    `;
-  }
+export const PanelHeader = CSSComponent({
+  tag: 'div',
+  className: 'PanelHeader',
+  css: css`
+    box-sizing: border-box;
+    position: relative;
+    font-size: ${FontSize}rem;
+    cursor: ${(props: CSSProps) => (props.disabled ? 'not-allowed' : 'pointer')};
+    line-height: 1;
+    user-select: none;
+    transition: all 0.3s;
+  `,
+  normal: {
+    defaultTheme: {
+      opacity: 1,
+      color: blackColor,
+    },
+    selectNames: [
+      ['opacity'],
+      ['border'],
+      ['borderRadius'],
+      ['boxShadow'],
+      ['padding'],
+      ['width'],
+      ['height'],
+      ['background'],
+    ],
+    getThemeMeta(themeMeta, themeProps) {
+      const { propsConfig = {} } = themeProps;
+      const { showArrow } = propsConfig;
+      const padding = { top: 16, right: 0, bottom: 16, left: showArrow ? 30 : 20 };
 
-  return `
-      color: ${color};
-    `;
-};
-const getHeaderPadding = (props: CSSProps): string => {
-  const { showArrow } = props;
-  if (showArrow) {
-    return `
-      padding: ${em(16)} 0 ${em(16)} ${em(30)};
-    `;
-  }
-  return `
-    padding: ${em(16)} 0 ${em(16)} ${em(20)};
-  `;
-};
+      return { padding };
+    },
+  },
+  hover: {
+    selectNames: [['borderRadius'], ['background'], ['opacity'], ['border'], ['boxShadow']],
+    defaultTheme: {
+      background: { color: hoverColor },
+    },
+    getCSS(themeMeta, themeProps) {
+      const { propsConfig = {}, themeConfig = {} } = themeProps;
+      const { hover } = propsConfig;
+      const { width } = themeMeta;
+      const { normal = {} } = themeConfig;
+      const theWidth = width || normal.width;
+      let widthStyle;
+      if (hover) {
+        if (theWidth) {
+          if (typeof theWidth === 'number') {
+            widthStyle = px2remcss(theWidth + 24);
+          } else {
+            widthStyle = `calc(${theWidth} + 24px)`;
+          }
+        } else {
+          widthStyle = 'calc(100% + 24px)';
+        }
 
-export const PanelHeader = styled.div`
-  box-sizing: border-box;
-  position: relative;
-  ${getHeaderPadding};
-  font-size: ${FontSize}rem;
-  cursor: ${(props: CSSProps) => (props.disabled ? 'not-allowed' : 'pointer')};
-  line-height: ${em(22)};
-  user-select: none;
-  ${getColorCSS};
-`;
+        return `width: ${widthStyle} !important;transform: translateX(-24px);`;
+      }
+    },
+  },
+  disabled: {
+    selectNames: [['borderRadius'], ['background'], ['opacity'], ['border'], ['boxShadow']],
+  },
+});
+export const PanelHeaderText = CSSComponent({
+  tag: 'span',
+  className: 'PanelHeaderText',
+  normal: {
+    defaultTheme: {
+      font: { size: 14 },
+      color: blackColor,
+    },
+    selectNames: [['font'], ['color']],
+  },
+  hover: {
+    defaultTheme: {
+      color: blackColor,
+    },
+    selectNames: [['color']],
+    getCSS(themeMeta, themeProps) {
+      const { propsConfig = {} } = themeProps;
+      const { showArrow } = propsConfig;
+      if (!showArrow) {
+        return `padding: 0 0 0 ${px2remcss(10)};`;
+      }
+
+      return '';
+    },
+  },
+  disabled: {
+    defaultTheme: {
+      color: lightGreyColor,
+    },
+    selectNames: [['color']],
+  },
+});
 const getPanelContent = (props: CSSProps): string => {
-  const { open, opening, closing, headerHeight = 0 } = props;
-  let { height } = props;
-  height = height + headerHeight;
+  const { open, opening, closing, height: propsHeight } = props;
+  const theHeight = propsHeight;
+  const openHeight = '100%';
   const OpenKeyframe = keyframes`
-  from { height: ${em(headerHeight)}; }
-  to { height: ${height}px; }
-`;
+    from {
+      height: ${px2remcss(0)};
+    }
+    to {
+      height: ${theHeight}px;
+    }
+  `;
   const CloseKeyframe = keyframes`
-  from { height: ${height}px; }
-  to { height: ${em(headerHeight)}; }
-`;
+    from {
+      height: ${theHeight}px;
+    }
+    to {
+      height: ${px2remcss(0)};
+    }
+  `;
   if (opening) {
-    return `
-     height: ${height}px;
-     animation:${OpenKeyframe} .5s;
-     `;
+    return css`
+      height: ${theHeight}px;
+      animation: ${OpenKeyframe} 0.5s;
+    `;
   }
   if (closing) {
-    return `
-     height: ${height}px;
-     animation:${CloseKeyframe} .5s;
-     `;
+    return css`
+      height: ${theHeight}px;
+      animation: ${CloseKeyframe} 0.5s;
+    `;
   }
   if (open) {
     return `
-     height: ${height !== null && height !== undefined ? height + 'px' : '100%'};`;
+     height: ${openHeight};`;
   }
   return `
-    height: ${em(headerHeight)};
-`;
-};
-const getContenColor = (props: CSSProps): string => {
-  const { disabled, theme } = props;
-  const backgroundColor = theme.backgroundColor || defaultColor;
-  if (disabled) {
-    return `
-      color: ${lightGreyColor};
-      background: ${backgroundColor};
-    `;
-  }
-
-  return `
-      color: ${darkGreyColor};
-      background: ${backgroundColor};
-    `;
-};
-const getContentPadding = (props: CSSProps): string => {
-  const { showArrow, hover } = props;
-  if (showArrow) {
-    return `
-     padding: ${em(6)} ${em(30)} ${em(22)} ${em(34)};
-    `;
-  }
-
-  return `
-    padding: ${em(6)} ${em(30)} ${em(22)} ${em(24)};
+    height: ${px2remcss(0)};
   `;
 };
-export const PanelContentWrap = styled.div`
-  box-sizing: border-box;
-  overflow: hidden;
-  ${getPanelContent};
-  ${getContenColor};
-`;
 
-export const PanelContent = styled.div`
-  box-sizing: border-box;
-  font-weight: 300;
-  ${getContentPadding};
-`;
+export const PanelContentWrap = CSSComponent({
+  tag: 'div',
+  className: 'PanelContentWrap',
+  css: css`
+    box-sizing: border-box;
+    overflow: hidden;
+    ${getPanelContent};
+  `,
+});
 
-const getIconTransform = (props: CSSProps) => {
+export const PanelContent = CSSComponent({
+  tag: 'div',
+  className: 'PanelContent',
+  css: css`
+    box-sizing: border-box;
+    line-height: 1.5;
+  `,
+  normal: {
+    defaultTheme: {
+      font: { size: 14, weight: 300 },
+      color: darkGreyColor,
+      background: { color: defaultColor },
+    },
+    selectNames: [['width'], ['height'], ['background'], ['padding'], ['font'], ['color']],
+    getThemeMeta(themeMeta, themeProps) {
+      const { propsConfig = {} } = themeProps;
+      const { showArrow, hasChildren } = propsConfig;
+      if (!hasChildren) {
+        return {};
+      }
+
+      return {
+        padding: {
+          top: 6,
+          right: 30,
+          bottom: 22,
+          left: showArrow ? 34 : 24,
+        },
+      };
+    },
+  },
+  hover: {
+    selectNames: [['color'], ['background']],
+  },
+  disabled: {
+    selectNames: [['color'], ['background']],
+  },
+});
+
+export const getIconTransform = (props: Object) => {
   const { opening, open, closing } = props;
   if (opening) {
     return `
       transition: transform 0.3s;
-      transform: rotate(90deg);
+      transform: translateY(-50%) rotate(90deg);
     `;
   }
   if (closing) {
     return `
       transition: transform 0.3s;
-      transform: rotate(0deg);
+      transform: translateY(-50%) rotate(0deg);
     `;
   }
   if (open) {
     return `
-      transform: rotate(90deg)
+      transform: translateY(-50%) rotate(90deg)
     `;
   }
+
+  return 'transform: translateY(-50%);';
 };
 
-export const IconWrap = styled(Icon)`
-  font-size: ${FontSize}rem;
-  display: inline-block;
-  position: absolute;
-  top: ${em(18)};
-  left: ${em(10)};
-  ${getIconTransform};
-`;
-
-export const HoverIconWrap = styled.div`
-  box-sizing: border-box;
-  transition: left 0.3s;
-  opacity: ${(props: CSSProps) => (props.hover ? '1' : '0')};
-  width: ${em(14)};
-  ${getPanelContent};
-  position: absolute;
-  top: 0;
-  left: ${(props: CSSProps) => (props.hover ? em(-10.5) : 0)};
-  ${getThemeBackgroundColorCSS};
-`;
-export const Wrap = styled.div`
-  transition: all 0.2s;
-  font-size: ${FontSize}rem;
-  padding-left: ${em(12)};
-  ${getMargin}
-  ${getThemeWidthCSS}
-  ${getBoxShadow}
-`;
+export const Wrap = CSSComponent({
+  tag: 'div',
+  className: 'WrapPanel',
+  css: css`
+    transition: all 0.2s;
+    font-size: ${FontSize}rem;
+  `,
+  normal: {
+    selectNames: [['width']],
+  },
+});

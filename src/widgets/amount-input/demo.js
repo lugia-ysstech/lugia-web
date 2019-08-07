@@ -37,11 +37,38 @@ const Wrapper = styled.div`
 export default () => {
   const view = {
     [Widget.AmountInput]: {
-      width: 350,
-      margin: 10,
-    },
-    register: {
-      width: 100,
+      InnerInput: {
+        Input: {
+          normal: {
+            opacity: 0.8,
+          },
+        },
+        Container: {
+          normal: {
+            width: 300,
+            height: 30,
+            border: {
+              top: 10,
+            },
+          },
+        },
+      },
+      AmountInputPrefix: { normal: { fontSize: 14, color: 'blue' } },
+      AmountTip: {
+        Container: {
+          normal: {
+            background: {
+              color: '#eee',
+            },
+          },
+        },
+        TooltipTitle: {
+          normal: {
+            color: '#4d63ff',
+            fontSize: 16,
+          },
+        },
+      },
     },
   };
   const onChange = (cmpName: string) => (value: any) => {};
@@ -62,7 +89,7 @@ export default () => {
           <p>default size</p>
           <AmountInput placeholder={'请填写金额'} />
           <p>large size</p>
-          <AmountInput size={'large'} placeholder={'请填写金额'} />
+          <AmountInput size={'large'} placeholder={'请填写金额'} disabled={true} />
         </Theme>
       </Wrapper>
       <Wrapper>

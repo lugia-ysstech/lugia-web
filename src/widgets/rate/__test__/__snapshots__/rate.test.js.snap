@@ -1,0 +1,297 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rate Test css 1`] = `
+.c3 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.c4 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  vertical-align: text-bottom !important;
+  color: #e8e8e8;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.c0 {
+  position: relative;
+  min-height: 20px;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.c1 {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.c2 {
+  margin-right: 6px;
+  position: relative;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+  margin-left: 0rem;
+  margin-right: 0.6rem;
+}
+
+.c2 > i.bottom {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.c2 > i {
+  vertical-align: text-bottom !important;
+}
+
+.c2:last-child {
+  margin: 0 !important;
+}
+
+<div
+  className="c0"
+  onMouseLeave={[Function]}
+>
+  <div
+    className="c1"
+  >
+    <span
+      className="c2"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseMove={[Function]}
+      style={Object {}}
+    >
+      <i
+        className="lugia-icon-financial_star default  hoverd DefaultRateIcon iconCharacter    c3"
+        disabled={false}
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "#e8e8e8",
+            "marginBottom": "0rem",
+            "marginLeft": "0rem",
+            "marginRight": "0rem",
+            "marginTop": "0rem",
+          }
+        }
+      />
+      <i
+        className="lugia-icon-financial_star DefaultRateIcon  default iconCharacter    c4"
+        disabled={false}
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "#e8e8e8",
+            "marginBottom": "0rem",
+            "marginLeft": "0rem",
+            "marginRight": "0rem",
+            "marginTop": "0rem",
+          }
+        }
+      />
+    </span>
+    <span
+      className="c2"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseMove={[Function]}
+      style={Object {}}
+    >
+      <i
+        className="lugia-icon-financial_star default  hoverd DefaultRateIcon iconCharacter    c3"
+        disabled={false}
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "#e8e8e8",
+            "marginBottom": "0rem",
+            "marginLeft": "0rem",
+            "marginRight": "0rem",
+            "marginTop": "0rem",
+          }
+        }
+      />
+      <i
+        className="lugia-icon-financial_star DefaultRateIcon  default iconCharacter    c4"
+        disabled={false}
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "#e8e8e8",
+            "marginBottom": "0rem",
+            "marginLeft": "0rem",
+            "marginRight": "0rem",
+            "marginTop": "0rem",
+          }
+        }
+      />
+    </span>
+    <span
+      className="c2"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseMove={[Function]}
+      style={Object {}}
+    >
+      <i
+        className="lugia-icon-financial_star default  hoverd DefaultRateIcon iconCharacter    c3"
+        disabled={false}
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "#e8e8e8",
+            "marginBottom": "0rem",
+            "marginLeft": "0rem",
+            "marginRight": "0rem",
+            "marginTop": "0rem",
+          }
+        }
+      />
+      <i
+        className="lugia-icon-financial_star DefaultRateIcon  default iconCharacter    c4"
+        disabled={false}
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "#e8e8e8",
+            "marginBottom": "0rem",
+            "marginLeft": "0rem",
+            "marginRight": "0rem",
+            "marginTop": "0rem",
+          }
+        }
+      />
+    </span>
+    <span
+      className="c2"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseMove={[Function]}
+      style={Object {}}
+    >
+      <i
+        className="lugia-icon-financial_star default  hoverd DefaultRateIcon iconCharacter    c3"
+        disabled={false}
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "#e8e8e8",
+            "marginBottom": "0rem",
+            "marginLeft": "0rem",
+            "marginRight": "0rem",
+            "marginTop": "0rem",
+          }
+        }
+      />
+      <i
+        className="lugia-icon-financial_star DefaultRateIcon  default iconCharacter    c4"
+        disabled={false}
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "#e8e8e8",
+            "marginBottom": "0rem",
+            "marginLeft": "0rem",
+            "marginRight": "0rem",
+            "marginTop": "0rem",
+          }
+        }
+      />
+    </span>
+    <span
+      className="c2"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseMove={[Function]}
+      style={Object {}}
+    >
+      <i
+        className="lugia-icon-financial_star default  hoverd DefaultRateIcon iconCharacter    c3"
+        disabled={false}
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "#e8e8e8",
+            "marginBottom": "0rem",
+            "marginLeft": "0rem",
+            "marginRight": "0rem",
+            "marginTop": "0rem",
+          }
+        }
+      />
+      <i
+        className="lugia-icon-financial_star DefaultRateIcon  default iconCharacter    c4"
+        disabled={false}
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "#e8e8e8",
+            "marginBottom": "0rem",
+            "marginLeft": "0rem",
+            "marginRight": "0rem",
+            "marginTop": "0rem",
+          }
+        }
+      />
+    </span>
+  </div>
+</div>
+`;

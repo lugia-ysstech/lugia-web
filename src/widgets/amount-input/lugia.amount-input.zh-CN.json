@@ -1,0 +1,202 @@
+{
+  "widgetName": "AmountInput",
+  "title": "金额输入框",
+  "desc": "用于金额数字的填写,可切换人民币大小写显示效果.",
+  "props": {
+    "disabled": {
+      "type": "boolean",
+      "desc": "禁用状态,是否不可用",
+      "defaultValue": false
+    },
+    "transform": {
+      "type": "boolean",
+      "desc": "是否开启转换,仅在amountPrefix='¥'时生效",
+      "defaultValue": true
+    },
+    "viewClass": {
+      "type": "string",
+      "desc": "用于配置主题属性"
+    },
+    "size": {
+      "type": "InputSize",
+      "desc": "可配置三种尺寸大小的input ('large' , 'default' , 'small'),高度分别为 40px、32px 和 24px。",
+      "defaultValue": "default"
+    },
+    "placeholder": {
+      "type": "string",
+      "desc": "input输入提示信息"
+    },
+    "amountPrefix": {
+      "type": "PrefixType",
+      "desc": "货币种类,默认'¥'",
+      "defaultValue": "¥"
+    },
+    "defaultValue": {
+      "type": "string",
+      "desc": "默认显示内容"
+    },
+    "value": {
+      "type": "string",
+      "desc": "显示内容"
+    }
+  },
+  "events": {
+    "onChange": {
+      "desc": "内容改变时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "改变内容的DOM事件",
+          "type": "ChangeType"
+        }
+      ]
+    },
+    "onKeyUp": {
+      "desc": "键盘按下去并松开后执行",
+      "args": [
+        {
+          "name": "event",
+          "desc": "改变键盘输入的内容",
+          "type": "KeyboardEvent"
+        }
+      ]
+    },
+    "onKeyDown": {
+      "desc": "键盘按下任何键时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "改变键盘输入的内容",
+          "type": "KeyboardEvent"
+        }
+      ]
+    },
+    "onKeyPress": {
+      "desc": "键盘按下任何键时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "改变键盘输入的内容",
+          "type": "KeyboardEvent"
+        }
+      ]
+    },
+    "onFocus": {
+      "desc": "输入框获得焦点时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "获取焦点的DOM事件",
+          "type": "FocusEvent"
+        }
+      ]
+    },
+    "onBlur": {
+      "desc": "输入框失去焦点时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "失去焦点的DOM事件",
+          "type": "FocusEvent"
+        }
+      ]
+    },
+    "onEnter": {
+      "desc": "当键入回车时触发事件",
+      "args": [
+        {
+          "name": "event",
+          "desc": "当键入回车时触发",
+          "type": "KeyboardEvent"
+        }
+      ]
+    }
+  },
+  "type": {
+    "InputSize": ["small", "default", "large"],
+    "PrefixType": ["¥", "$"],
+    "ChangeType": {
+      "newValue": "string",
+      "oldValue": "string",
+      "event": "SyntheticEvent"
+    }
+  },
+  "category": ["数据录入"],
+  "theme": {
+    "InnerInput": {
+      "name": "金额输入框",
+      "theme": {
+        "Container": {
+          "name": "输入框外部容器",
+          "desc": "输入框外部容器",
+          "normal": [["width"], ["height"], ["margin"], ["padding"]]
+        },
+        "Input": {
+          "name": "金额输入框中输入框部分",
+          "desc": "金额输入框中输入框部分",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["fontSize"],
+            ["font"],
+            ["color"],
+            ["background"],
+            ["border"],
+            ["borderRadius"],
+            ["cursor"],
+            ["opacity"]
+          ],
+          "hover": [
+            ["border"],
+            ["borderRadius"],
+            ["cursor"],
+            ["background"],
+            ["opacity"],
+            ["boxShadow"]
+          ],
+          "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"], ["background"]],
+          "disabled": [
+            ["fontSize"],
+            ["font"],
+            ["color"],
+            ["background"],
+            ["border"],
+            ["borderRadius"],
+            ["cursor"],
+            ["padding"],
+            ["opacity"]
+          ]
+        }
+      }
+    },
+    "AmountInputPrefix": {
+      "name": "金额输入框主体前缀",
+      "desc": "金额输入框主体前缀",
+      "normal": [["fontSize"], ["font"], ["color"]],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
+    },
+    "AmountTip": {
+      "name": "金额切换提示",
+      "theme": {
+        "Container": {
+          "name": "输入框提示框外框部分",
+          "desc": "输入框提示框外框部分",
+          "normal": [["opacity"], ["background"], ["width"], ["height"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
+        },
+        "TooltipTitle": {
+          "name": "金额输入框提示信息文字部分",
+          "desc": "金额输入框提示信息文字部分",
+          "normal": [["fontSize"], ["font"], ["color"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
+        }
+      }
+    }
+  }
+}

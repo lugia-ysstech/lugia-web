@@ -17,6 +17,7 @@ describe('Math', () => {
   it('limit', () => {
     expect(limit(5, [1, 3])).toEqual(3);
     expect(limit(5, [5, 5])).toEqual(5);
+    expect(limit(-1, [1, 5])).toEqual(1);
   });
 
   it('limitToSet', () => {

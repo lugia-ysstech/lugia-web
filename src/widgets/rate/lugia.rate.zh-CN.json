@@ -1,0 +1,185 @@
+{
+  "widgetName": "Rate",
+  "title": "评分",
+  "desc": "评分组件",
+  "props": {
+    "count": {
+      "type": "number",
+      "desc": "展示的 star 总数",
+      "defaultValue": 5
+    },
+    "max": {
+      "type": "number",
+      "desc": "最大分值",
+      "defaultValue": 5
+    },
+    "disabled": {
+      "type": "boolean",
+      "desc": "禁用状态,不可进行交互",
+      "defaultValue": false
+    },
+    "allowHalf": {
+      "type": "boolean",
+      "desc": "是否允许半选",
+      "defaultValue": false
+    },
+    "classify": {
+      "type": "boolean",
+      "desc": "是否区分颜色",
+      "defaultValue": false
+    },
+    "iconClass": {
+      "type": "object[]",
+      "desc": "自定义图标对象",
+      "meta":[
+        {"key":"default","title":"默认图标名称","type":"string"},
+        {"key":"primary","title":"选中状态图标名称","type":"string"},
+        {"key":"danger","title":"低分值图标名称","type":"string"},
+        {"key":"amazed","title":"高分值图标名称","type":"string"},
+        {"key":"half","title":"半星图标名称","type":"string"}
+      ],
+      "defaultValue": {
+        "default": "lugia-icon-financial_star",
+        "primary": "lugia-icon-financial_star",
+        "danger": "lugia-icon-financial_star",
+        "amazed": "lugia-icon-financial_star",
+        "half": "lugia-icon-finacial_half_star"
+      }
+    },
+    "value": {
+      "type": "number",
+      "desc": "当前分值",
+      "defaultValue": 0
+    },
+    "character": {
+      "type": "string | React$Element<any>",
+      "desc": "自定义展示字符"
+    }
+  },
+  "events": {
+    "onClick": {
+      "desc": "点击时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "点击的DOM事件",
+          "type": "DOM 事件"
+        },
+        {
+          "name": "result",
+          "desc": "点击后的所选值",
+          "type": "Object"
+        }
+      ]
+    },
+    "onChange": {
+      "desc": "分值改变时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "鼠标移动的DOM事件",
+          "type": "DOM 事件"
+        },
+        {
+          "name": "result",
+          "desc": "鼠标移动时的所选值",
+          "type": "Object"
+        }
+      ]
+    }
+  },
+  "category": ["数据录入"],
+  "designInfo": {
+    "ClassifyRate": {
+      "sequence": 1,
+      "title": "分级图标评分",
+      "desc": "按分值等级展示不同图标样式和颜色",
+      "props": {
+        "classify": true,
+        "iconClass": {
+          "default": "lugia-icon-financial_meh",
+          "danger": "lugia-icon-financial_sad",
+          "amazed": "lugia-icon-financial_smile"
+        }
+      },
+      "theme": {
+        "ActiveIcon": {
+          "name": "选中状态的图标",
+          "desc": "选中的星星的样式",
+          "normal": [["color"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
+        },
+        "DefaultRateIcon": {
+          "name": "默认状态的图标",
+          "desc": "默认的星星的样式",
+          "normal": [["color"],["margin"], ["fontSize"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
+        },
+        "DangerIcon": {
+          "name": "低分值样式",
+          "desc": "选中的图标数少于一半时的样式配置",
+          "normal": [["color"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
+        },
+        "AmazedIcon": {
+          "name": "高分值样式",
+          "desc": "选中的图标数超过一半时的样式配置",
+          "normal": [["color"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
+        }
+      }
+    },
+    "TextRate": {
+      "sequence": 2,
+      "title": "文字评分",
+      "desc": "按分值等级展示不同图标样式和颜色",
+      "props": {
+        "character": "好"
+      },
+      "theme": {
+        "ActiveTextIcon": {
+          "name": "选中状态的文字",
+          "desc": "选中的文字的样式配置",
+          "normal": [["color"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
+        },
+        "DefaultTextIcon": {
+          "name": "默认状态的文字的",
+          "desc": "默认的文字的样式配置",
+          "normal": [["color"], ["margin"], ["fontSize"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
+        }
+      }
+    }
+  },
+  "theme": {
+    "ActiveIcon": {
+      "name": "选中状态的图标",
+      "desc": "选中的星星的样式",
+      "normal": [["color"]],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
+    },
+    "DefaultRateIcon": {
+      "name": "默认状态的图标",
+      "desc": "默认的星星的样式",
+      "normal": [["color"], ["margin"], ["fontSize"]],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
+    }
+  }
+}

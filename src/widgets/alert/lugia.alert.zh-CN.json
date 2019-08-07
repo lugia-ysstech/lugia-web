@@ -1,0 +1,101 @@
+{
+  "widgetName": "Alert",
+  "title": "警告提示",
+  "desc": "警告提示信息。",
+  "props": {
+    "type": {
+      "type": "AlertType",
+      "desc": "指定警告提示的样式，有四种可以选择：success、error、info、warning",
+      "defaultValue": 0
+    },
+    "message": {
+      "type": "React.node",
+      "desc": "警告提示内容"
+    },
+    "showIcon": {
+      "type": "boolean",
+      "desc": "是否展示图标",
+      "defaultValue": false
+    },
+    "closeText": {
+      "type": "React.node",
+      "desc": "自定义关闭按钮"
+    },
+    "closable": {
+      "type": "boolean",
+      "desc": "是否显示关闭按钮",
+      "defaultValue": false
+    },
+    "description": {
+      "type": "React.node",
+      "desc": "提示内容的辅助性文字介绍"
+    },
+    "icon": {
+      "type": "string",
+      "desc": "自定义图标，showIcon 为 true 时有效"
+    }
+  },
+  "events": {
+    "onClose": {
+      "desc": "关闭时触发的回调函数",
+      "args": [
+        {
+          "name": "event",
+          "desc": "关闭时的DOM事件",
+          "type": "Object"
+        }
+      ]
+    }
+  },
+  "type": {
+    "AlertType": ["info", "success", "error", "warning"],
+    "AlertStyle": {
+      "width": {
+        "type": "number",
+        "desc": "组件宽度"
+      },
+      "color": {
+        "type": "string",
+        "desc": "组件颜色"
+      }
+    }
+  },
+  "category": ["反馈"],
+  "theme": {
+    "Container": {
+      "name": "警告提示整体样式",
+      "desc": "为警告提示配置整体样式",
+      "normal": [
+        ["opacity"],
+        ["margin"],
+        ["padding"],
+        ["width"],
+        ["height"],
+        ["background"],
+        ["border", "left"],
+        ["borderRadius"],
+        ["boxShadow"]
+      ]
+    },
+    "AlertMessage": {
+      "name": "警告提示内容样式",
+      "desc": "为警告提示内容配置样式",
+      "normal": [["color"], ["font"]]
+    },
+    "AlertDescription": {
+      "name": "警告提示辅助性文字样式",
+      "desc": "为警告提示辅助性文字配置样式",
+      "normal": [["color"], ["font"], ["padding"]]
+    },
+    "CloseText": {
+      "name": "警告提示关闭文字样式",
+      "desc": "为警告提示关闭文字配置样式",
+      "normal": [["color"], ["font"]]
+    },
+    "AlertIcon": {
+      "name": "警告提示图标样式",
+      "desc": "为警告提示图标配置样式",
+      "normal": [["color"], ["fontSize"]]
+    }
+  }
+}

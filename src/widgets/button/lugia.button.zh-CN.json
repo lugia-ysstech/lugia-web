@@ -1,0 +1,262 @@
+{
+  "widgetName": "Button",
+  "title": "按钮",
+  "desc": "方便用户点击操作",
+  "props": {
+    "disabled": {
+      "type": "boolean",
+      "desc": "按钮是否禁用，true 禁用 false 可用",
+      "defaultValue": false
+    },
+    "shape": {
+      "type": "ButtonShape",
+      "desc": "设置按钮形状，可以设置为 circle 或者不设",
+      "defaultValue": "default"
+    },
+    "type": {
+      "type": "ButtonType",
+      "desc": "支持多种不同的按钮风格，可选值为 primary、success、warning、danger 或者不设",
+      "defaultValue": "primary"
+    },
+    "plain": {
+      "type": "boolean",
+      "desc": "是否为朴素按钮"
+    },
+    "size": {
+      "type": "ButtonSize",
+      "desc": "设置按钮大小，可选值为 small、large、bigger 或者不设",
+      "defaultValue": "default"
+    },
+    "loading": {
+      "type": "boolean",
+      "desc": "设置按钮加载状态"
+    },
+    "circle": {
+      "type": "boolean",
+      "desc": "设置圆形按钮"
+    },
+    "icon": {
+      "type": "string",
+      "desc": "设置按钮图标类型"
+    },
+    "text": {
+      "type": "string | React.node",
+      "desc": "设置按钮的文本内容",
+      "defaultValue": "Button"
+    },
+    "block": {
+      "type": "boolean",
+      "desc": "按钮宽度为父元素宽度",
+      "defaultValue": false
+    }
+  },
+  "events": {
+    "onClick": {
+      "desc": "点击按钮时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "点击的DOM事件",
+          "type": "Object"
+        }
+      ]
+    }
+  },
+  "type": {
+    "ButtonShape": ["default", "round"],
+    "ButtonType": ["default", "primary", "success", "warning", "danger"],
+    "ButtonSize": ["default", "small", "large"],
+    "ButtonStyle": {
+      "width": {
+        "type": "number",
+        "desc": "组件宽度"
+      },
+      "margin": {
+        "type": "number | Object",
+        "desc": "组件外间距"
+      },
+      "color": {
+        "type": "string",
+        "desc": "组件颜色"
+      }
+    }
+  },
+  "category": ["通用"],
+  "designInfo": {
+    "PlainButton": {
+      "sequence": 1,
+      "title": "朴素按钮",
+      "desc": "朴素按钮",
+      "props": {
+        "plain": true
+      },
+      "theme": {
+        "Container": {
+          "name": "按钮整体样式",
+          "desc": "为按钮配置整体样式",
+          "normal": [
+            ["background"],
+            ["border"],
+            ["height"],
+            ["width"],
+            ["padding"],
+            ["margin"],
+            ["borderRadius"]
+          ],
+          "hover": [["background"], ["border"]],
+          "active": [["background"], ["border"]],
+          "disabled": [["background"], ["border"]],
+          "focus": [["background"], ["border"]]
+        },
+        "ButtonText": {
+          "name": "按钮文字样式",
+          "desc": "为按钮文字配置样式",
+          "normal": [["color"], ["font"]],
+          "hover": [["color"]],
+          "active": [["color"]],
+          "disabled": [["color"]],
+          "focus": [["color"]]
+        },
+        "ButtonIcon": {
+          "name": "按钮图标样式",
+          "desc": "为按钮图标配置样式",
+          "normal": [["color"], ["font"]],
+          "hover": [["color"]],
+          "active": [["color"]],
+          "disabled": [["color"]],
+          "focus": [["color"]]
+        }
+      }
+    },
+    "IconButton": {
+      "sequence": 1,
+      "title": "图标按钮",
+      "desc": "图标按钮",
+      "props": {
+        "icon": "lugia-icon-logo_lugia"
+      },
+      "theme": {
+        "Container": {
+          "name": "按钮整体样式",
+          "desc": "为按钮配置整体样式",
+          "normal": [
+            ["background"],
+            ["border"],
+            ["height"],
+            ["width"],
+            ["padding"],
+            ["margin"],
+            ["borderRadius"]
+          ],
+          "hover": [["background"], ["border"]],
+          "active": [["background"], ["border"]],
+          "disabled": [["background"], ["border"]],
+          "focus": [["background"], ["border"]]
+        },
+        "ButtonText": {
+          "name": "按钮文字样式",
+          "desc": "为按钮文字配置样式",
+          "normal": [["color"], ["font"]],
+          "hover": [["color"]],
+          "active": [["color"]],
+          "disabled": [["color"]],
+          "focus": [["color"]]
+        },
+        "ButtonIcon": {
+          "name": "按钮图标样式",
+          "desc": "为按钮图标配置样式",
+          "normal": [["color"], ["font"]],
+          "hover": [["color"]],
+          "active": [["color"]],
+          "disabled": [["color"]],
+          "focus": [["color"]]
+        }
+      }
+    },
+    "CircleButton": {
+      "sequence": 1,
+      "title": "圆形图标按钮",
+      "desc": "圆形图标按钮",
+      "props": {
+        "circle": true,
+        "icon": "lugia-icon-logo_lugia",
+        "text": "",
+        "type": "primary"
+      },
+      "theme": {
+        "Container": {
+          "name": "按钮整体样式",
+          "desc": "为按钮配置整体样式",
+          "normal": [
+            ["background"],
+            ["border"],
+            ["height"],
+            ["width"],
+            ["padding"],
+            ["margin"],
+            ["borderRadius"]
+          ],
+          "hover": [["background"], ["border"]],
+          "active": [["background"], ["border"]],
+          "disabled": [["background"], ["border"]],
+          "focus": [["background"], ["border"]]
+        },
+        "ButtonText": {
+          "name": "按钮文字样式",
+          "desc": "为按钮文字配置样式",
+          "normal": [["color"], ["font"]],
+          "hover": [["color"]],
+          "active": [["color"]],
+          "disabled": [["color"]],
+          "focus": [["color"]]
+        },
+        "ButtonIcon": {
+          "name": "按钮图标样式",
+          "desc": "为按钮图标配置样式",
+          "normal": [["color"], ["font"]],
+          "hover": [["color"]],
+          "active": [["color"]],
+          "disabled": [["color"]],
+          "focus": [["color"]]
+        }
+      }
+    }
+  },
+  "theme": {
+    "Container": {
+      "name": "按钮整体样式",
+      "desc": "为按钮配置整体样式",
+      "normal": [
+        ["background"],
+        ["border"],
+        ["height"],
+        ["width"],
+        ["padding"],
+        ["margin"],
+        ["borderRadius"]
+      ],
+      "hover": [["background"], ["border"]],
+      "active": [["background"], ["border"]],
+      "disabled": [["background"], ["border"]],
+      "focus": [["background"], ["border"]]
+    },
+    "ButtonText": {
+      "name": "按钮文字样式",
+      "desc": "为按钮文字配置样式",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"]],
+      "active": [["color"]],
+      "disabled": [["color"]],
+      "focus": [["color"]]
+    },
+    "ButtonIcon": {
+      "name": "按钮图标样式",
+      "desc": "为按钮图标配置样式",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"]],
+      "active": [["color"]],
+      "disabled": [["color"]],
+      "focus": [["color"]]
+    }
+  }
+}

@@ -22,7 +22,7 @@ import {
   CloseText,
 } from '../css/drawer';
 
-export const DrawerContext = React.createContext();
+export const DrawerContext: Object = React.createContext();
 
 DrawerMask.displayName = 'DrawerMask';
 CloseText.displayName = 'CloseText';

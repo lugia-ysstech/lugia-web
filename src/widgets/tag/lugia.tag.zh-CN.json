@@ -1,0 +1,224 @@
+{
+  "widgetName": "Tag",
+  "title": "标签",
+  "desc": "标记和分类的标签",
+  "props": {
+    "closable": {
+      "type": "boolean",
+      "desc": "标签是否可关闭",
+      "defaultValue": true
+    },
+    "shape": {
+      "type": " basic | round ",
+      "desc": "标签的圆角, basic为4px圆角,round为圆角标签",
+      "defaultValue": "basic"
+    },
+    "type": {
+      "type": "customs | primary | basic | presets | optional",
+      "desc": "标签的主题样式",
+      "defaultValue": "customs"
+    }
+  },
+  "events": {
+    "onClick": {
+      "desc": "点击按钮时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "点击的DOM事件",
+          "type": "Object"
+        },
+        {
+          "name": "checked",
+          "desc": "是否选中标签，只有在可选择标签( type: optional )生效",
+          "type": "boolean"
+        }
+      ]
+    },
+    "onClose": {
+      "desc": "关闭标签时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "改变内容的DOM事件",
+          "type": "Object"
+        }
+      ]
+    }
+  },
+  "type": {
+    "shape": ["basic", "round"],
+    "type": ["customs", "primary", "basic", "presets"]
+  },
+  "category": ["数据展示"],
+
+  "designInfo": {
+    "ClosableTag": {
+      "sequence": 1,
+      "title": "可关闭标签",
+      "desc": "点击关闭按钮可隐藏标签",
+      "props": {
+        "closable": true
+      },
+      "theme": {
+        "TagWrap": {
+          "name": "标签区域",
+          "desc": "标签内的样式配置",
+          "normal": [
+            ["color"],
+            ["background"],
+            ["border"],
+            ["borderRadius"],
+            ["width"],
+            ["height"],
+            ["boxShadow"],
+            ["opacity"],
+            ["font"],
+            ["margin"],
+            ["padding"]
+          ],
+          "hover": [
+            ["color"],
+            ["background"],
+            ["borderRadius"],
+            ["border"],
+            ["boxShadow"],
+            ["opacity"],
+            ["font"]
+          ],
+          "active": [],
+          "clicked": [],
+          "disabled": []
+        },
+
+        "CloseButton": {
+          "name": "关闭按钮",
+          "desc": "隐藏按钮的样式配置",
+          "normal": [["font"], ["color"], ["margin"]],
+          "hover": [["font"], ["color"]],
+          "active": [],
+          "clicked": [],
+          "disabled": []
+        }
+      }
+    },
+
+    "ChooseTag": {
+      "sequence": 2,
+      "title": "可选择标签",
+      "desc": "点击标签可配置选中样式",
+      "props": {
+        "type": "optional"
+      },
+      "theme": {
+        "TagWrap": {
+          "name": "标签区域",
+          "desc": "标签内的样式配置",
+          "normal": [
+            ["color"],
+            ["background"],
+            ["border"],
+            ["width"],
+            ["height"],
+            ["boxShadow"],
+            ["borderRadius"],
+            ["opacity"],
+            ["font"],
+            ["margin"],
+            ["padding"]
+          ],
+          "hover": [
+            ["color"],
+            ["borderRadius"],
+            ["background"],
+            ["border"],
+            ["boxShadow"],
+            ["opacity"],
+            ["font"]
+          ],
+          "active": [
+            ["color"],
+            ["borderRadius"],
+            ["background"],
+            ["border"],
+            ["boxShadow"],
+            ["opacity"],
+            ["font"]
+          ],
+          "clicked": [],
+          "disabled": []
+        },
+
+        "CheckedTagWrap": {
+          "name": "选中标签区域",
+          "desc": "选中后的标签内的样式配置",
+          "normal": [
+            ["color"],
+            ["background"],
+            ["border"],
+            ["width"],
+            ["height"],
+            ["boxShadow"],
+            ["opacity"],
+            ["font"],
+            ["margin"],
+            ["padding"],
+            ["borderRadius"]
+          ],
+          "hover": [
+            ["color"],
+            ["background"],
+            ["border"],
+            ["boxShadow"],
+            ["opacity"],
+            ["font"],
+            ["borderRadius"]
+          ],
+          "active": [
+            ["color"],
+            ["background"],
+            ["border"],
+            ["boxShadow"],
+            ["opacity"],
+            ["font"],
+            ["borderRadius"]
+          ],
+          "clicked": [],
+          "disabled": []
+        }
+      }
+    }
+  },
+
+  "theme": {
+    "TagWrap": {
+      "name": "标签区域",
+      "desc": "标签内的样式配置",
+      "normal": [
+        ["color"],
+        ["background"],
+        ["border"],
+        ["width"],
+        ["height"],
+        ["boxShadow"],
+        ["opacity"],
+        ["font"],
+        ["margin"],
+        ["padding"],
+        ["borderRadius"]
+      ],
+      "hover": [
+        ["color"],
+        ["borderRadius"],
+        ["background"],
+        ["border"],
+        ["boxShadow"],
+        ["opacity"],
+        ["font"]
+      ],
+      "active": [],
+      "clicked": [],
+      "disabled": []
+    }
+  }
+}

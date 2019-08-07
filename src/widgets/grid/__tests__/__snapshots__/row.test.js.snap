@@ -131,25 +131,7 @@ exports[`row css 1`] = `
   align-items: center;
 }
 
-.c14 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-flow: row wrap;
-  -ms-flex-flow: row wrap;
-  flex-flow: row wrap;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
-}
-
-.c19 {
+.c18 {
   position: relative;
   margin-left: 0;
   margin-right: 0;
@@ -161,7 +143,7 @@ exports[`row css 1`] = `
   margin-right: -12px;
 }
 
-.c19:after {
+.c18:after {
   content: "";
   clear: both;
   display: block;
@@ -170,7 +152,7 @@ exports[`row css 1`] = `
   visibility: hidden;
 }
 
-.c19::before {
+.c18::before {
   content: "";
   display: table;
 }
@@ -180,6 +162,7 @@ exports[`row css 1`] = `
   box-sizing: border-box;
   float: left;
   position: relative;
+  min-height: 1px;
   width: 25%;
   margin-left: 0%;
 }
@@ -189,6 +172,7 @@ exports[`row css 1`] = `
   box-sizing: border-box;
   float: left;
   position: relative;
+  min-height: 1px;
   width: 25%;
   margin-left: 25%;
 }
@@ -198,6 +182,7 @@ exports[`row css 1`] = `
   box-sizing: border-box;
   float: left;
   position: relative;
+  min-height: 1px;
   width: 75%;
   margin-left: 0%;
   left: 25%;
@@ -208,6 +193,7 @@ exports[`row css 1`] = `
   box-sizing: border-box;
   float: left;
   position: relative;
+  min-height: 1px;
   width: 25%;
   margin-left: 0%;
   right: 75%;
@@ -218,15 +204,17 @@ exports[`row css 1`] = `
   box-sizing: border-box;
   float: left;
   position: relative;
+  min-height: 1px;
   width: 16.666666666666668%;
   margin-left: 0%;
 }
 
-.c15 {
+.c14 {
   display: block;
   box-sizing: border-box;
   float: left;
   position: relative;
+  min-height: 1px;
   width: 16.666666666666668%;
   margin-left: 0%;
   -webkit-order: 3;
@@ -234,11 +222,12 @@ exports[`row css 1`] = `
   order: 3;
 }
 
-.c16 {
+.c15 {
   display: block;
   box-sizing: border-box;
   float: left;
   position: relative;
+  min-height: 1px;
   width: 16.666666666666668%;
   margin-left: 0%;
   -webkit-order: 2;
@@ -246,11 +235,12 @@ exports[`row css 1`] = `
   order: 2;
 }
 
-.c17 {
+.c16 {
   display: block;
   box-sizing: border-box;
   float: left;
   position: relative;
+  min-height: 1px;
   width: 16.666666666666668%;
   margin-left: 0%;
   -webkit-order: 1;
@@ -258,11 +248,12 @@ exports[`row css 1`] = `
   order: 1;
 }
 
-.c18 {
+.c17 {
   display: block;
   box-sizing: border-box;
   float: left;
   position: relative;
+  min-height: 1px;
   width: 16.666666666666668%;
   margin-left: 0%;
   -webkit-order: 4;
@@ -270,15 +261,26 @@ exports[`row css 1`] = `
   order: 4;
 }
 
+.c19 {
+  display: block;
+  box-sizing: border-box;
+  float: left;
+  position: relative;
+  min-height: 1px;
+  width: 25%;
+  margin-left: 0%;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
 .c20 {
   display: block;
   box-sizing: border-box;
   float: left;
   position: relative;
-  width: 25%;
+  min-height: 1px;
+  width: 20%;
   margin-left: 0%;
-  padding-left: 12px;
-  padding-right: 12px;
 }
 
 .c21 {
@@ -286,12 +288,12 @@ exports[`row css 1`] = `
   box-sizing: border-box;
   float: left;
   position: relative;
-  width: 20%;
+  min-height: 1px;
+  width: 20.833333333333336%;
   margin-left: 0%;
 }
 
 .c0 > div > div {
-  padding: 8px;
   text-align: center;
 }
 
@@ -919,91 +921,6 @@ exports[`row css 1`] = `
     </div>
   </div>
   <br />
-  <div
-    className="c0"
-  >
-    <div
-      className="c14"
-      onMouseEnter={[Function]}
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
-      type="flex"
-    >
-      <div
-        className="c7"
-        onMouseEnter={[Function]}
-        onMouseOut={[Function]}
-        onMouseOver={[Function]}
-        span={4}
-        width={4.166666666666667}
-      >
-        <div
-          style={
-            Object {
-              "height": 80,
-            }
-          }
-        >
-          col-4 align-bottom
-        </div>
-      </div>
-      <div
-        className="c7"
-        onMouseEnter={[Function]}
-        onMouseOut={[Function]}
-        onMouseOver={[Function]}
-        span={4}
-        width={4.166666666666667}
-      >
-        <div
-          style={
-            Object {
-              "height": 60,
-            }
-          }
-        >
-          col-4 align-bottom
-        </div>
-      </div>
-      <div
-        className="c7"
-        onMouseEnter={[Function]}
-        onMouseOut={[Function]}
-        onMouseOver={[Function]}
-        span={4}
-        width={4.166666666666667}
-      >
-        <div
-          style={
-            Object {
-              "height": 100,
-            }
-          }
-        >
-          col-4 align-bottom
-        </div>
-      </div>
-      <div
-        className="c7"
-        onMouseEnter={[Function]}
-        onMouseOut={[Function]}
-        onMouseOver={[Function]}
-        span={4}
-        width={4.166666666666667}
-      >
-        <div
-          style={
-            Object {
-              "height": 120,
-            }
-          }
-        >
-          col-4 align-bottom
-        </div>
-      </div>
-    </div>
-  </div>
-  <br />
   <p>
     type: flex, order
   </p>
@@ -1018,7 +935,7 @@ exports[`row css 1`] = `
       type="flex"
     >
       <div
-        className="c15"
+        className="c14"
         onMouseEnter={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
@@ -1029,7 +946,7 @@ exports[`row css 1`] = `
         col-4 center-order-3
       </div>
       <div
-        className="c16"
+        className="c15"
         onMouseEnter={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
@@ -1040,7 +957,7 @@ exports[`row css 1`] = `
         col-4 center-order-2
       </div>
       <div
-        className="c17"
+        className="c16"
         onMouseEnter={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
@@ -1051,7 +968,7 @@ exports[`row css 1`] = `
         col-4 center-order-1
       </div>
       <div
-        className="c18"
+        className="c17"
         onMouseEnter={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
@@ -1161,14 +1078,14 @@ exports[`row css 1`] = `
     }
   >
     <div
-      className="c19"
+      className="c18"
       onMouseEnter={[Function]}
       onMouseOut={[Function]}
       onMouseOver={[Function]}
       type="default"
     >
       <div
-        className="c20"
+        className="c19"
         onMouseEnter={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
@@ -1186,7 +1103,7 @@ exports[`row css 1`] = `
         </div>
       </div>
       <div
-        className="c20"
+        className="c19"
         onMouseEnter={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
@@ -1204,7 +1121,7 @@ exports[`row css 1`] = `
         </div>
       </div>
       <div
-        className="c20"
+        className="c19"
         onMouseEnter={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
@@ -1222,7 +1139,7 @@ exports[`row css 1`] = `
         </div>
       </div>
       <div
-        className="c20"
+        className="c19"
         onMouseEnter={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
@@ -1309,7 +1226,7 @@ exports[`row css 1`] = `
       type="default"
     >
       <div
-        className="c21"
+        className="c20"
         onMouseEnter={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
@@ -1319,7 +1236,7 @@ exports[`row css 1`] = `
         col-6
       </div>
       <div
-        className="c21"
+        className="c20"
         onMouseEnter={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
@@ -1329,7 +1246,7 @@ exports[`row css 1`] = `
         col-6
       </div>
       <div
-        className="c21"
+        className="c20"
         onMouseEnter={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
@@ -1339,7 +1256,7 @@ exports[`row css 1`] = `
         col-6
       </div>
       <div
-        className="c21"
+        className="c20"
         onMouseEnter={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
@@ -1351,5 +1268,57 @@ exports[`row css 1`] = `
     </div>
   </div>
   <br />
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      type="default"
+    >
+      <div
+        className="c21"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={5}
+        width={4.166666666666667}
+      >
+        col-6
+      </div>
+      <div
+        className="c21"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={5}
+        width={4.166666666666667}
+      >
+        col-6
+      </div>
+      <div
+        className="c21"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={5}
+        width={4.166666666666667}
+      >
+        col-6
+      </div>
+      <div
+        className="c21"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={5}
+        width={4.166666666666667}
+      >
+        col-6
+      </div>
+    </div>
+  </div>
 </div>
 `;

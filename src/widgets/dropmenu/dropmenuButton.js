@@ -4,7 +4,6 @@
  * @flow
  */
 import * as React from 'react';
-import '../css/sv.css';
 import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
 import CommonIcon from '../icon';
@@ -37,6 +36,7 @@ type DropMenuButtonProps = {
   onMouseLeave?: Function,
   disabled: boolean,
   direction: 'up' | 'down',
+  text: 'string',
 };
 
 type DropMenuButtonState = {
@@ -80,7 +80,7 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
 
   getBasicButton = () => {
     const { props, state } = this;
-    const { getTheme, children, disabled, direction } = props;
+    const { getTheme, disabled, direction } = props;
     const { hasButtonChecked } = state;
     const iconClass = this.getIconClass(direction);
     return (
@@ -100,7 +100,7 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
             onBlur={this.handleButtonBlur}
           />
           <BasicTextContainer Theme={getTheme()} checked={hasButtonChecked} disabled={disabled}>
-            <BasicText>{children}</BasicText>
+            <BasicText>{this.getText()}</BasicText>
             <BasicIconWrap>
               <CommonIcon iconClass={iconClass} />
             </BasicIconWrap>
@@ -110,9 +110,14 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
     );
   };
 
+  getText = () => {
+    const { children, text } = this.props;
+    return text ? text.toString() : children;
+  };
+
   getDevidedButton = () => {
     const { props, state } = this;
-    const { divided, type, getTheme, children, disabled, direction } = props;
+    const { divided, type, getTheme, disabled, direction } = props;
     const { hasIconChecked, hasButtonChecked } = state;
     const iconClass = this.getIconClass(direction);
     return (
@@ -131,7 +136,7 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
             type={type}
             checked={hasButtonChecked}
           >
-            {children}
+            {this.getText()}
             <CheckInput
               type="button"
               disabled={disabled}
@@ -157,7 +162,7 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
   };
 
   getNoDevidedButton = () => {
-    const { divided, type, getTheme, children, disabled, direction } = this.props;
+    const { divided, type, getTheme, disabled, direction } = this.props;
     const { hasButtonChecked } = this.state;
     const iconClass = this.getIconClass(direction);
     return (
@@ -178,7 +183,7 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
           onBlur={this.handleButtonBlur}
         />
         <NoDividedWrap>
-          <TextContainer>{children}</TextContainer>
+          <TextContainer>{this.getText()}</TextContainer>
           <NoDividedIconWrap>
             <CommonIcon iconClass={iconClass} />
           </NoDividedIconWrap>

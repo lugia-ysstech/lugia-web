@@ -1,0 +1,121 @@
+{
+  "widgetName": "Collapse",
+  "title": "折叠面板",
+  "desc": "折叠面板，用于展开/折叠内容区域。",
+  "props": {
+    "activeValue": {
+      "type": "string | string[]",
+      "desc": "当前展开面板的 value值 或者 value 集合"
+    },
+    "defaultActiveValue": {
+      "type": "string | string[]",
+      "desc": "初始时展开面板的 value值 或者 value 集合"
+    },
+    "showArrow": {
+      "type": "boolean",
+      "desc": "是否展示面板箭头"
+    },
+    "accordion": {
+      "type": "boolean",
+      "desc": "设置是否为手风琴模式"
+    },
+    "data": {
+      "type": "Object[]",
+      "desc": "指定折叠面板data数据源，仅用于设计器",
+
+      "designOnly": true
+    }
+  },
+  "events": {
+    "onChange": {
+      "desc": "Collapse面板展开/折叠时回调",
+      "args": [
+        {
+          "name": "event",
+          "desc": "关闭时的DOM事件",
+          "type": "Object"
+        },
+        {
+          "name": "value",
+          "desc": "变化Collapse的value值",
+          "type": "string"
+        }
+      ]
+    }
+  },
+  "type": {
+    "CollapseStyle": {
+      "width": {
+        "type": "number",
+        "desc": "Collapse宽度"
+      },
+      "color": {
+        "type": "string",
+        "desc": "Collapse颜色"
+      }
+    }
+  },
+  "childrenWidget": ["panel"],
+  "category": ["数据展示"],
+  "theme": {
+    "Wrap": {
+      "name": "Collapse整体配置",
+      "desc": "Collapse整体配置",
+      "normal": [
+        ["opacity"],
+        ["margin"],
+        ["padding"],
+        ["width"],
+        ["height"],
+        ["background"],
+        ["border"]
+      ]
+    },
+    "Panel": {
+      "theme": {
+        "Wrap": {
+          "name": "面板整体配置",
+          "desc": "面板整体配置",
+          "normal": [["width"]]
+        },
+        "PanelHeader": {
+          "name": "面板头部配置",
+          "desc": "面板头部样式配置",
+          "normal": [
+            ["opacity"],
+            ["border"],
+            ["borderRadius"],
+            ["boxShadow"],
+            ["padding"],
+            ["width"],
+            ["height"],
+            ["background"]
+          ],
+          "hover": [["borderRadius"], ["background"], ["opacity"], ["border"], ["boxShadow"]],
+          "disabled": [["borderRadius"], ["background"], ["opacity"], ["border"], ["boxShadow"]]
+        },
+        "PanelHeaderText": {
+          "name": "面板头部文字",
+          "desc": "面板头部文字样式配置",
+          "normal": [["font"], ["color"]],
+          "hover": [["color"]],
+          "disabled": [["color"]]
+        },
+        "PanelHeaderIcon": {
+          "name": "面板头部图标",
+          "desc": "面板头部图标样式配置",
+          "normal": [["fontSize"], ["color"]],
+          "hover": [["color"]],
+          "disabled": [["color"]]
+        },
+        "PanelContent": {
+          "name": "面板内容样式",
+          "desc": "面板内容样式配置",
+          "normal": [["width"], ["height"], ["background"], ["padding"], ["font"], ["color"]],
+          "hover": [["color"]],
+          "disabled": [["color"]]
+        }
+      }
+    }
+  }
+}

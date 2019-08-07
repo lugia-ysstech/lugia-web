@@ -1,0 +1,117 @@
+{
+  "widgetName": "TimeLineItem",
+  "title": "时间轴节点",
+  "desc": "时间轴每一个节点",
+
+  "props": {
+    "time": {
+      "type": "string",
+      "desc": "时间轴显示的时间"
+    },
+    "description": {
+      "type": "string",
+      "desc": "时间轴显示的节点描述"
+    },
+    "icon": {
+      "type": "icon",
+      "desc": "时间轴显示的节点图标资源"
+    },
+    "direction": {
+      "type": "string",
+      "desc": "时间轴显示内容的方向,根据父组件mode属性来显示",
+      "defaultValue": "right"
+    },
+    "isLast": {
+      "type": "boolean",
+      "desc": "是否是最后一个时间节点",
+      "defaultValue": false
+    },
+    "status": {
+      "type": "TimeLineStatus",
+      "desc": "时间节点的状态",
+      "defaultValue": "normal"
+    },
+    "timeLineType": {
+      "type": "TimeLineType",
+      "desc": "时间节点的风格 可配置 图标风格和隐藏解释类型"
+    },
+    "pending": {
+      "type": "boolean",
+      "desc": "最后一个是否是幽灵节点",
+      "defaultValue": false
+    },
+    "pendingDot": {
+      "type": "icon",
+      "desc": "当最后一个是幽灵节点时,指定其图标资源"
+    }
+  },
+  "type": {
+    "TimeLineType": ["icon", "explain"],
+    "TimeLineStatus": ["success", "failed", "normal"]
+  },
+  "category": ["数据展示"],
+  "theme": {
+    "TimeLineDot": {
+      "name": "时间点",
+      "desc": "时间点配置",
+      "normal": [["width"], ["height"], ["background"], ["boxShadow"], ["border"]]
+    },
+    "TimeLineItemContainer": {
+      "name": "时间点外层容器",
+      "desc": "时间点外层容器配置",
+      "normal": [["width"], ["height"], ["margin"], ["padding"]]
+    },
+    "TimeLineExplainDot": {
+      "name": "隐藏的解释时间点",
+      "desc": "隐藏的解释时间点配置",
+      "normal": [["width"], ["height"], ["background"], ["boxShadow"], ["border"]]
+    },
+    "TimeLineItemTip": {
+      "theme": {
+        "TooltipContent": {
+          "name": "隐藏的解释时间点显示容器",
+          "desc": "隐藏的解释时间点显示容器配置",
+          "normal": [["width"], ["height"], ["background"], ["boxShadow"], ["border"]]
+        },
+        "TooltipTitle": {
+          "name": "隐藏的解释时间点标题",
+          "desc": "隐藏的解释时间点标题配置",
+          "normal": [
+            ["fontSize"],
+            ["font"],
+            ["color"],
+            ["width"],
+            ["height"],
+            ["padding"],
+            ["margin"]
+          ]
+        },
+        "TooltipDescription": {
+          "name": "隐藏的解释时间点描述",
+          "desc": "隐藏的解释时间点描述配置",
+          "normal": [
+            ["fontSize"],
+            ["font"],
+            ["color"],
+            ["width"],
+            ["height"],
+            ["padding"],
+            ["margin"]
+          ]
+        }
+      }
+    },
+    "TimeLineItemLine": {
+      "name": "步骤间连接线",
+      "desc": "步骤间连接线的配置",
+      "normal": [["width"], ["height"], ["background"]]
+    },
+    "TimeLineIcon": {
+      "normal": {
+        "name": "步骤条内容图标",
+        "desc": "步骤间连接线的配置",
+        "normal": [["font"], ["fontSize"], ["color"]]
+      }
+    }
+  }
+}

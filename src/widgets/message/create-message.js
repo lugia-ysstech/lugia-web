@@ -27,7 +27,7 @@ export const createMessage = (
         padding: 0;
         list-style: none;
         position: fixed;
-        z-index: 1010;
+        z-index: 100000;
         width: 100%;
         top: 16px;
         left: 0;

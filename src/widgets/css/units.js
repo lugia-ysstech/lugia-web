@@ -4,16 +4,8 @@
  *
  * @flow
  */
-const footerFontSize = 10;
 
-export function px2rem(px: number) {
-  return px / footerFontSize;
-}
+import { units } from '@lugia/css';
 
-export function rem2em(rem: number, emFontSize: number) {
-  return rem / emFontSize;
-}
-
-export function px2emcss(emFontSize: number) {
-  return (px: number) => `${px2rem(px) / emFontSize}em`;
-}
+const { px2rem, rem2em, px2emcss, px2remcss } = units;
+export { px2rem, rem2em, px2emcss, px2remcss };

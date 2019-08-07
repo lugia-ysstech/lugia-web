@@ -1,125 +1,148 @@
 /**
  * 菜单
- * create by ligx
+ * create by szfeng
  *
  * @flow
  */
 import * as React from 'react';
-import styled from 'styled-components';
+import ThemeHoc from '@lugia/theme-hoc';
 import Widget from '../consts/index';
-import { FontSize } from '../css';
-import {
-  ItemBackgroundColor,
-  MenuItemHeight,
-  SelectIcon,
-  themeColor,
-  blackColor,
-} from '../css/menu';
-import { px2emcss } from '../css/units';
-const em = px2emcss(1.2);
+import { deepMerge } from '@lugia/object-utils';
+import { ItemWrap, DividerWrap, TextContainer, DefaultMenuItemHeight } from '../css/menu';
+import CheckBox from '../checkbox';
 
 const Utils = require('@lugia/type-utils');
 const { ObjectUtils } = Utils;
-type MenuItemProps = {
+export type SizeType = 'large' | 'default' | 'bigger';
+export type MenuItemProps = {
+  key?: any,
   checked: boolean,
   mutliple: boolean,
   onClick?: Function,
+  onMouseEnter?: Function,
   children?: React.Node,
+  disabled: boolean,
+  divided: ?boolean,
+  checkedCSS?: 'none' | 'background' | 'mark' | 'checkbox',
+  theme: Object,
+  isFirst: boolean,
+  menuItemHeight: number,
+  getPartOfThemeHocProps: Function,
+  getPartOfThemeProps: Function,
 };
-
-const getMulipleCheckedStyle = (props: MenuItemProps) => {
-  return props.checked
-    ? `
-    :after{
-      color: ${themeColor};
-    } 
-    :hover:after{
-      color: ${themeColor};
-    }
-    `
-    : `
-    :hover:after{
-      color: #d0c8c8;
-    }
-    `;
-};
-
-const getItemColor = (props: MenuItemProps) => {
-  return props.checked
-    ? `
-    color: ${themeColor};
-    font-weight: 900;
-  `
-    : `
-    color: ${blackColor};
-    font-weight: 500;
-  `;
-};
-const SingleItem = styled.li`
-  box-sizing: border-box;
-  position: relative;
-  display: block;
-  height: ${em(MenuItemHeight)};
-  padding: ${em(7)} ${em(8)};
-  font-weight: 400;
-  ${getItemColor};
-  white-space: nowrap;
-  cursor: pointer;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  transition: background 0.3s ease;
-
-  &:hover {
-    background-color: ${ItemBackgroundColor};
-    font-weight: 900;
-  }
-`;
-
-const MutlipleItem = SingleItem.extend`
-    &::after {
-      font-family: "sviconfont" !important;
-      text-rendering: optimizeLegibility;
-      content: "${SelectIcon}";
-      color: transparent;
-      display: inline-block;
-      font-size: ${FontSize};
-      transform: scale(.83333333) rotate(0deg);
-      zoom: 1;
-      transition: all .2s ease;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      right: ${em(10)};
-      font-weight: 700;
-      text-shadow: 0 0.1px 0, 0.1px 0 0, 0 -0.1px 0, -0.1px 0;
-    }
-    
-    ${getMulipleCheckedStyle}
-`;
-MutlipleItem.displayName = 'mutlipleMenuItem';
 
 class MenuItem extends React.Component<MenuItemProps> {
   static defaultProps = {
     checked: false,
     mutliple: false,
+    disabled: false,
+    divided: false,
   };
   static displayName = Widget.MenuItem;
 
+  mergeTheme = (target: string, defaultTheme: Object) => {
+    const { viewClass, theme } = this.props.getPartOfThemeHocProps(target);
+
+    const themeHoc = deepMerge(
+      {
+        [viewClass]: { ...defaultTheme },
+      },
+      theme
+    );
+
+    const treeTheme = {
+      viewClass,
+      theme: themeHoc,
+    };
+    return treeTheme;
+  };
+
+  getCheckBoxTheme() {
+    const defaultTheme = {
+      CheckboxText: {
+        normal: {
+          font: { size: 13, fontWeight: 500 },
+        },
+        hover: { font: { size: 13, fontWeight: 500 } },
+        disabled: { font: { size: 13, fontWeight: 500 } },
+      },
+    };
+    return this.mergeTheme('Checkbox', defaultTheme);
+  }
+
   render() {
-    const { children, mutliple, checked, onClick } = this.props;
-    const Item = mutliple ? MutlipleItem : SingleItem;
+    const {
+      children,
+      checked,
+      onClick,
+      disabled,
+      onMouseEnter,
+      checkedCSS,
+      divided,
+      isFirst,
+      menuItemHeight = DefaultMenuItemHeight,
+      getPartOfThemeProps,
+    } = this.props;
     let title = '';
     React.Children.forEach(children, (item: Object) => {
       if (ObjectUtils.isString(item)) {
         title = item;
       }
     });
-    return (
-      <Item onClick={onClick} title={title} checked={checked}>
-        {children}
-      </Item>
+    const isCheckbox = checkedCSS === 'checkbox';
+
+    let themeProps;
+    if (checked) {
+      themeProps = getPartOfThemeProps('SelectedMenuItemWrap', {
+        props: {
+          checkedCSS,
+          checked,
+          menuItemHeight,
+        },
+      });
+      const { themeConfig } = themeProps;
+      const { normal = {} } = themeConfig;
+      normal.height = '';
+      if (normal.height) {
+        delete normal.height;
+      }
+    } else {
+      themeProps = getPartOfThemeProps('MenuItemWrap', {
+        props: {
+          checkedCSS,
+          checked,
+          menuItemHeight,
+        },
+      });
+    }
+    const DividerThemeProps = getPartOfThemeProps('Divider');
+    const target = (
+      <ItemWrap
+        onClick={onClick}
+        onMouseEnter={onMouseEnter}
+        title={title}
+        disabled={disabled}
+        themeProps={themeProps}
+      >
+        {divided && !isFirst ? <DividerWrap themeProps={DividerThemeProps} /> : null}
+        {isCheckbox ? (
+          <TextContainer themeProps={themeProps}>
+            <CheckBox
+              {...this.getCheckBoxTheme()}
+              checked={checked}
+              disabled={disabled}
+              onChange={onClick}
+            >
+              {children}
+            </CheckBox>
+          </TextContainer>
+        ) : (
+          <TextContainer themeProps={themeProps}>{children}</TextContainer>
+        )}
+      </ItemWrap>
     );
+
+    return target;
   }
 }
-
-export default MenuItem;
+export default ThemeHoc(MenuItem, Widget.MenuItem, { hover: true, active: true });

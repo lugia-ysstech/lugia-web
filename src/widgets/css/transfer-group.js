@@ -3,31 +3,30 @@
  * create by guorg
  * @flow
  */
-import { px2emcss } from '../css/units';
+import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
+import { px2remcss } from '../css/units';
 import type { ThemeType } from '@lugia/lugia-web';
-import styled from 'styled-components';
-import colorsFunc from '../css/stateColor';
-
-const FontSize = 1.2;
-const em = px2emcss(FontSize);
+import { css } from 'styled-components';
 
 export type GroupProps = {
   getTheme: Function,
   data: Object[],
   showSearch?: boolean,
-  disabled?: boolean,
-  targetKeys?: string[],
+  value?: string[],
+  defaultValue?: string[],
   onSelectChange?: (sourceSelectedKeys: string[], targetSelectedKeys: string[]) => {},
-  onDirectionClick?: (
-    nextTargetKeys: string[],
-    direction: 'left' | 'right',
-    moveKeys: string[]
-  ) => {},
+  onCancelItemClick?: (newValue: string[], newDisplayValue: string[]) => {},
+  onDirectionClick?: (nextValue: string[], direction: 'left' | 'right', moveKeys: string[]) => {},
   sourceSelectedKeys?: string[],
   targetSelectedKeys?: string[],
   defaultSourceSelectedKeys?: string[],
   defaultTargetSelectedKeys?: string[],
-  filterOption: (inputValue: string, option: Object) => {},
+  filterOption?: (inputValue: string, option: Object) => {},
+  type?: 'tree' | 'panel',
+  displayField?: string,
+  valueField?: string,
+  getPartOfThemeProps: Function,
+  getPartOfThemeHocProps: Function,
 };
 export type GroupState = {
   inputValue: string,
@@ -35,33 +34,48 @@ export type GroupState = {
   targetSelectedKeys: string[],
   sourceData: Object[],
   targetData: Object[],
-  targetKeys: string[],
+  value: string[],
   sourceKeys: string[],
   mapData: Object,
   sourceSearchData: Object[],
   targetSearchData: Object[],
   sourceCheckKeys: string[],
   targetCheckKeys: string[],
+  treeData: Object[],
+  cancelItem: Object[],
+  displayValue: string[],
+  enableKeys: string[],
 };
-type CSSProps = {
-  isWrap?: boolean,
-  theme: ThemeType,
-};
-const { borderColor, blackColor, lightGreyColor } = colorsFunc();
 
-export const TransFerWrap = styled.div`
-  box-sizing: border-box;
-  font-size: ${FontSize}rem;
-`;
-export const OperationBtn = styled.div`
-  display: inline-block;
-  padding: ${em(8)};
+export const TransFerWrap = CSSComponent({
+  className: 'TransFerWrap',
+  tag: 'div',
+  normal: {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['margin'],
+      ['padding'],
+      ['background'],
+      ['border'],
+      ['borderRadius'],
+    ],
+  },
+});
 
-  & > button {
-    margin-bottom: ${em(10)};
-  }
-`;
-export const BtnText = styled.span`
-  font-size: ${em(16)};
-  line-height: ${px2emcss(1.6)(12)};
-`;
+export const OperationBtn = StaticComponent({
+  className: 'OperationBtn',
+  tag: 'span',
+  css: css`
+    display: inline-block;
+    padding: ${px2remcss(8)};
+    position: relative;
+    vertical-align: middle;
+
+    & > button {
+      margin-bottom: ${px2remcss(10)};
+      padding-left: ${px2remcss(12)};
+      padding-right: ${px2remcss(14)};
+    }
+  `,
+});

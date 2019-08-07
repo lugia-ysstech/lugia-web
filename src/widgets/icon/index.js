@@ -1,5 +1,4 @@
 /**
- * 菜单
  * create by ligx
  *
  * @flow
@@ -8,27 +7,38 @@ import '../common/shirm';
 import * as React from 'react';
 import '../css/font/lugia-icon.css';
 import Widget from '../consts/index';
-import ThemeProvider from '../theme-provider';
-import styled from 'styled-components';
+import ThemeHoc, { addMouseEvent } from '@lugia/theme-hoc';
+import CSSComponent, { css } from '../theme/CSSProvider';
 
-const getColor = (props: Object) => {
-  const { color } = props.theme;
-  return color ? `color: ${color};` : '';
-};
-const hover = (props: Object) => {
-  const { hoverColor } = props.theme;
-  return hoverColor ? `  &:hover { color: ${hoverColor}; }` : '';
-};
-const IconTag = styled.i`
-  user-select: none;
-  cursor: pointer;
-  ${getColor} ${hover};
-`;
+const IconTag = CSSComponent({
+  tag: 'i',
+  className: 'iconTag',
+  normal: {
+    selectNames: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+    defaultTheme: { cursor: 'pointer' },
+  },
+  hover: {
+    selectNames: [['color'], ['margin'], ['cursor'], ['fontSize'], ['font']],
+  },
+  active: {
+    selectNames: [['color'], ['cursor'], ['fontSize'], ['font']],
+  },
+  disabled: {
+    selectNames: [['color'], ['cursor']],
+  },
+  css: css`
+    user-select: none;
+  `,
+});
 type IconProps = {
   className?: string,
   iconClass: string,
   onClick?: Function,
   getTheme: Function,
+  themeProps: Object,
+  singleTheme?: boolean,
+  getPartOfThemeProps: Function,
+  disabled: boolean,
 };
 
 class Icon extends React.Component<IconProps> {
@@ -39,11 +49,32 @@ class Icon extends React.Component<IconProps> {
       return {};
     },
   };
-
+  onClick = e => {
+    const { disabled, onClick } = this.props;
+    if (disabled) {
+      return;
+    }
+    onClick && onClick(e);
+  };
   render() {
-    const { iconClass, onClick, getTheme, className = '' } = this.props;
-    return <IconTag className={`${iconClass} ${className}`} onClick={onClick} theme={getTheme()} />;
+    const {
+      iconClass = 'lugia-icon-logo_lugia',
+      className = '',
+      disabled,
+      themeProps,
+      getPartOfThemeProps,
+      singleTheme = false,
+    } = this.props;
+    return (
+      <IconTag
+        className={`${iconClass} ${className}`}
+        onClick={this.onClick}
+        themeProps={singleTheme ? themeProps : getPartOfThemeProps('Icon')}
+        disabled={disabled}
+        {...addMouseEvent(this)}
+      />
+    );
   }
 }
 
-export default ThemeProvider(Icon, Widget.Icon);
+export default ThemeHoc(Icon, Widget.Icon, { hover: true, active: true });

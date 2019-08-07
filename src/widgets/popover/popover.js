@@ -8,58 +8,37 @@ import * as React from 'react';
 import Tooltip from '../tooltip/index';
 import Icon from '../icon/index';
 import Widget from '../consts/index';
-import styled from 'styled-components';
-import { getDescripitionColor, getTitleColor } from '../css/card';
 import type { PopoverProps, PopoverState } from '../css/popover';
-import { getIconColor } from '../css/popover';
-import { px2emcss } from '../css/units';
-import ThemeProvider from '../theme-provider';
-import { ObjectUtils } from '@lugia/type-utils';
 import { getStateFromProps, processOnVisibleChange } from '../tooltip';
-const em = px2emcss(1.2);
 
-const ClearContainer = styled.div`
-  position: absolute;
-  right: ${em(8)};
-  top: ${em(6)};
-  width: ${em(10)};
-  height: ${em(10)};
-`;
-const Clear = styled(Icon)`
-  font-size: 1rem;
-  ${getIconColor};
-`;
-const Basetext = styled.div`
-  text-align: inherit;
-  white-space: nowrap;
-  overflow: hidden;
-`;
-const Title = Basetext.extend`
-  display: inline-block;
-  font-size: 1.6rem;
-  font-weight: 500;
-  ${getTitleColor};
-`;
-const Descripition = Basetext.extend`
-  font-size: 1.4rem;
-  ${getDescripitionColor};
-`;
-const Content = styled.div`
-  font-size: 1.2rem;
-  display: inline-block;
-  padding: ${em(6)} ${em(8)};
-`;
-const TooltipWrapper = styled(Tooltip)`
-  font-size: 1.2rem;
-  display: inline-block;
-  position: relative;
-`;
+import ThemeHoc from '@lugia/theme-hoc';
+import { deepMerge } from '@lugia/object-utils';
+import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
+import { units } from '@lugia/css';
+
+const { px2remcss } = units;
+
+const ClearContainer: Object = StaticComponent({
+  tag: 'div',
+  className: 'PopoverIconContainer',
+  normal: {
+    selectNames: [],
+  },
+  css: css`
+    position: absolute;
+    right: ${px2remcss(6)};
+    top: ${px2remcss(6)};
+    width: ${px2remcss(10)};
+    height: ${px2remcss(10)};
+  `,
+});
 
 class Popover extends React.Component<PopoverProps, PopoverState> {
   static displayName = Widget.Popover;
   static defaultProps = {
     defaultVisible: false,
     action: ['click'],
+    showClearButton: true,
   };
   target: Object;
 
@@ -71,27 +50,6 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
     return getStateFromProps(props, state);
   }
 
-  getTitle(): React.Node | null {
-    const { title } = this.props;
-    return title ? <Title>{title} </Title> : null;
-  }
-
-  getDescripition(): React.Node | null {
-    const { description } = this.props;
-    return description ? <Descripition>{description} </Descripition> : null;
-  }
-
-  getCloseContainer(): React.Node | null {
-    const { clear } = this.props;
-    return clear ? (
-      <ClearContainer onClick={this.onClearClick}>{this.getIcon(clear)}</ClearContainer>
-    ) : null;
-  }
-
-  getIcon(icon: React.Node): React.Node {
-    return ObjectUtils.isString(icon) ? <Clear iconClass={icon}> </Clear> : icon;
-  }
-
   onClearClick = e => {
     const { onClearClick } = this.props;
     this.setState({ visible: false });
@@ -99,37 +57,86 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
   };
 
   getContent() {
-    const { content, title, description } = this.props;
-    if (content || title || description) {
-      return (
-        <Content>
-          {content}
-          {this.getCloseContainer()}
-          {this.getTitle()}
-          {this.getDescripition()}
-        </Content>
-      );
-    }
-    return null;
+    const { content } = this.props;
+    return (
+      <div>
+        {content}
+        {this.getCloseContainer()}
+      </div>
+    );
+  }
+  getCloseContainer(): React.Node | null {
+    const { clearIcon = 'lugia-icon-reminder_close', showClearButton } = this.props;
+    return showClearButton ? (
+      <ClearContainer onClick={this.onClearClick}>
+        <Icon
+          {...this.props.getPartOfThemeHocProps(Widget.Icon)}
+          iconClass={clearIcon}
+          singleTheme
+        />
+      </ClearContainer>
+    ) : null;
+  }
+
+  getTitle(): React.Node | null {
+    const { title } = this.props;
+    return title;
+  }
+
+  getDescription(): React.Node | null {
+    const { description } = this.props;
+    return description ? description : null;
   }
 
   render() {
-    const { children, action, placement, getTheme } = this.props;
+    const { children = <div />, action, placement } = this.props;
     const { visible } = this.state;
     const getTarget: Function = cmp => (this.target = cmp);
+
+    const { theme: theTheme, viewClass } = this.props.getPartOfThemeHocProps('PopoverContent');
+
+    const tooltipTheme = deepMerge(
+      {
+        [viewClass]: {
+          Container: {
+            normal: {
+              padding: {
+                top: 12,
+                bottom: 12,
+                left: 16,
+                right: 16,
+              },
+              fontSize: 12,
+            },
+          },
+          TooltipTitle: {
+            normal: {
+              font: {
+                size: 16,
+                weight: 500,
+              },
+            },
+          },
+        },
+      },
+      theTheme
+    );
     return (
-      <TooltipWrapper
+      <Tooltip
+        theme={tooltipTheme}
+        viewClass={viewClass}
         visible={visible}
         action={action}
         onVisibleChange={this.onVisibleChange}
-        theme={getTheme()}
         popArrowType={'round'}
         placement={placement}
-        title={this.getContent()}
+        content={this.getContent()}
+        title={this.getTitle()}
+        description={this.getDescription()}
         ref={getTarget}
       >
         {children}
-      </TooltipWrapper>
+      </Tooltip>
     );
   }
 
@@ -138,4 +145,7 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
   };
 }
 
-export default ThemeProvider(Popover, Widget.Popover);
+export default ThemeHoc(Popover, Widget.Popover, {
+  hover: true,
+  active: true,
+});
