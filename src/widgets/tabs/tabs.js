@@ -14,6 +14,7 @@ import { isVertical } from './utils';
 import { getAttributeFromObject } from '../common/ObjectUtils.js';
 import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import ThemeHoc from '@lugia/theme-hoc';
+import { deepMerge } from '@lugia/object-utils';
 
 const TabContentContainer = CSSComponent({
   tag: 'div',
@@ -234,7 +235,25 @@ class TabsBox extends Component<TabsProps, TabsState> {
       </OutContainer>
     );
     if (tabType === 'window') {
-      const outContainerThemeProps = this.props.getPartOfThemeProps('WindowContainer');
+      const outContainerThemeProps = deepMerge(
+        {
+          themeConfig: {
+            normal: {
+              padding: {
+                left: 10,
+                right: 10,
+                top: 10,
+                bottom: 10,
+              },
+              background: {
+                color: '#f1f1f1',
+              },
+            },
+          },
+        },
+        this.props.getPartOfThemeProps('WindowContainer')
+      );
+
       target = (
         <WindowContainer themeProps={outContainerThemeProps}>
           <OutContainer themeProps={themeProps}>
@@ -260,7 +279,6 @@ class TabsBox extends Component<TabsProps, TabsState> {
       getPartOfThemeHocProps,
       getPartOfThemeProps,
     } = this.props;
-
     return {
       activityValue,
       data,

@@ -9,12 +9,6 @@ import React, { Component } from 'react';
 import Tabpane from './tabpane';
 import Widget from '../consts/index';
 import { EditEventType, PagedType, TabPositionType, TabType } from '../css/tabs';
-import {
-  AddButtonSize,
-  CardBorderAndMarginWidth,
-  CardMarginRight,
-  WindowMarginLeft,
-} from '../css/tabs';
 
 import { px2remcss } from '../css/units';
 import { computePage, isVertical, matchType, plusWidth } from './utils';
@@ -801,8 +795,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
   }
 
   getActualWidth(tabType: TabType, titleSize: Array<number>) {
-    const width = plusWidth(titleSize.length - 1, titleSize);
-    return matchType(tabType, 'window') ? width + WindowMarginLeft + AddButtonSize : width;
+    return plusWidth(titleSize.length - 1, titleSize);
   }
 
   onTabClick = (res: Object) => {
