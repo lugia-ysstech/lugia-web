@@ -9,12 +9,6 @@ import React, { Component } from 'react';
 import Tabpane from './tabpane';
 import Widget from '../consts/index';
 import { EditEventType, PagedType, TabPositionType, TabType } from '../css/tabs';
-import {
-  AddButtonSize,
-  CardBorderAndMarginWidth,
-  CardMarginRight,
-  WindowMarginLeft,
-} from '../css/tabs';
 
 import { px2remcss } from '../css/units';
 import { computePage, isVertical, matchType, plusWidth } from './utils';
@@ -361,6 +355,7 @@ type TabsState = {
   allowToCalc: boolean,
   titleSize: Array<number>,
   oldDataLength: number,
+  maxIndex: number,
 };
 
 type TabsProps = {
@@ -424,6 +419,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
         oldDataLength: dataLength,
         allowToCalc,
         titleSize: state.titleSize,
+        maxIndex: state.maxIndex,
       };
     } else {
       returnData = {
@@ -436,6 +432,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
         oldDataLength: dataLength,
         allowToCalc,
         titleSize: [],
+        maxIndex: 0,
       };
     }
 
@@ -461,7 +458,9 @@ class TabHeader extends Component<TabsProps, TabsState> {
 
   matchPage() {
     const titleSize = this.getTabpaneWidthOrHeight();
-    const { allowToCalc } = this.state;
+
+    const { allowToCalc, maxIndex } = this.state;
+    const newMaxIndex = maxIndex ? maxIndex : this.getCurrentMaxIndex(titleSize);
     let { currentPage } = this.state;
     const { tabPosition, tabType, pagedType } = this.props;
     let offsetSize;
@@ -477,12 +476,31 @@ class TabHeader extends Component<TabsProps, TabsState> {
       pagedType === 'page' ? computePage(offsetSize - 50, actualSize) : titleSize.length;
     const arrowShow = offsetSize < actualSize;
     if (allowToCalc) {
-      currentPage = pagedType === 'page' ? totalPage : titleSize.length - 1;
+      currentPage = pagedType === 'page' ? totalPage : titleSize.length - newMaxIndex;
     }
-    this.setState({ arrowShow, totalPage, currentPage, titleSize, allowToCalc: false }, () => {
-      this.handleChangePage();
-    });
+    this.setState(
+      { arrowShow, totalPage, currentPage, titleSize, allowToCalc: false, maxIndex: newMaxIndex },
+      () => {
+        this.handleChangePage();
+      }
+    );
   }
+
+  getCurrentMaxIndex(titleSize: Array<number>) {
+    const { tabPosition } = this.props;
+    let maxIndex = 0;
+    let distance = 0;
+    const offsetSize = isVertical(tabPosition) ? this.offsetHeight : this.offsetWidth;
+    const length = titleSize.length;
+    for (let i = 0; i < length; i++) {
+      distance += titleSize[i] + 6;
+      if (distance < offsetSize) {
+        maxIndex = i;
+      }
+    }
+    return maxIndex;
+  }
+
   render() {
     this.titlePanel = [...Array(this.props.data.length)].map(() => React.createRef());
     return <React.Fragment>{this.getTabs()}</React.Fragment>;
@@ -503,7 +521,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
     borderThemeProps.propsConfig = { tabPosition };
     const tabsThemeProps = this.props.getPartOfThemeProps('TitleContainer');
     const moveDistance = this.computeMoveDistance();
-    const { isDisabledToPrev, isDisabledToNext } = this.getIsAllowToMove(moveDistance);
+    const { isDisabledToPrev, isDisabledToNext } = this.getIsAllowToMove();
     themeProps.propsConfig = { arrowShow };
 
     const prevPageThemeProps = deepMerge(
@@ -627,7 +645,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
     themeProps.propsConfig = { arrowShow, showAddBtn, addSize };
     const moveDistance = this.computeMoveDistance();
 
-    const { isDisabledToPrev, isDisabledToNext } = this.getIsAllowToMove(moveDistance);
+    const { isDisabledToPrev, isDisabledToNext } = this.getIsAllowToMove();
 
     const prevPageThemeProps = deepMerge(
       { themeConfig: { normal: { height: 31 } } },
@@ -748,13 +766,13 @@ class TabHeader extends Component<TabsProps, TabsState> {
   };
 
   computeMoveDistance() {
-    const { currentPage, totalPage, titleSize } = this.state;
+    const { currentPage, totalPage, titleSize, maxIndex } = this.state;
     const { pagedType } = this.props;
     let distance = 0;
     if (pagedType === 'single') {
       titleSize.forEach((item, index) => {
         if (currentPage !== 0 && index < currentPage) {
-          distance += item;
+          distance += titleSize[index + maxIndex];
         }
       });
     } else {
@@ -764,33 +782,20 @@ class TabHeader extends Component<TabsProps, TabsState> {
           distance += item;
         }
       });
-      const first = currentPage === 0 ? 0 : titleSize[0];
-      distance += first;
     }
     distance = Math.max(0, distance);
     return -distance;
   }
 
-  getIsAllowToMove(moveDistance: number) {
-    const { tabType, tabPosition } = this.props;
-    const { titleSize } = this.state;
-    let actualWidth;
-    let offsetSize;
-    if (isVertical(tabPosition)) {
-      actualWidth = this.getActualWidth('line', titleSize);
-      offsetSize = this.offsetHeight;
-    } else {
-      actualWidth = this.getActualWidth(tabType, titleSize);
-      offsetSize = this.offsetWidth;
-    }
-    const isDisabledToNext = moveDistance >= actualWidth;
-    const isDisabledToPrev = moveDistance === 0;
+  getIsAllowToMove() {
+    const { titleSize, currentPage, maxIndex } = this.state;
+    const isDisabledToNext = currentPage + maxIndex >= titleSize.length;
+    const isDisabledToPrev = currentPage === 0;
     return { isDisabledToPrev, isDisabledToNext };
   }
 
   getActualWidth(tabType: TabType, titleSize: Array<number>) {
-    const width = plusWidth(titleSize.length - 1, titleSize);
-    return matchType(tabType, 'window') ? width + WindowMarginLeft + AddButtonSize : width;
+    return plusWidth(titleSize.length - 1, titleSize);
   }
 
   onTabClick = (res: Object) => {
