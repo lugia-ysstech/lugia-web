@@ -251,23 +251,28 @@ export default () => {
         <Wrapper>
           <p>点状 虚线</p>
           <Steps orientation="horizontal" stepType={'dot'}>
-            <Step title="title1" stepStatus="finish" />
-            <Step title="title1" stepStatus="finish" />
-            <Step title="title2" stepStatus="process" isDashed={true} />
-            <Step title="title3" stepStatus="next" isDashed={true} />
-            <Step title="title4" stepStatus="wait" isDashed={true} />
-            <Step title="title5" stepStatus="error" isDashed={true} />
+            <Step description={'description1'} title="title1" stepStatus="finish" />
+            <Step description={'description1'} title="title1" stepStatus="finish" />
+            <Step
+              description={'description2'}
+              title="title2"
+              stepStatus="process"
+              isDashed={true}
+            />
+            <Step description={'description3'} title="title3" stepStatus="next" isDashed={true} />
+            <Step description={'description4'} title="title4" stepStatus="wait" isDashed={true} />
+            <Step description={'description5'} title="title5" stepStatus="error" isDashed={true} />
           </Steps>
         </Wrapper>
         <Wrapper>
           <p>点状 实线</p>
           <Steps orientation="horizontal" stepType={'dot'}>
             <Step title="title1" stepStatus="finish" />
-            <Step title="title1" stepStatus="finish" />
-            <Step title="title2" stepStatus="process" />
-            <Step title="title3" stepStatus="next" />
-            <Step title="title4" stepStatus="wait" />
-            <Step title="title5" stepStatus="error" />
+            <Step description={'description1'} title="title1" stepStatus="finish" />
+            <Step description={'description1'} title="title2" stepStatus="process" />
+            <Step description={'description2'} title="title3" stepStatus="next" />
+            <Step description={'description4'} title="title4" stepStatus="wait" />
+            <Step description={'description5'} title="title5" stepStatus="error" />
           </Steps>
         </Wrapper>
       </Theme>
