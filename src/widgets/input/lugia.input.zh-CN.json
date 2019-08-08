@@ -223,7 +223,7 @@
     "InputSuffix": {
       "name": "后缀图标",
       "desc": "输入框后缀自定义图标",
-      "normal": [["color"], ["fontSize"]],
+      "normal": [["color"], ["fontSize"], ["font"]],
       "hover": [],
       "clicked": [],
       "disabled": []
@@ -231,7 +231,7 @@
     "InputPrefix": {
       "name": "前缀图标",
       "desc": "输入框前缀自定义图标",
-      "normal": [["color"], ["fontSize"]],
+      "normal": [["color"], ["fontSize"], ["font"]],
       "hover": [],
       "clicked": [],
       "disabled": []
