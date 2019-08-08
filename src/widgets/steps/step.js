@@ -67,8 +67,32 @@ const StepOutContainer = CSSComponent({
     display: inline-flex;
   `,
 });
-const Title = CSSComponent({
+
+const BaseText = CSSComponent({
   tag: 'div',
+  className: 'StepBaseText',
+  normal: {
+    selectNames: [
+      ['fontSize'],
+      ['font'],
+      ['color'],
+      ['width'],
+      ['height'],
+      ['padding'],
+      ['margin'],
+    ],
+  },
+  css: css`
+    position: absolute;
+    white-space: normal;
+    display: block;
+    overflow: hidden;
+    word-break: keep-all;
+  `,
+});
+
+const Title = CSSComponent({
+  extend: BaseText,
   className: 'StepTitle',
   normal: {
     selectNames: [
@@ -80,16 +104,25 @@ const Title = CSSComponent({
       ['padding'],
       ['margin'],
     ],
+    getCSS(themeMeta, themeProps) {
+      const { propsConfig } = themeProps;
+      const { size, stepType, orientation, desAlign } = propsConfig;
+      const dir = orientation === 'horizontal' ? 'top' : 'left';
+      const position = orientation !== 'horizontal' ? `left:${px2remcss(5)};` : '';
+      const top = stepType === 'dot' ? 20 : size === 'normal' ? 30 : 25;
+
+      const textAlign = orientation === 'horizontal' && desAlign === 'center' ? 'center' : 'left';
+      const transform = textAlign === 'center' ? 'transform: translateX(-50%);left:50%;' : '';
+      return `margin-${dir}: ${px2remcss(top)};${position};text-align: ${textAlign};${transform}`;
+    },
     defaultTheme: {
       fontSize: 14,
     },
   },
-  css: css`
-    text-align: inherit;
-  `,
 });
+
 const Description = CSSComponent({
-  tag: 'div',
+  extend: BaseText,
   className: 'StepDescription',
   normal: {
     selectNames: [
@@ -101,35 +134,27 @@ const Description = CSSComponent({
       ['padding'],
       ['margin'],
     ],
-  },
-  css: css`
-    margin-top: ${px2remcss(6)};
-    text-align: inherit;
-  `,
-});
-const Content = CSSComponent({
-  tag: 'div',
-  className: 'StepContent',
-  normal: {
-    selectNames: [],
     getCSS(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
       const { size, stepType, orientation, desAlign } = propsConfig;
-      const dir = orientation === 'horizontal' ? 'top' : 'left';
-      const position = orientation !== 'horizontal' ? `left:${px2remcss(5)};` : '';
-      const top = stepType === 'dot' ? 20 : size === 'normal' ? 40 : 30;
+
+      let bottom = 0;
+      let left = 0;
+      if (orientation === 'horizontal') {
+        bottom = stepType === 'dot' || size === 'normal' ? 40 : 35;
+      } else {
+        bottom = stepType === 'dot' ? 20 : size === 'normal' ? 10 : 15;
+        left = stepType === 'dot' ? 25 : size === 'normal' ? 35 : 30;
+      }
+      const leftPosition = orientation !== 'horizontal' ? `left:${px2remcss(left)};` : '';
       const textAlign = orientation === 'horizontal' && desAlign === 'center' ? 'center' : 'left';
-      const transform = textAlign === 'center' ? 'transform: translateX(-40%);' : '';
-      return `width:${px2remcss(200)};margin-${dir}: ${px2remcss(
-        top
-      )};${position}text-align: ${textAlign};${transform}`;
+      const transform = textAlign === 'center' ? 'transform: translateX(-50%);left:50%;' : '';
+      return `text-align: ${textAlign};${transform};bottom:${px2remcss(-bottom)};${leftPosition}`;
+    },
+    defaultTheme: {
+      fontSize: 14,
     },
   },
-  css: css`
-    position: absolute;
-    white-space: normal;
-    display: block;
-  `,
 });
 const SimpleLineContainer = CSSComponent({
   tag: 'div',
@@ -747,7 +772,7 @@ class Step extends React.Component<StepProps, StepState> {
   }
 
   getDesc() {
-    const { description, stepType } = this.props;
+    const { description, size, stepType, orientation, desAlign } = this.props;
     const { stepStatus } = this.state;
     if (description && description !== undefined) {
       const resultTheme = this.getThemeNormalConfig(
@@ -755,41 +780,40 @@ class Step extends React.Component<StepProps, StepState> {
       );
       const desThemeProps = deepMerge(
         resultTheme,
-        this.props.getPartOfThemeProps('StepDescription')
+        this.props.getPartOfThemeProps('StepDescription', {
+          props: {
+            size,
+            stepType,
+            orientation,
+            desAlign,
+          },
+        })
       );
       return <Description themeProps={desThemeProps}>{description}</Description>;
     }
     return null;
   }
 
-  getContent() {
+  getTitle() {
     const { title, size, orientation, desAlign, stepType } = this.props;
     const { stepStatus } = this.state;
-    const contentThemeProps = this.props.getPartOfThemeProps('StepOutContainer', {
-      props: {
-        size,
-        stepType,
-        orientation,
-        desAlign,
-      },
-    });
 
     const resultTheme = this.getThemeNormalConfig(
       this.getThemeColorConfig('color', this.getStepFontColor(stepStatus, stepType))
     );
 
-    const titleThemeProps = deepMerge(resultTheme, this.props.getPartOfThemeProps('StepTitle'));
-    return (
-      <Content
-        themeProps={contentThemeProps}
-        orientation={orientation}
-        size={size}
-        desAlign={desAlign}
-      >
-        <Title themeProps={titleThemeProps}>{title}</Title>
-        {this.getDesc()}
-      </Content>
+    const titleThemeProps = deepMerge(
+      resultTheme,
+      this.props.getPartOfThemeProps('StepTitle', {
+        props: {
+          size,
+          stepType,
+          orientation,
+          desAlign,
+        },
+      })
     );
+    return <Title themeProps={titleThemeProps}>{title} </Title>;
   }
 
   getStepHead() {
@@ -806,10 +830,11 @@ class Step extends React.Component<StepProps, StepState> {
       );
       return (
         <DotContainer themeProps={dotThemeProps}>
-          {this.matcLine()}
+          {this.matchLine()}
           <DotInnerContainer themeProps={dotThemeProps}>
             <Dot themeProps={dotThemeProps} />
-            {this.getContent()}
+            {this.getTitle()}
+            {this.getDesc()}
           </DotInnerContainer>
         </DotContainer>
       );
@@ -823,13 +848,13 @@ class Step extends React.Component<StepProps, StepState> {
           },
         })}
       >
-        {this.matcLine()}
+        {this.matchLine()}
         {this.getStep()}
       </StepContainer>
     );
   }
 
-  matcLine() {
+  matchLine() {
     const { stepType, isFirst, orientation } = this.props;
     if (isFirst) {
       return null;
@@ -1027,7 +1052,8 @@ class Step extends React.Component<StepProps, StepState> {
             />
             {this.getStepNumber()}
           </StepInner>
-          {this.getContent()}
+          {this.getTitle()}
+          {this.getDesc()}
         </StepInnerContainer>
       );
     }
@@ -1086,7 +1112,8 @@ class Step extends React.Component<StepProps, StepState> {
             viewClass={iconViewClass}
             singleTheme
           />
-          {this.getContent()}
+          {this.getTitle()}
+          {this.getDesc()}
         </IconContainer>
       );
     }

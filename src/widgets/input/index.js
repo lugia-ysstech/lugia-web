@@ -23,6 +23,7 @@ import { deepMerge } from '@lugia/object-utils';
 
 import { getBorder, getBoxShadow } from '@lugia/theme-utils';
 import { getBorderRadius } from '../theme/CSSProvider';
+import { ObjectUtils } from '@lugia/type-utils';
 const { px2remcss } = units;
 const {
   themeColor,
@@ -466,11 +467,22 @@ class TextBox extends Component<InputProps, InputState> {
     return result;
   }
 
+  getFixIcon(fix: ReactDOM, WidgetName: string): React$Element<any> {
+    if (ObjectUtils.isString(fix)) {
+      return (
+        <Icon singleTheme {...this.props.getPartOfThemeHocProps(WidgetName)} iconClass={fix} />
+      );
+    }
+    return fix;
+  }
+
   generatePrefix(): React$Element<any> | null {
     const { prefix } = this.props;
     const PrefixThemeProps = this.props.getPartOfThemeProps('InputPrefix');
     if (prefix) {
-      return <Prefix themeProps={PrefixThemeProps}>{prefix}</Prefix>;
+      return (
+        <Prefix themeProps={PrefixThemeProps}>{this.getFixIcon(prefix, 'InputPrefix')}</Prefix>
+      );
     }
     return null;
   }
@@ -479,7 +491,9 @@ class TextBox extends Component<InputProps, InputState> {
     const { suffix } = this.props;
     const SuffixThemeProps = this.props.getPartOfThemeProps('InputSuffix');
     if (suffix) {
-      return <Suffix themeProps={SuffixThemeProps}>{suffix}</Suffix>;
+      return (
+        <Suffix themeProps={SuffixThemeProps}>{this.getFixIcon(suffix, 'InputSuffix')}</Suffix>
+      );
     }
     return this.getClearButton();
   }
