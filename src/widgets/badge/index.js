@@ -14,6 +14,9 @@ import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import CSSComponent, { StaticComponent, css } from '@lugia/theme-css-hoc';
 import { getBoxShadow } from '@lugia/theme-utils';
 import colorsFunc from '../css/stateColor';
+import { units } from '@lugia/css';
+
+const { px2remcss } = units;
 
 const { dangerColor, defaultColor } = colorsFunc();
 
@@ -80,6 +83,7 @@ const Container: Object = StaticComponent({
   tag: 'span',
   className: 'BadgeContainer',
   css: css`
+    ${props => (!props.hasChildren ? `width:${px2remcss(10)};height:${px2remcss(10)};` : '')};
     background: transparent;
     box-sizing: border-box;
     position: relative;
@@ -136,9 +140,11 @@ class BadgeBox extends Component<BadgeProps, BadgeState> {
     );
   }
   render() {
+    const { children } = this.props;
+    const hasChildren = !!children;
     return (
-      <Container>
-        {this.props.children}
+      <Container hasChildren={hasChildren}>
+        {children}
         {this.getDot()}
       </Container>
     );
