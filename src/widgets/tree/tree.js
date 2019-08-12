@@ -63,6 +63,8 @@ export type TreeProps = {
   __navmenu: boolean,
   switchIconNames?: Object,
   getPartOfThemeProps: Function,
+  renderSuffix?: Function,
+  onRightClick?: Function,
 };
 
 export type TreeState = {

@@ -307,8 +307,8 @@ class Tree extends React.Component {
     this.props.onMouseLeave({ event: e, node: treeNode });
   }
 
-  onContextMenu(e, treeNode) {
-    this.props.onRightClick({ event: e, node: treeNode });
+  onContextMenu(e, treeNode, item) {
+    this.props.onRightClick({ event: e, node: treeNode, item });
   }
 
   // all keyboard events callbacks run from here at first
