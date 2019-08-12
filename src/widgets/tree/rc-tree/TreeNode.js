@@ -304,10 +304,6 @@ class TreeNode extends React.Component {
     return newChildren;
   }
 
-  // renderSuffix(suffix: Object) {
-  //   return <Switch themeProps={this.props.getPartOfThemeProps('Switch')}>{suffix}</Switch>;
-  // }
-
   isChecked() {
     const { mutliple, checked, selected } = this.props;
     return mutliple ? checked : selected;
