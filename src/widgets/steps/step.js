@@ -950,7 +950,7 @@ class Step extends React.Component<StepProps, StepState> {
     return color;
   }
   getStep() {
-    const { icon, stepType, size, orientation } = this.props;
+    const { icon = 'lugia-icon-financial_cloud', stepType, size, orientation } = this.props;
     const { stepStatus } = this.state;
     const theIcon = this.getIcon(stepStatus);
     if (stepType === 'flat' || stepType === 'simple') {
