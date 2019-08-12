@@ -23,7 +23,8 @@
     },
     "count": {
       "type": "number",
-      "desc": "展示的数字，大于封顶数时 显示为${overflowCount}+,为 0 时隐藏"
+      "desc": "展示的数字，大于封顶数时 显示为${overflowCount}+,为 0 时隐藏",
+      "defaultValue": 0
     }
   },
   "category": ["数据展示"],

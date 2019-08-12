@@ -83,7 +83,12 @@ const Container: Object = StaticComponent({
   tag: 'span',
   className: 'BadgeContainer',
   css: css`
-    ${props => (!props.hasChildren ? `width:${px2remcss(10)};height:${px2remcss(10)};` : '')};
+    ${props => {
+      if (!props.hasChildren) {
+        const size = px2remcss(10);
+        return `width:${size};height:${size};`;
+      }
+    }};
     background: transparent;
     box-sizing: border-box;
     position: relative;
@@ -114,19 +119,17 @@ class BadgeBox extends Component<BadgeProps, BadgeState> {
 
   getDot() {
     const { showZero = false, count = 0 } = this.props;
-
     const hasCount = 'count' in this.props;
     const hasShowZero = 'showZero' in this.props;
     const isZero = count === 0 || !count;
+    const dot = <Dot themeProps={this.props.getPartOfThemeProps('BadgeDot')} />;
+
     if (hasShowZero && isZero) {
-      return showZero ? this.getNumberTurn(0) : null;
+      return showZero ? this.getNumberTurn(0) : dot;
     }
-
     if (hasCount) {
-      return showZero || !isZero ? this.getNumberTurn(count) : null;
+      return showZero || !isZero ? this.getNumberTurn(count) : dot;
     }
-
-    return <Dot themeProps={this.props.getPartOfThemeProps('BadgeDot')} />;
   }
 
   getNumberTurn(count: ?number) {
