@@ -391,7 +391,6 @@ export const SuffixWrap = StaticComponent({
     align-items: center;
     z-index: 100;
     transition: all 0.5s;
-    opacity: 0;
     font-size: ${px2remcss(20)};
   `,
 });
