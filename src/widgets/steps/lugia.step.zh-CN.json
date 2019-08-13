@@ -50,7 +50,8 @@
     },
     "icon": {
       "type": "icon",
-      "desc": "步骤条显示的图标"
+      "desc": "步骤条显示的图标",
+      "defaultValue": "lugia-icon-financial_cloud"
     },
     "isFirst": {
       "type": "boolean",
