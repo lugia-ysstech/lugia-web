@@ -130,6 +130,7 @@ class BadgeBox extends Component<BadgeProps, BadgeState> {
     if (hasCount) {
       return showZero || !isZero ? this.getNumberTurn(count) : dot;
     }
+    return dot;
   }
 
   getNumberTurn(count: ?number) {
