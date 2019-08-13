@@ -367,3 +367,31 @@ export const FlexBox = CSSComponent({
     padding-right: ${px2remcss(10)};
   `,
 });
+
+export const SuffixWrap = StaticComponent({
+  tag: 'div',
+  className: 'SuffixWrap',
+  normal: {
+    selectNames: [],
+  },
+  hover: {
+    selectNames: [],
+  },
+  active: {
+    selectNames: [],
+  },
+  css: css`
+    position: absolute;
+    height: 100%;
+    right: ${px2remcss(15)};
+    display: flex;
+    overflow: hidden;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    transition: all 0.5s;
+    opacity: 0;
+    font-size: ${px2remcss(20)};
+  `,
+});

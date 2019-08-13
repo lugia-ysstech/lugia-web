@@ -18,6 +18,7 @@ import {
   TitleSpan,
   Li,
   NavLi,
+  SuffixWrap,
 } from '../../css/tree';
 
 const defaultTitle = '---';
@@ -67,8 +68,9 @@ class TreeNode extends React.Component {
   };
 
   onContextMenu = e => {
+    const { item } = this.props;
     e.preventDefault();
-    this.props.root.onContextMenu(e, this);
+    this.props.root.onContextMenu(e, this, item);
   };
 
   onDragStart = e => {
@@ -302,10 +304,6 @@ class TreeNode extends React.Component {
     return newChildren;
   }
 
-  renderSuffix(suffix: Object) {
-    return <Switch themeProps={this.props.getPartOfThemeProps('Switch')}>{suffix}</Switch>;
-  }
-
   isChecked() {
     const { mutliple, checked, selected } = this.props;
     return mutliple ? checked : selected;
@@ -448,6 +446,13 @@ class TreeNode extends React.Component {
         delete normal.height;
       }
     }
+
+    const renderSuffix = () => {
+      const { renderSuffix, item } = this.props;
+
+      return <SuffixWrap>{renderSuffix ? renderSuffix(item) : null}</SuffixWrap>;
+    };
+
     const ItemWrap = __navmenu ? NavLi : Li;
     return (
       <ItemWrap
@@ -476,6 +481,7 @@ class TreeNode extends React.Component {
               : canRenderSwitch
               ? this.renderSwitch(expandedState)
               : renderNoopSwitch()}
+            {renderSuffix()}
           </FlexBox>
         </FlexWrap>
         {newChildren}

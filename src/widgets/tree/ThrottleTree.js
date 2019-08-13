@@ -113,6 +113,8 @@ class ScrollerTree extends React.Component<any, any> {
         getPartOfThemeHocProps,
         showSwitch,
         __navmenu,
+        renderSuffix,
+        onRightClick,
         switchIconNames,
         igronSelectField,
         onlySelectLeaf,
@@ -135,8 +137,11 @@ class ScrollerTree extends React.Component<any, any> {
             showSwitch={showSwitch}
             suffix={suffix}
             __navmenu={__navmenu}
+            renderSuffix={renderSuffix}
+            onRightClick={onRightClick}
             switchIconNames={switchIconNames}
             key={key}
+            item={item}
             itemHeight={itemHeight}
             inlineType={inlineType}
             shape={shape}
@@ -159,9 +164,12 @@ class ScrollerTree extends React.Component<any, any> {
           showSwitch={showSwitch}
           suffix={suffix}
           __navmenu={__navmenu}
+          renderSuffix={renderSuffix}
+          onRightClick={onRightClick}
           switchIconNames={switchIconNames}
           key={key}
           title={title}
+          item={item}
           itemHeight={itemHeight}
           inlineType={inlineType}
           mutliple={mutliple}

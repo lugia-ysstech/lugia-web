@@ -139,6 +139,26 @@
           "type": "string[]"
         }
       ]
+    },
+    "onRightClick": {
+      "desc": "单选树的右击事件",
+      "args": [
+        {
+          "name": "target",
+          "desc": "包含事件对象、节点信息和节点数据等对象几何",
+          "type": "object"
+        }
+      ]
+    },
+    "renderSuffix": {
+      "desc": "自定义后缀图标的回调函数",
+      "args": [
+        {
+          "name": "item",
+          "desc": "节点数据",
+          "type": "object"
+        }
+      ]
     }
   },
 
