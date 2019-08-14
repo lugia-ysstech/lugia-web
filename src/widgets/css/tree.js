@@ -383,7 +383,7 @@ export const SuffixWrap = StaticComponent({
   css: css`
     position: absolute;
     height: 100%;
-    right: ${px2remcss(15)};
+    right: ${px2remcss(12)};
     display: flex;
     overflow: hidden;
     box-sizing: border-box;
@@ -391,7 +391,5 @@ export const SuffixWrap = StaticComponent({
     align-items: center;
     z-index: 100;
     transition: all 0.5s;
-    opacity: 0;
-    font-size: ${px2remcss(20)};
   `,
 });
