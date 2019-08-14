@@ -109,7 +109,10 @@ const Title = CSSComponent({
       const { propsConfig } = themeProps;
       const { size, stepType, orientation, desAlign } = propsConfig;
       const dir = orientation === 'horizontal' ? 'top' : 'left';
-      const position = orientation !== 'horizontal' ? `left:${px2remcss(5)};` : '';
+      const position =
+        orientation !== 'horizontal'
+          ? `left:${px2remcss(5)};transform: translateY(-50%);top:50%;`
+          : '';
       const top = stepType === 'dot' ? 20 : size === 'normal' ? 30 : 25;
 
       const textAlign = orientation === 'horizontal' && desAlign === 'center' ? 'center' : 'left';
