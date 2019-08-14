@@ -14,6 +14,7 @@ import Popconfirm from './popconfirm';
 import Input from '../input/index';
 import Widget from '../consts';
 import Theme from '../theme';
+import Popover from '../popover/popover';
 
 const Wrapper = styled.div`
   margin: 100px;
@@ -88,12 +89,6 @@ export const WrapperDemo = () => {
           },
         },
       },
-      PopconfirmTitle: {
-        normal: {
-          color: 'red',
-          fontSize: 18,
-        },
-      },
       PopconfirmIcon: {
         normal: {
           color: 'red',
@@ -111,7 +106,7 @@ export const WrapperDemo = () => {
   return (
     <Wrapper>
       <Theme config={config}>
-        <div style={{ marginLeft: 50, whiteSpace: 'nowrap' }}>
+        <div style={{ marginLeft: 80, whiteSpace: 'nowrap' }}>
           <Popconfirm placement="topLeft" title={text} action={'click'}>
             <Direction type="primary">TL</Direction>
           </Popconfirm>
@@ -133,7 +128,7 @@ export const WrapperDemo = () => {
             <Direction type="primary">LB</Direction>
           </Popconfirm>
         </div>
-        <div style={{ width: 70, marginLeft: 200 }}>
+        <div style={{ width: 70, marginLeft: 320 }}>
           <Popconfirm placement="rightTop" title={text}>
             <Direction type="primary">RT</Direction>
           </Popconfirm>
@@ -144,7 +139,7 @@ export const WrapperDemo = () => {
             <Direction type="primary">RB</Direction>
           </Popconfirm>
         </div>
-        <div style={{ marginLeft: 50, clear: 'both', whiteSpace: 'nowrap' }}>
+        <div style={{ marginLeft: 80, clear: 'both', whiteSpace: 'nowrap' }}>
           <Popconfirm placement="bottomLeft" title={text}>
             <Direction type="primary">BL</Direction>
           </Popconfirm>
@@ -157,13 +152,20 @@ export const WrapperDemo = () => {
         </div>
 
         <br />
-        <Popconfirm title={text} action={'focus'}>
+        <Popconfirm title={text} action={'focus'} placement="bottom">
           <Input placeholder={'聚焦弹出'} />
         </Popconfirm>
-        <Popconfirm title={text} action={'hover'}>
+        <Popconfirm title={text} action={'hover'} placement="bottom">
           <Direction type="primary"> 悬停</Direction>
         </Popconfirm>
-        <Popconfirm title={text} action={'click'} cancelText="No" okText="yes" okType="danger">
+        <Popconfirm
+          title={text}
+          action={'click'}
+          cancelText="No"
+          okText="yes"
+          okType="danger"
+          placement="bottom"
+        >
           <Direction type="primary">点击</Direction>
         </Popconfirm>
         <br />
