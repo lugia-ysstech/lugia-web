@@ -65,9 +65,6 @@ const Divider = CSSComponent({
       transform: translateY(50%);
     }`;
     },
-    defaultTheme: {
-      width: 500,
-    },
   },
   css: css`
     display: table;
