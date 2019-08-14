@@ -163,7 +163,11 @@ class Steps extends Component<StepsProps, StepsState> {
         'description',
         getAttributeFromObject(child.props, 'description', '')
       ),
-      icon: getAttributeFromObject(child, 'icon', getAttributeFromObject(child.props, 'icon', '')),
+      icon: getAttributeFromObject(
+        child,
+        'icon',
+        getAttributeFromObject(child.props, 'icon', 'lugia-icon-financial_cloud')
+      ),
       isDashed: getAttributeFromObject(
         child,
         'isDashed',
