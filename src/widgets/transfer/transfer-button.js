@@ -51,7 +51,7 @@ export default class TransferButton extends React.Component<
   }
 
   getButtonTheme = () => {
-    const { theme } = this.props;
+    const { theme = {} } = this.props;
     const { viewClass, theme: buttonTheme } = theme;
     const defaultTheme = {
       [viewClass]: {
