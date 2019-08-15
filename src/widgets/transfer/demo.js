@@ -192,6 +192,24 @@ export default class TransferDemo extends React.Component<any, any> {
             },
           },
         },
+        TransferSearchInput: {
+          Container: {
+            normal: {
+              width: 160,
+              margin: {
+                top: 10,
+                right: 10,
+                bottom: 10,
+                left: 10,
+              },
+            },
+          },
+          Input: {
+            normal: {
+              background: { color: 'red' },
+            },
+          },
+        },
       },
     };
     return (
