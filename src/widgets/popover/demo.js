@@ -16,8 +16,8 @@ const buttonWidth = 80;
 const Direction = styled(Button)`
   width: ${buttonWidth}px;
 `;
-const description = 'this is description';
-const title = 'this is title';
+const description = 'This is description';
+const title = 'This is title';
 class InnerCloseDemo extends React.Component<any, any> {
   state = {
     visible: false,
@@ -126,8 +126,8 @@ const Wrapper = styled.div`
 `;
 
 export const WrapperDemo = () => {
-  const text = 'this is title ';
-  const description = 'this is description';
+  const text = 'This is title ';
+  const description = 'This is description';
   const config = {
     [Widget.Popover]: {
       PopoverClearIcon: {
@@ -150,7 +150,7 @@ export const WrapperDemo = () => {
   return (
     <Wrapper>
       <Theme config={config}>
-        <div style={{ marginLeft: 50, whiteSpace: 'nowrap' }}>
+        <div style={{ marginLeft: 80, whiteSpace: 'nowrap' }}>
           <Popover placement="topLeft" title={text} action={'click'} description={description}>
             <Direction type="primary">TL</Direction>
           </Popover>
@@ -192,7 +192,7 @@ export const WrapperDemo = () => {
             <Direction type="primary">LB</Direction>
           </Popover>
         </div>
-        <div style={{ width: 50, marginLeft: 200 }}>
+        <div style={{ width: 50, marginLeft: 320 }}>
           <Popover
             placement="rightTop"
             title={text}
@@ -215,7 +215,7 @@ export const WrapperDemo = () => {
             <Direction type="primary">RB</Direction>
           </Popover>
         </div>
-        <div style={{ marginLeft: 50, clear: 'both', whiteSpace: 'nowrap' }}>
+        <div style={{ marginLeft: 80, clear: 'both', whiteSpace: 'nowrap' }}>
           <Popover
             placement="bottomLeft"
             title={text}
@@ -244,6 +244,7 @@ export const WrapperDemo = () => {
       <Popover
         title={text}
         action={'focus'}
+        placement="bottom"
         description={[<div>{description}</div>, <div>{description}</div>]}
       >
         <Input placeholder={'聚焦弹出'} />
@@ -251,6 +252,7 @@ export const WrapperDemo = () => {
       <Popover
         title={text}
         action={'hover'}
+        placement="bottom"
         description={[<div>{description}</div>, <div>{description}</div>]}
       >
         <Direction type="primary"> 悬停</Direction>
@@ -258,6 +260,7 @@ export const WrapperDemo = () => {
       <Popover
         title={text}
         action={'click'}
+        placement="bottom"
         description={[<div>{description}</div>, <div>{description}</div>]}
       >
         <Direction type="primary">点击</Direction>

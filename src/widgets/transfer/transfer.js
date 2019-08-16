@@ -15,7 +15,6 @@ import Tree from '../tree';
 import Menu from '../menu';
 import Input from '../input';
 import CheckBox from '../checkbox';
-import Theme from '../theme';
 import SearchIcon from '../icon/SearchIcon';
 import type { TransferProps, TransferState } from '../css/transfer';
 import { CancelBox, CancelBoxItem, Check, CheckText, TransFer, TreeWrap } from '../css/transfer';
@@ -165,7 +164,6 @@ export default ThemeProvider(
     }
 
     getSearchBox() {
-      const { inputView } = this.getInputThemeConfig();
       const { inputValue } = this.state;
       const { showSearch } = this.props;
       const inputConfig = {};
@@ -174,13 +172,12 @@ export default ThemeProvider(
       }
 
       return showSearch ? (
-        <Theme config={inputView}>
-          <Input
-            onChange={this.handleInputChange}
-            placeholder={'搜索你想知道的内容'}
-            {...inputConfig}
-          />
-        </Theme>
+        <Input
+          onChange={this.handleInputChange}
+          placeholder={'搜索你想知道的内容'}
+          {...inputConfig}
+          {...this.getInputThemeConfig()}
+        />
       ) : null;
     }
 
@@ -221,19 +218,24 @@ export default ThemeProvider(
     }
 
     getInputThemeConfig() {
-      const { theme = {} } = this.props;
-      const { width = 200 } = theme;
+      const { inputTheme = {} } = this.props;
+      const { viewClass, theme } = inputTheme;
+      const width = 200;
       const inputView = {
-        [Widget.Input]: {
-          Input: {
+        [viewClass]: {
+          Container: {
             normal: {
-              width: width - 16,
               margin: {
                 top: 8,
                 right: 8,
                 bottom: 16,
                 left: 8,
               },
+            },
+          },
+          Input: {
+            normal: {
+              width: width - 16,
               border: getBorder({ width: 1, style: 'solid', color: '#e8e8e8' }),
             },
           },
@@ -245,7 +247,9 @@ export default ThemeProvider(
           },
         },
       };
-      return { inputView };
+      const theInputTheme = deepMerge(inputView, theme);
+
+      return { viewClass, theme: theInputTheme };
     }
 
     getCancelBoxHeight = () => {

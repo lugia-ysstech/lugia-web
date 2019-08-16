@@ -99,7 +99,7 @@ exports[`popover Demo Component JSON 1`] = `
   <div
     style={
       Object {
-        "marginLeft": 50,
+        "marginLeft": 80,
         "whiteSpace": "nowrap",
       }
     }
@@ -387,7 +387,7 @@ exports[`popover Demo Component JSON 1`] = `
   <div
     style={
       Object {
-        "marginLeft": 200,
+        "marginLeft": 320,
         "width": 50,
       }
     }
@@ -532,7 +532,7 @@ exports[`popover Demo Component JSON 1`] = `
     style={
       Object {
         "clear": "both",
-        "marginLeft": 50,
+        "marginLeft": 80,
         "whiteSpace": "nowrap",
       }
     }

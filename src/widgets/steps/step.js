@@ -21,6 +21,7 @@ import changeColor from '../css/utilsColor';
 const {
   themeColor,
   blackColor,
+  darkGreyColor,
   successColor,
   lightGreyColor,
   dangerColor,
@@ -108,7 +109,10 @@ const Title = CSSComponent({
       const { propsConfig } = themeProps;
       const { size, stepType, orientation, desAlign } = propsConfig;
       const dir = orientation === 'horizontal' ? 'top' : 'left';
-      const position = orientation !== 'horizontal' ? `left:${px2remcss(5)};` : '';
+      const position =
+        orientation !== 'horizontal'
+          ? `left:${px2remcss(5)};transform: translateY(-50%);top:50%;`
+          : '';
       const top = stepType === 'dot' ? 20 : size === 'normal' ? 30 : 25;
 
       const textAlign = orientation === 'horizontal' && desAlign === 'center' ? 'center' : 'left';
@@ -152,7 +156,7 @@ const Description = CSSComponent({
       return `text-align: ${textAlign};${transform};bottom:${px2remcss(-bottom)};${leftPosition}`;
     },
     defaultTheme: {
-      fontSize: 14,
+      fontSize: 12,
     },
   },
 });
@@ -692,7 +696,7 @@ class Step extends React.Component<StepProps, StepState> {
       : { color };
   }
 
-  getStepFontColor(stepStatus: StepStatus, stepType: StepType) {
+  getStepFontColor(stepStatus: StepStatus, stepType: StepType, type: string) {
     let resultConfigColor;
     switch (stepStatus) {
       case 'error':
@@ -700,11 +704,12 @@ class Step extends React.Component<StepProps, StepState> {
         resultConfigColor = errorColor;
         break;
       case 'finish':
-        const finishColor = stepType === 'flat' ? lightThemeColor : blackColor;
+        const finishColor =
+          stepType === 'flat' ? lightThemeColor : type === 'desc' ? darkGreyColor : blackColor;
         resultConfigColor = finishColor;
         break;
       case 'process':
-        const processColor = blackColor;
+        const processColor = type === 'desc' ? darkGreyColor : blackColor;
         resultConfigColor = processColor;
         break;
       case 'next':
@@ -776,7 +781,7 @@ class Step extends React.Component<StepProps, StepState> {
     const { stepStatus } = this.state;
     if (description && description !== undefined) {
       const resultTheme = this.getThemeNormalConfig(
-        this.getThemeColorConfig('color', this.getStepFontColor(stepStatus, stepType))
+        this.getThemeColorConfig('color', this.getStepFontColor(stepStatus, stepType, 'desc'))
       );
       const desThemeProps = deepMerge(
         resultTheme,

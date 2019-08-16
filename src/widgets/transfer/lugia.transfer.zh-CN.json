@@ -532,6 +532,69 @@
       "desc": "为穿梭框配置左右面板头部文字样式",
       "normal": [["padding"], ["color"], ["font"]]
     },
+    "TransferSearchInput":{
+      "name": "穿梭框面板搜索框样式",
+      "desc": "为穿梭框配置左右面板搜索框样式",
+      "theme": {
+        "Container": {
+          "name": "输入框外部容器",
+          "desc": "输入框外部容器",
+          "normal": [["width"], ["height"], ["margin"], ["padding"]]
+        },
+        "Input": {
+          "name": "输入框主体",
+          "desc": "输入框主体结构",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["fontSize"],
+            ["font"],
+            ["color"],
+            ["background"],
+            ["border"],
+            ["borderRadius"],
+            ["cursor"],
+            ["opacity"]
+          ],
+          "hover": [
+            ["border"],
+            ["borderRadius"],
+            ["cursor"],
+            ["background"],
+            ["opacity"],
+            ["boxShadow"]
+          ],
+          "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"], ["background"]],
+          "disabled": [
+            ["fontSize"],
+            ["font"],
+            ["color"],
+            ["background"],
+            ["border"],
+            ["borderRadius"],
+            ["cursor"],
+            ["padding"],
+            ["opacity"]
+          ]
+        },
+        "InputSuffix": {
+          "name": "后缀图标",
+          "desc": "输入框后缀自定义图标",
+          "normal": [["color"], ["fontSize"], ["font"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
+        },
+        "InputClearButton": {
+          "name": "输入框清除图标",
+          "desc": "输入框后缀清除图标",
+          "normal": [["color"], ["fontSize"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
+        }
+      }
+    },
     "TransferCancelBox": {
       "name": "穿梭框面板取消项盒子样式",
       "desc": "为穿梭框配置右面板取消项盒子样式",
