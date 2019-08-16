@@ -41,6 +41,10 @@
     "react-dom": ">16.0.0",
     "styled-components": "4.2.0"
   },
+  "repository": {
+    "type": "https://github.com/lugia-ysstech/lugia-web"
+  },
+  "license": "Apache License 2.0",
   "author": "ysstech",
   "scripts": {
     "prettier": "prettier --write",
