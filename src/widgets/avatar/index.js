@@ -38,7 +38,10 @@ const AvatarWrapper = CSSComponent({
         ? SmallHeight
         : DefaultHeight;
       return `
-      line-height: ${px2remcss(theSize)};`;
+      line-height: ${px2remcss(theSize)};
+      min-width: ${px2remcss(24)};
+      min-height: ${px2remcss(24)};
+      `;
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
