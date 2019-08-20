@@ -485,7 +485,10 @@ class TabHeader extends Component<TabsProps, TabsState> {
       pagedType === 'page' ? computePage(offsetSize - 50, actualSize) : titleSize.length;
     const arrowShow = offsetSize < actualSize;
     if (allowToCalc) {
-      currentPage = pagedType === 'page' ? totalPage : titleSize.length - newMaxIndex;
+      currentPage =
+        pagedType === 'page'
+          ? this.getCurrentPageByActivityValue()
+          : titleSize.length - newMaxIndex;
     }
     this.setState(
       { arrowShow, totalPage, currentPage, titleSize, allowToCalc: false, maxIndex: newMaxIndex },
@@ -508,6 +511,25 @@ class TabHeader extends Component<TabsProps, TabsState> {
       }
     }
     return maxIndex;
+  }
+
+  getCurrentPageByActivityValue() {
+    const { data, activityValue, totalPage } = this.state;
+    const totalLength = data.length;
+    let currentIndex = 0;
+    data.forEach((item, index) => {
+      if (item.key === activityValue) {
+        currentIndex = index;
+      }
+    });
+    const len = Math.floor(totalLength / totalPage);
+    let currentPage = 0;
+    for (let i = 1; i <= totalPage; i++) {
+      if (currentIndex > i * len) {
+        currentPage += 1;
+      }
+    }
+    return currentPage;
   }
 
   render() {
@@ -620,7 +642,10 @@ class TabHeader extends Component<TabsProps, TabsState> {
 
   handleChangePage = (type: EditEventType) => {
     let { currentPage, totalPage, pagedCount } = this.state;
+    console.log('currentPage before', currentPage);
+
     currentPage = this.getPagedCount(currentPage, totalPage, type);
+    console.log('currentPage', currentPage, 'pagedCount', pagedCount, 'totalPage', totalPage);
     this.setState({ currentPage, pagedCount });
   };
 
