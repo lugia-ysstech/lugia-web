@@ -468,7 +468,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
   matchPage() {
     const titleSize = this.getTabpaneWidthOrHeight();
 
-    const { allowToCalc, maxIndex } = this.state;
+    const { allowToCalc, maxIndex, data, activityValue } = this.state;
     const newMaxIndex = maxIndex ? maxIndex : this.getCurrentMaxIndex(titleSize);
     let { currentPage } = this.state;
     const { tabPosition, tabType, pagedType } = this.props;
@@ -487,7 +487,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
     if (allowToCalc) {
       currentPage =
         pagedType === 'page'
-          ? this.getCurrentPageByActivityValue()
+          ? this.getCurrentPageByActivityValue(data, activityValue, totalPage)
           : titleSize.length - newMaxIndex;
     }
     this.setState(
@@ -513,23 +513,14 @@ class TabHeader extends Component<TabsProps, TabsState> {
     return maxIndex;
   }
 
-  getCurrentPageByActivityValue() {
-    const { data, activityValue, totalPage } = this.state;
-    const totalLength = data.length;
+  getCurrentPageByActivityValue(data, activityValue, totalPage) {
     let currentIndex = 0;
     data.forEach((item, index) => {
       if (item.key === activityValue) {
-        currentIndex = index;
+        currentIndex = index + 1;
       }
     });
-    const len = Math.floor(totalLength / totalPage);
-    let currentPage = 0;
-    for (let i = 1; i <= totalPage; i++) {
-      if (currentIndex > i * len) {
-        currentPage += 1;
-      }
-    }
-    return currentPage;
+    return Math.max(Math.ceil(currentIndex / Math.ceil(data.length / totalPage)) - 1, 0);
   }
 
   render() {
