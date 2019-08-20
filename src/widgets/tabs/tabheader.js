@@ -642,10 +642,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
 
   handleChangePage = (type: EditEventType) => {
     let { currentPage, totalPage, pagedCount } = this.state;
-    console.log('currentPage before', currentPage);
-
     currentPage = this.getPagedCount(currentPage, totalPage, type);
-    console.log('currentPage', currentPage, 'pagedCount', pagedCount, 'totalPage', totalPage);
     this.setState({ currentPage, pagedCount });
   };
 
