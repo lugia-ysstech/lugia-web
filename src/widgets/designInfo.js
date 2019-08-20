@@ -37,6 +37,7 @@ import Transfer from './transfer';
 import Tree from './tree';
 import TreeSelect from './tree-select';
 import Upload from './upload';
+
 export default [
   {
     meta: {
@@ -881,7 +882,11 @@ export default [
           desc: '生成面包屑数据对象的数组，path是跳转路径，title是面包屑展示文本',
           meta: [
             { key: 'path', title: '跳转路径', type: 'string' },
-            { key: 'title', title: '展示文本', type: 'string' },
+            {
+              key: 'title',
+              title: '展示文本',
+              type: 'string',
+            },
           ],
         },
         params: { type: 'Object', desc: '可配置的参数' },
@@ -2603,7 +2608,11 @@ export default [
           desc: '触发指示器切换或点击切换按钮时触发',
           args: [
             { name: 'newValue', desc: '切换到下一次面板的索引值', type: 'number' },
-            { name: 'oldValue', desc: '本次的索引值', type: 'number' },
+            {
+              name: 'oldValue',
+              desc: '本次的索引值',
+              type: 'number',
+            },
           ],
         },
       },
@@ -2687,7 +2696,11 @@ export default [
           desc: '级联选择的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            { key: 'text', title: '文本值', type: 'string' },
+            {
+              key: 'text',
+              title: '文本值',
+              type: 'string',
+            },
           ],
         },
         separator: { type: 'string', desc: '自定义级联数据分隔符', defaultValue: '|' },
@@ -2990,7 +3003,11 @@ export default [
           desc: 'Checkbox改变时回调',
           args: [
             { name: 'event', desc: '关闭时的DOM事件', type: 'Object' },
-            { name: 'checked', desc: '当前是否选中', type: 'boolean' },
+            {
+              name: 'checked',
+              desc: '当前是否选中',
+              type: 'boolean',
+            },
           ],
         },
       },
@@ -3084,7 +3101,10 @@ export default [
           defaultValue: [
             { text: '选项1', value: '1' },
             { text: '选项2', value: '2' },
-            { text: '选项3', value: '3' },
+            {
+              text: '选项3',
+              value: '3',
+            },
           ],
         },
         displayField: { type: 'string', desc: '指定CheckboxGroup展示字段值' },
@@ -4057,7 +4077,11 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            { key: 'text', title: '文本值', type: 'string' },
+            {
+              key: 'text',
+              title: '文本值',
+              type: 'string',
+            },
           ],
           defaultValue: false,
         },
@@ -4106,7 +4130,11 @@ export default [
           desc: '点击列表项时触发',
           args: [
             { name: 'event', desc: '选中DOM的事件对象', type: 'Object' },
-            { name: 'keys', desc: '所有的选中值', type: 'Object' },
+            {
+              name: 'keys',
+              desc: '所有的选中值',
+              type: 'Object',
+            },
             { name: 'item', desc: '当前选中项的数据', type: 'Object' },
           ],
         },
@@ -4114,7 +4142,11 @@ export default [
           desc: '鼠标进入列表项时触发',
           args: [
             { name: 'event', desc: '选中DOM的事件对象', type: 'Object' },
-            { name: 'item', desc: '当前鼠标进入的列表项数据', type: 'Object' },
+            {
+              name: 'item',
+              desc: '当前鼠标进入的列表项数据',
+              type: 'Object',
+            },
           ],
         },
         onExpandPathChange: {
@@ -4645,7 +4677,11 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            { key: 'text', title: '文本值', type: 'string' },
+            {
+              key: 'text',
+              title: '文本值',
+              type: 'string',
+            },
           ],
           defaultValue: false,
         },
@@ -4694,7 +4730,11 @@ export default [
           desc: '点击列表项时触发',
           args: [
             { name: 'event', desc: '选中DOM的事件对象', type: 'Object' },
-            { name: 'keys', desc: '所有的选中值', type: 'Object' },
+            {
+              name: 'keys',
+              desc: '所有的选中值',
+              type: 'Object',
+            },
             { name: 'item', desc: '当前选中项的数据', type: 'Object' },
           ],
         },
@@ -4702,7 +4742,11 @@ export default [
           desc: '鼠标进入列表项时触发',
           args: [
             { name: 'event', desc: '选中DOM的事件对象', type: 'Object' },
-            { name: 'item', desc: '当前鼠标进入的列表项数据', type: 'Object' },
+            {
+              name: 'item',
+              desc: '当前鼠标进入的列表项数据',
+              type: 'Object',
+            },
           ],
         },
         onExpandPathChange: {
@@ -4877,7 +4921,11 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            { key: 'text', title: '文本值', type: 'string' },
+            {
+              key: 'text',
+              title: '文本值',
+              type: 'string',
+            },
           ],
           defaultValue: false,
         },
@@ -4926,7 +4974,11 @@ export default [
           desc: '点击列表项时触发',
           args: [
             { name: 'event', desc: '选中DOM的事件对象', type: 'Object' },
-            { name: 'keys', desc: '所有的选中值', type: 'Object' },
+            {
+              name: 'keys',
+              desc: '所有的选中值',
+              type: 'Object',
+            },
             { name: 'item', desc: '当前选中项的数据', type: 'Object' },
           ],
         },
@@ -4934,7 +4986,11 @@ export default [
           desc: '鼠标进入列表项时触发',
           args: [
             { name: 'event', desc: '选中DOM的事件对象', type: 'Object' },
-            { name: 'item', desc: '当前鼠标进入的列表项数据', type: 'Object' },
+            {
+              name: 'item',
+              desc: '当前鼠标进入的列表项数据',
+              type: 'Object',
+            },
           ],
         },
         onExpandPathChange: {
@@ -5172,7 +5228,11 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            { key: 'text', title: '文本值', type: 'string' },
+            {
+              key: 'text',
+              title: '文本值',
+              type: 'string',
+            },
           ],
         },
         value: { type: 'string | string[] | number | number[]', desc: '指定当前选中的条目' },
@@ -5970,7 +6030,11 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            { key: 'text', title: '文本值', type: 'string' },
+            {
+              key: 'text',
+              title: '文本值',
+              type: 'string',
+            },
           ],
         },
         value: { type: 'string | string[] | number | number[]', desc: '指定当前选中的条目' },
@@ -6297,7 +6361,11 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            { key: 'text', title: '文本值', type: 'string' },
+            {
+              key: 'text',
+              title: '文本值',
+              type: 'string',
+            },
           ],
         },
         value: { type: 'string | string[] | number | number[]', desc: '指定当前选中的条目' },
@@ -6566,7 +6634,11 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            { key: 'text', title: '文本值', type: 'string' },
+            {
+              key: 'text',
+              title: '文本值',
+              type: 'string',
+            },
           ],
         },
         value: { type: 'string | string[] | number | number[]', desc: '指定当前选中的条目' },
@@ -6950,14 +7022,22 @@ export default [
           desc: '页码改变的回调，参数是改变后的页码及每页条数',
           args: [
             { name: 'page', desc: '页码改变后的页码', type: 'number' },
-            { name: 'pageSize', desc: '每页条数', type: 'number' },
+            {
+              name: 'pageSize',
+              desc: '每页条数',
+              type: 'number',
+            },
           ],
         },
         onShowSizeChange: {
           desc: 'pageSize 变化的回调',
           args: [
             { name: 'current', desc: '当前页数', type: 'number' },
-            { name: 'size', desc: '每页条数', type: 'number' },
+            {
+              name: 'size',
+              desc: '每页条数',
+              type: 'number',
+            },
           ],
         },
       },
@@ -7012,14 +7092,22 @@ export default [
           desc: '页码改变的回调，参数是改变后的页码及每页条数',
           args: [
             { name: 'page', desc: '页码改变后的页码', type: 'number' },
-            { name: 'pageSize', desc: '每页条数', type: 'number' },
+            {
+              name: 'pageSize',
+              desc: '每页条数',
+              type: 'number',
+            },
           ],
         },
         onShowSizeChange: {
           desc: 'pageSize 变化的回调',
           args: [
             { name: 'current', desc: '当前页数', type: 'number' },
-            { name: 'size', desc: '每页条数', type: 'number' },
+            {
+              name: 'size',
+              desc: '每页条数',
+              type: 'number',
+            },
           ],
         },
       },
@@ -7418,7 +7506,10 @@ export default [
           defaultValue: [
             { text: '选项1', value: '1' },
             { text: '选项2', value: '2' },
-            { text: '选项3', value: '3' },
+            {
+              text: '选项3',
+              value: '3',
+            },
           ],
         },
         displayField: { type: 'string', desc: '单选框的 显示字段值', defaultValue: 'text' },
@@ -7688,9 +7779,17 @@ export default [
           desc: '自定义图标对象',
           meta: [
             { key: 'default', title: '默认图标名称', type: 'string' },
-            { key: 'primary', title: '选中状态图标名称', type: 'string' },
+            {
+              key: 'primary',
+              title: '选中状态图标名称',
+              type: 'string',
+            },
             { key: 'danger', title: '低分值图标名称', type: 'string' },
-            { key: 'amazed', title: '高分值图标名称', type: 'string' },
+            {
+              key: 'amazed',
+              title: '高分值图标名称',
+              type: 'string',
+            },
             { key: 'half', title: '半星图标名称', type: 'string' },
           ],
           defaultValue: {
@@ -7709,14 +7808,22 @@ export default [
           desc: '点击时触发',
           args: [
             { name: 'event', desc: '点击的DOM事件', type: 'DOM 事件' },
-            { name: 'result', desc: '点击后的所选值', type: 'Object' },
+            {
+              name: 'result',
+              desc: '点击后的所选值',
+              type: 'Object',
+            },
           ],
         },
         onChange: {
           desc: '分值改变时触发',
           args: [
             { name: 'event', desc: '鼠标移动的DOM事件', type: 'DOM 事件' },
-            { name: 'result', desc: '鼠标移动时的所选值', type: 'Object' },
+            {
+              name: 'result',
+              desc: '鼠标移动时的所选值',
+              type: 'Object',
+            },
           ],
         },
       },
@@ -7834,9 +7941,17 @@ export default [
           desc: '自定义图标对象',
           meta: [
             { key: 'default', title: '默认图标名称', type: 'string' },
-            { key: 'primary', title: '选中状态图标名称', type: 'string' },
+            {
+              key: 'primary',
+              title: '选中状态图标名称',
+              type: 'string',
+            },
             { key: 'danger', title: '低分值图标名称', type: 'string' },
-            { key: 'amazed', title: '高分值图标名称', type: 'string' },
+            {
+              key: 'amazed',
+              title: '高分值图标名称',
+              type: 'string',
+            },
             { key: 'half', title: '半星图标名称', type: 'string' },
           ],
           defaultValue: {
@@ -7853,14 +7968,22 @@ export default [
           desc: '点击时触发',
           args: [
             { name: 'event', desc: '点击的DOM事件', type: 'DOM 事件' },
-            { name: 'result', desc: '点击后的所选值', type: 'Object' },
+            {
+              name: 'result',
+              desc: '点击后的所选值',
+              type: 'Object',
+            },
           ],
         },
         onChange: {
           desc: '分值改变时触发',
           args: [
             { name: 'event', desc: '鼠标移动的DOM事件', type: 'DOM 事件' },
-            { name: 'result', desc: '鼠标移动时的所选值', type: 'Object' },
+            {
+              name: 'result',
+              desc: '鼠标移动时的所选值',
+              type: 'Object',
+            },
           ],
         },
       },
@@ -7922,9 +8045,17 @@ export default [
           desc: '自定义图标对象',
           meta: [
             { key: 'default', title: '默认图标名称', type: 'string' },
-            { key: 'primary', title: '选中状态图标名称', type: 'string' },
+            {
+              key: 'primary',
+              title: '选中状态图标名称',
+              type: 'string',
+            },
             { key: 'danger', title: '低分值图标名称', type: 'string' },
-            { key: 'amazed', title: '高分值图标名称', type: 'string' },
+            {
+              key: 'amazed',
+              title: '高分值图标名称',
+              type: 'string',
+            },
             { key: 'half', title: '半星图标名称', type: 'string' },
           ],
           defaultValue: {
@@ -7945,14 +8076,22 @@ export default [
           desc: '点击时触发',
           args: [
             { name: 'event', desc: '点击的DOM事件', type: 'DOM 事件' },
-            { name: 'result', desc: '点击后的所选值', type: 'Object' },
+            {
+              name: 'result',
+              desc: '点击后的所选值',
+              type: 'Object',
+            },
           ],
         },
         onChange: {
           desc: '分值改变时触发',
           args: [
             { name: 'event', desc: '鼠标移动的DOM事件', type: 'DOM 事件' },
-            { name: 'result', desc: '鼠标移动时的所选值', type: 'Object' },
+            {
+              name: 'result',
+              desc: '鼠标移动时的所选值',
+              type: 'Object',
+            },
           ],
         },
       },
@@ -7993,7 +8132,11 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            { key: 'text', title: '文本值', type: 'string' },
+            {
+              key: 'text',
+              title: '文本值',
+              type: 'string',
+            },
           ],
         },
         mutliple: { type: 'boolean', desc: '是否多选', defaultValue: false },
@@ -8043,11 +8186,23 @@ export default [
           desc: '选中项发生变化时触发',
           args: [
             { name: 'event', desc: '点击的DOM事件', type: 'Object' },
-            { name: 'newDisplayValue', desc: '所有选中项的displayField的集合', type: 'string[]' },
+            {
+              name: 'newDisplayValue',
+              desc: '所有选中项的displayField的集合',
+              type: 'string[]',
+            },
             { name: 'newItem', desc: '所有选中项的数据的集合', type: 'Object[]' },
-            { name: 'newValue', desc: '所有选中项的valueField的集合', type: 'string[]' },
+            {
+              name: 'newValue',
+              desc: '所有选中项的valueField的集合',
+              type: 'string[]',
+            },
             { name: 'oldItem', desc: '改变之前所有选中项的数据的集合', type: 'Object[]' },
-            { name: 'oldValue', desc: '改变之前所有选中项的valueField的集合', type: 'string[]' },
+            {
+              name: 'oldValue',
+              desc: '改变之前所有选中项的valueField的集合',
+              type: 'string[]',
+            },
           ],
         },
         onTrigger: { desc: '菜单展开是触发' },
@@ -8063,11 +8218,23 @@ export default [
           desc: '选中时触发',
           args: [
             { name: 'event', desc: '点击的DOM事件', type: 'Object' },
-            { name: 'newDisplayValue', desc: '所有选中项的displayField的集合', type: 'string[]' },
+            {
+              name: 'newDisplayValue',
+              desc: '所有选中项的displayField的集合',
+              type: 'string[]',
+            },
             { name: 'newItem', desc: '所有选中项的数据的集合', type: 'Object[]' },
-            { name: 'newValue', desc: '所有选中项的valueField的集合', type: 'string[]' },
+            {
+              name: 'newValue',
+              desc: '所有选中项的valueField的集合',
+              type: 'string[]',
+            },
             { name: 'oldItem', desc: '改变之前所有选中项的数据的集合', type: 'Object[]' },
-            { name: 'oldValue', desc: '改变之前所有选中项的valueField的集合', type: 'string[]' },
+            {
+              name: 'oldValue',
+              desc: '改变之前所有选中项的valueField的集合',
+              type: 'string[]',
+            },
           ],
         },
         onRefresh: { desc: '点击刷新按钮时触发' },
@@ -8476,7 +8643,11 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            { key: 'text', title: '文本值', type: 'string' },
+            {
+              key: 'text',
+              title: '文本值',
+              type: 'string',
+            },
           ],
         },
         mutliple: { type: 'boolean', desc: '是否多选', defaultValue: true },
@@ -8526,11 +8697,23 @@ export default [
           desc: '选中项发生变化时触发',
           args: [
             { name: 'event', desc: '点击的DOM事件', type: 'Object' },
-            { name: 'newDisplayValue', desc: '所有选中项的displayField的集合', type: 'string[]' },
+            {
+              name: 'newDisplayValue',
+              desc: '所有选中项的displayField的集合',
+              type: 'string[]',
+            },
             { name: 'newItem', desc: '所有选中项的数据的集合', type: 'Object[]' },
-            { name: 'newValue', desc: '所有选中项的valueField的集合', type: 'string[]' },
+            {
+              name: 'newValue',
+              desc: '所有选中项的valueField的集合',
+              type: 'string[]',
+            },
             { name: 'oldItem', desc: '改变之前所有选中项的数据的集合', type: 'Object[]' },
-            { name: 'oldValue', desc: '改变之前所有选中项的valueField的集合', type: 'string[]' },
+            {
+              name: 'oldValue',
+              desc: '改变之前所有选中项的valueField的集合',
+              type: 'string[]',
+            },
           ],
         },
         onTrigger: { desc: '菜单展开是触发' },
@@ -8546,11 +8729,23 @@ export default [
           desc: '选中时触发',
           args: [
             { name: 'event', desc: '点击的DOM事件', type: 'Object' },
-            { name: 'newDisplayValue', desc: '所有选中项的displayField的集合', type: 'string[]' },
+            {
+              name: 'newDisplayValue',
+              desc: '所有选中项的displayField的集合',
+              type: 'string[]',
+            },
             { name: 'newItem', desc: '所有选中项的数据的集合', type: 'Object[]' },
-            { name: 'newValue', desc: '所有选中项的valueField的集合', type: 'string[]' },
+            {
+              name: 'newValue',
+              desc: '所有选中项的valueField的集合',
+              type: 'string[]',
+            },
             { name: 'oldItem', desc: '改变之前所有选中项的数据的集合', type: 'Object[]' },
-            { name: 'oldValue', desc: '改变之前所有选中项的valueField的集合', type: 'string[]' },
+            {
+              name: 'oldValue',
+              desc: '改变之前所有选中项的valueField的集合',
+              type: 'string[]',
+            },
           ],
         },
         onRefresh: { desc: '点击刷新按钮时触发' },
@@ -9632,7 +9827,11 @@ export default [
           desc: '步骤条填充的数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            { key: 'description', title: '步骤条描述', type: 'string' },
+            {
+              key: 'description',
+              title: '步骤条描述',
+              type: 'string',
+            },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
           ],
         },
@@ -9641,7 +9840,11 @@ export default [
           desc: '步骤条填充的默认显示数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            { key: 'description', title: '步骤条描述', type: 'string' },
+            {
+              key: 'description',
+              title: '步骤条描述',
+              type: 'string',
+            },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
           ],
         },
@@ -10004,7 +10207,11 @@ export default [
           desc: '步骤条填充的数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            { key: 'description', title: '步骤条描述', type: 'string' },
+            {
+              key: 'description',
+              title: '步骤条描述',
+              type: 'string',
+            },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
           ],
         },
@@ -10013,7 +10220,11 @@ export default [
           desc: '步骤条填充的默认显示数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            { key: 'description', title: '步骤条描述', type: 'string' },
+            {
+              key: 'description',
+              title: '步骤条描述',
+              type: 'string',
+            },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
           ],
         },
@@ -10124,7 +10335,11 @@ export default [
           desc: '步骤条填充的数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            { key: 'description', title: '步骤条描述', type: 'string' },
+            {
+              key: 'description',
+              title: '步骤条描述',
+              type: 'string',
+            },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
           ],
         },
@@ -10133,7 +10348,11 @@ export default [
           desc: '步骤条填充的默认显示数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            { key: 'description', title: '步骤条描述', type: 'string' },
+            {
+              key: 'description',
+              title: '步骤条描述',
+              type: 'string',
+            },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
           ],
         },
@@ -10244,7 +10463,11 @@ export default [
           desc: '步骤条填充的数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            { key: 'description', title: '步骤条描述', type: 'string' },
+            {
+              key: 'description',
+              title: '步骤条描述',
+              type: 'string',
+            },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
           ],
         },
@@ -10253,7 +10476,11 @@ export default [
           desc: '步骤条填充的默认显示数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            { key: 'description', title: '步骤条描述', type: 'string' },
+            {
+              key: 'description',
+              title: '步骤条描述',
+              type: 'string',
+            },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
           ],
         },
@@ -10364,7 +10591,11 @@ export default [
           desc: '步骤条填充的数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            { key: 'description', title: '步骤条描述', type: 'string' },
+            {
+              key: 'description',
+              title: '步骤条描述',
+              type: 'string',
+            },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
           ],
         },
@@ -10373,7 +10604,11 @@ export default [
           desc: '步骤条填充的默认显示数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            { key: 'description', title: '步骤条描述', type: 'string' },
+            {
+              key: 'description',
+              title: '步骤条描述',
+              type: 'string',
+            },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
           ],
         },
@@ -10603,9 +10838,17 @@ export default [
           type: 'Object[]',
           meta: [
             { key: 'title', title: '表头文本', type: 'string' },
-            { key: 'key', title: '对应key', type: 'any' },
+            {
+              key: 'key',
+              title: '对应key',
+              type: 'any',
+            },
             { key: 'dataIndex', title: '指定展示项', type: 'any' },
-            { key: 'width', title: '列宽', type: 'number' },
+            {
+              key: 'width',
+              title: '列宽',
+              type: 'number',
+            },
           ],
           desc: '表格每一行展示的内容',
         },
@@ -10643,7 +10886,11 @@ export default [
           desc: '点击展开图标时触发',
           args: [
             { name: 'expanded', desc: '当前是否展开', type: 'boolean' },
-            { name: 'record', desc: '当前行数据', type: 'Object' },
+            {
+              name: 'record',
+              desc: '当前行数据',
+              type: 'Object',
+            },
           ],
         },
       },
@@ -11671,7 +11918,11 @@ export default [
           desc: '时间轴填充的数据',
           meta: [
             { key: 'time', title: '时间节点信息', type: 'string' },
-            { key: 'description', title: '时间节点详细描述', type: 'string' },
+            {
+              key: 'description',
+              title: '时间节点详细描述',
+              type: 'string',
+            },
           ],
         },
         defaultData: {
@@ -11679,7 +11930,11 @@ export default [
           desc: '时间轴填充的默认显示数据',
           meta: [
             { key: 'time', title: '时间节点信息', type: 'string' },
-            { key: 'description', title: '时间节点详细描述', type: 'string' },
+            {
+              key: 'description',
+              title: '时间节点详细描述',
+              type: 'string',
+            },
           ],
         },
         reverse: {
@@ -11827,7 +12082,11 @@ export default [
           desc: '时间轴填充的数据',
           meta: [
             { key: 'time', title: '时间节点信息', type: 'string' },
-            { key: 'description', title: '时间节点详细描述', type: 'string' },
+            {
+              key: 'description',
+              title: '时间节点详细描述',
+              type: 'string',
+            },
           ],
         },
         defaultData: {
@@ -11835,7 +12094,11 @@ export default [
           desc: '时间轴填充的默认显示数据',
           meta: [
             { key: 'time', title: '时间节点信息', type: 'string' },
-            { key: 'description', title: '时间节点详细描述', type: 'string' },
+            {
+              key: 'description',
+              title: '时间节点详细描述',
+              type: 'string',
+            },
           ],
         },
         reverse: {
@@ -11976,7 +12239,11 @@ export default [
           desc: 'Transfer 穿梭回调',
           args: [
             { name: 'nextValue', desc: 'Transfer穿梭后，右侧面板值的集合', type: 'string[]' },
-            { name: 'direction', desc: '穿梭的方向，left、right', type: 'DirectionType' },
+            {
+              name: 'direction',
+              desc: '穿梭的方向，left、right',
+              type: 'DirectionType',
+            },
             { name: 'moveKeys', desc: '移动值的集合', type: 'string[]' },
           ],
         },
@@ -11984,7 +12251,11 @@ export default [
           desc: 'Transfer 取消选项点击回调',
           args: [
             { name: 'nextValue', desc: 'Transfer 右侧面板值的集合', type: 'string[]' },
-            { name: 'newDisplayValue', desc: 'Transfer 右侧面板值的备用集合', type: 'string[]' },
+            {
+              name: 'newDisplayValue',
+              desc: 'Transfer 右侧面板值的备用集合',
+              type: 'string[]',
+            },
           ],
         },
       },
@@ -12622,7 +12893,11 @@ export default [
           desc: 'Transfer 穿梭回调',
           args: [
             { name: 'nextValue', desc: 'Transfer穿梭后，右侧面板值的集合', type: 'string[]' },
-            { name: 'direction', desc: '穿梭的方向，left、right', type: 'DirectionType' },
+            {
+              name: 'direction',
+              desc: '穿梭的方向，left、right',
+              type: 'DirectionType',
+            },
             { name: 'moveKeys', desc: '移动值的集合', type: 'string[]' },
           ],
         },
@@ -12630,7 +12905,11 @@ export default [
           desc: 'Transfer 取消选项点击回调',
           args: [
             { name: 'nextValue', desc: 'Transfer 右侧面板值的集合', type: 'string[]' },
-            { name: 'newDisplayValue', desc: 'Transfer 右侧面板值的备用集合', type: 'string[]' },
+            {
+              name: 'newDisplayValue',
+              desc: 'Transfer 右侧面板值的备用集合',
+              type: 'string[]',
+            },
           ],
         },
       },
@@ -12987,7 +13266,11 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            { key: 'text', title: '文本值', type: 'string' },
+            {
+              key: 'text',
+              title: '文本值',
+              type: 'string',
+            },
           ],
           defaultValue: false,
         },
@@ -13013,14 +13296,22 @@ export default [
           desc: '滚动条滚动时触发',
           args: [
             { name: 'start', desc: '显示区域内，第一个树节点所在数据中的索引值', type: 'number' },
-            { name: 'end', desc: '显示区域内，最后树节点所在数据中的索引值', type: 'number' },
+            {
+              name: 'end',
+              desc: '显示区域内，最后树节点所在数据中的索引值',
+              type: 'number',
+            },
           ],
         },
         onExpand: {
           desc: '展开/收起节点时触发',
           args: [
             { name: 'expandedKeys', desc: '所有展开节点的valueField值的集合', type: 'string[]' },
-            { name: 'data', desc: '所有的树形数据信息', type: 'Array<Object>' },
+            {
+              name: 'data',
+              desc: '所有的树形数据信息',
+              type: 'Array<Object>',
+            },
           ],
         },
         onSelect: {
@@ -13030,7 +13321,11 @@ export default [
         onChange: {
           desc: '选中节点发生改变时触发',
           args: [
-            { name: 'selectValue', desc: '所有选中项的valueField值的集合', type: 'string[]' },
+            {
+              name: 'selectValue',
+              desc: '所有选中项的valueField值的集合',
+              type: 'string[]',
+            },
             {
               name: 'selectDisplayValue',
               desc: '所有选中项的displayField值的集合',
@@ -13353,7 +13648,11 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            { key: 'text', title: '文本值', type: 'string' },
+            {
+              key: 'text',
+              title: '文本值',
+              type: 'string',
+            },
           ],
           defaultValue: false,
         },
@@ -13379,14 +13678,22 @@ export default [
           desc: '滚动条滚动时触发',
           args: [
             { name: 'start', desc: '显示区域内，第一个树节点所在数据中的索引值', type: 'number' },
-            { name: 'end', desc: '显示区域内，最后树节点所在数据中的索引值', type: 'number' },
+            {
+              name: 'end',
+              desc: '显示区域内，最后树节点所在数据中的索引值',
+              type: 'number',
+            },
           ],
         },
         onExpand: {
           desc: '展开/收起节点时触发',
           args: [
             { name: 'expandedKeys', desc: '所有展开节点的valueField值的集合', type: 'string[]' },
-            { name: 'data', desc: '所有的树形数据信息', type: 'Array<Object>' },
+            {
+              name: 'data',
+              desc: '所有的树形数据信息',
+              type: 'Array<Object>',
+            },
           ],
         },
         onSelect: {
@@ -13396,7 +13703,11 @@ export default [
         onChange: {
           desc: '选中节点发生改变时触发',
           args: [
-            { name: 'selectValue', desc: '所有选中项的valueField值的集合', type: 'string[]' },
+            {
+              name: 'selectValue',
+              desc: '所有选中项的valueField值的集合',
+              type: 'string[]',
+            },
             {
               name: 'selectDisplayValue',
               desc: '所有选中项的displayField值的集合',
@@ -13588,7 +13899,11 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            { key: 'text', title: '文本值', type: 'string' },
+            {
+              key: 'text',
+              title: '文本值',
+              type: 'string',
+            },
           ],
           defaultValue: false,
         },
@@ -14079,7 +14394,11 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            { key: 'text', title: '文本值', type: 'string' },
+            {
+              key: 'text',
+              title: '文本值',
+              type: 'string',
+            },
           ],
           defaultValue: false,
         },
@@ -14411,7 +14730,11 @@ export default [
           desc: "上传的文件列表,如 [{ id: 1, name: 'header.jpg', status: 'done' }]",
           meta: [
             { key: 'id', title: '文件唯一标识', type: 'number' },
-            { key: 'name', title: '文件名', type: 'string' },
+            {
+              key: 'name',
+              title: '文件名',
+              type: 'string',
+            },
             { key: 'status', title: '文件传输状态', type: 'FileType' },
           ],
         },
@@ -14700,7 +15023,11 @@ export default [
           desc: "上传的文件列表,如 [{ id: 1, name: 'header.jpg', status: 'done' }]",
           meta: [
             { key: 'id', title: '文件唯一标识', type: 'number' },
-            { key: 'name', title: '文件名', type: 'string' },
+            {
+              key: 'name',
+              title: '文件名',
+              type: 'string',
+            },
             { key: 'status', title: '文件传输状态', type: 'FileType' },
           ],
         },
@@ -14804,7 +15131,11 @@ export default [
           desc: "上传的文件列表,如 [{ id: 1, name: 'header.jpg', status: 'done' }]",
           meta: [
             { key: 'id', title: '文件唯一标识', type: 'number' },
-            { key: 'name', title: '文件名', type: 'string' },
+            {
+              key: 'name',
+              title: '文件名',
+              type: 'string',
+            },
             { key: 'status', title: '文件传输状态', type: 'FileType' },
           ],
         },
@@ -14908,7 +15239,11 @@ export default [
           desc: "上传的文件列表,如 [{ id: 1, name: 'header.jpg', status: 'done' }]",
           meta: [
             { key: 'id', title: '文件唯一标识', type: 'number' },
-            { key: 'name', title: '文件名', type: 'string' },
+            {
+              key: 'name',
+              title: '文件名',
+              type: 'string',
+            },
             { key: 'status', title: '文件传输状态', type: 'FileType' },
           ],
         },
@@ -15011,7 +15346,11 @@ export default [
           desc: "上传的文件列表,如 [{ id: 1, name: 'header.jpg', status: 'done' }]",
           meta: [
             { key: 'id', title: '文件唯一标识', type: 'number' },
-            { key: 'name', title: '文件名', type: 'string' },
+            {
+              key: 'name',
+              title: '文件名',
+              type: 'string',
+            },
             { key: 'status', title: '文件传输状态', type: 'FileType' },
           ],
         },
