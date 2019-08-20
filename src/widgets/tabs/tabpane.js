@@ -35,6 +35,8 @@ const BaseTab = CSSComponent({
       ['padding'],
       ['font'],
       ['opacity'],
+      ['width'],
+      ['height'],
     ],
     getCSS: (theme: Object, themeProps: Object) => {
       const { color, background } = theme;
@@ -116,7 +118,7 @@ const BaseTab = CSSComponent({
       if (tabType === 'card' && showDeleteBtn === true) {
         cssString += ` & > div {
           transition: all 0.3s linear;
-          transform: translateX(-3px);
+          transform: translateX(-8px);
         }`;
       }
       return css`
@@ -234,6 +236,14 @@ const CardTitle = CSSComponent({
     },
     getStyle: (theme: Object, themeProps: Object) => {
       const { height } = theme;
+      const { propsConfig: { tabType } = {} } = themeProps;
+      if (tabType === 'card') {
+        return {
+          lineHeight: height ? `${height}px` : '32px',
+          textAlign: 'center',
+          width: '100%',
+        };
+      }
       return {
         lineHeight: height ? `${height}px` : '32px',
       };
@@ -271,6 +281,8 @@ const ClearButtonContainer = CSSComponent({
     z-index: 2;
     opacity: 0;
     color: #999;
+    margin-left: -5px;
+    vertical-align: middle;
   `,
   normal: {
     selectNames: [],

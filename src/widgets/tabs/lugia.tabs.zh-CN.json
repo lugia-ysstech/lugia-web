@@ -173,14 +173,14 @@
           "normal": [["background"], ["padding"], ["width"], ["height"]]
         },
         "TitleContainer": {
-          "name": "顶部容器区域",
-          "desc": "顶部容器区域宽度配置",
-          "normal": [["width"]]
+          "name": "卡片区域",
+          "desc": "卡片区域样式配置",
+          "normal": [["width"],["background"]]
         },
         "BorderStyle": {
           "name": "默认线",
           "desc": "默认线样式配置",
-          "normal": [["border"]]
+          "normal": [["border","bottom"]]
         },
         "TabHeader":{
           "name":"标签配置",
@@ -189,6 +189,8 @@
               "name": "默认标签",
               "desc": "默认标签样式配置",
               "normal": [
+                ["width"],
+                ["height"],
                 ["color"],
                 ["background"],
                 ["border"],
@@ -262,8 +264,8 @@
           "normal": [["background"], ["padding"], ["width"], ["height"]]
         },
         "TitleContainer": {
-          "name": "顶部容器区域",
-          "desc": "顶部容器区域宽度配置",
+          "name": "卡片区域",
+          "desc": "卡片区域样式配置",
           "normal": [["width"]]
         },
         "TabHeader":{
@@ -273,6 +275,8 @@
               "name": "默认标签",
               "desc": "默认标签样式配置",
               "normal": [
+                ["width"],
+                ["height"],
                 ["color"],
                 ["background"],
                 ["border"],
@@ -311,14 +315,14 @@
       "normal": [["background"], ["padding"], ["width"], ["height"]]
     },
     "TitleContainer": {
-      "name": "顶部容器区域",
-      "desc": "顶部容器区域宽度配置",
-      "normal": [["width"]]
+      "name": "卡片区域",
+      "desc": "卡片区域样式配置",
+      "normal": [["width"],["background"]]
     },
     "BorderStyle": {
       "name": "默认线",
       "desc": "默认线样式配置",
-      "normal": [["border"]]
+      "normal": [["border","bottom"]]
     },
     "TabHeader":{
       "name":"标签配置",
@@ -327,6 +331,8 @@
           "name": "默认标签",
           "desc": "默认标签样式配置",
           "normal": [
+            ["width"],
+            ["height"],
             ["color"],
             ["background"],
             ["border"],
