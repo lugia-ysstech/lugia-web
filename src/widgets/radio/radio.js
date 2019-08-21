@@ -141,7 +141,6 @@ export default ThemeProvider(
       circleEdgeTheme.propsConfig.isChecked = checked;
       circleEdgeTheme.propsConfig.isCancel = cancel;
       circleEdgeTheme.propsConfig.isDisabled = disabled;
-      console.log('circleEdgeTheme', circleEdgeTheme);
       return (
         <RadioWrap
           themeProps={radioWrapTheme}
