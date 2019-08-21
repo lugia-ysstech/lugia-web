@@ -515,9 +515,10 @@ class TabHeader extends Component<TabsProps, TabsState> {
 
   getCurrentPageByActivityValue(data, activityValue, totalPage) {
     let currentIndex = 0;
-    data.forEach((item, index) => {
+    data.some((item, index) => {
       if (item.key === activityValue) {
         currentIndex = index + 1;
+        return true;
       }
     });
     return Math.max(Math.ceil(currentIndex / Math.ceil(data.length / totalPage)) - 1, 0);
