@@ -239,26 +239,26 @@ export class CheckboxDemo extends React.Component<any, any> {
           <CheckBox indeterminate>CheckBox</CheckBox>
         </Wrapper>
 
-        {/*<Wrapper>*/}
-        {/*<Theme config={view}>*/}
-        {/*<CheckBox cancel checked handleCancelItemClick={() => {}}>*/}
-        {/*CheckBox*/}
-        {/*</CheckBox>*/}
-        {/*</Theme>*/}
-        {/*</Wrapper>*/}
-        {/*<Wrapper>*/}
-        {/*<CheckBox cancel checked handleCancelItemClick={() => {}}>*/}
-        {/*CheckBox*/}
-        {/*</CheckBox>*/}
-        {/*</Wrapper>*/}
-        {/*<Wrapper>*/}
-        {/*<CheckBox defaultChecked>CheckBox</CheckBox>*/}
-        {/*</Wrapper>*/}
-        {/*<Wrapper>*/}
-        {/*<CheckBox defaultChecked disabled>*/}
-        {/*CheckBox*/}
-        {/*</CheckBox>*/}
-        {/*</Wrapper>*/}
+        <Wrapper>
+          <Theme config={view}>
+            <CheckBox cancel checked handleCancelItemClick={() => {}}>
+              CheckBox
+            </CheckBox>
+          </Theme>
+        </Wrapper>
+        <Wrapper>
+          <CheckBox cancel checked handleCancelItemClick={() => {}}>
+            CheckBox
+          </CheckBox>
+        </Wrapper>
+        <Wrapper>
+          <CheckBox defaultChecked>CheckBox</CheckBox>
+        </Wrapper>
+        <Wrapper>
+          <CheckBox defaultChecked disabled>
+            CheckBox
+          </CheckBox>
+        </Wrapper>
       </div>
     );
   }
