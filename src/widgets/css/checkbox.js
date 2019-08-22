@@ -134,7 +134,7 @@ export const CheckBoxContent = StaticComponent({
     margin: 0;
     outline: none;
     line-height: 1;
-    vertical-align: text-bottom;
+    vertical-align: middle;
     display: inline-block;
   `,
 });
@@ -144,6 +144,7 @@ export const CheckBoxLabelSpan = CSSComponent({
   className: 'CheckBoxLabelSpan',
   css: css`
     padding-left: ${em(10)};
+    vertical-align: middle;
   `,
   normal: {
     selectNames: [['color'], ['font']],
@@ -200,16 +201,23 @@ export const CheckBoxInnerSpan = CSSComponent({
     top: 0;
     left: 0;
     display: block;
-    width: ${em(18)};
-    height: ${em(18)};
     transition: all 0.3s;
   `,
   normal: {
-    selectNames: [['background'], ['borderRadius'], ['border']],
+    selectNames: [
+      ['background'],
+      ['borderRadius'],
+      ['boxShadow'],
+      ['border'],
+      ['width'],
+      ['height'],
+    ],
     defaultTheme: {
       background: { color: defaultColor },
       border: getBorder({ color: borderColor, width: 1, style: 'solid' }),
       borderRadius: getBorderRadius(2),
+      width: 18,
+      height: 18,
     },
     getCSS(themeMeta: Object, themeConfig: Object): string {
       const { propsConfig, themeState } = themeConfig;
@@ -230,11 +238,8 @@ export const CheckBoxInnerSpan = CSSComponent({
         } = checkboxInnerCheckedTheme;
         const defaultWidth = isChecked ? 6 : isIndeterminate ? 10 : 6;
         const defaultHeight = isChecked ? 10 : isIndeterminate ? 1 : 10;
-        const colors = isDisabled
-          ? disabledTheme.color
-          : hover
-          ? hoverTheme.color
-          : normalTheme.color;
+        const currentTheme = isDisabled ? disabledTheme : hover ? hoverTheme : normalTheme;
+        const { color, width = defaultWidth, height = defaultHeight } = currentTheme;
 
         return css`
           &::after {
@@ -246,10 +251,10 @@ export const CheckBoxInnerSpan = CSSComponent({
             })};
             left: 50%;
             top: 50%;
-            width: ${em(defaultWidth)};
-            height: ${em(defaultHeight)};
+            width: ${em(width)};
+            height: ${em(height)};
             display: table;
-            border: ${em(2)} solid ${colors};
+            border: ${em(2)} solid ${color};
             border-top: 0;
             border-left: 0;
             content: ' ';
@@ -265,7 +270,7 @@ export const CheckBoxInnerSpan = CSSComponent({
     },
   },
   hover: {
-    selectNames: [['background'], ['borderRadius'], ['border']],
+    selectNames: [['background'], ['borderRadius'], ['boxShadow'], ['border']],
     defaultTheme: {
       border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
       borderRadius: getBorderRadius(2),
@@ -273,7 +278,7 @@ export const CheckBoxInnerSpan = CSSComponent({
     },
   },
   disabled: {
-    selectNames: [['background'], ['borderRadius'], ['border']],
+    selectNames: [['background'], ['borderRadius'], ['boxShadow'], ['border']],
     defaultTheme: {
       border: getBorder({ color: borderDisableColor, width: 1, style: 'solid' }),
       borderRadius: getBorderRadius(2),
