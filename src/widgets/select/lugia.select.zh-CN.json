@@ -21,6 +21,11 @@
       "desc": "是否支持查询",
       "defaultValue": false
     },
+    "canClear": {
+      "type": "boolean",
+      "desc": "是否展示清空图标",
+      "defaultValue": true
+    },
     "createPortal": {
       "type": "boolean",
       "desc": "是否全局弹出下拉框",
