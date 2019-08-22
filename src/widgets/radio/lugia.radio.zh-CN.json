@@ -49,48 +49,48 @@
   "category": ["数据录入"],
   "theme": {
     "Container": {
-      "name": "单选框整体配置",
-      "desc": "单选框整体配置",
+      "name": "整体样式",
+      "desc": "整体样式",
       "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]]
     },
     "RadioText": {
-      "name": "单选框文字配置",
-      "desc": "单选框文字样式配置",
+      "name": "文字样式",
+      "desc": "文字样式",
       "normal": [["color"], ["font"]],
       "hover": [["color"], ["font"]],
       "disabled": [["color"], ["font"]]
     },
+    "RadioEdgeUnChecked": {
+      "name": "未选中外框样式",
+      "desc": "未选中外框样式",
+      "normal": [["background"], ["border"], ["borderRadius"], ["boxShadow"], ["width"], ["height"]],
+      "hover": [["background"], ["borderRadius"], ["border"]],
+      "disabled": [["background"], ["borderRadius"], ["border"]]
+    },
     "RadioEdgeChecked": {
-      "name": "单选框选中后边框配置",
-      "desc": "单选框选中后边框配置样式",
-      "normal": [["background"], ["border"], ["borderRadius"], ["width"], ["height"]],
+      "name": "选中外框样式",
+      "desc": "选中外框样式",
+      "normal": [["background"], ["border"], ["borderRadius"], ["boxShadow"], ["width"], ["height"]],
       "hover": [["background"], ["borderRadius"], ["border"]],
       "disabled": [["background"], ["borderRadius"], ["border"]]
     },
     "RadioInnerChecked": {
-      "name": "单选框选中样式配置",
-      "desc": "单选框选中配置样式",
+      "name": "选中内框样式",
+      "desc": "选中内框样式",
       "normal": [["background"], ["width"], ["height"]],
       "hover": [["background"]],
       "disabled": [["background"]]
     },
-    "RadioEdgeUnChecked": {
-      "name": "单选框未选中边框配置",
-      "desc": "单选框未选中边框配置样式",
-      "normal": [["background"], ["border"], ["borderRadius"], ["width"], ["height"]],
-      "hover": [["background"], ["borderRadius"], ["border"]],
-      "disabled": [["background"], ["borderRadius"], ["border"]]
-    },
     "RadioEdgeCancel": {
-      "name": "单选框取消状态边框配置",
-      "desc": "单选框取消状态边框配置样式",
-      "normal": [["background"], ["border"], ["borderRadius"], ["width"], ["height"]],
+      "name": "取消状态外框样式",
+      "desc": "取消状态外框样式",
+      "normal": [["background"], ["border"], ["borderRadius"], ["boxShadow"], ["width"], ["height"]],
       "hover": [["background"], ["borderRadius"], ["border"]],
       "disabled": [["background"], ["borderRadius"], ["border"]]
     },
     "RadioInnerCancel": {
-      "name": "单选框取消状态样式配置",
-      "desc": "单选框取消状态配置样式",
+      "name": "取消状态内框样式",
+      "desc": "取消状态内框样式",
       "normal": [["background"], ["width"], ["height"]],
       "hover": [["background"]]
     }
