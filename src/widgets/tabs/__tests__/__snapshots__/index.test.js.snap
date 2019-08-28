@@ -113,7 +113,6 @@ exports[`tabsDemo Component JSON 1`] = `
   box-sizing: border-box;
   position: relative;
   overflow: hidden;
-  display: inline-block;
 }
 
 <div
@@ -121,14 +120,18 @@ exports[`tabsDemo Component JSON 1`] = `
 >
   <div
     className="c1"
-    style={Object {}}
+    style={
+      Object {
+        "backgroundColor": "#fff",
+      }
+    }
   >
     <div
       className="c2"
       style={Object {}}
     >
       <div
-        className="c3"
+        className="sleepy  c3"
         style={
           Object {
             "borderBottomColor": "#e8e8e8",
