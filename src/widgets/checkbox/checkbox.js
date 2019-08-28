@@ -127,7 +127,7 @@ export default ThemeProvider(
     };
     handleCancel = e => {
       const { value, handleCancelItemClick } = this.props;
-      handleCancelItemClick(value);
+      handleCancelItemClick && handleCancelItemClick(value);
     };
 
     render() {

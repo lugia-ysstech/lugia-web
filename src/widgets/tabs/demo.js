@@ -98,7 +98,7 @@ export class TabsLimitdemo extends React.Component<any, any> {
   }
 }
 
-const titleStyle = { border: '1px solid red', margin: '10px' };
+const titleStyle = { margin: '20px 0', fontWeight: 'bold' };
 export const defaultData = [
   {
     title: 'Tab1',
@@ -252,7 +252,7 @@ export const children = [
   />,
 ];
 export const longChildren = [
-  <Tabpane title={'11111'} content={'11111111111111111111111111'} />,
+  <Tabpane title={'11111'} content={'这里是菜单啊~排骨，猪蹄，茴香小油条，豆腐，白菜，大萝卜'} />,
   <Tabpane title={'2222'} content={<div>22222222222222</div>} />,
   <Tabpane
     title={'3333'}
@@ -298,7 +298,7 @@ export const longChildren = [
 export const shortChildren = [
   <Tabpane
     title={'11111'}
-    content={'11111111111111111111111111'}
+    content={'这里是菜单啊~排骨，猪蹄，茴香小油条，豆腐，白菜，大萝卜'}
     icon={'lugia-icon-financial_archive'}
   />,
   <Tabpane title={'2222'} content={<div>22222222222222</div>} key={'1'} />,
@@ -662,7 +662,7 @@ export default class TabsDemo extends React.Component<any, any> {
           },
           DefaultTabPan: {
             normal: {
-              height: 31,
+              // height: 31,
             },
             hover: {
               color: 'orange',
@@ -830,7 +830,10 @@ export default class TabsDemo extends React.Component<any, any> {
             },
           },
           DefaultTabPan: {
-            normal: {},
+            normal: {
+              // width: 300,
+              height: 40,
+            },
             hover: {
               color: 'orange',
             },
@@ -845,6 +848,7 @@ export default class TabsDemo extends React.Component<any, any> {
 
     return (
       <div>
+        <Tabs />
         <Theme config={cardView}>
           <div>
             <p style={{ titleStyle }}>tabType=card pagedType=single</p>
@@ -864,7 +868,7 @@ export default class TabsDemo extends React.Component<any, any> {
         <Tabs tabType={'window'} />
         <Theme config={lineViewBot}>
           <div>
-            <p style={{ titleStyle }}>defaultData pagedType=single forceRender=true </p>
+            <p style={{ ...titleStyle }}>defaultData pagedType=single forceRender=true </p>
             <Tabs
               tabType={'line'}
               tabPosition={'top'}
@@ -876,7 +880,7 @@ export default class TabsDemo extends React.Component<any, any> {
             />
           </div>
           <div>
-            <p style={{ titleStyle }}>defaultData pagedType=single forceRender=false </p>
+            <p style={{ ...titleStyle }}>defaultData pagedType=single forceRender=false </p>
             <Tabs
               tabType={'line'}
               tabPosition={'top'}
@@ -890,7 +894,7 @@ export default class TabsDemo extends React.Component<any, any> {
           </div>
 
           <div>
-            <p style={{ titleStyle }}>height 60 </p>
+            <p style={{ ...titleStyle }}>height 60 </p>
             <Tabs
               tabType={'line'}
               tabPosition={'top'}
@@ -901,15 +905,15 @@ export default class TabsDemo extends React.Component<any, any> {
             />
           </div>
           <div>
-            <p style={{ titleStyle }}>suffixIcon </p>
+            <p style={{ ...titleStyle }}>suffixIcon </p>
             <Tabs tabType={'line'} tabPosition={'top'} data={suffixData} />
           </div>
           <div>
-            <p style={{ titleStyle }}>disabled </p>
+            <p style={{ ...titleStyle }}>disabled </p>
             <Tabs tabType={'line'} tabPosition={'top'} data={disabledData} />
           </div>
           <div>
-            <p style={{ titleStyle }}>data tabPosition=top</p>
+            <p style={{ ...titleStyle }}>data tabPosition=top</p>
             <Tabs
               tabType={'line'}
               tabPosition={'top'}
@@ -923,7 +927,7 @@ export default class TabsDemo extends React.Component<any, any> {
 
         <Theme config={lineViewTop}>
           <div>
-            <p style={{ titleStyle }}>defaultData pagedType=page</p>
+            <p style={{ ...titleStyle }}>defaultData pagedType=page</p>
             <Tabs
               tabType={'line'}
               tabPosition={'bottom'}
@@ -933,7 +937,7 @@ export default class TabsDemo extends React.Component<any, any> {
               pagedType={'page'}
             />
           </div>
-          <p style={{ titleStyle }}>children tabPosition=bottom</p>
+          <p style={{ ...titleStyle }}>children tabPosition=bottom</p>
           <div>
             <Tabs
               tabType={'line'}
@@ -944,7 +948,7 @@ export default class TabsDemo extends React.Component<any, any> {
               children={longChildren}
             />
           </div>
-          <p style={{ titleStyle }}>children tabPosition=bottom</p>
+          <p style={{ ...titleStyle }}>children tabPosition=bottom</p>
           <div>
             <Tabs
               tabType={'line'}
@@ -961,7 +965,7 @@ export default class TabsDemo extends React.Component<any, any> {
 
         <Theme config={lineView}>
           <div>
-            <p style={{ titleStyle }}>data tabPosition=left </p>
+            <p style={{ ...titleStyle }}>data tabPosition=left </p>
             <Tabs
               tabType={'line'}
               tabPosition={'left'}
@@ -971,7 +975,7 @@ export default class TabsDemo extends React.Component<any, any> {
             />
           </div>
           <div>
-            <p style={{ titleStyle }}>children tabPosition=left pagedType = page</p>
+            <p style={{ ...titleStyle }}>children tabPosition=left pagedType = page</p>
             <Tabs
               tabType={'line'}
               tabPosition={'left'}
@@ -982,7 +986,7 @@ export default class TabsDemo extends React.Component<any, any> {
             />
           </div>
           <div>
-            <p style={{ titleStyle }}>children tabPosition=left pagedType = single</p>
+            <p style={{ ...titleStyle }}>children tabPosition=left pagedType = single</p>
             <Tabs
               tabType={'line'}
               tabPosition={'left'}
@@ -993,7 +997,7 @@ export default class TabsDemo extends React.Component<any, any> {
             />
           </div>
           <div>
-            <p style={{ titleStyle }}>data tabPosition=left </p>
+            <p style={{ ...titleStyle }}>data tabPosition=left </p>
             <Tabs
               tabType={'line'}
               tabPosition={'left'}
@@ -1005,7 +1009,7 @@ export default class TabsDemo extends React.Component<any, any> {
           <br />
         </Theme>
         <Theme config={lineViewLeft}>
-          <p style={{ titleStyle }}>children tabPosition=right</p>
+          <p style={{ ...titleStyle }}>children tabPosition=right</p>
           <div>
             <Tabs
               tabType={'line'}
@@ -1017,7 +1021,7 @@ export default class TabsDemo extends React.Component<any, any> {
             />
           </div>
           <br />
-          <p style={{ titleStyle }}>data tabPosition=right && pagedType=single</p>
+          <p style={{ ...titleStyle }}>data tabPosition=right && pagedType=single</p>
           <div>
             <Tabs
               tabType={'line'}
@@ -1025,7 +1029,7 @@ export default class TabsDemo extends React.Component<any, any> {
               data={hasActivityValueData}
               onPreClick={onPreClick}
               onNextClick={onNextClick}
-              defaultActivityValue={2}
+              defaultActivityValue={'2'}
             />
           </div>
           <br />
@@ -1033,7 +1037,7 @@ export default class TabsDemo extends React.Component<any, any> {
 
         <Theme config={cardView}>
           <div>
-            <p style={{ titleStyle }}>tabType=card pagedType=single</p>
+            <p style={{ ...titleStyle }}>tabType=card pagedType=single</p>
             <Tabs
               tabType={'card'}
               pagedType={'single'}
@@ -1049,7 +1053,9 @@ export default class TabsDemo extends React.Component<any, any> {
 
         <Theme config={cardView}>
           <div>
-            <p style={{ titleStyle }}>tabType=card pagedType=single showadd 非受限 无指定增加项</p>
+            <p style={{ ...titleStyle }}>
+              tabType=card pagedType=single showadd 非受限 无指定增加项
+            </p>
             <Tabs
               tabType={'card'}
               pagedType={'single'}
@@ -1063,7 +1069,9 @@ export default class TabsDemo extends React.Component<any, any> {
             />
           </div>
           <div>
-            <p style={{ titleStyle }}>tabType=card pagedType=single showadd 非受限 有指定增加项</p>
+            <p style={{ ...titleStyle }}>
+              tabType=card pagedType=single showadd 非受限 有指定增加项
+            </p>
             <Tabs
               tabType={'card'}
               pagedType={'single'}
@@ -1080,7 +1088,7 @@ export default class TabsDemo extends React.Component<any, any> {
           <br />
           <br />
           <div>
-            <p style={{ titleStyle }}>tabType=card pagedType=single showadd 受限</p>
+            <p style={{ ...titleStyle }}>tabType=card pagedType=single showadd 受限</p>
             <Tabs
               tabType={'card'}
               pagedType={'single'}
@@ -1095,7 +1103,9 @@ export default class TabsDemo extends React.Component<any, any> {
           </div>
           <br />
           <div>
-            <p style={{ titleStyle }}>defaultData pagedType=single 受限 无增加函数 内部不做处理</p>
+            <p style={{ ...titleStyle }}>
+              defaultData pagedType=single 受限 无增加函数 内部不做处理
+            </p>
             {/*<Switch  />*/}
             <Tabs
               tabType={'card'}
@@ -1120,7 +1130,7 @@ export default class TabsDemo extends React.Component<any, any> {
 
         <Theme config={windowView}>
           <div>
-            <p style={{ titleStyle }}>tabType=window pagedType=page 受限 delete</p>
+            <p style={{ ...titleStyle }}>tabType=window pagedType=page 受限 delete</p>
             <Tabs
               tabType={'window'}
               pagedType={'page'}
@@ -1133,7 +1143,7 @@ export default class TabsDemo extends React.Component<any, any> {
             />
           </div>
           <div>
-            <p style={{ titleStyle }}>tabType=window pagedType=page 非受限 delete</p>
+            <p style={{ ...titleStyle }}>tabType=window pagedType=page 非受限 delete</p>
             <Tabs
               tabType={'window'}
               pagedType={'page'}
@@ -1144,11 +1154,11 @@ export default class TabsDemo extends React.Component<any, any> {
               // onDelete={this.onDelete}
             />
           </div>
-          <p style={{ titleStyle }}>非受限 不传data 展示数据由state 控制</p>
+          <p style={{ ...titleStyle }}>非受限 不传data 展示数据由state 控制</p>
           <Tabsdemo />
         </Theme>
         <Theme config={defaultCardView}>
-          <p style={{ titleStyle }}>受限 展示数据 由props控制</p>
+          <p style={{ ...titleStyle }}>受限 展示数据 由props控制</p>
           <TabsLimitdemo />
           <br />
         </Theme>

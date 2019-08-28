@@ -314,7 +314,15 @@ const HTabsOutContainer = CSSComponent({
   tag: 'div',
   className: 'TitleContainer',
   normal: {
-    selectNames: [['width']],
+    selectNames: [['width'], ['background']],
+    getThemeMeta: (theme: Object, themeProps: Object) => {
+      const { background = { color: '#fff' } } = theme;
+      const { propsConfig: { tabType } = {} } = themeProps;
+      if (tabType === 'window') {
+        return {};
+      }
+      return { background };
+    },
   },
   disabled: {
     selectNames: [],
@@ -330,7 +338,7 @@ const VTabsOutContainer = CSSComponent({
   tag: 'div',
   className: 'TitleContainer',
   normal: {
-    selectNames: [['height']],
+    selectNames: [['height'], ['background']],
   },
   disabled: {
     selectNames: [],
@@ -342,6 +350,7 @@ const VTabsOutContainer = CSSComponent({
     white-space: nowrap;
     overflow: hidden;
     float: left;
+    background: #fff;
   `,
 });
 
@@ -459,7 +468,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
   matchPage() {
     const titleSize = this.getTabpaneWidthOrHeight();
 
-    const { allowToCalc, maxIndex } = this.state;
+    const { allowToCalc, maxIndex, data, activityValue } = this.state;
     const newMaxIndex = maxIndex ? maxIndex : this.getCurrentMaxIndex(titleSize);
     let { currentPage } = this.state;
     const { tabPosition, tabType, pagedType } = this.props;
@@ -476,7 +485,10 @@ class TabHeader extends Component<TabsProps, TabsState> {
       pagedType === 'page' ? computePage(offsetSize - 50, actualSize) : titleSize.length;
     const arrowShow = offsetSize < actualSize;
     if (allowToCalc) {
-      currentPage = pagedType === 'page' ? totalPage : titleSize.length - newMaxIndex;
+      currentPage =
+        pagedType === 'page'
+          ? this.getCurrentPageByActivityValue(data, activityValue, totalPage)
+          : titleSize.length - newMaxIndex;
     }
     this.setState(
       { arrowShow, totalPage, currentPage, titleSize, allowToCalc: false, maxIndex: newMaxIndex },
@@ -499,6 +511,17 @@ class TabHeader extends Component<TabsProps, TabsState> {
       }
     }
     return maxIndex;
+  }
+
+  getCurrentPageByActivityValue(data, activityValue, totalPage) {
+    let currentIndex = 0;
+    data.some((item, index) => {
+      if (item.key === activityValue) {
+        currentIndex = index + 1;
+        return true;
+      }
+    });
+    return Math.max(Math.ceil(currentIndex / Math.ceil(data.length / totalPage)) - 1, 0);
   }
 
   render() {
@@ -631,7 +654,9 @@ class TabHeader extends Component<TabsProps, TabsState> {
     const borderThemeProps = this.props.getPartOfThemeProps('BorderStyle', {
       props: { tabPosition, tabType },
     });
-    const tabsThemeProps = this.props.getPartOfThemeProps('TitleContainer');
+    const tabsThemeProps = this.props.getPartOfThemeProps('TitleContainer', {
+      props: { tabType },
+    });
 
     let addSize = 0;
     if (showAddBtn) {
