@@ -80,7 +80,10 @@ const BaseAvatar = CSSComponent({
         size === 'large' ? LargeHeight : size === 'small' ? SmallHeight : DefaultHeight;
       const theBorderRadius = shape === 'circle' ? '50%' : '10%';
       return `border-radius:${theBorderRadius};
-      line-height: ${px2remcss(theSize)};`;
+      line-height: ${px2remcss(theSize)};
+      min-width: ${px2remcss(24)};
+      min-height: ${px2remcss(24)};
+      `;
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
