@@ -85,8 +85,8 @@
       },
       "theme": {
         "Container": {
-          "name": "Radio组整体配置",
-          "desc": "Radio组整体配置",
+          "name": "单选框组整体样式",
+          "desc": "单选框组整体样式",
           "normal": [
             ["opacity"],
             ["border"],
@@ -99,12 +99,12 @@
           ]
         },
         "CheckButton": {
-          "name": "配置按钮Radio样式",
-          "desc": "配置按钮Radio样式",
+          "name": "按钮单选框样式",
+          "desc": "按钮单选框样式",
           "theme": {
-            "CheckButtonChecked": {
-              "name": "单选框按钮状选中配置",
-              "desc": "单选框按钮状选中配置",
+            "CheckButtonUnChecked": {
+              "name": "未选中样式",
+              "desc": "未选中样式",
               "normal": {
                 "selectNames": [
                   ["opacity"],
@@ -150,9 +150,9 @@
                 "nth": [["opacity"], ["border"], ["borderRadius"], ["background"], ["color"]]
               }
             },
-            "CheckButtonUnChecked": {
-              "name": "单选框按钮状未选中配置",
-              "desc": "单选框按钮状未选中配置",
+            "CheckButtonChecked": {
+              "name": "选中样式",
+              "desc": "选中样式",
               "normal": {
                 "selectNames": [
                   ["opacity"],
@@ -199,8 +199,8 @@
               }
             },
             "CheckButtonCancel": {
-              "name": "单选框按钮状取消项配置",
-              "desc": "单选框按钮状取消状态配置",
+              "name": "取消状态样式",
+              "desc": "取消状态样式",
               "normal": [
                 ["opacity"],
                 ["border"],
@@ -222,8 +222,8 @@
   "needExport": true,
   "theme": {
     "Container": {
-      "name": "Radio组整体配置",
-      "desc": "Radio组整体配置",
+      "name": "单选框组整体配置",
+      "desc": "单选框组整体配置",
       "normal": [
         ["opacity"],
         ["border"],
@@ -236,54 +236,75 @@
       ]
     },
     "Radio": {
-      "name": "配置Radio样式",
-      "desc": "配置Radio样式",
+      "name": "配置单选框样式",
+      "desc": "配置单选框样式",
       "theme": {
         "Container": {
-          "name": "Radio整体配置",
-          "desc": "Radio整体配置",
+          "name": "整体样式",
+          "desc": "整体样式",
           "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]],
           "hover": [["opacity"]],
           "disabled": [["opacity"]]
         },
         "RadioText": {
-          "name": "Radio文字配置",
-          "desc": "Radio文字样式配置",
+          "name": "文字样式",
+          "desc": "文字样式",
           "normal": [["color"], ["font"]],
           "hover": [["color"], ["font"]],
           "disabled": [["color"], ["font"]]
         },
-        "RadioEdgeChecked": {
-          "name": "Radio选中后边框配置",
-          "desc": "Radio选中后边框配置样式",
-          "normal": [["background"], ["border"], ["borderRadius"], ["width"], ["height"]],
-          "hover": [["background"], ["borderRadius"], ["border"]],
-          "disabled": [["background"], ["borderRadius"], ["border"]]
-        },
         "RadioEdgeUnChecked": {
-          "name": "Radio未选中边框配置",
-          "desc": "Radio未选中边框配置样式",
-          "normal": [["background"], ["border"], ["borderRadius"], ["width"], ["height"]],
+          "name": "未选中外框样式",
+          "desc": "未选中外框样式",
+          "normal": [
+            ["background"],
+            ["border"],
+            ["borderRadius"],
+            ["boxShadow"],
+            ["width"],
+            ["height"]
+          ],
           "hover": [["background"], ["borderRadius"], ["border"]],
           "disabled": [["background"], ["borderRadius"], ["border"]]
         },
-        "RadioEdgeCancel": {
-          "name": "Radio未选中边框配置",
-          "desc": "Radio未选中边框配置样式",
-          "normal": [["background"], ["border"], ["borderRadius"], ["width"], ["height"]],
+        "RadioEdgeChecked": {
+          "name": "选中外框样式",
+          "desc": "选中外框样式",
+          "normal": [
+            ["background"],
+            ["border"],
+            ["borderRadius"],
+            ["boxShadow"],
+            ["width"],
+            ["height"]
+          ],
           "hover": [["background"], ["borderRadius"], ["border"]],
           "disabled": [["background"], ["borderRadius"], ["border"]]
         },
         "RadioInnerChecked": {
-          "name": "Radio选中样式配置",
-          "desc": "Radio选中配置样式",
+          "name": "选中内框样式",
+          "desc": "选中内框样式",
           "normal": [["background"], ["width"], ["height"]],
           "hover": [["background"]],
           "disabled": [["background"]]
         },
+        "RadioEdgeCancel": {
+          "name": "取消状态外框样式",
+          "desc": "取消状态外框样式",
+          "normal": [
+            ["background"],
+            ["border"],
+            ["borderRadius"],
+            ["boxShadow"],
+            ["width"],
+            ["height"]
+          ],
+          "hover": [["background"], ["borderRadius"], ["border"]],
+          "disabled": [["background"], ["borderRadius"], ["border"]]
+        },
         "RadioInnerCancel": {
-          "name": "Radio取消状态样式配置",
-          "desc": "Radio取消状态配置样式",
+          "name": "取消状态内框样式",
+          "desc": "取消状态内框样式",
           "normal": [["background"], ["width"], ["height"]],
           "hover": [["background"]]
         }

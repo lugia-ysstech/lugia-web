@@ -113,6 +113,23 @@ const OutContainer = StaticComponent({
     display: inline-block;
   `,
 });
+const VerticalOutContainer = StaticComponent({
+  tag: 'div',
+  className: 'OutContainer',
+  normal: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
+  css: css`
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+  `,
+});
 OutContainer.displayName = Widget.TabsContainer;
 
 type TabsState = {
@@ -227,13 +244,25 @@ class TabsBox extends Component<TabsProps, TabsState> {
   }
 
   render() {
-    const { themeProps, tabType } = this.props;
+    const { themeProps, tabType, tabPosition } = this.props;
+    const ContainerBox =
+      tabType === 'line' && isVertical(tabPosition) ? VerticalOutContainer : OutContainer;
     let target = (
-      <OutContainer>
+      <ContainerBox>
         <TabHeader {...this.getTabHeaderProps()} />
         {this.getChildrenContent()}
-      </OutContainer>
+      </ContainerBox>
     );
+    if (tabType === 'line') {
+      if (tabPosition === 'right' || tabPosition === 'bottom') {
+        target = (
+          <ContainerBox>
+            {this.getChildrenContent()}
+            <TabHeader {...this.getTabHeaderProps()} />
+          </ContainerBox>
+        );
+      }
+    }
     if (tabType === 'window') {
       const outContainerThemeProps = deepMerge(
         {
