@@ -8,6 +8,11 @@
       "desc": "标签是否可关闭",
       "defaultValue": true
     },
+    "text": {
+      "type": "string",
+      "desc": "指定标签的文本值",
+      "defaultValue": "Tag"
+    },
     "shape": {
       "type": " basic | round ",
       "desc": "标签的圆角, basic为4px圆角,round为圆角标签",
