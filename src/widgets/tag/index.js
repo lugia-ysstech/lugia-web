@@ -10,7 +10,7 @@ import Widget from '../consts/index';
 import ThemeHoc from '@lugia/theme-hoc';
 import Icon from '../icon';
 import { deepMerge } from '@lugia/object-utils';
-import { TagWrap, OptionalWrap, ItemText, CloseButtonWrap } from '../css/tag';
+import { TagWrap, OptionalWrap, ItemText, CloseButtonWrap, FlexBox } from '../css/tag';
 
 type shapeType = 'basic' | 'round';
 type styleType = 'customs' | 'primary' | 'basic' | 'presets' | 'optional';
@@ -24,6 +24,7 @@ type TagProps = {
   getTheme: Function,
   type: styleType,
   themeProps: Object,
+  text: String,
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
 };
@@ -75,7 +76,7 @@ class Tag extends React.Component<TagProps, TagState> {
 
   render() {
     const { isClose, checked } = this.state;
-    const { getPartOfThemeProps, type, shape, closable = false, children } = this.props;
+    const { getPartOfThemeProps, type, shape, closable = false } = this.props;
 
     const params = {
       shape,
@@ -89,30 +90,48 @@ class Tag extends React.Component<TagProps, TagState> {
       type === 'optional' && checked
         ? getPartOfThemeProps('CheckedTagWrap', { props: params })
         : getPartOfThemeProps('TagWrap', { props: params });
+
+    const value = this.getValue();
     return type === 'optional' ? (
       <OptionalWrap onClick={this.onClick} themeProps={themeProps}>
-        <ItemText themeProps={themeProps} ref={cmp => (this.itemText = cmp)} type={type}>
-          {children}
-        </ItemText>
+        <FlexBox>
+          <ItemText themeProps={themeProps} ref={cmp => (this.itemText = cmp)} type={type}>
+            {value}
+          </ItemText>
+        </FlexBox>
       </OptionalWrap>
     ) : (
       <TagWrap onClick={this.onClick} themeProps={themeProps}>
-        <ItemText themeProps={themeProps} ref={cmp => (this.itemText = cmp)} type={type}>
-          {children}
-        </ItemText>
-        {closable ? (
-          <CloseButtonWrap themeProps={getPartOfThemeProps('CloseButton')}>
-            <Icon
-              {...this.getCloseTheme('CloseButton')}
-              singleTheme
-              iconClass="lugia-icon-reminder_close"
-              onClick={this.onCloseClick.bind(this)}
-            />
-          </CloseButtonWrap>
-        ) : null}
+        <FlexBox>
+          <ItemText themeProps={themeProps} ref={cmp => (this.itemText = cmp)} type={type}>
+            {value}
+          </ItemText>
+
+          {closable ? (
+            <CloseButtonWrap themeProps={getPartOfThemeProps('CloseButton')}>
+              <Icon
+                {...this.getCloseTheme('CloseButton')}
+                singleTheme
+                iconClass="lugia-icon-reminder_close"
+                onClick={this.onCloseClick.bind(this)}
+              />
+            </CloseButtonWrap>
+          ) : null}
+        </FlexBox>
       </TagWrap>
     );
   }
+
+  getValue = () => {
+    const { text, children } = this.props;
+    if (text) {
+      return text.toString();
+    }
+    if (children) {
+      return children;
+    }
+    return 'Tag';
+  };
 
   getCloseTheme = (target: string) => {
     const { getPartOfThemeHocProps } = this.props;
