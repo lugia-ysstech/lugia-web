@@ -6,7 +6,7 @@
  */
 import React from 'react';
 import styled from 'styled-components';
-import { getBorder } from '@lugia/theme-utils';
+import { getBorder, getBoxShadow } from '@lugia/theme-utils';
 import Theme from '../theme';
 import Widget from '../consts';
 import Radio from './';
@@ -80,8 +80,9 @@ export class RadioDemo extends React.Component<any, any> {
             background: { color: 'orange' },
             border: getBorder({ color: 'red', width: 2, style: 'solid' }),
             borderRadius: getBorderRadius(100),
-            width: 20,
-            height: 20,
+            boxShadow: getBoxShadow('1px 2px 2px 2px #e8e8e8'),
+            width: 40,
+            height: 40,
           },
           hover: {
             background: { color: 'green' },
@@ -130,8 +131,8 @@ export class RadioDemo extends React.Component<any, any> {
         RadioInnerChecked: {
           normal: {
             background: { color: 'green' },
-            width: 12,
-            height: 12,
+            width: 20,
+            height: 20,
           },
           disabled: {
             background: { color: 'red' },

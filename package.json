@@ -1,6 +1,6 @@
 {
   "name": "@lugia/lugia-web",
-  "version": "1.1.2",
+  "version": "1.1.4",
   "publishConfig": {
     "access": "public"
   },
@@ -41,6 +41,12 @@
     "react-dom": ">16.0.0",
     "styled-components": "4.2.0"
   },
+  "repository": {
+    "type" : "git",
+    "url": "https://github.com/lugia-ysstech/lugia-web"
+  },
+  "homepage": "http://lugia.tech",
+  "license": "Apache License 2.0",
   "author": "ysstech",
   "scripts": {
     "prettier": "prettier --write",

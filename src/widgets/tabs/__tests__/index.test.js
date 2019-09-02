@@ -18,9 +18,12 @@ describe('tabsDemo', () => {
   const themeProps = { themeConfig: {}, themeState: {} };
   const getPartOfThemeProps = () => true;
   const createTabs = (obj?: Object): any => {
-    const config = obj
-      ? obj
-      : { activityValue: 0, tabType: 'line', tabPosition: 'bottom', data: hasActivityValueData };
+    const config = obj || {
+      activityValue: 0,
+      tabType: 'line',
+      tabPosition: 'bottom',
+      data: hasActivityValueData,
+    };
     return (
       <Tabs
         {...config}
@@ -52,14 +55,14 @@ describe('tabsDemo', () => {
   });
 
   it('props defaultActivityValue', () => {
-    const target = mount(createTabs({ defaultActivityValue: 2, data: hasActivityValueData }));
+    const target = mount(createTabs({ defaultActivityValue: '2', data: hasActivityValueData }));
     const { activityValue } = getCmp(target).state;
-    expect(activityValue).toBe(2);
+    expect(activityValue).toBe('2');
   });
   it('props activityValue', () => {
-    const target = mount(createTabs({ activityValue: 2, data: hasActivityValueData }));
+    const target = mount(createTabs({ activityValue: '2', data: hasActivityValueData }));
     const { activityValue } = getCmp(target).state;
-    expect(activityValue).toBe(2);
+    expect(activityValue).toBe('2');
   });
   it('props defaultData', () => {
     const target = mount(createTabs({ defaultData }));
@@ -84,17 +87,17 @@ describe('tabsDemo', () => {
   it('props children shortChildren', () => {
     const target = mount(createTabs({ children: shortChildren }));
     const { activityValue } = getCmp(target).state;
-    expect(activityValue).toBe(0);
+    expect(activityValue).toBe('Tab1');
   });
   it('props children longChildren', () => {
     const target = mount(createTabs({ children: longChildren }));
     const { activityValue } = getCmp(target).state;
-    expect(activityValue).toBe(0);
+    expect(activityValue).toBe('Tab1');
   });
   it('props children&&data', () => {
     const target = mount(createTabs({ data: hasActivityValueData, children: shortChildren }));
     const { activityValue } = getCmp(target).state;
-    expect(activityValue).toBe(0);
+    expect(activityValue).toBe('0');
   });
 
   function testActivityValue(component: any, expActicityValue: string) {
@@ -119,19 +122,19 @@ describe('tabsDemo', () => {
       />
     );
     expect(getCmp(target).state.data).toEqual([
-      { title: 'Tab1', content: 'Tab1 content' },
-      { title: 'Tab2', content: 'Tab2 content' },
-      { title: 'Tab3', content: 'Tab3 content' },
+      { title: 'Tab1', content: 'Tab1 content', key: 'Tab1' },
+      { title: 'Tab2', content: 'Tab2 content', key: 'Tab2' },
+      { title: 'Tab3', content: 'Tab3 content', key: 'Tab3' },
     ]);
     target
       .children()
       .instance()
       .onAddClick();
     expect(getCmp(target).state.data).toEqual([
-      { title: 'Tab1', content: 'Tab1 content' },
-      { title: 'Tab2', content: 'Tab2 content' },
-      { title: 'Tab3', content: 'Tab3 content' },
-      { title: 'Tab4', content: 'Tab4 Content' },
+      { title: 'Tab1', content: 'Tab1 content', key: 'Tab1' },
+      { title: 'Tab2', content: 'Tab2 content', key: 'Tab2' },
+      { title: 'Tab3', content: 'Tab3 content', key: 'Tab3' },
+      { title: 'Tab4', content: 'Tab4 Content', key: 'Tab4' },
     ]);
   });
 
@@ -155,17 +158,17 @@ describe('tabsDemo', () => {
       />
     );
     expect(getCmp(target).state.data).toEqual([
-      { title: 'Tab1', content: 'Tab1 content' },
-      { title: 'Tab2', content: 'Tab2 content' },
-      { title: 'Tab3', content: 'Tab3 content' },
+      { title: 'Tab1', content: 'Tab1 content', key: 'Tab1' },
+      { title: 'Tab2', content: 'Tab2 content', key: 'Tab2' },
+      { title: 'Tab3', content: 'Tab3 content', key: 'Tab3' },
     ]);
     target
       .children()
       .instance()
-      .onDelete(1);
+      .onDelete({ index: 1, activityValue: 'Tab2' });
     expect(getCmp(target).state.data).toEqual([
-      { title: 'Tab1', content: 'Tab1 content' },
-      { title: 'Tab3', content: 'Tab3 content' },
+      { title: 'Tab1', content: 'Tab1 content', key: 'Tab1' },
+      { title: 'Tab3', content: 'Tab3 content', key: 'Tab3' },
     ]);
   });
 
@@ -188,22 +191,22 @@ describe('tabsDemo', () => {
         themeProps={themeProps}
       />
     );
-    expect(getCmp(target).state.activityValue).toEqual(0);
+    expect(getCmp(target).state.activityValue).toEqual('Tab1');
     target
       .children()
       .instance()
-      .onChange(1);
-    expect(getCmp(target).state.activityValue).toEqual(1);
+      .onChange({ index: 1, activityValue: 'Tab2' });
+    expect(getCmp(target).state.activityValue).toEqual('Tab2');
   });
 
   it('props onChange 受限', async () => {
     const target = mount(createTabs());
-    expect(getCmp(target).state.activityValue).toEqual(0);
+    expect(getCmp(target).state.activityValue).toEqual('0');
     target
       .children()
       .instance()
-      .onChange(2);
-    expect(getCmp(target).state.activityValue).toEqual(0);
+      .onChange({ index: 2, activityValue: 'Tab3' });
+    expect(getCmp(target).state.activityValue).toEqual('0');
   });
 
   it('props onAddClick 非受限', async () => {
@@ -217,30 +220,30 @@ describe('tabsDemo', () => {
     );
 
     expect(getCmp(target).state.data).toEqual(getDefaultData({}));
-    expect(getCmp(target).state.activityValue).toEqual(0);
+    expect(getCmp(target).state.activityValue).toEqual('Tab1');
     target
       .children()
       .instance()
       .onAddClick();
     expect(getCmp(target).state.data).toEqual([
-      { title: 'Tab1', content: 'Tab1 content' },
-      { title: 'Tab2', content: 'Tab2 content' },
-      { title: 'Tab3', content: 'Tab3 content' },
-      { title: 'Tab4', content: 'Tab4 Content' },
+      { title: 'Tab1', content: 'Tab1 content', key: 'Tab1' },
+      { title: 'Tab2', content: 'Tab2 content', key: 'Tab2' },
+      { title: 'Tab3', content: 'Tab3 content', key: 'Tab3' },
+      { title: 'Tab4', content: 'Tab4 Content', key: 'Tab4' },
     ]);
-    expect(getCmp(target).state.activityValue).toEqual(3);
+    expect(getCmp(target).state.activityValue).toEqual('Tab4');
   });
 
   it('props onAddClick 受限', async () => {
     const target = mount(createTabs());
     expect(getCmp(target).state.data).toEqual(hasActivityValueData);
-    expect(getCmp(target).state.activityValue).toEqual(0);
+    expect(getCmp(target).state.activityValue).toEqual('0');
     target
       .children()
       .instance()
       .onAddClick();
     expect(getCmp(target).state.data).toEqual(hasActivityValueData);
-    expect(getCmp(target).state.activityValue).toEqual(0);
+    expect(getCmp(target).state.activityValue).toEqual('0');
   });
 
   it('props 受限 data', async () => {
@@ -259,5 +262,211 @@ describe('tabsDemo', () => {
     expect(getCmp(target).state.data).toEqual([]);
     target.setProps({ data: hasActivityValueData });
     expect(getCmp(target).state.data).toEqual(hasActivityValueData);
+  });
+
+  it('getCurrentPageByActivityValue', async () => {
+    const target = mount(createTabs());
+    const mockInfo = [
+      {
+        data: [
+          { key: '1' },
+          { key: '2' },
+          { key: '3' },
+          { key: '4' },
+          { key: '5' },
+          { key: '6' },
+          { key: '7' },
+          { key: '8' },
+          { key: '9' },
+          { key: '10' },
+        ],
+        activityValue: '1',
+        totalPage: 4,
+        exception: 0,
+      },
+      {
+        data: [
+          { key: '1' },
+          { key: '2' },
+          { key: '3' },
+          { key: '4' },
+          { key: '5' },
+          { key: '6' },
+          { key: '7' },
+          { key: '8' },
+          { key: '9' },
+          { key: '10' },
+        ],
+        activityValue: '2',
+        totalPage: 4,
+        exception: 0,
+      },
+      {
+        data: [
+          { key: '1' },
+          { key: '2' },
+          { key: '3' },
+          { key: '4' },
+          { key: '5' },
+          { key: '6' },
+          { key: '7' },
+          { key: '8' },
+          { key: '9' },
+          { key: '10' },
+        ],
+        activityValue: '3',
+        totalPage: 4,
+        exception: 0,
+      },
+      {
+        data: [
+          { key: '1' },
+          { key: '2' },
+          { key: '3' },
+          { key: '4' },
+          { key: '5' },
+          { key: '6' },
+          { key: '7' },
+          { key: '8' },
+          { key: '9' },
+          { key: '10' },
+        ],
+        activityValue: '4',
+        totalPage: 4,
+        exception: 1,
+      },
+      {
+        data: [
+          { key: '1' },
+          { key: '2' },
+          { key: '3' },
+          { key: '4' },
+          { key: '5' },
+          { key: '6' },
+          { key: '7' },
+          { key: '8' },
+          { key: '9' },
+          { key: '10' },
+        ],
+        activityValue: '5',
+        totalPage: 4,
+        exception: 1,
+      },
+      {
+        data: [
+          { key: '1' },
+          { key: '2' },
+          { key: '3' },
+          { key: '4' },
+          { key: '5' },
+          { key: '6' },
+          { key: '7' },
+          { key: '8' },
+          { key: '9' },
+          { key: '10' },
+        ],
+        activityValue: '6',
+        totalPage: 4,
+        exception: 1,
+      },
+      {
+        data: [
+          { key: '1' },
+          { key: '2' },
+          { key: '3' },
+          { key: '4' },
+          { key: '5' },
+          { key: '6' },
+          { key: '7' },
+          { key: '8' },
+          { key: '9' },
+          { key: '10' },
+        ],
+        activityValue: '7',
+        totalPage: 4,
+        exception: 2,
+      },
+      {
+        data: [
+          { key: '1' },
+          { key: '2' },
+          { key: '3' },
+          { key: '4' },
+          { key: '5' },
+          { key: '6' },
+          { key: '7' },
+          { key: '8' },
+          { key: '9' },
+          { key: '10' },
+        ],
+        activityValue: '8',
+        totalPage: 4,
+        exception: 2,
+      },
+      {
+        data: [
+          { key: '1' },
+          { key: '2' },
+          { key: '3' },
+          { key: '4' },
+          { key: '5' },
+          { key: '6' },
+          { key: '7' },
+          { key: '8' },
+          { key: '9' },
+          { key: '10' },
+        ],
+        activityValue: '9',
+        totalPage: 4,
+        exception: 2,
+      },
+      {
+        data: [
+          { key: '1' },
+          { key: '2' },
+          { key: '3' },
+          { key: '4' },
+          { key: '5' },
+          { key: '6' },
+          { key: '7' },
+          { key: '8' },
+          { key: '9' },
+          { key: '10' },
+        ],
+        activityValue: '10',
+        totalPage: 4,
+        exception: 3,
+      },
+      {
+        data: [
+          { key: '1' },
+          { key: '2' },
+          { key: '3' },
+          { key: '4' },
+          { key: '5' },
+          { key: '6' },
+          { key: '7' },
+          { key: '8' },
+          { key: '9' },
+          { key: '10' },
+          { key: '11' },
+          { key: '12' },
+          { key: '13' },
+          { key: '14' },
+          { key: '15' },
+        ],
+        activityValue: '7',
+        totalPage: 4,
+        exception: 1,
+      },
+    ];
+    mockInfo.forEach(item => {
+      const { exception, data, activityValue, totalPage } = item;
+      const tabHeader = target.find('TabHeader');
+      const res = tabHeader
+        .instance()
+        .getCurrentPageByActivityValue(data, activityValue, totalPage);
+      expect(res).toEqual(exception);
+    });
   });
 });
