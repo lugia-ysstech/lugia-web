@@ -68,6 +68,7 @@ type SelectProps = {
   query: string | number,
   prefix?: any,
   getPartOfThemeConfig: Function,
+  canClear?: boolean,
 };
 
 type SelectState = {
@@ -319,6 +320,7 @@ class Select extends React.Component<SelectProps, SelectState> {
       createPortal,
       prefix,
       data,
+      canClear,
     } = props;
     const { displayValue = [] } = this;
     const { value = [], query, isCheckedAll } = state;
@@ -375,6 +377,7 @@ class Select extends React.Component<SelectProps, SelectState> {
             ref={getInputTag}
             prefix={prefix}
             key="inputtag"
+            canClear={canClear}
             value={value}
             displayValue={displayValue}
             validateStatus={validateStatus}
