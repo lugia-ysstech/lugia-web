@@ -830,11 +830,8 @@ class TabHeader extends Component<TabsProps, TabsState> {
     const { tabPosition } = this.props;
     let actualSize = 0;
     if (this.tabPanBox.current) {
-      if (isVertical(tabPosition)) {
-        actualSize = this.tabPanBox.current.offsetHeight;
-      } else {
-        actualSize = this.tabPanBox.current.offsetWidth;
-      }
+      const { offsetHeight, offsetWidth } = this.tabPanBox.current;
+      actualSize = isVertical(tabPosition) ? offsetHeight : offsetWidth;
     }
 
     return actualSize;
