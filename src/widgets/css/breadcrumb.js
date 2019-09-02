@@ -170,12 +170,6 @@ export const ItemWrap = CSSComponent({
 export const FlexBox = StaticComponent({
   tag: 'div',
   className: 'breadcrumbContainer',
-  normal: {
-    selectNames: [],
-  },
-  hover: {
-    selectNames: [],
-  },
   css: css`
     display: flex;
     justify-content: center;
@@ -189,12 +183,6 @@ export const FlexBox = StaticComponent({
 export const FlexContainer = StaticComponent({
   tag: 'div',
   className: 'breadcrumbContainer',
-  normal: {
-    selectNames: [],
-  },
-  hover: {
-    selectNames: [],
-  },
   css: css`
     display: flex;
     flex-wrap: nowrap;
