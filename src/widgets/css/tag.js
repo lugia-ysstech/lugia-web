@@ -419,12 +419,6 @@ export const OptionalWrap = CSSComponent({
 export const FlexBox = StaticComponent({
   tag: 'div',
   className: 'breadcrumbContainer',
-  normal: {
-    selectNames: [],
-  },
-  hover: {
-    selectNames: [],
-  },
   css: css`
     display: flex;
     justify-content: center;
