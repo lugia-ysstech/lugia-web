@@ -48,11 +48,20 @@ const PaginationMoreItem = CSSComponent({
   tag: 'li',
   className: 'PaginationMoreItem',
   normal: {
-    selectNames: [['color'], ['font'], ['fontSize'], ['width'], ['height'], ['cursor']],
+    selectNames: [
+      ['color'],
+      ['font'],
+      ['fontSize'],
+      ['width'],
+      ['height'],
+      ['cursor'],
+      ['lineHeight'],
+    ],
     defaultTheme: {
       color: lightGreyColor,
       width: 36,
       height: 36,
+      lineHeight: 36,
       cursor: 'pointer',
     },
   },
@@ -60,7 +69,6 @@ const PaginationMoreItem = CSSComponent({
     selectNames: [['color'], ['font'], ['fontSize']],
   },
   css: css`
-    line-height: ${px2remcss(36)};
     text-align: center;
     list-style: none;
     float: left;
@@ -159,19 +167,19 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     defaultPageSize: 10,
   };
 
-  constructor(props) {
-    super(props);
-  }
-
   static getDerivedStateFromProps(props: PaginationProps, state: PaginationState) {
+    const statePageSize = state ? state.pageSize : 0;
+    const propsPageSize = props ? props.pageSize : 0;
+    const propsCurrent = props.current;
+
     let theCurrent = state ? state.current : props.defaultCurrent;
-    let thePageSize = state ? state.pageSize : props.defaultPageSize;
+    let thePageSize = state ? statePageSize : props.defaultPageSize;
     if ('current' in props) {
-      theCurrent = props.current;
+      theCurrent = propsCurrent;
     }
-    if ('pageSize' in props && props.pageSize !== state.pageSize) {
-      thePageSize = props.current;
-      const newCurrent = computePage(props.pageSize, state.pageSize, props.total);
+    if ('pageSize' in props && propsPageSize !== statePageSize) {
+      thePageSize = propsCurrent;
+      const newCurrent = computePage(propsPageSize, statePageSize, props.total);
       theCurrent = theCurrent > newCurrent ? newCurrent : theCurrent;
     }
     return {
@@ -189,13 +197,39 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
       </PaginationList>
     );
   }
+  getPrePage(current, pageBufferSize, pageList) {
+    if (current - 1 >= pageBufferSize * 2 && current !== 1 + 2) {
+      pageList.unshift(this.getPaginationOmit('pre'));
+    }
+    return pageList;
+  }
+
+  getNextPage(totalPages, current, pageBufferSize, pageList) {
+    if (totalPages - current >= pageBufferSize * 2 && current !== totalPages - 2) {
+      pageList.push(this.getPaginationOmit('next'));
+    }
+    return pageList;
+  }
+
+  checkFirstPage(left, pageList, firstPage) {
+    if (left !== 1) {
+      pageList.unshift(firstPage);
+    }
+    return pageList;
+  }
+  checkLastPage(right, totalPages, lastPage, pageList) {
+    if (right !== totalPages) {
+      pageList.push(lastPage);
+    }
+    return pageList;
+  }
 
   getPageList() {
     const { total } = this.props;
     const { current, pageSize } = this.state;
 
     const totalPages = computePage(0, pageSize, total);
-    const pageList = [];
+    let pageList = [];
     const pageBufferSize = 2;
     if (totalPages <= 5 + pageBufferSize * 2) {
       for (let i = 1; i <= totalPages; i++) {
@@ -205,49 +239,50 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     } else {
       const firstPage = this.getItems(0, false, 1);
       const lastPage = this.getItems(totalPages, false, totalPages);
-
-      let left = Math.max(1, current - pageBufferSize);
-      let right = Math.min(current + pageBufferSize, totalPages);
-
-      if (current - 1 <= pageBufferSize) {
-        right = 1 + pageBufferSize * 2;
-      }
-
-      if (totalPages - current <= pageBufferSize) {
-        left = totalPages - pageBufferSize * 2;
-      }
+      const left = this.getLeftPage(totalPages);
+      const right = this.getRightPage(totalPages);
 
       for (let i = left; i <= right; i++) {
         const isSelected = current === i;
         pageList.push(this.getItems(i, isSelected, i));
       }
-
-      if (current - 1 >= pageBufferSize * 2 && current !== 1 + 2) {
-        pageList.unshift(this.getPaginationOmit('pre'));
-      }
-
-      if (totalPages - current >= pageBufferSize * 2 && current !== totalPages - 2) {
-        pageList.push(this.getPaginationOmit('next'));
-      }
-
-      if (left !== 1) {
-        pageList.unshift(firstPage);
-      }
-      if (right !== totalPages) {
-        pageList.push(lastPage);
-      }
+      pageList = this.getPrePage(current, pageBufferSize, pageList);
+      pageList = this.getNextPage(totalPages, current, pageBufferSize, pageList);
+      pageList = this.checkFirstPage(left, pageList, firstPage);
+      pageList = this.checkLastPage(right, totalPages, lastPage, pageList);
     }
 
     return pageList;
   }
 
+  getRightPage(totalPages: number) {
+    const { current } = this.state;
+    const pageBufferSize = 2;
+    let right = Math.min(current + pageBufferSize, totalPages);
+    if (current - 1 <= pageBufferSize) {
+      right = 1 + pageBufferSize * 2;
+    }
+    return right;
+  }
+
+  getLeftPage(totalPages: number) {
+    const { current } = this.state;
+    const pageBufferSize = 2;
+    let left = Math.max(1, current - pageBufferSize);
+    if (totalPages - current <= pageBufferSize) {
+      left = totalPages - pageBufferSize * 2;
+    }
+    return left;
+  }
+
   getItems(index: number, isSelected: boolean, title: number) {
-    const channel = this.props.createEventChannel(['active', 'hover']);
+    const { createEventChannel, getPartOfThemeProps } = this.props;
+    const channel = createEventChannel(['active', 'hover']);
     return (
       <PaginationListItem
         {...channel.provider}
-        onClick={this.clickItem(index)}
-        themeProps={this.props.getPartOfThemeProps('PaginationListItem', {
+        onClick={this.changePage(index)}
+        themeProps={getPartOfThemeProps('PaginationListItem', {
           props: {
             isSelected,
           },
@@ -256,7 +291,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
       >
         <PaginationListItemText
           lugiaConsumers={channel.consumer}
-          themeProps={this.props.getPartOfThemeProps('PaginationInnerText', {
+          themeProps={getPartOfThemeProps('PaginationInnerText', {
             props: {
               isSelected,
             },
@@ -395,9 +430,6 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     );
   }
 
-  clickItem = (page: number) => () => {
-    this.handleChangePage(page);
-  };
   getQuickJumper() {
     const { showQuickJumper } = this.props;
 
@@ -503,26 +535,29 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     }
   };
 
+  checkArrowChange(type: MorePageType) {
+    const { total } = this.props;
+    const { current, pageSize } = this.state;
+    const preMore = type === 'pre';
+    const min = current === 1 && preMore;
+    const max = current === total && type === 'next';
+    let page = current;
+    if (!min && !max) {
+      page = preMore
+        ? current - 1
+        : current <= computePage(0, pageSize, total)
+        ? current + 1
+        : current;
+    }
+    return page;
+  }
+
   getArrow(type: MorePageType) {
     const { hideOnSinglePage } = this.props;
     if (hideOnSinglePage) {
       return null;
     }
-
-    const { total } = this.props;
-    const { current, pageSize } = this.state;
-
-    const min = current === 1 && type === 'pre';
-    const max = current === total && type === 'next';
-    let page = current;
-    if (!min && !max) {
-      page =
-        type === 'pre'
-          ? current - 1
-          : current < computePage(0, pageSize, total)
-          ? current + 1
-          : current;
-    }
+    const page = this.checkArrowChange(type);
 
     return (
       <PaginationListItem
@@ -532,24 +567,6 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
         {this.getArrowIcon(type)}
       </PaginationListItem>
     );
-  }
-
-  checkArrowChange(type: MorePageType) {
-    const { total } = this.props;
-    const { current, pageSize } = this.state;
-
-    const min = current === 1 && type === 'pre';
-    const max = current === total && type === 'next';
-    let page = current;
-    if (!min && !max) {
-      page =
-        type === 'pre'
-          ? current - 1
-          : current <= computePage(0, pageSize, total)
-          ? current + 1
-          : current;
-    }
-    return page;
   }
 
   getArrowIcon(type: MorePageType) {

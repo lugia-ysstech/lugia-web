@@ -119,8 +119,8 @@
               "normal": [["width"], ["height"], ["margin"], ["padding"]]
             },
             "Input": {
-              "name": "输入框中输入框部分",
-              "desc": "输入框中输入框部分",
+              "name": "输入框主体内容",
+              "desc": "输入框主体内容",
               "normal": [
                 ["width"],
                 ["height"],
@@ -192,9 +192,10 @@
         ["borderRadius"],
         ["opacity"],
         ["background"],
-        ["boxShadow"]
+        ["boxShadow"],
+        ["lineHeight"]
       ],
-      "hover": [],
+      "hover": [["color"], ["font"], ["fontSize"], ["border"], ["borderRadius"]],
       "clicked": [],
       "disabled": []
     },
@@ -202,7 +203,7 @@
       "name": "分页内部页数文字",
       "desc": "配置分页内部页数文字",
       "normal": [["fontSize"], ["font"], ["color"], ["cursor"], ["opacity"]],
-      "hover": [],
+      "hover": [["color"], ["font"], ["fontSize"]],
       "clicked": [],
       "disabled": []
     },
@@ -215,8 +216,8 @@
           "normal": [["width"], ["height"], ["margin"], ["padding"]]
         },
         "Input": {
-          "name": "输入框中输入框部分",
-          "desc": "输入框中输入框部分",
+          "name": "输入框主体内容",
+          "desc": "输入框主体内容",
           "normal": [
             ["width"],
             ["height"],
