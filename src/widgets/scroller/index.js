@@ -39,12 +39,6 @@ type Direction = 'down' | 'up' | 'none';
 const Container = StaticComponent({
   tag: 'div',
   className: 'Container',
-  normal: {
-    selectNames: [],
-  },
-  hover: {
-    selectNames: [],
-  },
   css: css`
     position: relative;
     background: rgba(255, 255, 255, 0);
@@ -57,12 +51,6 @@ const Container = StaticComponent({
 const XContainer = StaticComponent({
   extend: Container,
   className: 'XContainer',
-  normal: {
-    selectNames: [],
-  },
-  hover: {
-    selectNames: [],
-  },
   css: css`
     height: ${px2remcss(BarDefaultSize)};
   `,
@@ -70,12 +58,6 @@ const XContainer = StaticComponent({
 const YContainer = StaticComponent({
   extend: Container,
   className: 'YContainer',
-  normal: {
-    selectNames: [],
-  },
-  hover: {
-    selectNames: [],
-  },
   css: css`
     width: ${px2remcss(BarDefaultSize)};
   `,

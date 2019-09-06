@@ -27,7 +27,9 @@ export default class PaginationDemo extends React.Component<any, any> {
     return (
       <div>
         <Title>基础分页。</Title>
-        <Pagination defaultCurrent={1} total={50} />
+        <Pagination defaultCurrent={2} total={500} />
+        <Title>基础分页。受限</Title>
+        <Pagination current={3} total={500} />
         <Title>更多分页。</Title>
         <Pagination defaultCurrent={6} total={500} />
         <Title>改变每页显示条目数。</Title>
@@ -38,9 +40,11 @@ export default class PaginationDemo extends React.Component<any, any> {
           total={500}
         />
         <Title>快速跳转到某一页。</Title>
-        <Pagination showQuickJumper defaultCurrent={2} total={500} onChange={this.onChange} />
+        <Pagination showQuickJumper defaultCurrent={2} total={400} onChange={this.onChange} />
         <Title>简单的翻页。</Title>
-        <Pagination simple defaultCurrent={2} total={50} />
+        <Pagination simple defaultCurrent={2} total={500} />
+        <Title>单页 不显示翻页箭头。</Title>
+        <Pagination hideOnSinglePage defaultCurrent={2} total={200} />
       </div>
     );
   }
