@@ -4,7 +4,7 @@
  *
  * @flow
  */
-export function bindHandleEvent(e) {
+function bindHandleEvent(e) {
   if (!e) {
     return;
   }
@@ -22,14 +22,14 @@ export function bindHandleEvent(e) {
   }
 }
 
-export function themeHandle(id, context, dTh) {
+function themeHandle(id, context, dTh) {
   if (context) {
     return context.getLayout(id).theme || {};
   }
   return dTh || {};
 }
 
-export function getData(state, propsName, modelName, fieldName) {
+function getData(state, propsName, modelName, fieldName) {
   if (!modelName) {
     return {};
   }
@@ -39,3 +39,11 @@ export function getData(state, propsName, modelName, fieldName) {
     [propsName]: typeof data !== 'object' ? data : data ? (data.toJS ? data.toJS() : data) : null,
   };
 }
+
+const lugiaDCore = {
+  bindHandleEvent,
+  themeHandle,
+  getData,
+};
+
+export default lugiaDCore;
