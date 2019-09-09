@@ -182,8 +182,8 @@
       ]
     },
     "PaginationListItem": {
-      "name": "分页页数外部",
-      "desc": "配置分页页数外部",
+      "name": "单个页数外部容器",
+      "desc": "配置单个页数外部容器",
       "normal": [
         ["width"],
         ["height"],
@@ -200,8 +200,8 @@
       "disabled": []
     },
     "PaginationInnerText": {
-      "name": "分页内部页数文字",
-      "desc": "配置分页内部页数文字",
+      "name": "单个页数内部文字",
+      "desc": "配置单个页数内部文字",
       "normal": [["fontSize"], ["font"], ["color"], ["cursor"], ["opacity"]],
       "hover": [["color"], ["font"], ["fontSize"]],
       "clicked": [],
@@ -254,23 +254,23 @@
       }
     },
     "ChangePageIcon": {
-      "name": "分页切换页数图标",
-      "desc": "配置分页切换页数图标",
+      "name": "切换显示每页页数图标",
+      "desc": "配置切换显示每页页数图标",
       "normal": [["color"], ["fontSize"], ["font"]],
       "hover": [],
       "clicked": [],
       "disabled": []
     },
     "MorePageIcon": {
-      "name": "分页切换更多页数图标",
-      "desc": "配置分页切换更多页数图标",
+      "name": "更多页数图标",
+      "desc": "配置更多页数图标",
       "normal": [["color"], ["fontSize"], ["font"]],
       "hover": [],
       "clicked": [],
       "disabled": []
     },
     "PaginationPageSizeSelect": {
-      "name": "分页切换每页显示页数选择器",
+      "name": "切换每页显示页数选择器",
       "theme": {
         "InputTag": {
           "name": "数据展示框",
