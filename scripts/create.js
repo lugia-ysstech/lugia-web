@@ -38,6 +38,7 @@ const Invalid = [
   'popconfirm',
   'tooltip',
   'collapse',
+  'lugiad-core',
 ];
 
 createDesignInfo(tartgetPath, Invalid);
