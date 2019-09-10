@@ -123,6 +123,7 @@ const Popover = 'lugia_widget_Popover';
 const Popconfirm = 'lugia_widget_Popconfirm';
 const PageLoading = 'lugia_widget_PageLoading';
 const Table = 'lugia_widget_Table';
+const Pagination = 'lugia_widget_Pagination';
 export default {
   Button,
   Input,
@@ -227,4 +228,5 @@ export default {
   PageLoading,
   Table,
   Empty,
+  Pagination,
 };

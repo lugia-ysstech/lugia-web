@@ -6,19 +6,17 @@
  *
  */
 import React from 'react';
-import 'rc-pagination/assets/index.css';
-import 'rc-select/assets/index.css';
-import './style/lugia-pagination.css';
 import type { MorePageType, PaginationProps, PaginationState } from '../css/pagination';
 import Select from '../select';
 import Input from '../input';
 import Icon from '../icon';
-import CSSComponent, { css } from '@lugia/theme-css-hoc';
+import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import ThemeHoc from '../theme-provider';
 import { getBorder, getBorderRadius } from '@lugia/theme-utils';
 import { deepMerge } from '@lugia/object-utils';
 import colorsFunc from '../css/stateColor';
 import { units } from '@lugia/css';
+import Widget from '../consts';
 const { px2remcss } = units;
 
 export const {
@@ -30,15 +28,9 @@ export const {
   defaultColor,
 } = colorsFunc();
 
-const PaginationList = CSSComponent({
+const PaginationList = StaticComponent({
   tag: 'ul',
   className: 'PaginationList',
-  normal: {
-    selectNames: [['width'], ['height']],
-    defaultTheme: {
-      width: '100%',
-    },
-  },
   css: css`
     list-style: none;
     user-select: none;
@@ -190,7 +182,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
 
   getPaginationList() {
     return (
-      <PaginationList themeProps={this.props.getPartOfThemeProps('PaginationContainer')}>
+      <PaginationList>
         {this.getArrow('pre')}
         {this.getPageList()}
         {this.getArrow('next')}
@@ -609,6 +601,14 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     const page = this.checkArrowChange(type);
     this.changePage(page)();
   };
+  inputChange = (obj: Object) => {
+    const { current } = this.state;
+    const { newValue } = obj;
+    const numberValue = Number(newValue);
+    if (current !== numberValue) {
+      this.setState({ current: numberValue });
+    }
+  };
 
   render() {
     const { simple } = this.props;
@@ -633,7 +633,12 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
       return (
         <PaginationListContainer themeProps={this.props.getPartOfThemeProps('PaginationContainer')}>
           {this.getArrowIcon('pre')}
-          <Input value={current} theme={InnerInputTheme} viewClass={viewClass} />
+          <Input
+            value={current}
+            theme={InnerInputTheme}
+            viewClass={viewClass}
+            onChange={this.inputChange}
+          />
           <span>/ {totalPage}</span>
           {this.getArrowIcon('next')}
         </PaginationListContainer>
@@ -642,10 +647,10 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     return (
       <PaginationListContainer themeProps={this.props.getPartOfThemeProps('PaginationContainer')}>
         {this.getPaginationList()}
-        {this.getPageSelect()}
         {this.getQuickJumper()}
+        {this.getPageSelect()}
       </PaginationListContainer>
     );
   }
 }
-export default ThemeHoc(Pagination, 'Pagination', { hover: true, active: true });
+export default ThemeHoc(Pagination, Widget.Pagination, { hover: true, active: true });
