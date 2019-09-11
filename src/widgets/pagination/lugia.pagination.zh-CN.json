@@ -15,7 +15,7 @@
     "total": {
       "type": "number",
       "desc": "数据总数",
-      "defaultValue": 0
+      "defaultValue": 1
     },
     "pageSize": {
       "type": "number",
@@ -30,7 +30,7 @@
     "pageSizeOptions": {
       "type": "string[]",
       "desc": "指定每页可以显示多少条",
-      "defaultValue": ["10", "20", "30", "40"]
+      "defaultValue": ["10", "20", "30", "50"]
     },
     "showQuickJumper": {
       "type": "boolean",
