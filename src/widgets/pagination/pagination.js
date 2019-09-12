@@ -141,6 +141,10 @@ const PaginationListContainer = CSSComponent({
       ['opacity'],
       ['margin'],
     ],
+    defaultTheme: {
+      height: 36,
+      width: '100%',
+    },
   },
   css: css`
     display: block;
@@ -170,7 +174,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
       theCurrent = propsCurrent;
     }
     if ('pageSize' in props && propsPageSize !== statePageSize) {
-      thePageSize = propsCurrent;
+      thePageSize = propsPageSize;
       const newCurrent = computePage(propsPageSize, statePageSize, props.total);
       theCurrent = theCurrent > newCurrent ? newCurrent : theCurrent;
     }
@@ -377,7 +381,6 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
               SelectedMenuItemWrap: {
                 normal: {
                   height: 80,
-                  color: defaultColor,
                 },
               },
             },
@@ -432,10 +435,14 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     const InnerInputTheme = deepMerge(
       {
         [viewClass]: {
-          Input: {
+          Container: {
             normal: {
               width: 60,
               height: 36,
+              margin: {
+                left: 10,
+                right: 10,
+              },
             },
           },
         },
@@ -620,10 +627,13 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
       const InnerInputTheme = deepMerge(
         {
           [viewClass]: {
-            Input: {
+            Container: {
               normal: {
                 width: 50,
                 height: 30,
+                margin: {
+                  right: 10,
+                },
               },
             },
           },
