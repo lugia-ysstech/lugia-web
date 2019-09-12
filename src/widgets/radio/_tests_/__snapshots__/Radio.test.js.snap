@@ -2,7 +2,6 @@
 
 exports[`Radio Radio css 1`] = `
 .c1 {
-  line-height: 1.5;
   padding: 0;
   box-sizing: border-box;
   list-style: none;
@@ -13,11 +12,13 @@ exports[`Radio Radio css 1`] = `
   display: inline-block;
   margin-right: 1rem;
   opacity: 1;
-  padding: 0rem 0rem 0rem 0rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0rem;
+  padding-right: 0rem;
 }
 
 .c5 {
-  line-height: 1.5;
   padding: 0;
   box-sizing: border-box;
   list-style: none;
@@ -28,11 +29,13 @@ exports[`Radio Radio css 1`] = `
   display: inline-block;
   margin-right: 1rem;
   opacity: 1;
-  padding: 0rem 0rem 0rem 0rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0rem;
+  padding-right: 0rem;
 }
 
 .c11 {
-  line-height: 1.5;
   padding: 0;
   box-sizing: border-box;
   list-style: none;
@@ -41,24 +44,30 @@ exports[`Radio Radio css 1`] = `
   white-space: nowrap;
   cursor: pointer;
   display: block;
-  margin-bottom: 1rem;
   opacity: 1;
-  padding: 0rem 0rem 0rem 0rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0rem;
+  padding-right: 0rem;
 }
 
 .c2 {
   margin: 0;
   outline: none;
   line-height: 1;
-  vertical-align: text-bottom;
+  vertical-align: middle;
   display: inline-block;
 }
 
 .c4 {
   padding-left: 1rem;
+  vertical-align: middle;
   color: #333333;
-  padding: 0rem 0rem 0rem 1rem;
   font-size: 1.4rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-left: 1rem;
+  padding-right: 0rem;
 }
 
 .c3 {
@@ -131,8 +140,8 @@ exports[`Radio Radio css 1`] = `
 
 .c6::after {
   position: absolute;
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 2rem;
+  height: 2rem;
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%,-50%);
@@ -182,8 +191,8 @@ exports[`Radio Radio css 1`] = `
 
 .c7::after {
   position: absolute;
-  width: 1rem;
-  height: 1rem;
+  width: 2rem;
+  height: 2rem;
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%,-50%);
@@ -372,9 +381,15 @@ exports[`Radio Radio css 1`] = `
       style={
         Object {
           "height": "5rem",
-          "margin": "1rem 1rem 1rem 1rem",
+          "marginBottom": "1rem",
+          "marginLeft": "1rem",
+          "marginRight": "1rem",
+          "marginTop": "1rem",
           "opacity": 0.6,
-          "padding": "1rem 1rem 1rem 1rem",
+          "paddingBottom": "1rem",
+          "paddingLeft": "1rem",
+          "paddingRight": "1rem",
+          "paddingTop": "1rem",
           "width": "10rem",
         }
       }
@@ -415,8 +430,10 @@ exports[`Radio Radio css 1`] = `
         style={
           Object {
             "color": "red",
-            "fontSize": 16,
-            "padding": "1rem 1rem 1rem 1rem",
+            "paddingBottom": "1rem",
+            "paddingLeft": "1rem",
+            "paddingRight": "1rem",
+            "paddingTop": "1rem",
           }
         }
       >
@@ -441,9 +458,15 @@ exports[`Radio Radio css 1`] = `
       style={
         Object {
           "height": "5rem",
-          "margin": "1rem 1rem 1rem 1rem",
+          "marginBottom": "1rem",
+          "marginLeft": "1rem",
+          "marginRight": "1rem",
+          "marginTop": "1rem",
           "opacity": 1,
-          "padding": "1rem 1rem 1rem 1rem",
+          "paddingBottom": "1rem",
+          "paddingLeft": "1rem",
+          "paddingRight": "1rem",
+          "paddingTop": "1rem",
           "width": "10rem",
         }
       }
@@ -485,8 +508,10 @@ exports[`Radio Radio css 1`] = `
         style={
           Object {
             "color": "#cccccc",
-            "fontSize": 16,
-            "padding": "1rem 1rem 1rem 1rem",
+            "paddingBottom": "1rem",
+            "paddingLeft": "1rem",
+            "paddingRight": "1rem",
+            "paddingTop": "1rem",
           }
         }
       >
@@ -510,9 +535,15 @@ exports[`Radio Radio css 1`] = `
       style={
         Object {
           "height": "5rem",
-          "margin": "1rem 1rem 1rem 1rem",
+          "marginBottom": "1rem",
+          "marginLeft": "1rem",
+          "marginRight": "1rem",
+          "marginTop": "1rem",
           "opacity": 0.6,
-          "padding": "1rem 1rem 1rem 1rem",
+          "paddingBottom": "1rem",
+          "paddingLeft": "1rem",
+          "paddingRight": "1rem",
+          "paddingTop": "1rem",
           "width": "10rem",
         }
       }
@@ -542,8 +573,9 @@ exports[`Radio Radio css 1`] = `
               "borderTopRightRadius": "10rem",
               "borderTopStyle": "solid",
               "borderTopWidth": "0.2rem",
-              "height": "2rem",
-              "width": "2rem",
+              "boxShadow": "1px 2px 2px 2px #e8e8e8",
+              "height": "4rem",
+              "width": "4rem",
             }
           }
         />
@@ -553,8 +585,10 @@ exports[`Radio Radio css 1`] = `
         style={
           Object {
             "color": "red",
-            "fontSize": 16,
-            "padding": "1rem 1rem 1rem 1rem",
+            "paddingBottom": "1rem",
+            "paddingLeft": "1rem",
+            "paddingRight": "1rem",
+            "paddingTop": "1rem",
           }
         }
       >
@@ -579,9 +613,15 @@ exports[`Radio Radio css 1`] = `
       style={
         Object {
           "height": "5rem",
-          "margin": "1rem 1rem 1rem 1rem",
+          "marginBottom": "1rem",
+          "marginLeft": "1rem",
+          "marginRight": "1rem",
+          "marginTop": "1rem",
           "opacity": 1,
-          "padding": "1rem 1rem 1rem 1rem",
+          "paddingBottom": "1rem",
+          "paddingLeft": "1rem",
+          "paddingRight": "1rem",
+          "paddingTop": "1rem",
           "width": "10rem",
         }
       }
@@ -612,8 +652,9 @@ exports[`Radio Radio css 1`] = `
               "borderTopRightRadius": "10rem",
               "borderTopStyle": "solid",
               "borderTopWidth": "0.2rem",
-              "height": "2rem",
-              "width": "2rem",
+              "boxShadow": "1px 2px 2px 2px #e8e8e8",
+              "height": "4rem",
+              "width": "4rem",
             }
           }
         />
@@ -623,8 +664,10 @@ exports[`Radio Radio css 1`] = `
         style={
           Object {
             "color": "#cccccc",
-            "fontSize": 16,
-            "padding": "1rem 1rem 1rem 1rem",
+            "paddingBottom": "1rem",
+            "paddingLeft": "1rem",
+            "paddingRight": "1rem",
+            "paddingTop": "1rem",
           }
         }
       >
@@ -648,9 +691,15 @@ exports[`Radio Radio css 1`] = `
       style={
         Object {
           "height": "5rem",
-          "margin": "1rem 1rem 1rem 1rem",
+          "marginBottom": "1rem",
+          "marginLeft": "1rem",
+          "marginRight": "1rem",
+          "marginTop": "1rem",
           "opacity": 0.6,
-          "padding": "1rem 1rem 1rem 1rem",
+          "paddingBottom": "1rem",
+          "paddingLeft": "1rem",
+          "paddingRight": "1rem",
+          "paddingTop": "1rem",
           "width": "10rem",
         }
       }
@@ -691,8 +740,10 @@ exports[`Radio Radio css 1`] = `
         style={
           Object {
             "color": "red",
-            "fontSize": 16,
-            "padding": "1rem 1rem 1rem 1rem",
+            "paddingBottom": "1rem",
+            "paddingLeft": "1rem",
+            "paddingRight": "1rem",
+            "paddingTop": "1rem",
           }
         }
       >
