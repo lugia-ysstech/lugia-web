@@ -170,7 +170,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
       theCurrent = propsCurrent;
     }
     if ('pageSize' in props && propsPageSize !== statePageSize) {
-      thePageSize = propsCurrent;
+      thePageSize = propsPageSize;
       const newCurrent = computePage(propsPageSize, statePageSize, props.total);
       theCurrent = theCurrent > newCurrent ? newCurrent : theCurrent;
     }
