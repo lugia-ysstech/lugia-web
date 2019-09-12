@@ -36,6 +36,14 @@ const PaginationList = StaticComponent({
     user-select: none;
   `,
 });
+const QuickJumperContainer = StaticComponent({
+  tag: 'div',
+  className: 'QuickJumperContainer',
+  css: css`
+    display: inline-block;
+    margin-right: ${px2remcss(8)};
+  `,
+});
 const PaginationMoreItem = CSSComponent({
   tag: 'li',
   className: 'PaginationMoreItem',
@@ -147,7 +155,8 @@ const PaginationListContainer = CSSComponent({
     },
   },
   css: css`
-    display: block;
+    display: flex;
+    align-items: center;
   `,
 });
 
@@ -450,11 +459,11 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
       theme
     );
     return (
-      <div>
+      <QuickJumperContainer>
         <span>跳至</span>
         <Input theme={InnerInputTheme} viewClass={viewClass} onEnter={this.enterPage} />
-        <span>页</span>;
-      </div>
+        <span>页</span>
+      </QuickJumperContainer>
     );
   }
   enterPage = (e: Object) => {
@@ -633,6 +642,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
                 height: 30,
                 margin: {
                   right: 10,
+                  left: 10,
                 },
               },
             },
