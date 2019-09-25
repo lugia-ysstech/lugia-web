@@ -1320,5 +1320,60 @@ exports[`row css 1`] = `
       </div>
     </div>
   </div>
+  <div
+    className="c0"
+  >
+    <p>
+      响应式
+    </p>
+    <div
+      className="c1"
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      type="default"
+    >
+      <div
+        className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={4}
+        width={4.166666666666667}
+      >
+        col-
+      </div>
+      <div
+        className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={4}
+        width={4.166666666666667}
+      >
+        col-
+      </div>
+      <div
+        className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={4}
+        width={4.166666666666667}
+      >
+        col-
+      </div>
+      <div
+        className="c7"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={4}
+        width={4.166666666666667}
+      >
+        col-
+      </div>
+    </div>
+  </div>
 </div>
 `;
