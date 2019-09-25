@@ -11,6 +11,7 @@ import Widget from '../consts/index';
 import type { ColProps, ColState } from '../css/col';
 import { ColWrap } from '../css/col';
 import MouseEventAdaptor from '../common/MouseEventAdaptor';
+import { responsiveArray } from './row';
 
 export default ThemeProvider(
   MouseEventAdaptor(
@@ -39,10 +40,9 @@ export default ThemeProvider(
 
       handlePropsData = (): Object => {
         const { props } = this;
-
         const { scrrenSize } = props;
         if (scrrenSize) {
-          const prop = props[scrrenSize];
+          const prop = this.getPropsScrrenSpan();
           if (typeof prop === 'number') {
             return { span: prop };
           } else if (typeof prop === 'object') {
@@ -51,6 +51,25 @@ export default ThemeProvider(
         }
 
         return {};
+      };
+
+      getPropsScrrenSpan = () => {
+        const { props } = this;
+        const { scrrenSize, span = 0 } = props;
+
+        const propsScrrenSize = props[scrrenSize];
+        if (propsScrrenSize) {
+          return propsScrrenSize;
+        }
+        const index = responsiveArray.indexOf(scrrenSize);
+        for (let i = index + 1; i < responsiveArray.length; i++) {
+          const propsScrSize = props[responsiveArray[i]];
+          if (propsScrSize) {
+            return propsScrSize;
+          }
+        }
+
+        return span;
       };
     }
   ),
