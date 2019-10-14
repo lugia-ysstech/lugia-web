@@ -62,7 +62,11 @@ export default ThemeProvider(
           return propsScrrenSize;
         }
         const index = responsiveArray.indexOf(scrrenSize);
-        for (let i = index + 1; i < responsiveArray.length; i++) {
+        const responsiveLength = responsiveArray.length;
+        if (index === responsiveLength - 1) {
+          return props[responsiveArray[index]] || span;
+        }
+        for (let i = index + 1; i < responsiveLength; i++) {
           const propsScrSize = props[responsiveArray[i]];
           if (propsScrSize) {
             return propsScrSize;
