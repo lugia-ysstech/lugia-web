@@ -257,6 +257,23 @@ export const RowDemo = () => {
       <Wrapper>
         <Row gutter={{ xs: 8, sm: 16, md: 24, xl: 24, lg: 24 }} data={data} />
       </Wrapper>
+      <Wrapper>
+        <p>响应式</p>
+        <Row>
+          <Col span={4} sm={{ span: 12 }} xl={{ span: 6 }}>
+            col-
+          </Col>
+          <Col span={4} sm={{ span: 12 }} xl={{ span: 6 }}>
+            col-
+          </Col>
+          <Col span={4} sm={{ span: 12 }} xl={{ span: 6 }}>
+            col-
+          </Col>
+          <Col span={4} sm={{ span: 12 }} xl={{ span: 6 }}>
+            col-
+          </Col>
+        </Row>
+      </Wrapper>
     </div>
   );
 };

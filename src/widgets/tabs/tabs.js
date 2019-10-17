@@ -110,7 +110,6 @@ const OutContainer = StaticComponent({
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
-    display: inline-block;
   `,
 });
 const VerticalOutContainer = StaticComponent({
@@ -224,7 +223,8 @@ class TabsBox extends Component<TabsProps, TabsState> {
     const { activityValue, defaultActivityValue, data } = props;
 
     let theData = getDefaultData(props);
-    let theActivityValue = activityValue || defaultActivityValue || theData[0].key;
+    let theActivityValue =
+      activityValue || defaultActivityValue || (theData.length !== 0 ? theData[0].key : null);
     if (state) {
       theActivityValue = hasTargetInProps('activityValue', props)
         ? theActivityValue

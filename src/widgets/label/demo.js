@@ -9,6 +9,7 @@ import Label from './';
 import Theme from '../theme';
 import { css, StaticComponent } from '@lugia/theme-css-hoc';
 import Widget from '../consts/index';
+import message from '../message';
 
 type PropsType = {};
 type StateType = {};
@@ -27,7 +28,7 @@ class LabelDemo extends React.Component<PropsType, StateType> {
   render() {
     const config = {
       [Widget.Label]: {
-        LabelConfig: {
+        Container: {
           normal: {
             color: 'orange',
             font: {
@@ -43,6 +44,9 @@ class LabelDemo extends React.Component<PropsType, StateType> {
               right: 30,
               bottom: 60,
             },
+            background: {
+              color: '#C6E0B4',
+            },
           },
           hover: {
             color: 'pink',
@@ -52,6 +56,37 @@ class LabelDemo extends React.Component<PropsType, StateType> {
       },
     };
 
+    const configWidth = {
+      [Widget.Label]: {
+        Container: {
+          normal: {
+            color: 'orange',
+            font: {
+              weight: 'bold',
+              size: 30,
+            },
+            width: '100%',
+            height: 200,
+            background: {
+              color: 'pink',
+            },
+            textAlign: 'center',
+            lineHeight: 70,
+            margin: {
+              top: 60,
+            },
+            padding: {
+              right: 30,
+              bottom: 60,
+            },
+            cursor: 'pointer',
+          },
+          hover: {
+            color: 'yellow',
+          },
+        },
+      },
+    };
     return (
       <div>
         <Theme config={config}>
@@ -59,6 +94,10 @@ class LabelDemo extends React.Component<PropsType, StateType> {
           <Label text={'是立刻搭街坊螺丝扣'} />
           <LabelBox>主题配置 children:</LabelBox>
           <Label>深刻的很健康</Label>
+        </Theme>
+        <Theme config={configWidth}>
+          <LabelBox>主题配置 click事件:</LabelBox>
+          <Label text={'是立刻搭街坊螺丝扣'} onClick={this.onClick} />
         </Theme>
 
         <LabelBox>默认文本 text:</LabelBox>
@@ -70,6 +109,9 @@ class LabelDemo extends React.Component<PropsType, StateType> {
       </div>
     );
   }
+  onClick = () => {
+    message.info('do Click', 1);
+  };
 }
 
 export default LabelDemo;
