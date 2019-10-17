@@ -9,15 +9,26 @@
       "defaultValue": "Label"
     }
   },
-  "events": {},
+  "events": {
+    "onClick": {
+      "desc": "Label被点击时触发的事件",
+      "args": [
+        {
+          "name": "event",
+          "desc": "点击的DOM事件",
+          "type": "SyntheticEvent"
+        }
+      ]
+    }
+  },
   "category": ["数据展示"],
   "theme": {
     "LabelConfig": {
       "name": "文本",
       "desc": "文本的样式",
-      "normal": [["color"], ["font"], ["lineHeight"], ["margin"], ["padding"], ["cursor"]],
+      "normal": [["color"], ["font"], ["lineHeight"], ["margin"], ["padding"], ["cursor"],["width"], ["height"], ["background"], ["textAlign"]],
       "hover": [["color"], ["font"], ["margin"], ["padding"], ["cursor"]],
-      "disabled": [["cursor"]]
+      "disabled": [["color"],["cursor"], ["background"]]
     }
   }
 }

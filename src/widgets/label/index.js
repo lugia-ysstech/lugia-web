@@ -23,7 +23,15 @@ const LabelContainer = CSSComponent({
       ['margin'],
       ['padding'],
       ['cursor'],
+      ['width'],
+      ['height'],
+      ['background'],
+      ['textAlign'],
     ],
+    getCSS: (theme: Object, themeProps: Object) => {
+      const { textAlign } = theme;
+      return `text-align: ${textAlign}`;
+    },
   },
   hover: {
     selectNames: [['color'], ['font'], ['fontSize'], ['margin'], ['padding'], ['cursor']],
@@ -50,12 +58,14 @@ type TriggerState = {};
 
 class Label extends React.Component<TriggerProps, TriggerState> {
   render() {
-    const { text, children } = this.props;
+    const { text, children, onClick = () => {} } = this.props;
     const target = children ? children : text;
     const themeProps = this.props.getPartOfThemeProps('LabelConfig');
     return (
       <React.Fragment>
-        <LabelContainer themeProps={themeProps}>{target}</LabelContainer>
+        <LabelContainer themeProps={themeProps} onClick={onClick}>
+          {target}
+        </LabelContainer>
       </React.Fragment>
     );
   }
