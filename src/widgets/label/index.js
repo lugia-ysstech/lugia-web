@@ -60,7 +60,7 @@ class Label extends React.Component<TriggerProps, TriggerState> {
   render() {
     const { text, children, onClick = () => {} } = this.props;
     const target = children ? children : text;
-    const themeProps = this.props.getPartOfThemeProps('LabelConfig');
+    const themeProps = this.props.getPartOfThemeProps('Container');
     return (
       <React.Fragment>
         <LabelContainer themeProps={themeProps} onClick={onClick}>
