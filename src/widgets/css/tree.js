@@ -98,15 +98,6 @@ export const TreeUl = CSSComponent({
 export const Li = StaticComponent({
   tag: 'li',
   className: 'Li',
-  normal: {
-    selectNames: [],
-  },
-  hover: {
-    selectNames: [],
-  },
-  active: {
-    selectNames: [],
-  },
   css: css`
     min-height: ${px2remcss(30)};
     list-style: none;
@@ -371,15 +362,6 @@ export const FlexBox = CSSComponent({
 export const SuffixWrap = StaticComponent({
   tag: 'div',
   className: 'SuffixWrap',
-  normal: {
-    selectNames: [],
-  },
-  hover: {
-    selectNames: [],
-  },
-  active: {
-    selectNames: [],
-  },
   css: css`
     position: absolute;
     height: 100%;

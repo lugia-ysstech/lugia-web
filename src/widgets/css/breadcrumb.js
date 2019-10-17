@@ -1,6 +1,6 @@
 import colorsFunc from '../css/stateColor';
 import { px2remcss } from '../css/units';
-import CSSComponent, { css } from '@lugia/theme-css-hoc';
+import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 
 export const { themeColor, mediumGreyColor, darkGreyColor, blackColor } = colorsFunc();
 export const DefaultColor = mediumGreyColor;
@@ -167,21 +167,25 @@ export const ItemWrap = CSSComponent({
   `,
 });
 
-export const FlexBox = CSSComponent({
+export const FlexBox = StaticComponent({
   tag: 'div',
   className: 'breadcrumbContainer',
-  normal: {
-    selectNames: [],
-  },
-  hover: {
-    selectNames: [],
-  },
   css: css`
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
     width: 100%;
+    box-sizing: border-box;
+  `,
+});
+
+export const FlexContainer = StaticComponent({
+  tag: 'div',
+  className: 'breadcrumbContainer',
+  css: css`
+    display: flex;
+    flex-wrap: nowrap;
     box-sizing: border-box;
   `,
 });

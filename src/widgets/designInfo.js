@@ -632,7 +632,539 @@ export default [
           type: 'image',
           desc: '头像显示图片资源',
           defaultValue:
-            'data:image/jpeg;base64,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AAAAAABSR0JDAAAAAwAAAABSZCAgZG91YkBv4AAAAAAAAAAAAEdybiBkb3ViQG/gAAAAAAAAAAAAQmwgIGRvdWJAb+AAAAAAAAAAAABCcmRUVW50RiNSbHQAAAAAAAAAAAAAAABCbGQgVW50RiNSbHQAAAAAAAAAAAAAAABSc2x0VW50RiNQeGxAUgAAAAAAAAAAAAp2ZWN0b3JEYXRhYm9vbAEAAAAAUGdQc2VudW0AAAAAUGdQcwAAAABQZ1BDAAAAAExlZnRVbnRGI1JsdAAAAAAAAAAAAAAAAFRvcCBVbnRGI1JsdAAAAAAAAAAAAAAAAFNjbCBVbnRGI1ByY0BZAAAAAAAAAAAAEGNyb3BXaGVuUHJpbnRpbmdib29sAAAAAA5jcm9wUmVjdEJvdHRvbWxvbmcAAAAAAAAADGNyb3BSZWN0TGVmdGxvbmcAAAAAAAAADWNyb3BSZWN0UmlnaHRsb25nAAAAAAAAAAtjcm9wUmVjdFRvcGxvbmcAAAAAADhCSU0D7QAAAAAAEABIAAAAAQACAEgAAAABAAI4QklNBCYAAAAAAA4AAAAAAAAAAAAAP4AAADhCSU0D8gAAAAAACgAA////////AAA4QklNBA0AAAAAAAQAAAAeOEJJTQQZAAAAAAAEAAAAHjhCSU0D8wAAAAAACQAAAAAAAAAAAQA4QklNJxAAAAAAAAoAAQAAAAAAAAACOEJJTQP1AAAAAABIAC9mZgABAGxmZgAGAAAAAAABAC9mZgABAKGZmgAGAAAAAAABADIAAAABAFoAAAAGAAAAAAABADUAAAABAC0AAAAGAAAAAAABOEJJTQP4AAAAAABwAAD/////////////////////////////A+gAAAAA/////////////////////////////wPoAAAAAP////////////////////////////8D6AAAAAD/////////////////////////////A+gAADhCSU0ECAAAAAAAEAAAAAEAAAJAAAACQAAAAAA4QklNBB4AAAAAAAQAAAAAOEJJTQQaAAAAAAM9AAAABgAAAAAAAAAAAAAAKAAAACgAAAAEAHoAaQBqAGkAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAACgAAAAoAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA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Y29tL3hhcC8xLjAvADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0RXZ0PSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VFdmVudCMiIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDowNGU1MGQ3OC1lYzgxLTExN2ItYjFiYy1hZjNiNDY4NGI2M2QiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6YmUyZmM0MjQtZDZkYi00ZGYyLWI3ZDctZmFiY2Y0ZjhlMWJjIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9IkNFMUQyNDhFREI0MjFFRENENjkxRkVEQ0MxMDM5NTA1IiBkYzpmb3JtYXQ9ImltYWdlL2pwZWciIHBob3Rvc2hvcDpMZWdhY3lJUFRDRGlnZXN0PSJDRENGRkE3REE4QzdCRTA5MDU3MDc2QUVBRjA1QzM0RSIgcGhvdG9zaG9wOkNvbG9yTW9kZT0iMyIgcGhvdG9zaG9wOklDQ1Byb2ZpbGU9InNSR0IgSUVDNjE5NjYtMi4xIiB4bXA6Q3JlYXRlRGF0ZT0iMjAxNy0wOC0wOVQxNTo0NzozMiswODowMCIgeG1wOk1vZGlmeURhdGU9IjIwMTgtMDgtMzBUMDk6MTg6MjYrMDg6MDAiIHhtcDpNZXRhZGF0YURhdGU9IjIwMTgtMDgtMzBUMDk6MTg6MjYrMDg6MDAiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSI+IDx4bXBNTTpIaXN0b3J5PiA8cmRmOlNlcT4gPHJkZjpsaSBzdEV2dDphY3Rpb249InNhdmVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjBhYTM0MTlhLWMxNTctNDM3YS1iMzViLTVkMTY5NzhkNTg1MSIgc3RFdnQ6d2hlbj0iMjAxNy0wOS0xM1QxNzo0NDo0MiswODowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSIgc3RFdnQ6Y2hhbmdlZD0iLyIvPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0ic2F2ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6YmUyZmM0MjQtZDZkYi00ZGYyLWI3ZDctZmFiY2Y0ZjhlMWJjIiBzdEV2dDp3aGVuPSIyMDE4LTA4LTMwVDA5OjE4OjI2KzA4OjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxNS41IChNYWNpbnRvc2gpIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDwvcmRmOlNlcT4gPC94bXBNTTpIaXN0b3J5PiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg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',
+            'data:image/jpeg;base64,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AAAAAABSR0JDAAAAAwAAAABSZCAgZG91YkBv4AAAAAAAAAAAAEdybiBkb3ViQG/gAAAAAAAAAAAAQmwgIGRvdWJAb+AAAAAAAAAAAABCcmRUVW50RiNSbHQAAAAAAAAAAAAAAABCbGQgVW50RiNSbHQAAAAAAAAAAAAAAABSc2x0VW50RiNQeGxAUgAAAAAAAAAAAAp2ZWN0b3JEYXRhYm9vbAEAAAAAUGdQc2VudW0AAAAAUGdQcwAAAABQZ1BDAAAAAExlZnRVbnRGI1JsdAAAAAAAAAAAAAAAAFRvcCBVbnRGI1JsdAAAAAAAAAAAAAAAAFNjbCBVbnRGI1ByY0BZAAAAAAAAAAAAEGNyb3BXaGVuUHJpbnRpbmdib29sAAAAAA5jcm9wUmVjdEJvdHRvbWxvbmcAAAAAAAAADGNyb3BSZWN0TGVmdGxvbmcAAAAAAAAADWNyb3BSZWN0UmlnaHRsb25nAAAAAAAAAAtjcm9wUmVjdFRvcGxvbmcAAAAAADhCSU0D7QAAAAAAEABIAAAAAQACAEgAAAABAAI4QklNBCYAAAAAAA4AAAAAAAAAAAAAP4AAADhCSU0D8gAAAAAACgAA////////AAA4QklNBA0AAAAAAAQAAAAeOEJJTQQZAAAAAAAEAAAAHjhCSU0D8wAAAAAACQAAAAAAAAAAAQA4QklNJxAAAAAAAAoAAQAAAAAAAAACOEJJTQP1AAAAAABIAC9mZgABAGxmZgAGAAAAAAABAC9mZgABAKGZmgAGAAAAAAABADIAAAABAFoAAAAGAAAAAAABADUAAAABAC0AAAAGAAAAAAABOEJJTQP4AAAAAABwAAD/////////////////////////////A+gAAAAA/////////////////////////////wPoAAAAAP////////////////////////////8D6AAAAAD/////////////////////////////A+gAADhCSU0ECAAAAAAAEAAAAAEAAAJAAAACQAAAAAA4QklNBB4AAAAAAAQAAAAAOEJJTQQaAAAAAAM9AAAABgAAAAAAAAAAAAAAKAAAACgAAAAEAHoAaQBqAGkAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAACgAAAAoAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAEAAAAAAABudWxsAAAAAgAAAAZib3VuZHNPYmpjAAAAAQAAAAAAAFJjdDEAAAAEAAAAAFRvcCBsb25nAAAAAAAAAABMZWZ0bG9uZwAAAAAAAAAAQnRvbWxvbmcAAAAoAAAAAFJnaHRsb25nAAAAKAAAAAZzbGljZXNWbExzAAAAAU9iamMAAAABAAAAAAAFc2xpY2UAAAASAAAAB3NsaWNlSURsb25nAAAAAAAAAAdncm91cElEbG9uZwAAAAAAAAAGb3JpZ2luZW51bQAAAAxFU2xpY2VPcmlnaW4AAAANYXV0b0dlbmVyYXRlZAAAAABUeXBlZW51bQAAAApFU2xpY2VUeXBlAAAAAEltZyAAAAAGYm91bmRzT2JqYwAAAAEAAAAAAABSY3QxAAAABAAAAABUb3AgbG9uZwAAAAAAAAAATGVmdGxvbmcAAAAAAAAAAEJ0b21sb25nAAAAKAAAAABSZ2h0bG9uZwAAACgAAAADdXJsVEVYVAAAAAEAAAAAAABudWxsVEVYVAAAAAEAAAAAAABNc2dlVEVYVAAAAAEAAAAAAAZhbHRUYWdURVhUAAAAAQAAAAAADmNlbGxUZXh0SXNIVE1MYm9vbAEAAAAIY2VsbFRleHRURVhUAAAAAQAAAAAACWhvcnpBbGlnbmVudW0AAAAPRVNsaWNlSG9yekFsaWduAAAAB2RlZmF1bHQAAAAJdmVydEFsaWduZW51bQAAAA9FU2xpY2VWZXJ0QWxpZ24AAAAHZGVmYXVsdAAAAAtiZ0NvbG9yVHlwZWVudW0AAAARRVNsaWNlQkdDb2xvclR5cGUAAAAATm9uZQAAAAl0b3BPdXRzZXRsb25nAAAAAAAAAApsZWZ0T3V0c2V0bG9uZwAAAAAAAAAMYm90dG9tT3V0c2V0bG9uZwAAAAAAAAALcmlnaHRPdXRzZXRsb25nAAAAAAA4QklNBCgAAAAAAAwAAAACP/AAAAAAAAA4QklNBBQAAAAAAAQAAAABOEJJTQQMAAAAAANgAAAAAQAAACgAAAAoAAAAeAAAEsAAAANEABgAAf/Y/+0ADEFkb2JlX0NNAAH/7gAOQWRvYmUAZIAAAAAB/9sAhAAMCAgICQgMCQkMEQsKCxEVDwwMDxUYExMVExMYEQwMDAwMDBEMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMAQ0LCw0ODRAODhAUDg4OFBQODg4OFBEMDAwMDBERDAwMDAwMEQwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCAAoACgDASIAAhEBAxEB/90ABAAD/8QBPwAAAQUBAQEBAQEAAAAAAAAAAwABAgQFBgcICQoLAQABBQEBAQEBAQAAAAAAAAABAAIDBAUGBwgJCgsQAAEEAQMCBAIFBwYIBQMMMwEAAhEDBCESMQVBUWETInGBMgYUkaGxQiMkFVLBYjM0coLRQwclklPw4fFjczUWorKDJkSTVGRFwqN0NhfSVeJl8rOEw9N14/NGJ5SkhbSVxNTk9KW1xdXl9VZmdoaWprbG1ub2N0dXZ3eHl6e3x9fn9xEAAgIBAgQEAwQFBgcHBgU1AQACEQMhMRIEQVFhcSITBTKBkRShsUIjwVLR8DMkYuFygpJDUxVjczTxJQYWorKDByY1wtJEk1SjF2RFVTZ0ZeLys4TD03Xj80aUpIW0lcTU5PSltcXV5fVWZnaGlqa2xtbm9ic3R1dnd4eXp7fH/9oADAMBAAIRAxEAPwDtApghBLisv6ydVyel9FyMzEbvyW7a6BG6H2O9Nr9n52xBTuSNwaSA4iQ0kTHjt+kpQQYOh815jhfVPIzWPz+p9TLcp5myyS9zXH8215I/za11n1Ps6jQ3M6P1G05VmC9j8fKJJFlFw3V6v936NzEhME0F0o\n' +
+            "import Divider from './divider';\n" +
+            "import Dropmenu from './dropmenu';\n" +
+            "import Icon from './icon';\n" +
+            "import Input from './input';\n" +
+            "import Label from './label';\n" +
+            "import Loading from './loading';\n" +
+            "import Menu from './menu';\n" +
+            "import Navmenu from './navmenu';\n" +
+            "import NumberInput from './number-input';\n" +
+            "import Pagination from './pagination';\n" +
+            "import Progress from './progress';\n" +
+            "import Radio from './radio';\n" +
+            "import Rate from './rate';\n" +
+            "import Select from './select';\n" +
+            "import Skeleton from './skeleton';\n" +
+            "import Slider from './slider';\n" +
+            "import Steps from './steps';\n" +
+            "import Switch from './switch';\n" +
+            "import Table from './table';\n" +
+            "import Tabs from './tabs';\n" +
+            "import Tag from './tag';\n" +
+            "import TimeLine from './time-line';\n" +
+            "import TimePicker from './time-picker';\n" +
+            "import Transfer from './transfer';\n" +
+            "import Tree from './tree';\n" +
+            "import TreeSelect from './tree-select';\n" +
+            "import Upload from './upload';\n" +
+            'export default [\n' +
+            '  {\n' +
+            '    meta: {\n' +
+            "      widgetName: 'Alert',\n" +
+            "      title: '警告提示',\n" +
+            "      desc: '警告提示信息。',\n" +
+            '      props: {\n' +
+            '        type: {\n' +
+            "          type: 'AlertType',\n" +
+            "          desc: '指定警告提示的样式，有四种可以选择：success、error、info、warning',\n" +
+            '          defaultValue: 0,\n' +
+            '        },\n' +
+            "        message: { type: 'React.node', desc: '警告提示内容' },\n" +
+            "        showIcon: { type: 'boolean', desc: '是否展示图标', defaultValue: false },\n" +
+            "        closeText: { type: 'React.node', desc: '自定义关闭按钮' },\n" +
+            "        closable: { type: 'boolean', desc: '是否显示关闭按钮', defaultValue: false },\n" +
+            "        description: { type: 'React.node', desc: '提示内容的辅助性文字介绍' },\n" +
+            "        icon: { type: 'string', desc: '自定义图标，showIcon 为 true 时有效' },\n" +
+            '      },\n' +
+            '      events: {\n' +
+            '        onClose: {\n' +
+            "          desc: '关闭时触发的回调函数',\n" +
+            "          args: [{ name: 'event', desc: '关闭时的DOM事件', type: 'Object' }],\n" +
+            '        },\n' +
+            '      },\n' +
+            '      type: {\n' +
+            "        AlertType: ['info', 'success', 'error', 'warning'],\n" +
+            '        AlertStyle: {\n' +
+            "          width: { type: 'number', desc: '组件宽度' },\n" +
+            "          color: { type: 'string', desc: '组件颜色' },\n" +
+            '        },\n' +
+            '      },\n' +
+            "      category: ['反馈'],\n" +
+            '      theme: {\n' +
+            '        Container: {\n' +
+            "          name: '警告提示整体样式',\n" +
+            "          desc: '为警告提示配置整体样式',\n" +
+            '          normal: [\n' +
+            "            ['opacity'],\n" +
+            "            ['margin'],\n" +
+            "            ['padding'],\n" +
+            "            ['width'],\n" +
+            "            ['height'],\n" +
+            "            ['background'],\n" +
+            "            ['border', 'left'],\n" +
+            "            ['borderRadius'],\n" +
+            "            ['boxShadow'],\n" +
+            '          ],\n' +
+            '        },\n' +
+            '        AlertMessage: {\n' +
+            "          name: '警告提示内容样式',\n" +
+            "          desc: '为警告提示内容配置样式',\n" +
+            "          normal: [['color'], ['font']],\n" +
+            '        },\n' +
+            '        AlertDescription: {\n' +
+            "          name: '警告提示辅助性文字样式',\n" +
+            "          desc: '为警告提示辅助性文字配置样式',\n" +
+            "          normal: [['color'], ['font'], ['padding']],\n" +
+            '        },\n' +
+            '        CloseText: {\n' +
+            "          name: '警告提示关闭文字样式',\n" +
+            "          desc: '为警告提示关闭文字配置样式',\n" +
+            "          normal: [['color'], ['font']],\n" +
+            '        },\n' +
+            '        AlertIcon: {\n' +
+            "          name: '警告提示图标样式',\n" +
+            "          desc: '为警告提示图标配置样式',\n" +
+            "          normal: [['color'], ['fontSize']],\n" +
+            '        },\n' +
+            '      },\n' +
+            '      childrenWidget: [],\n' +
+            '    },\n' +
+            '    target: Alert,\n' +
+            '    screenshot:\n' +
+            "      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGwAAAAkCAYAAABsbd/MAAAAAXNSR0IArs4c6QAAAT5JREFUaAXt2zGKAkEUhOE3reIRDL2EZzAbEDY0FCPP4xE8gZln8BKGe4RlmZm1BaETm4JNquEfEAffQ4r66EScbnecvoYxzhGxer5i7GKT37m8GphF/C5TPFKJ5RWRNGUDQ8TiZ4x1en74OlnlkHvPBjJaBuNqqAHAGsLKUQEDrLEGGovLCQOssQYai8sJawxs/t+8++31rnzH5da/fkFx21eyO+1wwpw0hCyACSU5rQDmpCFkAUwoyWkFMCcNIQtgQklOK4A5aQhZABNKcloBzElDyAKYUJLTCmBOGkIWwISSnFYAc9IQsgAmlOS0ApiThpCl6w/TVO7xz9+yDb97TpifSTURYNV6/IaA+ZlUEwFWrcdvCJifSTURYNV6/IaA+ZlUE2Ww7+oGQ5sG8lOYaZbiBJqNyccg70dm/wDViifzwPhGcQAAAABJRU5ErkJggg==',\n" +
+            '  },\n' +
+            '  {\n' +
+            '    meta: {\n' +
+            "      widgetName: 'AmountInput',\n" +
+            "      title: '金额输入框',\n" +
+            "      desc: '用于金额数字的填写,可切换人民币大小写显示效果.',\n" +
+            '      props: {\n' +
+            "        disabled: { type: 'boolean', desc: '禁用状态,是否不可用', defaultValue: false },\n" +
+            '        transform: {\n' +
+            "          type: 'boolean',\n" +
+            '          desc: "是否开启转换,仅在amountPrefix=\'¥\'时生效",\n' +
+            '          defaultValue: true,\n' +
+            '        },\n' +
+            "        viewClass: { type: 'string', desc: '用于配置主题属性' },\n" +
+            '        size: {\n' +
+            "          type: 'InputSize',\n" +
+            '          desc:\n' +
+            "            \"可配置三种尺寸大小的input ('large' , 'default' , 'small'),高度分别为 40px、32px 和 24px。\",\n" +
+            "          defaultValue: 'default',\n" +
+            '        },\n' +
+            "        placeholder: { type: 'string', desc: 'input输入提示信息' },\n" +
+            "        amountPrefix: { type: 'PrefixType', desc: \"货币种类,默认'¥'\", defaultValue: '¥' },\n" +
+            "        defaultValue: { type: 'string', desc: '默认显示内容' },\n" +
+            "        value: { type: 'string', desc: '显示内容' },\n" +
+            '      },\n' +
+            '      events: {\n' +
+            '        onChange: {\n' +
+            "          desc: '内容改变时触发',\n" +
+            "          args: [{ name: 'event', desc: '改变内容的DOM事件', type: 'ChangeType' }],\n" +
+            '        },\n' +
+            '        onKeyUp: {\n' +
+            "          desc: '键盘按下去并松开后执行',\n" +
+            "          args: [{ name: 'event', desc: '改变键盘输入的内容', type: 'KeyboardEvent' }],\n" +
+            '        },\n' +
+            '        onKeyDown: {\n' +
+            "          desc: '键盘按下任何键时触发',\n" +
+            "          args: [{ name: 'event', desc: '改变键盘输入的内容', type: 'KeyboardEvent' }],\n" +
+            '        },\n' +
+            '        onKeyPress: {\n' +
+            "          desc: '键盘按下任何键时触发',\n" +
+            "          args: [{ name: 'event', desc: '改变键盘输入的内容', type: 'KeyboardEvent' }],\n" +
+            '        },\n' +
+            '        onFocus: {\n' +
+            "          desc: '输入框获得焦点时触发',\n" +
+            "          args: [{ name: 'event', desc: '获取焦点的DOM事件', type: 'FocusEvent' }],\n" +
+            '        },\n' +
+            '        onBlur: {\n' +
+            "          desc: '输入框失去焦点时触发',\n" +
+            "          args: [{ name: 'event', desc: '失去焦点的DOM事件', type: 'FocusEvent' }],\n" +
+            '        },\n' +
+            '        onEnter: {\n' +
+            "          desc: '当键入回车时触发事件',\n" +
+            "          args: [{ name: 'event', desc: '当键入回车时触发', type: 'KeyboardEvent' }],\n" +
+            '        },\n' +
+            '      },\n' +
+            '      type: {\n' +
+            "        InputSize: ['small', 'default', 'large'],\n" +
+            "        PrefixType: ['¥', '$'],\n" +
+            "        ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },\n" +
+            '      },\n' +
+            "      category: ['数据录入'],\n" +
+            '      theme: {\n' +
+            '        InnerInput: {\n' +
+            "          name: '金额输入框',\n" +
+            '          theme: {\n' +
+            '            Container: {\n' +
+            "              name: '输入框外部容器',\n" +
+            "              desc: '输入框外部容器',\n" +
+            "              normal: [['width'], ['height'], ['margin'], ['padding']],\n" +
+            '            },\n' +
+            '            Input: {\n' +
+            "              name: '金额输入框中输入框部分',\n" +
+            "              desc: '金额输入框中输入框部分',\n" +
+            '              normal: [\n' +
+            "                ['width'],\n" +
+            "                ['height'],\n" +
+            "                ['fontSize'],\n" +
+            "                ['font'],\n" +
+            "                ['color'],\n" +
+            "                ['background'],\n" +
+            "                ['border'],\n" +
+            "                ['borderRadius'],\n" +
+            "                ['cursor'],\n" +
+            "                ['opacity'],\n" +
+            '              ],\n' +
+            '              hover: [\n' +
+            "                ['border'],\n" +
+            "                ['borderRadius'],\n" +
+            "                ['cursor'],\n" +
+            "                ['background'],\n" +
+            "                ['opacity'],\n" +
+            "                ['boxShadow'],\n" +
+            '              ],\n' +
+            "              active: [['boxShadow'], ['border'], ['borderRadius'], ['cursor'], ['background']],\n" +
+            '              disabled: [\n' +
+            "                ['fontSize'],\n" +
+            "                ['font'],\n" +
+            "                ['color'],\n" +
+            "                ['background'],\n" +
+            "                ['border'],\n" +
+            "                ['borderRadius'],\n" +
+            "                ['cursor'],\n" +
+            "                ['padding'],\n" +
+            "                ['opacity'],\n" +
+            '              ],\n' +
+            '            },\n' +
+            '          },\n' +
+            '        },\n' +
+            '        AmountInputPrefix: {\n' +
+            "          name: '金额输入框主体前缀',\n" +
+            "          desc: '金额输入框主体前缀',\n" +
+            "          normal: [['fontSize'], ['font'], ['color']],\n" +
+            '          hover: [],\n' +
+            '          clicked: [],\n' +
+            '          disabled: [],\n' +
+            '        },\n' +
+            '        AmountTip: {\n' +
+            "          name: '金额切换提示',\n" +
+            '          theme: {\n' +
+            '            Container: {\n' +
+            "              name: '输入框提示框外框部分',\n" +
+            "              desc: '输入框提示框外框部分',\n" +
+            "              normal: [['opacity'], ['background'], ['width'], ['height']],\n" +
+            '              hover: [],\n' +
+            '              clicked: [],\n' +
+            '              disabled: [],\n' +
+            '            },\n' +
+            '            TooltipTitle: {\n' +
+            "              name: '金额输入框提示信息文字部分',\n" +
+            "              desc: '金额输入框提示信息文字部分',\n" +
+            "              normal: [['fontSize'], ['font'], ['color']],\n" +
+            '              hover: [],\n' +
+            '              clicked: [],\n' +
+            '              disabled: [],\n' +
+            '            },\n' +
+            '          },\n' +
+            '        },\n' +
+            '      },\n' +
+            '      childrenWidget: [],\n' +
+            '    },\n' +
+            '    target: AmountInput,\n' +
+            '    screenshot:\n' +
+            "      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAAAoCAYAAAABk/85AAAAAXNSR0IArs4c6QAABFlJREFUaAXtm+9PW1UYx7+9jPaWH13Lr7ZjuGIyKW4TN5k6orC5LNmWJcMsTn3hiCaGF77xjfEv8QUkxsQ3mqgx6IwzkzmHzhXZxn5AutF1rcBaxiadFPoDCz7nKs31lpt0B2ihnJPc9NzDyfOc8/n2POfepxwDqHg8nuZwOPxFJBKpi8fjRaxNlFUjEDIYDOdNJtMHHR0d4wYG3+v1etxut+Ry1cNsNq+a52wMWyzlhmz6rdc+XV1dThLg1MLCwvuyLDcbenp67jocDldj49NrYk6FLsAi5O7u7g+p3iSxsMO++aLklgCtgE/p2i+xmJ/vsJPbqa8Nb52dnSEaiVNaG8PZuKMQAuRZeyFAoQgwMfknbvmCeZ7O+nO/YivAH7yHSwND649Anke8bAFisQT8wXGM3buP6ZkZ3L7zB2ZmY3me1vpxv4l3qPQMi59+uQLPlZuYm/s7bebzr8+C3vSw55kGHGzdC9lkTP9NVDIJcAtw5twl/H51GJbyUjQ3uRFLzCEUnkTjUy4M3hzB5WteTEdn8carhzK9ipY0Aa4QFJp4kIb/7lvHcWj/C6iutNK33YTWfbvx3jsnsMVRrYSjG8N30s5EJZMAlwDjoUnF0o6GepSWZCbvioqKKPw0K33Ek1EmdHULVwhKJJOKDYOkn7jcttWBl198Fiaj2APUwLV1rhXw5Latip3BGyO6TzySJOHAS8+h5fldWp/iXkWASwCnvRJ1tQ7MxuL46OMvlf1gPpVSmRXVbAlwCcCMnzp5GE07tyOeSOL73t/Q2zeAv6JRjI5PZOtb9CMCXHsAI8c22uOHW7FnVwOuD/swdMuPqcg0PvnsNCpsFmp3Y9/enco7gSCtT4BbgEWTdbV2Ckd2gr4ZA4PDsFdVwusL4McL/QiOhXDi2AEYjcWL3cWnhgB3CNLYUW4tZWU42X4Qb795DDVVNoz4R/HNmb6luoq2/whwCXB9yIdf+68hRpvwUoWtiNfb/30D9gXGkErNL9VNtBEBLgFYaOm9MIAAfeoVm7Wc3oarkEzOYfJhRK/bhm/nEqDWWaOA8/nHdAFSrg5Tj6K0CQOVtCmLsjQBLgEat7tQUiJT0u22ku/Rmp6fX6AV0q+EKKe9GsXFy97rtS4K5p6LjNlswpFXWvDV6XNg6We24bKsaHRmFt/+0EdPQUGCn4AsG9F+tK1gYK3GRLgEYAPZ4aZEXOlRfHf2Iu4/mFIu1v5w6pESdty0StpadqOqYjNrFkWHALcAzJ6rzqmkntkvYD9fvErP/WG0H2lToIuwo0Nc08y1B2hsKClpm9WCElkGyxMJ+FpC+vfLWgFqs/VPbIHNWqZuEvUsCKyYAI6aCrBLlMcjsCIh6PFcit5qAkIANY081IUAeYCudikEUNPIQ12iYzKpWEz8J1uu2bOjSuQzJFmt1tFA4G6u/W94f+ycGF3nN9H5sNfYIT0isiYO6RW6MhmH9NiExTHVnMr+v2Oq/wD8skvy6mYuDAAAAABJRU5ErkJggg==',\n" +
+            '  },\n' +
+            '  {\n' +
+            '    meta: {\n' +
+            "      widgetName: 'AutoComplete',\n" +
+            "      title: '自动完成',\n" +
+            "      desc: '需要自动完成数据时使用',\n" +
+            '      props: {\n' +
+            "        data: { type: 'string[]', desc: '自动补全的数据', defaultValue: [], meta: [] },\n" +
+            "        createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', defaultValue: true },\n" +
+            "        value: { type: 'string', desc: '给定输入框的值' },\n" +
+            "        defaultValue: { type: 'string', desc: '默认输入框的值，仅第一次生效' },\n" +
+            "        showOldValue: { type: 'boolean', desc: '是否显示上一次选中的值', defaultValue: true },\n" +
+            "        placeholder: { type: 'string', desc: 'input输入提示信息' },\n" +
+            "        showAllLevels: { type: 'boolean', desc: '是否显示所有层级关系的值', defaultValue: true },\n" +
+            "        prefix: { type: 'ReactNode', desc: '输入框前缀' },\n" +
+            "        suffix: { type: 'ReactNode', desc: '输入框后缀' },\n" +
+            '      },\n' +
+            '      events: {\n' +
+            '        onChange: {\n' +
+            "          desc: '输入框的值改变时触发',\n" +
+            "          args: [{ name: 'value', desc: '输入框中改变后的值', type: 'string' }],\n" +
+            '        },\n' +
+            '        onFocus: {\n' +
+            "          desc: '输入框获取焦距时触发',\n" +
+            "          args: [{ name: 'event', desc: '点击的DOM事件', type: 'Object' }],\n" +
+            '        },\n' +
+            '        onBlur: {\n' +
+            "          desc: '输入框失去焦距时触发',\n" +
+            "          args: [{ name: 'event', desc: '点击的DOM事件', type: 'Object' }],\n" +
+            '        },\n' +
+            '        onSelect: {\n' +
+            "          desc: '点击选中项时触发',\n" +
+            "          args: [{ name: 'selectedKeys', desc: '选中项的数据', type: 'string[]' }],\n" +
+            '        },\n' +
+            '      },\n' +
+            '      type: {},\n' +
+            "      category: ['数据录入'],\n" +
+            '      theme: {\n' +
+            '        AutoInput: {\n' +
+            "          name: '自动完成输入框',\n" +
+            '          theme: {\n' +
+            '            Container: {\n' +
+            "              name: '输入框外部容器',\n" +
+            "              desc: '输入框外部容器',\n" +
+            '              normal: [\n' +
+            "                ['width'],\n" +
+            "                ['height'],\n" +
+            "                ['background'],\n" +
+            "                ['border'],\n" +
+            "                ['borderRadius'],\n" +
+            "                ['boxShadow'],\n" +
+            "                ['margin'],\n" +
+            "                ['padding'],\n" +
+            '              ],\n' +
+            '            },\n' +
+            '            InputSuffix: {\n' +
+            "              name: '后缀图标',\n" +
+            "              desc: '输入框后缀自定义图标',\n" +
+            "              normal: [['color'], ['fontSize']],\n" +
+            '              hover: [],\n' +
+            '              clicked: [],\n' +
+            '              disabled: [],\n' +
+            '            },\n' +
+            '            InputPrefix: {\n' +
+            "              name: '前缀图标',\n" +
+            "              desc: '输入框前缀自定义图标',\n" +
+            "              normal: [['color'], ['fontSize']],\n" +
+            '              hover: [],\n' +
+            '              clicked: [],\n' +
+            '              disabled: [],\n' +
+            '            },\n' +
+            '            InputClearButton: {\n' +
+            "              name: '输入框清除图标',\n" +
+            "              desc: '输入框后缀清除图标',\n" +
+            "              normal: [['color'], ['fontSize']],\n" +
+            '              hover: [],\n' +
+            '              clicked: [],\n' +
+            '              disabled: [],\n' +
+            '            },\n' +
+            '          },\n' +
+            '        },\n' +
+            '        OldItem: {\n' +
+            "          name: '展示上一次选中的值',\n" +
+            "          desc: '配置展示上一次选中值的样式',\n" +
+            '          normal: [\n' +
+            "            ['width'],\n" +
+            "            ['height'],\n" +
+            "            ['color'],\n" +
+            "            ['background'],\n" +
+            "            ['padding'],\n" +
+            "            ['margin'],\n" +
+            "            ['opacity'],\n" +
+            "            ['font'],\n" +
+            "            ['border'],\n" +
+            "            ['borderRadius'],\n" +
+            '          ],\n' +
+            "          hover: [['color'], ['background'], ['opacity'], ['font'], ['border'], ['borderRadius']],\n" +
+            '          clicked: [],\n' +
+            '          disabled: [],\n' +
+            '        },\n' +
+            '        Menu: {\n' +
+            "          name: '菜单配置',\n" +
+            '          theme: {\n' +
+            '            MenuWrap: {\n' +
+            "              name: '菜单外盒',\n" +
+            "              desc: '配置菜单组件的外盒样式',\n" +
+            '              normal: [\n' +
+            "                ['width'],\n" +
+            "                ['height'],\n" +
+            "                ['boxShadow'],\n" +
+            "                ['background'],\n" +
+            "                ['opacity'],\n" +
+            "                ['border'],\n" +
+            "                ['borderRadius'],\n" +
+            "                ['margin'],\n" +
+            "                ['padding'],\n" +
+            '              ],\n' +
+            "              hover: [['boxShadow'], ['background'], ['opacity'], ['border'], ['borderRadius']],\n" +
+            '              clicked: [],\n' +
+            '              disabled: [],\n' +
+            '            },\n' +
+            '            MenuItem: {\n' +
+            "              name: '菜单项的配置',\n" +
+            '              theme: {\n' +
+            '                MenuItemWrap: {\n' +
+            "                  name: '项的外盒',\n" +
+            "                  desc: '配置每一项的外盒',\n" +
+            '                  normal: [\n' +
+            "                    ['height'],\n" +
+            "                    ['background'],\n" +
+            "                    ['border'],\n" +
+            "                    ['borderRadius'],\n" +
+            "                    ['opacity'],\n" +
+            "                    ['color'],\n" +
+            "                    ['padding'],\n" +
+            '                  ],\n' +
+            '                  hover: [\n' +
+            "                    ['background'],\n" +
+            "                    ['border'],\n" +
+            "                    ['borderRadius'],\n" +
+            "                    ['opacity'],\n" +
+            "                    ['color'],\n" +
+            "                    ['font'],\n" +
+            '                  ],\n' +
+            '                  active: [\n' +
+            "                    ['background'],\n" +
+            "                    ['border'],\n" +
+            "                    ['borderRadius'],\n" +
+            "                    ['opacity'],\n" +
+            "                    ['color'],\n" +
+            "                    ['font'],\n" +
+            '                  ],\n' +
+            '                  disabled: [\n' +
+            "                    ['background'],\n" +
+            "                    ['color'],\n" +
+            "                    ['borderRadius'],\n" +
+            "                    ['opacity'],\n" +
+            "                    ['padding'],\n" +
+            "                    ['font'],\n" +
+            '                  ],\n' +
+            '                },\n' +
+            '                SelectedMenuItemWrap: {\n' +
+            "                  name: '选中项的外盒',\n" +
+            "                  desc: '配置选中项的外盒',\n" +
+            '                  normal: [\n' +
+            "                    ['background'],\n" +
+            "                    ['border'],\n" +
+            "                    ['borderRadius'],\n" +
+            "                    ['opacity'],\n" +
+            "                    ['color'],\n" +
+            "                    ['padding'],\n" +
+            "                    ['font'],\n" +
+            '                  ],\n' +
+            '                  hover: [\n' +
+            "                    ['background'],\n" +
+            "                    ['border'],\n" +
+            "                    ['borderRadius'],\n" +
+            "                    ['opacity'],\n" +
+            "                    ['color'],\n" +
+            "                    ['font'],\n" +
+            '                  ],\n' +
+            '                  active: [\n' +
+            "                    ['background'],\n" +
+            "                    ['border'],\n" +
+            "                    ['borderRadius'],\n" +
+            "                    ['opacity'],\n" +
+            "                    ['color'],\n" +
+            "                    ['font'],\n" +
+            '                  ],\n' +
+            '                  disabled: [],\n' +
+            '                },\n' +
+            '              },\n' +
+            '            },\n' +
+            '          },\n' +
+            '        },\n' +
+            '      },\n' +
+            '      childrenWidget: [],\n' +
+            '    },\n' +
+            '    target: AutoComplete,\n' +
+            '    screenshot:\n' +
+            "      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAAAoCAYAAAABk/85AAAAAXNSR0IArs4c6QAAAd9JREFUaAXtmzFOw0AQRbMRkn2FiAu4o+EA1CBRUlDgznZJgzgDoqF03DlFCkokqDkADZ0vgHwFuzIzgS3QyNJusbNI/paiVUaj+Zv3vatk4zErutq2PR7H8XGapjN6u+EYrmAEemPMe5Ikd3mefxmGPwzDBwWfyIBdWZZ9MGkUXm232w2xviHWt2manpqmafbE5bMoigfw0SNA3O9J7WTN2w7f+XrSUGICzJzZ85KYgCQOAWa/jiMNVUsABlgSkUYYEAm8lYUBlkSkEQZEAm9lF29AXdev/LJAtMcjbcH/pkffxc9jzmnxKyAmfNaGAZEd8N6C9s8vTr+cr68uDX823/yu65zqZ1l2qO+bH5m3kMcKEEh0AzBAl7dQgwECiW4ABujyFmowQCDRDcAAXd5CDQYIJLoBGKDLW6jBAIFENwADdHkLNRggkOgGYIAub6EGAwQS3YD3aag95XSdpm++PeV0re+b71pXKw8rQIv0jA4MmAGjFfbegrQmpqVDTyq/kZbTn0Ah5rR4A6qquggB1rUmtiBXUoHyYEAgsK5lYYArqUB5bEDPbTOB6qPsDIFf5v2aG8a4Z2kmD+FABJj5gT2a9AIRninLdz7Dp0cif5r0OA9tqjO0woT/tKl+A4luf1rTokgdAAAAAElFTkSuQmCC',\n" +
+            '  },\n' +
+            '  {\n' +
+            '    meta: {\n' +
+            "      widgetName: 'Avatar',\n" +
+            "      title: '头像',\n" +
+            "      desc: '用来代表用户或事物，支持图片、图标或字符展示。',\n" +
+            '      props: {\n' +
+            "        viewClass: { type: 'string', desc: '用于配置通用主题属性' },\n" +
+            '        size: {\n' +
+            "          type: 'AvatarSize',\n" +
+            '          desc:\n' +
+            "            \"可配置三种尺寸大小的input ('large' , 'default' , 'small'),高度分别为 40px、32px 和 24px。\",\n" +
+            "          defaultValue: 'default',\n" +
+            '        },\n' +
+            '        type: {\n' +
+            "          type: 'AvatarType',\n" +
+            "          desc: \"可配置三种类型的头像 ('text' , 'font' , 'img')\",\n" +
+            "          defaultValue: 'text',\n" +
+            '        },\n' +
+            "        name: { type: 'string', desc: '头像显示内容', defaultValue: 'Lugia' },\n" +
+            "        icon: { type: 'icon', desc: '头像显示图标资源' },\n" +
+            '        src: {\n' +
+            "          type: 'image',\n" +
+            "          desc: '头像显示图片资源',\n" +
+            '          defaultValue:\n' +
+            "            'data:image/jpeg;base64,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AAAAAABSR0JDAAAAAwAAAABSZCAgZG91YkBv4AAAAAAAAAAAAEdybiBkb3ViQG/gAAAAAAAAAAAAQmwgIGRvdWJAb+AAAAAAAAAAAABCcmRUVW50RiNSbHQAAAAAAAAAAAAAAABCbGQgVW50RiNSbHQAAAAAAAAAAAAAAABSc2x0VW50RiNQeGxAUgAAAAAAAAAAAAp2ZWN0b3JEYXRhYm9vbAEAAAAAUGdQc2VudW0AAAAAUGdQcwAAAABQZ1BDAAAAAExlZnRVbnRGI1JsdAAAAAAAAAAAAAAAAFRvcCBVbnRGI1JsdAAAAAAAAAAAAAAAAFNjbCBVbnRGI1ByY0BZAAAAAAAAAAAAEGNyb3BXaGVuUHJpbnRpbmdib29sAAAAAA5jcm9wUmVjdEJvdHRvbWxvbmcAAAAAAAAADGNyb3BSZWN0TGVmdGxvbmcAAAAAAAAADWNyb3BSZWN0UmlnaHRsb25nAAAAAAAAAAtjcm9wUmVjdFRvcGxvbmcAAAAAADhCSU0D7QAAAAAAEABIAAAAAQACAEgAAAABAAI4QklNBCYAAAAAAA4AAAAAAAAAAAAAP4AAADhCSU0D8gAAAAAACgAA////////AAA4QklNBA0AAAAAAAQAAAAeOEJJTQQZAAAAAAAEAAAAHjhCSU0D8wAAAAAACQAAAAAAAAAAAQA4QklNJxAAAAAAAAoAAQAAAAAAAAACOEJJTQP1AAAAAABIAC9mZgABAGxmZgAGAAAAAAABAC9mZgABAKGZmgAGAAAAAAABADIAAAABAFoAAAAGAAAAAAABADUAAAABAC0AAAAGAAAAAAABOEJJTQP4AAAAAABwAAD/////////////////////////////A+gAAAAA/////////////////////////////wPoAAAAAP////////////////////////////8D6AAAAAD/////////////////////////////A+gAADhCSU0ECAAAAAAAEAAAAAEAAAJAAAACQAAAAAA4QklNBB4AAAAAAAQAAAAAOEJJTQQaAAAAAAM9AAAABgAAAAAAAAAAAAAAKAAAACgAAAAEAHoAaQBqAGkAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAACgAAAAoAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA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Y29tL3hhcC8xLjAvADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0RXZ0PSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VFdmVudCMiIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDowNGU1MGQ3OC1lYzgxLTExN2ItYjFiYy1hZjNiNDY4NGI2M2QiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6YmUyZmM0MjQtZDZkYi00ZGYyLWI3ZDctZmFiY2Y0ZjhlMWJjIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9IkNFMUQyNDhFREI0MjFFRENENjkxRkVEQ0MxMDM5NTA1IiBkYzpmb3JtYXQ9ImltYWdlL2pwZWciIHBob3Rvc2hvcDpMZWdhY3lJUFRDRGlnZXN0PSJDRENGRkE3REE4QzdCRTA5MDU3MDc2QUVBRjA1QzM0RSIgcGhvdG9zaG9wOkNvbG9yTW9kZT0iMyIgcGhvdG9zaG9wOklDQ1Byb2ZpbGU9InNSR0IgSUVDNjE5NjYtMi4xIiB4bXA6Q3JlYXRlRGF0ZT0iMjAxNy0wOC0wOVQxNTo0NzozMiswODowMCIgeG1wOk1vZGlmeURhdGU9IjIwMTgtMDgtMzBUMDk6MTg6MjYrMDg6MDAiIHhtcDpNZXRhZGF0YURhdGU9IjIwMTgtMDgtMzBUMDk6MTg6MjYrMDg6MDAiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSI+IDx4bXBNTTpIaXN0b3J5PiA8cmRmOlNlcT4gPHJkZjpsaSBzdEV2dDphY3Rpb249InNhdmVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjBhYTM0MTlhLWMxNTctNDM3YS1iMzViLTVkMTY5NzhkNTg1MSIgc3RFdnQ6d2hlbj0iMjAxNy0wOS0xM1QxNzo0NDo0MiswODowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSIgc3RFdnQ6Y2hhbmdlZD0iLyIvPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0ic2F2ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6YmUyZmM0MjQtZDZkYi00ZGYyLWI3ZDctZmFiY2Y0ZjhlMWJjIiBzdEV2dDp3aGVuPSIyMDE4LTA4LTMwVDA5OjE4OjI2KzA4OjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxNS41IChNYWNpbnRvc2gpIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDwvcmRmOlNlcT4gPC94bXBNTTpIaXN0b3J5PiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg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',\n" +
+            '        },\n' +
+            "        shape: { type: 'AvatarShape', desc: '头像显示形状风格', defaultValue: 'circle' },\n" +
+            '      },\n' +
+            '      type: {\n' +
+            "        AvatarType: ['text', 'icon', 'img'],\n" +
+            "        AvatarSize: ['small', 'default', 'large'],\n" +
+            "        AvatarShape: ['circle', 'square'],\n" +
+            '      },\n' +
+            "      category: ['数据展示'],\n" +
+            '      designInfo: {\n' +
+            '        AvatarIcon: {\n' +
+            '          sequence: 1,\n' +
+            "          title: '图标头像',\n" +
+            "          desc: '使用图标样式展示头像',\n" +
+            "          props: { type: 'icon', icon: 'lugia-icon-financial_user' },\n" +
+            '          theme: {\n' +
+            '            Container: {\n' +
+            "              name: '头像',\n" +
+            "              desc: '对头像外部容器配置样式',\n" +
+            '              normal: [\n' +
+            "                ['width'],\n" +
+            "                ['height'],\n" +
+            "                ['margin'],\n" +
+            "                ['padding'],\n" +
+            "                ['background'],\n" +
+            "                ['opacity'],\n" +
+            "                ['boxShadow'],\n" +
+            '              ],\n' +
+            "              hover: [['width'], ['height']],\n" +
+            '              clicked: [],\n' +
+            '              disabled: [],\n' +
+            '            },\n' +
+            '            IconAvatar: {\n' +
+            "              name: '图标样式头像',\n" +
+            "              desc: '使用图标样式展示头像',\n" +
+            "              normal: [['color'], ['margin'], ['font'], ['background'], ['padding']],\n" +
+            "              hover: [['color'], ['background'], ['font']],\n" +
+            '              clicked: [],\n' +
+            '              disabled: [],\n' +
+            '            },\n' +
+            '          },\n' +
+            '        },\n' +
+            '        AvatarSrc: {\n' +
+            '          sequence: 2,\n' +
+            "          title: '图片头像',\n" +
+            "          desc: '使用图片资源展示头像',\n" +
+            '          props: {\n' +
+            "            type: 'img',\n" +
+            '            src:\n' +
+            "              'data:image/jpeg;base64,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AAAAAABSR0JDAAAAAwAAAABSZCAgZG91YkBv4AAAAAAAAAAAAEdybiBkb3ViQG/gAAAAAAAAAAAAQmwgIGRvdWJAb+AAAAAAAAAAAABCcmRUVW50RiNSbHQAAAAAAAAAAAAAAABCbGQgVW50RiNSbHQAAAAAAAAAAAAAAABSc2x0VW50RiNQeGxAUgAAAAAAAAAAAAp2ZWN0b3JEYXRhYm9vbAEAAAAAUGdQc2VudW0AAAAAUGdQcwAAAABQZ1BDAAAAAExlZnRVbnRGI1JsdAAAAAAAAAAAAAAAAFRvcCBVbnRGI1JsdAAAAAAAAAAAAAAAAFNjbCBVbnRGI1ByY0BZAAAAAAAAAAAAEGNyb3BXaGVuUHJpbnRpbmdib29sAAAAAA5jcm9wUmVjdEJvdHRvbWxvbmcAAAAAAAAADGNyb3BSZWN0TGVmdGxvbmcAAAAAAAAADWNyb3BSZWN0UmlnaHRsb25nAAAAAAAAAAtjcm9wUmVjdFRvcGxvbmcAAAAAADhCSU0D7QAAAAAAEABIAAAAAQACAEgAAAABAAI4QklNBCYAAAAAAA4AAAAAAAAAAAAAP4AAADhCSU0D8gAAAAAACgAA////////AAA4QklNBA0AAAAAAAQAAAAeOEJJTQQZAAAAAAAEAAAAHjhCSU0D8wAAAAAACQAAAAAAAAAAAQA4QklNJxAAAAAAAAoAAQAAAAAAAAACOEJJTQP1AAAAAABIAC9mZgABAGxmZgAGAAAAAAABAC9mZgABAKGZmgAGAAAAAAABADIAAAABAFoAAAAGAAAAAAABADUAAAABAC0AAAAGAAAAAAABOEJJTQP4AAAAAABwAAD/////////////////////////////A+gAAAAA/////////////////////////////wPoAAAAAP////////////////////////////8D6AAAAAD/////////////////////////////A+gAADhCSU0ECAAAAAAAEAAAAAEAAAJAAAACQAAAAAA4QklNBB4AAAAAAAQAAAAAOEJJTQQaAAAAAAM9AAAABgAAAAAAAAAAAAAAKAAAACgAAAAEAHoAaQBqAGkAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAACgAAAAoAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA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Y29tL3hhcC8xLjAvADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0RXZ0PSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VFdmVudCMiIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDowNGU1MGQ3OC1lYzgxLTExN2ItYjFiYy1hZjNiNDY4NGI2M2QiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6YmUyZmM0MjQtZDZkYi00ZGYyLWI3ZDctZmFiY2Y0ZjhlMWJjIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9IkNFMUQyNDhFREI0MjFFRENENjkxRkVEQ0MxMDM5NTA1IiBkYzpmb3JtYXQ9ImltYWdlL2pwZWciIHBob3Rvc2hvcDpMZWdhY3lJUFRDRGlnZXN0PSJDRENGRkE3REE4QzdCRTA5MDU3MDc2QUVBRjA1QzM0RSIgcGhvdG9zaG9wOkNvbG9yTW9kZT0iMyIgcGhvdG9zaG9wOklDQ1Byb2ZpbGU9InNSR0IgSUVDNjE5NjYtMi4xIiB4bXA6Q3JlYXRlRGF0ZT0iMjAxNy0wOC0wOVQxNTo0NzozMiswODowMCIgeG1wOk1vZGlmeURhdGU9IjIwMTgtMDgtMzBUMDk6MTg6MjYrMDg6MDAiIHhtcDpNZXRhZGF0YURhdGU9IjIwMTgtMDgtMzBUMDk6MTg6MjYrMDg6MDAiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSI+IDx4bXBNTTpIaXN0b3J5PiA8cmRmOlNlcT4gPHJkZjpsaSBzdEV2dDphY3Rpb249InNhdmVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjBhYTM0MTlhLWMxNTctNDM3YS1iMzViLTVkMTY5NzhkNTg1MSIgc3RFdnQ6d2hlbj0iMjAxNy0wOS0xM1QxNzo0NDo0MiswODowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSIgc3RFdnQ6Y2hhbmdlZD0iLyIvPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0ic2F2ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6YmUyZmM0MjQtZDZkYi00ZGYyLWI3ZDctZmFiY2Y0ZjhlMWJjIiBzdEV2dDp3aGVuPSIyMDE4LTA4LTMwVDA5OjE4OjI2KzA4OjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxNS41IChNYWNpbnRvc2gpIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDwvcmRmOlNlcT4gPC94bXBNTTpIaXN0b3J5PiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg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',\n" +
+            '          },\n' +
+            '          theme: {\n' +
+            '            Container: {\n' +
+            "              name: '头像',\n" +
+            "              desc: '对头像外部容器配置样式',\n" +
+            '              normal: [\n' +
+            "                ['width'],\n" +
+            "                ['height'],\n" +
+            "                ['margin'],\n" +
+            "                ['padding'],SAsvRQkpBJOWP/0OwcNVWzKDdSWQHDc1xB8GncrboUHv2MdZtLgwSQOSmnYpG4rVyWYeG691LmbmvAdw6A6d0yPb7ltYtDK7LLGtA9QNDndyWz/wBTuVLHYS8kOLQdY+K1KIdWCAYb7T8QmY92bKdNkgCSdJTMD//R7OoAmT8lY2t8JHBHiO6+b0kFP0Q3Be1+1mjOfUPEf+T/AJKujayv02fRHH96+akk2HDrTJPi04n6SJG2Z1BghJfNqSexv//ZOEJJTQQhAAAAAABhAAAAAQEAAAAPAEEAZABvAGIAZQAgAFAAaABvAHQAbwBzAGgAbwBwAAAAGQBBAGQAbwBiAGUAIABQAGgAbwB0AG8AcwBoAG8AcAAgAEMAQwAgADIAMAAxADUALgA1AAAAAQA4QklNBAYAAAAAAAcACAABAAEBAP/hDlJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0RXZ0PSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VFdmVudCMiIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDowNGU1MGQ3OC1lYzgxLTExN2ItYjFiYy1hZjNiNDY4NGI2M2QiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6YmUyZmM0MjQtZDZkYi00ZGYyLWI3ZDctZmFiY2Y0ZjhlMWJjIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9IkNFMUQyNDhFREI0MjFFRENENjkxRkVEQ0MxMDM5NTA1IiBkYzpmb3JtYXQ9ImltYWdlL2pwZWciIHBob3Rvc2hvcDpMZWdhY3lJUFRDRGlnZXN0PSJDRENGRkE3REE4QzdCRTA5MDU3MDc2QUVBRjA1QzM0RSIgcGhvdG9zaG9wOkNvbG9yTW9kZT0iMyIgcGhvdG9zaG9wOklDQ1Byb2ZpbGU9InNSR0IgSUVDNjE5NjYtMi4xIiB4bXA6Q3JlYXRlRGF0ZT0iMjAxNy0wOC0wOVQxNTo0NzozMiswODowMCIgeG1wOk1vZGlmeURhdGU9IjIwMTgtMDgtMzBUMDk6MTg6MjYrMDg6MDAiIHhtcDpNZXRhZGF0YURhdGU9IjIwMTgtMDgtMzBUMDk6MTg6MjYrMDg6MDAiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSI+IDx4bXBNTTpIaXN0b3J5PiA8cmRmOlNlcT4gPHJkZjpsaSBzdEV2dDphY3Rpb249InNhdmVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjBhYTM0MTlhLWMxNTctNDM3YS1iMzViLTVkMTY5NzhkNTg1MSIgc3RFdnQ6d2hlbj0iMjAxNy0wOS0xM1QxNzo0NDo0MiswODowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSIgc3RFdnQ6Y2hhbmdlZD0iLyIvPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0ic2F2ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6YmUyZmM0MjQtZDZkYi00ZGYyLWI3ZDctZmFiY2Y0ZjhlMWJjIiBzdEV2dDp3aGVuPSIyMDE4LTA4LTMwVDA5OjE4OjI2KzA4OjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxNS41IChNYWNpbnRvc2gpIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDwvcmRmOlNlcT4gPC94bXBNTTpIaXN0b3J5PiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8P3hwYWNrZXQgZW5kPSJ3Ij8+/+IMWElDQ19QUk9GSUxFAAEBAAAMSExpbm8CEAAAbW50clJHQiBYWVogB84AAgAJAAYAMQAAYWNzcE1TRlQAAAAASUVDIHNSR0IAAAAAAAAAAAAAAAAAAPbWAAEAAAAA0y1IUCAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARY3BydAAAAVAAAAAzZGVzYwAAAYQAAABsd3RwdAAAAfAAAAAUYmtwdAAAAgQAAAAUclhZWgAAAhgAAAAUZ1hZWgAAAiwAAAAUYlhZWgAAAkAAAAAUZG1uZAAAAlQAAABwZG1kZAAAAsQAAACIdnVlZAAAA0wAAACGdmlldwAAA9QAAAAkbHVtaQAAA/gAAAAUbWVhcwAABAwAAAAkdGVjaAAABDAAAAAMclRSQwAABDwAAAgMZ1RSQwAABDwAAAgMYlRSQwAABDwAAAgMdGV4dAAAAABDb3B5cmlnaHQgKGMpIDE5OTggSGV3bGV0dC1QYWNrYXJkIENvbXBhbnkAAGRlc2MAAAAAAAAAEnNSR0IgSUVDNjE5NjYtMi4xAAAAAAAAAAAAAAASc1JHQiBJRUM2MTk2Ni0yLjEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA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",
         },
         shape: { type: 'AvatarShape', desc: '头像显示形状风格', defaultValue: 'circle' },
       },
@@ -3005,63 +3537,89 @@ export default [
       category: ['数据录入'],
       theme: {
         Container: {
-          name: 'Checkbox整体配置',
-          desc: 'Checkbox整体配置',
+          name: '整体样式',
+          desc: '整体样式',
           normal: [['opacity'], ['margin'], ['padding'], ['width'], ['height']],
-          hover: [['opacity']],
-          disabled: [['opacity']],
         },
         CheckboxText: {
-          name: 'Checkbox文字配置',
-          desc: 'Checkbox文字配置',
+          name: '文字样式',
+          desc: '文字样式',
           normal: [['color'], ['font']],
           hover: [['color'], ['font']],
           disabled: [['color'], ['font']],
         },
-        CheckboxEdgeChecked: {
-          name: 'Checkbox选中后边框配置',
-          desc: 'Checkbox选中后边框配置样式',
-          normal: [['background'], ['borderRadius'], ['border']],
-          hover: [['background'], ['borderRadius'], ['border']],
-          disabled: [['background'], ['borderRadius'], ['border']],
-        },
         CheckboxEdgeUnChecked: {
-          name: 'Checkbox未选中边框配置',
-          desc: 'Checkbox未选中边框配置样式',
-          normal: [['background'], ['borderRadius'], ['border']],
-          hover: [['background'], ['borderRadius'], ['border']],
-          disabled: [['background'], ['borderRadius'], ['border']],
+          name: '未选中外框样式',
+          desc: '未选中外框样式',
+          normal: [
+            ['background'],
+            ['borderRadius'],
+            ['border'],
+            ['boxShadow'],
+            ['width'],
+            ['height'],
+          ],
+          hover: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
+          disabled: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
+        },
+        CheckboxEdgeChecked: {
+          name: '选中外框样式',
+          desc: '选中外框样式',
+          normal: [
+            ['background'],
+            ['borderRadius'],
+            ['border'],
+            ['boxShadow'],
+            ['width'],
+            ['height'],
+          ],
+          hover: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
+          disabled: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
         },
         CheckboxEdgeIndeterminate: {
-          name: 'Checkbox半选边框配置',
-          desc: 'Checkbox半选状态边框配置样式',
-          normal: [['background'], ['borderRadius'], ['border']],
-          hover: [['background'], ['borderRadius'], ['border']],
-          disabled: [['background'], ['borderRadius'], ['border']],
+          name: '半选外框样式',
+          desc: '半选状态外框样式',
+          normal: [
+            ['background'],
+            ['borderRadius'],
+            ['border'],
+            ['boxShadow'],
+            ['width'],
+            ['height'],
+          ],
+          hover: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
+          disabled: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
         },
         CheckboxEdgeCancel: {
-          name: 'Checkbox取消项边框配置',
-          desc: 'Checkbox取消状态边框配置样式',
-          normal: [['background'], ['borderRadius'], ['border']],
+          name: '取消状态外框样式',
+          desc: '取消状态外框样式',
+          normal: [
+            ['background'],
+            ['borderRadius'],
+            ['border'],
+            ['boxShadow'],
+            ['width'],
+            ['height'],
+          ],
         },
         CheckboxInnerChecked: {
-          name: 'Checkbox选中样式配置',
-          desc: 'Checkbox选中样式配置',
-          normal: [['color']],
-          hover: [['color']],
-          disabled: [['color']],
+          name: '选中内框样式',
+          desc: '选中内框样式',
+          normal: [['color'], ['width'], ['height']],
+          hover: [['color'], ['width'], ['height']],
+          disabled: [['color'], ['width'], ['height']],
         },
         CheckboxInnerIndeterminate: {
-          name: 'Checkbox半选样式配置',
-          desc: 'Checkbox半选状态样式配置',
-          normal: [['color']],
-          hover: [['color']],
-          disabled: [['color']],
+          name: '半选内框样式',
+          desc: '半选内框样式',
+          normal: [['color'], ['width'], ['height']],
+          hover: [['color'], ['width'], ['height']],
+          disabled: [['color'], ['width'], ['height']],
         },
         CheckboxInnerCancel: {
-          name: 'Checkbox取消状态样式配置',
-          desc: 'Checkbox取消状态样式配置',
-          normal: [['color']],
+          name: '取消状态内框样式',
+          desc: '取消状态内框样式',
+          normal: [['color'], ['width'], ['height']],
         },
       },
     },
@@ -3144,8 +3702,8 @@ export default [
           props: { childType: 'button' },
           theme: {
             Container: {
-              name: 'Checkbox组整体配置',
-              desc: 'Checkbox组整体配置',
+              name: '多选框组整体样式',
+              desc: '多选框组整体样式',
               normal: [
                 ['opacity'],
                 ['border'],
@@ -3158,12 +3716,12 @@ export default [
               ],
             },
             CheckButton: {
-              name: '配置按钮checkbox样式',
-              desc: '配置按钮Radio样式',
+              name: '按钮多选框样式',
+              desc: '按钮多选框样式',
               theme: {
-                CheckButtonChecked: {
-                  name: '多选框按钮状选中配置',
-                  desc: '多选框按钮状选中配置',
+                CheckButtonUnChecked: {
+                  name: '未选中样式',
+                  desc: '未选中样式',
                   normal: {
                     selectNames: [
                       ['opacity'],
@@ -3209,9 +3767,9 @@ export default [
                     nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
                   },
                 },
-                CheckButtonUnChecked: {
-                  name: '多选框按钮状未选中配置',
-                  desc: '多选框按钮状未选中配置',
+                CheckButtonChecked: {
+                  name: '选中样式',
+                  desc: '选中样式',
                   normal: {
                     selectNames: [
                       ['opacity'],
@@ -3258,8 +3816,8 @@ export default [
                   },
                 },
                 CheckButtonCancel: {
-                  name: '多选框按钮状取消项配置',
-                  desc: '多选框按钮状取消状态配置',
+                  name: '取消状态样式',
+                  desc: '取消状态样式',
                   normal: [
                     ['opacity'],
                     ['border'],
@@ -3281,8 +3839,8 @@ export default [
       needExport: true,
       theme: {
         Container: {
-          name: 'Checkbox组整体配置',
-          desc: 'Checkbox组整体配置',
+          name: '多选框组整体配置',
+          desc: '多选框组整体配置',
           normal: [
             ['opacity'],
             ['border'],
@@ -3298,63 +3856,91 @@ export default [
           name: '单个多选框配置',
           theme: {
             Container: {
-              name: 'Checkbox整体配置',
-              desc: 'Checkbox整体配置',
+              name: '整体样式',
+              desc: '整体样式',
               normal: [['opacity'], ['margin'], ['padding'], ['width'], ['height']],
               hover: [['opacity']],
               disabled: [['opacity']],
             },
             CheckboxText: {
-              name: 'Checkbox文字配置',
-              desc: 'Checkbox文字配置',
+              name: '文字样式',
+              desc: '文字样式',
               normal: [['color'], ['font']],
               hover: [['color'], ['font']],
               disabled: [['color'], ['font']],
             },
-            CheckboxEdgeChecked: {
-              name: 'Checkbox选中后边框配置',
-              desc: 'Checkbox选中后边框配置样式',
-              normal: [['background'], ['borderRadius'], ['border']],
-              hover: [['background'], ['borderRadius'], ['border']],
-              disabled: [['background'], ['borderRadius'], ['border']],
-            },
             CheckboxEdgeUnChecked: {
-              name: 'Checkbox未选中边框配置',
-              desc: 'Checkbox未选中边框配置样式',
-              normal: [['background'], ['borderRadius'], ['border']],
-              hover: [['background'], ['borderRadius'], ['border']],
-              disabled: [['background'], ['borderRadius'], ['border']],
+              name: '未选中外框样式',
+              desc: '未选中外框样式',
+              normal: [
+                ['background'],
+                ['borderRadius'],
+                ['border'],
+                ['boxShadow'],
+                ['width'],
+                ['height'],
+              ],
+              hover: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
+              disabled: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
+            },
+            CheckboxEdgeChecked: {
+              name: '选中外框样式',
+              desc: '选中外框样式',
+              normal: [
+                ['background'],
+                ['borderRadius'],
+                ['border'],
+                ['boxShadow'],
+                ['width'],
+                ['height'],
+              ],
+              hover: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
+              disabled: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
             },
             CheckboxEdgeIndeterminate: {
-              name: 'Checkbox半选边框配置',
-              desc: 'Checkbox半选状态边框配置样式',
-              normal: [['background'], ['borderRadius'], ['border']],
-              hover: [['background'], ['borderRadius'], ['border']],
-              disabled: [['background'], ['borderRadius'], ['border']],
+              name: '半选外框样式',
+              desc: '半选状态外框样式',
+              normal: [
+                ['background'],
+                ['borderRadius'],
+                ['border'],
+                ['boxShadow'],
+                ['width'],
+                ['height'],
+              ],
+              hover: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
+              disabled: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
             },
             CheckboxEdgeCancel: {
-              name: 'Checkbox取消项边框配置',
-              desc: 'Checkbox取消状态边框配置样式',
-              normal: [['background'], ['borderRadius'], ['border']],
+              name: '取消状态外框样式',
+              desc: '取消状态外框样式',
+              normal: [
+                ['background'],
+                ['borderRadius'],
+                ['border'],
+                ['boxShadow'],
+                ['width'],
+                ['height'],
+              ],
             },
             CheckboxInnerChecked: {
-              name: 'Checkbox选中样式配置',
-              desc: 'Checkbox选中样式配置',
-              normal: [['color']],
-              hover: [['color']],
-              disabled: [['color']],
+              name: '选中内框样式',
+              desc: '选中内框样式',
+              normal: [['color'], ['width'], ['height']],
+              hover: [['color'], ['width'], ['height']],
+              disabled: [['color'], ['width'], ['height']],
             },
             CheckboxInnerIndeterminate: {
-              name: 'Checkbox半选样式配置',
-              desc: 'Checkbox半选状态样式配置',
-              normal: [['color']],
-              hover: [['color']],
-              disabled: [['color']],
+              name: '半选内框样式',
+              desc: '半选内框样式',
+              normal: [['color'], ['width'], ['height']],
+              hover: [['color'], ['width'], ['height']],
+              disabled: [['color'], ['width'], ['height']],
             },
             CheckboxInnerCancel: {
-              name: 'Checkbox取消状态样式配置',
-              desc: 'Checkbox取消状态样式配置',
-              normal: [['color']],
+              name: '取消状态内框样式',
+              desc: '取消状态内框样式',
+              normal: [['color'], ['width'], ['height']],
             },
           },
         },
@@ -6923,13 +7509,13 @@ export default [
       props: {
         current: { type: 'number', desc: '当前页数' },
         defaultCurrent: { type: 'number', desc: '默认的当前页数', defaultValue: 1 },
-        total: { type: 'number', desc: '数据总数', defaultValue: 0 },
+        total: { type: 'number', desc: '数据总数', defaultValue: 1 },
         pageSize: { type: 'number', desc: '每页的条数', defaultValue: 10 },
         defaultPageSize: { type: 'number', desc: '默认的每页条数', defaultValue: 10 },
         pageSizeOptions: {
           type: 'string[]',
           desc: '指定每页可以显示多少条',
-          defaultValue: ['10', '20', '30', '40'],
+          defaultValue: ['10', '20', '30', '50'],
         },
         showQuickJumper: { type: 'boolean', desc: '是否可以快速跳转至某页', defaultValue: false },
         showTotal: { type: 'Function(total, range)', desc: '用于显示数据总量和当前数据顺序' },
@@ -6967,7 +7553,319 @@ export default [
           title: '简洁分页',
           desc: '简洁分页',
           props: { simple: true },
-          theme: {},
+          theme: {
+            PaginationContainer: {
+              name: '分页外部容器',
+              desc: '配置分页外部容器',
+              normal: [
+                ['width'],
+                ['height'],
+                ['background'],
+                ['cursor'],
+                ['padding'],
+                ['opacity'],
+                ['margin'],
+              ],
+            },
+            SimplePaginationInput: {
+              name: '简洁分页输入框',
+              theme: {
+                Container: {
+                  name: '输入框外部容器',
+                  desc: '输入框外部容器',
+                  normal: [['width'], ['height'], ['margin'], ['padding']],
+                },
+                Input: {
+                  name: '输入框主体内容',
+                  desc: '输入框主体内容',
+                  normal: [
+                    ['width'],
+                    ['height'],
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['background'],
+                    ['border'],
+                    ['borderRadius'],
+                    ['cursor'],
+                    ['opacity'],
+                  ],
+                  hover: [
+                    ['border'],
+                    ['borderRadius'],
+                    ['cursor'],
+                    ['background'],
+                    ['opacity'],
+                    ['boxShadow'],
+                  ],
+                  active: [['boxShadow'], ['border'], ['borderRadius'], ['cursor'], ['background']],
+                  disabled: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['background'],
+                    ['border'],
+                    ['borderRadius'],
+                    ['cursor'],
+                    ['padding'],
+                    ['opacity'],
+                  ],
+                },
+              },
+            },
+            ChangePageIcon: {
+              name: '分页切换页数图标',
+              desc: '配置分页切换页数图标',
+              normal: [['color'], ['fontSize'], ['font']],
+              hover: [],
+              clicked: [],
+              disabled: [],
+            },
+          },
+        },
+      },
+      theme: {
+        PaginationContainer: {
+          name: '分页外部容器',
+          desc: '配置分页外部容器',
+          normal: [
+            ['width'],
+            ['height'],
+            ['background'],
+            ['cursor'],
+            ['padding'],
+            ['opacity'],
+            ['margin'],
+          ],
+        },
+        PaginationListItem: {
+          name: '单个页数外部容器',
+          desc: '配置单个页数外部容器',
+          normal: [
+            ['width'],
+            ['height'],
+            ['cursor'],
+            ['border'],
+            ['borderRadius'],
+            ['opacity'],
+            ['background'],
+            ['boxShadow'],
+            ['lineHeight'],
+          ],
+          hover: [['color'], ['font'], ['fontSize'], ['border'], ['borderRadius']],
+          clicked: [],
+          disabled: [],
+        },
+        PaginationInnerText: {
+          name: '单个页数内部文字',
+          desc: '配置单个页数内部文字',
+          normal: [['fontSize'], ['font'], ['color'], ['cursor'], ['opacity']],
+          hover: [['color'], ['font'], ['fontSize']],
+          clicked: [],
+          disabled: [],
+        },
+        QuickJumpInput: {
+          name: '快速跳转分页输入框',
+          theme: {
+            Container: {
+              name: '输入框外部容器',
+              desc: '输入框外部容器',
+              normal: [['width'], ['height'], ['margin'], ['padding']],
+            },
+            Input: {
+              name: '输入框主体内容',
+              desc: '输入框主体内容',
+              normal: [
+                ['width'],
+                ['height'],
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['background'],
+                ['border'],
+                ['borderRadius'],
+                ['cursor'],
+                ['opacity'],
+              ],
+              hover: [
+                ['border'],
+                ['borderRadius'],
+                ['cursor'],
+                ['background'],
+                ['opacity'],
+                ['boxShadow'],
+              ],
+              active: [['boxShadow'], ['border'], ['borderRadius'], ['cursor'], ['background']],
+              disabled: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['background'],
+                ['border'],
+                ['borderRadius'],
+                ['cursor'],
+                ['padding'],
+                ['opacity'],
+              ],
+            },
+          },
+        },
+        ChangePageIcon: {
+          name: '切换显示每页页数图标',
+          desc: '配置切换显示每页页数图标',
+          normal: [['color'], ['fontSize'], ['font']],
+          hover: [],
+          clicked: [],
+          disabled: [],
+        },
+        MorePageIcon: {
+          name: '更多页数图标',
+          desc: '配置更多页数图标',
+          normal: [['color'], ['fontSize'], ['font']],
+          hover: [],
+          clicked: [],
+          disabled: [],
+        },
+        PaginationPageSizeSelect: {
+          name: '切换每页显示页数选择器',
+          theme: {
+            InputTag: {
+              name: '数据展示框',
+              theme: {
+                InputTagWrap: {
+                  name: '单个显示项外部容器',
+                  desc: '配置展示选中数据的容器',
+                  normal: [
+                    ['width'],
+                    ['height'],
+                    ['margin'],
+                    ['padding'],
+                    ['color'],
+                    ['background'],
+                    ['border'],
+                    ['boxShadow'],
+                    ['borderRadius'],
+                    ['font'],
+                    ['opacity'],
+                  ],
+                  hover: [
+                    ['color'],
+                    ['background'],
+                    ['border'],
+                    ['boxShadow'],
+                    ['borderRadius'],
+                    ['font'],
+                    ['opacity'],
+                  ],
+                  active: [],
+                  disabled: [],
+                },
+                SwitchIcon: {
+                  name: '下拉图标',
+                  desc: '配置下拉或清除按钮的图标样式',
+                  normal: [['color'], ['background'], ['font'], ['margin'], ['opacity']],
+                  hover: [['color'], ['font'], ['opacity']],
+                  active: [],
+                  disabled: [],
+                },
+              },
+            },
+            Menu: {
+              name: '弹开菜单',
+              theme: {
+                MenuWrap: {
+                  name: '菜单外部容器',
+                  desc: '配置菜单外部容器',
+                  normal: [
+                    ['width'],
+                    ['height'],
+                    ['boxShadow'],
+                    ['background'],
+                    ['opacity'],
+                    ['border'],
+                    ['borderRadius'],
+                    ['margin'],
+                    ['padding'],
+                  ],
+                  hover: [['boxShadow'], ['background'], ['opacity'], ['border'], ['borderRadius']],
+                  clicked: [],
+                  disabled: [],
+                },
+                MenuItem: {
+                  name: '菜单项配置',
+                  theme: {
+                    MenuItemWrap: {
+                      name: '单个项的外部容器',
+                      desc: '配置单个项的外部容器',
+                      normal: [
+                        ['height'],
+                        ['background'],
+                        ['border'],
+                        ['borderRadius'],
+                        ['opacity'],
+                        ['color'],
+                        ['padding'],
+                      ],
+                      hover: [
+                        ['background'],
+                        ['border'],
+                        ['borderRadius'],
+                        ['opacity'],
+                        ['color'],
+                        ['font'],
+                      ],
+                      active: [
+                        ['background'],
+                        ['border'],
+                        ['borderRadius'],
+                        ['opacity'],
+                        ['color'],
+                        ['font'],
+                      ],
+                      disabled: [
+                        ['background'],
+                        ['color'],
+                        ['borderRadius'],
+                        ['opacity'],
+                        ['padding'],
+                        ['font'],
+                      ],
+                    },
+                    SelectedMenuItemWrap: {
+                      name: '选中项的外部容器',
+                      desc: '配置选中项的外部容器',
+                      normal: [
+                        ['background'],
+                        ['border'],
+                        ['borderRadius'],
+                        ['opacity'],
+                        ['color'],
+                        ['padding'],
+                        ['font'],
+                      ],
+                      hover: [
+                        ['background'],
+                        ['border'],
+                        ['borderRadius'],
+                        ['opacity'],
+                        ['color'],
+                        ['font'],
+                      ],
+                      active: [
+                        ['background'],
+                        ['border'],
+                        ['borderRadius'],
+                        ['opacity'],
+                        ['color'],
+                        ['font'],
+                      ],
+                      disabled: [],
+                    },
+                  },
+                },
+              },
+            },
+          },
         },
       },
       category: ['导航'],
@@ -6985,13 +7883,13 @@ export default [
       props: {
         current: { type: 'number', desc: '当前页数' },
         defaultCurrent: { type: 'number', desc: '默认的当前页数', defaultValue: 1 },
-        total: { type: 'number', desc: '数据总数', defaultValue: 0 },
+        total: { type: 'number', desc: '数据总数', defaultValue: 1 },
         pageSize: { type: 'number', desc: '每页的条数', defaultValue: 10 },
         defaultPageSize: { type: 'number', desc: '默认的每页条数', defaultValue: 10 },
         pageSizeOptions: {
           type: 'string[]',
           desc: '指定每页可以显示多少条',
-          defaultValue: ['10', '20', '30', '40'],
+          defaultValue: ['10', '20', '30', '50'],
         },
         showQuickJumper: { type: 'boolean', desc: '是否可以快速跳转至某页', defaultValue: false },
         showTotal: { type: 'Function(total, range)', desc: '用于显示数据总量和当前数据顺序' },
@@ -7023,10 +7921,78 @@ export default [
           ],
         },
       },
+      theme: {
+        PaginationContainer: {
+          name: '分页外部容器',
+          desc: '配置分页外部容器',
+          normal: [
+            ['width'],
+            ['height'],
+            ['background'],
+            ['cursor'],
+            ['padding'],
+            ['opacity'],
+            ['margin'],
+          ],
+        },
+        SimplePaginationInput: {
+          name: '简洁分页输入框',
+          theme: {
+            Container: {
+              name: '输入框外部容器',
+              desc: '输入框外部容器',
+              normal: [['width'], ['height'], ['margin'], ['padding']],
+            },
+            Input: {
+              name: '输入框主体内容',
+              desc: '输入框主体内容',
+              normal: [
+                ['width'],
+                ['height'],
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['background'],
+                ['border'],
+                ['borderRadius'],
+                ['cursor'],
+                ['opacity'],
+              ],
+              hover: [
+                ['border'],
+                ['borderRadius'],
+                ['cursor'],
+                ['background'],
+                ['opacity'],
+                ['boxShadow'],
+              ],
+              active: [['boxShadow'], ['border'], ['borderRadius'], ['cursor'], ['background']],
+              disabled: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['background'],
+                ['border'],
+                ['borderRadius'],
+                ['cursor'],
+                ['padding'],
+                ['opacity'],
+              ],
+            },
+          },
+        },
+        ChangePageIcon: {
+          name: '分页切换页数图标',
+          desc: '配置分页切换页数图标',
+          normal: [['color'], ['fontSize'], ['font']],
+          hover: [],
+          clicked: [],
+          disabled: [],
+        },
+      },
       category: ['导航'],
       childrenWidget: [],
       aliasName: 'SimplePagination',
-      theme: {},
     },
     target: Pagination,
     screenshot:
@@ -7351,50 +8317,69 @@ export default [
       category: ['数据录入'],
       theme: {
         Container: {
-          name: 'Radio整体配置',
-          desc: 'Radio整体配置',
+          name: '整体样式',
+          desc: '整体样式',
           normal: [['opacity'], ['margin'], ['padding'], ['width'], ['height']],
-          hover: [['opacity']],
-          disabled: [['opacity']],
         },
         RadioText: {
-          name: 'Radio文字配置',
-          desc: 'Radio文字样式配置',
+          name: '文字样式',
+          desc: '文字样式',
           normal: [['color'], ['font']],
           hover: [['color'], ['font']],
           disabled: [['color'], ['font']],
         },
-        RadioEdgeChecked: {
-          name: 'Radio选中后边框配置',
-          desc: 'Radio选中后边框配置样式',
-          normal: [['background'], ['border'], ['borderRadius'], ['width'], ['height']],
-          hover: [['background'], ['borderRadius'], ['border']],
-          disabled: [['background'], ['borderRadius'], ['border']],
-        },
         RadioEdgeUnChecked: {
-          name: 'Radio未选中边框配置',
-          desc: 'Radio未选中边框配置样式',
-          normal: [['background'], ['border'], ['borderRadius'], ['width'], ['height']],
+          name: '未选中外框样式',
+          desc: '未选中外框样式',
+          normal: [
+            ['background'],
+            ['border'],
+            ['borderRadius'],
+            ['boxShadow'],
+            ['width'],
+            ['height'],
+          ],
           hover: [['background'], ['borderRadius'], ['border']],
           disabled: [['background'], ['borderRadius'], ['border']],
         },
-        RadioEdgeCancel: {
-          name: 'Radio未选中边框配置',
-          desc: 'Radio未选中边框配置样式',
-          normal: [['background'], ['border'], ['borderRadius'], ['width'], ['height']],
+        RadioEdgeChecked: {
+          name: '选中外框样式',
+          desc: '选中外框样式',
+          normal: [
+            ['background'],
+            ['border'],
+            ['borderRadius'],
+            ['boxShadow'],
+            ['width'],
+            ['height'],
+          ],
           hover: [['background'], ['borderRadius'], ['border']],
           disabled: [['background'], ['borderRadius'], ['border']],
         },
         RadioInnerChecked: {
-          name: 'Radio选中样式配置',
-          desc: 'Radio选中配置样式',
+          name: '选中内框样式',
+          desc: '选中内框样式',
           normal: [['background'], ['width'], ['height']],
           hover: [['background']],
           disabled: [['background']],
         },
+        RadioEdgeCancel: {
+          name: '取消状态外框样式',
+          desc: '取消状态外框样式',
+          normal: [
+            ['background'],
+            ['border'],
+            ['borderRadius'],
+            ['boxShadow'],
+            ['width'],
+            ['height'],
+          ],
+          hover: [['background'], ['borderRadius'], ['border']],
+          disabled: [['background'], ['borderRadius'], ['border']],
+        },
         RadioInnerCancel: {
-          name: 'Radio取消状态样式配置',
-          desc: 'Radio取消状态配置样式',
+          name: '取消状态内框样式',
+          desc: '取消状态内框样式',
           normal: [['background'], ['width'], ['height']],
           hover: [['background']],
         },
@@ -7461,8 +8446,8 @@ export default [
           props: { childType: 'button' },
           theme: {
             Container: {
-              name: 'Radio组整体配置',
-              desc: 'Radio组整体配置',
+              name: '单选框组整体样式',
+              desc: '单选框组整体样式',
               normal: [
                 ['opacity'],
                 ['border'],
@@ -7475,12 +8460,12 @@ export default [
               ],
             },
             CheckButton: {
-              name: '配置按钮Radio样式',
-              desc: '配置按钮Radio样式',
+              name: '按钮单选框样式',
+              desc: '按钮单选框样式',
               theme: {
-                CheckButtonChecked: {
-                  name: '单选框按钮状选中配置',
-                  desc: '单选框按钮状选中配置',
+                CheckButtonUnChecked: {
+                  name: '未选中样式',
+                  desc: '未选中样式',
                   normal: {
                     selectNames: [
                       ['opacity'],
@@ -7526,9 +8511,9 @@ export default [
                     nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
                   },
                 },
-                CheckButtonUnChecked: {
-                  name: '单选框按钮状未选中配置',
-                  desc: '单选框按钮状未选中配置',
+                CheckButtonChecked: {
+                  name: '选中样式',
+                  desc: '选中样式',
                   normal: {
                     selectNames: [
                       ['opacity'],
@@ -7575,8 +8560,8 @@ export default [
                   },
                 },
                 CheckButtonCancel: {
-                  name: '单选框按钮状取消项配置',
-                  desc: '单选框按钮状取消状态配置',
+                  name: '取消状态样式',
+                  desc: '取消状态样式',
                   normal: [
                     ['opacity'],
                     ['border'],
@@ -7598,8 +8583,8 @@ export default [
       needExport: true,
       theme: {
         Container: {
-          name: 'Radio组整体配置',
-          desc: 'Radio组整体配置',
+          name: '单选框组整体配置',
+          desc: '单选框组整体配置',
           normal: [
             ['opacity'],
             ['border'],
@@ -7612,54 +8597,75 @@ export default [
           ],
         },
         Radio: {
-          name: '配置Radio样式',
-          desc: '配置Radio样式',
+          name: '配置单选框样式',
+          desc: '配置单选框样式',
           theme: {
             Container: {
-              name: 'Radio整体配置',
-              desc: 'Radio整体配置',
+              name: '整体样式',
+              desc: '整体样式',
               normal: [['opacity'], ['margin'], ['padding'], ['width'], ['height']],
               hover: [['opacity']],
               disabled: [['opacity']],
             },
             RadioText: {
-              name: 'Radio文字配置',
-              desc: 'Radio文字样式配置',
+              name: '文字样式',
+              desc: '文字样式',
               normal: [['color'], ['font']],
               hover: [['color'], ['font']],
               disabled: [['color'], ['font']],
             },
-            RadioEdgeChecked: {
-              name: 'Radio选中后边框配置',
-              desc: 'Radio选中后边框配置样式',
-              normal: [['background'], ['border'], ['borderRadius'], ['width'], ['height']],
-              hover: [['background'], ['borderRadius'], ['border']],
-              disabled: [['background'], ['borderRadius'], ['border']],
-            },
             RadioEdgeUnChecked: {
-              name: 'Radio未选中边框配置',
-              desc: 'Radio未选中边框配置样式',
-              normal: [['background'], ['border'], ['borderRadius'], ['width'], ['height']],
+              name: '未选中外框样式',
+              desc: '未选中外框样式',
+              normal: [
+                ['background'],
+                ['border'],
+                ['borderRadius'],
+                ['boxShadow'],
+                ['width'],
+                ['height'],
+              ],
               hover: [['background'], ['borderRadius'], ['border']],
               disabled: [['background'], ['borderRadius'], ['border']],
             },
-            RadioEdgeCancel: {
-              name: 'Radio未选中边框配置',
-              desc: 'Radio未选中边框配置样式',
-              normal: [['background'], ['border'], ['borderRadius'], ['width'], ['height']],
+            RadioEdgeChecked: {
+              name: '选中外框样式',
+              desc: '选中外框样式',
+              normal: [
+                ['background'],
+                ['border'],
+                ['borderRadius'],
+                ['boxShadow'],
+                ['width'],
+                ['height'],
+              ],
               hover: [['background'], ['borderRadius'], ['border']],
               disabled: [['background'], ['borderRadius'], ['border']],
             },
             RadioInnerChecked: {
-              name: 'Radio选中样式配置',
-              desc: 'Radio选中配置样式',
+              name: '选中内框样式',
+              desc: '选中内框样式',
               normal: [['background'], ['width'], ['height']],
               hover: [['background']],
               disabled: [['background']],
             },
+            RadioEdgeCancel: {
+              name: '取消状态外框样式',
+              desc: '取消状态外框样式',
+              normal: [
+                ['background'],
+                ['border'],
+                ['borderRadius'],
+                ['boxShadow'],
+                ['width'],
+                ['height'],
+              ],
+              hover: [['background'], ['borderRadius'], ['border']],
+              disabled: [['background'], ['borderRadius'], ['border']],
+            },
             RadioInnerCancel: {
-              name: 'Radio取消状态样式配置',
-              desc: 'Radio取消状态配置样式',
+              name: '取消状态内框样式',
+              desc: '取消状态内框样式',
               normal: [['background'], ['width'], ['height']],
               hover: [['background']],
             },
@@ -7998,6 +9004,7 @@ export default [
         },
         mutliple: { type: 'boolean', desc: '是否多选', defaultValue: false },
         canSearch: { type: 'boolean', desc: '是否支持查询', defaultValue: false },
+        canClear: { type: 'boolean', desc: '是否展示清空图标', defaultValue: true },
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', defaultValue: true },
         throttle: { type: 'number', desc: '查询的延迟时间，单位为毫秒', defaultValue: 100 },
         canInput: {
@@ -8481,6 +9488,7 @@ export default [
         },
         mutliple: { type: 'boolean', desc: '是否多选', defaultValue: true },
         canSearch: { type: 'boolean', desc: '是否支持查询', defaultValue: false },
+        canClear: { type: 'boolean', desc: '是否展示清空图标', defaultValue: true },
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', defaultValue: true },
         throttle: { type: 'number', desc: '查询的延迟时间，单位为毫秒', defaultValue: 100 },
         canInput: {
@@ -10769,11 +11777,11 @@ export default [
               normal: [['background'], ['padding'], ['width'], ['height']],
             },
             TitleContainer: {
-              name: '顶部容器区域',
-              desc: '顶部容器区域宽度配置',
-              normal: [['width']],
+              name: '卡片区域',
+              desc: '卡片区域样式配置',
+              normal: [['width'], ['background']],
             },
-            BorderStyle: { name: '默认线', desc: '默认线样式配置', normal: [['border']] },
+            BorderStyle: { name: '默认线', desc: '默认线样式配置', normal: [['border', 'bottom']] },
             TabHeader: {
               name: '标签配置',
               theme: {
@@ -10781,6 +11789,8 @@ export default [
                   name: '默认标签',
                   desc: '默认标签样式配置',
                   normal: [
+                    ['width'],
+                    ['height'],
                     ['color'],
                     ['background'],
                     ['border'],
@@ -10851,11 +11861,7 @@ export default [
               desc: '内容区域的样式配置',
               normal: [['background'], ['padding'], ['width'], ['height']],
             },
-            TitleContainer: {
-              name: '顶部容器区域',
-              desc: '顶部容器区域宽度配置',
-              normal: [['width']],
-            },
+            TitleContainer: { name: '卡片区域', desc: '卡片区域样式配置', normal: [['width']] },
             TabHeader: {
               name: '标签配置',
               theme: {
@@ -10863,6 +11869,8 @@ export default [
                   name: '默认标签',
                   desc: '默认标签样式配置',
                   normal: [
+                    ['width'],
+                    ['height'],
                     ['color'],
                     ['background'],
                     ['border'],
@@ -10900,8 +11908,12 @@ export default [
           desc: '内容区域的样式配置',
           normal: [['background'], ['padding'], ['width'], ['height']],
         },
-        TitleContainer: { name: '顶部容器区域', desc: '顶部容器区域宽度配置', normal: [['width']] },
-        BorderStyle: { name: '默认线', desc: '默认线样式配置', normal: [['border']] },
+        TitleContainer: {
+          name: '卡片区域',
+          desc: '卡片区域样式配置',
+          normal: [['width'], ['background']],
+        },
+        BorderStyle: { name: '默认线', desc: '默认线样式配置', normal: [['border', 'bottom']] },
         TabHeader: {
           name: '标签配置',
           theme: {
@@ -10909,6 +11921,8 @@ export default [
               name: '默认标签',
               desc: '默认标签样式配置',
               normal: [
+                ['width'],
+                ['height'],
                 ['color'],
                 ['background'],
                 ['border'],
@@ -11051,8 +12065,12 @@ export default [
           desc: '内容区域的样式配置',
           normal: [['background'], ['padding'], ['width'], ['height']],
         },
-        TitleContainer: { name: '顶部容器区域', desc: '顶部容器区域宽度配置', normal: [['width']] },
-        BorderStyle: { name: '默认线', desc: '默认线样式配置', normal: [['border']] },
+        TitleContainer: {
+          name: '卡片区域',
+          desc: '卡片区域样式配置',
+          normal: [['width'], ['background']],
+        },
+        BorderStyle: { name: '默认线', desc: '默认线样式配置', normal: [['border', 'bottom']] },
         TabHeader: {
           name: '标签配置',
           theme: {
@@ -11060,6 +12078,8 @@ export default [
               name: '默认标签',
               desc: '默认标签样式配置',
               normal: [
+                ['width'],
+                ['height'],
                 ['color'],
                 ['background'],
                 ['border'],
@@ -11208,7 +12228,7 @@ export default [
           desc: '内容区域的样式配置',
           normal: [['background'], ['padding'], ['width'], ['height']],
         },
-        TitleContainer: { name: '顶部容器区域', desc: '顶部容器区域宽度配置', normal: [['width']] },
+        TitleContainer: { name: '卡片区域', desc: '卡片区域样式配置', normal: [['width']] },
         TabHeader: {
           name: '标签配置',
           theme: {
@@ -11216,6 +12236,8 @@ export default [
               name: '默认标签',
               desc: '默认标签样式配置',
               normal: [
+                ['width'],
+                ['height'],
                 ['color'],
                 ['background'],
                 ['border'],
@@ -11258,6 +12280,7 @@ export default [
       desc: '标记和分类的标签',
       props: {
         closable: { type: 'boolean', desc: '标签是否可关闭', defaultValue: true },
+        text: { type: 'string', desc: '指定标签的文本值', defaultValue: 'Tag' },
         shape: {
           type: ' basic | round ',
           desc: '标签的圆角, basic为4px圆角,round为圆角标签',
@@ -11462,6 +12485,7 @@ export default [
       desc: '点击关闭按钮可隐藏标签',
       props: {
         closable: { type: 'boolean', desc: '标签是否可关闭', defaultValue: true },
+        text: { type: 'string', desc: '指定标签的文本值', defaultValue: 'Tag' },
         shape: {
           type: ' basic | round ',
           desc: '标签的圆角, basic为4px圆角,round为圆角标签',
@@ -11546,6 +12570,7 @@ export default [
       desc: '点击标签可配置选中样式',
       props: {
         closable: { type: 'boolean', desc: '标签是否可关闭', defaultValue: true },
+        text: { type: 'string', desc: '指定标签的文本值', defaultValue: 'Tag' },
         shape: {
           type: ' basic | round ',
           desc: '标签的圆角, basic为4px圆角,round为圆角标签',

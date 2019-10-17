@@ -129,7 +129,7 @@ const HTabsContainer = CSSComponent({
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig: { arrowShow, showAddBtn, addSize } = {} } = themeProps;
       if (arrowShow) {
-        const W = showAddBtn ? (addSize ? addSize + 8 + 'px' : '80px') : '70px';
+        const W = showAddBtn ? (addSize ? addSize + 8 + 'px' : '80px') : '48px';
         return {
           width: `calc( 100% - ${W} )`,
         };
@@ -398,6 +398,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
     defaultData: [],
   };
   scrollBox: any;
+  tabPanBox: any;
   titlePanel: any;
   static displayName = Widget.Tabs;
   offsetWidth: number;
@@ -406,6 +407,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
   constructor(props: TabsProps) {
     super(props);
     this.scrollBox = React.createRef();
+    this.tabPanBox = React.createRef();
     this.titlePanel = [];
   }
 
@@ -472,23 +474,21 @@ class TabHeader extends Component<TabsProps, TabsState> {
     const newMaxIndex = maxIndex ? maxIndex : this.getCurrentMaxIndex(titleSize);
     let { currentPage } = this.state;
     const { tabPosition, tabType, pagedType } = this.props;
+    currentPage = pagedType === 'page' ? 1 : newMaxIndex;
     let offsetSize;
-    let actualSize;
     if (isVertical(tabPosition)) {
       offsetSize = this.offsetHeight;
-      actualSize = this.getActualWidth('line', titleSize);
     } else {
       offsetSize = this.offsetWidth;
-      actualSize = this.getActualWidth(tabType, titleSize);
     }
-    const totalPage =
-      pagedType === 'page' ? computePage(offsetSize - 50, actualSize) : titleSize.length;
+    const actualSize = this.getActualWidthOrHeight();
+    const totalPage = pagedType === 'page' ? computePage(offsetSize, actualSize) : titleSize.length;
     const arrowShow = offsetSize < actualSize;
     if (allowToCalc) {
       currentPage =
         pagedType === 'page'
           ? this.getCurrentPageByActivityValue(data, activityValue, totalPage)
-          : titleSize.length - newMaxIndex;
+          : titleSize.length;
     }
     this.setState(
       { arrowShow, totalPage, currentPage, titleSize, allowToCalc: false, maxIndex: newMaxIndex },
@@ -503,17 +503,18 @@ class TabHeader extends Component<TabsProps, TabsState> {
     let maxIndex = 0;
     let distance = 0;
     const offsetSize = isVertical(tabPosition) ? this.offsetHeight : this.offsetWidth;
-    const length = titleSize.length;
-    for (let i = 0; i < length; i++) {
-      distance += titleSize[i] + 6;
-      if (distance < offsetSize) {
-        maxIndex = i;
+    const margin = isVertical(tabPosition) ? 0 : 8;
+    titleSize.some((item, index) => {
+      distance += item + margin;
+      if (distance > offsetSize) {
+        maxIndex = index;
+        return true;
       }
-    }
+    });
     return maxIndex;
   }
 
-  getCurrentPageByActivityValue(data, activityValue, totalPage) {
+  getCurrentPageByActivityValue(data: Array<Object>, activityValue: string, totalPage: number) {
     let currentIndex = 0;
     data.some((item, index) => {
       if (item.key === activityValue) {
@@ -560,7 +561,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
       >
         {this.getPrevOrNextPage('prev', prevPageThemeProps, isDisabledToPrev, isDisabledToNext)}
         <VTabsContainer themeProps={themeProps} ref={this.scrollBox}>
-          <YscrollerContainer y={moveDistance} themeProps={borderThemeProps}>
+          <YscrollerContainer y={moveDistance} themeProps={borderThemeProps} ref={this.tabPanBox}>
             {this.getChildren()}
           </YscrollerContainer>
         </VTabsContainer>
@@ -644,7 +645,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
     } else if (matchType(type, 'pre')) {
       currentPage--;
     }
-    return Math.max(Math.min(currentPage, totalPage - 1), 0);
+    return Math.max(Math.min(currentPage, totalPage), 0);
   }
 
   getHorizonTabPan() {
@@ -685,7 +686,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
       >
         {this.getPrevOrNextPage('prev', prevPageThemeProps, isDisabledToPrev, isDisabledToNext)}
         <HTabsContainer themeProps={themeProps} ref={this.scrollBox}>
-          <HscrollerContainer themeProps={borderThemeProps} x={moveDistance}>
+          <HscrollerContainer themeProps={borderThemeProps} x={moveDistance} ref={this.tabPanBox}>
             {this.getChildren()}
           </HscrollerContainer>
         </HTabsContainer>
@@ -791,36 +792,49 @@ class TabHeader extends Component<TabsProps, TabsState> {
   };
 
   computeMoveDistance() {
-    const { currentPage, totalPage, titleSize, maxIndex } = this.state;
-    const { pagedType } = this.props;
-    let distance = 0;
-    if (pagedType === 'single') {
-      titleSize.forEach((item, index) => {
-        if (currentPage !== 0 && index < currentPage) {
-          distance += titleSize[index + maxIndex];
-        }
-      });
-    } else {
-      const pageIndex = Math.ceil(titleSize.length / totalPage) * currentPage;
-      titleSize.forEach((item, index) => {
-        if (currentPage !== 0 && index < pageIndex) {
-          distance += item;
-        }
-      });
+    const { currentPage, titleSize } = this.state;
+    const { pagedType, tabPosition } = this.props;
+    const actualSize = this.getActualWidthOrHeight();
+    const offsetSize = isVertical(tabPosition) ? this.offsetHeight : this.offsetWidth;
+    if (actualSize < offsetSize) {
+      return 0;
     }
-    distance = Math.max(0, distance);
+
+    let distance = 0;
+    switch (pagedType) {
+      case 'single':
+        const maxIndex = this.getCurrentMaxIndex(titleSize);
+        const length = currentPage - maxIndex;
+        for (let i = 1; i <= length; i++) {
+          distance += titleSize[Math.min(maxIndex + i, titleSize.length - 1)] + 8;
+        }
+        break;
+      case 'page':
+        distance = offsetSize * (currentPage - 1);
+        break;
+      default:
+        break;
+    }
     return -distance;
   }
 
   getIsAllowToMove() {
-    const { titleSize, currentPage, maxIndex } = this.state;
-    const isDisabledToNext = currentPage + maxIndex >= titleSize.length;
-    const isDisabledToPrev = currentPage === 0;
+    const { currentPage, maxIndex, totalPage } = this.state;
+    const { pagedType } = this.props;
+    const isDisabledToNext = currentPage >= totalPage;
+    const isDisabledToPrev = pagedType === 'page' ? currentPage <= 1 : currentPage <= maxIndex;
     return { isDisabledToPrev, isDisabledToNext };
   }
 
-  getActualWidth(tabType: TabType, titleSize: Array<number>) {
-    return plusWidth(titleSize.length - 1, titleSize);
+  getActualWidthOrHeight() {
+    const { tabPosition } = this.props;
+    let actualSize = 0;
+    if (this.tabPanBox.current) {
+      const { offsetHeight, offsetWidth } = this.tabPanBox.current;
+      actualSize = isVertical(tabPosition) ? offsetHeight : offsetWidth;
+    }
+
+    return actualSize;
   }
 
   onTabClick = (res: Object) => {

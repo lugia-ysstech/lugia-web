@@ -66,6 +66,7 @@ type InputTagProps = {
   svThemVersion?: number,
   mutliple: boolean,
   focus: boolean,
+  canClear: boolean,
   displayValue?: string,
   defaultValue?: string,
   defaultDisplayValue?: string,
@@ -97,6 +98,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     disabled: false,
     validateStatus: 'success',
     help: DefaultHelp,
+    canClear: true,
   };
 
   container: Object;
@@ -347,12 +349,13 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   };
 
   getClearButton() {
-    const themeProps = this.props.getPartOfThemeProps('SwitchIcon');
+    const { canClear, getPartOfThemeProps } = this.props;
+    const themeProps = getPartOfThemeProps('SwitchIcon');
     const Icon = this.isEmpty() ? (
       <CommonIcon themeProps={themeProps} iconClass={Pull} />
-    ) : (
+    ) : canClear ? (
       <CommonIcon themeProps={themeProps} iconClass={Clear} onClick={this.onClear} />
-    );
+    ) : null;
     return <IconWrap themeProps={themeProps}>{Icon}</IconWrap>;
   }
 
