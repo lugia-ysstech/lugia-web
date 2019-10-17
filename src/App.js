@@ -268,6 +268,10 @@ const data = [
     value: '/layout',
     text: 'Layout 布局',
   },
+  {
+    value: '/window',
+    text: 'Window 窗体',
+  },
 ];
 
 const processMap = {
