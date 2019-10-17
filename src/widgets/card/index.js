@@ -46,7 +46,7 @@ const CardOutContainer = CSSComponent({
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
       const { type } = propsConfig;
-      if (type === 'transparent ') {
+      if (type === 'transparent') {
         return {};
       }
       return {
