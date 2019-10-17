@@ -12,6 +12,7 @@ import RcTable from 'rc-table';
 import 'rc-table/assets/index.css';
 import './style/lugia-table.css';
 import type { TableProps, TableState } from '../css/table';
+import { px2remcss } from '../css/units';
 
 export default ThemeProvider(
   class extends React.Component<TableProps, TableState> {
@@ -23,11 +24,18 @@ export default ThemeProvider(
         showHeader = true,
         tableStyle = 'bordered',
         getTheme,
+        getPartOfThemeConfig,
       } = this.props;
-      const themeWidth = getTheme().width;
+      const containerTheme = getPartOfThemeConfig('Container') || {};
+      const { normal: normalTheme = {} } = containerTheme;
+      const themeWidth = normalTheme.width;
       const styles = {};
       if (themeWidth) {
-        styles.width = themeWidth;
+        if (typeof themeWidth === 'number') {
+          styles.width = px2remcss(themeWidth);
+        } else {
+          styles.width = themeWidth;
+        }
       }
       if (children) {
         return (
