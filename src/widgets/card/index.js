@@ -15,6 +15,7 @@ import ThemeHoc from '../theme-provider/index';
 import colorsFunc from '../css/stateColor';
 import { units } from '@lugia/css';
 import { deepMerge } from '@lugia/object-utils';
+import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
 
 const { px2remcss } = units;
 const { darkGreyColor, lightGreyColor, defaultColor, themeColor } = colorsFunc();
@@ -33,11 +34,6 @@ const CardOutContainer = CSSComponent({
       ['padding'],
       ['opacity'],
     ],
-    defaultTheme: {
-      background: {
-        color: defaultColor,
-      },
-    },
     getCSS(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
       const { imageOrientation, type } = propsConfig;
@@ -47,6 +43,21 @@ const CardOutContainer = CSSComponent({
         text-align:${textAlign};
         flex-direction:${flexDirection};`;
     },
+    getThemeMeta(themeMeta: Object, themeProps: Object) {
+      const { propsConfig } = themeProps;
+      const { type } = propsConfig;
+      if (type === 'transparent ') {
+        return {};
+      }
+      return {
+        background: {
+          color: defaultColor,
+        },
+        border: getBorder({ color: lightGreyColor, width: 1, style: 'solid' }),
+        borderRadius: getBorderRadius(5),
+        boxShadow: getBoxShadow('0 0 6 rgba(0, 0, 50, 0.1)'),
+      };
+    },
   },
   hover: {
     selectNames: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
@@ -55,12 +66,10 @@ const CardOutContainer = CSSComponent({
     selectNames: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
   },
   css: css`
-    border: ${px2remcss(1)} solid ${lightGreyColor};
     position: relative;
     display: flex;
-    border-radius: ${px2remcss(5)};
-    box-shadow: 0 0 ${px2remcss(6)} rgba(0, 0, 50, 0.1);
   `,
+  option: { hover: true },
 });
 const Content = CSSComponent({
   tag: 'div',
@@ -404,32 +413,51 @@ class Card extends React.Component<CardProps, CardState> {
       resultTheme,
       this.props.getPartOfThemeProps('Container', { props: { type, imageOrientation } })
     );
+
+    return (
+      <CardOutContainer themeProps={resultTheme} type={type} imageOrientation={imageOrientation}>
+        {this.getDetails('operation')}
+        {this.getImageContainer()}
+        {this.getInnerContent()}
+      </CardOutContainer>
+    );
+  }
+
+  getInnerContent() {
+    const { type, imageOrientation, content } = this.props;
     const cardContentTheme = this.props.getPartOfThemeProps('CardContent', {
       props: {
         type,
         imageOrientation,
       },
     });
-
-    return (
-      <CardOutContainer themeProps={resultTheme} type={type} imageOrientation={imageOrientation}>
-        {this.getDetails('operation')}
-        {this.getImageContainer()}
+    if (type !== 'transparent') {
+      return (
         <Content
           themeProps={cardContentTheme}
           imageOrientation={imageOrientation}
           type={type}
           content={content}
         >
-          <TitleTipContainer themeProps={this.props.getPartOfThemeProps('CardTitleTipLine')}>
-            {this.getTitleTipLine()}
-            {this.getDetails('title')}
-          </TitleTipContainer>
+          {this.getTitleTipContainer()}
           {this.getDetails('description')}
           {this.getContent()}
         </Content>
-      </CardOutContainer>
-    );
+      );
+    }
+  }
+
+  getTitleTipContainer() {
+    const { title } = this.props;
+    if (title) {
+      return (
+        <TitleTipContainer themeProps={this.props.getPartOfThemeProps('CardTitleTipLine')}>
+          {this.getTitleTipLine()}
+          {this.getDetails('title')}
+        </TitleTipContainer>
+      );
+    }
+    return null;
   }
 
   getTitleTipLine() {
