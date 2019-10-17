@@ -431,20 +431,18 @@ class Card extends React.Component<CardProps, CardState> {
         imageOrientation,
       },
     });
-    if (type !== 'transparent') {
-      return (
-        <Content
-          themeProps={cardContentTheme}
-          imageOrientation={imageOrientation}
-          type={type}
-          content={content}
-        >
-          {this.getTitleTipContainer()}
-          {this.getDetails('description')}
-          {this.getContent()}
-        </Content>
-      );
-    }
+    return (
+      <Content
+        themeProps={cardContentTheme}
+        imageOrientation={imageOrientation}
+        type={type}
+        content={content}
+      >
+        {this.getTitleTipContainer()}
+        {this.getDetails('description')}
+        {this.getContent()}
+      </Content>
+    );
   }
 
   getTitleTipContainer() {
