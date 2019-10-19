@@ -36,6 +36,7 @@ const MenuWrap = styled.div`
 type RowData = { [key: string]: any };
 type NavMenuProps = {
   getTheme: Function,
+  pathSeparator?: string,
   value: ?Array<string>,
   onSelect?: Function,
   onChange?: Function,
@@ -71,6 +72,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     inlineExpandAll: true,
     themeStyle: 'light',
     inlineType: 'primary',
+    pathSeparator: '/',
     separator: '|',
     switchIconNames: {
       open: 'lugia-icon-direction_up',
@@ -90,7 +92,8 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       activityValue: props.activityValue ? props.activityValue : '',
       isInTabs: false,
     };
-    this.treeData = getTreeData(this.props);
+    const { pathSeparator } = props;
+    this.treeData = getTreeData(this.props, pathSeparator);
   }
 
   static getDerivedStateFromProps(props: NavMenuProps, state: NavMenuState) {
@@ -415,6 +418,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       autoHeight = true,
       themeStyle,
       switchIconNames,
+      pathSeparator,
     } = this.props;
     const treeData = this.treeData;
 
@@ -436,6 +440,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
           displayField={displayField}
           onlySelectLeaf={true}
           onChange={this.onChange}
+          pathSeparator={pathSeparator}
         />
       </MenuWrap>
     );

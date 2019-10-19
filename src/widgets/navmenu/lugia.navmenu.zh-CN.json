@@ -8,6 +8,12 @@
       "desc": "data数据的value值的名称",
       "defaultValue": "value"
     },
+
+    "pathSeparator": {
+      "type": "string",
+      "desc": "指定结点数组中path信息的分隔符号",
+      "defaultValue": "/"
+    },
     "displayField": {
       "type": "string",
       "desc": "data数据的displayValue值的名称",
