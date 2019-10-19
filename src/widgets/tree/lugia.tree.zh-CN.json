@@ -66,6 +66,12 @@
       "desc": "指定不可选的标识"
     },
 
+    "pathSeparator": {
+      "type": "string",
+      "desc": "指定结点数组中path信息的分隔符号",
+      "defaultValue": "/"
+    },
+
     "searchType": {
       "type": "start | end | include | eql",
       "desc": "生成过滤数据的方式",
