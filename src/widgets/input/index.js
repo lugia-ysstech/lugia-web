@@ -132,6 +132,7 @@ const CommonInputStyle = CSSComponent({
     },
   },
   css: css`
+    box-sizing: border-box;
     line-height: 1.5;
     display: inline-block;
     font-family: inherit;
