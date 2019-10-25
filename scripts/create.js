@@ -37,8 +37,7 @@ const Invalid = [
   'popover',
   'popconfirm',
   'tooltip',
-  'collapse',
-  'lugiad-core',
+  'collapse'
 ];
 
 createDesignInfo(tartgetPath, Invalid);
