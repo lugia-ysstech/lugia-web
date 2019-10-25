@@ -24,8 +24,11 @@ function bindHandleEvent(e) {
 
 function themeHandle(id, context, dTh, useSmart) {
   if (context) {
-    const contextTheme = context.getLayout(id).theme;
-    const theme = useSmart ? { ...contextTheme, width: '100%' } : contextTheme;
+    const contextTheme = { ...context.getLayout(id).theme };
+    if (useSmart && contextTheme.Container && contextTheme.Container.normal) {
+      contextTheme.Container.normal.width = '100%';
+    }
+    const theme = { ...contextTheme };
     return theme || {};
   }
   return dTh || {};
