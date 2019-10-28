@@ -112,6 +112,14 @@ const PaginationListItem = CSSComponent({
     defaultTheme: {
       border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
     },
+    getThemeMeta(themeMeta: Object, themeProps: Object) {
+      const { propsConfig } = themeProps;
+      const { clickable = true } = propsConfig;
+      if (!clickable)
+        return {
+          border: getBorder({ color: lightGreyColor, width: 1, style: 'solid' }),
+        };
+    },
   },
   option: { hover: true, active: true },
 });
@@ -123,15 +131,10 @@ const PaginationListItemText = CSSComponent({
     selectNames: [['fontSize'], ['font'], ['color'], ['cursor'], ['opacity']],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
-      const { isSelected, noArrow } = propsConfig;
+      const { isSelected } = propsConfig;
       if (isSelected) {
         return {
           color: themeColor,
-        };
-      }
-      if (noArrow) {
-        return {
-          color: lightGreyColor,
         };
       }
       return {
@@ -256,17 +259,17 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     if (totalPages <= 5 + pageBufferSize * 2) {
       for (let i = 1; i <= totalPages; i++) {
         const isSelected = current === i;
-        pageList.push(this.getItems(i, isSelected, i, false));
+        pageList.push(this.getItems(i, isSelected, i));
       }
     } else {
-      const firstPage = this.getItems(0, false, 1, true);
-      const lastPage = this.getItems(totalPages, false, totalPages, true);
+      const firstPage = this.getItems(0, false, 1);
+      const lastPage = this.getItems(totalPages, false, totalPages);
       const left = this.getLeftPage(totalPages);
       const right = this.getRightPage(totalPages);
 
       for (let i = left; i <= right; i++) {
         const isSelected = current === i;
-        pageList.push(this.getItems(i, isSelected, i, false));
+        pageList.push(this.getItems(i, isSelected, i));
       }
       pageList = this.getPrePage(current, pageBufferSize, pageList);
       pageList = this.getNextPage(totalPages, current, pageBufferSize, pageList);
@@ -297,7 +300,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     return left;
   }
 
-  getItems(index: number, isSelected: boolean, title: number, noArrow: boolean) {
+  getItems(index: number, isSelected: boolean, title: number) {
     const { createEventChannel, getPartOfThemeProps } = this.props;
     const channel = createEventChannel(['active', 'hover']);
     return (
@@ -316,7 +319,6 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
           themeProps={getPartOfThemeProps('PaginationInnerText', {
             props: {
               isSelected,
-              noArrow,
             },
           })}
         >
@@ -422,6 +424,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
                   right: 5,
                 },
                 color: darkGreyColor,
+                font: { size: 14 },
               },
             },
             TagWrap: {
@@ -575,7 +578,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     if (!min && !max) {
       page = preMore
         ? current - 1
-        : current <= computePage(0, pageSize, total)
+        : current < computePage(0, pageSize, total)
         ? current + 1
         : current;
     }
@@ -584,22 +587,27 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
 
   getArrow(type: MorePageType) {
     const { hideOnSinglePage } = this.props;
+    const { current } = this.state;
+
     if (hideOnSinglePage) {
       return null;
     }
     const page = this.checkArrowChange(type);
 
+    const clickable = type === 'pre' ? current > 1 : current < page;
     return (
       <PaginationListItem
-        themeProps={this.props.getPartOfThemeProps('PaginationListItem')}
+        themeProps={this.props.getPartOfThemeProps('PaginationListItem', {
+          props: { clickable },
+        })}
         onClick={this.changePage(page)}
       >
-        {this.getArrowIcon(type)}
+        {this.getArrowIcon(type, clickable)}
       </PaginationListItem>
     );
   }
 
-  getArrowIcon(type: MorePageType) {
+  getArrowIcon(type: MorePageType, clickable: boolean) {
     const preIcon = 'lugia-icon-direction_Left';
     const nextIcon = 'lugia-icon-direction_right';
     const iconClass = type === 'pre' ? preIcon : nextIcon;
@@ -607,18 +615,21 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     const { theme: IconThemeProps, viewClass: IconViewClass } = this.props.getPartOfThemeHocProps(
       'ChangePageIcon'
     );
+    const iconColor = clickable ? darkGreyColor : lightGreyColor;
+    const iconHoverColor = clickable ? themeColor : lightGreyColor;
+    const iconCursor = clickable ? 'pointer' : 'not-allowed';
 
     const iconTheme = deepMerge(
       {
         [IconViewClass]: {
           normal: {
-            color: lightGreyColor,
-            cursor: 'pointer',
+            color: iconColor,
+            cursor: iconCursor,
             padding: 11,
           },
           hover: {
-            color: themeColor,
-            cursor: 'pointer',
+            color: iconHoverColor,
+            cursor: iconCursor,
           },
         },
       },
