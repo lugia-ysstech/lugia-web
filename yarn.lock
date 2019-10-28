@@ -1058,10 +1058,10 @@
     immutable "^3.8.2"
     yargs "^13.2.2"
 
-"@lugia/jverify@1.0.8":
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/@lugia/jverify/-/jverify-1.0.8.tgz#dbdd79e3ca45dd5d8e6ea431ea2a812cfde87063"
-  integrity sha512-lkdCGmXY4MRPaEwVUu4ZDzxUdmZuW5PEZ9rL0bFDB2HT8oQXM2PI4FVDZ8lehvWE7jrFkMMabaVauxP4VJqzZw==
+"@lugia/jverify@^1.0.10":
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/@lugia/jverify/-/jverify-1.0.10.tgz#6b933e7f6620437cf50a632dff09c7fdf9c21355"
+  integrity sha512-NmRDyQnaZj5I5A1aJw07tcy3HM/nP189XS+SH1fGGTB3EE+cIaV3fIuxeB26gAQ+jxm4NmUt9PXOvdt4WZEMew==
   dependencies:
     "@lugia/type-utils" "^1.0.1"
     clone "^2.1.1"
@@ -13053,20 +13053,10 @@ react-router@^4.3.1:
     prop-types "^15.6.1"
     warning "^4.0.1"
 
-react-test-renderer@^16.0.0-0:
+react-test-renderer@^16.0.0-0, react-test-renderer@^16.9.0:
   version "16.9.0"
   resolved "https://registry.npm.taobao.org/react-test-renderer/download/react-test-renderer-16.9.0.tgz?cache=0&sync_timestamp=1565318745334&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Freact-test-renderer%2Fdownload%2Freact-test-renderer-16.9.0.tgz#7ed657a374af47af88f66f33a3ef99c9610c8ae9"
   integrity sha1-ftZXo3SvR6+I9m8zo++ZyWEMiuk=
-  dependencies:
-    object-assign "^4.1.1"
-    prop-types "^15.6.2"
-    react-is "^16.9.0"
-    scheduler "^0.15.0"
-
-react-test-renderer@^16.9.0:
-  version "16.9.0"
-  resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-16.9.0.tgz#7ed657a374af47af88f66f33a3ef99c9610c8ae9"
-  integrity sha512-R62stB73qZyhrJo7wmCW9jgl/07ai+YzvouvCXIJLBkRlRqLx4j9RqcLEAfNfU3OxTGucqR2Whmn3/Aad6L3hQ==
   dependencies:
     object-assign "^4.1.1"
     prop-types "^15.6.2"

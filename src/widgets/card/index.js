@@ -46,7 +46,7 @@ const CardOutContainer = CSSComponent({
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
       const { type } = propsConfig;
-      if (type === 'transparent ') {
+      if (type === 'transparent') {
         return {};
       }
       return {
@@ -431,20 +431,18 @@ class Card extends React.Component<CardProps, CardState> {
         imageOrientation,
       },
     });
-    if (type !== 'transparent') {
-      return (
-        <Content
-          themeProps={cardContentTheme}
-          imageOrientation={imageOrientation}
-          type={type}
-          content={content}
-        >
-          {this.getTitleTipContainer()}
-          {this.getDetails('description')}
-          {this.getContent()}
-        </Content>
-      );
-    }
+    return (
+      <Content
+        themeProps={cardContentTheme}
+        imageOrientation={imageOrientation}
+        type={type}
+        content={content}
+      >
+        {this.getTitleTipContainer()}
+        {this.getDetails('description')}
+        {this.getContent()}
+      </Content>
+    );
   }
 
   getTitleTipContainer() {

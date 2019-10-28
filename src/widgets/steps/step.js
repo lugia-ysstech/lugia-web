@@ -142,18 +142,18 @@ const Description = CSSComponent({
       const { propsConfig } = themeProps;
       const { size, stepType, orientation, desAlign } = propsConfig;
 
-      let bottom = 0;
+      let top = 0;
       let left = 0;
       if (orientation === 'horizontal') {
-        bottom = stepType === 'dot' || size === 'normal' ? 40 : 35;
+        top = stepType === 'dot' ? 35 : size === 'normal' ? 55 : 40;
       } else {
-        bottom = stepType === 'dot' ? 20 : size === 'normal' ? 10 : 15;
+        top = stepType === 'dot' ? 15 : size === 'normal' ? 20 : 25;
         left = stepType === 'dot' ? 25 : size === 'normal' ? 35 : 30;
       }
       const leftPosition = orientation !== 'horizontal' ? `left:${px2remcss(left)};` : '';
       const textAlign = orientation === 'horizontal' && desAlign === 'center' ? 'center' : 'left';
       const transform = textAlign === 'center' ? 'transform: translateX(-50%);left:50%;' : '';
-      return `text-align: ${textAlign};${transform};bottom:${px2remcss(-bottom)};${leftPosition}`;
+      return `text-align: ${textAlign};${transform};top:${px2remcss(top)};${leftPosition}`;
     },
     defaultTheme: {
       fontSize: 12,

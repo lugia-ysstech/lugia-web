@@ -33,7 +33,6 @@ type ExpandInfo = {
   id2ExtendInfo: NodeId2ExtendInfo,
 };
 
-const Seperator = '/';
 const notEmpty = (obj: any) => {
   return obj !== null && obj !== undefined && obj !== '';
 };
@@ -84,6 +83,7 @@ class TreeUtils {
       igronSelectField,
       limitCount,
       splitQuery,
+      pathSeparator = '/',
     } = config;
     this.Error = ErrorDefine;
     this.version = 0;
@@ -105,6 +105,7 @@ class TreeUtils {
     this.limitCount = limitCount;
     this.splitQuery = splitQuery;
     this.selCount = 0;
+    this.pathSeparator = pathSeparator;
     return this;
   }
 
@@ -211,7 +212,7 @@ class TreeUtils {
       const { pid, path, [this.valueField]: key } = data;
       if (pid) {
         const pidPathArray = fetchPidPath(pid);
-        const pidPath = pidPathArray.join(Seperator);
+        const pidPath = pidPathArray.join(this.pathSeparator);
         if (pidPath !== path) {
           isPathError[key] = true;
           result.push(pathIsError(data));
@@ -228,7 +229,7 @@ class TreeUtils {
         if (pathLen > 0) {
           const start = pathIndex[pathLen - 1];
           const { path, [this.valueField]: key } = datas[start];
-          const prePath = (path ? `${path}/` : '') + key;
+          const prePath = (path ? `${path}${this.pathSeparator}` : '') + key;
           for (let i = start + 1; i < index; i++) {
             const node = datas[i];
             const { path } = node;
@@ -329,7 +330,7 @@ class TreeUtils {
     if (cacheValue) {
       return cacheValue;
     }
-    this.catchPathArray[path] = path.split(Seperator);
+    this.catchPathArray[path] = path.split(this.pathSeparator);
     return this.catchPathArray[path];
   }
 
@@ -384,7 +385,7 @@ class TreeUtils {
     const { path } = row;
     let startWiths = nodeId;
     if (path) {
-      startWiths = `${path}/${nodeId}`;
+      startWiths = `${path}${this.pathSeparator}${nodeId}`;
     }
 
     for (let i = begin + 1; i < end; i++) {
