@@ -63,10 +63,17 @@ const CommonInputStyle = CSSComponent({
     },
     getCSS(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
-      const { placeHolderColor } = propsConfig;
-      return `&::placeholder {
-      color: ${placeHolderColor};
-    }`;
+      const { placeHolderColor, placeHolderFont, placeHolderFontSize } = propsConfig;
+      const { size, weight, color } = placeHolderFont;
+      const theColor = color ? color : placeHolderColor;
+      const theSize = size ? size : placeHolderFontSize;
+      return css`
+        &::placeholder {
+          color: ${theColor};
+          font-size: ${theSize}px;
+          font-weight: ${weight};
+        }
+      `;
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
@@ -580,11 +587,18 @@ class TextBox extends Component<InputProps, InputState> {
 
     const { themeConfig = {} } = this.props.getPartOfThemeProps('Placeholder');
     const { normal = {} } = themeConfig;
-    const { color = lightGreyColor } = normal;
-
+    const { color = lightGreyColor, font = {}, fontSize } = normal;
     const theThemeProps = deepMerge(
       this.props.getPartOfThemeProps('Input', {
-        props: { validateType, validateStatus, prefix, size, placeHolderColor: color },
+        props: {
+          validateType,
+          validateStatus,
+          prefix,
+          size,
+          placeHolderColor: color,
+          placeHolderFont: font,
+          placeHolderFontSize: fontSize,
+        },
       }),
       this.props.getPartOfThemeProps('Container')
     );
