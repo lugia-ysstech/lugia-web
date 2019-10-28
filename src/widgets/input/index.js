@@ -585,7 +585,7 @@ class TextBox extends Component<InputProps, InputState> {
       value = formatter(value);
     }
 
-    const { themeConfig = {} } = this.props.getPartOfThemeProps('Placeholder');
+    const { themeConfig = { normal: {} } } = this.props.getPartOfThemeProps('Placeholder');
     const { normal = {} } = themeConfig;
     const { color = lightGreyColor, font = {}, fontSize } = normal;
     const theThemeProps = deepMerge(
