@@ -100,22 +100,22 @@ class LabelDemo extends React.Component<PropsType, StateType> {
       <div>
         <Theme config={config}>
           <LabelBox>主题配置 text: showPrefix : *</LabelBox>
-          <Label text={'是立刻搭街坊螺丝扣'} showPrefix prefix={'*'} />
+          <Label text={'这是一段文本'} showPrefix prefix={'*'} />
 
           <LabelBox>主题配置 text:</LabelBox>
-          <Label text={'是立刻搭街坊螺丝扣'} />
+          <Label text={'这是一段很长很长的文本'} />
           <LabelBox>主题配置 children:</LabelBox>
-          <Label>深刻的很健康</Label>
+          <Label>这是一段很长很长的文本</Label>
         </Theme>
         <Theme config={configWidth}>
           <LabelBox>主题配置 click事件:</LabelBox>
-          <Label text={'是立刻搭街坊螺丝扣'} onClick={this.onClick} />
+          <Label text={'这是一段文本'} onClick={this.onClick} />
         </Theme>
 
         <LabelBox>默认文本 text:</LabelBox>
-        <Label text={'的身份回到'} />
+        <Label text={'这是一段文本'} />
         <LabelBox>默认文本 children:</LabelBox>
-        <Label>科幻电视剧</Label>
+        <Label>这是一段文本</Label>
         <LabelBox>默认文本 无参数:</LabelBox>
         <Label />
       </div>
