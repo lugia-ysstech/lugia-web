@@ -76,6 +76,17 @@ const PaginationMoreItem = CSSComponent({
   `,
   option: { hover: true, active: true },
 });
+const PaginationBaseText = CSSComponent({
+  tag: 'span',
+  className: 'PaginationMoreItem',
+  normal: {
+    selectNames: [['color'], ['font'], ['fontSize'], ['cursor']],
+    defaultTheme: {
+      color: blackColor,
+      fontSize: 14,
+    },
+  },
+});
 const PaginationListItem = CSSComponent({
   extend: PaginationMoreItem,
   className: 'PaginationListItem',
@@ -112,18 +123,24 @@ const PaginationListItemText = CSSComponent({
     selectNames: [['fontSize'], ['font'], ['color'], ['cursor'], ['opacity']],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
-      const { isSelected } = propsConfig;
+      const { isSelected, noArrow } = propsConfig;
       if (isSelected) {
         return {
           color: themeColor,
         };
       }
+      if (noArrow) {
+        return {
+          color: lightGreyColor,
+        };
+      }
       return {
-        color: lightGreyColor,
+        color: darkGreyColor,
       };
     },
     defaultTheme: {
-      color: lightGreyColor,
+      fontSize: 14,
+      color: darkGreyColor,
       width: 36,
       height: 36,
     },
@@ -239,17 +256,17 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     if (totalPages <= 5 + pageBufferSize * 2) {
       for (let i = 1; i <= totalPages; i++) {
         const isSelected = current === i;
-        pageList.push(this.getItems(i, isSelected, i));
+        pageList.push(this.getItems(i, isSelected, i, false));
       }
     } else {
-      const firstPage = this.getItems(0, false, 1);
-      const lastPage = this.getItems(totalPages, false, totalPages);
+      const firstPage = this.getItems(0, false, 1, true);
+      const lastPage = this.getItems(totalPages, false, totalPages, true);
       const left = this.getLeftPage(totalPages);
       const right = this.getRightPage(totalPages);
 
       for (let i = left; i <= right; i++) {
         const isSelected = current === i;
-        pageList.push(this.getItems(i, isSelected, i));
+        pageList.push(this.getItems(i, isSelected, i, false));
       }
       pageList = this.getPrePage(current, pageBufferSize, pageList);
       pageList = this.getNextPage(totalPages, current, pageBufferSize, pageList);
@@ -280,7 +297,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     return left;
   }
 
-  getItems(index: number, isSelected: boolean, title: number) {
+  getItems(index: number, isSelected: boolean, title: number, noArrow: boolean) {
     const { createEventChannel, getPartOfThemeProps } = this.props;
     const channel = createEventChannel(['active', 'hover']);
     return (
@@ -299,6 +316,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
           themeProps={getPartOfThemeProps('PaginationInnerText', {
             props: {
               isSelected,
+              noArrow,
             },
           })}
         >
@@ -460,9 +478,13 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     );
     return (
       <QuickJumperContainer>
-        <span>跳至</span>
+        <PaginationBaseText themeProps={this.props.getPartOfThemeProps('PaginationText')}>
+          跳至
+        </PaginationBaseText>
         <Input theme={InnerInputTheme} viewClass={viewClass} onEnter={this.enterPage} />
-        <span>页</span>
+        <PaginationBaseText themeProps={this.props.getPartOfThemeProps('PaginationText')}>
+          页
+        </PaginationBaseText>
       </QuickJumperContainer>
     );
   }
@@ -659,7 +681,9 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
             viewClass={viewClass}
             onChange={this.inputChange}
           />
-          <span>/ {totalPage}</span>
+          <PaginationBaseText themeProps={this.props.getPartOfThemeProps('PaginationText')}>
+            / {totalPage}
+          </PaginationBaseText>
           {this.getArrowIcon('next')}
         </PaginationListContainer>
       );
