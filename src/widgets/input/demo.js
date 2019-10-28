@@ -136,7 +136,9 @@ const InputDemo = () => {
     [Widget.Input]: {
       Container: { normal: { width: 500, height: 40 } },
       Input: { normal: { width: 300, height: 40 }, disabled: { background: { color: 'gray' } } },
-      Placeholder: { normal: { color: 'green' } },
+      Placeholder: {
+        normal: { font: { color: 'red', weight: 900, size: 16 }, color: 'blue', fontSize: 20 },
+      },
       InputSuffix: { normal: { color: 'red', fontSize: 12 } },
       InputPrefix: { normal: { color: 'pink', fontSize: 16 } },
       ClearButton: { normal: { color: 'red', fontSize: 14 } },
