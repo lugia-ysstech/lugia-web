@@ -68,6 +68,11 @@
     "onRow": {
       "type": "Function(record, index)",
       "desc": "设置行属性"
+    },
+    "tableStyle": {
+      "type": "tableStyleType",
+      "desc": "表格标题",
+      "defaultValue": "bordered"
     }
   },
   "event": {
@@ -96,6 +101,9 @@
         }
       ]
     }
+  },
+  "type": {
+    "tableStyleType": ["zebraStripe", "linear", "bordered"]
   },
   "childrenWidget": ["column"],
   "category": ["数据展示"]
