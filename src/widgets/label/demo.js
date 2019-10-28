@@ -53,6 +53,15 @@ class LabelDemo extends React.Component<PropsType, StateType> {
             cursor: 'pointer',
           },
         },
+        LabelPrefix: {
+          normal: {
+            color: 'red',
+            lineHeight: 70,
+            margin: {
+              right: 10,
+            },
+          },
+        },
       },
     };
 
@@ -90,6 +99,9 @@ class LabelDemo extends React.Component<PropsType, StateType> {
     return (
       <div>
         <Theme config={config}>
+          <LabelBox>主题配置 text: showPrefix : *</LabelBox>
+          <Label text={'是立刻搭街坊螺丝扣'} showPrefix prefix={'*'} />
+
           <LabelBox>主题配置 text:</LabelBox>
           <Label text={'是立刻搭街坊螺丝扣'} />
           <LabelBox>主题配置 children:</LabelBox>
