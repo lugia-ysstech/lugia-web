@@ -123,6 +123,9 @@ const Title = CSSComponent({
       fontSize: 14,
     },
   },
+  css: css`
+    white-space: nowrap;
+  `,
 });
 
 const Description = CSSComponent({
@@ -159,6 +162,9 @@ const Description = CSSComponent({
       fontSize: 12,
     },
   },
+  css: css`
+    white-space: nowrap;
+  `,
 });
 const SimpleLineContainer = CSSComponent({
   tag: 'div',
