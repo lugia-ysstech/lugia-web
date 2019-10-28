@@ -352,7 +352,7 @@ export class RadioGroupDemo extends React.Component<any, any> {
     };
     const view = {
       [Widget.RadioGroup]: {
-        Group: {
+        Container: {
           normal: {
             width: 500,
             height: 200,

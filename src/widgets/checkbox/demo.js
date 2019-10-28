@@ -280,7 +280,7 @@ export const CheckboxGroupDemo = class extends React.Component<any, any> {
   render() {
     const checkboxView = {
       [Widget.CheckboxGroup]: {
-        Group: {
+        Container: {
           normal: {
             width: 400,
             height: 500,
@@ -425,7 +425,7 @@ export const CheckboxGroupDemo = class extends React.Component<any, any> {
     };
     const checkbuttonView = {
       [Widget.CheckboxGroup]: {
-        Group: {},
+        Container: {},
         CheckButton: {
           CheckButtonChecked: {
             normal: {
@@ -568,6 +568,7 @@ export const CheckboxGroupDemo = class extends React.Component<any, any> {
           </CheckBoxGroup>
         </Wrapper>
         <Wrapper>
+          <p>themes</p>
           <Theme config={checkboxView}>
             <CheckBoxGroup
               onChange={handleChange}
