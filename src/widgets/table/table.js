@@ -23,7 +23,6 @@ export default ThemeProvider(
         data,
         showHeader = true,
         tableStyle = 'bordered',
-        getTheme,
         getPartOfThemeConfig,
       } = this.props;
       const containerTheme = getPartOfThemeConfig('Container') || {};
