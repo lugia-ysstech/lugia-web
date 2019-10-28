@@ -224,7 +224,7 @@
     "Placeholder": {
       "name": "输入框提示信息文字",
       "desc": "输入框提示信息文字",
-      "normal": [["color"]]
+      "normal": [["color"],["fontSize"], ["font"]]
     },
     "InputSuffix": {
       "name": "后缀图标",
