@@ -188,6 +188,9 @@ const PaginationListContainer = CSSComponent({
 });
 
 function computePage(pageSize: number, sPageSize: number, total: number) {
+  if (!total) {
+    return 1;
+  }
   const thePageSize = pageSize ? pageSize : sPageSize;
   return Math.floor((total - 1) / thePageSize) + 1;
 }
