@@ -26,8 +26,25 @@ const data = (function(t) {
   return res;
 })(10);
 
+const newView = {
+  [Widget.Select]: {
+    Container: {
+      normal: {
+        width: 600,
+        height: 80,
+      },
+    },
+  },
+};
+
 const config = {
   [Widget.Select]: {
+    Container: {
+      normal: {
+        width: 600,
+        height: 300,
+      },
+    },
     Menu: {
       MenuWrap: {
         normal: {
@@ -162,7 +179,7 @@ const config = {
     InputTag: {
       InputTagWrap: {
         normal: {
-          width: 340,
+          width: 600,
           height: 60,
           color: '#4d63ff',
           font: { size: 20 },
@@ -337,7 +354,7 @@ export default class Demo extends React.Component {
         />
 
         <H2>single search</H2>
-        <Select canSearch displayField={'label'} data={data} />
+        <Select canSearch canClear={false} displayField={'label'} data={data} />
 
         <Select canSearch displayField={'label'} disabled data={data} />
 
@@ -349,6 +366,7 @@ export default class Demo extends React.Component {
 
         <H2>非受限 mutliple DefaultValue</H2>
         <Select
+          theme={newView}
           mutliple
           defaultValue={['key-0', 'key-1']}
           defaultDisplayValue={['txt0', 'txt1']}
