@@ -14,8 +14,21 @@ import './style/lugia-table.css';
 import type { TableProps, TableState } from '../css/table';
 import { px2remcss } from '../css/units';
 
+const TableHeaderHeight = 54;
+
 export default ThemeProvider(
   class extends React.Component<TableProps, TableState> {
+    getTableBodyHeight = (themeHeight: string | number) => {
+      const { showHeader = true } = this.props;
+      if (!themeHeight) {
+        return {};
+      }
+      const height = parseInt(themeHeight);
+      return {
+        y: showHeader ? height - TableHeaderHeight : height,
+      };
+    };
+
     render() {
       const {
         children,
@@ -28,6 +41,8 @@ export default ThemeProvider(
       const containerTheme = getPartOfThemeConfig('Container') || {};
       const { normal: normalTheme = {} } = containerTheme;
       const themeWidth = normalTheme.width;
+      const themeHeight = normalTheme.height;
+      const scrollObj = this.getTableBodyHeight(themeHeight);
       const styles = {};
       if (themeWidth) {
         if (typeof themeWidth === 'number') {
@@ -45,6 +60,7 @@ export default ThemeProvider(
               showHeader={showHeader}
               rowClassName={(record, i) => `row-${i}`}
               className="table"
+              scroll={{ ...scrollObj }}
             >
               {children}
             </RcTable>
@@ -53,7 +69,13 @@ export default ThemeProvider(
       }
       return (
         <div className={this.getClass(tableStyle)} style={{ ...styles }}>
-          <RcTable {...this.props} columns={columns} data={data} showHeader={showHeader} />
+          <RcTable
+            {...this.props}
+            columns={columns}
+            data={data}
+            showHeader={showHeader}
+            scroll={{ ...scrollObj }}
+          />
         </div>
       );
     }

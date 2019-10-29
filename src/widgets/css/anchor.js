@@ -49,10 +49,10 @@ export const Anchor = styled.div`
 const getTop = (props: CSSProps) => {
   const { index, slideType } = props;
   if ((index || index === 0) && index > -1) {
-    const res = index * 24;
+    const res = index * 26;
     let top = res;
     if (slideType === 'circle') {
-      top += 8;
+      top += 9;
     }
     return `top: ${em(top)};background: ${themeColor};`;
   }

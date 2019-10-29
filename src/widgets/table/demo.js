@@ -85,6 +85,7 @@ export default class ModalDemo extends React.Component<any, any> {
         Container: {
           normal: {
             width: 500,
+            height: 200,
           },
         },
       },

@@ -386,10 +386,11 @@ export const ButtonOut = CSSComponent({
     },
   },
   css: css`
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 0;
     box-sizing: border-box;
-    text-align: center;
     touch-action: manipulation;
     cursor: pointer;
     white-space: nowrap;
