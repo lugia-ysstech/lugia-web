@@ -308,6 +308,22 @@ class Select extends React.Component<SelectProps, SelectState> {
     }
   };
 
+  getContainerWidth = () => {
+    const { viewClass, theme } = this.getInputtagTheme();
+    const { InputTagWrap } = theme[viewClass];
+    const { normal } = InputTagWrap;
+    const { width } = normal;
+    return width;
+  };
+
+  getMenuWidth = () => {
+    const { viewClass, theme } = this.getMenuTheme();
+    const { MenuWrap } = theme[viewClass];
+    const { normal } = MenuWrap;
+    const { width } = normal;
+    return width;
+  };
+
   fetchRenderItems() {
     const { props, state } = this;
     const {
@@ -329,15 +345,11 @@ class Select extends React.Component<SelectProps, SelectState> {
       this.menuCmp = cmp;
     };
 
-    const { InputTagWrap = {} } = this.props.getPartOfThemeConfig('InputTag');
-    const { normal = {} } = InputTagWrap;
-    const { width = 250 } = normal;
-
     const menu = [
       data && data.length !== 0 ? (
         <QueryInput
           query={query}
-          width={width}
+          width={this.getMenuWidth()}
           onQueryInputChange={this.onQueryInputChange}
           onQueryInputKeyDown={this.onQueryInputKeyDown}
           refreshValue={this.refreshValue}
@@ -359,6 +371,7 @@ class Select extends React.Component<SelectProps, SelectState> {
     const getInputTag: Function = (cmp: Object) => {
       this.inputTag = cmp;
     };
+
     return (
       <SelectContainer>
         <Trigger
@@ -373,7 +386,7 @@ class Select extends React.Component<SelectProps, SelectState> {
           onPopupVisibleChange={this.onMenuPopupVisibleChange}
         >
           <InputTag
-            {...this.props.getPartOfThemeHocProps('InputTag')}
+            {...this.getInputtagTheme()}
             ref={getInputTag}
             prefix={prefix}
             key="inputtag"
@@ -618,13 +631,6 @@ class Select extends React.Component<SelectProps, SelectState> {
     this.menuVisible = visible;
   };
 
-  getInputTag() {
-    if (!this.inputTag) {
-      return null;
-    }
-    return this.inputTag.getThemeTarget();
-  }
-
   onInputTagPopupVisibleChange = (visible: boolean) => {
     if (visible) {
       this.setSelectMenuPopupVisible(false);
@@ -685,11 +691,23 @@ class Select extends React.Component<SelectProps, SelectState> {
     return newTheme;
   };
 
-  getMenuTheme = () => {
+  getInputtagTheme = () => {
     const { getPartOfThemeConfig } = this.props;
-    const { InputTagWrap = {} } = getPartOfThemeConfig('InputTag');
-    const { normal = {} } = InputTagWrap;
-    const { width = 250 } = normal;
+    const { normal = {} } = getPartOfThemeConfig('Container');
+    const { width = 250, height = 32 } = normal;
+    const defaultInputTagTheme = {
+      InputTagWrap: {
+        normal: {
+          width,
+          height,
+        },
+      },
+    };
+    return this.mergeTheme('InputTag', defaultInputTagTheme);
+  };
+
+  getMenuTheme = () => {
+    const width = this.getContainerWidth();
     const defaultMenuTheme = {
       MenuWrap: {
         normal: {
