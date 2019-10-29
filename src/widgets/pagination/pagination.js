@@ -17,6 +17,7 @@ import { deepMerge } from '@lugia/object-utils';
 import colorsFunc from '../css/stateColor';
 import { units } from '@lugia/css';
 import Widget from '../consts';
+import { ObjectUtils } from '@lugia/type-utils';
 const { px2remcss } = units;
 
 export const {
@@ -188,7 +189,7 @@ const PaginationListContainer = CSSComponent({
 });
 
 function computePage(pageSize: number, sPageSize: number, total: number) {
-  if (!total) {
+  if (!total || !ObjectUtils.isNumber(total)) {
     return 1;
   }
   const thePageSize = pageSize ? pageSize : sPageSize;
@@ -617,7 +618,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     );
   }
 
-  getArrowIcon(type: MorePageType, clickable: boolean) {
+  getArrowIcon(type: MorePageType, clickable?: boolean) {
     const preIcon = 'lugia-icon-direction_Left';
     const nextIcon = 'lugia-icon-direction_right';
     const iconClass = type === 'pre' ? preIcon : nextIcon;
