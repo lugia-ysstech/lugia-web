@@ -20,12 +20,12 @@ export default ThemeProvider(
   class extends React.Component<TableProps, TableState> {
     getTableBodyHeight = (themeHeight: string | number) => {
       const { showHeader = true } = this.props;
-      if (!showHeader || !themeHeight) {
+      if (!themeHeight) {
         return {};
       }
       const height = parseInt(themeHeight);
       return {
-        y: height - TableHeaderHeight,
+        y: showHeader ? height - TableHeaderHeight : height,
       };
     };
 
