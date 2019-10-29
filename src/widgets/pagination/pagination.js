@@ -26,6 +26,7 @@ export const {
   blackColor,
   lightGreyColor,
   defaultColor,
+  superLightColor,
 } = colorsFunc();
 
 const PaginationList = StaticComponent({
@@ -94,11 +95,17 @@ const PaginationListItem = CSSComponent({
     selectNames: [['width'], ['height'], ['cursor'], ['border'], ['borderRadius']],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
-      const { isSelected } = propsConfig;
-      if (isSelected)
+      const { isSelected, clickable = true } = propsConfig;
+      if (isSelected) {
         return {
           border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
         };
+      }
+      if (!clickable) {
+        return {
+          border: getBorder({ color: superLightColor, width: 1, style: 'solid' }),
+        };
+      }
     },
     defaultTheme: {
       border: getBorder({ color: lightGreyColor, width: 1, style: 'solid' }),
@@ -117,7 +124,7 @@ const PaginationListItem = CSSComponent({
       const { clickable = true } = propsConfig;
       if (!clickable)
         return {
-          border: getBorder({ color: lightGreyColor, width: 1, style: 'solid' }),
+          border: getBorder({ color: superLightColor, width: 1, style: 'solid' }),
         };
     },
   },
@@ -615,8 +622,8 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     const { theme: IconThemeProps, viewClass: IconViewClass } = this.props.getPartOfThemeHocProps(
       'ChangePageIcon'
     );
-    const iconColor = clickable ? darkGreyColor : lightGreyColor;
-    const iconHoverColor = clickable ? themeColor : lightGreyColor;
+    const iconColor = clickable ? darkGreyColor : superLightColor;
+    const iconHoverColor = clickable ? themeColor : superLightColor;
     const iconCursor = clickable ? 'pointer' : 'not-allowed';
 
     const iconTheme = deepMerge(
