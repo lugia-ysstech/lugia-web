@@ -37,6 +37,7 @@ import Transfer from './transfer';
 import Tree from './tree';
 import TreeSelect from './tree-select';
 import Upload from './upload';
+
 export default [
   {
     meta: {
@@ -881,7 +882,11 @@ export default [
           desc: '生成面包屑数据对象的数组，path是跳转路径，title是面包屑展示文本',
           meta: [
             { key: 'path', title: '跳转路径', type: 'string' },
-            { key: 'title', title: '展示文本', type: 'string' },
+            {
+              key: 'title',
+              title: '展示文本',
+              type: 'string',
+            },
           ],
         },
         params: { type: 'Object', desc: '可配置的参数' },
@@ -2603,7 +2608,11 @@ export default [
           desc: '触发指示器切换或点击切换按钮时触发',
           args: [
             { name: 'newValue', desc: '切换到下一次面板的索引值', type: 'number' },
-            { name: 'oldValue', desc: '本次的索引值', type: 'number' },
+            {
+              name: 'oldValue',
+              desc: '本次的索引值',
+              type: 'number',
+            },
           ],
         },
       },
@@ -2687,7 +2696,11 @@ export default [
           desc: '级联选择的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            { key: 'text', title: '文本值', type: 'string' },
+            {
+              key: 'text',
+              title: '文本值',
+              type: 'string',
+            },
           ],
         },
         separator: { type: 'string', desc: '自定义级联数据分隔符', defaultValue: '|' },
@@ -2990,7 +3003,11 @@ export default [
           desc: 'Checkbox改变时回调',
           args: [
             { name: 'event', desc: '关闭时的DOM事件', type: 'Object' },
-            { name: 'checked', desc: '当前是否选中', type: 'boolean' },
+            {
+              name: 'checked',
+              desc: '当前是否选中',
+              type: 'boolean',
+            },
           ],
         },
       },
@@ -3005,63 +3022,89 @@ export default [
       category: ['数据录入'],
       theme: {
         Container: {
-          name: 'Checkbox整体配置',
-          desc: 'Checkbox整体配置',
+          name: '整体样式',
+          desc: '整体样式',
           normal: [['opacity'], ['margin'], ['padding'], ['width'], ['height']],
-          hover: [['opacity']],
-          disabled: [['opacity']],
         },
         CheckboxText: {
-          name: 'Checkbox文字配置',
-          desc: 'Checkbox文字配置',
+          name: '文字样式',
+          desc: '文字样式',
           normal: [['color'], ['font']],
           hover: [['color'], ['font']],
           disabled: [['color'], ['font']],
         },
-        CheckboxEdgeChecked: {
-          name: 'Checkbox选中后边框配置',
-          desc: 'Checkbox选中后边框配置样式',
-          normal: [['background'], ['borderRadius'], ['border']],
-          hover: [['background'], ['borderRadius'], ['border']],
-          disabled: [['background'], ['borderRadius'], ['border']],
-        },
         CheckboxEdgeUnChecked: {
-          name: 'Checkbox未选中边框配置',
-          desc: 'Checkbox未选中边框配置样式',
-          normal: [['background'], ['borderRadius'], ['border']],
-          hover: [['background'], ['borderRadius'], ['border']],
-          disabled: [['background'], ['borderRadius'], ['border']],
+          name: '未选中外框样式',
+          desc: '未选中外框样式',
+          normal: [
+            ['background'],
+            ['borderRadius'],
+            ['border'],
+            ['boxShadow'],
+            ['width'],
+            ['height'],
+          ],
+          hover: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
+          disabled: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
+        },
+        CheckboxEdgeChecked: {
+          name: '选中外框样式',
+          desc: '选中外框样式',
+          normal: [
+            ['background'],
+            ['borderRadius'],
+            ['border'],
+            ['boxShadow'],
+            ['width'],
+            ['height'],
+          ],
+          hover: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
+          disabled: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
         },
         CheckboxEdgeIndeterminate: {
-          name: 'Checkbox半选边框配置',
-          desc: 'Checkbox半选状态边框配置样式',
-          normal: [['background'], ['borderRadius'], ['border']],
-          hover: [['background'], ['borderRadius'], ['border']],
-          disabled: [['background'], ['borderRadius'], ['border']],
+          name: '半选外框样式',
+          desc: '半选状态外框样式',
+          normal: [
+            ['background'],
+            ['borderRadius'],
+            ['border'],
+            ['boxShadow'],
+            ['width'],
+            ['height'],
+          ],
+          hover: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
+          disabled: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
         },
         CheckboxEdgeCancel: {
-          name: 'Checkbox取消项边框配置',
-          desc: 'Checkbox取消状态边框配置样式',
-          normal: [['background'], ['borderRadius'], ['border']],
+          name: '取消状态外框样式',
+          desc: '取消状态外框样式',
+          normal: [
+            ['background'],
+            ['borderRadius'],
+            ['border'],
+            ['boxShadow'],
+            ['width'],
+            ['height'],
+          ],
         },
         CheckboxInnerChecked: {
-          name: 'Checkbox选中样式配置',
-          desc: 'Checkbox选中样式配置',
-          normal: [['color']],
-          hover: [['color']],
-          disabled: [['color']],
+          name: '选中内框样式',
+          desc: '选中内框样式',
+          normal: [['color'], ['width'], ['height']],
+          hover: [['color'], ['width'], ['height']],
+          disabled: [['color'], ['width'], ['height']],
         },
         CheckboxInnerIndeterminate: {
-          name: 'Checkbox半选样式配置',
-          desc: 'Checkbox半选状态样式配置',
-          normal: [['color']],
-          hover: [['color']],
-          disabled: [['color']],
+          name: '半选内框样式',
+          desc: '半选内框样式',
+          normal: [['color'], ['width'], ['height']],
+          hover: [['color'], ['width'], ['height']],
+          disabled: [['color'], ['width'], ['height']],
         },
         CheckboxInnerCancel: {
-          name: 'Checkbox取消状态样式配置',
-          desc: 'Checkbox取消状态样式配置',
-          normal: [['color']],
+          name: '取消状态内框样式',
+          desc: '取消状态内框样式',
+          normal: [['color'], ['width'], ['height']],
         },
       },
     },
@@ -3084,7 +3127,10 @@ export default [
           defaultValue: [
             { text: '选项1', value: '1' },
             { text: '选项2', value: '2' },
-            { text: '选项3', value: '3' },
+            {
+              text: '选项3',
+              value: '3',
+            },
           ],
         },
         displayField: { type: 'string', desc: '指定CheckboxGroup展示字段值' },
@@ -3144,8 +3190,8 @@ export default [
           props: { childType: 'button' },
           theme: {
             Container: {
-              name: 'Checkbox组整体配置',
-              desc: 'Checkbox组整体配置',
+              name: '多选框组整体样式',
+              desc: '多选框组整体样式',
               normal: [
                 ['opacity'],
                 ['border'],
@@ -3158,12 +3204,12 @@ export default [
               ],
             },
             CheckButton: {
-              name: '配置按钮checkbox样式',
-              desc: '配置按钮Radio样式',
+              name: '按钮多选框样式',
+              desc: '按钮多选框样式',
               theme: {
-                CheckButtonChecked: {
-                  name: '多选框按钮状选中配置',
-                  desc: '多选框按钮状选中配置',
+                CheckButtonUnChecked: {
+                  name: '未选中样式',
+                  desc: '未选中样式',
                   normal: {
                     selectNames: [
                       ['opacity'],
@@ -3209,9 +3255,9 @@ export default [
                     nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
                   },
                 },
-                CheckButtonUnChecked: {
-                  name: '多选框按钮状未选中配置',
-                  desc: '多选框按钮状未选中配置',
+                CheckButtonChecked: {
+                  name: '选中样式',
+                  desc: '选中样式',
                   normal: {
                     selectNames: [
                       ['opacity'],
@@ -3258,8 +3304,8 @@ export default [
                   },
                 },
                 CheckButtonCancel: {
-                  name: '多选框按钮状取消项配置',
-                  desc: '多选框按钮状取消状态配置',
+                  name: '取消状态样式',
+                  desc: '取消状态样式',
                   normal: [
                     ['opacity'],
                     ['border'],
@@ -3281,8 +3327,8 @@ export default [
       needExport: true,
       theme: {
         Container: {
-          name: 'Checkbox组整体配置',
-          desc: 'Checkbox组整体配置',
+          name: '多选框组整体配置',
+          desc: '多选框组整体配置',
           normal: [
             ['opacity'],
             ['border'],
@@ -3298,63 +3344,91 @@ export default [
           name: '单个多选框配置',
           theme: {
             Container: {
-              name: 'Checkbox整体配置',
-              desc: 'Checkbox整体配置',
+              name: '整体样式',
+              desc: '整体样式',
               normal: [['opacity'], ['margin'], ['padding'], ['width'], ['height']],
               hover: [['opacity']],
               disabled: [['opacity']],
             },
             CheckboxText: {
-              name: 'Checkbox文字配置',
-              desc: 'Checkbox文字配置',
+              name: '文字样式',
+              desc: '文字样式',
               normal: [['color'], ['font']],
               hover: [['color'], ['font']],
               disabled: [['color'], ['font']],
             },
-            CheckboxEdgeChecked: {
-              name: 'Checkbox选中后边框配置',
-              desc: 'Checkbox选中后边框配置样式',
-              normal: [['background'], ['borderRadius'], ['border']],
-              hover: [['background'], ['borderRadius'], ['border']],
-              disabled: [['background'], ['borderRadius'], ['border']],
-            },
             CheckboxEdgeUnChecked: {
-              name: 'Checkbox未选中边框配置',
-              desc: 'Checkbox未选中边框配置样式',
-              normal: [['background'], ['borderRadius'], ['border']],
-              hover: [['background'], ['borderRadius'], ['border']],
-              disabled: [['background'], ['borderRadius'], ['border']],
+              name: '未选中外框样式',
+              desc: '未选中外框样式',
+              normal: [
+                ['background'],
+                ['borderRadius'],
+                ['border'],
+                ['boxShadow'],
+                ['width'],
+                ['height'],
+              ],
+              hover: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
+              disabled: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
+            },
+            CheckboxEdgeChecked: {
+              name: '选中外框样式',
+              desc: '选中外框样式',
+              normal: [
+                ['background'],
+                ['borderRadius'],
+                ['border'],
+                ['boxShadow'],
+                ['width'],
+                ['height'],
+              ],
+              hover: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
+              disabled: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
             },
             CheckboxEdgeIndeterminate: {
-              name: 'Checkbox半选边框配置',
-              desc: 'Checkbox半选状态边框配置样式',
-              normal: [['background'], ['borderRadius'], ['border']],
-              hover: [['background'], ['borderRadius'], ['border']],
-              disabled: [['background'], ['borderRadius'], ['border']],
+              name: '半选外框样式',
+              desc: '半选状态外框样式',
+              normal: [
+                ['background'],
+                ['borderRadius'],
+                ['border'],
+                ['boxShadow'],
+                ['width'],
+                ['height'],
+              ],
+              hover: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
+              disabled: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
             },
             CheckboxEdgeCancel: {
-              name: 'Checkbox取消项边框配置',
-              desc: 'Checkbox取消状态边框配置样式',
-              normal: [['background'], ['borderRadius'], ['border']],
+              name: '取消状态外框样式',
+              desc: '取消状态外框样式',
+              normal: [
+                ['background'],
+                ['borderRadius'],
+                ['border'],
+                ['boxShadow'],
+                ['width'],
+                ['height'],
+              ],
             },
             CheckboxInnerChecked: {
-              name: 'Checkbox选中样式配置',
-              desc: 'Checkbox选中样式配置',
-              normal: [['color']],
-              hover: [['color']],
-              disabled: [['color']],
+              name: '选中内框样式',
+              desc: '选中内框样式',
+              normal: [['color'], ['width'], ['height']],
+              hover: [['color'], ['width'], ['height']],
+              disabled: [['color'], ['width'], ['height']],
             },
             CheckboxInnerIndeterminate: {
-              name: 'Checkbox半选样式配置',
-              desc: 'Checkbox半选状态样式配置',
-              normal: [['color']],
-              hover: [['color']],
-              disabled: [['color']],
+              name: '半选内框样式',
+              desc: '半选内框样式',
+              normal: [['color'], ['width'], ['height']],
+              hover: [['color'], ['width'], ['height']],
+              disabled: [['color'], ['width'], ['height']],
             },
             CheckboxInnerCancel: {
-              name: 'Checkbox取消状态样式配置',
-              desc: 'Checkbox取消状态样式配置',
-              normal: [['color']],
+              name: '取消状态内框样式',
+              desc: '取消状态内框样式',
+              normal: [['color'], ['width'], ['height']],
             },
           },
         },
@@ -3997,15 +4071,31 @@ export default [
       title: '文本',
       desc: '文本组件',
       props: { text: { type: 'string', desc: '文本内容', defaultValue: 'Label' } },
-      events: {},
+      events: {
+        onClick: {
+          desc: 'Label被点击时触发的事件',
+          args: [{ name: 'event', desc: '点击的DOM事件', type: 'SyntheticEvent' }],
+        },
+      },
       category: ['数据展示'],
       theme: {
-        LabelConfig: {
+        Container: {
           name: '文本',
           desc: '文本的样式',
-          normal: [['color'], ['font'], ['lineHeight'], ['margin'], ['padding'], ['cursor']],
+          normal: [
+            ['color'],
+            ['font'],
+            ['lineHeight'],
+            ['margin'],
+            ['padding'],
+            ['cursor'],
+            ['width'],
+            ['height'],
+            ['background'],
+            ['textAlign'],
+          ],
           hover: [['color'], ['font'], ['margin'], ['padding'], ['cursor']],
-          disabled: [['cursor']],
+          disabled: [['color'], ['cursor'], ['background']],
         },
       },
       childrenWidget: [],
@@ -4057,7 +4147,11 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            { key: 'text', title: '文本值', type: 'string' },
+            {
+              key: 'text',
+              title: '文本值',
+              type: 'string',
+            },
           ],
           defaultValue: false,
         },
@@ -4106,7 +4200,11 @@ export default [
           desc: '点击列表项时触发',
           args: [
             { name: 'event', desc: '选中DOM的事件对象', type: 'Object' },
-            { name: 'keys', desc: '所有的选中值', type: 'Object' },
+            {
+              name: 'keys',
+              desc: '所有的选中值',
+              type: 'Object',
+            },
             { name: 'item', desc: '当前选中项的数据', type: 'Object' },
           ],
         },
@@ -4114,7 +4212,11 @@ export default [
           desc: '鼠标进入列表项时触发',
           args: [
             { name: 'event', desc: '选中DOM的事件对象', type: 'Object' },
-            { name: 'item', desc: '当前鼠标进入的列表项数据', type: 'Object' },
+            {
+              name: 'item',
+              desc: '当前鼠标进入的列表项数据',
+              type: 'Object',
+            },
           ],
         },
         onExpandPathChange: {
@@ -4645,7 +4747,11 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            { key: 'text', title: '文本值', type: 'string' },
+            {
+              key: 'text',
+              title: '文本值',
+              type: 'string',
+            },
           ],
           defaultValue: false,
         },
@@ -4694,7 +4800,11 @@ export default [
           desc: '点击列表项时触发',
           args: [
             { name: 'event', desc: '选中DOM的事件对象', type: 'Object' },
-            { name: 'keys', desc: '所有的选中值', type: 'Object' },
+            {
+              name: 'keys',
+              desc: '所有的选中值',
+              type: 'Object',
+            },
             { name: 'item', desc: '当前选中项的数据', type: 'Object' },
           ],
         },
@@ -4702,7 +4812,11 @@ export default [
           desc: '鼠标进入列表项时触发',
           args: [
             { name: 'event', desc: '选中DOM的事件对象', type: 'Object' },
-            { name: 'item', desc: '当前鼠标进入的列表项数据', type: 'Object' },
+            {
+              name: 'item',
+              desc: '当前鼠标进入的列表项数据',
+              type: 'Object',
+            },
           ],
         },
         onExpandPathChange: {
@@ -4877,7 +4991,11 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            { key: 'text', title: '文本值', type: 'string' },
+            {
+              key: 'text',
+              title: '文本值',
+              type: 'string',
+            },
           ],
           defaultValue: false,
         },
@@ -4926,7 +5044,11 @@ export default [
           desc: '点击列表项时触发',
           args: [
             { name: 'event', desc: '选中DOM的事件对象', type: 'Object' },
-            { name: 'keys', desc: '所有的选中值', type: 'Object' },
+            {
+              name: 'keys',
+              desc: '所有的选中值',
+              type: 'Object',
+            },
             { name: 'item', desc: '当前选中项的数据', type: 'Object' },
           ],
         },
@@ -4934,7 +5056,11 @@ export default [
           desc: '鼠标进入列表项时触发',
           args: [
             { name: 'event', desc: '选中DOM的事件对象', type: 'Object' },
-            { name: 'item', desc: '当前鼠标进入的列表项数据', type: 'Object' },
+            {
+              name: 'item',
+              desc: '当前鼠标进入的列表项数据',
+              type: 'Object',
+            },
           ],
         },
         onExpandPathChange: {
@@ -5162,6 +5288,11 @@ export default [
       desc: '为页面提供导航功能的菜单',
       props: {
         valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'value' },
+        pathSeparator: {
+          type: 'string',
+          desc: '指定结点数组中path信息的分隔符号',
+          defaultValue: '/',
+        },
         displayField: {
           type: 'string',
           desc: 'data数据的displayValue值的名称',
@@ -5172,7 +5303,11 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            { key: 'text', title: '文本值', type: 'string' },
+            {
+              key: 'text',
+              title: '文本值',
+              type: 'string',
+            },
           ],
         },
         value: { type: 'string | string[] | number | number[]', desc: '指定当前选中的条目' },
@@ -5960,6 +6095,11 @@ export default [
       desc: '水平的导航菜单',
       props: {
         valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'value' },
+        pathSeparator: {
+          type: 'string',
+          desc: '指定结点数组中path信息的分隔符号',
+          defaultValue: '/',
+        },
         displayField: {
           type: 'string',
           desc: 'data数据的displayValue值的名称',
@@ -5970,7 +6110,11 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            { key: 'text', title: '文本值', type: 'string' },
+            {
+              key: 'text',
+              title: '文本值',
+              type: 'string',
+            },
           ],
         },
         value: { type: 'string | string[] | number | number[]', desc: '指定当前选中的条目' },
@@ -6287,6 +6431,11 @@ export default [
       desc: '子菜单从右侧弹开',
       props: {
         valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'value' },
+        pathSeparator: {
+          type: 'string',
+          desc: '指定结点数组中path信息的分隔符号',
+          defaultValue: '/',
+        },
         displayField: {
           type: 'string',
           desc: 'data数据的displayValue值的名称',
@@ -6297,7 +6446,11 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            { key: 'text', title: '文本值', type: 'string' },
+            {
+              key: 'text',
+              title: '文本值',
+              type: 'string',
+            },
           ],
         },
         value: { type: 'string | string[] | number | number[]', desc: '指定当前选中的条目' },
@@ -6556,6 +6709,11 @@ export default [
       desc: '点击菜单收起或展开子菜单,ellipse样式',
       props: {
         valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'value' },
+        pathSeparator: {
+          type: 'string',
+          desc: '指定结点数组中path信息的分隔符号',
+          defaultValue: '/',
+        },
         displayField: {
           type: 'string',
           desc: 'data数据的displayValue值的名称',
@@ -6566,7 +6724,11 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            { key: 'text', title: '文本值', type: 'string' },
+            {
+              key: 'text',
+              title: '文本值',
+              type: 'string',
+            },
           ],
         },
         value: { type: 'string | string[] | number | number[]', desc: '指定当前选中的条目' },
@@ -6923,13 +7085,13 @@ export default [
       props: {
         current: { type: 'number', desc: '当前页数' },
         defaultCurrent: { type: 'number', desc: '默认的当前页数', defaultValue: 1 },
-        total: { type: 'number', desc: '数据总数', defaultValue: 0 },
+        total: { type: 'number', desc: '数据总数', defaultValue: 1 },
         pageSize: { type: 'number', desc: '每页的条数', defaultValue: 10 },
         defaultPageSize: { type: 'number', desc: '默认的每页条数', defaultValue: 10 },
         pageSizeOptions: {
           type: 'string[]',
           desc: '指定每页可以显示多少条',
-          defaultValue: ['10', '20', '30', '40'],
+          defaultValue: ['10', '20', '30', '50'],
         },
         showQuickJumper: { type: 'boolean', desc: '是否可以快速跳转至某页', defaultValue: false },
         showTotal: { type: 'Function(total, range)', desc: '用于显示数据总量和当前数据顺序' },
@@ -6950,14 +7112,22 @@ export default [
           desc: '页码改变的回调，参数是改变后的页码及每页条数',
           args: [
             { name: 'page', desc: '页码改变后的页码', type: 'number' },
-            { name: 'pageSize', desc: '每页条数', type: 'number' },
+            {
+              name: 'pageSize',
+              desc: '每页条数',
+              type: 'number',
+            },
           ],
         },
         onShowSizeChange: {
           desc: 'pageSize 变化的回调',
           args: [
             { name: 'current', desc: '当前页数', type: 'number' },
-            { name: 'size', desc: '每页条数', type: 'number' },
+            {
+              name: 'size',
+              desc: '每页条数',
+              type: 'number',
+            },
           ],
         },
       },
@@ -6967,7 +7137,319 @@ export default [
           title: '简洁分页',
           desc: '简洁分页',
           props: { simple: true },
-          theme: {},
+          theme: {
+            PaginationContainer: {
+              name: '分页外部容器',
+              desc: '配置分页外部容器',
+              normal: [
+                ['width'],
+                ['height'],
+                ['background'],
+                ['cursor'],
+                ['padding'],
+                ['opacity'],
+                ['margin'],
+              ],
+            },
+            SimplePaginationInput: {
+              name: '简洁分页输入框',
+              theme: {
+                Container: {
+                  name: '输入框外部容器',
+                  desc: '输入框外部容器',
+                  normal: [['width'], ['height'], ['margin'], ['padding']],
+                },
+                Input: {
+                  name: '输入框主体内容',
+                  desc: '输入框主体内容',
+                  normal: [
+                    ['width'],
+                    ['height'],
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['background'],
+                    ['border'],
+                    ['borderRadius'],
+                    ['cursor'],
+                    ['opacity'],
+                  ],
+                  hover: [
+                    ['border'],
+                    ['borderRadius'],
+                    ['cursor'],
+                    ['background'],
+                    ['opacity'],
+                    ['boxShadow'],
+                  ],
+                  active: [['boxShadow'], ['border'], ['borderRadius'], ['cursor'], ['background']],
+                  disabled: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['background'],
+                    ['border'],
+                    ['borderRadius'],
+                    ['cursor'],
+                    ['padding'],
+                    ['opacity'],
+                  ],
+                },
+              },
+            },
+            ChangePageIcon: {
+              name: '分页切换页数图标',
+              desc: '配置分页切换页数图标',
+              normal: [['color'], ['fontSize'], ['font']],
+              hover: [],
+              clicked: [],
+              disabled: [],
+            },
+          },
+        },
+      },
+      theme: {
+        PaginationContainer: {
+          name: '分页外部容器',
+          desc: '配置分页外部容器',
+          normal: [
+            ['width'],
+            ['height'],
+            ['background'],
+            ['cursor'],
+            ['padding'],
+            ['opacity'],
+            ['margin'],
+          ],
+        },
+        PaginationListItem: {
+          name: '单个页数外部容器',
+          desc: '配置单个页数外部容器',
+          normal: [
+            ['width'],
+            ['height'],
+            ['cursor'],
+            ['border'],
+            ['borderRadius'],
+            ['opacity'],
+            ['background'],
+            ['boxShadow'],
+            ['lineHeight'],
+          ],
+          hover: [['color'], ['font'], ['fontSize'], ['border'], ['borderRadius']],
+          clicked: [],
+          disabled: [],
+        },
+        PaginationInnerText: {
+          name: '单个页数内部文字',
+          desc: '配置单个页数内部文字',
+          normal: [['fontSize'], ['font'], ['color'], ['cursor'], ['opacity']],
+          hover: [['color'], ['font'], ['fontSize']],
+          clicked: [],
+          disabled: [],
+        },
+        QuickJumpInput: {
+          name: '快速跳转分页输入框',
+          theme: {
+            Container: {
+              name: '输入框外部容器',
+              desc: '输入框外部容器',
+              normal: [['width'], ['height'], ['margin'], ['padding']],
+            },
+            Input: {
+              name: '输入框主体内容',
+              desc: '输入框主体内容',
+              normal: [
+                ['width'],
+                ['height'],
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['background'],
+                ['border'],
+                ['borderRadius'],
+                ['cursor'],
+                ['opacity'],
+              ],
+              hover: [
+                ['border'],
+                ['borderRadius'],
+                ['cursor'],
+                ['background'],
+                ['opacity'],
+                ['boxShadow'],
+              ],
+              active: [['boxShadow'], ['border'], ['borderRadius'], ['cursor'], ['background']],
+              disabled: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['background'],
+                ['border'],
+                ['borderRadius'],
+                ['cursor'],
+                ['padding'],
+                ['opacity'],
+              ],
+            },
+          },
+        },
+        ChangePageIcon: {
+          name: '切换显示每页页数图标',
+          desc: '配置切换显示每页页数图标',
+          normal: [['color'], ['fontSize'], ['font']],
+          hover: [],
+          clicked: [],
+          disabled: [],
+        },
+        MorePageIcon: {
+          name: '更多页数图标',
+          desc: '配置更多页数图标',
+          normal: [['color'], ['fontSize'], ['font']],
+          hover: [],
+          clicked: [],
+          disabled: [],
+        },
+        PaginationPageSizeSelect: {
+          name: '切换每页显示页数选择器',
+          theme: {
+            InputTag: {
+              name: '数据展示框',
+              theme: {
+                InputTagWrap: {
+                  name: '单个显示项外部容器',
+                  desc: '配置展示选中数据的容器',
+                  normal: [
+                    ['width'],
+                    ['height'],
+                    ['margin'],
+                    ['padding'],
+                    ['color'],
+                    ['background'],
+                    ['border'],
+                    ['boxShadow'],
+                    ['borderRadius'],
+                    ['font'],
+                    ['opacity'],
+                  ],
+                  hover: [
+                    ['color'],
+                    ['background'],
+                    ['border'],
+                    ['boxShadow'],
+                    ['borderRadius'],
+                    ['font'],
+                    ['opacity'],
+                  ],
+                  active: [],
+                  disabled: [],
+                },
+                SwitchIcon: {
+                  name: '下拉图标',
+                  desc: '配置下拉或清除按钮的图标样式',
+                  normal: [['color'], ['background'], ['font'], ['margin'], ['opacity']],
+                  hover: [['color'], ['font'], ['opacity']],
+                  active: [],
+                  disabled: [],
+                },
+              },
+            },
+            Menu: {
+              name: '弹开菜单',
+              theme: {
+                MenuWrap: {
+                  name: '菜单外部容器',
+                  desc: '配置菜单外部容器',
+                  normal: [
+                    ['width'],
+                    ['height'],
+                    ['boxShadow'],
+                    ['background'],
+                    ['opacity'],
+                    ['border'],
+                    ['borderRadius'],
+                    ['margin'],
+                    ['padding'],
+                  ],
+                  hover: [['boxShadow'], ['background'], ['opacity'], ['border'], ['borderRadius']],
+                  clicked: [],
+                  disabled: [],
+                },
+                MenuItem: {
+                  name: '菜单项配置',
+                  theme: {
+                    MenuItemWrap: {
+                      name: '单个项的外部容器',
+                      desc: '配置单个项的外部容器',
+                      normal: [
+                        ['height'],
+                        ['background'],
+                        ['border'],
+                        ['borderRadius'],
+                        ['opacity'],
+                        ['color'],
+                        ['padding'],
+                      ],
+                      hover: [
+                        ['background'],
+                        ['border'],
+                        ['borderRadius'],
+                        ['opacity'],
+                        ['color'],
+                        ['font'],
+                      ],
+                      active: [
+                        ['background'],
+                        ['border'],
+                        ['borderRadius'],
+                        ['opacity'],
+                        ['color'],
+                        ['font'],
+                      ],
+                      disabled: [
+                        ['background'],
+                        ['color'],
+                        ['borderRadius'],
+                        ['opacity'],
+                        ['padding'],
+                        ['font'],
+                      ],
+                    },
+                    SelectedMenuItemWrap: {
+                      name: '选中项的外部容器',
+                      desc: '配置选中项的外部容器',
+                      normal: [
+                        ['background'],
+                        ['border'],
+                        ['borderRadius'],
+                        ['opacity'],
+                        ['color'],
+                        ['padding'],
+                        ['font'],
+                      ],
+                      hover: [
+                        ['background'],
+                        ['border'],
+                        ['borderRadius'],
+                        ['opacity'],
+                        ['color'],
+                        ['font'],
+                      ],
+                      active: [
+                        ['background'],
+                        ['border'],
+                        ['borderRadius'],
+                        ['opacity'],
+                        ['color'],
+                        ['font'],
+                      ],
+                      disabled: [],
+                    },
+                  },
+                },
+              },
+            },
+          },
         },
       },
       category: ['导航'],
@@ -6985,13 +7467,13 @@ export default [
       props: {
         current: { type: 'number', desc: '当前页数' },
         defaultCurrent: { type: 'number', desc: '默认的当前页数', defaultValue: 1 },
-        total: { type: 'number', desc: '数据总数', defaultValue: 0 },
+        total: { type: 'number', desc: '数据总数', defaultValue: 1 },
         pageSize: { type: 'number', desc: '每页的条数', defaultValue: 10 },
         defaultPageSize: { type: 'number', desc: '默认的每页条数', defaultValue: 10 },
         pageSizeOptions: {
           type: 'string[]',
           desc: '指定每页可以显示多少条',
-          defaultValue: ['10', '20', '30', '40'],
+          defaultValue: ['10', '20', '30', '50'],
         },
         showQuickJumper: { type: 'boolean', desc: '是否可以快速跳转至某页', defaultValue: false },
         showTotal: { type: 'Function(total, range)', desc: '用于显示数据总量和当前数据顺序' },
@@ -7012,21 +7494,97 @@ export default [
           desc: '页码改变的回调，参数是改变后的页码及每页条数',
           args: [
             { name: 'page', desc: '页码改变后的页码', type: 'number' },
-            { name: 'pageSize', desc: '每页条数', type: 'number' },
+            {
+              name: 'pageSize',
+              desc: '每页条数',
+              type: 'number',
+            },
           ],
         },
         onShowSizeChange: {
           desc: 'pageSize 变化的回调',
           args: [
             { name: 'current', desc: '当前页数', type: 'number' },
-            { name: 'size', desc: '每页条数', type: 'number' },
+            {
+              name: 'size',
+              desc: '每页条数',
+              type: 'number',
+            },
           ],
+        },
+      },
+      theme: {
+        PaginationContainer: {
+          name: '分页外部容器',
+          desc: '配置分页外部容器',
+          normal: [
+            ['width'],
+            ['height'],
+            ['background'],
+            ['cursor'],
+            ['padding'],
+            ['opacity'],
+            ['margin'],
+          ],
+        },
+        SimplePaginationInput: {
+          name: '简洁分页输入框',
+          theme: {
+            Container: {
+              name: '输入框外部容器',
+              desc: '输入框外部容器',
+              normal: [['width'], ['height'], ['margin'], ['padding']],
+            },
+            Input: {
+              name: '输入框主体内容',
+              desc: '输入框主体内容',
+              normal: [
+                ['width'],
+                ['height'],
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['background'],
+                ['border'],
+                ['borderRadius'],
+                ['cursor'],
+                ['opacity'],
+              ],
+              hover: [
+                ['border'],
+                ['borderRadius'],
+                ['cursor'],
+                ['background'],
+                ['opacity'],
+                ['boxShadow'],
+              ],
+              active: [['boxShadow'], ['border'], ['borderRadius'], ['cursor'], ['background']],
+              disabled: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['background'],
+                ['border'],
+                ['borderRadius'],
+                ['cursor'],
+                ['padding'],
+                ['opacity'],
+              ],
+            },
+          },
+        },
+        ChangePageIcon: {
+          name: '分页切换页数图标',
+          desc: '配置分页切换页数图标',
+          normal: [['color'], ['fontSize'], ['font']],
+          hover: [],
+          clicked: [],
+          disabled: [],
         },
       },
       category: ['导航'],
       childrenWidget: [],
       aliasName: 'SimplePagination',
-      theme: {},
     },
     target: Pagination,
     screenshot:
@@ -7351,50 +7909,69 @@ export default [
       category: ['数据录入'],
       theme: {
         Container: {
-          name: 'Radio整体配置',
-          desc: 'Radio整体配置',
+          name: '整体样式',
+          desc: '整体样式',
           normal: [['opacity'], ['margin'], ['padding'], ['width'], ['height']],
-          hover: [['opacity']],
-          disabled: [['opacity']],
         },
         RadioText: {
-          name: 'Radio文字配置',
-          desc: 'Radio文字样式配置',
+          name: '文字样式',
+          desc: '文字样式',
           normal: [['color'], ['font']],
           hover: [['color'], ['font']],
           disabled: [['color'], ['font']],
         },
-        RadioEdgeChecked: {
-          name: 'Radio选中后边框配置',
-          desc: 'Radio选中后边框配置样式',
-          normal: [['background'], ['border'], ['borderRadius'], ['width'], ['height']],
-          hover: [['background'], ['borderRadius'], ['border']],
-          disabled: [['background'], ['borderRadius'], ['border']],
-        },
         RadioEdgeUnChecked: {
-          name: 'Radio未选中边框配置',
-          desc: 'Radio未选中边框配置样式',
-          normal: [['background'], ['border'], ['borderRadius'], ['width'], ['height']],
+          name: '未选中外框样式',
+          desc: '未选中外框样式',
+          normal: [
+            ['background'],
+            ['border'],
+            ['borderRadius'],
+            ['boxShadow'],
+            ['width'],
+            ['height'],
+          ],
           hover: [['background'], ['borderRadius'], ['border']],
           disabled: [['background'], ['borderRadius'], ['border']],
         },
-        RadioEdgeCancel: {
-          name: 'Radio未选中边框配置',
-          desc: 'Radio未选中边框配置样式',
-          normal: [['background'], ['border'], ['borderRadius'], ['width'], ['height']],
+        RadioEdgeChecked: {
+          name: '选中外框样式',
+          desc: '选中外框样式',
+          normal: [
+            ['background'],
+            ['border'],
+            ['borderRadius'],
+            ['boxShadow'],
+            ['width'],
+            ['height'],
+          ],
           hover: [['background'], ['borderRadius'], ['border']],
           disabled: [['background'], ['borderRadius'], ['border']],
         },
         RadioInnerChecked: {
-          name: 'Radio选中样式配置',
-          desc: 'Radio选中配置样式',
+          name: '选中内框样式',
+          desc: '选中内框样式',
           normal: [['background'], ['width'], ['height']],
           hover: [['background']],
           disabled: [['background']],
         },
+        RadioEdgeCancel: {
+          name: '取消状态外框样式',
+          desc: '取消状态外框样式',
+          normal: [
+            ['background'],
+            ['border'],
+            ['borderRadius'],
+            ['boxShadow'],
+            ['width'],
+            ['height'],
+          ],
+          hover: [['background'], ['borderRadius'], ['border']],
+          disabled: [['background'], ['borderRadius'], ['border']],
+        },
         RadioInnerCancel: {
-          name: 'Radio取消状态样式配置',
-          desc: 'Radio取消状态配置样式',
+          name: '取消状态内框样式',
+          desc: '取消状态内框样式',
           normal: [['background'], ['width'], ['height']],
           hover: [['background']],
         },
@@ -7418,7 +7995,10 @@ export default [
           defaultValue: [
             { text: '选项1', value: '1' },
             { text: '选项2', value: '2' },
-            { text: '选项3', value: '3' },
+            {
+              text: '选项3',
+              value: '3',
+            },
           ],
         },
         displayField: { type: 'string', desc: '单选框的 显示字段值', defaultValue: 'text' },
@@ -7461,8 +8041,8 @@ export default [
           props: { childType: 'button' },
           theme: {
             Container: {
-              name: 'Radio组整体配置',
-              desc: 'Radio组整体配置',
+              name: '单选框组整体样式',
+              desc: '单选框组整体样式',
               normal: [
                 ['opacity'],
                 ['border'],
@@ -7475,12 +8055,12 @@ export default [
               ],
             },
             CheckButton: {
-              name: '配置按钮Radio样式',
-              desc: '配置按钮Radio样式',
+              name: '按钮单选框样式',
+              desc: '按钮单选框样式',
               theme: {
-                CheckButtonChecked: {
-                  name: '单选框按钮状选中配置',
-                  desc: '单选框按钮状选中配置',
+                CheckButtonUnChecked: {
+                  name: '未选中样式',
+                  desc: '未选中样式',
                   normal: {
                     selectNames: [
                       ['opacity'],
@@ -7526,9 +8106,9 @@ export default [
                     nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
                   },
                 },
-                CheckButtonUnChecked: {
-                  name: '单选框按钮状未选中配置',
-                  desc: '单选框按钮状未选中配置',
+                CheckButtonChecked: {
+                  name: '选中样式',
+                  desc: '选中样式',
                   normal: {
                     selectNames: [
                       ['opacity'],
@@ -7575,8 +8155,8 @@ export default [
                   },
                 },
                 CheckButtonCancel: {
-                  name: '单选框按钮状取消项配置',
-                  desc: '单选框按钮状取消状态配置',
+                  name: '取消状态样式',
+                  desc: '取消状态样式',
                   normal: [
                     ['opacity'],
                     ['border'],
@@ -7598,8 +8178,8 @@ export default [
       needExport: true,
       theme: {
         Container: {
-          name: 'Radio组整体配置',
-          desc: 'Radio组整体配置',
+          name: '单选框组整体配置',
+          desc: '单选框组整体配置',
           normal: [
             ['opacity'],
             ['border'],
@@ -7612,54 +8192,75 @@ export default [
           ],
         },
         Radio: {
-          name: '配置Radio样式',
-          desc: '配置Radio样式',
+          name: '配置单选框样式',
+          desc: '配置单选框样式',
           theme: {
             Container: {
-              name: 'Radio整体配置',
-              desc: 'Radio整体配置',
+              name: '整体样式',
+              desc: '整体样式',
               normal: [['opacity'], ['margin'], ['padding'], ['width'], ['height']],
               hover: [['opacity']],
               disabled: [['opacity']],
             },
             RadioText: {
-              name: 'Radio文字配置',
-              desc: 'Radio文字样式配置',
+              name: '文字样式',
+              desc: '文字样式',
               normal: [['color'], ['font']],
               hover: [['color'], ['font']],
               disabled: [['color'], ['font']],
             },
-            RadioEdgeChecked: {
-              name: 'Radio选中后边框配置',
-              desc: 'Radio选中后边框配置样式',
-              normal: [['background'], ['border'], ['borderRadius'], ['width'], ['height']],
-              hover: [['background'], ['borderRadius'], ['border']],
-              disabled: [['background'], ['borderRadius'], ['border']],
-            },
             RadioEdgeUnChecked: {
-              name: 'Radio未选中边框配置',
-              desc: 'Radio未选中边框配置样式',
-              normal: [['background'], ['border'], ['borderRadius'], ['width'], ['height']],
+              name: '未选中外框样式',
+              desc: '未选中外框样式',
+              normal: [
+                ['background'],
+                ['border'],
+                ['borderRadius'],
+                ['boxShadow'],
+                ['width'],
+                ['height'],
+              ],
               hover: [['background'], ['borderRadius'], ['border']],
               disabled: [['background'], ['borderRadius'], ['border']],
             },
-            RadioEdgeCancel: {
-              name: 'Radio未选中边框配置',
-              desc: 'Radio未选中边框配置样式',
-              normal: [['background'], ['border'], ['borderRadius'], ['width'], ['height']],
+            RadioEdgeChecked: {
+              name: '选中外框样式',
+              desc: '选中外框样式',
+              normal: [
+                ['background'],
+                ['border'],
+                ['borderRadius'],
+                ['boxShadow'],
+                ['width'],
+                ['height'],
+              ],
               hover: [['background'], ['borderRadius'], ['border']],
               disabled: [['background'], ['borderRadius'], ['border']],
             },
             RadioInnerChecked: {
-              name: 'Radio选中样式配置',
-              desc: 'Radio选中配置样式',
+              name: '选中内框样式',
+              desc: '选中内框样式',
               normal: [['background'], ['width'], ['height']],
               hover: [['background']],
               disabled: [['background']],
             },
+            RadioEdgeCancel: {
+              name: '取消状态外框样式',
+              desc: '取消状态外框样式',
+              normal: [
+                ['background'],
+                ['border'],
+                ['borderRadius'],
+                ['boxShadow'],
+                ['width'],
+                ['height'],
+              ],
+              hover: [['background'], ['borderRadius'], ['border']],
+              disabled: [['background'], ['borderRadius'], ['border']],
+            },
             RadioInnerCancel: {
-              name: 'Radio取消状态样式配置',
-              desc: 'Radio取消状态配置样式',
+              name: '取消状态内框样式',
+              desc: '取消状态内框样式',
               normal: [['background'], ['width'], ['height']],
               hover: [['background']],
             },
@@ -7688,9 +8289,17 @@ export default [
           desc: '自定义图标对象',
           meta: [
             { key: 'default', title: '默认图标名称', type: 'string' },
-            { key: 'primary', title: '选中状态图标名称', type: 'string' },
+            {
+              key: 'primary',
+              title: '选中状态图标名称',
+              type: 'string',
+            },
             { key: 'danger', title: '低分值图标名称', type: 'string' },
-            { key: 'amazed', title: '高分值图标名称', type: 'string' },
+            {
+              key: 'amazed',
+              title: '高分值图标名称',
+              type: 'string',
+            },
             { key: 'half', title: '半星图标名称', type: 'string' },
           ],
           defaultValue: {
@@ -7709,14 +8318,22 @@ export default [
           desc: '点击时触发',
           args: [
             { name: 'event', desc: '点击的DOM事件', type: 'DOM 事件' },
-            { name: 'result', desc: '点击后的所选值', type: 'Object' },
+            {
+              name: 'result',
+              desc: '点击后的所选值',
+              type: 'Object',
+            },
           ],
         },
         onChange: {
           desc: '分值改变时触发',
           args: [
             { name: 'event', desc: '鼠标移动的DOM事件', type: 'DOM 事件' },
-            { name: 'result', desc: '鼠标移动时的所选值', type: 'Object' },
+            {
+              name: 'result',
+              desc: '鼠标移动时的所选值',
+              type: 'Object',
+            },
           ],
         },
       },
@@ -7834,9 +8451,17 @@ export default [
           desc: '自定义图标对象',
           meta: [
             { key: 'default', title: '默认图标名称', type: 'string' },
-            { key: 'primary', title: '选中状态图标名称', type: 'string' },
+            {
+              key: 'primary',
+              title: '选中状态图标名称',
+              type: 'string',
+            },
             { key: 'danger', title: '低分值图标名称', type: 'string' },
-            { key: 'amazed', title: '高分值图标名称', type: 'string' },
+            {
+              key: 'amazed',
+              title: '高分值图标名称',
+              type: 'string',
+            },
             { key: 'half', title: '半星图标名称', type: 'string' },
           ],
           defaultValue: {
@@ -7853,14 +8478,22 @@ export default [
           desc: '点击时触发',
           args: [
             { name: 'event', desc: '点击的DOM事件', type: 'DOM 事件' },
-            { name: 'result', desc: '点击后的所选值', type: 'Object' },
+            {
+              name: 'result',
+              desc: '点击后的所选值',
+              type: 'Object',
+            },
           ],
         },
         onChange: {
           desc: '分值改变时触发',
           args: [
             { name: 'event', desc: '鼠标移动的DOM事件', type: 'DOM 事件' },
-            { name: 'result', desc: '鼠标移动时的所选值', type: 'Object' },
+            {
+              name: 'result',
+              desc: '鼠标移动时的所选值',
+              type: 'Object',
+            },
           ],
         },
       },
@@ -7922,9 +8555,17 @@ export default [
           desc: '自定义图标对象',
           meta: [
             { key: 'default', title: '默认图标名称', type: 'string' },
-            { key: 'primary', title: '选中状态图标名称', type: 'string' },
+            {
+              key: 'primary',
+              title: '选中状态图标名称',
+              type: 'string',
+            },
             { key: 'danger', title: '低分值图标名称', type: 'string' },
-            { key: 'amazed', title: '高分值图标名称', type: 'string' },
+            {
+              key: 'amazed',
+              title: '高分值图标名称',
+              type: 'string',
+            },
             { key: 'half', title: '半星图标名称', type: 'string' },
           ],
           defaultValue: {
@@ -7945,14 +8586,22 @@ export default [
           desc: '点击时触发',
           args: [
             { name: 'event', desc: '点击的DOM事件', type: 'DOM 事件' },
-            { name: 'result', desc: '点击后的所选值', type: 'Object' },
+            {
+              name: 'result',
+              desc: '点击后的所选值',
+              type: 'Object',
+            },
           ],
         },
         onChange: {
           desc: '分值改变时触发',
           args: [
             { name: 'event', desc: '鼠标移动的DOM事件', type: 'DOM 事件' },
-            { name: 'result', desc: '鼠标移动时的所选值', type: 'Object' },
+            {
+              name: 'result',
+              desc: '鼠标移动时的所选值',
+              type: 'Object',
+            },
           ],
         },
       },
@@ -7993,11 +8642,16 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            { key: 'text', title: '文本值', type: 'string' },
+            {
+              key: 'text',
+              title: '文本值',
+              type: 'string',
+            },
           ],
         },
         mutliple: { type: 'boolean', desc: '是否多选', defaultValue: false },
         canSearch: { type: 'boolean', desc: '是否支持查询', defaultValue: false },
+        canClear: { type: 'boolean', desc: '是否展示清空图标', defaultValue: true },
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', defaultValue: true },
         throttle: { type: 'number', desc: '查询的延迟时间，单位为毫秒', defaultValue: 100 },
         canInput: {
@@ -8043,11 +8697,23 @@ export default [
           desc: '选中项发生变化时触发',
           args: [
             { name: 'event', desc: '点击的DOM事件', type: 'Object' },
-            { name: 'newDisplayValue', desc: '所有选中项的displayField的集合', type: 'string[]' },
+            {
+              name: 'newDisplayValue',
+              desc: '所有选中项的displayField的集合',
+              type: 'string[]',
+            },
             { name: 'newItem', desc: '所有选中项的数据的集合', type: 'Object[]' },
-            { name: 'newValue', desc: '所有选中项的valueField的集合', type: 'string[]' },
+            {
+              name: 'newValue',
+              desc: '所有选中项的valueField的集合',
+              type: 'string[]',
+            },
             { name: 'oldItem', desc: '改变之前所有选中项的数据的集合', type: 'Object[]' },
-            { name: 'oldValue', desc: '改变之前所有选中项的valueField的集合', type: 'string[]' },
+            {
+              name: 'oldValue',
+              desc: '改变之前所有选中项的valueField的集合',
+              type: 'string[]',
+            },
           ],
         },
         onTrigger: { desc: '菜单展开是触发' },
@@ -8063,11 +8729,23 @@ export default [
           desc: '选中时触发',
           args: [
             { name: 'event', desc: '点击的DOM事件', type: 'Object' },
-            { name: 'newDisplayValue', desc: '所有选中项的displayField的集合', type: 'string[]' },
+            {
+              name: 'newDisplayValue',
+              desc: '所有选中项的displayField的集合',
+              type: 'string[]',
+            },
             { name: 'newItem', desc: '所有选中项的数据的集合', type: 'Object[]' },
-            { name: 'newValue', desc: '所有选中项的valueField的集合', type: 'string[]' },
+            {
+              name: 'newValue',
+              desc: '所有选中项的valueField的集合',
+              type: 'string[]',
+            },
             { name: 'oldItem', desc: '改变之前所有选中项的数据的集合', type: 'Object[]' },
-            { name: 'oldValue', desc: '改变之前所有选中项的valueField的集合', type: 'string[]' },
+            {
+              name: 'oldValue',
+              desc: '改变之前所有选中项的valueField的集合',
+              type: 'string[]',
+            },
           ],
         },
         onRefresh: { desc: '点击刷新按钮时触发' },
@@ -8476,11 +9154,16 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            { key: 'text', title: '文本值', type: 'string' },
+            {
+              key: 'text',
+              title: '文本值',
+              type: 'string',
+            },
           ],
         },
         mutliple: { type: 'boolean', desc: '是否多选', defaultValue: true },
         canSearch: { type: 'boolean', desc: '是否支持查询', defaultValue: false },
+        canClear: { type: 'boolean', desc: '是否展示清空图标', defaultValue: true },
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', defaultValue: true },
         throttle: { type: 'number', desc: '查询的延迟时间，单位为毫秒', defaultValue: 100 },
         canInput: {
@@ -8526,11 +9209,23 @@ export default [
           desc: '选中项发生变化时触发',
           args: [
             { name: 'event', desc: '点击的DOM事件', type: 'Object' },
-            { name: 'newDisplayValue', desc: '所有选中项的displayField的集合', type: 'string[]' },
+            {
+              name: 'newDisplayValue',
+              desc: '所有选中项的displayField的集合',
+              type: 'string[]',
+            },
             { name: 'newItem', desc: '所有选中项的数据的集合', type: 'Object[]' },
-            { name: 'newValue', desc: '所有选中项的valueField的集合', type: 'string[]' },
+            {
+              name: 'newValue',
+              desc: '所有选中项的valueField的集合',
+              type: 'string[]',
+            },
             { name: 'oldItem', desc: '改变之前所有选中项的数据的集合', type: 'Object[]' },
-            { name: 'oldValue', desc: '改变之前所有选中项的valueField的集合', type: 'string[]' },
+            {
+              name: 'oldValue',
+              desc: '改变之前所有选中项的valueField的集合',
+              type: 'string[]',
+            },
           ],
         },
         onTrigger: { desc: '菜单展开是触发' },
@@ -8546,11 +9241,23 @@ export default [
           desc: '选中时触发',
           args: [
             { name: 'event', desc: '点击的DOM事件', type: 'Object' },
-            { name: 'newDisplayValue', desc: '所有选中项的displayField的集合', type: 'string[]' },
+            {
+              name: 'newDisplayValue',
+              desc: '所有选中项的displayField的集合',
+              type: 'string[]',
+            },
             { name: 'newItem', desc: '所有选中项的数据的集合', type: 'Object[]' },
-            { name: 'newValue', desc: '所有选中项的valueField的集合', type: 'string[]' },
+            {
+              name: 'newValue',
+              desc: '所有选中项的valueField的集合',
+              type: 'string[]',
+            },
             { name: 'oldItem', desc: '改变之前所有选中项的数据的集合', type: 'Object[]' },
-            { name: 'oldValue', desc: '改变之前所有选中项的valueField的集合', type: 'string[]' },
+            {
+              name: 'oldValue',
+              desc: '改变之前所有选中项的valueField的集合',
+              type: 'string[]',
+            },
           ],
         },
         onRefresh: { desc: '点击刷新按钮时触发' },
@@ -9632,7 +10339,11 @@ export default [
           desc: '步骤条填充的数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            { key: 'description', title: '步骤条描述', type: 'string' },
+            {
+              key: 'description',
+              title: '步骤条描述',
+              type: 'string',
+            },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
           ],
         },
@@ -9641,7 +10352,11 @@ export default [
           desc: '步骤条填充的默认显示数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            { key: 'description', title: '步骤条描述', type: 'string' },
+            {
+              key: 'description',
+              title: '步骤条描述',
+              type: 'string',
+            },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
           ],
         },
@@ -10004,7 +10719,11 @@ export default [
           desc: '步骤条填充的数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            { key: 'description', title: '步骤条描述', type: 'string' },
+            {
+              key: 'description',
+              title: '步骤条描述',
+              type: 'string',
+            },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
           ],
         },
@@ -10013,7 +10732,11 @@ export default [
           desc: '步骤条填充的默认显示数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            { key: 'description', title: '步骤条描述', type: 'string' },
+            {
+              key: 'description',
+              title: '步骤条描述',
+              type: 'string',
+            },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
           ],
         },
@@ -10124,7 +10847,11 @@ export default [
           desc: '步骤条填充的数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            { key: 'description', title: '步骤条描述', type: 'string' },
+            {
+              key: 'description',
+              title: '步骤条描述',
+              type: 'string',
+            },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
           ],
         },
@@ -10133,7 +10860,11 @@ export default [
           desc: '步骤条填充的默认显示数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            { key: 'description', title: '步骤条描述', type: 'string' },
+            {
+              key: 'description',
+              title: '步骤条描述',
+              type: 'string',
+            },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
           ],
         },
@@ -10244,7 +10975,11 @@ export default [
           desc: '步骤条填充的数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            { key: 'description', title: '步骤条描述', type: 'string' },
+            {
+              key: 'description',
+              title: '步骤条描述',
+              type: 'string',
+            },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
           ],
         },
@@ -10253,7 +10988,11 @@ export default [
           desc: '步骤条填充的默认显示数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            { key: 'description', title: '步骤条描述', type: 'string' },
+            {
+              key: 'description',
+              title: '步骤条描述',
+              type: 'string',
+            },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
           ],
         },
@@ -10364,7 +11103,11 @@ export default [
           desc: '步骤条填充的数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            { key: 'description', title: '步骤条描述', type: 'string' },
+            {
+              key: 'description',
+              title: '步骤条描述',
+              type: 'string',
+            },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
           ],
         },
@@ -10373,7 +11116,11 @@ export default [
           desc: '步骤条填充的默认显示数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            { key: 'description', title: '步骤条描述', type: 'string' },
+            {
+              key: 'description',
+              title: '步骤条描述',
+              type: 'string',
+            },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
           ],
         },
@@ -10603,9 +11350,17 @@ export default [
           type: 'Object[]',
           meta: [
             { key: 'title', title: '表头文本', type: 'string' },
-            { key: 'key', title: '对应key', type: 'any' },
+            {
+              key: 'key',
+              title: '对应key',
+              type: 'any',
+            },
             { key: 'dataIndex', title: '指定展示项', type: 'any' },
-            { key: 'width', title: '列宽', type: 'number' },
+            {
+              key: 'width',
+              title: '列宽',
+              type: 'number',
+            },
           ],
           desc: '表格每一行展示的内容',
         },
@@ -10643,7 +11398,11 @@ export default [
           desc: '点击展开图标时触发',
           args: [
             { name: 'expanded', desc: '当前是否展开', type: 'boolean' },
-            { name: 'record', desc: '当前行数据', type: 'Object' },
+            {
+              name: 'record',
+              desc: '当前行数据',
+              type: 'Object',
+            },
           ],
         },
       },
@@ -10769,11 +11528,11 @@ export default [
               normal: [['background'], ['padding'], ['width'], ['height']],
             },
             TitleContainer: {
-              name: '顶部容器区域',
-              desc: '顶部容器区域宽度配置',
-              normal: [['width']],
+              name: '卡片区域',
+              desc: '卡片区域样式配置',
+              normal: [['width'], ['background']],
             },
-            BorderStyle: { name: '默认线', desc: '默认线样式配置', normal: [['border']] },
+            BorderStyle: { name: '默认线', desc: '默认线样式配置', normal: [['border', 'bottom']] },
             TabHeader: {
               name: '标签配置',
               theme: {
@@ -10781,6 +11540,8 @@ export default [
                   name: '默认标签',
                   desc: '默认标签样式配置',
                   normal: [
+                    ['width'],
+                    ['height'],
                     ['color'],
                     ['background'],
                     ['border'],
@@ -10851,11 +11612,7 @@ export default [
               desc: '内容区域的样式配置',
               normal: [['background'], ['padding'], ['width'], ['height']],
             },
-            TitleContainer: {
-              name: '顶部容器区域',
-              desc: '顶部容器区域宽度配置',
-              normal: [['width']],
-            },
+            TitleContainer: { name: '卡片区域', desc: '卡片区域样式配置', normal: [['width']] },
             TabHeader: {
               name: '标签配置',
               theme: {
@@ -10863,6 +11620,8 @@ export default [
                   name: '默认标签',
                   desc: '默认标签样式配置',
                   normal: [
+                    ['width'],
+                    ['height'],
                     ['color'],
                     ['background'],
                     ['border'],
@@ -10900,8 +11659,12 @@ export default [
           desc: '内容区域的样式配置',
           normal: [['background'], ['padding'], ['width'], ['height']],
         },
-        TitleContainer: { name: '顶部容器区域', desc: '顶部容器区域宽度配置', normal: [['width']] },
-        BorderStyle: { name: '默认线', desc: '默认线样式配置', normal: [['border']] },
+        TitleContainer: {
+          name: '卡片区域',
+          desc: '卡片区域样式配置',
+          normal: [['width'], ['background']],
+        },
+        BorderStyle: { name: '默认线', desc: '默认线样式配置', normal: [['border', 'bottom']] },
         TabHeader: {
           name: '标签配置',
           theme: {
@@ -10909,6 +11672,8 @@ export default [
               name: '默认标签',
               desc: '默认标签样式配置',
               normal: [
+                ['width'],
+                ['height'],
                 ['color'],
                 ['background'],
                 ['border'],
@@ -11051,8 +11816,12 @@ export default [
           desc: '内容区域的样式配置',
           normal: [['background'], ['padding'], ['width'], ['height']],
         },
-        TitleContainer: { name: '顶部容器区域', desc: '顶部容器区域宽度配置', normal: [['width']] },
-        BorderStyle: { name: '默认线', desc: '默认线样式配置', normal: [['border']] },
+        TitleContainer: {
+          name: '卡片区域',
+          desc: '卡片区域样式配置',
+          normal: [['width'], ['background']],
+        },
+        BorderStyle: { name: '默认线', desc: '默认线样式配置', normal: [['border', 'bottom']] },
         TabHeader: {
           name: '标签配置',
           theme: {
@@ -11060,6 +11829,8 @@ export default [
               name: '默认标签',
               desc: '默认标签样式配置',
               normal: [
+                ['width'],
+                ['height'],
                 ['color'],
                 ['background'],
                 ['border'],
@@ -11208,7 +11979,7 @@ export default [
           desc: '内容区域的样式配置',
           normal: [['background'], ['padding'], ['width'], ['height']],
         },
-        TitleContainer: { name: '顶部容器区域', desc: '顶部容器区域宽度配置', normal: [['width']] },
+        TitleContainer: { name: '卡片区域', desc: '卡片区域样式配置', normal: [['width']] },
         TabHeader: {
           name: '标签配置',
           theme: {
@@ -11216,6 +11987,8 @@ export default [
               name: '默认标签',
               desc: '默认标签样式配置',
               normal: [
+                ['width'],
+                ['height'],
                 ['color'],
                 ['background'],
                 ['border'],
@@ -11258,6 +12031,7 @@ export default [
       desc: '标记和分类的标签',
       props: {
         closable: { type: 'boolean', desc: '标签是否可关闭', defaultValue: true },
+        text: { type: 'string', desc: '指定标签的文本值', defaultValue: 'Tag' },
         shape: {
           type: ' basic | round ',
           desc: '标签的圆角, basic为4px圆角,round为圆角标签',
@@ -11462,6 +12236,7 @@ export default [
       desc: '点击关闭按钮可隐藏标签',
       props: {
         closable: { type: 'boolean', desc: '标签是否可关闭', defaultValue: true },
+        text: { type: 'string', desc: '指定标签的文本值', defaultValue: 'Tag' },
         shape: {
           type: ' basic | round ',
           desc: '标签的圆角, basic为4px圆角,round为圆角标签',
@@ -11546,6 +12321,7 @@ export default [
       desc: '点击标签可配置选中样式',
       props: {
         closable: { type: 'boolean', desc: '标签是否可关闭', defaultValue: true },
+        text: { type: 'string', desc: '指定标签的文本值', defaultValue: 'Tag' },
         shape: {
           type: ' basic | round ',
           desc: '标签的圆角, basic为4px圆角,round为圆角标签',
@@ -11671,7 +12447,11 @@ export default [
           desc: '时间轴填充的数据',
           meta: [
             { key: 'time', title: '时间节点信息', type: 'string' },
-            { key: 'description', title: '时间节点详细描述', type: 'string' },
+            {
+              key: 'description',
+              title: '时间节点详细描述',
+              type: 'string',
+            },
           ],
         },
         defaultData: {
@@ -11679,7 +12459,11 @@ export default [
           desc: '时间轴填充的默认显示数据',
           meta: [
             { key: 'time', title: '时间节点信息', type: 'string' },
-            { key: 'description', title: '时间节点详细描述', type: 'string' },
+            {
+              key: 'description',
+              title: '时间节点详细描述',
+              type: 'string',
+            },
           ],
         },
         reverse: {
@@ -11827,7 +12611,11 @@ export default [
           desc: '时间轴填充的数据',
           meta: [
             { key: 'time', title: '时间节点信息', type: 'string' },
-            { key: 'description', title: '时间节点详细描述', type: 'string' },
+            {
+              key: 'description',
+              title: '时间节点详细描述',
+              type: 'string',
+            },
           ],
         },
         defaultData: {
@@ -11835,7 +12623,11 @@ export default [
           desc: '时间轴填充的默认显示数据',
           meta: [
             { key: 'time', title: '时间节点信息', type: 'string' },
-            { key: 'description', title: '时间节点详细描述', type: 'string' },
+            {
+              key: 'description',
+              title: '时间节点详细描述',
+              type: 'string',
+            },
           ],
         },
         reverse: {
@@ -11976,7 +12768,11 @@ export default [
           desc: 'Transfer 穿梭回调',
           args: [
             { name: 'nextValue', desc: 'Transfer穿梭后，右侧面板值的集合', type: 'string[]' },
-            { name: 'direction', desc: '穿梭的方向，left、right', type: 'DirectionType' },
+            {
+              name: 'direction',
+              desc: '穿梭的方向，left、right',
+              type: 'DirectionType',
+            },
             { name: 'moveKeys', desc: '移动值的集合', type: 'string[]' },
           ],
         },
@@ -11984,7 +12780,11 @@ export default [
           desc: 'Transfer 取消选项点击回调',
           args: [
             { name: 'nextValue', desc: 'Transfer 右侧面板值的集合', type: 'string[]' },
-            { name: 'newDisplayValue', desc: 'Transfer 右侧面板值的备用集合', type: 'string[]' },
+            {
+              name: 'newDisplayValue',
+              desc: 'Transfer 右侧面板值的备用集合',
+              type: 'string[]',
+            },
           ],
         },
       },
@@ -12622,7 +13422,11 @@ export default [
           desc: 'Transfer 穿梭回调',
           args: [
             { name: 'nextValue', desc: 'Transfer穿梭后，右侧面板值的集合', type: 'string[]' },
-            { name: 'direction', desc: '穿梭的方向，left、right', type: 'DirectionType' },
+            {
+              name: 'direction',
+              desc: '穿梭的方向，left、right',
+              type: 'DirectionType',
+            },
             { name: 'moveKeys', desc: '移动值的集合', type: 'string[]' },
           ],
         },
@@ -12630,7 +13434,11 @@ export default [
           desc: 'Transfer 取消选项点击回调',
           args: [
             { name: 'nextValue', desc: 'Transfer 右侧面板值的集合', type: 'string[]' },
-            { name: 'newDisplayValue', desc: 'Transfer 右侧面板值的备用集合', type: 'string[]' },
+            {
+              name: 'newDisplayValue',
+              desc: 'Transfer 右侧面板值的备用集合',
+              type: 'string[]',
+            },
           ],
         },
       },
@@ -12987,11 +13795,20 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            { key: 'text', title: '文本值', type: 'string' },
+            {
+              key: 'text',
+              title: '文本值',
+              type: 'string',
+            },
           ],
           defaultValue: false,
         },
         igronSelectField: { type: 'string', desc: '指定不可选的标识' },
+        pathSeparator: {
+          type: 'string',
+          desc: '指定结点数组中path信息的分隔符号',
+          defaultValue: '/',
+        },
         searchType: {
           type: 'start | end | include | eql',
           desc: '生成过滤数据的方式',
@@ -13013,14 +13830,22 @@ export default [
           desc: '滚动条滚动时触发',
           args: [
             { name: 'start', desc: '显示区域内，第一个树节点所在数据中的索引值', type: 'number' },
-            { name: 'end', desc: '显示区域内，最后树节点所在数据中的索引值', type: 'number' },
+            {
+              name: 'end',
+              desc: '显示区域内，最后树节点所在数据中的索引值',
+              type: 'number',
+            },
           ],
         },
         onExpand: {
           desc: '展开/收起节点时触发',
           args: [
             { name: 'expandedKeys', desc: '所有展开节点的valueField值的集合', type: 'string[]' },
-            { name: 'data', desc: '所有的树形数据信息', type: 'Array<Object>' },
+            {
+              name: 'data',
+              desc: '所有的树形数据信息',
+              type: 'Array<Object>',
+            },
           ],
         },
         onSelect: {
@@ -13030,7 +13855,11 @@ export default [
         onChange: {
           desc: '选中节点发生改变时触发',
           args: [
-            { name: 'selectValue', desc: '所有选中项的valueField值的集合', type: 'string[]' },
+            {
+              name: 'selectValue',
+              desc: '所有选中项的valueField值的集合',
+              type: 'string[]',
+            },
             {
               name: 'selectDisplayValue',
               desc: '所有选中项的displayField值的集合',
@@ -13353,11 +14182,20 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            { key: 'text', title: '文本值', type: 'string' },
+            {
+              key: 'text',
+              title: '文本值',
+              type: 'string',
+            },
           ],
           defaultValue: false,
         },
         igronSelectField: { type: 'string', desc: '指定不可选的标识' },
+        pathSeparator: {
+          type: 'string',
+          desc: '指定结点数组中path信息的分隔符号',
+          defaultValue: '/',
+        },
         searchType: {
           type: 'start | end | include | eql',
           desc: '生成过滤数据的方式',
@@ -13379,14 +14217,22 @@ export default [
           desc: '滚动条滚动时触发',
           args: [
             { name: 'start', desc: '显示区域内，第一个树节点所在数据中的索引值', type: 'number' },
-            { name: 'end', desc: '显示区域内，最后树节点所在数据中的索引值', type: 'number' },
+            {
+              name: 'end',
+              desc: '显示区域内，最后树节点所在数据中的索引值',
+              type: 'number',
+            },
           ],
         },
         onExpand: {
           desc: '展开/收起节点时触发',
           args: [
             { name: 'expandedKeys', desc: '所有展开节点的valueField值的集合', type: 'string[]' },
-            { name: 'data', desc: '所有的树形数据信息', type: 'Array<Object>' },
+            {
+              name: 'data',
+              desc: '所有的树形数据信息',
+              type: 'Array<Object>',
+            },
           ],
         },
         onSelect: {
@@ -13396,7 +14242,11 @@ export default [
         onChange: {
           desc: '选中节点发生改变时触发',
           args: [
-            { name: 'selectValue', desc: '所有选中项的valueField值的集合', type: 'string[]' },
+            {
+              name: 'selectValue',
+              desc: '所有选中项的valueField值的集合',
+              type: 'string[]',
+            },
             {
               name: 'selectDisplayValue',
               desc: '所有选中项的displayField值的集合',
@@ -13588,7 +14438,11 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            { key: 'text', title: '文本值', type: 'string' },
+            {
+              key: 'text',
+              title: '文本值',
+              type: 'string',
+            },
           ],
           defaultValue: false,
         },
@@ -14079,7 +14933,11 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            { key: 'text', title: '文本值', type: 'string' },
+            {
+              key: 'text',
+              title: '文本值',
+              type: 'string',
+            },
           ],
           defaultValue: false,
         },
@@ -14411,7 +15269,11 @@ export default [
           desc: "上传的文件列表,如 [{ id: 1, name: 'header.jpg', status: 'done' }]",
           meta: [
             { key: 'id', title: '文件唯一标识', type: 'number' },
-            { key: 'name', title: '文件名', type: 'string' },
+            {
+              key: 'name',
+              title: '文件名',
+              type: 'string',
+            },
             { key: 'status', title: '文件传输状态', type: 'FileType' },
           ],
         },
@@ -14700,7 +15562,11 @@ export default [
           desc: "上传的文件列表,如 [{ id: 1, name: 'header.jpg', status: 'done' }]",
           meta: [
             { key: 'id', title: '文件唯一标识', type: 'number' },
-            { key: 'name', title: '文件名', type: 'string' },
+            {
+              key: 'name',
+              title: '文件名',
+              type: 'string',
+            },
             { key: 'status', title: '文件传输状态', type: 'FileType' },
           ],
         },
@@ -14804,7 +15670,11 @@ export default [
           desc: "上传的文件列表,如 [{ id: 1, name: 'header.jpg', status: 'done' }]",
           meta: [
             { key: 'id', title: '文件唯一标识', type: 'number' },
-            { key: 'name', title: '文件名', type: 'string' },
+            {
+              key: 'name',
+              title: '文件名',
+              type: 'string',
+            },
             { key: 'status', title: '文件传输状态', type: 'FileType' },
           ],
         },
@@ -14908,7 +15778,11 @@ export default [
           desc: "上传的文件列表,如 [{ id: 1, name: 'header.jpg', status: 'done' }]",
           meta: [
             { key: 'id', title: '文件唯一标识', type: 'number' },
-            { key: 'name', title: '文件名', type: 'string' },
+            {
+              key: 'name',
+              title: '文件名',
+              type: 'string',
+            },
             { key: 'status', title: '文件传输状态', type: 'FileType' },
           ],
         },
@@ -15011,7 +15885,11 @@ export default [
           desc: "上传的文件列表,如 [{ id: 1, name: 'header.jpg', status: 'done' }]",
           meta: [
             { key: 'id', title: '文件唯一标识', type: 'number' },
-            { key: 'name', title: '文件名', type: 'string' },
+            {
+              key: 'name',
+              title: '文件名',
+              type: 'string',
+            },
             { key: 'status', title: '文件传输状态', type: 'FileType' },
           ],
         },

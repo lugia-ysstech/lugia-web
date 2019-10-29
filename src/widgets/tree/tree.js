@@ -28,6 +28,7 @@ export type TreeProps = {
   start: number,
   end: number,
   query: string,
+  pathSeparator?: string,
   onScroller?: Function,
   /** 是否支持多选 */
   mutliple?: boolean,
@@ -91,6 +92,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
   static defaultProps = {
     expandAll: false,
     mutliple: false,
+    pathSeparator: '/',
     defaultValue: '',
     displayField: 'title',
     valueField: 'key',
@@ -404,6 +406,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
       limitCount,
       splitQuery,
       igronSelectField,
+      pathSeparator,
     },
     realyExpandAll: boolean = expandAll
   ): ?TreeUtils {
@@ -418,6 +421,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
       limitCount,
       splitQuery,
       igronSelectField,
+      pathSeparator,
     });
   }
 

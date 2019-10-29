@@ -37,7 +37,7 @@ const Invalid = [
   'popover',
   'popconfirm',
   'tooltip',
-  'collapse',
+  'collapse'
 ];
 
 createDesignInfo(tartgetPath, Invalid);
