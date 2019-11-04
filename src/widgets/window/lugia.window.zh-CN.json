@@ -3,6 +3,11 @@
   "title": "窗体",
   "desc": "支持拖拽的窗体组件",
   "props": {
+    "visible": {
+      "type": "boolean",
+      "desc": "组件是否显示",
+      "defaultValue": true
+    },
     "width": {
       "type": "number",
       "desc": "窗体宽度",
@@ -53,7 +58,7 @@
     },
     "canMinimize": {
       "type": "boolean",
-      "desc": "是否支持最小化",
+      "desc": "是否支持最小化按钮显示",
       "defaultValue": false
     },
     "minimizeIcon": {
@@ -100,6 +105,11 @@
       "type": "number",
       "desc": "指定窗体锁定相对窗口底部的距离 这个属性在lockingWay为drag的前提下生效",
       "defaultValue": 0
+    },
+    "head": {
+      "type": "any",
+      "desc": "可自定义窗体头部内容",
+      "defaultValue": null
     }
   },
   "events": {
@@ -204,6 +214,15 @@
         {
           "name": "height",
           "desc": "窗体高度"
+        }
+      ]
+    },
+    "getHeadEvent": {
+      "desc": "组件加载完成调用",
+      "args": [
+        {
+          "name": "lockDirection",
+          "desc": "返回窗体头部区域的事件"
         }
       ]
     },

@@ -33,7 +33,9 @@ type TypeProps = {
   onChangeLock?: Function,
   defaultIsLock?: boolean,
   isLock?: boolean,
+  visible?: boolean,
   lockDirection?: string,
+  head: any,
 };
 export default class Container extends React.Component<TypeProps, any> {
   static displayName = 'WindowContainer';
@@ -48,11 +50,9 @@ export default class Container extends React.Component<TypeProps, any> {
     const normalLock = isLock || defaultIsLock;
     this.state = {
       isLock: normalLock,
-      isRemove: false,
       lockDirection: normalLock ? lockDirection : '',
       isShowSide: false,
     };
-
     this.mouseEvents = new Event();
   }
   onOpen = (param: Object) => {
@@ -115,6 +115,7 @@ export default class Container extends React.Component<TypeProps, any> {
     }
     this.mouseEvents.emit('upDate_zIndex', { z });
   }
+
   getMaxZindex = () => {
     const nodes =
       document.body &&
@@ -149,7 +150,6 @@ export default class Container extends React.Component<TypeProps, any> {
     this.setState({ isLock });
   };
   onClose = () => {
-    this.setState({ isRemove: true });
     const { onClose } = this.props;
     if (onClose) {
       onClose();
@@ -160,7 +160,7 @@ export default class Container extends React.Component<TypeProps, any> {
     return onClose && typeof onClose === 'function';
   };
   getComponent = () => {
-    const { isLock, isRemove, lockDirection, isShowSide, sideZIndex } = this.state;
+    const { isLock, lockDirection, isShowSide, sideZIndex } = this.state;
     const { minWidth: minW, minHeight: minH } = minSize;
     const {
       lockingWay,
@@ -169,6 +169,7 @@ export default class Container extends React.Component<TypeProps, any> {
       minWidth = minW,
       minHeight = minH,
       isLock: propsIsLock,
+      visible = true,
     } = this.props;
     const hasClose = this.hasOnClose();
     const config = {
@@ -189,10 +190,11 @@ export default class Container extends React.Component<TypeProps, any> {
       onClose: this.onClose,
       onOpen: this.onOpen,
     };
-    if (isRemove) {
+    if (!visible) {
       return null;
     }
     const { isClick } = getLockingWay(lockingWay);
+
     if (isLock && isClick) {
       this.mouseEvents.emit('render_intoState', { isInto: true });
       return <Window {...config} />;

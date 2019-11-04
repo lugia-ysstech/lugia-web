@@ -6,20 +6,28 @@ const BoxL = styled.div`
   width: 100%;
   height: 100%;
 `;
+const Head = styled.div`
+  text-align: center;
+  line-height: 30px;
+  height: 30px;
+`;
 export default class Demo extends React.Component {
   constructor() {
     super();
     this.state = {
       width: 100,
       direction: false,
+      visible: true,
     };
     this.Com = React.createRef();
+    this.Component = React.createRef();
   }
   divClick = () => {
     console.log('我是box 我被点击了');
   };
   onClose = () => {
     console.log('onCloseonClose', 'onClose');
+    this.setState({ visible: !this.state.visible });
   };
   onDragStart = param => {
     const { x, y, lockDirection } = param;
@@ -72,10 +80,27 @@ export default class Demo extends React.Component {
     const { isFixed } = param;
     console.log(isFixed);
   };
+  onClick = () => {
+    this.setState({ visible: !this.state.visible });
+  };
+  getHeadEvent = event => {
+    // head 的所有事件
+    this.event = event;
+    if (this.event) {
+      //  this.event.onUpUp();
+    }
+    console.log(this.event);
+  };
+  componentDidMount() {
+    if (this.event) {
+      this.event.onUpUp();
+    }
+  }
   render() {
+    const { visible } = this.state;
     return (
       <React.Fragment>
-        <div onClick={this.divClick} />
+        {/*<div onClick={this.divClick} />*/}
         {/*/!*<Com ref={this.Com} />*!/*/}
         <Component
           canScale
@@ -99,13 +124,16 @@ export default class Demo extends React.Component {
           maxWidth={1000}
           minWidth={250}
           maxHeight={500}
-          //minimizeIcon={'lugia-icon-financial_shrink'}
+          minimizeIcon={'lugia-icon-financial_shrink'}
           //lugia-icon-financial_shrink
-          onClose={() => {}}
+          onClose={this.onClose}
           onFixed={this.onFixed}
           headReverse={true}
           canMinimize
           canDoubleClickScale
+          getHeadEvent={this.getHeadEvent}
+          ref={this.Component}
+          visible={visible}
         >
           <div>
             <p style={{ fontSize: 40, color: 'red' }}> 拖拽我，或者拉伸，红快快就不动了</p>
@@ -220,7 +248,9 @@ export default class Demo extends React.Component {
         <Component x={600} y={520} onClose={() => {}}>
           还有其他的一切事件回调，可以看文档偶
         </Component>
-        <Component />
+        <Component width={200} visible={visible} head={444}>
+          自定义头部
+        </Component>
       </React.Fragment>
     );
   }
