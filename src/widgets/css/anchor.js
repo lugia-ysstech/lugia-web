@@ -13,6 +13,8 @@ export type AnchorProps = {
   offsetTop?: number,
   slideType?: 'circle' | 'line',
   slideLine?: boolean,
+  useHref?: boolean,
+  onClick?: Function,
 };
 export type AnchorState = {
   activeLink: string,
