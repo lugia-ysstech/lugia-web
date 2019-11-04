@@ -106,5 +106,12 @@
     "tableStyleType": ["zebraStripe", "linear", "bordered"]
   },
   "childrenWidget": ["column"],
-  "category": ["数据展示"]
+  "category": ["数据展示"],
+  "theme": {
+    "Container": {
+      "name": "表格整体样式",
+      "desc": "为表格配置整体样式",
+      "normal": [["width"], ["height"]]
+    }
+  }
 }
