@@ -390,10 +390,7 @@ export default class DragArea extends React.Component<TypeProps, any> {
     const { id, lockingWay } = this.props;
     const { isFloat } = this.state;
     const { isDrag } = getLockingWay(lockingWay);
-    if (isFloat || !isDrag) {
-      return;
-    }
-    if (!this.lockDirection) {
+    if (isFloat || !isDrag || !this.lockDirection) {
       return;
     }
     const hasFloat = this.changeFloat(id, false);
@@ -427,15 +424,7 @@ export default class DragArea extends React.Component<TypeProps, any> {
   getIsFloatLimtY = (isFloat: boolean, lockDirection: string, y: number): number => {
     const { maxY } = this.props;
     const limitMaxY = maxY - floatHeight - 1;
-    let newY = y;
-
-    if (lockDirection) {
-      newY = 0;
-    }
-    if (isFloat) {
-      newY = Math.max(1, Math.min(y, limitMaxY));
-    }
-    return newY;
+    return lockDirection ? 0 : isFloat ? Math.max(1, Math.min(y, limitMaxY)) : y;
   };
   addListener = () => {
     document.addEventListener('mousemove', this.onMouseMove);
