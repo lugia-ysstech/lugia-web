@@ -130,7 +130,7 @@
       ],
       "disabled": [["background"], ["border"], ["width"], ["height"], ["borderRadius"]]
     },
-    "SwitchContainer": {
+    "Container": {
       "name": "开关整体",
       "desc": "开关整体的样式配置",
       "normal": [
