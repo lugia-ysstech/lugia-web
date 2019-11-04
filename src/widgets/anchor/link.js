@@ -29,13 +29,14 @@ export default class extends React.Component<AnchorLinkProps, AnchorLinkState> {
             context && context.links.push(href);
             getLinks && getLinks(context.links);
           }
-          const { onClick, activeLink } = context;
+          const { onClick, activeLink, useHref = true } = context;
+          const linkHref = useHref ? { href } : {};
           return (
             <LinkWrap>
               <Link
                 onClick={e => onClick && onClick(e, href)}
-                href={href}
                 active={activeLink === href}
+                {...linkHref}
               >
                 {title}
               </Link>

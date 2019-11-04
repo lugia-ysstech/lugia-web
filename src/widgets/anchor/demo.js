@@ -28,11 +28,21 @@ export default class DrawerDemo extends React.Component<any, any> {
       anchorElement.scrollIntoView();
     }
   };
+
+  handleLinkClick = (e, href) => {
+    if (href) {
+      const name = href.slice(1);
+      const anchorElement = document.getElementById(name);
+      if (anchorElement) {
+        anchorElement.scrollIntoView({ block: 'start', behavior: 'smooth' });
+      }
+    }
+  };
   render() {
     return (
       <div>
         <DemoBox cur={0}>
-          <Anchor slideType="circle">
+          <Anchor slideType="circle" useHref={false} onClick={this.handleLinkClick}>
             <Link title="anchor-link1" href="#anchor-link1" />
             <Link title="anchor-link2" href="#anchor-link2" />
             <Link title="anchor-link3" href="#anchor-link3">

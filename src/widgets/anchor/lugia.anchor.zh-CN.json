@@ -26,6 +26,28 @@
       "type": "boolean",
       "desc": "是否展示分割线",
       "defaultValue": true
+    },
+    "useHref": {
+      "type": "boolean",
+      "desc": "是否启用a标签的href属性",
+      "defaultValue": true
+    }
+  },
+  "events": {
+    "onClick": {
+      "desc": "点击锚点时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "点击的DOM事件",
+          "type": "Object"
+        },
+        {
+          "name": "href",
+          "desc": "点击的锚点href值",
+          "type": "string"
+        }
+      ]
     }
   },
   "type": {
