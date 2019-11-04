@@ -80,7 +80,6 @@ export default ThemeProvider(
     };
 
     setScrollActiveLink = (linkInfo: Object[]) => {
-      console.log(this.getMaxTopLink(linkInfo));
       this.setState({
         activeLink: this.getMaxTopLink(linkInfo),
       });
