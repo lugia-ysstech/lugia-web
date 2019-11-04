@@ -4,7 +4,9 @@ import floatCircleHover from './img/floatCircleHover.png';
 import { getLockingWay } from './function/utils';
 const dragHeight = 14;
 const pubulicIconSize = 12;
-
+export const DragWrap = styled.div`
+  display: block;
+`;
 export const DragBox = styled.div`
   overflow: hidden;
   clear: both;
@@ -31,9 +33,9 @@ export const Close = styled.span`
 `;
 
 export const Drag = styled.span`
-  display: inline-block;
-  width: ${props => dragStyle(props).dragWidth};
-  height: ${dragHeight}px;
+  display: ${props => (props.display ? props.display : ' inline-block;')};
+  width: ${props => (props.width ? props.width : dragStyle(props).dragWidth)};
+  height: ${props => (props.height ? props.height : `${dragHeight}px`)};
   cursor: default;
   background: #f2f2f3;
   user-select: none;
@@ -84,6 +86,7 @@ export const Box = styled.div`
   box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.1);
   ${props => (props.isTransition ? 'transition:width 0.3s' : '')};
   opacity: ${props => getBoxOpacity(props)};
+  overflow: hidden;
 `;
 
 function getBoxOpacity(props) {
@@ -114,7 +117,7 @@ export const Content = styled.div`
 `;
 export const Children = styled.div`
   display: ${props => (props.isFloat ? 'none' : 'block')};
-  height: calc(100% - ${dragHeight}px);
+  height: calc(100% - ${props => (props.dragHeight ? props.dragHeight : dragHeight)}px);
   overflow: auto;
 `;
 

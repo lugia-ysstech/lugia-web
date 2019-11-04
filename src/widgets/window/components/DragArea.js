@@ -8,7 +8,7 @@ import { dragXY } from '../function/event';
 import { isNumber } from '../function/math';
 import initialState, { normalDragFloatSize } from '../initialState';
 import Icon from '../../icon/index';
-import { DragBox, Close, Drag, Float, Image } from '../styled';
+import { DragWrap, DragBox, Close, Drag, Float, Image } from '../styled';
 const { floatWidth, floatHeight } = normalDragFloatSize;
 type TypeProps = {
   onClose?: boolean,
@@ -24,6 +24,7 @@ type TypeProps = {
   onDragStart?: Function,
   onDragEnd?: Function,
   upDateZFn: Function,
+  getHeadEvent?: Function,
   windowWidth: number,
   windowHeight: number,
   componentIndex: number,
@@ -68,6 +69,8 @@ export default class DragArea extends React.Component<TypeProps, any> {
     const { isFloat } = initialState;
     const { id, lockDirection } = props;
     const { changeFloat } = changeFloatTimes(id, isFloat);
+    this.Drag = React.createRef();
+    this.dragHeight = 0;
     this.changeFloat = changeFloat;
     this.lockDirection = lockDirection;
     this.haveDirection = lockDirection;
@@ -98,6 +101,10 @@ export default class DragArea extends React.Component<TypeProps, any> {
     this.setState({ isDown: false });
   };
   onUpUp = () => {
+    const { isFixed } = this.state;
+    if (isFixed) {
+      return;
+    }
     const { onUp, maxX, x, y } = this.props;
     const isFloat = true;
     const { left, right, x: newX } = dragCircle({ x, maxX, isFloat });
@@ -191,6 +198,10 @@ export default class DragArea extends React.Component<TypeProps, any> {
     return { x: newX, y: newY };
   };
   onDoubleClick = () => {
+    const { isFixed } = this.state;
+    if (isFixed) {
+      return;
+    }
     const { mouseEvent, windowWidth, windowHeight, isLock, canDoubleClickScale } = this.props;
     if (isLock || !canDoubleClickScale) {
       return;
@@ -219,6 +230,10 @@ export default class DragArea extends React.Component<TypeProps, any> {
     this.setState({ isDoubleClick: !isDoubleClick, isTransition });
   };
   onMouseDown = (e: Object) => {
+    const { isFixed } = this.state;
+    if (isFixed) {
+      return;
+    }
     const { isLock, lockingWay } = this.props;
     const { isClick } = getLockingWay(lockingWay);
     if (isLock && isClick) {
@@ -296,7 +311,8 @@ export default class DragArea extends React.Component<TypeProps, any> {
     const result = dragXY(x, y, moveX, moveY);
     const { x: resultX, y: resultY } = result;
     this.moveTimes += 1;
-    const upDateSize = this.moveTimes === 1 && !isFloat ? { width: 'auto', height: 'auto' } : {};
+    const upDateSize =
+      this.moveTimes === 1 && !isFloat && isDrag ? { width: 'auto', height: 'auto' } : {};
     mouseEvent.emit('onDragMove', {
       x: resultX,
       y: resultY,
@@ -450,6 +466,21 @@ export default class DragArea extends React.Component<TypeProps, any> {
   componentDidMount() {
     this.addListener();
   }
+  componentDidUpdate() {
+    if (this.Drag.current) {
+      const { offsetHeight } = this.Drag.current;
+
+      const { mouseEvent, getHeadEvent } = this.props;
+      if (!this.dragHeight) {
+        mouseEvent.emit('upDateDragHeight', { dragHeight: offsetHeight });
+        if (getHeadEvent) {
+          getHeadEvent(this);
+        }
+        this.dragHeight = offsetHeight;
+      }
+    }
+  }
+
   getHeadIconNumber = () => {
     const { hasClose, lockingWay, canMinimize } = this.props;
     let number = 0;
@@ -542,30 +573,51 @@ export default class DragArea extends React.Component<TypeProps, any> {
 
   render() {
     const { isFloat, isTransition } = this.state;
-    const { isLock, headReverse } = this.props;
+    const { isLock, headReverse, head } = this.props;
     const iconNumber = this.getHeadIconNumber();
     const headFloat = !isFloat ? this.headFloat() : null;
     const headLock = !isFloat ? this.headLock() : null;
     return (
-      <DragBox isFloat={isFloat} isTransition={isTransition}>
-        {headReverse ? headFloat : headLock}
-        {isFloat ? (
-          <React.Fragment>
-            <Float onMouseDown={this.onMouseDown}>
-              <Image />
-            </Float>
-          </React.Fragment>
-        ) : (
-          <Drag
-            isFloat={isFloat}
-            isLock={isLock}
-            onMouseDown={this.onMouseDown}
-            iconNumber={iconNumber}
-            onDoubleClick={this.onDoubleClick}
-          />
-        )}
-        {headReverse ? headLock : headFloat}
-      </DragBox>
+      <React.Fragment>
+        <DragWrap ref={this.Drag}>
+          {head && !isFloat ? (
+            <Drag
+              isFloat={isFloat}
+              isLock={isLock}
+              onMouseDown={this.onMouseDown}
+              iconNumber={iconNumber}
+              onDoubleClick={this.onDoubleClick}
+              height={'auto'}
+              width={'100%'}
+              display={'block'}
+            >
+              <div>{!isFloat ? head : null}</div>
+            </Drag>
+          ) : (
+            <DragBox isFloat={isFloat} isTransition={isTransition}>
+              {headReverse ? headFloat : headLock}
+              {isFloat ? (
+                <React.Fragment>
+                  <Float onMouseDown={this.onMouseDown}>
+                    <Image />
+                  </Float>
+                </React.Fragment>
+              ) : (
+                <Drag
+                  isFloat={isFloat}
+                  isLock={isLock}
+                  onMouseDown={this.onMouseDown}
+                  iconNumber={iconNumber}
+                  onDoubleClick={this.onDoubleClick}
+                >
+                  <div>{!isFloat ? head : null}</div>
+                </Drag>
+              )}
+              {headReverse ? headLock : headFloat}
+            </DragBox>
+          )}
+        </DragWrap>
+      </React.Fragment>
     );
   }
 }

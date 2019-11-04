@@ -39,6 +39,7 @@ type PropsType = {
   onChangeSizeEnd?: Function,
   onUp?: Function,
   onOpen?: Function,
+  getHeadEvent?: Function,
   defaultIsLock?: boolean,
   lockDirection?: string,
   lockTop: number,
@@ -69,6 +70,7 @@ export default class Window extends React.Component<PropsType, any> {
   constructor(props: PropsType) {
     super(props);
     this.box = React.createRef();
+    this.dragArea = React.createRef();
     const { x: normalX, id, y: normalY, z: normalZ, index, zIndexArr, upDateZFn } = getZ();
     const { width: normalWidth, height: normalHeight } = initialState;
     const {
@@ -110,6 +112,7 @@ export default class Window extends React.Component<PropsType, any> {
       right: null,
       left: null,
       lockDirection,
+      dragHeight: 0,
     };
     this.zIndexArr = zIndexArr;
     this.upDateZFn = upDateZFn;
@@ -244,7 +247,9 @@ export default class Window extends React.Component<PropsType, any> {
       onClose({ isRemove: true });
     }
   };
-
+  upDateDragHeightFun = ({ dragHeight }) => {
+    this.setState({ dragHeight });
+  };
   componentDidMount() {
     this.freshWindowSize();
     window.addEventListener('resize', this.freshWindowSize);
@@ -258,6 +263,7 @@ export default class Window extends React.Component<PropsType, any> {
     this.shrink = this.mouseEvents.on('shrink', this.upDateSize);
     this.zIndex = this.mouseEvents.on('upDate_zIndex', this.upDateZIndex);
     this.lockupDateZ = this.mouseEvents.on('lockupDateZIndex', this.lockupDateZIndex);
+    this.upDateDragHeight = this.mouseEvents.on('upDateDragHeight', this.upDateDragHeightFun);
   }
 
   componentWillUnmount() {
@@ -318,6 +324,7 @@ export default class Window extends React.Component<PropsType, any> {
         });
       }
     }
+
     return true;
   }
   render() {
@@ -339,6 +346,7 @@ export default class Window extends React.Component<PropsType, any> {
       maxX,
       maxY,
       canScale,
+      dragHeight,
     } = this.state;
     const {
       children,
@@ -367,6 +375,8 @@ export default class Window extends React.Component<PropsType, any> {
       propsIsLock,
       onFixed,
       canDoubleClickScale,
+      head,
+      getHeadEvent,
     } = this.props;
     const newMaxWidth = maxWidth < minWidth ? windowWidth : maxWidth;
     const newMaxHeight = maxHeight < minHeight ? windowHeight : maxHeight;
@@ -374,7 +384,7 @@ export default class Window extends React.Component<PropsType, any> {
       windowWidth,
       windowHeight,
       width,
-      height,
+      height: dragHeight,
       isLock,
       propsIsLock,
       lockingWay,
@@ -394,6 +404,8 @@ export default class Window extends React.Component<PropsType, any> {
       lockDirection,
       onFixed,
       canDoubleClickScale,
+      head,
+      getHeadEvent,
     };
     return (
       <Box
@@ -419,6 +431,7 @@ export default class Window extends React.Component<PropsType, any> {
         <Content>
           <React.Fragment>
             <DragArea
+              ref={this.dragArea}
               onUp={this.onUp}
               onOpen={this.onOpen}
               mouseEvent={this.mouseEvents}
@@ -459,7 +472,12 @@ export default class Window extends React.Component<PropsType, any> {
               />
             ) : null}
           </React.Fragment>
-          <Children isFloat={isFloat} isLock={isLock} lockingWay={lockingWay}>
+          <Children
+            isFloat={isFloat}
+            isLock={isLock}
+            lockingWay={lockingWay}
+            dragHeight={dragHeight}
+          >
             {children}
           </Children>
         </Content>
