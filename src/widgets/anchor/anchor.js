@@ -70,7 +70,7 @@ export default ThemeProvider(
           const dom = document.getElementById(linkId);
           if (dom) {
             const top = dom.getBoundingClientRect().top;
-            if (top < offsetTop) {
+            if (top <= offsetTop) {
               linkInfo.push({ link: item, top });
             }
           }
@@ -80,6 +80,7 @@ export default ThemeProvider(
     };
 
     setScrollActiveLink = (linkInfo: Object[]) => {
+      console.log(this.getMaxTopLink(linkInfo));
       this.setState({
         activeLink: this.getMaxTopLink(linkInfo),
       });
@@ -99,6 +100,7 @@ export default ThemeProvider(
         children,
         slideType = 'circle',
         slideLine = true,
+        useHref = true,
       } = this.props;
       const { activeLink } = this.state;
       let index;
@@ -118,6 +120,7 @@ export default ThemeProvider(
             getLinks: this.updateLinks,
             activeLink,
             onClick: this.handleLinkClick,
+            useHref,
           }}
         >
           {affix ? <Affix offsetTop={offsetTop}>{element}</Affix> : element}
@@ -126,11 +129,14 @@ export default ThemeProvider(
     }
 
     handleLinkClick = (e: ?Event, href: string) => {
+      const { onClick } = this.props;
       this.isClick = true;
+
       this.setState({ activeLink: href });
+      onClick && onClick(e, href);
       setTimeout(() => {
         this.isClick = false;
-      }, 50);
+      }, 500);
     };
 
     getId(href: string): ?string {
