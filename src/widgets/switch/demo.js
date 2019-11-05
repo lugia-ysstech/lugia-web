@@ -100,7 +100,7 @@ export default class Sw extends Component<any, TypeState> {
                     },
                   },
                 },
-                SwitchContainer: {
+                Container: {
                   normal: {
                     width: 200,
                     height: 60,
