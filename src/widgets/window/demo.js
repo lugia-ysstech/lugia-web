@@ -250,12 +250,12 @@ export default class Demo extends React.Component {
           还有其他的一切事件回调，可以看文档偶
         </Component>
         <span onClick={this.onClick}>弹出面板</span>
-        <Component width={200} visible={visible} head={444} middle mask>
+        <Component width={200} visible={visible} y={50} head={444} middle mask>
           自定义头部
         </Component>
-        {/*<Modal drag visible>*/}
-        {/*<div style={{ width: 500, height: 500 }}>我是modal</div>*/}
-        {/*</Modal>*/}
+        <Modal drag visible>
+          <div style={{ width: 500, height: 500 }}>我是modal</div>
+        </Modal>
       </React.Fragment>
     );
   }
