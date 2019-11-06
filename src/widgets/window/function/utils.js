@@ -418,10 +418,6 @@ export function getDownXY({
       newX = x;
       newY = downY;
       break;
-    case 'topPiece':
-      newX = x;
-      newY = y;
-      break;
     case 'rightPiece':
       newX = x + width;
       newY = y;

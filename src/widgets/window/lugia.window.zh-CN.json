@@ -110,6 +110,16 @@
       "type": "any",
       "desc": "可自定义窗体头部内容",
       "defaultValue": null
+    },
+    "middle": {
+      "type": "boolean",
+      "desc": "初始化是否居中",
+      "defaultValue": false
+    },
+    "mask": {
+      "type": "boolean",
+      "desc": "是否开启遮罩",
+      "defaultValue": false
     }
   },
   "events": {

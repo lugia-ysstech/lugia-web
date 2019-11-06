@@ -37,7 +37,6 @@ export default class Four extends React.Component<TypeProps, any> {
   maxXY: Object;
   sourceXY: Object;
   throttle: boolean;
-  throttle: boolean;
   move: boolean;
   isUp: boolean;
   newDirection: string;
@@ -93,10 +92,7 @@ export default class Four extends React.Component<TypeProps, any> {
     };
   };
   getChildren = (Target: any, directions: Array<string>): Array<any> => {
-    if (!Array.isArray(directions)) {
-      return [];
-    }
-    if (directions.length === 0) {
+    if (!Array.isArray(directions) || directions.length === 0) {
       return [];
     }
     return directions.map((direction: string) => {
