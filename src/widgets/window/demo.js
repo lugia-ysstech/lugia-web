@@ -101,154 +101,154 @@ export default class Demo extends React.Component {
     const { visible } = this.state;
     return (
       <React.Fragment>
-        {/*<div onClick={this.divClick} />*/}
-        {/*/!*<Com ref={this.Com} />*!/*/}
-        {/*<Component*/}
-        {/*canScale*/}
-        {/*lockTop={80}*/}
-        {/*lockBottom={100}*/}
-        {/*lockingWay={'drag'}*/}
-        {/*lockDirection={'right'}*/}
-        {/*defaultIsLock={true}*/}
-        {/*onChangeSizeStart={this.onChangeSizeStart}*/}
-        {/*onChangeSize={this.onChangeSize}*/}
-        {/*onChangeSizeEnd={this.onChangeSizeEnd}*/}
-        {/*onDragStart={this.onDragStart}*/}
-        {/*onDrag={this.onDrag}*/}
-        {/*onDragEnd={this.onDragEnd}*/}
-        {/*onUp={this.onUp}*/}
-        {/*onOpen={this.onOpen}*/}
-        {/*width={700}*/}
-        {/*height={300}*/}
-        {/*x={900}*/}
-        {/*y={200}*/}
-        {/*maxWidth={1000}*/}
-        {/*minWidth={250}*/}
-        {/*maxHeight={500}*/}
-        {/*minimizeIcon={'lugia-icon-financial_shrink'}*/}
-        {/*//lugia-icon-financial_shrink*/}
-        {/*onClose={this.onClose}*/}
-        {/*onFixed={this.onFixed}*/}
-        {/*headReverse={true}*/}
-        {/*canMinimize*/}
-        {/*canDoubleClickScale*/}
-        {/*getHeadEvent={this.getHeadEvent}*/}
-        {/*ref={this.Component}*/}
-        {/*visible={visible}*/}
-        {/*>*/}
-        {/*<div>*/}
-        {/*<p style={{ fontSize: 40, color: 'red' }}> 拖拽我，或者拉伸，红快快就不动了</p>*/}
-        {/*<p style={{ fontSize: 40, color: 'red' }}> 拖拽我，或者拉伸，红快快就不动了</p>*/}
-        {/*<p style={{ fontSize: 40, color: 'red' }}> 拖拽我，或者拉伸，红快快就不动了</p>*/}
-        {/*<p style={{ fontSize: 40, color: 'red' }}> 拖拽我，或者拉伸，红快快就不动了</p>*/}
-        {/*<p style={{ fontSize: 40, color: 'red' }}> 拖拽我，或者拉伸，红快快就不动了</p>*/}
-        {/*<p style={{ fontSize: 40, color: 'red' }}> 拖拽我，或者拉伸，红快快就不动了</p>*/}
-        {/*<p style={{ fontSize: 40, color: 'red' }}> 拖拽我，或者拉伸，红快快就不动了</p>*/}
-        {/*<p style={{ fontSize: 40, color: 'red' }}> 拖拽我，或者拉伸，红快快就不动了</p>*/}
-        {/*<p style={{ fontSize: 40, color: 'red' }}> 拖拽我，或者拉伸，红快快就不动了</p>*/}
-        {/*<p style={{ fontSize: 40, color: 'red' }}> 拖拽我，或者拉伸，红快快就不动了</p>*/}
-        {/*<p style={{ fontSize: 40, color: 'red' }}> 拖拽我，或者拉伸，红快快就不动了</p>*/}
-        {/*<p style={{ fontSize: 40, color: 'red' }}> 拖拽我，或者拉伸，红快快就不动了</p>*/}
-        {/*<p style={{ fontSize: 40, color: 'red' }}> 拖拽我，或者拉伸，红快快就不动了</p>*/}
-        {/*<p style={{ fontSize: 40, color: 'red' }}> 拖拽我，或者拉伸，红快快就不动了</p>*/}
-        {/*<p style={{ fontSize: 40, color: 'red' }}> 拖拽我，或者拉伸，红快快就不动了</p>*/}
-        {/*</div>*/}
-        {/*</Component>*/}
-        {/*<Component canScale={true} />*/}
-        {/*<Component x={200} y={100} onMove={this.onMove}>*/}
-        {/*我是默认,带我去哪里都行偶*/}
-        {/*</Component>*/}
-        {/*<Component x={200} y={170} width={300} height={100}>*/}
-        {/*我可以设置宽高的初始值，你不管我，我就任性*/}
-        {/*</Component>*/}
-        {/*<Component x={600} y={100}>*/}
-        {/*我在这里，可以指定我的位置在哪里 x,y*/}
-        {/*</Component>*/}
-        {/*<Component z={100}>我层级比他们高耶,想多少，就多少</Component>*/}
-        {/*<Component x={200} y={290} canMinimize={true}>*/}
-        {/*点那个按钮,我可以缩小偶*/}
-        {/*</Component>*/}
-        {/*<Component x={200} y={380} canScale={true}>*/}
-        {/*我可以变胖变瘦，八个方向可以改变我偶 试一下*/}
-        {/*</Component>*/}
-        {/*<Component*/}
-        {/*canScale={true}*/}
-        {/*lockingWay={'drag'}*/}
-        {/*defaultIsLock={true}*/}
-        {/*lockDirection={'left'}*/}
-        {/*lockTop={100}*/}
-        {/*lockBottom={100}*/}
-        {/*maxWidth={500}*/}
-        {/*onChangeSizeEnd={this.onChangeSizeEnd}*/}
-        {/*>*/}
-        {/*<BoxL>*/}
-        {/*<p>锁定在左侧边的</p>*/}
-        {/*<input style={{ width: `${this.state.width}px` }} />*/}
-        {/*<div>*/}
-        {/*<p>dfsdfdfd6546546654</p>*/}
-        {/*<p>dfsdfdfd</p>*/}
-        {/*<p>dfsdfdfd</p>*/}
-        {/*<p>dfsdfdfd</p>*/}
-        {/*<p>dfsdfdfd</p>*/}
-        {/*<p>dfsdfdfd</p>*/}
-        {/*<p>dfsdfdfd</p>*/}
-        {/*<p>dfsdfdfd</p>*/}
-        {/*<p>dfsdfdfd</p>*/}
-        {/*<p>dfsdfdfd</p>*/}
-        {/*<p>dfsdfdfd</p>*/}
-        {/*<p>dfsdfdfd</p>*/}
-        {/*<p>dfsdfdfd</p>*/}
-        {/*<p>dfsdfdfd</p>*/}
-        {/*<p>dfsdfdfd</p>*/}
-        {/*<p>dfsdfdfd</p>*/}
-        {/*<p>dfsdfdfd</p>*/}
-        {/*<p>dfsdfdfd</p>*/}
-        {/*<p>dfsdfdfd</p>*/}
-        {/*<p>dfsdfdfd</p>*/}
-        {/*<p>dfsdfdfd</p>*/}
-        {/*<p>dfsdfdfd</p>*/}
-        {/*<p>dfsdfdfd</p>*/}
-        {/*<p>dfsdfdfd</p>*/}
-        {/*<p>dfsdfdfd</p>*/}
-        {/*<p>dfsdfdfd</p>*/}
-        {/*<p>dfsdfdfd</p>*/}
-        {/*<p>dfsdfdfd</p>*/}
-        {/*<p>dfsdfdfd</p>*/}
-        {/*</div>*/}
-        {/*</BoxL>*/}
-        {/*</Component>*/}
-        {/*<Component*/}
-        {/*canScale={true}*/}
-        {/*lockingWay={'drag'}*/}
-        {/*defaultIsLock={true}*/}
-        {/*lockDirection={'right'}*/}
-        {/*lockTop={100}*/}
-        {/*//lockBottom={100}*/}
-        {/*//maxWidth={500}*/}
-        {/*x={900}*/}
-        {/*y={200}*/}
-        {/*>*/}
-        {/*<p>锁定在右边的</p>*/}
-        {/*</Component>*/}
-        {/*<Component*/}
-        {/*x={600}*/}
-        {/*y={300}*/}
-        {/*lockingWay={'click'}*/}
-        {/*lockingIcon={'lugia-icon-financial_italic'}*/}
-        {/*minimizeIcon={'lugia-icon-direction_shrink'}*/}
-        {/*canMinimize*/}
-        {/*>*/}
-        {/*点那个按钮，我就不飘了，回到文档流里*/}
-        {/*</Component>*/}
-        {/*<Component x={600} y={380} onClose={() => {}}>*/}
-        {/*太多我了,可以关掉我偶*/}
-        {/*</Component>*/}
-        {/*<Component x={600} y={460} onClose={() => {}} headReverse={true}>*/}
-        {/*我的关闭按钮换位置喽*/}
-        {/*</Component>*/}
-        {/*<Component x={600} y={520} onClose={() => {}}>*/}
-        {/*还有其他的一切事件回调，可以看文档偶*/}
-        {/*</Component>*/}
+        <div onClick={this.divClick} />
+        {/*<Com ref={this.Com} />*/}
+        <Component
+          canScale
+          lockTop={80}
+          lockBottom={100}
+          lockingWay={'drag'}
+          lockDirection={'right'}
+          defaultIsLock={true}
+          onChangeSizeStart={this.onChangeSizeStart}
+          onChangeSize={this.onChangeSize}
+          onChangeSizeEnd={this.onChangeSizeEnd}
+          onDragStart={this.onDragStart}
+          onDrag={this.onDrag}
+          onDragEnd={this.onDragEnd}
+          onUp={this.onUp}
+          onOpen={this.onOpen}
+          width={700}
+          height={300}
+          x={900}
+          y={200}
+          maxWidth={1000}
+          minWidth={250}
+          maxHeight={500}
+          minimizeIcon={'lugia-icon-financial_shrink'}
+          //lugia-icon-financial_shrink
+          onClose={this.onClose}
+          onFixed={this.onFixed}
+          headReverse={true}
+          canMinimize
+          canDoubleClickScale
+          getHeadEvent={this.getHeadEvent}
+          ref={this.Component}
+          visible={visible}
+        >
+          <div>
+            <p style={{ fontSize: 40, color: 'red' }}> 拖拽我，或者拉伸，红快快就不动了</p>
+            <p style={{ fontSize: 40, color: 'red' }}> 拖拽我，或者拉伸，红快快就不动了</p>
+            <p style={{ fontSize: 40, color: 'red' }}> 拖拽我，或者拉伸，红快快就不动了</p>
+            <p style={{ fontSize: 40, color: 'red' }}> 拖拽我，或者拉伸，红快快就不动了</p>
+            <p style={{ fontSize: 40, color: 'red' }}> 拖拽我，或者拉伸，红快快就不动了</p>
+            <p style={{ fontSize: 40, color: 'red' }}> 拖拽我，或者拉伸，红快快就不动了</p>
+            <p style={{ fontSize: 40, color: 'red' }}> 拖拽我，或者拉伸，红快快就不动了</p>
+            <p style={{ fontSize: 40, color: 'red' }}> 拖拽我，或者拉伸，红快快就不动了</p>
+            <p style={{ fontSize: 40, color: 'red' }}> 拖拽我，或者拉伸，红快快就不动了</p>
+            <p style={{ fontSize: 40, color: 'red' }}> 拖拽我，或者拉伸，红快快就不动了</p>
+            <p style={{ fontSize: 40, color: 'red' }}> 拖拽我，或者拉伸，红快快就不动了</p>
+            <p style={{ fontSize: 40, color: 'red' }}> 拖拽我，或者拉伸，红快快就不动了</p>
+            <p style={{ fontSize: 40, color: 'red' }}> 拖拽我，或者拉伸，红快快就不动了</p>
+            <p style={{ fontSize: 40, color: 'red' }}> 拖拽我，或者拉伸，红快快就不动了</p>
+            <p style={{ fontSize: 40, color: 'red' }}> 拖拽我，或者拉伸，红快快就不动了</p>
+          </div>
+        </Component>
+        <Component canScale={true} />
+        <Component x={200} y={100} onMove={this.onMove}>
+          我是默认,带我去哪里都行偶
+        </Component>
+        <Component x={200} y={170} width={300} height={100}>
+          我可以设置宽高的初始值，你不管我，我就任性
+        </Component>
+        <Component x={600} y={100}>
+          我在这里，可以指定我的位置在哪里 x,y
+        </Component>
+        <Component z={100}>我层级比他们高耶,想多少，就多少</Component>
+        <Component x={200} y={290} canMinimize={true}>
+          点那个按钮,我可以缩小偶
+        </Component>
+        <Component x={200} y={380} canScale={true}>
+          我可以变胖变瘦，八个方向可以改变我偶 试一下
+        </Component>
+        <Component
+          canScale={true}
+          lockingWay={'drag'}
+          defaultIsLock={true}
+          lockDirection={'left'}
+          lockTop={100}
+          lockBottom={100}
+          maxWidth={500}
+          onChangeSizeEnd={this.onChangeSizeEnd}
+        >
+          <BoxL>
+            <p>锁定在左侧边的</p>
+            <input style={{ width: `${this.state.width}px` }} />
+            <div>
+              <p>dfsdfdfd6546546654</p>
+              <p>dfsdfdfd</p>
+              <p>dfsdfdfd</p>
+              <p>dfsdfdfd</p>
+              <p>dfsdfdfd</p>
+              <p>dfsdfdfd</p>
+              <p>dfsdfdfd</p>
+              <p>dfsdfdfd</p>
+              <p>dfsdfdfd</p>
+              <p>dfsdfdfd</p>
+              <p>dfsdfdfd</p>
+              <p>dfsdfdfd</p>
+              <p>dfsdfdfd</p>
+              <p>dfsdfdfd</p>
+              <p>dfsdfdfd</p>
+              <p>dfsdfdfd</p>
+              <p>dfsdfdfd</p>
+              <p>dfsdfdfd</p>
+              <p>dfsdfdfd</p>
+              <p>dfsdfdfd</p>
+              <p>dfsdfdfd</p>
+              <p>dfsdfdfd</p>
+              <p>dfsdfdfd</p>
+              <p>dfsdfdfd</p>
+              <p>dfsdfdfd</p>
+              <p>dfsdfdfd</p>
+              <p>dfsdfdfd</p>
+              <p>dfsdfdfd</p>
+              <p>dfsdfdfd</p>
+            </div>
+          </BoxL>
+        </Component>
+        <Component
+          canScale={true}
+          lockingWay={'drag'}
+          defaultIsLock={true}
+          lockDirection={'right'}
+          lockTop={100}
+          //lockBottom={100}
+          //maxWidth={500}
+          x={900}
+          y={200}
+        >
+          <p>锁定在右边的</p>
+        </Component>
+        <Component
+          x={600}
+          y={300}
+          lockingWay={'click'}
+          lockingIcon={'lugia-icon-financial_italic'}
+          minimizeIcon={'lugia-icon-direction_shrink'}
+          canMinimize
+        >
+          点那个按钮，我就不飘了，回到文档流里
+        </Component>
+        <Component x={600} y={380} onClose={() => {}}>
+          太多我了,可以关掉我偶
+        </Component>
+        <Component x={600} y={460} onClose={() => {}} headReverse={true}>
+          我的关闭按钮换位置喽
+        </Component>
+        <Component x={600} y={520} onClose={() => {}}>
+          还有其他的一切事件回调，可以看文档偶
+        </Component>
         <span onClick={this.onClick}>弹出面板</span>
         <Component width={200} visible={visible} head={444} middle mask>
           自定义头部
