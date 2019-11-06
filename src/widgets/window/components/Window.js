@@ -75,9 +75,10 @@ export default class Window extends React.Component<PropsType, any> {
     this.dragArea = React.createRef();
     const { x: normalX, id, y: normalY, z: normalZ, index, zIndexArr, upDateZFn } = getZ();
     const { width: normalWidth, height: normalHeight } = initialState;
+    const { middle } = props;
     const {
-      x = normalX,
-      y = normalY,
+      x = middle ? undefined : normalX,
+      y = middle ? undefined : normalY,
       z,
       width,
       height,

@@ -87,8 +87,24 @@ export const Box = styled.div`
   ${props => (props.isTransition ? 'transition:width 0.3s' : '')};
   opacity: ${props => getBoxOpacity(props)};
   overflow: hidden;
+  ${props => getMiddlePosition(props)};
 `;
-
+function getMiddlePosition(props) {
+  const { x, top } = props;
+  let position = '';
+  const isNoX = x === undefined;
+  const isNoY = top === undefined;
+  if (isNoX) {
+    position = 'left:50%;transform:translateX(-50%);';
+  }
+  if (isNoY) {
+    position = 'top:50%;transform:translateY(-50%);';
+  }
+  if (isNoX && isNoY) {
+    position = 'left:50%;top:50%;transform:translate(-50%,-50%);';
+  }
+  return position;
+}
 function getBoxOpacity(props) {
   const { lockDirection, lockingWay, isLock } = props;
   const { isDrag } = getLockingWay(lockingWay);
