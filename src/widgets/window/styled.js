@@ -120,7 +120,15 @@ export const Children = styled.div`
   height: calc(100% - ${props => (props.dragHeight ? props.dragHeight : dragHeight)}px);
   overflow: auto;
 `;
-
+export const Mask = styled.div`
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: ${props => props.zIndex};
+  background: rgba(0, 0, 0, 0.5);
+`;
 function getDragStyle(props) {
   const {
     left,

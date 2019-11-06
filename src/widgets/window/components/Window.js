@@ -7,7 +7,7 @@ import Four from './Four';
 import DragArea from './DragArea';
 import { getZ } from '../function/getZ';
 import initialState, { lockingWayFlag } from '../initialState';
-import { Box, Content, Children } from '../styled';
+import { Box, Content, Children, Mask } from '../styled';
 import { getComponentSize, getLockingWay } from '../function/utils';
 import { getNodeSize } from '../function/event';
 type PropsType = {
@@ -41,6 +41,8 @@ type PropsType = {
   onOpen?: Function,
   getHeadEvent?: Function,
   defaultIsLock?: boolean,
+  middle?: boolean,
+  mask?: boolean,
   lockDirection?: string,
   lockTop: number,
   lockBottom: number,
@@ -113,6 +115,7 @@ export default class Window extends React.Component<PropsType, any> {
       left: null,
       lockDirection,
       dragHeight: 0,
+      isDidMount: false,
     };
     this.zIndexArr = zIndexArr;
     this.upDateZFn = upDateZFn;
@@ -122,6 +125,7 @@ export default class Window extends React.Component<PropsType, any> {
     };
     const { mouseEvents } = props;
     this.mouseEvents = mouseEvents;
+    this.windowCenter = false;
   }
 
   onUp = (param: Object) => {
@@ -265,7 +269,6 @@ export default class Window extends React.Component<PropsType, any> {
     this.lockupDateZ = this.mouseEvents.on('lockupDateZIndex', this.lockupDateZIndex);
     this.upDateDragHeight = this.mouseEvents.on('upDateDragHeight', this.upDateDragHeightFun);
   }
-
   componentWillUnmount() {
     window.removeEventListener('resize', this.freshWindowSize);
     this.onDragMove.removeListener();
@@ -279,7 +282,7 @@ export default class Window extends React.Component<PropsType, any> {
     this.onDoubleClick.removeListener();
   }
   shouldComponentUpdate(props: PropsType, state: any) {
-    const { width, height, windowWidth, windowHeight, right, left } = state;
+    const { width, height, windowWidth, windowHeight, right, left, isDidMount } = state;
     const {
       lockDirection,
       lockTop,
@@ -289,9 +292,13 @@ export default class Window extends React.Component<PropsType, any> {
       maxHeight = windowHeight,
       lockingWay,
       isLock,
+      x,
+      y,
+      middle,
     } = props;
     const param = { node: this.box, minWidth, minHeight, maxWidth, maxHeight };
     let newWidth = width;
+    let newHeight = height;
     if (width === 'auto') {
       setTimeout(() => {
         const { w } = getNodeSize(param);
@@ -302,10 +309,19 @@ export default class Window extends React.Component<PropsType, any> {
     if (height === 'auto') {
       setTimeout(() => {
         const { h } = getNodeSize(param);
+        newHeight = h;
         this.setState({ height: h });
       }, 0);
     }
+
     const { isDrag } = getLockingWay(lockingWay);
+    if (middle && !isLock && !this.windowCenter && width !== 'auto' && height !== 'auto') {
+      this.setState({
+        x: x || (windowWidth - newWidth) / 2,
+        y: y || (windowHeight - newHeight) / 2,
+      });
+      this.windowCenter = true;
+    }
     if (isLock && isDrag) {
       if (right === null && lockDirection === 'right') {
         if (windowWidth && newWidth !== 'auto') {
@@ -324,7 +340,9 @@ export default class Window extends React.Component<PropsType, any> {
         });
       }
     }
-
+    if (!isDidMount) {
+      this.setState({ isDidMount: true });
+    }
     return true;
   }
   render() {
@@ -347,6 +365,7 @@ export default class Window extends React.Component<PropsType, any> {
       maxY,
       canScale,
       dragHeight,
+      isDidMount,
     } = this.state;
     const {
       children,
@@ -377,6 +396,7 @@ export default class Window extends React.Component<PropsType, any> {
       canDoubleClickScale,
       head,
       getHeadEvent,
+      mask,
     } = this.props;
     const newMaxWidth = maxWidth < minWidth ? windowWidth : maxWidth;
     const newMaxHeight = maxHeight < minHeight ? windowHeight : maxHeight;
@@ -408,80 +428,83 @@ export default class Window extends React.Component<PropsType, any> {
       getHeadEvent,
     };
     return (
-      <Box
-        ref={this.box}
-        width={width}
-        height={height}
-        x={x}
-        left={left}
-        right={right}
-        top={y}
-        zIndex={zIndex}
-        onMouseDown={this.onMouseDown}
-        onClick={this.onClick}
-        isLock={isLock}
-        isFloat={isFloat}
-        lockDirection={lockDirection}
-        lockingWay={lockingWay}
-        isTransition={isTransition}
-        minWidth={minWidth}
-        minHeight={minHeight}
-        lockBottom={lockBottom}
-      >
-        <Content>
-          <React.Fragment>
-            <DragArea
-              ref={this.dragArea}
-              onUp={this.onUp}
-              onOpen={this.onOpen}
-              mouseEvent={this.mouseEvents}
-              onDragStart={onDragStart}
-              onDrag={onDrag}
-              onDragEnd={onDragEnd}
-              onClose={this.onClose}
-              upDateZFn={this.upDateZFn}
-              zIndexArr={this.zIndexArr}
-              componentIndex={componentIndex}
-              onChangeLock={onChangeLock}
-              hasClose={hasClose}
-              {...config}
-            />
-            {((lockingWay === clickLock && !isLock) || lockingWay !== clickLock) &&
-            !isFloat &&
-            canScale ? (
-              <Four
+      <React.Fragment>
+        <Box
+          ref={this.box}
+          width={width}
+          height={height}
+          x={x}
+          left={left}
+          right={right}
+          top={y}
+          zIndex={zIndex}
+          onMouseDown={this.onMouseDown}
+          onClick={this.onClick}
+          isLock={isLock}
+          isFloat={isFloat}
+          lockDirection={lockDirection}
+          lockingWay={lockingWay}
+          isTransition={isTransition}
+          minWidth={minWidth}
+          minHeight={minHeight}
+          lockBottom={lockBottom}
+        >
+          <Content>
+            <React.Fragment>
+              <DragArea
+                ref={this.dragArea}
+                onUp={this.onUp}
+                onOpen={this.onOpen}
                 mouseEvent={this.mouseEvents}
-                x={x}
-                y={y}
-                maxX={maxX}
-                maxY={maxY}
-                isLock={isLock}
-                width={width}
-                height={height}
-                minWidth={minWidth}
-                minHeight={minHeight}
-                maxWidth={newMaxWidth}
-                maxHeight={newMaxHeight}
-                canScale={canScale}
-                onChangeSizeStart={onChangeSizeStart}
-                onChangeSize={onChangeSize}
-                onChangeSizeEnd={onChangeSizeEnd}
-                boxNode={this.box}
-                lockDirection={lockDirection}
-                isLock={isLock}
+                onDragStart={onDragStart}
+                onDrag={onDrag}
+                onDragEnd={onDragEnd}
+                onClose={this.onClose}
+                upDateZFn={this.upDateZFn}
+                zIndexArr={this.zIndexArr}
+                componentIndex={componentIndex}
+                onChangeLock={onChangeLock}
+                hasClose={hasClose}
+                {...config}
               />
-            ) : null}
-          </React.Fragment>
-          <Children
-            isFloat={isFloat}
-            isLock={isLock}
-            lockingWay={lockingWay}
-            dragHeight={dragHeight}
-          >
-            {children}
-          </Children>
-        </Content>
-      </Box>
+              {((lockingWay === clickLock && !isLock) || lockingWay !== clickLock) &&
+              !isFloat &&
+              canScale ? (
+                <Four
+                  mouseEvent={this.mouseEvents}
+                  x={x}
+                  y={y}
+                  maxX={maxX}
+                  maxY={maxY}
+                  isLock={isLock}
+                  width={width}
+                  height={height}
+                  minWidth={minWidth}
+                  minHeight={minHeight}
+                  maxWidth={newMaxWidth}
+                  maxHeight={newMaxHeight}
+                  canScale={canScale}
+                  onChangeSizeStart={onChangeSizeStart}
+                  onChangeSize={onChangeSize}
+                  onChangeSizeEnd={onChangeSizeEnd}
+                  boxNode={this.box}
+                  lockDirection={lockDirection}
+                  isLock={isLock}
+                />
+              ) : null}
+            </React.Fragment>
+            <Children
+              isFloat={isFloat}
+              isLock={isLock}
+              lockingWay={lockingWay}
+              dragHeight={dragHeight}
+            >
+              {children}
+            </Children>
+          </Content>
+        </Box>
+        {mask && isDidMount ? <Mask zIndex={zIndex - 1} /> : null}
+      </React.Fragment>
     );
   }
 }

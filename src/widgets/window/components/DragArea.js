@@ -261,13 +261,11 @@ export default class DragArea extends React.Component<TypeProps, any> {
       return;
     }
     const { isDown, isFixed } = this.state;
-    if (!isDown || this.up || isFixed) {
-      return;
-    }
     const moveEqualDown = this.moveEqualDown(e);
-    if (moveEqualDown || this.throttle) {
+    if (!isDown || this.up || isFixed || moveEqualDown || this.throttle) {
       return;
     }
+
     this.throttle = true;
     this.move = true;
 
@@ -362,9 +360,7 @@ export default class DragArea extends React.Component<TypeProps, any> {
 
       return;
     }
-    const { clientX: currentX, clientY: currentY } = e;
-    const { downX, downY } = this.onMouseDownClient;
-    if (downX === currentX && downY === currentY) {
+    if (this.moveEqualDown(e)) {
       return;
     }
 
@@ -450,8 +446,7 @@ export default class DragArea extends React.Component<TypeProps, any> {
   intoFatherContainer = () => {
     const { mouseEvent } = this.props;
     const { isLock } = this.props;
-    const newIsLock = !isLock;
-    mouseEvent.emit('upDate_isLock', { isLock: newIsLock });
+    mouseEvent.emit('upDate_isLock', { isLock: !isLock });
   };
   onClose = () => {
     const { onClose } = this.props;
