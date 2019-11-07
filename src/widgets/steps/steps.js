@@ -139,8 +139,16 @@ class Steps extends Component<StepsProps, StepsState> {
     );
   }
   getStepsConfig(child: Object, i: number) {
-    const { orientation, stepType, size, currentStepNumber, desAlign } = this.props;
+    const {
+      orientation,
+      stepType,
+      size,
+      currentStepNumber,
+      desAlign,
+      getPartOfThemeHocProps,
+    } = this.props;
     return {
+      ...getPartOfThemeHocProps('Step'),
       orientation,
       stepType,
       size,
