@@ -218,3 +218,6 @@ export default class Container extends React.Component<TypeProps, any> {
     return this.getComponent();
   }
 }
+Container.defaultProps = {
+  middle: true,
+};
