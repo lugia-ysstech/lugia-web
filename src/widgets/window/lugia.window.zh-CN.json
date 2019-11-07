@@ -1,0 +1,279 @@
+{
+  "widgetName": "Window",
+  "title": "窗体",
+  "desc": "支持拖拽的窗体组件",
+  "props": {
+    "visible": {
+      "type": "boolean",
+      "desc": "组件是否显示",
+      "defaultValue": true
+    },
+    "width": {
+      "type": "number",
+      "desc": "窗体宽度",
+      "defaultValue": 50
+    },
+    "height": {
+      "type": "number",
+      "desc": "窗体高度",
+      "defaultValue": 50
+    },
+    "minWidth": {
+      "type": "number",
+      "desc": "窗体最小宽度",
+      "defaultValue": 50
+    },
+    "minHeight": {
+      "type": "number",
+      "desc": "窗体最小高度",
+      "defaultValue": 50
+    },
+    "maxWidth": {
+      "type": "number",
+      "desc": "窗体最大高度"
+    },
+    "maxHeight": {
+      "type": "number",
+      "desc": "窗体最大宽度"
+    },
+    "x": {
+      "type": "number",
+      "desc": "窗体横坐标位置",
+      "defaultValue": 100
+    },
+    "y": {
+      "type": "number",
+      "desc": "窗体纵坐标位置",
+      "defaultValue": 100
+    },
+    "canScale": {
+      "type": "boolean",
+      "desc": "是否支持缩放",
+      "defaultValue": false
+    },
+    "canDoubleClickScale": {
+      "type": "boolean",
+      "desc": "是否支持双击放大和缩小",
+      "defaultValue": false
+    },
+    "canMinimize": {
+      "type": "boolean",
+      "desc": "是否支持最小化按钮显示",
+      "defaultValue": false
+    },
+    "minimizeIcon": {
+      "type": "iconClass",
+      "desc": "窗体最小化按钮图标",
+      "defaultValue": false
+    },
+    "lockingWay": {
+      "type": "lockingWayType",
+      "desc": "窗体锁定方式",
+      "defaultValue": "default"
+    },
+    "headReverse": {
+      "type": "boolean",
+      "desc": "头部按钮位置是否反转",
+      "defaultValue": false
+    },
+    "lockingIcon": {
+      "type": "iconClass",
+      "desc": "窗体锁定按钮图标,这个属性在lockingWay为click的前提下生效",
+      "defaultValue": "lugia-icon-financial_tag"
+    },
+    "defaultIsLock": {
+      "type": "boolean",
+      "desc": "初始化窗体是否锁定,这个属性在lockingWay为click | drag的前提下生效",
+      "defaultValue": false
+    },
+    "isLock": {
+      "type": "boolean",
+      "desc": "窗体是否始终锁定状态",
+      "defaultValue": false
+    },
+    "lockDirection": {
+      "type": "lockDirectionType",
+      "desc": "指定窗体锁定方向 这个属性在lockingWay为drag的前提下生效",
+      "defaultValue": "left"
+    },
+    "lockTop": {
+      "type": "number",
+      "desc": "指定窗体锁定相对窗口顶部的距离 这个属性在lockingWay为drag的前提下生效",
+      "defaultValue": 0
+    },
+    "lockBottom": {
+      "type": "number",
+      "desc": "指定窗体锁定相对窗口底部的距离 这个属性在lockingWay为drag的前提下生效",
+      "defaultValue": 0
+    },
+    "head": {
+      "type": "any",
+      "desc": "可自定义窗体头部内容",
+      "defaultValue": null
+    },
+    "middle": {
+      "type": "boolean",
+      "desc": "初始化是否居中",
+      "defaultValue": false
+    },
+    "mask": {
+      "type": "boolean",
+      "desc": "是否开启遮罩",
+      "defaultValue": false
+    }
+  },
+  "events": {
+    "onChange": {
+      "desc": "开关状态改变时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "改变状态触发的DOM事件",
+          "type": "ChangeType"
+        }
+      ]
+    },
+    "onDragStart": {
+      "desc": "拖拽开始时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "改变状态触发的DOM事件"
+        },
+        {
+          "name": "x",
+          "desc": "横向坐标值"
+        },
+        {
+          "name": "y",
+          "desc": "纵向坐标值"
+        },
+        {
+          "name": "lockDirection",
+          "desc": "锁定方向"
+        }
+      ]
+    },
+    "onDrag": {
+      "desc": "拖拽结束触发",
+      "args": [
+        {
+          "name": "clientX",
+          "desc": "点击位置距离当前body可视区的x坐标"
+        },
+        {
+          "name": "clientY",
+          "desc": "点击位置距离当前body可视区的y坐标"
+        },
+        {
+          "name": "left",
+          "desc": "相对窗口左边的距离"
+        },
+        {
+          "name": "top",
+          "desc": "相对窗口顶部的距离"
+        }
+      ]
+    },
+    "onDragEnd": {
+      "desc": "拖拽过程中触发",
+      "args": [
+        {
+          "name": "isLock",
+          "desc": "窗体是否锁定"
+        },
+        {
+          "name": "lockDirection",
+          "desc": "窗体锁定方向"
+        }
+      ]
+    },
+    "onChangeSizeStart": {
+      "desc": "窗体尺寸开始改变时触发",
+      "args": [
+        {
+          "name": "x",
+          "desc": "点击位置距离当前body可视区的x坐标"
+        },
+        {
+          "name": "y",
+          "desc": "点击位置距离当前body可视区的y坐标"
+        }
+      ]
+    },
+    "onChangeSize": {
+      "desc": "窗体尺寸改变过程中触发",
+      "args": [
+        {
+          "name": "width",
+          "desc": "窗体宽度"
+        },
+        {
+          "name": "height",
+          "desc": "窗体高度"
+        }
+      ]
+    },
+    "onChangeEnd": {
+      "desc": "窗体尺寸改变结束触发",
+      "args": [
+        {
+          "name": "width",
+          "desc": "窗体宽度"
+        },
+        {
+          "name": "height",
+          "desc": "窗体高度"
+        }
+      ]
+    },
+    "getHeadEvent": {
+      "desc": "组件加载完成调用",
+      "args": [
+        {
+          "name": "lockDirection",
+          "desc": "返回窗体头部区域的事件"
+        }
+      ]
+    },
+    "onUp": {
+      "desc": "窗体最小化时触发",
+      "args": [
+        {
+          "name": "lockDirection",
+          "desc": "窗体锁定方向"
+        }
+      ]
+    },
+    "onOpen": {
+      "desc": "窗体由最小化展开时触发",
+      "args": [
+        {
+          "name": "lockDirection",
+          "desc": "窗体锁定方向"
+        },
+        {
+          "name": "isLock",
+          "desc": "窗体是否锁定"
+        }
+      ]
+    },
+    "onClose": {
+      "desc": "窗体关闭时触发"
+    },
+    "onFixed": {
+      "desc": "窗体固定时触发",
+      "args": [
+        {
+          "name": "isFixed",
+          "desc": "窗体是否固定"
+        }
+      ]
+    }
+  },
+  "type": {
+    "lockingWayType": ["default", "click", "drag"],
+    "lockDirectionType": ["left", "right"]
+  },
+  "category": ["数据录入"]
+}
