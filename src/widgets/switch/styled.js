@@ -8,9 +8,9 @@ import { px2remcss } from '../css/units';
 const em = px2remcss;
 
 const { themeColor } = colorsFunc();
-export const SwitchContainer = CSSProvider({
+export const Container = CSSProvider({
   tag: 'span',
-  className: 'SwitchContainer',
+  className: 'Container',
   normal: {
     selectNames: [
       ['width'],

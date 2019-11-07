@@ -36,6 +36,7 @@ class InnerCloseDemo extends React.Component<any, any> {
   render() {
     return (
       <Popover
+        showClearButton
         placement="top"
         title={title}
         action="click"

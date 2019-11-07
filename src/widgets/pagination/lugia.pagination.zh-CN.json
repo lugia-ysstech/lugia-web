@@ -56,7 +56,7 @@
       "desc": "当添加该属性时，显示为简单分页"
     }
   },
-  "event": {
+  "events": {
     "onChange": {
       "desc": "页码改变的回调，参数是改变后的页码及每页条数",
       "args": [
@@ -250,6 +250,11 @@
             ["padding"],
             ["opacity"]
           ]
+        },
+        "PaginationText": {
+          "name": "快速跳至提醒文字",
+          "desc": "快速跳至提醒文字",
+          "normal": [["color"], ["font"], ["fontSize"], ["cursor"]]
         }
       }
     },

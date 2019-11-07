@@ -1,11 +1,23 @@
 {
   "name": "@lugia/lugia-web",
-  "version": "1.1.8-alpha-6",
+  "version": "1.1.8",
+  "keywords": [
+    "lugia",
+    "design",
+    "ui",
+    "framework",
+    "frontend",
+    "react",
+    "react-component",
+    "component",
+    "components"
+  ],
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
     "@lugia/css": "^1.0.18",
+    "@lugia/listener": "^1.0.2",
     "@lugia/math": "^1.0.8",
     "@lugia/object-utils": "^1.0.14",
     "@lugia/ramada": "^1.0.2",

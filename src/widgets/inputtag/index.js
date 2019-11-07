@@ -351,11 +351,12 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   getClearButton() {
     const { canClear, getPartOfThemeProps } = this.props;
     const themeProps = getPartOfThemeProps('SwitchIcon');
-    const Icon = this.isEmpty() ? (
-      <CommonIcon themeProps={themeProps} iconClass={Pull} />
-    ) : canClear ? (
-      <CommonIcon themeProps={themeProps} iconClass={Clear} onClick={this.onClear} />
-    ) : null;
+    const Icon =
+      this.isEmpty() || !canClear ? (
+        <CommonIcon themeProps={themeProps} iconClass={Pull} />
+      ) : (
+        <CommonIcon themeProps={themeProps} iconClass={Clear} onClick={this.onClear} />
+      );
     return <IconWrap themeProps={themeProps}>{Icon}</IconWrap>;
   }
 
