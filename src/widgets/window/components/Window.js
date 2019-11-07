@@ -405,7 +405,7 @@ export default class Window extends React.Component<PropsType, any> {
       windowWidth,
       windowHeight,
       width,
-      height: dragHeight,
+      height,
       isLock,
       propsIsLock,
       lockingWay,
