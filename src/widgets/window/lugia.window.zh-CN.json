@@ -114,7 +114,7 @@
     "middle": {
       "type": "boolean",
       "desc": "初始化是否居中",
-      "defaultValue": false
+      "defaultValue": true
     },
     "mask": {
       "type": "boolean",

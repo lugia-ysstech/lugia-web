@@ -149,7 +149,7 @@ export default class Window extends React.Component<PropsType, any> {
     this.setState({ ...this.oldSize, ...param });
   };
   freshWindowSize = () => {
-    const { innerWidth, innerHeight } = window;
+    const { offsetWidth: innerWidth, offsetHeight: innerHeight } = document.body;
     const { width, height, x, y, isDoubleClick } = this.state;
     const size = isDoubleClick ? { width: innerWidth, height: innerHeight } : { width, height };
     this.setState({
@@ -405,7 +405,7 @@ export default class Window extends React.Component<PropsType, any> {
       windowWidth,
       windowHeight,
       width,
-      height: dragHeight,
+      height,
       isLock,
       propsIsLock,
       lockingWay,
