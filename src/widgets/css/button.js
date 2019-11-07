@@ -3,7 +3,7 @@
  * create by guorg
  * @flow
  */
-import CSSComponent from '@lugia/theme-css-hoc';
+import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import { getBorderRadius } from '@lugia/theme-utils';
 import colorsFunc from '../css/stateColor';
 import { px2remcss } from '../css/units';
@@ -386,9 +386,7 @@ export const ButtonOut = CSSComponent({
     },
   },
   css: css`
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: inline-block;
     margin-bottom: 0;
     box-sizing: border-box;
     touch-action: manipulation;
@@ -511,4 +509,16 @@ export const Text = CSSComponent({
       return getTextHoverStyle(propsConfig);
     },
   },
+});
+
+export const ButtonContent = StaticComponent({
+  tag: 'span',
+  className: 'ButtonContent',
+  css: css`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  `,
 });

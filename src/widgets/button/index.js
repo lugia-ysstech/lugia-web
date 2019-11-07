@@ -14,6 +14,7 @@ import DelayHoc from '../common/DelayHoc';
 import MouseEventAdaptor from '../common/MouseEventAdaptor';
 import {
   ButtonOut,
+  ButtonContent,
   Text,
   getTextNormalTheme,
   getTextHoverStyle,
@@ -229,7 +230,7 @@ export default ThemeProvider(
               {...addMouseEvent(this, mouseConfig)}
               {...addFocusBlurEvent(this)}
             >
-              {this.handleChildren()}
+              <ButtonContent>{this.handleChildren()}</ButtonContent>
             </ButtonOut>
           );
         }
