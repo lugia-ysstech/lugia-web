@@ -7,7 +7,7 @@ import * as React from 'react';
 import { cloneElement } from 'react';
 import BreadcrumbItem from './breadcrumbItem';
 import { getHrefs, replaceStr } from '../common/StringUtils';
-import { BreadcrumbContainer } from '../css/breadcrumb';
+import { BreadcrumbContainer, FlexContainer } from '../css/breadcrumb';
 import Widget from '../consts/index';
 
 export type Route = {
@@ -149,7 +149,9 @@ export default class Breadcrumb extends React.Component<BreadcrumbProps, any> {
       const breadCrumbItemConfig = this.getBreadCrumbItemConfig(routes, params);
       return (
         <BreadcrumbContainer themeProps={wrapThemeProps}>
-          {renderItem(breadCrumbItemConfig, separator, lastSeparator, itemTheme)}
+          <FlexContainer>
+            {renderItem(breadCrumbItemConfig, separator, lastSeparator, itemTheme)}
+          </FlexContainer>
         </BreadcrumbContainer>
       );
     }
@@ -185,6 +187,10 @@ export default class Breadcrumb extends React.Component<BreadcrumbProps, any> {
           theme: itemTheme,
         }));
     }
-    return <BreadcrumbContainer themeProps={wrapThemeProps}>{crumbs}</BreadcrumbContainer>;
+    return (
+      <BreadcrumbContainer themeProps={wrapThemeProps}>
+        <FlexContainer>{crumbs}</FlexContainer>
+      </BreadcrumbContainer>
+    );
   }
 }

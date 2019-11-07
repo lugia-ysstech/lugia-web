@@ -1,11 +1,10 @@
 import colorsFunc from '../css/stateColor';
 import { px2remcss } from '../css/units';
-import CSSComponent, { css } from '@lugia/theme-css-hoc';
+import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 
 export const { themeColor, mediumGreyColor, darkGreyColor, blackColor } = colorsFunc();
 export const DefaultColor = mediumGreyColor;
 export const HoverDefaultColor = blackColor;
-export const FontWeight = 500;
 export const FontSize = px2remcss(14);
 export const separatorMarginLeft = px2remcss(10);
 export const separatorMarginRight = px2remcss(10);
@@ -131,11 +130,7 @@ export const BreadcrumbContainer = CSSComponent({
       const { height = 30 } = themeMeta;
       return `line-height: ${px2remcss(height)}`;
     },
-    defaultTheme: {
-      padding: {
-        left: 20,
-      },
-    },
+    defaultTheme: {},
   },
   hover: {
     selectNames: [['border'], ['borderRadius'], ['boxShadow'], ['background'], ['opacity']],
@@ -167,21 +162,25 @@ export const ItemWrap = CSSComponent({
   `,
 });
 
-export const FlexBox = CSSComponent({
+export const FlexBox = StaticComponent({
   tag: 'div',
   className: 'breadcrumbContainer',
-  normal: {
-    selectNames: [],
-  },
-  hover: {
-    selectNames: [],
-  },
   css: css`
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
     width: 100%;
+    box-sizing: border-box;
+  `,
+});
+
+export const FlexContainer = StaticComponent({
+  tag: 'div',
+  className: 'breadcrumbContainer',
+  css: css`
+    display: flex;
+    flex-wrap: nowrap;
     box-sizing: border-box;
   `,
 });

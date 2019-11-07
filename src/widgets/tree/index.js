@@ -12,6 +12,7 @@ import { getTreeData } from '../menu/utils';
 class Tree extends React.Component<any, any> {
   static defaultProps = {
     translateTreeData: false,
+    pathSeparator: '/',
     valueField: 'value',
     displayField: 'text',
   };
@@ -34,9 +35,8 @@ class Tree extends React.Component<any, any> {
   };
 
   mapDataTranslateTreeData = () => {
-    const { igronSelectField = 'disabled' } = this.props;
-
-    return getTreeData({ ...this.props, igronSelectField });
+    const { igronSelectField = 'disabled', pathSeparator = '/' } = this.props;
+    return getTreeData({ ...this.props, igronSelectField }, pathSeparator);
   };
 }
 

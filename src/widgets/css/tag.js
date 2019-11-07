@@ -4,11 +4,11 @@
  *
  * @flow
  */
-import CSSComponent, { css } from '@lugia/theme-css-hoc';
+import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import colorsFunc from '../css/stateColor';
 import { px2remcss } from '../css/units';
 import { FontSize } from '../css';
-import { isNumber, toNumber } from '../common/NumberUtils';
+import { toNumber } from '../common/NumberUtils';
 
 export const {
   themeColor,
@@ -103,9 +103,6 @@ const getDefaultCSS = (type: styleType, params: Object) => {
     : getCustomsCSS(params);
 };
 
-const getLineHeight = (height: number) => {
-  return toNumber(height, defaultHeight);
-};
 const getHoverBgColorFromNormalOrHover = (params: Object, defaultBgColor: string) => {
   const { normal, hover } = params;
   const { background: hoverBg = {} } = hover;
@@ -268,10 +265,6 @@ export const ItemText = CSSComponent({
   className: 'ItemText',
   normal: {
     selectNames: [],
-    getCSS: themeMeta => {
-      const { height } = themeMeta;
-      return `line-height: ${px2remcss(getLineHeight(height))}`;
-    },
   },
   hover: {
     selectNames: [],
@@ -284,6 +277,7 @@ export const ItemText = CSSComponent({
     white-space: nowrap;
     text-overflow: ellipsis;
     margin: 0;
+    vertical-align: middle;
     vertical-align: top;
   `,
 });
@@ -309,10 +303,7 @@ export const CloseButtonWrap = CSSComponent({
   },
   css: css`
     display: inline-block;
-    position: relative;
     box-sizing: content-box;
-    top: 50%;
-    transform: translateY(-45%);
     margin-left: ${px2remcss(5)};
     transition: all 0.3s;
   `,
@@ -423,4 +414,17 @@ export const OptionalWrap = CSSComponent({
     transition: all 0.15s ease-in;
   `,
   option: { hover: true, active: true },
+});
+
+export const FlexBox = StaticComponent({
+  tag: 'div',
+  className: 'breadcrumbContainer',
+  css: css`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  `,
 });

@@ -9,6 +9,7 @@ import Label from './';
 import Theme from '../theme';
 import { css, StaticComponent } from '@lugia/theme-css-hoc';
 import Widget from '../consts/index';
+import message from '../message';
 
 type PropsType = {};
 type StateType = {};
@@ -27,7 +28,7 @@ class LabelDemo extends React.Component<PropsType, StateType> {
   render() {
     const config = {
       [Widget.Label]: {
-        LabelConfig: {
+        Container: {
           normal: {
             color: 'orange',
             font: {
@@ -43,33 +44,86 @@ class LabelDemo extends React.Component<PropsType, StateType> {
               right: 30,
               bottom: 60,
             },
+            background: {
+              color: '#C6E0B4',
+            },
           },
           hover: {
             color: 'pink',
             cursor: 'pointer',
           },
         },
+        LabelPrefix: {
+          normal: {
+            color: 'red',
+            lineHeight: 70,
+            margin: {
+              right: 10,
+            },
+          },
+        },
       },
     };
 
+    const configWidth = {
+      [Widget.Label]: {
+        Container: {
+          normal: {
+            color: 'orange',
+            font: {
+              weight: 'bold',
+              size: 30,
+            },
+            width: '100%',
+            height: 200,
+            background: {
+              color: 'pink',
+            },
+            textAlign: 'center',
+            lineHeight: 70,
+            margin: {
+              top: 60,
+            },
+            padding: {
+              right: 30,
+              bottom: 60,
+            },
+            cursor: 'pointer',
+          },
+          hover: {
+            color: 'yellow',
+          },
+        },
+      },
+    };
     return (
       <div>
         <Theme config={config}>
+          <LabelBox>主题配置 text: showPrefix : *</LabelBox>
+          <Label text={'这是一段文本'} showPrefix prefix={'*'} />
+
           <LabelBox>主题配置 text:</LabelBox>
-          <Label text={'是立刻搭街坊螺丝扣'} />
+          <Label text={'这是一段很长很长的文本'} />
           <LabelBox>主题配置 children:</LabelBox>
-          <Label>深刻的很健康</Label>
+          <Label>这是一段很长很长的文本</Label>
+        </Theme>
+        <Theme config={configWidth}>
+          <LabelBox>主题配置 click事件:</LabelBox>
+          <Label text={'这是一段文本'} onClick={this.onClick} />
         </Theme>
 
         <LabelBox>默认文本 text:</LabelBox>
-        <Label text={'的身份回到'} />
+        <Label text={'这是一段文本'} />
         <LabelBox>默认文本 children:</LabelBox>
-        <Label>科幻电视剧</Label>
+        <Label>这是一段文本</Label>
         <LabelBox>默认文本 无参数:</LabelBox>
         <Label />
       </div>
     );
   }
+  onClick = () => {
+    message.info('do Click', 1);
+  };
 }
 
 export default LabelDemo;

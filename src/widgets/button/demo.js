@@ -264,6 +264,14 @@ export default () => {
           Button
         </Button>
       </div>
+      <div>
+        <p>inline</p>
+        <Button>hello</Button>
+        <Button type="primary">Primary</Button>
+        <Button type="success">Success</Button>
+        <Button type="warning">Warning</Button>
+        <Button type="danger">Danger</Button>
+      </div>
     </React.Fragment>
   );
 };
