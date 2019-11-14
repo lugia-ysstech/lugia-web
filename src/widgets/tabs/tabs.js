@@ -77,7 +77,15 @@ const WindowContainer = CSSComponent({
   tag: 'div',
   className: 'WindowContainer',
   normal: {
-    selectNames: [['background'], ['padding'], ['border'], ['borderRadius'], ['opacity']],
+    selectNames: [
+      ['background'],
+      ['padding'],
+      ['border'],
+      ['borderRadius'],
+      ['opacity'],
+      ['width'],
+      ['height'],
+    ],
     defaultTheme: {
       background: {
         color: '#f8f8f8',
@@ -96,11 +104,11 @@ const WindowContainer = CSSComponent({
   `,
 });
 
-const OutContainer = StaticComponent({
+const OutContainer = CSSComponent({
   tag: 'div',
   className: 'OutContainer',
   normal: {
-    selectNames: [],
+    selectNames: [['width'], ['height']],
   },
   disabled: {
     selectNames: [],
@@ -112,11 +120,11 @@ const OutContainer = StaticComponent({
     overflow: hidden;
   `,
 });
-const VerticalOutContainer = StaticComponent({
+const VerticalOutContainer = CSSComponent({
   tag: 'div',
   className: 'OutContainer',
   normal: {
-    selectNames: [],
+    selectNames: [['width'], ['height']],
   },
   disabled: {
     selectNames: [],
@@ -247,8 +255,9 @@ class TabsBox extends Component<TabsProps, TabsState> {
     const { themeProps, tabType, tabPosition } = this.props;
     const ContainerBox =
       tabType === 'line' && isVertical(tabPosition) ? VerticalOutContainer : OutContainer;
+    const containerThemeProps = this.props.getPartOfThemeProps('Container');
     let target = (
-      <ContainerBox>
+      <ContainerBox className={'OutContainer'} themeProps={containerThemeProps}>
         <TabHeader {...this.getTabHeaderProps()} />
         {this.getChildrenContent()}
       </ContainerBox>
@@ -256,7 +265,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
     if (tabType === 'line') {
       if (tabPosition === 'right' || tabPosition === 'bottom') {
         target = (
-          <ContainerBox>
+          <ContainerBox themeProps={containerThemeProps}>
             {this.getChildrenContent()}
             <TabHeader {...this.getTabHeaderProps()} />
           </ContainerBox>
@@ -275,11 +284,12 @@ class TabsBox extends Component<TabsProps, TabsState> {
                 bottom: 10,
               },
               background: {
-                color: '#f1f1f1',
+                color: '#c9c9c9',
               },
             },
           },
         },
+        containerThemeProps,
         this.props.getPartOfThemeProps('WindowContainer')
       );
 
