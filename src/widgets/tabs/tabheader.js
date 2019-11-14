@@ -250,6 +250,7 @@ const HscrollerContainer = CSSComponent({
     box-sizing: border-box;
     white-space: nowrap;
     transition: all 0.5s;
+    min-width: 100%;
     transform: translateX(${props => px2remcss(props.x)});
   `,
 });
@@ -314,7 +315,7 @@ const HTabsOutContainer = CSSComponent({
   tag: 'div',
   className: 'TitleContainer',
   normal: {
-    selectNames: [['width'], ['background']],
+    selectNames: [['width'], ['background'], ['textAlign']],
     getThemeMeta: (theme: Object, themeProps: Object) => {
       const { background = { color: '#fff' } } = theme;
       const { propsConfig: { tabType } = {} } = themeProps;
@@ -322,6 +323,10 @@ const HTabsOutContainer = CSSComponent({
         return {};
       }
       return { background };
+    },
+    getCSS: (theme: Object, themeProps: Object) => {
+      const { textAlign } = theme;
+      return `text-align: ${textAlign}`;
     },
   },
   disabled: {
