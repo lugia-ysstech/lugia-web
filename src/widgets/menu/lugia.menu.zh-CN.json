@@ -65,9 +65,14 @@
 
     "autoHeight": {
       "type": "boolean",
-      "desc": "根据data数量，自动计算菜单高度"
+      "desc": "根据data数量，自动计算菜单高度",
+      "defaultValue": false
     },
-
+    "divided": {
+      "type": "boolean",
+      "desc": "项之间是否展示分割线",
+      "defaultValue": false
+    },
     "expandedPath": {
       "type": "string[]",
       "desc": "层级菜单时展开的数据"
