@@ -44,7 +44,7 @@ export const Container = CSSComponent({
   },
   css: css`
     display: inline-block;
-    vertical-align: top;
+    overflow: hidden;
     position: relative;
     width: ${px2remcss(250)};
     transition: all 0.3s;

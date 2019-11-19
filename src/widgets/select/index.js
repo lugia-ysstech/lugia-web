@@ -25,6 +25,7 @@ import { DisplayField, ValueField } from '../consts/props';
 import { appendCustomValue, isCanInput, isMutliple, setNewValue } from '../common/selectFunction';
 import { toMatchFromType } from '../common/StringUtils';
 import ThemeHoc from '@lugia/theme-hoc';
+import { SelectContainer } from '../css/select';
 
 type ValidateStatus = 'success' | 'error';
 type RowData = { [key: string]: any };
@@ -32,10 +33,6 @@ type RowData = { [key: string]: any };
 export function getNewValueOrOldValue(v: string[], mutliple: boolean) {
   return mutliple ? v : v[0];
 }
-
-const SelectContainer = styled.div`
-  display: inline-block;
-`;
 
 type SelectProps = {
   getTheme?: Function,
@@ -373,7 +370,7 @@ class Select extends React.Component<SelectProps, SelectState> {
     };
 
     return (
-      <SelectContainer>
+      <SelectContainer themeProps={this.props.getPartOfThemeProps('Container')}>
         <Trigger
           themePass
           popup={menu}
