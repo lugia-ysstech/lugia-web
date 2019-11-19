@@ -230,11 +230,12 @@ const HscrollerContainer = CSSComponent({
       const {
         propsConfig: { tabPosition, tabType },
       } = themeProps;
-      const color = '#e8e8e8',
-        width = 1;
-      let border = { bottom: { width, color, style: 'solid' } };
+      const { color, width } = theme;
+      const borderColor = color || '#e8e8e8',
+        borderWidth = width || 1;
+      let border = { bottom: { width: borderWidth, color: borderColor, style: 'solid' } };
       if (tabPosition === 'bottom') {
-        border = { top: { width, color, style: 'solid' } };
+        border = { top: { width: borderWidth, color: borderColor, style: 'solid' } };
       }
       if (tabType === 'window') {
         border = { bottom: { width: 0, color: 'transparent', style: 'solid' } };
@@ -290,11 +291,13 @@ const YscrollerContainer = CSSComponent({
       const {
         propsConfig: { tabPosition },
       } = themeProps;
-      const color = '#e8e8e8',
-        width = 1;
-      let border = { left: { width, color, style: 'solid' } };
+      const { color, width } = theme;
+      const borderColor = color || '#e8e8e8',
+        borderWidth = width || 1,
+        borderStyle = 'solid';
+      let border = { left: { width: borderWidth, color: borderColor, style: borderStyle } };
       if (tabPosition === 'left') {
-        border = { right: { width, color, style: 'solid' } };
+        border = { right: { width: borderWidth, color: borderColor, style: borderStyle } };
       }
       return { border };
     },
@@ -349,12 +352,11 @@ const VTabsOutContainer = CSSComponent({
     selectNames: [],
   },
   css: css`
-    display: inline-block;
     position: relative;
     box-sizing: border-box;
     white-space: nowrap;
     overflow: hidden;
-    float: left;
+    flex: 0 0 auto;
     background: #fff;
   `,
 });
