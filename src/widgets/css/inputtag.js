@@ -155,7 +155,7 @@ export const OutContainer = CSSComponent({
     border-radius: ${px2remcss(4)};
     min-height: ${px2remcss(30)};
     background: ${defaultColor};
-    color: ${mediumGreyColor};
+    color: ${blackColor};
     font-size: ${px2remcss(12)};
     transition: all 0.3s;
   `,
