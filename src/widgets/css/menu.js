@@ -131,6 +131,7 @@ export const ItemWrap = CSSComponent({
       ['fontSize'],
       ['background'],
       ['opacity'],
+      ['boxShadow'],
     ],
     defaultTheme: {
       cursor: 'pointer',
@@ -159,6 +160,7 @@ export const ItemWrap = CSSComponent({
       ['opacity'],
       ['border'],
       ['borderRadius'],
+      ['boxShadow'],
     ],
     defaultTheme: {
       font: {
@@ -179,6 +181,7 @@ export const ItemWrap = CSSComponent({
       ['opacity'],
       ['border'],
       ['borderRadius'],
+      ['boxShadow'],
     ],
   },
   disabled: {
