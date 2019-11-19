@@ -9,6 +9,7 @@
 import React from 'react';
 import LoadIcon from '../icon';
 import Progress from '../progress';
+import Button from '../button';
 import FileInput from './fileInput';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
 import CSSComponent, { css, keyframes } from '../theme/CSSProvider';
@@ -132,73 +133,6 @@ const Li = CSSComponent({
         display: block;
       }
     }
-  `,
-  option: { hover: true },
-});
-
-const Button = CSSComponent({
-  tag: 'span',
-  className: 'UploadButtonType',
-  normal: {
-    selectNames: [
-      ['background'],
-      ['width'],
-      ['height'],
-      ['boxShadow'],
-      ['borderRadius'],
-      ['border'],
-      ['opacity'],
-      ['lineHeight'],
-    ],
-    defaultTheme: {
-      width: 100,
-      borderRadius: getBorderRadius(4),
-      height: 30,
-      background: {
-        color: themeColor,
-      },
-    },
-    getCSS(themeMeta, themeProps) {
-      const { height } = themeMeta;
-      if (height) {
-        return `line-height: ${height}px`;
-      }
-    },
-    getThemeMeta(themeMeta, themeProps) {
-      const {
-        propsConfig: { areaType },
-      } = themeProps;
-      if (areaType === 'both') {
-        return {
-          borderRadius: {
-            topLeft: 0,
-            topRight: 4,
-            bottomLeft: 0,
-            bottomRight: 4,
-          },
-          width: 60,
-        };
-      }
-    },
-  },
-  hover: {
-    selectNames: [['background'], ['boxShadow'], ['borderRadius'], ['border'], ['opacity']],
-  },
-  disabled: {
-    selectNames: [['background'], ['borderRadius'], ['border']],
-    defaultTheme: {
-      cursor: 'not-allowed',
-      background: { color: '#ccc' },
-      border: 'none',
-    },
-  },
-  css: css`
-    display: inline-block;
-    float: right;
-    text-align: center;
-    color: #fff;
-    line-height: 30px;
-    cursor: pointer;
   `,
   option: { hover: true },
 });
@@ -514,6 +448,7 @@ export const getIconByType = (
     },
     resultTheme
   );
+  console.log('resultTheme', resultTheme);
   if (type === 1 && status !== 'loading') {
     return '上传';
   }
@@ -808,12 +743,34 @@ class GetElement extends React.Component<DefProps, StateProps> {
     if (areaType === 'both') {
       const { handleClickToSubmit, handleClickToUpload } = this;
       const { defaultText, showFileList, disabled } = this.props;
-      const buttonThemeProps = this.props.getPartOfThemeProps('UploadButtonType', {
-        props: { areaType },
-      });
       const defaultThemeProps = this.props.getPartOfThemeProps('UploadDefaultType', {
         props: { areaType },
       });
+      const { viewClass: buttonViewClass, theme: buttonTheme } = props.getPartOfThemeHocProps(
+        'UploadButtonType'
+      );
+      const resultButtonTheme = deepMerge(
+        {
+          [buttonViewClass]: {
+            Container: {
+              normal: {
+                width: 60,
+                height: 30,
+                borderRadius: {
+                  topLeft: 0,
+                  topRight: 4,
+                  bottomLeft: 0,
+                  bottomRight: 4,
+                },
+              },
+            },
+          },
+        },
+        buttonTheme
+      );
+
+      const newTheme = { viewClass: buttonViewClass, theme: resultButtonTheme };
+
       children = (
         <React.Fragment>
           <InputContent
@@ -831,7 +788,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
               ? getIconByType(props, 'li-' + classNameStatus)
               : null}
           </InputContent>
-          <Button themeProps={buttonThemeProps} disabled={disabled} onClick={handleClickToSubmit}>
+          <Button {...newTheme} type={'primary'} disabled={disabled} onClick={handleClickToSubmit}>
             {getIconByType(props, classNameStatus, { type: 1 })}
           </Button>
         </React.Fragment>
@@ -840,11 +797,27 @@ class GetElement extends React.Component<DefProps, StateProps> {
     if (areaType === 'button') {
       const { disabled } = props;
       const { handleClickToUpload } = this;
-      const buttonThemeProps = this.props.getPartOfThemeProps('UploadButtonType', {
-        props: { areaType },
-      });
+      const { viewClass: buttonViewClass, theme: buttonTheme } = props.getPartOfThemeHocProps(
+        'UploadButtonType'
+      );
+      const resultButtonTheme = deepMerge(
+        {
+          [buttonViewClass]: {
+            Container: {
+              normal: {
+                width: 100,
+                height: 30,
+                borderRadius: getBorderRadius(4),
+              },
+            },
+          },
+        },
+        buttonTheme
+      );
+
+      const newTheme = { viewClass: buttonViewClass, theme: resultButtonTheme };
       children = (
-        <Button themeProps={buttonThemeProps} disabled={disabled} onClick={handleClickToUpload}>
+        <Button {...newTheme} type={'primary'} disabled={disabled} onClick={handleClickToUpload}>
           点击上传
         </Button>
       );
