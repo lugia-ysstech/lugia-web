@@ -44,8 +44,7 @@
     },
     "iconClass": {
       "type": "string",
-      "desc": "进度条展示的图标,仅在success或error状态生效",
-      "defaultValue": "undefined"
+      "desc": "进度条展示的图标,仅在success或error状态生效"
     }
   },
   "type": {
