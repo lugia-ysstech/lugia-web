@@ -444,11 +444,13 @@ export const getIconByType = (
             `;
           },
         },
+        disabled: {
+          cursor: 'not-allowed',
+        },
       },
     },
     resultTheme
   );
-  console.log('resultTheme', resultTheme);
   if (type === 1 && status !== 'loading') {
     return '上传';
   }
