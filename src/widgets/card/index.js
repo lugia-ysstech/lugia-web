@@ -10,7 +10,7 @@ import Avatar from '../avatar';
 
 import type { CardProps, CardState } from '../css/card';
 import { ObjectUtils } from '@lugia/type-utils';
-import CSSComponent, { css } from '../theme/CSSProvider';
+import CSSComponent, { css, StaticComponent } from '../theme/CSSProvider';
 import ThemeHoc from '../theme-provider/index';
 import colorsFunc from '../css/stateColor';
 import { units } from '@lugia/css';
@@ -117,14 +117,20 @@ const Content = CSSComponent({
     display: inline-block;
   `,
 });
+const DefaultChildren = StaticComponent({
+  tag: 'div',
+  className: 'cardDefaultChildren',
+  css: css`
+    width: ${px2remcss(50)};
+    height: ${px2remcss(20)};
+  `,
+});
 const Image = ThemeHoc(
   CSSComponent({
     tag: 'img',
     className: 'cardImage',
     normal: {
       selectNames: [
-        ['width'],
-        ['height'],
         ['background'],
         ['border'],
         ['borderRadius'],
@@ -135,8 +141,8 @@ const Image = ThemeHoc(
       ],
     },
     css: css`
-      width: ${px2remcss(120)};
-      height: ${px2remcss(112)};
+      width: 100%;
+      height: 100%;
     `,
   }),
   'cardImage'
@@ -225,7 +231,6 @@ const BaseText = CSSComponent({
     selectNames: [
       ['width'],
       ['height'],
-      ['background'],
       ['border'],
       ['borderRadius'],
       ['margin'],
@@ -263,7 +268,6 @@ const Title = CSSComponent({
       ['height'],
       ['color'],
       ['font'],
-      ['background'],
       ['margin'],
       ['padding'],
       ['fontSize'],
@@ -273,17 +277,19 @@ const Title = CSSComponent({
       const { propsConfig } = themeProps;
       const { type } = propsConfig;
       const weight = font && font.weight ? font.weight : type === 'tip' ? 700 : 500;
-      const left = type === 'tip' ? 0 : 10;
-
+      const padding =
+        type !== 'tip'
+          ? {
+              top: 4,
+              right: 10,
+              left: 10,
+            }
+          : null;
       return {
         font: {
           weight,
         },
-        padding: {
-          top: 4,
-          right: 10,
-          left,
-        },
+        padding,
       };
     },
     getCSS(themeMeta: Object, themeProps: Object) {
@@ -301,7 +307,6 @@ const Title = CSSComponent({
     display: inline-block;
     flex: 1;
     overflow: hidden;
-    white-space: nowrap;
   `,
 });
 const TitleTipContainer = CSSComponent({
@@ -311,26 +316,27 @@ const TitleTipContainer = CSSComponent({
     selectNames: [['height']],
   },
   css: css`
-    display: inline-block;
+    width: inherit;
+    display: inline-flex;
   `,
 });
 const TitleTipLine = CSSComponent({
   tag: 'div',
   className: 'CardTitleTipLine',
   normal: {
-    selectNames: [['width'], ['height'], ['background']],
+    selectNames: [['width'], ['height'], ['background'], ['border'], ['borderRadius']],
     defaultTheme: {
       height: 20,
       width: 5,
       background: {
         color: themeColor,
       },
+      borderRadius: getBorderRadius(5),
     },
   },
   css: css`
     left: ${px2remcss(-14)};
     position: relative;
-    display: inline-block;
     border-radius: ${px2remcss(5)};
   `,
 });
@@ -383,7 +389,7 @@ class Card extends React.Component<CardProps, CardState> {
   static getDerivedStateFromProps(nextProps, prevState) {}
 
   render() {
-    const { type, imageOrientation, content } = this.props;
+    const { type, imageOrientation } = this.props;
     let resultTheme;
     switch (type) {
       case 'avatar':
@@ -405,20 +411,21 @@ class Card extends React.Component<CardProps, CardState> {
       case 'combo':
       case 'simple':
       default:
-        const simpleThemeProps = { themeConfig: { normal: { width: 350, height: 130 } } };
-        resultTheme = simpleThemeProps;
         break;
     }
     resultTheme = deepMerge(
       resultTheme,
       this.props.getPartOfThemeProps('Container', { props: { type, imageOrientation } })
     );
-
+    const { operation, title, description, content, children } = this.props;
+    const hasChildren = operation || title || description || content || children;
     return (
       <CardOutContainer themeProps={resultTheme} type={type} imageOrientation={imageOrientation}>
-        {this.getDetails('operation')}
-        {this.getImageContainer()}
-        {this.getInnerContent()}
+        {hasChildren ? (
+          [this.getDetails('operation'), this.getImageContainer(), this.getInnerContent()]
+        ) : (
+          <DefaultChildren />
+        )}
       </CardOutContainer>
     );
   }
@@ -513,7 +520,7 @@ class Card extends React.Component<CardProps, CardState> {
         const descriptionThemeProps = this.props.getPartOfThemeProps('CardDescription', {
           props: { type },
         });
-        return hasNoContent && description ? (
+        return description ? (
           <Description themeProps={descriptionThemeProps}>{description} </Description>
         ) : null;
       default:
