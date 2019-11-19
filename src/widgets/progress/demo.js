@@ -186,6 +186,20 @@ export default class ProgressDemo extends React.Component<any, any> {
     };
     return (
       <div>
+        <Progress percent={30} status="success" iconClass={'lugia-icon-direction_play_circle_o'} />
+        <Progress percent={30} status="error" iconClass={'lugia-icon-direction_play_circle_o'} />
+        <Progress
+          type="circle"
+          status="success"
+          percent={50}
+          iconClass={'lugia-icon-direction_play_circle_o'}
+        />
+        <Progress
+          type="circle"
+          status="error"
+          percent={50}
+          iconClass={'lugia-icon-direction_play_circle_o'}
+        />
         <Theme config={view}>
           <Progress percent={30} />
         </Theme>
