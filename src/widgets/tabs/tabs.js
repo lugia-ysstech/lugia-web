@@ -26,7 +26,7 @@ const TabContentContainer = CSSComponent({
         propsConfig: { tabPosition },
       } = themeProps;
       if (isVertical(tabPosition)) {
-        return 'float: left;';
+        return 'flex: 1 1 auto;';
       }
     },
   },
@@ -35,9 +35,7 @@ const TabContentContainer = CSSComponent({
   },
   css: css`
     position: relative;
-    padding: 10px;
     min-width: 100px;
-    min-height: 100px;
   `,
 });
 const TabContent = CSSComponent({
@@ -53,6 +51,7 @@ const TabContent = CSSComponent({
         return `
         display:block;
         z-index:10;
+        height:100%;
         `;
       }
     },
@@ -64,11 +63,8 @@ const TabContent = CSSComponent({
     overflow: hidden;
     background: #fff;
     padding: 10px;
-    position: absolute;
-    left: 0;
-    top: 0;
     width: 100%;
-    height: 100%;
+    height: 0;
     display: none;
   `,
 });
@@ -77,7 +73,15 @@ const WindowContainer = CSSComponent({
   tag: 'div',
   className: 'WindowContainer',
   normal: {
-    selectNames: [['background'], ['padding'], ['border'], ['borderRadius'], ['opacity']],
+    selectNames: [
+      ['background'],
+      ['padding'],
+      ['border'],
+      ['borderRadius'],
+      ['opacity'],
+      ['width'],
+      ['height'],
+    ],
     defaultTheme: {
       background: {
         color: '#f8f8f8',
@@ -96,11 +100,11 @@ const WindowContainer = CSSComponent({
   `,
 });
 
-const OutContainer = StaticComponent({
+const OutContainer = CSSComponent({
   tag: 'div',
   className: 'OutContainer',
   normal: {
-    selectNames: [],
+    selectNames: [['width'], ['height']],
   },
   disabled: {
     selectNames: [],
@@ -112,11 +116,11 @@ const OutContainer = StaticComponent({
     overflow: hidden;
   `,
 });
-const VerticalOutContainer = StaticComponent({
+const VerticalOutContainer = CSSComponent({
   tag: 'div',
   className: 'OutContainer',
   normal: {
-    selectNames: [],
+    selectNames: [['width'], ['height']],
   },
   disabled: {
     selectNames: [],
@@ -139,6 +143,7 @@ type TabsState = {
   pagedCount: number,
   arrowShow: boolean,
   childrenSize: Array<number>,
+  hideContent: boolean,
 };
 
 type TabsProps = {
@@ -195,7 +200,9 @@ export function getDefaultData(props: Object) {
     if (children) {
       configData = [];
       React.Children.map(children, child => {
-        configData && configData.push(child.props);
+        const item = { ...child.props };
+        item.key = child.key;
+        configData && configData.push(item);
       });
     } else {
       configData = defaultData ? defaultData : configData;
@@ -247,8 +254,9 @@ class TabsBox extends Component<TabsProps, TabsState> {
     const { themeProps, tabType, tabPosition } = this.props;
     const ContainerBox =
       tabType === 'line' && isVertical(tabPosition) ? VerticalOutContainer : OutContainer;
+    const containerThemeProps = this.props.getPartOfThemeProps('Container');
     let target = (
-      <ContainerBox>
+      <ContainerBox className={'OutContainer'} themeProps={containerThemeProps}>
         <TabHeader {...this.getTabHeaderProps()} />
         {this.getChildrenContent()}
       </ContainerBox>
@@ -256,7 +264,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
     if (tabType === 'line') {
       if (tabPosition === 'right' || tabPosition === 'bottom') {
         target = (
-          <ContainerBox>
+          <ContainerBox themeProps={containerThemeProps}>
             {this.getChildrenContent()}
             <TabHeader {...this.getTabHeaderProps()} />
           </ContainerBox>
@@ -275,11 +283,12 @@ class TabsBox extends Component<TabsProps, TabsState> {
                 bottom: 10,
               },
               background: {
-                color: '#f1f1f1',
+                color: '#c9c9c9',
               },
             },
           },
         },
+        containerThemeProps,
         this.props.getPartOfThemeProps('WindowContainer')
       );
 
