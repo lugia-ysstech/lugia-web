@@ -238,17 +238,10 @@ class UploadDemo extends React.Component<any, any> {
     const config = {
       [Widget.Upload]: {
         UploadButtonType: {
-          normal: {
-            width: 100,
-            height: 30,
-          },
-          hover: {
-            boxShadow: ' 0 0 2px #ccc',
-            opacity: 0.5,
-          },
-          disabled: {
-            background: {
-              color: '#ccc',
+          Container: {
+            normal: {
+              width: 100,
+              height: 30,
             },
           },
         },
@@ -296,7 +289,7 @@ class UploadDemo extends React.Component<any, any> {
         },
         UploadListSuccessIcon: {
           normal: {
-            color: '#56c22d',
+            color: '#087d07',
           },
         },
         UploadListFailedIcon: {
