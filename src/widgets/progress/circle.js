@@ -106,6 +106,7 @@ export default class extends React.Component<any, any> {
       size = 'default',
       type = 'circle',
       getIconTheme,
+      iconClass,
     } = this.props;
 
     return getText(true, {
@@ -116,6 +117,7 @@ export default class extends React.Component<any, any> {
       size,
       type,
       getIconTheme,
+      iconClass,
     });
   };
   getColor = () => {

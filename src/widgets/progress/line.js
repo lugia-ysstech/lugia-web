@@ -25,7 +25,7 @@ type LineProps = {
 const { successColor, dangerColor, mediumGreyColor } = colorsFunc();
 
 export const getText = (inside?: boolean, props: Object) => {
-  const { percent = 0, format, hasFormat = false, getIconTheme } = props;
+  const { percent = 0, format, hasFormat = false, getIconTheme, iconClass } = props;
 
   if (hasFormat && typeof format === 'function') {
     return format(percent);
@@ -62,12 +62,12 @@ export const getText = (inside?: boolean, props: Object) => {
       },
       theme
     );
-
+    const iconClassName = inside ? 'lugia-icon-reminder_close' : 'lugia-icon-reminder_close_circle';
     return (
       <Icon
         viewClass={viewClass}
         theme={iconTheme}
-        iconClass={inside ? 'lugia-icon-reminder_close' : 'lugia-icon-reminder_close_circle'}
+        iconClass={iconClass || iconClassName}
         singleTheme
       />
     );
@@ -81,12 +81,13 @@ export const getText = (inside?: boolean, props: Object) => {
       },
       theme
     );
+    const iconClassName = inside ? 'lugia-icon-reminder_check' : 'lugia-icon-reminder_check_circle';
     return (
       <Icon
         viewClass={viewClass}
         theme={iconTheme}
         singleTheme
-        iconClass={inside ? 'lugia-icon-reminder_check' : 'lugia-icon-reminder_check_circle'}
+        iconClass={iconClass || iconClassName}
       />
     );
   }
@@ -188,6 +189,7 @@ export default class extends React.Component<LineProps, ProgressState> {
       size = 'default',
       type = 'line',
       getIconTheme,
+      iconClass,
     } = this.props;
 
     return getText(inside, {
@@ -198,6 +200,7 @@ export default class extends React.Component<LineProps, ProgressState> {
       size,
       type,
       getIconTheme,
+      iconClass,
     });
   };
 
