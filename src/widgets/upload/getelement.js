@@ -849,6 +849,11 @@ class GetElement extends React.Component<DefProps, StateProps> {
         </Button>
       );
     }
+    if (areaType === 'custom') {
+      const { disabled, userDefine } = props;
+      const { handleClickToUpload } = this;
+      children = React.cloneElement(userDefine, { disabled, onClick: handleClickToUpload });
+    }
     if (areaType === 'picture') {
       const { size, disabled, fileListDone, multiple, previewUrl } = props;
       const { handleClickToUpload, handleClickToDelete, dropArea } = this;
