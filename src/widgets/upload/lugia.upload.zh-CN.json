@@ -62,6 +62,10 @@
       "type": "UploadSize",
       "desc": "picture类型可配置的三种尺寸(small/default/large)",
       "defaultValue": "default"
+    },
+    "defaultTips":{
+      "type": "object({uploadText:'上传',uploadTips:'请将文件拖到此处',failTips:'文件上传失败请重试',loadingTips:'文件上传中...'})",
+      "desc": "默认的上传提示语"
     }
 
   },

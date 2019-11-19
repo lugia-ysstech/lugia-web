@@ -452,7 +452,10 @@ export const getIconByType = (
     resultTheme
   );
   if (type === 1 && status !== 'loading') {
-    return '上传';
+    const {
+      defaultTips: { uploadText },
+    } = props;
+    return uploadText;
   }
   if (info && (status === 'li-fail' || status === 'li-delete')) {
     const { doFunction, index } = info;
@@ -742,6 +745,9 @@ class GetElement extends React.Component<DefProps, StateProps> {
         </InputContent>
       );
     }
+    const {
+      defaultTips: { uploadText, uploadTips, failTips, loadingTips },
+    } = props;
     if (areaType === 'both') {
       const { handleClickToSubmit, handleClickToUpload } = this;
       const { defaultText, showFileList, disabled } = this.props;
@@ -820,7 +826,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
       const newTheme = { viewClass: buttonViewClass, theme: resultButtonTheme };
       children = (
         <Button {...newTheme} type={'primary'} disabled={disabled} onClick={handleClickToUpload}>
-          点击上传
+          {uploadText}
         </Button>
       );
     }
@@ -853,7 +859,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
                   index,
                 })}
                 {classNameStatus === 'fail' && size !== 'small' ? (
-                  <span>图片上传失败请重试</span>
+                  <span>{failTips}</span>
                 ) : (
                   <img src={item.url} alt="" />
                 )}
@@ -872,9 +878,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
             ) : (
               getIconByType(props, `p-${classNameStatus === 'done' ? 'default' : classNameStatus}`)
             )}
-            {classNameStatus === 'fail' && size !== 'small' ? (
-              <span>图片上传失败请重试</span>
-            ) : null}
+            {classNameStatus === 'fail' && size !== 'small' ? <span>{failTips}</span> : null}
           </PictureView>
         </React.Fragment>
       );
@@ -897,12 +901,12 @@ class GetElement extends React.Component<DefProps, StateProps> {
             ? getIconByType(props, 'area-' + classNameStatus)
             : getIconByType(props, 'uploadcloud')}
           {classNameStatus === 'loading' ? (
-            <AreaText themeProps={themeProps}>文件上传中...</AreaText>
+            <AreaText themeProps={themeProps}>{loadingTips}</AreaText>
           ) : (
             <AreaText themeProps={themeProps} disabled={disabled}>
-              请将文件拖到此处,或
+              {uploadTips},或
               <AreaTextBlue themeProps={themeProps} disabled={disabled}>
-                点击上传
+                {uploadText}
               </AreaTextBlue>
             </AreaText>
           )}
