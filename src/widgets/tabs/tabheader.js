@@ -231,7 +231,7 @@ const HscrollerContainer = CSSComponent({
         propsConfig: { tabPosition, tabType },
       } = themeProps;
       const { color, width } = theme;
-      const borderColor = color || '#e8e8e8',
+      const borderColor = color || superLightColor,
         borderWidth = width || 1;
       let border = { bottom: { width: borderWidth, color: borderColor, style: 'solid' } };
       if (tabPosition === 'bottom') {
@@ -292,7 +292,7 @@ const YscrollerContainer = CSSComponent({
         propsConfig: { tabPosition },
       } = themeProps;
       const { color, width } = theme;
-      const borderColor = color || '#e8e8e8',
+      const borderColor = color || superLightColor,
         borderWidth = width || 1,
         borderStyle = 'solid';
       let border = { left: { width: borderWidth, color: borderColor, style: borderStyle } };
@@ -328,7 +328,7 @@ const HTabsOutContainer = CSSComponent({
       return { background };
     },
     getCSS: (theme: Object, themeProps: Object) => {
-      const { textAlign } = theme;
+      const { textAlign = 'left' } = theme;
       return `text-align: ${textAlign}`;
     },
   },
