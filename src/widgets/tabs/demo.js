@@ -440,7 +440,17 @@ const hasActivityValueChildren = [
   />,
 ];
 export const defaulttestDelayData = [
-  { title: '猪蹄', content: '猪蹄啊啊啊啊啊' },
+  {
+    title: '猪蹄',
+    content: (
+      <div>
+        <div>猪蹄啊啊啊啊啊</div>
+        <div>猪蹄啊啊啊啊啊</div>
+        <div>猪蹄啊啊啊啊啊</div>
+        <div>猪蹄啊啊啊啊啊</div>
+      </div>
+    ),
+  },
   { title: '排骨', content: '排骨啊啊啊啊啊' },
   { title: '鸡腿', content: '鸡腿啊啊啊啊啊' },
 ];
@@ -717,10 +727,16 @@ export default class TabsDemo extends React.Component<any, any> {
     };
     const cardView = {
       [Widget.Tabs]: {
+        Container: {
+          normal: {
+            width: '100%',
+          },
+        },
         TitleContainer: {
           normal: {
-            width: 330,
+            // width: 330,
             // height: 300,
+            textAlign: 'center',
           },
         },
         AddButton: {
@@ -760,6 +776,21 @@ export default class TabsDemo extends React.Component<any, any> {
             },
           },
         },
+        // ContentBlock: {
+        //   normal: {
+        //     padding: {
+        //       top: 10,
+        //       left: 10,
+        //       right: 10,
+        //       bottom: 10,
+        //     },
+        //     width: '100%',
+        //     height: 300,
+        //     background: {
+        //       // color: 'pink'
+        //     }
+        //   },
+        // },
       },
     };
     const defaultCardView = {
@@ -802,6 +833,11 @@ export default class TabsDemo extends React.Component<any, any> {
 
     const windowView = {
       [Widget.Tabs]: {
+        Container: {
+          normal: {
+            width: '100%',
+          },
+        },
         WindowContainer: {
           normal: {
             padding: {
@@ -817,7 +853,7 @@ export default class TabsDemo extends React.Component<any, any> {
         },
         TitleContainer: {
           normal: {
-            width: 316,
+            width: '100%',
           },
         },
         TabHeader: {
@@ -842,13 +878,85 @@ export default class TabsDemo extends React.Component<any, any> {
             },
           },
         },
+        ContentBlock: {
+          normal: {
+            height: 300,
+          },
+        },
       },
     };
     const { testDelayData, data, dataWindow, activityValue } = this.state;
 
+    const updateTheme = {
+      [Widget.Tabs]: {
+        Container: {
+          normal: {
+            // width: '100%'
+          },
+        },
+        TitleContainer: {
+          normal: {
+            // width: 600,
+            // height: 300,
+            textAlign: 'center',
+          },
+        },
+        ContentBlock: {
+          normal: {
+            padding: {
+              top: 10,
+              left: 10,
+              right: 10,
+              bottom: 10,
+            },
+            // width: '100%',
+            // height: 300,
+            background: {
+              // color: 'pink'
+            },
+          },
+        },
+        BorderStyle: {
+          normal: {
+            color: '#ffccff',
+            width: 1,
+          },
+        },
+        TabHeader: {
+          SelectTabPan: {
+            normal: {
+              color: 'red',
+            },
+            disabled: {
+              color: '#ccc',
+            },
+          },
+          DefaultTabPan: {
+            normal: {
+              height: 31,
+            },
+            hover: {
+              color: 'orange',
+            },
+            disabled: {
+              color: '#ccc',
+            },
+          },
+        },
+      },
+    };
+
     return (
       <div>
-        <Tabs />
+        <Theme config={updateTheme}>
+          <Tabs>
+            <Tabpane title={'1111'} content={'11111'} key={'0'} />
+            <Tabpane title={'2222'} content={<div>2222</div>} key={'1'} />
+          </Tabs>
+          <Tabs data={defaulttestDelayData} />
+          <Tabs tabPosition={'left'} data={defaulttestDelayData} />
+        </Theme>
+
         <Theme config={cardView}>
           <div>
             <p style={{ titleStyle }}>tabType=card pagedType=single</p>

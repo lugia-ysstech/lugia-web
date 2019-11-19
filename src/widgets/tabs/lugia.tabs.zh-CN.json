@@ -130,7 +130,7 @@
   "type": {
     "TabType": ["line", "card", "window"],
     "PagedType": ["single", "page"],
-    "TabPositionType": ["top", "bottom", "inner", "default"]
+    "TabPositionType": ["top", "bottom", "left", "right"]
   },
   "childrenWidget": ["tabpane"],
   "category": ["数据展示"],
@@ -229,6 +229,11 @@
         "tabType": "window"
       },
       "theme": {
+        "Container": {
+          "name": "标签页整体配置",
+          "desc": "标签页整体样式配置",
+          "normal": [["width"], ["height"]]
+        },
         "WindowContainer": {
           "name": "窗口背景区域",
           "desc": "窗口背景区域样式配置",
@@ -309,6 +314,11 @@
     }
   },
   "theme": {
+    "Container": {
+      "name": "标签页整体配置",
+      "desc": "标签页整体样式配置",
+      "normal": [["width"], ["height"]]
+    },
     "ContentBlock": {
       "name": "内容区域",
       "desc": "内容区域的样式配置",
@@ -317,12 +327,12 @@
     "TitleContainer": {
       "name": "卡片区域",
       "desc": "卡片区域样式配置",
-      "normal": [["width"],["background"]]
+      "normal": [["width"],["background"],["textAlign"]]
     },
     "BorderStyle": {
       "name": "默认线",
       "desc": "默认线样式配置",
-      "normal": [["border","bottom"]]
+      "normal": [["color"],["width"]]
     },
     "TabHeader":{
       "name":"标签配置",
