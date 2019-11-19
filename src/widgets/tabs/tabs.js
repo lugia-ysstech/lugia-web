@@ -26,7 +26,7 @@ const TabContentContainer = CSSComponent({
         propsConfig: { tabPosition },
       } = themeProps;
       if (isVertical(tabPosition)) {
-        return 'float: left;';
+        return 'flex: 1 1 auto;';
       }
     },
   },
@@ -53,6 +53,7 @@ const TabContent = CSSComponent({
         return `
         display:block;
         z-index:10;
+        height:100%;
         `;
       }
     },
@@ -64,11 +65,8 @@ const TabContent = CSSComponent({
     overflow: hidden;
     background: #fff;
     padding: 10px;
-    position: absolute;
-    left: 0;
-    top: 0;
     width: 100%;
-    height: 100%;
+    height: 0;
     display: none;
   `,
 });
@@ -147,6 +145,7 @@ type TabsState = {
   pagedCount: number,
   arrowShow: boolean,
   childrenSize: Array<number>,
+  hideContent: boolean,
 };
 
 type TabsProps = {
@@ -203,7 +202,9 @@ export function getDefaultData(props: Object) {
     if (children) {
       configData = [];
       React.Children.map(children, child => {
-        configData && configData.push(child.props);
+        const item = { ...child.props };
+        item.key = child.key;
+        configData && configData.push(item);
       });
     } else {
       configData = defaultData ? defaultData : configData;
