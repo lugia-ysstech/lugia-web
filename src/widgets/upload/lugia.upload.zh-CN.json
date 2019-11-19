@@ -246,10 +246,22 @@
       },
       "theme": {
         "UploadButtonType": {
-          "name": "按钮",
-          "desc": "按钮部分的样式配置",
-          "normal": [["width"], ["height"], ["fontSize"], ["color"]],
-          "disabled": [["color"]]
+          "name": "按钮配置",
+          "theme":{
+            "Container": {
+              "name": "按钮整体样式",
+              "desc": "按钮部分的样式配置",
+              "normal": [["width"], ["height"], ["fontSize"], ["background"]],
+              "disabled": [["background"]]
+            },
+            "ButtonText": {
+              "name": "按钮文字样式",
+              "desc": "为按钮文字配置样式",
+              "normal": [["color"], ["font"]],
+              "disabled": [["color"]]
+            }
+          }
+
         },
         "UploadDefaultType": {
           "name": "文件上传区域",
