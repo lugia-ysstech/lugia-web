@@ -537,7 +537,6 @@ export default class TabsDemo extends React.Component<any, any> {
 
         BorderStyle: {
           normal: {
-            // border:getBorder({ color: '#FFCCFF', width: 1, style: 'solid'})
             border: {
               right: {
                 color: '#FFCCFF',
@@ -612,7 +611,6 @@ export default class TabsDemo extends React.Component<any, any> {
         },
         BorderStyle: {
           normal: {
-            // border:getBorder({ color: '#FFCCFF', width: 1, style: 'solid'})
             border: {
               bottom: {
                 color: '#FFCCFF',
@@ -644,7 +642,6 @@ export default class TabsDemo extends React.Component<any, any> {
         },
         BorderStyle: {
           normal: {
-            // border:getBorder({ color: '#FFCCFF', width: 1, style: 'solid'})
             border: {
               left: {
                 color: '#FFCCFF',
@@ -671,9 +668,6 @@ export default class TabsDemo extends React.Component<any, any> {
             },
           },
           DefaultTabPan: {
-            normal: {
-              // height: 31,
-            },
             hover: {
               color: 'orange',
             },
@@ -734,8 +728,6 @@ export default class TabsDemo extends React.Component<any, any> {
         },
         TitleContainer: {
           normal: {
-            // width: 330,
-            // height: 300,
             textAlign: 'center',
           },
         },
@@ -776,21 +768,6 @@ export default class TabsDemo extends React.Component<any, any> {
             },
           },
         },
-        // ContentBlock: {
-        //   normal: {
-        //     padding: {
-        //       top: 10,
-        //       left: 10,
-        //       right: 10,
-        //       bottom: 10,
-        //     },
-        //     width: '100%',
-        //     height: 300,
-        //     background: {
-        //       // color: 'pink'
-        //     }
-        //   },
-        // },
       },
     };
     const defaultCardView = {
@@ -867,7 +844,6 @@ export default class TabsDemo extends React.Component<any, any> {
           },
           DefaultTabPan: {
             normal: {
-              // width: 300,
               height: 40,
             },
             hover: {
@@ -889,15 +865,8 @@ export default class TabsDemo extends React.Component<any, any> {
 
     const updateTheme = {
       [Widget.Tabs]: {
-        Container: {
-          normal: {
-            // width: '100%'
-          },
-        },
         TitleContainer: {
           normal: {
-            // width: 600,
-            // height: 300,
             textAlign: 'center',
           },
         },
@@ -908,11 +877,6 @@ export default class TabsDemo extends React.Component<any, any> {
               left: 10,
               right: 10,
               bottom: 10,
-            },
-            // width: '100%',
-            // height: 300,
-            background: {
-              // color: 'pink'
             },
           },
         },
@@ -1167,13 +1131,9 @@ export default class TabsDemo extends React.Component<any, any> {
             <Tabs
               tabType={'card'}
               pagedType={'single'}
-              // data={data}
               onPreClick={onPreClick}
               onNextClick={onNextClick}
               showAddBtn={true}
-              // onAddClick={this.onAddClick}
-              // activityValue={activityValue}
-              // onChange={this.onChange}
             />
           </div>
           <div>
@@ -1183,14 +1143,10 @@ export default class TabsDemo extends React.Component<any, any> {
             <Tabs
               tabType={'card'}
               pagedType={'single'}
-              // data={data}
               onPreClick={onPreClick}
               onNextClick={onNextClick}
               showAddBtn={true}
               getAddItem={this.getAddItem}
-              // onAddClick={this.onAddClick}
-              // activityValue={activityValue}
-              // onChange={this.onChange}
             />
           </div>
           <br />
@@ -1214,19 +1170,14 @@ export default class TabsDemo extends React.Component<any, any> {
             <p style={{ ...titleStyle }}>
               defaultData pagedType=single 受限 无增加函数 内部不做处理
             </p>
-            {/*<Switch  />*/}
             <Tabs
               tabType={'card'}
               pagedType={'single'}
-              // data={data}
               onPreClick={onPreClick}
               onNextClick={onNextClick}
               showAddBtn={true}
               showDeleteBtn={true}
               getAddItem={this.getAddItem}
-              // onAddClick={this.onAddClick}
-              // activityValue={activityValue}
-              // onChange={this.onChange}
             >
               <Tabpane title={'酥肉'} content={<div>酥肉啊啊啊 </div>} />
               <Tabpane title={'海带'} content={<div>海带啊啊啊啊 </div>} key={'1'} />
@@ -1255,11 +1206,9 @@ export default class TabsDemo extends React.Component<any, any> {
             <Tabs
               tabType={'window'}
               pagedType={'page'}
-              // data={dataWindow}
               onPreClick={onPreClick}
               onNextClick={onNextClick}
               showDeleteBtn={true}
-              // onDelete={this.onDelete}
             />
           </div>
           <p style={{ ...titleStyle }}>非受限 不传data 展示数据由state 控制</p>
