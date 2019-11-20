@@ -161,6 +161,8 @@ const InputDemo = () => {
           <Input placeholder={'请填写内容'} />
           <p>autoFocus</p>
           <Input placeholder={'请填写内容'} autoFoucs />
+          <p>isShowClearButton : false</p>
+          <Input isShowClearButton={false} />
           <p>禁用状态 </p>
           <Input theme={register} size={'default'} disabled={true} />
         </Wrapper>
