@@ -159,6 +159,41 @@ export default class ProgressDemo extends React.Component<any, any> {
         },
       },
     };
+    const newCircleView = {
+      [Widget.Progress]: {
+        ProgressCircleText: {
+          normal: {
+            font: {
+              size: 20,
+              weight: 500,
+            },
+            color: 'red',
+          },
+        },
+        ProgressCircleSuccessIcon: {
+          normal: {
+            fontSize: 16,
+            color: 'red',
+          },
+        },
+        ProgressCircleErrorIcon: {
+          normal: {
+            fontSize: 20,
+            color: 'green',
+          },
+        },
+        ProgressCircleBackground: {
+          normal: {
+            color: 'green',
+          },
+        },
+        ProgressCircleLine: {
+          normal: {
+            color: 'red',
+          },
+        },
+      },
+    };
     const DashboardView = {
       [Widget.Progress]: {
         DashboardText: {
@@ -184,8 +219,55 @@ export default class ProgressDemo extends React.Component<any, any> {
         },
       },
     };
+    const newDashboardView = {
+      [Widget.Progress]: {
+        DashboardText: {
+          normal: {
+            font: {
+              size: 20,
+              weight: 500,
+            },
+            color: 'red',
+          },
+        },
+        ProgressDashboardSuccessIcon: {
+          normal: {
+            fontSize: 16,
+            color: 'red',
+          },
+        },
+        ProgressDashboardErrorIcon: {
+          normal: {
+            fontSize: 20,
+            color: 'green',
+          },
+        },
+        DashboardBackground: {
+          normal: {
+            color: 'green',
+          },
+        },
+        DashboardLine: {
+          normal: {
+            color: 'red',
+          },
+        },
+      },
+    };
     return (
       <div>
+        <Theme config={CircleView}>
+          <Progress type="circle" percent={30} />
+        </Theme>
+        <Theme config={newCircleView}>
+          <Progress type="circle" percent={30} />
+        </Theme>
+        <Theme config={DashboardView}>
+          <Progress type="dashboard" percent={30} />
+        </Theme>
+        <Theme config={newDashboardView}>
+          <Progress type="dashboard" percent={30} />
+        </Theme>
         <Progress percent={30} status="success" iconClass={'lugia-icon-direction_play_circle_o'} />
         <Progress percent={30} status="error" iconClass={'lugia-icon-direction_play_circle_o'} />
         <Progress
