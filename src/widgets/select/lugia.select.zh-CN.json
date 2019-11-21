@@ -212,6 +212,7 @@
                 ["height"],
                 ["margin"],
                 ["padding"],
+                ["margin"],
                 ["color"],
                 ["background"],
                 ["border"],

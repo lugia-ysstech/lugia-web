@@ -407,7 +407,6 @@ class Select extends React.Component<SelectProps, SelectState> {
     const { state, props } = this;
     const { value, query, data } = state;
     const { displayField, valueField, limitCount, searchType } = props;
-
     const menuData = this.updateMenuData(data, query, searchType);
     return (
       <Menu
@@ -705,11 +704,18 @@ class Select extends React.Component<SelectProps, SelectState> {
 
   getMenuTheme = () => {
     const width = this.getContainerWidth();
+    let initMenuTheme = {
+      width,
+    };
+    if (typeof width === 'string') {
+      initMenuTheme = {
+        width: 250,
+        height: 250,
+      };
+    }
     const defaultMenuTheme = {
       MenuWrap: {
-        normal: {
-          width,
-        },
+        normal: initMenuTheme,
       },
     };
     return this.mergeTheme('Menu', defaultMenuTheme);
