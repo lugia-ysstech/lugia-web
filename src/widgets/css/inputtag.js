@@ -37,7 +37,7 @@ export const Container = CSSComponent({
   tag: 'div',
   className: 'Container',
   normal: {
-    selectNames: [['width'], ['height']],
+    selectNames: [['width'], ['height'], ['margin']],
   },
   hover: {
     selectNames: [],

@@ -17,7 +17,6 @@ export const SelectContainer = CSSComponent({
   },
   css: css`
     display: inline-block;
-    overflow: hidden;
   `,
 });
 SelectContainer.displayName = 'SelectContainer';

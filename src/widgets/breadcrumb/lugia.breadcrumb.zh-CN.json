@@ -63,7 +63,7 @@
         ["boxShadow"],
         ["background"]
       ],
-      "hover": [["border"], ["borderRadius"], ["boxShadow"], ["background"], ["opacity"]],
+      "hover": [],
       "clicked": [],
       "disabled": []
     },
@@ -74,12 +74,48 @@
           "name": "单项外盒",
           "desc": "面包屑的文本配置",
           "normal": {
-            "selectNames": [["width"], ["padding"], ["margin"], ["opacity"]],
-            "nth": [["width"], ["padding"], ["margin"], ["opacity"]]
+            "selectNames": [
+              ["width"],
+              ["padding"],
+              ["margin"],
+              ["opacity"],
+              ["border"],
+              ["borderRadius"],
+              ["boxShadow"],
+              ["background"]
+            ],
+            "nth": [
+              ["width"],
+              ["padding"],
+              ["margin"],
+              ["opacity"],
+              ["border"],
+              ["borderRadius"],
+              ["boxShadow"],
+              ["background"]
+            ]
           },
           "hover": {
-            "selectNames": [["width"], ["padding"], ["margin"], ["opacity"]],
-            "nth": [["width"], ["padding"], ["margin"], ["opacity"]]
+            "selectNames": [
+              ["width"],
+              ["padding"],
+              ["margin"],
+              ["opacity"],
+              ["border"],
+              ["borderRadius"],
+              ["boxShadow"],
+              ["background"]
+            ],
+            "nth": [
+              ["width"],
+              ["padding"],
+              ["margin"],
+              ["opacity"],
+              ["border"],
+              ["borderRadius"],
+              ["boxShadow"],
+              ["background"]
+            ]
           },
           "clicked": [],
           "disabled": []
