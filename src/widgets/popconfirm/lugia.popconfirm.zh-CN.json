@@ -100,13 +100,11 @@
       "rightTop",
       "rightBottom",
       "top",
-      "bottom",
       "topLeft",
-      "top",
       "topRight",
       "bottom",
-      "bottomRight",
-      "bottomLeft"
+      "bottomLeft",
+      "bottomRight"
     ],
     "ActionType": [
       "click",
