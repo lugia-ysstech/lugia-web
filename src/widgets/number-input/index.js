@@ -149,7 +149,7 @@ const InputContainer = CSSComponent({
   tag: 'div',
   className: 'NumberInputContainer',
   normal: {
-    selectNames: ['width'],
+    selectNames: [['width']],
   },
   css: css`
     position: relative;
@@ -212,7 +212,6 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     validateType: 'default',
     size: 'default',
     precision: 0,
-    defaultValue: 10,
     step: 1,
 
     formatter: (value: string) => {
@@ -422,14 +421,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     onBlur && onBlur(event);
   };
 
-  getInputDom() {
-    return findDOMNode(this.el.current.getThemeTarget()).querySelector('input');
-  }
-
   handleClick = (click: ClickType) => (event: Event) => {
-    setTimeout(() => {
-      this.getInputDom().focus();
-    }, 0);
     this.calculateValue(click, event);
   };
 
