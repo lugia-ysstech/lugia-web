@@ -124,6 +124,20 @@ export const CheckInput = StaticComponent({
   `,
 });
 
+const getPadding = (themeProps: Object): Object => {
+  if (!themeProps) {
+    return {};
+  }
+  const { themeConfig = {} } = themeProps;
+  const { normal = {} } = themeConfig;
+  const { padding } = normal;
+  if (!padding) {
+    return {};
+  }
+
+  return { padding };
+};
+
 export const CheckSpan = CSSComponent({
   tag: 'span',
   className: 'CheckButtonCheckSpan',
@@ -132,7 +146,6 @@ export const CheckSpan = CSSComponent({
     box-sizing: border-box;
     white-space: nowrap;
     vertical-align: middle;
-    padding: 0 ${em(10)};
     ${getCursor};
     ${getHasCheckCSS};
     text-align: center;
@@ -170,9 +183,20 @@ export const CheckSpan = CSSComponent({
         left: 10,
       },
     },
+    getThemeMeta(themeMeta: Object, themeProps: Object): Object {
+      return getPadding(themeProps);
+    },
   },
   hover: {
-    selectNames: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color'], ['font']],
+    selectNames: [
+      ['opacity'],
+      ['border'],
+      ['borderRadius'],
+      ['background'],
+      ['color'],
+      ['font'],
+      ['padding'],
+    ],
     defaultTheme: {
       color: themeColor,
       opacity: 1,
@@ -189,6 +213,9 @@ export const CheckSpan = CSSComponent({
         bottom: 0,
         left: 10,
       },
+    },
+    getThemeMeta(themeMeta: Object, themeProps: Object): Object {
+      return getPadding(themeProps);
     },
   },
   disabled: {
@@ -209,6 +236,9 @@ export const CheckSpan = CSSComponent({
         bottom: 0,
         left: 10,
       },
+    },
+    getThemeMeta(themeMeta: Object, themeProps: Object): Object {
+      return getPadding(themeProps);
     },
   },
 });

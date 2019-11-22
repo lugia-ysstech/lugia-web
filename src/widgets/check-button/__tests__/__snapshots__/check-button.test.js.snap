@@ -9,34 +9,6 @@ exports[`Button ChedckButton CSS 1`] = `
   transition: all 0.3s;
 }
 
-.c1:hover > span {
-  color: #4d63ff;
-}
-
-.c8 {
-  position: relative;
-  display: inline-block;
-  outline: none;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-
-.c8:hover > span {
-  color: #fff;
-}
-
-.c10 {
-  position: relative;
-  display: inline-block;
-  outline: none;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-
-.c10:hover > span {
-  color: #cccccc;
-}
-
 .c2 {
   opacity: 0;
   outline: none;
@@ -49,19 +21,31 @@ exports[`Button ChedckButton CSS 1`] = `
   box-sizing: border-box;
   white-space: nowrap;
   vertical-align: middle;
-  padding: 0 0.8333333333333334em;
   cursor: pointer;
-  border: 1px solid #cccccc;
-  color: #666666;
-  background: #fff;
-  border-left: 0;
   text-align: center;
   margin: 0;
   -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  height: 2.3333333333333335em;
-  line-height: 2.166666666666667em;
+  border-left: 0;
+  height: 2.8rem;
+  line-height: 2.6rem;
   font-size: 1.2rem;
+  color: #666666;
+  opacity: 1;
+  background-color: #fff;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .c5 {
@@ -69,19 +53,31 @@ exports[`Button ChedckButton CSS 1`] = `
   box-sizing: border-box;
   white-space: nowrap;
   vertical-align: middle;
-  padding: 0 0.8333333333333334em;
   cursor: pointer;
-  border: 1px solid #cccccc;
-  color: #666666;
-  background: #fff;
-  border-left: 0;
   text-align: center;
   margin: 0;
   -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  height: 2.666666666666667em;
-  line-height: 2.5em;
+  border-left: 0;
+  height: 3.2rem;
+  line-height: 3rem;
   font-size: 1.2rem;
+  color: #666666;
+  opacity: 1;
+  background-color: #fff;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .c6 {
@@ -89,19 +85,31 @@ exports[`Button ChedckButton CSS 1`] = `
   box-sizing: border-box;
   white-space: nowrap;
   vertical-align: middle;
-  padding: 0 0.8333333333333334em;
   cursor: pointer;
-  border: 1px solid #cccccc;
-  color: #666666;
-  background: #fff;
-  border-left: 0;
   text-align: center;
   margin: 0;
   -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  height: 3.1666666666666665em;
-  line-height: 3em;
+  border-left: 0;
+  height: 3.8rem;
+  line-height: 3.6rem;
   font-size: 1.2rem;
+  color: #666666;
+  opacity: 1;
+  background-color: #fff;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .c7 {
@@ -109,82 +117,63 @@ exports[`Button ChedckButton CSS 1`] = `
   box-sizing: border-box;
   white-space: nowrap;
   vertical-align: middle;
-  padding: 0 0.8333333333333334em;
   cursor: pointer;
-  border: 1px solid #cccccc;
+  text-align: center;
+  margin: 0;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  border-left: 0;
+  height: 4.2rem;
+  line-height: 4rem;
+  font-size: 1.2rem;
   color: #666666;
-  background: #fff;
-  border-left: 0;
-  text-align: center;
-  margin: 0;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  height: 3.5000000000000004em;
-  line-height: 3.3333333333333335em;
-  font-size: 1.2rem;
+  opacity: 1;
+  background-color: #fff;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
-.c9 {
+.c8 {
   display: inline-block;
   box-sizing: border-box;
   white-space: nowrap;
   vertical-align: middle;
-  padding: 0 0.8333333333333334em;
-  cursor: pointer;
-  background-color: #4d63ff;
-  color: #fff;
-  border: 1px solid #4d63ff;
-  border-right: 1px solid #fff;
-  border-left: 0;
-  text-align: center;
-  margin: 0;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  height: 2.666666666666667em;
-  line-height: 2.5em;
-  font-size: 1.2rem;
-}
-
-.c11 {
-  display: inline-block;
-  box-sizing: border-box;
-  white-space: nowrap;
-  vertical-align: middle;
-  padding: 0 0.8333333333333334em;
-  cursor: pointer;
-  border: 1px solid #e8e8e8;
-  color: #cccccc;
   cursor: not-allowed;
-  background: #fff;
-  border-left: 0;
   text-align: center;
   margin: 0;
   -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  height: 2.666666666666667em;
-  line-height: 2.5em;
-  font-size: 1.2rem;
-}
-
-.c12 {
-  display: inline-block;
-  box-sizing: border-box;
-  white-space: nowrap;
-  vertical-align: middle;
-  padding: 0 0.8333333333333334em;
-  cursor: pointer;
-  border: 1px solid #e8e8e8;
-  color: #cccccc;
-  cursor: not-allowed;
-  background: rgba(77,99,255,0.05);
   border-left: 0;
-  text-align: center;
-  margin: 0;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  height: 2.666666666666667em;
-  line-height: 2.5em;
+  height: 3.2rem;
+  line-height: 3rem;
   font-size: 1.2rem;
+  color: #666666;
+  opacity: 1;
+  background-color: #fff;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .c0 {
@@ -205,6 +194,10 @@ exports[`Button ChedckButton CSS 1`] = `
     </h4>
     <label
       className="c1"
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
       size="small"
     >
       <input
@@ -216,6 +209,7 @@ exports[`Button ChedckButton CSS 1`] = `
         className="c3"
         onClick={[Function]}
         size="small"
+        style={Object {}}
         type="checkbox"
       >
         CheckButton
@@ -226,6 +220,10 @@ exports[`Button ChedckButton CSS 1`] = `
     />
     <label
       className="c1"
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
     >
       <input
         className="c2"
@@ -235,6 +233,7 @@ exports[`Button ChedckButton CSS 1`] = `
       <span
         className="c5"
         onClick={[Function]}
+        style={Object {}}
         type="checkbox"
       >
         CheckButton
@@ -245,6 +244,10 @@ exports[`Button ChedckButton CSS 1`] = `
     />
     <label
       className="c1"
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
       size="large"
     >
       <input
@@ -256,6 +259,7 @@ exports[`Button ChedckButton CSS 1`] = `
         className="c6"
         onClick={[Function]}
         size="large"
+        style={Object {}}
         type="checkbox"
       >
         CheckButton
@@ -266,6 +270,10 @@ exports[`Button ChedckButton CSS 1`] = `
     />
     <label
       className="c1"
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
       size="bigger"
     >
       <input
@@ -277,6 +285,7 @@ exports[`Button ChedckButton CSS 1`] = `
         className="c7"
         onClick={[Function]}
         size="bigger"
+        style={Object {}}
         type="checkbox"
       >
         CheckButton
@@ -291,7 +300,11 @@ exports[`Button ChedckButton CSS 1`] = `
     </h4>
     <label
       checked={true}
-      className="c8"
+      className="c1"
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
     >
       <input
         className="c2"
@@ -300,8 +313,23 @@ exports[`Button ChedckButton CSS 1`] = `
       />
       <span
         checked={true}
-        className="c9"
+        className="c5"
         onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#4d63ff",
+            "borderBottomColor": "#4d63ff",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderRightColor": "#fff",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#4d63ff",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "color": "#fff",
+          }
+        }
         type="checkbox"
       >
         CheckButton
@@ -312,6 +340,10 @@ exports[`Button ChedckButton CSS 1`] = `
     />
     <label
       className="c1"
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
     >
       <input
         className="c2"
@@ -321,6 +353,7 @@ exports[`Button ChedckButton CSS 1`] = `
       <span
         className="c5"
         onClick={[Function]}
+        style={Object {}}
         type="checkbox"
       >
         CheckButton
@@ -334,8 +367,12 @@ exports[`Button ChedckButton CSS 1`] = `
       disabled
     </h4>
     <label
-      className="c10"
+      className="c1"
       disabled={true}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
     >
       <input
         className="c2"
@@ -343,9 +380,30 @@ exports[`Button ChedckButton CSS 1`] = `
         type="radio"
       />
       <span
-        className="c11"
+        className="c8"
         disabled={true}
         onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#fff",
+            "borderBottomColor": "#e8e8e8",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderRightColor": "#e8e8e8",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#e8e8e8",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "color": "#cccccc",
+            "fontSize": "1.2rem",
+            "opacity": 1,
+            "paddingBottom": "0rem",
+            "paddingLeft": "1rem",
+            "paddingRight": "1rem",
+            "paddingTop": "0rem",
+          }
+        }
         type="checkbox"
       >
         CheckButton
@@ -356,8 +414,12 @@ exports[`Button ChedckButton CSS 1`] = `
     />
     <label
       checked={true}
-      className="c10"
+      className="c1"
       disabled={true}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
     >
       <input
         className="c2"
@@ -366,9 +428,30 @@ exports[`Button ChedckButton CSS 1`] = `
       />
       <span
         checked={true}
-        className="c12"
+        className="c8"
         disabled={true}
         onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": "rgba(77,99,255,0.05)",
+            "borderBottomColor": "#e8e8e8",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderRightColor": "#fff",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#e8e8e8",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "color": "#cccccc",
+            "fontSize": "1.2rem",
+            "opacity": 1,
+            "paddingBottom": "0rem",
+            "paddingLeft": "1rem",
+            "paddingRight": "1rem",
+            "paddingTop": "0rem",
+          }
+        }
         type="checkbox"
       >
         CheckButton
