@@ -37,14 +37,14 @@ export const Container = CSSComponent({
   tag: 'div',
   className: 'Container',
   normal: {
-    selectNames: [['width'], ['height']],
+    selectNames: [['width'], ['height'], ['margin']],
   },
   hover: {
     selectNames: [],
   },
   css: css`
     display: inline-block;
-    vertical-align: top;
+    overflow: hidden;
     position: relative;
     width: ${px2remcss(250)};
     transition: all 0.3s;
@@ -155,7 +155,7 @@ export const OutContainer = CSSComponent({
     border-radius: ${px2remcss(4)};
     min-height: ${px2remcss(30)};
     background: ${defaultColor};
-    color: ${mediumGreyColor};
+    color: ${blackColor};
     font-size: ${px2remcss(12)};
     transition: all 0.3s;
   `,
