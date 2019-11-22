@@ -306,7 +306,7 @@ TitleSpan.displayName = 'titleSpan';
 
 const getFlexBoxPaddingLeft = pos => {
   const num = pos.split('-').length - 2;
-  return num ? num * 16 : 0;
+  return num ? num * 22 : 0;
 };
 
 export const FlexWrap = CSSComponent({
