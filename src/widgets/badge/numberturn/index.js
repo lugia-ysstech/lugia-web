@@ -147,9 +147,9 @@ class NumberTurn extends React.Component<NumberTurnProps, NumberTurnState> {
     const { count = 0, overflow } = this.state;
     const bitCnt = this.getBitCnt(count);
     return (
-      <NumberBoxContainer themeProps={this.props.getPartOfThemeProps('BadgeNumber')}>
+      <NumberBoxContainer themeProps={this.props.getPartOfThemeProps('InnerNumber')}>
         <OutInner
-          themeProps={this.props.getPartOfThemeProps('BadgeNumber', {
+          themeProps={this.props.getPartOfThemeProps('InnerNumber', {
             props: {
               overflow,
               bitCnt,
@@ -171,7 +171,7 @@ class NumberTurn extends React.Component<NumberTurnProps, NumberTurnState> {
     for (let i = 0; i < bitCnt; i++) {
       const bitValue = Number(countStr[i]);
       result.push(
-        <BitOut themeProps={this.props.getPartOfThemeProps('BadgeNumber')} y={-bitValue * 100}>
+        <BitOut themeProps={this.props.getPartOfThemeProps('InnerNumber')} y={-bitValue * 100}>
           {this.getBit()}
         </BitOut>
       );
@@ -194,7 +194,7 @@ class NumberTurn extends React.Component<NumberTurnProps, NumberTurnState> {
       y = -908;
     }
     return (
-      <BitOut themeProps={this.props.getPartOfThemeProps('BadgeNumber')} y={y}>
+      <BitOut themeProps={this.props.getPartOfThemeProps('InnerNumber')} y={y}>
         +
       </BitOut>
     );
@@ -205,7 +205,7 @@ class NumberTurn extends React.Component<NumberTurnProps, NumberTurnState> {
     const call: any = Function.prototype.call;
     const array: Array<any> = Array(...Array(total))
       .map(call, Number)
-      .map(v => <Bit themeProps={this.props.getPartOfThemeProps('BadgeNumber')}>{v}</Bit>);
+      .map(v => <Bit themeProps={this.props.getPartOfThemeProps('InnerNumber')}>{v}</Bit>);
     return array;
   }
 }

@@ -146,8 +146,9 @@ const Picture = CSSComponent({
   normal: {
     selectNames: [['color'], ['padding'], ['borderRadius']],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
-      const { propsConfig } = themeProps;
-      const { shape } = propsConfig;
+      const {
+        propsConfig: { shape },
+      } = themeProps;
       const theBorderRadius = shape === 'circle' ? '50%' : '10%';
       return {
         borderRadius: getBorderRadius(theBorderRadius),

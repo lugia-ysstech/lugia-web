@@ -11,7 +11,6 @@ import { Col, Row } from '../grid';
 import Widget from '../consts';
 import Theme from '../theme';
 import Icon from '../icon';
-import { getBoxShadow } from '@lugia/theme-utils';
 import { getBorder } from '@lugia/theme-utils';
 
 const Box = styled.div`
@@ -48,7 +47,7 @@ class Turn extends React.Component<any, any> {
           },
         },
         BadgeNumber: {
-          BadgeNumber: {
+          InnerNumber: {
             normal: { position: { top: -5, right: -5 } },
           },
         },
@@ -93,7 +92,7 @@ export default () => {
         },
       },
       BadgeNumber: {
-        BadgeNumber: {
+        InnerNumber: {
           normal: {
             height: 15,
             position: { top: -5, right: -5 },
