@@ -25,10 +25,10 @@ export default () => {
           position: { right: 0, top: -3 },
         },
       },
-    },
-    [Widget.NumberTurn]: {
-      normal: {
-        position: { right: 0, top: -3 },
+      BadgeNumber: {
+        BadgeNumber: {
+          normal: { position: { right: -5, top: -3 } },
+        },
       },
     },
   };
@@ -36,7 +36,7 @@ export default () => {
     [Widget.Avatar]: {
       Container: { normal: { background: { color: '#e2e2e2' } } },
       IconAvatar: { normal: { color: 'orange' } },
-      SrcAvatar: { normal: { width: 40, height: 40 } },
+      SrcAvatar: { normal: { width: 24, height: 24 } },
       FontAvatar: { normal: { color: 'red' } },
     },
   };
