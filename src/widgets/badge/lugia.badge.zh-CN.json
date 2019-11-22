@@ -41,7 +41,7 @@
         "BadgeNumber": {
           "name": "数字徽标",
           "theme": {
-            "BadgeNumber": {
+            "InnerNumber": {
               "name": "数字徽标",
               "desc": "徽标数大于0时,显示的数字",
               "normal": [
