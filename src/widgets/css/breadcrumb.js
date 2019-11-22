@@ -149,10 +149,28 @@ export const ItemWrap = CSSComponent({
   tag: 'div',
   className: 'breadcrumbContainer',
   normal: {
-    selectNames: [['width'], ['padding'], ['margin'], ['opacity']],
+    selectNames: [
+      ['width'],
+      ['padding'],
+      ['margin'],
+      ['opacity'],
+      ['border'],
+      ['borderRadius'],
+      ['boxShadow'],
+      ['background'],
+    ],
   },
   hover: {
-    selectNames: [],
+    selectNames: [
+      ['width'],
+      ['padding'],
+      ['margin'],
+      ['opacity'],
+      ['border'],
+      ['borderRadius'],
+      ['boxShadow'],
+      ['background'],
+    ],
   },
   css: css`
     display: inline-block;
