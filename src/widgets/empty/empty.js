@@ -13,7 +13,7 @@ export const EmptyContainer = CSSComponent({
   tag: 'div',
   className: 'EmptyContainer',
   normal: {
-    selectNames: [['width'], ['height'], ['background'], ['opacity'], ['border'], ['borderRadius']],
+    selectNames: [['width'], ['height'], ['background'], ['opacity'], ['borderRadius']],
   },
   hover: {
     selectNames: [],
@@ -28,7 +28,6 @@ export const EmptyContainer = CSSComponent({
     height: ${px2remcss(250)};
     width: ${px2remcss(250)};
     transition: all 0.3s;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
   `,
 });
 
