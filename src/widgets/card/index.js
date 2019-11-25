@@ -394,7 +394,7 @@ class Card extends React.Component<CardProps, CardState> {
     const { type, imageOrientation, content } = this.props;
 
     const cardContentTheme = deepMerge(
-      this.getThemeNormalConfig(this.getCardTypePadding(type, 'content', imageOrientation)),
+      this.getThemeNormalConfig(this.getPaddingByType(type, 'content', imageOrientation)),
       this.props.getPartOfThemeProps('CardContent', {
         props: { type },
       })
@@ -463,24 +463,43 @@ class Card extends React.Component<CardProps, CardState> {
     return null;
   }
 
-  getCardTypePadding(type: string, position: string, imageOrientation: string) {
+  getPaddingByType(type: string, position: string, imageOrientation: string) {
     let left = 0;
+    let top = 0;
     if (type === 'avatar' && imageOrientation === 'vertical') {
       left = 0;
     } else if (type === 'tip') {
-      left =
-        position === 'description'
-          ? 5
-          : position === 'content'
-          ? 30
-          : position === 'title'
-          ? 0
-          : 10;
+      switch (position) {
+        case 'description':
+          left = 5;
+          break;
+        case 'content':
+          left = 30;
+          break;
+        case 'title':
+          left = 0;
+          break;
+        default:
+          left = 10;
+          break;
+      }
     } else {
       left = 10;
     }
-    const top =
-      position === 'content' ? 16 : position === 'description' ? 14 : position === 'title' ? 4 : 0;
+    switch (position) {
+      case 'content':
+        top = 16;
+        break;
+      case 'description':
+        top = 14;
+        break;
+      case 'title':
+        top = 4;
+        break;
+      default:
+        top = 0;
+        break;
+    }
     return {
       padding: {
         left,
@@ -506,7 +525,7 @@ class Card extends React.Component<CardProps, CardState> {
         ) : null;
       case 'title':
         const titleThemeProps = deepMerge(
-          this.getThemeNormalConfig(this.getCardTypePadding(type, 'title', imageOrientation)),
+          this.getThemeNormalConfig(this.getPaddingByType(type, 'title', imageOrientation)),
           this.props.getPartOfThemeProps('CardTitle', { props: { type } })
         );
         return title ? (
@@ -516,7 +535,7 @@ class Card extends React.Component<CardProps, CardState> {
         ) : null;
       case 'description':
         const descriptionThemeProps = deepMerge(
-          this.getThemeNormalConfig(this.getCardTypePadding(type, 'description', imageOrientation)),
+          this.getThemeNormalConfig(this.getPaddingByType(type, 'description', imageOrientation)),
           this.props.getPartOfThemeProps('CardDescription', {
             props: { type },
           })
