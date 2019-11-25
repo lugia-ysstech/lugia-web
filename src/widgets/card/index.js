@@ -89,23 +89,15 @@ const Content = CSSComponent({
     ],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const { width, height } = themeMeta;
-      const { propsConfig } = themeProps;
-      const { type, imageOrientation } = propsConfig;
       const paddingBottom = 12;
       const paddingTop = 16;
-      const paddingLeft =
-        type === 'tip'
-          ? 30
-          : (type === 'avatar' && imageOrientation === 'vertical') || type === 'combo'
-          ? 0
-          : 10;
+      const paddingLeft = 10;
 
       const theWidth = width ? width - paddingLeft : '';
       const theHeight = height ? height - paddingTop - paddingBottom : '';
       return {
         width: theWidth,
         height: theHeight,
-        padding: { left: paddingLeft, right: paddingLeft, top: paddingTop },
       };
     },
     defaultTheme: {
@@ -238,22 +230,6 @@ const BaseText = CSSComponent({
       ['boxShadow'],
       ['opacity'],
     ],
-    getThemeMeta(themeMeta: Object, themeProps: Object) {
-      const { propsConfig } = themeProps;
-      const { imageOrientation, type } = propsConfig;
-      const padding =
-        type === 'tip'
-          ? 30
-          : (type === 'avatar' && imageOrientation === 'vertical') || type === 'combo'
-          ? 0
-          : 10;
-      return {
-        padding: {
-          left: padding,
-          right: padding,
-        },
-      };
-    },
   },
   css: css`
     text-align: inherit;
@@ -277,19 +253,10 @@ const Title = CSSComponent({
       const { propsConfig } = themeProps;
       const { type } = propsConfig;
       const weight = font && font.weight ? font.weight : type === 'tip' ? 700 : 500;
-      const padding =
-        type !== 'tip'
-          ? {
-              top: 4,
-              right: 10,
-              left: 10,
-            }
-          : null;
       return {
         font: {
           weight,
         },
-        padding,
       };
     },
     getCSS(themeMeta: Object, themeProps: Object) {
@@ -301,6 +268,7 @@ const Title = CSSComponent({
     },
     defaultTheme: {
       fontSize: 16,
+      width: '100%',
     },
   },
   css: css`
@@ -348,14 +316,6 @@ const Description = CSSComponent({
     defaultTheme: {
       fontSize: 14,
       color: darkGreyColor,
-    },
-    getThemeMeta(themeMeta: Object, themeProps: Object) {
-      const { propsConfig } = themeProps;
-      const { type } = propsConfig;
-      const paddingLeft = type === 'tip' ? 5 : 10;
-      return {
-        padding: { left: paddingLeft, right: 10, top: 14 },
-      };
     },
   },
 });
@@ -432,12 +392,14 @@ class Card extends React.Component<CardProps, CardState> {
 
   getInnerContent() {
     const { type, imageOrientation, content } = this.props;
-    const cardContentTheme = this.props.getPartOfThemeProps('CardContent', {
-      props: {
-        type,
-        imageOrientation,
-      },
-    });
+
+    const cardContentTheme = deepMerge(
+      this.getThemeNormalConfig(this.getCardTypePadding(type, 'content', imageOrientation)),
+      this.props.getPartOfThemeProps('CardContent', {
+        props: { type },
+      })
+    );
+
     return (
       <Content
         themeProps={cardContentTheme}
@@ -500,9 +462,42 @@ class Card extends React.Component<CardProps, CardState> {
       );
     return null;
   }
+
+  getCardTypePadding(type: string, position: string, imageOrientation: string) {
+    let left = 0;
+    if (type === 'avatar' && imageOrientation === 'vertical') {
+      left = 0;
+    } else if (type === 'tip') {
+      left =
+        position === 'description'
+          ? 5
+          : position === 'content'
+          ? 30
+          : position === 'title'
+          ? 0
+          : 10;
+    } else {
+      left = 10;
+    }
+    const top =
+      position === 'content' ? 16 : position === 'description' ? 14 : position === 'title' ? 4 : 0;
+    return {
+      padding: {
+        left,
+        right: 10,
+        top,
+      },
+    };
+  }
+
+  getThemeNormalConfig(normalConfig: Object) {
+    return { themeConfig: { normal: normalConfig } };
+  }
+
   getDetails(information: string): React.Node | null {
-    const { operation, title, description, content, children, type } = this.props;
+    const { operation, title, description, content, children, type, imageOrientation } = this.props;
     const hasNoContent = !(content && children);
+
     switch (information) {
       case 'operation':
         const operationThemeProps = this.props.getPartOfThemeProps('CardOperation');
@@ -510,16 +505,22 @@ class Card extends React.Component<CardProps, CardState> {
           <Operation themeProps={operationThemeProps}>{operation}</Operation>
         ) : null;
       case 'title':
-        const titleThemeProps = this.props.getPartOfThemeProps('CardTitle', { props: { type } });
+        const titleThemeProps = deepMerge(
+          this.getThemeNormalConfig(this.getCardTypePadding(type, 'title', imageOrientation)),
+          this.props.getPartOfThemeProps('CardTitle', { props: { type } })
+        );
         return title ? (
           <Title type={type} themeProps={titleThemeProps}>
             {title}
           </Title>
         ) : null;
       case 'description':
-        const descriptionThemeProps = this.props.getPartOfThemeProps('CardDescription', {
-          props: { type },
-        });
+        const descriptionThemeProps = deepMerge(
+          this.getThemeNormalConfig(this.getCardTypePadding(type, 'description', imageOrientation)),
+          this.props.getPartOfThemeProps('CardDescription', {
+            props: { type },
+          })
+        );
         return description ? (
           <Description themeProps={descriptionThemeProps}>{description} </Description>
         ) : null;
@@ -527,6 +528,7 @@ class Card extends React.Component<CardProps, CardState> {
         return null;
     }
   }
+
   getContent(): React.Node | null {
     const { content, children } = this.props;
     return content ? content : children ? children : null;
