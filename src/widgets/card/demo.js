@@ -84,11 +84,6 @@ export default () => {
           width: 500,
           height: 200,
         },
-        hover: {
-          background: {
-            color: 'red',
-          },
-        },
       },
     },
   };
@@ -213,11 +208,6 @@ export default () => {
     [Widget.Card]: {
       Container: {
         normal: { width: 200, height: 220 },
-        hover: {
-          background: {
-            color: 'red',
-          },
-        },
       },
     },
   };
@@ -247,28 +237,8 @@ export default () => {
     <Wrapper>
       <p>基本样式</p>
       <Wrapper>
-        <Card
-          title={'this is title'}
-          description={'this is description'}
-          shadow={'always'}
-          operation={'操作'}
-        />
+        <Card title={'this is title'} description={'this is description'} />
       </Wrapper>
-      <p>基本样式</p>
-      <Theme config={view}>
-        <Wrapper>
-          <Card
-            title={<div>{'this is title'}</div>}
-            description={[
-              <div>{'this is description'}</div>,
-              <div>{'this is description'}</div>,
-              <div>{'this is description'}</div>,
-              <div>{'this is description'}</div>,
-            ]}
-            shadow={'always'}
-          />
-        </Wrapper>
-      </Theme>
       <p>tip样式</p>
       <Theme config={view}>
         <Wrapper>
@@ -276,7 +246,6 @@ export default () => {
             type={'tip'}
             title={'this is title'}
             description={[<div>{'this is description'}</div>, <div>{'this is description'}</div>]}
-            shadow={'always'}
           />
         </Wrapper>
       </Theme>
@@ -292,7 +261,6 @@ export default () => {
             avatar={
               'http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png'
             }
-            shadow={'hover'}
           />
         </Wrapper>
       </Theme>
@@ -311,7 +279,6 @@ export default () => {
             avatar={
               'http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png'
             }
-            shadow={'hover'}
           />
         </Wrapper>
       </Theme>
@@ -328,7 +295,6 @@ export default () => {
             image={
               'http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg'
             }
-            shadow={'hover'}
           />
         </Wrapper>
       </Theme>
@@ -343,7 +309,6 @@ export default () => {
             image={
               'http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg'
             }
-            shadow={'hover'}
           />
         </Wrapper>
       </Theme>
@@ -358,14 +323,13 @@ export default () => {
                 <Tabs data={defaultData} />
               </TabsWrapper>
             }
-            shadow={'hover'}
           />
         </Wrapper>
       </Theme>
       <p>组合样式</p>
       <Theme config={price}>
         <Wrapper>
-          <Card viewClass={'price'} type={'combo'} content={<AmountCard />} shadow={'hover'} />
+          <Card viewClass={'price'} type={'combo'} content={<AmountCard />} />
         </Wrapper>
       </Theme>
     </Wrapper>
