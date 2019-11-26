@@ -47,20 +47,7 @@ const Wrapper = styled.div`
   display: inline-block;
 `;
 const view = {
-  [Widget.TimeLine]: {
-    TimeLineContainer: {
-      normal: {
-        width: 200,
-        height: 300,
-      },
-    },
-  },
   [Widget.TimeLineItem]: {
-    TimeLineItemContainer: {
-      normal: {
-        height: 60,
-      },
-    },
     TimeLineItemTip: {
       TooltipContent: { normal: { background: { color: 'pink' } } },
       TooltipTitle: { normal: { color: 'green' } },

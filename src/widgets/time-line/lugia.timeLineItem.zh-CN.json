@@ -66,9 +66,9 @@
       "desc": "隐藏的解释时间点配置",
       "normal": [["width"], ["height"], ["background"], ["boxShadow"], ["border"]]
     },
-    "TimeLineItemTip": {
       "theme": {
-        "TooltipContent": {
+        "TimeLineItemTip": {
+          "TooltipContent": {
           "name": "隐藏的解释时间点显示容器",
           "desc": "隐藏的解释时间点显示容器配置",
           "normal": [["width"], ["height"], ["background"], ["boxShadow"], ["border"]]
