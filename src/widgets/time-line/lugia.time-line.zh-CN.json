@@ -94,7 +94,7 @@
       "desc": "时间轴最外层容器",
       "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"]]
     },
-    "TimeLine": {
+    "TimeLineItem": {
       "name": "单个时间节点配置",
       "theme": {
         "TimeLineDot": {
