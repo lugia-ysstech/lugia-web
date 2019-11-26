@@ -224,7 +224,7 @@ type TimeLineProps = {
   timeLineType: TimeLineType,
   pendingDot: React.Node,
   pending: boolean,
-  getChildDescWidth: Function,
+  getChildDirectionAndWidth: Function,
 };
 
 class TimeLineItem extends Component<TimeLineProps, TimeLineState> {

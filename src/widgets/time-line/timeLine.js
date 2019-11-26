@@ -181,7 +181,6 @@ class TimeLine extends Component<TimeLineProps, TimeLineState> {
         }
       }
     }
-    console.log(this.leftChildMaxWidth, 111111111);
     this.setState({ _renderWidth: true });
   };
 
