@@ -1,7 +1,7 @@
 {
   "widgetName": "Group",
-  "title": "单选框",
-  "desc": "单选框。",
+  "title": "单选框组",
+  "desc": "单选框组。",
   "props": {
     "defaultValue": {
       "type": "string",
@@ -14,6 +14,7 @@
     "data": {
       "type": "Object[]",
       "desc": "单选框信息",
+      "propsDefaultValue": [],
       "defaultValue": [
         { "text": "选项1", "value": "1" },
         { "text": "选项2", "value": "2" },
@@ -22,7 +23,7 @@
     },
     "displayField": {
       "type": "string",
-      "desc": "单选框的 显示字段值",
+      "desc": "单选框的显示字段值",
       "defaultValue": "text"
     },
     "valueField": {
