@@ -18,6 +18,7 @@
     "data": {
       "type": "Object[]",
       "desc": "指定 Checkbox 组件展示值",
+      "propsDefaultValue": [],
       "defaultValue": [
         { "text": "选项1", "value": "1" },
         { "text": "选项2", "value": "2" },
