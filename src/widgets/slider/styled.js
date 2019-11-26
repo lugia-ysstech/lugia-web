@@ -35,7 +35,7 @@ type CssTypeProps = {
   maxValue: number,
   vertical?: boolean,
 };
-const transitionTime = '0.1';
+const transitionTime = '0.3';
 export const SliderBigBox = CSSComponent({
   tag: 'div',
   className: 'SliderContainer',
