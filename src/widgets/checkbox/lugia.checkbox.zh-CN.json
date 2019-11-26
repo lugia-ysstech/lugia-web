@@ -30,7 +30,9 @@
     },
     "children": {
       "type": "string | React.node",
-      "desc": "Checkbox展示内容"
+      "desc": "Checkbox展示内容",
+      "propsDefaultValue": "",
+      "defaultValue": "checkbox"
     }
   },
   "events": {
