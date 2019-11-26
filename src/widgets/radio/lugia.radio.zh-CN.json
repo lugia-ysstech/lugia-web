@@ -22,7 +22,9 @@
     },
     "children": {
       "type": "string | React.node",
-      "desc": "Radio展示内容"
+      "desc": "Radio展示内容",
+      "propsDefaultValue": "",
+      "defaultValue": "radio"
     }
   },
   "event": {
@@ -63,14 +65,28 @@
     "RadioEdgeUnChecked": {
       "name": "未选中外框样式",
       "desc": "未选中外框样式",
-      "normal": [["background"], ["border"], ["borderRadius"], ["boxShadow"], ["width"], ["height"]],
+      "normal": [
+        ["background"],
+        ["border"],
+        ["borderRadius"],
+        ["boxShadow"],
+        ["width"],
+        ["height"]
+      ],
       "hover": [["background"], ["borderRadius"], ["border"]],
       "disabled": [["background"], ["borderRadius"], ["border"]]
     },
     "RadioEdgeChecked": {
       "name": "选中外框样式",
       "desc": "选中外框样式",
-      "normal": [["background"], ["border"], ["borderRadius"], ["boxShadow"], ["width"], ["height"]],
+      "normal": [
+        ["background"],
+        ["border"],
+        ["borderRadius"],
+        ["boxShadow"],
+        ["width"],
+        ["height"]
+      ],
       "hover": [["background"], ["borderRadius"], ["border"]],
       "disabled": [["background"], ["borderRadius"], ["border"]]
     },
@@ -84,7 +100,14 @@
     "RadioEdgeCancel": {
       "name": "取消状态外框样式",
       "desc": "取消状态外框样式",
-      "normal": [["background"], ["border"], ["borderRadius"], ["boxShadow"], ["width"], ["height"]],
+      "normal": [
+        ["background"],
+        ["border"],
+        ["borderRadius"],
+        ["boxShadow"],
+        ["width"],
+        ["height"]
+      ],
       "hover": [["background"], ["borderRadius"], ["border"]],
       "disabled": [["background"], ["borderRadius"], ["border"]]
     },
