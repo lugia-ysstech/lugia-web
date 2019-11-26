@@ -5,7 +5,14 @@
   "props": {
     "data": {
       "type": "Object[]",
-      "desc": "左右两个面板数据源"
+      "desc": "左右两个面板数据源",
+      "defaultValue": [
+        { "text": "选项1", "value": "选项1", "disabled": false },
+        { "text": "选项2", "value": "选项2", "disabled": false },
+        { "text": "选项3", "value": "选项3", "disabled": false },
+        { "text": "选项4", "value": "选项4", "disabled": false }
+      ],
+      "propsDefaultValue": []
     },
     "showSearch": {
       "type": "boolean",
@@ -128,7 +135,32 @@
       "title": "树形穿梭框",
       "desc": "树形穿梭框，展示树形数据",
       "props": {
-        "type": "tree"
+        "type": "tree",
+        "data": [
+          { "text": "1", "value": "1" },
+          {
+            "text": "2",
+            "value": "2",
+            "children": [
+              {
+                "text": "2.1",
+                "value": "2.1",
+                "children": [
+                  { "text": "2.1.1", "value": "2.1.1" },
+                  { "text": "2.1.2", "value": "2.1.2" }
+                ]
+              },
+              {
+                "text": "2.2",
+                "value": "2.2",
+                "children": [
+                  { "text": "2.2.1", "value": "2.2.1" },
+                  { "text": "2.2.2", "value": "2.2.2" }
+                ]
+              }
+            ]
+          }
+        ]
       },
       "theme": {
         "TransferWrap": {
@@ -532,7 +564,7 @@
       "desc": "为穿梭框配置左右面板头部文字样式",
       "normal": [["padding"], ["color"], ["font"]]
     },
-    "TransferSearchInput":{
+    "TransferSearchInput": {
       "name": "穿梭框面板搜索框样式",
       "desc": "为穿梭框配置左右面板搜索框样式",
       "theme": {
