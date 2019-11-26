@@ -55,27 +55,15 @@ const Content: Object = CSSComponent({
       boxShadow: getBoxShadow('0 0 6 rgba(51, 51, 51, 0.2)'),
       padding: {
         top: 6,
-        bottom: 4,
+        bottom: 6,
         left: 8,
         right: 8,
       },
-    },
-    getThemeMeta(themeMeta, themeProps) {
-      const { propsConfig } = themeProps;
-      const { height } = themeMeta;
-      const { size, popArrowType } = propsConfig;
-      const theHeight =
-        height && height > 0 ? height : size === 'large' ? 40 : size === 'small' ? 24 : 32;
-      if (popArrowType !== 'round')
-        return {
-          height: theHeight,
-        };
     },
   },
   css: css`
     border-radius: ${px2remcss(5)};
     position: relative;
-    line-height: 1;
     box-sizing: border-box;
   `,
 });
@@ -394,7 +382,7 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
           </ContentWrapper>
         }
       >
-        {children}
+        <div>{children}</div>
       </Trigger>
     );
   }
@@ -413,7 +401,6 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
       </Content>
     );
   }
-
   getArrow(direction) {
     const { placement, popArrowType } = this.props;
     const theThemeProps = this.props.getPartOfThemeProps('Container', {
