@@ -13,11 +13,9 @@ import Theme from '../theme/';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  text-align: left;
   margin: 50px;
 `;
 const VWrapper = styled.div`
-  text-align: left;
   margin: 50px;
   display: inline-block;
 `;
@@ -68,13 +66,6 @@ class StepsDemo extends React.Component<Object, Object> {
     const theCurrentStepNumber = matchCurrentNumber ? currentStepNumber : 1;
     const description = matchCurrentNumber ? steps[theCurrentStepNumber - 1].description : '';
     const view = {
-      [Widget.Steps]: {
-        StepsOutContainer: {
-          normal: {
-            width: 400,
-          },
-        },
-      },
       [Widget.Button]: {
         Container: {
           normal: {
@@ -112,7 +103,14 @@ const hThemeConfig = {
   [Widget.Steps]: {
     StepsOutContainer: {
       normal: {
-        width: 800,
+        width: 1500,
+      },
+    },
+    Step: {
+      StepOutContainer: {
+        normal: {
+          width: 300,
+        },
       },
     },
   },
@@ -122,17 +120,6 @@ const vThemeConfig = {
     StepsOutContainer: {
       normal: {
         margin: 10,
-      },
-    },
-  },
-};
-const singleThemeConfig = {
-  [Widget.Step]: {
-    StepLine: {
-      normal: {
-        background: {
-          color: 'purple',
-        },
       },
     },
   },
@@ -154,9 +141,25 @@ export default () => {
           </Wrapper>
           <p>带有描述</p>
           <Steps orientation="horizontal" size={'normal'}>
-            <Step title="title1" description={'description111'} stepStatus="finish" />
-            <Step title="title1" description={'description111'} stepStatus="finish" />
-            <Step title="title2" description={'description2'} stepStatus="process" />
+            <Step title="title1" description={'description11'} stepStatus="finish" />
+            <Step
+              title="title1"
+              description={
+                <div>
+                  很长很长的描述,想要撑开高度,很长很长的描述,想要撑开高度,很长很长的描述,想要撑开高度,很长很长的描述,想要撑开高度
+                </div>
+              }
+              stepStatus="finish"
+            />
+            <Step
+              title="title2"
+              description={
+                <div>
+                  很长的描述检测最大宽度很长的描述检测最大宽度很长的描述检测最大宽度很长的描述检测最大宽度很长的描述检测最大宽度很长的描述检测最大宽度
+                </div>
+              }
+              stepStatus="process"
+            />
             <Step title="title3" description={'description33'} stepStatus="next" />
             <Step title="title4" description={'description444'} stepStatus="wait" />
             <Step title="title5" description={'description5555'} stepStatus="error" />
@@ -279,16 +282,10 @@ export default () => {
       <Theme config={vThemeConfig}>
         <VWrapper>
           <p>简洁风格 size mini</p>
-
           <Steps orientation="vertical" stepType="simple" size="mini">
             <Step title="title1" stepStatus="finish" description="description1" />
             <Step title="title1" stepStatus="finish" description="description1" />
-            <Step
-              title="title2"
-              stepStatus="process"
-              description="description2"
-              theme={singleThemeConfig}
-            />
+            <Step title="title2" stepStatus="process" description="description2" />
             <Step title="title3" stepStatus="next" description="description3" />
             <Step title="title4" stepStatus="wait" description="description4" />
             <Step title="title5" stepStatus="error" description="description5" />
@@ -311,7 +308,15 @@ export default () => {
           <Steps orientation="vertical" stepType="simple" size={'normal'}>
             <Step title="title1" description={'description111'} stepStatus="finish" />
             <Step title="title1" description={'description111'} stepStatus="finish" />
-            <Step title="title2" description={'description2'} stepStatus="process" />
+            <Step
+              title="title2"
+              description={
+                <div>
+                  很长很长的描述想要撑开宽度很长很长的描述想要撑开宽度很长很长的描述想要撑开宽度很长很长的描述想要撑开宽度
+                </div>
+              }
+              stepStatus="process"
+            />
             <Step title="title3" description={'description33'} stepStatus="next" />
             <Step title="title4" description={'description444'} stepStatus="wait" />
             <Step title="title5" description={'description5555'} stepStatus="error" />
@@ -319,7 +324,6 @@ export default () => {
         </VWrapper>
         <VWrapper>
           <p>半扁平风格 size normal</p>
-
           <Steps orientation="vertical" stepType="flat" size="normal">
             <Step title="title1" stepStatus="finish" description="description1" />
             <Step title="title1" stepStatus="finish" description="description1" />
