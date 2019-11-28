@@ -31,6 +31,9 @@ const lightThemeColor = changeColor(themeColor, 20).rgb;
 
 const { px2remcss } = units;
 
+export const isHorizontal = (orientation: 'horizontal' | 'vertical'): boolean => {
+  return orientation === 'horizontal';
+};
 const BaseStep = CSSComponent({
   tag: 'div',
   className: 'BaseStep',
@@ -52,7 +55,7 @@ const StepOutContainer = CSSComponent({
       const { propsConfig } = themeProps;
       const { size, orientation } = propsConfig;
       const { width, height } = themeMeta;
-      const type = orientation === 'horizontal' ? 'width' : 'height';
+      const type = isHorizontal(orientation) ? 'width' : 'height';
       let theSize;
       if (type === 'width') {
         theSize = width ? width : size === 'normal' ? 212 : 204;
@@ -87,7 +90,6 @@ const BaseText = CSSComponent({
     position: absolute;
     white-space: normal;
     display: block;
-    overflow: hidden;
     word-break: keep-all;
   `,
 });
@@ -107,17 +109,17 @@ const Title = CSSComponent({
     ],
     getCSS(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
-      const { size, stepType, orientation, desAlign } = propsConfig;
-      const dir = orientation === 'horizontal' ? 'top' : 'left';
-      const position =
-        orientation !== 'horizontal'
-          ? `left:${px2remcss(5)};transform: translateY(-50%);top:50%;`
-          : '';
-      const top = stepType === 'dot' ? 20 : size === 'normal' ? 30 : 25;
-
-      const textAlign = orientation === 'horizontal' && desAlign === 'center' ? 'center' : 'left';
-      const transform = textAlign === 'center' ? 'transform: translateX(-50%);left:50%;' : '';
-      return `margin-${dir}: ${px2remcss(top)};${position};text-align: ${textAlign};${transform}`;
+      const { size, stepType, orientation } = propsConfig;
+      let dir = '';
+      let positionCSS = '';
+      const left = stepType === 'dot' ? 20 : size === 'normal' ? 35 : 30;
+      if (isHorizontal(orientation)) {
+        dir = 'bottom';
+      } else {
+        positionCSS = `left:${px2remcss(left)};transform: translateY(-50%);top:50%;`;
+      }
+      const top = stepType === 'dot' || stepType === 'icon' ? -20 : size === 'normal' ? -20 : -25;
+      return `${dir}:${px2remcss(top)}; ${positionCSS};`;
     },
     defaultTheme: {
       fontSize: 14,
@@ -143,27 +145,31 @@ const Description = CSSComponent({
     ],
     getCSS(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
-      const { size, stepType, orientation, desAlign } = propsConfig;
+      const { size, stepType, orientation, stepContainerWidth } = propsConfig;
 
       let top = 0;
       let left = 0;
-      if (orientation === 'horizontal') {
-        top = stepType === 'dot' ? 35 : size === 'normal' ? 55 : 40;
+      let maxWidthCSS;
+      if (isHorizontal(orientation)) {
+        top = stepType === 'dot' ? 35 : stepType === 'icon' ? 45 : size === 'normal' ? 50 : 40;
+        const maxWidth =
+          stepContainerWidth && stepContainerWidth > 220 ? stepContainerWidth - 15 : 200;
+        maxWidthCSS = `max-width:${px2remcss(maxWidth)}`;
       } else {
-        top = stepType === 'dot' ? 15 : size === 'normal' ? 20 : 25;
-        left = stepType === 'dot' ? 25 : size === 'normal' ? 35 : 30;
+        top = stepType === 'dot' ? 15 : size === 'normal' ? 25 : 25;
+        left = stepType === 'dot' ? 20 : size === 'normal' ? 35 : 30;
       }
-      const leftPosition = orientation !== 'horizontal' ? `left:${px2remcss(left)};` : '';
-      const textAlign = orientation === 'horizontal' && desAlign === 'center' ? 'center' : 'left';
-      const transform = textAlign === 'center' ? 'transform: translateX(-50%);left:50%;' : '';
-      return `text-align: ${textAlign};${transform};top:${px2remcss(top)};${leftPosition}`;
+      const leftPosition = !isHorizontal(orientation) ? `left:${px2remcss(left)};` : '';
+
+      return `top:${px2remcss(top)};${leftPosition};${maxWidthCSS}`;
     },
     defaultTheme: {
       fontSize: 12,
     },
   },
   css: css`
-    white-space: nowrap;
+    white-space: inherit;
+    overflow: hidden;
   `,
 });
 const SimpleLineContainer = CSSComponent({
@@ -177,7 +183,7 @@ const SimpleLineContainer = CSSComponent({
       const padding = stepType === 'flat' ? 0 : px2remcss(6);
       let hSize = padding;
       let vSize = 0;
-      if (orientation === 'horizontal') {
+      if (isHorizontal(orientation)) {
         hSize = 0;
         vSize = padding;
       }
@@ -188,13 +194,10 @@ const SimpleLineContainer = CSSComponent({
       const { height, width } = themeMeta;
       const { propsConfig } = themeProps;
       const { orientation } = propsConfig;
-      const theWidth = width ? width : orientation === 'horizontal' ? '100%' : '';
-      const theHeight = height ? height : orientation === 'horizontal' ? '' : '100%';
-      if (orientation === 'horizontal')
-        return {
-          width: theWidth,
-        };
+      const theWidth = width ? width : isHorizontal(orientation) ? '100%' : 32;
+      const theHeight = height ? height : isHorizontal(orientation) ? 32 : '100%';
       return {
+        width: theWidth,
         height: theHeight,
       };
     },
@@ -216,7 +219,7 @@ const OtherLineContainer = CSSComponent({
       const padding = px2remcss(6);
       let hSize = padding;
       let vSize = 0;
-      if (orientation === 'horizontal') {
+      if (isHorizontal(orientation)) {
         hSize = 0;
         vSize = padding;
       }
@@ -226,14 +229,12 @@ const OtherLineContainer = CSSComponent({
     getThemeMeta(themeMeta, themeProps) {
       const { height, width } = themeMeta;
       const { propsConfig } = themeProps;
-      const { orientation } = propsConfig;
-      const theWidth = width ? width : orientation === 'horizontal' ? '100%' : '';
-      const theHeight = height ? height : orientation === 'horizontal' ? '' : '100%';
-      if (orientation === 'horizontal')
-        return {
-          width: theWidth,
-        };
+      const { orientation, stepType } = propsConfig;
+      const lineWith = stepType === 'icon' ? 24 : 12;
+      const theWidth = width ? width : isHorizontal(orientation) ? '100%' : lineWith;
+      const theHeight = height ? height : isHorizontal(orientation) ? lineWith : '100%';
       return {
+        width: theWidth,
         height: theHeight,
       };
     },
@@ -252,8 +253,8 @@ const Line = CSSComponent({
       const { propsConfig } = themeProps;
       const { height, width } = themeMeta;
       const { orientation } = propsConfig;
-      const theHeight = height ? height : orientation === 'horizontal' ? 1 : '100%';
-      const theWidth = width ? width : orientation === 'horizontal' ? '100%' : 1;
+      const theHeight = height ? height : isHorizontal(orientation) ? 1 : '100%';
+      const theWidth = width ? width : isHorizontal(orientation) ? '100%' : 1;
       return {
         height: theHeight,
         width: theWidth,
@@ -277,11 +278,11 @@ const DotLine = CSSComponent({
       const { propsConfig } = themeProps;
       const { orientation, isDashed } = propsConfig;
       const styled = isDashed ? 'dashed' : 'solid';
-      const direction = orientation === 'horizontal' ? 'bottom' : 'left';
+      const direction = isHorizontal(orientation) ? 'bottom' : 'left';
       const { height, width } = themeMeta;
-      const theHeight = height ? height : orientation === 'horizontal' ? 1 : '100%';
-      const theWidth = width ? width : orientation === 'horizontal' ? '100%' : 1;
-      const size = orientation === 'horizontal' ? theHeight : theWidth;
+      const theHeight = height ? height : isHorizontal(orientation) ? 1 : '100%';
+      const theWidth = width ? width : isHorizontal(orientation) ? '100%' : 1;
+      const size = isHorizontal(orientation) ? theHeight : theWidth;
       return {
         width: theWidth,
         height: theHeight,
@@ -311,8 +312,8 @@ const FlatLine = CSSComponent({
       const { propsConfig } = themeProps;
       const { height, width, boxShadow } = themeMeta;
       const { orientation } = propsConfig;
-      const theHeight = height ? height : orientation === 'horizontal' ? 6 : '100%';
-      const theWidth = width ? width : orientation === 'horizontal' ? '100%' : 6;
+      const theHeight = height ? height : isHorizontal(orientation) ? 6 : '100%';
+      const theWidth = width ? width : isHorizontal(orientation) ? '100%' : 6;
       const theBoxShadow = '0 0 2 rgba(104, 79, 255,0.3) inset';
       const resBoxShadow = boxShadow ? boxShadow : getBoxShadow(theBoxShadow);
       const theThemeMeta = {
@@ -328,10 +329,10 @@ const FlatLine = CSSComponent({
 
       const getPosition = (type: 'after' | 'before') => {
         const before = type === 'before';
-        const beforeDirection = orientation === 'horizontal' ? 'top' : 'left';
+        const beforeDirection = isHorizontal(orientation) ? 'top' : 'left';
         const HAfterDirection = before ? 'left' : 'right';
         const VAfterDirection = before ? 'top' : 'bottom';
-        const afterDirection = orientation === 'horizontal' ? HAfterDirection : VAfterDirection;
+        const afterDirection = isHorizontal(orientation) ? HAfterDirection : VAfterDirection;
         return `  
            ${beforeDirection}:${px2remcss(1)};
            ${afterDirection}:${px2remcss(-2)};
@@ -370,8 +371,8 @@ const NormalFlatLine = CSSComponent({
       const { propsConfig } = themeProps;
       const { height, width } = themeMeta;
       const { orientation } = propsConfig;
-      const theHeight = height ? height : orientation === 'horizontal' ? 6 : '100%';
-      const theWidth = width ? width : orientation === 'horizontal' ? '100%' : 6;
+      const theHeight = height ? height : isHorizontal(orientation) ? 6 : '100%';
+      const theWidth = width ? width : isHorizontal(orientation) ? '100%' : 6;
       return {
         height: theHeight,
         width: theWidth,
@@ -445,10 +446,10 @@ const StepNumber = CSSComponent({
       const { size } = propsConfig;
       const { font } = themeMeta;
       const theFontSize = font && font.size ? font.size : size === 'normal' ? 20 : 12;
-      const theFontweight = font && font.weight ? font.weight : 700;
+      const theFontWeight = font && font.weight ? font.weight : 700;
       return {
         font: {
-          weight: theFontweight,
+          weight: theFontWeight,
           size: theFontSize,
         },
       };
@@ -458,7 +459,6 @@ const StepNumber = CSSComponent({
     display: inLine-block;
     user-select: none;
     text-align: center;
-    font-weight: 700;
     line-height: 1;
   `,
 });
@@ -502,11 +502,12 @@ const StepInner = CSSComponent({
     },
   },
   css: css`
+    box-sizing: content-box;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-sizing: border-box;
     border-radius: 50%;
+    margin: auto;
   `,
 });
 const StepContainer = CSSComponent({
@@ -517,9 +518,8 @@ const StepContainer = CSSComponent({
     getCSS(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
       const { orientation } = propsConfig;
-      const direction = orientation === 'horizontal' ? 'row' : 'column';
-      const textAlign = orientation !== 'horizontal' ? 'text-align: -webkit-center;' : '';
-      return `flex-direction: ${direction};${textAlign}`;
+      const direction = isHorizontal(orientation) ? 'row' : 'column';
+      return `flex-direction: ${direction};`;
     },
   },
   css: css`
@@ -537,7 +537,7 @@ const DotContainer = CSSComponent({
     getCSS(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
       const { orientation } = propsConfig;
-      const direction = orientation === 'horizontal' ? 'row' : 'column';
+      const direction = isHorizontal(orientation) ? 'row' : 'column';
       return `flex-direction: ${direction};`;
     },
   },
@@ -568,28 +568,8 @@ const StepInnerContainer = CSSComponent({
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
       const { width, height } = themeMeta;
-      const { size, stepType, stepStatus } = propsConfig;
-      let theSize = 24;
-      switch (stepStatus) {
-        case 'finish':
-        case 'process':
-        case 'error':
-          theSize = size === 'normal' ? 32 : 24;
-          break;
-        case 'next':
-        case 'wait':
-          theSize =
-            size === 'normal' && stepType === 'flat'
-              ? 32
-              : size === 'mini' && stepType === 'flat'
-              ? 24
-              : size === 'normal'
-              ? 20
-              : 12;
-          break;
-        default:
-          break;
-      }
+      const { size } = propsConfig;
+      const theSize = size === 'normal' ? 32 : 24;
       const theWidth = width ? width : theSize;
       const theHeight = height ? height : theSize;
       return {
@@ -599,14 +579,14 @@ const StepInnerContainer = CSSComponent({
     },
     getCSS(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
-      const { orientation, stepStatus, stepType } = propsConfig;
-      const position =
-        orientation === 'horizontal'
-          ? 'align-items: center;top: 50%;transform: translateY(-50%);'
-          : 'justify-content: center;';
+      const { orientation, stepStatus, stepType, desAlign } = propsConfig;
+      const position = isHorizontal(orientation)
+        ? 'align-items: center;top: 50%;transform: translateY(-50%);'
+        : 'justify-content: center;';
+      const center = desAlign === 'center' ? 'justify-content: center;' : '';
       const index =
         stepType === 'flat' && (stepStatus === 'wait' || stepStatus === 'next') ? 9 : 11;
-      return `z-index: ${index};${position};`;
+      return `z-index: ${index};${position};${center};`;
     },
   },
 });
@@ -642,6 +622,7 @@ type StepProps = {
   themeProps: Object,
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
+  getChildWidths: Function,
 };
 
 class Step extends React.Component<StepProps, StepState> {
@@ -650,6 +631,8 @@ class Step extends React.Component<StepProps, StepState> {
 
   constructor(props: StepProps) {
     super(props);
+    this.title = React.createRef();
+    this.desc = React.createRef();
   }
 
   static getDerivedStateFromProps(props: StepProps, state: StepState) {
@@ -668,6 +651,26 @@ class Step extends React.Component<StepProps, StepState> {
     return { stepStatus: theStepStatus };
   }
 
+  componentDidMount() {
+    if (this.title.current) {
+      this.titleHeight = this.title.current.offsetHeight;
+      this.titleWidth = this.title.current.offsetWidth;
+    }
+    if (this.desc.current) {
+      this.descHeight = this.desc.current.offsetHeight;
+      this.descWidth = this.desc.current.offsetWidth;
+    }
+
+    const { getChildWidths } = this.props;
+    getChildWidths &&
+      getChildWidths({
+        titleWidth: this.titleWidth,
+        titleHeight: this.titleHeight,
+        descWidth: this.descWidth,
+        descHeight: this.descHeight,
+      });
+  }
+
   render() {
     const { stepStatus, size, isFirst, orientation, stepType } = this.props;
     if (isFirst) {
@@ -677,6 +680,12 @@ class Step extends React.Component<StepProps, StepState> {
       'color',
       this.getStepStatusColor(stepStatus, stepType)
     );
+    const {
+      themeConfig: { normal },
+    } = this.props.getPartOfThemeProps('StepOutContainer');
+    if (normal && normal.width) {
+      this.stepContainerWidth = normal.width;
+    }
     const theThemeProps = deepMerge(
       resultTheme,
       this.props.getPartOfThemeProps('StepOutContainer', {
@@ -693,13 +702,7 @@ class Step extends React.Component<StepProps, StepState> {
   }
 
   getThemeColorConfig(CSSType: string, color: string): Object {
-    return CSSType === 'background'
-      ? {
-          background: {
-            color,
-          },
-        }
-      : { color };
+    return CSSType === 'background' ? { background: { color } } : { color };
   }
 
   getStepFontColor(stepStatus: StepStatus, stepType: StepType, type: string) {
@@ -754,8 +757,7 @@ class Step extends React.Component<StepProps, StepState> {
   getStepContainer() {
     const { stepType, isFirst, size, orientation } = this.props;
 
-    const type = orientation === 'horizontal' ? 'width' : 'height';
-    const theVWidth = orientation !== 'horizontal' && !isFirst ? '100%' : '';
+    const type = isHorizontal(orientation) ? 'width' : 'height';
     const theSize =
       stepType === 'dot' && isFirst
         ? 12
@@ -768,7 +770,6 @@ class Step extends React.Component<StepProps, StepState> {
     const stepContainerTheme = {
       themeConfig: {
         normal: {
-          width: theVWidth,
           [type]: theSize,
         },
       },
@@ -783,7 +784,7 @@ class Step extends React.Component<StepProps, StepState> {
   }
 
   getDesc() {
-    const { description, size, stepType, orientation, desAlign } = this.props;
+    const { description, size, stepType, orientation } = this.props;
     const { stepStatus } = this.state;
     if (description && description !== undefined) {
       const resultTheme = this.getThemeNormalConfig(
@@ -796,17 +797,21 @@ class Step extends React.Component<StepProps, StepState> {
             size,
             stepType,
             orientation,
-            desAlign,
+            stepContainerWidth: this.stepContainerWidth,
           },
         })
       );
-      return <Description themeProps={desThemeProps}>{description}</Description>;
+      return (
+        <Description ref={this.desc} themeProps={desThemeProps}>
+          {description}
+        </Description>
+      );
     }
     return null;
   }
 
   getTitle() {
-    const { title, size, orientation, desAlign, stepType } = this.props;
+    const { title, size, orientation, stepType } = this.props;
     const { stepStatus } = this.state;
 
     const resultTheme = this.getThemeNormalConfig(
@@ -820,11 +825,14 @@ class Step extends React.Component<StepProps, StepState> {
           size,
           stepType,
           orientation,
-          desAlign,
         },
       })
     );
-    return <Title themeProps={titleThemeProps}>{title} </Title>;
+    return (
+      <Title ref={this.title} themeProps={titleThemeProps}>
+        {title}
+      </Title>
+    );
   }
 
   getStepHead() {
@@ -870,7 +878,7 @@ class Step extends React.Component<StepProps, StepState> {
     if (isFirst) {
       return null;
     }
-    const theThemeProps = this.props.getPartOfThemeProps('StepInnerContainer', {
+    const theThemeProps = this.props.getPartOfThemeProps('LineContainer', {
       props: {
         isFirst,
         stepType,
@@ -880,13 +888,7 @@ class Step extends React.Component<StepProps, StepState> {
 
     if (stepType === 'icon' || stepType === 'dot') {
       return (
-        <OtherLineContainer
-          themeProps={this.props.getPartOfThemeProps('LineContainer', {
-            props: { orientation, isFirst },
-          })}
-        >
-          {this.getOtherLine()}
-        </OtherLineContainer>
+        <OtherLineContainer themeProps={theThemeProps}>{this.getOtherLine()}</OtherLineContainer>
       );
     }
     return (
@@ -961,7 +963,13 @@ class Step extends React.Component<StepProps, StepState> {
     return color;
   }
   getStep() {
-    const { icon = 'lugia-icon-financial_cloud', stepType, size, orientation } = this.props;
+    const {
+      icon = 'lugia-icon-financial_cloud',
+      stepType,
+      size,
+      orientation,
+      desAlign,
+    } = this.props;
     const { stepStatus } = this.state;
     const theIcon = this.getIcon(stepStatus);
     if (stepType === 'flat' || stepType === 'simple') {
@@ -971,6 +979,7 @@ class Step extends React.Component<StepProps, StepState> {
           size,
           orientation,
           stepStatus,
+          desAlign,
         },
       });
 
