@@ -78,7 +78,7 @@
       "title": "简洁步骤条",
       "desc": "简洁类型步骤条",
       "props": {
-        "type": "simple"
+        "stepType": "simple"
       },
       "theme": {
         "StepOutContainer": {
@@ -134,7 +134,7 @@
       "title": "半扁平化步骤条",
       "desc": "半扁平化类型步骤条",
       "props": {
-        "type": "flat"
+        "stepType": "flat"
       },
       "theme": {
         "StepOutContainer": {
@@ -190,7 +190,7 @@
       "title": "图标步骤条",
       "desc": "图标类型步骤条",
       "props": {
-        "type": "icon"
+        "stepType": "icon"
       },
       "theme": {
         "StepOutContainer": {
@@ -246,7 +246,7 @@
       "title": "点状",
       "desc": "按步骤条类型不同选择显示不同步骤条样式",
       "props": {
-        "type": "dot"
+        "stepType": "dot"
       },
       "theme": {
         "StepOutContainer": {
