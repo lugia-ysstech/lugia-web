@@ -9,6 +9,7 @@ import Theme from '../theme';
 import AmountInput from './index';
 import Widget from '../consts/index';
 import styled from 'styled-components';
+import { getBoxShadow } from '@lugia/theme-utils';
 
 class LimitAmountInput extends React.Component<any, any> {
   constructor(props: any) {
@@ -37,6 +38,15 @@ const Wrapper = styled.div`
 export default () => {
   const view = {
     [Widget.AmountInput]: {
+      Container: {
+        normal: {
+          width: 400,
+          height: 40,
+          border: {
+            top: 10,
+          },
+        },
+      },
       InnerInput: {
         Input: {
           normal: {
