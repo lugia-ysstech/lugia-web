@@ -10,6 +10,7 @@ import Menu from '../menu';
 import Theme from '../theme';
 import Widget from '../consts/index';
 import styled from 'styled-components';
+import { getBoxShadow, getBorder } from '@lugia/theme-utils/lib/index';
 
 const Box = styled.div`
   display: inline-block;
@@ -44,6 +45,53 @@ for (let i = 0; i < 10; i++) {
   data.push({ value: title, text: title });
 }
 
+const theme = {
+  [Widget.DropMenu]: {
+    Container: {
+      normal: {
+        width: 500,
+      },
+    },
+    DropMenuButton: {
+      Container: {
+        normal: {
+          width: 200,
+          height: 50,
+          background: {
+            color: '#24a42f',
+          },
+        },
+        hover: {
+          background: {
+            color: 'red',
+          },
+        },
+        disabled: {
+          background: {
+            color: 'orange',
+          },
+        },
+      },
+      PullIcon: {
+        normal: {
+          color: 'orange',
+          font: {
+            size: 16,
+          },
+        },
+      },
+    },
+    // Menu: {
+    //   MenuWrap: {
+    //     normal: {
+    //       width: 150,
+    //       height: 500,
+    //     },
+    //   },
+    // },
+  },
+};
+
 export default class extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
@@ -55,105 +103,136 @@ export default class extends React.Component<any, any> {
 
   render() {
     const { menu } = this.state;
-    const defaultView = {
-      [Widget.DropMenuButton]: { width: 120 },
-      [Widget.DropMenu]: { width: 80, height: 180 },
+    const config = {
+      [Widget.DropMenuButton]: {
+        Container: {
+          normal: {
+            width: 200,
+            height: 50,
+            background: {
+              color: '#24a42f',
+            },
+          },
+          hover: {
+            background: {
+              color: 'red',
+            },
+          },
+          disabled: {
+            background: {
+              color: 'orange',
+            },
+          },
+        },
+      },
     };
 
-    const cascaderMenu = <Menu data={cascaderData} action={'hover'} />;
-    const cascaderView = {
-      [Widget.DropMenuButton]: { width: 150 },
-      [Widget.DropMenu]: { width: 130, height: 180 },
+    const view = {
+      [Widget.DropMenuButton]: {
+        Container: {
+          normal: {
+            width: 200,
+            height: 80,
+          },
+        },
+
+        Divided: {
+          normal: {
+            color: '#42da4a',
+            width: 2,
+          },
+          hover: {
+            color: 'blue',
+          },
+          active: {
+            color: 'orange',
+          },
+          disabled: {
+            color: '#000',
+          },
+        },
+
+        TextContainer: {
+          normal: {
+            width: 50,
+          },
+          hover: {
+            border: getBorder({ color: 'orange', width: 1, style: 'solid' }),
+          },
+        },
+      },
     };
     return (
       <div>
-        <H2>不同样式的dropmenu</H2>
-        <Theme config={defaultView}>
-          <Box>
-            <DropMenu menus={menu} autoHeight={true}>
-              <DropMenu.Button type="basic">Click me</DropMenu.Button>
-            </DropMenu>
-          </Box>
+        <Box>
+          <DropMenu text={'下拉菜单'} theme={theme} menus={menu}>
+            <DropMenu.Button divided={true}>Click</DropMenu.Button>
+          </DropMenu>
+        </Box>
 
-          <Box>
-            <DropMenu menus={menu}>
-              <DropMenu.Button divided={false}>Click me</DropMenu.Button>
-            </DropMenu>
-          </Box>
+        {/*<Box>*/}
+        {/*<DropMenu theme={theme}></DropMenu>*/}
+        {/*</Box>*/}
 
-          <Box>
-            <DropMenu action={'hover'} menus={menu}>
-              <DropMenu.Button>Hover arrow</DropMenu.Button>
-            </DropMenu>
-          </Box>
+        <Box>
+          <DropMenu menus={menu}>
+            <DropMenu.Button divided={true}>Click</DropMenu.Button>
+          </DropMenu>
+        </Box>
 
-          <Box>
-            <DropMenu action={'hover'} menus={menu}>
-              <DropMenu.Button type="primary" divided={false}>
-                Hover me
-              </DropMenu.Button>
-            </DropMenu>
-          </Box>
+        <Box>
+          <DropMenu menus={menu}>
+            <DropMenu.Button divided={true}>Click</DropMenu.Button>
+          </DropMenu>
+        </Box>
+        <Box>
+          <DropMenu menus={menu}>
+            <DropMenu.Button type={'primary'} divided={true}>
+              Click
+            </DropMenu.Button>
+          </DropMenu>
+        </Box>
+        {/*<Box>*/}
+        {/*<DropMenu menus={menu}>*/}
+        {/*<DropMenu.Button theme={view} divided={true} disabled>*/}
+        {/*Click*/}
+        {/*</DropMenu.Button>*/}
+        {/*</DropMenu>*/}
+        {/*</Box>*/}
 
-          <Box>
-            <DropMenu menus={menu}>
-              <DropMenu.Button type="primary">Click arrow</DropMenu.Button>
-            </DropMenu>
-          </Box>
-        </Theme>
+        {/*<Box>*/}
+        {/*<DropMenu menus={menu}>*/}
+        {/*<DropMenu.Button type={'primary'} divided={true} disabled>*/}
+        {/*Click*/}
+        {/*</DropMenu.Button>*/}
+        {/*</DropMenu>*/}
+        {/*</Box>*/}
 
-        <H2>从不同方向展开</H2>
-        <Theme config={defaultView}>
-          <Box>
-            <DropMenu menus={menu} align={'bottomLeft'}>
-              <DropMenu.Button divided={false}>Click me</DropMenu.Button>
-            </DropMenu>
-          </Box>
-          <Box>
-            <DropMenu menus={menu} align={'bottom'}>
-              <DropMenu.Button divided={false}>Click me</DropMenu.Button>
-            </DropMenu>
-          </Box>
-          <Box>
-            <DropMenu menus={menu} align={'bottomRight'}>
-              <DropMenu.Button divided={false}>Click me</DropMenu.Button>
-            </DropMenu>
-          </Box>
-          <div>
-            <Box />
-          </div>
-
-          <Box>
-            <DropMenu menus={menu} align={'topLeft'} action={'hover'}>
-              <DropMenu.Button direction={'up'} divided={false}>
-                Hover me
-              </DropMenu.Button>
-            </DropMenu>
-          </Box>
-          <Box>
-            <DropMenu menus={menu} align={'top'} action={'hover'}>
-              <DropMenu.Button direction={'up'} divided={false}>
-                Hover me
-              </DropMenu.Button>
-            </DropMenu>
-          </Box>
-          <Box>
-            <DropMenu menus={menu} align={'topRight'} action={'hover'}>
-              <DropMenu.Button direction={'up'} divided={false}>
-                Hover me
-              </DropMenu.Button>
-            </DropMenu>
-          </Box>
-        </Theme>
-
-        <H2>多级菜单</H2>
-        <Theme config={cascaderView}>
-          <Box>
-            <DropMenu menus={cascaderMenu} action={'click'} popupVisible={this.state.popupVisible}>
-              <DropMenu.Button type="basic">Basic</DropMenu.Button>
-            </DropMenu>
-          </Box>
-        </Theme>
+        {/*<H2>不同样式的dropmenu</H2>*/}
+        {/*<Box>*/}
+        {/*<DropMenu menus={menu} autoHeight={true}>*/}
+        {/*<DropMenu.Button type="basic" text="text">*/}
+        {/*Click*/}
+        {/*</DropMenu.Button>*/}
+        {/*</DropMenu>*/}
+        {/*</Box>*/}
+        {/*<Box>*/}
+        {/*<DropMenu menus={menu}>*/}
+        {/*<DropMenu.Button>Hover</DropMenu.Button>*/}
+        {/*</DropMenu>*/}
+        {/*</Box>*/}
+        {/*<Box>*/}
+        {/*<DropMenu menus={menu}>*/}
+        {/*<DropMenu.Button disabled>Hover</DropMenu.Button>*/}
+        {/*</DropMenu>*/}
+        {/*</Box>*/}
+        {/*<Box>*/}
+        {/*<DropMenu menus={menu}>*/}
+        {/*<DropMenu.Button type="primary" divided={false}>*/}
+        {/*Hover*/}
+        {/*</DropMenu.Button>*/}
+        {/*</DropMenu>*/}
+        {/*</Box>*/}
       </div>
     );
   }
