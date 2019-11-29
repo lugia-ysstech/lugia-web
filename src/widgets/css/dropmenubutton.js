@@ -1,317 +1,963 @@
 /**
- * 标签CSS
+ * UI颜色公共值
  * create by szfeng
  *
  * @flow
  */
-import styled from 'styled-components';
-import colorsFunc from '../css/stateColor';
-import { FontSizeNumber, FontSize } from '../css';
-import { px2emcss } from '../css/units';
+import colorsFunc from './stateColor';
+import { px2remcss } from './units';
+import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
+import { getBorder } from '@lugia/theme-utils';
 
-const em = px2emcss(FontSizeNumber);
+export const {
+  themeColor,
+  disableColor,
+  blackColor,
+  darkGreyColor,
+  lightGreyColor,
+  defaultColor,
+  hoverColor,
+  mouseDownColor,
+} = colorsFunc();
 
-const { themeColor, defaultColor, lightGreyColor, darkGreyColor, disableColor } = colorsFunc();
+const DefaultHeight = 32;
+const DefaultWidth = 92;
+
+export const DropMenuContainer = CSSComponent({
+  tag: 'div',
+  className: 'DropMenuContainer',
+  normal: {
+    selectNames: [['width']],
+  },
+  hover: {
+    selectNames: [],
+  },
+  css: css`
+    display: inline-block;
+  `,
+});
+DropMenuContainer.displayName = 'DropMenuContainer';
+
+const getHoverBgColorFromNormalOrHover = (params: Object) => {
+  const { normal = {}, hover = {} } = params;
+  const { background: hoverBg = {} } = hover;
+
+  const { background: normalBg = {} } = normal;
+
+  return hoverBg.color
+    ? hoverBg.color
+    : normalBg.color
+    ? colorsFunc(normalBg.color).hoverColor
+    : hoverColor;
+};
+
+const getActiveBgColorFromNormalOrActive = (params: Object) => {
+  const { normal = {}, active = {} } = params;
+  const { background: activeBg = {} } = active;
+
+  const { background: normalBg = {} } = normal;
+
+  return activeBg.color
+    ? activeBg.color
+    : normalBg.color
+    ? colorsFunc(normalBg.color).mouseDownColor
+    : mouseDownColor;
+};
+
+const getNoDividedCustomsDefaultCSS = themeMeta => {
+  const { background = {} } = themeMeta;
+  const { color = themeColor } = background;
+
+  return {
+    color: '#fff',
+    border: getBorder({
+      color,
+      width: 1,
+      style: 'solid',
+    }),
+    background: {
+      color,
+    },
+  };
+};
+
+const getNoDividedCheckedDefaultBasicCSS = param => {
+  const { normal = {} } = param;
+  const { color = themeColor } = normal;
+  return {
+    border: 'none',
+    color: colorsFunc(color).hoverColor,
+  };
+};
+
+const getNoDividedCheckedDefaultCSS = (type, param) => {
+  if (type === 'basic') {
+    return getNoDividedCheckedDefaultBasicCSS(param);
+  }
+
+  return getNoDividedHoverCSS(type, param);
+};
+
+const getNoDividedDefaultCSS = (type, themeMeta) => {
+  const basicCSS = {
+    border: 'none',
+    background: 'none',
+    color: themeColor,
+  };
+  const primaryCSS = {
+    color: darkGreyColor,
+    border: getBorder({
+      color: lightGreyColor,
+      width: 1,
+      style: 'solid',
+    }),
+  };
+  return type === 'basic'
+    ? basicCSS
+    : type === 'primary'
+    ? primaryCSS
+    : getNoDividedCustomsDefaultCSS(themeMeta);
+};
+
+const getColorFromNormalOrHover = (params: Object) => {
+  const { normal = {}, hover = {} } = params;
+  return hover.color
+    ? hover.color
+    : normal.color
+    ? colorsFunc(normal.color).hoverColor
+    : hoverColor;
+};
+
+const getColorFromNormalOrActive = params => {
+  const { normal = {}, active = {} } = params;
+
+  return active.color
+    ? active.color
+    : normal.color
+    ? colorsFunc(normal.color).mouseDownColor
+    : mouseDownColor;
+};
+
+const getNoDividedBasicHoverCSS = param => {
+  const color = getColorFromNormalOrHover(param, themeColor);
+  return {
+    color,
+  };
+};
+
+const getNoDividedBasicActiveCSS = param => {
+  const color = getColorFromNormalOrActive(param, themeColor);
+  return {
+    color,
+  };
+};
+
+const getNoDividedCustomsHoverCSS = param => {
+  const hoverbgColor = getHoverBgColorFromNormalOrHover(param);
+  const hoverCSS = {
+    background: {
+      color: hoverbgColor,
+    },
+    border: getBorder({
+      color: hoverbgColor,
+      width: 1,
+      style: 'solid',
+    }),
+    color: defaultColor,
+  };
+  return hoverCSS;
+};
+
+const getNoDividedCustomsActiveCSS = param => {
+  const activebgColor = getActiveBgColorFromNormalOrActive(param, themeColor);
+  const activeCSS = {
+    background: {
+      color: activebgColor,
+    },
+    border: getBorder({
+      color: activebgColor,
+      width: 1,
+      style: 'solid',
+    }),
+  };
+  return activeCSS;
+};
+
+const getNoDividedPrimaryHoverCSS = param => {
+  const color = getColorFromNormalOrHover(param, themeColor);
+
+  return {
+    color,
+    border: getBorder({
+      color,
+      width: 1,
+      style: 'solid',
+    }),
+  };
+};
+
+const getNoDividedPrimaryAativeCSS = param => {
+  const color = getColorFromNormalOrActive(param, themeColor);
+
+  return {
+    color,
+    border: getBorder({
+      color,
+      width: 1,
+      style: 'solid',
+    }),
+  };
+};
+
+const getNoDividedHoverCSS = (type, param) => {
+  if (type === 'basic') {
+    return getNoDividedBasicHoverCSS(param);
+  } else if (type === 'primary') {
+    return getNoDividedPrimaryHoverCSS(param);
+  }
+  return getNoDividedCustomsHoverCSS(param);
+};
+
+const getNoDividedActiveCSS = (type, param) => {
+  if (type === 'basic') {
+    return getNoDividedBasicActiveCSS(param);
+  } else if (type === 'primary') {
+    return getNoDividedPrimaryAativeCSS(param);
+  }
+  return getNoDividedCustomsActiveCSS(param);
+};
+
+const getNoDividedDisabledCSS = type => {
+  if (type === 'basic') {
+    return {
+      color: disableColor,
+    };
+  } else if (type === 'primary') {
+    return {
+      color: disableColor,
+    };
+  }
+  const disColor = colorsFunc(themeColor).disabledColor;
+  return {
+    border: getBorder({
+      color: disColor,
+      width: 1,
+      style: 'solid',
+    }),
+    background: {
+      color: disColor,
+    },
+  };
+};
+
+export const NoDividedContainer = CSSComponent({
+  tag: 'div',
+  className: 'NoDividedContainer',
+
+  normal: {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['margin'],
+      ['padding'],
+      ['lineHeight'],
+      ['color'],
+      ['border'],
+      ['borderRadius'],
+      ['background'],
+      ['opacity'],
+      ['boxShadow'],
+      ['font'],
+      ['fontSize'],
+      ['cursor'],
+    ],
+    getThemeMeta: (themeMeta, themeProps) => {
+      const { propsConfig, themeConfig } = themeProps;
+      const { normal = {}, hover = {} } = themeConfig;
+      const { type, checked } = propsConfig;
+      const { height = DefaultHeight } = themeMeta;
+
+      const defaultCSS = checked
+        ? getNoDividedCheckedDefaultCSS(type, { normal, hover })
+        : getNoDividedDefaultCSS(type, themeMeta);
+      return {
+        lineHeight: px2remcss(height),
+        ...defaultCSS,
+      };
+    },
+    defaultTheme: {},
+  },
+  hover: {
+    selectNames: [
+      ['lineHeight'],
+      ['color'],
+      ['border'],
+      ['borderRadius'],
+      ['background'],
+      ['opacity'],
+      ['boxShadow'],
+      ['font'],
+      ['fontSize'],
+      ['cursor'],
+    ],
+
+    getThemeMeta: (themeMeta, themeProps) => {
+      const { themeConfig, propsConfig } = themeProps;
+      const { normal = {}, hover = {} } = themeConfig;
+      const { type } = propsConfig;
+      const hoverCSS = getNoDividedHoverCSS(type, { normal, hover });
+
+      return { ...hoverCSS };
+    },
+    defaultTheme: {},
+  },
+  active: {
+    selectNames: [
+      ['lineHeight'],
+      ['color'],
+      ['font'],
+      ['fontSize'],
+      ['background'],
+      ['opacity'],
+      ['border'],
+      ['borderRadius'],
+      ['boxShadow'],
+    ],
+    getThemeMeta: (themeMeta, themeProps) => {
+      const { themeConfig, propsConfig } = themeProps;
+      const { normal = {}, active = {} } = themeConfig;
+      const { type } = propsConfig;
+      const activeCSS = getNoDividedActiveCSS(type, { normal, active });
+      return { ...activeCSS };
+    },
+  },
+  disabled: {
+    selectNames: [
+      ['lineHeight'],
+      ['color'],
+      ['border'],
+      ['borderRadius'],
+      ['background'],
+      ['opacity'],
+      ['boxShadow'],
+      ['font'],
+      ['fontSize'],
+      ['cursor'],
+    ],
+    getThemeMeta: (themeMeta, themeProps) => {
+      const { propsConfig } = themeProps;
+      const { type } = propsConfig;
+
+      const disabledCSS = getNoDividedDisabledCSS(type);
+      return {
+        ...disabledCSS,
+      };
+    },
+    defaultTheme: {
+      cursor: 'not-allowed',
+    },
+  },
+  css: css`
+    height: ${px2remcss(32)};
+    width: ${px2remcss(92)};
+    line-height: ${px2remcss(32)};
+    border-radius: ${px2remcss(4)};
+    transition: all 0.3s;
+    border-width: ${px2remcss(1)};
+    border-style: solid;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    box-sizing: border-box;
+  `,
+  option: { hover: true, active: true, disabled: true },
+});
 
 const getCursor = props => {
   const { disabled } = props;
   return `cursor: ${disabled ? 'not-allowed' : 'pointer'}`;
 };
 
-export const CheckInput = styled.input`
-  position: absolute;
-  left: 0;
-  top: 0;
-  outline: 0;
-  z-index: 100;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  ${getCursor};
-`;
+export const CheckInput = StaticComponent({
+  tag: 'input',
+  className: 'CheckInput',
+  css: css`
+    position: absolute;
+    left: 0;
+    top: 0;
+    outline: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    ${getCursor}
+  `,
+});
 
-const getWidth = props => {
-  const { Theme } = props;
-  const { width } = Theme;
-  return width ? `${em(width)}` : `${em(92)}`;
+export const NoDividedWrap = StaticComponent({
+  tag: 'div',
+  className: 'NoDividedWrap',
+  css: css`
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    padding: 0 ${px2remcss(4)};
+  `,
+});
+
+export const TextContainer = StaticComponent({
+  tag: 'span',
+  className: 'TextContainer',
+  css: css`
+    display: inline-block;
+    flex: 1;
+    font-size: ${px2remcss(14)};
+    height: 100%;
+    border-top-left-radius: ${px2remcss(4)};
+    border-bottom-left-radius: ${px2remcss(4)};
+  `,
+});
+
+export const NoDividedIconWrap = CSSComponent({
+  tag: 'span',
+  className: 'NoDividedIconWrap',
+  normal: {
+    selectNames: [
+      ['margin'],
+      ['padding'],
+      ['color'],
+      ['opacity'],
+      ['font'],
+      ['fontSize'],
+      ['cursor'],
+    ],
+    getThemeMeta: (themeMeta, themeProps) => {},
+    defaultTheme: {},
+  },
+  css: css`
+    display: inline-block;
+    padding-left: ${px2remcss(6)};
+    padding-top: ${px2remcss(2)};
+    height: ${px2remcss(30)};
+    vertical-align: top;
+  `,
+});
+
+const getDividedHoverCSS = (type, themeConfig = {}) => {
+  const { hover = {} } = themeConfig;
+  const color = hover.color ? hover.color : type === 'primary' ? hoverColor : defaultColor;
+  return color;
 };
 
-const getThemeColorState = (color: string, attrValue: string) => {
-  return color ? colorsFunc(color)[attrValue] : colorsFunc(themeColor)[attrValue];
+const getDividedActiveCSS = (type, themeConfig = {}) => {
+  const { active = {} } = themeConfig;
+  const color = active.color ? active.color : type === 'primary' ? mouseDownColor : defaultColor;
+  return color;
+};
+export const DividedContainer = CSSComponent({
+  tag: 'div',
+  className: 'DividedContainer',
+
+  normal: {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['margin'],
+      ['lineHeight'],
+      ['color'],
+      ['opacity'],
+      ['boxShadow'],
+      ['font'],
+      ['fontSize'],
+      ['cursor'],
+    ],
+    getThemeMeta: themeMeta => {
+      const { height = DefaultHeight } = themeMeta;
+      return { lineHeight: px2remcss(height) };
+    },
+    getCSS: (themeMeta, themeProps) => {
+      const { propsConfig, themeConfig } = themeProps;
+      const { normal = {} } = themeConfig;
+      const { disabled, dividedThemeConfig, type } = propsConfig;
+      const { height = DefaultHeight } = normal;
+
+      const hoverCSS = `
+             &:hover > span { 
+             height: ${px2remcss(height)};
+              border-color: ${getDividedHoverCSS(type, dividedThemeConfig)}
+             }
+             
+             &:active > span {
+               height: ${px2remcss(height)};
+              border-color: ${getDividedActiveCSS(type, dividedThemeConfig)}
+             }
+             `;
+      return disabled ? '' : hoverCSS;
+    },
+    defaultTheme: {},
+  },
+
+  disabled: {
+    selectNames: [
+      ['lineHeight'],
+      ['color'],
+      ['opacity'],
+      ['boxShadow'],
+      ['font'],
+      ['fontSize'],
+      ['cursor'],
+    ],
+    getThemeMeta: () => {
+      return {};
+    },
+    defaultTheme: {
+      cursor: 'not-allowed',
+    },
+  },
+  css: css`
+    height: ${px2remcss(DefaultHeight)};
+    width: ${px2remcss(DefaultWidth)};
+    line-height: ${px2remcss(32)};
+    border-radius: ${px2remcss(4)};
+    transition: all 0.3s;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    box-sizing: border-box;
+  `,
+  option: { hover: false, active: false, disabled: true },
+});
+
+export const DividedWrap = StaticComponent({
+  tag: 'div',
+  className: 'DividedWrap',
+  css: css`
+    display: flex;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+  `,
+});
+
+const getDevidedTextContainerPrimaryDefaultCSS = () => {
+  return {
+    border: getBorder({
+      width: 1,
+      style: 'solid',
+      color: lightGreyColor,
+    }),
+    color: darkGreyColor,
+  };
 };
 
-const getCheckedCSS = (
-  checked: boolean,
-  attribute: string,
-  checkedAttributeValue: string,
-  defaultAttributeValue: string
-) => {
-  return `${attribute} : ${checked ? checkedAttributeValue : defaultAttributeValue}`;
+const getDevidedTextContainerCustomsDefaultCSS = themeMeta => {
+  const { background = {} } = themeMeta;
+  const { color = themeColor } = background;
+  return {
+    color: defaultColor,
+    background: {
+      color,
+    },
+    border: getBorder({
+      color,
+      width: 1,
+      style: 'solid',
+    }),
+  };
 };
 
-const getHoverAndActiveCSS = (attribute: string, hoverColor: string, mouseDownColor: string) => {
-  return `
-        &:hover {
-          ${attribute}: ${hoverColor}
-        }
-        &:active {
-          ${attribute}: ${mouseDownColor}
-        }
-      `;
+const getDevidedTextContainerDefaultCSS = (type, themeMeta) => {
+  return type === 'primary'
+    ? getDevidedTextContainerPrimaryDefaultCSS()
+    : getDevidedTextContainerCustomsDefaultCSS(themeMeta);
 };
 
-const getChildSpanHoverCSS = (attribute: string, hoverColor: string, mouseDownColor: string) => {
-  return `
-  &:hover > span {
-    ${attribute}: ${hoverColor};
-  }
-  &:active > span {
-    ${attribute}: ${mouseDownColor};
-  }
-  `;
+const getDevidedTextContainerPrimaryHoverCSS = () => {
+  return {
+    border: getBorder({
+      color: hoverColor,
+      style: 'solid',
+      width: 1,
+    }),
+    color: hoverColor,
+  };
 };
 
-const getCheckedAndHoverCSS = (
-  color: string,
-  checked: boolean,
-  attribute: string,
-  defaultAttrValue: string
-) => {
-  const targetColor = color || themeColor;
-  const { hoverColor, mouseDownColor } = colorsFunc(targetColor);
-
-  return `${getCheckedCSS(checked, attribute, hoverColor, defaultAttrValue)};
-          ${getHoverAndActiveCSS(attribute, hoverColor, mouseDownColor)}`;
+const getDevidedTextContainerCustomsHoverCSS = themeConfig => {
+  const hoverbgColor = getHoverBgColorFromNormalOrHover(themeConfig);
+  const hoverCSS = {
+    background: {
+      color: hoverbgColor,
+    },
+    border: getBorder({
+      color: hoverbgColor,
+      width: 1,
+      style: 'solid',
+    }),
+    color: defaultColor,
+  };
+  return hoverCSS;
 };
 
-const isPrimaryCSS = (
-  type: string,
-  attribute: string,
-  primaryAttrValue: string,
-  defaultAttrValue
-) => {
-  return `${attribute} : ${type === 'primary' ? primaryAttrValue : defaultAttrValue}`;
+const getDevidedTextContainerHoverCSS = (type, themeConfig) => {
+  return type === 'primary'
+    ? getDevidedTextContainerPrimaryHoverCSS()
+    : getDevidedTextContainerCustomsHoverCSS(themeConfig);
 };
 
-const isPrimaryOrHoverOrCheckedCSS = (
-  type: string,
-  primaryValue: string | Function,
-  notPrimaryValue: string | Function
-) => {
-  return type === 'primary' ? primaryValue : notPrimaryValue;
+const getDevidedTextContainerPrimaryActiveCSS = () => {
+  return {
+    border: getBorder({
+      color: mouseDownColor,
+      style: 'solid',
+      width: 1,
+    }),
+    color: mouseDownColor,
+  };
 };
 
-const CommonContainer = styled.div`
-  width: ${getWidth};
-  font-size: ${FontSize};
-  display: inline-block;
-  overflow: hidden;
-  position: relative;
-`;
-
-const CommonWrap = styled.div`
-  height: 100%;
-  width: 100%;
-  text-align: center;
-  overflow: hidden;
-`;
-
-const getSeparatorBorderHoverCSS = props => {
-  const { type, disabled, Theme } = props;
-  if (disabled) {
-    return;
-  }
-  const { color } = Theme;
-  const targetColor = color || themeColor;
-  const { hoverColor, mouseDownColor } = colorsFunc(targetColor);
-  const primaryAttrValue = getChildSpanHoverCSS('border-color', hoverColor, mouseDownColor);
-  return isPrimaryOrHoverOrCheckedCSS(type, primaryAttrValue, '');
+const getDevidedTextContainerCustomsActiveCSS = themeConfig => {
+  const activebgColor = getActiveBgColorFromNormalOrActive(themeConfig, themeColor);
+  const activeCSS = {
+    background: {
+      color: activebgColor,
+    },
+    border: getBorder({
+      color: activebgColor,
+      width: 1,
+      style: 'solid',
+    }),
+  };
+  return activeCSS;
 };
 
-const DefaultContainer = styled(CommonContainer)`
-  height: ${em(32)};
-  line-height: ${em(32)};
-  border-radius: ${em(4)};
-  transition: all 0.3s;
-  ${getSeparatorBorderHoverCSS};
-  ${props =>
-    (props.disabled
-      ? ''
-      : `&:hover > span {
-    height: ${em(32)};
-  }`)};
-`;
-
-const getDisabledCSS = props => {
-  const { Theme } = props;
-  const { color } = Theme;
-  const disabledColor = getThemeColorState(color, 'disabledColor');
-  return `
-  ${isPrimaryCSS(props.type, 'color', lightGreyColor, defaultColor)};
-  ${isPrimaryCSS(props.type, 'background', defaultColor, disabledColor)};
-  ${isPrimaryCSS(props.type, 'border-color', disableColor, disabledColor)};
-  `;
+const getDevidedTextContainerActiveCSS = (type, themeConfig) => {
+  return type === 'primary'
+    ? getDevidedTextContainerPrimaryActiveCSS()
+    : getDevidedTextContainerCustomsActiveCSS(themeConfig);
 };
 
-const HoverBackgroundAndBorderAndTextColor = props => {
-  const { type, checked, disabled, Theme } = props;
-  if (disabled) {
-    return getDisabledCSS(props);
-  }
-  const { color } = Theme;
-  const targetColor = color || themeColor;
-  const { hoverColor, mouseDownColor } = colorsFunc(targetColor);
-  const primaryAttrValue = `
-    background: ${defaultColor};
-    ${getCheckedAndHoverCSS(color, checked, 'border-color', lightGreyColor)};
-    ${getChildSpanHoverCSS('border-color', hoverColor, mouseDownColor)};
-    ${getCheckedAndHoverCSS(color, checked, 'color', darkGreyColor)};
-      `;
-  const notPrimaryAttrValue = `
-      ${getCheckedAndHoverCSS(color, checked, 'border-color', targetColor)};
-      ${getCheckedAndHoverCSS(color, checked, 'background', targetColor)};
-      color: ${defaultColor}`;
-  return isPrimaryOrHoverOrCheckedCSS(type, primaryAttrValue, notPrimaryAttrValue);
+const getDevidedTextContainerPrimaryDisabledCSS = () => {
+  return {
+    border: getBorder({
+      color: lightGreyColor,
+      style: 'solid',
+      width: 1,
+    }),
+    color: lightGreyColor,
+  };
 };
 
-export const NoDividedContainer: Object = styled(DefaultContainer)`
-  border-width: ${em(1)};
-  border-style: solid;
-  ${HoverBackgroundAndBorderAndTextColor};
-`;
-NoDividedContainer.displayName = 'NoDividedContainer';
-
-export const NoDividedWrap: Object = styled(CommonWrap)`
-  padding: 0 ${em(4)};
-`;
-
-export const NoDividedIconWrap = styled.span`
-  display: inline-block;
-  padding-left: ${em(6)};
-  padding-top: ${em(2)};
-  height: ${em(30)};
-  vertical-align: top;
-`;
-
-const getDefaultBorder = props => {
-  return `
-  ${isPrimaryCSS(props.type, 'border', `1px solid ${lightGreyColor}`, '0')};
-
-  `;
+const getDevidedTextContainerCustomsDisabledCSS = () => {
+  const disColor = colorsFunc(themeColor).disabledColor;
+  return {
+    border: getBorder({
+      color: disColor,
+      width: 1,
+      style: 'solid',
+    }),
+    background: {
+      color: disColor,
+    },
+  };
 };
 
-export const TextContainer = styled.span`
-  display: inline-block;
-  flex: 1;
-  font-size: ${em(14)};
-  height: 100%;
-  border-top-left-radius: ${em(4)};
-  border-bottom-left-radius: ${em(4)};
-`;
-
-export const DividedContainer: Object = styled(DefaultContainer)`
-  color: ${defaultColor};
-`;
-
-export const DividedWrap: Object = styled(CommonWrap)`
-  display: flex;
-  position: relative;
-`;
-
-export const DevidedTextContainer: Object = styled(TextContainer)`
-  transition: all 0.3s;
-  ${getDefaultBorder};
-  border-right: 0;
-  ${HoverBackgroundAndBorderAndTextColor};
-`;
-DevidedTextContainer.displayName = 'DevidedTextContainer';
-
-export const BasicContainer: Object = styled(CommonContainer)`
-  height: ${em(22)};
-  line-height: ${em(22)};
-  padding: 0 ${em(4)};
-`;
-
-const getBasicTextHoverColor = props => {
-  const { Theme, disabled, checked } = props;
-  if (disabled) {
-    return `color: ${lightGreyColor};`;
-  }
-  const { color } = Theme;
-  const targetColor = color || themeColor;
-  const { hoverColor, mouseDownColor } = colorsFunc(targetColor);
-  return `${getChildSpanHoverCSS('color', hoverColor, mouseDownColor)};
-  ${getCheckedCSS(checked, 'color', hoverColor, darkGreyColor)};
-  `;
+const getDevidedTextContainerDisabledCSS = type => {
+  return type === 'primary'
+    ? getDevidedTextContainerPrimaryDisabledCSS()
+    : getDevidedTextContainerCustomsDisabledCSS();
 };
-export const BasicWrap: Object = styled(CommonWrap)`
-  position: relative;
-  ${getBasicTextHoverColor};
-`;
-BasicWrap.displayName = 'BasicWrap';
 
-export const BasicTextContainer = styled.span`
-  width: 100%;
-`;
+export const DevidedTextContainer = CSSComponent({
+  tag: 'span',
+  className: 'DevidedTextContainer',
+  normal: {
+    selectNames: [
+      ['width'],
+      ['padding'],
+      ['background'],
+      ['lineHeight'],
+      ['border', 'left'],
+      ['border', 'top'],
+      ['border', 'bottom'],
+      ['color'],
+      ['opacity'],
+      ['font'],
+      ['fontSize'],
+      ['cursor'],
+    ],
+    getThemeMeta: (themeMeta, themeProps) => {
+      const { propsConfig, themeConfig } = themeProps;
+      const { type, checked } = propsConfig;
 
-export const BasicText = styled.span`
-  height: ${em(22)};
-  font-size: ${em(14)};
-  transition: all 0.3s;
-`;
+      const defaultCSS = checked
+        ? getDevidedTextContainerHoverCSS(type, themeConfig)
+        : getDevidedTextContainerDefaultCSS(type, themeMeta);
+      return {
+        ...defaultCSS,
+      };
+    },
+    defaultTheme: {},
+  },
+  hover: {
+    selectNames: [
+      ['lineHeight'],
+      ['background'],
+      ['border', 'left'],
+      ['border', 'top'],
+      ['border', 'bottom'],
+      ['color'],
+      ['opacity'],
+      ['font'],
+      ['fontSize'],
+    ],
+    getThemeMeta: (themeMeta, themeProps) => {
+      const { propsConfig, themeConfig } = themeProps;
+      const { type } = propsConfig;
 
-export const BasicIconWrap: Object = styled(NoDividedIconWrap)`
-  transition: all 0.3s;
-`;
+      const hoverCSS = getDevidedTextContainerHoverCSS(type, themeConfig);
+      return {
+        ...hoverCSS,
+      };
+    },
+    defaultTheme: {},
+  },
+  active: {
+    selectNames: [
+      ['lineHeight'],
+      ['background'],
+      ['border', 'left'],
+      ['border', 'top'],
+      ['border', 'bottom'],
+      ['color'],
+      ['opacity'],
+      ['font'],
+      ['fontSize'],
+    ],
+    getThemeMeta: (themeMeta, themeProps) => {
+      const { propsConfig, themeConfig } = themeProps;
+      const { type } = propsConfig;
 
-export const PullContainer = styled.span`
-  display: inline-block;
-  padding: ${em(2)} ${em(6)} 0;
-  width: ${em(24)};
-  height: ${em(32)};
-  position: relative;
-  border-top-right-radius: ${em(4)};
-  border-bottom-right-radius: ${em(4)};
-  transition: all 0.3s;
-  ${getDefaultBorder};
-  border-left: 0;
-  ${HoverBackgroundAndBorderAndTextColor};
-`;
-PullContainer.displayName = 'DropMenuPullButton';
+      const activeCSS = getDevidedTextContainerActiveCSS(type, themeConfig);
+      return {
+        ...activeCSS,
+      };
+    },
 
-const getSeparatorBorderCheckedCSS = props => {
-  const { type, iconChecked, buttonChecked, Theme, disabled } = props;
-  if (disabled) {
-    return `border-color: ${disableColor}`;
-  }
-  const checked = iconChecked || buttonChecked;
+    defaultTheme: {},
+  },
+  disabled: {
+    selectNames: [
+      ['lineHeight'],
+      ['background'],
+      ['border', 'left'],
+      ['border', 'top'],
+      ['border', 'bottom'],
+      ['color'],
+      ['opacity'],
+      ['font'],
+      ['fontSize'],
+    ],
+    getThemeMeta: (themeMeta, themeProps) => {
+      const { propsConfig } = themeProps;
+      const { type } = propsConfig;
 
-  const { color } = Theme;
-  const targetColor = color || themeColor;
-  const { hoverColor } = colorsFunc(targetColor);
+      const disabledCSS = getDevidedTextContainerDisabledCSS(type);
+      return {
+        ...disabledCSS,
+      };
+    },
+    defaultTheme: {
+      cursor: 'not-allowed',
+    },
+  },
+  css: css`
+    transition: all 0.3s;
+    border-right: 0;
+    display: inline-block;
+    width: 74%;
+    height: 100%;
+    border-top-left-radius: ${px2remcss(4)};
+    border-bottom-left-radius: ${px2remcss(4)};
+  `,
+  option: { hover: true, active: true, disabled: true },
+});
 
-  const primaryAttrValue = `
-    ${getCheckedCSS(checked, 'border-color', hoverColor, lightGreyColor)};
-    ${getCheckedCSS(checked, 'height', em(32), em(18))};
-      `;
-  const notPrimaryAttrValue = 'none';
-  // const notPrimaryAttrValue = `${getCheckedCSS(checked, 'height', em(32), em(18))};`;
-  return isPrimaryOrHoverOrCheckedCSS(type, primaryAttrValue, notPrimaryAttrValue);
+export const PullContainer = CSSComponent({
+  tag: 'span',
+  className: 'PullContainer',
+  normal: {
+    selectNames: [
+      ['padding'],
+      ['background'],
+      ['lineHeight'],
+      ['border', 'right'],
+      ['border', 'top'],
+      ['border', 'bottom'],
+      ['color'],
+      ['opacity'],
+      ['font'],
+      ['fontSize'],
+      ['cursor'],
+    ],
+    getThemeMeta: (themeMeta, themeProps) => {
+      const { propsConfig, themeConfig } = themeProps;
+      const { type, checked } = propsConfig;
+      const defaultCSS = checked
+        ? getDevidedTextContainerHoverCSS(type, themeConfig)
+        : getDevidedTextContainerDefaultCSS(type, themeMeta);
+      return {
+        ...defaultCSS,
+      };
+    },
+    defaultTheme: {},
+  },
+  hover: {
+    selectNames: [
+      ['lineHeight'],
+      ['background'],
+      ['border', 'right'],
+      ['border', 'top'],
+      ['border', 'bottom'],
+      ['color'],
+      ['opacity'],
+      ['font'],
+      ['fontSize'],
+    ],
+    getThemeMeta: (themeMeta, themeProps) => {
+      const { propsConfig, themeConfig } = themeProps;
+      const { type } = propsConfig;
+
+      const hoverCSS = getDevidedTextContainerHoverCSS(type, themeConfig);
+      return {
+        ...hoverCSS,
+      };
+    },
+    defaultTheme: {},
+  },
+  active: {
+    selectNames: [
+      ['lineHeight'],
+      ['background'],
+      ['border', 'right'],
+      ['border', 'top'],
+      ['border', 'bottom'],
+      ['color'],
+      ['opacity'],
+      ['font'],
+      ['fontSize'],
+    ],
+    getThemeMeta: (themeMeta, themeProps) => {
+      const { propsConfig, themeConfig } = themeProps;
+      const { type } = propsConfig;
+
+      const activeCSS = getDevidedTextContainerActiveCSS(type, themeConfig);
+      return {
+        ...activeCSS,
+      };
+    },
+
+    defaultTheme: {},
+  },
+  disabled: {
+    selectNames: [
+      ['lineHeight'],
+      ['background'],
+      ['border', 'right'],
+      ['border', 'top'],
+      ['border', 'bottom'],
+      ['color'],
+      ['opacity'],
+      ['font'],
+      ['fontSize'],
+    ],
+    getThemeMeta: (themeMeta, themeProps) => {
+      const { propsConfig } = themeProps;
+      const { type } = propsConfig;
+
+      const disabledCSS = getDevidedTextContainerDisabledCSS(type);
+      return {
+        ...disabledCSS,
+      };
+    },
+    defaultTheme: {
+      cursor: 'not-allowed',
+    },
+  },
+  css: css`
+    display: inline-block;
+    padding: ${px2remcss(2)} ${px2remcss(6)} 0;
+    flex: 1;
+    height: 100%;
+    position: relative;
+    border-top-right-radius: ${px2remcss(4)};
+    border-bottom-right-radius: ${px2remcss(4)};
+    transition: all 0.3s;
+  `,
+  option: { hover: true, active: true, disabled: true },
+});
+
+const getSeparatorWidth = props => {
+  const { width } = props;
+  return width ? px2remcss(width) : '73%';
 };
 
 const getSeparatorBorderColor = props => {
-  return isPrimaryCSS(props.type, 'border-color', lightGreyColor, defaultColor);
+  const { type, disabled, themeConfig, checked } = props;
+
+  if (disabled) {
+    const { disabled: disabledTheme = {} } = themeConfig;
+    const { color = lightGreyColor } = disabledTheme;
+    return color;
+  }
+  if (checked) {
+    const { hover = {} } = themeConfig;
+    const { color } = hover;
+
+    return color ? color : type === 'primary' ? hoverColor : defaultColor;
+  }
+  const { normal = {} } = themeConfig;
+  const { color: normalColor } = normal;
+  if (normalColor) {
+    return normalColor;
+  }
+
+  return type === 'primary' ? lightGreyColor : defaultColor;
 };
-export const SeparatorBorder = styled.span`
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: ${em(24)};
-  height: ${em(18)};
-  border-left: 1px solid ${lightGreyColor};
-  z-index: 2;
-  transition: all 0.3s;
-  ${getSeparatorBorderColor};
-  ${getSeparatorBorderCheckedCSS};
-`;
+
+const getSeparatorBorderWidth = props => {
+  const { disabled, themeConfig } = props;
+  const { disabled: disabledTheme = {} } = themeConfig;
+  const { width = 1 } = disabledTheme;
+  if (disabled) {
+    return px2remcss(width);
+  }
+
+  const { normal = {} } = themeConfig;
+  const { width: normalWidth = 1 } = normal;
+  return px2remcss(normalWidth);
+};
+
+const getSeparatorHeight = props => {
+  const { checked } = props;
+  return checked ? '100%' : '70%';
+};
+
+export const SeparatorBorder = StaticComponent({
+  tag: 'span',
+  className: 'SeparatorBorder',
+  css: css`
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: ${getSeparatorHeight};
+    border-right: ${getSeparatorBorderWidth} solid ${getSeparatorBorderColor};
+    z-index: 2;
+    transition: all 0.3s;
+    width: ${getSeparatorWidth};
+  `,
+});
