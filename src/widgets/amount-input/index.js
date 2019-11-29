@@ -26,11 +26,11 @@ import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import ThemeHoc from '@lugia/theme-hoc';
 import { deepMerge } from '@lugia/object-utils';
 
-const InputContainer = StaticComponent({
-  tag: 'span',
+const InputContainer = CSSComponent({
+  tag: 'div',
   className: 'AmountInputContainer',
   normal: {
-    selectNames: [],
+    selectNames: [['width'], ['height'], ['margin']],
   },
   css: css`
     position: relative;
@@ -246,7 +246,7 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
   }
 
   getInputContainer() {
-    const theThemeProps = this.props.getPartOfThemeProps('InnerInput');
+    const theThemeProps = this.props.getPartOfThemeProps('Container');
     return <InputContainer themeProps={theThemeProps}>{this.generateInput()}</InputContainer>;
   }
 
@@ -291,6 +291,12 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
     const { theme: inputTheme, viewClass: inputViewClass } = this.props.getPartOfThemeHocProps(
       'InnerInput'
     );
+
+    inputTheme[inputViewClass].Container = deepMerge(
+      inputTheme[inputViewClass].Container,
+      this.props.getPartOfThemeProps('Container').themeConfig
+    );
+
     return (
       <InnerInput
         theme={inputTheme}
