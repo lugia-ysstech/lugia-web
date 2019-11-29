@@ -108,6 +108,36 @@
             ["boxShadow"],
             ["margin"],
             ["padding"]
+          ],
+          "hover": [
+            ["width"],
+            ["height"],
+            ["background"],
+            ["border"],
+            ["borderRadius"],
+            ["boxShadow"],
+            ["margin"],
+            ["padding"]
+          ],
+          "clicked": [
+            ["width"],
+            ["height"],
+            ["background"],
+            ["border"],
+            ["borderRadius"],
+            ["boxShadow"],
+            ["margin"],
+            ["padding"]
+          ],
+          "disabled": [
+            ["width"],
+            ["height"],
+            ["background"],
+            ["border"],
+            ["borderRadius"],
+            ["boxShadow"],
+            ["margin"],
+            ["padding"]
           ]
         },
 
