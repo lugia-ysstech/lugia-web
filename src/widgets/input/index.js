@@ -53,6 +53,7 @@ const CommonInputStyle = CSSComponent({
       ['cursor'],
       ['padding'],
       ['opacity'],
+      ['boxShadow'],
     ],
     defaultTheme: {
       cursor: 'text',
@@ -83,6 +84,7 @@ const CommonInputStyle = CSSComponent({
         : isValidateSuccess(validateStatus, validateType, 'inner')
         ? dangerColor
         : blackColor;
+
       const theHeight = height ? height : size === 'large' ? 40 : size === 'small' ? 24 : 32;
       const paddingLeft = prefix ? 30 : width && width < 200 ? width / 20 : 10;
       const paddingRight =
