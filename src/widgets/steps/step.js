@@ -14,10 +14,11 @@ import ThemeProvider from '../theme-provider';
 import Icon from '../icon';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import { units } from '@lugia/css';
-import { getBoxShadow, getBorder } from '@lugia/theme-utils';
+import { getBorder, getBoxShadow } from '@lugia/theme-utils';
 import { deepMerge } from '@lugia/object-utils';
 import colorsFunc from '../css/stateColor';
 import changeColor from '../css/utilsColor';
+
 const {
   themeColor,
   blackColor,
@@ -34,6 +35,26 @@ const { px2remcss } = units;
 export const isHorizontal = (orientation: 'horizontal' | 'vertical'): boolean => {
   return orientation === 'horizontal';
 };
+const isNormalSize = (size: 'normal' | 'mini'): boolean => {
+  return size === 'normal';
+};
+
+const isDotType = (stepType: StepType): boolean => {
+  return stepType === 'dot';
+};
+
+const isFlatType = (stepType: StepType): boolean => {
+  return stepType === 'flat';
+};
+
+const getSize = (isWidth, value, orientation, defaultValue): number | string => {
+  if (value) {
+    return value;
+  }
+  const widthAndHorizontal = isWidth ? isHorizontal(orientation) : !isHorizontal(orientation);
+  return widthAndHorizontal ? '100%' : defaultValue;
+};
+
 const BaseStep = CSSComponent({
   tag: 'div',
   className: 'BaseStep',
@@ -58,9 +79,9 @@ const StepOutContainer = CSSComponent({
       const type = isHorizontal(orientation) ? 'width' : 'height';
       let theSize;
       if (type === 'width') {
-        theSize = width ? width : size === 'normal' ? 212 : 204;
+        theSize = width ? width : isNormalSize(size) ? 212 : 204;
       } else {
-        theSize = height ? height : size === 'normal' ? 82 : 74;
+        theSize = height ? height : isNormalSize(size) ? 82 : 74;
       }
       return {
         [type]: theSize,
@@ -112,13 +133,13 @@ const Title = CSSComponent({
       const { size, stepType, orientation } = propsConfig;
       let dir = '';
       let positionCSS = '';
-      const left = stepType === 'dot' ? 20 : size === 'normal' ? 35 : 30;
+      const left = isDotType(stepType) ? 20 : isNormalSize(size) ? 35 : 30;
       if (isHorizontal(orientation)) {
         dir = 'bottom';
       } else {
         positionCSS = `left:${px2remcss(left)};transform: translateY(-50%);top:50%;`;
       }
-      const top = stepType === 'dot' || stepType === 'icon' ? -20 : size === 'normal' ? -20 : -25;
+      const top = isDotType(stepType) || stepType === 'icon' ? -20 : isNormalSize(size) ? -20 : -25;
       return `${dir}:${px2remcss(top)}; ${positionCSS};`;
     },
     defaultTheme: {
@@ -151,13 +172,13 @@ const Description = CSSComponent({
       let left = 0;
       let maxWidthCSS;
       if (isHorizontal(orientation)) {
-        top = stepType === 'dot' ? 35 : stepType === 'icon' ? 45 : size === 'normal' ? 50 : 40;
+        top = isDotType(stepType) ? 35 : stepType === 'icon' ? 45 : isNormalSize(size) ? 50 : 40;
         const maxWidth =
           stepContainerWidth && stepContainerWidth > 220 ? stepContainerWidth - 15 : 200;
         maxWidthCSS = `max-width:${px2remcss(maxWidth)}`;
       } else {
-        top = stepType === 'dot' ? 15 : size === 'normal' ? 25 : 25;
-        left = stepType === 'dot' ? 20 : size === 'normal' ? 35 : 30;
+        top = isDotType(stepType) ? 15 : isNormalSize(size) ? 25 : 25;
+        left = isDotType(stepType) ? 20 : isNormalSize(size) ? 35 : 30;
       }
       const leftPosition = !isHorizontal(orientation) ? `left:${px2remcss(left)};` : '';
 
@@ -180,7 +201,7 @@ const SimpleLineContainer = CSSComponent({
     getCSS(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
       const { isFirst, stepType, orientation } = propsConfig;
-      const padding = stepType === 'flat' ? 0 : px2remcss(6);
+      const padding = isFlatType(stepType) ? 0 : px2remcss(6);
       let hSize = padding;
       let vSize = 0;
       if (isHorizontal(orientation)) {
@@ -194,8 +215,9 @@ const SimpleLineContainer = CSSComponent({
       const { height, width } = themeMeta;
       const { propsConfig } = themeProps;
       const { orientation } = propsConfig;
-      const theWidth = width ? width : isHorizontal(orientation) ? '100%' : 32;
-      const theHeight = height ? height : isHorizontal(orientation) ? 32 : '100%';
+      const theWidth = getSize(true, width, orientation, 32);
+      const theHeight = getSize(false, height, orientation, 32);
+
       return {
         width: theWidth,
         height: theHeight,
@@ -231,8 +253,9 @@ const OtherLineContainer = CSSComponent({
       const { propsConfig } = themeProps;
       const { orientation, stepType } = propsConfig;
       const lineWith = stepType === 'icon' ? 24 : 12;
-      const theWidth = width ? width : isHorizontal(orientation) ? '100%' : lineWith;
-      const theHeight = height ? height : isHorizontal(orientation) ? lineWith : '100%';
+      const theWidth = getSize(true, width, orientation, lineWith);
+      const theHeight = getSize(false, height, orientation, lineWith);
+
       return {
         width: theWidth,
         height: theHeight,
@@ -253,8 +276,9 @@ const Line = CSSComponent({
       const { propsConfig } = themeProps;
       const { height, width } = themeMeta;
       const { orientation } = propsConfig;
-      const theHeight = height ? height : isHorizontal(orientation) ? 1 : '100%';
-      const theWidth = width ? width : isHorizontal(orientation) ? '100%' : 1;
+      const theWidth = getSize(true, width, orientation, 1);
+      const theHeight = getSize(false, height, orientation, 1);
+
       return {
         height: theHeight,
         width: theWidth,
@@ -280,8 +304,8 @@ const DotLine = CSSComponent({
       const styled = isDashed ? 'dashed' : 'solid';
       const direction = isHorizontal(orientation) ? 'bottom' : 'left';
       const { height, width } = themeMeta;
-      const theHeight = height ? height : isHorizontal(orientation) ? 1 : '100%';
-      const theWidth = width ? width : isHorizontal(orientation) ? '100%' : 1;
+      const theWidth = getSize(true, width, orientation, 1);
+      const theHeight = getSize(false, height, orientation, 1);
       const size = isHorizontal(orientation) ? theHeight : theWidth;
       return {
         width: theWidth,
@@ -312,8 +336,8 @@ const FlatLine = CSSComponent({
       const { propsConfig } = themeProps;
       const { height, width, boxShadow } = themeMeta;
       const { orientation } = propsConfig;
-      const theHeight = height ? height : isHorizontal(orientation) ? 6 : '100%';
-      const theWidth = width ? width : isHorizontal(orientation) ? '100%' : 6;
+      const theWidth = getSize(true, width, orientation, 6);
+      const theHeight = getSize(false, height, orientation, 6);
       const theBoxShadow = '0 0 2 rgba(104, 79, 255,0.3) inset';
       const resBoxShadow = boxShadow ? boxShadow : getBoxShadow(theBoxShadow);
       const theThemeMeta = {
@@ -371,8 +395,8 @@ const NormalFlatLine = CSSComponent({
       const { propsConfig } = themeProps;
       const { height, width } = themeMeta;
       const { orientation } = propsConfig;
-      const theHeight = height ? height : isHorizontal(orientation) ? 6 : '100%';
-      const theWidth = width ? width : isHorizontal(orientation) ? '100%' : 6;
+      const theWidth = getSize(true, width, orientation, 6);
+      const theHeight = getSize(false, height, orientation, 6);
       return {
         height: theHeight,
         width: theWidth,
@@ -423,7 +447,7 @@ const IconContainer = CSSComponent({
       const { propsConfig } = themeProps;
       const { size } = propsConfig;
       const { fontSize } = themeMeta;
-      const theSize = fontSize ? fontSize : size === 'normal' ? 32 : 24;
+      const theSize = fontSize ? fontSize : isNormalSize(size) ? 32 : 24;
       return {
         width: theSize,
         height: theSize,
@@ -445,7 +469,7 @@ const StepNumber = CSSComponent({
       const { propsConfig } = themeProps;
       const { size } = propsConfig;
       const { font } = themeMeta;
-      const theFontSize = font && font.size ? font.size : size === 'normal' ? 20 : 12;
+      const theFontSize = font && font.size ? font.size : isNormalSize(size) ? 20 : 12;
       const theFontWeight = font && font.weight ? font.weight : 700;
       return {
         font: {
@@ -476,16 +500,16 @@ const StepInner = CSSComponent({
         case 'finish':
         case 'process':
         case 'error':
-          theSize = size === 'normal' ? 32 : 24;
+          theSize = isNormalSize(size) ? 32 : 24;
           break;
         case 'next':
         case 'wait':
           theSize =
-            size === 'normal' && stepType === 'flat'
+            isNormalSize(size) && isFlatType(stepType)
               ? 32
-              : size === 'mini' && stepType === 'flat'
+              : size === 'mini' && isFlatType(stepType)
               ? 24
-              : size === 'normal'
+              : isNormalSize(size)
               ? 20
               : 12;
           break;
@@ -569,7 +593,7 @@ const StepInnerContainer = CSSComponent({
       const { propsConfig } = themeProps;
       const { width, height } = themeMeta;
       const { size } = propsConfig;
-      const theSize = size === 'normal' ? 32 : 24;
+      const theSize = isNormalSize(size) ? 32 : 24;
       const theWidth = width ? width : theSize;
       const theHeight = height ? height : theSize;
       return {
@@ -585,7 +609,7 @@ const StepInnerContainer = CSSComponent({
         : 'justify-content: center;';
       const center = desAlign === 'center' ? 'justify-content: center;' : '';
       const index =
-        stepType === 'flat' && (stepStatus === 'wait' || stepStatus === 'next') ? 9 : 11;
+        isFlatType(stepType) && (stepStatus === 'wait' || stepStatus === 'next') ? 9 : 11;
       return `z-index: ${index};${position};${center};`;
     },
   },
@@ -595,7 +619,6 @@ const DotInnerContainer = CSSComponent({
   className: 'StepDotInnerContainer',
   normal: {
     selectNames: [['width'], ['height']],
-    getThemeMeta(themeMeta, themeProps) {},
     defaultTheme: {
       width: 12,
       height: 12,
@@ -713,8 +736,11 @@ class Step extends React.Component<StepProps, StepState> {
         resultConfigColor = errorColor;
         break;
       case 'finish':
-        const finishColor =
-          stepType === 'flat' ? lightThemeColor : type === 'desc' ? darkGreyColor : blackColor;
+        const finishColor = isFlatType(stepType)
+          ? lightThemeColor
+          : type === 'desc'
+          ? darkGreyColor
+          : blackColor;
         resultConfigColor = finishColor;
         break;
       case 'process':
@@ -733,11 +759,11 @@ class Step extends React.Component<StepProps, StepState> {
     let resultConfigColor;
     switch (stepStatus) {
       case 'finish':
-        const finishColor = stepType === 'flat' ? lightThemeColor : successColor;
+        const finishColor = isFlatType(stepType) ? lightThemeColor : successColor;
         resultConfigColor = finishColor;
         break;
       case 'process':
-        const processColor = stepType === 'flat' ? lightThemeColor : themeColor;
+        const processColor = isFlatType(stepType) ? lightThemeColor : themeColor;
         resultConfigColor = processColor;
         break;
       case 'next':
@@ -759,9 +785,9 @@ class Step extends React.Component<StepProps, StepState> {
 
     const type = isHorizontal(orientation) ? 'width' : 'height';
     const theSize =
-      stepType === 'dot' && isFirst
+      isDotType(stepType) && isFirst
         ? 12
-        : size === 'normal' && isFirst
+        : isNormalSize(size) && isFirst
         ? 32
         : size === 'mini' && isFirst
         ? 24
@@ -839,7 +865,7 @@ class Step extends React.Component<StepProps, StepState> {
     const { isFirst, stepType, size, orientation } = this.props;
     const { stepStatus } = this.state;
 
-    if (stepType === 'dot') {
+    if (isDotType(stepType)) {
       const resultTheme = this.getThemeNormalConfig(
         this.getThemeColorConfig('background', this.getStepStatusColor(stepStatus, stepType))
       );
@@ -886,7 +912,7 @@ class Step extends React.Component<StepProps, StepState> {
       },
     });
 
-    if (stepType === 'icon' || stepType === 'dot') {
+    if (stepType === 'icon' || isDotType(stepType)) {
       return (
         <OtherLineContainer themeProps={theThemeProps}>{this.getOtherLine()}</OtherLineContainer>
       );
@@ -913,7 +939,7 @@ class Step extends React.Component<StepProps, StepState> {
         },
       })
     );
-    if (stepType === 'flat') {
+    if (isFlatType(stepType)) {
       if (stepStatus === 'wait' || stepStatus === 'next') {
         return <FlatLine themeProps={theThemeProps} />;
       }
@@ -938,7 +964,7 @@ class Step extends React.Component<StepProps, StepState> {
         },
       })
     );
-    if (stepType === 'dot') {
+    if (isDotType(stepType)) {
       return <DotLine themeProps={theThemeProps} />;
     }
     return <Line themeProps={theThemeProps} />;
@@ -953,11 +979,11 @@ class Step extends React.Component<StepProps, StepState> {
   }
   getStepBackgroundColor(stepStatus: StepStatus, stepType: StepType) {
     const color =
-      (stepStatus === 'finish' || stepStatus === 'process') && stepType === 'flat'
+      (stepStatus === 'finish' || stepStatus === 'process') && isFlatType(stepType)
         ? lightThemeColor
         : stepStatus === 'process'
         ? themeColor
-        : stepStatus === 'error' && stepType === 'flat'
+        : stepStatus === 'error' && isFlatType(stepType)
         ? dangerColor
         : defaultColor;
     return color;
@@ -972,7 +998,7 @@ class Step extends React.Component<StepProps, StepState> {
     } = this.props;
     const { stepStatus } = this.state;
     const theIcon = this.getIcon(stepStatus);
-    if (stepType === 'flat' || stepType === 'simple') {
+    if (isFlatType(stepType) || stepType === 'simple') {
       const innerContainerThemeProps = this.props.getPartOfThemeProps('StepInnerContainer', {
         props: {
           stepType,
@@ -984,7 +1010,7 @@ class Step extends React.Component<StepProps, StepState> {
       });
 
       const boxShadowConfig =
-        stepType === 'flat' && (stepStatus === 'wait' || stepStatus === 'next')
+        isFlatType(stepType) && (stepStatus === 'wait' || stepStatus === 'next')
           ? this.getThemeNormalConfig({
               boxShadow: getBoxShadow('0 0 2 rgba(104, 79, 255,0.3) inset'),
             })
@@ -1037,7 +1063,7 @@ class Step extends React.Component<StepProps, StepState> {
                 const { stepType, stepStatus } = propsConfig;
                 const theColor = color
                   ? color
-                  : stepType === 'flat'
+                  : isFlatType(stepType)
                   ? defaultColor
                   : stepStatus === 'finish'
                   ? successColor
@@ -1099,7 +1125,7 @@ class Step extends React.Component<StepProps, StepState> {
                 const { color, fontSize } = themeMeta;
                 const { propsConfig } = themeProps;
                 const { stepStatus } = propsConfig;
-                const theFontSize = fontSize ? fontSize : size === 'normal' ? 32 : 24;
+                const theFontSize = fontSize ? fontSize : isNormalSize(size) ? 32 : 24;
                 const theColor = color
                   ? color
                   : stepStatus === 'finish'
