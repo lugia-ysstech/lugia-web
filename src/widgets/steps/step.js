@@ -32,7 +32,7 @@ const lightThemeColor = changeColor(themeColor, 20).rgb;
 
 const { px2remcss } = units;
 
-export const isHorizontal = (orientation: 'horizontal' | 'vertical'): boolean => {
+export const isHorizontal = (orientation: OrientationType): boolean => {
   return orientation === 'horizontal';
 };
 const isNormalSize = (size: 'normal' | 'mini'): boolean => {
@@ -47,7 +47,12 @@ const isFlatType = (stepType: StepType): boolean => {
   return stepType === 'flat';
 };
 
-const getSize = (isWidth, value, orientation, defaultValue): number | string => {
+const getSize = (
+  isWidth: boolean,
+  value: number | string,
+  orientation: OrientationType,
+  defaultValue: number | string
+): number | string => {
   if (value) {
     return value;
   }
