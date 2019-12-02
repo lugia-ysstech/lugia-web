@@ -353,6 +353,8 @@ class TextBox extends Component<InputProps, InputState> {
   setValue(value: string, event: Event): void {
     const oldValue = this.state.value;
     const { disabled, onChange, parser, formatter } = this.props;
+    this.blur(event);
+    this.focus(event);
 
     if (oldValue === value) {
       return;
@@ -567,10 +569,18 @@ class TextBox extends Component<InputProps, InputState> {
     );
   }
 
-  focus() {
-    if (this.input) {
+  focus(event: UIEvent) {
+    if (this.input.current) {
       setTimeout(() => {
-        this.input.focus();
+        this.input.current.focus(event);
+      }, 0);
+    }
+  }
+
+  blur(event: UIEvent) {
+    if (this.input.current) {
+      setTimeout(() => {
+        this.input.current.blur(event);
       }, 0);
     }
   }
