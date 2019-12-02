@@ -46,7 +46,7 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
     getTheme: () => {
       return {};
     },
-    divided: true,
+    divided: false,
     type: 'customs',
     disabled: false,
     direction: 'down',
