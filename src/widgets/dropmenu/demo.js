@@ -76,6 +76,10 @@ export default class extends React.Component<any, any> {
     return (
       <div>
         <Box>
+          <DropMenu text={'noChildren'} divided={true} theme={theme} menus={menu}></DropMenu>
+        </Box>
+
+        <Box>
           <DropMenu text={'下拉菜单'} theme={theme} menus={menu}>
             <DropMenu.Button divided={true}>Click</DropMenu.Button>
           </DropMenu>

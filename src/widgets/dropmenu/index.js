@@ -4,7 +4,6 @@
  *
  */
 import * as React from 'react';
-import styled from 'styled-components';
 import Trigger from '../trigger';
 import Theme from '../theme';
 import ThemeProvider from '../theme-provider';
@@ -13,10 +12,7 @@ import Widget from '../consts/index';
 import '../common/shirm';
 import DropMenuButton from './dropmenuButton';
 
-import { px2emcss } from '../css/units';
 import { DropMenuContainer } from '../css/dropButton';
-import { cloneElement } from 'react';
-
 const alignType = 'topLeft | top | topRight | bottomLeft | bottom | bottomRight';
 
 type DropMenuProps = {
@@ -25,11 +21,16 @@ type DropMenuProps = {
   menus: React.Node,
   children: React.Element<any>,
   onPopupVisibleChange?: Function,
-  onQuery: Function,
-  getTheme: Function,
-  query: string,
-  needQueryInput: boolean,
   align: alignType,
+  text: string,
+  divided: boolean,
+  type: 'customs' | 'basic' | 'primary',
+  _onClick?: Function,
+  onClick?: Function,
+  onMouseEnter?: Function,
+  onMouseLeave?: Function,
+  disabled: boolean,
+  direction: 'up' | 'down',
 };
 
 type DropMenuState = {
@@ -40,12 +41,12 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   static defaultProps = {
     action: 'click',
     hideAction: 'click',
-    needQueryInput: false,
     align: 'bottom',
     text: 'DropMenu',
-    getTheme() {
-      return {};
-    },
+    divided: true,
+    type: 'customs',
+    disabled: false,
+    direction: 'down',
   };
   state: DropMenuState;
   static displayName = Widget.DropMenu;
@@ -59,19 +60,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   }
 
   render() {
-    const { menus, children, action, hideAction, align, text } = this.props;
-
-    if (!children) {
-      const { getPartOfThemeHocProps } = this.props;
-
-      const { theme, viewClass } = getPartOfThemeHocProps('DropMenuButton');
-      return (
-        <DropMenuButton theme={theme} viewClass={viewClass}>
-          DropMenu
-        </DropMenuButton>
-      );
-    }
-
+    const { menus, action, hideAction, align } = this.props;
     const offsetY = this.getOffSetY(align);
 
     const menu = React.Children.only(menus);
@@ -101,14 +90,48 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
             popupVisible={this.state.visible}
             popup={popup}
           >
-            {cloneElement(children, {
-              text: text.toString(),
-            })}
+            {this.getChildrenItem()}
           </Trigger>
         </Theme>
       </DropMenuContainer>
     );
   }
+
+  getChildrenItem() {
+    const { children } = this.props;
+    if (children) {
+      return children;
+    }
+    const {
+      text,
+      divided,
+      type,
+      getPartOfThemeHocProps,
+      _onClick,
+      onClick,
+      onMouseEnter,
+      onMouseLeave,
+      disabled,
+      direction,
+    } = this.props;
+
+    const { theme, viewClass } = getPartOfThemeHocProps('DropMenuButton');
+    return (
+      <DropMenuButton
+        text={text}
+        divided={divided}
+        type={type}
+        theme={theme}
+        viewClass={viewClass}
+        _onClick={_onClick}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        disabled={disabled}
+        direction={direction}
+      />
+    );
+  }
+
   setPopupVisible(...rest: any[]) {
     this.trigger && this.trigger.setPopupVisible(...rest);
   }
