@@ -198,9 +198,9 @@ const Description = CSSComponent({
     overflow: hidden;
   `,
 });
-const SimpleLineContainer = CSSComponent({
+const FlatLineContainer = CSSComponent({
   tag: 'div',
-  className: 'StepSimpleLineContainer',
+  className: 'StepFlatLineContainer',
   normal: {
     selectNames: [['width'], ['height']],
     getCSS(themeMeta, themeProps) {
@@ -235,9 +235,9 @@ const SimpleLineContainer = CSSComponent({
     z-index: 10;
   `,
 });
-const OtherLineContainer = CSSComponent({
+const SimpleLineContainer = CSSComponent({
   tag: 'div',
-  className: 'StepOtherLineContainer',
+  className: 'StepSimpleLineContainer',
   normal: {
     selectNames: [['width'], ['height']],
     getCSS(themeMeta, themeProps) {
@@ -256,8 +256,8 @@ const OtherLineContainer = CSSComponent({
     getThemeMeta(themeMeta, themeProps) {
       const { height, width } = themeMeta;
       const { propsConfig } = themeProps;
-      const { orientation, stepType } = propsConfig;
-      const lineWith = stepType === 'icon' ? 24 : 12;
+      const { orientation } = propsConfig;
+      const lineWith = isHorizontal(orientation) ? '50%' : '100%';
       const theWidth = getSize(true, width, orientation, lineWith);
       const theHeight = getSize(false, height, orientation, lineWith);
 
@@ -272,34 +272,9 @@ const OtherLineContainer = CSSComponent({
     position: relative;
   `,
 });
-const Line = CSSComponent({
+const SimpleLine = CSSComponent({
   tag: 'div',
-  className: 'StepLine',
-  normal: {
-    selectNames: [['width'], ['height'], ['background']],
-    getThemeMeta(themeMeta, themeProps) {
-      const { propsConfig } = themeProps;
-      const { height, width } = themeMeta;
-      const { orientation } = propsConfig;
-      const theWidth = getSize(true, width, orientation, 1);
-      const theHeight = getSize(false, height, orientation, 1);
-
-      return {
-        height: theHeight,
-        width: theWidth,
-      };
-    },
-  },
-  css: css`
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  `,
-});
-const DotLine = CSSComponent({
-  tag: 'div',
-  className: 'StepDotLine',
+  className: 'StepSimpleLine',
   normal: {
     selectNames: [['width'], ['height'], ['border']],
     getThemeMeta(themeMeta, themeProps) {
@@ -311,10 +286,13 @@ const DotLine = CSSComponent({
       const { height, width } = themeMeta;
       const theWidth = getSize(true, width, orientation, 1);
       const theHeight = getSize(false, height, orientation, 1);
+
       const size = isHorizontal(orientation) ? theHeight : theWidth;
+      const theSize = orientation => {
+        return isHorizontal(orientation) ? { width: theWidth } : { height: theHeight };
+      };
       return {
-        width: theWidth,
-        height: theHeight,
+        ...theSize(orientation),
         border: {
           [direction]: {
             width: size,
@@ -917,16 +895,35 @@ class Step extends React.Component<StepProps, StepState> {
       },
     });
 
-    if (stepType === 'icon' || isDotType(stepType)) {
-      return (
-        <OtherLineContainer themeProps={theThemeProps}>{this.getOtherLine()}</OtherLineContainer>
-      );
-    }
-    return (
+    return isFlatType(stepType) ? (
+      <FlatLineContainer themeProps={theThemeProps}>{this.getFlatLine()}</FlatLineContainer>
+    ) : (
       <SimpleLineContainer themeProps={theThemeProps}>{this.getSimpleLine()}</SimpleLineContainer>
     );
   }
 
+  getFlatLine() {
+    const { isDashed, stepType, orientation } = this.props;
+    const { stepStatus } = this.state;
+    const resultTheme = this.getThemeNormalConfig(
+      this.getThemeColorConfig('background', this.getStepStatusColor(stepStatus, stepType))
+    );
+    const theThemeProps = deepMerge(
+      resultTheme,
+      this.props.getPartOfThemeProps('StepLine', {
+        props: {
+          orientation,
+          isDashed,
+          stepType,
+          stepStatus,
+        },
+      })
+    );
+    if (stepStatus === 'wait' || stepStatus === 'next') {
+      return <FlatLine themeProps={theThemeProps} />;
+    }
+    return <NormalFlatLine themeProps={theThemeProps} />;
+  }
   getSimpleLine() {
     const { isDashed, stepType, orientation } = this.props;
     const { stepStatus } = this.state;
@@ -944,35 +941,7 @@ class Step extends React.Component<StepProps, StepState> {
         },
       })
     );
-    if (isFlatType(stepType)) {
-      if (stepStatus === 'wait' || stepStatus === 'next') {
-        return <FlatLine themeProps={theThemeProps} />;
-      }
-      return <NormalFlatLine themeProps={theThemeProps} />;
-    }
-    return <Line themeProps={theThemeProps} />;
-  }
-  getOtherLine() {
-    const { isDashed, stepType, orientation } = this.props;
-    const { stepStatus } = this.state;
-    const resultTheme = this.getThemeNormalConfig(
-      this.getThemeColorConfig('background', this.getStepStatusColor(stepStatus, stepType))
-    );
-    const theThemeProps = deepMerge(
-      resultTheme,
-      this.props.getPartOfThemeProps('StepLine', {
-        props: {
-          orientation,
-          isDashed,
-          stepType,
-          stepStatus,
-        },
-      })
-    );
-    if (isDotType(stepType)) {
-      return <DotLine themeProps={theThemeProps} />;
-    }
-    return <Line themeProps={theThemeProps} />;
+    return <SimpleLine themeProps={theThemeProps} />;
   }
 
   getIcon(stepStatus: StepStatus): string {

@@ -13,7 +13,9 @@
       "meta": [
         { "key": "title", "title": "步骤条标题", "type": "string" },
         { "key": "description", "title": "步骤条描述", "type": "string" },
-        { "key": "stepStatus", "title": "步骤条状态", "type": "StepStatus" }
+        { "key": "stepStatus", "title": "步骤条状态", "type": "StepStatus" },
+        { "key": "icon", "title": "步骤条图标(图标步骤条填写)", "type": "icon" },
+        { "key": "isDashed", "title": "步骤条连接线是否虚线", "type": "boolean" }
       ]
     },
     "defaultData": {
@@ -22,12 +24,14 @@
       "meta": [
         { "key": "title", "title": "步骤条标题", "type": "string" },
         { "key": "description", "title": "步骤条描述", "type": "string" },
-        { "key": "stepStatus", "title": "步骤条状态", "type": "StepStatus" }
+        { "key": "stepStatus", "title": "步骤条状态", "type": "StepStatus" },
+        { "key": "icon", "title": "步骤条图标(图标步骤条填写)", "type": "icon" },
+        { "key": "isDashed", "title": "步骤条连接线是否虚线", "type": "boolean" }
       ]
     },
     "stepType": {
       "type": "StepType",
-      "desc": "步骤条风格 有 简洁,半扁平,图标,点状四种风格可供选择", 
+      "desc": "步骤条风格 有 简洁,半扁平,图标,点状四种风格可供选择",
       "defaultValue": "simple"
     },
     "size": {
