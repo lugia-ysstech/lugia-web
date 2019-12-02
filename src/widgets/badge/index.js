@@ -126,6 +126,7 @@ class BadgeBox extends Component<BadgeProps, BadgeState> {
         count={count}
         overflowCount={overflowCount}
         {...this.props.getPartOfThemeHocProps('BadgeNumber')}
+        singleTheme
       />
     );
   }

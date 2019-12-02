@@ -40,25 +40,20 @@
       "theme": {
         "BadgeNumber": {
           "name": "数字徽标",
-          "theme": {
-            "InnerNumber": {
-              "name": "数字徽标",
-              "desc": "徽标数大于0时,显示的数字",
-              "normal": [
-                ["width"],
-                ["height"],
-                ["background"],
-                ["position"],
-                ["opacity"],
-                ["color"],
-                ["margin"],
-                ["font"],
-                ["fontSize"],
-                ["color"],
-                ["boxShadow"]
-              ]
-            }
-          }
+          "desc": "徽标数大于0时,显示的数字",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["background"],
+            ["position"],
+            ["opacity"],
+            ["color"],
+            ["margin"],
+            ["font"],
+            ["fontSize"],
+            ["color"],
+            ["boxShadow"]
+          ]
         }
       }
     }
