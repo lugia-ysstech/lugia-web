@@ -157,7 +157,6 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
         />
         <DividedWrap>
           <DevidedTextContainer
-            Theme={getTheme()}
             disabled={disabled}
             type={type}
             checked={hasButtonChecked}

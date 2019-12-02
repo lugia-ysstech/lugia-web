@@ -21,6 +21,30 @@
       "type": "React.Node",
       "desc": "弹出方向",
       "defaultValue": "bottom"
+    },
+    "text": {
+      "type": "string",
+      "desc": "下拉菜单按钮的文本"
+    },
+    "disabled": {
+      "type": "boolean",
+      "desc": "是否禁选",
+      "defaultValue": false
+    },
+    "type": {
+      "type": "customs | basic | primary",
+      "desc": "按钮的风格,默认为customs",
+      "defaultValue": "customs"
+    },
+    "direction": {
+      "type": "up | bottom",
+      "desc": "按钮箭头的方向",
+      "defaultValue": "bottom"
+    },
+    "divided": {
+      "type": "boolean",
+      "desc": "是否有分割线",
+      "defaultValue": true
     }
   },
   "events": {
@@ -33,8 +57,291 @@
           "type": "boolean"
         }
       ]
+    },
+    "onClick": {
+      "desc": "点击按钮时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "点击的DOM事件",
+          "type": "Object"
+        }
+      ]
+    },
+
+    "onMouseEnter": {
+      "desc": "鼠标滑入按钮时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "点击的DOM事件",
+          "type": "Object"
+        }
+      ]
+    },
+    "onMouseLeave": {
+      "desc": "鼠标离开按钮时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "点击的DOM事件",
+          "type": "Object"
+        }
+      ]
     }
   },
+  "type": {
+    "direction": ["up", "bottom"],
+    "type": ["customs", "primary", "basic"],
+    "action": ["hover", "click"],
+    "hideAction": ["hover", "click"]
+  },
+
+  "designInfo": {
+    "NoDividedButton": {
+      "sequence": 1,
+      "title": "无分隔符的按钮",
+      "desc": "无分隔符的下拉按钮",
+      "props": {
+        "divided": false
+      },
+      "theme": {
+        "Container": {
+          "name": "下拉菜单容器外盒",
+          "desc": "DropMenu容器的样式配置",
+          "normal": [["width"], ["height"]],
+          "hover": [],
+          "active": [],
+          "disabled": []
+        },
+        "DropMenuButton": {
+          "name": "下拉按钮",
+          "theme": {
+            "Container": {
+              "name": "下拉菜单按钮外盒",
+              "desc": "无分割线下拉按钮容器的样式配置",
+              "normal": [
+                ["width"],
+                ["height"],
+                ["margin"],
+                ["padding"],
+                ["lineHeight"],
+                ["color"],
+                ["border"],
+                ["borderRadius"],
+                ["background"],
+                ["opacity"],
+                ["boxShadow"],
+                ["font"],
+                ["fontSize"],
+                ["cursor"]
+              ],
+              "hover": [
+                ["lineHeight"],
+                ["color"],
+                ["border"],
+                ["borderRadius"],
+                ["background"],
+                ["opacity"],
+                ["boxShadow"],
+                ["font"],
+                ["fontSize"],
+                ["cursor"]
+              ],
+              "active": [
+                ["lineHeight"],
+                ["color"],
+                ["font"],
+                ["fontSize"],
+                ["background"],
+                ["opacity"],
+                ["border"],
+                ["borderRadius"],
+                ["boxShadow"]
+              ],
+              "disabled": [
+                ["lineHeight"],
+                ["color"],
+                ["border"],
+                ["borderRadius"],
+                ["background"],
+                ["opacity"],
+                ["boxShadow"],
+                ["font"],
+                ["fontSize"],
+                ["cursor"]
+              ]
+            },
+
+            "PullIcon": {
+              "name": "下拉图标配置",
+              "desc": "下拉图标配置的样式配置",
+              "normal": [
+                ["margin"],
+                ["padding"],
+                ["color"],
+                ["opacity"],
+                ["font"],
+                ["fontSize"],
+                ["cursor"]
+              ],
+              "hover": [],
+              "active": [],
+              "disabled": []
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "theme": {
+    "Container": {
+      "name": "下拉菜单容器外盒",
+      "desc": "DropMenu容器的样式配置",
+      "normal": [["width"], ["height"]],
+      "hover": [],
+      "active": [],
+      "disabled": []
+    },
+
+    "DropMenuButton": {
+      "name": "下拉按钮",
+      "theme": {
+        "Container": {
+          "name": "下拉菜单按钮外盒",
+          "desc": "分割线下拉按钮容器的样式配置",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["margin"],
+            ["lineHeight"],
+            ["color"],
+            ["opacity"],
+            ["boxShadow"],
+            ["font"],
+            ["fontSize"],
+            ["cursor"]
+          ],
+          "hover": [],
+          "active": [],
+          "disabled": [
+            ["lineHeight"],
+            ["color"],
+            ["opacity"],
+            ["boxShadow"],
+            ["font"],
+            ["fontSize"],
+            ["cursor"]
+          ]
+        },
+
+        "TextContainer": {
+          "name": "下拉菜单展示板",
+          "desc": "分割线下拉菜单按钮展示板的样式配置",
+          "normal": [
+            ["width"],
+            ["padding"],
+            ["background"],
+            ["lineHeight"],
+            ["border", "left"],
+            ["border", "top"],
+            ["border", "bottom"],
+            ["color"],
+            ["opacity"],
+            ["font"],
+            ["fontSize"],
+            ["cursor"]
+          ],
+          "hover": [
+            ["lineHeight"],
+            ["background"],
+            ["border", "left"],
+            ["border", "top"],
+            ["border", "bottom"],
+            ["color"],
+            ["opacity"],
+            ["font"],
+            ["fontSize"]
+          ],
+          "active": [
+            ["lineHeight"],
+            ["background"],
+            ["border", "left"],
+            ["border", "top"],
+            ["border", "bottom"],
+            ["color"],
+            ["opacity"],
+            ["font"],
+            ["fontSize"]
+          ],
+          "disabled": [
+            ["lineHeight"],
+            ["background"],
+            ["border", "left"],
+            ["border", "top"],
+            ["border", "bottom"],
+            ["color"],
+            ["opacity"],
+            ["font"],
+            ["fontSize"]
+          ]
+        },
+
+        "IconContainer": {
+          "name": "右侧下拉按钮外盒",
+          "desc": "分割线右侧下拉按钮容器的样式配置",
+          "normal": [
+            ["padding"],
+            ["background"],
+            ["lineHeight"],
+            ["border", "right"],
+            ["border", "top"],
+            ["border", "bottom"],
+            ["color"],
+            ["opacity"],
+            ["font"],
+            ["fontSize"],
+            ["cursor"]
+          ],
+          "hover": [
+            ["lineHeight"],
+            ["background"],
+            ["border", "right"],
+            ["border", "top"],
+            ["border", "bottom"],
+            ["color"],
+            ["opacity"],
+            ["font"],
+            ["fontSize"]
+          ],
+          "active": [
+            ["lineHeight"],
+            ["background"],
+            ["border", "right"],
+            ["border", "top"],
+            ["border", "bottom"],
+            ["color"],
+            ["opacity"],
+            ["font"],
+            ["fontSize"]
+          ],
+          "disabled": [
+            ["lineHeight"],
+            ["background"],
+            ["border", "right"],
+            ["border", "top"],
+            ["border", "bottom"],
+            ["color"],
+            ["opacity"],
+            ["font"],
+            ["fontSize"]
+          ]
+        }
+      }
+    }
+  },
+
   "childrenWidget": ["dropmenuButton"],
   "category": ["数据录入"]
 }
