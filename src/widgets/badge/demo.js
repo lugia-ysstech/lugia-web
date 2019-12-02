@@ -47,9 +47,7 @@ class Turn extends React.Component<any, any> {
           },
         },
         BadgeNumber: {
-          InnerNumber: {
-            normal: { position: { top: -5, right: -5 } },
-          },
+          normal: { position: { top: -5, right: -5 } },
         },
       },
     };
@@ -92,11 +90,9 @@ export default () => {
         },
       },
       BadgeNumber: {
-        InnerNumber: {
-          normal: {
-            height: 15,
-            position: { top: -5, right: -5 },
-          },
+        normal: {
+          height: 15,
+          position: { top: -5, right: -5 },
         },
       },
     },
