@@ -15,6 +15,10 @@
       "type": "Object[]",
       "desc": "单选框信息",
       "propsDefaultValue": [],
+      "meta": [
+        { "key": "text", "title": "展示文字", "type": "string" },
+        { "key": "value", "title": "对应字段", "type": "string" }
+      ],
       "defaultValue": [
         { "text": "选项1", "value": "1" },
         { "text": "选项2", "value": "2" },
