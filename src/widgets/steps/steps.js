@@ -83,7 +83,9 @@ const OrientationContainer = StaticComponent({
   `,
 });
 
-type StepsState = {};
+type StepsState = {
+  _renderAgain: boolean,
+};
 
 type StepsProps = {
   stepType: StepType,
@@ -216,6 +218,7 @@ class Steps extends Component<StepsProps, StepsState> {
       getChildWidths: this.getChildWidths,
     };
   }
+  childrenLength = 0;
 
   getChildren() {
     const { children, data, defaultData } = this.props;
@@ -230,7 +233,7 @@ class Steps extends Component<StepsProps, StepsState> {
     return finalData;
   }
 
-  getMaxNumber(array: Array) {
+  getMaxNumber(array: Array<number>) {
     return Math.max.apply(null, array);
   }
 
