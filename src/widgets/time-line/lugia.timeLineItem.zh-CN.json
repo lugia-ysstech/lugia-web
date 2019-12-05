@@ -52,31 +52,31 @@
   "category": ["数据展示"],
   "theme": {
     "TimeLineDot": {
-      "name": "时间点",
-      "desc": "时间点配置",
+      "name": "时间节点",
+      "desc": "时间节点配置",
       "normal": [["width"], ["height"], ["background"], ["boxShadow"], ["border"]]
     },
     "TimeLineItemContainer": {
-      "name": "时间点外层容器",
-      "desc": "时间点外层容器配置",
+      "name": "时间节点外层容器",
+      "desc": "时间节点外层容器配置",
       "normal": [["width"], ["height"], ["margin"], ["padding"]]
     },
     "TimeLineExplainDot": {
-      "name": "隐藏的解释时间点",
-      "desc": "隐藏的解释时间点配置",
+      "name": "隐藏的解释时间节点",
+      "desc": "隐藏的解释时间节点配置",
       "normal": [["width"], ["height"], ["background"], ["boxShadow"], ["border"]]
     },
     "TimeLineItemTip": {
       "name": "隐藏信息弹框",
       "theme": {
         "TooltipContent": {
-          "name": "隐藏的解释时间点显示容器",
-          "desc": "隐藏的解释时间点显示容器配置",
+          "name": "隐藏的解释时间节点显示容器",
+          "desc": "隐藏的解释时间节点显示容器配置",
           "normal": [["width"], ["height"], ["background"], ["boxShadow"], ["border"]]
         },
         "TooltipTitle": {
-          "name": "隐藏的解释时间点标题",
-          "desc": "隐藏的解释时间点标题配置",
+          "name": "隐藏的解释时间节点标题",
+          "desc": "隐藏的解释时间节点标题配置",
           "normal": [
             ["fontSize"],
             ["font"],
@@ -88,8 +88,8 @@
           ]
         },
         "TooltipDescription": {
-          "name": "隐藏的解释时间点描述",
-          "desc": "隐藏的解释时间点描述配置",
+          "name": "隐藏的解释时间节点描述",
+          "desc": "隐藏的解释时间节点描述配置",
           "normal": [
             ["fontSize"],
             ["font"],
@@ -103,14 +103,14 @@
       }
     },
     "TimeLineItemLine": {
-      "name": "步骤间连接线",
-      "desc": "步骤间连接线的配置",
+      "name": "时间节点连接线",
+      "desc": "时间节点连接线的配置",
       "normal": [["width"], ["height"], ["background"]]
     },
     "TimeLineIcon": {
       "normal": {
-        "name": "步骤条内容图标",
-        "desc": "步骤间连接线的配置",
+        "name": "时间节点内容图标",
+        "desc": "时间节点连接线的配置",
         "normal": [["font"], ["fontSize"], ["color"]]
       }
     }
