@@ -10,6 +10,7 @@ import 'jest-styled-components';
 import Theme from '../../theme/index';
 import Widgets from '../../consts/index';
 const { expect: exp } = chai;
+const { mockObject, VerifyOrder, VerifyOrderConfig } = require('@lugia/jverify');
 Enzyme.configure({ adapter: new Adapter() });
 describe('default', () => {
   function getTarget(target) {
@@ -187,7 +188,7 @@ describe('default', () => {
     };
     const target = mount(<Slider maxValue={25} defaultValue={5} minValue={15} marks={marks} />);
     // publicMove
-    getTarget(target).setState({ offsetLeft: 70 });
+    getTarget(target).offsetLeft = 70;
     getTarget(target).publicmove(186, 101, 0);
     expect(getTarget(target).state.value).toEqual([20]);
     getTarget(target).publicmove(130, 102, 0);
@@ -217,7 +218,7 @@ describe('default', () => {
     );
     //横向slider
     // 单滑块
-    getTarget(target).setState({ offsetLeft: 70 });
+    getTarget(target).offsetLeft = 70;
     getTarget(target).publicmove(106, 104, 0); // pageX,pageY,index(滑块的index)
     expect(getTarget(target).state.value).toEqual([3.8]);
     getTarget(target).publicmove(53, 103, 0);
@@ -253,9 +254,8 @@ describe('default', () => {
     );
     //横向slider
     //双滑块
-    getTarget(target).setState({ offsetLeft: 70 });
+    getTarget(target).offsetLeft = 70;
     getTarget(target).publicmove(232, 422, 1);
-    console.log(getTarget(target).state);
     expect(getTarget(target).state.value).toEqual([0, 17.11]);
     getTarget(target).publicmove(118, 425, 0);
     expect(getTarget(target).state.value).toEqual([5.07, 17.11]);
@@ -286,7 +286,7 @@ describe('default', () => {
         <Slider defaultValue={10} vertical maxValue={30} minValue={0} />
       </Theme>
     );
-    getTarget(target).setState({ offsetTop: 124 });
+    getTarget(target).offsetTop = 124;
     getTarget(target).publicmove(99, 323, 0); // pageX,pageY,index(滑块的index)
     expect(getTarget(target).state.value).toEqual([8.98]);
     getTarget(target).publicmove(97, 424, 0);
@@ -320,7 +320,7 @@ describe('default', () => {
         <Slider defaultValue={[10, 20]} tips vertical maxValue={30} minValue={0} />
       </Theme>
     );
-    getTarget(target).setState({ offsetTop: 124 });
+    getTarget(target).offsetTop = 124;
     getTarget(target).publicmove(254, 338, 0);
     expect(getTarget(target).state.value).toEqual([7.39, 20]);
     getTarget(target).publicmove(256, 188, 1);
@@ -358,7 +358,7 @@ describe('default', () => {
     );
     //横向slider
     // 单滑块
-    getTarget(target).setState({ offsetLeft: 70 });
+    getTarget(target).offsetLeft = 70;
     const { moveValue } = getTarget(target).getMoveState(149, 103, 0);
     expect(moveValue).toBe(8.35);
   });
@@ -386,7 +386,7 @@ describe('default', () => {
     );
     //横向slider
     // 单滑块
-    getTarget(target).setState({ offsetLeft: 70 });
+    getTarget(target).offsetLeft = 70;
     const { moveValue } = getTarget(target).getMoveState(220, 101, 1);
     expect(moveValue).toBe(15.85);
   });
@@ -412,7 +412,7 @@ describe('default', () => {
         <Slider vertical />
       </Theme>
     );
-    getTarget(target).setState({ offsetTop: 94 });
+    getTarget(target).offsetTop = 94;
     const { moveValue } = getTarget(target).getMoveState(73, 281, 0);
     expect(moveValue).toBe(10.25);
   });
@@ -438,7 +438,7 @@ describe('default', () => {
         <Slider vertical />
       </Theme>
     );
-    getTarget(target).setState({ offsetTop: 94 });
+    getTarget(target).offsetTop = 94;
     const { moveValue } = getTarget(target).getMoveState(71, 146, 1);
     expect(moveValue).toBe(24.51);
   });
@@ -464,10 +464,11 @@ describe('default', () => {
         <Slider defaultValue={0} />
       </Theme>
     );
-    getTarget(target).setState({ offsetLeft: 70 });
+    getTarget(target).offsetLeft = 70;
     const { index } = getTarget(target).getNewIndex(139, 105);
     expect(index).toBe(0);
-    getTarget(target).setState({ offsetLeft: 94, vertical: true });
+    getTarget(target).offsetLeft = 94;
+    getTarget(target).setState({ vertical: true });
     expect(index).toBe(0);
   });
   it('Function getNewIndex  双滑块', async () => {
@@ -492,7 +493,7 @@ describe('default', () => {
         <Slider defaultValue={[5, 10]} />
       </Theme>
     );
-    getTarget(target).setState({ offsetLeft: 70 });
+    getTarget(target).offsetLeft = 70;
     const firstIndex = getTarget(target).getNewIndex(101, 104).index;
     expect(firstIndex).toBe(0);
     const secondIndex = getTarget(target).getNewIndex(199, 104).index;
@@ -528,7 +529,10 @@ describe('default', () => {
         </Theme>
       );
       const { marksKeys } = getTarget(target).state;
-      getTarget(target).setState(offset);
+      const keys = Object.keys(offset);
+      keys.forEach(key => {
+        getTarget(target)[key] = offset[key];
+      });
       const moveValue = getTarget(target).getMoveState(...event).moveValue;
       const markValue = getTarget(target).getMarkValue(marksKeys, moveValue).markValue;
       expect(markValue).toBe(expectValue);
@@ -799,7 +803,7 @@ describe('default', () => {
         <Slider defaultValue={[0, 20]} tips />
       </Theme>
     );
-    getTarget(target).setState({ offsetLeft: 70 });
+    getTarget(target).offsetLeft = 70;
     getTarget(target).mouseenter(0)();
     expect(getTarget(target).state.index).toBe(0);
     getTarget(target).mouseenter(1)();
@@ -829,7 +833,7 @@ describe('default', () => {
         <Slider defaultValue={[0, 20]} tips />
       </Theme>
     );
-    getTarget(target).setState({ offsetLeft: 70 });
+    getTarget(target).offsetLeft = 70;
     getTarget(target).mouseleave();
     expect(getTarget(target).state.isInBall).toBe(false);
     expect(getTarget(target).state.changeBackground).toBe(false);
@@ -864,10 +868,17 @@ describe('default', () => {
           <Slider {...props} tips onChange={onChange} />
         </Theme>
       );
-      getTarget(target).setState(offset);
+      const order = VerifyOrder.create();
+      const mockGetOffset = mockObject.create(
+        getTarget(target),
+        VerifyOrderConfig.create('offset', order)
+      );
+      const getOffset = mockGetOffset.mockFunction('getOffset');
+      getOffset.forever(offset);
+
       if (!disabled) {
         getTarget(target).mousedown(event);
-        getTarget(target).mouseup();
+        getTarget(target).mouseup(event);
         expect(Result).toEqual(expectValue);
         expect(onChange.mock.calls.length).toBe(2);
       }

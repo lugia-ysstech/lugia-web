@@ -9,7 +9,7 @@ import styled from 'styled-components';
 export default styled.div`
   top: 50%;
   position: absolute;
-  left: 3px;
+  left: 8px;
   right: 7px;
   margin-top: -10px;
   text-align: left;

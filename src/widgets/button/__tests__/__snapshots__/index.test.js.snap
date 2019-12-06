@@ -2,25 +2,14 @@
 
 exports[`Button css 1`] = `
 Array [
-  .c28 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  font-size: 1.2rem;
-}
-
-.c1 {
+  .c1 {
   display: inline-block;
   margin-bottom: 0;
   box-sizing: border-box;
-  text-align: center;
   touch-action: manipulation;
   cursor: pointer;
   white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  font-family: 'Trebuchet MS',Arial,Helvetica,sans-serif;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -30,84 +19,29 @@ Array [
   position: relative;
   text-transform: none;
   outline: 0;
-  color: #666666;
   background-color: #ffffff;
-  border: 1px solid #cccccc;
-  padding: 0 1.2857142857142858em;
-  font-size: 1.4rem;
-  border-radius: 0.28571428571428575em;
-}
-
-.c1:hover {
-  color: #8090ff;
-  border: 1px solid #8090ff;
-  background-color: rgba(77,99,255,0.05);
-}
-
-.c1:focus {
-  color: #8090ff;
-  border: 1px solid #8090ff;
-  background-color: rgba(77,99,255,0.05);
-}
-
-.c1:active {
-  color: #3e4fcc;
-  border: 1px solid #3e4fcc;
-}
-
-.c3 {
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  color: #ffffff;
-  background-color: #4d63ff;
-  border: none;
-  padding: 0 1.2857142857142858em;
-  font-size: 1.4rem;
-  border-radius: 0.28571428571428575em;
-}
-
-.c3:hover {
-  color: #ffffff;
-  border: none;
-  background-color: #8090ff;
-}
-
-.c3:focus {
-  color: #ffffff;
-  border: none;
-  background-color: #8090ff;
-}
-
-.c3:active {
-  background-color: #3e4fcc;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
 }
 
 .c5 {
   display: inline-block;
   margin-bottom: 0;
   box-sizing: border-box;
-  text-align: center;
   touch-action: manipulation;
   cursor: pointer;
   white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  font-family: 'Trebuchet MS',Arial,Helvetica,sans-serif;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -117,1195 +51,83 @@ Array [
   position: relative;
   text-transform: none;
   outline: 0;
-  color: #ffffff;
-  background-color: #56c22d;
-  border: none;
-  padding: 0 1.2857142857142858em;
-  font-size: 1.4rem;
-  border-radius: 0.28571428571428575em;
-}
-
-.c5:hover {
-  color: #ffffff;
-  border: none;
-  background-color: #72c254;
-}
-
-.c5:focus {
-  color: #ffffff;
-  border: none;
-  background-color: #72c254;
-}
-
-.c5:active {
-  background-color: #3f8f21;
-}
-
-.c6 {
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  color: #ffffff;
-  background-color: #f8ac30;
-  border: none;
-  padding: 0 1.2857142857142858em;
-  font-size: 1.4rem;
-  border-radius: 0.28571428571428575em;
-}
-
-.c6:hover {
-  color: #ffffff;
-  border: none;
-  background-color: #f8bf62;
-}
-
-.c6:focus {
-  color: #ffffff;
-  border: none;
-  background-color: #f8bf62;
-}
-
-.c6:active {
-  background-color: #c58926;
-}
-
-.c7 {
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  color: #ffffff;
-  background-color: #f22735;
-  border: none;
-  padding: 0 1.2857142857142858em;
-  font-size: 1.4rem;
-  border-radius: 0.28571428571428575em;
-}
-
-.c7:hover {
-  color: #ffffff;
-  border: none;
-  background-color: #f25762;
-}
-
-.c7:focus {
-  color: #ffffff;
-  border: none;
-  background-color: #f25762;
-}
-
-.c7:active {
-  background-color: #bf1f2a;
-}
-
-.c8 {
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  color: #000000;
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
-  padding: 0 1.2857142857142858em;
-  font-size: 1.4rem;
-  border-radius: 1.142857142857143em;
-}
-
-.c8:hover {
-  color: #8090ff;
-  border: 1px solid #8090ff;
-  background-color: #ffffff;
-}
-
-.c8:focus {
-  color: #8090ff;
-  border: 1px solid #8090ff;
-  background-color: #ffffff;
-}
-
-.c8:active {
-  color: #3e4fcc;
-  border: 1px solid #3e4fcc;
-}
-
-.c9 {
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  color: #4d63ff;
-  background-color: rgba(77,99,255,0.05);
-  border: 1px solid #4d63ff;
-  padding: 0 1.2857142857142858em;
-  font-size: 1.4rem;
-  border-radius: 1.142857142857143em;
-}
-
-.c9:hover {
-  color: #ffffff;
-  border: 1px solid #4d63ff;
-  background-color: #4d63ff;
-}
-
-.c9:focus {
-  color: #ffffff;
-  border: 1px solid #4d63ff;
-  background-color: #4d63ff;
-}
-
-.c9:active {
-  background-color: #3e4fcc;
-}
-
-.c10 {
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  color: #56c22d;
-  background-color: rgba(86,194,45,0.05);
-  border: 1px solid #56c22d;
-  padding: 0 1.2857142857142858em;
-  font-size: 1.4rem;
-  border-radius: 1.142857142857143em;
-}
-
-.c10:hover {
-  color: #ffffff;
-  border: 1px solid #56c22d;
-  background-color: #56c22d;
-}
-
-.c10:focus {
-  color: #ffffff;
-  border: 1px solid #56c22d;
-  background-color: #56c22d;
-}
-
-.c10:active {
-  background-color: #3f8f21;
-}
-
-.c11 {
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  color: #f8ac30;
-  background-color: rgba(248,172,48,0.05);
-  border: 1px solid #f8ac30;
-  padding: 0 1.2857142857142858em;
-  font-size: 1.4rem;
-  border-radius: 1.142857142857143em;
-}
-
-.c11:hover {
-  color: #ffffff;
-  border: 1px solid #f8ac30;
-  background-color: #f8ac30;
-}
-
-.c11:focus {
-  color: #ffffff;
-  border: 1px solid #f8ac30;
-  background-color: #f8ac30;
-}
-
-.c11:active {
-  background-color: #c58926;
-}
-
-.c12 {
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  color: #f22735;
-  background-color: rgba(242,39,53,0.05);
-  border: 1px solid #f22735;
-  padding: 0 1.2857142857142858em;
-  font-size: 1.4rem;
-  border-radius: 1.142857142857143em;
-}
-
-.c12:hover {
-  color: #ffffff;
-  border: 1px solid #f22735;
-  background-color: #f22735;
-}
-
-.c12:focus {
-  color: #ffffff;
-  border: 1px solid #f22735;
-  background-color: #f22735;
-}
-
-.c12:active {
-  background-color: #bf1f2a;
-}
-
-.c14 {
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  color: #ffffff;
-  background-color: #f8ac30;
-  border: none;
-  padding: 0 1.1666666666666667em;
-  font-size: 1.2rem;
-  border-radius: 0.33333333333333337em;
-}
-
-.c14:hover {
-  color: #ffffff;
-  border: none;
-  background-color: #f8bf62;
-}
-
-.c14:focus {
-  color: #ffffff;
-  border: none;
-  background-color: #f8bf62;
-}
-
-.c14:active {
-  background-color: #c58926;
-}
-
-.c16 {
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  color: #666666;
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
-  padding: 0 1.2857142857142858em;
-  font-size: 1.4rem;
-  border-radius: 0.28571428571428575em;
-  background-color: #ffffff;
-  color: #cccccc;
-  border: 1px solid #e8e8e8;
-  cursor: not-allowed;
-}
-
-.c16:hover {
-  color: #8090ff;
-  border: 1px solid #8090ff;
-  background-color: rgba(77,99,255,0.05);
-}
-
-.c16:focus {
-  color: #8090ff;
-  border: 1px solid #8090ff;
-  background-color: rgba(77,99,255,0.05);
-}
-
-.c16:active {
-  color: #3e4fcc;
-  border: 1px solid #3e4fcc;
-}
-
-.c16:hover {
-  background-color: #ffffff;
-  color: #cccccc;
-  border: 1px solid #e8e8e8;
-}
-
-.c17 {
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  color: #ffffff;
-  background-color: #4d63ff;
-  border: none;
-  padding: 0 1.2857142857142858em;
-  font-size: 1.4rem;
-  border-radius: 0.28571428571428575em;
-  background-color: #c0c8ff;
-  color: #ffffff;
-  border: none;
-  cursor: not-allowed;
-}
-
-.c17:hover {
-  color: #ffffff;
-  border: none;
-  background-color: #8090ff;
-}
-
-.c17:focus {
-  color: #ffffff;
-  border: none;
-  background-color: #8090ff;
-}
-
-.c17:active {
-  background-color: #3e4fcc;
-}
-
-.c17:hover {
-  background-color: #c0c8ff;
-  color: #ffffff;
-  border: none;
-}
-
-.c18 {
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  color: #ffffff;
-  background-color: #56c22d;
-  border: none;
-  padding: 0 1.2857142857142858em;
-  font-size: 1.4rem;
-  border-radius: 0.28571428571428575em;
-  background-color: #95c284;
-  color: #ffffff;
-  border: none;
-  cursor: not-allowed;
-}
-
-.c18:hover {
-  color: #ffffff;
-  border: none;
-  background-color: #72c254;
-}
-
-.c18:focus {
-  color: #ffffff;
-  border: none;
-  background-color: #72c254;
-}
-
-.c18:active {
-  background-color: #3f8f21;
-}
-
-.c18:hover {
-  background-color: #95c284;
-  color: #ffffff;
-  border: none;
-}
-
-.c19 {
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  color: #ffffff;
-  background-color: #f8ac30;
-  border: none;
-  padding: 0 1.2857142857142858em;
-  font-size: 1.4rem;
-  border-radius: 0.28571428571428575em;
-  background-color: #f8d6a0;
-  color: #ffffff;
-  border: none;
-  cursor: not-allowed;
-}
-
-.c19:hover {
-  color: #ffffff;
-  border: none;
-  background-color: #f8bf62;
-}
-
-.c19:focus {
-  color: #ffffff;
-  border: none;
-  background-color: #f8bf62;
-}
-
-.c19:active {
-  background-color: #c58926;
-}
-
-.c19:hover {
-  background-color: #f8d6a0;
-  color: #ffffff;
-  border: none;
-}
-
-.c20 {
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  color: #ffffff;
-  background-color: #f22735;
-  border: none;
-  padding: 0 1.2857142857142858em;
-  font-size: 1.4rem;
-  border-radius: 0.28571428571428575em;
-  background-color: #f2949a;
-  color: #ffffff;
-  border: none;
-  cursor: not-allowed;
-}
-
-.c20:hover {
-  color: #ffffff;
-  border: none;
-  background-color: #f25762;
-}
-
-.c20:focus {
-  color: #ffffff;
-  border: none;
-  background-color: #f25762;
-}
-
-.c20:active {
-  background-color: #bf1f2a;
-}
-
-.c20:hover {
-  background-color: #f2949a;
-  color: #ffffff;
-  border: none;
-}
-
-.c21 {
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  color: #000000;
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
-  padding: 0 1.2857142857142858em;
-  font-size: 1.4rem;
-  border-radius: 0.28571428571428575em;
-  background-color: #ffffff;
-  color: #cccccc;
-  border: 1px solid #e8e8e8;
-  cursor: not-allowed;
-}
-
-.c21:hover {
-  color: #8090ff;
-  border: 1px solid #8090ff;
-  background-color: #ffffff;
-}
-
-.c21:focus {
-  color: #8090ff;
-  border: 1px solid #8090ff;
-  background-color: #ffffff;
-}
-
-.c21:active {
-  color: #3e4fcc;
-  border: 1px solid #3e4fcc;
-}
-
-.c21:hover {
-  background-color: #ffffff;
-  color: #cccccc;
-  border: 1px solid #e8e8e8;
-}
-
-.c22 {
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  color: #4d63ff;
-  background-color: rgba(77,99,255,0.05);
-  border: 1px solid #4d63ff;
-  padding: 0 1.2857142857142858em;
-  font-size: 1.4rem;
-  border-radius: 0.28571428571428575em;
-  background-color: rgba(77,99,255,0.05);
-  color: #c0c8ff;
-  border: 1px solid #c0c8ff;
-  cursor: not-allowed;
-}
-
-.c22:hover {
-  color: #ffffff;
-  border: 1px solid #4d63ff;
-  background-color: #4d63ff;
-}
-
-.c22:focus {
-  color: #ffffff;
-  border: 1px solid #4d63ff;
-  background-color: #4d63ff;
-}
-
-.c22:active {
-  background-color: #3e4fcc;
-}
-
-.c22:hover {
-  background-color: rgba(77,99,255,0.05);
-  color: #c0c8ff;
-  border: 1px solid #c0c8ff;
-}
-
-.c23 {
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  color: #56c22d;
-  background-color: rgba(86,194,45,0.05);
-  border: 1px solid #56c22d;
-  padding: 0 1.2857142857142858em;
-  font-size: 1.4rem;
-  border-radius: 0.28571428571428575em;
-  background-color: rgba(86,194,45,0.05);
-  color: #95c284;
-  border: 1px solid #95c284;
-  cursor: not-allowed;
-}
-
-.c23:hover {
-  color: #ffffff;
-  border: 1px solid #56c22d;
-  background-color: #56c22d;
-}
-
-.c23:focus {
-  color: #ffffff;
-  border: 1px solid #56c22d;
-  background-color: #56c22d;
-}
-
-.c23:active {
-  background-color: #3f8f21;
-}
-
-.c23:hover {
-  background-color: rgba(86,194,45,0.05);
-  color: #95c284;
-  border: 1px solid #95c284;
-}
-
-.c24 {
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  color: #f8ac30;
-  background-color: rgba(248,172,48,0.05);
-  border: 1px solid #f8ac30;
-  padding: 0 1.2857142857142858em;
-  font-size: 1.4rem;
-  border-radius: 0.28571428571428575em;
-  background-color: rgba(248,172,48,0.05);
-  color: #f8d6a0;
-  border: 1px solid #f8d6a0;
-  cursor: not-allowed;
-}
-
-.c24:hover {
-  color: #ffffff;
-  border: 1px solid #f8ac30;
-  background-color: #f8ac30;
-}
-
-.c24:focus {
-  color: #ffffff;
-  border: 1px solid #f8ac30;
-  background-color: #f8ac30;
-}
-
-.c24:active {
-  background-color: #c58926;
-}
-
-.c24:hover {
-  background-color: rgba(248,172,48,0.05);
-  color: #f8d6a0;
-  border: 1px solid #f8d6a0;
-}
-
-.c25 {
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  color: #f22735;
-  background-color: rgba(242,39,53,0.05);
-  border: 1px solid #f22735;
-  padding: 0 1.2857142857142858em;
-  font-size: 1.4rem;
-  border-radius: 0.28571428571428575em;
-  background-color: rgba(242,39,53,0.05);
-  color: #f2949a;
-  border: 1px solid #f2949a;
-  cursor: not-allowed;
-}
-
-.c25:hover {
-  color: #ffffff;
-  border: 1px solid #f22735;
-  background-color: #f22735;
-}
-
-.c25:focus {
-  color: #ffffff;
-  border: 1px solid #f22735;
-  background-color: #f22735;
-}
-
-.c25:active {
-  background-color: #bf1f2a;
-}
-
-.c25:hover {
-  background-color: rgba(242,39,53,0.05);
-  color: #f2949a;
-  border: 1px solid #f2949a;
-}
-
-.c26 {
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  color: #000000;
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
-  padding: 0 1.2857142857142858em;
-  font-size: 1.4rem;
-  border-radius: 0.28571428571428575em;
-  width: 2.285714285714286em;
-  height: 2.285714285714286em;
-  border-radius: 50%;
-  padding: 0;
-}
-
-.c26:hover {
-  color: #8090ff;
-  border: 1px solid #8090ff;
-  background-color: #ffffff;
-}
-
-.c26:focus {
-  color: #8090ff;
-  border: 1px solid #8090ff;
-  background-color: #ffffff;
-}
-
-.c26:active {
-  color: #3e4fcc;
-  border: 1px solid #3e4fcc;
-}
-
-.c29 {
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  color: #ffffff;
-  background-color: #4d63ff;
-  border: none;
-  padding: 0 1.2857142857142858em;
-  font-size: 1.4rem;
-  border-radius: 0.28571428571428575em;
-  width: 2.857142857142857em;
-  height: 2.857142857142857em;
-  border-radius: 50%;
-  padding: 0;
-}
-
-.c29:hover {
-  color: #ffffff;
-  border: none;
-  background-color: #8090ff;
-}
-
-.c29:focus {
-  color: #ffffff;
-  border: none;
-  background-color: #8090ff;
-}
-
-.c29:active {
-  background-color: #3e4fcc;
-}
-
-.c31 {
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  color: #666666;
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
-  padding: 0 1.1666666666666667em;
-  font-size: 1.2rem;
-  border-radius: 0.33333333333333337em;
-  width: 2em;
-  height: 2em;
-  border-radius: 50%;
-  padding: 0;
-}
-
-.c31:hover {
-  color: #8090ff;
-  border: 1px solid #8090ff;
-  background-color: rgba(77,99,255,0.05);
-}
-
-.c31:focus {
-  color: #8090ff;
-  border: 1px solid #8090ff;
-  background-color: rgba(77,99,255,0.05);
-}
-
-.c31:active {
-  color: #3e4fcc;
-  border: 1px solid #3e4fcc;
-}
-
-.c34 {
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  color: #666666;
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
-  padding: 0 1.2857142857142858em;
-  font-size: 1.4rem;
-  border-radius: 0.28571428571428575em;
-  color: #8090ff;
-  border: 1px solid #8090ff;
-  background-color: rgba(77,99,255,0.05);
   pointer-events: none;
-}
-
-.c34:hover {
-  color: #8090ff;
-  border: 1px solid #8090ff;
-  background-color: rgba(77,99,255,0.05);
-}
-
-.c34:focus {
-  color: #8090ff;
-  border: 1px solid #8090ff;
-  background-color: rgba(77,99,255,0.05);
-}
-
-.c34:active {
-  color: #3e4fcc;
-  border: 1px solid #3e4fcc;
-}
-
-.c37 {
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  color: #666666;
   background-color: #ffffff;
-  border: 1px solid #cccccc;
-  padding: 0 1.2857142857142858em;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
+}
+
+.c3 {
+  color: #666666;
   font-size: 1.4rem;
-  border-radius: 0.28571428571428575em;
-  margin: 0.7142857142857143em;
-  width: 21.42857142857143em;
-  color: red;
-}
-
-.c37:hover {
-  color: #000000;
-  border: 1px solid #000000;
-  background-color: rgba(0,0,0,0.05);
-}
-
-.c37:focus {
-  color: #000000;
-  border: 1px solid #000000;
-  background-color: rgba(0,0,0,0.05);
-}
-
-.c37:active {
-  color: #000000;
-  border: 1px solid #000000;
 }
 
 .c2 {
-  display: inline-block;
-  line-height: 2.142857142857143em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
 .c4 {
-  display: inline-block;
-  line-height: 2.285714285714286em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  vertical-align: -0.175rem !important;
 }
 
-.c13 {
-  display: inline-block;
-  line-height: 2.857142857142857em;
-}
-
-.c15 {
-  display: inline-block;
-  line-height: 2em;
-}
-
-.c32 {
-  display: inline-block;
-  line-height: 1.8333333333333335em;
-}
-
-.c35 {
-  vertical-align: -0.125em !important;
-  margin-right: 0.7142857142857143em;
+.c6 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  margin-right: 1rem;
   -webkit-animation: iECmZH 1s infinite linear;
   animation: iECmZH 1s infinite linear;
 }
 
-.c36 {
-  vertical-align: -0.125em !important;
-  margin-right: 0.7142857142857143em;
+.c7 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  vertical-align: -0.175rem !important;
+  margin-right: 1rem;
 }
 
-.c27 {
-  vertical-align: -0.125em !important;
-  font-size: 1.142857142857143em;
-}
-
-.c30 {
-  vertical-align: -0.125em !important;
-  font-size: 1.2857142857142858em;
-}
-
-.c33 {
-  vertical-align: -0.14583333333333334em !important;
-  font-size: 1em;
+.c8 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  vertical-align: -0.175rem !important;
+  margin-right: 1rem;
+  cursor: not-allowed;
 }
 
 .c0 {
@@ -1331,107 +153,261 @@ Array [
       </p>
       <button
         className="c1"
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         onMouseUp={[Function]}
         size="default"
+        style={
+          Object {
+            "backgroundColor": "#ffffff",
+            "borderBottomColor": "#cccccc",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "#cccccc",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "#cccccc",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#cccccc",
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+          }
+        }
       >
         <span
           className="c2"
-          size="default"
         >
-          hello
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#666666",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            hello
+          </span>
         </span>
       </button>
       <p>
         Primary
       </p>
       <button
-        className="c3"
+        className="c1"
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         onMouseUp={[Function]}
         size="default"
+        style={
+          Object {
+            "backgroundColor": "#4d63ff",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomWidth": 0,
+            "borderLeftWidth": 0,
+            "borderRightWidth": 0,
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopWidth": 0,
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+          }
+        }
         type="primary"
       >
         <span
-          className="c4"
-          size="default"
-          type="primary"
+          className="c2"
         >
-          Primary
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#ffffff",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            Primary
+          </span>
         </span>
       </button>
       <p>
         Success
       </p>
       <button
-        className="c5"
+        className="c1"
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         onMouseUp={[Function]}
         size="default"
+        style={
+          Object {
+            "backgroundColor": "#56c22d",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomWidth": 0,
+            "borderLeftWidth": 0,
+            "borderRightWidth": 0,
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopWidth": 0,
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+          }
+        }
         type="success"
       >
         <span
-          className="c4"
-          size="default"
-          type="success"
+          className="c2"
         >
-          Success
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#ffffff",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            Success
+          </span>
         </span>
       </button>
       <p>
         Warning
       </p>
       <button
-        className="c6"
+        className="c1"
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         onMouseUp={[Function]}
         size="default"
+        style={
+          Object {
+            "backgroundColor": "#f8ac30",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomWidth": 0,
+            "borderLeftWidth": 0,
+            "borderRightWidth": 0,
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopWidth": 0,
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+          }
+        }
         type="warning"
       >
         <span
-          className="c4"
-          size="default"
-          type="warning"
+          className="c2"
         >
-          Warning
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#ffffff",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            Warning
+          </span>
         </span>
       </button>
       <p>
         Danger
       </p>
       <button
-        className="c7"
+        className="c1"
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         onMouseUp={[Function]}
         size="default"
+        style={
+          Object {
+            "backgroundColor": "#f22735",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomWidth": 0,
+            "borderLeftWidth": 0,
+            "borderRightWidth": 0,
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopWidth": 0,
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+          }
+        }
         type="danger"
       >
         <span
-          className="c4"
-          size="default"
-          type="danger"
+          className="c2"
         >
-          Danger
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#ffffff",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            Danger
+          </span>
         </span>
       </button>
     </div>
@@ -1445,113 +421,299 @@ Array [
         default
       </p>
       <button
-        className="c8"
+        className="c1"
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         onMouseUp={[Function]}
         shape="round"
         size="default"
+        style={
+          Object {
+            "backgroundColor": "#ffffff",
+            "borderBottomColor": "#cccccc",
+            "borderBottomLeftRadius": "1.6rem",
+            "borderBottomRightRadius": "1.6rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "#cccccc",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "#cccccc",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#cccccc",
+            "borderTopLeftRadius": "1.6rem",
+            "borderTopRightRadius": "1.6rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+          }
+        }
       >
         <span
           className="c2"
-          size="default"
         >
-          hello
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#000000",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            hello
+          </span>
         </span>
       </button>
       <p>
         primary
       </p>
       <button
-        className="c9"
+        className="c1"
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         onMouseUp={[Function]}
         shape="round"
         size="default"
+        style={
+          Object {
+            "backgroundColor": "rgba(77,99,255,0.05)",
+            "borderBottomColor": "#4d63ff",
+            "borderBottomLeftRadius": "1.6rem",
+            "borderBottomRightRadius": "1.6rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "#4d63ff",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "#4d63ff",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#4d63ff",
+            "borderTopLeftRadius": "1.6rem",
+            "borderTopRightRadius": "1.6rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+          }
+        }
         type="primary"
       >
         <span
           className="c2"
-          size="default"
-          type="primary"
         >
-          Primary
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#4d63ff",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            Primary
+          </span>
         </span>
       </button>
       <p>
         success
       </p>
       <button
-        className="c10"
+        className="c1"
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         onMouseUp={[Function]}
         shape="round"
         size="default"
+        style={
+          Object {
+            "backgroundColor": "rgba(86,194,45,0.05)",
+            "borderBottomColor": "#56c22d",
+            "borderBottomLeftRadius": "1.6rem",
+            "borderBottomRightRadius": "1.6rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "#56c22d",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "#56c22d",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#56c22d",
+            "borderTopLeftRadius": "1.6rem",
+            "borderTopRightRadius": "1.6rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+          }
+        }
         type="success"
       >
         <span
           className="c2"
-          size="default"
-          type="success"
         >
-          Success
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#56c22d",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            Success
+          </span>
         </span>
       </button>
       <p>
         warning
       </p>
       <button
-        className="c11"
+        className="c1"
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         onMouseUp={[Function]}
         shape="round"
         size="default"
+        style={
+          Object {
+            "backgroundColor": "rgba(248,172,48,0.05)",
+            "borderBottomColor": "#f8ac30",
+            "borderBottomLeftRadius": "1.6rem",
+            "borderBottomRightRadius": "1.6rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "#f8ac30",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "#f8ac30",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#f8ac30",
+            "borderTopLeftRadius": "1.6rem",
+            "borderTopRightRadius": "1.6rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+          }
+        }
         type="warning"
       >
         <span
           className="c2"
-          size="default"
-          type="warning"
         >
-          primary
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#f8ac30",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            primary
+          </span>
         </span>
       </button>
       <p>
         danger
       </p>
       <button
-        className="c12"
+        className="c1"
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         onMouseUp={[Function]}
         shape="round"
         size="default"
+        style={
+          Object {
+            "backgroundColor": "rgba(242,39,53,0.05)",
+            "borderBottomColor": "#f22735",
+            "borderBottomLeftRadius": "1.6rem",
+            "borderBottomRightRadius": "1.6rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "#f22735",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "#f22735",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#f22735",
+            "borderTopLeftRadius": "1.6rem",
+            "borderTopRightRadius": "1.6rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+          }
+        }
         type="danger"
       >
         <span
           className="c2"
-          size="default"
-          type="danger"
         >
-          Danger
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#f22735",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            Danger
+          </span>
         </span>
       </button>
     </div>
@@ -1566,63 +728,159 @@ Array [
       </p>
       <button
         className="c1"
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         onMouseUp={[Function]}
         size="default"
+        style={
+          Object {
+            "backgroundColor": "#ffffff",
+            "borderBottomColor": "#cccccc",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "#cccccc",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "#cccccc",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#cccccc",
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+          }
+        }
       >
         <span
           className="c2"
-          size="default"
         >
-          Default
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#666666",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            Default
+          </span>
         </span>
       </button>
       <p>
         large
       </p>
       <button
-        className="c3"
+        className="c1"
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         onMouseUp={[Function]}
         size="large"
+        style={
+          Object {
+            "backgroundColor": "#4d63ff",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomWidth": 0,
+            "borderLeftWidth": 0,
+            "borderRightWidth": 0,
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopWidth": 0,
+            "height": "4rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+          }
+        }
         type="primary"
       >
         <span
-          className="c13"
-          size="large"
-          type="primary"
+          className="c2"
         >
-          Primary
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#ffffff",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            Primary
+          </span>
         </span>
       </button>
       <p>
         small
       </p>
       <button
-        className="c14"
+        className="c1"
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         onMouseUp={[Function]}
         size="small"
+        style={
+          Object {
+            "backgroundColor": "#f8ac30",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomWidth": 0,
+            "borderLeftWidth": 0,
+            "borderRightWidth": 0,
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopWidth": 0,
+            "height": "2.4rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.4rem",
+            "paddingRight": "1.4rem",
+            "paddingTop": "0rem",
+          }
+        }
         type="warning"
       >
         <span
-          className="c15"
-          size="small"
-          type="warning"
+          className="c2"
         >
-          Warning
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#ffffff",
+                "fontSize": "1.2rem",
+              }
+            }
+          >
+            Warning
+          </span>
         </span>
       </button>
     </div>
@@ -1636,113 +894,272 @@ Array [
         default
       </p>
       <button
-        className="c16"
+        className="c1"
         disabled={true}
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         onMouseUp={[Function]}
         size="default"
+        style={
+          Object {
+            "backgroundColor": "#ffffff",
+            "borderBottomColor": "#e8e8e8",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "#e8e8e8",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "#e8e8e8",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#e8e8e8",
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "cursor": "not-allowed",
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+          }
+        }
       >
         <span
           className="c2"
-          size="default"
         >
-          Default
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#cccccc",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            Default
+          </span>
         </span>
       </button>
       <p>
         primary
       </p>
       <button
-        className="c17"
+        className="c1"
         disabled={true}
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         onMouseUp={[Function]}
         size="default"
+        style={
+          Object {
+            "backgroundColor": "#c0c8ff",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomWidth": 0,
+            "borderLeftWidth": 0,
+            "borderRightWidth": 0,
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopWidth": 0,
+            "cursor": "not-allowed",
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+          }
+        }
         type="primary"
       >
         <span
-          className="c4"
-          size="default"
-          type="primary"
+          className="c2"
         >
-          Primary
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#ffffff",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            Primary
+          </span>
         </span>
       </button>
       <p>
         success
       </p>
       <button
-        className="c18"
+        className="c1"
         disabled={true}
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         onMouseUp={[Function]}
         size="default"
+        style={
+          Object {
+            "backgroundColor": "#95c284",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomWidth": 0,
+            "borderLeftWidth": 0,
+            "borderRightWidth": 0,
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopWidth": 0,
+            "cursor": "not-allowed",
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+          }
+        }
         type="success"
       >
         <span
-          className="c4"
-          size="default"
-          type="success"
+          className="c2"
         >
-          Success
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#ffffff",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            Success
+          </span>
         </span>
       </button>
       <p>
         warning
       </p>
       <button
-        className="c19"
+        className="c1"
         disabled={true}
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         onMouseUp={[Function]}
         size="default"
+        style={
+          Object {
+            "backgroundColor": "#f8d6a0",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomWidth": 0,
+            "borderLeftWidth": 0,
+            "borderRightWidth": 0,
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopWidth": 0,
+            "cursor": "not-allowed",
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+          }
+        }
         type="warning"
       >
         <span
-          className="c4"
-          size="default"
-          type="warning"
+          className="c2"
         >
-          warning
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#ffffff",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            warning
+          </span>
         </span>
       </button>
       <p>
         danger
       </p>
       <button
-        className="c20"
+        className="c1"
         disabled={true}
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         onMouseUp={[Function]}
         size="default"
+        style={
+          Object {
+            "backgroundColor": "#f2949a",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomWidth": 0,
+            "borderLeftWidth": 0,
+            "borderRightWidth": 0,
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopWidth": 0,
+            "cursor": "not-allowed",
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+          }
+        }
         type="danger"
       >
         <span
-          className="c4"
-          size="default"
-          type="danger"
+          className="c2"
         >
-          danger
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#ffffff",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            danger
+          </span>
         </span>
       </button>
     </div>
@@ -1756,113 +1173,304 @@ Array [
         default
       </p>
       <button
-        className="c21"
+        className="c1"
         disabled={true}
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         onMouseUp={[Function]}
         size="default"
+        style={
+          Object {
+            "backgroundColor": "#ffffff",
+            "borderBottomColor": "#e8e8e8",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "#e8e8e8",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "#e8e8e8",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#e8e8e8",
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "cursor": "not-allowed",
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+          }
+        }
       >
         <span
           className="c2"
-          size="default"
         >
-          default
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#cccccc",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            default
+          </span>
         </span>
       </button>
       <p>
         primary
       </p>
       <button
-        className="c22"
+        className="c1"
         disabled={true}
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         onMouseUp={[Function]}
         size="default"
+        style={
+          Object {
+            "backgroundColor": "rgba(77,99,255,0.05)",
+            "borderBottomColor": "#c0c8ff",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "#c0c8ff",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "#c0c8ff",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#c0c8ff",
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "cursor": "not-allowed",
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+          }
+        }
         type="primary"
       >
         <span
           className="c2"
-          size="default"
-          type="primary"
         >
-          primary
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#c0c8ff",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            primary
+          </span>
         </span>
       </button>
       <p>
         success
       </p>
       <button
-        className="c23"
+        className="c1"
         disabled={true}
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         onMouseUp={[Function]}
         size="default"
+        style={
+          Object {
+            "backgroundColor": "rgba(86,194,45,0.05)",
+            "borderBottomColor": "#95c284",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "#95c284",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "#95c284",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#95c284",
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "cursor": "not-allowed",
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+          }
+        }
         type="success"
       >
         <span
           className="c2"
-          size="default"
-          type="success"
         >
-          success
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#95c284",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            success
+          </span>
         </span>
       </button>
       <p>
         warning
       </p>
       <button
-        className="c24"
+        className="c1"
         disabled={true}
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         onMouseUp={[Function]}
         size="default"
+        style={
+          Object {
+            "backgroundColor": "rgba(248,172,48,0.05)",
+            "borderBottomColor": "#f8d6a0",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "#f8d6a0",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "#f8d6a0",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#f8d6a0",
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "cursor": "not-allowed",
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+          }
+        }
         type="warning"
       >
         <span
           className="c2"
-          size="default"
-          type="warning"
         >
-          warning
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#f8d6a0",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            warning
+          </span>
         </span>
       </button>
       <p>
         danger
       </p>
       <button
-        className="c25"
+        className="c1"
         disabled={true}
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         onMouseUp={[Function]}
         size="default"
+        style={
+          Object {
+            "backgroundColor": "rgba(242,39,53,0.05)",
+            "borderBottomColor": "#f2949a",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "#f2949a",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "#f2949a",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#f2949a",
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "cursor": "not-allowed",
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+          }
+        }
         type="danger"
       >
         <span
           className="c2"
-          size="default"
-          type="danger"
         >
-          danger
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#f2949a",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            danger
+          </span>
         </span>
       </button>
     </div>
@@ -1873,63 +1481,201 @@ Array [
         circle
       </p>
       <button
-        className="c26"
+        className="c1"
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         onMouseUp={[Function]}
         size="default"
+        style={
+          Object {
+            "backgroundColor": "#ffffff",
+            "borderBottomColor": "#cccccc",
+            "borderBottomLeftRadius": "50%",
+            "borderBottomRightRadius": "50%",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "#cccccc",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "#cccccc",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#cccccc",
+            "borderTopLeftRadius": "50%",
+            "borderTopRightRadius": "50%",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "0rem",
+            "paddingRight": "0rem",
+            "paddingTop": "0rem",
+            "width": "3.2rem",
+          }
+        }
       >
         <span
           className="c2"
-          size="default"
         >
           <i
-            className="lugia-icon-direction_logout c27 c28"
+            className="lugia-icon-direction_logout   c4"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#000000",
+                "fontSize": "1.4rem",
+              }
+            }
+          />
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#000000",
+                "fontSize": "1.4rem",
+              }
+            }
           />
         </span>
       </button>
       <br />
       <button
-        className="c29"
+        className="c1"
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         onMouseUp={[Function]}
         size="large"
+        style={
+          Object {
+            "backgroundColor": "#4d63ff",
+            "borderBottomLeftRadius": "50%",
+            "borderBottomRightRadius": "50%",
+            "borderBottomWidth": 0,
+            "borderLeftWidth": 0,
+            "borderRightWidth": 0,
+            "borderTopLeftRadius": "50%",
+            "borderTopRightRadius": "50%",
+            "borderTopWidth": 0,
+            "height": "4rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "0rem",
+            "paddingRight": "0rem",
+            "paddingTop": "0rem",
+            "width": "4rem",
+          }
+        }
         type="primary"
       >
         <span
-          className="c13"
-          size="large"
-          type="primary"
+          className="c2"
         >
           <i
-            className="lugia-icon-direction_logout c30 c28"
+            className="lugia-icon-direction_logout   c4"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#ffffff",
+                "fontSize": "1.4rem",
+              }
+            }
+          />
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#ffffff",
+                "fontSize": "1.4rem",
+              }
+            }
           />
         </span>
       </button>
       <br />
       <button
-        className="c31"
+        className="c1"
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         onMouseUp={[Function]}
         size="small"
+        style={
+          Object {
+            "backgroundColor": "#ffffff",
+            "borderBottomColor": "#cccccc",
+            "borderBottomLeftRadius": "50%",
+            "borderBottomRightRadius": "50%",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "#cccccc",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "#cccccc",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#cccccc",
+            "borderTopLeftRadius": "50%",
+            "borderTopRightRadius": "50%",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "height": "2.4rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "0rem",
+            "paddingRight": "0rem",
+            "paddingTop": "0rem",
+            "width": "2.4rem",
+          }
+        }
       >
         <span
-          className="c32"
-          size="small"
+          className="c2"
         >
           <i
-            className="lugia-icon-direction_logout c33 c28"
+            className="lugia-icon-direction_logout   c4"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#666666",
+                "fontSize": "1.4rem",
+              }
+            }
+          />
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#666666",
+                "fontSize": "1.2rem",
+              }
+            }
           />
         </span>
       </button>
@@ -1937,23 +1683,69 @@ Array [
         loading
       </p>
       <button
-        className="c34"
+        className="c5"
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         onMouseUp={[Function]}
         size="default"
+        style={
+          Object {
+            "backgroundColor": "rgba(77,99,255,0.05)",
+            "borderBottomColor": "#8090ff",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "#8090ff",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "#8090ff",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#8090ff",
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+          }
+        }
       >
         <span
           className="c2"
-          size="default"
         >
-          <span>
-            <i
-              className="lugia-icon-financial_loading_o c35 c28"
-            />
+          <i
+            className="lugia-icon-financial_loading_o   c6"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#8090ff",
+              }
+            }
+          />
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#8090ff",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
             loading
           </span>
         </span>
@@ -1962,23 +1754,69 @@ Array [
         loading
       </p>
       <button
-        className="c34"
+        className="c5"
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         onMouseUp={[Function]}
         size="default"
+        style={
+          Object {
+            "backgroundColor": "rgba(77,99,255,0.05)",
+            "borderBottomColor": "#8090ff",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "#8090ff",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "#8090ff",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#8090ff",
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+          }
+        }
       >
         <span
           className="c2"
-          size="default"
         >
-          <span>
-            <i
-              className="lugia-icon-financial_loading_o c35 c28"
-            />
+          <i
+            className="lugia-icon-financial_loading_o   c6"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#8090ff",
+              }
+            }
+          />
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#8090ff",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
             loading
           </span>
         </span>
@@ -1988,23 +1826,71 @@ Array [
       </p>
       <button
         className="c1"
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         onMouseUp={[Function]}
         size="default"
+        style={
+          Object {
+            "backgroundColor": "#ffffff",
+            "borderBottomColor": "#cccccc",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "#cccccc",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "#cccccc",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#cccccc",
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+          }
+        }
       >
         <span
           className="c2"
-          size="default"
         >
-          <span>
-            <i
-              className="lugia-icon-direction_logout c36 c28"
-            />
+          <i
+            className="lugia-icon-direction_logout   c7"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#666666",
+                "fontSize": "1.4rem",
+              }
+            }
+          />
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#666666",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
             Button
+             
           </span>
         </span>
       </button>
@@ -2013,65 +1899,172 @@ Array [
       </p>
       <button
         className="c1"
+        onBlur={[Function]}
         onClick={[Function]}
+        onFocus={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         onMouseUp={[Function]}
         size="default"
+        style={
+          Object {
+            "backgroundColor": "orange",
+            "borderBottomColor": "green",
+            "borderBottomLeftRadius": "1rem",
+            "borderBottomRightRadius": "1rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.2rem",
+            "borderLeftColor": "green",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.2rem",
+            "borderRightColor": "green",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.2rem",
+            "borderTopColor": "green",
+            "borderTopLeftRadius": "1rem",
+            "borderTopRightRadius": "1rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.2rem",
+            "height": "5rem",
+            "marginBottom": "1rem",
+            "marginLeft": "1rem",
+            "marginRight": "1rem",
+            "marginTop": "1rem",
+            "paddingBottom": "0.9rem",
+            "paddingLeft": "0.9rem",
+            "paddingRight": "0.9rem",
+            "paddingTop": "0.9rem",
+            "width": "10rem",
+          }
+        }
       >
         <span
           className="c2"
-          size="default"
         >
-          <span>
-            <i
-              className="lugia-icon-financial_global c36 c28"
-            />
+          <i
+            className="lugia-icon-financial_global   c7"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "black",
+                "fontSize": "1.6rem",
+                "fontWeight": 500,
+              }
+            }
+          />
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "black",
+                "fontSize": "1.6rem",
+                "fontWeight": 500,
+              }
+            }
+          >
             Button
+             
+          </span>
+        </span>
+      </button>
+      <button
+        className="c1"
+        disabled={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        onMouseUp={[Function]}
+        size="default"
+        style={
+          Object {
+            "backgroundColor": "green",
+            "borderBottomColor": "pink",
+            "borderBottomLeftRadius": "1rem",
+            "borderBottomRightRadius": "1rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.2rem",
+            "borderLeftColor": "pink",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.2rem",
+            "borderRightColor": "pink",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.2rem",
+            "borderTopColor": "pink",
+            "borderTopLeftRadius": "1rem",
+            "borderTopRightRadius": "1rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.2rem",
+            "cursor": "not-allowed",
+            "height": "5rem",
+            "marginBottom": "1rem",
+            "marginLeft": "1rem",
+            "marginRight": "1rem",
+            "marginTop": "1rem",
+            "paddingBottom": "0.9rem",
+            "paddingLeft": "0.9rem",
+            "paddingRight": "0.9rem",
+            "paddingTop": "0.9rem",
+            "width": "10rem",
+          }
+        }
+      >
+        <span
+          className="c2"
+        >
+          <i
+            className="lugia-icon-financial_global   c8"
+            disabled={true}
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "orange",
+                "fontSize": "1.6rem",
+                "fontWeight": 500,
+              }
+            }
+          />
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "orange",
+                "fontSize": "1.6rem",
+                "fontWeight": 500,
+              }
+            }
+          >
+            Button
+             
           </span>
         </span>
       </button>
     </div>
-    <button
-      className="c37"
-      onClick={[Function]}
-      onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
-      onMouseUp={[Function]}
-      size="default"
-    >
-      <span
-        className="c2"
-        size="default"
-      >
-        Button
-      </span>
-    </button>
   </div>,
   <br />,
-  .c14 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  font-size: 1.2rem;
-}
-
-.c0 {
+  .c0 {
   display: inline-block;
   margin-bottom: 0;
   box-sizing: border-box;
-  text-align: center;
   touch-action: manipulation;
   cursor: pointer;
   white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
+  font-family: 'Trebuchet MS',Arial,Helvetica,sans-serif;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -2082,418 +2075,96 @@ Array [
   text-transform: none;
   outline: 0;
   width: 100%;
-  color: #666666;
   background-color: #ffffff;
-  border: 1px solid #cccccc;
-  padding: 0 1.2857142857142858em;
-  font-size: 1.4rem;
-  border-radius: 0.28571428571428575em;
-}
-
-.c0:hover {
-  color: #8090ff;
-  border: 1px solid #8090ff;
-  background-color: rgba(77,99,255,0.05);
-}
-
-.c0:focus {
-  color: #8090ff;
-  border: 1px solid #8090ff;
-  background-color: rgba(77,99,255,0.05);
-}
-
-.c0:active {
-  color: #3e4fcc;
-  border: 1px solid #3e4fcc;
-}
-
-.c2 {
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  width: 100%;
-  color: #ffffff;
-  background-color: #4d63ff;
-  border: none;
-  padding: 0 1.2857142857142858em;
-  font-size: 1.4rem;
-  border-radius: 0.28571428571428575em;
-}
-
-.c2:hover {
-  color: #ffffff;
-  border: none;
-  background-color: #8090ff;
-}
-
-.c2:focus {
-  color: #ffffff;
-  border: none;
-  background-color: #8090ff;
-}
-
-.c2:active {
-  background-color: #3e4fcc;
-}
-
-.c4 {
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  width: 100%;
-  color: #ffffff;
-  background-color: #56c22d;
-  border: none;
-  padding: 0 1.2857142857142858em;
-  font-size: 1.4rem;
-  border-radius: 0.28571428571428575em;
-}
-
-.c4:hover {
-  color: #ffffff;
-  border: none;
-  background-color: #72c254;
-}
-
-.c4:focus {
-  color: #ffffff;
-  border: none;
-  background-color: #72c254;
-}
-
-.c4:active {
-  background-color: #3f8f21;
-}
-
-.c5 {
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  width: 100%;
-  color: #ffffff;
-  background-color: #f8ac30;
-  border: none;
-  padding: 0 1.2857142857142858em;
-  font-size: 1.4rem;
-  border-radius: 0.28571428571428575em;
-}
-
-.c5:hover {
-  color: #ffffff;
-  border: none;
-  background-color: #f8bf62;
-}
-
-.c5:focus {
-  color: #ffffff;
-  border: none;
-  background-color: #f8bf62;
-}
-
-.c5:active {
-  background-color: #c58926;
-}
-
-.c6 {
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  width: 100%;
-  color: #ffffff;
-  background-color: #f22735;
-  border: none;
-  padding: 0 1.2857142857142858em;
-  font-size: 1.4rem;
-  border-radius: 0.28571428571428575em;
-}
-
-.c6:hover {
-  color: #ffffff;
-  border: none;
-  background-color: #f25762;
-}
-
-.c6:focus {
-  color: #ffffff;
-  border: none;
-  background-color: #f25762;
-}
-
-.c6:active {
-  background-color: #bf1f2a;
-}
-
-.c7 {
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  width: 100%;
-  color: #56c22d;
-  background-color: rgba(86,194,45,0.05);
-  border: 1px solid #56c22d;
-  padding: 0 1.2857142857142858em;
-  font-size: 1.4rem;
-  border-radius: 1.142857142857143em;
-}
-
-.c7:hover {
-  color: #ffffff;
-  border: 1px solid #56c22d;
-  background-color: #56c22d;
-}
-
-.c7:focus {
-  color: #ffffff;
-  border: 1px solid #56c22d;
-  background-color: #56c22d;
-}
-
-.c7:active {
-  background-color: #3f8f21;
-}
-
-.c8 {
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  width: 100%;
-  color: #f8ac30;
-  background-color: rgba(248,172,48,0.05);
-  border: 1px solid #f8ac30;
-  padding: 0 1.2857142857142858em;
-  font-size: 1.4rem;
-  border-radius: 1.142857142857143em;
-}
-
-.c8:hover {
-  color: #ffffff;
-  border: 1px solid #f8ac30;
-  background-color: #f8ac30;
-}
-
-.c8:focus {
-  color: #ffffff;
-  border: 1px solid #f8ac30;
-  background-color: #f8ac30;
-}
-
-.c8:active {
-  background-color: #c58926;
-}
-
-.c10 {
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  width: 100%;
-  color: #ffffff;
-  background-color: #f8ac30;
-  border: none;
-  padding: 0 1.1666666666666667em;
-  font-size: 1.2rem;
-  border-radius: 0.33333333333333337em;
-}
-
-.c10:hover {
-  color: #ffffff;
-  border: none;
-  background-color: #f8bf62;
-}
-
-.c10:focus {
-  color: #ffffff;
-  border: none;
-  background-color: #f8bf62;
-}
-
-.c10:active {
-  background-color: #c58926;
-}
-
-.c12 {
-  display: inline-block;
-  margin-bottom: 0;
-  box-sizing: border-box;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  white-space: nowrap;
-  line-height: 1;
-  font-family: Trebuchet Ms,Arial,Helvetica,sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
-  position: relative;
-  text-transform: none;
-  outline: 0;
-  width: 100%;
-  color: #666666;
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
-  padding: 0 1.2857142857142858em;
-  font-size: 1.4rem;
-  border-radius: 0.28571428571428575em;
-  color: #8090ff;
-  border: 1px solid #8090ff;
-  background-color: rgba(77,99,255,0.05);
-  pointer-events: none;
-}
-
-.c12:hover {
-  color: #8090ff;
-  border: 1px solid #8090ff;
-  background-color: rgba(77,99,255,0.05);
-}
-
-.c12:focus {
-  color: #8090ff;
-  border: 1px solid #8090ff;
-  background-color: rgba(77,99,255,0.05);
-}
-
-.c12:active {
-  color: #3e4fcc;
-  border: 1px solid #3e4fcc;
-}
-
-.c1 {
-  display: inline-block;
-  line-height: 2.142857142857143em;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
 }
 
 .c3 {
   display: inline-block;
-  line-height: 2.285714285714286em;
+  margin-bottom: 0;
+  box-sizing: border-box;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: 'Trebuchet MS',Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  width: 100%;
+  pointer-events: none;
+  background-color: #ffffff;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
 }
 
-.c9 {
-  display: inline-block;
-  line-height: 2.857142857142857em;
+.c2 {
+  color: #666666;
+  font-size: 1.4rem;
 }
 
-.c11 {
-  display: inline-block;
-  line-height: 2em;
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
-.c13 {
-  vertical-align: -0.125em !important;
-  margin-right: 0.7142857142857143em;
+.c4 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  margin-right: 1rem;
   -webkit-animation: iECmZH 1s infinite linear;
   animation: iECmZH 1s infinite linear;
 }
 
-.c15 {
-  vertical-align: -0.125em !important;
-  margin-right: 0.7142857142857143em;
+.c5 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  vertical-align: -0.175rem !important;
+  margin-right: 1rem;
 }
 
 <div
@@ -2505,220 +2176,552 @@ Array [
   >
     <button
       className="c0"
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       onMouseOut={[Function]}
       onMouseOver={[Function]}
       onMouseUp={[Function]}
       size="default"
+      style={
+        Object {
+          "backgroundColor": "#ffffff",
+          "borderBottomColor": "#cccccc",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.1rem",
+          "borderLeftColor": "#cccccc",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.1rem",
+          "borderRightColor": "#cccccc",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.1rem",
+          "borderTopColor": "#cccccc",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.1rem",
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
     >
       <span
         className="c1"
-        size="default"
       >
-        hello
+        <span
+          className="c2"
+          style={
+            Object {
+              "color": "#666666",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          hello
+        </span>
       </span>
     </button>
     <p>
       Primary
     </p>
     <button
-      className="c2"
+      className="c0"
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       onMouseOut={[Function]}
       onMouseOver={[Function]}
       onMouseUp={[Function]}
       size="default"
+      style={
+        Object {
+          "backgroundColor": "#4d63ff",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomWidth": 0,
+          "borderLeftWidth": 0,
+          "borderRightWidth": 0,
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopWidth": 0,
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
       type="primary"
     >
       <span
-        className="c3"
-        size="default"
-        type="primary"
+        className="c1"
       >
-        Primary
+        <span
+          className="c2"
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          Primary
+        </span>
       </span>
     </button>
     <p>
       Success
     </p>
     <button
-      className="c4"
+      className="c0"
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       onMouseOut={[Function]}
       onMouseOver={[Function]}
       onMouseUp={[Function]}
       size="default"
+      style={
+        Object {
+          "backgroundColor": "#56c22d",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomWidth": 0,
+          "borderLeftWidth": 0,
+          "borderRightWidth": 0,
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopWidth": 0,
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
       type="success"
     >
       <span
-        className="c3"
-        size="default"
-        type="success"
+        className="c1"
       >
-        Success
+        <span
+          className="c2"
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          Success
+        </span>
       </span>
     </button>
     <p>
       Warning
     </p>
     <button
-      className="c5"
+      className="c0"
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       onMouseOut={[Function]}
       onMouseOver={[Function]}
       onMouseUp={[Function]}
       size="default"
+      style={
+        Object {
+          "backgroundColor": "#f8ac30",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomWidth": 0,
+          "borderLeftWidth": 0,
+          "borderRightWidth": 0,
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopWidth": 0,
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
       type="warning"
     >
       <span
-        className="c3"
-        size="default"
-        type="warning"
+        className="c1"
       >
-        Warning
+        <span
+          className="c2"
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          Warning
+        </span>
       </span>
     </button>
     <p>
       Danger
     </p>
     <button
-      className="c6"
+      className="c0"
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       onMouseOut={[Function]}
       onMouseOver={[Function]}
       onMouseUp={[Function]}
       size="default"
+      style={
+        Object {
+          "backgroundColor": "#f22735",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomWidth": 0,
+          "borderLeftWidth": 0,
+          "borderRightWidth": 0,
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopWidth": 0,
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
       type="danger"
     >
       <span
-        className="c3"
-        size="default"
-        type="danger"
+        className="c1"
       >
-        Danger
+        <span
+          className="c2"
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          Danger
+        </span>
       </span>
     </button>
     <p>
       success
     </p>
     <button
-      className="c7"
+      className="c0"
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       onMouseOut={[Function]}
       onMouseOver={[Function]}
       onMouseUp={[Function]}
       shape="round"
       size="default"
+      style={
+        Object {
+          "backgroundColor": "rgba(86,194,45,0.05)",
+          "borderBottomColor": "#56c22d",
+          "borderBottomLeftRadius": "1.6rem",
+          "borderBottomRightRadius": "1.6rem",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.1rem",
+          "borderLeftColor": "#56c22d",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.1rem",
+          "borderRightColor": "#56c22d",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.1rem",
+          "borderTopColor": "#56c22d",
+          "borderTopLeftRadius": "1.6rem",
+          "borderTopRightRadius": "1.6rem",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.1rem",
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
       type="success"
     >
       <span
         className="c1"
-        size="default"
-        type="success"
       >
-        Success
+        <span
+          className="c2"
+          style={
+            Object {
+              "color": "#56c22d",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          Success
+        </span>
       </span>
     </button>
     <p>
       warning
     </p>
     <button
-      className="c8"
+      className="c0"
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       onMouseOut={[Function]}
       onMouseOver={[Function]}
       onMouseUp={[Function]}
       shape="round"
       size="default"
+      style={
+        Object {
+          "backgroundColor": "rgba(248,172,48,0.05)",
+          "borderBottomColor": "#f8ac30",
+          "borderBottomLeftRadius": "1.6rem",
+          "borderBottomRightRadius": "1.6rem",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.1rem",
+          "borderLeftColor": "#f8ac30",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.1rem",
+          "borderRightColor": "#f8ac30",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.1rem",
+          "borderTopColor": "#f8ac30",
+          "borderTopLeftRadius": "1.6rem",
+          "borderTopRightRadius": "1.6rem",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.1rem",
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
       type="warning"
     >
       <span
         className="c1"
-        size="default"
-        type="warning"
       >
-        primary
+        <span
+          className="c2"
+          style={
+            Object {
+              "color": "#f8ac30",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          primary
+        </span>
       </span>
     </button>
     <p>
       large
     </p>
     <button
-      className="c2"
+      className="c0"
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       onMouseOut={[Function]}
       onMouseOver={[Function]}
       onMouseUp={[Function]}
       size="large"
+      style={
+        Object {
+          "backgroundColor": "#4d63ff",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomWidth": 0,
+          "borderLeftWidth": 0,
+          "borderRightWidth": 0,
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopWidth": 0,
+          "height": "4rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
       type="primary"
     >
       <span
-        className="c9"
-        size="large"
-        type="primary"
+        className="c1"
       >
-        Primary
+        <span
+          className="c2"
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          Primary
+        </span>
       </span>
     </button>
     <p>
       small
     </p>
     <button
-      className="c10"
+      className="c0"
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       onMouseOut={[Function]}
       onMouseOver={[Function]}
       onMouseUp={[Function]}
       size="small"
+      style={
+        Object {
+          "backgroundColor": "#f8ac30",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomWidth": 0,
+          "borderLeftWidth": 0,
+          "borderRightWidth": 0,
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopWidth": 0,
+          "height": "2.4rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.4rem",
+          "paddingRight": "1.4rem",
+          "paddingTop": "0rem",
+        }
+      }
       type="warning"
     >
       <span
-        className="c11"
-        size="small"
-        type="warning"
+        className="c1"
       >
-        Warning
+        <span
+          className="c2"
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontSize": "1.2rem",
+            }
+          }
+        >
+          Warning
+        </span>
       </span>
     </button>
     <p>
       loading
     </p>
     <button
-      className="c12"
+      className="c3"
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       onMouseOut={[Function]}
       onMouseOver={[Function]}
       onMouseUp={[Function]}
       size="default"
+      style={
+        Object {
+          "backgroundColor": "rgba(77,99,255,0.05)",
+          "borderBottomColor": "#8090ff",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.1rem",
+          "borderLeftColor": "#8090ff",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.1rem",
+          "borderRightColor": "#8090ff",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.1rem",
+          "borderTopColor": "#8090ff",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.1rem",
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
     >
       <span
         className="c1"
-        size="default"
       >
-        <span>
-          <i
-            className="lugia-icon-financial_loading_o c13 c14"
-          />
+        <i
+          className="lugia-icon-financial_loading_o   c4"
+          onClick={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "color": "#8090ff",
+            }
+          }
+        />
+        <span
+          className="c2"
+          style={
+            Object {
+              "color": "#8090ff",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
           loading
         </span>
       </span>
@@ -2727,23 +2730,69 @@ Array [
       loading
     </p>
     <button
-      className="c12"
+      className="c3"
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       onMouseOut={[Function]}
       onMouseOver={[Function]}
       onMouseUp={[Function]}
       size="default"
+      style={
+        Object {
+          "backgroundColor": "rgba(77,99,255,0.05)",
+          "borderBottomColor": "#8090ff",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.1rem",
+          "borderLeftColor": "#8090ff",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.1rem",
+          "borderRightColor": "#8090ff",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.1rem",
+          "borderTopColor": "#8090ff",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.1rem",
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
     >
       <span
         className="c1"
-        size="default"
       >
-        <span>
-          <i
-            className="lugia-icon-financial_loading_o c13 c14"
-          />
+        <i
+          className="lugia-icon-financial_loading_o   c4"
+          onClick={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "color": "#8090ff",
+            }
+          }
+        />
+        <span
+          className="c2"
+          style={
+            Object {
+              "color": "#8090ff",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
           loading
         </span>
       </span>
@@ -2753,23 +2802,377 @@ Array [
     </p>
     <button
       className="c0"
+      onBlur={[Function]}
       onClick={[Function]}
+      onFocus={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       onMouseOut={[Function]}
       onMouseOver={[Function]}
       onMouseUp={[Function]}
       size="default"
+      style={
+        Object {
+          "backgroundColor": "#ffffff",
+          "borderBottomColor": "#cccccc",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.1rem",
+          "borderLeftColor": "#cccccc",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.1rem",
+          "borderRightColor": "#cccccc",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.1rem",
+          "borderTopColor": "#cccccc",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.1rem",
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
     >
       <span
         className="c1"
-        size="default"
       >
-        <span>
-          <i
-            className="lugia-icon-direction_logout c15 c14"
-          />
+        <i
+          className="lugia-icon-direction_logout   c5"
+          onClick={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "color": "#666666",
+              "fontSize": "1.4rem",
+            }
+          }
+        />
+        <span
+          className="c2"
+          style={
+            Object {
+              "color": "#666666",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
           Button
+           
+        </span>
+      </span>
+    </button>
+  </div>,
+  .c0 {
+  display: inline-block;
+  margin-bottom: 0;
+  box-sizing: border-box;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: 'Trebuchet MS',Arial,Helvetica,sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  position: relative;
+  text-transform: none;
+  outline: 0;
+  background-color: #ffffff;
+  border-top-width: 0.1rem;
+  border-top-style: solid;
+  border-top-color: #cccccc;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #cccccc;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-left-color: #cccccc;
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color: #cccccc;
+}
+
+.c2 {
+  color: #666666;
+  font-size: 1.4rem;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+<div>
+    <p>
+      inline
+    </p>
+    <button
+      className="c0"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      onMouseUp={[Function]}
+      size="default"
+      style={
+        Object {
+          "backgroundColor": "#ffffff",
+          "borderBottomColor": "#cccccc",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.1rem",
+          "borderLeftColor": "#cccccc",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.1rem",
+          "borderRightColor": "#cccccc",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.1rem",
+          "borderTopColor": "#cccccc",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.1rem",
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
+    >
+      <span
+        className="c1"
+      >
+        <span
+          className="c2"
+          style={
+            Object {
+              "color": "#666666",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          hello
+        </span>
+      </span>
+    </button>
+    <button
+      className="c0"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      onMouseUp={[Function]}
+      size="default"
+      style={
+        Object {
+          "backgroundColor": "#4d63ff",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomWidth": 0,
+          "borderLeftWidth": 0,
+          "borderRightWidth": 0,
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopWidth": 0,
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
+      type="primary"
+    >
+      <span
+        className="c1"
+      >
+        <span
+          className="c2"
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          Primary
+        </span>
+      </span>
+    </button>
+    <button
+      className="c0"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      onMouseUp={[Function]}
+      size="default"
+      style={
+        Object {
+          "backgroundColor": "#56c22d",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomWidth": 0,
+          "borderLeftWidth": 0,
+          "borderRightWidth": 0,
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopWidth": 0,
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
+      type="success"
+    >
+      <span
+        className="c1"
+      >
+        <span
+          className="c2"
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          Success
+        </span>
+      </span>
+    </button>
+    <button
+      className="c0"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      onMouseUp={[Function]}
+      size="default"
+      style={
+        Object {
+          "backgroundColor": "#f8ac30",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomWidth": 0,
+          "borderLeftWidth": 0,
+          "borderRightWidth": 0,
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopWidth": 0,
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
+      type="warning"
+    >
+      <span
+        className="c1"
+      >
+        <span
+          className="c2"
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          Warning
+        </span>
+      </span>
+    </button>
+    <button
+      className="c0"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      onMouseUp={[Function]}
+      size="default"
+      style={
+        Object {
+          "backgroundColor": "#f22735",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomWidth": 0,
+          "borderLeftWidth": 0,
+          "borderRightWidth": 0,
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopWidth": 0,
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
+      type="danger"
+    >
+      <span
+        className="c1"
+      >
+        <span
+          className="c2"
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          Danger
         </span>
       </span>
     </button>

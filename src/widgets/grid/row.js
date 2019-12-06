@@ -36,7 +36,7 @@ const responsiveMap: { [key: screensType]: string } = {
   xl: '(min-width: 1200px)',
   xxl: '(min-width: 1600px)',
 };
-const responsiveArray: screensType[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
+export const responsiveArray: screensType[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 
 export default ThemeProvider(
   MouseEventAdaptor(

@@ -53,26 +53,42 @@ const CommonInputStyle = CSSComponent({
       ['cursor'],
       ['padding'],
       ['opacity'],
+      ['boxShadow'],
     ],
     defaultTheme: {
       cursor: 'text',
-      width: 200,
-      height: DefaultHeight,
       border: getBorder({ color: borderColor, width: 1, style: 'solid' }),
       borderRadius: getBorderRadius(4),
+      width: '100%',
+    },
+    getCSS(themeMeta: Object, themeProps: Object) {
+      const { propsConfig } = themeProps;
+      const { placeHolderColor, placeHolderFont, placeHolderFontSize } = propsConfig;
+      const { size, weight, color } = placeHolderFont;
+      const theColor = color ? color : placeHolderColor;
+      const theSize = size ? size : placeHolderFontSize;
+      return css`
+        &::placeholder {
+          color: ${theColor};
+          font-size: ${theSize}px;
+          font-weight: ${weight};
+        }
+      `;
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
-      const { size, prefix, validateStatus, validateType } = propsConfig;
+      const { size, prefix, validateStatus, validateType, suffix, isShowClearButton } = propsConfig;
       const { width, height, color } = themeMeta;
       const theColor = color
         ? color
         : isValidateSuccess(validateStatus, validateType, 'inner')
         ? dangerColor
         : blackColor;
+
       const theHeight = height ? height : size === 'large' ? 40 : size === 'small' ? 24 : 32;
       const paddingLeft = prefix ? 30 : width && width < 200 ? width / 20 : 10;
-      const paddingRight = width && width < 200 ? 15 + width / 10 : 35;
+      const paddingRight =
+        suffix || isShowClearButton ? 35 : width && width < 200 ? 15 + width / 10 : 10;
       return {
         color: theColor,
         height: theHeight,
@@ -132,14 +148,13 @@ const CommonInputStyle = CSSComponent({
     },
   },
   css: css`
+    box-sizing: border-box;
     line-height: 1.5;
     display: inline-block;
     font-family: inherit;
     transition: all 0.3s;
     outline: none;
-    &::placeholder {
-      color: ${lightGreyColor};
-    }
+    min-width: ${px2remcss(30)};
   `,
 });
 
@@ -159,7 +174,10 @@ const InputContainer = CSSComponent({
   tag: 'div',
   className: 'inputContainer',
   normal: {
-    selectNames: [['width'], ['height'], ['margin'], ['padding']],
+    selectNames: [['width'], ['height'], ['margin']],
+    defaultTheme: {
+      width: '100%',
+    },
   },
   hover: {
     selectNames: [],
@@ -174,6 +192,7 @@ const InputContainer = CSSComponent({
     position: relative;
     display: inline-block;
     outline: none;
+    min-width: ${px2remcss(30)};
   `,
 });
 
@@ -276,6 +295,7 @@ type InputProps = {|
   type: string,
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
+  isShowClearButton?: boolean,
 |};
 
 class TextBox extends Component<InputProps, InputState> {
@@ -288,6 +308,7 @@ class TextBox extends Component<InputProps, InputState> {
     size: 'default',
     help: DefaultHelp,
     defaultValue: '',
+    isShowClearButton: true,
     getTheme: () => {
       return {};
     },
@@ -304,6 +325,7 @@ class TextBox extends Component<InputProps, InputState> {
 
   constructor(props: InputProps) {
     super(props);
+    this.input = React.createRef();
   }
 
   static getDerivedStateFromProps(nextProps: Object, preState: Object) {
@@ -331,6 +353,8 @@ class TextBox extends Component<InputProps, InputState> {
   setValue(value: string, event: Event): void {
     const oldValue = this.state.value;
     const { disabled, onChange, parser, formatter } = this.props;
+    this.blur(event);
+    this.focus(event);
 
     if (oldValue === value) {
       return;
@@ -456,7 +480,7 @@ class TextBox extends Component<InputProps, InputState> {
           theme={newTheme}
           viewClass={viewClass}
           title={help}
-          action={['click']}
+          action={'focus'}
           popArrowType={'round'}
           placement={'topLeft'}
         >
@@ -495,7 +519,11 @@ class TextBox extends Component<InputProps, InputState> {
         <Suffix themeProps={SuffixThemeProps}>{this.getFixIcon(suffix, 'InputSuffix')}</Suffix>
       );
     }
-    return this.getClearButton();
+    const { isShowClearButton } = this.props;
+    if (isShowClearButton) {
+      return this.getClearButton();
+    }
+    return null;
   }
 
   getClearButton() {
@@ -541,10 +569,18 @@ class TextBox extends Component<InputProps, InputState> {
     );
   }
 
-  focus() {
-    if (this.input) {
+  focus(event: UIEvent) {
+    if (this.input.current) {
       setTimeout(() => {
-        this.input.focus();
+        this.input.current.focus(event);
+      }, 0);
+    }
+  }
+
+  blur(event: UIEvent) {
+    if (this.input.current) {
+      setTimeout(() => {
+        this.input.current.blur(event);
       }, 0);
     }
   }
@@ -568,14 +604,28 @@ class TextBox extends Component<InputProps, InputState> {
       autoFocus,
       type,
       disabled,
+      isShowClearButton,
     } = props;
     if (formatter && parser) {
       value = formatter(value);
     }
 
+    const { themeConfig = { normal: {} } } = this.props.getPartOfThemeProps('Placeholder');
+    const { normal = {} } = themeConfig;
+    const { color = lightGreyColor, font = {}, fontSize } = normal;
     const theThemeProps = deepMerge(
       this.props.getPartOfThemeProps('Input', {
-        props: { validateType, validateStatus, prefix, size },
+        props: {
+          validateType,
+          validateStatus,
+          prefix,
+          suffix,
+          size,
+          placeHolderColor: color,
+          placeHolderFont: font,
+          placeHolderFontSize: fontSize,
+          isShowClearButton,
+        },
       }),
       this.props.getPartOfThemeProps('Container')
     );

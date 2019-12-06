@@ -19,7 +19,7 @@ export default () => {
       HorizontalDivider: {
         normal: {
           width: 400,
-          height: 2,
+          height: 1,
           background: {
             color: 'red',
           },
@@ -44,6 +44,7 @@ export default () => {
     <div>
       <Theme config={view}>
         <Wrapper>
+          <Divider />
           <p>solid </p>
           <Divider content={'solid'} type="horizontal" />
           <p>dashed</p>

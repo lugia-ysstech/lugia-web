@@ -272,6 +272,75 @@ describe('Menu utils', () => {
   it('getTreeData ', () => {
     expect(getTreeData({})).toEqual([]);
     expect(getTreeData({ data })).toEqual(treeData);
+    expect(getTreeData({ data }, '+')).toEqual([
+      {
+        describe: undefined,
+        disabled: false,
+        icon: undefined,
+        isLeaf: false,
+        pid: undefined,
+        text: '1',
+        value: '1',
+      },
+      {
+        describe: undefined,
+        disabled: false,
+        icon: undefined,
+        isLeaf: false,
+        path: '1',
+        pid: '1',
+        text: '1-1',
+        value: '1-1',
+      },
+      {
+        describe: undefined,
+        disabled: false,
+        icon: undefined,
+        isLeaf: false,
+        path: '1+1-1',
+        pid: '1-1',
+        text: '1-1-1',
+        value: '1-1-1',
+      },
+      {
+        describe: undefined,
+        disabled: false,
+        icon: undefined,
+        isLeaf: false,
+        path: '1+1-1+1-1-1',
+        pid: '1-1-1',
+        text: '1-1-1-1',
+        value: '1-1-1-1',
+      },
+      {
+        describe: undefined,
+        disabled: false,
+        icon: undefined,
+        isLeaf: true,
+        path: '1+1-1+1-1-1+1-1-1-1',
+        pid: '1-1-1-1',
+        text: '1-1-1-1-1',
+        value: '1-1-1-1-1',
+      },
+      {
+        describe: undefined,
+        disabled: false,
+        icon: undefined,
+        isLeaf: true,
+        pid: undefined,
+        text: '2',
+        value: '2',
+      },
+      {
+        describe: undefined,
+        disabled: false,
+        icon: undefined,
+        isLeaf: true,
+        pid: undefined,
+        text: '3',
+        value: '3',
+      },
+    ]);
   });
 
   const allChildData = {

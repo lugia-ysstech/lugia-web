@@ -5,7 +5,19 @@
   "props": {
     "data": {
       "type": "Object[]",
-      "desc": "左右两个面板数据源"
+      "desc": "左右两个面板数据源",
+      "meta": [
+        { "key": "text", "title": "展示文字", "type": "string" },
+        { "key": "value", "title": "对应字段", "type": "string" },
+        { "key": "disabled", "title": "是否禁用", "type": "boolean" }
+      ],
+      "defaultValue": [
+        { "text": "选项1", "value": "选项1", "disabled": false },
+        { "text": "选项2", "value": "选项2", "disabled": false },
+        { "text": "选项3", "value": "选项3", "disabled": false },
+        { "text": "选项4", "value": "选项4", "disabled": false }
+      ],
+      "propsDefaultValue": []
     },
     "showSearch": {
       "type": "boolean",
@@ -128,7 +140,32 @@
       "title": "树形穿梭框",
       "desc": "树形穿梭框，展示树形数据",
       "props": {
-        "type": "tree"
+        "type": "tree",
+        "data": [
+          { "text": "1", "value": "1" },
+          {
+            "text": "2",
+            "value": "2",
+            "children": [
+              {
+                "text": "2.1",
+                "value": "2.1",
+                "children": [
+                  { "text": "2.1.1", "value": "2.1.1" },
+                  { "text": "2.1.2", "value": "2.1.2" }
+                ]
+              },
+              {
+                "text": "2.2",
+                "value": "2.2",
+                "children": [
+                  { "text": "2.2.1", "value": "2.2.1" },
+                  { "text": "2.2.2", "value": "2.2.2" }
+                ]
+              }
+            ]
+          }
+        ]
       },
       "theme": {
         "TransferWrap": {
@@ -531,6 +568,69 @@
       "name": "穿梭框面板头部文字样式",
       "desc": "为穿梭框配置左右面板头部文字样式",
       "normal": [["padding"], ["color"], ["font"]]
+    },
+    "TransferSearchInput": {
+      "name": "穿梭框面板搜索框样式",
+      "desc": "为穿梭框配置左右面板搜索框样式",
+      "theme": {
+        "Container": {
+          "name": "输入框外部容器",
+          "desc": "输入框外部容器",
+          "normal": [["width"], ["height"], ["margin"], ["padding"]]
+        },
+        "Input": {
+          "name": "输入框主体",
+          "desc": "输入框主体结构",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["fontSize"],
+            ["font"],
+            ["color"],
+            ["background"],
+            ["border"],
+            ["borderRadius"],
+            ["cursor"],
+            ["opacity"]
+          ],
+          "hover": [
+            ["border"],
+            ["borderRadius"],
+            ["cursor"],
+            ["background"],
+            ["opacity"],
+            ["boxShadow"]
+          ],
+          "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"], ["background"]],
+          "disabled": [
+            ["fontSize"],
+            ["font"],
+            ["color"],
+            ["background"],
+            ["border"],
+            ["borderRadius"],
+            ["cursor"],
+            ["padding"],
+            ["opacity"]
+          ]
+        },
+        "InputSuffix": {
+          "name": "后缀图标",
+          "desc": "输入框后缀自定义图标",
+          "normal": [["color"], ["fontSize"], ["font"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
+        },
+        "InputClearButton": {
+          "name": "输入框清除图标",
+          "desc": "输入框后缀清除图标",
+          "normal": [["color"], ["fontSize"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
+        }
+      }
     },
     "TransferCancelBox": {
       "name": "穿梭框面板取消项盒子样式",

@@ -80,10 +80,20 @@ export default class ModalDemo extends React.Component<any, any> {
         width: 500,
       },
     };
+    const config = {
+      [Widget.Table]: {
+        Container: {
+          normal: {
+            width: 500,
+            height: 200,
+          },
+        },
+      },
+    };
     return (
       <div style={{ padding: '20px' }}>
         <h1>边框表格</h1>
-        <Theme config={tableView}>
+        <Theme config={config}>
           <Table columns={columns} data={data} />
         </Theme>
         <br />

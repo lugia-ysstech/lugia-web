@@ -19,7 +19,36 @@ const { px2remcss } = units;
 const { borderDisableColor } = colorsFunc();
 const Divider = CSSComponent({
   tag: 'div',
-  className: 'HorizontalDivider',
+  className: 'HorizontalBorderDivider',
+  normal: {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['opacity'],
+      ['margin'],
+      ['padding'],
+      ['boxShadow'],
+      ['background'],
+    ],
+    defaultTheme: {
+      width: '100%',
+      height: 1,
+      background: {
+        color: borderDisableColor,
+      },
+    },
+  },
+  css: css`
+    display: inline-block;
+    white-space: nowrap;
+    text-align: center;
+    min-width: ${px2remcss(100)};
+    min-height: ${px2remcss(1)};
+  `,
+});
+const BorderDivider = CSSComponent({
+  tag: 'div',
+  className: 'HorizontalBorderDivider',
   normal: {
     selectNames: [['width'], ['height'], ['opacity'], ['margin'], ['padding'], ['boxShadow']],
     getCSS(themeMeta: Object, themeProps: Object) {
@@ -65,9 +94,6 @@ const Divider = CSSComponent({
       transform: translateY(50%);
     }`;
     },
-    defaultTheme: {
-      width: 500,
-    },
   },
   css: css`
     display: table;
@@ -95,10 +121,6 @@ const VerticalDivider = StaticComponent({
       },
       width: 1,
       height: 10,
-      margin: {
-        left: 6,
-        right: 6,
-      },
     },
   },
   css: css`
@@ -156,6 +178,18 @@ class LineBox extends Component<DividerProps, any> {
 
     if (type === 'vertical') {
       return <VerticalDivider themeProps={vThemeProps} />;
+    }
+    if (position || content || dashed) {
+      return (
+        <BorderDivider
+          dashed={dashed}
+          position={position}
+          content={content}
+          themeProps={hThemeProps}
+        >
+          {this.getChildText()}
+        </BorderDivider>
+      );
     }
     return (
       <Divider dashed={dashed} position={position} content={content} themeProps={hThemeProps}>

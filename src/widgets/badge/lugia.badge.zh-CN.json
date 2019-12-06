@@ -39,8 +39,8 @@
       },
       "theme": {
         "BadgeNumber": {
-          "name": "徽标数",
-          "desc": "徽标数 显示数字时的样式展示",
+          "name": "数字徽标",
+          "desc": "徽标数大于0时,显示的数字",
           "normal": [
             ["width"],
             ["height"],
@@ -49,12 +49,11 @@
             ["opacity"],
             ["color"],
             ["margin"],
-            ["padding"],
+            ["font"],
+            ["fontSize"],
+            ["color"],
             ["boxShadow"]
-          ],
-          "hover": [["width"], ["height"], ["background"], ["opacity"], ["color"]],
-          "clicked": [],
-          "disabled": []
+          ]
         }
       }
     }
@@ -71,11 +70,10 @@
         ["opacity"],
         ["margin"],
         ["padding"],
-        ["boxShadow"]
-      ],
-      "hover": [["width"], ["height"], ["background"], ["opacity"]],
-      "clicked": [],
-      "disabled": []
+        ["boxShadow"],
+        ["border"],
+        ["borderRadius"]
+      ]
     }
   }
 }

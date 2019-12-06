@@ -9,7 +9,7 @@ import styled from 'styled-components';
 import Theme from '../theme';
 import Widget from '../consts';
 import CheckBox from './';
-import { getBorder } from '@lugia/theme-utils';
+import { getBorder, getBoxShadow } from '@lugia/theme-utils';
 import { getBorderRadius } from '../theme/CSSProvider';
 
 const CheckBoxGroup = CheckBox.Group;
@@ -87,9 +87,12 @@ export class CheckboxDemo extends React.Component<any, any> {
         },
         CheckboxEdgeChecked: {
           normal: {
+            width: 40,
+            height: 40,
             background: { color: '#56c22d' },
             border: getBorder({ color: 'yellow', width: 2, style: 'solid' }),
             borderRadius: getBorderRadius(2),
+            boxShadow: getBoxShadow('1px 2px 2px 2px #e8e8e8'),
           },
           hover: {
             background: { color: 'red' },
@@ -104,9 +107,12 @@ export class CheckboxDemo extends React.Component<any, any> {
         },
         CheckboxEdgeUnChecked: {
           normal: {
+            width: 40,
+            height: 40,
             background: { color: 'yellow' },
             border: getBorder({ color: '#56c22d', width: 2, style: 'solid' }),
             borderRadius: getBorderRadius(2),
+            boxShadow: getBoxShadow('1px 2px 2px 2px #e8e8e8'),
           },
           hover: {
             background: { color: '#56c22d' },
@@ -121,9 +127,12 @@ export class CheckboxDemo extends React.Component<any, any> {
         },
         CheckboxEdgeIndeterminate: {
           normal: {
+            width: 40,
+            height: 40,
             background: { color: 'yellow' },
             border: getBorder({ color: '#56c22d', width: 2, style: 'solid' }),
             borderRadius: getBorderRadius(2),
+            boxShadow: getBoxShadow('1px 2px 2px 2px #e8e8e8'),
           },
           hover: {
             background: { color: '#56c22d' },
@@ -141,11 +150,14 @@ export class CheckboxDemo extends React.Component<any, any> {
             background: { color: 'pink' },
             borderRadius: getBorderRadius(2),
             border: getBorder({ color: '#56c22d', width: 2, style: 'solid' }),
+            boxShadow: getBoxShadow('1px 2px 2px 2px #e8e8e8'),
           },
         },
         CheckboxInnerChecked: {
           normal: {
             color: 'red',
+            width: 10,
+            height: 20,
           },
           hover: { color: 'yellow' },
           disabled: {
@@ -268,7 +280,7 @@ export const CheckboxGroupDemo = class extends React.Component<any, any> {
   render() {
     const checkboxView = {
       [Widget.CheckboxGroup]: {
-        Group: {
+        Container: {
           normal: {
             width: 400,
             height: 500,
@@ -413,7 +425,7 @@ export const CheckboxGroupDemo = class extends React.Component<any, any> {
     };
     const checkbuttonView = {
       [Widget.CheckboxGroup]: {
-        Group: {},
+        Container: {},
         CheckButton: {
           CheckButtonChecked: {
             normal: {
@@ -556,6 +568,7 @@ export const CheckboxGroupDemo = class extends React.Component<any, any> {
           </CheckBoxGroup>
         </Wrapper>
         <Wrapper>
+          <p>themes</p>
           <Theme config={checkboxView}>
             <CheckBoxGroup
               onChange={handleChange}

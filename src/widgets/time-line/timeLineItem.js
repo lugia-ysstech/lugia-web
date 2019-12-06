@@ -36,15 +36,15 @@ const ItemContainer = CSSComponent({
   className: 'TimeLineItemContainer',
   normal: {
     selectNames: [['width'], ['height'], ['margin'], ['padding']],
-    getThemeMeta(themeMeta, themeProps) {
-      const { height } = themeMeta;
+    getCSS: (theme: Object, themeProps: Object) => {
       const { propsConfig } = themeProps;
-      const { description, type } = propsConfig;
-      const theHeight = height ? height : type === 'explain' ? '' : description ? 54 : 42;
-      return { height: theHeight };
+      const { maxWidth, mode } = propsConfig;
+      if (mode !== 'right') {
+        return `transform: translateX(${maxWidth}px);`;
+      }
     },
     defaultTheme: {
-      width: '100%',
+      width: 'min-content',
     },
   },
   css: css`
@@ -59,7 +59,6 @@ const BaseText = CSSComponent({
   },
   css: css`
     text-align: inherit;
-    max-width: ${px2remcss(150)};
     overflow: hidden;
     white-space: nowrap;
   `,
@@ -104,7 +103,6 @@ const Content = CSSComponent({
   },
   css: css`
     position: absolute;
-    width: 100%;
     top: 0;
   `,
 });
@@ -114,10 +112,12 @@ const DotContainer = CSSComponent({
   className: 'TimeLineItemDotContainer',
   normal: {
     selectNames: [['width'], ['height'], ['margin'], ['padding']],
+    defaultTheme: {
+      width: 20,
+    },
   },
   css: css`
     position: relative;
-    width: ${px2remcss(20)};
     text-align: center;
   `,
 });
@@ -127,19 +127,6 @@ const Line = CSSComponent({
   className: 'TimeLineItemLine',
   normal: {
     selectNames: [['width'], ['height'], ['background']],
-    getThemeMeta(themeMeta, themeProps) {
-      const { height } = themeMeta;
-      const { propsConfig } = themeProps;
-      const { type, description } = propsConfig;
-      const theHeight = height
-        ? height
-        : type === 'explain'
-        ? 24
-        : description
-        ? 'inherit'
-        : '100%';
-      return { height: theHeight };
-    },
     getCSS(themeMeta, themeProps) {
       const { background } = themeMeta;
       const { propsConfig } = themeProps;
@@ -237,45 +224,86 @@ type TimeLineProps = {
   timeLineType: TimeLineType,
   pendingDot: React.Node,
   pending: boolean,
+  getChildDirectionAndWidth: Function,
 };
 
 class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
   static defaultProps = {
     status: 'normal',
   };
+  state = { _renderHeight: false };
 
   constructor(props: TimeLineProps) {
     super(props);
+    this.desc = React.createRef();
   }
 
   static getDerivedStateFromProps(props: TimeLineProps, state: TimeLineState) {}
 
+  getHeightByType(type: string, description: React.Node) {
+    const theHeight =
+      this.descHeight && this.descHeight > 54
+        ? this.descHeight + 20
+        : type === 'explain'
+        ? 24
+        : description
+        ? 54
+        : 42;
+    return {
+      height: theHeight,
+    };
+  }
+  getLineHeightByType(type: string, description: React.Node) {
+    const theHeight = description ? 'inherit' : '100%';
+    return { height: theHeight };
+  }
+  componentDidMount() {
+    if (this.desc.current) {
+      this.descHeight = this.desc.current.offsetHeight;
+      this.descWidth = this.desc.current.offsetWidth;
+      const { getChildDirectionAndWidth, direction } = this.props;
+      getChildDirectionAndWidth &&
+        getChildDirectionAndWidth({
+          direction,
+          width: this.descWidth,
+        });
+      this.setState({ _renderHeight: true });
+    }
+  }
+
   render() {
-    const { description, time, isLast, direction, timeLineType } = this.props;
+    const { description, time, isLast, direction, timeLineType, mode, _leftMaxWidth } = this.props;
 
     const theTime = timeLineType !== 'explain' ? time : '';
+    const itemThemeProps = deepMerge(
+      { themeConfig: { normal: this.getHeightByType(timeLineType, this.props.description) } },
+      this.props.getPartOfThemeProps('TimeLineItemContainer', {
+        props: {
+          maxWidth: _leftMaxWidth,
+          mode,
+        },
+      })
+    );
+    const lineThemeProps = deepMerge(
+      { themeConfig: { normal: this.getLineHeightByType(timeLineType, this.props.description) } },
+      this.props.getPartOfThemeProps('TimeLineItemLine', {
+        props: {
+          isLast,
+          description,
+          timeLineType,
+        },
+      })
+    );
     return (
       <ItemContainer
-        themeProps={this.props.getPartOfThemeProps('TimeLineItemContainer', {
-          props: {
-            direction,
-          },
-        })}
+        themeProps={itemThemeProps}
         description={description}
         timeLineType={timeLineType}
       >
         <DotContainer themeProps={this.props.themeProps}>{this.getDot()}</DotContainer>
-        <Line
-          themeProps={this.props.getPartOfThemeProps('TimeLineItemLine', {
-            props: {
-              isLast,
-              description,
-              timeLineType,
-            },
-          })}
-        />
+        <Line themeProps={lineThemeProps} />
         <Content
-          themeProps={this.props.getPartOfThemeProps('TimeLineItemContainer', {
+          themeProps={this.props.getPartOfThemeProps('TimeLineItemContentContainer', {
             props: { direction },
           })}
         >
@@ -318,6 +346,7 @@ class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
           theme={tooltipTheme}
           viewClass={TimeLineItemTipViewClass}
           placement="right"
+          popArrowType={'round'}
           title={getString(time)}
           description={getString(description)}
           action={'hover'}
@@ -404,7 +433,11 @@ class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
   getDescription() {
     const { timeLineType, description } = this.props;
     if (timeLineType !== 'explain' && getString(description)) {
-      return <Description themeProps={this.props.themeProps}>{description} </Description>;
+      return (
+        <Description ref={this.desc} themeProps={this.props.themeProps}>
+          {description}
+        </Description>
+      );
     }
     return null;
   }

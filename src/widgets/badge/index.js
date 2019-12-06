@@ -12,11 +12,7 @@ import NumberTurn from './numberturn/index';
 import ThemeHoc from '@lugia/theme-hoc';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import CSSComponent, { StaticComponent, css } from '@lugia/theme-css-hoc';
-import { getBoxShadow } from '@lugia/theme-utils';
 import colorsFunc from '../css/stateColor';
-import { units } from '@lugia/css';
-
-const { px2remcss } = units;
 
 const { dangerColor, defaultColor } = colorsFunc();
 
@@ -65,7 +61,6 @@ const Dot: Object = CSSComponent({
       ['boxShadow'],
     ],
     defaultTheme: {
-      boxShadow: getBoxShadow('0 0 0 1 #fff'),
       height: 10,
       width: 10,
     },
@@ -74,21 +69,12 @@ const Dot: Object = CSSComponent({
     border-radius: 100%;
     z-index: 10;
   `,
-  option: {
-    hover: true,
-  },
 });
 
 const Container: Object = StaticComponent({
-  tag: 'span',
+  tag: 'div',
   className: 'BadgeContainer',
   css: css`
-    ${props => {
-      if (!props.hasChildren) {
-        const size = px2remcss(10);
-        return `width:${size};height:${size};`;
-      }
-    }};
     background: transparent;
     box-sizing: border-box;
     position: relative;
@@ -140,6 +126,7 @@ class BadgeBox extends Component<BadgeProps, BadgeState> {
         count={count}
         overflowCount={overflowCount}
         {...this.props.getPartOfThemeHocProps('BadgeNumber')}
+        singleTheme
       />
     );
   }

@@ -66,9 +66,8 @@ const Title = CSSComponent({
     selectNames: [['font'], ['fontSize'], ['color'], ['background']],
     defaultTheme: {
       font: {
-        size: 16,
+        size: 14,
         color: blackColor,
-        weight: 500,
       },
     },
   },
@@ -144,8 +143,7 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
           ButtonText: {
             normal: {
               font: {
-                size: 16,
-                weight: 500,
+                size: 12,
               },
             },
           },
@@ -155,13 +153,7 @@ class Popconfirm extends React.Component<PopconfirmProps, PopconfirmState> {
     );
     return (
       <Operation>
-        <Button
-          theme={ButtonTheme}
-          viewClass={viewClass}
-          type={okType}
-          size="small"
-          onClick={this.onCancel}
-        >
+        <Button theme={ButtonTheme} viewClass={viewClass} size="small" onClick={this.onCancel}>
           {cancelText}
         </Button>
         <Button

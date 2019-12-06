@@ -184,7 +184,7 @@ export function getThemeProps(props, value) {
       { propsConfig: { switchButtonPosition } },
       nessecaryProps
     ),
-    SwitchContainerThemeProps: deepMerge(getPartOfThemeProps('SwitchContainer'), {
+    SwitchContainerThemeProps: deepMerge(getPartOfThemeProps('Container'), {
       themeState: { disabled: disabled || loading },
       nessecaryProps,
     }),

@@ -124,6 +124,11 @@ class UploadDemo extends React.Component<any, any> {
           url: 'http://pic18.nipic.com/20120204/8339340_144203764154_2.doc',
         },
       ],
+      defaultTips: {
+        uploadText: '点击上传',
+        failTips: '文件上传失败请重试',
+        loadingTips: '文件上传中...',
+      },
     };
 
     const defaultProps2 = {
@@ -134,6 +139,7 @@ class UploadDemo extends React.Component<any, any> {
       multiple: true,
       autoUpload: false,
       onChange: res => {},
+      defaultTips: { uploadText: '上传', uploadTips: '请将文件拖到此处或者点击选择' },
     };
     const defaultProps12 = {
       areaType: 'both',
@@ -238,17 +244,10 @@ class UploadDemo extends React.Component<any, any> {
     const config = {
       [Widget.Upload]: {
         UploadButtonType: {
-          normal: {
-            width: 100,
-            height: 30,
-          },
-          hover: {
-            boxShadow: ' 0 0 2px #ccc',
-            opacity: 0.5,
-          },
-          disabled: {
-            background: {
-              color: '#ccc',
+          Container: {
+            normal: {
+              width: 100,
+              height: 30,
             },
           },
         },
@@ -296,7 +295,7 @@ class UploadDemo extends React.Component<any, any> {
         },
         UploadListSuccessIcon: {
           normal: {
-            color: '#56c22d',
+            color: '#087d07',
           },
         },
         UploadListFailedIcon: {

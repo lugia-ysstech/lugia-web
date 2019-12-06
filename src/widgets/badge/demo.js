@@ -11,6 +11,7 @@ import { Col, Row } from '../grid';
 import Widget from '../consts';
 import Theme from '../theme';
 import Icon from '../icon';
+import { getBorder } from '@lugia/theme-utils';
 
 const Box = styled.div`
   width: 40px;
@@ -32,14 +33,22 @@ class Turn extends React.Component<any, any> {
   }
 
   click = type => () => {
-    const count = type === 'plus' ? this.state.count + 1 : this.state.count - 1;
+    const newCount = type === 'plus' ? this.state.count + 1 : this.state.count - 1;
+    const count = newCount <= 0 ? 0 : newCount > 100 ? 100 : newCount;
     this.setState({ count });
   };
 
   render() {
     const config = {
-      [Widget.NumberTurn]: {
-        normal: { position: { top: -5, right: -5 } },
+      [Widget.Badge]: {
+        BadgeDot: {
+          normal: {
+            border: getBorder({ color: 'white', width: 1, style: 'solid' }),
+          },
+        },
+        BadgeNumber: {
+          normal: { position: { top: -5, right: -5 } },
+        },
       },
     };
     return (
@@ -77,10 +86,14 @@ export default () => {
           background: { color: 'orange' },
           width: 20,
           height: 20,
+          border: getBorder({ color: 'white', width: 1, style: 'solid' }),
         },
       },
       BadgeNumber: {
-        normal: { position: { top: -5, right: -5 } },
+        normal: {
+          height: 15,
+          position: { top: -5, right: -5 },
+        },
       },
     },
   };
@@ -95,7 +108,17 @@ export default () => {
               </Badge>
             </Col>
             <Col span={4}>
+              <Badge count={98}>
+                <Box />
+              </Badge>
+            </Col>
+            <Col span={4}>
               <Badge count={99}>
+                <Box />
+              </Badge>
+            </Col>
+            <Col span={4}>
+              <Badge count={100}>
                 <Box />
               </Badge>
             </Col>

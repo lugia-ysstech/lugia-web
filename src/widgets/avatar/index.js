@@ -80,17 +80,26 @@ const BaseAvatar = CSSComponent({
         size === 'large' ? LargeHeight : size === 'small' ? SmallHeight : DefaultHeight;
       const theBorderRadius = shape === 'circle' ? '50%' : '10%';
       return `border-radius:${theBorderRadius};
-      line-height: ${px2remcss(theSize)};`;
+      line-height: ${px2remcss(theSize)};
+      min-width: ${px2remcss(24)};
+      min-height: ${px2remcss(24)};
+      `;
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
       const { width, height, background = {} } = themeMeta;
       const { size, type } = propsConfig;
-      const theBackgroundColor = background && background.color ? background.color : borderColor;
+      const theBackgroundColor =
+        background && background.color
+          ? background.color
+          : type === 'img'
+          ? 'transparent'
+          : borderColor;
       const theSize =
         size === 'large' ? LargeHeight : size === 'small' ? SmallHeight : DefaultHeight;
       const theWidth = width ? width : type === 'img' ? '' : theSize;
       const theHeight = height ? height : type === 'img' ? '' : theSize;
+
       return {
         width: theWidth,
         height: theHeight,
@@ -106,6 +115,7 @@ const BaseAvatar = CSSComponent({
     text-align: center;
     white-space: nowrap;
     position: relative;
+    vertical-align: middle;
   `,
 });
 
@@ -134,23 +144,50 @@ const Picture = CSSComponent({
   tag: 'img',
   className: 'AvatarPicture',
   normal: {
-    selectNames: [['color'], ['width'], ['height'], ['padding'], ['borderRadius']],
+    selectNames: [['color'], ['padding'], ['borderRadius']],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
-      const { propsConfig } = themeProps;
-      const { width, height } = themeMeta;
-      const { shape } = propsConfig;
+      const {
+        propsConfig: { shape },
+      } = themeProps;
       const theBorderRadius = shape === 'circle' ? '50%' : '10%';
-      const theWidth = width ? width : '100%';
-      const theHeight = height ? height : '100%';
       return {
-        width: theWidth,
-        height: theHeight,
         borderRadius: getBorderRadius(theBorderRadius),
       };
     },
   },
   css: css`
-    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+  `,
+});
+const ImageContainer = CSSComponent({
+  tag: 'div',
+  className: 'AvatarImageContainer',
+  normal: {
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['background'],
+      ['border'],
+      ['borderRadius'],
+      ['margin'],
+      ['padding'],
+      ['boxShadow'],
+      ['opacity'],
+    ],
+    getThemeMeta(themeMeta: Object, themeProps: Object) {
+      const { width, height } = themeMeta;
+      const theWidth = width ? width : 24;
+      const theHeight = height ? height : 24;
+      return {
+        width: theWidth,
+        height: theHeight,
+      };
+    },
+  },
+  css: css`
+    min-width: ${px2remcss(24)};
+    min-height: ${px2remcss(24)};
   `,
 });
 
@@ -185,9 +222,9 @@ class AvatarBox extends React.Component<AvatarProps, AvatarState> {
     });
     if (type === 'img') {
       return (
-        <span>
+        <ImageContainer themeProps={theThemeProps}>
           <Picture alt={''} src={src} themeProps={theThemeProps} />
-        </span>
+        </ImageContainer>
       );
     } else if (type === 'icon') {
       const { theme: iconPropsTheme, viewClass } = this.props.getPartOfThemeHocProps('IconAvatar');
@@ -255,9 +292,9 @@ class AvatarBox extends React.Component<AvatarProps, AvatarState> {
       </AvatarWrapper>
     );
   }
-  getAvatar() {
+  render() {
     const { props } = this;
-    const { size, shape, type } = props;
+    const { size, shape, type, onClick } = props;
     const thePropsTheme = this.props.getPartOfThemeProps('Container', {
       props: {
         size,
@@ -265,12 +302,15 @@ class AvatarBox extends React.Component<AvatarProps, AvatarState> {
         type,
       },
     });
-
-    return <BaseAvatar themeProps={thePropsTheme}>{this.getChildren()}</BaseAvatar>;
-  }
-  render() {
-    return this.getAvatar();
+    return (
+      <BaseAvatar onClick={onClick} themeProps={thePropsTheme}>
+        {this.getChildren()}
+      </BaseAvatar>
+    );
   }
 }
-const Avatar = ThemeHoc(KeyBoardEventAdaptor(AvatarBox), Widget.Avatar);
+const Avatar = ThemeHoc(KeyBoardEventAdaptor(AvatarBox), Widget.Avatar, {
+  hover: true,
+  active: true,
+});
 export default Avatar;

@@ -54,7 +54,6 @@ const getStyleCSS = (props: RadioType): string => {
   if (styles === 'vertical') {
     return `
       display: block;
-      margin-bottom: ${em(marginToPeerElementForY)};
     `;
   }
   return `
@@ -66,9 +65,9 @@ const getStyleCSS = (props: RadioType): string => {
 const RadioDefaultTheme = {
   opacity: 1,
   padding: {
-    top: 0,
+    top: em(5),
     right: 0,
-    bottom: 0,
+    bottom: em(5),
     left: 0,
   },
 };
@@ -77,7 +76,6 @@ export const RadioWrap = CSSComponent({
   tag: 'label',
   className: 'RadioWrap',
   css: css`
-    line-height: 1.5;
     padding: 0;
     box-sizing: border-box;
     list-style: none;
@@ -118,7 +116,7 @@ export const RadioContent = StaticComponent({
     margin: 0;
     outline: none;
     line-height: 1;
-    vertical-align: text-bottom;
+    vertical-align: middle;
     display: inline-block;
   `,
 });
@@ -128,6 +126,7 @@ export const RadioChildrenSpan = CSSComponent({
   className: 'RadioChildrenSpan',
   css: css`
     padding-left: ${em(padding)};
+    vertical-align: middle;
   `,
   normal: {
     selectNames: [['color'], ['font'], ['padding']],
@@ -179,7 +178,14 @@ export const RadioCircleSpan = CSSComponent({
     transition: all 0.3s;
   `,
   normal: {
-    selectNames: [['background'], ['border'], ['borderRadius'], ['width'], ['height']],
+    selectNames: [
+      ['background'],
+      ['border'],
+      ['borderRadius'],
+      ['width'],
+      ['height'],
+      ['boxShadow'],
+    ],
     getCSS(themeMeta: Object, themeProps: Object): string {
       const { propsConfig, themeState } = themeProps;
       const { hover } = themeState;
@@ -190,7 +196,8 @@ export const RadioCircleSpan = CSSComponent({
           : hover
           ? afterThemeConfig.hover
           : afterThemeConfig.normal;
-        const { background, width = 10, height = 10 } = theme;
+        const { background } = theme;
+        const { width = 10, height = 10 } = afterThemeConfig.normal;
         return css`
           &::after {
             position: absolute;
@@ -220,7 +227,7 @@ export const RadioCircleSpan = CSSComponent({
     },
   },
   hover: {
-    selectNames: [['background'], ['borderRadius'], ['border']],
+    selectNames: [['background'], ['borderRadius'], ['border'], ['boxShadow']],
     defaultTheme: {
       border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
       borderRadius: getBorderRadius('100%'),

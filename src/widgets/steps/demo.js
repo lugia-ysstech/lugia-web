@@ -13,11 +13,9 @@ import Theme from '../theme/';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  text-align: left;
   margin: 50px;
 `;
 const VWrapper = styled.div`
-  text-align: left;
   margin: 50px;
   display: inline-block;
 `;
@@ -68,13 +66,6 @@ class StepsDemo extends React.Component<Object, Object> {
     const theCurrentStepNumber = matchCurrentNumber ? currentStepNumber : 1;
     const description = matchCurrentNumber ? steps[theCurrentStepNumber - 1].description : '';
     const view = {
-      [Widget.Steps]: {
-        StepsOutContainer: {
-          normal: {
-            width: 400,
-          },
-        },
-      },
       [Widget.Button]: {
         Container: {
           normal: {
@@ -112,7 +103,7 @@ const hThemeConfig = {
   [Widget.Steps]: {
     StepsOutContainer: {
       normal: {
-        width: 800,
+        width: 1500,
       },
     },
   },
@@ -126,23 +117,12 @@ const vThemeConfig = {
     },
   },
 };
-const singleThemeConfig = {
-  [Widget.Step]: {
-    StepLine: {
-      normal: {
-        background: {
-          color: 'purple',
-        },
-      },
-    },
-  },
-};
 const data = [
-  { title: 'title1111', description: 'description111', stepStatus: 'finish' },
-  { title: 'title222', description: 'description2', stepStatus: 'process' },
-  { title: 'title33', description: 'description33', stepStatus: 'next' },
-  { title: 'title444', description: 'description444', stepStatus: 'wait' },
-  { title: 'title555', description: 'description5555', stepStatus: 'error' },
+  { title: 'This is title1', description: 'This is description1', stepStatus: 'finish' },
+  { title: 'This is title2', description: 'This is description2', stepStatus: 'process' },
+  { title: 'This is title3', description: 'This is description3', stepStatus: 'next' },
+  { title: 'This is title4', description: 'This is description4', stepStatus: 'wait' },
+  { title: 'This is title5', description: 'This is description5', stepStatus: 'error' },
 ];
 export default () => {
   return (
@@ -154,56 +134,72 @@ export default () => {
           </Wrapper>
           <p>带有描述</p>
           <Steps orientation="horizontal" size={'normal'}>
-            <Step title="title1" description={'description111'} stepStatus="finish" />
-            <Step title="title1" description={'description111'} stepStatus="finish" />
-            <Step title="title2" description={'description2'} stepStatus="process" />
-            <Step title="title3" description={'description33'} stepStatus="next" />
-            <Step title="title4" description={'description444'} stepStatus="wait" />
-            <Step title="title5" description={'description5555'} stepStatus="error" />
+            <Step title="title1" description={'This is description1'} stepStatus="finish" />
+            <Step
+              title="title1"
+              description={
+                <div>
+                  很长很长的描述,想要撑开高度,很长很长的描述,想要撑开高度,很长很长的描述,想要撑开高度,很长很长的描述,想要撑开高度
+                </div>
+              }
+              stepStatus="finish"
+            />
+            <Step
+              title="title2"
+              description={
+                <div>
+                  很长的描述检测最大宽度很长的描述检测最大宽度很长的描述检测最大宽度很长的描述检测最大宽度很长的描述检测最大宽度很长的描述检测最大宽度
+                </div>
+              }
+              stepStatus="process"
+            />
+            <Step title="title3" description={'This is description3'} stepStatus="next" />
+            <Step title="title4" description={'This is description4'} stepStatus="wait" />
+            <Step title="title5" description={'This is description5'} stepStatus="error" />
           </Steps>
         </Wrapper>
         <Wrapper>
           <p>带有描述 居中显示</p>
           <Steps orientation="horizontal" size={'normal'} desAlign={'center'}>
-            <Step title="title1" description={'description111'} stepStatus="finish" />
-            <Step title="title1" description={'description111'} stepStatus="finish" />
-            <Step title="title2" description={'description2'} stepStatus="process" />
-            <Step title="title3" description={'description33'} stepStatus="next" />
-            <Step title="title4" description={'description444'} stepStatus="wait" />
-            <Step title="title5" description={'description5555'} stepStatus="error" />
+            <Step title="title1" description={'This is description1'} stepStatus="finish" />
+            <Step title="title2" description={'This is description2'} stepStatus="finish" />
+            <Step title="title3" description={'This is description3'} stepStatus="process" />
+            <Step title="title4" description={'This is description4'} stepStatus="next" />
+            <Step title="title5" description={'This is description5'} stepStatus="wait" />
+            <Step title="title6" description={'This is description6'} stepStatus="error" />
           </Steps>
         </Wrapper>
         <Wrapper>
           <p>简洁风格 size mini</p>
           <Steps orientation="horizontal" stepType={'simple'} size={'mini'}>
             <Step title="title1" stepStatus="finish" />
-            <Step title="title1" stepStatus="finish" />
-            <Step title="title2" stepStatus="process" />
-            <Step title="title3" stepStatus="next" />
-            <Step title="title4" stepStatus="wait" />
-            <Step title="title5" stepStatus="error" />
+            <Step title="title2" stepStatus="finish" />
+            <Step title="title3" stepStatus="process" />
+            <Step title="title4" stepStatus="next" />
+            <Step title="title5" stepStatus="wait" />
+            <Step title="title6" stepStatus="error" />
           </Steps>
         </Wrapper>
         <Wrapper>
           <p>半扁平风格</p>
           <Steps orientation="horizontal" stepType={'flat'} size={'mini'}>
             <Step title="title1" stepStatus="finish" />
-            <Step title="title1" stepStatus="finish" />
-            <Step title="title2" stepStatus="process" />
-            <Step title="title3" stepStatus="next" />
-            <Step title="title4" stepStatus="wait" />
-            <Step title="title5" stepStatus="error" />
+            <Step title="title2" stepStatus="finish" />
+            <Step title="title3" stepStatus="process" />
+            <Step title="title4" stepStatus="next" />
+            <Step title="title5" stepStatus="wait" />
+            <Step title="title6" stepStatus="error" />
           </Steps>
         </Wrapper>
         <Wrapper>
           <p>半扁平风格</p>
           <Steps orientation="horizontal" stepType={'flat'} size={'normal'}>
             <Step title="title1" stepStatus="finish" />
-            <Step title="title1" stepStatus="finish" />
-            <Step title="title2" stepStatus="process" />
-            <Step title="title3" stepStatus="next" />
-            <Step title="title4" stepStatus="wait" />
-            <Step title="title5" stepStatus="error" />
+            <Step title="title2" stepStatus="finish" />
+            <Step title="title3" stepStatus="process" />
+            <Step title="title4" stepStatus="next" />
+            <Step title="title5" stepStatus="wait" />
+            <Step title="title6" stepStatus="error" />
           </Steps>
         </Wrapper>
 
@@ -214,13 +210,13 @@ export default () => {
               icon={'lugia-icon-financial_cloud'}
               stepStatus="finish"
               title="title1"
-              description={'description111'}
+              description={'This is description'}
             />
             <Step
               icon={'lugia-icon-financial_upload_cloud'}
               stepStatus="finish"
               title="title2"
-              description={'description2'}
+              description={'This is description'}
             />
             <Step
               icon={'lugia-icon-financial_download_cloud'}
@@ -254,7 +250,7 @@ export default () => {
             <Step description={'description1'} title="title1" stepStatus="finish" />
             <Step description={'description1'} title="title1" stepStatus="finish" />
             <Step
-              description={'description2'}
+              description={'This is description'}
               title="title2"
               stepStatus="process"
               isDashed={true}
@@ -270,7 +266,7 @@ export default () => {
             <Step title="title1" stepStatus="finish" />
             <Step description={'description1'} title="title1" stepStatus="finish" />
             <Step description={'description1'} title="title2" stepStatus="process" />
-            <Step description={'description2'} title="title3" stepStatus="next" />
+            <Step description={'This is description'} title="title3" stepStatus="next" />
             <Step description={'description4'} title="title4" stepStatus="wait" />
             <Step description={'description5'} title="title5" stepStatus="error" />
           </Steps>
@@ -279,16 +275,10 @@ export default () => {
       <Theme config={vThemeConfig}>
         <VWrapper>
           <p>简洁风格 size mini</p>
-
           <Steps orientation="vertical" stepType="simple" size="mini">
             <Step title="title1" stepStatus="finish" description="description1" />
             <Step title="title1" stepStatus="finish" description="description1" />
-            <Step
-              title="title2"
-              stepStatus="process"
-              description="description2"
-              theme={singleThemeConfig}
-            />
+            <Step title="title2" stepStatus="process" description="This is description" />
             <Step title="title3" stepStatus="next" description="description3" />
             <Step title="title4" stepStatus="wait" description="description4" />
             <Step title="title5" stepStatus="error" description="description5" />
@@ -300,7 +290,7 @@ export default () => {
           <Steps orientation="vertical" stepType="simple" size="normal">
             <Step title="title1" stepStatus="finish" description="description1" />
             <Step title="title1" stepStatus="finish" description="description1" />
-            <Step title="title2" stepStatus="process" description="description2" />
+            <Step title="title2" stepStatus="process" description="This is description" />
             <Step title="title3" stepStatus="next" description="description3" />
             <Step title="title4" stepStatus="wait" description="description4" />
             <Step title="title5" stepStatus="error" description="description5" />
@@ -309,17 +299,24 @@ export default () => {
         <VWrapper>
           <p>带有描述</p>
           <Steps orientation="vertical" stepType="simple" size={'normal'}>
-            <Step title="title1" description={'description111'} stepStatus="finish" />
-            <Step title="title1" description={'description111'} stepStatus="finish" />
-            <Step title="title2" description={'description2'} stepStatus="process" />
-            <Step title="title3" description={'description33'} stepStatus="next" />
-            <Step title="title4" description={'description444'} stepStatus="wait" />
-            <Step title="title5" description={'description5555'} stepStatus="error" />
+            <Step title="title1" description={'This is description'} stepStatus="finish" />
+            <Step title="title1" description={'This is description'} stepStatus="finish" />
+            <Step
+              title="title2"
+              description={
+                <div>
+                  很长很长的描述想要撑开宽度很长很长的描述想要撑开宽度很长很长的描述想要撑开宽度很长很长的描述想要撑开宽度
+                </div>
+              }
+              stepStatus="process"
+            />
+            <Step title="title3" description={'This is description'} stepStatus="next" />
+            <Step title="title4" description={'This is description'} stepStatus="wait" />
+            <Step title="title5" description={'This is description'} stepStatus="error" />
           </Steps>
         </VWrapper>
         <VWrapper>
           <p>半扁平风格 size normal</p>
-
           <Steps orientation="vertical" stepType="flat" size="normal">
             <Step title="title1" stepStatus="finish" description="description1" />
             <Step title="title1" stepStatus="finish" description="description1" />
@@ -336,7 +333,7 @@ export default () => {
               icon={'lugia-icon-financial_cloud'}
               stepStatus="finish"
               title="title1"
-              description={'description111'}
+              description={'description1'}
             />
             <Step
               icon={'lugia-icon-financial_upload_cloud'}

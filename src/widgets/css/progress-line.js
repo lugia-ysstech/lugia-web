@@ -22,6 +22,7 @@ export type ProgressProps = {
   showType?: 'default' | 'inside',
   themeProps: Object,
   getPartOfThemeProps: Function,
+  iconClass?: string,
 };
 
 export type ProgressState = {

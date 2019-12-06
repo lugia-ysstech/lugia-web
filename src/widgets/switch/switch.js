@@ -6,7 +6,7 @@
  * */
 import * as React from 'react';
 import Icon from '../icon/index';
-import { SwitchContainer, SwitchWrapper, SwitchText, SwitchCircle } from './styled';
+import { Container, SwitchWrapper, SwitchText, SwitchCircle } from './styled';
 import { ENTER, LEFT_ARROW, RIGHT_ARROW, SPACE } from '../consts/KeyCode';
 import { DisplayField } from '../consts/props';
 import { getThemeProps } from './styledConfig';
@@ -169,7 +169,7 @@ class Switch extends React.Component<TypeProps, TypeState> {
       },
     } = childrenThemeProps;
     return (
-      <SwitchContainer themeProps={SwitchContainerThemeProps} {...addMouseEvent(this)}>
+      <Container themeProps={SwitchContainerThemeProps} {...addMouseEvent(this)}>
         <SwitchWrapper
           onMouseUp={isabled ? this.mouseup : null}
           onKeyDown={isabled ? this.handleKeyDown : null}
@@ -197,7 +197,7 @@ class Switch extends React.Component<TypeProps, TypeState> {
             </Theme>
           </SwitchCircle>
         </SwitchWrapper>
-      </SwitchContainer>
+      </Container>
     );
   }
 }

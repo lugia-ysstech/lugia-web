@@ -62,6 +62,10 @@
       "type": "UploadSize",
       "desc": "picture类型可配置的三种尺寸(small/default/large)",
       "defaultValue": "default"
+    },
+    "defaultTips":{
+      "type": "object({uploadText:'上传',uploadTips:'请将文件拖到此处',failTips:'文件上传失败请重试',loadingTips:'文件上传中...'})",
+      "desc": "默认的上传提示语"
     }
 
   },
@@ -246,10 +250,22 @@
       },
       "theme": {
         "UploadButtonType": {
-          "name": "按钮",
-          "desc": "按钮部分的样式配置",
-          "normal": [["width"], ["height"], ["fontSize"], ["color"]],
-          "disabled": [["color"]]
+          "name": "按钮配置",
+          "theme":{
+            "Container": {
+              "name": "按钮整体样式",
+              "desc": "按钮部分的样式配置",
+              "normal": [["width"], ["height"], ["fontSize"], ["background"]],
+              "disabled": [["background"]]
+            },
+            "ButtonText": {
+              "name": "按钮文字样式",
+              "desc": "为按钮文字配置样式",
+              "normal": [["color"], ["font"]],
+              "disabled": [["color"]]
+            }
+          }
+
         },
         "UploadDefaultType": {
           "name": "文件上传区域",

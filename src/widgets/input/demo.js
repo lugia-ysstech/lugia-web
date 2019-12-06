@@ -134,18 +134,10 @@ const Wrapper = styled.div`
 const InputDemo = () => {
   const register = {
     [Widget.Input]: {
-      Container: {
-        normal: {
-          width: 500,
-          height: 40,
-        },
-      },
-      Input: {
-        normal: {
-          width: 300,
-          height: 40,
-        },
-        disabled: { background: { color: 'gray' } },
+      Container: { normal: { width: 500, height: 40 } },
+      Input: { normal: { width: 300, height: 40 }, disabled: { background: { color: 'gray' } } },
+      Placeholder: {
+        normal: { font: { color: 'red', weight: 900, size: 16 }, color: 'blue', fontSize: 20 },
       },
       InputSuffix: { normal: { color: 'red', fontSize: 12 } },
       InputPrefix: { normal: { color: 'pink', fontSize: 16 } },
@@ -169,6 +161,8 @@ const InputDemo = () => {
           <Input placeholder={'请填写内容'} />
           <p>autoFocus</p>
           <Input placeholder={'请填写内容'} autoFoucs />
+          <p>isShowClearButton : false</p>
+          <Input isShowClearButton={false} />
           <p>禁用状态 </p>
           <Input theme={register} size={'default'} disabled={true} />
         </Wrapper>

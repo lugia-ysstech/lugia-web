@@ -20,7 +20,7 @@ exports[`default Wrapper 1`] = `
   font-size: 1.4rem;
   display: inline-block;
   vertical-align: top;
-  padding: 40px 135px 310px 135px;
+  padding: 310px 135px 310px 135px;
 }
 
 .c12 {
@@ -52,7 +52,7 @@ exports[`default Wrapper 1`] = `
   font-size: 1.4rem;
   display: inline-block;
   vertical-align: top;
-  padding: 40px 47px 110px 47px;
+  padding: 58px 17px 58px 17px;
 }
 
 .c2 {
@@ -63,8 +63,8 @@ exports[`default Wrapper 1`] = `
 .c9 {
   border-radius: 0.6rem;
   position: absolute;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   width: 3rem;
   height: 33.33333333333333%;
   width: 1rem;
@@ -78,8 +78,8 @@ exports[`default Wrapper 1`] = `
 .c13 {
   border-radius: 0.6rem;
   position: absolute;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   width: 50%;
   height: 0.6rem;
   height: 0.6rem;
@@ -93,8 +93,8 @@ exports[`default Wrapper 1`] = `
 .c15 {
   border-radius: 0.6rem;
   position: absolute;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   width: 33.33333333333333%;
   height: 0.6rem;
   height: 0.6rem;
@@ -108,8 +108,8 @@ exports[`default Wrapper 1`] = `
 .c17 {
   border-radius: 0.6rem;
   position: absolute;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   width: 0%;
   height: 0.6rem;
   height: 0.6rem;
@@ -123,8 +123,8 @@ exports[`default Wrapper 1`] = `
 .c19 {
   border-radius: 0.6rem;
   position: absolute;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   width: 100%;
   height: 0.6rem;
   height: 0.6rem;
@@ -138,8 +138,8 @@ exports[`default Wrapper 1`] = `
 .c21 {
   border-radius: 0.6rem;
   position: absolute;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   width: 66.66666666666666%;
   height: 0.6rem;
   height: 0.6rem;
@@ -153,8 +153,8 @@ exports[`default Wrapper 1`] = `
 .c23 {
   border-radius: 0.6rem;
   position: absolute;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   width: 66.66666666666666%;
   height: 0.6rem;
   height: 0.6rem;
@@ -169,8 +169,8 @@ exports[`default Wrapper 1`] = `
 .c25 {
   border-radius: 0.6rem;
   position: absolute;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   width: 76.66666666666667%;
   height: 0.6rem;
   height: 0.6rem;
@@ -184,8 +184,8 @@ exports[`default Wrapper 1`] = `
 .c31 {
   border-radius: 0.6rem;
   position: absolute;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   width: 40%;
   height: 0.6rem;
   height: 0.6rem;
@@ -199,8 +199,8 @@ exports[`default Wrapper 1`] = `
 .c36 {
   border-radius: 0.6rem;
   position: absolute;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   width: 40%;
   height: 0.6rem;
   height: 0.6rem;
@@ -214,8 +214,8 @@ exports[`default Wrapper 1`] = `
 .c45 {
   border-radius: 0.6rem;
   position: absolute;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   width: 0.6rem;
   height: 0%;
   width: 0.6rem;
@@ -229,8 +229,8 @@ exports[`default Wrapper 1`] = `
 .c47 {
   border-radius: 0.6rem;
   position: absolute;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   width: 0.6rem;
   height: 33.33333333333333%;
   width: 0.6rem;
@@ -244,8 +244,8 @@ exports[`default Wrapper 1`] = `
 .c49 {
   border-radius: 0.6rem;
   position: absolute;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   width: 0.6rem;
   height: 33.33333333333333%;
   width: 0.6rem;
@@ -259,8 +259,8 @@ exports[`default Wrapper 1`] = `
 .c56 {
   border-radius: 0.6rem;
   position: absolute;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   width: 0.6rem;
   height: 20%;
   width: 0.6rem;
@@ -274,8 +274,8 @@ exports[`default Wrapper 1`] = `
 .c62 {
   border-radius: 0.6rem;
   position: absolute;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   width: 0.6rem;
   height: 20%;
   width: 0.6rem;
@@ -289,8 +289,8 @@ exports[`default Wrapper 1`] = `
 .c64 {
   border-radius: 0.6rem;
   position: absolute;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   width: 0.6rem;
   height: 16.666666666666664%;
   width: 0.6rem;
@@ -312,8 +312,8 @@ exports[`default Wrapper 1`] = `
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
   z-index: 2;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .c14 {
@@ -326,8 +326,8 @@ exports[`default Wrapper 1`] = `
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
   z-index: 2;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .c16 {
@@ -340,8 +340,8 @@ exports[`default Wrapper 1`] = `
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
   z-index: 2;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .c18 {
@@ -354,8 +354,8 @@ exports[`default Wrapper 1`] = `
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
   z-index: 2;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .c20 {
@@ -368,8 +368,8 @@ exports[`default Wrapper 1`] = `
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
   z-index: 2;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .c22 {
@@ -382,8 +382,8 @@ exports[`default Wrapper 1`] = `
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
   z-index: 2;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .c24 {
@@ -396,8 +396,8 @@ exports[`default Wrapper 1`] = `
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
   z-index: 2;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   left: calc(64% + 0rem);
   top: 50%;
   -webkit-transform: translateY(-50%);
@@ -405,8 +405,8 @@ exports[`default Wrapper 1`] = `
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
   z-index: 2;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .c26 {
@@ -419,8 +419,8 @@ exports[`default Wrapper 1`] = `
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
   z-index: 2;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .c32 {
@@ -433,8 +433,8 @@ exports[`default Wrapper 1`] = `
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
   z-index: 2;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .c37 {
@@ -447,8 +447,8 @@ exports[`default Wrapper 1`] = `
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
   z-index: 2;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .c46 {
@@ -461,8 +461,8 @@ exports[`default Wrapper 1`] = `
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
   z-index: 2;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .c48 {
@@ -475,8 +475,8 @@ exports[`default Wrapper 1`] = `
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
   z-index: 2;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .c50 {
@@ -489,8 +489,8 @@ exports[`default Wrapper 1`] = `
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
   z-index: 2;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .c57 {
@@ -503,8 +503,8 @@ exports[`default Wrapper 1`] = `
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
   z-index: 2;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .c63 {
@@ -517,8 +517,8 @@ exports[`default Wrapper 1`] = `
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
   z-index: 2;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .c65 {
@@ -531,8 +531,8 @@ exports[`default Wrapper 1`] = `
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
   z-index: 2;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   left: 50%;
   bottom: calc(14.000000000000002% + 0rem);
   -webkit-transform: translateX(-50%);
@@ -540,8 +540,8 @@ exports[`default Wrapper 1`] = `
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
   z-index: 2;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .c6 {
@@ -1515,9 +1515,9 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  top: -4rem;
+  top: -31rem;
   color: #ccc;
-  font-size: 3rem;
+  font-size: 30rem;
 }
 
 .c42 {
@@ -1554,9 +1554,22 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -11rem;
+  bottom: -5.8rem;
   color: #999;
-  font-size: 10rem;
+  font-size: 4rem;
+}
+
+.c71 {
+  position: absolute;
+  line-height: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  top: -5.8rem;
+  color: #ccc;
+  font-size: 4rem;
 }
 
 .c4 {
@@ -1607,7 +1620,6 @@ exports[`default Wrapper 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
         value={
           Array [
             20,
@@ -1647,12 +1659,7 @@ exports[`default Wrapper 1`] = `
         >
           <span
             className="c3"
-            style={
-              Object {
-                "color": "red",
-                "fontSize": "30rem",
-              }
-            }
+            style={Object {}}
             value={
               Array [
                 20,
@@ -1676,12 +1683,7 @@ exports[`default Wrapper 1`] = `
           </span>
           <span
             className="c5"
-            style={
-              Object {
-                "color": "green",
-                "fontSize": "3rem",
-              }
-            }
+            style={Object {}}
             value={
               Array [
                 20,
@@ -1697,8 +1699,8 @@ exports[`default Wrapper 1`] = `
               onMouseUp={[Function]}
               style={
                 Object {
-                  "color": "green",
-                  "fontSize": "3rem",
+                  "color": "red",
+                  "fontSize": "30rem",
                 }
               }
             />
@@ -1810,7 +1812,6 @@ exports[`default Wrapper 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
         value={
           Array [
             15,
@@ -1884,7 +1885,6 @@ exports[`default Wrapper 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
         value={
           Array [
             5,
@@ -2001,7 +2001,6 @@ exports[`default Wrapper 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
         value={
           Array [
             0,
@@ -2093,7 +2092,6 @@ exports[`default Wrapper 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
         value={
           Array [
             10,
@@ -2185,7 +2183,6 @@ exports[`default Wrapper 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
         value={
           Array [
             40,
@@ -2277,7 +2274,6 @@ exports[`default Wrapper 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
         value={
           Array [
             0,
@@ -2395,7 +2391,6 @@ exports[`default Wrapper 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
         value={
           Array [
             20,
@@ -2489,7 +2484,6 @@ exports[`default Wrapper 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
         value={
           Array [
             23,
@@ -2581,7 +2575,6 @@ exports[`default Wrapper 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
         value={
           Array [
             10,
@@ -2693,7 +2686,6 @@ exports[`default Wrapper 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
         value={
           Array [
             10,
@@ -2830,7 +2822,6 @@ exports[`default Wrapper 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
         value={
           Array [
             10,
@@ -2937,7 +2928,6 @@ exports[`default Wrapper 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
         value={
           Array [
             0,
@@ -3076,7 +3066,6 @@ exports[`default Wrapper 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
         value={
           Array [
             0,
@@ -3184,7 +3173,6 @@ exports[`default Wrapper 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
         value={
           Array [
             0,
@@ -3276,7 +3264,6 @@ exports[`default Wrapper 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
         value={
           Array [
             10,
@@ -3368,7 +3355,6 @@ exports[`default Wrapper 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
         value={
           Array [
             10,
@@ -3460,7 +3446,6 @@ exports[`default Wrapper 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
         value={
           Array [
             10,
@@ -3577,7 +3562,6 @@ exports[`default Wrapper 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
         value={
           Array [
             10,
@@ -3694,7 +3678,6 @@ exports[`default Wrapper 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
         value={
           Array [
             10,
@@ -3811,7 +3794,6 @@ exports[`default Wrapper 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
         value={
           Array [
             10,
@@ -3954,7 +3936,6 @@ exports[`default Wrapper 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
         value={
           Array [
             5,
@@ -4048,7 +4029,6 @@ exports[`default Wrapper 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
         value={
           Array [
             0,
@@ -4155,7 +4135,6 @@ exports[`default Wrapper 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
         value={
           Array [
             0,
@@ -4187,12 +4166,7 @@ exports[`default Wrapper 1`] = `
         >
           <span
             className="c70"
-            style={
-              Object {
-                "color": "red",
-                "fontSize": "10rem",
-              }
-            }
+            style={Object {}}
             value={
               Array [
                 0,
@@ -4208,20 +4182,14 @@ exports[`default Wrapper 1`] = `
               onMouseUp={[Function]}
               style={
                 Object {
-                  "color": "red",
-                  "fontSize": "10rem",
+                  "color": "#666",
                 }
               }
             />
           </span>
           <span
-            className="c5"
-            style={
-              Object {
-                "color": "green",
-                "fontSize": "3rem",
-              }
-            }
+            className="c71"
+            style={Object {}}
             value={
               Array [
                 0,
@@ -4237,8 +4205,7 @@ exports[`default Wrapper 1`] = `
               onMouseUp={[Function]}
               style={
                 Object {
-                  "color": "green",
-                  "fontSize": "3rem",
+                  "color": "#666",
                 }
               }
             />

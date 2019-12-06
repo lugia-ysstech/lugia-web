@@ -26,13 +26,7 @@ const { themeColor, successColor, dangerColor } = colorsFunc();
 
 export default class extends React.Component<any, any> {
   render() {
-    const {
-      percent = 0,
-      type = 'circle',
-      size = 'default',
-      status = 'default',
-      getPartOfThemeProps,
-    } = this.props;
+    const { percent = 0, type = 'circle', size = 'default', status = 'default' } = this.props;
     const {
       viewWidth,
       viewHeight,
@@ -50,18 +44,23 @@ export default class extends React.Component<any, any> {
       strokeWidth,
       fill: 'none',
     };
-    const circleTextTheme = getPartOfThemeProps('ProgressCircleText');
-    const dashboardTextTheme = getPartOfThemeProps('DashboardText');
-    const textTheme = type === 'circle' ? circleTextTheme : dashboardTextTheme;
+    const textTarget = type === 'circle' ? 'ProgressCircleText' : 'DashboardText';
+    const textTheme = this.getTargetTheme(textTarget);
     textTheme.propsConfig = { status: getStatus({ status, percent }) };
+    const backgroundTarget = this.getBackgroundTarget(type);
+    const backgroundTheme = this.getTargetTheme(backgroundTarget);
+    const backgroundLineColor = this.getLineColor(backgroundTheme, '#f2f2f2');
+    const lineTarget = type === 'circle' ? 'ProgressCircleLine' : 'DashboardLine';
+    const lineTheme = this.getTargetTheme(lineTarget);
+    const lineColor = this.getLineColor(lineTheme);
     return (
       <SvgInner size={size}>
         {type === 'circle' ? (
           <svg width={viewWidth} height={viewHeight}>
-            <circle {...config} stroke="#f2f2f2" />
+            <circle {...config} stroke={backgroundLineColor} />
             <circle
               {...config}
-              stroke={this.getColor()}
+              stroke={this.getColor(backgroundLineColor, lineColor)}
               transform={transform}
               strokeLinecap="round"
               strokeDasharray={`${(handlePercent(percent) / 100) * circleLength} ${circleLength}`}
@@ -70,8 +69,13 @@ export default class extends React.Component<any, any> {
           </svg>
         ) : (
           <svg width={viewWidth} height={viewHeight}>
-            {getPolyLine(56, 8, 100, '#f2f2f2')}
-            {getPolyLine(56, 8, handlePercent(percent), this.getColor())}
+            {getPolyLine(56, 8, 100, backgroundLineColor)}
+            {getPolyLine(
+              56,
+              8,
+              handlePercent(percent),
+              this.getColor(backgroundLineColor, lineColor)
+            )}
           </svg>
         )}
 
@@ -106,6 +110,7 @@ export default class extends React.Component<any, any> {
       size = 'default',
       type = 'circle',
       getIconTheme,
+      iconClass,
     } = this.props;
 
     return getText(true, {
@@ -116,15 +121,18 @@ export default class extends React.Component<any, any> {
       size,
       type,
       getIconTheme,
+      iconClass,
     });
   };
-  getColor = () => {
+  getColor = (backgroundLineColor: string, lineColor?: string) => {
     let { percent = 0 } = this.props;
     percent = handlePercent(percent);
 
     if (percent === 0) {
-      return '#f2f2f2';
+      return backgroundLineColor;
     }
+
+    if (lineColor) return lineColor;
 
     const { status } = this.props;
     if (status === 'error') {
@@ -139,6 +147,22 @@ export default class extends React.Component<any, any> {
     const theme = getTheme();
     return theme.color || themeColor;
   };
+
+  getTargetTheme = (target: string) => {
+    const { getPartOfThemeProps } = this.props;
+    return getPartOfThemeProps(target);
+  };
+
+  getBackgroundTarget = (type: string) => {
+    return type === 'circle' ? 'ProgressCircleBackground' : 'DashboardBackground';
+  };
+
+  getLineColor(theme: Object = {}, defaultValue: string): string {
+    const { themeConfig = {} } = theme;
+    const { normal = {} } = themeConfig;
+    const { color = defaultValue } = normal;
+    return color;
+  }
 
   hasFormat() {
     return 'format' in this.props;

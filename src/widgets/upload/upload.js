@@ -47,6 +47,7 @@ type UploadProps = {
   themeProps: Object,
   getPartOfThemeHocProps: Function,
   getPartOfThemeProps: Function,
+  defaultTips?: Object,
 };
 type StateProps = {
   defaultText?: string,
@@ -105,13 +106,19 @@ class Upload extends React.Component<UploadProps, StateProps> {
     onComplete: loop,
     onFail: loop,
     onChange: loop,
+    defaultTips: {
+      uploadText: '上传',
+      uploadTips: '请将文件拖到此处',
+      failTips: '文件上传失败请重试',
+      loadingTips: '文件上传中...',
+    },
   };
 
   static getDerivedStateFromProps(defProps: UploadProps, stateProps: StateProps) {
     if (!stateProps) {
       return {
         classNameStatus: 'default',
-        defaultText: '请将文件拖到此处',
+        defaultText: defProps.defaultTips.uploadTips,
         fileListDone: defProps.fileList || [],
         isAllowUpload: defProps.autoUpload,
       };
@@ -119,7 +126,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
     const { classNameStatus, defaultText, fileListDone, isAllowUpload } = stateProps;
     return {
       classNameStatus: 'classNameStatus' in stateProps ? classNameStatus : 'default',
-      defaultText: 'defaultText' in stateProps ? defaultText : '请将文件拖到此处',
+      defaultText: 'defaultText' in stateProps ? defaultText : defProps.defaultTips.uploadTips,
       fileListDone: 'fileListDone' in stateProps ? fileListDone : defProps.fileList,
       isAllowUpload: 'isAllowUpload' in stateProps ? isAllowUpload : defProps.autoUpload,
     };

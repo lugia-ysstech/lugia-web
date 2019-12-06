@@ -145,11 +145,11 @@ const PlusButton = CSSComponent({
 
 PlusButton.displayName = 'Plus';
 MinusButton.displayName = 'Minus';
-const InputContainer = StaticComponent({
+const InputContainer = CSSComponent({
   tag: 'div',
   className: 'NumberInputContainer',
   normal: {
-    selectNames: [],
+    selectNames: [['width']],
   },
   css: css`
     position: relative;
@@ -212,7 +212,6 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     validateType: 'default',
     size: 'default',
     precision: 0,
-    defaultValue: 10,
     step: 1,
 
     formatter: (value: string) => {
@@ -401,8 +400,13 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
 
   render() {
     const channel = this.props.createEventChannel(['active', 'hover']);
+    const { getPartOfThemeProps } = this.props;
     return (
-      <InputContainer onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
+      <InputContainer
+        themeProps={getPartOfThemeProps('Container')}
+        onMouseEnter={this.onMouseEnter}
+        onMouseLeave={this.onMouseLeave}
+      >
         {this.generateInput(channel)}
         {this.getStepArrowIconContainer(channel)}
       </InputContainer>
@@ -417,14 +421,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     onBlur && onBlur(event);
   };
 
-  getInputDom() {
-    return findDOMNode(this.el.current.getThemeTarget()).querySelector('input');
-  }
-
   handleClick = (click: ClickType) => (event: Event) => {
-    setTimeout(() => {
-      this.getInputDom().focus();
-    }, 0);
     this.calculateValue(click, event);
   };
 

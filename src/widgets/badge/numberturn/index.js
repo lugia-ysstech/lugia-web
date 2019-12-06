@@ -11,14 +11,13 @@ import Widget from '../../consts';
 import ThemeHoc from '@lugia/theme-hoc';
 import KeyBoardEventAdaptor from '../../common/KeyBoardEventAdaptor';
 import CSSComponent from '../../theme/CSSProvider';
-import StaticComponent from '../../theme/CSSProvider';
 
 import { css } from '../../theme/CSSProvider';
 import colorsFunc from '../../css/stateColor';
 import { units } from '@lugia/css';
 
 const { px2remcss } = units;
-const { dangerColor } = colorsFunc();
+const { dangerColor, defaultColor } = colorsFunc();
 
 type NumberTurnProps = {
   className?: string,
@@ -29,51 +28,75 @@ type NumberTurnProps = {
 };
 
 const OutInner = CSSComponent({
-  tag: 'span',
+  tag: 'div',
   className: 'numberBadgeOutInner',
   normal: {
-    selectNames: [['width'], ['height'], ['fontSize'], ['margin'], ['background'], ['padding']],
-    defaultTheme: {},
-  },
-  getThemeMeta(themeMeta: Object, themeProps: Object) {
-    const { propsConfig } = themeProps;
-    const { bitCnt, overflow } = propsConfig;
-    const overWidth = overflow ? 6 : 0;
-    const width = (bitCnt === 1 ? 14 : bitCnt * 6 + 2 * 4) + overWidth;
-    return {
-      width,
-    };
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['fontSize'],
+      ['margin'],
+      ['background'],
+      ['boxShadow'],
+      ['opacity'],
+    ],
+    defaultTheme: {
+      background: { color: dangerColor },
+      height: 14,
+      padding: {
+        left: 4,
+        right: 4,
+      },
+    },
+    getThemeMeta(themeMeta: Object, themeProps: Object) {
+      const { propsConfig } = themeProps;
+      const { width } = themeMeta;
+      const { bitCnt, overflow } = propsConfig;
+      const overWidth = overflow ? 6 : 0;
+      const theWidth = width ? width : (bitCnt === 1 ? 14 : bitCnt * 6 + 2 * 4) + overWidth;
+      return {
+        width: theWidth,
+      };
+    },
+    getCSS(themeMeta: Object, themeProps: Object) {
+      const { propsConfig } = themeProps;
+      const { bitCnt } = propsConfig;
+      const borderRadius = bitCnt === 1 ? '50%' : px2remcss(8);
+      return `border-radius: ${borderRadius};
+    `;
+    },
   },
   css: css`
     overflow: hidden;
-    color: white;
     display: inline-block;
-    background: ${dangerColor};
-    height: ${px2remcss(14)};
-    border-radius: ${px2remcss(8)};
-    line-height: ${px2remcss(14)};
     text-align: center;
-    padding: 0 ${px2remcss(4)};
     font-weight: normal;
     white-space: nowrap;
-    box-shadow: 0 0 0 ${px2remcss(1)} #fff;
   `,
 });
 const NumberBoxContainer = CSSComponent({
   tag: 'div',
   className: 'badgeNumberBoxContainer',
-  selectNames: [['position']],
+  normal: { selectNames: [['position']] },
 });
-const BitOut = StaticComponent({
+const BitOut = CSSComponent({
   tag: 'span',
   className: 'badgeNumberBitOut',
-  normal: { selectNames: [['background']] },
+  normal: {
+    selectNames: [['height'], ['lineHeight'], ['color']],
+    defaultTheme: { height: 14, color: defaultColor },
+    getThemeMeta: (themeMeta: Object, themeProps: Object) => {
+      const { height } = themeMeta;
+      return {
+        lineHeight: height,
+      };
+    },
+  },
   css: css`
     transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
     white-space: nowrap;
     text-align: center;
     transform: translateY(${props => props.y}%);
-    height: ${px2remcss(14)};
     display: inline-block;
   `,
 });
@@ -81,14 +104,21 @@ const Bit = CSSComponent({
   tag: 'p',
   className: 'badgeNumberBit',
   normal: {
-    selectNames: [['color'], ['fontSize']],
-    defaultTheme: { height: 14 },
+    selectNames: [['color'], ['fontSize'], ['font'], ['height'], ['lineHeight']],
+    defaultTheme: {
+      height: 14,
+      color: defaultColor,
+    },
+    getThemeMeta: (themeMeta: Object, themeProps: Object) => {
+      const { height } = themeMeta;
+      return {
+        lineHeight: height,
+      };
+    },
   },
   css: css`
-    height: ${px2remcss(14)};
     text-align: center;
     box-sizing: border-box;
-    margin: 0;
   `,
 });
 
@@ -114,13 +144,21 @@ class NumberTurn extends React.Component<NumberTurnProps, NumberTurnState> {
   }
 
   render() {
-    const { themeProps } = this.props;
     const { count = 0, overflow } = this.state;
+    const { singleTheme = false, themeProps, getPartOfThemeProps } = this.props;
     const bitCnt = this.getBitCnt(count);
-    themeProps.props = { bitCnt, overflow };
+    const theThemeProps = singleTheme
+      ? themeProps
+      : getPartOfThemeProps('BadgeNumber', {
+          props: {
+            overflow,
+            bitCnt,
+          },
+        });
+
     return (
-      <NumberBoxContainer themeProps={themeProps}>
-        <OutInner themeProps={themeProps} overflow={overflow}>
+      <NumberBoxContainer themeProps={theThemeProps}>
+        <OutInner themeProps={theThemeProps} overflow={overflow}>
           {this.getBitOut(count)}
         </OutInner>
       </NumberBoxContainer>
@@ -129,14 +167,15 @@ class NumberTurn extends React.Component<NumberTurnProps, NumberTurnState> {
 
   getBitOut(count: number) {
     const { overflow, beforeOverflow } = this.state;
-    const { themeProps } = this.props;
     const bitCnt = this.getBitCnt(count);
     const countStr = (count + '').split('');
     const result = [];
+    const { singleTheme = false, themeProps, getPartOfThemeProps } = this.props;
+    const theThemeProps = singleTheme ? themeProps : getPartOfThemeProps('BadgeNumber');
     for (let i = 0; i < bitCnt; i++) {
       const bitValue = Number(countStr[i]);
       result.push(
-        <BitOut themeProps={themeProps} y={-bitValue * 100}>
+        <BitOut themeProps={theThemeProps} y={-bitValue * 100}>
           {this.getBit()}
         </BitOut>
       );
@@ -153,25 +192,27 @@ class NumberTurn extends React.Component<NumberTurnProps, NumberTurnState> {
 
   getPlus() {
     const { overflow } = this.state;
-    const { themeProps } = this.props;
     let y = -808;
     if (overflow) {
       y = -908;
     }
+    const { singleTheme = false, themeProps, getPartOfThemeProps } = this.props;
+    const theThemeProps = singleTheme ? themeProps : getPartOfThemeProps('BadgeNumber');
     return (
-      <BitOut themeProps={themeProps} y={y}>
+      <BitOut themeProps={theThemeProps} y={y}>
         +
       </BitOut>
     );
   }
 
   getBit() {
-    const { themeProps } = this.props;
     const total = 10;
     const call: any = Function.prototype.call;
+    const { singleTheme = false, themeProps, getPartOfThemeProps } = this.props;
+    const theThemeProps = singleTheme ? themeProps : getPartOfThemeProps('BadgeNumber');
     const array: Array<any> = Array(...Array(total))
       .map(call, Number)
-      .map(v => <Bit themeProps={themeProps}>{v}</Bit>);
+      .map(v => <Bit themeProps={theThemeProps}>{v}</Bit>);
     return array;
   }
 }

@@ -13,9 +13,11 @@ import { getStateFromProps, processOnVisibleChange } from '../tooltip';
 
 import ThemeHoc from '@lugia/theme-hoc';
 import { deepMerge } from '@lugia/object-utils';
-import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
+import { css, StaticComponent } from '@lugia/theme-css-hoc';
 import { units } from '@lugia/css';
+import colorsFunc from '../css/stateColor';
 
+const { mediumGreyColor } = colorsFunc();
 const { px2remcss } = units;
 
 const ClearContainer: Object = StaticComponent({
@@ -38,7 +40,7 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
   static defaultProps = {
     defaultVisible: false,
     action: ['click'],
-    showClearButton: true,
+    showClearButton: false,
   };
   target: Object;
 
@@ -67,13 +69,26 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
   }
   getCloseContainer(): React.Node | null {
     const { clearIcon = 'lugia-icon-reminder_close', showClearButton } = this.props;
+
+    const { theme: IconThemeProps, viewClass: IconViewClass } = this.props.getPartOfThemeHocProps(
+      'PopoverClearIcon'
+    );
+
+    const iconTheme = deepMerge(
+      {
+        [IconViewClass]: {
+          normal: {
+            color: mediumGreyColor,
+            cursor: 'pointer',
+          },
+        },
+      },
+      IconThemeProps
+    );
+
     return showClearButton ? (
       <ClearContainer onClick={this.onClearClick}>
-        <Icon
-          {...this.props.getPartOfThemeHocProps(Widget.Icon)}
-          iconClass={clearIcon}
-          singleTheme
-        />
+        <Icon theme={iconTheme} viewClass={IconViewClass} iconClass={clearIcon} singleTheme />
       </ClearContainer>
     ) : null;
   }

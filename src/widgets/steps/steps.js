@@ -12,8 +12,10 @@ import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import ThemeProvider from '../theme-provider';
 import type { AlignType, StepType, OrientationType, SizeType } from '../css/steps';
 import Step from './step';
+import { isHorizontal } from './step';
 import { getAttributeFromObject } from '../common/ObjectUtils';
-import CSSComponent, { css } from '@lugia/theme-css-hoc';
+import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
+import { deepMerge } from '@lugia/object-utils';
 
 const StepsOutContainer = CSSComponent({
   tag: 'div',
@@ -26,7 +28,7 @@ const StepsOutContainer = CSSComponent({
       const { orientation } = propsConfig;
       const theWidth = width && width > 0 ? width : '';
       const theHeight = height && height > 0 ? height : '';
-      return orientation === 'horizontal' ? { width: theWidth } : { height: theHeight };
+      return isHorizontal(orientation) ? { width: theWidth } : { height: theHeight };
     },
   },
   css: css`
@@ -44,13 +46,13 @@ const HStepsOutContainer = CSSComponent({
     getCSS(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
       const { orientation } = propsConfig;
-      const direction = orientation === 'horizontal' ? 'row' : 'column';
+      const direction = isHorizontal(orientation) ? 'row' : 'column';
       return ` flex-direction: ${direction};`;
     },
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
       const { orientation } = propsConfig;
-      return orientation === 'horizontal' ? { width: '100%' } : { height: '100%' };
+      return isHorizontal(orientation) ? { width: '100%' } : { height: '100%' };
     },
   },
   css: css`
@@ -60,8 +62,30 @@ const HStepsOutContainer = CSSComponent({
     display: flex;
   `,
 });
+const ContentContainer = CSSComponent({
+  tag: 'div',
+  className: 'StepsContentContainer',
+  normal: {
+    selectNames: [['width'], ['height']],
+    getCSS(themeMeta: Object, themeProps: Object) {
+      const { propsConfig } = themeProps;
+      const { orientation } = propsConfig;
+      const display = isHorizontal(orientation) ? 'block' : 'inline-block';
+      return `display:${display};`;
+    },
+  },
+});
+const OrientationContainer = StaticComponent({
+  tag: 'div',
+  className: 'StepsContentContainer',
+  css: css`
+    display: ${props => (isHorizontal(props.orientation) ? 'block' : 'inline-block')};
+  `,
+});
 
-type StepsState = {};
+type StepsState = {
+  _renderAgain: boolean,
+};
 
 type StepsProps = {
   stepType: StepType,
@@ -100,7 +124,7 @@ class Steps extends Component<StepsProps, StepsState> {
     defaultData,
   };
   static displayName = Widget.Steps;
-
+  state = { _renderAgain: false };
   constructor(props: StepsProps) {
     super(props);
   }
@@ -114,13 +138,23 @@ class Steps extends Component<StepsProps, StepsState> {
         orientation,
       },
     });
+    const normalConfig = isHorizontal(orientation)
+      ? { height: this.contentHeight }
+      : { width: this.contentWidth };
+    const contentThemeProps = deepMerge(
+      { themeConfig: { normal: normalConfig } },
+      this.props.getPartOfThemeProps('StepsContentContainer', {
+        props: {
+          orientation,
+        },
+      })
+    );
     return (
-      <StepsOutContainer
-        themeProps={theThemeProps}
-        orientation={orientation}
-        viewClass={'StepsOutContainer'}
-      >
-        {this.getHSteps()}
+      <StepsOutContainer themeProps={theThemeProps} orientation={orientation}>
+        <div>
+          <OrientationContainer>{this.getHSteps()}</OrientationContainer>
+          <ContentContainer themeProps={contentThemeProps} />
+        </div>
       </StepsOutContainer>
     );
   }
@@ -139,8 +173,16 @@ class Steps extends Component<StepsProps, StepsState> {
     );
   }
   getStepsConfig(child: Object, i: number) {
-    const { orientation, stepType, size, currentStepNumber, desAlign } = this.props;
+    const {
+      orientation,
+      stepType,
+      size,
+      currentStepNumber,
+      desAlign,
+      getPartOfThemeHocProps,
+    } = this.props;
     return {
+      ...getPartOfThemeHocProps('Step'),
       orientation,
       stepType,
       size,
@@ -163,25 +205,63 @@ class Steps extends Component<StepsProps, StepsState> {
         'description',
         getAttributeFromObject(child.props, 'description', '')
       ),
-      icon: getAttributeFromObject(child, 'icon', getAttributeFromObject(child.props, 'icon', '')),
+      icon: getAttributeFromObject(
+        child,
+        'icon',
+        getAttributeFromObject(child.props, 'icon', 'lugia-icon-financial_cloud')
+      ),
       isDashed: getAttributeFromObject(
         child,
         'isDashed',
         getAttributeFromObject(child.props, 'isDashed', false)
       ),
+      getChildWidths: this.getChildWidths,
     };
   }
+  childrenLength = 0;
 
   getChildren() {
     const { children, data, defaultData } = this.props;
-    return data
+    const finalData = data
       ? this.data2Step(data)
       : Array.isArray(children) && children.length > 0
       ? React.Children.map(children, (child, i) => {
           return React.cloneElement(child, this.getStepsConfig(child, i));
         })
       : this.data2Step(defaultData);
+    this.childrenLength = finalData.length;
+    return finalData;
   }
+
+  getMaxNumber(array: Array<number>) {
+    return Math.max.apply(null, array);
+  }
+
+  titleWidthArray = [];
+  titleHeightArray = [];
+  descWidthArray = [];
+  descHeightArray = [];
+  childArray = [];
+  contentWidth = 0;
+  contentHeight = 0;
+  getChildWidths = (obj: Object) => {
+    const { titleWidth, titleHeight, descWidth, descHeight } = obj;
+    this.titleWidthArray.push(titleWidth);
+    this.titleHeightArray.push(titleHeight);
+    this.descWidthArray.push(descWidth);
+    this.descHeightArray.push(descHeight);
+
+    if (this.childrenLength === this.titleWidthArray.length) {
+      const maxDescWidth = this.getMaxNumber(this.descWidthArray);
+      const maxDescHeight = this.getMaxNumber(this.descHeightArray);
+      const maxTitleWidth = this.getMaxNumber(this.titleWidthArray);
+      const maxTitleHeight = this.getMaxNumber(this.titleHeightArray);
+      this.contentWidth =
+        maxDescWidth && maxDescWidth > maxTitleWidth ? maxDescWidth : maxTitleWidth;
+      this.contentHeight = maxDescHeight ? maxTitleHeight + maxDescHeight : maxTitleHeight;
+    }
+    this.setState({ _renderAgain: true });
+  };
 
   data2Step(data: Array<Object>) {
     return data.map((child, i) => {

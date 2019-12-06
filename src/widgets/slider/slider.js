@@ -41,8 +41,6 @@ type TypeState = {
   changeBackground?: boolean,
   moveX?: number, //随着鼠标的位置变动的值，水平方向的值
   moveY?: number, //随着鼠标的位置变动的值，垂直方向的值
-  offsetLeft: number, //值在挂载完就固定了，元素距离窗口左边的距离
-  offsetTop: number, //值在挂载完就固定了，元素距离窗口顶部的距离
   value: Array<number>,
   changeValue: Array<number>,
   disabled?: boolean,
@@ -69,11 +67,17 @@ class Slider extends Component<TypeProps, TypeState> {
     SliderInnerWidth: number,
     SliderInnerLeft: number,
   };
+  offsetLeft: number; //元素距离窗口左边的距离
+  offsetTop: number; //元素距离窗口顶部的距离
   oldValue: Array<number>;
   sliderHeight = rangeHeightNormal;
+
   constructor() {
     super();
     this.sliderRange = React.createRef();
+
+    this.offsetLeft = 0;
+    this.offsetTop = 0;
   }
 
   static getDerivedStateFromProps(nexProps: TypeProps, preState: TypeState) {
@@ -127,8 +131,6 @@ class Slider extends Component<TypeProps, TypeState> {
         changeBackground: false,
         moveX: 0, //随着鼠标的位置变动的值，水平方向的值
         moveY: 0, //随着鼠标的位置变动的值，垂直方向的值
-        offsetLeft: 0, //值在挂载完就固定了，元素距离窗口左边的距离
-        offsetTop: 0, //值在挂载完就固定了，元素距离窗口顶部的距离
         value: newValue,
         changeValue: value,
         disabled,
@@ -155,6 +157,10 @@ class Slider extends Component<TypeProps, TypeState> {
   mousedown = (e: SyntheticMouseEvent<HTMLButtonElement>) => {
     e = e || window.event;
     const { pageX, pageY } = e;
+    const { vertical } = this.props;
+    const { offsetLeft, offsetTop } = this.getOffset(vertical);
+    this.offsetLeft = offsetLeft;
+    this.offsetTop = offsetTop;
     const { index } = this.getNewIndex(pageX, pageY);
     const { value, isInBall } = this.state;
     this.oldValue = [...value];
@@ -252,8 +258,8 @@ class Slider extends Component<TypeProps, TypeState> {
     this.setState({ changeBackground: false, isInBall: false });
   };
   getMoveState = (pageX: number, pageY: number) => {
-    const { offsetLeft, offsetTop, maxValue, minValue } = this.state;
-
+    const { maxValue, minValue } = this.state;
+    const { offsetLeft, offsetTop } = this;
     const { rangeW } = this.style;
     const { vertical = false } = this.props;
     let move = pageX - offsetLeft;
@@ -306,10 +312,8 @@ class Slider extends Component<TypeProps, TypeState> {
       },
       () => {
         const { offsetLeft, offsetTop } = this.getOffset(vertical);
-        this.setState({
-          offsetLeft,
-          offsetTop,
-        });
+        this.offsetLeft = offsetLeft;
+        this.offsetTop = offsetTop;
       }
     );
     if (disabled) {

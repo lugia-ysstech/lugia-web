@@ -16,7 +16,7 @@ import { getBoxShadow } from '@lugia/theme-utils';
 
 import { units } from '@lugia/css';
 const { px2remcss } = units;
-const { defaultColor, blackColor } = colorsFunc();
+const { defaultColor, blackColor, darkGreyColor } = colorsFunc();
 
 const ContentWrapper: Object = CSSComponent({
   tag: 'div',
@@ -28,7 +28,7 @@ const ContentWrapper: Object = CSSComponent({
       const { propsConfig } = themeProps;
       const { direction } = propsConfig;
       return `padding:${px2remcss(1)};padding-${direction}:${px2remcss(
-        5
+        10
       )};background: transparent;box-shadow:none;`;
     },
   },
@@ -52,7 +52,7 @@ const Content: Object = CSSComponent({
     ],
     defaultTheme: {
       background: { color: defaultColor },
-      boxShadow: getBoxShadow('0 0 2 rgba(102, 102, 102, 0.15)'),
+      boxShadow: getBoxShadow('0 0 6 rgba(51, 51, 51, 0.2)'),
       padding: {
         top: 6,
         bottom: 6,
@@ -60,22 +60,10 @@ const Content: Object = CSSComponent({
         right: 8,
       },
     },
-    getThemeMeta(themeMeta, themeProps) {
-      const { propsConfig } = themeProps;
-      const { height } = themeMeta;
-      const { size, popArrowType } = propsConfig;
-      const theHeight =
-        height && height > 0 ? height : size === 'large' ? 40 : size === 'small' ? 24 : 32;
-      if (popArrowType !== 'round')
-        return {
-          height: theHeight,
-        };
-    },
   },
   css: css`
     border-radius: ${px2remcss(5)};
     position: relative;
-    line-height: 1;
     box-sizing: border-box;
   `,
 });
@@ -264,7 +252,7 @@ const Title: Object = CSSComponent({
       const { propsConfig } = themeProps;
       const { description } = propsConfig;
       if (description) {
-        return `margin-bottom:${px2remcss(12)}`;
+        return `margin-bottom:${px2remcss(10)}`;
       }
     },
   },
@@ -291,7 +279,7 @@ const Description: Object = CSSComponent({
       ['margin'],
     ],
     defaultTheme: {
-      color: blackColor,
+      color: darkGreyColor,
       fontSize: 12,
     },
   },
@@ -301,6 +289,7 @@ const Description: Object = CSSComponent({
     overflow: hidden;
     text-align: left;
     text-decoration: none;
+    line-height: 1.5;
   `,
 });
 
@@ -393,7 +382,7 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
           </ContentWrapper>
         }
       >
-        {children}
+        <div>{children}</div>
       </Trigger>
     );
   }
@@ -412,7 +401,6 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
       </Content>
     );
   }
-
   getArrow(direction) {
     const { placement, popArrowType } = this.props;
     const theThemeProps = this.props.getPartOfThemeProps('Container', {

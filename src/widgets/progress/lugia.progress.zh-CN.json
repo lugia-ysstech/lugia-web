@@ -41,6 +41,10 @@
       "type": "ProgressShowType",
       "desc": "进度条展示内容展示位置，可设置为 inside 或不设",
       "defaultValue": "default"
+    },
+    "iconClass": {
+      "type": "string",
+      "desc": "进度条展示的图标,仅在success或error状态生效"
     }
   },
   "type": {

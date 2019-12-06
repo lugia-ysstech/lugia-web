@@ -46,7 +46,7 @@
     },
 
     "checkedCSS": {
-      "type": "background | checkbox | none",
+      "type": "CheckedCSSType",
       "desc": "选中项的样式",
       "defaultValue": "none"
     },
@@ -65,9 +65,14 @@
 
     "autoHeight": {
       "type": "boolean",
-      "desc": "根据data数量，自动计算菜单高度"
+      "desc": "根据data数量，自动计算菜单高度",
+      "defaultValue": false
     },
-
+    "divided": {
+      "type": "boolean",
+      "desc": "项之间是否展示分割线",
+      "defaultValue": false
+    },
     "expandedPath": {
       "type": "string[]",
       "desc": "层级菜单时展开的数据"
@@ -87,7 +92,7 @@
       "desc": "层级菜单时，子菜单相对父级菜单的top值"
     },
     "action": {
-      "type": "click | hover",
+      "type": "ActionType",
       "desc": "层级菜单时，展开子菜单的方式",
       "defaultValue": "click"
     },
@@ -97,7 +102,7 @@
       "defaultValue": "default"
     },
     "subsize": {
-      "type": "large | default | bigger",
+      "type": "SubsizeType",
       "desc": "设置子菜单列表项的高度",
       "defaultValue": "default"
     },
@@ -167,7 +172,11 @@
       ]
     }
   },
-
+  "type": {
+    "CheckedCSSType": ["background", "checkbox", "none"],
+    "ActionType": ["hover", "click"],
+    "SubsizeType": ["large", "default", "bigger"]
+  },
   "category": ["数据录入"],
 
   "designInfo": {
@@ -219,7 +228,8 @@
                 ["borderRadius"],
                 ["opacity"],
                 ["color"],
-                ["font"]
+                ["font"],
+                ["boxShadow"]
               ],
               "active": [
                 ["background"],
@@ -227,7 +237,8 @@
                 ["borderRadius"],
                 ["opacity"],
                 ["color"],
-                ["font"]
+                ["font"],
+                ["boxShadow"]
               ],
               "disabled": [
                 ["background"],
@@ -248,7 +259,8 @@
                 ["opacity"],
                 ["color"],
                 ["padding"],
-                ["font"]
+                ["font"],
+                ["boxShadow"]
               ],
               "hover": [
                 ["background"],
@@ -256,7 +268,8 @@
                 ["borderRadius"],
                 ["opacity"],
                 ["color"],
-                ["font"]
+                ["font"],
+                ["boxShadow"]
               ],
               "active": [
                 ["background"],
@@ -264,7 +277,8 @@
                 ["borderRadius"],
                 ["opacity"],
                 ["color"],
-                ["font"]
+                ["font"],
+                ["boxShadow"]
               ],
               "disabled": []
             },
