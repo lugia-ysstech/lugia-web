@@ -27,7 +27,7 @@ export const DropMenuContainer = CSSComponent({
   tag: 'div',
   className: 'DropMenuContainer',
   normal: {
-    selectNames: [['width']],
+    selectNames: [['width'], ['height']],
   },
   hover: {
     selectNames: [],
@@ -902,7 +902,7 @@ export const PullContainer = CSSComponent({
 
 const getSeparatorWidth = props => {
   const { width } = props;
-  return width ? px2remcss(width) : '73%';
+  return width ? px2remcss(width) : '74%';
 };
 
 const getSeparatorBorderColor = props => {

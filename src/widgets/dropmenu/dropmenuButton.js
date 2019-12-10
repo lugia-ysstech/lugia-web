@@ -61,7 +61,7 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
   }
 
   render() {
-    const { divided, getTheme } = this.props;
+    const { divided } = this.props;
     return divided ? this.getDevidedButton() : this.getNoDevidedButton();
   }
 
@@ -76,7 +76,6 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
   getNoDevidedButton = () => {
     const { getPartOfThemeProps, disabled, direction } = this.props;
     const iconClass = this.getIconClass(direction);
-
     return (
       <NoDividedContainer
         themeProps={this.getWrapThemeProps()}
