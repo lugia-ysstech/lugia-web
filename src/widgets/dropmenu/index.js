@@ -127,6 +127,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
         theme={theme}
         viewClass={viewClass}
         _onClick={_onClick}
+        onClick={onClick}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
         disabled={disabled}
@@ -234,10 +235,6 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
     };
     const theme = this.mergeTheme('DropMenuButton', defaultButtonTheme);
     return theme;
-    const childTheme = {
-      [Widget.DropMenuButton]: theme,
-    };
-    return childTheme;
   };
 }
 
