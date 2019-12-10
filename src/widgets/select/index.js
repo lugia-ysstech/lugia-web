@@ -4,13 +4,11 @@
  * @flow
  */
 import type { QueryType } from '@lugia/lugia-web';
-
 import '../common/shirm';
 import * as React from 'react';
 import InputTag from '../inputtag';
 import Trigger from '../trigger';
 import Menu from '../menu';
-import styled from 'styled-components';
 import Widget from '../consts/index';
 import QueryInput from '../common/QueryInput';
 import { deepMerge } from '@lugia/object-utils';
