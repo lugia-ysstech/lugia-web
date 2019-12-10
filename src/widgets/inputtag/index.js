@@ -563,7 +563,6 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
 
   getOffSetWidth() {
     if (this.isMutliple()) {
-      console.log('fontWidth list', this.list.offsetWidth);
       return this.list.offsetWidth;
     }
     return 0;
@@ -637,7 +636,6 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     const { value } = this.state;
     if (value) {
       const moreItemWidth = this.getMoreItemWidth();
-      console.log('fontWidth', listWidth, moreItemWidth);
       listWidth -= moreItemWidth;
       let totalWidth = 0;
 
@@ -653,14 +651,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
         const fontWidth = await this.getFontWidth(text);
 
         totalWidth += fontWidth + this.getTagMargin();
-        console.log(
-          'fontWidth',
-          moreItemWidth,
-          fontWidth,
-          this.getTagMargin(),
-          totalWidth,
-          listWidth
-        );
+
         if (totalWidth > listWidth) {
           break;
         } else {
