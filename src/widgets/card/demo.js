@@ -85,6 +85,20 @@ export default () => {
           height: 200,
         },
       },
+      CardTitleTipLine: {
+        normal: {
+          width: 4,
+          height: 18,
+          margin: {
+            left: 0,
+            top: 13,
+          },
+          borderRadius: {
+            topLeft: 0,
+            bottomLeft: 0,
+          },
+        },
+      },
     },
   };
   const imageVCard = {
@@ -240,6 +254,14 @@ export default () => {
         <Card title={'this is title'} description={'this is description'} />
       </Wrapper>
       <p>tip样式</p>
+      <Wrapper>
+        <Card
+          type={'tip'}
+          title={'this is title'}
+          description={[<div>{'this is description'}</div>, <div>{'this is description'}</div>]}
+        />
+      </Wrapper>
+
       <Theme config={view}>
         <Wrapper>
           <Card

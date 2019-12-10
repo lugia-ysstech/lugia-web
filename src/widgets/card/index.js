@@ -18,7 +18,7 @@ import { deepMerge } from '@lugia/object-utils';
 import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
 
 const { px2remcss } = units;
-const { darkGreyColor, lightGreyColor, defaultColor, themeColor } = colorsFunc();
+const { darkGreyColor, lightGreyColor, defaultColor, themeColor, superLightColor } = colorsFunc();
 const CardOutContainer = CSSComponent({
   tag: 'div',
   className: 'CardOutContainer',
@@ -89,12 +89,9 @@ const Content = CSSComponent({
     ],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const { width, height } = themeMeta;
-      const paddingBottom = 12;
-      const paddingTop = 16;
-      const paddingLeft = 10;
 
-      const theWidth = width ? width - paddingLeft : '';
-      const theHeight = height ? height - paddingTop - paddingBottom : '';
+      const theWidth = width ? width : '';
+      const theHeight = height ? height : '';
       return {
         width: theWidth,
         height: theHeight,
@@ -274,7 +271,6 @@ const Title = CSSComponent({
   css: css`
     display: inline-block;
     flex: 1;
-    overflow: hidden;
   `,
 });
 const TitleTipContainer = CSSComponent({
@@ -284,7 +280,6 @@ const TitleTipContainer = CSSComponent({
     selectNames: [['height']],
   },
   css: css`
-    width: inherit;
     display: inline-flex;
   `,
 });
@@ -292,7 +287,7 @@ const TitleTipLine = CSSComponent({
   tag: 'div',
   className: 'CardTitleTipLine',
   normal: {
-    selectNames: [['width'], ['height'], ['background'], ['border'], ['borderRadius']],
+    selectNames: [['width'], ['height'], ['background'], ['border'], ['borderRadius'], ['margin']],
     defaultTheme: {
       height: 20,
       width: 5,
@@ -300,13 +295,46 @@ const TitleTipLine = CSSComponent({
         color: themeColor,
       },
       borderRadius: getBorderRadius(5),
+      margin: {
+        left: 5,
+        top: 13,
+      },
     },
   },
-  css: css`
-    left: ${px2remcss(-14)};
-    position: relative;
-    border-radius: ${px2remcss(5)};
-  `,
+});
+const TitleBottomLine = CSSComponent({
+  tag: 'div',
+  className: 'CardTipBottomLine',
+  normal: {
+    selectNames: [['width'], ['margin'], ['border']],
+    defaultTheme: {
+      height: 1,
+      width: '100%',
+      margin: {
+        top: 10,
+      },
+    },
+    getThemeMeta(themeMeta: Object, themeProps: Object) {
+      const { propsConfig } = themeProps;
+      const { tipLineDashed } = propsConfig;
+      const { background = {}, height, width } = themeMeta;
+      const { color = '' } = background;
+      const theColor = color ? color : superLightColor;
+      const theWidth = width ? width : '100%';
+      const theDashed = tipLineDashed ? 'dashed' : 'solid';
+      const theBorderWidth = height ? height : 1;
+      return {
+        width: theWidth,
+        border: {
+          top: {
+            color: theColor,
+            style: theDashed,
+            width: theBorderWidth,
+          },
+        },
+      };
+    },
+  },
 });
 const Description = CSSComponent({
   extend: BaseText,
@@ -341,6 +369,7 @@ class Card extends React.Component<CardProps, CardState> {
   static defaultProps = {
     type: 'simple',
     imageOrientation: 'horizontal',
+    tipLineDashed: false,
   };
 
   constructor(props: CardProps) {
@@ -393,12 +422,9 @@ class Card extends React.Component<CardProps, CardState> {
   getInnerContent() {
     const { type, imageOrientation, content } = this.props;
 
-    const cardContentTheme = deepMerge(
-      this.getThemeNormalConfig(this.getPaddingByType(type, 'content', imageOrientation)),
-      this.props.getPartOfThemeProps('CardContent', {
-        props: { type },
-      })
-    );
+    const cardContentTheme = this.props.getPartOfThemeProps('CardContent', {
+      props: { type },
+    });
 
     return (
       <Content
@@ -415,23 +441,24 @@ class Card extends React.Component<CardProps, CardState> {
   }
 
   getTitleTipContainer() {
-    const { title } = this.props;
-    if (title) {
-      return (
+    const { title, type, tipLineDashed } = this.props;
+    const TitleCmp = this.getDetails('title');
+    if (title && type === 'tip') {
+      return [
         <TitleTipContainer themeProps={this.props.getPartOfThemeProps('CardTitleTipLine')}>
-          {this.getTitleTipLine()}
-          {this.getDetails('title')}
-        </TitleTipContainer>
-      );
+          <TitleTipLine themeProps={this.props.getPartOfThemeProps('CardTitleTipLine')} />
+          {TitleCmp}
+        </TitleTipContainer>,
+        <TitleBottomLine
+          themeProps={this.props.getPartOfThemeProps('CardTipBottomLine', {
+            props: {
+              tipLineDashed,
+            },
+          })}
+        />,
+      ];
     }
-    return null;
-  }
-
-  getTitleTipLine() {
-    const { type } = this.props;
-    return type === 'tip' ? (
-      <TitleTipLine themeProps={this.props.getPartOfThemeProps('CardTitleTipLine')} />
-    ) : null;
+    return TitleCmp;
   }
 
   getImageContainer() {
@@ -471,14 +498,9 @@ class Card extends React.Component<CardProps, CardState> {
     } else if (type === 'tip') {
       switch (position) {
         case 'description':
-          left = 5;
-          break;
-        case 'content':
-          left = 30;
+          left = 16;
           break;
         case 'title':
-          left = 0;
-          break;
         default:
           left = 10;
           break;
@@ -494,7 +516,7 @@ class Card extends React.Component<CardProps, CardState> {
         top = 14;
         break;
       case 'title':
-        top = 4;
+        top = type !== 'tip' ? 4 : 13;
         break;
       default:
         top = 0;
