@@ -11,8 +11,8 @@ import { deepMerge } from '@lugia/object-utils';
 import Widget from '../consts/index';
 import '../common/shirm';
 import DropMenuButton from './dropmenuButton';
-
 import { DropMenuContainer } from '../css/dropmenubutton';
+
 const alignType = 'topLeft | top | topRight | bottomLeft | bottom | bottomRight';
 
 type DropMenuProps = {
@@ -42,7 +42,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
     action: 'click',
     hideAction: 'click',
     align: 'bottom',
-    text: 'DropMenu',
+    text: '下拉菜单',
     divided: true,
     type: 'customs',
     disabled: false,
@@ -63,8 +63,11 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
     const { menus, action, hideAction, align } = this.props;
     const offsetY = this.getOffSetY(align);
 
-    const menu = React.Children.only(menus);
+    if (!menus) {
+      return this.getChildrenItem();
+    }
 
+    const menu = React.Children.only(menus);
     const popup = <div>{React.cloneElement(menu, this.ejectOnClick(menu))}</div>;
     const config = {
       [Widget.DropMenuButton]: this.getDropMenuButtonTheme(),
