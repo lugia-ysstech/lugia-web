@@ -32,6 +32,7 @@ export type CardProps = {
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
   getPartOfThemeConfig: Function,
+  tipLineDashed: boolean,
 };
 export type CardState = {};
 
