@@ -46,11 +46,6 @@
     "imageOrientation": {
       "type": "ImageOrientation",
       "desc": "当选择头像或图片卡片风格时,可配置图像的方向.水平,或垂直"
-    },
-    "tipLineDashed": {
-      "type": "boolean",
-      "desc": "当选择标题提示风格时,可配置标题下线为实线或虚线.",
-      "defaultValue": false
     }
   },
   "type": {
@@ -495,7 +490,6 @@
       "normal": [
         ["width"],
         ["height"],
-        ["color"],
         ["font"],
         ["background"],
         ["margin"],
@@ -503,7 +497,6 @@
       ]
     },
     "CardOperation": {
-      "name": "卡片操作按钮",
       "desc": "配置卡片操作按钮",
       "normal": [
         ["width"],
@@ -521,9 +514,9 @@
       "normal": [["width"], ["height"], ["background"], ["borderRadius"], ["border"], ["margin"]]
     },
     "CardTipBottomLine": {
-      "name": "卡片标题提示",
-      "desc": "卡片标题提示配置",
-      "normal": [["width"], ["height"], ["background"], ["margin"]]
+      "name": "卡片标题下分割线",
+      "desc": "卡片标题下分割线配置",
+      "normal": [["width"], ["height"], ["margin"], ["border"]]
     }
   }
 }
