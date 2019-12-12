@@ -68,6 +68,8 @@ const CardOutContainer = CSSComponent({
   css: css`
     position: relative;
     display: flex;
+    min-width: ${px2remcss(50)};
+    min-height: ${px2remcss(20)};
   `,
   option: { hover: true },
 });
@@ -573,16 +575,18 @@ class Card extends React.Component<CardProps, CardState> {
           SrcAvatar: {
             normal: {
               getCSS() {
-                return `
-                        background-color: transparent;`;
+                return 'background-color: transparent;';
               },
               getThemeMeta(themeMeta: Object, themeProps: Object) {
                 const { propsConfig } = themeProps;
                 const { imageOrientation } = propsConfig;
                 const left = imageOrientation === 'horizontal' ? 20 : 0;
                 return {
+                  width: 60,
+                  height: 60,
                   margin: {
                     left,
+                    top: 10,
                   },
                 };
               },

@@ -487,14 +487,7 @@
     "CardDescription": {
       "name": "卡片描述内容",
       "desc": "配置卡片描述内容",
-      "normal": [
-        ["width"],
-        ["height"],
-        ["font"],
-        ["background"],
-        ["margin"],
-        ["padding"]
-      ]
+      "normal": [["width"], ["height"], ["font"], ["background"], ["margin"], ["padding"]]
     },
     "CardOperation": {
       "desc": "配置卡片操作按钮",
