@@ -450,6 +450,7 @@ export const defaulttestDelayData = [
         <div>猪蹄啊啊啊啊啊</div>
       </div>
     ),
+    hideCloseBtn: true,
   },
   { title: '排骨', content: '排骨啊啊啊啊啊' },
   { title: '鸡腿', content: '鸡腿啊啊啊啊啊' },
@@ -693,7 +694,7 @@ export default class TabsDemo extends React.Component<any, any> {
         TitleContainer: {
           normal: {
             width: 330,
-            height: 300,
+            // height: 300,
           },
         },
         TabHeader: {
@@ -865,6 +866,12 @@ export default class TabsDemo extends React.Component<any, any> {
 
     const updateTheme = {
       [Widget.Tabs]: {
+        Container: {
+          normal: {
+            width: 1200,
+            // height: 300
+          },
+        },
         TitleContainer: {
           normal: {
             textAlign: 'center',
@@ -877,6 +884,9 @@ export default class TabsDemo extends React.Component<any, any> {
               left: 10,
               right: 10,
               bottom: 10,
+            },
+            background: {
+              color: 'pink',
             },
           },
         },
@@ -912,12 +922,19 @@ export default class TabsDemo extends React.Component<any, any> {
 
     return (
       <div>
+        <Tabs>
+          <Tabpane title={'1111'} content={'11111'} key={'0'} />
+          <Tabpane title={'2222'} content={<div>2222</div>} key={'1'} />
+        </Tabs>
+        <Tabs tabType={'card'} data={defaulttestDelayData} showDeleteBtn={true} showAddBtn={true} />
+        <Tabs tabType={'window'} data={defaulttestDelayData} />
+
         <Theme config={updateTheme}>
           <Tabs>
             <Tabpane title={'1111'} content={'11111'} key={'0'} />
-            <Tabpane title={'2222'} content={<div>2222</div>} key={'1'} />
+            <Tabpane title={'2222'} content={<div>2222</div>} key={'1'} showDeleteBtn={true} />
           </Tabs>
-          <Tabs data={defaulttestDelayData} />
+          <Tabs tabType={'window'} data={defaulttestDelayData} showDeleteBtn={true} />
           <Tabs tabPosition={'left'} data={defaulttestDelayData} />
         </Theme>
 
