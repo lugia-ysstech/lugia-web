@@ -6,9 +6,50 @@
 import '../common/shirm';
 import * as React from 'react';
 import '../css/font/lugia-icon.css';
+import { px2remcss } from '../css/units';
 import Widget from '../consts/index';
 import ThemeHoc, { addMouseEvent } from '@lugia/theme-hoc';
-import CSSComponent, { css } from '../theme/CSSProvider';
+import CSSComponent, { css, StaticComponent } from '../theme/CSSProvider';
+
+const IconImgWrap = CSSComponent({
+  tag: 'span',
+  className: 'iconImgWrap',
+  normal: {
+    selectNames: [['margin'], ['padding'], ['cursor']],
+    getCSS: themeMeta => {
+      const { fontSize, font = {} } = themeMeta;
+      const { size } = font;
+      const activeFontSize = fontSize ? fontSize : size ? size : 14;
+      return `
+        width: ${px2remcss(activeFontSize)};
+        height: ${px2remcss(activeFontSize)};
+        text-align: center;
+        
+        & img{
+          max-width: 100%;
+          max-height: 100%;
+        }
+      `;
+    },
+    defaultTheme: {},
+  },
+  css: `
+    display: inline-block;
+    box-sizing: content-box
+  `,
+});
+
+export const FlexBox = StaticComponent({
+  tag: 'div',
+  className: 'breadcrumbContainer',
+  css: css`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  `,
+});
 
 const IconTag = CSSComponent({
   tag: 'i',
@@ -39,16 +80,13 @@ type IconProps = {
   singleTheme?: boolean,
   getPartOfThemeProps: Function,
   disabled: boolean,
+  src?: string,
 };
 
 class Icon extends React.Component<IconProps> {
   static displayName = Widget.Icon;
 
-  static defaultProps = {
-    getTheme: () => {
-      return {};
-    },
-  };
+  static defaultProps = {};
   onClick = e => {
     const { disabled, onClick } = this.props;
     if (disabled) {
@@ -64,7 +102,22 @@ class Icon extends React.Component<IconProps> {
       themeProps,
       getPartOfThemeProps,
       singleTheme = false,
+      src,
     } = this.props;
+    if (src) {
+      return (
+        <IconImgWrap
+          onClick={this.onClick}
+          themeProps={singleTheme ? themeProps : getPartOfThemeProps('Icon')}
+          disabled={disabled}
+          {...addMouseEvent(this)}
+        >
+          <FlexBox>
+            <img src={src} />
+          </FlexBox>
+        </IconImgWrap>
+      );
+    }
     return (
       <IconTag
         className={`${iconClass} ${className}`}
