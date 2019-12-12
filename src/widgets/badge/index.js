@@ -8,11 +8,12 @@ import '../common/shirm';
 import React, { Component } from 'react';
 import Widget from '../consts/index';
 import NumberTurn from './numberturn/index';
-
 import ThemeHoc from '@lugia/theme-hoc';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import CSSComponent, { StaticComponent, css } from '@lugia/theme-css-hoc';
 import colorsFunc from '../css/stateColor';
+import { units } from '@lugia/css';
+const { px2remcss } = units;
 
 const { dangerColor, defaultColor } = colorsFunc();
 
@@ -40,8 +41,6 @@ export const BaseRedPoint = CSSComponent({
   css: css`
     box-sizing: border-box;
     position: absolute;
-    transform: translateX(50%);
-    transform-origin: 100%;
     z-index: 10;
   `,
 });
@@ -67,13 +66,24 @@ const Dot: Object = CSSComponent({
   },
   css: css`
     border-radius: 100%;
-    z-index: 10;
   `,
 });
 
-const Container: Object = StaticComponent({
+const Container: Object = CSSComponent({
   tag: 'div',
   className: 'BadgeContainer',
+  normal: {
+    selectNames: [],
+    getCSS(themeMeta: Object, themeProps: Object) {
+      const { width, height } = themeMeta;
+      const theWidth = width ? width : 10;
+      const theHeight = height ? height : 10;
+      return `
+        min-width: ${px2remcss(theWidth)};
+        min-height: ${px2remcss(theHeight)};
+      `;
+    },
+  },
   css: css`
     background: transparent;
     box-sizing: border-box;
@@ -134,7 +144,7 @@ class BadgeBox extends Component<BadgeProps, BadgeState> {
     const { children } = this.props;
     const hasChildren = !!children;
     return (
-      <Container hasChildren={hasChildren}>
+      <Container hasChildren={hasChildren} themeProps={this.props.getPartOfThemeProps('BadgeDot')}>
         {children}
         {this.getDot()}
       </Container>
