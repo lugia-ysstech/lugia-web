@@ -1,0 +1,82 @@
+{
+  "widgetName": "BasicElements",
+  "title": "基本元素",
+  "desc": "基本元素",
+  "props": {
+    "shape": {
+      "type": "shapeType",
+      "desc": "基本元素形状",
+      "defaultValue": "square"
+    }
+  },
+  "type": {
+    "shape": ["circular", "square", "triangle"]
+  },
+  "category": ["通用"],
+  "designInfo": {
+    "Circular": {
+      "sequence": 2,
+      "title": "圆形元素",
+      "desc": "圆形元素",
+      "props": {
+        "shape": "circular"
+      },
+      "theme": {
+        "Container": {
+          "name": "配置圆形",
+          "desc": "配置圆形",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["background"],
+            ["borderRadius"],
+            ["border"],
+            ["boxShadow"],
+            ["opacity"],
+            ["margin"]
+          ],
+          "hover": [],
+          "active": [],
+          "disabled": []
+        }
+      }
+    },
+    "Triangle": {
+      "sequence": 3,
+      "title": "三角形元素",
+      "desc": "三角形元素",
+      "props": {
+        "shape": "triangle"
+      },
+      "theme": {
+        "Container": {
+          "name": "配置三角形",
+          "desc": "配置三角形",
+          "normal": [["width"], ["height"], ["background"], ["margin"]],
+          "hover": [],
+          "active": [],
+          "disabled": []
+        }
+      }
+    }
+  },
+  "theme": {
+    "Container": {
+      "name": "配置方形",
+      "desc": "配置方形",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["background"],
+        ["borderRadius"],
+        ["border"],
+        ["boxShadow"],
+        ["opacity"],
+        ["margin"]
+      ],
+      "hover": [],
+      "active": [],
+      "disabled": []
+    }
+  }
+}
