@@ -509,7 +509,7 @@
     "CardTipBottomLine": {
       "name": "卡片标题下分割线",
       "desc": "卡片标题下分割线配置",
-      "normal": [["width"], ["height"], ["margin"], ["border"]]
+      "normal": [["width"], ["height"], ["margin"], ["border", "bottom"]]
     }
   }
 }
