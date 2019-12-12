@@ -89,6 +89,18 @@
     "defaultDisplayValue": {
       "type": "string | string[] | number | number[]",
       "desc": "初始状态下指定当前选中的条目的displayValue值,只生效一次"
+    },
+    "divided": {
+      "type": "boolean",
+      "desc": "弹出菜单中是否展示分割线"
+    },
+    "pullIconClass": {
+      "type": "string",
+      "desc": "下拉按钮图标"
+    },
+    "clearIconClass": {
+      "type": "string",
+      "desc": "清空按钮图标"
     }
   },
   "events": {
@@ -238,6 +250,14 @@
               "name": "下拉图标",
               "desc": "配置下拉或清除按钮的图标样式",
               "normal": [["margin"], ["padding"], ["color"], ["font"], ["opacity"]],
+              "hover": [["color"], ["font"], ["opacity"]],
+              "active": [],
+              "disabled": []
+            },
+            "ClearIcon": {
+              "name": "下拉图标",
+              "desc": "配置下拉或清除按钮的图标样式",
+              "normal": [["color"], ["background"], ["font"], ["margin"], ["opacity"]],
               "hover": [["color"], ["font"], ["opacity"]],
               "active": [],
               "disabled": []
@@ -440,6 +460,14 @@
                     ["font"]
                   ],
                   "disabled": []
+                },
+                "Divider": {
+                  "name": "分割线",
+                  "desc": "配置每项之间的分割线，当divided为true时生效",
+                  "normal": [["background"]],
+                  "hover": [],
+                  "active": [],
+                  "disabled": []
                 }
               }
             }
@@ -483,6 +511,14 @@
         },
 
         "SwitchIcon": {
+          "name": "下拉图标",
+          "desc": "配置下拉或清除按钮的图标样式",
+          "normal": [["color"], ["background"], ["font"], ["margin"], ["opacity"]],
+          "hover": [["color"], ["font"], ["opacity"]],
+          "active": [],
+          "disabled": []
+        },
+        "ClearIcon": {
           "name": "下拉图标",
           "desc": "配置下拉或清除按钮的图标样式",
           "normal": [["color"], ["background"], ["font"], ["margin"], ["opacity"]],
@@ -582,6 +618,14 @@
                 ["color"],
                 ["font"]
               ],
+              "disabled": []
+            },
+            "Divider": {
+              "name": "分割线",
+              "desc": "配置每项之间的分割线，当divided为true时生效",
+              "normal": [["background"]],
+              "hover": [],
+              "active": [],
               "disabled": []
             }
           }

@@ -64,6 +64,9 @@ type SelectProps = {
   prefix?: any,
   getPartOfThemeConfig: Function,
   canClear?: boolean,
+  divided?: boolean,
+  pullIconClass?: string,
+  clearIconClass?: string,
 };
 
 type SelectState = {
@@ -105,6 +108,8 @@ class Select extends React.Component<SelectProps, SelectState> {
     splitQuery: ',',
     searchType: 'include',
     query: '',
+    pullIconClass: 'lugia-icon-direction_down',
+    clearIconClass: 'lugia-icon-reminder_close',
   };
   static displayName = Widget.Select;
 
@@ -332,6 +337,8 @@ class Select extends React.Component<SelectProps, SelectState> {
       prefix,
       data,
       canClear,
+      pullIconClass,
+      clearIconClass,
     } = props;
     const { displayValue = [] } = this;
     const { value = [], query, isCheckedAll } = state;
@@ -395,6 +402,8 @@ class Select extends React.Component<SelectProps, SelectState> {
             placeholder={placeholder}
             mutliple={isMutliple(props)}
             onClear={this.onClear}
+            pullIconClass={pullIconClass}
+            clearIconClass={clearIconClass}
           />
         </Trigger>
       </SelectContainer>
@@ -404,14 +413,16 @@ class Select extends React.Component<SelectProps, SelectState> {
   getMenuItems(getMenu?: Function) {
     const { state, props } = this;
     const { value, query, data } = state;
-    const { displayField, valueField, limitCount, searchType } = props;
+    const { displayField, valueField, limitCount, searchType, divided } = props;
     const menuData = this.updateMenuData(data, query, searchType);
+
     return (
       <Menu
         {...this.getMenuTheme()}
         displayField={displayField}
         valueField={valueField}
         data={menuData}
+        divided={divided}
         mutliple={isMutliple(props)}
         selectedKeys={[...value]}
         ref={getMenu}
