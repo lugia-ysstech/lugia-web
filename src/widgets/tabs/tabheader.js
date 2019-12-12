@@ -740,8 +740,22 @@ class TabHeader extends Component<TabsProps, TabsState> {
   };
 
   getTabpaneConfig(child: React$Element<any>, i: number) {
-    const { tabPosition, tabType, showDeleteBtn } = this.props;
+    const { tabPosition, tabType } = this.props;
+    let { showDeleteBtn } = this.props;
     const { activityValue } = this.state;
+    const hideCloseBtn = getAttributeFromObject(
+      child,
+      'hideCloseBtn',
+      getAttributeFromObject(child.props, 'hideCloseBtn', false)
+    );
+    showDeleteBtn =
+      !hideCloseBtn &&
+      (showDeleteBtn ||
+        getAttributeFromObject(
+          child,
+          'showDeleteBtn',
+          getAttributeFromObject(child.props, 'showDeleteBtn', false)
+        ));
     const disabled = getAttributeFromObject(
       child,
       'disabled',
