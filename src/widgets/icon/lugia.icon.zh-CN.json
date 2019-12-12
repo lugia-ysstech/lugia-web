@@ -11,6 +11,10 @@
       "type": "icon",
       "desc": "图标资源,需从图标库中获取."
     },
+    "src": {
+      "type": "image",
+      "desc": "头像显示图片资源"
+    },
     "disabled": {
       "type": "boolean",
       "desc": "禁用状态,是否不可用",
