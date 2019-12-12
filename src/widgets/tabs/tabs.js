@@ -20,7 +20,7 @@ const TabContentContainer = CSSComponent({
   tag: 'div',
   className: 'ContentBlock',
   normal: {
-    selectNames: [['padding'], ['width'], ['height']],
+    selectNames: [['padding'], ['width'], ['height'], ['background']],
     getCSS: (theme: Object, themeProps: Object) => {
       const {
         propsConfig: { tabPosition },
@@ -35,7 +35,9 @@ const TabContentContainer = CSSComponent({
   },
   css: css`
     position: relative;
+    background: #fff;
     min-width: 100px;
+    flex: 1;
   `,
 });
 const TabContent = CSSComponent({
@@ -61,7 +63,7 @@ const TabContent = CSSComponent({
   },
   css: css`
     overflow: hidden;
-    background: #fff;
+
     padding: 10px;
     width: 100%;
     height: 0;
@@ -96,7 +98,6 @@ const WindowContainer = CSSComponent({
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
-    display: inline-block;
   `,
 });
 
@@ -114,6 +115,9 @@ const OutContainer = CSSComponent({
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
   `,
 });
 const VerticalOutContainer = CSSComponent({
@@ -171,6 +175,7 @@ type TabsProps = {
   onMouseLeave?: Function,
   getPartOfThemeHocProps: Function,
   getPartOfThemeProps: Function,
+  hideContent?: boolean,
 };
 export function hasTargetInProps(target: string, props: TabsProps) {
   return `${target}` in props;
