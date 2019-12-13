@@ -10,7 +10,7 @@
     }
   },
   "type": {
-    "shape": ["circular", "square", "triangle"]
+    "shapeType": ["circular", "square", "triangle"]
   },
   "category": ["通用"],
   "designInfo": {
