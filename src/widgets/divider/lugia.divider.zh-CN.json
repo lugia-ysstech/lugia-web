@@ -12,6 +12,11 @@
       "desc": "分割线是否是虚线",
       "defaultValue": false
     },
+    "block": {
+      "type": "boolean",
+      "desc": "分割线是否自适应父容器宽度",
+      "defaultValue": false
+    },
     "content": {
       "type": "string",
       "desc": "分割线中可添加显示的内容"

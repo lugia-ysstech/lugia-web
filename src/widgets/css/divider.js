@@ -14,4 +14,5 @@ export type DividerProps = {
   content?: string,
   getPartOfThemeProps: Function,
   themeProps: Object,
+  block?: boolean,
 };

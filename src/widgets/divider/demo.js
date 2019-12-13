@@ -46,6 +46,12 @@ export default () => {
   };
   return (
     <div>
+      <p> block </p>
+      <br />
+      <br />
+      <Divider block />
+      <br />
+      <br />
       <Theme config={view}>
         <Wrapper>
           <Divider />

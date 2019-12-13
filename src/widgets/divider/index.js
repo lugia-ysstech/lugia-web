@@ -35,6 +35,24 @@ const Divider = CSSComponent({
         color: borderDisableColor,
       },
     },
+    getThemeMeta(themeMeta: Object, themeProps: Object) {
+      const {
+        propsConfig: { type, block },
+      } = themeProps;
+      const { width, height } = themeMeta;
+      let size;
+      let theSize;
+      if (type === 'vertical') {
+        size = 'height';
+        theSize = height ? height : 200;
+      } else {
+        size = 'width';
+        theSize = width ? width : block ? '100%' : 200;
+      }
+      return {
+        [size]: theSize,
+      };
+    },
     getCSS(themeMeta: Object, themeProps: Object) {
       const {
         propsConfig: { type },
@@ -152,7 +170,7 @@ class LineBox extends Component<DividerProps, any> {
     return content ? <ChildText themeProps={themeProps}>{content}</ChildText> : null;
   }
   getDivider() {
-    const { type, position, dashed, content } = this.props;
+    const { type, position, dashed, content, block } = this.props;
 
     const hThemeProps = this.props.getPartOfThemeProps('Divider', {
       props: {
@@ -160,6 +178,7 @@ class LineBox extends Component<DividerProps, any> {
         position,
         content,
         type,
+        block,
       },
     });
 
