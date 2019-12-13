@@ -106,7 +106,7 @@ export default () => {
       Container: {
         normal: {
           width: 200,
-          height: 350,
+          height: 300,
           opacity: 0.8,
         },
       },
@@ -146,13 +146,12 @@ export default () => {
       Container: {
         normal: {
           width: 360,
-          height: 200,
+          height: 150,
         },
       },
       CardImageContainer: {
         normal: {
-          width: 160,
-          height: 100,
+          width: 200,
         },
       },
       CardImage: {
@@ -196,7 +195,7 @@ export default () => {
       Container: {
         normal: {
           width: 260,
-          height: 180,
+          height: 140,
         },
       },
       CardAvatarContainer: {
@@ -212,6 +211,21 @@ export default () => {
           normal: {
             width: 80,
             height: 80,
+          },
+        },
+      },
+      CardTitle: {
+        normal: {
+          margin: {
+            left: 20,
+            top: 10,
+          },
+        },
+      },
+      CardDescription: {
+        normal: {
+          margin: {
+            left: 20,
           },
         },
       },

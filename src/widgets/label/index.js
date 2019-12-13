@@ -27,6 +27,9 @@ const LabelContainer = CSSComponent({
       ['height'],
       ['background'],
       ['textAlign'],
+      ['border'],
+      ['borderRadius'],
+      ['boxShadow'],
     ],
     getCSS: (theme: Object, themeProps: Object) => {
       const { textAlign } = theme;
@@ -34,15 +37,30 @@ const LabelContainer = CSSComponent({
     },
   },
   hover: {
-    selectNames: [['color'], ['font'], ['fontSize'], ['margin'], ['padding'], ['cursor']],
+    selectNames: [
+      ['color'],
+      ['font'],
+      ['cursor'],
+      ['border'],
+      ['borderRadius'],
+      ['boxShadow'],
+      ['background'],
+    ],
   },
   disabled: {
-    selectNames: [['color'], ['cursor'], ['background']],
+    selectNames: [
+      ['color'],
+      ['font'],
+      ['cursor'],
+      ['border'],
+      ['borderRadius'],
+      ['boxShadow'],
+      ['background'],
+    ],
   },
   css: css`
     display: inline-block;
     box-sizing: border-box;
-    white-space: nowrap;
   `,
   option: { hover: true },
 });
@@ -81,18 +99,19 @@ const LabelPrefix = CSSComponent({
   option: { hover: true },
 });
 
-type TriggerProps = {
+type LabelProps = {
   text?: string,
   prefix?: string,
   showPrefix?: boolean,
   children?: React.Element<any>,
   themeProps: Object,
+  onClick: Function,
   getPartOfThemeHocProps: Function,
   getPartOfThemeProps: Function,
 };
-type TriggerState = {};
+type LabelState = {};
 
-class Label extends React.Component<TriggerProps, TriggerState> {
+class Label extends React.Component<LabelProps, LabelState> {
   render() {
     const { text, children, onClick = () => {}, showPrefix, prefix } = this.props;
     const target = children ? children : text;

@@ -48,6 +48,15 @@
     "defaultDisplayValue": {
       "type": "string | string[] | number | number[]",
       "desc": "初始状态下指定当前选中的条目的displayValue值,只生效一次"
+    },
+
+    "pullIconClass": {
+      "type": "string",
+      "desc": "下拉按钮图标"
+    },
+    "clearIconClass": {
+      "type": "string",
+      "desc": "清空按钮图标"
     }
   },
   "events": {

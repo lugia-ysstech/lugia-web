@@ -82,7 +82,7 @@ export default () => {
     [Widget.Badge]: {
       BadgeDot: {
         normal: {
-          position: { top: -5, right: 6 },
+          position: { top: -10, right: -10 },
           background: { color: 'orange' },
           width: 20,
           height: 20,
@@ -166,7 +166,7 @@ export default () => {
                 green: {
                   BadgeDot: {
                     normal: {
-                      position: { top: -5, right: 2 },
+                      position: { top: -5, right: -5 },
                       background: { color: 'green' },
                     },
                   },
@@ -184,7 +184,7 @@ export default () => {
                 purple: {
                   BadgeDot: {
                     normal: {
-                      position: { top: -5, right: 2 },
+                      position: { top: -5, right: -5 },
                       background: { color: 'purple' },
                     },
                   },
@@ -202,7 +202,7 @@ export default () => {
                 yellow: {
                   BadgeDot: {
                     normal: {
-                      position: { top: -5, right: 2 },
+                      position: { top: -5, right: -5 },
                       background: { color: 'yellow' },
                     },
                   },
@@ -220,7 +220,7 @@ export default () => {
                 blue: {
                   BadgeDot: {
                     normal: {
-                      position: { top: -5, right: 2 },
+                      position: { top: -5, right: -5 },
                       background: { color: 'blue' },
                     },
                   },

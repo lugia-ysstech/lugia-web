@@ -77,6 +77,8 @@ type InputTagProps = {
   getPartOfThemeHocProps: Function,
   getPartOfThemeProps: Function,
   getPartOfThemeConfig: Function,
+  pullIconClass?: string,
+  clearIconClass?: string,
 };
 const Clear = 'lugia-icon-reminder_close';
 const Pull = 'lugia-icon-direction_down';
@@ -99,6 +101,8 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     validateStatus: 'success',
     help: DefaultHelp,
     canClear: true,
+    pullIconClass: 'lugia-icon-direction_down',
+    clearIconClass: 'lugia-icon-reminder_close',
   };
 
   container: Object;
@@ -349,13 +353,17 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   };
 
   getClearButton() {
-    const { canClear, getPartOfThemeProps } = this.props;
-    const themeProps = getPartOfThemeProps('SwitchIcon');
+    const { canClear, getPartOfThemeProps, pullIconClass, clearIconClass } = this.props;
+    const themeProps =
+      this.isEmpty() || !canClear
+        ? getPartOfThemeProps('SwitchIcon')
+        : getPartOfThemeProps('ClearIcon');
+
     const Icon =
       this.isEmpty() || !canClear ? (
-        <CommonIcon themeProps={themeProps} iconClass={Pull} />
+        <CommonIcon themeProps={themeProps} iconClass={pullIconClass} />
       ) : (
-        <CommonIcon themeProps={themeProps} iconClass={Clear} onClick={this.onClear} />
+        <CommonIcon themeProps={themeProps} iconClass={clearIconClass} onClick={this.onClear} />
       );
     return <IconWrap themeProps={themeProps}>{Icon}</IconWrap>;
   }

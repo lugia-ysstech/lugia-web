@@ -175,16 +175,16 @@
         "TitleContainer": {
           "name": "卡片区域",
           "desc": "卡片区域样式配置",
-          "normal": [["width"],["background"]]
+          "normal": [["width"], ["background"]]
         },
         "BorderStyle": {
           "name": "默认线",
           "desc": "默认线样式配置",
-          "normal": [["border","bottom"]]
+          "normal": [["border", "bottom"]]
         },
-        "TabHeader":{
-          "name":"标签配置",
-          "theme":{
+        "TabHeader": {
+          "name": "标签配置",
+          "theme": {
             "DefaultTabPan": {
               "name": "默认标签",
               "desc": "默认标签样式配置",
@@ -273,9 +273,9 @@
           "desc": "卡片区域样式配置",
           "normal": [["width"]]
         },
-        "TabHeader":{
-          "name":"标签配置",
-          "theme":{
+        "TabHeader": {
+          "name": "标签配置",
+          "theme": {
             "DefaultTabPan": {
               "name": "默认标签",
               "desc": "默认标签样式配置",
@@ -327,16 +327,16 @@
     "TitleContainer": {
       "name": "卡片区域",
       "desc": "卡片区域样式配置",
-      "normal": [["width"],["background"],["textAlign"]]
+      "normal": [["width"], ["background"], ["textAlign"]]
     },
     "BorderStyle": {
       "name": "默认线",
       "desc": "默认线样式配置",
-      "normal": [["color"],["width"]]
+      "normal": [["color"], ["width"]]
     },
-    "TabHeader":{
-      "name":"标签配置",
-      "theme":{
+    "TabHeader": {
+      "name": "标签配置",
+      "theme": {
         "DefaultTabPan": {
           "name": "默认标签",
           "desc": "默认标签样式配置",

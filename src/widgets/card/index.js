@@ -68,6 +68,8 @@ const CardOutContainer = CSSComponent({
   css: css`
     position: relative;
     display: flex;
+    min-width: ${px2remcss(50)};
+    min-height: ${px2remcss(20)};
   `,
   option: { hover: true },
 });
@@ -306,33 +308,20 @@ const TitleBottomLine = CSSComponent({
   tag: 'div',
   className: 'CardTipBottomLine',
   normal: {
-    selectNames: [['width'], ['margin'], ['border']],
+    selectNames: [['width'], ['margin'], ['border', 'bottom']],
     defaultTheme: {
       height: 1,
       width: '100%',
       margin: {
         top: 10,
       },
-    },
-    getThemeMeta(themeMeta: Object, themeProps: Object) {
-      const { propsConfig } = themeProps;
-      const { tipLineDashed } = propsConfig;
-      const { background = {}, height, width } = themeMeta;
-      const { color = '' } = background;
-      const theColor = color ? color : superLightColor;
-      const theWidth = width ? width : '100%';
-      const theDashed = tipLineDashed ? 'dashed' : 'solid';
-      const theBorderWidth = height ? height : 1;
-      return {
-        width: theWidth,
-        border: {
-          top: {
-            color: theColor,
-            style: theDashed,
-            width: theBorderWidth,
-          },
+      border: {
+        bottom: {
+          style: 'solid',
+          width: 1,
+          color: superLightColor,
         },
-      };
+      },
     },
   },
 });
@@ -441,7 +430,7 @@ class Card extends React.Component<CardProps, CardState> {
   }
 
   getTitleTipContainer() {
-    const { title, type, tipLineDashed } = this.props;
+    const { title, type } = this.props;
     const TitleCmp = this.getDetails('title');
     if (title && type === 'tip') {
       return [
@@ -449,13 +438,7 @@ class Card extends React.Component<CardProps, CardState> {
           <TitleTipLine themeProps={this.props.getPartOfThemeProps('CardTitleTipLine')} />
           {TitleCmp}
         </TitleTipContainer>,
-        <TitleBottomLine
-          themeProps={this.props.getPartOfThemeProps('CardTipBottomLine', {
-            props: {
-              tipLineDashed,
-            },
-          })}
-        />,
+        <TitleBottomLine themeProps={this.props.getPartOfThemeProps('CardTipBottomLine')} />,
       ];
     }
     return TitleCmp;
@@ -516,7 +499,7 @@ class Card extends React.Component<CardProps, CardState> {
         top = 14;
         break;
       case 'title':
-        top = type !== 'tip' ? 4 : 13;
+        top = type !== 'tip' ? 10 : 13;
         break;
       default:
         top = 0;
@@ -592,16 +575,18 @@ class Card extends React.Component<CardProps, CardState> {
           SrcAvatar: {
             normal: {
               getCSS() {
-                return `
-                        background-color: transparent;`;
+                return 'background-color: transparent;';
               },
               getThemeMeta(themeMeta: Object, themeProps: Object) {
                 const { propsConfig } = themeProps;
                 const { imageOrientation } = propsConfig;
                 const left = imageOrientation === 'horizontal' ? 20 : 0;
                 return {
+                  width: 60,
+                  height: 60,
                   margin: {
                     left,
+                    top: 10,
                   },
                 };
               },

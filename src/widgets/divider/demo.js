@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 export default () => {
   const view = {
     [Widget.Divider]: {
-      HorizontalDivider: {
+      Divider: {
         normal: {
           width: 400,
           height: 1,
@@ -29,12 +29,16 @@ export default () => {
   };
   const vertical = {
     [Widget.Divider]: {
-      VerticalDivider: {
+      Divider: {
         normal: {
           width: 2,
           height: 10,
           background: {
             color: 'blue',
+          },
+          margin: {
+            left: 5,
+            right: 5,
           },
         },
       },
