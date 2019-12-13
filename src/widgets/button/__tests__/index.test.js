@@ -41,6 +41,57 @@ describe('Button', () => {
     expect(cmpButton.state.clicked).toBe(true);
   });
 
+  it('type link button: click', async () => {
+    let res = 0;
+    const click = () => {
+      res++;
+    };
+    const target = mount(
+      <Button type="link" onClick={click}>
+        hello
+      </Button>
+    );
+    const button = target.find('button').at(0);
+    button.simulate('click');
+    expect(res).toBe(1);
+    button.simulate('click');
+    expect(res).toBe(2);
+  });
+
+  it('type link disabled button: click', async () => {
+    let res = 0;
+    const click = () => {
+      res++;
+    };
+    const target = mount(
+      <Button type="link" disabled onClick={click}>
+        hello
+      </Button>
+    );
+    const button = target.find('button').at(0);
+    button.simulate('click');
+    expect(res).toBe(0);
+    button.simulate('click');
+    expect(res).toBe(0);
+  });
+
+  it('type link loading button: click', async () => {
+    let res = 0;
+    const click = () => {
+      res++;
+    };
+    const target = mount(
+      <Button type="link" loading onClick={click}>
+        hello
+      </Button>
+    );
+    const button = target.find('button').at(0);
+    button.simulate('click');
+    expect(res).toBe(0);
+    button.simulate('click');
+    expect(res).toBe(0);
+  });
+
   it('button: loading', async () => {
     const target = mount(
       <Button type="success" loading={true}>
@@ -110,8 +161,17 @@ describe('Button', () => {
     mountCom(config);
   });
 
+  it('type link props: click, loading: true', async () => {
+    const config = { loading: true, type: 'link' };
+    mountCom(config);
+  });
+
   it('props: click, disabled: true', async () => {
     const config = { disabled: true };
+    mountCom(config);
+  });
+  it('type link props: click, disabled: true', async () => {
+    const config = { disabled: true, type: 'link' };
     mountCom(config);
   });
 });

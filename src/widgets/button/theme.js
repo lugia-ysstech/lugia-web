@@ -32,6 +32,10 @@ export const defaultTheme = {
   border: getBorder({ width: 1, style: 'solid', color: lightGreyColor }),
   background: { color: defaultColor },
 };
+export const linkTheme = {
+  border: 'none',
+  background: 'none',
+};
 export const defaultHoverTheme = {
   border: getBorder({ width: 1, style: 'solid', color: hoverColor }),
   background: { color: spiritColor },
@@ -40,6 +44,9 @@ export const defaultActiveTheme = {
   border: getBorder({ width: 1, style: 'solid', color: mouseDownColor }),
   background: { color: spiritColor },
 };
+
+const primaryHoverColor = colorsFunc(themeColor).hoverColor;
+const primaryDisabeldColor = changeColor(themeColor, 45).color;
 
 export const TypeTheme = {
   default: defaultTheme,
@@ -64,7 +71,7 @@ export const TypeHoverTheme = {
   default: defaultHoverTheme,
   primary: {
     border: 'none',
-    background: { color: colorsFunc(themeColor).hoverColor },
+    background: { color: primaryHoverColor },
   },
   success: {
     border: 'none',
@@ -89,7 +96,7 @@ export const DisabledTypeTheme = {
   default: defaultDisabledTheme,
   primary: {
     border: 'none',
-    background: { color: changeColor(themeColor, 45).color },
+    background: { color: primaryDisabeldColor },
   },
   success: {
     border: 'none',
@@ -290,6 +297,7 @@ export const TextTypeTheme = {
   success: { color: defaultColor },
   warning: { color: defaultColor },
   danger: { color: defaultColor },
+  link: { color: themeColor },
 };
 export const TextTypeHoverTheme = {
   default: textDefaultHoverTheme,
@@ -297,6 +305,7 @@ export const TextTypeHoverTheme = {
   success: { color: defaultColor },
   warning: { color: defaultColor },
   danger: { color: defaultColor },
+  link: { color: primaryHoverColor },
 };
 export const TextTypeActiveTheme = {
   default: { color: mouseDownColor },
@@ -304,6 +313,7 @@ export const TextTypeActiveTheme = {
   success: { color: defaultColor },
   warning: { color: defaultColor },
   danger: { color: defaultColor },
+  link: { color: mouseDownColor },
 };
 export const TextTypeDisabledTheme = {
   default: { color: lightGreyColor },
@@ -311,13 +321,16 @@ export const TextTypeDisabledTheme = {
   success: { color: defaultColor },
   warning: { color: defaultColor },
   danger: { color: defaultColor },
+  link: { color: primaryDisabeldColor },
 };
+
 export const TextPlainTypeTheme = {
   default: { color: defaultColors },
   primary: { color: themeColor },
   success: { color: successColor },
   warning: { color: warningColor },
   danger: { color: dangerColor },
+  link: { color: defaultColors },
 };
 export const TextPlainHoverTheme = {
   default: { color: hoverColor },
@@ -325,14 +338,15 @@ export const TextPlainHoverTheme = {
   success: { color: defaultColor },
   warning: { color: defaultColor },
   danger: { color: defaultColor },
+  link: { color: hoverColor },
 };
-
 export const TextPlainDisabledTypeTheme = {
   default: { color: lightGreyColor },
   primary: { color: primaryColors },
   success: { color: successColors },
   warning: { color: warningColors },
   danger: { color: dangerColors },
+  link: { color: lightGreyColor },
 };
 export const TextPlainActiveTypeTheme = {
   default: { color: mouseDownColor },
@@ -340,7 +354,9 @@ export const TextPlainActiveTypeTheme = {
   success: { color: defaultColor },
   warning: { color: defaultColor },
   danger: { color: defaultColor },
+  link: { color: mouseDownColor },
 };
+
 export const TextSizeTheme = {
   large: { font: { size: 14 } },
   default: { font: { size: 14 } },

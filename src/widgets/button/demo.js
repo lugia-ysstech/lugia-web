@@ -72,6 +72,7 @@ export default () => {
         normal: {
           color: 'black',
           font: { size: 16, weight: 500 },
+          margin: { right: 20 },
         },
         hover: {
           color: 'blue',
@@ -107,6 +108,8 @@ export default () => {
           <Button type="warning">Warning</Button>
           <p>Danger</p>
           <Button type="danger">Danger</Button>
+          <p>Link</p>
+          <Button type="link">Link</Button>
         </Wrapper>
         <Wrapper>
           <p>plain</p>
@@ -129,6 +132,10 @@ export default () => {
           <p>danger</p>
           <Button type="danger" shape="round" plain>
             Danger
+          </Button>
+          <p>danger</p>
+          <Button type="link" shape="round" plain>
+            Link
           </Button>
         </Wrapper>
         <Wrapper>
@@ -164,6 +171,10 @@ export default () => {
           <Button type="danger" disabled>
             danger
           </Button>
+          <p>Link</p>
+          <Button type="link" disabled>
+            Link
+          </Button>
         </Wrapper>
         <Wrapper>
           <p>plain disabled</p>
@@ -187,6 +198,10 @@ export default () => {
           <Button type="danger" plain disabled>
             danger
           </Button>
+          <p>link</p>
+          <Button type="link" plain disabled>
+            Link
+          </Button>
         </Wrapper>
         <Wrapper>
           <p>circle</p>
@@ -197,10 +212,18 @@ export default () => {
           <Button circle size="small" />
           <p>loading</p>
           <Button loading>loading</Button>
+          <p>link loading</p>
+          <Button type="link" loading>
+            loading
+          </Button>
           <p>loading</p>
           <Button loading={{ delay: 3000 }}>loading</Button>
           <p>icon Button</p>
           <Button icon="lugia-icon-direction_logout">Button</Button>
+          <p>icon link Button</p>
+          <Button type="link" icon="lugia-icon-direction_logout">
+            Button
+          </Button>
           <p>icon Button</p>
           <Theme config={config}>
             <Button icon="lugia-icon-financial_global">Button</Button>
@@ -211,10 +234,6 @@ export default () => {
             </Button>
           </Theme>
         </Wrapper>
-
-        {/*<Theme config={view}>*/}
-        {/*<Button viewClass="register">Button</Button>*/}
-        {/*</Theme>*/}
       </div>
       <br />
       <div style={{ width: '500px' }}>
