@@ -817,7 +817,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
     const { pagedType, tabPosition } = this.props;
     const actualSize = this.getActualWidthOrHeight();
     const offsetSize = isVertical(tabPosition) ? this.offsetHeight : this.offsetWidth;
-    if (actualSize < offsetSize) {
+    if (actualSize <= offsetSize) {
       return 0;
     }
 
