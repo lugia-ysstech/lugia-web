@@ -64,7 +64,7 @@
   },
   "type": {
     "ButtonShape": ["default", "round"],
-    "ButtonType": ["default", "primary", "success", "warning", "danger"],
+    "ButtonType": ["default", "primary", "success", "warning", "danger", "link"],
     "ButtonSize": ["default", "small", "large"],
     "ButtonStyle": {
       "width": {
@@ -120,7 +120,7 @@
         "ButtonIcon": {
           "name": "按钮图标样式",
           "desc": "为按钮图标配置样式",
-          "normal": [["color"], ["font"]],
+          "normal": [["color"], ["font"], ["margin", "right"]],
           "hover": [["color"]],
           "active": [["color"]],
           "disabled": [["color"]],
@@ -165,7 +165,7 @@
         "ButtonIcon": {
           "name": "按钮图标样式",
           "desc": "为按钮图标配置样式",
-          "normal": [["color"], ["font"]],
+          "normal": [["color"], ["font"], ["margin", "right"]],
           "hover": [["color"]],
           "active": [["color"]],
           "disabled": [["color"]],
@@ -220,6 +220,64 @@
           "focus": [["color"]]
         }
       }
+    },
+    "LinkButton": {
+      "sequence": 1,
+      "title": "文字按钮",
+      "desc": "文字按钮",
+      "props": {
+        "type": "link"
+      },
+      "theme": {
+        "Container": {
+          "name": "按钮整体样式",
+          "desc": "为按钮配置整体样式",
+          "normal": [["height"], ["width"]]
+        },
+        "ButtonText": {
+          "name": "文字样式",
+          "desc": "为文字配置样式",
+          "normal": [["color"], ["font"]],
+          "hover": [["color"]],
+          "active": [["color"]],
+          "disabled": [["color"]],
+          "focus": [["color"]]
+        }
+      }
+    },
+    "LinkIconButton": {
+      "sequence": 1,
+      "title": "文字按钮",
+      "desc": "文字按钮",
+      "props": {
+        "type": "link",
+        "icon": "lugia-icon-logo_lugia"
+      },
+      "theme": {
+        "Container": {
+          "name": "按钮整体样式",
+          "desc": "为按钮配置整体样式",
+          "normal": [["height"], ["width"]]
+        },
+        "ButtonText": {
+          "name": "文字样式",
+          "desc": "为文字配置样式",
+          "normal": [["color"], ["font"]],
+          "hover": [["color"]],
+          "active": [["color"]],
+          "disabled": [["color"]],
+          "focus": [["color"]]
+        },
+        "ButtonIcon": {
+          "name": "图标样式",
+          "desc": "为图标配置样式",
+          "normal": [["color"], ["font"], ["margin", "right"]],
+          "hover": [["color"]],
+          "active": [["color"]],
+          "disabled": [["color"]],
+          "focus": [["color"]]
+        }
+      }
     }
   },
   "theme": {
@@ -252,7 +310,7 @@
     "ButtonIcon": {
       "name": "按钮图标样式",
       "desc": "为按钮图标配置样式",
-      "normal": [["color"], ["font"]],
+      "normal": [["color"], ["font"], ["margin", "right"]],
       "hover": [["color"]],
       "active": [["color"]],
       "disabled": [["color"]],
