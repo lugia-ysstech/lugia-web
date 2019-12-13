@@ -10,6 +10,7 @@ import Theme from '../theme';
 import { css, StaticComponent } from '@lugia/theme-css-hoc';
 import Widget from '../consts/index';
 import message from '../message';
+import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
 
 type PropsType = {};
 type StateType = {};
@@ -19,7 +20,6 @@ const LabelBox = StaticComponent({
   className: 'Container',
   css: css`
     box-sizing: border-box;
-    white-space: nowrap;
     margin: 10px;
   `,
 });
@@ -96,8 +96,31 @@ class LabelDemo extends React.Component<PropsType, StateType> {
         },
       },
     };
+    const configBorder = {
+      [Widget.Label]: {
+        Container: {
+          normal: {
+            width: 220,
+            padding: 20,
+            boxShadow: getBoxShadow('3px 3px 5px #87A0FF'),
+            border: getBorder({ color: '#ffb282', width: 2, style: 'solid' }),
+            borderRadius: getBorderRadius(20),
+          },
+          hover: {
+            boxShadow: getBoxShadow('3px 3px 5px #F3B8FF'),
+            border: getBorder({ color: '#8592ff', width: 2, style: 'solid' }),
+            borderRadius: getBorderRadius(10),
+          },
+        },
+      },
+    };
     return (
       <div>
+        <Theme config={configBorder}>
+          <LabelBox>主题配置 text: showPrefix : *</LabelBox>
+          <Label>这是一段很长很长的文本</Label>
+        </Theme>
+
         <Theme config={config}>
           <LabelBox>主题配置 text: showPrefix : *</LabelBox>
           <Label text={'这是一段文本'} showPrefix prefix={'*'} />

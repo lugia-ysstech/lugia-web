@@ -36,14 +36,53 @@
     "Container": {
       "name": "文本",
       "desc": "文本的样式",
-      "normal": [["color"], ["font"], ["lineHeight"], ["margin"], ["padding"], ["cursor"],["width"], ["height"], ["background"], ["textAlign"]],
-      "hover": [["color"], ["font"], ["margin"], ["padding"], ["cursor"]],
-      "disabled": [["color"],["cursor"], ["background"]]
+      "normal": [
+        ["color"],
+        ["font"],
+        ["lineHeight"],
+        ["margin"],
+        ["padding"],
+        ["cursor"],
+        ["width"],
+        ["height"],
+        ["background"],
+        ["textAlign"],
+        ["border"],
+        ["borderRadius"],
+        ["boxShadow"]
+      ],
+      "hover": [
+        ["color"],
+        ["font"],
+        ["cursor"],
+        ["border"],
+        ["borderRadius"],
+        ["boxShadow"],
+        ["background"]
+      ],
+      "disabled": [
+        ["color"],
+        ["font"],
+        ["cursor"],
+        ["border"],
+        ["borderRadius"],
+        ["boxShadow"],
+        ["background"]
+      ]
     },
     "LabelPrefix": {
       "name": "文本前缀",
       "desc": "文本前缀的样式",
-      "normal": [["color"], ["font"], ["lineHeight"], ["margin"], ["cursor"],["width"], ["height"], ["textAlign"]],
+      "normal": [
+        ["color"],
+        ["font"],
+        ["lineHeight"],
+        ["margin"],
+        ["cursor"],
+        ["width"],
+        ["height"],
+        ["textAlign"]
+      ],
       "hover": [["color"], ["cursor"]],
       "disabled": [["color"], ["cursor"]]
     }
