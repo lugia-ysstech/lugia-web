@@ -33,7 +33,6 @@ export default function getThemeProps(props: TypeProps) {
     } = themeConfig;
 
     const border = width / 2;
-    console.log(color);
     const triangleDefaultTheme = {
       normal: {
         border: {
