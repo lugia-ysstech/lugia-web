@@ -20,6 +20,7 @@ import {
   defaultActiveTheme,
   defaultHoverTheme,
   defaultTheme,
+  linkTheme,
   defaultDisabledTheme,
   SizeTheme,
   CircleTheme,
@@ -40,7 +41,7 @@ import {
   TextCircleTheme,
 } from '../button/theme';
 
-export type ButtonType = 'default' | 'primary' | 'success' | 'warning' | 'danger';
+export type ButtonType = 'default' | 'primary' | 'success' | 'warning' | 'danger' | 'link';
 type ButtonShape = 'default' | 'round';
 type ButtonSize = 'default' | 'small' | 'large';
 
@@ -197,6 +198,8 @@ const ShapeCSS: { [key: ButtonSize]: ShapeStyle } = {
 
 export const getClickCSS = (props: ButtonOutProps) => {
   const { type = 'default', size = 'default', shape = 'default', circle = false } = props;
+  if (type === 'link') return '';
+
   const { height: sizeHeight } = fetchSize(size);
   const typeTheme = fetchTypeCSS(themeColor)[type] || fetchTypeCSS(themeColor).default;
   const backGround =
@@ -314,6 +317,8 @@ export const ButtonOut = CSSComponent({
         circle,
         shape = 'default',
       } = propsConfig;
+      if (type === 'link') return linkTheme;
+
       let normalTheme;
       if (loading) {
         if (plain) {
@@ -342,6 +347,9 @@ export const ButtonOut = CSSComponent({
     defaultTheme: defaultHoverTheme,
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
+      const { type = 'default' } = propsConfig;
+      if (type === 'link') return linkTheme;
+
       return getHoverStyle(propsConfig);
     },
   },
@@ -351,6 +359,8 @@ export const ButtonOut = CSSComponent({
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
       const { type = 'default', plain } = propsConfig;
+      if (type === 'link') return linkTheme;
+
       let disabledTheme;
       if (plain) {
         disabledTheme = PlainDisabledTypeTheme[type] || PlainDisabledTypeTheme.default;
@@ -367,6 +377,8 @@ export const ButtonOut = CSSComponent({
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
       const { type = 'default', plain } = propsConfig;
+      if (type === 'link') return linkTheme;
+
       let activeTheme;
       if (plain) {
         activeTheme = PlainActiveTypeTheme[type] || PlainActiveTypeTheme.default;
@@ -382,6 +394,9 @@ export const ButtonOut = CSSComponent({
     defaultTheme: defaultHoverTheme,
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
+      const { type = 'default' } = propsConfig;
+      if (type === 'link') return linkTheme;
+
       return getHoverStyle(propsConfig);
     },
   },

@@ -410,6 +410,49 @@ Array [
           </span>
         </span>
       </button>
+      <p>
+        Link
+      </p>
+      <button
+        className="c1"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        onMouseUp={[Function]}
+        size="default"
+        style={
+          Object {
+            "backgroundColor": "rgb(0,0,0,0)",
+            "backgroundImage": "none",
+            "borderBottomWidth": 0,
+            "borderLeftWidth": 0,
+            "borderRightWidth": 0,
+            "borderTopWidth": 0,
+          }
+        }
+        type="link"
+      >
+        <span
+          className="c2"
+        >
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#4d63ff",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            Link
+          </span>
+        </span>
+      </button>
     </div>
     <div
       className="c0"
@@ -713,6 +756,50 @@ Array [
             }
           >
             Danger
+          </span>
+        </span>
+      </button>
+      <p>
+        danger
+      </p>
+      <button
+        className="c1"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        onMouseUp={[Function]}
+        shape="round"
+        size="default"
+        style={
+          Object {
+            "backgroundColor": "rgb(0,0,0,0)",
+            "backgroundImage": "none",
+            "borderBottomWidth": 0,
+            "borderLeftWidth": 0,
+            "borderRightWidth": 0,
+            "borderTopWidth": 0,
+          }
+        }
+        type="link"
+      >
+        <span
+          className="c2"
+        >
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#000000",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            Link
           </span>
         </span>
       </button>
@@ -1162,6 +1249,51 @@ Array [
           </span>
         </span>
       </button>
+      <p>
+        Link
+      </p>
+      <button
+        className="c1"
+        disabled={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        onMouseUp={[Function]}
+        size="default"
+        style={
+          Object {
+            "backgroundColor": "rgb(0,0,0,0)",
+            "backgroundImage": "none",
+            "borderBottomWidth": 0,
+            "borderLeftWidth": 0,
+            "borderRightWidth": 0,
+            "borderTopWidth": 0,
+            "cursor": "not-allowed",
+          }
+        }
+        type="link"
+      >
+        <span
+          className="c2"
+        >
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#c0c8ff",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            Link
+          </span>
+        </span>
+      </button>
     </div>
     <div
       className="c0"
@@ -1473,6 +1605,51 @@ Array [
           </span>
         </span>
       </button>
+      <p>
+        link
+      </p>
+      <button
+        className="c1"
+        disabled={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        onMouseUp={[Function]}
+        size="default"
+        style={
+          Object {
+            "backgroundColor": "rgb(0,0,0,0)",
+            "backgroundImage": "none",
+            "borderBottomWidth": 0,
+            "borderLeftWidth": 0,
+            "borderRightWidth": 0,
+            "borderTopWidth": 0,
+            "cursor": "not-allowed",
+          }
+        }
+        type="link"
+      >
+        <span
+          className="c2"
+        >
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#cccccc",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            Link
+          </span>
+        </span>
+      </button>
     </div>
     <div
       className="c0"
@@ -1751,6 +1928,62 @@ Array [
         </span>
       </button>
       <p>
+        link loading
+      </p>
+      <button
+        className="c5"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        onMouseUp={[Function]}
+        size="default"
+        style={
+          Object {
+            "backgroundColor": "rgb(0,0,0,0)",
+            "backgroundImage": "none",
+            "borderBottomWidth": 0,
+            "borderLeftWidth": 0,
+            "borderRightWidth": 0,
+            "borderTopWidth": 0,
+          }
+        }
+        type="link"
+      >
+        <span
+          className="c2"
+        >
+          <i
+            className="lugia-icon-financial_loading_o   c6"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#8090ff",
+              }
+            }
+          />
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#8090ff",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            loading
+          </span>
+        </span>
+      </button>
+      <p>
         loading
       </p>
       <button
@@ -1885,6 +2118,64 @@ Array [
             style={
               Object {
                 "color": "#666666",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            Button
+             
+          </span>
+        </span>
+      </button>
+      <p>
+        icon link Button
+      </p>
+      <button
+        className="c1"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        onMouseUp={[Function]}
+        size="default"
+        style={
+          Object {
+            "backgroundColor": "rgb(0,0,0,0)",
+            "backgroundImage": "none",
+            "borderBottomWidth": 0,
+            "borderLeftWidth": 0,
+            "borderRightWidth": 0,
+            "borderTopWidth": 0,
+          }
+        }
+        type="link"
+      >
+        <span
+          className="c2"
+        >
+          <i
+            className="lugia-icon-direction_logout   c7"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#4d63ff",
+                "fontSize": "1.4rem",
+              }
+            }
+          />
+          <span
+            className="c3"
+            style={
+              Object {
+                "color": "#4d63ff",
                 "fontSize": "1.4rem",
               }
             }
