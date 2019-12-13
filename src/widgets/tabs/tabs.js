@@ -63,7 +63,6 @@ const TabContent = CSSComponent({
   },
   css: css`
     overflow: hidden;
-
     padding: 10px;
     width: 100%;
     height: 0;
@@ -195,9 +194,9 @@ export function setKeyValue(data: Array<Object>) {
 export function getDefaultData(props: Object) {
   const { defaultData, data, children } = props;
   let configData = [
-    { title: 'Tab1', content: 'Tab1 content', key: 'Tab1' },
-    { title: 'Tab2', content: 'Tab2 content', key: 'Tab2' },
-    { title: 'Tab3', content: 'Tab3 content', key: 'Tab3' },
+    { title: 'Tab1', key: 'Tab1' },
+    { title: 'Tab2', key: 'Tab2' },
+    { title: 'Tab3', key: 'Tab3' },
   ];
   if (hasTargetInProps('data', props) && Array.isArray(data)) {
     configData = data ? data : [];
@@ -444,8 +443,19 @@ class TabsBox extends Component<TabsProps, TabsState> {
               props,
             });
             const { forceRender } = this.props;
-            return forceRender ? (
-              activityValue === key && (
+            return content ? (
+              forceRender ? (
+                activityValue === key && (
+                  <TabContent themeProps={innerContentThemeProps}>
+                    <TabContentInner
+                      {...this.props}
+                      themeProps={contentThemeProps}
+                      content={content}
+                      forceRender={forceRender && key === activityValue}
+                    />
+                  </TabContent>
+                )
+              ) : (
                 <TabContent themeProps={innerContentThemeProps}>
                   <TabContentInner
                     {...this.props}
@@ -455,16 +465,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
                   />
                 </TabContent>
               )
-            ) : (
-              <TabContent themeProps={innerContentThemeProps}>
-                <TabContentInner
-                  {...this.props}
-                  themeProps={contentThemeProps}
-                  content={content}
-                  forceRender={forceRender && key === activityValue}
-                />
-              </TabContent>
-            );
+            ) : null;
           })}
         </TabContentContainer>
       );

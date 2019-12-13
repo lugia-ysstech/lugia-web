@@ -521,6 +521,9 @@ export default class TabsDemo extends React.Component<any, any> {
     const index = Math.floor(Math.random() * 5);
     return addItem[index];
   };
+  onDeleteClick = (activityKey: string) => {
+    console.log('activityKey', activityKey);
+  };
 
   render() {
     const lineView = {
@@ -922,11 +925,23 @@ export default class TabsDemo extends React.Component<any, any> {
 
     return (
       <div>
+        <Tabs />
+        <Tabs tabType={'card'} />
+        <Tabs tabType={'window'} />
         <Tabs>
           <Tabpane title={'1111'} content={'11111'} key={'0'} />
           <Tabpane title={'2222'} content={<div>2222</div>} key={'1'} />
         </Tabs>
-        <Tabs tabType={'card'} data={defaulttestDelayData} showDeleteBtn={true} showAddBtn={true} />
+        <Tabs
+          tabType={'card'}
+          data={defaulttestDelayData}
+          showDeleteBtn={true}
+          onDelete={this.onDeleteClick}
+          showAddBtn={true}
+          pagedType={'single'}
+          onAddClick={this.onAddClick}
+          // defaultData={defaulttestDelayData}
+        />
         <Tabs tabType={'window'} data={defaulttestDelayData} />
 
         <Theme config={updateTheme}>
