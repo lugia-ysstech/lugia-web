@@ -247,8 +247,8 @@
     },
     "LinkIconButton": {
       "sequence": 1,
-      "title": "文字按钮",
-      "desc": "文字按钮",
+      "title": "文字图标按钮",
+      "desc": "文字图标按钮",
       "props": {
         "type": "link",
         "icon": "lugia-icon-logo_lugia"
