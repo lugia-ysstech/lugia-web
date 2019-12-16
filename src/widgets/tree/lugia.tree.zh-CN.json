@@ -37,12 +37,12 @@
     "valueField": {
       "type": "string",
       "desc": "data数据的value值的名称",
-      "defaultValue": "key"
+      "defaultValue": "value"
     },
     "displayField": {
       "type": "string",
       "desc": "data数据的displayValue值的名称",
-      "defaultValue": "title"
+      "defaultValue": "text"
     },
     "value": {
       "type": "string | string[] | number | number[]",
