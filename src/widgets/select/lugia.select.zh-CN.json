@@ -512,15 +512,15 @@
 
         "SwitchIcon": {
           "name": "下拉图标",
-          "desc": "配置下拉或清除按钮的图标样式",
+          "desc": "配置下拉图标样式",
           "normal": [["color"], ["background"], ["font"], ["margin"], ["opacity"]],
           "hover": [["color"], ["font"], ["opacity"]],
           "active": [],
           "disabled": []
         },
         "ClearIcon": {
-          "name": "下拉图标",
-          "desc": "配置下拉或清除按钮的图标样式",
+          "name": "清空图标",
+          "desc": "配置清除图标样式",
           "normal": [["color"], ["background"], ["font"], ["margin"], ["opacity"]],
           "hover": [["color"], ["font"], ["opacity"]],
           "active": [],
