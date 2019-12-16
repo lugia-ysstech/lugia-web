@@ -11,7 +11,7 @@ import type { TooltipProps, TooltipState } from '../css/tooltip';
 import { Down, Left, Right, Up } from '../css/tooltip';
 import colorsFunc from '../css/stateColor';
 import ThemeHoc from '@lugia/theme-hoc';
-import CSSComponent, { css } from '@lugia/theme-css-hoc';
+import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import { getBoxShadow } from '@lugia/theme-utils';
 
 import { units } from '@lugia/css';
@@ -292,6 +292,13 @@ const Description: Object = CSSComponent({
     line-height: 1.5;
   `,
 });
+const ChildrenContainer: Object = StaticComponent({
+  tag: 'div',
+  className: 'ChildrenContainer',
+  css: css`
+    display: inline-block;
+  `,
+});
 
 export function hasVisibleInProps(props: Object) {
   return 'visible' in props;
@@ -382,7 +389,7 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
           </ContentWrapper>
         }
       >
-        <div>{children}</div>
+        <ChildrenContainer>{children}</ChildrenContainer>
       </Trigger>
     );
   }
