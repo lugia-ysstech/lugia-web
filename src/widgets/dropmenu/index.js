@@ -10,10 +10,26 @@ import ThemeProvider from '../theme-provider';
 import { deepMerge } from '@lugia/object-utils';
 import Widget from '../consts/index';
 import '../common/shirm';
+import Menu from '../menu';
 import DropMenuButton from './dropmenuButton';
 import { DropMenuContainer } from '../css/dropmenubutton';
 
 const alignType = 'topLeft | top | topRight | bottomLeft | bottom | bottomRight';
+
+const defaultData = [
+  {
+    value: '选项1',
+    text: '选项1',
+  },
+  {
+    value: '选项2',
+    text: '选项2',
+  },
+  {
+    value: '选项3',
+    text: '选项3',
+  },
+];
 
 type DropMenuProps = {
   action: Array<string>,
@@ -29,6 +45,7 @@ type DropMenuProps = {
   onClick?: Function,
   onMouseEnter?: Function,
   onMouseLeave?: Function,
+  onMenuClick?: Function,
   disabled: boolean,
   direction: 'up' | 'down',
 };
@@ -61,18 +78,22 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
 
   render() {
     const { menus, action, hideAction, align } = this.props;
-    const offsetY = this.getOffSetY(align);
 
-    if (!menus) {
-      return this.getChildrenItem();
-    }
-
-    const menu = React.Children.only(menus);
-    const popup = <div>{React.cloneElement(menu, this.ejectOnClick(menu))}</div>;
     const config = {
       [Widget.DropMenuButton]: this.getDropMenuButtonTheme(),
       [Widget.Menu]: this.getMenuTheme(),
     };
+    let popup;
+    if (!menus) {
+      const { data = defaultData } = this.props;
+      popup = <Menu data={data} onClick={this.onMenuClick} />;
+    } else {
+      const menu = React.Children.only(menus);
+      popup = <div>{React.cloneElement(menu, this.ejectOnClick(menu))}</div>;
+    }
+
+    const offsetY = this.getOffSetY(align);
+
     return (
       <DropMenuContainer themeProps={this.props.getPartOfThemeProps('Container')}>
         <Theme
@@ -109,7 +130,6 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
       text,
       divided,
       type,
-      getPartOfThemeHocProps,
       _onClick,
       onClick,
       onMouseEnter,
@@ -118,14 +138,11 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
       direction,
     } = this.props;
 
-    const { theme, viewClass } = getPartOfThemeHocProps('DropMenuButton');
     return (
       <DropMenuButton
         text={text}
         divided={divided}
         type={type}
-        theme={theme}
-        viewClass={viewClass}
         _onClick={_onClick}
         onClick={onClick}
         onMouseEnter={onMouseEnter}
@@ -151,14 +168,18 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
     }
     return newChildProps;
   };
-  onMenuClick = (e: Object, keys: string[], items: Object) => {
-    const { children } = items;
+  onMenuClick = (e: Object, keys: string[], item: Object) => {
+    const { onMenuClick } = this.props;
+    const { children } = item;
     if (!children || children.length === 0) {
       this.isLeaf = true;
       this.onPopupVisibleChange(false);
     } else {
       this.isLeaf = false;
     }
+    const key = keys.selectedKeys[0];
+
+    onMenuClick && onMenuClick({ e, key, item });
   };
 
   getOffSetY = (align: string) => {
