@@ -75,7 +75,8 @@
             ["margin"],
             ["padding"],
             ["boxShadow"],
-            ["opacity"]
+            ["opacity"],
+            ["borderRadius"]
           ],
           "hover": [["background"], ["border"], ["boxShadow"], ["opacity"]]
         },
@@ -152,7 +153,8 @@
             ["margin"],
             ["padding"],
             ["boxShadow"],
-            ["opacity"]
+            ["opacity"],
+            ["borderRadius"]
           ],
           "hover": [["background"], ["border"], ["boxShadow"], ["opacity"]]
         },
@@ -234,7 +236,8 @@
             ["margin"],
             ["padding"],
             ["boxShadow"],
-            ["opacity"]
+            ["opacity"],
+            ["borderRadius"]
           ],
           "hover": [["background"], ["border"], ["boxShadow"], ["opacity"]]
         },
@@ -310,7 +313,8 @@
             ["margin"],
             ["padding"],
             ["boxShadow"],
-            ["opacity"]
+            ["opacity"],
+            ["borderRadius"]
           ],
           "hover": [["background"], ["border"], ["boxShadow"], ["opacity"]]
         },
@@ -391,7 +395,8 @@
             ["margin"],
             ["padding"],
             ["boxShadow"],
-            ["opacity"]
+            ["opacity"],
+            ["borderRadius"]
           ],
           "hover": [["background"], ["border"], ["boxShadow"], ["opacity"]]
         },
@@ -467,7 +472,8 @@
         ["margin"],
         ["padding"],
         ["boxShadow"],
-        ["opacity"]
+        ["opacity"],
+        ["borderRadius"]
       ],
       "hover": [["background"], ["border"], ["borderRadius"], ["boxShadow"], ["opacity"]]
     },
@@ -490,6 +496,7 @@
       "normal": [["width"], ["height"], ["font"], ["background"], ["margin"], ["padding"]]
     },
     "CardOperation": {
+      "name": "卡片操作按钮",
       "desc": "配置卡片操作按钮",
       "normal": [
         ["width"],
