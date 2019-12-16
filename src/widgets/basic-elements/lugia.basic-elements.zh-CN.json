@@ -21,6 +21,17 @@
       "props": {
         "shape": "circular"
       },
+      "defaultTheme": {
+        "Container": {
+          "normal": {
+            "width": 32,
+            "height": 32,
+            "background": {
+              "color": "#4d63ff"
+            }
+          }
+        }
+      },
       "theme": {
         "Container": {
           "name": "配置圆形",
@@ -29,7 +40,6 @@
             ["width"],
             ["height"],
             ["background"],
-            ["borderRadius"],
             ["border"],
             ["boxShadow"],
             ["opacity"],
@@ -47,6 +57,17 @@
       "desc": "三角形元素",
       "props": {
         "shape": "triangle"
+      },
+      "defaultTheme": {
+        "Container": {
+          "normal": {
+            "width": 32,
+            "height": 32,
+            "background": {
+              "color": "#4d63ff"
+            }
+          }
+        }
       },
       "theme": {
         "Container": {
@@ -77,6 +98,17 @@
       "hover": [],
       "active": [],
       "disabled": []
+    }
+  },
+  "defaultTheme": {
+    "Container": {
+      "normal": {
+        "width": 32,
+        "height": 32,
+        "background": {
+          "color": "#4d63ff"
+        }
+      }
     }
   }
 }
