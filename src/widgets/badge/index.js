@@ -18,7 +18,7 @@ const { px2remcss } = units;
 const { dangerColor, defaultColor } = colorsFunc();
 
 export const BaseRedPoint = CSSComponent({
-  tag: 'sup',
+  tag: 'div',
   className: 'BaseRedPoint',
   normal: {
     selectNames: [
