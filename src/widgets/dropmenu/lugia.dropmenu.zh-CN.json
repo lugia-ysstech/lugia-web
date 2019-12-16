@@ -88,6 +88,26 @@
           "type": "Object"
         }
       ]
+    },
+    "onMenuClick": {
+      "desc": "鼠标点击弹开菜单时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "选中DOM的事件对象",
+          "type": "Object"
+        },
+        {
+          "name": "key",
+          "desc": "选中项key值",
+          "type": "Object"
+        },
+        {
+          "name": "item",
+          "desc": "当前选中项的数据",
+          "type": "Object"
+        }
+      ]
     }
   },
   "type": {
