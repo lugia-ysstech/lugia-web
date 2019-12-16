@@ -52,7 +52,9 @@
             ["font"],
             ["fontSize"],
             ["color"],
-            ["boxShadow"]
+            ["boxShadow"],
+            ["border"],
+            ["borderRadius"]
           ]
         }
       }
