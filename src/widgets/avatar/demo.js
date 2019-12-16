@@ -26,9 +26,7 @@ export default () => {
         },
       },
       BadgeNumber: {
-        InnerNumber: {
-          normal: { position: { right: -5, top: -3 } },
-        },
+        normal: { position: { right: -5, top: -3 } },
       },
     },
   };

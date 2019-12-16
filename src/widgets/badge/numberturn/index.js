@@ -39,6 +39,8 @@ const OutInner = CSSComponent({
       ['background'],
       ['boxShadow'],
       ['opacity'],
+      ['border'],
+      ['borderRadius'],
     ],
     defaultTheme: {
       background: { color: dangerColor },
