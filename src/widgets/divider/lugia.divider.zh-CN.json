@@ -35,6 +35,14 @@
       "props": {
         "type": "vertical"
       },
+      "defaultTheme": {
+        "Divider": {
+          "normal": {
+            "width": 1,
+            "height": 200
+          }
+        }
+      },
       "theme": {
         "Divider": {
           "name": "垂直分割线",
@@ -65,6 +73,14 @@
         ["padding"],
         ["boxShadow"]
       ]
+    }
+  },
+  "defaultTheme": {
+    "Divider": {
+      "normal": {
+        "width": 200,
+        "height": 1
+      }
     }
   }
 }
