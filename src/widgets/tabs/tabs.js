@@ -312,7 +312,6 @@ class TabsBox extends Component<TabsProps, TabsState> {
     const { activityValue, data } = this.state;
     const {
       tabType,
-      tabPosition,
       showAddBtn,
       pagedType,
       getTabpane,
@@ -321,6 +320,8 @@ class TabsBox extends Component<TabsProps, TabsState> {
       getPartOfThemeHocProps,
       getPartOfThemeProps,
     } = this.props;
+    let { tabPosition } = this.props;
+    tabPosition = tabType === 'line' ? tabPosition : 'top';
     return {
       activityValue,
       data,
