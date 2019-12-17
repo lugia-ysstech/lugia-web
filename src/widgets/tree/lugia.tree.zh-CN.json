@@ -61,6 +61,14 @@
       ],
       "defaultValue": false
     },
+    "switchIconNames": {
+      "type": "object",
+      "desc": "生成选择项的数据",
+      "meta": [
+        { "key": "open", "title": "展开图标", "type": "icon" },
+        { "key": "close", "title": "关闭图标", "type": "icon" }
+      ]
+    },
     "igronSelectField": {
       "type": "string",
       "desc": "指定不可选的标识"
@@ -83,7 +91,11 @@
       "desc": "单选树形控件,选中时的样式",
       "defaultValue": "default"
     },
-
+    "switchAtEnd": {
+      "type": "boolean",
+      "desc": "控制器是否在末端",
+      "defaultValue": "false"
+    },
     "translateTreeData": {
       "type": "boolean",
       "desc": "是否开启嵌套数据生成Tree",
