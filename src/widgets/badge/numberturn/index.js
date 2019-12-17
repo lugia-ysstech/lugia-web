@@ -80,9 +80,6 @@ const NumberBoxContainer = CSSComponent({
   tag: 'div',
   className: 'badgeNumberBoxContainer',
   normal: { selectNames: [['position']] },
-  css: css`
-    line-height: 0;
-  `,
 });
 const BitOut = CSSComponent({
   tag: 'span',
