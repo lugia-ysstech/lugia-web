@@ -60,6 +60,7 @@ const CommonInputStyle = CSSComponent({
       border: getBorder({ color: borderColor, width: 1, style: 'solid' }),
       borderRadius: getBorderRadius(4),
       width: '100%',
+      fontSize: 12,
     },
     getCSS(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
