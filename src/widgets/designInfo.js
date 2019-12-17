@@ -3,6 +3,7 @@ import AmountInput from './amount-input';
 import AutoComplete from './auto-complete';
 import Avatar from './avatar';
 import Badge from './badge';
+import BasicElements from './basic-elements';
 import Breadcrumb from './breadcrumb';
 import Button from './button';
 import Card from './card';
@@ -37,7 +38,7 @@ import Transfer from './transfer';
 import Tree from './tree';
 import TreeSelect from './tree-select';
 import Upload from './upload';
-
+import Window from './window';
 export default [
   {
     meta: {
@@ -175,6 +176,11 @@ export default [
       },
       category: ['数据录入'],
       theme: {
+        Container: {
+          name: '金额输入框外部容器',
+          desc: '金额输入框外部容器',
+          normal: [['width'], ['height'], ['margin']],
+        },
         InnerInput: {
           name: '金额输入框',
           theme: {
@@ -197,6 +203,7 @@ export default [
                 ['borderRadius'],
                 ['cursor'],
                 ['opacity'],
+                ['boxShadow'],
               ],
               hover: [
                 ['border'],
@@ -219,6 +226,19 @@ export default [
                 ['opacity'],
               ],
             },
+            ClearButton: {
+              name: '输入框清除图标',
+              desc: '输入框后缀清除图标',
+              normal: [['color'], ['fontSize']],
+              hover: [],
+              clicked: [],
+              disabled: [],
+            },
+            Placeholder: {
+              name: '输入框提示信息文字',
+              desc: '输入框提示信息文字',
+              normal: [['color'], ['fontSize'], ['font']],
+            },
           },
         },
         AmountInputPrefix: {
@@ -235,7 +255,15 @@ export default [
             Container: {
               name: '输入框提示框外框部分',
               desc: '输入框提示框外框部分',
-              normal: [['opacity'], ['background'], ['width'], ['height']],
+              normal: [
+                ['opacity'],
+                ['background'],
+                ['width'],
+                ['height'],
+                ['boxShadow'],
+                ['borderRadius'],
+                ['border'],
+              ],
               hover: [],
               clicked: [],
               disabled: [],
@@ -301,6 +329,36 @@ export default [
               name: '输入框外部容器',
               desc: '输入框外部容器',
               normal: [
+                ['width'],
+                ['height'],
+                ['background'],
+                ['border'],
+                ['borderRadius'],
+                ['boxShadow'],
+                ['margin'],
+                ['padding'],
+              ],
+              hover: [
+                ['width'],
+                ['height'],
+                ['background'],
+                ['border'],
+                ['borderRadius'],
+                ['boxShadow'],
+                ['margin'],
+                ['padding'],
+              ],
+              clicked: [
+                ['width'],
+                ['height'],
+                ['background'],
+                ['border'],
+                ['borderRadius'],
+                ['boxShadow'],
+                ['margin'],
+                ['padding'],
+              ],
+              disabled: [
                 ['width'],
                 ['height'],
                 ['background'],
@@ -695,7 +753,7 @@ export default [
           defaultValue: 'img',
         },
         name: { type: 'string', desc: '头像显示内容', defaultValue: 'Lugia' },
-        icon: { type: 'icon', desc: '头像显示图标资源', defaultValue: 'lugia-icon-financial_user' },
+        icon: { type: 'icon', desc: '头像显示图标资源' },
         src: {
           type: 'image',
           desc: '头像显示图片资源',
@@ -772,8 +830,8 @@ export default [
           props: { showZero: true, count: 1 },
           theme: {
             BadgeNumber: {
-              name: '徽标数',
-              desc: '徽标数 显示数字时的样式展示',
+              name: '数字徽标',
+              desc: '徽标数大于0时,显示的数字',
               normal: [
                 ['width'],
                 ['height'],
@@ -782,12 +840,13 @@ export default [
                 ['opacity'],
                 ['color'],
                 ['margin'],
-                ['padding'],
+                ['font'],
+                ['fontSize'],
+                ['color'],
                 ['boxShadow'],
+                ['border'],
+                ['borderRadius'],
               ],
-              hover: [['width'], ['height'], ['background'], ['opacity'], ['color']],
-              clicked: [],
-              disabled: [],
             },
           },
         },
@@ -805,10 +864,9 @@ export default [
             ['margin'],
             ['padding'],
             ['boxShadow'],
+            ['border'],
+            ['borderRadius'],
           ],
-          hover: [['width'], ['height'], ['background'], ['opacity']],
-          clicked: [],
-          disabled: [],
         },
       },
       childrenWidget: [],
@@ -840,8 +898,8 @@ export default [
       category: ['数据展示'],
       theme: {
         BadgeNumber: {
-          name: '徽标数',
-          desc: '徽标数 显示数字时的样式展示',
+          name: '数字徽标',
+          desc: '徽标数大于0时,显示的数字',
           normal: [
             ['width'],
             ['height'],
@@ -850,12 +908,13 @@ export default [
             ['opacity'],
             ['color'],
             ['margin'],
-            ['padding'],
+            ['font'],
+            ['fontSize'],
+            ['color'],
             ['boxShadow'],
+            ['border'],
+            ['borderRadius'],
           ],
-          hover: [['width'], ['height'], ['background'], ['opacity'], ['color']],
-          clicked: [],
-          disabled: [],
         },
       },
       childrenWidget: [],
@@ -864,6 +923,154 @@ export default [
     target: Badge,
     screenshot:
       'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAAAXNSR0IArs4c6QAAAk9JREFUSA29lr9PFEEUx79vb44ECJWJJpggFgZiYULiyWG8XGIgoVITr5G/xMLGxIIWa2sqSYitFaEApSCxMBIj0AAVFeIJd7fje7M7l9llud279e4Vu/PjzfvszM7M+xIy2Pn9uRnfb74AqKKB2zxkPBx2TMARoDc9T62Pft/aTQvH/tfb2dRsTZP/DhpT13s5PYQ90t6bsb0vH53WSDERWH/w6G7jEqvQuhzxzloh2i4OYWn429eD+JArwLPpuapGa41hN+LOXdWJTgmFl2M/tjbccRGgwIDmZ61RdJ16LROhAagFF9oGhsu4k3tm8a/jmfLyluzyerY//Gf5ltEGc9/8a0zssM0AZTd2u0FocgKFJ2XQrZtu+OQybz7D4F4DNFs/2TWxtVh7jtFPqxj58B6q+jjRJ95oGUoOdavVTD9nhQLUfBXFVzWo8sN4vPQ6n2VhqeAGSff3pu9heGXZOLZ+/oJ3ZwI01N1mFhYvKVXScYGHf3SC+uu3+PNsCbi4yDrM8aOKCu9GpzG56O8f4nyxBjT4aPVowlI81l7EncPU/3buz9Y73j6H2fxze2kBHucOkz3Aicd3G+ezwZiweIZ6czA4oUii5kw9KKCwPCMLOFP3HcoMYZldKrKg30DLMECjQVgW9A3Ksa3OkYNvTDRI45IyJ+Dfpad2aOd3kID5LgzMzFCKkpFFgwSyIOzN+ZJYEtNmewnXBkol0B5qAfxVUs9lJkZUz0i8CFAaBCoahKG9/9NAJpZc8SSxxdoiKqhGnwMTwlEs8D+l/j/87s6odJWxqQAAAABJRU5ErkJggg==',
+  },
+  {
+    meta: {
+      widgetName: 'BasicElements',
+      title: '基本元素',
+      desc: '基本元素',
+      props: { shape: { type: 'shapeType', desc: '基本元素形状', defaultValue: 'square' } },
+      type: { shapeType: ['circular', 'square', 'triangle'] },
+      category: ['通用'],
+      designInfo: {
+        Circular: {
+          sequence: 2,
+          title: '圆形元素',
+          desc: '圆形元素',
+          props: { shape: 'circular' },
+          defaultTheme: {
+            Container: { normal: { width: 32, height: 32, background: { color: '#4d63ff' } } },
+          },
+          theme: {
+            Container: {
+              name: '配置圆形',
+              desc: '配置圆形',
+              normal: [
+                ['width'],
+                ['height'],
+                ['background'],
+                ['border'],
+                ['boxShadow'],
+                ['opacity'],
+                ['margin'],
+              ],
+              hover: [],
+              active: [],
+              disabled: [],
+            },
+          },
+        },
+        Triangle: {
+          sequence: 3,
+          title: '三角形元素',
+          desc: '三角形元素',
+          props: { shape: 'triangle' },
+          defaultTheme: {
+            Container: { normal: { width: 32, height: 32, background: { color: '#4d63ff' } } },
+          },
+          theme: {
+            Container: {
+              name: '配置三角形',
+              desc: '配置三角形',
+              normal: [['width'], ['height'], ['background'], ['margin']],
+              hover: [],
+              active: [],
+              disabled: [],
+            },
+          },
+        },
+      },
+      theme: {
+        Container: {
+          name: '配置方形',
+          desc: '配置方形',
+          normal: [
+            ['width'],
+            ['height'],
+            ['background'],
+            ['borderRadius'],
+            ['border'],
+            ['boxShadow'],
+            ['opacity'],
+            ['margin'],
+          ],
+          hover: [],
+          active: [],
+          disabled: [],
+        },
+      },
+      defaultTheme: {
+        Container: { normal: { width: 32, height: 32, background: { color: '#4d63ff' } } },
+      },
+      childrenWidget: [],
+    },
+    target: BasicElements,
+    screenshot:
+      'data:image/png;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBMRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAQqADAAQAAAABAAAALgAAAAD/7QA4UGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAAA4QklNBCUAAAAAABDUHYzZjwCyBOmACZjs+EJ+/8AAEQgALgBCAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/bAEMAAgICAgICAwICAwUDAwMFBgUFBQUGCAYGBgYGCAoICAgICAgKCgoKCgoKCgwMDAwMDA4ODg4ODw8PDw8PDw8PD//bAEMBAgICBAQEBwQEBxALCQsQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEP/dAAQABf/aAAwDAQACEQMRAD8A/fyiiigAoor5x/4a2/Z8/wChr/8AJG+/+MV6mW5HjcbzfU6E6nLa/LFytfa9k7Xs7ehjWxNOnb2kkr93Y+jqK+cf+Gtv2fP+hr/8kb7/AOMV7X4S8W+HvHXh608VeFbv7dpd95nkzeW8W7ynaNvlkVXGHUjkDpkcVrmPDmYYOCq4vDzpxbteUZRV+12lroyaWLpVHanNN+TTOjooorxjoCiiigD/0P38ooooAK/nHr+jiv5x6/qD6N3/ADH/APcP/wByHxfF/wDy6+f6BX7Vfsk/8m+eFP8At+/9Lp6/FWv2q/ZJ/wCTfPCn/b9/6XT19R9Ib/kS0f8Ar7H/ANImcXCf+8S/wv8ANH0dRRRX8bn6CFFFFAH/0f38ooooAKKKKACiiigAooooAKKKKAP/2Q==',
+  },
+  {
+    meta: {
+      widgetName: 'BasicElements',
+      title: '圆形元素',
+      desc: '圆形元素',
+      props: { shape: { type: 'shapeType', desc: '基本元素形状', defaultValue: 'circular' } },
+      type: { shapeType: ['circular', 'square', 'triangle'] },
+      category: ['通用'],
+      theme: {
+        Container: {
+          name: '配置圆形',
+          desc: '配置圆形',
+          normal: [
+            ['width'],
+            ['height'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['opacity'],
+            ['margin'],
+          ],
+          hover: [],
+          active: [],
+          disabled: [],
+        },
+      },
+      defaultTheme: {
+        Container: { normal: { width: 32, height: 32, background: { color: '#4d63ff' } } },
+      },
+      childrenWidget: [],
+      aliasName: 'Circular',
+    },
+    target: BasicElements,
+    screenshot:
+      'data:image/png;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBMRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAQqADAAQAAAABAAAALgAAAAD/7QA4UGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAAA4QklNBCUAAAAAABDUHYzZjwCyBOmACZjs+EJ+/8AAEQgALgBCAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/bAEMAAgICAgICAwICAwUDAwMFBgUFBQUGCAYGBgYGCAoICAgICAgKCgoKCgoKCgwMDAwMDA4ODg4ODw8PDw8PDw8PD//bAEMBAgICBAQEBwQEBxALCQsQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEP/dAAQABf/aAAwDAQACEQMRAD8A/fyiiigAoorxn4mfHz4afCeVbLxRqLPqLqHFlap51xtPQsMhUB7b2Ge2a7styvE4yqqGFpuc30SuzKtWhTjzTdkezUV8yeCf2t/g5421SLR0vLjRrqdgkQ1GJYkdjwAJEeRAT23MM9OtfTddGb5FjMBUVLG0pQk9rq1/Tv8AInD4mnVXNTkmFFFFeSbhRRRQB//Q/fyiiigDnvF2uf8ACMeFNa8S7PM/smyubvYf4vIjaTH47a/n81vWtU8R6vea9rVw11fX8rTTSuclnc5J+noOgHA4r+hTV9MtNb0q90a/Xfa38MlvKo7xyqUYfkTX4R/FT4V+J/hN4ouPD/iC3fyN7G1ugp8q5iz8ro3TOMblzlTwa/pn6OuMwkZ4mjJpVpcrV93FXul6PV/LsfG8W06jUJL4Vf7zzOv2d/ZI8bap42+Dlm+sStPdaNcS6cZXOWdIlR4ySepCSKue+Oea/HbRdE1fxHqlvoug2ct/fXTBIoYVLuxPoB29T0A5PFft98A/hnL8J/hpp3he9ZX1F2e6vShyv2ibGVB7hFCpnvtz3r6j6QWMwiyylQqNe1ck4rqlZ3fp083bscXCtOp7ZyXw21PZqKKK/j4+/CiiigD/0f38ooooAKz9T0jStbtGsNZsob+1floriNZYz9VcEVoUVUJyi1KLs0Jq+jOe0Pwj4U8Mb/8AhGtFstJ8zh/sltHBu+vlqua6GiirrVp1Jc9STb7vUIxSVkgooorIYUUUUAf/2Q==',
+  },
+  {
+    meta: {
+      widgetName: 'BasicElements',
+      title: '三角形元素',
+      desc: '三角形元素',
+      props: { shape: { type: 'shapeType', desc: '基本元素形状', defaultValue: 'triangle' } },
+      type: { shapeType: ['circular', 'square', 'triangle'] },
+      category: ['通用'],
+      theme: {
+        Container: {
+          name: '配置三角形',
+          desc: '配置三角形',
+          normal: [['width'], ['height'], ['background'], ['margin']],
+          hover: [],
+          active: [],
+          disabled: [],
+        },
+      },
+      defaultTheme: {
+        Container: { normal: { width: 32, height: 32, background: { color: '#4d63ff' } } },
+      },
+      childrenWidget: [],
+      aliasName: 'Triangle',
+    },
+    target: BasicElements,
+    screenshot:
+      'data:image/png;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBMRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAQqADAAQAAAABAAAALgAAAAD/7QA4UGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAAA4QklNBCUAAAAAABDUHYzZjwCyBOmACZjs+EJ+/8AAEQgALgBCAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/bAEMAAgICAgICAwICAwUDAwMFBgUFBQUGCAYGBgYGCAoICAgICAgKCgoKCgoKCgwMDAwMDA4ODg4ODw8PDw8PDw8PD//bAEMBAgICBAQEBwQEBxALCQsQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEP/dAAQABf/aAAwDAQACEQMRAD8A/fyiiigAooooAKKytH1vSNftXvdFu472COaWBnibcolgcxyLn1VlI/UcYNatXUpyhJxmrNdBJpq6CiiioGFFFFAH/9D9/KKKKACvnH9pz4uj4VfDyYabNs17W99rYgH5o+P3s/8A2zU8H++V7Zr6Gurq2sbWa9vJVht7dGkkkc4VEQZZiT0AAyTX4bfHn4qXPxc+Id74hVmGmW/+jafGeNltGThiOzSHLt6Zx0Ar9X8IuCv7XzJVK0b0aVpS7N/Zj83q/JM8PPsx9hRtH4paL9We3/sa/GA+EvF8nw+1yfGleJJAYGc8RX2ML+Ewwh/2gnvX6xV/OVFLJBIk0LmOSMhlZTgqRyCCOhFft5+zr8Wo/i38O7XUruQHWtNxa6gnQmVR8suPSVfm9N24DpX3nj3wV7KrHOcPH3ZWU/J9JfPZ+aXVnmcL5jzReHm9Vt/ke80UUV/Nh9eFFFFAH//R/fyiiigAooooAKKKKACiiigAooooA//Z',
   },
   {
     meta: {
@@ -882,11 +1089,7 @@ export default [
           desc: '生成面包屑数据对象的数组，path是跳转路径，title是面包屑展示文本',
           meta: [
             { key: 'path', title: '跳转路径', type: 'string' },
-            {
-              key: 'title',
-              title: '展示文本',
-              type: 'string',
-            },
+            { key: 'title', title: '展示文本', type: 'string' },
           ],
         },
         params: { type: 'Object', desc: '可配置的参数' },
@@ -917,7 +1120,7 @@ export default [
             ['boxShadow'],
             ['background'],
           ],
-          hover: [['border'], ['borderRadius'], ['boxShadow'], ['background'], ['opacity']],
+          hover: [],
           clicked: [],
           disabled: [],
         },
@@ -928,12 +1131,48 @@ export default [
               name: '单项外盒',
               desc: '面包屑的文本配置',
               normal: {
-                selectNames: [['width'], ['padding'], ['margin'], ['opacity']],
-                nth: [['width'], ['padding'], ['margin'], ['opacity']],
+                selectNames: [
+                  ['width'],
+                  ['padding'],
+                  ['margin'],
+                  ['opacity'],
+                  ['border'],
+                  ['borderRadius'],
+                  ['boxShadow'],
+                  ['background'],
+                ],
+                nth: [
+                  ['width'],
+                  ['padding'],
+                  ['margin'],
+                  ['opacity'],
+                  ['border'],
+                  ['borderRadius'],
+                  ['boxShadow'],
+                  ['background'],
+                ],
               },
               hover: {
-                selectNames: [['width'], ['padding'], ['margin'], ['opacity']],
-                nth: [['width'], ['padding'], ['margin'], ['opacity']],
+                selectNames: [
+                  ['width'],
+                  ['padding'],
+                  ['margin'],
+                  ['opacity'],
+                  ['border'],
+                  ['borderRadius'],
+                  ['boxShadow'],
+                  ['background'],
+                ],
+                nth: [
+                  ['width'],
+                  ['padding'],
+                  ['margin'],
+                  ['opacity'],
+                  ['border'],
+                  ['borderRadius'],
+                  ['boxShadow'],
+                  ['background'],
+                ],
               },
               clicked: [],
               disabled: [],
@@ -1059,7 +1298,7 @@ export default [
       },
       type: {
         ButtonShape: ['default', 'round'],
-        ButtonType: ['default', 'primary', 'success', 'warning', 'danger'],
+        ButtonType: ['default', 'primary', 'success', 'warning', 'danger', 'link'],
         ButtonSize: ['default', 'small', 'large'],
         ButtonStyle: {
           width: { type: 'number', desc: '组件宽度' },
@@ -1104,7 +1343,7 @@ export default [
             ButtonIcon: {
               name: '按钮图标样式',
               desc: '为按钮图标配置样式',
-              normal: [['color'], ['font']],
+              normal: [['color'], ['font'], ['margin', 'right']],
               hover: [['color']],
               active: [['color']],
               disabled: [['color']],
@@ -1147,7 +1386,7 @@ export default [
             ButtonIcon: {
               name: '按钮图标样式',
               desc: '为按钮图标配置样式',
-              normal: [['color'], ['font']],
+              normal: [['color'], ['font'], ['margin', 'right']],
               hover: [['color']],
               active: [['color']],
               disabled: [['color']],
@@ -1198,6 +1437,59 @@ export default [
             },
           },
         },
+        LinkButton: {
+          sequence: 1,
+          title: '文字按钮',
+          desc: '文字按钮',
+          props: { type: 'link' },
+          theme: {
+            Container: {
+              name: '按钮整体样式',
+              desc: '为按钮配置整体样式',
+              normal: [['height'], ['width']],
+            },
+            ButtonText: {
+              name: '文字样式',
+              desc: '为文字配置样式',
+              normal: [['color'], ['font']],
+              hover: [['color']],
+              active: [['color']],
+              disabled: [['color']],
+              focus: [['color']],
+            },
+          },
+        },
+        LinkIconButton: {
+          sequence: 1,
+          title: '文字图标按钮',
+          desc: '文字图标按钮',
+          props: { type: 'link', icon: 'lugia-icon-logo_lugia' },
+          theme: {
+            Container: {
+              name: '按钮整体样式',
+              desc: '为按钮配置整体样式',
+              normal: [['height'], ['width']],
+            },
+            ButtonText: {
+              name: '文字样式',
+              desc: '为文字配置样式',
+              normal: [['color'], ['font']],
+              hover: [['color']],
+              active: [['color']],
+              disabled: [['color']],
+              focus: [['color']],
+            },
+            ButtonIcon: {
+              name: '图标样式',
+              desc: '为图标配置样式',
+              normal: [['color'], ['font'], ['margin', 'right']],
+              hover: [['color']],
+              active: [['color']],
+              disabled: [['color']],
+              focus: [['color']],
+            },
+          },
+        },
       },
       theme: {
         Container: {
@@ -1229,7 +1521,7 @@ export default [
         ButtonIcon: {
           name: '按钮图标样式',
           desc: '为按钮图标配置样式',
-          normal: [['color'], ['font']],
+          normal: [['color'], ['font'], ['margin', 'right']],
           hover: [['color']],
           active: [['color']],
           disabled: [['color']],
@@ -1240,7 +1532,7 @@ export default [
     },
     target: Button,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGgAAAAsCAYAAACJ1f3bAAAAAXNSR0IArs4c6QAABXpJREFUeAHtXGtsVEUU/nYptiQ8pCJqUQgWEQXBCkYiKKtCBGPVICH4iChW1CjGGKwmJvpDjAlqhESNBqiSAFUxaIgvEEKrtUSBagWkPhDFQimUFlroI7TW83V6vdvu7KbUvfcO6Zxk7507Z3bmzPnmnDNn7rYhCM3Mab2wGVgsxUhrKy5gnaVgNBAKoUJGLkgBctctD5WHCM4poBStSA9GJDuqVgMhVPcGxoXbLMeCo9VRoJWCCbEJixCRQAWxgyfSQCRsY04i/QTLIza0IEsGa8ACZDA4FM0CZAEyXAOGi2ctyAJkuAYMF89akAXIcA0YLp6cyXlHQ84HBp+j7/9YLVBxGGhs0vNtrdKApwBNnwLcPi2+qk/JYdOXhcB7awGWu0tjRwEpMpOSXbE9JOLFtjavxlOAnOk+/jxQd9J5AlLPAi4bAUzMArJvAnpJJHx7tcs/nVK/vsCihUD++liAEvFOZ4wg2/qySagRd1Zz3P0cOgJs2SpHte8A1ceAG68F5D2IJY0GfLEgzbhtVS0tQPEOYMYNQJpYVYPEowH9gCvEZZX9DlTVdPxmWiowYSyw728BVnjjpdwnTbUZmgFMvlqVf9gNZI3W87aWABzXodEjgZHDgUEDgf3yqmxXGXCg0uGqe7RM9Y3AVWOAUZkA42jJTuAPkccrChQgTmrYEGCPgEFwnOfch5V1FW1Tdc717P7ymlF470rM+r5UlR3epAkAP6SnFsXnzVkA1DfIghCwH7sPmHKNsuzKKmDadeJuewErPwLWb1J98UoZOe6KD4CbrwfSBcyT4rLPlQ3QPXcAy/KBz7e47ZNZ8gWgVHk12CQW4lAfUc6YS1UMungo8Ooyh9P1+4FDwG05AOPM6iUqBjEOOZSIxzaP3iuAjgeW5gGbi9W3UgScR6Q+Zw5wvA4o/M7pTd3vnwWskTE+FfC4oDiHJ+cBc+8EuJhqT3Rsn4wnXwDKe0UvapNM8ln5JcTev/R8r2q5KCITgU82uuBwrGZxfW+sBEYMU0r/druqc+Sgla39zHkSd/iLAmbmdOAScZM7drq8ZJV8AWiJrFK6FYe4UjNFCdwCv/S0rMjNwKqPHa73d47LTclXRfqxNkn9/LuBjPMkLh1022z42i07pW0/yY9uBKB4+Z7Trrt3XwDiJOo6mX+RrE7SjIhyN3RZ3Nn5QUygSdxN6uigJNAktosG6Ei1qo++cqNA6u2RJn3ZZqsp6K9crdxVXXm5nu9FbWOj6pWxUUfcQJBMOOUIHKAwJRB30/JPm07+c4UZg9Vz9JWuKRlULtZKYizSUWZ7fXmFjutvXeAAZU9VJwm/7VMTZyAmMdeIJsYM+vrO1NysahjXOlM8XrHkQifqgdm3yitl6Tea+vcFeERVugfQubTotn6UPfKcHUVnrtHQ7lbI4dEOVy+Pe4ZfBOz+1Q3YPBLaLjErSwB64gH5iaXEJW5fZ92idznsl4krcyDGjqOSwP74sxo/Ho/xkOd/zIOek7xo3RdA5VG1e5s3W+QTrSx/v+McgnryBaD5d8VOr1byjMOilLwPgQ2Fsp1ttwS2fGsVsPAhYOok9WGMYp7xmuRLb74Y2xcTV1rXgrmS1e93AWLLeLyN36gElSC9/IzbZ9le4IXX1Um7WxtcKZT9oPz6ylAalK6OYP4s11tPssTmMQ/H4o4tOh1IVv//px9fLKi7AlbJtpYfr4lnfp3P/bwes6v9B75J6KqgPbWdBchw5C1AFiDDNWC4eNaCLECGa8Bw8awFWYAM14Dh4lkLsgAZrgHDxQu3/12+4WL2TPGIDV1cQc+c/hkx64KwnJbmyhtNH44kzwiFmCOkYEJswvx3I/JqfpyYU751d8HjQwyIBTEhNv8Cj+2Jti0hYhwAAAAASUVORK5CYII=',
+      'data:image/png;base64,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',
   },
   {
     meta: {
@@ -1283,7 +1575,7 @@ export default [
       },
       type: {
         ButtonShape: ['default', 'round'],
-        ButtonType: ['default', 'primary', 'success', 'warning', 'danger'],
+        ButtonType: ['default', 'primary', 'success', 'warning', 'danger', 'link'],
         ButtonSize: ['default', 'small', 'large'],
         ButtonStyle: {
           width: { type: 'number', desc: '组件宽度' },
@@ -1322,7 +1614,7 @@ export default [
         ButtonIcon: {
           name: '按钮图标样式',
           desc: '为按钮图标配置样式',
-          normal: [['color'], ['font']],
+          normal: [['color'], ['font'], ['margin', 'right']],
           hover: [['color']],
           active: [['color']],
           disabled: [['color']],
@@ -1334,7 +1626,7 @@ export default [
     },
     target: Button,
     screenshot:
-      'data:image/png;base64,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',
+      'data:image/png;base64,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',
   },
   {
     meta: {
@@ -1357,7 +1649,7 @@ export default [
           desc: '支持多种不同的按钮风格，可选值为 primary、success、warning、danger 或者不设',
           defaultValue: 'primary',
         },
-        plain: { type: 'boolean', desc: '是否为朴素按钮', defaultValue: true },
+        plain: { type: 'boolean', desc: '是否为朴素按钮' },
         size: {
           type: 'ButtonSize',
           desc: '设置按钮大小，可选值为 small、large、bigger 或者不设',
@@ -1377,7 +1669,7 @@ export default [
       },
       type: {
         ButtonShape: ['default', 'round'],
-        ButtonType: ['default', 'primary', 'success', 'warning', 'danger'],
+        ButtonType: ['default', 'primary', 'success', 'warning', 'danger', 'link'],
         ButtonSize: ['default', 'small', 'large'],
         ButtonStyle: {
           width: { type: 'number', desc: '组件宽度' },
@@ -1416,7 +1708,7 @@ export default [
         ButtonIcon: {
           name: '按钮图标样式',
           desc: '为按钮图标配置样式',
-          normal: [['color'], ['font']],
+          normal: [['color'], ['font'], ['margin', 'right']],
           hover: [['color']],
           active: [['color']],
           disabled: [['color']],
@@ -1428,7 +1720,7 @@ export default [
     },
     target: Button,
     screenshot:
-      'data:image/png;base64,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',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAABcCAYAAACvKR3lAAAAAXNSR0IArs4c6QAAB6VJREFUeAHtnHmIVVUcx7/jvqaOu05qbqmVJuKaiolGgVqZoWgbqClFRRgaBilRoBWu4T9lpUVmlGQiQlpZGYkWaZaJUZr7uIz7bk6/75w5vTczvpn37sy97w18f3DfXc56P+d7z++cc+8MIBMBERABERABERABERABERABERABERABERABERABERABERABERABERABERABERABERABERABERABERABERABERABERABERABEQhCICtIIp9m9KT8nGvA63Y+JD8fLf117aMnkJWFw1bqxmrA9FXvZB0IWoPAgqAYrgLbkY/soIUrXQgEspBXHegRVBRVglapoGeQGILiCy+dtUlhrx2ojMCCsNKGBCpRiaIgELhtAgtCY4Yo2jVYGeVpm8CCCFZVpcp0AhJEprdQxPWTICIGnunFSRCZ3kIR10+CiBh4phcnQWR6C0VcPwkiYuCZXlxGCKJubYCbLP0E0i6IDm2BpfZ6jBuPZeklkFZB1K8HzHwKqGO9Azce85osfQTsbWl6rIq9Z50+BWjaOFY+j3lt1jzgen7sejJHVasCjz5YMublK0DeKWDbTiD3eMnwZK40vAngRtt7gxfL7XJc2KkzALfKbGkTxMMj7B1t15LoeI1hK9eUDCvtCgUx+t7EMf69DixZDqzflDhOopAnxgBDB7jQUZOKxmreBFg0211b8QXArTJb2lxG1w6JsZUWljhV6SFV7U4ft4YNYm1aJU5VWljxVNXt8auSIvEaNYrnEu552nqIxcuAfj2BRx6wGUYdd5PnLwAffg5s/qX8Nz3uGeDCRaBxI2Dhy8BN9W2z8Um9ukADO37leVfGfvvOaPYCd9zpFuDFqe549x5g+Srg1WlAtuXhbelcd7T3IHDUXNDgPj4EGDUMGHaXO1/4HvDrLqBVcxPiQ8Ct7YFGDcwVWk91LA/Yuh34aDVw3upImzQO6N/TucpZ84HJdt61oxtb0Q2tXg98ts7FDfM3bYI4cRJY+zUw5r6YIC5ectcq8oZZzkkDSkFcsU+8LpjomlgD+7HLOTv3xifYXz96wj3N/tzH8eenzwKXrL7xg2AK24u7pj3ZTbKdO6lhnzB5o2tr0RQYaeLp0Q14dpYTQX0Tqs978Wygelwajl8oqmNWp++2+JzC2adNEOHcTixXAr9iA0rCv7nwa0/CTGWwyh5mwyZ76gfG8uU5Ldca57QJrXULoH0bd+3vfQA3GnuBsTYW8mI4eRr4bbc773mb29PdDO5rH0Judmn8L+v48w4n4Ns7x0TX6w4JwjNKeT/h/qJJONNItctlIy56v6ggeB5vfHq9IOjqPl4TC+1sLsgb3YCfoYwYCjw53oUwTnFBLPkA+OZHFz6wt5t58Sy7obsW5m+VMDNPZ97/mI/fs9/chTUqjTAXzXZ+ueBCBD/eBbCog0diBR6IO46P42PYF0//2xlzTVFa6C6jmpXAqSS7TnaZZ8+ldnv00ew26f+3/wFcsy9Ik7EZc9ygknHHjwLG2cYxQu/u4Xe7vn7JzCg4+8kkC10QUycA9wxyt3z4KDBlZmq3/6bFb9nMpfnye+Atm52kanmFvQTT5dh4Iv4J9IPA0vLkGoZvuNq1AA5+vXHW4K34+xgOAtu2dqG8h32HYsc+DccamWShCyLHBl3eCIVPTTzEM9ZjcGpIO12s92BcLwaGx+fF89Ls6cdcb0If36VDLOah3KKric0a29TyBYCzEb/iGIvtjvIszHftr1lcuiPWbf5SS2djE2/DTfiMx95s01YbM5jL8oKY9Zz1cLtcL9X3Tp/CubXYWfqPQhdEWbe44F37nr+fi+UHUmWlSSZ8kA3GihtnDes2mvDML9OPe4F171I8ZtHzbeaqhhfONDq2A7h53/67uUG6MbpGvo8Z0Mul3fUX8MlaYFCf2PTVr1H43Nk7fPWDP8uMfeSC4PuGuDFTAQV2yTROwbh5y/IH5dhfvuyeYjYQZxn+fca8t4Fpk920kdlzUWzLduDu/iULW/apLWbZWKZP3JN95ryLd+SYm4lMHOsWvHiV90PxcdHrpTfcohNnIvbndgVGAf20w97wrgSuJjkmcinD/w3MfOTEeE+cuKJzZgDdOiUOTyVk55+2kjg3lRRlx+Xsg4tIudawZa1R1KrpFpu4IHXc3Ei8sbG5EslxBJ/8SybEeGMP0tQWqigAuqfk6MXnkNrxmqVefqmlC72HqMgnoCLz8pi4PpGssZEP2FN/I2MDM69E+bFX4KA60y30Sc+3myvmaSBw5iULl0DoPcQGGzRx/YHr+uWx49YN01/LwiUQuiBYfTakGjPchqyo3EN3GRVVUeUTDQEJIhrOlaYUCaLSNFU0FZUgouFcaUqRICpNU0VTUQkiGs6VphQJotI0VTQVDSyIwv+LGE0tVUpKBMrTNoEFYTXcmFItFTlKAoHbJrAgbIlzOuyfZEZ5lyorCQLWJgVtk0TUG0UJLAj+p9Tq9rmkdU8rytNF3ahSupY6AbYB24JtEvS/2KZeqlKIgAiIgAiIgAiIgAiIgAiIgAiIgAiIgAiIgAiIgAiIgAiIgAiIgAiIgAiIgAiIgAiIgAiIgAiIgAiIgAiIgAiIgAiIgAiIgAh4Av8Bv9TAdN5Eg+MAAAAASUVORK5CYII=',
   },
   {
     meta: {
@@ -1451,7 +1743,7 @@ export default [
           desc: '支持多种不同的按钮风格，可选值为 primary、success、warning、danger 或者不设',
           defaultValue: 'primary',
         },
-        plain: { type: 'boolean', desc: '是否为朴素按钮', defaultValue: true },
+        plain: { type: 'boolean', desc: '是否为朴素按钮' },
         size: {
           type: 'ButtonSize',
           desc: '设置按钮大小，可选值为 small、large、bigger 或者不设',
@@ -1471,7 +1763,7 @@ export default [
       },
       type: {
         ButtonShape: ['default', 'round'],
-        ButtonType: ['default', 'primary', 'success', 'warning', 'danger'],
+        ButtonType: ['default', 'primary', 'success', 'warning', 'danger', 'link'],
         ButtonSize: ['default', 'small', 'large'],
         ButtonStyle: {
           width: { type: 'number', desc: '组件宽度' },
@@ -1522,7 +1814,162 @@ export default [
     },
     target: Button,
     screenshot:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAYAAAAehFoBAAAAAXNSR0IArs4c6QAABPNJREFUWAnVWV1sFFUU/u7SIhQlIqJYNJJqTIjyoJBo1RqMRTTQRa00Rt9UCNX491D65JP4AjURSbo+KIkxIYYGAotEDH0qKv5gYqyYIBF/UpafBxoLEqOB8ftmdteZ3dnde3fZdj3JZO7cOfec75577jl3zhjUQJ7nmeQLuNsAKz2gDR5ajUErRbay7cHgpOchw3uGPMfJsy89iK+MMWxWR5TjTqt7vU5qXMMrSVjznSQYnKLSNK+hPSkz7DSWzE6Au3q9ezhgE63W4aoojp+rcZCT3rA3Zb6Mex/XZwW4u9dr+wfYTKBPxAmptY/AdzUDfTtT5nglWRUBa/kvATu49HMqCavpvcF4Auip5CbkKU10gZdo1f11BysINIh0SWdpRGV8OLnee5v+9Uq5wfV6x2Xfkn7XvBonP9Yl/Fl6eCduwKT1GbzMzbi1UF8RYD9kcWlo3WmFzJP5TGAXuRkfKfTpCGBFg7+Bw5Piszaz50acDiwNR4/IplPoahiwmhA3oo8pNLm8hZUUyHAo9K5xmgbtueQStvDmxkFYhCSPzbewnxw8HChis+jgxkDHEuDeu4CFC4CZVwDjE8APx4ADnwO/ZSyEWLAkDJZrAzaJlwG7x2JMEcuC64H+tQHQsVPAEYK88Bcw7xqgsx1YtQz4ZAR4b4hbnumyFmLUWsPxw03ZI2IX/deJbuQZbVOfP1kMvA+MHI4Ol6Wfe5LnzmXAdXOBjamAN8pl/0R4SWJdb6rZbNPo+VtfB66axVT4JnD2j9KKV9wPvPgM8OEenif3l+azesPNR9fASivmENNDXG5ZeHB7ebAa8ulnwDejQPcKYNbMkJAqmsKaoKnbXMd2LAWO/Qoc+s5u5Ae7gZYZwJI77PhLcQlrgr6rTxonarsJGP3JfsjvjBQT54FbOK4mItYEw5Iz4BYu7bkLbqrPk38GN2ItJKxKHM6AJ84Bc6+2V61YPWc2cOK0/ZgSnASsr1tH+vFn+uPtgHasDS2+jQmFPlxzEiHWBD9DT9ooDfMMfwHcMA94fHm4N77dxEPq8wz5Ajt6NJ7HupdYE8xyFOVG3x4BdD29CpD1SlGCDreWOVQpe9tO4JLzWkYlC6ss7AxYYga2AWP0yY38kFFGu7IlKvzWm4G3+oFHHwj6FzkHz6g8/4lYm+iGqsg405/c9f0DwXJ3PchzA68xOpfOEkrF2pSZM8Abg8EqPJVNT9s/dlaVHyCsVaXmvIRsY/61QPudXHrGm+ZmAudB6Jcx4Ovv/zv0PNsNPNYJfLQPqBo0U7PJHn4yjBVMtvWlmkCzxMW6nBKH8WjqdH2hBtK18Xazmib3ePg+N43CKKz+eZgPQ/TjdW4iquMW6DNngw3rIkEYxc97QMleb4RhoyP33Eh3ZsqD6ZTx441Ss0+08IZcu9HuYWx5wPoq5Ux2NRpYYcp9MQtbHrAeGJH66CTjajcEEYuPKQQmAlgVFnb00LEvhnimpCkMwhKu+ghIBLA69CnNOPea2lNJwlBYVxOeIsDqVNWQM9yi9lSQdAtDnO5YwGL067MseU6me/i6qLNUbVi4yFOe/le/DDQV+dF0ljzrGfIkWzrifLbQnBUtHB7gF12CkizLI5eBDFi1QF84zlaS6gQ4Jyxbpe/hTlaJy+2Upx+LHvbSqjtsLJrTmbtXBTg3uOyv24Ap43+CXcZft/8CttKNGdzDdCsAAAAASUVORK5CYII=',
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAABcCAYAAACvKR3lAAAAAXNSR0IArs4c6QAABL9JREFUeAHtnEtsTUEYx/+V1qNFtfFWRD0iQki8QhAWDRvxShMbImxYiBARETti4S02XZGKeCaNICWxwMJrIYgoqXrGO1xar+ht1Tfak7nnXK1bucc9M/OfzfnmceZ+5/f9M3POzLkHYCIBEiABEiABEiABEiABEiABEiABEiABEiABEiABEiABEiABEiABEiABEiABEiABEiABEiABEiABEiABEiABEiABEiABEiABEvgXAln/clKmz1m4uqmoIY7t4sfMJqBfpv1J/H0B+lryl7JzsKFif9aLxDoTbOMEocQQj+OOwC2MOOBYTg7GmiaKDhGHmuRey8gQdTEovwtbfE26higXGCcIgTkzykADvpnk62/XjRNE1O4ZAgLwZU3y1XPcOEF4jvMYDgEKIhyuxvZKQRgbunAcpyDC4WpsrxSEsaELx3EKIhyuxvZKQRgbunAczw6n2+j22qWTrGxNBiaOAfr3BlT+02eg+ilw5SZw+0F0ff8fnjkliFkihOWLgPxufrQF+cCQImD2NKCqBthbDrx572/jSs6ZKWPJPGDtsmQxBAM9ahiwayMwfHCwxo28E4IomQqUzvEH9GMdcEP2TCsvA/cfAQ0Nur5bHrB5FVDQXZe5Ylk/ZXTNbZ4mvID+/AlUXACOnPWLYEAfYM1SYGRxc0s1jSydD+w75J3pxtH6EWL2dCBPROGlE+eAQ6f8YlB1L9/KqLAXePXOawmoew7XRgnrBTFJnia8pG4Uj1d6ueRjfRwoO6bLOwidCaN13gXLekEU9dVhvPcQaJQpo62k2jQ06haJ5+tSey3rBZHbRQfv7Qdtt2bF5ebyY62uzUs4X5faa1kviLovOniD+2u7NSu3M9CzQNfWfdW2C5b1gnj8XIdxzAhAPXW0laaMA7ISXj2uedZWa/vqrBfE1Vs6aN27AisX63zQUiPDilJdWitL2reqdN4Fy3pBXLzhX4aeMRHYsqZ5H8MLsHqamDZelqw3+UeQk+eB7z+8Vm4cEwZHMy547someXe1fUktR28VEWQHluHUamXsEzBQ/urTMSe5z+fyl5vNe5o3v5JrUys5U5Y4AaV2TiZbWT9CKLhqw2rHAaC+3o9aLToNHfRnMaiWg0QoW9cCPQKbYf5e7Mo5IQgVsmtyL7F+O3C3uvUAfv0GlMsqZuJqpWuicGLKCEqgeGDL+xC95H0IecyslUfT6ifA9TvAZ3nMLMwHtq3z32eo6WPjTuCLiKY9ybQpw0lBpBLQP4lC7YMcPp3K2bqNaYJwZsrQIUrNitUCm3b7p4/2jg6p/VK0WgXuu6PlXKa9UaJQ08SCEkCteJ69mGmPwv99CuIvjNX7lgcr/tLIompOGRYFMx2XQkGkg6JFfVAQFgUzHZdCQaSDokV9UBAWBTMdl0JBpIOiRX1QEBYFMx2XYpwgZK1ddhXMSCb56hE1ThDi+CXPeQOOJvn6G6dxglBfiBXPYwaIIdbiqwGuaheNE4T6Mqz6QqwMx0ejOCQrn5RvJn7FVsuCFgmQAAmQAAmQAAmQAAmQAAmQAAmQAAmQAAmQAAmQAAmQAAmQAAmQAAmQAAmQAAmQAAmQAAmQAAmQAAmQAAmQAAmQAAmQAAmQQHsJ/AJ2tdIo86epxgAAAABJRU5ErkJggg==',
+  },
+  {
+    meta: {
+      widgetName: 'Button',
+      title: '文字按钮',
+      desc: '文字按钮',
+      props: {
+        disabled: {
+          type: 'boolean',
+          desc: '按钮是否禁用，true 禁用 false 可用',
+          defaultValue: false,
+        },
+        shape: {
+          type: 'ButtonShape',
+          desc: '设置按钮形状，可以设置为 circle 或者不设',
+          defaultValue: 'default',
+        },
+        type: {
+          type: 'ButtonType',
+          desc: '支持多种不同的按钮风格，可选值为 primary、success、warning、danger 或者不设',
+          defaultValue: 'link',
+        },
+        plain: { type: 'boolean', desc: '是否为朴素按钮' },
+        size: {
+          type: 'ButtonSize',
+          desc: '设置按钮大小，可选值为 small、large、bigger 或者不设',
+          defaultValue: 'default',
+        },
+        loading: { type: 'boolean', desc: '设置按钮加载状态' },
+        circle: { type: 'boolean', desc: '设置圆形按钮' },
+        icon: { type: 'string', desc: '设置按钮图标类型' },
+        text: { type: 'string | React.node', desc: '设置按钮的文本内容', defaultValue: 'Button' },
+        block: { type: 'boolean', desc: '按钮宽度为父元素宽度', defaultValue: false },
+      },
+      events: {
+        onClick: {
+          desc: '点击按钮时触发',
+          args: [{ name: 'event', desc: '点击的DOM事件', type: 'Object' }],
+        },
+      },
+      type: {
+        ButtonShape: ['default', 'round'],
+        ButtonType: ['default', 'primary', 'success', 'warning', 'danger', 'link'],
+        ButtonSize: ['default', 'small', 'large'],
+        ButtonStyle: {
+          width: { type: 'number', desc: '组件宽度' },
+          margin: { type: 'number | Object', desc: '组件外间距' },
+          color: { type: 'string', desc: '组件颜色' },
+        },
+      },
+      category: ['通用'],
+      theme: {
+        Container: {
+          name: '按钮整体样式',
+          desc: '为按钮配置整体样式',
+          normal: [['height'], ['width']],
+        },
+        ButtonText: {
+          name: '文字样式',
+          desc: '为文字配置样式',
+          normal: [['color'], ['font']],
+          hover: [['color']],
+          active: [['color']],
+          disabled: [['color']],
+          focus: [['color']],
+        },
+      },
+      childrenWidget: [],
+      aliasName: 'LinkButton',
+    },
+    target: Button,
+    screenshot:
+      'data:image/png;base64,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',
+  },
+  {
+    meta: {
+      widgetName: 'Button',
+      title: '文字图标按钮',
+      desc: '文字图标按钮',
+      props: {
+        disabled: {
+          type: 'boolean',
+          desc: '按钮是否禁用，true 禁用 false 可用',
+          defaultValue: false,
+        },
+        shape: {
+          type: 'ButtonShape',
+          desc: '设置按钮形状，可以设置为 circle 或者不设',
+          defaultValue: 'default',
+        },
+        type: {
+          type: 'ButtonType',
+          desc: '支持多种不同的按钮风格，可选值为 primary、success、warning、danger 或者不设',
+          defaultValue: 'link',
+        },
+        plain: { type: 'boolean', desc: '是否为朴素按钮' },
+        size: {
+          type: 'ButtonSize',
+          desc: '设置按钮大小，可选值为 small、large、bigger 或者不设',
+          defaultValue: 'default',
+        },
+        loading: { type: 'boolean', desc: '设置按钮加载状态' },
+        circle: { type: 'boolean', desc: '设置圆形按钮' },
+        icon: { type: 'string', desc: '设置按钮图标类型', defaultValue: 'lugia-icon-logo_lugia' },
+        text: { type: 'string | React.node', desc: '设置按钮的文本内容', defaultValue: 'Button' },
+        block: { type: 'boolean', desc: '按钮宽度为父元素宽度', defaultValue: false },
+      },
+      events: {
+        onClick: {
+          desc: '点击按钮时触发',
+          args: [{ name: 'event', desc: '点击的DOM事件', type: 'Object' }],
+        },
+      },
+      type: {
+        ButtonShape: ['default', 'round'],
+        ButtonType: ['default', 'primary', 'success', 'warning', 'danger', 'link'],
+        ButtonSize: ['default', 'small', 'large'],
+        ButtonStyle: {
+          width: { type: 'number', desc: '组件宽度' },
+          margin: { type: 'number | Object', desc: '组件外间距' },
+          color: { type: 'string', desc: '组件颜色' },
+        },
+      },
+      category: ['通用'],
+      theme: {
+        Container: {
+          name: '按钮整体样式',
+          desc: '为按钮配置整体样式',
+          normal: [['height'], ['width']],
+        },
+        ButtonText: {
+          name: '文字样式',
+          desc: '为文字配置样式',
+          normal: [['color'], ['font']],
+          hover: [['color']],
+          active: [['color']],
+          disabled: [['color']],
+          focus: [['color']],
+        },
+        ButtonIcon: {
+          name: '图标样式',
+          desc: '为图标配置样式',
+          normal: [['color'], ['font'], ['margin', 'right']],
+          hover: [['color']],
+          active: [['color']],
+          disabled: [['color']],
+          focus: [['color']],
+        },
+      },
+      childrenWidget: [],
+      aliasName: 'LinkIconButton',
+    },
+    target: Button,
+    screenshot:
+      'data:image/png;base64,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',
   },
   {
     meta: {
@@ -1576,6 +2023,7 @@ export default [
                 ['padding'],
                 ['boxShadow'],
                 ['opacity'],
+                ['borderRadius'],
               ],
               hover: [['background'], ['border'], ['boxShadow'], ['opacity']],
             },
@@ -1650,6 +2098,7 @@ export default [
                 ['padding'],
                 ['boxShadow'],
                 ['opacity'],
+                ['borderRadius'],
               ],
               hover: [['background'], ['border'], ['boxShadow'], ['opacity']],
             },
@@ -1729,6 +2178,7 @@ export default [
                 ['padding'],
                 ['boxShadow'],
                 ['opacity'],
+                ['borderRadius'],
               ],
               hover: [['background'], ['border'], ['boxShadow'], ['opacity']],
             },
@@ -1803,6 +2253,7 @@ export default [
                 ['padding'],
                 ['boxShadow'],
                 ['opacity'],
+                ['borderRadius'],
               ],
               hover: [['background'], ['border'], ['boxShadow'], ['opacity']],
             },
@@ -1882,6 +2333,7 @@ export default [
                 ['padding'],
                 ['boxShadow'],
                 ['opacity'],
+                ['borderRadius'],
               ],
               hover: [['background'], ['border'], ['boxShadow'], ['opacity']],
             },
@@ -1958,6 +2410,7 @@ export default [
             ['padding'],
             ['boxShadow'],
             ['opacity'],
+            ['borderRadius'],
           ],
           hover: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
         },
@@ -1977,15 +2430,7 @@ export default [
         CardDescription: {
           name: '卡片描述内容',
           desc: '配置卡片描述内容',
-          normal: [
-            ['width'],
-            ['height'],
-            ['color'],
-            ['font'],
-            ['background'],
-            ['margin'],
-            ['padding'],
-          ],
+          normal: [['width'], ['height'], ['font'], ['background'], ['margin'], ['padding']],
         },
         CardOperation: {
           name: '卡片操作按钮',
@@ -2003,7 +2448,12 @@ export default [
         CardTitleTipLine: {
           name: '卡片标题提示',
           desc: '卡片标题提示配置',
-          normal: [['width'], ['height'], ['background']],
+          normal: [['width'], ['height'], ['background'], ['borderRadius'], ['border'], ['margin']],
+        },
+        CardTipBottomLine: {
+          name: '卡片标题下分割线',
+          desc: '卡片标题下分割线配置',
+          normal: [['width'], ['height'], ['margin'], ['border', 'bottom']],
         },
       },
       childrenWidget: [],
@@ -2060,6 +2510,7 @@ export default [
             ['padding'],
             ['boxShadow'],
             ['opacity'],
+            ['borderRadius'],
           ],
           hover: [['background'], ['border'], ['boxShadow'], ['opacity']],
         },
@@ -2169,6 +2620,7 @@ export default [
             ['padding'],
             ['boxShadow'],
             ['opacity'],
+            ['borderRadius'],
           ],
           hover: [['background'], ['border'], ['boxShadow'], ['opacity']],
         },
@@ -2283,6 +2735,7 @@ export default [
             ['padding'],
             ['boxShadow'],
             ['opacity'],
+            ['borderRadius'],
           ],
           hover: [['background'], ['border'], ['boxShadow'], ['opacity']],
         },
@@ -2370,7 +2823,6 @@ export default [
         imageOrientation: {
           type: 'ImageOrientation',
           desc: '当选择头像或图片卡片风格时,可配置图像的方向.水平,或垂直',
-          defaultValue: 'vertical',
         },
       },
       type: {
@@ -2392,6 +2844,7 @@ export default [
             ['padding'],
             ['boxShadow'],
             ['opacity'],
+            ['borderRadius'],
           ],
           hover: [['background'], ['border'], ['boxShadow'], ['opacity']],
         },
@@ -2484,7 +2937,6 @@ export default [
         imageOrientation: {
           type: 'ImageOrientation',
           desc: '当选择头像或图片卡片风格时,可配置图像的方向.水平,或垂直',
-          defaultValue: 'vertical',
         },
       },
       type: {
@@ -2506,6 +2958,7 @@ export default [
             ['padding'],
             ['boxShadow'],
             ['opacity'],
+            ['borderRadius'],
           ],
           hover: [['background'], ['border'], ['boxShadow'], ['opacity']],
         },
@@ -2608,11 +3061,7 @@ export default [
           desc: '触发指示器切换或点击切换按钮时触发',
           args: [
             { name: 'newValue', desc: '切换到下一次面板的索引值', type: 'number' },
-            {
-              name: 'oldValue',
-              desc: '本次的索引值',
-              type: 'number',
-            },
+            { name: 'oldValue', desc: '本次的索引值', type: 'number' },
           ],
         },
       },
@@ -2696,11 +3145,7 @@ export default [
           desc: '级联选择的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            {
-              key: 'text',
-              title: '文本值',
-              type: 'string',
-            },
+            { key: 'text', title: '文本值', type: 'string' },
           ],
         },
         separator: { type: 'string', desc: '自定义级联数据分隔符', defaultValue: '|' },
@@ -2996,18 +3441,19 @@ export default [
           desc: 'Checkbox展示方向，可选值为 vertical 或不设',
           defaultValue: false,
         },
-        children: { type: 'string | React.node', desc: 'Checkbox展示内容' },
+        children: {
+          type: 'string | React.node',
+          desc: 'Checkbox展示内容',
+          propsDefaultValue: '',
+          defaultValue: 'checkbox',
+        },
       },
       events: {
         onChange: {
           desc: 'Checkbox改变时回调',
           args: [
             { name: 'event', desc: '关闭时的DOM事件', type: 'Object' },
-            {
-              name: 'checked',
-              desc: '当前是否选中',
-              type: 'boolean',
-            },
+            { name: 'checked', desc: '当前是否选中', type: 'boolean' },
           ],
         },
       },
@@ -3124,13 +3570,15 @@ export default [
         data: {
           type: 'Object[]',
           desc: '指定 Checkbox 组件展示值',
+          propsDefaultValue: [],
+          meta: [
+            { key: 'text', title: '展示文字', type: 'string' },
+            { key: 'value', title: '对应字段', type: 'string' },
+          ],
           defaultValue: [
             { text: '选项1', value: '1' },
             { text: '选项2', value: '2' },
-            {
-              text: '选项3',
-              value: '3',
-            },
+            { text: '选项3', value: '3' },
           ],
         },
         displayField: { type: 'string', desc: '指定CheckboxGroup展示字段值' },
@@ -3762,7 +4210,6 @@ export default [
       title: '分割线',
       desc: '区隔内容的分割线',
       props: {
-        viewClass: { type: 'string', desc: '用于配置通用主题属性' },
         position: { type: 'DividerPosition', desc: '分割线中显示内容的位置,与content 配合使用' },
         dashed: { type: 'boolean', desc: '分割线是否是虚线', defaultValue: false },
         content: { type: 'string', desc: '分割线中可添加显示的内容' },
@@ -3781,7 +4228,7 @@ export default [
           desc: '垂直分割线',
           props: { type: 'vertical' },
           theme: {
-            VerticalDivider: {
+            Divider: {
               name: '垂直分割线',
               desc: '分割线为垂直类型时的配置',
               normal: [
@@ -3798,7 +4245,7 @@ export default [
         },
       },
       theme: {
-        HorizontalDivider: {
+        Divider: {
           name: '水平分割线',
           desc: '分割线为水平类型时的配置',
           normal: [
@@ -3824,7 +4271,6 @@ export default [
       title: '垂直分割线',
       desc: '垂直分割线',
       props: {
-        viewClass: { type: 'string', desc: '用于配置通用主题属性' },
         position: { type: 'DividerPosition', desc: '分割线中显示内容的位置,与content 配合使用' },
         dashed: { type: 'boolean', desc: '分割线是否是虚线', defaultValue: false },
         content: { type: 'string', desc: '分割线中可添加显示的内容' },
@@ -3833,7 +4279,7 @@ export default [
       type: { DividerPosition: ['left', 'right'], DividerType: ['horizontal', 'vertical'] },
       category: ['其他'],
       theme: {
-        VerticalDivider: {
+        Divider: {
           name: '垂直分割线',
           desc: '分割线为垂直类型时的配置',
           normal: [
@@ -3864,11 +4310,283 @@ export default [
         hideAction: { type: 'click | hover', desc: '弹出项的隐藏方式', defaultValue: 'click' },
         menus: { type: 'React.Node', desc: '弹出项组件' },
         align: { type: 'React.Node', desc: '弹出方向', defaultValue: 'bottom' },
+        text: { type: 'string', desc: '下拉菜单按钮的文本' },
+        disabled: { type: 'boolean', desc: '是否禁选', defaultValue: false },
+        type: {
+          type: 'customs | basic | primary',
+          desc: '按钮的风格,默认为customs',
+          defaultValue: 'customs',
+        },
+        direction: { type: 'up | bottom', desc: '按钮箭头的方向', defaultValue: 'bottom' },
+        divided: { type: 'boolean', desc: '是否有分割线', defaultValue: true },
       },
       events: {
         onPopupVisibleChange: {
           desc: '弹出项展开/隐藏时触发',
           args: [{ name: 'popupVisible', desc: '展开/隐藏时的popupVisible值', type: 'boolean' }],
+        },
+        onClick: {
+          desc: '点击按钮时触发',
+          args: [{ name: 'event', desc: '点击的DOM事件', type: 'Object' }],
+        },
+        onMouseEnter: {
+          desc: '鼠标滑入按钮时触发',
+          args: [{ name: 'event', desc: '点击的DOM事件', type: 'Object' }],
+        },
+        onMouseLeave: {
+          desc: '鼠标离开按钮时触发',
+          args: [{ name: 'event', desc: '点击的DOM事件', type: 'Object' }],
+        },
+        onMenuClick: {
+          desc: '鼠标点击弹开菜单时触发',
+          args: [
+            { name: 'event', desc: '选中DOM的事件对象', type: 'Object' },
+            { name: 'key', desc: '选中项key值', type: 'Object' },
+            { name: 'item', desc: '当前选中项的数据', type: 'Object' },
+          ],
+        },
+      },
+      type: {
+        direction: ['up', 'bottom'],
+        type: ['customs', 'primary', 'basic'],
+        action: ['hover', 'click'],
+        hideAction: ['hover', 'click'],
+      },
+      designInfo: {
+        NoDividedButton: {
+          sequence: 1,
+          title: '无分隔符的按钮',
+          desc: '无分隔符的下拉按钮',
+          props: { divided: false },
+          theme: {
+            Container: {
+              name: '下拉菜单容器外盒',
+              desc: 'DropMenu容器的样式配置',
+              normal: [['width'], ['height']],
+              hover: [],
+              active: [],
+              disabled: [],
+            },
+            DropMenuButton: {
+              name: '下拉按钮',
+              theme: {
+                Container: {
+                  name: '下拉菜单按钮外盒',
+                  desc: '无分割线下拉按钮容器的样式配置',
+                  normal: [
+                    ['width'],
+                    ['height'],
+                    ['margin'],
+                    ['padding'],
+                    ['lineHeight'],
+                    ['color'],
+                    ['border'],
+                    ['borderRadius'],
+                    ['background'],
+                    ['opacity'],
+                    ['boxShadow'],
+                    ['font'],
+                    ['fontSize'],
+                    ['cursor'],
+                  ],
+                  hover: [
+                    ['lineHeight'],
+                    ['color'],
+                    ['border'],
+                    ['borderRadius'],
+                    ['background'],
+                    ['opacity'],
+                    ['boxShadow'],
+                    ['font'],
+                    ['fontSize'],
+                    ['cursor'],
+                  ],
+                  active: [
+                    ['lineHeight'],
+                    ['color'],
+                    ['font'],
+                    ['fontSize'],
+                    ['background'],
+                    ['opacity'],
+                    ['border'],
+                    ['borderRadius'],
+                    ['boxShadow'],
+                  ],
+                  disabled: [
+                    ['lineHeight'],
+                    ['color'],
+                    ['border'],
+                    ['borderRadius'],
+                    ['background'],
+                    ['opacity'],
+                    ['boxShadow'],
+                    ['font'],
+                    ['fontSize'],
+                    ['cursor'],
+                  ],
+                },
+                PullIcon: {
+                  name: '下拉图标配置',
+                  desc: '下拉图标配置的样式配置',
+                  normal: [
+                    ['margin'],
+                    ['padding'],
+                    ['color'],
+                    ['opacity'],
+                    ['font'],
+                    ['fontSize'],
+                    ['cursor'],
+                  ],
+                  hover: [],
+                  active: [],
+                  disabled: [],
+                },
+              },
+            },
+          },
+        },
+      },
+      theme: {
+        Container: {
+          name: '下拉菜单容器外盒',
+          desc: 'DropMenu容器的样式配置',
+          normal: [['width'], ['height']],
+          hover: [],
+          active: [],
+          disabled: [],
+        },
+        DropMenuButton: {
+          name: '下拉按钮',
+          theme: {
+            Container: {
+              name: '下拉菜单按钮外盒',
+              desc: '分割线下拉按钮容器的样式配置',
+              normal: [
+                ['width'],
+                ['height'],
+                ['margin'],
+                ['lineHeight'],
+                ['color'],
+                ['opacity'],
+                ['boxShadow'],
+                ['font'],
+                ['fontSize'],
+                ['cursor'],
+              ],
+              hover: [],
+              active: [],
+              disabled: [
+                ['lineHeight'],
+                ['color'],
+                ['opacity'],
+                ['boxShadow'],
+                ['font'],
+                ['fontSize'],
+                ['cursor'],
+              ],
+            },
+            TextContainer: {
+              name: '下拉菜单展示板',
+              desc: '分割线下拉菜单按钮展示板的样式配置',
+              normal: [
+                ['width'],
+                ['padding'],
+                ['background'],
+                ['lineHeight'],
+                ['border', 'left'],
+                ['border', 'top'],
+                ['border', 'bottom'],
+                ['color'],
+                ['opacity'],
+                ['font'],
+                ['fontSize'],
+                ['cursor'],
+              ],
+              hover: [
+                ['lineHeight'],
+                ['background'],
+                ['border', 'left'],
+                ['border', 'top'],
+                ['border', 'bottom'],
+                ['color'],
+                ['opacity'],
+                ['font'],
+                ['fontSize'],
+              ],
+              active: [
+                ['lineHeight'],
+                ['background'],
+                ['border', 'left'],
+                ['border', 'top'],
+                ['border', 'bottom'],
+                ['color'],
+                ['opacity'],
+                ['font'],
+                ['fontSize'],
+              ],
+              disabled: [
+                ['lineHeight'],
+                ['background'],
+                ['border', 'left'],
+                ['border', 'top'],
+                ['border', 'bottom'],
+                ['color'],
+                ['opacity'],
+                ['font'],
+                ['fontSize'],
+              ],
+            },
+            IconContainer: {
+              name: '右侧下拉按钮外盒',
+              desc: '分割线右侧下拉按钮容器的样式配置',
+              normal: [
+                ['padding'],
+                ['background'],
+                ['lineHeight'],
+                ['border', 'right'],
+                ['border', 'top'],
+                ['border', 'bottom'],
+                ['color'],
+                ['opacity'],
+                ['font'],
+                ['fontSize'],
+                ['cursor'],
+              ],
+              hover: [
+                ['lineHeight'],
+                ['background'],
+                ['border', 'right'],
+                ['border', 'top'],
+                ['border', 'bottom'],
+                ['color'],
+                ['opacity'],
+                ['font'],
+                ['fontSize'],
+              ],
+              active: [
+                ['lineHeight'],
+                ['background'],
+                ['border', 'right'],
+                ['border', 'top'],
+                ['border', 'bottom'],
+                ['color'],
+                ['opacity'],
+                ['font'],
+                ['fontSize'],
+              ],
+              disabled: [
+                ['lineHeight'],
+                ['background'],
+                ['border', 'right'],
+                ['border', 'top'],
+                ['border', 'bottom'],
+                ['color'],
+                ['opacity'],
+                ['font'],
+                ['fontSize'],
+              ],
+            },
+          },
         },
       },
       childrenWidget: [],
@@ -3880,12 +4598,159 @@ export default [
   },
   {
     meta: {
+      widgetName: 'Dropmenu',
+      title: '无分隔符的按钮',
+      desc: '无分隔符的下拉按钮',
+      props: {
+        action: { type: 'click | hover', desc: '弹出项的打开方式', defaultValue: 'click' },
+        hideAction: { type: 'click | hover', desc: '弹出项的隐藏方式', defaultValue: 'click' },
+        menus: { type: 'React.Node', desc: '弹出项组件' },
+        align: { type: 'React.Node', desc: '弹出方向', defaultValue: 'bottom' },
+        text: { type: 'string', desc: '下拉菜单按钮的文本' },
+        disabled: { type: 'boolean', desc: '是否禁选', defaultValue: false },
+        type: {
+          type: 'customs | basic | primary',
+          desc: '按钮的风格,默认为customs',
+          defaultValue: 'customs',
+        },
+        direction: { type: 'up | bottom', desc: '按钮箭头的方向', defaultValue: 'bottom' },
+        divided: { type: 'boolean', desc: '是否有分割线', defaultValue: false },
+      },
+      events: {
+        onPopupVisibleChange: {
+          desc: '弹出项展开/隐藏时触发',
+          args: [{ name: 'popupVisible', desc: '展开/隐藏时的popupVisible值', type: 'boolean' }],
+        },
+        onClick: {
+          desc: '点击按钮时触发',
+          args: [{ name: 'event', desc: '点击的DOM事件', type: 'Object' }],
+        },
+        onMouseEnter: {
+          desc: '鼠标滑入按钮时触发',
+          args: [{ name: 'event', desc: '点击的DOM事件', type: 'Object' }],
+        },
+        onMouseLeave: {
+          desc: '鼠标离开按钮时触发',
+          args: [{ name: 'event', desc: '点击的DOM事件', type: 'Object' }],
+        },
+        onMenuClick: {
+          desc: '鼠标点击弹开菜单时触发',
+          args: [
+            { name: 'event', desc: '选中DOM的事件对象', type: 'Object' },
+            { name: 'key', desc: '选中项key值', type: 'Object' },
+            { name: 'item', desc: '当前选中项的数据', type: 'Object' },
+          ],
+        },
+      },
+      type: {
+        direction: ['up', 'bottom'],
+        type: ['customs', 'primary', 'basic'],
+        action: ['hover', 'click'],
+        hideAction: ['hover', 'click'],
+      },
+      theme: {
+        Container: {
+          name: '下拉菜单容器外盒',
+          desc: 'DropMenu容器的样式配置',
+          normal: [['width'], ['height']],
+          hover: [],
+          active: [],
+          disabled: [],
+        },
+        DropMenuButton: {
+          name: '下拉按钮',
+          theme: {
+            Container: {
+              name: '下拉菜单按钮外盒',
+              desc: '无分割线下拉按钮容器的样式配置',
+              normal: [
+                ['width'],
+                ['height'],
+                ['margin'],
+                ['padding'],
+                ['lineHeight'],
+                ['color'],
+                ['border'],
+                ['borderRadius'],
+                ['background'],
+                ['opacity'],
+                ['boxShadow'],
+                ['font'],
+                ['fontSize'],
+                ['cursor'],
+              ],
+              hover: [
+                ['lineHeight'],
+                ['color'],
+                ['border'],
+                ['borderRadius'],
+                ['background'],
+                ['opacity'],
+                ['boxShadow'],
+                ['font'],
+                ['fontSize'],
+                ['cursor'],
+              ],
+              active: [
+                ['lineHeight'],
+                ['color'],
+                ['font'],
+                ['fontSize'],
+                ['background'],
+                ['opacity'],
+                ['border'],
+                ['borderRadius'],
+                ['boxShadow'],
+              ],
+              disabled: [
+                ['lineHeight'],
+                ['color'],
+                ['border'],
+                ['borderRadius'],
+                ['background'],
+                ['opacity'],
+                ['boxShadow'],
+                ['font'],
+                ['fontSize'],
+                ['cursor'],
+              ],
+            },
+            PullIcon: {
+              name: '下拉图标配置',
+              desc: '下拉图标配置的样式配置',
+              normal: [
+                ['margin'],
+                ['padding'],
+                ['color'],
+                ['opacity'],
+                ['font'],
+                ['fontSize'],
+                ['cursor'],
+              ],
+              hover: [],
+              active: [],
+              disabled: [],
+            },
+          },
+        },
+      },
+      childrenWidget: [],
+      category: ['数据录入'],
+      aliasName: 'NoDividedButton',
+    },
+    target: Dropmenu,
+    screenshot:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
+  },
+  {
+    meta: {
       widgetName: 'Icon',
       title: '图标',
       desc: '语义化的矢量图形',
       props: {
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
         iconClass: { type: 'icon', desc: '图标资源,需从图标库中获取.' },
+        src: { type: 'image', desc: '头像显示图片资源' },
         disabled: { type: 'boolean', desc: '禁用状态,是否不可用', defaultValue: false },
       },
       events: {
@@ -3946,6 +4811,7 @@ export default [
         readOnly: { type: 'boolean', desc: '只读input', defaultValue: false },
         autoFocus: { type: 'boolean', desc: '是否自动获取焦点', defaultValue: false },
         type: { type: 'string', desc: 'input类型', defaultValue: 'text' },
+        isShowClearButton: { type: 'boolean', desc: '是否显示清除按钮', defaultValue: true },
       },
       events: {
         onClick: {
@@ -4034,6 +4900,11 @@ export default [
             ['opacity'],
           ],
         },
+        Placeholder: {
+          name: '输入框提示信息文字',
+          desc: '输入框提示信息文字',
+          normal: [['color'], ['fontSize'], ['font']],
+        },
         InputSuffix: {
           name: '后缀图标',
           desc: '输入框后缀自定义图标',
@@ -4070,7 +4941,11 @@ export default [
       widgetName: 'Label',
       title: '文本',
       desc: '文本组件',
-      props: { text: { type: 'string', desc: '文本内容', defaultValue: 'Label' } },
+      props: {
+        text: { type: 'string', desc: '文本内容', defaultValue: 'Label' },
+        showPrefix: { type: 'boolean', desc: '是否显示文本前缀', defaultValue: false },
+        prefix: { type: 'string', desc: '文本前缀内容', defaultValue: '*' },
+      },
       events: {
         onClick: {
           desc: 'Label被点击时触发的事件',
@@ -4093,9 +4968,44 @@ export default [
             ['height'],
             ['background'],
             ['textAlign'],
+            ['border'],
+            ['borderRadius'],
+            ['boxShadow'],
           ],
-          hover: [['color'], ['font'], ['margin'], ['padding'], ['cursor']],
-          disabled: [['color'], ['cursor'], ['background']],
+          hover: [
+            ['color'],
+            ['font'],
+            ['cursor'],
+            ['border'],
+            ['borderRadius'],
+            ['boxShadow'],
+            ['background'],
+          ],
+          disabled: [
+            ['color'],
+            ['font'],
+            ['cursor'],
+            ['border'],
+            ['borderRadius'],
+            ['boxShadow'],
+            ['background'],
+          ],
+        },
+        LabelPrefix: {
+          name: '文本前缀',
+          desc: '文本前缀的样式',
+          normal: [
+            ['color'],
+            ['font'],
+            ['lineHeight'],
+            ['margin'],
+            ['cursor'],
+            ['width'],
+            ['height'],
+            ['textAlign'],
+          ],
+          hover: [['color'], ['cursor']],
+          disabled: [['color'], ['cursor']],
         },
       },
       childrenWidget: [],
@@ -4147,11 +5057,7 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            {
-              key: 'text',
-              title: '文本值',
-              type: 'string',
-            },
+            { key: 'text', title: '文本值', type: 'string' },
           ],
           defaultValue: false,
         },
@@ -4162,33 +5068,26 @@ export default [
           type: 'string | string[] | number | number[]',
           desc: '默认指定当前选中的项,仅第一次生效',
         },
-        checkedCSS: {
-          type: 'background | checkbox | none',
-          desc: '选中项的样式',
-          defaultValue: 'none',
-        },
+        checkedCSS: { type: 'CheckedCSSType', desc: '选中项的样式', defaultValue: 'none' },
         limitCount: { type: 'number', desc: '多选时的最大选中数', defaultValue: 999999 },
         offsety: { type: 'number', desc: '菜单间的间隔', defaultValue: 4 },
-        autoHeight: { type: 'boolean', desc: '根据data数量，自动计算菜单高度' },
+        autoHeight: {
+          type: 'boolean',
+          desc: '根据data数量，自动计算菜单高度',
+          defaultValue: false,
+        },
+        divided: { type: 'boolean', desc: '项之间是否展示分割线', defaultValue: false },
         expandedPath: { type: 'string[]', desc: '层级菜单时展开的数据' },
         separator: { type: 'string', desc: '层级菜单时连接层级数据的分隔符', defaultValue: '|' },
         offsetX: { type: 'number', desc: '层级菜单时，菜单间的间隔', defaultValue: 4 },
         offsetY: { type: 'string', desc: '层级菜单时，子菜单相对父级菜单的top值' },
-        action: {
-          type: 'click | hover',
-          desc: '层级菜单时，展开子菜单的方式',
-          defaultValue: 'click',
-        },
+        action: { type: 'ActionType', desc: '层级菜单时，展开子菜单的方式', defaultValue: 'click' },
         size: {
           type: 'large | default | bigger',
           desc: '设置列表项的高度',
           defaultValue: 'default',
         },
-        subsize: {
-          type: 'large | default | bigger',
-          desc: '设置子菜单列表项的高度',
-          defaultValue: 'default',
-        },
+        subsize: { type: 'SubsizeType', desc: '设置子菜单列表项的高度', defaultValue: 'default' },
         popupVisible: { type: 'boolean', desc: '层级菜单,是否允许打开子菜单', defaultValue: true },
       },
       events: {
@@ -4200,11 +5099,7 @@ export default [
           desc: '点击列表项时触发',
           args: [
             { name: 'event', desc: '选中DOM的事件对象', type: 'Object' },
-            {
-              name: 'keys',
-              desc: '所有的选中值',
-              type: 'Object',
-            },
+            { name: 'keys', desc: '所有的选中值', type: 'Object' },
             { name: 'item', desc: '当前选中项的数据', type: 'Object' },
           ],
         },
@@ -4212,11 +5107,7 @@ export default [
           desc: '鼠标进入列表项时触发',
           args: [
             { name: 'event', desc: '选中DOM的事件对象', type: 'Object' },
-            {
-              name: 'item',
-              desc: '当前鼠标进入的列表项数据',
-              type: 'Object',
-            },
+            { name: 'item', desc: '当前鼠标进入的列表项数据', type: 'Object' },
           ],
         },
         onExpandPathChange: {
@@ -4225,6 +5116,11 @@ export default [
             { name: 'expandedPath', desc: '通过separator连接的各级展开数据', type: 'string[]' },
           ],
         },
+      },
+      type: {
+        CheckedCSSType: ['background', 'checkbox', 'none'],
+        ActionType: ['hover', 'click'],
+        SubsizeType: ['large', 'default', 'bigger'],
       },
       category: ['数据录入'],
       designInfo: {
@@ -4274,6 +5170,7 @@ export default [
                     ['opacity'],
                     ['color'],
                     ['font'],
+                    ['boxShadow'],
                   ],
                   active: [
                     ['background'],
@@ -4282,6 +5179,7 @@ export default [
                     ['opacity'],
                     ['color'],
                     ['font'],
+                    ['boxShadow'],
                   ],
                   disabled: [
                     ['background'],
@@ -4303,6 +5201,7 @@ export default [
                     ['color'],
                     ['padding'],
                     ['font'],
+                    ['boxShadow'],
                   ],
                   hover: [
                     ['background'],
@@ -4311,6 +5210,7 @@ export default [
                     ['opacity'],
                     ['color'],
                     ['font'],
+                    ['boxShadow'],
                   ],
                   active: [
                     ['background'],
@@ -4319,6 +5219,7 @@ export default [
                     ['opacity'],
                     ['color'],
                     ['font'],
+                    ['boxShadow'],
                   ],
                   disabled: [],
                 },
@@ -4747,11 +5648,7 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            {
-              key: 'text',
-              title: '文本值',
-              type: 'string',
-            },
+            { key: 'text', title: '文本值', type: 'string' },
           ],
           defaultValue: false,
         },
@@ -4762,33 +5659,26 @@ export default [
           type: 'string | string[] | number | number[]',
           desc: '默认指定当前选中的项,仅第一次生效',
         },
-        checkedCSS: {
-          type: 'background | checkbox | none',
-          desc: '选中项的样式',
-          defaultValue: 'none',
-        },
+        checkedCSS: { type: 'CheckedCSSType', desc: '选中项的样式', defaultValue: 'none' },
         limitCount: { type: 'number', desc: '多选时的最大选中数', defaultValue: 999999 },
         offsety: { type: 'number', desc: '菜单间的间隔', defaultValue: 4 },
-        autoHeight: { type: 'boolean', desc: '根据data数量，自动计算菜单高度' },
+        autoHeight: {
+          type: 'boolean',
+          desc: '根据data数量，自动计算菜单高度',
+          defaultValue: false,
+        },
+        divided: { type: 'boolean', desc: '项之间是否展示分割线', defaultValue: false },
         expandedPath: { type: 'string[]', desc: '层级菜单时展开的数据' },
         separator: { type: 'string', desc: '层级菜单时连接层级数据的分隔符', defaultValue: '|' },
         offsetX: { type: 'number', desc: '层级菜单时，菜单间的间隔', defaultValue: 4 },
         offsetY: { type: 'string', desc: '层级菜单时，子菜单相对父级菜单的top值' },
-        action: {
-          type: 'click | hover',
-          desc: '层级菜单时，展开子菜单的方式',
-          defaultValue: 'click',
-        },
+        action: { type: 'ActionType', desc: '层级菜单时，展开子菜单的方式', defaultValue: 'click' },
         size: {
           type: 'large | default | bigger',
           desc: '设置列表项的高度',
           defaultValue: 'default',
         },
-        subsize: {
-          type: 'large | default | bigger',
-          desc: '设置子菜单列表项的高度',
-          defaultValue: 'default',
-        },
+        subsize: { type: 'SubsizeType', desc: '设置子菜单列表项的高度', defaultValue: 'default' },
         popupVisible: { type: 'boolean', desc: '层级菜单,是否允许打开子菜单', defaultValue: true },
       },
       events: {
@@ -4800,11 +5690,7 @@ export default [
           desc: '点击列表项时触发',
           args: [
             { name: 'event', desc: '选中DOM的事件对象', type: 'Object' },
-            {
-              name: 'keys',
-              desc: '所有的选中值',
-              type: 'Object',
-            },
+            { name: 'keys', desc: '所有的选中值', type: 'Object' },
             { name: 'item', desc: '当前选中项的数据', type: 'Object' },
           ],
         },
@@ -4812,11 +5698,7 @@ export default [
           desc: '鼠标进入列表项时触发',
           args: [
             { name: 'event', desc: '选中DOM的事件对象', type: 'Object' },
-            {
-              name: 'item',
-              desc: '当前鼠标进入的列表项数据',
-              type: 'Object',
-            },
+            { name: 'item', desc: '当前鼠标进入的列表项数据', type: 'Object' },
           ],
         },
         onExpandPathChange: {
@@ -4825,6 +5707,11 @@ export default [
             { name: 'expandedPath', desc: '通过separator连接的各级展开数据', type: 'string[]' },
           ],
         },
+      },
+      type: {
+        CheckedCSSType: ['background', 'checkbox', 'none'],
+        ActionType: ['hover', 'click'],
+        SubsizeType: ['large', 'default', 'bigger'],
       },
       category: ['数据录入'],
       theme: {
@@ -4868,6 +5755,7 @@ export default [
                 ['opacity'],
                 ['color'],
                 ['font'],
+                ['boxShadow'],
               ],
               active: [
                 ['background'],
@@ -4876,6 +5764,7 @@ export default [
                 ['opacity'],
                 ['color'],
                 ['font'],
+                ['boxShadow'],
               ],
               disabled: [
                 ['background'],
@@ -4897,6 +5786,7 @@ export default [
                 ['color'],
                 ['padding'],
                 ['font'],
+                ['boxShadow'],
               ],
               hover: [
                 ['background'],
@@ -4905,6 +5795,7 @@ export default [
                 ['opacity'],
                 ['color'],
                 ['font'],
+                ['boxShadow'],
               ],
               active: [
                 ['background'],
@@ -4913,6 +5804,7 @@ export default [
                 ['opacity'],
                 ['color'],
                 ['font'],
+                ['boxShadow'],
               ],
               disabled: [],
             },
@@ -4991,11 +5883,7 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            {
-              key: 'text',
-              title: '文本值',
-              type: 'string',
-            },
+            { key: 'text', title: '文本值', type: 'string' },
           ],
           defaultValue: false,
         },
@@ -5006,33 +5894,26 @@ export default [
           type: 'string | string[] | number | number[]',
           desc: '默认指定当前选中的项,仅第一次生效',
         },
-        checkedCSS: {
-          type: 'background | checkbox | none',
-          desc: '选中项的样式',
-          defaultValue: 'none',
-        },
+        checkedCSS: { type: 'CheckedCSSType', desc: '选中项的样式', defaultValue: 'none' },
         limitCount: { type: 'number', desc: '多选时的最大选中数', defaultValue: 999999 },
         offsety: { type: 'number', desc: '菜单间的间隔', defaultValue: 4 },
-        autoHeight: { type: 'boolean', desc: '根据data数量，自动计算菜单高度' },
+        autoHeight: {
+          type: 'boolean',
+          desc: '根据data数量，自动计算菜单高度',
+          defaultValue: false,
+        },
+        divided: { type: 'boolean', desc: '项之间是否展示分割线', defaultValue: false },
         expandedPath: { type: 'string[]', desc: '层级菜单时展开的数据' },
         separator: { type: 'string', desc: '层级菜单时连接层级数据的分隔符', defaultValue: '|' },
         offsetX: { type: 'number', desc: '层级菜单时，菜单间的间隔', defaultValue: 4 },
         offsetY: { type: 'string', desc: '层级菜单时，子菜单相对父级菜单的top值' },
-        action: {
-          type: 'click | hover',
-          desc: '层级菜单时，展开子菜单的方式',
-          defaultValue: 'click',
-        },
+        action: { type: 'ActionType', desc: '层级菜单时，展开子菜单的方式', defaultValue: 'click' },
         size: {
           type: 'large | default | bigger',
           desc: '设置列表项的高度',
           defaultValue: 'default',
         },
-        subsize: {
-          type: 'large | default | bigger',
-          desc: '设置子菜单列表项的高度',
-          defaultValue: 'default',
-        },
+        subsize: { type: 'SubsizeType', desc: '设置子菜单列表项的高度', defaultValue: 'default' },
         popupVisible: { type: 'boolean', desc: '层级菜单,是否允许打开子菜单', defaultValue: true },
       },
       events: {
@@ -5044,11 +5925,7 @@ export default [
           desc: '点击列表项时触发',
           args: [
             { name: 'event', desc: '选中DOM的事件对象', type: 'Object' },
-            {
-              name: 'keys',
-              desc: '所有的选中值',
-              type: 'Object',
-            },
+            { name: 'keys', desc: '所有的选中值', type: 'Object' },
             { name: 'item', desc: '当前选中项的数据', type: 'Object' },
           ],
         },
@@ -5056,11 +5933,7 @@ export default [
           desc: '鼠标进入列表项时触发',
           args: [
             { name: 'event', desc: '选中DOM的事件对象', type: 'Object' },
-            {
-              name: 'item',
-              desc: '当前鼠标进入的列表项数据',
-              type: 'Object',
-            },
+            { name: 'item', desc: '当前鼠标进入的列表项数据', type: 'Object' },
           ],
         },
         onExpandPathChange: {
@@ -5069,6 +5942,11 @@ export default [
             { name: 'expandedPath', desc: '通过separator连接的各级展开数据', type: 'string[]' },
           ],
         },
+      },
+      type: {
+        CheckedCSSType: ['background', 'checkbox', 'none'],
+        ActionType: ['hover', 'click'],
+        SubsizeType: ['large', 'default', 'bigger'],
       },
       category: ['数据录入'],
       theme: {
@@ -5303,11 +6181,7 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            {
-              key: 'text',
-              title: '文本值',
-              type: 'string',
-            },
+            { key: 'text', title: '文本值', type: 'string' },
           ],
         },
         value: { type: 'string | string[] | number | number[]', desc: '指定当前选中的条目' },
@@ -6110,11 +6984,7 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            {
-              key: 'text',
-              title: '文本值',
-              type: 'string',
-            },
+            { key: 'text', title: '文本值', type: 'string' },
           ],
         },
         value: { type: 'string | string[] | number | number[]', desc: '指定当前选中的条目' },
@@ -6446,11 +7316,7 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            {
-              key: 'text',
-              title: '文本值',
-              type: 'string',
-            },
+            { key: 'text', title: '文本值', type: 'string' },
           ],
         },
         value: { type: 'string | string[] | number | number[]', desc: '指定当前选中的条目' },
@@ -6724,11 +7590,7 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            {
-              key: 'text',
-              title: '文本值',
-              type: 'string',
-            },
+            { key: 'text', title: '文本值', type: 'string' },
           ],
         },
         value: { type: 'string | string[] | number | number[]', desc: '指定当前选中的条目' },
@@ -7107,27 +7969,19 @@ export default [
         },
         simple: { type: 'boolean', desc: '当添加该属性时，显示为简单分页' },
       },
-      event: {
+      events: {
         onChange: {
           desc: '页码改变的回调，参数是改变后的页码及每页条数',
           args: [
             { name: 'page', desc: '页码改变后的页码', type: 'number' },
-            {
-              name: 'pageSize',
-              desc: '每页条数',
-              type: 'number',
-            },
+            { name: 'pageSize', desc: '每页条数', type: 'number' },
           ],
         },
         onShowSizeChange: {
           desc: 'pageSize 变化的回调',
           args: [
             { name: 'current', desc: '当前页数', type: 'number' },
-            {
-              name: 'size',
-              desc: '每页条数',
-              type: 'number',
-            },
+            { name: 'size', desc: '每页条数', type: 'number' },
           ],
         },
       },
@@ -7291,6 +8145,11 @@ export default [
                 ['padding'],
                 ['opacity'],
               ],
+            },
+            PaginationText: {
+              name: '快速跳至提醒文字',
+              desc: '快速跳至提醒文字',
+              normal: [['color'], ['font'], ['fontSize'], ['cursor']],
             },
           },
         },
@@ -7489,27 +8348,19 @@ export default [
         },
         simple: { type: 'boolean', desc: '当添加该属性时，显示为简单分页', defaultValue: true },
       },
-      event: {
+      events: {
         onChange: {
           desc: '页码改变的回调，参数是改变后的页码及每页条数',
           args: [
             { name: 'page', desc: '页码改变后的页码', type: 'number' },
-            {
-              name: 'pageSize',
-              desc: '每页条数',
-              type: 'number',
-            },
+            { name: 'pageSize', desc: '每页条数', type: 'number' },
           ],
         },
         onShowSizeChange: {
           desc: 'pageSize 变化的回调',
           args: [
             { name: 'current', desc: '当前页数', type: 'number' },
-            {
-              name: 'size',
-              desc: '每页条数',
-              type: 'number',
-            },
+            { name: 'size', desc: '每页条数', type: 'number' },
           ],
         },
       },
@@ -7624,6 +8475,7 @@ export default [
           desc: '进度条展示内容展示位置，可设置为 inside 或不设',
           defaultValue: 'default',
         },
+        iconClass: { type: 'string', desc: '进度条展示的图标,仅在success或error状态生效' },
       },
       type: {
         ProgressType: ['line', 'circle', 'dashboard'],
@@ -7772,6 +8624,7 @@ export default [
           desc: '进度条展示内容展示位置，可设置为 inside 或不设',
           defaultValue: 'default',
         },
+        iconClass: { type: 'string', desc: '进度条展示的图标,仅在success或error状态生效' },
       },
       type: {
         ProgressType: ['line', 'circle', 'dashboard'],
@@ -7843,6 +8696,7 @@ export default [
           desc: '进度条展示内容展示位置，可设置为 inside 或不设',
           defaultValue: 'default',
         },
+        iconClass: { type: 'string', desc: '进度条展示的图标,仅在success或error状态生效' },
       },
       type: {
         ProgressType: ['line', 'circle', 'dashboard'],
@@ -7890,7 +8744,12 @@ export default [
         defaultChecked: { type: 'boolean', desc: '单选框初始是否选中' },
         disabled: { type: 'boolean', desc: '单选框是否禁用' },
         value: { type: 'string', desc: '单选框的 value 值', defaultValue: true },
-        children: { type: 'string | React.node', desc: 'Radio展示内容' },
+        children: {
+          type: 'string | React.node',
+          desc: 'Radio展示内容',
+          propsDefaultValue: '',
+          defaultValue: 'radio',
+        },
       },
       event: {
         onChange: {
@@ -7984,24 +8843,26 @@ export default [
   {
     meta: {
       widgetName: 'Radio.Group',
-      title: '单选框',
-      desc: '单选框。',
+      title: '单选框组',
+      desc: '单选框组。',
       props: {
         defaultValue: { type: 'string', desc: '单选框初始选中值' },
         value: { type: 'string', desc: '单选框选中值' },
         data: {
           type: 'Object[]',
           desc: '单选框信息',
+          propsDefaultValue: [],
+          meta: [
+            { key: 'text', title: '展示文字', type: 'string' },
+            { key: 'value', title: '对应字段', type: 'string' },
+          ],
           defaultValue: [
             { text: '选项1', value: '1' },
             { text: '选项2', value: '2' },
-            {
-              text: '选项3',
-              value: '3',
-            },
+            { text: '选项3', value: '3' },
           ],
         },
-        displayField: { type: 'string', desc: '单选框的 显示字段值', defaultValue: 'text' },
+        displayField: { type: 'string', desc: '单选框的显示字段值', defaultValue: 'text' },
         valueField: { type: 'string', desc: '单选框的 value 值', defaultValue: 'value' },
         displayValue: { type: 'string', desc: '单选框的 value 备用值，value 找不到时展示' },
         styles: { type: 'RadioStylesType', desc: '单选框的展示方向，可选值为 vertical 或不设' },
@@ -8289,17 +9150,9 @@ export default [
           desc: '自定义图标对象',
           meta: [
             { key: 'default', title: '默认图标名称', type: 'string' },
-            {
-              key: 'primary',
-              title: '选中状态图标名称',
-              type: 'string',
-            },
+            { key: 'primary', title: '选中状态图标名称', type: 'string' },
             { key: 'danger', title: '低分值图标名称', type: 'string' },
-            {
-              key: 'amazed',
-              title: '高分值图标名称',
-              type: 'string',
-            },
+            { key: 'amazed', title: '高分值图标名称', type: 'string' },
             { key: 'half', title: '半星图标名称', type: 'string' },
           ],
           defaultValue: {
@@ -8318,22 +9171,14 @@ export default [
           desc: '点击时触发',
           args: [
             { name: 'event', desc: '点击的DOM事件', type: 'DOM 事件' },
-            {
-              name: 'result',
-              desc: '点击后的所选值',
-              type: 'Object',
-            },
+            { name: 'result', desc: '点击后的所选值', type: 'Object' },
           ],
         },
         onChange: {
           desc: '分值改变时触发',
           args: [
             { name: 'event', desc: '鼠标移动的DOM事件', type: 'DOM 事件' },
-            {
-              name: 'result',
-              desc: '鼠标移动时的所选值',
-              type: 'Object',
-            },
+            { name: 'result', desc: '鼠标移动时的所选值', type: 'Object' },
           ],
         },
       },
@@ -8451,17 +9296,9 @@ export default [
           desc: '自定义图标对象',
           meta: [
             { key: 'default', title: '默认图标名称', type: 'string' },
-            {
-              key: 'primary',
-              title: '选中状态图标名称',
-              type: 'string',
-            },
+            { key: 'primary', title: '选中状态图标名称', type: 'string' },
             { key: 'danger', title: '低分值图标名称', type: 'string' },
-            {
-              key: 'amazed',
-              title: '高分值图标名称',
-              type: 'string',
-            },
+            { key: 'amazed', title: '高分值图标名称', type: 'string' },
             { key: 'half', title: '半星图标名称', type: 'string' },
           ],
           defaultValue: {
@@ -8478,22 +9315,14 @@ export default [
           desc: '点击时触发',
           args: [
             { name: 'event', desc: '点击的DOM事件', type: 'DOM 事件' },
-            {
-              name: 'result',
-              desc: '点击后的所选值',
-              type: 'Object',
-            },
+            { name: 'result', desc: '点击后的所选值', type: 'Object' },
           ],
         },
         onChange: {
           desc: '分值改变时触发',
           args: [
             { name: 'event', desc: '鼠标移动的DOM事件', type: 'DOM 事件' },
-            {
-              name: 'result',
-              desc: '鼠标移动时的所选值',
-              type: 'Object',
-            },
+            { name: 'result', desc: '鼠标移动时的所选值', type: 'Object' },
           ],
         },
       },
@@ -8549,29 +9378,23 @@ export default [
         max: { type: 'number', desc: '最大分值', defaultValue: 5 },
         disabled: { type: 'boolean', desc: '禁用状态,不可进行交互', defaultValue: false },
         allowHalf: { type: 'boolean', desc: '是否允许半选', defaultValue: false },
-        classify: { type: 'boolean', desc: '是否区分颜色', defaultValue: true },
+        classify: { type: 'boolean', desc: '是否区分颜色', defaultValue: false },
         iconClass: {
           type: 'object[]',
           desc: '自定义图标对象',
           meta: [
             { key: 'default', title: '默认图标名称', type: 'string' },
-            {
-              key: 'primary',
-              title: '选中状态图标名称',
-              type: 'string',
-            },
+            { key: 'primary', title: '选中状态图标名称', type: 'string' },
             { key: 'danger', title: '低分值图标名称', type: 'string' },
-            {
-              key: 'amazed',
-              title: '高分值图标名称',
-              type: 'string',
-            },
+            { key: 'amazed', title: '高分值图标名称', type: 'string' },
             { key: 'half', title: '半星图标名称', type: 'string' },
           ],
           defaultValue: {
-            default: 'lugia-icon-financial_meh',
-            danger: 'lugia-icon-financial_sad',
-            amazed: 'lugia-icon-financial_smile',
+            default: 'lugia-icon-financial_star',
+            primary: 'lugia-icon-financial_star',
+            danger: 'lugia-icon-financial_star',
+            amazed: 'lugia-icon-financial_star',
+            half: 'lugia-icon-finacial_half_star',
           },
         },
         value: { type: 'number', desc: '当前分值', defaultValue: 0 },
@@ -8586,22 +9409,14 @@ export default [
           desc: '点击时触发',
           args: [
             { name: 'event', desc: '点击的DOM事件', type: 'DOM 事件' },
-            {
-              name: 'result',
-              desc: '点击后的所选值',
-              type: 'Object',
-            },
+            { name: 'result', desc: '点击后的所选值', type: 'Object' },
           ],
         },
         onChange: {
           desc: '分值改变时触发',
           args: [
             { name: 'event', desc: '鼠标移动的DOM事件', type: 'DOM 事件' },
-            {
-              name: 'result',
-              desc: '鼠标移动时的所选值',
-              type: 'Object',
-            },
+            { name: 'result', desc: '鼠标移动时的所选值', type: 'Object' },
           ],
         },
       },
@@ -8642,11 +9457,7 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            {
-              key: 'text',
-              title: '文本值',
-              type: 'string',
-            },
+            { key: 'text', title: '文本值', type: 'string' },
           ],
         },
         mutliple: { type: 'boolean', desc: '是否多选', defaultValue: false },
@@ -8691,29 +9502,20 @@ export default [
           type: 'string | string[] | number | number[]',
           desc: '初始状态下指定当前选中的条目的displayValue值,只生效一次',
         },
+        divided: { type: 'boolean', desc: '弹出菜单中是否展示分割线' },
+        pullIconClass: { type: 'string', desc: '下拉按钮图标' },
+        clearIconClass: { type: 'string', desc: '清空按钮图标' },
       },
       events: {
         onChange: {
           desc: '选中项发生变化时触发',
           args: [
             { name: 'event', desc: '点击的DOM事件', type: 'Object' },
-            {
-              name: 'newDisplayValue',
-              desc: '所有选中项的displayField的集合',
-              type: 'string[]',
-            },
+            { name: 'newDisplayValue', desc: '所有选中项的displayField的集合', type: 'string[]' },
             { name: 'newItem', desc: '所有选中项的数据的集合', type: 'Object[]' },
-            {
-              name: 'newValue',
-              desc: '所有选中项的valueField的集合',
-              type: 'string[]',
-            },
+            { name: 'newValue', desc: '所有选中项的valueField的集合', type: 'string[]' },
             { name: 'oldItem', desc: '改变之前所有选中项的数据的集合', type: 'Object[]' },
-            {
-              name: 'oldValue',
-              desc: '改变之前所有选中项的valueField的集合',
-              type: 'string[]',
-            },
+            { name: 'oldValue', desc: '改变之前所有选中项的valueField的集合', type: 'string[]' },
           ],
         },
         onTrigger: { desc: '菜单展开是触发' },
@@ -8729,23 +9531,11 @@ export default [
           desc: '选中时触发',
           args: [
             { name: 'event', desc: '点击的DOM事件', type: 'Object' },
-            {
-              name: 'newDisplayValue',
-              desc: '所有选中项的displayField的集合',
-              type: 'string[]',
-            },
+            { name: 'newDisplayValue', desc: '所有选中项的displayField的集合', type: 'string[]' },
             { name: 'newItem', desc: '所有选中项的数据的集合', type: 'Object[]' },
-            {
-              name: 'newValue',
-              desc: '所有选中项的valueField的集合',
-              type: 'string[]',
-            },
+            { name: 'newValue', desc: '所有选中项的valueField的集合', type: 'string[]' },
             { name: 'oldItem', desc: '改变之前所有选中项的数据的集合', type: 'Object[]' },
-            {
-              name: 'oldValue',
-              desc: '改变之前所有选中项的valueField的集合',
-              type: 'string[]',
-            },
+            { name: 'oldValue', desc: '改变之前所有选中项的valueField的集合', type: 'string[]' },
           ],
         },
         onRefresh: { desc: '点击刷新按钮时触发' },
@@ -8769,6 +9559,7 @@ export default [
                     ['height'],
                     ['margin'],
                     ['padding'],
+                    ['margin'],
                     ['color'],
                     ['background'],
                     ['border'],
@@ -8793,6 +9584,14 @@ export default [
                   name: '下拉图标',
                   desc: '配置下拉或清除按钮的图标样式',
                   normal: [['margin'], ['padding'], ['color'], ['font'], ['opacity']],
+                  hover: [['color'], ['font'], ['opacity']],
+                  active: [],
+                  disabled: [],
+                },
+                ClearIcon: {
+                  name: '下拉图标',
+                  desc: '配置下拉或清除按钮的图标样式',
+                  normal: [['color'], ['background'], ['font'], ['margin'], ['opacity']],
                   hover: [['color'], ['font'], ['opacity']],
                   active: [],
                   disabled: [],
@@ -8992,6 +9791,14 @@ export default [
                       ],
                       disabled: [],
                     },
+                    Divider: {
+                      name: '分割线',
+                      desc: '配置每项之间的分割线，当divided为true时生效',
+                      normal: [['background']],
+                      hover: [],
+                      active: [],
+                      disabled: [],
+                    },
                   },
                 },
               },
@@ -9033,7 +9840,15 @@ export default [
             },
             SwitchIcon: {
               name: '下拉图标',
-              desc: '配置下拉或清除按钮的图标样式',
+              desc: '配置下拉图标样式',
+              normal: [['color'], ['background'], ['font'], ['margin'], ['opacity']],
+              hover: [['color'], ['font'], ['opacity']],
+              active: [],
+              disabled: [],
+            },
+            ClearIcon: {
+              name: '清空图标',
+              desc: '配置清除图标样式',
               normal: [['color'], ['background'], ['font'], ['margin'], ['opacity']],
               hover: [['color'], ['font'], ['opacity']],
               active: [],
@@ -9132,6 +9947,14 @@ export default [
                   ],
                   disabled: [],
                 },
+                Divider: {
+                  name: '分割线',
+                  desc: '配置每项之间的分割线，当divided为true时生效',
+                  normal: [['background']],
+                  hover: [],
+                  active: [],
+                  disabled: [],
+                },
               },
             },
           },
@@ -9154,11 +9977,7 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            {
-              key: 'text',
-              title: '文本值',
-              type: 'string',
-            },
+            { key: 'text', title: '文本值', type: 'string' },
           ],
         },
         mutliple: { type: 'boolean', desc: '是否多选', defaultValue: true },
@@ -9203,29 +10022,20 @@ export default [
           type: 'string | string[] | number | number[]',
           desc: '初始状态下指定当前选中的条目的displayValue值,只生效一次',
         },
+        divided: { type: 'boolean', desc: '弹出菜单中是否展示分割线' },
+        pullIconClass: { type: 'string', desc: '下拉按钮图标' },
+        clearIconClass: { type: 'string', desc: '清空按钮图标' },
       },
       events: {
         onChange: {
           desc: '选中项发生变化时触发',
           args: [
             { name: 'event', desc: '点击的DOM事件', type: 'Object' },
-            {
-              name: 'newDisplayValue',
-              desc: '所有选中项的displayField的集合',
-              type: 'string[]',
-            },
+            { name: 'newDisplayValue', desc: '所有选中项的displayField的集合', type: 'string[]' },
             { name: 'newItem', desc: '所有选中项的数据的集合', type: 'Object[]' },
-            {
-              name: 'newValue',
-              desc: '所有选中项的valueField的集合',
-              type: 'string[]',
-            },
+            { name: 'newValue', desc: '所有选中项的valueField的集合', type: 'string[]' },
             { name: 'oldItem', desc: '改变之前所有选中项的数据的集合', type: 'Object[]' },
-            {
-              name: 'oldValue',
-              desc: '改变之前所有选中项的valueField的集合',
-              type: 'string[]',
-            },
+            { name: 'oldValue', desc: '改变之前所有选中项的valueField的集合', type: 'string[]' },
           ],
         },
         onTrigger: { desc: '菜单展开是触发' },
@@ -9241,23 +10051,11 @@ export default [
           desc: '选中时触发',
           args: [
             { name: 'event', desc: '点击的DOM事件', type: 'Object' },
-            {
-              name: 'newDisplayValue',
-              desc: '所有选中项的displayField的集合',
-              type: 'string[]',
-            },
+            { name: 'newDisplayValue', desc: '所有选中项的displayField的集合', type: 'string[]' },
             { name: 'newItem', desc: '所有选中项的数据的集合', type: 'Object[]' },
-            {
-              name: 'newValue',
-              desc: '所有选中项的valueField的集合',
-              type: 'string[]',
-            },
+            { name: 'newValue', desc: '所有选中项的valueField的集合', type: 'string[]' },
             { name: 'oldItem', desc: '改变之前所有选中项的数据的集合', type: 'Object[]' },
-            {
-              name: 'oldValue',
-              desc: '改变之前所有选中项的valueField的集合',
-              type: 'string[]',
-            },
+            { name: 'oldValue', desc: '改变之前所有选中项的valueField的集合', type: 'string[]' },
           ],
         },
         onRefresh: { desc: '点击刷新按钮时触发' },
@@ -9275,6 +10073,7 @@ export default [
                 ['height'],
                 ['margin'],
                 ['padding'],
+                ['margin'],
                 ['color'],
                 ['background'],
                 ['border'],
@@ -9299,6 +10098,14 @@ export default [
               name: '下拉图标',
               desc: '配置下拉或清除按钮的图标样式',
               normal: [['margin'], ['padding'], ['color'], ['font'], ['opacity']],
+              hover: [['color'], ['font'], ['opacity']],
+              active: [],
+              disabled: [],
+            },
+            ClearIcon: {
+              name: '下拉图标',
+              desc: '配置下拉或清除按钮的图标样式',
+              normal: [['color'], ['background'], ['font'], ['margin'], ['opacity']],
               hover: [['color'], ['font'], ['opacity']],
               active: [],
               disabled: [],
@@ -9490,6 +10297,14 @@ export default [
                     ['color'],
                     ['font'],
                   ],
+                  disabled: [],
+                },
+                Divider: {
+                  name: '分割线',
+                  desc: '配置每项之间的分割线，当divided为true时生效',
+                  normal: [['background']],
+                  hover: [],
+                  active: [],
                   disabled: [],
                 },
               },
@@ -10107,7 +10922,7 @@ export default [
           desc: 'boolean 是否显示提示信息,number|string指定显示的文本内容,可自定义显示的文本格式',
           defaultValue: false,
         },
-        vertical: { type: 'boolean', desc: '是否垂直显示', defaultValue: true },
+        vertical: { type: 'boolean', desc: '是否垂直显示', defaultValue: false },
         icons: { type: 'object[]', meta: [{ key: 'name', type: 'icon' }], desc: '显示的图标资源' },
         marks: {
           type: '{ [key:number]: string | Object }',
@@ -10222,7 +11037,7 @@ export default [
           desc: 'boolean 是否显示提示信息,number|string指定显示的文本内容,可自定义显示的文本格式',
           defaultValue: false,
         },
-        vertical: { type: 'boolean', desc: '是否垂直显示', defaultValue: true },
+        vertical: { type: 'boolean', desc: '是否垂直显示', defaultValue: false },
         icons: { type: 'object[]', meta: [{ key: 'name', type: 'icon' }], desc: '显示的图标资源' },
         marks: {
           type: '{ [key:number]: string | Object }',
@@ -10339,12 +11154,10 @@ export default [
           desc: '步骤条填充的数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            {
-              key: 'description',
-              title: '步骤条描述',
-              type: 'string',
-            },
+            { key: 'description', title: '步骤条描述', type: 'string' },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
+            { key: 'icon', title: '步骤条图标(图标步骤条填写)', type: 'icon' },
+            { key: 'isDashed', title: '步骤条连接线是否虚线', type: 'boolean' },
           ],
         },
         defaultData: {
@@ -10352,12 +11165,10 @@ export default [
           desc: '步骤条填充的默认显示数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            {
-              key: 'description',
-              title: '步骤条描述',
-              type: 'string',
-            },
+            { key: 'description', title: '步骤条描述', type: 'string' },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
+            { key: 'icon', title: '步骤条图标(图标步骤条填写)', type: 'icon' },
+            { key: 'isDashed', title: '步骤条连接线是否虚线', type: 'boolean' },
           ],
         },
         stepType: {
@@ -10406,24 +11217,84 @@ export default [
             Step: {
               name: '单个步骤配置',
               theme: {
-                StepOutContainer: {
-                  name: '单个步骤外部',
-                  desc: '单个步骤外部容器配置',
+                FinishStepOutContainer: {
+                  name: '已完成状态单个步骤外部容器',
+                  desc: '已完成状态单个步骤外部容器配置',
                   normal: [['width'], ['height']],
                 },
-                StepLine: {
-                  name: '步骤间连接线',
-                  desc: '步骤间连接线的配置',
+                ProcessStepOutContainer: {
+                  name: '进行中状态单个步骤外部',
+                  desc: '进行中状态单个步骤外部容器配置',
+                  normal: [['width'], ['height']],
+                },
+                NextStepOutContainer: {
+                  name: '下一步状态单个步骤外部',
+                  desc: '下一步状态单个步骤外部容器配置',
+                  normal: [['width'], ['height']],
+                },
+                WaitStepOutContainer: {
+                  name: '等待中状态单个步骤外部',
+                  desc: '等待中状态单个步骤外部容器配置',
+                  normal: [['width'], ['height']],
+                },
+                ErrorStepOutContainer: {
+                  name: '异常状态单个步骤外部',
+                  desc: '异常状态单个步骤外部容器配置',
+                  normal: [['width'], ['height']],
+                },
+                FinishStepLine: {
+                  name: '已完成状态步骤间连接线',
+                  desc: '已完成状态步骤间连接线的配置',
                   normal: [['width'], ['height'], ['background']],
                 },
-                StepInnerContainer: {
-                  name: '单个步骤内部',
-                  desc: '单个步骤内部容器配置',
+                ProcessStepLine: {
+                  name: '进行中状态步骤间连接线',
+                  desc: '进行中状态步骤间连接线的配置',
                   normal: [['width'], ['height'], ['background']],
                 },
-                StepTitle: {
-                  name: '步骤标题',
-                  desc: '配置步骤标题',
+                NextStepLine: {
+                  name: '下一步状态步骤间连接线',
+                  desc: '下一步状态步骤间连接线的配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+                WaitStepLine: {
+                  name: '等待中状态步骤间连接线',
+                  desc: '等待中状态步骤间连接线的配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+                ErrorStepLine: {
+                  name: '异常状态步骤间连接线',
+                  desc: '异常状态步骤间连接线的配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+                FinishStepInnerContainer: {
+                  name: '已完成状态单个步骤内部',
+                  desc: '已完成状态单个步骤内部容器配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+                ProcessStepInnerContainer: {
+                  name: '进行中状态单个步骤内部',
+                  desc: '进行中状态单个步骤内部容器配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+                NextStepInnerContainer: {
+                  name: '下一步状态单个步骤内部',
+                  desc: '下一步状态单个步骤内部容器配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+                WaitStepInnerContainer: {
+                  name: '等待中状态单个步骤内部',
+                  desc: '等待中状态单个步骤内部容器配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+                ErrorStepInnerContainer: {
+                  name: '异常状态单个步骤内部',
+                  desc: '异常状态单个步骤内部容器配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+                FinishStepTitle: {
+                  name: '已完成状态步骤标题',
+                  desc: '已完成状态配置步骤标题',
                   normal: [
                     ['fontSize'],
                     ['font'],
@@ -10434,9 +11305,9 @@ export default [
                     ['margin'],
                   ],
                 },
-                StepDescription: {
-                  name: '步骤条内容描述',
-                  desc: '配置步骤条内容描述',
+                ProcessStepTitle: {
+                  name: '进行中状态步骤标题',
+                  desc: '进行中状态配置步骤标题',
                   normal: [
                     ['fontSize'],
                     ['font'],
@@ -10446,6 +11317,115 @@ export default [
                     ['padding'],
                     ['margin'],
                   ],
+                },
+                NextStepTitle: {
+                  name: '下一步状态步骤标题',
+                  desc: '下一步状态配置步骤标题',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                WaitStepTitle: {
+                  name: '等待中状态步骤标题',
+                  desc: '等待中状态配置步骤标题',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                ErrorStepTitle: {
+                  name: '异常状态步骤标题',
+                  desc: '异常状态配置步骤标题',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                FinishStepDescription: {
+                  name: '已完成状态步骤条内容描述',
+                  desc: '已完成状态配置步骤条内容描述',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                ProcessStepDescription: {
+                  name: '进行中状态步骤条内容描述',
+                  desc: '进行中状态配置步骤条内容描述',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                NextStepDescription: {
+                  name: '下一步状态步骤条内容描述',
+                  desc: '下一步状态配置步骤条内容描述',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                WaitStepDescription: {
+                  name: '等待中状态步骤条内容描述',
+                  desc: '等待中状态配置步骤条内容描述',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                ErrorStepDescription: {
+                  name: '异常状态步骤条内容描述',
+                  desc: '异常状态配置步骤条内容描述',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                ProcessStepNumber: {
+                  name: '进行中状态步骤条步骤数字',
+                  desc: '进行中状态配置步骤条步骤数字',
+                  normal: [['fontSize'], ['font'], ['color']],
                 },
                 StepInnerIcon: {
                   name: '步骤条内容图标',
@@ -10460,7 +11440,7 @@ export default [
           sequence: 2,
           title: '半扁平步骤条',
           desc: '半扁平步骤条配置',
-          props: { stepType: 'flat' },
+          props: { stepType: 'flat', orientation: 'horizontal' },
           theme: {
             StepsOutContainer: {
               name: '步骤条最外层容器',
@@ -10470,24 +11450,84 @@ export default [
             Step: {
               name: '单个步骤配置',
               theme: {
-                StepOutContainer: {
-                  name: '单个步骤外部',
-                  desc: '单个步骤外部容器配置',
+                FinishStepOutContainer: {
+                  name: '已完成状态单个步骤外部容器',
+                  desc: '已完成状态单个步骤外部容器配置',
                   normal: [['width'], ['height']],
                 },
-                StepLine: {
-                  name: '步骤间连接线',
-                  desc: '步骤间连接线的配置',
+                ProcessStepOutContainer: {
+                  name: '进行中状态单个步骤外部',
+                  desc: '进行中状态单个步骤外部容器配置',
+                  normal: [['width'], ['height']],
+                },
+                NextStepOutContainer: {
+                  name: '下一步状态单个步骤外部',
+                  desc: '下一步状态单个步骤外部容器配置',
+                  normal: [['width'], ['height']],
+                },
+                WaitStepOutContainer: {
+                  name: '等待中状态单个步骤外部',
+                  desc: '等待中状态单个步骤外部容器配置',
+                  normal: [['width'], ['height']],
+                },
+                ErrorStepOutContainer: {
+                  name: '异常状态单个步骤外部',
+                  desc: '异常状态单个步骤外部容器配置',
+                  normal: [['width'], ['height']],
+                },
+                FinishStepFlatLine: {
+                  name: '已完成状态步骤间连接线',
+                  desc: '已完成状态步骤间连接线的配置',
+                  normal: [['width'], ['height'], ['boxShadow']],
+                },
+                ProcessStepFlatLine: {
+                  name: '进行中状态步骤间连接线',
+                  desc: '进行中状态步骤间连接线的配置',
+                  normal: [['width'], ['height'], ['boxShadow']],
+                },
+                NextStepFlatLine: {
+                  name: '下一步状态步骤间连接线',
+                  desc: '下一步状态步骤间连接线的配置',
+                  normal: [['width'], ['height'], ['boxShadow']],
+                },
+                WaitStepFlatLine: {
+                  name: '等待中状态步骤间连接线',
+                  desc: '等待中状态步骤间连接线的配置',
+                  normal: [['width'], ['height'], ['boxShadow']],
+                },
+                ErrorStepFlatLine: {
+                  name: '异常状态步骤间连接线',
+                  desc: '异常状态步骤间连接线的配置',
+                  normal: [['width'], ['height'], ['boxShadow']],
+                },
+                FinishStepInnerContainer: {
+                  name: '已完成状态单个步骤内部',
+                  desc: '已完成状态单个步骤内部容器配置',
                   normal: [['width'], ['height'], ['background']],
                 },
-                StepInnerContainer: {
-                  name: '单个步骤内部',
-                  desc: '单个步骤内部容器配置',
+                ProcessStepInnerContainer: {
+                  name: '进行中状态单个步骤内部',
+                  desc: '进行中状态单个步骤内部容器配置',
                   normal: [['width'], ['height'], ['background']],
                 },
-                StepTitle: {
-                  name: '步骤标题',
-                  desc: '配置步骤标题',
+                NextStepInnerContainer: {
+                  name: '下一步状态单个步骤内部',
+                  desc: '下一步状态单个步骤内部容器配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+                WaitStepInnerContainer: {
+                  name: '等待中状态单个步骤内部',
+                  desc: '等待中状态单个步骤内部容器配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+                ErrorStepInnerContainer: {
+                  name: '异常状态单个步骤内部',
+                  desc: '异常状态单个步骤内部容器配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+                FinishStepTitle: {
+                  name: '已完成状态步骤标题',
+                  desc: '已完成状态配置步骤标题',
                   normal: [
                     ['fontSize'],
                     ['font'],
@@ -10498,9 +11538,9 @@ export default [
                     ['margin'],
                   ],
                 },
-                StepDescription: {
-                  name: '步骤条内容描述',
-                  desc: '配置步骤条内容描述',
+                ProcessStepTitle: {
+                  name: '进行中状态步骤标题',
+                  desc: '进行中状态配置步骤标题',
                   normal: [
                     ['fontSize'],
                     ['font'],
@@ -10510,6 +11550,115 @@ export default [
                     ['padding'],
                     ['margin'],
                   ],
+                },
+                NextStepTitle: {
+                  name: '下一步状态步骤标题',
+                  desc: '下一步状态配置步骤标题',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                WaitStepTitle: {
+                  name: '等待中状态步骤标题',
+                  desc: '等待中状态配置步骤标题',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                ErrorStepTitle: {
+                  name: '异常状态步骤标题',
+                  desc: '异常状态配置步骤标题',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                FinishStepDescription: {
+                  name: '已完成状态步骤条内容描述',
+                  desc: '已完成状态配置步骤条内容描述',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                ProcessStepDescription: {
+                  name: '进行中状态步骤条内容描述',
+                  desc: '进行中状态配置步骤条内容描述',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                NextStepDescription: {
+                  name: '下一步状态步骤条内容描述',
+                  desc: '下一步状态配置步骤条内容描述',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                WaitStepDescription: {
+                  name: '等待中状态步骤条内容描述',
+                  desc: '等待中状态配置步骤条内容描述',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                ErrorStepDescription: {
+                  name: '异常状态步骤条内容描述',
+                  desc: '异常状态配置步骤条内容描述',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                ProcessStepNumber: {
+                  name: '进行中状态步骤条步骤数字',
+                  desc: '进行中状态配置步骤条步骤数字',
+                  normal: [['fontSize'], ['font'], ['color']],
                 },
                 StepInnerIcon: {
                   name: '步骤条内容图标',
@@ -10524,7 +11673,7 @@ export default [
           sequence: 3,
           title: '图标步骤条',
           desc: '图标步骤条步骤条配置',
-          props: { stepType: 'icon' },
+          props: { stepType: 'icon', orientation: 'horizontal' },
           theme: {
             StepsOutContainer: {
               name: '步骤条最外层容器',
@@ -10534,24 +11683,84 @@ export default [
             Step: {
               name: '单个步骤配置',
               theme: {
-                StepOutContainer: {
-                  name: '单个步骤外部',
-                  desc: '单个步骤外部容器配置',
+                FinishStepOutContainer: {
+                  name: '已完成状态单个步骤外部容器',
+                  desc: '已完成状态单个步骤外部容器配置',
                   normal: [['width'], ['height']],
                 },
-                StepLine: {
-                  name: '步骤间连接线',
-                  desc: '步骤间连接线的配置',
+                ProcessStepOutContainer: {
+                  name: '进行中状态单个步骤外部',
+                  desc: '进行中状态单个步骤外部容器配置',
+                  normal: [['width'], ['height']],
+                },
+                NextStepOutContainer: {
+                  name: '下一步状态单个步骤外部',
+                  desc: '下一步状态单个步骤外部容器配置',
+                  normal: [['width'], ['height']],
+                },
+                WaitStepOutContainer: {
+                  name: '等待中状态单个步骤外部',
+                  desc: '等待中状态单个步骤外部容器配置',
+                  normal: [['width'], ['height']],
+                },
+                ErrorStepOutContainer: {
+                  name: '异常状态单个步骤外部',
+                  desc: '异常状态单个步骤外部容器配置',
+                  normal: [['width'], ['height']],
+                },
+                FinishStepLine: {
+                  name: '已完成状态步骤间连接线',
+                  desc: '已完成状态步骤间连接线的配置',
                   normal: [['width'], ['height'], ['background']],
                 },
-                StepInnerContainer: {
-                  name: '单个步骤内部',
-                  desc: '单个步骤内部容器配置',
+                ProcessStepLine: {
+                  name: '进行中状态步骤间连接线',
+                  desc: '进行中状态步骤间连接线的配置',
                   normal: [['width'], ['height'], ['background']],
                 },
-                StepTitle: {
-                  name: '步骤标题',
-                  desc: '配置步骤标题',
+                NextStepLine: {
+                  name: '下一步状态步骤间连接线',
+                  desc: '下一步状态步骤间连接线的配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+                WaitStepLine: {
+                  name: '等待中状态步骤间连接线',
+                  desc: '等待中状态步骤间连接线的配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+                ErrorStepLine: {
+                  name: '异常状态步骤间连接线',
+                  desc: '异常状态步骤间连接线的配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+                FinishStepInnerContainer: {
+                  name: '已完成状态单个步骤内部',
+                  desc: '已完成状态单个步骤内部容器配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+                ProcessStepInnerContainer: {
+                  name: '进行中状态单个步骤内部',
+                  desc: '进行中状态单个步骤内部容器配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+                NextStepInnerContainer: {
+                  name: '下一步状态单个步骤内部',
+                  desc: '下一步状态单个步骤内部容器配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+                WaitStepInnerContainer: {
+                  name: '等待中状态单个步骤内部',
+                  desc: '等待中状态单个步骤内部容器配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+                ErrorStepInnerContainer: {
+                  name: '异常状态单个步骤内部',
+                  desc: '异常状态单个步骤内部容器配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+                FinishStepTitle: {
+                  name: '已完成状态步骤标题',
+                  desc: '已完成状态配置步骤标题',
                   normal: [
                     ['fontSize'],
                     ['font'],
@@ -10562,9 +11771,113 @@ export default [
                     ['margin'],
                   ],
                 },
-                StepDescription: {
-                  name: '步骤条内容描述',
-                  desc: '配置步骤条内容描述',
+                ProcessStepTitle: {
+                  name: '进行中状态步骤标题',
+                  desc: '进行中状态配置步骤标题',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                NextStepTitle: {
+                  name: '下一步状态步骤标题',
+                  desc: '下一步状态配置步骤标题',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                WaitStepTitle: {
+                  name: '等待中状态步骤标题',
+                  desc: '等待中状态配置步骤标题',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                ErrorStepTitle: {
+                  name: '异常状态步骤标题',
+                  desc: '异常状态配置步骤标题',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                FinishStepDescription: {
+                  name: '已完成状态步骤条内容描述',
+                  desc: '已完成状态配置步骤条内容描述',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                ProcessStepDescription: {
+                  name: '进行中状态步骤条内容描述',
+                  desc: '进行中状态配置步骤条内容描述',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                NextStepDescription: {
+                  name: '下一步状态步骤条内容描述',
+                  desc: '下一步状态配置步骤条内容描述',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                WaitStepDescription: {
+                  name: '等待中状态步骤条内容描述',
+                  desc: '等待中状态配置步骤条内容描述',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                ErrorStepDescription: {
+                  name: '异常状态步骤条内容描述',
+                  desc: '异常状态配置步骤条内容描述',
                   normal: [
                     ['fontSize'],
                     ['font'],
@@ -10588,7 +11901,7 @@ export default [
           sequence: 4,
           title: '点状步骤条',
           desc: '点状步骤条配置',
-          props: { stepType: 'dot' },
+          props: { stepType: 'dot', orientation: 'horizontal' },
           theme: {
             StepsOutContainer: {
               name: '步骤条最外层容器',
@@ -10598,24 +11911,59 @@ export default [
             Step: {
               name: '单个步骤配置',
               theme: {
-                StepOutContainer: {
-                  name: '单个步骤外部',
-                  desc: '单个步骤外部容器配置',
+                FinishStepOutContainer: {
+                  name: '已完成状态单个步骤外部容器',
+                  desc: '已完成状态单个步骤外部容器配置',
                   normal: [['width'], ['height']],
                 },
-                StepLine: {
-                  name: '步骤间连接线',
-                  desc: '步骤间连接线的配置',
+                ProcessStepOutContainer: {
+                  name: '进行中状态单个步骤外部',
+                  desc: '进行中状态单个步骤外部容器配置',
+                  normal: [['width'], ['height']],
+                },
+                NextStepOutContainer: {
+                  name: '下一步状态单个步骤外部',
+                  desc: '下一步状态单个步骤外部容器配置',
+                  normal: [['width'], ['height']],
+                },
+                WaitStepOutContainer: {
+                  name: '等待中状态单个步骤外部',
+                  desc: '等待中状态单个步骤外部容器配置',
+                  normal: [['width'], ['height']],
+                },
+                ErrorStepOutContainer: {
+                  name: '异常状态单个步骤外部',
+                  desc: '异常状态单个步骤外部容器配置',
+                  normal: [['width'], ['height']],
+                },
+                FinishStepLine: {
+                  name: '已完成状态步骤间连接线',
+                  desc: '已完成状态步骤间连接线的配置',
                   normal: [['width'], ['height'], ['background']],
                 },
-                StepDot: {
-                  name: '点状步骤',
-                  desc: '点状步骤配置',
+                ProcessStepLine: {
+                  name: '进行中状态步骤间连接线',
+                  desc: '进行中状态步骤间连接线的配置',
                   normal: [['width'], ['height'], ['background']],
                 },
-                StepTitle: {
-                  name: '步骤标题',
-                  desc: '配置步骤标题',
+                NextStepLine: {
+                  name: '下一步状态步骤间连接线',
+                  desc: '下一步状态步骤间连接线的配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+                WaitStepLine: {
+                  name: '等待中状态步骤间连接线',
+                  desc: '等待中状态步骤间连接线的配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+                ErrorStepLine: {
+                  name: '异常状态步骤间连接线',
+                  desc: '异常状态步骤间连接线的配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+                FinishStepTitle: {
+                  name: '已完成状态步骤标题',
+                  desc: '已完成状态配置步骤标题',
                   normal: [
                     ['fontSize'],
                     ['font'],
@@ -10626,9 +11974,9 @@ export default [
                     ['margin'],
                   ],
                 },
-                StepDescription: {
-                  name: '步骤条内容描述',
-                  desc: '配置步骤条内容描述',
+                ProcessStepTitle: {
+                  name: '进行中状态步骤标题',
+                  desc: '进行中状态配置步骤标题',
                   normal: [
                     ['fontSize'],
                     ['font'],
@@ -10638,6 +11986,135 @@ export default [
                     ['padding'],
                     ['margin'],
                   ],
+                },
+                NextStepTitle: {
+                  name: '下一步状态步骤标题',
+                  desc: '下一步状态配置步骤标题',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                WaitStepTitle: {
+                  name: '等待中状态步骤标题',
+                  desc: '等待中状态配置步骤标题',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                ErrorStepTitle: {
+                  name: '异常状态步骤标题',
+                  desc: '异常状态配置步骤标题',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                FinishStepDescription: {
+                  name: '已完成状态步骤条内容描述',
+                  desc: '已完成状态配置步骤条内容描述',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                ProcessStepDescription: {
+                  name: '进行中状态步骤条内容描述',
+                  desc: '进行中状态配置步骤条内容描述',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                NextStepDescription: {
+                  name: '下一步状态步骤条内容描述',
+                  desc: '下一步状态配置步骤条内容描述',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                WaitStepDescription: {
+                  name: '等待中状态步骤条内容描述',
+                  desc: '等待中状态配置步骤条内容描述',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                ErrorStepDescription: {
+                  name: '异常状态步骤条内容描述',
+                  desc: '异常状态配置步骤条内容描述',
+                  normal: [
+                    ['fontSize'],
+                    ['font'],
+                    ['color'],
+                    ['width'],
+                    ['height'],
+                    ['padding'],
+                    ['margin'],
+                  ],
+                },
+                FinishStepDot: {
+                  name: '已完成状态点状步骤',
+                  desc: '已完成状态点状步骤配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+                ProcessStepDot: {
+                  name: '进行中状态点状步骤',
+                  desc: '进行中状态点状步骤配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+                NextStepDot: {
+                  name: '下一步状态点状步骤',
+                  desc: '下一步状态点状步骤配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+                WaitStepDot: {
+                  name: '等待中状态点状步骤',
+                  desc: '等待中状态点状步骤配置',
+                  normal: [['width'], ['height'], ['background']],
+                },
+                ErrorStepDot: {
+                  name: '异常状态点状步骤',
+                  desc: '异常状态点状步骤配置',
+                  normal: [['width'], ['height'], ['background']],
                 },
               },
             },
@@ -10653,24 +12130,84 @@ export default [
         Step: {
           name: '单个步骤配置',
           theme: {
-            StepOutContainer: {
-              name: '单个步骤外部',
-              desc: '单个步骤外部容器配置',
+            FinishStepOutContainer: {
+              name: '已完成状态单个步骤外部容器',
+              desc: '已完成状态单个步骤外部容器配置',
               normal: [['width'], ['height']],
             },
-            StepLine: {
-              name: '步骤间连接线',
-              desc: '步骤间连接线的配置',
+            ProcessStepOutContainer: {
+              name: '进行中状态单个步骤外部',
+              desc: '进行中状态单个步骤外部容器配置',
+              normal: [['width'], ['height']],
+            },
+            NextStepOutContainer: {
+              name: '下一步状态单个步骤外部',
+              desc: '下一步状态单个步骤外部容器配置',
+              normal: [['width'], ['height']],
+            },
+            WaitStepOutContainer: {
+              name: '等待中状态单个步骤外部',
+              desc: '等待中状态单个步骤外部容器配置',
+              normal: [['width'], ['height']],
+            },
+            ErrorStepOutContainer: {
+              name: '异常状态单个步骤外部',
+              desc: '异常状态单个步骤外部容器配置',
+              normal: [['width'], ['height']],
+            },
+            FinishStepLine: {
+              name: '已完成状态步骤间连接线',
+              desc: '已完成状态步骤间连接线的配置',
               normal: [['width'], ['height'], ['background']],
             },
-            StepInnerContainer: {
-              name: '单个步骤内部',
-              desc: '单个步骤内部容器配置',
+            ProcessStepLine: {
+              name: '进行中状态步骤间连接线',
+              desc: '进行中状态步骤间连接线的配置',
               normal: [['width'], ['height'], ['background']],
             },
-            StepTitle: {
-              name: '步骤标题',
-              desc: '配置步骤标题',
+            NextStepLine: {
+              name: '下一步状态步骤间连接线',
+              desc: '下一步状态步骤间连接线的配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            WaitStepLine: {
+              name: '等待中状态步骤间连接线',
+              desc: '等待中状态步骤间连接线的配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            ErrorStepLine: {
+              name: '异常状态步骤间连接线',
+              desc: '异常状态步骤间连接线的配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            FinishStepInnerContainer: {
+              name: '已完成状态单个步骤内部',
+              desc: '已完成状态单个步骤内部容器配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            ProcessStepInnerContainer: {
+              name: '进行中状态单个步骤内部',
+              desc: '进行中状态单个步骤内部容器配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            NextStepInnerContainer: {
+              name: '下一步状态单个步骤内部',
+              desc: '下一步状态单个步骤内部容器配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            WaitStepInnerContainer: {
+              name: '等待中状态单个步骤内部',
+              desc: '等待中状态单个步骤内部容器配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            ErrorStepInnerContainer: {
+              name: '异常状态单个步骤内部',
+              desc: '异常状态单个步骤内部容器配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            FinishStepTitle: {
+              name: '已完成状态步骤标题',
+              desc: '已完成状态配置步骤标题',
               normal: [
                 ['fontSize'],
                 ['font'],
@@ -10681,9 +12218,9 @@ export default [
                 ['margin'],
               ],
             },
-            StepDescription: {
-              name: '步骤条内容描述',
-              desc: '配置步骤条内容描述',
+            ProcessStepTitle: {
+              name: '进行中状态步骤标题',
+              desc: '进行中状态配置步骤标题',
               normal: [
                 ['fontSize'],
                 ['font'],
@@ -10693,6 +12230,115 @@ export default [
                 ['padding'],
                 ['margin'],
               ],
+            },
+            NextStepTitle: {
+              name: '下一步状态步骤标题',
+              desc: '下一步状态配置步骤标题',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            WaitStepTitle: {
+              name: '等待中状态步骤标题',
+              desc: '等待中状态配置步骤标题',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            ErrorStepTitle: {
+              name: '异常状态步骤标题',
+              desc: '异常状态配置步骤标题',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            FinishStepDescription: {
+              name: '已完成状态步骤条内容描述',
+              desc: '已完成状态配置步骤条内容描述',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            ProcessStepDescription: {
+              name: '进行中状态步骤条内容描述',
+              desc: '进行中状态配置步骤条内容描述',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            NextStepDescription: {
+              name: '下一步状态步骤条内容描述',
+              desc: '下一步状态配置步骤条内容描述',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            WaitStepDescription: {
+              name: '等待中状态步骤条内容描述',
+              desc: '等待中状态配置步骤条内容描述',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            ErrorStepDescription: {
+              name: '异常状态步骤条内容描述',
+              desc: '异常状态配置步骤条内容描述',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            ProcessStepNumber: {
+              name: '进行中状态步骤条步骤数字',
+              desc: '进行中状态配置步骤条步骤数字',
+              normal: [['fontSize'], ['font'], ['color']],
             },
             StepInnerIcon: {
               name: '步骤条内容图标',
@@ -10719,12 +12365,10 @@ export default [
           desc: '步骤条填充的数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            {
-              key: 'description',
-              title: '步骤条描述',
-              type: 'string',
-            },
+            { key: 'description', title: '步骤条描述', type: 'string' },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
+            { key: 'icon', title: '步骤条图标(图标步骤条填写)', type: 'icon' },
+            { key: 'isDashed', title: '步骤条连接线是否虚线', type: 'boolean' },
           ],
         },
         defaultData: {
@@ -10732,12 +12376,10 @@ export default [
           desc: '步骤条填充的默认显示数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            {
-              key: 'description',
-              title: '步骤条描述',
-              type: 'string',
-            },
+            { key: 'description', title: '步骤条描述', type: 'string' },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
+            { key: 'icon', title: '步骤条图标(图标步骤条填写)', type: 'icon' },
+            { key: 'isDashed', title: '步骤条连接线是否虚线', type: 'boolean' },
           ],
         },
         stepType: {
@@ -10780,24 +12422,84 @@ export default [
         Step: {
           name: '单个步骤配置',
           theme: {
-            StepOutContainer: {
-              name: '单个步骤外部',
-              desc: '单个步骤外部容器配置',
+            FinishStepOutContainer: {
+              name: '已完成状态单个步骤外部容器',
+              desc: '已完成状态单个步骤外部容器配置',
               normal: [['width'], ['height']],
             },
-            StepLine: {
-              name: '步骤间连接线',
-              desc: '步骤间连接线的配置',
+            ProcessStepOutContainer: {
+              name: '进行中状态单个步骤外部',
+              desc: '进行中状态单个步骤外部容器配置',
+              normal: [['width'], ['height']],
+            },
+            NextStepOutContainer: {
+              name: '下一步状态单个步骤外部',
+              desc: '下一步状态单个步骤外部容器配置',
+              normal: [['width'], ['height']],
+            },
+            WaitStepOutContainer: {
+              name: '等待中状态单个步骤外部',
+              desc: '等待中状态单个步骤外部容器配置',
+              normal: [['width'], ['height']],
+            },
+            ErrorStepOutContainer: {
+              name: '异常状态单个步骤外部',
+              desc: '异常状态单个步骤外部容器配置',
+              normal: [['width'], ['height']],
+            },
+            FinishStepLine: {
+              name: '已完成状态步骤间连接线',
+              desc: '已完成状态步骤间连接线的配置',
               normal: [['width'], ['height'], ['background']],
             },
-            StepInnerContainer: {
-              name: '单个步骤内部',
-              desc: '单个步骤内部容器配置',
+            ProcessStepLine: {
+              name: '进行中状态步骤间连接线',
+              desc: '进行中状态步骤间连接线的配置',
               normal: [['width'], ['height'], ['background']],
             },
-            StepTitle: {
-              name: '步骤标题',
-              desc: '配置步骤标题',
+            NextStepLine: {
+              name: '下一步状态步骤间连接线',
+              desc: '下一步状态步骤间连接线的配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            WaitStepLine: {
+              name: '等待中状态步骤间连接线',
+              desc: '等待中状态步骤间连接线的配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            ErrorStepLine: {
+              name: '异常状态步骤间连接线',
+              desc: '异常状态步骤间连接线的配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            FinishStepInnerContainer: {
+              name: '已完成状态单个步骤内部',
+              desc: '已完成状态单个步骤内部容器配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            ProcessStepInnerContainer: {
+              name: '进行中状态单个步骤内部',
+              desc: '进行中状态单个步骤内部容器配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            NextStepInnerContainer: {
+              name: '下一步状态单个步骤内部',
+              desc: '下一步状态单个步骤内部容器配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            WaitStepInnerContainer: {
+              name: '等待中状态单个步骤内部',
+              desc: '等待中状态单个步骤内部容器配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            ErrorStepInnerContainer: {
+              name: '异常状态单个步骤内部',
+              desc: '异常状态单个步骤内部容器配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            FinishStepTitle: {
+              name: '已完成状态步骤标题',
+              desc: '已完成状态配置步骤标题',
               normal: [
                 ['fontSize'],
                 ['font'],
@@ -10808,9 +12510,9 @@ export default [
                 ['margin'],
               ],
             },
-            StepDescription: {
-              name: '步骤条内容描述',
-              desc: '配置步骤条内容描述',
+            ProcessStepTitle: {
+              name: '进行中状态步骤标题',
+              desc: '进行中状态配置步骤标题',
               normal: [
                 ['fontSize'],
                 ['font'],
@@ -10820,6 +12522,115 @@ export default [
                 ['padding'],
                 ['margin'],
               ],
+            },
+            NextStepTitle: {
+              name: '下一步状态步骤标题',
+              desc: '下一步状态配置步骤标题',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            WaitStepTitle: {
+              name: '等待中状态步骤标题',
+              desc: '等待中状态配置步骤标题',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            ErrorStepTitle: {
+              name: '异常状态步骤标题',
+              desc: '异常状态配置步骤标题',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            FinishStepDescription: {
+              name: '已完成状态步骤条内容描述',
+              desc: '已完成状态配置步骤条内容描述',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            ProcessStepDescription: {
+              name: '进行中状态步骤条内容描述',
+              desc: '进行中状态配置步骤条内容描述',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            NextStepDescription: {
+              name: '下一步状态步骤条内容描述',
+              desc: '下一步状态配置步骤条内容描述',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            WaitStepDescription: {
+              name: '等待中状态步骤条内容描述',
+              desc: '等待中状态配置步骤条内容描述',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            ErrorStepDescription: {
+              name: '异常状态步骤条内容描述',
+              desc: '异常状态配置步骤条内容描述',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            ProcessStepNumber: {
+              name: '进行中状态步骤条步骤数字',
+              desc: '进行中状态配置步骤条步骤数字',
+              normal: [['fontSize'], ['font'], ['color']],
             },
             StepInnerIcon: {
               name: '步骤条内容图标',
@@ -10847,12 +12658,10 @@ export default [
           desc: '步骤条填充的数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            {
-              key: 'description',
-              title: '步骤条描述',
-              type: 'string',
-            },
+            { key: 'description', title: '步骤条描述', type: 'string' },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
+            { key: 'icon', title: '步骤条图标(图标步骤条填写)', type: 'icon' },
+            { key: 'isDashed', title: '步骤条连接线是否虚线', type: 'boolean' },
           ],
         },
         defaultData: {
@@ -10860,12 +12669,10 @@ export default [
           desc: '步骤条填充的默认显示数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            {
-              key: 'description',
-              title: '步骤条描述',
-              type: 'string',
-            },
+            { key: 'description', title: '步骤条描述', type: 'string' },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
+            { key: 'icon', title: '步骤条图标(图标步骤条填写)', type: 'icon' },
+            { key: 'isDashed', title: '步骤条连接线是否虚线', type: 'boolean' },
           ],
         },
         stepType: {
@@ -10881,7 +12688,7 @@ export default [
         orientation: {
           type: 'OrientationType',
           desc: '步骤条方向,可选择水平,垂直',
-          defaultValue: 'vertical',
+          defaultValue: 'horizontal',
         },
         desAlign: {
           type: 'AlignType',
@@ -10908,24 +12715,84 @@ export default [
         Step: {
           name: '单个步骤配置',
           theme: {
-            StepOutContainer: {
-              name: '单个步骤外部',
-              desc: '单个步骤外部容器配置',
+            FinishStepOutContainer: {
+              name: '已完成状态单个步骤外部容器',
+              desc: '已完成状态单个步骤外部容器配置',
               normal: [['width'], ['height']],
             },
-            StepLine: {
-              name: '步骤间连接线',
-              desc: '步骤间连接线的配置',
+            ProcessStepOutContainer: {
+              name: '进行中状态单个步骤外部',
+              desc: '进行中状态单个步骤外部容器配置',
+              normal: [['width'], ['height']],
+            },
+            NextStepOutContainer: {
+              name: '下一步状态单个步骤外部',
+              desc: '下一步状态单个步骤外部容器配置',
+              normal: [['width'], ['height']],
+            },
+            WaitStepOutContainer: {
+              name: '等待中状态单个步骤外部',
+              desc: '等待中状态单个步骤外部容器配置',
+              normal: [['width'], ['height']],
+            },
+            ErrorStepOutContainer: {
+              name: '异常状态单个步骤外部',
+              desc: '异常状态单个步骤外部容器配置',
+              normal: [['width'], ['height']],
+            },
+            FinishStepFlatLine: {
+              name: '已完成状态步骤间连接线',
+              desc: '已完成状态步骤间连接线的配置',
+              normal: [['width'], ['height'], ['boxShadow']],
+            },
+            ProcessStepFlatLine: {
+              name: '进行中状态步骤间连接线',
+              desc: '进行中状态步骤间连接线的配置',
+              normal: [['width'], ['height'], ['boxShadow']],
+            },
+            NextStepFlatLine: {
+              name: '下一步状态步骤间连接线',
+              desc: '下一步状态步骤间连接线的配置',
+              normal: [['width'], ['height'], ['boxShadow']],
+            },
+            WaitStepFlatLine: {
+              name: '等待中状态步骤间连接线',
+              desc: '等待中状态步骤间连接线的配置',
+              normal: [['width'], ['height'], ['boxShadow']],
+            },
+            ErrorStepFlatLine: {
+              name: '异常状态步骤间连接线',
+              desc: '异常状态步骤间连接线的配置',
+              normal: [['width'], ['height'], ['boxShadow']],
+            },
+            FinishStepInnerContainer: {
+              name: '已完成状态单个步骤内部',
+              desc: '已完成状态单个步骤内部容器配置',
               normal: [['width'], ['height'], ['background']],
             },
-            StepInnerContainer: {
-              name: '单个步骤内部',
-              desc: '单个步骤内部容器配置',
+            ProcessStepInnerContainer: {
+              name: '进行中状态单个步骤内部',
+              desc: '进行中状态单个步骤内部容器配置',
               normal: [['width'], ['height'], ['background']],
             },
-            StepTitle: {
-              name: '步骤标题',
-              desc: '配置步骤标题',
+            NextStepInnerContainer: {
+              name: '下一步状态单个步骤内部',
+              desc: '下一步状态单个步骤内部容器配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            WaitStepInnerContainer: {
+              name: '等待中状态单个步骤内部',
+              desc: '等待中状态单个步骤内部容器配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            ErrorStepInnerContainer: {
+              name: '异常状态单个步骤内部',
+              desc: '异常状态单个步骤内部容器配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            FinishStepTitle: {
+              name: '已完成状态步骤标题',
+              desc: '已完成状态配置步骤标题',
               normal: [
                 ['fontSize'],
                 ['font'],
@@ -10936,9 +12803,9 @@ export default [
                 ['margin'],
               ],
             },
-            StepDescription: {
-              name: '步骤条内容描述',
-              desc: '配置步骤条内容描述',
+            ProcessStepTitle: {
+              name: '进行中状态步骤标题',
+              desc: '进行中状态配置步骤标题',
               normal: [
                 ['fontSize'],
                 ['font'],
@@ -10948,6 +12815,115 @@ export default [
                 ['padding'],
                 ['margin'],
               ],
+            },
+            NextStepTitle: {
+              name: '下一步状态步骤标题',
+              desc: '下一步状态配置步骤标题',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            WaitStepTitle: {
+              name: '等待中状态步骤标题',
+              desc: '等待中状态配置步骤标题',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            ErrorStepTitle: {
+              name: '异常状态步骤标题',
+              desc: '异常状态配置步骤标题',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            FinishStepDescription: {
+              name: '已完成状态步骤条内容描述',
+              desc: '已完成状态配置步骤条内容描述',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            ProcessStepDescription: {
+              name: '进行中状态步骤条内容描述',
+              desc: '进行中状态配置步骤条内容描述',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            NextStepDescription: {
+              name: '下一步状态步骤条内容描述',
+              desc: '下一步状态配置步骤条内容描述',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            WaitStepDescription: {
+              name: '等待中状态步骤条内容描述',
+              desc: '等待中状态配置步骤条内容描述',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            ErrorStepDescription: {
+              name: '异常状态步骤条内容描述',
+              desc: '异常状态配置步骤条内容描述',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            ProcessStepNumber: {
+              name: '进行中状态步骤条步骤数字',
+              desc: '进行中状态配置步骤条步骤数字',
+              normal: [['fontSize'], ['font'], ['color']],
             },
             StepInnerIcon: {
               name: '步骤条内容图标',
@@ -10975,12 +12951,10 @@ export default [
           desc: '步骤条填充的数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            {
-              key: 'description',
-              title: '步骤条描述',
-              type: 'string',
-            },
+            { key: 'description', title: '步骤条描述', type: 'string' },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
+            { key: 'icon', title: '步骤条图标(图标步骤条填写)', type: 'icon' },
+            { key: 'isDashed', title: '步骤条连接线是否虚线', type: 'boolean' },
           ],
         },
         defaultData: {
@@ -10988,12 +12962,10 @@ export default [
           desc: '步骤条填充的默认显示数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            {
-              key: 'description',
-              title: '步骤条描述',
-              type: 'string',
-            },
+            { key: 'description', title: '步骤条描述', type: 'string' },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
+            { key: 'icon', title: '步骤条图标(图标步骤条填写)', type: 'icon' },
+            { key: 'isDashed', title: '步骤条连接线是否虚线', type: 'boolean' },
           ],
         },
         stepType: {
@@ -11009,7 +12981,7 @@ export default [
         orientation: {
           type: 'OrientationType',
           desc: '步骤条方向,可选择水平,垂直',
-          defaultValue: 'vertical',
+          defaultValue: 'horizontal',
         },
         desAlign: {
           type: 'AlignType',
@@ -11036,24 +13008,84 @@ export default [
         Step: {
           name: '单个步骤配置',
           theme: {
-            StepOutContainer: {
-              name: '单个步骤外部',
-              desc: '单个步骤外部容器配置',
+            FinishStepOutContainer: {
+              name: '已完成状态单个步骤外部容器',
+              desc: '已完成状态单个步骤外部容器配置',
               normal: [['width'], ['height']],
             },
-            StepLine: {
-              name: '步骤间连接线',
-              desc: '步骤间连接线的配置',
+            ProcessStepOutContainer: {
+              name: '进行中状态单个步骤外部',
+              desc: '进行中状态单个步骤外部容器配置',
+              normal: [['width'], ['height']],
+            },
+            NextStepOutContainer: {
+              name: '下一步状态单个步骤外部',
+              desc: '下一步状态单个步骤外部容器配置',
+              normal: [['width'], ['height']],
+            },
+            WaitStepOutContainer: {
+              name: '等待中状态单个步骤外部',
+              desc: '等待中状态单个步骤外部容器配置',
+              normal: [['width'], ['height']],
+            },
+            ErrorStepOutContainer: {
+              name: '异常状态单个步骤外部',
+              desc: '异常状态单个步骤外部容器配置',
+              normal: [['width'], ['height']],
+            },
+            FinishStepLine: {
+              name: '已完成状态步骤间连接线',
+              desc: '已完成状态步骤间连接线的配置',
               normal: [['width'], ['height'], ['background']],
             },
-            StepInnerContainer: {
-              name: '单个步骤内部',
-              desc: '单个步骤内部容器配置',
+            ProcessStepLine: {
+              name: '进行中状态步骤间连接线',
+              desc: '进行中状态步骤间连接线的配置',
               normal: [['width'], ['height'], ['background']],
             },
-            StepTitle: {
-              name: '步骤标题',
-              desc: '配置步骤标题',
+            NextStepLine: {
+              name: '下一步状态步骤间连接线',
+              desc: '下一步状态步骤间连接线的配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            WaitStepLine: {
+              name: '等待中状态步骤间连接线',
+              desc: '等待中状态步骤间连接线的配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            ErrorStepLine: {
+              name: '异常状态步骤间连接线',
+              desc: '异常状态步骤间连接线的配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            FinishStepInnerContainer: {
+              name: '已完成状态单个步骤内部',
+              desc: '已完成状态单个步骤内部容器配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            ProcessStepInnerContainer: {
+              name: '进行中状态单个步骤内部',
+              desc: '进行中状态单个步骤内部容器配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            NextStepInnerContainer: {
+              name: '下一步状态单个步骤内部',
+              desc: '下一步状态单个步骤内部容器配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            WaitStepInnerContainer: {
+              name: '等待中状态单个步骤内部',
+              desc: '等待中状态单个步骤内部容器配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            ErrorStepInnerContainer: {
+              name: '异常状态单个步骤内部',
+              desc: '异常状态单个步骤内部容器配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            FinishStepTitle: {
+              name: '已完成状态步骤标题',
+              desc: '已完成状态配置步骤标题',
               normal: [
                 ['fontSize'],
                 ['font'],
@@ -11064,9 +13096,113 @@ export default [
                 ['margin'],
               ],
             },
-            StepDescription: {
-              name: '步骤条内容描述',
-              desc: '配置步骤条内容描述',
+            ProcessStepTitle: {
+              name: '进行中状态步骤标题',
+              desc: '进行中状态配置步骤标题',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            NextStepTitle: {
+              name: '下一步状态步骤标题',
+              desc: '下一步状态配置步骤标题',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            WaitStepTitle: {
+              name: '等待中状态步骤标题',
+              desc: '等待中状态配置步骤标题',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            ErrorStepTitle: {
+              name: '异常状态步骤标题',
+              desc: '异常状态配置步骤标题',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            FinishStepDescription: {
+              name: '已完成状态步骤条内容描述',
+              desc: '已完成状态配置步骤条内容描述',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            ProcessStepDescription: {
+              name: '进行中状态步骤条内容描述',
+              desc: '进行中状态配置步骤条内容描述',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            NextStepDescription: {
+              name: '下一步状态步骤条内容描述',
+              desc: '下一步状态配置步骤条内容描述',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            WaitStepDescription: {
+              name: '等待中状态步骤条内容描述',
+              desc: '等待中状态配置步骤条内容描述',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            ErrorStepDescription: {
+              name: '异常状态步骤条内容描述',
+              desc: '异常状态配置步骤条内容描述',
               normal: [
                 ['fontSize'],
                 ['font'],
@@ -11103,12 +13239,10 @@ export default [
           desc: '步骤条填充的数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            {
-              key: 'description',
-              title: '步骤条描述',
-              type: 'string',
-            },
+            { key: 'description', title: '步骤条描述', type: 'string' },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
+            { key: 'icon', title: '步骤条图标(图标步骤条填写)', type: 'icon' },
+            { key: 'isDashed', title: '步骤条连接线是否虚线', type: 'boolean' },
           ],
         },
         defaultData: {
@@ -11116,12 +13250,10 @@ export default [
           desc: '步骤条填充的默认显示数据',
           meta: [
             { key: 'title', title: '步骤条标题', type: 'string' },
-            {
-              key: 'description',
-              title: '步骤条描述',
-              type: 'string',
-            },
+            { key: 'description', title: '步骤条描述', type: 'string' },
             { key: 'stepStatus', title: '步骤条状态', type: 'StepStatus' },
+            { key: 'icon', title: '步骤条图标(图标步骤条填写)', type: 'icon' },
+            { key: 'isDashed', title: '步骤条连接线是否虚线', type: 'boolean' },
           ],
         },
         stepType: {
@@ -11137,7 +13269,7 @@ export default [
         orientation: {
           type: 'OrientationType',
           desc: '步骤条方向,可选择水平,垂直',
-          defaultValue: 'vertical',
+          defaultValue: 'horizontal',
         },
         desAlign: {
           type: 'AlignType',
@@ -11164,24 +13296,59 @@ export default [
         Step: {
           name: '单个步骤配置',
           theme: {
-            StepOutContainer: {
-              name: '单个步骤外部',
-              desc: '单个步骤外部容器配置',
+            FinishStepOutContainer: {
+              name: '已完成状态单个步骤外部容器',
+              desc: '已完成状态单个步骤外部容器配置',
               normal: [['width'], ['height']],
             },
-            StepLine: {
-              name: '步骤间连接线',
-              desc: '步骤间连接线的配置',
+            ProcessStepOutContainer: {
+              name: '进行中状态单个步骤外部',
+              desc: '进行中状态单个步骤外部容器配置',
+              normal: [['width'], ['height']],
+            },
+            NextStepOutContainer: {
+              name: '下一步状态单个步骤外部',
+              desc: '下一步状态单个步骤外部容器配置',
+              normal: [['width'], ['height']],
+            },
+            WaitStepOutContainer: {
+              name: '等待中状态单个步骤外部',
+              desc: '等待中状态单个步骤外部容器配置',
+              normal: [['width'], ['height']],
+            },
+            ErrorStepOutContainer: {
+              name: '异常状态单个步骤外部',
+              desc: '异常状态单个步骤外部容器配置',
+              normal: [['width'], ['height']],
+            },
+            FinishStepLine: {
+              name: '已完成状态步骤间连接线',
+              desc: '已完成状态步骤间连接线的配置',
               normal: [['width'], ['height'], ['background']],
             },
-            StepDot: {
-              name: '点状步骤',
-              desc: '点状步骤配置',
+            ProcessStepLine: {
+              name: '进行中状态步骤间连接线',
+              desc: '进行中状态步骤间连接线的配置',
               normal: [['width'], ['height'], ['background']],
             },
-            StepTitle: {
-              name: '步骤标题',
-              desc: '配置步骤标题',
+            NextStepLine: {
+              name: '下一步状态步骤间连接线',
+              desc: '下一步状态步骤间连接线的配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            WaitStepLine: {
+              name: '等待中状态步骤间连接线',
+              desc: '等待中状态步骤间连接线的配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            ErrorStepLine: {
+              name: '异常状态步骤间连接线',
+              desc: '异常状态步骤间连接线的配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            FinishStepTitle: {
+              name: '已完成状态步骤标题',
+              desc: '已完成状态配置步骤标题',
               normal: [
                 ['fontSize'],
                 ['font'],
@@ -11192,9 +13359,9 @@ export default [
                 ['margin'],
               ],
             },
-            StepDescription: {
-              name: '步骤条内容描述',
-              desc: '配置步骤条内容描述',
+            ProcessStepTitle: {
+              name: '进行中状态步骤标题',
+              desc: '进行中状态配置步骤标题',
               normal: [
                 ['fontSize'],
                 ['font'],
@@ -11204,6 +13371,135 @@ export default [
                 ['padding'],
                 ['margin'],
               ],
+            },
+            NextStepTitle: {
+              name: '下一步状态步骤标题',
+              desc: '下一步状态配置步骤标题',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            WaitStepTitle: {
+              name: '等待中状态步骤标题',
+              desc: '等待中状态配置步骤标题',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            ErrorStepTitle: {
+              name: '异常状态步骤标题',
+              desc: '异常状态配置步骤标题',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            FinishStepDescription: {
+              name: '已完成状态步骤条内容描述',
+              desc: '已完成状态配置步骤条内容描述',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            ProcessStepDescription: {
+              name: '进行中状态步骤条内容描述',
+              desc: '进行中状态配置步骤条内容描述',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            NextStepDescription: {
+              name: '下一步状态步骤条内容描述',
+              desc: '下一步状态配置步骤条内容描述',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            WaitStepDescription: {
+              name: '等待中状态步骤条内容描述',
+              desc: '等待中状态配置步骤条内容描述',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            ErrorStepDescription: {
+              name: '异常状态步骤条内容描述',
+              desc: '异常状态配置步骤条内容描述',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['width'],
+                ['height'],
+                ['padding'],
+                ['margin'],
+              ],
+            },
+            FinishStepDot: {
+              name: '已完成状态点状步骤',
+              desc: '已完成状态点状步骤配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            ProcessStepDot: {
+              name: '进行中状态点状步骤',
+              desc: '进行中状态点状步骤配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            NextStepDot: {
+              name: '下一步状态点状步骤',
+              desc: '下一步状态点状步骤配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            WaitStepDot: {
+              name: '等待中状态点状步骤',
+              desc: '等待中状态点状步骤配置',
+              normal: [['width'], ['height'], ['background']],
+            },
+            ErrorStepDot: {
+              name: '异常状态点状步骤',
+              desc: '异常状态点状步骤配置',
+              normal: [['width'], ['height'], ['background']],
             },
           },
         },
@@ -11309,7 +13605,7 @@ export default [
           ],
           disabled: [['background'], ['border'], ['width'], ['height'], ['borderRadius']],
         },
-        SwitchContainer: {
+        Container: {
           name: '开关整体',
           desc: '开关整体的样式配置',
           normal: [
@@ -11350,21 +13646,29 @@ export default [
           type: 'Object[]',
           meta: [
             { key: 'title', title: '表头文本', type: 'string' },
-            {
-              key: 'key',
-              title: '对应key',
-              type: 'any',
-            },
+            { key: 'key', title: '对应key', type: 'any' },
             { key: 'dataIndex', title: '指定展示项', type: 'any' },
-            {
-              key: 'width',
-              title: '列宽',
-              type: 'number',
-            },
+            { key: 'width', title: '列宽', type: 'number' },
           ],
           desc: '表格每一行展示的内容',
+          propsDefaultValue: [],
+          defaultValue: [
+            { title: 'Name', dataIndex: 'name', key: 'name' },
+            { title: 'Age', dataIndex: 'age', key: 'age' },
+            { title: 'Address', dataIndex: 'address', key: 'address' },
+          ],
         },
-        data: { type: 'Object[]', meta: [], desc: '数据源，指定 table 组件的数据' },
+        data: {
+          type: 'Object[]',
+          meta: [],
+          desc: '数据源，指定 table 组件的数据',
+          propsDefaultValue: [],
+          defaultValue: [
+            { name: 'Jack', age: 28, address: 'some where' },
+            { name: 'Rose', age: 36, address: 'some where' },
+            { name: 'Bob', age: 25, address: 'some where' },
+          ],
+        },
         defaultExpandedRowKeys: { type: 'string[]', desc: '初始展开的行的集合' },
         expandedRowKeys: { type: 'string[]', desc: '展开的行的集合' },
         defaultExpandAllRows: { type: 'boolean', desc: '初始是否展开所有的行' },
@@ -11388,6 +13692,7 @@ export default [
         title: { type: 'Function(currentPageData)', desc: '表格标题' },
         onHeaderRow: { type: 'Function(column, index)', desc: '设置头部行属性' },
         onRow: { type: 'Function(record, index)', desc: '设置行属性' },
+        tableStyle: { type: 'tableStyleType', desc: '表格标题', defaultValue: 'bordered' },
       },
       event: {
         onExpandedRowsChange: {
@@ -11398,16 +13703,20 @@ export default [
           desc: '点击展开图标时触发',
           args: [
             { name: 'expanded', desc: '当前是否展开', type: 'boolean' },
-            {
-              name: 'record',
-              desc: '当前行数据',
-              type: 'Object',
-            },
+            { name: 'record', desc: '当前行数据', type: 'Object' },
           ],
         },
       },
+      type: { tableStyleType: ['zebraStripe', 'linear', 'bordered'] },
       childrenWidget: [],
       category: ['数据展示'],
+      theme: {
+        Container: {
+          name: '表格整体样式',
+          desc: '为表格配置整体样式',
+          normal: [['width'], ['height']],
+        },
+      },
     },
     target: Table,
     screenshot:
@@ -11487,7 +13796,7 @@ export default [
       type: {
         TabType: ['line', 'card', 'window'],
         PagedType: ['single', 'page'],
-        TabPositionType: ['top', 'bottom', 'inner', 'default'],
+        TabPositionType: ['top', 'bottom', 'left', 'right'],
       },
       childrenWidget: [],
       category: ['数据展示'],
@@ -11578,6 +13887,11 @@ export default [
           desc: '窗口风格标签页',
           props: { tabType: 'window' },
           theme: {
+            Container: {
+              name: '标签页整体配置',
+              desc: '标签页整体样式配置',
+              normal: [['width'], ['height']],
+            },
             WindowContainer: {
               name: '窗口背景区域',
               desc: '窗口背景区域样式配置',
@@ -11654,6 +13968,11 @@ export default [
         },
       },
       theme: {
+        Container: {
+          name: '标签页整体配置',
+          desc: '标签页整体样式配置',
+          normal: [['width'], ['height']],
+        },
         ContentBlock: {
           name: '内容区域',
           desc: '内容区域的样式配置',
@@ -11662,9 +13981,9 @@ export default [
         TitleContainer: {
           name: '卡片区域',
           desc: '卡片区域样式配置',
-          normal: [['width'], ['background']],
+          normal: [['width'], ['background'], ['textAlign']],
         },
-        BorderStyle: { name: '默认线', desc: '默认线样式配置', normal: [['border', 'bottom']] },
+        BorderStyle: { name: '默认线', desc: '默认线样式配置', normal: [['color'], ['width']] },
         TabHeader: {
           name: '标签配置',
           theme: {
@@ -11782,7 +14101,7 @@ export default [
       type: {
         TabType: ['line', 'card', 'window'],
         PagedType: ['single', 'page'],
-        TabPositionType: ['top', 'bottom', 'inner', 'default'],
+        TabPositionType: ['top', 'bottom', 'left', 'right'],
       },
       childrenWidget: [],
       category: ['数据展示'],
@@ -11940,11 +14259,16 @@ export default [
       type: {
         TabType: ['line', 'card', 'window'],
         PagedType: ['single', 'page'],
-        TabPositionType: ['top', 'bottom', 'inner', 'default'],
+        TabPositionType: ['top', 'bottom', 'left', 'right'],
       },
       childrenWidget: [],
       category: ['数据展示'],
       theme: {
+        Container: {
+          name: '标签页整体配置',
+          desc: '标签页整体样式配置',
+          normal: [['width'], ['height']],
+        },
         WindowContainer: {
           name: '窗口背景区域',
           desc: '窗口背景区域样式配置',
@@ -12447,11 +14771,7 @@ export default [
           desc: '时间轴填充的数据',
           meta: [
             { key: 'time', title: '时间节点信息', type: 'string' },
-            {
-              key: 'description',
-              title: '时间节点详细描述',
-              type: 'string',
-            },
+            { key: 'description', title: '时间节点详细描述', type: 'string' },
           ],
         },
         defaultData: {
@@ -12459,11 +14779,7 @@ export default [
           desc: '时间轴填充的默认显示数据',
           meta: [
             { key: 'time', title: '时间节点信息', type: 'string' },
-            {
-              key: 'description',
-              title: '时间节点详细描述',
-              type: 'string',
-            },
+            { key: 'description', title: '时间节点详细描述', type: 'string' },
           ],
         },
         reverse: {
@@ -12499,19 +14815,19 @@ export default [
               theme: {
                 TimeLineIcon: {
                   normal: {
-                    name: '步骤条内容图标',
-                    desc: '步骤间连接线的配置',
+                    name: '时间节点内容图标',
+                    desc: '时间节点连接线的配置',
                     normal: [['font'], ['fontSize'], ['color']],
                   },
                 },
                 TimeLineItemContainer: {
-                  name: '时间点外层容器',
-                  desc: '时间点外层容器配置',
+                  name: '时间节点外层容器',
+                  desc: '时间节点外层容器配置',
                   normal: [['width'], ['height'], ['margin'], ['padding']],
                 },
                 TimeLineItemLine: {
-                  name: '步骤间连接线',
-                  desc: '步骤间连接线的配置',
+                  name: '时间节点连接线',
+                  desc: '时间节点连接线的配置',
                   normal: [['width'], ['height'], ['background']],
                 },
               },
@@ -12525,35 +14841,35 @@ export default [
           desc: '时间轴最外层容器',
           normal: [['width'], ['height'], ['margin'], ['padding'], ['background']],
         },
-        TimeLine: {
+        TimeLineItem: {
           name: '单个时间节点配置',
           theme: {
             TimeLineDot: {
-              name: '时间点',
-              desc: '时间点配置',
+              name: '时间节点',
+              desc: '时间节点配置',
               normal: [['width'], ['height'], ['background'], ['boxShadow'], ['border']],
             },
             TimeLineItemContainer: {
-              name: '时间点外层容器',
-              desc: '时间点外层容器配置',
+              name: '时间节点外层容器',
+              desc: '时间节点外层容器配置',
               normal: [['width'], ['height'], ['margin'], ['padding']],
             },
             TimeLineExplainDot: {
-              name: '隐藏的解释时间点',
-              desc: '隐藏的解释时间点配置',
+              name: '隐藏的解释时间节点',
+              desc: '隐藏的解释时间节点配置',
               normal: [['width'], ['height'], ['background'], ['boxShadow'], ['border']],
             },
             TimeLineItemTip: {
               name: '隐藏信息弹框',
               theme: {
                 Container: {
-                  name: '隐藏的解释时间点显示容器',
-                  desc: '隐藏的解释时间点显示容器配置',
+                  name: '隐藏的解释时间节点显示容器',
+                  desc: '隐藏的解释时间节点显示容器配置',
                   normal: [['width'], ['height'], ['background'], ['boxShadow'], ['border']],
                 },
                 TooltipTitle: {
-                  name: '隐藏的解释时间点标题',
-                  desc: '隐藏的解释时间点标题配置',
+                  name: '隐藏的解释时间节点标题',
+                  desc: '隐藏的解释时间节点标题配置',
                   normal: [
                     ['fontSize'],
                     ['font'],
@@ -12565,8 +14881,8 @@ export default [
                   ],
                 },
                 TooltipDescription: {
-                  name: '隐藏的解释时间点描述',
-                  desc: '隐藏的解释时间点描述配置',
+                  name: '隐藏的解释时间节点描述',
+                  desc: '隐藏的解释时间节点描述配置',
                   normal: [
                     ['fontSize'],
                     ['font'],
@@ -12580,14 +14896,14 @@ export default [
               },
             },
             TimeLineItemLine: {
-              name: '步骤间连接线',
-              desc: '步骤间连接线的配置',
+              name: '时间节点连接线',
+              desc: '时间节点连接线的配置',
               normal: [['width'], ['height'], ['background']],
             },
             TimeLineIcon: {
               normal: {
-                name: '步骤条内容图标',
-                desc: '步骤间连接线的配置',
+                name: '时间节点内容图标',
+                desc: '时间节点连接线的配置',
                 normal: [['font'], ['fontSize'], ['color']],
               },
             },
@@ -12611,11 +14927,7 @@ export default [
           desc: '时间轴填充的数据',
           meta: [
             { key: 'time', title: '时间节点信息', type: 'string' },
-            {
-              key: 'description',
-              title: '时间节点详细描述',
-              type: 'string',
-            },
+            { key: 'description', title: '时间节点详细描述', type: 'string' },
           ],
         },
         defaultData: {
@@ -12623,11 +14935,7 @@ export default [
           desc: '时间轴填充的默认显示数据',
           meta: [
             { key: 'time', title: '时间节点信息', type: 'string' },
-            {
-              key: 'description',
-              title: '时间节点详细描述',
-              type: 'string',
-            },
+            { key: 'description', title: '时间节点详细描述', type: 'string' },
           ],
         },
         reverse: {
@@ -12661,19 +14969,19 @@ export default [
           theme: {
             TimeLineIcon: {
               normal: {
-                name: '步骤条内容图标',
-                desc: '步骤间连接线的配置',
+                name: '时间节点内容图标',
+                desc: '时间节点连接线的配置',
                 normal: [['font'], ['fontSize'], ['color']],
               },
             },
             TimeLineItemContainer: {
-              name: '时间点外层容器',
-              desc: '时间点外层容器配置',
+              name: '时间节点外层容器',
+              desc: '时间节点外层容器配置',
               normal: [['width'], ['height'], ['margin'], ['padding']],
             },
             TimeLineItemLine: {
-              name: '步骤间连接线',
-              desc: '步骤间连接线的配置',
+              name: '时间节点连接线',
+              desc: '时间节点连接线的配置',
               normal: [['width'], ['height'], ['background']],
             },
           },
@@ -12720,7 +15028,22 @@ export default [
       title: '穿梭框',
       desc: '穿梭框。',
       props: {
-        data: { type: 'Object[]', desc: '左右两个面板数据源' },
+        data: {
+          type: 'Object[]',
+          desc: '左右两个面板数据源',
+          meta: [
+            { key: 'text', title: '展示文字', type: 'string' },
+            { key: 'value', title: '对应字段', type: 'string' },
+            { key: 'disabled', title: '是否禁用', type: 'boolean' },
+          ],
+          defaultValue: [
+            { text: '选项1', value: '选项1', disabled: false },
+            { text: '选项2', value: '选项2', disabled: false },
+            { text: '选项3', value: '选项3', disabled: false },
+            { text: '选项4', value: '选项4', disabled: false },
+          ],
+          propsDefaultValue: [],
+        },
         showSearch: { type: 'boolean', desc: '是否展示搜索框' },
         filterOption: {
           type: 'Function',
@@ -12768,11 +15091,7 @@ export default [
           desc: 'Transfer 穿梭回调',
           args: [
             { name: 'nextValue', desc: 'Transfer穿梭后，右侧面板值的集合', type: 'string[]' },
-            {
-              name: 'direction',
-              desc: '穿梭的方向，left、right',
-              type: 'DirectionType',
-            },
+            { name: 'direction', desc: '穿梭的方向，left、right', type: 'DirectionType' },
             { name: 'moveKeys', desc: '移动值的集合', type: 'string[]' },
           ],
         },
@@ -12780,11 +15099,7 @@ export default [
           desc: 'Transfer 取消选项点击回调',
           args: [
             { name: 'nextValue', desc: 'Transfer 右侧面板值的集合', type: 'string[]' },
-            {
-              name: 'newDisplayValue',
-              desc: 'Transfer 右侧面板值的备用集合',
-              type: 'string[]',
-            },
+            { name: 'newDisplayValue', desc: 'Transfer 右侧面板值的备用集合', type: 'string[]' },
           ],
         },
       },
@@ -12802,7 +15117,34 @@ export default [
           sequence: 1,
           title: '树形穿梭框',
           desc: '树形穿梭框，展示树形数据',
-          props: { type: 'tree' },
+          props: {
+            type: 'tree',
+            data: [
+              { text: '1', value: '1' },
+              {
+                text: '2',
+                value: '2',
+                children: [
+                  {
+                    text: '2.1',
+                    value: '2.1',
+                    children: [
+                      { text: '2.1.1', value: '2.1.1' },
+                      { text: '2.1.2', value: '2.1.2' },
+                    ],
+                  },
+                  {
+                    text: '2.2',
+                    value: '2.2',
+                    children: [
+                      { text: '2.2.1', value: '2.2.1' },
+                      { text: '2.2.2', value: '2.2.2' },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
           theme: {
             TransferWrap: {
               name: '穿梭框整体样式',
@@ -13374,7 +15716,35 @@ export default [
       title: '树形穿梭框',
       desc: '树形穿梭框，展示树形数据',
       props: {
-        data: { type: 'Object[]', desc: '左右两个面板数据源' },
+        data: {
+          type: 'Object[]',
+          desc: '左右两个面板数据源',
+          meta: [
+            { key: 'text', title: '展示文字', type: 'string' },
+            { key: 'value', title: '对应字段', type: 'string' },
+            { key: 'disabled', title: '是否禁用', type: 'boolean' },
+          ],
+          defaultValue: [
+            { text: '1', value: '1' },
+            {
+              text: '2',
+              value: '2',
+              children: [
+                {
+                  text: '2.1',
+                  value: '2.1',
+                  children: [{ text: '2.1.1', value: '2.1.1' }, { text: '2.1.2', value: '2.1.2' }],
+                },
+                {
+                  text: '2.2',
+                  value: '2.2',
+                  children: [{ text: '2.2.1', value: '2.2.1' }, { text: '2.2.2', value: '2.2.2' }],
+                },
+              ],
+            },
+          ],
+          propsDefaultValue: [],
+        },
         showSearch: { type: 'boolean', desc: '是否展示搜索框' },
         filterOption: {
           type: 'Function',
@@ -13422,11 +15792,7 @@ export default [
           desc: 'Transfer 穿梭回调',
           args: [
             { name: 'nextValue', desc: 'Transfer穿梭后，右侧面板值的集合', type: 'string[]' },
-            {
-              name: 'direction',
-              desc: '穿梭的方向，left、right',
-              type: 'DirectionType',
-            },
+            { name: 'direction', desc: '穿梭的方向，left、right', type: 'DirectionType' },
             { name: 'moveKeys', desc: '移动值的集合', type: 'string[]' },
           ],
         },
@@ -13434,11 +15800,7 @@ export default [
           desc: 'Transfer 取消选项点击回调',
           args: [
             { name: 'nextValue', desc: 'Transfer 右侧面板值的集合', type: 'string[]' },
-            {
-              name: 'newDisplayValue',
-              desc: 'Transfer 右侧面板值的备用集合',
-              type: 'string[]',
-            },
+            { name: 'newDisplayValue', desc: 'Transfer 右侧面板值的备用集合', type: 'string[]' },
           ],
         },
       },
@@ -13776,11 +16138,11 @@ export default [
         limitCount: { type: 'number', desc: '多选时的最大选中数', defaultValue: 999999 },
         expandAll: { type: 'boolean', desc: '是否展开所有子元素', defaultValue: false },
         onlySelectLeaf: { type: 'boolean', desc: '是否只能选择根节点选项', defaultValue: false },
-        valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'key' },
+        valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'value' },
         displayField: {
           type: 'string',
           desc: 'data数据的displayValue值的名称',
-          defaultValue: 'title',
+          defaultValue: 'text',
         },
         value: {
           type: 'string | string[] | number | number[]',
@@ -13795,11 +16157,7 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            {
-              key: 'text',
-              title: '文本值',
-              type: 'string',
-            },
+            { key: 'text', title: '文本值', type: 'string' },
           ],
           defaultValue: false,
         },
@@ -13830,22 +16188,14 @@ export default [
           desc: '滚动条滚动时触发',
           args: [
             { name: 'start', desc: '显示区域内，第一个树节点所在数据中的索引值', type: 'number' },
-            {
-              name: 'end',
-              desc: '显示区域内，最后树节点所在数据中的索引值',
-              type: 'number',
-            },
+            { name: 'end', desc: '显示区域内，最后树节点所在数据中的索引值', type: 'number' },
           ],
         },
         onExpand: {
           desc: '展开/收起节点时触发',
           args: [
             { name: 'expandedKeys', desc: '所有展开节点的valueField值的集合', type: 'string[]' },
-            {
-              name: 'data',
-              desc: '所有的树形数据信息',
-              type: 'Array<Object>',
-            },
+            { name: 'data', desc: '所有的树形数据信息', type: 'Array<Object>' },
           ],
         },
         onSelect: {
@@ -13855,11 +16205,7 @@ export default [
         onChange: {
           desc: '选中节点发生改变时触发',
           args: [
-            {
-              name: 'selectValue',
-              desc: '所有选中项的valueField值的集合',
-              type: 'string[]',
-            },
+            { name: 'selectValue', desc: '所有选中项的valueField值的集合', type: 'string[]' },
             {
               name: 'selectDisplayValue',
               desc: '所有选中项的displayField值的集合',
@@ -14163,11 +16509,11 @@ export default [
         limitCount: { type: 'number', desc: '多选时的最大选中数', defaultValue: 999999 },
         expandAll: { type: 'boolean', desc: '是否展开所有子元素', defaultValue: false },
         onlySelectLeaf: { type: 'boolean', desc: '是否只能选择根节点选项', defaultValue: false },
-        valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'key' },
+        valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'value' },
         displayField: {
           type: 'string',
           desc: 'data数据的displayValue值的名称',
-          defaultValue: 'title',
+          defaultValue: 'text',
         },
         value: {
           type: 'string | string[] | number | number[]',
@@ -14182,11 +16528,7 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            {
-              key: 'text',
-              title: '文本值',
-              type: 'string',
-            },
+            { key: 'text', title: '文本值', type: 'string' },
           ],
           defaultValue: false,
         },
@@ -14217,22 +16559,14 @@ export default [
           desc: '滚动条滚动时触发',
           args: [
             { name: 'start', desc: '显示区域内，第一个树节点所在数据中的索引值', type: 'number' },
-            {
-              name: 'end',
-              desc: '显示区域内，最后树节点所在数据中的索引值',
-              type: 'number',
-            },
+            { name: 'end', desc: '显示区域内，最后树节点所在数据中的索引值', type: 'number' },
           ],
         },
         onExpand: {
           desc: '展开/收起节点时触发',
           args: [
             { name: 'expandedKeys', desc: '所有展开节点的valueField值的集合', type: 'string[]' },
-            {
-              name: 'data',
-              desc: '所有的树形数据信息',
-              type: 'Array<Object>',
-            },
+            { name: 'data', desc: '所有的树形数据信息', type: 'Array<Object>' },
           ],
         },
         onSelect: {
@@ -14242,11 +16576,7 @@ export default [
         onChange: {
           desc: '选中节点发生改变时触发',
           args: [
-            {
-              name: 'selectValue',
-              desc: '所有选中项的valueField值的集合',
-              type: 'string[]',
-            },
+            { name: 'selectValue', desc: '所有选中项的valueField值的集合', type: 'string[]' },
             {
               name: 'selectDisplayValue',
               desc: '所有选中项的displayField值的集合',
@@ -14438,11 +16768,7 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            {
-              key: 'text',
-              title: '文本值',
-              type: 'string',
-            },
+            { key: 'text', title: '文本值', type: 'string' },
           ],
           defaultValue: false,
         },
@@ -14933,11 +17259,7 @@ export default [
           desc: '生成选择项的数据',
           meta: [
             { key: 'value', title: 'value值', type: 'string' },
-            {
-              key: 'text',
-              title: '文本值',
-              type: 'string',
-            },
+            { key: 'text', title: '文本值', type: 'string' },
           ],
           defaultValue: false,
         },
@@ -15269,11 +17591,7 @@ export default [
           desc: "上传的文件列表,如 [{ id: 1, name: 'header.jpg', status: 'done' }]",
           meta: [
             { key: 'id', title: '文件唯一标识', type: 'number' },
-            {
-              key: 'name',
-              title: '文件名',
-              type: 'string',
-            },
+            { key: 'name', title: '文件名', type: 'string' },
             { key: 'status', title: '文件传输状态', type: 'FileType' },
           ],
         },
@@ -15289,6 +17607,11 @@ export default [
           type: 'UploadSize',
           desc: 'picture类型可配置的三种尺寸(small/default/large)',
           defaultValue: 'default',
+        },
+        defaultTips: {
+          type:
+            "object({uploadText:'上传',uploadTips:'请将文件拖到此处',failTips:'文件上传失败请重试',loadingTips:'文件上传中...'})",
+          desc: '默认的上传提示语',
         },
       },
       events: {
@@ -15462,10 +17785,21 @@ export default [
           props: { areaType: 'both' },
           theme: {
             UploadButtonType: {
-              name: '按钮',
-              desc: '按钮部分的样式配置',
-              normal: [['width'], ['height'], ['fontSize'], ['color']],
-              disabled: [['color']],
+              name: '按钮配置',
+              theme: {
+                Container: {
+                  name: '按钮整体样式',
+                  desc: '按钮部分的样式配置',
+                  normal: [['width'], ['height'], ['fontSize'], ['background']],
+                  disabled: [['background']],
+                },
+                ButtonText: {
+                  name: '按钮文字样式',
+                  desc: '为按钮文字配置样式',
+                  normal: [['color'], ['font']],
+                  disabled: [['color']],
+                },
+              },
             },
             UploadDefaultType: {
               name: '文件上传区域',
@@ -15562,11 +17896,7 @@ export default [
           desc: "上传的文件列表,如 [{ id: 1, name: 'header.jpg', status: 'done' }]",
           meta: [
             { key: 'id', title: '文件唯一标识', type: 'number' },
-            {
-              key: 'name',
-              title: '文件名',
-              type: 'string',
-            },
+            { key: 'name', title: '文件名', type: 'string' },
             { key: 'status', title: '文件传输状态', type: 'FileType' },
           ],
         },
@@ -15582,6 +17912,11 @@ export default [
           type: 'UploadSize',
           desc: 'picture类型可配置的三种尺寸(small/default/large)',
           defaultValue: 'default',
+        },
+        defaultTips: {
+          type:
+            "object({uploadText:'上传',uploadTips:'请将文件拖到此处',failTips:'文件上传失败请重试',loadingTips:'文件上传中...'})",
+          desc: '默认的上传提示语',
         },
       },
       events: {
@@ -15670,11 +18005,7 @@ export default [
           desc: "上传的文件列表,如 [{ id: 1, name: 'header.jpg', status: 'done' }]",
           meta: [
             { key: 'id', title: '文件唯一标识', type: 'number' },
-            {
-              key: 'name',
-              title: '文件名',
-              type: 'string',
-            },
+            { key: 'name', title: '文件名', type: 'string' },
             { key: 'status', title: '文件传输状态', type: 'FileType' },
           ],
         },
@@ -15690,6 +18021,11 @@ export default [
           type: 'UploadSize',
           desc: 'picture类型可配置的三种尺寸(small/default/large)',
           defaultValue: 'default',
+        },
+        defaultTips: {
+          type:
+            "object({uploadText:'上传',uploadTips:'请将文件拖到此处',failTips:'文件上传失败请重试',loadingTips:'文件上传中...'})",
+          desc: '默认的上传提示语',
         },
       },
       events: {
@@ -15778,11 +18114,7 @@ export default [
           desc: "上传的文件列表,如 [{ id: 1, name: 'header.jpg', status: 'done' }]",
           meta: [
             { key: 'id', title: '文件唯一标识', type: 'number' },
-            {
-              key: 'name',
-              title: '文件名',
-              type: 'string',
-            },
+            { key: 'name', title: '文件名', type: 'string' },
             { key: 'status', title: '文件传输状态', type: 'FileType' },
           ],
         },
@@ -15798,6 +18130,11 @@ export default [
           type: 'UploadSize',
           desc: 'picture类型可配置的三种尺寸(small/default/large)',
           defaultValue: 'default',
+        },
+        defaultTips: {
+          type:
+            "object({uploadText:'上传',uploadTips:'请将文件拖到此处',failTips:'文件上传失败请重试',loadingTips:'文件上传中...'})",
+          desc: '默认的上传提示语',
         },
       },
       events: {
@@ -15885,11 +18222,7 @@ export default [
           desc: "上传的文件列表,如 [{ id: 1, name: 'header.jpg', status: 'done' }]",
           meta: [
             { key: 'id', title: '文件唯一标识', type: 'number' },
-            {
-              key: 'name',
-              title: '文件名',
-              type: 'string',
-            },
+            { key: 'name', title: '文件名', type: 'string' },
             { key: 'status', title: '文件传输状态', type: 'FileType' },
           ],
         },
@@ -15905,6 +18238,11 @@ export default [
           type: 'UploadSize',
           desc: 'picture类型可配置的三种尺寸(small/default/large)',
           defaultValue: 'default',
+        },
+        defaultTips: {
+          type:
+            "object({uploadText:'上传',uploadTips:'请将文件拖到此处',failTips:'文件上传失败请重试',loadingTips:'文件上传中...'})",
+          desc: '默认的上传提示语',
         },
       },
       events: {
@@ -15937,10 +18275,21 @@ export default [
       category: ['数据录入'],
       theme: {
         UploadButtonType: {
-          name: '按钮',
-          desc: '按钮部分的样式配置',
-          normal: [['width'], ['height'], ['fontSize'], ['color']],
-          disabled: [['color']],
+          name: '按钮配置',
+          theme: {
+            Container: {
+              name: '按钮整体样式',
+              desc: '按钮部分的样式配置',
+              normal: [['width'], ['height'], ['fontSize'], ['background']],
+              disabled: [['background']],
+            },
+            ButtonText: {
+              name: '按钮文字样式',
+              desc: '为按钮文字配置样式',
+              normal: [['color'], ['font']],
+              disabled: [['color']],
+            },
+          },
         },
         UploadDefaultType: {
           name: '文件上传区域',
@@ -15977,5 +18326,128 @@ export default [
     target: Upload,
     screenshot:
       'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGoAAAAoCAYAAAAWsW/wAAAAAXNSR0IArs4c6QAAAtVJREFUeAHtXM9rE1EQ/l6IJGcpmFiLeKgHPYhSBBElF/Gm4E0PBkGSgyh6aI+Cx9aLRxO8pCjeqnjzxyFUQRAR/BNEY3LynLSFdaa7wZA+X7PLe+zbZea0nTcz+8339b0N204UyDqdzvxoNHocBEGNfqyyL4fWV0p1S6XScr1e7+n6u3Y7OLIDrNFaLQjS5UEp9AlHtwisbDxTvxSLNBwOv1ITT0io9WazyQG5s1arVaUeb1KP98vl8tK0WCzSNvAdAQ561bzCnwPAqSLvJBap0WisegXQMpjoF3C13W6De6byNyZvsbuTfBOJARKmHYW1Ah93vJMmQef5mnvlnjU96nyasFRctQLdtprX405HadTrnudw2s8kHdaxj7GxUGIZYECEyoBIDFGEEqEywkBGYMqOEqEywkBGYMqOyohQ9CrJbIPBIDBHhKuVSkXxlev4WbCkGXP9Snj3l2/sothXKLu3y3e1i2eBsVC9AbD5xV6/cvRZ4vL4MeDerX/F+Jp9tkyEssTkiUXgwydgi17Bj7bCa/bZMjn6LDH5+l1Y6PwSvfCmp/rTF5YKR2VkR9nl01k1EcoZtXYLi1B2+XRWTYRyRq3dwiKUXT6dVROhYlJ76QJw7kzMpIlwzuUacU0+nsdk7G4d+NEDPn/TJz5/FX4816/Sf9RcBY7OA+8//i9C7xeh9Lwk9r7dTJxqTJSjz0iPP4uyoxJocWgOePQgQSKlcG4SE6FisvbzN7BwGDh9MmbiRDjXiGv7CjX+O9OshV3Hz4rDVdydh64qm+vKM8rMjzerIpQ3UpiBiFBmfrxZFaG8kcIMRIQy8+PNqgjljRRmICKUmR9vVlmoPo9NeoPIMZCo1z3jr9HMrOO7JyvP2Ao8gMyzrclKZC+Le+WeNch1Pk1YKq5ukafEediaZ1t5bDKv04fTw9bTdNMrmpVthcs+DlszNsWA5esLQtl8/vqCv5ouyP4AgUX3AAAAAElFTkSuQmCC',
+  },
+  {
+    meta: {
+      widgetName: 'Window',
+      title: '窗体',
+      desc: '支持拖拽的窗体组件',
+      props: {
+        visible: { type: 'boolean', desc: '组件是否显示', defaultValue: true },
+        width: { type: 'number', desc: '窗体宽度', defaultValue: 50 },
+        height: { type: 'number', desc: '窗体高度', defaultValue: 50 },
+        minWidth: { type: 'number', desc: '窗体最小宽度', defaultValue: 50 },
+        minHeight: { type: 'number', desc: '窗体最小高度', defaultValue: 50 },
+        maxWidth: { type: 'number', desc: '窗体最大高度' },
+        maxHeight: { type: 'number', desc: '窗体最大宽度' },
+        x: { type: 'number', desc: '窗体横坐标位置', defaultValue: 100 },
+        y: { type: 'number', desc: '窗体纵坐标位置', defaultValue: 100 },
+        canScale: { type: 'boolean', desc: '是否支持缩放', defaultValue: false },
+        canDoubleClickScale: {
+          type: 'boolean',
+          desc: '是否支持双击放大和缩小',
+          defaultValue: false,
+        },
+        canMinimize: { type: 'boolean', desc: '是否支持最小化按钮显示', defaultValue: false },
+        minimizeIcon: { type: 'iconClass', desc: '窗体最小化按钮图标', defaultValue: false },
+        lockingWay: { type: 'lockingWayType', desc: '窗体锁定方式', defaultValue: 'default' },
+        headReverse: { type: 'boolean', desc: '头部按钮位置是否反转', defaultValue: false },
+        lockingIcon: {
+          type: 'iconClass',
+          desc: '窗体锁定按钮图标,这个属性在lockingWay为click的前提下生效',
+          defaultValue: 'lugia-icon-financial_tag',
+        },
+        defaultIsLock: {
+          type: 'boolean',
+          desc: '初始化窗体是否锁定,这个属性在lockingWay为click | drag的前提下生效',
+          defaultValue: false,
+        },
+        isLock: { type: 'boolean', desc: '窗体是否始终锁定状态', defaultValue: false },
+        lockDirection: {
+          type: 'lockDirectionType',
+          desc: '指定窗体锁定方向 这个属性在lockingWay为drag的前提下生效',
+          defaultValue: 'left',
+        },
+        lockTop: {
+          type: 'number',
+          desc: '指定窗体锁定相对窗口顶部的距离 这个属性在lockingWay为drag的前提下生效',
+          defaultValue: 0,
+        },
+        lockBottom: {
+          type: 'number',
+          desc: '指定窗体锁定相对窗口底部的距离 这个属性在lockingWay为drag的前提下生效',
+          defaultValue: 0,
+        },
+        head: { type: 'any', desc: '可自定义窗体头部内容', defaultValue: null },
+        middle: { type: 'boolean', desc: '初始化是否居中', defaultValue: true },
+        mask: { type: 'boolean', desc: '是否开启遮罩', defaultValue: false },
+      },
+      events: {
+        onChange: {
+          desc: '开关状态改变时触发',
+          args: [{ name: 'event', desc: '改变状态触发的DOM事件', type: 'ChangeType' }],
+        },
+        onDragStart: {
+          desc: '拖拽开始时触发',
+          args: [
+            { name: 'event', desc: '改变状态触发的DOM事件' },
+            { name: 'x', desc: '横向坐标值' },
+            { name: 'y', desc: '纵向坐标值' },
+            { name: 'lockDirection', desc: '锁定方向' },
+          ],
+        },
+        onDrag: {
+          desc: '拖拽结束触发',
+          args: [
+            { name: 'clientX', desc: '点击位置距离当前body可视区的x坐标' },
+            { name: 'clientY', desc: '点击位置距离当前body可视区的y坐标' },
+            { name: 'left', desc: '相对窗口左边的距离' },
+            { name: 'top', desc: '相对窗口顶部的距离' },
+          ],
+        },
+        onDragEnd: {
+          desc: '拖拽过程中触发',
+          args: [
+            { name: 'isLock', desc: '窗体是否锁定' },
+            { name: 'lockDirection', desc: '窗体锁定方向' },
+          ],
+        },
+        onChangeSizeStart: {
+          desc: '窗体尺寸开始改变时触发',
+          args: [
+            { name: 'x', desc: '点击位置距离当前body可视区的x坐标' },
+            { name: 'y', desc: '点击位置距离当前body可视区的y坐标' },
+          ],
+        },
+        onChangeSize: {
+          desc: '窗体尺寸改变过程中触发',
+          args: [{ name: 'width', desc: '窗体宽度' }, { name: 'height', desc: '窗体高度' }],
+        },
+        onChangeEnd: {
+          desc: '窗体尺寸改变结束触发',
+          args: [{ name: 'width', desc: '窗体宽度' }, { name: 'height', desc: '窗体高度' }],
+        },
+        getHeadEvent: {
+          desc: '组件加载完成调用',
+          args: [{ name: 'lockDirection', desc: '返回窗体头部区域的事件' }],
+        },
+        onUp: { desc: '窗体最小化时触发', args: [{ name: 'lockDirection', desc: '窗体锁定方向' }] },
+        onOpen: {
+          desc: '窗体由最小化展开时触发',
+          args: [
+            { name: 'lockDirection', desc: '窗体锁定方向' },
+            { name: 'isLock', desc: '窗体是否锁定' },
+          ],
+        },
+        onClose: { desc: '窗体关闭时触发' },
+        onFixed: { desc: '窗体固定时触发', args: [{ name: 'isFixed', desc: '窗体是否固定' }] },
+      },
+      type: { lockingWayType: ['default', 'click', 'drag'], lockDirectionType: ['left', 'right'] },
+      category: ['数据录入'],
+      childrenWidget: [],
+    },
+    target: Window,
+    screenshot:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSxJREFUWAntmW1oW1UYx885N0k32VhhtMV184tSdOqGOPDl20Anio6kUttMk/Vlggzm+yar+EnmsBR8Ke5DcetLdEkNa7oNqlN8QfTDxE0GG61BFMFVwblRtFmTm3uO/+cmd7vGm9zEJGUfvJDec859Xn73PM957rm3nOWPjif6bsrqmVcUY3dhqA0/bl1bojNcsyScnvR4fa/G3zv4A/k1IfzB7UEm1buMqeuWCMbFDU8xwXdMRceinGZO1/UzBMc5/5BxbZALLekzpHSxUtPLGU0IJY02powXlVIPYu5SXq93o4fCCk8mXCI2/lBNvVZu7BeofBboCk8TJLGJfM4BWBus3F6dNPIsxCbgghYEo7DWyV3FZm0sbQRoLpSlzrlS1DYWToDX9PE/YLXh8ZRjoLe3d+V8Sq0Xy9mP8ZGR38vRqUbG8GU5S+cslAQMhPpuY7o+fHFBvxvi3EgxhhqVVIrvmpoY+7gaiHJ1i+agv3P7FpbJnELBvIeMcc6oiGbRR1mSJ/yd4WfKdVKNnCNgd3d3I2fqEAqlD4+/Y97l2ppELLJupa+lEaBv5B2+3vF4z/pqnJej6wg4n1FbFVOtMPD92qZVj8VHR38jY5HI4AJAnydoPLsbstLoK8dJNTKOgMpQm8goQKaGhoby6XrVjeI8ZvYkM+WuXql9y3GRcI5MQ3zxx3FPKDBubnWQB5UgdfT0NBmXjSehe6tg6mfOxftHomPnStlwnEEmxClSwgz6kY/LCg1IpbpoDJzfFl4r1n90W/i+bMo4B919UNwmFdsrpTzdHgzvKqZD446AnhUNR2nV0oqdX5Txrq7eNSRM9TDQFXoLzUcAv8iZPEjjbgdVBOwujyOvmxCS00KIl6CDPvNJqd4OdIZ3F7PhCBgfHp7H9qsXc5gG5MOLSj8PsLlLC/olhP5pGEMasj2JichMMcPWeCDYfT9S5ijsIBJ8em1z472T0bGBqYnIVsHZfpID+EAxSEdAUkpERz/RBL8TM/UVfogMux53rKE9q2l8y2R0fIjkSh0Ex5Q8ZsGta17Vbl90k7FIvxsk93eGzERfxr2tsdihOSeHHTt3rpAX/7xZ+vhPifHxP5xkCsfc4OzyeDrtw0300xhnfI+ngR3W04oeDMxxFdMF+xE/cOAv9MteEJXAkR+8arwMSKoa/RRuPS2Q87kCUTTEdsBK2pXCWbYJEunzWq4vn7XGawr4X+EsmH9C5kZrBmhuLkosCAvC7UyQ1sIh2bJyMBAOr2a6thHVf+5IdHS20AnB2UtJ4WotlHfraz7+jkyrvSTnOoPtwdALKs3OK5n91JDGDLZZHwVCTzVbTiistYSz7FrnkjMYCIYHUOlR5RXtB39FEWjBSnuA6akvgsEdmxdZdkOpOmc5qeZcdAYJTplwwOJiNwpzq+B8AzpzgLxlUWW+rjcc3ZgjoB1OCPZcIjY2iBKgaOfBFduch7wRoPT4OlFtzpWa4X8BFsJNRiNv2g0kJsaTFiSNI/Q3XLhwudEuU8v2FUB6k3KDsxzbIfPh/hw52WJdr/asZTy5xwgMXQHUM2y/lXMU1sKZK3RaT0jztTPvkABztEqFaKwcuLwuqxekYfisnbwiwKTlsBI4S6cekOaHzJyDpECWf2O2Of/OLawWVOG55pD4yko+MI0na/oJOMtkm6HkFLZMq1CWZpA8/gbuoa2a61HsE7AZ62v5I7pGtzZ79szZ2+/Y9AFiT/WM3uJW42clKppLctBipX9DTHu9vuDk4ZEvyevf3jHHr14uq9EAAAAASUVORK5CYII=',
   },
 ];
