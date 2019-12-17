@@ -118,6 +118,7 @@ class ScrollerTree extends React.Component<any, any> {
         switchIconNames,
         igronSelectField,
         onlySelectLeaf,
+        switchAtEnd,
       } = this.props;
       const {
         children,
@@ -137,6 +138,7 @@ class ScrollerTree extends React.Component<any, any> {
             showSwitch={showSwitch}
             suffix={suffix}
             __navmenu={__navmenu}
+            switchAtEnd={switchAtEnd}
             renderSuffix={renderSuffix}
             onRightClick={onRightClick}
             switchIconNames={switchIconNames}
@@ -164,6 +166,7 @@ class ScrollerTree extends React.Component<any, any> {
           showSwitch={showSwitch}
           suffix={suffix}
           __navmenu={__navmenu}
+          switchAtEnd={switchAtEnd}
           renderSuffix={renderSuffix}
           onRightClick={onRightClick}
           switchIconNames={switchIconNames}

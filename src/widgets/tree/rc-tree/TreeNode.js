@@ -339,6 +339,7 @@ class TreeNode extends React.Component {
       __navmenu,
       expanded,
       onlySelectLeaf,
+      switchAtEnd,
     } = this.props;
     const expandedState = expanded ? 'open' : 'close';
 
@@ -472,7 +473,7 @@ class TreeNode extends React.Component {
       >
         <FlexWrap themeProps={TreeItemWrapThemeProps}>
           <FlexBox themeProps={TreeItemWrapThemeProps}>
-            {(!showSwitch && !mutliple) || __navmenu
+            {(!showSwitch && !mutliple) || __navmenu || switchAtEnd
               ? null
               : canRenderSwitch
               ? this.renderSwitch(expandedState)
@@ -481,7 +482,9 @@ class TreeNode extends React.Component {
             {props.checkable ? this.renderCheckbox() : selectHandle()}
             {renderSuffix()}
 
-            {!__navmenu || !canRenderSwitch ? null : this.renderSwitch(expandedState)}
+            {(switchAtEnd || __navmenu) && canRenderSwitch
+              ? this.renderSwitch(expandedState)
+              : null}
           </FlexBox>
         </FlexWrap>
         {newChildren}

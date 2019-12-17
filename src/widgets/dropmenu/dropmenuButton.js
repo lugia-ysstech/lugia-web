@@ -31,8 +31,11 @@ type DropMenuButtonProps = {
   onMouseEnter?: Function,
   onMouseLeave?: Function,
   disabled: boolean,
-  direction: 'up' | 'down',
+  switchIconClass: 'string',
   text: 'string',
+  showSwitch: boolean,
+  getPartOfThemeProps: Function,
+  getPartOfThemeConfig: Function,
 };
 
 type DropMenuButtonState = {
@@ -49,7 +52,8 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
     divided: false,
     type: 'customs',
     disabled: false,
-    direction: 'down',
+    switchIconClass: 'lugia-icon-direction_down',
+    showSwitch: true,
   };
 
   constructor(props: DropMenuButtonProps) {
@@ -74,8 +78,8 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
   };
 
   getNoDevidedButton = () => {
-    const { getPartOfThemeProps, disabled, direction } = this.props;
-    const iconClass = this.getIconClass(direction);
+    const { getPartOfThemeProps, disabled, switchIconClass, showSwitch } = this.props;
+
     return (
       <NoDividedContainer
         themeProps={this.getWrapThemeProps()}
@@ -91,9 +95,11 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
         />
         <NoDividedWrap>
           <TextContainer>{this.getText()}</TextContainer>
-          <NoDividedIconWrap themeProps={getPartOfThemeProps('PullIcon')}>
-            <CommonIcon iconClass={iconClass} />
-          </NoDividedIconWrap>
+          {showSwitch ? (
+            <NoDividedIconWrap themeProps={getPartOfThemeProps('PullIcon')}>
+              <CommonIcon iconClass={switchIconClass} />
+            </NoDividedIconWrap>
+          ) : null}
         </NoDividedWrap>
       </NoDividedContainer>
     );
@@ -102,10 +108,6 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
   getButton = () => {
     const { divided } = this.props;
     return divided ? this.getDevidedButton() : this.getNoDevidedButton();
-  };
-
-  getIconClass = (direction: 'up' | 'down') => {
-    return direction === 'up' ? 'lugia-icon-direction_up' : 'lugia-icon-direction_down';
   };
 
   getText = () => {
@@ -120,12 +122,11 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
       type,
       getTheme,
       disabled,
-      direction,
+      switchIconClass,
       getPartOfThemeProps,
       getPartOfThemeConfig,
     } = props;
     const { hasIconChecked, hasButtonChecked } = state;
-    const iconClass = this.getIconClass(direction);
 
     const { normal = {} } = this.props.getPartOfThemeConfig('TextContainer');
     const { width: textContainerWidth } = normal;
@@ -182,7 +183,7 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
             onMouseLeave={this.onMouseLeave}
           >
             <CheckInput disabled={disabled} type="button" onBlur={this.handleIconBlur} />
-            <CommonIcon iconClass={iconClass} />
+            <CommonIcon iconClass={switchIconClass} />
           </PullContainer>
         </DividedWrap>
       </DividedContainer>
