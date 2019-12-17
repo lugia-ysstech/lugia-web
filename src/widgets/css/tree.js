@@ -91,6 +91,7 @@ export const TreeUl = CSSComponent({
     overflow: hidden;
     transition: all 0.3s;
     position: relative;
+    box-sizing: border-box;
   `,
   option: { hover: true },
 });
@@ -99,7 +100,7 @@ export const Li = StaticComponent({
   tag: 'li',
   className: 'Li',
   css: css`
-    min-height: ${px2remcss(30)};
+    min-height: ${px2remcss(20)};
     list-style: none;
     white-space: nowrap;
     outline: 0;
@@ -210,32 +211,30 @@ export const TitleWrap = CSSComponent({
   normal: {
     selectNames: [
       ['height'],
+      ['lineHeight'],
       ['color'],
       ['font'],
       ['background'],
       ['padding', 'left'],
-      ['padding', 'left'],
+      ['padding', 'right'],
       ['border'],
       ['borderRadius'],
     ],
-    getCSS: (themeMeta, themeProps) => {
+
+    getThemeMeta: (themeMeta, themeProps) => {
       const { propsConfig } = themeProps;
-      const { itemHeight, selected, inlineType, __navmenu } = propsConfig;
-      const { height = itemHeight } = themeMeta;
+      const { selected, inlineType, __navmenu, shape } = propsConfig;
+
+      const borderRadius = shape === 'round' || inlineType === 'ellipse' ? 99999 : 4;
       const bgColor = __navmenu
         ? getNavNolmalBgColor(selected, inlineType)
         : getNormalBgColor(selected);
-      return css`
-        line-height: ${px2remcss(height)};
-        background: ${bgColor};
-      `;
-    },
-    getThemeMeta: (themeMeta, themeProps) => {
-      const { propsConfig } = themeProps;
-      const { shape, inlineType } = propsConfig;
-      const borderRadius = shape === 'round' || inlineType === 'ellipse' ? 99999 : 4;
+      console.log('bgColor', bgColor);
       return {
         borderRadius: getBorderRadius(borderRadius),
+        background: {
+          color: bgColor,
+        },
       };
     },
   },
@@ -275,6 +274,7 @@ export const TitleWrap = CSSComponent({
     vertical-align: top;
     padding-left: ${px2remcss(10)};
     transition: all 0.2s;
+    box-sizing: border-box;
   `,
   option: { hover: true, active: true, diabled: true },
 });
@@ -299,10 +299,23 @@ export const TitleSpan = CSSComponent({
   },
   css: css`
     opacity: 1;
+    position: relative;
+    top: 50%;
+    transform: translate(0, -50%);
   `,
 });
 
 TitleSpan.displayName = 'titleSpan';
+
+export const CheckboxContainer = StaticComponent({
+  tag: 'div',
+  className: 'CheckboxContainer',
+  css: css`
+    position: relative;
+    top: 50%;
+    transform: translate(0, -50%);
+  `,
+});
 
 const getFlexBoxPaddingLeft = pos => {
   const num = pos.split('-').length - 2;
@@ -319,7 +332,6 @@ export const FlexWrap = CSSComponent({
       const paddingLeft = getFlexBoxPaddingLeft(pos);
       return `
           padding-left: ${px2remcss(paddingLeft)};
-          line-height: ${px2remcss(itemHeight)};
           height: ${px2remcss(itemHeight)}
         `;
     },
@@ -355,6 +367,7 @@ export const FlexBox = CSSComponent({
     display: flex;
     align-items: center;
     box-sizing: border-box;
+    height: 100%;
     padding-right: ${px2remcss(10)};
   `,
 });
