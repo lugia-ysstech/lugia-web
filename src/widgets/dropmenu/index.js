@@ -47,7 +47,8 @@ type DropMenuProps = {
   onMouseLeave?: Function,
   onMenuClick?: Function,
   disabled: boolean,
-  direction: 'up' | 'down',
+  switchIconClass: 'string',
+  showSwitch: boolean,
 };
 
 type DropMenuState = {
@@ -63,7 +64,8 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
     divided: true,
     type: 'customs',
     disabled: false,
-    direction: 'down',
+    switchIconClass: 'lugia-icon-direction_down',
+    showSwitch: true,
   };
   state: DropMenuState;
   static displayName = Widget.DropMenu;
@@ -135,7 +137,8 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
       onMouseEnter,
       onMouseLeave,
       disabled,
-      direction,
+      switchIconClass,
+      showSwitch,
     } = this.props;
 
     return (
@@ -148,7 +151,8 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
         disabled={disabled}
-        direction={direction}
+        switchIconClass={switchIconClass}
+        showSwitch={showSwitch}
       />
     );
   }
