@@ -293,6 +293,7 @@ const ClearButtonContainer = CSSComponent({
       if (tabType !== 'card') {
         return 'opacity: 1;margin-left:10px;';
       }
+      return '';
     },
   },
   hover: {
