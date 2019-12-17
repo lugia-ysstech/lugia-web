@@ -1049,10 +1049,19 @@
     redux-immutable "^4.0.0"
     redux-saga "^0.16.0"
 
-"@lugia/devtools-material@^1.0.31", "@lugia/devtools-material@^1.0.32-alpha.0":
+"@lugia/devtools-material@^1.0.31":
   version "1.0.32"
   resolved "https://registry.npm.taobao.org/@lugia/devtools-material/download/@lugia/devtools-material-1.0.32.tgz#da1615e0fd205e150ae93859fbecc53ae4fd5e62"
   integrity sha1-2hYV4P0gXhUK6ThZ++zFOuT9XmI=
+  dependencies:
+    babel-runtime "^6.26.0"
+    immutable "^3.8.2"
+    yargs "^13.2.2"
+
+"@lugia/devtools-material@^1.0.36":
+  version "1.0.36"
+  resolved "https://registry.npmjs.org/@lugia/devtools-material/-/devtools-material-1.0.36.tgz#66790844b26e7cc0a3e85e20164919b238f47062"
+  integrity sha512-HiCocIH2QBkYRRuL9YQAbTCR9KSgZZSBOZ9tGEks6/4If8L0fnPenzpgPeKp1G45yg676svjG1KIXYGZbYMG6Q==
   dependencies:
     babel-runtime "^6.26.0"
     immutable "^3.8.2"
@@ -1066,6 +1075,15 @@
     "@lugia/type-utils" "^1.0.1"
     clone "^2.1.1"
     deep-equal "^1.0.1"
+
+"@lugia/listener@^1.0.2":
+  version "1.0.4"
+  resolved "https://registry.npmjs.org/@lugia/listener/-/listener-1.0.4.tgz#bd42c8d154c997003ea82971106be434b840ddf8"
+  integrity sha512-ub2rZ1fJOsR69C51E7hjIZoRQuedzI0znN9FEtKVernf2QoR+n5pJomURSQdC8QPLHxd1ngoYMEtjxgyKwCYAw==
+  dependencies:
+    "@babel/runtime" "^7.4.5"
+    events "^3.0.0"
+    rxjs "^6.3.3"
 
 "@lugia/lugiad-loader@^1.0.15":
   version "1.0.15"
