@@ -68,6 +68,8 @@ const BaseAvatar = CSSComponent({
       ['margin'],
       ['padding'],
       ['opacity'],
+      ['border'],
+      ['borderRadius'],
       ['boxShadow'],
     ],
     defaultTheme: {
@@ -164,17 +166,7 @@ const ImageContainer = CSSComponent({
   tag: 'div',
   className: 'AvatarImageContainer',
   normal: {
-    selectNames: [
-      ['width'],
-      ['height'],
-      ['background'],
-      ['border'],
-      ['borderRadius'],
-      ['margin'],
-      ['padding'],
-      ['boxShadow'],
-      ['opacity'],
-    ],
+    selectNames: [['width'], ['height']],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const { width, height } = themeMeta;
       const theWidth = width ? width : 24;
