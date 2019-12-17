@@ -169,11 +169,11 @@ type TabsProps = {
   getAddItem?: Function,
   pagedType?: PagedType,
   getTabpane?: Function,
-  themeProps: Object,
+  themeProps?: Object,
   onMouseEnter?: Function,
   onMouseLeave?: Function,
-  getPartOfThemeHocProps: Function,
-  getPartOfThemeProps: Function,
+  getPartOfThemeHocProps?: Function,
+  getPartOfThemeProps?: Function,
   hideContent?: boolean,
 };
 export function hasTargetInProps(target: string, props: TabsProps) {
