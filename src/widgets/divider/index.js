@@ -35,6 +35,24 @@ const Divider = CSSComponent({
         color: borderDisableColor,
       },
     },
+    getThemeMeta(themeMeta: Object, themeProps: Object) {
+      const {
+        propsConfig: { type },
+      } = themeProps;
+      const { width, height } = themeMeta;
+      let size;
+      let theSize;
+      if (type === 'vertical') {
+        size = 'height';
+        theSize = height ? height : '100%';
+      } else {
+        size = 'width';
+        theSize = width ? width : '100%';
+      }
+      return {
+        [size]: theSize,
+      };
+    },
     getCSS(themeMeta: Object, themeProps: Object) {
       const {
         propsConfig: { type },
