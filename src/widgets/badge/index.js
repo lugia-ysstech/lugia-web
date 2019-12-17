@@ -89,6 +89,7 @@ const Container: Object = CSSComponent({
     box-sizing: border-box;
     position: relative;
     display: inline-block;
+    line-height: 0;
   `,
 });
 
