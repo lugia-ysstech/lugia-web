@@ -354,8 +354,6 @@ class TextBox extends Component<InputProps, InputState> {
   setValue(value: string, event: Event): void {
     const oldValue = this.state.value;
     const { disabled, onChange, parser, formatter } = this.props;
-    this.blur(event);
-    this.focus(event);
 
     if (oldValue === value) {
       return;
@@ -568,22 +566,6 @@ class TextBox extends Component<InputProps, InputState> {
         {...addMouseEvent(this)}
       />
     );
-  }
-
-  focus(event: UIEvent) {
-    if (this.input.current) {
-      setTimeout(() => {
-        this.input.current.focus(event);
-      }, 0);
-    }
-  }
-
-  blur(event: UIEvent) {
-    if (this.input.current) {
-      setTimeout(() => {
-        this.input.current.blur(event);
-      }, 0);
-    }
   }
 
   generateInput(): React$Element<any> {
