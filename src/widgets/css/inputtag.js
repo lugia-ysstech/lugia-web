@@ -48,7 +48,6 @@ export const Container = CSSComponent({
     position: relative;
     width: ${px2remcss(250)};
     transition: all 0.3s;
-    min-height: ${px2remcss(30)};
   `,
 });
 Container.displayName = 'InputTagWrap';
@@ -153,7 +152,6 @@ export const OutContainer = CSSComponent({
     height: ${px2remcss(Height)};
     width: ${px2remcss(250)};
     border-radius: ${px2remcss(4)};
-    min-height: ${px2remcss(30)};
     background: ${defaultColor};
     color: ${blackColor};
     font-size: ${px2remcss(12)};
@@ -328,7 +326,6 @@ export const InputTagTheme = CSSComponent({
   },
   css: css`
     display: block;
-    min-height: ${px2remcss(Height)};
     height: ${px2remcss(Height)};
   `,
 });
