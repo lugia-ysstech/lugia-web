@@ -229,7 +229,6 @@ export const TitleWrap = CSSComponent({
       const bgColor = __navmenu
         ? getNavNolmalBgColor(selected, inlineType)
         : getNormalBgColor(selected);
-      console.log('bgColor', bgColor);
       return {
         borderRadius: getBorderRadius(borderRadius),
         background: {
