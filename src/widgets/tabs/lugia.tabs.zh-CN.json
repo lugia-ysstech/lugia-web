@@ -28,7 +28,14 @@
     },
     "data": {
       "type": "object[]",
-      "desc": "配置标签页需要配置的数据"
+      "desc": "配置标签页需要配置的数据",
+      "meta": [
+        { "key": "title", "title": "页签", "type": "string" },
+        { "key": "content", "title": "内容", "type": "string" },
+        { "key": "key", "title": "唯一标识", "type": "string" },
+        { "key": "icon", "title": "前缀图标", "type": "icon" },
+        { "key": "suffixIcon", "title": "后缀图标", "type": "icon" }
+      ]
     },
     "defaultData": {
       "type": "object[]",
