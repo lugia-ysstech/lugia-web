@@ -64,6 +64,7 @@ exports[`tabsDemo Component JSON 1`] = `
   white-space: nowrap;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
+  min-width: 100%;
   -webkit-transform: translateX(0rem);
   -ms-transform: translateX(0rem);
   transform: translateX(0rem);
@@ -73,39 +74,16 @@ exports[`tabsDemo Component JSON 1`] = `
   position: relative;
   z-index: 99;
   overflow: hidden;
+  text-align: left;
 }
 
 .c7 {
   position: relative;
-  padding: 10px;
+  background: #fff;
   min-width: 100px;
-  min-height: 100px;
-}
-
-.c8 {
-  overflow: hidden;
-  background: #fff;
-  padding: 10px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  display: none;
-  display: block;
-  z-index: 10;
-}
-
-.c9 {
-  overflow: hidden;
-  background: #fff;
-  padding: 10px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  display: none;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
 }
 
 .c0 {
@@ -113,10 +91,19 @@ exports[`tabsDemo Component JSON 1`] = `
   box-sizing: border-box;
   position: relative;
   overflow: hidden;
+  min-height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 <div
-  className="c0"
+  className="OutContainer  c0"
+  style={Object {}}
 >
   <div
     className="c1"
@@ -131,7 +118,7 @@ exports[`tabsDemo Component JSON 1`] = `
       style={Object {}}
     >
       <div
-        className="sleepy  c3"
+        className="c3"
         style={
           Object {
             "borderBottomColor": "#e8e8e8",
@@ -211,40 +198,6 @@ exports[`tabsDemo Component JSON 1`] = `
   <div
     className="c7"
     style={Object {}}
-  >
-    <div
-      className="c8"
-      style={Object {}}
-    >
-      <div
-        className=""
-        style={Object {}}
-      >
-        Tab1 content
-      </div>
-    </div>
-    <div
-      className="c9"
-      style={Object {}}
-    >
-      <div
-        className=""
-        style={Object {}}
-      >
-        Tab2 content
-      </div>
-    </div>
-    <div
-      className="c9"
-      style={Object {}}
-    >
-      <div
-        className=""
-        style={Object {}}
-      >
-        Tab3 content
-      </div>
-    </div>
-  </div>
+  />
 </div>
 `;

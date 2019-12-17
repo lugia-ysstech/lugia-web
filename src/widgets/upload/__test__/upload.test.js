@@ -5,7 +5,8 @@
 
 import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
-import Upload, {
+import Upload from '../index';
+import {
   getIndexInArray,
   getPercentValue,
   isKeyInArray,
@@ -25,6 +26,9 @@ Enzyme.configure({ adapter: new Adapter() });
 describe('Upload Test', () => {
   const themeHocProps = () => true;
   const themeProps = { themeConfig: {}, themeState: {} };
+  const getCmp = (target: any): Object => {
+    return target.children().instance();
+  };
   const target = mount(
     <Upload
       getPartOfThemeHocProps={themeHocProps}
@@ -55,7 +59,7 @@ describe('Upload Test', () => {
         url={'xxxx.test'}
       />
     );
-    expect(target.state().isAllowUpload).toEqual(true);
+    expect(getCmp(target).state.isAllowUpload).toEqual(true);
   });
 
   it('props autoUpload false', () => {
@@ -68,7 +72,7 @@ describe('Upload Test', () => {
         url={'xxxx.test'}
       />
     );
-    expect(target.state().isAllowUpload).toEqual(false);
+    expect(getCmp(target).state.isAllowUpload).toEqual(false);
   });
 
   it('props url', () => {
@@ -96,7 +100,7 @@ describe('Upload Test', () => {
         ]}
       />
     );
-    expect(target.state().fileListDone).toEqual([
+    expect(getCmp(target).state.fileListDone).toEqual([
       { id: 1, name: '文件11111.jpg', status: 'done' },
       { id: 2, name: '文件666.doc', status: 'fail' },
     ]);
@@ -111,7 +115,7 @@ describe('Upload Test', () => {
         url={'xxxx.test'}
       />
     );
-    expect(target.state().fileListDone).toEqual([]);
+    expect(getCmp(target).state.fileListDone).toEqual([]);
   });
 
   function checkFindIndex(data: Array<string>, key: string, expectation: number) {
@@ -204,7 +208,18 @@ describe('Upload Test', () => {
 
   function checkGetIconByType(status: ?string, expectation: ?string, props?: Object = {}) {
     it('Function GetIconByType ', () => {
-      const res = getIconByType({}, status, props);
+      const res = getIconByType(
+        {
+          defaultTips: {
+            uploadText: '上传',
+            uploadTips: '请将文件拖到此处',
+            failTips: '文件上传失败请重试',
+            loadingTips: '文件上传中...',
+          },
+        },
+        status,
+        props
+      );
       const { type } = props;
       if (!status || !res) {
         expect(res).toBe(expectation);
@@ -225,8 +240,8 @@ describe('Upload Test', () => {
 
   function setStateValue(props: Object, expectation: Object) {
     it('Function setStateValue ', () => {
-      target.instance().setStateValue(props);
-      expect(target.state()).toEqual(expectation);
+      getCmp(target).setStateValue(props);
+      expect(getCmp(target).state).toEqual(expectation);
     });
   }
 
@@ -266,7 +281,7 @@ describe('Upload Test', () => {
     data: Array<Object>
   ) {
     it('Function updateFieldList ', () => {
-      const res = target.instance().updateFieldList(fileListDone, props, data);
+      const res = getCmp(target).updateFieldList(fileListDone, props, data);
       expect(res).toEqual(expectation);
     });
   }
@@ -312,7 +327,7 @@ describe('Upload Test', () => {
     expectation: Array<Object>
   ) {
     it('Function updateFieldList ', () => {
-      const res = target.instance().appendFileList(fileListDone, props);
+      const res = getCmp(target).appendFileList(fileListDone, props);
       expect(res).toEqual(expectation);
     });
   }
@@ -331,12 +346,12 @@ describe('Upload Test', () => {
 
   function uploadProgress(props: Object, expectation: string, expectation2: Array<Object>) {
     it('Function uploadProgress ', () => {
-      target.instance().setStateValue({
+      getCmp(target).setStateValue({
         fileListDone: [{ hashMark: 1, name: '文件11111.jpg', status: 'default' }],
       });
-      target.instance().uploadProgress(props, 1);
-      expect(target.state().classNameStatus).toEqual(expectation);
-      expect(target.state().fileListDone).toEqual(expectation2);
+      getCmp(target).uploadProgress(props, 1);
+      expect(getCmp(target).state.classNameStatus).toEqual(expectation);
+      expect(getCmp(target).state.fileListDone).toEqual(expectation2);
     });
   }
 
@@ -355,12 +370,12 @@ describe('Upload Test', () => {
 
   function uploadSuccess(props: Object, expectation: string, expectation2: Array<Object>) {
     it('Function uploadSuccess ', () => {
-      target.instance().setStateValue({
+      getCmp(target).setStateValue({
         fileListDone: [{ hashMark: 1, name: '文件11111.jpg', status: 'default' }],
       });
-      target.instance().uploadSuccess(props, files, 1);
-      expect(target.state().classNameStatus).toEqual(expectation);
-      expect(target.state().fileListDone).toEqual(expectation2);
+      getCmp(target).uploadSuccess(props, files, 1);
+      expect(getCmp(target).state.classNameStatus).toEqual(expectation);
+      expect(getCmp(target).state.fileListDone).toEqual(expectation2);
     });
   }
 
@@ -404,9 +419,9 @@ describe('Upload Test', () => {
           url={'xxxx.test'}
         />
       );
-      choosedFileList && target.instance().setStateValue({ choosedFile: choosedFileList });
-      target.instance().setAutoUploadState(props);
-      expect(target.state().isAllowUpload).toEqual(expectation);
+      choosedFileList && getCmp(target).setStateValue({ choosedFile: choosedFileList });
+      getCmp(target).setAutoUploadState(props);
+      expect(getCmp(target).state.isAllowUpload).toEqual(expectation);
     });
   }
 
@@ -416,14 +431,14 @@ describe('Upload Test', () => {
 
   function setDeleteList(index: number, expectation: Array<Object>) {
     it('Function setDeleteList ', () => {
-      target.instance().setStateValue({
+      getCmp(target).setStateValue({
         fileListDone: [
           { hashMark: 1, name: '文件11111.jpg', status: 'done' },
           { hashMark: 2, name: '文件2222.jpg', status: 'default' },
         ],
       });
-      target.instance().setDeleteList(index);
-      expect(target.state().fileListDone).toEqual(expectation);
+      getCmp(target).setDeleteList(index);
+      expect(getCmp(target).state.fileListDone).toEqual(expectation);
     });
   }
 
@@ -441,12 +456,12 @@ describe('Upload Test', () => {
     expectation2: Array<Object>
   ) {
     it('Function checkUploadFail ', () => {
-      target.instance().setStateValue({
+      getCmp(target).setStateValue({
         fileListDone: [{ hashMark: 1, name: '文件11111.jpg', status: 'loading' }],
       });
-      target.instance().uploadFail(props, id);
-      expect(target.state().classNameStatus).toEqual(expectation);
-      expect(target.state().fileListDone).toEqual(expectation2);
+      getCmp(target).uploadFail(props, id);
+      expect(getCmp(target).state.classNameStatus).toEqual(expectation);
+      expect(getCmp(target).state.fileListDone).toEqual(expectation2);
     });
   }
 
@@ -455,8 +470,8 @@ describe('Upload Test', () => {
 
   function checkSetChoosedFile(expectation: Array<Object>) {
     it('Function checkSetChoosedFile ', () => {
-      target.instance().setChoosedFile(files);
-      expect(target.state().choosedFile).toEqual(expectation);
+      getCmp(target).setChoosedFile(files);
+      expect(getCmp(target).state.choosedFile).toEqual(expectation);
     });
   }
 
