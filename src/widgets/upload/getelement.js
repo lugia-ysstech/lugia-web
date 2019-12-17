@@ -554,7 +554,7 @@ const getFileList = (
   close: Function,
   themeProps: Object,
   props: Object,
-  disabled: boolean
+  disabled?: boolean
 ) => {
   if (!data || data.length === 0) return;
   const liThemeProps = props.getPartOfThemeProps('UploadLiType');
@@ -591,6 +591,8 @@ type DefProps = {
   inputId: string,
   accept: string,
   multiple: boolean,
+  userDefine?: any,
+  defaultTips: Object,
   themeProps: Object,
   getPartOfThemeHocProps: Function,
   getPartOfThemeProps: Function,
@@ -833,7 +835,9 @@ class GetElement extends React.Component<DefProps, StateProps> {
     if (areaType === 'custom') {
       const { disabled, userDefine } = props;
       const { handleClickToUpload } = this;
-      children = React.cloneElement(userDefine, { disabled, onClick: handleClickToUpload });
+      if (userDefine) {
+        children = React.cloneElement(userDefine, { disabled, onClick: handleClickToUpload });
+      }
     }
     if (areaType === 'picture') {
       const { size, disabled, fileListDone, multiple, previewUrl } = props;

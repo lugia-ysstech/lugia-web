@@ -115,10 +115,14 @@ class Upload extends React.Component<UploadProps, StateProps> {
   };
 
   static getDerivedStateFromProps(defProps: UploadProps, stateProps: StateProps) {
+    const defaultUploadTips = defProps.defaultTips
+      ? defProps.defaultTips.uploadTips
+      : '请将文件拖到此处';
+
     if (!stateProps) {
       return {
         classNameStatus: 'default',
-        defaultText: defProps.defaultTips.uploadTips,
+        defaultText: defaultUploadTips,
         fileListDone: defProps.fileList || [],
         isAllowUpload: defProps.autoUpload,
       };
@@ -126,7 +130,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
     const { classNameStatus, defaultText, fileListDone, isAllowUpload } = stateProps;
     return {
       classNameStatus: 'classNameStatus' in stateProps ? classNameStatus : 'default',
-      defaultText: 'defaultText' in stateProps ? defaultText : defProps.defaultTips.uploadTips,
+      defaultText: 'defaultText' in stateProps ? defaultText : defaultUploadTips,
       fileListDone: 'fileListDone' in stateProps ? fileListDone : defProps.fileList,
       isAllowUpload: 'isAllowUpload' in stateProps ? isAllowUpload : defProps.autoUpload,
     };
