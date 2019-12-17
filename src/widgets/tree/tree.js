@@ -62,6 +62,7 @@ export type TreeProps = {
   shape: 'default' | 'round',
   showSwitch: boolean,
   __navmenu: boolean,
+  switchAtEnd?: boolean,
   switchIconNames?: Object,
   getPartOfThemeProps: Function,
   renderSuffix?: Function,
@@ -105,6 +106,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     shape: 'default',
     showSwitch: true,
     __navmenu: false,
+    switchAtEnd: false,
     switchIconNames: {
       open: 'lugia-icon-direction_caret_down',
       close: 'lugia-icon-direction_caret_right',
