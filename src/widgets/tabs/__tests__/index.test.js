@@ -122,18 +122,18 @@ describe('tabsDemo', () => {
       />
     );
     expect(getCmp(target).state.data).toEqual([
-      { title: 'Tab1', content: 'Tab1 content', key: 'Tab1' },
-      { title: 'Tab2', content: 'Tab2 content', key: 'Tab2' },
-      { title: 'Tab3', content: 'Tab3 content', key: 'Tab3' },
+      { title: 'Tab1', key: 'Tab1' },
+      { title: 'Tab2', key: 'Tab2' },
+      { title: 'Tab3', key: 'Tab3' },
     ]);
     target
       .children()
       .instance()
       .onAddClick();
     expect(getCmp(target).state.data).toEqual([
-      { title: 'Tab1', content: 'Tab1 content', key: 'Tab1' },
-      { title: 'Tab2', content: 'Tab2 content', key: 'Tab2' },
-      { title: 'Tab3', content: 'Tab3 content', key: 'Tab3' },
+      { title: 'Tab1', key: 'Tab1' },
+      { title: 'Tab2', key: 'Tab2' },
+      { title: 'Tab3', key: 'Tab3' },
       { title: 'Tab4', content: 'Tab4 Content', key: 'Tab4' },
     ]);
   });
@@ -158,17 +158,17 @@ describe('tabsDemo', () => {
       />
     );
     expect(getCmp(target).state.data).toEqual([
-      { title: 'Tab1', content: 'Tab1 content', key: 'Tab1' },
-      { title: 'Tab2', content: 'Tab2 content', key: 'Tab2' },
-      { title: 'Tab3', content: 'Tab3 content', key: 'Tab3' },
+      { title: 'Tab1', key: 'Tab1' },
+      { title: 'Tab2', key: 'Tab2' },
+      { title: 'Tab3', key: 'Tab3' },
     ]);
     target
       .children()
       .instance()
       .onDelete({ index: 1, activityValue: 'Tab2' });
     expect(getCmp(target).state.data).toEqual([
-      { title: 'Tab1', content: 'Tab1 content', key: 'Tab1' },
-      { title: 'Tab3', content: 'Tab3 content', key: 'Tab3' },
+      { title: 'Tab1', key: 'Tab1' },
+      { title: 'Tab3', key: 'Tab3' },
     ]);
   });
 
@@ -226,9 +226,9 @@ describe('tabsDemo', () => {
       .instance()
       .onAddClick();
     expect(getCmp(target).state.data).toEqual([
-      { title: 'Tab1', content: 'Tab1 content', key: 'Tab1' },
-      { title: 'Tab2', content: 'Tab2 content', key: 'Tab2' },
-      { title: 'Tab3', content: 'Tab3 content', key: 'Tab3' },
+      { title: 'Tab1', key: 'Tab1' },
+      { title: 'Tab2', key: 'Tab2' },
+      { title: 'Tab3', key: 'Tab3' },
       { title: 'Tab4', content: 'Tab4 Content', key: 'Tab4' },
     ]);
     expect(getCmp(target).state.activityValue).toEqual('Tab4');

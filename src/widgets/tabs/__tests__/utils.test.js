@@ -63,31 +63,6 @@ describe('utils', () => {
   testComputePage(200, 410, 3);
 
   const data = [{ a: 'a' }, { a: 'b' }, { a: 'c' }];
-  const singleActivityValue = [{ a: 'a', activityValue: '1' }, { a: 'b' }, { a: 'c' }];
-  const activityValueDatas = [
-    { a: 'a', activityValue: '_key_0' },
-    { a: 'b', activityValue: '_key_1' },
-    { a: 'c', activityValue: '_key_2' },
-  ];
-  const newSingleActivityValue = [
-    { a: 'a', activityValue: '1' },
-    { a: 'b', activityValue: '_key_1' },
-    { a: 'c', activityValue: '_key_2' },
-  ];
-  const allActivityValue = [
-    { a: 'a', activityValue: '1' },
-    { a: 'b', activityValue: '2' },
-    { a: 'c', activityValue: '3' },
-  ];
-  function testAddActivityValue2Data(paramData: Array<Object>, expectData: Array<Object>) {
-    it(' testAddActivityValue2Data ', () => {
-      expect(addActivityValue2Data(paramData)).toEqual(expectData);
-    });
-  }
-  testAddActivityValue2Data(hasActivityValueData, hasActivityValueData);
-  testAddActivityValue2Data(data, activityValueDatas);
-  testAddActivityValue2Data(singleActivityValue, newSingleActivityValue);
-  testAddActivityValue2Data(allActivityValue, allActivityValue);
 
   const sampleWidthSize = [1, 2, 3];
   const anotherWidthSize = [100, 2, 30];
