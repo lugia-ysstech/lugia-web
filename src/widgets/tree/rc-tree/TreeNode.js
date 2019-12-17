@@ -19,6 +19,7 @@ import {
   Li,
   NavLi,
   SuffixWrap,
+  CheckboxContainer,
 } from '../../css/tree';
 
 const defaultTitle = '---';
@@ -202,16 +203,18 @@ class TreeNode extends React.Component {
         disabled={disabled}
         themeProps={this.getThemeProps('Text', 'SelectedText', { mutliple, itemHeight })}
       >
-        {icon ? <TextIcon iconClass={icon} /> : null}
-        <CheckBox
-          {...this.getCheckBoxTheme()}
-          checked={checked}
-          disabled={disabled}
-          indeterminate={indeterminate}
-          onChange={this.onCheck}
-        >
-          {title}
-        </CheckBox>
+        <CheckboxContainer>
+          {icon ? <TextIcon iconClass={icon} /> : null}
+          <CheckBox
+            {...this.getCheckBoxTheme()}
+            checked={checked}
+            disabled={disabled}
+            indeterminate={indeterminate}
+            onChange={this.onCheck}
+          >
+            {title}
+          </CheckBox>
+        </CheckboxContainer>
       </TitleWrap>
     );
   }
@@ -474,8 +477,8 @@ class TreeNode extends React.Component {
               : canRenderSwitch
               ? this.renderSwitch(expandedState)
               : renderNoopSwitch()}
-            {props.checkable ? this.renderCheckbox() : null}
-            {props.checkable ? null : selectHandle()}
+            {props.checkable ? this.renderCheckbox() : selectHandle()}
+
             {!__navmenu
               ? null
               : canRenderSwitch
