@@ -74,6 +74,8 @@ const newData = [
 ];
 
 const rowData = [
+  // { value: '1.1.1.1', text: '1.1.1.1', pid: '1.1.1', path: '1/1.1/1.1.1' },
+
   { value: '1', text: '1' },
   { value: '1.1', text: '1.1', pid: '1', path: '1' },
   { value: '1.1.1', text: '1.1.1', pid: '1.1', path: '1/1.1' },
@@ -190,88 +192,61 @@ const config = {
     TreeWrap: {
       normal: {
         width: 500,
-        height: 290,
-        opacity: 1,
-        background: { color: '#E086BB' },
-        boxShadow: getBoxShadow('2px 2px 5px 5px #9C2D6E'),
-        border: getBorder({ color: '#9C2D6E', width: 1, style: 'solid' }),
-        borderRadius: getBorderRadius(20),
-        padding: {
-          left: 20,
-          right: 20,
-        },
-        margin: {
-          left: 20,
-        },
-      },
-      hover: {
-        opacity: 0.9,
-        background: { color: '#F51196' },
-        boxShadow: getBoxShadow('2px 2px 5px 5px #F51196'),
-        border: getBorder({ color: '#F51196', width: 1, style: 'solid' }),
-        borderRadius: getBorderRadius(40),
       },
     },
 
     TreeItem: {
-      // TreeItemWrap: {
-      //   normal: {
-      //     background: { color: '#21EBE8' },
-      //     // border: getBorder({ color: '#F51196', width: 1, style: 'solid' }),
-
-      //     padding: { left: 30, right: 30 },
-      //   },
-      //   hover: {
-      //     background: { color: '#119E9C' },
-      //     color: 'white',
-      //     borderRadius: getBorderRadius(40),
-      //   },
-      //   active: {
-      //     background: { color: '#036664' },
-      //     // color: '#4d63ff',
-      //   },
-      // },
-      SelectedTreeItemWrap: {
-        // normal: {
-        //   background: {
-        //     color: '#000',
-        //   },
-        // },
+      TreeItemWrap: {
+        normal: {
+          height: 50,
+        },
       },
+      SelectedTreeItemWrap: {},
       Text: {
         normal: {
-          background: {
-            color: 'orange',
+          font: {
+            size: 16,
           },
-          color: 'red',
+          border: {
+            bottom: { color: '#DBDBDB', style: 'solid', width: 1 },
+          },
+          borderRadius: getBorderRadius(0),
+
+          background: {},
         },
         hover: {
           background: {
-            color: 'red',
+            color: 'none',
           },
-          color: 'red',
+          color: '#4d63ff',
         },
-        // disabled: {
-        //   background: {
-        //     color: 'blue',
-        //   },
-        //   color: 'red',
-        // },
       },
       SelectedText: {
         normal: {
-          color: 'red',
-          font: { size: 20 },
+          font: {
+            size: 16,
+          },
+          background: {
+            color: 'transparent',
+          },
+          color: '#4d63ff',
+          border: {
+            bottom: { color: '#DBDBDB', style: 'solid', width: 1 },
+          },
+          borderRadius: getBorderRadius(0),
+        },
+        hover: {
+          background: {
+            color: 'transparent',
+          },
+          color: '#4d63ff',
         },
       },
-      // SubTreeWrap: {
-      //   normal: {
-      //     background: { color: '#66eecc' },
-      //   },
-      //   hover: {
-      //     background: { color: '#bbb' },
-      //   },
-      // },
+      SubTreeWrap: {
+        normal: {
+          background: { color: '#F8F8FF' },
+        },
+      },
       Checkbox: {
         normal: {
           color: '#4d63ff',
@@ -299,19 +274,63 @@ const config = {
   },
 };
 
+const info = [
+  {
+    value: '北京分行',
+    text: '北京分行',
+    children: [
+      { value: '朝阳支行办事处', text: '朝阳支行办事处' },
+      { value: '海淀支行办事处', text: '海淀支行办事处' },
+      { value: '石景山支行办事处', text: '石景山支行办事处' },
+    ],
+  },
+  {
+    value: '天津分行',
+    text: '天津分行',
+    children: [
+      { value: '和平支行办事处', text: '和平支行办事处' },
+      { value: '河东支行办事处', text: '河东支行办事处' },
+      { value: '南开支行办事处', text: '南开支行办事处' },
+    ],
+  },
+  {
+    value: '上海分行',
+    text: '上海分行',
+    children: [
+      { value: '黄埔支行办事处', text: '黄埔支行办事处' },
+      { value: '长宁支行办事处', text: '长宁支行办事处' },
+      { value: '虹口支行办事处', text: '虹口支行办事处' },
+    ],
+  },
+
+  {
+    value: '深圳分行',
+    text: '深圳分行',
+    children: [
+      { value: '南山支行办事处', text: '南山支行办事处' },
+      { value: '盐口支行办事处', text: '盐口支行办事处' },
+      { value: '福田支行办事处', text: '福田支行办事处' },
+    ],
+  },
+];
+
+const switchIconNames = {
+  open: 'lugia-icon-direction_down',
+  close: 'lugia-icon-direction_right',
+};
+
 export default () => {
   return (
     <div>
       <Tree
-        theme={config}
+        data={info}
         expandAll
-        autoHeight
-        mutliple
-        data={newData}
+        theme={config}
         translateTreeData
-        // data={data}
-        onlySelectLeaf
-        igronSelectField={'notCanSelect'}
+        autoHeight
+        // mutliple
+        __navmenu
+        switchIconNames={switchIconNames}
       />
     </div>
   );
