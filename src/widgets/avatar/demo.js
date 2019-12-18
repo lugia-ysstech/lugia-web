@@ -10,6 +10,7 @@ import Avatar from './';
 import Widget from '../consts';
 import Theme from '../theme';
 import Badge from '../badge/index';
+import { getBorderRadius } from '@lugia/theme-utils';
 
 const Wrapper = styled.div`
   float: left;
@@ -34,7 +35,7 @@ export default () => {
     [Widget.Avatar]: {
       Container: { normal: { background: { color: '#e2e2e2' } } },
       IconAvatar: { normal: { color: 'orange' } },
-      SrcAvatar: { normal: { width: 24, height: 24 } },
+      SrcAvatar: { normal: { width: 24, height: 24, borderRadius: getBorderRadius('30%') } },
       FontAvatar: { normal: { color: 'red' } },
     },
   };
