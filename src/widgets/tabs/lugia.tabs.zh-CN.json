@@ -329,7 +329,7 @@
     "ContentBlock": {
       "name": "内容区域",
       "desc": "内容区域的样式配置",
-      "normal": [["background"], ["padding"], ["width"], ["height"]]
+      "normal": [["background"], ["padding"], ["width"], ["height"],["boxShadow"],["border"], ["borderRadius"]]
     },
     "TitleContainer": {
       "name": "卡片区域",

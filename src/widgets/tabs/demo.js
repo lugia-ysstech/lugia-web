@@ -13,9 +13,19 @@ import Icon from '../icon';
 import Theme from '../theme/';
 
 import colorsFunc from '../css/stateColor';
-import { getBorder } from '@lugia/theme-utils';
+import { getBorder, getBorderRadius } from '@lugia/theme-utils';
+import { css, StaticComponent } from '@lugia/theme-css-hoc';
+import CSSComponent from '@lugia/theme-css-hoc/lib/index';
 
 const { themeColor } = colorsFunc();
+
+const ContainerBox = StaticComponent({
+  tag: 'div',
+  className: 'ContentBlock',
+  css: css`
+    margin: 10px;
+  `,
+});
 
 const onPreClick = e => {};
 const onNextClick = e => {};
@@ -56,7 +66,7 @@ export class TabsLimitdemo extends React.Component<any, any> {
     hasActivityValueData[0] = {
       title: ' changed Tab1',
       content: 'Content of changed Tab1',
-      key: '-1',
+      value: '-1',
     };
     this.setState({ data: hasActivityValueData });
   };
@@ -147,7 +157,7 @@ export const hasActivityValueData = [
   {
     title: 'Tab1',
     content: <div>1111111111</div>,
-    key: '0',
+    value: '0',
   },
   {
     title: 'Tab2',
@@ -156,10 +166,10 @@ export const hasActivityValueData = [
         <div>222222</div>
       </div>
     ),
-    key: '1',
+    value: '1',
   },
   {
-    key: '2',
+    value: '2',
     title: 'Tab3',
     content: (
       <div>
@@ -170,7 +180,7 @@ export const hasActivityValueData = [
     ),
   },
   {
-    key: '3',
+    value: '3',
     title: 'Tab4',
     disabled: true,
     content: (
@@ -183,29 +193,29 @@ export const hasActivityValueData = [
     ),
   },
   {
-    key: '4',
+    value: '4',
     title: 'Tab5',
     content: 55555,
   },
   {
-    key: '5',
+    value: '5',
     title: 'Tab6',
     content: 66666,
   },
   {
-    key: '6',
+    value: '6',
     title: 'Tab7',
     content: 77777,
   },
   {
-    key: '7',
+    value: '7',
     title: 'Tab8',
     content: 888888,
   },
 ];
 export const children = [
-  <Tabpane title={'1111'} content={'11111'} key={'0'} />,
-  <Tabpane title={'2222'} content={<div>2222</div>} key={'1'} />,
+  <Tabpane title={'1111'} content={'11111'} value={'0'} />,
+  <Tabpane title={'2222'} content={<div>2222</div>} value={'1'} />,
   <Tabpane
     title={'3333'}
     content={
@@ -215,7 +225,7 @@ export const children = [
         </div>
       </div>
     }
-    key={'2'}
+    value={'2'}
   />,
   <Tabpane
     title={'4444'}
@@ -226,7 +236,7 @@ export const children = [
         </div>
       </div>
     }
-    key={'3'}
+    value={'3'}
   />,
   <Tabpane
     title={'555555'}
@@ -237,7 +247,7 @@ export const children = [
         </div>
       </div>
     }
-    key={'4'}
+    value={'4'}
   />,
   <Tabpane
     title={'666666'}
@@ -248,7 +258,7 @@ export const children = [
         </div>
       </div>
     }
-    key={'5'}
+    value={'5'}
   />,
 ];
 export const longChildren = [
@@ -301,7 +311,7 @@ export const shortChildren = [
     content={'这里是菜单啊~排骨，猪蹄，茴香小油条，豆腐，白菜，大萝卜'}
     icon={'lugia-icon-financial_archive'}
   />,
-  <Tabpane title={'2222'} content={<div>22222222222222</div>} key={'1'} />,
+  <Tabpane title={'2222'} content={<div>22222222222222</div>} value={'1'} />,
   <Tabpane
     title={'3333'}
     content={
@@ -311,12 +321,12 @@ export const shortChildren = [
         </div>
       </div>
     }
-    key={'2'}
+    value={'2'}
   />,
 ];
 const hasActivityValueChildren = [
-  <Tabpane title={'11111'} content={'1111'} key={'0'} />,
-  <Tabpane title={'2222'} content={<div>2222</div>} key={'1'} />,
+  <Tabpane title={'11111'} content={'1111'} value={'0'} />,
+  <Tabpane title={'2222'} content={<div>2222</div>} value={'1'} />,
   <Tabpane
     title={'3333'}
     content={
@@ -326,7 +336,7 @@ const hasActivityValueChildren = [
         </div>
       </div>
     }
-    key={'2'}
+    value={'2'}
   />,
   <Tabpane
     title={'44444'}
@@ -337,7 +347,7 @@ const hasActivityValueChildren = [
         </div>
       </div>
     }
-    key={'3'}
+    value={'3'}
   />,
   <Tabpane
     title={'55555'}
@@ -348,7 +358,7 @@ const hasActivityValueChildren = [
         </div>
       </div>
     }
-    key={'4'}
+    value={'4'}
   />,
   <Tabpane
     title={'66666'}
@@ -359,7 +369,7 @@ const hasActivityValueChildren = [
         </div>
       </div>
     }
-    key={'5'}
+    value={'5'}
   />,
   <Tabpane
     title={'7777777'}
@@ -370,7 +380,7 @@ const hasActivityValueChildren = [
         </div>
       </div>
     }
-    key={'6'}
+    value={'6'}
   />,
   <Tabpane
     title={'8888888'}
@@ -381,7 +391,7 @@ const hasActivityValueChildren = [
         </div>
       </div>
     }
-    key={'7'}
+    value={'7'}
   />,
   <Tabpane
     title={'999999'}
@@ -392,7 +402,7 @@ const hasActivityValueChildren = [
         </div>
       </div>
     }
-    key={'8'}
+    value={'8'}
   />,
   <Tabpane
     title={'10101010'}
@@ -403,7 +413,7 @@ const hasActivityValueChildren = [
         </div>
       </div>
     }
-    key={'9'}
+    value={'9'}
   />,
   <Tabpane
     title={'1111111'}
@@ -414,7 +424,7 @@ const hasActivityValueChildren = [
         </div>
       </div>
     }
-    key={'10'}
+    value={'10'}
   />,
   <Tabpane
     title={'12121212'}
@@ -425,7 +435,7 @@ const hasActivityValueChildren = [
         </div>
       </div>
     }
-    key={'11'}
+    value={'11'}
   />,
   <Tabpane
     title={'131313'}
@@ -436,7 +446,7 @@ const hasActivityValueChildren = [
         </div>
       </div>
     }
-    key={'12'}
+    value={'12'}
   />,
 ];
 export const defaulttestDelayData = [
@@ -451,6 +461,8 @@ export const defaulttestDelayData = [
       </div>
     ),
     hideCloseBtn: true,
+    icon: 'lugia-icon-financial_heart',
+    suffixIcon: 'lugia-icon-financial_like',
   },
   { title: '排骨', content: '排骨啊啊啊啊啊' },
   { title: '鸡腿', content: '鸡腿啊啊啊啊啊' },
@@ -872,7 +884,13 @@ export default class TabsDemo extends React.Component<any, any> {
         Container: {
           normal: {
             width: 1200,
-            // height: 300
+            // height: 300,
+            margin: {
+              top: 10,
+              left: 10,
+              // right: 10,
+              bottom: 10,
+            },
           },
         },
         TitleContainer: {
@@ -888,14 +906,23 @@ export default class TabsDemo extends React.Component<any, any> {
               right: 10,
               bottom: 10,
             },
-            background: {
-              color: 'pink',
+            margin: {
+              // top: 10,
+              left: 10,
+              right: 10,
+              bottom: 10,
             },
+            background: {
+              color: '#aabbcc',
+            },
+            boxShadow: { x: 0, y: 0, color: '#ffb69e', type: 'outset', blur: 6, spread: 3 },
+            border: getBorder({ color: 'blue', width: 1, style: 'solid' }),
+            borderRadius: getBorderRadius(20),
           },
         },
         BorderStyle: {
           normal: {
-            color: '#ffccff',
+            color: 'transparent',
             width: 1,
           },
         },
@@ -925,32 +952,29 @@ export default class TabsDemo extends React.Component<any, any> {
 
     return (
       <div>
-        <Tabs />
-        <Tabs tabType={'card'} />
-        <Tabs tabType={'window'} />
-        <Tabs>
-          <Tabpane title={'1111'} content={'11111'} key={'0'} />
-          <Tabpane title={'2222'} content={<div>2222</div>} key={'1'} />
-        </Tabs>
-        <Tabs
-          tabType={'card'}
-          data={defaulttestDelayData}
-          showDeleteBtn={true}
-          onDelete={this.onDeleteClick}
-          showAddBtn={true}
-          pagedType={'single'}
-          onAddClick={this.onAddClick}
-          // defaultData={defaulttestDelayData}
-        />
-        <Tabs tabType={'window'} data={defaulttestDelayData} />
-
         <Theme config={updateTheme}>
-          <Tabs>
-            <Tabpane title={'1111'} content={'11111'} key={'0'} />
-            <Tabpane title={'2222'} content={<div>2222</div>} key={'1'} showDeleteBtn={true} />
-          </Tabs>
-          <Tabs tabType={'window'} data={defaulttestDelayData} showDeleteBtn={true} />
-          <Tabs tabPosition={'left'} data={defaulttestDelayData} />
+          <ContainerBox>
+            <Tabs>
+              <Tabpane title={'1111'} content={'11111'} value={'0'} />
+              <Tabpane title={'2222'} content={<div>2222</div>} value={'1'} showDeleteBtn={true} />
+            </Tabs>
+          </ContainerBox>
+          <ContainerBox>
+            <Tabs tabType={'card'} data={defaulttestDelayData} showDeleteBtn={true} />
+          </ContainerBox>
+          <ContainerBox>
+            <Tabs
+              tabType={'card'}
+              data={defaulttestDelayData}
+              showDeleteBtn={true}
+              forceRender={true}
+            />
+          </ContainerBox>
+          <ContainerBox>
+            <Tabs tabType={'window'} data={defaulttestDelayData} showDeleteBtn={true} />
+          </ContainerBox>
+
+          {/*<Tabs tabPosition={'left'} data={defaulttestDelayData} />*/}
         </Theme>
 
         <Theme config={cardView}>
