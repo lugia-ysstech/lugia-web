@@ -20,7 +20,15 @@ const TabContentContainer = CSSComponent({
   tag: 'div',
   className: 'ContentBlock',
   normal: {
-    selectNames: [['padding'], ['width'], ['height'], ['background']],
+    selectNames: [
+      ['padding'],
+      ['width'],
+      ['height'],
+      ['background'],
+      ['boxShadow'],
+      ['border'],
+      ['borderRadius'],
+    ],
     getCSS: (theme: Object, themeProps: Object) => {
       const {
         propsConfig: { tabPosition },
@@ -47,9 +55,9 @@ const TabContent = CSSComponent({
     selectNames: [],
     getCSS: (theme: Object, themeProps: Object) => {
       const {
-        propsConfig: { active, key },
+        propsConfig: { active, value },
       } = themeProps;
-      if (active === key) {
+      if (active === value) {
         return `
         display:block;
         z-index:10;
@@ -77,6 +85,7 @@ const WindowContainer = CSSComponent({
     selectNames: [
       ['background'],
       ['padding'],
+      ['margin'],
       ['border'],
       ['borderRadius'],
       ['opacity'],
@@ -113,7 +122,6 @@ const OutContainer = CSSComponent({
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     position: relative;
-    overflow: hidden;
     min-height: 100%;
     display: flex;
     flex-direction: column;
@@ -132,7 +140,6 @@ const VerticalOutContainer = CSSComponent({
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     position: relative;
-    overflow: hidden;
     display: flex;
   `,
 });
@@ -183,9 +190,9 @@ export function setKeyValue(data: Array<Object>) {
   const newData = [...data];
   return newData.map((item, index) => {
     const newItem = { ...item };
-    const { key } = newItem;
-    if (!key) {
-      newItem.key = `Tab${index + 1}`;
+    const { value } = newItem;
+    if (!value) {
+      newItem.value = `Tab${index + 1}`;
     }
     return newItem;
   });
@@ -194,9 +201,9 @@ export function setKeyValue(data: Array<Object>) {
 export function getDefaultData(props: Object) {
   const { defaultData, data, children } = props;
   let configData = [
-    { title: 'Tab1', key: 'Tab1' },
-    { title: 'Tab2', key: 'Tab2' },
-    { title: 'Tab3', key: 'Tab3' },
+    { title: 'Tab1', value: 'Tab1' },
+    { title: 'Tab2', value: 'Tab2' },
+    { title: 'Tab3', value: 'Tab3' },
   ];
   if (hasTargetInProps('data', props) && Array.isArray(data)) {
     configData = data ? data : [];
@@ -205,7 +212,7 @@ export function getDefaultData(props: Object) {
       configData = [];
       React.Children.map(children, child => {
         const item = { ...child.props };
-        item.key = child.key;
+        item.value = child.value;
         configData && configData.push(item);
       });
     } else {
@@ -235,7 +242,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
 
     let theData = getDefaultData(props);
     let theActivityValue =
-      activityValue || defaultActivityValue || (theData.length !== 0 ? theData[0].key : null);
+      activityValue || defaultActivityValue || (theData.length !== 0 ? theData[0].value : null);
     if (state) {
       theActivityValue = hasTargetInProps('activityValue', props)
         ? theActivityValue
@@ -398,11 +405,11 @@ class TabsBox extends Component<TabsProps, TabsState> {
     const item = (getAddItem && getAddItem()) || {
       title: `Tab${data.length + 1}`,
       content: `Tab${data.length + 1} Content`,
-      key: `Tab${data.length + 1}`,
+      value: `Tab${data.length + 1}`,
     };
     newData.push(item);
     this.setState({
-      activityValue: item.key || `Tab${data.length + 1}`,
+      activityValue: item.value || `Tab${data.length + 1}`,
       data: setKeyValue(newData),
     });
   };
@@ -430,29 +437,29 @@ class TabsBox extends Component<TabsProps, TabsState> {
                 getAttributeFromObject(child, 'children', undefined)
               )
             );
-            const key = getAttributeFromObject(
+            const value = getAttributeFromObject(
               child,
-              'key',
+              'value',
               getAttributeFromObject(
                 child.props,
-                'key',
+                'value',
                 getAttributeFromObject(child, 'children', undefined)
               )
             );
-            const props = { active: activityValue, key };
+            const props = { active: activityValue, value };
             const innerContentThemeProps = this.props.getPartOfThemeProps('ContentBlock', {
               props,
             });
             const { forceRender } = this.props;
             return content ? (
               forceRender ? (
-                activityValue === key && (
+                activityValue === value && (
                   <TabContent themeProps={innerContentThemeProps}>
                     <TabContentInner
                       {...this.props}
                       themeProps={contentThemeProps}
                       content={content}
-                      forceRender={forceRender && key === activityValue}
+                      forceRender={forceRender && value === activityValue}
                     />
                   </TabContent>
                 )
@@ -462,7 +469,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
                     {...this.props}
                     themeProps={contentThemeProps}
                     content={content}
-                    forceRender={forceRender && key === activityValue}
+                    forceRender={forceRender && value === activityValue}
                   />
                 </TabContent>
               )
