@@ -5,8 +5,7 @@
  * @flow
  */
 import * as React from 'react';
-import Input from './';
-import Textarea from './textarea';
+import Input from './index';
 import Widget from '../consts/index';
 import ClearIcon from '../icon/ClearIcon';
 import SearchIcon from '../icon/SearchIcon';
@@ -14,6 +13,7 @@ import PullIcon from '../icon/PullIcon';
 import styled from 'styled-components';
 import { fixControlledValue } from '../utils';
 import Theme from '../theme';
+const Textarea = Input.Textarea;
 
 export class LimitInput extends React.Component<any, any> {
   constructor(props: any) {
@@ -229,20 +229,20 @@ const InputDemo = () => {
 
       <Theme config={textarea}>
         <Wrapper>
-          <p>受限Textarea</p>
+          <p>段落文本输入框</p>
           <Textarea value="我是受限内容" />
-          <p>default textarea</p>
+          <p>段落文本输入框 提示信息 placeholder</p>
           <Textarea placeholder={'请填写内容'} />
-          <p>autoFocus</p>
+          <p>段落文本输入框 autoFocus</p>
           <Textarea placeholder={'请填写内容'} autoFoucs />
-          <p>禁用状态 </p>
+          <p>段落文本输入框 禁用状态 </p>
           <Textarea disabled={true} />
         </Wrapper>
       </Theme>
       <Wrapper>
-        <p>受限Textarea</p>
+        <p>受限 段落文本输入框 </p>
         <LimitTextarea onChange={onChange('limit')} />
-        <p>有默认值的 受限Textarea</p>
+        <p>有默认值的 受限段落文本输入框</p>
         <DefaultValueTextarea onChange={onChange('limit')} />
       </Wrapper>
     </div>
