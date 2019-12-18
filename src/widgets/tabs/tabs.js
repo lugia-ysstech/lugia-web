@@ -85,7 +85,6 @@ const WindowContainer = CSSComponent({
     selectNames: [
       ['background'],
       ['padding'],
-      ['margin'],
       ['border'],
       ['borderRadius'],
       ['opacity'],
