@@ -6,14 +6,7 @@ import Widget from '../consts/index';
 import ThemeHoc, { addMouseEvent } from '@lugia/theme-hoc';
 import { fixControlledValue } from '../utils';
 import type { InputSize, InputValidateType, ValidateStatus } from '../css/input';
-import {
-  DefaultHelp,
-  isValidateSuccess,
-  isSuccess,
-  LargeHeight,
-  SmallHeight,
-  DefaultHeight,
-} from '../css/input';
+import { DefaultHelp, isValidateSuccess, isSuccess } from '../css/input';
 import ToolTip from '../tooltip/index';
 import Icon from '../icon';
 import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
@@ -21,8 +14,7 @@ import colorsFunc from '../css/stateColor';
 import { units } from '@lugia/css';
 import { deepMerge } from '@lugia/object-utils';
 
-import { getBorder, getBoxShadow } from '@lugia/theme-utils';
-import { getBorderRadius } from '../theme/CSSProvider';
+import { getBorder, getBoxShadow, getBorderRadius } from '@lugia/theme-utils';
 import { ObjectUtils } from '@lugia/type-utils';
 const { px2remcss } = units;
 const {
