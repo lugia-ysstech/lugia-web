@@ -567,6 +567,8 @@ export default [
                 ['padding'],
                 ['background'],
                 ['opacity'],
+                ['border'],
+                ['borderRadius'],
                 ['boxShadow'],
               ],
               hover: [['width'], ['height']],
@@ -603,6 +605,8 @@ export default [
                 ['padding'],
                 ['background'],
                 ['opacity'],
+                ['border'],
+                ['borderRadius'],
                 ['boxShadow'],
               ],
               hover: [['width'], ['height']],
@@ -612,15 +616,8 @@ export default [
             SrcAvatar: {
               name: '头像图片',
               desc: '对头像图片配置样式',
-              normal: [
-                ['width'],
-                ['height'],
-                ['margin'],
-                ['padding'],
-                ['fontSize'],
-                ['background'],
-              ],
-              hover: [['width'], ['height'], ['fontSize'], ['background']],
+              normal: [['width'], ['height']],
+              hover: [['width'], ['height']],
               clicked: [],
               disabled: [],
             },
@@ -638,6 +635,8 @@ export default [
             ['padding'],
             ['background'],
             ['opacity'],
+            ['border'],
+            ['borderRadius'],
             ['boxShadow'],
           ],
           hover: [['width'], ['height']],
@@ -712,6 +711,8 @@ export default [
             ['padding'],
             ['background'],
             ['opacity'],
+            ['border'],
+            ['borderRadius'],
             ['boxShadow'],
           ],
           hover: [['width'], ['height']],
@@ -779,6 +780,8 @@ export default [
             ['padding'],
             ['background'],
             ['opacity'],
+            ['border'],
+            ['borderRadius'],
             ['boxShadow'],
           ],
           hover: [['width'], ['height']],
@@ -788,8 +791,8 @@ export default [
         SrcAvatar: {
           name: '头像图片',
           desc: '对头像图片配置样式',
-          normal: [['width'], ['height'], ['margin'], ['padding'], ['fontSize'], ['background']],
-          hover: [['width'], ['height'], ['fontSize'], ['background']],
+          normal: [['width'], ['height']],
+          hover: [['width'], ['height']],
           clicked: [],
           disabled: [],
         },
@@ -3630,148 +3633,6 @@ export default [
         },
       },
       category: ['数据录入'],
-      designInfo: {
-        CheckboxButtonGroup: {
-          sequence: 1,
-          title: '按钮状多选框组',
-          desc: '按钮形状的多选框组',
-          props: { childType: 'button' },
-          theme: {
-            Container: {
-              name: '多选框组整体样式',
-              desc: '多选框组整体样式',
-              normal: [
-                ['opacity'],
-                ['border'],
-                ['borderRadius'],
-                ['background'],
-                ['width'],
-                ['height'],
-                ['margin'],
-                ['padding'],
-              ],
-            },
-            CheckButton: {
-              name: '按钮多选框样式',
-              desc: '按钮多选框样式',
-              theme: {
-                CheckButtonUnChecked: {
-                  name: '未选中样式',
-                  desc: '未选中样式',
-                  normal: {
-                    selectNames: [
-                      ['opacity'],
-                      ['border'],
-                      ['borderRadius'],
-                      ['background'],
-                      ['width'],
-                      ['height'],
-                      ['color'],
-                      ['font'],
-                      ['padding'],
-                    ],
-                    nth: [
-                      ['opacity'],
-                      ['border'],
-                      ['borderRadius'],
-                      ['background'],
-                      ['width'],
-                      ['height'],
-                      ['color'],
-                      ['font'],
-                      ['padding'],
-                    ],
-                  },
-                  hover: {
-                    selectNames: [
-                      ['opacity'],
-                      ['border'],
-                      ['borderRadius'],
-                      ['background'],
-                      ['color'],
-                    ],
-                    nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
-                  },
-                  disabled: {
-                    selectNames: [
-                      ['opacity'],
-                      ['border'],
-                      ['borderRadius'],
-                      ['background'],
-                      ['color'],
-                    ],
-                    nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
-                  },
-                },
-                CheckButtonChecked: {
-                  name: '选中样式',
-                  desc: '选中样式',
-                  normal: {
-                    selectNames: [
-                      ['opacity'],
-                      ['border'],
-                      ['borderRadius'],
-                      ['background'],
-                      ['width'],
-                      ['height'],
-                      ['color'],
-                      ['font'],
-                      ['padding'],
-                    ],
-                    nth: [
-                      ['opacity'],
-                      ['border'],
-                      ['borderRadius'],
-                      ['background'],
-                      ['width'],
-                      ['height'],
-                      ['color'],
-                      ['font'],
-                      ['padding'],
-                    ],
-                  },
-                  hover: {
-                    selectNames: [
-                      ['opacity'],
-                      ['border'],
-                      ['borderRadius'],
-                      ['background'],
-                      ['color'],
-                    ],
-                    nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
-                  },
-                  disabled: {
-                    selectNames: [
-                      ['opacity'],
-                      ['border'],
-                      ['borderRadius'],
-                      ['background'],
-                      ['color'],
-                    ],
-                    nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
-                  },
-                },
-                CheckButtonCancel: {
-                  name: '取消状态样式',
-                  desc: '取消状态样式',
-                  normal: [
-                    ['opacity'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['background'],
-                    ['width'],
-                    ['height'],
-                    ['color'],
-                    ['font'],
-                    ['padding'],
-                  ],
-                  hover: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
-                },
-              },
-            },
-          },
-        },
-      },
       needExport: true,
       theme: {
         Container: {
@@ -3886,6 +3747,197 @@ export default [
     target: Checkbox.Group,
     screenshot:
       'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAA6CAYAAAAA0F95AAAAAXNSR0IArs4c6QAAAltJREFUaAXtWr9Lw0AYfUnbf8BBrPUH6NLN0dGCrgXRRSi4WEFwa6GDiw7q4KCIugmObv4N/RcchEKXDopOoq2bQvy+tEcrJLGklzZJv4M2R3L37t677+6a6zNAaaNozfwAZ5TNWRbSfM9vMgy8Ut1qEqg83BrPfnGGVc9g8t/AIyxMaG3UwHsKWAq7CKY98rrJs5KE2YkqrbrqBjMJMKcbtAcvSOyeZvxnk4POea+mvbBrtZrlVVc9y2azBueDKs8RMNZJBBjr4SfyWiIgRZv+wmw0pRxYgEQCKO0C25sA/QiKXBpIACZfLgLpSeDyjrb+vtb1cGlEwesvKfLTU8DRBfDR9Icz6lquEbA4D6wsO3fPDnsa+aiTZ3auApg0n/cKQH7trwiKfIZG/vA8uiOvWLkKUG8Ax1fAVp5EWG0XT1Dp0g6gyH+2FEx0r55rwFMdOL0GDvbbBHlaZOhlmed8HMgzK9cIUGNqi3ADFNaBuUw8wl5x46tnBKiCLEL5BGh9AU36xCn1JQATfnmLE+0ul3+nQLdoPHNJPsPzem8fhHbnfNARQr3nOz50uBlUeY6AqkN7um4Fia2ljyYtAhXQAaYWtF4QwrSxe++FMG/yqS2f3lK43nuFbL99ZwzGisKJcL+cpJwoIAqIAqKAKCAKiAKiQBwVsP/KEIeIOEQ022N4rohDxF4xcvZ3iL/EIRLiwRlK18b+UFQE0BFn4hARh4g4RMQhomMtGQWG6y4gDpGGOEQgDhGalOIQ6YggDhFxiIxikwq+TXGIkMbVAHUOEltLt8UhMu4OkV80EdaRb+T6RQAAAABJRU5ErkJggg==',
+  },
+  {
+    meta: {
+      widgetName: 'Checkbox.Group',
+      title: '按钮状多选框组',
+      desc: '按钮形状的多选框组',
+      props: {
+        defaultValue: { type: 'string[]', desc: '指定CheckboxGroup初始选中值' },
+        value: { type: 'string[]', desc: '指定CheckboxGroup选中值' },
+        disabled: { type: 'boolean', desc: '指定CheckboxGroup是否禁用' },
+        data: {
+          type: 'Object[]',
+          desc: '指定 Checkbox 组件展示值',
+          propsDefaultValue: [],
+          meta: [
+            { key: 'text', title: '展示文字', type: 'string' },
+            { key: 'value', title: '对应字段', type: 'string' },
+          ],
+          defaultValue: [
+            { text: '选项1', value: '1' },
+            { text: '选项2', value: '2' },
+            { text: '选项3', value: '3' },
+          ],
+        },
+        displayField: { type: 'string', desc: '指定CheckboxGroup展示字段值' },
+        valueField: { type: 'string', desc: '指定 Checkbox 组件 value 值', defaultValue: false },
+        displayValue: {
+          type: 'string[]',
+          desc:
+            '指定CheckboxGroup选中值备用项，与value相对应，value中有不存在的值，将展示 displayValue 中对应值',
+        },
+        defaultDisplayValue: {
+          type: 'string[]',
+          desc:
+            '指定CheckboxGroup选中值初始备用项，与value相对应，value中有不存在的值，将展示 displayValue 中对应值',
+        },
+        styles: {
+          type: 'CheckboxType',
+          desc: '指定CheckboxGroup中Checkbox展示方向，可选值为 vertical 或不设',
+        },
+        childType: {
+          type: 'CheckboxGroupChildType',
+          desc: '指定CheckboxGroup展示类型，可设置为 button 或不设',
+          defaultValue: 'button',
+        },
+        size: {
+          type: 'CheckboxButtonSizeType',
+          desc:
+            '指定CheckboxGroup大小，仅展示类型为button 时生效，可设置为 small、large、bigger 或不设',
+        },
+        cache: { type: 'boolean', desc: '指定CheckboxGroup中实时更新data 数据源信息' },
+      },
+      events: {
+        onChange: {
+          desc: 'CheckboxGroup改变时回调',
+          args: [
+            {
+              name: 'newValue',
+              desc: 'CheckboxGroup改变时 value、displayValue 和 item 对应的值',
+              type: 'Object',
+            },
+          ],
+        },
+      },
+      type: {
+        CheckboxType: ['default', 'vertical'],
+        CheckboxGroupChildType: ['default', 'button'],
+        CheckboxButtonSizeType: ['default', 'small', 'large', 'bigger'],
+        CheckboxGroupStyle: {
+          width: { type: 'number', desc: 'Checkbox宽度' },
+          color: { type: 'string', desc: 'Checkbox颜色' },
+        },
+      },
+      category: ['数据录入'],
+      needExport: true,
+      theme: {
+        Container: {
+          name: '多选框组整体样式',
+          desc: '多选框组整体样式',
+          normal: [
+            ['opacity'],
+            ['border'],
+            ['borderRadius'],
+            ['background'],
+            ['width'],
+            ['height'],
+            ['margin'],
+            ['padding'],
+          ],
+        },
+        CheckButton: {
+          name: '按钮多选框样式',
+          desc: '按钮多选框样式',
+          theme: {
+            CheckButtonUnChecked: {
+              name: '未选中样式',
+              desc: '未选中样式',
+              normal: {
+                selectNames: [
+                  ['opacity'],
+                  ['border'],
+                  ['borderRadius'],
+                  ['background'],
+                  ['width'],
+                  ['height'],
+                  ['color'],
+                  ['font'],
+                  ['padding'],
+                ],
+                nth: [
+                  ['opacity'],
+                  ['border'],
+                  ['borderRadius'],
+                  ['background'],
+                  ['width'],
+                  ['height'],
+                  ['color'],
+                  ['font'],
+                  ['padding'],
+                ],
+              },
+              hover: {
+                selectNames: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
+                nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
+              },
+              disabled: {
+                selectNames: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
+                nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
+              },
+            },
+            CheckButtonChecked: {
+              name: '选中样式',
+              desc: '选中样式',
+              normal: {
+                selectNames: [
+                  ['opacity'],
+                  ['border'],
+                  ['borderRadius'],
+                  ['background'],
+                  ['width'],
+                  ['height'],
+                  ['color'],
+                  ['font'],
+                  ['padding'],
+                ],
+                nth: [
+                  ['opacity'],
+                  ['border'],
+                  ['borderRadius'],
+                  ['background'],
+                  ['width'],
+                  ['height'],
+                  ['color'],
+                  ['font'],
+                  ['padding'],
+                ],
+              },
+              hover: {
+                selectNames: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
+                nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
+              },
+              disabled: {
+                selectNames: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
+                nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
+              },
+            },
+            CheckButtonCancel: {
+              name: '取消状态样式',
+              desc: '取消状态样式',
+              normal: [
+                ['opacity'],
+                ['border'],
+                ['borderRadius'],
+                ['background'],
+                ['width'],
+                ['height'],
+                ['color'],
+                ['font'],
+                ['padding'],
+              ],
+              hover: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
+            },
+          },
+        },
+      },
+      parentWidget: 'Checkbox',
+      aliasName: 'CheckboxButtonGroup',
+    },
+    target: Checkbox.Group,
+    screenshot:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHAAAAAcCAYAAAC51jtqAAAAAXNSR0IArs4c6QAAAadJREFUaAXtmjFKxFAURX9CMsQEVAbcgBBSBgsXIaiFXTpL3cHsQHcgpHIFFjauwTLBJiSdWAmDColhMjDOi1gNk/cqc4v3y9xL/uUe/g+EZ5n1mt28HH/V06f3z/1p2+1Y9Gys9XhnzPn1WLtv3/f0KN0u/qPieV4XBEHWdd1FkiSvFsEr38LnxXIyKri/DlABUi6E1TSNKcvS5Hm+dF330KGThwIPoSD0DL7vmziOKaZTVdWDTdcmemjNt9lAGIamruvYHvubtxlNn0gaoJPYtq1rS8zqwW1AAeKyESVTgKKacE2ONNr97bDzcvarS33Db+NV6T5SH7+jzFEUxaAxiqJel/oGX7YW9QRyDYHrChAcEBdPAXINgesKEBwQF08Bcg2B6woQHBAXTwFyDYHrChAcEBdPAXINgesKEBwQF08Bcg2B69bZ1WqFlFFHKuQ00jTVf6HyujCdeoVichGnUoDiqjCNtud+Q30DMWvCS0XjhTQjah/sfczx4mkirgGaDaUBX3s3mJ9MnIWeQq4xEJ1OXpZl/WAvTWf309g6Ws/TQR2t/wGAun0QDT6powAAAABJRU5ErkJggg==',
   },
   {
     meta: {
@@ -4227,6 +4279,7 @@ export default [
           title: '垂直分割线',
           desc: '垂直分割线',
           props: { type: 'vertical' },
+          defaultTheme: { Divider: { normal: { width: 1, height: 200 } } },
           theme: {
             Divider: {
               name: '垂直分割线',
@@ -4259,6 +4312,7 @@ export default [
           ],
         },
       },
+      defaultTheme: { Divider: { normal: { width: 200, height: 1 } } },
       childrenWidget: [],
     },
     target: Divider,
@@ -4293,6 +4347,7 @@ export default [
           ],
         },
       },
+      defaultTheme: { Divider: { normal: { width: 200, height: 1 } } },
       childrenWidget: [],
       aliasName: 'VerticalDivider',
     },
@@ -4317,8 +4372,9 @@ export default [
           desc: '按钮的风格,默认为customs',
           defaultValue: 'customs',
         },
-        direction: { type: 'up | bottom', desc: '按钮箭头的方向', defaultValue: 'bottom' },
+        switchIconClass: { type: 'icon', desc: '自定义控制器图标' },
         divided: { type: 'boolean', desc: '是否有分割线', defaultValue: true },
+        showSwitch: { type: 'boolean', desc: '是否展示switch图标', defaultValue: true },
       },
       events: {
         onPopupVisibleChange: {
@@ -4613,8 +4669,9 @@ export default [
           desc: '按钮的风格,默认为customs',
           defaultValue: 'customs',
         },
-        direction: { type: 'up | bottom', desc: '按钮箭头的方向', defaultValue: 'bottom' },
+        switchIconClass: { type: 'icon', desc: '自定义控制器图标' },
         divided: { type: 'boolean', desc: '是否有分割线', defaultValue: false },
+        showSwitch: { type: 'boolean', desc: '是否展示switch图标', defaultValue: true },
       },
       events: {
         onPopupVisibleChange: {
@@ -8894,148 +8951,6 @@ export default [
         },
       },
       category: ['数据录入'],
-      designInfo: {
-        RadioButtonGroup: {
-          sequence: 1,
-          title: '按钮状单选框组',
-          desc: '按钮形状的单选框组',
-          props: { childType: 'button' },
-          theme: {
-            Container: {
-              name: '单选框组整体样式',
-              desc: '单选框组整体样式',
-              normal: [
-                ['opacity'],
-                ['border'],
-                ['borderRadius'],
-                ['background'],
-                ['width'],
-                ['height'],
-                ['margin'],
-                ['padding'],
-              ],
-            },
-            CheckButton: {
-              name: '按钮单选框样式',
-              desc: '按钮单选框样式',
-              theme: {
-                CheckButtonUnChecked: {
-                  name: '未选中样式',
-                  desc: '未选中样式',
-                  normal: {
-                    selectNames: [
-                      ['opacity'],
-                      ['border'],
-                      ['borderRadius'],
-                      ['background'],
-                      ['width'],
-                      ['height'],
-                      ['color'],
-                      ['font'],
-                      ['padding'],
-                    ],
-                    nth: [
-                      ['opacity'],
-                      ['border'],
-                      ['borderRadius'],
-                      ['background'],
-                      ['width'],
-                      ['height'],
-                      ['color'],
-                      ['font'],
-                      ['padding'],
-                    ],
-                  },
-                  hover: {
-                    selectNames: [
-                      ['opacity'],
-                      ['border'],
-                      ['borderRadius'],
-                      ['background'],
-                      ['color'],
-                    ],
-                    nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
-                  },
-                  disabled: {
-                    selectNames: [
-                      ['opacity'],
-                      ['border'],
-                      ['borderRadius'],
-                      ['background'],
-                      ['color'],
-                    ],
-                    nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
-                  },
-                },
-                CheckButtonChecked: {
-                  name: '选中样式',
-                  desc: '选中样式',
-                  normal: {
-                    selectNames: [
-                      ['opacity'],
-                      ['border'],
-                      ['borderRadius'],
-                      ['background'],
-                      ['width'],
-                      ['height'],
-                      ['color'],
-                      ['font'],
-                      ['padding'],
-                    ],
-                    nth: [
-                      ['opacity'],
-                      ['border'],
-                      ['borderRadius'],
-                      ['background'],
-                      ['width'],
-                      ['height'],
-                      ['color'],
-                      ['font'],
-                      ['padding'],
-                    ],
-                  },
-                  hover: {
-                    selectNames: [
-                      ['opacity'],
-                      ['border'],
-                      ['borderRadius'],
-                      ['background'],
-                      ['color'],
-                    ],
-                    nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
-                  },
-                  disabled: {
-                    selectNames: [
-                      ['opacity'],
-                      ['border'],
-                      ['borderRadius'],
-                      ['background'],
-                      ['color'],
-                    ],
-                    nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
-                  },
-                },
-                CheckButtonCancel: {
-                  name: '取消状态样式',
-                  desc: '取消状态样式',
-                  normal: [
-                    ['opacity'],
-                    ['border'],
-                    ['borderRadius'],
-                    ['background'],
-                    ['width'],
-                    ['height'],
-                    ['color'],
-                    ['font'],
-                    ['padding'],
-                  ],
-                  hover: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
-                },
-              },
-            },
-          },
-        },
-      },
       needExport: true,
       theme: {
         Container: {
@@ -9133,6 +9048,182 @@ export default [
     target: Radio.Group,
     screenshot:
       'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAA8CAYAAADWibxkAAAAAXNSR0IArs4c6QAABW1JREFUaAXtWstqHEcUraqeTjbWB0SIbLQRCUQg6QuyCAST8SiQnTcCBSz8wA4ItLO9EwgSEzsoEIM22gWikYIIZOEvGAkUcNDGm2D0A0pAzjwq51xVjaSMPI9WzaPdXdBUz9S9p+499b5dWrVJX961E/WautFQ6rpWahKi4078yCr1yii1GxXU9i9P9es2MCNdBL9aU/GOHbd19VhbtQBHo1aJs38AULdabehIPdx5po/OStLx1kJAcckWlVWbcHwMhVWlVRl52RhVKVglDta0Gm801BxkSpAtIY8hcwzZmzvreicdrp9aeYGAG7fsPbTmd9Yqg4ItE6vl8lP9qp1Dpbt2slFVayBhXmvVQK95sP2j/r6dziiVNQmQlofTzrgVtOQa37/42n4MpxbR0p+hhT+Ucqv+wvvvIOv5rz/pl/wP+svIVqUcZHTqCYeHh+Csc5qamhIb+yWPeQzGY8xLt0fL46c4/9Uj+15x0T6D83+gR9yHtR8hvybP6ft9llGGso6wFfYeYglmZ/+GLiEEcMKDgxzzW3SEDr15rX6DM7fFobeYyTLKUNaTQAxiEfMtaiP1t+FSh5ZcgOFVjnlaB4e+hWOfdmspZalDeWIQi5jE7hZjWHKG6zxaLOJszwmPYx7GLCUwaIm6MmkCi5jEToAzUBXDTQ5rRKuVJceEx67dqxXUQasvnsfy2L1iDVKeyx13eIrrvFTM2T5pcroey2MnhRuEHltatrd+k9Nc6pLU7pbJJtbZ1jkJ2kB0eu7q3Vj15hpHVDoSCWhub8VkbnKSJqcb/aM+cBAjfzYwmK1lq8u9vRiNHV5S/9HuouuxPHZivAEoYr5Su6wHxpYkx/aWe/pe66YOt8bnsTx2r1iDlDc8z2PA1sFAiQcbt7dfT2DEOnWJQSxiEjsBzkBVDIMZPM+jB8Q81bH29yfUN2jRF91aQlnqUN6dDGNipiFQwklQMZiBFjsGCfM81f38SP8Lhz6HYz+wa1PmssQyylCWOtQlBrGIeZnOqP0nBEgkB8EM5+yqJ2Hnub6DlvwE/z+BU38i/1ue0/cnLKOMdx7OrQoGAyMpiQ7Br7OU6YCIpwGtn92QWJOELAdFPQnMsxAWP+9v/p4zkDOQM5AzkDOQM5AzkDOQM5AzkB0GLsQD/u/2wcHBRK1W4/e969baSa21fETB+xHeGU3eLRQK29PT0+/WHaH9/X1cgWk8hoMLeNreEUJ5Hc+GMebhzMzMyH8HgK0XUksPgPNFOL8JqTE8VTz8aFpGS1fiOBYHq9XqOHoGvyMwlM4nxnMMEm6ChPTeEapUKvfQtXFHyBrkW8iX5+bm2t4Rgg6HxhpkcUdIN5A/gE767gix5WF8847Q7OyshMjRsl2lvb295h0hEDHfqSf0685Pr3eKJCrsxvwmCODvlV6dJ0NOB3eErOEQImZXzA1ZSAhwE94Yu30S570P1CUGfo85TF80srnhUgfrONtX0XpyR+gq1joMTp4LDvsqcH3XNW6d51JX7jThdWONw+DKETnsbtSGJsMhIHeEkNPoUMljeexQuMFxcM8PX3ORuM6HQvdYHjsUbj9wuN7LbO03OSEq8VgeOwRmvzBkFQgNHkVRyw4zdB2h8DgEmtvbUKAnJydyR8hjh8LtBw6HgGx13d4+SB0ey2MHAe0TCIeA3BFCzkNNqOSxPHYo3OA4hud5oPJIW+LB5qo1OAwSUHfYV4Xsq75xwYwN1BKjy/Z0ALrMMofB4/FGGgIlsgowmAGDjzFpzbtT3WW+dfyPusQglsPsqDNsASGAkRwGM9B6vBC1moQEfxwmhguMpCI6dGG9znRAxHfFTIfEzpGQ3aCoJ4F5FsLi/wGwPbJ73Y3raAAAAABJRU5ErkJggg==',
+  },
+  {
+    meta: {
+      widgetName: 'Radio.Group',
+      title: '按钮状单选框组',
+      desc: '按钮形状的单选框组',
+      props: {
+        defaultValue: { type: 'string', desc: '单选框初始选中值' },
+        value: { type: 'string', desc: '单选框选中值' },
+        data: {
+          type: 'Object[]',
+          desc: '单选框信息',
+          propsDefaultValue: [],
+          meta: [
+            { key: 'text', title: '展示文字', type: 'string' },
+            { key: 'value', title: '对应字段', type: 'string' },
+          ],
+          defaultValue: [
+            { text: '选项1', value: '1' },
+            { text: '选项2', value: '2' },
+            { text: '选项3', value: '3' },
+          ],
+        },
+        displayField: { type: 'string', desc: '单选框的显示字段值', defaultValue: 'text' },
+        valueField: { type: 'string', desc: '单选框的 value 值', defaultValue: 'value' },
+        displayValue: { type: 'string', desc: '单选框的 value 备用值，value 找不到时展示' },
+        styles: { type: 'RadioStylesType', desc: '单选框的展示方向，可选值为 vertical 或不设' },
+        childType: {
+          type: 'RadioChildType',
+          desc: '指定Radio展示类型，可设置为 button 或不设',
+          defaultValue: 'button',
+        },
+        size: {
+          type: 'RadioButtonSizeType',
+          desc: '指定 Radio 大小，仅展示类型为button 时生效，可设置为 small、large、bigger 或不设',
+        },
+      },
+      event: {
+        onChange: {
+          desc: 'Radio 改变时回调',
+          args: [
+            {
+              name: 'newValue',
+              desc: 'Radio改变时 value、displayValue 和 item 对应的值',
+              type: 'Object',
+            },
+          ],
+        },
+      },
+      type: {
+        RadioStylesType: ['default', 'vertical'],
+        RadioChildType: ['default', 'button'],
+        RadioButtonSizeType: ['default', 'small', 'large', 'bigger'],
+        RadioStyle: {
+          color: { type: 'string', desc: 'Radio 的颜色' },
+          width: { type: 'number', desc: 'Radio 的宽度' },
+        },
+      },
+      category: ['数据录入'],
+      needExport: true,
+      theme: {
+        Container: {
+          name: '单选框组整体样式',
+          desc: '单选框组整体样式',
+          normal: [
+            ['opacity'],
+            ['border'],
+            ['borderRadius'],
+            ['background'],
+            ['width'],
+            ['height'],
+            ['margin'],
+            ['padding'],
+          ],
+        },
+        CheckButton: {
+          name: '按钮单选框样式',
+          desc: '按钮单选框样式',
+          theme: {
+            CheckButtonUnChecked: {
+              name: '未选中样式',
+              desc: '未选中样式',
+              normal: {
+                selectNames: [
+                  ['opacity'],
+                  ['border'],
+                  ['borderRadius'],
+                  ['background'],
+                  ['width'],
+                  ['height'],
+                  ['color'],
+                  ['font'],
+                  ['padding'],
+                ],
+                nth: [
+                  ['opacity'],
+                  ['border'],
+                  ['borderRadius'],
+                  ['background'],
+                  ['width'],
+                  ['height'],
+                  ['color'],
+                  ['font'],
+                  ['padding'],
+                ],
+              },
+              hover: {
+                selectNames: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
+                nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
+              },
+              disabled: {
+                selectNames: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
+                nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
+              },
+            },
+            CheckButtonChecked: {
+              name: '选中样式',
+              desc: '选中样式',
+              normal: {
+                selectNames: [
+                  ['opacity'],
+                  ['border'],
+                  ['borderRadius'],
+                  ['background'],
+                  ['width'],
+                  ['height'],
+                  ['color'],
+                  ['font'],
+                  ['padding'],
+                ],
+                nth: [
+                  ['opacity'],
+                  ['border'],
+                  ['borderRadius'],
+                  ['background'],
+                  ['width'],
+                  ['height'],
+                  ['color'],
+                  ['font'],
+                  ['padding'],
+                ],
+              },
+              hover: {
+                selectNames: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
+                nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
+              },
+              disabled: {
+                selectNames: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
+                nth: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
+              },
+            },
+            CheckButtonCancel: {
+              name: '取消状态样式',
+              desc: '取消状态样式',
+              normal: [
+                ['opacity'],
+                ['border'],
+                ['borderRadius'],
+                ['background'],
+                ['width'],
+                ['height'],
+                ['color'],
+                ['font'],
+                ['padding'],
+              ],
+              hover: [['opacity'], ['border'], ['borderRadius'], ['background'], ['color']],
+            },
+          },
+        },
+      },
+      parentWidget: 'Radio',
+      aliasName: 'RadioButtonGroup',
+    },
+    target: Radio.Group,
+    screenshot:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHAAAAAcCAYAAAC51jtqAAAAAXNSR0IArs4c6QAAAbZJREFUaAXtmjFKxEAUhichWWICKgteQAgpg4WHEKzs0lnlDHsDvYGQak9gYeMZLBNsQtKJlbCokBg2C+pE0gQmbwQxf+Cl2d35HzP//h9vF4ZniO9ndfV4+l4t71/eDpdNu2fItamf85NkaguQ5zuO03qel7ZtexFF0ZMh4RXP/sN2t4AA16d2d9O/w3hNkkTEcTy5mbquRVEUIsuynW3bx5bsPDR4k6cEbMB1XRGGoXRolWV5a8qfTWC/bE2RgO/7oqqq0ET5z1P45GVFArITm6axTYXOyzNJgAHOBJTKJgNUJTOTdUvX5/p6vPJy9aPr1o3vRqt5no8WBUHQ6bp1o5v9QtQ9T7eOOpo7kEoIXGeA4IAoewyQSghcZ4DggCh7DJBKCFxngOCAKHsMkEoIXGeA4IAoewyQSghcZ4DggCh7DJBKCFzXvgvt7zqp76NbR+1D6f1d51/VUfvo6v/tiztQlwxoHQMEBaNriwHqJgVaZzr2xyeoN7Y1koAcL5QzoubRwetmpI4l0ATkbKgc8DX3vc3ZwtpyF4KCGtqSnZemaTfYK6ezu2lsHq0fxoT7eTha/wU9fHfNGSP6DwAAAABJRU5ErkJggg==',
   },
   {
     meta: {
@@ -13744,7 +13835,17 @@ export default [
           type: 'React$Element<any>',
           desc: '配置标签页需要包含的子组件,若有data,以data优先',
         },
-        data: { type: 'object[]', desc: '配置标签页需要配置的数据' },
+        data: {
+          type: 'object[]',
+          desc: '配置标签页需要配置的数据',
+          meta: [
+            { key: 'title', title: '页签', type: 'string' },
+            { key: 'content', title: '内容', type: 'string' },
+            { key: 'key', title: '唯一标识', type: 'string' },
+            { key: 'icon', title: '前缀图标', type: 'icon' },
+            { key: 'suffixIcon', title: '后缀图标', type: 'icon' },
+          ],
+        },
         defaultData: { type: 'object[]', desc: '默认配置标签页需要配置的数据,若有data,以data优先' },
         forceRender: { type: 'boolean', desc: '切换时是否重新渲染面板', defaultValue: false },
         pagedType: {
@@ -14049,7 +14150,17 @@ export default [
           type: 'React$Element<any>',
           desc: '配置标签页需要包含的子组件,若有data,以data优先',
         },
-        data: { type: 'object[]', desc: '配置标签页需要配置的数据' },
+        data: {
+          type: 'object[]',
+          desc: '配置标签页需要配置的数据',
+          meta: [
+            { key: 'title', title: '页签', type: 'string' },
+            { key: 'content', title: '内容', type: 'string' },
+            { key: 'key', title: '唯一标识', type: 'string' },
+            { key: 'icon', title: '前缀图标', type: 'icon' },
+            { key: 'suffixIcon', title: '后缀图标', type: 'icon' },
+          ],
+        },
         defaultData: { type: 'object[]', desc: '默认配置标签页需要配置的数据,若有data,以data优先' },
         forceRender: { type: 'boolean', desc: '切换时是否重新渲染面板', defaultValue: false },
         pagedType: {
@@ -14207,7 +14318,17 @@ export default [
           type: 'React$Element<any>',
           desc: '配置标签页需要包含的子组件,若有data,以data优先',
         },
-        data: { type: 'object[]', desc: '配置标签页需要配置的数据' },
+        data: {
+          type: 'object[]',
+          desc: '配置标签页需要配置的数据',
+          meta: [
+            { key: 'title', title: '页签', type: 'string' },
+            { key: 'content', title: '内容', type: 'string' },
+            { key: 'key', title: '唯一标识', type: 'string' },
+            { key: 'icon', title: '前缀图标', type: 'icon' },
+            { key: 'suffixIcon', title: '后缀图标', type: 'icon' },
+          ],
+        },
         defaultData: { type: 'object[]', desc: '默认配置标签页需要配置的数据,若有data,以data优先' },
         forceRender: { type: 'boolean', desc: '切换时是否重新渲染面板', defaultValue: false },
         pagedType: {
@@ -16161,6 +16282,14 @@ export default [
           ],
           defaultValue: false,
         },
+        switchIconNames: {
+          type: 'object',
+          desc: '生成选择项的数据',
+          meta: [
+            { key: 'open', title: '展开图标', type: 'icon' },
+            { key: 'close', title: '关闭图标', type: 'icon' },
+          ],
+        },
         igronSelectField: { type: 'string', desc: '指定不可选的标识' },
         pathSeparator: {
           type: 'string',
@@ -16177,6 +16306,7 @@ export default [
           desc: '单选树形控件,选中时的样式',
           defaultValue: 'default',
         },
+        switchAtEnd: { type: 'boolean', desc: '控制器是否在末端', defaultValue: 'false' },
         translateTreeData: {
           type: 'boolean',
           desc: '是否开启嵌套数据生成Tree',
@@ -16532,6 +16662,14 @@ export default [
           ],
           defaultValue: false,
         },
+        switchIconNames: {
+          type: 'object',
+          desc: '生成选择项的数据',
+          meta: [
+            { key: 'open', title: '展开图标', type: 'icon' },
+            { key: 'close', title: '关闭图标', type: 'icon' },
+          ],
+        },
         igronSelectField: { type: 'string', desc: '指定不可选的标识' },
         pathSeparator: {
           type: 'string',
@@ -16548,6 +16686,7 @@ export default [
           desc: '单选树形控件,选中时的样式',
           defaultValue: 'default',
         },
+        switchAtEnd: { type: 'boolean', desc: '控制器是否在末端', defaultValue: 'false' },
         translateTreeData: {
           type: 'boolean',
           desc: '是否开启嵌套数据生成Tree',
