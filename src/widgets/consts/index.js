@@ -125,6 +125,7 @@ const PageLoading = 'lugia_widget_PageLoading';
 const Table = 'lugia_widget_Table';
 const Pagination = 'lugia_widget_Pagination';
 const BasicElements = 'lugia_widget_BasicElements';
+const TextArea = 'lugia_widget_TextArea';
 
 export default {
   Button,
@@ -232,4 +233,5 @@ export default {
   Empty,
   Pagination,
   BasicElements,
+  TextArea,
 };
