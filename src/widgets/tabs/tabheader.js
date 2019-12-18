@@ -524,7 +524,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
   getCurrentPageByActivityValue(data: Array<Object>, activityValue: string, totalPage: number) {
     let currentIndex = 0;
     data.some((item, index) => {
-      if (item.key === activityValue) {
+      if (item.value === activityValue) {
         currentIndex = index + 1;
         return true;
       }
@@ -761,10 +761,10 @@ class TabHeader extends Component<TabsProps, TabsState> {
       'disabled',
       getAttributeFromObject(child.props, 'disabled', false)
     );
-    const key = getAttributeFromObject(
+    const value = getAttributeFromObject(
       child,
-      'key',
-      getAttributeFromObject(child.props, 'key', false)
+      'value',
+      getAttributeFromObject(child.props, 'value', false)
     );
     const tabHeaderTheme = this.props.getPartOfThemeHocProps('TabHeader');
     return {
@@ -783,10 +783,10 @@ class TabHeader extends Component<TabsProps, TabsState> {
       ),
       onClick: this.onTabClick,
       activityValue,
-      keyVal: key,
+      keyVal: value,
       index: i,
       showDeleteBtn,
-      isSelect: !disabled && activityValue === key,
+      isSelect: !disabled && activityValue === value,
       onDelete: this.onDeleteClick,
       disabled,
       ...tabHeaderTheme,
