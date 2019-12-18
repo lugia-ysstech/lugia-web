@@ -34,6 +34,7 @@ export const DropMenuContainer = CSSComponent({
   },
   css: css`
     display: inline-block;
+    font-size: 0;
   `,
 });
 DropMenuContainer.displayName = 'DropMenuContainer';
@@ -369,6 +370,7 @@ export const NoDividedContainer = CSSComponent({
     display: inline-block;
     overflow: hidden;
     box-sizing: border-box;
+    font-size: ${px2remcss(14)};
   `,
   option: { hover: true, active: true, disabled: true },
 });
@@ -525,6 +527,7 @@ export const DividedContainer = CSSComponent({
     display: inline-block;
     overflow: hidden;
     box-sizing: border-box;
+    font-size: ${px2remcss(14)};
   `,
   option: { hover: false, active: false, disabled: true },
 });
