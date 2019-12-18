@@ -151,7 +151,8 @@ const Picture = CSSComponent({
       const {
         propsConfig: { shape },
       } = themeProps;
-      const theBorderRadius = shape === 'circle' ? '50%' : '10%';
+      const { borderRadius } = themeMeta;
+      const theBorderRadius = borderRadius ? borderRadius : shape === 'circle' ? '50%' : '10%';
       return {
         borderRadius: getBorderRadius(theBorderRadius),
       };
