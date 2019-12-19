@@ -278,7 +278,6 @@ type InputProps = {|
   help: string,
   placeholder?: string,
   prefix?: React$Element<any>,
-  getTheme: Function,
   suffix?: React$Element<any>,
   onChange?: ({ newValue: any, oldValue: any, event: Event }) => void,
   onKeyUp?: (event: KeyboardEvent) => void,
@@ -312,9 +311,6 @@ class TextBox extends Component<InputProps, InputState> {
     help: DefaultHelp,
     defaultValue: '',
     isShowClearButton: true,
-    getTheme: () => {
-      return {};
-    },
     formatter: (value: string | number) => {
       return value;
     },
