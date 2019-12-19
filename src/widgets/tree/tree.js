@@ -51,6 +51,10 @@ export type TreeProps = {
    * 当值发生变化的时候出发
    */
   onChange?: Function,
+  /**
+   * 子项选中后,父级是否高亮
+   */
+  parentIsHighlight?: boolean,
   getTreeData?: Function,
   splitQuery?: string,
   current: number,
@@ -103,6 +107,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     openAnimation: animation,
     igronSelectField: 'disabled',
     inlineType: 'primary',
+    parentIsHighlight: false,
     shape: 'default',
     showSwitch: true,
     __navmenu: false,
@@ -154,6 +159,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
       expand,
       selectValue: [],
       selectedInfo: this.getEmptyNodeId2SelectInfo(),
+      parentHighlightKeys: [],
     };
     this.updateStateValuForLimitValue(props, state, id2ExtendInfo, this.getInitValue(props));
     this.state = state;
@@ -453,7 +459,15 @@ class Tree extends React.Component<TreeProps, TreeState> {
       valueField,
       getTreeData,
     } = props;
-    const { expand, expandedKeys, selectedInfo, start, selectValue = [] } = state;
+    const {
+      expand,
+      expandedKeys,
+      highlightKeys,
+      selectedInfo,
+      start,
+      selectValue = [],
+      parentHighlightKeys = [],
+    } = state;
     const { id2ExtendInfo } = expand;
     const { checked, halfchecked } = selectedInfo;
     const utils = this.getUtils(props);
@@ -489,6 +503,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
         selectable={this.isSingleSelect()}
         highlight={highlight}
         selectedKeys={selectValue}
+        parentHighlightKeys={parentHighlightKeys}
         checkedKeys={Object.keys(checked)}
         halfCheckedKeys={Object.keys(halfchecked)}
         utils={utils}
@@ -516,13 +531,21 @@ class Tree extends React.Component<TreeProps, TreeState> {
     return (this.data = utils.search(expand, query, searchType, blackList, whiteList));
   }
 
-  onSelect = (selectValue: Array<string>) => {
+  onSelect = (selectValue: Array<string>, eventObj: any) => {
+    const { parentIsHighlight } = this.props; // 是否开启选中子节点，父节点高亮
+    const nodePath = eventObj.node.props.item.path || ''; // 获取选中节点的path路径
+    const isLeaf = eventObj.node.props.isLeaf; // 选中节点是否是叶子节点
+    let parentHighlightKeys = [];
+    if (parentIsHighlight && isLeaf) {
+      // 开启高亮并且是叶子节点
+      parentHighlightKeys = nodePath.split('/');
+    }
     const { onSelect } = this.props;
     onSelect && onSelect(selectValue);
-    this.select(selectValue);
+    this.select(selectValue, parentHighlightKeys);
   };
 
-  select(selectValue: Array<string>) {
+  select(selectValue: Array<string>, parentHighlightKeys: Array<string>) {
     if (this.isSingleSelect() === false) {
       return;
     }
@@ -550,7 +573,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     }
     this.onChange([value]);
     if (this.isNotLimit(props)) {
-      this.setState({ selectValue });
+      this.setState({ selectValue, parentHighlightKeys });
     }
   }
 
