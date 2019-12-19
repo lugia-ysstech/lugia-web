@@ -328,6 +328,7 @@ export default () => {
         theme={config}
         translateTreeData
         autoHeight
+        parentIsHighlight
         // mutliple
         __navmenu
         switchIconNames={switchIconNames}

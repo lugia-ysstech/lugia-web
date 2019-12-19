@@ -358,7 +358,7 @@ class TreeNode extends React.Component {
       pos,
       mutliple,
       shape,
-      selected: selected | parentIsHighlight,
+      selected: selected || parentIsHighlight,
       describe,
       inlineType,
       __navmenu,
