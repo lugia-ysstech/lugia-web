@@ -14,7 +14,7 @@
       "defaultValue": true
     },
     "paragraph": {
-      "type": "{ rows: number }",
+      "type": "object",
       "desc": "段落占位符的数目",
       "meta": [{ "key": "rows", "title": "段落的数目", "type": "number" }],
       "defaultValue": { "rows": 3 }
