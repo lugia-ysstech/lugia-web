@@ -5,7 +5,7 @@
  * @flow
  */
 import * as React from 'react';
-import Input from './';
+import Input from './index';
 import Widget from '../consts/index';
 import ClearIcon from '../icon/ClearIcon';
 import SearchIcon from '../icon/SearchIcon';
@@ -13,6 +13,7 @@ import PullIcon from '../icon/PullIcon';
 import styled from 'styled-components';
 import { fixControlledValue } from '../utils';
 import Theme from '../theme';
+const Textarea = Input.Textarea;
 
 export class LimitInput extends React.Component<any, any> {
   constructor(props: any) {
@@ -27,6 +28,21 @@ export class LimitInput extends React.Component<any, any> {
 
   render() {
     return <Input value={this.state.value} onChange={this.onChange} />;
+  }
+}
+export class LimitTextarea extends React.Component<any, any> {
+  constructor(props: any) {
+    super(props);
+    this.state = { value: props.value };
+  }
+
+  onChange = ({ newValue: value }: any) => {
+    this.setState({ value });
+    this.props.onChange({ newValue: value });
+  };
+
+  render() {
+    return <Textarea value={this.state.value} onChange={this.onChange} />;
   }
 }
 export class ValidateInput extends React.Component<any, any> {
@@ -83,12 +99,9 @@ export class TopInput extends React.Component<any, any> {
   }
   onChange = (param: any) => {
     const { newValue: value } = param;
-    this.setState({ value });
     this.props.onChange({ newValue: value });
-  };
-  onBlur = (event: UIEvent) => {
-    const validateStatus = this.state.value.indexOf('a') === -1 ? 'success' : 'error';
-    this.setState({ validateStatus });
+    const validateStatus = value.indexOf('a') === -1 ? 'success' : 'error';
+    this.setState({ value, validateStatus });
   };
   render() {
     const { validateType } = this.props;
@@ -110,7 +123,6 @@ export class TopInput extends React.Component<any, any> {
     return (
       <Theme config={topConfig}>
         <Input
-          onBlur={this.onBlur}
           onChange={this.onChange}
           validateType={validateType}
           validateStatus={this.state.validateStatus}
@@ -123,6 +135,11 @@ export class TopInput extends React.Component<any, any> {
 export class DefaultValueInput extends React.Component<any, any> {
   render() {
     return <Input defaultValue="hello world" onChange={this.props.onChange} />;
+  }
+}
+export class DefaultValueTextarea extends React.Component<any, any> {
+  render() {
+    return <Textarea defaultValue="hello world" onChange={this.props.onChange} />;
   }
 }
 const Wrapper = styled.div`
@@ -141,6 +158,16 @@ const InputDemo = () => {
       },
       InputSuffix: { normal: { color: 'red', fontSize: 12 } },
       InputPrefix: { normal: { color: 'pink', fontSize: 16 } },
+      ClearButton: { normal: { color: 'red', fontSize: 14 } },
+    },
+  };
+  const textarea = {
+    [Widget.Textarea]: {
+      Container: { normal: { width: 500, height: 40 } },
+      Textarea: { normal: { width: 300, height: 40 }, disabled: { background: { color: 'gray' } } },
+      Placeholder: {
+        normal: { font: { color: 'red', weight: 900, size: 16 }, color: 'blue', fontSize: 20 },
+      },
       ClearButton: { normal: { color: 'red', fontSize: 14 } },
     },
   };
@@ -198,6 +225,25 @@ const InputDemo = () => {
         <ValidateInput validateType="bottom" onChange={onChange('limit')} />
         <p>校验信息显示类型 inner 输入值 是否含有a </p>
         <ValidateInput validateType="inner" onChange={onChange('limit')} />
+      </Wrapper>
+
+      <Theme config={textarea}>
+        <Wrapper>
+          <p>段落文本输入框</p>
+          <Textarea value="我是受限内容" />
+          <p>段落文本输入框 提示信息 placeholder</p>
+          <Textarea placeholder={'请填写内容'} />
+          <p>段落文本输入框 autoFocus</p>
+          <Textarea placeholder={'请填写内容'} autoFoucs />
+          <p>段落文本输入框 禁用状态 </p>
+          <Textarea disabled={true} />
+        </Wrapper>
+      </Theme>
+      <Wrapper>
+        <p>受限 段落文本输入框 </p>
+        <LimitTextarea onChange={onChange('limit')} />
+        <p>有默认值的 受限段落文本输入框</p>
+        <DefaultValueTextarea onChange={onChange('limit')} />
       </Wrapper>
     </div>
   );
