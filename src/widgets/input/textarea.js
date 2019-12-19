@@ -14,6 +14,7 @@ import { deepMerge } from '@lugia/object-utils';
 import { getBorder, getBoxShadow } from '@lugia/theme-utils';
 import { getBorderRadius } from '../theme/CSSProvider';
 import { ObjectUtils } from '@lugia/type-utils';
+import changeColor from '../css/utilsColor';
 const { px2remcss } = units;
 const {
   themeColor,
@@ -23,6 +24,13 @@ const {
   mediumGreyColor,
   darkGreyColor,
   lightGreyColor,
+  borderRadius,
+  padding,
+  borderSize,
+  shadowSpread,
+  hShadow,
+  vShadow,
+  transitionTime,
 } = colorsFunc();
 
 const Textarea = CSSComponent({
@@ -45,8 +53,8 @@ const Textarea = CSSComponent({
     ],
     defaultTheme: {
       cursor: 'text',
-      border: getBorder({ color: borderColor, width: 1, style: 'solid' }),
-      borderRadius: getBorderRadius(4),
+      border: getBorder({ color: borderColor, width: borderSize, style: 'solid' }),
+      borderRadius: getBorderRadius(borderRadius),
       width: '100%',
       fontSize: 12,
     },
@@ -67,9 +75,8 @@ const Textarea = CSSComponent({
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const { width, height, color } = themeMeta;
       const theColor = color ? color : blackColor;
-
       const theHeight = height ? height : 32;
-      const paddingLeft = width && width < 200 ? width / 20 : 10;
+      const paddingLeft = width && width < 200 ? width / 20 : padding;
       const paddingRight = 35;
       return {
         color: theColor,
@@ -93,8 +100,8 @@ const Textarea = CSSComponent({
       ['boxShadow'],
     ],
     defaultTheme: {
-      border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
-      borderRadius: getBorderRadius(4),
+      border: getBorder({ color: themeColor, width: borderSize, style: 'solid' }),
+      borderRadius: getBorderRadius(borderRadius),
     },
   },
   active: {
@@ -102,8 +109,8 @@ const Textarea = CSSComponent({
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const { themeState } = themeProps;
       const { disabled } = themeState;
-      const theColor = disabled ? disableColor : 'rgba(248, 172, 48, 0.2)';
-      const shadow = `0 0 6 ${theColor}`;
+      const theColor = disabled ? disableColor : changeColor(themeColor, 0, 0, 20).rgba;
+      const shadow = `${hShadow} ${vShadow} ${shadowSpread} ${theColor}`;
       return { boxShadow: getBoxShadow(shadow) };
     },
   },
@@ -122,7 +129,7 @@ const Textarea = CSSComponent({
     defaultTheme: {
       cursor: 'not-allowed',
       background: { color: disableColor },
-      border: getBorder({ color: borderColor, width: 1, style: 'solid' }),
+      border: getBorder({ color: borderColor, width: borderSize, style: 'solid' }),
     },
   },
   css: css`
@@ -130,7 +137,7 @@ const Textarea = CSSComponent({
     line-height: 1;
     display: inline-block;
     font-family: inherit;
-    transition: all 0.3s;
+    transition: all ${transitionTime};
     outline: none;
     min-width: ${px2remcss(30)};
   `,
@@ -174,8 +181,9 @@ type TextareaProps = {
   themeProps: Object,
   disabled: boolean,
   placeholder?: string,
-  getTheme: Function,
   onChange?: ({ newValue: any, oldValue: any, event: Event }) => void,
+  onFocus?: (event: UIEvent) => void,
+  onBlur?: (event: UIEvent) => void,
   onKeyUp?: (event: KeyboardEvent) => void,
   onKeyDown?: (event: KeyboardEvent) => void,
   onKeyPress?: (event: KeyboardEvent) => void,
@@ -194,9 +202,6 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
     autoFocus: false,
     viewClass: Widget.TextArea,
     defaultValue: '',
-    getTheme: () => {
-      return {};
-    },
   };
   textarea: any;
   static displayName = Widget.Textarea;
@@ -222,6 +227,24 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
     }
   }
 
+  onFocus = (event: UIEvent) => {
+    const { onFocus, disabled } = this.props;
+    if (disabled) {
+      return;
+    }
+    this.setState({ clearButtonShow: true });
+    onFocus && onFocus(event);
+  };
+
+  onBlur = (event: UIEvent) => {
+    const { onBlur, disabled } = this.props;
+    if (disabled) {
+      return;
+    }
+    this.setState({ clearButtonShow: false });
+    onBlur && onBlur(event);
+  };
+
   onChange = (event: Object) => {
     const { target } = event;
     const { value } = target;
@@ -231,15 +254,14 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
   setValue(value: string, event: Event): void {
     const oldValue = this.state.value;
     const { disabled, onChange } = this.props;
-
+    if (disabled) {
+      return;
+    }
     if (oldValue === value) {
       return;
     }
     const param = { newValue: value, oldValue, event };
     if ('value' in this.props === false) {
-      if (disabled) {
-        return;
-      }
       this.setState({ value }, () => {
         onChange && onChange(param);
       });
@@ -295,7 +317,7 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
           normal: {
             color: mediumGreyColor,
             getCSS() {
-              return ` position: absolute;right: ${px2remcss(10)};top: ${px2remcss(8)};`;
+              return ` position: absolute;right: ${px2remcss(padding)};top: ${px2remcss(8)};`;
             },
           },
           hover: {
@@ -343,6 +365,8 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
         autoFocus={autoFocus}
         ref={this.textarea}
         value={value}
+        onFocus={this.onFocus}
+        onBlur={this.onBlur}
         onKeyUp={onKeyUp}
         onKeyPress={onKeyPress}
         onKeyDown={this.onKeyDown}
@@ -354,7 +378,10 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
   }
 
   onKeyDown = (event: KeyboardEvent) => {
-    const { onKeyDown, onEnter } = this.props;
+    const { onKeyDown, onEnter, disabled } = this.props;
+    if (disabled) {
+      return;
+    }
     onKeyDown && onKeyDown(event);
     const { keyCode } = event;
     onEnter && keyCode === 13 && onEnter(event);

@@ -37,6 +37,26 @@
         }
       ]
     },
+    "onFocus": {
+      "desc": "段落文本输入框获得焦点时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "获取焦点的DOM事件",
+          "type": "FocusEvent"
+        }
+      ]
+    },
+    "onBlur": {
+      "desc": "段落文本输入框失去焦点时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "失去焦点的DOM事件",
+          "type": "FocusEvent"
+        }
+      ]
+    },
     "onKeyUp": {
       "desc": "键盘按下去并松开后执行",
       "args": [

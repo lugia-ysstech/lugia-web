@@ -14,8 +14,10 @@ import colorsFunc from '../css/stateColor';
 import { units } from '@lugia/css';
 import { deepMerge } from '@lugia/object-utils';
 
-import { getBorder, getBoxShadow, getBorderRadius } from '@lugia/theme-utils';
+import { getBorder, getBoxShadow } from '@lugia/theme-utils';
+import { getBorderRadius } from '../theme/CSSProvider';
 import { ObjectUtils } from '@lugia/type-utils';
+import changeColor from '../css/utilsColor';
 const { px2remcss } = units;
 const {
   themeColor,
@@ -27,6 +29,14 @@ const {
   darkGreyColor,
   superLightColor,
   lightGreyColor,
+  borderRadius,
+  padding,
+  borderSize,
+  shadowSpread,
+  hShadow,
+  vShadow,
+  warningColor,
+  transitionTime,
 } = colorsFunc();
 
 const CommonInputStyle = CSSComponent({
@@ -49,8 +59,8 @@ const CommonInputStyle = CSSComponent({
     ],
     defaultTheme: {
       cursor: 'text',
-      border: getBorder({ color: borderColor, width: 1, style: 'solid' }),
-      borderRadius: getBorderRadius(4),
+      border: getBorder({ color: borderColor, width: borderSize, style: 'solid' }),
+      borderRadius: getBorderRadius(borderRadius),
       width: '100%',
       fontSize: 12,
     },
@@ -79,9 +89,9 @@ const CommonInputStyle = CSSComponent({
         : blackColor;
 
       const theHeight = height ? height : size === 'large' ? 40 : size === 'small' ? 24 : 32;
-      const paddingLeft = prefix ? 30 : width && width < 200 ? width / 20 : 10;
+      const paddingLeft = prefix ? 30 : width && width < 200 ? width / 20 : padding;
       const paddingRight =
-        suffix || isShowClearButton ? 35 : width && width < 200 ? 15 + width / 10 : 10;
+        suffix || isShowClearButton ? 35 : width && width < 200 ? 15 + width / 10 : padding;
       return {
         color: theColor,
         height: theHeight,
@@ -103,8 +113,8 @@ const CommonInputStyle = CSSComponent({
       ['boxShadow'],
     ],
     defaultTheme: {
-      border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
-      borderRadius: getBorderRadius(4),
+      border: getBorder({ color: themeColor, width: borderSize, style: 'solid' }),
+      borderRadius: getBorderRadius(borderRadius),
     },
   },
   active: {
@@ -116,9 +126,9 @@ const CommonInputStyle = CSSComponent({
       const theColor = disabled
         ? disableColor
         : isSuccess(validateStatus)
-        ? 'rgba(104, 79, 255, 0.2)'
-        : 'rgba(248, 172, 48, 0.2)';
-      const shadow = `0 0 6 ${theColor}`;
+        ? changeColor(themeColor, 0, 0, 20).rgba
+        : changeColor(warningColor, 0, 0, 20).rgba;
+      const shadow = `${hShadow} ${vShadow} ${shadowSpread} ${theColor}`;
       return { boxShadow: getBoxShadow(shadow) };
     },
   },
@@ -137,7 +147,7 @@ const CommonInputStyle = CSSComponent({
     defaultTheme: {
       cursor: 'not-allowed',
       background: { color: disableColor },
-      border: getBorder({ color: borderColor, width: 1, style: 'solid' }),
+      border: getBorder({ color: borderColor, width: borderSize, style: 'solid' }),
     },
   },
   css: css`
@@ -145,7 +155,7 @@ const CommonInputStyle = CSSComponent({
     line-height: 1.5;
     display: inline-block;
     font-family: inherit;
-    transition: all 0.3s;
+    transition: all ${transitionTime};
     outline: none;
     min-width: ${px2remcss(30)};
   `,
@@ -236,7 +246,7 @@ const Prefix: Object = CSSComponent({
     selectNames: [['font'], ['fontSize'], ['color']],
   },
   css: css`
-    left: ${px2remcss(10)};
+    left: ${px2remcss(padding)};
   `,
 });
 
@@ -247,7 +257,7 @@ const Suffix: Object = CSSComponent({
     selectNames: [['font'], ['fontSize'], ['color']],
   },
   css: css`
-    right: ${px2remcss(10)};
+    right: ${px2remcss(padding)};
   `,
 });
 
@@ -346,7 +356,9 @@ class TextBox extends Component<InputProps, InputState> {
   setValue(value: string, event: Event): void {
     const oldValue = this.state.value;
     const { disabled, onChange, parser, formatter } = this.props;
-
+    if (disabled) {
+      return;
+    }
     if (oldValue === value) {
       return;
     }
@@ -355,9 +367,6 @@ class TextBox extends Component<InputProps, InputState> {
     }
     const param = { newValue: value, oldValue, event };
     if ('value' in this.props === false) {
-      if (disabled) {
-        return;
-      }
       this.setState({ value }, () => {
         onChange && onChange(param);
       });
@@ -367,7 +376,10 @@ class TextBox extends Component<InputProps, InputState> {
   }
 
   onFocus = (event: UIEvent) => {
-    const { onFocus, validateStatus, validateType } = this.props;
+    const { onFocus, validateStatus, validateType, disabled } = this.props;
+    if (disabled) {
+      return;
+    }
     if (isValidateSuccess(validateStatus, validateType, 'inner')) {
       this.setState({ value: this.actualValue });
     }
@@ -376,7 +388,10 @@ class TextBox extends Component<InputProps, InputState> {
   };
 
   onBlur = (event: UIEvent) => {
-    const { onBlur, help, validateStatus, validateType } = this.props;
+    const { onBlur, help, validateStatus, validateType, disabled } = this.props;
+    if (disabled) {
+      return;
+    }
     if (isValidateSuccess(validateStatus, validateType, 'inner')) {
       this.setState({ value: help });
       this.actualValue = this.state.value;
@@ -539,7 +554,7 @@ class TextBox extends Component<InputProps, InputState> {
               return ` position: absolute;
                    transform: translateY(50%);
                    bottom: 50%;
-                   right: ${px2remcss(10)};`;
+                   right: ${px2remcss(padding)};`;
             },
           },
           hover: {
@@ -636,7 +651,10 @@ class TextBox extends Component<InputProps, InputState> {
   }
 
   onKeyDown = (event: KeyboardEvent) => {
-    const { onKeyDown, onEnter } = this.props;
+    const { onKeyDown, onEnter, disabled } = this.props;
+    if (disabled) {
+      return;
+    }
     onKeyDown && onKeyDown(event);
     const { keyCode } = event;
     onEnter && keyCode === 13 && onEnter(event);
