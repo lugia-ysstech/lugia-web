@@ -68,8 +68,8 @@
       "args": [
         {
           "name": "result",
-          "desc": "返回当前被点击是第几的项",
-          "type": "number"
+          "desc": "返回当前被点击项的下标值和activityValue值",
+          "type": "onTabClick"
         }
       ]
     },
@@ -78,13 +78,13 @@
       "args": [
         {
           "name": "result",
-          "desc": "标签页改变时当前选中的是第几的项",
-          "type": "number"
+          "desc": "标签页改变时当前选中项的下标值和activityValue值",
+          "type": "ReturnType"
         }
       ]
     },
     "onNextClick": {
-      "desc": "点击向下滑动按钮时调用",
+      "desc": "点击下一项滑动按钮时调用",
       "args": [
         {
           "name": "event",
@@ -94,7 +94,7 @@
       ]
     },
     "onPreClick": {
-      "desc": "点击向上滑动按钮时调用",
+      "desc": "点击上一项滑动按钮时调用",
       "args": [
         {
           "name": "event",
@@ -114,22 +114,15 @@
       ]
     },
     "getAddItem": {
-      "desc": "返回点击添加按钮新增标签的内容",
-      "args": [
-        {
-          "name": "event",
-          "desc": "获取新增标签的内容事件",
-          "type": "Object"
-        }
-      ]
+      "desc": "返回点击添加按钮新增标签的内容"
     },
     "onDelete": {
       "desc": "点击清除按钮后删除标签后的回调",
       "args": [
         {
-          "name": "event",
-          "desc": "删除标签时的事件",
-          "type": "Object"
+          "name": "result",
+          "desc": "删除标签的下标值和activityValue值",
+          "type": "ReturnType"
         }
       ]
     }
@@ -137,7 +130,8 @@
   "type": {
     "TabType": ["line", "card", "window"],
     "PagedType": ["single", "page"],
-    "TabPositionType": ["top", "bottom", "left", "right"]
+    "TabPositionType": ["top", "bottom", "left", "right"],
+    "ReturnType":["index","activityValue"]
   },
   "childrenWidget": ["tabpane"],
   "category": ["数据展示"],

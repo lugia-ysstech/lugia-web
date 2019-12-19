@@ -26,8 +26,12 @@ const ContainerBox = StaticComponent({
   `,
 });
 
-const onPreClick = e => {};
-const onNextClick = e => {};
+const onPreClick = e => {
+  console.log('res onPreClick', e);
+};
+const onNextClick = e => {
+  console.log('res onNextClick', e);
+};
 export class Tabsdemo extends React.Component<any, any> {
   state = {
     data: hasActivityValueData,
@@ -500,6 +504,7 @@ export default class TabsDemo extends React.Component<any, any> {
   };
 
   onChange = (res: Object) => {
+    console.log('res onChange', res);
     const { activityValue } = this.state;
     const { activityValue: newActivityValue } = res;
     if (newActivityValue === activityValue) {
@@ -508,6 +513,7 @@ export default class TabsDemo extends React.Component<any, any> {
     this.setState({ activityValue: newActivityValue });
   };
   onDelete = (res: Object) => {
+    console.log('res', res);
     const { dataWindow } = this.state;
     const { index } = res;
     const newDate = [...dataWindow];
