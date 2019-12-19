@@ -11,8 +11,7 @@ import colorsFunc from '../css/stateColor';
 import { units } from '@lugia/css';
 import { deepMerge } from '@lugia/object-utils';
 
-import { getBorder, getBoxShadow } from '@lugia/theme-utils';
-import { getBorderRadius } from '../theme/CSSProvider';
+import { getBorder, getBoxShadow, getBorderRadius } from '@lugia/theme-utils';
 import { ObjectUtils } from '@lugia/type-utils';
 import changeColor from '../css/utilsColor';
 const { px2remcss } = units;
@@ -60,10 +59,13 @@ const Textarea = CSSComponent({
     },
     getCSS(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
-      const { placeHolderColor, placeHolderFont, placeHolderFontSize } = propsConfig;
-      const { weight, color } = placeHolderFont;
+      const {
+        placeHolderColor,
+        placeHolderFont: { size, weight, color },
+        placeHolderFontSize,
+      } = propsConfig;
       const theColor = color ? color : placeHolderColor;
-      const theSize = placeHolderFontSize ? placeHolderFontSize : 12;
+      const theSize = size ? size : placeHolderFontSize ? placeHolderFontSize : 12;
       return css`
         &::placeholder {
           color: ${theColor};
@@ -107,8 +109,9 @@ const Textarea = CSSComponent({
   active: {
     selectNames: [['boxShadow'], ['border'], ['borderRadius'], ['cursor'], ['background']],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
-      const { themeState } = themeProps;
-      const { disabled } = themeState;
+      const {
+        themeState: { disabled },
+      } = themeProps;
       const theColor = disabled ? disableColor : changeColor(themeColor, 0, 0, 20).rgba;
       const shadow = `${hShadow} ${vShadow} ${shadowSpread} ${theColor}`;
       return { boxShadow: getBoxShadow(shadow) };
@@ -173,7 +176,6 @@ const Clear = 'lugia-icon-reminder_close';
 
 type TextareaState = {
   value: string,
-  clearButtonShow: boolean,
 };
 
 type TextareaProps = {
@@ -181,7 +183,7 @@ type TextareaProps = {
   themeProps: Object,
   disabled: boolean,
   placeholder?: string,
-  onChange?: ({ newValue: any, oldValue: any, event: Event }) => void,
+  onChange?: ({ newValue: string, oldValue: string, event: Event }) => void,
   onFocus?: (event: UIEvent) => void,
   onBlur?: (event: UIEvent) => void,
   onKeyUp?: (event: KeyboardEvent) => void,
@@ -219,7 +221,6 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
     if (!preState) {
       return {
         value: hasValueInprops ? value : defaultValue,
-        clearButtonShow: false,
       };
     }
     if (hasValueInprops) {
@@ -232,7 +233,6 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
     if (disabled) {
       return;
     }
-    this.setState({ clearButtonShow: true });
     onFocus && onFocus(event);
   };
 
@@ -241,7 +241,6 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
     if (disabled) {
       return;
     }
-    this.setState({ clearButtonShow: false });
     onBlur && onBlur(event);
   };
 
@@ -254,10 +253,7 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
   setValue(value: string, event: Event): void {
     const oldValue = this.state.value;
     const { disabled, onChange } = this.props;
-    if (disabled) {
-      return;
-    }
-    if (oldValue === value) {
+    if (oldValue === value || disabled) {
       return;
     }
     const param = { newValue: value, oldValue, event };
@@ -305,7 +301,6 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
     if (this.isEmpty()) {
       return null;
     }
-    const show = this.state.clearButtonShow;
     const {
       theme: ClearButtonThemeProps,
       viewClass: clearViewClass,
@@ -335,16 +330,15 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
         theme={newTheme}
         iconClass={Clear}
         onClick={this.onClear}
-        show={show}
         {...addMouseEvent(this)}
       />
     );
   }
 
-  generateInput(): React$Element<any> {
+  generateInput(): React$Node {
     const { props } = this;
     const { value } = this.state;
-    const { onKeyUp, onKeyPress, placeholder, readOnly, autoFocus, disabled } = props;
+    const { placeholder, autoFocus, disabled } = props;
 
     const { themeConfig = { normal: {} } } = this.props.getPartOfThemeProps('Placeholder');
     const { normal = {} } = themeConfig;
@@ -367,8 +361,8 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
         value={value}
         onFocus={this.onFocus}
         onBlur={this.onBlur}
-        onKeyUp={onKeyUp}
-        onKeyPress={onKeyPress}
+        onKeyUp={this.onKeyUp}
+        onKeyPress={this.onKeyPress}
         onKeyDown={this.onKeyDown}
         onChange={this.onChange}
         placeholder={placeholder}
@@ -385,6 +379,20 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
     onKeyDown && onKeyDown(event);
     const { keyCode } = event;
     onEnter && keyCode === 13 && onEnter(event);
+  };
+  onKeyPress = (event: KeyboardEvent) => {
+    const { onKeyPress, disabled } = this.props;
+    if (disabled) {
+      return;
+    }
+    onKeyPress && onKeyPress(event);
+  };
+  onKeyUp = (event: KeyboardEvent) => {
+    const { onKeyUp, disabled } = this.props;
+    if (disabled) {
+      return;
+    }
+    onKeyUp && onKeyUp(event);
   };
 }
 
