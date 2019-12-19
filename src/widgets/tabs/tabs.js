@@ -12,7 +12,7 @@ import Widget from '../consts/index';
 import { PagedType, TabPositionType, TabType } from '../css/tabs';
 import { isVertical } from './utils';
 import { getAttributeFromObject } from '../common/ObjectUtils.js';
-import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
+import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import ThemeHoc from '@lugia/theme-hoc';
 import { deepMerge } from '@lugia/object-utils';
 
@@ -36,6 +36,7 @@ const TabContentContainer = CSSComponent({
       if (isVertical(tabPosition)) {
         return 'flex: 1 1 auto;';
       }
+      return '';
     },
   },
   disabled: {
@@ -64,6 +65,7 @@ const TabContent = CSSComponent({
         height:100%;
         `;
       }
+      return '';
     },
   },
   disabled: {
@@ -175,23 +177,23 @@ type TabsProps = {
   getAddItem?: Function,
   pagedType?: PagedType,
   getTabpane?: Function,
-  themeProps?: Object,
+  themeProps: Object,
   onMouseEnter?: Function,
   onMouseLeave?: Function,
-  getPartOfThemeHocProps?: Function,
-  getPartOfThemeProps?: Function,
+  getPartOfThemeHocProps: Function,
+  getPartOfThemeProps: Function,
   hideContent?: boolean,
 };
 export function hasTargetInProps(target: string, props: TabsProps) {
   return `${target}` in props;
 }
-export function setKeyValue(data: Array<Object>) {
+export function setKeyValue(data: Array<Object>): Array<Object> {
   const newData = [...data];
   return newData.map((item, index) => {
     const newItem = { ...item };
-    const { value } = newItem;
+    const { value, key } = newItem;
     if (!value) {
-      newItem.value = `Tab${index + 1}`;
+      newItem.value = key || `Tab${index + 1}`;
     }
     return newItem;
   });
@@ -210,6 +212,9 @@ export function getDefaultData(props: Object) {
     if (children) {
       configData = [];
       React.Children.map(children, child => {
+        if (typeof child === 'string') {
+          return;
+        }
         const item = { ...child.props };
         item.value = child.value;
         configData && configData.push(item);
@@ -232,12 +237,8 @@ class TabsBox extends Component<TabsProps, TabsState> {
   };
   static displayName = Widget.Tabs;
 
-  constructor(props: TabsProps) {
-    super(props);
-  }
-
   static getDerivedStateFromProps(props: TabsProps, state: TabsState) {
-    const { activityValue, defaultActivityValue, data } = props;
+    const { activityValue, defaultActivityValue } = props;
 
     let theData = getDefaultData(props);
     let theActivityValue =
