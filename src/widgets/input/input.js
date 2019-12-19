@@ -14,8 +14,7 @@ import colorsFunc from '../css/stateColor';
 import { units } from '@lugia/css';
 import { deepMerge } from '@lugia/object-utils';
 
-import { getBorder, getBoxShadow } from '@lugia/theme-utils';
-import { getBorderRadius } from '../theme/CSSProvider';
+import { getBorder, getBoxShadow, getBorderRadius } from '@lugia/theme-utils';
 import { ObjectUtils } from '@lugia/type-utils';
 import changeColor from '../css/utilsColor';
 const { px2remcss } = units;
@@ -66,21 +65,25 @@ const CommonInputStyle = CSSComponent({
     },
     getCSS(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
-      const { placeHolderColor, placeHolderFont, placeHolderFontSize } = propsConfig;
-      const { size, weight, color } = placeHolderFont;
+      const {
+        placeHolderColor,
+        placeHolderFont: { size, weight, color },
+        placeHolderFontSize,
+      } = propsConfig;
       const theColor = color ? color : placeHolderColor;
-      const theSize = size ? size : placeHolderFontSize;
+      const theSize = size ? size : placeHolderFontSize ? placeHolderFontSize : 12;
       return css`
         &::placeholder {
           color: ${theColor};
-          font-size: ${theSize}px;
+          font-size: ${px2remcss(theSize)};
           font-weight: ${weight};
         }
       `;
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
-      const { propsConfig } = themeProps;
-      const { size, prefix, validateStatus, validateType, suffix, isShowClearButton } = propsConfig;
+      const {
+        propsConfig: { size, prefix, validateStatus, validateType, suffix, isShowClearButton },
+      } = themeProps;
       const { width, height, color } = themeMeta;
       const theColor = color
         ? color
@@ -120,9 +123,10 @@ const CommonInputStyle = CSSComponent({
   active: {
     selectNames: [['boxShadow'], ['border'], ['borderRadius'], ['cursor'], ['background']],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
-      const { propsConfig, themeState } = themeProps;
-      const { validateStatus } = propsConfig;
-      const { disabled } = themeState;
+      const {
+        propsConfig: { validateStatus },
+        themeState: { disabled },
+      } = themeProps;
       const theColor = disabled
         ? disableColor
         : isSuccess(validateStatus)
@@ -235,7 +239,7 @@ const Fix = CSSComponent({
     bottom: 50%;
     line-height: ${px2remcss(10)};
     font-size: 1.4em;
-    color: rgba(0, 0, 0, 0.65);
+    color: ${mediumGreyColor};
   `,
 });
 
@@ -263,12 +267,11 @@ const Suffix: Object = CSSComponent({
 
 const Clear = 'lugia-icon-reminder_close';
 
-type InputState = {|
+type InputState = {
   value: string,
-  clearButtonShow: boolean,
-|};
+};
 
-type InputProps = {|
+type InputProps = {
   size?: InputSize,
   viewClass: string,
   themeProps: Object,
@@ -277,9 +280,9 @@ type InputProps = {|
   validateType: InputValidateType,
   help: string,
   placeholder?: string,
-  prefix?: React$Element<any>,
-  suffix?: React$Element<any>,
-  onChange?: ({ newValue: any, oldValue: any, event: Event }) => void,
+  prefix?: React$Node,
+  suffix?: React$Node,
+  onChange?: ({ newValue: string, oldValue: string, event: Event }) => void,
   onKeyUp?: (event: KeyboardEvent) => void,
   onKeyDown?: (event: KeyboardEvent) => void,
   onKeyPress?: (event: KeyboardEvent) => void,
@@ -298,7 +301,7 @@ type InputProps = {|
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
   isShowClearButton?: boolean,
-|};
+};
 
 class TextBox extends Component<InputProps, InputState> {
   static defaultProps = {
@@ -335,7 +338,6 @@ class TextBox extends Component<InputProps, InputState> {
     if (!preState) {
       return {
         value: hasValueInprops ? value : defaultValue,
-        clearButtonShow: false,
       };
     }
     if (hasValueInprops) {
@@ -351,11 +353,8 @@ class TextBox extends Component<InputProps, InputState> {
 
   setValue(value: string, event: Event): void {
     const oldValue = this.state.value;
-    const { disabled, onChange, parser, formatter } = this.props;
-    if (disabled) {
-      return;
-    }
-    if (oldValue === value) {
+    const { disabled, onChange, parser, formatter, readOnly } = this.props;
+    if (oldValue === value || disabled || readOnly) {
       return;
     }
     if (formatter && parser) {
@@ -372,14 +371,13 @@ class TextBox extends Component<InputProps, InputState> {
   }
 
   onFocus = (event: UIEvent) => {
-    const { onFocus, validateStatus, validateType, disabled } = this.props;
-    if (disabled) {
+    const { onFocus, validateStatus, validateType, disabled, readOnly } = this.props;
+    if (disabled || readOnly) {
       return;
     }
     if (isValidateSuccess(validateStatus, validateType, 'inner')) {
       this.setState({ value: this.actualValue });
     }
-    this.setState({ clearButtonShow: true });
     onFocus && onFocus(event);
   };
 
@@ -392,7 +390,6 @@ class TextBox extends Component<InputProps, InputState> {
       this.setState({ value: help });
       this.actualValue = this.state.value;
     }
-    this.setState({ clearButtonShow: false });
     onBlur && onBlur(event);
   };
 
@@ -409,10 +406,6 @@ class TextBox extends Component<InputProps, InputState> {
     onClear && onClear(e);
     this.setValue('', e);
   };
-
-  getInputContent() {
-    return this.getInputContainer(this.getInputInner);
-  }
 
   getInputContainer(fetcher: Function) {
     const theThemeProps = this.props.getPartOfThemeProps('Container');
@@ -452,7 +445,7 @@ class TextBox extends Component<InputProps, InputState> {
   render() {
     const { props } = this;
     const { validateType, size, help, validateStatus, prefix } = props;
-    const result = this.getInputContent();
+    const result = this.getInputContainer(this.getInputInner);
     const { theme: topTipThemeProps, viewClass } = this.props.getPartOfThemeHocProps(
       'ValidateTopTip'
     );
@@ -496,7 +489,7 @@ class TextBox extends Component<InputProps, InputState> {
     return result;
   }
 
-  getFixIcon(fix: ReactDOM, WidgetName: string): React$Element<any> {
+  getFixIcon(fix: React$Node, WidgetName: string): React$Node {
     if (ObjectUtils.isString(fix)) {
       return (
         <Icon singleTheme {...this.props.getPartOfThemeHocProps(WidgetName)} iconClass={fix} />
@@ -505,9 +498,9 @@ class TextBox extends Component<InputProps, InputState> {
     return fix;
   }
 
-  generatePrefix(): React$Element<any> | null {
-    const { prefix } = this.props;
-    const PrefixThemeProps = this.props.getPartOfThemeProps('InputPrefix');
+  generatePrefix(): React$Node | null {
+    const { prefix, getPartOfThemeProps } = this.props;
+    const PrefixThemeProps = getPartOfThemeProps('InputPrefix');
     if (prefix) {
       return (
         <Prefix themeProps={PrefixThemeProps}>{this.getFixIcon(prefix, 'InputPrefix')}</Prefix>
@@ -516,12 +509,13 @@ class TextBox extends Component<InputProps, InputState> {
     return null;
   }
 
-  generateSuffix(): React$Element<any> | null {
-    const { suffix } = this.props;
-    const SuffixThemeProps = this.props.getPartOfThemeProps('InputSuffix');
+  generateSuffix(): React$Node | null {
+    const { suffix, getPartOfThemeProps } = this.props;
     if (suffix) {
       return (
-        <Suffix themeProps={SuffixThemeProps}>{this.getFixIcon(suffix, 'InputSuffix')}</Suffix>
+        <Suffix themeProps={getPartOfThemeProps('InputSuffix')}>
+          {this.getFixIcon(suffix, 'InputSuffix')}
+        </Suffix>
       );
     }
     const { isShowClearButton } = this.props;
@@ -535,7 +529,6 @@ class TextBox extends Component<InputProps, InputState> {
     if (this.isEmpty()) {
       return null;
     }
-    const show = this.state.clearButtonShow;
     const {
       theme: ClearButtonThemeProps,
       viewClass: clearViewClass,
@@ -568,13 +561,12 @@ class TextBox extends Component<InputProps, InputState> {
         theme={newTheme}
         iconClass={Clear}
         onClick={this.onClear}
-        show={show}
         {...addMouseEvent(this)}
       />
     );
   }
 
-  generateInput(): React$Element<any> {
+  generateInput(): React$Node {
     const { props } = this;
     let { value } = this.state;
     const {
@@ -585,11 +577,8 @@ class TextBox extends Component<InputProps, InputState> {
       parser,
       validateStatus,
       validateType,
-      onKeyUp,
-      onKeyPress,
       placeholder,
       readOnly,
-      onClick,
       autoFocus,
       type,
       disabled,
@@ -629,12 +618,12 @@ class TextBox extends Component<InputProps, InputState> {
         prefix={prefix}
         value={value}
         size={size}
-        onKeyUp={onKeyUp}
-        onKeyPress={onKeyPress}
+        onKeyUp={this.onKeyUp}
+        onKeyPress={this.onKeyPress}
         onKeyDown={this.onKeyDown}
         onFocus={this.onFocus}
         onBlur={this.onBlur}
-        onClick={onClick}
+        onClick={this.onClick}
         onChange={this.onChange}
         formatter={formatter}
         parser={parser}
@@ -647,13 +636,34 @@ class TextBox extends Component<InputProps, InputState> {
   }
 
   onKeyDown = (event: KeyboardEvent) => {
-    const { onKeyDown, onEnter, disabled } = this.props;
-    if (disabled) {
+    const { onKeyDown, onEnter, disabled, readOnly } = this.props;
+    if (disabled || readOnly) {
       return;
     }
     onKeyDown && onKeyDown(event);
     const { keyCode } = event;
     onEnter && keyCode === 13 && onEnter(event);
+  };
+  onClick = (event: Event) => {
+    const { onClick, disabled, readOnly } = this.props;
+    if (disabled || readOnly) {
+      return;
+    }
+    onClick && onClick(event);
+  };
+  onKeyPress = (event: KeyboardEvent) => {
+    const { onKeyPress, disabled, readOnly } = this.props;
+    if (disabled || readOnly) {
+      return;
+    }
+    onKeyPress && onKeyPress(event);
+  };
+  onKeyUp = (event: KeyboardEvent) => {
+    const { onKeyUp, disabled, readOnly } = this.props;
+    if (disabled || readOnly) {
+      return;
+    }
+    onKeyUp && onKeyUp(event);
   };
 }
 
