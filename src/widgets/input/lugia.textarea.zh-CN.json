@@ -1,7 +1,7 @@
 {
-  "widgetName": "Input",
+  "widgetName": "Textarea",
   "title": "段落文本输入框",
-  "desc": "常用于昵称,名称,表格内容等填写.",
+  "desc": "常用于多行文本输入",
   "props": {
     "disabled": {
       "type": "boolean",
