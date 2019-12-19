@@ -90,7 +90,6 @@ exports[`tabsDemo Component JSON 1`] = `
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   position: relative;
-  overflow: hidden;
   min-height: 100%;
   display: -webkit-box;
   display: -webkit-flex;
