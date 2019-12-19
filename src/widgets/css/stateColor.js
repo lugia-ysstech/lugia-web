@@ -20,8 +20,8 @@ type StateColor = {
   defaultColor: string,
   borderColor: string,
   borderDisableColor: string,
-  borderSize: string,
-  boxShadowOpacity: string,
+  borderSize: number,
+  boxShadowOpacity: number,
   hShadow: string,
   vShadow: string,
   shadowSpread: number,
@@ -29,8 +29,8 @@ type StateColor = {
   circleBorderRadius: string,
   transitionTime: string,
   rulesColor: string,
-  rulesSize: string,
-  rulesOpacity: string,
+  rulesSize: number,
+  rulesOpacity: number,
   padding: number,
   paddingToText: number,
   marginToSameElement: number,
@@ -61,8 +61,8 @@ const DefaultCommonStyle: CommonCSS = {
   defaultColor: '#ffffff', //默认色
   borderColor: '#cccccc', //边框色
   borderDisableColor: '#e8e8e8', //边框禁止色
-  borderSize: '1px', //边框大小
-  boxShadowOpacity: '20%', //阴影透明度
+  borderSize: 1, //边框大小
+  boxShadowOpacity: 0.2, //阴影透明度
   hShadow: '0', //阴影水平偏移值（X）
   vShadow: '0', //阴影竖直偏移值（Y）
   shadowSpread: 6, //阴影扩散大小
@@ -70,8 +70,8 @@ const DefaultCommonStyle: CommonCSS = {
   circleBorderRadius: '50%', //圆角-特殊
   transitionTime: '0.3s', //过渡时间
   rulesColor: '#fff', //分割线颜色
-  rulesSize: '1px', //分割线大小
-  rulesOpacity: '40%', //分割线透明度
+  rulesSize: 1, //分割线大小
+  rulesOpacity: 0.4, //分割线透明度
   padding: 10, //元素左右padding
   paddingToText: 6, //文字到元素的距离
   marginToSameElement: 10, //同级元素与元素之间距离
