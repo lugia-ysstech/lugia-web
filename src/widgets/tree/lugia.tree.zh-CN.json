@@ -52,6 +52,11 @@
       "type": "string | string[] | number | number[]",
       "desc": "指定当前选中的条目的displayField值"
     },
+    "parentIsHighlight": {
+      "type": "boolean",
+      "desc": "父级元素是否高亮",
+      "defaultValue": false
+    },
     "data": {
       "type": "object[]",
       "desc": "生成选择项的数据",
