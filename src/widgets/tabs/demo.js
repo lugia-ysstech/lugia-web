@@ -15,7 +15,6 @@ import Theme from '../theme/';
 import colorsFunc from '../css/stateColor';
 import { getBorder, getBorderRadius } from '@lugia/theme-utils';
 import { css, StaticComponent } from '@lugia/theme-css-hoc';
-import CSSComponent from '@lugia/theme-css-hoc/lib/index';
 
 const { themeColor } = colorsFunc();
 
@@ -34,7 +33,7 @@ export class Tabsdemo extends React.Component<any, any> {
     data: hasActivityValueData,
     activeValue: '0',
   };
-  onAddClick = res => {
+  onAddClick = (e: Event) => {
     return {
       title: '萝卜',
       content: '萝卜啊啊啊啊',
@@ -70,23 +69,7 @@ export class TabsLimitdemo extends React.Component<any, any> {
     };
     this.setState({ data: hasActivityValueData });
   };
-  onAddClick = res => {
-    const data = this.state.data;
-    data.push(res);
-    this.setState({ data });
-  };
 
-  onDeleteClick = (res: Object) => {
-    const { data } = this.state;
-    const { activityValue } = res;
-    let newdata = [];
-    if (data.length > 1) {
-      newdata = data.filter(child => {
-        return child.activityValue !== activityValue;
-      });
-    }
-    this.setState({ data: newdata });
-  };
   render() {
     const { data } = this.state;
     return (
@@ -100,8 +83,6 @@ export class TabsLimitdemo extends React.Component<any, any> {
           data={data}
           onPreClick={onPreClick}
           onNextClick={onNextClick}
-          onAddClick={this.onAddClick}
-          onDeleteClick={this.onDeleteClick}
         />
       </div>
     );
@@ -478,6 +459,14 @@ const addItem = [
   { title: '香菇', content: '香菇啊啊啊啊' },
 ];
 
+type TabpaneProps = {};
+
+type TabpaneState = {
+  data: Array<Object>,
+  dataWindow: Array<Object>,
+  activityValue: string,
+};
+
 export default class TabsDemo extends React.Component<any, any> {
   onChange = event => {
     console.log('switch event onChange');
@@ -510,7 +499,7 @@ export default class TabsDemo extends React.Component<any, any> {
     this.setState({ data: newData, activityValue: activeIndex });
   };
 
-  onChange = res => {
+  onChange = (res: Object) => {
     const { activityValue } = this.state;
     const { activityValue: newActivityValue } = res;
     if (newActivityValue === activityValue) {
@@ -518,14 +507,14 @@ export default class TabsDemo extends React.Component<any, any> {
     }
     this.setState({ activityValue: newActivityValue });
   };
-  onDelete = res => {
+  onDelete = (res: Object) => {
     const { dataWindow } = this.state;
     const { index } = res;
     const newDate = [...dataWindow];
     newDate.splice(index, 1);
     this.setState({ dataWindow: newDate });
   };
-  onTabClick = res => {
+  onTabClick = (res: Object) => {
     console.log('onTabClick', res);
   };
 

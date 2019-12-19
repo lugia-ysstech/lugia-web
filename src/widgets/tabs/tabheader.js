@@ -11,7 +11,7 @@ import Widget from '../consts/index';
 import { EditEventType, PagedType, TabPositionType, TabType } from '../css/tabs';
 
 import { px2remcss } from '../css/units';
-import { computePage, isVertical, matchType, plusWidth } from './utils';
+import { computePage, isVertical, matchType } from './utils';
 import { getAttributeFromObject } from '../common/ObjectUtils.js';
 
 import Icon from '../icon';
@@ -480,7 +480,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
     const { allowToCalc, maxIndex, data, activityValue } = this.state;
     const newMaxIndex = maxIndex ? maxIndex : this.getCurrentMaxIndex(titleSize);
     let { currentPage } = this.state;
-    const { tabPosition, tabType, pagedType } = this.props;
+    const { tabPosition, pagedType } = this.props;
     currentPage = pagedType === 'page' ? 1 : newMaxIndex;
     let offsetSize;
     if (isVertical(tabPosition)) {
@@ -703,7 +703,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
     );
   }
 
-  getChildren() {
+  getChildren(): React$Node {
     const { data } = this.state;
     const { getTabpane } = this.props;
     return data
