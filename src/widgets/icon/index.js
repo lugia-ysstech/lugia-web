@@ -11,15 +11,21 @@ import Widget from '../consts/index';
 import ThemeHoc, { addMouseEvent } from '@lugia/theme-hoc';
 import CSSComponent, { css, StaticComponent } from '../theme/CSSProvider';
 
+const getNormalFontSize = (themeConfig: object) => {
+  const { normal = {} } = themeConfig;
+  const { fontSize, font = {} } = normal;
+  const { size } = font;
+  return fontSize ? fontSize : size ? size : 14;
+};
+
 const IconImgWrap = CSSComponent({
-  tag: 'span',
+  tag: 'i',
   className: 'iconImgWrap',
   normal: {
-    selectNames: [['margin'], ['padding'], ['cursor']],
-    getCSS: themeMeta => {
-      const { fontSize, font = {} } = themeMeta;
-      const { size } = font;
-      const activeFontSize = fontSize ? fontSize : size ? size : 14;
+    selectNames: [['margin'], ['padding'], ['fontSize'], ['font'], ['cursor']],
+    getCSS: (themeMeta, themeProps) => {
+      const { themeConfig } = themeProps;
+      const activeFontSize = getNormalFontSize(themeConfig);
       return `
         width: ${px2remcss(activeFontSize)};
         height: ${px2remcss(activeFontSize)};
@@ -32,6 +38,47 @@ const IconImgWrap = CSSComponent({
       `;
     },
     defaultTheme: {},
+  },
+  hover: {
+    selectNames: [['fontSize'], ['font']],
+    getCSS: (themeMeta, themeProps) => {
+      const { fontSize, font = {} } = themeMeta;
+      const { size } = font;
+      const { themeConfig } = themeProps;
+      const activeFontSize = fontSize ? fontSize : size ? size : getNormalFontSize(themeConfig);
+      return `
+        width: ${px2remcss(activeFontSize)};
+        height: ${px2remcss(activeFontSize)};
+        text-align: center;
+        
+        & img{
+          max-width: 100%;
+          max-height: 100%;
+        }
+      `;
+    },
+  },
+  active: {
+    selectNames: [['fontSize'], ['font']],
+    getCSS: (themeMeta, themeProps) => {
+      const { fontSize, font = {} } = themeMeta;
+      const { size } = font;
+      const { themeConfig } = themeProps;
+      const activeFontSize = fontSize ? fontSize : size ? size : getNormalFontSize(themeConfig);
+      return `
+        width: ${px2remcss(activeFontSize)};
+        height: ${px2remcss(activeFontSize)};
+        text-align: center;
+
+        & img{
+          max-width: 100%;
+          max-height: 100%;
+        }
+      `;
+    },
+  },
+  disabled: {
+    selectNames: [['cursor']],
   },
   css: `
     display: inline-block;
@@ -104,6 +151,7 @@ class Icon extends React.Component<IconProps> {
       singleTheme = false,
       src,
     } = this.props;
+
     if (src) {
       return (
         <IconImgWrap
