@@ -536,7 +536,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const {
       node: {
         props: {
-          item: { path: nodePath = ' ' },
+          item: { path: nodePath = '' },
           isLeaf,
         },
       },
