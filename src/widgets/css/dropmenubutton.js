@@ -18,26 +18,11 @@ export const {
   defaultColor,
   hoverColor,
   mouseDownColor,
+  borderRadius,
 } = colorsFunc();
 
 const DefaultHeight = 32;
 const DefaultWidth = 92;
-
-export const DropMenuContainer = CSSComponent({
-  tag: 'div',
-  className: 'DropMenuContainer',
-  normal: {
-    selectNames: [['width'], ['height']],
-  },
-  hover: {
-    selectNames: [],
-  },
-  css: css`
-    display: inline-block;
-    font-size: 0;
-  `,
-});
-DropMenuContainer.displayName = 'DropMenuContainer';
 
 const getHoverBgColorFromNormalOrHover = (params: Object) => {
   const { normal = {}, hover = {} } = params;
@@ -83,8 +68,7 @@ const getNoDividedCustomsDefaultCSS = themeMeta => {
 };
 
 const getNoDividedCheckedDefaultBasicCSS = param => {
-  const { normal = {} } = param;
-  const { color = themeColor } = normal;
+  const { normal: { color = themeColor } = {} } = param;
   return {
     border: 'none',
     color: colorsFunc(color).hoverColor,
@@ -363,7 +347,7 @@ export const NoDividedContainer = CSSComponent({
   css: css`
     height: ${px2remcss(DefaultHeight)};
     width: ${px2remcss(DefaultWidth)};
-    border-radius: ${px2remcss(4)};
+    border-radius: ${px2remcss(borderRadius)};
     transition-property: background-color, border, borderRadius, opacity, boxShadow;
     transition-duration: 0.3s;
     border-width: ${px2remcss(1)};
@@ -473,9 +457,8 @@ export const DividedContainer = CSSComponent({
     },
     getCSS: (themeMeta, themeProps) => {
       const { propsConfig, themeConfig } = themeProps;
-      const { normal = {} } = themeConfig;
+      const { normal: { height = DefaultHeight } = {} } = themeConfig;
       const { disabled, dividedThemeConfig, type } = propsConfig;
-      const { height = DefaultHeight } = normal;
 
       const hoverCSS = `
              &:hover > span { 
@@ -513,7 +496,7 @@ export const DividedContainer = CSSComponent({
   css: css`
     height: ${px2remcss(DefaultHeight)};
     width: ${px2remcss(DefaultWidth)};
-    border-radius: ${px2remcss(4)};
+    border-radius: ${px2remcss(borderRadius)};
     transition: all 0.3s;
     position: relative;
     display: inline-block;
@@ -696,11 +679,11 @@ export const DevidedTextContainer = CSSComponent({
       };
     },
     getCSS: (themeMeta, themeProps) => {
-      const { propsConfig } = themeProps;
-      const { borderRadius = {} } = propsConfig;
-      const { topLeft, bottomLeft } = borderRadius;
-      const activeTopLeft = topLeft === 0 ? 0 : topLeft ? topLeft : 4;
-      const activeBottomLeft = bottomLeft === 0 ? 0 : bottomLeft ? bottomLeft : 4;
+      const {
+        propsConfig: { borderRadius: { topLeft, bottomLeft } = {} },
+      } = themeProps;
+      const activeTopLeft = topLeft || topLeft === 0 ? topLeft : borderRadius;
+      const activeBottomLeft = bottomLeft || bottomLeft === 0 ? bottomLeft : borderRadius;
       return `
       border-top-left-radius: ${px2remcss(activeTopLeft)};
       border-bottom-left-radius: ${px2remcss(activeBottomLeft)};
@@ -858,11 +841,11 @@ export const PullContainer = CSSComponent({
       };
     },
     getCSS: (themeMeta, themeProps) => {
-      const { propsConfig } = themeProps;
-      const { borderRadius = {} } = propsConfig;
-      const { topRight, bottomRight } = borderRadius;
-      const activeTopRight = topRight === 0 ? 0 : topRight ? topRight : 4;
-      const activeBottomRight = bottomRight === 0 ? 0 : bottomRight ? bottomRight : 4;
+      const {
+        propsConfig: { borderRadius: { topRight, bottomRight } = {} },
+      } = themeProps;
+      const activeTopRight = topRight || topRight === 0 ? topRight : borderRadius;
+      const activeBottomRight = bottomRight || bottomRight === 0 ? bottomRight : borderRadius;
       return `
       border-top-right-radius: ${px2remcss(activeTopRight)};
       border-bottom-right-radius: ${px2remcss(activeBottomRight)};
@@ -967,13 +950,12 @@ const getSeparatorBorderColor = props => {
     return type === 'primary' ? color : defaultColor;
   }
   if (checked) {
-    const { hover = {} } = themeConfig;
-    const { color } = hover;
+    const { hover: { color } = {} } = themeConfig;
 
     return color ? color : type === 'primary' ? hoverColor : defaultColor;
   }
-  const { normal = {} } = themeConfig;
-  const { color: normalColor } = normal;
+  const { normal: { color: normalColor } = {} } = themeConfig;
+
   if (normalColor) {
     return normalColor;
   }
@@ -989,15 +971,14 @@ const getSeparatorBorderWidth = props => {
     return px2remcss(width);
   }
 
-  const { normal = {} } = themeConfig;
-  const { width: normalWidth = 1 } = normal;
+  const { normal: { width: normalWidth = 1 } = {} } = themeConfig;
+
   return px2remcss(normalWidth);
 };
 
 const getSeparatorHeight = props => {
   const { checked, themeConfig } = props;
-  const { normal = {} } = themeConfig;
-  const { height } = normal;
+  const { normal: { height } = {} } = themeConfig;
   return checked ? '100%' : height ? px2remcss(height) : '70%';
 };
 
