@@ -80,6 +80,7 @@ export type TreeState = {
   expandedKeys: Array<string>,
   selectValue?: Array<string>,
   hasError: boolean,
+  parentHighlightKeys: Array<string>,
 };
 const EmptyBox = styled.span`
   font-size: ${FontSize};
@@ -462,7 +463,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const {
       expand,
       expandedKeys,
-      highlightKeys,
       selectedInfo,
       start,
       selectValue = [],
@@ -531,10 +531,16 @@ class Tree extends React.Component<TreeProps, TreeState> {
     return (this.data = utils.search(expand, query, searchType, blackList, whiteList));
   }
 
-  onSelect = (selectValue: Array<string>, eventObj: any) => {
+  onSelect = (selectValue: Array<string>, eventObject: any) => {
     const { parentIsHighlight } = this.props; // 是否开启选中子节点，父节点高亮
-    const nodePath = eventObj.node.props.item.path || ''; // 获取选中节点的path路径
-    const isLeaf = eventObj.node.props.isLeaf; // 选中节点是否是叶子节点
+    const {
+      node: {
+        props: {
+          item: { path: nodePath = ' ' },
+          isLeaf,
+        },
+      },
+    } = eventObject;
     let parentHighlightKeys = [];
     if (parentIsHighlight && isLeaf) {
       // 开启高亮并且是叶子节点
