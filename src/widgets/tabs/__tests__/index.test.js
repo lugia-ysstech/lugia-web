@@ -48,10 +48,38 @@ describe('tabsDemo', () => {
   };
 
   it('props hasTargetInProps', () => {
-    expect(hasTargetInProps('data', { data: [1, 2, 3] })).toBe(true);
-    expect(hasTargetInProps('children', { children: [1, 2, 3] })).toBe(true);
-    expect(hasTargetInProps('ops', { ops: 'sdfsdf' })).toBe(true);
-    expect(hasTargetInProps('ads', { ops: 'sdfsdf' })).toBe(false);
+    expect(
+      hasTargetInProps('data', {
+        data: [{ title: 'zbc' }],
+        getPartOfThemeProps,
+        getPartOfThemeHocProps: getPartOfThemeProps,
+        themeProps,
+      })
+    ).toBe(true);
+    expect(
+      hasTargetInProps('children', {
+        children: <div>123</div>,
+        getPartOfThemeProps,
+        getPartOfThemeHocProps: getPartOfThemeProps,
+        themeProps,
+      })
+    ).toBe(true);
+    expect(
+      hasTargetInProps('ops', {
+        ops: 'sdfsdf',
+        getPartOfThemeProps,
+        getPartOfThemeHocProps: getPartOfThemeProps,
+        themeProps,
+      })
+    ).toBe(true);
+    expect(
+      hasTargetInProps('ads', {
+        ops: 'sdfsdf',
+        getPartOfThemeProps,
+        getPartOfThemeHocProps: getPartOfThemeProps,
+        themeProps,
+      })
+    ).toBe(false);
   });
 
   it('props defaultActivityValue', () => {
@@ -122,19 +150,19 @@ describe('tabsDemo', () => {
       />
     );
     expect(getCmp(target).state.data).toEqual([
-      { title: 'Tab1', key: 'Tab1' },
-      { title: 'Tab2', key: 'Tab2' },
-      { title: 'Tab3', key: 'Tab3' },
+      { title: 'Tab1', value: 'Tab1' },
+      { title: 'Tab2', value: 'Tab2' },
+      { title: 'Tab3', value: 'Tab3' },
     ]);
     target
       .children()
       .instance()
       .onAddClick();
     expect(getCmp(target).state.data).toEqual([
-      { title: 'Tab1', key: 'Tab1' },
-      { title: 'Tab2', key: 'Tab2' },
-      { title: 'Tab3', key: 'Tab3' },
-      { title: 'Tab4', content: 'Tab4 Content', key: 'Tab4' },
+      { title: 'Tab1', value: 'Tab1' },
+      { title: 'Tab2', value: 'Tab2' },
+      { title: 'Tab3', value: 'Tab3' },
+      { title: 'Tab4', content: 'Tab4 Content', value: 'Tab4' },
     ]);
   });
 
@@ -158,17 +186,17 @@ describe('tabsDemo', () => {
       />
     );
     expect(getCmp(target).state.data).toEqual([
-      { title: 'Tab1', key: 'Tab1' },
-      { title: 'Tab2', key: 'Tab2' },
-      { title: 'Tab3', key: 'Tab3' },
+      { title: 'Tab1', value: 'Tab1' },
+      { title: 'Tab2', value: 'Tab2' },
+      { title: 'Tab3', value: 'Tab3' },
     ]);
     target
       .children()
       .instance()
       .onDelete({ index: 1, activityValue: 'Tab2' });
     expect(getCmp(target).state.data).toEqual([
-      { title: 'Tab1', key: 'Tab1' },
-      { title: 'Tab3', key: 'Tab3' },
+      { title: 'Tab1', value: 'Tab1' },
+      { title: 'Tab3', value: 'Tab3' },
     ]);
   });
 
@@ -226,10 +254,10 @@ describe('tabsDemo', () => {
       .instance()
       .onAddClick();
     expect(getCmp(target).state.data).toEqual([
-      { title: 'Tab1', key: 'Tab1' },
-      { title: 'Tab2', key: 'Tab2' },
-      { title: 'Tab3', key: 'Tab3' },
-      { title: 'Tab4', content: 'Tab4 Content', key: 'Tab4' },
+      { title: 'Tab1', value: 'Tab1' },
+      { title: 'Tab2', value: 'Tab2' },
+      { title: 'Tab3', value: 'Tab3' },
+      { title: 'Tab4', content: 'Tab4 Content', value: 'Tab4' },
     ]);
     expect(getCmp(target).state.activityValue).toEqual('Tab4');
   });
@@ -269,16 +297,16 @@ describe('tabsDemo', () => {
     const mockInfo = [
       {
         data: [
-          { key: '1' },
-          { key: '2' },
-          { key: '3' },
-          { key: '4' },
-          { key: '5' },
-          { key: '6' },
-          { key: '7' },
-          { key: '8' },
-          { key: '9' },
-          { key: '10' },
+          { value: '1' },
+          { value: '2' },
+          { value: '3' },
+          { value: '4' },
+          { value: '5' },
+          { value: '6' },
+          { value: '7' },
+          { value: '8' },
+          { value: '9' },
+          { value: '10' },
         ],
         activityValue: '1',
         totalPage: 4,
@@ -286,16 +314,16 @@ describe('tabsDemo', () => {
       },
       {
         data: [
-          { key: '1' },
-          { key: '2' },
-          { key: '3' },
-          { key: '4' },
-          { key: '5' },
-          { key: '6' },
-          { key: '7' },
-          { key: '8' },
-          { key: '9' },
-          { key: '10' },
+          { value: '1' },
+          { value: '2' },
+          { value: '3' },
+          { value: '4' },
+          { value: '5' },
+          { value: '6' },
+          { value: '7' },
+          { value: '8' },
+          { value: '9' },
+          { value: '10' },
         ],
         activityValue: '2',
         totalPage: 4,
@@ -303,16 +331,16 @@ describe('tabsDemo', () => {
       },
       {
         data: [
-          { key: '1' },
-          { key: '2' },
-          { key: '3' },
-          { key: '4' },
-          { key: '5' },
-          { key: '6' },
-          { key: '7' },
-          { key: '8' },
-          { key: '9' },
-          { key: '10' },
+          { value: '1' },
+          { value: '2' },
+          { value: '3' },
+          { value: '4' },
+          { value: '5' },
+          { value: '6' },
+          { value: '7' },
+          { value: '8' },
+          { value: '9' },
+          { value: '10' },
         ],
         activityValue: '3',
         totalPage: 4,
@@ -320,16 +348,16 @@ describe('tabsDemo', () => {
       },
       {
         data: [
-          { key: '1' },
-          { key: '2' },
-          { key: '3' },
-          { key: '4' },
-          { key: '5' },
-          { key: '6' },
-          { key: '7' },
-          { key: '8' },
-          { key: '9' },
-          { key: '10' },
+          { value: '1' },
+          { value: '2' },
+          { value: '3' },
+          { value: '4' },
+          { value: '5' },
+          { value: '6' },
+          { value: '7' },
+          { value: '8' },
+          { value: '9' },
+          { value: '10' },
         ],
         activityValue: '4',
         totalPage: 4,
@@ -337,16 +365,16 @@ describe('tabsDemo', () => {
       },
       {
         data: [
-          { key: '1' },
-          { key: '2' },
-          { key: '3' },
-          { key: '4' },
-          { key: '5' },
-          { key: '6' },
-          { key: '7' },
-          { key: '8' },
-          { key: '9' },
-          { key: '10' },
+          { value: '1' },
+          { value: '2' },
+          { value: '3' },
+          { value: '4' },
+          { value: '5' },
+          { value: '6' },
+          { value: '7' },
+          { value: '8' },
+          { value: '9' },
+          { value: '10' },
         ],
         activityValue: '5',
         totalPage: 4,
@@ -354,16 +382,16 @@ describe('tabsDemo', () => {
       },
       {
         data: [
-          { key: '1' },
-          { key: '2' },
-          { key: '3' },
-          { key: '4' },
-          { key: '5' },
-          { key: '6' },
-          { key: '7' },
-          { key: '8' },
-          { key: '9' },
-          { key: '10' },
+          { value: '1' },
+          { value: '2' },
+          { value: '3' },
+          { value: '4' },
+          { value: '5' },
+          { value: '6' },
+          { value: '7' },
+          { value: '8' },
+          { value: '9' },
+          { value: '10' },
         ],
         activityValue: '6',
         totalPage: 4,
@@ -371,16 +399,16 @@ describe('tabsDemo', () => {
       },
       {
         data: [
-          { key: '1' },
-          { key: '2' },
-          { key: '3' },
-          { key: '4' },
-          { key: '5' },
-          { key: '6' },
-          { key: '7' },
-          { key: '8' },
-          { key: '9' },
-          { key: '10' },
+          { value: '1' },
+          { value: '2' },
+          { value: '3' },
+          { value: '4' },
+          { value: '5' },
+          { value: '6' },
+          { value: '7' },
+          { value: '8' },
+          { value: '9' },
+          { value: '10' },
         ],
         activityValue: '7',
         totalPage: 4,
@@ -388,16 +416,16 @@ describe('tabsDemo', () => {
       },
       {
         data: [
-          { key: '1' },
-          { key: '2' },
-          { key: '3' },
-          { key: '4' },
-          { key: '5' },
-          { key: '6' },
-          { key: '7' },
-          { key: '8' },
-          { key: '9' },
-          { key: '10' },
+          { value: '1' },
+          { value: '2' },
+          { value: '3' },
+          { value: '4' },
+          { value: '5' },
+          { value: '6' },
+          { value: '7' },
+          { value: '8' },
+          { value: '9' },
+          { value: '10' },
         ],
         activityValue: '8',
         totalPage: 4,
@@ -405,16 +433,16 @@ describe('tabsDemo', () => {
       },
       {
         data: [
-          { key: '1' },
-          { key: '2' },
-          { key: '3' },
-          { key: '4' },
-          { key: '5' },
-          { key: '6' },
-          { key: '7' },
-          { key: '8' },
-          { key: '9' },
-          { key: '10' },
+          { value: '1' },
+          { value: '2' },
+          { value: '3' },
+          { value: '4' },
+          { value: '5' },
+          { value: '6' },
+          { value: '7' },
+          { value: '8' },
+          { value: '9' },
+          { value: '10' },
         ],
         activityValue: '9',
         totalPage: 4,
@@ -422,16 +450,16 @@ describe('tabsDemo', () => {
       },
       {
         data: [
-          { key: '1' },
-          { key: '2' },
-          { key: '3' },
-          { key: '4' },
-          { key: '5' },
-          { key: '6' },
-          { key: '7' },
-          { key: '8' },
-          { key: '9' },
-          { key: '10' },
+          { value: '1' },
+          { value: '2' },
+          { value: '3' },
+          { value: '4' },
+          { value: '5' },
+          { value: '6' },
+          { value: '7' },
+          { value: '8' },
+          { value: '9' },
+          { value: '10' },
         ],
         activityValue: '10',
         totalPage: 4,
@@ -439,21 +467,21 @@ describe('tabsDemo', () => {
       },
       {
         data: [
-          { key: '1' },
-          { key: '2' },
-          { key: '3' },
-          { key: '4' },
-          { key: '5' },
-          { key: '6' },
-          { key: '7' },
-          { key: '8' },
-          { key: '9' },
-          { key: '10' },
-          { key: '11' },
-          { key: '12' },
-          { key: '13' },
-          { key: '14' },
-          { key: '15' },
+          { value: '1' },
+          { value: '2' },
+          { value: '3' },
+          { value: '4' },
+          { value: '5' },
+          { value: '6' },
+          { value: '7' },
+          { value: '8' },
+          { value: '9' },
+          { value: '10' },
+          { value: '11' },
+          { value: '12' },
+          { value: '13' },
+          { value: '14' },
+          { value: '15' },
         ],
         activityValue: '7',
         totalPage: 4,
