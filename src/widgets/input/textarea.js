@@ -340,9 +340,9 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
     const { value } = this.state;
     const { placeholder, autoFocus, disabled } = props;
 
-    const { themeConfig = { normal: {} } } = this.props.getPartOfThemeProps('Placeholder');
-    const { normal = {} } = themeConfig;
-    const { color = lightGreyColor, font = {}, fontSize } = normal;
+    const {
+      themeConfig: { normal: { color = lightGreyColor, font = {}, fontSize } = {} },
+    } = this.props.getPartOfThemeProps('Placeholder');
     const theThemeProps = deepMerge(
       this.props.getPartOfThemeProps('Textarea', {
         props: {

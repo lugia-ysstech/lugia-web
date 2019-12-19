@@ -67,7 +67,7 @@ const CommonInputStyle = CSSComponent({
       const { propsConfig } = themeProps;
       const {
         placeHolderColor,
-        placeHolderFont: { size, weight, color },
+        placeHolderFont: { size, weight, color } = {},
         placeHolderFontSize,
       } = propsConfig;
       const theColor = color ? color : placeHolderColor;
@@ -399,8 +399,8 @@ class TextBox extends Component<InputProps, InputState> {
   }
 
   onClear = (e: Object) => {
-    const { disabled, onClear } = this.props;
-    if (disabled) {
+    const { disabled, onClear, readOnly } = this.props;
+    if (disabled || readOnly) {
       return;
     }
     onClear && onClear(e);
@@ -588,9 +588,9 @@ class TextBox extends Component<InputProps, InputState> {
       value = formatter(value);
     }
 
-    const { themeConfig = { normal: {} } } = this.props.getPartOfThemeProps('Placeholder');
-    const { normal = {} } = themeConfig;
-    const { color = lightGreyColor, font = {}, fontSize } = normal;
+    const {
+      themeConfig: { normal: { color = lightGreyColor, font = {}, fontSize } = {} },
+    } = this.props.getPartOfThemeProps('Placeholder');
     const theThemeProps = deepMerge(
       this.props.getPartOfThemeProps('Input', {
         props: {
@@ -600,7 +600,6 @@ class TextBox extends Component<InputProps, InputState> {
           suffix,
           size,
           placeHolderColor: color,
-          placeHolderFont: font,
           placeHolderFontSize: fontSize,
           isShowClearButton,
         },
