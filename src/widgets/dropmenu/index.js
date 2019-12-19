@@ -12,7 +12,6 @@ import Widget from '../consts/index';
 import '../common/shirm';
 import Menu from '../menu';
 import DropMenuButton from './dropmenuButton';
-import { DropMenuContainer } from '../css/dropmenubutton';
 
 const alignType = 'topLeft | top | topRight | bottomLeft | bottom | bottomRight';
 
@@ -39,7 +38,7 @@ type DropMenuProps = {
   align: alignType,
   text: string,
   type: 'customs' | 'basic' | 'primary',
-  switchIconClass?: 'object',
+  switchIconClass?: Object,
   disabled: boolean,
   showSwitch: boolean,
   divided: boolean,
@@ -230,8 +229,8 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   };
 
   getMenuTheme = () => {
-    const { normal = {} } = this.props.getPartOfThemeConfig('Container');
-    const { width = 92 } = normal;
+    const { normal: { width = 92 } = {} } = this.props.getPartOfThemeConfig('Container');
+
     let initMenuTheme = {
       width,
       height: 110,

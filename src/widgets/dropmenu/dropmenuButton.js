@@ -31,7 +31,7 @@ type DropMenuButtonProps = {
   onMouseEnter?: Function,
   onMouseLeave?: Function,
   disabled: boolean,
-  switchIconClass: any,
+  switchIconClass: Object,
   text: 'string',
   showSwitch: boolean,
   getPartOfThemeProps: Function,
@@ -143,8 +143,9 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
   };
 
   getPreIcon = (channel: object) => {
-    const { icons } = this.props;
-    const { preIconClass, preIconSrc } = icons;
+    const {
+      icons: { preIconClass, preIconSrc },
+    } = this.props;
     if (!preIconClass && !preIconSrc) {
       return null;
     }
@@ -153,8 +154,9 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
   };
 
   getSuffixIcon = (channel: object) => {
-    const { icons } = this.props;
-    const { suffixIconClass, suffixIconSrc } = icons;
+    const {
+      icons: { suffixIconClass, suffixIconSrc },
+    } = this.props;
     if (!suffixIconClass && !suffixIconSrc) {
       return null;
     }
@@ -173,10 +175,13 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
   };
 
   getDividedContainerRadius = () => {
-    const { normal = {} } = this.props.getPartOfThemeConfig('Container');
-    const { borderRadius = {} } = normal;
+    const { normal: { borderRadius = {} } = {} } = this.props.getPartOfThemeConfig('Container');
 
     return borderRadius;
+  };
+
+  createChannel = () => {
+    return this.props.createEventChannel(['active', 'hover', 'disabled']);
   };
 
   getDevidedButton = () => {
@@ -192,11 +197,13 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
     } = props;
     const { hasIconChecked, hasButtonChecked } = state;
     const { iconClass, iconSrc } = switchIconClass;
-    const leftChannel = this.props.createEventChannel(['active', 'hover', 'disabled']);
-    const rightChannel = this.props.createEventChannel(['active', 'hover', 'disabled']);
+    const leftChannel = this.createChannel();
+    const rightChannel = this.createChannel();
 
-    const { normal = {} } = this.props.getPartOfThemeConfig('TextContainer');
-    const { width: textContainerWidth } = normal;
+    const { normal: { width: textContainerWidth } = {} } = this.props.getPartOfThemeConfig(
+      'TextContainer'
+    );
+
     const dividedThemeConfig = getPartOfThemeConfig('Divided');
 
     const textContainerTheme = getPartOfThemeProps('TextContainer', {

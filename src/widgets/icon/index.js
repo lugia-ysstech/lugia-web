@@ -12,9 +12,8 @@ import ThemeHoc, { addMouseEvent } from '@lugia/theme-hoc';
 import CSSComponent, { css, StaticComponent } from '../theme/CSSProvider';
 
 const getNormalFontSize = (themeConfig: object) => {
-  const { normal = {} } = themeConfig;
-  const { fontSize, font = {} } = normal;
-  const { size } = font;
+  const { normal: { fontSize, font: { size } = {} } = {} } = themeConfig;
+
   return fontSize ? fontSize : size ? size : 14;
 };
 
@@ -61,8 +60,7 @@ const IconImgWrap = CSSComponent({
   active: {
     selectNames: [['fontSize'], ['font']],
     getCSS: (themeMeta, themeProps) => {
-      const { fontSize, font = {} } = themeMeta;
-      const { size } = font;
+      const { fontSize, font: { size } = {} } = themeMeta;
       const { themeConfig } = themeProps;
       const activeFontSize = fontSize ? fontSize : size ? size : getNormalFontSize(themeConfig);
       return `
