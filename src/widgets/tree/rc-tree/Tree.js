@@ -442,6 +442,7 @@ class Tree extends React.Component {
       dragOverGapBottom: state.dragOverNodeKey === key && state.dropPosition === 1,
       expanded: state.expandedKeys.indexOf(key) !== -1,
       selected: state.selectedKeys.indexOf(key) !== -1,
+      parentIsHighlight: props.parentHighlightKeys.indexOf(key) !== -1,
       hightLight: state.highlight.indexOf(key) !== -1,
       openTransitionName: this.getOpenTransitionName(),
       openAnimation: props.openAnimation,
