@@ -6,6 +6,7 @@ export type PaginationProps = {
   pageSize?: number,
   pageSizeOptions?: string[],
   showQuickJumper?: boolean,
+  showTotalNumber?: boolean,
   showTotal?: (total: number, range: number) => void,
   simple?: boolean,
   total?: number,

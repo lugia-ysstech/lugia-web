@@ -32,7 +32,7 @@ export default class PaginationDemo extends React.Component<any, any> {
         PaginationContainer: {
           normal: { width: 1000, height: 50 },
         },
-        PaginationListItem: {
+        SelectedPaginationListItem: {
           normal: {
             width: 40,
             height: 40,
@@ -45,6 +45,19 @@ export default class PaginationDemo extends React.Component<any, any> {
             border: getBorder({ color: 'red', width: 1, style: 'solid' }),
           },
         },
+        PaginationArrowIconContainer: {
+          normal: {
+            width: 40,
+            height: 40,
+            lineHeight: 40,
+          },
+          hover: {
+            width: 40,
+            height: 40,
+            lineHeight: 40,
+            border: getBorder({ color: 'blue', width: 1, style: 'solid' }),
+          },
+        },
         PaginationInnerText: {
           normal: {
             fontSize: 20,
@@ -55,20 +68,7 @@ export default class PaginationDemo extends React.Component<any, any> {
         },
         ChangePageIcon: {
           hover: {
-            color: 'red',
-          },
-        },
-        QuickJumpInput: {
-          Container: {
-            normal: {
-              width: 100,
-              height: 40,
-            },
-          },
-          Input: {
-            normal: {
-              color: '4d63ff',
-            },
+            color: 'yellow',
           },
         },
       },
@@ -79,24 +79,30 @@ export default class PaginationDemo extends React.Component<any, any> {
         <Theme config={themeConfig}>
           <Title> 配置 外观样式 基础分页。</Title>
           <Pagination defaultCurrent={2} total={500} />
-          <Title>基础分页。受限</Title>
-          <Pagination current={3} total={500} />
+          {/*<Title>基础分页。受限</Title>*/}
+          {/*<Pagination current={3} total={500} />*/}
 
-          <Title>更多分页。</Title>
-          <Pagination defaultCurrent={6} total={500} />
-          <Title>改变每页显示条目数。</Title>
+          {/*<Title>更多分页。</Title>*/}
+          {/*<Pagination defaultCurrent={6} total={500} />*/}
+          {/*<Title>改变每页显示条目数。</Title>*/}
+          {/*<Pagination*/}
+          {/*showSizeChanger={true}*/}
+          {/*onShowSizeChange={this.onShowSizeChange}*/}
+          {/*defaultCurrent={3}*/}
+          {/*total={500}*/}
+          {/*/>*/}
+          {/*<Title>快速跳转到某一页。</Title>*/}
           <Pagination
-            showSizeChanger={true}
-            onShowSizeChange={this.onShowSizeChange}
-            defaultCurrent={3}
-            total={500}
+            isShowTotalData
+            showQuickJumper
+            defaultCurrent={2}
+            total={400}
+            onChange={this.onChange}
           />
-          <Title>快速跳转到某一页。</Title>
-          <Pagination showQuickJumper defaultCurrent={2} total={400} onChange={this.onChange} />
-          <Title>简单的翻页。</Title>
-          <Pagination simple defaultCurrent={2} total={500} />
-          <Title>单页 不显示翻页箭头。</Title>
-          <Pagination hideOnSinglePage defaultCurrent={2} total={200} />
+          {/*<Title>简单的翻页。</Title>*/}
+          {/*<Pagination simple defaultCurrent={2} total={500} />*/}
+          {/*<Title>单页 不显示翻页箭头。</Title>*/}
+          {/*<Pagination hideOnSinglePage defaultCurrent={2} total={200} />*/}
         </Theme>
       </div>
     );
