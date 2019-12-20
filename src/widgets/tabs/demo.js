@@ -23,6 +23,9 @@ const ContainerBox = StaticComponent({
   className: 'ContentBlock',
   css: css`
     margin: 10px;
+    &:last-child {
+      margin-bottom: 200px;
+    }
   `,
 });
 
@@ -439,18 +442,17 @@ export const defaulttestDelayData = [
     title: '猪蹄',
     content: (
       <div>
-        <div>猪蹄啊啊啊啊啊</div>
-        <div>猪蹄啊啊啊啊啊</div>
-        <div>猪蹄啊啊啊啊啊</div>
-        <div>猪蹄啊啊啊啊啊</div>
+        {' '}
+        <div>猪蹄啊啊啊啊</div> <div>猪蹄啊啊啊啊</div> <div>猪蹄啊啊啊啊</div>{' '}
+        <div>猪蹄啊啊啊啊</div>{' '}
       </div>
     ),
     hideCloseBtn: true,
     icon: 'lugia-icon-financial_heart',
     suffixIcon: 'lugia-icon-financial_like',
   },
-  { title: '排骨', content: '排骨啊啊啊啊啊' },
-  { title: '鸡腿', content: '鸡腿啊啊啊啊啊' },
+  { title: '排骨', content: '排骨啊啊啊啊' },
+  { title: '鸡腿', content: '鸡腿啊啊啊啊' },
 ];
 
 const addItem = [
@@ -548,9 +550,11 @@ export default class TabsDemo extends React.Component<any, any> {
 
         BorderStyle: {
           normal: {
+            color: '#ffa6ca',
+            width: 1,
             border: {
               right: {
-                color: '#FFCCFF',
+                color: '#ff3946',
                 width: 1,
                 style: 'solid',
               },
@@ -878,7 +882,7 @@ export default class TabsDemo extends React.Component<any, any> {
       [Widget.Tabs]: {
         Container: {
           normal: {
-            width: '100%',
+            // width: '330',
             // height: 300,
             margin: {
               top: 10,
@@ -895,29 +899,29 @@ export default class TabsDemo extends React.Component<any, any> {
         },
         ContentBlock: {
           normal: {
-            padding: {
-              top: 10,
-              left: 10,
-              right: 10,
-              bottom: 10,
-            },
-            margin: {
-              // top: 10,
-              left: 10,
-              right: 10,
-              bottom: 10,
-            },
-            background: {
-              color: '#aabbcc',
-            },
-            boxShadow: { x: 0, y: 0, color: '#ffb69e', type: 'outset', blur: 6, spread: 3 },
-            border: getBorder({ color: 'blue', width: 1, style: 'solid' }),
-            borderRadius: getBorderRadius(20),
+            // padding: {
+            //   top: 10,
+            //   left: 10,
+            //   right: 10,
+            //   bottom: 10,
+            // },
+            // margin: {
+            //   // top: 10,
+            //   left: 10,
+            //   right: 10,
+            //   bottom: 10,
+            // },
+            // background: {
+            //   color: '#aabbcc',
+            // },
+            // boxShadow: { x: 0, y: 0, color: '#ffb69e', type: 'outset', blur: 6, spread: 3 },
+            // border: getBorder({ color: 'blue', width: 1, style: 'solid' }),
+            // borderRadius: getBorderRadius(20),
           },
         },
         BorderStyle: {
           normal: {
-            color: 'transparent',
+            color: '#6e6ccc',
             width: 1,
           },
         },
@@ -950,8 +954,14 @@ export default class TabsDemo extends React.Component<any, any> {
         <Theme config={updateTheme}>
           <ContainerBox>
             <Tabs>
-              <Tabpane title={'1111'} content={'11111'} value={'0'} />
-              <Tabpane title={'2222'} content={<div>2222</div>} value={'1'} showDeleteBtn={true} />
+              <Tabpane title={'1111'} value={'0'} />
+              <Tabpane title={'2222'} showDeleteBtn={true} />
+            </Tabs>
+          </ContainerBox>
+          <ContainerBox>
+            <Tabs tabPosition={'bottom'}>
+              <Tabpane title={'1111'} value={'0'} />
+              <Tabpane title={'2222'} showDeleteBtn={true} />
             </Tabs>
           </ContainerBox>
           <ContainerBox>
