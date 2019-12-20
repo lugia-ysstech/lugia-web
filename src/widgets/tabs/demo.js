@@ -878,7 +878,7 @@ export default class TabsDemo extends React.Component<any, any> {
       [Widget.Tabs]: {
         Container: {
           normal: {
-            width: 1200,
+            width: '100%',
             // height: 300,
             margin: {
               top: 10,
