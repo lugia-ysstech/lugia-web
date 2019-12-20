@@ -403,6 +403,7 @@ type TabsProps = {
   getTabpane?: Function,
   getPartOfThemeHocProps: Function,
   getPartOfThemeProps: Function,
+  showDividerLine?: boolean,
 };
 
 class TabHeader extends Component<TabsProps, TabsState> {

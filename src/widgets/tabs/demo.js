@@ -948,9 +948,45 @@ export default class TabsDemo extends React.Component<any, any> {
         },
       },
     };
+    const borderTheme = {
+      [Widget.Tabs]: {
+        TabHeader: {
+          DividerTheme: {
+            Divider: {
+              normal: {
+                background: {
+                  color: '#ffce5a',
+                },
+                width: 10,
+              },
+            },
+          },
+        },
+      },
+    };
 
     return (
       <div>
+        <Theme config={borderTheme}>
+          <ContainerBox>
+            <Tabs showDividerLine={true}>
+              <Tabpane
+                title={'1111'}
+                value={'0'}
+                icon={'lugia-icon-financial_heart'}
+                suffixIcon={'lugia-icon-financial_like'}
+              />
+              <Tabpane title={'2222'} showDeleteBtn={true} />
+            </Tabs>
+          </ContainerBox>
+          <ContainerBox>
+            <Tabs showDividerLine={true} tabPosition={'left'}>
+              <Tabpane title={'1111'} value={'0'} />
+              <Tabpane title={'2222'} showDeleteBtn={true} />
+            </Tabs>
+          </ContainerBox>
+        </Theme>
+
         <Theme config={updateTheme}>
           <ContainerBox>
             <Tabs>
@@ -979,7 +1015,7 @@ export default class TabsDemo extends React.Component<any, any> {
             <Tabs tabType={'window'} data={defaulttestDelayData} showDeleteBtn={true} />
           </ContainerBox>
 
-          {/*<Tabs tabPosition={'left'} data={defaulttestDelayData} />*/}
+          <Tabs tabPosition={'left'} data={defaulttestDelayData} />
         </Theme>
 
         <Theme config={cardView}>

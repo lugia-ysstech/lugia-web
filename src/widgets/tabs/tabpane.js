@@ -9,10 +9,11 @@ import React, { Component } from 'react';
 import Widget from '../consts/index';
 import { TabType, TabPositionType } from '../css/tabs';
 import Icon from '../icon';
+import Divider from '../divider';
 import { isVertical, matchType } from './utils';
 import { ObjectUtils } from '@lugia/type-utils';
 
-import CSSComponent, { css, keyframes } from '@lugia/theme-css-hoc';
+import CSSComponent, { css, keyframes, StaticComponent } from '@lugia/theme-css-hoc';
 import ThemeHoc from '@lugia/theme-hoc';
 
 import { deepMerge } from '@lugia/object-utils';
@@ -305,6 +306,17 @@ const ClearButtonContainer = CSSComponent({
   },
 });
 
+const TabPanContainer = StaticComponent({
+  tag: 'div',
+  className: 'TabPanContainer',
+  css: css`
+    text-align: center;
+    display: ${props => {
+      return props.isVertical ? '' : 'inline-block';
+    }};
+  `,
+});
+
 type TabpaneState = {
   iconClass: string,
 };
@@ -328,15 +340,11 @@ type TabpaneProps = {
   themeProps: Object,
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
+  showDividerLine: boolean,
 };
 
 class Tabpane extends Component<TabpaneProps, TabpaneState> {
-  static defaultProps = {};
   static displayName = Widget.Tabpane;
-
-  constructor(props: TabpaneProps) {
-    super(props);
-  }
 
   static getDerivedStateFromProps(nextProps: TabpaneProps, state: TabpaneState) {
     if (!state) {
@@ -356,6 +364,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
       suffixIcon,
       disabled,
       showDeleteBtn,
+      showDividerLine,
     } = this.props;
     const { TargetTab, themeProps, iconThemes } = this.getHTabPaneThemeProps(
       tabType,
@@ -364,8 +373,9 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
       showDeleteBtn,
       disabled
     );
+    const isLineType = matchType(tabType, 'line');
 
-    let Target = (
+    const Target = (
       <TargetTab
         themeProps={themeProps}
         disabled={disabled}
@@ -376,7 +386,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
       >
-        {tabType === 'line' ? (
+        {isLineType ? (
           <Title
             className={'lineTitle'}
             themeProps={themeProps}
@@ -402,35 +412,19 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
           </CardTitle>
         )}
 
-        {this.getClearButton()}
+        {!isLineType && this.getClearButton()}
       </TargetTab>
     );
-    if (matchType(tabType, 'line') && isVertical(tabPosition)) {
-      Target = (
-        <TargetTab
-          themeProps={themeProps}
-          disabled={disabled}
-          tabType={tabType}
-          onClick={this.handleClick}
-          tabPosition={tabPosition}
-          isSelect={isSelect}
-          onMouseEnter={this.onMouseEnter}
-          onMouseLeave={this.onMouseLeave}
-        >
-          <Title
-            className={'lineTitle'}
-            themeProps={themeProps}
-            tabType={tabType}
-            isSelect={isSelect}
-            disabled={disabled}
-          >
-            {this.getTabIconContainer(icon, iconThemes)}
-            {title}
-          </Title>
-        </TargetTab>
+    let resTabPan = Target;
+    if (isLineType && showDividerLine) {
+      resTabPan = (
+        <TabPanContainer isVertical={isVertical(tabPosition)}>
+          {Target}
+          {this.getDivider(isVertical(tabPosition))}
+        </TabPanContainer>
       );
     }
-    return Target;
+    return resTabPan;
   }
 
   getHTabPaneThemeProps(
@@ -540,8 +534,6 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     return { TargetTab, themeProps, iconThemes: { theme, viewClass } };
   }
 
-  componentDidMount() {}
-
   handleClick = () => {
     const { index, onClick, disabled, keyVal } = this.props;
     if (!disabled) onClick && onClick({ index, activityValue: keyVal });
@@ -564,6 +556,27 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
       );
     }
     return icon;
+  }
+  getDivider(isVertical: boolean): React$Node {
+    const { theme, viewClass } = this.props.getPartOfThemeHocProps('DividerTheme');
+
+    const props = isVertical ? 'width' : 'height';
+    const size = isVertical ? 30 : 20;
+    const defaultThemeObj = {
+      [viewClass]: {
+        Divider: {
+          normal: {
+            [props]: size,
+          },
+        },
+      },
+    };
+    const mergeTheme = deepMerge(defaultThemeObj, theme);
+    const newTheme = { theme: mergeTheme, viewClass };
+    if (isVertical) {
+      return <Divider {...newTheme} />;
+    }
+    return <Divider {...newTheme} type={'vertical'} />;
   }
   onDeleteClick = e => {
     e.stopPropagation();

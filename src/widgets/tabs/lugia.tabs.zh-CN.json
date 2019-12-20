@@ -131,7 +131,7 @@
     "TabType": ["line", "card", "window"],
     "PagedType": ["single", "page"],
     "TabPositionType": ["top", "bottom", "left", "right"],
-    "ReturnType":["index","activityValue"]
+    "ReturnType": ["index", "activityValue"]
   },
   "childrenWidget": ["tabpane"],
   "category": ["数据展示"],
@@ -171,7 +171,7 @@
         "ContentBlock": {
           "name": "内容区域",
           "desc": "内容区域的样式配置",
-          "normal": [["background"], ["padding"],  ["height"]]
+          "normal": [["background"], ["padding"], ["height"]]
         },
         "TitleContainer": {
           "name": "卡片区域",
@@ -267,7 +267,7 @@
         "ContentBlock": {
           "name": "内容区域",
           "desc": "内容区域的样式配置",
-          "normal": [["background"], ["padding"],  ["height"]]
+          "normal": [["background"], ["padding"], ["height"]]
         },
         "TabHeader": {
           "name": "标签配置",
@@ -318,12 +318,20 @@
     "ContentBlock": {
       "name": "内容区域",
       "desc": "内容区域的样式配置",
-      "normal": [["background"], ["padding"], ["width"], ["height"],["boxShadow"],["border"], ["borderRadius"]]
+      "normal": [
+        ["background"],
+        ["padding"],
+        ["width"],
+        ["height"],
+        ["boxShadow"],
+        ["border"],
+        ["borderRadius"]
+      ]
     },
     "TitleContainer": {
       "name": "卡片区域",
       "desc": "卡片区域样式配置",
-      "normal": [ ["background"], ["textAlign"]]
+      "normal": [["background"], ["textAlign"]]
     },
     "BorderStyle": {
       "name": "默认线",
@@ -364,6 +372,21 @@
           ],
           "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
           "disabled": [["color"], ["background"]]
+        },
+        "DividerTheme": {
+          "name": "分割线",
+          "desc": "分割线样式配置（仅 tabType = line 时支持）",
+          "theme": {
+            "Divider": {
+              "name": "分割线",
+              "desc": "分割线样式配置",
+              "normal": [
+                ["width"],
+                ["height"],
+                ["background"]
+              ]
+            }
+          }
         }
       }
     }
