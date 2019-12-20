@@ -3,7 +3,7 @@
   "title": "单个标签页",
   "desc": "单个标签页组件",
   "props": {
-    "activityValue": {
+    "value": {
       "type": "string",
       "desc": "当前激活 tab 面板的 key"
     },
