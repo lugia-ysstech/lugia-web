@@ -26,5 +26,6 @@ export type CardProps = {
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
   getPartOfThemeConfig: Function,
+  showTipLine?: boolean,
 };
 export type CardState = {};
