@@ -899,24 +899,24 @@ export default class TabsDemo extends React.Component<any, any> {
         },
         ContentBlock: {
           normal: {
-            // padding: {
-            //   top: 10,
-            //   left: 10,
-            //   right: 10,
-            //   bottom: 10,
-            // },
-            // margin: {
-            //   // top: 10,
-            //   left: 10,
-            //   right: 10,
-            //   bottom: 10,
-            // },
-            // background: {
-            //   color: '#aabbcc',
-            // },
-            // boxShadow: { x: 0, y: 0, color: '#ffb69e', type: 'outset', blur: 6, spread: 3 },
-            // border: getBorder({ color: 'blue', width: 1, style: 'solid' }),
-            // borderRadius: getBorderRadius(20),
+            padding: {
+              top: 10,
+              left: 10,
+              right: 10,
+              bottom: 10,
+            },
+            margin: {
+              // top: 10,
+              left: 10,
+              right: 10,
+              bottom: 10,
+            },
+            background: {
+              color: '#aabbcc',
+            },
+            boxShadow: { x: 0, y: 0, color: '#ffb69e', type: 'outset', blur: 6, spread: 3 },
+            border: getBorder({ color: 'blue', width: 1, style: 'solid' }),
+            borderRadius: getBorderRadius(20),
           },
         },
         BorderStyle: {
