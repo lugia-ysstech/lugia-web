@@ -51,6 +51,11 @@
       "desc": "是否显示可以改变 pageSize",
       "defaultValue": false
     },
+    "isShowTotalData": {
+      "type": "boolean",
+      "desc": "是否显示可以显示数据总量",
+      "defaultValue": false
+    },
     "simple": {
       "type": "boolean",
       "desc": "当添加该属性时，显示为简单分页"
@@ -97,7 +102,7 @@
         "simple": true
       },
       "theme": {
-        "PaginationContainer": {
+        "Container": {
           "name": "分页外部容器",
           "desc": "配置分页外部容器",
           "normal": [
@@ -168,7 +173,7 @@
     }
   },
   "theme": {
-    "PaginationContainer": {
+    "Container": {
       "name": "分页外部容器",
       "desc": "配置分页外部容器",
       "normal": [
@@ -181,9 +186,9 @@
         ["margin"]
       ]
     },
-    "PaginationListItem": {
-      "name": "单个页数外部容器",
-      "desc": "配置单个页数外部容器",
+    "unSelectedPaginationListItem": {
+      "name": "未选择状态下单个页数容器",
+      "desc": "配置未选择状态下单个页数容器",
       "normal": [
         ["width"],
         ["height"],
@@ -197,15 +202,80 @@
       ],
       "hover": [["color"], ["font"], ["fontSize"], ["border"], ["borderRadius"]],
       "clicked": [],
-      "disabled": []
+      "disabled": [
+        ["cursor"],
+        ["border"],
+        ["borderRadius"],
+        ["opacity"],
+        ["background"],
+        ["boxShadow"]
+      ]
     },
-    "PaginationInnerText": {
-      "name": "单个页数内部文字",
-      "desc": "配置单个页数内部文字",
+    "SelectedPaginationListItem": {
+      "name": "选择状态下单个页数容器",
+      "desc": "配置选择状态下单个页数容器",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["cursor"],
+        ["border"],
+        ["borderRadius"],
+        ["opacity"],
+        ["background"],
+        ["boxShadow"],
+        ["lineHeight"]
+      ],
+      "hover": [["color"], ["font"], ["fontSize"], ["border"], ["borderRadius"]],
+      "clicked": [],
+      "disabled": [
+        ["cursor"],
+        ["border"],
+        ["borderRadius"],
+        ["opacity"],
+        ["background"],
+        ["boxShadow"]
+      ]
+    },
+    "unSelectedPaginationInnerText": {
+      "name": "未选择状态下单个页数内部文字",
+      "desc": "配置未选择状态下单个页数内部文字",
       "normal": [["fontSize"], ["font"], ["color"], ["cursor"], ["opacity"]],
       "hover": [["color"], ["font"], ["fontSize"]],
       "clicked": [],
       "disabled": []
+    },
+    "SelectedPaginationInnerText": {
+      "name": "选择状态下单个页数内部文字",
+      "desc": "配置选择状态下单个页数内部文字",
+      "normal": [["fontSize"], ["font"], ["color"], ["cursor"], ["opacity"]],
+      "hover": [["color"], ["font"], ["fontSize"]],
+      "clicked": [],
+      "disabled": []
+    },
+    "PaginationArrowIconContainer": {
+      "name": "分页切换页数图标外部容器",
+      "desc": "配置分页切换页数图标外部容器",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["cursor"],
+        ["border"],
+        ["borderRadius"],
+        ["opacity"],
+        ["background"],
+        ["boxShadow"],
+        ["lineHeight"]
+      ],
+      "hover": [["color"], ["font"], ["fontSize"], ["border"], ["borderRadius"]],
+      "clicked": [],
+      "disabled": [
+        ["cursor"],
+        ["border"],
+        ["borderRadius"],
+        ["opacity"],
+        ["background"],
+        ["boxShadow"]
+      ]
     },
     "QuickJumpInput": {
       "name": "快速跳转分页输入框",
