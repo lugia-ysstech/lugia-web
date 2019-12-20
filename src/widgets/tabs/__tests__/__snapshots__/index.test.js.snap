@@ -24,7 +24,7 @@ exports[`tabsDemo Component JSON 1`] = `
   background: #4d63ff;
   border-radius: 2px;
   position: absolute;
-  bottom: -1px;
+  bottom: 0px;
   width: 100%;
   height: 2px;
   left: 50%;
@@ -77,6 +77,16 @@ exports[`tabsDemo Component JSON 1`] = `
   text-align: left;
 }
 
+.c1::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  height: 1px;
+  background-color: #e8e8e8;
+  left: 0;
+  width: 100%;
+}
+
 .c7 {
   position: relative;
   background: #fff;
@@ -118,13 +128,7 @@ exports[`tabsDemo Component JSON 1`] = `
     >
       <div
         className="c3"
-        style={
-          Object {
-            "borderBottomColor": "#e8e8e8",
-            "borderBottomStyle": "solid",
-            "borderBottomWidth": "0.1rem",
-          }
-        }
+        style={Object {}}
         x={-0}
       >
         <div

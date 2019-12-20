@@ -183,6 +183,7 @@ type TabsProps = {
   getPartOfThemeHocProps: Function,
   getPartOfThemeProps: Function,
   hideContent?: boolean,
+  showDividerLine?: boolean,
 };
 export function hasTargetInProps(target: string, props: TabsProps) {
   return `${target}` in props;
@@ -326,6 +327,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
       themeProps,
       getPartOfThemeHocProps,
       getPartOfThemeProps,
+      showDividerLine,
     } = this.props;
     let { tabPosition } = this.props;
     tabPosition = tabType === 'line' ? tabPosition : 'top';
@@ -347,6 +349,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
       themeProps,
       getPartOfThemeHocProps,
       getPartOfThemeProps,
+      showDividerLine,
     };
   }
 
