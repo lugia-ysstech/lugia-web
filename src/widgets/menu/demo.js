@@ -8,9 +8,16 @@ import Menu from './index';
 import Widget from '../consts/index';
 import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
 import styled from 'styled-components';
+import Icon from '../icon';
 const { MenuItem } = Menu;
 const Placeholder = Menu.Placeholder;
 const computeCanSeeCount = Menu.computeCanSeeCount;
+
+const IconWrap = styled.div`
+  position: absolute;
+  right: 30px;
+  top: 15px;
+`;
 
 const Button = styled.div`
   width: 200px;
@@ -27,14 +34,45 @@ const H2 = styled.h2`
   color: orangered;
 `;
 
-const MenuWrap = styled.div`
-  margin: 10px;
-`;
-
 const Box = styled.div`
   display: inline-block;
   margin: 10px 30px;
 `;
+
+const objData = [
+  {
+    value: '机构性质',
+    text: '机构性质',
+    des: 'JGXZ',
+    icon: 'lugia-icon-direction_play_circle',
+    icons: {
+      preIconClass: 'lugia-icon-financial_heart',
+      preIconSrc: '',
+      suffixIconClass: 'lugia-icon-financial_contacts',
+      suffixIconSrc: '',
+    },
+  },
+  {
+    value: '市场',
+    text: '市场',
+    des: 'MARKET',
+  },
+  {
+    value: '报表规则类型',
+    text: '报表规则类型',
+    des: 'REPORT_RULE_TYPE',
+  },
+  {
+    value: '特殊日期',
+    text: '特殊日期',
+    des: 'TSRQ',
+  },
+  {
+    value: 'ACS 001',
+    text: 'ACS 001',
+    des: 'ACS 001',
+  },
+];
 
 const data = [
   { value: '皮卡丘', text: '皮卡丘', disabled: true },
@@ -116,7 +154,7 @@ const hasChildrenData = [
 const theme = {
   [Widget.Menu]: {
     MenuItem: {
-      MenuItemWrap: { normal: { height: 50 } },
+      MenuItemWrap: { normal: { height: 50, background: { color: '#E6E6FA' } } },
     },
   },
 };
@@ -125,9 +163,6 @@ export default class extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
-      // items,
-      // selectedKeys: ['一级菜单6/次级菜单6-2/三级菜单a/sub1'],
-      // expandedPath: ['一级菜单6/次级菜单6-2/三级菜单a/sub1'],
       selectedKeys: [],
       expandedPath: [],
       scrollerValue: 0,
@@ -138,179 +173,93 @@ export default class extends React.Component<any, any> {
   render() {
     const { selectedKeys, expandedPath } = this.state;
 
-    const theme = {
+    const view = {
       [Widget.Menu]: {
-        MenuWrap: {
+        Container: {
           normal: {
             width: 300,
-            height: 400,
-            // opacity: 0.7,
+            height: 200,
             background: {
-              color: '#ccc',
+              color: '#E6E6FA',
             },
             padding: {
-              left: 10,
-              top: 30,
-              //   right: 30,
-            },
-            margin: {
               left: 20,
-              top: 20,
+              right: 20,
+              bottom: 30,
             },
-            border: getBorder({ color: '#ff3366', width: 1, style: 'solid' }),
-            borderRadius: getBorderRadius(20),
-            boxShadow: getBoxShadow('2px 2px 2px 4px #ff3366'),
-          },
-          hover: {
-            background: {
-              color: '#ff66cc',
-            },
-            // opacity: 1,
-            border: getBorder({ color: '#ff66cc', width: 1, style: 'solid' }),
-            borderRadius: getBorderRadius(20),
-            boxShadow: getBoxShadow('2px 2px 2px 4px #ff66cc'),
           },
         },
+
         MenuItem: {
           MenuItemWrap: {
             normal: {
               height: 60,
-              background: { color: '#ff99cc' },
-              color: '#cc00cc',
-              // border: getBorder({ color: '#ff66cc', width: 1, style: 'solid' }),
-              borderRadius: getBorderRadius(20),
-              padding: {
-                left: 60,
-                top: 0,
-              },
-              font: {
-                size: 16,
+              border: {
+                left: { color: 'transparent', style: 'solid', width: 4 },
               },
             },
             hover: {
-              color: '#fff',
               background: {
-                color: '#660066',
+                color: '#B9D3EE',
               },
-              opacity: 0.9,
-              font: {
-                fontWeight: 900,
-              },
-              // border: getBorder({ color: '#ff66cc', width: 1, style: 'solid' }),
-              borderRadius: getBorderRadius(20),
-            },
-
-            active: {
               color: '#4d63ff',
-              background: {
-                color: 'ff0099',
-              },
-              opacity: 0.9,
-              font: {
-                fontWeight: 900,
-              },
-              // border: getBorder({ color: '#660033', width: 1, style: 'solid' }),
-              borderRadius: getBorderRadius(60),
-            },
-
-            disabled: {
-              background: { color: '#ff99cc' },
-              color: 'red',
-              borderRadius: getBorderRadius(60),
-              opacity: 0.7,
-              padding: {
-                left: 30,
-                top: 0,
-              },
-              font: {
-                size: 26,
-              },
             },
           },
-
           SelectedMenuItemWrap: {
             normal: {
-              height: 80,
-              background: { color: '#cc00ff' },
-              color: '#fff',
-              // border: getBorder({ color: '#660033', width: 1, style: 'solid' }),
-              borderRadius: getBorderRadius(80),
-              padding: {
-                left: 30,
+              background: {
+                color: '#B9D3EE',
               },
-              font: {
-                size: 20,
+              border: {
+                left: { color: '#3A5FCD', style: 'solid', width: 4 },
               },
             },
             hover: {
               color: '#4d63ff',
               background: {
-                color: '#ffffcc',
+                color: '#B9D3EE',
               },
-              opacity: 1,
-              font: {
-                fontWeight: 900,
-              },
-              // border: getBorder({ color: '#336699', width: 1, style: 'solid' }),
-              borderRadius: getBorderRadius(60),
-            },
-
-            active: {
-              color: '#cc0000',
-              background: {
-                color: 'ff9900',
-              },
-              opacity: 1,
-              font: {
-                fontWeight: 900,
-              },
-              // border: getBorder({ color: '#000033', width: 1, style: 'solid' }),
-              borderRadius: getBorderRadius(0),
             },
           },
-
           Divider: {
-            normal: { background: { color: 'red' } },
+            normal: { background: { color: '#D4D4D4' } },
           },
-
-          Checkbox: {
-            CheckboxText: {
-              normal: {
-                color: 'red',
-                font: { fontSize: 22, fontWeight: 500 },
-              },
-              hover: { color: 'green', font: { fontSize: 16, fontWeight: 500 } },
-              disabled: { color: 'yellow', font: { fontSize: 16, fontWeight: 500 } },
+          PreIcon: {
+            hover: {
+              fontSize: 20,
             },
           },
-        },
 
-        SubMenu: {
-          MenuWrap: {
+          SuffixIcon: {
+            hover: {
+              fontSize: 20,
+            },
+          },
+
+          SwitchIcon: {
+            hover: {
+              fontSize: 20,
+            },
+          },
+          TextContainer: {
             normal: {
-              width: 100,
-              background: {
-                color: '#660033',
+              padding: {
+                top: 10,
+                left: 20,
               },
             },
           },
-
-          MenuItem: {
-            MenuItemWrap: {
-              normal: {
-                color: '#fff',
+          DesContainer: {
+            normal: {
+              padding: {
+                left: 20,
               },
             },
-          },
-
-          SubMenu: {
-            MenuWrap: {
-              normal: {
-                width: 200,
-                background: {
-                  color: '#777777',
-                },
-              },
+            hover: {
+              // color: 'orange',
+            },
+            active: {
+              color: '#3d1c4e',
             },
           },
         },
@@ -319,6 +268,45 @@ export default class extends React.Component<any, any> {
 
     return (
       <div>
+        <H2>带有辅助文本的菜单</H2>
+        <Box>
+          <Menu
+            theme={view}
+            autoHeight
+            divided
+            data={objData}
+            renderSuffixItems={this.renderSuffixItems}
+          />
+        </Box>
+
+        <Box>
+          <Menu
+            theme={view}
+            checkedCSS={'checkbox'}
+            mutliple={true}
+            autoHeight
+            divided
+            renderSuffixItems={this.renderSuffixItems}
+            data={objData}
+          />
+        </Box>
+
+        <H2>单选基本菜单</H2>
+
+        <Box>
+          <Menu theme={theme} autoHeight divided data={data} />
+        </Box>
+
+        <Box>
+          <Menu theme={theme} autoHeight checkedCSS={'checkbox'} divided data={data} />
+        </Box>
+
+        <Box>
+          <Menu theme={theme} autoHeight checkedCSS={'background'} divided data={data} />
+        </Box>
+
+        <H2>多选基本菜单</H2>
+
         <Box>
           <Menu
             theme={theme}
@@ -331,32 +319,70 @@ export default class extends React.Component<any, any> {
         </Box>
 
         <Box>
-          <Menu divided theme={theme} mutliple data={data} />
+          <Menu divided theme={theme} autoHeight mutliple data={data} />
         </Box>
 
-        <MenuWrap>
-          <H2>级联嵌套菜单 </H2>
-          <Box>
-            <Menu
-              theme={theme}
-              separator={'/'}
-              mutliple={false}
-              // popupVisible={false}
-              // action={'click'}
-              action={'hover'}
-              expandedPath={expandedPath}
-              selectedKeys={selectedKeys}
-              handleIsInMenu={this.handleIsInMenu}
-              data={hasChildrenData}
-              offsetY={0}
-              onExpandPathChange={this.onExpandPathChange}
-              onClick={this.onClick}
-              autoHeight
-            />
-          </Box>
-          <Button onClick={this.btnClick}>hello</Button>
-        </MenuWrap>
+        <H2>级联嵌套菜单 </H2>
+        <Box>
+          <Menu
+            theme={theme}
+            separator={'/'}
+            mutliple={false}
+            action={'hover'}
+            expandedPath={expandedPath}
+            selectedKeys={selectedKeys}
+            handleIsInMenu={this.handleIsInMenu}
+            data={hasChildrenData}
+            offsetY={0}
+            onExpandPathChange={this.onExpandPathChange}
+            onClick={this.onClick}
+            autoHeight
+          />
+        </Box>
+        <Button onClick={this.btnClick}>hello</Button>
       </div>
+    );
+  }
+
+  renderSuffixItems(item, channel) {
+    const iconTheme = {
+      [Widget.Icon]: {
+        Icon: {
+          normal: {
+            margin: {
+              left: 5,
+              right: 5,
+              top: 0,
+              bottom: 0,
+            },
+            fontSize: 14,
+          },
+          hover: {
+            color: 'red',
+          },
+        },
+      },
+    };
+    return (
+      <IconWrap>
+        <Icon
+          theme={iconTheme}
+          lugiaConsumers={channel.consumer}
+          iconClass={'lugia-icon-financial_editor'}
+          onClick={() => {
+            console.log('first Icon');
+          }}
+        />
+
+        <Icon
+          theme={iconTheme}
+          lugiaConsumers={channel.consumer}
+          iconClass={'lugia-icon-reminder_close_circle_o'}
+          onClick={() => {
+            console.log('second Icon');
+          }}
+        />
+      </IconWrap>
     );
   }
 
