@@ -20,7 +20,7 @@ import colorsFunc from '../css/stateColor';
 
 import { getBorder } from '@lugia/theme-utils';
 
-const { themeColor, disableColor } = colorsFunc();
+const { themeColor, disableColor, defaultColor } = colorsFunc();
 
 const BaseTab = CSSComponent({
   tag: 'div',
@@ -63,9 +63,9 @@ const BaseTab = CSSComponent({
           animation: ${addWidth} 0.2s linear forwards;
           transform: translateX(-50%);
         `;
-        let pos = tabPosition === 'top' ? 'bottom: -1px;' : 'top: -1px;';
+        let pos = tabPosition === 'top' ? 'bottom: 0px;' : 'top: 0px;';
         if (isVertical(tabPosition)) {
-          pos = tabPosition === 'left' ? 'right: -21px;' : 'left: -21px;';
+          pos = tabPosition === 'left' ? 'right: -20px;' : 'left: -20px;';
           cssString = css`
             width: 2px;
             height: 100%;
@@ -509,6 +509,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
                 topLeft: 4,
                 topRight: 4,
               },
+              background: { color: defaultColor },
             },
           },
         };
