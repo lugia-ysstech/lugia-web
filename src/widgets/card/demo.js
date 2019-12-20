@@ -277,7 +277,7 @@ export default () => {
       <Theme config={view}>
         <Wrapper>
           <Card
-            showTipLine
+            showTipBottomLine
             type={'tip'}
             title={'this is title'}
             description={[<div>{'this is description'}</div>, <div>{'this is description'}</div>]}

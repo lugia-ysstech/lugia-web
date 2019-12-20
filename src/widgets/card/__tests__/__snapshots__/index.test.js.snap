@@ -119,7 +119,7 @@ exports[`Card css 1`] = `
   display: inline-block;
 }
 
-.c5 {
+.c3 {
   text-align: inherit;
   display: inline-block;
   -webkit-flex: 1;
@@ -132,14 +132,14 @@ exports[`Card css 1`] = `
   flex-direction: row;
 }
 
-.c3 {
+.c5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c4 {
+.c6 {
   width: 0.5rem;
   height: 2rem;
   background-color: #4d63ff;
@@ -165,7 +165,7 @@ exports[`Card css 1`] = `
   margin-right: 0rem;
 }
 
-.c6 {
+.c4 {
   text-align: inherit;
   font-size: 1.4rem;
   color: #666666;
@@ -351,6 +351,79 @@ exports[`Card css 1`] = `
   <p>
     基本样式
   </p>
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#ffffff",
+          "borderBottomColor": "#cccccc",
+          "borderBottomLeftRadius": "0.5rem",
+          "borderBottomRightRadius": "0.5rem",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.1rem",
+          "borderLeftColor": "#cccccc",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.1rem",
+          "borderRightColor": "#cccccc",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.1rem",
+          "borderTopColor": "#cccccc",
+          "borderTopLeftRadius": "0.5rem",
+          "borderTopRightRadius": "0.5rem",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.1rem",
+          "boxShadow": "0px 0px 6px 0px rgba(0, 0, 50, 0.1)",
+        }
+      }
+      type="simple"
+    >
+      <div
+        className="c2"
+        style={Object {}}
+        type="simple"
+      >
+        <div
+          className="c3"
+          style={
+            Object {
+              "fontWeight": 500,
+              "paddingBottom": "0rem",
+              "paddingLeft": "1rem",
+              "paddingRight": "1rem",
+              "paddingTop": "1rem",
+            }
+          }
+          type="simple"
+        >
+          this is title
+        </div>
+        <div
+          className="c4"
+          style={
+            Object {
+              "paddingBottom": "0rem",
+              "paddingLeft": "1rem",
+              "paddingRight": "1rem",
+              "paddingTop": "1.4rem",
+            }
+          }
+        >
+          <div>
+            this is description
+          </div>
+          <div>
+            this is description
+          </div>
+           
+        </div>
+      </div>
+    </div>
+  </div>
   <p>
     tip样式
   </p>
@@ -391,15 +464,15 @@ exports[`Card css 1`] = `
         type="tip"
       >
         <div
-          className="c3"
+          className="c5"
           style={Object {}}
         >
           <div
-            className="c4"
+            className="c6"
             style={Object {}}
           />
           <div
-            className="c5"
+            className="c3"
             style={
               Object {
                 "fontWeight": 700,
@@ -415,7 +488,7 @@ exports[`Card css 1`] = `
           </div>
         </div>
         <div
-          className="c6"
+          className="c4"
           style={
             Object {
               "paddingBottom": "0rem",
@@ -475,7 +548,7 @@ exports[`Card css 1`] = `
         type="tip"
       >
         <div
-          className="c3"
+          className="c5"
           style={
             Object {
               "height": "1.8rem",
@@ -483,7 +556,7 @@ exports[`Card css 1`] = `
           }
         >
           <div
-            className="c4"
+            className="c6"
             style={
               Object {
                 "borderBottomLeftRadius": "0rem",
@@ -498,7 +571,7 @@ exports[`Card css 1`] = `
             }
           />
           <div
-            className="c5"
+            className="c3"
             style={
               Object {
                 "fontWeight": 700,
@@ -518,7 +591,7 @@ exports[`Card css 1`] = `
           style={Object {}}
         />
         <div
-          className="c6"
+          className="c4"
           style={
             Object {
               "paddingBottom": "0rem",
@@ -628,7 +701,7 @@ exports[`Card css 1`] = `
         type="avatar"
       >
         <div
-          className="c5"
+          className="c3"
           style={
             Object {
               "fontWeight": 500,
@@ -643,7 +716,7 @@ exports[`Card css 1`] = `
           this is title
         </div>
         <div
-          className="c6"
+          className="c4"
           style={
             Object {
               "paddingBottom": "0rem",
@@ -700,7 +773,7 @@ exports[`Card css 1`] = `
         style={
           Object {
             "marginBottom": "0rem",
-            "marginLeft": "0rem",
+            "marginLeft": "1rem",
             "marginRight": "0rem",
             "marginTop": "1rem",
             "width": "8rem",
@@ -747,7 +820,7 @@ exports[`Card css 1`] = `
         type="avatar"
       >
         <div
-          className="c5"
+          className="c3"
           style={
             Object {
               "fontWeight": 500,
@@ -766,7 +839,7 @@ exports[`Card css 1`] = `
           this is title
         </div>
         <div
-          className="c6"
+          className="c4"
           style={
             Object {
               "marginBottom": "0rem",
@@ -848,7 +921,7 @@ exports[`Card css 1`] = `
         type="image"
       >
         <div
-          className="c5"
+          className="c3"
           style={
             Object {
               "color": "pink",
@@ -866,7 +939,7 @@ exports[`Card css 1`] = `
           this is title
         </div>
         <div
-          className="c6"
+          className="c4"
           style={
             Object {
               "color": "blue",
@@ -939,7 +1012,7 @@ exports[`Card css 1`] = `
         type="image"
       >
         <div
-          className="c5"
+          className="c3"
           style={
             Object {
               "fontWeight": 500,
@@ -954,7 +1027,7 @@ exports[`Card css 1`] = `
           this is title
         </div>
         <div
-          className="c6"
+          className="c4"
           style={
             Object {
               "paddingBottom": "0rem",

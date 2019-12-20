@@ -371,7 +371,7 @@ class Card extends React.Component<CardProps, CardState> {
   static defaultProps = {
     type: 'simple',
     imageOrientation: 'horizontal',
-    showTipLine: false,
+    showTipBottomLine: false,
   };
 
   constructor(props: CardProps) {
@@ -458,8 +458,8 @@ class Card extends React.Component<CardProps, CardState> {
   }
 
   getTitleBottomLine() {
-    const { showTipLine } = this.props;
-    if (showTipLine) {
+    const { showTipBottomLine } = this.props;
+    if (showTipBottomLine) {
       return <TitleBottomLine themeProps={this.props.getPartOfThemeProps('CardTipBottomLine')} />;
     }
   }
