@@ -8,8 +8,17 @@ import * as React from 'react';
 import ThemeHoc from '@lugia/theme-hoc';
 import Widget from '../consts/index';
 import { deepMerge } from '@lugia/object-utils';
-import { ItemWrap, DividerWrap, TextContainer, DefaultMenuItemHeight } from '../css/menu';
+import {
+  ItemWrap,
+  DividerWrap,
+  TextContainer,
+  DefaultMenuItemHeight,
+  Text,
+  SwitchIconContainer,
+  DesContainer,
+} from '../css/menu';
 import CheckBox from '../checkbox';
+import Icon from '../icon';
 
 const Utils = require('@lugia/type-utils');
 const { ObjectUtils } = Utils;
@@ -26,9 +35,17 @@ export type MenuItemProps = {
   checkedCSS?: 'none' | 'background' | 'mark' | 'checkbox',
   theme: Object,
   isFirst: boolean,
+  value: string,
+  icon: string,
+  icons: Object,
+  item: Object,
+  mutliple: boolean,
   menuItemHeight: number,
+  switchIconClass: Object,
+  renderSuffixItems?: Function,
   getPartOfThemeHocProps: Function,
   getPartOfThemeProps: Function,
+  createEventChannel: Function,
 };
 
 class MenuItem extends React.Component<MenuItemProps> {
@@ -37,6 +54,9 @@ class MenuItem extends React.Component<MenuItemProps> {
     mutliple: false,
     disabled: false,
     divided: false,
+    switchIconClass: {
+      iconClass: 'lugia-icon-direction_right',
+    },
   };
   static displayName = Widget.MenuItem;
 
@@ -70,6 +90,176 @@ class MenuItem extends React.Component<MenuItemProps> {
     return this.mergeTheme('Checkbox', defaultTheme);
   }
 
+  getIconTheme = (iconType: string) => {
+    const { viewClass, theme } = this.props.getPartOfThemeHocProps(iconType);
+
+    switch (iconType) {
+      case 'SwitchIcon':
+        const defaultSwitchIconTheme = {
+          normal: {
+            padding: {
+              top: 0,
+              left: 0,
+              bottom: 0,
+              right: 0,
+            },
+            getCSS: () => {
+              return `
+              transition: all 0.3s
+              `;
+            },
+          },
+        };
+        return {
+          viewClass,
+          theme: deepMerge(
+            {
+              [viewClass]: { ...defaultSwitchIconTheme },
+            },
+            theme
+          ),
+        };
+
+      case 'PreIcon':
+        const defaultPreIconTheme = {
+          normal: {
+            padding: {
+              top: 0,
+              left: 0,
+              bottom: 0,
+              right: 3,
+            },
+            getCSS: () => {
+              return `
+              transition: all 0.3s
+              `;
+            },
+          },
+        };
+
+        return {
+          viewClass,
+          theme: deepMerge(
+            {
+              [viewClass]: { ...defaultPreIconTheme },
+            },
+            theme
+          ),
+        };
+
+      case 'SuffixIcon':
+        const defaultSuffixIconTheme = {
+          normal: {
+            padding: {
+              top: 0,
+              left: 3,
+              bottom: 0,
+              right: 0,
+            },
+            getCSS: () => {
+              return `
+              transition: all 0.3s
+              `;
+            },
+          },
+        };
+
+        return {
+          viewClass,
+          theme: deepMerge(
+            {
+              [viewClass]: { ...defaultSuffixIconTheme },
+            },
+            theme
+          ),
+        };
+      default:
+        break;
+    }
+
+    return { viewClass, theme };
+  };
+
+  getPreIcon(channel: Object) {
+    const { icon, icons: { preIconClass, preIconSrc } = {} } = this.props;
+
+    if (!icon && !preIconClass && !preIconSrc) {
+      return null;
+    }
+    const { viewClass, theme } = this.getIconTheme('PreIcon');
+
+    if (preIconClass || preIconSrc) {
+      return (
+        <Icon
+          iconClass={preIconClass}
+          src={preIconSrc}
+          lugiaConsumers={channel.consumer}
+          singleTheme
+          viewClass={viewClass}
+          theme={theme}
+        />
+      );
+    }
+
+    if (icon) {
+      return (
+        <Icon
+          iconClass={icon}
+          lugiaConsumers={channel.consumer}
+          singleTheme
+          viewClass={viewClass}
+          theme={theme}
+        />
+      );
+    }
+  }
+
+  getSuffixIcon(channel: Object) {
+    const { icons: { suffixIconClass, suffixIconSrc } = {} } = this.props;
+
+    if (!suffixIconClass && !suffixIconSrc) {
+      return null;
+    }
+    const { viewClass, theme } = this.getIconTheme('SuffixIcon');
+
+    return (
+      <Icon
+        iconClass={suffixIconClass}
+        src={suffixIconSrc}
+        lugiaConsumers={channel.consumer}
+        singleTheme
+        viewClass={viewClass}
+        theme={theme}
+      />
+    );
+  }
+
+  getSwitchIcon(channel: Object) {
+    const {
+      mutliple,
+      checkedCSS,
+      item: { children = [] },
+      switchIconClass: { iconClass, iconSrc },
+    } = this.props;
+    if (mutliple === true || checkedCSS !== 'none' || !children || children.length === 0) {
+      return null;
+    }
+    const { viewClass, theme } = this.getIconTheme('SwitchIcon');
+
+    return (
+      <SwitchIconContainer>
+        <Icon
+          iconClass={iconClass}
+          src={iconSrc}
+          lugiaConsumers={channel.consumer}
+          singleTheme
+          viewClass={viewClass}
+          theme={theme}
+        />
+      </SwitchIconContainer>
+    );
+  }
+
   render() {
     const {
       children,
@@ -80,9 +270,13 @@ class MenuItem extends React.Component<MenuItemProps> {
       checkedCSS,
       divided,
       isFirst,
+      value,
+      item = {},
       menuItemHeight = DefaultMenuItemHeight,
       getPartOfThemeProps,
+      renderSuffixItems,
     } = this.props;
+
     let title = '';
     React.Children.forEach(children, (item: Object) => {
       if (ObjectUtils.isString(item)) {
@@ -116,29 +310,51 @@ class MenuItem extends React.Component<MenuItemProps> {
       });
     }
     const DividerThemeProps = getPartOfThemeProps('Divider');
+    const channel = this.props.createEventChannel(['active', 'hover', 'disabled']);
+
+    const { des } = item;
+
     const target = (
       <ItemWrap
         onClick={onClick}
         onMouseEnter={onMouseEnter}
-        title={title}
         disabled={disabled}
+        title={title}
         themeProps={themeProps}
+        {...channel.provider}
       >
         {divided && !isFirst ? <DividerWrap themeProps={DividerThemeProps} /> : null}
         {isCheckbox ? (
-          <TextContainer themeProps={themeProps}>
+          <TextContainer themeProps={this.props.getPartOfThemeProps('TextContainer')}>
             <CheckBox
               {...this.getCheckBoxTheme()}
               checked={checked}
               disabled={disabled}
               onChange={onClick}
             >
-              {children}
+              {this.getPreIcon(channel)}
+              {value ? value : children}
+              {this.getSuffixIcon(channel)}
             </CheckBox>
           </TextContainer>
         ) : (
-          <TextContainer themeProps={themeProps}>{children}</TextContainer>
+          <TextContainer themeProps={this.props.getPartOfThemeProps('TextContainer')}>
+            {this.getPreIcon(channel)}
+            <Text>{value ? value : children}</Text>
+            {this.getSuffixIcon(channel)}
+          </TextContainer>
         )}
+
+        {des ? (
+          <DesContainer
+            lugiaConsumers={channel.consumer}
+            themeProps={this.props.getPartOfThemeProps('DesContainer')}
+          >
+            {des.toString()}
+          </DesContainer>
+        ) : null}
+        {renderSuffixItems ? renderSuffixItems(item, channel) : null}
+        {this.getSwitchIcon(channel)}
       </ItemWrap>
     );
 

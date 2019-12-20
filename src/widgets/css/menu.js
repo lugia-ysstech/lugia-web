@@ -5,12 +5,17 @@
  * @flow
  */
 import type { SizeType } from '../menu/item';
-import CSSComponent, { css } from '@lugia/theme-css-hoc';
+import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import colorsFunc from './stateColor';
-import styled from 'styled-components';
 import { px2remcss } from '../css/units';
-import CommonIcon from '../icon';
-export const { themeColor, disableColor, blackColor, lightGreyColor, defaultColor } = colorsFunc();
+export const {
+  themeColor,
+  disableColor,
+  blackColor,
+  lightGreyColor,
+  defaultColor,
+  mediumGreyColor,
+} = colorsFunc();
 export const DefaultMenuItemHeight = 35;
 export const LargeMenuItemHeight = 60;
 export const BiggerMenuItemHeight = 40;
@@ -29,18 +34,16 @@ export const getMenuItemHeight = (size: SizeType) => {
     : DefaultMenuItemHeight;
 };
 
-export const TextIcon: Object = styled(CommonIcon)`
-  display: inline-block;
-  position: relative;
-  padding-right: ${px2remcss(10)};
-  top: ${px2remcss(1.5)};
-`;
-export const RightIcon = styled.span`
-  position: absolute;
-  right: ${px2remcss(12)};
-  top: 50%;
-  transform: translateY(-50%);
-`;
+export const SwitchIconContainer = StaticComponent({
+  tag: 'span',
+  className: 'SwitchIconContainer',
+  css: css`
+    position: absolute;
+    right: ${px2remcss(12)};
+    top: 50%;
+    transform: translateY(-50%);
+  `,
+});
 
 export const MenuContainer = CSSComponent({
   tag: 'ul',
@@ -121,14 +124,14 @@ export const ItemWrap = CSSComponent({
   className: 'ItemWrap',
   normal: {
     selectNames: [
-      ['color'],
       ['height'],
+      ['color'],
       ['font'],
+      ['fontSize'],
       ['cursor'],
       ['border'],
       ['borderRadius'],
       ['padding'],
-      ['fontSize'],
       ['background'],
       ['opacity'],
       ['boxShadow'],
@@ -146,7 +149,6 @@ export const ItemWrap = CSSComponent({
         background: ${backgroundColor};
         font-weight: ${fontWeight};
         height: ${px2remcss(menuItemHeight)};
-        line-height:${px2remcss(menuItemHeight)};
         box-sizing: border-box;
         `;
     },
@@ -202,10 +204,6 @@ export const ItemWrap = CSSComponent({
         fontWeight: 500,
       },
     },
-    getCSS: (themeMeta, themeProps) => {
-      const { height = DefaultMenuItemHeight } = themeMeta;
-      return `line-height:${px2remcss(height)}`;
-    },
   },
   css: css`
     box-sizing: border-box;
@@ -214,9 +212,15 @@ export const ItemWrap = CSSComponent({
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    transition: all 0.3s ease;
-    font-size: ${px2remcss(12)};
-    line-height: ${px2remcss(DefaultMenuItemHeight)};
+    transition-property: background-color, border, borderRadius, opacity, boxShadow;
+    transition-duration: 0.3s;
+    font-size: ${px2remcss(14)};
+    display: flex;
+    flex-direction: column;
+
+    & > i {
+      vertical-align: middle;
+    }
   `,
   option: { hover: true, active: true, disabled: true },
 });
@@ -241,7 +245,7 @@ export const TextContainer = CSSComponent({
   tag: 'div',
   className: 'TextContainer',
   normal: {
-    selectNames: [['height']],
+    selectNames: [['padding'], ['lineHeight']],
   },
   hover: {
     selectNames: [],
@@ -252,10 +256,48 @@ export const TextContainer = CSSComponent({
   css: css`
     padding: ${px2remcss(0)} ${px2remcss(8)};
     position: relative;
+    display: flex;
+    align-items: center;
     box-sizing: border-box;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 100%;
+    overflow: hidden;
+    flex: 1;
+    & i {
+      vertical-align: middle;
+    }
+  `,
+});
+
+export const DesContainer = CSSComponent({
+  tag: 'div',
+  className: 'DesContainer',
+  normal: {
+    selectNames: [['color'], ['font'], ['fontSize'], ['padding'], ['lineHeight']],
+  },
+  hover: {
+    selectNames: [['color'], ['font'], ['fontSize']],
+  },
+  active: {
+    selectNames: [['color'], ['font'], ['fontSize']],
+  },
+  css: css`
+    overflow: hidden;
+    padding-left: ${px2remcss(10)};
+    box-sizing: border-box;
+    flex: 1;
+    color: ${mediumGreyColor};
+    font-weight: 100;
+    display: flex;
+    align-items: center;
+    font-size: ${px2remcss(12)};
+    transition: all 0.3s;
+  `,
+  option: { hover: true, active: true, disabled: true },
+});
+
+export const Text = StaticComponent({
+  tag: 'span',
+  className: 'Text',
+  css: css`
+    transition: all 0.3s;
   `,
 });

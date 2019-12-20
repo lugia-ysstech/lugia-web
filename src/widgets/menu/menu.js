@@ -10,21 +10,13 @@ import '../common/shirm';
 import ThemeHoc from '@lugia/theme-hoc';
 import * as React from 'react';
 import { deepMerge } from '@lugia/object-utils';
-import {
-  DefaultHeight,
-  DefaultMenuItemHeight,
-  MenuContainer,
-  MenuItemHeight,
-  RightIcon,
-  TextIcon,
-} from '../css/menu';
+import { DefaultHeight, DefaultMenuItemHeight, MenuContainer, MenuItemHeight } from '../css/menu';
 import ThrolleScroller from '../scroller/ThrottleScroller';
 import Widget from '../consts/index';
 import Empty from '../empty';
 import Trigger from '../trigger';
 import { findDOMNode } from 'react-dom';
 import addEventListener from 'rc-util/lib/Dom/addEventListener';
-import CommonIcon from '../icon';
 import { DisplayField, ValueField } from '../consts/props';
 import contains from 'rc-util/lib/Dom/contains';
 import { getCanSeeCountRealy } from '../scroller/support';
@@ -96,6 +88,7 @@ export type MenuProps = {
   divided: boolean,
   theme: Object,
   itemHeight: number,
+  renderSuffixItems?: Function,
   getPartOfThemeProps: Function,
   getPartOfThemeConfig: Function,
   getPartOfThemeHocProps: Function,
@@ -208,8 +201,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     const items = this.getItems(props);
     const { data = [], autoHeight = false, getPartOfThemeProps, itemHeight } = props;
     const length = data ? data.length : 0;
-
-    const WrapThemeProps = getPartOfThemeProps('MenuWrap', {
+    const WrapThemeProps = getPartOfThemeProps('Container', {
       props: {
         length,
         itemHeight,
@@ -259,59 +251,59 @@ class Menu extends React.Component<MenuProps, MenuState> {
     end = Math.round(end);
     if (data && data.length > 0) {
       return this.computeItems(data, start, end, (obj: Object, isFirst: boolean) => {
-        const { valueField, displayField, divided: propsDivided, itemHeight } = this.props;
+        const {
+          valueField,
+          displayField,
+          divided: propsDivided,
+          itemHeight,
+          renderSuffixItems,
+        } = this.props;
 
-        const { [valueField]: key, [displayField]: value, disabled, children, icon, divided } = obj;
-        const { getPrefix, getSuffix } = props;
-
-        const prefix = getPrefix && getPrefix(obj);
-        const suffix = getSuffix && getSuffix(obj);
-        const isShowRightIconCondition = checkedCSS !== 'none' || mutliple === true;
-        const rightIcon = getTargetOrDefaultTargetLazy(
-          isShowRightIconCondition,
-          () => null,
-          () => this.getCascaderIcon(children)
-        );
-
+        const { [valueField]: key, [displayField]: value, disabled, icon, icons, divided } = obj;
         if (obj === Placeholder) {
           return <li />;
         }
-        const iconElement = icon ? <TextIcon iconClass={icon} /> : null;
+
         const { wrapItem } = this.props;
 
         const result = (
           <Item
             key={key}
+            item={obj}
             disabled={disabled}
             checkedCSS={checkedCSS}
+            mutliple={mutliple}
             divided={divided || propsDivided}
             menuItemHeight={itemHeight}
             {...this.props.getPartOfThemeHocProps('MenuItem')}
             isFirst={isFirst}
-          >
-            {prefix}
-            {iconElement}
-            {value}
-            {suffix}
-            {rightIcon}
-          </Item>
+            value={value}
+            icon={icon}
+            icons={icons}
+            renderSuffixItems={renderSuffixItems}
+          />
         );
         return wrapItem ? wrapItem(result, { key, value }) : result;
       });
     }
 
     const { children } = props;
-    if (children && children.length > 0) {
+
+    if (children) {
       return this.computeItems(children, start, end, (obj: Object) => obj);
     }
 
     if (!data || data.length === 0) {
-      return <Empty themeProps={this.props.getPartOfThemeProps('MenuWrap')} />;
+      return <Empty themeProps={this.props.getPartOfThemeProps('Container')} />;
     }
   }
 
   computeItems(data: Array<Object>, start: number, end: number, getItem: Function): Array<Object> {
+    if (!Array.isArray(data)) {
+      return data;
+    }
     const items = [];
+
     let isFirst = true;
     for (let i = start; i < end; i++) {
       const item = data[i];
@@ -824,21 +816,10 @@ class Menu extends React.Component<MenuProps, MenuState> {
     deleteMenuInstance && deleteMenuInstance(this.props.level);
     this.clearOutsideHandler();
   }
-
-  getCascaderIcon = (children: Object[]) => {
-    if (children && children.length > 0) {
-      return (
-        <RightIcon>
-          <CommonIcon iconClass="lugia-icon-direction_right" />
-        </RightIcon>
-      );
-    }
-    return null;
-  };
 }
 
 const Result = ThemeHoc(
-  ThrolleScroller(Menu, MenuItemHeight, 'MenuWrap', ['MenuItem', 'MenuItemWrap']),
+  ThrolleScroller(Menu, MenuItemHeight, 'Container', ['MenuItem', 'MenuItemWrap']),
   Widget.Menu,
   {
     hover: true,
