@@ -21,11 +21,9 @@ const { px2remcss } = units;
 const { darkGreyColor, lightGreyColor, defaultColor, themeColor, superLightColor } = colorsFunc();
 
 const checkSizeIsNumber = size => {
-  let theSize;
+  let theSize = size;
   if (ObjectUtils.isNumber(size)) {
     theSize = px2remcss(size);
-  } else {
-    theSize = size;
   }
   return theSize;
 };
@@ -53,8 +51,9 @@ const CardOutContainer = CSSComponent({
       ['opacity'],
     ],
     getCSS(themeMeta: Object, themeProps: Object) {
-      const { propsConfig } = themeProps;
-      const { imageOrientation, type } = propsConfig;
+      const {
+        propsConfig: { imageOrientation, type },
+      } = themeProps;
       const textAlign = type === 'avatar' && !isHorizontal(imageOrientation) ? 'center' : '';
       const flexDirection = !isHorizontal(imageOrientation) ? 'column' : 'row';
       return `
@@ -62,8 +61,9 @@ const CardOutContainer = CSSComponent({
         flex-direction:${flexDirection};`;
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
-      const { propsConfig } = themeProps;
-      const { type } = propsConfig;
+      const {
+        propsConfig: { type },
+      } = themeProps;
       if (type === 'transparent') {
         return {};
       }
@@ -149,8 +149,9 @@ const Image = ThemeHoc(
       ],
       getCSS(themeMeta: Object, themeProps: Object) {
         const { width, height } = themeMeta;
-        const { propsConfig } = themeProps;
-        const { imageOrientation } = propsConfig;
+        const {
+          propsConfig: { imageOrientation },
+        } = themeProps;
         const theWidth = getDefaultSize(width, '100%');
         const theHeight = getDefaultSize(height, '100%');
         const display = isHorizontal(imageOrientation) ? 'inline-block' : 'block';
@@ -180,13 +181,15 @@ const ImageContainer = CSSComponent({
     ],
     getCSS(themeMeta: Object, themeProps: Object) {
       const { width, height } = themeMeta;
-      const { propsConfig } = themeProps;
-      const { imageOrientation } = propsConfig;
-      const defaultWidth = isHorizontal(imageOrientation) ? px2remcss(120) : '100%';
-      const defaultHeight = isHorizontal(imageOrientation) ? '100%' : px2remcss(112);
+      const {
+        propsConfig: { imageOrientation },
+      } = themeProps;
+      const hCard = isHorizontal(imageOrientation);
+      const defaultWidth = hCard ? px2remcss(120) : '100%';
+      const defaultHeight = hCard ? '100%' : px2remcss(112);
       const theWidth = getDefaultSize(width, defaultWidth);
       const theHeight = getDefaultSize(height, defaultHeight);
-      const display = isHorizontal(imageOrientation) ? 'inline-block' : 'block';
+      const display = hCard ? 'inline-block' : 'block';
       return `width :${theWidth};height:${theHeight};display :${display};`;
     },
   },
@@ -212,13 +215,15 @@ const AvatarContainer = CSSComponent({
     ],
     getCSS(themeMeta: Object, themeProps: Object) {
       const { width, height } = themeMeta;
-      const { propsConfig } = themeProps;
-      const { imageOrientation } = propsConfig;
-      const defaultWidth = isHorizontal(imageOrientation) ? px2remcss(120) : '100%';
-      const defaultHeight = isHorizontal(imageOrientation) ? '100%' : px2remcss(112);
+      const {
+        propsConfig: { imageOrientation },
+      } = themeProps;
+      const hCard = isHorizontal(imageOrientation);
+      const defaultWidth = hCard ? px2remcss(120) : '100%';
+      const defaultHeight = hCard ? '100%' : px2remcss(112);
       const theWidth = getDefaultSize(width, defaultWidth);
       const theHeight = getDefaultSize(height, defaultHeight);
-      const display = isHorizontal(imageOrientation) ? 'inline-block' : 'block';
+      const display = hCard ? 'inline-block' : 'block';
       return `width :${theWidth};height:${theHeight};display :${display};`;
     },
   },
@@ -262,8 +267,9 @@ const Title = CSSComponent({
     ],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const { font } = themeMeta;
-      const { propsConfig } = themeProps;
-      const { type } = propsConfig;
+      const {
+        propsConfig: { type },
+      } = themeProps;
       const weight = font && font.weight ? font.weight : type === 'tip' ? 700 : 500;
       return {
         font: {
@@ -274,8 +280,9 @@ const Title = CSSComponent({
     getCSS(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
       const { imageOrientation, type } = propsConfig;
-      const textAlign = type === 'avatar' && !isHorizontal(imageOrientation) ? 'center' : '';
-      const flexDirection = !isHorizontal(imageOrientation) ? 'column' : 'row';
+      const vCard = !isHorizontal(imageOrientation);
+      const textAlign = type === 'avatar' && vCard ? 'center' : '';
+      const flexDirection = vCard ? 'column' : 'row';
       return `text-align:${textAlign};flex-direction:${flexDirection};`;
     },
     defaultTheme: {
@@ -382,18 +389,19 @@ class Card extends React.Component<CardProps, CardState> {
   render() {
     const { type, imageOrientation } = this.props;
     let resultTheme;
+    const hCard = isHorizontal(imageOrientation);
     switch (type) {
       case 'avatar':
-        const avatarWidth = isHorizontal(imageOrientation) ? 320 : 150;
-        const avatarHeight = isHorizontal(imageOrientation) ? 116 : 190;
+        const avatarWidth = hCard ? 320 : 150;
+        const avatarHeight = hCard ? 116 : 190;
         const avatarThemeProps = {
           themeConfig: { normal: { width: avatarWidth, height: avatarHeight } },
         };
         resultTheme = avatarThemeProps;
         break;
       case 'image':
-        const imageWidth = isHorizontal(imageOrientation) ? 320 : 200;
-        const imageHeight = isHorizontal(imageOrientation) ? 112 : 230;
+        const imageWidth = hCard ? 320 : 200;
+        const imageHeight = hCard ? 112 : 230;
         const imageThemeProps = {
           themeConfig: { normal: { width: imageWidth, height: imageHeight } },
         };
