@@ -21,7 +21,7 @@ import colorsFunc from '../css/stateColor';
 import { getBorder } from '@lugia/theme-utils';
 import { findDOMNode } from 'react-dom';
 
-const { superLightColor } = colorsFunc();
+const { superLightColor, borderColor, borderSize } = colorsFunc();
 
 const ArrowContainer = CSSComponent({
   tag: 'div',
@@ -225,23 +225,7 @@ const HscrollerContainer = CSSComponent({
   tag: 'div',
   className: 'HscrollerContainer',
   normal: {
-    selectNames: [['border']],
-    getThemeMeta: (theme: Object, themeProps: Object) => {
-      const {
-        propsConfig: { tabPosition, tabType },
-      } = themeProps;
-      const { color, width } = theme;
-      const borderColor = color || superLightColor,
-        borderWidth = width || 1;
-      let border = { bottom: { width: borderWidth, color: borderColor, style: 'solid' } };
-      if (tabPosition === 'bottom') {
-        border = { top: { width: borderWidth, color: borderColor, style: 'solid' } };
-      }
-      if (tabType === 'window') {
-        border = { bottom: { width: 0, color: 'transparent', style: 'solid' } };
-      }
-      return { border };
-    },
+    selectNames: [],
   },
   disabled: {
     selectNames: [],
@@ -260,7 +244,7 @@ const VTabsContainer = CSSComponent({
   tag: 'div',
   className: 'VTabsContainer',
   normal: {
-    selectNames: [['height']],
+    selectNames: [['height'], ['border']],
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig: { arrowShow } = {} } = themeProps;
       if (arrowShow) {
@@ -286,21 +270,7 @@ const YscrollerContainer = CSSComponent({
   tag: 'div',
   className: 'YscrollerContainer',
   normal: {
-    selectNames: [['border']],
-    getThemeMeta: (theme: Object, themeProps: Object) => {
-      const {
-        propsConfig: { tabPosition },
-      } = themeProps;
-      const { color, width } = theme;
-      const borderColor = color || superLightColor,
-        borderWidth = width || 1,
-        borderStyle = 'solid';
-      let border = { left: { width: borderWidth, color: borderColor, style: borderStyle } };
-      if (tabPosition === 'left') {
-        border = { right: { width: borderWidth, color: borderColor, style: borderStyle } };
-      }
-      return { border };
-    },
+    selectNames: [],
   },
   disabled: {
     selectNames: [],
@@ -328,8 +298,29 @@ const HTabsOutContainer = CSSComponent({
       return { background };
     },
     getCSS: (theme: Object, themeProps: Object) => {
-      const { textAlign = 'left' } = theme;
-      return `text-align: ${textAlign}`;
+      const { textAlign = 'left', border = {} } = theme;
+
+      const { propsConfig: { tabPosition, tabType } = {} } = themeProps;
+      if (tabType === 'window') {
+        return '';
+      }
+      const position = tabPosition === 'bottom' ? 'top' : 'bottom';
+
+      const { [position]: { color, width } = {} } = border || {
+        [position]: { color: borderColor, width: borderSize },
+      };
+      const resPosition = `${position} : 0 ;height:${width}px;background-color:${color}`;
+
+      return `text-align: ${textAlign}
+              &::before{
+               content: '';
+                position: absolute;
+                ${resPosition};
+                left: 0;
+                width: 100%;
+              }
+              
+      `;
     },
   },
   disabled: {
@@ -347,6 +338,23 @@ const VTabsOutContainer = CSSComponent({
   className: 'TitleContainer',
   normal: {
     selectNames: [['height'], ['background']],
+    getCSS(themeMeta, themeProps) {
+      const { border = {} } = themeMeta;
+      const { propsConfig: { tabPosition } = {} } = themeProps;
+      const position = tabPosition === 'right' ? 'left' : 'right';
+      const { [position]: { color, width } = {} } = border || {
+        [position]: { color: borderColor, width: borderSize },
+      };
+      const resPosition = `${position} : 0 ;width:${width}px;background-color:${color}`;
+
+      return `&::before{
+               content: '';
+                position: absolute;
+                ${resPosition};
+                height: 100%;
+              }
+      `;
+    },
   },
   disabled: {
     selectNames: [],
@@ -545,30 +553,61 @@ class TabHeader extends Component<TabsProps, TabsState> {
     return this.getHorizonTabPan();
   }
 
+  handleBorderStyle(borderThemeProps: Object, tabPosition: TabPositionType, tabType?: TabType) {
+    const { themeConfig: { normal: { color, width } = {} } = {} } = borderThemeProps;
+    const borderColor = color || superLightColor,
+      borderWidth = width || borderSize,
+      borderStyle = 'solid';
+    let border;
+    const style = { width: borderWidth, color: borderColor, style: borderStyle };
+    switch (tabPosition) {
+      case 'bottom':
+        border = { top: style };
+        break;
+      case 'right':
+        border = { left: style };
+        break;
+      case 'left':
+        border = { right: style };
+        break;
+      default:
+        border = { bottom: style };
+        break;
+    }
+    if (tabType === 'window') {
+      border = null;
+    }
+
+    const borderTheme = deepMerge(
+      { ...this.props.themeProps },
+      { themeConfig: { normal: { border } } }
+    );
+    return { ...borderTheme };
+  }
+
   getVtabs() {
     const { tabPosition, themeProps } = this.props;
-    const { totalPage, arrowShow } = this.state;
-    const borderThemeProps = this.props.getPartOfThemeProps('BorderStyle');
-    borderThemeProps.propsConfig = { tabPosition };
+    const { arrowShow } = this.state;
+    const borderThemeProps = this.handleBorderStyle(
+      this.props.getPartOfThemeProps('BorderStyle'),
+      tabPosition
+    );
     const tabsThemeProps = this.props.getPartOfThemeProps('TitleContainer');
+    const tabsOutContainerThemeProps = deepMerge(tabsThemeProps, borderThemeProps);
     const moveDistance = this.computeMoveDistance();
     const { isDisabledToPrev, isDisabledToNext } = this.getIsAllowToMove();
     themeProps.propsConfig = { arrowShow };
+    tabsOutContainerThemeProps.propsConfig = { tabPosition };
 
     const prevPageThemeProps = deepMerge(
       { themeConfig: { normal: { height: 24 } } },
       this.props.getPartOfThemeProps('DefaultTabPan')
     );
-
     return (
-      <VTabsOutContainer
-        themeProps={tabsThemeProps}
-        tabPosition={tabPosition}
-        showPadding={totalPage > 1}
-      >
+      <VTabsOutContainer themeProps={tabsOutContainerThemeProps}>
         {this.getPrevOrNextPage('prev', prevPageThemeProps, isDisabledToPrev, isDisabledToNext)}
         <VTabsContainer themeProps={themeProps} ref={this.scrollBox}>
-          <YscrollerContainer y={moveDistance} themeProps={borderThemeProps} ref={this.tabPanBox}>
+          <YscrollerContainer y={moveDistance} themeProps={themeProps} ref={this.tabPanBox}>
             {this.getChildren()}
           </YscrollerContainer>
         </VTabsContainer>
@@ -657,15 +696,18 @@ class TabHeader extends Component<TabsProps, TabsState> {
 
   getHorizonTabPan() {
     const { tabType, tabPosition, themeProps, showAddBtn } = this.props;
-    const { totalPage, arrowShow } = this.state;
+    const { arrowShow } = this.state;
 
-    const borderThemeProps = this.props.getPartOfThemeProps('BorderStyle', {
-      props: { tabPosition, tabType },
-    });
     const tabsThemeProps = this.props.getPartOfThemeProps('TitleContainer', {
-      props: { tabType },
+      props: { tabType, tabPosition },
     });
+    const borderThemeProps = this.handleBorderStyle(
+      this.props.getPartOfThemeProps('BorderStyle'),
+      tabPosition,
+      tabType
+    );
 
+    const tabsOutContainerThemeProps = deepMerge(tabsThemeProps, borderThemeProps);
     let addSize = 0;
     if (showAddBtn) {
       const addBtnThemeProps = this.props.getPartOfThemeProps('AddButton');
@@ -686,14 +728,13 @@ class TabHeader extends Component<TabsProps, TabsState> {
     );
     return (
       <HTabsOutContainer
-        themeProps={tabsThemeProps}
+        themeProps={tabsOutContainerThemeProps}
         tabType={tabType}
         tabPosition={tabPosition}
-        showPadding={totalPage > 1}
       >
         {this.getPrevOrNextPage('prev', prevPageThemeProps, isDisabledToPrev, isDisabledToNext)}
         <HTabsContainer themeProps={themeProps} ref={this.scrollBox}>
-          <HscrollerContainer themeProps={borderThemeProps} x={moveDistance} ref={this.tabPanBox}>
+          <HscrollerContainer themeProps={themeProps} x={moveDistance} ref={this.tabPanBox}>
             {this.getChildren()}
           </HscrollerContainer>
         </HTabsContainer>

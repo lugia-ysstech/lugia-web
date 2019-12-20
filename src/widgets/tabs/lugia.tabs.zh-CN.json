@@ -171,17 +171,17 @@
         "ContentBlock": {
           "name": "内容区域",
           "desc": "内容区域的样式配置",
-          "normal": [["background"], ["padding"], ["width"], ["height"]]
+          "normal": [["background"], ["padding"],  ["height"]]
         },
         "TitleContainer": {
           "name": "卡片区域",
           "desc": "卡片区域样式配置",
-          "normal": [["width"], ["background"]]
+          "normal": [["background"]]
         },
         "BorderStyle": {
           "name": "默认线",
           "desc": "默认线样式配置",
-          "normal": [["border", "bottom"]]
+          "normal": [["color"], ["width"]]
         },
         "TabHeader": {
           "name": "标签配置",
@@ -267,12 +267,7 @@
         "ContentBlock": {
           "name": "内容区域",
           "desc": "内容区域的样式配置",
-          "normal": [["background"], ["padding"], ["width"], ["height"]]
-        },
-        "TitleContainer": {
-          "name": "卡片区域",
-          "desc": "卡片区域样式配置",
-          "normal": [["width"]]
+          "normal": [["background"], ["padding"],  ["height"]]
         },
         "TabHeader": {
           "name": "标签配置",
@@ -328,7 +323,7 @@
     "TitleContainer": {
       "name": "卡片区域",
       "desc": "卡片区域样式配置",
-      "normal": [["width"], ["background"], ["textAlign"]]
+      "normal": [ ["background"], ["textAlign"]]
     },
     "BorderStyle": {
       "name": "默认线",
