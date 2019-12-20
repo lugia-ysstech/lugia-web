@@ -36,7 +36,6 @@ const horiData = [
   {
     value: '快速上手',
     text: '快速上手',
-    disabled: true,
     icon: 'lugia-icon-financial_columns',
     children: [
       { value: '快速上手子1-1', text: '快速上手1-1' },
@@ -266,10 +265,7 @@ export default class LimitDemo extends React.Component<Object, Object> {
         <div>
           <Box>
             <H3>light主题</H3>
-            <Navmenu
-              //  data={horiData}
-              mode={'vertical'}
-            />
+            <Navmenu data={horiData} mode={'vertical'} />
           </Box>
         </div>
         <div>
@@ -277,7 +273,7 @@ export default class LimitDemo extends React.Component<Object, Object> {
             <H3>dark主题</H3>
             <Navmenu
               // autoHeight={false}
-              // data={horiData}
+              data={horiData}
               themeStyle={'dark'}
               mode={'vertical'}
             />
