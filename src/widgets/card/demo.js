@@ -154,12 +154,6 @@ export default () => {
           width: 200,
         },
       },
-      CardImage: {
-        normal: {
-          width: 160,
-          height: 200,
-        },
-      },
     },
   };
   const avatarVCard = {
@@ -202,6 +196,7 @@ export default () => {
         normal: {
           margin: {
             top: 10,
+            left: 10,
           },
           width: 80,
         },
@@ -265,7 +260,10 @@ export default () => {
     <Wrapper>
       <p>基本样式</p>
       <Wrapper>
-        <Card title={'this is title'} description={'this is description'} />
+        <Card
+          title={'this is title'}
+          description={[<div>{'this is description'}</div>, <div>{'this is description'}</div>]}
+        />
       </Wrapper>
       <p>tip样式</p>
       <Wrapper>
@@ -279,6 +277,7 @@ export default () => {
       <Theme config={view}>
         <Wrapper>
           <Card
+            showTipLine
             type={'tip'}
             title={'this is title'}
             description={[<div>{'this is description'}</div>, <div>{'this is description'}</div>]}

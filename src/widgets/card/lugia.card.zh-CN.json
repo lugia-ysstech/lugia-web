@@ -46,6 +46,11 @@
     "imageOrientation": {
       "type": "ImageOrientation",
       "desc": "当选择头像或图片卡片风格时,可配置图像的方向.水平,或垂直"
+    },
+    "showTipLine": {
+      "type": "boolean",
+      "desc": "当选择标题提示风格时,可配置是否显示标题下的分割线",
+      "defaultValue": false
     }
   },
   "type": {
