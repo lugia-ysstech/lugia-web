@@ -141,6 +141,7 @@ export default ThemeProvider(
         themeProps,
         getPartOfThemeProps,
         getPartOfThemeConfig,
+        last = true,
       } = this.props;
       const { checked, hasChecked, hasCancel } = this.state;
       const config = {};
@@ -198,6 +199,7 @@ export default ThemeProvider(
           cancel={cancel}
           hasCancel={hasCancel}
           styles={styles}
+          last={last}
           {...addMouseEvent(this, config)}
         >
           <CheckBoxContent themeProps={themeProps} onClick={cancel ? this.handleCancel : null}>
@@ -217,7 +219,9 @@ export default ThemeProvider(
               />
             )}
           </CheckBoxContent>
-          <CheckBoxLabelSpan themeProps={checkboxTextTheme}>{children}</CheckBoxLabelSpan>
+          <CheckBoxLabelSpan hasChildren={!!children} themeProps={checkboxTextTheme}>
+            {children}
+          </CheckBoxLabelSpan>
         </CheckBoxWrap>
       );
     }

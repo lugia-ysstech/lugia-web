@@ -36,6 +36,7 @@ export type CSStype = {
 };
 type ForGroupType = {
   onChangeForGroup: (event: Object, value: any) => any,
+  last: ?boolean,
 };
 export type CheckBoxProps = {
   checked?: boolean,
@@ -75,7 +76,7 @@ const getAfterTransform = (props: { checked: boolean, indeterminate: boolean }):
   `;
 };
 const getStyleCSS = (props: CheckBoxType): string => {
-  const { styles = 'default', hasCancel } = props;
+  const { styles = 'default', hasCancel, last = false } = props;
   if (hasCancel) {
     return `
       display: none;
@@ -84,12 +85,12 @@ const getStyleCSS = (props: CheckBoxType): string => {
   if (styles === 'vertical') {
     return `
       display: block;
-      margin-bottom: ${em(marginToPeerElementForY)};
+      margin-bottom: ${last ? 0 : em(marginToPeerElementForY)};
     `;
   }
   return `
     display: inline-block;
-    margin-right: ${em(marginToDifferentElement)};
+    margin-right: ${last ? 0 : em(marginToDifferentElement)};
   `;
 };
 
@@ -143,7 +144,7 @@ export const CheckBoxLabelSpan = CSSComponent({
   tag: 'span',
   className: 'CheckBoxLabelSpan',
   css: css`
-    padding-left: ${em(10)};
+    padding-left: ${props => (props.hasChildren ? em(10) : 0)};
     vertical-align: middle;
   `,
   normal: {
@@ -151,12 +152,6 @@ export const CheckBoxLabelSpan = CSSComponent({
     defaultTheme: {
       color: blackColor,
       font: { size: 14 },
-      padding: {
-        top: 0,
-        right: 0,
-        bottom: 0,
-        left: padding,
-      },
     },
   },
   hover: {
