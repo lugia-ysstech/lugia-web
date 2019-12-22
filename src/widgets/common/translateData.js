@@ -137,11 +137,16 @@ export function handleCreate(
     return renderChildren(params, type, childType);
   }
 
-  const pushItem = (cancel: boolean) => item => {
-    result.push(params.getChildDom(item, cancel));
+  const { cancelItem } = params;
+
+  const pushItem = (cancel: boolean) => (item, index) => {
+    result.push(
+      params.getChildDom(item, cancel, {
+        last: data.length + cancelItem.length === index + 1,
+      })
+    );
   };
 
-  const { cancelItem } = params;
   cancelItem && cancelItem.forEach(pushItem(true));
 
   data && data.forEach(pushItem(false));
@@ -186,8 +191,7 @@ function renderChildren(
         disabled: disabled || child.props.disabled,
         styles: styles || child.props.styles,
         hasValue: params.hasValueProps(),
-        childrenCount,
-        childrenIndex: index,
+        last: childrenCount === index + 1,
       });
     }
   });
