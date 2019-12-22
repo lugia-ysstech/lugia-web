@@ -46,11 +46,12 @@ export type RadioProps = {
 } & ForGroupType;
 type ForGroupType = {
   onChangeForGroup?: Function,
+  last: ?boolean,
 };
 type RadioType = RadioProps & CSStype;
 
 const getStyleCSS = (props: RadioType): string => {
-  const { styles = 'default' } = props;
+  const { styles = 'default', last } = props;
   if (styles === 'vertical') {
     return `
       display: block;
@@ -58,7 +59,7 @@ const getStyleCSS = (props: RadioType): string => {
   }
   return `
     display: inline-block;
-    margin-right: ${em(marginToSameElement)};
+    margin-right: ${last ? 0 : em(marginToSameElement)};
   `;
 };
 
@@ -125,7 +126,7 @@ export const RadioChildrenSpan = CSSComponent({
   tag: 'span',
   className: 'RadioChildrenSpan',
   css: css`
-    padding-left: ${em(padding)};
+    padding-left: ${props => (props.hasChildren ? em(padding) : 0)};
     vertical-align: middle;
   `,
   normal: {
@@ -133,12 +134,6 @@ export const RadioChildrenSpan = CSSComponent({
     defaultTheme: {
       color: blackColor,
       font: { size: 14 },
-      padding: {
-        top: 0,
-        right: 0,
-        bottom: 0,
-        left: padding,
-      },
     },
   },
   hover: {

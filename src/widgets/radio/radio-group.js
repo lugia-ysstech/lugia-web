@@ -123,7 +123,7 @@ export default ThemeProvider(
         state: {
           value: this.state.value,
         },
-        getChildDom: (item, cancel) => this.getChildDom(item, cancel),
+        getChildDom: (item, cancel, options) => this.getChildDom(item, cancel, options),
         handleChange: () => this.handleChange,
         hasValueProps: () => this.hasValueProps(),
         cancelItem: this.cancelItem,
@@ -142,7 +142,7 @@ export default ThemeProvider(
       return 'value' in this.props;
     }
 
-    getChildDom = (item: Object, isCancel: boolean): any => {
+    getChildDom = (item: Object, isCancel: boolean, options = {}): any => {
       const {
         disabled,
         valueField = ValueField,
@@ -153,6 +153,7 @@ export default ThemeProvider(
       } = this.props;
       const { value } = this.state;
       const config = {};
+      const { last } = options;
       isCancel ? (config.cancel = true) : (config.disabled = disabled || item.disabled);
       const itemValue = item[valueField];
       if (childType === 'button') {
@@ -178,6 +179,7 @@ export default ThemeProvider(
           checked={itemValue === value}
           styles={styles}
           {...config}
+          last={last}
         >
           {item[displayField]}
         </Radio>

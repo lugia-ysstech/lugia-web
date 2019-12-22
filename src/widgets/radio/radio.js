@@ -112,6 +112,7 @@ export default ThemeProvider(
         themeProps,
         getPartOfThemeProps,
         getPartOfThemeConfig,
+        last = true,
       } = this.props;
       const { checked } = this.state;
       const radioWrapTheme = getPartOfThemeProps('Container');
@@ -148,6 +149,7 @@ export default ThemeProvider(
           styles={styles}
           disabled={disabled}
           cancel={cancel}
+          last={last}
           {...addMouseEvent(this)}
         >
           <RadioContent themeProps={themeProps}>
@@ -158,7 +160,9 @@ export default ThemeProvider(
               checked={checked}
             />
           </RadioContent>
-          <RadioChildrenSpan themeProps={radioTextTheme}>{children}</RadioChildrenSpan>
+          <RadioChildrenSpan hasChildren={!!children} themeProps={radioTextTheme}>
+            {children}
+          </RadioChildrenSpan>
         </RadioWrap>
       );
     }
