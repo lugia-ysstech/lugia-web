@@ -141,7 +141,7 @@ export default ThemeProvider(
         state: {
           value: this.state.value,
         },
-        getChildDom: (item, cancel) => this.getChildDom(item, cancel),
+        getChildDom: (item, cancel, options) => this.getChildDom(item, cancel, options),
         handleChange: () => this.handleChange,
         hasValueProps: () => this.hasValueProps(),
         cancelItem: this.cancelItem,
@@ -155,7 +155,7 @@ export default ThemeProvider(
       );
     }
 
-    getChildDom = (item: Object, isCancel: boolean): any => {
+    getChildDom = (item: Object, isCancel: boolean, options: Object = {}): any => {
       const {
         displayField = DisplayField,
         valueField = ValueField,
@@ -164,6 +164,7 @@ export default ThemeProvider(
         childType = 'default',
         size = 'default',
       } = this.props;
+      const { last } = options;
       const config = {};
       isCancel ? (config.cancel = true) : (config.disabled = disabled || item.disabled);
       const value = item[valueField];
@@ -183,6 +184,7 @@ export default ThemeProvider(
           </CheckButton>
         );
       }
+
       return (
         <CheckBox
           key={value}
@@ -191,6 +193,7 @@ export default ThemeProvider(
           onChangeForGroup={this.handleChange}
           styles={styles}
           {...config}
+          last={last}
           handleCancelItemClick={this.handleCancelItemClick}
         >
           {item[displayField]}
