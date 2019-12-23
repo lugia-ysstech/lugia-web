@@ -34,7 +34,7 @@
     },
     "showQuickJumper": {
       "type": "boolean",
-      "desc": "是否可以快速跳转至某页",
+      "desc": "是否可以快速跳至至某页",
       "defaultValue": false
     },
     "showTotal": {
@@ -59,6 +59,22 @@
     "simple": {
       "type": "boolean",
       "desc": "当添加该属性时，显示为简单分页"
+    },
+    "preIconClass": {
+      "type": "icon",
+      "desc": "分页上一页图标资源"
+    },
+    "nextIconClass": {
+      "type": "icon",
+      "desc": "分页下一页图标资源"
+    },
+    "preIconSrc": {
+      "type": "image",
+      "desc": "分页上一页图片资源"
+    },
+    "nextIconSrc": {
+      "type": "image",
+      "desc": "分页下一页图标资源"
     }
   },
   "events": {
@@ -121,7 +137,7 @@
             "Container": {
               "name": "输入框外部容器",
               "desc": "输入框外部容器",
-              "normal": [["width"], ["height"], ["margin"], ["padding"]]
+              "normal": [["width"], ["height"], ["margin"]]
             },
             "Input": {
               "name": "输入框主体内容",
@@ -160,15 +176,55 @@
               ]
             }
           }
-        },
-        "ChangePageIcon": {
-          "name": "分页切换页数图标",
-          "desc": "配置分页切换页数图标",
-          "normal": [["color"], ["fontSize"], ["font"]],
-          "hover": [],
-          "clicked": [],
-          "disabled": []
         }
+      },
+      "PaginationQuickJumpContainer": {
+        "name": "分页快速跳至外部容器",
+        "desc": "分页快速跳至外部容器",
+        "normal": [["margin"]]
+      },
+      "QuickJumpText": {
+        "name": "分页快速跳至提醒文字",
+        "desc": "分页快速跳至提醒文字",
+        "normal": [["color"], ["font"], ["fontSize"], ["cursor"]]
+      },
+      "PaginationArrowIconContainer": {
+        "name": "分页切换页数图标外部容器",
+        "desc": "配置分页切换页数图标外部容器",
+        "normal": [
+          ["width"],
+          ["height"],
+          ["cursor"],
+          ["border"],
+          ["borderRadius"],
+          ["opacity"],
+          ["background"],
+          ["boxShadow"],
+          ["padding"]
+        ],
+        "hover": [["color"], ["font"], ["fontSize"], ["border"], ["borderRadius"]],
+        "clicked": [],
+        "disabled": [
+          ["cursor"],
+          ["border"],
+          ["borderRadius"],
+          ["opacity"],
+          ["background"],
+          ["boxShadow"]
+        ]
+      },
+      "ChangePageIcon": {
+        "name": "分页切换页数图标",
+        "desc": "配置分页切换页数图标",
+        "normal": [["color"], ["fontSize"], ["font"]],
+        "hover": [],
+        "clicked": [],
+        "disabled": []
+      },
+      "PaginationSimpleText": {
+        "name": "简洁分页文字",
+        "desc": "简洁分页文字",
+        "normal": [["color"], ["font"], ["fontSize"], ["cursor"]]
       }
     }
   },
@@ -198,7 +254,7 @@
         ["opacity"],
         ["background"],
         ["boxShadow"],
-        ["lineHeight"]
+        ["padding"]
       ],
       "hover": [["color"], ["font"], ["fontSize"], ["border"], ["borderRadius"]],
       "clicked": [],
@@ -223,7 +279,7 @@
         ["opacity"],
         ["background"],
         ["boxShadow"],
-        ["lineHeight"]
+        ["padding"]
       ],
       "hover": [["color"], ["font"], ["fontSize"], ["border"], ["borderRadius"]],
       "clicked": [],
@@ -252,6 +308,15 @@
       "clicked": [],
       "disabled": []
     },
+
+    "ChangePageIcon": {
+      "name": "切换显示每页页数图标",
+      "desc": "配置切换显示每页页数图标",
+      "normal": [["color"], ["fontSize"], ["font"]],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
+    },
     "PaginationArrowIconContainer": {
       "name": "分页切换页数图标外部容器",
       "desc": "配置分页切换页数图标外部容器",
@@ -264,7 +329,7 @@
         ["opacity"],
         ["background"],
         ["boxShadow"],
-        ["lineHeight"]
+        ["padding"]
       ],
       "hover": [["color"], ["font"], ["fontSize"], ["border"], ["borderRadius"]],
       "clicked": [],
@@ -278,12 +343,12 @@
       ]
     },
     "QuickJumpInput": {
-      "name": "快速跳转分页输入框",
+      "name": "快速跳至分页输入框",
       "theme": {
         "Container": {
           "name": "输入框外部容器",
           "desc": "输入框外部容器",
-          "normal": [["width"], ["height"], ["margin"], ["padding"]]
+          "normal": [["width"], ["height"], ["margin"]]
         },
         "Input": {
           "name": "输入框主体内容",
@@ -298,7 +363,8 @@
             ["border"],
             ["borderRadius"],
             ["cursor"],
-            ["opacity"]
+            ["opacity"],
+            ["boxShadow"]
           ],
           "hover": [
             ["border"],
@@ -308,7 +374,14 @@
             ["opacity"],
             ["boxShadow"]
           ],
-          "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"], ["background"]],
+          "active": [
+            ["boxShadow"],
+            ["border"],
+            ["borderRadius"],
+            ["cursor"],
+            ["background"],
+            ["boxShadow"]
+          ],
           "disabled": [
             ["fontSize"],
             ["font"],
@@ -318,23 +391,31 @@
             ["borderRadius"],
             ["cursor"],
             ["padding"],
-            ["opacity"]
+            ["opacity"],
+            ["boxShadow"]
           ]
-        },
-        "PaginationText": {
-          "name": "快速跳至提醒文字",
-          "desc": "快速跳至提醒文字",
-          "normal": [["color"], ["font"], ["fontSize"], ["cursor"]]
         }
       }
     },
-    "ChangePageIcon": {
-      "name": "切换显示每页页数图标",
-      "desc": "配置切换显示每页页数图标",
-      "normal": [["color"], ["fontSize"], ["font"]],
-      "hover": [],
-      "clicked": [],
-      "disabled": []
+    "PaginationQuickJumpContainer": {
+      "name": "分页快速跳至外部容器",
+      "desc": "分页快速跳至外部容器",
+      "normal": [["margin"]]
+    },
+    "QuickJumpText": {
+      "name": "分页快速跳至提醒文字",
+      "desc": "分页快速跳至提醒文字",
+      "normal": [["color"], ["font"], ["fontSize"], ["cursor"]]
+    },
+    "PaginationTotalContainer": {
+      "name": "分页总共数据外部容器",
+      "desc": "分页总共数据外部容器",
+      "normal": [["margin"]]
+    },
+    "PaginationTotalText": {
+      "name": "分页总数据条数提醒文字",
+      "desc": "分页总数据条数提醒文字",
+      "normal": [["color"], ["font"], ["fontSize"], ["cursor"]]
     },
     "MorePageIcon": {
       "name": "更多页数图标",
@@ -351,8 +432,8 @@
           "name": "数据展示框",
           "theme": {
             "InputTagWrap": {
-              "name": "单个显示项外部容器",
-              "desc": "配置展示选中数据的容器",
+              "name": "Inputtag的外盒",
+              "desc": "配置展示选中数据的外盒样式",
               "normal": [
                 ["width"],
                 ["height"],
@@ -378,9 +459,18 @@
               "active": [],
               "disabled": []
             },
+
             "SwitchIcon": {
               "name": "下拉图标",
-              "desc": "配置下拉或清除按钮的图标样式",
+              "desc": "配置下拉图标样式",
+              "normal": [["color"], ["background"], ["font"], ["margin"], ["opacity"]],
+              "hover": [["color"], ["font"], ["opacity"]],
+              "active": [],
+              "disabled": []
+            },
+            "ClearIcon": {
+              "name": "清空图标",
+              "desc": "配置清除图标样式",
               "normal": [["color"], ["background"], ["font"], ["margin"], ["opacity"]],
               "hover": [["color"], ["font"], ["opacity"]],
               "active": [],
@@ -392,8 +482,8 @@
           "name": "弹开菜单",
           "theme": {
             "MenuWrap": {
-              "name": "菜单外部容器",
-              "desc": "配置菜单外部容器",
+              "name": "菜单外盒",
+              "desc": "配置菜单组件的外盒样式",
               "normal": [
                 ["width"],
                 ["height"],
@@ -413,8 +503,8 @@
               "name": "菜单项配置",
               "theme": {
                 "MenuItemWrap": {
-                  "name": "单个项的外部容器",
-                  "desc": "配置单个项的外部容器",
+                  "name": "项的外盒",
+                  "desc": "配置每一项的外盒",
                   "normal": [
                     ["height"],
                     ["background"],
@@ -450,8 +540,8 @@
                   ]
                 },
                 "SelectedMenuItemWrap": {
-                  "name": "选中项的外部容器",
-                  "desc": "配置选中项的外部容器",
+                  "name": "选中项的外盒",
+                  "desc": "配置选中项的外盒",
                   "normal": [
                     ["background"],
                     ["border"],
@@ -477,6 +567,14 @@
                     ["color"],
                     ["font"]
                   ],
+                  "disabled": []
+                },
+                "Divider": {
+                  "name": "分割线",
+                  "desc": "配置每项之间的分割线，当divided为true时生效",
+                  "normal": [["background"]],
+                  "hover": [],
+                  "active": [],
                   "disabled": []
                 }
               }
