@@ -15,10 +15,8 @@ import ThemeHoc from '../theme-provider';
 import { getBorder, getBorderRadius } from '@lugia/theme-utils';
 import { deepMerge } from '@lugia/object-utils';
 import colorsFunc from '../css/stateColor';
-import { units } from '@lugia/css';
 import Widget from '../consts';
 import { ObjectUtils } from '@lugia/type-utils';
-const { px2remcss } = units;
 
 export const {
   themeColor,
@@ -38,12 +36,20 @@ const PaginationList = StaticComponent({
     user-select: none;
   `,
 });
-const QuickJumperContainer = StaticComponent({
+const PaginationTextContainer = CSSComponent({
   tag: 'div',
-  className: 'QuickJumperContainer',
+  className: 'PaginationTextContainer',
+  normal: {
+    selectNames: [['margin']],
+    defaultTheme: {
+      margin: {
+        left: 8,
+        right: 8,
+      },
+    },
+  },
   css: css`
     display: inline-block;
-    margin: 0 ${px2remcss(8)};
   `,
 });
 const PaginationMoreItem = CSSComponent({
@@ -125,8 +131,9 @@ const PaginationListItem = CSSComponent({
       border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
-      const { propsConfig } = themeProps;
-      const { clickable = true } = propsConfig;
+      const {
+        propsConfig: { clickable = true },
+      } = themeProps;
       if (!clickable)
         return {
           border: getBorder({ color: superLightColor, width: 1, style: 'solid' }),
@@ -145,10 +152,19 @@ const PaginationArrowIconContainer = CSSComponent({
   extend: PaginationListItem,
   className: 'PaginationArrowIconContainer',
   normal: {
-    selectNames: [['width'], ['height'], ['cursor'], ['border'], ['borderRadius']],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['cursor'],
+      ['border'],
+      ['borderRadius'],
+      ['padding'],
+      ['margin'],
+    ],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
-      const { propsConfig } = themeProps;
-      const { isSelected, clickable = true, type } = propsConfig;
+      const {
+        propsConfig: { isSelected, clickable = true, type },
+      } = themeProps;
       const right = type === 'next' ? 0 : 8;
       const marginCSS = {
         margin: {
@@ -157,15 +173,18 @@ const PaginationArrowIconContainer = CSSComponent({
       };
       if (isSelected) {
         return {
-          marginCSS,
+          ...marginCSS,
           border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
         };
       }
       if (!clickable) {
-        return { marginCSS, border: getBorder({ color: 'red', width: 1, style: 'solid' }) };
+        return {
+          ...marginCSS,
+          border: getBorder({ color: 'red', width: 1, style: 'solid' }),
+        };
       }
       return {
-        marginCSS,
+        ...marginCSS,
       };
     },
     defaultTheme: {
@@ -181,8 +200,9 @@ const PaginationArrowIconContainer = CSSComponent({
       border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
-      const { propsConfig } = themeProps;
-      const { clickable = true } = propsConfig;
+      const {
+        propsConfig: { clickable = true },
+      } = themeProps;
       if (!clickable)
         return {
           border: getBorder({ color: superLightColor, width: 1, style: 'solid' }),
@@ -198,8 +218,9 @@ const PaginationListItemText = CSSComponent({
   normal: {
     selectNames: [['fontSize'], ['font'], ['color'], ['cursor'], ['opacity']],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
-      const { propsConfig } = themeProps;
-      const { isSelected } = propsConfig;
+      const {
+        propsConfig: { isSelected },
+      } = themeProps;
       if (isSelected) {
         return {
           color: themeColor,
@@ -470,8 +491,8 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
           Menu: {
             MenuWrap: {
               normal: {
-                width: 100,
-                height: 100,
+                width: 90,
+                height: 140,
               },
             },
             MenuItem: {
@@ -490,6 +511,9 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
                 padding: {
                   left: 5,
                   right: 5,
+                },
+                margin: {
+                  left: 8,
                 },
                 color: darkGreyColor,
                 font: { size: 14 },
@@ -524,12 +548,12 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
   }
 
   getQuickJumper() {
-    const { showQuickJumper } = this.props;
+    const { showQuickJumper, getPartOfThemeProps, getPartOfThemeHocProps } = this.props;
 
     if (!showQuickJumper) {
       return null;
     }
-    const { viewClass, theme } = this.props.getPartOfThemeHocProps('QuickJumpInput');
+    const { viewClass, theme } = getPartOfThemeHocProps('QuickJumpInput');
     const InnerInputTheme = deepMerge(
       {
         [viewClass]: {
@@ -547,36 +571,33 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
       },
       theme
     );
+    const quickJumpTextTheme = getPartOfThemeProps('PaginationQuickJumpText');
     return (
-      <QuickJumperContainer>
-        <PaginationBaseText themeProps={this.props.getPartOfThemeProps('PaginationText')}>
-          跳至
-        </PaginationBaseText>
+      <PaginationTextContainer themeProps={getPartOfThemeProps('PaginationQuickJumpContainer')}>
+        <PaginationBaseText themeProps={quickJumpTextTheme}>跳至</PaginationBaseText>
         <Input
           theme={InnerInputTheme}
           viewClass={viewClass}
           onEnter={this.enterPage}
           isShowClearButton={false}
         />
-        <PaginationBaseText themeProps={this.props.getPartOfThemeProps('PaginationText')}>
-          页
-        </PaginationBaseText>
-      </QuickJumperContainer>
+        <PaginationBaseText themeProps={quickJumpTextTheme}>页</PaginationBaseText>
+      </PaginationTextContainer>
     );
   }
 
   getShowTotalData() {
-    const { isShowTotalData, total } = this.props;
+    const { isShowTotalData, total, getPartOfThemeProps } = this.props;
 
     if (!isShowTotalData) {
       return null;
     }
     return (
-      <QuickJumperContainer>
-        <PaginationBaseText themeProps={this.props.getPartOfThemeProps('PaginationText')}>
+      <PaginationTextContainer themeProps={getPartOfThemeProps('PaginationTotalContainer')}>
+        <PaginationBaseText themeProps={getPartOfThemeProps('PaginationTotalText')}>
           {`共${total}条数据`}
         </PaginationBaseText>
-      </QuickJumperContainer>
+      </PaginationTextContainer>
     );
   }
 
@@ -697,11 +718,18 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
   }
 
   getArrowIcon(type: MorePageType, clickable?: boolean) {
-    const preIcon = 'lugia-icon-direction_Left';
-    const nextIcon = 'lugia-icon-direction_right';
+    const {
+      getPartOfThemeHocProps,
+      preIconClass,
+      preIconSrc,
+      nextIconClass,
+      nextIconSrc,
+    } = this.props;
+    const preIcon = preIconClass ? preIconClass : 'lugia-icon-direction_Left';
+    const nextIcon = nextIconClass ? nextIconClass : 'lugia-icon-direction_right';
     const iconClass = type === 'pre' ? preIcon : nextIcon;
-
-    const { theme: IconThemeProps, viewClass: IconViewClass } = this.props.getPartOfThemeHocProps(
+    const iconSrc = type === 'pre' ? preIconSrc : nextIconSrc;
+    const { theme: IconThemeProps, viewClass: IconViewClass } = getPartOfThemeHocProps(
       'ChangePageIcon'
     );
     const iconColor = clickable ? darkGreyColor : superLightColor;
@@ -727,6 +755,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
 
     return (
       <Icon
+        src={iconSrc}
         iconClass={iconClass}
         theme={iconTheme}
         viewClass={IconViewClass}
@@ -779,9 +808,10 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
             value={current}
             theme={InnerInputTheme}
             viewClass={viewClass}
+            isShowClearButton={false}
             onChange={this.inputChange}
           />
-          <PaginationBaseText themeProps={this.props.getPartOfThemeProps('PaginationText')}>
+          <PaginationBaseText themeProps={this.props.getPartOfThemeProps('PaginationSimpleText')}>
             / {totalPage}
           </PaginationBaseText>
           {this.getArrowIcon('next')}
@@ -791,8 +821,8 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     return (
       <PaginationListContainer themeProps={this.props.getPartOfThemeProps('Container')}>
         {this.getPaginationList()}
-        {this.getShowTotalData()}
         {this.getQuickJumper()}
+        {this.getShowTotalData()}
         {this.getPageSelect()}
       </PaginationListContainer>
     );
