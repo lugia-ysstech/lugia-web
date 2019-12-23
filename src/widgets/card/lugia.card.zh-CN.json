@@ -523,5 +523,13 @@
       "desc": "卡片标题下分割线配置",
       "normal": [["width"], ["height"], ["margin"], ["border", "bottom"]]
     }
+  },
+  "defaultTheme": {
+    "Container": {
+      "normal": {
+        "width": 750,
+        "height": 400
+      }
+    }
   }
 }
