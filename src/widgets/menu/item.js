@@ -92,92 +92,31 @@ class MenuItem extends React.Component<MenuItemProps> {
 
   getIconTheme = (iconType: string) => {
     const { viewClass, theme } = this.props.getPartOfThemeHocProps(iconType);
+    const paddingLeft = iconType === 'SuffixIcon' ? 3 : 0;
+    const paddingRight = iconType === 'PreIcon' ? 3 : 0;
+    const defaultTheme = {
+      normal: {
+        padding: {
+          left: paddingLeft,
+          right: paddingRight,
+        },
+        getCSS: () => {
+          return `
+          transition: all 0.3s
+          `;
+        },
+      },
+    };
 
-    switch (iconType) {
-      case 'SwitchIcon':
-        const defaultSwitchIconTheme = {
-          normal: {
-            padding: {
-              top: 0,
-              left: 0,
-              bottom: 0,
-              right: 0,
-            },
-            getCSS: () => {
-              return `
-              transition: all 0.3s
-              `;
-            },
-          },
-        };
-        return {
-          viewClass,
-          theme: deepMerge(
-            {
-              [viewClass]: { ...defaultSwitchIconTheme },
-            },
-            theme
-          ),
-        };
-
-      case 'PreIcon':
-        const defaultPreIconTheme = {
-          normal: {
-            padding: {
-              top: 0,
-              left: 0,
-              bottom: 0,
-              right: 3,
-            },
-            getCSS: () => {
-              return `
-              transition: all 0.3s
-              `;
-            },
-          },
-        };
-
-        return {
-          viewClass,
-          theme: deepMerge(
-            {
-              [viewClass]: { ...defaultPreIconTheme },
-            },
-            theme
-          ),
-        };
-
-      case 'SuffixIcon':
-        const defaultSuffixIconTheme = {
-          normal: {
-            padding: {
-              top: 0,
-              left: 3,
-              bottom: 0,
-              right: 0,
-            },
-            getCSS: () => {
-              return `
-              transition: all 0.3s
-              `;
-            },
-          },
-        };
-
-        return {
-          viewClass,
-          theme: deepMerge(
-            {
-              [viewClass]: { ...defaultSuffixIconTheme },
-            },
-            theme
-          ),
-        };
-      default:
-        break;
-    }
-
-    return { viewClass, theme };
+    return {
+      viewClass,
+      theme: deepMerge(
+        {
+          [viewClass]: { ...defaultTheme },
+        },
+        theme
+      ),
+    };
   };
 
   getPreIcon(channel: Object) {
@@ -188,30 +127,17 @@ class MenuItem extends React.Component<MenuItemProps> {
     }
     const { viewClass, theme } = this.getIconTheme('PreIcon');
 
-    if (preIconClass || preIconSrc) {
-      return (
-        <Icon
-          iconClass={preIconClass}
-          src={preIconSrc}
-          lugiaConsumers={channel.consumer}
-          singleTheme
-          viewClass={viewClass}
-          theme={theme}
-        />
-      );
-    }
-
-    if (icon) {
-      return (
-        <Icon
-          iconClass={icon}
-          lugiaConsumers={channel.consumer}
-          singleTheme
-          viewClass={viewClass}
-          theme={theme}
-        />
-      );
-    }
+    const iconClass = preIconClass ? preIconClass : icon;
+    return (
+      <Icon
+        iconClass={iconClass}
+        src={preIconSrc}
+        lugiaConsumers={channel.consumer}
+        singleTheme
+        viewClass={viewClass}
+        theme={theme}
+      />
+    );
   }
 
   getSuffixIcon(channel: Object) {
