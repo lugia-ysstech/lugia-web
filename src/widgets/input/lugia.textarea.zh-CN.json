@@ -164,7 +164,7 @@
       "desc": "段落文本输入框提示信息文字",
       "normal": [["color"], ["fontSize"], ["font"]]
     },
-    "InputClearButton": {
+    "ClearButton": {
       "name": "段落文本输入框清除图标",
       "desc": "段落文本输入框后缀清除图标",
       "normal": [["color"], ["fontSize"]],
