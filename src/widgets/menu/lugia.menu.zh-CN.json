@@ -544,7 +544,7 @@
 
             "DesContainer": {
               "name": "辅助字段框",
-              "desc": "配置辅助文本的位置",
+              "desc": "配置辅助文本的样式和位置",
               "normal": [["color"], ["font"], ["fontSize"], ["padding"], ["lineHeight"]],
               "hover": [["color"], ["font"], ["fontSize"]],
               "active": [["color"], ["font"], ["fontSize"]],
