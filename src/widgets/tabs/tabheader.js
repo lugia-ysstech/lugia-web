@@ -11,7 +11,7 @@ import Widget from '../consts/index';
 import { EditEventType, PagedType, TabPositionType, TabType } from '../css/tabs';
 
 import { px2remcss } from '../css/units';
-import { computePage, isVertical, matchType, plusWidth } from './utils';
+import { computePage, isVertical, matchType } from './utils';
 import { getAttributeFromObject } from '../common/ObjectUtils.js';
 
 import Icon from '../icon';
@@ -480,7 +480,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
     const { allowToCalc, maxIndex, data, activityValue } = this.state;
     const newMaxIndex = maxIndex ? maxIndex : this.getCurrentMaxIndex(titleSize);
     let { currentPage } = this.state;
-    const { tabPosition, tabType, pagedType } = this.props;
+    const { tabPosition, pagedType } = this.props;
     currentPage = pagedType === 'page' ? 1 : newMaxIndex;
     let offsetSize;
     if (isVertical(tabPosition)) {
@@ -524,7 +524,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
   getCurrentPageByActivityValue(data: Array<Object>, activityValue: string, totalPage: number) {
     let currentIndex = 0;
     data.some((item, index) => {
-      if (item.key === activityValue) {
+      if (item.value === activityValue) {
         currentIndex = index + 1;
         return true;
       }
@@ -703,7 +703,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
     );
   }
 
-  getChildren() {
+  getChildren(): React$Node {
     const { data } = this.state;
     const { getTabpane } = this.props;
     return data
@@ -761,10 +761,10 @@ class TabHeader extends Component<TabsProps, TabsState> {
       'disabled',
       getAttributeFromObject(child.props, 'disabled', false)
     );
-    const key = getAttributeFromObject(
+    const value = getAttributeFromObject(
       child,
-      'key',
-      getAttributeFromObject(child.props, 'key', false)
+      'value',
+      getAttributeFromObject(child.props, 'value', false)
     );
     const tabHeaderTheme = this.props.getPartOfThemeHocProps('TabHeader');
     return {
@@ -783,10 +783,10 @@ class TabHeader extends Component<TabsProps, TabsState> {
       ),
       onClick: this.onTabClick,
       activityValue,
-      keyVal: key,
+      keyVal: value,
       index: i,
       showDeleteBtn,
-      isSelect: !disabled && activityValue === key,
+      isSelect: !disabled && activityValue === value,
       onDelete: this.onDeleteClick,
       disabled,
       ...tabHeaderTheme,

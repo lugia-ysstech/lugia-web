@@ -12,7 +12,7 @@ import Widget from '../consts/index';
 import { PagedType, TabPositionType, TabType } from '../css/tabs';
 import { isVertical } from './utils';
 import { getAttributeFromObject } from '../common/ObjectUtils.js';
-import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
+import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import ThemeHoc from '@lugia/theme-hoc';
 import { deepMerge } from '@lugia/object-utils';
 
@@ -20,7 +20,15 @@ const TabContentContainer = CSSComponent({
   tag: 'div',
   className: 'ContentBlock',
   normal: {
-    selectNames: [['padding'], ['width'], ['height'], ['background']],
+    selectNames: [
+      ['padding'],
+      ['width'],
+      ['height'],
+      ['background'],
+      ['boxShadow'],
+      ['border'],
+      ['borderRadius'],
+    ],
     getCSS: (theme: Object, themeProps: Object) => {
       const {
         propsConfig: { tabPosition },
@@ -28,6 +36,7 @@ const TabContentContainer = CSSComponent({
       if (isVertical(tabPosition)) {
         return 'flex: 1 1 auto;';
       }
+      return '';
     },
   },
   disabled: {
@@ -47,15 +56,16 @@ const TabContent = CSSComponent({
     selectNames: [],
     getCSS: (theme: Object, themeProps: Object) => {
       const {
-        propsConfig: { active, key },
+        propsConfig: { active, value },
       } = themeProps;
-      if (active === key) {
+      if (active === value) {
         return `
         display:block;
         z-index:10;
         height:100%;
         `;
       }
+      return '';
     },
   },
   disabled: {
@@ -113,7 +123,6 @@ const OutContainer = CSSComponent({
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     position: relative;
-    overflow: hidden;
     min-height: 100%;
     display: flex;
     flex-direction: column;
@@ -132,7 +141,6 @@ const VerticalOutContainer = CSSComponent({
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     position: relative;
-    overflow: hidden;
     display: flex;
   `,
 });
@@ -169,23 +177,23 @@ type TabsProps = {
   getAddItem?: Function,
   pagedType?: PagedType,
   getTabpane?: Function,
-  themeProps?: Object,
+  themeProps: Object,
   onMouseEnter?: Function,
   onMouseLeave?: Function,
-  getPartOfThemeHocProps?: Function,
-  getPartOfThemeProps?: Function,
+  getPartOfThemeHocProps: Function,
+  getPartOfThemeProps: Function,
   hideContent?: boolean,
 };
 export function hasTargetInProps(target: string, props: TabsProps) {
   return `${target}` in props;
 }
-export function setKeyValue(data: Array<Object>) {
+export function setKeyValue(data: Array<Object>): Array<Object> {
   const newData = [...data];
   return newData.map((item, index) => {
     const newItem = { ...item };
-    const { key } = newItem;
-    if (!key) {
-      newItem.key = `Tab${index + 1}`;
+    const { value, key } = newItem;
+    if (!value) {
+      newItem.value = key || `Tab${index + 1}`;
     }
     return newItem;
   });
@@ -194,9 +202,9 @@ export function setKeyValue(data: Array<Object>) {
 export function getDefaultData(props: Object) {
   const { defaultData, data, children } = props;
   let configData = [
-    { title: 'Tab1', key: 'Tab1' },
-    { title: 'Tab2', key: 'Tab2' },
-    { title: 'Tab3', key: 'Tab3' },
+    { title: 'Tab1', value: 'Tab1' },
+    { title: 'Tab2', value: 'Tab2' },
+    { title: 'Tab3', value: 'Tab3' },
   ];
   if (hasTargetInProps('data', props) && Array.isArray(data)) {
     configData = data ? data : [];
@@ -204,8 +212,11 @@ export function getDefaultData(props: Object) {
     if (children) {
       configData = [];
       React.Children.map(children, child => {
+        if (typeof child === 'string') {
+          return;
+        }
         const item = { ...child.props };
-        item.key = child.key;
+        item.value = child.value;
         configData && configData.push(item);
       });
     } else {
@@ -226,16 +237,12 @@ class TabsBox extends Component<TabsProps, TabsState> {
   };
   static displayName = Widget.Tabs;
 
-  constructor(props: TabsProps) {
-    super(props);
-  }
-
   static getDerivedStateFromProps(props: TabsProps, state: TabsState) {
-    const { activityValue, defaultActivityValue, data } = props;
+    const { activityValue, defaultActivityValue } = props;
 
     let theData = getDefaultData(props);
     let theActivityValue =
-      activityValue || defaultActivityValue || (theData.length !== 0 ? theData[0].key : null);
+      activityValue || defaultActivityValue || (theData.length !== 0 ? theData[0].value : null);
     if (state) {
       theActivityValue = hasTargetInProps('activityValue', props)
         ? theActivityValue
@@ -398,11 +405,11 @@ class TabsBox extends Component<TabsProps, TabsState> {
     const item = (getAddItem && getAddItem()) || {
       title: `Tab${data.length + 1}`,
       content: `Tab${data.length + 1} Content`,
-      key: `Tab${data.length + 1}`,
+      value: `Tab${data.length + 1}`,
     };
     newData.push(item);
     this.setState({
-      activityValue: item.key || `Tab${data.length + 1}`,
+      activityValue: item.value || `Tab${data.length + 1}`,
       data: setKeyValue(newData),
     });
   };
@@ -430,29 +437,29 @@ class TabsBox extends Component<TabsProps, TabsState> {
                 getAttributeFromObject(child, 'children', undefined)
               )
             );
-            const key = getAttributeFromObject(
+            const value = getAttributeFromObject(
               child,
-              'key',
+              'value',
               getAttributeFromObject(
                 child.props,
-                'key',
+                'value',
                 getAttributeFromObject(child, 'children', undefined)
               )
             );
-            const props = { active: activityValue, key };
+            const props = { active: activityValue, value };
             const innerContentThemeProps = this.props.getPartOfThemeProps('ContentBlock', {
               props,
             });
             const { forceRender } = this.props;
             return content ? (
               forceRender ? (
-                activityValue === key && (
+                activityValue === value && (
                   <TabContent themeProps={innerContentThemeProps}>
                     <TabContentInner
                       {...this.props}
                       themeProps={contentThemeProps}
                       content={content}
-                      forceRender={forceRender && key === activityValue}
+                      forceRender={forceRender && value === activityValue}
                     />
                   </TabContent>
                 )
@@ -462,7 +469,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
                     {...this.props}
                     themeProps={contentThemeProps}
                     content={content}
-                    forceRender={forceRender && key === activityValue}
+                    forceRender={forceRender && value === activityValue}
                   />
                 </TabContent>
               )

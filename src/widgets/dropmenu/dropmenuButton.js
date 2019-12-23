@@ -6,14 +6,14 @@
 import * as React from 'react';
 import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
-import CommonIcon from '../icon';
+import Icon from '../icon';
+import { deepMerge } from '@lugia/object-utils';
 
 import {
   NoDividedContainer,
   CheckInput,
   NoDividedWrap,
-  TextContainer,
-  NoDividedIconWrap,
+  NoDevidedTextContainer,
   DividedContainer,
   DividedWrap,
   DevidedTextContainer,
@@ -31,11 +31,13 @@ type DropMenuButtonProps = {
   onMouseEnter?: Function,
   onMouseLeave?: Function,
   disabled: boolean,
-  switchIconClass: 'string',
+  switchIconClass: Object,
   text: 'string',
   showSwitch: boolean,
   getPartOfThemeProps: Function,
   getPartOfThemeConfig: Function,
+  getPartOfThemeHocProps: Function,
+  icons: Object,
 };
 
 type DropMenuButtonState = {
@@ -52,8 +54,11 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
     divided: false,
     type: 'customs',
     disabled: false,
-    switchIconClass: 'lugia-icon-direction_down',
+    switchIconClass: {
+      iconClass: 'lugia-icon-direction_down',
+    },
     showSwitch: true,
+    icons: {},
   };
 
   constructor(props: DropMenuButtonProps) {
@@ -72,13 +77,16 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
   getWrapThemeProps = dividedThemeConfig => {
     const { divided, type, getPartOfThemeProps, disabled } = this.props;
     const { hasButtonChecked } = this.state;
+
     return getPartOfThemeProps('Container', {
       props: { type, checked: hasButtonChecked, disabled, divided, dividedThemeConfig },
     });
   };
-
   getNoDevidedButton = () => {
     const { getPartOfThemeProps, disabled, switchIconClass, showSwitch } = this.props;
+    const { viewClass, theme } = this.getIconTheme('SwitchIcon');
+    const { iconClass, iconSrc } = switchIconClass;
+    const channel = this.props.createEventChannel(['active', 'hover', 'disabled']);
 
     return (
       <NoDividedContainer
@@ -86,6 +94,7 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
         onClick={this.handleClickWrap}
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
+        {...channel.provider}
       >
         <CheckInput
           disabled={disabled}
@@ -94,15 +103,65 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
           onBlur={this.handleButtonBlur}
         />
         <NoDividedWrap>
-          <TextContainer>{this.getText()}</TextContainer>
+          {this.getPreIcon(channel)}
+          <NoDevidedTextContainer
+            lugiaConsumers={channel.consumer}
+            themeProps={getPartOfThemeProps('TextContainer', { disabled })}
+          >
+            {this.getText()}
+          </NoDevidedTextContainer>
+          {this.getSuffixIcon(channel)}
+
           {showSwitch ? (
-            <NoDividedIconWrap themeProps={getPartOfThemeProps('PullIcon')}>
-              <CommonIcon iconClass={switchIconClass} />
-            </NoDividedIconWrap>
+            <Icon
+              iconClass={iconClass}
+              src={iconSrc}
+              singleTheme
+              viewClass={viewClass}
+              theme={theme}
+              lugiaConsumers={channel.consumer}
+            />
           ) : null}
         </NoDividedWrap>
       </NoDividedContainer>
     );
+  };
+
+  getPreOrSuffixIcon = (type: string, iconClass: string, src: string, channel: object) => {
+    const { viewClass, theme } = this.getIconTheme(type);
+
+    return (
+      <Icon
+        iconClass={iconClass}
+        lugiaConsumers={channel.consumer}
+        src={src}
+        singleTheme
+        viewClass={viewClass}
+        theme={theme}
+      />
+    );
+  };
+
+  getPreIcon = (channel: object) => {
+    const {
+      icons: { preIconClass, preIconSrc },
+    } = this.props;
+    if (!preIconClass && !preIconSrc) {
+      return null;
+    }
+
+    return this.getPreOrSuffixIcon('PreIcon', preIconClass, preIconSrc, channel);
+  };
+
+  getSuffixIcon = (channel: object) => {
+    const {
+      icons: { suffixIconClass, suffixIconSrc },
+    } = this.props;
+    if (!suffixIconClass && !suffixIconSrc) {
+      return null;
+    }
+
+    return this.getPreOrSuffixIcon('SuffixIcon', suffixIconClass, suffixIconSrc, channel);
   };
 
   getButton = () => {
@@ -113,6 +172,16 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
   getText = () => {
     const { children, text } = this.props;
     return text ? text.toString() : children;
+  };
+
+  getDividedContainerRadius = () => {
+    const { normal: { borderRadius = {} } = {} } = this.props.getPartOfThemeConfig('Container');
+
+    return borderRadius;
+  };
+
+  createChannel = () => {
+    return this.props.createEventChannel(['active', 'hover', 'disabled']);
   };
 
   getDevidedButton = () => {
@@ -127,9 +196,14 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
       getPartOfThemeConfig,
     } = props;
     const { hasIconChecked, hasButtonChecked } = state;
+    const { iconClass, iconSrc } = switchIconClass;
+    const leftChannel = this.createChannel();
+    const rightChannel = this.createChannel();
 
-    const { normal = {} } = this.props.getPartOfThemeConfig('TextContainer');
-    const { width: textContainerWidth } = normal;
+    const { normal: { width: textContainerWidth } = {} } = this.props.getPartOfThemeConfig(
+      'TextContainer'
+    );
+
     const dividedThemeConfig = getPartOfThemeConfig('Divided');
 
     const textContainerTheme = getPartOfThemeProps('TextContainer', {
@@ -138,6 +212,7 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
         checked: hasButtonChecked,
         disabled,
         divided,
+        borderRadius: this.getDividedContainerRadius(),
       },
     });
 
@@ -161,8 +236,12 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
             type={type}
             checked={hasButtonChecked}
             themeProps={textContainerTheme}
+            {...leftChannel.provider}
           >
+            {this.getPreIcon(leftChannel)}
             {this.getText()}
+            {this.getSuffixIcon(leftChannel)}
+
             <CheckInput
               type="button"
               disabled={disabled}
@@ -174,8 +253,15 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
             disabled={disabled}
             type={type}
             Theme={getTheme()}
-            themeProps={getPartOfThemeProps('IconContainer', {
-              props: { type, checked: hasIconChecked, disabled, divided },
+            {...rightChannel.provider}
+            themeProps={getPartOfThemeProps('SwitchIconContainer', {
+              props: {
+                type,
+                checked: hasIconChecked,
+                disabled,
+                divided,
+                borderRadius: this.getDividedContainerRadius(),
+              },
             })}
             checked={hasIconChecked}
             onClick={this.handleIconClick}
@@ -183,7 +269,13 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
             onMouseLeave={this.onMouseLeave}
           >
             <CheckInput disabled={disabled} type="button" onBlur={this.handleIconBlur} />
-            <CommonIcon iconClass={switchIconClass} />
+            <Icon
+              iconClass={iconClass}
+              lugiaConsumers={rightChannel.consumer}
+              singleTheme
+              {...this.props.getPartOfThemeHocProps('SwitchIcon')}
+              src={iconSrc}
+            />
           </PullContainer>
         </DividedWrap>
       </DividedContainer>
@@ -254,6 +346,96 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
       return;
     }
     onMouseLeave && onMouseLeave(e);
+  };
+
+  getIconTheme = (iconType: string) => {
+    const { viewClass, theme } = this.props.getPartOfThemeHocProps(iconType);
+
+    switch (iconType) {
+      case 'SwitchIcon':
+        const defaultSwitchIconTheme = {
+          normal: {
+            padding: {
+              top: 0,
+              left: 6,
+              bottom: 0,
+              right: 6,
+            },
+            getCSS: () => {
+              return `
+              transition: all 0.3s
+              `;
+            },
+          },
+        };
+        return {
+          viewClass,
+          theme: deepMerge(
+            {
+              [viewClass]: { ...defaultSwitchIconTheme },
+            },
+            theme
+          ),
+        };
+
+      case 'PreIcon':
+        const defaultPreIconTheme = {
+          normal: {
+            padding: {
+              top: 0,
+              left: 0,
+              bottom: 0,
+              right: 3,
+            },
+            getCSS: () => {
+              return `
+              transition: all 0.3s
+              `;
+            },
+          },
+        };
+
+        return {
+          viewClass,
+          theme: deepMerge(
+            {
+              [viewClass]: { ...defaultPreIconTheme },
+            },
+            theme
+          ),
+        };
+
+      case 'SuffixIcon':
+        const defaultSuffixIconTheme = {
+          normal: {
+            padding: {
+              top: 0,
+              left: 3,
+              bottom: 0,
+              right: 0,
+            },
+            getCSS: () => {
+              return `
+              transition: all 0.3s
+              `;
+            },
+          },
+        };
+
+        return {
+          viewClass,
+          theme: deepMerge(
+            {
+              [viewClass]: { ...defaultSuffixIconTheme },
+            },
+            theme
+          ),
+        };
+      default:
+        break;
+    }
+
+    return { viewClass, theme };
   };
 }
 

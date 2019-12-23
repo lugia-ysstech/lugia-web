@@ -12,7 +12,6 @@ import Widget from '../consts/index';
 import '../common/shirm';
 import Menu from '../menu';
 import DropMenuButton from './dropmenuButton';
-import { DropMenuContainer } from '../css/dropmenubutton';
 
 const alignType = 'topLeft | top | topRight | bottomLeft | bottom | bottomRight';
 
@@ -36,19 +35,21 @@ type DropMenuProps = {
   hideAction: Array<string>,
   menus: React.Node,
   children: React.Element<any>,
-  onPopupVisibleChange?: Function,
   align: alignType,
   text: string,
-  divided: boolean,
   type: 'customs' | 'basic' | 'primary',
+  switchIconClass?: Object,
+  disabled: boolean,
+  showSwitch: boolean,
+  divided: boolean,
+  icons: Object,
+
+  onPopupVisibleChange?: Function,
   _onClick?: Function,
   onClick?: Function,
   onMouseEnter?: Function,
   onMouseLeave?: Function,
   onMenuClick?: Function,
-  disabled: boolean,
-  switchIconClass: 'string',
-  showSwitch: boolean,
 };
 
 type DropMenuState = {
@@ -64,8 +65,8 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
     divided: true,
     type: 'customs',
     disabled: false,
-    switchIconClass: 'lugia-icon-direction_down',
     showSwitch: true,
+    icons: {},
   };
   state: DropMenuState;
   static displayName = Widget.DropMenu;
@@ -85,6 +86,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
       [Widget.DropMenuButton]: this.getDropMenuButtonTheme(),
       [Widget.Menu]: this.getMenuTheme(),
     };
+
     let popup;
     if (!menus) {
       const { data = defaultData } = this.props;
@@ -97,29 +99,27 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
     const offsetY = this.getOffSetY(align);
 
     return (
-      <DropMenuContainer themeProps={this.props.getPartOfThemeProps('Container')}>
-        <Theme
-          config={{
-            ...config,
-          }}
+      <Theme
+        config={{
+          ...config,
+        }}
+      >
+        <Trigger
+          themePass
+          ref={cmp => (this.trigger = cmp)}
+          align={align}
+          action={action}
+          offsetY={offsetY}
+          lazy={false}
+          createPortal
+          hideAction={hideAction}
+          onPopupVisibleChange={this.onPopupVisibleChange}
+          popupVisible={this.state.visible}
+          popup={popup}
         >
-          <Trigger
-            themePass
-            ref={cmp => (this.trigger = cmp)}
-            align={align}
-            action={action}
-            offsetY={offsetY}
-            lazy={false}
-            createPortal
-            hideAction={hideAction}
-            onPopupVisibleChange={this.onPopupVisibleChange}
-            popupVisible={this.state.visible}
-            popup={popup}
-          >
-            {this.getChildrenItem()}
-          </Trigger>
-        </Theme>
-      </DropMenuContainer>
+          {this.getChildrenItem()}
+        </Trigger>
+      </Theme>
     );
   }
 
@@ -139,6 +139,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
       disabled,
       switchIconClass,
       showSwitch,
+      icons,
     } = this.props;
 
     return (
@@ -153,6 +154,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
         disabled={disabled}
         switchIconClass={switchIconClass}
         showSwitch={showSwitch}
+        icons={icons}
       />
     );
   }
@@ -227,12 +229,13 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   };
 
   getMenuTheme = () => {
-    const width = this.getContainerWidth();
+    const { normal: { width = 92 } = {} } = this.props.getPartOfThemeConfig('Container');
+
     let initMenuTheme = {
       width,
       height: 110,
     };
-    if (typeof width === 'string') {
+    if (typeof width !== 'number') {
       initMenuTheme = {
         width: 92,
         height: 110,
@@ -248,17 +251,15 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
 
   getDropMenuButtonTheme = () => {
     const { getPartOfThemeConfig } = this.props;
-    const { normal = {} } = getPartOfThemeConfig('Container');
-    const { width = 92, height = 32 } = normal;
-    const defaultButtonTheme = {
-      Container: {
-        normal: {
-          width,
-          height,
-        },
-      },
+    const theme = {
+      Container: getPartOfThemeConfig('Container'),
+      PreIcon: getPartOfThemeConfig('PreIcon'),
+      SuffixIcon: getPartOfThemeConfig('SuffixIcon'),
+      SwitchIcon: getPartOfThemeConfig('SwitchIcon'),
+      Divided: getPartOfThemeConfig('Divided'),
+      TextContainer: getPartOfThemeConfig('TextContainer'),
+      SwitchIconContainer: getPartOfThemeConfig('SwitchIconContainer'),
     };
-    const theme = this.mergeTheme('DropMenuButton', defaultButtonTheme);
     return theme;
   };
 }

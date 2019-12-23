@@ -18,25 +18,11 @@ export const {
   defaultColor,
   hoverColor,
   mouseDownColor,
+  borderRadius,
 } = colorsFunc();
 
 const DefaultHeight = 32;
 const DefaultWidth = 92;
-
-export const DropMenuContainer = CSSComponent({
-  tag: 'div',
-  className: 'DropMenuContainer',
-  normal: {
-    selectNames: [['width'], ['height']],
-  },
-  hover: {
-    selectNames: [],
-  },
-  css: css`
-    display: inline-block;
-  `,
-});
-DropMenuContainer.displayName = 'DropMenuContainer';
 
 const getHoverBgColorFromNormalOrHover = (params: Object) => {
   const { normal = {}, hover = {} } = params;
@@ -82,8 +68,7 @@ const getNoDividedCustomsDefaultCSS = themeMeta => {
 };
 
 const getNoDividedCheckedDefaultBasicCSS = param => {
-  const { normal = {} } = param;
-  const { color = themeColor } = normal;
+  const { normal: { color = themeColor } = {} } = param;
   return {
     border: 'none',
     color: colorsFunc(color).hoverColor,
@@ -210,6 +195,10 @@ const getNoDividedPrimaryAativeCSS = param => {
 };
 
 const getNoDividedHoverCSS = (type, param) => {
+  const { disabled } = param;
+  if (disabled) {
+    return {};
+  }
   if (type === 'basic') {
     return getNoDividedBasicHoverCSS(param);
   } else if (type === 'primary') {
@@ -281,7 +270,7 @@ export const NoDividedContainer = CSSComponent({
         ? getNoDividedCheckedDefaultCSS(type, { normal, hover })
         : getNoDividedDefaultCSS(type, themeMeta);
       return {
-        lineHeight: px2remcss(height),
+        lineHeight: px2remcss(height - 2),
         ...defaultCSS,
       };
     },
@@ -289,7 +278,6 @@ export const NoDividedContainer = CSSComponent({
   },
   hover: {
     selectNames: [
-      ['lineHeight'],
       ['color'],
       ['border'],
       ['borderRadius'],
@@ -304,8 +292,8 @@ export const NoDividedContainer = CSSComponent({
     getThemeMeta: (themeMeta, themeProps) => {
       const { themeConfig, propsConfig } = themeProps;
       const { normal = {}, hover = {} } = themeConfig;
-      const { type } = propsConfig;
-      const hoverCSS = getNoDividedHoverCSS(type, { normal, hover });
+      const { type, disabled } = propsConfig;
+      const hoverCSS = getNoDividedHoverCSS(type, { normal, hover, disabled });
 
       return { ...hoverCSS };
     },
@@ -313,7 +301,6 @@ export const NoDividedContainer = CSSComponent({
   },
   active: {
     selectNames: [
-      ['lineHeight'],
       ['color'],
       ['font'],
       ['fontSize'],
@@ -333,7 +320,6 @@ export const NoDividedContainer = CSSComponent({
   },
   disabled: {
     selectNames: [
-      ['lineHeight'],
       ['color'],
       ['border'],
       ['borderRadius'],
@@ -349,6 +335,7 @@ export const NoDividedContainer = CSSComponent({
       const { type } = propsConfig;
 
       const disabledCSS = getNoDividedDisabledCSS(type);
+
       return {
         ...disabledCSS,
       };
@@ -358,17 +345,18 @@ export const NoDividedContainer = CSSComponent({
     },
   },
   css: css`
-    height: ${px2remcss(32)};
-    width: ${px2remcss(92)};
-    line-height: ${px2remcss(32)};
-    border-radius: ${px2remcss(4)};
-    transition: all 0.3s;
+    height: ${px2remcss(DefaultHeight)};
+    width: ${px2remcss(DefaultWidth)};
+    border-radius: ${px2remcss(borderRadius)};
+    transition-property: background-color, border, borderRadius, opacity, boxShadow;
+    transition-duration: 0.3s;
     border-width: ${px2remcss(1)};
     border-style: solid;
     position: relative;
     display: inline-block;
     overflow: hidden;
     box-sizing: border-box;
+    font-size: ${px2remcss(14)};
   `,
   option: { hover: true, active: true, disabled: true },
 });
@@ -403,19 +391,10 @@ export const NoDividedWrap = StaticComponent({
     text-align: center;
     overflow: hidden;
     padding: 0 ${px2remcss(4)};
-  `,
-});
-
-export const TextContainer = StaticComponent({
-  tag: 'span',
-  className: 'TextContainer',
-  css: css`
-    display: inline-block;
-    flex: 1;
-    font-size: ${px2remcss(14)};
-    height: 100%;
-    border-top-left-radius: ${px2remcss(4)};
-    border-bottom-left-radius: ${px2remcss(4)};
+    white-space: nowrap;
+    & i {
+      vertical-align: middle;
+    }
   `,
 });
 
@@ -438,9 +417,8 @@ export const NoDividedIconWrap = CSSComponent({
   css: css`
     display: inline-block;
     padding-left: ${px2remcss(6)};
-    padding-top: ${px2remcss(2)};
-    height: ${px2remcss(30)};
-    vertical-align: top;
+    padding-right: ${px2remcss(6)};
+    overflow: hidden;
   `,
 });
 
@@ -455,6 +433,7 @@ const getDividedActiveCSS = (type, themeConfig = {}) => {
   const color = active.color ? active.color : type === 'primary' ? mouseDownColor : defaultColor;
   return color;
 };
+
 export const DividedContainer = CSSComponent({
   tag: 'div',
   className: 'DividedContainer',
@@ -465,22 +444,21 @@ export const DividedContainer = CSSComponent({
       ['height'],
       ['margin'],
       ['lineHeight'],
-      ['color'],
       ['opacity'],
-      ['boxShadow'],
       ['font'],
       ['fontSize'],
       ['cursor'],
+      ['boxShadow'],
+      ['borderRadius'],
     ],
     getThemeMeta: themeMeta => {
       const { height = DefaultHeight } = themeMeta;
-      return { lineHeight: px2remcss(height) };
+      return { lineHeight: px2remcss(height - 2) };
     },
     getCSS: (themeMeta, themeProps) => {
       const { propsConfig, themeConfig } = themeProps;
-      const { normal = {} } = themeConfig;
+      const { normal: { height = DefaultHeight } = {} } = themeConfig;
       const { disabled, dividedThemeConfig, type } = propsConfig;
-      const { height = DefaultHeight } = normal;
 
       const hoverCSS = `
              &:hover > span { 
@@ -501,12 +479,12 @@ export const DividedContainer = CSSComponent({
   disabled: {
     selectNames: [
       ['lineHeight'],
-      ['color'],
       ['opacity'],
       ['boxShadow'],
       ['font'],
       ['fontSize'],
       ['cursor'],
+      ['borderRadius'],
     ],
     getThemeMeta: () => {
       return {};
@@ -518,13 +496,13 @@ export const DividedContainer = CSSComponent({
   css: css`
     height: ${px2remcss(DefaultHeight)};
     width: ${px2remcss(DefaultWidth)};
-    line-height: ${px2remcss(32)};
-    border-radius: ${px2remcss(4)};
+    border-radius: ${px2remcss(borderRadius)};
     transition: all 0.3s;
     position: relative;
     display: inline-block;
     overflow: hidden;
     box-sizing: border-box;
+    font-size: ${px2remcss(14)};
   `,
   option: { hover: false, active: false, disabled: true },
 });
@@ -620,7 +598,7 @@ const getDevidedTextContainerPrimaryActiveCSS = () => {
 };
 
 const getDevidedTextContainerCustomsActiveCSS = themeConfig => {
-  const activebgColor = getActiveBgColorFromNormalOrActive(themeConfig, themeColor);
+  const activebgColor = getActiveBgColorFromNormalOrActive(themeConfig, -themeColor);
   const activeCSS = {
     background: {
       color: activebgColor,
@@ -672,7 +650,7 @@ const getDevidedTextContainerDisabledCSS = type => {
 };
 
 export const DevidedTextContainer = CSSComponent({
-  tag: 'span',
+  tag: 'div',
   className: 'DevidedTextContainer',
   normal: {
     selectNames: [
@@ -700,17 +678,26 @@ export const DevidedTextContainer = CSSComponent({
         ...defaultCSS,
       };
     },
+    getCSS: (themeMeta, themeProps) => {
+      const {
+        propsConfig: { borderRadius: { topLeft, bottomLeft } = {} },
+      } = themeProps;
+      const activeTopLeft = topLeft || topLeft === 0 ? topLeft : borderRadius;
+      const activeBottomLeft = bottomLeft || bottomLeft === 0 ? bottomLeft : borderRadius;
+      return `
+      border-top-left-radius: ${px2remcss(activeTopLeft)};
+      border-bottom-left-radius: ${px2remcss(activeBottomLeft)};
+      `;
+    },
     defaultTheme: {},
   },
   hover: {
     selectNames: [
-      ['lineHeight'],
       ['background'],
       ['border', 'left'],
       ['border', 'top'],
       ['border', 'bottom'],
       ['color'],
-      ['opacity'],
       ['font'],
       ['fontSize'],
     ],
@@ -733,7 +720,6 @@ export const DevidedTextContainer = CSSComponent({
       ['border', 'top'],
       ['border', 'bottom'],
       ['color'],
-      ['opacity'],
       ['font'],
       ['fontSize'],
     ],
@@ -778,10 +764,52 @@ export const DevidedTextContainer = CSSComponent({
     transition: all 0.3s;
     border-right: 0;
     display: inline-block;
-    width: 74%;
+    width: 75%;
+    max-width: 90%;
     height: 100%;
-    border-top-left-radius: ${px2remcss(4)};
-    border-bottom-left-radius: ${px2remcss(4)};
+
+    & i {
+      vertical-align: middle;
+    }
+  `,
+  option: { hover: true, active: true, disabled: true },
+});
+
+export const NoDevidedTextContainer = CSSComponent({
+  tag: 'div',
+  className: 'NoDevidedTextContainer',
+  normal: {
+    selectNames: [
+      ['width'],
+      ['padding'],
+      ['lineHeight'],
+      ['color'],
+      ['opacity'],
+      ['font'],
+      ['fontSize'],
+      ['cursor'],
+    ],
+    defaultTheme: {},
+  },
+  hover: {
+    selectNames: [['color'], ['opacity'], ['font'], ['fontSize']],
+    defaultTheme: {},
+  },
+  active: {
+    selectNames: [['color'], ['opacity'], ['font'], ['fontSize']],
+
+    defaultTheme: {},
+  },
+  disabled: {
+    selectNames: [['color'], ['opacity'], ['font'], ['fontSize']],
+    defaultTheme: {
+      cursor: 'not-allowed',
+    },
+  },
+  css: css`
+    display: inline-block;
+    vertical-align: top;
+    transition: all 0.3s;
   `,
   option: { hover: true, active: true, disabled: true },
 });
@@ -798,7 +826,6 @@ export const PullContainer = CSSComponent({
       ['border', 'top'],
       ['border', 'bottom'],
       ['color'],
-      ['opacity'],
       ['font'],
       ['fontSize'],
       ['cursor'],
@@ -813,6 +840,17 @@ export const PullContainer = CSSComponent({
         ...defaultCSS,
       };
     },
+    getCSS: (themeMeta, themeProps) => {
+      const {
+        propsConfig: { borderRadius: { topRight, bottomRight } = {} },
+      } = themeProps;
+      const activeTopRight = topRight || topRight === 0 ? topRight : borderRadius;
+      const activeBottomRight = bottomRight || bottomRight === 0 ? bottomRight : borderRadius;
+      return `
+      border-top-right-radius: ${px2remcss(activeTopRight)};
+      border-bottom-right-radius: ${px2remcss(activeBottomRight)};
+      `;
+    },
     defaultTheme: {},
   },
   hover: {
@@ -823,14 +861,12 @@ export const PullContainer = CSSComponent({
       ['border', 'top'],
       ['border', 'bottom'],
       ['color'],
-      ['opacity'],
       ['font'],
       ['fontSize'],
     ],
     getThemeMeta: (themeMeta, themeProps) => {
       const { propsConfig, themeConfig } = themeProps;
       const { type } = propsConfig;
-
       const hoverCSS = getDevidedTextContainerHoverCSS(type, themeConfig);
       return {
         ...hoverCSS,
@@ -846,7 +882,6 @@ export const PullContainer = CSSComponent({
       ['border', 'top'],
       ['border', 'bottom'],
       ['color'],
-      ['opacity'],
       ['font'],
       ['fontSize'],
     ],
@@ -889,20 +924,21 @@ export const PullContainer = CSSComponent({
   },
   css: css`
     display: inline-block;
-    padding: ${px2remcss(2)} ${px2remcss(6)} 0;
     flex: 1;
     height: 100%;
     position: relative;
-    border-top-right-radius: ${px2remcss(4)};
-    border-bottom-right-radius: ${px2remcss(4)};
     transition: all 0.3s;
+    z-index: 200;
+    & i {
+      vertical-align: middle;
+    }
   `,
   option: { hover: true, active: true, disabled: true },
 });
 
 const getSeparatorWidth = props => {
   const { width } = props;
-  return width ? px2remcss(width) : '74%';
+  return width ? px2remcss(width) : '75%';
 };
 
 const getSeparatorBorderColor = props => {
@@ -911,16 +947,15 @@ const getSeparatorBorderColor = props => {
   if (disabled) {
     const { disabled: disabledTheme = {} } = themeConfig;
     const { color = lightGreyColor } = disabledTheme;
-    return color;
+    return type === 'primary' ? color : defaultColor;
   }
   if (checked) {
-    const { hover = {} } = themeConfig;
-    const { color } = hover;
+    const { hover: { color } = {} } = themeConfig;
 
     return color ? color : type === 'primary' ? hoverColor : defaultColor;
   }
-  const { normal = {} } = themeConfig;
-  const { color: normalColor } = normal;
+  const { normal: { color: normalColor } = {} } = themeConfig;
+
   if (normalColor) {
     return normalColor;
   }
@@ -936,14 +971,15 @@ const getSeparatorBorderWidth = props => {
     return px2remcss(width);
   }
 
-  const { normal = {} } = themeConfig;
-  const { width: normalWidth = 1 } = normal;
+  const { normal: { width: normalWidth = 1 } = {} } = themeConfig;
+
   return px2remcss(normalWidth);
 };
 
 const getSeparatorHeight = props => {
-  const { checked } = props;
-  return checked ? '100%' : '70%';
+  const { checked, themeConfig } = props;
+  const { normal: { height } = {} } = themeConfig;
+  return checked ? '100%' : height ? px2remcss(height) : '70%';
 };
 
 export const SeparatorBorder = StaticComponent({
@@ -959,5 +995,6 @@ export const SeparatorBorder = StaticComponent({
     z-index: 2;
     transition: all 0.3s;
     width: ${getSeparatorWidth};
+    max-width: 90%;
   `,
 });

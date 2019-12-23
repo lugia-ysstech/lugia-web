@@ -313,8 +313,8 @@ class TreeNode extends React.Component {
   }
 
   getThemeProps(defaultName: string, selectedName: string, params: Object = {}): Object {
-    const { getPartOfThemeProps } = this.props;
-    return this.isChecked()
+    const { getPartOfThemeProps, parentIsHighlight } = this.props;
+    return this.isChecked() || parentIsHighlight
       ? getPartOfThemeProps(selectedName, { props: params })
       : getPartOfThemeProps(defaultName, { props: params });
   }
@@ -324,6 +324,7 @@ class TreeNode extends React.Component {
     const {
       checked,
       selected,
+      parentIsHighlight,
       disabled,
       inlineType,
       pos,
@@ -357,7 +358,7 @@ class TreeNode extends React.Component {
       pos,
       mutliple,
       shape,
-      selected,
+      selected: selected || parentIsHighlight,
       describe,
       inlineType,
       __navmenu,

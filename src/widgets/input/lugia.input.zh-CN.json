@@ -71,7 +71,7 @@
       "defaultValue": false
     },
     "type": {
-      "type": "string",
+      "type": "InputType",
       "desc": "input类型",
       "defaultValue": "text"
     },
@@ -175,6 +175,7 @@
   },
   "type": {
     "InputSize": ["small", "default", "large"],
+    "InputType": [ "text","password"],
     "ValidateStatus": ["success", "error"],
     "InputValidateType": ["top", "bottom", "inner", "default"],
     "ChangeType": {
@@ -184,6 +185,7 @@
     }
   },
   "category": ["数据录入"],
+  "childrenWidget": ["textarea"],
   "theme": {
     "Container": {
       "name": "输入框外部容器",
