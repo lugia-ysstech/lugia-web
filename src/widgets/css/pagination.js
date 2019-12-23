@@ -12,6 +12,10 @@ export type PaginationProps = {
   total?: number,
   onChange?: (page: number, pageSize: number) => void,
   getPartOfThemeProps: Function,
+  preIconClass?: string,
+  nextIconClass?: string,
+  preIconSrc?: string,
+  nextIconSrc?: string,
 };
 export type MorePageType = 'default' | 'pre' | 'next';
 
