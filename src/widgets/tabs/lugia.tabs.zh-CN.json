@@ -5,22 +5,21 @@
   "props": {
     "activityValue": {
       "type": "string",
-      "desc": "当前激活 tab 面板的 key"
+      "desc": "当前激活 tab 面板的 value"
     },
     "defaultActivityValue": {
       "type": "string",
-      "desc": "默认激活 tab 面板的 key",
-      "defaultValue": 0
+      "desc": "默认激活 tab 面板的 value"
     },
     "tabType": {
       "type": "TabType",
       "desc": "可配置三种风格的标签页.可选 线性,卡片,窗口风格",
-      "defaultValue": "line"
+      "propsDefaultValue": "line"
     },
     "tabPosition": {
       "type": "TabPositionType",
       "desc": "页签位置，可配置 左,右,上,下",
-      "defaultValue": "top"
+      "propsDefaultValue": "top"
     },
     "children": {
       "type": "React$Element<any>",
@@ -44,22 +43,27 @@
     "forceRender": {
       "type": "boolean",
       "desc": "切换时是否重新渲染面板",
-      "defaultValue": false
+      "propsDefaultValue": false
     },
     "pagedType": {
       "type": "PagedType",
       "desc": "翻页类型,可配置单个滑动,整页滑动",
-      "defaultValue": "single"
+      "propsDefaultValue": "single"
     },
     "showAddBtn": {
       "type": "boolean",
       "desc": "是否显示新增按钮(仅卡片和窗口类型支持)",
-      "defaultValue": false
+      "propsDefaultValue": false
     },
     "showDeleteBtn": {
       "type": "boolean",
       "desc": "是否显示删除按钮(仅卡片和窗口类型支持)",
-      "defaultValue": false
+      "propsDefaultValue": false
+    },
+    "showDividerLine": {
+      "type": "boolean",
+      "desc": "是否显示分割线(仅线性类型支持)",
+      "propsDefaultValue": false
     }
   },
   "events": {
@@ -144,6 +148,11 @@
         "tabType": "card"
       },
       "theme": {
+        "Container": {
+          "name": "标签页整体配置",
+          "desc": "标签页整体样式配置",
+          "normal": [["width"], ["height"]]
+        },
         "AddButton": {
           "name": "新增按钮",
           "desc": "新增按钮样式配置",
@@ -380,11 +389,7 @@
             "Divider": {
               "name": "分割线",
               "desc": "分割线样式配置",
-              "normal": [
-                ["width"],
-                ["height"],
-                ["background"]
-              ]
+              "normal": [["width"], ["height"], ["background"]]
             }
           }
         }
