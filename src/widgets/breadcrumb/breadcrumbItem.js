@@ -17,6 +17,8 @@ export type BreadcrumbItemProps = {
   textThemeHoc: Object,
   separatorThemeProps: Object,
   getPartOfThemeProps: Function,
+  index: number,
+  count: number,
 };
 
 class BreadcrumbItem extends React.Component<BreadcrumbItemProps, any> {

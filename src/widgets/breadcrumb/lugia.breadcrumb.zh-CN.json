@@ -49,7 +49,7 @@
   },
   "category": ["通用"],
   "theme": {
-    "BreadcrumbWrap": {
+    "Container": {
       "name": "面包屑",
       "desc": "面包屑所在区域面积",
       "normal": [
