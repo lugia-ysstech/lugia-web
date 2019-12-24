@@ -34,7 +34,7 @@
     },
     "showQuickJumper": {
       "type": "boolean",
-      "desc": "是否可以快速跳至至某页",
+      "desc": "是否可以快速跳至某页",
       "defaultValue": false
     },
     "showTotal": {
@@ -53,7 +53,7 @@
     },
     "isShowTotalData": {
       "type": "boolean",
-      "desc": "是否显示可以显示数据总量",
+      "desc": "是否可以显示数据总量",
       "defaultValue": false
     },
     "simple": {
@@ -74,7 +74,7 @@
     },
     "nextIconSrc": {
       "type": "image",
-      "desc": "分页下一页图标资源"
+      "desc": "分页下一页图片资源"
     }
   },
   "events": {
@@ -179,17 +179,17 @@
         }
       },
       "PaginationQuickJumpContainer": {
-        "name": "分页快速跳至外部容器",
-        "desc": "分页快速跳至外部容器",
+        "name": "分页快速跳至容器",
+        "desc": "分页快速跳至整体外部容器",
         "normal": [["margin"]]
       },
-      "QuickJumpText": {
-        "name": "分页快速跳至提醒文字",
-        "desc": "分页快速跳至提醒文字",
+      "PaginationQuickJumpText": {
+        "name": "分页快速跳至文字",
+        "desc": "分页快速跳至文字部分",
         "normal": [["color"], ["font"], ["fontSize"], ["cursor"]]
       },
       "PaginationArrowIconContainer": {
-        "name": "分页切换页数图标外部容器",
+        "name": "分页切换页数图标容器",
         "desc": "配置分页切换页数图标外部容器",
         "normal": [
           ["width"],
@@ -223,7 +223,7 @@
       },
       "PaginationSimpleText": {
         "name": "简洁分页文字",
-        "desc": "简洁分页文字",
+        "desc": "配置简洁分页文字",
         "normal": [["color"], ["font"], ["fontSize"], ["cursor"]]
       }
     }
@@ -398,23 +398,23 @@
       }
     },
     "PaginationQuickJumpContainer": {
-      "name": "分页快速跳至外部容器",
-      "desc": "分页快速跳至外部容器",
+      "name": "分页快速跳至容器",
+      "desc": "配置分页快速跳至整体外部容器",
       "normal": [["margin"]]
     },
-    "QuickJumpText": {
-      "name": "分页快速跳至提醒文字",
-      "desc": "分页快速跳至提醒文字",
+    "PaginationQuickJumpText": {
+      "name": "分页快速跳至文字",
+      "desc": "配置分页快速跳至文字部分",
       "normal": [["color"], ["font"], ["fontSize"], ["cursor"]]
     },
     "PaginationTotalContainer": {
-      "name": "分页总共数据外部容器",
-      "desc": "分页总共数据外部容器",
+      "name": "分页总数据容器",
+      "desc": "配置分页总数据外部容器",
       "normal": [["margin"]]
     },
     "PaginationTotalText": {
-      "name": "分页总数据条数提醒文字",
-      "desc": "分页总数据条数提醒文字",
+      "name": "分页总数据文字",
+      "desc": "配置分页总数据文字部分",
       "normal": [["color"], ["font"], ["fontSize"], ["cursor"]]
     },
     "MorePageIcon": {
