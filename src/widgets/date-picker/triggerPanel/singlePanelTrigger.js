@@ -4,14 +4,13 @@
  * */
 import React, { Component } from 'react';
 import moment from 'moment';
-import Icon from '../../icon/index';
 import Trigger from '../../trigger/index';
 import Input from '../../input';
 import PageFooter from '../panel/PageFooter';
 import { getDerivedForInput } from '../utils/getDerived';
 import SwitchPanel from '../switchPanel/SwitchPanel';
 import { getValueFromWeekToDate } from '../utils/differUtils';
-import { getformatSymbol, getNewProps } from '../utils/utils';
+import { getformatSymbol, getNewProps, getDateIcon } from '../utils/utils';
 import { formatValueIsValid, modeStyle } from '../utils/booleanUtils';
 import { PanelWrap } from '../styled/styled';
 import Theme from '../../theme';
@@ -88,7 +87,7 @@ class DateInput extends Component<TypeProps, TypeState> {
     this.normalStyleValueObj = getformatSymbol(value);
   }
   render() {
-    const { disabled, readOnly, getPartOfThemeProps, getPartOfThemeHocProps } = this.props;
+    const { disabled, readOnly, getPartOfThemeProps } = this.props;
     const {
       value,
       status,
@@ -108,21 +107,29 @@ class DateInput extends Component<TypeProps, TypeState> {
     const { isTime } = modeStyle(mode);
     const themeProps = getThemeProps({ mode, getPartOfThemeProps }, 'FacePanelContain');
     const inputContainProps = getThemeProps({ mode, getPartOfThemeProps }, 'InputContain');
+
     const inputPrefixProps = getThemeProps({ mode, getPartOfThemeProps }, 'InputPrefix');
+    const inputSuffixProps = getThemeProps({ mode, getPartOfThemeProps }, 'InputSuffix');
     const clearButtonProps = getThemeProps({ mode, getPartOfThemeProps }, 'ClearButton');
     const { themeConfig } = inputContainProps;
     const { themeConfig: inputPrefixThemeConfig } = inputPrefixProps;
     const { themeConfig: clearButtonThemeConfig } = clearButtonProps;
-
+    const { suffixIcon, prefixIcon } = getDateIcon(this.props);
     return (
       <Theme
         config={{
           [Widget.Input]: {
+            Container: {
+              ...themeConfig,
+            },
             Input: {
               ...themeConfig,
             },
             InputPrefix: {
               ...inputPrefixThemeConfig,
+            },
+            InputSuffix: {
+              ...inputSuffixProps.themeConfig,
             },
             ClearButton: {
               ...clearButtonThemeConfig,
@@ -177,7 +184,8 @@ class DateInput extends Component<TypeProps, TypeState> {
           hideAction={['click']}
         >
           <Input
-            prefix={<Icon iconClass="lugia-icon-financial_date" />}
+            prefix={prefixIcon}
+            suffix={suffixIcon}
             value={value}
             onChange={this.onChange}
             placeholder={placeholder}

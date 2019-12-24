@@ -103,5 +103,71 @@
   },
   "category": ["数据录入"],
   "componentName": "RangePicker",
-  "needExport": true
+  "needExport": true,
+  "theme": {
+    "InputContain": {
+      "name": "文本框",
+      "desc": "文本框配置",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["background"],
+        ["fontSize"],
+        ["borderRadius"],
+        ["border"],
+        ["boxShadow"],
+        ["color"],
+        ["font"]
+      ],
+      "hover": [["border", "color"], ["background"]],
+      "active": [],
+      "disabled": [["background"], ["border", "color"]]
+    },
+    "InputPrefix": {
+      "name": "前缀图标",
+      "desc": "前缀图标配置",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]],
+      "disabled": [["color"], ["font"]]
+    },
+    "InputSuffix": {
+      "name": "后缀图标",
+      "desc": "后缀图标配置",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]],
+      "disabled": [["color"], ["font"]]
+    },
+    "ClearButton": {
+      "name": "清楚图标",
+      "desc": "清楚图标配置",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]],
+      "disabled": [["color"], ["font"]]
+    },
+    "FacePanelContain": {
+      "name": "日期面板",
+      "desc": "日期面板配置",
+      "normal": [["width"], ["height"], ["background"], ["boxShadow"]]
+    },
+    "Date": {
+      "name": "日期",
+      "desc": "日期配置",
+      "normal": [["color"]],
+      "hover": [["color"], ["background"]],
+      "active": [["color"], ["background"]]
+    },
+    "OutMonthDate": {
+      "name": "非本月日期",
+      "desc": "非本月日期配置",
+      "normal": [["color"]]
+    },
+    "RangeDate": {
+      "name": "范围日期",
+      "desc": "选中范围日期的配置"
+    },
+    "SecondWeekDate": {
+      "normal": [["color"]],
+      "hover": [["color"]]
+    }
+  }
 }
