@@ -126,7 +126,7 @@ export default class Breadcrumb extends React.Component<BreadcrumbProps, any> {
       getPartOfThemeProps,
     } = this.props;
 
-    const wrapThemeProps = getPartOfThemeProps('BreadcrumbWrap');
+    const wrapThemeProps = getPartOfThemeProps('Container');
     const itemTheme = this.getItemTheme();
     if (!routes && !children) {
       crumbs = [

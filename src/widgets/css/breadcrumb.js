@@ -101,13 +101,20 @@ export const SeparatorSpan = CSSComponent({
         color,
       };
     },
+    getCSS(themeMeta, themeConfig) {
+      const {
+        propsConfig: { isLastItem },
+      } = themeConfig;
+      return `
+      margin-left: ${isLastItem ? 0 : separatorMarginLeft};
+      margin-right: ${isLastItem ? 0 : separatorMarginRight}
+      `;
+    },
   },
 
   css: css`
     font-size: ${px2remcss(16)};
     display: inline-block;
-    margin-left: ${separatorMarginLeft};
-    margin-right: ${separatorMarginRight};
   `,
 });
 

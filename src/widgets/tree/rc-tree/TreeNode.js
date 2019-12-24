@@ -7,7 +7,6 @@ import CommonIcon from '../../icon';
 import CheckBox from '../../checkbox';
 import { deepMerge } from '@lugia/object-utils';
 import ThemeHoc from '@lugia/theme-hoc';
-import { TextIcon } from '../../css/menu';
 import {
   FlexBox,
   FlexWrap,
@@ -204,7 +203,7 @@ class TreeNode extends React.Component {
         themeProps={this.getThemeProps('Text', 'SelectedText', { mutliple, itemHeight })}
       >
         <CheckboxContainer>
-          {icon ? <TextIcon iconClass={icon} /> : null}
+          {icon ? <CommonIcon iconClass={icon} /> : null}
           <CheckBox
             {...this.getCheckBoxTheme()}
             checked={checked}
@@ -374,7 +373,7 @@ class TreeNode extends React.Component {
           title={content}
           height={itemHeight}
         >
-          {icon ? <TextIcon iconClass={icon} /> : null}
+          {icon ? <CommonIcon iconClass={icon} /> : null}
           {content}
         </TitleSpan>
       );
