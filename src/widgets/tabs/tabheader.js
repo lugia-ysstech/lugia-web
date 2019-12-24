@@ -755,6 +755,8 @@ class TabHeader extends Component<TabsProps, TabsState> {
               ref={node => (this.titlePanel[index] = node)}
               {...this.props}
               {...this.getTabpaneConfig(child, index)}
+              onClick={this.onTabClick(child)}
+              onDelete={this.onDeleteClick(child)}
             />
           );
           return getTabpane ? getTabpane(Target, index) : Target;
@@ -823,13 +825,13 @@ class TabHeader extends Component<TabsProps, TabsState> {
         'suffixIcon',
         getAttributeFromObject(child.props, 'suffixIcon', '')
       ),
-      onClick: this.onTabClick,
+
       activityValue,
       keyVal: value,
       index: i,
       showDeleteBtn,
       isSelect: !disabled && activityValue === value,
-      onDelete: this.onDeleteClick,
+
       disabled,
       ...tabHeaderTheme,
     };
@@ -900,31 +902,50 @@ class TabHeader extends Component<TabsProps, TabsState> {
     return actualSize;
   }
 
-  onTabClick = (res: Object) => {
+  onTabClick = (currentItem: Object) => (res: Object) => {
     const { index } = res;
-    if (!this.getTabpaneDisabled(index)) {
-      const { onTabClick } = this.props;
-      const { activityValue } = this.state;
-      onTabClick && onTabClick(res);
-      const { activityValue: newActivityValue } = res;
-      if (activityValue === newActivityValue) {
-        return;
-      }
-      const { onChange } = this.props;
-
-      onChange && onChange(res);
+    if (this.isTabpaneDisabled(index)) {
+      return;
     }
+    const { onTabClick } = this.props;
+    const { activityValue } = this.state;
+    const { activityValue: newActivityValue } = res;
+    const oldItem = this.getItemWithValue(activityValue);
+    const returnItems = {
+      ...res,
+      oldItem,
+      newItem: currentItem,
+      newValue: newActivityValue,
+      oldValue: activityValue,
+    };
+    onTabClick && onTabClick({ ...returnItems });
+
+    if (activityValue === newActivityValue) {
+      return;
+    }
+    const { onChange } = this.props;
+
+    onChange && onChange({ ...returnItems });
   };
 
-  onDeleteClick = (res: Object) => {
-    const { index } = res;
-    if (!this.getTabpaneDisabled(index)) {
-      const { onDelete } = this.props;
-      onDelete && onDelete(res);
-    }
+  getItemWithValue = (value: string) => {
+    const { data } = this.props;
+    return data.find(currentItem => {
+      const { value: currentValue } = currentItem;
+      return currentValue === value;
+    }, value);
   };
 
-  getTabpaneDisabled(index: number) {
+  onDeleteClick = (currentItem: Object) => (res: Object) => {
+    const { index, activityValue } = res;
+    if (this.isTabpaneDisabled(index)) {
+      return;
+    }
+    const { onDelete } = this.props;
+    onDelete && onDelete({ ...res, item: currentItem, value: activityValue });
+  };
+
+  isTabpaneDisabled(index: number) {
     const { data } = this.state;
     if (index) {
       return data[index] && data[index].disabled;
