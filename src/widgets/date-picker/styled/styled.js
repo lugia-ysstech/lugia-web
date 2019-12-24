@@ -45,6 +45,9 @@ export const PanelWrap = CSSComponent({
       `;
     },
   },
+  hover: {
+    selectNames: [],
+  },
   css: css`
     font-size: ${fontSize}rem;
   `,
@@ -62,6 +65,9 @@ export const DateWrapper = CSSComponent({
         width:${em(width)}
       `;
     },
+  },
+  hover: {
+    selectNames: [],
   },
   css: css`
     display: inline-block;
@@ -246,8 +252,30 @@ export const HeaderWeek = CSSComponent({
     font-size: ${em(14)};
     text-align: center;
     cursor: pointer;
+    ${props => getHeaderWeekStyle(props)};
   `,
 });
+function getHeaderWeekStyle(props) {
+  const { normalTheme, hoverTheme } = props;
+  const {
+    color,
+    fontSize,
+    font: { size },
+  } = normalTheme;
+  const {
+    color: hoverColor,
+    fontSize: hoverFont,
+    font: { size: hoverSize },
+  } = hoverTheme;
+  return `
+    color:${color};
+    font-size:${em(size || fontSize)};
+    &:hover{
+      color:${hoverColor};
+    font-size:${em(hoverSize || hoverFont)};
+    }
+  `;
+}
 export const DatePanel = CSSComponent({
   tag: 'div',
   className: 'DatePanel',
@@ -299,7 +327,7 @@ export const DateChild = CSSComponent({
     vertical-align: middle;
     margin: ${em(3)} ${0};
     ${props => getDateChildStyle(props).chooseWeeks};
-    ${props => (props.rangeChose ? `background:${spiritColor}` : '')};
+    ${props => getRangeChoseStyle(props)};
     ${props => getDateChildStyle(props).todayStyle};
     ${props => getDateChildStyle(props).chooseStyle};
     ${rangeBorderDireStyle('7n', 'right')};
@@ -309,9 +337,21 @@ export const DateChild = CSSComponent({
     ${props => props && props.rangeEndIndex && rangeBorderDireStyle(props.rangeEndIndex, 'right')};
   `,
 });
+function getRangeChoseStyle(props) {
+  const { rangeNormalTheme, rangeChose } = props;
+  const {
+    background: { color: bgColor },
+  } = rangeNormalTheme;
+  if (rangeChose) {
+    return `
+      background:${bgColor};
+    `;
+  }
+  return '';
+}
 export const DateChildInner = CSSComponent({
   tag: 'i',
-  className: 'DateChildInner',
+  className: 'Date',
   normal: {
     selectNames: [],
   },
@@ -335,15 +375,33 @@ export const DateChildInner = CSSComponent({
     cursor: pointer;
     font-size: ${em(14)};
     &:hover {
-      background: ${hoverColor};
-      color: #fff;
+      ${props => getHoverStyle(props)};
       border-radius: 50%;
     }
 
-    color: ${props => (props.outMonth ? '#ccc' : '#666')};
+    color: ${props => getNormalStyle(props)};
   `,
 });
-
+function getHoverStyle(props) {
+  const { hoverTheme } = props;
+  const {
+    color,
+    background: { color: bgColor },
+  } = hoverTheme;
+  return `
+    color:${color};
+    background:${bgColor};
+  `;
+}
+function getNormalStyle(props) {
+  const { normalTheme, outMonth, outMonthNormalTheme } = props;
+  const { color: outColor } = outMonthNormalTheme;
+  if (outMonth) {
+    return outColor;
+  }
+  const { color } = normalTheme;
+  return color;
+}
 export const OtherChild = CSSComponent({
   tag: 'span',
   className: 'OtherChild',
@@ -438,107 +496,6 @@ export const RangeWrap = CSSComponent({
     width: ${props => em(getThemeProperty(props).rangeWrapWidth)};
   `,
 });
-export const RangeInnerTop = CSSComponent({
-  tag: 'span',
-  className: 'RangeInnerTop',
-  normal: {
-    selectNames: [],
-  },
-  hover: {
-    selectNames: [],
-  },
-  active: {
-    selectNames: [],
-  },
-  disabled: {
-    selectNames: [],
-  },
-  css: css`
-    display: block;
-  `,
-});
-export const RangeInputWrap = CSSComponent({
-  tag: 'div',
-  className: 'RangeInputWrap',
-  normal: {
-    selectNames: [],
-    getCSS(themeMate, themeConfig) {
-      // console.log(themeMate, themeConfig);
-    },
-  },
-  hover: {
-    selectNames: [],
-  },
-  active: {
-    selectNames: [],
-  },
-  disabled: {
-    selectNames: [],
-  },
-  css: css`
-    font-size: ${fontSize}rem;
-    display: inline-block;
-    border: 1px solid #ddd;
-    border-radius: ${em(borderRadius)};
-    width: ${props => em(props.width)};
-  `,
-});
-export const RangeInputInner = CSSComponent({
-  tag: 'span',
-  className: 'RangeInputInner',
-  normal: {
-    selectNames: [],
-    getCSS(themeMate, themeConfig) {
-      //  console.log(themeMate, themeConfig);
-    },
-  },
-  hover: {
-    selectNames: [],
-  },
-  active: {
-    selectNames: [],
-  },
-  disabled: {
-    selectNames: [],
-  },
-  css: css`
-    & input {
-      border: none;
-      text-align: center;
-    }
-
-    & input:focus {
-      border: none;
-      box-shadow: none;
-    }
-
-    display: inline-block;
-    background: ${props => (props.disabled ? disableColor : '')};
-  `,
-});
-export const RangeMiddleSpan = CSSComponent({
-  tag: 'span',
-  className: 'RangeMiddleSpan',
-  normal: {
-    selectNames: [],
-    getCSS(themeMate, themeConfig) {
-      // console.log(themeMate, themeConfig);
-    },
-  },
-  hover: {
-    selectNames: [],
-  },
-  active: {
-    selectNames: [],
-  },
-  disabled: {
-    selectNames: [],
-  },
-  css: css`
-    display: inline-block;
-    text-align: center;
-  `,
-});
 const getDateChildStyle = props => {
   const {
     choseDayIndex,
@@ -551,22 +508,27 @@ const getDateChildStyle = props => {
     todayIndex,
     noToday,
     selectToday,
+    activeTheme,
   } = props;
   const arrChoseDayIndex = Array.isArray(choseDayIndex) ? choseDayIndex : [choseDayIndex];
+  const {
+    background: { color: bgColor },
+    color,
+  } = activeTheme;
   const chooseStyle = arrChoseDayIndex.reduce((p, n) => {
     return `${p}
     &:nth-child(${n})>i{
-      background:${normalColor};
-      color:#fff;
+      background:${bgColor};
+      color:${color};
       border-radius:50%;
     }`;
   }, '');
   const todayInd = noToday ? '' : selectToday ? todayIndex : '';
   let todayStyle = `
       &:nth-child(${todayInd})>i{
-        border:1px solid ${normalColor};        
+        border:1px solid ${normalColor};
         color:#666;
-        background:#fff;      
+        background:#fff;
         border-radius:50%;
         &:hover {
           background: ${hoverColor};
@@ -574,7 +536,7 @@ const getDateChildStyle = props => {
           border-radius: 50%;
         }
       }
-      
+
   `;
   let chooseWeeks;
   if (isChooseWeek || isHoverWeek) {
@@ -586,27 +548,27 @@ const getDateChildStyle = props => {
       todayStyle = `
       &:nth-child(${todayInd})>i{
         border:1px solid transparent;
-        border-radius:50%;       
+        border-radius:50%;
       }
   `;
     }
     chooseWeeks = `
     background:${backG};
-    
+
       &>i{
         color:#fff;
         border-radius:50%;
-      }  
+      }
 
       &:nth-child(${start}){
         border-top-left-radius:20px;
         border-bottom-left-radius:20px;
       }
-  
+
       &:nth-child(${end}){
         border-top-right-radius:20px;
         border-bottom-right-radius:20px;
-      } 
+      }
     `;
   }
   return {

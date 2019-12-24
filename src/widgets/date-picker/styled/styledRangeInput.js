@@ -1,10 +1,5 @@
 import { css } from 'styled-components';
-import {
-  getInputBorderHoverColor,
-  getInputBorderColor,
-  getBackground,
-  FontSize,
-} from '../../css/input';
+import { getBackground, FontSize } from '../../css/input';
 import { getInputBorderRadius } from '../../common/ThemeUtils';
 import { px2remcss } from '../../css/units';
 import CSSComponent from '@lugia/theme-css-hoc';
@@ -26,7 +21,7 @@ export const RangeInputWrap = CSSComponent({
       ['background'],
     ],
     defaultTheme: {
-      width: 'auto',
+      width: '100%',
       border: getBorder({ style: 'solid', width: 1, color: lightGreyColor }),
     },
   },
@@ -91,6 +86,27 @@ export const RangeInputInner = CSSComponent({
     ${getInputBorderRadius};
   `,
 });
+export const RangeInputInnerInput = CSSComponent({
+  tag: 'div',
+  className: 'RangeInputInnerInput',
+  normal: {
+    selectNames: [],
+    getCSS(themeMate) {
+      const {
+        border: { left: { width: leftWidth = 1 } = {}, right: { width: rightWidth = 1 } = {} } = {},
+      } = ({} = themeMate);
+      return `
+        width:calc((100% - (100%-${leftWidth + rightWidth}px)*0.1) * 0.5);
+         `;
+    },
+  },
+  hover: {
+    selectNames: [],
+  },
+  css: css`
+    display: inline-block;
+  `,
+});
 export const RangeMiddleSpan = CSSComponent({
   tag: 'span',
   className: 'RangeMiddleSpan',
@@ -98,11 +114,10 @@ export const RangeMiddleSpan = CSSComponent({
     selectNames: [],
     getCSS(themeMate) {
       const {
-        width,
         border: { left: { width: leftWidth = 1 } = {}, right: { width: rightWidth = 1 } = {} } = {},
       } = ({} = themeMate);
       return `
-        width:${em((width - leftWidth - rightWidth) * 0.1)}
+        width:calc((100% - ${leftWidth + rightWidth}px) * 0.1);
          `;
     },
   },
