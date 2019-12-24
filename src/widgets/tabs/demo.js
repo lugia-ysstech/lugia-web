@@ -952,13 +952,12 @@ export default class TabsDemo extends React.Component<any, any> {
       [Widget.Tabs]: {
         TabHeader: {
           DividerTheme: {
-            Divider: {
-              normal: {
-                background: {
-                  color: '#ffce5a',
-                },
-                width: 10,
+            normal: {
+              background: {
+                color: '#ffce5a',
               },
+              width: 30,
+              // height: 30,
             },
           },
         },
