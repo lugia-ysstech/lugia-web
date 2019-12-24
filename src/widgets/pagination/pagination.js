@@ -26,6 +26,7 @@ export const {
   lightGreyColor,
   defaultColor,
   superLightColor,
+  dangerColor,
 } = colorsFunc();
 
 const PaginationList = StaticComponent({
@@ -166,26 +167,15 @@ const PaginationArrowIconContainer = CSSComponent({
         propsConfig: { isSelected, clickable = true, type },
       } = themeProps;
       const right = type === 'next' ? 0 : 8;
-      const marginCSS = {
-        margin: {
-          right,
-        },
-      };
+      let border;
       if (isSelected) {
-        return {
-          ...marginCSS,
-          border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
-        };
+        border = getBorder({ color: themeColor, width: 1, style: 'solid' });
       }
+
       if (!clickable) {
-        return {
-          ...marginCSS,
-          border: getBorder({ color: 'red', width: 1, style: 'solid' }),
-        };
+        border = getBorder({ color: dangerColor, width: 1, style: 'solid' });
       }
-      return {
-        ...marginCSS,
-      };
+      return { margin: { right }, border };
     },
     defaultTheme: {
       border: getBorder({ color: lightGreyColor, width: 1, style: 'solid' }),
