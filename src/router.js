@@ -67,7 +67,7 @@ export default {
     },
   },
   '/collapse': {
-    render: async () => import('./widgets/collapse/demo'),
+    render: async () => import('./widgets/collapse/demo').CollapseDemo,
   },
   '/datepicker': {
     render: async () => import('./widgets/date-picker/demo'),
