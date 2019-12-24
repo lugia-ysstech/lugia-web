@@ -117,6 +117,7 @@ class SwitchPanel extends Component<TypeProps, TypeState> {
       value,
       themeProps,
     };
+    console.log(config);
     if (isWeek) {
       const weekObj = getWeeksRangeInDates(moment(value, 'YYYY-MM-DD'));
       year = weekObj.year;
