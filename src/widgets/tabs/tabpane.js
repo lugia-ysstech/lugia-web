@@ -38,6 +38,7 @@ const BaseTab = CSSComponent({
       ['opacity'],
       ['width'],
       ['height'],
+      ['boxShadow'],
     ],
     getCSS: (theme: Object, themeProps: Object) => {
       const { color, background } = theme;
@@ -161,6 +162,7 @@ BaseTab.displayName = 'Tabpane';
 const SelectTab = CSSComponent({
   extend: BaseTab,
   className: 'SelectTabPan',
+  option: { hover: false },
 });
 
 const addWidth = keyframes`
