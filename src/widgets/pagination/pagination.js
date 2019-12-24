@@ -26,7 +26,6 @@ export const {
   lightGreyColor,
   defaultColor,
   superLightColor,
-  dangerColor,
   borderRadius,
   borderSize,
 } = colorsFunc();
@@ -175,7 +174,7 @@ const PaginationArrowIconContainer = CSSComponent({
       }
 
       if (!clickable) {
-        border = getBorder({ color: dangerColor, width: borderSize, style: 'solid' });
+        border = getBorder({ color: superLightColor, width: borderSize, style: 'solid' });
       }
       return { margin: { right }, border };
     },
