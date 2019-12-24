@@ -27,6 +27,8 @@ export const {
   defaultColor,
   superLightColor,
   dangerColor,
+  borderRadius,
+  borderSize,
 } = colorsFunc();
 
 const PaginationList = StaticComponent({
@@ -110,18 +112,18 @@ const PaginationListItem = CSSComponent({
       } = themeProps;
       if (isSelected) {
         return {
-          border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
+          border: getBorder({ color: themeColor, width: borderSize, style: 'solid' }),
         };
       }
       if (!clickable) {
         return {
-          border: getBorder({ color: superLightColor, width: 1, style: 'solid' }),
+          border: getBorder({ color: superLightColor, width: borderSize, style: 'solid' }),
         };
       }
     },
     defaultTheme: {
-      border: getBorder({ color: lightGreyColor, width: 1, style: 'solid' }),
-      borderRadius: getBorderRadius(4),
+      border: getBorder({ color: lightGreyColor, width: borderSize, style: 'solid' }),
+      borderRadius: getBorderRadius(borderRadius),
       cursor: 'pointer',
       background: { color: defaultColor },
     },
@@ -129,7 +131,7 @@ const PaginationListItem = CSSComponent({
   hover: {
     selectNames: [['color'], ['font'], ['fontSize'], ['border'], ['borderRadius']],
     defaultTheme: {
-      border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
+      border: getBorder({ color: themeColor, width: borderSize, style: 'solid' }),
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
@@ -137,7 +139,7 @@ const PaginationListItem = CSSComponent({
       } = themeProps;
       if (!clickable)
         return {
-          border: getBorder({ color: superLightColor, width: 1, style: 'solid' }),
+          border: getBorder({ color: superLightColor, width: borderSize, style: 'solid' }),
         };
     },
   },
@@ -169,17 +171,17 @@ const PaginationArrowIconContainer = CSSComponent({
       const right = type === 'next' ? 0 : 8;
       let border;
       if (isSelected) {
-        border = getBorder({ color: themeColor, width: 1, style: 'solid' });
+        border = getBorder({ color: themeColor, width: borderSize, style: 'solid' });
       }
 
       if (!clickable) {
-        border = getBorder({ color: dangerColor, width: 1, style: 'solid' });
+        border = getBorder({ color: dangerColor, width: borderSize, style: 'solid' });
       }
       return { margin: { right }, border };
     },
     defaultTheme: {
-      border: getBorder({ color: lightGreyColor, width: 1, style: 'solid' }),
-      borderRadius: getBorderRadius(4),
+      border: getBorder({ color: lightGreyColor, width: borderSize, style: 'solid' }),
+      borderRadius: getBorderRadius(borderRadius),
       cursor: 'pointer',
       background: { color: defaultColor },
     },
@@ -187,7 +189,7 @@ const PaginationArrowIconContainer = CSSComponent({
   hover: {
     selectNames: [['color'], ['font'], ['fontSize'], ['border'], ['borderRadius']],
     defaultTheme: {
-      border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
+      border: getBorder({ color: themeColor, width: borderSize, style: 'solid' }),
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
@@ -195,7 +197,7 @@ const PaginationArrowIconContainer = CSSComponent({
       } = themeProps;
       if (!clickable)
         return {
-          border: getBorder({ color: superLightColor, width: 1, style: 'solid' }),
+          border: getBorder({ color: superLightColor, width: borderSize, style: 'solid' }),
         };
     },
   },
