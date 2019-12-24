@@ -384,14 +384,8 @@
         },
         "DividerTheme": {
           "name": "分割线",
-          "desc": "分割线样式配置（仅 tabType = line 时支持）",
-          "theme": {
-            "Divider": {
-              "name": "分割线",
-              "desc": "分割线样式配置",
-              "normal": [["width"], ["height"], ["background"]]
-            }
-          }
+          "desc": "分割线样式配置",
+          "normal": [["width"], ["height"], ["background"]]
         }
       }
     }
