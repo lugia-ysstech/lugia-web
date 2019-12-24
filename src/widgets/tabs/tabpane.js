@@ -562,21 +562,18 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
 
     const props = isVertical ? 'width' : 'height';
     const size = isVertical ? 30 : 20;
-    const defaultThemeObj = {
+    const type = isVertical ? null : 'vertical';
+    const { normal = {} } = theme[viewClass];
+
+    const themeObj = {
       [viewClass]: {
         Divider: {
-          normal: {
-            [props]: size,
-          },
+          normal: deepMerge({ [props]: size }, normal),
         },
       },
     };
-    const mergeTheme = deepMerge(defaultThemeObj, theme);
-    const newTheme = { theme: mergeTheme, viewClass };
-    if (isVertical) {
-      return <Divider {...newTheme} />;
-    }
-    return <Divider {...newTheme} type={'vertical'} />;
+
+    return <Divider theme={themeObj} viewClass={viewClass} type={type} />;
   }
   onDeleteClick = e => {
     e.stopPropagation();
