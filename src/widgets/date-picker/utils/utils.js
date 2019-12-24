@@ -45,9 +45,10 @@ export function tansValueFromStringToArray(props) {
 }
 export function getDateIcon(props) {
   const { suffix, prefix = 'lugia-icon-financial_date' } = props;
-  const suffixIcon = suffix && typeof suffix === 'string' ? <Icon iconClass={suffix} /> : <i />;
+  const suffixIcon =
+    suffix && typeof suffix === 'string' ? { suffix: <Icon iconClass={suffix} /> } : {};
   const prefixIcon =
-    !suffix && prefix && typeof prefix === 'string' ? <Icon iconClass={prefix} /> : <i />;
+    !suffix && prefix && typeof prefix === 'string' ? { prefix: <Icon iconClass={prefix} /> } : {};
   return {
     suffixIcon,
     prefixIcon,

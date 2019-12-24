@@ -67,8 +67,11 @@
     },
     "suffix": {
       "type": "icon",
-      "desc": "后缀图标",
-      "defaultValue": "lugia-icon-financial_date"
+      "desc": "后缀图标"
+    },
+    "prefix": {
+      "type": "icon",
+      "desc": "后缀图标"
     }
   },
   "events": {
@@ -138,8 +141,8 @@
       "disabled": [["color"], ["font"]]
     },
     "ClearButton": {
-      "name": "清楚图标",
-      "desc": "清楚图标配置",
+      "name": "清除图标",
+      "desc": "清除图标配置",
       "normal": [["color"], ["font"]],
       "hover": [["color"], ["font"]],
       "disabled": [["color"], ["font"]]
@@ -149,7 +152,7 @@
       "desc": "日期面板配置",
       "normal": [["width"], ["height"], ["background"], ["boxShadow"]]
     },
-    "Date": {
+    "InMonthDate": {
       "name": "日期",
       "desc": "日期配置",
       "normal": [["color"]],
@@ -162,6 +165,8 @@
       "normal": [["color"]]
     },
     "SecondWeekDate": {
+      "name": "星期项",
+      "desc": "星期项配置",
       "normal": [["color"]],
       "hover": [["color"]]
     }

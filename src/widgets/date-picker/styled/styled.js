@@ -338,20 +338,18 @@ export const DateChild = CSSComponent({
   `,
 });
 function getRangeChoseStyle(props) {
-  const { rangeNormalTheme, rangeChose } = props;
-  const {
-    background: { color: bgColor },
-  } = rangeNormalTheme;
+  const { rangeNormalTheme: { background: { color: bgColor } = {} } = {}, rangeChose } = props;
+  let color = '';
   if (rangeChose) {
-    return `
-      background:${bgColor};
-    `;
+    color = bgColor;
   }
-  return '';
+  return `
+      background:${color};
+    `;
 }
 export const DateChildInner = CSSComponent({
   tag: 'i',
-  className: 'Date',
+  className: 'InMonthDate',
   normal: {
     selectNames: [],
   },
@@ -383,11 +381,7 @@ export const DateChildInner = CSSComponent({
   `,
 });
 function getHoverStyle(props) {
-  const { hoverTheme } = props;
-  const {
-    color,
-    background: { color: bgColor },
-  } = hoverTheme;
+  const { hoverTheme: { color, background: { color: bgColor } = {} } = {} } = props;
   return `
     color:${color};
     background:${bgColor};
@@ -396,11 +390,8 @@ function getHoverStyle(props) {
 function getNormalStyle(props) {
   const { normalTheme, outMonth, outMonthNormalTheme } = props;
   const { color: outColor } = outMonthNormalTheme;
-  if (outMonth) {
-    return outColor;
-  }
   const { color } = normalTheme;
-  return color;
+  return outMonth ? outColor : color;
 }
 export const OtherChild = CSSComponent({
   tag: 'span',

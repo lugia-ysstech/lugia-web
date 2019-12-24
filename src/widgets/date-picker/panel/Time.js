@@ -147,7 +147,7 @@ class Time extends Component<TypeProps, TypeState> {
           {isTime && !hasHour ? (
             ''
           ) : (
-            <TimeCol {...config} data-time={'231'}>
+            <TimeCol {...config}>
               <Menu
                 data={hours}
                 onClick={this.onClickHours}

@@ -123,11 +123,8 @@ class RangeInput extends Component<TypeProps, TypeState> {
       },
     } = inputContainProps;
     const {
-      width,
       height,
       border: {
-        left: { width: borderWidthL = 1 } = {},
-        right: { width: borderWidthR = 1 } = {},
         top: { width: borderWidthT = 1 } = {},
         bottom: { width: borderWidthB = 1 } = {},
       } = {},
@@ -135,7 +132,6 @@ class RangeInput extends Component<TypeProps, TypeState> {
 
     const { themeConfig: inputPrefixThemeConfig } = inputPrefixProps;
     const { themeConfig: clearButtonThemeConfig } = clearButtonProps;
-    inputContainProps.propsConfig.width = width;
     const { suffixIcon, prefixIcon } = getDateIcon(this.props);
     return (
       <Theme
@@ -151,15 +147,19 @@ class RangeInput extends Component<TypeProps, TypeState> {
               normal: {
                 padding: { right: 2 },
                 ...inputPublicConfig(normal),
+                background: { color: 'transparent' },
               },
               hover: {
                 ...inputPublicConfig(hover),
+                background: { color: 'transparent' },
               },
               focus: {
                 ...inputPublicConfig(focus),
+                background: { color: 'transparent' },
               },
               active: {
                 ...inputPublicConfig(active),
+                background: { color: 'transparent' },
               },
               disabled: {
                 border: {
@@ -172,12 +172,21 @@ class RangeInput extends Component<TypeProps, TypeState> {
               },
             },
             InputPrefix: {
+              disabled: {
+                color: '#ddd',
+              },
               ...inputPrefixThemeConfig,
             },
             InputSuffix: {
+              disabled: {
+                color: '#ddd',
+              },
               ...inputSuffixProps.themeConfig,
             },
             ClearButton: {
+              disabled: {
+                color: '#ddd',
+              },
               ...clearButtonThemeConfig,
             },
           },
@@ -195,7 +204,6 @@ class RangeInput extends Component<TypeProps, TypeState> {
             <RangeInputInnerInput themeProps={inputContainProps}>
               <Input
                 {...prefixIcon}
-                prefix={prefixIcon}
                 value={value[0]}
                 onChange={this.onChangeFirst}
                 placeholder={placeholder[0]}
@@ -214,7 +222,7 @@ class RangeInput extends Component<TypeProps, TypeState> {
             </RangeMiddleSpan>
             <RangeInputInnerInput themeProps={inputContainProps}>
               <Input
-                suffix={suffixIcon}
+                {...suffixIcon}
                 value={value[1]}
                 onChange={this.onChangeSecond}
                 onBlur={this.onBlur}

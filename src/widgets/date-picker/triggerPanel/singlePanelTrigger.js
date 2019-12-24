@@ -184,8 +184,8 @@ class DateInput extends Component<TypeProps, TypeState> {
           hideAction={['click']}
         >
           <Input
-            prefix={prefixIcon}
-            suffix={suffixIcon}
+            {...prefixIcon}
+            {...suffixIcon}
             value={value}
             onChange={this.onChange}
             placeholder={placeholder}

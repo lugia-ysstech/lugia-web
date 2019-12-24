@@ -75,7 +75,7 @@ export default class Sl extends Component<any> {
           height: 200,
         },
       },
-      Date: {
+      InMonthDate: {
         normal: {
           color: 'green',
         },
@@ -253,6 +253,20 @@ export default class Sl extends Component<any> {
     };
     return (
       <div>
+        <RangePicker
+          onChange={this.onChange}
+          onFocus={this.onFocus}
+          onBlur={this.onBlur}
+          showTime
+          format={'YYYY-MM-DD HH:mm:ss'}
+          buttonOptions={{
+            options: { today: '2015-02-03 00:00:00', 此刻: '2015-02-05 00:00:00' },
+          }}
+          extraFooter={{ message: 'extraFooter' }}
+          onOk={this.onOk}
+          //disabled
+          suffix={'lugia-icon-financial_date'}
+        />
         <div style={{ margin: '30px', overflow: 'hidden' }}>
           <h2 style={{ margin: '10px' }}>Date</h2>
 
@@ -290,7 +304,7 @@ export default class Sl extends Component<any> {
               }}
               extraFooter={{ message: 'extraFooter' }}
               onOk={this.onOk}
-              disabled
+              //disabled
               suffix={'lugia-icon-financial_date'}
             />
             <DatePicker
@@ -299,13 +313,13 @@ export default class Sl extends Component<any> {
               step={9}
               suffix={'lugia-icon-financial_date'}
               showTime
-              disabled
+              // disabled
             />
 
-            <MonthPicker disabled />
-            <YearPicker disabled />
-            <WeekPicker disabled />
-            <TimePicker disabled />
+            <MonthPicker />
+            <YearPicker />
+            <WeekPicker />
+            <TimePicker />
             {/*<WeeksPicker />*/}
           </Theme>
 

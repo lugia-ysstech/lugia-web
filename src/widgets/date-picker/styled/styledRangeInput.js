@@ -1,11 +1,10 @@
 import { css } from 'styled-components';
 import { getBackground, FontSize } from '../../css/input';
-import { getInputBorderRadius } from '../../common/ThemeUtils';
 import { px2remcss } from '../../css/units';
 import CSSComponent from '@lugia/theme-css-hoc';
 import { getBorder } from '@lugia/theme-utils';
 import { themeColor } from './utils';
-const { lightGreyColor, normalColor } = themeColor;
+const { lightGreyColor, normalColor, borderSize } = themeColor;
 export const em = px2remcss;
 
 export const RangeInputWrap = CSSComponent({
@@ -21,8 +20,7 @@ export const RangeInputWrap = CSSComponent({
       ['background'],
     ],
     defaultTheme: {
-      width: '100%',
-      border: getBorder({ style: 'solid', width: 1, color: lightGreyColor }),
+      border: getBorder({ style: 'solid', width: borderSize, color: lightGreyColor }),
     },
   },
   hover: {
@@ -35,7 +33,7 @@ export const RangeInputWrap = CSSComponent({
     selectNames: [['border'], ['boxShadow'], ['borderRadius'], ['background']],
   },
   disabled: {
-    selectNames: [['border'], ['boxShadow'], ['borderRadius'], ['background']],
+    selectNames: [['border'], ['boxShadow'], ['borderRadius'], ['background'], ['borderRadius']],
     defaultTheme: {
       border: getBorder({ color: lightGreyColor }),
     },
@@ -43,7 +41,6 @@ export const RangeInputWrap = CSSComponent({
   css: css`
     font-size: ${FontSize}rem;
     display: inline-block;
-    ${getInputBorderRadius};
     ${props => getBackground(props)};
     transition: all 0.3s;
   `,
@@ -52,12 +49,49 @@ export const RangeInputWrap = CSSComponent({
   },
 });
 export const RangeInputInner = CSSComponent({
-  tag: 'span',
+  tag: 'div',
   className: 'RangeInputInner',
   normal: {
+    selectNames: [['width'], ['height'], ['borderRadius']],
+  },
+  hover: {
+    selectNames: [['background']],
+  },
+  active: {
     selectNames: [],
-    getCSS(themeMate, themeConfig) {
-      //  console.log(themeMate, themeConfig);
+  },
+  disabled: {
+    selectNames: [['background'], ['borderRadius']],
+  },
+  css: css`
+    & input {
+      border: none;
+      text-align: center;
+    }
+
+    & input:focus {
+      border: none;
+      box-shadow: none;
+    }
+
+    display: block;
+  `,
+});
+export const RangeInputInnerInput = CSSComponent({
+  tag: 'div',
+  className: 'RangeInputInnerInput',
+  normal: {
+    selectNames: [],
+    getCSS(themeMate) {
+      const {
+        border: {
+          left: { width: leftWidth = borderSize } = {},
+          right: { width: rightWidth = borderSize } = {},
+        } = {},
+      } = ({} = themeMate);
+      return `
+        width:calc((100% - (100%-${leftWidth + rightWidth}px)*0.1) * 0.5);
+         `;
     },
   },
   hover: {
@@ -69,38 +103,7 @@ export const RangeInputInner = CSSComponent({
   disabled: {
     selectNames: [],
   },
-  css: css`
-    & input {
-      border: none;
-      text-align: center;
-      background: transparent;
-    }
-
-    & input:focus {
-      border: none;
-      box-shadow: none;
-    }
-
-    display: block;
-    margin-left: -1px;
-    ${getInputBorderRadius};
-  `,
-});
-export const RangeInputInnerInput = CSSComponent({
-  tag: 'div',
-  className: 'RangeInputInnerInput',
-  normal: {
-    selectNames: [],
-    getCSS(themeMate) {
-      const {
-        border: { left: { width: leftWidth = 1 } = {}, right: { width: rightWidth = 1 } = {} } = {},
-      } = ({} = themeMate);
-      return `
-        width:calc((100% - (100%-${leftWidth + rightWidth}px)*0.1) * 0.5);
-         `;
-    },
-  },
-  hover: {
+  focus: {
     selectNames: [],
   },
   css: css`
@@ -111,10 +114,13 @@ export const RangeMiddleSpan = CSSComponent({
   tag: 'span',
   className: 'RangeMiddleSpan',
   normal: {
-    selectNames: [],
+    selectNames: [['color']],
     getCSS(themeMate) {
       const {
-        border: { left: { width: leftWidth = 1 } = {}, right: { width: rightWidth = 1 } = {} } = {},
+        border: {
+          left: { width: leftWidth = borderSize } = {},
+          right: { width: rightWidth = borderSize } = {},
+        } = {},
       } = ({} = themeMate);
       return `
         width:calc((100% - ${leftWidth + rightWidth}px) * 0.1);
@@ -122,10 +128,13 @@ export const RangeMiddleSpan = CSSComponent({
     },
   },
   hover: {
-    selectNames: [],
+    selectNames: [['color']],
     getCSS(themeMate, themeConfig) {
       const {
-        border: { left: { width: leftWidth = 1 } = {}, right: { width: rightWidth = 1 } = {} } = {},
+        border: {
+          left: { width: leftWidth = borderSize } = {},
+          right: { width: rightWidth = borderSize } = {},
+        } = {},
       } = ({} = themeMate);
       const {
         propsConfig: { width },
@@ -139,10 +148,11 @@ export const RangeMiddleSpan = CSSComponent({
     selectNames: [],
   },
   disabled: {
-    selectNames: [],
+    selectNames: [['background'], ['color']],
   },
   css: css`
     display: inline-block;
     text-align: center;
+    background: transparent;
   `,
 });

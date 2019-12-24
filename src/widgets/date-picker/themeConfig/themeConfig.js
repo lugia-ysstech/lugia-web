@@ -1,6 +1,15 @@
 import { themeColor } from '../styled/utils';
 import { deepMerge } from '@lugia/object-utils';
-const { normalColor, hoverColor, spiritColor } = themeColor;
+import { getBorder, getBorderRadius } from '@lugia/theme-utils';
+const {
+  normalColor,
+  hoverColor,
+  spiritColor,
+  borderSize,
+  borderColor,
+  disableColor,
+  borderDisableColor,
+} = themeColor;
 export default function getThemeProps(props, partName) {
   const { getPartOfThemeProps, mode } = props;
   const themeProps = getPartOfThemeProps(partName);
@@ -19,16 +28,17 @@ export function getWrapThemeProps(props, partName) {
       width: '100%',
       height: 32,
       border: {
-        top: { width: 1, color: '#ddd', style: 'solid' },
-        right: { width: 1, color: '#ddd', style: 'solid' },
-        bottom: { width: 1, color: '#ddd', style: 'solid' },
-        left: { width: 1, color: '#ddd', style: 'solid' },
+        top: { width: borderSize, color: borderColor, style: 'solid' },
+        right: { width: borderSize, color: borderColor, style: 'solid' },
+        bottom: { width: borderSize, color: borderColor, style: 'solid' },
+        left: { width: borderSize, color: borderColor, style: 'solid' },
       },
+      borderRadius: getBorderRadius({ radius: 3 }),
     },
   };
 
   const deeMergeTheme = deepMerge(defaultNormal, themeConfig) || {};
-  const { normal = {}, hover = {} } = deeMergeTheme;
+  const { normal = {}, hover = {}, disabled = {} } = deeMergeTheme;
   const {
     border: {
       top: { width: topWidth } = {},
@@ -36,6 +46,7 @@ export function getWrapThemeProps(props, partName) {
       bottom: { width: bottomWidth } = {},
       left: { width: leftWidth } = {},
     } = {},
+    borderRadius,
   } = normal;
   const {
     border: {
@@ -53,11 +64,24 @@ export function getWrapThemeProps(props, partName) {
       left: { color: LeftColor, width: leftWidth },
     },
   };
-  const result = deepMerge(deeMergeTheme, { hover: deafultHoverBorderColor });
-  themeProps.themeConfig = { ...result };
+  const defaultDisabled = {
+    background: {
+      color: disableColor,
+    },
+    color: '#ddd',
+    border: getBorder({ color: borderDisableColor }),
+    boxShadow: {
+      color: borderDisableColor,
+    },
+    borderRadius,
+  };
+  const hoverTheme = deepMerge(hover, deafultHoverBorderColor);
+  const disabledTheme = deepMerge(defaultDisabled, disabled);
+  themeProps.themeConfig.normal = normal;
+  themeProps.themeConfig.hover = hoverTheme;
+  themeProps.themeConfig.disabled = disabledTheme;
   return themeProps;
 }
-
 export function inputContainTheme(props) {
   const { getPartOfThemeProps, mode } = props;
 
@@ -77,7 +101,7 @@ export function inputContainTheme(props) {
 }
 export function getDateTheme(props) {
   const { getPartOfThemeProps } = props;
-  const themeProps = getPartOfThemeProps('Date');
+  const themeProps = getPartOfThemeProps('InMonthDate');
   const outMonthDateThemeProps = getPartOfThemeProps('OutMonthDate');
   const rangeDateDateThemeProps = getPartOfThemeProps('RangeDate');
   const {
