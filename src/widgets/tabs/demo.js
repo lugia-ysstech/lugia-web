@@ -13,7 +13,7 @@ import Icon from '../icon';
 import Theme from '../theme/';
 
 import colorsFunc from '../css/stateColor';
-import { getBorder, getBorderRadius } from '@lugia/theme-utils';
+import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
 import { css, StaticComponent } from '@lugia/theme-css-hoc';
 
 const { themeColor } = colorsFunc();
@@ -929,6 +929,7 @@ export default class TabsDemo extends React.Component<any, any> {
           SelectTabPan: {
             normal: {
               color: 'red',
+              boxShadow: getBoxShadow('0 0 6px pink'),
             },
             disabled: {
               color: '#ccc',
@@ -937,6 +938,15 @@ export default class TabsDemo extends React.Component<any, any> {
           DefaultTabPan: {
             normal: {
               height: 31,
+              borderRadius: {
+                bottomLeft: 0,
+                bottomRight: 0,
+                topLeft: 6,
+                topRight: 6,
+              },
+              margin: {
+                top: 4,
+              },
             },
             hover: {
               color: 'orange',

@@ -224,8 +224,8 @@
                 ["font"],
                 ["opacity"]
               ],
-              "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
-              "disabled": [["color"], ["background"]]
+              "hover": [],
+              "disabled": []
             }
           }
         }
@@ -310,8 +310,8 @@
                 ["font"],
                 ["opacity"]
               ],
-              "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
-              "disabled": [["color"], ["background"]]
+              "hover": [],
+              "disabled": []
             }
           }
         }
@@ -362,7 +362,9 @@
             ["margin"],
             ["padding"],
             ["font"],
-            ["opacity"]
+            ["opacity"],
+            ["borderRadius"],
+            ["boxShadow"]
           ],
           "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
           "disabled": [["color"], ["background"]]
@@ -377,10 +379,12 @@
             ["margin"],
             ["padding"],
             ["font"],
-            ["opacity"]
+            ["opacity"],
+            ["borderRadius"],
+            ["boxShadow"]
           ],
-          "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
-          "disabled": [["color"], ["background"]]
+          "hover": [],
+          "disabled": []
         },
         "DividerTheme": {
           "name": "分割线",
