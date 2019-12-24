@@ -70,7 +70,7 @@ export const LightTabsMenuTheme = {
 // themeStyle: dark
 
 export const DarkTabsMenuTheme = {
-  MenuWrap: {
+  Container: {
     normal: {
       background: {
         color: 'rgba(0, 0, 51, 0.7)',
@@ -103,7 +103,7 @@ export const DarkTabsMenuTheme = {
     },
   },
   SubMenu: {
-    MenuWrap: {
+    Container: {
       normal: {
         background: {
           color: 'rgba(0, 0, 51, 0.7)',
@@ -356,7 +356,7 @@ export const LightMenuTheme = {
 // themeStyle: dark
 
 export const DarkMenuTheme = {
-  MenuWrap: {
+  Container: {
     normal: {
       background: {
         color: 'rgba(0, 0, 51, 0.7)',
@@ -389,7 +389,7 @@ export const DarkMenuTheme = {
     },
   },
   SubMenu: {
-    MenuWrap: {
+    Container: {
       normal: {
         background: {
           color: 'rgba(0, 0, 51, 0.7)',
