@@ -24,8 +24,7 @@ export default ThemeProvider(
     disabledSelectedKeys: any[];
     constructor(props) {
       super();
-      const { data = [], selectOptions = {} } = props;
-      const { selectRowKeys = [] } = selectOptions;
+      const { data = [], selectOptions: { selectRowKeys = [] } = {} } = props;
 
       this.state = {
         headChecked: data.length === selectRowKeys.length,
