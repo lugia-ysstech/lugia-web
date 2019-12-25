@@ -10,7 +10,7 @@ import {
   themeColor,
 } from './utils';
 import CSSComponent from '@lugia/theme-css-hoc';
-const { hoverColor, normalColor, disableColor, spiritColor } = themeColor;
+const { hoverColor, normalColor, circleBorderRadius, defaultColor } = themeColor;
 export const Icons = CSSComponent({
   tag: 'span',
   css: css`
@@ -523,8 +523,8 @@ const getDateChildStyle = props => {
         border-radius:50%;
         &:hover {
           background: ${hoverColor};
-          color: #fff;
-          border-radius: 50%;
+          color:${defaultColor};
+          border-radius: ${circleBorderRadius};
         }
       }
 

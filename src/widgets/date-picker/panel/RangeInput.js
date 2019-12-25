@@ -4,11 +4,9 @@
  * */
 import React, { Component } from 'react';
 import Input from '../../input';
-import Icon from '../../icon/index';
 import {
   RangeInputWrap,
   RangeInputInner,
-  NewInput,
   RangeInputInnerInput,
   RangeMiddleSpan,
 } from '../styled/styledRangeInput';
@@ -18,6 +16,8 @@ import { getBorder } from '@lugia/theme-utils';
 import getThemeProps, { getWrapThemeProps } from '../themeConfig/themeConfig';
 import { addMouseEvent } from '@lugia/theme-hoc';
 import { getDateIcon } from '../utils/utils';
+import { themeColor } from '../styled/utils';
+const { borderSize } = themeColor;
 type TypeProps = {
   onChange?: Function,
   onClick?: Function,
@@ -125,8 +125,8 @@ class RangeInput extends Component<TypeProps, TypeState> {
     const {
       height,
       border: {
-        top: { width: borderWidthT = 1 } = {},
-        bottom: { width: borderWidthB = 1 } = {},
+        top: { width: borderWidthT = borderSize } = {},
+        bottom: { width: borderWidthB = borderSize } = {},
       } = {},
     } = normal;
 
@@ -162,12 +162,7 @@ class RangeInput extends Component<TypeProps, TypeState> {
                 background: { color: 'transparent' },
               },
               disabled: {
-                border: {
-                  top: { width: 0, style: '', color: '' },
-                  right: { width: 0, style: '', color: '' },
-                  bottom: { width: 0, style: '', color: '' },
-                  left: { width: 0, style: '', color: '' },
-                },
+                border: getBorder({ style: '', width: 0, color: '' }),
                 ...this.getInputStyle(styleDisabled),
               },
             },
@@ -195,7 +190,6 @@ class RangeInput extends Component<TypeProps, TypeState> {
         <RangeInputWrap
           mode={mode}
           disabled={disabled}
-          //width={width}
           onClick={readOnly || disabled ? '' : this.onHandleClick}
           themeProps={inputContainProps}
           {...addMouseEvent(this)}

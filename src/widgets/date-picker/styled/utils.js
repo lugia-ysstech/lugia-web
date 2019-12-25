@@ -21,6 +21,8 @@ const {
   lightGreyColor,
   borderDisableColor,
   borderSize,
+  circleBorderRadius,
+  defaultColor,
 } = colorsFunc();
 export const themeColor = {
   hoverColor,
@@ -30,6 +32,8 @@ export const themeColor = {
   lightGreyColor,
   borderDisableColor,
   borderSize,
+  circleBorderRadius,
+  defaultColor,
 };
 export function getThemeProperty(props: Object) {
   const { hasTimeWrapBorder, hasItemNumber = 3 } = props;

@@ -23,15 +23,16 @@ export function getWrapThemeProps(props, partName) {
   themeProps.propsConfig = { mode };
 
   const { themeConfig } = themeProps;
+  const borderStyle = { width: borderSize, color: borderColor, style: 'solid' };
   const defaultNormal = {
     normal: {
       width: '100%',
       height: 32,
       border: {
-        top: { width: borderSize, color: borderColor, style: 'solid' },
-        right: { width: borderSize, color: borderColor, style: 'solid' },
-        bottom: { width: borderSize, color: borderColor, style: 'solid' },
-        left: { width: borderSize, color: borderColor, style: 'solid' },
+        top: { ...borderStyle },
+        right: { ...borderStyle },
+        bottom: { ...borderStyle },
+        left: { ...borderStyle },
       },
       borderRadius: getBorderRadius({ radius: 3 }),
     },
@@ -77,9 +78,9 @@ export function getWrapThemeProps(props, partName) {
   };
   const hoverTheme = deepMerge(hover, deafultHoverBorderColor);
   const disabledTheme = deepMerge(defaultDisabled, disabled);
-  themeProps.themeConfig.normal = normal;
-  themeProps.themeConfig.hover = hoverTheme;
-  themeProps.themeConfig.disabled = disabledTheme;
+  themeConfig.normal = normal;
+  themeConfig.hover = hoverTheme;
+  themeConfig.disabled = disabledTheme;
   return themeProps;
 }
 export function inputContainTheme(props) {
@@ -159,12 +160,10 @@ export function getSecondWeekDateTheme(props) {
     fontSize: 14,
     font: { size: 14 },
   };
-  const defaultHover = {
-    color: '#333',
-    fontSize: 14,
-    font: { size: 14 },
-  };
   const normalTheme = deepMerge(defaultNormal, normal);
+  const defaultHover = {
+    ...normalTheme,
+  };
   const hoverTheme = deepMerge(defaultHover, hover);
   return {
     normalTheme,
