@@ -4,12 +4,12 @@
   "desc": "选项过多时，弹出下拉菜单给用户选择操作",
   "props": {
     "action": {
-      "type": "click | hover",
+      "type": "ActionType",
       "desc": "弹出项的打开方式",
       "defaultValue": "click"
     },
     "hideAction": {
-      "type": "click | hover",
+      "type": "HideActionType",
       "desc": "弹出项的隐藏方式",
       "defaultValue": "click"
     },
@@ -27,7 +27,7 @@
       "desc": "下拉菜单按钮的文本"
     },
     "type": {
-      "type": "customs | basic | primary",
+      "type": "StyleType",
       "desc": "按钮的风格,默认为customs",
       "defaultValue": "customs"
     },
@@ -59,6 +59,27 @@
         { "key": "preIconSrc", "title": "前置图片", "type": "string" },
         { "key": "SuffixIconClass", "title": "后缀图标", "type": "icon" },
         { "key": "preIconSrc", "title": "后缀图片", "type": "string" }
+      ]
+    },
+
+    "data": {
+      "type": "Object[]",
+      "desc": "生成选择项的数据",
+      "meta": [
+        { "key": "value", "title": "value值", "type": "string" },
+        { "key": "text", "title": "文本值", "type": "string" },
+        { "key": "des", "title": "辅助文本", "type": "string" },
+        {
+          "key": "icons",
+          "title": "图标",
+          "type": "object",
+          "children": [
+            { "key": "preIconClass", "title": "前缀图标", "type": "icon" },
+            { "key": "suffixIconClass", "title": "后缀图标", "type": "icon" },
+            { "key": "preIconSrc", "title": "前缀图片", "type": "img" },
+            { "key": "suffixIconSrc", "title": "前缀图片", "type": "img" }
+          ]
+        }
       ]
     }
   },
@@ -137,9 +158,9 @@
     }
   },
   "type": {
-    "type": ["customs", "primary", "basic"],
-    "action": ["hover", "click"],
-    "hideAction": ["hover", "click"]
+    "StyleType": ["customs", "primary", "basic"],
+    "ActionType": ["hover", "click"],
+    "HideActionType": ["hover", "click"]
   },
 
   "designInfo": {
@@ -150,6 +171,7 @@
       "props": {
         "divided": false
       },
+
       "theme": {
         "Container": {
           "name": "下拉菜单整体配置",
