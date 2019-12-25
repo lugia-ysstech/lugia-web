@@ -24,6 +24,12 @@
       "type": "boolean",
       "desc": "是否自动获取焦点",
       "defaultValue": false
+    },
+    "resizeType": {
+      "type": "ResizeType",
+      "desc":
+        "可以调整段落文本输入框宽高的类型,有四个可选值,分别为'both', 'horizontal', 'vertical', 'none'",
+      "defaultValue": "both"
     }
   },
   "events": {
@@ -87,16 +93,6 @@
         }
       ]
     },
-    "onClear": {
-      "desc": "清除段落文本输入框内容时触发",
-      "args": [
-        {
-          "name": "event",
-          "desc": "清除段落文本输入框内容事件",
-          "type": "Object"
-        }
-      ]
-    },
     "onEnter": {
       "desc": "当键入回车时触发事件",
       "args": [
@@ -113,7 +109,8 @@
       "newValue": "string",
       "oldValue": "string",
       "event": "SyntheticEvent"
-    }
+    },
+    "ResizeType": ["both", "horizontal", "vertical", "none"]
   },
   "category": ["数据录入"],
   "needExport": true,
@@ -163,14 +160,14 @@
       "name": "段落文本输入框提示信息文字",
       "desc": "段落文本输入框提示信息文字",
       "normal": [["color"], ["fontSize"], ["font"]]
-    },
-    "ClearButton": {
-      "name": "段落文本输入框清除图标",
-      "desc": "段落文本输入框后缀清除图标",
-      "normal": [["color"], ["fontSize"]],
-      "hover": [],
-      "clicked": [],
-      "disabled": []
+    }
+  },
+  "defaultTheme": {
+    "Container": {
+      "normal": {
+        "width": 250,
+        "height": 200
+      }
     }
   }
 }
