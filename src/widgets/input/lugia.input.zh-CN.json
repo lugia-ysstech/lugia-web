@@ -257,5 +257,13 @@
       "clicked": [],
       "disabled": []
     }
+  },
+  "defaultTheme": {
+    "Container": {
+      "normal": {
+        "width": 250,
+        "height": 32
+      }
+    }
   }
 }
