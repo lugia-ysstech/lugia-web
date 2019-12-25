@@ -492,12 +492,12 @@
       "hover": [["background"], ["border"], ["borderRadius"], ["boxShadow"], ["opacity"]]
     },
     "CardTitle": {
-      "name": "卡片标题",
+      "name": "标题",
       "desc": "配置卡片标题",
       "normal": [["width"], ["height"], ["color"], ["font"]]
     },
     "CardTitleTipLine": {
-      "name": "卡片标题提示",
+      "name": "标题提示",
       "desc": "卡片标题提示配置",
       "normal": [
         ["width"],
@@ -509,14 +509,9 @@
         ["margin", "right"]
       ]
     },
-    "CardTipTitleContainer": {
-      "name": "卡片标题提示容器",
-      "desc": "配置卡片标题提示容器",
-      "normal": [["height"]]
-    },
     "CardTitleHeadContainer": {
-      "name": "卡片头部标题容器",
-      "desc": "配置卡片头部标题容器",
+      "name": "标题头部容器",
+      "desc": "配置卡片标题头部容器",
       "normal": [
         ["height"],
         ["background"],
@@ -526,14 +521,13 @@
         ["boxShadow"]
       ]
     },
-
     "CardDescription": {
-      "name": "卡片描述内容",
+      "name": "描述内容",
       "desc": "配置卡片描述内容",
       "normal": [["width"], ["height"], ["font"], ["background"], ["margin"], ["padding"]]
     },
     "CardOperation": {
-      "name": "卡片操作按钮",
+      "name": "操作按钮",
       "desc": "配置卡片操作按钮",
       "normal": [
         ["width"],
@@ -546,9 +540,9 @@
       ]
     },
     "CardTipBottomLine": {
-      "name": "卡片标题下分割线",
+      "name": "标题下分割线",
       "desc": "卡片标题下分割线配置",
-      "normal": [["width"], ["height"], ["border", "bottom"]]
+      "normal": [["width"], ["height"], ["border", "bottom"], ["margin"]]
     }
   },
   "defaultTheme": {
