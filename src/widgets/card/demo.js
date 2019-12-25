@@ -85,13 +85,24 @@ export default () => {
           height: 200,
         },
       },
+      CardTitleHeadContainer: {
+        padding: {
+          top: 10,
+          bottom: 10,
+        },
+      },
+      CardTipTitleContainer: {
+        normal: {
+          height: 30,
+        },
+      },
       CardTitleTipLine: {
         normal: {
           width: 4,
           height: 18,
           margin: {
             left: 0,
-            top: 13,
+            right: 10,
           },
           borderRadius: {
             topLeft: 0,
@@ -129,7 +140,6 @@ export default () => {
       },
       CardTitle: {
         normal: {
-          width: 100,
           height: 20,
           color: 'pink',
         },
@@ -173,7 +183,6 @@ export default () => {
           },
         },
       },
-
       CardAvatar: {
         SrcAvatar: {
           normal: {
@@ -186,44 +195,9 @@ export default () => {
   };
   const avatarHCard = {
     [Widget.Card]: {
-      Container: {
-        normal: {
-          width: 260,
-          height: 140,
-        },
-      },
-      CardAvatarContainer: {
-        normal: {
-          margin: {
-            top: 10,
-            left: 10,
-          },
-          width: 80,
-        },
-      },
-      CardAvatar: {
-        SrcAvatar: {
-          normal: {
-            width: 80,
-            height: 80,
-          },
-        },
-      },
-      CardTitle: {
-        normal: {
-          margin: {
-            left: 20,
-            top: 10,
-          },
-        },
-      },
-      CardDescription: {
-        normal: {
-          margin: {
-            left: 20,
-          },
-        },
-      },
+      Container: { normal: { width: 260, height: 140 } },
+      CardAvatarContainer: { normal: { margin: { top: 10, left: 10 }, width: 80 } },
+      CardAvatar: { SrcAvatar: { normal: { width: 80, height: 80 } } },
     },
   };
 
@@ -259,10 +233,19 @@ export default () => {
   return (
     <Wrapper>
       <p>基本样式</p>
+      <Card />
+      <p>内容撑开卡片样式</p>
       <Wrapper>
         <Card
           title={'this is title'}
-          description={[<div>{'this is description'}</div>, <div>{'this is description'}</div>]}
+          description={[
+            <div>{'this is description'}</div>,
+            <div>{'this is description'}</div>,
+            <div>{'this is description'}</div>,
+            <div>{'this is description'}</div>,
+            <div>{'this is description'}</div>,
+            <div>{'this is description'}</div>,
+          ]}
         />
       </Wrapper>
       <p>tip样式</p>
