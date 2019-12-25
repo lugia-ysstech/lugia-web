@@ -95,11 +95,11 @@
       "desc": "弹出菜单中是否展示分割线"
     },
     "pullIconClass": {
-      "type": "string",
+      "type": "icon",
       "desc": "下拉按钮图标"
     },
     "clearIconClass": {
-      "type": "string",
+      "type": "icon",
       "desc": "清空按钮图标"
     }
   },
