@@ -5,12 +5,11 @@ import React, { Component } from 'react';
 import Widget from '../consts/index';
 import ThemeHoc, { addMouseEvent } from '@lugia/theme-hoc';
 import { fixControlledValue } from '../utils';
-import Icon from '../icon';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import colorsFunc from '../css/stateColor';
 import { units } from '@lugia/css';
 import { deepMerge } from '@lugia/object-utils';
-
+import type { ResizeType } from '../css/input';
 import { getBorder, getBoxShadow, getBorderRadius } from '@lugia/theme-utils';
 import { ObjectUtils } from '@lugia/type-utils';
 import changeColor from '../css/utilsColor';
@@ -20,8 +19,6 @@ const {
   disableColor,
   borderColor,
   blackColor,
-  mediumGreyColor,
-  darkGreyColor,
   lightGreyColor,
   borderRadius,
   padding,
@@ -58,15 +55,18 @@ const Textarea = CSSComponent({
       fontSize: 12,
     },
     getCSS(themeMeta: Object, themeProps: Object) {
-      const { propsConfig } = themeProps;
       const {
-        placeHolderColor,
-        placeHolderFont: { size, weight, color },
-        placeHolderFontSize,
-      } = propsConfig;
+        propsConfig: {
+          placeHolderColor,
+          placeHolderFont: { size, weight, color },
+          placeHolderFontSize,
+          resizeType,
+        },
+      } = themeProps;
       const theColor = color ? color : placeHolderColor;
       const theSize = size ? size : placeHolderFontSize ? placeHolderFontSize : 12;
       return css`
+        resize: ${resizeType};
         &::placeholder {
           color: ${theColor};
           font-size: ${px2remcss(theSize)};
@@ -138,7 +138,6 @@ const Textarea = CSSComponent({
   css: css`
     box-sizing: border-box;
     line-height: 1;
-    display: inline-block;
     font-family: inherit;
     transition: all ${transitionTime};
     outline: none;
@@ -166,13 +165,10 @@ const InputContainer = CSSComponent({
   },
   css: css`
     position: relative;
-    display: inline-block;
     outline: none;
     min-width: ${px2remcss(30)};
   `,
 });
-
-const Clear = 'lugia-icon-reminder_close';
 
 type TextareaState = {
   value: string,
@@ -189,13 +185,13 @@ type TextareaProps = {
   onKeyUp?: (event: KeyboardEvent) => void,
   onKeyDown?: (event: KeyboardEvent) => void,
   onKeyPress?: (event: KeyboardEvent) => void,
-  onClear?: Function,
   onEnter?: (event: UIEvent) => void,
   defaultValue?: string,
   value?: string,
   autoFocus?: boolean,
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
+  resizeType: ResizeType,
 };
 
 class TextAreaBox extends Component<TextareaProps, TextareaState> {
@@ -204,6 +200,7 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
     autoFocus: false,
     viewClass: Widget.TextArea,
     defaultValue: '',
+    resizeType: 'both',
   };
   textarea: any;
   static displayName = Widget.Textarea;
@@ -266,21 +263,8 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
     }
   }
 
-  getInputContainer(fetcher: Function) {
-    const theThemeProps = this.props.getPartOfThemeProps('Container');
-    return (
-      <InputContainer themeProps={theThemeProps} {...addMouseEvent(this)}>
-        {fetcher()}
-      </InputContainer>
-    );
-  }
-
-  getInputInner = () => {
-    return [this.generateInput(), this.getClearButton()];
-  };
-
   render() {
-    return this.getInputContainer(this.getInputInner);
+    return this.generateInput();
   }
 
   isEmpty(): boolean {
@@ -288,58 +272,9 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
     return !(value && value.length);
   }
 
-  onClear = (e: Object) => {
-    const { disabled, onClear } = this.props;
-    if (disabled) {
-      return;
-    }
-    onClear && onClear(e);
-    this.setValue('', e);
-  };
-
-  getClearButton() {
-    if (this.isEmpty()) {
-      return null;
-    }
-    const {
-      theme: ClearButtonThemeProps,
-      viewClass: clearViewClass,
-    } = this.props.getPartOfThemeHocProps('ClearButton');
-
-    const newTheme = deepMerge(
-      {
-        [clearViewClass]: {
-          normal: {
-            color: mediumGreyColor,
-            getCSS() {
-              return ` position: absolute;right: ${px2remcss(padding)};top: ${px2remcss(8)};`;
-            },
-          },
-          hover: {
-            color: darkGreyColor,
-          },
-        },
-      },
-      ClearButtonThemeProps
-    );
-
-    return (
-      <Icon
-        singleTheme
-        viewClass={clearViewClass}
-        theme={newTheme}
-        iconClass={Clear}
-        onClick={this.onClear}
-        {...addMouseEvent(this)}
-      />
-    );
-  }
-
   generateInput(): React$Node {
-    const { props } = this;
     const { value } = this.state;
-    const { placeholder, autoFocus, disabled } = props;
-
+    const { placeholder, autoFocus, disabled, resizeType } = this.props;
     const {
       themeConfig: { normal: { color = lightGreyColor, font = {}, fontSize } = {} },
     } = this.props.getPartOfThemeProps('Placeholder');
@@ -349,25 +284,28 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
           placeHolderColor: color,
           placeHolderFont: font,
           placeHolderFontSize: fontSize,
+          resizeType,
         },
       }),
       this.props.getPartOfThemeProps('Container')
     );
     return (
-      <Textarea
-        themeProps={theThemeProps}
-        autoFocus={autoFocus}
-        ref={this.textarea}
-        value={value}
-        onFocus={this.onFocus}
-        onBlur={this.onBlur}
-        onKeyUp={this.onKeyUp}
-        onKeyPress={this.onKeyPress}
-        onKeyDown={this.onKeyDown}
-        onChange={this.onChange}
-        placeholder={placeholder}
-        disabled={disabled}
-      />
+      <InputContainer themeProps={theThemeProps} {...addMouseEvent(this)}>
+        <Textarea
+          themeProps={theThemeProps}
+          autoFocus={autoFocus}
+          ref={this.textarea}
+          value={value}
+          onFocus={this.onFocus}
+          onBlur={this.onBlur}
+          onKeyUp={this.onKeyUp}
+          onKeyPress={this.onKeyPress}
+          onKeyDown={this.onKeyDown}
+          onChange={this.onChange}
+          placeholder={placeholder}
+          disabled={disabled}
+        />
+      </InputContainer>
     );
   }
 

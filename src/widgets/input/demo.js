@@ -143,7 +143,6 @@ export class DefaultValueTextarea extends React.Component<any, any> {
   }
 }
 const Wrapper = styled.div`
-  float: left;
   margin-left: 50px;
   margin-top: 20px;
 `;
@@ -226,7 +225,14 @@ const InputDemo = () => {
         <p>校验信息显示类型 inner 输入值 是否含有a </p>
         <ValidateInput validateType="inner" onChange={onChange('limit')} />
       </Wrapper>
-
+      <Wrapper>
+        <p>段落文本输入框 resizeType="horizontal" </p>
+        <Textarea resizeType={'horizontal'} />
+        <p>段落文本输入框 resizeType="vertical" </p>
+        <Textarea resizeType={'vertical'} />
+        <p>段落文本输入框 resizeType="none" </p>
+        <Textarea resizeType={'none'} />
+      </Wrapper>
       <Theme config={textarea}>
         <Wrapper>
           <p>段落文本输入框</p>
@@ -238,13 +244,13 @@ const InputDemo = () => {
           <p>段落文本输入框 禁用状态 </p>
           <Textarea disabled={true} />
         </Wrapper>
+        <Wrapper>
+          <p>受限 段落文本输入框 </p>
+          <LimitTextarea onChange={onChange('limit')} />
+          <p>有默认值的 受限段落文本输入框</p>
+          <DefaultValueTextarea onChange={onChange('limit')} />
+        </Wrapper>
       </Theme>
-      <Wrapper>
-        <p>受限 段落文本输入框 </p>
-        <LimitTextarea onChange={onChange('limit')} />
-        <p>有默认值的 受限段落文本输入框</p>
-        <DefaultValueTextarea onChange={onChange('limit')} />
-      </Wrapper>
     </div>
   );
 };
