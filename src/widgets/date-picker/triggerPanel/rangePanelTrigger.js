@@ -1,4 +1,4 @@
-//import type { ChangeEventParam } from '@lugia/lugia-web';
+// @flow
 import React, { Component } from 'react';
 import moment from 'moment';
 import SwitchPanel from '../switchPanel/SwitchPanel';
@@ -6,14 +6,12 @@ import Trigger from '../../trigger/index';
 import RangeInput from '../panel/RangeInput';
 import PageFooter from '../panel/PageFooter';
 import { getDerivedForInput } from '../utils/getDerived';
-import { RangeWrap, PanelWrap } from '../styled/styled';
+import { RangeWrap } from '../styled/styled';
 import SwitchPanelMode from '../mode';
 import { differMonthAndYear, getIndexInRange, getCurrentPageDates } from '../utils/differUtils';
 import { formatValueIsValid, getIsSame } from '../utils/booleanUtils';
 import { getformatSymbol } from '../utils/utils';
 import getThemeProps from '../themeConfig/themeConfig';
-import Theme from '../../theme';
-import Widget from '../../consts/index';
 import { addMouseEvent } from '@lugia/theme-hoc';
 type TypeProps = {
   defaultValue?: Array<string>,
@@ -413,7 +411,6 @@ class Range extends Component {
       format,
     };
     const themeProps = getThemeProps({ mode, getPartOfThemeProps }, 'FacePanelContain');
-
     return (
       <Trigger
         themePass

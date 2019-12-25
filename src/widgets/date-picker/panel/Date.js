@@ -221,6 +221,7 @@ class Date extends Component<TypeProps, TypeState> {
               )}
             </HeaderTop>
             <WeekDays
+              {...this.props}
               themeProps={themeProps}
               firstWeekDay={firstWeekDay}
               lang={lang}
