@@ -86,9 +86,13 @@ export default () => {
         },
       },
       CardTitleHeadContainer: {
-        padding: {
-          top: 10,
-          bottom: 10,
+        normal: {
+          padding: {
+            top: 10,
+          },
+          background: {
+            color: '#e8e8e8',
+          },
         },
       },
       CardTipTitleContainer: {
@@ -99,7 +103,7 @@ export default () => {
       CardTitleTipLine: {
         normal: {
           width: 4,
-          height: 18,
+          height: 30,
           margin: {
             left: 0,
             right: 10,
@@ -107,6 +111,20 @@ export default () => {
           borderRadius: {
             topLeft: 0,
             bottomLeft: 0,
+          },
+        },
+      },
+      CardTipBottomLine: {
+        normal: {
+          margin: {
+            top: 20,
+          },
+          border: {
+            bottom: {
+              width: 2,
+              color: 'red',
+              style: 'solid',
+            },
           },
         },
       },
