@@ -10,5 +10,11 @@ export type TableProps = {
   showHeader?: boolean,
   tableStyle?: 'zebraStripe' | 'linear' | 'bordered',
   getTheme: Function,
+  getPartOfThemeConfig: Function,
+  selectOptions?: Object,
 };
-export type TableState = {};
+export type TableState = {
+  headChecked: boolean,
+  headIndeterminate: boolean,
+  selectRowKeys: any[],
+};
