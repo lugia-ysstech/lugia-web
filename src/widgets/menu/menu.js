@@ -146,7 +146,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
       start: 0,
     };
 
-    this.treeData = getTreeData(props);
+    this.treeData = getTreeData(props, '|');
     this.updateIsSelect(this.state, this.props);
     this.updataExpandedData(this.state, this.props);
     this.allChildData = getInitAllChildData(props, this.state);
@@ -514,7 +514,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
   }
 
   getNewPath(oldPath: string, key: string) {
-    const newPathData = oldPath.split('/');
+    const newPathData = oldPath.split('|');
     newPathData.push(key);
     return newPathData;
   }
