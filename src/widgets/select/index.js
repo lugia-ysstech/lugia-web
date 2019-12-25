@@ -6,6 +6,7 @@
 import type { QueryType } from '@lugia/lugia-web';
 import '../common/shirm';
 import * as React from 'react';
+import Theme from '../theme';
 import InputTag from '../inputtag';
 import Trigger from '../trigger';
 import Menu from '../menu';
@@ -23,7 +24,6 @@ import { DisplayField, ValueField } from '../consts/props';
 import { appendCustomValue, isCanInput, isMutliple, setNewValue } from '../common/selectFunction';
 import { toMatchFromType } from '../common/StringUtils';
 import ThemeHoc from '@lugia/theme-hoc';
-import { SelectContainer } from '../css/select';
 
 type ValidateStatus = 'success' | 'error';
 type RowData = { [key: string]: any };
@@ -34,11 +34,11 @@ export function getNewValueOrOldValue(v: string[], mutliple: boolean) {
 
 type SelectProps = {
   getTheme?: Function,
+  data?: Object[],
   mutliple: boolean,
   canInput: boolean,
   valueField?: string,
   displayField?: string,
-  data?: Object[],
   mode?: 'local' | 'remote',
   throttle?: number,
   disabled?: boolean,
@@ -68,7 +68,6 @@ type SelectProps = {
   pullIconClass?: string,
   clearIconClass?: string,
 };
-
 type SelectState = {
   value: Array<string>,
   displayValue: Array<string>,
@@ -133,6 +132,7 @@ class Select extends React.Component<SelectProps, SelectState> {
     if (!this.displayValue) {
       this.updateDisplayValue(value);
     }
+    this.inputTag = React.createRef();
   }
 
   updateDisplayValue(value: string[]) {
@@ -309,18 +309,9 @@ class Select extends React.Component<SelectProps, SelectState> {
   };
 
   getContainerWidth = () => {
-    const { viewClass, theme } = this.getInputtagTheme();
-    const { InputTagWrap } = theme[viewClass];
-    const { normal } = InputTagWrap;
-    const { width } = normal;
-    return width;
-  };
-
-  getMenuWidth = () => {
-    const { viewClass, theme } = this.getMenuTheme();
-    const { MenuWrap } = theme[viewClass];
-    const { normal } = MenuWrap;
-    const { width } = normal;
+    const {
+      themeConfig: { normal: { width = this.state.menuWidth } = {} } = {},
+    } = this.props.getPartOfThemeProps('Container');
     return width;
   };
 
@@ -351,7 +342,6 @@ class Select extends React.Component<SelectProps, SelectState> {
       data && data.length !== 0 ? (
         <QueryInput
           query={query}
-          width={this.getMenuWidth()}
           onQueryInputChange={this.onQueryInputChange}
           onQueryInputKeyDown={this.onQueryInputKeyDown}
           refreshValue={this.refreshValue}
@@ -370,12 +360,8 @@ class Select extends React.Component<SelectProps, SelectState> {
       this.menuTriger = cmp;
     };
 
-    const getInputTag: Function = (cmp: Object) => {
-      this.inputTag = cmp;
-    };
-
-    return (
-      <SelectContainer themeProps={this.props.getPartOfThemeProps('Container')}>
+    const result = (
+      <Theme config={this.getInputtagTheme()}>
         <Trigger
           themePass
           popup={menu}
@@ -388,8 +374,7 @@ class Select extends React.Component<SelectProps, SelectState> {
           onPopupVisibleChange={this.onMenuPopupVisibleChange}
         >
           <InputTag
-            {...this.getInputtagTheme()}
-            ref={getInputTag}
+            ref={this.inputTag}
             prefix={prefix}
             key="inputtag"
             canClear={canClear}
@@ -406,8 +391,9 @@ class Select extends React.Component<SelectProps, SelectState> {
             clearIconClass={clearIconClass}
           />
         </Trigger>
-      </SelectContainer>
+      </Theme>
     );
+    return result;
   }
 
   getMenuItems(getMenu?: Function) {
@@ -698,37 +684,38 @@ class Select extends React.Component<SelectProps, SelectState> {
 
   getInputtagTheme = () => {
     const { getPartOfThemeConfig } = this.props;
-    const { normal = {} } = getPartOfThemeConfig('Container');
-    const { width = 250, height = 32 } = normal;
-    const defaultInputTagTheme = {
-      InputTagWrap: {
-        normal: {
-          width,
-          height,
-        },
+    const inputtagTheme = {
+      [Widget.InputTag]: {
+        InputTagWrap: getPartOfThemeConfig('Container'),
+        TagWrap: getPartOfThemeConfig('TagWrap'),
+        TagIcon: getPartOfThemeConfig('TagIcon'),
+        SwitchIcon: getPartOfThemeConfig('SwitchIcon'),
+        ClearIcon: getPartOfThemeConfig('ClearIcon'),
+        Menu: getPartOfThemeConfig('SwitchIcon'),
       },
     };
-    return this.mergeTheme('InputTag', defaultInputTagTheme);
+    return inputtagTheme;
   };
 
   getMenuTheme = () => {
     const width = this.getContainerWidth();
-    let initMenuTheme = {
+    const initMenuTheme = {
       width,
     };
-    if (typeof width === 'string') {
-      initMenuTheme = {
-        width: 250,
-        height: 250,
-      };
-    }
     const defaultMenuTheme = {
-      MenuWrap: {
+      Container: {
         normal: initMenuTheme,
       },
     };
     return this.mergeTheme('Menu', defaultMenuTheme);
   };
+
+  componentDidMount() {
+    const menuWidth = this.inputTag.current.getThemeTarget().container.offsetWidth;
+    this.setState({
+      menuWidth,
+    });
+  }
 }
 
 export default ThemeHoc(Select, Widget.Select, { hover: true });
