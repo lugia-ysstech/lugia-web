@@ -129,7 +129,7 @@
   "type": {
     "tableStyleType": ["zebraStripe", "linear", "bordered"]
   },
-  "childrenWidget": ["column"],
+  "childrenWidget": ["column", "selectOptions"],
   "category": ["数据展示"],
   "theme": {
     "Container": {

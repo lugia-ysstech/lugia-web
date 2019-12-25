@@ -1,0 +1,26 @@
+{
+  "widgetName": "selectOptions",
+  "title": "selectOptions",
+  "desc": "selectOptions。",
+  "props": {
+    "setCheckboxProps": {
+      "type": "Function(record): Object",
+      "desc": "设置选择框的属性"
+    },
+    "width": {
+      "type": "number | string",
+      "desc": "选择框所在列的宽度"
+    },
+    "selectRowKeys": {
+      "type": "string[]",
+      "desc": "指定选中行的key值集合"
+    },
+    "onChange": {
+      "type": "Function(selectRowKeys, selectRecords)",
+      "desc": "选中项发生改变的回调"
+    }
+  },
+  "event": {},
+  "type": {},
+  "category": ["数据展示"]
+}
