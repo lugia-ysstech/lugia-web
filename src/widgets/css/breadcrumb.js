@@ -148,6 +148,7 @@ export const BreadcrumbContainer = CSSComponent({
     box-sizing: border-box;
     transition: all 0.3s;
     overflow: hidden;
+    width: 100%;
   `,
   option: { hover: true },
 });

@@ -43,7 +43,7 @@ type DropMenuProps = {
   showSwitch: boolean,
   divided: boolean,
   icons: Object,
-
+  data: Array<Object>,
   onPopupVisibleChange?: Function,
   _onClick?: Function,
   onClick?: Function,
@@ -242,7 +242,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
       };
     }
     const defaultMenuTheme = {
-      MenuWrap: {
+      Container: {
         normal: initMenuTheme,
       },
     };
