@@ -14,12 +14,12 @@
       "defaultValue": "Tag"
     },
     "shape": {
-      "type": " basic | round ",
+      "type": "ShapeType",
       "desc": "标签的圆角, basic为4px圆角,round为圆角标签",
       "defaultValue": "basic"
     },
     "type": {
-      "type": "customs | primary | basic | presets | optional",
+      "type": "StyleType",
       "desc": "标签的主题样式",
       "defaultValue": "customs"
     }
@@ -52,8 +52,8 @@
     }
   },
   "type": {
-    "shape": ["basic", "round"],
-    "type": ["customs", "primary", "basic", "presets"]
+    "ShapeType": ["basic", "round"],
+    "StyleType": ["customs", "primary", "basic", "presets"]
   },
   "category": ["数据展示"],
 
