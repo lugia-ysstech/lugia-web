@@ -8,17 +8,29 @@
       "desc": "生成选择项的数据",
       "meta": [
         { "key": "value", "title": "value值", "type": "string" },
-        { "key": "text", "title": "文本值", "type": "string" }
+        { "key": "text", "title": "文本值", "type": "string" },
+        { "key": "des", "title": "辅助文本", "type": "string" },
+        {
+          "key": "icons",
+          "title": "图标",
+          "type": "object",
+          "children": [
+            { "key": "preIconClass", "title": "前缀图标", "type": "icon" },
+            { "key": "suffixIconClass", "title": "后缀图标", "type": "icon" },
+            { "key": "preIconSrc", "title": "前缀图片", "type": "img" },
+            { "key": "suffixIconSrc", "title": "后缀图片", "type": "img" }
+          ]
+        }
       ]
-    },
-    "mutliple": {
-      "type": "boolean",
-      "desc": "是否多选",
-      "defaultValue": false
     },
     "canSearch": {
       "type": "boolean",
       "desc": "是否支持查询",
+      "defaultValue": false
+    },
+    "canInput": {
+      "type": "boolean",
+      "desc": "是否支持自定义值,只有在canSearch为true时才生效",
       "defaultValue": false
     },
     "canClear": {
@@ -36,11 +48,7 @@
       "desc": "查询的延迟时间，单位为毫秒",
       "defaultValue": 100
     },
-    "canInput": {
-      "type": "boolean",
-      "desc": "是否支持自定义值,只有在canSearch为true时才生效",
-      "defaultValue": false
-    },
+
     "valueField": {
       "type": "string",
       "desc": "data数据的value值的名称",
@@ -50,6 +58,22 @@
       "type": "string",
       "desc": "data数据的displayValue值的名称",
       "defaultValue": "text"
+    },
+    "value": {
+      "type": "string | string[] | number | number[]",
+      "desc": "指定当前选中的条目"
+    },
+    "displayValue": {
+      "type": "string | string[] | number | number[]",
+      "desc": "指定当前选中的条目的displayValue值"
+    },
+    "defaultValue": {
+      "type": "string | string[] | number | number[]",
+      "desc": "初始状态下指定当前选中的条目,只生效一次"
+    },
+    "defaultDisplayValue": {
+      "type": "string | string[] | number | number[]",
+      "desc": "初始状态下指定当前选中的条目的displayValue值,只生效一次"
     },
     "disabled": {
       "type": "boolean",
@@ -70,30 +94,16 @@
       "desc": "占位符"
     },
     "searchType": {
-      "type": "start | end | include | eql",
+      "type": "SearchType",
       "desc": "查询的方式",
       "defaultValue": "include"
     },
-    "value": {
-      "type": "string | string[] | number | number[]",
-      "desc": "指定当前选中的条目"
-    },
-    "displayValue": {
-      "type": "string | string[] | number | number[]",
-      "desc": "指定当前选中的条目的displayValue值"
-    },
-    "defaultValue": {
-      "type": "string | string[] | number | number[]",
-      "desc": "初始状态下指定当前选中的条目,只生效一次"
-    },
-    "defaultDisplayValue": {
-      "type": "string | string[] | number | number[]",
-      "desc": "初始状态下指定当前选中的条目的displayValue值,只生效一次"
-    },
+
     "divided": {
       "type": "boolean",
       "desc": "弹出菜单中是否展示分割线"
     },
+
     "pullIconClass": {
       "type": "icon",
       "desc": "下拉按钮图标"
@@ -201,7 +211,9 @@
       "desc": "点击刷新按钮时触发"
     }
   },
-
+  "type": {
+    "SearchType": ["start", "end", "include", "eql"]
+  },
   "category": ["数据录入"],
 
   "designInfo": {
@@ -213,165 +225,298 @@
         "mutliple": true
       },
       "theme": {
-        "InputTag": {
-          "name": "数据展示框",
+        "Container": {
+          "name": "选择框整体配置",
+          "desc": "配置选择框的外盒样式",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["margin"],
+            ["padding"],
+            ["color"],
+            ["background"],
+            ["border"],
+            ["boxShadow"],
+            ["borderRadius"],
+            ["font"],
+            ["opacity"]
+          ],
+          "hover": [
+            ["color"],
+            ["background"],
+            ["border"],
+            ["boxShadow"],
+            ["borderRadius"],
+            ["font"],
+            ["opacity"]
+          ],
+          "active": [],
+          "disabled": [
+            ["width"],
+            ["height"],
+            ["margin"],
+            ["padding"],
+            ["border"],
+            ["font"],
+            ["borderRadius"],
+            ["background"],
+            ["color"],
+            ["boxShadow"],
+            ["opacity"],
+            ["cursor"]
+          ]
+        },
+
+        "SwitchIcon": {
+          "name": "下拉图标",
+          "desc": "配置下拉图标样式",
+          "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+          "hover": [["color"], ["fontSize"]],
+          "active": [["color"], ["fontSize"]],
+          "disabled": [["color"], ["fontSize"], ["cursor"]]
+        },
+
+        "ClearIcon": {
+          "name": "清空图标",
+          "desc": "配置清除图标样式",
+          "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+          "hover": [["color"], ["fontSize"]],
+          "active": [["color"], ["fontSize"]],
+          "disabled": [["color"], ["fontSize"], ["cursor"]]
+        },
+
+        "TagWrap": {
+          "name": "标签",
+          "desc": "配置展示选中项的标签样式",
+          "normal": [
+            ["width"],
+            ["height"],
+            ["background"],
+            ["color"],
+            ["font"],
+            ["fontSize"],
+            ["border"],
+            ["borderRadius"],
+            ["boxShadow"],
+            ["opacity"],
+            ["padding", "left"],
+            ["padding", "right"],
+            ["margin", "left"],
+            ["margin", "right"]
+          ],
+          "hover": [
+            ["background"],
+            ["color"],
+            ["borderRadius"],
+            ["border"],
+            ["font"],
+            ["opacity"],
+            ["boxShadow"]
+          ],
+          "active": [],
+          "disabled": []
+        },
+
+        "TagIcon": {
+          "name": "标签删除按钮",
+          "desc": "配置标签删除按钮样式",
+          "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+          "hover": [["color"], ["fontSize"]],
+          "active": [["color"], ["fontSize"]],
+          "disabled": [["color"], ["fontSize"], ["cursor"]]
+        },
+
+        "Menu": {
+          "name": "弹开菜单",
           "theme": {
-            "InputTagWrap": {
-              "name": "Inputtag的外盒",
-              "desc": "配置展示选中数据的外盒样式",
+            "Container": {
+              "name": "菜单整体配置",
+              "desc": "配置菜单组件的外盒样式",
               "normal": [
                 ["width"],
                 ["height"],
-                ["margin"],
-                ["padding"],
-                ["margin"],
-                ["color"],
-                ["background"],
-                ["border"],
                 ["boxShadow"],
-                ["borderRadius"],
-                ["font"],
-                ["opacity"]
-              ],
-              "hover": [
-                ["color"],
                 ["background"],
-                ["border"],
-                ["boxShadow"],
-                ["borderRadius"],
-                ["font"],
-                ["opacity"]
-              ],
-              "active": [],
-              "disabled": []
-            },
-
-            "SwitchIcon": {
-              "name": "下拉图标",
-              "desc": "配置下拉或清除按钮的图标样式",
-              "normal": [["margin"], ["padding"], ["color"], ["font"], ["opacity"]],
-              "hover": [["color"], ["font"], ["opacity"]],
-              "active": [],
-              "disabled": []
-            },
-            "ClearIcon": {
-              "name": "下拉图标",
-              "desc": "配置下拉或清除按钮的图标样式",
-              "normal": [["color"], ["background"], ["font"], ["margin"], ["opacity"]],
-              "hover": [["color"], ["font"], ["opacity"]],
-              "active": [],
-              "disabled": []
-            },
-
-            "TagWrap": {
-              "name": "标签",
-              "desc": "配置展示选中项的标签样式",
-              "normal": [
-                ["width"],
-                ["height"],
-                ["background"],
-                ["color"],
-                ["font"],
-                ["fontSize"],
-                ["border"],
-                ["borderRadius"],
-                ["boxShadow"],
                 ["opacity"],
-                ["padding", "left"],
-                ["padding", "right"],
-                ["margin", "left"],
-                ["margin", "right"]
-              ],
-              "hover": [
-                ["background"],
-                ["color"],
-                ["borderRadius"],
                 ["border"],
-                ["font"],
-                ["opacity"],
-                ["boxShadow"]
+                ["borderRadius"],
+                ["margin"],
+                ["padding"]
               ],
-              "active": [],
+              "hover": [["boxShadow"], ["background"], ["opacity"], ["border"], ["borderRadius"]],
+              "clicked": [],
               "disabled": []
             },
-
-            "TagIcon": {
-              "name": "标签删除按钮",
-              "desc": "配置标签删除按钮样式",
-              "normal": [["color"], ["font"], ["fontSize"], ["opacity"]],
-              "hover": [["color"], ["font"], ["fontSize"], ["opacity"]],
-              "active": [],
-              "disabled": []
-            },
-
-            "Menu": {
-              "name": "隐藏更多选中项的菜单",
+            "MenuItem": {
+              "name": "单选菜单项配置",
               "theme": {
-                "MenuWrap": {
-                  "name": "菜单外盒",
-                  "desc": "配置菜单组件的外盒样式",
+                "MenuItemWrap": {
+                  "name": "项的外盒",
+                  "desc": "配置每一项的外盒",
                   "normal": [
-                    ["width"],
                     ["height"],
-                    ["boxShadow"],
+                    ["color"],
+                    ["font"],
+                    ["fontSize"],
+                    ["cursor"],
+                    ["border"],
+                    ["borderRadius"],
+                    ["padding"],
+                    ["background"],
+                    ["opacity"],
+                    ["boxShadow"]
+                  ],
+                  "hover": [
+                    ["color"],
+                    ["font"],
+                    ["fontSize"],
                     ["background"],
                     ["opacity"],
                     ["border"],
                     ["borderRadius"],
-                    ["margin"],
-                    ["padding"]
+                    ["boxShadow"]
                   ],
-                  "hover": [
-                    ["boxShadow"],
+                  "active": [
+                    ["color"],
+                    ["font"],
+                    ["fontSize"],
                     ["background"],
                     ["opacity"],
                     ["border"],
-                    ["borderRadius"]
+                    ["borderRadius"],
+                    ["boxShadow"]
                   ],
-                  "clicked": [],
+                  "disabled": [
+                    ["color"],
+                    ["font"],
+                    ["cursor"],
+                    ["borderRadius"],
+                    ["padding"],
+                    ["fontSize"],
+                    ["background"],
+                    ["opacity"]
+                  ]
+                },
+                "SelectedMenuItemWrap": {
+                  "name": "选中项的外盒",
+                  "desc": "配置选中项的外盒",
+                  "normal": [
+                    ["height"],
+                    ["color"],
+                    ["font"],
+                    ["fontSize"],
+                    ["cursor"],
+                    ["border"],
+                    ["borderRadius"],
+                    ["padding"],
+                    ["background"],
+                    ["opacity"],
+                    ["boxShadow"]
+                  ],
+                  "hover": [
+                    ["color"],
+                    ["font"],
+                    ["fontSize"],
+                    ["background"],
+                    ["opacity"],
+                    ["border"],
+                    ["borderRadius"],
+                    ["boxShadow"]
+                  ],
+                  "active": [
+                    ["color"],
+                    ["font"],
+                    ["fontSize"],
+                    ["background"],
+                    ["opacity"],
+                    ["border"],
+                    ["borderRadius"],
+                    ["boxShadow"]
+                  ],
                   "disabled": []
                 },
-                "MenuItem": {
-                  "name": "菜单项配置",
-                  "theme": {
-                    "MenuItemWrap": {
-                      "name": "项的外盒",
-                      "desc": "配置每一项的外盒",
-                      "normal": [
-                        ["height"],
-                        ["background"],
-                        ["border"],
-                        ["borderRadius"],
-                        ["opacity"],
-                        ["color"],
-                        ["padding"]
-                      ],
-                      "hover": [
-                        ["background"],
-                        ["border"],
-                        ["borderRadius"],
-                        ["opacity"],
-                        ["color"],
-                        ["font"]
-                      ],
-                      "active": [
-                        ["background"],
-                        ["border"],
-                        ["borderRadius"],
-                        ["opacity"],
-                        ["color"],
-                        ["font"]
-                      ]
-                    }
-                  }
+
+                "Divider": {
+                  "name": "分割线",
+                  "desc": "配置每项之间的分割线，当divided为true时生效",
+                  "normal": [["background"]],
+                  "hover": [],
+                  "active": [],
+                  "disabled": []
+                },
+
+                "TextContainer": {
+                  "name": "文本框",
+                  "desc": "配置文本和前缀后缀图标的位置",
+                  "normal": [["padding"], ["lineHeight"]],
+                  "hover": [],
+                  "active": [],
+                  "disabled": []
+                },
+
+                "DesContainer": {
+                  "name": "辅助字段框",
+                  "desc": "配置辅助文本的样式和位置",
+                  "normal": [["color"], ["font"], ["fontSize"], ["padding"], ["lineHeight"]],
+                  "hover": [["color"], ["font"], ["fontSize"]],
+                  "active": [["color"], ["font"], ["fontSize"]],
+                  "disabled": []
+                },
+
+                "PreIcon": {
+                  "name": "前置图标配置",
+                  "desc": "前置图标或图片的样式配置",
+                  "normal": [
+                    ["color"],
+                    ["margin"],
+                    ["fontSize"],
+                    ["font"],
+                    ["padding"],
+                    ["cursor"]
+                  ],
+                  "hover": [["color"], ["fontSize"]],
+                  "active": [["color"], ["fontSize"]],
+                  "disabled": [["color"], ["fontSize"], ["cursor"]]
+                },
+
+                "SuffixIcon": {
+                  "name": "后缀图标配置",
+                  "desc": "后缀图标或图片的样式配置",
+                  "normal": [
+                    ["color"],
+                    ["margin"],
+                    ["fontSize"],
+                    ["font"],
+                    ["padding"],
+                    ["cursor"]
+                  ],
+                  "hover": [["color"], ["fontSize"]],
+                  "active": [["color"], ["fontSize"]],
+                  "disabled": [["color"], ["fontSize"], ["cursor"]]
+                },
+
+                "SwitchIcon": {
+                  "name": "下拉图标配置",
+                  "desc": "下拉图标配置的样式配置",
+                  "normal": [
+                    ["color"],
+                    ["margin"],
+                    ["fontSize"],
+                    ["font"],
+                    ["padding"],
+                    ["cursor"]
+                  ],
+                  "hover": [["color"], ["fontSize"]],
+                  "active": [["color"], ["fontSize"]],
+                  "disabled": [["color"], ["fontSize"], ["cursor"]]
                 }
               }
             }
           }
         },
 
-        "Menu": {
-          "name": "弹开菜单",
+        "InputMenu": {
+          "name": "隐藏更多选中项的菜单",
           "theme": {
             "MenuWrap": {
               "name": "菜单外盒",
@@ -421,53 +566,7 @@
                     ["opacity"],
                     ["color"],
                     ["font"]
-                  ],
-                  "disabled": [
-                    ["background"],
-                    ["color"],
-                    ["borderRadius"],
-                    ["opacity"],
-                    ["padding"],
-                    ["font"]
                   ]
-                },
-                "SelectedMenuItemWrap": {
-                  "name": "选中项的外盒",
-                  "desc": "配置选中项的外盒",
-                  "normal": [
-                    ["background"],
-                    ["border"],
-                    ["borderRadius"],
-                    ["opacity"],
-                    ["color"],
-                    ["padding"],
-                    ["font"]
-                  ],
-                  "hover": [
-                    ["background"],
-                    ["border"],
-                    ["borderRadius"],
-                    ["opacity"],
-                    ["color"],
-                    ["font"]
-                  ],
-                  "active": [
-                    ["background"],
-                    ["border"],
-                    ["borderRadius"],
-                    ["opacity"],
-                    ["color"],
-                    ["font"]
-                  ],
-                  "disabled": []
-                },
-                "Divider": {
-                  "name": "分割线",
-                  "desc": "配置每项之间的分割线，当divided为true时生效",
-                  "normal": [["background"]],
-                  "hover": [],
-                  "active": [],
-                  "disabled": []
                 }
               }
             }
@@ -478,62 +577,71 @@
   },
 
   "theme": {
-    "InputTag": {
-      "name": "数据展示框",
-      "theme": {
-        "InputTagWrap": {
-          "name": "Inputtag的外盒",
-          "desc": "配置展示选中数据的外盒样式",
-          "normal": [
-            ["width"],
-            ["height"],
-            ["margin"],
-            ["padding"],
-            ["color"],
-            ["background"],
-            ["border"],
-            ["boxShadow"],
-            ["borderRadius"],
-            ["font"],
-            ["opacity"]
-          ],
-          "hover": [
-            ["color"],
-            ["background"],
-            ["border"],
-            ["boxShadow"],
-            ["borderRadius"],
-            ["font"],
-            ["opacity"]
-          ],
-          "active": [],
-          "disabled": []
-        },
+    "Container": {
+      "name": "选择框整体配置",
+      "desc": "配置选择框的外盒样式",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["margin"],
+        ["padding"],
+        ["color"],
+        ["background"],
+        ["border"],
+        ["boxShadow"],
+        ["borderRadius"],
+        ["font"],
+        ["opacity"]
+      ],
+      "hover": [
+        ["color"],
+        ["background"],
+        ["border"],
+        ["boxShadow"],
+        ["borderRadius"],
+        ["font"],
+        ["opacity"]
+      ],
+      "active": [],
+      "disabled": [
+        ["width"],
+        ["height"],
+        ["margin"],
+        ["padding"],
+        ["border"],
+        ["font"],
+        ["borderRadius"],
+        ["background"],
+        ["color"],
+        ["boxShadow"],
+        ["opacity"],
+        ["cursor"]
+      ]
+    },
 
-        "SwitchIcon": {
-          "name": "下拉图标",
-          "desc": "配置下拉图标样式",
-          "normal": [["color"], ["background"], ["font"], ["margin"], ["opacity"]],
-          "hover": [["color"], ["font"], ["opacity"]],
-          "active": [],
-          "disabled": []
-        },
-        "ClearIcon": {
-          "name": "清空图标",
-          "desc": "配置清除图标样式",
-          "normal": [["color"], ["background"], ["font"], ["margin"], ["opacity"]],
-          "hover": [["color"], ["font"], ["opacity"]],
-          "active": [],
-          "disabled": []
-        }
-      }
+    "SwitchIcon": {
+      "name": "下拉图标",
+      "desc": "配置下拉图标样式",
+      "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+      "hover": [["color"], ["fontSize"]],
+      "active": [["color"], ["fontSize"]],
+      "disabled": [["color"], ["fontSize"], ["cursor"]]
+    },
+
+    "ClearIcon": {
+      "name": "清空图标",
+      "desc": "配置清除图标样式",
+      "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+      "hover": [["color"], ["fontSize"]],
+      "active": [["color"], ["fontSize"]],
+      "disabled": [["color"], ["fontSize"], ["cursor"]]
     },
 
     "Menu": {
       "name": "弹开菜单",
       "theme": {
-        "MenuWrap": {
-          "name": "菜单外盒",
+        "Container": {
+          "name": "菜单整体配置",
           "desc": "配置菜单组件的外盒样式",
           "normal": [
             ["width"],
@@ -551,75 +659,94 @@
           "disabled": []
         },
         "MenuItem": {
-          "name": "菜单项配置",
+          "name": "单选菜单项配置",
           "theme": {
             "MenuItemWrap": {
               "name": "项的外盒",
               "desc": "配置每一项的外盒",
               "normal": [
                 ["height"],
-                ["background"],
+                ["color"],
+                ["font"],
+                ["fontSize"],
+                ["cursor"],
                 ["border"],
                 ["borderRadius"],
+                ["padding"],
+                ["background"],
                 ["opacity"],
-                ["color"],
-                ["padding"]
+                ["boxShadow"]
               ],
               "hover": [
+                ["color"],
+                ["font"],
+                ["fontSize"],
                 ["background"],
+                ["opacity"],
                 ["border"],
                 ["borderRadius"],
-                ["opacity"],
-                ["color"],
-                ["font"]
+                ["boxShadow"]
               ],
               "active": [
+                ["color"],
+                ["font"],
+                ["fontSize"],
                 ["background"],
+                ["opacity"],
                 ["border"],
                 ["borderRadius"],
-                ["opacity"],
-                ["color"],
-                ["font"]
+                ["boxShadow"]
               ],
               "disabled": [
-                ["background"],
                 ["color"],
+                ["font"],
+                ["cursor"],
                 ["borderRadius"],
-                ["opacity"],
                 ["padding"],
-                ["font"]
+                ["fontSize"],
+                ["background"],
+                ["opacity"]
               ]
             },
             "SelectedMenuItemWrap": {
               "name": "选中项的外盒",
               "desc": "配置选中项的外盒",
               "normal": [
-                ["background"],
+                ["height"],
+                ["color"],
+                ["font"],
+                ["fontSize"],
+                ["cursor"],
                 ["border"],
                 ["borderRadius"],
-                ["opacity"],
-                ["color"],
                 ["padding"],
-                ["font"]
+                ["background"],
+                ["opacity"],
+                ["boxShadow"]
               ],
               "hover": [
+                ["color"],
+                ["font"],
+                ["fontSize"],
                 ["background"],
+                ["opacity"],
                 ["border"],
                 ["borderRadius"],
-                ["opacity"],
-                ["color"],
-                ["font"]
+                ["boxShadow"]
               ],
               "active": [
+                ["color"],
+                ["font"],
+                ["fontSize"],
                 ["background"],
+                ["opacity"],
                 ["border"],
                 ["borderRadius"],
-                ["opacity"],
-                ["color"],
-                ["font"]
+                ["boxShadow"]
               ],
               "disabled": []
             },
+
             "Divider": {
               "name": "分割线",
               "desc": "配置每项之间的分割线，当divided为true时生效",
@@ -627,6 +754,51 @@
               "hover": [],
               "active": [],
               "disabled": []
+            },
+
+            "TextContainer": {
+              "name": "文本框",
+              "desc": "配置文本和前缀后缀图标的位置",
+              "normal": [["padding"], ["lineHeight"]],
+              "hover": [],
+              "active": [],
+              "disabled": []
+            },
+
+            "DesContainer": {
+              "name": "辅助字段框",
+              "desc": "配置辅助文本的样式和位置",
+              "normal": [["color"], ["font"], ["fontSize"], ["padding"], ["lineHeight"]],
+              "hover": [["color"], ["font"], ["fontSize"]],
+              "active": [["color"], ["font"], ["fontSize"]],
+              "disabled": []
+            },
+
+            "PreIcon": {
+              "name": "前置图标配置",
+              "desc": "前置图标或图片的样式配置",
+              "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+              "hover": [["color"], ["fontSize"]],
+              "active": [["color"], ["fontSize"]],
+              "disabled": [["color"], ["fontSize"], ["cursor"]]
+            },
+
+            "SuffixIcon": {
+              "name": "后缀图标配置",
+              "desc": "后缀图标或图片的样式配置",
+              "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+              "hover": [["color"], ["fontSize"]],
+              "active": [["color"], ["fontSize"]],
+              "disabled": [["color"], ["fontSize"], ["cursor"]]
+            },
+
+            "SwitchIcon": {
+              "name": "下拉图标配置",
+              "desc": "下拉图标配置的样式配置",
+              "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+              "hover": [["color"], ["fontSize"]],
+              "active": [["color"], ["fontSize"]],
+              "disabled": [["color"], ["fontSize"], ["cursor"]]
             }
           }
         }

@@ -26,12 +26,10 @@ import { DefaultHeight } from '../css/menu';
 import {
   FontSize,
   lightGreyColor,
-  Container,
   OutContainer,
   InnerContainer,
   SingleInnerContainer,
   Prefix,
-  IconWrap,
   CommonIcon,
   FlexResBox,
   List,
@@ -80,8 +78,7 @@ type InputTagProps = {
   pullIconClass?: string,
   clearIconClass?: string,
 };
-const Clear = 'lugia-icon-reminder_close';
-const Pull = 'lugia-icon-direction_down';
+
 type InputTagState = {
   focus: boolean,
   items: Array<React.Node>,
@@ -224,62 +221,50 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       />
     );
     const { focus } = state;
-    const { getTheme, disabled, validateStatus, prefix, getPartOfThemeProps } = props;
+    const { disabled, validateStatus, prefix, getPartOfThemeProps } = props;
 
     const themeProps = getPartOfThemeProps('InputTagWrap');
     if (!this.isMutliple()) {
       result = this.generateOutter(
-        <Container
+        <OutContainer
           themeProps={themeProps}
-          theme={getTheme()}
+          focus={focus}
+          disabled={disabled}
+          validateStatus={validateStatus}
           ref={cmp => (this.container = cmp)}
           onClick={this.onClick}
         >
-          <OutContainer
-            themeProps={themeProps}
-            focus={focus}
-            disabled={disabled}
-            validateStatus={validateStatus}
-          >
-            <SingleInnerContainer themeProps={themeProps} disabled={disabled}>
-              <FlexResBox themeProps={themeProps}>
-                {prefix ? <Prefix>{prefix}</Prefix> : null}
-                {placeholder}
-                {this.getSingleValue()}
-                <FocuInput themeProps={themeProps} />
-              </FlexResBox>
-              {clearButton}
-            </SingleInnerContainer>
-          </OutContainer>
-        </Container>
+          <SingleInnerContainer disabled={disabled}>
+            <FlexResBox>
+              {prefix ? <Prefix>{prefix}</Prefix> : null}
+              {placeholder}
+              {this.getSingleValue()}
+              <FocuInput />
+            </FlexResBox>
+            {clearButton}
+          </SingleInnerContainer>
+        </OutContainer>
       );
     } else {
       const { items } = state;
       result = this.generateOutter(
-        <Container
+        <OutContainer
           themeProps={themeProps}
+          focus={focus}
           disabled={disabled}
+          validateStatus={validateStatus}
           ref={cmp => (this.container = cmp)}
           onClick={this.onClick}
         >
-          <OutContainer
-            themeProps={themeProps}
-            focus={focus}
-            disabled={disabled}
-            validateStatus={validateStatus}
-          >
-            <InnerContainer themeProps={themeProps}>
-              <FlexResBox themeProps={themeProps}>
-                <List themeProps={themeProps} ref={cmp => (this.list = cmp)}>
-                  {items}
-                </List>
-                {placeholder}
-                <FocuInput themeProps={themeProps} onFocus={this.onFocus} onBlur={this.onBlur} />
-              </FlexResBox>
-              {clearButton}
-            </InnerContainer>
-          </OutContainer>
-        </Container>
+          <InnerContainer themeProps={themeProps}>
+            <FlexResBox>
+              <List ref={cmp => (this.list = cmp)}>{items}</List>
+              {placeholder}
+              <FocuInput onFocus={this.onFocus} onBlur={this.onBlur} />
+            </FlexResBox>
+            {clearButton}
+          </InnerContainer>
+        </OutContainer>
       );
 
       if (this.needMoreItem) {
@@ -305,8 +290,8 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
 
     return (
       <InputTagTheme themeProps={themeProps}>
-        <HiddenList themeProps={themeProps}>
-          <List themeProps={themeProps}>{font}</List>
+        <HiddenList>
+          <List>{font}</List>
         </HiddenList>
         {result}
       </InputTagTheme>
@@ -353,19 +338,31 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   };
 
   getClearButton() {
-    const { canClear, getPartOfThemeProps, pullIconClass, clearIconClass } = this.props;
-    const themeProps =
+    const {
+      canClear,
+      pullIconClass,
+      getPartOfThemeHocProps,
+      clearIconClass,
+      disabled,
+    } = this.props;
+    const theme =
       this.isEmpty() || !canClear
-        ? getPartOfThemeProps('SwitchIcon')
-        : getPartOfThemeProps('ClearIcon');
+        ? getPartOfThemeHocProps('SwitchIcon')
+        : getPartOfThemeHocProps('ClearIcon');
 
     const Icon =
       this.isEmpty() || !canClear ? (
-        <CommonIcon themeProps={themeProps} iconClass={pullIconClass} />
+        <CommonIcon {...theme} disabled={disabled} singleTheme iconClass={pullIconClass} />
       ) : (
-        <CommonIcon themeProps={themeProps} iconClass={clearIconClass} onClick={this.onClear} />
+        <CommonIcon
+          {...theme}
+          disabled={disabled}
+          singleTheme
+          iconClass={clearIconClass}
+          onClick={this.onClear}
+        />
       );
-    return <IconWrap themeProps={themeProps}>{Icon}</IconWrap>;
+    return Icon;
   }
 
   getPlaceholder() {
@@ -557,7 +554,6 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   componentDidMount() {
     const offSetWidth = this.getOffSetWidth();
     this.oldWidth = offSetWidth;
-
     this.adaptiveItems(offSetWidth);
   }
 
@@ -585,9 +581,9 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
 
   getTagMargin() {
     const { getPartOfThemeConfig } = this.props;
-    const { normal = {} } = getPartOfThemeConfig('TagWrap');
-    const { margin } = normal;
+    const { normal: { margin } = {} } = getPartOfThemeConfig('TagWrap');
     if (!margin) {
+      // 加上各项默认的margin值
       return 5;
     }
     const { left, right } = margin;
@@ -596,8 +592,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
 
   getTagPadding() {
     const { getPartOfThemeConfig } = this.props;
-    const { normal = {} } = getPartOfThemeConfig('TagWrap');
-    const { padding } = normal;
+    const { normal: { padding } = {} } = getPartOfThemeConfig('TagWrap');
     if (!padding) {
       return 10;
     }
@@ -607,16 +602,13 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
 
   getTagFontSize() {
     const { getPartOfThemeConfig } = this.props;
-    const { normal = {} } = getPartOfThemeConfig('TagWrap');
-    const { font = {} } = normal;
-    const { size = FontSize } = font;
+    const { normal: { font: { size } = {} } = {} } = getPartOfThemeConfig('TagWrap');
     return isNumber(size) ? size : FontSize;
   }
 
   getTagWidth() {
     const { getPartOfThemeConfig } = this.props;
-    const { normal = {} } = getPartOfThemeConfig('TagWrap');
-    const { width } = normal;
+    const { normal: { width } = {} } = getPartOfThemeConfig('TagWrap');
     if (!width || !isNumber(width)) {
       return undefined;
     }
@@ -626,7 +618,6 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   getMoreItemWidth() {
     const margin = this.getTagMargin();
     const width = this.getTagWidth();
-    // offsetWidth 多了 3px，所以为了不引起bug，先加5px
     if (width) {
       return width + margin;
     }
@@ -649,9 +640,11 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
 
       const keys = this.getKeys(value);
       const valueLen = keys.length;
+
       for (let i = 0; i < valueLen; i++) {
         const key = keys[i];
         const theValue = value[key];
+
         if (!theValue) {
           return false;
         }
@@ -674,6 +667,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
           );
         }
       }
+
       this.needMoreItem = false;
       if (valueLen !== items.length) {
         this.needMoreItem = true;

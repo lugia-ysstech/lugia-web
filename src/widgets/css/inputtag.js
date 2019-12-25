@@ -6,11 +6,10 @@
  */
 
 import { px2remcss } from '../css/units';
-import CSSComponent, { css } from '@lugia/theme-css-hoc';
+import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import colorsFunc from './stateColor';
 import Widget from '../consts/index';
 import Icon from '../icon';
-import { isNumber } from '../common/NumberUtils';
 
 export const {
   themeColor,
@@ -33,25 +32,6 @@ export const SingleLineHeight = 30;
 export const ItemBackgroundColor = '#edf0fe';
 export const ItemContainerBackgroundColor = '#f6f5ff';
 
-export const Container = CSSComponent({
-  tag: 'div',
-  className: 'Container',
-  normal: {
-    selectNames: [['width'], ['height'], ['margin']],
-  },
-  hover: {
-    selectNames: [],
-  },
-  css: css`
-    display: inline-block;
-    overflow: hidden;
-    position: relative;
-    width: ${px2remcss(250)};
-    transition: all 0.3s;
-  `,
-});
-Container.displayName = 'InputTagWrap';
-
 export const OutContainer = CSSComponent({
   tag: 'div',
   className: 'OutContainer',
@@ -59,20 +39,16 @@ export const OutContainer = CSSComponent({
     selectNames: [
       ['width'],
       ['height'],
+      ['margin'],
       ['border'],
       ['borderRadius'],
       ['background'],
       ['color'],
+      ['font'],
       ['boxShadow'],
       ['opacity'],
       ['cursor'],
     ],
-    getCSS: (themeMeta, themeProps) => {
-      const { height = Height } = themeMeta;
-      return `
-      line-height: ${px2remcss(height)}
-      `;
-    },
     defaultTheme: {
       cursor: 'pointer',
       border: {
@@ -139,7 +115,19 @@ export const OutContainer = CSSComponent({
     selectNames: [],
   },
   disabled: {
-    selectNames: [],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['margin'],
+      ['border'],
+      ['font'],
+      ['borderRadius'],
+      ['background'],
+      ['color'],
+      ['boxShadow'],
+      ['opacity'],
+      ['cursor'],
+    ],
     defaultTheme: {
       background: {
         color: disableColor,
@@ -150,11 +138,12 @@ export const OutContainer = CSSComponent({
 
   css: css`
     height: ${px2remcss(Height)};
-    width: ${px2remcss(250)};
+    width: 100%;
+    overflow: hidden;
     border-radius: ${px2remcss(4)};
     background: ${defaultColor};
     color: ${blackColor};
-    font-size: ${px2remcss(12)};
+    font-size: ${px2remcss(FontSize)};
     transition: all 0.3s;
   `,
   option: { hover: true, disabled: true },
@@ -164,58 +153,50 @@ export const InnerContainer = CSSComponent({
   tag: 'div',
   className: 'InnerContainer',
   normal: {
-    selectNames: [['width'], ['height'], ['padding']],
-    getCSS: themeMeta => {
-      const { height = 30 } = themeMeta;
-      return `
-        line-height: ${px2remcss(height)};
-      `;
-    },
+    selectNames: [['padding']],
   },
 
   hover: {
     selectNames: [],
   },
+  disabled: {
+    selectNames: [['padding']],
+  },
   css: css`
-    height: ${px2remcss(30)};
-    width: ${px2remcss(250)};
+    width: 100%;
+    height: 100%;
     position: relative;
     user-select: none;
     padding-left: ${px2remcss(10)};
     padding-right: ${px2remcss(10)};
     display: flex;
+    align-items: center;
   `,
+  option: { hover: false, active: false, disabled: true },
 });
 
-export const SingleInnerContainer = CSSComponent({
+export const SingleInnerContainer = StaticComponent({
   tag: 'div',
   className: 'SingleInnerContainer',
-  normal: {
-    selectNames: [['width'], ['height'], ['padding'], ['font']],
-  },
-  hover: {
-    selectNames: [],
-  },
   css: css`
     position: relative;
     user-select: none;
+    height: 100%;
     padding-left: ${px2remcss(10)};
     padding-right: ${px2remcss(10)};
     display: flex;
+    align-items: center;
+
+    & i {
+      vertical-align: middle;
+    }
   `,
 });
 
-export const IconWrap = CSSComponent({
+export const IconWrap = StaticComponent({
   tag: 'div',
   className: 'IconWrap',
-  normal: {
-    selectNames: [['color'], ['font'], ['fontSize'], ['margin'], ['opacity']],
-  },
-  hover: {
-    selectNames: [['color'], ['fontSize'], ['font'], ['opacity']],
-  },
   css: css`
-    display: inline-block;
     height: 100%;
     float: right;
     position: relative;
@@ -226,18 +207,13 @@ export const IconWrap = CSSComponent({
 });
 export const CommonIcon = Icon;
 
-export const FlexResBox = CSSComponent({
+export const FlexResBox = StaticComponent({
   tag: 'span',
   className: 'FlexResBox',
-  normal: {
-    selectNames: [],
-  },
-  hover: {
-    selectNames: [],
-  },
   css: css`
     flex: 1;
     overflow: hidden;
+    position: relative;
   `,
 });
 
@@ -256,33 +232,22 @@ export const Prefix = CSSComponent({
   `,
 });
 
-export const List = CSSComponent({
+export const List = StaticComponent({
   tag: 'div',
   className: 'List',
-  normal: {
-    selectNames: [['height']],
-    getCSS: themeMeta => {
-      const { height = 30 } = themeMeta;
-      return `
-        line-height: ${px2remcss(height)};
-      `;
-    },
-  },
-  hover: {
-    selectNames: [],
-  },
   css: css`
     list-style: none;
-    height: ${px2remcss(30)};
-    line-height: ${px2remcss(30)};
     margin: 0;
     padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
   `,
 });
 
-export const HiddenList = CSSComponent({
+export const HiddenList = StaticComponent({
   tag: 'div',
-  className: 'FocuInput',
+  className: 'HiddenList',
   normal: {
     selectNames: [],
   },
@@ -295,15 +260,9 @@ export const HiddenList = CSSComponent({
   `,
 });
 
-export const FocuInput = CSSComponent({
+export const FocuInput = StaticComponent({
   tag: 'input',
   className: 'FocuInput',
-  normal: {
-    selectNames: [],
-  },
-  hover: {
-    selectNames: [],
-  },
   css: css`
     position: absolute;
     left: -${px2remcss(500)};
@@ -316,32 +275,19 @@ export const FocuInput = CSSComponent({
 FocuInput.displayName = Widget.InputTagFocuInput;
 
 export const InputTagTheme = CSSComponent({
-  tag: 'span',
+  tag: 'div',
   className: 'InputTagTheme',
   normal: {
-    selectNames: [['width'], ['height']],
+    selectNames: [['width']],
   },
-  hover: {
-    selectNames: [],
-  },
-  css: css`
-    display: block;
-    height: ${px2remcss(Height)};
-  `,
 });
 
-export const ItemWrap = CSSComponent({
+export const ItemWrap = StaticComponent({
   tag: 'span',
   className: 'ItemWrap',
-  normal: {
-    selectNames: [['height']],
-  },
-  hover: {
-    selectNames: [],
-  },
   css: css`
     display: inline-block;
-    height: ${px2remcss(20)};
+    box-sizing: border-box;
     vertical-align: middle;
   `,
 });
@@ -356,7 +302,6 @@ export const ItemContainer = CSSComponent({
       ['background'],
       ['color'],
       ['font'],
-      ['fontSize'],
       ['border'],
       ['borderRadius'],
       ['boxShadow'],
@@ -366,7 +311,7 @@ export const ItemContainer = CSSComponent({
       ['margin', 'right'],
       ['opacity'],
     ],
-    getCSS: (themeMeta, themeProps) => {
+    getCSS: themeMeta => {
       const { height = 20 } = themeMeta;
       return `
           line-height: ${px2remcss(height)};
@@ -389,13 +334,14 @@ export const ItemContainer = CSSComponent({
   css: css`
     padding: 0 ${px2remcss(5)};
     height: ${px2remcss(20)};
-    font-size: ${px2remcss(12)};
+    font-size: ${px2remcss(FontSize)};
     margin-right: ${px2remcss(5)};
     user-select: none;
     background: ${ItemBackgroundColor};
     color: ${darkGreyColor};
     cursor: default;
     display: flex;
+    align-items: center;
     overflow: hidden;
     transition: all 0.3s;
     box-sizing: border-box;
@@ -403,15 +349,9 @@ export const ItemContainer = CSSComponent({
   option: { hover: true },
 });
 
-export const ItemText = CSSComponent({
+export const ItemText = StaticComponent({
   tag: 'span',
   className: 'ItemText',
-  normal: {
-    selectNames: [['width'], ['height'], ['font']],
-  },
-  hover: {
-    selectNames: [],
-  },
   css: css`
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -439,33 +379,3 @@ export const HiddenItem = CSSComponent({
     padding: 0;
   `,
 });
-
-export const CloseButtonWrap = CSSComponent({
-  tag: 'li',
-  className: 'CloseButtonWrap',
-  normal: {
-    selectNames: [['color'], ['font'], ['fontSize'], ['opacity']],
-    getThemeMeta: (themeMeta, themeProps) => {
-      const { font = {} } = themeMeta;
-      const { fontSize = 12 } = font;
-      const size = isNumber(fontSize) ? fontSize : 12;
-      return {
-        width: size,
-      };
-    },
-  },
-  hover: {
-    selectNames: [['color'], ['font'], ['fontSize'], ['opacity']],
-  },
-  css: css`
-    color: ${mediumGreyColor};
-    position: relative;
-    font-size: ${px2remcss(12)};
-    margin-left: ${px2remcss(5)};
-    height: 100%;
-  `,
-  option: { hover: true },
-});
-
-export const CloseButton = Icon;
-CloseButton.displayName = Widget.InputTagCloseButton;
