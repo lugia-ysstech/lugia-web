@@ -31,6 +31,10 @@
         }
       ]
     },
+    "selectOptions": {
+      "type": "Object",
+      "desc": "表格是否有选中项"
+    },
     "data": {
       "type": "Object[]",
       "meta": [],
