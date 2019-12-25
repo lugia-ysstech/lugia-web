@@ -9,7 +9,7 @@
       "defaultValue": "click"
     },
     "hideAction": {
-      "type": "HideActionType",
+      "type": "ActionType",
       "desc": "弹出项的隐藏方式",
       "defaultValue": "click"
     },
@@ -57,8 +57,8 @@
       "meta": [
         { "key": "preIconClass", "title": "前置图标", "type": "icon" },
         { "key": "preIconSrc", "title": "前置图片", "type": "string" },
-        { "key": "SuffixIconClass", "title": "后缀图标", "type": "icon" },
-        { "key": "preIconSrc", "title": "后缀图片", "type": "string" }
+        { "key": "suffixIconClass", "title": "后缀图标", "type": "icon" },
+        { "key": "suffixIconSrc", "title": "后缀图片", "type": "string" }
       ]
     },
 
@@ -77,7 +77,7 @@
             { "key": "preIconClass", "title": "前缀图标", "type": "icon" },
             { "key": "suffixIconClass", "title": "后缀图标", "type": "icon" },
             { "key": "preIconSrc", "title": "前缀图片", "type": "img" },
-            { "key": "suffixIconSrc", "title": "前缀图片", "type": "img" }
+            { "key": "suffixIconSrc", "title": "后缀图片", "type": "img" }
           ]
         }
       ]
@@ -159,8 +159,7 @@
   },
   "type": {
     "StyleType": ["customs", "primary", "basic"],
-    "ActionType": ["hover", "click"],
-    "HideActionType": ["hover", "click"]
+    "ActionType": ["hover", "click"]
   },
 
   "designInfo": {
