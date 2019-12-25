@@ -23,17 +23,11 @@ export function getWrapThemeProps(props, partName) {
   themeProps.propsConfig = { mode };
 
   const { themeConfig } = themeProps;
-  const borderStyle = { width: borderSize, color: borderColor, style: 'solid' };
   const defaultNormal = {
     normal: {
       width: '100%',
       height: 32,
-      border: {
-        top: { ...borderStyle },
-        right: { ...borderStyle },
-        bottom: { ...borderStyle },
-        left: { ...borderStyle },
-      },
+      border: getBorder({ width: borderSize, color: borderColor, style: 'solid' }),
       borderRadius: getBorderRadius({ radius: 3 }),
     },
   };

@@ -138,8 +138,8 @@
       "disabled": [["color"], ["font"]]
     },
     "ClearButton": {
-      "name": "清楚图标",
-      "desc": "清楚图标配置",
+      "name": "清除图标",
+      "desc": "清除图标配置",
       "normal": [["color"], ["font"]],
       "hover": [["color"], ["font"]],
       "disabled": [["color"], ["font"]]
