@@ -74,7 +74,23 @@ const Data = [
 ];
 
 export default class ModalDemo extends React.Component<any, any> {
+  constructor() {
+    super();
+    this.state = {
+      selectRowKeys: ['1'],
+    };
+  }
+
+  selectChange = (selectRowKeys: string, records: Object) => {
+    console.log('selectRowKeys', selectRowKeys);
+    console.log('records', records);
+    this.setState({
+      selectRowKeys,
+    });
+  };
+
   render() {
+    console.log('this.state', this.state.selectRowKeys);
     const tableView = {
       [Widget.Table]: {
         width: 500,
@@ -97,8 +113,27 @@ export default class ModalDemo extends React.Component<any, any> {
           <Table columns={columns} data={data} />
         </Theme>
         <br />
+        <h1>边框表格</h1>
+        <Table
+          columns={columns}
+          data={data}
+          selectOptions={{
+            onChange: this.selectChange,
+            selectRowKeys: this.state.selectRowKeys,
+            setCheckboxProps(record) {
+              return { disabled: record.name === 'Jack' };
+            },
+            width: 60,
+          }}
+        />
+        <br />
         <h1>斑马纹表格</h1>
-        <Table columns={columns} data={data} tableStyle="zebraStripe" />
+        <Table
+          columns={columns}
+          data={data}
+          tableStyle="zebraStripe"
+          selectOptions={{ onChange: this.selectChange }}
+        />
         <br />
         <h1>线性分割表格</h1>
         <Table columns={columns} data={data} tableStyle="linear" />
