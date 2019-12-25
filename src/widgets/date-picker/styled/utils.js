@@ -13,13 +13,29 @@ export const DateWrapperPadding = {
   bottom: 44,
 };
 export const borderRadius = 3;
-const { hoverColor, normalColor, disableColor, spiritColor, lightGreyColor } = colorsFunc();
+const {
+  hoverColor,
+  normalColor,
+  disableColor,
+  spiritColor,
+  lightGreyColor,
+  borderDisableColor,
+  borderSize,
+  circleBorderRadius,
+  defaultColor,
+  darkGreyColor,
+} = colorsFunc();
 export const themeColor = {
   hoverColor,
   normalColor,
   disableColor,
   spiritColor,
   lightGreyColor,
+  borderDisableColor,
+  borderSize,
+  circleBorderRadius,
+  defaultColor,
+  darkGreyColor,
 };
 export function getThemeProperty(props: Object) {
   const { hasTimeWrapBorder, hasItemNumber = 3 } = props;

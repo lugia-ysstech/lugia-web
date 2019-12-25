@@ -5,6 +5,18 @@ const TimeColBorderColor = '#e8e8e8';
 export const TimeWrap = CSSComponent({
   tag: 'ul',
   className: 'TimeWrap',
+  normal: {
+    selectNames: [],
+  },
+  hover: {
+    selectNames: [],
+  },
+  active: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
   css: css`
     display: inline-block;
     font-size: ${fontSize}rem;
@@ -25,6 +37,18 @@ export const TimeWrap = CSSComponent({
 export const TimeCol = CSSComponent({
   tag: 'li',
   className: 'TimeCol',
+  normal: {
+    selectNames: [],
+  },
+  hover: {
+    selectNames: [],
+  },
+  active: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
   css: css`
     float: left;
     border-right: ${props => (props.noBorder ? 'none' : `1px solid ${TimeColBorderColor}`)};
@@ -35,6 +59,18 @@ export const TimeCol = CSSComponent({
 export const TimeTitle = CSSComponent({
   tag: 'div',
   className: 'TimeTitle',
+  normal: {
+    selectNames: [],
+  },
+  hover: {
+    selectNames: [],
+  },
+  active: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
   css: css`
     font-size: ${fontSize}rem;
     text-align: center;

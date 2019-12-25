@@ -1,3 +1,5 @@
+import Icon from '../../icon';
+import React from 'react';
 export const getformatSymbol = (value: string) => {
   const { length } = value;
   const symbolCont = [];
@@ -40,4 +42,15 @@ export function tansValueFromStringToArray(props) {
     }
   }
   return newProps;
+}
+export function getDateIcon(props) {
+  const { suffix, prefix = 'lugia-icon-financial_date' } = props;
+  const suffixIcon =
+    suffix && typeof suffix === 'string' ? { suffix: <Icon iconClass={suffix} /> } : {};
+  const prefixIcon =
+    !suffix && prefix && typeof prefix === 'string' ? { prefix: <Icon iconClass={prefix} /> } : {};
+  return {
+    suffixIcon,
+    prefixIcon,
+  };
 }

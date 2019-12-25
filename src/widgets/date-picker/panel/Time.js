@@ -136,7 +136,6 @@ class Time extends Component<TypeProps, TypeState> {
       themeProps,
     };
     const { TimeColWidth } = getThemeProperty(config);
-
     return (
       <Theme config={{ [Widget.Menu]: { width: TimeColWidth } }}>
         <TimeWrap {...config}>

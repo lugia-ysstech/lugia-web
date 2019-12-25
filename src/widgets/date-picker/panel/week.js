@@ -5,6 +5,7 @@
 import React, { Component } from 'react';
 import { HeaderWeek, HeaderWeekBox } from '../styled/styled';
 import moment from 'moment';
+import { getSecondWeekDateTheme } from '../themeConfig/themeConfig';
 type TypeProps = {
   onChangeWeek?: Function,
   lang?: Function,
@@ -36,12 +37,15 @@ class WeekDays extends Component<TypeProps, null> {
     const firstDayOfWeek = localeData.firstDayOfWeek();
     const { newWeeks } = this.getnewWeeks(this.props, firstDayOfWeek);
     const { themeProps } = this.props;
+    const { normalTheme, hoverTheme } = getSecondWeekDateTheme(this.props);
     return (
       <HeaderWeekBox themeProps={themeProps}>
         {newWeeks.map((currentValue, index) => {
           return (
             <HeaderWeek
               themeProps={themeProps}
+              normalTheme={normalTheme}
+              hoverTheme={hoverTheme}
               {...this.props}
               key={index}
               onClick={this.handleClick}
