@@ -11,7 +11,9 @@ import DatePicker, { momentConfig } from './index';
 import Theme from '../theme';
 import Widget from '../consts/index';
 import NumberInput from '../number-input';
-import { getBorder, getBoxShadow } from '@lugia/theme-utils';
+import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
+import Input from '../input';
+import TimePicker from '../time-picker/TimePicker';
 const { MonthPicker, YearPicker, WeekPicker, WeeksPicker, RangePicker } = DatePicker;
 
 //如需指定周开始是星期几，请配置momentConfig，此函数接受一个number类型参数，表示周开始是星期几
@@ -66,16 +68,50 @@ export default class Sl extends Component<any> {
             blur: 1,
             spread: 1,
           },
-          background: {
-            color: 'green',
-          },
+          // background: {
+          //   color: 'green',
+          // },
           width: 300,
           height: 200,
         },
       },
+      InMonthDate: {
+        normal: {
+          color: 'green',
+        },
+        hover: {
+          color: 'red',
+          background: { color: 'yellow' },
+          //borderRadius: getBorderRadius({ radius: 5 }),
+        },
+        active: {
+          color: 'blue',
+          background: { color: 'red' },
+        },
+      },
+      RangeDate: {
+        normal: {
+          background: { color: 'pink' },
+          color: 'red',
+          //borderRadius: getBorderRadius({ radius: 10 }),
+        },
+      },
+      SecondWeekDate: {
+        normal: {
+          color: 'red',
+        },
+        hover: {
+          color: 'blue',
+        },
+      },
+      OutMonthDate: {
+        normal: {
+          color: 'red',
+        },
+      },
       InputContain: {
         normal: {
-          width: 300,
+          width: 500,
           height: 100,
           border: getBorder({ style: 'solid', width: 2, color: 'red' }),
           background: {
@@ -98,8 +134,15 @@ export default class Sl extends Component<any> {
             color: 'green',
           },
         },
+        disabled: {
+          border: getBorder({ style: 'solid', width: 5, color: 'pink' }),
+          background: {
+            color: 'blue',
+          },
+        },
       },
       InputPrefix: { normal: { color: 'pink', fontSize: 16 } },
+      InputSuffix: { normal: { color: 'red', fontSize: 16 } },
       ClearButton: { normal: { color: 'red', fontSize: 14 } },
       HeadSingleArrow: {
         normal: {
@@ -191,7 +234,6 @@ export default class Sl extends Component<any> {
           fontSize: 14,
         },
       },
-
       WeekText: {
         normal: {
           color: 'red',
@@ -213,40 +255,76 @@ export default class Sl extends Component<any> {
     };
     return (
       <div>
+        <RangePicker
+          onChange={this.onChange}
+          onFocus={this.onFocus}
+          onBlur={this.onBlur}
+          showTime
+          format={'YYYY-MM-DD HH:mm:ss'}
+          buttonOptions={{
+            options: { today: '2015-02-03 00:00:00', 此刻: '2015-02-05 00:00:00' },
+          }}
+          extraFooter={{ message: 'extraFooter' }}
+          onOk={this.onOk}
+          //disabled
+          suffix={'lugia-icon-financial_date'}
+        />
         <div style={{ margin: '30px', overflow: 'hidden' }}>
           <h2 style={{ margin: '10px' }}>Date</h2>
-          <div style={{ float: 'left', marginRight: '30px' }}>
-            <h2>date-normal-selectToday-theme</h2>
-            <Theme
-              config={{
-                [Widget.DatePicker]: {
-                  ...config,
-                },
-                [Widget.RangePicker]: {
-                  ...config,
-                },
-                [Widget.MonthPicker]: {
-                  ...config,
-                },
-                [Widget.YearPicker]: {
-                  ...config,
-                },
-                [Widget.WeekPicker]: {
-                  ...config,
-                },
-                [Widget.WeeksPicker]: {
-                  ...config,
-                },
+
+          <h2>date-normal-selectToday-theme</h2>
+          <Theme
+            config={{
+              [Widget.DatePicker]: {
+                ...config,
+              },
+              [Widget.RangePicker]: {
+                ...config,
+              },
+              [Widget.MonthPicker]: {
+                ...config,
+              },
+              [Widget.YearPicker]: {
+                ...config,
+              },
+              [Widget.WeekPicker]: {
+                ...config,
+              },
+              // [Widget.WeeksPicker]: {
+              //   ...config,
+              // },
+            }}
+          >
+            <RangePicker
+              onChange={this.onChange}
+              onFocus={this.onFocus}
+              onBlur={this.onBlur}
+              showTime
+              format={'YYYY-MM-DD HH:mm:ss'}
+              buttonOptions={{
+                options: { today: '2015-02-03 00:00:00', 此刻: '2015-02-05 00:00:00' },
               }}
-            >
-              <DatePicker value={this.state.value} onChange={this.chengedate} step={9} />
-              <RangePicker />
-              {/*<MonthPicker />*/}
-              {/*<YearPicker />*/}
-              {/*<WeekPicker />*/}
-              {/*<WeeksPicker />*/}
-            </Theme>
-          </div>
+              extraFooter={{ message: 'extraFooter' }}
+              onOk={this.onOk}
+              //disabled
+              suffix={'lugia-icon-financial_date'}
+            />
+            <DatePicker
+              value={this.state.value}
+              onChange={this.chengedate}
+              step={9}
+              suffix={'lugia-icon-financial_date'}
+              showTime
+              // disabled
+            />
+
+            <MonthPicker />
+            <YearPicker />
+            <WeekPicker />
+            <TimePicker />
+            {/*<WeeksPicker />*/}
+          </Theme>
+
           <div style={{ float: 'left', marginRight: '30px' }}>
             <h2>date-defaultValue</h2>
             <DatePicker
