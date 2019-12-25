@@ -249,7 +249,6 @@ const TitleContainer = CSSComponent({
     defaultTheme: {
       fontSize: 16,
       width: '100%',
-      height: 'fit-content',
     },
   },
 });
@@ -332,25 +331,19 @@ const TitleHeadContainer = CSSComponent({
       },
     },
   },
+  css: css`
+    display: flex;
+    flex-direction: column;
+  `,
 });
-const TitleTipContainer = CSSComponent({
+const TitleTipContainer = StaticComponent({
   tag: 'div',
   className: 'CardTitleTipContainer',
-  normal: {
-    selectNames: [['height'], ['lineHeight']],
-    getThemeMeta(themeMeta, themeProps) {
-      const { height } = themeMeta;
-      return {
-        lineHeight: height,
-      };
-    },
-    defaultTheme: {
-      height: 'inherit',
-    },
-  },
   css: css`
-    display: inline-flex;
     width: 100%;
+    display: inline-flex;
+    flex: 1;
+    align-items: center;
   `,
 });
 const TitleTipLine = CSSComponent({
@@ -380,15 +373,12 @@ const TitleTipLine = CSSComponent({
       },
     },
   },
-  css: css`
-    align-self: center;
-  `,
 });
 const TitleBottomLine = CSSComponent({
   tag: 'div',
   className: 'CardTipBottomLine',
   normal: {
-    selectNames: [['width'], ['border', 'bottom']],
+    selectNames: [['width'], ['border', 'bottom'], ['margin']],
     defaultTheme: {
       height: 1,
       width: '100%',
@@ -399,6 +389,10 @@ const TitleBottomLine = CSSComponent({
           color: superLightColor,
         },
       },
+    },
+    getCSS(themeMeta, themeProps) {
+      const { border: { bottom: { width } = {} } = {} } = themeMeta;
+      return `height:${px2remcss(width)}`;
     },
   },
 });
@@ -516,7 +510,7 @@ class Card extends React.Component<CardProps, CardState> {
     if (title && type === 'tip') {
       return (
         <TitleHeadContainer themeProps={getPartOfThemeProps('CardTitleHeadContainer')}>
-          <TitleTipContainer themeProps={getPartOfThemeProps('CardTipTitleContainer')}>
+          <TitleTipContainer>
             <TitleTipLine themeProps={getPartOfThemeProps('CardTitleTipLine')} />
             {TitleCmp}
           </TitleTipContainer>
