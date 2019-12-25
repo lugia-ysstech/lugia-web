@@ -5,7 +5,7 @@
   "props": {
     "setCheckboxProps": {
       "type": "Function(record): Object",
-      "desc": "设置选择框的属性"
+      "desc": "设置选择框的属性, 返回一个对象，该对象会被应用到checkbox 的props属性"
     },
     "width": {
       "type": "number | string",

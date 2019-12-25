@@ -33,7 +33,11 @@
     },
     "selectOptions": {
       "type": "Object",
-      "desc": "表格是否有选中项"
+      "desc": "表格是否有选中项",
+      "meta": [
+        { "key": "width", "title": "选择框所在列的宽度", "type": "number | string" },
+        { "key": "selectRowKeys", "title": "指定选中行的key值集合", "type": "string[]" }
+      ]
     },
     "data": {
       "type": "Object[]",
