@@ -233,38 +233,52 @@ const AvatarContainer = CSSComponent({
   `,
 });
 
-const BaseText = CSSComponent({
+const TitleContainer = CSSComponent({
   tag: 'div',
-  className: 'CardBaseText',
+  className: 'TipTitleContainer',
   normal: {
-    selectNames: [
-      ['width'],
-      ['height'],
-      ['border'],
-      ['borderRadius'],
-      ['margin'],
-      ['padding'],
-      ['boxShadow'],
-      ['opacity'],
-    ],
+    selectNames: [['width'], ['height']],
+    getCSS(themeMeta: Object, themeProps: Object) {
+      const { propsConfig } = themeProps;
+      const { imageOrientation, type } = propsConfig;
+      const vCard = !isHorizontal(imageOrientation);
+      const textAlign = type === 'avatar' && vCard ? 'center' : '';
+      const flexDirection = vCard ? 'column' : 'row';
+      return `text-align:${textAlign};flex-direction:${flexDirection};`;
+    },
+    defaultTheme: {
+      fontSize: 16,
+      width: '100%',
+      height: 'fit-content',
+    },
   },
-  css: css`
-    text-align: inherit;
-  `,
 });
-const Title = CSSComponent({
-  extend: BaseText,
-  className: 'CardTitle',
+const TextContainer = CSSComponent({
+  extend: TitleContainer,
+  className: 'TextContainer',
   normal: {
-    selectNames: [
-      ['width'],
-      ['height'],
-      ['color'],
-      ['font'],
-      ['margin'],
-      ['padding'],
-      ['fontSize'],
-    ],
+    selectNames: [['width'], ['height'], ['padding']],
+    getCSS(themeMeta: Object, themeProps: Object) {
+      const { propsConfig } = themeProps;
+      const { imageOrientation, type } = propsConfig;
+      const vCard = !isHorizontal(imageOrientation);
+      const textAlign = type === 'avatar' && vCard ? 'center' : '';
+      const flexDirection = vCard ? 'column' : 'row';
+      return `text-align:${textAlign};flex-direction:${flexDirection};`;
+    },
+    defaultTheme: {
+      fontSize: 16,
+      width: '100%',
+      height: 'fit-content',
+    },
+  },
+});
+
+const Title = CSSComponent({
+  tag: 'div',
+  className: 'CardTipTitle',
+  normal: {
+    selectNames: [['color'], ['font'], ['fontSize']],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const { font } = themeMeta;
       const {
@@ -295,21 +309,53 @@ const Title = CSSComponent({
     flex: 1;
   `,
 });
-const TitleTipContainer = CSSComponent({
+
+const TitleHeadContainer = CSSComponent({
   tag: 'div',
   className: 'CardTitleTipLineContainer',
   normal: {
-    selectNames: [['height']],
+    selectNames: [['height'], ['background'], ['padding']],
+    defaultTheme: {
+      padding: {
+        top: 10,
+      },
+    },
+  },
+});
+const TitleTipContainer = CSSComponent({
+  tag: 'div',
+  className: 'CardTitleTipContainer',
+  normal: {
+    selectNames: [['height'], ['lineHeight']],
+    getThemeMeta(themeMeta, themeProps) {
+      const { height } = themeMeta;
+      return {
+        lineHeight: height,
+      };
+    },
+    defaultTheme: {
+      height: 'inherit',
+    },
   },
   css: css`
     display: inline-flex;
+    width: 100%;
   `,
 });
 const TitleTipLine = CSSComponent({
   tag: 'div',
   className: 'CardTitleTipLine',
   normal: {
-    selectNames: [['width'], ['height'], ['background'], ['border'], ['borderRadius'], ['margin']],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['background'],
+      ['border'],
+      ['borderRadius'],
+      ['lineHeight'],
+      ['margin', 'left'],
+      ['margin', 'right'],
+    ],
     defaultTheme: {
       height: 20,
       width: 5,
@@ -319,22 +365,22 @@ const TitleTipLine = CSSComponent({
       borderRadius: getBorderRadius(5),
       margin: {
         left: 5,
-        top: 13,
+        right: 10,
       },
     },
   },
+  css: css`
+    align-self: center;
+  `,
 });
 const TitleBottomLine = CSSComponent({
   tag: 'div',
   className: 'CardTipBottomLine',
   normal: {
-    selectNames: [['width'], ['margin'], ['border', 'bottom']],
+    selectNames: [['width'], ['border', 'bottom']],
     defaultTheme: {
       height: 1,
       width: '100%',
-      margin: {
-        top: 10,
-      },
       border: {
         bottom: {
           style: 'solid',
@@ -346,15 +392,18 @@ const TitleBottomLine = CSSComponent({
   },
 });
 const Description = CSSComponent({
-  extend: BaseText,
+  tag: 'div',
   className: 'cardDescription',
   normal: {
-    selectNames: [['width'], ['height'], ['color'], ['font'], ['fontSize'], ['padding']],
+    selectNames: [['color'], ['font'], ['fontSize'], ['background']],
     defaultTheme: {
       fontSize: 14,
       color: darkGreyColor,
     },
   },
+  css: css`
+    text-align: inherit;
+  `,
 });
 const Operation = CSSComponent({
   tag: 'div',
@@ -451,16 +500,18 @@ class Card extends React.Component<CardProps, CardState> {
   }
 
   getTitleTipContainer() {
-    const { title, type } = this.props;
+    const { title, type, getPartOfThemeProps } = this.props;
     const TitleCmp = this.getDetails('title');
     if (title && type === 'tip') {
-      return [
-        <TitleTipContainer themeProps={this.props.getPartOfThemeProps('CardTitleTipLine')}>
-          <TitleTipLine themeProps={this.props.getPartOfThemeProps('CardTitleTipLine')} />
-          {TitleCmp}
-        </TitleTipContainer>,
-        this.getTitleBottomLine(),
-      ];
+      return (
+        <TitleHeadContainer themeProps={getPartOfThemeProps('CardTitleHeadContainer')}>
+          <TitleTipContainer themeProps={getPartOfThemeProps('CardTipTitleContainer')}>
+            <TitleTipLine themeProps={getPartOfThemeProps('CardTitleTipLine')} />
+            {TitleCmp}
+          </TitleTipContainer>
+          {this.getTitleBottomLine()}
+        </TitleHeadContainer>
+      );
     }
     return TitleCmp;
   }
@@ -527,7 +578,7 @@ class Card extends React.Component<CardProps, CardState> {
         top = 14;
         break;
       case 'title':
-        top = type !== 'tip' ? 10 : 13;
+        top = 13;
         break;
       default:
         top = 0;
@@ -536,8 +587,8 @@ class Card extends React.Component<CardProps, CardState> {
     return {
       padding: {
         left,
-        right: 10,
         top,
+        right: 10,
       },
     };
   }
@@ -561,11 +612,7 @@ class Card extends React.Component<CardProps, CardState> {
           this.getThemeNormalConfig(this.getPaddingByType(type, 'title', imageOrientation)),
           this.props.getPartOfThemeProps('CardTitle', { props: { type } })
         );
-        return title ? (
-          <Title type={type} themeProps={titleThemeProps}>
-            {title}
-          </Title>
-        ) : null;
+        return title ? this.getTitle(titleThemeProps) : null;
       case 'description':
         const descriptionThemeProps = deepMerge(
           this.getThemeNormalConfig(this.getPaddingByType(type, 'description', imageOrientation)),
@@ -574,11 +621,22 @@ class Card extends React.Component<CardProps, CardState> {
           })
         );
         return description ? (
-          <Description themeProps={descriptionThemeProps}>{description} </Description>
+          <TextContainer themeProps={descriptionThemeProps}>
+            <Description themeProps={descriptionThemeProps}>{description} </Description>
+          </TextContainer>
         ) : null;
       default:
         return null;
     }
+  }
+
+  getTitle(titleThemeProps) {
+    const { title, type } = this.props;
+    const TitleCmp = <Title themeProps={titleThemeProps}>{title}</Title>;
+    if (type === 'tip') {
+      return <TitleContainer themeProps={titleThemeProps}>{TitleCmp}</TitleContainer>;
+    }
+    return <TextContainer themeProps={titleThemeProps}>{TitleCmp}</TextContainer>;
   }
 
   getContent(): React.Node | null {

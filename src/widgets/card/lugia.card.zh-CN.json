@@ -13,7 +13,8 @@
     },
     "title": {
       "type": "React.Node",
-      "desc": "卡片标题显示内容"
+      "desc": "卡片标题显示内容",
+      "defaultValue": "卡片头部标题"
     },
     "description": {
       "type": "React.Node",
@@ -41,7 +42,8 @@
     },
     "type": {
       "type": "CardType",
-      "desc": "卡片风格 可配置 简洁,头像,图片,标题提示,自定义组合卡片几种风格"
+      "desc": "卡片风格 可配置 简洁,头像,图片,标题提示,自定义组合卡片几种风格",
+      "defaultValue": "tip"
     },
     "imageOrientation": {
       "type": "ImageOrientation",
@@ -65,7 +67,8 @@
       "desc": "水平头像卡片样式",
       "props": {
         "type": "avatar",
-        "imageOrientation": "horizontal"
+        "imageOrientation": "horizontal",
+        "avatar": "lugia-icon-financial_user"
       },
       "theme": {
         "Container": {
@@ -143,7 +146,9 @@
       "desc": "水平图片卡片样式",
       "props": {
         "type": "image",
-        "imageOrientation": "horizontal"
+        "imageOrientation": "horizontal",
+        "image":
+          "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAABwCAIAAABaVSPoAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyppVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpGMTU0Mzc3OTFFMUIxMUVBQkY4QkY5OEI3QkJEQTNCQyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpGMTU0Mzc3QTFFMUIxMUVBQkY4QkY5OEI3QkJEQTNCQyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkYxNTQzNzc3MUUxQjExRUFCRjhCRjk4QjdCQkRBM0JDIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkYxNTQzNzc4MUUxQjExRUFCRjhCRjk4QjdCQkRBM0JDIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+MKh+/wAAAv9JREFUeNrs3N1Sm1AUhuGwQUJCTdQ4Knri/d+Mxz12Rm1MGon5JYF0zaS1TG2ojQH2hvcbx6OMwgMs1tpDsO7uvjZI/lEQAA00ARpooAnQQBOggQaaAA00ARpooAnQQBOggQaaAA00ARpooAnQQBOggQaa5B2ngP/hea7rHlmWpdWebzabKFotFlEVoB3Hvrg4E2htTzSB7ve/r9exwaVDKRUE5zorb6+26+tz21YGQ5+cfDk6chrax3GcbvfYYOh22zPlTtVuNw2Gtm3bmJbAsQ2G1qzLoI+mj847s9liPl9KayU3fc9r+r5nVfcqKAdacKV7TQ8L4/FUWpTLyzMZbSgdh0mSJI+Pg/cj2Wq1fngYyG+gD5PR6HWXphyD4TAE+jArDK+vs+zCXcBAXH3oOJazNsn+TBSt9jh+cinoXHZKOKPz+JvPzy9hOJHSr6110dAygyn1jx7uv1ZItsqTyWzbzGhrXTS0dMq+38r4gOe5H4dOK781jnpal9B1nJ52di2DyGHo9bp7K+tsXQK0VI8g6L0/bZVSV1e9ZtP9jLK21uVMhjL+3dxcCJM0c3EcC3Gr1Tw+9j+4AJ+tnLYOgnNN1sRL2wi5JXY6vvzs12NkK2tobdjq3ceVdashqsLKWlnrBZ0xNO6nrI+1RtDT6fz+/ttfH7T4jLIm1kof5X5/FMfJ09OfK6ifV05bS5NTX+it8nYZJEk2aetDKb9Zr9dJTaHTyr8q9U/rwyrXtI/epZy29rymTDSNSkRpqPxmXRnlMqGzlasXhXJloWuoXAK0jAw1VC4BWm5xNVRu8Owd0EAToBnBf8d1ndvboMQdLuvJYKf4/bRq+VUASof50NIym6JQwKbmCL1cRqZA7/H8qkbQYTgxBbqATc0RerGIBoMX/Qfu4TCcz5dmdx3j8VSuyk7H1/btBrKFxbzgIPf2TnajsFc10N4RoIEGmgANNAEaaKAJ0EADDQHQQBOggQaaAA00ARpooAnQQBOggQaaAA00ARpooEn++SHAAHGuDrxby/IuAAAAAElFTkSuQmCC"
       },
       "theme": {
         "Container": {
@@ -226,7 +231,8 @@
       "desc": "垂直头像卡片不同选择显示不同卡片样式",
       "props": {
         "type": "avatar",
-        "imageOrientation": "vertical"
+        "imageOrientation": "vertical",
+        "avatar": "lugia-icon-financial_user"
       },
       "theme": {
         "Container": {
@@ -303,7 +309,10 @@
       "title": "垂直图片卡片",
       "desc": "垂直图片卡片样式",
       "props": {
-        "type": "image"
+        "type": "image",
+        "imageOrientation": "vertical",
+        "image":
+          "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAACWCAIAAAAUvlBOAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyppVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpGMTU0Mzc3RDFFMUIxMUVBQkY4QkY5OEI3QkJEQTNCQyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpGMTU0Mzc3RTFFMUIxMUVBQkY4QkY5OEI3QkJEQTNCQyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkYxNTQzNzdCMUUxQjExRUFCRjhCRjk4QjdCQkRBM0JDIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkYxNTQzNzdDMUUxQjExRUFCRjhCRjk4QjdCQkRBM0JDIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+xCtsxwAAA+VJREFUeNrs3dtS2loAgGEJZzzUATuUTi/6/i/T6/0ETqeAHAIKgWSn4x62494CKkiTfP8lZkYDX1YWyQJLP378dSYdusBTILAElsCSwBJYAksCS2AJLAksgSWwJLAElsCSwBJYAksCS2AJLAksgSWwJLAElsCSwBJYAksCS2AJLAksgSWwJLAElsCSwBJYAksCSyeukp9DJChVq9VSqZTRvz9JkiiK4jgB60+pXA7a7auLi1Z2VW1sheF8OJys1zFYJ65arfR6N5VKOQdHSHpgXF6eN5uN29t+FK3MsU75SnS7nXyo+vdYr5S/fOlkffTNNqzLy1atVjnLXekwnO4aWCfr/LyZ13dVWd+1bMPK2Unw2aAFlo7wwgTmWBJY+qBZSnF2NYpWy+XvS9vlctBo1ILAQQXW+5rPH4bDSapq80ipdNZqNdvtq6zPkcE6WYPBeDwOnz2YJGez2f39/aLbbTebdQ7MsV7X3d30v6o2xXH88+fg6UgmsHa3XK5Go8n2bdIp169fIw7AekWTSZjssQhlsVg+PCxQAGvf0inUwbfcUpIkuVlNBda2Vqv1wbfcoio9paYzNrYKMXn/mB5VheE8HfnYyj+s/W9Rv+dm9kbV5qzKVs5htVqNg2+5XRVbhYB1dXW+zzrMZrNer9cOpYqt/MOqViudzqcd+x8ENzfXh1XFVv4n7+mg1W5fvfTTcrnc63XecLtwpyq28v+u8Pr68uvXz89uCAZBKTX37dvnN5wE91RVcFuFuLffaNR6vZv1Oo6iVRzH5XJQq73xo62vUvXUVrfbyfqiUCPWSye+38uw0jeA6Sj1YaoKO265QHp0VcW0BdZHqCqgLbD2ajAYv1NV0WwVGtZ6vZ5OZzs36/dHk8nsUL+0ILaCIqu6vR2kJ7jJJPwwVcWxFRRZ1eOi5H5//BKdY6h6agus3KraAuh4qja2wMqzqv9ldGxVJu+FUPUME1Xvr0LVM1thOH94WJJhxDqYqseoAuvwqgQWVWBRBRZVAmtHVIF1lKgCS2BJYAksgSXtKs83oX3hNlhH6fv3nhfYqVBgSWBltCQB65TPfm4/QZX1/zeebViLRW5Xe2Z917INK8cfecj6rmV9xIpGo2n+VI1GYdZHrMxfxxoOJ+lE6/r64m1fefUHzhrH4zDdqazvSB4ukN7dTWaz+cXFeb1eze7V9jiOl8toOp3nYxlZTq68L5er4XB8JnMsgSWBJbAElgSWwBJYElgCS2BJYAksgSWBJbAElgSWwBJYElgCS2BJYAksgSWBJbAElgSWwBJYElgCS2BJYAksgSWBJbAElgSWwBJY0j/9LcAAc/1p8X30f4YAAAAASUVORK5CYII="
       },
       "theme": {
         "Container": {
@@ -485,16 +494,32 @@
     "CardTitle": {
       "name": "卡片标题",
       "desc": "配置卡片标题",
+      "normal": [["width"], ["height"], ["color"], ["font"]]
+    },
+    "CardTitleTipLine": {
+      "name": "卡片标题提示",
+      "desc": "卡片标题提示配置",
       "normal": [
         ["width"],
         ["height"],
-        ["color"],
-        ["font"],
         ["background"],
-        ["margin"],
-        ["padding"]
+        ["borderRadius"],
+        ["border"],
+        ["margin", "left"],
+        ["margin", "right"]
       ]
     },
+    "CardTipTitleContainer": {
+      "name": "卡片标题提示容器",
+      "desc": "配置卡片标题提示容器",
+      "normal": [["height"]]
+    },
+    "CardTitleHeadContainer": {
+      "name": "卡片头部标题容器",
+      "desc": "配置卡片头部标题容器",
+      "normal": [["height"], ["background"], ["padding"]]
+    },
+
     "CardDescription": {
       "name": "卡片描述内容",
       "desc": "配置卡片描述内容",
@@ -513,15 +538,10 @@
         ["padding"]
       ]
     },
-    "CardTitleTipLine": {
-      "name": "卡片标题提示",
-      "desc": "卡片标题提示配置",
-      "normal": [["width"], ["height"], ["background"], ["borderRadius"], ["border"], ["margin"]]
-    },
     "CardTipBottomLine": {
       "name": "卡片标题下分割线",
       "desc": "卡片标题下分割线配置",
-      "normal": [["width"], ["height"], ["margin"], ["border", "bottom"]]
+      "normal": [["width"], ["height"], ["border", "bottom"]]
     }
   },
   "defaultTheme": {
