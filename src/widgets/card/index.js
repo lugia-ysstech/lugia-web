@@ -314,10 +314,21 @@ const TitleHeadContainer = CSSComponent({
   tag: 'div',
   className: 'CardTitleTipLineContainer',
   normal: {
-    selectNames: [['height'], ['background'], ['padding']],
+    selectNames: [
+      ['height'],
+      ['background'],
+      ['padding'],
+      ['border'],
+      ['borderRadius'],
+      ['boxShadow'],
+    ],
     defaultTheme: {
       padding: {
         top: 10,
+      },
+      borderRadius: {
+        topLeft: 5,
+        topRight: 5,
       },
     },
   },
