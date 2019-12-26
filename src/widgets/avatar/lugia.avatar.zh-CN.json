@@ -114,7 +114,7 @@
         "SrcAvatar": {
           "name": "头像图片",
           "desc": "对头像图片配置样式",
-          "normal": [["width"], ["height"],["borderRadius"]],
+          "normal": [["borderRadius"]],
           "hover": [],
           "clicked": [],
           "disabled": []
