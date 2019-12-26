@@ -111,7 +111,7 @@ export default class Sl extends Component<any> {
       },
       Container: {
         normal: {
-          width: 500,
+          width: '50%',
           height: 100,
           border: getBorder({ style: 'solid', width: 2, color: 'red' }),
           background: {
