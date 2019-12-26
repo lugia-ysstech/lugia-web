@@ -27,8 +27,7 @@
     },
     "resizeType": {
       "type": "ResizeType",
-      "desc":
-        "可以调整段落文本输入框宽高的类型,有四个可选值,分别为'both', 'horizontal', 'vertical', 'none'",
+      "desc": "可以调整段落文本输入框宽高的类型",
       "defaultValue": "both"
     }
   },
