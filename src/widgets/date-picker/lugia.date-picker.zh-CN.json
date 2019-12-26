@@ -108,7 +108,7 @@
   "childrenWidget": ["month", "year", "week", "weeks", "range"],
   "category": ["数据录入"],
   "theme": {
-    "InputContain": {
+    "Container": {
       "name": "文本框",
       "desc": "文本框配置",
       "normal": [
