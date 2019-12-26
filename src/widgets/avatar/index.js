@@ -20,6 +20,22 @@ import { deepMerge } from '@lugia/object-utils';
 
 const { px2remcss } = units;
 const { borderColor } = colorsFunc();
+const isLargeSize = size => {
+  return size === 'large';
+};
+const isSmallSize = size => {
+  return size === 'small';
+};
+const isImgType = type => {
+  return type === 'img';
+};
+
+const getDefaultSize = size => {
+  return isLargeSize(size) ? LargeHeight : isSmallSize(size) ? SmallHeight : DefaultHeight;
+};
+const getSize = (size, defaultSize) => {
+  return size ? size : defaultSize;
+};
 
 const AvatarWrapper = CSSComponent({
   tag: 'div',
@@ -27,26 +43,20 @@ const AvatarWrapper = CSSComponent({
   normal: {
     selectNames: [['width'], ['height']],
     getCSS(themeMeta: Object, themeProps: Object) {
-      const { propsConfig } = themeProps;
+      const {
+        propsConfig: { size },
+      } = themeProps;
       const { height } = themeMeta;
-      const { size } = propsConfig;
-      const theSize = height
-        ? height
-        : size === 'large'
-        ? LargeHeight
-        : size === 'small'
-        ? SmallHeight
-        : DefaultHeight;
+      const theHeight = getSize(height, getDefaultSize(size));
       return `
-      line-height: ${px2remcss(theSize)};`;
+      line-height: ${px2remcss(theHeight)};`;
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
-      const { propsConfig } = themeProps;
+      const {
+        propsConfig: { size },
+      } = themeProps;
       const { height } = themeMeta;
-      const { size } = propsConfig;
-      const theSize =
-        size === 'large' ? LargeHeight : size === 'small' ? SmallHeight : DefaultHeight;
-      const theHeight = height ? height : theSize;
+      const theHeight = getSize(height, getDefaultSize(size));
       return {
         height: theHeight,
       };
@@ -76,31 +86,33 @@ const BaseAvatar = CSSComponent({
       color: 'rgba(0, 0, 0, 0.65)',
     },
     getCSS(themeMeta: Object, themeProps: Object) {
-      const { propsConfig } = themeProps;
-      const { size, shape } = propsConfig;
-      const theSize =
-        size === 'large' ? LargeHeight : size === 'small' ? SmallHeight : DefaultHeight;
+      const {
+        propsConfig: { size, shape },
+      } = themeProps;
       const theBorderRadius = shape === 'circle' ? '50%' : '10%';
       return `border-radius:${theBorderRadius};
-      line-height: ${px2remcss(theSize)};
+      line-height: ${px2remcss(getDefaultSize(size))};
       min-width: ${px2remcss(24)};
       min-height: ${px2remcss(24)};
       `;
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
-      const { propsConfig } = themeProps;
+      const {
+        propsConfig: { size, type },
+      } = themeProps;
       const { width, height, background = {} } = themeMeta;
-      const { size, type } = propsConfig;
       const theBackgroundColor =
         background && background.color
           ? background.color
-          : type === 'img'
+          : isImgType(type)
           ? 'transparent'
           : borderColor;
-      const theSize =
-        size === 'large' ? LargeHeight : size === 'small' ? SmallHeight : DefaultHeight;
-      const theWidth = width ? width : type === 'img' ? '' : theSize;
-      const theHeight = height ? height : type === 'img' ? '' : theSize;
+      const theSize = getDefaultSize(size);
+      const newSize = (size, defaultSize) => {
+        return size ? size : isImgType(type) ? '' : defaultSize;
+      };
+      const theWidth = newSize(width, theSize);
+      const theHeight = newSize(height, theSize);
 
       return {
         width: theWidth,
@@ -128,13 +140,13 @@ const Name = CSSComponent({
     selectNames: [['color'], ['width'], ['height'], ['fontSize']],
     defaultTheme: { color: 'white' },
     getCSS(themeMeta: Object, themeProps: Object) {
-      const { propsConfig } = themeProps;
+      const {
+        propsConfig: { size },
+      } = themeProps;
       const { width, height } = themeMeta;
-      const { size } = propsConfig;
-      const theSize =
-        size === 'large' ? LargeHeight : size === 'small' ? SmallHeight : DefaultHeight;
-      const theWidth = ObjectUtils.isNumber(width) ? width : theSize;
-      const theHeight = ObjectUtils.isNumber(height) ? height : theSize;
+      const theWidth = getSize(width, getDefaultSize(size));
+      const theHeight = getSize(height, getDefaultSize(size));
+
       return `width :${px2remcss(theWidth)};height:${px2remcss(theHeight)};`;
     },
   },
@@ -146,7 +158,7 @@ const Picture = CSSComponent({
   tag: 'img',
   className: 'AvatarPicture',
   normal: {
-    selectNames: [['color'], ['padding'], ['borderRadius']],
+    selectNames: [['borderRadius']],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
         propsConfig: { shape },
@@ -170,8 +182,8 @@ const ImageContainer = CSSComponent({
     selectNames: [['width'], ['height']],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const { width, height } = themeMeta;
-      const theWidth = width ? width : 24;
-      const theHeight = height ? height : 24;
+      const theWidth = getSize(width, 24);
+      const theHeight = getSize(height, 24);
       return {
         width: theWidth,
         height: theHeight,
@@ -207,13 +219,16 @@ class AvatarBox extends React.Component<AvatarProps, AvatarState> {
   static displayName = Widget.Avatar;
   getChildren() {
     const { src, icon, name, size, shape, type } = this.props;
-    const theThemeProps = this.props.getPartOfThemeProps('SrcAvatar', {
-      props: {
-        size,
-        shape,
-      },
-    });
-    if (type === 'img') {
+    const theThemeProps = deepMerge(
+      this.props.getPartOfThemeProps('SrcAvatar', {
+        props: {
+          size,
+          shape,
+        },
+      }),
+      this.props.getPartOfThemeProps('Container')
+    );
+    if (isImgType(type)) {
       return (
         <ImageContainer themeProps={theThemeProps}>
           <Picture alt={''} src={src} themeProps={theThemeProps} />
@@ -234,7 +249,7 @@ class AvatarBox extends React.Component<AvatarProps, AvatarState> {
               getThemeMeta(themeMeta, themeProps) {
                 const { propsConfig } = themeProps;
                 const { size } = propsConfig;
-                const theFontSize = size === 'large' ? 22 : size === 'small' ? 12 : 18;
+                const theFontSize = isLargeSize(size) ? 22 : isSmallSize(size) ? 12 : 18;
                 return { fontSize: theFontSize };
               },
             },

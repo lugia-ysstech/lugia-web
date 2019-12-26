@@ -33,9 +33,8 @@ export default () => {
   };
   const config = {
     [Widget.Avatar]: {
-      Container: { normal: { background: { color: '#e2e2e2' } } },
+      Container: { normal: { background: { color: '#e2e2e2' }, width: 40, height: 40 } },
       IconAvatar: { normal: { color: 'orange' } },
-      SrcAvatar: { normal: { width: 24, height: 24, borderRadius: getBorderRadius('30%') } },
       FontAvatar: { normal: { color: 'red' } },
     },
   };
