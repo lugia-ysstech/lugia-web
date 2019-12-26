@@ -238,15 +238,6 @@ const TitleContainer = CSSComponent({
   className: 'TipTitleContainer',
   normal: {
     selectNames: [['width'], ['height']],
-    getCSS(themeMeta: Object, themeProps: Object) {
-      const {
-        propsConfig: { imageOrientation, type },
-      } = themeProps;
-      const vCard = !isHorizontal(imageOrientation);
-      const textAlign = type === 'avatar' && vCard ? 'center' : '';
-      const flexDirection = vCard ? 'column' : 'row';
-      return `text-align:${textAlign};flex-direction:${flexDirection};`;
-    },
     defaultTheme: {
       fontSize: 16,
       width: '100%',
@@ -289,14 +280,6 @@ const Title = CSSComponent({
           weight,
         },
       };
-    },
-    getCSS(themeMeta: Object, themeProps: Object) {
-      const { propsConfig } = themeProps;
-      const { imageOrientation, type } = propsConfig;
-      const vCard = !isHorizontal(imageOrientation);
-      const textAlign = type === 'avatar' && vCard ? 'center' : '';
-      const flexDirection = vCard ? 'column' : 'row';
-      return `text-align:${textAlign};flex-direction:${flexDirection};`;
     },
     defaultTheme: {
       fontSize: 16,
