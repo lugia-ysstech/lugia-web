@@ -6,7 +6,7 @@ import Widget from '../consts/index';
 import ThemeHoc, { addMouseEvent } from '@lugia/theme-hoc';
 import { fixControlledValue } from '../utils';
 import Icon from '../icon';
-import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
+import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import colorsFunc from '../css/stateColor';
 import { units } from '@lugia/css';
 import { deepMerge } from '@lugia/object-utils';
@@ -144,13 +144,26 @@ const Textarea = CSSComponent({
   `,
 });
 
-const TextareaContainer = StaticComponent({
+const TextareaContainer = CSSComponent({
   tag: 'span',
   className: 'TextareaContainer',
+  normal: {
+    selectNames: [['margin']],
+  },
+  hover: {
+    selectNames: [],
+  },
+  click: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
   css: css`
     position: relative;
     outline: none;
     display: inline-block;
+    font-size: 0;
   `,
 });
 
@@ -252,7 +265,10 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
 
   render() {
     return (
-      <TextareaContainer {...addMouseEvent(this)}>
+      <TextareaContainer
+        {...addMouseEvent(this)}
+        themeProps={this.props.getPartOfThemeProps('Container')}
+      >
         {this.generateInput()}
         {this.getClearButton()}
       </TextareaContainer>
@@ -287,6 +303,7 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
         [clearViewClass]: {
           normal: {
             color: mediumGreyColor,
+            fontSize: 10,
             getCSS() {
               return `position: absolute;right:${px2remcss(padding)};top:${px2remcss(8)};`;
             },
