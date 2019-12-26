@@ -109,7 +109,7 @@ export default class Sl extends Component<any> {
           color: 'red',
         },
       },
-      InputContain: {
+      Container: {
         normal: {
           width: 500,
           height: 100,

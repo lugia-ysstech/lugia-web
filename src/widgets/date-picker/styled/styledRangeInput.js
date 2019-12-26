@@ -52,7 +52,7 @@ export const RangeInputInner = CSSComponent({
   tag: 'div',
   className: 'RangeInputInner',
   normal: {
-    selectNames: [['width'], ['height'], ['borderRadius']],
+    selectNames: [['height'], ['borderRadius']],
   },
   hover: {
     selectNames: [['background']],

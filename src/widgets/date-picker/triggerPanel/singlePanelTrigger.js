@@ -106,7 +106,7 @@ class DateInput extends Component<TypeProps, TypeState> {
     const { mode } = this.props;
     const { isTime } = modeStyle(mode);
     const themeProps = getThemeProps({ mode, getPartOfThemeProps }, 'FacePanelContain');
-    const inputContainProps = getThemeProps({ mode, getPartOfThemeProps }, 'InputContain');
+    const inputContainProps = getThemeProps({ mode, getPartOfThemeProps }, 'Container');
 
     const inputPrefixProps = getThemeProps({ mode, getPartOfThemeProps }, 'InputPrefix');
     const inputSuffixProps = getThemeProps({ mode, getPartOfThemeProps }, 'InputSuffix');
