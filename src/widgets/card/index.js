@@ -239,8 +239,9 @@ const TitleContainer = CSSComponent({
   normal: {
     selectNames: [['width'], ['height']],
     getCSS(themeMeta: Object, themeProps: Object) {
-      const { propsConfig } = themeProps;
-      const { imageOrientation, type } = propsConfig;
+      const {
+        propsConfig: { imageOrientation, type },
+      } = themeProps;
       const vCard = !isHorizontal(imageOrientation);
       const textAlign = type === 'avatar' && vCard ? 'center' : '';
       const flexDirection = vCard ? 'column' : 'row';
@@ -258,16 +259,15 @@ const TextContainer = CSSComponent({
   normal: {
     selectNames: [['width'], ['height'], ['padding']],
     getCSS(themeMeta: Object, themeProps: Object) {
-      const { propsConfig } = themeProps;
-      const { imageOrientation, type } = propsConfig;
+      const {
+        propsConfig: { imageOrientation, type },
+      } = themeProps;
       const vCard = !isHorizontal(imageOrientation);
       const textAlign = type === 'avatar' && vCard ? 'center' : '';
       const flexDirection = vCard ? 'column' : 'row';
       return `text-align:${textAlign};flex-direction:${flexDirection};`;
     },
     defaultTheme: {
-      fontSize: 16,
-      width: '100%',
       height: 'fit-content',
     },
   },
