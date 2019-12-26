@@ -23,9 +23,9 @@ import { getBorder } from '@lugia/theme-utils';
 
 const { themeColor, disableColor, defaultColor } = colorsFunc();
 
-const BaseTab = CSSComponent({
+const SelectTab = CSSComponent({
   tag: 'div',
-  className: 'DefaultTabPan',
+  className: 'SelectTabPan',
   normal: {
     selectNames: [
       ['color'],
@@ -104,10 +104,8 @@ const BaseTab = CSSComponent({
     },
   },
   hover: {
-    selectNames: [['color'], ['background'], ['border'], ['font'], ['opacity']],
-    defaultTheme: {
-      color: themeColor,
-    },
+    selectNames: [],
+
     getCSS: (theme: Object, themeProps: Object) => {
       const {
         propsConfig: { tabType, showDeleteBtn },
@@ -157,13 +155,15 @@ const BaseTab = CSSComponent({
   option: { hover: true },
 });
 
-BaseTab.displayName = 'Tabpane';
-
-const SelectTab = CSSComponent({
-  extend: BaseTab,
-  className: 'SelectTabPan',
-  option: { hover: false },
+const BaseTab = CSSComponent({
+  extend: SelectTab,
+  className: 'DefaultTabPan',
+  hover: {
+    selectNames: [['color'], ['background'], ['border'], ['font'], ['opacity']],
+  },
 });
+
+SelectTab.displayName = 'Tabpane';
 
 const addWidth = keyframes`
     0% {
@@ -442,12 +442,18 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
 
     let { theme, viewClass } = this.props.getPartOfThemeHocProps('DefaultTabPan');
     const { icon, suffixIcon } = this.props;
+    const {
+      themeConfig: { normal: { color: normalColor } = {} },
+    } = titleThemeProps;
     const themeObj = {
       [viewClass]: {
         normal: {
           getThemeMeta: (theme: Object, themeProps: Object) => {
             return { margin: { left: suffixIcon ? 10 : 0, right: icon ? 10 : 0 } };
           },
+        },
+        hover: {
+          color: normalColor,
         },
         disabled: {
           getThemeMeta: (theme: Object, themeProps: Object) => {
