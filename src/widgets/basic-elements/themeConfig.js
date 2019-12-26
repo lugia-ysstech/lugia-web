@@ -15,7 +15,7 @@ export default function getThemeProps(props: TypeProps) {
   };
   themeProps = deepMerge({ themeConfig: { ...defaultNormalTheme } }, themeProps);
 
-  if (shape === 'circular') {
+  if (shape === 'circle') {
     const defaultTheme = {
       normal: { borderRadius: getBorderRadius('50%') },
     };
@@ -43,7 +43,7 @@ export default function getThemeProps(props: TypeProps) {
         },
         borderRadius: getBorderRadius(0),
         boxShadow: '',
-        background: { color: '#fff' },
+        background: { color: 'transparent' },
         width: 0,
         height: 0,
       },

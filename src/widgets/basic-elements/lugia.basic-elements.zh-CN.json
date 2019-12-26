@@ -10,16 +10,16 @@
     }
   },
   "type": {
-    "shapeType": ["circular", "square", "triangle"]
+    "shapeType": ["circle", "square", "triangle"]
   },
   "category": ["通用"],
   "designInfo": {
-    "Circular": {
+    "Circle": {
       "sequence": 2,
       "title": "圆形元素",
       "desc": "圆形元素",
       "props": {
-        "shape": "circular"
+        "shape": "circle"
       },
       "defaultTheme": {
         "Container": {
