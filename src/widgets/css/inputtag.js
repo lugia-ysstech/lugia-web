@@ -280,6 +280,15 @@ export const InputTagTheme = CSSComponent({
   normal: {
     selectNames: [['width']],
   },
+  hover: {
+    selectNames: [],
+  },
+  active: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [['width']],
+  },
 });
 
 export const ItemWrap = StaticComponent({
