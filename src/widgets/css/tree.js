@@ -218,6 +218,7 @@ export const TitleWrap = CSSComponent({
       ['padding', 'left'],
       ['padding', 'right'],
       ['border'],
+      ['boxShadow'],
       ['borderRadius'],
     ],
 
