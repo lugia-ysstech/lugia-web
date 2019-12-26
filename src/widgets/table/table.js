@@ -130,7 +130,7 @@ export default ThemeProvider(
     render() {
       const {
         children,
-        columns,
+        columns = [],
         data,
         showHeader = true,
         tableStyle = 'bordered',
