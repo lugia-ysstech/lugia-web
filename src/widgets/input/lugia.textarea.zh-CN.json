@@ -137,7 +137,8 @@
         ["border"],
         ["borderRadius"],
         ["cursor"],
-        ["opacity"]
+        ["opacity"],
+        ["margin"]
       ],
       "hover": [
         ["border"],
