@@ -44,6 +44,7 @@ export type ValidateStatus = 'success' | 'error';
 
 export type InputSize = 'small' | 'default' | 'large';
 export type InputValidateType = 'top' | 'bottom' | 'inner' | 'default';
+export type ResizeType = 'both' | 'horizontal' | 'vertical' | 'none';
 
 type CommonInputProps = {
   theme: ThemeType,

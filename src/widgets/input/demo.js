@@ -162,8 +162,10 @@ const InputDemo = () => {
   };
   const textarea = {
     [Widget.Textarea]: {
-      Container: { normal: { width: 500, height: 40 } },
-      Textarea: { normal: { width: 300, height: 40 }, disabled: { background: { color: 'gray' } } },
+      Container: {
+        normal: { width: 300, height: 40 },
+        disabled: { background: { color: 'gray' } },
+      },
       Placeholder: {
         normal: { font: { color: 'red', weight: 900, size: 16 }, color: 'blue', fontSize: 20 },
       },

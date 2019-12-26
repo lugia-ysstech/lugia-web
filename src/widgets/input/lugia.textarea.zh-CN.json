@@ -93,6 +93,16 @@
         }
       ]
     },
+    "onClear": {
+      "desc": "清除段落文本输入框内容时触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "清除段落文本输入框内容事件",
+          "type": "Object"
+        }
+      ]
+    },
     "onEnter": {
       "desc": "当键入回车时触发事件",
       "args": [
@@ -116,13 +126,8 @@
   "needExport": true,
   "theme": {
     "Container": {
-      "name": "段落文本输入框外部容器",
-      "desc": "段落文本输入框外部容器",
-      "normal": [["width"], ["height"], ["margin"]]
-    },
-    "Textarea": {
-      "name": "段落文本输入框主体",
-      "desc": "段落文本输入框主体结构",
+      "name": "段落文本输入框",
+      "desc": "配置段落文本输入框",
       "normal": [
         ["width"],
         ["height"],
@@ -157,9 +162,17 @@
       ]
     },
     "Placeholder": {
-      "name": "段落文本输入框提示信息文字",
-      "desc": "段落文本输入框提示信息文字",
+      "name": "提示信息文字",
+      "desc": "提示信息文字",
       "normal": [["color"], ["fontSize"], ["font"]]
+    },
+    "ClearButton": {
+      "name": "清除图标",
+      "desc": "后缀清除图标",
+      "normal": [["color"], ["fontSize"]],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
     }
   },
   "defaultTheme": {

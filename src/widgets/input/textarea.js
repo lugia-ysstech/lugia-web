@@ -5,7 +5,8 @@ import React, { Component } from 'react';
 import Widget from '../consts/index';
 import ThemeHoc, { addMouseEvent } from '@lugia/theme-hoc';
 import { fixControlledValue } from '../utils';
-import CSSComponent, { css } from '@lugia/theme-css-hoc';
+import Icon from '../icon';
+import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import colorsFunc from '../css/stateColor';
 import { units } from '@lugia/css';
 import { deepMerge } from '@lugia/object-utils';
@@ -19,6 +20,8 @@ const {
   disableColor,
   borderColor,
   blackColor,
+  mediumGreyColor,
+  darkGreyColor,
   lightGreyColor,
   borderRadius,
   padding,
@@ -31,7 +34,7 @@ const {
 
 const Textarea = CSSComponent({
   tag: 'textarea',
-  className: 'textarea',
+  className: 'Textarea',
   normal: {
     selectNames: [
       ['width'],
@@ -51,7 +54,6 @@ const Textarea = CSSComponent({
       cursor: 'text',
       border: getBorder({ color: borderColor, width: borderSize, style: 'solid' }),
       borderRadius: getBorderRadius(borderRadius),
-      width: '100%',
       fontSize: 12,
     },
     getCSS(themeMeta: Object, themeProps: Object) {
@@ -75,14 +77,12 @@ const Textarea = CSSComponent({
       `;
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
-      const { width, height, color } = themeMeta;
+      const { width, color } = themeMeta;
       const theColor = color ? color : blackColor;
-      const theHeight = height ? height : 32;
       const paddingLeft = width && width < 200 ? width / 20 : padding;
       const paddingRight = 35;
       return {
         color: theColor,
-        height: theHeight,
         padding: {
           left: paddingLeft,
           right: paddingRight,
@@ -141,34 +141,20 @@ const Textarea = CSSComponent({
     font-family: inherit;
     transition: all ${transitionTime};
     outline: none;
-    min-width: ${px2remcss(30)};
   `,
 });
 
-const InputContainer = CSSComponent({
-  tag: 'div',
-  className: 'inputContainer',
-  normal: {
-    selectNames: [['width'], ['height'], ['margin']],
-    defaultTheme: {
-      width: '100%',
-    },
-  },
-  hover: {
-    selectNames: [],
-  },
-  active: {
-    selectNames: [],
-  },
-  disabled: {
-    selectNames: [],
-  },
+const TextareaContainer = StaticComponent({
+  tag: 'span',
+  className: 'TextareaContainer',
   css: css`
     position: relative;
     outline: none;
-    min-width: ${px2remcss(30)};
+    display: inline-block;
   `,
 });
+
+const Clear = 'lugia-icon-reminder_close';
 
 type TextareaState = {
   value: string,
@@ -185,6 +171,7 @@ type TextareaProps = {
   onKeyUp?: (event: KeyboardEvent) => void,
   onKeyDown?: (event: KeyboardEvent) => void,
   onKeyPress?: (event: KeyboardEvent) => void,
+  onClear?: Function,
   onEnter?: (event: UIEvent) => void,
   defaultValue?: string,
   value?: string,
@@ -264,7 +251,12 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
   }
 
   render() {
-    return this.generateInput();
+    return (
+      <TextareaContainer {...addMouseEvent(this)}>
+        {this.generateInput()}
+        {this.getClearButton()}
+      </TextareaContainer>
+    );
   }
 
   isEmpty(): boolean {
@@ -272,40 +264,81 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
     return !(value && value.length);
   }
 
+  onClear = (e: Object) => {
+    const { disabled, onClear } = this.props;
+    if (disabled) {
+      return;
+    }
+    onClear && onClear(e);
+    this.setValue('', e);
+  };
+
+  getClearButton() {
+    if (this.isEmpty()) {
+      return null;
+    }
+    const {
+      theme: ClearButtonThemeProps,
+      viewClass: clearViewClass,
+    } = this.props.getPartOfThemeHocProps('ClearButton');
+
+    const newTheme = deepMerge(
+      {
+        [clearViewClass]: {
+          normal: {
+            color: mediumGreyColor,
+            getCSS() {
+              return `position: absolute;right:${px2remcss(padding)};top:${px2remcss(8)};`;
+            },
+          },
+          hover: {
+            color: darkGreyColor,
+          },
+        },
+      },
+      ClearButtonThemeProps
+    );
+
+    return (
+      <Icon
+        singleTheme
+        viewClass={clearViewClass}
+        theme={newTheme}
+        iconClass={Clear}
+        onClick={this.onClear}
+        {...addMouseEvent(this)}
+      />
+    );
+  }
   generateInput(): React$Node {
     const { value } = this.state;
     const { placeholder, autoFocus, disabled, resizeType } = this.props;
     const {
       themeConfig: { normal: { color = lightGreyColor, font = {}, fontSize } = {} },
     } = this.props.getPartOfThemeProps('Placeholder');
-    const theThemeProps = deepMerge(
-      this.props.getPartOfThemeProps('Textarea', {
-        props: {
-          placeHolderColor: color,
-          placeHolderFont: font,
-          placeHolderFontSize: fontSize,
-          resizeType,
-        },
-      }),
-      this.props.getPartOfThemeProps('Container')
-    );
+    const theThemeProps = this.props.getPartOfThemeProps('Container', {
+      props: {
+        placeHolderColor: color,
+        placeHolderFont: font,
+        placeHolderFontSize: fontSize,
+        resizeType,
+      },
+    });
     return (
-      <InputContainer themeProps={theThemeProps} {...addMouseEvent(this)}>
-        <Textarea
-          themeProps={theThemeProps}
-          autoFocus={autoFocus}
-          ref={this.textarea}
-          value={value}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
-          onKeyUp={this.onKeyUp}
-          onKeyPress={this.onKeyPress}
-          onKeyDown={this.onKeyDown}
-          onChange={this.onChange}
-          placeholder={placeholder}
-          disabled={disabled}
-        />
-      </InputContainer>
+      <Textarea
+        themeProps={theThemeProps}
+        autoFocus={autoFocus}
+        ref={this.textarea}
+        value={value}
+        onFocus={this.onFocus}
+        onBlur={this.onBlur}
+        onKeyUp={this.onKeyUp}
+        onKeyPress={this.onKeyPress}
+        onKeyDown={this.onKeyDown}
+        onChange={this.onChange}
+        placeholder={placeholder}
+        disabled={disabled}
+      />
     );
   }
 
