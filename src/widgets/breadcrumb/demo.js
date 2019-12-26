@@ -37,10 +37,10 @@ export default class Demo extends React.Component<any, any> {
   render() {
     const config = {
       [Widget.Breadcrumb]: {
-        BreadcrumbWrap: {
+        Container: {
           normal: {
-            // width: 800,
-            // height: 200,
+            width: 800,
+            height: 200,
             padding: {
               left: 10,
             },
