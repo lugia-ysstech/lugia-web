@@ -289,7 +289,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     }
 
     return (
-      <InputTagTheme themeProps={themeProps}>
+      <InputTagTheme disabled={disabled} themeProps={themeProps}>
         <HiddenList>
           <List>{font}</List>
         </HiddenList>
