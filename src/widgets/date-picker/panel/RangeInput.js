@@ -109,7 +109,7 @@ class RangeInput extends Component<TypeProps, TypeState> {
         ...this.getInputStyle(state),
       };
     };
-    const inputContainProps = getWrapThemeProps({ mode, getPartOfThemeProps }, 'InputContain');
+    const inputContainProps = getWrapThemeProps({ mode, getPartOfThemeProps }, 'Container');
     const inputPrefixProps = getThemeProps({ mode, getPartOfThemeProps }, 'InputPrefix');
     const inputSuffixProps = getThemeProps({ mode, getPartOfThemeProps }, 'InputSuffix');
     const clearButtonProps = getThemeProps({ mode, getPartOfThemeProps }, 'ClearButton');
