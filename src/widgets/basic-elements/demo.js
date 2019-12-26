@@ -28,7 +28,7 @@ class Demo extends Component {
           }}
         >
           <BasicElements />
-          <BasicElements shape={'circular'} />
+          <BasicElements shape={'circle'} />
           <BasicElements shape={'triangle'} />
         </Theme>
       </div>
