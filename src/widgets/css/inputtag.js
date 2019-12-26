@@ -274,23 +274,6 @@ export const FocuInput = StaticComponent({
 });
 FocuInput.displayName = Widget.InputTagFocuInput;
 
-export const InputTagTheme = CSSComponent({
-  tag: 'div',
-  className: 'InputTagTheme',
-  normal: {
-    selectNames: [['width']],
-  },
-  hover: {
-    selectNames: [],
-  },
-  active: {
-    selectNames: [],
-  },
-  disabled: {
-    selectNames: [['width']],
-  },
-});
-
 export const ItemWrap = StaticComponent({
   tag: 'span',
   className: 'ItemWrap',

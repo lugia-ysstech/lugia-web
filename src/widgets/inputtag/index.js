@@ -226,45 +226,27 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     const themeProps = getPartOfThemeProps('InputTagWrap');
     if (!this.isMutliple()) {
       result = this.generateOutter(
-        <OutContainer
-          themeProps={themeProps}
-          focus={focus}
-          disabled={disabled}
-          validateStatus={validateStatus}
-          ref={cmp => (this.container = cmp)}
-          onClick={this.onClick}
-        >
-          <SingleInnerContainer disabled={disabled}>
-            <FlexResBox>
-              {prefix ? <Prefix>{prefix}</Prefix> : null}
-              {placeholder}
-              {this.getSingleValue()}
-              <FocuInput />
-            </FlexResBox>
-            {clearButton}
-          </SingleInnerContainer>
-        </OutContainer>
+        <SingleInnerContainer disabled={disabled}>
+          <FlexResBox>
+            {prefix ? <Prefix>{prefix}</Prefix> : null}
+            {placeholder}
+            {this.getSingleValue()}
+            <FocuInput />
+          </FlexResBox>
+          {clearButton}
+        </SingleInnerContainer>
       );
     } else {
       const { items } = state;
       result = this.generateOutter(
-        <OutContainer
-          themeProps={themeProps}
-          focus={focus}
-          disabled={disabled}
-          validateStatus={validateStatus}
-          ref={cmp => (this.container = cmp)}
-          onClick={this.onClick}
-        >
-          <InnerContainer themeProps={themeProps}>
-            <FlexResBox>
-              <List ref={cmp => (this.list = cmp)}>{items}</List>
-              {placeholder}
-              <FocuInput onFocus={this.onFocus} onBlur={this.onBlur} />
-            </FlexResBox>
-            {clearButton}
-          </InnerContainer>
-        </OutContainer>
+        <InnerContainer themeProps={themeProps}>
+          <FlexResBox>
+            <List ref={cmp => (this.list = cmp)}>{items}</List>
+            {placeholder}
+            <FocuInput onFocus={this.onFocus} onBlur={this.onBlur} />
+          </FlexResBox>
+          {clearButton}
+        </InnerContainer>
       );
 
       if (this.needMoreItem) {
@@ -289,12 +271,19 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     }
 
     return (
-      <InputTagTheme disabled={disabled} themeProps={themeProps}>
+      <OutContainer
+        themeProps={themeProps}
+        focus={focus}
+        disabled={disabled}
+        validateStatus={validateStatus}
+        ref={cmp => (this.container = cmp)}
+        onClick={this.onClick}
+      >
         <HiddenList>
           <List>{font}</List>
         </HiddenList>
         {result}
-      </InputTagTheme>
+      </OutContainer>
     );
   }
 
