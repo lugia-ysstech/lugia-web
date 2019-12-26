@@ -43,8 +43,6 @@ const CommonInputStyle = CSSComponent({
   className: 'InnerInput',
   normal: {
     selectNames: [
-      ['width'],
-      ['height'],
       ['fontSize'],
       ['font'],
       ['color'],
@@ -60,7 +58,6 @@ const CommonInputStyle = CSSComponent({
       cursor: 'text',
       border: getBorder({ color: borderColor, width: borderSize, style: 'solid' }),
       borderRadius: getBorderRadius(borderRadius),
-      width: '100%',
       fontSize: 12,
     },
     getCSS(themeMeta: Object, themeProps: Object) {
@@ -82,22 +79,20 @@ const CommonInputStyle = CSSComponent({
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
-        propsConfig: { size, prefix, validateStatus, validateType, suffix, isShowClearButton },
+        propsConfig: { prefix, validateStatus, validateType, suffix, isShowClearButton },
       } = themeProps;
-      const { width, height, color } = themeMeta;
+      const { width, color } = themeMeta;
       const theColor = color
         ? color
         : isValidateSuccess(validateStatus, validateType, 'inner')
         ? dangerColor
         : blackColor;
 
-      const theHeight = height ? height : size === 'large' ? 40 : size === 'small' ? 24 : 32;
       const paddingLeft = prefix ? 30 : width && width < 200 ? width / 20 : padding;
       const paddingRight =
         suffix || isShowClearButton ? 35 : width && width < 200 ? 15 + width / 10 : padding;
       return {
         color: theColor,
-        height: theHeight,
         padding: {
           left: paddingLeft,
           right: paddingRight,
@@ -161,16 +156,14 @@ const CommonInputStyle = CSSComponent({
     font-family: inherit;
     transition: all ${transitionTime};
     outline: none;
-    min-width: ${px2remcss(30)};
+    height: 100%;
+    width: 100%;
   `,
 });
 
 const BaseInputContainer = StaticComponent({
   tag: 'span',
   className: 'InputBaseInputContainer',
-  normal: {
-    selectNames: [],
-  },
   css: css`
     position: relative;
     display: inline-block;
@@ -178,12 +171,23 @@ const BaseInputContainer = StaticComponent({
 });
 
 const InputContainer = CSSComponent({
-  tag: 'div',
+  tag: 'span',
   className: 'inputContainer',
   normal: {
     selectNames: [['width'], ['height'], ['margin']],
     defaultTheme: {
       width: '100%',
+    },
+    getThemeMeta(themeMeta: Object, themeProps: Object) {
+      const {
+        propsConfig: { size },
+      } = themeProps;
+      const { height } = themeMeta;
+
+      const theHeight = height ? height : size === 'large' ? 40 : size === 'small' ? 24 : 32;
+      return {
+        height: theHeight,
+      };
     },
   },
   hover: {
@@ -408,7 +412,10 @@ class TextBox extends Component<InputProps, InputState> {
   };
 
   getInputContainer(fetcher: Function) {
-    const theThemeProps = this.props.getPartOfThemeProps('Container');
+    const { size } = this.props;
+    const theThemeProps = this.props.getPartOfThemeProps('Container', {
+      props: { size },
+    });
     return (
       <InputContainer themeProps={theThemeProps} {...addMouseEvent(this)}>
         {fetcher()}
@@ -417,11 +424,10 @@ class TextBox extends Component<InputProps, InputState> {
   }
 
   getInputInner = () => {
-    const { validateType, validateStatus, help, themeProps, prefix, size } = this.props;
-    themeProps.props = { validateType, validateStatus, prefix, size };
+    const { validateType, validateStatus, help, prefix, size } = this.props;
     if (validateType === 'bottom') {
       const result = [
-        <BaseInputContainer themeProps={themeProps}>
+        <BaseInputContainer>
           {this.generatePrefix()}
           {this.generateInput()}
           {this.generateSuffix()}
@@ -598,13 +604,14 @@ class TextBox extends Component<InputProps, InputState> {
           validateStatus,
           prefix,
           suffix,
-          size,
           placeHolderColor: color,
           placeHolderFontSize: fontSize,
           isShowClearButton,
         },
       }),
-      this.props.getPartOfThemeProps('Container')
+      this.props.getPartOfThemeProps('Container', {
+        props: { size },
+      })
     );
     return (
       <CommonInputStyle
