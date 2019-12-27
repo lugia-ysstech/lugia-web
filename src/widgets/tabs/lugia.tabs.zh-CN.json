@@ -177,16 +177,16 @@
         "AddButton": {
           "name": "新增按钮",
           "desc": "新增按钮样式配置",
-          "normal": [["color"],["font"]],
-          "hover": [["color"],["font"]],
-          "disabled": [["color"],["font"]]
+          "normal": [["color"], ["font"]],
+          "hover": [["color"], ["font"]],
+          "disabled": [["color"], ["font"]]
         },
         "ArrowIcon": {
           "name": "翻页图标",
           "desc": "翻页图标样式配置",
-          "normal": [["color"],["font"]],
-          "hover": [["color"],["font"]],
-          "disabled": [["color"],["font"]]
+          "normal": [["color"], ["font"]],
+          "hover": [["color"], ["font"]],
+          "disabled": [["color"], ["font"]]
         },
         "TitleContainer": {
           "name": "卡片区域",
@@ -236,9 +236,9 @@
             "DeleteIcon": {
               "name": "删除图标",
               "desc": "删除图标样式配置",
-              "normal": [["color"],["font"]],
-              "hover": [["color"],["font"]],
-              "disabled": [["color"],["font"]]
+              "normal": [["color"], ["font"]],
+              "hover": [["color"], ["font"]],
+              "disabled": [["color"], ["font"]]
             }
           }
         }
@@ -270,16 +270,16 @@
         "AddButton": {
           "name": "新增按钮",
           "desc": "新增按钮样式配置",
-          "normal": [["color"],["font"]],
-          "hover": [["color"],["font"]],
-          "disabled": [["color"],["font"]]
+          "normal": [["color"], ["font"]],
+          "hover": [["color"], ["font"]],
+          "disabled": [["color"], ["font"]]
         },
         "ArrowIcon": {
           "name": "翻页图标",
           "desc": "翻页图标样式配置",
-          "normal": [["color"],["font"]],
-          "hover": [["color"],["font"]],
-          "disabled": [["color"],["font"]]
+          "normal": [["color"], ["font"]],
+          "hover": [["color"], ["font"]],
+          "disabled": [["color"], ["font"]]
         },
         "TabHeader": {
           "name": "标签配置",
@@ -319,9 +319,9 @@
             "DeleteIcon": {
               "name": "删除图标",
               "desc": "删除图标样式配置",
-              "normal": [["color"],["font"]],
-              "hover": [["color"],["font"]],
-              "disabled": [["color"],["font"]]
+              "normal": [["color"], ["font"]],
+              "hover": [["color"], ["font"]],
+              "disabled": [["color"], ["font"]]
             }
           }
         }
@@ -360,9 +360,9 @@
     "ArrowIcon": {
       "name": "翻页按钮",
       "desc": "翻页按钮样式配置",
-      "normal": [["color"],["font"]],
-      "hover": [["color"],["font"]],
-      "disabled": [["color"],["font"]]
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]],
+      "disabled": [["color"], ["font"]]
     },
     "TabHeader": {
       "name": "标签配置",
