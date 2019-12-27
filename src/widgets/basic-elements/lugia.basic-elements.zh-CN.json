@@ -10,7 +10,7 @@
     }
   },
   "type": {
-    "shapeType": ["circle", "square", "triangle"]
+    "shapeType": ["circle", "square"]
   },
   "category": ["通用"],
   "designInfo": {
@@ -45,35 +45,6 @@
             ["opacity"],
             ["margin"]
           ],
-          "hover": [],
-          "active": [],
-          "disabled": []
-        }
-      }
-    },
-    "Triangle": {
-      "sequence": 3,
-      "title": "三角形元素",
-      "desc": "三角形元素",
-      "props": {
-        "shape": "triangle"
-      },
-      "defaultTheme": {
-        "Container": {
-          "normal": {
-            "width": 32,
-            "height": 32,
-            "background": {
-              "color": "#4d63ff"
-            }
-          }
-        }
-      },
-      "theme": {
-        "Container": {
-          "name": "配置三角形",
-          "desc": "配置三角形",
-          "normal": [["width"], ["height"], ["background"], ["margin"]],
           "hover": [],
           "active": [],
           "disabled": []
