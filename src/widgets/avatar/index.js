@@ -19,7 +19,7 @@ import { units } from '@lugia/css';
 import { deepMerge } from '@lugia/object-utils';
 
 const { px2remcss } = units;
-const { borderColor } = colorsFunc();
+const { lightGreyColor } = colorsFunc();
 const isLargeSize = size => {
   return size === 'large';
 };
@@ -41,16 +41,7 @@ const AvatarWrapper = CSSComponent({
   tag: 'div',
   className: 'AvatarWrapper',
   normal: {
-    selectNames: [['width'], ['height']],
-    getCSS(themeMeta: Object, themeProps: Object) {
-      const {
-        propsConfig: { size },
-      } = themeProps;
-      const { height } = themeMeta;
-      const theHeight = getSize(height, getDefaultSize(size));
-      return `
-      line-height: ${px2remcss(theHeight)};`;
-    },
+    selectNames: [['width'], ['height'], ['lineHeight']],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
         propsConfig: { size },
@@ -59,6 +50,7 @@ const AvatarWrapper = CSSComponent({
       const theHeight = getSize(height, getDefaultSize(size));
       return {
         height: theHeight,
+        lineHeight: theHeight,
       };
     },
   },
@@ -106,7 +98,7 @@ const BaseAvatar = CSSComponent({
           ? background.color
           : isImgType(type)
           ? 'transparent'
-          : borderColor;
+          : lightGreyColor;
       const theSize = getDefaultSize(size);
       const newSize = (size, defaultSize) => {
         return size ? size : isImgType(type) ? '' : defaultSize;
