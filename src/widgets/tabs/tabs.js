@@ -15,6 +15,8 @@ import { getAttributeFromObject } from '../common/ObjectUtils.js';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import ThemeHoc from '@lugia/theme-hoc';
 import { deepMerge } from '@lugia/object-utils';
+import colorsFunc from '../css/stateColor';
+const { superLightColor } = colorsFunc();
 
 const TabContentContainer = CSSComponent({
   tag: 'div',
@@ -95,7 +97,7 @@ const WindowContainer = CSSComponent({
     ],
     defaultTheme: {
       background: {
-        color: '#f8f8f8',
+        color: superLightColor,
       },
     },
   },
@@ -160,6 +162,9 @@ type TabsState = {
 type TabsProps = {
   activityValue?: string,
   defaultActivityValue?: string,
+  addIcon?: string,
+  deleteIcon?: string,
+  pageArrowIcon?: Object,
   onTabClick?: Function,
   tabPosition?: TabPositionType,
   tabType?: TabType,
@@ -235,6 +240,8 @@ class TabsBox extends Component<TabsProps, TabsState> {
     forceRender: false,
     showAddBtn: false,
     showDeleteBtn: false,
+    addIcon: 'lugia-icon-reminder_plus',
+    deleteIcon: 'lugia-icon-reminder_close',
   };
   static displayName = Widget.Tabs;
 
@@ -295,7 +302,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
                 bottom: 10,
               },
               background: {
-                color: '#c9c9c9',
+                color: superLightColor,
               },
             },
           },
@@ -328,6 +335,9 @@ class TabsBox extends Component<TabsProps, TabsState> {
       getPartOfThemeHocProps,
       getPartOfThemeProps,
       showDividerLine,
+      addIcon,
+      deleteIcon,
+      pageArrowIcon,
     } = this.props;
     let { tabPosition } = this.props;
     tabPosition = tabType === 'line' ? tabPosition : 'top';
@@ -350,6 +360,9 @@ class TabsBox extends Component<TabsProps, TabsState> {
       getPartOfThemeHocProps,
       getPartOfThemeProps,
       showDividerLine,
+      addIcon,
+      deleteIcon,
+      pageArrowIcon,
     };
   }
 
