@@ -973,10 +973,116 @@ export default class TabsDemo extends React.Component<any, any> {
         },
       },
     };
+    const IconTheme = {
+      [Widget.Tabs]: {
+        Container: {
+          normal: {
+            width: '530',
+            height: 300,
+          },
+        },
+        ArrowIcon: {
+          normal: {
+            color: 'red',
+          },
+          hover: {
+            color: '#9c1a82',
+          },
+          disabled: {
+            // color:'#6e782b'
+          },
+        },
+
+        AddButton: {
+          normal: {
+            color: '#0cac9c',
+          },
+        },
+        TabHeader: {
+          DeleteIcon: {
+            normal: {
+              color: 'red',
+            },
+            hover: {
+              color: '#16bc20',
+            },
+            disabled: {
+              color: '#6e782b',
+            },
+          },
+        },
+      },
+    };
 
     return (
       <div>
+        <Theme config={IconTheme}>
+          <p style={{ titleStyle }}>IconTheme</p>
+          <ContainerBox>
+            <Tabs
+              tabType={'card'}
+              data={hasActivityValueData}
+              showDeleteBtn={true}
+              showAddBtn={true}
+              addIcon={'lugia-icon-direction_logout'}
+            />
+          </ContainerBox>
+          <ContainerBox>
+            <Tabs
+              tabType={'window'}
+              data={hasActivityValueData}
+              showDeleteBtn={true}
+              showAddBtn={true}
+              deleteIcon={'lugia-icon-financial_abort'}
+            />
+          </ContainerBox>
+          <ContainerBox>
+            <Tabs
+              tabPosition={'left'}
+              data={hasActivityValueData}
+              showDeleteBtn={true}
+              showAddBtn={true}
+              pageArrowIcon={{
+                preIcon: 'lugia-icon-direction_rollback',
+                suffixIcon: 'lugia-icon-direction_enter',
+              }}
+            />
+          </ContainerBox>
+        </Theme>
+        <p style={{ titleStyle }}>default IconTheme</p>
+        <ContainerBox>
+          <Tabs
+            tabType={'card'}
+            data={hasActivityValueData}
+            showDeleteBtn={true}
+            showAddBtn={true}
+            addIcon={'lugia-icon-direction_logout'}
+          />
+        </ContainerBox>
+        <ContainerBox>
+          <Tabs
+            tabType={'window'}
+            data={hasActivityValueData}
+            showDeleteBtn={true}
+            showAddBtn={true}
+            deleteIcon={'lugia-icon-financial_abort'}
+          />
+        </ContainerBox>
+        <ContainerBox>
+          <Tabs
+            tabPosition={'left'}
+            data={hasActivityValueData}
+            showDeleteBtn={true}
+            showAddBtn={true}
+            pageArrowIcon={{
+              preIcon: 'lugia-icon-direction_rollback',
+              suffixIcon: 'lugia-icon-direction_enter',
+            }}
+          />
+        </ContainerBox>
+
         <Theme config={borderTheme}>
+          <p style={{ titleStyle }}>borderTheme</p>
           <ContainerBox>
             <Tabs showDividerLine={true}>
               <Tabpane

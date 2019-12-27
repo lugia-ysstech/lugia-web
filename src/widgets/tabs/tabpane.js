@@ -21,7 +21,7 @@ import colorsFunc from '../css/stateColor';
 
 import { getBorder } from '@lugia/theme-utils';
 
-const { themeColor, disableColor, defaultColor } = colorsFunc();
+const { themeColor, defaultColor, disableTextColor, mediumGreyColor, darkGreyColor } = colorsFunc();
 
 const SelectTab = CSSComponent({
   tag: 'div',
@@ -130,7 +130,6 @@ const SelectTab = CSSComponent({
     selectNames: [['color'], ['cursor']],
     defaultTheme: {
       cursor: 'not-allowed',
-      color: 'yellow',
     },
     getCSS(theme: Object, themeProps: Object) {
       return css`
@@ -214,7 +213,7 @@ const Title = CSSComponent({
   disabled: {
     selectNames: [['color']],
     defaultTheme: {
-      color: disableColor,
+      color: disableTextColor,
     },
   },
   css: css`
@@ -261,7 +260,7 @@ const CardTitle = CSSComponent({
   disabled: {
     selectNames: [['color']],
     defaultTheme: {
-      color: disableColor,
+      color: disableTextColor,
     },
   },
   css: css`
@@ -283,7 +282,6 @@ const ClearButtonContainer = CSSComponent({
     transition: all 0.3s linear 0.1s;
     z-index: 2;
     opacity: 0;
-    color: #999;
     margin-left: -5px;
     vertical-align: middle;
   `,
@@ -319,9 +317,7 @@ const TabPanContainer = StaticComponent({
   `,
 });
 
-type TabpaneState = {
-  iconClass: string,
-};
+type TabpaneState = {};
 
 type TabpaneProps = {
   title: string,
@@ -347,14 +343,6 @@ type TabpaneProps = {
 
 class Tabpane extends Component<TabpaneProps, TabpaneState> {
   static displayName = Widget.Tabpane;
-
-  static getDerivedStateFromProps(nextProps: TabpaneProps, state: TabpaneState) {
-    if (!state) {
-      return {
-        iconClass: 'lugia-icon-reminder_close',
-      };
-    }
-  }
 
   render() {
     const {
@@ -457,7 +445,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
         },
         disabled: {
           getThemeMeta: (theme: Object, themeProps: Object) => {
-            return { cursor: 'not-allowed', color: disableColor };
+            return { cursor: 'not-allowed', color: disableTextColor };
           },
         },
       },
@@ -589,10 +577,24 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     onDelete && onDelete({ index, activityValue: keyVal });
   };
   getClearButton() {
-    const { tabType, disabled, showDeleteBtn, themeProps } = this.props;
-    const { iconClass } = this.state;
-    const { viewClass, theme } = this.props.getPartOfThemeHocProps('DefaultTabPan');
+    const { tabType, disabled, showDeleteBtn, themeProps, deleteIcon } = this.props;
+    const { viewClass, theme } = this.props.getPartOfThemeHocProps('DeleteIcon');
     themeProps.propsConfig = { tabType };
+    const defaultIconTheme = {
+      [viewClass]: {
+        normal: {
+          color: mediumGreyColor,
+        },
+        hover: {
+          color: darkGreyColor,
+        },
+        disabled: {
+          cursor: 'not-allowed',
+          color: disableTextColor,
+        },
+      },
+    };
+    const iconTheme = deepMerge(defaultIconTheme, theme);
     if (!matchType(tabType, 'line') && showDeleteBtn) {
       return (
         <ClearButtonContainer
@@ -603,9 +605,9 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
         >
           <Icon
             singleTheme
-            theme={theme}
+            theme={iconTheme}
             viewClass={viewClass}
-            iconClass={iconClass}
+            iconClass={deleteIcon}
             disabled={disabled}
             onClick={this.onDeleteClick}
           />
@@ -614,12 +616,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     }
     return null;
   }
-  clearButtonMouseEnter = () => {
-    this.setState({ iconClass: 'lugia-icon-reminder_close_circle' });
-  };
-  clearButtonMouseLeave = () => {
-    this.setState({ iconClass: 'lugia-icon-reminder_close' });
-  };
+
   onMouseEnter = (e: Object) => {
     const { onMouseEnter, index, keyVal } = this.props;
     onMouseEnter && onMouseEnter({ index, activityValue: keyVal });
