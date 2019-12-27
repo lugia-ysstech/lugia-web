@@ -54,6 +54,7 @@ const DefaultCommonStyle: CommonCSS = {
   dangerColor: '#f22735', //危险色
   blackColor: '#333333', //标题色
   darkGreyColor: '#666666', //正文色
+  disableTextColor: '#cccccc', //文字禁止色
   mediumGreyColor: '#999999', //标注色
   lightGreyColor: '#cccccc', //水印色
   superLightColor: '#e8e8e8', //辅助色
