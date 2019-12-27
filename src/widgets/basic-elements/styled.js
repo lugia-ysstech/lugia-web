@@ -17,6 +17,6 @@ export const Box = CSSProvider({
     ],
   },
   css: css`
-    display: table-cell;
+    display: inline-block;
   `,
 });
