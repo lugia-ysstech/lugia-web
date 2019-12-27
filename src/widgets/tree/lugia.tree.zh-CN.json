@@ -99,7 +99,7 @@
     "switchAtEnd": {
       "type": "boolean",
       "desc": "控制器是否在末端",
-      "defaultValue": "false"
+      "defaultValue": false
     },
     "translateTreeData": {
       "type": "boolean",
