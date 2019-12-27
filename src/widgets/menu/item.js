@@ -120,9 +120,12 @@ class MenuItem extends React.Component<MenuItemProps> {
   };
 
   getPreIcon(channel: Object) {
-    const { icon, icons: { preIconClass, preIconSrc } = {} } = this.props;
-
-    if (!icon && !preIconClass && !preIconSrc) {
+    const { icon, icons = {} } = this.props;
+    if (!icon && !icons) {
+      return null;
+    }
+    const { preIconClass, preIconSrc } = icons;
+    if (!preIconClass && !preIconSrc) {
       return null;
     }
     const { viewClass, theme } = this.getIconTheme('PreIcon');
@@ -141,11 +144,15 @@ class MenuItem extends React.Component<MenuItemProps> {
   }
 
   getSuffixIcon(channel: Object) {
-    const { icons: { suffixIconClass, suffixIconSrc } = {} } = this.props;
-
+    const { icon, icons = {} } = this.props;
+    if (!icon && !icons) {
+      return null;
+    }
+    const { suffixIconClass, suffixIconSrc } = icons;
     if (!suffixIconClass && !suffixIconSrc) {
       return null;
     }
+
     const { viewClass, theme } = this.getIconTheme('SuffixIcon');
 
     return (
