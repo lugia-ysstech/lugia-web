@@ -18,24 +18,30 @@ import Icon from '../icon';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import { deepMerge } from '@lugia/object-utils';
 import colorsFunc from '../css/stateColor';
-import { getBorder } from '@lugia/theme-utils';
 import { findDOMNode } from 'react-dom';
 
-const { superLightColor, borderColor, borderSize } = colorsFunc();
+const { superLightColor, borderColor, borderSize, disableTextColor } = colorsFunc();
 
 const ArrowContainer = CSSComponent({
   tag: 'div',
   className: 'BaseLine',
   normal: {
-    selectNames: [],
+    selectNames: [['color'], ['font']],
+  },
+  hover: {
+    selectNames: [['color'], ['font']],
   },
   disabled: {
-    selectNames: [],
+    selectNames: [['color'], ['font'], ['cursor']],
+    defaultTheme: {
+      cursor: 'not-allowed',
+    },
   },
   css: css`
     font-size: 1.2rem;
     z-index: 5;
   `,
+  option: { hover: true },
 });
 
 const HBasePage = CSSComponent({
@@ -99,28 +105,6 @@ const VBasePage = CSSComponent({
   `,
 });
 
-const VPrePage = CSSComponent({
-  extend: VBasePage,
-  className: 'VPrePage',
-  normal: {
-    selectNames: [],
-  },
-  disabled: {
-    selectNames: [],
-  },
-});
-
-const VNextPage = CSSComponent({
-  extend: VBasePage,
-  className: 'VNextPage',
-  normal: {
-    selectNames: [],
-  },
-  disabled: {
-    selectNames: [],
-  },
-});
-
 const HTabsContainer = CSSComponent({
   tag: 'div',
   className: 'HTabsContainer',
@@ -157,25 +141,11 @@ const AddContainer = CSSComponent({
   tag: 'div',
   className: 'AddButton',
   normal: {
-    selectNames: [
-      ['width'],
-      ['height'],
-      ['opacity'],
-      ['background'],
-      ['border'],
-      ['boxShadow'],
-      ['color'],
-      ['fontSize'],
-    ],
+    selectNames: [],
     defaultTheme: {
       width: 18,
       height: 18,
-      border: getBorder({ color: superLightColor, width: 1, style: 'solid' }),
-      background: {
-        color: '#f8f8f8',
-      },
       lineHeight: 18,
-      borderRadius: '4px',
     },
     getCSS: (theme: Object, themeProps: Object) => {
       const { height } = theme;
@@ -404,6 +374,9 @@ type TabsProps = {
   getPartOfThemeHocProps: Function,
   getPartOfThemeProps: Function,
   showDividerLine?: boolean,
+  addIcon?: string,
+  deleteIcon?: string,
+  pageArrowIcon?: Object,
 };
 
 class TabHeader extends Component<TabsProps, TabsState> {
@@ -602,17 +575,30 @@ class TabHeader extends Component<TabsProps, TabsState> {
 
     const prevPageThemeProps = deepMerge(
       { themeConfig: { normal: { height: 24 } } },
-      this.props.getPartOfThemeProps('DefaultTabPan')
+      this.props.getPartOfThemeProps('ArrowIcon')
     );
+    const IconThemeProps = this.props.getPartOfThemeHocProps('ArrowIcon');
     return (
       <VTabsOutContainer themeProps={tabsOutContainerThemeProps}>
-        {this.getPrevOrNextPage('prev', prevPageThemeProps, isDisabledToPrev, isDisabledToNext)}
+        {this.getPrevOrNextPage(
+          'prev',
+          prevPageThemeProps,
+          IconThemeProps,
+          isDisabledToPrev,
+          isDisabledToNext
+        )}
         <VTabsContainer themeProps={themeProps} ref={this.scrollBox}>
           <YscrollerContainer y={moveDistance} themeProps={themeProps} ref={this.tabPanBox}>
             {this.getChildren()}
           </YscrollerContainer>
         </VTabsContainer>
-        {this.getPrevOrNextPage('next', prevPageThemeProps, isDisabledToPrev, isDisabledToNext)}
+        {this.getPrevOrNextPage(
+          'next',
+          prevPageThemeProps,
+          IconThemeProps,
+          isDisabledToPrev,
+          isDisabledToNext
+        )}
       </VTabsOutContainer>
     );
   }
@@ -620,6 +606,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
   getPrevOrNextPage(
     type: string,
     themeProps: Object,
+    IconThemeProps: Object,
     isDisabledToPrev: boolean,
     isDisabledToNext: boolean
   ) {
@@ -628,11 +615,9 @@ class TabHeader extends Component<TabsProps, TabsState> {
       return;
     }
     const { tabPosition } = this.props;
+    const { arrowUp, arrowDown } = this.getIconByDirection(tabPosition);
     if (type === 'prev') {
-      const arrowUp = isVertical(tabPosition)
-        ? 'lugia-icon-direction_up'
-        : 'lugia-icon-direction_Left';
-      const Target = isVertical(tabPosition) ? VPrePage : HPrePage;
+      const Target = isVertical(tabPosition) ? VBasePage : HPrePage;
       return (
         <Target
           themeProps={themeProps}
@@ -640,15 +625,17 @@ class TabHeader extends Component<TabsProps, TabsState> {
           onClick={this.onPreClick(isDisabledToPrev)}
           {...this.getArrowConfig('pre')}
         >
-          <Icon disabled={isDisabledToPrev} iconClass={arrowUp} />
+          <Icon
+            {...this.getArrowTheme(IconThemeProps)}
+            disabled={isDisabledToPrev}
+            iconClass={arrowUp}
+            singleTheme
+          />
         </Target>
       );
     }
 
-    const arrowDown = isVertical(tabPosition)
-      ? 'lugia-icon-direction_down'
-      : 'lugia-icon-direction_right';
-    const Target = isVertical(tabPosition) ? VNextPage : HNextPage;
+    const Target = isVertical(tabPosition) ? VBasePage : HNextPage;
     return (
       <Target
         themeProps={themeProps}
@@ -658,12 +645,40 @@ class TabHeader extends Component<TabsProps, TabsState> {
       >
         <Icon
           disabled={isDisabledToNext}
-          themeProps={themeProps}
+          {...this.getArrowTheme(IconThemeProps)}
           iconClass={arrowDown}
           singleTheme
         />
       </Target>
     );
+  }
+
+  getIconByDirection(tabPosition) {
+    const { pageArrowIcon: { preIcon, suffixIcon } = {} } = this.props;
+    const isVerticalDirection = isVertical(tabPosition);
+    const defaultUp = isVerticalDirection ? 'lugia-icon-direction_up' : 'lugia-icon-direction_Left';
+
+    const defaultDown = isVerticalDirection
+      ? 'lugia-icon-direction_down'
+      : 'lugia-icon-direction_right';
+    const arrowUp = preIcon || defaultUp;
+    const arrowDown = suffixIcon || defaultDown;
+    return { arrowUp, arrowDown };
+  }
+
+  getArrowTheme(IconThemeProps: Object) {
+    const { viewClass, theme: configTheme } = IconThemeProps;
+    const defaultTheme = {
+      [viewClass]: {
+        disabled: {
+          cursor: 'not-allowed',
+          color: disableTextColor,
+        },
+      },
+    };
+    const theme = deepMerge(defaultTheme, configTheme);
+
+    return { viewClass, theme };
   }
 
   getArrowConfig(type: EditEventType) {
@@ -725,22 +740,35 @@ class TabHeader extends Component<TabsProps, TabsState> {
 
     const prevPageThemeProps = deepMerge(
       { themeConfig: { normal: { height: 31 } } },
-      this.props.getPartOfThemeProps('DefaultTabPan')
+      this.props.getPartOfThemeProps('ArrowIcon')
     );
+    const IconThemeProps = this.props.getPartOfThemeHocProps('ArrowIcon');
     return (
       <HTabsOutContainer
         themeProps={tabsOutContainerThemeProps}
         tabType={tabType}
         tabPosition={tabPosition}
       >
-        {this.getPrevOrNextPage('prev', prevPageThemeProps, isDisabledToPrev, isDisabledToNext)}
+        {this.getPrevOrNextPage(
+          'prev',
+          prevPageThemeProps,
+          IconThemeProps,
+          isDisabledToPrev,
+          isDisabledToNext
+        )}
         <HTabsContainer themeProps={themeProps} ref={this.scrollBox}>
           <HscrollerContainer themeProps={themeProps} x={moveDistance} ref={this.tabPanBox}>
             {this.getChildren()}
           </HscrollerContainer>
         </HTabsContainer>
         {this.getAddButton()}
-        {this.getPrevOrNextPage('next', prevPageThemeProps, isDisabledToPrev, isDisabledToNext)}
+        {this.getPrevOrNextPage(
+          'next',
+          prevPageThemeProps,
+          IconThemeProps,
+          isDisabledToPrev,
+          isDisabledToNext
+        )}
       </HTabsOutContainer>
     );
   }
@@ -765,13 +793,12 @@ class TabHeader extends Component<TabsProps, TabsState> {
   }
 
   getAddButton() {
-    const { tabType, showAddBtn } = this.props;
-    const add = 'lugia-icon-reminder_plus';
+    const { tabType, showAddBtn, themeProps, addIcon } = this.props;
     if (!matchType(tabType, 'line') && showAddBtn) {
-      const addBtnthemeProps = this.props.getPartOfThemeProps('AddButton');
+      const addBtnThemeProps = this.props.getPartOfThemeHocProps('AddButton');
       return (
-        <AddContainer themeProps={addBtnthemeProps} onClick={this.onAddClick}>
-          <Icon iconClass={add} />
+        <AddContainer themeProps={themeProps} onClick={this.onAddClick}>
+          <Icon iconClass={addIcon} {...addBtnThemeProps} singleTheme />
         </AddContainer>
       );
     }

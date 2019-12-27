@@ -64,6 +64,22 @@
       "type": "boolean",
       "desc": "是否显示分割线(仅线性类型支持)",
       "propsDefaultValue": false
+    },
+    "addIcon": {
+      "type": "icon",
+      "desc": "增加按钮图标配置"
+    },
+    "deleteIcon": {
+      "type": "icon",
+      "desc": "删除图标配置"
+    },
+    "pageArrowIcon": {
+      "type": "object",
+      "desc": "翻页图标配置",
+      "meta": [
+        { "key": "preIcon", "title": "上一页图标", "type": "icon" },
+        { "key": "suffixIcon", "title": "下一页图标", "type": "icon" }
+      ]
     }
   },
   "events": {
@@ -153,34 +169,24 @@
           "desc": "标签页整体样式配置",
           "normal": [["width"], ["height"]]
         },
-        "AddButton": {
-          "name": "新增按钮",
-          "desc": "新增按钮样式配置",
-          "normal": [
-            ["width"],
-            ["height"],
-            ["opacity"],
-            ["background"],
-            ["border"],
-            ["boxShadow"],
-            ["color"],
-            ["fontSize"]
-          ],
-          "hover": [
-            ["width"],
-            ["height"],
-            ["opacity"],
-            ["background"],
-            ["border"],
-            ["boxShadow"],
-            ["color"],
-            ["fontSize"]
-          ]
-        },
         "ContentBlock": {
           "name": "内容区域",
           "desc": "内容区域的样式配置",
           "normal": [["background"], ["padding"], ["height"]]
+        },
+        "AddButton": {
+          "name": "新增按钮",
+          "desc": "新增按钮样式配置",
+          "normal": [["color"],["font"]],
+          "hover": [["color"],["font"]],
+          "disabled": [["color"],["font"]]
+        },
+        "ArrowIcon": {
+          "name": "翻页图标",
+          "desc": "翻页图标样式配置",
+          "normal": [["color"],["font"]],
+          "hover": [["color"],["font"]],
+          "disabled": [["color"],["font"]]
         },
         "TitleContainer": {
           "name": "卡片区域",
@@ -226,6 +232,13 @@
               ],
               "hover": [],
               "disabled": []
+            },
+            "DeleteIcon": {
+              "name": "删除图标",
+              "desc": "删除图标样式配置",
+              "normal": [["color"],["font"]],
+              "hover": [["color"],["font"]],
+              "disabled": [["color"],["font"]]
             }
           }
         }
@@ -249,34 +262,24 @@
           "desc": "窗口背景区域样式配置",
           "normal": [["background"], ["padding"], ["border"], ["borderRadius"], ["opacity"]]
         },
-        "AddButton": {
-          "name": "新增按钮",
-          "desc": "新增按钮样式配置",
-          "normal": [
-            ["width"],
-            ["height"],
-            ["opacity"],
-            ["background"],
-            ["border"],
-            ["boxShadow"],
-            ["color"],
-            ["fontSize"]
-          ],
-          "hover": [
-            ["width"],
-            ["height"],
-            ["opacity"],
-            ["background"],
-            ["border"],
-            ["boxShadow"],
-            ["color"],
-            ["fontSize"]
-          ]
-        },
         "ContentBlock": {
           "name": "内容区域",
           "desc": "内容区域的样式配置",
           "normal": [["background"], ["padding"], ["height"]]
+        },
+        "AddButton": {
+          "name": "新增按钮",
+          "desc": "新增按钮样式配置",
+          "normal": [["color"],["font"]],
+          "hover": [["color"],["font"]],
+          "disabled": [["color"],["font"]]
+        },
+        "ArrowIcon": {
+          "name": "翻页图标",
+          "desc": "翻页图标样式配置",
+          "normal": [["color"],["font"]],
+          "hover": [["color"],["font"]],
+          "disabled": [["color"],["font"]]
         },
         "TabHeader": {
           "name": "标签配置",
@@ -312,6 +315,13 @@
               ],
               "hover": [],
               "disabled": []
+            },
+            "DeleteIcon": {
+              "name": "删除图标",
+              "desc": "删除图标样式配置",
+              "normal": [["color"],["font"]],
+              "hover": [["color"],["font"]],
+              "disabled": [["color"],["font"]]
             }
           }
         }
@@ -346,6 +356,13 @@
       "name": "默认线",
       "desc": "默认线样式配置",
       "normal": [["color"], ["width"]]
+    },
+    "ArrowIcon": {
+      "name": "翻页按钮",
+      "desc": "翻页按钮样式配置",
+      "normal": [["color"],["font"]],
+      "hover": [["color"],["font"]],
+      "disabled": [["color"],["font"]]
     },
     "TabHeader": {
       "name": "标签配置",
