@@ -443,7 +443,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
 
   render() {
     const { props, state } = this;
-    const empty = <Empty themeProps={props.getPartOfThemeProps('TreeWrap')} />;
+    const empty = <Empty themeProps={props.getPartOfThemeProps('Container')} />;
     if (this.isEmpty(props)) {
       return empty;
     }

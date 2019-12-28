@@ -3,21 +3,6 @@
   "title": "树形控件",
   "desc": "清晰地展示层级结构的信息,可展开或折叠。",
   "props": {
-    "start": {
-      "type": "number",
-      "desc": "开始展示数据的索引值",
-      "defaultValue": 0
-    },
-    "query": {
-      "type": "string",
-      "desc": "用于过滤数据的关键字",
-      "defaultValue": ""
-    },
-    "mutliple": {
-      "type": "boolean",
-      "desc": "是否多选",
-      "defaultValue": false
-    },
     "limitCount": {
       "type": "number",
       "desc": "多选时的最大选中数",
@@ -27,44 +12,62 @@
     "expandAll": {
       "type": "boolean",
       "desc": "是否展开所有子元素",
-      "defaultValue": false
+      "defaultValue": true
     },
+
     "onlySelectLeaf": {
       "type": "boolean",
       "desc": "是否只能选择根节点选项",
       "defaultValue": false
     },
+
     "valueField": {
       "type": "string",
       "desc": "data数据的value值的名称",
       "defaultValue": "value"
     },
+
     "displayField": {
       "type": "string",
       "desc": "data数据的displayValue值的名称",
       "defaultValue": "text"
     },
+
     "value": {
       "type": "string | string[] | number | number[]",
       "desc": "指定当前选中的条目的valueField值"
     },
+
     "displayValue": {
       "type": "string | string[] | number | number[]",
       "desc": "指定当前选中的条目的displayField值"
     },
+
     "parentIsHighlight": {
       "type": "boolean",
       "desc": "父级元素是否高亮",
       "defaultValue": false
     },
+
     "data": {
       "type": "object[]",
       "desc": "生成选择项的数据",
       "meta": [
         { "key": "value", "title": "value值", "type": "string" },
-        { "key": "text", "title": "文本值", "type": "string" }
+        { "key": "text", "title": "文本值", "type": "string" },
+        { "key": "children", "title": "文本值", "type": "array" }
       ],
-      "defaultValue": false
+      "defaultValue": [
+        {
+          "value": "一级树节点",
+          "text": "一级树节点",
+          "children": [
+            { "value": "二级树节点-1", "text": "二级树节点-1" },
+            { "value": "二级树节点-2", "text": "一级树节点-2" },
+            { "value": "二级树节点-3", "text": "一级树节点-3" }
+          ]
+        }
+      ]
     },
     "switchIconNames": {
       "type": "object",
@@ -76,7 +79,8 @@
     },
     "igronSelectField": {
       "type": "string",
-      "desc": "指定不可选的标识"
+      "desc": "指定不可选的标识",
+      "defaultValue": "disabled"
     },
 
     "pathSeparator": {
@@ -101,10 +105,15 @@
       "desc": "控制器是否在末端",
       "defaultValue": false
     },
+    "showSwitch": {
+      "type": "boolean",
+      "desc": "是否展示控制器",
+      "defaultValue": true
+    },
     "translateTreeData": {
       "type": "boolean",
       "desc": "是否开启嵌套数据生成Tree",
-      "defaultValue": false
+      "defaultValue": true
     }
   },
   "events": {
@@ -196,7 +205,7 @@
         "mutliple": true
       },
       "theme": {
-        "TreeWrap": {
+        "Container": {
           "name": "树形控件外盒",
           "desc": "配置树形组件的外盒样式",
           "normal": [
@@ -208,83 +217,187 @@
             ["border"],
             ["borderRadius"],
             ["margin"],
-            ["padding"]
+            ["padding", "left"],
+            ["padding", "right"]
           ],
           "hover": [["boxShadow"], ["background"], ["opacity"], ["border"], ["borderRadius"]],
           "clicked": [],
           "disabled": []
         },
+
         "TreeItem": {
           "name": "多选树的项配置",
           "theme": {
             "TreeItemWrap": {
-              "name": "项的外盒",
-              "desc": "配置每一项的外盒",
+              "name": "项的底色配色",
+              "desc": "配置每一项整体的底色",
               "normal": [
-                ["background"],
+                ["height"],
                 ["border"],
                 ["borderRadius"],
+                ["padding"],
+                ["background"],
                 ["opacity"],
-                ["color"],
-                ["padding"]
+                ["cursor"]
               ],
-              "hover": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
-              "active": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
-              "disabled": []
+              "hover": [["background"], ["border"], ["borderRadius"], ["opacity"]],
+              "active": [["background"], ["border"], ["borderRadius"], ["opacity"]],
+              "disabled": [
+                ["border"],
+                ["borderRadius"],
+                ["padding"],
+                ["background"],
+                ["opacity"],
+                ["cursor"]
+              ]
             },
             "SelectedTreeItemWrap": {
-              "name": "选中项的外盒",
-              "desc": "配置选中项的外盒",
-              "normal": [
-                ["background"],
-                ["border"],
-                ["borderRadius"],
-                ["opacity"],
-                ["color"],
-                ["padding"]
-              ],
-              "hover": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
-              "active": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
+              "name": "选中项的底色配色",
+              "desc": "配置选中项整体的底色",
+              "normal": [["border"], ["borderRadius"], ["padding"], ["background"], ["opacity"]],
+              "hover": [],
+              "active": [],
               "disabled": []
             },
             "Text": {
-              "name": "项的文本",
-              "desc": "配置每一项文本内容的样式",
+              "name": "文本框区域",
+              "desc": "配置每一项文本区域的样式",
               "normal": [
+                ["height"],
                 ["color"],
                 ["font"],
+                ["fontSize"],
                 ["background"],
                 ["padding"],
                 ["border"],
+                ["opacity"],
+                ["boxShadow"],
                 ["borderRadius"]
               ],
-              "hover": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
-              "active": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
-              "disabled": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]]
+              "hover": [
+                ["color"],
+                ["font"],
+                ["fontSize"],
+                ["background"],
+                ["border"],
+                ["opacity"],
+                ["boxShadow"],
+                ["borderRadius"]
+              ],
+              "active": [
+                ["color"],
+                ["font"],
+                ["fontSize"],
+                ["background"],
+                ["border"],
+                ["opacity"],
+                ["boxShadow"],
+                ["borderRadius"]
+              ],
+              "disabled": [
+                ["height"],
+                ["color"],
+                ["font"],
+                ["fontSize"],
+                ["background"],
+                ["padding"],
+                ["border"],
+                ["opacity"],
+                ["boxShadow"],
+                ["borderRadius"]
+              ]
             },
             "SelectedText": {
-              "name": "选中项的文本",
-              "desc": "配置选中项文本内容的样式",
+              "name": "选中项的文本框区域",
+              "desc": "配置选中项的文本框区域的样式",
               "normal": [
                 ["color"],
                 ["font"],
+                ["fontSize"],
                 ["background"],
                 ["padding"],
                 ["border"],
+                ["opacity"],
+                ["boxShadow"],
                 ["borderRadius"]
               ],
-              "hover": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
-              "active": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
-              "disabled": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]]
+              "hover": [
+                ["color"],
+                ["font"],
+                ["fontSize"],
+                ["background"],
+                ["border"],
+                ["opacity"],
+                ["boxShadow"],
+                ["borderRadius"]
+              ],
+              "active": [
+                ["color"],
+                ["font"],
+                ["fontSize"],
+                ["background"],
+                ["border"],
+                ["opacity"],
+                ["boxShadow"],
+                ["borderRadius"]
+              ],
+              "disabled": [
+                ["height"],
+                ["color"],
+                ["font"],
+                ["fontSize"],
+                ["background"],
+                ["padding"],
+                ["border"],
+                ["opacity"],
+                ["boxShadow"],
+                ["borderRadius"]
+              ]
             },
-            "Switch": {
+
+            "PreIcon": {
+              "name": "前置图标配置",
+              "desc": "前置图标或图片的样式配置",
+              "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+              "hover": [["color"], ["fontSize"]],
+              "active": [["color"], ["fontSize"]],
+              "disabled": [["color"], ["fontSize"], ["cursor"]]
+            },
+
+            "SuffixIcon": {
+              "name": "后缀图标配置",
+              "desc": "后缀图标或图片的样式配置",
+              "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+              "hover": [["color"], ["fontSize"]],
+              "active": [["color"], ["fontSize"]],
+              "disabled": [["color"], ["fontSize"], ["cursor"]]
+            },
+
+            "SwitchIcon": {
               "name": "控制器配置",
               "desc": "配置控制树节点展开或隐藏的控制器的样式",
-              "normal": [["color"], ["font"]],
-              "hover": [["color"], ["font"]],
-              "active": [["color"], ["font"]],
-              "disabled": [["color"], ["font"]]
+              "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+              "hover": [["color"], ["fontSize"]],
+              "active": [["color"], ["fontSize"]],
+              "disabled": [["color"], ["fontSize"], ["cursor"]]
             },
+
+            "SubTreeWrap": {
+              "name": "子树的外盒配置",
+              "desc": "展开项下的子树的外盒配置",
+              "normal": [
+                ["width"],
+                ["background"],
+                ["opacity"],
+                ["border"],
+                ["padding", "left"],
+                ["padding", "right"]
+              ],
+              "hover": [["background"], ["opacity"], ["border"]],
+              "active": [],
+              "disabled": []
+            },
+
             "Checkbox": {
               "name": "多选树的选择框配置",
               "theme": {
@@ -294,13 +407,6 @@
                   "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]],
                   "hover": [["opacity"]],
                   "disabled": [["opacity"]]
-                },
-                "CheckboxText": {
-                  "name": "Checkbox文字配置",
-                  "desc": "Checkbox文字配置",
-                  "normal": [["color"], ["font"]],
-                  "hover": [["color"], ["font"]],
-                  "disabled": [["color"], ["font"]]
                 },
                 "CheckboxEdgeChecked": {
                   "name": "Checkbox选中后边框配置",
@@ -324,22 +430,6 @@
                   "disabled": [["color"]]
                 }
               }
-            },
-            "SubTreeWrap": {
-              "name": "展开项的外盒配置",
-              "desc": "展开项下的子树的外盒配置",
-              "normal": [
-                ["width"],
-                ["background"],
-                ["opacity"],
-                ["border"],
-                ["margin"],
-                ["padding", "left"],
-                ["padding", "right"]
-              ],
-              "hover": [["background"], ["opacity"], ["border"]],
-              "active": [],
-              "disabled": []
             }
           }
         }
@@ -347,7 +437,7 @@
     }
   },
   "theme": {
-    "TreeWrap": {
+    "Container": {
       "name": "树形控件外盒",
       "desc": "配置树形组件的外盒样式",
       "normal": [
@@ -359,92 +449,179 @@
         ["border"],
         ["borderRadius"],
         ["margin"],
-        ["padding"]
+        ["padding", "left"],
+        ["padding", "right"]
       ],
       "hover": [["boxShadow"], ["background"], ["opacity"], ["border"], ["borderRadius"]],
       "clicked": [],
       "disabled": []
     },
+
     "TreeItem": {
       "name": "单选树的项配置",
       "theme": {
         "TreeItemWrap": {
-          "name": "项的外盒",
-          "desc": "配置每一项的外盒",
+          "name": "项的底色配色",
+          "desc": "配置每一项整体的底色",
           "normal": [
-            ["background"],
+            ["height"],
             ["border"],
             ["borderRadius"],
+            ["padding"],
+            ["background"],
             ["opacity"],
-            ["color"],
-            ["padding"]
+            ["cursor"]
           ],
-          "hover": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
-          "active": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
-          "disabled": []
+          "hover": [["background"], ["border"], ["borderRadius"], ["opacity"]],
+          "active": [["background"], ["border"], ["borderRadius"], ["opacity"]],
+          "disabled": [
+            ["border"],
+            ["borderRadius"],
+            ["padding"],
+            ["background"],
+            ["opacity"],
+            ["cursor"]
+          ]
         },
         "SelectedTreeItemWrap": {
-          "name": "选中项的外盒",
-          "desc": "配置选中项的外盒",
-          "normal": [
-            ["background"],
-            ["border"],
-            ["borderRadius"],
-            ["opacity"],
-            ["color"],
-            ["padding"]
-          ],
-          "hover": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
-          "active": [["background"], ["border"], ["borderRadius"], ["opacity"], ["color"]],
+          "name": "选中项的底色配色",
+          "desc": "配置选中项整体的底色",
+          "normal": [["border"], ["borderRadius"], ["padding"], ["background"], ["opacity"]],
+          "hover": [],
+          "active": [],
           "disabled": []
         },
         "Text": {
-          "name": "项的文本",
-          "desc": "配置每一项文本内容的样式",
+          "name": "文本框区域",
+          "desc": "配置每一项文本区域的样式",
           "normal": [
+            ["height"],
             ["color"],
             ["font"],
+            ["fontSize"],
             ["background"],
             ["padding"],
             ["border"],
+            ["opacity"],
+            ["boxShadow"],
             ["borderRadius"]
           ],
-          "hover": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
-          "active": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
-          "disabled": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]]
+          "hover": [
+            ["color"],
+            ["font"],
+            ["fontSize"],
+            ["background"],
+            ["border"],
+            ["opacity"],
+            ["boxShadow"],
+            ["borderRadius"]
+          ],
+          "active": [
+            ["color"],
+            ["font"],
+            ["fontSize"],
+            ["background"],
+            ["border"],
+            ["opacity"],
+            ["boxShadow"],
+            ["borderRadius"]
+          ],
+          "disabled": [
+            ["height"],
+            ["color"],
+            ["font"],
+            ["fontSize"],
+            ["background"],
+            ["padding"],
+            ["border"],
+            ["opacity"],
+            ["boxShadow"],
+            ["borderRadius"]
+          ]
         },
         "SelectedText": {
-          "name": "选中项的文本",
-          "desc": "配置选中项文本内容的样式",
+          "name": "选中项的文本框区域",
+          "desc": "配置选中项的文本框区域的样式",
           "normal": [
             ["color"],
             ["font"],
+            ["fontSize"],
             ["background"],
             ["padding"],
             ["border"],
+            ["opacity"],
+            ["boxShadow"],
             ["borderRadius"]
           ],
-          "hover": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
-          "active": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]],
-          "disabled": [["color"], ["font"], ["background"], ["border"], ["borderRadius"]]
+          "hover": [
+            ["color"],
+            ["font"],
+            ["fontSize"],
+            ["background"],
+            ["border"],
+            ["opacity"],
+            ["boxShadow"],
+            ["borderRadius"]
+          ],
+          "active": [
+            ["color"],
+            ["font"],
+            ["fontSize"],
+            ["background"],
+            ["border"],
+            ["opacity"],
+            ["boxShadow"],
+            ["borderRadius"]
+          ],
+          "disabled": [
+            ["height"],
+            ["color"],
+            ["font"],
+            ["fontSize"],
+            ["background"],
+            ["padding"],
+            ["border"],
+            ["opacity"],
+            ["boxShadow"],
+            ["borderRadius"]
+          ]
         },
-        "Switch": {
+
+        "PreIcon": {
+          "name": "前置图标配置",
+          "desc": "前置图标或图片的样式配置",
+          "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+          "hover": [["color"], ["fontSize"]],
+          "active": [["color"], ["fontSize"]],
+          "disabled": [["color"], ["fontSize"], ["cursor"]]
+        },
+
+        "SuffixIcon": {
+          "name": "后缀图标配置",
+          "desc": "后缀图标或图片的样式配置",
+          "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+          "hover": [["color"], ["fontSize"]],
+          "active": [["color"], ["fontSize"]],
+          "disabled": [["color"], ["fontSize"], ["cursor"]]
+        },
+
+        "SwitchIcon": {
           "name": "控制器配置",
           "desc": "配置控制树节点展开或隐藏的控制器的样式",
-          "normal": [["color"], ["font"]],
-          "hover": [["color"], ["font"]],
-          "active": [["color"], ["font"]],
-          "disabled": [["color"], ["font"]]
+          "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+          "hover": [["color"], ["fontSize"]],
+          "active": [["color"], ["fontSize"]],
+          "disabled": [["color"], ["fontSize"], ["cursor"]]
         },
+
         "SubTreeWrap": {
-          "name": "展开项的外盒配置",
+          "name": "子树的外盒配置",
           "desc": "展开项下的子树的外盒配置",
           "normal": [
             ["width"],
             ["background"],
             ["opacity"],
             ["border"],
-            ["margin"],
             ["padding", "left"],
             ["padding", "right"]
           ],

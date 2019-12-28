@@ -348,7 +348,7 @@ export const NoDividedContainer = CSSComponent({
     height: ${px2remcss(DefaultHeight)};
     width: ${px2remcss(DefaultWidth)};
     border-radius: ${px2remcss(borderRadius)};
-    transition-property: background-color, border, borderRadius, opacity, boxShadow;
+    transition-property: background-color, border, border-radius, opacity, box-shadow;
     transition-duration: 0.3s;
     border-width: ${px2remcss(1)};
     border-style: solid;
