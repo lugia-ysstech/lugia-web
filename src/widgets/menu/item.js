@@ -120,7 +120,7 @@ class MenuItem extends React.Component<MenuItemProps> {
   };
 
   getPreIcon(channel: Object) {
-    const { icon, icons = {} } = this.props;
+    const { icon, icons = {}, disabled } = this.props;
     if (!icon && !icons) {
       return null;
     }
@@ -137,6 +137,7 @@ class MenuItem extends React.Component<MenuItemProps> {
         src={preIconSrc}
         lugiaConsumers={channel.consumer}
         singleTheme
+        disabled={disabled}
         viewClass={viewClass}
         theme={theme}
       />
@@ -144,7 +145,7 @@ class MenuItem extends React.Component<MenuItemProps> {
   }
 
   getSuffixIcon(channel: Object) {
-    const { icon, icons = {} } = this.props;
+    const { icon, icons = {}, disabled } = this.props;
     if (!icon && !icons) {
       return null;
     }
@@ -161,6 +162,7 @@ class MenuItem extends React.Component<MenuItemProps> {
         src={suffixIconSrc}
         lugiaConsumers={channel.consumer}
         singleTheme
+        disabled={disabled}
         viewClass={viewClass}
         theme={theme}
       />

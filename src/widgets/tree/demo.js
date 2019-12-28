@@ -189,7 +189,7 @@ const data = [
 
 const config = {
   [Widget.Tree]: {
-    TreeWrap: {
+    Container: {
       normal: {
         width: 500,
       },
@@ -199,26 +199,51 @@ const config = {
       TreeItemWrap: {
         normal: {
           height: 50,
+          // border: {
+          //   top: { color: 'orange', style: 'solid', width: 1 },
+          // },
+          // padding: {
+          //   left: 10,
+          // },
+          background: {
+            color: '#FFAEB9',
+          },
+          opacity: 1,
+          borderRadius: getBorderRadius(10),
+        },
+        hover: {
+          background: {
+            color: '#EE2C2C',
+          },
+          opacity: 0.8,
+          borderRadius: getBorderRadius(40),
         },
       },
       SelectedTreeItemWrap: {},
       Text: {
         normal: {
+          height: 30,
           font: {
-            size: 16,
+            size: 20,
           },
-          border: {
-            bottom: { color: '#DBDBDB', style: 'solid', width: 1 },
+          padding: {
+            // left: 50,
           },
-          borderRadius: getBorderRadius(0),
-
-          background: {},
+          color: '#FFFF00',
+          // border: {
+          //   bottom: { color: '#DBDBDB', style: 'solid', width: 3 },
+          // },
+          borderRadius: getBorderRadius(20),
+          boxShadow: getBoxShadow('0 0 5px 5px #4d63ff'),
+          background: { color: 'orange' },
         },
         hover: {
           background: {
-            color: 'none',
+            color: '#EE1289',
           },
           color: '#4d63ff',
+          borderRadius: getBorderRadius(0),
+          boxShadow: getBoxShadow('0 0 5px 10px #CAFF70'),
         },
       },
       SelectedText: {
@@ -242,17 +267,46 @@ const config = {
           color: '#4d63ff',
         },
       },
+
+      PreIcon: {
+        normal: {
+          fontSize: 12,
+          color: 'red',
+        },
+        hover: {
+          fontSize: 20,
+          color: '#4d63ff',
+        },
+      },
+
+      SuffixIcon: {
+        normal: {
+          fontSize: 12,
+          color: 'red',
+        },
+        hover: {
+          fontSize: 20,
+          color: '#4d63ff',
+        },
+      },
+
       SubTreeWrap: {
         normal: {
           background: { color: '#F8F8FF' },
         },
       },
-      Checkbox: {
+
+      SwitchIcon: {
         normal: {
-          color: '#4d63ff',
+          font: {
+            size: 20,
+          },
+          color: 'red',
+        },
+        hover: {
+          color: 'blue',
         },
       },
-
       // Switch: {
       //   normal: {
       //     color: '#F51196',
@@ -278,6 +332,14 @@ const info = [
   {
     value: '北京分行',
     text: '北京分行',
+    icons: {
+      preIconClass: 'lugia-icon-financial_heart',
+      preIconSrc: '',
+      suffixIconClass: 'lugia-icon-financial_contacts',
+      suffixIconSrc: '',
+    },
+    icon: 'lugia-icon-direction_play_circle',
+
     children: [
       { value: '朝阳支行办事处', text: '朝阳支行办事处' },
       { value: '海淀支行办事处', text: '海淀支行办事处' },
@@ -329,8 +391,21 @@ export default () => {
         translateTreeData
         autoHeight
         parentIsHighlight
+        onlySelectLeaf
         // mutliple
-        __navmenu
+        // __navmenu
+        switchIconNames={switchIconNames}
+      />
+      <Tree
+        data={info}
+        expandAll
+        theme={config}
+        translateTreeData
+        autoHeight
+        parentIsHighlight
+        onlySelectLeaf
+        mutliple
+        // __navmenu
         switchIconNames={switchIconNames}
       />
     </div>

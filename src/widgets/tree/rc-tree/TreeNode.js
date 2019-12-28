@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Animate from 'rc-animate';
 import toArray from 'rc-util/lib/Children/toArray';
 import { contextTypes } from './Tree';
-import CommonIcon from '../../icon';
+import Icon from '../../icon';
 import CheckBox from '../../checkbox';
 import { deepMerge } from '@lugia/object-utils';
 import ThemeHoc from '@lugia/theme-hoc';
@@ -20,6 +20,7 @@ import {
   SuffixWrap,
   CheckboxContainer,
 } from '../../css/tree';
+import { mediumGreyColor, themeColor, lightGreyColor } from '../../css/stateColor';
 
 const defaultTitle = '---';
 
@@ -156,54 +157,65 @@ class TreeNode extends React.Component {
 
   renderSwitch(expandedState) {
     const { describe, mutliple, disabled, __navmenu, switchIconNames } = this.props;
+    const { viewClass, theme } = this.getIconTheme('SwitchIcon');
+
     if (describe) {
       return (
-        <NullSwitch themeProps={this.props.getPartOfThemeProps('Switch')}>
-          <CommonIcon iconClass={'lugia-icon-financial_omit'} />
+        <NullSwitch>
+          <Icon
+            viewClass={viewClass}
+            theme={theme}
+            singleTheme
+            iconClass={'lugia-icon-financial_omit'}
+          />
         </NullSwitch>
       );
     }
     if (mutliple || !describe || __navmenu) {
       const { open, close } = switchIconNames;
       const iconClass = expandedState === 'open' ? open : close;
-
       return (
-        <Switch
-          mutliple={mutliple}
-          disabled={disabled}
-          onClick={this.onExpand}
-          expandedState={expandedState}
-          themeProps={this.props.getPartOfThemeProps('Switch')}
-        >
-          <CommonIcon iconClass={iconClass} />
+        <Switch disabled={disabled} onClick={this.onExpand}>
+          <Icon
+            viewClass={viewClass}
+            theme={theme}
+            disabled={disabled}
+            singleTheme
+            iconClass={iconClass}
+          />
         </Switch>
       );
     }
 
     return (
-      <NullSwitch themeProps={this.props.getPartOfThemeProps('Switch')}>
-        <CommonIcon iconClass={'lugia-icon-financial_omit'} />
+      <NullSwitch>
+        <Icon
+          viewClass={viewClass}
+          theme={theme}
+          singleTheme
+          iconClass={'lugia-icon-financial_omit'}
+        />
       </NullSwitch>
     );
   }
 
-  renderCheckbox() {
+  renderCheckbox(channel: Object) {
     const {
       checked,
       halfChecked: indeterminate,
       title,
       disabled,
-      icon,
       mutliple,
       itemHeight,
     } = this.props;
+
     return (
       <TitleWrap
         disabled={disabled}
         themeProps={this.getThemeProps('Text', 'SelectedText', { mutliple, itemHeight })}
       >
         <CheckboxContainer>
-          {icon ? <CommonIcon iconClass={icon} /> : null}
+          {this.getPreIcon(channel)}
           <CheckBox
             {...this.getCheckBoxTheme()}
             checked={checked}
@@ -213,6 +225,7 @@ class TreeNode extends React.Component {
           >
             {title}
           </CheckBox>
+          {this.getSuffixIcon(channel)}
         </CheckboxContainer>
       </TitleWrap>
     );
@@ -236,16 +249,35 @@ class TreeNode extends React.Component {
   };
 
   getCheckBoxTheme() {
-    const defaultTheme = {
+    const defaultTheme = this.getCheckboxTextDefaultTheme();
+    return this.mergeTheme('Checkbox', defaultTheme);
+  }
+
+  getCheckboxTextDefaultTheme() {
+    const {
+      themeConfig: {
+        normal: { color: normalColor = mediumGreyColor, font: { size: normalSize = 13 } = {} } = {},
+        hover: { color: hoverColor = themeColor, font: { size: hoverSize = normalSize } = {} } = {},
+        disabled: { color: disabledColor, font: { size: disabledSize = normalSize } = {} } = {},
+      } = {},
+    } = this.getThemeProps('Text', 'SelectedText', {});
+
+    return {
       CheckboxText: {
         normal: {
-          font: { size: 13, fontWeight: 500 },
+          color: normalColor,
+          font: { size: normalSize, fontWeight: 500 },
         },
-        hover: { font: { size: 13, fontWeight: 500 } },
-        disabled: { font: { size: 13, fontWeight: 500 } },
+        hover: {
+          color: hoverColor,
+          font: { size: hoverSize, fontWeight: 500 },
+        },
+        disabled: {
+          color: disabledColor,
+          font: { size: disabledSize, fontWeight: 500 },
+        },
       },
     };
-    return this.mergeTheme('Checkbox', defaultTheme);
   }
 
   renderChildren(props) {
@@ -318,6 +350,85 @@ class TreeNode extends React.Component {
       : getPartOfThemeProps(defaultName, { props: params });
   }
 
+  getPreIcon(channel: Object) {
+    const { icon, icons = {}, disabled } = this.props;
+    if (!icon && !icons) {
+      return null;
+    }
+    const { preIconClass, preIconSrc } = icons;
+    if (!preIconClass && !preIconSrc) {
+      return null;
+    }
+    const { viewClass, theme } = this.getIconTheme('PreIcon');
+
+    const iconClass = preIconClass ? preIconClass : icon;
+    return (
+      <Icon
+        iconClass={iconClass}
+        src={preIconSrc}
+        disabled={disabled}
+        lugiaConsumers={channel.consumer}
+        singleTheme
+        viewClass={viewClass}
+        theme={theme}
+      />
+    );
+  }
+
+  getSuffixIcon(channel: Object) {
+    const { icon, icons = {}, disabled } = this.props;
+    if (!icon && !icons) {
+      return null;
+    }
+    const { suffixIconClass, suffixIconSrc } = icons;
+    if (!suffixIconClass && !suffixIconSrc) {
+      return null;
+    }
+
+    const { viewClass, theme } = this.getIconTheme('SuffixIcon');
+
+    return (
+      <Icon
+        iconClass={suffixIconClass}
+        src={suffixIconSrc}
+        lugiaConsumers={channel.consumer}
+        singleTheme
+        disabled={disabled}
+        viewClass={viewClass}
+        theme={theme}
+      />
+    );
+  }
+
+  getIconTheme = (iconType: string) => {
+    const { viewClass, theme } = this.props.getPartOfThemeHocProps(iconType);
+    const marginLeft = iconType === 'SuffixIcon' || 'SwitchIcon' ? 3 : 0;
+    const marginRight = iconType === 'PreIcon' || 'SwitchIcon' ? 3 : 0;
+    const defaultTheme = {
+      normal: {
+        margin: {
+          left: marginLeft,
+          right: marginRight,
+        },
+        getCSS: () => {
+          return `
+          transition: all 0.3s
+          `;
+        },
+      },
+    };
+
+    return {
+      viewClass,
+      theme: deepMerge(
+        {
+          [viewClass]: { ...defaultTheme },
+        },
+        theme
+      ),
+    };
+  };
+
   render() {
     const { props } = this;
     const {
@@ -328,7 +439,6 @@ class TreeNode extends React.Component {
       inlineType,
       pos,
       describe = false,
-      icon,
       color,
       isLeaf,
       title,
@@ -342,7 +452,6 @@ class TreeNode extends React.Component {
       switchAtEnd,
     } = this.props;
     const expandedState = expanded ? 'open' : 'close';
-
     let canRenderSwitch = true;
     const content = props.title;
     let newChildren = this.renderChildren(props);
@@ -362,7 +471,7 @@ class TreeNode extends React.Component {
       inlineType,
       __navmenu,
     });
-    const selectHandle = () => {
+    const selectHandle = (channel: Object) => {
       const title = (
         <TitleSpan
           themeProps={TextThemeProps}
@@ -373,8 +482,9 @@ class TreeNode extends React.Component {
           title={content}
           height={itemHeight}
         >
-          {icon ? <CommonIcon iconClass={icon} /> : null}
+          {this.getPreIcon(channel)}
           {content}
+          {this.getSuffixIcon(channel)}
         </TitleSpan>
       );
       const domProps = {
@@ -414,6 +524,7 @@ class TreeNode extends React.Component {
           selected={selected}
           describe={describe}
           disabled={disabled}
+          {...channel.provider}
         >
           {title}
         </TitleWrap>
@@ -430,9 +541,16 @@ class TreeNode extends React.Component {
     }
 
     const renderNoopSwitch = () => {
+      const { viewClass, theme } = this.getIconTheme('SwitchIcon');
+
       return (
-        <NullSwitch themeProps={this.props.getPartOfThemeProps('Switch')}>
-          <CommonIcon iconClass={'lugia-icon-financial_omit'} />
+        <NullSwitch>
+          <Icon
+            viewClass={viewClass}
+            theme={theme}
+            singleTheme
+            iconClass={'lugia-icon-financial_omit'}
+          />
         </NullSwitch>
       );
     };
@@ -458,28 +576,29 @@ class TreeNode extends React.Component {
     };
 
     const ItemWrap = __navmenu ? NavLi : Li;
+    const channel = this.props.createEventChannel(['active', 'hover', 'disabled']);
     return (
       <ItemWrap
         themeProps={TreeItemWrapThemeProps}
         unselectable="on"
         inlineType={inlineType}
         {...liProps}
-        pos={pos}
+        // pos={pos}
         isLeaf={isLeaf}
         selected={selected}
         title={title}
         color={color}
         height={itemHeight}
       >
-        <FlexWrap themeProps={TreeItemWrapThemeProps}>
-          <FlexBox themeProps={TreeItemWrapThemeProps}>
+        <FlexWrap disabled={disabled} themeProps={TreeItemWrapThemeProps}>
+          <FlexBox disabled={disabled} themeProps={TreeItemWrapThemeProps}>
             {(!showSwitch && !mutliple) || __navmenu || switchAtEnd
               ? null
               : canRenderSwitch
               ? this.renderSwitch(expandedState)
               : renderNoopSwitch()}
 
-            {props.checkable ? this.renderCheckbox() : selectHandle()}
+            {props.checkable ? this.renderCheckbox(channel) : selectHandle(channel)}
             {renderSuffix()}
 
             {(switchAtEnd || __navmenu) && canRenderSwitch
