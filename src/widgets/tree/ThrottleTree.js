@@ -127,6 +127,7 @@ class ScrollerTree extends React.Component<any, any> {
         isLeaf,
         describe = false,
         icon,
+        icons,
         suffix,
       } = item;
 
@@ -155,6 +156,7 @@ class ScrollerTree extends React.Component<any, any> {
             selectable={selectable}
             onlySelectLeaf={onlySelectLeaf}
             icon={icon}
+            icons={icons}
           >
             {this.loopNode(children)}
           </TreeNode>
@@ -188,7 +190,7 @@ class ScrollerTree extends React.Component<any, any> {
   };
 }
 
-export default ThrottleScroller(ScrollerTree, TreeItemHeight, 'TreeWrap', [
+export default ThrottleScroller(ScrollerTree, TreeItemHeight, 'Container', [
   'TreeItem',
   'TreeItemWrap',
 ]);

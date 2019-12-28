@@ -23,45 +23,22 @@ export const TreeItemHeight = 35;
 export const DefaultHeight = 250;
 export const ItemBackgroundColor = '#edf0fe';
 
-export const Switch = CSSComponent({
+export const Switch = StaticComponent({
   tag: 'span',
   className: 'Switch',
-  normal: {
-    selectNames: [['color'], ['font']],
-  },
-  hover: {
-    selectNames: [['color'], ['font']],
-  },
-  active: {
-    selectNames: [['color'], ['font']],
-  },
-  disabled: {
-    selectNames: [['color'], ['font']],
-  },
   css: css`
     font-size: ${px2remcss(14)};
     color: ${mediumGreyColor};
     display: inline-block;
     padding: 0 ${px2remcss(5)};
-    vertical-align: top;
-    transition: all 0.3s;
   `,
   option: { hover: true, active: true },
 });
 Switch.displayName = 'switcherButton';
 
-export const NullSwitch = CSSComponent({
+export const NullSwitch = StaticComponent({
   extend: Switch,
   className: 'NullSwitch',
-  normal: {
-    selectNames: [],
-  },
-  hover: {
-    selectNames: [],
-  },
-  active: {
-    selectNames: [],
-  },
   css: css`
     opacity: 0;
   `,
@@ -89,7 +66,8 @@ export const TreeUl = CSSComponent({
   css: css`
     margin: 0;
     overflow: hidden;
-    transition: all 0.3s;
+    transition-property: background-color, border, borderRadius, opacity, boxShadow;
+    transition-duration: 0.3s;
     position: relative;
     box-sizing: border-box;
   `,
@@ -188,7 +166,8 @@ export const SubTreeWrap = CSSComponent({
   css: css`
     margin: 0;
     overflow: hidden;
-    transition: all 0.3s;
+    transition-property: background-color, border, borderRadius, opacity, boxShadow;
+    transition-duration: 0.3s;
   `,
   option: { hover: true },
 });
@@ -215,9 +194,9 @@ export const TitleWrap = CSSComponent({
       ['color'],
       ['font'],
       ['background'],
-      ['padding', 'left'],
-      ['padding', 'right'],
+      ['padding'],
       ['border'],
+      ['opacity'],
       ['boxShadow'],
       ['borderRadius'],
     ],
@@ -239,7 +218,16 @@ export const TitleWrap = CSSComponent({
     },
   },
   hover: {
-    selectNames: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
+    selectNames: [
+      ['color'],
+      ['font'],
+      ['fontSize'],
+      ['background'],
+      ['border'],
+      ['opacity'],
+      ['boxShadow'],
+      ['borderRadius'],
+    ],
     getThemeMeta: (themeMeta, themeProps) => {
       const { propsConfig } = themeProps;
       const { mutliple } = propsConfig;
@@ -253,10 +241,30 @@ export const TitleWrap = CSSComponent({
     },
   },
   active: {
-    selectNames: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
+    selectNames: [
+      ['color'],
+      ['font'],
+      ['fontSize'],
+      ['background'],
+      ['border'],
+      ['opacity'],
+      ['boxShadow'],
+      ['borderRadius'],
+    ],
   },
   disabled: {
-    selectNames: [['color'], ['font'], ['background'], ['border'], ['borderRadius']],
+    selectNames: [
+      ['height'],
+      ['color'],
+      ['font'],
+      ['fontSize'],
+      ['background'],
+      ['padding'],
+      ['border'],
+      ['opacity'],
+      ['boxShadow'],
+      ['borderRadius'],
+    ],
     defaultTheme: {
       cursor: 'not-allowed',
       color: lightGreyColor,
@@ -268,13 +276,17 @@ export const TitleWrap = CSSComponent({
 
   css: css`
     flex: 1;
-    overflow: hidden;
-    display: inline-block;
+    display: flex;
+    align-items: center;
     height: 100%;
     vertical-align: top;
     padding-left: ${px2remcss(10)};
-    transition: all 0.2s;
     box-sizing: border-box;
+    transition-property: background-color, border, border-radius, opacity, box-shadow;
+    transition-duration: 0.2s;
+    & span {
+      vertical-align: middle;
+    }
   `,
   option: { hover: true, active: true, diabled: true },
 });
@@ -299,9 +311,10 @@ export const TitleSpan = CSSComponent({
   },
   css: css`
     opacity: 1;
-    position: relative;
-    top: 50%;
-    transform: translate(0, -50%);
+    transition: all 0.3s;
+    & > i {
+      vertical-align: middle;
+    }
   `,
 });
 
@@ -312,8 +325,9 @@ export const CheckboxContainer = StaticComponent({
   className: 'CheckboxContainer',
   css: css`
     position: relative;
-    top: 50%;
-    transform: translate(0, -50%);
+    & label {
+      vertical-align: middle;
+    }
   `,
 });
 
@@ -326,7 +340,14 @@ export const FlexWrap = CSSComponent({
   tag: 'div',
   className: 'FlexWrap',
   normal: {
-    selectNames: [['background'], ['height'], ['border'], ['borderRadius'], ['opacity']],
+    selectNames: [
+      ['background'],
+      ['height'],
+      ['border'],
+      ['borderRadius'],
+      ['opacity'],
+      ['cursor'],
+    ],
     getCSS: (themeMeta, themeProps) => {
       const { pos, itemHeight } = themeProps.propsConfig;
       const paddingLeft = getFlexBoxPaddingLeft(pos);
@@ -342,11 +363,22 @@ export const FlexWrap = CSSComponent({
   active: {
     selectNames: [['background'], ['border'], ['borderRadius'], ['opacity']],
   },
+  disabled: {
+    selectNames: [['background'], ['border'], ['borderRadius'], ['opacity'], ['cursor']],
+    defaultTheme: {
+      cursor: 'not-allowed',
+      color: lightGreyColor,
+      font: {
+        fontWeight: 500,
+      },
+    },
+  },
   css: css`
-    transition: all 0.3s;
     cursor: pointer;
     box-sizing: border-box;
     overflow: hidden;
+    transition-property: background-color, border, border-radius, opacity, box-shadow;
+    transition-duration: 0.3s;
   `,
   option: { hover: true, active: true },
 });
@@ -355,13 +387,16 @@ export const FlexBox = CSSComponent({
   tag: 'div',
   className: 'FlexBox',
   normal: {
-    selectNames: [['padding', 'left'], ['padding', 'right']],
+    selectNames: [['padding']],
   },
   hover: {
     selectNames: [],
   },
   active: {
     selectNames: [],
+  },
+  disabled: {
+    selectNames: [['padding']],
   },
   css: css`
     display: flex;
@@ -385,6 +420,5 @@ export const SuffixWrap = StaticComponent({
     justify-content: center;
     align-items: center;
     z-index: 100;
-    transition: all 0.5s;
   `,
 });
