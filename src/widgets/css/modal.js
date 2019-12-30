@@ -33,6 +33,8 @@ export type ModalProps = {
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
   mask?: boolean,
+  okButtonProps?: Object,
+  cancelButtonProps?: Object,
 } & FunctionPropsType;
 export type ModalState = {
   visible: boolean,

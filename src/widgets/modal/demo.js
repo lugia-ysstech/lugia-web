@@ -174,6 +174,8 @@ export default class ModalDemo extends React.Component<any, any> {
           title="这是标题！"
           onOk={this.buttonClick(4)}
           onCancel={this.buttonClick(4)}
+          okButtonProps={{ type: 'success' }}
+          cancelButtonProps={{ type: 'danger' }}
         >
           这是内容！
         </Modal>
