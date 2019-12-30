@@ -122,6 +122,8 @@ export default ThemeProvider(
         iconType = 'info',
         getTheme,
         mask = true,
+        okButtonProps = {},
+        cancelButtonProps = {},
         getPartOfThemeProps,
         getPartOfThemeHocProps,
       } = this.props;
@@ -174,6 +176,7 @@ export default ThemeProvider(
                         loading={confirmLoading}
                         {...footerBtnProps}
                         {...getPartOfThemeHocProps('ModalOkButton')}
+                        {...okButtonProps}
                       >
                         {okText}
                       </Button>
@@ -182,6 +185,7 @@ export default ThemeProvider(
                       <Button
                         onClick={this.handleCancel}
                         {...getPartOfThemeHocProps('ModalCancelButton')}
+                        {...cancelButtonProps}
                       >
                         {cancelText}
                       </Button>
