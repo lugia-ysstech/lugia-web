@@ -10,7 +10,7 @@
     "dashed": {
       "type": "boolean",
       "desc": "分割线是否是虚线",
-      "defaultValue": false
+      "propsDefaultValue": false
     },
     "content": {
       "type": "string",
@@ -19,7 +19,7 @@
     "type": {
       "type": "DividerType",
       "desc": "分割线的风格 水平或者 垂直",
-      "defaultValue": "horizontal"
+      "propsDefaultValue": "horizontal"
     }
   },
   "type": {
