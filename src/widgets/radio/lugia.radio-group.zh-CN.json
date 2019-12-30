@@ -282,16 +282,12 @@
             ["boxShadow"],
             ["width"],
             ["height"]
-          ],
-          "hover": [["background"], ["borderRadius"], ["border"]],
-          "disabled": [["background"], ["borderRadius"], ["border"]]
+          ]
         },
         "RadioInnerChecked": {
           "name": "选中内框样式",
           "desc": "选中内框样式",
-          "normal": [["background"], ["width"], ["height"]],
-          "hover": [["background"]],
-          "disabled": [["background"]]
+          "normal": [["background"], ["width"], ["height"]]
         },
         "RadioEdgeCancel": {
           "name": "取消状态外框样式",
