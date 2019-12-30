@@ -16,10 +16,18 @@
       "desc": "取消按钮文字",
       "defaultValue": "取消"
     },
+    "cancelButtonProps": {
+      "type": "Object",
+      "desc": "取消按钮 props "
+    },
     "okText": {
       "type": "string",
       "desc": "确认按钮文字",
       "defaultValue": "确定"
+    },
+    "okButtonProps": {
+      "type": "Object",
+      "desc": "确认按钮 props "
     },
     "confirmLoading": {
       "type": "boolean",
