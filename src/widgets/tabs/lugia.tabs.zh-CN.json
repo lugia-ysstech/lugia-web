@@ -178,7 +178,15 @@
         "ContentBlock": {
           "name": "内容区域",
           "desc": "内容区域的样式配置",
-          "normal": [["background"], ["padding"], ["height"]]
+          "normal": [
+            ["background"],
+            ["padding"],
+            ["height"],
+            ["boxShadow"],
+            ["border"],
+            ["borderRadius"],
+            ["textAlign"]
+          ]
         },
         "AddButton": {
           "name": "新增按钮",
@@ -271,7 +279,15 @@
         "ContentBlock": {
           "name": "内容区域",
           "desc": "内容区域的样式配置",
-          "normal": [["background"], ["padding"], ["height"]]
+          "normal": [
+            ["background"],
+            ["padding"],
+            ["height"],
+            ["boxShadow"],
+            ["border"],
+            ["borderRadius"],
+            ["textAlign"]
+          ]
         },
         "AddButton": {
           "name": "新增按钮",
@@ -350,7 +366,8 @@
         ["height"],
         ["boxShadow"],
         ["border"],
-        ["borderRadius"]
+        ["borderRadius"],
+        ["textAlign"]
       ]
     },
     "TitleContainer": {
