@@ -17,6 +17,7 @@ export const {
   spiritColor,
   mouseDownColor,
   lightGreyColor,
+  transitionTime,
 } = colorsFunc();
 
 export const TreeItemHeight = 35;
@@ -66,8 +67,8 @@ export const TreeUl = CSSComponent({
   css: css`
     margin: 0;
     overflow: hidden;
-    transition-property: background-color, border, borderRadius, opacity, boxShadow;
-    transition-duration: 0.3s;
+    transition-property: background-color, border, border-radius, opacity, box-shadow;
+    transition-duration: ${transitionTime};
     position: relative;
     box-sizing: border-box;
   `,
@@ -104,7 +105,7 @@ const getLiIcon = (inlineType, itemHeight, selected) => {
     border-radius: ${px2remcss(4)};
     height: ${px2remcss(itemHeight)};
     background: ${themeColor};
-    transition: all 0.3s;
+    transition: all ${transitionTime};
     position: absolute;
     left: 0;
     top: 0;
@@ -167,7 +168,7 @@ export const SubTreeWrap = CSSComponent({
     margin: 0;
     overflow: hidden;
     transition-property: background-color, border, borderRadius, opacity, boxShadow;
-    transition-duration: 0.3s;
+    transition-duration: ${transitionTime};
   `,
   option: { hover: true },
 });
@@ -311,7 +312,7 @@ export const TitleSpan = CSSComponent({
   },
   css: css`
     opacity: 1;
-    transition: all 0.3s;
+    transition: all ${transitionTime};
     & > i {
       vertical-align: middle;
     }
@@ -378,7 +379,7 @@ export const FlexWrap = CSSComponent({
     box-sizing: border-box;
     overflow: hidden;
     transition-property: background-color, border, border-radius, opacity, box-shadow;
-    transition-duration: 0.3s;
+    transition-duration: ${transitionTime};
   `,
   option: { hover: true, active: true },
 });
