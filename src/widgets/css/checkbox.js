@@ -148,7 +148,7 @@ export const CheckBoxLabelSpan = CSSComponent({
     vertical-align: middle;
   `,
   normal: {
-    selectNames: [['color'], ['font']],
+    selectNames: [['color'], ['font'], ['padding']],
     defaultTheme: {
       color: blackColor,
       font: { size: 14 },
