@@ -27,9 +27,12 @@ import ThemeHoc from '@lugia/theme-hoc';
 import { deepMerge } from '@lugia/object-utils';
 
 const InputContainer = CSSComponent({
-  tag: 'div',
+  tag: 'span',
   className: 'AmountInputContainer',
   normal: {
+    defaultTheme: {
+      width: '100%',
+    },
     selectNames: [['width'], ['height'], ['margin']],
   },
   css: css`
