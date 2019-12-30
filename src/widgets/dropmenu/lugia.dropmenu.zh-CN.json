@@ -229,27 +229,27 @@
           "name": "前置图标配置",
           "desc": "前置图标或图片的样式配置",
           "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
-          "hover": [["color"], ["fontSize"]],
-          "active": [["color"], ["fontSize"]],
-          "disabled": [["color"], ["fontSize"], ["cursor"]]
+          "hover": [["color"], ["font"], ["fontSize"]],
+          "active": [["color"], ["font"], ["fontSize"]],
+          "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
         },
 
         "SuffixIcon": {
           "name": "后缀图标配置",
           "desc": "后缀图标或图片的样式配置",
           "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
-          "hover": [["color"], ["fontSize"]],
-          "active": [["color"], ["fontSize"]],
-          "disabled": [["color"], ["fontSize"], ["cursor"]]
+          "hover": [["color"], ["font"], ["fontSize"]],
+          "active": [["color"], ["font"], ["fontSize"]],
+          "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
         },
 
         "SwitchIcon": {
           "name": "下拉图标配置",
           "desc": "下拉图标配置的样式配置",
           "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
-          "hover": [["color"], ["fontSize"]],
-          "active": [["color"], ["fontSize"]],
-          "disabled": [["color"], ["fontSize"], ["cursor"]]
+          "hover": [["color"], ["font"], ["fontSize"]],
+          "active": [["color"], ["font"], ["fontSize"]],
+          "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
         },
 
         "TextContainer": {
@@ -299,68 +299,87 @@
                   "desc": "配置每一项的外盒",
                   "normal": [
                     ["height"],
-                    ["background"],
+                    ["color"],
+                    ["font"],
+                    ["fontSize"],
+                    ["cursor"],
                     ["border"],
                     ["borderRadius"],
+                    ["padding"],
+                    ["background"],
                     ["opacity"],
-                    ["color"],
-                    ["padding"]
+                    ["boxShadow"]
                   ],
                   "hover": [
+                    ["color"],
+                    ["font"],
+                    ["fontSize"],
                     ["background"],
+                    ["opacity"],
                     ["border"],
                     ["borderRadius"],
-                    ["opacity"],
-                    ["color"],
-                    ["font"]
+                    ["boxShadow"]
                   ],
                   "active": [
+                    ["color"],
+                    ["font"],
+                    ["fontSize"],
                     ["background"],
+                    ["opacity"],
                     ["border"],
                     ["borderRadius"],
-                    ["opacity"],
-                    ["color"],
-                    ["font"]
+                    ["boxShadow"]
                   ],
                   "disabled": [
-                    ["background"],
                     ["color"],
+                    ["font"],
+                    ["cursor"],
                     ["borderRadius"],
-                    ["opacity"],
                     ["padding"],
-                    ["font"]
+                    ["fontSize"],
+                    ["background"],
+                    ["opacity"]
                   ]
                 },
                 "SelectedMenuItemWrap": {
                   "name": "选中项的外盒",
                   "desc": "配置选中项的外盒",
                   "normal": [
-                    ["background"],
+                    ["height"],
+                    ["color"],
+                    ["font"],
+                    ["fontSize"],
+                    ["cursor"],
                     ["border"],
                     ["borderRadius"],
-                    ["opacity"],
-                    ["color"],
                     ["padding"],
-                    ["font"]
+                    ["background"],
+                    ["opacity"],
+                    ["boxShadow"]
                   ],
                   "hover": [
+                    ["color"],
+                    ["font"],
+                    ["fontSize"],
                     ["background"],
+                    ["opacity"],
                     ["border"],
                     ["borderRadius"],
-                    ["opacity"],
-                    ["color"],
-                    ["font"]
+                    ["boxShadow"]
                   ],
                   "active": [
+                    ["color"],
+                    ["font"],
+                    ["fontSize"],
                     ["background"],
+                    ["opacity"],
                     ["border"],
                     ["borderRadius"],
-                    ["opacity"],
-                    ["color"],
-                    ["font"]
+                    ["boxShadow"]
                   ],
                   "disabled": []
                 },
+
                 "Divider": {
                   "name": "分割线",
                   "desc": "配置每项之间的分割线，当divided为true时生效",
@@ -368,6 +387,52 @@
                   "hover": [],
                   "active": [],
                   "disabled": []
+                },
+
+                "PreIcon": {
+                  "name": "前置图标配置",
+                  "desc": "前置图标或图片的样式配置",
+                  "normal": [
+                    ["color"],
+                    ["margin"],
+                    ["fontSize"],
+                    ["font"],
+                    ["padding"],
+                    ["cursor"]
+                  ],
+                  "hover": [["color"], ["font"], ["fontSize"]],
+                  "active": [["color"], ["font"], ["fontSize"]],
+                  "disabled": [
+                    ["color"],
+                    ["margin"],
+                    ["fontSize"],
+                    ["font"],
+                    ["padding"],
+                    ["cursor"]
+                  ]
+                },
+
+                "SuffixIcon": {
+                  "name": "后缀图标配置",
+                  "desc": "后缀图标或图片的样式配置",
+                  "normal": [
+                    ["color"],
+                    ["margin"],
+                    ["fontSize"],
+                    ["font"],
+                    ["padding"],
+                    ["cursor"]
+                  ],
+                  "hover": [["color"], ["font"], ["fontSize"]],
+                  "active": [["color"], ["font"], ["fontSize"]],
+                  "disabled": [
+                    ["color"],
+                    ["margin"],
+                    ["fontSize"],
+                    ["font"],
+                    ["padding"],
+                    ["cursor"]
+                  ]
                 }
               }
             }
@@ -419,18 +484,18 @@
       "name": "前置图标配置",
       "desc": "前置图标或图片的样式配置",
       "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
-      "hover": [["color"], ["fontSize"]],
-      "active": [["color"], ["fontSize"]],
-      "disabled": [["color"], ["fontSize"], ["cursor"]]
+      "hover": [["color"], ["font"], ["fontSize"]],
+      "active": [["color"], ["font"], ["fontSize"]],
+      "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
     },
 
     "SuffixIcon": {
       "name": "后缀图标配置",
       "desc": "后缀图标或图片的样式配置",
       "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
-      "hover": [["color"], ["fontSize"]],
-      "active": [["color"], ["fontSize"]],
-      "disabled": [["color"], ["fontSize"], ["cursor"]]
+      "hover": [["color"], ["font"], ["fontSize"]],
+      "active": [["color"], ["font"], ["fontSize"]],
+      "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
     },
 
     "TextContainer": {
@@ -484,9 +549,9 @@
       "name": "下拉图标配置",
       "desc": "下拉图标配置的样式配置",
       "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
-      "hover": [["color"], ["fontSize"]],
-      "active": [["color"], ["fontSize"]],
-      "disabled": [["color"], ["fontSize"], ["cursor"]]
+      "hover": [["color"], ["font"], ["fontSize"]],
+      "active": [["color"], ["font"], ["fontSize"]],
+      "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
     },
 
     "SwitchIconContainer": {
@@ -569,68 +634,87 @@
               "desc": "配置每一项的外盒",
               "normal": [
                 ["height"],
-                ["background"],
+                ["color"],
+                ["font"],
+                ["fontSize"],
+                ["cursor"],
                 ["border"],
                 ["borderRadius"],
+                ["padding"],
+                ["background"],
                 ["opacity"],
-                ["color"],
-                ["padding"]
+                ["boxShadow"]
               ],
               "hover": [
+                ["color"],
+                ["font"],
+                ["fontSize"],
                 ["background"],
+                ["opacity"],
                 ["border"],
                 ["borderRadius"],
-                ["opacity"],
-                ["color"],
-                ["font"]
+                ["boxShadow"]
               ],
               "active": [
+                ["color"],
+                ["font"],
+                ["fontSize"],
                 ["background"],
+                ["opacity"],
                 ["border"],
                 ["borderRadius"],
-                ["opacity"],
-                ["color"],
-                ["font"]
+                ["boxShadow"]
               ],
               "disabled": [
-                ["background"],
                 ["color"],
+                ["font"],
+                ["cursor"],
                 ["borderRadius"],
-                ["opacity"],
                 ["padding"],
-                ["font"]
+                ["fontSize"],
+                ["background"],
+                ["opacity"]
               ]
             },
             "SelectedMenuItemWrap": {
               "name": "选中项的外盒",
               "desc": "配置选中项的外盒",
               "normal": [
-                ["background"],
+                ["height"],
+                ["color"],
+                ["font"],
+                ["fontSize"],
+                ["cursor"],
                 ["border"],
                 ["borderRadius"],
-                ["opacity"],
-                ["color"],
                 ["padding"],
-                ["font"]
+                ["background"],
+                ["opacity"],
+                ["boxShadow"]
               ],
               "hover": [
+                ["color"],
+                ["font"],
+                ["fontSize"],
                 ["background"],
+                ["opacity"],
                 ["border"],
                 ["borderRadius"],
-                ["opacity"],
-                ["color"],
-                ["font"]
+                ["boxShadow"]
               ],
               "active": [
+                ["color"],
+                ["font"],
+                ["fontSize"],
                 ["background"],
+                ["opacity"],
                 ["border"],
                 ["borderRadius"],
-                ["opacity"],
-                ["color"],
-                ["font"]
+                ["boxShadow"]
               ],
               "disabled": []
             },
+
             "Divider": {
               "name": "分割线",
               "desc": "配置每项之间的分割线，当divided为true时生效",
@@ -638,6 +722,24 @@
               "hover": [],
               "active": [],
               "disabled": []
+            },
+
+            "PreIcon": {
+              "name": "前置图标配置",
+              "desc": "前置图标或图片的样式配置",
+              "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+              "hover": [["color"], ["font"], ["fontSize"]],
+              "active": [["color"], ["font"], ["fontSize"]],
+              "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+            },
+
+            "SuffixIcon": {
+              "name": "后缀图标配置",
+              "desc": "后缀图标或图片的样式配置",
+              "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+              "hover": [["color"], ["font"], ["fontSize"]],
+              "active": [["color"], ["font"], ["fontSize"]],
+              "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
             }
           }
         }
