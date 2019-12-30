@@ -67,15 +67,21 @@
     },
     "addIcon": {
       "type": "icon",
-      "desc": "增加按钮图标配置"
+      "desc": "增加按钮图标配置",
+      "propsDefaultValue": "lugia-icon-reminder_plus"
     },
     "deleteIcon": {
       "type": "icon",
-      "desc": "删除图标配置"
+      "desc": "删除图标配置",
+      "propsDefaultValue": "lugia-icon-reminder_close"
     },
     "pageArrowIcon": {
       "type": "object",
       "desc": "翻页图标配置",
+      "propsDefaultValue": {
+        "preIcon": "lugia-icon-direction_Left",
+        "suffixIcon": "lugia-icon-direction_right"
+      },
       "meta": [
         { "key": "preIcon", "title": "上一页图标", "type": "icon" },
         { "key": "suffixIcon", "title": "下一页图标", "type": "icon" }
