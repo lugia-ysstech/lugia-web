@@ -158,6 +158,7 @@ const InputDemo = () => {
       InputSuffix: { normal: { color: 'red', fontSize: 12 } },
       InputPrefix: { normal: { color: 'pink', fontSize: 16 } },
       ClearButton: { normal: { color: 'red', fontSize: 14 } },
+      ValidateErrorText: { normal: { color: 'pink', fontSize: 16 } },
     },
   };
   const textarea = {
@@ -220,10 +221,12 @@ const InputDemo = () => {
         <Input placeholder={'请填写金额'} formatter={formatter} parser={parser} />
       </Wrapper>
       <Wrapper>
-        <p>校验信息显示类型 top 输入值 是否含有a</p>
-        <TopInput validateType="top" onChange={onChange('limit')} />
-        <p>校验信息显示类型 bottom 输入值 是否含有a</p>
-        <ValidateInput validateType="bottom" onChange={onChange('limit')} />
+        <Theme config={register}>
+          <p>校验信息显示类型 top 输入值 是否含有a</p>
+          <TopInput validateType="top" onChange={onChange('limit')} />
+          <p>校验信息显示类型 bottom 输入值 是否含有a</p>
+          <ValidateInput validateType="bottom" onChange={onChange('limit')} />
+        </Theme>
         <p>校验信息显示类型 inner 输入值 是否含有a </p>
         <ValidateInput validateType="inner" onChange={onChange('limit')} />
       </Wrapper>
