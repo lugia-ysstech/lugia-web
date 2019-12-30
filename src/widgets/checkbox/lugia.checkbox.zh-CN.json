@@ -76,7 +76,7 @@
     "CheckboxText": {
       "name": "文字样式",
       "desc": "文字样式",
-      "normal": [["color"], ["font"]],
+      "normal": [["color"], ["font"], ["padding"]],
       "hover": [["color"], ["font"]],
       "disabled": [["color"], ["font"]]
     },
