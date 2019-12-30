@@ -30,15 +30,20 @@ const TabContentContainer = CSSComponent({
       ['boxShadow'],
       ['border'],
       ['borderRadius'],
+      ['textAlign'],
     ],
     getCSS: (theme: Object, themeProps: Object) => {
       const {
         propsConfig: { tabPosition },
       } = themeProps;
+      const { textAlign = 'left' } = theme;
+      const textAlignStyle = `text-align:${textAlign};`;
+      let flex = null;
       if (isVertical(tabPosition)) {
-        return 'flex: 1 1 auto;';
+        flex = 'flex: 1 1 auto;';
       }
-      return '';
+      return `${textAlignStyle}
+      ${flex}`;
     },
   },
   disabled: {

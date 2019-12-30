@@ -917,6 +917,7 @@ export default class TabsDemo extends React.Component<any, any> {
             boxShadow: { x: 0, y: 0, color: '#ffb69e', type: 'outset', blur: 6, spread: 3 },
             border: getBorder({ color: 'blue', width: 1, style: 'solid' }),
             borderRadius: getBorderRadius(20),
+            textAlign: 'center',
           },
         },
         BorderStyle: {
