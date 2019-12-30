@@ -167,7 +167,7 @@ export const SubTreeWrap = CSSComponent({
   css: css`
     margin: 0;
     overflow: hidden;
-    transition-property: background-color, border, borderRadius, opacity, boxShadow;
+    transition-property: background-color, border, border-radius, opacity, box-shadow;
     transition-duration: ${transitionTime};
   `,
   option: { hover: true },
@@ -289,7 +289,7 @@ export const TitleWrap = CSSComponent({
       vertical-align: middle;
     }
   `,
-  option: { hover: true, active: true, diabled: true },
+  option: { hover: true, active: true, disabled: true },
 });
 
 export const TitleSpan = CSSComponent({
