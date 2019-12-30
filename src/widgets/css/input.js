@@ -7,29 +7,13 @@
 import type { ThemeType } from '@lugia/lugia-web';
 import colorsFunc from '../css/stateColor';
 
-const { themeColor, disableColor, dangerColor, lightGreyColor } = colorsFunc();
+const { disableColor } = colorsFunc();
 
-export const getInputBorderColor = (props: Object) => {
-  const { validateStatus = Success } = props;
-  return isSuccess(validateStatus) ? lightGreyColor : dangerColor;
-};
 const Success = 'success';
 
-export function isSuccess(validateStatus: ValidateStatus) {
+export function isValidateSuccess(validateStatus: ValidateStatus) {
   return validateStatus === Success;
 }
-
-export const getInputBorderHoverColor = (props: Object) => {
-  const { validateStatus = Success, theme, disabled } = props;
-  const { borderColor } = theme;
-  return borderColor
-    ? borderColor
-    : disabled
-    ? lightGreyColor
-    : isSuccess(validateStatus)
-    ? themeColor
-    : dangerColor;
-};
 
 export const FontSize = 1.2;
 export const RadiusSize = 4;
@@ -43,7 +27,7 @@ export const DefaultAmountPrefix = '¥';
 export type ValidateStatus = 'success' | 'error';
 
 export type InputSize = 'small' | 'default' | 'large';
-export type InputValidateType = 'top' | 'bottom' | 'inner' | 'default';
+export type ValidateType = 'top' | 'bottom' | 'inner' | 'default';
 export type ResizeType = 'both' | 'horizontal' | 'vertical' | 'none';
 
 type CommonInputProps = {
@@ -51,7 +35,7 @@ type CommonInputProps = {
   size?: InputSize,
   prefix?: React$Element<any>,
   disabled: boolean,
-  validateType: InputValidateType,
+  validateType: ValidateType,
   validateStatus: ValidateStatus,
   themeProps: Object,
 };
@@ -62,15 +46,14 @@ export const getBackground = (props: CommonInputProps) => {
   return `background:${disabled === true ? disableColor : backgroundColor ? backgroundColor : ''}`;
 };
 
-export const getCursor = (props: CommonInputProps) => {
-  const { disabled } = props;
-  return `cursor:${disabled ? 'not-allowed' : 'text'}`;
-};
-
-export function isValidateSuccess(
+export function checkValidateResultFromStatusAndType(
   validateStatus: ValidateStatus,
-  validateType: InputValidateType,
-  expType: InputValidateType
+  expStatus: ValidateStatus,
+  validateType: ValidateType,
+  expType: ValidateType
 ): boolean {
-  return validateStatus === 'error' && expType === validateType;
+  return validateStatus === expStatus && checkValidateType(validateType, expType);
+}
+export function checkValidateType(validateType: ValidateType, expType: ValidateType): boolean {
+  return expType === validateType;
 }
