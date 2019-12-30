@@ -2,14 +2,16 @@
 
 exports[`Input props: getTheme: width:100,margin:10, 1`] = `
 .c1 {
+  box-sizing: border-box;
   line-height: 1.5;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   outline: none;
-  width: 20rem;
-  height: 3.2rem;
+  height: 100%;
+  width: 100%;
+  font-size: 1.2rem;
   cursor: text;
   border-top-width: 0.1rem;
   border-top-style: solid;
@@ -31,33 +33,43 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
 
 .c1::-webkit-input-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c1::-moz-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c1:-ms-input-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c1::placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c0 {
   position: relative;
   display: inline-block;
   outline: none;
+  min-width: 3rem;
+  width: 100%;
 }
 
-<div
+<span
   className="c0"
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "height": "3.2rem",
+    }
+  }
 >
   <input
     autoFocus={false}
@@ -74,7 +86,6 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
     style={
       Object {
         "color": "#333333",
-        "height": "3.2rem",
         "paddingBottom": "0rem",
         "paddingLeft": "1rem",
         "paddingRight": "3.5rem",
@@ -83,19 +94,21 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
     }
     value=""
   />
-</div>
+</span>
 `;
 
 exports[`Input props: null 1`] = `
 .c1 {
+  box-sizing: border-box;
   line-height: 1.5;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   outline: none;
-  width: 20rem;
-  height: 3.2rem;
+  height: 100%;
+  width: 100%;
+  font-size: 1.2rem;
   cursor: text;
   border-top-width: 0.1rem;
   border-top-style: solid;
@@ -117,33 +130,43 @@ exports[`Input props: null 1`] = `
 
 .c1::-webkit-input-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c1::-moz-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c1:-ms-input-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c1::placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c0 {
   position: relative;
   display: inline-block;
   outline: none;
+  min-width: 3rem;
+  width: 100%;
 }
 
-<div
+<span
   className="c0"
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "height": "3.2rem",
+    }
+  }
 >
   <input
     autoFocus={false}
@@ -160,7 +183,6 @@ exports[`Input props: null 1`] = `
     style={
       Object {
         "color": "#333333",
-        "height": "3.2rem",
         "paddingBottom": "0rem",
         "paddingLeft": "1rem",
         "paddingRight": "3.5rem",
@@ -169,19 +191,21 @@ exports[`Input props: null 1`] = `
     }
     value=""
   />
-</div>
+</span>
 `;
 
 exports[`Input props: placeholder  1`] = `
 .c1 {
+  box-sizing: border-box;
   line-height: 1.5;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   outline: none;
-  width: 20rem;
-  height: 3.2rem;
+  height: 100%;
+  width: 100%;
+  font-size: 1.2rem;
   cursor: text;
   border-top-width: 0.1rem;
   border-top-style: solid;
@@ -203,33 +227,43 @@ exports[`Input props: placeholder  1`] = `
 
 .c1::-webkit-input-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c1::-moz-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c1:-ms-input-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c1::placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c0 {
   position: relative;
   display: inline-block;
   outline: none;
+  min-width: 3rem;
+  width: 100%;
 }
 
-<div
+<span
   className="c0"
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "height": "3.2rem",
+    }
+  }
 >
   <input
     autoFocus={false}
@@ -247,7 +281,6 @@ exports[`Input props: placeholder  1`] = `
     style={
       Object {
         "color": "#333333",
-        "height": "3.2rem",
         "paddingBottom": "0rem",
         "paddingLeft": "1rem",
         "paddingRight": "3.5rem",
@@ -256,19 +289,21 @@ exports[`Input props: placeholder  1`] = `
     }
     value=""
   />
-</div>
+</span>
 `;
 
 exports[`Input props: placeholder  2`] = `
 .c1 {
+  box-sizing: border-box;
   line-height: 1.5;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   outline: none;
-  width: 20rem;
-  height: 3.2rem;
+  height: 100%;
+  width: 100%;
+  font-size: 1.2rem;
   cursor: text;
   border-top-width: 0.1rem;
   border-top-style: solid;
@@ -290,33 +325,43 @@ exports[`Input props: placeholder  2`] = `
 
 .c1::-webkit-input-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c1::-moz-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c1:-ms-input-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c1::placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c0 {
   position: relative;
   display: inline-block;
   outline: none;
+  min-width: 3rem;
+  width: 100%;
 }
 
-<div
+<span
   className="c0"
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "height": "3.2rem",
+    }
+  }
 >
   <input
     autoFocus={false}
@@ -334,7 +379,6 @@ exports[`Input props: placeholder  2`] = `
     style={
       Object {
         "color": "#333333",
-        "height": "3.2rem",
         "paddingBottom": "0rem",
         "paddingLeft": "1rem",
         "paddingRight": "3.5rem",
@@ -343,19 +387,21 @@ exports[`Input props: placeholder  2`] = `
     }
     value=""
   />
-</div>
+</span>
 `;
 
 exports[`Input props: size 1`] = `
 .c1 {
+  box-sizing: border-box;
   line-height: 1.5;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   outline: none;
-  width: 20rem;
-  height: 3.2rem;
+  height: 100%;
+  width: 100%;
+  font-size: 1.2rem;
   cursor: text;
   border-top-width: 0.1rem;
   border-top-style: solid;
@@ -377,33 +423,43 @@ exports[`Input props: size 1`] = `
 
 .c1::-webkit-input-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c1::-moz-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c1:-ms-input-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c1::placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c0 {
   position: relative;
   display: inline-block;
   outline: none;
+  min-width: 3rem;
+  width: 100%;
 }
 
-<div
+<span
   className="c0"
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "height": "2.4rem",
+    }
+  }
 >
   <input
     autoFocus={false}
@@ -420,7 +476,6 @@ exports[`Input props: size 1`] = `
     style={
       Object {
         "color": "#333333",
-        "height": "2.4rem",
         "paddingBottom": "0rem",
         "paddingLeft": "1rem",
         "paddingRight": "3.5rem",
@@ -429,19 +484,21 @@ exports[`Input props: size 1`] = `
     }
     value=""
   />
-</div>
+</span>
 `;
 
 exports[`Input props: size 2`] = `
 .c1 {
+  box-sizing: border-box;
   line-height: 1.5;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   outline: none;
-  width: 20rem;
-  height: 3.2rem;
+  height: 100%;
+  width: 100%;
+  font-size: 1.2rem;
   cursor: text;
   border-top-width: 0.1rem;
   border-top-style: solid;
@@ -463,33 +520,43 @@ exports[`Input props: size 2`] = `
 
 .c1::-webkit-input-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c1::-moz-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c1:-ms-input-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c1::placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c0 {
   position: relative;
   display: inline-block;
   outline: none;
+  min-width: 3rem;
+  width: 100%;
 }
 
-<div
+<span
   className="c0"
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
   onMouseUp={[Function]}
-  style={Object {}}
+  style={
+    Object {
+      "height": "4rem",
+    }
+  }
 >
   <input
     autoFocus={false}
@@ -506,7 +573,6 @@ exports[`Input props: size 2`] = `
     style={
       Object {
         "color": "#333333",
-        "height": "4rem",
         "paddingBottom": "0rem",
         "paddingLeft": "1rem",
         "paddingRight": "3.5rem",
@@ -515,5 +581,5 @@ exports[`Input props: size 2`] = `
     }
     value=""
   />
-</div>
+</span>
 `;
