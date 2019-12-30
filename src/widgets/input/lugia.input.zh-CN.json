@@ -293,42 +293,21 @@
         ["opacity"]
       ]
     },
-    "ValidateBottomText": {
-      "name": "校验信息文本",
-      "desc": "配置校验信息文本",
-      "normal": [["fontSize"], ["font"], ["color"]]
-    },
-    "ValidateTooltip": {
-      "name": "校验提示信息框",
-      "theme": {
-        "Container": {
-          "name": "校验信息容器",
-          "desc": "校验提示信息容器",
-          "normal": [
-            ["background"],
-            ["color"],
-            ["padding"],
-            ["font"],
-            ["fontSize"],
-            ["width"],
-            ["height"],
-            ["boxShadow"],
-            ["borderRadius"],
-            ["border"]
-          ],
-          "hover": [],
-          "clicked": [],
-          "disabled": []
-        },
-        "TooltipTitle": {
-          "name": "校验提示信息文字",
-          "desc": "校验提示信息文字",
-          "normal": [["fontSize"], ["font"], ["color"]],
-          "hover": [],
-          "clicked": [],
-          "disabled": []
-        }
-      }
+    "ValidateErrorText": {
+      "name": "校验失败提示信息",
+      "desc": "配置校验失败的提示信息",
+      "normal": [
+        ["background"],
+        ["color"],
+        ["padding"],
+        ["font"],
+        ["fontSize"],
+        ["width"],
+        ["height"],
+        ["boxShadow"],
+        ["borderRadius"],
+        ["border"]
+      ]
     }
   },
   "defaultTheme": {

@@ -228,7 +228,7 @@ const TipBottom = CSSComponent({
     getCSS(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
       const { validateStatus } = propsConfig;
-      const theVisibility = isValidateSuccess(validateStatus) ? 'visible' : 'hidden';
+      const theVisibility = !isValidateSuccess(validateStatus) ? 'visible' : 'hidden';
       return `visibility:${theVisibility}`;
     },
   },
@@ -436,7 +436,7 @@ class TextBox extends Component<InputProps, InputState> {
           {this.generateSuffix()}
         </BaseInputContainer>,
       ];
-      const tipBottomThemeProps = this.props.getPartOfThemeProps('ValidateBottomText', {
+      const tipBottomThemeProps = this.props.getPartOfThemeProps('ValidateErrorText', {
         props: { validateStatus, prefix, size },
       });
       result.push(
@@ -456,25 +456,29 @@ class TextBox extends Component<InputProps, InputState> {
     const { validateType, size, help, validateStatus, prefix, getPartOfThemeHocProps } = props;
     const result = this.getInputContainer(this.getInputInner);
     const { theme: validateTopTipThemeProps, viewClass } = getPartOfThemeHocProps(
-      'ValidateTooltip'
+      'ValidateErrorText'
     );
     const toolTipColor = validateStatus === 'error' ? dangerColor : blackColor;
-    const defaultTheme = {
+    const newTheme = {
       [viewClass]: {
-        Container: {
-          normal: {
-            background: { color: superLightColor },
-            getCSS() {
-              return 'display: inline-block;';
+        Container: deepMerge(
+          {
+            normal: {
+              background: { color: superLightColor },
+              color: toolTipColor,
+              getCSS() {
+                return 'display: inline-block;';
+              },
             },
           },
-        },
-        TooltipTitle: {
-          normal: { color: toolTipColor },
-        },
+          validateTopTipThemeProps
+        ),
+        TooltipTitle: deepMerge(
+          { normal: { color: toolTipColor } },
+          validateTopTipThemeProps[viewClass]
+        ),
       },
     };
-    const newTheme = deepMerge(defaultTheme, validateTopTipThemeProps);
     if (validateType === 'top') {
       const visible = this.isValidateError();
       return (
