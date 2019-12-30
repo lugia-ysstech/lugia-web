@@ -338,27 +338,27 @@
               "name": "前置图标配置",
               "desc": "前置图标或图片的样式配置",
               "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
-              "hover": [["color"], ["fontSize"]],
-              "active": [["color"], ["fontSize"]],
-              "disabled": [["color"], ["fontSize"], ["cursor"]]
+              "hover": [["color"], ["font"], ["fontSize"]],
+              "active": [["color"], ["font"], ["fontSize"]],
+              "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
             },
 
             "SuffixIcon": {
               "name": "后缀图标配置",
               "desc": "后缀图标或图片的样式配置",
               "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
-              "hover": [["color"], ["fontSize"]],
-              "active": [["color"], ["fontSize"]],
-              "disabled": [["color"], ["fontSize"], ["cursor"]]
+              "hover": [["color"], ["font"], ["fontSize"]],
+              "active": [["color"], ["font"], ["fontSize"]],
+              "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
             },
 
             "SwitchIcon": {
               "name": "下拉图标配置",
               "desc": "下拉图标配置的样式配置",
               "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
-              "hover": [["color"], ["fontSize"]],
-              "active": [["color"], ["fontSize"]],
-              "disabled": [["color"], ["fontSize"], ["cursor"]]
+              "hover": [["color"], ["font"], ["fontSize"]],
+              "active": [["color"], ["font"], ["fontSize"]],
+              "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
             },
 
             "Checkbox": {
@@ -554,27 +554,27 @@
               "name": "前置图标配置",
               "desc": "前置图标或图片的样式配置",
               "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
-              "hover": [["color"], ["fontSize"]],
-              "active": [["color"], ["fontSize"]],
-              "disabled": [["color"], ["fontSize"], ["cursor"]]
+              "hover": [["color"], ["font"], ["fontSize"]],
+              "active": [["color"], ["font"], ["fontSize"]],
+              "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
             },
 
             "SuffixIcon": {
               "name": "后缀图标配置",
               "desc": "后缀图标或图片的样式配置",
               "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
-              "hover": [["color"], ["fontSize"]],
-              "active": [["color"], ["fontSize"]],
-              "disabled": [["color"], ["fontSize"], ["cursor"]]
+              "hover": [["color"], ["font"], ["fontSize"]],
+              "active": [["color"], ["font"], ["fontSize"]],
+              "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
             },
 
             "SwitchIcon": {
               "name": "下拉图标配置",
               "desc": "下拉图标配置的样式配置",
               "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
-              "hover": [["color"], ["fontSize"]],
-              "active": [["color"], ["fontSize"]],
-              "disabled": [["color"], ["fontSize"], ["cursor"]]
+              "hover": [["color"], ["font"], ["fontSize"]],
+              "active": [["color"], ["font"], ["fontSize"]],
+              "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
             }
           }
         },
@@ -729,9 +729,16 @@
                     ["padding"],
                     ["cursor"]
                   ],
-                  "hover": [["color"], ["fontSize"]],
-                  "active": [["color"], ["fontSize"]],
-                  "disabled": [["color"], ["fontSize"], ["cursor"]]
+                  "hover": [["color"], ["font"], ["fontSize"]],
+                  "active": [["color"], ["font"], ["fontSize"]],
+                  "disabled": [
+                    ["color"],
+                    ["margin"],
+                    ["fontSize"],
+                    ["font"],
+                    ["padding"],
+                    ["cursor"]
+                  ]
                 },
 
                 "SuffixIcon": {
@@ -745,9 +752,16 @@
                     ["padding"],
                     ["cursor"]
                   ],
-                  "hover": [["color"], ["fontSize"]],
-                  "active": [["color"], ["fontSize"]],
-                  "disabled": [["color"], ["fontSize"], ["cursor"]]
+                  "hover": [["color"], ["font"], ["fontSize"]],
+                  "active": [["color"], ["font"], ["fontSize"]],
+                  "disabled": [
+                    ["color"],
+                    ["margin"],
+                    ["fontSize"],
+                    ["font"],
+                    ["padding"],
+                    ["cursor"]
+                  ]
                 },
 
                 "SwitchIcon": {
@@ -761,9 +775,16 @@
                     ["padding"],
                     ["cursor"]
                   ],
-                  "hover": [["color"], ["fontSize"]],
-                  "active": [["color"], ["fontSize"]],
-                  "disabled": [["color"], ["fontSize"], ["cursor"]]
+                  "hover": [["color"], ["font"], ["fontSize"]],
+                  "active": [["color"], ["font"], ["fontSize"]],
+                  "disabled": [
+                    ["color"],
+                    ["margin"],
+                    ["fontSize"],
+                    ["font"],
+                    ["padding"],
+                    ["cursor"]
+                  ]
                 }
               }
             }
@@ -912,27 +933,18 @@
           "name": "前置图标配置",
           "desc": "前置图标或图片的样式配置",
           "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
-          "hover": [["color"], ["fontSize"]],
-          "active": [["color"], ["fontSize"]],
-          "disabled": [["color"], ["fontSize"], ["cursor"]]
+          "hover": [["color"], ["font"], ["fontSize"]],
+          "active": [["color"], ["font"], ["fontSize"]],
+          "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
         },
 
         "SuffixIcon": {
           "name": "后缀图标配置",
           "desc": "后缀图标或图片的样式配置",
           "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
-          "hover": [["color"], ["fontSize"]],
-          "active": [["color"], ["fontSize"]],
-          "disabled": [["color"], ["fontSize"], ["cursor"]]
-        },
-
-        "SwitchIcon": {
-          "name": "下拉图标配置",
-          "desc": "下拉图标配置的样式配置",
-          "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
-          "hover": [["color"], ["fontSize"]],
-          "active": [["color"], ["fontSize"]],
-          "disabled": [["color"], ["fontSize"], ["cursor"]]
+          "hover": [["color"], ["font"], ["fontSize"]],
+          "active": [["color"], ["font"], ["fontSize"]],
+          "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
         },
 
         "Checkbox": {
