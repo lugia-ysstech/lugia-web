@@ -24,7 +24,7 @@
       "defaultValue": "success"
     },
     "validateType": {
-      "type": "InputValidateType",
+      "type": "ValidateType",
       "desc": "input校验信息显示类型, 'top' | 'bottom' | 'inner' | 'default'",
       "defaultValue": "default"
     },
@@ -175,9 +175,9 @@
   },
   "type": {
     "InputSize": ["small", "default", "large"],
-    "InputType": [ "text","password"],
-    "ValidateStatus": ["success", "error"],
-    "InputValidateType": ["top", "bottom", "inner", "default"],
+    "InputType": ["text", "password"],
+    "ValidateStatus": ["success", "error", "default"],
+    "ValidateType": ["top", "bottom", "inner", "default"],
     "ChangeType": {
       "newValue": "string",
       "oldValue": "string",
@@ -190,7 +190,7 @@
     "Container": {
       "name": "输入框外部容器",
       "desc": "输入框外部容器",
-      "normal": [["width"], ["height"], ["margin"], ["padding"]]
+      "normal": [["width"], ["height"], ["margin"]]
     },
     "Input": {
       "name": "输入框主体",
@@ -256,6 +256,58 @@
       "hover": [],
       "clicked": [],
       "disabled": []
+    },
+    "ValidateErrorInput": {
+      "name": "校验失败的输入框",
+      "desc": "配置校验失败的输入框",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["fontSize"],
+        ["font"],
+        ["color"],
+        ["background"],
+        ["border"],
+        ["borderRadius"],
+        ["cursor"],
+        ["opacity"]
+      ],
+      "hover": [
+        ["border"],
+        ["borderRadius"],
+        ["cursor"],
+        ["background"],
+        ["opacity"],
+        ["boxShadow"]
+      ],
+      "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"], ["background"]],
+      "disabled": [
+        ["fontSize"],
+        ["font"],
+        ["color"],
+        ["background"],
+        ["border"],
+        ["borderRadius"],
+        ["cursor"],
+        ["padding"],
+        ["opacity"]
+      ]
+    },
+    "ValidateErrorText": {
+      "name": "校验失败提示信息",
+      "desc": "配置校验失败的提示信息",
+      "normal": [
+        ["background"],
+        ["color"],
+        ["padding"],
+        ["font"],
+        ["fontSize"],
+        ["width"],
+        ["height"],
+        ["boxShadow"],
+        ["borderRadius"],
+        ["border"]
+      ]
     }
   },
   "defaultTheme": {

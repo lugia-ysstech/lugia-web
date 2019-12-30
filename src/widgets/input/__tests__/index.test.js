@@ -16,7 +16,7 @@ import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Widget from '../../consts';
 import { TopInput, ValidateInput } from '../demo';
-import type { InputValidateType, ValidateStatus } from '../../css/input';
+import type { ValidateType, ValidateStatus } from '../../css/input';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -352,7 +352,7 @@ describe('Input', () => {
 
   function testValidateBottomAndInner(
     title: string,
-    validateType: InputValidateType,
+    validateType: ValidateType,
     value: string,
     expValue: ValidateStatus
   ) {
