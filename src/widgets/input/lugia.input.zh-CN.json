@@ -15,18 +15,17 @@
     "size": {
       "type": "InputSize",
       "desc":
-        "可配置三种尺寸大小的input ('large' , 'default' , 'small'),高度分别为 40px、32px 和 24px。",
-      "defaultValue": "default"
+        "可配置三种尺寸大小的input",
+      "propsDefaultValue": "default"
     },
     "validateStatus": {
       "type": "ValidateStatus",
-      "desc": "input校验状态, 'success' 成功 | 'error'错误",
-      "defaultValue": "success"
+      "desc": "input校验状态"
     },
     "validateType": {
       "type": "ValidateType",
-      "desc": "input校验信息显示类型, 'top' | 'bottom' | 'inner' | 'default'",
-      "defaultValue": "default"
+      "desc": "input校验信息显示类型",
+      "propsDefaultValue": "default"
     },
     "help": {
       "type": "string",
@@ -63,22 +62,22 @@
     "readOnly": {
       "type": "boolean",
       "desc": "只读input",
-      "defaultValue": false
+      "propsDefaultValue": false
     },
     "autoFocus": {
       "type": "boolean",
       "desc": "是否自动获取焦点",
-      "defaultValue": false
+      "propsDefaultValue": false
     },
     "type": {
       "type": "InputType",
       "desc": "input类型",
-      "defaultValue": "text"
+      "propsDefaultValue": "text"
     },
     "isShowClearButton": {
       "type": "boolean",
       "desc": "是否显示清除按钮",
-      "defaultValue": true
+      "propsDefaultValue": true
     }
   },
   "events": {
