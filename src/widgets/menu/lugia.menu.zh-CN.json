@@ -23,7 +23,7 @@
         { "key": "des", "title": "辅助文本", "type": "string" },
         {
           "key": "icons",
-          "title": "图标",
+          "title": "前/后缀图标",
           "type": "object",
           "children": [
             { "key": "preIconClass", "title": "前缀图标", "type": "icon" },
@@ -956,13 +956,6 @@
               "normal": [["opacity"], ["margin"], ["padding"], ["width"], ["height"]],
               "hover": [["opacity"]],
               "disabled": [["opacity"]]
-            },
-            "CheckboxText": {
-              "name": "Checkbox文字配置",
-              "desc": "Checkbox文字配置",
-              "normal": [["color"], ["font"]],
-              "hover": [["color"], ["font"]],
-              "disabled": [["color"], ["font"]]
             },
             "CheckboxEdgeChecked": {
               "name": "Checkbox选中后边框配置",

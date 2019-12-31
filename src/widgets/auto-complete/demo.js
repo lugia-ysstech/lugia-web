@@ -77,14 +77,14 @@ export default class AutoCompleteBounded extends React.Component<any, any> {
             borderRadius: getBorderRadius(20),
           },
         },
-        AutoInput: {
-          Container: {
-            normal: {
-              width: 600,
-              height: 60,
-            },
+
+        Container: {
+          normal: {
+            width: 300,
+            height: 60,
           },
         },
+
         Menu: {
           MenuWrap: {
             normal: {

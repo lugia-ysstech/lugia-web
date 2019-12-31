@@ -55,7 +55,18 @@
       "meta": [
         { "key": "value", "title": "value值", "type": "string" },
         { "key": "text", "title": "文本值", "type": "string" },
-        { "key": "children", "title": "文本值", "type": "array" }
+        {
+          "key": "icons",
+          "title": "前/后缀图标",
+          "type": "object",
+          "children": [
+            { "key": "preIconClass", "title": "前缀图标", "type": "icon" },
+            { "key": "suffixIconClass", "title": "后缀图标", "type": "icon" },
+            { "key": "preIconSrc", "title": "前缀图片", "type": "img" },
+            { "key": "suffixIconSrc", "title": "后缀图片", "type": "img" }
+          ]
+        }
+        { "key": "children", "title": "子项数据", "type": "array" }
       ],
       "defaultValue": [
         {

@@ -15,6 +15,7 @@ import { DisplayField, ValueField } from '../consts/props';
 import { OldValueItem, OldValueTitle, TimeIcon, EmptyBox } from '../css/autocomplete';
 import { MenuItemHeight } from '../css/menu';
 import ThemeHoc from '@lugia/theme-hoc';
+import Theme from '../theme';
 import { findDOMNode } from 'react-dom';
 const ScrollerStep = 30;
 
@@ -111,32 +112,47 @@ export default ShortKeyBoard(
           );
 
         return (
-          <Trigger
-            createPortal={this.props.createPortal}
-            themePass
-            align={'bottomLeft'}
-            action={disabled ? [] : ['focus']}
-            hideAction={['focus']}
-            popup={menu}
-            offsetY={4}
-            ref={this.triggerEl}
-          >
-            <Input
-              {...getPartOfThemeHocProps('AutoInput')}
-              value={value}
-              disabled={disabled}
-              ref={this.inputEl}
-              onChange={this.changeInputValue}
-              onClear={this.clearInputValue}
-              onFocus={this.onFocus}
-              onBlur={this.onBlur}
-              placeholder={placeholder}
-              prefix={prefix}
-              suffix={suffix}
-            />
-          </Trigger>
+          <Theme config={this.getInputTheme()}>
+            <Trigger
+              createPortal={this.props.createPortal}
+              themePass
+              align={'bottomLeft'}
+              action={disabled ? [] : ['focus']}
+              hideAction={['focus']}
+              popup={menu}
+              offsetY={4}
+              ref={this.triggerEl}
+            >
+              <Input
+                value={value}
+                disabled={disabled}
+                ref={this.inputEl}
+                onChange={this.changeInputValue}
+                onClear={this.clearInputValue}
+                onFocus={this.onFocus}
+                onBlur={this.onBlur}
+                placeholder={placeholder}
+                prefix={prefix}
+                suffix={suffix}
+              />
+            </Trigger>
+          </Theme>
         );
       }
+
+      getInputTheme() {
+        const { getPartOfThemeConfig } = this.props;
+        const inputtagTheme = {
+          [Widget.Input]: {
+            Container: getPartOfThemeConfig('Container'),
+            InputSuffix: getPartOfThemeConfig('TagWrap'),
+            InputPrefix: getPartOfThemeConfig('TagIcon'),
+            InputClearButton: getPartOfThemeConfig('SwitchIcon'),
+          },
+        };
+        return inputtagTheme;
+      }
+
       setPopupVisible(...rest: any[]) {
         this.triggerEl.current && this.triggerEl.current.setPopupVisible(...rest);
       }
@@ -263,30 +279,49 @@ export default ShortKeyBoard(
         onChange && onChange(value);
       }
 
-      getMenuTheme = () => {
-        const { viewClass, theme } = this.props.getPartOfThemeHocProps('Menu');
-        const { Container = {} } = this.props.getPartOfThemeConfig('AutoInput');
-        const { normal = {} } = Container;
-        const { width = 200 } = normal;
+      getContainerWidth = () => {
+        const {
+          themeConfig: { normal: { width = this.state.menuWidth } = {} } = {},
+        } = this.props.getPartOfThemeProps('Container');
+        return width;
+      };
+
+      mergeTheme = (target: string, defaultTheme: Object) => {
+        const { viewClass, theme } = this.props.getPartOfThemeHocProps(target);
+
         const themeHoc = deepMerge(
           {
-            [viewClass]: {
-              MenuWrap: {
-                normal: {
-                  width,
-                },
-              },
-            },
+            [viewClass]: { ...defaultTheme },
           },
           theme
         );
 
-        const treeTheme = {
+        const newTheme = {
           viewClass,
           theme: themeHoc,
         };
-        return treeTheme;
+        return newTheme;
       };
+
+      getMenuTheme = () => {
+        const width = this.getContainerWidth();
+        const initMenuTheme = {
+          width,
+        };
+        const defaultMenuTheme = {
+          Container: {
+            normal: initMenuTheme,
+          },
+        };
+        return this.mergeTheme('Menu', defaultMenuTheme);
+      };
+
+      componentDidMount() {
+        const menuWidth = this.inputEl.current.getThemeTarget().svtarget.input.current.offsetWidth;
+        this.setState({
+          menuWidth,
+        });
+      }
 
       onUp() {}
     },
