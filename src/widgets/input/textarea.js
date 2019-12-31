@@ -32,12 +32,15 @@ const {
   transitionTime,
 } = colorsFunc();
 
+const checkIsPercent = width => {
+  return width && typeof width === 'string' && width.indexOf('%') !== -1;
+};
+
 const Textarea = CSSComponent({
   tag: 'textarea',
   className: 'Textarea',
   normal: {
     selectNames: [
-      ['width'],
       ['height'],
       ['fontSize'],
       ['font'],
@@ -65,10 +68,21 @@ const Textarea = CSSComponent({
           resizeType,
         },
       } = themeProps;
+      const { width } = themeMeta;
       const theColor = color ? color : placeHolderColor;
       const theSize = size ? size : placeHolderFontSize ? placeHolderFontSize : 12;
+      let theWidth;
+      let theResizeType;
+      if (checkIsPercent(width)) {
+        theWidth = '100%';
+        theResizeType = 'none';
+      } else {
+        theWidth = ObjectUtils.isNumber(width) ? px2remcss(width) : width;
+        theResizeType = resizeType;
+      }
       return css`
-        resize: ${resizeType};
+        width: ${theWidth};
+        resize: ${theResizeType};
         &::placeholder {
           color: ${theColor};
           font-size: ${px2remcss(theSize)};
@@ -149,6 +163,10 @@ const TextareaContainer = CSSComponent({
   className: 'TextareaContainer',
   normal: {
     selectNames: [['margin']],
+    getCSS(themeMeta: Object, themeProps: Object) {
+      const { width } = themeMeta;
+      return checkIsPercent(width) ? `width:${width};` : '';
+    },
   },
   hover: {
     selectNames: [],
