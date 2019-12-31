@@ -11,7 +11,11 @@
         { "key": "text", "title": "文本值", "type": "string" }
       ]
     },
-
+    "createPortal": {
+      "type": "boolean",
+      "desc": "是否全局弹出下拉框",
+      "defaultValue": true
+    },
     "value": {
       "type": "string",
       "desc": "给定输入框的值"
@@ -20,6 +24,12 @@
     "defaultValue": {
       "type": "string",
       "desc": "默认输入框的值，仅第一次生效"
+    },
+
+    "disabled": {
+      "type": "boolean",
+      "desc": "是否禁用输入框",
+      "defaultValue": false
     },
 
     "showOldValue": {
@@ -31,6 +41,15 @@
     "placeholder": {
       "type": "string",
       "desc": "input输入提示信息"
+    },
+
+    "prefix": {
+      "type": "ReactNode",
+      "desc": "输入框前缀"
+    },
+    "suffix": {
+      "type": "ReactNode",
+      "desc": "输入框后缀"
     }
   },
   "events": {

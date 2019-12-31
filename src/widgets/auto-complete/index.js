@@ -55,6 +55,7 @@ export default ShortKeyBoard(
         },
         data: [],
         showOldValue: false,
+        createPortal: true,
       };
       static displayName = 'AutoComplete';
       inputEl: any;
