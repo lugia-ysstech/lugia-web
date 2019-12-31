@@ -71,14 +71,11 @@ const Textarea = CSSComponent({
       const { width } = themeMeta;
       const theColor = color ? color : placeHolderColor;
       const theSize = size ? size : placeHolderFontSize ? placeHolderFontSize : 12;
-      let theWidth;
-      let theResizeType;
+      let theWidth = ObjectUtils.isNumber(width) ? px2remcss(width) : width;
+      let theResizeType = resizeType;
       if (checkIsPercent(width)) {
         theWidth = '100%';
         theResizeType = 'none';
-      } else {
-        theWidth = ObjectUtils.isNumber(width) ? px2remcss(width) : width;
-        theResizeType = resizeType;
       }
       return css`
         width: ${theWidth};
