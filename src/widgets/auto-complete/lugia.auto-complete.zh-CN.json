@@ -4,16 +4,14 @@
   "desc": "需要自动完成数据时使用",
   "props": {
     "data": {
-      "type": "string[]",
-      "desc": "自动补全的数据",
-      "defaultValue": [],
-      "meta": []
+      "type": "Object[]",
+      "desc": "生成选择项的数据",
+      "meta": [
+        { "key": "value", "title": "value值", "type": "string" },
+        { "key": "text", "title": "文本值", "type": "string" }
+      ]
     },
-    "createPortal": {
-      "type": "boolean",
-      "desc": "是否全局弹出下拉框",
-      "defaultValue": true
-    },
+
     "value": {
       "type": "string",
       "desc": "给定输入框的值"
@@ -29,22 +27,10 @@
       "desc": "是否显示上一次选中的值",
       "defaultValue": true
     },
+
     "placeholder": {
       "type": "string",
       "desc": "input输入提示信息"
-    },
-    "showAllLevels": {
-      "type": "boolean",
-      "desc": "是否显示所有层级关系的值",
-      "defaultValue": true
-    },
-    "prefix": {
-      "type": "ReactNode",
-      "desc": "输入框前缀"
-    },
-    "suffix": {
-      "type": "ReactNode",
-      "desc": "输入框后缀"
     }
   },
   "events": {
@@ -191,8 +177,8 @@
     "Menu": {
       "name": "菜单配置",
       "theme": {
-        "MenuWrap": {
-          "name": "菜单外盒",
+        "Container": {
+          "name": "菜单整体配置",
           "desc": "配置菜单组件的外盒样式",
           "normal": [
             ["width"],
@@ -210,77 +196,104 @@
           "disabled": []
         },
         "MenuItem": {
-          "name": "菜单项的配置",
+          "name": "单选菜单项配置",
           "theme": {
             "MenuItemWrap": {
               "name": "项的外盒",
               "desc": "配置每一项的外盒",
               "normal": [
                 ["height"],
-                ["background"],
+                ["color"],
+                ["font"],
+                ["fontSize"],
+                ["cursor"],
                 ["border"],
                 ["borderRadius"],
+                ["padding"],
+                ["background"],
                 ["opacity"],
-                ["color"],
-                ["padding"]
+                ["boxShadow"]
               ],
               "hover": [
+                ["color"],
+                ["font"],
+                ["fontSize"],
                 ["background"],
+                ["opacity"],
                 ["border"],
                 ["borderRadius"],
-                ["opacity"],
-                ["color"],
-                ["font"]
+                ["boxShadow"]
               ],
               "active": [
+                ["color"],
+                ["font"],
+                ["fontSize"],
                 ["background"],
+                ["opacity"],
                 ["border"],
                 ["borderRadius"],
-                ["opacity"],
-                ["color"],
-                ["font"]
+                ["boxShadow"]
               ],
               "disabled": [
-                ["background"],
                 ["color"],
+                ["font"],
+                ["cursor"],
                 ["borderRadius"],
-                ["opacity"],
                 ["padding"],
-                ["font"]
+                ["fontSize"],
+                ["background"],
+                ["opacity"]
               ]
             },
             "SelectedMenuItemWrap": {
               "name": "选中项的外盒",
               "desc": "配置选中项的外盒",
               "normal": [
-                ["background"],
+                ["height"],
+                ["color"],
+                ["font"],
+                ["fontSize"],
+                ["cursor"],
                 ["border"],
                 ["borderRadius"],
-                ["opacity"],
-                ["color"],
                 ["padding"],
-                ["font"]
+                ["background"],
+                ["opacity"],
+                ["boxShadow"]
               ],
               "hover": [
+                ["color"],
+                ["font"],
+                ["fontSize"],
                 ["background"],
+                ["opacity"],
                 ["border"],
                 ["borderRadius"],
-                ["opacity"],
-                ["color"],
-                ["font"]
+                ["boxShadow"]
               ],
               "active": [
+                ["color"],
+                ["font"],
+                ["fontSize"],
                 ["background"],
+                ["opacity"],
                 ["border"],
                 ["borderRadius"],
-                ["opacity"],
-                ["color"],
-                ["font"]
+                ["boxShadow"]
               ],
               "disabled": []
             }
           }
         }
+      }
+    }
+  },
+
+  "defaultTheme": {
+    "Container": {
+      "normal": {
+        "width": 250,
+        "height": 32
       }
     }
   }
