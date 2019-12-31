@@ -8,7 +8,7 @@
 import * as React from 'react';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
-import RcTable from 'rc-table';
+import RcTable, { INTERNAL_COL_DEFINE } from 'rc-table';
 import Checkbox from '../checkbox';
 import 'rc-table/assets/index.css';
 import './style/lugia-table.css';
@@ -171,7 +171,7 @@ export default ThemeProvider(
           setCheckboxProps = (record: Object) => {
             return {};
           },
-          width = 36,
+          width = 60,
         } = selectOptions;
         const selectColumnItem = {
           title: (
@@ -181,8 +181,8 @@ export default ThemeProvider(
               onChange={this.tableHeadChange}
             />
           ),
-          dataIndex: 'select',
-          key: 'select',
+          className: 'lugia-select-column',
+          key: 'selection-column',
           width,
           render: (text, record) => {
             const rowKey = record.key;
@@ -209,12 +209,26 @@ export default ThemeProvider(
               />
             );
           },
+          [INTERNAL_COL_DEFINE]: {
+            className: 'lugia-selection-col',
+          },
         };
         theColumns.unshift(selectColumnItem);
       }
+      let expandIconColumnIndex = theColumns && theColumns[0].key === 'selection-column' ? 1 : 0;
+      if ('expandIconColumnIndex' in this.props) {
+        const { expandIconColumnIndex: propsIndex } = this.props;
+        expandIconColumnIndex = Number(propsIndex);
+      }
       return (
         <div className={this.getClass(tableStyle)} style={{ ...styles, overflow: 'auto' }}>
-          <RcTable {...this.props} columns={theColumns} data={data} showHeader={showHeader} />
+          <RcTable
+            {...this.props}
+            columns={theColumns}
+            data={data}
+            showHeader={showHeader}
+            expandIconColumnIndex={expandIconColumnIndex}
+          />
         </div>
       );
     }

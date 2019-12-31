@@ -34,3 +34,32 @@
 :global(.rc-table-expanded-row td) {
   padding: 16px 20px;
 }
+:global(.rc-table colgroup .lugia-selection-col) {
+  width: 60px;
+}
+:global(.rc-table .lugia-select-column) {
+  text-align: center;
+}
+:global(.rc-table .rc-table-row-expand-icon) {
+  margin-right: 8px;
+}
+:global(.rc-table .rc-table-row-expand-icon-cell .rc-table-row-expand-icon) {
+  margin-right: 0;
+}
+:global(.rc-table .rc-table-row-expand-icon-cell) {
+  width: 50px;
+  text-align: center;
+  min-width: 50px;
+}
+:global(.rc-table .rc-table-row-expand-icon:hover) {
+  color: #4d63ff;
+  border: 1px solid #4d63ff;
+}
+:global(.rc-table .rc-table-row-expand-icon:active) {
+  color: #324DFF;
+  border: 1px solid #324DFF;
+}
+:global(.rc-table .rc-table-row-expand-icon:focus) {
+  color: #4d63ff;
+  border: 1px solid #4d63ff;
+}
