@@ -16,24 +16,24 @@ const columns = [
     title: 'Name',
     dataIndex: 'name',
     key: 'name',
-    width: 100,
+    // width: 100,
   },
   {
     title: 'Age',
     dataIndex: 'age',
     key: 'age',
-    width: 100,
+    // width: 100,
   },
   {
     title: 'Address',
     dataIndex: 'address',
-    width: 200,
+    // width: 200,
     key: 'address',
   },
   {
     title: 'Operations',
     dataIndex: '',
-    width: 100,
+    // width: 100,
     key: 'operations',
     render: () => <a href="#">Delete</a>,
   },
@@ -125,6 +125,23 @@ export default class ModalDemo extends React.Component<any, any> {
             },
             width: 60,
           }}
+          expandedRowRender={record => <p>{record.name}</p>}
+          expandIconAsCell
+        />
+        <br />
+        <h1>边框表格</h1>
+        <Table
+          columns={columns}
+          data={data}
+          selectOptions={{
+            onChange: this.selectChange,
+            selectRowKeys: this.state.selectRowKeys,
+            setCheckboxProps(record) {
+              return { disabled: record.name === 'Jack' };
+            },
+            width: 60,
+          }}
+          expandedRowRender={record => <p>{record.name}</p>}
         />
         <br />
         <h1>斑马纹表格</h1>
