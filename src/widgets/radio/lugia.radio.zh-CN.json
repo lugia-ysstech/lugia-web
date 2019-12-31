@@ -104,14 +104,12 @@
         ["width"],
         ["height"]
       ],
-      "hover": [["background"], ["borderRadius"], ["border"]],
       "disabled": [["background"], ["borderRadius"], ["border"]]
     },
     "RadioInnerCancel": {
       "name": "取消状态内框样式",
       "desc": "取消状态内框样式",
-      "normal": [["background"], ["width"], ["height"]],
-      "hover": [["background"]]
+      "normal": [["background"], ["width"], ["height"]]
     }
   }
 }

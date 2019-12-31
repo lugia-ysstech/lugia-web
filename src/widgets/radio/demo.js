@@ -38,7 +38,7 @@ export class RadioDemo extends React.Component<any, any> {
       [Widget.Radio]: {
         Container: {
           normal: {
-            opacity: 0.6,
+            // opacity: 0.6,
             width: 100,
             height: 50,
             margin: {
@@ -54,9 +54,9 @@ export class RadioDemo extends React.Component<any, any> {
               right: 10,
             },
           },
-          hover: {
-            opacity: 0.4,
-          },
+          // hover: {
+          //   opacity: 0.4,
+          // },
         },
         RadioText: {
           normal: {
@@ -84,11 +84,11 @@ export class RadioDemo extends React.Component<any, any> {
             width: 40,
             height: 40,
           },
-          hover: {
-            background: { color: 'green' },
-            border: getBorder({ color: 'orange', width: 2, style: 'solid' }),
-            borderRadius: getBorderRadius(100),
-          },
+          // hover: {
+          //   background: { color: 'green' },
+          //   border: getBorder({ color: 'orange', width: 2, style: 'solid' }),
+          //   borderRadius: getBorderRadius(100),
+          // },
           disabled: {
             background: { color: '#ccc' },
             borderRadius: getBorderRadius(100),
@@ -103,11 +103,11 @@ export class RadioDemo extends React.Component<any, any> {
             width: 20,
             height: 20,
           },
-          hover: {
-            background: { color: 'green' },
-            borderRadius: getBorderRadius(100),
-            border: getBorder({ color: 'orange', width: 2, style: 'solid' }),
-          },
+          // hover: {
+          //   background: { color: 'green' },
+          //   borderRadius: getBorderRadius(100),
+          //   border: getBorder({ color: 'orange', width: 2, style: 'solid' }),
+          // },
         },
         RadioEdgeUnChecked: {
           normal: {
@@ -137,9 +137,9 @@ export class RadioDemo extends React.Component<any, any> {
           disabled: {
             background: { color: 'red' },
           },
-          hover: {
-            background: { color: 'blue' },
-          },
+          // hover: {
+          //   background: { color: 'blue' },
+          // },
         },
         RadioInnerCancel: {
           normal: {
@@ -147,9 +147,9 @@ export class RadioDemo extends React.Component<any, any> {
             width: 8,
             height: 8,
           },
-          hover: {
-            background: { color: 'blue' },
-          },
+          // hover: {
+          //   background: { color: 'blue' },
+          // },
         },
       },
     };

@@ -186,13 +186,15 @@ export const RadioCircleSpan = CSSComponent({
       const { hover } = themeState;
       const { radioInnerCheckedTheme: afterThemeConfig, isDisabled, isChecked } = propsConfig;
       if (isChecked) {
-        const theme = isDisabled
-          ? afterThemeConfig.disabled
-          : hover
-          ? afterThemeConfig.hover
-          : afterThemeConfig.normal;
+        const {
+          disabled: disabledTheme,
+          hover: hoverTheme,
+          normal: normalTheme,
+        } = afterThemeConfig;
+        const theme = isDisabled ? disabledTheme : hover ? hoverTheme || normalTheme : normalTheme;
         const { background } = theme;
-        const { width = 10, height = 10 } = afterThemeConfig.normal;
+        const { width = 10, height = 10 } = normalTheme;
+
         return css`
           &::after {
             position: absolute;
@@ -223,25 +225,12 @@ export const RadioCircleSpan = CSSComponent({
   },
   hover: {
     selectNames: [['background'], ['borderRadius'], ['border'], ['boxShadow']],
-    defaultTheme: {
-      border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
-      borderRadius: getBorderRadius('100%'),
-      background: { color: '#fff' },
-    },
   },
   disabled: {
     selectNames: [['background'], ['borderRadius'], ['border']],
     defaultTheme: {
       background: { color: disableColor },
       border: getBorder({ color: borderDisableColor, width: 1, style: 'solid' }),
-      borderRadius: getBorderRadius('100%'),
-    },
-  },
-  active: {
-    selectNames: [],
-    defaultTheme: {
-      border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
-      background: { color: '#fff' },
       borderRadius: getBorderRadius('100%'),
     },
   },
