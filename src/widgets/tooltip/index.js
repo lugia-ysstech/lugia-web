@@ -297,6 +297,7 @@ const ChildrenContainer: Object = StaticComponent({
   className: 'ChildrenContainer',
   css: css`
     display: inline-block;
+    width: 100%;
   `,
 });
 
