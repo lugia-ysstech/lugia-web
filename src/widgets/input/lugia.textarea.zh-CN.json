@@ -6,7 +6,7 @@
     "disabled": {
       "type": "boolean",
       "desc": "禁用状态,是否不可用",
-      "defaultValue": false
+      "propsDefaultValue": false
     },
     "placeholder": {
       "type": "string",
@@ -23,12 +23,12 @@
     "autoFocus": {
       "type": "boolean",
       "desc": "是否自动获取焦点",
-      "defaultValue": false
+      "propsDefaultValue": false
     },
     "resizeType": {
       "type": "ResizeType",
       "desc": "可以调整段落文本输入框宽高的类型",
-      "defaultValue": "both"
+      "propsDefaultValue": "both"
     }
   },
   "events": {
