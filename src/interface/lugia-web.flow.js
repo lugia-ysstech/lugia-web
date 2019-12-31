@@ -32,6 +32,7 @@ declare module '@lugia/lugia-web' {
     dangerColor?: string,
     blackColor?: string,
     darkGreyColor?: string,
+    disableTextColor?: string,
     mediumGreyColor?: string,
     lightGreyColor?: string,
     superLightColor?: string,
