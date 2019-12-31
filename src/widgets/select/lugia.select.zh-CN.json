@@ -12,7 +12,7 @@
         { "key": "des", "title": "辅助文本", "type": "string" },
         {
           "key": "icons",
-          "title": "图标",
+          "title": "前/后缀图标",
           "type": "object",
           "children": [
             { "key": "preIconClass", "title": "前缀图标", "type": "icon" },
@@ -23,6 +23,7 @@
         }
       ]
     },
+    
     "canSearch": {
       "type": "boolean",
       "desc": "是否支持查询",

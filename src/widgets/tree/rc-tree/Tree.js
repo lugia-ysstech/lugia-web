@@ -474,7 +474,7 @@ class Tree extends React.Component {
         role="tree-node"
         unselectable="on"
         style={props.style}
-        themeProps={getPartOfThemeProps('TreeWrap', { props: { top } })}
+        themeProps={getPartOfThemeProps('Container', { props: { top } })}
       >
         {React.Children.map(props.children, this.renderTreeNode, this)}
       </TreeUl>
