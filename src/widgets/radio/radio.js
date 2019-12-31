@@ -19,11 +19,10 @@ type RadioState = {
   checked: boolean,
 };
 
-const { themeColor, lightGreyColor, disableColor, borderDisableColor } = colorsFunc();
+const { themeColor, lightGreyColor, disableColor, borderDisableColor, borderColor } = colorsFunc();
 const cancelColor = colorsFunc(themeColor).disabledColor;
 const defaultProps = {
   normal: { width: 10, height: 10, background: { color: themeColor } },
-  hover: { width: 10, height: 10, background: { color: themeColor } },
   disabled: { width: 10, height: 10, background: { color: lightGreyColor } },
 };
 const defaultEdgeCancelProps = {
@@ -35,16 +34,31 @@ const defaultEdgeCancelProps = {
       border: getBorder({ color: cancelColor, width: 1, style: 'solid' }),
       borderRadius: getBorderRadius(100),
     },
-    hover: {
-      background: { color: '#fff' },
-      border: getBorder({ color: cancelColor, width: 1, style: 'solid' }),
-      borderRadius: getBorderRadius(100),
-    },
   },
 };
 const defaultInnerCancelProps = {
   normal: { width: 10, height: 10, background: { color: cancelColor } },
-  hover: { width: 10, height: 10, background: { color: cancelColor } },
+};
+const defaultEdgeUnCheckedProps = {
+  themeConfig: {
+    normal: {
+      width: 16,
+      height: 16,
+      background: { color: '#fff' },
+      border: getBorder({ color: borderColor, width: 1, style: 'solid' }),
+      borderRadius: getBorderRadius('100%'),
+    },
+    hover: {
+      border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
+      borderRadius: getBorderRadius('100%'),
+      background: { color: '#fff' },
+    },
+    disabled: {
+      background: { color: disableColor },
+      border: getBorder({ color: borderDisableColor, width: 1, style: 'solid' }),
+      borderRadius: getBorderRadius('100%'),
+    },
+  },
 };
 const defaultEdgeCheckedProps = {
   themeConfig: {
@@ -54,11 +68,6 @@ const defaultEdgeCheckedProps = {
       background: { color: '#fff' },
       border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
       borderRadius: getBorderRadius('100%'),
-    },
-    hover: {
-      background: { color: '#fff' },
-      borderRadius: getBorderRadius('100%'),
-      border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
     },
     disabled: {
       background: { color: disableColor },
@@ -126,7 +135,7 @@ export default ThemeProvider(
         ? deepMerge(defaultEdgeCancelProps, radioEdgeCancelTheme)
         : checked
         ? deepMerge(defaultEdgeCheckedProps, radioEdgeCheckedTheme)
-        : radioEdgeUnCheckedTheme;
+        : deepMerge(defaultEdgeUnCheckedProps, radioEdgeUnCheckedTheme);
       if (checked) {
         circleEdgeTheme.propsConfig.radioInnerCheckedTheme = deepMerge(
           defaultProps,
