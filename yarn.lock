@@ -1076,10 +1076,10 @@
     clone "^2.1.1"
     deep-equal "^1.0.1"
 
-"@lugia/listener@^1.0.2":
+"@lugia/listener@^1.0.4":
   version "1.0.4"
-  resolved "https://registry.npmjs.org/@lugia/listener/-/listener-1.0.4.tgz#bd42c8d154c997003ea82971106be434b840ddf8"
-  integrity sha512-ub2rZ1fJOsR69C51E7hjIZoRQuedzI0znN9FEtKVernf2QoR+n5pJomURSQdC8QPLHxd1ngoYMEtjxgyKwCYAw==
+  resolved "https://registry.npm.taobao.org/@lugia/listener/download/@lugia/listener-1.0.4.tgz#bd42c8d154c997003ea82971106be434b840ddf8"
+  integrity sha1-vULI0VTJlwA+qClxEGvkNLhA3fg=
   dependencies:
     "@babel/runtime" "^7.4.5"
     events "^3.0.0"
