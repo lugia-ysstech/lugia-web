@@ -91,10 +91,10 @@
               "left": { "color": "", "style": "", "width": 0 }
             },
             "borderRadius": {
-              "topLeft": 0,
-              "topRight": 0,
-              "bottomLeft": 0,
-              "bottomRight": 0
+              "topLeft": { "radius": 0 },
+              "topRight": { "radius": 0 },
+              "bottomLeft": { "radius": 0 },
+              "bottomRight": { "radius": 0 }
             },
             "margin": {
               "top": 0,
@@ -118,10 +118,10 @@
               "color": "#e8e8e8"
             },
             "borderRadius": {
-              "topLeft": 6,
-              "topRight": 6,
-              "bottomLeft": 6,
-              "bottomRight": 6
+              "topLeft": { "radius": 6 },
+              "topRight": { "radius": 6 },
+              "bottomLeft": { "radius": 6 },
+              "bottomRight": { "radius": 6 }
             },
             "border": {
               "top": { "color": "", "style": "", "width": 0 },
@@ -155,10 +155,10 @@
               "left": { "color": "", "style": "", "width": 0 }
             },
             "borderRadius": {
-              "topLeft": "16",
-              "topRight": "16",
-              "bottomLeft": "16",
-              "bottomRight": "16"
+              "topLeft": { "radius": 16 },
+              "topRight": { "radius": 16 },
+              "bottomLeft": { "radius": 16 },
+              "bottomRight": { "radius": 16 }
             }
           }
         },
@@ -172,7 +172,12 @@
               "bottom": { "color": "", "style": "", "width": 0 },
               "left": { "color": "", "style": "", "width": 0 }
             },
-            "borderRadius": { "topLeft": 3, "topRight": 3, "bottomLeft": 3, "bottomRight": 3 },
+            "borderRadius": {
+              "topLeft": { "radius": 3 },
+              "topRight": { "radius": 3 },
+              "bottomLeft": { "radius": 3 },
+              "bottomRight": { "radius": 3 }
+            },
             "background": { "color": "#333" },
             "color": "#fff",
             "fontSize": 14,
@@ -268,10 +273,10 @@
               "left": { "color": "", "style": "", "width": 0 }
             },
             "borderRadius": {
-              "topLeft": 0,
-              "topRight": 0,
-              "bottomLeft": 0,
-              "bottomRight": 0
+              "topLeft": { "radius": 0 },
+              "topRight": { "radius": 0 },
+              "bottomLeft": { "radius": 0 },
+              "bottomRight": { "radius": 0 }
             },
             "margin": {
               "top": 0,
@@ -295,10 +300,10 @@
               "color": "#e8e8e8"
             },
             "borderRadius": {
-              "topLeft": 6,
-              "topRight": 6,
-              "bottomLeft": 6,
-              "bottomRight": 6
+              "topLeft": { "radius": 6 },
+              "topRight": { "radius": 6 },
+              "bottomLeft": { "radius": 6 },
+              "bottomRight": { "radius": 6 }
             },
             "border": {
               "top": { "color": "", "style": "", "width": 0 },
@@ -332,10 +337,10 @@
               "left": { "color": "", "style": "", "width": 0 }
             },
             "borderRadius": {
-              "topLeft": "16",
-              "topRight": "16",
-              "bottomLeft": "16",
-              "bottomRight": "16"
+              "topLeft": { "radius": 16 },
+              "topRight": { "radius": 16 },
+              "bottomLeft": { "radius": 16 },
+              "bottomRight": { "radius": 16 }
             }
           }
         },
@@ -450,10 +455,10 @@
               "left": { "color": "", "style": "", "width": 0 }
             },
             "borderRadius": {
-              "topLeft": 0,
-              "topRight": 0,
-              "bottomLeft": 0,
-              "bottomRight": 0
+              "topLeft": { "radius": 0 },
+              "topRight": { "radius": 0 },
+              "bottomLeft": { "radius": 0 },
+              "bottomRight": { "radius": 0 }
             },
             "margin": {
               "top": 0,
@@ -477,324 +482,333 @@
               "color": "#e8e8e8"
             },
             "borderRadius": {
-              "topLeft": 6,
-              "topRight": 6,
-              "bottomLeft": 6,
-              "bottomRight": 6
-            },
-            "border": {
-              "top": { "color": "", "style": "", "width": 0 },
-              "right": { "color": "", "style": "", "width": 0 },
-              "bottom": { "color": "", "style": "", "width": 0 },
-              "left": { "color": "", "style": "", "width": 0 }
+              "topLeft": { "radius": 6 },
+              "topRight": { "radius": 6 },
+              "bottomLeft": { "radius": 6, "bottomRight": { "radius": 6 } },
+              "border": {
+                "top": { "color": "", "style": "", "width": 0 },
+                "right": { "color": "", "style": "", "width": 0 },
+                "bottom": { "color": "", "style": "", "width": 0 },
+                "left": { "color": "", "style": "", "width": 0 }
+              }
+            }
+          },
+          "SliderPassedWay": {
+            "normal": {
+              "background": { "color": "#4d63ff" },
+              "height": 6,
+              "border": {
+                "top": { "color": "", "style": "", "width": 0 },
+                "right": { "color": "", "style": "", "width": 0 },
+                "bottom": { "color": "", "style": "", "width": 0 },
+                "left": { "color": "", "style": "", "width": 0 }
+              }
+            }
+          },
+          "SliderButton": {
+            "normal": {
+              "background": { "color": "#4d63ff" },
+              "width": 16,
+              "height": 16,
+              "border": {
+                "top": { "color": "", "style": "", "width": 0 },
+                "right": { "color": "", "style": "", "width": 0 },
+                "bottom": { "color": "", "style": "", "width": 0 },
+                "left": { "color": "", "style": "", "width": 0 }
+              },
+              "borderRadius": {
+                "topLeft": { "radius": 16 },
+                "topRight": { "radius": 16 },
+                "bottomLeft": { "radius": 16 },
+                "bottomRight": { "radius": 16 }
+              }
+            }
+          },
+          "SliderTips": {
+            "normal": {
+              "width": 30,
+              "height": 30,
+              "border": {
+                "top": { "color": "", "style": "", "width": 0 },
+                "right": { "color": "", "style": "", "width": 0 },
+                "bottom": { "color": "", "style": "", "width": 0 },
+                "left": { "color": "", "style": "", "width": 0 }
+              },
+              "borderRadius": {
+                "topLeft": { "radius": 3 },
+                "topRight": { "radius": 3 },
+                "bottomLeft": { "radius": 3 },
+                "bottomRight": { "radius": 3 }
+              },
+              "background": { "color": "#333" },
+              "color": "#fff",
+              "fontSize": 14,
+              "font": { "weight": "normal" }
+            }
+          },
+          "SliderMarks": {
+            "normal": {
+              "first": { "color": "#333", "font": { "weight": "normal", "size": 14 } },
+              "nth1": { "color": "#999", "font": { "weight": "normal", "size": 14 } },
+              "last": { "color": "#999", "font": { "weight": "normal", "size": 14 } }
             }
           }
         },
-        "SliderPassedWay": {
-          "normal": {
-            "background": { "color": "#4d63ff" },
-            "height": 6,
-            "border": {
-              "top": { "color": "", "style": "", "width": 0 },
-              "right": { "color": "", "style": "", "width": 0 },
-              "bottom": { "color": "", "style": "", "width": 0 },
-              "left": { "color": "", "style": "", "width": 0 }
+        "theme": {
+          "SliderContainer": {
+            "name": "滑块组件外盒",
+            "desc": "为滑块组件外盒配置样式",
+            "normal": [["border"], ["background"], ["margin"], ["padding"], ["opacity"]],
+            "hover": [],
+            "active": [],
+            "disabled": [["border"], ["background"], ["opacity"]]
+          },
+          "SliderTrack": {
+            "name": "滑块轨道样式",
+            "desc": "为滑块轨道配置样式",
+            "normal": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]],
+            "hover": [["background"]],
+            "active": [["background"]],
+            "disabled": [["background"]]
+          },
+          "SliderPassedWay": {
+            "name": "滑块滑过的区间轨道",
+            "desc": "滑块滑过的区间轨道样式配置",
+            "normal": [["background"], ["border"], ["height"]],
+            "hover": [["background"], ["border"], ["height"]],
+            "active": [["background"], ["border"], ["height"]],
+            "disabled": [["background"], ["border"], ["height"]]
+          },
+          "SliderButton": {
+            "name": "滑块的样式",
+            "desc": "滑块的样式配置",
+            "normal": [["width"], ["height"], ["background"], ["border"], ["borderRadius"]],
+            "hover": [["width"], ["height"], ["background"], ["border"], ["borderRadius"]],
+            "active": [["width"], ["height"], ["background"], ["border"], ["borderRadius"]],
+            "disabled": [["width"], ["height"], ["background"], ["border"], ["borderRadius"]]
+          },
+          "SliderTips": {
+            "name": "提示框",
+            "desc": "提示框样式配置",
+            "normal": [
+              ["width"],
+              ["height"],
+              ["border", "top", "color"],
+              ["border", "top", "style"],
+              ["border", "right", "style"],
+              ["border", "right", "color"],
+              ["border", "bottom", "color"],
+              ["border", "bottom", "style"],
+              ["border", "left", "style"],
+              ["border", "left", "color"],
+              ["borderRadius"],
+              ["background"],
+              ["boxShadow"],
+              ["color"],
+              ["font"],
+              ["fontSize"]
+            ],
+            "hover": [],
+            "active": [],
+            "disabled": [
+              ["background"],
+              ["color"],
+              ["boxShadow"],
+              ["border", "top", "color"],
+              ["border", "right", "color"],
+              ["border", "bottom", "color"],
+              ["border", "left", "color"]
+            ]
+          },
+          "SliderMarks": {
+            "name": "离散节点",
+            "desc": "离散节点样式配置",
+            "normal": {
+              "selectNames": [["color"], ["font"], ["fontSize"]],
+              "nth": [["color"], ["font"], ["fontSize"]]
+            },
+            "hover": [],
+            "active": [],
+            "disabled": {
+              "selectNames": [["color"], ["font"], ["fontSize"]],
+              "nth": [["color"], ["font"], ["fontSize"]]
             }
           }
-        },
-        "SliderButton": {
-          "normal": {
-            "background": { "color": "#4d63ff" },
-            "width": 16,
-            "height": 16,
-            "border": {
-              "top": { "color": "", "style": "", "width": 0 },
-              "right": { "color": "", "style": "", "width": 0 },
-              "bottom": { "color": "", "style": "", "width": 0 },
-              "left": { "color": "", "style": "", "width": 0 }
-            },
-            "borderRadius": {
-              "topLeft": "16",
-              "topRight": "16",
-              "bottomLeft": "16",
-              "bottomRight": "16"
-            }
-          }
-        },
-        "SliderTips": {
-          "normal": {
-            "width": 30,
-            "height": 30,
-            "border": {
-              "top": { "color": "", "style": "", "width": 0 },
-              "right": { "color": "", "style": "", "width": 0 },
-              "bottom": { "color": "", "style": "", "width": 0 },
-              "left": { "color": "", "style": "", "width": 0 }
-            },
-            "borderRadius": { "topLeft": 3, "topRight": 3, "bottomLeft": 3, "bottomRight": 3 },
-            "background": { "color": "#333" },
-            "color": "#fff",
-            "fontSize": 14,
-            "font": { "weight": "normal" }
-          }
-        },
-        "SliderMarks": {
-          "normal": {
-            "first": { "color": "#333", "font": { "weight": "normal", "size": 14 } },
-            "nth1": { "color": "#999", "font": { "weight": "normal", "size": 14 } },
-            "last": { "color": "#999", "font": { "weight": "normal", "size": 14 } }
+        }
+      }
+    },
+    "theme": {
+      "SliderContainer": {
+        "name": "滑块组件外盒",
+        "desc": "为滑块组件外盒配置样式",
+        "normal": [["border"], ["background"], ["margin"], ["padding"], ["opacity"]],
+        "hover": [],
+        "active": [],
+        "disabled": [["border"], ["background"], ["opacity"]]
+      },
+      "SliderTrack": {
+        "name": "滑块轨道样式",
+        "desc": "为滑块轨道配置样式",
+        "normal": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]],
+        "hover": [["background"]],
+        "active": [["background"]],
+        "disabled": [["background"]]
+      },
+      "SliderPassedWay": {
+        "name": "滑块滑过的区间轨道",
+        "desc": "滑块滑过的区间轨道样式配置",
+        "normal": [["background"], ["border"], ["height"]],
+        "hover": [["background"], ["border"], ["height"]],
+        "active": [["background"], ["border"], ["height"]],
+        "disabled": [["background"], ["border"], ["height"]]
+      },
+      "SliderButton": {
+        "name": "滑块的样式",
+        "desc": "滑块的样式配置",
+        "normal": [["width"], ["height"], ["background"], ["border"], ["borderRadius"]],
+        "hover": [["width"], ["height"], ["background"], ["border"], ["borderRadius"]],
+        "active": [["width"], ["height"], ["background"], ["border"], ["borderRadius"]],
+        "disabled": [["width"], ["height"], ["background"], ["border"], ["borderRadius"]]
+      },
+      "SliderTips": {
+        "name": "提示框",
+        "desc": "提示框样式配置",
+        "normal": [
+          ["width"],
+          ["height"],
+          ["border", "top", "color"],
+          ["border", "top", "style"],
+          ["border", "right", "style"],
+          ["border", "right", "color"],
+          ["border", "bottom", "color"],
+          ["border", "bottom", "style"],
+          ["border", "left", "style"],
+          ["border", "left", "color"],
+          ["borderRadius"],
+          ["background"],
+          ["boxShadow"],
+          ["color"],
+          ["font"],
+          ["fontSize"]
+        ],
+        "hover": [],
+        "active": [],
+        "disabled": [
+          ["background"],
+          ["color"],
+          ["boxShadow"],
+          ["border", "top", "color"],
+          ["border", "right", "color"],
+          ["border", "bottom", "color"],
+          ["border", "left", "color"]
+        ]
+      }
+    },
+    "defaultTheme": {
+      "SliderContainer": {
+        "normal": {
+          "background": { "color": "transparent" },
+          "width": 300,
+          "opacity": 1,
+          "border": {
+            "top": { "color": "", "style": "", "width": 0 },
+            "right": { "color": "", "style": "", "width": 0 },
+            "bottom": { "color": "", "style": "", "width": 0 },
+            "left": { "color": "", "style": "", "width": 0 }
+          },
+          "borderRadius": {
+            "topLeft": { "radius": 0 },
+            "topRight": { "radius": 0 },
+            "bottomLeft": { "radius": 0 },
+            "bottomRight": { "radius": 0 }
+          },
+          "margin": {
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "padding": {
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
           }
         }
       },
-      "theme": {
-        "SliderContainer": {
-          "name": "滑块组件外盒",
-          "desc": "为滑块组件外盒配置样式",
-          "normal": [["border"], ["background"], ["margin"], ["padding"], ["opacity"]],
-          "hover": [],
-          "active": [],
-          "disabled": [["border"], ["background"], ["opacity"]]
-        },
-        "SliderTrack": {
-          "name": "滑块轨道样式",
-          "desc": "为滑块轨道配置样式",
-          "normal": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]],
-          "hover": [["background"]],
-          "active": [["background"]],
-          "disabled": [["background"]]
-        },
-        "SliderPassedWay": {
-          "name": "滑块滑过的区间轨道",
-          "desc": "滑块滑过的区间轨道样式配置",
-          "normal": [["background"], ["border"], ["height"]],
-          "hover": [["background"], ["border"], ["height"]],
-          "active": [["background"], ["border"], ["height"]],
-          "disabled": [["background"], ["border"], ["height"]]
-        },
-        "SliderButton": {
-          "name": "滑块的样式",
-          "desc": "滑块的样式配置",
-          "normal": [["width"], ["height"], ["background"], ["border"], ["borderRadius"]],
-          "hover": [["width"], ["height"], ["background"], ["border"], ["borderRadius"]],
-          "active": [["width"], ["height"], ["background"], ["border"], ["borderRadius"]],
-          "disabled": [["width"], ["height"], ["background"], ["border"], ["borderRadius"]]
-        },
-        "SliderTips": {
-          "name": "提示框",
-          "desc": "提示框样式配置",
-          "normal": [
-            ["width"],
-            ["height"],
-            ["border", "top", "color"],
-            ["border", "top", "style"],
-            ["border", "right", "style"],
-            ["border", "right", "color"],
-            ["border", "bottom", "color"],
-            ["border", "bottom", "style"],
-            ["border", "left", "style"],
-            ["border", "left", "color"],
-            ["borderRadius"],
-            ["background"],
-            ["boxShadow"],
-            ["color"],
-            ["font"],
-            ["fontSize"]
-          ],
-          "hover": [],
-          "active": [],
-          "disabled": [
-            ["background"],
-            ["color"],
-            ["boxShadow"],
-            ["border", "top", "color"],
-            ["border", "right", "color"],
-            ["border", "bottom", "color"],
-            ["border", "left", "color"]
-          ]
-        },
-        "SliderMarks": {
-          "name": "离散节点",
-          "desc": "离散节点样式配置",
-          "normal": {
-            "selectNames": [["color"], ["font"], ["fontSize"]],
-            "nth": [["color"], ["font"], ["fontSize"]]
+      "SliderTrack": {
+        "normal": {
+          "width": 300,
+          "height": 6,
+          "background": {
+            "color": "#e8e8e8"
           },
-          "hover": [],
-          "active": [],
-          "disabled": {
-            "selectNames": [["color"], ["font"], ["fontSize"]],
-            "nth": [["color"], ["font"], ["fontSize"]]
+          "borderRadius": {
+            "topLeft": { "radius": 6 },
+            "topRight": { "radius": 6 },
+            "bottomLeft": { "radius": 6 },
+            "bottomRight": { "radius": 6 }
+          },
+          "border": {
+            "top": { "color": "", "style": "", "width": 0 },
+            "right": { "color": "", "style": "", "width": 0 },
+            "bottom": { "color": "", "style": "", "width": 0 },
+            "left": { "color": "", "style": "", "width": 0 }
           }
         }
-      }
-    }
-  },
-  "theme": {
-    "SliderContainer": {
-      "name": "滑块组件外盒",
-      "desc": "为滑块组件外盒配置样式",
-      "normal": [["border"], ["background"], ["margin"], ["padding"], ["opacity"]],
-      "hover": [],
-      "active": [],
-      "disabled": [["border"], ["background"], ["opacity"]]
-    },
-    "SliderTrack": {
-      "name": "滑块轨道样式",
-      "desc": "为滑块轨道配置样式",
-      "normal": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]],
-      "hover": [["background"]],
-      "active": [["background"]],
-      "disabled": [["background"]]
-    },
-    "SliderPassedWay": {
-      "name": "滑块滑过的区间轨道",
-      "desc": "滑块滑过的区间轨道样式配置",
-      "normal": [["background"], ["border"], ["height"]],
-      "hover": [["background"], ["border"], ["height"]],
-      "active": [["background"], ["border"], ["height"]],
-      "disabled": [["background"], ["border"], ["height"]]
-    },
-    "SliderButton": {
-      "name": "滑块的样式",
-      "desc": "滑块的样式配置",
-      "normal": [["width"], ["height"], ["background"], ["border"], ["borderRadius"]],
-      "hover": [["width"], ["height"], ["background"], ["border"], ["borderRadius"]],
-      "active": [["width"], ["height"], ["background"], ["border"], ["borderRadius"]],
-      "disabled": [["width"], ["height"], ["background"], ["border"], ["borderRadius"]]
-    },
-    "SliderTips": {
-      "name": "提示框",
-      "desc": "提示框样式配置",
-      "normal": [
-        ["width"],
-        ["height"],
-        ["border", "top", "color"],
-        ["border", "top", "style"],
-        ["border", "right", "style"],
-        ["border", "right", "color"],
-        ["border", "bottom", "color"],
-        ["border", "bottom", "style"],
-        ["border", "left", "style"],
-        ["border", "left", "color"],
-        ["borderRadius"],
-        ["background"],
-        ["boxShadow"],
-        ["color"],
-        ["font"],
-        ["fontSize"]
-      ],
-      "hover": [],
-      "active": [],
-      "disabled": [
-        ["background"],
-        ["color"],
-        ["boxShadow"],
-        ["border", "top", "color"],
-        ["border", "right", "color"],
-        ["border", "bottom", "color"],
-        ["border", "left", "color"]
-      ]
-    }
-  },
-  "defaultTheme": {
-    "SliderContainer": {
-      "normal": {
-        "background": { "color": "transparent" },
-        "width": 300,
-        "opacity": 1,
-        "border": {
-          "top": { "color": "", "style": "", "width": 0 },
-          "right": { "color": "", "style": "", "width": 0 },
-          "bottom": { "color": "", "style": "", "width": 0 },
-          "left": { "color": "", "style": "", "width": 0 }
-        },
-        "borderRadius": {
-          "topLeft": 0,
-          "topRight": 0,
-          "bottomLeft": 0,
-          "bottomRight": 0
-        },
-        "margin": {
-          "top": 0,
-          "right": 0,
-          "bottom": 0,
-          "left": 0
-        },
-        "padding": {
-          "top": 0,
-          "right": 0,
-          "bottom": 0,
-          "left": 0
+      },
+      "SliderPassedWay": {
+        "normal": {
+          "background": { "color": "#4d63ff" },
+          "height": 6,
+          "border": {
+            "top": { "color": "", "style": "", "width": 0 },
+            "right": { "color": "", "style": "", "width": 0 },
+            "bottom": { "color": "", "style": "", "width": 0 },
+            "left": { "color": "", "style": "", "width": 0 }
+          }
         }
-      }
-    },
-    "SliderTrack": {
-      "normal": {
-        "width": 300,
-        "height": 6,
-        "background": {
-          "color": "#e8e8e8"
-        },
-        "borderRadius": {
-          "topLeft": 6,
-          "topRight": 6,
-          "bottomLeft": 6,
-          "bottomRight": 6
-        },
-        "border": {
-          "top": { "color": "", "style": "", "width": 0 },
-          "right": { "color": "", "style": "", "width": 0 },
-          "bottom": { "color": "", "style": "", "width": 0 },
-          "left": { "color": "", "style": "", "width": 0 }
+      },
+      "SliderButton": {
+        "normal": {
+          "background": { "color": "#4d63ff" },
+          "width": 16,
+          "height": 16,
+          "border": {
+            "top": { "color": "", "style": "", "width": 0 },
+            "right": { "color": "", "style": "", "width": 0 },
+            "bottom": { "color": "", "style": "", "width": 0 },
+            "left": { "color": "", "style": "", "width": 0 }
+          },
+          "borderRadius": {
+            "topLeft": { "radius": 16 },
+            "topRight": { "radius": 16 },
+            "bottomLeft": { "radius": 16 },
+            "bottomRight": { "radius": 16 }
+          }
         }
-      }
-    },
-    "SliderPassedWay": {
-      "normal": {
-        "background": { "color": "#4d63ff" },
-        "height": 6,
-        "border": {
-          "top": { "color": "", "style": "", "width": 0 },
-          "right": { "color": "", "style": "", "width": 0 },
-          "bottom": { "color": "", "style": "", "width": 0 },
-          "left": { "color": "", "style": "", "width": 0 }
+      },
+      "SliderTips": {
+        "normal": {
+          "width": 30,
+          "height": 30,
+          "border": {
+            "top": { "color": "", "style": "", "width": 0 },
+            "right": { "color": "", "style": "", "width": 0 },
+            "bottom": { "color": "", "style": "", "width": 0 },
+            "left": { "color": "", "style": "", "width": 0 }
+          },
+          "borderRadius": {
+            "topLeft": { "radius": 3 },
+            "topRight": { "radius": 3 },
+            "bottomLeft": { "radius": 3 },
+            "bottomRight": { "radius": 3 }
+          },
+          "background": { "color": "#333" },
+          "color": "#fff",
+          "fontSize": 14,
+          "font": { "weight": "normal" }
         }
-      }
-    },
-    "SliderButton": {
-      "normal": {
-        "background": { "color": "#4d63ff" },
-        "width": 16,
-        "height": 16,
-        "border": {
-          "top": { "color": "", "style": "", "width": 0 },
-          "right": { "color": "", "style": "", "width": 0 },
-          "bottom": { "color": "", "style": "", "width": 0 },
-          "left": { "color": "", "style": "", "width": 0 }
-        },
-        "borderRadius": {
-          "topLeft": "16",
-          "topRight": "16",
-          "bottomLeft": "16",
-          "bottomRight": "16"
-        }
-      }
-    },
-    "SliderTips": {
-      "normal": {
-        "width": 30,
-        "height": 30,
-        "border": {
-          "top": { "color": "", "style": "", "width": 0 },
-          "right": { "color": "", "style": "", "width": 0 },
-          "bottom": { "color": "", "style": "", "width": 0 },
-          "left": { "color": "", "style": "", "width": 0 }
-        },
-        "borderRadius": { "topLeft": 3, "topRight": 3, "bottomLeft": 3, "bottomRight": 3 },
-        "background": { "color": "#333" },
-        "color": "#fff",
-        "fontSize": 14,
-        "font": { "weight": "normal" }
       }
     }
   }
