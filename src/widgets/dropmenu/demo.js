@@ -24,7 +24,7 @@ for (let i = 0; i < 10; i++) {
 
 const theme = {
   [Widget.DropMenu]: {
-    PreIcon: {
+    PrefixIcon: {
       normal: {
         // color: 'red',
         fontSize: 30,
@@ -154,7 +154,7 @@ const view = {
       },
     },
 
-    PreIcon: {
+    PrefixIcon: {
       normal: {
         fontSize: 30,
       },

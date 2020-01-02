@@ -224,7 +224,7 @@ export default class extends React.Component<any, any> {
           Divider: {
             normal: { background: { color: '#D4D4D4' } },
           },
-          PreIcon: {
+          PrefixIcon: {
             hover: {
               fontSize: 20,
             },
