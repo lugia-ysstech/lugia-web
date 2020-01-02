@@ -55,8 +55,8 @@
       "type": "object",
       "desc": "配置前置和后缀图标",
       "meta": [
-        { "key": "preIconClass", "title": "前置图标", "type": "icon" },
-        { "key": "preIconSrc", "title": "前置图片", "type": "string" },
+        { "key": "prefixIconClass", "title": "前置图标", "type": "icon" },
+        { "key": "prefixIconSrc", "title": "前置图片", "type": "string" },
         { "key": "suffixIconClass", "title": "后缀图标", "type": "icon" },
         { "key": "suffixIconSrc", "title": "后缀图片", "type": "string" }
       ]
@@ -73,9 +73,9 @@
           "title": "前/后缀图标",
           "type": "object",
           "children": [
-            { "key": "preIconClass", "title": "前缀图标", "type": "icon" },
+            { "key": "prefixIconClass", "title": "前缀图标", "type": "icon" },
             { "key": "suffixIconClass", "title": "后缀图标", "type": "icon" },
-            { "key": "preIconSrc", "title": "前缀图片", "type": "img" },
+            { "key": "prefixIconSrc", "title": "前缀图片", "type": "img" },
             { "key": "suffixIconSrc", "title": "后缀图片", "type": "img" }
           ]
         }
