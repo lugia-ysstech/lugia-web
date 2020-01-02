@@ -217,9 +217,9 @@
         "name": "分页切换页数图标",
         "desc": "配置分页切换页数图标",
         "normal": [["color"], ["fontSize"], ["font"]],
-        "hover": [],
+        "hover": [["color"], ["fontSize"], ["font"]],
         "clicked": [],
-        "disabled": []
+        "disabled": [["color"], ["fontSize"], ["font"]]
       },
       "PaginationSimpleText": {
         "name": "简洁分页文字",
@@ -242,9 +242,9 @@
         ["margin"]
       ]
     },
-    "unSelectedPaginationListItem": {
-      "name": "未选择状态下单个页数容器",
-      "desc": "配置未选择状态下单个页数容器",
+    "PaginationListItem": {
+      "name": "单个页数",
+      "desc": "单个页数",
       "normal": [
         ["width"],
         ["height"],
@@ -254,23 +254,23 @@
         ["opacity"],
         ["background"],
         ["boxShadow"],
-        ["padding"]
+        ["fontSize"],
+        ["font"],
+        ["color"]
       ],
-      "hover": [["color"], ["font"], ["fontSize"], ["border"], ["borderRadius"]],
-      "clicked": [],
-      "disabled": [
+      "hover": [
         ["cursor"],
         ["border"],
         ["borderRadius"],
         ["opacity"],
         ["background"],
-        ["boxShadow"]
-      ]
-    },
-    "SelectedPaginationListItem": {
-      "name": "选择状态下单个页数容器",
-      "desc": "配置选择状态下单个页数容器",
-      "normal": [
+        ["boxShadow"],
+        ["fontSize"],
+        ["font"],
+        ["color"]
+      ],
+      "clicked": [],
+      "disabled": [
         ["width"],
         ["height"],
         ["cursor"],
@@ -279,43 +279,17 @@
         ["opacity"],
         ["background"],
         ["boxShadow"],
-        ["padding"]
-      ],
-      "hover": [["color"], ["font"], ["fontSize"], ["border"], ["borderRadius"]],
-      "clicked": [],
-      "disabled": [
-        ["cursor"],
-        ["border"],
-        ["borderRadius"],
-        ["opacity"],
-        ["background"],
-        ["boxShadow"]
+        ["fontSize"],
+        ["font"],
+        ["color"]
       ]
     },
-    "unSelectedPaginationInnerText": {
-      "name": "未选择状态下单个页数内部文字",
-      "desc": "配置未选择状态下单个页数内部文字",
-      "normal": [["fontSize"], ["font"], ["color"], ["cursor"], ["opacity"]],
-      "hover": [["color"], ["font"], ["fontSize"]],
-      "clicked": [],
-      "disabled": []
-    },
-    "SelectedPaginationInnerText": {
-      "name": "选择状态下单个页数内部文字",
-      "desc": "配置选择状态下单个页数内部文字",
-      "normal": [["fontSize"], ["font"], ["color"], ["cursor"], ["opacity"]],
-      "hover": [["color"], ["font"], ["fontSize"]],
-      "clicked": [],
-      "disabled": []
-    },
-
     "ChangePageIcon": {
       "name": "切换显示每页页数图标",
       "desc": "配置切换显示每页页数图标",
       "normal": [["color"], ["fontSize"], ["font"]],
-      "hover": [],
-      "clicked": [],
-      "disabled": []
+      "hover": [["color"], ["fontSize"], ["font"]],
+      "disabled": [["color"], ["fontSize"], ["font"]]
     },
     "PaginationArrowIconContainer": {
       "name": "分页切换页数图标外部容器",
@@ -331,7 +305,14 @@
         ["boxShadow"],
         ["padding"]
       ],
-      "hover": [["color"], ["font"], ["fontSize"], ["border"], ["borderRadius"]],
+      "hover": [
+        ["cursor"],
+        ["border"],
+        ["borderRadius"],
+        ["opacity"],
+        ["background"],
+        ["boxShadow"]
+      ],
       "clicked": [],
       "disabled": [
         ["cursor"],
@@ -421,9 +402,8 @@
       "name": "更多页数图标",
       "desc": "配置更多页数图标",
       "normal": [["color"], ["fontSize"], ["font"]],
-      "hover": [],
-      "clicked": [],
-      "disabled": []
+      "hover": [["color"], ["fontSize"], ["font"]],
+      "disabled": [["color"], ["fontSize"], ["font"]]
     },
     "PaginationPageSizeSelect": {
       "name": "切换每页显示页数选择器",
