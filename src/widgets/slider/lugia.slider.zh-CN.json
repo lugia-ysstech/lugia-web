@@ -78,6 +78,108 @@
         "defaultValue": 2,
         "vertical": true
       },
+      "defaultTheme": {
+        "SliderContainer": {
+          "normal": {
+            "background": { "color": "transparent" },
+            "width": 300,
+            "opacity": 1,
+            "border": {
+              "top": { "color": "", "style": "", "width": 0 },
+              "right": { "color": "", "style": "", "width": 0 },
+              "bottom": { "color": "", "style": "", "width": 0 },
+              "left": { "color": "", "style": "", "width": 0 }
+            },
+            "borderRadius": {
+              "topLeft": 0,
+              "topRight": 0,
+              "bottomLeft": 0,
+              "bottomRight": 0
+            },
+            "margin": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            },
+            "padding": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          }
+        },
+        "SliderTrack": {
+          "normal": {
+            "width": 300,
+            "height": 6,
+            "background": {
+              "color": "#e8e8e8"
+            },
+            "borderRadius": {
+              "topLeft": 6,
+              "topRight": 6,
+              "bottomLeft": 6,
+              "bottomRight": 6
+            },
+            "border": {
+              "top": { "color": "", "style": "", "width": 0 },
+              "right": { "color": "", "style": "", "width": 0 },
+              "bottom": { "color": "", "style": "", "width": 0 },
+              "left": { "color": "", "style": "", "width": 0 }
+            }
+          }
+        },
+        "SliderPassedWay": {
+          "normal": {
+            "background": { "color": "#4d63ff" },
+            "height": 6,
+            "border": {
+              "top": { "color": "", "style": "", "width": 0 },
+              "right": { "color": "", "style": "", "width": 0 },
+              "bottom": { "color": "", "style": "", "width": 0 },
+              "left": { "color": "", "style": "", "width": 0 }
+            }
+          }
+        },
+        "SliderButton": {
+          "normal": {
+            "background": { "color": "#4d63ff" },
+            "width": 16,
+            "height": 16,
+            "border": {
+              "top": { "color": "", "style": "", "width": 0 },
+              "right": { "color": "", "style": "", "width": 0 },
+              "bottom": { "color": "", "style": "", "width": 0 },
+              "left": { "color": "", "style": "", "width": 0 }
+            },
+            "borderRadius": {
+              "topLeft": "16",
+              "topRight": "16",
+              "bottomLeft": "16",
+              "bottomRight": "16"
+            }
+          }
+        },
+        "SliderTips": {
+          "normal": {
+            "width": 30,
+            "height": 30,
+            "border": {
+              "top": { "color": "", "style": "", "width": 0 },
+              "right": { "color": "", "style": "", "width": 0 },
+              "bottom": { "color": "", "style": "", "width": 0 },
+              "left": { "color": "", "style": "", "width": 0 }
+            },
+            "borderRadius": { "topLeft": 3, "topRight": 3, "bottomLeft": 3, "bottomRight": 3 },
+            "background": { "color": "#333" },
+            "color": "#fff",
+            "fontSize": 14,
+            "font": { "weight": "normal" }
+          }
+        }
+      },
       "theme": {
         "SliderContainer": {
           "name": "滑块组件外盒",
@@ -152,6 +254,108 @@
       "desc": "双滑块的样式配置",
       "props": {
         "defaultValue": [5, 15]
+      },
+      "defaultTheme": {
+        "SliderContainer": {
+          "normal": {
+            "background": { "color": "transparent" },
+            "width": 300,
+            "opacity": 1,
+            "border": {
+              "top": { "color": "", "style": "", "width": 0 },
+              "right": { "color": "", "style": "", "width": 0 },
+              "bottom": { "color": "", "style": "", "width": 0 },
+              "left": { "color": "", "style": "", "width": 0 }
+            },
+            "borderRadius": {
+              "topLeft": 0,
+              "topRight": 0,
+              "bottomLeft": 0,
+              "bottomRight": 0
+            },
+            "margin": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            },
+            "padding": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          }
+        },
+        "SliderTrack": {
+          "normal": {
+            "width": 300,
+            "height": 6,
+            "background": {
+              "color": "#e8e8e8"
+            },
+            "borderRadius": {
+              "topLeft": 6,
+              "topRight": 6,
+              "bottomLeft": 6,
+              "bottomRight": 6
+            },
+            "border": {
+              "top": { "color": "", "style": "", "width": 0 },
+              "right": { "color": "", "style": "", "width": 0 },
+              "bottom": { "color": "", "style": "", "width": 0 },
+              "left": { "color": "", "style": "", "width": 0 }
+            }
+          }
+        },
+        "SliderPassedWay": {
+          "normal": {
+            "background": { "color": "#4d63ff" },
+            "height": 6,
+            "border": {
+              "top": { "color": "", "style": "", "width": 0 },
+              "right": { "color": "", "style": "", "width": 0 },
+              "bottom": { "color": "", "style": "", "width": 0 },
+              "left": { "color": "", "style": "", "width": 0 }
+            }
+          }
+        },
+        "SliderButton": {
+          "normal": {
+            "background": { "color": "#4d63ff" },
+            "width": 16,
+            "height": 16,
+            "border": {
+              "top": { "color": "", "style": "", "width": 0 },
+              "right": { "color": "", "style": "", "width": 0 },
+              "bottom": { "color": "", "style": "", "width": 0 },
+              "left": { "color": "", "style": "", "width": 0 }
+            },
+            "borderRadius": {
+              "topLeft": "16",
+              "topRight": "16",
+              "bottomLeft": "16",
+              "bottomRight": "16"
+            }
+          }
+        },
+        "SliderTips": {
+          "normal": {
+            "width": 30,
+            "height": 30,
+            "border": {
+              "top": { "color": "", "style": "", "width": 0 },
+              "right": { "color": "", "style": "", "width": 0 },
+              "bottom": { "color": "", "style": "", "width": 0 },
+              "left": { "color": "", "style": "", "width": 0 }
+            },
+            "borderRadius": { "topLeft": 3, "topRight": 3, "bottomLeft": 3, "bottomRight": 3 },
+            "background": { "color": "#333" },
+            "color": "#fff",
+            "fontSize": 14,
+            "font": { "weight": "normal" }
+          }
+        }
       },
       "theme": {
         "SliderContainer": {
@@ -231,6 +435,115 @@
           "5": "5℃",
           "10": "10℃",
           "15": "15℃"
+        }
+      },
+      "defaultTheme": {
+        "SliderContainer": {
+          "normal": {
+            "background": { "color": "transparent" },
+            "width": 300,
+            "opacity": 1,
+            "border": {
+              "top": { "color": "", "style": "", "width": 0 },
+              "right": { "color": "", "style": "", "width": 0 },
+              "bottom": { "color": "", "style": "", "width": 0 },
+              "left": { "color": "", "style": "", "width": 0 }
+            },
+            "borderRadius": {
+              "topLeft": 0,
+              "topRight": 0,
+              "bottomLeft": 0,
+              "bottomRight": 0
+            },
+            "margin": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            },
+            "padding": {
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            }
+          }
+        },
+        "SliderTrack": {
+          "normal": {
+            "width": 300,
+            "height": 6,
+            "background": {
+              "color": "#e8e8e8"
+            },
+            "borderRadius": {
+              "topLeft": 6,
+              "topRight": 6,
+              "bottomLeft": 6,
+              "bottomRight": 6
+            },
+            "border": {
+              "top": { "color": "", "style": "", "width": 0 },
+              "right": { "color": "", "style": "", "width": 0 },
+              "bottom": { "color": "", "style": "", "width": 0 },
+              "left": { "color": "", "style": "", "width": 0 }
+            }
+          }
+        },
+        "SliderPassedWay": {
+          "normal": {
+            "background": { "color": "#4d63ff" },
+            "height": 6,
+            "border": {
+              "top": { "color": "", "style": "", "width": 0 },
+              "right": { "color": "", "style": "", "width": 0 },
+              "bottom": { "color": "", "style": "", "width": 0 },
+              "left": { "color": "", "style": "", "width": 0 }
+            }
+          }
+        },
+        "SliderButton": {
+          "normal": {
+            "background": { "color": "#4d63ff" },
+            "width": 16,
+            "height": 16,
+            "border": {
+              "top": { "color": "", "style": "", "width": 0 },
+              "right": { "color": "", "style": "", "width": 0 },
+              "bottom": { "color": "", "style": "", "width": 0 },
+              "left": { "color": "", "style": "", "width": 0 }
+            },
+            "borderRadius": {
+              "topLeft": "16",
+              "topRight": "16",
+              "bottomLeft": "16",
+              "bottomRight": "16"
+            }
+          }
+        },
+        "SliderTips": {
+          "normal": {
+            "width": 30,
+            "height": 30,
+            "border": {
+              "top": { "color": "", "style": "", "width": 0 },
+              "right": { "color": "", "style": "", "width": 0 },
+              "bottom": { "color": "", "style": "", "width": 0 },
+              "left": { "color": "", "style": "", "width": 0 }
+            },
+            "borderRadius": { "topLeft": 3, "topRight": 3, "bottomLeft": 3, "bottomRight": 3 },
+            "background": { "color": "#333" },
+            "color": "#fff",
+            "fontSize": 14,
+            "font": { "weight": "normal" }
+          }
+        },
+        "SliderMarks": {
+          "normal": {
+            "first": { "color": "#333", "font": { "weight": "normal", "size": 14 } },
+            "nth1": { "color": "#999", "font": { "weight": "normal", "size": 14 } },
+            "last": { "color": "#999", "font": { "weight": "normal", "size": 14 } }
+          }
         }
       },
       "theme": {
@@ -381,6 +694,108 @@
         ["border", "bottom", "color"],
         ["border", "left", "color"]
       ]
+    }
+  },
+  "defaultTheme": {
+    "SliderContainer": {
+      "normal": {
+        "background": { "color": "transparent" },
+        "width": 300,
+        "opacity": 1,
+        "border": {
+          "top": { "color": "", "style": "", "width": 0 },
+          "right": { "color": "", "style": "", "width": 0 },
+          "bottom": { "color": "", "style": "", "width": 0 },
+          "left": { "color": "", "style": "", "width": 0 }
+        },
+        "borderRadius": {
+          "topLeft": 0,
+          "topRight": 0,
+          "bottomLeft": 0,
+          "bottomRight": 0
+        },
+        "margin": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "padding": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      }
+    },
+    "SliderTrack": {
+      "normal": {
+        "width": 300,
+        "height": 6,
+        "background": {
+          "color": "#e8e8e8"
+        },
+        "borderRadius": {
+          "topLeft": 6,
+          "topRight": 6,
+          "bottomLeft": 6,
+          "bottomRight": 6
+        },
+        "border": {
+          "top": { "color": "", "style": "", "width": 0 },
+          "right": { "color": "", "style": "", "width": 0 },
+          "bottom": { "color": "", "style": "", "width": 0 },
+          "left": { "color": "", "style": "", "width": 0 }
+        }
+      }
+    },
+    "SliderPassedWay": {
+      "normal": {
+        "background": { "color": "#4d63ff" },
+        "height": 6,
+        "border": {
+          "top": { "color": "", "style": "", "width": 0 },
+          "right": { "color": "", "style": "", "width": 0 },
+          "bottom": { "color": "", "style": "", "width": 0 },
+          "left": { "color": "", "style": "", "width": 0 }
+        }
+      }
+    },
+    "SliderButton": {
+      "normal": {
+        "background": { "color": "#4d63ff" },
+        "width": 16,
+        "height": 16,
+        "border": {
+          "top": { "color": "", "style": "", "width": 0 },
+          "right": { "color": "", "style": "", "width": 0 },
+          "bottom": { "color": "", "style": "", "width": 0 },
+          "left": { "color": "", "style": "", "width": 0 }
+        },
+        "borderRadius": {
+          "topLeft": "16",
+          "topRight": "16",
+          "bottomLeft": "16",
+          "bottomRight": "16"
+        }
+      }
+    },
+    "SliderTips": {
+      "normal": {
+        "width": 30,
+        "height": 30,
+        "border": {
+          "top": { "color": "", "style": "", "width": 0 },
+          "right": { "color": "", "style": "", "width": 0 },
+          "bottom": { "color": "", "style": "", "width": 0 },
+          "left": { "color": "", "style": "", "width": 0 }
+        },
+        "borderRadius": { "topLeft": 3, "topRight": 3, "bottomLeft": 3, "bottomRight": 3 },
+        "background": { "color": "#333" },
+        "color": "#fff",
+        "fontSize": 14,
+        "font": { "weight": "normal" }
+      }
     }
   }
 }
