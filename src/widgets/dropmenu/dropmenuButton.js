@@ -147,12 +147,12 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
     if (!icons) {
       return null;
     }
-    const { preIconClass, preIconSrc } = icons;
-    if (!preIconClass && !preIconSrc) {
+    const { prefixIconClass, prefixIconSrc } = icons;
+    if (!prefixIconClass && !prefixIconSrc) {
       return null;
     }
 
-    return this.getPreOrSuffixIcon('PreIcon', preIconClass, preIconSrc, channel);
+    return this.getPreOrSuffixIcon('PreIcon', prefixIconClass, prefixIconSrc, channel);
   };
 
   getSuffixIcon = (channel: Object) => {

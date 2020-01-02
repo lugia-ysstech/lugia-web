@@ -288,9 +288,9 @@ export default class extends React.Component<any, any> {
             // disabled
             menus={menu}
             icons={{
-              preIconClass: 'lugia-icon-direction_backward',
+              prefixIconClass: 'lugia-icon-direction_backward',
               suffixIconClass: 'lugia-icon-direction_play_circle',
-              preIconSrc: imgs,
+              prefixIconSrc: imgs,
             }}
           ></DropMenu>
         </Box>
@@ -325,9 +325,9 @@ export default class extends React.Component<any, any> {
               // disabled
               menus={menu}
               icons={{
-                preIconClass: 'lugia-icon-direction_backward',
+                prefixIconClass: 'lugia-icon-direction_backward',
                 suffixIconClass: 'lugia-icon-financial_heart',
-                preIconSrc: imgs,
+                prefixIconSrc: imgs,
               }}
               // switchIconClass={imgs}
             ></DropMenu>
@@ -336,7 +336,7 @@ export default class extends React.Component<any, any> {
             <DropMenu menus={menu}>
               <DropMenu.Button
                 icons={{
-                  preIconClass: 'lugia-icon-direction_backward',
+                  prefixIconClass: 'lugia-icon-direction_backward',
                   suffixIconClass: 'lugia-icon-direction_play_circle',
                 }}
                 divided={false}
@@ -351,7 +351,7 @@ export default class extends React.Component<any, any> {
               <DropMenu.Button
                 type={'primary'}
                 icons={{
-                  preIconClass: 'lugia-icon-direction_backward',
+                  prefixIconClass: 'lugia-icon-direction_backward',
                   suffixIconClass: 'lugia-icon-direction_play_circle',
                 }}
                 divided={false}
@@ -366,7 +366,7 @@ export default class extends React.Component<any, any> {
               <DropMenu.Button
                 type={'primary'}
                 icons={{
-                  preIconClass: 'lugia-icon-direction_backward',
+                  prefixIconClass: 'lugia-icon-direction_backward',
                   suffixIconClass: 'lugia-icon-direction_play_circle',
                 }}
                 divided={false}
@@ -382,7 +382,7 @@ export default class extends React.Component<any, any> {
               <DropMenu.Button
                 type={'custom'}
                 icons={{
-                  preIconClass: 'lugia-icon-direction_backward',
+                  prefixIconClass: 'lugia-icon-direction_backward',
                   suffixIconClass: 'lugia-icon-direction_right_aligned',
                 }}
                 disabled
@@ -398,7 +398,7 @@ export default class extends React.Component<any, any> {
               <DropMenu.Button
                 type={'basic'}
                 icons={{
-                  preIconClass: 'lugia-icon-direction_backward',
+                  prefixIconClass: 'lugia-icon-direction_backward',
                   suffixIconClass: 'lugia-icon-direction_right_aligned',
                 }}
                 disabled

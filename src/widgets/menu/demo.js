@@ -46,8 +46,8 @@ const objData = [
     des: 'JGXZ',
     icon: 'lugia-icon-direction_play_circle',
     icons: {
-      preIconClass: 'lugia-icon-financial_heart',
-      preIconSrc: '',
+      prefixIconClass: 'lugia-icon-financial_heart',
+      prefixIconSrc: '',
       suffixIconClass: 'lugia-icon-financial_contacts',
       suffixIconSrc: '',
     },
