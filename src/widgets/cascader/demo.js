@@ -76,158 +76,55 @@ export default class extends React.Component<any, any> {
     const { selectedKeys, data } = this.state;
     const config = {
       [Widget.Cascader]: {
+        Container: {
+          normal: {
+            width: 250,
+          },
+        },
         Menu: {
-          MenuWrap: {
+          Container: {
             normal: {
               width: 200,
               height: 300,
-              // opacity: 0.7,
               background: {
                 color: '#ccc',
               },
-              padding: {
-                left: 10,
-                top: 30,
-                //   right: 30,
-              },
-              margin: {
-                left: 20,
-                top: 20,
-              },
-              border: getBorder({ color: '#ff3366', width: 1, style: 'solid' }),
-              borderRadius: getBorderRadius(20),
               boxShadow: getBoxShadow('2px 2px 2px 4px #ff3366'),
-            },
-            hover: {
-              background: {
-                color: '#ff66cc',
-              },
-              // opacity: 1,
-              border: getBorder({ color: '#ff66cc', width: 1, style: 'solid' }),
-              borderRadius: getBorderRadius(20),
-              boxShadow: getBoxShadow('2px 2px 2px 4px #ff66cc'),
             },
           },
           MenuItem: {
             MenuItemWrap: {
               normal: {
                 height: 60,
-                background: { color: '#ff99cc' },
                 color: '#cc00cc',
-                // border: getBorder({ color: '#ff66cc', width: 1, style: 'solid' }),
-                borderRadius: getBorderRadius(20),
-                padding: {
-                  left: 60,
-                  top: 0,
-                },
                 font: {
                   size: 16,
                 },
               },
               hover: {
                 color: '#fff',
-                background: {
-                  color: '#660066',
-                },
                 opacity: 0.9,
                 font: {
                   fontWeight: 900,
-                },
-                // border: getBorder({ color: '#ff66cc', width: 1, style: 'solid' }),
-                borderRadius: getBorderRadius(20),
-              },
-
-              active: {
-                color: '#4d63ff',
-                background: {
-                  color: 'ff0099',
-                },
-                opacity: 0.9,
-                font: {
-                  fontWeight: 900,
-                },
-                // border: getBorder({ color: '#660033', width: 1, style: 'solid' }),
-                borderRadius: getBorderRadius(60),
-              },
-
-              disabled: {
-                background: { color: '#ff99cc' },
-                color: 'red',
-                borderRadius: getBorderRadius(60),
-                opacity: 0.7,
-                padding: {
-                  left: 30,
-                  top: 0,
-                },
-                font: {
-                  size: 26,
                 },
               },
             },
 
             SelectedMenuItemWrap: {
               normal: {
-                height: 80,
-                background: { color: '#cc00ff' },
-                color: '#fff',
-                // border: getBorder({ color: '#660033', width: 1, style: 'solid' }),
-                borderRadius: getBorderRadius(80),
-                padding: {
-                  left: 30,
-                },
                 font: {
                   size: 20,
                 },
-              },
-              hover: {
-                color: '#4d63ff',
-                background: {
-                  color: '#ffffcc',
-                },
-                opacity: 1,
-                font: {
-                  fontWeight: 900,
-                },
-                // border: getBorder({ color: '#336699', width: 1, style: 'solid' }),
-                borderRadius: getBorderRadius(60),
-              },
-
-              active: {
-                color: '#cc0000',
-                background: {
-                  color: 'ff9900',
-                },
-                opacity: 1,
-                font: {
-                  fontWeight: 900,
-                },
-                // border: getBorder({ color: '#000033', width: 1, style: 'solid' }),
-                borderRadius: getBorderRadius(0),
-              },
-            },
-
-            Divider: {
-              normal: { background: { color: 'red' } },
-            },
-
-            Checkbox: {
-              CheckboxText: {
-                normal: {
-                  color: 'red',
-                  font: { fontSize: 22, fontWeight: 500 },
-                },
-                hover: { color: 'green', font: { fontSize: 16, fontWeight: 500 } },
-                disabled: { color: 'yellow', font: { fontSize: 16, fontWeight: 500 } },
               },
             },
           },
 
           SubMenu: {
-            MenuWrap: {
+            Container: {
               normal: {
-                width: 100,
+                width: 200,
                 background: {
-                  color: '#660033',
+                  color: '#FFE4C4',
                 },
               },
             },
@@ -235,17 +132,17 @@ export default class extends React.Component<any, any> {
             MenuItem: {
               MenuItemWrap: {
                 normal: {
-                  color: '#fff',
+                  color: 'orange',
                 },
               },
             },
 
             SubMenu: {
-              MenuWrap: {
+              Container: {
                 normal: {
                   width: 200,
                   background: {
-                    color: '#777777',
+                    color: '#FFE4C4	',
                   },
                 },
               },
@@ -261,8 +158,8 @@ export default class extends React.Component<any, any> {
           theme={config}
           data={data}
           action={'hover'}
-          value={selectedKeys}
-          defaultValue={['a6/a6-2/a6-2-1/suba1/suba2']}
+          // value={selectedKeys}
+          // defaultValue={['a6/a6-2/a6-2-1/suba1/suba2']}
           separator={'/'}
           onClick={this.onClick}
           onChange={this.onChange}
