@@ -32,18 +32,15 @@ export default class PaginationDemo extends React.Component<any, any> {
         PaginationContainer: {
           normal: { width: 1000, height: 50 },
         },
-        SelectedPaginationListItem: {
-          normal: {},
-          hover: {
-            border: getBorder({ color: 'red', width: 1, style: 'solid' }),
-          },
-        },
-        PaginationInnerText: {
-          normal: {
-            fontSize: 20,
-          },
+        PaginationListItem: {
           hover: {
             color: 'red',
+            border: getBorder({ color: 'red', width: 1, style: 'solid' }),
+          },
+          focus: {
+            fontSize: 20,
+            color: 'yellow',
+            border: getBorder({ color: 'yellow', width: 1, style: 'solid' }),
           },
         },
         PaginationQuickJumpContainer: {
