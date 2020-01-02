@@ -46,7 +46,7 @@ function defaultRenderItem(
   itemTheme: Object
 ): Object {
   return breadCrumbItemConfig.map((item, index) => {
-    const { href, title, isLast } = item;
+    const { href, title, isLast, icons } = item;
 
     return (
       <BreadcrumbItem
@@ -56,6 +56,7 @@ function defaultRenderItem(
         isLastItem={isLast}
         theme={itemTheme}
         count={breadCrumbItemConfig.length}
+        icons={icons}
       >
         {title}
       </BreadcrumbItem>
@@ -84,14 +85,14 @@ export default class Breadcrumb extends React.Component<BreadcrumbProps, any> {
   getBreadCrumbItemConfig(routerConfig: Object[], param?: Object = {}): Object[] {
     const paths = routerConfig.map(({ path }) => path);
     const hrefs = getHrefs(paths);
-
     return routerConfig.map((item: Object, i: number, data: Object[]): Object => {
-      const { title, href = hrefs[i] } = item;
+      const { title, href = hrefs[i], icons = {} } = item;
 
       return {
         href: this.getRealityHrefs(href, param, item),
         title: replaceStr(title, param),
         isLast: i === data.length - 1,
+        icons,
       };
     });
   }

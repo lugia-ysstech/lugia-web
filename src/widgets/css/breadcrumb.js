@@ -30,12 +30,13 @@ export const CommonSpan = CSSComponent({
     },
   },
   css: css`
-    display: inline-block;
     font-size: ${FontSize};
     transition: font-size 0.3s;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    display: flex;
+    align-items: center;
   `,
   option: { hover: true },
 });
@@ -76,6 +77,8 @@ export const ALink = CSSComponent({
     overflow: hidden;
     white-space: nowrap;
     font-size: ${FontSize};
+    display: flex;
+    align-items: center;
   `,
   option: { hover: true },
 });
