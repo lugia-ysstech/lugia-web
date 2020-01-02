@@ -124,17 +124,17 @@ class MenuItem extends React.Component<MenuItemProps> {
     if (!icon && !icons) {
       return null;
     }
-    const { preIconClass, preIconSrc } = icons;
-    if (!preIconClass && !preIconSrc) {
+    const { prefixIconClass, prefixIconSrc } = icons;
+    if (!prefixIconClass && !prefixIconSrc) {
       return null;
     }
     const { viewClass, theme } = this.getIconTheme('PreIcon');
 
-    const iconClass = preIconClass ? preIconClass : icon;
+    const iconClass = prefixIconClass ? prefixIconClass : icon;
     return (
       <Icon
         iconClass={iconClass}
-        src={preIconSrc}
+        src={prefixIconSrc}
         lugiaConsumers={channel.consumer}
         singleTheme
         disabled={disabled}
