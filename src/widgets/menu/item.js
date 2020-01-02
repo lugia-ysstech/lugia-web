@@ -93,7 +93,7 @@ class MenuItem extends React.Component<MenuItemProps> {
   getIconTheme = (iconType: string) => {
     const { viewClass, theme } = this.props.getPartOfThemeHocProps(iconType);
     const paddingLeft = iconType === 'SuffixIcon' ? 3 : 0;
-    const paddingRight = iconType === 'PreIcon' ? 3 : 0;
+    const paddingRight = iconType === 'PrefixIcon' ? 3 : 0;
     const defaultTheme = {
       normal: {
         padding: {
@@ -128,7 +128,7 @@ class MenuItem extends React.Component<MenuItemProps> {
     if (!prefixIconClass && !prefixIconSrc) {
       return null;
     }
-    const { viewClass, theme } = this.getIconTheme('PreIcon');
+    const { viewClass, theme } = this.getIconTheme('PrefixIcon');
 
     const iconClass = prefixIconClass ? prefixIconClass : icon;
     return (

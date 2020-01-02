@@ -152,7 +152,7 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
       return null;
     }
 
-    return this.getPreOrSuffixIcon('PreIcon', prefixIconClass, prefixIconSrc, channel);
+    return this.getPreOrSuffixIcon('PrefixIcon', prefixIconClass, prefixIconSrc, channel);
   };
 
   getSuffixIcon = (channel: Object) => {
@@ -382,7 +382,7 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
           ),
         };
 
-      case 'PreIcon':
+      case 'PrefixIcon':
         const defaultPreIconTheme = {
           normal: {
             padding: {

@@ -359,7 +359,7 @@ class TreeNode extends React.Component {
     if (!prefixIconClass && !prefixIconSrc) {
       return null;
     }
-    const { viewClass, theme } = this.getIconTheme('PreIcon');
+    const { viewClass, theme } = this.getIconTheme('PrefixIcon');
 
     const iconClass = prefixIconClass ? prefixIconClass : icon;
     return (
@@ -403,7 +403,7 @@ class TreeNode extends React.Component {
   getIconTheme = (iconType: string) => {
     const { viewClass, theme } = this.props.getPartOfThemeHocProps(iconType);
     const marginLeft = iconType === 'SuffixIcon' || 'SwitchIcon' ? 3 : 0;
-    const marginRight = iconType === 'PreIcon' || 'SwitchIcon' ? 3 : 0;
+    const marginRight = iconType === 'PrefixIcon' || 'SwitchIcon' ? 3 : 0;
     const defaultTheme = {
       normal: {
         margin: {
