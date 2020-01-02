@@ -194,10 +194,10 @@
           "left": { "color": "", "style": "", "width": 0 }
         },
         "borderRadius": {
-          "topLeft": 20,
-          "topRight": 20,
-          "bottomLeft": 20,
-          "bottomRight": 20
+          "topLeft": { "radius": 20 },
+          "topRight": { "radius": 20 },
+          "bottomLeft": { "radius": 20 },
+          "bottomRight": { "radius": 20 }
         },
         "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
         "fontSize": 12,
@@ -223,7 +223,12 @@
           "bottom": { "color": "", "style": "", "width": 0 },
           "left": { "color": "", "style": "", "width": 0 }
         },
-        "borderRadius": { "topLeft": 7, "topRight": 7, "bottomLeft": 7, "bottomRight": 7 },
+        "borderRadius": {
+          "topLeft": { "radius": 7 },
+          "topRight": { "radius": 7 },
+          "bottomLeft": { "radius": 7 },
+          "bottomRight": { "radius": 7 }
+        },
         "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)"
       }
     },
@@ -238,10 +243,10 @@
           "left": { "color": "", "style": "", "width": 0 }
         },
         "borderRadius": {
-          "topLeft": 0,
-          "topRight": 0,
-          "bottomLeft": 0,
-          "bottomRight": 0
+          "topLeft": { "radius": 0 },
+          "topRight": { "radius": 0 },
+          "bottomLeft": { "radius": 0 },
+          "bottomRight": { "radius": 0 }
         },
         "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
         "fontSize": 12,
