@@ -170,5 +170,91 @@
       "normal": [["color"]],
       "hover": [["color"]]
     }
+  },
+  "defaultTheme": {
+    "Container": {
+      "normal": {
+        "width": 192,
+        "height": 32,
+        "background": {
+          "color": "#ffffff"
+        },
+        "border": {
+          "top": { "color": "#ccc", "style": "solid", "width": 1 },
+          "right": { "color": "#ccc", "style": "solid", "width": 1 },
+          "bottom": { "color": "#ccc", "style": "solid", "width": 1 },
+          "left": { "color": "#ccc", "style": "solid", "width": 1 }
+        },
+        "borderRadius": {
+          "topLeft": { "radius": 3 },
+          "topRight": { "radius": 3 },
+          "bottomLeft": { "radius": 3 },
+          "bottomRight": { "radius": 3 }
+        },
+        "fontSize": 14,
+        "color": "#333"
+      }
+    },
+    "InputPrefix": {
+      "normal": {
+        "color": "#999999",
+        "font": {
+          "size": 14,
+          "weight": "normal"
+        }
+      }
+    },
+    "InputSuffix": {
+      "normal": {
+        "color": "#999999",
+        "font": {
+          "size": 14,
+          "weight": "normal"
+        }
+      }
+    },
+    "ClearButton": {
+      "normal": {
+        "color": "#999999",
+        "font": {
+          "size": 14,
+          "weight": "normal"
+        }
+      }
+    },
+    "FacePanelContain": {
+      "normal": {
+        "width": 300,
+        "height": 320,
+        "background": {
+          "color": "#fff"
+        },
+        "boxShadow": "2px 2px 3px 2px rgba(0,0,0,0.1)"
+      }
+    },
+    "InMonthDate": {
+      "normal": {
+        "color": "#666666",
+        "background": {
+          "color": "#ffffff"
+        },
+        "borderRadius": {
+          "topLeft": { "radius": 0 },
+          "topRight": { "radius": 0 },
+          "bottomLeft": { "radius": 0 },
+          "bottomRight": { "radius": 0 }
+        }
+      }
+    },
+    "OutMonthDate": {
+      "normal": {
+        "color": "#ccc"
+      }
+    },
+    "SecondWeekDate": {
+      "normal": {
+        "color": "#333"
+      }
+    }
   }
 }
