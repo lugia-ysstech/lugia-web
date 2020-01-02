@@ -691,7 +691,7 @@ class Select extends React.Component<SelectProps, SelectState> {
         TagIcon: getPartOfThemeConfig('TagIcon'),
         SwitchIcon: getPartOfThemeConfig('SwitchIcon'),
         ClearIcon: getPartOfThemeConfig('ClearIcon'),
-        Menu: getPartOfThemeConfig('SwitchIcon'),
+        Menu: getPartOfThemeConfig('InputMenu'),
       },
     };
     return inputtagTheme;

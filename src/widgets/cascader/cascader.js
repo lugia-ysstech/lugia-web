@@ -7,7 +7,7 @@ import * as React from 'react';
 import Menu from '../menu';
 import Widget from '../consts/index';
 import Trigger from '../trigger';
-import CSSComponent, { css } from '@lugia/theme-css-hoc';
+import Theme from '../theme';
 import InputTag from '../inputtag';
 import { getTreeData } from '../menu/utils';
 import { deepMerge } from '@lugia/object-utils';
@@ -19,22 +19,6 @@ import {
   getInitInputValue,
   getInputValue,
 } from './utils';
-
-const CascaderContainer = CSSComponent({
-  tag: 'div',
-  className: 'CascaderContainer',
-  normal: {
-    selectNames: [['width'], ['height'], ['margin']],
-  },
-  hover: {
-    selectNames: [],
-  },
-
-  css: css`
-    display: inline-block;
-    position: relative;
-  `,
-});
 
 type CascaderProps = {
   getTheme: Function,
@@ -123,11 +107,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
     const { width = 250 } = normal;
 
     return (
-      <CascaderContainer
-        themeProps={getPartOfThemeProps('InputTag')}
-        onMouseEnter={this.onMouseEnterContainer}
-        onMouseLeave={this.onMouseLeaveContainer}
-      >
+      <Theme config={this.getInputtagTheme()}>
         <Trigger
           ref={cmp => {
             this.trigger = cmp;
@@ -140,6 +120,8 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
           popupVisible={popupVisible}
           popup={this.getMenu()}
           createPortal={createPortal}
+          onMouseEnter={this.onMouseEnterContainer}
+          onMouseLeave={this.onMouseLeaveContainer}
           lazy={false}
           onPopupVisibleChange={this.onPopupVisibleChange}
         >
@@ -154,7 +136,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
             onClear={this.onClear}
           />
         </Trigger>
-      </CascaderContainer>
+      </Theme>
     );
   }
   onPopupVisibleChange = (visible: boolean) => {
@@ -242,11 +224,18 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
     const { getPartOfThemeConfig } = this.props;
     const { InputTagWrap = {} } = getPartOfThemeConfig('InputTag');
     const { normal = {} } = InputTagWrap;
-    const { width = 250 } = normal;
+    const { width = DefaultMenuWidth } = normal;
     const defaultMenuTheme = {
-      MenuWrap: {
+      Container: {
         normal: {
           width,
+        },
+      },
+      SubMenu: {
+        Container: {
+          normal: {
+            width,
+          },
         },
       },
     };
@@ -255,12 +244,15 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
 
   getInputtagTheme = () => {
     const { getPartOfThemeConfig } = this.props;
-    const config = {
-      [Widget.InputTag]: getPartOfThemeConfig(Widget.InputTag),
+    const inputtagTheme = {
+      [Widget.InputTag]: {
+        InputTagWrap: getPartOfThemeConfig('Container'),
+        SwitchIcon: getPartOfThemeConfig('SwitchIcon'),
+        ClearIcon: getPartOfThemeConfig('ClearIcon'),
+      },
     };
-    return config;
+    return inputtagTheme;
   };
-
   handleIsInMenu = (isInMenuRange: boolean) => {
     const { checked, mouseInTarget } = this;
     if (mouseInTarget) {

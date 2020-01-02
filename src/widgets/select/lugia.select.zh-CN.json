@@ -23,7 +23,7 @@
         }
       ]
     },
-    
+
     "canSearch": {
       "type": "boolean",
       "desc": "是否支持查询",
@@ -508,29 +508,6 @@
                     ["padding"],
                     ["cursor"]
                   ]
-                },
-
-                "SwitchIcon": {
-                  "name": "下拉图标配置",
-                  "desc": "下拉图标配置的样式配置",
-                  "normal": [
-                    ["color"],
-                    ["margin"],
-                    ["fontSize"],
-                    ["font"],
-                    ["padding"],
-                    ["cursor"]
-                  ],
-                  "hover": [["color"], ["font"], ["fontSize"]],
-                  "active": [["color"], ["font"], ["fontSize"]],
-                  "disabled": [
-                    ["color"],
-                    ["margin"],
-                    ["fontSize"],
-                    ["font"],
-                    ["padding"],
-                    ["cursor"]
-                  ]
                 }
               }
             }
@@ -816,15 +793,6 @@
             "SuffixIcon": {
               "name": "后缀图标配置",
               "desc": "后缀图标或图片的样式配置",
-              "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
-              "hover": [["color"], ["font"], ["fontSize"]],
-              "active": [["color"], ["font"], ["fontSize"]],
-              "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
-            },
-
-            "SwitchIcon": {
-              "name": "下拉图标配置",
-              "desc": "下拉图标配置的样式配置",
               "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
               "hover": [["color"], ["font"], ["fontSize"]],
               "active": [["color"], ["font"], ["fontSize"]],
