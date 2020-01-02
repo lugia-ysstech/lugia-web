@@ -8,22 +8,32 @@
       "desc": "自定义层级分隔符",
       "defaultValue": "/"
     },
+
     "lastSeparator": {
       "type": "string | React.Element<any>",
-      "desc": "最后一个显示的元素后所",
-      "defaultValue": ""
+      "desc": "最后一个元素的分隔符"
     },
+
     "routes": {
       "type": "object[]",
       "desc": "生成面包屑数据对象的数组，path是跳转路径，title是面包屑展示文本",
       "meta": [
         { "key": "path", "title": "跳转路径", "type": "string" },
-        { "key": "title", "title": "展示文本", "type": "string" }
+        { "key": "title", "title": "展示文本", "type": "string" },
+        {
+          "key": "icons",
+          "title": "前/后缀图标",
+          "type": "object",
+          "children": [
+            { "key": "prefixIconClass", "title": "前缀图标", "type": "icon" },
+            { "key": "suffixIconClass", "title": "后缀图标", "type": "icon" }
+          ]
+        }
       ]
     },
     "params": {
       "type": "Object",
-      "desc": "可配置的参数"
+      "desc": "路由参数"
     }
   },
   "events": {
@@ -193,6 +203,24 @@
           "hover": [],
           "clicked": [],
           "disabled": []
+        },
+
+        "PrefixIcon": {
+          "name": "前置图标配置",
+          "desc": "前置图标或图片的样式配置",
+          "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+          "hover": [["color"], ["font"], ["fontSize"]],
+          "active": [["color"], ["font"], ["fontSize"]],
+          "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+        },
+
+        "SuffixIcon": {
+          "name": "后缀图标配置",
+          "desc": "后缀图标或图片的样式配置",
+          "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+          "hover": [["color"], ["font"], ["fontSize"]],
+          "active": [["color"], ["font"], ["fontSize"]],
+          "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
         }
       }
     }
