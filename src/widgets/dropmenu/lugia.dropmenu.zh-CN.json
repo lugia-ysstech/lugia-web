@@ -68,7 +68,6 @@
       "meta": [
         { "key": "value", "title": "value值", "type": "string" },
         { "key": "text", "title": "文本值", "type": "string" },
-        { "key": "des", "title": "辅助文本", "type": "string" },
         {
           "key": "icons",
           "title": "前/后缀图标",
@@ -273,7 +272,7 @@
         "Menu": {
           "name": "弹开菜单",
           "theme": {
-            "MenuWrap": {
+            "Container": {
               "name": "菜单外盒",
               "desc": "配置菜单组件的外盒样式",
               "normal": [
@@ -377,15 +376,6 @@
                     ["borderRadius"],
                     ["boxShadow"]
                   ],
-                  "disabled": []
-                },
-
-                "Divider": {
-                  "name": "分割线",
-                  "desc": "配置每项之间的分割线，当divided为true时生效",
-                  "normal": [["background"]],
-                  "hover": [],
-                  "active": [],
                   "disabled": []
                 },
 
