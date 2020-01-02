@@ -464,7 +464,7 @@
                   "disabled": []
                 },
 
-                "PreIcon": {
+                "PrefixIcon": {
                   "name": "前置图标配置",
                   "desc": "前置图标或图片的样式配置",
                   "normal": [
@@ -781,7 +781,7 @@
               "disabled": []
             },
 
-            "PreIcon": {
+            "PrefixIcon": {
               "name": "前置图标配置",
               "desc": "前置图标或图片的样式配置",
               "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],

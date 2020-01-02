@@ -268,7 +268,7 @@ const config = {
         },
       },
 
-      PreIcon: {
+      PrefixIcon: {
         normal: {
           fontSize: 12,
           color: 'red',

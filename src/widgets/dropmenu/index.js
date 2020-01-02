@@ -253,7 +253,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
     const { getPartOfThemeConfig } = this.props;
     const theme = {
       Container: getPartOfThemeConfig('Container'),
-      PreIcon: getPartOfThemeConfig('PreIcon'),
+      PrefixIcon: getPartOfThemeConfig('PrefixIcon'),
       SuffixIcon: getPartOfThemeConfig('SuffixIcon'),
       SwitchIcon: getPartOfThemeConfig('SwitchIcon'),
       Divided: getPartOfThemeConfig('Divided'),
