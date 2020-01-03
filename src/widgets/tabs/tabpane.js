@@ -39,6 +39,7 @@ const SelectTab = CSSComponent({
       ['width'],
       ['height'],
       ['boxShadow'],
+      ['textAlign'],
     ],
     getCSS: (theme: Object, themeProps: Object) => {
       const { color, background } = theme;
@@ -46,17 +47,19 @@ const SelectTab = CSSComponent({
         propsConfig: { isSelect, tabType, tabPosition },
       } = themeProps;
       let display = 'inline-block';
-      let textAlign = 'text-align: center';
+      let defaultTextAlign = 'center';
       let position = '';
       let border = '';
       if (isVertical(tabPosition)) {
         display = 'block';
         if (tabPosition === 'left') {
-          textAlign = 'text-align: right';
+          defaultTextAlign = 'right';
         } else {
-          textAlign = 'text-align: left';
+          defaultTextAlign = 'left';
         }
       }
+      const { textAlign = defaultTextAlign } = theme;
+      const textAlignStyle = `text-align:${textAlign};`;
       if (isSelect && tabType === 'line') {
         let cssString = css`
           width: 100%;
@@ -78,7 +81,7 @@ const SelectTab = CSSComponent({
         }
         return css`
           display: ${display};
-          ${textAlign}
+          ${textAlignStyle}
           & > div::before {
             content: '';
             background: ${color || themeColor};
@@ -97,7 +100,7 @@ const SelectTab = CSSComponent({
       }
       return css`
         display: ${display};
-        ${textAlign}
+        ${textAlignStyle}
         ${position}
         ${border}
       `;
@@ -242,7 +245,6 @@ const CardTitle = CSSComponent({
       if (tabType === 'card') {
         return {
           lineHeight: height ? `${height}px` : '32px',
-          textAlign: 'center',
           width: '100%',
         };
       }
@@ -268,7 +270,6 @@ const CardTitle = CSSComponent({
     display: inline-block;
     box-sizing: border-box;
     user-select: none;
-    text-align: left;
     &:focus {
       color: ${themeColor};
     }
