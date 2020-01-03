@@ -34,11 +34,16 @@ function verticalSize(props) {
   };
 }
 
-export function getThemeProps(props) {
+export function getThemeProps(props, normalSliderFatherWidth, iconsDistance) {
   const { getPartOfThemeProps, vertical } = props;
   const buttonThemeProps = getSliderButtonThemeProps(getPartOfThemeProps, vertical);
-
-  const sliderTrackThemeProps = getSliderTrackThemeProps(getPartOfThemeProps, vertical);
+  const { width } = buttonThemeProps;
+  const overSize = getOverSize(width, iconsDistance);
+  const sliderTrackThemeProps = getSliderTrackThemeProps(
+    getPartOfThemeProps,
+    vertical,
+    normalSliderFatherWidth - overSize
+  );
   const { height } = sliderTrackThemeProps;
   const sliderPassedWayThemeProps = getSliderPassedWayThemeProps(getPartOfThemeProps, height);
   const sliderTipsThemeProps = getTipsThemeProps(getPartOfThemeProps, buttonThemeProps);
@@ -52,7 +57,26 @@ export function getThemeProps(props) {
     sliderTipsThemeProps,
   };
 }
-function getSliderTrackThemeProps(getPartOfThemeProps, vertical) {
+function getOverSize(btnWidth, iconsDistance) {
+  let noTimes = 0;
+  let sum = 0;
+  iconsDistance.forEach(number => {
+    sum += number;
+    if (number === 0) {
+      noTimes += 1;
+    }
+  });
+  if (noTimes === 2) {
+    return btnWidth;
+  }
+  if (noTimes === 1) {
+    return btnWidth / 2 + sum;
+  }
+  if (noTimes === 0) {
+    return sum;
+  }
+}
+function getSliderTrackThemeProps(getPartOfThemeProps, vertical, normalSliderFatherWidth) {
   const sliderTrackName = 'SliderTrack';
   const sliderTrackThemeProps = getPartOfThemeProps(sliderTrackName);
   const {
@@ -60,7 +84,7 @@ function getSliderTrackThemeProps(getPartOfThemeProps, vertical) {
   } = sliderTrackThemeProps;
   const sliderNormalTheme = {
     normal: {
-      width: rangeWidthNormal,
+      width: normalSliderFatherWidth,
       height: rangeHeightNormal,
       background: {
         color: trackBackground,
