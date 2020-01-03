@@ -503,13 +503,13 @@ export class RadioGroupDemo extends React.Component<any, any> {
               font: { fontSize: 16, fontWeight: 500 },
               padding: { top: 10, bottom: 10, left: 10, right: 10 },
             },
-            hover: {
-              background: { color: 'yellow' },
-              opacity: 0.6,
-              border: getBorder({ color: 'pink', width: 2, style: 'solid' }),
-              borderRadius: getBorderRadius(4),
-              color: 'green',
-            },
+            // hover: {
+            //   background: { color: 'yellow' },
+            //   opacity: 0.6,
+            //   border: getBorder({ color: 'pink', width: 2, style: 'solid' }),
+            //   borderRadius: getBorderRadius(4),
+            //   color: 'green',
+            // },
             disabled: {
               background: { color: 'orange' },
               opacity: 0.6,
@@ -530,13 +530,13 @@ export class RadioGroupDemo extends React.Component<any, any> {
               font: { fontSize: 16, fontWeight: 500 },
               padding: { top: 10, bottom: 10, left: 10, right: 10 },
             },
-            hover: {
-              background: { color: 'green' },
-              opacity: 0.6,
-              border: getBorder({ color: 'pink', width: 2, style: 'solid' }),
-              borderRadius: getBorderRadius(4),
-              color: 'yellow',
-            },
+            // hover: {
+            //   background: { color: 'green' },
+            //   opacity: 0.6,
+            //   border: getBorder({ color: 'pink', width: 2, style: 'solid' }),
+            //   borderRadius: getBorderRadius(4),
+            //   color: 'yellow',
+            // },
           },
           CheckButtonUnChecked: {
             normal: {
