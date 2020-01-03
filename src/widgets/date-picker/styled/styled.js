@@ -364,18 +364,19 @@ function getHoverStyle(props) {
     hoverTheme: {
       color,
       background: { color: bgColor } = {},
-      borderRadius: {
-        topLeft: { radius: radiusT },
-        topRight: { radius: radiusR },
-        bottomRight: { radius: radiusB },
-        bottomLeft: { radius: radiusL },
-      },
+      borderRadius: { topLeft, topRight, bottomRight, bottomLeft },
+      boxShadow: { x, y, blur, spread, color: boxShadowColor, type } = {},
     } = {},
   } = props;
+  const t = getRadiusValue(topLeft);
+  const r = getRadiusValue(topRight);
+  const b = getRadiusValue(bottomRight);
+  const l = getRadiusValue(bottomLeft);
   return `
     color:${color};
     background:${bgColor};
-    border-radius:${radiusT} ${radiusR} ${radiusB} ${radiusL};
+    border-radius:${t} ${r} ${b} ${l};
+    box-shadow:${x}px ${y}px ${blur}px ${spread}px ${boxShadowColor} ${type === 'inset' ? type : ''}
   `;
 }
 function getNormalStyle(props) {
@@ -498,18 +499,19 @@ const getDateChildStyle = props => {
     background: { color: bgColor },
     color,
     borderRadius: {
-      topLeft: { radius: radiusT },
-      topRight: { radius: radiusR },
-      bottomRight: { radius: radiusB },
-      bottomLeft: { radius: radiusL },
+      topLeft: radiusT,
+      topRight: radiusR,
+      bottomRight: radiusB,
+      bottomLeft: radiusL,
     },
+    boxShadow: { x, y, blur, spread, color: boxShadowColor, type } = {},
   } = activeTheme;
   const {
     borderRadius: {
-      topLeft: { radius: hoverRadiusT },
-      topRight: { radius: hoverRadiusR },
-      bottomRight: { radius: hoverRadiusB },
-      bottomLeft: { radius: hoverRadiusL },
+      topLeft: hoverRadiusT,
+      topRight: hoverRadiusR,
+      bottomRight: hoverRadiusB,
+      bottomLeft: hoverRadiusL,
     },
   } = hoverTheme;
   const radiusTvalue = getRadiusValue(radiusT);
@@ -529,6 +531,9 @@ const getDateChildStyle = props => {
       background:${bgColor};
       color:${color};
       ${normalBorderRadius};
+      box-shadow:${x}px ${y}px ${blur}px ${spread}px ${boxShadowColor} ${
+      type === 'inset' ? type : ''
+    };
     }`;
   }, '');
   const todayInd = noToday ? '' : selectToday ? todayIndex : '';
@@ -541,7 +546,6 @@ const getDateChildStyle = props => {
         &:hover {
           background: ${hoverColor};
           color:#fff;
-          border-radius: ${circleBorderRadius};
           border-radius:${radiusTvalueH} ${radiusRvalueH} ${radiusBvalueH} ${radiusLvalueH};
         }
       }
@@ -598,8 +602,8 @@ function rangeBorderDireStyle(index, dire, rangeNormalTheme) {
     botRadius = 'bottomRight';
   }
   const { borderRadius } = rangeNormalTheme;
-  const { radius: topR } = borderRadius[topRadius];
-  const { radius: botR } = borderRadius[botRadius];
+  const topR = borderRadius[topRadius];
+  const botR = borderRadius[botRadius];
   const topRadiusValue = getRadiusValue(topR);
   const botRadiusValue = getRadiusValue(botR);
   return `
