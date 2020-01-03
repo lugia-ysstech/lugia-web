@@ -4,7 +4,7 @@
 
 import colorsFunc from '../css/stateColor';
 import { deepMerge } from '@lugia/object-utils';
-import { getBorder, getBorderRadius } from '../theme/CSSProvider';
+import { getBorder, getBorderRadius } from '@lugia/theme-utils';
 import { px2remcss } from '../css/units';
 const rem = px2remcss;
 const { themeColor, successColor, dangerColor } = colorsFunc();
@@ -78,6 +78,7 @@ export function getThemeProps(props, value) {
   const { themeConfig: { normal: { width: openWidth, height: openHeight } = {} } = {} } = open;
   // const {themeConfig:closedThemeConfig}=closed;
   // const {themeConfig:openThemeConfig}=open;
+  console.log(getBorderRadius(20));
   const defaultOpenThemeProps = {
     normal: {
       width: closedWidth || wrapWidth,
