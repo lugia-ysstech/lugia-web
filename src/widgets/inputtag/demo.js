@@ -95,7 +95,7 @@ class InputDemo extends React.Component<any, any> {
           hover: { color: '#4d63ff' },
         },
         Menu: {
-          MenuWrap: {
+          Container: {
             normal: {
               width: 200,
               height: 200,

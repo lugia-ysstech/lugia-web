@@ -86,7 +86,7 @@ export default class AutoCompleteBounded extends React.Component<any, any> {
         },
 
         Menu: {
-          MenuWrap: {
+          Container: {
             normal: {
               width: 300,
               height: 350,

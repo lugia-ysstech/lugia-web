@@ -598,7 +598,7 @@
     "Menu": {
       "name": "弹开菜单",
       "theme": {
-        "MenuWrap": {
+        "Container": {
           "name": "菜单外盒",
           "desc": "配置菜单组件的外盒样式",
           "normal": [
