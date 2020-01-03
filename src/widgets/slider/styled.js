@@ -70,8 +70,8 @@ export const SliderBigBox = CSSComponent({
   },
   css: css`
     box-sizing: border-box;
-    display: inline-block;
     vertical-align: top;
+    background: red;
   `,
 });
 export const SliderBox = StaticComponent({
@@ -272,18 +272,18 @@ export const Tipinner = CSSComponent({
       return `
         height:${em(height - 2)};
         line-height:${em(height - 2)};
-        
+
         &::before{
          content:'${tipsText}';
-         ${getTipsArrowBorder(themeMate).background}; 
-         ${getTipsArrowBorder(themeMate).borderRadius};      
+         ${getTipsArrowBorder(themeMate).background};
+         ${getTipsArrowBorder(themeMate).borderRadius};
         };
-        
+
         &::after {
-         ${getTipsArrowBorder(themeMate).border};                   
-          ${getTipsArrowBorder(themeMate).boxShadow};                   
-          ${getTipsArrowBorder(themeMate).borderRadius};                   
-          ${getTipsArrowBorder(themeMate).background}; 
+         ${getTipsArrowBorder(themeMate).border};
+          ${getTipsArrowBorder(themeMate).boxShadow};
+          ${getTipsArrowBorder(themeMate).borderRadius};
+          ${getTipsArrowBorder(themeMate).background};
         }
       `;
     },
@@ -305,17 +305,17 @@ export const Tipinner = CSSComponent({
       ['border', 'left', 'color'],
     ],
     getCSS(themeMate) {
-      return `           
+      return `
         &::before{
-          ${getTipsArrowBorder(themeMate).background}; 
-         ${getTipsArrowBorder(themeMate).borderRadius};      
+          ${getTipsArrowBorder(themeMate).background};
+         ${getTipsArrowBorder(themeMate).borderRadius};
         };
-        
+
         &::after {
-          ${getTipsArrowBorder(themeMate).border};                   
-          ${getTipsArrowBorder(themeMate).boxShadow};                   
-          ${getTipsArrowBorder(themeMate).borderRadius};                   
-          ${getTipsArrowBorder(themeMate).background};                   
+          ${getTipsArrowBorder(themeMate).border};
+          ${getTipsArrowBorder(themeMate).boxShadow};
+          ${getTipsArrowBorder(themeMate).borderRadius};
+          ${getTipsArrowBorder(themeMate).background};
         }
       `;
     },
@@ -365,12 +365,12 @@ function getTipsArrowBorder(themeMate) {
     borderRadius: { topLeft = 3, topRight = 3, bottomRight = 3, bottomLeft = 3 } = {},
   } = themeMate;
   const border = `
-    border-style:solid;      
+    border-style:solid;
     border-right-color:${bottomBorderColor};
     border-right-style:${bottomBorderStyle};
     border-bottom-color:${bottomBorderColor};
     border-bottom-style:${bottomBorderStyle};
-    border-width:1px;  
+    border-width:1px;
   `;
   const boxShadow = `box-shadow:${boxShadowColor} ${em(x)} ${em(y)} ${em(blur)} ${em(spread)};`;
   const borderRadius = `border-radius:${em(topLeft)} ${em(topRight)} ${em(bottomRight)} ${em(
@@ -394,15 +394,15 @@ export const Dot = CSSComponent({
       const { dotPosition, dotBackground, dotW, dotH, marskText, dotTextPosition } = getDotStyle(
         propsConfig
       );
-      return ` 
-        ${dotPosition};  
+      return `
+        ${dotPosition};
         ${dotBackground};
         width:${dotW};
         height:${dotH};
        &::before{
         content:'${marskText}';
         ${dotTextPosition};
-        color:${color};        
+        color:${color};
        }
       `;
     },
@@ -417,7 +417,7 @@ export const Dot = CSSComponent({
     selectNames: [['color'], ['font']],
     getCSS(themeMate) {
       const { color } = themeMate;
-      return ` 
+      return `
          &::before{
           color:${color};
          }
@@ -539,7 +539,7 @@ const getButtonStyle = (props: CssTypeProps) => {
         transform: ${btnTransform}(-50%);
         -webkit-transform: ${btnTransform}(-50%);
         ${btnZIndex};
-        transition:${transitionTime}s; 
+        transition:${transitionTime}s;
       `;
   return btnPosition;
 };
