@@ -229,7 +229,8 @@
                 ["font"],
                 ["opacity"],
                 ["borderRadius"],
-                ["boxShadow"]
+                ["boxShadow"],
+                ["textAlign"]
               ],
               "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
               "disabled": [["color"], ["background"]]
@@ -324,7 +325,8 @@
                 ["font"],
                 ["opacity"],
                 ["borderRadius"],
-                ["boxShadow"]
+                ["boxShadow"],
+                ["textAlign"]
               ],
               "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
               "disabled": [["color"], ["background"]]
@@ -412,7 +414,8 @@
             ["font"],
             ["opacity"],
             ["borderRadius"],
-            ["boxShadow"]
+            ["boxShadow"],
+            ["textAlign"]
           ],
           "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
           "disabled": [["color"], ["background"]]
