@@ -1015,8 +1015,84 @@ export default class TabsDemo extends React.Component<any, any> {
       },
     };
 
+    const tabpanTheme = {
+      [Widget.Tabs]: {
+        TabHeader: {
+          DefaultTabPan: {
+            normal: {
+              width: 120,
+              textAlign: 'left',
+            },
+          },
+        },
+      },
+    };
     return (
       <div>
+        <Theme config={tabpanTheme}>
+          <p style={{ titleStyle }}>tabpanTheme</p>
+          <ContainerBox>
+            <Tabs
+              tabType={'card'}
+              data={hasActivityValueData}
+              showDeleteBtn={true}
+              showAddBtn={true}
+              addIcon={'lugia-icon-direction_logout'}
+            />
+          </ContainerBox>
+          <ContainerBox>
+            <Tabs
+              // tabType={'card'}
+              data={hasActivityValueData}
+              showDeleteBtn={true}
+              showAddBtn={true}
+              addIcon={'lugia-icon-direction_logout'}
+            />
+          </ContainerBox>
+
+          <ContainerBox>
+            <Tabs
+              // tabType={'card'}
+              tabPosition={'bottom'}
+              data={hasActivityValueData}
+              showDeleteBtn={true}
+              showAddBtn={true}
+              addIcon={'lugia-icon-direction_logout'}
+            />
+          </ContainerBox>
+
+          <ContainerBox>
+            <Tabs
+              // tabType={'card'}
+              tabPosition={'left'}
+              data={hasActivityValueData}
+              showDeleteBtn={true}
+              showAddBtn={true}
+              addIcon={'lugia-icon-direction_logout'}
+            />
+          </ContainerBox>
+
+          <ContainerBox>
+            <Tabs
+              // tabType={'card'}
+              tabPosition={'right'}
+              data={hasActivityValueData}
+              showDeleteBtn={true}
+              showAddBtn={true}
+              addIcon={'lugia-icon-direction_logout'}
+            />
+          </ContainerBox>
+
+          <ContainerBox>
+            <Tabs
+              tabType={'window'}
+              data={hasActivityValueData}
+              showDeleteBtn={true}
+              showAddBtn={true}
+              addIcon={'lugia-icon-direction_logout'}
+            />
+          </ContainerBox>
+        </Theme>
         <Theme config={IconTheme}>
           <p style={{ titleStyle }}>IconTheme</p>
           <ContainerBox>
