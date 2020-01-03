@@ -300,7 +300,7 @@
           "name": "穿梭框面板Tree样式",
           "desc": "为穿梭框配置左右面板Tree样式",
           "theme": {
-            "TreeWrap": {
+            "Container": {
               "name": "树形控件外盒",
               "desc": "配置树形组件的外盒样式",
               "normal": [
