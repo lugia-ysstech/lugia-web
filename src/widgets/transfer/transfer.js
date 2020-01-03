@@ -285,7 +285,7 @@ export default ThemeProvider(
       };
       const treeDefaultView = {
         [treeViewClass]: {
-          TreeWrap: {
+          Container: {
             normal: defaultTheme,
           },
         },

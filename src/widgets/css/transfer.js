@@ -42,6 +42,7 @@ export type TransferProps = {
   cancelBoxTheme: Object,
   menuTheme: Object,
   treeTheme: Object,
+  inputTheme: Object,
 };
 export type TransferState = {
   inputValue: string,
