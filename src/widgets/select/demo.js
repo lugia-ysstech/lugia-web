@@ -46,7 +46,7 @@ const config = {
       },
     },
     Menu: {
-      MenuWrap: {
+      Container: {
         normal: {
           width: 400,
           height: 330,
@@ -242,7 +242,7 @@ const config = {
         hover: { color: 'red', opacity: 1 },
       },
       Menu: {
-        MenuWrap: {
+        Container: {
           normal: {
             width: 400,
             height: 330,
