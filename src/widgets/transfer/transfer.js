@@ -73,7 +73,7 @@ export default ThemeProvider(
       if (hasCancelItem) {
         return cancelItem.map((item, index) => {
           return (
-            <MenuItem>
+            <MenuItem key={item[valueField]}>
               <CancelBoxItem>
                 <CheckBox
                   key={index}
@@ -101,7 +101,7 @@ export default ThemeProvider(
       const { viewClass, theme } = cancelBoxMenuTheme;
       const defaultCancelMenuTheme = {
         [viewClass]: {
-          MenuWrap: {
+          Container: {
             normal: {
               height: cancelBoxHeight,
               width: 200,
@@ -278,7 +278,7 @@ export default ThemeProvider(
       const wrapHeight = defaultTheme.height;
       const menuDefaultView = {
         [menuViewClass]: {
-          MenuWrap: {
+          Container: {
             normal: { ...defaultTheme, boxShadow: getBoxShadow('0 0') },
           },
         },
