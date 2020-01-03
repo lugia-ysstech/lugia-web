@@ -269,11 +269,18 @@
         ["font"],
         ["color"]
       ],
-      "clicked": [],
       "disabled": [
-        ["width"],
-        ["height"],
         ["cursor"],
+        ["border"],
+        ["borderRadius"],
+        ["opacity"],
+        ["background"],
+        ["boxShadow"],
+        ["fontSize"],
+        ["font"],
+        ["color"]
+      ],
+      "focus": [
         ["border"],
         ["borderRadius"],
         ["opacity"],
@@ -313,7 +320,6 @@
         ["background"],
         ["boxShadow"]
       ],
-      "clicked": [],
       "disabled": [
         ["cursor"],
         ["border"],
@@ -432,11 +438,8 @@
             ["borderRadius"],
             ["font"],
             ["opacity"]
-          ],
-          "active": [],
-          "disabled": []
+          ]
         },
-
         "SwitchIcon": {
           "name": "下拉图标",
           "desc": "配置下拉图标样式",
@@ -457,7 +460,7 @@
       "Menu": {
         "name": "弹开菜单",
         "theme": {
-          "MenuWrap": {
+          "Container": {
             "name": "菜单外盒",
             "desc": "配置菜单组件的外盒样式",
             "normal": [
@@ -472,7 +475,6 @@
               ["padding"]
             ],
             "hover": [["boxShadow"], ["background"], ["opacity"], ["border"], ["borderRadius"]],
-            "clicked": [],
             "disabled": []
           },
           "MenuItem": {
@@ -543,14 +545,6 @@
                   ["color"],
                   ["font"]
                 ],
-                "disabled": []
-              },
-              "Divider": {
-                "name": "分割线",
-                "desc": "配置每项之间的分割线，当divided为true时生效",
-                "normal": [["background"]],
-                "hover": [],
-                "active": [],
                 "disabled": []
               }
             }
