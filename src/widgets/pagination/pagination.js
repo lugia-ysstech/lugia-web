@@ -163,7 +163,6 @@ const PaginationListItem = CSSComponent({
       border: getBorder({ color: themeColor, width: borderSize, style: 'solid' }),
     },
   },
-  option: { hover: true, active: true, focus: true },
   css: css`
     text-align: center;
     list-style: none;
@@ -395,16 +394,11 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     theThemeProps.themeState.focus = isSelected;
     return (
       <PaginationListItem
-        {...dispatchEvent([['hover', 'disabled', 'focus']], 'f2c')}
         {...channel.provider}
         onClick={this.changePage(index)}
         themeProps={theThemeProps}
       >
-        <PaginationListItemText
-          {...dispatchEvent([['hover', 'disabled', 'focus']], 'f2c')}
-          lugiaConsumers={channel.consumer}
-          themeProps={theThemeProps}
-        >
+        <PaginationListItemText lugiaConsumers={channel.consumer} themeProps={theThemeProps}>
           {pageNumber}
         </PaginationListItemText>
       </PaginationListItem>
