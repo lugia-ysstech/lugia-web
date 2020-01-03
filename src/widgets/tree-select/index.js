@@ -199,7 +199,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     const { normal = {} } = InputTagWrap;
     const { width = 250 } = normal;
     const defaultMenuTheme = {
-      TreeWrap: {
+      Container: {
         normal: {
           width,
         },

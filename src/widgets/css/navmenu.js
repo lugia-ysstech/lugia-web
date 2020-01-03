@@ -184,7 +184,7 @@ export const PrimaryLightTheme = {
 };
 
 export const EllipseLightTheme = {
-  TreeWrap: {},
+  Container: {},
   TreeItem: {
     TreeItemWrap: {
       normal: {
@@ -230,7 +230,7 @@ export const EllipseLightTheme = {
 
 // themeStyle: dark
 export const PrimaryDarkTheme = {
-  TreeWrap: {
+  Container: {
     normal: {
       background: {
         color: 'rgba(0, 0, 51, 0.7)',
@@ -279,7 +279,7 @@ export const PrimaryDarkTheme = {
 };
 
 export const EllipseDarkTheme = {
-  TreeWrap: {
+  Container: {
     normal: {
       background: {
         color: 'rgba(0, 0, 51, 0.7)',
