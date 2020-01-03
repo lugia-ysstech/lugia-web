@@ -125,7 +125,7 @@ const newData = [
 const treeTheme = {
   [Widget.NavMenu]: {
     Tree: {
-      TreeWrap: {
+      Container: {
         normal: {
           width: 300,
           height: 400,
@@ -194,7 +194,7 @@ const Button = styled.div`
 const testTheme = {
   [Widget.NavMenu]: {
     Tree: {
-      TreeWrap: {
+      Container: {
         normal: {
           height: 500,
         },

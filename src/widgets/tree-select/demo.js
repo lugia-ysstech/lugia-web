@@ -72,7 +72,7 @@ const data = [
 const theme = {
   [Widget.TreeSelect]: {
     Tree: {
-      TreeWrap: {
+      Container: {
         normal: {
           width: 500,
           height: 300,

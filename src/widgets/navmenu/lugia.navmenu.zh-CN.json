@@ -599,7 +599,7 @@
         "Tree": {
           "name": "内嵌导航菜单配置",
           "theme": {
-            "TreeWrap": {
+            "Container": {
               "name": "内嵌导航菜单外盒",
               "desc": "配置内嵌导航菜单的外盒样式",
               "normal": [
@@ -716,7 +716,7 @@
     "Tree": {
       "name": "内嵌导航菜单配置",
       "theme": {
-        "TreeWrap": {
+        "Container": {
           "name": "内嵌导航菜单外盒",
           "desc": "配置内嵌导航菜单的外盒样式",
           "normal": [
