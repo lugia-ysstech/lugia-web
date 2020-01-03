@@ -46,7 +46,7 @@ export const HorizontalDarkTheme = {
 };
 
 export const LightTabsMenuTheme = {
-  MenuWrap: {
+  Container: {
     normal: {
       background: {
         color: '',
@@ -332,7 +332,7 @@ export const EllipseDarkTheme = {
 
 // themeStyle: light
 export const LightMenuTheme = {
-  MenuWrap: {
+  Container: {
     normal: {
       background: {
         color: '',

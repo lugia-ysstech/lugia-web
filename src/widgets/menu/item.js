@@ -173,7 +173,7 @@ class MenuItem extends React.Component<MenuItemProps> {
     const {
       mutliple,
       checkedCSS,
-      item: { children = [] },
+      item: { children } = {},
       switchIconClass: { iconClass, iconSrc },
     } = this.props;
     if (mutliple === true || checkedCSS !== 'none' || !children || children.length === 0) {

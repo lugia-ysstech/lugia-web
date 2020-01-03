@@ -407,7 +407,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     const { normal = {} } = getPartOfThemeConfig('InputTagWrap');
     const { width = 250 } = normal;
     const defaultMenuTheme = {
-      MenuWrap: {
+      Container: {
         normal: {
           width,
         },

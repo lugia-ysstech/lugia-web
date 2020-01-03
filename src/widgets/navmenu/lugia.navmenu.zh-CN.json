@@ -162,7 +162,7 @@
         "Menu": {
           "name": "弹出菜单配置",
           "theme": {
-            "MenuWrap": {
+            "Container": {
               "name": "菜单外盒",
               "desc": "配置菜单组件的外盒样式",
               "normal": [
@@ -256,7 +256,7 @@
             "SubMenu": {
               "name": "子菜单配置",
               "theme": {
-                "MenuWrap": {
+                "Container": {
                   "name": "菜单外盒",
                   "desc": "配置菜单组件的外盒样式",
                   "normal": [
@@ -380,7 +380,7 @@
         "Menu": {
           "name": "垂直导航菜单配置",
           "theme": {
-            "MenuWrap": {
+            "Container": {
               "name": "菜单外盒",
               "desc": "配置菜单组件的外盒样式",
               "normal": [
@@ -474,7 +474,7 @@
             "SubMenu": {
               "name": "弹开子菜单配置",
               "theme": {
-                "MenuWrap": {
+                "Container": {
                   "name": "菜单外盒",
                   "desc": "配置菜单组件的外盒样式",
                   "normal": [
