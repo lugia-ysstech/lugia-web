@@ -182,16 +182,6 @@
                   ["padding"]
                 ]
               },
-              "hover": {
-                "selectNames": [
-                  ["opacity"],
-                  ["border"],
-                  ["borderRadius"],
-                  ["background"],
-                  ["color"]
-                ],
-                "nth": [["opacity"], ["border"], ["borderRadius"], ["background"], ["color"]]
-              },
               "disabled": {
                 "selectNames": [
                   ["opacity"],
@@ -216,8 +206,7 @@
                 ["color"],
                 ["font"],
                 ["padding"]
-              ],
-              "hover": [["opacity"], ["border"], ["borderRadius"], ["background"], ["color"]]
+              ]
             }
           }
         }

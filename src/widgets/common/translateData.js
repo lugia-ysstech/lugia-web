@@ -185,6 +185,7 @@ function renderChildren(
         change = 'onChange';
       }
       return React.cloneElement(child, {
+        type,
         [change]: type === 'radio' ? params.handleChange()() : params.handleChange(),
         checked:
           type === 'radio' ? value === child.props.value : value.indexOf(child.props.value) !== -1,

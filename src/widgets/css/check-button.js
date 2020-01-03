@@ -167,7 +167,6 @@ export const CheckSpan = CSSComponent({
       ['padding'],
     ],
     defaultTheme: {
-      opacity: 1,
       color: darkGreyColor,
       border: {
         top: { color: borderColor, width: 1, style: 'solid' },
@@ -197,24 +196,8 @@ export const CheckSpan = CSSComponent({
       ['font'],
       ['padding'],
     ],
-    defaultTheme: {
-      color: themeColor,
-      opacity: 1,
-      border: {
-        top: { color: borderColor, width: 1, style: 'solid' },
-        right: { color: borderColor, width: 1, style: 'solid' },
-        bottom: { color: borderColor, width: 1, style: 'solid' },
-      },
-      background: { color: '#fff' },
-      fontSize: em(12),
-      padding: {
-        top: 0,
-        right: 10,
-        bottom: 0,
-        left: 10,
-      },
-    },
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
+      // console.log(themeMeta);
       return getPadding(themeProps);
     },
   },
