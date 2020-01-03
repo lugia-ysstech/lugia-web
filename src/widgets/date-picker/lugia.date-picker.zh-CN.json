@@ -157,7 +157,7 @@
       "desc": "日期配置",
       "normal": [["color"]],
       "hover": [["color"], ["background"], ["borderRadius"]],
-      "active": [["color"], ["background"], ["borderRadius"]]
+      "active": [["color"], ["background"], ["borderRadius"], ["boxShadow"]]
     },
     "OutMonthDate": {
       "name": "非本月日期",
@@ -186,10 +186,10 @@
           "left": { "color": "#ccc", "style": "solid", "width": 1 }
         },
         "borderRadius": {
-          "topLeft": { "radius": 3 },
-          "topRight": { "radius": 3 },
-          "bottomLeft": { "radius": 3 },
-          "bottomRight": { "radius": 3 }
+          "topLeft": 3,
+          "topRight": 3,
+          "bottomLeft": 3,
+          "bottomRight": 3
         },
         "fontSize": 14,
         "color": "#333"
@@ -235,15 +235,7 @@
     "InMonthDate": {
       "normal": {
         "color": "#666666",
-        "background": {
-          "color": "#ffffff"
-        },
-        "borderRadius": {
-          "topLeft": { "radius": 0 },
-          "topRight": { "radius": 0 },
-          "bottomLeft": { "radius": 0 },
-          "bottomRight": { "radius": 0 }
-        }
+        "fontSize": 14
       }
     },
     "OutMonthDate": {

@@ -30,7 +30,7 @@ export function getWrapThemeProps(props, partName) {
       width: '100%',
       height: 32,
       border: getBorder({ width: borderSize, color: borderColor, style: 'solid' }),
-      borderRadius: getBorderRadius({ radius: 3 }),
+      borderRadius: getBorderRadius(3),
     },
   };
 
@@ -103,7 +103,7 @@ export function getDateTheme(props) {
   const defaultHover = {
     background: { color: hoverColor },
     color: '#fff',
-    borderRadius: getBorderRadius({ radius: circleBorderRadius }),
+    borderRadius: getBorderRadius(circleBorderRadius),
   };
   const outMonthNormalTheme = deepMerge(defaultOutNormal, outNormal);
 
@@ -120,9 +120,7 @@ export function getDateTheme(props) {
     background: { color: spiritColor },
     color: normalTheme.color,
     borderRadius:
-      !hover.borderRadius && !active.borderRadius
-        ? getBorderRadius({ radius: 20 })
-        : activeTheme.borderRadius,
+      !hover.borderRadius && !active.borderRadius ? getBorderRadius(20) : activeTheme.borderRadius,
   };
   const rangeNormalTheme = deepMerge(defaultRangeNormal, rangeNormal);
   return {

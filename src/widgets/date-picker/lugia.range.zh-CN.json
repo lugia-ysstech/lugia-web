@@ -153,8 +153,8 @@
       "name": "日期",
       "desc": "日期配置",
       "normal": [["color"]],
-      "hover": [["color"], ["background"], ["borderRadius"]],
-      "active": [["color"], ["background"], ["borderRadius"]]
+      "hover": [["color"], ["background"], ["borderRadius"], ["boxShadow"]],
+      "active": [["color"], ["background"], ["borderRadius"], ["boxShadow"]]
     },
     "OutMonthDate": {
       "name": "非本月日期",
@@ -188,10 +188,10 @@
           "left": { "color": "#ccc", "style": "solid", "width": 1 }
         },
         "borderRadius": {
-          "topLeft": { "radius": 3 },
-          "topRight": { "radius": 3 },
-          "bottomLeft": { "radius": 3 },
-          "bottomRight": { "radius": 3 }
+          "topLeft": 3,
+          "topRight": 3,
+          "bottomLeft": 3,
+          "bottomRight": 3
         },
         "fontSize": 14,
         "color": "#333"
@@ -241,35 +241,35 @@
           "color": "#ffffff"
         },
         "borderRadius": {
-          "topLeft": { "radius": 0 },
-          "topRight": { "radius": 0 },
-          "bottomLeft": { "radius": 0 },
-          "bottomRight": { "radius": 0 }
+          "topLeft": 0,
+          "topRight": 0,
+          "bottomLeft": 0,
+          "bottomRight": 0
         }
       }
-    },
-    "OutMonthDate": {
-      "normal": {
-        "color": "#ccc"
-      }
-    },
-    "SecondWeekDate": {
-      "normal": {
-        "color": "#333"
-      }
-    },
-    "RangeDate": {
-      "normal": {
-        "color": "#666666",
-        "background": {
-          "color": "rgba(77,99,255,0.05)"
-        },
-        "borderRadius": {
-          "topLeft": { "radius": 13 },
-          "topRight": { "radius": 13 },
-          "bottomLeft": { "radius": 13 },
-          "bottomRight": { "radius": 13 }
-        }
+    }
+  },
+  "OutMonthDate": {
+    "normal": {
+      "color": "#ccc"
+    }
+  },
+  "SecondWeekDate": {
+    "normal": {
+      "color": "#333"
+    }
+  },
+  "RangeDate": {
+    "normal": {
+      "color": "#666666",
+      "background": {
+        "color": "rgba(77,99,255,0.05)"
+      },
+      "borderRadius": {
+        "topLeft": 13,
+        "topRight": 13,
+        "bottomLeft": 13,
+        "bottomRight": 13
       }
     }
   }
