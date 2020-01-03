@@ -159,7 +159,7 @@ export default class TransferDemo extends React.Component<any, any> {
           },
         },
         TransferPanelTree: {
-          TreeWrap: {
+          Container: {
             normal: { height: 500 },
           },
         },
