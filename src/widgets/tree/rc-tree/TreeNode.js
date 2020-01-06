@@ -8,6 +8,7 @@ import CheckBox from '../../checkbox';
 import { deepMerge } from '@lugia/object-utils';
 import ThemeHoc from '@lugia/theme-hoc';
 import { addMouseEvent } from '@lugia/theme-hoc';
+
 import {
   FlexBox,
   FlexWrap,
@@ -430,6 +431,29 @@ class TreeNode extends React.Component {
     };
   };
 
+  setNodeDragState = dragState => {
+    this.setState({ dragState });
+  };
+
+  componentDidMount() {
+    const { eventKey: nodeName, draggable, treeDrag } = this.props;
+    const { listener: treeListener } = treeDrag;
+    if (!this.selectHandle || !draggable) return;
+    treeDrag.collectNodeInformation({ nodeName, nodeRef: this.selectHandle, node: this });
+    this.unSetNodeDragStateListener = treeListener.on(
+      `${nodeName}-setDrageState`,
+      this.setNodeDragState
+    );
+  }
+
+  componentWillUnmount() {
+    const { eventKey: nodeName, treeDrag } = this.props;
+    const { unSetNodeDragStateListener } = this;
+    treeDrag.deltetNodeInformation(nodeName);
+    const { removeListener: removeSetNodeDragStateListener } = unSetNodeDragStateListener;
+    removeSetNodeDragStateListener && removeSetNodeDragStateListener();
+  }
+
   render() {
     const { props } = this;
     const {
@@ -451,7 +475,9 @@ class TreeNode extends React.Component {
       expanded,
       onlySelectLeaf,
       switchAtEnd,
-    } = this.props;
+      eventKey,
+    } = props;
+    const { dragState } = this.state;
     const expandedState = expanded ? 'open' : 'close';
     let canRenderSwitch = true;
     const content = props.title;
@@ -489,8 +515,8 @@ class TreeNode extends React.Component {
         </TitleSpan>
       );
       const domProps = {
-        onMouseEnter: this.onMouseEnter,
-        onMouseLeave: this.onMouseLeave,
+        // onMouseEnter: this.onMouseEnter,
+        // onMouseLeave: this.onMouseLeave,
         onContextMenu: this.onContextMenu,
       };
 
@@ -506,9 +532,9 @@ class TreeNode extends React.Component {
           }
         };
         if (props.draggable) {
-          domProps.draggable = true;
-          domProps['aria-grabbed'] = true;
-          domProps.onDragStart = this.onDragStart;
+          // domProps.draggable = true;
+          // domProps['aria-grabbed'] = true;
+          // domProps.onDragStart = this.onDragStart;
         }
       }
 
@@ -533,11 +559,11 @@ class TreeNode extends React.Component {
 
     const liProps = {};
     if (props.draggable) {
-      liProps.onDragEnter = this.onDragEnter;
-      liProps.onDragOver = this.onDragOver;
-      liProps.onDragLeave = this.onDragLeave;
-      liProps.onDrop = this.onDrop;
-      liProps.onDragEnd = this.onDragEnd;
+      // liProps.onDragEnter = this.onDragEnter;
+      // liProps.onDragOver = this.onDragOver;
+      // liProps.onDragLeave = this.onDragLeave;
+      // liProps.onDrop = this.onDrop;
+      // liProps.onDragEnd = this.onDragEnd;
     }
 
     const renderNoopSwitch = () => {
@@ -555,6 +581,7 @@ class TreeNode extends React.Component {
       );
     };
     const TreeItemWrapThemeProps = this.getThemeProps('TreeItemWrap', 'SelectedTreeItemWrap', {
+      dragState,
       pos,
       itemHeight,
       inlineType,
@@ -579,6 +606,7 @@ class TreeNode extends React.Component {
 
     return (
       <ItemWrap
+        key={eventKey}
         themeProps={TreeItemWrapThemeProps}
         unselectable="on"
         inlineType={inlineType}

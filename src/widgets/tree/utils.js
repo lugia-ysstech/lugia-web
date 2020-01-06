@@ -349,7 +349,7 @@ class TreeUtils {
     nodes: Array<RowData>,
     id2ExtendInfo: NodeId2ExtendInfo
   ): NodeExtendInfo {
-    if (!id2ExtendInfo[VirtualRoot]) {
+    if (!id2ExtendInfo[VirtualRoot] || this.isVersionChange()) {
       this.initAllNodeIndexAndTopRoot(nodes, id2ExtendInfo);
     }
     const existData = id2ExtendInfo[nodeId];
@@ -427,7 +427,7 @@ class TreeUtils {
   initAllNodeIndexAndTopRoot(nodes: Array<RowData>, id2nodeExpandInfo: NodeId2ExtendInfo) {
     const childrenIdx = [];
     let canTotal = 0;
-    if (!id2nodeExpandInfo[VirtualRoot]) {
+    if (!id2nodeExpandInfo[VirtualRoot] || this.isVersionChange()) {
       const begats = nodes.length;
       for (let index = 0; index < begats; index++) {
         const row = nodes[index];
@@ -634,10 +634,7 @@ class TreeUtils {
       const row: RowData = rows[i];
       const { [this.valueField]: key, path } = row;
       if (matchCondition(row)) {
-        if (
-          needPushCondition(row, need) &&
-          (path !== undefined && containPath[path] === undefined)
-        ) {
+        if (needPushCondition(row, need) && path !== undefined && containPath[path] === undefined) {
           const pathArray = this.getPathArray(path);
           containPath[path] = true;
           const len = pathArray.length;
@@ -746,7 +743,6 @@ class TreeUtils {
       return this.oldTreeData;
     }
 
-    this.oldVersion = this.version;
     const { id2ExtendInfo } = expandInfo;
     const fetchNodeInfo = this.fetchNodeExtendInfoById(datas, id2ExtendInfo);
     const nodeInfo = fetchNodeInfo(this.VirtualRoot);
@@ -755,7 +751,7 @@ class TreeUtils {
     if (nowVisible === 0) {
       return [];
     }
-
+    this.oldVersion = this.version;
     const { childrenIdx = [] } = nodeInfo;
 
     const { children = 0, begats = 0 } = nodeInfo;

@@ -102,7 +102,7 @@ class ScrollerTree extends React.Component<any, any> {
   }
 
   loopNode = (data: Array<RowData>) => {
-    const { inlineType, shape } = this.props;
+    const { inlineType, shape, id2ExtendInfo, translateTreeData } = this.props;
     return data.map(item => {
       const {
         selectable,
@@ -120,6 +120,7 @@ class ScrollerTree extends React.Component<any, any> {
         onlySelectLeaf,
         switchAtEnd,
       } = this.props;
+
       const {
         children,
         [valueField]: key,
@@ -129,8 +130,21 @@ class ScrollerTree extends React.Component<any, any> {
         icon,
         icons,
         suffix,
+        value,
+        pid,
       } = item;
-
+      // console.log('pid', pid);
+      const currentNodeIndex = id2ExtendInfo[value].index;
+      const parentIndex = id2ExtendInfo[pid] ? id2ExtendInfo[pid].index : null;
+      const maxIndex = Number(id2ExtendInfo.lugia_tree_root.canTotal - 1);
+      let preNodeIndex = Number(currentNodeIndex - 1);
+      preNodeIndex = currentNodeIndex === 0 ? null : preNodeIndex;
+      let nextNodeIndex = Number(currentNodeIndex + 1);
+      nextNodeIndex = currentNodeIndex === maxIndex ? null : nextNodeIndex;
+      item.currentNodeIndex = currentNodeIndex;
+      item.preNodeIndex = preNodeIndex;
+      item.nextNodeIndex = nextNodeIndex;
+      item.parentIndex = parentIndex;
       const disabled = item[igronSelectField] ? true : false;
       if (children !== undefined) {
         return (
@@ -155,6 +169,7 @@ class ScrollerTree extends React.Component<any, any> {
             disabled={disabled}
             selectable={selectable}
             onlySelectLeaf={onlySelectLeaf}
+            translateTreeData={translateTreeData}
             icon={icon}
             icons={icons}
           >
@@ -183,6 +198,7 @@ class ScrollerTree extends React.Component<any, any> {
           disabled={disabled}
           selectable={selectable}
           onlySelectLeaf={onlySelectLeaf}
+          translateTreeData={translateTreeData}
           icon={icon}
         />
       );
