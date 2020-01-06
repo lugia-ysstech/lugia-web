@@ -70,7 +70,6 @@ const OutInner = CSSComponent({
   },
   css: css`
     overflow: hidden;
-    display: inline-block;
     text-align: center;
     font-weight: normal;
     white-space: nowrap;
@@ -110,6 +109,7 @@ const Bit = CSSComponent({
     defaultTheme: {
       height: 14,
       color: defaultColor,
+      lineHeight: 14,
     },
     getThemeMeta: (themeMeta: Object, themeProps: Object) => {
       const { height } = themeMeta;
