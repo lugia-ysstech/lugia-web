@@ -65,7 +65,7 @@
             { "key": "prefixIconSrc", "title": "前缀图片", "type": "img" },
             { "key": "suffixIconSrc", "title": "后缀图片", "type": "img" }
           ]
-        }
+        },
         { "key": "children", "title": "子项数据", "type": "array" }
       ],
       "defaultValue": [
