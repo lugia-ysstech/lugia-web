@@ -240,12 +240,14 @@
     },
     "OutMonthDate": {
       "normal": {
-        "color": "#ccc"
+        "color": "#ccc",
+        "fontSize": 14
       }
     },
     "SecondWeekDate": {
       "normal": {
-        "color": "#333"
+        "color": "#333",
+        "fontSize": 14
       }
     }
   }
