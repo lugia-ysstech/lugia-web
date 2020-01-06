@@ -76,9 +76,6 @@ export function getThemeProps(props, value) {
     themeConfig: { normal: { width: closedWidth, height: closedHeight } = {} } = {},
   } = closed;
   const { themeConfig: { normal: { width: openWidth, height: openHeight } = {} } = {} } = open;
-  // const {themeConfig:closedThemeConfig}=closed;
-  // const {themeConfig:openThemeConfig}=open;
-  console.log(getBorderRadius(20));
   const defaultOpenThemeProps = {
     normal: {
       width: closedWidth || wrapWidth,
