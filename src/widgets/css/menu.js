@@ -1,6 +1,6 @@
 /**
  *
- * create by ligx
+ * create by szfeng
  *
  * @flow
  */
@@ -108,17 +108,6 @@ const getIcon = checkedCSS => {
   `;
 };
 
-const getItemCheckedCSS = (checked: Boolean, checkedCSS: string) => {
-  const color = checked && checkedCSS !== 'background' ? themeColor : blackColor;
-  const backgroundColor = checked && checkedCSS === 'background' ? disableColor : '';
-  const fontWeight = checked ? 900 : 500;
-  return {
-    color,
-    backgroundColor,
-    fontWeight,
-  };
-};
-
 export const ItemWrap = CSSComponent({
   tag: 'li',
   className: 'ItemWrap',
@@ -140,16 +129,10 @@ export const ItemWrap = CSSComponent({
       cursor: 'pointer',
     },
     getCSS: (themeMeta, themeProps) => {
-      const { propsConfig } = themeProps;
-      const { checked, checkedCSS, menuItemHeight } = propsConfig;
-      const { color, backgroundColor, fontWeight } = getItemCheckedCSS(checked, checkedCSS);
+      const { propsConfig: { menuItemHeight } = {} } = themeProps;
 
       return `
-        color: ${color};
-        background: ${backgroundColor};
-        font-weight: ${fontWeight};
         height: ${px2remcss(menuItemHeight)};
-        box-sizing: border-box;
         `;
     },
   },
@@ -164,15 +147,6 @@ export const ItemWrap = CSSComponent({
       ['borderRadius'],
       ['boxShadow'],
     ],
-    defaultTheme: {
-      font: {
-        fontWeight: 900,
-      },
-      background: {
-        color: ItemBackgroundColor,
-      },
-      color: blackColor,
-    },
   },
   active: {
     selectNames: [

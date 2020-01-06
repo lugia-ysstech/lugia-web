@@ -194,9 +194,6 @@ export default class extends React.Component<any, any> {
           MenuItemWrap: {
             normal: {
               height: 60,
-              border: {
-                left: { color: 'transparent', style: 'solid', width: 4 },
-              },
             },
             hover: {
               background: {
@@ -207,17 +204,12 @@ export default class extends React.Component<any, any> {
           },
           SelectedMenuItemWrap: {
             normal: {
+              color: '#4d63ff',
               background: {
                 color: '#B9D3EE',
               },
               border: {
                 left: { color: '#3A5FCD', style: 'solid', width: 4 },
-              },
-            },
-            hover: {
-              color: '#4d63ff',
-              background: {
-                color: '#B9D3EE',
               },
             },
           },
@@ -258,9 +250,9 @@ export default class extends React.Component<any, any> {
             hover: {
               // color: 'orange',
             },
-            active: {
-              color: '#3d1c4e',
-            },
+            // active: {
+            //   color: '#3d1c4e',
+            // },
           },
         },
       },
@@ -356,9 +348,14 @@ export default class extends React.Component<any, any> {
               bottom: 0,
             },
             fontSize: 14,
+            opacity: 0,
           },
           hover: {
             color: 'red',
+            opacity: 1,
+          },
+          active: {
+            opacity: 1,
           },
         },
       },
@@ -369,7 +366,8 @@ export default class extends React.Component<any, any> {
           theme={iconTheme}
           lugiaConsumers={channel.consumer}
           iconClass={'lugia-icon-financial_editor'}
-          onClick={() => {
+          onClick={e => {
+            e.stopPropagation();
             console.log('first Icon');
           }}
         />
@@ -378,7 +376,8 @@ export default class extends React.Component<any, any> {
           theme={iconTheme}
           lugiaConsumers={channel.consumer}
           iconClass={'lugia-icon-reminder_close_circle_o'}
-          onClick={() => {
+          onClick={e => {
+            e.stopPropagation();
             console.log('second Icon');
           }}
         />
