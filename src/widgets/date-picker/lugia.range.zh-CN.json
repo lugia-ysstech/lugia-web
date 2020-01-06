@@ -68,6 +68,14 @@
       "type": "number",
       "desc": "设置周,年的展示步长",
       "defaultValue": false
+    },
+    "suffix": {
+      "type": "icon",
+      "desc": "后缀图标"
+    },
+    "prefix": {
+      "type": "icon",
+      "desc": "后缀图标"
     }
   },
   "events": {
@@ -119,7 +127,7 @@
         ["color"],
         ["font"]
       ],
-      "hover": [["border", "color"], ["background"]],
+      "hover": [["border"], ["background"]],
       "active": [],
       "disabled": [["background"], ["border", "color"]]
     },
