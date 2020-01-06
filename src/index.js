@@ -6,7 +6,7 @@ import React from 'react';
 import { createBrowserHistory } from 'history';
 import { createApp, render } from '@lugia/lugiax-router';
 import registerServiceWorker from './registerServiceWorker';
-import Main from './widgets/date-picker/demo';
+import Main from './App';
 
 const history = createBrowserHistory();
 const App = createApp(
