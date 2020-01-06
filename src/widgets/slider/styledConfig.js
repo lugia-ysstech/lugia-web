@@ -38,22 +38,34 @@ export function getThemeProps(props, normalSliderFatherWidth, iconsDistance) {
   const { getPartOfThemeProps, vertical } = props;
   const buttonThemeProps = getSliderButtonThemeProps(getPartOfThemeProps, vertical);
   const { width } = buttonThemeProps;
+  const sliderContainerThemeProps = getPartOfThemeProps('Container');
+
+  const {
+    themeConfig: { normal: { width: containerWidth } = {} } = {},
+  } = sliderContainerThemeProps;
+  console.log('containerWidth', containerWidth);
+  console.log('normalSliderFatherWidth', normalSliderFatherWidth);
+  const hasContainer = !!containerWidth;
+  const filterContainerWidth = getWidth(containerWidth, normalSliderFatherWidth);
+  sliderContainerThemeProps.propsConfig = { vertical, width: filterContainerWidth };
   const overSize = getOverSize(width, iconsDistance);
   const sliderTrackThemeProps = getSliderTrackThemeProps(
     getPartOfThemeProps,
     vertical,
-    normalSliderFatherWidth - overSize
+    hasContainer,
+    filterContainerWidth - overSize
   );
+  console.log(sliderTrackThemeProps);
   const { height } = sliderTrackThemeProps;
   const sliderPassedWayThemeProps = getSliderPassedWayThemeProps(getPartOfThemeProps, height);
   const sliderTipsThemeProps = getTipsThemeProps(getPartOfThemeProps, buttonThemeProps);
+  console.log('sliderTrackThemeProps', sliderTrackThemeProps, normalSliderFatherWidth - overSize);
+
   return {
     buttonThemeProps,
     sliderPassedWayThemeProps,
     sliderTrackThemeProps,
-    sliderContainerThemeProps: deepMerge(getPartOfThemeProps('SliderContainer'), {
-      propsConfig: { vertical },
-    }),
+    sliderContainerThemeProps,
     sliderTipsThemeProps,
   };
 }
@@ -76,7 +88,12 @@ function getOverSize(btnWidth, iconsDistance) {
     return sum;
   }
 }
-function getSliderTrackThemeProps(getPartOfThemeProps, vertical, normalSliderFatherWidth) {
+function getSliderTrackThemeProps(
+  getPartOfThemeProps,
+  vertical,
+  hasContainer,
+  normalSliderFatherWidth
+) {
   const sliderTrackName = 'SliderTrack';
   const sliderTrackThemeProps = getPartOfThemeProps(sliderTrackName);
   const {
@@ -84,7 +101,7 @@ function getSliderTrackThemeProps(getPartOfThemeProps, vertical, normalSliderFat
   } = sliderTrackThemeProps;
   const sliderNormalTheme = {
     normal: {
-      width: normalSliderFatherWidth,
+      // width: normalSliderFatherWidth,
       height: rangeHeightNormal,
       background: {
         color: trackBackground,
@@ -94,13 +111,13 @@ function getSliderTrackThemeProps(getPartOfThemeProps, vertical, normalSliderFat
     },
   };
   const mergeSliderTrackNormal = deepMerge(sliderNormalTheme, { normal });
-  let {
-    normal: { width, height },
-  } = mergeSliderTrackNormal;
+  let { normal: { width: normalW, height } = {} } = mergeSliderTrackNormal;
+  let width = hasContainer ? normalSliderFatherWidth : normalW;
+  console.log('getSliderTrackThemeProps', normal);
   const isNumWidth = typeof width === 'number' && !isNaN(width);
   const isNumHeight = typeof height === 'number' && !isNaN(height);
   if (!isNumWidth) {
-    width = rangeWidthNormal;
+    width = normalSliderFatherWidth;
   }
   if (!isNumHeight) {
     height = rangeHeightNormal;
@@ -136,6 +153,7 @@ function getSliderTrackThemeProps(getPartOfThemeProps, vertical, normalSliderFat
     sliderTrackThemeProps.themeConfig,
     sliderTrackTheme
   );
+  console.log(sliderTrackThemeProps, width, height);
   return {
     sliderTrackThemeProps,
     width,
@@ -224,8 +242,8 @@ export function getSliderButtonThemeProps(getPartOfThemeProps, vertical) {
       height,
     },
   } = sliderButtonNormalThemeProps;
-  const isNumWidth = typeof width === 'number' && !isNaN(width);
-  const isNumHeight = typeof height === 'number' && !isNaN(height);
+  const isNumWidth = valueIsNumber(width);
+  const isNumHeight = valueIsNumber(height);
   if (!isNumWidth) {
     width = btnWidthNormal;
   }
@@ -292,4 +310,22 @@ function getTipsThemeProps(getPartOfThemeProps) {
   const mergeThemeConfig = deepMerge(defaultTipThemeProps, sliderTipsThemeProps.themeConfig);
   sliderTipsThemeProps.themeConfig = mergeThemeConfig;
   return sliderTipsThemeProps;
+}
+function getWidth(width: string | number, totleWidth) {
+  const newWidth = width;
+  if (!width) {
+    return totleWidth;
+  }
+  if (valueIsNumber(newWidth)) {
+    return newWidth;
+  }
+
+  const reg = /^\d+%$/; //正则 百分比
+  if (reg.test(newWidth)) {
+    const ruler = newWidth.split('%')[0] / 100;
+    return totleWidth * ruler;
+  }
+}
+function valueIsNumber(value) {
+  return typeof value === 'number' && !isNaN(value);
 }
