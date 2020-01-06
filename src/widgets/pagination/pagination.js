@@ -107,18 +107,17 @@ const PaginationListItem = CSSComponent({
     ],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
-        propsConfig: { isSelected, clickable = true },
+        propsConfig: { clickable = true },
       } = themeProps;
-      if (isSelected) {
-        return {
-          border: getBorder({ color: themeColor, width: borderSize, style: 'solid' }),
-        };
-      }
+      const { height } = themeMeta;
       if (!clickable) {
         return {
           border: getBorder({ color: superLightColor, width: borderSize, style: 'solid' }),
         };
       }
+      return {
+        lineHeight: height,
+      };
     },
     defaultTheme: {
       border: getBorder({ color: lightGreyColor, width: borderSize, style: 'solid' }),
@@ -161,6 +160,12 @@ const PaginationListItem = CSSComponent({
     defaultTheme: {
       border: getBorder({ color: themeColor, width: borderSize, style: 'solid' }),
     },
+    getThemeMeta(themeMeta: Object, themeProps: Object) {
+      const { height } = themeMeta;
+      return {
+        lineHeight: height,
+      };
+    },
   },
   css: css`
     text-align: center;
@@ -181,11 +186,13 @@ const PaginationArrowIconContainer = CSSComponent({
       ['borderRadius'],
       ['padding'],
       ['margin'],
+      ['lineHeight'],
     ],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
         propsConfig: { isSelected, clickable = true, type },
       } = themeProps;
+      const { height } = themeMeta;
       const right = type === 'next' ? 0 : 8;
       let border;
       if (isSelected) {
@@ -195,7 +202,7 @@ const PaginationArrowIconContainer = CSSComponent({
       if (!clickable) {
         border = getBorder({ color: superLightColor, width: borderSize, style: 'solid' });
       }
-      return { margin: { right }, border };
+      return { margin: { right }, border, lineHeight: height };
     },
   },
   hover: {
@@ -221,8 +228,6 @@ const PaginationListItemText = CSSComponent({
     defaultTheme: {
       fontSize: 14,
       color: darkGreyColor,
-      width: 36,
-      height: 36,
     },
   },
   hover: {
