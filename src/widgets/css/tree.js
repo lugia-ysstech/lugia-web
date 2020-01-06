@@ -75,13 +75,28 @@ export const TreeUl = CSSComponent({
   option: { hover: true },
 });
 
-export const Li = StaticComponent({
+export const Li = CSSComponent({
   tag: 'li',
   className: 'Li',
+  normal: {
+    selectNames: [],
+    getCSS: (themeMeta, themeProps) => {
+      const { propsConfig: { dragState } = {} } = themeProps;
+      const dragStateCss = getDragState(dragState);
+      return `${dragStateCss}`;
+    },
+  },
+  hover: {
+    selectNames: [],
+  },
+  active: {
+    selectNames: [],
+  },
   css: css`
     min-height: ${px2remcss(20)};
     list-style: none;
     white-space: nowrap;
+    position: relative;
     outline: 0;
     user-select: none;
     box-sizing: border-box;
@@ -114,6 +129,30 @@ const getLiIcon = (inlineType, itemHeight, selected) => {
   `;
 };
 
+const getDragState = dragState => {
+  if (dragState === 'dragOver') {
+    return 'background: #E8E8E8;';
+  } else if (dragState === 'dragOverGapTop') {
+    return ` ::after {
+      content: '';
+      width: 100%;
+      border-top: 2px dashed #979797;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }`;
+  } else if (dragState === 'dragOverGapBottom') {
+    return ` ::after {
+      content: '';
+      width: 100%;
+      border-top: 2px dashed #979797;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }`;
+  }
+  return '';
+};
 export const NavLi = CSSComponent({
   tag: 'li',
   className: 'NavLi',
@@ -420,6 +459,20 @@ export const SuffixWrap = StaticComponent({
     box-sizing: border-box;
     justify-content: center;
     align-items: center;
+    z-index: 100;
+  `,
+});
+
+export const DragCopyWrap = StaticComponent({
+  tag: 'div',
+  css: css`
+    position: fixed;
+    text-align: center;
+    width: 186px;
+    background-image: linear-gradient(-180deg, #f5f5f5 0%, #e8e8e8 100%);
+    border: 1px dashed #ccc;
+    border-radius: 2px;
+    line-height: 28px;
     z-index: 100;
   `,
 });

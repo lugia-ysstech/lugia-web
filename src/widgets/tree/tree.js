@@ -147,6 +147,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
         expand: this.getEmptyExpandInfo(),
         selectValue: [],
         selectedInfo: this.getEmptyNodeId2SelectInfo(),
+        parentHighlightKeys: [],
       };
       return;
     }
@@ -229,6 +230,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
         expandedKeys: this.getExpandedKeys(props, id2ExtendInfo),
         expand,
         selectValue: [],
+        parentHighlightKeys: [],
       };
 
       if (this.isNotLimit(props)) {
@@ -616,6 +618,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
         expandedKeys: this.state.expandedKeys,
         expand: this.state.expand,
         selectValue: [],
+        parentHighlightKeys: [],
       };
 
       const { value } = selectedInfo;
