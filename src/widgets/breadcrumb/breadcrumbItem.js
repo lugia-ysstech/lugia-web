@@ -9,6 +9,8 @@ import ThemeHoc from '@lugia/theme-hoc';
 import { ALink, CommonSpan, SeparatorSpan, ItemWrap, FlexBox } from '../css/breadcrumb';
 import Icon from '../icon';
 import { deepMerge } from '@lugia/object-utils';
+import { addMouseEvent } from '@lugia/theme-hoc';
+
 export type BreadcrumbItemProps = {
   separator?: string | React.Element<any>,
   href?: string,
@@ -28,7 +30,7 @@ class BreadcrumbItem extends React.Component<BreadcrumbItemProps, any> {
     separator: '/',
   };
 
-  getPrefixIcon(channel: Object) {
+  getPrefixIcon() {
     const { icons = {} } = this.props;
     if (!icons) {
       return null;
@@ -42,7 +44,7 @@ class BreadcrumbItem extends React.Component<BreadcrumbItemProps, any> {
     return (
       <Icon
         iconClass={prefixIconClass}
-        lugiaConsumers={channel.consumer}
+        {...this.props.dispatchEvent([['hover'], ['active']], 'f2c')}
         singleTheme
         viewClass={viewClass}
         theme={theme}
@@ -50,7 +52,7 @@ class BreadcrumbItem extends React.Component<BreadcrumbItemProps, any> {
     );
   }
 
-  getSuffixIcon(channel: Object) {
+  getSuffixIcon() {
     const { icons = {} } = this.props;
     if (!icons) {
       return null;
@@ -66,7 +68,7 @@ class BreadcrumbItem extends React.Component<BreadcrumbItemProps, any> {
     return (
       <Icon
         iconClass={suffixIconClass}
-        lugiaConsumers={channel.consumer}
+        {...this.props.dispatchEvent([['hover'], ['active']], 'f2c')}
         singleTheme
         viewClass={viewClass}
         theme={theme}
@@ -83,6 +85,11 @@ class BreadcrumbItem extends React.Component<BreadcrumbItemProps, any> {
         margin: {
           left: marginLeft,
           right: marginRight,
+        },
+        getCSS: () => {
+          return `
+          transition: all 0.3s
+          `;
         },
       },
     };
@@ -104,10 +111,12 @@ class BreadcrumbItem extends React.Component<BreadcrumbItemProps, any> {
     if ('href' in this.props) {
       Link = ALink;
     }
-    const channel = this.props.createEventChannel(['active', 'hover']);
 
     return (
-      <ItemWrap themeProps={getPartOfThemeProps('ItemWrap', { selector: { index, count } })}>
+      <ItemWrap
+        themeProps={getPartOfThemeProps('ItemWrap', { selector: { index, count } })}
+        {...addMouseEvent(this)}
+      >
         <FlexBox themeProps={getPartOfThemeProps('ItemWrap', { selector: { index, count } })}>
           <Link
             href={href}
@@ -116,9 +125,9 @@ class BreadcrumbItem extends React.Component<BreadcrumbItemProps, any> {
               props: { isLastItem },
             })}
           >
-            {this.getPrefixIcon(channel)}
+            {this.getPrefixIcon()}
             {children}
-            {this.getSuffixIcon(channel)}
+            {this.getSuffixIcon()}
           </Link>
           <SeparatorSpan
             themeProps={getPartOfThemeProps('Separator', {
