@@ -100,17 +100,25 @@ const IconTag = CSSComponent({
   tag: 'i',
   className: 'iconTag',
   normal: {
-    selectNames: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+    selectNames: [
+      ['color'],
+      ['margin'],
+      ['fontSize'],
+      ['font'],
+      ['padding'],
+      ['cursor'],
+      ['opacity'],
+    ],
     defaultTheme: { cursor: 'pointer' },
   },
   hover: {
-    selectNames: [['color'], ['margin'], ['cursor'], ['fontSize'], ['font']],
+    selectNames: [['color'], ['margin'], ['cursor'], ['fontSize'], ['font'], ['opacity']],
   },
   active: {
-    selectNames: [['color'], ['cursor'], ['fontSize'], ['font']],
+    selectNames: [['color'], ['cursor'], ['fontSize'], ['font'], ['opacity']],
   },
   disabled: {
-    selectNames: [['color'], ['cursor']],
+    selectNames: [['color'], ['cursor'], ['opacity']],
   },
   css: css`
     user-select: none;
