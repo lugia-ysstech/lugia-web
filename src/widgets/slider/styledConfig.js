@@ -97,7 +97,6 @@ function getSliderTrackThemeProps(
   } = sliderTrackThemeProps;
   const sliderNormalTheme = {
     normal: {
-      // width: normalSliderFatherWidth,
       height: rangeHeightNormal,
       background: {
         color: trackBackground,
