@@ -43,8 +43,6 @@ export function getThemeProps(props, normalSliderFatherWidth, iconsDistance) {
   const {
     themeConfig: { normal: { width: containerWidth } = {} } = {},
   } = sliderContainerThemeProps;
-  console.log('containerWidth', containerWidth);
-  console.log('normalSliderFatherWidth', normalSliderFatherWidth);
   const hasContainer = !!containerWidth;
   const filterContainerWidth = getWidth(containerWidth, normalSliderFatherWidth);
   sliderContainerThemeProps.propsConfig = { vertical, width: filterContainerWidth };
@@ -55,11 +53,9 @@ export function getThemeProps(props, normalSliderFatherWidth, iconsDistance) {
     hasContainer,
     filterContainerWidth - overSize
   );
-  console.log(sliderTrackThemeProps);
   const { height } = sliderTrackThemeProps;
   const sliderPassedWayThemeProps = getSliderPassedWayThemeProps(getPartOfThemeProps, height);
   const sliderTipsThemeProps = getTipsThemeProps(getPartOfThemeProps, buttonThemeProps);
-  console.log('sliderTrackThemeProps', sliderTrackThemeProps, normalSliderFatherWidth - overSize);
 
   return {
     buttonThemeProps,
@@ -113,7 +109,6 @@ function getSliderTrackThemeProps(
   const mergeSliderTrackNormal = deepMerge(sliderNormalTheme, { normal });
   let { normal: { width: normalW, height } = {} } = mergeSliderTrackNormal;
   let width = hasContainer ? normalSliderFatherWidth : normalW;
-  console.log('getSliderTrackThemeProps', normal);
   const isNumWidth = typeof width === 'number' && !isNaN(width);
   const isNumHeight = typeof height === 'number' && !isNaN(height);
   if (!isNumWidth) {
@@ -153,7 +148,6 @@ function getSliderTrackThemeProps(
     sliderTrackThemeProps.themeConfig,
     sliderTrackTheme
   );
-  console.log(sliderTrackThemeProps, width, height);
   return {
     sliderTrackThemeProps,
     width,
