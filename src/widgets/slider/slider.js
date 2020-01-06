@@ -325,11 +325,15 @@ class Slider extends Component<TypeProps, TypeState> {
     if (disabled) {
       this.mousedown = null;
     }
-    console.log(this.SliderBigBox.current.parentNode.offsetWidth);
-    this.sliderFatherWidth = this.SliderBigBox.current.parentNode.offsetWidth;
-    console.log('this.style0', this.style);
+    this.getSliderFatherWidth(vertical);
   }
-
+  getSliderFatherWidth = (vertical: boolean) => {
+    if (this.SliderBigBox.current && this.SliderBigBox.current.parentNode) {
+      const { offsetWidth = 0, offsetHeight = 0 } = this.SliderBigBox.current.parentNode;
+      console.log('offsetHeight', offsetHeight);
+      this.sliderFatherWidth = vertical ? offsetHeight : offsetWidth;
+    }
+  };
   addDocListener = () => {
     document.addEventListener('mousemove', this.onDocMouseMove);
     document.addEventListener('mouseup', this.onDocMouseUp);
