@@ -18,6 +18,9 @@ const routes = [
   {
     path: 'index',
     title: '首页',
+    icons: {
+      prefixIconClass: 'lugia-icon-logo_chrome',
+    },
   },
   {
     path: 'first',
@@ -94,7 +97,14 @@ export default class Demo extends React.Component<any, any> {
               fontSize: 20,
             },
           },
-
+          PrefixIcon: {
+            hover: {
+              font: {
+                size: 10,
+              },
+              color: 'orange',
+            },
+          },
           Separator: {
             normal: {
               color: '#666',
