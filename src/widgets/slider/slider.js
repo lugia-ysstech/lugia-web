@@ -330,7 +330,6 @@ class Slider extends Component<TypeProps, TypeState> {
   getSliderFatherWidth = (vertical: boolean) => {
     if (this.SliderBigBox.current && this.SliderBigBox.current.parentNode) {
       const { offsetWidth = 0, offsetHeight = 0 } = this.SliderBigBox.current.parentNode;
-      console.log('offsetHeight', offsetHeight);
       this.sliderFatherWidth = vertical ? offsetHeight : offsetWidth;
     }
   };
@@ -449,10 +448,8 @@ class Slider extends Component<TypeProps, TypeState> {
         ? dotHeights[dotHeights.length - 1]
         : dotWidths[dotWidths.length - 1]
       : 0;
-    console.log(numbers);
     let levelPaddingFir = numbers;
     let levelPaddingSec = numbers;
-    console.log(dotWidthsFir, dotWidthsSec);
     const dotHalfWidthFir = dotWidthsFir / 2;
     const dotHalfWidthSec = dotWidthsSec / 2;
     if (dotHalfWidthFir > numbers) {
@@ -507,7 +504,6 @@ class Slider extends Component<TypeProps, TypeState> {
           newFontSize = hasFontSize;
           iconSize[index] = hasFontSize;
           iconDistancen = hasFontSize + 10;
-          console.log('hasFontSize', hasFontSize);
           if (!vertical) {
             levelPaddings[index] =
               levelPaddings[index] > hasFontSize ? levelPaddings[index] : hasFontSize + 10;
@@ -582,8 +578,6 @@ class Slider extends Component<TypeProps, TypeState> {
     const rangeW = sliderWidth;
     const rangeH = sliderHeight;
     this.iconsDistance = levelPaddings;
-    console.log(this.iconsDistance);
-    console.log(levelPaddings, iconSize);
     this.style = {
       background,
       btnWidth: parseInt(btnWidth),
@@ -593,7 +587,6 @@ class Slider extends Component<TypeProps, TypeState> {
       SliderInnerWidth: 0,
       SliderInnerLeft: 0,
     };
-    console.log('this.style 1', this.style);
     function getSliderInnerSIze(name: 'left' | 'width') {
       const { length } = value;
       let difVal = length === 2 ? Math.abs(value[0] - value[1]) : value[0] - minValue;
