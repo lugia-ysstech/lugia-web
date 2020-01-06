@@ -4,12 +4,8 @@
   "desc": "需要自动完成数据时使用",
   "props": {
     "data": {
-      "type": "Object[]",
-      "desc": "生成选择项的数据",
-      "meta": [
-        { "key": "value", "title": "value值", "type": "string" },
-        { "key": "text", "title": "文本值", "type": "string" }
-      ]
+      "type": "string[]",
+      "desc": "生成选择项的数据"
     },
     "createPortal": {
       "type": "boolean",
