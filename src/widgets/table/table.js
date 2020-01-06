@@ -215,7 +215,8 @@ export default ThemeProvider(
         };
         theColumns.unshift(selectColumnItem);
       }
-      let expandIconColumnIndex = theColumns && theColumns[0].key === 'selection-column' ? 1 : 0;
+      let expandIconColumnIndex =
+        theColumns && theColumns[0] && theColumns[0].key === 'selection-column' ? 1 : 0;
       if ('expandIconColumnIndex' in this.props) {
         const { expandIconColumnIndex: propsIndex } = this.props;
         expandIconColumnIndex = Number(propsIndex);
