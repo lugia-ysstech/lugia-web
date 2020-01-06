@@ -200,6 +200,9 @@ export default class extends React.Component<any, any> {
                 color: '#B9D3EE',
               },
               color: '#4d63ff',
+              font: {
+                weight: 500,
+              },
             },
           },
           SelectedMenuItemWrap: {
@@ -207,6 +210,9 @@ export default class extends React.Component<any, any> {
               color: '#4d63ff',
               background: {
                 color: '#B9D3EE',
+              },
+              font: {
+                weight: 500,
               },
               border: {
                 left: { color: '#3A5FCD', style: 'solid', width: 4 },
@@ -248,11 +254,11 @@ export default class extends React.Component<any, any> {
               },
             },
             hover: {
-              // color: 'orange',
+              color: 'orange',
             },
-            // active: {
-            //   color: '#3d1c4e',
-            // },
+            active: {
+              color: '#3d1c4e',
+            },
           },
         },
       },
@@ -336,7 +342,7 @@ export default class extends React.Component<any, any> {
     );
   }
 
-  renderSuffixItems(item, channel) {
+  renderSuffixItems(item) {
     const iconTheme = {
       [Widget.Icon]: {
         Icon: {
@@ -349,40 +355,38 @@ export default class extends React.Component<any, any> {
             },
             fontSize: 14,
             opacity: 0,
+            getCSS: () => {
+              return `
+              transition: all 0.3s
+              `;
+            },
           },
           hover: {
             color: 'red',
             opacity: 1,
           },
-          active: {
-            opacity: 1,
-          },
         },
       },
     };
-    return (
-      <IconWrap>
-        <Icon
-          theme={iconTheme}
-          lugiaConsumers={channel.consumer}
-          iconClass={'lugia-icon-financial_editor'}
-          onClick={e => {
-            e.stopPropagation();
-            console.log('first Icon');
-          }}
-        />
 
-        <Icon
-          theme={iconTheme}
-          lugiaConsumers={channel.consumer}
-          iconClass={'lugia-icon-reminder_close_circle_o'}
-          onClick={e => {
-            e.stopPropagation();
-            console.log('second Icon');
-          }}
-        />
-      </IconWrap>
-    );
+    return [
+      <Icon
+        theme={iconTheme}
+        iconClass={'lugia-icon-financial_editor'}
+        onClick={e => {
+          e.stopPropagation();
+          console.log('first Icon');
+        }}
+      />,
+      <Icon
+        theme={iconTheme}
+        iconClass={'lugia-icon-reminder_close_circle_o'}
+        onClick={e => {
+          e.stopPropagation();
+          console.log('second Icon');
+        }}
+      />,
+    ];
   }
 
   clickDefaultMenu = (e, keys, item) => {
