@@ -56,36 +56,7 @@ const HBasePage = CSSComponent({
   css: css`
     text-align: center;
     width: 24px;
-    transform: translateY(50%);
     display: ${props => (props.arrowShow === false ? 'none' : 'block')};
-  `,
-});
-
-const HPrePage = CSSComponent({
-  extend: HBasePage,
-  className: 'HPrePage',
-  normal: {
-    selectNames: [],
-  },
-  disabled: {
-    selectNames: [],
-  },
-  css: css`
-    float: left;
-  `,
-});
-
-const HNextPage = CSSComponent({
-  extend: HBasePage,
-  className: 'HNextPage',
-  normal: {
-    selectNames: [],
-  },
-  disabled: {
-    selectNames: [],
-  },
-  css: css`
-    float: right;
   `,
 });
 
@@ -183,9 +154,7 @@ const AddContainer = CSSComponent({
     position: relative;
     text-align: center;
     cursor: pointer;
-    float: right;
-    margin: 5px;
-    transform: translateY(25%);
+    margin: 0 5px;
   `,
 });
 
@@ -300,6 +269,8 @@ const HTabsOutContainer = CSSComponent({
     position: relative;
     z-index: 99;
     overflow: hidden;
+    display: flex;
+    align-items: center;
   `,
 });
 
@@ -617,7 +588,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
     const { tabPosition } = this.props;
     const { arrowUp, arrowDown } = this.getIconByDirection(tabPosition);
     if (type === 'prev') {
-      const Target = isVertical(tabPosition) ? VBasePage : HPrePage;
+      const Target = isVertical(tabPosition) ? VBasePage : HBasePage;
       return (
         <Target
           themeProps={themeProps}
@@ -635,7 +606,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
       );
     }
 
-    const Target = isVertical(tabPosition) ? VBasePage : HNextPage;
+    const Target = isVertical(tabPosition) ? VBasePage : HBasePage;
     return (
       <Target
         themeProps={themeProps}
