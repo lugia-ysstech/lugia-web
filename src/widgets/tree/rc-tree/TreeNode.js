@@ -7,6 +7,7 @@ import Icon from '../../icon';
 import CheckBox from '../../checkbox';
 import { deepMerge } from '@lugia/object-utils';
 import ThemeHoc from '@lugia/theme-hoc';
+import { addMouseEvent } from '@lugia/theme-hoc';
 import {
   FlexBox,
   FlexWrap,
@@ -199,7 +200,7 @@ class TreeNode extends React.Component {
     );
   }
 
-  renderCheckbox(channel: Object) {
+  renderCheckbox() {
     const {
       checked,
       halfChecked: indeterminate,
@@ -215,7 +216,7 @@ class TreeNode extends React.Component {
         themeProps={this.getThemeProps('Text', 'SelectedText', { mutliple, itemHeight })}
       >
         <CheckboxContainer>
-          {this.getPreIcon(channel)}
+          {this.getPreIcon()}
           <CheckBox
             {...this.getCheckBoxTheme()}
             checked={checked}
@@ -225,7 +226,7 @@ class TreeNode extends React.Component {
           >
             {title}
           </CheckBox>
-          {this.getSuffixIcon(channel)}
+          {this.getSuffixIcon()}
         </CheckboxContainer>
       </TitleWrap>
     );
@@ -350,7 +351,7 @@ class TreeNode extends React.Component {
       : getPartOfThemeProps(defaultName, { props: params });
   }
 
-  getPreIcon(channel: Object) {
+  getPreIcon() {
     const { icon, icons = {}, disabled } = this.props;
     if (!icon && !icons) {
       return null;
@@ -367,7 +368,7 @@ class TreeNode extends React.Component {
         iconClass={iconClass}
         src={prefixIconSrc}
         disabled={disabled}
-        lugiaConsumers={channel.consumer}
+        {...this.props.dispatchEvent([['hover'], ['active']], 'f2c')}
         singleTheme
         viewClass={viewClass}
         theme={theme}
@@ -375,7 +376,7 @@ class TreeNode extends React.Component {
     );
   }
 
-  getSuffixIcon(channel: Object) {
+  getSuffixIcon() {
     const { icon, icons = {}, disabled } = this.props;
     if (!icon && !icons) {
       return null;
@@ -391,7 +392,7 @@ class TreeNode extends React.Component {
       <Icon
         iconClass={suffixIconClass}
         src={suffixIconSrc}
-        lugiaConsumers={channel.consumer}
+        {...this.props.dispatchEvent([['hover'], ['active']], 'f2c')}
         singleTheme
         disabled={disabled}
         viewClass={viewClass}
@@ -471,7 +472,7 @@ class TreeNode extends React.Component {
       inlineType,
       __navmenu,
     });
-    const selectHandle = (channel: Object) => {
+    const selectHandle = () => {
       const title = (
         <TitleSpan
           themeProps={TextThemeProps}
@@ -482,9 +483,9 @@ class TreeNode extends React.Component {
           title={content}
           height={itemHeight}
         >
-          {this.getPreIcon(channel)}
+          {this.getPreIcon()}
           {content}
-          {this.getSuffixIcon(channel)}
+          {this.getSuffixIcon()}
         </TitleSpan>
       );
       const domProps = {
@@ -524,7 +525,6 @@ class TreeNode extends React.Component {
           selected={selected}
           describe={describe}
           disabled={disabled}
-          {...channel.provider}
         >
           {title}
         </TitleWrap>
@@ -576,7 +576,7 @@ class TreeNode extends React.Component {
     };
 
     const ItemWrap = __navmenu ? NavLi : Li;
-    const channel = this.props.createEventChannel(['active', 'hover', 'disabled']);
+
     return (
       <ItemWrap
         themeProps={TreeItemWrapThemeProps}
@@ -589,6 +589,7 @@ class TreeNode extends React.Component {
         title={title}
         color={color}
         height={itemHeight}
+        {...addMouseEvent(this)}
       >
         <FlexWrap disabled={disabled} themeProps={TreeItemWrapThemeProps}>
           <FlexBox disabled={disabled} themeProps={TreeItemWrapThemeProps}>
@@ -598,7 +599,7 @@ class TreeNode extends React.Component {
               ? this.renderSwitch(expandedState)
               : renderNoopSwitch()}
 
-            {props.checkable ? this.renderCheckbox(channel) : selectHandle(channel)}
+            {props.checkable ? this.renderCheckbox() : selectHandle()}
             {renderSuffix()}
 
             {(switchAtEnd || __navmenu) && canRenderSwitch
