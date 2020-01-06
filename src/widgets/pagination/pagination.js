@@ -17,7 +17,6 @@ import { deepMerge } from '@lugia/object-utils';
 import colorsFunc from '../css/stateColor';
 import Widget from '../consts';
 import { ObjectUtils } from '@lugia/type-utils';
-import { addFocusBlurEvent } from '@lugia/theme-hoc';
 
 export const {
   themeColor,
@@ -254,7 +253,6 @@ const PaginationListContainer = CSSComponent({
       ['margin'],
     ],
     defaultTheme: {
-      height: 36,
       width: '100%',
     },
   },
@@ -417,7 +415,6 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
           normal: {
             color: lightGreyColor,
             cursor: 'pointer',
-            padding: 11,
             fontSize: 12,
           },
           hover: {
@@ -495,7 +492,6 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
           Container: {
             normal: {
               width: 90,
-              height: 36,
               padding: {
                 left: 5,
                 right: 5,
@@ -537,7 +533,6 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
           Container: {
             normal: {
               width: 60,
-              height: 36,
               margin: {
                 left: 10,
                 right: 10,
@@ -719,7 +714,6 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
           normal: {
             color: iconColor,
             cursor: iconCursor,
-            padding: 11,
           },
           hover: {
             color: iconHoverColor,
@@ -779,10 +773,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
         theme
       );
       return (
-        <PaginationListContainer
-          themeProps={this.props.getPartOfThemeProps('Container')}
-          {...addFocusBlurEvent(this)}
-        >
+        <PaginationListContainer themeProps={this.props.getPartOfThemeProps('Container')}>
           {this.getArrowIcon('pre')}
           <Input
             value={current}
@@ -799,10 +790,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
       );
     }
     return (
-      <PaginationListContainer
-        themeProps={this.props.getPartOfThemeProps('Container')}
-        {...addFocusBlurEvent(this)}
-      >
+      <PaginationListContainer themeProps={this.props.getPartOfThemeProps('Container')}>
         {this.getPaginationList()}
         {this.getQuickJumper()}
         {this.getShowTotalData()}
