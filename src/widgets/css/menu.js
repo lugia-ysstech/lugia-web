@@ -275,3 +275,15 @@ export const Text = StaticComponent({
     transition: all 0.3s;
   `,
 });
+
+export const SuffixElementWrap = StaticComponent({
+  tag: 'div',
+  className: 'SuffixElementWrap',
+  css: css`
+    transition: all 0.3s;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  `,
+});

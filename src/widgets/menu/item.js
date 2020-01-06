@@ -8,6 +8,7 @@ import * as React from 'react';
 import ThemeHoc from '@lugia/theme-hoc';
 import Widget from '../consts/index';
 import { deepMerge } from '@lugia/object-utils';
+import { addMouseEvent } from '@lugia/theme-hoc';
 import {
   ItemWrap,
   DividerWrap,
@@ -17,6 +18,7 @@ import {
   SwitchIconContainer,
   DesContainer,
   ItemBackgroundColor,
+  SuffixElementWrap,
 } from '../css/menu';
 import CheckBox from '../checkbox';
 import Icon from '../icon';
@@ -122,7 +124,7 @@ class MenuItem extends React.Component<MenuItemProps> {
     };
   };
 
-  getPreIcon(channel: Object) {
+  getPreIcon() {
     const { icon, icons = {}, disabled } = this.props;
     if (!icon && !icons) {
       return null;
@@ -138,16 +140,16 @@ class MenuItem extends React.Component<MenuItemProps> {
       <Icon
         iconClass={iconClass}
         src={prefixIconSrc}
-        lugiaConsumers={channel.consumer}
         singleTheme
         disabled={disabled}
         viewClass={viewClass}
         theme={theme}
+        {...this.props.dispatchEvent([['hover'], ['active']], 'f2c')}
       />
     );
   }
 
-  getSuffixIcon(channel: Object) {
+  getSuffixIcon() {
     const { icon, icons = {}, disabled } = this.props;
     if (!icon && !icons) {
       return null;
@@ -163,16 +165,16 @@ class MenuItem extends React.Component<MenuItemProps> {
       <Icon
         iconClass={suffixIconClass}
         src={suffixIconSrc}
-        lugiaConsumers={channel.consumer}
         singleTheme
         disabled={disabled}
         viewClass={viewClass}
         theme={theme}
+        {...this.props.dispatchEvent([['hover'], ['active']], 'f2c')}
       />
     );
   }
 
-  getSwitchIcon(channel: Object) {
+  getSwitchIcon() {
     const {
       mutliple,
       checkedCSS,
@@ -189,10 +191,10 @@ class MenuItem extends React.Component<MenuItemProps> {
         <Icon
           iconClass={iconClass}
           src={iconSrc}
-          lugiaConsumers={channel.consumer}
           singleTheme
           viewClass={viewClass}
           theme={theme}
+          {...this.props.dispatchEvent([['hover'], ['active']], 'f2c')}
         />
       </SwitchIconContainer>
     );
@@ -256,6 +258,19 @@ class MenuItem extends React.Component<MenuItemProps> {
     return themeProps;
   }
 
+  getRenderSuffixItems(itemObj: Object) {
+    const { renderSuffixItems } = this.props;
+    const items = renderSuffixItems(itemObj);
+    const suffixItems = React.Children.map(items, item => {
+      const { props } = item;
+      return React.cloneElement(item, {
+        ...props,
+        ...this.props.dispatchEvent([['hover'], ['active']], 'f2c'),
+      });
+    });
+    return <SuffixElementWrap>{suffixItems}</SuffixElementWrap>;
+  }
+
   render() {
     const {
       children,
@@ -282,7 +297,6 @@ class MenuItem extends React.Component<MenuItemProps> {
     const themeProps = this.getMenuItemThemeProps(checked);
 
     const DividerThemeProps = getPartOfThemeProps('Divider');
-    const channel = this.props.createEventChannel(['active', 'hover', 'disabled']);
 
     const { des } = item;
 
@@ -293,7 +307,7 @@ class MenuItem extends React.Component<MenuItemProps> {
         disabled={disabled}
         title={title}
         themeProps={themeProps}
-        {...channel.provider}
+        {...addMouseEvent(this)}
       >
         {divided && !isFirst ? <DividerWrap themeProps={DividerThemeProps} /> : null}
         {isCheckbox ? (
@@ -304,29 +318,29 @@ class MenuItem extends React.Component<MenuItemProps> {
               disabled={disabled}
               onChange={onClick}
             >
-              {this.getPreIcon(channel)}
+              {this.getPreIcon()}
               {value ? value : children}
-              {this.getSuffixIcon(channel)}
+              {this.getSuffixIcon()}
             </CheckBox>
           </TextContainer>
         ) : (
           <TextContainer themeProps={this.props.getPartOfThemeProps('TextContainer')}>
-            {this.getPreIcon(channel)}
+            {this.getPreIcon()}
             <Text>{value ? value : children}</Text>
-            {this.getSuffixIcon(channel)}
+            {this.getSuffixIcon()}
           </TextContainer>
         )}
 
         {des ? (
           <DesContainer
-            lugiaConsumers={channel.consumer}
+            {...this.props.dispatchEvent([['hover']], 'f2c')}
             themeProps={this.props.getPartOfThemeProps('DesContainer')}
           >
             {des.toString()}
           </DesContainer>
         ) : null}
-        {renderSuffixItems ? renderSuffixItems(item, channel) : null}
-        {this.getSwitchIcon(channel)}
+        {renderSuffixItems ? this.getRenderSuffixItems(item) : null}
+        {this.getSwitchIcon()}
       </ItemWrap>
     );
 
