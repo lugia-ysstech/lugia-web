@@ -108,7 +108,6 @@ const SelectTab = CSSComponent({
   },
   hover: {
     selectNames: [],
-
     getCSS: (theme: Object, themeProps: Object) => {
       const {
         propsConfig: { tabType, showDeleteBtn },
