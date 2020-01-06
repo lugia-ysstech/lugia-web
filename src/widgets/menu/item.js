@@ -16,10 +16,13 @@ import {
   Text,
   SwitchIconContainer,
   DesContainer,
+  ItemBackgroundColor,
 } from '../css/menu';
 import CheckBox from '../checkbox';
 import Icon from '../icon';
+import colorsFunc from '../css/stateColor';
 
+const { themeColor, blackColor, disableColor } = colorsFunc();
 const Utils = require('@lugia/type-utils');
 const { ObjectUtils } = Utils;
 export type SizeType = 'large' | 'default' | 'bigger';
@@ -195,31 +198,33 @@ class MenuItem extends React.Component<MenuItemProps> {
     );
   }
 
-  render() {
+  getItemCheckedCSS = (checked: Boolean, checkedCSS: string) => {
+    const color = checked && checkedCSS !== 'background' ? themeColor : blackColor;
+    const backgroundColor = checked && checkedCSS === 'background' ? disableColor : '';
+    return {
+      color,
+      background: {
+        color: backgroundColor,
+      },
+      font: {
+        weight: 900,
+      },
+    };
+  };
+
+  getMenuItemThemeProps() {
     const {
-      children,
-      checked,
-      onClick,
-      disabled,
-      onMouseEnter,
-      checkedCSS,
-      divided,
-      isFirst,
-      value,
-      item = {},
-      menuItemHeight = DefaultMenuItemHeight,
       getPartOfThemeProps,
-      renderSuffixItems,
+      checked,
+      checkedCSS,
+      menuItemHeight = DefaultMenuItemHeight,
     } = this.props;
-
-    let title = '';
-    React.Children.forEach(children, (item: Object) => {
-      if (ObjectUtils.isString(item)) {
-        title = item;
-      }
-    });
-    const isCheckbox = checkedCSS === 'checkbox';
-
+    const checkedTheme = this.getItemCheckedCSS(checked, checkedCSS);
+    const hoverTheme = {
+      color: themeColor,
+      background: { color: ItemBackgroundColor },
+      font: { weight: 900 },
+    };
     let themeProps;
     if (checked) {
       themeProps = getPartOfThemeProps('SelectedMenuItemWrap', {
@@ -235,6 +240,7 @@ class MenuItem extends React.Component<MenuItemProps> {
       if (normal.height) {
         delete normal.height;
       }
+      themeConfig.normal = deepMerge(checkedTheme, normal);
     } else {
       themeProps = getPartOfThemeProps('MenuItemWrap', {
         props: {
@@ -243,7 +249,38 @@ class MenuItem extends React.Component<MenuItemProps> {
           menuItemHeight,
         },
       });
+      const { themeConfig } = themeProps;
+      const { hover = {} } = themeConfig;
+      themeConfig.hover = deepMerge(hoverTheme, hover);
     }
+    return themeProps;
+  }
+
+  render() {
+    const {
+      children,
+      checked,
+      onClick,
+      disabled,
+      onMouseEnter,
+      checkedCSS,
+      divided,
+      isFirst,
+      value,
+      item = {},
+      getPartOfThemeProps,
+      renderSuffixItems,
+    } = this.props;
+
+    let title = '';
+    React.Children.forEach(children, (item: Object) => {
+      if (ObjectUtils.isString(item)) {
+        title = item;
+      }
+    });
+    const isCheckbox = checkedCSS === 'checkbox';
+    const themeProps = this.getMenuItemThemeProps(checked);
+
     const DividerThemeProps = getPartOfThemeProps('Divider');
     const channel = this.props.createEventChannel(['active', 'hover', 'disabled']);
 

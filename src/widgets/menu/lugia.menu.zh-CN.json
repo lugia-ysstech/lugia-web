@@ -482,26 +482,8 @@
             ["opacity"],
             ["boxShadow"]
           ],
-          "hover": [
-            ["color"],
-            ["font"],
-            ["fontSize"],
-            ["background"],
-            ["opacity"],
-            ["border"],
-            ["borderRadius"],
-            ["boxShadow"]
-          ],
-          "active": [
-            ["color"],
-            ["font"],
-            ["fontSize"],
-            ["background"],
-            ["opacity"],
-            ["border"],
-            ["borderRadius"],
-            ["boxShadow"]
-          ],
+          "hover": [],
+          "active": [],
           "disabled": []
         },
 
