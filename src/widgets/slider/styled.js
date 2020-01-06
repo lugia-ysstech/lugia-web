@@ -38,7 +38,7 @@ type CssTypeProps = {
 const transitionTime = '0.3';
 export const SliderBigBox = CSSComponent({
   tag: 'div',
-  className: 'SliderContainer',
+  className: 'Container',
   normal: {
     selectNames: [
       ['border'],
@@ -48,16 +48,6 @@ export const SliderBigBox = CSSComponent({
       ['padding'],
       ['opacity'],
     ],
-    getCSS(
-      themeMate,
-      {
-        propsConfig: { vertical },
-      }
-    ) {
-      const { width } = themeMate;
-      const newWidth = width ? `${em(width)}` : 'auto';
-      return vertical ? `height:${newWidth}` : `width:${newWidth}`;
-    },
   },
   hover: {
     selectNames: [],
@@ -69,9 +59,11 @@ export const SliderBigBox = CSSComponent({
     selectNames: [['border'], ['borderRadius'], ['background'], ['opacity']],
   },
   css: css`
+    display: inline-block;
     box-sizing: border-box;
     vertical-align: top;
     background: red;
+    overflow: hidden;
   `,
 });
 export const SliderBox = StaticComponent({
