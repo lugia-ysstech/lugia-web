@@ -79,6 +79,20 @@
             { "key": "suffixIconSrc", "title": "后缀图片", "type": "img" }
           ]
         }
+      ],
+      "defaultValue": [
+        {
+          "value": "选项一",
+          "text": "选项一"
+        },
+        {
+          "value": "选项二",
+          "text": "选项二"
+        },
+        {
+          "value": "选项三",
+          "text": "选项三"
+        }
       ]
     }
   },
