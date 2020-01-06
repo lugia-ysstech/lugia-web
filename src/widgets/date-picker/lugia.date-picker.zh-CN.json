@@ -71,7 +71,7 @@
     },
     "prefix": {
       "type": "icon",
-      "desc": "后缀图标"
+      "desc": "前缀图标"
     }
   },
   "events": {
