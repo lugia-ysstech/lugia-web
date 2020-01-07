@@ -14,13 +14,11 @@
     "createPortal": {
       "type": "boolean",
       "desc": "是否全局弹出下拉框",
-      "defaultValue": true,
       "propsDefaultValue": true
     },
     "format": {
       "type": "string",
       "desc": "用于指定输入框日期显示的格式",
-      "defaultValue": "YYYY-MM",
       "propsDefaultValue": "YYYY-MM"
     },
     "placeholder": {
@@ -30,19 +28,16 @@
     "disabled": {
       "type": "boolean",
       "desc": "禁用状态,是否不可用",
-      "defaultValue": false,
       "propsDefaultValue": false
     },
     "readOnly": {
       "type": "boolean",
       "desc": "只读input",
-      "defaultValue": false,
       "propsDefaultValue": false
     },
     "extraFooter": {
       "type": "Object",
-      "desc": "在面板中添加额外的页脚 extraFooter={message:'XXX',style:{...}}",
-      "defaultValue": ""
+      "desc": "在面板中添加额外的页脚 extraFooter={message:'XXX',style:{...}}"
     }
   },
   "events": {
