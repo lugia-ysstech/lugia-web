@@ -212,7 +212,7 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
   };
   render() {
     const { value } = this.state;
-    const { theme: theThemeProps, viewClass } = this.props.getPartOfThemeHocProps('AmountTip');
+    const { theme: toolTipThemeProps, viewClass } = this.props.getPartOfThemeHocProps('AmountTip');
     const newTheme = deepMerge(
       {
         [viewClass]: {
@@ -230,27 +230,24 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
           },
         },
       },
-      theThemeProps
+      toolTipThemeProps
     );
-
-    return (
-      <ToolTip
-        propsConfig={{ value }}
-        title={this.getTitle()}
-        action={'focus'}
-        placement={'topLeft'}
-        popArrowType={'round'}
-        theme={newTheme}
-        viewClass={viewClass}
-      >
-        {this.getInputContainer()}
-      </ToolTip>
-    );
-  }
-
-  getInputContainer() {
     const theThemeProps = this.props.getPartOfThemeProps('Container');
-    return <InputContainer themeProps={theThemeProps}>{this.generateInput()}</InputContainer>;
+    return (
+      <InputContainer themeProps={theThemeProps}>
+        <ToolTip
+          propsConfig={{ value }}
+          title={this.getTitle()}
+          action={'focus'}
+          placement={'topLeft'}
+          popArrowType={'round'}
+          theme={newTheme}
+          viewClass={viewClass}
+        >
+          {this.generateInput()}
+        </ToolTip>
+      </InputContainer>
+    );
   }
 
   getTitle() {

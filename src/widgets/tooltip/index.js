@@ -248,7 +248,7 @@ const Title: Object = CSSComponent({
       color: blackColor,
       fontSize: 12,
     },
-    getCSS(themeMeta, themeProps) {
+    getCSS(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
       const { description } = propsConfig;
       if (description) {
@@ -297,7 +297,6 @@ const ChildrenContainer: Object = StaticComponent({
   className: 'ChildrenContainer',
   css: css`
     display: inline-block;
-    width: 100%;
   `,
 });
 
