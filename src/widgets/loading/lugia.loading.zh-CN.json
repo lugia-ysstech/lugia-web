@@ -6,7 +6,8 @@
     "size": {
       "type": "sizeType",
       "desc": "Loading尺寸大小 small|default|large",
-      "defaultValue": "default"
+      "defaultValue": "default",
+      "propsDefaultValue": "default"
     },
     "delay": {
       "type": "number",
@@ -15,7 +16,8 @@
     "scale": {
       "type": "boolean",
       "desc": "是否缩放",
-      "defaultValue": false
+      "defaultValue": false,
+      "propsDefaultValue": false
     },
     "iconClass": {
       "type": "string",
