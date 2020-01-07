@@ -14,7 +14,8 @@
     "format": {
       "type": "string",
       "desc": "用于指定输入框时间显示的格式",
-      "defaultValue": "HH:mm:ss"
+      "defaultValue": "HH:mm:ss",
+      "propsDefaultValue": "HH:mm:ss"
     },
     "placeholder": {
       "type": "string",
@@ -23,12 +24,14 @@
     "disabled": {
       "type": "boolean",
       "desc": "禁用状态,是否不可用",
-      "defaultValue": false
+      "defaultValue": false,
+      "propsDefaultValue": false
     },
     "readOnly": {
       "type": "boolean",
       "desc": "只读input",
-      "defaultValue": false
+      "defaultValue": false,
+      "propsDefaultValue": false
     }
   },
   "events": {
