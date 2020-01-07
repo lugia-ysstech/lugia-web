@@ -6,13 +6,11 @@
     "maxValue": {
       "type": "number",
       "desc": "最大值限制",
-      "defaultValue": 30,
       "propsDefaultValue": 30
     },
     "minValue": {
       "type": "number",
       "desc": "最小值限制",
-      "defaultValue": 0,
       "propsDefaultValue": 0
     },
     "defaultValue": {
@@ -28,19 +26,16 @@
     "disabled": {
       "type": "boolean",
       "desc": "禁用状态,是否不可用",
-      "defaultValue": false,
       "propsDefaultValue": false
     },
     "tips": {
       "type": "boolean | string | number",
       "desc": "boolean 是否显示提示信息,number|string指定显示的文本内容,可自定义显示的文本格式",
-      "defaultValue": false,
       "propsDefaultValue": false
     },
     "vertical": {
       "type": "boolean",
       "desc": "是否垂直显示",
-      "defaultValue": false,
       "propsDefaultValue": false
     },
     "icons": {

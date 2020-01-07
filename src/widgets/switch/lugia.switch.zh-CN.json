@@ -6,13 +6,11 @@
     "defaultValue": {
       "type": "boolean",
       "desc": "默认开关状态",
-      "defaultValue": false,
       "propsDefaultValue": false
     },
     "value": {
       "type": "boolean",
       "desc": "开关状态",
-      "defaultValue": false,
       "propsDefaultValue": false
     },
     "data": {
@@ -28,31 +26,26 @@
     "isInverse": {
       "type": "boolean",
       "desc": "开关翻转",
-      "defaultValue": false,
       "propsDefaultValue": false
     },
     "loading": {
       "type": "boolean",
       "desc": "是否配置加载",
-      "defaultValue": false,
       "propsDefaultValue": false
     },
     "autoFocus": {
       "type": "boolean",
       "desc": "是否自动聚焦",
-      "defaultValue": false,
       "propsDefaultValue": false
     },
     "disabled": {
       "type": "boolean",
       "desc": "禁用状态,是否不可用",
-      "defaultValue": false,
       "propsDefaultValue": false
     },
     "displayFiled": {
       "type": "string",
       "desc": "匹配需要显示的文本,读取data中需要显示的内容名",
-      "defaultValue": "text",
       "propsDefaultValue": "text"
     }
   },
