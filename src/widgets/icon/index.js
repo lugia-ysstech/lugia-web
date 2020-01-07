@@ -11,7 +11,7 @@ import Widget from '../consts/index';
 import ThemeHoc, { addMouseEvent } from '@lugia/theme-hoc';
 import CSSComponent, { css, StaticComponent } from '../theme/CSSProvider';
 
-const getNormalFontSize = (themeConfig: object) => {
+const getNormalFontSize = (themeConfig: Object) => {
   const { normal: { fontSize, font: { size } = {} } = {} } = themeConfig;
 
   return fontSize ? fontSize : size ? size : 14;
