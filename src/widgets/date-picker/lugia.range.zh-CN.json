@@ -16,43 +16,51 @@
     "createPortal": {
       "type": "boolean",
       "desc": "是否全局弹出下拉框",
-      "defaultValue": true
+      "defaultValue": true,
+      "propsDefaultValue": true
     },
     "format": {
       "type": "string",
       "desc": "用于指定输入框日期显示的格式",
-      "defaultValue": "YYYY-MM-DD"
+      "defaultValue": "YYYY-MM-DD",
+      "propsDefaultValue": "YYYY-MM-DD"
     },
     "placeholder": {
       "type": "string[]",
       "meta": [{ "key": "value", "type": "string" }],
       "desc": "input输入提示信息",
-      "defaultValue": ["开始时间", "结束时间"]
+      "defaultValue": ["开始时间", "结束时间"],
+      "propsDefaultValue": ["开始时间", "结束时间"]
     },
     "disabled": {
       "type": "boolean",
       "desc": "禁用状态,是否不可用",
-      "defaultValue": false
+      "defaultValue": false,
+      "propsDefaultValue": false
     },
     "readOnly": {
       "type": "boolean",
       "desc": "只读input",
-      "defaultValue": false
+      "defaultValue": false,
+      "propsDefaultValue": false
     },
     "selectToday": {
       "type": "boolean",
       "desc": "是否默认选中今天日期",
-      "defaultValue": false
+      "defaultValue": false,
+      "propsDefaultValue": false
     },
     "showToday": {
       "type": "boolean | Object",
       "desc": "是否展示'今天'按钮 | showToday={message:'XXX'} 可以指定按钮文本 ",
-      "defaultValue": false
+      "defaultValue": false,
+      "propsDefaultValue": false
     },
     "showTime": {
       "type": "boolean | Object",
       "desc": "为组件增加时间选择功能 | showTime={message:{showTime:'XXX',showDate:'XXX'}} 可以指定按钮切换文本",
-      "defaultValue": false
+      "defaultValue": false,
+      "propsDefaultValue": false
     },
     "extraFooter": {
       "type": "Object",
@@ -67,7 +75,8 @@
     "step": {
       "type": "number",
       "desc": "设置周,年的展示步长",
-      "defaultValue": false
+      "defaultValue": false,
+      "propsDefaultValue": false
     },
     "suffix": {
       "type": "icon",
