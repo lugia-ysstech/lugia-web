@@ -14,12 +14,14 @@
     "createPortal": {
       "type": "boolean",
       "desc": "是否全局弹出下拉框",
-      "defaultValue": true
+      "defaultValue": true,
+      "propsDefaultValue": true
     },
     "format": {
       "type": "string",
       "desc": "用于指定输入框日期显示的格式",
-      "defaultValue": "YYYY-MM"
+      "defaultValue": "YYYY-MM",
+      "propsDefaultValue": "YYYY-MM"
     },
     "placeholder": {
       "type": "string",
@@ -28,12 +30,14 @@
     "disabled": {
       "type": "boolean",
       "desc": "禁用状态,是否不可用",
-      "defaultValue": false
+      "defaultValue": false,
+      "propsDefaultValue": false
     },
     "readOnly": {
       "type": "boolean",
       "desc": "只读input",
-      "defaultValue": false
+      "defaultValue": false,
+      "propsDefaultValue": false
     },
     "extraFooter": {
       "type": "Object",
