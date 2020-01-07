@@ -48,11 +48,6 @@ export default () => {
         },
       },
       InnerInput: {
-        Input: {
-          normal: {
-            opacity: 0.8,
-          },
-        },
         Container: {
           normal: {
             width: 300,
