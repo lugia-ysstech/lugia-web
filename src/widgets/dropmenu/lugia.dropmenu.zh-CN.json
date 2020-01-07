@@ -75,8 +75,8 @@
           "children": [
             { "key": "prefixIconClass", "title": "前缀图标", "type": "icon" },
             { "key": "suffixIconClass", "title": "后缀图标", "type": "icon" },
-            { "key": "prefixIconSrc", "title": "前缀图片", "type": "img" },
-            { "key": "suffixIconSrc", "title": "后缀图片", "type": "img" }
+            { "key": "prefixIconSrc", "title": "前缀图片", "type": "image" },
+            { "key": "suffixIconSrc", "title": "后缀图片", "type": "image" }
           ]
         }
       ],
