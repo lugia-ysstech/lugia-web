@@ -49,11 +49,25 @@
           "children": [
             { "key": "preIconClass", "title": "前缀图标", "type": "icon" },
             { "key": "suffixIconClass", "title": "后缀图标", "type": "icon" },
-            { "key": "prefixIconSrc", "title": "前缀图片", "type": "img" },
-            { "key": "suffixIconSrc", "title": "后缀图片", "type": "img" }
+            { "key": "prefixIconSrc", "title": "前缀图片", "type": "image" },
+            { "key": "suffixIconSrc", "title": "后缀图片", "type": "image" }
           ]
         },
         { "key": "children", "title": "子项数据", "type": "Object[]" }
+      ],
+      "defaultValue": [
+        {
+          "value": "选项一",
+          "text": "选项一"
+        },
+        {
+          "value": "选项二",
+          "text": "选项二"
+        },
+        {
+          "value": "选项三",
+          "text": "选项三"
+        }
       ]
     },
 
