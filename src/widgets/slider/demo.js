@@ -45,7 +45,6 @@ export default class Sl extends Component<any> {
                   SliderContainer: {
                     normal: {
                       background: { color: 'transparent' },
-                      width: 300,
                       opacity: 1,
                       border: {
                         top: { color: '', style: '', width: 0 },
@@ -73,9 +72,9 @@ export default class Sl extends Component<any> {
                       },
                     },
                   },
-                  SliderTrack: {
+                  Container: {
                     normal: {
-                      width: 300,
+                      // / width: 300,
                       height: 6,
                       background: {
                         color: '#e8e8e8',
@@ -161,22 +160,22 @@ export default class Sl extends Component<any> {
                 this.onchangeFirst //disabled
               }
               // marks={{ 10: '10℃', 20: '20℃', 40: '40℃rtrtr54546' }}
-              icons={[
-                { name: 'lugia-icon-financial_smile_o' },
-                { name: 'lugia-icon-financial_sad_o' },
-              ]}
+              // icons={[
+              //   { name: 'lugia-icon-financial_smile_o' },
+              //   { name: 'lugia-icon-financial_sad_o' },
+              // ]}
             />
           </Theme>
         </div>
-
-        <div style={{ float: 'left', padding: '0 20px 50px' }}>
-          <h2 style={{ padding: '20px 0' }}> normal</h2>
-          <Theme>
-            <Slider tips value={15} onChange={this.onchange} />
-            <Slider tips value={[5, 15]} onChange={this.onchange} />
-          </Theme>
+        <div>
+          <Slider />
         </div>
-        <div style={{ float: 'left', padding: '0 20px 50px' }}>
+        <div>
+          <h2 style={{ padding: '20px' }}> normal</h2>
+          <Slider tips value={15} onChange={this.onchange} />
+          <Slider tips value={[5, 15]} onChange={this.onchange} />
+        </div>
+        <div>
           <h2 style={{ padding: '20px 0' }}> 自定义css</h2>
           <Theme
             config={{
@@ -187,15 +186,15 @@ export default class Sl extends Component<any> {
             <Slider minValue={undefined} defaultValue={undefined} tips />
           </Theme>
         </div>
-        <div style={{ float: 'left', padding: '0 20px 50px' }}>
+        <div>
           <h2 style={{ padding: '20px 0' }}> 单滑块 defaultValue=-1</h2>
           <Slider maxValue={40} tips minValue={10} defaultValue={-1} />
         </div>
-        <div style={{ float: 'left', padding: '0 20px 50px' }}>
+        <div>
           <h2 style={{ padding: '20px 0' }}> 单滑块</h2>
           <Slider maxValue={40} tips minValue={10} defaultValue={50} />
         </div>
-        <div style={{ float: 'left', padding: '0 20px 50px' }}>
+        <div>
           <h2 style={{ padding: '20px 0' }}> 双滑块 minValue -1</h2>
           <Slider
             maxValue={30}

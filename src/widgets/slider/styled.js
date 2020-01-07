@@ -38,7 +38,7 @@ type CssTypeProps = {
 const transitionTime = '0.3';
 export const SliderBigBox = CSSComponent({
   tag: 'div',
-  className: 'Container',
+  className: 'SliderContainer',
   normal: {
     selectNames: [
       ['border'],
@@ -89,7 +89,7 @@ export const SliderBox = StaticComponent({
 });
 export const SliderWrapper = CSSComponent({
   tag: 'div',
-  className: 'SliderTrack',
+  className: 'Container',
   normal: {
     selectNames: [['background'], ['borderRadius'], ['border'], ['width'], ['height']],
   },

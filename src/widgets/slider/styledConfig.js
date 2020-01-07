@@ -10,7 +10,6 @@ import {
 import { btnWidthNormal, rangeHeightNormal, rangeWidthNormal } from './slider_public_size';
 import colorsFunc from '../css/stateColor';
 import { getBorder, getBorderRadius } from '@lugia/theme-utils';
-//import {rangeWidthNormal,rangeHeightNormal,btnWidthNormal} from './slider_public_size';
 export const { themeColor } = colorsFunc();
 
 function verticalSize(props) {
@@ -38,25 +37,17 @@ export function getThemeProps(props, normalSliderFatherWidth, iconsDistance) {
   const { getPartOfThemeProps, vertical } = props;
   const buttonThemeProps = getSliderButtonThemeProps(getPartOfThemeProps, vertical);
   const { width } = buttonThemeProps;
-  const sliderContainerThemeProps = getPartOfThemeProps('Container');
-
-  const {
-    themeConfig: { normal: { width: containerWidth } = {} } = {},
-  } = sliderContainerThemeProps;
-  const hasContainer = !!containerWidth;
-  const filterContainerWidth = getWidth(containerWidth, normalSliderFatherWidth);
-  sliderContainerThemeProps.propsConfig = { vertical, width: filterContainerWidth };
+  const sliderContainerThemeProps = getPartOfThemeProps('SliderContainer');
   const overSize = getOverSize(width, iconsDistance);
   const sliderTrackThemeProps = getSliderTrackThemeProps(
     getPartOfThemeProps,
     vertical,
-    hasContainer,
-    filterContainerWidth - overSize
+    normalSliderFatherWidth,
+    overSize
   );
   const { height } = sliderTrackThemeProps;
   const sliderPassedWayThemeProps = getSliderPassedWayThemeProps(getPartOfThemeProps, height);
   const sliderTipsThemeProps = getTipsThemeProps(getPartOfThemeProps, buttonThemeProps);
-
   return {
     buttonThemeProps,
     sliderPassedWayThemeProps,
@@ -87,16 +78,17 @@ function getOverSize(btnWidth, iconsDistance) {
 function getSliderTrackThemeProps(
   getPartOfThemeProps,
   vertical,
-  hasContainer,
-  normalSliderFatherWidth
+  normalSliderFatherWidth,
+  overSize
 ) {
-  const sliderTrackName = 'SliderTrack';
+  const sliderTrackName = 'Container';
   const sliderTrackThemeProps = getPartOfThemeProps(sliderTrackName);
   const {
     themeConfig: { normal = {}, hover = {}, active = {}, disabled = {} },
   } = sliderTrackThemeProps;
   const sliderNormalTheme = {
     normal: {
+      width: rangeWidthNormal,
       height: rangeHeightNormal,
       background: {
         color: trackBackground,
@@ -106,16 +98,11 @@ function getSliderTrackThemeProps(
     },
   };
   const mergeSliderTrackNormal = deepMerge(sliderNormalTheme, { normal });
-  let { normal: { width: normalW, height } = {} } = mergeSliderTrackNormal;
-  let width = hasContainer ? normalSliderFatherWidth : normalW;
-  const isNumWidth = typeof width === 'number' && !isNaN(width);
-  const isNumHeight = typeof height === 'number' && !isNaN(height);
-  if (!isNumWidth) {
-    width = normalSliderFatherWidth;
-  }
-  if (!isNumHeight) {
-    height = rangeHeightNormal;
-  }
+  const { normal: { width: normalW, height: normalHeight } = {} } = mergeSliderTrackNormal;
+  const width = getWidth(normalW, normalSliderFatherWidth) - overSize;
+  const height = getWidth(normalHeight, rangeHeightNormal);
+  mergeSliderTrackNormal.normal.width = width;
+  mergeSliderTrackNormal.normal.height = height;
   const { width: sliderWidth, height: sliderHeight } = verticalSize({ vertical, width, height });
   const defaultSliderThemeProps = {
     ...mergeSliderTrackNormal,
@@ -135,9 +122,8 @@ function getSliderTrackThemeProps(
       },
     },
   };
-
   const sliderTrackTheme = deepMerge(defaultSliderThemeProps, {
-    normal: { ...mergeSliderTrackNormal, width: sliderWidth, height: sliderHeight },
+    normal: { ...mergeSliderTrackNormal.normal, width: sliderWidth, height: sliderHeight },
     hover,
     active,
     disabled,

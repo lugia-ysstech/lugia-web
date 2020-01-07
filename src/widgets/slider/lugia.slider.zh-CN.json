@@ -112,7 +112,7 @@
             }
           }
         },
-        "SliderTrack": {
+        "Container": {
           "normal": {
             "width": 300,
             "height": 6,
@@ -188,7 +188,7 @@
         }
       },
       "theme": {
-        "Container": {
+        "SliderContainer": {
           "name": "滑块组件外盒",
           "desc": "为滑块组件外盒配置样式",
           "normal": [["border"], ["background"], ["margin"], ["padding"], ["opacity"]],
@@ -196,7 +196,7 @@
           "active": [],
           "disabled": [["border"], ["background"], ["opacity"]]
         },
-        "SliderTrack": {
+        "Container": {
           "name": "滑块轨道样式",
           "desc": "为滑块轨道配置样式",
           "normal": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]],
@@ -265,7 +265,7 @@
         "maxValue": 30
       },
       "defaultTheme": {
-        "Container": {
+        "SliderContainer": {
           "normal": {
             "background": { "color": "transparent" },
             "width": 300,
@@ -296,7 +296,7 @@
             }
           }
         },
-        "SliderTrack": {
+        "Container": {
           "normal": {
             "width": 300,
             "height": 6,
@@ -367,7 +367,7 @@
         }
       },
       "theme": {
-        "Container": {
+        "SliderContainer": {
           "name": "滑块组件外盒",
           "desc": "为滑块组件外盒配置样式",
           "normal": [["border"], ["background"], ["margin"], ["padding"], ["opacity"]],
@@ -375,7 +375,7 @@
           "active": [],
           "disabled": [["border"], ["background"], ["opacity"]]
         },
-        "SliderTrack": {
+        "Container": {
           "name": "滑块轨道样式",
           "desc": "为滑块轨道配置样式",
           "normal": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]],
@@ -449,7 +449,7 @@
         }
       },
       "defaultTheme": {
-        "Container": {
+        "SliderContainer": {
           "normal": {
             "background": { "color": "transparent" },
             "width": 300,
@@ -480,7 +480,7 @@
             }
           }
         },
-        "SliderTrack": {
+        "Container": {
           "normal": {
             "width": 300,
             "height": 6,
@@ -563,7 +563,7 @@
         }
       },
       "theme": {
-        "Container": {
+        "SliderContainer": {
           "name": "滑块组件外盒",
           "desc": "为滑块组件外盒配置样式",
           "normal": [["border"], ["background"], ["margin"], ["padding"], ["opacity"]],
@@ -571,7 +571,7 @@
           "active": [],
           "disabled": [["border"], ["background"], ["opacity"]]
         },
-        "SliderTrack": {
+        "Container": {
           "name": "滑块轨道样式",
           "desc": "为滑块轨道配置样式",
           "normal": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]],
@@ -646,7 +646,7 @@
     }
   },
   "theme": {
-    "Container": {
+    "SliderContainer": {
       "name": "滑块组件外盒",
       "desc": "为滑块组件外盒配置样式",
       "normal": [["border"], ["background"], ["margin"], ["padding"], ["opacity"]],
@@ -654,7 +654,7 @@
       "active": [],
       "disabled": [["border"], ["background"], ["opacity"]]
     },
-    "SliderTrack": {
+    "Container": {
       "name": "滑块轨道样式",
       "desc": "为滑块轨道配置样式",
       "normal": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]],
@@ -713,7 +713,7 @@
     }
   },
   "defaultTheme": {
-    "Container": {
+    "SliderContainer": {
       "normal": {
         "background": { "color": "transparent" },
         "width": 300,
@@ -744,7 +744,7 @@
         }
       }
     },
-    "SliderTrack": {
+    "Container": {
       "normal": {
         "width": 300,
         "height": 6,
