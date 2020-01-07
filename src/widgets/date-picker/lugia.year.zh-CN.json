@@ -6,7 +6,6 @@
     "createPortal": {
       "type": "boolean",
       "desc": "是否全局弹出下拉框",
-      "defaultValue": true,
       "propsDefaultValue": true
     },
     "defaultValue": {
@@ -20,7 +19,6 @@
     "format": {
       "type": "string",
       "desc": "用于指定输入框日期显示的格式",
-      "defaultValue": "YYYY",
       "propsDefaultValue": "YYYY"
     },
     "placeholder": {
@@ -30,13 +28,11 @@
     "disabled": {
       "type": "boolean",
       "desc": "禁用状态,是否不可用",
-      "defaultValue": false,
       "propsDefaultValue": false
     },
     "readOnly": {
       "type": "boolean",
       "desc": "只读input",
-      "defaultValue": false,
       "propsDefaultValue": false
     },
     "extraFooter": {
@@ -46,7 +42,6 @@
     "step": {
       "type": "number",
       "desc": "设置年的展示步长",
-      "defaultValue": false,
       "propsDefaultValue": false
     }
   },
