@@ -122,7 +122,7 @@
         ["color"],
         ["font"]
       ],
-      "hover": [["border"], ["background"]],
+      "hover": [["border"], ["borderRadius"], ["background"]],
       "active": [],
       "disabled": [["background"], ["border", "color"]]
     },
