@@ -56,9 +56,9 @@
       "desc": "配置前置和后缀图标",
       "meta": [
         { "key": "prefixIconClass", "title": "前置图标", "type": "icon" },
-        { "key": "prefixIconSrc", "title": "前置图片", "type": "string" },
+        { "key": "prefixIconSrc", "title": "前置图片", "type": "image" },
         { "key": "suffixIconClass", "title": "后缀图标", "type": "icon" },
-        { "key": "suffixIconSrc", "title": "后缀图片", "type": "string" }
+        { "key": "suffixIconSrc", "title": "后缀图片", "type": "image" }
       ]
     },
 
