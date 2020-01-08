@@ -455,97 +455,97 @@
           "hover": [["color"], ["font"], ["opacity"]],
           "active": [],
           "disabled": []
-        }
-      },
-      "Menu": {
-        "name": "弹开菜单",
-        "theme": {
-          "Container": {
-            "name": "菜单外盒",
-            "desc": "配置菜单组件的外盒样式",
-            "normal": [
-              ["width"],
-              ["height"],
-              ["boxShadow"],
-              ["background"],
-              ["opacity"],
-              ["border"],
-              ["borderRadius"],
-              ["margin"],
-              ["padding"]
-            ],
-            "hover": [["boxShadow"], ["background"], ["opacity"], ["border"], ["borderRadius"]],
-            "disabled": []
-          },
-          "MenuItem": {
-            "name": "菜单项配置",
-            "theme": {
-              "MenuItemWrap": {
-                "name": "项的外盒",
-                "desc": "配置每一项的外盒",
-                "normal": [
-                  ["height"],
-                  ["background"],
-                  ["border"],
-                  ["borderRadius"],
-                  ["opacity"],
-                  ["color"],
-                  ["padding"]
-                ],
-                "hover": [
-                  ["background"],
-                  ["border"],
-                  ["borderRadius"],
-                  ["opacity"],
-                  ["color"],
-                  ["font"]
-                ],
-                "active": [
-                  ["background"],
-                  ["border"],
-                  ["borderRadius"],
-                  ["opacity"],
-                  ["color"],
-                  ["font"]
-                ],
-                "disabled": [
-                  ["background"],
-                  ["color"],
-                  ["borderRadius"],
-                  ["opacity"],
-                  ["padding"],
-                  ["font"]
-                ]
-              },
-              "SelectedMenuItemWrap": {
-                "name": "选中项的外盒",
-                "desc": "配置选中项的外盒",
-                "normal": [
-                  ["background"],
-                  ["border"],
-                  ["borderRadius"],
-                  ["opacity"],
-                  ["color"],
-                  ["padding"],
-                  ["font"]
-                ],
-                "hover": [
-                  ["background"],
-                  ["border"],
-                  ["borderRadius"],
-                  ["opacity"],
-                  ["color"],
-                  ["font"]
-                ],
-                "active": [
-                  ["background"],
-                  ["border"],
-                  ["borderRadius"],
-                  ["opacity"],
-                  ["color"],
-                  ["font"]
-                ],
-                "disabled": []
+        },
+        "Menu": {
+          "name": "弹开菜单",
+          "theme": {
+            "Container": {
+              "name": "菜单外盒",
+              "desc": "配置菜单组件的外盒样式",
+              "normal": [
+                ["width"],
+                ["height"],
+                ["boxShadow"],
+                ["background"],
+                ["opacity"],
+                ["border"],
+                ["borderRadius"],
+                ["margin"],
+                ["padding"]
+              ],
+              "hover": [["boxShadow"], ["background"], ["opacity"], ["border"], ["borderRadius"]],
+              "disabled": []
+            },
+            "MenuItem": {
+              "name": "菜单项配置",
+              "theme": {
+                "MenuItemWrap": {
+                  "name": "项的外盒",
+                  "desc": "配置每一项的外盒",
+                  "normal": [
+                    ["height"],
+                    ["background"],
+                    ["border"],
+                    ["borderRadius"],
+                    ["opacity"],
+                    ["color"],
+                    ["padding"]
+                  ],
+                  "hover": [
+                    ["background"],
+                    ["border"],
+                    ["borderRadius"],
+                    ["opacity"],
+                    ["color"],
+                    ["font"]
+                  ],
+                  "active": [
+                    ["background"],
+                    ["border"],
+                    ["borderRadius"],
+                    ["opacity"],
+                    ["color"],
+                    ["font"]
+                  ],
+                  "disabled": [
+                    ["background"],
+                    ["color"],
+                    ["borderRadius"],
+                    ["opacity"],
+                    ["padding"],
+                    ["font"]
+                  ]
+                },
+                "SelectedMenuItemWrap": {
+                  "name": "选中项的外盒",
+                  "desc": "配置选中项的外盒",
+                  "normal": [
+                    ["background"],
+                    ["border"],
+                    ["borderRadius"],
+                    ["opacity"],
+                    ["color"],
+                    ["padding"],
+                    ["font"]
+                  ],
+                  "hover": [
+                    ["background"],
+                    ["border"],
+                    ["borderRadius"],
+                    ["opacity"],
+                    ["color"],
+                    ["font"]
+                  ],
+                  "active": [
+                    ["background"],
+                    ["border"],
+                    ["borderRadius"],
+                    ["opacity"],
+                    ["color"],
+                    ["font"]
+                  ],
+                  "disabled": []
+                }
               }
             }
           }
