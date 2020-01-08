@@ -18,14 +18,16 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
 }
 
 .c2 {
+  box-sizing: border-box;
   line-height: 1.5;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   outline: none;
-  width: 20rem;
-  height: 3.2rem;
+  height: 100%;
+  width: 100%;
+  font-size: 1.2rem;
   cursor: text;
   border-top-width: 0.1rem;
   border-top-style: solid;
@@ -47,24 +49,30 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
 
 .c2::-webkit-input-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c2::-moz-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c2:-ms-input-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c2::placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c1 {
   position: relative;
   display: inline-block;
   outline: none;
+  min-width: 3rem;
+  width: 100%;
 }
 
 .c3 {
@@ -75,7 +83,7 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
   bottom: 50%;
   line-height: 1rem;
   font-size: 1.4em;
-  color: rgba(0,0,0,0.65);
+  color: #999999;
   right: 1rem;
 }
 
@@ -127,14 +135,19 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
   className="c0"
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
+  style={Object {}}
 >
-  <div
+  <span
     className="c1"
     onMouseDown={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     onMouseUp={[Function]}
-    style={Object {}}
+    style={
+      Object {
+        "height": "3.2rem",
+      }
+    }
   >
     <input
       autoFocus={false}
@@ -151,14 +164,13 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
       style={
         Object {
           "color": "#333333",
-          "height": "3.2rem",
           "paddingBottom": "0rem",
           "paddingLeft": "1rem",
           "paddingRight": "3.5rem",
           "paddingTop": "0rem",
         }
       }
-      value={10}
+      value=""
     />
     <span
       className="c3"
@@ -166,7 +178,7 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
     >
       <div />
     </span>
-  </div>
+  </span>
   <div
     className="c4"
     disabled={false}
@@ -176,7 +188,7 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
     onMouseUp={[Function]}
     style={
       Object {
-        "opacity": 0.001,
+        "opacity": 0,
         "width": "2.2rem",
       }
     }
@@ -202,7 +214,7 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
         style={
           Object {
             "cursor": "pointer",
-            "fontSize": "2rem",
+            "fontSize": "1rem",
           }
         }
       />
@@ -228,7 +240,7 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
         style={
           Object {
             "cursor": "pointer",
-            "fontSize": "2rem",
+            "fontSize": "1rem",
           }
         }
       />
@@ -255,14 +267,16 @@ exports[`NumberInput props: null 1`] = `
 }
 
 .c2 {
+  box-sizing: border-box;
   line-height: 1.5;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   outline: none;
-  width: 20rem;
-  height: 3.2rem;
+  height: 100%;
+  width: 100%;
+  font-size: 1.2rem;
   cursor: text;
   border-top-width: 0.1rem;
   border-top-style: solid;
@@ -284,24 +298,30 @@ exports[`NumberInput props: null 1`] = `
 
 .c2::-webkit-input-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c2::-moz-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c2:-ms-input-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c2::placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c1 {
   position: relative;
   display: inline-block;
   outline: none;
+  min-width: 3rem;
+  width: 100%;
 }
 
 .c3 {
@@ -312,7 +332,7 @@ exports[`NumberInput props: null 1`] = `
   bottom: 50%;
   line-height: 1rem;
   font-size: 1.4em;
-  color: rgba(0,0,0,0.65);
+  color: #999999;
   right: 1rem;
 }
 
@@ -364,14 +384,19 @@ exports[`NumberInput props: null 1`] = `
   className="c0"
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
+  style={Object {}}
 >
-  <div
+  <span
     className="c1"
     onMouseDown={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     onMouseUp={[Function]}
-    style={Object {}}
+    style={
+      Object {
+        "height": "3.2rem",
+      }
+    }
   >
     <input
       autoFocus={false}
@@ -388,14 +413,13 @@ exports[`NumberInput props: null 1`] = `
       style={
         Object {
           "color": "#333333",
-          "height": "3.2rem",
           "paddingBottom": "0rem",
           "paddingLeft": "1rem",
           "paddingRight": "3.5rem",
           "paddingTop": "0rem",
         }
       }
-      value={10}
+      value=""
     />
     <span
       className="c3"
@@ -403,7 +427,7 @@ exports[`NumberInput props: null 1`] = `
     >
       <div />
     </span>
-  </div>
+  </span>
   <div
     className="c4"
     disabled={false}
@@ -413,7 +437,7 @@ exports[`NumberInput props: null 1`] = `
     onMouseUp={[Function]}
     style={
       Object {
-        "opacity": 0.001,
+        "opacity": 0,
         "width": "2.2rem",
       }
     }
@@ -439,7 +463,7 @@ exports[`NumberInput props: null 1`] = `
         style={
           Object {
             "cursor": "pointer",
-            "fontSize": "2rem",
+            "fontSize": "1rem",
           }
         }
       />
@@ -465,7 +489,7 @@ exports[`NumberInput props: null 1`] = `
         style={
           Object {
             "cursor": "pointer",
-            "fontSize": "2rem",
+            "fontSize": "1rem",
           }
         }
       />
@@ -492,14 +516,16 @@ exports[`NumberInput props: placeholder  1`] = `
 }
 
 .c2 {
+  box-sizing: border-box;
   line-height: 1.5;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   outline: none;
-  width: 20rem;
-  height: 3.2rem;
+  height: 100%;
+  width: 100%;
+  font-size: 1.2rem;
   cursor: text;
   border-top-width: 0.1rem;
   border-top-style: solid;
@@ -521,24 +547,30 @@ exports[`NumberInput props: placeholder  1`] = `
 
 .c2::-webkit-input-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c2::-moz-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c2:-ms-input-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c2::placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c1 {
   position: relative;
   display: inline-block;
   outline: none;
+  min-width: 3rem;
+  width: 100%;
 }
 
 .c3 {
@@ -549,7 +581,7 @@ exports[`NumberInput props: placeholder  1`] = `
   bottom: 50%;
   line-height: 1rem;
   font-size: 1.4em;
-  color: rgba(0,0,0,0.65);
+  color: #999999;
   right: 1rem;
 }
 
@@ -601,14 +633,19 @@ exports[`NumberInput props: placeholder  1`] = `
   className="c0"
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
+  style={Object {}}
 >
-  <div
+  <span
     className="c1"
     onMouseDown={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     onMouseUp={[Function]}
-    style={Object {}}
+    style={
+      Object {
+        "height": "3.2rem",
+      }
+    }
   >
     <input
       autoFocus={false}
@@ -626,14 +663,13 @@ exports[`NumberInput props: placeholder  1`] = `
       style={
         Object {
           "color": "#333333",
-          "height": "3.2rem",
           "paddingBottom": "0rem",
           "paddingLeft": "1rem",
           "paddingRight": "3.5rem",
           "paddingTop": "0rem",
         }
       }
-      value={10}
+      value=""
     />
     <span
       className="c3"
@@ -641,7 +677,7 @@ exports[`NumberInput props: placeholder  1`] = `
     >
       <div />
     </span>
-  </div>
+  </span>
   <div
     className="c4"
     disabled={false}
@@ -651,7 +687,7 @@ exports[`NumberInput props: placeholder  1`] = `
     onMouseUp={[Function]}
     style={
       Object {
-        "opacity": 0.001,
+        "opacity": 0,
         "width": "2.2rem",
       }
     }
@@ -677,7 +713,7 @@ exports[`NumberInput props: placeholder  1`] = `
         style={
           Object {
             "cursor": "pointer",
-            "fontSize": "2rem",
+            "fontSize": "1rem",
           }
         }
       />
@@ -703,7 +739,7 @@ exports[`NumberInput props: placeholder  1`] = `
         style={
           Object {
             "cursor": "pointer",
-            "fontSize": "2rem",
+            "fontSize": "1rem",
           }
         }
       />
@@ -730,14 +766,16 @@ exports[`NumberInput props: placeholder  2`] = `
 }
 
 .c2 {
+  box-sizing: border-box;
   line-height: 1.5;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   outline: none;
-  width: 20rem;
-  height: 3.2rem;
+  height: 100%;
+  width: 100%;
+  font-size: 1.2rem;
   cursor: text;
   border-top-width: 0.1rem;
   border-top-style: solid;
@@ -759,24 +797,30 @@ exports[`NumberInput props: placeholder  2`] = `
 
 .c2::-webkit-input-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c2::-moz-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c2:-ms-input-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c2::placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c1 {
   position: relative;
   display: inline-block;
   outline: none;
+  min-width: 3rem;
+  width: 100%;
 }
 
 .c3 {
@@ -787,7 +831,7 @@ exports[`NumberInput props: placeholder  2`] = `
   bottom: 50%;
   line-height: 1rem;
   font-size: 1.4em;
-  color: rgba(0,0,0,0.65);
+  color: #999999;
   right: 1rem;
 }
 
@@ -839,14 +883,19 @@ exports[`NumberInput props: placeholder  2`] = `
   className="c0"
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
+  style={Object {}}
 >
-  <div
+  <span
     className="c1"
     onMouseDown={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     onMouseUp={[Function]}
-    style={Object {}}
+    style={
+      Object {
+        "height": "3.2rem",
+      }
+    }
   >
     <input
       autoFocus={false}
@@ -864,14 +913,13 @@ exports[`NumberInput props: placeholder  2`] = `
       style={
         Object {
           "color": "#333333",
-          "height": "3.2rem",
           "paddingBottom": "0rem",
           "paddingLeft": "1rem",
           "paddingRight": "3.5rem",
           "paddingTop": "0rem",
         }
       }
-      value={10}
+      value=""
     />
     <span
       className="c3"
@@ -879,7 +927,7 @@ exports[`NumberInput props: placeholder  2`] = `
     >
       <div />
     </span>
-  </div>
+  </span>
   <div
     className="c4"
     disabled={false}
@@ -889,7 +937,7 @@ exports[`NumberInput props: placeholder  2`] = `
     onMouseUp={[Function]}
     style={
       Object {
-        "opacity": 0.001,
+        "opacity": 0,
         "width": "2.2rem",
       }
     }
@@ -915,7 +963,7 @@ exports[`NumberInput props: placeholder  2`] = `
         style={
           Object {
             "cursor": "pointer",
-            "fontSize": "2rem",
+            "fontSize": "1rem",
           }
         }
       />
@@ -941,7 +989,7 @@ exports[`NumberInput props: placeholder  2`] = `
         style={
           Object {
             "cursor": "pointer",
-            "fontSize": "2rem",
+            "fontSize": "1rem",
           }
         }
       />
@@ -968,14 +1016,16 @@ exports[`NumberInput props: size 1`] = `
 }
 
 .c2 {
+  box-sizing: border-box;
   line-height: 1.5;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   outline: none;
-  width: 20rem;
-  height: 3.2rem;
+  height: 100%;
+  width: 100%;
+  font-size: 1.2rem;
   cursor: text;
   border-top-width: 0.1rem;
   border-top-style: solid;
@@ -997,24 +1047,30 @@ exports[`NumberInput props: size 1`] = `
 
 .c2::-webkit-input-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c2::-moz-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c2:-ms-input-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c2::placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c1 {
   position: relative;
   display: inline-block;
   outline: none;
+  min-width: 3rem;
+  width: 100%;
 }
 
 .c3 {
@@ -1025,7 +1081,7 @@ exports[`NumberInput props: size 1`] = `
   bottom: 50%;
   line-height: 1rem;
   font-size: 1.4em;
-  color: rgba(0,0,0,0.65);
+  color: #999999;
   right: 1rem;
 }
 
@@ -1077,14 +1133,19 @@ exports[`NumberInput props: size 1`] = `
   className="c0"
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
+  style={Object {}}
 >
-  <div
+  <span
     className="c1"
     onMouseDown={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     onMouseUp={[Function]}
-    style={Object {}}
+    style={
+      Object {
+        "height": "2.4rem",
+      }
+    }
   >
     <input
       autoFocus={false}
@@ -1101,14 +1162,13 @@ exports[`NumberInput props: size 1`] = `
       style={
         Object {
           "color": "#333333",
-          "height": "2.4rem",
           "paddingBottom": "0rem",
           "paddingLeft": "1rem",
           "paddingRight": "3.5rem",
           "paddingTop": "0rem",
         }
       }
-      value={10}
+      value=""
     />
     <span
       className="c3"
@@ -1116,7 +1176,7 @@ exports[`NumberInput props: size 1`] = `
     >
       <div />
     </span>
-  </div>
+  </span>
   <div
     className="c4"
     disabled={false}
@@ -1126,7 +1186,7 @@ exports[`NumberInput props: size 1`] = `
     onMouseUp={[Function]}
     style={
       Object {
-        "opacity": 0.001,
+        "opacity": 0,
         "width": "2.2rem",
       }
     }
@@ -1152,7 +1212,7 @@ exports[`NumberInput props: size 1`] = `
         style={
           Object {
             "cursor": "pointer",
-            "fontSize": "2rem",
+            "fontSize": "1rem",
           }
         }
       />
@@ -1178,7 +1238,7 @@ exports[`NumberInput props: size 1`] = `
         style={
           Object {
             "cursor": "pointer",
-            "fontSize": "2rem",
+            "fontSize": "1rem",
           }
         }
       />
@@ -1205,14 +1265,16 @@ exports[`NumberInput props: size 2`] = `
 }
 
 .c2 {
+  box-sizing: border-box;
   line-height: 1.5;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   outline: none;
-  width: 20rem;
-  height: 3.2rem;
+  height: 100%;
+  width: 100%;
+  font-size: 1.2rem;
   cursor: text;
   border-top-width: 0.1rem;
   border-top-style: solid;
@@ -1234,24 +1296,30 @@ exports[`NumberInput props: size 2`] = `
 
 .c2::-webkit-input-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c2::-moz-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c2:-ms-input-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c2::placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
 .c1 {
   position: relative;
   display: inline-block;
   outline: none;
+  min-width: 3rem;
+  width: 100%;
 }
 
 .c3 {
@@ -1262,7 +1330,7 @@ exports[`NumberInput props: size 2`] = `
   bottom: 50%;
   line-height: 1rem;
   font-size: 1.4em;
-  color: rgba(0,0,0,0.65);
+  color: #999999;
   right: 1rem;
 }
 
@@ -1314,14 +1382,19 @@ exports[`NumberInput props: size 2`] = `
   className="c0"
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
+  style={Object {}}
 >
-  <div
+  <span
     className="c1"
     onMouseDown={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     onMouseUp={[Function]}
-    style={Object {}}
+    style={
+      Object {
+        "height": "4rem",
+      }
+    }
   >
     <input
       autoFocus={false}
@@ -1338,14 +1411,13 @@ exports[`NumberInput props: size 2`] = `
       style={
         Object {
           "color": "#333333",
-          "height": "4rem",
           "paddingBottom": "0rem",
           "paddingLeft": "1rem",
           "paddingRight": "3.5rem",
           "paddingTop": "0rem",
         }
       }
-      value={10}
+      value=""
     />
     <span
       className="c3"
@@ -1353,7 +1425,7 @@ exports[`NumberInput props: size 2`] = `
     >
       <div />
     </span>
-  </div>
+  </span>
   <div
     className="c4"
     disabled={false}
@@ -1363,7 +1435,7 @@ exports[`NumberInput props: size 2`] = `
     onMouseUp={[Function]}
     style={
       Object {
-        "opacity": 0.001,
+        "opacity": 0,
         "width": "2.2rem",
       }
     }
@@ -1389,7 +1461,7 @@ exports[`NumberInput props: size 2`] = `
         style={
           Object {
             "cursor": "pointer",
-            "fontSize": "2rem",
+            "fontSize": "1rem",
           }
         }
       />
@@ -1415,7 +1487,7 @@ exports[`NumberInput props: size 2`] = `
         style={
           Object {
             "cursor": "pointer",
-            "fontSize": "2rem",
+            "fontSize": "1rem",
           }
         }
       />
