@@ -19,8 +19,7 @@
     },
     "pageSize": {
       "type": "number",
-      "desc": "每页的条数",
-      "defaultValue": 10
+      "desc": "每页的条数"
     },
     "defaultPageSize": {
       "type": "number",
