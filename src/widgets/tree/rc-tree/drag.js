@@ -67,58 +67,42 @@ class TreeDrag extends Listener {
     }
     if (targetkey === dragkey) return;
     const dropToGap = targetPositon !== 'dragOver' ? true : false;
-    let res = {};
+    const res = {
+      dragInfo: {
+        key: dragkey,
+        pid: dragtPid,
+        dragPath,
+        data: dargData,
+      },
+      targetInfo: {
+        pid: targetPid,
+        key: targetkey,
+        pos,
+        data: targetData,
+        dropPosition:
+          targetPositon === 'dragOver'
+            ? 'in'
+            : targetPositon === 'dragOverGapTop'
+            ? 'top'
+            : 'bottom',
+      },
+      dropToGap,
+      translateTreeData,
+    };
     if (!translateTreeData) {
-      res = {
-        dragInfo: {
-          key: dragkey,
-          pid: dragtPid,
-          dargCurrentIndex,
-          dargNextIndex,
-          dargPreIndex,
-          data: dargData,
-        },
-        targetInfo: {
-          pid: targetPid,
-          key: targetkey,
-          targetParentIndex,
-          targetCurrentIndex,
-          targetNextIndex,
-          targetPreIndex,
-          data: targetData,
-          pos,
-          dropPosition:
-            targetPositon === 'dragOver'
-              ? 'in'
-              : targetPositon === 'dragOverGapTop'
-              ? 'top'
-              : 'bottom',
-        },
-        dropToGap,
-        translateTreeData,
+      res.dragInfo = {
+        dargCurrentIndex,
+        dargNextIndex,
+        dargPreIndex,
+        data: dargData,
+        ...res.dragInfo,
       };
-    } else {
-      res = {
-        dragInfo: {
-          key: dragkey,
-          pid: dragtPid,
-          dragPath,
-          data: dargData,
-        },
-        targetInfo: {
-          pid: targetPid,
-          key: targetkey,
-          pos,
-          data: targetData,
-          dropPosition:
-            targetPositon === 'dragOver'
-              ? 'in'
-              : targetPositon === 'dragOverGapTop'
-              ? 'top'
-              : 'bottom',
-        },
-        dropToGap,
-        translateTreeData,
+      res.targetInfo = {
+        targetParentIndex,
+        targetCurrentIndex,
+        targetNextIndex,
+        targetPreIndex,
+        ...res.targetInfo,
       };
     }
 
@@ -194,7 +178,7 @@ class TreeDrag extends Listener {
     });
     return hoverNode;
   }
-  deltetNodeInformation(nodeName: String) {
+  deletetNodeInformation(nodeName: String) {
     const { nodesInformation } = this;
     nodeName && delete nodesInformation[nodeName];
   }

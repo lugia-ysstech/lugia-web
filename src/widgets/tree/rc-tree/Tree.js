@@ -132,8 +132,8 @@ class Tree extends React.Component {
   collectNodeInformation(nodeInformation = {}) {
     this.treeDrag.collectNodeInformation(nodeInformation);
   }
-  deltetNodeInformation(nodeName) {
-    this.treeDrag.deltetNodeInformation(nodeName);
+  deletetNodeInformation(nodeName) {
+    this.treeDrag.deletetNodeInformation(nodeName);
   }
   onMouseDown = mouseEvent => {
     this.treeDrag.mouseDown(mouseEvent);
@@ -336,10 +336,6 @@ class Tree extends React.Component {
   onMouseEnter(e, treeNode) {
     this.props.onMouseEnter({ event: e, node: treeNode });
   }
-
-  // onMouseLeave(e, treeNode) {
-  //   this.props.onMouseLeave({ event: e, node: treeNode });
-  // }
 
   onContextMenu(e, treeNode, item) {
     this.props.onRightClick({ event: e, node: treeNode, item });
