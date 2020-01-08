@@ -80,9 +80,11 @@ const PaginationMoreItem = CSSComponent({
     selectNames: [['cursor'], ['lineHeight'], ['margin']],
   },
   css: css`
-    text-align: center;
     list-style: none;
     float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   `,
   option: { hover: true, active: true },
 });
@@ -427,9 +429,6 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
             color: lightGreyColor,
             cursor: 'pointer',
             fontSize: 12,
-            getCSS() {
-              return 'vertical-align: middle !important;';
-            },
           },
           hover: {
             color: themeColor,
@@ -721,9 +720,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
           normal: {
             color: iconColor,
             cursor: iconCursor,
-            getCSS() {
-              return 'vertical-align: middle !important;';
-            },
+            fontSize: 12,
           },
           hover: {
             color: iconHoverColor,
