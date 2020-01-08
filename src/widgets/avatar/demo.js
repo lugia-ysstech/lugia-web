@@ -125,6 +125,29 @@ export default () => {
           />
         </Wrapper>
       </Theme>
+      <Wrapper>
+        <Avatar
+          shape={'square'}
+          type="img"
+          size={'small'}
+          src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/master/lugiaweb%E7%BB%84%E4%BB%B6/%E5%A4%B4%E5%83%8F/32.jpg"
+          msgNum={99}
+        />
+        <Avatar
+          shape={'square'}
+          size={'default'}
+          type="img"
+          src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/master/lugiaweb%E7%BB%84%E4%BB%B6/%E5%A4%B4%E5%83%8F/32.jpg"
+          msgNum={99}
+        />
+        <Avatar
+          shape={'square'}
+          size={'large'}
+          type="img"
+          src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/master/lugiaweb%E7%BB%84%E4%BB%B6/%E5%A4%B4%E5%83%8F/32.jpg"
+          msgNum={99}
+        />
+      </Wrapper>
 
       <Wrapper>
         <Theme config={badgeConfig}>
