@@ -26,10 +26,12 @@ export default ThemeProvider(
       super();
       const { data = [], selectOptions: { selectRowKeys = [] } = {} } = props;
 
+      const dataLength = data.length;
+      const selectRowKeyLength = selectRowKeys.length;
       this.state = {
-        headChecked: data.length === selectRowKeys.length,
-        headIndeterminate: !!selectRowKeys.length,
-        selectRowKeys: props.selectRowKeys || [],
+        headChecked: dataLength === selectRowKeyLength && dataLength > 0,
+        headIndeterminate: !!selectRowKeyLength,
+        selectRowKeys: selectRowKeys || [],
       };
     }
 
