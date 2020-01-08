@@ -33,7 +33,8 @@
     },
     "showQuickJumper": {
       "type": "boolean",
-      "desc": "是否可以快速跳至某页"
+      "desc": "是否可以快速跳至某页",
+      "propsDefaultValue": false
     },
     "showTotal": {
       "type": "Function(total, range)",
@@ -41,27 +42,33 @@
     },
     "hideOnSinglePage": {
       "type": "boolean",
-      "desc": "只有一页时是否隐藏分页器"
+      "desc": "只有一页时是否隐藏分页器",
+      "propsDefaultValue": false
     },
     "showSizeChanger": {
       "type": "boolean",
-      "desc": "是否显示可以改变 pageSize"
+      "desc": "是否显示可以改变 pageSize",
+      "propsDefaultValue": false
     },
     "isShowTotalData": {
       "type": "boolean",
-      "desc": "是否可以显示数据总量"
+      "desc": "是否可以显示数据总量",
+      "propsDefaultValue": false
     },
     "simple": {
       "type": "boolean",
-      "desc": "当添加该属性时，显示为简单分页"
+      "desc": "当添加该属性时，显示为简单分页",
+      "propsDefaultValue": false
     },
     "preIconClass": {
       "type": "icon",
-      "desc": "分页上一页图标资源"
+      "desc": "分页上一页图标资源",
+      "propsDefaultValue": "lugia-icon-direction_Left"
     },
     "nextIconClass": {
       "type": "icon",
-      "desc": "分页下一页图标资源"
+      "desc": "分页下一页图标资源",
+      "propsDefaultValue": "lugia-icon-direction_right"
     },
     "preIconSrc": {
       "type": "image",
