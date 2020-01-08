@@ -47,6 +47,7 @@ type DropMenuProps = {
   onPopupVisibleChange?: Function,
   _onClick?: Function,
   onClick?: Function,
+  autoHeight: boolean,
   onMouseEnter?: Function,
   onMouseLeave?: Function,
   onMenuClick?: Function,
@@ -66,6 +67,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
     type: 'customs',
     disabled: false,
     showSwitch: true,
+    autoHeight: false,
     icons: {},
   };
   state: DropMenuState;
@@ -89,8 +91,8 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
 
     let popup;
     if (!menus) {
-      const { data = defaultData } = this.props;
-      popup = <Menu data={data} onClick={this.onMenuClick} />;
+      const { data = defaultData, autoHeight } = this.props;
+      popup = <Menu data={data} autoHeight={autoHeight} onClick={this.onMenuClick} />;
     } else {
       const menu = React.Children.only(menus);
       popup = <div>{React.cloneElement(menu, this.ejectOnClick(menu))}</div>;
