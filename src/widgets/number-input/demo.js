@@ -74,7 +74,6 @@ const Wrapper = styled.div`
 const NumberInputDemo = () => {
   const view = {
     [Widget.NumberInput]: {
-      Input: { normal: { width: 500, height: 50 } },
       Container: {
         normal: {
           width: 800,
