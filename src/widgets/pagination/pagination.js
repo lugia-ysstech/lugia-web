@@ -69,6 +69,12 @@ const PaginationMoreItem = CSSComponent({
         right: 8,
       },
     },
+    getThemeMeta(themeMeta: Object, themeProps: Object) {
+      const { height } = themeMeta;
+      return {
+        lineHeight: height,
+      };
+    },
   },
   hover: {
     selectNames: [['cursor'], ['lineHeight'], ['margin']],
@@ -421,6 +427,9 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
             color: lightGreyColor,
             cursor: 'pointer',
             fontSize: 12,
+            getCSS() {
+              return 'vertical-align: middle !important;';
+            },
           },
           hover: {
             color: themeColor,
@@ -483,14 +492,6 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
             MenuWrap: {
               normal: {
                 width: 90,
-                height: 140,
-              },
-            },
-            MenuItem: {
-              SelectedMenuItemWrap: {
-                normal: {
-                  height: 80,
-                },
               },
             },
           },
@@ -514,6 +515,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     );
     return (
       <Select
+        autoHeight
         canClear={false}
         theme={selectTheme}
         viewClass={viewClass}
@@ -719,6 +721,9 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
           normal: {
             color: iconColor,
             cursor: iconCursor,
+            getCSS() {
+              return 'vertical-align: middle !important;';
+            },
           },
           hover: {
             color: iconHoverColor,
