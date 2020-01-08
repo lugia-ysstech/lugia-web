@@ -108,14 +108,8 @@ export class TopInput extends React.Component<any, any> {
     const topConfig = {
       [Widget.Input]: {
         validateTopTip: {
-          Container: {
-            normal: {
-              background: { color: 'gray' },
-            },
-          },
-          TooltipTitle: {
-            normal: { color: 'red' },
-          },
+          Container: { normal: { background: { color: 'gray' } } },
+          TooltipTitle: { normal: { color: 'red' } },
         },
       },
     };
@@ -151,7 +145,7 @@ const InputDemo = () => {
   const register = {
     [Widget.Input]: {
       Container: { normal: { width: 500, height: 40 } },
-      Input: { normal: { width: 300, height: 40 }, disabled: { background: { color: 'gray' } } },
+      Input: { disabled: { background: { color: 'gray' } } },
       Placeholder: {
         normal: { font: { color: 'red', weight: 900, size: 16 }, color: 'blue', fontSize: 20 },
       },

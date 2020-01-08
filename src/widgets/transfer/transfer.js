@@ -225,6 +225,7 @@ export default ThemeProvider(
         [viewClass]: {
           Container: {
             normal: {
+              width: width - 16,
               margin: {
                 top: 8,
                 right: 8,
@@ -235,7 +236,6 @@ export default ThemeProvider(
           },
           Input: {
             normal: {
-              width: width - 16,
               border: getBorder({ width: 1, style: 'solid', color: '#e8e8e8' }),
             },
           },

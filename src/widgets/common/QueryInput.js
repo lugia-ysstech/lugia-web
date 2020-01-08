@@ -141,7 +141,7 @@ class QueryInput extends React.Component<QueryInputProps, QueryInputState> {
 
     const theme = {
       [Widget.Input]: {
-        Input: {
+        Container: {
           normal: {
             width,
           },
