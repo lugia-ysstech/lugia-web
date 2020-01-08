@@ -72,7 +72,11 @@ export function getWrapThemeProps(props, partName) {
     },
     borderRadius,
   };
-  const hoverTheme = deepMerge(hover, deafultHoverBorderColor);
+
+  // 此段注释代码，用于hover继承normal的border宽度
+  //const hoverTheme = deepMerge(hover, deafultHoverBorderColor);
+
+  const hoverTheme = deepMerge(deafultHoverBorderColor, hover);
   const disabledTheme = deepMerge(defaultDisabled, disabled);
   themeConfig.normal = normal;
   themeConfig.hover = hoverTheme;
