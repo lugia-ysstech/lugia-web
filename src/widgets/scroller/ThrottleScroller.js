@@ -7,6 +7,8 @@
 import * as React from 'react';
 import Scroller from './index';
 import Widget from '../consts/index';
+import { getBoxShadow } from '@lugia/theme-utils';
+import { deepMerge } from '@lugia/object-utils';
 import { DefaultHeight, ScrollerContainer, Col, ScrollerCol } from '../css/scroller';
 import { getCanSeeCount } from './support';
 type ThrottleScrollerState = {
@@ -96,12 +98,23 @@ export default (
       return height;
     };
 
+    getContainerThemeProps(target: string, params: Object) {
+      const themeProps = this.props.getPartOfThemeProps(target, params);
+      const { themeConfig = {} } = themeProps;
+      const defaultTheme = {
+        boxShadow: getBoxShadow('0 1px 6px rgba(0, 0, 0, 0.2)'),
+      };
+      themeConfig.normal = deepMerge(defaultTheme, themeConfig.normal);
+      return themeProps;
+    }
+
     render() {
       const { props } = this;
       const start = this.getStart(props, this.state);
-      const { level, autoHeight = false, getPartOfThemeProps } = props;
+      const { level, autoHeight = false } = props;
       const totalSize = this.fetchTotalSize();
-      const themeProps = getPartOfThemeProps(TargetWrapName, {
+
+      const themeProps = this.getContainerThemeProps(TargetWrapName, {
         props: {
           isDrag: this.isDrag,
           autoHeight,
@@ -198,8 +211,12 @@ export default (
       const { normal = {} } = getPartOfThemeConfig(TargetWrapName);
       let { height } = normal;
       height = !height && height !== 0 ? DefaultHeight : height;
-      const { data = [] } = this.props;
-      const allItemHeight = this.itemHeight * data.length;
+      let { data } = this.props;
+      if (!data || data === null) {
+        data = [];
+      }
+      const { padding: { top = 0, bottom = 0 } = {} } = normal;
+      const allItemHeight = this.itemHeight * data.length + top + bottom;
       return autoHeight ? allItemHeight : height;
     };
 
@@ -211,7 +228,11 @@ export default (
       } else {
         remainder = this.viewSize % this.itemHeight;
       }
-      return length * this.itemHeight + remainder;
+      const {
+        normal: { padding: { top = 0, bottom = 0 } = {} } = {},
+      } = this.props.getPartOfThemeConfig(TargetWrapName);
+
+      return length * this.itemHeight + remainder + top + bottom;
     }
 
     getTarget(): Array<any> {
