@@ -24,7 +24,6 @@
     "defaultPageSize": {
       "type": "number",
       "desc": "默认的每页条数",
-      "defaultValue": 10,
       "propsDefaultValue": 10
     },
     "pageSizeOptions": {
@@ -34,9 +33,7 @@
     },
     "showQuickJumper": {
       "type": "boolean",
-      "desc": "是否可以快速跳至某页",
-      "defaultValue": false,
-      "propsDefaultValue": false
+      "desc": "是否可以快速跳至某页"
     },
     "showTotal": {
       "type": "Function(total, range)",
@@ -44,21 +41,15 @@
     },
     "hideOnSinglePage": {
       "type": "boolean",
-      "desc": "只有一页时是否隐藏分页器",
-      "defaultValue": false,
-      "propsDefaultValue": false
+      "desc": "只有一页时是否隐藏分页器"
     },
     "showSizeChanger": {
       "type": "boolean",
-      "desc": "是否显示可以改变 pageSize",
-      "defaultValue": false,
-      "propsDefaultValue": false
+      "desc": "是否显示可以改变 pageSize"
     },
     "isShowTotalData": {
       "type": "boolean",
-      "desc": "是否可以显示数据总量",
-      "defaultValue": false,
-      "propsDefaultValue": false
+      "desc": "是否可以显示数据总量"
     },
     "simple": {
       "type": "boolean",
