@@ -7,7 +7,7 @@
 import '../common/shirm';
 import * as React from 'react';
 import Widget from '../consts/index';
-import type { AvatarShape, AvatarSize } from '../css/avatar';
+import type { AvatarShape, AvatarSize, AvatarType } from '../css/avatar';
 import { DefaultHeight, LargeHeight, SmallHeight } from '../css/avatar';
 import Icon from '../icon';
 import ThemeHoc from '@lugia/theme-hoc';
@@ -173,9 +173,12 @@ const ImageContainer = CSSComponent({
   normal: {
     selectNames: [['width'], ['height']],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
+      const {
+        propsConfig: { size },
+      } = themeProps;
       const { width, height } = themeMeta;
-      const theWidth = getSize(width, 24);
-      const theHeight = getSize(height, 24);
+      const theWidth = getSize(width, getDefaultSize(size));
+      const theHeight = getSize(height, getDefaultSize(size));
       return {
         width: theWidth,
         height: theHeight,
@@ -294,7 +297,7 @@ class AvatarBox extends React.Component<AvatarProps, AvatarState> {
   }
   render() {
     const { props } = this;
-    const { size, shape, type, onClick } = props;
+    const { size, shape, type } = props;
     const thePropsTheme = this.props.getPartOfThemeProps('Container', {
       props: {
         size,
@@ -302,11 +305,7 @@ class AvatarBox extends React.Component<AvatarProps, AvatarState> {
         type,
       },
     });
-    return (
-      <BaseAvatar onClick={onClick} themeProps={thePropsTheme}>
-        {this.getChildren()}
-      </BaseAvatar>
-    );
+    return <BaseAvatar themeProps={thePropsTheme}>{this.getChildren()}</BaseAvatar>;
   }
 }
 const Avatar = ThemeHoc(KeyBoardEventAdaptor(AvatarBox), Widget.Avatar, {
