@@ -220,11 +220,14 @@ const Title = CSSComponent({
   },
   css: css`
     position: relative;
-    display: inline-block;
     box-sizing: border-box;
     user-select: none;
-    &:focus {
-      color: ${themeColor};
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    & > * {
+      max-width: 100%;
     }
   `,
 });
