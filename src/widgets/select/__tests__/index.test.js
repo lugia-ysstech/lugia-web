@@ -286,6 +286,7 @@ describe('Select', () => {
           mutliple
           canSearch
           canInput
+          canClear
           value={value}
           displayValue={displayValue}
           displayField={'label'}
