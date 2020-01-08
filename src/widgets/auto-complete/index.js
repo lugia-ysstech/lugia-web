@@ -281,10 +281,7 @@ export default ShortKeyBoard(
       }
 
       getContainerWidth = () => {
-        const {
-          themeConfig: { normal: { width = this.state.menuWidth } = {} } = {},
-        } = this.props.getPartOfThemeProps('Container');
-        return width;
+        return this.state.menuWidth;
       };
 
       mergeTheme = (target: string, defaultTheme: Object) => {

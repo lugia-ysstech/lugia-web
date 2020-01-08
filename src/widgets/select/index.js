@@ -65,6 +65,7 @@ type SelectProps = {
   getPartOfThemeConfig: Function,
   canClear?: boolean,
   divided?: boolean,
+  autoHeight?: boolean,
   pullIconClass?: string,
   clearIconClass?: string,
 };
@@ -78,6 +79,7 @@ type SelectState = {
   validateStatus: ValidateStatus,
   selectCount: number,
   isCheckedAll: boolean,
+  menuWidth: number,
 };
 
 const ScrollerStep = 30;
@@ -104,6 +106,7 @@ class Select extends React.Component<SelectProps, SelectState> {
     disabled: false,
     validateStatus: 'success',
     canSearch: false,
+    autoHeight: false,
     splitQuery: ',',
     searchType: 'include',
     query: '',
@@ -309,10 +312,7 @@ class Select extends React.Component<SelectProps, SelectState> {
   };
 
   getContainerWidth = () => {
-    const {
-      themeConfig: { normal: { width = this.state.menuWidth } = {} } = {},
-    } = this.props.getPartOfThemeProps('Container');
-    return width;
+    return this.state.menuWidth;
   };
 
   fetchRenderItems() {
@@ -399,7 +399,7 @@ class Select extends React.Component<SelectProps, SelectState> {
   getMenuItems(getMenu?: Function) {
     const { state, props } = this;
     const { value, query, data } = state;
-    const { displayField, valueField, limitCount, searchType, divided } = props;
+    const { displayField, valueField, limitCount, searchType, divided, autoHeight } = props;
     const menuData = this.updateMenuData(data, query, searchType);
 
     return (
@@ -415,6 +415,7 @@ class Select extends React.Component<SelectProps, SelectState> {
         limitCount={limitCount}
         onClick={this.menuItemClickHandler}
         step={ScrollerStep}
+        autoHeight={autoHeight}
       />
     );
   }
