@@ -66,16 +66,35 @@
             { "key": "suffixIconSrc", "title": "后缀图片", "type": "image" }
           ]
         },
-        { "key": "children", "title": "子项数据", "type": "array" }
+        { "key": "children", "title": "子项数据", "type": "Object[]" }
       ],
       "defaultValue": [
         {
-          "value": "一级树节点",
-          "text": "一级树节点",
+          "value": "一级节点-1",
+          "text": "一级节点-1",
           "children": [
-            { "value": "二级树节点-1", "text": "二级树节点-1" },
-            { "value": "二级树节点-2", "text": "一级树节点-2" },
-            { "value": "二级树节点-3", "text": "一级树节点-3" }
+            {
+              "value": "二级节点1-1",
+              "text": "二级节点1-1"
+            },
+            {
+              "value": "二级节点1-2",
+              "text": "二级节点1-2"
+            }
+          ]
+        },
+        {
+          "value": "一级节点-2",
+          "text": "一级节点-2",
+          "children": [
+            {
+              "value": "二级节点2-1",
+              "text": "二级节点2-1"
+            },
+            {
+              "value": "二级节点2-2",
+              "text": "二级节点2-2"
+            }
           ]
         }
       ]
@@ -332,38 +351,9 @@
                 ["boxShadow"],
                 ["borderRadius"]
               ],
-              "hover": [
-                ["color"],
-                ["font"],
-                ["fontSize"],
-                ["background"],
-                ["border"],
-                ["opacity"],
-                ["boxShadow"],
-                ["borderRadius"]
-              ],
-              "active": [
-                ["color"],
-                ["font"],
-                ["fontSize"],
-                ["background"],
-                ["border"],
-                ["opacity"],
-                ["boxShadow"],
-                ["borderRadius"]
-              ],
-              "disabled": [
-                ["height"],
-                ["color"],
-                ["font"],
-                ["fontSize"],
-                ["background"],
-                ["padding"],
-                ["border"],
-                ["opacity"],
-                ["boxShadow"],
-                ["borderRadius"]
-              ]
+              "hover": [],
+              "active": [],
+              "disabled": []
             },
 
             "PrefixIcon": {
@@ -564,38 +554,9 @@
             ["boxShadow"],
             ["borderRadius"]
           ],
-          "hover": [
-            ["color"],
-            ["font"],
-            ["fontSize"],
-            ["background"],
-            ["border"],
-            ["opacity"],
-            ["boxShadow"],
-            ["borderRadius"]
-          ],
-          "active": [
-            ["color"],
-            ["font"],
-            ["fontSize"],
-            ["background"],
-            ["border"],
-            ["opacity"],
-            ["boxShadow"],
-            ["borderRadius"]
-          ],
-          "disabled": [
-            ["height"],
-            ["color"],
-            ["font"],
-            ["fontSize"],
-            ["background"],
-            ["padding"],
-            ["border"],
-            ["opacity"],
-            ["boxShadow"],
-            ["borderRadius"]
-          ]
+          "hover": [],
+          "active": [],
+          "disabled": []
         },
 
         "PrefixIcon": {

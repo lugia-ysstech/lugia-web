@@ -57,16 +57,32 @@
       ],
       "defaultValue": [
         {
-          "value": "选项一",
-          "text": "选项一"
+          "value": "一级菜单-1",
+          "text": "一级菜单-1",
+          "children": [
+            {
+              "value": "二级菜单1-1",
+              "text": "二级菜单1-1"
+            },
+            {
+              "value": "二级菜单1-2",
+              "text": "二级菜单1-2"
+            }
+          ]
         },
         {
-          "value": "选项二",
-          "text": "选项二"
-        },
-        {
-          "value": "选项三",
-          "text": "选项三"
+          "value": "一级菜单-2",
+          "text": "一级菜单-2",
+          "children": [
+            {
+              "value": "二级菜单2-1",
+              "text": "二级菜单2-1"
+            },
+            {
+              "value": "二级菜单2-2",
+              "text": "二级菜单2-2"
+            }
+          ]
         }
       ]
     },
@@ -216,7 +232,8 @@
             ["border"],
             ["borderRadius"],
             ["margin"],
-            ["padding"]
+            ["padding", "left"],
+            ["padding", "right"]
           ],
           "hover": [["boxShadow"], ["background"], ["opacity"], ["border"], ["borderRadius"]],
           "clicked": [],
@@ -289,26 +306,8 @@
                 ["opacity"],
                 ["boxShadow"]
               ],
-              "hover": [
-                ["color"],
-                ["font"],
-                ["fontSize"],
-                ["background"],
-                ["opacity"],
-                ["border"],
-                ["borderRadius"],
-                ["boxShadow"]
-              ],
-              "active": [
-                ["color"],
-                ["font"],
-                ["fontSize"],
-                ["background"],
-                ["opacity"],
-                ["border"],
-                ["borderRadius"],
-                ["boxShadow"]
-              ],
+              "hover": [],
+              "active": [],
               "disabled": []
             },
 
@@ -439,26 +438,8 @@
                     ["opacity"],
                     ["boxShadow"]
                   ],
-                  "hover": [
-                    ["color"],
-                    ["font"],
-                    ["fontSize"],
-                    ["background"],
-                    ["opacity"],
-                    ["border"],
-                    ["borderRadius"],
-                    ["boxShadow"]
-                  ],
-                  "active": [
-                    ["color"],
-                    ["font"],
-                    ["fontSize"],
-                    ["background"],
-                    ["opacity"],
-                    ["border"],
-                    ["borderRadius"],
-                    ["boxShadow"]
-                  ],
+                  "hover": [],
+                  "active": [],
                   "disabled": []
                 },
 
