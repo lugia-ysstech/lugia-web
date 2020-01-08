@@ -133,7 +133,6 @@ class ScrollerTree extends React.Component<any, any> {
         value,
         pid,
       } = item;
-      // console.log('pid', pid);
       const currentNodeIndex = id2ExtendInfo[value].index;
       const parentIndex = id2ExtendInfo[pid] ? id2ExtendInfo[pid].index : null;
       const maxIndex = Number(id2ExtendInfo.lugia_tree_root.canTotal - 1);
