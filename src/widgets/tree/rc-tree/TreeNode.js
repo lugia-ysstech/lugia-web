@@ -449,7 +449,7 @@ class TreeNode extends React.Component {
   componentWillUnmount() {
     const { eventKey: nodeName, treeDrag } = this.props;
     const { unSetNodeDragStateListener } = this;
-    treeDrag.deltetNodeInformation(nodeName);
+    treeDrag.deletetNodeInformation(nodeName);
     const { removeListener: removeSetNodeDragStateListener } = unSetNodeDragStateListener;
     removeSetNodeDragStateListener && removeSetNodeDragStateListener();
   }
