@@ -135,14 +135,12 @@
         "Container": {
           "name": "输入框外部容器",
           "desc": "输入框外部容器",
-          "normal": [["width"], ["height"], ["margin"], ["padding"]]
+          "normal": [["width"], ["height"], ["margin"]]
         },
         "Input": {
           "name": "金额输入框中输入框部分",
           "desc": "金额输入框中输入框部分",
           "normal": [
-            ["width"],
-            ["height"],
             ["fontSize"],
             ["font"],
             ["color"],
