@@ -49,7 +49,7 @@ export const MenuContainer = CSSComponent({
   tag: 'ul',
   className: 'MenuContainer',
   normal: {
-    selectNames: [['width'], ['background'], ['padding', 'left'], ['padding', 'right']],
+    selectNames: [['width'], ['background'], ['padding']],
     getCSS: (themeMeta, themeProps) => {
       const { menuItemHeight, length, autoHeight } = themeProps.propsConfig;
       let { height: themeHeight } = themeMeta;

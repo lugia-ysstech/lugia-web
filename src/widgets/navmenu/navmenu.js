@@ -50,9 +50,11 @@ type NavMenuProps = {
   themeStyle: 'light' | 'dark',
   separator?: string,
   autoHeight: boolean,
+  switchAtEnd: boolean,
   getPartOfThemeHocProps: Function,
   activityValue: number,
   switchIconNames?: Object,
+  renderSuffixItems?: Function,
 };
 
 type NavMenuState = {
@@ -61,7 +63,6 @@ type NavMenuState = {
   value: string[],
   expandedPath: string[],
   activityValue: number,
-  isInTabs: boolean,
 };
 
 export default class MenuTree extends React.Component<NavMenuProps, NavMenuState> {
@@ -74,6 +75,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     inlineType: 'primary',
     pathSeparator: '/',
     separator: '|',
+    switchAtEnd: true,
     switchIconNames: {
       open: 'lugia-icon-direction_up',
       close: 'lugia-icon-direction_down',
@@ -90,7 +92,6 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       value: getValue(props, null),
       expandedPath: getInitExpandedPath(props),
       activityValue: props.activityValue ? props.activityValue : '',
-      isInTabs: false,
     };
     const { pathSeparator } = props;
     this.treeData = getTreeData(this.props, pathSeparator);
@@ -132,6 +133,8 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       separator,
       autoHeight = false,
       themeStyle,
+      divided,
+      renderSuffixItems,
     } = this.props;
     const { popupVisible, value, expandedPath } = this.state;
     return (
@@ -145,12 +148,14 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
           valueField={valueField}
           displayField={displayField}
           action={'hover'}
+          divided={divided}
           mutliple={false}
           handleIsInMenu={this.handleIsInMenu}
           onClick={this.handleClickMenu}
           selectedKeys={value}
           expandedPath={expandedPath}
           onExpandPathChange={this.onExpandPathChange}
+          renderSuffixItems={renderSuffixItems}
         />
       </MenuWrap>
     );
@@ -418,7 +423,9 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       autoHeight = true,
       themeStyle,
       switchIconNames,
+      renderSuffixItems,
       pathSeparator,
+      switchAtEnd,
     } = this.props;
     const treeData = this.treeData;
 
@@ -429,8 +436,9 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
           {...treeTheme}
           switchIconNames={switchIconNames}
           expandAll={inlineExpandAll}
-          showSwitch={false}
+          switchAtEnd={switchAtEnd}
           autoHeight={autoHeight}
+          showSwitch={true}
           __navmenu
           inlineType={inlineType}
           data={treeData}
@@ -441,6 +449,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
           onlySelectLeaf={true}
           onChange={this.onChange}
           pathSeparator={pathSeparator}
+          renderSuffixItems={renderSuffixItems}
         />
       </MenuWrap>
     );
