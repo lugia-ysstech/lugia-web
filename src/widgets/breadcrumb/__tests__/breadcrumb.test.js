@@ -128,21 +128,25 @@ describe('Breadcrumb', () => {
         title: '首页',
         isLast: false,
         href: '/index',
+        icons: {},
       },
       {
         href: '/first',
         isLast: false,
         title: '一级面包屑',
+        icons: {},
       },
       {
         isLast: false,
         href: '/second:id',
         title: '二级面包屑',
+        icons: {},
       },
       {
         href: '/third',
         title: '当前页面',
         isLast: true,
+        icons: {},
       },
     ]);
   });
@@ -171,21 +175,25 @@ describe('Breadcrumb', () => {
         title: '首页',
         isLast: false,
         href: '/index',
+        icons: {},
       },
       {
         href: '/index/first',
         isLast: false,
         title: '一级面包屑',
+        icons: {},
       },
       {
         isLast: false,
         href: '/index/first/second:id',
         title: '二级面包屑',
+        icons: {},
       },
       {
         href: '/index/first/second:id/third',
         title: '当前页面',
         isLast: true,
+        icons: {},
       },
     ]);
   });
@@ -215,21 +223,25 @@ describe('Breadcrumb', () => {
         title: '首页',
         href: '/index',
         isLast: false,
+        icons: {},
       },
       {
         href: '/index/first',
         title: '一级面包屑',
         isLast: false,
+        icons: {},
       },
       {
         href: '/hello',
         title: '二级面包屑',
         isLast: false,
+        icons: {},
       },
       {
         href: '/index/first/second:id/third',
         title: '当前页面',
         isLast: true,
+        icons: {},
       },
     ]);
   });
@@ -262,21 +274,25 @@ describe('Breadcrumb', () => {
         title: '首页ligx',
         isLast: false,
         href: '/index/ligx',
+        icons: {},
       },
       {
         href: '/first',
         isLast: false,
         title: '一级面包屑',
+        icons: {},
       },
       {
         isLast: false,
         href: '/second/1',
         title: '二级面包屑',
+        icons: {},
       },
       {
         href: '/third',
         title: '当前页面',
         isLast: true,
+        icons: {},
       },
     ]);
   });
@@ -306,21 +322,25 @@ describe('Breadcrumb', () => {
         title: '首页',
         href: '/index',
         isLast: false,
+        icons: {},
       },
       {
         href: undefined,
         title: '一级面包屑',
         isLast: false,
+        icons: {},
       },
       {
         href: '/hello',
         title: '二级面包屑',
         isLast: false,
+        icons: {},
       },
       {
         href: '/index/second:id/third',
         title: '当前页面',
         isLast: true,
+        icons: {},
       },
     ]);
   });

@@ -2,8 +2,6 @@
 
 exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
 .c1 {
-  font-size: 1.2rem;
-  width: 20.833333333333336em;
   outline: none;
   margin: 0;
   -webkit-user-select: none;
@@ -12,162 +10,197 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
   user-select: none;
   padding-left: 0;
   list-style: none;
-  height: 20.833333333333336em;
-  max-height: 20.833333333333336em;
   overflow: hidden;
-}
-
-.c3 {
-  padding: 0em 0.6666666666666667em;
-  font-size: 1em;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  width: 100%;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 25rem;
+  background-color: #fff;
+  height: 25rem;
 }
 
 .c2 {
   box-sizing: border-box;
   position: relative;
-  display: block;
-  font-weight: 400;
+  font-weight: 100;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-transition: background 0.3s ease;
-  transition: background 0.3s ease;
-  height: 2.916666666666667em;
+  -webkit-transition-property: background-color,border,borderRadius,opacity,boxShadow;
+  transition-property: background-color,border,borderRadius,opacity,boxShadow;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  font-size: 1.4rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   cursor: pointer;
-  color: undefined;
-  font-weight: 500;
+  height: 3.5rem;
 }
 
-.c2:hover {
-  font-weight: 900;
-  background: #edf0fe;
-  color: #333333;
+.c2 > i {
+  vertical-align: middle;
 }
 
-.c2:hover:after {
-  color: #d0c8c8;
+.c3 {
+  padding: 0rem 0.8rem;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
 }
 
-.c2:hover:after {
-  color: #d0c8c8;
+.c3 i {
+  vertical-align: middle;
 }
 
 .c4 {
-  box-sizing: border-box;
-  position: relative;
-  display: block;
-  font-weight: 400;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -webkit-transition: background 0.3s ease;
-  transition: background 0.3s ease;
-  height: 2.916666666666667em;
-  cursor: pointer;
-  color: #4d63ff;
-  font-weight: 900;
-}
-
-.c4:hover {
-  font-weight: 900;
-  background: #edf0fe;
-  color: #333333;
-}
-
-.c4:after {
-  color: #4d63ff;
-}
-
-.c4:hover:after {
-  color: #4d63ff;
-}
-
-.c4:after {
-  color: #4d63ff;
-}
-
-.c4:hover:after {
-  color: #4d63ff;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 .c0 {
-  overflow: hidden;
-  font-size: 1.2rem;
-  height: 20.833333333333336em;
-  width: 20.833333333333336em;
   position: relative;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  overflow: hidden;
+  border-radius: 0.4rem;
+  width: 25rem;
+  background-color: #fff;
+  height: 25rem;
+}
+
+.c0:hover > div:nth-child(2) {
+  opacity: 1;
 }
 
 <div
   className="c0"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
   onWheel={[Function]}
+  style={
+    Object {
+      "boxShadow": "0px 1px 6px 0px rgba(0, 0, 0, 0.2)",
+    }
+  }
 >
   <ul
     className="c1"
-    size="default"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    style={Object {}}
   >
     <li
-      checked={false}
       className="c2"
       disabled={false}
       onClick={[Function]}
+      onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={Object {}}
       title="a"
     >
-      <span
+      <div
         className="c3"
+        style={Object {}}
       >
-        a
-      </span>
+        <span
+          className="c4"
+        >
+          a
+        </span>
+      </div>
     </li>
     <li
-      checked={false}
       className="c2"
       disabled={false}
       onClick={[Function]}
+      onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={Object {}}
       title="b"
     >
-      <span
+      <div
         className="c3"
+        style={Object {}}
       >
-        b
-      </span>
+        <span
+          className="c4"
+        >
+          b
+        </span>
+      </div>
     </li>
     <li
-      checked={true}
-      className="c4"
+      className="c2"
       disabled={false}
       onClick={[Function]}
+      onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "color": "#4d63ff",
+          "fontWeight": 900,
+        }
+      }
       title="c"
     >
-      <span
+      <div
         className="c3"
+        style={Object {}}
       >
-        c
-      </span>
+        <span
+          className="c4"
+        >
+          c
+        </span>
+      </div>
     </li>
     <li
-      checked={true}
-      className="c4"
+      className="c2"
       disabled={false}
       onClick={[Function]}
+      onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "color": "#4d63ff",
+          "fontWeight": 900,
+        }
+      }
       title="d"
     >
-      <span
+      <div
         className="c3"
+        style={Object {}}
       >
-        d
-      </span>
+        <span
+          className="c4"
+        >
+          d
+        </span>
+      </div>
     </li>
   </ul>
 </div>
@@ -175,8 +208,6 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
 
 exports[`Menu DropMenu single selectedKeys 2 1`] = `
 .c1 {
-  font-size: 1.2rem;
-  width: 20.833333333333336em;
   outline: none;
   margin: 0;
   -webkit-user-select: none;
@@ -185,150 +216,192 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
   user-select: none;
   padding-left: 0;
   list-style: none;
-  height: 20.833333333333336em;
-  max-height: 20.833333333333336em;
   overflow: hidden;
-}
-
-.c3 {
-  padding: 0em 0.6666666666666667em;
-  font-size: 1em;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  width: 100%;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 25rem;
+  background-color: #fff;
+  height: 25rem;
 }
 
 .c2 {
   box-sizing: border-box;
   position: relative;
-  display: block;
-  font-weight: 400;
+  font-weight: 100;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-transition: background 0.3s ease;
-  transition: background 0.3s ease;
-  height: 2.916666666666667em;
+  -webkit-transition-property: background-color,border,borderRadius,opacity,boxShadow;
+  transition-property: background-color,border,borderRadius,opacity,boxShadow;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  font-size: 1.4rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   cursor: pointer;
-  color: undefined;
-  font-weight: 500;
+  height: 3.5rem;
 }
 
-.c2:hover {
-  font-weight: 900;
-  background: #edf0fe;
-  color: #333333;
+.c2 > i {
+  vertical-align: middle;
 }
 
-.c2:hover:after {
-  color: #d0c8c8;
+.c3 {
+  padding: 0rem 0.8rem;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c3 i {
+  vertical-align: middle;
 }
 
 .c4 {
-  box-sizing: border-box;
-  position: relative;
-  display: block;
-  font-weight: 400;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -webkit-transition: background 0.3s ease;
-  transition: background 0.3s ease;
-  height: 2.916666666666667em;
-  cursor: pointer;
-  color: #4d63ff;
-  font-weight: 900;
-}
-
-.c4:hover {
-  font-weight: 900;
-  background: #edf0fe;
-  color: #333333;
-}
-
-.c4:after {
-  color: #4d63ff;
-}
-
-.c4:hover:after {
-  color: #4d63ff;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 .c0 {
-  overflow: hidden;
-  font-size: 1.2rem;
-  height: 20.833333333333336em;
-  width: 20.833333333333336em;
   position: relative;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  overflow: hidden;
+  border-radius: 0.4rem;
+  width: 25rem;
+  background-color: #fff;
+  height: 25rem;
+}
+
+.c0:hover > div:nth-child(2) {
+  opacity: 1;
 }
 
 <div
   className="c0"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
   onWheel={[Function]}
+  style={
+    Object {
+      "boxShadow": "0px 1px 6px 0px rgba(0, 0, 0, 0.2)",
+    }
+  }
 >
   <ul
     className="c1"
-    size="default"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    style={Object {}}
   >
     <li
-      checked={false}
       className="c2"
       disabled={false}
       onClick={[Function]}
+      onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={Object {}}
       title="a"
     >
-      <span
+      <div
         className="c3"
+        style={Object {}}
       >
-        a
-      </span>
+        <span
+          className="c4"
+        >
+          a
+        </span>
+      </div>
     </li>
     <li
-      checked={false}
       className="c2"
       disabled={false}
       onClick={[Function]}
+      onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={Object {}}
       title="b"
     >
-      <span
+      <div
         className="c3"
+        style={Object {}}
       >
-        b
-      </span>
+        <span
+          className="c4"
+        >
+          b
+        </span>
+      </div>
     </li>
     <li
-      checked={true}
-      className="c4"
-      disabled={false}
-      onClick={[Function]}
-      onMouseEnter={[Function]}
-      title="c"
-    >
-      <span
-        className="c3"
-      >
-        c
-      </span>
-    </li>
-    <li
-      checked={false}
       className="c2"
       disabled={false}
       onClick={[Function]}
+      onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "color": "#4d63ff",
+          "fontWeight": 900,
+        }
+      }
+      title="c"
+    >
+      <div
+        className="c3"
+        style={Object {}}
+      >
+        <span
+          className="c4"
+        >
+          c
+        </span>
+      </div>
+    </li>
+    <li
+      className="c2"
+      disabled={false}
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={Object {}}
       title="d"
     >
-      <span
+      <div
         className="c3"
+        style={Object {}}
       >
-        d
-      </span>
+        <span
+          className="c4"
+        >
+          d
+        </span>
+      </div>
     </li>
   </ul>
 </div>
@@ -336,8 +409,6 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
 
 exports[`Menu DropMenu width: 500px height: 333px 1`] = `
 .c1 {
-  font-size: 1.2rem;
-  width: 45.833333333333336em;
   outline: none;
   margin: 0;
   -webkit-user-select: none;
@@ -346,129 +417,194 @@ exports[`Menu DropMenu width: 500px height: 333px 1`] = `
   user-select: none;
   padding-left: 0;
   list-style: none;
-  height: 27.75em;
-  max-height: 27.75em;
   overflow: hidden;
-}
-
-.c3 {
-  padding: 0em 0.6666666666666667em;
-  font-size: 1em;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  width: 100%;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 25rem;
+  background-color: #fff;
+  height: 25rem;
 }
 
 .c2 {
   box-sizing: border-box;
   position: relative;
-  display: block;
-  font-weight: 400;
+  font-weight: 100;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-transition: background 0.3s ease;
-  transition: background 0.3s ease;
-  height: 2.916666666666667em;
+  -webkit-transition-property: background-color,border,borderRadius,opacity,boxShadow;
+  transition-property: background-color,border,borderRadius,opacity,boxShadow;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  font-size: 1.4rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   cursor: pointer;
-  color: undefined;
-  font-weight: 500;
+  height: 3.5rem;
 }
 
-.c2:hover {
-  font-weight: 900;
-  background: #edf0fe;
-  color: #333333;
+.c2 > i {
+  vertical-align: middle;
 }
 
-.c2:hover:after {
-  color: #d0c8c8;
+.c3 {
+  padding: 0rem 0.8rem;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c3 i {
+  vertical-align: middle;
+}
+
+.c4 {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 .c0 {
-  overflow: hidden;
-  font-size: 1.2rem;
-  height: 27.75em;
-  width: 45.833333333333336em;
   position: relative;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  overflow: hidden;
+  border-radius: 0.4rem;
+  width: 25rem;
+  background-color: #fff;
+  height: 25rem;
+}
+
+.c0:hover > div:nth-child(2) {
+  opacity: 1;
 }
 
 <div
   className="c0"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
   onWheel={[Function]}
+  style={
+    Object {
+      "boxShadow": "0px 1px 6px 0px rgba(0, 0, 0, 0.2)",
+    }
+  }
 >
   <ul
     className="c1"
-    size="default"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    style={Object {}}
   >
     <li
-      checked={false}
       className="c2"
       disabled={false}
       onClick={[Function]}
+      onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={Object {}}
       title="a"
     >
-      <span
+      <div
         className="c3"
+        style={Object {}}
       >
-        a
-      </span>
+        <span
+          className="c4"
+        >
+          a
+        </span>
+      </div>
     </li>
     <li
-      checked={false}
       className="c2"
       disabled={false}
       onClick={[Function]}
+      onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={Object {}}
       title="b"
     >
-      <span
+      <div
         className="c3"
+        style={Object {}}
       >
-        b
-      </span>
+        <span
+          className="c4"
+        >
+          b
+        </span>
+      </div>
     </li>
     <li
-      checked={false}
       className="c2"
       disabled={false}
       onClick={[Function]}
+      onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={Object {}}
       title="c"
     >
-      <span
+      <div
         className="c3"
+        style={Object {}}
       >
-        c
-      </span>
+        <span
+          className="c4"
+        >
+          c
+        </span>
+      </div>
     </li>
     <li
-      checked={false}
       className="c2"
       disabled={false}
       onClick={[Function]}
+      onMouseDown={[Function]}
       onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={Object {}}
       title="d"
     >
-      <span
+      <div
         className="c3"
+        style={Object {}}
       >
-        d
-      </span>
+        <span
+          className="c4"
+        >
+          d
+        </span>
+      </div>
     </li>
   </ul>
 </div>
 `;
 
 exports[`Menu children: items 1`] = `
-.c3 {
-  font-size: 1.2rem;
-  width: 16.666666666666668em;
+.c2 {
   outline: none;
   margin: 0;
   -webkit-user-select: none;
@@ -477,249 +613,340 @@ exports[`Menu children: items 1`] = `
   user-select: none;
   padding-left: 0;
   list-style: none;
-  height: 20.833333333333336em;
-  max-height: 20.833333333333336em;
   overflow: hidden;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 25rem;
+  background-color: #fff;
+  height: 25rem;
 }
 
-.c5 {
-  padding: 0em 0.6666666666666667em;
-  font-size: 1em;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  width: 100%;
-}
-
-.c4 {
+.c3 {
   box-sizing: border-box;
   position: relative;
-  display: block;
-  font-weight: 400;
+  font-weight: 100;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-transition: background 0.3s ease;
-  transition: background 0.3s ease;
-  height: 2.916666666666667em;
+  -webkit-transition-property: background-color,border,borderRadius,opacity,boxShadow;
+  transition-property: background-color,border,borderRadius,opacity,boxShadow;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  font-size: 1.4rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   cursor: pointer;
-  color: undefined;
-  font-weight: 500;
+  height: 3.5rem;
 }
 
-.c4:hover {
-  font-weight: 900;
-  background: #edf0fe;
-  color: #333333;
+.c3 > i {
+  vertical-align: middle;
 }
 
-.c4:hover:after {
-  color: #d0c8c8;
-}
-
-.c4:hover:after {
-  color: #d0c8c8;
-}
-
-.c7 {
+.c4 {
+  padding: 0rem 0.8rem;
   position: relative;
-  background: rgba(255,255,255,0);
-  width: 1.6666666666666667em;
-  height: 25em;
-  z-index: 996;
-  width: 1em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c4 i {
+  vertical-align: middle;
+}
+
+.c5 {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.c0 {
+  position: relative;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  overflow: hidden;
+  border-radius: 0.4rem;
+  width: 25rem;
+  background-color: #fff;
+  height: 25rem;
+}
+
+.c0:hover > div:nth-child(2) {
+  opacity: 1;
+}
+
+.c1 {
+  width: 25rem;
+  position: absolute;
+  display: inline-block;
+  height: 25rem;
+  height: 25rem;
+}
+
+.c6 {
+  width: 1.2rem;
+  position: absolute;
+  display: inline-block;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+  opacity: 0;
+  left: 23.8rem;
 }
 
 .c8 {
+  position: relative;
+  background: rgba(255,255,255,0);
+  width: 2rem;
+  height: 30rem;
+  z-index: 996;
+}
+
+.c7 {
+  width: 1.2rem;
+}
+
+.c9 {
   position: absolute;
   top: 0;
   left: 0;
   cursor: pointer;
   text-align: center;
-  border-radius: 0.6666666666666667em;
+  border-radius: 0.8rem;
   background: #c2c2c2;
   color: #fff;
   font-size: 1.2rem;
-  line-height: 2.5em;
+  line-height: 3rem;
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
-  width: 0.6666666666666667em;
-  margin-left: 0.16666666666666669em;
-  margin-right: 0.16666666666666669em;
+  width: 0.8rem;
+  margin-left: 0.2rem;
+  margin-right: 0.2rem;
 }
 
-.c8:hover {
+.c9:hover {
   background-color: #7a7a7a;
 }
 
-.c2 {
-  width: 16.666666666666668em;
-  font-size: 1.2rem;
-  position: absolute;
-  display: inline-block;
-}
-
-.c1 {
-  overflow: hidden;
-  font-size: 1.2rem;
-  height: 20.833333333333336em;
-  width: 16.666666666666668em;
-  position: relative;
-}
-
-.c0:hover .c9 {
-  opacity: 1;
-}
-
-.c6 {
-  width: 16.666666666666668em;
-  font-size: 1.2rem;
-  position: absolute;
-  display: inline-block;
-  left: 15.666666666666668em;
-  width: 1em;
-  opacity: 0;
-  -webkit-transition: opacity 0.3s;
-  transition: opacity 0.3s;
-}
-
-.c0:hover .c6 {
-  opacity: 1;
-}
-
 <div
-  className="c0 c1"
+  className="c0"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
   onWheel={[Function]}
+  style={
+    Object {
+      "boxShadow": "0px 1px 6px 0px rgba(0, 0, 0, 0.2)",
+    }
+  }
 >
   <div
-    className="c2"
+    className="c1"
+    style={Object {}}
   >
     <ul
-      className="c3"
-      size="default"
+      className="c2"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      style={Object {}}
     >
       <li
-        checked={false}
-        className="c4"
+        className="c3"
         disabled={false}
         onClick={[Function]}
+        onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={Object {}}
         title=""
       >
-        <span
-          className="c5"
+        <div
+          className="c4"
+          style={Object {}}
         >
-          0
-        </span>
+          <span
+            className="c5"
+          >
+            0
+          </span>
+        </div>
       </li>
       <li
-        checked={false}
-        className="c4"
+        className="c3"
         disabled={false}
         onClick={[Function]}
+        onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={Object {}}
         title=""
       >
-        <span
-          className="c5"
+        <div
+          className="c4"
+          style={Object {}}
         >
-          1
-        </span>
+          <span
+            className="c5"
+          >
+            1
+          </span>
+        </div>
       </li>
       <li
-        checked={false}
-        className="c4"
+        className="c3"
         disabled={false}
         onClick={[Function]}
+        onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={Object {}}
         title=""
       >
-        <span
-          className="c5"
+        <div
+          className="c4"
+          style={Object {}}
         >
-          2
-        </span>
+          <span
+            className="c5"
+          >
+            2
+          </span>
+        </div>
       </li>
       <li
-        checked={false}
-        className="c4"
+        className="c3"
         disabled={false}
         onClick={[Function]}
+        onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={Object {}}
         title=""
       >
-        <span
-          className="c5"
+        <div
+          className="c4"
+          style={Object {}}
         >
-          3
-        </span>
+          <span
+            className="c5"
+          >
+            3
+          </span>
+        </div>
       </li>
       <li
-        checked={false}
-        className="c4"
+        className="c3"
         disabled={false}
         onClick={[Function]}
+        onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={Object {}}
         title=""
       >
-        <span
-          className="c5"
+        <div
+          className="c4"
+          style={Object {}}
         >
-          4
-        </span>
+          <span
+            className="c5"
+          >
+            4
+          </span>
+        </div>
       </li>
       <li
-        checked={false}
-        className="c4"
+        className="c3"
         disabled={false}
         onClick={[Function]}
+        onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={Object {}}
         title=""
       >
-        <span
-          className="c5"
+        <div
+          className="c4"
+          style={Object {}}
         >
-          5
-        </span>
+          <span
+            className="c5"
+          >
+            5
+          </span>
+        </div>
       </li>
       <li
-        checked={false}
-        className="c4"
+        className="c3"
         disabled={false}
         onClick={[Function]}
+        onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={Object {}}
         title=""
       >
-        <span
-          className="c5"
+        <div
+          className="c4"
+          style={Object {}}
         >
-          6
-        </span>
+          <span
+            className="c5"
+          >
+            6
+          </span>
+        </div>
       </li>
       <li
-        checked={false}
-        className="c4"
+        className="c3"
         disabled={false}
         onClick={[Function]}
+        onMouseDown={[Function]}
         onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={Object {}}
         title=""
       >
-        <span
-          className="c5"
+        <div
+          className="c4"
+          style={Object {}}
         >
-          7
-        </span>
+          <span
+            className="c5"
+          >
+            7
+          </span>
+        </div>
       </li>
     </ul>
   </div>
   <div
     className="c6"
+    style={Object {}}
   >
     <div
-      className="c7"
+      className="c7  c8"
       onMouseDown={[Function]}
       onMouseMove={[Function]}
       onMouseOut={[Function]}
@@ -727,18 +954,18 @@ exports[`Menu children: items 1`] = `
       onWheel={[Function]}
       style={
         Object {
-          "height": "20.833333333333336em",
+          "height": "25rem",
         }
       }
     >
       <div
-        className="c8"
+        className="c9"
         onMouseDown={[Function]}
         onMouseUp={[Function]}
         style={
           Object {
-            "height": "14.916666666666666em",
-            "top": "0em",
+            "height": "17.6rem",
+            "top": "0rem",
           }
         }
       />

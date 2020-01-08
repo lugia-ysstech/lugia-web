@@ -21,7 +21,7 @@ describe('Item', () => {
 
   it('Single MenuItem', () => {
     const defaultItem = renderer.create(<MenuItem>hello</MenuItem>).toJSON();
-    const target = renderer.create(<MenuItem checked={false}>hello</MenuItem>).toJSON();
+    const target = renderer.create(<MenuItem>hello</MenuItem>).toJSON();
     expect(target).toMatchSnapshot();
     expect(target).toMatchObject(defaultItem);
   });

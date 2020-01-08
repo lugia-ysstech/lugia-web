@@ -2,173 +2,286 @@
 
 exports[`DropMenuButton default 1`] = `
 <div
-  className="sc-iAyFgw dFRdIO sc-jKJlTe eSamUg sc-dxgOiQ gFOVWI"
-  disabled={false}
-  type="customs"
->
-  <span
-    className="sc-gPEVay hhFKBz"
-    disabled={false}
-    type="customs"
-  />
-  <div
-    className="sc-hSdWYo jeXqGb sc-ckVGcZ kOTlsU"
-  >
-    <span
-      checked={false}
-      className="sc-eHgmQL flDMUr sc-kkGfuU bzYImA"
-      disabled={false}
-      type="customs"
-    >
-      <input
-        className="sc-kpOJdX gbMDBd"
-        disabled={false}
-        onBlur={[Function]}
-        onClick={[Function]}
-        type="button"
-      />
-    </span>
-    <span
-      checked={false}
-      className="sc-jDwBTQ hCtvjM"
-      disabled={false}
-      onClick={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      type="customs"
-    >
-      <input
-        className="sc-kpOJdX gbMDBd"
-        disabled={false}
-        onBlur={[Function]}
-        type="button"
-      />
-      <i
-        className="lugia-icon-direction_down  sc-gZMcBi gDITef"
-      />
-    </span>
-  </div>
-</div>
-`;
-
-exports[`DropMenuButton divided={false} 1`] = `
-<div
-  checked={false}
-  className="sc-eNQAEJ cKPCre sc-jKJlTe eSamUg sc-dxgOiQ gFOVWI"
-  disabled={false}
+  className="sc-gPEVay kRBhTm"
   onClick={[Function]}
+  onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
-  type="customs"
+  onMouseUp={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#4d63ff",
+      "borderBottomColor": "#4d63ff",
+      "borderBottomStyle": "solid",
+      "borderBottomWidth": "0.1rem",
+      "borderLeftColor": "#4d63ff",
+      "borderLeftStyle": "solid",
+      "borderLeftWidth": "0.1rem",
+      "borderRightColor": "#4d63ff",
+      "borderRightStyle": "solid",
+      "borderRightWidth": "0.1rem",
+      "borderTopColor": "#4d63ff",
+      "borderTopStyle": "solid",
+      "borderTopWidth": "0.1rem",
+      "color": "#fff",
+      "lineHeight": "3rem",
+    }
+  }
 >
   <input
-    className="sc-kpOJdX gbMDBd"
+    className="sc-iRbamj gSSfme"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}
     type="button"
   />
   <div
-    className="sc-hMqMXs WSdtl sc-ckVGcZ kOTlsU"
+    className="sc-jlyJG grYeNN"
   >
-    <span
-      className="sc-kkGfuU bzYImA"
+    <div
+      className="sc-hzDkRC bCNFoS"
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={Object {}}
     />
-    <span
-      className="sc-kEYyzF eaPwTX"
-    >
-      <i
-        className="lugia-icon-direction_down  sc-gZMcBi gDITef"
-      />
-    </span>
+    <i
+      className="lugia-icon-direction_down   sc-VigVT bZGqSI"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "paddingBottom": "0rem",
+          "paddingLeft": "0.6rem",
+          "paddingRight": "0.6rem",
+          "paddingTop": "0rem",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`DropMenuButton divided={false} 1`] = `
+<div
+  className="sc-gPEVay kRBhTm"
+  onClick={[Function]}
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#4d63ff",
+      "borderBottomColor": "#4d63ff",
+      "borderBottomStyle": "solid",
+      "borderBottomWidth": "0.1rem",
+      "borderLeftColor": "#4d63ff",
+      "borderLeftStyle": "solid",
+      "borderLeftWidth": "0.1rem",
+      "borderRightColor": "#4d63ff",
+      "borderRightStyle": "solid",
+      "borderRightWidth": "0.1rem",
+      "borderTopColor": "#4d63ff",
+      "borderTopStyle": "solid",
+      "borderTopWidth": "0.1rem",
+      "color": "#fff",
+      "lineHeight": "3rem",
+    }
+  }
+>
+  <input
+    className="sc-iRbamj gSSfme"
+    disabled={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    type="button"
+  />
+  <div
+    className="sc-jlyJG grYeNN"
+  >
+    <div
+      className="sc-hzDkRC bCNFoS"
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={Object {}}
+    />
+    <i
+      className="lugia-icon-direction_down   sc-VigVT bZGqSI"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "paddingBottom": "0rem",
+          "paddingLeft": "0.6rem",
+          "paddingRight": "0.6rem",
+          "paddingTop": "0rem",
+        }
+      }
+    />
   </div>
 </div>
 `;
 
 exports[`DropMenuButton type=basic 1`] = `
 <div
-  className="sc-cvbbAY gezRHR sc-dxgOiQ gFOVWI"
+  className="sc-gPEVay kRBhTm"
+  onClick={[Function]}
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  style={
+    Object {
+      "backgroundColor": "rgb(0,0,0,0)",
+      "backgroundImage": "none",
+      "borderBottomWidth": 0,
+      "borderLeftWidth": 0,
+      "borderRightWidth": 0,
+      "borderTopWidth": 0,
+      "color": "#4d63ff",
+      "lineHeight": "3rem",
+    }
+  }
 >
-  <div
-    checked={false}
-    className="sc-jWBwVP jozmnI sc-ckVGcZ kOTlsU"
+  <input
+    className="sc-iRbamj gSSfme"
     disabled={false}
+    onBlur={[Function]}
     onClick={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
+    type="button"
+  />
+  <div
+    className="sc-jlyJG grYeNN"
   >
-    <input
-      className="sc-kpOJdX gbMDBd"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      type="button"
+    <div
+      className="sc-hzDkRC bCNFoS"
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={Object {}}
     />
-    <span
-      checked={false}
-      className="sc-brqgnP gQlgjS"
-      disabled={false}
-    >
-      <span
-        className="sc-cMljjf dxahCF"
-      />
-      <span
-        className="sc-jAaTju chlGhk sc-kEYyzF eaPwTX"
-      >
-        <i
-          className="lugia-icon-direction_down  sc-gZMcBi gDITef"
-        />
-      </span>
-    </span>
+    <i
+      className="lugia-icon-direction_down   sc-VigVT bZGqSI"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "paddingBottom": "0rem",
+          "paddingLeft": "0.6rem",
+          "paddingRight": "0.6rem",
+          "paddingTop": "0rem",
+        }
+      }
+    />
   </div>
 </div>
 `;
 
 exports[`DropMenuButton type=primary,divided={true} 1`] = `
 <div
-  className="sc-iAyFgw dFRdIO sc-jKJlTe gGpppI sc-dxgOiQ gFOVWI"
+  className="sc-csuQGl cdqunj"
   disabled={false}
+  style={
+    Object {
+      "lineHeight": "3rem",
+    }
+  }
   type="primary"
 >
   <span
-    className="sc-gPEVay gCMcaP"
+    checked={false}
+    className="sc-fBuWsC eMCLdn"
     disabled={false}
     type="primary"
   />
   <div
-    className="sc-hSdWYo jeXqGb sc-ckVGcZ kOTlsU"
+    className="sc-Rmtcm cTaZul"
   >
-    <span
+    <div
       checked={false}
-      className="sc-eHgmQL exFXaE sc-kkGfuU bzYImA"
+      className="sc-bRBYWo cgJQpJ"
       disabled={false}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "borderBottomColor": "#cccccc",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.1rem",
+          "borderLeftColor": "#cccccc",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.1rem",
+          "borderTopColor": "#cccccc",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.1rem",
+          "color": "#666666",
+        }
+      }
       type="primary"
     >
       <input
-        className="sc-kpOJdX gbMDBd"
+        className="sc-iRbamj gSSfme"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
         type="button"
       />
-    </span>
+    </div>
     <span
       checked={false}
-      className="sc-jDwBTQ dqRgQE"
+      className="sc-jhAzac jDffzn"
       disabled={false}
       onClick={[Function]}
+      onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "borderBottomColor": "#cccccc",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.1rem",
+          "borderRightColor": "#cccccc",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.1rem",
+          "borderTopColor": "#cccccc",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.1rem",
+          "color": "#666666",
+        }
+      }
       type="primary"
     >
       <input
-        className="sc-kpOJdX gbMDBd"
+        className="sc-iRbamj gSSfme"
         disabled={false}
         onBlur={[Function]}
         type="button"
       />
       <i
-        className="lugia-icon-direction_down  sc-gZMcBi gDITef"
+        className="lugia-icon-direction_down   sc-VigVT jbKUDW"
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={Object {}}
       />
     </span>
   </div>
