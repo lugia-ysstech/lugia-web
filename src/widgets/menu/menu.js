@@ -9,6 +9,7 @@ import Item from './item';
 import '../common/shirm';
 import ThemeHoc from '@lugia/theme-hoc';
 import * as React from 'react';
+import { getBoxShadow } from '@lugia/theme-utils';
 import { deepMerge } from '@lugia/object-utils';
 import { DefaultHeight, DefaultMenuItemHeight, MenuContainer, MenuItemHeight } from '../css/menu';
 import ThrolleScroller from '../scroller/ThrottleScroller';
@@ -196,6 +197,17 @@ class Menu extends React.Component<MenuProps, MenuState> {
     );
   }
 
+  getContainerThemeProps(target: string, params: Object) {
+    const themeProps = this.props.getPartOfThemeProps(target, params);
+    const { themeConfig = {} } = themeProps;
+    const defaultTheme = {
+      boxShadow: getBoxShadow('0 1px 6px 0 red'),
+    };
+    themeConfig.normal = deepMerge(defaultTheme, themeConfig.normal);
+    console.log('defaultTheme', themeConfig);
+    return themeProps;
+  }
+
   render() {
     const { props } = this;
     const items = this.getItems(props);
@@ -208,6 +220,13 @@ class Menu extends React.Component<MenuProps, MenuState> {
         autoHeight,
       },
     });
+    // const WrapThemeProps = this.getContainerThemeProps('Container', {
+    //   props: {
+    //     length,
+    //     itemHeight,
+    //     autoHeight,
+    //   },
+    // });
     const bodyContent = (
       <MenuContainer themeProps={WrapThemeProps} level={this.props.level}>
         {items}
@@ -575,6 +594,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
       valueField,
       mutliple,
       autoHeight,
+      renderSuffixItems,
     } = this.props;
 
     const { selectedKeys, expandedPath } = this.state;
@@ -619,6 +639,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
         expandedData={this.getExpandedData()}
         selectedKeysData={this.getSelectedKeysData()}
         expandedPathInProps={this.getExpandedPathInProps()}
+        renderSuffixItems={renderSuffixItems}
       />
     );
   }

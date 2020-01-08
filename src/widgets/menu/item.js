@@ -130,12 +130,12 @@ class MenuItem extends React.Component<MenuItemProps> {
       return null;
     }
     const { prefixIconClass, prefixIconSrc } = icons;
-    if (!prefixIconClass && !prefixIconSrc) {
+    const iconClass = prefixIconClass ? prefixIconClass : icon;
+    if (!iconClass && !prefixIconSrc) {
       return null;
     }
     const { viewClass, theme } = this.getIconTheme('PrefixIcon');
 
-    const iconClass = prefixIconClass ? prefixIconClass : icon;
     return (
       <Icon
         iconClass={iconClass}

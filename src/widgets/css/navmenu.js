@@ -147,8 +147,8 @@ export const PrimaryLightTheme = {
       normal: {
         height: 40,
         padding: {
-          left: 20,
-          right: 20,
+          left: 10,
+          right: 10,
         },
       },
     },
@@ -156,8 +156,8 @@ export const PrimaryLightTheme = {
       normal: {
         height: 40,
         padding: {
-          left: 20,
-          right: 20,
+          left: 10,
+          right: 10,
         },
       },
     },
@@ -190,16 +190,16 @@ export const EllipseLightTheme = {
       normal: {
         height: 40,
         padding: {
-          left: 20,
-          right: 20,
+          left: 10,
+          right: 10,
         },
       },
     },
     SelectedTreeItemWrap: {
       normal: {
         padding: {
-          left: 20,
-          right: 20,
+          left: 10,
+          right: 10,
         },
       },
     },
@@ -242,8 +242,8 @@ export const PrimaryDarkTheme = {
       normal: {
         height: 40,
         padding: {
-          left: 20,
-          right: 20,
+          left: 10,
+          right: 10,
         },
       },
     },
@@ -251,8 +251,8 @@ export const PrimaryDarkTheme = {
       normal: {
         height: 40,
         padding: {
-          left: 20,
-          right: 20,
+          left: 10,
+          right: 10,
         },
       },
     },
@@ -291,8 +291,8 @@ export const EllipseDarkTheme = {
       normal: {
         height: 40,
         padding: {
-          left: 20,
-          right: 20,
+          left: 10,
+          right: 10,
         },
       },
     },
@@ -300,8 +300,8 @@ export const EllipseDarkTheme = {
       normal: {
         height: 40,
         padding: {
-          left: 20,
-          right: 20,
+          left: 10,
+          right: 10,
         },
       },
     },

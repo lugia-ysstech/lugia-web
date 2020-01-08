@@ -31,7 +31,7 @@ export const Switch = StaticComponent({
     font-size: ${px2remcss(14)};
     color: ${mediumGreyColor};
     display: inline-block;
-    padding: 0 ${px2remcss(5)};
+    padding: 0 ${px2remcss(2)};
   `,
   option: { hover: true, active: true },
 });
@@ -212,18 +212,6 @@ export const SubTreeWrap = CSSComponent({
   option: { hover: true },
 });
 
-const getNormalBgColor = (selected: boolean) => {
-  return selected ? 'rgba(77,99,255,0.2)' : '';
-};
-
-const getNavNolmalBgColor = (selected: boolean, inlineType: 'primary' | 'ellipse') => {
-  return !selected
-    ? ''
-    : inlineType === 'primary'
-    ? ''
-    : `linear-gradient(to right, ${themeColor}, #808eff)`;
-};
-
 export const TitleWrap = CSSComponent({
   tag: 'div',
   className: 'TitleWrap',
@@ -246,15 +234,18 @@ export const TitleWrap = CSSComponent({
       const { selected, inlineType, __navmenu, shape } = propsConfig;
 
       const borderRadius = shape === 'round' || inlineType === 'ellipse' ? 99999 : 4;
-      const bgColor = __navmenu
-        ? getNavNolmalBgColor(selected, inlineType)
-        : getNormalBgColor(selected);
-      return {
-        borderRadius: getBorderRadius(borderRadius),
-        background: {
-          color: bgColor,
-        },
-      };
+
+      const linearGradient = `linear-gradient(to right, ${themeColor}, #808eff)`;
+      return __navmenu && selected && inlineType === 'ellipse'
+        ? {
+            background: {
+              image: linearGradient,
+            },
+            borderRadius: getBorderRadius(borderRadius),
+          }
+        : {
+            borderRadius: getBorderRadius(borderRadius),
+          };
     },
   },
   hover: {
@@ -268,17 +259,6 @@ export const TitleWrap = CSSComponent({
       ['boxShadow'],
       ['borderRadius'],
     ],
-    getThemeMeta: (themeMeta, themeProps) => {
-      const { propsConfig } = themeProps;
-      const { mutliple } = propsConfig;
-      const color = !mutliple ? `${spiritColor}` : '';
-
-      return {
-        background: {
-          color,
-        },
-      };
-    },
   },
   active: {
     selectNames: [
@@ -352,9 +332,8 @@ export const TitleSpan = CSSComponent({
   css: css`
     opacity: 1;
     transition: all ${transitionTime};
-    & > i {
-      vertical-align: middle;
-    }
+    display: flex;
+    align-items: center;
   `,
 });
 
@@ -365,15 +344,14 @@ export const CheckboxContainer = StaticComponent({
   className: 'CheckboxContainer',
   css: css`
     position: relative;
-    & label {
-      vertical-align: middle;
-    }
+    display: flex;
+    align-items: center;
   `,
 });
 
 const getFlexBoxPaddingLeft = pos => {
   const num = pos.split('-').length - 2;
-  return num ? num * 22 : 0;
+  return num ? num * 20 : 0;
 };
 
 export const FlexWrap = CSSComponent({
