@@ -52,8 +52,7 @@ export const ScrollerContainer = CSSComponent({
     position: relative;
     transition: all 0.3s;
     overflow: hidden;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
-    border-radius: 4px;
+    border-radius: ${px2remcss(4)};
     &:hover > div:nth-child(2) {
       opacity: 1;
     }

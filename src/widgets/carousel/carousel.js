@@ -148,8 +148,7 @@ export default class Carousel extends React.Component<any, CarouselProps> {
   };
 
   addPropsConfig(name: string, params: Object) {
-    const { getPartOfThemeProps } = this.props;
-    return getPartOfThemeProps(name, { props: params });
+    return this.props.getPartOfThemeProps(name, { props: params });
   }
 
   render() {
