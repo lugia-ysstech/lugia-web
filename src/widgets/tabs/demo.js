@@ -1022,6 +1022,13 @@ export default class TabsDemo extends React.Component<any, any> {
             normal: {
               width: 120,
               textAlign: 'left',
+              padding: {
+                left: 0,
+                right: 0,
+              },
+            },
+            disabled: {
+              color: 'red',
             },
           },
         },
@@ -1029,6 +1036,106 @@ export default class TabsDemo extends React.Component<any, any> {
     };
     return (
       <div>
+        <Tabs data={hasActivityValueData} />
+        <Theme config={tabpanTheme}>
+          <ContainerBox>
+            <Tabs showDividerLine>
+              <Tabpane
+                title={
+                  <div
+                    style={{
+                      textOverflow: 'ellipsis',
+                      overflow: 'hidden',
+                      whitespace: 'nowrap',
+                      textAlign: 'center',
+                    }}
+                  >
+                    这里是很长很长超过了宽度要隐藏的文本吧
+                  </div>
+                }
+                content={'11111'}
+                value={'0'}
+                icon={'lugia-icon-direction_down_circle'}
+              />
+              <Tabpane
+                title={
+                  <div
+                    style={{
+                      textOverflow: 'ellipsis',
+                      overflow: 'hidden',
+                      width: '100%',
+                      whitespace: 'nowrap',
+                      textAlign: 'center',
+                    }}
+                  >
+                    这里是
+                  </div>
+                }
+                content={'11111'}
+                value={'1'}
+                icon={'lugia-icon-direction_down_circle'}
+              />
+            </Tabs>
+          </ContainerBox>
+        </Theme>
+        <ContainerBox>
+          <Tabs>
+            <Tabpane
+              title={
+                <div
+                  style={{
+                    textOverflow: 'ellipsis',
+                    overflow: 'hidden',
+                    whitespace: 'nowrap',
+                    width: '100%',
+                  }}
+                >
+                  这里是很长很长超过了宽度要隐藏的文本吧
+                </div>
+              }
+              content={'11111'}
+              value={'0'}
+              suffixIcon={'lugia-icon-direction_backward'}
+            />
+            <Tabpane title={'2222'} content={<div>2222</div>} value={'1'} />
+            <Tabpane
+              title={'3333'}
+              content={
+                <div>
+                  <div>
+                    <div>3333</div>
+                  </div>
+                </div>
+              }
+              value={'2'}
+            />
+            <Tabpane
+              title={'4444'}
+              content={
+                <div>
+                  <div>
+                    <div>44444</div>
+                  </div>
+                </div>
+              }
+              value={'3'}
+            />
+            <Tabpane
+              title={'555555'}
+              content={
+                <div>
+                  <div>
+                    <div>55555</div>
+                  </div>
+                </div>
+              }
+              value={'4'}
+            />
+          </Tabs>
+        </ContainerBox>
+
+        <ContainerBox>{/*<Tabs />*/}</ContainerBox>
+
         <ContainerBox>
           <Theme
             config={{
