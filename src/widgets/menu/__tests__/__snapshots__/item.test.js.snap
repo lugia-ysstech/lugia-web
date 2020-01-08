@@ -1,290 +1,405 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Item Mutliple MenuItem 1`] = `
-.c1 {
-  padding: 0em 0.6666666666666667em;
-  font-size: 1em;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  width: 100%;
-}
-
 .c0 {
   box-sizing: border-box;
   position: relative;
-  display: block;
-  font-weight: 400;
+  font-weight: 100;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-transition: background 0.3s ease;
-  transition: background 0.3s ease;
-  height: 2.916666666666667em;
+  -webkit-transition-property: background-color,border,borderRadius,opacity,boxShadow;
+  transition-property: background-color,border,borderRadius,opacity,boxShadow;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  font-size: 1.4rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   cursor: pointer;
-  color: undefined;
-  font-weight: 500;
+  height: 3.5rem;
 }
 
-.c0:hover {
-  font-weight: 900;
-  background: #edf0fe;
-  color: #333333;
+.c0 > i {
+  vertical-align: middle;
 }
 
-.c0:hover:after {
-  color: #d0c8c8;
+.c1 {
+  padding: 0rem 0.8rem;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
 }
 
-.c0:hover:after {
-  color: #d0c8c8;
+.c1 i {
+  vertical-align: middle;
+}
+
+.c2 {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 <li
-  checked={false}
   className="c0"
   disabled={false}
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  style={Object {}}
   title=""
 >
-  <span
+  <div
     className="c1"
+    style={Object {}}
   >
-    <a>
-      hello
-    </a>
-  </span>
+    <span
+      className="c2"
+    >
+      <a>
+        hello
+      </a>
+    </span>
+  </div>
 </li>
 `;
 
 exports[`Item Mutliple MenuItem checked 1`] = `
-.c1 {
-  padding: 0em 0.6666666666666667em;
-  font-size: 1em;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  width: 100%;
-}
-
 .c0 {
   box-sizing: border-box;
   position: relative;
-  display: block;
-  font-weight: 400;
+  font-weight: 100;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-transition: background 0.3s ease;
-  transition: background 0.3s ease;
-  height: 2.916666666666667em;
+  -webkit-transition-property: background-color,border,borderRadius,opacity,boxShadow;
+  transition-property: background-color,border,borderRadius,opacity,boxShadow;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  font-size: 1.4rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   cursor: pointer;
-  color: #4d63ff;
-  font-weight: 900;
+  height: 3.5rem;
 }
 
-.c0:hover {
-  font-weight: 900;
-  background: #edf0fe;
-  color: #333333;
+.c0 > i {
+  vertical-align: middle;
 }
 
-.c0:after {
-  color: #4d63ff;
+.c1 {
+  padding: 0rem 0.8rem;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
 }
 
-.c0:hover:after {
-  color: #4d63ff;
+.c1 i {
+  vertical-align: middle;
 }
 
-.c0:after {
-  color: #4d63ff;
-}
-
-.c0:hover:after {
-  color: #4d63ff;
+.c2 {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 <li
-  checked={true}
   className="c0"
   disabled={false}
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  style={
+    Object {
+      "color": "#4d63ff",
+      "fontWeight": 900,
+    }
+  }
   title=""
 >
-  <span
+  <div
     className="c1"
+    style={Object {}}
   >
-    <a>
-      hello
-    </a>
-  </span>
+    <span
+      className="c2"
+    >
+      <a>
+        hello
+      </a>
+    </span>
+  </div>
 </li>
 `;
 
 exports[`Item Single MenuItem 1`] = `
-.c1 {
-  padding: 0em 0.6666666666666667em;
-  font-size: 1em;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  width: 100%;
-}
-
 .c0 {
   box-sizing: border-box;
   position: relative;
-  display: block;
-  font-weight: 400;
+  font-weight: 100;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-transition: background 0.3s ease;
-  transition: background 0.3s ease;
-  height: 2.916666666666667em;
+  -webkit-transition-property: background-color,border,borderRadius,opacity,boxShadow;
+  transition-property: background-color,border,borderRadius,opacity,boxShadow;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  font-size: 1.4rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   cursor: pointer;
-  color: undefined;
-  font-weight: 500;
+  height: 3.5rem;
 }
 
-.c0:hover {
-  font-weight: 900;
-  background: #edf0fe;
-  color: #333333;
+.c0 > i {
+  vertical-align: middle;
 }
 
-.c0:hover:after {
-  color: #d0c8c8;
+.c1 {
+  padding: 0rem 0.8rem;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c1 i {
+  vertical-align: middle;
+}
+
+.c2 {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 <li
-  checked={false}
   className="c0"
   disabled={false}
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  style={Object {}}
   title="hello"
 >
-  <span
+  <div
     className="c1"
+    style={Object {}}
   >
-    hello
-  </span>
+    <span
+      className="c2"
+    >
+      hello
+    </span>
+  </div>
 </li>
 `;
 
 exports[`Item Single MenuItem checked 1`] = `
-.c1 {
-  padding: 0em 0.6666666666666667em;
-  font-size: 1em;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  width: 100%;
-}
-
 .c0 {
   box-sizing: border-box;
   position: relative;
-  display: block;
-  font-weight: 400;
+  font-weight: 100;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-transition: background 0.3s ease;
-  transition: background 0.3s ease;
-  height: 2.916666666666667em;
+  -webkit-transition-property: background-color,border,borderRadius,opacity,boxShadow;
+  transition-property: background-color,border,borderRadius,opacity,boxShadow;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  font-size: 1.4rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   cursor: pointer;
-  color: #4d63ff;
-  font-weight: 900;
+  height: 3.5rem;
 }
 
-.c0:hover {
-  font-weight: 900;
-  background: #edf0fe;
-  color: #333333;
+.c0 > i {
+  vertical-align: middle;
 }
 
-.c0:after {
-  color: #4d63ff;
+.c1 {
+  padding: 0rem 0.8rem;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
 }
 
-.c0:hover:after {
-  color: #4d63ff;
+.c1 i {
+  vertical-align: middle;
+}
+
+.c2 {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 <li
-  checked={true}
   className="c0"
   disabled={false}
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  style={
+    Object {
+      "color": "#4d63ff",
+      "fontWeight": 900,
+    }
+  }
   title=""
 >
-  <span
+  <div
     className="c1"
+    style={Object {}}
   >
-    <a>
-      hello
-    </a>
-  </span>
+    <span
+      className="c2"
+    >
+      <a>
+        hello
+      </a>
+    </span>
+  </div>
 </li>
 `;
 
 exports[`Item children: null 1`] = `
-.c1 {
-  padding: 0em 0.6666666666666667em;
-  font-size: 1em;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  width: 100%;
-}
-
 .c0 {
   box-sizing: border-box;
   position: relative;
-  display: block;
-  font-weight: 400;
+  font-weight: 100;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-transition: background 0.3s ease;
-  transition: background 0.3s ease;
-  height: 2.916666666666667em;
+  -webkit-transition-property: background-color,border,borderRadius,opacity,boxShadow;
+  transition-property: background-color,border,borderRadius,opacity,boxShadow;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  font-size: 1.4rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   cursor: pointer;
-  color: undefined;
-  font-weight: 500;
+  height: 3.5rem;
 }
 
-.c0:hover {
-  font-weight: 900;
-  background: #edf0fe;
-  color: #333333;
+.c0 > i {
+  vertical-align: middle;
 }
 
-.c0:hover:after {
-  color: #d0c8c8;
+.c1 {
+  padding: 0rem 0.8rem;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c1 i {
+  vertical-align: middle;
+}
+
+.c2 {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 <li
-  checked={false}
   className="c0"
   disabled={false}
+  onMouseDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  style={Object {}}
   title=""
 >
-  <span
+  <div
     className="c1"
-  />
+    style={Object {}}
+  >
+    <span
+      className="c2"
+    />
+  </div>
 </li>
 `;

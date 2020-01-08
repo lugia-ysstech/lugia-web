@@ -781,6 +781,7 @@ describe('autocomplete', () => {
   }
 
   function getInput(cmp: Object) {
+    console.log('Input', cmp.find(Widget.Input));
     return cmp
       .find(Widget.Input)
       .find('input')

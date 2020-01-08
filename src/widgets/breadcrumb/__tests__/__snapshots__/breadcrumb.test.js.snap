@@ -1,544 +1,1233 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Breadcrumb <Breadcrumb.Item> 中传入href属性，文字变成超链接 1`] = `
-.c2 {
+.c4 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-transition: font-size 0.3s;
+  transition: font-size 0.3s;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
   font-size: 1.4rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c5 {
+  font-size: 1.6rem;
   display: inline-block;
   margin-left: 1rem;
   margin-right: 1rem;
-  color: #999999;
 }
 
-.c1 {
-  font-weight: 500;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  color: #999999;
+.c6 {
+  font-size: 1.6rem;
+  display: inline-block;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .c0 {
+  height: 3rem;
+  display: inline-block;
+  box-sizing: border-box;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  overflow: hidden;
+  width: 100%;
+  line-height: 3rem;
+}
+
+.c2 {
   display: inline-block;
   padding: 0;
   box-sizing: border-box;
+  vertical-align: top;
 }
 
-<span>
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+}
+
+<div
+  className="c0"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  style={Object {}}
+>
   <div
-    className="c0"
-    style={Object {}}
+    className="c1"
   >
-    <span
+    <div
+      className="c2"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
-    >
-      <a
-        className="c1"
-        href="/"
-        style={Object {}}
-      >
-        主页
-      </a>
-    </span>
-    <span
-      className="c2"
       style={Object {}}
     >
-      &gt;
-    </span>
-    <span
+      <div
+        className="c3"
+      >
+        <a
+          className="c4"
+          href="/"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={
+            Object {
+              "color": "#999999",
+            }
+          }
+        >
+          主页
+        </a>
+        <span
+          className="c5"
+          style={
+            Object {
+              "color": "#999999",
+            }
+          }
+        >
+          &gt;
+        </span>
+      </div>
+    </div>
+    <div
+      className="c2"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
-    >
-      <a
-        className="c1"
-        href="/"
-        style={Object {}}
-      >
-        一级菜单
-      </a>
-    </span>
-    <span
-      className="c2"
       style={Object {}}
     >
-      &gt;
-    </span>
-    <span
+      <div
+        className="c3"
+      >
+        <a
+          className="c4"
+          href="/"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={
+            Object {
+              "color": "#999999",
+            }
+          }
+        >
+          一级菜单
+        </a>
+        <span
+          className="c5"
+          style={
+            Object {
+              "color": "#999999",
+            }
+          }
+        >
+          &gt;
+        </span>
+      </div>
+    </div>
+    <div
+      className="c2"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
-    >
-      <a
-        className="c1"
-        href="/"
-        style={Object {}}
-      >
-        二级菜单
-      </a>
-    </span>
-    <span
-      className="c2"
       style={Object {}}
     >
-      
-    </span>
+      <div
+        className="c3"
+      >
+        <a
+          className="c4"
+          href="/"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={
+            Object {
+              "color": "#000",
+            }
+          }
+        >
+          二级菜单
+        </a>
+        <span
+          className="c6"
+          style={
+            Object {
+              "color": "#000",
+            }
+          }
+        >
+          
+        </span>
+      </div>
+    </div>
   </div>
-</span>
+</div>
 `;
 
 exports[`Breadcrumb <Breadcrumb> 中separator分隔符 1`] = `
-.c2 {
+.c4 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-transition: font-size 0.3s;
+  transition: font-size 0.3s;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
   font-size: 1.4rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c5 {
+  font-size: 1.6rem;
   display: inline-block;
   margin-left: 1rem;
   margin-right: 1rem;
-  color: #999999;
 }
 
-.c1 {
-  font-weight: 500;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  color: #999999;
+.c6 {
+  font-size: 1.6rem;
+  display: inline-block;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .c0 {
+  height: 3rem;
+  display: inline-block;
+  box-sizing: border-box;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  overflow: hidden;
+  width: 100%;
+  line-height: 3rem;
+}
+
+.c2 {
   display: inline-block;
   padding: 0;
   box-sizing: border-box;
+  vertical-align: top;
 }
 
-<span>
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+}
+
+<div
+  className="c0"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  style={Object {}}
+>
   <div
-    className="c0"
-    style={Object {}}
+    className="c1"
   >
-    <span
+    <div
+      className="c2"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
-    >
-      <a
-        className="c1"
-        style={Object {}}
-      >
-        主页
-      </a>
-    </span>
-    <span
-      className="c2"
       style={Object {}}
     >
-      &gt;
-    </span>
-    <span
+      <div
+        className="c3"
+      >
+        <a
+          className="c4"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={
+            Object {
+              "color": "#999999",
+            }
+          }
+        >
+          主页
+        </a>
+        <span
+          className="c5"
+          style={
+            Object {
+              "color": "#999999",
+            }
+          }
+        >
+          &gt;
+        </span>
+      </div>
+    </div>
+    <div
+      className="c2"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
-    >
-      <a
-        className="c1"
-        style={Object {}}
-      >
-        一级菜单
-      </a>
-    </span>
-    <span
-      className="c2"
       style={Object {}}
     >
-      &gt;
-    </span>
-    <span
+      <div
+        className="c3"
+      >
+        <a
+          className="c4"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={
+            Object {
+              "color": "#999999",
+            }
+          }
+        >
+          一级菜单
+        </a>
+        <span
+          className="c5"
+          style={
+            Object {
+              "color": "#999999",
+            }
+          }
+        >
+          &gt;
+        </span>
+      </div>
+    </div>
+    <div
+      className="c2"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
-    >
-      <a
-        className="c1"
-        style={Object {}}
-      >
-        二级菜单
-      </a>
-    </span>
-    <span
-      className="c2"
       style={Object {}}
     >
-      
-    </span>
+      <div
+        className="c3"
+      >
+        <a
+          className="c4"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={
+            Object {
+              "color": "#000",
+            }
+          }
+        >
+          二级菜单
+        </a>
+        <span
+          className="c6"
+          style={
+            Object {
+              "color": "#000",
+            }
+          }
+        >
+          
+        </span>
+      </div>
+    </div>
   </div>
-</span>
+</div>
 `;
 
 exports[`Breadcrumb <Breadcrumb> 中传入图标 1`] = `
-.c3 {
+.c4 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-transition: font-size 0.3s;
+  transition: font-size 0.3s;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
   font-size: 1.4rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c6 {
+  font-size: 1.6rem;
   display: inline-block;
   margin-left: 1rem;
   margin-right: 1rem;
-  color: #999999;
 }
 
-.c1 {
-  font-weight: 500;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  color: #999999;
+.c7 {
+  font-size: 1.6rem;
+  display: inline-block;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .c0 {
+  height: 3rem;
   display: inline-block;
-  padding: 0;
   box-sizing: border-box;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  overflow: hidden;
+  width: 100%;
+  line-height: 3rem;
 }
 
 .c2 {
+  display: inline-block;
+  padding: 0;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+}
+
+.c5 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  font-size: 1.2rem;
 }
 
-<span>
+<div
+  className="c0"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  style={Object {}}
+>
   <div
-    className="c0"
-    style={Object {}}
+    className="c1"
   >
-    <span
+    <div
+      className="c2"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
-    >
-      <a
-        className="c1"
-        style={Object {}}
-      >
-        <span>
-          <i
-            className="lugia-icon-reminder_close_circle_o  c2"
-          />
-        </span>
-        <span>
-          主页
-        </span>
-      </a>
-    </span>
-    <span
-      className="c3"
       style={Object {}}
     >
-      &gt;
-    </span>
-    <span
+      <div
+        className="c3"
+      >
+        <a
+          className="c4"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={
+            Object {
+              "color": "#999999",
+            }
+          }
+        >
+          <i
+            className="lugia-icon-reminder_close_circle_o   c5"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={Object {}}
+          />
+          <span>
+            主页
+          </span>
+        </a>
+        <span
+          className="c6"
+          style={
+            Object {
+              "color": "#999999",
+            }
+          }
+        >
+          &gt;
+        </span>
+      </div>
+    </div>
+    <div
+      className="c2"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
-    >
-      <a
-        className="c1"
-        style={Object {}}
-      >
-        <span>
-          一级面包屑菜单
-        </span>
-        <span>
-          <i
-            className="lugia-icon-reminder_close_circle_o  c2"
-          />
-        </span>
-      </a>
-    </span>
-    <span
-      className="c3"
       style={Object {}}
     >
-      
-    </span>
+      <div
+        className="c3"
+      >
+        <a
+          className="c4"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={
+            Object {
+              "color": "#000",
+            }
+          }
+        >
+          <span>
+            一级面包屑菜单
+          </span>
+          <i
+            className="lugia-icon-reminder_close_circle_o   c5"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={Object {}}
+          />
+        </a>
+        <span
+          className="c7"
+          style={
+            Object {
+              "color": "#000",
+            }
+          }
+        >
+          
+        </span>
+      </div>
+    </div>
   </div>
-</span>
+</div>
 `;
 
 exports[`Breadcrumb <Breadcrumb> 传入routes参数直接生成 面包屑 1`] = `
-.c2 {
+.c4 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-transition: font-size 0.3s;
+  transition: font-size 0.3s;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
   font-size: 1.4rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c5 {
+  font-size: 1.6rem;
   display: inline-block;
   margin-left: 1rem;
   margin-right: 1rem;
-  color: #999999;
 }
 
-.c1 {
-  font-weight: 500;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  color: #999999;
+.c6 {
+  font-size: 1.6rem;
+  display: inline-block;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .c0 {
+  height: 3rem;
+  display: inline-block;
+  box-sizing: border-box;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  overflow: hidden;
+  width: 100%;
+  line-height: 3rem;
+}
+
+.c2 {
   display: inline-block;
   padding: 0;
   box-sizing: border-box;
+  vertical-align: top;
 }
 
-<span>
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+}
+
+<div
+  className="c0"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  style={Object {}}
+>
   <div
-    className="c0"
-    style={Object {}}
+    className="c1"
   >
-    <span
+    <div
+      className="c2"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
-    >
-      <a
-        className="c1"
-        href="/index"
-        style={Object {}}
-      >
-        
-      </a>
-    </span>
-    <span
-      className="c2"
       style={Object {}}
     >
-      &gt;
-    </span>
-    <span
+      <div
+        className="c3"
+      >
+        <a
+          className="c4"
+          href="/index"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={
+            Object {
+              "color": "#999999",
+            }
+          }
+        >
+          
+        </a>
+        <span
+          className="c5"
+          style={
+            Object {
+              "color": "#999999",
+            }
+          }
+        >
+          &gt;
+        </span>
+      </div>
+    </div>
+    <div
+      className="c2"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
-    >
-      <a
-        className="c1"
-        href="/index/first"
-        style={Object {}}
-      >
-        
-      </a>
-    </span>
-    <span
-      className="c2"
       style={Object {}}
     >
-      &gt;
-    </span>
-    <span
+      <div
+        className="c3"
+      >
+        <a
+          className="c4"
+          href="/index/first"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={
+            Object {
+              "color": "#999999",
+            }
+          }
+        >
+          
+        </a>
+        <span
+          className="c5"
+          style={
+            Object {
+              "color": "#999999",
+            }
+          }
+        >
+          &gt;
+        </span>
+      </div>
+    </div>
+    <div
+      className="c2"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
-    >
-      <a
-        className="c1"
-        href="/index/first/second"
-        style={Object {}}
-      >
-        
-      </a>
-    </span>
-    <span
-      className="c2"
       style={Object {}}
     >
-      &gt;
-    </span>
-    <span
+      <div
+        className="c3"
+      >
+        <a
+          className="c4"
+          href="/index/first/second"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={
+            Object {
+              "color": "#999999",
+            }
+          }
+        >
+          
+        </a>
+        <span
+          className="c5"
+          style={
+            Object {
+              "color": "#999999",
+            }
+          }
+        >
+          &gt;
+        </span>
+      </div>
+    </div>
+    <div
+      className="c2"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
-    >
-      <a
-        className="c1"
-        href="/index/first/second/third"
-        style={Object {}}
-      >
-        
-      </a>
-    </span>
-    <span
-      className="c2"
       style={Object {}}
     >
-      
-    </span>
+      <div
+        className="c3"
+      >
+        <a
+          className="c4"
+          href="/index/first/second/third"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={
+            Object {
+              "color": "#000",
+            }
+          }
+        >
+          
+        </a>
+        <span
+          className="c6"
+          style={
+            Object {
+              "color": "#000",
+            }
+          }
+        >
+          
+        </span>
+      </div>
+    </div>
   </div>
-</span>
+</div>
 `;
 
 exports[`Breadcrumb <Breadcrumb>和<Breadcrumn.Item>配合使用 1`] = `
-.c2 {
+.c4 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-transition: font-size 0.3s;
+  transition: font-size 0.3s;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
   font-size: 1.4rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c5 {
+  font-size: 1.6rem;
   display: inline-block;
   margin-left: 1rem;
   margin-right: 1rem;
-  color: #999999;
 }
 
-.c1 {
-  font-weight: 500;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  color: #999999;
+.c6 {
+  font-size: 1.6rem;
+  display: inline-block;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .c0 {
+  height: 3rem;
+  display: inline-block;
+  box-sizing: border-box;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  overflow: hidden;
+  width: 100%;
+  line-height: 3rem;
+}
+
+.c2 {
   display: inline-block;
   padding: 0;
   box-sizing: border-box;
+  vertical-align: top;
 }
 
-<span>
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+}
+
+<div
+  className="c0"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  style={Object {}}
+>
   <div
-    className="c0"
-    style={Object {}}
+    className="c1"
   >
-    <span
+    <div
+      className="c2"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
-    >
-      <a
-        className="c1"
-        style={Object {}}
-      >
-        主页
-      </a>
-    </span>
-    <span
-      className="c2"
       style={Object {}}
     >
-      /
-    </span>
-    <span
+      <div
+        className="c3"
+      >
+        <a
+          className="c4"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={
+            Object {
+              "color": "#999999",
+            }
+          }
+        >
+          主页
+        </a>
+        <span
+          className="c5"
+          style={
+            Object {
+              "color": "#999999",
+            }
+          }
+        >
+          /
+        </span>
+      </div>
+    </div>
+    <div
+      className="c2"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
-    >
-      <a
-        className="c1"
-        style={Object {}}
-      >
-        一级菜单
-      </a>
-    </span>
-    <span
-      className="c2"
       style={Object {}}
     >
-      /
-    </span>
-    <span
+      <div
+        className="c3"
+      >
+        <a
+          className="c4"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={
+            Object {
+              "color": "#999999",
+            }
+          }
+        >
+          一级菜单
+        </a>
+        <span
+          className="c5"
+          style={
+            Object {
+              "color": "#999999",
+            }
+          }
+        >
+          /
+        </span>
+      </div>
+    </div>
+    <div
+      className="c2"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
-    >
-      <a
-        className="c1"
-        style={Object {}}
-      >
-        二级菜单
-      </a>
-    </span>
-    <span
-      className="c2"
       style={Object {}}
     >
-      
-    </span>
+      <div
+        className="c3"
+      >
+        <a
+          className="c4"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={
+            Object {
+              "color": "#000",
+            }
+          }
+        >
+          二级菜单
+        </a>
+        <span
+          className="c6"
+          style={
+            Object {
+              "color": "#000",
+            }
+          }
+        >
+          
+        </span>
+      </div>
+    </div>
   </div>
-</span>
+</div>
 `;
 
 exports[`Breadcrumb 最后一项也显示分隔符, lastSeparator 1`] = `
-.c2 {
+.c4 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-transition: font-size 0.3s;
+  transition: font-size 0.3s;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
   font-size: 1.4rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c5 {
+  font-size: 1.6rem;
   display: inline-block;
   margin-left: 1rem;
   margin-right: 1rem;
-  color: #999999;
 }
 
-.c1 {
-  font-weight: 500;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  color: #999999;
+.c6 {
+  font-size: 1.6rem;
+  display: inline-block;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .c0 {
+  height: 3rem;
+  display: inline-block;
+  box-sizing: border-box;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  overflow: hidden;
+  width: 100%;
+  line-height: 3rem;
+}
+
+.c2 {
   display: inline-block;
   padding: 0;
   box-sizing: border-box;
+  vertical-align: top;
 }
 
-<span>
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+}
+
+<div
+  className="c0"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  style={Object {}}
+>
   <div
-    className="c0"
-    style={Object {}}
+    className="c1"
   >
-    <span
+    <div
+      className="c2"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
-    >
-      <a
-        className="c1"
-        href="/index"
-        style={Object {}}
-      >
-        
-      </a>
-    </span>
-    <span
-      className="c2"
       style={Object {}}
     >
-      &gt;
-    </span>
-    <span
+      <div
+        className="c3"
+      >
+        <a
+          className="c4"
+          href="/index"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={
+            Object {
+              "color": "#999999",
+            }
+          }
+        >
+          
+        </a>
+        <span
+          className="c5"
+          style={
+            Object {
+              "color": "#999999",
+            }
+          }
+        >
+          &gt;
+        </span>
+      </div>
+    </div>
+    <div
+      className="c2"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
-    >
-      <a
-        className="c1"
-        href="/index/first"
-        style={Object {}}
-      >
-        
-      </a>
-    </span>
-    <span
-      className="c2"
       style={Object {}}
     >
-      &gt;
-    </span>
-    <span
+      <div
+        className="c3"
+      >
+        <a
+          className="c4"
+          href="/index/first"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={
+            Object {
+              "color": "#999999",
+            }
+          }
+        >
+          
+        </a>
+        <span
+          className="c5"
+          style={
+            Object {
+              "color": "#999999",
+            }
+          }
+        >
+          &gt;
+        </span>
+      </div>
+    </div>
+    <div
+      className="c2"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
-    >
-      <a
-        className="c1"
-        href="/index/first/second"
-        style={Object {}}
-      >
-        
-      </a>
-    </span>
-    <span
-      className="c2"
       style={Object {}}
     >
-      &gt;
-    </span>
-    <span
+      <div
+        className="c3"
+      >
+        <a
+          className="c4"
+          href="/index/first/second"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={
+            Object {
+              "color": "#999999",
+            }
+          }
+        >
+          
+        </a>
+        <span
+          className="c5"
+          style={
+            Object {
+              "color": "#999999",
+            }
+          }
+        >
+          &gt;
+        </span>
+      </div>
+    </div>
+    <div
+      className="c2"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
-    >
-      <a
-        className="c1"
-        href="/index/first/second/third"
-        style={Object {}}
-      >
-        
-      </a>
-    </span>
-    <span
-      className="c2"
       style={Object {}}
     >
-      &gt;
-    </span>
+      <div
+        className="c3"
+      >
+        <a
+          className="c4"
+          href="/index/first/second/third"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          style={
+            Object {
+              "color": "#000",
+            }
+          }
+        >
+          
+        </a>
+        <span
+          className="c6"
+          style={
+            Object {
+              "color": "#000",
+            }
+          }
+        >
+          &gt;
+        </span>
+      </div>
+    </div>
   </div>
-</span>
+</div>
 `;
