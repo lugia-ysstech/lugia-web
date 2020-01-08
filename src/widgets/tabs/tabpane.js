@@ -135,11 +135,6 @@ const SelectTab = CSSComponent({
     },
     getCSS(theme: Object, themeProps: Object) {
       return css`
-        & > div.lineTitle::before {
-          content: '';
-          width: 0;
-          height: 0;
-        }
         & > div.cardTitle {
           transition: none;
           transform: none;
