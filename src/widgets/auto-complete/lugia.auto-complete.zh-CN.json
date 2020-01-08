@@ -6,7 +6,8 @@
     "data": {
       "type": "string[]",
       "desc": "生成选择项的数据",
-      "meta": [{ "key": "value", "title": "value值", "type": "string" }]
+      "meta": [{ "key": "value", "title": "value值", "type": "string" }],
+      "defaultValue": ["西瓜", "桔子", "苹果"]
     },
     "createPortal": {
       "type": "boolean",
