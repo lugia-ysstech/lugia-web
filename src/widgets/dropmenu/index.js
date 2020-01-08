@@ -247,6 +247,15 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
       Container: {
         normal: initMenuTheme,
       },
+      MenuItem: {
+        MenuItemWrap: {
+          normal: {
+            font: {
+              weight: 500,
+            },
+          },
+        },
+      },
     };
     return this.mergeTheme('Menu', defaultMenuTheme);
   };
