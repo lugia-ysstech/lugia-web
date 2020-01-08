@@ -10,7 +10,7 @@
     "defaultCurrent": {
       "type": "number",
       "desc": "默认的当前页数",
-      "defaultValue": 1
+      "propsDefaultValue": 1
     },
     "total": {
       "type": "number",
@@ -24,17 +24,19 @@
     "defaultPageSize": {
       "type": "number",
       "desc": "默认的每页条数",
-      "defaultValue": 10
+      "defaultValue": 10,
+      "propsDefaultValue": 10
     },
     "pageSizeOptions": {
       "type": "string[]",
       "desc": "指定每页可以显示多少条",
-      "defaultValue": ["10", "20", "30", "50"]
+      "propsDefaultValue": ["10", "20", "30", "50"]
     },
     "showQuickJumper": {
       "type": "boolean",
       "desc": "是否可以快速跳至某页",
-      "defaultValue": false
+      "defaultValue": false,
+      "propsDefaultValue": false
     },
     "showTotal": {
       "type": "Function(total, range)",
@@ -43,17 +45,20 @@
     "hideOnSinglePage": {
       "type": "boolean",
       "desc": "只有一页时是否隐藏分页器",
-      "defaultValue": false
+      "defaultValue": false,
+      "propsDefaultValue": false
     },
     "showSizeChanger": {
       "type": "boolean",
       "desc": "是否显示可以改变 pageSize",
-      "defaultValue": false
+      "defaultValue": false,
+      "propsDefaultValue": false
     },
     "isShowTotalData": {
       "type": "boolean",
       "desc": "是否可以显示数据总量",
-      "defaultValue": false
+      "defaultValue": false,
+      "propsDefaultValue": false
     },
     "simple": {
       "type": "boolean",
@@ -142,8 +147,6 @@
               "name": "输入框主体内容",
               "desc": "输入框主体内容",
               "normal": [
-                ["width"],
-                ["height"],
                 ["fontSize"],
                 ["font"],
                 ["color"],
@@ -340,8 +343,6 @@
           "name": "输入框主体内容",
           "desc": "输入框主体内容",
           "normal": [
-            ["width"],
-            ["height"],
             ["fontSize"],
             ["font"],
             ["color"],
