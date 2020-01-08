@@ -122,9 +122,9 @@
         ["color"],
         ["font"]
       ],
-      "hover": [["border"], ["borderRadius"], ["background"]],
+      "hover": [["border"], ["borderRadius"], ["boxShadow"], ["background"]],
       "active": [],
-      "disabled": [["background"], ["border", "color"]]
+      "disabled": [["background"], ["borderRadius"], ["border"]]
     },
     "InputPrefix": {
       "name": "前缀图标",
