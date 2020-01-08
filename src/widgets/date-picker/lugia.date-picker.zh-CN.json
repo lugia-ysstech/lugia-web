@@ -124,7 +124,7 @@
       ],
       "hover": [["border"], ["borderRadius"], ["boxShadow"], ["background"]],
       "active": [],
-      "disabled": [["background"], ["borderRadius"], ["border"]]
+      "disabled": [["background"], ["borderRadius"], ["border"], ["boxShadow"]]
     },
     "InputPrefix": {
       "name": "前缀图标",
