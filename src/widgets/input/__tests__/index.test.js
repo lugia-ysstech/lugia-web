@@ -158,7 +158,6 @@ describe('Input', () => {
     testFireNullKeyBoardEvent('onKeyDown', { keyCode: 49, Target: Input });
     testFireNullKeyBoardEvent('onKeyPress', { keyCode: 49, Target: Input });
     testFireNullKeyBoardEvent('onFocus', { keyCode: 49, Target: Input });
-    testFireNullKeyBoardEvent('onBlur', { keyCode: 49, Target: Input });
   });
   it('props: onKeyUp', () => {
     testKeyBoardEvent(order, 'onKeyUp', { keyCode: 49, Target: Input });

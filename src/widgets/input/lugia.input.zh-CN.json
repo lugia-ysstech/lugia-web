@@ -195,8 +195,6 @@
       "name": "输入框主体",
       "desc": "输入框主体结构",
       "normal": [
-        ["width"],
-        ["height"],
         ["fontSize"],
         ["font"],
         ["color"],
