@@ -183,94 +183,83 @@ const theme = {
       },
     },
 
-    InputTag: {
-      InputTagWrap: {
-        normal: {
-          width: 340,
-          height: 60,
-          color: '#4d63ff',
-          boxShadow: '2px 2px 5px #000',
-          font: { size: 20 },
-          // background: { color: '#eee' },
-          borderRadius: getBorderRadius(20),
-          // margin: {
-          //   top: 40,
-          //   left: 100,
-          // },
-          // padding: {
-          //   left: '20',
-          //   right: '30',
-          // },
-        },
-        hover: {
-          boxShadow: '2px 2px 5px #4d63ff',
-          color: '#4d63ff',
-          borderRadius: getBorderRadius(10),
-        },
+    Container: {
+      normal: {
+        width: 340,
+        height: 60,
+        color: '#4d63ff',
+        boxShadow: '2px 2px 5px #000',
+        font: { size: 20 },
+        borderRadius: getBorderRadius(20),
       },
-      TagWrap: {
-        normal: {
-          height: 20,
-          margin: {
-            left: 50,
-            right: 5,
-          },
-          padding: {
-            left: 10,
-            right: 10,
-          },
+      hover: {
+        boxShadow: '2px 2px 5px #4d63ff',
+        color: '#4d63ff',
+        borderRadius: getBorderRadius(10),
+      },
+    },
+    TagWrap: {
+      normal: {
+        height: 20,
+        margin: {
+          left: 50,
+          right: 5,
+        },
+        padding: {
+          left: 10,
+          right: 10,
+        },
 
-          // border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }, { radius: 10 }),
+        // border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }, { radius: 10 }),
+      },
+      hover: {
+        background: { color: 'orange' },
+      },
+    },
+    TagIcon: {
+      normal: {
+        font: { fontSize: 14, color: '#999' },
+      },
+      hover: {
+        color: '#4d63ff',
+      },
+    },
+    Icon: {
+      normal: {
+        color: '#ddd',
+        font: { fontSize: 30 },
+      },
+      hover: { color: '#4d63ff' },
+    },
+    Menu: {
+      Container: {
+        normal: {
+          width: 200,
+          height: 200,
+          opacity: 0.6,
+          boxShadow: '2px 2px 5px #4d63ff',
+          background: { color: '#000' },
+          border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }, { radius: 20 }),
         },
         hover: {
-          background: { color: 'orange' },
+          opacity: 1,
         },
       },
-      TagIcon: {
-        normal: {
-          font: { fontSize: 14, color: '#999' },
-        },
+      MenuItem: {
+        normal: { color: '#ccc', fontSize: 14, font: { fontWeight: 900 } },
         hover: {
-          color: '#4d63ff',
+          color: '#fff',
+          fontSize: 20,
+          background: { color: 'green' },
+          font: { fontWeight: 400 },
         },
-      },
-      Icon: {
-        normal: {
-          color: '#ddd',
-          font: { fontSize: 30 },
+        active: {
+          color: 'blue',
+          fontSize: 14,
+          background: { color: 'pink' },
+          font: { fontWeight: 900 },
         },
-        hover: { color: '#4d63ff' },
-      },
-      Menu: {
-        Container: {
-          normal: {
-            width: 200,
-            height: 200,
-            opacity: 0.6,
-            boxShadow: '2px 2px 5px #4d63ff',
-            background: { color: '#000' },
-            border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }, { radius: 20 }),
-          },
-          hover: {
-            opacity: 1,
-          },
-        },
-        MenuItem: {
-          normal: { color: '#ccc', fontSize: 14, font: { fontWeight: 900 } },
-          hover: {
-            color: '#fff',
-            fontSize: 20,
-            background: { color: 'green' },
-            font: { fontWeight: 400 },
-          },
-          active: {
-            color: 'blue',
-            fontSize: 14,
-            background: { color: 'pink' },
-            font: { fontWeight: 900 },
-          },
-          disabled: { color: 'red', background: { color: '#000' } },
-        },
+        disabled: { color: 'red', background: { color: '#000' } },
       },
     },
   },
