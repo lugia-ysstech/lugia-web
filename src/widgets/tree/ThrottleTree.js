@@ -113,7 +113,7 @@ class ScrollerTree extends React.Component<any, any> {
         getPartOfThemeHocProps,
         showSwitch,
         __navmenu,
-        renderSuffix,
+        renderSuffixItems,
         onRightClick,
         switchIconNames,
         igronSelectField,
@@ -155,7 +155,7 @@ class ScrollerTree extends React.Component<any, any> {
             suffix={suffix}
             __navmenu={__navmenu}
             switchAtEnd={switchAtEnd}
-            renderSuffix={renderSuffix}
+            renderSuffixItems={renderSuffixItems}
             onRightClick={onRightClick}
             switchIconNames={switchIconNames}
             key={key}
@@ -185,7 +185,7 @@ class ScrollerTree extends React.Component<any, any> {
           suffix={suffix}
           __navmenu={__navmenu}
           switchAtEnd={switchAtEnd}
-          renderSuffix={renderSuffix}
+          renderSuffixItems={renderSuffixItems}
           onRightClick={onRightClick}
           switchIconNames={switchIconNames}
           key={key}

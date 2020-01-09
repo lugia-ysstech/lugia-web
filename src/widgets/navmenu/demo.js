@@ -7,11 +7,21 @@ import * as React from 'react';
 import Navmenu from './';
 import Widget from '../consts/index';
 import styled from 'styled-components';
-
+import Icon from '../icon';
 const Box = styled.div`
   display: inline-block;
-  box-shadow: 4px 0 3px 3px #f8f8f8;
+  padding: 10px;
+  padding-left: 20px;
   vertical-align: top;
+`;
+
+const H2 = styled.h2`
+  height: 50px;
+  margin: 20px;
+  background: rgba(0, 0, 51, 0.9);
+  color: #fff;
+  line-height: 50px;
+  text-align: center;
 `;
 
 const H3 = styled.h3`
@@ -24,7 +34,7 @@ const H3 = styled.h3`
 `;
 
 const HoriBox = styled.div`
-  margin: 10px 0 50px;
+  margin: 20px;
 `;
 
 const horiData = [
@@ -32,6 +42,9 @@ const horiData = [
     value: 'Lugia Design of React',
     text: 'Lugia Design of React',
     icon: 'lugia-icon-financial_add_pic',
+    icons: {
+      suffixIconClass: 'lugia-icon-finacial1_lock_o',
+    },
   },
   {
     value: '快速上手',
@@ -122,29 +135,6 @@ const newData = [
   },
 ];
 
-const treeTheme = {
-  [Widget.NavMenu]: {
-    Tree: {
-      Container: {
-        normal: {
-          width: 300,
-          height: 400,
-        },
-      },
-      TreeItem: {
-        Switch: {
-          normal: {
-            color: 'red',
-            font: {
-              size: 20,
-            },
-          },
-        },
-      },
-    },
-  },
-};
-
 const tabsTheme = {
   [Widget.NavMenu]: {
     Tabs: {
@@ -158,9 +148,6 @@ const tabsTheme = {
           normal: {
             color: '#4d63ff',
           },
-          // disabled: {
-          //   color: '#ccc',
-          // },
         },
         DefaultTabPan: {
           normal: {
@@ -185,67 +172,135 @@ const tabsTheme = {
   },
 };
 
-const Button = styled.div`
-  display: inline-block;
-  width: 100px;
-  height: 50px;
-  background: orange;
-`;
-const testTheme = {
-  [Widget.NavMenu]: {
-    Tree: {
-      Container: {
-        normal: {
-          height: 500,
-        },
-      },
-    },
-  },
-};
 export default class LimitDemo extends React.Component<Object, Object> {
   all: boolean;
 
   constructor(props) {
     super(props);
-    this.state = { value: ['Affix 固钉'], activityValue: '项目实战', height: 500, testTheme };
+    this.state = { value: ['Affix 固钉'], activityValue: '项目实战', height: 500 };
   }
 
   tabsOnChange = (target: Object) => {
     const { item } = target;
     const { value } = item;
-    // const { activityValue } = target;
     this.setState({ activityValue: value });
   };
 
-  // onClickButton = () => {
-  //   this.setState({
-  //     height: 800,
-  //     data: newData,
-  //   });
-  // };
-
-  componentDidMount() {
-    this.getWindowHeight();
-    window.onresize = () => {
-      this.getWindowHeight();
-    };
-  }
-
-  getWindowHeight = () => {
-    const viewHeight = document.body.clientHeight - 122;
-
-    this.setState({});
-  };
-
   render() {
+    const menuTheme = {
+      [Widget.NavMenu]: {
+        Menu: {
+          Container: {
+            normal: {
+              width: 300,
+              height: 400,
+              background: {
+                color: '#DB7093',
+              },
+            },
+          },
+
+          MenuItem: {
+            MenuItemWrap: {
+              normal: {
+                color: '#fff',
+                background: {
+                  image: 'linear-gradient(to right, #8B1A1A, #BCD2EE)',
+                },
+              },
+              hover: {
+                background: {
+                  color: '#CD2626',
+                },
+              },
+            },
+
+            SelectedMenuItemWrap: {
+              normal: {
+                background: {
+                  color: '#B22222',
+                },
+              },
+              hover: {
+                background: {
+                  color: '#B22222',
+                },
+              },
+            },
+
+            PrefixIcon: {
+              normal: {
+                color: '#0000CD',
+                margin: {
+                  right: 5,
+                },
+                font: {
+                  size: 16,
+                },
+              },
+              hover: {
+                color: '#87CEFF',
+                font: {
+                  size: 20,
+                },
+              },
+            },
+
+            SuffixIcon: {
+              normal: {
+                color: '#0000CD',
+                margin: {
+                  left: 5,
+                },
+                font: {
+                  size: 18,
+                },
+              },
+              hover: {
+                color: '#87CEFF',
+                font: {
+                  size: 20,
+                },
+              },
+            },
+
+            SwitchIcon: {
+              normal: {
+                color: '#ffffff',
+              },
+            },
+          },
+
+          SubMenu: {
+            Container: {
+              normal: {
+                background: {
+                  color: '#778899',
+                },
+              },
+            },
+
+            MenuItem: {
+              MenuItemWrap: {
+                normal: {
+                  background: {
+                    color: '#9AC0CD',
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    };
     return (
       <div>
+        <H2>水平导航菜单</H2>
+
         <HoriBox>
-          <H3>horizontal水平导航菜单</H3>
+          <H3>light主题</H3>
           <Navmenu
             data={horiData}
-            // theme={tabsTheme}
-            // themeStyle={'dark'}
             activityValue={this.state.activityValue}
             mode={'horizontal'}
             onChange={this.tabsOnChange}
@@ -253,66 +308,75 @@ export default class LimitDemo extends React.Component<Object, Object> {
         </HoriBox>
 
         <HoriBox>
-          <H3>horizontal水平导航菜单</H3>
-          <Navmenu
-            data={horiData}
-            themeStyle={'dark'}
-            // activityValue={this.state.activityValue}
-            mode={'horizontal'}
-            // onChange={this.tabsOnChange}
-          />
+          <H3>dark主题</H3>
+          <Navmenu data={horiData} themeStyle={'dark'} mode={'horizontal'} />
         </HoriBox>
+
+        <HoriBox>
+          <H3>主题样式配置</H3>
+          <Navmenu data={horiData} theme={tabsTheme} mode={'horizontal'} />
+        </HoriBox>
+
+        <H2>垂直导航菜单</H2>
+
         <div>
           <Box>
             <H3>light主题</H3>
-            <Navmenu data={horiData} mode={'vertical'} />
+            <Navmenu autoHeight data={horiData} mode={'vertical'} />
           </Box>
         </div>
+
         <div>
           <Box>
             <H3>dark主题</H3>
+            <Navmenu autoHeight data={horiData} mode={'vertical'} themeStyle={'dark'} />
+          </Box>
+        </div>
+
+        <div>
+          <Box>
+            <H3>主题样式配置</H3>
             <Navmenu
-              // autoHeight={false}
+              autoHeight
               data={horiData}
-              themeStyle={'dark'}
               mode={'vertical'}
+              theme={menuTheme}
+              divided
+              renderSuffixItems={this.renderSuffixItems}
             />
           </Box>
         </div>
 
+        <H2>内嵌导航菜单</H2>
+
         <Box>
           <H3>light主题</H3>
           <Navmenu
-            inlineType={'primary'}
-            theme={treeTheme}
             mode={'inline'}
-            // data={newData}
-            value={this.state.value}
+            data={newData}
             inlineExpandAll={true}
             onChange={this.onChange}
             onSelect={this.onSelect}
+            renderSuffixItems={this.renderSuffixItems}
           />
 
           <Navmenu
             inlineType={'ellipse'}
-            theme={treeTheme}
             mode={'inline'}
             data={newData}
-            value={this.state.value}
             inlineExpandAll={true}
             onChange={this.onChange}
             onSelect={this.onSelect}
           />
         </Box>
+
         <Box>
           <H3>dark主题</H3>
           <Navmenu
             inlineType={'primary'}
-            theme={treeTheme}
             mode={'inline'}
             themeStyle={'dark'}
             data={newData}
-            value={this.state.value}
             inlineExpandAll={true}
             onChange={this.onChange}
             onSelect={this.onSelect}
@@ -324,11 +388,9 @@ export default class LimitDemo extends React.Component<Object, Object> {
 
           <Navmenu
             inlineType={'ellipse'}
-            theme={treeTheme}
             themeStyle={'dark'}
             mode={'inline'}
             data={newData}
-            value={this.state.value}
             inlineExpandAll={true}
             onChange={this.onChange}
             onSelect={this.onSelect}
@@ -337,6 +399,60 @@ export default class LimitDemo extends React.Component<Object, Object> {
       </div>
     );
   }
+
+  renderSuffixItems = item => {
+    const { children = [] } = item;
+
+    if (children && children.length !== 0) {
+      return null;
+    }
+
+    const iconTheme = {
+      [Widget.Icon]: {
+        Icon: {
+          normal: {
+            margin: {
+              right: 10,
+              top: 0,
+              bottom: 0,
+            },
+            fontSize: 14,
+            opacity: 0,
+            getCSS: () => {
+              return `
+              transition: all 0.3s
+              `;
+            },
+          },
+          hover: {
+            color: '#98FB98',
+            font: {
+              size: 16,
+            },
+            opacity: 1,
+          },
+        },
+      },
+    };
+    return [
+      <Icon
+        theme={iconTheme}
+        iconClass="lugia-icon-financial_like"
+        onClick={e => {
+          e.stopPropagation();
+          console.log('first Icon');
+        }}
+      />,
+      <Icon
+        theme={iconTheme}
+        iconClass="lugia-icon-financial_heart_o"
+        onClick={e => {
+          e.stopPropagation();
+          console.log('second Icon');
+        }}
+      />,
+    ];
+  };
 
   onSelect = target => {
     this.setState({ value: target.value });
