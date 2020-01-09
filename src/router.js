@@ -202,6 +202,9 @@ export default {
   '/tree': {
     render: async () => import('./widgets/tree/demo'),
   },
+  '/dragTree': {
+    render: async () => import('./widgets/tree/dragDome.js'),
+  },
   '/treeselect': {
     render: async () => import('./widgets/tree-select/demo'),
   },

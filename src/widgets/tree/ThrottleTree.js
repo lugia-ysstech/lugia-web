@@ -102,7 +102,7 @@ class ScrollerTree extends React.Component<any, any> {
   }
 
   loopNode = (data: Array<RowData>) => {
-    const { inlineType, shape, id2ExtendInfo, translateTreeData } = this.props;
+    const { inlineType, shape, id2ExtendInfo, translateTreeData, draggable } = this.props;
     return data.map(item => {
       const {
         selectable,
@@ -133,17 +133,19 @@ class ScrollerTree extends React.Component<any, any> {
         value,
         pid,
       } = item;
-      const currentNodeIndex = id2ExtendInfo[value].index;
-      const parentIndex = id2ExtendInfo[pid] ? id2ExtendInfo[pid].index : null;
-      const maxIndex = Number(id2ExtendInfo.lugia_tree_root.canTotal - 1);
-      let preNodeIndex = Number(currentNodeIndex - 1);
-      preNodeIndex = currentNodeIndex === 0 ? null : preNodeIndex;
-      let nextNodeIndex = Number(currentNodeIndex + 1);
-      nextNodeIndex = currentNodeIndex === maxIndex ? null : nextNodeIndex;
-      item.currentNodeIndex = currentNodeIndex;
-      item.preNodeIndex = preNodeIndex;
-      item.nextNodeIndex = nextNodeIndex;
-      item.parentIndex = parentIndex;
+      if (draggable) {
+        const currentNodeIndex = id2ExtendInfo[value].index;
+        const parentIndex = id2ExtendInfo[pid] ? id2ExtendInfo[pid].index : null;
+        const maxIndex = Number(id2ExtendInfo.lugia_tree_root.canTotal - 1);
+        let preNodeIndex = Number(currentNodeIndex - 1);
+        preNodeIndex = currentNodeIndex === 0 ? null : preNodeIndex;
+        let nextNodeIndex = Number(currentNodeIndex + 1);
+        nextNodeIndex = currentNodeIndex === maxIndex ? null : nextNodeIndex;
+        item.currentNodeIndex = currentNodeIndex;
+        item.preNodeIndex = preNodeIndex;
+        item.nextNodeIndex = nextNodeIndex;
+        item.parentIndex = parentIndex;
+      }
       const disabled = item[igronSelectField] ? true : false;
       if (children !== undefined) {
         return (
