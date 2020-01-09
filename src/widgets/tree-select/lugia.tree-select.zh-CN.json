@@ -601,6 +601,14 @@
             }
           }
         }
+      },
+      "defaultTheme": {
+        "Container": {
+          "normal": {
+            "width": 250,
+            "height": 32
+          }
+        }
       }
     }
   },
@@ -834,6 +842,14 @@
             }
           }
         }
+      }
+    }
+  },
+  "defaultTheme": {
+    "Container": {
+      "normal": {
+        "width": 250,
+        "height": 32
       }
     }
   }
