@@ -285,6 +285,23 @@ const PaginationListContainer = CSSComponent({
   css: css`
     display: flex;
     align-items: center;
+    justify-content: center;
+  `,
+});
+
+const RightContainer = StaticComponent({
+  tag: 'div',
+  className: 'PaginationRightContainer',
+  css: css`
+    display: flex;
+  `,
+});
+const LeftContainer = StaticComponent({
+  extend: RightContainer,
+  className: 'PaginationLeftContainer',
+  css: css`
+    align-items: center;
+    flex: 1;
   `,
 });
 
@@ -813,10 +830,14 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     }
     return (
       <PaginationListContainer themeProps={this.props.getPartOfThemeProps('Container')}>
-        {this.getPaginationList()}
-        {this.getQuickJumper()}
-        {this.getShowTotalData()}
-        {this.getPageSelect()}
+        <LeftContainer>
+          {this.getPaginationList()}
+          {this.getQuickJumper()}
+        </LeftContainer>
+        <RightContainer>
+          {this.getShowTotalData()}
+          {this.getPageSelect()}
+        </RightContainer>
       </PaginationListContainer>
     );
   }
