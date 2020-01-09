@@ -158,6 +158,11 @@ const data = [
     text: 'TreeSelect 树形选择控件',
   },
   {
+    value: '/dragTree',
+    sort: 64,
+    text: '拖拽Tree控件',
+  },
+  {
     value: '/upload',
     sort: 65,
     text: 'Upload 上传',
