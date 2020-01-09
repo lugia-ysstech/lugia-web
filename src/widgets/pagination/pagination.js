@@ -51,7 +51,9 @@ const PaginationTextContainer = CSSComponent({
     },
   },
   css: css`
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   `,
 });
 const PaginationMoreItem = CSSComponent({
@@ -112,6 +114,7 @@ const PaginationListItem = CSSComponent({
       ['opacity'],
       ['background'],
       ['boxShadow'],
+      ['margin'],
     ],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
@@ -195,10 +198,13 @@ const PaginationArrowIconContainer = CSSComponent({
       ['padding'],
       ['margin'],
       ['lineHeight'],
+      ['opacity'],
+      ['background'],
+      ['boxShadow'],
     ],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
-        propsConfig: { isSelected, clickable = true, type },
+        propsConfig: { isSelected, type },
       } = themeProps;
       const { height } = themeMeta;
       const right = type === 'next' ? 0 : 8;
@@ -206,23 +212,30 @@ const PaginationArrowIconContainer = CSSComponent({
       if (isSelected) {
         border = getBorder({ color: themeColor, width: borderSize, style: 'solid' });
       }
-
-      if (!clickable) {
-        border = getBorder({ color: superLightColor, width: borderSize, style: 'solid' });
-      }
       return { margin: { right }, border, lineHeight: height };
     },
   },
   hover: {
-    selectNames: [['color'], ['font'], ['fontSize'], ['border'], ['borderRadius']],
-    getThemeMeta(themeMeta: Object, themeProps: Object) {
-      const {
-        propsConfig: { clickable = true },
-      } = themeProps;
-      if (!clickable)
-        return {
-          border: getBorder({ color: superLightColor, width: borderSize, style: 'solid' }),
-        };
+    selectNames: [
+      ['cursor'],
+      ['border'],
+      ['borderRadius'],
+      ['opacity'],
+      ['background'],
+      ['boxShadow'],
+    ],
+  },
+  disabled: {
+    selectNames: [
+      ['cursor'],
+      ['border'],
+      ['borderRadius'],
+      ['opacity'],
+      ['background'],
+      ['boxShadow'],
+    ],
+    defaultTheme: {
+      border: getBorder({ color: superLightColor, width: borderSize, style: 'solid' }),
     },
   },
   option: { hover: true, active: true },
@@ -685,8 +698,9 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     const clickable = type === 'pre' ? current > 1 : current < page;
     return (
       <PaginationArrowIconContainer
+        disabled={!clickable}
         themeProps={this.props.getPartOfThemeProps('PaginationArrowIconContainer', {
-          props: { clickable, type },
+          props: { type },
         })}
         onClick={this.changePage(page)}
       >
@@ -733,6 +747,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
 
     return (
       <Icon
+        disabled={!clickable}
         src={iconSrc}
         iconClass={iconClass}
         theme={iconTheme}
