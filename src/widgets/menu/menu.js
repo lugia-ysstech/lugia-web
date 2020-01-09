@@ -197,38 +197,21 @@ class Menu extends React.Component<MenuProps, MenuState> {
     );
   }
 
-  getContainerThemeProps(target: string, params: Object) {
-    const themeProps = this.props.getPartOfThemeProps(target, params);
-    const { themeConfig = {} } = themeProps;
-    const defaultTheme = {
-      boxShadow: getBoxShadow('0 1px 6px 0 red'),
-    };
-    themeConfig.normal = deepMerge(defaultTheme, themeConfig.normal);
-    console.log('defaultTheme', themeConfig);
-    return themeProps;
-  }
-
   render() {
     const { props } = this;
     const items = this.getItems(props);
     const { data = [], autoHeight = false, getPartOfThemeProps, itemHeight } = props;
     const length = data ? data.length : 0;
-    const WrapThemeProps = getPartOfThemeProps('Container', {
+    const wrapThemeProps = getPartOfThemeProps('Container', {
       props: {
         length,
         itemHeight,
         autoHeight,
       },
     });
-    // const WrapThemeProps = this.getContainerThemeProps('Container', {
-    //   props: {
-    //     length,
-    //     itemHeight,
-    //     autoHeight,
-    //   },
-    // });
+
     const bodyContent = (
-      <MenuContainer themeProps={WrapThemeProps} level={this.props.level}>
+      <MenuContainer themeProps={wrapThemeProps} level={this.props.level}>
         {items}
       </MenuContainer>
     );
