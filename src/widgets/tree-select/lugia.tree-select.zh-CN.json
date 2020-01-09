@@ -40,7 +40,11 @@
         }
       ]
     },
-
+    "mutliple": {
+      "type": "boolean",
+      "desc": "是否多选",
+      "defaultValue": false
+    },
     "createPortal": {
       "type": "boolean",
       "desc": "是否全局弹出下拉框",
