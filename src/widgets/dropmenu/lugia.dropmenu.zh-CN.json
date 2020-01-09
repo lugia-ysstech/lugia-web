@@ -46,6 +46,12 @@
       "defaultValue": false
     },
 
+    "divided": {
+      "type": "boolean",
+      "desc": "是否为分割线",
+      "defaultValue": true
+    },
+
     "showSwitch": {
       "type": "boolean",
       "desc": "是否展示switch图标",

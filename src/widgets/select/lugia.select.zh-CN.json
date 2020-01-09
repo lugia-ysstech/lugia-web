@@ -95,6 +95,11 @@
       "desc": "是否禁选",
       "defaultValue": false
     },
+    "mutliple": {
+      "type": "boolean",
+      "desc": "是否多选",
+      "defaultValue": false
+    },
     "validateStatus": {
       "type": "ValidateStatus",
       "desc": "input校验状态, 'success' 成功 | 'error'错误",

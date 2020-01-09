@@ -112,7 +112,11 @@
       "desc": "指定不可选的标识",
       "defaultValue": "disabled"
     },
-
+    "mutliple": {
+      "type": "boolean",
+      "desc": "是否多选",
+      "defaultValue": false
+    },
     "pathSeparator": {
       "type": "string",
       "desc": "指定结点数组中path信息的分隔符号",
