@@ -69,7 +69,7 @@ export type TreeProps = {
   switchAtEnd?: boolean,
   switchIconNames?: Object,
   getPartOfThemeProps: Function,
-  renderSuffix?: Function,
+  renderSuffixItems?: Function,
   onRightClick?: Function,
 };
 

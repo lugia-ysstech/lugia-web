@@ -21,6 +21,7 @@ import {
   NavLi,
   SuffixWrap,
   CheckboxContainer,
+  spiritColor,
 } from '../../css/tree';
 import { mediumGreyColor, themeColor, lightGreyColor } from '../../css/stateColor';
 
@@ -214,7 +215,7 @@ class TreeNode extends React.Component {
     return (
       <TitleWrap
         disabled={disabled}
-        themeProps={this.getThemeProps('Text', 'SelectedText', { mutliple, itemHeight })}
+        themeProps={this.getTitleWrapThemeProps('Text', 'SelectedText', { mutliple, itemHeight })}
       >
         <CheckboxContainer>
           {this.getPreIcon()}
@@ -262,7 +263,7 @@ class TreeNode extends React.Component {
         hover: { color: hoverColor = themeColor, font: { size: hoverSize = normalSize } = {} } = {},
         disabled: { color: disabledColor, font: { size: disabledSize = normalSize } = {} } = {},
       } = {},
-    } = this.getThemeProps('Text', 'SelectedText', {});
+    } = this.getTitleWrapThemeProps('Text', 'SelectedText', {});
 
     return {
       CheckboxText: {
@@ -345,8 +346,53 @@ class TreeNode extends React.Component {
     return mutliple ? checked : selected;
   }
 
+  getSelectedTitleWrapThemeProps(target: string, params: Object) {
+    const themeProps = this.props.getPartOfThemeProps(target, params);
+    const { themeConfig = {} } = themeProps;
+
+    const { normal = {} } = themeConfig;
+    themeConfig.normal = deepMerge(this.getDefaultTitleWrapTheme('normal', params.props), normal);
+    return themeProps;
+  }
+
+  getDefaultTitleWrapThemeProps(target: string, params: Object) {
+    const themeProps = this.props.getPartOfThemeProps(target, params);
+    const { themeConfig = {} } = themeProps;
+
+    const { hover = {} } = themeConfig;
+    themeConfig.hover = deepMerge(this.getDefaultTitleWrapTheme('hover', params.props), hover);
+    return themeProps;
+  }
+
+  getDefaultTitleWrapTheme(state: string, props: Object) {
+    const { mutliple, __navmenu } = props;
+
+    return __navmenu || mutliple === true
+      ? {}
+      : state === 'hover'
+      ? {
+          background: {
+            color: spiritColor,
+          },
+        }
+      : {
+          background: {
+            color: 'rgba(77,99,255,0.2)',
+          },
+        };
+  }
+
+  getTitleWrapThemeProps(defaultName: string, selectedName: string, params: Object = {}): Object {
+    const { parentIsHighlight } = this.props;
+
+    return this.isChecked() || parentIsHighlight
+      ? this.getSelectedTitleWrapThemeProps(selectedName, { props: params })
+      : this.getDefaultTitleWrapThemeProps(defaultName, { props: params });
+  }
+
   getThemeProps(defaultName: string, selectedName: string, params: Object = {}): Object {
     const { getPartOfThemeProps, parentIsHighlight } = this.props;
+
     return this.isChecked() || parentIsHighlight
       ? getPartOfThemeProps(selectedName, { props: params })
       : getPartOfThemeProps(defaultName, { props: params });
@@ -358,12 +404,13 @@ class TreeNode extends React.Component {
       return null;
     }
     const { prefixIconClass, prefixIconSrc } = icons;
-    if (!prefixIconClass && !prefixIconSrc) {
+    const iconClass = prefixIconClass ? prefixIconClass : icon;
+
+    if (!iconClass && !prefixIconSrc) {
       return null;
     }
     const { viewClass, theme } = this.getIconTheme('PrefixIcon');
 
-    const iconClass = prefixIconClass ? prefixIconClass : icon;
     return (
       <Icon
         iconClass={iconClass}
@@ -412,11 +459,6 @@ class TreeNode extends React.Component {
           left: marginLeft,
           right: marginRight,
         },
-        getCSS: () => {
-          return `
-          transition: all 0.3s
-          `;
-        },
       },
     };
 
@@ -455,6 +497,19 @@ class TreeNode extends React.Component {
     removeSetNodeDragStateListener && removeSetNodeDragStateListener();
   }
 
+  getRenderSuffixItems = (itemObj: Object) => {
+    const { renderSuffixItems } = this.props;
+    const items = renderSuffixItems(itemObj);
+    const suffixItems = React.Children.map(items, item => {
+      const { props } = item;
+      return React.cloneElement(item, {
+        ...props,
+        ...this.props.dispatchEvent([['hover'], ['active']], 'f2c'),
+      });
+    });
+    return <SuffixWrap>{suffixItems}</SuffixWrap>;
+  };
+
   render() {
     const { props } = this;
     const {
@@ -468,6 +523,7 @@ class TreeNode extends React.Component {
       color,
       isLeaf,
       title,
+      item,
       shape,
       mutliple,
       itemHeight,
@@ -476,6 +532,7 @@ class TreeNode extends React.Component {
       expanded,
       onlySelectLeaf,
       switchAtEnd,
+      renderSuffixItems,
       eventKey,
     } = props;
     const { dragState } = this.state;
@@ -490,7 +547,7 @@ class TreeNode extends React.Component {
       }
     }
 
-    const TextThemeProps = this.getThemeProps('Text', 'SelectedText', {
+    const TextThemeProps = this.getTitleWrapThemeProps('Text', 'SelectedText', {
       pos,
       mutliple,
       shape,
@@ -597,12 +654,6 @@ class TreeNode extends React.Component {
       }
     }
 
-    const renderSuffix = () => {
-      const { renderSuffix, item } = this.props;
-
-      return <SuffixWrap>{renderSuffix ? renderSuffix(item) : null}</SuffixWrap>;
-    };
-
     const ItemWrap = __navmenu ? NavLi : Li;
 
     return (
@@ -612,7 +663,6 @@ class TreeNode extends React.Component {
         unselectable="on"
         inlineType={inlineType}
         {...liProps}
-        // pos={pos}
         isLeaf={isLeaf}
         selected={selected}
         title={title}
@@ -622,18 +672,16 @@ class TreeNode extends React.Component {
       >
         <FlexWrap disabled={disabled} themeProps={TreeItemWrapThemeProps}>
           <FlexBox disabled={disabled} themeProps={TreeItemWrapThemeProps}>
-            {(!showSwitch && !mutliple) || __navmenu || switchAtEnd
+            {!showSwitch || switchAtEnd
               ? null
               : canRenderSwitch
               ? this.renderSwitch(expandedState)
               : renderNoopSwitch()}
 
             {props.checkable ? this.renderCheckbox() : selectHandle()}
-            {renderSuffix()}
+            {renderSuffixItems ? this.getRenderSuffixItems(item) : null}
 
-            {(switchAtEnd || __navmenu) && canRenderSwitch
-              ? this.renderSwitch(expandedState)
-              : null}
+            {switchAtEnd && canRenderSwitch ? this.renderSwitch(expandedState) : null}
           </FlexBox>
         </FlexWrap>
         {newChildren}
