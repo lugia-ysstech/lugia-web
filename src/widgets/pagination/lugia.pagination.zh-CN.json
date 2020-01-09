@@ -256,7 +256,8 @@
         ["boxShadow"],
         ["fontSize"],
         ["font"],
-        ["color"]
+        ["color"],
+        ["margin"]
       ],
       "hover": [
         ["cursor"],
@@ -310,7 +311,8 @@
         ["opacity"],
         ["background"],
         ["boxShadow"],
-        ["padding"]
+        ["padding"],
+        ["margin"]
       ],
       "hover": [
         ["cursor"],
