@@ -153,7 +153,7 @@
     "FacePanelContain": {
       "name": "日期面板",
       "desc": "日期面板配置",
-      "normal": [["width"], ["height"], ["background"], ["boxShadow"]]
+      "normal": [["width"], ["height"], ["background"], ["boxShadow"], ["borderRadius"]]
     },
     "InMonthDate": {
       "name": "日期",
