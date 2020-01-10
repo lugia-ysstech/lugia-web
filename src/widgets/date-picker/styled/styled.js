@@ -24,7 +24,7 @@ export const PanelWrap = CSSComponent({
   tag: 'div',
   className: 'FacePanelContain',
   normal: {
-    selectNames: [['boxShadow'], ['background', 'color'], ['width']],
+    selectNames: [['boxShadow'], ['borderRadius'], ['background', 'color'], ['width']],
     defaultTheme: {
       boxShadow: {
         color: 'rgba(0, 0, 0, 0.1)',
@@ -39,6 +39,7 @@ export const PanelWrap = CSSComponent({
       },
     },
     getCSS(themeMate) {
+      console.log('themeMate', themeMate);
       const { width } = themeMate;
       return `
         width:${em(width)}
@@ -441,7 +442,7 @@ export const RangeWrap = CSSComponent({
   tag: 'div',
   className: 'RangeWrap',
   normal: {
-    selectNames: [['boxShadow'], ['background', 'color']],
+    selectNames: [['boxShadow'], ['borderRadius'], ['background', 'color']],
     defaultTheme: {
       boxShadow: {
         color: 'rgba(0, 0, 0, 0.1)',
