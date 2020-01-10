@@ -8,25 +8,64 @@ import Listener from '@lugia/listener';
 import React from 'react';
 import { DragCopyWrap } from '../../css/tree';
 
+type createTreeDragParameter = {
+  groupKey?: string,
+};
+
 class TreeDragController {
   treeDrags: Object;
+  groups: Object;
+  dragOutInfo: Object;
   constructor() {
     this.treeDrags = {};
-    this.Grouping = {};
+    this.groups = {};
+    this.dragOutInfo = null;
   }
-  createTreeDrag = () => {
+  createTreeDrag = (parps: createTreeDragParameter = {}) => {
     const treeGragUUID = this.createUUid();
     const treeListener = new Listener();
     const treeGrag = new TreeDrag(treeListener);
     treeGrag.uuid = treeGragUUID;
     this.treeDrags = { ...this.treeDrags, ...{ [treeGragUUID]: treeGrag } };
+
+    const { groupKey } = parps;
+    if (groupKey) {
+      treeGrag.groupKey = groupKey;
+      this.groups[groupKey]
+        ? this.groups[groupKey].push(treeGrag.uuid)
+        : (this.groups[groupKey] = [treeGrag.uuid]);
+    }
     return treeGrag;
   };
   getTreeDrag = (key: String) => {
     return this.treeDrags[key];
   };
-  destroyTreeDrag = (key: String) => {
-    delete this.treeDrags[key];
+  getGroupAllData = () => {
+    return this.groups;
+  };
+  getGroupDataByGroupKey = (key: string) => {
+    return this.groups[key];
+  };
+  destroyInvalidGroupInfo = () => {
+    Object.keys(this.groups).forEach(item => {
+      if (this.groups[item].length <= 0) {
+        delete this.groups[item];
+      }
+    });
+  };
+  deleteGroupRelationship = treeDragData => {
+    const { uuid, groupKey } = treeDragData;
+    const groupData = this.groups[groupKey];
+    if (!groupData) return;
+    const findIndex = groupData.indexOf(uuid);
+    findIndex >= 0 && groupData.splice(findIndex, 1);
+    this.destroyInvalidGroupInfo();
+  };
+  destroyTreeDrag = (treekey: String) => {
+    const treeDragData = this.treeDrags[treekey];
+    if (!treeDragData) return;
+    this.deleteGroupRelationship(treeDragData);
+    delete this.treeDrags[treekey];
   };
   createUUid = () => {
     const s = [];
@@ -40,8 +79,16 @@ class TreeDragController {
     const uuid = s.join('');
     return uuid;
   };
+
+  setDragOutInfo = (info: Object) => {
+    this.dragOutInfo = info;
+  };
+  destroyDragOutInfo = () => {
+    this.dragOutInfo = null;
+  };
 }
 const treeDragController = new TreeDragController();
+
 class TreeDrag extends Listener {
   constructor(listener: Listener) {
     super();
@@ -49,12 +96,14 @@ class TreeDrag extends Listener {
     this.listener = listener;
   }
   mouseDown(mouseEvent: SyntheticMouseEvent<HTMLButtonElement>) {
-    const { button } = mouseEvent;
+    const { clientX: mouseX, clientY: mouseY, button } = mouseEvent;
     if (button !== 0) return;
     this.dragStart = true;
-    const { clientX: mouseX, clientY: mouseY } = mouseEvent;
     this.dargNode = this.calculationMouseHoverPosition({ mouseX, mouseY });
-    this.oldMousePosition = { mouseX, mouseY };
+    this.oldMousePosition = {
+      mouseX,
+      mouseY,
+    };
   }
   mouseUp(mouseEvent: SyntheticMouseEvent<HTMLButtonElement>, callback: Function) {
     this.dragStart = false;
@@ -196,6 +245,22 @@ class TreeDrag extends Listener {
     }
     this.dragStart = false;
     this.Isdrag = false;
+    if (!treeDragController.getGroupDataByGroupKey(this.groupKey) && !this.dargNode) return;
+    // Todo
+    treeDragController.dragOutInfo = this.dargNode;
+    document.addEventListener('mousemove', this.documentMouseMove);
+    document.addEventListener('mouseup');
+  }
+  documentMouseMove(mouseEvent: SyntheticMouseEvent<HTMLButtonElement>) {
+    console.log('documentMouseMove');
+  }
+  documentMouseUp() {
+    console.log('documentMouseUp');
+  }
+  mouseEnter() {
+    // Todo 鼠标进入触发
+    document.removeEventListener('mousemove', this.documentMouseMove);
+    document.removeEventListener('mouseup', this.documentMouseUp);
   }
 
   documentMouseUp = () => {
