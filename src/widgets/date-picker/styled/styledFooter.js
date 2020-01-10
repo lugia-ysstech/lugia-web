@@ -25,6 +25,12 @@ export const FooterWrap = CSSComponent({
 export const Footer = CSSComponent({
   tag: 'div',
   className: 'Footer',
+  normal: {
+    selectNames: [],
+  },
+  hover: {
+    selectNames: [],
+  },
   css: css`
     text-align: ${props => (props.showToday ? 'center' : '')};
   `,
