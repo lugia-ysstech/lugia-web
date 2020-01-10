@@ -49,6 +49,12 @@
       "defaultValue": false
     },
 
+    "draggable": {
+      "type": "boolean",
+      "desc": "设置节点可拖拽",
+      "propsDefaultValue": false
+    },
+
     "data": {
       "type": "object[]",
       "desc": "生成选择项的数据",
@@ -163,6 +169,31 @@
           "name": "end",
           "desc": "显示区域内，最后树节点所在数据中的索引值",
           "type": "number"
+        }
+      ]
+    },
+    "onDrop": {
+      "desc": "drop 触发时调用",
+      "args": [
+        {
+          "name": "dragInfo",
+          "desc": "拖拽信息",
+          "type": "object"
+        },
+        {
+          "name": "targetInfo",
+          "desc": "拖拽目标信息",
+          "type": "object"
+        },
+        {
+          "name": "dropToGap",
+          "desc": "是否拖拽到间隙",
+          "type": "boolean"
+        },
+        {
+          "name": "translateTreeData",
+          "desc": "是否开启嵌套数据生成Tree",
+          "type": "boolean"
         }
       ]
     },
