@@ -349,7 +349,7 @@ class TreeUtils {
     nodes: Array<RowData>,
     id2ExtendInfo: NodeId2ExtendInfo
   ): NodeExtendInfo {
-    if (!id2ExtendInfo[VirtualRoot] || this.isVersionChange()) {
+    if (!id2ExtendInfo[VirtualRoot]) {
       this.initAllNodeIndexAndTopRoot(nodes, id2ExtendInfo);
     }
     const existData = id2ExtendInfo[nodeId];
@@ -427,7 +427,7 @@ class TreeUtils {
   initAllNodeIndexAndTopRoot(nodes: Array<RowData>, id2nodeExpandInfo: NodeId2ExtendInfo) {
     const childrenIdx = [];
     let canTotal = 0;
-    if (!id2nodeExpandInfo[VirtualRoot] || this.isVersionChange()) {
+    if (!id2nodeExpandInfo[VirtualRoot]) {
       const begats = nodes.length;
       for (let index = 0; index < begats; index++) {
         const row = nodes[index];

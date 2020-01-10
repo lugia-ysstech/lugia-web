@@ -24,8 +24,12 @@ class Tree extends React.Component<any, any> {
   }
 
   render() {
-    const { props } = this;
+    let { props } = this;
     const data = this.getTreeData();
+    const { draggable } = props;
+    if (draggable) {
+      props = { ...props, expandAll: true };
+    }
     return <InnerTree {...props} ref={this.innerTree} data={data} />;
   }
 
