@@ -178,12 +178,12 @@
         {
           "name": "dragInfo",
           "desc": "拖拽信息",
-          "type": "string[]"
+          "type": "object"
         },
         {
           "name": "targetInfo",
           "desc": "拖拽目标信息",
-          "type": "Array<Object>"
+          "type": "object"
         },
         {
           "name": "dropToGap",
