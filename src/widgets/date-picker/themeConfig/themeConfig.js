@@ -1,6 +1,7 @@
 import { themeColor } from '../styled/utils';
 import { deepMerge } from '@lugia/object-utils';
 import { getBorder, getBorderRadius } from '@lugia/theme-utils';
+import { modeStyle } from '../utils/booleanUtils';
 const {
   normalColor,
   hoverColor,
@@ -12,6 +13,7 @@ const {
   darkGreyColor,
   circleBorderRadius,
 } = themeColor;
+
 export default function getThemeProps(props, partName) {
   const { getPartOfThemeProps, mode } = props;
   const themeProps = getPartOfThemeProps(partName);
@@ -108,6 +110,7 @@ export function getDateTheme(props) {
     background: { color: hoverColor },
     color: '#fff',
     borderRadius: getBorderRadius(circleBorderRadius),
+    border: getBorder({ width: 0, color: '', style: '' }),
   };
   const outMonthNormalTheme = deepMerge(defaultOutNormal, outNormal);
 
@@ -116,6 +119,7 @@ export function getDateTheme(props) {
   const defaultActive = {
     ...hoverTheme,
     background: { color: normalColor },
+    border: getBorder({ width: 0, color: '', style: '' }),
   };
 
   const activeTheme = deepMerge(defaultActive, active);
@@ -156,4 +160,70 @@ export function getSecondWeekDateTheme(props) {
     normalTheme,
     hoverTheme,
   };
+}
+export function getFacePanelContain(props) {
+  const { mode } = props;
+  const { isRange } = modeStyle(mode);
+  const themeProps = getThemeProps({ ...props }, 'FacePanelContain');
+  const { themeConfig, propsConfig } = themeProps;
+  const defaultNormal = {
+    width: isRange ? 600 : 420,
+  };
+  const { normal = {} } = themeConfig;
+  const normalTheme = deepMerge(defaultNormal, normal);
+  const { width } = normalTheme;
+  normal.width = isRange && width > isRange ? 600 : width;
+  normalTheme.width = isRange && width > isRange ? 600 : width;
+  const normalSize = getFacePanelContainSize(normalTheme);
+
+  propsConfig.normalSize = { ...normalSize };
+
+  const normalTimePikerSingleWidth = getTimeWrapSize(mode, normalSize);
+  const timePikerSingleWrapTheme = {
+    themeConfig: {
+      normal: { width: normalTimePikerSingleWidth },
+    },
+  };
+  const timePikerColSizeTheme = {
+    themeConfig: {
+      normal: { width: getTimeColSize(normalTimePikerSingleWidth) },
+    },
+  };
+  return { themeProps, timePikerSingleWrapTheme, timePikerColSizeTheme };
+}
+function getFacePanelContainSize(state = {}) {
+  const {
+    width = 600,
+    height = 500,
+    border: {
+      top: { width: widthT = 0 } = {},
+      right: { width: widthR = 0 } = {},
+      bottom: { width: widthB = 0 } = {},
+      left: { width: widthL = 0 } = {},
+    } = {},
+  } = state;
+  let newWidth = width;
+  let newHeight = height;
+  if (valueIsNumber(newWidth) && valueIsNumber(widthR) && valueIsNumber(widthL)) {
+    newWidth = newWidth - widthR - widthL;
+  }
+  if (valueIsNumber(newHeight) && valueIsNumber(widthT) && valueIsNumber(widthB)) {
+    newHeight = newHeight - widthT - widthB;
+  }
+  return {
+    width: newWidth,
+    height: newHeight,
+  };
+}
+function valueIsNumber(value) {
+  return typeof value === 'number' && !isNaN(value) && value > 0;
+}
+
+function getTimeWrapSize(mode, state) {
+  const { width } = state;
+  const { isRange } = modeStyle(mode);
+  return isRange ? width / 2 : width;
+}
+function getTimeColSize(width) {
+  return (width - 2) / 3;
 }

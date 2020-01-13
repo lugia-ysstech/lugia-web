@@ -1,5 +1,6 @@
 import { css } from 'styled-components';
 import { valueInRange } from '../../common/Math';
+import { modeStyle } from '../utils/booleanUtils';
 import {
   borderRadius,
   distance,
@@ -10,7 +11,7 @@ import {
   themeColor,
 } from './utils';
 import CSSComponent from '@lugia/theme-css-hoc';
-const { hoverColor, normalColor, circleBorderRadius, defaultColor, darkGreyColor } = themeColor;
+const { hoverColor, normalColor, defaultColor, darkGreyColor } = themeColor;
 export const Icons = CSSComponent({
   tag: 'span',
   css: css`
@@ -24,7 +25,7 @@ export const PanelWrap = CSSComponent({
   tag: 'div',
   className: 'FacePanelContain',
   normal: {
-    selectNames: [['boxShadow'], ['borderRadius'], ['background', 'color'], ['width']],
+    selectNames: [['boxShadow'], ['borderRadius'], ['border'], ['background', 'color'], ['width']],
     defaultTheme: {
       boxShadow: {
         color: 'rgba(0, 0, 0, 0.1)',
@@ -37,13 +38,6 @@ export const PanelWrap = CSSComponent({
       background: {
         color: defaultColor,
       },
-    },
-    getCSS(themeMate) {
-      console.log('themeMate', themeMate);
-      const { width } = themeMate;
-      return `
-        width:${em(width)}
-      `;
     },
   },
   hover: {
@@ -59,11 +53,17 @@ export const DateWrapper = CSSComponent({
   normal: {
     selectNames: [],
     getCSS(themeMate, themeConfig) {
-      const { width: themeMateWidth } = themeMate;
-      const { propsConfig } = themeConfig;
-      const { width } = getThemeProperty({ ...propsConfig, width: themeMateWidth });
+      const {
+        propsConfig: {
+          mode,
+          normalSize: { width, height },
+        },
+      } = themeConfig;
+      const { isRange } = modeStyle(mode);
+      const newWidth = isRange ? (width - 1) / 2 : width;
       return `
-        width:${em(width)}
+        width:${em(newWidth)};
+
       `;
     },
   },
@@ -204,8 +204,10 @@ export const HeaderWeek = CSSComponent({
   normal: {
     selectNames: [],
     getCSS(themeMeta, themeConfig) {
-      const { width } = themeMeta;
       const { propsConfig } = themeConfig;
+      const {
+        normalSize: { width },
+      } = propsConfig;
       const { weekTitleWidth } = getThemeProperty({ ...propsConfig, width });
       return `
         width: ${em(weekTitleWidth)};
@@ -280,8 +282,8 @@ export const DateChild = CSSComponent({
   normal: {
     selectNames: [],
     getCSS(themeMeta, themeConfig) {
-      const { width } = themeMeta;
-      const { propsConfig } = themeConfig;
+      const { propsConfig = {} } = themeConfig;
+      const { normalSize: { width } = {} } = propsConfig;
       const { weekTitleWidth } = getThemeProperty({ ...propsConfig, width });
       return `
         width:${em(weekTitleWidth)};
@@ -367,6 +369,7 @@ function getHoverStyle(props) {
       background: { color: bgColor } = {},
       borderRadius: { topLeft, topRight, bottomRight, bottomLeft },
       boxShadow: { x, y, blur, spread, color: boxShadowColor, type } = {},
+      border,
     } = {},
   } = props;
   const t = getRadiusValue(topLeft);
@@ -377,7 +380,10 @@ function getHoverStyle(props) {
     color:${color};
     background:${bgColor};
     border-radius:${t} ${r} ${b} ${l};
-    box-shadow:${x}px ${y}px ${blur}px ${spread}px ${boxShadowColor} ${type === 'inset' ? type : ''}
+    box-shadow:${x}px ${y}px ${blur}px ${spread}px ${boxShadowColor} ${
+    type === 'inset' ? type : ''
+  };
+     ${getBorderStyle(border)};
   `;
 }
 function getNormalStyle(props) {
@@ -442,7 +448,7 @@ export const RangeWrap = CSSComponent({
   tag: 'div',
   className: 'RangeWrap',
   normal: {
-    selectNames: [['boxShadow'], ['borderRadius'], ['background', 'color']],
+    selectNames: [['boxShadow'], ['width'], ['borderRadius'], ['border'], ['background', 'color']],
     defaultTheme: {
       boxShadow: {
         color: 'rgba(0, 0, 0, 0.1)',
@@ -457,14 +463,6 @@ export const RangeWrap = CSSComponent({
       },
       width: 600,
     },
-    getCSS(themeMate, themeConfig) {
-      const { width } = themeMate;
-      const { propsConfig } = themeConfig;
-      const { rangeWrapWidth } = getThemeProperty({ ...propsConfig, width });
-      return `
-        width:${em(rangeWrapWidth)};
-      `;
-    },
   },
   hover: {
     selectNames: [],
@@ -477,7 +475,6 @@ export const RangeWrap = CSSComponent({
   },
   css: css`
     font-size: ${fontSize}rem;
-    width: ${props => em(getThemeProperty(props).rangeWrapWidth)};
   `,
 });
 const getDateChildStyle = props => {
@@ -506,6 +503,7 @@ const getDateChildStyle = props => {
       bottomLeft: radiusL,
     },
     boxShadow: { x, y, blur, spread, color: boxShadowColor, type } = {},
+    border,
   } = activeTheme;
   const {
     borderRadius: {
@@ -532,6 +530,7 @@ const getDateChildStyle = props => {
       background:${bgColor};
       color:${color};
       ${normalBorderRadius};
+      ${getBorderStyle(border)};
       box-shadow:${x}px ${y}px ${blur}px ${spread}px ${boxShadowColor} ${
       type === 'inset' ? type : ''
     };
@@ -615,4 +614,16 @@ function rangeBorderDireStyle(index, dire, rangeNormalTheme) {
 }
 function getRadiusValue(radiusValue: string | number) {
   return typeof radiusValue === 'number' ? em(radiusValue) : radiusValue;
+}
+function getBorderStyle(border) {
+  const {
+    top: { width: borderWidthT, color: botderColorT, style: borderSolidT },
+    right: { width: borderWidthR, color: botderColorR, style: borderSolidR },
+    bottom: { width: borderWidthB, color: botderColorB, style: borderSolidB },
+    left: { width: borderWidthL, color: botderColorL, style: borderSolidL },
+  } = border;
+  return `border-top:${em(borderWidthT)} ${botderColorT} ${borderSolidT};
+      border-right:${em(borderWidthR)} ${botderColorR} ${borderSolidR};
+      border-bottom:${em(borderWidthB)} ${botderColorB} ${borderSolidB};
+      border-left:${em(borderWidthL)} ${botderColorL} ${borderSolidL};`;
 }

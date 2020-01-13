@@ -11,7 +11,7 @@ import SwitchPanelMode from '../mode';
 import { differMonthAndYear, getIndexInRange, getCurrentPageDates } from '../utils/differUtils';
 import { formatValueIsValid, getIsSame } from '../utils/booleanUtils';
 import { getformatSymbol } from '../utils/utils';
-import getThemeProps from '../themeConfig/themeConfig';
+import { getFacePanelContain } from '../themeConfig/themeConfig';
 import { addMouseEvent } from '@lugia/theme-hoc';
 type TypeProps = {
   defaultValue?: Array<string>,
@@ -410,7 +410,7 @@ class Range extends Component {
       timeChange: this.timeChange,
       format,
     };
-    const themeProps = getThemeProps({ mode, getPartOfThemeProps }, 'FacePanelContain');
+    const { themeProps } = getFacePanelContain({ mode, getPartOfThemeProps });
     return (
       <Trigger
         themePass

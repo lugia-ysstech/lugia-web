@@ -6,7 +6,7 @@ export const TimeWrap = CSSComponent({
   tag: 'ul',
   className: 'TimeWrap',
   normal: {
-    selectNames: [],
+    selectNames: [['width']],
   },
   hover: {
     selectNames: [],
@@ -20,10 +20,8 @@ export const TimeWrap = CSSComponent({
   css: css`
     display: inline-block;
     font-size: ${fontSize}rem;
-    width: ${props => em(getThemeProperty(props).width)};
     border-right: ${props => (props.hasTimeWrapBorder ? '1px solid #ddd' : '')};
     zoom: 1;
-
     &::after {
       content: '';
       height: 0;
@@ -38,7 +36,7 @@ export const TimeCol = CSSComponent({
   tag: 'li',
   className: 'TimeCol',
   normal: {
-    selectNames: [],
+    selectNames: [['width']],
   },
   hover: {
     selectNames: [],
@@ -52,10 +50,10 @@ export const TimeCol = CSSComponent({
   css: css`
     float: left;
     border-right: ${props => (props.noBorder ? 'none' : `1px solid ${TimeColBorderColor}`)};
-    width: ${props => em(getThemeProperty(props).TimeColWidth)};
     overflow: hidden;
   `,
 });
+
 export const TimeTitle = CSSComponent({
   tag: 'div',
   className: 'TimeTitle',
