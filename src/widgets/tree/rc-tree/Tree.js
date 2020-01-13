@@ -72,7 +72,6 @@ class Tree extends React.Component {
     onDragEnter: noop,
     onDragOver: noop,
     onDragLeave: noop,
-    onDrop: noop,
     onDragEnd: noop,
     onMouseEnter: noop,
     onMouseLeave: noop,
@@ -81,8 +80,8 @@ class Tree extends React.Component {
 
   constructor(props) {
     super(props);
-    const { expandedKeys, checkedKeys, halfCheckedKeys } = props;
-    this.treeDrag = treeDragController.createTreeDrag();
+    const { expandedKeys, checkedKeys, halfCheckedKeys, groupKey } = props;
+    this.treeDrag = treeDragController.createTreeDrag({ groupKey });
     this.state = {
       expandedKeys,
       checkedKeys,
@@ -128,13 +127,6 @@ class Tree extends React.Component {
     }
     this.setState(newState);
   }
-
-  collectNodeInformation(nodeInformation = {}) {
-    this.treeDrag.collectNodeInformation(nodeInformation);
-  }
-  deletetNodeInformation(nodeName) {
-    this.treeDrag.deletetNodeInformation(nodeName);
-  }
   onMouseDown = mouseEvent => {
     this.treeDrag.mouseDown(mouseEvent);
   };
@@ -145,27 +137,30 @@ class Tree extends React.Component {
     });
   };
   onMouseMove = mouseEvent => {
-    this.treeDrag.mouseMove(mouseEvent, treeNode => {
-      const newState = {
-        dragNodesKeys: this.getDragNodesKeys(treeNode),
-      };
-      const expandedKeys = this.getExpandedKeys(treeNode, false);
-      if (expandedKeys) {
-        newState.expandedKeys = expandedKeys;
-      }
-      this.setState(newState);
-    });
+    const { onDrop } = this.props;
+    this.treeDrag.mouseMove(
+      mouseEvent,
+      treeNode => {
+        const newState = {
+          dragNodesKeys: this.getDragNodesKeys(treeNode),
+        };
+        const expandedKeys = this.getExpandedKeys(treeNode, false);
+        if (expandedKeys) {
+          newState.expandedKeys = expandedKeys;
+        }
+        this.setState(newState);
+      },
+      onDrop
+    );
   };
-  onMouseLeave = () => {
-    const { onMouseLeave } = this.props;
-    this.treeDrag.mouseLeave();
-    const { dargNode: { node: { props: { eventKey = '' } = {} } = {} } = {} } = this.treeDrag;
-    onMouseLeave && onMouseLeave(eventKey);
+  onMouseLeave = mouseEvent => {
+    const { onMouseLeave, onDragLeave, onDragEnd } = this.props;
+    const eventFn = onDragLeave;
+    this.treeDrag.mouseLeave(mouseEvent, eventFn, onDragEnd);
   };
-  onMouseEnter = () => {
-    const { onMouseEnter } = this.props;
-    this.treeDrag.onMouseEnter();
-    onMouseEnter && onMouseEnter();
+  onMouseEnter = mouseEvent => {
+    const { onDragEnter } = this.props;
+    this.treeDrag.onMouseEnter(mouseEvent, onDragEnter);
   };
   componentWillUnmount() {
     treeDragController.destroyTreeDrag(this.treeDrag.uuid);
@@ -472,9 +467,6 @@ class Tree extends React.Component {
       prefixCls: props.prefixCls,
       showIcon: props.showIcon,
       draggable: props.draggable,
-      dragOver: state.dragOverNodeKey === key && state.dropPosition === 0,
-      dragOverGapTop: state.dragOverNodeKey === key && state.dropPosition === -1,
-      dragOverGapBottom: state.dragOverNodeKey === key && state.dropPosition === 1,
       expanded: state.expandedKeys.indexOf(key) !== -1,
       selected: state.selectedKeys.indexOf(key) !== -1,
       parentIsHighlight: props.parentHighlightKeys.indexOf(key) !== -1,

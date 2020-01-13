@@ -7,6 +7,7 @@
 import Listener from '@lugia/listener';
 import React from 'react';
 import { DragCopyWrap } from '../../css/tree';
+import ReactDom from 'react-dom';
 
 type createTreeDragParameter = {
   groupKey?: string,
@@ -15,20 +16,24 @@ type createTreeDragParameter = {
 class TreeDragController {
   treeDrags: Object;
   groups: Object;
-  dragOutInfo: Object;
+  isDrag: boolean;
+  dragCopyListener: Listener;
+  dragNode: Object;
+  previousDragEnd: Function;
+  dragStart: boolean;
+  oldMousePosition: Object;
+  treeSource: string;
   constructor() {
     this.treeDrags = {};
     this.groups = {};
-    this.dragOutInfo = null;
   }
-  createTreeDrag = (parps: createTreeDragParameter = {}) => {
+  createTreeDrag = (props: createTreeDragParameter = {}) => {
     const treeGragUUID = this.createUUid();
     const treeListener = new Listener();
     const treeGrag = new TreeDrag(treeListener);
     treeGrag.uuid = treeGragUUID;
     this.treeDrags = { ...this.treeDrags, ...{ [treeGragUUID]: treeGrag } };
-
-    const { groupKey } = parps;
+    const { groupKey } = props;
     if (groupKey) {
       treeGrag.groupKey = groupKey;
       this.groups[groupKey]
@@ -40,6 +45,7 @@ class TreeDragController {
   getTreeDrag = (key: String) => {
     return this.treeDrags[key];
   };
+
   getGroupAllData = () => {
     return this.groups;
   };
@@ -53,7 +59,8 @@ class TreeDragController {
       }
     });
   };
-  deleteGroupRelationship = treeDragData => {
+
+  deleteGroupRelationship = (treeDragData: Object) => {
     const { uuid, groupKey } = treeDragData;
     const groupData = this.groups[groupKey];
     if (!groupData) return;
@@ -79,44 +86,110 @@ class TreeDragController {
     const uuid = s.join('');
     return uuid;
   };
-
-  setDragOutInfo = (info: Object) => {
-    this.dragOutInfo = info;
+  createDragCopyDiv = () => {
+    if (!this.isDrag) return;
+    document.addEventListener('mousemove', this.documentMouseMove);
+    document.addEventListener('mouseup', this.documentMouseUp);
+    if (!this.dragCopyListener) {
+      const maskNode = document.createElement('div');
+      window.document.body.appendChild(maskNode);
+      const treeListener = new Listener();
+      this.dragCopyListener = treeListener;
+      ReactDom.render(<DragCopy listener={treeListener} />, maskNode);
+    }
   };
-  destroyDragOutInfo = () => {
-    this.dragOutInfo = null;
+  destroyDragCopyDiv = () => {
+    if (this.dragCopyListener) {
+      this.dragCopyListener.emit('copyEnd');
+      document.removeEventListener('mousemove', this.documentMouseMove);
+      document.removeEventListener('mouseup', this.documentMouseUp);
+    }
   };
+  documentMouseMove = (mouseEvent: MouseEvent) => {
+    const { clientX: mouseX, clientY: mouseY } = mouseEvent;
+    const { node: { props: { title = '' } = {} } = {} } = treeDragController.dragNode;
+    this.dragCopyListener.emit('copyStart', {
+      top: mouseY + 22,
+      left: mouseX,
+      title,
+    });
+  };
+  documentMouseUp = () => {
+    document.removeEventListener('mousemove', this.documentMouseMove);
+    document.removeEventListener('mouseup', this.documentMouseUp);
+    this.previousDragEnd && this.previousDragEnd();
+    this.dragNode = undefined;
+    this.isDrag = false;
+    this.dragStart = false;
+    this.oldMousePosition = undefined;
+    this.previousDragEnd = undefined;
+    this.dragCopyListener.emit('copyEnd');
+  };
+  isSameGroup = (groupKey: string, currentTreeKey: string) => {
+    if (this.treeSource === currentTreeKey) return true;
+    const groupData = this.getGroupDataByGroupKey(groupKey);
+    return groupData ? groupData.includes(currentTreeKey) : false;
+  };
+  getDragNodeData() {
+    let res: Object = {};
+    if (!this.dragNode) return res;
+    const {
+      node: {
+        props: {
+          disabled,
+          expanded,
+          isLeaf,
+          item: { path, pid, value, text, currentNodeIndex } = {},
+        },
+      } = {},
+    } = this.dragNode;
+    res = { text, value, pid, path, disabled, expanded, isLeaf, currentNodeIndex };
+    return res;
+  }
 }
 const treeDragController = new TreeDragController();
 
-class TreeDrag extends Listener {
+class TreeDrag {
+  nodesInformation: Object;
+  listener: Listener;
+  uuid: string;
+  groupKey: string;
+  preName: string;
+  targetNode: Object;
+  mouseTimer: TimeoutID;
   constructor(listener: Listener) {
-    super();
     this.nodesInformation = {};
     this.listener = listener;
   }
   mouseDown(mouseEvent: SyntheticMouseEvent<HTMLButtonElement>) {
     const { clientX: mouseX, clientY: mouseY, button } = mouseEvent;
     if (button !== 0) return;
-    this.dragStart = true;
-    this.dargNode = this.calculationMouseHoverPosition({ mouseX, mouseY });
-    this.oldMousePosition = {
-      mouseX,
-      mouseY,
-    };
+    const dragNode = this.calculationMouseHoverPosition({ mouseX, mouseY });
+    const { node: { props: { disabled } = {} } = {} } = dragNode || {};
+    if (dragNode && !disabled) {
+      treeDragController.dragNode = dragNode;
+      treeDragController.dragStart = true;
+      treeDragController.treeSource = this.uuid;
+      treeDragController.oldMousePosition = {
+        mouseX,
+        mouseY,
+      };
+    }
   }
   mouseUp(mouseEvent: SyntheticMouseEvent<HTMLButtonElement>, callback: Function) {
-    this.dragStart = false;
+    treeDragController.dragStart = false;
     const { button } = mouseEvent;
-    if (!this.Isdrag || button !== 0) return;
-    this.Isdrag = false;
+    if (!treeDragController.isDrag || button !== 0) return;
+    treeDragController.isDrag = false;
     const { preName } = this;
     preName && this.listener.emit(`${preName}-setDrageState`, '');
     this.listener.emit('copyEnd');
-    const isSelf = treeDragController.source ? treeDragController.source === this.uuid : true;
-    this.dragStart = false;
-    this.Isdrag = false;
-    if (!this.targetNode || !this.dargNode) return;
+    const isSelf = treeDragController.treeSource
+      ? treeDragController.treeSource === this.uuid
+      : true;
+    treeDragController.dragStart = false;
+    treeDragController.isDrag = false;
+    if (!this.targetNode || !treeDragController.dragNode) return;
     const {
       nodeEmitName: targetkey,
       node: {
@@ -138,7 +211,7 @@ class TreeDrag extends Listener {
       node: {
         props: { item: dargData, translateTreeData },
       },
-    } = this.dargNode;
+    } = treeDragController.dragNode;
 
     const {
       pid: dragtPid,
@@ -148,9 +221,7 @@ class TreeDrag extends Listener {
       preNodeIndex: dargPreIndex,
     } = dargData;
     const pidArray = targetPath.split('/');
-    if (pidArray.includes(dragkey) && isSelf) {
-      return;
-    }
+    if (pidArray.includes(dragkey) && isSelf) return;
     if (targetkey === dragkey && isSelf) return;
     const dropToGap = targetPositon !== 'dragOver' ? true : false;
     const res = {
@@ -192,26 +263,32 @@ class TreeDrag extends Listener {
         ...res.targetInfo,
       };
     }
-    treeDragController.dragOutInfo = undefined;
+    const sameGroup = treeDragController.isSameGroup(this.groupKey, this.uuid);
+    sameGroup && callback(res);
+    treeDragController.previousDragEnd && treeDragController.previousDragEnd();
     treeDragController.oldMousePosition = undefined;
-    treeDragController.source = undefined;
-    this.dargNode = undefined;
-    callback(res);
+    treeDragController.treeSource = '';
+    treeDragController.dragNode = undefined;
   }
-  mouseMove(mouseEvent: SyntheticMouseEvent<HTMLButtonElement>, calculateTelescopic: Function) {
-    if (!this.dragStart) return;
+  mouseMove(
+    mouseEvent: SyntheticMouseEvent<HTMLButtonElement>,
+    calculateTelescopic: Function,
+    onDrop: Function
+  ) {
+    if (!treeDragController.dragStart) return;
     const { clientX: mouseX, clientY: mouseY } = mouseEvent;
-    const { mouseX: oldX = 0, mouseY: oldY = 0 } = this.oldMousePosition || {};
+    const { mouseX: oldX = 0, mouseY: oldY = 0 } = treeDragController.oldMousePosition || {};
     if (Math.abs(oldX - mouseX) < 20 && Math.abs(oldY - mouseY) < 20) return;
-    this.Isdrag = true;
-    if (!this.dargNode) return;
-    const { node: { props: { title = '' } = {} } = {} } = this.dargNode;
+    treeDragController.isDrag = true;
+    if (!treeDragController.dragNode) return;
+    const { node: { props: { title = '' } = {} } = {} } = treeDragController.dragNode;
     this.listener.emit('copyStart', {
       top: mouseY + 22,
       left: mouseX,
       title,
     });
-    const { node: treeNode } = this.dargNode;
+    if (!onDrop) return;
+    const { node: treeNode } = treeDragController.dragNode;
     if (!treeNode) return;
     const { props: { isLeaf, expanded } = {} } = treeNode;
     if (!isLeaf && expanded) {
@@ -219,7 +296,7 @@ class TreeDrag extends Listener {
     }
     clearTimeout(this.mouseTimer);
     this.mouseTimer = setTimeout(() => {
-      if (!this.dragStart) return;
+      if (!treeDragController.dragStart) return;
       const targetNode = this.calculationMouseHoverPosition({
         mouseX,
         mouseY,
@@ -229,56 +306,49 @@ class TreeDrag extends Listener {
       const { preName } = this;
       this.targetNode = targetNode;
       preName && this.listener.emit(`${preName}-setDrageState`, '');
-      nodeEmitName && position && this.listener.emit(`${nodeEmitName}-setDrageState`, position);
+      const sameGroup = treeDragController.isSameGroup(this.groupKey, this.uuid);
+      const dragState = sameGroup ? position : 'noDrop';
+      nodeEmitName && position && this.listener.emit(`${nodeEmitName}-setDrageState`, dragState);
       this.preName = nodeEmitName;
     }, 100);
   }
-  mouseLeave() {
+  mouseLeave(
+    mouseEvent: SyntheticMouseEvent<HTMLButtonElement>,
+    eventFn: Function,
+    onDragEnd: Function
+  ) {
+    if (!treeDragController.isDrag || !treeDragController.dragNode) return;
     clearTimeout(this.mouseTimer);
     this.listener.emit(`${this.preName}-setDrageState`, '');
     this.listener.emit('copyEnd');
-    if (this.dragStart && this.dargNode && this.oldMousePosition) {
-      treeDragController.source = this.uuid;
-      treeDragController.dragOutInfo = this.dargNode;
-      treeDragController.oldMousePosition = this.oldMousePosition;
-      document.addEventListener('mouseup', this.documentMouseUp);
+    if (this.isShowDargCopyDiv()) {
+      treeDragController.dragStart = false;
+      treeDragController.isDrag = false;
+    } else {
+      treeDragController.createDragCopyDiv();
+      treeDragController.previousDragEnd = onDragEnd;
     }
-    this.dragStart = false;
-    this.Isdrag = false;
-    if (!treeDragController.getGroupDataByGroupKey(this.groupKey) && !this.dargNode) return;
-    // Todo
-    treeDragController.dragOutInfo = this.dargNode;
-    document.addEventListener('mousemove', this.documentMouseMove);
-    document.addEventListener('mouseup');
+    const nodeData = treeDragController.getDragNodeData();
+    eventFn && eventFn({ mouseEvent, nodeData });
   }
-  documentMouseMove(mouseEvent: SyntheticMouseEvent<HTMLButtonElement>) {
-    console.log('documentMouseMove');
-  }
-  documentMouseUp() {
-    console.log('documentMouseUp');
-  }
-  mouseEnter() {
-    // Todo 鼠标进入触发
-    document.removeEventListener('mousemove', this.documentMouseMove);
-    document.removeEventListener('mouseup', this.documentMouseUp);
+  onMouseEnter(mouseEvent: SyntheticMouseEvent<HTMLButtonElement>, onMouseEnter: Function) {
+    if (!treeDragController.isDrag) return;
+    treeDragController.destroyDragCopyDiv();
+    const nodeData = treeDragController.getDragNodeData();
+    onMouseEnter && onMouseEnter({ mouseEvent, nodeData });
   }
 
-  documentMouseUp = () => {
-    document.removeEventListener('mouseup', this.documentMouseUp);
-    treeDragController.source = undefined;
-    treeDragController.dragOutInfo = undefined;
-    treeDragController.oldMousePosition = undefined;
-  };
-  onMouseEnter() {
-    if (treeDragController.dragOutInfo) {
-      this.dragStart = true;
-      this.dargNode = treeDragController.dragOutInfo;
-      this.oldMousePosition = treeDragController.oldMousePosition;
-    } else {
-      this.dargNode = undefined;
-      this.oldMousePosition = undefined;
+  isShowDargCopyDiv() {
+    const groupData = treeDragController.getGroupDataByGroupKey(this.groupKey);
+    let res = false;
+    if (treeDragController.treeSource === this.uuid && groupData && groupData.length <= 1) {
+      res = true;
+    } else if (treeDragController.treeSource === this.uuid && !groupData) {
+      res = true;
     }
+    return res;
   }
+
   calculationMouseHoverPosition(mouseInfo: Object) {
     const { mouseX, mouseY } = mouseInfo;
     if (!this.nodesInformation) return {};
@@ -333,7 +403,7 @@ export type DragCopyState = {
   position: DragPosition,
 };
 export type PropsCopyState = {
-  treeDrag: TreeDrag,
+  listener: Listener,
 };
 export default class DragCopy extends React.Component<PropsCopyState, DragCopyState> {
   constructor(props: Object) {
