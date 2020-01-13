@@ -322,7 +322,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
 
   static getDerivedStateFromProps(props: PaginationProps, state: PaginationState) {
     const statePageSize = state ? state.pageSize : 0;
-    const propsPageSize = props ? props.pageSize : 0;
+    const propsPageSize = props.pageSize ? props.pageSize : props.defaultPageSize;
     const propsCurrent = props.current;
 
     let theCurrent = state ? state.current : props.defaultCurrent;
