@@ -196,6 +196,7 @@ class Dates extends Component<TypeProps, any> {
           <DateChildInner
             themeProps={dateTheme}
             hoverTheme={hoverTheme}
+            activeTheme={activeTheme}
             normalTheme={normalTheme}
             outMonthNormalTheme={outMonthNormalTheme}
             mode={mode}
