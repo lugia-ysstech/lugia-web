@@ -55,6 +55,12 @@
       "propsDefaultValue": false
     },
 
+    "groupKey": {
+      "type": "string",
+      "desc": "多tree的分组标识,当两个tree的groupKey值相同时.可实现相互拖拽",
+      "propsDefaultValue": ""
+    },
+
     "data": {
       "type": "object[]",
       "desc": "生成选择项的数据",
@@ -172,6 +178,7 @@
         }
       ]
     },
+
     "onDrop": {
       "desc": "drop 触发时调用",
       "args": [
@@ -194,9 +201,52 @@
           "name": "translateTreeData",
           "desc": "是否开启嵌套数据生成Tree",
           "type": "boolean"
+        },
+        {
+          "name": "isSelf",
+          "desc": "拖拽是否发生在同一tree中",
+          "type": "boolean"
         }
       ]
     },
+
+    "onDragEnd": {
+      "desc": "拖拽结束是触发",
+      "args": []
+    },
+
+    "onDragEnter": {
+      "desc": "拖拽状态进入tree时触发",
+      "args": [
+        {
+          "name": "mouseEvent",
+          "desc": "mouseevent对象",
+          "type": "object"
+        },
+        {
+          "name": "targetInfo",
+          "desc": "拖拽节点信息",
+          "type": "object"
+        }
+      ]
+    },
+
+    "onDragLeave": {
+      "desc": "拖拽状态离开tree时触发",
+      "args": [
+        {
+          "name": "mouseEvent",
+          "desc": "mouseevent对象",
+          "type": "object"
+        },
+        {
+          "name": "nodeData",
+          "desc": "拖拽节点信息",
+          "type": "object"
+        }
+      ]
+    },
+
     "onExpand": {
       "desc": "展开/收起节点时触发",
       "args": [
