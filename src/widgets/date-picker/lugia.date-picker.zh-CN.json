@@ -150,14 +150,14 @@
     "FacePanelContain": {
       "name": "日期面板",
       "desc": "日期面板配置",
-      "normal": [["width"], ["height"], ["background"], ["boxShadow"], ["borderRadius"]]
+      "normal": [["width"], ["height"], ["background"], ["border"], ["boxShadow"], ["borderRadius"]]
     },
     "InMonthDate": {
       "name": "日期",
       "desc": "日期配置",
       "normal": [["color"]],
-      "hover": [["color"], ["background"], ["borderRadius"]],
-      "active": [["color"], ["background"], ["borderRadius"], ["boxShadow"]]
+      "hover": [["color"], ["background"], ["borderRadius"], ["boxShadow"], ["border"]],
+      "active": [["color"], ["background"], ["borderRadius"], ["boxShadow"], ["border"]]
     },
     "OutMonthDate": {
       "name": "非本月日期",

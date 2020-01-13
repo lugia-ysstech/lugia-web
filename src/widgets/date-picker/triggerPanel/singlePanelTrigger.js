@@ -16,7 +16,7 @@ import { PanelWrap } from '../styled/styled';
 import Theme from '../../theme';
 import Widget from '../../consts/index';
 import SwitchPanelMode from '../mode';
-import getThemeProps from '../themeConfig/themeConfig';
+import getThemeProps, { getFacePanelContain } from '../themeConfig/themeConfig';
 import { addMouseEvent } from '@lugia/theme-hoc';
 type TypeProps = {
   defaultValue?: string,
@@ -105,9 +105,8 @@ class DateInput extends Component<TypeProps, TypeState> {
     const newProps = getNewProps(this.props);
     const { mode } = this.props;
     const { isTime } = modeStyle(mode);
-    const themeProps = getThemeProps({ mode, getPartOfThemeProps }, 'FacePanelContain');
+    const { themeProps } = getFacePanelContain({ mode, getPartOfThemeProps }, 'FacePanelContain');
     const inputContainProps = getThemeProps({ mode, getPartOfThemeProps }, 'Container');
-
     const inputPrefixProps = getThemeProps({ mode, getPartOfThemeProps }, 'InputPrefix');
     const inputSuffixProps = getThemeProps({ mode, getPartOfThemeProps }, 'InputSuffix');
     const clearButtonProps = getThemeProps({ mode, getPartOfThemeProps }, 'ClearButton');
