@@ -93,6 +93,13 @@ export type TreeState = {
   exchange2: Array<TreeDataItem>,
 };
 
+type UpdataDataParameter = {
+  pid: string,
+  deleteCount: number,
+  fixTargetCurrentIndex: number,
+  nextPathArray: Array<string>,
+};
+
 export type TreeProps = {};
 const info = [
   {
@@ -124,7 +131,14 @@ const info = [
 const info1 = [
   { value: '0', text: '北京分行' },
   { value: '0.0', text: '朝阳支行办事处', pid: '0', path: '0' },
-  { value: '0.0.0', text: '朝阳支行办事处-1', pid: '0.0', path: '0/0.0', isLeaf: true },
+  {
+    value: '0.0.0',
+    text: '朝阳支行办事处-1',
+    pid: '0.0',
+    path: '0/0.0',
+    isLeaf: true,
+    notCanSelect1: true,
+  },
   { value: '0.0.1', text: '朝阳支行办事处-2', pid: '0.0', path: '0/0.0', isLeaf: true },
   { value: '0.1', text: '海淀支行办事处', pid: '0', path: '0', isLeaf: true },
   { value: '0.2', text: '石景山支行办事处', pid: '0', path: '0', isLeaf: true },
@@ -142,10 +156,11 @@ const exchange1 = [
       {
         value: '0-0',
         text: '运动分类',
+        notCanSelect1: true,
         children: [
-          { value: '0-0-0', text: '水中游' },
-          { value: '0-0-1', text: '地上走' },
-          { value: '0-0-2', text: '空中飞' },
+          { value: '0-0-0', text: '水中游', notCanSelect1: true },
+          { value: '0-0-1', text: '地上走', notCanSelect1: true },
+          { value: '0-0-2', text: '空中飞', notCanSelect1: true },
         ],
       },
       {
@@ -159,7 +174,7 @@ const exchange1 = [
         children: [
           { value: '0-2-0', text: '植物动物' },
           { value: '0-2-1', text: '肉食动物' },
-          { value: '0-2-1', text: '杂食动物' },
+          { value: '0-2-2', text: '杂食动物' },
         ],
       },
       {
@@ -168,9 +183,9 @@ const exchange1 = [
         children: [
           { value: '0-3-0', text: '鱼类' },
           { value: '0-3-1', text: '鸟类' },
-          { value: '0-3-1', text: '昆虫' },
-          { value: '0-3-1', text: '哺乳类' },
-          { value: '0-3-1', text: '软体类' },
+          { value: '0-3-2', text: '昆虫' },
+          { value: '0-3-3', text: '哺乳类' },
+          { value: '0-3-4', text: '软体类' },
         ],
       },
     ],
@@ -207,6 +222,7 @@ const switchIconNames = {
   close: 'lugia-icon-direction_right',
 };
 export default class TreeDome extends React.Component<TreeProps, TreeState> {
+  dragObj: Object;
   constructor(props: TreeProps) {
     super(props);
     this.state = {
@@ -214,6 +230,7 @@ export default class TreeDome extends React.Component<TreeProps, TreeState> {
       info1,
       exchange1,
       exchange2,
+      showFlag: true,
     };
   }
   recursion = (data: Array<TreeDataItem>, key: string, callback: Function) => {
@@ -318,10 +335,14 @@ export default class TreeDome extends React.Component<TreeProps, TreeState> {
     this.setState({ info1: [...metadata] });
   };
 
-  dragTargetToTopHandler(targetIndex, InsertNodeinfos = [], targetParentIndex) {
+  dragTargetToTopHandler(
+    targetIndex: number,
+    InsertNodeinfos: Array<Object> = [],
+    targetParentIndex: number
+  ) {
     const { info1: metadata } = this.state;
     // 拖拽数据插入到响应位置
-    const { pid: targetPid = null } = metadata[targetIndex];
+    const { pid: targetPid = '' } = metadata[targetIndex];
     metadata.splice(targetIndex, 0, ...InsertNodeinfos);
     let nextPathArray = [];
     // 重新计算path
@@ -338,10 +359,14 @@ export default class TreeDome extends React.Component<TreeProps, TreeState> {
     });
   }
 
-  dragTargetToBottomHandler(targetIndex, InsertNodeinfos = [], targetParentIndex) {
+  dragTargetToBottomHandler(
+    targetIndex: number,
+    InsertNodeinfos: Array<Object> = [],
+    targetParentIndex: number
+  ) {
     const { info1: metadata } = this.state;
     const count = this.calculationDragCount(targetIndex);
-    const { pid: targetPid = null } = metadata[targetIndex];
+    const { pid: targetPid = '' } = metadata[targetIndex];
     metadata.splice(targetIndex + count, 0, ...InsertNodeinfos);
     let nextPathArray = [];
     if (targetPid) {
@@ -357,10 +382,10 @@ export default class TreeDome extends React.Component<TreeProps, TreeState> {
     });
   }
 
-  dragTargetToInHandler(targetIndex, InsertNodeinfos = []) {
+  dragTargetToInHandler(targetIndex: number, InsertNodeinfos: Array<Object> = []) {
     const { info1: metadata } = this.state;
     metadata.splice(targetIndex + 1, 0, ...InsertNodeinfos);
-    const { value = null } = metadata[targetIndex];
+    const { value = '' } = metadata[targetIndex];
     let nextPathArray = [];
     const updataItem = metadata[targetIndex];
     updataItem.isLeaf = false;
@@ -373,7 +398,7 @@ export default class TreeDome extends React.Component<TreeProps, TreeState> {
     });
   }
 
-  calculationDragCount(dargCurrentIndex) {
+  calculationDragCount(dargCurrentIndex: number) {
     const { info1: metadata } = this.state;
     let deleteCount = 1;
     for (let i = dargCurrentIndex + 1, max = metadata.length; i < max; i++) {
@@ -388,12 +413,12 @@ export default class TreeDome extends React.Component<TreeProps, TreeState> {
     return deleteCount;
   }
 
-  updataDataPath(parameter) {
+  updataDataPath(parameter: UpdataDataParameter) {
     const { info1: metadata } = this.state;
     const { pid, deleteCount, fixTargetCurrentIndex, nextPathArray } = parameter;
     const startIndex = fixTargetCurrentIndex;
     const endIndex = fixTargetCurrentIndex + deleteCount;
-    let prePathArray;
+    let prePathArray: Array<string> = [];
     for (let i = startIndex; i < endIndex; i++) {
       const tem = metadata[i];
       if (i === startIndex) {
@@ -408,19 +433,22 @@ export default class TreeDome extends React.Component<TreeProps, TreeState> {
     }
   }
 
-  mouseLeave = (nodeKey: string) => {
+  mouseLeave = (node: Object) => {
+    const { nodeData: { value: nodeKey } = {} } = node;
     const { exchange1: info } = this.state;
     let dragObj: TreeDataItem = {};
     this.recursion(info, nodeKey, (item, index, data) => {
-      dragObj = data.splice(index, index + 1);
+      dragObj = item;
     });
-    this.dargObj = JSON.parse(JSON.stringify(dragObj[0]));
+    this.dragObj = JSON.parse(JSON.stringify(dragObj));
   };
 
-  mouseEnter = () => {
-    console.log('todo');
+  mouseEnter = (node: Object) => {
+    console.log('todo', node);
   };
-
+  onDragEnd = () => {
+    this.dragObj = null;
+  };
   exchangeOnDrop = (obj: Object) => {
     const {
       dragInfo: { key } = {},
@@ -438,8 +466,9 @@ export default class TreeDome extends React.Component<TreeProps, TreeState> {
         dragObj = item;
       });
     } else {
-      dragObj = this.dargObj;
+      dragObj = this.dragObj;
     }
+    if (!dragObj) return;
     if (dropToGap) {
       if (pid) {
         this.recursion(info, pid, (item, index, data) => {
@@ -471,14 +500,32 @@ export default class TreeDome extends React.Component<TreeProps, TreeState> {
           <div style={{ flex: 1 }}>
             <Tree
               data={exchange1}
+              igronSelectField={'notCanSelect1'}
+              groupKey={'111'}
               expandAll
               theme={config}
               translateTreeData
               autoHeight
+              onDragLeave={this.mouseLeave}
+              onDragEnd={this.onDragEnd}
               draggable
               parentIsHighlight
-              onMouseLeave={this.mouseLeave}
-              onMouseEnter={this.mouseEnter}
+              switchIconNames={switchIconNames}
+            />
+          </div>
+          <div style={{ flex: 1 }}>
+            <Tree
+              data={exchange2}
+              draggable
+              onDragEnter={this.mouseEnter}
+              onDragEnd={this.onDragEnd}
+              onDrop={this.exchangeOnDrop}
+              groupKey={'111'}
+              translateTreeData
+              expandAll
+              theme={config}
+              autoHeight
+              parentIsHighlight
               switchIconNames={switchIconNames}
             />
           </div>
@@ -504,7 +551,7 @@ export default class TreeDome extends React.Component<TreeProps, TreeState> {
               expandAll
               theme={config}
               translateTreeData
-              autoHeight
+              groupKey={'111'}
               draggable
               parentIsHighlight
               onDrop={this.onDrop}

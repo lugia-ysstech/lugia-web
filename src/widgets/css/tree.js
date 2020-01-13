@@ -150,6 +150,16 @@ const getDragState = dragState => {
       left: 0;
       bottom: 0;
     }`;
+  } else if (dragState === 'noDrop') {
+    return ` ::after {
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      cursor: not-allowed;
+    }`;
   }
   return '';
 };
