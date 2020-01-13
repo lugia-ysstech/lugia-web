@@ -25,6 +25,8 @@ type NumberTurnProps = {
   count?: number,
   overflowCount: number,
   themeProps: Object,
+  getPartOfThemeProps: Function,
+  singleTheme: boolean,
 };
 
 const OutInner = CSSComponent({
@@ -149,13 +151,19 @@ class NumberTurn extends React.Component<NumberTurnProps, NumberTurnState> {
     const { count = 0, overflow } = this.state;
     const { singleTheme = false, themeProps, getPartOfThemeProps } = this.props;
     const bitCnt = this.getBitCnt(count);
+    const propsConfig = {
+      props: {
+        overflow,
+        bitCnt,
+      },
+    };
     const theThemeProps = singleTheme
       ? themeProps
-      : getPartOfThemeProps('BadgeNumber', {
-          props: {
-            overflow,
-            bitCnt,
-          },
+      : getPartOfThemeProps('Badge', {
+          ...propsConfig,
+        }) ||
+        getPartOfThemeProps('BadgeNumber', {
+          ...propsConfig,
         });
 
     return (
@@ -173,7 +181,10 @@ class NumberTurn extends React.Component<NumberTurnProps, NumberTurnState> {
     const countStr = (count + '').split('');
     const result = [];
     const { singleTheme = false, themeProps, getPartOfThemeProps } = this.props;
-    const theThemeProps = singleTheme ? themeProps : getPartOfThemeProps('BadgeNumber');
+    const theThemeProps = singleTheme
+      ? themeProps
+      : getPartOfThemeProps('BadgeNumber') || getPartOfThemeProps('Badge');
+
     for (let i = 0; i < bitCnt; i++) {
       const bitValue = Number(countStr[i]);
       result.push(
@@ -199,7 +210,9 @@ class NumberTurn extends React.Component<NumberTurnProps, NumberTurnState> {
       y = -908;
     }
     const { singleTheme = false, themeProps, getPartOfThemeProps } = this.props;
-    const theThemeProps = singleTheme ? themeProps : getPartOfThemeProps('BadgeNumber');
+    const theThemeProps = singleTheme
+      ? themeProps
+      : getPartOfThemeProps('BadgeNumber') || getPartOfThemeProps('Badge');
     return (
       <BitOut themeProps={theThemeProps} y={y}>
         +
@@ -211,7 +224,9 @@ class NumberTurn extends React.Component<NumberTurnProps, NumberTurnState> {
     const total = 10;
     const call: any = Function.prototype.call;
     const { singleTheme = false, themeProps, getPartOfThemeProps } = this.props;
-    const theThemeProps = singleTheme ? themeProps : getPartOfThemeProps('BadgeNumber');
+    const theThemeProps = singleTheme
+      ? themeProps
+      : getPartOfThemeProps('BadgeNumber') || getPartOfThemeProps('Badge');
     const array: Array<any> = Array(...Array(total))
       .map(call, Number)
       .map(v => <Bit themeProps={theThemeProps}>{v}</Bit>);

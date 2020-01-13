@@ -38,7 +38,7 @@
         "count": 1
       },
       "theme": {
-        "BadgeNumber": {
+        "Badge": {
           "name": "数字徽标",
           "desc": "徽标数大于0时,显示的数字",
           "normal": [
@@ -61,7 +61,7 @@
     }
   },
   "theme": {
-    "BadgeDot": {
+    "Badge": {
       "name": "点状徽标",
       "desc": "徽标数不显示数字时的样式展示",
       "normal": [

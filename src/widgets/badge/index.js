@@ -115,11 +115,12 @@ class BadgeBox extends Component<BadgeProps, BadgeState> {
   static displayName = Widget.Badge;
 
   getDot() {
-    const { showZero = false, count = 0 } = this.props;
+    const { showZero = false, count = 0, getPartOfThemeProps } = this.props;
     const hasCount = 'count' in this.props;
     const hasShowZero = 'showZero' in this.props;
     const isZero = count === 0 || !count;
-    const dot = <Dot themeProps={this.props.getPartOfThemeProps('BadgeDot')} />;
+    const theThemeProps = getPartOfThemeProps('BadgeDot') || getPartOfThemeProps('Badge');
+    const dot = <Dot themeProps={theThemeProps} />;
 
     if (hasShowZero && isZero) {
       return showZero ? this.getNumberTurn(0) : dot;
@@ -131,21 +132,20 @@ class BadgeBox extends Component<BadgeProps, BadgeState> {
   }
 
   getNumberTurn(count: ?number) {
-    const { overflowCount } = this.props;
+    const { overflowCount, getPartOfThemeHocProps } = this.props;
+    const theThemeProps = { ...getPartOfThemeHocProps('BadgeNumber') } || {
+      ...getPartOfThemeHocProps('Badge'),
+    };
     return (
-      <NumberTurn
-        count={count}
-        overflowCount={overflowCount}
-        {...this.props.getPartOfThemeHocProps('BadgeNumber')}
-        singleTheme
-      />
+      <NumberTurn count={count} overflowCount={overflowCount} singleTheme {...theThemeProps} />
     );
   }
   render() {
-    const { children } = this.props;
+    const { children, getPartOfThemeProps } = this.props;
     const hasChildren = !!children;
+    const theThemeProps = getPartOfThemeProps('BadgeDot') || getPartOfThemeProps('Badge');
     return (
-      <Container hasChildren={hasChildren} themeProps={this.props.getPartOfThemeProps('BadgeDot')}>
+      <Container hasChildren={hasChildren} themeProps={theThemeProps}>
         {children}
         {this.getDot()}
       </Container>
