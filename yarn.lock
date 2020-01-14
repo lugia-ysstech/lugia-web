@@ -1058,10 +1058,10 @@
     immutable "^3.8.2"
     yargs "^13.2.2"
 
-"@lugia/devtools-material@^1.0.37":
-  version "1.0.37"
-  resolved "https://registry.npmjs.org/@lugia/devtools-material/-/devtools-material-1.0.37.tgz#45a58cdbcd195a208486f92d706ced463f594c95"
-  integrity sha512-oalJILKfr272b8N26u+1btCAI5s2aKR2xCRdWkv+1+/qfg0z8E1mgA0HDqWhI5OHShajjHywyfqH0BKJUjBDTQ==
+"@lugia/devtools-material@^1.0.39":
+  version "1.0.39"
+  resolved "https://registry.npmjs.org/@lugia/devtools-material/-/devtools-material-1.0.39.tgz#be3d4d2cbc9bc119ff33b0fd9f530a5584868a01"
+  integrity sha512-USSP0IMd7ccII2tmzWZVtsliDSdFc3FQEo4Ecg1vBaxBFWrGibhJZwzRnvpbgfDWcdcgjKZvr7k6Wvm7LZfEtQ==
   dependencies:
     babel-runtime "^6.26.0"
     immutable "^3.8.2"
