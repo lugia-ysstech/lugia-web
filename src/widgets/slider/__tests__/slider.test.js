@@ -19,6 +19,21 @@ describe('default', () => {
       .at(0)
       .instance();
   }
+  const config = {
+    [Widgets.Slider]: {
+      Container: {
+        normal: {
+          width: 300,
+        },
+      },
+      SliderButton: {
+        normal: {
+          width: 16,
+          height: 16,
+        },
+      },
+    },
+  };
   it('Wrapper', () => {
     const target = <Wrapper />;
     expect(renderer.create(target).toJSON()).toMatchSnapshot();
@@ -186,7 +201,11 @@ describe('default', () => {
         },
       },
     };
-    const target = mount(<Slider maxValue={25} defaultValue={5} minValue={15} marks={marks} />);
+    const target = mount(
+      <Theme config={config}>
+        <Slider maxValue={25} defaultValue={5} minValue={15} marks={marks} />
+      </Theme>
+    );
     // publicMove
     getTarget(target).offsetLeft = 70;
     getTarget(target).publicmove(186, 101, 0);
@@ -196,23 +215,7 @@ describe('default', () => {
   });
   it('Function publicmove 横向 单滑块', async () => {
     const target = mount(
-      <Theme
-        config={{
-          [Widgets.Slider]: {
-            SliderTrack: {
-              normal: {
-                width: 284,
-              },
-            },
-            SliderButton: {
-              normal: {
-                width: 16,
-                height: 16,
-              },
-            },
-          },
-        }}
-      >
+      <Theme config={config}>
         <Slider minValue={0} defaultValue={0} maxValue={30} />
       </Theme>
     );
@@ -232,23 +235,7 @@ describe('default', () => {
   });
   it('Function publicmove 横向 双滑块', async () => {
     const target = mount(
-      <Theme
-        config={{
-          [Widgets.Slider]: {
-            SliderTrack: {
-              normal: {
-                width: 284,
-              },
-            },
-            SliderButton: {
-              normal: {
-                width: 16,
-                height: 16,
-              },
-            },
-          },
-        }}
-      >
+      <Theme config={config}>
         <Slider minValue={0} defaultValue={[0, 20]} maxValue={30} />
       </Theme>
     );
@@ -266,23 +253,7 @@ describe('default', () => {
   });
   it('Function publicmove 纵向 单滑块', async () => {
     const target = mount(
-      <Theme
-        config={{
-          [Widgets.Slider]: {
-            SliderTrack: {
-              normal: {
-                width: 284,
-              },
-            },
-            SliderButton: {
-              normal: {
-                width: 16,
-                height: 16,
-              },
-            },
-          },
-        }}
-      >
+      <Theme config={config}>
         <Slider defaultValue={10} vertical maxValue={30} minValue={0} />
       </Theme>
     );
@@ -300,23 +271,7 @@ describe('default', () => {
   });
   it('Function publicmove 纵向 双滑块', async () => {
     const target = mount(
-      <Theme
-        config={{
-          [Widgets.Slider]: {
-            SliderTrack: {
-              normal: {
-                width: 284,
-              },
-            },
-            SliderButton: {
-              normal: {
-                width: 16,
-                height: 16,
-              },
-            },
-          },
-        }}
-      >
+      <Theme config={config}>
         <Slider defaultValue={[10, 20]} tips vertical maxValue={30} minValue={0} />
       </Theme>
     );
@@ -336,23 +291,7 @@ describe('default', () => {
   });
   it('Function getMoveState 横向 单滑块', async () => {
     const target = mount(
-      <Theme
-        config={{
-          [Widgets.Slider]: {
-            SliderTrack: {
-              normal: {
-                width: 284,
-              },
-            },
-            SliderButton: {
-              normal: {
-                width: 16,
-                height: 16,
-              },
-            },
-          },
-        }}
-      >
+      <Theme config={config}>
         <Slider minValue={0} defaultValue={0} maxValue={30} />
       </Theme>
     );
@@ -364,23 +303,7 @@ describe('default', () => {
   });
   it('Function getMoveState 横向 双滑块', async () => {
     const target = mount(
-      <Theme
-        config={{
-          [Widgets.Slider]: {
-            SliderTrack: {
-              normal: {
-                width: 284,
-              },
-            },
-            SliderButton: {
-              normal: {
-                width: 16,
-                height: 16,
-              },
-            },
-          },
-        }}
-      >
+      <Theme config={config}>
         <Slider minValue={0} defaultValue={[5, 10]} maxValue={30} />
       </Theme>
     );
@@ -392,23 +315,7 @@ describe('default', () => {
   });
   it('Function getMoveState 纵向 单滑块', async () => {
     const target = mount(
-      <Theme
-        config={{
-          [Widgets.Slider]: {
-            SliderTrack: {
-              normal: {
-                width: 284,
-              },
-            },
-            SliderButton: {
-              normal: {
-                width: 16,
-                height: 16,
-              },
-            },
-          },
-        }}
-      >
+      <Theme config={config}>
         <Slider vertical />
       </Theme>
     );
@@ -418,23 +325,7 @@ describe('default', () => {
   });
   it('Function getMoveState 纵向 双滑块', async () => {
     const target = mount(
-      <Theme
-        config={{
-          [Widgets.Slider]: {
-            SliderTrack: {
-              normal: {
-                width: 284,
-              },
-            },
-            SliderButton: {
-              normal: {
-                width: 16,
-                height: 16,
-              },
-            },
-          },
-        }}
-      >
+      <Theme config={config}>
         <Slider vertical />
       </Theme>
     );
@@ -444,23 +335,7 @@ describe('default', () => {
   });
   it('Function getNewIndex  单滑块', async () => {
     const target = mount(
-      <Theme
-        config={{
-          [Widgets.Slider]: {
-            SliderTrack: {
-              normal: {
-                width: 284,
-              },
-            },
-            SliderButton: {
-              normal: {
-                width: 16,
-                height: 16,
-              },
-            },
-          },
-        }}
-      >
+      <Theme config={config}>
         <Slider defaultValue={0} />
       </Theme>
     );
@@ -473,23 +348,7 @@ describe('default', () => {
   });
   it('Function getNewIndex  双滑块', async () => {
     const target = mount(
-      <Theme
-        config={{
-          [Widgets.Slider]: {
-            SliderTrack: {
-              normal: {
-                width: 284,
-              },
-            },
-            SliderButton: {
-              normal: {
-                width: 16,
-                height: 16,
-              },
-            },
-          },
-        }}
-      >
+      <Theme config={config}>
         <Slider defaultValue={[5, 10]} />
       </Theme>
     );
@@ -508,23 +367,7 @@ describe('default', () => {
   ) {
     it(`Function getMarkValue ${title}`, async () => {
       const target = mount(
-        <Theme
-          config={{
-            [Widgets.Slider]: {
-              SliderTrack: {
-                normal: {
-                  width: 284,
-                },
-              },
-              SliderButton: {
-                normal: {
-                  width: 16,
-                  height: 16,
-                },
-              },
-            },
-          }}
-        >
+        <Theme config={config}>
           <Slider {...props} />
         </Theme>
       );
@@ -690,9 +533,9 @@ describe('default', () => {
         <Theme
           config={{
             [Widgets.Slider]: {
-              SliderTrack: {
+              Container: {
                 normal: {
-                  width: 280,
+                  width: 300,
                 },
               },
               SliderButton: {
@@ -783,23 +626,7 @@ describe('default', () => {
   );
   it('Function mouseenter', async () => {
     const target = mount(
-      <Theme
-        config={{
-          [Widgets.Slider]: {
-            SliderTrack: {
-              normal: {
-                width: 284,
-              },
-            },
-            SliderButton: {
-              normal: {
-                width: 16,
-                height: 16,
-              },
-            },
-          },
-        }}
-      >
+      <Theme config={config}>
         <Slider defaultValue={[0, 20]} tips />
       </Theme>
     );
@@ -813,23 +640,7 @@ describe('default', () => {
   });
   it('Function mouseleave', async () => {
     const target = mount(
-      <Theme
-        config={{
-          [Widgets.Slider]: {
-            SliderTrack: {
-              normal: {
-                width: 284,
-              },
-            },
-            SliderButton: {
-              normal: {
-                width: 16,
-                height: 16,
-              },
-            },
-          },
-        }}
-      >
+      <Theme config={config}>
         <Slider defaultValue={[0, 20]} tips />
       </Theme>
     );
@@ -848,23 +659,7 @@ describe('default', () => {
       });
 
       const target = mount(
-        <Theme
-          config={{
-            [Widgets.Slider]: {
-              SliderTrack: {
-                normal: {
-                  width: 284,
-                },
-              },
-              SliderButton: {
-                normal: {
-                  width: 16,
-                  height: 16,
-                },
-              },
-            },
-          }}
-        >
+        <Theme config={config}>
           <Slider {...props} tips onChange={onChange} />
         </Theme>
       );
