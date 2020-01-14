@@ -1,15 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`tabsDemo Component JSON 1`] = `
-.c6 {
-  position: relative;
-  cursor: pointer;
-  white-space: nowrap;
-  padding: 0 20px;
-  display: inline-block;
-  text-align: center;
-}
-
 .c4 {
   position: relative;
   cursor: pointer;
@@ -35,20 +26,37 @@ exports[`tabsDemo Component JSON 1`] = `
   transform: translateX(-50%);
 }
 
+.c6 {
+  position: relative;
+  cursor: pointer;
+  white-space: nowrap;
+  padding: 0 20px;
+  display: inline-block;
+  text-align: center;
+}
+
 .c5 {
   position: relative;
-  display: inline-block;
   box-sizing: border-box;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   line-height: 4.2rem;
   height: 4.2rem;
 }
 
-.c5:focus {
-  color: #4d63ff;
+.c5 > * {
+  max-width: 100%;
 }
 
 .c2 {
@@ -74,6 +82,14 @@ exports[`tabsDemo Component JSON 1`] = `
   position: relative;
   z-index: 99;
   overflow: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   text-align: left;
 }
 
@@ -94,6 +110,7 @@ exports[`tabsDemo Component JSON 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  text-align: left;
 }
 
 .c0 {
