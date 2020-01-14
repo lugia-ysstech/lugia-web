@@ -5,7 +5,7 @@
   "props": {
     "size": {
       "type": "ToolTipSize",
-      "desc": "可配置三种尺寸大小的input ('大' , '默认' , '小'),高度分别为 40px、32px 和 24px。",
+      "desc": "可配置三种尺寸大小的气泡提示框",
       "defaultValue": "default"
     },
     "placement": {
@@ -85,7 +85,7 @@
   "category": ["数据展示"],
   "theme": {
     "Container": {
-      "name": "文字提示框容器部分",
+      "name": "文字提示框容器",
       "desc": "文字提示框容器部分",
       "normal": [
         ["background"],
@@ -104,17 +104,25 @@
       "disabled": []
     },
     "TooltipTitle": {
-      "name": "文字提示信息文字标题部分",
-      "desc": "文字提示信息文字标题部分",
+      "name": "标题部分",
+      "desc": "标题部分",
       "normal": [["fontSize"], ["font"], ["color"]],
       "hover": [],
       "clicked": [],
       "disabled": []
     },
     "TooltipDescription": {
-      "name": "文字提示信息文字描述信息部分",
-      "desc": "文字提示信息文字描述信息部分",
+      "name": "描述信息部分",
+      "desc": "描述信息部分",
       "normal": [["fontSize"], ["font"], ["color"]],
+      "hover": [],
+      "clicked": [],
+      "disabled": []
+    },
+    "ChildrenContainer": {
+      "name": "包裹子组件的容器",
+      "desc": "包裹子组件的容器",
+      "normal": [["width"]],
       "hover": [],
       "clicked": [],
       "disabled": []

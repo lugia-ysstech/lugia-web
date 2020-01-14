@@ -292,9 +292,12 @@ const Description: Object = CSSComponent({
     line-height: 1.5;
   `,
 });
-const ChildrenContainer: Object = StaticComponent({
+const ChildrenContainer: Object = CSSComponent({
   tag: 'div',
   className: 'ChildrenContainer',
+  normal: {
+    selectNames: [['width']],
+  },
   css: css`
     display: inline-block;
   `,
@@ -362,17 +365,25 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
     return { visible: state.visible };
   }
   render() {
-    const { placement, action, popArrowType, children = <div />, size } = this.props;
+    const {
+      placement,
+      action,
+      popArrowType,
+      children = <div />,
+      size,
+      getPartOfThemeProps,
+    } = this.props;
     const { visible } = this.state;
     const direction = this.getDirection(placement);
     const getTarget: Function = cmp => (this.trigger = cmp);
-    const contentThemeProps = this.props.getPartOfThemeProps('Container', {
+    const contentThemeProps = getPartOfThemeProps('Container', {
       props: {
         size,
         popArrowType,
         direction,
       },
     });
+    const childrenThemeProps = getPartOfThemeProps('ChildrenContainer');
     return (
       <Trigger
         themePass
@@ -389,7 +400,7 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
           </ContentWrapper>
         }
       >
-        <ChildrenContainer>{children}</ChildrenContainer>
+        <ChildrenContainer themeProps={childrenThemeProps}>{children}</ChildrenContainer>
       </Trigger>
     );
   }
