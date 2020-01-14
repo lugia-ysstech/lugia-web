@@ -19,9 +19,14 @@ describe('default', () => {
       .instance();
     return newTarget;
   }
+  const defaultTheme = {
+    themeConfig: {},
+    themeState: {},
+    propsConfig: {},
+  };
   function getMode(title: string, props: Object, params: Object, expValue: Object) {
     it(`${title}`, () => {
-      const target = mount(<SwitchPanel {...props} />);
+      const target = mount(<SwitchPanel themeProps={{ ...defaultTheme }} {...props} />);
       const newTarget = getTarget(target, 'SwitchPanel');
       const { mode } = newTarget.state;
       if (mode === 'date' || mode === 'weeks') {
@@ -57,7 +62,9 @@ describe('default', () => {
       const changeYear = (obj: Object) => {
         result = obj;
       };
-      const target = mount(<SwitchPanel {...props} onChange={changeYear} />);
+      const target = mount(
+        <SwitchPanel themeProps={{ ...defaultTheme }} {...props} onChange={changeYear} />
+      );
       const newTarget = getTarget(target, 'SwitchPanel');
       newTarget.changeYear(params);
       if (props.mode === 'year') {
@@ -120,7 +127,9 @@ describe('default', () => {
       const changeMonth = (obj: Object) => {
         result = obj;
       };
-      const target = mount(<SwitchPanel {...props} onChange={changeMonth} />);
+      const target = mount(
+        <SwitchPanel themeProps={{ ...defaultTheme }} {...props} onChange={changeMonth} />
+      );
       const newTarget = getTarget(target, 'SwitchPanel');
       newTarget.changeMonth(params);
       if (props.mode === 'month') {
@@ -194,7 +203,9 @@ describe('default', () => {
       const changeWeek = (obj: Object) => {
         result = obj;
       };
-      const target = mount(<SwitchPanel {...props} onChange={changeWeek} />);
+      const target = mount(
+        <SwitchPanel themeProps={{ ...defaultTheme }} {...props} onChange={changeWeek} />
+      );
       const newTarget = getTarget(target, 'SwitchPanel');
       newTarget.changeWeek(params);
       console.log(params);
@@ -251,7 +262,9 @@ describe('default', () => {
       const monthChangeYear = (obj: Object) => {
         result = obj;
       };
-      const target = mount(<SwitchPanel {...props} onChangeYear={monthChangeYear} />);
+      const target = mount(
+        <SwitchPanel themeProps={{ ...defaultTheme }} {...props} onChangeYear={monthChangeYear} />
+      );
       const newTarget = getTarget(target, 'SwitchPanel');
       newTarget.monthChangeYear(parmas);
       for (const i in expValue) {
