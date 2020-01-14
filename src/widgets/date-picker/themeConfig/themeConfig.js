@@ -13,20 +13,24 @@ const {
   darkGreyColor,
   circleBorderRadius,
 } = themeColor;
-
+const defaultTheme = {
+  themeConfig: {},
+  themeState: {},
+  propsConfig: {},
+};
 export default function getThemeProps(props, partName) {
   const { getPartOfThemeProps, mode } = props;
-  const themeProps = getPartOfThemeProps(partName);
+  const themeProps = (getPartOfThemeProps && getPartOfThemeProps(partName)) || { ...defaultTheme };
   themeProps.propsConfig = { mode };
   return themeProps;
 }
 
 export function getWrapThemeProps(props, partName) {
   const { getPartOfThemeProps, mode } = props;
-  const themeProps = getPartOfThemeProps(partName);
+  const themeProps = (getPartOfThemeProps && getPartOfThemeProps(partName)) || { ...defaultTheme };
   themeProps.propsConfig = { mode };
 
-  const { themeConfig } = themeProps;
+  const { themeConfig = {} } = themeProps;
   const defaultNormal = {
     normal: {
       width: '100%',
@@ -87,22 +91,23 @@ export function getWrapThemeProps(props, partName) {
 }
 export function getDateTheme(props) {
   const { getPartOfThemeProps } = props;
-  const themeProps = getPartOfThemeProps('InMonthDate');
-  const outMonthDateThemeProps = getPartOfThemeProps('OutMonthDate');
-  const rangeDateDateThemeProps = getPartOfThemeProps('RangeDate');
-  const {
-    themeConfig: { normal: rangeNormal = {} },
-  } = rangeDateDateThemeProps;
 
-  const {
-    themeConfig: { normal: outNormal = {} },
-  } = outMonthDateThemeProps;
+  const themeProps = (getPartOfThemeProps && getPartOfThemeProps('InMonthDate')) || {
+    ...defaultTheme,
+  };
+  const outMonthDateThemeProps = (getPartOfThemeProps && getPartOfThemeProps('OutMonthDate')) || {
+    ...defaultTheme,
+  };
+  const rangeDateDateThemeProps = (getPartOfThemeProps && getPartOfThemeProps('RangeDate')) || {
+    ...defaultTheme,
+  };
+  const { themeConfig: { normal: rangeNormal = {} } = {} } = rangeDateDateThemeProps;
+
+  const { themeConfig: { normal: outNormal = {} } = {} } = outMonthDateThemeProps;
   const defaultOutNormal = {
     color: '#ccc',
   };
-  const {
-    themeConfig: { hover = {}, normal = {}, active = {} },
-  } = themeProps;
+  const { themeConfig: { hover = {}, normal = {}, active = {} } = {} } = themeProps;
   const defaultNormal = {
     color: darkGreyColor,
   };
@@ -142,10 +147,10 @@ export function getDateTheme(props) {
 }
 export function getSecondWeekDateTheme(props) {
   const { getPartOfThemeProps } = props;
-  const themeProps = getPartOfThemeProps('SecondWeekDate');
-  const {
-    themeConfig: { normal = {}, hover = {} },
-  } = themeProps;
+  const themeProps = (getPartOfThemeProps && getPartOfThemeProps('SecondWeekDate')) || {
+    ...defaultTheme,
+  };
+  const { themeConfig: { normal = {}, hover = {} } = {} } = themeProps;
   const defaultNormal = {
     color: '#333',
     fontSize: 14,
@@ -165,7 +170,7 @@ export function getFacePanelContain(props) {
   const { mode } = props;
   const { isRange } = modeStyle(mode);
   const themeProps = getThemeProps({ ...props }, 'FacePanelContain');
-  const { themeConfig, propsConfig } = themeProps;
+  const { themeConfig = {}, propsConfig } = themeProps;
   const defaultNormal = {
     width: isRange ? 600 : 420,
   };

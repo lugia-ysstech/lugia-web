@@ -14,9 +14,14 @@ describe('default', () => {
       .instance();
     return newTarget;
   }
+  const defaultTheme = {
+    themeConfig: {},
+    themeState: {},
+    propsConfig: {},
+  };
   function arrorChange(title: string, params: Object, expValue: Object) {
     it(`onChange ${title}`, async () => {
-      const target = mount(<Month />);
+      const target = mount(<Month themeProps={{ ...defaultTheme }} />);
       const newTarget = getTarget(target, 'Month');
       newTarget.arrorChange(params);
       const { year } = newTarget.state;
@@ -34,7 +39,9 @@ describe('default', () => {
       const onChange = (obj: Object) => {
         onChangeResult = obj;
       };
-      const target = mount(<Month {...props} onChange={onChange} />);
+      const target = mount(
+        <Month themeProps={{ ...defaultTheme }} {...props} onChange={onChange} />
+      );
       const newTarget = getTarget(target, 'Month');
       newTarget.panelChange(params);
       for (const i in expValue) {
@@ -73,7 +80,9 @@ describe('default', () => {
       const onChangeYear = (obj: Object) => {
         onChangeResult = obj;
       };
-      const target = mount(<Month {...props} onChangeYear={onChangeYear} />);
+      const target = mount(
+        <Month themeProps={{ ...defaultTheme }} {...props} onChangeYear={onChangeYear} />
+      );
       const newTarget = getTarget(target, 'Month');
       newTarget.headOnChange();
       for (const i in expValue) {

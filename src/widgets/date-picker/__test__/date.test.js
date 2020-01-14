@@ -5,6 +5,8 @@ import Enzyme, { mount } from 'enzyme';
 import 'jest-styled-components';
 import Date from '../panel/Date';
 import { getDerived } from '../utils/getDerived';
+import Theme from '../../theme/index';
+import Widgets from '../../consts/index';
 const { expect: exp } = chai;
 
 Enzyme.configure({ adapter: new Adapter() });
@@ -16,6 +18,11 @@ describe('default', () => {
       .instance();
     return newTarget;
   }
+  const defaultTheme = {
+    themeConfig: {},
+    themeState: {},
+    propsConfig: {},
+  };
   function getDaysInMonth(
     title: string,
     props: Object,
@@ -29,7 +36,9 @@ describe('default', () => {
       const changeHead = (value: string) => {
         changeHeadValue = value;
       };
-      const target = mount(<Date panelStates={nextProps} changeHead={changeHead} />);
+      const target = mount(
+        <Date themeProps={{ ...defaultTheme }} panelStates={nextProps} changeHead={changeHead} />
+      );
       const newTarget = getTarget(target, 'Date');
       newTarget.getDaysInMonth(type, funName)();
       expect(changeHeadValue).toBe(expVal.newValue);
@@ -106,7 +115,9 @@ describe('default', () => {
       const onChange = (obj: string) => {
         onChangeValue = obj;
       };
-      const target = mount(<Date panelStates={nextProps} onChange={onChange} />);
+      const target = mount(
+        <Date themeProps={{ ...defaultTheme }} panelStates={nextProps} onChange={onChange} />
+      );
       const newTarget = getTarget(target, 'Dates');
       const { index, child } = params;
       newTarget.onDateChange(index, child)();
@@ -217,7 +228,9 @@ describe('default', () => {
       const getMode = (obj: string) => {
         getModeValue = obj;
       };
-      const target = mount(<Date panelStates={nextProps} getMode={getMode} />);
+      const target = mount(
+        <Date themeProps={{ ...defaultTheme }} panelStates={nextProps} getMode={getMode} />
+      );
       const newTarget = getTarget(target, 'Date');
       newTarget.getMode(params.mode, params.from);
       for (const i in expValue) {
@@ -275,7 +288,7 @@ describe('default', () => {
   ) {
     it(`WeeksPicker ${title}`, () => {
       const nextProps = getDerived(props);
-      const target = mount(<Date panelStates={nextProps} />);
+      const target = mount(<Date themeProps={{ ...defaultTheme }} panelStates={nextProps} />);
       const newTarget = getTarget(target, 'Date');
       const { index, child } = params;
       newTarget.onMouseOver(index, child);
