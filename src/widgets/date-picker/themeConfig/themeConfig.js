@@ -173,7 +173,7 @@ export function getFacePanelContain(props) {
   const normalTheme = deepMerge(defaultNormal, normal);
   const { width } = normalTheme;
   normal.width = isRange && width > isRange ? 600 : width;
-  normalTheme.width = isRange && width > isRange ? 600 : width;
+  normalTheme.width = normal.width;
   const normalSize = getFacePanelContainSize(normalTheme);
 
   propsConfig.normalSize = { ...normalSize };
@@ -202,23 +202,25 @@ function getFacePanelContainSize(state = {}) {
       left: { width: widthL = 0 } = {},
     } = {},
   } = state;
-  let newWidth = width;
-  let newHeight = height;
-  if (valueIsNumber(newWidth) && valueIsNumber(widthR) && valueIsNumber(widthL)) {
-    newWidth = newWidth - widthR - widthL;
-  }
-  if (valueIsNumber(newHeight) && valueIsNumber(widthT) && valueIsNumber(widthB)) {
-    newHeight = newHeight - widthT - widthB;
-  }
   return {
-    width: newWidth,
-    height: newHeight,
+    width: getSize(width, widthR, widthL),
+    height: getSize(height, widthT, widthB),
   };
 }
 function valueIsNumber(value) {
   return typeof value === 'number' && !isNaN(value) && value > 0;
 }
-
+function getSize(size, borderWidthFirst, borderWidthSecond) {
+  let newSize = size;
+  if (
+    valueIsNumber(newSize) &&
+    valueIsNumber(borderWidthFirst) &&
+    valueIsNumber(borderWidthSecond)
+  ) {
+    newSize = newSize - borderWidthFirst - borderWidthSecond;
+  }
+  return newSize;
+}
 function getTimeWrapSize(mode, state) {
   const { width } = state;
   const { isRange } = modeStyle(mode);
