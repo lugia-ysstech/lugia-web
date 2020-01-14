@@ -130,7 +130,8 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       props.switchAtEnd !== nextProps.switchAtEnd ||
       props.activityValue !== nextProps.activityValue ||
       props.switchIconNames !== nextProps.switchIconNames ||
-      props.renderSuffixItems !== nextProps.renderSuffixItems
+      props.renderSuffixItems !== nextProps.renderSuffixItems ||
+      props.igronSelectField !== nextProps.igronSelectField
     );
   }
 
