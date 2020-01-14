@@ -35,7 +35,6 @@ const MenuWrap = styled.div`
 
 type RowData = { [key: string]: any };
 type NavMenuProps = {
-  getTheme: Function,
   pathSeparator?: string,
   value: ?Array<string>,
   onSelect?: Function,
@@ -49,6 +48,7 @@ type NavMenuProps = {
   displayField?: string,
   themeStyle: 'light' | 'dark',
   separator?: string,
+  igronSelectField?: String,
   autoHeight: boolean,
   switchAtEnd: boolean,
   getPartOfThemeHocProps: Function,
@@ -76,6 +76,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     pathSeparator: '/',
     separator: '|',
     switchAtEnd: true,
+    igronSelectField: 'disabled',
     switchIconNames: {
       open: 'lugia-icon-direction_up',
       close: 'lugia-icon-direction_down',
@@ -106,6 +107,31 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       value: getValue(props, state),
       expandedPath: state.expandedPath,
     };
+  }
+
+  shouldComponentUpdate(nextProps: MenuProps, nextState: MenuState) {
+    const { props, state } = this;
+    return (
+      state.data !== nextState.data ||
+      state.value !== nextState.value ||
+      state.popupVisible !== nextState.popupVisible ||
+      state.expandedPath !== nextState.expandedPath ||
+      state.activityValue !== nextState.activityValue ||
+      props.value !== nextProps.value ||
+      props.inlineExpandAll !== nextProps.inlineExpandAll ||
+      props.data !== nextProps.data ||
+      props.inlineType !== nextProps.inlineType ||
+      props.mode !== nextProps.mode ||
+      props.valueField !== nextProps.valueField ||
+      props.displayField !== nextProps.displayField ||
+      props.themeStyle !== nextProps.themeStyle ||
+      props.separator !== nextProps.separator ||
+      props.autoHeight !== nextProps.autoHeight ||
+      props.switchAtEnd !== nextProps.switchAtEnd ||
+      props.activityValue !== nextProps.activityValue ||
+      props.switchIconNames !== nextProps.switchIconNames ||
+      props.renderSuffixItems !== nextProps.renderSuffixItems
+    );
   }
 
   render() {
@@ -166,25 +192,22 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     this.setPopupVisible(true, { expandedPath });
   };
 
+  getMenuValue = (value: string) => {
+    const { separator } = this.props;
+    const keyArray = value.split(separator);
+    const len = keyArray.length;
+
+    return keyArray[len];
+  };
+
   handleClickMenu = (event: Object, keys: Object, item: Object) => {
     const { selectedKeys } = keys;
+
     if (!item || !item.children || item.children.length === 0) {
       this.setPopupVisible(false, { value: selectedKeys });
     }
 
-    const exposeTarget = this.getExposeTarget(event, item, keys);
-    const { onClick, onChange, onSelect } = this.props;
-    onChange && onChange(exposeTarget);
-    onSelect && onSelect(exposeTarget);
-    onClick && onClick(exposeTarget);
-  };
-
-  getExposeTarget = (event: Object, item: Object, keys: string[]) => {
-    const obj = {};
-    obj.event = event;
-    obj.item = item;
-    obj.keys = keys;
-    return obj;
+    this.exposeOnChange(this.getMenuValue(selectedKeys[0]));
   };
 
   setPopupVisible(popupVisible: boolean, otherTarget?: Object = {}) {
@@ -277,54 +300,39 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     const key = this.treeData
       .filter(treeItem => text === treeItem[valueField])[0]
       .path.split('/')[0];
-    let index;
+
     let parentItem;
     data.forEach((item, i) => {
       if (item[valueField] === key) {
-        index = i;
         parentItem = item;
       }
     });
-    return {
-      parentItem,
-      index,
-    };
+    return parentItem;
   };
 
   onClickTabsMenu = (event: Object, keys: string[], item: Object) => {
     const { valueField } = this.props;
+    const { selectedKeys = [] } = keys;
     const { children } = item;
     if (!children || children.length === 0) {
-      const { parentItem, index } = this.getParentTarget(item[valueField]);
-      const activityValue = parentItem[valueField];
+      const activityValue = this.getParentTarget(item[valueField])[valueField];
+
       this.setState({ activityValue });
-      this.exposeOnChange({
-        item,
-        index,
-        parentItem,
-      });
+      this.exposeOnChange(this.getMenuValue(selectedKeys[0]));
     }
   };
 
   isHasChildren = (index: number) => {
     const { data = [] } = this.props;
     const children = data[index].children;
-    // console.log('data', data, index);
     return !!children && !!children.length;
   };
 
   onTabClick = (obj: Object) => {
     const { index, activityValue } = obj;
-    console.log('obj', obj);
     const isHasChildren = this.isHasChildren(index);
     if (!isHasChildren) {
-      const { data } = this.props;
-      const target = {
-        item: data[index],
-        index,
-        parrentItem: data[index],
-      };
-      this.exposeOnChange(target);
+      this.exposeOnChange(activityValue);
       this.setState({ activityValue });
     }
   };
@@ -332,7 +340,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
   getTabsData = () => {
     const { data = [], displayField = DisplayField, valueField = ValueField } = this.props;
     const tabsData = [];
-    data.forEach((item, i) => {
+    data.forEach(item => {
       const target = {};
       target.title = item[displayField];
       target.key = item[valueField];
@@ -426,10 +434,11 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       renderSuffixItems,
       pathSeparator,
       switchAtEnd,
+      igronSelectField,
     } = this.props;
-    const treeData = this.treeData;
 
     const treeTheme = this.getTreeTheme(inlineType, themeStyle);
+
     return (
       <MenuWrap>
         <Tree
@@ -441,13 +450,14 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
           showSwitch={true}
           __navmenu
           inlineType={inlineType}
-          data={treeData}
+          data={this.treeData}
           value={value}
           mutliple={false}
           valueField={valueField}
           displayField={displayField}
           onlySelectLeaf={true}
           onChange={this.onChange}
+          igronSelectField={igronSelectField}
           pathSeparator={pathSeparator}
           renderSuffixItems={renderSuffixItems}
         />
@@ -476,17 +486,28 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     }, 220);
   };
 
-  exposeOnChange(obj: Object) {
-    const { onChange, onSelect } = this.props;
+  exposeOnChange(newValue: Object) {
+    const { value = [] } = this.state;
+
+    const oldValue = value[0];
+    const { onChange, onSelect, onClick, displayField } = this.props;
+    const newItem = this.getCheckedItem(newValue);
+    const oldItem = this.getCheckedItem(oldValue);
+    const obj = {
+      newValue,
+      oldValue,
+      newItem,
+      oldItem,
+      newDisplayValue: newItem[displayField],
+    };
     onChange && onChange(obj);
     onSelect && onSelect(obj);
+    onClick && onClick(obj);
   }
 
   onChange = (value: string[]) => {
     const key = value[0];
-    const treeItem = this.getCheckedItem(key);
-    const item = this.getExposeItem(treeItem);
-    this.exposeOnChange(item);
+    this.exposeOnChange(key);
     this.setState({ value });
   };
 

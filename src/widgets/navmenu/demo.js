@@ -37,7 +37,7 @@ const HoriBox = styled.div`
   margin: 20px;
 `;
 
-const horiData = [
+const newData = [
   {
     value: 'Lugia Design of React',
     text: 'Lugia Design of React',
@@ -45,37 +45,6 @@ const horiData = [
     icons: {
       suffixIconClass: 'lugia-icon-finacial1_lock_o',
     },
-  },
-  {
-    value: '快速上手',
-    text: '快速上手',
-    icon: 'lugia-icon-financial_columns',
-    children: [
-      { value: '快速上手子1-1', text: '快速上手1-1' },
-      { value: '快速上手子1-2', text: '快速上手1-2' },
-    ],
-  },
-  { value: '项目实战', text: '项目实战', children: [] },
-  { value: '在Lugia-mega中使用', text: '在Lugia-mega中使用' },
-  {
-    value: 'Components',
-    text: 'Components',
-
-    children: [
-      { value: 'AutoComplete 自动完成', text: '自动完成' },
-      { value: 'Cascader 级联选择', text: '级联选择' },
-      { value: 'Checkbox 多选框', text: '多选框' },
-      { value: 'DatePicker 日期选择框', text: '日期选择框' },
-      { value: 'Form 表单', text: '表单', children: [{ value: 'aa', text: 'aa' }] },
-      { value: 'Input 输入框', text: '输入框' },
-    ],
-  },
-];
-const newData = [
-  {
-    value: 'Lugia Design of React',
-    text: 'Lugia Design of React',
-    icon: 'lugia-icon-financial_add_pic',
   },
   { value: '快速上手', text: '快速上手', icon: 'lugia-icon-financial_columns' },
   { value: '项目实战', text: '项目实战' },
@@ -181,9 +150,8 @@ export default class LimitDemo extends React.Component<Object, Object> {
   }
 
   tabsOnChange = (target: Object) => {
-    const { item } = target;
-    const { value } = item;
-    this.setState({ activityValue: value });
+    const { newValue } = target;
+    this.setState({ activityValue: newValue });
   };
 
   render() {
@@ -300,7 +268,7 @@ export default class LimitDemo extends React.Component<Object, Object> {
         <HoriBox>
           <H3>light主题</H3>
           <Navmenu
-            data={horiData}
+            data={newData}
             activityValue={this.state.activityValue}
             mode={'horizontal'}
             onChange={this.tabsOnChange}
@@ -309,12 +277,12 @@ export default class LimitDemo extends React.Component<Object, Object> {
 
         <HoriBox>
           <H3>dark主题</H3>
-          <Navmenu data={horiData} themeStyle={'dark'} mode={'horizontal'} />
+          <Navmenu data={newData} themeStyle={'dark'} mode={'horizontal'} />
         </HoriBox>
 
         <HoriBox>
           <H3>主题样式配置</H3>
-          <Navmenu data={horiData} theme={tabsTheme} mode={'horizontal'} />
+          <Navmenu data={newData} theme={tabsTheme} mode={'horizontal'} />
         </HoriBox>
 
         <H2>垂直导航菜单</H2>
@@ -322,14 +290,14 @@ export default class LimitDemo extends React.Component<Object, Object> {
         <div>
           <Box>
             <H3>light主题</H3>
-            <Navmenu autoHeight data={horiData} mode={'vertical'} />
+            <Navmenu autoHeight data={newData} mode={'vertical'} />
           </Box>
         </div>
 
         <div>
           <Box>
             <H3>dark主题</H3>
-            <Navmenu autoHeight data={horiData} mode={'vertical'} themeStyle={'dark'} />
+            <Navmenu autoHeight data={newData} mode={'vertical'} themeStyle={'dark'} />
           </Box>
         </div>
 
@@ -338,7 +306,7 @@ export default class LimitDemo extends React.Component<Object, Object> {
             <H3>主题样式配置</H3>
             <Navmenu
               autoHeight
-              data={horiData}
+              data={newData}
               mode={'vertical'}
               theme={menuTheme}
               divided
@@ -457,7 +425,9 @@ export default class LimitDemo extends React.Component<Object, Object> {
   onSelect = target => {
     this.setState({ value: target.value });
   };
-  onChange = value => {};
+  onChange = value => {
+    console.log('value', value);
+  };
   onClick = (keys, item) => {
     const { selectedKeys } = keys;
     this.setState({ value: selectedKeys });
