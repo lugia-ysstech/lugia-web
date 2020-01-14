@@ -139,8 +139,9 @@ class Tree extends React.Component {
     this.treeDrag.mouseDown(mouseEvent);
   };
   onMouseUp = mouseEvent => {
+    const { onDrop } = this.props;
     this.treeDrag.mouseUp(mouseEvent, res => {
-      this.props.onDrop(res);
+      onDrop && onDrop(res);
     });
   };
   onMouseMove = mouseEvent => {
@@ -156,7 +157,15 @@ class Tree extends React.Component {
     });
   };
   onMouseLeave = () => {
+    const { onMouseLeave } = this.props;
     this.treeDrag.mouseLeave();
+    const { dargNode: { node: { props: { eventKey = '' } = {} } = {} } = {} } = this.treeDrag;
+    onMouseLeave && onMouseLeave(eventKey);
+  };
+  onMouseEnter = () => {
+    const { onMouseEnter } = this.props;
+    this.treeDrag.onMouseEnter();
+    onMouseEnter && onMouseEnter();
   };
   componentWillUnmount() {
     treeDragController.destroyTreeDrag(this.treeDrag.uuid);
@@ -333,10 +342,6 @@ class Tree extends React.Component {
     props.onSelect(selectedKeys, eventObj);
   }
 
-  onMouseEnter(e, treeNode) {
-    this.props.onMouseEnter({ event: e, node: treeNode });
-  }
-
   onContextMenu(e, treeNode, item) {
     this.props.onRightClick({ event: e, node: treeNode, item });
   }
@@ -510,8 +515,9 @@ class Tree extends React.Component {
         onMouseLeave={props.draggable && this.onMouseLeave}
         onMouseDown={props.draggable && this.onMouseDown}
         onMouseUp={props.draggable && this.onMouseUp}
+        onMouseEnter={props.draggable && this.onMouseEnter}
       >
-        <DragCopy treeDrag={this.treeDrag} />
+        <DragCopy listener={this.treeDrag.listener} />
         {React.Children.map(props.children, this.renderTreeNode, this)}
       </TreeUl>
     );
