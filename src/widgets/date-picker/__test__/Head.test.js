@@ -14,9 +14,14 @@ describe('default', () => {
       .instance();
     return newTarget;
   }
+  const defaultTheme = {
+    themeConfig: {},
+    themeState: {},
+    propsConfig: {},
+  };
   function getSandE(title: string, params: Object, expValue: Object) {
     it(`onChange ${title}`, async () => {
-      const target = mount(<Head />);
+      const target = mount(<Head themeProps={{ ...defaultTheme }} />);
       const newTarget = getTarget(target, 'Head');
       const { start, step, number } = params;
       const { startY, endY, title } = newTarget.getSandE(start, step, number);
@@ -77,7 +82,9 @@ describe('default', () => {
       const onChange = (obj: Object) => {
         onChangeResult = obj;
       };
-      const target = mount(<Head {...props} onChange={onChange} />);
+      const target = mount(
+        <Head themeProps={{ ...defaultTheme }} {...props} onChange={onChange} />
+      );
       const newTarget = getTarget(target, 'Head');
       const { number } = params;
       newTarget.changeYear(number)();
@@ -153,7 +160,9 @@ describe('default', () => {
       const headOnChange = (obj: Object) => {
         onChangeResult = obj;
       };
-      const target = mount(<Head {...props} headOnChange={headOnChange} />);
+      const target = mount(
+        <Head themeProps={{ ...defaultTheme }} {...props} headOnChange={headOnChange} />
+      );
       const newTarget = getTarget(target, 'Head');
       newTarget.headClick();
       for (const i in expValue) {

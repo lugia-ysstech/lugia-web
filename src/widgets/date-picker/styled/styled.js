@@ -52,13 +52,8 @@ export const DateWrapper = CSSComponent({
   className: 'DateWrapper',
   normal: {
     selectNames: [],
-    getCSS(themeMate, themeConfig) {
-      const {
-        propsConfig: {
-          mode,
-          normalSize: { width, height },
-        },
-      } = themeConfig;
+    getCSS(themeMate, themeConfig = {}) {
+      const { propsConfig: { mode, normalSize: { width } = {} } = {} } = themeConfig;
       const { isRange } = modeStyle(mode);
       const newWidth = isRange ? (width - 1) / 2 : width;
       return `
@@ -205,9 +200,7 @@ export const HeaderWeek = CSSComponent({
     selectNames: [],
     getCSS(themeMeta, themeConfig) {
       const { propsConfig } = themeConfig;
-      const {
-        normalSize: { width },
-      } = propsConfig;
+      const { normalSize: { width } = {} } = propsConfig;
       const { weekTitleWidth } = getThemeProperty({ ...propsConfig, width });
       return `
         width: ${em(weekTitleWidth)};
@@ -387,7 +380,7 @@ function getHoverStyle(props) {
   `;
 }
 function getNormalStyle(props) {
-  const { normalTheme, outMonth, outMonthNormalTheme } = props;
+  const { normalTheme = {}, outMonth, outMonthNormalTheme = {} } = props;
   const { color: outColor } = outMonthNormalTheme;
   const { color } = normalTheme;
   return outMonth ? outColor : color;
@@ -489,8 +482,8 @@ const getDateChildStyle = props => {
     todayIndex,
     noToday,
     selectToday,
-    activeTheme,
-    hoverTheme,
+    activeTheme = {},
+    hoverTheme = {},
   } = props;
   const arrChoseDayIndex = Array.isArray(choseDayIndex) ? choseDayIndex : [choseDayIndex];
   const {

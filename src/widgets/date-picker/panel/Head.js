@@ -111,9 +111,8 @@ class Head extends Component<TypeProps, TypeState> {
     const { themeProps, getPartOfThemeHocProps, getPartOfThemeProps } = this.props;
     const headYearTextTheme = getThemeProps({ getPartOfThemeProps }, 'HeadYearText');
     const headWeekTextTheme = getThemeProps({ getPartOfThemeProps }, 'HeadWeekText');
-    const { viewClass: singleViewClass, theme: singleTheme } = getPartOfThemeHocProps(
-      'HeadSingleArrow'
-    );
+    const { viewClass: singleViewClass, theme: singleTheme } =
+      (getPartOfThemeHocProps && getPartOfThemeHocProps('HeadSingleArrow')) || {};
     const singleArrowConfig = {
       viewClass: singleViewClass,
       theme: singleTheme,

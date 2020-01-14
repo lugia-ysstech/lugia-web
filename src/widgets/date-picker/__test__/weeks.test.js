@@ -19,9 +19,14 @@ describe('default', () => {
       .instance();
     return newTarget;
   }
+  const defaultTheme = {
+    themeConfig: {},
+    themeState: {},
+    propsConfig: {},
+  };
   function arrorChange(title: string, props: Object, params: Object, expValue: Object) {
     it(`${title}`, () => {
-      const target = mount(<Weeks {...props} />);
+      const target = mount(<Weeks themeProps={{ ...defaultTheme }} {...props} />);
       const newTarget = getTarget(target, 'Weeks');
       newTarget.arrorChange(params);
       for (const i in expValue) {

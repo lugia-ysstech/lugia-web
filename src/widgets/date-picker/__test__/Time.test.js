@@ -19,9 +19,14 @@ describe('default', () => {
       .instance();
     return newTarget;
   }
+  const defaultTheme = {
+    themeConfig: {},
+    themeState: {},
+    propsConfig: {},
+  };
   function onClick(title: string, props: Object, params: Object, expValue: Object) {
     it(`${title}`, () => {
-      const target = mount(<Time {...props} />);
+      const target = mount(<Time themeProps={{ ...defaultTheme }} {...props} />);
       const newTarget = getTarget(target, 'Time');
       const { value, index, propsValue } = params;
       newTarget.onClick('event', { value }, index);
@@ -76,7 +81,7 @@ describe('default', () => {
 
   function getValue(title: string, props: Object, params: Object, expValue: Object) {
     it(`${title}`, () => {
-      const target = mount(<Time {...props} />);
+      const target = mount(<Time themeProps={{ ...defaultTheme }} {...props} />);
       const newTarget = getTarget(target, 'Time');
       const { keys } = params;
       const val = newTarget.getValue(keys);
@@ -112,7 +117,7 @@ describe('default', () => {
   getValue('getValue 10', { format: 'HH:mm:ss' }, { keys: [0, -1, 65] }, { value: '00:00:59' });
   function onScroller(title: string, props: Object, params: Object, expValue: Object) {
     it(`${title}`, () => {
-      const target = mount(<Time {...props} />);
+      const target = mount(<Time themeProps={{ ...defaultTheme }} {...props} />);
       const newTarget = getTarget(target, 'Time');
       newTarget.onScroller(params);
       for (const i in expValue) {
