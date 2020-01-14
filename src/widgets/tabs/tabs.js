@@ -38,7 +38,7 @@ const TabContentContainer = CSSComponent({
       } = themeProps;
       const { textAlign = 'left' } = theme;
       const textAlignStyle = `text-align:${textAlign};`;
-      let flex = null;
+      let flex = '';
       if (isVertical(tabPosition)) {
         flex = 'flex: 1 1 auto;';
       }
