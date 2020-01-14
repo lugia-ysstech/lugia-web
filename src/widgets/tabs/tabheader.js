@@ -624,7 +624,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
     );
   }
 
-  getIconByDirection(tabPosition) {
+  getIconByDirection(tabPosition: TabPositionType) {
     const { pageArrowIcon: { preIcon, suffixIcon } = {} } = this.props;
     const isVerticalDirection = isVertical(tabPosition);
     const defaultUp = isVerticalDirection ? 'lugia-icon-direction_up' : 'lugia-icon-direction_Left';
