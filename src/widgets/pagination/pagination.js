@@ -322,7 +322,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
 
   static getDerivedStateFromProps(props: PaginationProps, state: PaginationState) {
     const statePageSize = state ? state.pageSize : 0;
-    const propsPageSize = props.pageSize ? props.pageSize : props.defaultPageSize;
+    const propsPageSize = props.pageSize && props.pageSize !== '' ? props.pageSize : 0;
     const propsCurrent = props.current;
 
     let theCurrent = state ? state.current : props.defaultCurrent;
@@ -330,7 +330,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     if ('current' in props) {
       theCurrent = propsCurrent;
     }
-    if ('pageSize' in props && propsPageSize !== statePageSize) {
+    if ('pageSize' in props && propsPageSize && propsPageSize !== statePageSize) {
       thePageSize = propsPageSize;
       const newCurrent = computePage(propsPageSize, statePageSize, props.total);
       theCurrent = theCurrent > newCurrent ? newCurrent : theCurrent;
@@ -501,17 +501,9 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
   }
 
   getPageSelect() {
-    const { pageSizeOptions = [10, 20, 30, 50], showSizeChanger } = this.props;
+    const { showSizeChanger } = this.props;
     if (!showSizeChanger) {
       return null;
-    }
-    const optionsList = [];
-    const unit = '条/页';
-    for (let i = 0; i < pageSizeOptions.length; i++) {
-      optionsList.push({
-        value: pageSizeOptions[i] + unit,
-        label: pageSizeOptions[i] + unit,
-      });
     }
     const { theme, viewClass } = this.props.getPartOfThemeHocProps('PaginationPageSizeSelect');
     const selectTheme = deepMerge(
@@ -542,6 +534,17 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
       },
       theme
     );
+    const { pageSizeOptions = [10, 20, 30, 50], defaultPageSize, pageSize } = this.props;
+    const optionsList = [];
+    const unit = '条/页';
+    for (let i = 0; i < pageSizeOptions.length; i++) {
+      optionsList.push({
+        value: pageSizeOptions[i] + unit,
+        label: pageSizeOptions[i] + unit,
+      });
+    }
+    const theDefaultValueValue = defaultPageSize + unit;
+    const valueConfig = pageSize && pageSize !== '' ? { value: pageSize + unit } : {};
     return (
       <Select
         autoHeight
@@ -550,8 +553,9 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
         viewClass={viewClass}
         data={optionsList}
         displayField={'label'}
-        defaultValue={optionsList[0].label}
+        defaultValue={theDefaultValueValue}
         onChange={this.handleChangePageSize}
+        {...valueConfig}
       />
     );
   }
