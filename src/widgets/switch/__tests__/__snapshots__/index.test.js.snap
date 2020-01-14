@@ -171,6 +171,7 @@ exports[`Switch Wrapper 1`] = `
   transition: 1s;
   -webkit-transition: all 0.2s;
   left: 5px;
+  left: 5px;
 }
 
 .c3 > *:first-child {
@@ -197,6 +198,16 @@ exports[`Switch Wrapper 1`] = `
 }
 
 .c3 > *:first-child {
+  height: 3rem;
+}
+
+.c3 > *:first-child {
+  height: 3rem;
+}
+
+.c3 > *:first-child::before {
+  display: inline-block;
+  width: 3rem;
   height: 3rem;
 }
 
@@ -320,6 +331,57 @@ exports[`Switch Wrapper 1`] = `
   height: 1.4rem;
 }
 
+.c11 {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-transition: all 0.2s;
+  left: 3px;
+  left: 3px;
+}
+
+.c11 > *:first-child {
+  display: block;
+  color: #4d63ff;
+  -webkit-animation: rotate 1.5s linear infinite;
+  animation: rotate 1.5s linear infinite;
+  position: relative;
+}
+
+.c11 > *:first-child > *:first-child {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+
+.c11 > *:first-child::before {
+  -webkit-transform: scale(0.65);
+  -ms-transform: scale(0.65);
+  transform: scale(0.65);
+}
+
+.c11 > *:first-child {
+  height: 1.4rem;
+}
+
+.c11 > *:first-child {
+  height: 1.4rem;
+}
+
+.c11 > *:first-child::before {
+  display: inline-block;
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
 <div
   className="demo-switch"
   style={
@@ -359,8 +421,14 @@ exports[`Switch Wrapper 1`] = `
           "borderTopStyle": "solid",
           "borderTopWidth": "0.1rem",
           "height": "6rem",
-          "margin": "1rem 1rem 1rem 1rem",
-          "padding": "1rem 1rem 1rem 1rem",
+          "marginBottom": "1rem",
+          "marginLeft": "1rem",
+          "marginRight": "1rem",
+          "marginTop": "1rem",
+          "paddingBottom": "1rem",
+          "paddingLeft": "1rem",
+          "paddingRight": "1rem",
+          "paddingTop": "1rem",
           "width": "20rem",
         }
       }
@@ -380,10 +448,9 @@ exports[`Switch Wrapper 1`] = `
             "borderTopLeftRadius": "2rem",
             "borderTopRightRadius": "2rem",
             "borderTopWidth": "0rem",
-            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "boxShadow": "undefinedpx undefinedpx 0px 0px",
             "color": "#000",
             "fontSize": "2rem",
-            "fontWeight": "normal",
             "height": "4rem",
             "width": "15rem",
           }
@@ -394,7 +461,6 @@ exports[`Switch Wrapper 1`] = `
           className="c2"
           style={
             Object {
-              "backgroundColor": "pink",
               "color": "#000",
               "fontSize": "2rem",
             }
@@ -417,7 +483,7 @@ exports[`Switch Wrapper 1`] = `
               "borderTopLeftRadius": "4rem",
               "borderTopRightRadius": "4rem",
               "borderTopWidth": "0rem",
-              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "boxShadow": "undefinedpx undefinedpx 0px 0px",
               "color": "red",
               "height": "3rem",
               "width": "3rem",
@@ -475,10 +541,9 @@ exports[`Switch Wrapper 1`] = `
             "borderTopLeftRadius": "2rem",
             "borderTopRightRadius": "2rem",
             "borderTopWidth": "0rem",
-            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "boxShadow": "undefinedpx undefinedpx 0px 0px",
             "color": "rgba(255, 255, 255, 0.8)",
             "fontSize": "1.2rem",
-            "fontWeight": "normal",
             "height": "1.6rem",
             "width": "3rem",
           }
@@ -511,7 +576,7 @@ exports[`Switch Wrapper 1`] = `
               "borderTopLeftRadius": "50%",
               "borderTopRightRadius": "50%",
               "borderTopWidth": "0rem",
-              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "boxShadow": "undefinedpx undefinedpx 0px 0px",
               "height": "1.2rem",
               "width": "1.2rem",
             }
@@ -555,10 +620,9 @@ exports[`Switch Wrapper 1`] = `
             "borderTopLeftRadius": "2rem",
             "borderTopRightRadius": "2rem",
             "borderTopWidth": "0rem",
-            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "boxShadow": "undefinedpx undefinedpx 0px 0px",
             "color": "rgba(255, 255, 255, 0.8)",
             "fontSize": "1.2rem",
-            "fontWeight": "normal",
             "height": "2rem",
             "width": "3.8rem",
           }
@@ -591,7 +655,7 @@ exports[`Switch Wrapper 1`] = `
               "borderTopLeftRadius": "50%",
               "borderTopRightRadius": "50%",
               "borderTopWidth": "0rem",
-              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "boxShadow": "undefinedpx undefinedpx 0px 0px",
               "height": "1.4rem",
               "width": "1.4rem",
             }
@@ -635,10 +699,9 @@ exports[`Switch Wrapper 1`] = `
             "borderTopLeftRadius": "2rem",
             "borderTopRightRadius": "2rem",
             "borderTopWidth": "0rem",
-            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "boxShadow": "undefinedpx undefinedpx 0px 0px",
             "color": "rgba(255, 255, 255, 0.8)",
             "fontSize": "1.2rem",
-            "fontWeight": "normal",
             "height": "2rem",
             "width": "3.8rem",
           }
@@ -671,7 +734,7 @@ exports[`Switch Wrapper 1`] = `
               "borderTopLeftRadius": "50%",
               "borderTopRightRadius": "50%",
               "borderTopWidth": "0rem",
-              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "boxShadow": "undefinedpx undefinedpx 0px 0px",
               "height": "1.4rem",
               "width": "1.4rem",
             }
@@ -715,10 +778,9 @@ exports[`Switch Wrapper 1`] = `
             "borderTopLeftRadius": "2rem",
             "borderTopRightRadius": "2rem",
             "borderTopWidth": "0rem",
-            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "boxShadow": "undefinedpx undefinedpx 0px 0px",
             "color": "rgba(255, 255, 255, 0.8)",
             "fontSize": "1.2rem",
-            "fontWeight": "normal",
             "height": "2rem",
             "width": "3.8rem",
           }
@@ -751,7 +813,7 @@ exports[`Switch Wrapper 1`] = `
               "borderTopLeftRadius": "50%",
               "borderTopRightRadius": "50%",
               "borderTopWidth": "0rem",
-              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "boxShadow": "undefinedpx undefinedpx 0px 0px",
               "height": "1.4rem",
               "width": "1.4rem",
             }
@@ -795,10 +857,9 @@ exports[`Switch Wrapper 1`] = `
             "borderTopLeftRadius": "2rem",
             "borderTopRightRadius": "2rem",
             "borderTopWidth": "0rem",
-            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "boxShadow": "undefinedpx undefinedpx 0px 0px",
             "color": "rgba(255, 255, 255, 0.8)",
             "fontSize": "1.2rem",
-            "fontWeight": "normal",
             "height": "2rem",
             "width": "3.8rem",
           }
@@ -831,7 +892,7 @@ exports[`Switch Wrapper 1`] = `
               "borderTopLeftRadius": "50%",
               "borderTopRightRadius": "50%",
               "borderTopWidth": "0rem",
-              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "boxShadow": "undefinedpx undefinedpx 0px 0px",
               "height": "1.4rem",
               "width": "1.4rem",
             }
@@ -875,10 +936,9 @@ exports[`Switch Wrapper 1`] = `
             "borderTopLeftRadius": "2rem",
             "borderTopRightRadius": "2rem",
             "borderTopWidth": "0rem",
-            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "boxShadow": "undefinedpx undefinedpx 0px 0px",
             "color": "rgba(255, 255, 255, 0.8)",
             "fontSize": "1.2rem",
-            "fontWeight": "normal",
             "height": "2rem",
             "width": "3.8rem",
           }
@@ -911,7 +971,7 @@ exports[`Switch Wrapper 1`] = `
               "borderTopLeftRadius": "50%",
               "borderTopRightRadius": "50%",
               "borderTopWidth": "0rem",
-              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "boxShadow": "undefinedpx undefinedpx 0px 0px",
               "height": "1.4rem",
               "width": "1.4rem",
             }
@@ -955,10 +1015,9 @@ exports[`Switch Wrapper 1`] = `
             "borderTopLeftRadius": "2rem",
             "borderTopRightRadius": "2rem",
             "borderTopWidth": "0rem",
-            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "boxShadow": "undefinedpx undefinedpx 0px 0px",
             "color": "rgba(255, 255, 255, 0.8)",
             "fontSize": "1.2rem",
-            "fontWeight": "normal",
             "height": "2rem",
             "width": "3.8rem",
           }
@@ -991,7 +1050,7 @@ exports[`Switch Wrapper 1`] = `
               "borderTopLeftRadius": "50%",
               "borderTopRightRadius": "50%",
               "borderTopWidth": "0rem",
-              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "boxShadow": "undefinedpx undefinedpx 0px 0px",
               "height": "1.4rem",
               "width": "1.4rem",
             }
@@ -1035,10 +1094,9 @@ exports[`Switch Wrapper 1`] = `
             "borderTopLeftRadius": "2rem",
             "borderTopRightRadius": "2rem",
             "borderTopWidth": "0rem",
-            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "boxShadow": "undefinedpx undefinedpx 0px 0px",
             "color": "rgba(255, 255, 255, 0.8)",
             "fontSize": "1.2rem",
-            "fontWeight": "normal",
             "height": "2rem",
             "width": "3.8rem",
           }
@@ -1071,7 +1129,7 @@ exports[`Switch Wrapper 1`] = `
               "borderTopLeftRadius": "50%",
               "borderTopRightRadius": "50%",
               "borderTopWidth": "0rem",
-              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "boxShadow": "undefinedpx undefinedpx 0px 0px",
               "height": "1.4rem",
               "width": "1.4rem",
             }
@@ -1115,10 +1173,9 @@ exports[`Switch Wrapper 1`] = `
             "borderTopLeftRadius": "2rem",
             "borderTopRightRadius": "2rem",
             "borderTopWidth": "0rem",
-            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "boxShadow": "undefinedpx undefinedpx 0px 0px",
             "color": "rgba(255, 255, 255, 0.8)",
             "fontSize": "1.2rem",
-            "fontWeight": "normal",
             "height": "2rem",
             "width": "3.8rem",
           }
@@ -1151,7 +1208,7 @@ exports[`Switch Wrapper 1`] = `
               "borderTopLeftRadius": "50%",
               "borderTopRightRadius": "50%",
               "borderTopWidth": "0rem",
-              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "boxShadow": "undefinedpx undefinedpx 0px 0px",
               "height": "1.4rem",
               "width": "1.4rem",
             }
@@ -1195,10 +1252,9 @@ exports[`Switch Wrapper 1`] = `
             "borderTopLeftRadius": "2rem",
             "borderTopRightRadius": "2rem",
             "borderTopWidth": "0rem",
-            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "boxShadow": "undefinedpx undefinedpx 0px 0px",
             "color": "rgba(255, 255, 255, 0.8)",
             "fontSize": "1.2rem",
-            "fontWeight": "normal",
             "height": "2rem",
             "width": "3.8rem",
           }
@@ -1231,7 +1287,7 @@ exports[`Switch Wrapper 1`] = `
               "borderTopLeftRadius": "50%",
               "borderTopRightRadius": "50%",
               "borderTopWidth": "0rem",
-              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "boxShadow": "undefinedpx undefinedpx 0px 0px",
               "height": "1.4rem",
               "width": "1.4rem",
             }
@@ -1276,10 +1332,9 @@ exports[`Switch Wrapper 1`] = `
             "borderTopLeftRadius": "2rem",
             "borderTopRightRadius": "2rem",
             "borderTopWidth": "0rem",
-            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "boxShadow": "undefinedpx undefinedpx 0px 0px",
             "color": "rgba(255, 255, 255, 0.8)",
             "fontSize": "1.2rem",
-            "fontWeight": "normal",
             "height": "2rem",
             "width": "3.8rem",
           }
@@ -1312,7 +1367,7 @@ exports[`Switch Wrapper 1`] = `
               "borderTopLeftRadius": "50%",
               "borderTopRightRadius": "50%",
               "borderTopWidth": "0rem",
-              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "boxShadow": "undefinedpx undefinedpx 0px 0px",
               "height": "1.4rem",
               "width": "1.4rem",
             }
@@ -1356,10 +1411,9 @@ exports[`Switch Wrapper 1`] = `
             "borderTopLeftRadius": "2rem",
             "borderTopRightRadius": "2rem",
             "borderTopWidth": "0rem",
-            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "boxShadow": "undefinedpx undefinedpx 0px 0px",
             "color": "rgba(255, 255, 255, 0.8)",
             "fontSize": "1.2rem",
-            "fontWeight": "normal",
             "height": "2rem",
             "width": "3.8rem",
           }
@@ -1392,7 +1446,7 @@ exports[`Switch Wrapper 1`] = `
               "borderTopLeftRadius": "50%",
               "borderTopRightRadius": "50%",
               "borderTopWidth": "0rem",
-              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "boxShadow": "undefinedpx undefinedpx 0px 0px",
               "height": "1.4rem",
               "width": "1.4rem",
             }
@@ -1436,10 +1490,9 @@ exports[`Switch Wrapper 1`] = `
             "borderTopLeftRadius": "2rem",
             "borderTopRightRadius": "2rem",
             "borderTopWidth": "0rem",
-            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "boxShadow": "undefinedpx undefinedpx 0px 0px",
             "color": "rgba(255, 255, 255, 0.8)",
             "fontSize": "1.2rem",
-            "fontWeight": "normal",
             "height": "2rem",
             "width": "3.8rem",
           }
@@ -1472,7 +1525,7 @@ exports[`Switch Wrapper 1`] = `
               "borderTopLeftRadius": "50%",
               "borderTopRightRadius": "50%",
               "borderTopWidth": "0rem",
-              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "boxShadow": "undefinedpx undefinedpx 0px 0px",
               "height": "1.4rem",
               "width": "1.4rem",
             }
@@ -1516,10 +1569,9 @@ exports[`Switch Wrapper 1`] = `
             "borderTopLeftRadius": "2rem",
             "borderTopRightRadius": "2rem",
             "borderTopWidth": "0rem",
-            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "boxShadow": "undefinedpx undefinedpx 0px 0px",
             "color": "rgba(255, 255, 255, 0.8)",
             "fontSize": "1.2rem",
-            "fontWeight": "normal",
             "height": "2rem",
             "width": "3.8rem",
           }
@@ -1548,7 +1600,7 @@ exports[`Switch Wrapper 1`] = `
               "borderTopLeftRadius": "50%",
               "borderTopRightRadius": "50%",
               "borderTopWidth": "0rem",
-              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "boxShadow": "undefinedpx undefinedpx 0px 0px",
               "height": "1.4rem",
               "width": "1.4rem",
             }
@@ -1592,10 +1644,9 @@ exports[`Switch Wrapper 1`] = `
             "borderTopLeftRadius": "2rem",
             "borderTopRightRadius": "2rem",
             "borderTopWidth": "0rem",
-            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "boxShadow": "undefinedpx undefinedpx 0px 0px",
             "color": "rgba(255, 255, 255, 0.8)",
             "fontSize": "1.2rem",
-            "fontWeight": "normal",
             "height": "2rem",
             "width": "3.8rem",
           }
@@ -1628,7 +1679,7 @@ exports[`Switch Wrapper 1`] = `
               "borderTopLeftRadius": "50%",
               "borderTopRightRadius": "50%",
               "borderTopWidth": "0rem",
-              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "boxShadow": "undefinedpx undefinedpx 0px 0px",
               "height": "1.4rem",
               "width": "1.4rem",
             }
@@ -1672,10 +1723,9 @@ exports[`Switch Wrapper 1`] = `
             "borderTopLeftRadius": "2rem",
             "borderTopRightRadius": "2rem",
             "borderTopWidth": "0rem",
-            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "boxShadow": "undefinedpx undefinedpx 0px 0px",
             "color": "rgba(255, 255, 255, 0.8)",
             "fontSize": "1.2rem",
-            "fontWeight": "normal",
             "height": "2rem",
             "width": "3.8rem",
           }
@@ -1708,7 +1758,7 @@ exports[`Switch Wrapper 1`] = `
               "borderTopLeftRadius": "50%",
               "borderTopRightRadius": "50%",
               "borderTopWidth": "0rem",
-              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "boxShadow": "undefinedpx undefinedpx 0px 0px",
               "height": "1.4rem",
               "width": "1.4rem",
             }
@@ -1752,10 +1802,9 @@ exports[`Switch Wrapper 1`] = `
             "borderTopLeftRadius": "2rem",
             "borderTopRightRadius": "2rem",
             "borderTopWidth": "0rem",
-            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "boxShadow": "undefinedpx undefinedpx 0px 0px",
             "color": "rgba(255, 255, 255, 0.8)",
             "fontSize": "1.2rem",
-            "fontWeight": "normal",
             "height": "2rem",
             "width": "3.8rem",
           }
@@ -1788,7 +1837,7 @@ exports[`Switch Wrapper 1`] = `
               "borderTopLeftRadius": "50%",
               "borderTopRightRadius": "50%",
               "borderTopWidth": "0rem",
-              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "boxShadow": "undefinedpx undefinedpx 0px 0px",
               "height": "1.4rem",
               "width": "1.4rem",
             }
@@ -1832,10 +1881,9 @@ exports[`Switch Wrapper 1`] = `
             "borderTopLeftRadius": "2rem",
             "borderTopRightRadius": "2rem",
             "borderTopWidth": "0rem",
-            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "boxShadow": "undefinedpx undefinedpx 0px 0px",
             "color": "rgba(255, 255, 255, 0.8)",
             "fontSize": "1.2rem",
-            "fontWeight": "normal",
             "height": "2rem",
             "width": "3.8rem",
           }
@@ -1868,7 +1916,7 @@ exports[`Switch Wrapper 1`] = `
               "borderTopLeftRadius": "50%",
               "borderTopRightRadius": "50%",
               "borderTopWidth": "0rem",
-              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "boxShadow": "undefinedpx undefinedpx 0px 0px",
               "height": "1.4rem",
               "width": "1.4rem",
             }
@@ -1912,10 +1960,9 @@ exports[`Switch Wrapper 1`] = `
             "borderTopLeftRadius": "2rem",
             "borderTopRightRadius": "2rem",
             "borderTopWidth": "0rem",
-            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "boxShadow": "undefinedpx undefinedpx 0px 0px",
             "color": "rgba(255, 255, 255, 0.8)",
             "fontSize": "1.2rem",
-            "fontWeight": "normal",
             "height": "2rem",
             "width": "3.8rem",
           }
@@ -1948,7 +1995,7 @@ exports[`Switch Wrapper 1`] = `
               "borderTopLeftRadius": "50%",
               "borderTopRightRadius": "50%",
               "borderTopWidth": "0rem",
-              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "boxShadow": "undefinedpx undefinedpx 0px 0px",
               "height": "1.4rem",
               "width": "1.4rem",
             }
@@ -1992,10 +2039,9 @@ exports[`Switch Wrapper 1`] = `
             "borderTopLeftRadius": "2rem",
             "borderTopRightRadius": "2rem",
             "borderTopWidth": "0rem",
-            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "boxShadow": "undefinedpx undefinedpx 0px 0px",
             "color": "rgba(255, 255, 255, 0.8)",
             "fontSize": "1.2rem",
-            "fontWeight": "normal",
             "height": "2rem",
             "width": "3.8rem",
           }
@@ -2028,7 +2074,7 @@ exports[`Switch Wrapper 1`] = `
               "borderTopLeftRadius": "50%",
               "borderTopRightRadius": "50%",
               "borderTopWidth": "0rem",
-              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "boxShadow": "undefinedpx undefinedpx 0px 0px",
               "height": "1.4rem",
               "width": "1.4rem",
             }
@@ -2072,10 +2118,9 @@ exports[`Switch Wrapper 1`] = `
             "borderTopLeftRadius": "2rem",
             "borderTopRightRadius": "2rem",
             "borderTopWidth": "0rem",
-            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "boxShadow": "undefinedpx undefinedpx 0px 0px",
             "color": "rgba(255, 255, 255, 0.8)",
             "fontSize": "1.2rem",
-            "fontWeight": "normal",
             "height": "2rem",
             "width": "3.8rem",
           }
@@ -2108,7 +2153,7 @@ exports[`Switch Wrapper 1`] = `
               "borderTopLeftRadius": "50%",
               "borderTopRightRadius": "50%",
               "borderTopWidth": "0rem",
-              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "boxShadow": "undefinedpx undefinedpx 0px 0px",
               "height": "1.4rem",
               "width": "1.4rem",
             }
@@ -2152,10 +2197,9 @@ exports[`Switch Wrapper 1`] = `
             "borderTopLeftRadius": "2rem",
             "borderTopRightRadius": "2rem",
             "borderTopWidth": "0rem",
-            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "boxShadow": "undefinedpx undefinedpx 0px 0px",
             "color": "rgba(255, 255, 255, 0.8)",
             "fontSize": "1.2rem",
-            "fontWeight": "normal",
             "height": "2rem",
             "width": "3.8rem",
           }
@@ -2188,7 +2232,7 @@ exports[`Switch Wrapper 1`] = `
               "borderTopLeftRadius": "50%",
               "borderTopRightRadius": "50%",
               "borderTopWidth": "0rem",
-              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "boxShadow": "undefinedpx undefinedpx 0px 0px",
               "height": "1.4rem",
               "width": "1.4rem",
             }
@@ -2232,10 +2276,9 @@ exports[`Switch Wrapper 1`] = `
             "borderTopLeftRadius": "2rem",
             "borderTopRightRadius": "2rem",
             "borderTopWidth": "0rem",
-            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "boxShadow": "undefinedpx undefinedpx 0px 0px",
             "color": "rgba(255, 255, 255, 0.8)",
             "fontSize": "1.2rem",
-            "fontWeight": "normal",
             "height": "2rem",
             "width": "3.8rem",
           }
@@ -2274,7 +2317,7 @@ exports[`Switch Wrapper 1`] = `
               "borderTopLeftRadius": "50%",
               "borderTopRightRadius": "50%",
               "borderTopWidth": "0rem",
-              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "boxShadow": "undefinedpx undefinedpx 0px 0px",
               "height": "1.4rem",
               "width": "1.4rem",
             }
@@ -2318,10 +2361,9 @@ exports[`Switch Wrapper 1`] = `
             "borderTopLeftRadius": "2rem",
             "borderTopRightRadius": "2rem",
             "borderTopWidth": "0rem",
-            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "boxShadow": "undefinedpx undefinedpx 0px 0px",
             "color": "rgba(255, 255, 255, 0.8)",
             "fontSize": "1.2rem",
-            "fontWeight": "normal",
             "height": "2rem",
             "width": "3.8rem",
           }
@@ -2332,7 +2374,6 @@ exports[`Switch Wrapper 1`] = `
           className="c7"
           style={
             Object {
-              "backgroundColor": "#f2f2f2",
               "color": "rgba(255, 255, 255, 0.8)",
               "fontSize": "1.2rem",
             }
@@ -2343,7 +2384,7 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c8"
+          className="c11"
           style={
             Object {
               "backgroundColor": "#fff",
@@ -2355,7 +2396,7 @@ exports[`Switch Wrapper 1`] = `
               "borderTopLeftRadius": "50%",
               "borderTopRightRadius": "50%",
               "borderTopWidth": "0rem",
-              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "boxShadow": "undefinedpx undefinedpx 0px 0px",
               "height": "1.4rem",
               "width": "1.4rem",
             }
@@ -2412,10 +2453,9 @@ exports[`Switch Wrapper 1`] = `
             "borderTopLeftRadius": "2rem",
             "borderTopRightRadius": "2rem",
             "borderTopWidth": "0rem",
-            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "boxShadow": "undefinedpx undefinedpx 0px 0px",
             "color": "rgba(255, 255, 255, 0.8)",
             "fontSize": "1.2rem",
-            "fontWeight": "normal",
             "height": "2rem",
             "width": "3.8rem",
           }
@@ -2426,7 +2466,6 @@ exports[`Switch Wrapper 1`] = `
           className="c7"
           style={
             Object {
-              "backgroundColor": "#f2f2f2",
               "color": "rgba(255, 255, 255, 0.8)",
               "fontSize": "1.2rem",
             }
@@ -2437,7 +2476,7 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c8"
+          className="c11"
           style={
             Object {
               "backgroundColor": "#fff",
@@ -2449,7 +2488,7 @@ exports[`Switch Wrapper 1`] = `
               "borderTopLeftRadius": "50%",
               "borderTopRightRadius": "50%",
               "borderTopWidth": "0rem",
-              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "boxShadow": "undefinedpx undefinedpx 0px 0px",
               "height": "1.4rem",
               "width": "1.4rem",
             }
@@ -2506,10 +2545,9 @@ exports[`Switch Wrapper 1`] = `
             "borderTopLeftRadius": "2rem",
             "borderTopRightRadius": "2rem",
             "borderTopWidth": "0rem",
-            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "boxShadow": "undefinedpx undefinedpx 0px 0px",
             "color": "rgba(255, 255, 255, 0.8)",
             "fontSize": "1.2rem",
-            "fontWeight": "normal",
             "height": "2rem",
             "width": "3.8rem",
           }
@@ -2520,7 +2558,6 @@ exports[`Switch Wrapper 1`] = `
           className="c7"
           style={
             Object {
-              "backgroundColor": "#f2f2f2",
               "color": "rgba(255, 255, 255, 0.8)",
               "fontSize": "1.2rem",
             }
@@ -2531,7 +2568,7 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c8"
+          className="c11"
           style={
             Object {
               "backgroundColor": "#fff",
@@ -2543,7 +2580,7 @@ exports[`Switch Wrapper 1`] = `
               "borderTopLeftRadius": "50%",
               "borderTopRightRadius": "50%",
               "borderTopWidth": "0rem",
-              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "boxShadow": "undefinedpx undefinedpx 0px 0px",
               "height": "1.4rem",
               "width": "1.4rem",
             }
@@ -2587,10 +2624,9 @@ exports[`Switch Wrapper 1`] = `
             "borderTopLeftRadius": "2rem",
             "borderTopRightRadius": "2rem",
             "borderTopWidth": "0rem",
-            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "boxShadow": "undefinedpx undefinedpx 0px 0px",
             "color": "rgba(255, 255, 255, 0.8)",
             "fontSize": "1.2rem",
-            "fontWeight": "normal",
             "height": "2rem",
             "width": "3.8rem",
           }
@@ -2601,7 +2637,6 @@ exports[`Switch Wrapper 1`] = `
           className="c7"
           style={
             Object {
-              "backgroundColor": "#f2f2f2",
               "color": "rgba(255, 255, 255, 0.8)",
               "fontSize": "1.2rem",
             }
@@ -2612,7 +2647,7 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c8"
+          className="c11"
           style={
             Object {
               "backgroundColor": "#fff",
@@ -2624,7 +2659,7 @@ exports[`Switch Wrapper 1`] = `
               "borderTopLeftRadius": "50%",
               "borderTopRightRadius": "50%",
               "borderTopWidth": "0rem",
-              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "boxShadow": "undefinedpx undefinedpx 0px 0px",
               "height": "1.4rem",
               "width": "1.4rem",
             }
@@ -2681,10 +2716,9 @@ exports[`Switch Wrapper 1`] = `
             "borderTopLeftRadius": "2rem",
             "borderTopRightRadius": "2rem",
             "borderTopWidth": "0rem",
-            "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+            "boxShadow": "undefinedpx undefinedpx 0px 0px",
             "color": "rgba(255, 255, 255, 0.8)",
             "fontSize": "1.2rem",
-            "fontWeight": "normal",
             "height": "2rem",
             "width": "3.8rem",
           }
@@ -2695,7 +2729,6 @@ exports[`Switch Wrapper 1`] = `
           className="c7"
           style={
             Object {
-              "backgroundColor": "#f2f2f2",
               "color": "rgba(255, 255, 255, 0.8)",
               "fontSize": "1.2rem",
             }
@@ -2706,7 +2739,7 @@ exports[`Switch Wrapper 1`] = `
           </i>
         </span>
         <span
-          className="c8"
+          className="c11"
           style={
             Object {
               "backgroundColor": "#fff",
@@ -2718,7 +2751,7 @@ exports[`Switch Wrapper 1`] = `
               "borderTopLeftRadius": "50%",
               "borderTopRightRadius": "50%",
               "borderTopWidth": "0rem",
-              "boxShadow": "0 1px 1px 0 rgba(0, 0, 0, 0.05)",
+              "boxShadow": "undefinedpx undefinedpx 0px 0px",
               "height": "1.4rem",
               "width": "1.4rem",
             }
