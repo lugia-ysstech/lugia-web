@@ -215,12 +215,29 @@
           "disabled": []
         },
         "TooltipTitle": {
-          "name": "金额输入框提示信息文字部分",
-          "desc": "金额输入框提示信息文字部分",
+          "name": "提示信息文字部分",
+          "desc": "提示信息文字部分",
           "normal": [["fontSize"], ["font"], ["color"]],
           "hover": [],
           "clicked": [],
           "disabled": []
+        },
+        "ChildrenContainer": {
+          "name": "提示信息框包裹子组件的容器",
+          "desc": "提示信息框包裹子组件的容器",
+          "normal": [["width"]],
+          "hover": [],
+          "clicked": [],
+          "disabled": []
+        }
+      }
+    }
+  },
+  "defaultTheme": {
+    "AmountTip": {
+      "ChildrenContainer": {
+        "normal": {
+          "width": "100%"
         }
       }
     }
