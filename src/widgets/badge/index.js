@@ -10,7 +10,7 @@ import Widget from '../consts/index';
 import NumberTurn from './numberturn/index';
 import ThemeHoc from '@lugia/theme-hoc';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
-import CSSComponent, { StaticComponent, css } from '@lugia/theme-css-hoc';
+import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import colorsFunc from '../css/stateColor';
 import { units } from '@lugia/css';
 const { px2remcss } = units;
@@ -114,12 +114,27 @@ class BadgeBox extends Component<BadgeProps, BadgeState> {
   };
   static displayName = Widget.Badge;
 
+  getThemeConfigLength = () => {
+    const { getPartOfThemeProps } = this.props;
+    return Object.keys(getPartOfThemeProps('Badge').themeConfig).length;
+  };
+
+  getFunction = (isHOC?: boolean) => {
+    const { getPartOfThemeProps, getPartOfThemeHocProps } = this.props;
+    return isHOC ? getPartOfThemeHocProps : getPartOfThemeProps;
+  };
+
+  getNewThemeProps = (oldName: string, newName: string, isHOC?: boolean) => {
+    const theFunction = this.getFunction(isHOC);
+    return this.getThemeConfigLength() > 1 ? theFunction(newName) : theFunction(oldName);
+  };
+
   getDot() {
-    const { showZero = false, count = 0, getPartOfThemeProps } = this.props;
+    const { showZero = false, count = 0 } = this.props;
     const hasCount = 'count' in this.props;
     const hasShowZero = 'showZero' in this.props;
     const isZero = count === 0 || !count;
-    const theThemeProps = getPartOfThemeProps('BadgeDot') || getPartOfThemeProps('Badge');
+    const theThemeProps = this.getNewThemeProps('BadgeDot', 'Badge');
     const dot = <Dot themeProps={theThemeProps} />;
 
     if (hasShowZero && isZero) {
@@ -132,18 +147,16 @@ class BadgeBox extends Component<BadgeProps, BadgeState> {
   }
 
   getNumberTurn(count: ?number) {
-    const { overflowCount, getPartOfThemeHocProps } = this.props;
-    const theThemeProps = { ...getPartOfThemeHocProps('BadgeNumber') } || {
-      ...getPartOfThemeHocProps('Badge'),
-    };
+    const { overflowCount } = this.props;
+    const theThemeProps = this.getNewThemeProps('BadgeNumber', 'Badge', true);
     return (
       <NumberTurn count={count} overflowCount={overflowCount} singleTheme {...theThemeProps} />
     );
   }
   render() {
-    const { children, getPartOfThemeProps } = this.props;
+    const { children } = this.props;
     const hasChildren = !!children;
-    const theThemeProps = getPartOfThemeProps('BadgeDot') || getPartOfThemeProps('Badge');
+    const theThemeProps = this.getNewThemeProps('BadgeDot', 'Badge');
     return (
       <Container hasChildren={hasChildren} themeProps={theThemeProps}>
         {children}

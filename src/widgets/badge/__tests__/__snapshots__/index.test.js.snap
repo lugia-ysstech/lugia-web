@@ -3,17 +3,16 @@
 exports[` Badge css 1`] = `
 .c5 {
   overflow: hidden;
-  color: white;
-  display: inline-block;
-  background: #f22735;
-  height: 1.4rem;
-  border-radius: 0.8rem;
-  line-height: 1.4rem;
   text-align: center;
-  padding: 0 0.4rem;
   font-weight: normal;
   white-space: nowrap;
-  box-shadow: 0 0 0 0.1rem #fff;
+  height: 1.4rem;
+  background-color: #f22735;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+  border-radius: 0.8rem;
 }
 
 .c6 {
@@ -24,8 +23,9 @@ exports[` Badge css 1`] = `
   -webkit-transform: translateY(-400%);
   -ms-transform: translateY(-400%);
   transform: translateY(-400%);
-  height: 1.4rem;
   display: inline-block;
+  height: 1.4rem;
+  color: #ffffff;
 }
 
 .c8 {
@@ -36,8 +36,9 @@ exports[` Badge css 1`] = `
   -webkit-transform: translateY(-900%);
   -ms-transform: translateY(-900%);
   transform: translateY(-900%);
-  height: 1.4rem;
   display: inline-block;
+  height: 1.4rem;
+  color: #ffffff;
 }
 
 .c9 {
@@ -45,11 +46,25 @@ exports[` Badge css 1`] = `
   transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   white-space: nowrap;
   text-align: center;
+  -webkit-transform: translateY(-800%);
+  -ms-transform: translateY(-800%);
+  transform: translateY(-800%);
+  display: inline-block;
+  height: 1.4rem;
+  color: #ffffff;
+}
+
+.c10 {
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  white-space: nowrap;
+  text-align: center;
   -webkit-transform: translateY(-808%);
   -ms-transform: translateY(-808%);
   transform: translateY(-808%);
-  height: 1.4rem;
   display: inline-block;
+  height: 1.4rem;
+  color: #ffffff;
 }
 
 .c11 {
@@ -57,38 +72,44 @@ exports[` Badge css 1`] = `
   transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
   white-space: nowrap;
   text-align: center;
+  -webkit-transform: translateY(-908%);
+  -ms-transform: translateY(-908%);
+  transform: translateY(-908%);
+  display: inline-block;
+  height: 1.4rem;
+  color: #ffffff;
+}
+
+.c13 {
+  -webkit-transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+  white-space: nowrap;
+  text-align: center;
   -webkit-transform: translateY(0%);
   -ms-transform: translateY(0%);
   transform: translateY(0%);
-  height: 1.4rem;
   display: inline-block;
+  height: 1.4rem;
+  color: #ffffff;
 }
 
 .c7 {
-  height: 1.4rem;
   text-align: center;
   box-sizing: border-box;
-  margin: 0;
+  line-height: 1.4rem;
   height: 1.4rem;
+  color: #ffffff;
 }
 
-.c10 {
+.c12 {
   box-sizing: border-box;
   position: absolute;
-  -webkit-transform: translateX(50%);
-  -ms-transform: translateX(50%);
-  transform: translateX(50%);
-  -webkit-transform-origin: 100%;
-  -ms-transform-origin: 100%;
-  transform-origin: 100%;
   z-index: 10;
   border-radius: 100%;
-  z-index: 10;
   font-size: 1rem;
   width: 1rem;
   height: 1rem;
   color: #ffffff;
-  box-shadow: 0px 0px 0px 1px #fff;
   background-color: #f22735;
 }
 
@@ -97,6 +118,19 @@ exports[` Badge css 1`] = `
   box-sizing: border-box;
   position: relative;
   display: inline-block;
+  line-height: 1;
+  min-width: 2rem;
+  min-height: 2rem;
+}
+
+.c14 {
+  background: transparent;
+  box-sizing: border-box;
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+  min-width: 1rem;
+  min-height: 1rem;
 }
 
 .c1 {
@@ -133,7 +167,7 @@ exports[` Badge css 1`] = `
   margin-left: 0%;
 }
 
-.c12 {
+.c15 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -172,7 +206,7 @@ exports[` Badge css 1`] = `
         span={4}
         width={4.166666666666667}
       >
-        <span
+        <div
           className="c3"
           style={Object {}}
         >
@@ -181,12 +215,1669 @@ exports[` Badge css 1`] = `
           />
           <div
             className=""
-            style={Object {}}
+            style={
+              Object {
+                "position": "absolute",
+                "right": "-0.5rem",
+                "top": "-0.5rem",
+              }
+            }
           >
-            <span
+            <div
               className="c5"
               overflow={false}
-              style={Object {}}
+              style={
+                Object {
+                  "height": "1.5rem",
+                }
+              }
+            >
+              <span
+                className="c6"
+                style={
+                  Object {
+                    "height": "1.5rem",
+                    "lineHeight": "1.5rem",
+                  }
+                }
+                y={-400}
+              >
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  0
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  1
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  2
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  3
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  4
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  5
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  6
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  7
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  8
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  9
+                </p>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={4}
+        width={4.166666666666667}
+      >
+        <div
+          className="c3"
+          style={Object {}}
+        >
+          <div
+            className="c4"
+          />
+          <div
+            className=""
+            style={
+              Object {
+                "position": "absolute",
+                "right": "-0.5rem",
+                "top": "-0.5rem",
+              }
+            }
+          >
+            <div
+              className="c5"
+              overflow={false}
+              style={
+                Object {
+                  "height": "1.5rem",
+                }
+              }
+            >
+              <span
+                className="c8"
+                style={
+                  Object {
+                    "height": "1.5rem",
+                    "lineHeight": "1.5rem",
+                  }
+                }
+                y={-900}
+              >
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  0
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  1
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  2
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  3
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  4
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  5
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  6
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  7
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  8
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  9
+                </p>
+              </span>
+              <span
+                className="c9"
+                style={
+                  Object {
+                    "height": "1.5rem",
+                    "lineHeight": "1.5rem",
+                  }
+                }
+                y={-800}
+              >
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  0
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  1
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  2
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  3
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  4
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  5
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  6
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  7
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  8
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  9
+                </p>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={4}
+        width={4.166666666666667}
+      >
+        <div
+          className="c3"
+          style={Object {}}
+        >
+          <div
+            className="c4"
+          />
+          <div
+            className=""
+            style={
+              Object {
+                "position": "absolute",
+                "right": "-0.5rem",
+                "top": "-0.5rem",
+              }
+            }
+          >
+            <div
+              className="c5"
+              overflow={false}
+              style={
+                Object {
+                  "height": "1.5rem",
+                }
+              }
+            >
+              <span
+                className="c8"
+                style={
+                  Object {
+                    "height": "1.5rem",
+                    "lineHeight": "1.5rem",
+                  }
+                }
+                y={-900}
+              >
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  0
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  1
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  2
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  3
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  4
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  5
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  6
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  7
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  8
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  9
+                </p>
+              </span>
+              <span
+                className="c8"
+                style={
+                  Object {
+                    "height": "1.5rem",
+                    "lineHeight": "1.5rem",
+                  }
+                }
+                y={-900}
+              >
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  0
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  1
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  2
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  3
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  4
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  5
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  6
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  7
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  8
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  9
+                </p>
+              </span>
+              <span
+                className="c10"
+                style={
+                  Object {
+                    "height": "1.5rem",
+                    "lineHeight": "1.5rem",
+                  }
+                }
+                y={-808}
+              >
+                +
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={4}
+        width={4.166666666666667}
+      >
+        <div
+          className="c3"
+          style={Object {}}
+        >
+          <div
+            className="c4"
+          />
+          <div
+            className=""
+            style={
+              Object {
+                "position": "absolute",
+                "right": "-0.5rem",
+                "top": "-0.5rem",
+              }
+            }
+          >
+            <div
+              className="c5"
+              overflow={true}
+              style={
+                Object {
+                  "height": "1.5rem",
+                }
+              }
+            >
+              <span
+                className="c8"
+                style={
+                  Object {
+                    "height": "1.5rem",
+                    "lineHeight": "1.5rem",
+                  }
+                }
+                y={-900}
+              >
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  0
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  1
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  2
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  3
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  4
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  5
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  6
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  7
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  8
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  9
+                </p>
+              </span>
+              <span
+                className="c8"
+                style={
+                  Object {
+                    "height": "1.5rem",
+                    "lineHeight": "1.5rem",
+                  }
+                }
+                y={-900}
+              >
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  0
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  1
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  2
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  3
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  4
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  5
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  6
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  7
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  8
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  9
+                </p>
+              </span>
+              <span
+                className="c11"
+                style={
+                  Object {
+                    "height": "1.5rem",
+                    "lineHeight": "1.5rem",
+                  }
+                }
+                y={-908}
+              >
+                +
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={4}
+        width={4.166666666666667}
+      >
+        <div
+          className="c3"
+          style={Object {}}
+        >
+          <div
+            className="c4"
+          />
+          <div
+            className="c12"
+            style={
+              Object {
+                "backgroundColor": "orange",
+                "borderBottomColor": "white",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "0.1rem",
+                "borderLeftColor": "white",
+                "borderLeftStyle": "solid",
+                "borderLeftWidth": "0.1rem",
+                "borderRightColor": "white",
+                "borderRightStyle": "solid",
+                "borderRightWidth": "0.1rem",
+                "borderTopColor": "white",
+                "borderTopStyle": "solid",
+                "borderTopWidth": "0.1rem",
+                "height": "2rem",
+                "position": "absolute",
+                "right": "-1rem",
+                "top": "-1rem",
+                "width": "2rem",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      type="default"
+    >
+      <div
+        className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={4}
+        width={4.166666666666667}
+      >
+        <div
+          className="c3"
+          style={Object {}}
+        >
+          <div
+            className="c4"
+          />
+          <div
+            className="c12"
+            style={
+              Object {
+                "backgroundColor": "orange",
+                "borderBottomColor": "white",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "0.1rem",
+                "borderLeftColor": "white",
+                "borderLeftStyle": "solid",
+                "borderLeftWidth": "0.1rem",
+                "borderRightColor": "white",
+                "borderRightStyle": "solid",
+                "borderRightWidth": "0.1rem",
+                "borderTopColor": "white",
+                "borderTopStyle": "solid",
+                "borderTopWidth": "0.1rem",
+                "height": "2rem",
+                "position": "absolute",
+                "right": "-1rem",
+                "top": "-1rem",
+                "width": "2rem",
+              }
+            }
+          />
+        </div>
+      </div>
+      <div
+        className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={4}
+        width={4.166666666666667}
+      >
+        <div
+          className="c3"
+          style={Object {}}
+        >
+          <div
+            className="c4"
+          />
+          <div
+            className=""
+            style={
+              Object {
+                "position": "absolute",
+                "right": "-0.5rem",
+                "top": "-0.5rem",
+              }
+            }
+          >
+            <div
+              className="c5"
+              overflow={false}
+              style={
+                Object {
+                  "height": "1.5rem",
+                }
+              }
+            >
+              <span
+                className="c13"
+                style={
+                  Object {
+                    "height": "1.5rem",
+                    "lineHeight": "1.5rem",
+                  }
+                }
+                y={-0}
+              >
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  0
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  1
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  2
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  3
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  4
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  5
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  6
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  7
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  8
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  9
+                </p>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={4}
+        width={4.166666666666667}
+      >
+        <div
+          className="c3"
+          style={Object {}}
+        >
+          <div
+            className="c4"
+          />
+          <div
+            className=""
+            style={
+              Object {
+                "position": "absolute",
+                "right": "-0.5rem",
+                "top": "-0.5rem",
+              }
+            }
+          >
+            <div
+              className="c5"
+              overflow={false}
+              style={
+                Object {
+                  "height": "1.5rem",
+                }
+              }
+            >
+              <span
+                className="c13"
+                style={
+                  Object {
+                    "height": "1.5rem",
+                    "lineHeight": "1.5rem",
+                  }
+                }
+                y={-0}
+              >
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  0
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  1
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  2
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  3
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  4
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  5
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  6
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  7
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  8
+                </p>
+                <p
+                  className="c7"
+                  style={
+                    Object {
+                      "height": "1.5rem",
+                      "lineHeight": "1.5rem",
+                    }
+                  }
+                >
+                  9
+                </p>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={4}
+        width={4.166666666666667}
+      >
+        <a
+          href="www.baidu.com"
+        >
+          <div
+            className="c3"
+            style={Object {}}
+          >
+            <div
+              className="c4"
+            />
+            <div
+              className="c12"
+              style={
+                Object {
+                  "backgroundColor": "orange",
+                  "borderBottomColor": "white",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "white",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "white",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "white",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                  "height": "2rem",
+                  "position": "absolute",
+                  "right": "-1rem",
+                  "top": "-1rem",
+                  "width": "2rem",
+                }
+              }
+            />
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      type="default"
+    >
+      <div
+        className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={4}
+        width={4.166666666666667}
+      >
+        <div
+          className="c14"
+          style={Object {}}
+        >
+          <div
+            className="c4"
+          />
+          <div
+            className="c12"
+            style={
+              Object {
+                "backgroundColor": "green",
+                "position": "absolute",
+                "right": "-0.5rem",
+                "top": "-0.5rem",
+              }
+            }
+          />
+        </div>
+      </div>
+      <div
+        className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={4}
+        width={4.166666666666667}
+      >
+        <div
+          className="c14"
+          style={Object {}}
+        >
+          <div
+            className="c4"
+          />
+          <div
+            className="c12"
+            style={
+              Object {
+                "backgroundColor": "purple",
+                "position": "absolute",
+                "right": "-0.5rem",
+                "top": "-0.5rem",
+              }
+            }
+          />
+        </div>
+      </div>
+      <div
+        className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={4}
+        width={4.166666666666667}
+      >
+        <div
+          className="c14"
+          style={Object {}}
+        >
+          <div
+            className="c4"
+          />
+          <div
+            className="c12"
+            style={
+              Object {
+                "backgroundColor": "yellow",
+                "position": "absolute",
+                "right": "-0.5rem",
+                "top": "-0.5rem",
+              }
+            }
+          />
+        </div>
+      </div>
+      <div
+        className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={4}
+        width={4.166666666666667}
+      >
+        <div
+          className="c14"
+          style={Object {}}
+        >
+          <div
+            className="c4"
+          />
+          <div
+            className="c12"
+            style={
+              Object {
+                "backgroundColor": "blue",
+                "position": "absolute",
+                "right": "-0.5rem",
+                "top": "-0.5rem",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      type="default"
+    >
+      <div
+        className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={4}
+        width={4.166666666666667}
+      >
+        <div
+          className="c14"
+          style={Object {}}
+        >
+          <div
+            className="c4"
+          />
+          <div
+            className="c12"
+            style={
+              Object {
+                "backgroundColor": "green",
+                "position": "absolute",
+                "right": "-0.5rem",
+                "top": "-0.5rem",
+              }
+            }
+          />
+        </div>
+      </div>
+      <div
+        className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={4}
+        width={4.166666666666667}
+      >
+        <div
+          className="c14"
+          style={Object {}}
+        >
+          <div
+            className="c4"
+          />
+          <div
+            className=""
+            style={
+              Object {
+                "position": "absolute",
+                "right": "-0.5rem",
+                "top": "-0.5rem",
+              }
+            }
+          >
+            <div
+              className="c5"
+              overflow={false}
+              style={
+                Object {
+                  "backgroundColor": "purple",
+                }
+              }
             >
               <span
                 className="c6"
@@ -254,9 +1945,9 @@ exports[` Badge css 1`] = `
                   9
                 </p>
               </span>
-            </span>
+            </div>
           </div>
-        </span>
+        </div>
       </div>
       <div
         className="c2"
@@ -266,8 +1957,36 @@ exports[` Badge css 1`] = `
         span={4}
         width={4.166666666666667}
       >
-        <span
-          className="c3"
+        <div
+          className="c14"
+          style={Object {}}
+        >
+          <div
+            className="c4"
+          />
+          <div
+            className="c12"
+            style={
+              Object {
+                "backgroundColor": "yellow",
+                "position": "absolute",
+                "right": "-0.5rem",
+                "top": "-0.5rem",
+              }
+            }
+          />
+        </div>
+      </div>
+      <div
+        className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={4}
+        width={4.166666666666667}
+      >
+        <div
+          className="c14"
           style={Object {}}
         >
           <div
@@ -275,79 +1994,23 @@ exports[` Badge css 1`] = `
           />
           <div
             className=""
-            style={Object {}}
+            style={
+              Object {
+                "position": "absolute",
+                "right": "-0.5rem",
+                "top": "-0.5rem",
+              }
+            }
           >
-            <span
+            <div
               className="c5"
               overflow={false}
-              style={Object {}}
+              style={
+                Object {
+                  "backgroundColor": "blue",
+                }
+              }
             >
-              <span
-                className="c8"
-                style={Object {}}
-                y={-900}
-              >
-                <p
-                  className="c7"
-                  style={Object {}}
-                >
-                  0
-                </p>
-                <p
-                  className="c7"
-                  style={Object {}}
-                >
-                  1
-                </p>
-                <p
-                  className="c7"
-                  style={Object {}}
-                >
-                  2
-                </p>
-                <p
-                  className="c7"
-                  style={Object {}}
-                >
-                  3
-                </p>
-                <p
-                  className="c7"
-                  style={Object {}}
-                >
-                  4
-                </p>
-                <p
-                  className="c7"
-                  style={Object {}}
-                >
-                  5
-                </p>
-                <p
-                  className="c7"
-                  style={Object {}}
-                >
-                  6
-                </p>
-                <p
-                  className="c7"
-                  style={Object {}}
-                >
-                  7
-                </p>
-                <p
-                  className="c7"
-                  style={Object {}}
-                >
-                  8
-                </p>
-                <p
-                  className="c7"
-                  style={Object {}}
-                >
-                  9
-                </p>
-              </span>
               <span
                 className="c8"
                 style={Object {}}
@@ -417,36 +2080,72 @@ exports[` Badge css 1`] = `
               <span
                 className="c9"
                 style={Object {}}
-                y={-808}
+                y={-800}
               >
-                +
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  0
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  1
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  2
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  3
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  4
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  5
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  6
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  7
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  8
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  9
+                </p>
               </span>
-            </span>
+            </div>
           </div>
-        </span>
-      </div>
-      <div
-        className="c2"
-        onMouseEnter={[Function]}
-        onMouseOut={[Function]}
-        onMouseOver={[Function]}
-        span={4}
-        width={4.166666666666667}
-      >
-        <span
-          className="c3"
-          style={Object {}}
-        >
-          <div
-            className="c4"
-          />
-          <sup
-            className="c10"
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            style={Object {}}
-          />
-        </span>
+        </div>
       </div>
     </div>
   </div>
@@ -468,25 +2167,8 @@ exports[` Badge css 1`] = `
         span={4}
         width={4.166666666666667}
       >
-        <span
-          className="c3"
-          style={Object {}}
-        >
-          <div
-            className="c4"
-          />
-        </span>
-      </div>
-      <div
-        className="c2"
-        onMouseEnter={[Function]}
-        onMouseOut={[Function]}
-        onMouseOver={[Function]}
-        span={4}
-        width={4.166666666666667}
-      >
-        <span
-          className="c3"
+        <div
+          className="c14"
           style={Object {}}
         >
           <div
@@ -494,346 +2176,21 @@ exports[` Badge css 1`] = `
           />
           <div
             className=""
-            style={Object {}}
-          >
-            <span
-              className="c5"
-              overflow={false}
-              style={Object {}}
-            >
-              <span
-                className="c11"
-                style={Object {}}
-                y={-0}
-              >
-                <p
-                  className="c7"
-                  style={Object {}}
-                >
-                  0
-                </p>
-                <p
-                  className="c7"
-                  style={Object {}}
-                >
-                  1
-                </p>
-                <p
-                  className="c7"
-                  style={Object {}}
-                >
-                  2
-                </p>
-                <p
-                  className="c7"
-                  style={Object {}}
-                >
-                  3
-                </p>
-                <p
-                  className="c7"
-                  style={Object {}}
-                >
-                  4
-                </p>
-                <p
-                  className="c7"
-                  style={Object {}}
-                >
-                  5
-                </p>
-                <p
-                  className="c7"
-                  style={Object {}}
-                >
-                  6
-                </p>
-                <p
-                  className="c7"
-                  style={Object {}}
-                >
-                  7
-                </p>
-                <p
-                  className="c7"
-                  style={Object {}}
-                >
-                  8
-                </p>
-                <p
-                  className="c7"
-                  style={Object {}}
-                >
-                  9
-                </p>
-              </span>
-            </span>
-          </div>
-        </span>
-      </div>
-      <div
-        className="c2"
-        onMouseEnter={[Function]}
-        onMouseOut={[Function]}
-        onMouseOver={[Function]}
-        span={4}
-        width={4.166666666666667}
-      >
-        <span
-          className="c3"
-          style={Object {}}
-        >
-          <div
-            className="c4"
-          />
-          <div
-            className=""
-            style={Object {}}
-          >
-            <span
-              className="c5"
-              overflow={false}
-              style={Object {}}
-            >
-              <span
-                className="c11"
-                style={Object {}}
-                y={-0}
-              >
-                <p
-                  className="c7"
-                  style={Object {}}
-                >
-                  0
-                </p>
-                <p
-                  className="c7"
-                  style={Object {}}
-                >
-                  1
-                </p>
-                <p
-                  className="c7"
-                  style={Object {}}
-                >
-                  2
-                </p>
-                <p
-                  className="c7"
-                  style={Object {}}
-                >
-                  3
-                </p>
-                <p
-                  className="c7"
-                  style={Object {}}
-                >
-                  4
-                </p>
-                <p
-                  className="c7"
-                  style={Object {}}
-                >
-                  5
-                </p>
-                <p
-                  className="c7"
-                  style={Object {}}
-                >
-                  6
-                </p>
-                <p
-                  className="c7"
-                  style={Object {}}
-                >
-                  7
-                </p>
-                <p
-                  className="c7"
-                  style={Object {}}
-                >
-                  8
-                </p>
-                <p
-                  className="c7"
-                  style={Object {}}
-                >
-                  9
-                </p>
-              </span>
-            </span>
-          </div>
-        </span>
-      </div>
-      <div
-        className="c2"
-        onMouseEnter={[Function]}
-        onMouseOut={[Function]}
-        onMouseOver={[Function]}
-        span={4}
-        width={4.166666666666667}
-      >
-        <a
-          href="www.baidu.com"
-        >
-          <span
-            className="c3"
-            style={Object {}}
+            style={
+              Object {
+                "position": "absolute",
+                "right": "-0.5rem",
+                "top": "-0.5rem",
+              }
+            }
           >
             <div
-              className="c4"
-            />
-            <sup
-              className="c10"
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              style={Object {}}
-            />
-          </span>
-        </a>
-      </div>
-    </div>
-  </div>
-  <div
-    className="c0"
-  >
-    <div
-      className="c1"
-      onMouseEnter={[Function]}
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
-      type="default"
-    >
-      <div
-        className="c2"
-        onMouseEnter={[Function]}
-        onMouseOut={[Function]}
-        onMouseOver={[Function]}
-        span={4}
-        width={4.166666666666667}
-      >
-        <span
-          className="c3"
-          style={Object {}}
-        >
-          <div
-            className="c4"
-          />
-          <sup
-            className="c10"
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            style={Object {}}
-          />
-        </span>
-      </div>
-      <div
-        className="c2"
-        onMouseEnter={[Function]}
-        onMouseOut={[Function]}
-        onMouseOver={[Function]}
-        span={4}
-        width={4.166666666666667}
-      >
-        <span
-          className="c3"
-          style={Object {}}
-        >
-          <div
-            className="c4"
-          />
-          <sup
-            className="c10"
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            style={Object {}}
-          />
-        </span>
-      </div>
-      <div
-        className="c2"
-        onMouseEnter={[Function]}
-        onMouseOut={[Function]}
-        onMouseOver={[Function]}
-        span={4}
-        width={4.166666666666667}
-      >
-        <span
-          className="c3"
-          style={Object {}}
-        >
-          <div
-            className="c4"
-          />
-          <sup
-            className="c10"
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            style={Object {}}
-          />
-        </span>
-      </div>
-      <div
-        className="c2"
-        onMouseEnter={[Function]}
-        onMouseOut={[Function]}
-        onMouseOver={[Function]}
-        span={4}
-        width={4.166666666666667}
-      >
-        <span
-          className="c3"
-          style={Object {}}
-        >
-          <div
-            className="c4"
-          />
-          <sup
-            className="c10"
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            style={Object {}}
-          />
-        </span>
-      </div>
-    </div>
-  </div>
-  <div
-    className="c0"
-  >
-    <div
-      className="c1"
-      onMouseEnter={[Function]}
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
-      type="default"
-    >
-      <div
-        className="c2"
-        onMouseEnter={[Function]}
-        onMouseOut={[Function]}
-        onMouseOver={[Function]}
-        span={4}
-        width={4.166666666666667}
-      >
-        <span
-          className="c3"
-          style={Object {}}
-        >
-          <div
-            className="c4"
-          />
-          <div
-            className=""
-            style={Object {}}
-          >
-            <span
               className="c5"
               overflow={false}
               style={Object {}}
             >
               <span
-                className="c11"
+                className="c13"
                 style={Object {}}
                 y={-0}
               >
@@ -898,11 +2255,11 @@ exports[` Badge css 1`] = `
                   9
                 </p>
               </span>
-            </span>
+            </div>
           </div>
-        </span>
+        </div>
         <i
-          className="lugia-icon-reminder_plus_square_o   c12"
+          className="lugia-icon-reminder_plus_square_o   c15"
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
@@ -911,7 +2268,7 @@ exports[` Badge css 1`] = `
           style={Object {}}
         />
         <i
-          className="lugia-icon-reminder_minus_square_o   c12"
+          className="lugia-icon-reminder_minus_square_o   c15"
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
