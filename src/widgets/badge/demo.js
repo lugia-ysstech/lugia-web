@@ -41,11 +41,6 @@ class Turn extends React.Component<any, any> {
   render() {
     const config = {
       [Widget.Badge]: {
-        BadgeDot: {
-          normal: {
-            border: getBorder({ color: 'white', width: 1, style: 'solid' }),
-          },
-        },
         BadgeNumber: {
           normal: { position: { top: -5, right: -5 } },
         },
@@ -228,6 +223,82 @@ export default () => {
               }}
             >
               <Badge viewClass="blue">
+                <Box />
+              </Badge>
+            </Theme>
+          </Col>
+        </Row>
+      </Wrapper>
+      <Wrapper>
+        <Row>
+          <Col span={4}>
+            <Theme
+              config={{
+                green: {
+                  Badge: {
+                    normal: {
+                      position: { top: -5, right: -5 },
+                      background: { color: 'green' },
+                    },
+                  },
+                },
+              }}
+            >
+              <Badge viewClass="green">
+                <Box />
+              </Badge>
+            </Theme>
+          </Col>
+          <Col span={4}>
+            <Theme
+              config={{
+                purple: {
+                  Badge: {
+                    normal: {
+                      position: { top: -5, right: -5 },
+                      background: { color: 'purple' },
+                    },
+                  },
+                },
+              }}
+            >
+              <Badge viewClass="purple" count={4}>
+                <Box />
+              </Badge>
+            </Theme>
+          </Col>
+          <Col span={4}>
+            <Theme
+              config={{
+                yellow: {
+                  Badge: {
+                    normal: {
+                      position: { top: -5, right: -5 },
+                      background: { color: 'yellow' },
+                    },
+                  },
+                },
+              }}
+            >
+              <Badge viewClass="yellow">
+                <Box />
+              </Badge>
+            </Theme>
+          </Col>
+          <Col span={4}>
+            <Theme
+              config={{
+                blue: {
+                  Badge: {
+                    normal: {
+                      position: { top: -5, right: -5 },
+                      background: { color: 'blue' },
+                    },
+                  },
+                },
+              }}
+            >
+              <Badge viewClass="blue" count={98}>
                 <Box />
               </Badge>
             </Theme>
