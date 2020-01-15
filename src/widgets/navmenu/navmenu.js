@@ -495,6 +495,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     const newItem = this.getCheckedItem(newValue);
     const oldItem = this.getCheckedItem(oldValue);
     const obj = {
+      value: newValue,
       newValue,
       oldValue,
       newItem,
