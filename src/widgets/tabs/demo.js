@@ -471,6 +471,7 @@ type TabpaneState = {
   data: Array<Object>,
   dataWindow: Array<Object>,
   activityValue: string,
+  abc: Array<Object>,
 };
 
 export default class TabsDemo extends React.Component<any, any> {
@@ -481,16 +482,54 @@ export default class TabsDemo extends React.Component<any, any> {
     let data = hasActivityValueData;
     let dataWindow = hasActivityValueData;
     let activityValue = 0;
+    let abc = [
+      {
+        title: (
+          <div
+            style={{
+              textOverflow: 'ellipsis',
+              overflow: 'hidden',
+              width: '40px',
+              whitespace: 'nowrap',
+              textAlign: 'center',
+            }}
+          >
+            home
+          </div>
+        ),
+        value: '0',
+        content: '111',
+      },
+      {
+        title: (
+          <div
+            style={{
+              textOverflow: 'ellipsis',
+              overflow: 'hidden',
+              width: '120px',
+              whitespace: 'nowrap',
+              textAlign: 'center',
+            }}
+          >
+            tabs1
+          </div>
+        ),
+        value: '1',
+        content: '111',
+      },
+    ];
     if (state) {
       data = state.data;
       dataWindow = state.dataWindow;
       activityValue = state.activityValue;
+      abc = state.abc;
     }
     return {
       testDelayData: defaulttestDelayData,
       data,
       dataWindow,
       activityValue,
+      abc,
     };
   }
 
@@ -532,6 +571,32 @@ export default class TabsDemo extends React.Component<any, any> {
   };
   onDeleteClick = (activityKey: string) => {
     console.log('activityKey', activityKey);
+  };
+  addTabPan = () => {
+    const { abc } = this.state;
+    const { title, content } = this.getAddItem();
+    const value = `${abc.length}`;
+
+    const newItem = {
+      title: (
+        <div
+          style={{
+            textOverflow: 'ellipsis',
+            overflow: 'hidden',
+            width: '120px',
+            whitespace: 'nowrap',
+            textAlign: 'center',
+          }}
+        >
+          {title}
+        </div>
+      ),
+
+      content,
+      value,
+    };
+    abc.push(newItem);
+    this.setState({ abc, abcActivityValue: value });
   };
 
   render() {
@@ -743,7 +808,7 @@ export default class TabsDemo extends React.Component<any, any> {
         },
         TitleContainer: {
           normal: {
-            textAlign: 'center',
+            // textAlign: 'center',
           },
         },
         AddButton: {
@@ -876,7 +941,7 @@ export default class TabsDemo extends React.Component<any, any> {
         },
       },
     };
-    const { testDelayData, data, dataWindow, activityValue } = this.state;
+    const { testDelayData, data, dataWindow, activityValue, abc, abcActivityValue } = this.state;
 
     const updateTheme = {
       [Widget.Tabs]: {
@@ -1036,46 +1101,10 @@ export default class TabsDemo extends React.Component<any, any> {
     };
     return (
       <div>
-        <Tabs data={hasActivityValueData} />
         <Theme config={tabpanTheme}>
           <ContainerBox>
-            <Tabs showDividerLine>
-              <Tabpane
-                title={
-                  <div
-                    style={{
-                      textOverflow: 'ellipsis',
-                      overflow: 'hidden',
-                      whitespace: 'nowrap',
-                      textAlign: 'center',
-                    }}
-                  >
-                    这里是很长很长超过了宽度要隐藏的文本吧
-                  </div>
-                }
-                content={'11111'}
-                value={'0'}
-                icon={'lugia-icon-direction_down_circle'}
-              />
-              <Tabpane
-                title={
-                  <div
-                    style={{
-                      textOverflow: 'ellipsis',
-                      overflow: 'hidden',
-                      width: '100%',
-                      whitespace: 'nowrap',
-                      textAlign: 'center',
-                    }}
-                  >
-                    这里是
-                  </div>
-                }
-                content={'11111'}
-                value={'1'}
-                icon={'lugia-icon-direction_down_circle'}
-              />
-            </Tabs>
+            <div onClick={this.addTabPan}>add tabPane</div>
+            <Tabs data={abc} activityValue={abcActivityValue} showDividerLine showAddBtn={true} />
           </ContainerBox>
         </Theme>
         <ContainerBox>
@@ -1701,14 +1730,7 @@ export default class TabsDemo extends React.Component<any, any> {
         <Theme config={cardView}>
           <div>
             <p style={{ ...titleStyle }}>tabType=card pagedType=single</p>
-            <Tabs
-              tabType={'card'}
-              pagedType={'single'}
-              data={hasActivityValueData}
-              onPreClick={onPreClick}
-              onNextClick={onNextClick}
-              showDeleteBtn={true}
-            />
+            <Tabs tabType={'card'} pagedType={'page'} showDeleteBtn={true} />
           </div>
           <br />
           <br />
