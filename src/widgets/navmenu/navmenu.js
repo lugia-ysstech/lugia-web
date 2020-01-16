@@ -195,10 +195,11 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
 
   getMenuValue = (value: string) => {
     const { separator } = this.props;
-    const keyArray = value.split(separator);
-    const len = keyArray.length;
 
-    return keyArray[len];
+    const keyArray = value.split(separator);
+
+    const len = keyArray.length;
+    return keyArray[len - 1];
   };
 
   handleClickMenu = (event: Object, keys: Object, item: Object) => {
