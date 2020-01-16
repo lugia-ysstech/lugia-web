@@ -459,11 +459,11 @@ class TabHeader extends Component<TabsProps, TabsState> {
   }
 
   getCurrentMaxIndex(titleSize: Array<number>) {
-    const { tabPosition } = this.props;
+    const { tabPosition, tabType } = this.props;
     let maxIndex = 0;
     let distance = 0;
     const offsetSize = isVertical(tabPosition) ? this.offsetHeight : this.offsetWidth;
-    const margin = isVertical(tabPosition) ? 0 : 8;
+    const margin = isVertical(tabPosition) || matchType(tabType, 'line') ? 0 : 8;
     titleSize.some((item, index) => {
       distance += item + margin;
       if (distance > offsetSize) {
@@ -482,7 +482,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
         return true;
       }
     });
-    return Math.max(Math.ceil(currentIndex / Math.ceil(data.length / totalPage)) - 1, 0);
+    return Math.max(Math.ceil(currentIndex / Math.ceil(data.length / totalPage)), 0);
   }
 
   render() {
@@ -732,7 +732,6 @@ class TabHeader extends Component<TabsProps, TabsState> {
             {this.getChildren()}
           </HscrollerContainer>
         </HTabsContainer>
-        {this.getAddButton()}
         {this.getPrevOrNextPage(
           'next',
           prevPageThemeProps,
@@ -740,6 +739,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
           isDisabledToPrev,
           isDisabledToNext
         )}
+        {this.getAddButton()}
       </HTabsOutContainer>
     );
   }
@@ -862,7 +862,6 @@ class TabHeader extends Component<TabsProps, TabsState> {
     if (actualSize <= offsetSize) {
       return 0;
     }
-
     let distance = 0;
     switch (pagedType) {
       case 'single':
@@ -873,7 +872,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
         }
         break;
       case 'page':
-        distance = offsetSize * (currentPage - 1);
+        distance = offsetSize * Math.max(currentPage - 1, 0);
         break;
       default:
         break;
