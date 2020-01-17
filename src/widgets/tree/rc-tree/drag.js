@@ -340,13 +340,8 @@ class TreeDrag {
 
   isShowDargCopyDiv() {
     const groupData = treeDragController.getGroupDataByGroupKey(this.groupKey);
-    let res = false;
-    if (treeDragController.treeSource === this.uuid && groupData && groupData.length <= 1) {
-      res = true;
-    } else if (treeDragController.treeSource === this.uuid && !groupData) {
-      res = true;
-    }
-    return res;
+    const isSelf = treeDragController.treeSource === this.uuid;
+    return (isSelf && groupData && groupData.length <= 1) || (isSelf && !groupData);
   }
 
   calculationMouseHoverPosition(mouseInfo: Object) {
