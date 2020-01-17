@@ -126,6 +126,7 @@ export default ThemeProvider(
         cancelButtonProps = {},
         getPartOfThemeProps,
         getPartOfThemeHocProps,
+        iconClass,
       } = this.props;
       const { visible = false, closing, opening } = this.state;
       const view = {
@@ -153,7 +154,11 @@ export default ThemeProvider(
             <Modal closing={closing} opening={opening} themeProps={modalWrapTheme}>
               <ModalContent showIcon={showIcon} theme={getTheme()} themeProps={modalWrapTheme}>
                 {showIcon ? (
-                  <Icon iconClass={IconInfo[iconType].class} singleTheme {...this.getIconTheme()} />
+                  <Icon
+                    iconClass={iconClass || IconInfo[iconType].class}
+                    singleTheme
+                    {...this.getIconTheme()}
+                  />
                 ) : (
                   <ModalClose onClick={this.handleCancel}>
                     <Icon

@@ -13,7 +13,17 @@ export const quickcall = (
   iconType: 'confirm' | 'info' | 'success' | 'warning' | 'error' = 'info'
 ) => {
   return (props: Object) => {
-    const { title, content, cancelText = '取消', okText = '确定', footer, onOk, onCancel } = props;
+    const {
+      title,
+      content,
+      cancelText = '取消',
+      okText = '确定',
+      onOk,
+      onCancel,
+      cancelButtonProps = {},
+      okButtonProps = {},
+      iconClass,
+    } = props;
 
     const config: Object = {
       title,
@@ -24,10 +34,11 @@ export const quickcall = (
       content,
       onOk,
       onCancel,
+      cancelButtonProps,
+      okButtonProps,
+      iconClass,
     };
-    if (footer || footer === null) {
-      config.footer = footer;
-    }
+
     const div = document.createElement('div');
     document.body && document.body.appendChild(div);
 
