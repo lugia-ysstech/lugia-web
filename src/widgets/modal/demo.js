@@ -226,6 +226,10 @@ export default class ModalDemo extends React.Component<any, any> {
               content: 'this confirm text!',
               onOk: () => console.log('ok'),
               onCancel: () => console.log('onCancel'),
+              okButtonProps: {
+                type: 'success',
+              },
+              iconClass: 'lugia-icon-direction_arrow_right',
             })
           }
         >
