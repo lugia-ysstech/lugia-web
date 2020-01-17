@@ -57,8 +57,7 @@
 
     "groupKey": {
       "type": "string",
-      "desc": "多tree的分组标识,当两个tree的groupKey值相同时.可实现相互拖拽",
-      "propsDefaultValue": ""
+      "desc": "多tree的分组标识,当两个tree的groupKey值相同时.可实现相互拖拽"
     },
 
     "data": {
@@ -211,8 +210,7 @@
     },
 
     "onDragEnd": {
-      "desc": "拖拽结束是触发",
-      "args": []
+      "desc": "拖拽结束是触发"
     },
 
     "onDragEnter": {
