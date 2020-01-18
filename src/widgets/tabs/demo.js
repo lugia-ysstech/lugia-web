@@ -29,72 +29,39 @@ const ContainerBox = StaticComponent({
   `,
 });
 
+const CustomHome = StaticComponent({
+  tag: 'div',
+  className: 'CustomHome',
+  css: css`
+    width: 40px;
+  `,
+});
+
+const CustomTitle = StaticComponent({
+  tag: 'div',
+  className: 'CustomTitle',
+  css: css`
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 120px;
+  `,
+});
+
+const CustomContent = StaticComponent({
+  tag: 'div',
+  className: 'CustomContent',
+  css: css`
+    padding: 20px;
+  `,
+});
+
 const onPreClick = e => {
   console.log('res onPreClick', e);
 };
 const onNextClick = e => {
   console.log('res onNextClick', e);
 };
-export class Tabsdemo extends React.Component<any, any> {
-  state = {
-    data: hasActivityValueData,
-    activeValue: '0',
-  };
-  onAddClick = (e: Event) => {
-    return {
-      title: '萝卜',
-      content: '萝卜啊啊啊啊',
-    };
-  };
-  onDeleteClick = (activityValue: string) => {};
-  render() {
-    return (
-      <div>
-        <Tabs
-          tabType={'card'}
-          pagedType={'single'}
-          onPreClick={onPreClick}
-          onNextClick={onNextClick}
-          onAddClick={this.onAddClick}
-          onDeleteClick={this.onDeleteClick}
-        />
-      </div>
-    );
-  }
-}
-
-export class TabsLimitdemo extends React.Component<any, any> {
-  state = {
-    data: defaulttestDelayData,
-    activeValue: '0',
-  };
-  change = (e: Object) => {
-    hasActivityValueData[0] = {
-      title: ' changed Tab1',
-      content: 'Content of changed Tab1',
-      value: '-1',
-    };
-    this.setState({ data: hasActivityValueData });
-  };
-
-  render() {
-    const { data } = this.state;
-    return (
-      <div>
-        <Button style={{ width: 200 }} onClick={this.change} type="primary">
-          {'点击修改data内容'}
-        </Button>
-        <Tabs
-          tabType={'card'}
-          pagedType={'single'}
-          data={data}
-          onPreClick={onPreClick}
-          onNextClick={onNextClick}
-        />
-      </div>
-    );
-  }
-}
 
 const titleStyle = { margin: '20px 0', fontWeight: 'bold' };
 export const defaultData = [
@@ -464,6 +431,38 @@ const addItem = [
   { title: '地瓜', content: '地瓜啊啊啊啊' },
   { title: '香菇', content: '香菇啊啊啊啊' },
 ];
+
+const defaultHome = [
+  {
+    title: (
+      <CustomHome>
+        {' '}
+        <Icon iconClass={'lugia-icon-financial_home'} />
+      </CustomHome>
+    ),
+    content: <div>content of Home</div>,
+    value: '0',
+  },
+];
+
+const getRandom = (limit: number) => {
+  return Math.floor(Math.random() * limit);
+};
+const getData = () => {
+  const defaultData = [];
+  for (let i = 0; i < 6; i++) {
+    const valueNumber = getRandom(100);
+    const valueNumberAfter = getRandom(20);
+    const title = `Tab${valueNumber}${valueNumberAfter}`;
+    const item = {
+      title: <CustomTitle>{title}</CustomTitle>,
+      content: <CustomContent>Content of new {title}</CustomContent>,
+      value: title,
+    };
+    defaultData.push(item);
+  }
+  return defaultHome.concat(defaultData);
+};
 
 type TabpaneProps = {};
 
@@ -1085,11 +1084,11 @@ export default class TabsDemo extends React.Component<any, any> {
         TabHeader: {
           DefaultTabPan: {
             normal: {
-              width: 120,
-              textAlign: 'left',
+              // width: 120,
+              // textAlign: 'left',
               padding: {
-                left: 0,
-                right: 0,
+                left: 20,
+                right: 20,
               },
             },
             disabled: {
@@ -1101,6 +1100,27 @@ export default class TabsDemo extends React.Component<any, any> {
     };
     return (
       <div>
+        <Tabs
+          // tabType={'card'}
+          data={defaultData}
+        />
+        <Tabs tabType={'card'} defaultData={getData()} showDeleteBtn={true} />
+        <Theme config={tabpanTheme}>
+          <Tabs tabType={'card'} data={getData()} />
+          <Tabs tabType={'window'} data={getData()} />
+          <Tabs
+            // tabType={'card'}
+            data={getData()}
+          />
+
+          <Tabs tabPosition={'left'} data={getData()} />
+
+          <Tabs tabPosition={'left'} data={defaultData} />
+
+          <Tabs tabPosition={'right'} data={getData()} />
+          <Tabs tabPosition={'bottom'} data={getData()} />
+          <Tabs tabType={'window'} data={getData()} />
+        </Theme>
         <Theme config={tabpanTheme}>
           <ContainerBox>
             <div onClick={this.addTabPan}>add tabPane</div>
@@ -1116,7 +1136,7 @@ export default class TabsDemo extends React.Component<any, any> {
                     textOverflow: 'ellipsis',
                     overflow: 'hidden',
                     whitespace: 'nowrap',
-                    width: '100%',
+                    width: '120px',
                   }}
                 >
                   这里是很长很长超过了宽度要隐藏的文本吧
@@ -1824,13 +1844,6 @@ export default class TabsDemo extends React.Component<any, any> {
               showDeleteBtn={true}
             />
           </div>
-          <p style={{ ...titleStyle }}>非受限 不传data 展示数据由state 控制</p>
-          <Tabsdemo />
-        </Theme>
-        <Theme config={defaultCardView}>
-          <p style={{ ...titleStyle }}>受限 展示数据 由props控制</p>
-          <TabsLimitdemo />
-          <br />
         </Theme>
       </div>
     );
