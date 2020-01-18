@@ -42,14 +42,13 @@ const SelectTab = CSSComponent({
       ['textAlign'],
     ],
     getCSS: (theme: Object, themeProps: Object) => {
-      const { color, background } = theme;
+      const { color } = theme;
       const {
         propsConfig: { isSelect, tabType, tabPosition },
       } = themeProps;
-      let display = 'inline-block';
+      let display = 'inline-flex';
       let defaultTextAlign = 'center';
       let position = '';
-      let border = '';
       if (isVertical(tabPosition)) {
         display = 'block';
         if (tabPosition === 'left') {
@@ -94,15 +93,11 @@ const SelectTab = CSSComponent({
       }
       if (tabType === 'card') {
         position = 'bottom: -1px;';
-        if (isSelect) {
-          border = `border-bottom: 1px solid ${background ? background.color : '#fff'};`;
-        }
       }
       return css`
         display: ${display};
         ${textAlignStyle}
         ${position}
-        ${border}
       `;
     },
   },
@@ -113,12 +108,12 @@ const SelectTab = CSSComponent({
         propsConfig: { tabType, showDeleteBtn },
       } = themeProps;
       let cssString = `
-        & > span {
+        & > .IconContainer {
           opacity: 1;
         }
       `;
       if (tabType === 'card' && showDeleteBtn === true) {
-        cssString += ` & > div {
+        cssString += ` & > .cardTitle {
           transition: all 0.3s linear;
           transform: translateX(-8px);
         }`;
@@ -147,6 +142,7 @@ const SelectTab = CSSComponent({
     cursor: pointer;
     white-space: nowrap;
     padding: 0 20px;
+    align-items: center;
   `,
   option: { hover: true },
 });
@@ -274,7 +270,7 @@ const CardTitle = CSSComponent({
 });
 
 const ClearButtonContainer = CSSComponent({
-  tag: 'span',
+  tag: 'div',
   className: 'IconContainer',
   css: css`
     transition: all 0.3s linear 0.1s;
@@ -285,14 +281,15 @@ const ClearButtonContainer = CSSComponent({
   `,
   normal: {
     selectNames: [],
-    getCSS: (a, themeProps) => {
+    getCSS: (themeConfig, themeProps) => {
       const {
         propsConfig: { tabType },
       } = themeProps;
       if (tabType !== 'card') {
         return 'opacity: 1;margin-left:10px;';
       }
-      return '';
+      return `position: absolute;
+        right: 7px;`;
     },
   },
   hover: {
@@ -596,6 +593,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     if (!matchType(tabType, 'line') && showDeleteBtn) {
       return (
         <ClearButtonContainer
+          className={'IconContainer'}
           themeProps={themeProps}
           onMouseEnter={this.clearButtonMouseEnter}
           onMouseLeave={this.clearButtonMouseLeave}
