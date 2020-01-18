@@ -310,7 +310,7 @@ describe('tabsDemo', () => {
         ],
         activityValue: '1',
         totalPage: 4,
-        exception: 0,
+        exception: 1,
       },
       {
         data: [
@@ -327,7 +327,7 @@ describe('tabsDemo', () => {
         ],
         activityValue: '2',
         totalPage: 4,
-        exception: 0,
+        exception: 1,
       },
       {
         data: [
@@ -344,7 +344,7 @@ describe('tabsDemo', () => {
         ],
         activityValue: '3',
         totalPage: 4,
-        exception: 0,
+        exception: 1,
       },
       {
         data: [
@@ -361,7 +361,7 @@ describe('tabsDemo', () => {
         ],
         activityValue: '4',
         totalPage: 4,
-        exception: 1,
+        exception: 2,
       },
       {
         data: [
@@ -378,7 +378,7 @@ describe('tabsDemo', () => {
         ],
         activityValue: '5',
         totalPage: 4,
-        exception: 1,
+        exception: 2,
       },
       {
         data: [
@@ -395,7 +395,7 @@ describe('tabsDemo', () => {
         ],
         activityValue: '6',
         totalPage: 4,
-        exception: 1,
+        exception: 2,
       },
       {
         data: [
@@ -412,7 +412,7 @@ describe('tabsDemo', () => {
         ],
         activityValue: '7',
         totalPage: 4,
-        exception: 2,
+        exception: 3,
       },
       {
         data: [
@@ -429,7 +429,7 @@ describe('tabsDemo', () => {
         ],
         activityValue: '8',
         totalPage: 4,
-        exception: 2,
+        exception: 3,
       },
       {
         data: [
@@ -446,7 +446,7 @@ describe('tabsDemo', () => {
         ],
         activityValue: '9',
         totalPage: 4,
-        exception: 2,
+        exception: 3,
       },
       {
         data: [
@@ -463,7 +463,7 @@ describe('tabsDemo', () => {
         ],
         activityValue: '10',
         totalPage: 4,
-        exception: 3,
+        exception: 4,
       },
       {
         data: [
@@ -485,7 +485,7 @@ describe('tabsDemo', () => {
         ],
         activityValue: '7',
         totalPage: 4,
-        exception: 1,
+        exception: 2,
       },
     ];
     mockInfo.forEach(item => {
