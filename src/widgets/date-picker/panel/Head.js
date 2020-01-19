@@ -18,6 +18,9 @@ type TypeProps = {
   secondTitle?: string,
   isWeekInner?: boolean,
   onHeadChange?: Function,
+  themeProps: Object,
+  getPartOfThemeHocProps: Function,
+  getPartOfThemeProps: Function,
 };
 type TypeState = {
   year: number,
@@ -111,8 +114,9 @@ class Head extends Component<TypeProps, TypeState> {
     const { themeProps, getPartOfThemeHocProps, getPartOfThemeProps } = this.props;
     const headYearTextTheme = getThemeProps({ getPartOfThemeProps }, 'HeadYearText');
     const headWeekTextTheme = getThemeProps({ getPartOfThemeProps }, 'HeadWeekText');
-    const { viewClass: singleViewClass, theme: singleTheme } =
-      (getPartOfThemeHocProps && getPartOfThemeHocProps('HeadSingleArrow')) || {};
+    const { viewClass: singleViewClass, theme: singleTheme } = getPartOfThemeHocProps(
+      'HeadSingleArrow'
+    );
     const singleArrowConfig = {
       viewClass: singleViewClass,
       theme: singleTheme,

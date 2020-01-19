@@ -19,9 +19,17 @@ describe('default', () => {
     themeState: {},
     propsConfig: {},
   };
+  const defaultThmeFunction = {
+    getPartOfThemeProps: () => {
+      return { ...defaultTheme };
+    },
+    getPartOfThemeHocProps: () => {
+      return { viewClass: {} };
+    },
+  };
   function getSandE(title: string, params: Object, expValue: Object) {
     it(`onChange ${title}`, async () => {
-      const target = mount(<Head themeProps={{ ...defaultTheme }} />);
+      const target = mount(<Head themeProps={{ ...defaultTheme }} {...defaultThmeFunction} />);
       const newTarget = getTarget(target, 'Head');
       const { start, step, number } = params;
       const { startY, endY, title } = newTarget.getSandE(start, step, number);
@@ -83,7 +91,12 @@ describe('default', () => {
         onChangeResult = obj;
       };
       const target = mount(
-        <Head themeProps={{ ...defaultTheme }} {...props} onChange={onChange} />
+        <Head
+          themeProps={{ ...defaultTheme }}
+          {...defaultThmeFunction}
+          {...props}
+          onChange={onChange}
+        />
       );
       const newTarget = getTarget(target, 'Head');
       const { number } = params;
@@ -161,7 +174,12 @@ describe('default', () => {
         onChangeResult = obj;
       };
       const target = mount(
-        <Head themeProps={{ ...defaultTheme }} {...props} headOnChange={headOnChange} />
+        <Head
+          themeProps={{ ...defaultTheme }}
+          {...defaultThmeFunction}
+          {...props}
+          headOnChange={headOnChange}
+        />
       );
       const newTarget = getTarget(target, 'Head');
       newTarget.headClick();
