@@ -13,21 +13,16 @@ const {
   darkGreyColor,
   circleBorderRadius,
 } = themeColor;
-const defaultTheme = {
-  themeConfig: {},
-  themeState: {},
-  propsConfig: {},
-};
 export default function getThemeProps(props, partName) {
   const { getPartOfThemeProps, mode } = props;
-  const themeProps = (getPartOfThemeProps && getPartOfThemeProps(partName)) || { ...defaultTheme };
+  const themeProps = getPartOfThemeProps(partName);
   themeProps.propsConfig = { mode };
   return themeProps;
 }
 
 export function getWrapThemeProps(props, partName) {
   const { getPartOfThemeProps, mode } = props;
-  const themeProps = (getPartOfThemeProps && getPartOfThemeProps(partName)) || { ...defaultTheme };
+  const themeProps = getPartOfThemeProps(partName);
   themeProps.propsConfig = { mode };
 
   const { themeConfig = {} } = themeProps;
@@ -92,15 +87,9 @@ export function getWrapThemeProps(props, partName) {
 export function getDateTheme(props) {
   const { getPartOfThemeProps } = props;
 
-  const themeProps = (getPartOfThemeProps && getPartOfThemeProps('InMonthDate')) || {
-    ...defaultTheme,
-  };
-  const outMonthDateThemeProps = (getPartOfThemeProps && getPartOfThemeProps('OutMonthDate')) || {
-    ...defaultTheme,
-  };
-  const rangeDateDateThemeProps = (getPartOfThemeProps && getPartOfThemeProps('RangeDate')) || {
-    ...defaultTheme,
-  };
+  const themeProps = getPartOfThemeProps('InMonthDate');
+  const outMonthDateThemeProps = getPartOfThemeProps('OutMonthDate');
+  const rangeDateDateThemeProps = getPartOfThemeProps('RangeDate');
   const { themeConfig: { normal: rangeNormal = {} } = {} } = rangeDateDateThemeProps;
 
   const { themeConfig: { normal: outNormal = {} } = {} } = outMonthDateThemeProps;
@@ -147,9 +136,7 @@ export function getDateTheme(props) {
 }
 export function getSecondWeekDateTheme(props) {
   const { getPartOfThemeProps } = props;
-  const themeProps = (getPartOfThemeProps && getPartOfThemeProps('SecondWeekDate')) || {
-    ...defaultTheme,
-  };
+  const themeProps = getPartOfThemeProps('SecondWeekDate');
   const { themeConfig: { normal = {}, hover = {} } = {} } = themeProps;
   const defaultNormal = {
     color: '#333',

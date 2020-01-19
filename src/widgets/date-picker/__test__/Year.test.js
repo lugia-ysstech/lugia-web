@@ -23,9 +23,19 @@ describe('default', () => {
     themeState: {},
     propsConfig: {},
   };
+  const defaultThmeFunction = {
+    getPartOfThemeProps: () => {
+      return { ...defaultTheme };
+    },
+    getPartOfThemeHocProps: () => {
+      return { viewClass: {} };
+    },
+  };
   function arrorChange(title: string, props: Object, params: Object, expValue: Object) {
     it(`${title}`, () => {
-      const target = mount(<Year themeProps={{ ...defaultTheme }} {...props} />);
+      const target = mount(
+        <Year themeProps={{ ...defaultTheme }} {...defaultThmeFunction} {...props} />
+      );
       const newTarget = getTarget(target, 'Year');
       newTarget.arrorChange(params);
       for (const i in expValue) {
@@ -54,7 +64,9 @@ describe('default', () => {
 
   function headOnChange(title: string, props: Object, params: Object, expValue: Object) {
     it(`${title}`, () => {
-      const target = mount(<Year {...props} />);
+      const target = mount(
+        <Year {...props} themeProps={{ ...defaultTheme }} {...defaultThmeFunction} />
+      );
       const newTarget = getTarget(target, 'Year');
       newTarget.headOnChange(params);
       for (const i in expValue) {
@@ -81,7 +93,14 @@ describe('default', () => {
       result = obj;
     };
     it(`${title}`, () => {
-      const target = mount(<Year {...props} onChange={onChange} />);
+      const target = mount(
+        <Year
+          {...props}
+          themeProps={{ ...defaultTheme }}
+          {...defaultThmeFunction}
+          onChange={onChange}
+        />
+      );
       const newTarget = getTarget(target, 'Year');
       const { showYears } = params;
       newTarget.panelChange(params);

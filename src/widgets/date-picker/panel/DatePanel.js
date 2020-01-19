@@ -10,7 +10,7 @@ import { getYandM } from '../utils/differUtils';
 import { getDateTheme } from '../themeConfig/themeConfig';
 import { addMouseEvent } from '@lugia/theme-hoc';
 type TypeProps = {
-  choseDayIndex: number,
+  choseDayIndex: Array<number> | number | string,
   onMouseOver?: Function,
   onMouseOut?: Function,
   onDateChange: Function,

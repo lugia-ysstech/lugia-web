@@ -22,6 +22,7 @@ type TypeProps = {
   getHeadInfo?: Function,
   column?: number,
   theme?: Object,
+  themeProps: Object,
 };
 
 OtherChild.displayName = 'OtherChild';

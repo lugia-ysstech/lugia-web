@@ -24,9 +24,19 @@ describe('default', () => {
     themeState: {},
     propsConfig: {},
   };
+  const defaultThmeFunction = {
+    getPartOfThemeProps: () => {
+      return { ...defaultTheme };
+    },
+    getPartOfThemeHocProps: () => {
+      return { viewClass: {} };
+    },
+  };
   function arrorChange(title: string, props: Object, params: Object, expValue: Object) {
     it(`${title}`, () => {
-      const target = mount(<Weeks themeProps={{ ...defaultTheme }} {...props} />);
+      const target = mount(
+        <Weeks themeProps={{ ...defaultTheme }} {...defaultThmeFunction} {...props} />
+      );
       const newTarget = getTarget(target, 'Weeks');
       newTarget.arrorChange(params);
       for (const i in expValue) {
@@ -55,7 +65,9 @@ describe('default', () => {
 
   function headOnChange(title: string, props: Object, params: Object, expValue: Object) {
     it(`${title}`, () => {
-      const target = mount(<Weeks {...props} />);
+      const target = mount(
+        <Weeks {...props} themeProps={{ ...defaultTheme }} {...defaultThmeFunction} />
+      );
       const newTarget = getTarget(target, 'Weeks');
       newTarget.headOnChange(params);
       for (const i in expValue) {
@@ -94,7 +106,14 @@ describe('default', () => {
       result = obj;
     };
     it(`${title}`, () => {
-      const target = mount(<Weeks {...props} onChange={onChange} />);
+      const target = mount(
+        <Weeks
+          themeProps={{ ...defaultTheme }}
+          {...defaultThmeFunction}
+          {...props}
+          onChange={onChange}
+        />
+      );
       const newTarget = getTarget(target, 'Weeks');
       const { isWeekInner } = params;
       newTarget.panelChange(params);

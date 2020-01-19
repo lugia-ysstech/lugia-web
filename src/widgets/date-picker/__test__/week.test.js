@@ -24,9 +24,19 @@ describe('default', () => {
     themeState: {},
     propsConfig: {},
   };
+  const defaultThmeFunction = {
+    getPartOfThemeProps: () => {
+      return { ...defaultTheme };
+    },
+    getPartOfThemeHocProps: () => {
+      return { viewClass: {} };
+    },
+  };
   function getnewWeeks(title: string, props: Object, params: Object, expValue: Array<string>) {
     it(`${title}`, () => {
-      const target = mount(<WeekDays themeProps={{ ...defaultTheme }} {...props} />);
+      const target = mount(
+        <WeekDays themeProps={{ ...defaultTheme }} {...defaultThmeFunction} {...props} />
+      );
       const newTarget = getTarget(target, 'WeekDays');
       const { firstWeekDay } = params;
       const { newWeeks } = newTarget.getnewWeeks(props, firstWeekDay);
