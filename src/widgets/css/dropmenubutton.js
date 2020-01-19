@@ -935,6 +935,7 @@ export const PullContainer = CSSComponent({
   `,
   option: { hover: true, active: true, disabled: true },
 });
+PullContainer.displayName = 'DropMenuPullButton';
 
 const getSeparatorWidth = props => {
   const { width } = props;
