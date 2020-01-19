@@ -84,7 +84,7 @@
     "@lugia/jverify": "^1.0.10",
     "@lugia/lugiax-router": "^1.0.22",
     "@lugia/mega-scripts": "^1.4.11",
-    "@lugia/react-test-utils": "^1.0.0",
+    "@lugia/react-test-utils": "^1.0.1",
     "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",
     "babel-eslint": "7.2.3",
