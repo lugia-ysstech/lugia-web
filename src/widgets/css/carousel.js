@@ -46,7 +46,7 @@ export const PreButton = CSSComponent({
   option: { hover: true },
 });
 
-PreButton.displayName = 'preButton';
+PreButton.displayName = 'PreButton';
 
 export const NextButton = CSSComponent({
   tag: 'span',

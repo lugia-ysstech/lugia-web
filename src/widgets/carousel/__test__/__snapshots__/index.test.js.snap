@@ -2,23 +2,22 @@
 
 exports[`Carousel getItemWrap switchType : fade 1`] = `
 .c0 {
-  display: inline-block;
-  position: absolute;
-  opacity: 0;
-  height: 4.166666666666667em;
-  width: 4.166666666666667em;
-  -webkit-transition: opacity 500s;
-  transition: opacity 500s;
   overflow: hidden;
   vertical-align: top;
+  display: inline-block;
+  width: 40rem;
+  height: 20rem;
+  opacity: 1;
+  position: absolute;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
 }
 
 <div>
   <div
-    checked={false}
     className="c0"
-    height={50}
-    width={50}
+    style={Object {}}
   >
     hello world
   </div>
@@ -27,21 +26,22 @@ exports[`Carousel getItemWrap switchType : fade 1`] = `
 
 exports[`Carousel getItemWrap switchType : horizontal 1`] = `
 .c0 {
-  display: inline-block;
-  height: 4.166666666666667em;
-  width: 4.166666666666667em;
-  -webkit-transition: opacity 500s;
-  transition: opacity 500s;
   overflow: hidden;
   vertical-align: top;
+  display: inline-block;
+  width: 40rem;
+  height: 20rem;
+  opacity: 1;
+  position: relative;
+  opacity: 1;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
 }
 
 <div>
   <div
-    checked={false}
     className="c0"
-    height={50}
-    width={50}
+    style={Object {}}
   >
     hello world
   </div>
@@ -50,21 +50,22 @@ exports[`Carousel getItemWrap switchType : horizontal 1`] = `
 
 exports[`Carousel getItemWrap switchType : vertical 1`] = `
 .c0 {
-  display: inline-block;
-  height: 4.166666666666667em;
-  width: 4.166666666666667em;
-  -webkit-transition: opacity 500s;
-  transition: opacity 500s;
   overflow: hidden;
   vertical-align: top;
+  display: inline-block;
+  width: 40rem;
+  height: 20rem;
+  opacity: 1;
+  position: relative;
+  opacity: 1;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
 }
 
 <div>
   <div
-    checked={false}
     className="c0"
-    height={50}
-    width={50}
+    style={Object {}}
   >
     hello world
   </div>

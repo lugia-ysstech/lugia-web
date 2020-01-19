@@ -46,6 +46,7 @@ type CarouselProps = {
   animationTime?: number,
   indicator: boolean,
   switchButton: boolean,
+  getPartOfThemeProps: Function,
 };
 
 type CarouselState = {
@@ -92,7 +93,7 @@ export default class Carousel extends React.Component<any, CarouselProps> {
     super(props);
     this.clickDisabled = false;
     this.preStart = toNumber(props.start, 0);
-    this.animationTime = this.getAnimationTime() / 1000;
+    this.animationTime = this.getAnimationTime(props) / 1000;
     this.initWidthAndHeight();
     this.initSwitchButtonFontSize();
   }
@@ -235,8 +236,8 @@ export default class Carousel extends React.Component<any, CarouselProps> {
     return [preItem, NextItem];
   };
 
-  getAnimationTime(): number {
-    const { animationTime = defaultAnimationTime } = this.props;
+  getAnimationTime(props: Object): number {
+    const { animationTime = defaultAnimationTime } = props;
     return limit(toNumber(animationTime, defaultAnimationTime), [200, 100000]);
   }
 
@@ -261,7 +262,7 @@ export default class Carousel extends React.Component<any, CarouselProps> {
             onMouseEnter={this.handleMouseEnterIndicator.bind(this, index)}
             onClick={this.handleClickIndicator.bind(this, index)}
           >
-            <Indicator themeProps={IndicatorThemeProps} key={index} />
+            <Indicator themeProps={IndicatorThemeProps} key={index} checked={checked} />
           </IndicatorContainer>
         );
       });

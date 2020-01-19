@@ -100,7 +100,6 @@ describe('DropMenuButton', () => {
   it('type: default, divided={true}; action = hover , click MenuItem && hover LeftButton', async () => {
     const Demo = getTarget('hover', true, 'customs');
     const cmp = mount(<Demo />);
-
     pullButtonMouseEnter(cmp);
     exp(cmp.state().visible).to.be.equal(true);
     await delay(100);
