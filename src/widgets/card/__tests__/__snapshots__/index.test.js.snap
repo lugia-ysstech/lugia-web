@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Card css 1`] = `
-.c10 {
+.c14 {
   box-sizing: border-box;
   display: inline-block;
   text-align: center;
@@ -15,13 +15,13 @@ exports[`Card css 1`] = `
   min-height: 2.4rem;
 }
 
-.c12 {
+.c16 {
   width: 100%;
   height: 100%;
   background-color: transparent;
 }
 
-.c11 {
+.c15 {
   min-width: 2.4rem;
   min-height: 2.4rem;
   background-color: transparent;
@@ -40,7 +40,7 @@ exports[`Card css 1`] = `
   flex-direction: row;
 }
 
-.c8 {
+.c12 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -54,7 +54,7 @@ exports[`Card css 1`] = `
   flex-direction: column;
 }
 
-.c14 {
+.c18 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -67,13 +67,18 @@ exports[`Card css 1`] = `
   flex-direction: column;
 }
 
-.c2 {
+.c3 {
   font-size: 1.2rem;
   display: inline-block;
   width: 100%;
 }
 
-.c16 {
+.c2 {
+  width: 5rem;
+  height: 2rem;
+}
+
+.c20 {
   width: 20rem;
   height: 16rem;
   display: inline-block;
@@ -81,7 +86,7 @@ exports[`Card css 1`] = `
   max-height: 100%;
 }
 
-.c18 {
+.c22 {
   width: 100%;
   height: 100%;
   display: inline-block;
@@ -89,21 +94,21 @@ exports[`Card css 1`] = `
   max-height: 100%;
 }
 
-.c15 {
+.c19 {
   position: relative;
   width: 20rem;
   height: 15rem;
   display: block;
 }
 
-.c17 {
+.c21 {
   position: relative;
   width: 20rem;
   height: 100%;
   display: inline-block;
 }
 
-.c9 {
+.c13 {
   position: relative;
   text-align: center;
   width: 16rem;
@@ -111,7 +116,7 @@ exports[`Card css 1`] = `
   display: block;
 }
 
-.c13 {
+.c17 {
   position: relative;
   text-align: center;
   width: 8rem;
@@ -119,175 +124,32 @@ exports[`Card css 1`] = `
   display: inline-block;
 }
 
-.c3 {
-  text-align: inherit;
-  display: inline-block;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+.c10 {
   font-size: 1.6rem;
   width: 100%;
+}
+
+.c4 {
+  font-size: 1.6rem;
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
 }
 
 .c5 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-}
-
-.c6 {
-  width: 0.5rem;
-  height: 2rem;
-  background-color: #4d63ff;
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
-  border-bottom-left-radius: 0.5rem;
-  margin-top: 1.3rem;
-  margin-bottom: 0rem;
-  margin-left: 0.5rem;
-  margin-right: 0rem;
-}
-
-.c7 {
-  width: 100%;
-  height: 0.1rem;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #e8e8e8;
-  margin-top: 1rem;
-  margin-bottom: 0rem;
-  margin-left: 0rem;
-  margin-right: 0rem;
-}
-
-.c4 {
-  text-align: inherit;
-  font-size: 1.4rem;
-  color: #666666;
-}
-
-.c19 {
-  font-size: 1.4rem;
-  font-weight: 400;
-  top: 1.6rem;
-  right: 2rem;
-  position: absolute;
-}
-
-.c27 {
-  position: relative;
-  cursor: pointer;
-  white-space: nowrap;
-  padding: 0 20px;
   display: inline-block;
-  text-align: center;
-}
-
-.c25 {
-  position: relative;
-  cursor: pointer;
-  white-space: nowrap;
-  padding: 0 20px;
-  display: inline-block;
-  text-align: center;
-}
-
-.c25 > div::before {
-  content: '';
-  background: #4d63ff;
-  border-radius: 2px;
-  position: absolute;
-  bottom: -1px;
-  width: 100%;
-  height: 2px;
-  left: 50%;
-  -webkit-animation: gaMprO 0.2s linear forwards;
-  animation: gaMprO 0.2s linear forwards;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-}
-
-.c26 {
-  position: relative;
-  display: inline-block;
-  box-sizing: border-box;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  line-height: 4.2rem;
-  height: 4.2rem;
-}
-
-.c26:focus {
-  color: #4d63ff;
-}
-
-.c23 {
-  width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  float: left;
-}
-
-.c24 {
-  display: inline-block;
-  box-sizing: border-box;
-  white-space: nowrap;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-  min-width: 100%;
-  -webkit-transform: translateX(0rem);
-  -ms-transform: translateX(0rem);
-  transform: translateX(0rem);
-}
-
-.c22 {
-  position: relative;
-  z-index: 99;
-  overflow: hidden;
-  text-align: left;
-}
-
-.c28 {
-  position: relative;
-  background: #fff;
-  min-width: 100px;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-}
-
-.c29 {
-  overflow: hidden;
-  padding: 10px;
+  font-size: 1.6rem;
   width: 100%;
-  height: 0;
-  display: none;
-  display: block;
-  z-index: 10;
-  height: 100%;
 }
 
-.c30 {
-  overflow: hidden;
-  padding: 10px;
-  width: 100%;
-  height: 0;
-  display: none;
-}
-
-.c21 {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  position: relative;
-  min-height: 100%;
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -295,6 +157,56 @@ exports[`Card css 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  padding-top: 1rem;
+  padding-bottom: 0rem;
+  padding-left: 0rem;
+  padding-right: 0rem;
+}
+
+.c8 {
+  width: 100%;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c9 {
+  width: 0.5rem;
+  height: 2rem;
+  background-color: #4d63ff;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+  margin-left: 0.5rem;
+  margin-right: 1rem;
+}
+
+.c11 {
+  width: 100%;
+  height: 0.1rem;
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: #e8e8e8;
+  height: NaNrem;
+}
+
+.c6 {
+  text-align: inherit;
+  font-size: 1.4rem;
+  color: #666666;
 }
 
 .c0 {
@@ -303,53 +215,46 @@ exports[`Card css 1`] = `
   display: inline-block;
 }
 
-.c20 {
-  display: inline-block;
-  margin-left: 20px;
-}
-
-.c31 {
-  text-align: center;
-  width: 100%;
-  height: 100%;
-}
-
-.c32 {
-  text-align: center;
-  font-size: 16px;
-  color: #666;
-  height: 45px;
-  padding-top: 34px;
-  padding-bottom: 26px;
-  width: 100%;
-}
-
-.c33 {
-  text-align: center;
-  color: #4d63ff;
-  display: inline-block;
-}
-
-.c34 {
-  position: absolute;
-  text-align: center;
-  font-size: 14px;
-  border-radius: 20px;
-  margin-top: 32px;
-  color: #fff;
-  bottom: 10%;
-  width: 80%;
-  background-color: #4d63ff;
-  height: 32px;
-  border: 2px solid #4d63ff;
-  left: 10%;
-}
-
 <div
   className="c0"
 >
   <p>
     基本样式
+  </p>
+  <div
+    className="c1"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#ffffff",
+        "borderBottomColor": "#cccccc",
+        "borderBottomLeftRadius": "0.5rem",
+        "borderBottomRightRadius": "0.5rem",
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": "0.1rem",
+        "borderLeftColor": "#cccccc",
+        "borderLeftStyle": "solid",
+        "borderLeftWidth": "0.1rem",
+        "borderRightColor": "#cccccc",
+        "borderRightStyle": "solid",
+        "borderRightWidth": "0.1rem",
+        "borderTopColor": "#cccccc",
+        "borderTopLeftRadius": "0.5rem",
+        "borderTopRightRadius": "0.5rem",
+        "borderTopStyle": "solid",
+        "borderTopWidth": "0.1rem",
+        "boxShadow": "0px 0px 6px 0px rgba(0, 0, 50, 0.1)",
+      }
+    }
+    type="simple"
+  >
+    <div
+      className="c2"
+    />
+  </div>
+  <p>
+    内容撑开卡片样式
   </p>
   <div
     className="c0"
@@ -383,24 +288,31 @@ exports[`Card css 1`] = `
       type="simple"
     >
       <div
-        className="c2"
+        className="c3"
         style={Object {}}
         type="simple"
       >
         <div
-          className="c3"
+          className="c4"
           style={
             Object {
-              "fontWeight": 500,
               "paddingBottom": "0rem",
               "paddingLeft": "1rem",
               "paddingRight": "1rem",
-              "paddingTop": "1rem",
+              "paddingTop": "1.3rem",
             }
           }
-          type="simple"
         >
-          this is title
+          <div
+            className="c5"
+            style={
+              Object {
+                "fontWeight": 500,
+              }
+            }
+          >
+            this is title
+          </div>
         </div>
         <div
           className="c4"
@@ -413,13 +325,30 @@ exports[`Card css 1`] = `
             }
           }
         >
-          <div>
-            this is description
+          <div
+            className="c6"
+            style={Object {}}
+          >
+            <div>
+              this is description
+            </div>
+            <div>
+              this is description
+            </div>
+            <div>
+              this is description
+            </div>
+            <div>
+              this is description
+            </div>
+            <div>
+              this is description
+            </div>
+            <div>
+              this is description
+            </div>
+             
           </div>
-          <div>
-            this is description
-          </div>
-           
         </div>
       </div>
     </div>
@@ -459,32 +388,36 @@ exports[`Card css 1`] = `
       type="tip"
     >
       <div
-        className="c2"
+        className="c3"
         style={Object {}}
         type="tip"
       >
         <div
-          className="c5"
+          className="c7"
           style={Object {}}
         >
           <div
-            className="c6"
-            style={Object {}}
-          />
-          <div
-            className="c3"
-            style={
-              Object {
-                "fontWeight": 700,
-                "paddingBottom": "0rem",
-                "paddingLeft": "1rem",
-                "paddingRight": "1rem",
-                "paddingTop": "1.3rem",
-              }
-            }
-            type="tip"
+            className="c8"
           >
-            this is title
+            <div
+              className="c9"
+              style={Object {}}
+            />
+            <div
+              className="c10"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "fontWeight": 700,
+                  }
+                }
+              >
+                this is title
+              </div>
+            </div>
           </div>
         </div>
         <div
@@ -498,13 +431,18 @@ exports[`Card css 1`] = `
             }
           }
         >
-          <div>
-            this is description
+          <div
+            className="c6"
+            style={Object {}}
+          >
+            <div>
+              this is description
+            </div>
+            <div>
+              this is description
+            </div>
+             
           </div>
-          <div>
-            this is description
-          </div>
-           
         </div>
       </div>
     </div>
@@ -543,53 +481,62 @@ exports[`Card css 1`] = `
       type="tip"
     >
       <div
-        className="c2"
+        className="c3"
         style={Object {}}
         type="tip"
       >
         <div
-          className="c5"
+          className="c7"
           style={
             Object {
-              "height": "1.8rem",
+              "backgroundColor": "#e8e8e8",
+              "height": "5rem",
+              "paddingBottom": "0rem",
+              "paddingLeft": "0rem",
+              "paddingRight": "0rem",
+              "paddingTop": "0rem",
             }
           }
         >
           <div
-            className="c6"
-            style={
-              Object {
-                "borderBottomLeftRadius": "0rem",
-                "borderTopLeftRadius": "0rem",
-                "height": "1.8rem",
-                "marginBottom": "0rem",
-                "marginLeft": "0rem",
-                "marginRight": "0rem",
-                "marginTop": "1.3rem",
-                "width": "0.4rem",
-              }
-            }
-          />
-          <div
-            className="c3"
-            style={
-              Object {
-                "fontWeight": 700,
-                "paddingBottom": "0rem",
-                "paddingLeft": "1rem",
-                "paddingRight": "1rem",
-                "paddingTop": "1.3rem",
-              }
-            }
-            type="tip"
+            className="c8"
           >
-            this is title
+            <div
+              className="c9"
+              style={
+                Object {
+                  "borderBottomLeftRadius": "0rem",
+                  "borderTopLeftRadius": "0rem",
+                  "height": "3rem",
+                  "marginBottom": "0rem",
+                  "marginLeft": "0rem",
+                  "marginRight": "1rem",
+                  "marginTop": "0rem",
+                  "width": "0.4rem",
+                }
+              }
+            />
+            <div
+              className="c10"
+              style={Object {}}
+            >
+              <div
+                className="c5"
+                style={
+                  Object {
+                    "fontWeight": 700,
+                  }
+                }
+              >
+                this is title
+              </div>
+            </div>
           </div>
+          <div
+            className="c11"
+            style={Object {}}
+          />
         </div>
-        <div
-          className="c7"
-          style={Object {}}
-        />
         <div
           className="c4"
           style={
@@ -601,13 +548,18 @@ exports[`Card css 1`] = `
             }
           }
         >
-          <div>
-            this is description
+          <div
+            className="c6"
+            style={Object {}}
+          >
+            <div>
+              this is description
+            </div>
+            <div>
+              this is description
+            </div>
+             
           </div>
-          <div>
-            this is description
-          </div>
-           
         </div>
       </div>
     </div>
@@ -619,7 +571,7 @@ exports[`Card css 1`] = `
     className="c0"
   >
     <div
-      className="c8"
+      className="c12"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       style={
@@ -649,7 +601,7 @@ exports[`Card css 1`] = `
       type="avatar"
     >
       <div
-        className="c9"
+        className="c13"
         style={
           Object {
             "height": "10rem",
@@ -662,8 +614,7 @@ exports[`Card css 1`] = `
         }
       >
         <div
-          className="c10"
-          onClick={[Function]}
+          className="c14"
           style={
             Object {
               "backgroundColor": "transparent",
@@ -671,7 +622,7 @@ exports[`Card css 1`] = `
           }
         >
           <div
-            className="c11"
+            className="c15"
             style={
               Object {
                 "height": "6rem",
@@ -681,7 +632,7 @@ exports[`Card css 1`] = `
           >
             <img
               alt=""
-              className="c12"
+              className="c16"
               src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png"
               style={
                 Object {
@@ -696,24 +647,31 @@ exports[`Card css 1`] = `
         </div>
       </div>
       <div
-        className="c2"
+        className="c3"
         style={Object {}}
         type="avatar"
       >
         <div
-          className="c3"
+          className="c4"
           style={
             Object {
-              "fontWeight": 500,
               "paddingBottom": "0rem",
               "paddingLeft": "0rem",
               "paddingRight": "1rem",
-              "paddingTop": "1rem",
+              "paddingTop": "1.3rem",
             }
           }
-          type="avatar"
         >
-          this is title
+          <div
+            className="c5"
+            style={
+              Object {
+                "fontWeight": 500,
+              }
+            }
+          >
+            this is title
+          </div>
         </div>
         <div
           className="c4"
@@ -726,8 +684,13 @@ exports[`Card css 1`] = `
             }
           }
         >
-          this is description
-           
+          <div
+            className="c6"
+            style={Object {}}
+          >
+            this is description
+             
+          </div>
         </div>
       </div>
     </div>
@@ -769,7 +732,7 @@ exports[`Card css 1`] = `
       type="avatar"
     >
       <div
-        className="c13"
+        className="c17"
         style={
           Object {
             "marginBottom": "0rem",
@@ -781,8 +744,7 @@ exports[`Card css 1`] = `
         }
       >
         <div
-          className="c10"
-          onClick={[Function]}
+          className="c14"
           style={
             Object {
               "backgroundColor": "transparent",
@@ -790,7 +752,7 @@ exports[`Card css 1`] = `
           }
         >
           <div
-            className="c11"
+            className="c15"
             style={
               Object {
                 "height": "6rem",
@@ -800,7 +762,7 @@ exports[`Card css 1`] = `
           >
             <img
               alt=""
-              className="c12"
+              className="c16"
               src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/4d4bd6db04b1c6015acf4c933607956a9f2d62a1/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/Bitmap2.png"
               style={
                 Object {
@@ -815,37 +777,36 @@ exports[`Card css 1`] = `
         </div>
       </div>
       <div
-        className="c2"
+        className="c3"
         style={Object {}}
         type="avatar"
       >
         <div
-          className="c3"
+          className="c4"
           style={
             Object {
-              "fontWeight": 500,
-              "marginBottom": "0rem",
-              "marginLeft": "2rem",
-              "marginRight": "0rem",
-              "marginTop": "1rem",
               "paddingBottom": "0rem",
               "paddingLeft": "1rem",
               "paddingRight": "1rem",
-              "paddingTop": "1rem",
+              "paddingTop": "1.3rem",
             }
           }
-          type="avatar"
         >
-          this is title
+          <div
+            className="c5"
+            style={
+              Object {
+                "fontWeight": 500,
+              }
+            }
+          >
+            this is title
+          </div>
         </div>
         <div
           className="c4"
           style={
             Object {
-              "marginBottom": "0rem",
-              "marginLeft": "2rem",
-              "marginRight": "0rem",
-              "marginTop": "0rem",
               "paddingBottom": "0rem",
               "paddingLeft": "1rem",
               "paddingRight": "1rem",
@@ -853,12 +814,17 @@ exports[`Card css 1`] = `
             }
           }
         >
-          <div>
+          <div
+            className="c6"
+            style={Object {}}
+          >
             <div>
-              this is description
+              <div>
+                this is description
+              </div>
             </div>
+             
           </div>
-           
         </div>
       </div>
     </div>
@@ -870,7 +836,7 @@ exports[`Card css 1`] = `
     className="c0"
   >
     <div
-      className="c14"
+      className="c18"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       style={
@@ -901,7 +867,7 @@ exports[`Card css 1`] = `
       type="image"
     >
       <div
-        className="c15"
+        className="c19"
         style={
           Object {
             "height": "15rem",
@@ -910,39 +876,44 @@ exports[`Card css 1`] = `
         }
       >
         <img
-          className="c16"
+          className="c20"
           src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg"
           style={Object {}}
         />
       </div>
       <div
-        className="c2"
+        className="c3"
         style={Object {}}
         type="image"
       >
         <div
-          className="c3"
+          className="c4"
           style={
             Object {
-              "color": "pink",
-              "fontWeight": 500,
               "height": "2rem",
               "paddingBottom": "0rem",
               "paddingLeft": "1rem",
               "paddingRight": "1rem",
-              "paddingTop": "1rem",
-              "width": "10rem",
+              "paddingTop": "1.3rem",
             }
           }
-          type="image"
         >
-          this is title
+          <div
+            className="c5"
+            style={
+              Object {
+                "color": "pink",
+                "fontWeight": 500,
+              }
+            }
+          >
+            this is title
+          </div>
         </div>
         <div
           className="c4"
           style={
             Object {
-              "color": "blue",
               "paddingBottom": "0rem",
               "paddingLeft": "1rem",
               "paddingRight": "1rem",
@@ -950,8 +921,17 @@ exports[`Card css 1`] = `
             }
           }
         >
-          this is description
-           
+          <div
+            className="c6"
+            style={
+              Object {
+                "color": "blue",
+              }
+            }
+          >
+            this is description
+             
+          </div>
         </div>
       </div>
     </div>
@@ -993,7 +973,7 @@ exports[`Card css 1`] = `
       type="image"
     >
       <div
-        className="c17"
+        className="c21"
         style={
           Object {
             "width": "20rem",
@@ -1001,30 +981,37 @@ exports[`Card css 1`] = `
         }
       >
         <img
-          className="c18"
+          className="c22"
           src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/2eac1a340185301d24d6fac426aebd9abe6dea0e/lugiaweb%E7%BB%84%E4%BB%B6/%E5%8D%A1%E7%89%87/18081548404150_.pic_hd.jpg"
           style={Object {}}
         />
       </div>
       <div
-        className="c2"
+        className="c3"
         style={Object {}}
         type="image"
       >
         <div
-          className="c3"
+          className="c4"
           style={
             Object {
-              "fontWeight": 500,
               "paddingBottom": "0rem",
               "paddingLeft": "1rem",
               "paddingRight": "1rem",
-              "paddingTop": "1rem",
+              "paddingTop": "1.3rem",
             }
           }
-          type="image"
         >
-          this is title
+          <div
+            className="c5"
+            style={
+              Object {
+                "fontWeight": 500,
+              }
+            }
+          >
+            this is title
+          </div>
         </div>
         <div
           className="c4"
@@ -1037,300 +1024,13 @@ exports[`Card css 1`] = `
             }
           }
         >
-          this is description
-           
-        </div>
-      </div>
-    </div>
-  </div>
-  <p>
-    组合样式
-  </p>
-  <div
-    className="c0"
-  >
-    <div
-      className="c1"
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      style={
-        Object {
-          "backgroundColor": "#ffffff",
-          "borderBottomColor": "#cccccc",
-          "borderBottomLeftRadius": "0.5rem",
-          "borderBottomRightRadius": "0.5rem",
-          "borderBottomStyle": "solid",
-          "borderBottomWidth": "0.1rem",
-          "borderLeftColor": "#cccccc",
-          "borderLeftStyle": "solid",
-          "borderLeftWidth": "0.1rem",
-          "borderRightColor": "#cccccc",
-          "borderRightStyle": "solid",
-          "borderRightWidth": "0.1rem",
-          "borderTopColor": "#cccccc",
-          "borderTopLeftRadius": "0.5rem",
-          "borderTopRightRadius": "0.5rem",
-          "borderTopStyle": "solid",
-          "borderTopWidth": "0.1rem",
-          "boxShadow": "0px 0px 6px 0px rgba(0, 0, 50, 0.1)",
-          "height": "24rem",
-          "width": "40rem",
-        }
-      }
-      type="combo"
-    >
-      <div
-        className="c19"
-        style={Object {}}
-      >
-        操作
-      </div>
-      <div
-        className="c2"
-        content={
-          <ForwardRef>
-            <ForwardRef
-              data={
-                Array [
-                  Object {
-                    "content": "content of Tab1",
-                    "title": "Tab1",
-                  },
-                  Object {
-                    "content": "content of Tab2",
-                    "title": "Tab2",
-                  },
-                  Object {
-                    "content": "content of Tab3",
-                    "title": "Tab3",
-                  },
-                ]
-              }
-            />
-          </ForwardRef>
-        }
-        style={Object {}}
-        type="combo"
-      >
-        <div
-          className="c20"
-        >
           <div
-            className="OutContainer  c21"
+            className="c6"
             style={Object {}}
           >
-            <div
-              className="c22"
-              style={
-                Object {
-                  "backgroundColor": "#fff",
-                }
-              }
-            >
-              <div
-                className="c23"
-                style={Object {}}
-              >
-                <div
-                  className="c24"
-                  style={
-                    Object {
-                      "borderBottomColor": "#e8e8e8",
-                      "borderBottomStyle": "solid",
-                      "borderBottomWidth": "0.1rem",
-                    }
-                  }
-                  x={-0}
-                >
-                  <div
-                    className="c25"
-                    disabled={false}
-                    onClick={[Function]}
-                    onMouseEnter={[Function]}
-                    onMouseLeave={[Function]}
-                    style={
-                      Object {
-                        "color": "#4d63ff",
-                      }
-                    }
-                  >
-                    <div
-                      className="lineTitle  c26"
-                      disabled={false}
-                      style={
-                        Object {
-                          "lineHeight": "3.4rem",
-                        }
-                      }
-                    >
-                      Tab1
-                    </div>
-                  </div>
-                  <div
-                    className="c27"
-                    disabled={false}
-                    onClick={[Function]}
-                    onMouseEnter={[Function]}
-                    onMouseLeave={[Function]}
-                    style={Object {}}
-                  >
-                    <div
-                      className="lineTitle  c26"
-                      disabled={false}
-                      style={
-                        Object {
-                          "lineHeight": "3.4rem",
-                        }
-                      }
-                    >
-                      Tab2
-                    </div>
-                  </div>
-                  <div
-                    className="c27"
-                    disabled={false}
-                    onClick={[Function]}
-                    onMouseEnter={[Function]}
-                    onMouseLeave={[Function]}
-                    style={Object {}}
-                  >
-                    <div
-                      className="lineTitle  c26"
-                      disabled={false}
-                      style={
-                        Object {
-                          "lineHeight": "3.4rem",
-                        }
-                      }
-                    >
-                      Tab3
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className="c28"
-              style={Object {}}
-            >
-              <div
-                className="c29"
-                style={Object {}}
-              >
-                <div
-                  className=""
-                  style={Object {}}
-                >
-                  content of Tab1
-                </div>
-              </div>
-              <div
-                className="c30"
-                style={Object {}}
-              >
-                <div
-                  className=""
-                  style={Object {}}
-                >
-                  content of Tab2
-                </div>
-              </div>
-              <div
-                className="c30"
-                style={Object {}}
-              >
-                <div
-                  className=""
-                  style={Object {}}
-                >
-                  content of Tab3
-                </div>
-              </div>
-            </div>
+            this is description
+             
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <p>
-    组合样式
-  </p>
-  <div
-    className="c0"
-  >
-    <div
-      className="c1"
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      style={
-        Object {
-          "backgroundColor": "#ffffff",
-          "borderBottomColor": "#cccccc",
-          "borderBottomLeftRadius": "0.5rem",
-          "borderBottomRightRadius": "0.5rem",
-          "borderBottomStyle": "solid",
-          "borderBottomWidth": "0.1rem",
-          "borderLeftColor": "#cccccc",
-          "borderLeftStyle": "solid",
-          "borderLeftWidth": "0.1rem",
-          "borderRightColor": "#cccccc",
-          "borderRightStyle": "solid",
-          "borderRightWidth": "0.1rem",
-          "borderTopColor": "#cccccc",
-          "borderTopLeftRadius": "0.5rem",
-          "borderTopRightRadius": "0.5rem",
-          "borderTopStyle": "solid",
-          "borderTopWidth": "0.1rem",
-          "boxShadow": "0px 0px 6px 0px rgba(0, 0, 50, 0.1)",
-          "height": "22rem",
-          "width": "20rem",
-        }
-      }
-      type="combo"
-    >
-      <div
-        className="c2"
-        content={<AmountCard />}
-        style={Object {}}
-        type="combo"
-      >
-        <div
-          className="c31"
-        >
-          <div
-            className="c32"
-          >
-            价格
-          </div>
-          <div
-            className="c33"
-          >
-            <div
-              className="c33"
-              style={
-                Object {
-                  "fontSize": 32,
-                }
-              }
-            >
-              9
-            </div>
-            <div
-              className="c33"
-              style={
-                Object {
-                  "fontSize": 18,
-                }
-              }
-            >
-              .88
-            </div>
-          </div>
-          <button
-            className="c34"
-          >
-            购买
-          </button>
         </div>
       </div>
     </div>

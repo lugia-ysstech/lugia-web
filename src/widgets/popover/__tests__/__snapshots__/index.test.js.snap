@@ -1,11 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`popover Demo Component JSON 1`] = `
-.c1 {
+.c2 {
   display: inline-block;
   margin-bottom: 0;
   box-sizing: border-box;
-  text-align: center;
   touch-action: manipulation;
   cursor: pointer;
   white-space: nowrap;
@@ -34,20 +33,43 @@ exports[`popover Demo Component JSON 1`] = `
   border-right-color: #cccccc;
 }
 
-.c2 {
+.c4 {
   color: #666666;
   font-size: 1.4rem;
 }
 
-.c4 {
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.c1 {
+  display: inline-block;
+}
+
+.c6 {
+  box-sizing: border-box;
   line-height: 1.5;
   display: inline-block;
   font-family: inherit;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   outline: none;
-  width: 20rem;
-  height: 3.2rem;
+  height: 100%;
+  width: 100%;
+  font-size: 1.2rem;
   cursor: text;
   border-top-width: 0.1rem;
   border-top-style: solid;
@@ -67,26 +89,32 @@ exports[`popover Demo Component JSON 1`] = `
   border-bottom-left-radius: 0.4rem;
 }
 
-.c4::-webkit-input-placeholder {
+.c6::-webkit-input-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
-.c4::-moz-placeholder {
+.c6::-moz-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
-.c4:-ms-input-placeholder {
+.c6:-ms-input-placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
-.c4::placeholder {
+.c6::placeholder {
   color: #cccccc;
+  font-size: 1.2rem;
 }
 
-.c3 {
+.c5 {
   position: relative;
   display: inline-block;
   outline: none;
+  min-width: 3rem;
+  width: 100%;
 }
 
 .c0 {
@@ -104,141 +132,177 @@ exports[`popover Demo Component JSON 1`] = `
       }
     }
   >
-    <button
+    <div
       className="c1"
-      onBlur={[Function]}
       onClick={[Function]}
-      onFocus={[Function]}
       onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
-      onMouseUp={[Function]}
-      size="default"
-      style={
-        Object {
-          "backgroundColor": "#4d63ff",
-          "borderBottomLeftRadius": "0.4rem",
-          "borderBottomRightRadius": "0.4rem",
-          "borderBottomWidth": 0,
-          "borderLeftWidth": 0,
-          "borderRightWidth": 0,
-          "borderTopLeftRadius": "0.4rem",
-          "borderTopRightRadius": "0.4rem",
-          "borderTopWidth": 0,
-          "height": "3.2rem",
-          "paddingBottom": "0rem",
-          "paddingLeft": "1.8rem",
-          "paddingRight": "1.8rem",
-          "paddingTop": "0rem",
-          "width": "8rem",
-        }
-      }
-      type="primary"
+      onTouchStart={[Function]}
+      style={Object {}}
     >
-      <span
+      <button
         className="c2"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        onMouseUp={[Function]}
+        size="default"
         style={
           Object {
-            "color": "#ffffff",
-            "fontSize": "1.4rem",
+            "backgroundColor": "#4d63ff",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomWidth": 0,
+            "borderLeftWidth": 0,
+            "borderRightWidth": 0,
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopWidth": 0,
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+            "width": "8rem",
           }
         }
+        type="primary"
       >
-        TL
-      </span>
-    </button>
-    <button
+        <span
+          className="c3"
+        >
+          <span
+            className="c4"
+            style={
+              Object {
+                "color": "#ffffff",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            TL
+          </span>
+        </span>
+      </button>
+    </div>
+    <div
       className="c1"
-      onBlur={[Function]}
       onClick={[Function]}
-      onFocus={[Function]}
       onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
-      onMouseUp={[Function]}
-      size="default"
-      style={
-        Object {
-          "backgroundColor": "#4d63ff",
-          "borderBottomLeftRadius": "0.4rem",
-          "borderBottomRightRadius": "0.4rem",
-          "borderBottomWidth": 0,
-          "borderLeftWidth": 0,
-          "borderRightWidth": 0,
-          "borderTopLeftRadius": "0.4rem",
-          "borderTopRightRadius": "0.4rem",
-          "borderTopWidth": 0,
-          "height": "3.2rem",
-          "paddingBottom": "0rem",
-          "paddingLeft": "1.8rem",
-          "paddingRight": "1.8rem",
-          "paddingTop": "0rem",
-          "width": "8rem",
-        }
-      }
-      type="primary"
+      onTouchStart={[Function]}
+      style={Object {}}
     >
-      <span
+      <button
         className="c2"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        onMouseUp={[Function]}
+        size="default"
         style={
           Object {
-            "color": "#ffffff",
-            "fontSize": "1.4rem",
+            "backgroundColor": "#4d63ff",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomWidth": 0,
+            "borderLeftWidth": 0,
+            "borderRightWidth": 0,
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopWidth": 0,
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+            "width": "8rem",
           }
         }
+        type="primary"
       >
-        Top
-      </span>
-    </button>
-    <button
+        <span
+          className="c3"
+        >
+          <span
+            className="c4"
+            style={
+              Object {
+                "color": "#ffffff",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            Top
+          </span>
+        </span>
+      </button>
+    </div>
+    <div
       className="c1"
-      onBlur={[Function]}
       onClick={[Function]}
-      onFocus={[Function]}
       onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
-      onMouseUp={[Function]}
-      size="default"
-      style={
-        Object {
-          "backgroundColor": "#4d63ff",
-          "borderBottomLeftRadius": "0.4rem",
-          "borderBottomRightRadius": "0.4rem",
-          "borderBottomWidth": 0,
-          "borderLeftWidth": 0,
-          "borderRightWidth": 0,
-          "borderTopLeftRadius": "0.4rem",
-          "borderTopRightRadius": "0.4rem",
-          "borderTopWidth": 0,
-          "height": "3.2rem",
-          "paddingBottom": "0rem",
-          "paddingLeft": "1.8rem",
-          "paddingRight": "1.8rem",
-          "paddingTop": "0rem",
-          "width": "8rem",
-        }
-      }
-      type="primary"
+      onTouchStart={[Function]}
+      style={Object {}}
     >
-      <span
+      <button
         className="c2"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        onMouseUp={[Function]}
+        size="default"
         style={
           Object {
-            "color": "#ffffff",
-            "fontSize": "1.4rem",
+            "backgroundColor": "#4d63ff",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomWidth": 0,
+            "borderLeftWidth": 0,
+            "borderRightWidth": 0,
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopWidth": 0,
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+            "width": "8rem",
           }
         }
+        type="primary"
       >
-        TR
-      </span>
-    </button>
+        <span
+          className="c3"
+        >
+          <span
+            className="c4"
+            style={
+              Object {
+                "color": "#ffffff",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            TR
+          </span>
+        </span>
+      </button>
+    </div>
   </div>
   <div
     style={
@@ -248,141 +312,177 @@ exports[`popover Demo Component JSON 1`] = `
       }
     }
   >
-    <button
+    <div
       className="c1"
-      onBlur={[Function]}
       onClick={[Function]}
-      onFocus={[Function]}
       onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
-      onMouseUp={[Function]}
-      size="default"
-      style={
-        Object {
-          "backgroundColor": "#4d63ff",
-          "borderBottomLeftRadius": "0.4rem",
-          "borderBottomRightRadius": "0.4rem",
-          "borderBottomWidth": 0,
-          "borderLeftWidth": 0,
-          "borderRightWidth": 0,
-          "borderTopLeftRadius": "0.4rem",
-          "borderTopRightRadius": "0.4rem",
-          "borderTopWidth": 0,
-          "height": "3.2rem",
-          "paddingBottom": "0rem",
-          "paddingLeft": "1.8rem",
-          "paddingRight": "1.8rem",
-          "paddingTop": "0rem",
-          "width": "8rem",
-        }
-      }
-      type="primary"
+      onTouchStart={[Function]}
+      style={Object {}}
     >
-      <span
+      <button
         className="c2"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        onMouseUp={[Function]}
+        size="default"
         style={
           Object {
-            "color": "#ffffff",
-            "fontSize": "1.4rem",
+            "backgroundColor": "#4d63ff",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomWidth": 0,
+            "borderLeftWidth": 0,
+            "borderRightWidth": 0,
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopWidth": 0,
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+            "width": "8rem",
           }
         }
+        type="primary"
       >
-        LT
-      </span>
-    </button>
-    <button
+        <span
+          className="c3"
+        >
+          <span
+            className="c4"
+            style={
+              Object {
+                "color": "#ffffff",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            LT
+          </span>
+        </span>
+      </button>
+    </div>
+    <div
       className="c1"
-      onBlur={[Function]}
       onClick={[Function]}
-      onFocus={[Function]}
       onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
-      onMouseUp={[Function]}
-      size="default"
-      style={
-        Object {
-          "backgroundColor": "#4d63ff",
-          "borderBottomLeftRadius": "0.4rem",
-          "borderBottomRightRadius": "0.4rem",
-          "borderBottomWidth": 0,
-          "borderLeftWidth": 0,
-          "borderRightWidth": 0,
-          "borderTopLeftRadius": "0.4rem",
-          "borderTopRightRadius": "0.4rem",
-          "borderTopWidth": 0,
-          "height": "3.2rem",
-          "paddingBottom": "0rem",
-          "paddingLeft": "1.8rem",
-          "paddingRight": "1.8rem",
-          "paddingTop": "0rem",
-          "width": "8rem",
-        }
-      }
-      type="primary"
+      onTouchStart={[Function]}
+      style={Object {}}
     >
-      <span
+      <button
         className="c2"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        onMouseUp={[Function]}
+        size="default"
         style={
           Object {
-            "color": "#ffffff",
-            "fontSize": "1.4rem",
+            "backgroundColor": "#4d63ff",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomWidth": 0,
+            "borderLeftWidth": 0,
+            "borderRightWidth": 0,
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopWidth": 0,
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+            "width": "8rem",
           }
         }
+        type="primary"
       >
-        Left
-      </span>
-    </button>
-    <button
+        <span
+          className="c3"
+        >
+          <span
+            className="c4"
+            style={
+              Object {
+                "color": "#ffffff",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            Left
+          </span>
+        </span>
+      </button>
+    </div>
+    <div
       className="c1"
-      onBlur={[Function]}
       onClick={[Function]}
-      onFocus={[Function]}
       onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
-      onMouseUp={[Function]}
-      size="default"
-      style={
-        Object {
-          "backgroundColor": "#4d63ff",
-          "borderBottomLeftRadius": "0.4rem",
-          "borderBottomRightRadius": "0.4rem",
-          "borderBottomWidth": 0,
-          "borderLeftWidth": 0,
-          "borderRightWidth": 0,
-          "borderTopLeftRadius": "0.4rem",
-          "borderTopRightRadius": "0.4rem",
-          "borderTopWidth": 0,
-          "height": "3.2rem",
-          "paddingBottom": "0rem",
-          "paddingLeft": "1.8rem",
-          "paddingRight": "1.8rem",
-          "paddingTop": "0rem",
-          "width": "8rem",
-        }
-      }
-      type="primary"
+      onTouchStart={[Function]}
+      style={Object {}}
     >
-      <span
+      <button
         className="c2"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        onMouseUp={[Function]}
+        size="default"
         style={
           Object {
-            "color": "#ffffff",
-            "fontSize": "1.4rem",
+            "backgroundColor": "#4d63ff",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomWidth": 0,
+            "borderLeftWidth": 0,
+            "borderRightWidth": 0,
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopWidth": 0,
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+            "width": "8rem",
           }
         }
+        type="primary"
       >
-        LB
-      </span>
-    </button>
+        <span
+          className="c3"
+        >
+          <span
+            className="c4"
+            style={
+              Object {
+                "color": "#ffffff",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            LB
+          </span>
+        </span>
+      </button>
+    </div>
   </div>
   <div
     style={
@@ -392,141 +492,177 @@ exports[`popover Demo Component JSON 1`] = `
       }
     }
   >
-    <button
+    <div
       className="c1"
-      onBlur={[Function]}
       onClick={[Function]}
-      onFocus={[Function]}
       onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
-      onMouseUp={[Function]}
-      size="default"
-      style={
-        Object {
-          "backgroundColor": "#4d63ff",
-          "borderBottomLeftRadius": "0.4rem",
-          "borderBottomRightRadius": "0.4rem",
-          "borderBottomWidth": 0,
-          "borderLeftWidth": 0,
-          "borderRightWidth": 0,
-          "borderTopLeftRadius": "0.4rem",
-          "borderTopRightRadius": "0.4rem",
-          "borderTopWidth": 0,
-          "height": "3.2rem",
-          "paddingBottom": "0rem",
-          "paddingLeft": "1.8rem",
-          "paddingRight": "1.8rem",
-          "paddingTop": "0rem",
-          "width": "8rem",
-        }
-      }
-      type="primary"
+      onTouchStart={[Function]}
+      style={Object {}}
     >
-      <span
+      <button
         className="c2"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        onMouseUp={[Function]}
+        size="default"
         style={
           Object {
-            "color": "#ffffff",
-            "fontSize": "1.4rem",
+            "backgroundColor": "#4d63ff",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomWidth": 0,
+            "borderLeftWidth": 0,
+            "borderRightWidth": 0,
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopWidth": 0,
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+            "width": "8rem",
           }
         }
+        type="primary"
       >
-        RT
-      </span>
-    </button>
-    <button
+        <span
+          className="c3"
+        >
+          <span
+            className="c4"
+            style={
+              Object {
+                "color": "#ffffff",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            RT
+          </span>
+        </span>
+      </button>
+    </div>
+    <div
       className="c1"
-      onBlur={[Function]}
       onClick={[Function]}
-      onFocus={[Function]}
       onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
-      onMouseUp={[Function]}
-      size="default"
-      style={
-        Object {
-          "backgroundColor": "#4d63ff",
-          "borderBottomLeftRadius": "0.4rem",
-          "borderBottomRightRadius": "0.4rem",
-          "borderBottomWidth": 0,
-          "borderLeftWidth": 0,
-          "borderRightWidth": 0,
-          "borderTopLeftRadius": "0.4rem",
-          "borderTopRightRadius": "0.4rem",
-          "borderTopWidth": 0,
-          "height": "3.2rem",
-          "paddingBottom": "0rem",
-          "paddingLeft": "1.8rem",
-          "paddingRight": "1.8rem",
-          "paddingTop": "0rem",
-          "width": "8rem",
-        }
-      }
-      type="primary"
+      onTouchStart={[Function]}
+      style={Object {}}
     >
-      <span
+      <button
         className="c2"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        onMouseUp={[Function]}
+        size="default"
         style={
           Object {
-            "color": "#ffffff",
-            "fontSize": "1.4rem",
+            "backgroundColor": "#4d63ff",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomWidth": 0,
+            "borderLeftWidth": 0,
+            "borderRightWidth": 0,
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopWidth": 0,
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+            "width": "8rem",
           }
         }
+        type="primary"
       >
-        Right
-      </span>
-    </button>
-    <button
+        <span
+          className="c3"
+        >
+          <span
+            className="c4"
+            style={
+              Object {
+                "color": "#ffffff",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            Right
+          </span>
+        </span>
+      </button>
+    </div>
+    <div
       className="c1"
-      onBlur={[Function]}
       onClick={[Function]}
-      onFocus={[Function]}
       onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
-      onMouseUp={[Function]}
-      size="default"
-      style={
-        Object {
-          "backgroundColor": "#4d63ff",
-          "borderBottomLeftRadius": "0.4rem",
-          "borderBottomRightRadius": "0.4rem",
-          "borderBottomWidth": 0,
-          "borderLeftWidth": 0,
-          "borderRightWidth": 0,
-          "borderTopLeftRadius": "0.4rem",
-          "borderTopRightRadius": "0.4rem",
-          "borderTopWidth": 0,
-          "height": "3.2rem",
-          "paddingBottom": "0rem",
-          "paddingLeft": "1.8rem",
-          "paddingRight": "1.8rem",
-          "paddingTop": "0rem",
-          "width": "8rem",
-        }
-      }
-      type="primary"
+      onTouchStart={[Function]}
+      style={Object {}}
     >
-      <span
+      <button
         className="c2"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        onMouseUp={[Function]}
+        size="default"
         style={
           Object {
-            "color": "#ffffff",
-            "fontSize": "1.4rem",
+            "backgroundColor": "#4d63ff",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomWidth": 0,
+            "borderLeftWidth": 0,
+            "borderRightWidth": 0,
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopWidth": 0,
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+            "width": "8rem",
           }
         }
+        type="primary"
       >
-        RB
-      </span>
-    </button>
+        <span
+          className="c3"
+        >
+          <span
+            className="c4"
+            style={
+              Object {
+                "color": "#ffffff",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            RB
+          </span>
+        </span>
+      </button>
+    </div>
   </div>
   <div
     style={
@@ -537,266 +673,335 @@ exports[`popover Demo Component JSON 1`] = `
       }
     }
   >
-    <button
+    <div
       className="c1"
-      onBlur={[Function]}
       onClick={[Function]}
-      onFocus={[Function]}
       onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
-      onMouseUp={[Function]}
-      size="default"
-      style={
-        Object {
-          "backgroundColor": "#4d63ff",
-          "borderBottomLeftRadius": "0.4rem",
-          "borderBottomRightRadius": "0.4rem",
-          "borderBottomWidth": 0,
-          "borderLeftWidth": 0,
-          "borderRightWidth": 0,
-          "borderTopLeftRadius": "0.4rem",
-          "borderTopRightRadius": "0.4rem",
-          "borderTopWidth": 0,
-          "height": "3.2rem",
-          "paddingBottom": "0rem",
-          "paddingLeft": "1.8rem",
-          "paddingRight": "1.8rem",
-          "paddingTop": "0rem",
-          "width": "8rem",
-        }
-      }
-      type="primary"
+      onTouchStart={[Function]}
+      style={Object {}}
     >
-      <span
+      <button
         className="c2"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        onMouseUp={[Function]}
+        size="default"
         style={
           Object {
-            "color": "#ffffff",
-            "fontSize": "1.4rem",
+            "backgroundColor": "#4d63ff",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomWidth": 0,
+            "borderLeftWidth": 0,
+            "borderRightWidth": 0,
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopWidth": 0,
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+            "width": "8rem",
           }
         }
+        type="primary"
       >
-        BL
-      </span>
-    </button>
-    <button
+        <span
+          className="c3"
+        >
+          <span
+            className="c4"
+            style={
+              Object {
+                "color": "#ffffff",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            BL
+          </span>
+        </span>
+      </button>
+    </div>
+    <div
       className="c1"
-      onBlur={[Function]}
       onClick={[Function]}
-      onFocus={[Function]}
       onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
-      onMouseUp={[Function]}
-      size="default"
-      style={
-        Object {
-          "backgroundColor": "#4d63ff",
-          "borderBottomLeftRadius": "0.4rem",
-          "borderBottomRightRadius": "0.4rem",
-          "borderBottomWidth": 0,
-          "borderLeftWidth": 0,
-          "borderRightWidth": 0,
-          "borderTopLeftRadius": "0.4rem",
-          "borderTopRightRadius": "0.4rem",
-          "borderTopWidth": 0,
-          "height": "3.2rem",
-          "paddingBottom": "0rem",
-          "paddingLeft": "1.8rem",
-          "paddingRight": "1.8rem",
-          "paddingTop": "0rem",
-          "width": "8rem",
-        }
-      }
-      type="primary"
+      onTouchStart={[Function]}
+      style={Object {}}
     >
-      <span
+      <button
         className="c2"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        onMouseUp={[Function]}
+        size="default"
         style={
           Object {
-            "color": "#ffffff",
-            "fontSize": "1.4rem",
+            "backgroundColor": "#4d63ff",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomWidth": 0,
+            "borderLeftWidth": 0,
+            "borderRightWidth": 0,
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopWidth": 0,
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+            "width": "8rem",
           }
         }
+        type="primary"
       >
-        Bottom
-      </span>
-    </button>
-    <button
+        <span
+          className="c3"
+        >
+          <span
+            className="c4"
+            style={
+              Object {
+                "color": "#ffffff",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            Bottom
+          </span>
+        </span>
+      </button>
+    </div>
+    <div
       className="c1"
-      onBlur={[Function]}
       onClick={[Function]}
-      onFocus={[Function]}
       onMouseDown={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
-      onMouseUp={[Function]}
-      size="default"
-      style={
-        Object {
-          "backgroundColor": "#4d63ff",
-          "borderBottomLeftRadius": "0.4rem",
-          "borderBottomRightRadius": "0.4rem",
-          "borderBottomWidth": 0,
-          "borderLeftWidth": 0,
-          "borderRightWidth": 0,
-          "borderTopLeftRadius": "0.4rem",
-          "borderTopRightRadius": "0.4rem",
-          "borderTopWidth": 0,
-          "height": "3.2rem",
-          "paddingBottom": "0rem",
-          "paddingLeft": "1.8rem",
-          "paddingRight": "1.8rem",
-          "paddingTop": "0rem",
-          "width": "8rem",
-        }
-      }
-      type="primary"
+      onTouchStart={[Function]}
+      style={Object {}}
     >
-      <span
+      <button
         className="c2"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        onMouseUp={[Function]}
+        size="default"
         style={
           Object {
-            "color": "#ffffff",
-            "fontSize": "1.4rem",
+            "backgroundColor": "#4d63ff",
+            "borderBottomLeftRadius": "0.4rem",
+            "borderBottomRightRadius": "0.4rem",
+            "borderBottomWidth": 0,
+            "borderLeftWidth": 0,
+            "borderRightWidth": 0,
+            "borderTopLeftRadius": "0.4rem",
+            "borderTopRightRadius": "0.4rem",
+            "borderTopWidth": 0,
+            "height": "3.2rem",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1.8rem",
+            "paddingRight": "1.8rem",
+            "paddingTop": "0rem",
+            "width": "8rem",
           }
         }
+        type="primary"
       >
-        BR
-      </span>
-    </button>
+        <span
+          className="c3"
+        >
+          <span
+            className="c4"
+            style={
+              Object {
+                "color": "#ffffff",
+                "fontSize": "1.4rem",
+              }
+            }
+          >
+            BR
+          </span>
+        </span>
+      </button>
+    </div>
   </div>
   <br />
   <p />
   <div
-    className="c3"
-    onMouseDown={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-    onMouseUp={[Function]}
+    className="c1"
+    onBlur={[Function]}
+    onFocus={[Function]}
     style={Object {}}
   >
-    <input
-      autoFocus={false}
-      className="c4"
-      disabled={false}
+    <span
+      className="c5"
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "height": "3.2rem",
+        }
+      }
+    >
+      <input
+        autoFocus={false}
+        className="c6"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        placeholder="聚焦弹出"
+        size="default"
+        style={
+          Object {
+            "color": "#333333",
+            "paddingBottom": "0rem",
+            "paddingLeft": "1rem",
+            "paddingRight": "3.5rem",
+            "paddingTop": "0rem",
+          }
+        }
+        value=""
+      />
+    </span>
+  </div>
+  <div
+    className="c1"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    style={Object {}}
+  >
+    <button
+      className="c2"
       onBlur={[Function]}
-      onChange={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      placeholder="聚焦弹出"
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      onMouseUp={[Function]}
       size="default"
       style={
         Object {
-          "color": "#333333",
+          "backgroundColor": "#4d63ff",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomWidth": 0,
+          "borderLeftWidth": 0,
+          "borderRightWidth": 0,
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopWidth": 0,
           "height": "3.2rem",
           "paddingBottom": "0rem",
-          "paddingLeft": "1rem",
-          "paddingRight": "3.5rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
           "paddingTop": "0rem",
         }
       }
-      value=""
-    />
+      type="primary"
+    >
+      <span
+        className="c3"
+      >
+        <span
+          className="c4"
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+           悬停
+        </span>
+      </span>
+    </button>
   </div>
-  <button
+  <div
     className="c1"
-    onBlur={[Function]}
     onClick={[Function]}
-    onFocus={[Function]}
     onMouseDown={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
-    onMouseUp={[Function]}
-    size="default"
-    style={
-      Object {
-        "backgroundColor": "#4d63ff",
-        "borderBottomLeftRadius": "0.4rem",
-        "borderBottomRightRadius": "0.4rem",
-        "borderBottomWidth": 0,
-        "borderLeftWidth": 0,
-        "borderRightWidth": 0,
-        "borderTopLeftRadius": "0.4rem",
-        "borderTopRightRadius": "0.4rem",
-        "borderTopWidth": 0,
-        "height": "3.2rem",
-        "paddingBottom": "0rem",
-        "paddingLeft": "1.8rem",
-        "paddingRight": "1.8rem",
-        "paddingTop": "0rem",
-      }
-    }
-    type="primary"
+    onTouchStart={[Function]}
+    style={Object {}}
   >
-    <span
+    <button
       className="c2"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      onMouseUp={[Function]}
+      size="default"
       style={
         Object {
-          "color": "#ffffff",
-          "fontSize": "1.4rem",
+          "backgroundColor": "#4d63ff",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomWidth": 0,
+          "borderLeftWidth": 0,
+          "borderRightWidth": 0,
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopWidth": 0,
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
         }
       }
+      type="primary"
     >
-       悬停
-    </span>
-  </button>
-  <button
-    className="c1"
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onMouseDown={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
-    onMouseUp={[Function]}
-    size="default"
-    style={
-      Object {
-        "backgroundColor": "#4d63ff",
-        "borderBottomLeftRadius": "0.4rem",
-        "borderBottomRightRadius": "0.4rem",
-        "borderBottomWidth": 0,
-        "borderLeftWidth": 0,
-        "borderRightWidth": 0,
-        "borderTopLeftRadius": "0.4rem",
-        "borderTopRightRadius": "0.4rem",
-        "borderTopWidth": 0,
-        "height": "3.2rem",
-        "paddingBottom": "0rem",
-        "paddingLeft": "1.8rem",
-        "paddingRight": "1.8rem",
-        "paddingTop": "0rem",
-      }
-    }
-    type="primary"
-  >
-    <span
-      className="c2"
-      style={
-        Object {
-          "color": "#ffffff",
-          "fontSize": "1.4rem",
-        }
-      }
-    >
-      点击
-    </span>
-  </button>
+      <span
+        className="c3"
+      >
+        <span
+          className="c4"
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          点击
+        </span>
+      </span>
+    </button>
+  </div>
   <br />
 </div>
 `;

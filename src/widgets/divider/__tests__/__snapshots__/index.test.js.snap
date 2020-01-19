@@ -2,62 +2,49 @@
 
 exports[`Divider css 1`] = `
 .c1 {
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: middle;
+  position: relative;
+  background-color: #e8e8e8;
+  min-width: 40rem;
+  min-height: 0.1rem;
+}
+
+.c5 {
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: middle;
+  position: relative;
+  background-color: #e8e8e8;
+  min-width: 0.2rem;
+  min-height: 1rem;
+}
+
+.c2 {
   display: table;
   white-space: nowrap;
   text-align: center;
   background: transparent;
-  font-weight: 500;
-  width: 50rem;
 }
 
-.c1::before {
+.c2::before {
   content: '';
   display: table-cell;
   position: relative;
-  width: 50%;
-  border-top: 0.1rem solid #e8e8e8;
+  width: 40rem;
+  border-top: 0.1rem solid red;
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
 }
 
-.c1::after {
+.c2::after {
   content: '';
   display: table-cell;
   position: relative;
-  width: 50%;
-  border-top: 0.1rem solid #e8e8e8;
-  -webkit-transform: translateY(50%);
-  -ms-transform: translateY(50%);
-  transform: translateY(50%);
-}
-
-.c3 {
-  display: table;
-  white-space: nowrap;
-  text-align: center;
-  background: transparent;
-  font-weight: 500;
-  width: 50rem;
-}
-
-.c3::before {
-  content: '';
-  display: table-cell;
-  position: relative;
-  width: 50%;
-  border-top: 0.1rem dashed #e8e8e8;
-  -webkit-transform: translateY(50%);
-  -ms-transform: translateY(50%);
-  transform: translateY(50%);
-}
-
-.c3::after {
-  content: '';
-  display: table-cell;
-  position: relative;
-  width: 50%;
-  border-top: 0.1rem dashed #e8e8e8;
+  width: 40rem;
+  border-top: 0.1rem solid red;
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
@@ -68,16 +55,14 @@ exports[`Divider css 1`] = `
   white-space: nowrap;
   text-align: center;
   background: transparent;
-  font-weight: 500;
-  width: 50rem;
 }
 
 .c4::before {
   content: '';
   display: table-cell;
   position: relative;
-  width: 95%;
-  border-top: 0.1rem solid #e8e8e8;
+  width: 40rem;
+  border-top: 0.1rem dashed red;
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
@@ -87,86 +72,14 @@ exports[`Divider css 1`] = `
   content: '';
   display: table-cell;
   position: relative;
-  width: 5%;
-  border-top: 0.1rem solid #e8e8e8;
+  width: 40rem;
+  border-top: 0.1rem dashed red;
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
   transform: translateY(50%);
 }
 
-.c5 {
-  display: table;
-  white-space: nowrap;
-  text-align: center;
-  background: transparent;
-  font-weight: 500;
-  width: 50rem;
-}
-
-.c5::before {
-  content: '';
-  display: table-cell;
-  position: relative;
-  width: 5%;
-  border-top: 0.1rem solid #e8e8e8;
-  -webkit-transform: translateY(50%);
-  -ms-transform: translateY(50%);
-  transform: translateY(50%);
-}
-
-.c5::after {
-  content: '';
-  display: table-cell;
-  position: relative;
-  width: 95%;
-  border-top: 0.1rem solid #e8e8e8;
-  -webkit-transform: translateY(50%);
-  -ms-transform: translateY(50%);
-  transform: translateY(50%);
-}
-
-.c6 {
-  display: table;
-  white-space: nowrap;
-  text-align: center;
-  background: transparent;
-  font-weight: 500;
-  width: 50rem;
-}
-
-.c6::before {
-  content: '';
-  display: table-cell;
-  position: relative;
-  width: 100%;
-  border-top: 0.1rem solid #e8e8e8;
-  -webkit-transform: translateY(50%);
-  -ms-transform: translateY(50%);
-  transform: translateY(50%);
-}
-
-.c6::after {
-  content: '';
-  display: table-cell;
-  position: relative;
-  width: 100%;
-  border-top: 0.1rem solid #e8e8e8;
-  -webkit-transform: translateY(50%);
-  -ms-transform: translateY(50%);
-  transform: translateY(50%);
-}
-
-.c7 {
-  margin: 0 0.6rem;
-  display: inline-block;
-  height: 100%;
-  width: 0.1rem;
-  vertical-align: middle;
-  position: relative;
-  background: #e8e8e8;
-}
-
-.c2 {
+.c3 {
   display: inline-block;
   white-space: nowrap;
   text-align: center;
@@ -185,16 +98,31 @@ exports[`Divider css 1`] = `
   <div
     className="c0"
   >
+    <div
+      className="c1"
+      style={
+        Object {
+          "backgroundColor": "red",
+          "height": "0.1rem",
+          "width": "40rem",
+        }
+      }
+    />
     <p>
       solid 
     </p>
     <div
-      className="c1"
+      className="c2"
       content="solid"
-      style={Object {}}
+      style={
+        Object {
+          "height": "0.1rem",
+          "width": "40rem",
+        }
+      }
     >
       <span
-        className="c2"
+        className="c3"
         style={Object {}}
       >
         solid
@@ -204,12 +132,17 @@ exports[`Divider css 1`] = `
       dashed
     </p>
     <div
-      className="c3"
+      className="c4"
       content="dashed"
-      style={Object {}}
+      style={
+        Object {
+          "height": "0.1rem",
+          "width": "40rem",
+        }
+      }
     >
       <span
-        className="c2"
+        className="c3"
         style={Object {}}
       >
         dashed
@@ -223,12 +156,17 @@ exports[`Divider css 1`] = `
       position left
     </p>
     <div
-      className="c4"
+      className="c2"
       content="position left"
-      style={Object {}}
+      style={
+        Object {
+          "height": "0.1rem",
+          "width": "40rem",
+        }
+      }
     >
       <span
-        className="c2"
+        className="c3"
         style={Object {}}
       >
         position left
@@ -238,27 +176,44 @@ exports[`Divider css 1`] = `
       position right
     </p>
     <div
-      className="c5"
+      className="c2"
       content="position right"
-      style={Object {}}
+      style={
+        Object {
+          "height": "0.1rem",
+          "width": "40rem",
+        }
+      }
     >
       <span
-        className="c2"
+        className="c3"
         style={Object {}}
       >
         position right
       </span>
     </div>
     <div
-      className="c6"
-      style={Object {}}
+      className="c1"
+      style={
+        Object {
+          "backgroundColor": "red",
+          "height": "0.1rem",
+          "width": "40rem",
+        }
+      }
     />
     <p>
       "不用思考.因为我帮你想好了",这是lugia设计的重要原则之一.
     </p>
     <div
-      className="c6"
-      style={Object {}}
+      className="c1"
+      style={
+        Object {
+          "backgroundColor": "red",
+          "height": "0.1rem",
+          "width": "40rem",
+        }
+      }
     />
   </div>
   <div
@@ -276,23 +231,63 @@ exports[`Divider css 1`] = `
     >
       text
       <div
-        className="c7"
-        style={Object {}}
+        className="c5"
+        style={
+          Object {
+            "backgroundColor": "blue",
+            "height": "1rem",
+            "marginBottom": "0rem",
+            "marginLeft": "0.5rem",
+            "marginRight": "0.5rem",
+            "marginTop": "0rem",
+            "width": "0.2rem",
+          }
+        }
       />
       text
       <div
-        className="c7"
-        style={Object {}}
+        className="c5"
+        style={
+          Object {
+            "backgroundColor": "blue",
+            "height": "1rem",
+            "marginBottom": "0rem",
+            "marginLeft": "0.5rem",
+            "marginRight": "0.5rem",
+            "marginTop": "0rem",
+            "width": "0.2rem",
+          }
+        }
       />
       text
       <div
-        className="c7"
-        style={Object {}}
+        className="c5"
+        style={
+          Object {
+            "backgroundColor": "blue",
+            "height": "1rem",
+            "marginBottom": "0rem",
+            "marginLeft": "0.5rem",
+            "marginRight": "0.5rem",
+            "marginTop": "0rem",
+            "width": "0.2rem",
+          }
+        }
       />
       text
       <div
-        className="c7"
-        style={Object {}}
+        className="c5"
+        style={
+          Object {
+            "backgroundColor": "blue",
+            "height": "1rem",
+            "marginBottom": "0rem",
+            "marginLeft": "0.5rem",
+            "marginRight": "0.5rem",
+            "marginTop": "0rem",
+            "width": "0.2rem",
+          }
+        }
       />
       text
     </div>
