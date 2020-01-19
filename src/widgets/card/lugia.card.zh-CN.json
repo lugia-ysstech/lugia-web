@@ -139,7 +139,7 @@
         "CardAvatar": {
           "name": "卡片头像",
           "theme": {
-            "SrcAvatar": {
+            "Container": {
               "name": "卡片头像资源",
               "desc": "配置卡片头像资源",
               "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"]],
@@ -318,7 +318,7 @@
         "CardAvatar": {
           "name": "卡片头像",
           "theme": {
-            "SrcAvatar": {
+            "Container": {
               "name": "卡片头像资源",
               "desc": "配置卡片头像资源",
               "normal": [["width"], ["height"], ["margin"], ["padding"], ["background"]],
