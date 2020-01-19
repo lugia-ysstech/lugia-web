@@ -126,17 +126,17 @@ const Title = CSSComponent({
     getCSS(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
       const { size, stepType, orientation, desAlign } = propsConfig;
-      let dir = '';
+      let dirCSS = '';
       let positionCSS = '';
+      const top = isDotType(stepType) || stepType === 'icon' ? -20 : isNormalSize(size) ? -20 : -25;
       const left = isDotType(stepType) ? 20 : isNormalSize(size) ? 35 : 30;
       if (isHorizontal(orientation)) {
-        dir = 'bottom';
+        dirCSS = `bottom:${px2remcss(top)};`;
       } else {
-        positionCSS = `left:${px2remcss(left)};transform: translateY(-50%);top:50%;`;
+        positionCSS = `transform: translateY(-50%);top:50%;left:${px2remcss(left)};`;
       }
-      const top = isDotType(stepType) || stepType === 'icon' ? -20 : isNormalSize(size) ? -20 : -25;
-      const alignCSS = `text-align:${desAlign && desAlign === 'center' ? 'center' : 'left'}`;
-      return `${dir}:${px2remcss(top)}; ${positionCSS}; ${alignCSS};`;
+      const alignCSS = `text-align:${desAlign && desAlign === 'center' ? 'center' : 'left'};`;
+      return `${dirCSS}${positionCSS}${alignCSS}`;
     },
     defaultTheme: {
       fontSize: 14,
@@ -163,7 +163,6 @@ const Description = CSSComponent({
     getCSS(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
       const { size, stepType, orientation, stepContainerWidth, desAlign } = propsConfig;
-
       let top = 0;
       let left = 0;
       let maxWidthCSS;
@@ -171,14 +170,15 @@ const Description = CSSComponent({
         top = isDotType(stepType) ? 35 : stepType === 'icon' ? 45 : isNormalSize(size) ? 50 : 40;
         const maxWidth =
           stepContainerWidth && stepContainerWidth > 220 ? stepContainerWidth - 15 : 200;
-        maxWidthCSS = `max-width:${px2remcss(maxWidth)}`;
+        maxWidthCSS = `max-width:${px2remcss(maxWidth)};`;
       } else {
         top = isDotType(stepType) ? 15 : isNormalSize(size) ? 25 : 25;
         left = isDotType(stepType) ? 20 : isNormalSize(size) ? 35 : 30;
       }
+      const topCSS = `top:${px2remcss(top)};`;
       const leftPosition = !isHorizontal(orientation) ? `left:${px2remcss(left)};` : '';
-      const alignCSS = `text-align:${desAlign && desAlign === 'center' ? 'center' : 'left'}`;
-      return `top:${px2remcss(top)};${leftPosition};${maxWidthCSS};${alignCSS}`;
+      const alignCSS = `text-align:${desAlign && desAlign === 'center' ? 'center' : 'left'};`;
+      return `${topCSS}${leftPosition}${maxWidthCSS}${alignCSS}`;
     },
     defaultTheme: {
       fontSize: 12,

@@ -154,7 +154,7 @@ describe('popover Demo', () => {
         <div />
       </Popover>
     );
-    component.setState({ visible: false });
+    getCmp(component).setState({ visible: false });
     expect(getCmp(component).state.visible).toBe(true);
   });
 
@@ -164,7 +164,7 @@ describe('popover Demo', () => {
         <div />
       </Popover>
     );
-    component.setState({ visible: true });
+    getCmp(component).setState({ visible: true });
     expect(getCmp(component).state.visible).toBe(false);
   });
 
