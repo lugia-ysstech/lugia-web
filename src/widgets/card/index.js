@@ -514,12 +514,12 @@ class Card extends React.Component<CardProps, CardState> {
   getImageContainer() {
     const { type, imageOrientation } = this.props;
 
-    const avatarContainerThemeProps = this.props.getPartOfThemeProps('CardAvatarContainer', {
+    const avatarContainerThemeProps = this.props.getPartOfThemeProps('CardAvatar', {
       props: {
         imageOrientation,
       },
     });
-    const imageContainerThemeProps = this.props.getPartOfThemeProps('CardImageContainer', {
+    const imageContainerThemeProps = this.props.getPartOfThemeProps('CardImage', {
       props: {
         imageOrientation,
       },
