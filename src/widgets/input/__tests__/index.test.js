@@ -123,6 +123,23 @@ describe('Input', () => {
     expect(renderer.create(jsx).toJSON()).toMatchSnapshot();
   });
 
+  it('props:disabled  onchange', async () => {
+    let res = 0;
+    const onChange = () => {
+      res++;
+    };
+    const target = mount(
+      <Input disabled onChange={onChange}>
+        hello
+      </Input>
+    );
+    const input = target.find('input').at(0);
+    input.simulate('change');
+    expect(res).toBe(0);
+    input.simulate('change');
+    expect(res).toBe(0);
+  });
+
   it('props: prefix', () => {
     const text = 'hello ligx';
     const prefix = <div className="prefix">{text}</div>;
@@ -286,17 +303,6 @@ describe('Input', () => {
   const noop = value => {
     return value;
   };
-  testOnChange(
-    'props: disabled is true  onChange ',
-    {
-      disabled: true,
-      value: 'a',
-    },
-    ['b', 'b'],
-    ['a', 'a'],
-    ['b', 'b']
-  );
-
   testOnChange('twice ["a", "b"] ', {}, ['a', 'b'], ['a', 'b'], ['a', 'b']);
 
   testOnChange(

@@ -1833,6 +1833,348 @@ exports[` Badge css 1`] = `
             className="c4"
           />
           <div
+            className="c12"
+            style={
+              Object {
+                "backgroundColor": "green",
+                "position": "absolute",
+                "right": "-0.5rem",
+                "top": "-0.5rem",
+              }
+            }
+          />
+        </div>
+      </div>
+      <div
+        className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={4}
+        width={4.166666666666667}
+      >
+        <div
+          className="c14"
+          style={Object {}}
+        >
+          <div
+            className="c4"
+          />
+          <div
+            className=""
+            style={
+              Object {
+                "position": "absolute",
+                "right": "-0.5rem",
+                "top": "-0.5rem",
+              }
+            }
+          >
+            <div
+              className="c5"
+              overflow={false}
+              style={
+                Object {
+                  "backgroundColor": "purple",
+                }
+              }
+            >
+              <span
+                className="c6"
+                style={Object {}}
+                y={-400}
+              >
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  0
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  1
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  2
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  3
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  4
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  5
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  6
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  7
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  8
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  9
+                </p>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={4}
+        width={4.166666666666667}
+      >
+        <div
+          className="c14"
+          style={Object {}}
+        >
+          <div
+            className="c4"
+          />
+          <div
+            className="c12"
+            style={
+              Object {
+                "backgroundColor": "yellow",
+                "position": "absolute",
+                "right": "-0.5rem",
+                "top": "-0.5rem",
+              }
+            }
+          />
+        </div>
+      </div>
+      <div
+        className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={4}
+        width={4.166666666666667}
+      >
+        <div
+          className="c14"
+          style={Object {}}
+        >
+          <div
+            className="c4"
+          />
+          <div
+            className=""
+            style={
+              Object {
+                "position": "absolute",
+                "right": "-0.5rem",
+                "top": "-0.5rem",
+              }
+            }
+          >
+            <div
+              className="c5"
+              overflow={false}
+              style={
+                Object {
+                  "backgroundColor": "blue",
+                }
+              }
+            >
+              <span
+                className="c8"
+                style={Object {}}
+                y={-900}
+              >
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  0
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  1
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  2
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  3
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  4
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  5
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  6
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  7
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  8
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  9
+                </p>
+              </span>
+              <span
+                className="c9"
+                style={Object {}}
+                y={-800}
+              >
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  0
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  1
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  2
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  3
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  4
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  5
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  6
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  7
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  8
+                </p>
+                <p
+                  className="c7"
+                  style={Object {}}
+                >
+                  9
+                </p>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c0"
+  >
+    <div
+      className="c1"
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      type="default"
+    >
+      <div
+        className="c2"
+        onMouseEnter={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        span={4}
+        width={4.166666666666667}
+      >
+        <div
+          className="c14"
+          style={Object {}}
+        >
+          <div
+            className="c4"
+          />
+          <div
             className=""
             style={
               Object {
