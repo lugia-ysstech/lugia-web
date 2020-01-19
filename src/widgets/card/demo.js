@@ -75,8 +75,7 @@ class AmountCard extends React.Component<Object, Object> {
     );
   }
 }
-
-export default () => {
+export const CardDemo = () => {
   const view = {
     [Widget.Card]: {
       Container: {
@@ -205,36 +204,6 @@ export default () => {
       CardAvatar: { SrcAvatar: { normal: { width: 80, height: 80 } } },
     },
   };
-
-  const price = {
-    [Widget.Card]: {
-      Container: {
-        normal: { width: 200, height: 220 },
-      },
-    },
-  };
-  const tabsCard = {
-    [Widget.Card]: {
-      Container: {
-        normal: { width: 400, height: 240 },
-      },
-    },
-  };
-
-  const defaultData = [
-    {
-      title: 'Tab1',
-      content: 'content of Tab1',
-    },
-    {
-      title: 'Tab2',
-      content: 'content of Tab2',
-    },
-    {
-      title: 'Tab3',
-      content: 'content of Tab3',
-    },
-  ];
   return (
     <Wrapper>
       <p>基本样式</p>
@@ -335,6 +304,40 @@ export default () => {
           />
         </Wrapper>
       </Theme>
+    </Wrapper>
+  );
+};
+export const ComboDemo = () => {
+  const price = {
+    [Widget.Card]: {
+      Container: {
+        normal: { width: 200, height: 220 },
+      },
+    },
+  };
+  const tabsCard = {
+    [Widget.Card]: {
+      Container: {
+        normal: { width: 400, height: 240 },
+      },
+    },
+  };
+  const defaultData = [
+    {
+      title: 'Tab1',
+      content: 'content of Tab1',
+    },
+    {
+      title: 'Tab2',
+      content: 'content of Tab2',
+    },
+    {
+      title: 'Tab3',
+      content: 'content of Tab3',
+    },
+  ];
+  return (
+    <div>
       <p>组合样式</p>
       <Theme config={tabsCard}>
         <Wrapper>
@@ -355,6 +358,10 @@ export default () => {
           <Card viewClass={'price'} type={'combo'} content={<AmountCard />} />
         </Wrapper>
       </Theme>
-    </Wrapper>
+    </div>
   );
+};
+
+export default () => {
+  return [<CardDemo />, <ComboDemo />];
 };
