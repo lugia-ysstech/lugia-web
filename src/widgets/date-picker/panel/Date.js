@@ -25,6 +25,8 @@ type TypeProps = {
   onChange: Function,
   setTriggerVisible?: Function,
   getCurrentYandM?: Function,
+  getPartOfThemeProps: Function,
+  getPartOfThemeHocProps: Function,
   changeHead?: Function,
   mode: string,
   showToday?: boolean,
@@ -40,6 +42,7 @@ type TypeProps = {
   differAyear?: boolean,
   theme?: Object,
   panelStates: Object,
+  themeProps: Object,
   choseDayIndex: Array<number> | number | string,
 };
 type TypeState = {
@@ -144,13 +147,15 @@ class Date extends Component<TypeProps, TypeState> {
     const { firstDayIndex } = getFirstDayIndex(days);
     const { themeProps } = this.props;
 
-    const themeProp = getThemeProps({ mode, getPartOfThemeProps }, 'PanelTitle');
+    // const themeProp = getThemeProps({ mode, getPartOfThemeProps }, 'PanelTitle');
     const headYearTextTheme = getThemeProps({ mode, getPartOfThemeProps }, 'HeadYearText');
     const headMonthTextTheme = getThemeProps({ mode, getPartOfThemeProps }, 'HeadMonthText');
-    const { viewClass: singleViewClass, theme: singleTheme } =
-      (getPartOfThemeHocProps && getPartOfThemeHocProps('HeadSingleArrow')) || {};
-    const { viewClass: doubleViewClass, theme: doubleTheme } =
-      (getPartOfThemeHocProps && getPartOfThemeHocProps('HeadDoubleArrow')) || {};
+    const { viewClass: singleViewClass, theme: singleTheme } = getPartOfThemeHocProps(
+      'HeadSingleArrow'
+    );
+    const { viewClass: doubleViewClass, theme: doubleTheme } = getPartOfThemeHocProps(
+      'HeadDoubleArrow'
+    );
     const singleArrowConfig = {
       viewClass: singleViewClass,
       theme: singleTheme,

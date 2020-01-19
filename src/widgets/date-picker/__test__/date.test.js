@@ -21,6 +21,14 @@ describe('default', () => {
     themeState: {},
     propsConfig: {},
   };
+  const defaultThmeFunction = {
+    getPartOfThemeProps: () => {
+      return { ...defaultTheme };
+    },
+    getPartOfThemeHocProps: () => {
+      return { viewClass: {} };
+    },
+  };
   function getDaysInMonth(
     title: string,
     props: Object,
@@ -35,7 +43,12 @@ describe('default', () => {
         changeHeadValue = value;
       };
       const target = mount(
-        <Date themeProps={{ ...defaultTheme }} panelStates={nextProps} changeHead={changeHead} />
+        <Date
+          themeProps={{ ...defaultTheme }}
+          {...defaultThmeFunction}
+          panelStates={nextProps}
+          changeHead={changeHead}
+        />
       );
       const newTarget = getTarget(target, 'Date');
       newTarget.getDaysInMonth(type, funName)();
@@ -114,7 +127,12 @@ describe('default', () => {
         onChangeValue = obj;
       };
       const target = mount(
-        <Date themeProps={{ ...defaultTheme }} panelStates={nextProps} onChange={onChange} />
+        <Date
+          themeProps={{ ...defaultTheme }}
+          {...defaultThmeFunction}
+          panelStates={nextProps}
+          onChange={onChange}
+        />
       );
       const newTarget = getTarget(target, 'Dates');
       const { index, child } = params;
@@ -227,7 +245,12 @@ describe('default', () => {
         getModeValue = obj;
       };
       const target = mount(
-        <Date themeProps={{ ...defaultTheme }} panelStates={nextProps} getMode={getMode} />
+        <Date
+          themeProps={{ ...defaultTheme }}
+          {...defaultThmeFunction}
+          panelStates={nextProps}
+          getMode={getMode}
+        />
       );
       const newTarget = getTarget(target, 'Date');
       newTarget.getMode(params.mode, params.from);
@@ -286,7 +309,9 @@ describe('default', () => {
   ) {
     it(`WeeksPicker ${title}`, () => {
       const nextProps = getDerived(props);
-      const target = mount(<Date themeProps={{ ...defaultTheme }} panelStates={nextProps} />);
+      const target = mount(
+        <Date themeProps={{ ...defaultTheme }} {...defaultThmeFunction} panelStates={nextProps} />
+      );
       const newTarget = getTarget(target, 'Date');
       const { index, child } = params;
       newTarget.onMouseOver(index, child);
