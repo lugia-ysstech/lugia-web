@@ -118,21 +118,26 @@ export function getTreeData(
     mapData = {},
     enableKeys = [];
   const { displayField, valueField } = opt;
-  recurTreeData(data, target, {}, 'disabled', {
-    onAdd(newItem) {
-      const { isLeaf } = newItem;
-      const key = newItem[valueField];
-      if (isLeaf) {
-        if (!newItem.disabled) {
-          enableKeys.push(key);
+  recurTreeData(
+    data,
+    target,
+    {},
+    {
+      onAdd(newItem) {
+        const { isLeaf } = newItem;
+        const key = newItem[valueField];
+        if (isLeaf) {
+          if (!newItem.disabled) {
+            enableKeys.push(key);
+          }
         }
-      }
-      mapData[key] = newItem;
-    },
-    displayField,
-    valueField,
-    pathSeparator: '/',
-  });
+        mapData[key] = newItem;
+      },
+      displayField,
+      valueField,
+      pathSeparator: '/',
+    }
+  );
   return { target, mapData, enableKeys };
 }
 
