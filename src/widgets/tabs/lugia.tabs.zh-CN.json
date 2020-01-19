@@ -21,10 +21,6 @@
       "desc": "页签位置，可配置 左,右,上,下",
       "propsDefaultValue": "top"
     },
-    "children": {
-      "type": "React$Element<any>",
-      "desc": "配置标签页需要包含的子组件,若有data,以data优先"
-    },
     "data": {
       "type": "object[]",
       "desc": "配置标签页需要配置的数据",
@@ -95,7 +91,7 @@
         {
           "name": "result",
           "desc": "返回当前被点击项的下标值和activityValue值",
-          "type": "onTabClick"
+          "type": "ReturnType"
         }
       ]
     },
@@ -148,7 +144,7 @@
         {
           "name": "result",
           "desc": "删除标签的下标值和activityValue值",
-          "type": "ReturnType"
+          "type": "DeleteType"
         }
       ]
     }
@@ -157,7 +153,8 @@
     "TabType": ["line", "card", "window"],
     "PagedType": ["single", "page"],
     "TabPositionType": ["top", "bottom", "left", "right"],
-    "ReturnType": ["index", "activityValue"]
+    "ReturnType": ["newValue", "oldValue","newItem","oldItem"],
+    "DeleteType": ["value","item"]
   },
   "childrenWidget": ["tabpane"],
   "category": ["数据展示"],
