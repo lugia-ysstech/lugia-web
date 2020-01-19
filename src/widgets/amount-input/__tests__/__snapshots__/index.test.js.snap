@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AmountInputDemo Component JSON 1`] = `
-.c2 {
+.c1 {
   display: inline-block;
 }
 
@@ -89,7 +89,7 @@ exports[`AmountInputDemo Component JSON 1`] = `
   left: 1rem;
 }
 
-.c1 {
+.c2 {
   position: relative;
   display: inline-block;
   width: 100%;
@@ -107,14 +107,14 @@ exports[`AmountInputDemo Component JSON 1`] = `
     <p>
       formatter AmountInput
     </p>
-    <span
+    <div
       className="c1"
+      onBlur={[Function]}
+      onFocus={[Function]}
       style={Object {}}
     >
-      <div
+      <span
         className="c2"
-        onBlur={[Function]}
-        onFocus={[Function]}
         style={Object {}}
       >
         <span
@@ -184,19 +184,19 @@ exports[`AmountInputDemo Component JSON 1`] = `
             value=""
           />
         </span>
-      </div>
-    </span>
+      </span>
+    </div>
     <p>
       default AmountInput
     </p>
-    <span
+    <div
       className="c1"
+      onBlur={[Function]}
+      onFocus={[Function]}
       style={Object {}}
     >
-      <div
+      <span
         className="c2"
-        onBlur={[Function]}
-        onFocus={[Function]}
         style={Object {}}
       >
         <span
@@ -266,19 +266,19 @@ exports[`AmountInputDemo Component JSON 1`] = `
             value=""
           />
         </span>
-      </div>
-    </span>
+      </span>
+    </div>
     <p>
       禁用状态 
     </p>
-    <span
+    <div
       className="c1"
+      onBlur={[Function]}
+      onFocus={[Function]}
       style={Object {}}
     >
-      <div
+      <span
         className="c2"
-        onBlur={[Function]}
-        onFocus={[Function]}
         style={Object {}}
       >
         <span
@@ -362,8 +362,8 @@ exports[`AmountInputDemo Component JSON 1`] = `
             value=""
           />
         </span>
-      </div>
-    </span>
+      </span>
+    </div>
   </div>
   <div
     className="c0"
@@ -371,20 +371,20 @@ exports[`AmountInputDemo Component JSON 1`] = `
     <p>
       small size
     </p>
-    <span
+    <div
       className="c1"
-      style={
-        Object {
-          "height": "4rem",
-          "width": "40rem",
-        }
-      }
+      onBlur={[Function]}
+      onFocus={[Function]}
+      style={Object {}}
     >
-      <div
+      <span
         className="c2"
-        onBlur={[Function]}
-        onFocus={[Function]}
-        style={Object {}}
+        style={
+          Object {
+            "height": "4rem",
+            "width": "40rem",
+          }
+        }
       >
         <span
           className="c3"
@@ -463,25 +463,25 @@ exports[`AmountInputDemo Component JSON 1`] = `
             value=""
           />
         </span>
-      </div>
-    </span>
+      </span>
+    </div>
     <p>
       default size
     </p>
-    <span
+    <div
       className="c1"
-      style={
-        Object {
-          "height": "4rem",
-          "width": "40rem",
-        }
-      }
+      onBlur={[Function]}
+      onFocus={[Function]}
+      style={Object {}}
     >
-      <div
+      <span
         className="c2"
-        onBlur={[Function]}
-        onFocus={[Function]}
-        style={Object {}}
+        style={
+          Object {
+            "height": "4rem",
+            "width": "40rem",
+          }
+        }
       >
         <span
           className="c3"
@@ -560,25 +560,25 @@ exports[`AmountInputDemo Component JSON 1`] = `
             value=""
           />
         </span>
-      </div>
-    </span>
+      </span>
+    </div>
     <p>
       large size
     </p>
-    <span
+    <div
       className="c1"
-      style={
-        Object {
-          "height": "4rem",
-          "width": "40rem",
-        }
-      }
+      onBlur={[Function]}
+      onFocus={[Function]}
+      style={Object {}}
     >
-      <div
+      <span
         className="c2"
-        onBlur={[Function]}
-        onFocus={[Function]}
-        style={Object {}}
+        style={
+          Object {
+            "height": "4rem",
+            "width": "40rem",
+          }
+        }
       >
         <span
           className="c3"
@@ -671,8 +671,8 @@ exports[`AmountInputDemo Component JSON 1`] = `
             value=""
           />
         </span>
-      </div>
-    </span>
+      </span>
+    </div>
   </div>
   <div
     className="c0"
@@ -680,14 +680,14 @@ exports[`AmountInputDemo Component JSON 1`] = `
     <p>
       受限Input
     </p>
-    <span
+    <div
       className="c1"
+      onBlur={[Function]}
+      onFocus={[Function]}
       style={Object {}}
     >
-      <div
+      <span
         className="c2"
-        onBlur={[Function]}
-        onFocus={[Function]}
         style={Object {}}
       >
         <span
@@ -756,19 +756,19 @@ exports[`AmountInputDemo Component JSON 1`] = `
             value=""
           />
         </span>
-      </div>
-    </span>
+      </span>
+    </div>
     <p>
       有默认值的 受限Input
     </p>
-    <span
+    <div
       className="c1"
+      onBlur={[Function]}
+      onFocus={[Function]}
       style={Object {}}
     >
-      <div
+      <span
         className="c2"
-        onBlur={[Function]}
-        onFocus={[Function]}
         style={Object {}}
       >
         <span
@@ -850,8 +850,8 @@ exports[`AmountInputDemo Component JSON 1`] = `
             }
           />
         </span>
-      </div>
-    </span>
+      </span>
+    </div>
   </div>
   <div
     className="c0"
@@ -859,14 +859,14 @@ exports[`AmountInputDemo Component JSON 1`] = `
     <p>
       amountPrefix: '¥' transform: false 
     </p>
-    <span
+    <div
       className="c1"
+      onBlur={[Function]}
+      onFocus={[Function]}
       style={Object {}}
     >
-      <div
+      <span
         className="c2"
-        onBlur={[Function]}
-        onFocus={[Function]}
         style={Object {}}
       >
         <span
@@ -935,19 +935,19 @@ exports[`AmountInputDemo Component JSON 1`] = `
             value=""
           />
         </span>
-      </div>
-    </span>
+      </span>
+    </div>
     <p>
       amountPrefix: '$' transform: false 
     </p>
-    <span
+    <div
       className="c1"
+      onBlur={[Function]}
+      onFocus={[Function]}
       style={Object {}}
     >
-      <div
+      <span
         className="c2"
-        onBlur={[Function]}
-        onFocus={[Function]}
         style={Object {}}
       >
         <span
@@ -1016,14 +1016,14 @@ exports[`AmountInputDemo Component JSON 1`] = `
             value=""
           />
         </span>
-      </div>
-    </span>
+      </span>
+    </div>
   </div>
 </div>
 `;
 
 exports[`AmountInputDemo props: placeholder  1`] = `
-.c1 {
+.c0 {
   display: inline-block;
 }
 
@@ -1097,20 +1097,20 @@ exports[`AmountInputDemo props: placeholder  1`] = `
   left: 1rem;
 }
 
-.c0 {
+.c1 {
   position: relative;
   display: inline-block;
   width: 100%;
 }
 
-<span
+<div
   className="c0"
+  onBlur={[Function]}
+  onFocus={[Function]}
   style={Object {}}
 >
-  <div
+  <span
     className="c1"
-    onBlur={[Function]}
-    onFocus={[Function]}
     style={Object {}}
   >
     <span
@@ -1180,12 +1180,12 @@ exports[`AmountInputDemo props: placeholder  1`] = `
         value=""
       />
     </span>
-  </div>
-</span>
+  </span>
+</div>
 `;
 
 exports[`AmountInputDemo props: placeholder  2`] = `
-.c1 {
+.c0 {
   display: inline-block;
 }
 
@@ -1259,20 +1259,20 @@ exports[`AmountInputDemo props: placeholder  2`] = `
   left: 1rem;
 }
 
-.c0 {
+.c1 {
   position: relative;
   display: inline-block;
   width: 100%;
 }
 
-<span
+<div
   className="c0"
+  onBlur={[Function]}
+  onFocus={[Function]}
   style={Object {}}
 >
-  <div
+  <span
     className="c1"
-    onBlur={[Function]}
-    onFocus={[Function]}
     style={Object {}}
   >
     <span
@@ -1342,6 +1342,6 @@ exports[`AmountInputDemo props: placeholder  2`] = `
         value=""
       />
     </span>
-  </div>
-</span>
+  </span>
+</div>
 `;

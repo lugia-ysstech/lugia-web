@@ -234,19 +234,17 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
     );
     const theThemeProps = this.props.getPartOfThemeProps('Container');
     return (
-      <InputContainer themeProps={theThemeProps}>
-        <ToolTip
-          propsConfig={{ value }}
-          title={this.getTitle()}
-          action={'focus'}
-          placement={'topLeft'}
-          popArrowType={'round'}
-          theme={newTheme}
-          viewClass={viewClass}
-        >
-          {this.generateInput()}
-        </ToolTip>
-      </InputContainer>
+      <ToolTip
+        propsConfig={{ value }}
+        title={this.getTitle()}
+        action={'focus'}
+        placement={'topLeft'}
+        popArrowType={'round'}
+        theme={newTheme}
+        viewClass={viewClass}
+      >
+        <InputContainer themeProps={theThemeProps}>{this.generateInput()}</InputContainer>
+      </ToolTip>
     );
   }
 
