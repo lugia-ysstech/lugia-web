@@ -5,8 +5,6 @@ import Enzyme, { mount } from 'enzyme';
 import 'jest-styled-components';
 import Date from '../panel/Date';
 import { getDerived } from '../utils/getDerived';
-import Theme from '../../theme/index';
-import Widgets from '../../consts/index';
 const { expect: exp } = chai;
 
 Enzyme.configure({ adapter: new Adapter() });
