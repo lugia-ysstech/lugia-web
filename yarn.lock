@@ -1302,10 +1302,10 @@
     shell-quote "^1.6.1"
     ws "^3.3.1"
 
-"@lugia/react-test-utils@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.npm.taobao.org/@lugia/react-test-utils/download/@lugia/react-test-utils-1.0.0.tgz#30f169144d088503ebe629195ad7f694f9dea537"
-  integrity sha1-MPFpFE0IhQPr5ikZWtf2lPnepTc=
+"@lugia/react-test-utils@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.npm.taobao.org/@lugia/react-test-utils/download/@lugia/react-test-utils-1.0.1.tgz#325233fb6afd3d5dfdaecf98b76ed72d1d4f6c81"
+  integrity sha1-MlIz+2r9PV39rs+Yt27XLR1PbIE=
   dependencies:
     react "^16.4.0"
     react-dom "^16.4.0"
