@@ -38,11 +38,7 @@ document.addEventListener = (type, listener, options, wantsUntrusted) => {
 };
 
 const originalRemoveEventListener = window.removeEventListener.bind();
-document.removeEventListener = (
-  type: originalRemoveEventListener,
-  listener: any,
-  options: Object
-) => {
+document.removeEventListener = (type, listener, options) => {
   let modOptions = options;
   if (EVENTS_TO_MODIFY.includes(type)) {
     if (typeof options === 'boolean') {
