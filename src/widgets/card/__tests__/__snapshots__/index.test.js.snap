@@ -87,7 +87,7 @@ exports[`Card css 1`] = `
 }
 
 .c22 {
-  width: 100%;
+  width: 20rem;
   height: 100%;
   display: inline-block;
   max-width: 100%;
@@ -97,7 +97,7 @@ exports[`Card css 1`] = `
 .c19 {
   position: relative;
   width: 20rem;
-  height: 15rem;
+  height: 16rem;
   display: block;
 }
 
@@ -111,15 +111,15 @@ exports[`Card css 1`] = `
 .c13 {
   position: relative;
   text-align: center;
-  width: 16rem;
-  height: 10rem;
+  width: 100%;
+  height: 11.2rem;
   display: block;
 }
 
 .c17 {
   position: relative;
   text-align: center;
-  width: 8rem;
+  width: 12rem;
   height: 100%;
   display: inline-block;
 }
@@ -602,22 +602,19 @@ exports[`Card css 1`] = `
     >
       <div
         className="c13"
-        style={
-          Object {
-            "height": "10rem",
-            "marginBottom": "0rem",
-            "marginLeft": "0rem",
-            "marginRight": "0rem",
-            "marginTop": "2rem",
-            "width": "16rem",
-          }
-        }
+        style={Object {}}
       >
         <div
           className="c14"
           style={
             Object {
               "backgroundColor": "transparent",
+              "height": "8rem",
+              "marginBottom": "0rem",
+              "marginLeft": "0rem",
+              "marginRight": "0rem",
+              "marginTop": "2rem",
+              "width": "8rem",
             }
           }
         >
@@ -733,21 +730,19 @@ exports[`Card css 1`] = `
     >
       <div
         className="c17"
-        style={
-          Object {
-            "marginBottom": "0rem",
-            "marginLeft": "1rem",
-            "marginRight": "0rem",
-            "marginTop": "1rem",
-            "width": "8rem",
-          }
-        }
+        style={Object {}}
       >
         <div
           className="c14"
           style={
             Object {
               "backgroundColor": "transparent",
+              "height": "8rem",
+              "marginBottom": "0rem",
+              "marginLeft": "1rem",
+              "marginRight": "0rem",
+              "marginTop": "1rem",
+              "width": "8rem",
             }
           }
         >
@@ -870,7 +865,7 @@ exports[`Card css 1`] = `
         className="c19"
         style={
           Object {
-            "height": "15rem",
+            "height": "16rem",
             "width": "20rem",
           }
         }

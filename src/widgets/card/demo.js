@@ -125,12 +125,6 @@ export const CardDemo = () => {
           opacity: 0.8,
         },
       },
-      CardImageContainer: {
-        normal: {
-          width: 200,
-          height: 150,
-        },
-      },
       CardImage: {
         normal: {
           width: 200,
@@ -163,7 +157,7 @@ export const CardDemo = () => {
           height: 150,
         },
       },
-      CardImageContainer: {
+      CardImage: {
         normal: {
           width: 200,
         },
@@ -172,36 +166,16 @@ export const CardDemo = () => {
   };
   const avatarVCard = {
     [Widget.Card]: {
-      Container: {
-        normal: {
-          width: 160,
-          height: 220,
-        },
-      },
-      CardAvatarContainer: {
-        normal: {
-          width: 160,
-          height: 100,
-          margin: {
-            top: 20,
-          },
-        },
-      },
-      CardAvatar: {
-        SrcAvatar: {
-          normal: {
-            width: 80,
-            height: 80,
-          },
-        },
-      },
+      Container: { normal: { width: 160, height: 220 } },
+      CardAvatar: { Container: { normal: { width: 80, height: 80, margin: { top: 20 } } } },
     },
   };
   const avatarHCard = {
     [Widget.Card]: {
       Container: { normal: { width: 260, height: 140 } },
-      CardAvatarContainer: { normal: { margin: { top: 10, left: 10 }, width: 80 } },
-      CardAvatar: { SrcAvatar: { normal: { width: 80, height: 80 } } },
+      CardAvatar: {
+        Container: { normal: { width: 80, height: 80, margin: { top: 10, left: 10 } } },
+      },
     },
   };
   return (
