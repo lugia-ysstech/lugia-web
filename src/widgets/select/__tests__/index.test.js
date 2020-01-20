@@ -28,14 +28,6 @@ const data = (function(t) {
 })(20 * 10);
 
 describe('Select', () => {
-  // it('单选默认样式', () => {
-  //   global.svtest = true;
-  //   expect(
-  //     renderer.create(<Select displayField={'label'} data={data} />).toJSON()
-  //   ).toMatchSnapshot();
-  //   global.svtest = false;
-  // });
-
   it('点击弹出面板', () => {
     const cmp = mount(<Select displayField={'label'} data={data} />);
     cmp
@@ -44,7 +36,7 @@ describe('Select', () => {
       .simulate('click');
 
     cmp.update();
-    exp(cmp.find(Trigger).length).to.be.equal(1);
+    exp(cmp.find('MenuContainer').length).to.be.equal(1);
   });
 
   it('单选 设置value', async () => {
@@ -264,92 +256,6 @@ describe('Select', () => {
     checkAll(cmp);
     exp(findCheckedAllButton(cmp).props().isCheckedAll).to.be.false;
     checkSelectValue(cmp, []);
-  });
-
-  it('受限组件 点击清空按钮', async () => {
-    let onChange;
-    const changeResult = new Promise(resolve => {
-      onChange = arg => {
-        const { newValue: value, newDisplayValue: displayValue } = arg;
-        resolve({ value, displayValue });
-      };
-    });
-    const value = ['123'];
-    const displayValue = '一二三';
-    const config = { [Widget.Select]: { width: 300 } };
-
-    const cmp = mount(
-      <Theme config={config}>
-        <Select
-          data={data}
-          onChange={onChange}
-          mutliple
-          canSearch
-          canInput
-          canClear
-          value={value}
-          displayValue={displayValue}
-          displayField={'label'}
-        />
-      </Theme>
-    );
-    await delay(0, async () => {
-      showTrigger(cmp);
-      clearInputTagValue(cmp);
-      checkSelectValue(cmp, value);
-
-      const result = await changeResult;
-
-      exp(result).to.be.eql({
-        value: [],
-        displayValue: [],
-      });
-      checkSelectValue(cmp, value);
-    });
-  });
-
-  it('非受限组件 点击清空按钮 清空InputTag的值', async () => {
-    const limit = 1000;
-
-    let onChange;
-    const changeResult = new Promise(resolve => {
-      onChange = arg => {
-        const { newValue: value, newDisplayValue: displayValue } = arg;
-        resolve({ value, displayValue });
-      };
-    });
-    const value = ['123'];
-    const displayValue = ['一二三'];
-    const config = { [Widget.Select]: { width: 300 } };
-
-    const cmp = mount(
-      <Theme config={config}>
-        <Select
-          data={data}
-          onChange={onChange}
-          mutliple
-          limitCount={limit}
-          defaultValue={value}
-          defaultDisplayValue={displayValue}
-          canSearch
-          canInput
-          displayField={'label'}
-        />
-      </Theme>
-    );
-    await delay(0, async () => {
-      showTrigger(cmp);
-      clearInputTagValue(cmp);
-      checkSelectValue(cmp, []);
-
-      const result = await changeResult;
-
-      exp(result).to.be.eql({
-        value: [],
-        displayValue: [],
-      });
-      checkSelectValue(cmp, []);
-    });
   });
 
   it('受限组件 点击全选', async () => {

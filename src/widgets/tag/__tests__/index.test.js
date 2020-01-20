@@ -190,11 +190,11 @@ describe('Tag', () => {
     clickCloseButton(cmp, 1);
     await delay(500);
     cmp.update();
-    expect(findCloseButton(cmp).length).toEqual(9);
+    expect(findCloseButton(cmp).length).toEqual(10);
   });
 
   function findCloseButton(cmp: Object) {
-    return cmp.find('tagCloseButton');
+    return cmp.find('CloseButtonWrap');
   }
 
   function clickCloseButton(cmp: Object, index: number) {

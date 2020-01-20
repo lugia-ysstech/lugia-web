@@ -13,7 +13,7 @@ import Adapter from 'enzyme-adapter-react-16';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('Skeleton', () => {
+describe('Skeleton Test', () => {
   it('no paragraph,return how many paragraph', () => {
     const cmp = mount(<Skeleton />);
     expect(findParagraph(cmp).length).toBe(4);
