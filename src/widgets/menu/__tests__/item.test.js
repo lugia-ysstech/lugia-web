@@ -20,10 +20,8 @@ describe('Item', () => {
   });
 
   it('Single MenuItem', () => {
-    const defaultItem = renderer.create(<MenuItem>hello</MenuItem>).toJSON();
     const target = renderer.create(<MenuItem>hello</MenuItem>).toJSON();
     expect(target).toMatchSnapshot();
-    expect(target).toMatchObject(defaultItem);
   });
 
   it('Single MenuItem checked', () => {
@@ -35,13 +33,6 @@ describe('Item', () => {
     expect(target).toMatchSnapshot();
   });
   it('Mutliple MenuItem', () => {
-    const defaultItem = renderer
-      .create(
-        <MenuItem mutliple>
-          <a>hello</a>
-        </MenuItem>
-      )
-      .toJSON();
     const target = renderer
       .create(
         <MenuItem mutliple checked={false}>
@@ -50,7 +41,6 @@ describe('Item', () => {
       )
       .toJSON();
     expect(target).toMatchSnapshot();
-    expect(target).toMatchObject(defaultItem);
   });
 
   it('Mutliple MenuItem checked', () => {

@@ -56,6 +56,7 @@ exports[`Item Mutliple MenuItem 1`] = `
 }
 
 <li
+  checked={false}
   className="c0"
   disabled={false}
   onMouseDown={[Function]}
@@ -136,6 +137,7 @@ exports[`Item Mutliple MenuItem checked 1`] = `
 }
 
 <li
+  checked={true}
   className="c0"
   disabled={false}
   onMouseDown={[Function]}
@@ -221,6 +223,7 @@ exports[`Item Single MenuItem 1`] = `
 }
 
 <li
+  checked={false}
   className="c0"
   disabled={false}
   onMouseDown={[Function]}
@@ -299,6 +302,7 @@ exports[`Item Single MenuItem checked 1`] = `
 }
 
 <li
+  checked={true}
   className="c0"
   disabled={false}
   onMouseDown={[Function]}
@@ -384,6 +388,7 @@ exports[`Item children: null 1`] = `
 }
 
 <li
+  checked={false}
   className="c0"
   disabled={false}
   onMouseDown={[Function]}

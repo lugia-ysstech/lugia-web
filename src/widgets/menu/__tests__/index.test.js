@@ -3,7 +3,6 @@
 import * as React from 'react';
 import chai from 'chai';
 import Menu from '../index.js';
-import Widgets from '../../consts/index';
 import Widget from '../../consts/index';
 import 'jest-styled-components';
 import renderer from 'react-test-renderer';
@@ -11,6 +10,7 @@ import Theme from '../../theme';
 
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import { ItemWrap } from '../../css/menu';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -32,11 +32,20 @@ describe('Menu', () => {
         .toJSON()
     ).toMatchSnapshot();
   });
-  it('DropMenu width: 500px height: 333px', () => {
+  it('DropMenu width: 500px height: 300px', () => {
     expect(
       renderer
         .create(
-          <Theme config={{ [Widget.Menu]: { width: 550, height: 333 } }}>
+          <Theme
+            config={{
+              [Widget.Menu]: {
+                Container: {
+                  width: 500,
+                  height: 300,
+                },
+              },
+            }}
+          >
             <Menu>
               <MenuItem key="1">a</MenuItem>
               <MenuItem key="2">b</MenuItem>
@@ -71,16 +80,15 @@ describe('Menu', () => {
         <MenuItem key="1">a</MenuItem>
         <MenuItem key="2">b</MenuItem>
         <MenuItem key="3">c</MenuItem>
-        <MenuItem key={checkedKey} checked>
-          d
-        </MenuItem>
+        <MenuItem key={checkedKey} checked></MenuItem>
       </Menu>
     );
-    dom.find(MenuItem).forEach(node => {
+
+    dom.find('ItemWrap').forEach(node => {
       exp(node.prop('checked')).to.be.false;
     });
-    dom.find(MenuItem).forEach(node => node.simulate('click'));
-    dom.find(MenuItem).forEach(node => {
+    dom.find('ItemWrap').forEach(node => node.simulate('click'));
+    dom.find('ItemWrap').forEach(node => {
       exp(node.prop('checked')).to.be.true;
     });
   });
@@ -96,52 +104,53 @@ describe('Menu', () => {
         </MenuItem>
       </Menu>
     );
+
     exp(
       dom
-        .find(MenuItem)
+        .find('ItemWrap')
         .at(0)
         .prop('checked')
     ).to.be.true;
     exp(
       dom
-        .find(MenuItem)
+        .find('ItemWrap')
         .at(1)
         .prop('checked')
     ).to.be.true;
     exp(
       dom
-        .find(MenuItem)
+        .find('ItemWrap')
         .at(2)
         .prop('checked')
     ).to.be.false;
     exp(
       dom
-        .find(MenuItem)
+        .find('ItemWrap')
         .at(3)
         .prop('checked')
     ).to.be.false;
-    dom.find(MenuItem).forEach(node => node.simulate('click'));
+    dom.find('ItemWrap').forEach(node => node.simulate('click'));
     exp(
       dom
-        .find(MenuItem)
+        .find('ItemWrap')
         .at(0)
         .prop('checked')
     ).to.be.true;
     exp(
       dom
-        .find(MenuItem)
+        .find('ItemWrap')
         .at(1)
         .prop('checked')
     ).to.be.true;
     exp(
       dom
-        .find(MenuItem)
+        .find('ItemWrap')
         .at(2)
         .prop('checked')
     ).to.be.false;
     exp(
       dom
-        .find(MenuItem)
+        .find('ItemWrap')
         .at(3)
         .prop('checked')
     ).to.be.false;
@@ -161,50 +170,50 @@ describe('Menu', () => {
     );
     exp(
       dom
-        .find(MenuItem)
+        .find('ItemWrap')
         .at(0)
         .prop('checked')
     ).to.be.false;
     exp(
       dom
-        .find(MenuItem)
+        .find('ItemWrap')
         .at(1)
         .prop('checked')
     ).to.be.true;
     exp(
       dom
-        .find(MenuItem)
+        .find('ItemWrap')
         .at(2)
         .prop('checked')
     ).to.be.false;
     exp(
       dom
-        .find(MenuItem)
+        .find('ItemWrap')
         .at(3)
         .prop('checked')
     ).to.be.false;
-    dom.find(MenuItem).forEach(node => node.simulate('click'));
+    dom.find('ItemWrap').forEach(node => node.simulate('click'));
     exp(
       dom
-        .find(MenuItem)
+        .find('ItemWrap')
         .at(0)
         .prop('checked')
     ).to.be.false;
     exp(
       dom
-        .find(MenuItem)
+        .find('ItemWrap')
         .at(1)
         .prop('checked')
     ).to.be.true;
     exp(
       dom
-        .find(MenuItem)
+        .find('ItemWrap')
         .at(2)
         .prop('checked')
     ).to.be.false;
     exp(
       dom
-        .find(MenuItem)
+        .find('ItemWrap')
         .at(3)
         .prop('checked')
     ).to.be.false;
@@ -258,86 +267,21 @@ describe('Menu', () => {
       items.push(<MenuItem key={i}>{i}</MenuItem>);
     }
     const wraper = renderer.create(
-      <Theme config={{ [Widget.Menu]: { width: 200, height: 250 } }}>
+      <Theme
+        config={{
+          [Widget.Menu]: {
+            Container: {
+              normal: {
+                width: 200,
+                height: 250,
+              },
+            },
+          },
+        }}
+      >
         <Menu mutliple>{items}</Menu>
       </Theme>
     );
     expect(wraper.toJSON()).toMatchSnapshot();
   });
-
-  it('props: data & getPrefix & getSuffix ', () => {
-    const items = [];
-    for (let i = 0; i < 10; i++) {
-      items.push({ text: `v${i}`, value: `v${i}` });
-    }
-    const prefixItems = [];
-    const getPrefix = item => {
-      prefixItems.push(item);
-      return <div className="lgx_prefix" />;
-    };
-    const suffixItems = [];
-    const getSuffix = item => {
-      suffixItems.push(item);
-      return <div className="lgx_suffix" />;
-    };
-    const cmp = createMenuPropsDataCase({ getSuffix, getPrefix });
-
-    exp(cmp.find('.lgx_prefix').length).to.be.equal(10);
-    exp(cmp.find('.lgx_suffix').length).to.be.equal(10);
-    expect(prefixItems).toEqual(items);
-    expect(suffixItems).toEqual(items);
-  });
-
-  it('props: data  & getSuffix ', () => {
-    const items = [];
-    for (let i = 0; i < 10; i++) {
-      items.push({ text: `v${i}`, value: `v${i}` });
-    }
-    const suffixItems = [];
-    const getSuffix = item => {
-      suffixItems.push(item);
-      return <div className="lgx_suffix" />;
-    };
-    const cmp = createMenuPropsDataCase({ getSuffix });
-
-    exp(cmp.find('.lgx_suffix').length).to.be.equal(10);
-  });
-
-  it('props: data & getPrefix  ', () => {
-    const items = [];
-    for (let i = 0; i < 10; i++) {
-      items.push({ text: `v${i}`, value: `v${i}` });
-    }
-    const prefixItems = [];
-    const getPrefix = item => {
-      prefixItems.push(item);
-      return <div className="lgx_prefix" />;
-    };
-    const cmp = createMenuPropsDataCase({ getPrefix });
-
-    exp(cmp.find('.lgx_prefix').length).to.be.equal(10);
-    expect(prefixItems).toEqual(items);
-  });
-
-  function createMenuPropsDataCase(props: Object) {
-    const items = [];
-    for (let i = 0; i < 10; i++) {
-      items.push({ text: `v${i}`, value: `v${i}` });
-    }
-    const cmp = mount(
-      <Theme config={{ [Widget.Menu]: { width: 200, height: 350 } }}>
-        <Menu data={items} {...props} />
-      </Theme>
-    );
-    exp(cmp.find(Widgets.MenuItem).length).to.be.equal(10);
-    items.forEach(({ value }, index) => {
-      exp(
-        cmp
-          .find(Widgets.MenuItem)
-          .at(index)
-          .text()
-      ).to.be.equal(value);
-    });
-    return cmp;
-  }
 });

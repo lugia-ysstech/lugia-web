@@ -105,6 +105,7 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
     style={Object {}}
   >
     <li
+      checked={false}
       className="c2"
       disabled={false}
       onClick={[Function]}
@@ -127,6 +128,7 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
       </div>
     </li>
     <li
+      checked={false}
       className="c2"
       disabled={false}
       onClick={[Function]}
@@ -149,6 +151,7 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
       </div>
     </li>
     <li
+      checked={true}
       className="c2"
       disabled={false}
       onClick={[Function]}
@@ -176,6 +179,7 @@ exports[`Menu DropMenu mutliple selectedKeys 2 1`] = `
       </div>
     </li>
     <li
+      checked={true}
       className="c2"
       disabled={false}
       onClick={[Function]}
@@ -311,6 +315,7 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
     style={Object {}}
   >
     <li
+      checked={false}
       className="c2"
       disabled={false}
       onClick={[Function]}
@@ -333,6 +338,7 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
       </div>
     </li>
     <li
+      checked={false}
       className="c2"
       disabled={false}
       onClick={[Function]}
@@ -355,6 +361,7 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
       </div>
     </li>
     <li
+      checked={true}
       className="c2"
       disabled={false}
       onClick={[Function]}
@@ -382,6 +389,7 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
       </div>
     </li>
     <li
+      checked={false}
       className="c2"
       disabled={false}
       onClick={[Function]}
@@ -407,7 +415,7 @@ exports[`Menu DropMenu single selectedKeys 2 1`] = `
 </div>
 `;
 
-exports[`Menu DropMenu width: 500px height: 333px 1`] = `
+exports[`Menu DropMenu width: 500px height: 300px 1`] = `
 .c1 {
   outline: none;
   margin: 0;
@@ -512,6 +520,7 @@ exports[`Menu DropMenu width: 500px height: 333px 1`] = `
     style={Object {}}
   >
     <li
+      checked={false}
       className="c2"
       disabled={false}
       onClick={[Function]}
@@ -534,6 +543,7 @@ exports[`Menu DropMenu width: 500px height: 333px 1`] = `
       </div>
     </li>
     <li
+      checked={false}
       className="c2"
       disabled={false}
       onClick={[Function]}
@@ -556,6 +566,7 @@ exports[`Menu DropMenu width: 500px height: 333px 1`] = `
       </div>
     </li>
     <li
+      checked={false}
       className="c2"
       disabled={false}
       onClick={[Function]}
@@ -578,6 +589,7 @@ exports[`Menu DropMenu width: 500px height: 333px 1`] = `
       </div>
     </li>
     <li
+      checked={false}
       className="c2"
       disabled={false}
       onClick={[Function]}
@@ -705,7 +717,7 @@ exports[`Menu children: items 1`] = `
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
   opacity: 0;
-  left: 23.8rem;
+  left: 18.8rem;
 }
 
 .c8 {
@@ -750,20 +762,30 @@ exports[`Menu children: items 1`] = `
   style={
     Object {
       "boxShadow": "0px 1px 6px 0px rgba(0, 0, 0, 0.2)",
+      "width": "20rem",
     }
   }
 >
   <div
     className="c1"
-    style={Object {}}
+    style={
+      Object {
+        "width": "20rem",
+      }
+    }
   >
     <ul
       className="c2"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
-      style={Object {}}
+      style={
+        Object {
+          "width": "20rem",
+        }
+      }
     >
       <li
+        checked={false}
         className="c3"
         disabled={false}
         onClick={[Function]}
@@ -786,6 +808,7 @@ exports[`Menu children: items 1`] = `
         </div>
       </li>
       <li
+        checked={false}
         className="c3"
         disabled={false}
         onClick={[Function]}
@@ -808,6 +831,7 @@ exports[`Menu children: items 1`] = `
         </div>
       </li>
       <li
+        checked={false}
         className="c3"
         disabled={false}
         onClick={[Function]}
@@ -830,6 +854,7 @@ exports[`Menu children: items 1`] = `
         </div>
       </li>
       <li
+        checked={false}
         className="c3"
         disabled={false}
         onClick={[Function]}
@@ -852,6 +877,7 @@ exports[`Menu children: items 1`] = `
         </div>
       </li>
       <li
+        checked={false}
         className="c3"
         disabled={false}
         onClick={[Function]}
@@ -874,6 +900,7 @@ exports[`Menu children: items 1`] = `
         </div>
       </li>
       <li
+        checked={false}
         className="c3"
         disabled={false}
         onClick={[Function]}
@@ -896,6 +923,7 @@ exports[`Menu children: items 1`] = `
         </div>
       </li>
       <li
+        checked={false}
         className="c3"
         disabled={false}
         onClick={[Function]}
@@ -918,6 +946,7 @@ exports[`Menu children: items 1`] = `
         </div>
       </li>
       <li
+        checked={false}
         className="c3"
         disabled={false}
         onClick={[Function]}
@@ -943,7 +972,11 @@ exports[`Menu children: items 1`] = `
   </div>
   <div
     className="c6"
-    style={Object {}}
+    style={
+      Object {
+        "height": "25rem",
+      }
+    }
   >
     <div
       className="c7  c8"
