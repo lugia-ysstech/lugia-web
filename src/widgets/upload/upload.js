@@ -48,6 +48,7 @@ type UploadProps = {
   getPartOfThemeHocProps: Function,
   getPartOfThemeProps: Function,
   defaultTips?: Object,
+  userDefine?: any,
 };
 type StateProps = {
   defaultText?: string,
