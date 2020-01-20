@@ -292,7 +292,7 @@ describe('Rate Test', () => {
   it('Function:onClick limit value', async () => {
     let onClick = () => true;
     const changePromise = new Promise(res => {
-      onClick = (e, { newValue, oldValue }) => {
+      onClick = ({ newValue, oldValue }) => {
         res(newValue);
       };
     });
@@ -317,7 +317,7 @@ describe('Rate Test', () => {
   it('Function:onClick limit value allowHalf', async () => {
     let onClick = () => true;
     const changePromise = new Promise(res => {
-      onClick = (e, { newValue, oldValue }) => {
+      onClick = ({ newValue, oldValue }) => {
         res(newValue);
       };
     });
@@ -354,7 +354,7 @@ describe('Rate Test', () => {
   it('Function:onClick unlimit value', async () => {
     let onClick = () => true;
     const changePromise = new Promise(res => {
-      onClick = (e, { newValue, oldValue }) => {
+      onClick = ({ newValue, oldValue }) => {
         res(newValue);
       };
     });
@@ -400,7 +400,7 @@ describe('Rate Test', () => {
   it('Function:onClick unlimit -> limit  value', async () => {
     let onClick = () => true;
     const changePromise = new Promise(res => {
-      onClick = (e, { newValue, oldValue }) => {
+      onClick = ({ newValue, oldValue }) => {
         res(newValue);
       };
     });
@@ -424,7 +424,7 @@ describe('Rate Test', () => {
   it('Function:onClick unlimit -> limit  value', async () => {
     let onClick = () => true;
     const changePromise = new Promise(res => {
-      onClick = (e, { newValue, oldValue }) => {
+      onClick = ({ newValue, oldValue }) => {
         res(newValue);
       };
     });
@@ -527,7 +527,7 @@ describe('Rate Test', () => {
   it('Function:mouseLeave onClick unlimit value', async () => {
     let onClick = () => true;
     const changePromise = new Promise(res => {
-      onClick = (e, { newValue, oldValue }) => {
+      onClick = ({ newValue, oldValue }) => {
         res(newValue);
       };
     });
@@ -550,7 +550,7 @@ describe('Rate Test', () => {
   it('Function:mouseLeave onClick limit value', async () => {
     let onClick = () => true;
     const changePromise = new Promise(res => {
-      onClick = (e, { newValue, oldValue }) => {
+      onClick = ({ newValue, oldValue }) => {
         res(newValue);
       };
     });
