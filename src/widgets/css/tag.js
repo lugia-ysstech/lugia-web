@@ -308,6 +308,7 @@ export const CloseButtonWrap = CSSComponent({
     transition: all 0.3s;
   `,
 });
+CloseButtonWrap.displayName = 'CloseButtonWrap';
 
 const getOptionalCSS = (checked: Boolean, params: Object) => {
   const defaultBackgroundColor = checked ? themeColor : 'transparent';
