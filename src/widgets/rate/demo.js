@@ -73,7 +73,6 @@ class RateDemo extends React.Component<any, any> {
         value: 3.6,
         disabled: true,
         allowHalf: true,
-        className: 'cccc',
         onClick: res => {
           const { newValue } = res;
           this.setStateValue('defaultProps3', 'value', newValue);
@@ -146,6 +145,27 @@ class RateDemo extends React.Component<any, any> {
         },
       },
       defaultProps8: 8,
+      customProps: {
+        count: 5,
+        max: 5,
+        value: 4,
+        disabled: false,
+        allowHalf: false,
+        classify: true,
+        iconClass: {
+          default: 'lugia-icon-financial_meh',
+          danger: 'lugia-icon-financial_sad',
+          amazed: 'lugia-icon-financial_smile',
+        },
+        onClick: res => {
+          const { newValue } = res;
+          this.setStateValue('customProps', 'value', newValue);
+        },
+        onChange: res => {
+          const { newValue } = res;
+          this.setStateValue('customProps', 'value', newValue);
+        },
+      },
     };
   }
   render() {
@@ -234,8 +254,14 @@ class RateDemo extends React.Component<any, any> {
         },
       },
     };
+
     return (
       <div>
+        <div>
+          <TitleBox>分级评分 高分值样式</TitleBox>
+          <Rate {...this.state.customProps} />
+          <TextBox>{this.state.customProps.value} 颗星</TextBox>
+        </div>
         <Rate {...this.state.defaultProps2} disabled={true} character="啊" />
         <TextBox>{this.state.defaultProps2.value} 颗星</TextBox>
         <div>
@@ -262,21 +288,28 @@ class RateDemo extends React.Component<any, any> {
         </Theme>
         <Theme config={config}>
           <TitleBox>只读：</TitleBox>
-          <Rate {...this.state.defaultProps3} character="好" />
+          <Rate {...this.state.defaultProps3} />
+          <div>
+            <Rate disabled={true} />
+          </div>
           <TextBox>{this.state.defaultProps3.value} 颗星</TextBox>
+          <div>
+            <Rate {...this.state.defaultProps3} character="好" />
+            <TextBox>{this.state.defaultProps3.value} 颗星</TextBox>
+          </div>
         </Theme>
         <Theme config={configColorful}>
-          <TitleBox>自定义图标：</TitleBox>
+          <TitleBox>分级图标：</TitleBox>
           <Rate {...this.state.defaultProps4} />
           <TextBox>{this.state.defaultProps4.value} 颗星</TextBox>
         </Theme>
         <Theme config={configColorful}>
-          <TitleBox>自定义图标 disabled：</TitleBox>
+          <TitleBox>分级图标 disabled：</TitleBox>
           <Rate {...this.state.defaultProps5} />
           <TextBox>{this.state.defaultProps5.value} 颗星</TextBox>
         </Theme>
         <Theme config={configColorful}>
-          <TitleBox>自定义图标：</TitleBox>
+          <TitleBox>分级图标：</TitleBox>
           <Rate {...this.state.defaultProps6} />
           <TextBox>{this.state.defaultProps6.value} 颗星</TextBox>
         </Theme>

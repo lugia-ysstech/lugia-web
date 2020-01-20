@@ -17,7 +17,7 @@ import CSSComponent, { css, keyframes, StaticComponent } from '@lugia/theme-css-
 import { deepMerge } from '@lugia/object-utils';
 
 import colorsFunc from '../css/stateColor';
-const { warningColor, dangerColor } = colorsFunc();
+const { warningColor, mediumGreyColor, superLightColor } = colorsFunc();
 
 const showUp = keyframes`
   from {
@@ -84,17 +84,6 @@ const Ratespan = CSSComponent({
       return '&:last-child { margin: 0 !important;}';
     },
   },
-  hover: {
-    selectNames: [],
-    getCSS(themeMeta: Object, themeProps: Object) {
-      return css`
-        i {
-          animation: ${showUp} 0.3s linear forwards;
-          transform: scale(1.2);
-        }
-      `;
-    },
-  },
   css: css`
     margin-right: 6px;
     position: relative;
@@ -130,7 +119,7 @@ const RateText = CSSComponent({
   normal: {
     selectNames: [['color']],
     defaultTheme: {
-      color: '#e8e8e8',
+      color: superLightColor,
       fontSize: 20,
     },
   },
@@ -159,7 +148,7 @@ const RateTextBottom = CSSComponent({
   normal: {
     selectNames: [['color'], ['fontSize']],
     defaultTheme: {
-      color: '#e8e8e8',
+      color: superLightColor,
       fontSize: 20,
     },
   },
@@ -677,7 +666,7 @@ class Rate extends React.Component<RateProps, any> {
         } = this.props.getPartOfThemeHocProps('AmazedIcon');
         resultTheme = deepMerge(
           getDefaultTheme(amazedIconViewClass, RateIconBottomTheme, RateIconBottomViewClass),
-          { [amazedIconViewClass]: { normal: { color: dangerColor } } },
+          { [amazedIconViewClass]: { normal: { color: '#f88e30' } } },
           amazedIconTheme
         );
         resultViewClass = amazedIconViewClass;
@@ -690,7 +679,7 @@ class Rate extends React.Component<RateProps, any> {
         } = this.props.getPartOfThemeHocProps('DangerIcon');
         resultTheme = deepMerge(
           getDefaultTheme(dangerIconViewClass, RateIconBottomTheme, RateIconBottomViewClass),
-          { [dangerIconViewClass]: { normal: { color: dangerColor } } },
+          { [dangerIconViewClass]: { normal: { color: mediumGreyColor } } },
           dangerIconTheme
         );
         resultViewClass = dangerIconViewClass;
@@ -713,7 +702,7 @@ class Rate extends React.Component<RateProps, any> {
         const obj = {
           [RateIconBottomViewClass]: {
             normal: {
-              color: '#e8e8e8',
+              color: superLightColor,
             },
           },
         };
@@ -729,7 +718,7 @@ class Rate extends React.Component<RateProps, any> {
             getCSS: () => {
               return `              
               vertical-align: text-bottom !important;
-              color: #e8e8e8;
+              color:${superLightColor};
               position: absolute;
               left: 0;
               bottom: 0;
@@ -749,9 +738,6 @@ class Rate extends React.Component<RateProps, any> {
                 transform: scale(1.2);
               `;
             },
-          },
-          disabled: {
-            color: '#cccccc',
           },
         },
       };

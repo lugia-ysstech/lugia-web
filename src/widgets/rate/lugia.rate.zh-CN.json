@@ -61,11 +61,6 @@
       "desc": "点击时触发",
       "args": [
         {
-          "name": "event",
-          "desc": "点击的DOM事件",
-          "type": "DOM 事件"
-        },
-        {
           "name": "result",
           "desc": "点击后的所选值",
           "type": "Object"
@@ -75,11 +70,6 @@
     "onChange": {
       "desc": "分值改变时触发",
       "args": [
-        {
-          "name": "event",
-          "desc": "鼠标移动的DOM事件",
-          "type": "DOM 事件"
-        },
         {
           "name": "result",
           "desc": "鼠标移动时的所选值",
