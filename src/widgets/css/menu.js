@@ -198,6 +198,7 @@ export const ItemWrap = CSSComponent({
   `,
   option: { hover: true, active: true, disabled: true },
 });
+ItemWrap.displayName = 'ItemWrap';
 
 export const DividerWrap = CSSComponent({
   tag: 'div',
