@@ -60,12 +60,12 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
   align-items: center;
   height: 100%;
   vertical-align: top;
+  padding-left: 1rem;
   box-sizing: border-box;
   -webkit-transition-property: background-color,border,border-radius,opacity,box-shadow;
   transition-property: background-color,border,border-radius,opacity,box-shadow;
   -webkit-transition-duration: 0.2s;
   transition-duration: 0.2s;
-  padding-left: 1rem;
 }
 
 .c6 span {
@@ -195,8 +195,11 @@ exports[`NavMenu  mode inline,inlineType=ellipse 1`] = `
   >
     <ul
       className="rc-tree  c2"
+      onMouseDown={false}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
+      onMouseMove={false}
+      onMouseUp={false}
       role="tree-node"
       style={Object {}}
       unselectable="on"
@@ -2159,12 +2162,12 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
   align-items: center;
   height: 100%;
   vertical-align: top;
+  padding-left: 1rem;
   box-sizing: border-box;
   -webkit-transition-property: background-color,border,border-radius,opacity,box-shadow;
   transition-property: background-color,border,border-radius,opacity,box-shadow;
   -webkit-transition-duration: 0.2s;
   transition-duration: 0.2s;
-  padding-left: 1rem;
 }
 
 .c6 span {
@@ -2294,8 +2297,11 @@ exports[`NavMenu  mode inline,inlineType=ellipse,theme=dark 1`] = `
   >
     <ul
       className="rc-tree  c2"
+      onMouseDown={false}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
+      onMouseMove={false}
+      onMouseUp={false}
       role="tree-node"
       style={Object {}}
       unselectable="on"
@@ -4330,6 +4336,7 @@ exports[`NavMenu  mode=vertical  1`] = `
       style={Object {}}
     >
       <li
+        checked={false}
         className="c3"
         disabled={false}
         onClick={[Function]}
@@ -4356,6 +4363,7 @@ exports[`NavMenu  mode=vertical  1`] = `
         </div>
       </li>
       <li
+        checked={false}
         className="c3"
         disabled={false}
         onClick={[Function]}
@@ -4382,6 +4390,7 @@ exports[`NavMenu  mode=vertical  1`] = `
         </div>
       </li>
       <li
+        checked={false}
         className="c3"
         disabled={false}
         onClick={[Function]}
@@ -4408,6 +4417,7 @@ exports[`NavMenu  mode=vertical  1`] = `
         </div>
       </li>
       <li
+        checked={false}
         className="c3"
         disabled={false}
         onClick={[Function]}
@@ -4434,6 +4444,7 @@ exports[`NavMenu  mode=vertical  1`] = `
         </div>
       </li>
       <li
+        checked={false}
         className="c3"
         disabled={false}
         onClick={[Function]}
@@ -4558,12 +4569,12 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
   align-items: center;
   height: 100%;
   vertical-align: top;
+  padding-left: 1rem;
   box-sizing: border-box;
   -webkit-transition-property: background-color,border,border-radius,opacity,box-shadow;
   transition-property: background-color,border,border-radius,opacity,box-shadow;
   -webkit-transition-duration: 0.2s;
   transition-duration: 0.2s;
-  padding-left: 1rem;
 }
 
 .c6 span {
@@ -4693,8 +4704,11 @@ exports[`NavMenu mode=inline,inlineType=primary  1`] = `
   >
     <ul
       className="rc-tree  c2"
+      onMouseDown={false}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
+      onMouseMove={false}
+      onMouseUp={false}
       role="tree-node"
       style={Object {}}
       unselectable="on"
@@ -6691,12 +6705,12 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
   align-items: center;
   height: 100%;
   vertical-align: top;
+  padding-left: 1rem;
   box-sizing: border-box;
   -webkit-transition-property: background-color,border,border-radius,opacity,box-shadow;
   transition-property: background-color,border,border-radius,opacity,box-shadow;
   -webkit-transition-duration: 0.2s;
   transition-duration: 0.2s;
-  padding-left: 1rem;
 }
 
 .c6 span {
@@ -6826,8 +6840,11 @@ exports[`NavMenu mode=inline,inlineType=primary,theme=dark  1`] = `
   >
     <ul
       className="rc-tree  c2"
+      onMouseDown={false}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
+      onMouseMove={false}
+      onMouseUp={false}
       role="tree-node"
       style={Object {}}
       unselectable="on"

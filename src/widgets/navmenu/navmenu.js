@@ -345,7 +345,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     data.forEach(item => {
       const target = {};
       target.title = item[displayField];
-      target.key = item[valueField];
+      target.value = item[valueField];
       target.disabled = item.disabled;
       const { children = [] } = item;
       if (children && children.length !== 0) {
