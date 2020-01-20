@@ -233,7 +233,7 @@ export const createIconTypeArray = (num: number | string, condition?: Object): A
   });
 };
 
-export const calcValue = (val: number = 0, allowHalf: boolean): number => {
+export const calcValue = (val: number = 0, allowHalf?: boolean): number => {
   return allowHalf ? Math.floor(val * 2) / 2 : Math.floor(val);
 };
 
@@ -514,13 +514,14 @@ class Rate extends React.Component<RateProps, any> {
       starNum: val,
       iconTypeArray: newIconTypeArray,
       current: index,
+      hasClick: false,
     };
     if ('value' in props) {
       setValObj.hasClick = hasClicked;
     }
     this.setValue(setValObj, true);
     const { onClick } = props;
-    onClick(e, getReturnObj(this.state, multipleValue(props, val)));
+    onClick && onClick(getReturnObj(this.state, multipleValue(props, val)));
   };
 
   onMouseMove = (e: Object, i: number) => {
@@ -543,7 +544,7 @@ class Rate extends React.Component<RateProps, any> {
     };
     this.setValue(setValObj);
 
-    this.doExportChange(e, getReturnObj(this.state, multipleValue(this.props, starCount)));
+    this.doExportChange(getReturnObj(this.state, multipleValue(this.props, starCount)));
   };
 
   getOffset(index: number) {
@@ -586,7 +587,7 @@ class Rate extends React.Component<RateProps, any> {
         current,
       };
       this.setValue(setValObj);
-      this.doExportChange(e, getReturnObj(this.state, multipleValue(props, current)));
+      this.doExportChange(getReturnObj(this.state, multipleValue(props, current)));
       return;
     }
 
@@ -598,7 +599,7 @@ class Rate extends React.Component<RateProps, any> {
       current,
     };
     this.setValue(setValObj);
-    this.doExportChange(e, getReturnObj(this.state, multipleValue(props, 0)));
+    this.doExportChange(getReturnObj(this.state, multipleValue(props, 0)));
   };
 
   getTemporary = () => {
@@ -608,12 +609,12 @@ class Rate extends React.Component<RateProps, any> {
     return JSON.parse(this.temporary);
   };
 
-  doExportChange = (e: Object, resValue: Object) => {
+  doExportChange = (resValue: Object) => {
     const { onChange, disabled } = this.props;
     if (disabled) {
       return;
     }
-    onChange && onChange(e, resValue);
+    onChange && onChange(resValue);
   };
 
   setValue = (obj: Object, hasClick?: boolean = false) => {
