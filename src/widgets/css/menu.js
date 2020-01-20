@@ -79,6 +79,7 @@ export const MenuContainer = CSSComponent({
   `,
   option: { hover: true },
 });
+MenuContainer.displayName = 'MenuContainer';
 
 const getIcon = checkedCSS => {
   return `
