@@ -306,6 +306,7 @@ class MenuItem extends React.Component<MenuItemProps> {
         onMouseEnter={onMouseEnter}
         disabled={disabled}
         title={title}
+        checked={checked}
         themeProps={themeProps}
         {...addMouseEvent(this)}
       >

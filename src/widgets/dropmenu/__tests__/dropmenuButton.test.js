@@ -14,10 +14,7 @@ import DropMenuButton from '../dropmenuButton';
 import renderer from 'react-test-renderer';
 import Widget from '../../consts/index';
 import Theme from '../../theme';
-import { QueryInputPadding } from '../../common/QueryInputContainer';
-import { adjustValue } from '../../utils';
 import { delay } from '@lugia/react-test-utils';
-import { MenuItemHeight, DefaultHeight, Height } from '../../css/menu';
 const { MenuItem } = Menu;
 
 Enzyme.configure({ adapter: new Adapter() });

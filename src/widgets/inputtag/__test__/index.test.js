@@ -26,7 +26,18 @@ describe('InputTag', () => {
 
       render() {
         return (
-          <Theme config={{ [Widgets.InputTag]: { width } }} {...this.props}>
+          <Theme
+            config={{
+              [Widgets.InputTag]: {
+                InputTagWrap: {
+                  normal: {
+                    width,
+                  },
+                },
+              },
+            }}
+            {...this.props}
+          >
             <InputTag {...props} ref={cmp => (this.inputtag = cmp)} />
           </Theme>
         );
