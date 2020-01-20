@@ -186,8 +186,8 @@ describe('Carousel', () => {
     expect(getIndicatorIndex(cmp, 0).props().checked).toBeTruthy();
     hoverIndicator(cmp, 2);
     await delay(1000);
-    // expect(getIndicatorIndex(cmp, 0).props().checked).toBeFalsy();
-    // expect(getIndicatorIndex(cmp, 2).props().checked).toBeTruthy();
+    expect(getIndicatorIndex(cmp, 0).props().checked).toBeFalsy();
+    expect(getIndicatorIndex(cmp, 2).props().checked).toBeTruthy();
   });
 
   it('hover indicator defaultStart = 4 , this indicator props checked', async () => {
