@@ -50,6 +50,11 @@ type PropsType = {
   maxHeight?: number,
   minHeight: number,
   minWidth: number,
+  autoLevel: boolean,
+  propsIsLock: boolean,
+  onFixed?: Function,
+  canDoubleClickScale?: boolean,
+  head: any,
 };
 const { clickLock } = lockingWayFlag;
 export default class Window extends React.Component<PropsType, any> {
@@ -68,6 +73,9 @@ export default class Window extends React.Component<PropsType, any> {
   shrink: Object;
   zIndex: Object;
   lockupDateZ: Object;
+  dragArea: any;
+  windowCenter: boolean;
+  upDateDragHeight: Object;
 
   constructor(props: PropsType) {
     super(props);
@@ -149,7 +157,7 @@ export default class Window extends React.Component<PropsType, any> {
     this.setState({ ...this.oldSize, ...param });
   };
   freshWindowSize = () => {
-    const { offsetWidth: innerWidth, offsetHeight: innerHeight } = document.body;
+    const { offsetWidth: innerWidth, offsetHeight: innerHeight } = document.body || {};
     const { width, height, x, y, isDoubleClick } = this.state;
     const size = isDoubleClick ? { width: innerWidth, height: innerHeight } : { width, height };
     this.setState({
@@ -209,7 +217,6 @@ export default class Window extends React.Component<PropsType, any> {
     this.setState({ zIndex: z });
   };
   onMouseDown = (e: Object) => {
-    e.stopPropagation();
     const { isLock } = this.props;
     if (isLock) {
       return;
@@ -217,6 +224,10 @@ export default class Window extends React.Component<PropsType, any> {
     this.upDateEventZindex();
   };
   upDateEventZindex = () => {
+    const { autoLevel } = this.props;
+    if (!autoLevel) {
+      return;
+    }
     const { zIndexArr, upDateZFn } = this;
     const { componentIndex } = this.state;
     const max = Math.max(...zIndexArr);
@@ -240,9 +251,7 @@ export default class Window extends React.Component<PropsType, any> {
     });
     return zIndex === max && number === 1;
   };
-  onClick = (e: SyntheticMouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
-  };
+  onClick = (e: SyntheticMouseEvent<HTMLButtonElement>) => {};
   onClose = () => {
     const { dom, onClose } = this.props;
     if (dom) {
@@ -252,7 +261,7 @@ export default class Window extends React.Component<PropsType, any> {
       onClose({ isRemove: true });
     }
   };
-  upDateDragHeightFun = ({ dragHeight }) => {
+  upDateDragHeightFun = ({ dragHeight }: Object) => {
     this.setState({ dragHeight });
   };
   componentDidMount() {
@@ -281,6 +290,7 @@ export default class Window extends React.Component<PropsType, any> {
     this.zIndex.removeListener();
     this.lockupDateZ.removeListener();
     this.onDoubleClick.removeListener();
+    this.upDateDragHeight.removeListener();
   }
   shouldComponentUpdate(props: PropsType, state: any) {
     const { width, height, windowWidth, windowHeight, right, left, isDidMount } = state;
@@ -298,8 +308,8 @@ export default class Window extends React.Component<PropsType, any> {
       middle,
     } = props;
     const param = { node: this.box, minWidth, minHeight, maxWidth, maxHeight };
-    let newWidth = width;
-    let newHeight = height;
+    let newWidth = typeof width === 'string' ? 0 : width;
+    let newHeight = typeof height === 'string' ? 0 : height;
     if (width === 'auto') {
       setTimeout(() => {
         const { w } = getNodeSize(param);
@@ -398,6 +408,7 @@ export default class Window extends React.Component<PropsType, any> {
       head,
       getHeadEvent,
       mask,
+      autoLevel,
     } = this.props;
     const newMaxWidth = maxWidth < minWidth ? windowWidth : maxWidth;
     const newMaxHeight = maxHeight < minHeight ? windowHeight : maxHeight;
@@ -461,7 +472,7 @@ export default class Window extends React.Component<PropsType, any> {
                 onDrag={onDrag}
                 onDragEnd={onDragEnd}
                 onClose={this.onClose}
-                upDateZFn={this.upDateZFn}
+                upDateZFn={autoLevel && this.upDateZFn}
                 zIndexArr={this.zIndexArr}
                 componentIndex={componentIndex}
                 onChangeLock={onChangeLock}

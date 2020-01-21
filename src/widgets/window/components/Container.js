@@ -34,15 +34,19 @@ type TypeProps = {
   defaultIsLock?: boolean,
   isLock?: boolean,
   visible?: boolean,
+  autoLevel?: boolean,
   lockDirection?: string,
-  head: any,
+  head?: any,
+  onDragStart?: Function,
 };
 export default class Container extends React.Component<TypeProps, any> {
   static displayName = 'WindowContainer';
   dom: any;
   mouseEvents: any;
   lockDirection: string;
-
+  static defaultProps = {
+    middle: true,
+  };
   constructor(props: TypeProps) {
     super(props);
     const { defaultIsLock = false, isLock, lockDirection = '' } = props;
@@ -87,11 +91,11 @@ export default class Container extends React.Component<TypeProps, any> {
   };
   onDragEnd = (param: Object) => {
     const { isLock } = this.getEndState();
-    const { width, height, lockDirection, sizeZIndex, isUpdata } = param;
+    const { width, height, lockDirection, sizeZIndex, isUpdata, x, y } = param;
     isUpdata && this.setState({ isLock, isShowSide: false, width, height, sizeZIndex });
     const { onDragEnd } = this.props;
     if (onDragEnd) {
-      onDragEnd({ isLock, lockDirection });
+      onDragEnd({ x, y, lockDirection, isLock });
     }
   };
   getEndState = () => {
@@ -170,6 +174,7 @@ export default class Container extends React.Component<TypeProps, any> {
       minHeight = minH,
       isLock: propsIsLock,
       visible = true,
+      autoLevel,
     } = this.props;
     const hasClose = this.hasOnClose();
     const config = {
@@ -189,6 +194,7 @@ export default class Container extends React.Component<TypeProps, any> {
       onDragEnd: this.onDragEnd,
       onClose: this.onClose,
       onOpen: this.onOpen,
+      autoLevel,
     };
     if (!visible) {
       return null;

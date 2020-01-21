@@ -48,6 +48,8 @@ type TypeDragWnd = {
   width: number,
   height: number,
   isFloat: boolean,
+  x: number,
+  y: number,
 };
 export default class DragArea extends React.Component<TypeProps, any> {
   changeFloat: Function;
@@ -247,12 +249,12 @@ export default class DragArea extends React.Component<TypeProps, any> {
     this.propsSize = { width, height };
     this.propsXY = { x, y };
     this.currentlockDirection = this.lockDirection;
-    this.onDragStart(x, y, this.lockDirection);
+    this.onDragStart({ x, y, lockDirection: this.lockDirection, isLock });
   };
-  onDragStart = (x: number, y: number, lockDirection: string) => {
+  onDragStart = (param: { x: number, y: number, lockDirection: string, isLock: boolean }) => {
     const { onDragStart } = this.props;
     if (onDragStart) {
-      onDragStart({ x, y, lockDirection });
+      onDragStart({ ...param });
     }
   };
   onMouseMove = (e: Object) => {
@@ -337,7 +339,7 @@ export default class DragArea extends React.Component<TypeProps, any> {
   };
   onMouseUp = (e: Object) => {
     this.up = true;
-    const { mouseEvent } = this.props;
+    const { mouseEvent, x, y } = this.props;
     const { isDown, isFloat } = this.state;
     const { width, height } = this.propsSize;
 
@@ -355,6 +357,8 @@ export default class DragArea extends React.Component<TypeProps, any> {
           height,
           isFloat,
           lockDirection: this.currentlockDirection,
+          x,
+          y,
         });
       }
 
@@ -365,15 +369,21 @@ export default class DragArea extends React.Component<TypeProps, any> {
     }
 
     const lockDirection = isFloat ? '' : this.lockDirection;
-    this.onDragEnd({ isUpdata: true, width, height, isFloat, lockDirection });
+
     const { left, right, newX, newY } = this.circleFloatXY(lockDirection);
     const isTransition = false;
     const isDoubleClick = false;
-    mouseEvent.emit('onDragUp', {
-      isUpDate: true,
+    const positionXY = {
       ...this.xy,
       y: this.getLockY(lockDirection, newY),
       x: newX,
+    };
+    const { x: X, y: Y } = positionXY;
+    this.onDragEnd({ isUpdata: true, width, height, isFloat, lockDirection, x: X, y: Y });
+    mouseEvent.emit('onDragUp', {
+      isUpDate: true,
+      x: X,
+      y: Y,
       right,
       left,
       isDoubleClick,
@@ -386,11 +396,11 @@ export default class DragArea extends React.Component<TypeProps, any> {
     });
     this.move = false;
   };
-  onDragEnd = ({ isUpdata, width, height, isFloat, lockDirection }: TypeDragWnd) => {
+  onDragEnd = ({ isUpdata, width, height, isFloat, lockDirection, x, y }: TypeDragWnd) => {
     const { onDragEnd } = this.props;
     if (onDragEnd) {
       this.lockupDateZIndex();
-      onDragEnd({ isUpdata, width, height, isFloat, lockDirection });
+      onDragEnd({ isUpdata, width, height, isFloat, lockDirection, x, y });
     }
   };
   getLockY = (lockDirection: string, y: number) => {
