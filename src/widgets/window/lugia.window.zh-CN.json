@@ -120,6 +120,11 @@
       "type": "boolean",
       "desc": "是否开启遮罩",
       "defaultValue": false
+    },
+    "autoLevel": {
+      "type": "boolean",
+      "desc": "是否自动更改层级",
+      "defaultValue": false
     }
   },
   "events": {
