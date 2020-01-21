@@ -40,6 +40,7 @@ export default class Four extends React.Component<TypeProps, any> {
   move: boolean;
   isUp: boolean;
   newDirection: string;
+  downDirection: string;
   onMouseDown: Function;
   onMouseEnterArea: Function;
   onMouseLeaveArea: Function;
@@ -91,6 +92,7 @@ export default class Four extends React.Component<TypeProps, any> {
       pieces: [...directions],
     };
   };
+
   getChildren = (Target: any, directions: Array<string>): Array<any> => {
     if (!Array.isArray(directions) || directions.length === 0) {
       return [];
@@ -140,6 +142,7 @@ export default class Four extends React.Component<TypeProps, any> {
       maxX,
       maxY,
     };
+    this.downDirection = direction;
 
     const key = this.isDownKey(direction);
     this.setState({ [key]: true }, () => {
@@ -154,7 +157,7 @@ export default class Four extends React.Component<TypeProps, any> {
       this.limitXY = { limitX, limitY };
     });
     const { clientX: downX, clientY: downY } = e;
-    this.onChangeSizeStart(downX, downY);
+    this.onChangeSizeStart({ x, y, width, height });
     const { newX, newY } = getDownXY({
       x,
       y,
@@ -168,11 +171,18 @@ export default class Four extends React.Component<TypeProps, any> {
     this.sourceXY = { sourceX: newX, sourceY: newY };
     this.isUp = false;
     this.newDirection = newDirection;
+    this.sizes = {
+      width,
+      height,
+      x,
+      y,
+      direction: newDirection,
+    };
   };
-  onChangeSizeStart = (x: number, y: number) => {
+  onChangeSizeStart = (param: { x: number, y: number, width: number, height: number }) => {
     const { onChangeSizeStart } = this.props;
     if (onChangeSizeStart) {
-      onChangeSizeStart({ x, y });
+      onChangeSizeStart({ ...param });
     }
   };
   onMouseMove = (e: SyntheticMouseEvent<HTMLButtonElement>, direction: string) => {
@@ -229,26 +239,34 @@ export default class Four extends React.Component<TypeProps, any> {
     const { onChangeSize } = this.props;
     const { width: changeW, height: changeH } = result;
     if (onChangeSize) {
-      onChangeSize({ width: changeW, height: changeH });
+      onChangeSize({ x, y, width: changeW, height: changeH });
     }
   };
-  onMouseUp = (direction: string) => {
+  onMouseUp = () => {
     this.isUp = true;
-    this.resetDownState();
     const { mouseEvent } = this.props;
+    const direction = this.downDirection;
     const key = this.isDownKey(direction);
     const isDown = this.state[key];
-
+    this.resetDownState();
+    if (isDown && !this.move) {
+      this.exportOnChangeSizeEnd();
+      return;
+    }
     if (!isDown && !this.move) {
       return;
     }
+
     mouseEvent.emit('border_up', this.sizes);
+    this.exportOnChangeSizeEnd();
+    this.move = false;
+  };
+  exportOnChangeSizeEnd = () => {
     const { onChangeSizeEnd } = this.props;
     if (onChangeSizeEnd) {
-      const { width: changeW, height: changeH } = this.sizes;
-      onChangeSizeEnd({ width: changeW, height: changeH });
+      const { width: changeW, height: changeH, x, y } = this.sizes;
+      onChangeSizeEnd({ x, y, width: changeW, height: changeH });
     }
-    this.move = false;
   };
   resetDownState = () => {
     this.setState({
