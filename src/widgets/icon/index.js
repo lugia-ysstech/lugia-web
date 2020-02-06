@@ -119,6 +119,7 @@ const IconTag = CSSComponent({
   },
   disabled: {
     selectNames: [['color'], ['cursor'], ['opacity']],
+    defaultTheme: { cursor: 'not-allowed' },
   },
   css: css`
     user-select: none;
