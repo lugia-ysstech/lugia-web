@@ -65,6 +65,13 @@ export const LightTabsMenuTheme = {
       },
     },
   },
+  SubMenu: {
+    Container: {
+      normal: {
+        width: 200,
+      },
+    },
+  },
 };
 
 // themeStyle: dark
@@ -105,6 +112,7 @@ export const DarkTabsMenuTheme = {
   SubMenu: {
     Container: {
       normal: {
+        width: 200,
         background: {
           color: 'rgba(0, 0, 51, 0.7)',
         },
