@@ -102,8 +102,9 @@ export function getDerivedForInput(nextProps: Object, preState: Object): Object 
 function getValueFromValue(nextProps: Object, preState: Object): Array<string> | void {
   const { defaultValue, value, mode } = nextProps;
   const { isRange } = modeStyle(mode);
-  const hasDefaultProps = defaultValue && 'defaultValue' in nextProps;
-  const hasValueProps = value && 'value' in nextProps;
+  const hasDefaultProps =
+    'defaultValue' in nextProps && defaultValue !== null && defaultValue !== undefined;
+  const hasValueProps = 'value' in nextProps && value !== null && value !== undefined;
   let newValue = hasValueProps
     ? value
     : preState
