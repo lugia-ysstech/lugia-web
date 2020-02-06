@@ -40,6 +40,9 @@ export const Container = CSSProvider({
       ['background'],
       ['opacity'],
     ],
+    getCSS() {
+      return 'cursor:not-allowed';
+    },
   },
   css: css`
     display: inline-block;
@@ -69,6 +72,9 @@ export const SwitchWrapper = CSSProvider({
   },
   disabled: {
     selectNames: [['background'], ['borderRadius'], ['border']],
+    getCSS() {
+      return 'cursor:not-allowed';
+    },
   },
   css: css`
     display: inline-block;
@@ -92,7 +98,7 @@ export const SwitchText = CSSProvider({
         propsConfig: { textPosition, textBox },
       } = themeProps;
       return `
-          
+
           & > *:first-child {
           ${textBox};
             ${textPosition};
@@ -104,7 +110,7 @@ export const SwitchText = CSSProvider({
               font-weight:${fontWeight};
               color:${color};
             }
-          }         
+          }
         `;
     },
   },
@@ -116,6 +122,9 @@ export const SwitchText = CSSProvider({
   },
   disabled: {
     selectNames: [],
+    getCSS() {
+      return 'cursor:not-allowed';
+    },
   },
   css: css`
     user-select: none;
@@ -153,7 +162,7 @@ export const SwitchCircle = CSSProvider({
       return `
           ${switchButtonPosition};
           & > *:first-child {
-            height:${em(height)};            
+            height:${em(height)};
           }
         `;
     },
@@ -181,16 +190,18 @@ export const SwitchCircle = CSSProvider({
       const circleIconRotateDiameter = Math.min(width, height);
       const widthIsLarge = width >= height;
       return `
+
           ${switchButtonPosition};
           & > *:first-child {
-            height:${em(height)};    
-            
+            cursor:not-allowed;
+            height:${em(height)};
+
             ::before{
               display:inline-block;
               width:${em(circleIconRotateDiameter)};
               height:${em(circleIconRotateDiameter)};
-              ${widthIsLarge ? '' : 'vertical-align: -webkit-baseline-middle;'};              
-            }        
+              ${widthIsLarge ? '' : 'vertical-align: -webkit-baseline-middle;'};
+            }
           }
         `;
     },
