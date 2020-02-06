@@ -69,9 +69,9 @@ class RangeInput extends Component<TypeProps, TypeState> {
     const { onBlur } = this.props;
     onBlur && onBlur();
   };
-  onClear = () => {
+  onClear = (e: any) => {
     const { onClear } = this.props;
-    onClear && onClear();
+    onClear && onClear(e);
   };
   getInputStyle = (state = {}) => {
     const ableSelectNames = ['color', 'fontSize', 'font', 'background'];
