@@ -109,16 +109,26 @@ export default (
       return themeProps;
     }
 
+    getActiveAutoHeight() {
+      const { data, autoHeight = false, getPartOfThemeProps } = this.props;
+      const { themeConfig: { normal: { height } = {} } = {} } = getPartOfThemeProps(TargetWrapName);
+      return autoHeight
+        ? autoHeight
+        : this.itemHeight * data.length <= 250 && !height
+        ? true
+        : false;
+    }
+
     render() {
       const { props } = this;
       const start = this.getStart(props, this.state);
       const { level, autoHeight = false } = props;
       const totalSize = this.fetchTotalSize();
-
+      const activeAutoHeight = this.getActiveAutoHeight();
       const themeProps = this.getContainerThemeProps(TargetWrapName, {
         props: {
           isDrag: this.isDrag,
-          autoHeight,
+          autoHeight: activeAutoHeight,
           totalSize,
         },
       });
