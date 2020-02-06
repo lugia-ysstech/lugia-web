@@ -559,13 +559,18 @@ class TextBox extends Component<InputProps, InputState> {
           hover: {
             color: darkGreyColor,
           },
+          disabled: {
+            cursor: 'not-allowed',
+          },
         },
       },
       ClearButtonThemeProps
     );
 
+    const { disabled } = this.props;
     return (
       <Icon
+        disabled={disabled}
         singleTheme
         viewClass={clearViewClass}
         theme={newTheme}
