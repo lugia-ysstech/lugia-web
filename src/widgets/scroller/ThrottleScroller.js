@@ -110,7 +110,7 @@ export default (
     }
 
     getActiveAutoHeight() {
-      const { data, autoHeight = false, getPartOfThemeProps } = this.props;
+      const { data = [], autoHeight = false, getPartOfThemeProps } = this.props;
       const { themeConfig: { normal: { height } = {} } = {} } = getPartOfThemeProps(TargetWrapName);
       return autoHeight
         ? autoHeight
