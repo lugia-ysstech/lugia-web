@@ -282,34 +282,6 @@ export const ItemText = CSSComponent({
   `,
 });
 
-export const CloseButtonWrap = CSSComponent({
-  tag: 'span',
-  className: 'CloseButtonWrap',
-  normal: {
-    selectNames: [['margin']],
-    getCSS: themeMeta => {
-      const { font = {} } = themeMeta;
-      const { size = 16 } = font;
-      return `
-        width: ${px2remcss(size)}
-      `;
-    },
-  },
-  hover: {
-    selectNames: [],
-  },
-  active: {
-    selectNames: [],
-  },
-  css: css`
-    display: inline-block;
-    box-sizing: content-box;
-    margin-left: ${px2remcss(5)};
-    transition: all 0.3s;
-  `,
-});
-CloseButtonWrap.displayName = 'CloseButtonWrap';
-
 const getOptionalCSS = (checked: Boolean, params: Object) => {
   const defaultBackgroundColor = checked ? themeColor : 'transparent';
   const { color: normalColor, background = {} } = params;

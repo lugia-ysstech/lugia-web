@@ -108,14 +108,12 @@ class Tag extends React.Component<TagProps, TagState> {
           </ItemText>
 
           {closable ? (
-            <CloseButtonWrap themeProps={getPartOfThemeProps('CloseButton')}>
-              <Icon
-                {...this.getCloseTheme('CloseButton')}
-                singleTheme
-                iconClass="lugia-icon-reminder_close"
-                onClick={this.onCloseClick.bind(this)}
-              />
-            </CloseButtonWrap>
+            <Icon
+              {...this.getCloseTheme('CloseButton')}
+              singleTheme
+              iconClass="lugia-icon-reminder_close"
+              onClick={this.onCloseClick.bind(this)}
+            />
           ) : null}
         </FlexBox>
       </TagWrap>
@@ -145,6 +143,9 @@ class Tag extends React.Component<TagProps, TagState> {
         [viewClass]: {
           normal: {
             font: { size: 16 },
+            margin: {
+              left: 5,
+            },
           },
         },
       },
