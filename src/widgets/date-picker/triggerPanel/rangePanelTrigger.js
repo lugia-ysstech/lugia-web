@@ -321,16 +321,20 @@ class Range extends Component {
     const { onBlur } = this.props;
     onBlur && onBlur();
   };
-  onClear = () => {
-    const { value } = this.state;
-    value[0] = '';
-    value[1] = '';
-    this.oldValue[0] = '';
-    this.oldValue[1] = '';
+  onClear = (event: any) => {
+    const newValue = ['', ''];
+    this.oldValue = ['', ''];
     this.isClear = true;
-    this.setState({ value, hasNormalvalue: false }, () => {
+
+    this.setState({ value: newValue, hasNormalvalue: false }, () => {
       this.setPopupVisible(false);
     });
+
+    const { onChange } = this.props;
+    const { value } = this.state;
+    if (onChange) {
+      onChange({ newValue, oldValue: [...value], event });
+    }
   };
   footerChange = (status: string) => {
     let visible = true;
