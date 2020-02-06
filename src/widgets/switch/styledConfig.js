@@ -168,24 +168,25 @@ export function getThemeProps(props, value) {
     switchButtonThemeProps,
     value
   );
-
+  const themeState = { disabled: disabled || loading };
   return {
     switchThemeProps: deepMerge(
       { themeConfig: switchThemeProps },
-      { themeState: { disabled: disabled || loading } },
+      { themeState },
       { propsConfig: { textPosition, textBox } },
       nessecaryProps
     ),
     childrenThemeProps: deepMerge(
       childrenThemeProps,
-      { themeState: { disabled: disabled || loading } },
+      { themeState },
       { propsConfig: { switchButtonPosition } },
       nessecaryProps
     ),
-    SwitchContainerThemeProps: deepMerge(getPartOfThemeProps('Container'), {
-      themeState: { disabled: disabled || loading },
-      nessecaryProps,
-    }),
+    SwitchContainerThemeProps: deepMerge(
+      getPartOfThemeProps('Container'),
+      { themeState },
+      nessecaryProps
+    ),
   };
 }
 
