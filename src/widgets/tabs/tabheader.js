@@ -420,11 +420,14 @@ class TabHeader extends Component<TabsProps, TabsState> {
   }
 
   componentDidMount() {
+    this.getOffsetSize();
+    this.matchPage();
+  }
+  getOffsetSize() {
     if (this.scrollBox.current) {
       this.offsetWidth = this.scrollBox.current.offsetWidth;
       this.offsetHeight = this.scrollBox.current.offsetHeight;
     }
-    this.matchPage();
   }
 
   matchPage() {
@@ -858,6 +861,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
     const { currentPage, titleSize } = this.state;
     const { pagedType, tabPosition } = this.props;
     const actualSize = this.getActualWidthOrHeight();
+    this.getOffsetSize();
     const offsetSize = isVertical(tabPosition) ? this.offsetHeight : this.offsetWidth;
     if (actualSize <= offsetSize) {
       return 0;
