@@ -310,12 +310,18 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
             placeholder={placeholder}
             ref={this.inputTag}
             createPortal={createPortal}
+            onClear={this.onClear}
             onPopupVisibleChange={this.onInputTagPopupVisibleChange}
           />
         </Trigger>
       </Theme>
     );
   }
+
+  onClear = (e: Object) => {
+    const { onClear } = this.props;
+    onClear && onClear(e);
+  };
 
   getInputtagTheme = () => {
     const { getPartOfThemeConfig } = this.props;
