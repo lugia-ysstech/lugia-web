@@ -83,7 +83,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     valueField: 'value',
     displayField: 'text',
     mode: 'local',
-    createPortal: false,
+    createPortal: true,
     throttle: 200,
     disabled: false,
     canSearch: false,
@@ -309,6 +309,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
             mutliple={this.isMutliple()}
             placeholder={placeholder}
             ref={this.inputTag}
+            createPortal={createPortal}
             onPopupVisibleChange={this.onInputTagPopupVisibleChange}
           />
         </Trigger>
