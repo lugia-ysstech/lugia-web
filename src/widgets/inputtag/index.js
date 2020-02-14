@@ -77,6 +77,7 @@ type InputTagProps = {
   getPartOfThemeConfig: Function,
   pullIconClass?: string,
   clearIconClass?: string,
+  createPortal?: boolean,
 };
 
 type InputTagState = {
@@ -221,7 +222,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       />
     );
     const { focus } = state;
-    const { disabled, validateStatus, prefix, getPartOfThemeProps } = props;
+    const { disabled, validateStatus, prefix, getPartOfThemeProps, createPortal } = props;
 
     const themeProps = getPartOfThemeProps('InputTagWrap');
     if (!this.isMutliple()) {
@@ -262,6 +263,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
             ref={cmp => {
               this.dropMenu = cmp;
             }}
+            createPortal={createPortal}
           >
             {result}
           </DropMenu>

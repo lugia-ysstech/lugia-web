@@ -98,7 +98,7 @@ class Select extends React.Component<SelectProps, SelectState> {
     },
     mutliple: false,
     canInput: false,
-    createPortal: false,
+    createPortal: true,
     displayField: DisplayField,
     valueField: ValueField,
     mode: 'local',
@@ -384,6 +384,7 @@ class Select extends React.Component<SelectProps, SelectState> {
             onChange={this.onInputTagChange}
             onPopupVisibleChange={this.onInputTagPopupVisibleChange}
             disabled={disabled}
+            createPortal={createPortal}
             placeholder={placeholder}
             mutliple={isMutliple(props)}
             onClear={this.onClear}
