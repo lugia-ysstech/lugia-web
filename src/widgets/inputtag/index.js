@@ -256,8 +256,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
             menus={this.getItems(query)}
             onQuery={this.onQueryInput}
             onPopupVisibleChange={this.onPopupVisibleChange}
-            popupVisible={this.state.popupVisible}
-            action={['click']}
+            action={[]}
             query={query}
             hideAction={['click']}
             ref={cmp => {
