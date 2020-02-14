@@ -69,6 +69,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
     showSwitch: true,
     autoHeight: false,
     icons: {},
+    createPortal: true,
   };
   state: DropMenuState;
   static displayName = Widget.DropMenu;
@@ -82,7 +83,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   }
 
   render() {
-    const { menus, action, hideAction, align } = this.props;
+    const { menus, action, hideAction, align, createPortal } = this.props;
 
     const config = {
       [Widget.DropMenuButton]: this.getDropMenuButtonTheme(),
@@ -113,7 +114,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
           action={action}
           offsetY={offsetY}
           lazy={false}
-          createPortal
+          createPortal={createPortal}
           hideAction={hideAction}
           onPopupVisibleChange={this.onPopupVisibleChange}
           popupVisible={this.state.visible}
