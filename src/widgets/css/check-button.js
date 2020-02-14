@@ -152,6 +152,7 @@ export const CheckSpan = CSSComponent({
     margin: 0;
     transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
     border-left: 0;
+    user-select: none;
     ${getSizeCSS};
   `,
   normal: {
