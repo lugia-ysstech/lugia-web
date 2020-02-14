@@ -872,7 +872,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
         const maxIndex = this.getCurrentMaxIndex(titleSize);
         const length = currentPage - maxIndex;
         for (let i = 1; i <= length; i++) {
-          distance += titleSize[Math.min(maxIndex + i, titleSize.length - 1)] + 8;
+          distance += titleSize[Math.min(maxIndex + i, titleSize.length - 1)];
         }
         break;
       case 'page':

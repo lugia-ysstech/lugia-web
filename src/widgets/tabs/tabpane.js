@@ -184,6 +184,24 @@ const Title = CSSComponent({
       height: 42,
       lineHeight: 42,
     },
+    getCSS: (theme: Object, themeProps: Object) => {
+      const { textAlign } = theme;
+      let justify = 'center';
+      switch (textAlign) {
+        case 'left':
+          justify = 'flex-start';
+          break;
+        case 'right':
+          justify = 'flex-end';
+          break;
+        case 'justify':
+          justify = 'space-between';
+          break;
+        default:
+          break;
+      }
+      return `justify-content: ${justify};`;
+    },
     getStyle: (theme: Object, themeProps: Object) => {
       const { height } = theme;
       return {
