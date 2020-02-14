@@ -636,6 +636,7 @@ class TextBox extends Component<InputProps, InputState> {
         props: { size },
       })
     );
+    const theType = type === 'password' ? 'password' : 'text';
     return (
       <CommonInputStyle
         themeProps={theThemeProps}
@@ -657,7 +658,7 @@ class TextBox extends Component<InputProps, InputState> {
         formatter={formatter}
         parser={parser}
         readOnly={readOnly}
-        type={type}
+        type={theType}
         placeholder={placeholder}
         disabled={disabled}
       />
