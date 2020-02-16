@@ -113,7 +113,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   oldWidth: number;
 
   isMutliple() {
-    return this.props.mutliple;
+    return !!this.props.mutliple;
   }
 
   constructor(props: InputTagProps) {
