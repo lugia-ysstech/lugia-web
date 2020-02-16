@@ -12,7 +12,8 @@
     "createPortal": {
       "type": "boolean",
       "desc": "是否全局弹出下拉框",
-      "defaultValue": true
+      "defaultValue": true,
+      "isHidden": true
     },
     "value": {
       "type": "string",
@@ -43,11 +44,13 @@
 
     "prefix": {
       "type": "ReactNode",
-      "desc": "输入框前缀"
+      "desc": "输入框前缀",
+      "isHidden": true
     },
     "suffix": {
       "type": "ReactNode",
-      "desc": "输入框后缀"
+      "desc": "输入框后缀",
+      "isHidden": true
     }
   },
   "events": {
