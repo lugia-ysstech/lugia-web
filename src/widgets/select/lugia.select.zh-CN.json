@@ -41,38 +41,38 @@
     "canSearch": {
       "type": "boolean",
       "desc": "是否支持查询",
-      "defaultValue": false
+      "defaultPropsValue": false
     },
     "canInput": {
       "type": "boolean",
       "desc": "是否支持自定义值,只有在canSearch为true时才生效",
-      "defaultValue": false
+      "defaultPropsValue": false
     },
     "canClear": {
       "type": "boolean",
       "desc": "是否展示清空图标",
-      "defaultValue": true
+      "defaultPropsValue": true
     },
     "createPortal": {
       "type": "boolean",
       "desc": "是否全局弹出下拉框",
-      "defaultValue": true
+      "defaultPropsValue": true
     },
     "throttle": {
       "type": "number",
       "desc": "查询的延迟时间，单位为毫秒",
-      "defaultValue": 100
+      "defaultPropsValue": 100
     },
 
     "valueField": {
       "type": "string",
       "desc": "data数据的value值的名称",
-      "defaultValue": "value"
+      "defaultPropsValue": "value"
     },
     "displayField": {
       "type": "string",
       "desc": "data数据的displayValue值的名称",
-      "defaultValue": "text"
+      "defaultPropsValue": "text"
     },
     "value": {
       "type": "string | string[] | number | number[]",
@@ -93,17 +93,17 @@
     "disabled": {
       "type": "boolean",
       "desc": "是否禁选",
-      "defaultValue": false
+      "defaultPropsValue": false
     },
     "mutliple": {
       "type": "boolean",
       "desc": "是否多选",
-      "defaultValue": false
+      "defaultPropsValue": false
     },
     "validateStatus": {
       "type": "ValidateStatus",
       "desc": "input校验状态, 'success' 成功 | 'error'错误",
-      "defaultValue": "success"
+      "defaultPropsValue": "success"
     },
     "limitCount": {
       "type": "number",
@@ -116,7 +116,7 @@
     "searchType": {
       "type": "SearchType",
       "desc": "查询的方式",
-      "defaultValue": "include"
+      "defaultPropsValue": "include"
     },
 
     "divided": {
