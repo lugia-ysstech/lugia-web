@@ -88,13 +88,10 @@ export const ScrollerCol = CSSComponent({
   normal: {
     selectNames: [['height']],
     getCSS: (themeMeta, themeProps) => {
-      const { width = DefaultWidth } = themeMeta;
       const { isDrag } = themeProps.propsConfig;
-
-      const left = width - BarDefaultSize;
       const getOpacity = isDrag ? 'opacity: 1' : '';
       return `
-        left: ${px2remcss(left)};
+        right: 0;
         ${getOpacity};
       `;
     },
