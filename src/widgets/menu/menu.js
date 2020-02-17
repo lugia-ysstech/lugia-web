@@ -200,13 +200,14 @@ class Menu extends React.Component<MenuProps, MenuState> {
   render() {
     const { props } = this;
     const items = this.getItems(props);
-    const { data = [], autoHeight = false, getPartOfThemeProps, itemHeight } = props;
+    const { data = [], autoHeight = false, getPartOfThemeProps, itemHeight, defaultHeight } = props;
     const length = data ? data.length : 0;
     const wrapThemeProps = getPartOfThemeProps('Container', {
       props: {
         length,
         itemHeight,
         autoHeight,
+        defaultHeight,
       },
     });
 
