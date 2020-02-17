@@ -320,7 +320,7 @@ class MenuItem extends React.Component<MenuItemProps> {
               onChange={onClick}
             >
               {this.getPreIcon()}
-              {value ? value : children}
+              <Text>{value ? value : children}</Text>
               {this.getSuffixIcon()}
             </CheckBox>
           </TextContainer>

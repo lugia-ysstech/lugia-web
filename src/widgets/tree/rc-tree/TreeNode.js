@@ -18,6 +18,7 @@ import {
   NullSwitch,
   TitleSpan,
   Li,
+  Text,
   NavLi,
   SuffixWrap,
   CheckboxContainer,
@@ -623,7 +624,7 @@ class TreeNode extends React.Component {
           height={itemHeight}
         >
           {this.getPreIcon()}
-          {content}
+          <Text>{content}</Text>
           {this.getSuffixIcon()}
         </TitleSpan>
       );
