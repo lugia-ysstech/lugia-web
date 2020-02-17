@@ -333,7 +333,7 @@
             "TextContainer": {
               "name": "文本框",
               "desc": "配置文本和前缀后缀图标的位置",
-              "normal": [["padding"], ["lineHeight"]],
+              "normal": [["padding"]],
               "hover": [],
               "active": [],
               "disabled": []
@@ -513,7 +513,7 @@
         "TextContainer": {
           "name": "文本框",
           "desc": "配置文本和前缀后缀图标的位置",
-          "normal": [["padding"], ["lineHeight"]],
+          "normal": [["padding"]],
           "hover": [],
           "active": [],
           "disabled": []

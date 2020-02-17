@@ -109,12 +109,18 @@ export default (
       return themeProps;
     }
 
+    getDefaultHeight() {
+      const { defaultHeight } = this.props;
+      return isNaN(defaultHeight) ? DefaultHeight : Number(defaultHeight);
+    }
+
     getActiveAutoHeight() {
       const { data = [], autoHeight = false, getPartOfThemeProps } = this.props;
       const { themeConfig: { normal: { height } = {} } = {} } = getPartOfThemeProps(TargetWrapName);
+
       return autoHeight
         ? autoHeight
-        : this.itemHeight * data.length <= 250 && !height
+        : this.itemHeight * data.length <= this.getDefaultHeight() && !height
         ? true
         : false;
     }
@@ -125,11 +131,13 @@ export default (
       const { level, autoHeight = false } = props;
       const totalSize = this.fetchTotalSize();
       const activeAutoHeight = this.getActiveAutoHeight();
+      const defaultHeight = this.getDefaultHeight();
       const themeProps = this.getContainerThemeProps(TargetWrapName, {
         props: {
           isDrag: this.isDrag,
           autoHeight: activeAutoHeight,
           totalSize,
+          defaultHeight,
         },
       });
 
@@ -152,6 +160,7 @@ export default (
             canSeeCount={length}
             itemHeight={this.itemHeight}
             ref={this.scrollerTarget}
+            defaultHeight={this.getDefaultHeight()}
           />
         );
       }
@@ -170,6 +179,7 @@ export default (
             end={end}
             itemHeight={this.itemHeight}
             ref={this.scrollerTarget}
+            defaultHeight={this.getDefaultHeight()}
           />
         </Col>,
         <ScrollerCol level={level} themeProps={themeProps} isDrag={this.isDrag}>
@@ -221,7 +231,7 @@ export default (
       const { autoHeight = false, getPartOfThemeConfig } = this.props;
       const { normal = {} } = getPartOfThemeConfig(TargetWrapName);
       let { height } = normal;
-      height = !height && height !== 0 ? DefaultHeight : height;
+      height = !height && height !== 0 ? this.getDefaultHeight() : height;
       let { data } = this.props;
       if (!data || data === null) {
         data = [];
