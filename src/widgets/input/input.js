@@ -599,6 +599,7 @@ class TextBox extends Component<InputProps, InputState> {
       disabled,
       isShowClearButton,
       getPartOfThemeProps,
+      _maxLength,
     } = props;
     if (formatter && parser) {
       value = formatter(value);
@@ -639,6 +640,7 @@ class TextBox extends Component<InputProps, InputState> {
     const theType = type === 'password' ? 'password' : 'text';
     return (
       <CommonInputStyle
+        maxLength={_maxLength}
         themeProps={theThemeProps}
         autoFocus={autoFocus}
         ref={this.input}
