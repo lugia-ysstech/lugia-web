@@ -65,6 +65,7 @@ type SelectProps = {
   getPartOfThemeConfig: Function,
   canClear?: boolean,
   divided?: boolean,
+  defaultHeight?: number,
   autoHeight?: boolean,
   pullIconClass?: string,
   clearIconClass?: string,
@@ -400,7 +401,15 @@ class Select extends React.Component<SelectProps, SelectState> {
   getMenuItems(getMenu?: Function) {
     const { state, props } = this;
     const { value, query, data } = state;
-    const { displayField, valueField, limitCount, searchType, divided, autoHeight } = props;
+    const {
+      displayField,
+      valueField,
+      limitCount,
+      searchType,
+      divided,
+      autoHeight,
+      defaultHeight,
+    } = props;
     const menuData = this.updateMenuData(data, query, searchType);
 
     return (
@@ -410,6 +419,7 @@ class Select extends React.Component<SelectProps, SelectState> {
         valueField={valueField}
         data={menuData}
         divided={divided}
+        defaultHeight={defaultHeight}
         mutliple={isMutliple(props)}
         selectedKeys={[...value]}
         ref={getMenu}

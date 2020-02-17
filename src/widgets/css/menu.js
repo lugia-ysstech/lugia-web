@@ -51,9 +51,9 @@ export const MenuContainer = CSSComponent({
   normal: {
     selectNames: [['width'], ['background'], ['padding']],
     getCSS: (themeMeta, themeProps) => {
-      const { menuItemHeight, length, autoHeight } = themeProps.propsConfig;
+      const { menuItemHeight, length, autoHeight, defaultHeight } = themeProps.propsConfig;
       let { height: themeHeight } = themeMeta;
-      themeHeight = !themeHeight && themeHeight !== 0 ? DefaultHeight : themeHeight;
+      themeHeight = !themeHeight && themeHeight !== 0 ? defaultHeight : themeHeight;
       const height = autoHeight ? menuItemHeight * length : themeHeight;
       return `height: ${px2remcss(height)};
       `;
@@ -275,6 +275,8 @@ export const Text = StaticComponent({
   className: 'Text',
   css: css`
     transition: all 0.3s;
+    overflow: hidden;
+    text-overflow: ellipsis;
   `,
 });
 
