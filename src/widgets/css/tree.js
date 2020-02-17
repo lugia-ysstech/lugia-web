@@ -306,6 +306,7 @@ export const TitleWrap = CSSComponent({
 
   css: css`
     flex: 1;
+    overflow: hidden;
     display: flex;
     align-items: center;
     height: 100%;
@@ -343,6 +344,8 @@ export const TitleSpan = CSSComponent({
     opacity: 1;
     transition: all ${transitionTime};
     display: flex;
+    flex: 1;
+    overflow: hidden;
     align-items: center;
   `,
 });
@@ -355,6 +358,8 @@ export const CheckboxContainer = StaticComponent({
   css: css`
     position: relative;
     display: flex;
+    flex: 1;
+    overflow: hidden;
     align-items: center;
   `,
 });
@@ -448,6 +453,18 @@ export const SuffixWrap = StaticComponent({
     justify-content: center;
     align-items: center;
     z-index: 100;
+  `,
+});
+
+export const Text = StaticComponent({
+  tag: 'span',
+  className: 'Text',
+  css: css`
+    transition: all 0.3s;
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   `,
 });
 
