@@ -160,7 +160,7 @@ class TreeNode extends React.Component {
 
   renderSwitch(expandedState) {
     const { describe, mutliple, disabled, __navmenu, switchIconNames } = this.props;
-    const { viewClass, theme } = this.getIconTheme('SwitchIcon');
+    const { viewClass, theme } = this.getSwitchIconTheme(expandedState);
 
     if (describe) {
       return (
@@ -347,19 +347,35 @@ class TreeNode extends React.Component {
   }
 
   getSelectedTitleWrapThemeProps(target: string, params: Object) {
+    const { expanded, isLeaf } = this.props;
     const themeProps = this.props.getPartOfThemeProps(target, params);
     const { themeConfig = {} } = themeProps;
-
     const { normal = {} } = themeConfig;
-    themeConfig.normal = deepMerge(this.getDefaultTitleWrapTheme('normal', params.props), normal);
+    if (expanded && !isLeaf) {
+      const { normal: TextExpanded = {} } = this.props.getPartOfThemeProps('TextExpanded');
+      themeConfig.normal = deepMerge(
+        deepMerge(this.getDefaultTitleWrapTheme('normal', params.props), normal),
+        TextExpanded
+      );
+    } else {
+      themeConfig.normal = deepMerge(this.getDefaultTitleWrapTheme('normal', params.props), normal);
+    }
     return themeProps;
   }
 
   getDefaultTitleWrapThemeProps(target: string, params: Object) {
+    const { expanded, isLeaf } = this.props;
     const themeProps = this.props.getPartOfThemeProps(target, params);
     const { themeConfig = {} } = themeProps;
 
-    const { hover = {} } = themeConfig;
+    const { hover = {}, normal = {} } = themeConfig;
+
+    if (expanded && !isLeaf) {
+      const { themeConfig: { normal: TextExpanded = {} } = {} } = this.props.getPartOfThemeProps(
+        'TextExpanded'
+      );
+      themeConfig.normal = deepMerge(normal, TextExpanded);
+    }
     themeConfig.hover = deepMerge(this.getDefaultTitleWrapTheme('hover', params.props), hover);
     return themeProps;
   }
@@ -449,10 +465,49 @@ class TreeNode extends React.Component {
     );
   }
 
+  getSwitchIconTheme = (expandedState: string) => {
+    const { viewClass, theme } = this.props.getPartOfThemeHocProps('SwitchIcon');
+
+    const {
+      viewClass: expandedViewClass,
+      theme: expandedTheme,
+    } = this.props.getPartOfThemeHocProps('SwitchIconExpanded');
+    const defaultTheme = {
+      normal: {
+        margin: {
+          left: 3,
+          right: 3,
+        },
+      },
+    };
+
+    if (expandedState === 'open') {
+      return {
+        viewClass,
+        theme: deepMerge(
+          deepMerge(
+            {
+              [viewClass]: { ...defaultTheme },
+            },
+            theme
+          ),
+          {
+            [viewClass]: { ...expandedTheme[expandedViewClass] },
+          }
+        ),
+      };
+    }
+
+    return {
+      viewClass,
+      theme: deepMerge({ [viewClass]: { ...defaultTheme } }, theme),
+    };
+  };
+
   getIconTheme = (iconType: string) => {
     const { viewClass, theme } = this.props.getPartOfThemeHocProps(iconType);
-    const marginLeft = iconType === 'SuffixIcon' || 'SwitchIcon' ? 3 : 0;
-    const marginRight = iconType === 'PrefixIcon' || 'SwitchIcon' ? 3 : 0;
+    const marginLeft = iconType === 'SuffixIcon' ? 3 : 0;
+    const marginRight = iconType === 'PrefixIcon' ? 3 : 0;
     const defaultTheme = {
       normal: {
         margin: {
