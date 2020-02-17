@@ -107,6 +107,8 @@ export const CheckBoxWrap = CSSComponent({
     position: relative;
     white-space: nowrap;
     ${getStyleCSS};
+    overflow: hidden;
+    text-overflow: ellipsis;
   `,
   normal: {
     defaultTheme: {

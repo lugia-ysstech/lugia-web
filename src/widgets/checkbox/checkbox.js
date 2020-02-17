@@ -201,6 +201,7 @@ export default ThemeProvider(
           styles={styles}
           last={last}
           {...addMouseEvent(this, config)}
+          title={children}
         >
           <CheckBoxContent themeProps={themeProps} onClick={cancel ? this.handleCancel : null}>
             <CheckBoxInput disabled={disabled} type="checkbox" onBlur={this.handleBlur} />
