@@ -671,6 +671,25 @@
           "disabled": []
         },
 
+        "TextExpanded": {
+          "name": "父节点展开状态的文本框区域",
+          "desc": "配置父节点展开状态的文本框区域的样式",
+          "normal": [
+            ["color"],
+            ["font"],
+            ["fontSize"],
+            ["background"],
+            ["padding"],
+            ["border"],
+            ["opacity"],
+            ["boxShadow"],
+            ["borderRadius"]
+          ],
+          "hover": [],
+          "active": [],
+          "disabled": []
+        },
+
         "PrefixIcon": {
           "name": "前置图标配置",
           "desc": "前置图标或图片的样式配置",
@@ -695,6 +714,15 @@
           "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
           "hover": [["color"], ["font"], ["fontSize"]],
           "active": [["color"], ["font"], ["fontSize"]],
+          "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+        },
+
+        "SwitchIconExpanded": {
+          "name": "节点展开状态控制器",
+          "desc": "配置在父节点展开状态下控制控制器的样式",
+          "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+          "hover": [["color"], ["font"], ["fontSize"]],
+          "active": [],
           "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
         },
 
