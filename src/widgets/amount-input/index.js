@@ -297,6 +297,7 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
 
     return (
       <InnerInput
+        _maxLength="16"
         theme={inputTheme}
         viewClass={inputViewClass}
         ref={this.el}
