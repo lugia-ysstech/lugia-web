@@ -2,7 +2,7 @@
 
 一套基于 `Lugia Design Language` 的高品质 React 组件，适用于 Web 端
 
-> ~~[文档](http://doc.gointech.net/sv-widget/)~~
+> [文档](http://lugia.tech/#/component/lugia)
 
 ## 开发方式
 
@@ -30,31 +30,25 @@ git remote -v
 
 ## 安装新的包
 
-### 1、切换 npm 源到 taobao
+### 1、安装 yarn
 
 ```bash
-# 安装 nrm
-npm i nrm -g
+# 安装 yarn
+npm install -g yarn
 
-# 查看是否安装成功
-nrm ls
-
-# 切换源
-nrm use taobao
+# 查看版本
+yarn --version
 ```
-
-### 2、设置 @lugia/xxx 走私服源
+### 2 、在项目根目录进行依赖包安装 
 
 ```bash
-npm config set @lugia:registry http://192.168.102.79:5001/
-
-# 查看是否设置成功
-$ npm config get @lugia:registry
-# http://192.168.102.79:5001/
+# 安装依赖包
+yarn
 ```
 
-## 其他
+## 启动项目
 
-为什么不使用 `lugia-scripts test -w`
+ ```bash
+yarn start
+ ```
 
-> 和以前用的 create-react-app 的 jest 的配置不同，以前写的许多测试用例过不了
