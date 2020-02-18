@@ -15,7 +15,7 @@ import { computePage, isVertical, matchType } from './utils';
 import { getAttributeFromObject } from '../common/ObjectUtils.js';
 
 import Icon from '../icon';
-import CSSComponent, { css } from '@lugia/theme-css-hoc';
+import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import { deepMerge } from '@lugia/object-utils';
 import colorsFunc from '../css/stateColor';
 import { findDOMNode } from 'react-dom';
@@ -159,6 +159,14 @@ const AddContainer = CSSComponent({
 });
 
 AddContainer.displayName = 'addBtn';
+
+const TabPanBox = StaticComponent({
+  tag: 'div',
+  className: 'TabPanBox',
+  css: css`
+    display: flex;
+  `,
+});
 
 const HscrollerContainer = CSSComponent({
   tag: 'div',
@@ -732,7 +740,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
         )}
         <HTabsContainer themeProps={themeProps} ref={this.scrollBox}>
           <HscrollerContainer themeProps={themeProps} x={moveDistance} ref={this.tabPanBox}>
-            {this.getChildren()}
+            <TabPanBox>{this.getChildren()}</TabPanBox>
           </HscrollerContainer>
         </HTabsContainer>
         {this.getPrevOrNextPage(
@@ -867,11 +875,12 @@ class TabHeader extends Component<TabsProps, TabsState> {
       return 0;
     }
     let distance = 0;
+
     switch (pagedType) {
       case 'single':
         const maxIndex = this.getCurrentMaxIndex(titleSize);
         const length = currentPage - maxIndex;
-        for (let i = 1; i <= length; i++) {
+        for (let i = 1; i < length; i++) {
           distance += titleSize[Math.min(maxIndex + i, titleSize.length - 1)];
         }
         break;

@@ -179,10 +179,9 @@ const Title = CSSComponent({
   tag: 'div',
   className: 'TitleLine',
   normal: {
-    selectNames: [['height'], ['lineHeight']],
+    selectNames: [['height']],
     defaultTheme: {
       height: 42,
-      lineHeight: 42,
     },
     getCSS: (theme: Object, themeProps: Object) => {
       const { textAlign } = theme;
@@ -201,12 +200,6 @@ const Title = CSSComponent({
           break;
       }
       return `justify-content: ${justify};`;
-    },
-    getStyle: (theme: Object, themeProps: Object) => {
-      const { height } = theme;
-      return {
-        lineHeight: height ? `${height}px` : '3.4rem',
-      };
     },
     getThemeMeta: (theme: Object, themeProps: Object) => {
       const { height } = theme;
