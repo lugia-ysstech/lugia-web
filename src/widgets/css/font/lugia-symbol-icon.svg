@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<svg xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <font id="lugia-symbol-icon" horiz-adv-x="70">
+    <font-face font-family="lugia-symbol-icon"
+      units-per-em="32" ascent="32"
+      descent="0" />
+    <missing-glyph horiz-adv-x="0" />
+    <glyph glyph-name="symbol_basic"
+      unicode="&#xEA01;"
+      horiz-adv-x="70" d="M20 25H50A1 1 0 0 0 51 24V9A1 1 0 0 0 50 8H20A1 1 0 0 0 19 9V24A1 1 0 0 0 20 25zM21 25L21 8L20 8C19.44771525 8 19 8.4477152 19 9L19 24C19 24.55228475 19.44771525 25 20 25L21 25z" />
+  </font>
+</defs>
+</svg>
