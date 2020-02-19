@@ -6,11 +6,13 @@
 import '../common/shirm';
 import * as React from 'react';
 import '../css/font/lugia-icon.css';
+import '../css/font/lugia-symbol-icon.css';
 import { px2remcss } from '../css/units';
 import Widget from '../consts/index';
 import ThemeHoc, { addMouseEvent } from '@lugia/theme-hoc';
 import CSSComponent, { css, StaticComponent } from '../theme/CSSProvider';
-
+import Svg from './Svg';
+import { deepMerge } from '@lugia/object-utils';
 const getNormalFontSize = (themeConfig: Object) => {
   const { normal: { fontSize, font: { size } = {} } = {} } = themeConfig;
 
@@ -29,7 +31,7 @@ const IconImgWrap = CSSComponent({
         width: ${px2remcss(activeFontSize)};
         height: ${px2remcss(activeFontSize)};
         text-align: center;
-        
+
         & img{
           max-width: 100%;
           max-height: 100%;
@@ -49,7 +51,7 @@ const IconImgWrap = CSSComponent({
         width: ${px2remcss(activeFontSize)};
         height: ${px2remcss(activeFontSize)};
         text-align: center;
-        
+
         & img{
           max-width: 100%;
           max-height: 100%;
@@ -110,21 +112,59 @@ const IconTag = CSSComponent({
       ['opacity'],
     ],
     defaultTheme: { cursor: 'pointer' },
+    getCSS: (themeMeta, themeProps) => {
+      console.log('themeMeta', themeMeta);
+      return getSymbolStyle(themeMeta, themeProps);
+    },
   },
   hover: {
     selectNames: [['color'], ['margin'], ['cursor'], ['fontSize'], ['font'], ['opacity']],
+    getCSS: (themeMeta, themeProps) => {
+      return getSymbolStyle(themeMeta, themeProps);
+    },
   },
   active: {
     selectNames: [['color'], ['cursor'], ['fontSize'], ['font'], ['opacity']],
+    getCSS: (themeMeta, themeProps) => {
+      return getSymbolStyle(themeMeta, themeProps);
+    },
   },
   disabled: {
     selectNames: [['color'], ['cursor'], ['opacity']],
     defaultTheme: { cursor: 'not-allowed' },
+    getCSS: (themeMeta, themeProps) => {
+      return getSymbolStyle(themeMeta, themeProps);
+    },
   },
   css: css`
     user-select: none;
   `,
 });
+
+function getSymbolStyle(themeMeta, themeProps) {
+  const { fontSize, font: { size } = {} } = themeMeta;
+  const {
+    propsConfig: { isSymbol },
+  } = themeProps;
+
+  if (isSymbol) {
+    console.log('themeMeta', themeMeta);
+    const iconSize = fontSize || size || 20;
+    return `
+
+    width:${iconSize}px;
+    height:${iconSize}px;
+    display:inline-block;
+
+    & > svg{
+        width:${iconSize}px;
+        height:${iconSize}px;
+    }
+
+    `;
+  }
+  return '';
+}
 type IconProps = {
   className?: string,
   iconClass: string,
@@ -173,14 +213,23 @@ class Icon extends React.Component<IconProps> {
         </IconImgWrap>
       );
     }
+
+    const isSymbolIcon = iconClass.startsWith('lugia-symbol-icon') && !disabled;
+    const iconClassName = isSymbolIcon ? {} : { className: `${iconClass} ${className}` };
+    const deepMergeTheme = deepMerge(getPartOfThemeProps('Icon'), {
+      propsConfig: { isSymbol: isSymbolIcon },
+    });
+
     return (
       <IconTag
-        className={`${iconClass} ${className}`}
+        {...iconClassName}
         onClick={this.onClick}
-        themeProps={singleTheme ? themeProps : getPartOfThemeProps('Icon')}
+        themeProps={singleTheme ? themeProps : deepMergeTheme}
         disabled={disabled}
         {...addMouseEvent(this)}
-      />
+      >
+        {isSymbolIcon ? <Svg iconClass={iconClass} /> : null}
+      </IconTag>
     );
   }
 }
