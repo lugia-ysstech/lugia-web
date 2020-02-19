@@ -38,18 +38,10 @@
     "Icon": {
       "name": "图标",
       "desc": "图标",
-      "normal": [
-        ["color"],
-        ["margin"],
-        ["fontSize"],
-        ["font"],
-        ["padding"],
-        ["cursor"],
-        ["opacity"]
-      ],
-      "hover": [["color"], ["margin"], ["cursor"], ["opacity"]],
-      "active": [["color"], ["cursor"], ["fontSize"], ["font"], ["opacity"]],
-      "disabled": [["color"], ["cursor"], ["opacity"]]
+      "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["cursor"]],
+      "hover": [["color"], ["margin"], ["cursor"]],
+      "active": [["color"], ["cursor"], ["fontSize"], ["font"]],
+      "disabled": [["color"], ["cursor"]]
     }
   }
 }
