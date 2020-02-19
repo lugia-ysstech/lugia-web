@@ -6,6 +6,7 @@
  *
  */
 import * as React from 'react';
+import CSSComponent from '@lugia/theme-css-hoc';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import RcTable, { INTERNAL_COL_DEFINE } from 'rc-table';
@@ -13,7 +14,29 @@ import Checkbox from '../checkbox';
 import 'rc-table/assets/index.css';
 import './style/lugia-table.css';
 import type { TableProps, TableState } from '../css/table';
-import { px2remcss } from '../css/units';
+import { css } from 'styled-components';
+
+const TableWrap = CSSComponent({
+  tag: 'div',
+  className: 'TableWrap',
+  css: css`
+    overflow: auto;
+  `,
+  normal: {
+    selectNames: [['width'], ['height']],
+    getCSS(themeMeta): string {
+      const { background: { color } = {} } = themeMeta;
+      if (color) {
+        return css`
+          tbody .rc-table-cell {
+            background: red;
+          }
+        `;
+      }
+      return '';
+    },
+  },
+});
 
 export default ThemeProvider(
   class extends React.Component<TableProps, TableState> {
@@ -118,17 +141,6 @@ export default ThemeProvider(
       });
     };
 
-    getThemeSize = (themeValue: string | number, target: string, outResult: Object) => {
-      if (themeValue) {
-        if (typeof themeValue === 'number') {
-          outResult[target] = px2remcss(themeValue);
-        } else {
-          outResult[target] = themeValue;
-        }
-      }
-      return outResult;
-    };
-
     render() {
       const {
         children,
@@ -136,7 +148,7 @@ export default ThemeProvider(
         data,
         showHeader = true,
         tableStyle = 'bordered',
-        getPartOfThemeConfig,
+        getPartOfThemeProps,
         selectOptions = {},
       } = this.props;
       this.selectedRecords = [];
@@ -145,16 +157,10 @@ export default ThemeProvider(
       this.validRecords = [];
       this.disabledSelectedRecords = [];
       const { headChecked, headIndeterminate, selectRowKeys: stateSelectRowKeys } = this.state;
-      const containerTheme = getPartOfThemeConfig('Container') || {};
-      const { normal: normalTheme = {} } = containerTheme;
-      const themeWidth = normalTheme.width;
-      const themeHeight = normalTheme.height;
-      const styles = {};
-      this.getThemeSize(themeWidth, 'width', styles);
-      this.getThemeSize(themeHeight, 'height', styles);
+      const containerTheme = getPartOfThemeProps('Container');
       if (children) {
         return (
-          <div className={this.getClass(tableStyle)} style={{ ...styles, overflow: 'auto' }}>
+          <TableWrap themeProps={containerTheme} className={this.getClass(tableStyle)}>
             <RcTable
               {...this.props}
               data={data}
@@ -164,7 +170,7 @@ export default ThemeProvider(
             >
               {children}
             </RcTable>
-          </div>
+          </TableWrap>
         );
       }
       const theColumns = [...columns];
@@ -224,7 +230,7 @@ export default ThemeProvider(
         expandIconColumnIndex = Number(propsIndex);
       }
       return (
-        <div className={this.getClass(tableStyle)} style={{ ...styles, overflow: 'auto' }}>
+        <TableWrap themeProps={containerTheme} className={this.getClass(tableStyle)}>
           <RcTable
             {...this.props}
             columns={theColumns}
@@ -232,11 +238,11 @@ export default ThemeProvider(
             showHeader={showHeader}
             expandIconColumnIndex={expandIconColumnIndex}
           />
-        </div>
+        </TableWrap>
       );
     }
     getClass = (tableStyle: 'zebraStripe' | 'linear' | 'bordered'): string => {
-      return `lugia-table-${tableStyle}`;
+      return `lugia-table lugia-table-${tableStyle}`;
     };
   },
   Widget.Table
