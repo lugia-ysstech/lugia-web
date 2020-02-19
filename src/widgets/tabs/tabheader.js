@@ -477,7 +477,8 @@ class TabHeader extends Component<TabsProps, TabsState> {
 
   getScrollBoxSize = (offsetSize: number) => {
     const { showAddBtn } = this.props;
-    return showAddBtn ? offsetSize - arrowSize - defaultAddSize : offsetSize - arrowSize;
+    const iconSize = showAddBtn ? arrowSize + defaultAddSize : arrowSize;
+    return offsetSize - iconSize;
   };
 
   getCurrentMaxIndex(titleSize: Array<number>) {
