@@ -457,12 +457,10 @@ class TabHeader extends Component<TabsProps, TabsState> {
     }
     const actualSize = this.getActualWidthOrHeight();
     const arrowShow = offsetSize < actualSize;
-    const totalPage =
-      pagedType === 'page'
-        ? arrowShow
-          ? computePage(this.getScrollBoxSize(offsetSize), actualSize)
-          : computePage(offsetSize, actualSize)
-        : titleSize.length;
+    if (arrowShow) {
+      offsetSize = this.getScrollBoxSize(offsetSize);
+    }
+    const totalPage = pagedType === 'page' ? computePage(offsetSize, actualSize) : titleSize.length;
     if (allowToCalc) {
       currentPage =
         pagedType === 'page'
