@@ -113,7 +113,6 @@ const IconTag = CSSComponent({
     ],
     defaultTheme: { cursor: 'pointer' },
     getCSS: (themeMeta, themeProps) => {
-      console.log('themeMeta', themeMeta);
       return getSymbolStyle(themeMeta, themeProps);
     },
   },
@@ -148,7 +147,6 @@ function getSymbolStyle(themeMeta, themeProps) {
   } = themeProps;
 
   if (isSymbol) {
-    console.log('themeMeta', themeMeta);
     const iconSize = fontSize || size || 20;
     return `
 
