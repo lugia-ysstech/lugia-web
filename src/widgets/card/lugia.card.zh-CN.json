@@ -123,19 +123,6 @@
             ["padding"]
           ]
         },
-        "CardOperation": {
-          "name": "卡片操作按钮",
-          "desc": "配置卡片操作按钮",
-          "normal": [
-            ["width"],
-            ["height"],
-            ["color"],
-            ["font"],
-            ["background"],
-            ["margin"],
-            ["padding"]
-          ]
-        },
         "CardAvatar": {
           "name": "卡片头像",
           "theme": {
@@ -201,19 +188,6 @@
         "CardDescription": {
           "name": "卡片内容描述",
           "desc": "配置卡片内容描述",
-          "normal": [
-            ["width"],
-            ["height"],
-            ["color"],
-            ["font"],
-            ["background"],
-            ["margin"],
-            ["padding"]
-          ]
-        },
-        "CardOperation": {
-          "name": "卡片操作按钮",
-          "desc": "配置卡片操作按钮",
           "normal": [
             ["width"],
             ["height"],
@@ -302,19 +276,6 @@
             ["padding"]
           ]
         },
-        "CardOperation": {
-          "name": "卡片操作按钮",
-          "desc": "配置卡片操作按钮",
-          "normal": [
-            ["width"],
-            ["height"],
-            ["color"],
-            ["font"],
-            ["background"],
-            ["margin"],
-            ["padding"]
-          ]
-        },
         "CardAvatar": {
           "name": "卡片头像",
           "theme": {
@@ -390,19 +351,6 @@
             ["padding"]
           ]
         },
-        "CardOperation": {
-          "name": "卡片操作按钮",
-          "desc": "配置卡片操作按钮",
-          "normal": [
-            ["width"],
-            ["height"],
-            ["color"],
-            ["font"],
-            ["background"],
-            ["margin"],
-            ["padding"]
-          ]
-        },
         "CardImage": {
           "name": "卡片图片",
           "desc": "配置卡片图片",
@@ -463,19 +411,6 @@
         "CardDescription": {
           "name": "卡片描述内容",
           "desc": "配置卡片描述内容",
-          "normal": [
-            ["width"],
-            ["height"],
-            ["color"],
-            ["font"],
-            ["background"],
-            ["margin"],
-            ["padding"]
-          ]
-        },
-        "CardOperation": {
-          "name": "卡片操作按钮",
-          "desc": "配置卡片操作按钮",
           "normal": [
             ["width"],
             ["height"],
@@ -558,19 +493,6 @@
       "name": "描述内容",
       "desc": "配置卡片描述内容",
       "normal": [["width"], ["height"], ["font"], ["background"], ["margin"], ["padding"]]
-    },
-    "CardOperation": {
-      "name": "操作按钮",
-      "desc": "配置卡片操作按钮",
-      "normal": [
-        ["width"],
-        ["height"],
-        ["color"],
-        ["font"],
-        ["background"],
-        ["margin"],
-        ["padding"]
-      ]
     },
     "CardTipBottomLine": {
       "name": "标题下分割线",
