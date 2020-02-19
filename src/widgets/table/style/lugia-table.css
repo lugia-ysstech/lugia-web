@@ -2,32 +2,55 @@
   padding: 0;
   margin: 0;
 }
-:global(.lugia-table-zebraStripe .rc-table-body table) {
+:global(.lugia-table .rc-table-content table) {
   border-collapse: collapse;
 }
-:global(.lugia-table-zebraStripe .rc-table-body table tbody tr:nth-of-type(even)) {
-  background-color: #f2f2f2;
+:global(.lugia-table .rc-table-content) {
+  border: none;
 }
-:global(.lugia-table-linear .rc-table-body table) {
-  border-collapse: collapse;
+:global(.lugia-table .rc-table th) {
+  border: none;
 }
-:global(.lugia-table-linear .rc-table-body table thead) {
-  border-bottom: 1px solid #e8e8e8;
+:global(.lugia-table .rc-table td) {
+  border: none;
 }
-:global(.lugia-table-bordered .rc-table-body table) {
-  border-collapse: collapse;
-  border: 1px solid #e8e8e8;
+:global(.lugia-table .rc-table-expanded-row .rc-table-cell) {
+  box-shadow: none;
 }
-:global(.lugia-table-bordered .rc-table-body table thead tr th) {
-  border-left: 1px solid #e8e8e8;
-}
-:global(.lugia-table-bordered .rc-table-body table tbody tr td) {
-  border-left: 1px solid #e8e8e8;
+:global(.lugia-table .rc-table tbody tr:hover td) {
+  background-color: rgba(77, 99, 255, 0.05);
 }
 
-:global(.lugia-table-bordered .rc-table-body table) {
-  border-collapse: collapse;
+:global(.lugia-table-zebraStripe .rc-table-content table tbody tr:nth-of-type(even) td) {
+  background-color: #f2f2f2;
 }
+
+:global(.lugia-table-linear .rc-table-content table thead) {
+  /*border-bottom: 1px solid #e8e8e8;*/
+  border-top: 1px solid #e8e8e8;
+}
+/*:global(.lugia-table-linear .rc-table-content table thead tr th) {*/
+  /*border: none;*/
+/*}*/
+:global(.lugia-table-linear .rc-table .rc-table-content th) {
+  border-bottom: 1px solid #e8e8e8;
+}
+:global(.lugia-table-linear .rc-table .rc-table-content td) {
+  border-bottom: 1px solid #e8e8e8;
+}
+
+
+:global(.lugia-table-bordered .rc-table-content table) {
+  border: 1px solid #e8e8e8;
+}
+:global(.lugia-table-bordered .rc-table th) {
+  border: 1px solid #e8e8e8;
+}
+:global(.lugia-table-bordered .rc-table td) {
+  border: 1px solid #e8e8e8;
+}
+
+
 :global(.rc-table tr:hover) {
   background: rgba(77, 99, 255, 0.05);
 }

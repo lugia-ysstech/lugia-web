@@ -91,17 +91,15 @@ export default class ModalDemo extends React.Component<any, any> {
 
   render() {
     console.log('this.state', this.state.selectRowKeys);
-    const tableView = {
-      [Widget.Table]: {
-        width: 500,
-      },
-    };
     const config = {
       [Widget.Table]: {
         Container: {
           normal: {
             width: 500,
             height: 200,
+            background: {
+              color: 'red',
+            },
           },
         },
       },
