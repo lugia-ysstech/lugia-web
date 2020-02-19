@@ -32,9 +32,9 @@
 :global(.lugia-table .rc-table-expanded-row .rc-table-cell) {
   box-shadow: none;
 }
-:global(.lugia-table .rc-table tbody tr:hover td) {
-  background-color: rgba(77, 99, 255, 0.05);
-}
+/*:global(.lugia-table .rc-table tbody tr:hover td) {*/
+  /*background-color: rgba(77, 99, 255, 0.05);*/
+/*}*/
 
 :global(.lugia-table-zebraStripe .rc-table-content table tbody tr:nth-of-type(even) td) {
   background-color: #f2f2f2;
@@ -66,9 +66,9 @@
 }
 
 
-:global(.rc-table tr:hover) {
-  background: rgba(77, 99, 255, 0.05);
-}
+/*:global(.rc-table tr:hover) {*/
+  /*background: rgba(77, 99, 255, 0.05);*/
+/*}*/
 :global(.rc-table-expanded-row td) {
   padding: 16px 20px;
 }
