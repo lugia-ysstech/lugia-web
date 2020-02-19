@@ -358,6 +358,9 @@ type TabsProps = {
   pageArrowIcon?: Object,
 };
 
+const arrowSize = 48;
+const defaultAddSize = 28;
+
 class TabHeader extends Component<TabsProps, TabsState> {
   static defaultProps = {
     tabType: 'line',
@@ -453,8 +456,13 @@ class TabHeader extends Component<TabsProps, TabsState> {
       offsetSize = this.offsetWidth;
     }
     const actualSize = this.getActualWidthOrHeight();
-    const totalPage = pagedType === 'page' ? computePage(offsetSize, actualSize) : titleSize.length;
     const arrowShow = offsetSize < actualSize;
+    const totalPage =
+      pagedType === 'page'
+        ? arrowShow
+          ? computePage(this.getScrollBoxSize(offsetSize), actualSize)
+          : computePage(offsetSize, actualSize)
+        : titleSize.length;
     if (allowToCalc) {
       currentPage =
         pagedType === 'page'
@@ -469,15 +477,21 @@ class TabHeader extends Component<TabsProps, TabsState> {
     );
   }
 
+  getScrollBoxSize = (offsetSize: number) => {
+    const { showAddBtn } = this.props;
+    return showAddBtn ? offsetSize - arrowSize - defaultAddSize : offsetSize - arrowSize;
+  };
+
   getCurrentMaxIndex(titleSize: Array<number>) {
     const { tabPosition, tabType } = this.props;
     let maxIndex = 0;
     let distance = 0;
     const offsetSize = isVertical(tabPosition) ? this.offsetHeight : this.offsetWidth;
+    const actuallySize = this.getScrollBoxSize(offsetSize);
     const margin = isVertical(tabPosition) || matchType(tabType, 'line') ? 0 : 8;
     titleSize.some((item, index) => {
       distance += item + margin;
-      if (distance > offsetSize) {
+      if (distance > actuallySize) {
         maxIndex = index;
         return true;
       }
@@ -561,7 +575,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
     );
     const IconThemeProps = this.props.getPartOfThemeHocProps('ArrowIcon');
     return (
-      <VTabsOutContainer themeProps={tabsOutContainerThemeProps}>
+      <VTabsOutContainer themeProps={tabsOutContainerThemeProps} ref={this.scrollBox}>
         {this.getPrevOrNextPage(
           'prev',
           prevPageThemeProps,
@@ -569,7 +583,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
           isDisabledToPrev,
           isDisabledToNext
         )}
-        <VTabsContainer themeProps={themeProps} ref={this.scrollBox}>
+        <VTabsContainer themeProps={themeProps}>
           <YscrollerContainer y={moveDistance} themeProps={themeProps} ref={this.tabPanBox}>
             {this.getChildren()}
           </YscrollerContainer>
@@ -730,6 +744,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
         themeProps={tabsOutContainerThemeProps}
         tabType={tabType}
         tabPosition={tabPosition}
+        ref={this.scrollBox}
       >
         {this.getPrevOrNextPage(
           'prev',
@@ -738,7 +753,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
           isDisabledToPrev,
           isDisabledToNext
         )}
-        <HTabsContainer themeProps={themeProps} ref={this.scrollBox}>
+        <HTabsContainer themeProps={themeProps}>
           <HscrollerContainer themeProps={themeProps} x={moveDistance} ref={this.tabPanBox}>
             <TabPanBox>{this.getChildren()}</TabPanBox>
           </HscrollerContainer>
@@ -880,12 +895,13 @@ class TabHeader extends Component<TabsProps, TabsState> {
       case 'single':
         const maxIndex = this.getCurrentMaxIndex(titleSize);
         const length = currentPage - maxIndex;
-        for (let i = 1; i < length; i++) {
+        for (let i = 1; i <= length; i++) {
           distance += titleSize[Math.min(maxIndex + i, titleSize.length - 1)];
         }
         break;
       case 'page':
-        distance = offsetSize * Math.max(currentPage - 1, 0);
+        const scrollBoxSize = this.getScrollBoxSize(offsetSize);
+        distance = scrollBoxSize * Math.max(currentPage - 1, 0);
         break;
       default:
         break;
