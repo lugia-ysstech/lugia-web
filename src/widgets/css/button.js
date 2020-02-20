@@ -56,6 +56,7 @@ type CSSProps = {
   children?: (SyntheticEvent<HTMLButtonElement>) => any,
   text?: string | React.ReactNode,
   icon?: string,
+  suffixIcon?: string,
   onClick?: (SyntheticEvent<HTMLButtonElement>) => any,
   getTheme: Function,
   viewClass?: string,
@@ -251,12 +252,12 @@ export const getClickCSS = (props: ButtonOutProps) => {
   }
 };
 export const getIconStyle = (props: Object) => {
-  const { hasChildren = true } = props;
+  const { hasChildren = true, isSuffix = false } = props;
   if (!hasChildren) {
     return '';
   }
   return `
-    margin-right: ${px2remcss(10)};
+    margin-${isSuffix ? 'left' : 'right'}: ${px2remcss(10)};
   `;
 };
 const spin = keyframes`
