@@ -61,6 +61,45 @@ export default ThemeProvider(
           }
         };
 
+        getIconTheme = ({ viewClass, theme, isSuffix }): Object => {
+          const {
+            type = 'default',
+            plain,
+            children,
+            text,
+            loading,
+            size = 'default',
+            disabled,
+          } = this.props;
+          const hasChildren = !!children || !!text;
+          const normalIconFont = TextSizeTheme[size] || TextSizeTheme.default;
+          const normalColor = getTextNormalTheme({ type, plain, loading });
+          const hoverTheme = getTextHoverStyle({ type, plain });
+          const activeTheme = getTextActiveTheme({ type, plain });
+          const disabledTheme = getTextDisabledTheme({ type, plain });
+          return deepMerge(
+            {
+              [viewClass]: {
+                normal: {
+                  ...normalIconFont,
+                  ...normalColor,
+                  getCSS() {
+                    return `
+                      ${getIconStyle({ hasChildren, isSuffix })};
+                      ${getIconCursor({ disabled })};
+                    `;
+                  },
+                },
+                hover: hoverTheme,
+                active: activeTheme,
+                disabled: disabledTheme,
+                focus: hoverTheme,
+              },
+            },
+            theme
+          );
+        };
+
         handleChildren = () => {
           const {
             type = 'default',
@@ -75,6 +114,7 @@ export default ThemeProvider(
             getPartOfThemeProps,
             getPartOfThemeHocProps,
             dispatchEvent,
+            suffixIcon,
           } = this.props;
           const hasChildren = !!children || !!text;
           const textTheme = getPartOfThemeProps('ButtonText');
@@ -86,33 +126,7 @@ export default ThemeProvider(
             size,
             circle,
           };
-          const normalIconFont = TextSizeTheme[size] || TextSizeTheme.default;
-          const normalColor = getTextNormalTheme({ type, plain, loading });
-          const hoverTheme = getTextHoverStyle({ type, plain });
-          const activeTheme = getTextActiveTheme({ type, plain });
-          const disabledTheme = getTextDisabledTheme({ type, plain });
-          const iconTheme = deepMerge(
-            {
-              [viewClass]: {
-                normal: {
-                  ...normalIconFont,
-                  ...normalColor,
-                  getCSS() {
-                    return `
-                      vertical-align: -${px2remcss(1.75)} !important;
-                      ${getIconStyle({ hasChildren })};
-                      ${getIconCursor({ disabled })};
-                    `;
-                  },
-                },
-                hover: hoverTheme,
-                active: activeTheme,
-                disabled: disabledTheme,
-                focus: hoverTheme,
-              },
-            },
-            theme
-          );
+          const iconTheme = this.getIconTheme({ viewClass, theme, isSuffix: false });
           if (circle) {
             const iconType = icon || 'lugia-icon-direction_logout';
 
@@ -158,21 +172,32 @@ export default ThemeProvider(
               <Text themeProps={textTheme}>{text || children}</Text>,
             ];
           }
+
+          const component = [<Text themeProps={textTheme}>{text || children}</Text>];
+          const iconProps = {
+            singleTheme: true,
+            hasChildren,
+            disabled,
+            ...dispatchEvent(['hover', 'active', 'disabled', 'focus'], 'f2c'),
+          };
           if (icon) {
-            return [
-              <Icon
-                singleTheme
-                iconClass={icon}
-                hasChildren={hasChildren}
-                disabled={disabled}
-                viewClass={viewClass}
-                theme={iconTheme}
-                {...dispatchEvent(['hover', 'active', 'disabled', 'focus'], 'f2c')}
-              />,
-              <Text themeProps={textTheme}>{text || children} </Text>,
-            ];
+            component.unshift(
+              <Icon iconClass={icon} viewClass={viewClass} theme={iconTheme} {...iconProps} />
+            );
           }
-          return <Text themeProps={textTheme}>{text || children}</Text>;
+          if (suffixIcon) {
+            const { viewClass, theme } = getPartOfThemeHocProps('ButtonSuffixIcon');
+            const suffixIconTheme = this.getIconTheme({ viewClass, theme, isSuffix: true });
+            component.push(
+              <Icon
+                iconClass={suffixIcon}
+                viewClass={viewClass}
+                theme={suffixIconTheme}
+                {...iconProps}
+              />
+            );
+          }
+          return component;
         };
         render() {
           const {
