@@ -11,6 +11,10 @@
       "type": "string",
       "desc": "单选框选中值"
     },
+    "disabled": {
+      "type": "boolean",
+      "desc": "指定RadioGroup是否禁用"
+    },
     "data": {
       "type": "Object[]",
       "desc": "单选框信息",
