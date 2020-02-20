@@ -37,7 +37,11 @@
     },
     "icon": {
       "type": "string",
-      "desc": "设置按钮图标类型"
+      "desc": "设置按钮前置图标类型"
+    },
+    "suffixIcon": {
+      "type": "string",
+      "desc": "设置按钮后置图标类型"
     },
     "text": {
       "type": "string | React.node",
@@ -118,9 +122,18 @@
           "focus": [["color"]]
         },
         "ButtonIcon": {
-          "name": "按钮图标样式",
-          "desc": "为按钮图标配置样式",
+          "name": "按钮前置图标样式",
+          "desc": "为按钮前置图标配置样式",
           "normal": [["color"], ["font"], ["margin", "right"]],
+          "hover": [["color"]],
+          "active": [["color"]],
+          "disabled": [["color"]],
+          "focus": [["color"]]
+        },
+        "ButtonSuffixIcon": {
+          "name": "按钮后置图标样式",
+          "desc": "为按钮后置图标配置样式",
+          "normal": [["color"], ["font"], ["margin", "left"]],
           "hover": [["color"]],
           "active": [["color"]],
           "disabled": [["color"]],
@@ -163,9 +176,18 @@
           "focus": [["color"]]
         },
         "ButtonIcon": {
-          "name": "按钮图标样式",
-          "desc": "为按钮图标配置样式",
+          "name": "按钮前置图标样式",
+          "desc": "为按钮前置图标配置样式",
           "normal": [["color"], ["font"], ["margin", "right"]],
+          "hover": [["color"]],
+          "active": [["color"]],
+          "disabled": [["color"]],
+          "focus": [["color"]]
+        },
+        "ButtonSuffixIcon": {
+          "name": "按钮后置图标样式",
+          "desc": "为按钮后置图标配置样式",
+          "normal": [["color"], ["font"], ["margin", "left"]],
           "hover": [["color"]],
           "active": [["color"]],
           "disabled": [["color"]],
@@ -269,9 +291,18 @@
           "focus": [["color"]]
         },
         "ButtonIcon": {
-          "name": "图标样式",
-          "desc": "为图标配置样式",
+          "name": "前置图标样式",
+          "desc": "为前置图标配置样式",
           "normal": [["color"], ["font"], ["margin", "right"]],
+          "hover": [["color"]],
+          "active": [["color"]],
+          "disabled": [["color"]],
+          "focus": [["color"]]
+        },
+        "ButtonSuffixIcon": {
+          "name": "按钮后置图标样式",
+          "desc": "为按钮后置图标配置样式",
+          "normal": [["color"], ["font"], ["margin", "left"]],
           "hover": [["color"]],
           "active": [["color"]],
           "disabled": [["color"]],
@@ -308,9 +339,18 @@
       "focus": [["color"]]
     },
     "ButtonIcon": {
-      "name": "按钮图标样式",
-      "desc": "为按钮图标配置样式",
+      "name": "按钮前置图标样式",
+      "desc": "为按钮前置图标配置样式",
       "normal": [["color"], ["font"], ["margin", "right"]],
+      "hover": [["color"]],
+      "active": [["color"]],
+      "disabled": [["color"]],
+      "focus": [["color"]]
+    },
+    "ButtonSuffixIcon": {
+      "name": "按钮后置图标样式",
+      "desc": "为按钮后置图标配置样式",
+      "normal": [["color"], ["font"], ["margin", "left"]],
       "hover": [["color"]],
       "active": [["color"]],
       "disabled": [["color"]],
