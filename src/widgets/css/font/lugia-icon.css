@@ -1,10 +1,10 @@
 @font-face {
     font-family: "lugia-icon";
-    src: url("./lugia-icon.eot?860424b664a85f43a6a1a03ee756d590?#iefix") format("embedded-opentype"),
-url("./lugia-icon.woff2?860424b664a85f43a6a1a03ee756d590") format("woff2"),
-url("./lugia-icon.woff?860424b664a85f43a6a1a03ee756d590") format("woff"),
-url("./lugia-icon.ttf?860424b664a85f43a6a1a03ee756d590") format("truetype"),
-url("./lugia-icon.svg?860424b664a85f43a6a1a03ee756d590#lugia-icon") format("svg");
+    src: url("./lugia-icon.eot?daeb2591741e27af5a2948e9b96a950f?#iefix") format("embedded-opentype"),
+url("./lugia-icon.woff2?daeb2591741e27af5a2948e9b96a950f") format("woff2"),
+url("./lugia-icon.woff?daeb2591741e27af5a2948e9b96a950f") format("woff"),
+url("./lugia-icon.ttf?daeb2591741e27af5a2948e9b96a950f") format("truetype"),
+url("./lugia-icon.svg?daeb2591741e27af5a2948e9b96a950f#lugia-icon") format("svg");
 }
 
 i {
@@ -980,8 +980,14 @@ i[class^="lugia-icon-"]:before, i[class*=" lugia-icon-"]:before {
 .lugia-icon-reminder_warning:before {
     content: "\f23c";
 }
-.lugia-icon-symbol_basic:before {
+.lugia-icon-symbol__audit_error_color:before {
     content: "\f23d";
+}
+.lugia-icon-symbol_audit:before {
+    content: "\f23e";
+}
+.lugia-icon-symbol_reverse_audit:before {
+    content: "\f23f";
 }
 
 .lugia-icon-utils-loading:before {
