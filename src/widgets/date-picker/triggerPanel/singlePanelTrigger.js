@@ -10,14 +10,15 @@ import PageFooter from '../panel/PageFooter';
 import { getDerivedForInput } from '../utils/getDerived';
 import SwitchPanel from '../switchPanel/SwitchPanel';
 import { getValueFromWeekToDate } from '../utils/differUtils';
-import { getformatSymbol, getNewProps, getDateIcon } from '../utils/utils';
+import { getformatSymbol, getNewProps } from '../utils/utils';
 import { formatValueIsValid, modeStyle } from '../utils/booleanUtils';
 import { PanelWrap } from '../styled/styled';
 import Theme from '../../theme';
 import Widget from '../../consts/index';
 import SwitchPanelMode from '../mode';
-import getThemeProps, { getFacePanelContain } from '../themeConfig/themeConfig';
+import getThemeProps, { getFacePanelContain, getIconTheme } from '../themeConfig/themeConfig';
 import { addMouseEvent } from '@lugia/theme-hoc';
+import getDateIcon from '../panel/InputIcon';
 type TypeProps = {
   defaultValue?: string,
   value?: string,
@@ -29,6 +30,7 @@ type TypeProps = {
   onChange?: Function,
   onFocus?: Function,
   onBlur?: Function,
+  getPartOfThemeProps: Function,
   showTime?: any,
   onOk?: Object,
   theme: Object,
@@ -107,13 +109,16 @@ class DateInput extends Component<TypeProps, TypeState> {
     const { isTime } = modeStyle(mode);
     const { themeProps } = getFacePanelContain({ mode, getPartOfThemeProps }, 'FacePanelContain');
     const inputContainProps = getThemeProps({ mode, getPartOfThemeProps }, 'Container');
-    const inputPrefixProps = getThemeProps({ mode, getPartOfThemeProps }, 'InputPrefix');
-    const inputSuffixProps = getThemeProps({ mode, getPartOfThemeProps }, 'InputSuffix');
-    const clearButtonProps = getThemeProps({ mode, getPartOfThemeProps }, 'ClearButton');
+    const { inputPrefixProps, inputSuffixProps, clearButtonProps } = getIconTheme(this.props);
     const { themeConfig } = inputContainProps;
     const { themeConfig: inputPrefixThemeConfig } = inputPrefixProps;
     const { themeConfig: clearButtonThemeConfig } = clearButtonProps;
-    const { suffixIcon, prefixIcon } = getDateIcon(this.props);
+    const { suffixIcon, prefixIcon } = getDateIcon({
+      ...this.props,
+      value: this.state.value,
+      onClear: this.onClear,
+      clearButtonTheme: clearButtonProps,
+    });
     return (
       <Theme
         config={{
@@ -179,7 +184,7 @@ class DateInput extends Component<TypeProps, TypeState> {
           align="bottomLeft"
           key="trigger"
           ref={this.trigger}
-          action={disabled || readOnly ? [] : ['click']}
+          action={disabled || readOnly || this.isClear ? [] : ['click']}
           hideAction={['click']}
         >
           <Input
@@ -190,7 +195,7 @@ class DateInput extends Component<TypeProps, TypeState> {
             placeholder={placeholder}
             onFocus={this.onFocus}
             onBlur={this.onBlur}
-            onClear={this.onClear}
+            //onClear={this.onClear}
             disabled={disabled}
             readOnly={readOnly}
           />
@@ -282,8 +287,10 @@ class DateInput extends Component<TypeProps, TypeState> {
     const { onBlur } = this.props;
     onBlur && onBlur();
   };
-  onClear = () => {
+  onClear = (event: any) => {
     this.isClear = true;
+    const { value } = this.state;
+    this.onChange({ newValue: '', oldValue: value, event });
   };
   footerChange = (status: string) => {
     let visible = true;
