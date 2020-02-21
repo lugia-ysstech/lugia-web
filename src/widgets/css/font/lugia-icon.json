@@ -315,5 +315,7 @@
     "icon-reminder_replay": "\\f23a",
     "icon-reminder_square_o": "\\f23b",
     "icon-reminder_warning": "\\f23c",
-    "icon-symbol_basic": "\\f23d"
+    "icon-symbol__audit_error_color": "\\f23d",
+    "icon-symbol_audit": "\\f23e",
+    "icon-symbol_reverse_audit": "\\f23f"
 }
