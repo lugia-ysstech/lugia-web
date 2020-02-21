@@ -112,7 +112,6 @@ class DateInput extends Component<TypeProps, TypeState> {
     const { inputPrefixProps, inputSuffixProps, clearButtonProps } = getIconTheme(this.props);
     const { themeConfig } = inputContainProps;
     const { themeConfig: inputPrefixThemeConfig } = inputPrefixProps;
-    const { themeConfig: clearButtonThemeConfig } = clearButtonProps;
     const { suffixIcon, prefixIcon } = getDateIcon({
       ...this.props,
       value: this.state.value,
@@ -134,9 +133,6 @@ class DateInput extends Component<TypeProps, TypeState> {
             },
             InputSuffix: {
               ...inputSuffixProps.themeConfig,
-            },
-            ClearButton: {
-              ...clearButtonThemeConfig,
             },
           },
         }}

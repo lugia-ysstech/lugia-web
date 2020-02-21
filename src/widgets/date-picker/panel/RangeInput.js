@@ -131,7 +131,6 @@ class RangeInput extends Component<TypeProps, TypeState> {
     } = normal;
 
     const { themeConfig: inputPrefixThemeConfig } = inputPrefixProps;
-    const { themeConfig: clearButtonThemeConfig } = clearButtonProps;
     const { suffixIcon, prefixIcon } = getDateIcon({
       ...this.props,
       onClear: this.onClear,
@@ -181,12 +180,6 @@ class RangeInput extends Component<TypeProps, TypeState> {
                 color: '#ddd',
               },
               ...inputSuffixProps.themeConfig,
-            },
-            ClearButton: {
-              disabled: {
-                color: '#ddd',
-              },
-              ...clearButtonThemeConfig,
             },
           },
         }}
