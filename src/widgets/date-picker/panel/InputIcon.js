@@ -1,6 +1,8 @@
 import React from 'react';
 import Icon from '../../icon';
 import styled from 'styled-components';
+import Theme from '../../theme';
+import Widget from '../../consts/index';
 const IconWrap = styled.div`
   &:hover {
     & > span:first-child {
@@ -17,14 +19,27 @@ const IconWrap = styled.div`
 `;
 
 export default function getDateIcon(props) {
-  const { suffix, prefix = 'lugia-icon-financial_date', onClear, value } = props;
+  const { suffix, prefix = 'lugia-icon-financial_date', onClear, value, clearButtonTheme } = props;
   const clearBtn = (
-    <Icon
-      iconClass={'lugia-icon-reminder_close'}
-      onClick={e => {
-        onClear(e);
+    <Theme
+      config={{
+        [Widget.Icon]: {
+          Icon: {
+            disabled: {
+              color: '#ddd',
+            },
+            ...clearButtonTheme.themeConfig,
+          },
+        },
       }}
-    />
+    >
+      <Icon
+        iconClass={'lugia-icon-reminder_close'}
+        onClick={e => {
+          onClear(e);
+        }}
+      />
+    </Theme>
   );
   const suffixIcon =
     suffix && typeof suffix === 'string' ? (
