@@ -13,9 +13,9 @@ import {
 import Theme from '../../theme';
 import Widget from '../../consts/index';
 import { getBorder } from '@lugia/theme-utils';
-import getThemeProps, { getWrapThemeProps } from '../themeConfig/themeConfig';
+import { getWrapThemeProps, getIconTheme } from '../themeConfig/themeConfig';
 import { addMouseEvent } from '@lugia/theme-hoc';
-import { getDateIcon } from '../utils/utils';
+import getDateIcon from '../panel/InputIcon';
 import { themeColor } from '../styled/utils';
 const { borderSize } = themeColor;
 type TypeProps = {
@@ -24,6 +24,8 @@ type TypeProps = {
   onFocus?: Function,
   onBlur?: Function,
   onClear?: Function,
+  getPartOfThemeProps: Function,
+  dispatchEvent: Function,
   value: Array<string>,
   disabled?: boolean,
   readOnly?: boolean,
@@ -73,7 +75,7 @@ class RangeInput extends Component<TypeProps, TypeState> {
     const { onClear } = this.props;
     onClear && onClear(e);
   };
-  getInputStyle = (state = {}) => {
+  getInputStyle = (state: Object = {}) => {
     const ableSelectNames = ['color', 'fontSize', 'font', 'background'];
     const obj = {};
     ableSelectNames.forEach(list => {
@@ -110,9 +112,7 @@ class RangeInput extends Component<TypeProps, TypeState> {
       };
     };
     const inputContainProps = getWrapThemeProps({ mode, getPartOfThemeProps }, 'Container');
-    const inputPrefixProps = getThemeProps({ mode, getPartOfThemeProps }, 'InputPrefix');
-    const inputSuffixProps = getThemeProps({ mode, getPartOfThemeProps }, 'InputSuffix');
-    const clearButtonProps = getThemeProps({ mode, getPartOfThemeProps }, 'ClearButton');
+    const { inputPrefixProps, inputSuffixProps, clearButtonProps } = getIconTheme(this.props);
     const {
       themeConfig: {
         normal = {},
@@ -132,7 +132,11 @@ class RangeInput extends Component<TypeProps, TypeState> {
 
     const { themeConfig: inputPrefixThemeConfig } = inputPrefixProps;
     const { themeConfig: clearButtonThemeConfig } = clearButtonProps;
-    const { suffixIcon, prefixIcon } = getDateIcon(this.props);
+    const { suffixIcon, prefixIcon } = getDateIcon({
+      ...this.props,
+      onClear: this.onClear,
+      clearButtonTheme: clearButtonProps,
+    });
     return (
       <Theme
         config={{
@@ -222,7 +226,7 @@ class RangeInput extends Component<TypeProps, TypeState> {
                 onBlur={this.onBlur}
                 placeholder={placeholder[1]}
                 {...config}
-                onClear={this.onClear}
+                // onClear={this.onClear}
                 {...this.props.dispatchEvent([['hover']], 'f2c')}
               />
             </RangeInputInnerInput>
