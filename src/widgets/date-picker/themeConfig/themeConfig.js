@@ -221,3 +221,18 @@ function getTimeWrapSize(mode, state) {
 function getTimeColSize(width) {
   return (width - 2) / 3;
 }
+
+export function getIconTheme(props) {
+  const { mode, getPartOfThemeProps } = props;
+  const normalTheme = {
+    normal: { color: '#999', fontSize: 14 },
+  };
+  const inputPrefixProps = getThemeProps({ mode, getPartOfThemeProps }, 'InputPrefix');
+  const inputSuffixProps = getThemeProps({ mode, getPartOfThemeProps }, 'InputSuffix');
+  const clearButtonProps = getThemeProps({ mode, getPartOfThemeProps }, 'ClearButton');
+  return {
+    inputPrefixProps: deepMerge({ themeConfig: normalTheme }, inputPrefixProps),
+    inputSuffixProps: deepMerge({ themeConfig: normalTheme }, inputSuffixProps),
+    clearButtonProps: deepMerge({ themeConfig: normalTheme }, clearButtonProps),
+  };
+}
