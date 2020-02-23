@@ -208,19 +208,43 @@
         "PrefixIcon": {
           "name": "前置图标配置",
           "desc": "前置图标或图片的样式配置",
-          "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
-          "hover": [["color"], ["font"], ["fontSize"]],
-          "active": [["color"], ["font"], ["fontSize"]],
-          "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+          "normal": {
+            "selectNames": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+            "nth": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+          },
+          "hover": {
+            "selectNames": [["color"], ["font"], ["fontSize"]],
+            "nth": [["color"], ["font"], ["fontSize"]]
+          },
+          "active": {
+            "selectNames": [["color"], ["font"], ["fontSize"]],
+            "nth": [["color"], ["font"], ["fontSize"]]
+          },
+          "disabled": {
+            "selectNames": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+            "nth": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+          }
         },
 
         "SuffixIcon": {
           "name": "后缀图标配置",
           "desc": "后缀图标或图片的样式配置",
-          "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
-          "hover": [["color"], ["font"], ["fontSize"]],
-          "active": [["color"], ["font"], ["fontSize"]],
-          "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+          "normal": {
+            "selectNames": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+            "nth": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+          },
+          "hover": {
+            "selectNames": [["color"], ["font"], ["fontSize"]],
+            "nth": [["color"], ["font"], ["fontSize"]]
+          },
+          "active": {
+            "selectNames": [["color"], ["font"], ["fontSize"]],
+            "nth": [["color"], ["font"], ["fontSize"]]
+          },
+          "disabled": {
+            "selectNames": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
+            "nth": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+          }
         }
       }
     }
