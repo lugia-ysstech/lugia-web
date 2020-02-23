@@ -312,7 +312,7 @@ class MenuItem extends React.Component<MenuItemProps> {
       >
         {divided && !isFirst ? <DividerWrap themeProps={DividerThemeProps} /> : null}
         {isCheckbox ? (
-          <TextContainer themeProps={this.props.getPartOfThemeProps('TextContainer')}>
+          <TextContainer themeProps={getPartOfThemeProps('TextContainer')}>
             <CheckBox
               {...this.getCheckBoxTheme()}
               checked={checked}
@@ -325,7 +325,7 @@ class MenuItem extends React.Component<MenuItemProps> {
             </CheckBox>
           </TextContainer>
         ) : (
-          <TextContainer themeProps={this.props.getPartOfThemeProps('TextContainer')}>
+          <TextContainer themeProps={getPartOfThemeProps('TextContainer')}>
             {this.getPreIcon()}
             <Text>{value ? value : children}</Text>
             {this.getSuffixIcon()}
@@ -335,7 +335,11 @@ class MenuItem extends React.Component<MenuItemProps> {
         {des ? (
           <DesContainer
             {...this.props.dispatchEvent([['hover']], 'f2c')}
-            themeProps={this.props.getPartOfThemeProps('DesContainer')}
+            themeProps={
+              checked
+                ? getPartOfThemeProps('SelectedDesContainer')
+                : getPartOfThemeProps('DesContainer')
+            }
           >
             {des.toString()}
           </DesContainer>
