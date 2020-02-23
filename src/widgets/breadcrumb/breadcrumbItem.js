@@ -77,7 +77,12 @@ class BreadcrumbItem extends React.Component<BreadcrumbItemProps, any> {
   }
 
   getIconTheme = (iconType: string) => {
+    const { index, count } = this.props;
     const { viewClass, theme } = this.props.getPartOfThemeHocProps(iconType);
+
+    theme[viewClass] = this.props.getPartOfThemeProps(iconType, {
+      selector: { index, count },
+    }).themeConfig;
     const marginLeft = iconType === 'SuffixIcon' ? 3 : 0;
     const marginRight = iconType === 'PrefixIcon' ? 3 : 0;
     const defaultTheme = {
