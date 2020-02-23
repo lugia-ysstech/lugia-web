@@ -260,6 +260,11 @@ export default class extends React.Component<any, any> {
               color: '#3d1c4e',
             },
           },
+          SelectedDesContainer: {
+            normal: {
+              color: 'red',
+            },
+          },
         },
       },
     };
