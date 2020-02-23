@@ -208,11 +208,10 @@ export const IconWrap = StaticComponent({
 export const CommonIcon = Icon;
 
 export const FlexResBox = StaticComponent({
-  tag: 'span',
+  tag: 'div',
   className: 'FlexResBox',
   css: css`
     flex: 1;
-    overflow: hidden;
     position: relative;
   `,
 });

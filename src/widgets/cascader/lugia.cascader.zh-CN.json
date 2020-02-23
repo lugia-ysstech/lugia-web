@@ -109,6 +109,12 @@
       "defaultValue": false
     },
 
+    "divided": {
+      "type": "boolean",
+      "desc": "菜单项之间是否展示分割线",
+      "defaultValue": false
+    },
+
     "allowClear": {
       "type": "boolean",
       "desc": "是否允许清空选中值",
@@ -339,8 +345,8 @@
             },
 
             "SwitchIcon": {
-              "name": "下拉图标配置",
-              "desc": "下拉图标配置的样式配置",
+              "name": "展开子树图标配置",
+              "desc": "展开子树图标配置的样式配置",
               "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
               "hover": [["color"], ["font"], ["fontSize"]],
               "active": [["color"], ["font"], ["fontSize"]],
