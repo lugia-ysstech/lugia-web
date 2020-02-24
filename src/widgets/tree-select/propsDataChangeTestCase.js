@@ -58,7 +58,6 @@ const data2 = [
   };
   return (
     <Theme config={config}>
-      {' '}
       <TreeSelect
         ref={cmp => (window.c1 = cmp)}
         data={treeData}
@@ -67,7 +66,7 @@ const data2 = [
         expandAll
         mutliple
         translateTreeData
-      />{' '}
+      />
     </Theme>
   );
 };
