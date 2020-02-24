@@ -523,28 +523,33 @@ class TabHeader extends Component<TabsProps, TabsState> {
   }
 
   handleBorderStyle(borderThemeProps: Object, tabPosition: TabPositionType, tabType?: TabType) {
-    const { themeConfig: { normal: { color, width } = {} } = {} } = borderThemeProps;
-    const borderColor = color || superLightColor,
-      borderWidth = width || borderSize,
-      borderStyle = 'solid';
     let border;
-    const style = { width: borderWidth, color: borderColor, style: borderStyle };
-    switch (tabPosition) {
-      case 'bottom':
-        border = { top: style };
-        break;
-      case 'right':
-        border = { left: style };
-        break;
-      case 'left':
-        border = { right: style };
-        break;
-      default:
-        border = { bottom: style };
-        break;
-    }
     if (tabType === 'window') {
       border = null;
+    } else {
+      const {
+        themeConfig: { normal: { color, width, background: { color: bgColor } = {} } = {} } = {},
+      } = borderThemeProps;
+
+      const borderColor = bgColor || color || superLightColor,
+        borderWidth = width || borderSize,
+        borderStyle = 'solid';
+
+      const style = {
+        width: borderWidth,
+        color: borderColor,
+        style: borderStyle,
+      };
+
+      const tabPositionMap = {
+        bottom: 'top',
+        top: 'bottom',
+        right: 'left',
+        left: 'right',
+      };
+      const borderPosition = tabPositionMap[tabPosition];
+
+      border = { [borderPosition]: style };
     }
 
     const borderTheme = deepMerge(
