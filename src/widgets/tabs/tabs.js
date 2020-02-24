@@ -31,6 +31,8 @@ const TabContentContainer = CSSComponent({
       ['border'],
       ['borderRadius'],
       ['textAlign'],
+      ['font'],
+      ['color'],
     ],
     getCSS: (theme: Object, themeProps: Object) => {
       const {
@@ -58,7 +60,7 @@ const TabContentContainer = CSSComponent({
 });
 const TabContent = CSSComponent({
   tag: 'div',
-  className: 'ContentBlock',
+  className: 'TabContent',
   normal: {
     selectNames: [],
     getCSS: (theme: Object, themeProps: Object) => {
