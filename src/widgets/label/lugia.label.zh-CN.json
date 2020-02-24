@@ -79,8 +79,6 @@
         ["lineHeight"],
         ["margin"],
         ["cursor"],
-        ["width"],
-        ["height"],
         ["textAlign"]
       ],
       "hover": [["color"], ["cursor"]],
