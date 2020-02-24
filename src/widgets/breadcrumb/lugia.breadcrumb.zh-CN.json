@@ -6,7 +6,7 @@
     "separator": {
       "type": "string",
       "desc": "自定义层级分隔符",
-      "defaultValue": "/"
+      "defaultPropsValue": "/"
     },
 
     "lastSeparator": {

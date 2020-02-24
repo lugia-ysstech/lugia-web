@@ -11,13 +11,13 @@
     "offsetX": {
       "type": "number",
       "desc": "菜单间的间隔",
-      "defaultValue": 2
+      "defaultPropsValue": 2
     },
 
     "offsetY": {
       "type": "number",
       "desc": "显示框与菜单的间隔",
-      "defaultValue": 5
+      "defaultPropsValue": 5
     },
 
     "placeholder": {
@@ -28,12 +28,12 @@
     "valueField": {
       "type": "string",
       "desc": "data数据的value值的名称",
-      "defaultValue": "value"
+      "defaultPropsValue": "value"
     },
     "displayField": {
       "type": "string",
       "desc": "data数据的displayValue值的名称",
-      "defaultValue": "text"
+      "defaultPropsValue": "text"
     },
 
     "data": {
@@ -90,7 +90,7 @@
     "separator": {
       "type": "string",
       "desc": "自定义级联数据分隔符",
-      "defaultValue": "|"
+      "defaultPropsValue": "|"
     },
 
     "value": {
@@ -106,13 +106,13 @@
     "disabled": {
       "type": "boolean",
       "desc": "是否禁选",
-      "defaultValue": false
+      "defaultPropsValue": false
     },
 
     "divided": {
       "type": "boolean",
       "desc": "菜单项之间是否展示分割线",
-      "defaultValue": false
+      "defaultPropsValue": false
     },
 
     "allowClear": {
