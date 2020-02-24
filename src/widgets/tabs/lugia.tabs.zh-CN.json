@@ -153,8 +153,8 @@
     "TabType": ["line", "card", "window"],
     "PagedType": ["single", "page"],
     "TabPositionType": ["top", "bottom", "left", "right"],
-    "ReturnType": ["newValue", "oldValue","newItem","oldItem"],
-    "DeleteType": ["value","item"]
+    "ReturnType": ["newValue", "oldValue", "newItem", "oldItem"],
+    "DeleteType": ["value", "item"]
   },
   "childrenWidget": ["tabpane"],
   "category": ["数据展示"],
@@ -182,7 +182,9 @@
             ["boxShadow"],
             ["border"],
             ["borderRadius"],
-            ["textAlign"]
+            ["textAlign"],
+            ["font"],
+            ["color"]
           ]
         },
         "AddButton": {
@@ -200,9 +202,9 @@
           "disabled": [["color"], ["font"]]
         },
         "TitleContainer": {
-          "name": "卡片区域",
-          "desc": "卡片区域样式配置",
-          "normal": [["background"]]
+          "name": "页签区域",
+          "desc": "页签区域样式配置",
+          "normal": [["background"], ["textAlign"]]
         },
         "BorderStyle": {
           "name": "默认线",
@@ -288,7 +290,9 @@
             ["boxShadow"],
             ["border"],
             ["borderRadius"],
-            ["textAlign"]
+            ["textAlign"],
+            ["font"],
+            ["color"]
           ]
         },
         "AddButton": {
@@ -374,12 +378,14 @@
         ["boxShadow"],
         ["border"],
         ["borderRadius"],
-        ["textAlign"]
+        ["textAlign"],
+        ["font"],
+        ["color"]
       ]
     },
     "TitleContainer": {
-      "name": "卡片区域",
-      "desc": "卡片区域样式配置",
+      "name": "页签区域",
+      "desc": "页签区域样式配置",
       "normal": [["background"], ["textAlign"]]
     },
     "BorderStyle": {
