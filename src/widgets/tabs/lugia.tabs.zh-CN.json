@@ -209,7 +209,7 @@
         "BorderStyle": {
           "name": "默认线",
           "desc": "默认线样式配置",
-          "normal": [["color"], ["width"]]
+          "normal": [["background"], ["width"]]
         },
         "TabHeader": {
           "name": "标签配置",
@@ -391,7 +391,7 @@
     "BorderStyle": {
       "name": "默认线",
       "desc": "默认线样式配置",
-      "normal": [["color"], ["width"]]
+      "normal": [["background"], ["width"]]
     },
     "ArrowIcon": {
       "name": "翻页按钮",
