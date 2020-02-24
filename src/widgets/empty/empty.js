@@ -28,6 +28,7 @@ export const EmptyContainer = CSSComponent({
     height: ${px2remcss(250)};
     width: ${px2remcss(250)};
     transition: all 0.3s;
+    background: #fff;
   `,
 });
 
