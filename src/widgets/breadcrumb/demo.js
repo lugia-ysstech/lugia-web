@@ -25,14 +25,23 @@ const routes = [
   {
     path: 'first',
     title: '一级面包屑',
+    icons: {
+      prefixIconClass: 'lugia-icon-finacial1_lock_o',
+    },
   },
   {
     path: 'second:id',
     title: '二级面包屑:id',
+    icons: {
+      prefixIconClass: 'lugia-icon-financial_like',
+    },
   },
   {
     path: 'third',
     title: '当前页面',
+    icons: {
+      prefixIconClass: 'lugia-icon-logo_gitlab',
+    },
   },
 ];
 
@@ -98,6 +107,11 @@ export default class Demo extends React.Component<any, any> {
             },
           },
           PrefixIcon: {
+            normal: {
+              color: 'orange',
+              nth0: { color: 'red' },
+              last: { color: '#fff' },
+            },
             hover: {
               font: {
                 size: 10,
