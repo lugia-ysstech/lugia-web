@@ -289,6 +289,9 @@ const ClearButtonContainer = CSSComponent({
     opacity: 0;
     margin-left: -5px;
     vertical-align: middle;
+    display: flex;
+    align-items: center;
+    height: 100%;
   `,
   normal: {
     selectNames: [],
@@ -408,7 +411,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
           </CardTitle>
         )}
 
-        {!isLineType && this.getClearButton()}
+        {this.getClearButton()}
       </TargetTab>
     );
     let resTabPan = Target;
@@ -601,7 +604,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
       },
     };
     const iconTheme = deepMerge(defaultIconTheme, theme);
-    if (!matchType(tabType, 'line') && showDeleteBtn) {
+    if (showDeleteBtn) {
       return (
         <ClearButtonContainer
           className={'IconContainer'}

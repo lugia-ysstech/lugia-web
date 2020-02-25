@@ -794,8 +794,8 @@ class TabHeader extends Component<TabsProps, TabsState> {
   }
 
   getAddButton() {
-    const { tabType, showAddBtn, themeProps, addIcon } = this.props;
-    if (!matchType(tabType, 'line') && showAddBtn) {
+    const { showAddBtn, themeProps, addIcon } = this.props;
+    if (showAddBtn) {
       const addBtnThemeProps = this.props.getPartOfThemeHocProps('AddButton');
       return (
         <AddContainer themeProps={themeProps} onClick={this.onAddClick}>
