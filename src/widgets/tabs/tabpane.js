@@ -44,7 +44,12 @@ const SelectTab = CSSComponent({
     getCSS: (theme: Object, themeProps: Object) => {
       const { color } = theme;
       const {
-        propsConfig: { isSelect, tabType, tabPosition },
+        propsConfig: {
+          isSelect,
+          tabType,
+          tabPosition,
+          lineTheme: { height: lineHeight = 2, color: lineColor } = {},
+        },
       } = themeProps;
       let display = 'inline-flex';
       let defaultTextAlign = 'center';
@@ -62,7 +67,7 @@ const SelectTab = CSSComponent({
       if (isSelect && tabType === 'line') {
         let cssString = css`
           width: 100%;
-          height: 2px;
+          height: ${lineHeight}px;
           left: 50%;
           animation: ${addWidth} 0.2s linear forwards;
           transform: translateX(-50%);
@@ -71,7 +76,7 @@ const SelectTab = CSSComponent({
         if (isVertical(tabPosition)) {
           pos = tabPosition === 'left' ? 'right: -20px;' : 'left: -20px;';
           cssString = css`
-            width: 2px;
+            width: ${lineHeight}px;
             height: 100%;
             top: 50%;
             animation: ${addHeight} 0.2s linear forwards;
@@ -83,7 +88,7 @@ const SelectTab = CSSComponent({
           ${textAlignStyle}
           & > div::before {
             content: '';
-            background: ${color || themeColor};
+            background: ${lineColor || color || themeColor};
             border-radius: 2px;
             position: absolute;
             ${pos}
@@ -348,6 +353,7 @@ type TabpaneProps = {
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
   showDividerLine: boolean,
+  deleteIcon: string,
 };
 
 class Tabpane extends Component<TabpaneProps, TabpaneState> {
@@ -437,7 +443,14 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     disabled: ?boolean
   ) {
     let titleThemeProps = this.props.getPartOfThemeProps('DefaultTabPan', {
-      props: { isSelect, tabType, tabPosition, showDeleteBtn, disabled },
+      props: {
+        isSelect,
+        tabType,
+        tabPosition,
+        showDeleteBtn,
+        disabled,
+        lineTheme: this.getSelectLineTheme(),
+      },
     });
 
     let selectThemeProps = this.props.getPartOfThemeProps('SelectTabPan', {
@@ -518,6 +531,11 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     const themeProps = isSelect ? selectThemeProps : titleThemeProps;
     return { TargetTab, themeProps };
   }
+
+  getSelectLineTheme = () => {
+    const { themeConfig: { normal = {} } = {} } = this.props.getPartOfThemeProps('SelectLine');
+    return normal;
+  };
 
   getIconTheme = (themeName: string, isSelect: ?boolean) => {
     let userThemeConfig = this.props.getPartOfThemeHocProps(themeName);
@@ -623,13 +641,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     const iconTheme = deepMerge(defaultIconTheme, theme);
     if (showDeleteBtn) {
       return (
-        <ClearButtonContainer
-          className={'IconContainer'}
-          themeProps={themeProps}
-          onMouseEnter={this.clearButtonMouseEnter}
-          onMouseLeave={this.clearButtonMouseLeave}
-          tabType={tabType}
-        >
+        <ClearButtonContainer className={'IconContainer'} themeProps={themeProps} tabType={tabType}>
           <Icon
             singleTheme
             theme={iconTheme}

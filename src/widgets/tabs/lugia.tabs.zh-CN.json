@@ -257,7 +257,35 @@
               "normal": [["color"], ["font"]],
               "hover": [["color"], ["font"]],
               "disabled": [["color"], ["font"]]
-            }
+            },
+            "PrefixIcon": {
+              "name": "前缀图标",
+              "desc": "前缀图标样式配置",
+              "normal": [["color"], ["font"]],
+              "hover": [["color"], ["font"]],
+              "disabled": [["color"], ["font"]]
+            },
+            "SelectPrefixIcon": {
+              "name": "前缀图标选中样式",
+              "desc": "前缀图标选中样式配置",
+              "normal": [["color"], ["font"]],
+              "hover": [["color"], ["font"]],
+              "disabled": [["color"], ["font"]]
+            },
+            "SuffixIcon": {
+              "name": "后缀图标",
+              "desc": "前缀图标样式配置",
+              "normal": [["color"], ["font"]],
+              "hover": [["color"], ["font"]],
+              "disabled": [["color"], ["font"]]
+            },
+            "SelectSuffixIcon": {
+              "name": "后缀图标选中样式",
+              "desc": "前缀图标选中样式配置",
+              "normal": [["color"], ["font"]],
+              "hover": [["color"], ["font"]],
+              "disabled": [["color"], ["font"]]
+            },
           }
         }
       }
@@ -355,7 +383,35 @@
               "normal": [["color"], ["font"]],
               "hover": [["color"], ["font"]],
               "disabled": [["color"], ["font"]]
-            }
+            },
+            "PrefixIcon": {
+              "name": "前缀图标",
+              "desc": "前缀图标样式配置",
+              "normal": [["color"], ["font"]],
+              "hover": [["color"], ["font"]],
+              "disabled": [["color"], ["font"]]
+            },
+            "SelectPrefixIcon": {
+              "name": "前缀图标选中样式",
+              "desc": "前缀图标选中样式配置",
+              "normal": [["color"], ["font"]],
+              "hover": [["color"], ["font"]],
+              "disabled": [["color"], ["font"]]
+            },
+            "SuffixIcon": {
+              "name": "后缀图标",
+              "desc": "前缀图标样式配置",
+              "normal": [["color"], ["font"]],
+              "hover": [["color"], ["font"]],
+              "disabled": [["color"], ["font"]]
+            },
+            "SelectSuffixIcon": {
+              "name": "后缀图标选中样式",
+              "desc": "前缀图标选中样式配置",
+              "normal": [["color"], ["font"]],
+              "hover": [["color"], ["font"]],
+              "disabled": [["color"], ["font"]]
+            },
           }
         }
       }
@@ -444,6 +500,46 @@
           "name": "分割线",
           "desc": "分割线样式配置",
           "normal": [["width"], ["height"], ["background"]]
+        },
+        "DeleteIcon": {
+          "name": "删除图标",
+          "desc": "删除图标样式配置",
+          "normal": [["color"], ["font"]],
+          "hover": [["color"], ["font"]],
+          "disabled": [["color"], ["font"]]
+        },
+        "PrefixIcon": {
+          "name": "前缀图标",
+          "desc": "前缀图标样式配置",
+          "normal": [["color"], ["font"]],
+          "hover": [["color"], ["font"]],
+          "disabled": [["color"], ["font"]]
+        },
+        "SelectPrefixIcon": {
+          "name": "前缀图标选中样式",
+          "desc": "前缀图标选中样式配置",
+          "normal": [["color"], ["font"]],
+          "hover": [["color"], ["font"]],
+          "disabled": [["color"], ["font"]]
+        },
+        "SuffixIcon": {
+          "name": "后缀图标",
+          "desc": "前缀图标样式配置",
+          "normal": [["color"], ["font"]],
+          "hover": [["color"], ["font"]],
+          "disabled": [["color"], ["font"]]
+        },
+        "SelectSuffixIcon": {
+          "name": "后缀图标选中样式",
+          "desc": "前缀图标选中样式配置",
+          "normal": [["color"], ["font"]],
+          "hover": [["color"], ["font"]],
+          "disabled": [["color"], ["font"]]
+        },
+        "SelectLine": {
+          "name": "选中页签底部标识线",
+          "desc": "选中页签底部标识线样式配置",
+          "normal": [["height"], ["color"]]
         }
       }
     }
