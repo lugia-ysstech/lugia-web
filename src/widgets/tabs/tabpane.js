@@ -365,13 +365,16 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
       showDeleteBtn,
       showDividerLine,
     } = this.props;
-    const { TargetTab, themeProps, iconThemes } = this.getHTabPaneThemeProps(
+    const { TargetTab, themeProps } = this.getHTabPaneThemeProps(
       tabType,
       isSelect,
       tabPosition,
       showDeleteBtn,
       disabled
     );
+
+    const prefixIconTheme = this.getIconTheme('PrefixIcon', isSelect);
+    const suffixIconTheme = this.getIconTheme('SuffixIcon', isSelect);
     const isLineType = matchType(tabType, 'line');
 
     const Target = (
@@ -393,9 +396,9 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
             isSelect={isSelect}
             disabled={disabled}
           >
-            {this.getTabIconContainer(icon, iconThemes)}
+            {this.getTabIconContainer(icon, prefixIconTheme)}
             {title}
-            {this.getTabIconContainer(suffixIcon, iconThemes)}
+            {this.getTabIconContainer(suffixIcon, suffixIconTheme)}
           </Title>
         ) : (
           <CardTitle
@@ -405,9 +408,9 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
             isSelect={isSelect}
             disabled={disabled}
           >
-            {this.getTabIconContainer(icon, iconThemes)}
+            {this.getTabIconContainer(icon, prefixIconTheme)}
             {title}
-            {this.getTabIconContainer(suffixIcon, iconThemes)}
+            {this.getTabIconContainer(suffixIcon, suffixIconTheme)}
           </CardTitle>
         )}
 
@@ -437,29 +440,6 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
       props: { isSelect, tabType, tabPosition, showDeleteBtn, disabled },
     });
 
-    let { theme, viewClass } = this.props.getPartOfThemeHocProps('DefaultTabPan');
-    const { icon, suffixIcon } = this.props;
-    const {
-      themeConfig: { normal: { color: normalColor } = {} },
-    } = titleThemeProps;
-    const themeObj = {
-      [viewClass]: {
-        normal: {
-          getThemeMeta: (theme: Object, themeProps: Object) => {
-            return { margin: { left: suffixIcon ? 10 : 0, right: icon ? 10 : 0 } };
-          },
-        },
-        hover: {
-          color: normalColor,
-        },
-        disabled: {
-          getThemeMeta: (theme: Object, themeProps: Object) => {
-            return { cursor: 'not-allowed', color: disableTextColor };
-          },
-        },
-      },
-    };
-    theme = deepMerge(theme, themeObj);
     let selectThemeProps = this.props.getPartOfThemeProps('SelectTabPan', {
       props: { isSelect, tabType, tabPosition, showDeleteBtn, disabled },
     });
@@ -536,8 +516,45 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     }
     const TargetTab = isSelect ? SelectTab : baseDefaultTab;
     const themeProps = isSelect ? selectThemeProps : titleThemeProps;
-    return { TargetTab, themeProps, iconThemes: { theme, viewClass } };
+    return { TargetTab, themeProps };
   }
+
+  getIconTheme = (themeName: string, isSelect: ?boolean) => {
+    let userThemeConfig = this.props.getPartOfThemeHocProps(themeName);
+    const { theme, viewClass } = userThemeConfig;
+    const { icon, suffixIcon } = this.props;
+    const themeObj = {
+      [viewClass]: {
+        normal: {
+          getThemeMeta: (theme: Object, themeProps: Object) => {
+            return { margin: { left: suffixIcon ? 10 : 0, right: icon ? 10 : 0 } };
+          },
+        },
+        disabled: {
+          getThemeMeta: (theme: Object, themeProps: Object) => {
+            return { cursor: 'not-allowed', color: disableTextColor };
+          },
+        },
+      },
+    };
+    userThemeConfig = {
+      theme: deepMerge(themeObj, theme),
+      viewClass,
+    };
+
+    if (isSelect) {
+      const { theme: selectTheme, viewClass: selectViewClass } = this.props.getPartOfThemeHocProps(
+        `Select${themeName}`
+      );
+      const { theme: defaultTheme } = userThemeConfig;
+      userThemeConfig = {
+        theme: deepMerge({ [selectViewClass]: defaultTheme[viewClass] }, selectTheme),
+        viewClass: selectViewClass,
+      };
+    }
+
+    return { ...userThemeConfig };
+  };
 
   handleClick = () => {
     const { index, onClick, disabled, keyVal } = this.props;
