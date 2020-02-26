@@ -210,7 +210,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 
   componentWillReceiveProps(props: TreeProps) {
-    const dataChanged = props.data !== this.props.data;
+    const dataChanged = JSON.stringify(props.data) !== JSON.stringify(this.props.data);
     if (dataChanged === true) {
       this.allExpandInfo = this.getEmptyExpandInfo();
       this.createQueryAllTreelUtils(props);
