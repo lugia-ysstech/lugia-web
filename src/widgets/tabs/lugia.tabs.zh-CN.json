@@ -274,18 +274,18 @@
             },
             "SuffixIcon": {
               "name": "后缀图标",
-              "desc": "前缀图标样式配置",
+              "desc": "后缀图标样式配置",
               "normal": [["color"], ["font"]],
               "hover": [["color"], ["font"]],
               "disabled": [["color"], ["font"]]
             },
             "SelectSuffixIcon": {
               "name": "后缀图标选中样式",
-              "desc": "前缀图标选中样式配置",
+              "desc": "后缀图标选中样式配置",
               "normal": [["color"], ["font"]],
               "hover": [["color"], ["font"]],
               "disabled": [["color"], ["font"]]
-            },
+            }
           }
         }
       }
@@ -400,18 +400,18 @@
             },
             "SuffixIcon": {
               "name": "后缀图标",
-              "desc": "前缀图标样式配置",
+              "desc": "后缀图标样式配置",
               "normal": [["color"], ["font"]],
               "hover": [["color"], ["font"]],
               "disabled": [["color"], ["font"]]
             },
             "SelectSuffixIcon": {
               "name": "后缀图标选中样式",
-              "desc": "前缀图标选中样式配置",
+              "desc": "后缀图标选中样式配置",
               "normal": [["color"], ["font"]],
               "hover": [["color"], ["font"]],
               "disabled": [["color"], ["font"]]
-            },
+            }
           }
         }
       }
@@ -524,14 +524,14 @@
         },
         "SuffixIcon": {
           "name": "后缀图标",
-          "desc": "前缀图标样式配置",
+          "desc": "后缀图标样式配置",
           "normal": [["color"], ["font"]],
           "hover": [["color"], ["font"]],
           "disabled": [["color"], ["font"]]
         },
         "SelectSuffixIcon": {
           "name": "后缀图标选中样式",
-          "desc": "前缀图标选中样式配置",
+          "desc": "后缀图标选中样式配置",
           "normal": [["color"], ["font"]],
           "hover": [["color"], ["font"]],
           "disabled": [["color"], ["font"]]
