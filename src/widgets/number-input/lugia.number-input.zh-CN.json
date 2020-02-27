@@ -67,6 +67,14 @@
       "type": "function",
       "desc": "格式化显示内容的匹配规则,需与 parser 属性配套使用"
     },
+    "addIcon": {
+      "type": "string",
+      "desc": "向上增加的增加图标类型"
+    },
+    "subtractIcon": {
+      "type": "string",
+      "desc": "向下减少的图标类型"
+    },
     "parser": {
       "type": "function",
       "desc": "解析格式化显示内容的规则,需与 formatter 属性配套使用"
