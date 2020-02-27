@@ -48,7 +48,7 @@ const SelectTab = CSSComponent({
           isSelect,
           tabType,
           tabPosition,
-          lineTheme: { height: lineHeight = 2, color: lineColor } = {},
+          lineTheme: { height: lineHeight = 2, background: { color: lineColor } = {} } = {},
         },
       } = themeProps;
       let display = 'inline-flex';
