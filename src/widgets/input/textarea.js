@@ -189,7 +189,7 @@ type TextareaState = {
 };
 
 type TextareaProps = {
-  viewClass: string,
+  viewClass?: string,
   themeProps: Object,
   disabled: boolean,
   placeholder?: string,
@@ -203,6 +203,8 @@ type TextareaProps = {
   onEnter?: (event: UIEvent) => void,
   defaultValue?: string,
   value?: string,
+  clearIcon?: string,
+  canClear?: boolean,
   autoFocus?: boolean,
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
@@ -213,7 +215,6 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
   static defaultProps = {
     disabled: false,
     autoFocus: false,
-    viewClass: Widget.TextArea,
     defaultValue: '',
     resizeType: 'both',
   };
@@ -305,7 +306,8 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
   };
 
   getClearButton() {
-    if (this.isEmpty()) {
+    const { canClear = true } = this.props;
+    if (this.isEmpty() || !canClear) {
       return null;
     }
     const {
@@ -333,14 +335,14 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
       },
       ClearButtonThemeProps
     );
-    const { disabled } = this.props;
+    const { disabled, clearIcon } = this.props;
     return (
       <Icon
         disabled={disabled}
         singleTheme
         viewClass={clearViewClass}
         theme={newTheme}
-        iconClass={Clear}
+        iconClass={clearIcon || Clear}
         onClick={this.onClear}
         {...addMouseEvent(this)}
       />

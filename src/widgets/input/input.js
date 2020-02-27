@@ -278,6 +278,10 @@ type InputState = {
   value: string,
 };
 
+type InsideProps = {
+  _maxLength: string,
+};
+
 type InputProps = {
   size?: InputSize,
   viewClass: string,
@@ -300,6 +304,8 @@ type InputProps = {
   onEnter?: (event: UIEvent) => void,
   defaultValue?: string,
   value?: string,
+  clearIcon?: string,
+  canClear?: boolean,
   formatter?: (value: number | string) => string,
   parser?: (displayValue: number | string) => string,
   readOnly: boolean,
@@ -308,7 +314,7 @@ type InputProps = {
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
   isShowClearButton?: boolean,
-};
+} & InsideProps;
 
 class TextBox extends Component<InputProps, InputState> {
   static defaultProps = {
@@ -536,7 +542,8 @@ class TextBox extends Component<InputProps, InputState> {
   }
 
   getClearButton() {
-    if (this.isEmpty()) {
+    const { canClear = true } = this.props;
+    if (this.isEmpty() || !canClear) {
       return null;
     }
     const {
@@ -567,14 +574,14 @@ class TextBox extends Component<InputProps, InputState> {
       ClearButtonThemeProps
     );
 
-    const { disabled } = this.props;
+    const { disabled, clearIcon } = this.props;
     return (
       <Icon
         disabled={disabled}
         singleTheme
         viewClass={clearViewClass}
         theme={newTheme}
-        iconClass={Clear}
+        iconClass={clearIcon || Clear}
         onClick={this.onClear}
         {...addMouseEvent(this)}
       />

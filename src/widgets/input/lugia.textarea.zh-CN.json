@@ -20,6 +20,15 @@
       "type": "string",
       "desc": "显示内容"
     },
+    "clearIcon": {
+      "type": "string",
+      "desc": "清除图标类型"
+    },
+    "canClear": {
+      "type": "boolean",
+      "desc": "是否展示清除按钮",
+      "defaultValue": true
+    },
     "autoFocus": {
       "type": "boolean",
       "desc": "是否自动获取焦点",
