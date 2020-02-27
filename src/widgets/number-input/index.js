@@ -13,10 +13,9 @@ import Widget from '../consts';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import Icon from '../icon/index';
 import { accAdd, checkNumber, limit } from '../common/Math';
-import type { InputValidateType, ValidateStatus } from '../css/input';
+import type { ValidateType, ValidateStatus } from '../css/input';
 import { units } from '@lugia/css';
-import { findDOMNode } from 'react-dom';
-import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
+import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import { deepMerge } from '@lugia/object-utils';
 
 const { px2remcss } = units;
@@ -190,12 +189,14 @@ export type NumberInputProps = {
   parser?: (displayValue: string) => string,
   precision: number,
   validateStatus: ValidateStatus,
-  validateType: InputValidateType,
+  validateType: ValidateType,
   help: string,
   themeProps: Object,
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
   createEventChannel: Function,
+  addIcon?: string,
+  subtractIcon?: string,
 };
 
 function hasValueProps(props: Object) {
@@ -269,7 +270,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
 
   getStepArrowIconContainer(channel): React$Element<any> {
     const { buttonShow, value, stepHover } = this.state;
-    const { max, min, size, disabled } = this.props;
+    const { max, min, size, disabled, addIcon, subtractIcon } = this.props;
     const overMax = Number(value) >= max;
     const belowMin = Number(value) <= min;
 
@@ -355,7 +356,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
             viewClass={IconViewClass}
             disabled={disabled}
             propsConfig={{ outRange: overMax }}
-            iconClass={PlusClass}
+            iconClass={addIcon || PlusClass}
             singleTheme
           />
         </PlusButton>
@@ -375,7 +376,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
             viewClass={IconViewClass}
             disabled={disabled}
             propsConfig={{ outRange: belowMin }}
-            iconClass={MinusClass}
+            iconClass={subtractIcon || MinusClass}
           />
         </MinusButton>
       </ArrowIconContainer>
