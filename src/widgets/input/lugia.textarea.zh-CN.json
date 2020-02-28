@@ -27,7 +27,7 @@
     "canClear": {
       "type": "boolean",
       "desc": "是否展示清除按钮",
-      "defaultValue": true
+      "propsDefaultValue": true
     },
     "autoFocus": {
       "type": "boolean",
