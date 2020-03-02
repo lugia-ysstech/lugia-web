@@ -47,17 +47,6 @@ export default () => {
           },
         },
       },
-      InnerInput: {
-        Container: {
-          normal: {
-            width: 300,
-            height: 30,
-            border: {
-              top: 10,
-            },
-          },
-        },
-      },
       AmountInputPrefix: { normal: { fontSize: 14, color: 'blue' } },
       AmountTip: {
         Container: {
