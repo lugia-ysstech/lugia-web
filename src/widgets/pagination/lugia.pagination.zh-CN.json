@@ -187,7 +187,6 @@
           "desc": "配置分页切换页数图标",
           "normal": [["color"], ["fontSize"], ["font"]],
           "hover": [["color"], ["fontSize"], ["font"]],
-          "clicked": [],
           "disabled": [["color"], ["fontSize"], ["font"]]
         },
         "PaginationSimpleText": {
@@ -415,16 +414,16 @@
           "desc": "配置下拉图标样式",
           "normal": [["color"], ["background"], ["font"], ["margin"], ["opacity"]],
           "hover": [["color"], ["font"], ["opacity"]],
-          "active": [],
-          "disabled": []
+          "active": [["color"], ["fontSize"]],
+          "disabled": [["color"], ["fontSize"], ["cursor"]]
         },
         "ClearIcon": {
           "name": "清空图标",
           "desc": "配置清除图标样式",
           "normal": [["color"], ["background"], ["font"], ["margin"], ["opacity"]],
           "hover": [["color"], ["font"], ["opacity"]],
-          "active": [],
-          "disabled": []
+          "active": [["color"], ["fontSize"]],
+          "disabled": [["color"], ["fontSize"], ["cursor"]]
         },
         "Menu": {
           "name": "弹开菜单",
@@ -443,8 +442,7 @@
                 ["margin"],
                 ["padding"]
               ],
-              "hover": [["boxShadow"], ["background"], ["opacity"], ["border"], ["borderRadius"]],
-              "disabled": []
+              "hover": [["boxShadow"], ["background"], ["opacity"], ["border"], ["borderRadius"]]
             },
             "MenuItem": {
               "name": "菜单项配置",
@@ -513,8 +511,7 @@
                     ["opacity"],
                     ["color"],
                     ["font"]
-                  ],
-                  "disabled": []
+                  ]
                 }
               }
             }
