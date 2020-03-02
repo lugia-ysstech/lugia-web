@@ -132,11 +132,6 @@
     "InnerInput": {
       "name": "金额输入框",
       "theme": {
-        "Container": {
-          "name": "输入框外部容器",
-          "desc": "输入框外部容器",
-          "normal": [["width"], ["height"], ["margin"]]
-        },
         "Input": {
           "name": "金额输入框中输入框部分",
           "desc": "金额输入框中输入框部分",
@@ -218,14 +213,6 @@
           "name": "提示信息文字部分",
           "desc": "提示信息文字部分",
           "normal": [["fontSize"], ["font"], ["color"]],
-          "hover": [],
-          "clicked": [],
-          "disabled": []
-        },
-        "ChildrenContainer": {
-          "name": "提示信息框包裹子组件的容器",
-          "desc": "提示信息框包裹子组件的容器",
-          "normal": [["width"]],
           "hover": [],
           "clicked": [],
           "disabled": []
