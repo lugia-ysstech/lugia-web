@@ -24,7 +24,7 @@ export const Padding = 2;
 export const DefaultHelp = '验证出错';
 export const DefaultAmountPrefix = '¥';
 
-export type ValidateStatus = 'success' | 'error';
+export type ValidateStatus = 'default' | 'error';
 
 export type InputSize = 'small' | 'default' | 'large';
 export type ValidateType = 'top' | 'bottom' | 'inner' | 'default';

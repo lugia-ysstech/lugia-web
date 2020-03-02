@@ -36,7 +36,6 @@ const {
   vShadow,
   warningColor,
   transitionTime,
-  successColor,
 } = colorsFunc();
 
 const CommonInputStyle = CSSComponent({
@@ -87,8 +86,6 @@ const CommonInputStyle = CSSComponent({
         ? color
         : checkValidateResultFromStatusAndType(validateStatus, 'error', validateType, 'inner')
         ? dangerColor
-        : checkValidateResultFromStatusAndType(validateStatus, 'success', validateType, 'inner')
-        ? successColor
         : blackColor;
 
       const paddingLeft = prefix ? 30 : width && width < 200 ? width / 20 : padding;
@@ -321,7 +318,7 @@ class TextBox extends Component<InputProps, InputState> {
     disabled: false,
     autoFocus: false,
     viewClass: Widget.Input,
-    validateStatus: 'success',
+    validateStatus: 'default',
     validateType: 'default',
     size: 'default',
     help: DefaultHelp,
