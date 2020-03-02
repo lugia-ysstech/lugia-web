@@ -737,7 +737,11 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
       preIconSrc,
       nextIconClass,
       nextIconSrc,
+      hideOnSinglePage,
     } = this.props;
+    if (hideOnSinglePage) {
+      return null;
+    }
     const preIcon = preIconClass ? preIconClass : 'lugia-icon-direction_Left';
     const nextIcon = nextIconClass ? nextIconClass : 'lugia-icon-direction_right';
     const iconClass = type === 'pre' ? preIcon : nextIcon;
