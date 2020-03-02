@@ -176,55 +176,25 @@
               ]
             }
           }
+        },
+        "PaginationQuickJumpText": {
+          "name": "分页快速跳至文字",
+          "desc": "分页快速跳至文字部分",
+          "normal": [["color"], ["font"], ["fontSize"], ["cursor"]]
+        },
+        "ChangePageIcon": {
+          "name": "分页切换页数图标",
+          "desc": "配置分页切换页数图标",
+          "normal": [["color"], ["fontSize"], ["font"]],
+          "hover": [["color"], ["fontSize"], ["font"]],
+          "clicked": [],
+          "disabled": [["color"], ["fontSize"], ["font"]]
+        },
+        "PaginationSimpleText": {
+          "name": "简洁分页文字",
+          "desc": "配置简洁分页文字",
+          "normal": [["color"], ["font"], ["fontSize"], ["cursor"]]
         }
-      },
-      "PaginationQuickJumpContainer": {
-        "name": "分页快速跳至容器",
-        "desc": "分页快速跳至整体外部容器",
-        "normal": [["margin"]]
-      },
-      "PaginationQuickJumpText": {
-        "name": "分页快速跳至文字",
-        "desc": "分页快速跳至文字部分",
-        "normal": [["color"], ["font"], ["fontSize"], ["cursor"]]
-      },
-      "PaginationArrowIconContainer": {
-        "name": "分页切换页数图标容器",
-        "desc": "配置分页切换页数图标外部容器",
-        "normal": [
-          ["width"],
-          ["height"],
-          ["cursor"],
-          ["border"],
-          ["borderRadius"],
-          ["opacity"],
-          ["background"],
-          ["boxShadow"],
-          ["padding"]
-        ],
-        "hover": [["color"], ["font"], ["fontSize"], ["border"], ["borderRadius"]],
-        "clicked": [],
-        "disabled": [
-          ["cursor"],
-          ["border"],
-          ["borderRadius"],
-          ["opacity"],
-          ["background"],
-          ["boxShadow"]
-        ]
-      },
-      "ChangePageIcon": {
-        "name": "分页切换页数图标",
-        "desc": "配置分页切换页数图标",
-        "normal": [["color"], ["fontSize"], ["font"]],
-        "hover": [["color"], ["fontSize"], ["font"]],
-        "clicked": [],
-        "disabled": [["color"], ["fontSize"], ["font"]]
-      },
-      "PaginationSimpleText": {
-        "name": "简洁分页文字",
-        "desc": "配置简洁分页文字",
-        "normal": [["color"], ["font"], ["fontSize"], ["cursor"]]
       }
     }
   },
