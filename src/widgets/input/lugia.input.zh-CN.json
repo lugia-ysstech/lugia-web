@@ -51,7 +51,7 @@
       "desc": "显示内容"
     },
     "clearIcon": {
-      "type": "string",
+      "type": "icon",
       "desc": "清除图标类型"
     },
     "canClear": {
@@ -183,7 +183,7 @@
   "type": {
     "InputSize": ["small", "default", "large"],
     "InputType": ["text", "password"],
-    "ValidateStatus": ["success", "error", "default"],
+    "ValidateStatus": ["error", "default"],
     "ValidateType": ["top", "bottom", "inner", "default"],
     "ChangeType": {
       "newValue": "string",
