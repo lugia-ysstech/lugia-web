@@ -21,7 +21,7 @@
       "desc": "显示内容"
     },
     "clearIcon": {
-      "type": "string",
+      "type": "icon",
       "desc": "清除图标类型"
     },
     "canClear": {
