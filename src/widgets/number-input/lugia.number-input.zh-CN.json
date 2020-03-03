@@ -184,7 +184,7 @@
   },
   "type": {
     "InputSize": ["small", "default", "large"],
-    "ValidateStatus": ["success", "error"],
+    "ValidateStatus": ["default", "error"],
     "InputValidateType": ["top", "bottom", "inner", "default"],
     "ChangeType": {
       "newValue": "number",

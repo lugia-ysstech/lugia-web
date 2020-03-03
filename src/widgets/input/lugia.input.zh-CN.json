@@ -183,7 +183,7 @@
   "type": {
     "InputSize": ["small", "default", "large"],
     "InputType": ["text", "password"],
-    "ValidateStatus": ["error", "default"],
+    "ValidateStatus": ["default", "error"],
     "ValidateType": ["top", "bottom", "inner", "default"],
     "ChangeType": {
       "newValue": "string",
