@@ -830,7 +830,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
             onChange={this.inputChange}
           />
           <PaginationBaseText themeProps={this.props.getPartOfThemeProps('PaginationSimpleText')}>
-            {'/ ' + totalPage}
+            {`/ ${totalPage}`}
           </PaginationBaseText>
           {this.getArrowIcon('next')}
         </PaginationListContainer>
