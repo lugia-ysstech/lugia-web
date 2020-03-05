@@ -98,6 +98,9 @@ const PaginationBaseText = CSSComponent({
     defaultTheme: {
       color: blackColor,
       fontSize: 14,
+      margin: {
+        right: 5,
+      },
     },
   },
 });
@@ -836,7 +839,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
             isShowClearButton={false}
             onChange={this.inputChange}
           />
-          {this.getPaginationBaseText('/ ')}
+          {this.getPaginationBaseText('/')}
           {this.getPaginationBaseText(totalPage)}
           {this.getArrowIcon('next')}
         </PaginationListContainer>
