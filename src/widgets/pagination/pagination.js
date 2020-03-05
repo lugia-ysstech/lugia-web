@@ -794,6 +794,13 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
       this.setState({ current: numberValue });
     }
   };
+  getPaginationBaseText(text) {
+    return (
+      <PaginationBaseText themeProps={this.props.getPartOfThemeProps('PaginationSimpleText')}>
+        {text}
+      </PaginationBaseText>
+    );
+  }
 
   render() {
     const { simple } = this.props;
@@ -829,9 +836,8 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
             isShowClearButton={false}
             onChange={this.inputChange}
           />
-          <PaginationBaseText themeProps={this.props.getPartOfThemeProps('PaginationSimpleText')}>
-            {`/ ${totalPage}`}
-          </PaginationBaseText>
+          {this.getPaginationBaseText('/')}
+          {this.getPaginationBaseText(totalPage)}
           {this.getArrowIcon('next')}
         </PaginationListContainer>
       );
