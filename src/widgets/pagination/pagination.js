@@ -98,6 +98,15 @@ const PaginationBaseText = CSSComponent({
     defaultTheme: {
       color: blackColor,
       fontSize: 14,
+    },
+  },
+});
+const PaginationTextDivider = CSSComponent({
+  extend: PaginationBaseText,
+  className: 'PaginationTextDivider',
+  normal: {
+    selectNames: [['color'], ['font'], ['fontSize'], ['cursor']],
+    defaultTheme: {
       margin: {
         right: 5,
       },
@@ -797,13 +806,6 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
       this.setState({ current: numberValue });
     }
   };
-  getPaginationBaseText(text) {
-    return (
-      <PaginationBaseText themeProps={this.props.getPartOfThemeProps('PaginationSimpleText')}>
-        {text}
-      </PaginationBaseText>
-    );
-  }
 
   render() {
     const { simple } = this.props;
@@ -839,8 +841,14 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
             isShowClearButton={false}
             onChange={this.inputChange}
           />
-          {this.getPaginationBaseText('/')}
-          {this.getPaginationBaseText(totalPage)}
+          <PaginationTextDivider
+            themeProps={this.props.getPartOfThemeProps('PaginationSimpleText')}
+          >
+            /
+          </PaginationTextDivider>
+          <PaginationBaseText themeProps={this.props.getPartOfThemeProps('PaginationSimpleText')}>
+            {totalPage}
+          </PaginationBaseText>
           {this.getArrowIcon('next')}
         </PaginationListContainer>
       );
