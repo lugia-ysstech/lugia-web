@@ -836,7 +836,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
             isShowClearButton={false}
             onChange={this.inputChange}
           />
-          {this.getPaginationBaseText('/')}
+          {this.getPaginationBaseText('/ ')}
           {this.getPaginationBaseText(totalPage)}
           {this.getArrowIcon('next')}
         </PaginationListContainer>
