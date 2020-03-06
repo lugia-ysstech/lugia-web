@@ -285,7 +285,7 @@ class Tree extends React.Component {
     }
   }
 
-  onCheck = (treeNode, e) => {
+  onCheck = (treeNode, e, item) => {
     const checked = !treeNode.props.checked || treeNode.props.halfChecked;
     const eventObj = Object.assign({}, e, {
       event: 'check',
@@ -294,10 +294,10 @@ class Tree extends React.Component {
     });
     const { onCheck } = this.props;
     const { checkKeys = {} } = this.state;
-    onCheck && onCheck(checkKeys.checkedKeys, eventObj);
+    onCheck && onCheck(checkKeys.checkedKeys, eventObj, item);
   };
 
-  onSelect(treeNode) {
+  onSelect(treeNode, itemObj) {
     const { props, state } = this;
     const eventKey = treeNode.props.eventKey;
     const selected = !treeNode.props.selected;
@@ -334,7 +334,7 @@ class Tree extends React.Component {
       node: treeNode,
       selectedNodes,
     };
-    props.onSelect(selectedKeys, eventObj);
+    props.onSelect(selectedKeys, eventObj, itemObj);
   }
 
   onContextMenu(e, treeNode, item) {
