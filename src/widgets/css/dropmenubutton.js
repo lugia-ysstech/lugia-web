@@ -448,6 +448,7 @@ export const DividedContainer = CSSComponent({
       ['font'],
       ['fontSize'],
       ['cursor'],
+      ['color'],
       ['boxShadow'],
       ['borderRadius'],
     ],
@@ -484,6 +485,7 @@ export const DividedContainer = CSSComponent({
       ['font'],
       ['fontSize'],
       ['cursor'],
+      ['color'],
       ['borderRadius'],
     ],
     getThemeMeta: () => {
