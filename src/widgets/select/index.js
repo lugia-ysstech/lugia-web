@@ -62,6 +62,7 @@ type SelectProps = {
   children?: any,
   query: string | number,
   prefix?: any,
+  suffix?: any,
   getPartOfThemeConfig: Function,
   canClear?: boolean,
   divided?: boolean,
@@ -69,6 +70,7 @@ type SelectProps = {
   autoHeight?: boolean,
   pullIconClass?: string,
   clearIconClass?: string,
+  isShowClearButton?: boolean,
 };
 type SelectState = {
   value: Array<string>,
@@ -113,6 +115,7 @@ class Select extends React.Component<SelectProps, SelectState> {
     query: '',
     pullIconClass: 'lugia-icon-direction_down',
     clearIconClass: 'lugia-icon-reminder_close',
+    isShowClearButton: true,
   };
   static displayName = Widget.Select;
 
@@ -327,10 +330,12 @@ class Select extends React.Component<SelectProps, SelectState> {
       canInput,
       createPortal,
       prefix,
+      suffix,
       data,
       canClear,
       pullIconClass,
       clearIconClass,
+      isShowClearButton,
     } = props;
     const { displayValue = [] } = this;
     const { value = [], query, isCheckedAll } = state;
@@ -377,6 +382,7 @@ class Select extends React.Component<SelectProps, SelectState> {
           <InputTag
             ref={this.inputTag}
             prefix={prefix}
+            suffix={suffix}
             key="inputtag"
             canClear={canClear}
             value={value}
@@ -391,6 +397,7 @@ class Select extends React.Component<SelectProps, SelectState> {
             onClear={this.onClear}
             pullIconClass={pullIconClass}
             clearIconClass={clearIconClass}
+            isShowClearButton={isShowClearButton}
           />
         </Trigger>
       </Theme>

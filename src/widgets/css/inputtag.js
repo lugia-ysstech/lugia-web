@@ -216,18 +216,23 @@ export const FlexResBox = StaticComponent({
   `,
 });
 
-export const Prefix = CSSComponent({
+export const Prefix = StaticComponent({
   tag: 'span',
   className: 'Prefix',
-  normal: {
-    selectNames: [],
-  },
-  hover: {
-    selectNames: [],
-  },
   css: css`
     position: relative;
     left: ${px2remcss(-5)};
+  `,
+});
+
+export const Suffix = StaticComponent({
+  tag: 'div',
+  className: 'Suffix',
+  css: css`
+    position: relative;
+    right: ${px2remcss(5)};
+    display: flex;
+    align-items: center;
   `,
 });
 
