@@ -81,9 +81,10 @@ export const Li = CSSComponent({
   normal: {
     selectNames: [],
     getCSS: (themeMeta, themeProps) => {
-      const { propsConfig: { dragState } = {} } = themeProps;
+      const { propsConfig: { dragState, marginBottom, hasChildren } = {} } = themeProps;
       const dragStateCss = getDragState(dragState);
-      return `${dragStateCss}`;
+      const marginValue = hasChildren ? 0 : marginBottom;
+      return `${dragStateCss};margin-bottom: ${px2remcss(marginValue)}`;
     },
   },
   hover: {
@@ -169,10 +170,12 @@ export const NavLi = CSSComponent({
   normal: {
     selectNames: [],
     getCSS: (themeMeta, themeProps) => {
-      const { propsConfig } = themeProps;
-      const { inlineType, itemHeight, selected } = propsConfig;
+      const {
+        propsConfig: { inlineType, itemHeight, selected, marginBottom, hasChildren } = {},
+      } = themeProps;
       const selectedCSS = getLiIcon(inlineType, itemHeight, selected);
-      return `${selectedCSS}`;
+      const marginValue = hasChildren ? 0 : marginBottom;
+      return `${selectedCSS};margin-bottom: ${px2remcss(marginValue)};`;
     },
   },
   hover: {
@@ -206,6 +209,10 @@ export const SubTreeWrap = CSSComponent({
       ['padding', 'left'],
       ['padding', 'right'],
     ],
+    getCSS: (themeMeta, themeProps) => {
+      const { propsConfig: { paddingTop } = {} } = themeProps;
+      return `padding-top: ${px2remcss(paddingTop)};`;
+    },
   },
   hover: {
     selectNames: [['background'], ['opacity'], ['border']],
@@ -240,11 +247,9 @@ export const TitleWrap = CSSComponent({
     ],
 
     getThemeMeta: (themeMeta, themeProps) => {
-      const { propsConfig } = themeProps;
-      const { selected, inlineType, __navmenu, shape } = propsConfig;
+      const { propsConfig: { selected, inlineType, __navmenu, shape } = {} } = themeProps;
 
       const borderRadius = shape === 'round' || inlineType === 'ellipse' ? 99999 : 4;
-
       const linearGradient = `linear-gradient(to right, ${themeColor}, #808eff)`;
       return __navmenu && selected && inlineType === 'ellipse'
         ? {
@@ -448,7 +453,6 @@ export const SuffixWrap = StaticComponent({
     height: 100%;
     right: ${px2remcss(12)};
     display: flex;
-    overflow: hidden;
     box-sizing: border-box;
     justify-content: center;
     align-items: center;

@@ -37,12 +37,14 @@ class TreeNode extends React.Component {
     isLeaf: PropTypes.bool,
     root: PropTypes.object,
     onSelect: PropTypes.func,
+    checkedCSS: 'checkbox' | 'none',
   };
 
   static contextTypes = contextTypes;
 
   static defaultProps = {
     title: defaultTitle,
+    checkedCSS: 'checkbox',
   };
 
   constructor(props) {
@@ -55,11 +57,11 @@ class TreeNode extends React.Component {
   }
 
   onCheck = e => {
-    this.props.root.onCheck(this, e);
+    this.props.root.onCheck(this, e, this.props.item);
   };
 
   onSelect() {
-    this.props.root.onSelect(this);
+    this.props.root.onSelect(this, this.props.item);
   }
 
   onMouseEnter = e => {
@@ -323,7 +325,9 @@ class TreeNode extends React.Component {
         >
           {!props.expanded ? null : (
             <SubTreeWrap
-              themeProps={this.props.getPartOfThemeProps('SubTreeWrap')}
+              themeProps={this.props.getPartOfThemeProps('SubTreeWrap', {
+                props: { paddingTop: props.marginBottom },
+              })}
               data-expanded={props.expanded}
               propsConfig={{ expanded: props.expanded }}
             >
@@ -590,6 +594,8 @@ class TreeNode extends React.Component {
       switchAtEnd,
       renderSuffixItems,
       eventKey,
+      checkedCSS,
+      marginBottom,
     } = props;
     const { dragState } = this.state;
     const expandedState = expanded ? 'open' : 'close';
@@ -637,7 +643,7 @@ class TreeNode extends React.Component {
       if (!props.disabled) {
         domProps.onClick = e => {
           e.preventDefault();
-
+          mutliple && this.onCheck(e);
           if (this.isSelectable()) {
             this.onSelect();
             if ((!props.describe && onlySelectLeaf) || expandedState === 'close') {
@@ -700,6 +706,8 @@ class TreeNode extends React.Component {
       itemHeight,
       inlineType,
       selected,
+      marginBottom,
+      hasChildren: !!item.children,
     });
 
     if (this.isChecked()) {
@@ -734,9 +742,8 @@ class TreeNode extends React.Component {
               ? this.renderSwitch(expandedState)
               : renderNoopSwitch()}
 
-            {props.checkable ? this.renderCheckbox() : selectHandle()}
+            {props.checkable && checkedCSS === 'checkbox' ? this.renderCheckbox() : selectHandle()}
             {renderSuffixItems ? this.getRenderSuffixItems(item) : null}
-
             {switchAtEnd && canRenderSwitch ? this.renderSwitch(expandedState) : null}
           </FlexBox>
         </FlexWrap>
