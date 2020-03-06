@@ -286,7 +286,6 @@ class MenuItem extends React.Component<MenuItemProps> {
       item = {},
       getPartOfThemeProps,
       renderSuffixItems,
-      marginBottom,
     } = this.props;
 
     let title = '';

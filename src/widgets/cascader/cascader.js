@@ -32,6 +32,7 @@ type CascaderProps = {
   onChange?: Function,
   separator?: string,
   value: string[],
+  divided?: Boolean,
   displayValue?: string[],
   disabled: boolean,
   displayField: string,
@@ -80,6 +81,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
       selectedKeys: getInitExpandedPath(props),
       inputValue: getInitInputValue(props),
       treeData: getTreeData(props),
+      divided: false,
     };
     this.menu = React.createRef();
   }
@@ -100,11 +102,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
   render() {
     const { props, state } = this;
     const { popupVisible, inputValue } = state;
-    const { placeholder, offsetY, disabled, createPortal, getPartOfThemeProps, data } = props;
-
-    const { InputTagWrap = {} } = this.props.getPartOfThemeConfig('InputTag');
-    const { normal = {} } = InputTagWrap;
-    const { width = 250 } = normal;
+    const { placeholder, offsetY, disabled, createPortal } = props;
 
     return (
       <Theme config={this.getInputtagTheme()}>
@@ -175,7 +173,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
   }
 
   getMenu = () => {
-    const { data, action, separator, offsetX, valueField, displayField } = this.props;
+    const { data, action, separator, offsetX, valueField, displayField, divided } = this.props;
     const { popupVisible, expandedPath, selectedKeys } = this.state;
 
     return (
@@ -184,6 +182,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
         mutliple={false}
         ref={this.menu}
         action={action}
+        divided={divided}
         popupVisible={popupVisible}
         onChange={this.onChange}
         handleIsInMenu={this.handleIsInMenu}
