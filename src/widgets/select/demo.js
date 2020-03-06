@@ -67,7 +67,9 @@ export default class Demo extends React.Component {
           theme={config}
           createPortal
           data={data}
+          onSelect={this.onSelect}
           isShowClearButton={false}
+          displayField={'label'}
           suffix={
             <Icon
               onClick={e => {
@@ -151,7 +153,9 @@ export default class Demo extends React.Component {
     this.setState({ value, displayValue });
   };
 
-  onSelect = obj => {};
+  onSelect = obj => {
+    console.log('obj', obj);
+  };
 
   onQuery = value => {
     console.log(value);
