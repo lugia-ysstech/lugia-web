@@ -9,7 +9,7 @@ import Select from './index';
 import Widget from '../consts/index';
 import styled from 'styled-components';
 import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
-
+import Icon from '../icon';
 const H2 = styled.h2`
   padding: 20px;
 `;
@@ -41,254 +41,7 @@ const config = {
   [Widget.Select]: {
     Container: {
       normal: {
-        width: 600,
-        height: 300,
-      },
-    },
-    Menu: {
-      Container: {
-        normal: {
-          width: 400,
-          height: 330,
-          // opacity: 0.7,
-          background: {
-            color: '#ccc',
-          },
-          padding: {
-            left: 10,
-            // top: 30,
-            right: 30,
-            bottom: 30,
-          },
-          margin: {
-            top: 20,
-          },
-          border: getBorder({ color: '#ff3366', width: 1, style: 'solid' }),
-          borderRadius: getBorderRadius(20),
-          boxShadow: getBoxShadow('2px 2px 2px 4px #ff3366'),
-        },
-        hover: {
-          background: {
-            color: '#ff66cc',
-          },
-          // opacity: 1,
-          border: getBorder({ color: '#ff66cc', width: 1, style: 'solid' }),
-          borderRadius: getBorderRadius(20),
-          boxShadow: getBoxShadow('2px 2px 2px 4px #ff66cc'),
-        },
-      },
-      MenuItem: {
-        MenuItemWrap: {
-          normal: {
-            height: 40,
-            background: { color: '#ff99cc' },
-            color: '#cc00cc',
-            // border: getBorder({ color: '#ff66cc', width: 1, style: 'solid' }),
-            borderRadius: getBorderRadius(20),
-            padding: {
-              left: 60,
-              top: 0,
-            },
-            font: {
-              size: 16,
-            },
-          },
-          hover: {
-            color: '#fff',
-            background: {
-              color: '#660066',
-            },
-            opacity: 0.9,
-            font: {
-              fontWeight: 900,
-            },
-            // border: getBorder({ color: '#ff66cc', width: 1, style: 'solid' }),
-            borderRadius: getBorderRadius(20),
-          },
-
-          active: {
-            color: '#4d63ff',
-            background: {
-              color: 'ff0099',
-            },
-            opacity: 0.9,
-            font: {
-              fontWeight: 900,
-            },
-            // border: getBorder({ color: '#660033', width: 1, style: 'solid' }),
-            borderRadius: getBorderRadius(60),
-          },
-
-          disabled: {
-            background: { color: '#ff99cc' },
-            color: 'red',
-            borderRadius: getBorderRadius(60),
-            opacity: 0.7,
-            padding: {
-              left: 30,
-              top: 0,
-            },
-            font: {
-              size: 26,
-            },
-          },
-        },
-
-        SelectedMenuItemWrap: {
-          normal: {
-            height: 80,
-            background: { color: '#cc00ff' },
-            color: '#fff',
-            // border: getBorder({ color: '#660033', width: 1, style: 'solid' }),
-            borderRadius: getBorderRadius(80),
-            padding: {
-              left: 30,
-            },
-            font: {
-              size: 20,
-            },
-          },
-          hover: {
-            color: '#4d63ff',
-            background: {
-              color: '#ffffcc',
-            },
-            opacity: 1,
-            font: {
-              fontWeight: 900,
-            },
-            // border: getBorder({ color: '#336699', width: 1, style: 'solid' }),
-            borderRadius: getBorderRadius(60),
-          },
-
-          active: {
-            color: '#cc0000',
-            background: {
-              color: 'ff9900',
-            },
-            opacity: 1,
-            font: {
-              fontWeight: 900,
-            },
-            // border: getBorder({ color: '#000033', width: 1, style: 'solid' }),
-            borderRadius: getBorderRadius(0),
-          },
-        },
-      },
-    },
-
-    TagWrap: {
-      normal: {
-        width: 100,
-        height: 40,
-        margin: {
-          left: 10,
-          right: 5,
-        },
-        background: {
-          color: 'pink',
-        },
-        padding: {
-          left: 10,
-          right: 10,
-        },
-
-        // border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }, { radius: 10 }),
-      },
-      hover: {
-        background: { color: 'orange' },
-      },
-    },
-    TagIcon: {
-      normal: {
-        font: { fontSize: 14, color: '#999' },
-      },
-      hover: {
-        color: '#4d63ff',
-      },
-    },
-    SwitchIcon: {
-      normal: {
-        // color: '#ddd',
-        font: { fontSize: 30 },
-        opacity: 0.1,
-      },
-      hover: { color: 'red', opacity: 1 },
-    },
-    InputMenu: {
-      Container: {
-        normal: {
-          width: 400,
-          height: 330,
-          // opacity: 0.7,
-          background: {
-            color: '#ccc',
-          },
-          padding: {
-            left: 10,
-            // top: 30,
-            right: 30,
-            bottom: 30,
-          },
-          margin: {
-            top: 20,
-          },
-          border: getBorder({ color: '#ff3366', width: 1, style: 'solid' }),
-          borderRadius: getBorderRadius(20),
-          boxShadow: getBoxShadow('2px 2px 2px 4px #ff3366'),
-        },
-        hover: {
-          background: {
-            color: '#ff66cc',
-          },
-          // opacity: 1,
-          border: getBorder({ color: '#ff66cc', width: 1, style: 'solid' }),
-          borderRadius: getBorderRadius(20),
-          boxShadow: getBoxShadow('2px 2px 2px 4px #ff66cc'),
-        },
-      },
-      MenuItem: {
-        MenuItemWrap: {
-          normal: {
-            height: 40,
-            background: { color: '#ff99cc' },
-            color: '#cc00cc',
-            // border: getBorder({ color: '#ff66cc', width: 1, style: 'solid' }),
-            borderRadius: getBorderRadius(20),
-            padding: {
-              left: 60,
-              top: 0,
-            },
-            font: {
-              size: 16,
-            },
-          },
-          hover: {
-            color: '#fff',
-            background: {
-              color: '#660066',
-            },
-            opacity: 0.9,
-            font: {
-              fontWeight: 900,
-            },
-            // border: getBorder({ color: '#ff66cc', width: 1, style: 'solid' }),
-            borderRadius: getBorderRadius(20),
-          },
-
-          active: {
-            color: '#4d63ff',
-            background: {
-              color: 'ff0099',
-            },
-            opacity: 0.9,
-            font: {
-              fontWeight: 900,
-            },
-            // border: getBorder({ color: '#660033', width: 1, style: 'solid' }),
-            borderRadius: getBorderRadius(60),
-          },
-        },
+        width: 300,
       },
     },
   },
@@ -304,26 +57,36 @@ export default class Demo extends React.Component {
   }
 
   render() {
-    const { value, displayValue } = this.state;
+    const { value } = this.state;
 
     return (
       <Box>
-        <H2>single</H2>
+        <H2>select 自定义后缀 demo</H2>
+
         <Select
           theme={config}
           createPortal
           data={data}
-          displayField={'label'}
-          mutliple
-          // value={value}
-          // displayValue={value}
-          throttle={1000}
-          onQuery={this.onQuery}
-          canSearch
-          onChange={this.handleChange}
-          onTrigger={this.onTrigger}
-          onQuery={this.handleQuery}
-          onSelect={this.handleSelect}
+          isShowClearButton={false}
+          suffix={
+            <Icon
+              onClick={e => {
+                console.log('suffix');
+                e.stopPropagation();
+              }}
+              iconClass={'lugia-icon-reminder_refresh'}
+            />
+          }
+          prefix={
+            <Icon
+              onClick={e => {
+                console.log('prefix');
+                e.stopPropagation();
+              }}
+              iconClass={'lugia-icon-financial_like'}
+            />
+          }
+          mutliple={false}
         />
 
         <H2>single search</H2>
