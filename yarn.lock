@@ -1347,10 +1347,10 @@
   dependencies:
     "@lugia/react-devtools-core" "^1.0.3"
 
-"@lugia/theme-hoc@^1.0.48":
-  version "1.0.48"
-  resolved "https://registry.npmjs.org/@lugia/theme-hoc/-/theme-hoc-1.0.48.tgz#a1557271dfb91986a43954824a33cda4d39f53c6"
-  integrity sha512-kSMtX24JMO0NISnyhBRWPH1xqlHp/IG+OdlIkYt8xj3WsbHGaIEOOBzrzxiNPbVzElsXEbznJU9qKykGe8bONQ==
+"@lugia/theme-hoc@^1.0.49":
+  version "1.0.49"
+  resolved "http://192.168.102.79:5001/@lugia/theme-hoc/download/@lugia/theme-hoc-1.0.49.tgz#21db4d55f0fa56eef4092d4287b47771baccbcd3"
+  integrity sha1-IdtNVfD6Vu70CS1Ch7R3cbrMvNM=
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/object-utils" "^1.0.15"
