@@ -537,6 +537,15 @@
           "disabled": []
         },
 
+        "SelectedDesContainer": {
+          "name": "选中项辅助字段框",
+          "desc": "配置被选中项的辅助文本的样式和位置",
+          "normal": [["color"], ["font"], ["fontSize"], ["padding"]],
+          "hover": [],
+          "active": [],
+          "disabled": []
+        },
+
         "PrefixIcon": {
           "name": "前置图标配置",
           "desc": "前置图标或图片的样式配置",
