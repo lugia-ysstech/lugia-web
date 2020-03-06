@@ -47,6 +47,7 @@ export type MenuItemProps = {
   mutliple: boolean,
   menuItemHeight: number,
   switchIconClass: Object,
+  marginBottom?: Number,
   renderSuffixItems?: Function,
   getPartOfThemeHocProps: Function,
   getPartOfThemeProps: Function,
@@ -285,6 +286,7 @@ class MenuItem extends React.Component<MenuItemProps> {
       item = {},
       getPartOfThemeProps,
       renderSuffixItems,
+      marginBottom,
     } = this.props;
 
     let title = '';
