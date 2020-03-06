@@ -125,6 +125,7 @@ export const ItemWrap = CSSComponent({
       ['background'],
       ['opacity'],
       ['boxShadow'],
+      ['margin', 'bottom'],
     ],
     defaultTheme: {
       cursor: 'pointer',
