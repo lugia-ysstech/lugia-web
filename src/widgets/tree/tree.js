@@ -66,6 +66,7 @@ export type TreeProps = {
   shape: 'default' | 'round',
   showSwitch: boolean,
   __navmenu: boolean,
+  __dontShowEmpty?: boolean,
   switchAtEnd?: boolean,
   switchIconNames?: Object,
   getPartOfThemeProps: Function,
@@ -148,6 +149,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
         selectValue: [],
         selectedInfo: this.getEmptyNodeId2SelectInfo(),
         parentHighlightKeys: [],
+        __dontShowEmpty: false,
       };
       return;
     }
@@ -447,7 +449,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
   render() {
     const { props, state } = this;
     const empty = <Empty themeProps={props.getPartOfThemeProps('Container')} />;
-    if (this.isEmpty(props)) {
+    const { __dontShowEmpty } = props;
+    if (this.isEmpty(props) && !__dontShowEmpty) {
       return empty;
     }
     if (this.state.hasError) {
@@ -479,7 +482,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     this.data = data;
     getTreeData && getTreeData(data);
 
-    if (data.length === 0) {
+    if (data.length === 0 && !__dontShowEmpty) {
       return empty;
     }
     if (this.isQueryAll(props)) {
@@ -534,7 +537,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     return (this.data = utils.search(expand, query, searchType, blackList, whiteList));
   }
 
-  onSelect = (selectValue: Array<string>, eventObject: any) => {
+  onSelect = (selectValue: Array<string>, eventObject: any, itemObj: Object) => {
     const { parentIsHighlight } = this.props; // 是否开启选中子节点，父节点高亮
     const {
       node: {
@@ -550,11 +553,11 @@ class Tree extends React.Component<TreeProps, TreeState> {
       parentHighlightKeys = nodePath.split('/');
     }
     const { onSelect } = this.props;
-    onSelect && onSelect(selectValue);
-    this.select(selectValue, parentHighlightKeys);
+    onSelect && onSelect(selectValue, itemObj);
+    this.select(selectValue, parentHighlightKeys, itemObj);
   };
 
-  select(selectValue: Array<string>, parentHighlightKeys: Array<string>) {
+  select(selectValue: Array<string>, parentHighlightKeys: Array<string>, itemObj: Object) {
     if (this.isSingleSelect() === false) {
       return;
     }
@@ -580,19 +583,19 @@ class Tree extends React.Component<TreeProps, TreeState> {
         }
       }
     }
-    this.onChange([value]);
+    this.onChange([value], itemObj);
     if (this.isNotLimit(props)) {
       this.setState({ selectValue, parentHighlightKeys });
     }
   }
 
-  onCheck = (_, event) => {
+  onCheck = (_, event, item) => {
     const { node, checked, shiftKey } = event;
     const { eventKey } = node.props;
-    this.check(eventKey, checked, shiftKey);
+    this.check(eventKey, checked, shiftKey, item);
   };
 
-  check(eventKey: string, checked: boolean, shiftKey: boolean = false) {
+  check(eventKey: string, checked: boolean, shiftKey: boolean = false, item: Object) {
     const { state, props } = this;
 
     const { selectedInfo } = state;
@@ -610,7 +613,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const check = shiftKey ? onlyProcessYouself : processAllNode;
     check.call(utils, eventKey, selectedInfo, id2ExtendInfo);
 
-    this.onChange(Object.keys(value));
+    this.onChange(Object.keys(value), item, checked);
     if (this.isNotLimit(props)) {
       const newState: TreeState = {
         start: this.state.start,
@@ -651,11 +654,11 @@ class Tree extends React.Component<TreeProps, TreeState> {
     return result;
   }
 
-  onChange = (value: any) => {
+  onChange = (value: any, item: Object, checked: boolean) => {
     this.value = value;
     const { props } = this;
     const { onChange } = props;
-    onChange && onChange(value, this.getTitle(value));
+    onChange && onChange(value, this.getTitle(value), { item, checked });
   };
 
   getTitle(value: Array<string>): Array<string> {
