@@ -30,12 +30,12 @@ import {
   InnerContainer,
   SingleInnerContainer,
   Prefix,
+  Suffix,
   CommonIcon,
   FlexResBox,
   List,
   HiddenList,
   FocuInput,
-  InputTagTheme,
 } from '../css/inputtag';
 import ErrorTip from '../tooltip/ErrorTip';
 import { px2remcss } from '../css/units';
@@ -72,6 +72,7 @@ type InputTagProps = {
   onClear?: Function,
   onPopupVisibleChange?: Function,
   prefix?: any,
+  suffix?: any,
   getPartOfThemeHocProps: Function,
   getPartOfThemeProps: Function,
   getPartOfThemeConfig: Function,
@@ -222,8 +223,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       />
     );
     const { focus } = state;
-    const { disabled, validateStatus, prefix, getPartOfThemeProps, createPortal } = props;
-
+    const { disabled, validateStatus, prefix, suffix, getPartOfThemeProps, createPortal } = props;
     const themeProps = getPartOfThemeProps('InputTagWrap');
     if (!this.isMutliple()) {
       result = this.generateOutter(
@@ -234,6 +234,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
             {this.getSingleValue()}
             <FocuInput />
           </FlexResBox>
+          {suffix ? <Suffix>{suffix}</Suffix> : null}
           {clearButton}
         </SingleInnerContainer>
       );
@@ -334,7 +335,11 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       getPartOfThemeHocProps,
       clearIconClass,
       disabled,
+      isShowClearButton,
     } = this.props;
+    if (!isShowClearButton) {
+      return null;
+    }
     const theme =
       this.isEmpty() || !canClear
         ? getPartOfThemeHocProps('SwitchIcon')
