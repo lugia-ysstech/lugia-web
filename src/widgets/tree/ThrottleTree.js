@@ -119,6 +119,8 @@ class ScrollerTree extends React.Component<any, any> {
         igronSelectField,
         onlySelectLeaf,
         switchAtEnd,
+        checkedCSS,
+        marginBottom,
       } = this.props;
 
       const {
@@ -173,6 +175,8 @@ class ScrollerTree extends React.Component<any, any> {
             translateTreeData={translateTreeData}
             icon={icon}
             icons={icons}
+            checkedCSS={checkedCSS}
+            marginBottom={marginBottom}
           >
             {this.loopNode(children)}
           </TreeNode>
@@ -201,6 +205,8 @@ class ScrollerTree extends React.Component<any, any> {
           onlySelectLeaf={onlySelectLeaf}
           translateTreeData={translateTreeData}
           icon={icon}
+          checkedCSS={checkedCSS}
+          marginBottom={marginBottom}
         />
       );
     });

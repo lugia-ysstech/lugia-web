@@ -82,20 +82,28 @@ export default (
       this.itemHeight = this.getActiveItemHeight(props);
       this.scrollerTarget = React.createRef();
       this.viewSize = this.fetchViewSize();
+      this.marginBottom = this.getItemMarginBottom();
     }
 
     componentWillUpdate() {
       this.viewSize = this.fetchViewSize();
     }
 
-    getActiveItemHeight = (props: Object) => {
-      const { getPartOfThemeConfig } = props;
+    getItemWrapThemeConfig = () => {
+      const { getPartOfThemeConfig } = this.props;
       const ItemName = TargetItemNames[0];
       const ItemWrapName = TargetItemNames[1];
       const themeConfig = getPartOfThemeConfig(ItemName);
-      const ItemWrapThemeConfig = themeConfig[ItemWrapName] ? themeConfig[ItemWrapName] : {};
-      const { normal = {} } = ItemWrapThemeConfig;
-      const { height = MenuItemHeight } = normal;
+      return themeConfig[ItemWrapName] ? themeConfig[ItemWrapName] : {};
+    };
+
+    getItemMarginBottom() {
+      const { normal: { margin: { bottom = 0 } = {} } = {} } = this.getItemWrapThemeConfig();
+      return isNaN(bottom) ? 0 : bottom;
+    }
+
+    getActiveItemHeight = (props: Object) => {
+      const { normal: { height = MenuItemHeight } = {} } = this.getItemWrapThemeConfig();
       return height;
     };
 
@@ -161,6 +169,7 @@ export default (
             itemHeight={this.itemHeight}
             ref={this.scrollerTarget}
             defaultHeight={this.getDefaultHeight()}
+            marginBottom={this.marginBottom}
           />
         );
       }
@@ -180,6 +189,7 @@ export default (
             itemHeight={this.itemHeight}
             ref={this.scrollerTarget}
             defaultHeight={this.getDefaultHeight()}
+            marginBottom={this.marginBottom}
           />
         </Col>,
         <ScrollerCol level={level} themeProps={themeProps} isDrag={this.isDrag}>
@@ -253,7 +263,7 @@ export default (
         normal: { padding: { top = 0, bottom = 0 } = {} } = {},
       } = this.props.getPartOfThemeConfig(TargetWrapName);
 
-      return length * this.itemHeight + remainder + top + bottom;
+      return length * this.itemHeight + remainder + top + bottom + length * this.marginBottom;
     }
 
     getTarget(): Array<any> {
