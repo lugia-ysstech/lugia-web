@@ -9,7 +9,6 @@ import Item from './item';
 import '../common/shirm';
 import ThemeHoc from '@lugia/theme-hoc';
 import * as React from 'react';
-import { getBoxShadow } from '@lugia/theme-utils';
 import { deepMerge } from '@lugia/object-utils';
 import { DefaultHeight, DefaultMenuItemHeight, MenuContainer, MenuItemHeight } from '../css/menu';
 import ThrolleScroller from '../scroller/ThrottleScroller';
@@ -89,6 +88,7 @@ export type MenuProps = {
   divided: boolean,
   theme: Object,
   itemHeight: number,
+  marginBottom?: Number,
   renderSuffixItems?: Function,
   getPartOfThemeProps: Function,
   getPartOfThemeConfig: Function,
@@ -259,6 +259,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
           displayField,
           divided: propsDivided,
           itemHeight,
+          marginBottom,
           renderSuffixItems,
         } = this.props;
 
@@ -283,6 +284,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
             value={value}
             icon={icon}
             icons={icons}
+            marginBottom={marginBottom}
             renderSuffixItems={renderSuffixItems}
           />
         );
