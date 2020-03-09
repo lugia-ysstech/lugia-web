@@ -19,7 +19,7 @@ class TreeDragController {
   isDrag: boolean;
   dragCopyListener: Listener;
   dragNode: Object;
-  isFirstLeave: Listener = true;
+  isFirstLeave: boolean;
   previousDragEnd: Function;
   dragStart: boolean;
   oldMousePosition: Object;
@@ -27,6 +27,7 @@ class TreeDragController {
   constructor() {
     this.treeDrags = {};
     this.groups = {};
+    this.isFirstLeave = true;
   }
   createTreeDrag = (props: createTreeDragParameter = {}) => {
     const treeGragUUID = this.createUUid();
