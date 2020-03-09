@@ -154,9 +154,9 @@ class Tree extends React.Component {
     );
   };
   onMouseLeave = mouseEvent => {
-    const { onMouseLeave, onDragLeave, onDragEnd } = this.props;
+    const { onMouseLeave, onDragLeave, onDragEnd, isIgnoreDragOut } = this.props;
     const eventFn = onDragLeave;
-    this.treeDrag.mouseLeave(mouseEvent, eventFn, onDragEnd);
+    this.treeDrag.mouseLeave(mouseEvent, eventFn, onDragEnd, { isIgnoreDragOut });
   };
   onMouseEnter = mouseEvent => {
     const { onDragEnter } = this.props;

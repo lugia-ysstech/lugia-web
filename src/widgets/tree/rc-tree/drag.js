@@ -19,6 +19,7 @@ class TreeDragController {
   isDrag: boolean;
   dragCopyListener: Listener;
   dragNode: Object;
+  isFirstLeave: Listener = true;
   previousDragEnd: Function;
   dragStart: boolean;
   oldMousePosition: Object;
@@ -118,6 +119,7 @@ class TreeDragController {
     document.removeEventListener('mousemove', this.documentMouseMove);
     document.removeEventListener('mouseup', this.documentMouseUp);
     this.previousDragEnd && this.previousDragEnd();
+    this.isFirstLeave = true;
     this.dragNode = undefined;
     this.isDrag = false;
     this.dragStart = false;
@@ -266,6 +268,7 @@ class TreeDrag {
     const sameGroup = treeDragController.isSameGroup(this.groupKey, this.uuid);
     sameGroup && callback(res);
     treeDragController.previousDragEnd && treeDragController.previousDragEnd();
+    treeDragController.isFirstLeave = true;
     treeDragController.oldMousePosition = undefined;
     treeDragController.treeSource = '';
     treeDragController.dragNode = undefined;
@@ -315,26 +318,32 @@ class TreeDrag {
   mouseLeave(
     mouseEvent: SyntheticMouseEvent<HTMLButtonElement>,
     eventFn: Function,
-    onDragEnd: Function
+    onDragEnd: Function,
+    opt?: object
   ) {
     if (!treeDragController.isDrag || !treeDragController.dragNode) return;
+    const { isIgnoreDragOut } = opt;
+    const isSelf = treeDragController.treeSource === this.uuid;
     clearTimeout(this.mouseTimer);
     this.listener.emit(`${this.preName}-setDrageState`, '');
     this.listener.emit('copyEnd');
-    if (this.isShowDargCopyDiv()) {
+    if (this.isShowDargCopyDiv() || (isIgnoreDragOut && isSelf)) {
       treeDragController.dragStart = false;
       treeDragController.isDrag = false;
     } else {
       treeDragController.createDragCopyDiv();
-      treeDragController.previousDragEnd = onDragEnd;
+      treeDragController.isFirstLeave && (treeDragController.previousDragEnd = onDragEnd);
+      treeDragController.isFirstLeave = false;
     }
     const nodeData = treeDragController.getDragNodeData();
     eventFn && eventFn({ mouseEvent, nodeData });
   }
   onMouseEnter(mouseEvent: SyntheticMouseEvent<HTMLButtonElement>, onMouseEnter: Function) {
-    if (!treeDragController.isDrag) return;
-    treeDragController.destroyDragCopyDiv();
-    const nodeData = treeDragController.getDragNodeData();
+    let nodeData = {};
+    if (!treeDragController.isDrag) {
+      treeDragController.destroyDragCopyDiv();
+      nodeData = treeDragController.getDragNodeData();
+    }
     onMouseEnter && onMouseEnter({ mouseEvent, nodeData });
   }
 
