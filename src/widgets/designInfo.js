@@ -6744,6 +6744,14 @@ export default [
               active: [['color'], ['font'], ['fontSize']],
               disabled: [],
             },
+            SelectedDesContainer: {
+              name: '选中项辅助字段框',
+              desc: '配置被选中项的辅助文本的样式和位置',
+              normal: [['color'], ['font'], ['fontSize'], ['padding']],
+              hover: [],
+              active: [],
+              disabled: [],
+            },
             PrefixIcon: {
               name: '前置图标配置',
               desc: '前置图标或图片的样式配置',
@@ -16316,7 +16324,6 @@ export default [
           meta: [],
           desc: '数据源，指定 table 组件的数据',
           propsDefaultValue: [],
-          translteAsset: '()=>{}',
           defaultValue: [
             { name: 'Jack', age: 28, address: 'some where' },
             { name: 'Rose', age: 36, address: 'some where' },
