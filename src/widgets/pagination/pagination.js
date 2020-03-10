@@ -803,7 +803,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     const { newValue } = obj;
     const numberValue = Number(newValue);
     if (current !== numberValue) {
-      this.setState({ current: numberValue });
+      this.handleChangePage(numberValue);
     }
   };
 
