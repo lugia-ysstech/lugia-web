@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import Icon from '../../icon';
-import styled from 'styled-components';
 import Theme from '../../theme';
 import Widget from '../../consts/index';
-const IconWrap = styled.div``;
 
 class Suffix extends Component {
   state = {
@@ -47,7 +45,7 @@ class Suffix extends Component {
     return (
       <React.Fragment>
         {suffix && typeof suffix === 'string' ? (
-          <IconWrap onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
+          <div onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
             {isEnter ? (
               <span>{this.clearBtn()}</span>
             ) : (
@@ -55,7 +53,7 @@ class Suffix extends Component {
                 <Icon iconClass={suffix} />
               </span>
             )}
-          </IconWrap>
+          </div>
         ) : value ? (
           this.clearBtn()
         ) : (
