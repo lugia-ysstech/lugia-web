@@ -1,6 +1,6 @@
 {
   "name": "@lugia/lugia-web",
-  "version": "1.2.1-alpha-9",
+  "version": "1.2.2-alpha-0",
   "keywords": [
     "lugia",
     "design",
@@ -83,7 +83,7 @@
     "@lugia/devtools-material": "^1.0.40",
     "@lugia/jverify": "^1.0.10",
     "@lugia/lugiax-router": "^1.0.22",
-    "@lugia/mega-scripts": "^1.4.11",
+    "@lugia/mega-scripts": "^1.4.17",
     "@lugia/react-test-utils": "^1.0.1",
     "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",
