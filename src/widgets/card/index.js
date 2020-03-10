@@ -44,6 +44,7 @@ const CardOutContainer = CSSComponent({
       ['height'],
       ['background'],
       ['boxShadow'],
+      ['overflow'],
       ['border'],
       ['borderRadius'],
       ['margin'],
