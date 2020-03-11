@@ -733,10 +733,12 @@ class Select extends React.Component<SelectProps, SelectState> {
   };
 
   componentDidMount() {
-    const menuWidth = this.inputTag.current.getThemeTarget().container.offsetWidth;
-    this.setState({
-      menuWidth,
-    });
+    setTimeout(() => {
+      const menuWidth = this.inputTag.current.getThemeTarget().container.offsetWidth;
+      this.setState({
+        menuWidth,
+      });
+    }, 0);
   }
 }
 
