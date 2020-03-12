@@ -409,6 +409,43 @@ export default class extends React.Component<any, any> {
             </DropMenu>
           </Box>
         </div>
+
+        <h1>createPortal 为false </h1>
+        <Box>
+          <DropMenu
+            text={'下拉菜单'}
+            divided={true}
+            onClick={this.onClick}
+            _onClick={this._onClick}
+            theme={view}
+            createPortal={false}
+            // disabled
+            menus={menu}
+            icons={{
+              prefixIconClass: 'lugia-icon-direction_backward',
+              suffixIconClass: 'lugia-icon-direction_play_circle',
+              prefixIconSrc: imgs,
+            }}
+          ></DropMenu>
+        </Box>
+        <h1>createPortal 为 true </h1>
+        <Box>
+          <DropMenu
+            text={'下拉菜单'}
+            divided={true}
+            onClick={this.onClick}
+            _onClick={this._onClick}
+            theme={view}
+            createPortal={true}
+            // disabled
+            menus={menu}
+            icons={{
+              prefixIconClass: 'lugia-icon-direction_backward',
+              suffixIconClass: 'lugia-icon-direction_play_circle',
+              prefixIconSrc: imgs,
+            }}
+          ></DropMenu>
+        </Box>
       </div>
     );
   }
