@@ -55,7 +55,6 @@ const CommonInputStyle = CSSComponent({
     ],
     defaultTheme: {
       cursor: 'text',
-      border: getBorder({ color: borderColor, width: borderSize, style: 'solid' }),
       borderRadius: getBorderRadius(borderRadius),
       fontSize: 12,
     },
@@ -80,23 +79,30 @@ const CommonInputStyle = CSSComponent({
       const {
         propsConfig: { prefix, validateStatus, validateType, suffix, isShowClearButton },
       } = themeProps;
-      const { width, color } = themeMeta;
+      const { width, color, border, boxShadow } = themeMeta;
+
+      const paddingLeft = prefix ? 30 : width && width < 200 ? width / 20 : padding;
+      const paddingRight =
+        suffix || isShowClearButton ? 35 : width && width < 200 ? 15 + width / 10 : padding;
       const theColor = color
         ? color
         : checkValidateResultFromStatusAndType(validateStatus, 'error', validateType, 'inner')
         ? dangerColor
         : blackColor;
-
-      const paddingLeft = prefix ? 30 : width && width < 200 ? width / 20 : padding;
-      const paddingRight =
-        suffix || isShowClearButton ? 35 : width && width < 200 ? 15 + width / 10 : padding;
-      const shadowCSS = isValidateError(validateStatus)
-        ? getBoxShadow(`${hShadow}px ${vShadow}px ${shadowSpread}px rgba（242,29,53,0.1）`)
+      const shadowCSS = boxShadow
+        ? boxShadow
+        : isValidateError(validateStatus)
+        ? getBoxShadow(
+            `${hShadow}px ${vShadow}px ${shadowSpread}px ${changeColor(dangerColor, 0, 0, 10).rgba}`
+          )
         : {};
-      const borderColor = isValidateError(validateStatus) ? dangerColor : '';
+      const theBorderColor = isValidateError(validateStatus) ? dangerColor : borderColor;
+      const borderOBJ = border
+        ? border
+        : { color: theBorderColor, width: borderSize, style: 'solid' };
       return {
         boxShadow: shadowCSS,
-        border: getBorder({ color: borderColor, width: borderSize, style: 'solid' }),
+        border: getBorder(borderOBJ),
         color: theColor,
         padding: {
           left: paddingLeft,
@@ -116,16 +122,19 @@ const CommonInputStyle = CSSComponent({
       ['boxShadow'],
     ],
     defaultTheme: {
-      border: getBorder({ color: themeColor, width: borderSize, style: 'solid' }),
       borderRadius: getBorderRadius(borderRadius),
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
         propsConfig: { validateStatus },
       } = themeProps;
-      const borderColor = isValidateError(validateStatus) ? dangerColor : '';
+      const { border } = themeMeta;
+      const theBorderColor = isValidateError(validateStatus) ? dangerColor : themeColor;
+      const borderOBJ = border
+        ? border
+        : { color: theBorderColor, width: borderSize, style: 'solid' };
       return {
-        border: getBorder({ color: borderColor, width: borderSize, style: 'solid' }),
+        border: getBorder(borderOBJ),
       };
     },
   },
@@ -134,15 +143,14 @@ const CommonInputStyle = CSSComponent({
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
         propsConfig: { validateStatus },
-        themeState: { disabled },
       } = themeProps;
-      const theColor = disabled
-        ? disableColor
-        : !isValidateError(validateStatus)
-        ? changeColor(themeColor, 0, 0, 20).rgba
-        : changeColor(dangerColor, 0, 0, 20).rgba;
-      const shadow = `${hShadow}px ${vShadow}px ${shadowSpread}px ${theColor}`;
-      return { boxShadow: getBoxShadow(shadow) };
+      const { boxShadow } = themeMeta;
+      const theColor = isValidateError(validateStatus)
+        ? changeColor(dangerColor, 0, 0, 20).rgba
+        : changeColor(themeColor, 0, 0, 20).rgba;
+      const shadowCSS = `${hShadow}px ${vShadow}px ${shadowSpread}px ${theColor}`;
+      const shadowOBJ = boxShadow ? boxShadow : getBoxShadow(shadowCSS);
+      return { boxShadow: shadowOBJ };
     },
   },
   disabled: {
@@ -244,6 +252,12 @@ export const TipBottom = CSSComponent({
       const theVisibility = isValidateError(validateStatus) ? 'visible' : 'hidden';
       return `visibility:${theVisibility}`;
     },
+  },
+  hover: {
+    selectNames: [],
+  },
+  active: {
+    selectNames: [],
   },
 });
 
@@ -468,7 +482,10 @@ class TextBox extends Component<InputProps, InputState> {
     const { props } = this;
     const { validateType, size, help, validateStatus, prefix, getPartOfThemeHocProps } = props;
     const result = this.getInputContainer(this.getInputInner);
-    const { theme: validateTopTipThemeProps, viewClass } = getPartOfThemeHocProps('ValidateTopTip');
+
+    const { theme: validateTopTipThemeProps, viewClass } = getPartOfThemeHocProps(
+      'ValidateErrorText'
+    );
     const newTheme = {
       [viewClass]: {
         Container: deepMerge(
@@ -480,7 +497,7 @@ class TextBox extends Component<InputProps, InputState> {
               },
             },
           },
-          validateTopTipThemeProps
+          validateTopTipThemeProps[viewClass]
         ),
         TooltipTitle: deepMerge(
           { normal: { color: defaultColor } },
@@ -621,19 +638,13 @@ class TextBox extends Component<InputProps, InputState> {
 
     const validateErrorInputThemeProps = getPartOfThemeProps('ValidateErrorInput');
 
-    const theValidateThemeProps = checkValidateResultFromStatusAndType(
-      validateStatus,
-      'error',
-      validateType,
-      'inner'
-    )
+    const theValidateThemeProps = isValidateError(validateStatus)
       ? validateErrorInputThemeProps
       : {};
 
     const theThemeProps = deepMerge(
       this.props.getPartOfThemeProps('Input', {
         props: {
-          validateType,
           validateStatus,
           prefix,
           suffix,

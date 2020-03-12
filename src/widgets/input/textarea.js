@@ -61,7 +61,6 @@ const Textarea = CSSComponent({
     ],
     defaultTheme: {
       cursor: 'text',
-      border: getBorder({ color: borderColor, width: borderSize, style: 'solid' }),
       borderRadius: getBorderRadius(borderRadius),
       fontSize: 12,
     },
@@ -97,22 +96,30 @@ const Textarea = CSSComponent({
       const {
         propsConfig: { validateStatus, validateType },
       } = themeProps;
-      const { width, color } = themeMeta;
+      const { width, color, border, boxShadow } = themeMeta;
+
+      const paddingLeft = width && width < 200 ? width / 20 : padding;
+      const paddingRight = 35;
+
       const theColor = color
         ? color
         : checkValidateResultFromStatusAndType(validateStatus, 'error', validateType, 'inner')
         ? dangerColor
         : blackColor;
-      const paddingLeft = width && width < 200 ? width / 20 : padding;
-      const paddingRight = 35;
-
-      const shadowCSS = isValidateError(validateStatus)
-        ? getBoxShadow(`${hShadow}px ${vShadow}px ${shadowSpread}px rgba（242,29,53,0.1）`)
+      const shadowCSS = boxShadow
+        ? boxShadow
+        : isValidateError(validateStatus)
+        ? getBoxShadow(
+            `${hShadow}px ${vShadow}px ${shadowSpread}px ${changeColor(dangerColor, 0, 0, 10).rgba}`
+          )
         : {};
-      const borderColor = isValidateError(validateStatus) ? dangerColor : '';
+      const theBorderColor = isValidateError(validateStatus) ? dangerColor : borderColor;
+      const borderOBJ = border
+        ? border
+        : { color: theBorderColor, width: borderSize, style: 'solid' };
       return {
         boxShadow: shadowCSS,
-        border: getBorder({ color: borderColor, width: borderSize, style: 'solid' }),
+        border: getBorder(borderOBJ),
         color: theColor,
         padding: {
           left: paddingLeft,
@@ -133,16 +140,17 @@ const Textarea = CSSComponent({
       ['boxShadow'],
     ],
     defaultTheme: {
-      border: getBorder({ color: themeColor, width: borderSize, style: 'solid' }),
       borderRadius: getBorderRadius(borderRadius),
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
         propsConfig: { validateStatus },
       } = themeProps;
-      const borderColor = isValidateError(validateStatus) ? dangerColor : '';
+      const { border } = themeMeta;
+      const borderColor = isValidateError(validateStatus) ? dangerColor : themeColor;
+      const borderOBJ = border ? border : { color: borderColor, width: borderSize, style: 'solid' };
       return {
-        border: getBorder({ color: borderColor, width: borderSize, style: 'solid' }),
+        border: getBorder(borderOBJ),
       };
     },
   },
@@ -155,9 +163,9 @@ const Textarea = CSSComponent({
       } = themeProps;
       const theColor = disabled
         ? disableColor
-        : !isValidateError(validateStatus)
-        ? changeColor(themeColor, 0, 0, 20).rgba
-        : changeColor(dangerColor, 0, 0, 20).rgba;
+        : isValidateError(validateStatus)
+        ? changeColor(dangerColor, 0, 0, 20).rgba
+        : changeColor(themeColor, 0, 0, 20).rgba;
       const shadow = `${hShadow}px ${vShadow}px ${shadowSpread}px ${theColor}`;
       return { boxShadow: getBoxShadow(shadow) };
     },
@@ -344,7 +352,10 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
     const { props } = this;
     const { validateType, help, validateStatus, getPartOfThemeHocProps } = props;
     const result = this.getTextareaContainer();
-    const { theme: validateTopTipThemeProps, viewClass } = getPartOfThemeHocProps('ValidateTopTip');
+
+    const { theme: validateTopTipThemeProps, viewClass } = getPartOfThemeHocProps(
+      'ValidateErrorText'
+    );
     const newTheme = {
       [viewClass]: {
         Container: deepMerge(
@@ -356,7 +367,7 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
               },
             },
           },
-          validateTopTipThemeProps
+          validateTopTipThemeProps[viewClass]
         ),
         TooltipTitle: deepMerge(
           { normal: { color: defaultColor } },

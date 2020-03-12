@@ -45,14 +45,7 @@ export class LimitTextarea extends React.Component<any, any> {
     return <Textarea value={this.state.value} onChange={this.onChange} />;
   }
 }
-const topConfig = {
-  [Widget.Input]: {
-    ValidateTopTip: {
-      Container: { normal: { background: { color: 'black' } } },
-      TooltipTitle: { normal: { color: 'white' } },
-    },
-  },
-};
+
 export class ValidateInput extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
@@ -115,13 +108,11 @@ export class TopInput extends React.Component<any, any> {
     const { validateType } = this.props;
 
     return (
-      <Theme config={topConfig}>
-        <Input
-          onChange={this.onChange}
-          validateType={validateType}
-          validateStatus={this.state.validateStatus}
-        />
-      </Theme>
+      <Input
+        onChange={this.onChange}
+        validateType={validateType}
+        validateStatus={this.state.validateStatus}
+      />
     );
   }
 }
@@ -201,13 +192,11 @@ export class TopTextarea extends React.Component<any, any> {
   render() {
     const { validateType } = this.props;
     return (
-      <Theme config={topConfig}>
-        <Textarea
-          onChange={this.onChange}
-          validateType={validateType}
-          validateStatus={this.state.validateStatus}
-        />
-      </Theme>
+      <Textarea
+        onChange={this.onChange}
+        validateType={validateType}
+        validateStatus={this.state.validateStatus}
+      />
     );
   }
 }
@@ -289,12 +278,10 @@ const InputDemo = () => {
         <Input placeholder={'请填写金额'} formatter={formatter} parser={parser} />
       </Wrapper>
       <Wrapper>
-        <Theme config={register}>
-          <p>校验信息显示类型 top 输入值 是否含有a</p>
-          <TopInput validateType="top" onChange={onChange('limit')} />
-          <p>校验信息显示类型 bottom 输入值 是否含有a</p>
-          <ValidateInput validateType="bottom" onChange={onChange('limit')} />
-        </Theme>
+        <p>校验信息显示类型 top 输入值 是否含有a</p>
+        <TopInput validateType="top" onChange={onChange('limit')} />
+        <p>校验信息显示类型 bottom 输入值 是否含有a</p>
+        <ValidateInput validateType="bottom" onChange={onChange('limit')} />
         <p>校验信息显示类型 inner 输入值 是否含有a </p>
         <ValidateInput validateType="inner" onChange={onChange('limit')} />
       </Wrapper>
