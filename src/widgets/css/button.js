@@ -6,6 +6,7 @@
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import { getBorderRadius } from '@lugia/theme-utils';
 import colorsFunc from '../css/stateColor';
+import get from '../css/theme-common-dict';
 import { px2remcss } from '../css/units';
 import { css, keyframes } from 'styled-components';
 import {
@@ -127,7 +128,6 @@ const CircleCSS = {
   },
 };
 const {
-  themeColor,
   successColor,
   warningColor,
   dangerColor,
@@ -151,7 +151,7 @@ function fetchType(type: string): Object {
 }
 
 function fetchTypeCSS(color: string): { [key: ButtonType]: TypeColor } {
-  const defaultColor = color || themeColor;
+  const defaultColor = color || get('themeColor');
   const defaultTypeStyle = fetchType('default');
   const otherTypeStyle = fetchType('other');
   return {
@@ -202,7 +202,8 @@ export const getClickCSS = (props: ButtonOutProps) => {
   if (type === 'link') return '';
 
   const { height: sizeHeight } = fetchSize(size);
-  const typeTheme = fetchTypeCSS(themeColor)[type] || fetchTypeCSS(themeColor).default;
+  const typeTheme =
+    fetchTypeCSS(get('themeColor'))[type] || fetchTypeCSS(get('themeColor')).default;
   const backGround =
     type === 'default' ? 'none' : colorsFunc(typeTheme.backgroundColor).mouseDownColor;
   const borderRadius = circle

@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@lugia/css": "^1.0.19",
+    "@lugia/dict": "^1.0.1",
     "@lugia/listener": "^1.0.4",
     "@lugia/math": "^1.0.9",
     "@lugia/object-utils": "^1.0.15",
