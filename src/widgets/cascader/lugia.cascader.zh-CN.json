@@ -7,17 +7,22 @@
       "type": "hover | click",
       "desc": "展开子菜单的方式"
     },
+    "createPortal": {
+      "type": "boolean",
+      "desc": "是否全局弹出下拉框",
+      "propsDefaultValue": false
+    },
 
     "offsetX": {
       "type": "number",
       "desc": "菜单间的间隔",
-      "defaultPropsValue": 2
+      "propsDefaultValue": 2
     },
 
     "offsetY": {
       "type": "number",
       "desc": "显示框与菜单的间隔",
-      "defaultPropsValue": 5
+      "propsDefaultValue": 5
     },
 
     "placeholder": {
@@ -28,12 +33,12 @@
     "valueField": {
       "type": "string",
       "desc": "data数据的value值的名称",
-      "defaultPropsValue": "value"
+      "propsDefaultValue": "value"
     },
     "displayField": {
       "type": "string",
       "desc": "data数据的displayValue值的名称",
-      "defaultPropsValue": "text"
+      "propsDefaultValue": "text"
     },
 
     "data": {
@@ -90,7 +95,7 @@
     "separator": {
       "type": "string",
       "desc": "自定义级联数据分隔符",
-      "defaultPropsValue": "|"
+      "propsDefaultValue": "|"
     },
 
     "value": {
@@ -106,13 +111,13 @@
     "disabled": {
       "type": "boolean",
       "desc": "是否禁选",
-      "defaultPropsValue": false
+      "propsDefaultValue": false
     },
 
     "divided": {
       "type": "boolean",
       "desc": "菜单项之间是否展示分割线",
-      "defaultPropsValue": false
+      "propsDefaultValue": false
     },
 
     "allowClear": {
