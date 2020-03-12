@@ -38,6 +38,20 @@
       "type": "ResizeType",
       "desc": "可以调整段落文本输入框宽高的类型",
       "propsDefaultValue": "both"
+    },
+    "validateStatus": {
+      "type": "ValidateStatus",
+      "desc": "校验状态",
+      "propsDefaultValue": "default"
+    },
+    "validateType": {
+      "type": "ValidateType",
+      "desc": "校验信息显示类型",
+      "propsDefaultValue": "default"
+    },
+    "help": {
+      "type": "string",
+      "desc": "input校验提示信息"
     }
   },
   "events": {
@@ -128,7 +142,9 @@
       "oldValue": "string",
       "event": "SyntheticEvent"
     },
-    "ResizeType": ["both", "horizontal", "vertical", "none"]
+    "ResizeType": ["both", "horizontal", "vertical", "none"],
+    "ValidateStatus": ["default", "error"],
+    "ValidateType": ["top", "bottom", "inner"]
   },
   "category": ["数据录入"],
   "needExport": true,
@@ -182,6 +198,52 @@
       "hover": [],
       "clicked": [],
       "disabled": []
+    },
+    "ValidateErrorInput": {
+      "name": "校验失败的输入框",
+      "desc": "配置校验失败的输入框",
+      "normal": [
+        ["fontSize"],
+        ["font"],
+        ["color"],
+        ["background"],
+        ["border"],
+        ["boxShadow"],
+        ["opacity"]
+      ],
+      "hover": [
+        ["fontSize"],
+        ["font"],
+        ["color"],
+        ["background"],
+        ["border"],
+        ["boxShadow"],
+        ["opacity"]
+      ],
+      "active": [
+        ["fontSize"],
+        ["font"],
+        ["color"],
+        ["background"],
+        ["border"],
+        ["boxShadow"],
+        ["opacity"]
+      ]
+    },
+    "ValidateErrorText": {
+      "name": "校验失败提示信息",
+      "desc": "配置校验失败的提示信息",
+      "normal": [
+        ["background"],
+        ["boxShadow"],
+        ["borderRadius"],
+        ["border"],
+        ["fontSize"],
+        ["font"],
+        ["color"]
+      ],
+      "hover": [],
+      "active": [],
     }
   },
   "defaultTheme": {
