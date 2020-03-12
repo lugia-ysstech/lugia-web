@@ -3,6 +3,11 @@
   "title": "下拉菜单",
   "desc": "选项过多时，弹出下拉菜单给用户选择操作",
   "props": {
+    "createPortal": {
+      "type": "boolean",
+      "desc": "是否全局弹出下拉框",
+      "defaultValue": false
+    },
     "action": {
       "type": "ActionType",
       "desc": "弹出项的打开方式",
