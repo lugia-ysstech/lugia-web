@@ -12,6 +12,7 @@ src
 flow-typed/
 src/interface/
 node_modules/@lugia/jverify/interface
+node_modules/@lugia/dict/interface
 node_modules/@lugia/type-utils/interface
 node_modules/@lugia/react-test-utils/interface
 
