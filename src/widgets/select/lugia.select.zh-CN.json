@@ -41,38 +41,38 @@
     "canSearch": {
       "type": "boolean",
       "desc": "是否支持查询",
-      "defaultPropsValue": false
+      "propsDefaultValue": false
     },
     "canInput": {
       "type": "boolean",
       "desc": "是否支持自定义值,只有在canSearch为true时才生效",
-      "defaultPropsValue": false
+      "propsDefaultValue": false
     },
     "canClear": {
       "type": "boolean",
       "desc": "是否展示清空图标",
-      "defaultPropsValue": true
+      "propsDefaultValue": true
     },
     "createPortal": {
       "type": "boolean",
       "desc": "是否全局弹出下拉框",
-      "defaultPropsValue": false
+      "propsDefaultValue": false
     },
     "throttle": {
       "type": "number",
       "desc": "查询的延迟时间，单位为毫秒",
-      "defaultPropsValue": 100
+      "propsDefaultValue": 100
     },
 
     "valueField": {
       "type": "string",
       "desc": "data数据的value值的名称",
-      "defaultPropsValue": "value"
+      "propsDefaultValue": "value"
     },
     "displayField": {
       "type": "string",
       "desc": "data数据的displayValue值的名称",
-      "defaultPropsValue": "text"
+      "propsDefaultValue": "text"
     },
     "value": {
       "type": "string | string[] | number | number[]",
@@ -93,17 +93,17 @@
     "disabled": {
       "type": "boolean",
       "desc": "是否禁选",
-      "defaultPropsValue": false
+      "propsDefaultValue": false
     },
     "mutliple": {
       "type": "boolean",
       "desc": "是否多选",
-      "defaultPropsValue": false
+      "propsDefaultValue": false
     },
     "validateStatus": {
       "type": "ValidateStatus",
       "desc": "input校验状态, 'success' 成功 | 'error'错误",
-      "defaultPropsValue": "success"
+      "propsDefaultValue": "success"
     },
     "limitCount": {
       "type": "number",
@@ -116,7 +116,7 @@
     "searchType": {
       "type": "SearchType",
       "desc": "查询的方式",
-      "defaultPropsValue": "include"
+      "propsDefaultValue": "include"
     },
 
     "divided": {
