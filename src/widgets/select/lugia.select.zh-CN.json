@@ -56,7 +56,7 @@
     "createPortal": {
       "type": "boolean",
       "desc": "是否全局弹出下拉框",
-      "defaultPropsValue": true
+      "defaultPropsValue": false
     },
     "throttle": {
       "type": "number",
