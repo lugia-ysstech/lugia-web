@@ -6,14 +6,18 @@ import Widget from '../consts/index';
 import ThemeHoc, { addMouseEvent } from '@lugia/theme-hoc';
 import { fixControlledValue } from '../utils';
 import Icon from '../icon';
+import ToolTip from '../tooltip/index';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import colorsFunc from '../css/stateColor';
 import { units } from '@lugia/css';
 import { deepMerge } from '@lugia/object-utils';
-import type { ResizeType } from '../css/input';
+import type { ResizeType, ValidateStatus, ValidateType } from '../css/input';
 import { getBorder, getBoxShadow, getBorderRadius } from '@lugia/theme-utils';
 import { ObjectUtils } from '@lugia/type-utils';
 import changeColor from '../css/utilsColor';
+import { TipBottom, BaseInputContainer } from './input';
+import { checkValidateResultFromStatusAndType, DefaultHelp, isValidateError } from '../css/input';
+
 const { px2remcss } = units;
 const {
   themeColor,
@@ -30,6 +34,8 @@ const {
   hShadow,
   vShadow,
   transitionTime,
+  defaultColor,
+  dangerColor,
 } = colorsFunc();
 
 const checkIsPercent = width => {
@@ -88,11 +94,25 @@ const Textarea = CSSComponent({
       `;
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
+      const {
+        propsConfig: { validateStatus, validateType },
+      } = themeProps;
       const { width, color } = themeMeta;
-      const theColor = color ? color : blackColor;
+      const theColor = color
+        ? color
+        : checkValidateResultFromStatusAndType(validateStatus, 'error', validateType, 'inner')
+        ? dangerColor
+        : blackColor;
       const paddingLeft = width && width < 200 ? width / 20 : padding;
       const paddingRight = 35;
+
+      const shadowCSS = isValidateError(validateStatus)
+        ? getBoxShadow(`${hShadow}px ${vShadow}px ${shadowSpread}px rgba（242,29,53,0.1）`)
+        : {};
+      const borderColor = isValidateError(validateStatus) ? dangerColor : '';
       return {
+        boxShadow: shadowCSS,
+        border: getBorder({ color: borderColor, width: borderSize, style: 'solid' }),
         color: theColor,
         padding: {
           left: paddingLeft,
@@ -116,15 +136,29 @@ const Textarea = CSSComponent({
       border: getBorder({ color: themeColor, width: borderSize, style: 'solid' }),
       borderRadius: getBorderRadius(borderRadius),
     },
+    getThemeMeta(themeMeta: Object, themeProps: Object) {
+      const {
+        propsConfig: { validateStatus },
+      } = themeProps;
+      const borderColor = isValidateError(validateStatus) ? dangerColor : '';
+      return {
+        border: getBorder({ color: borderColor, width: borderSize, style: 'solid' }),
+      };
+    },
   },
   active: {
     selectNames: [['boxShadow'], ['border'], ['borderRadius'], ['cursor'], ['background']],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
+        propsConfig: { validateStatus },
         themeState: { disabled },
       } = themeProps;
-      const theColor = disabled ? disableColor : changeColor(themeColor, 0, 0, 20).rgba;
-      const shadow = `${hShadow} ${vShadow} ${shadowSpread} ${theColor}`;
+      const theColor = disabled
+        ? disableColor
+        : !isValidateError(validateStatus)
+        ? changeColor(themeColor, 0, 0, 20).rgba
+        : changeColor(dangerColor, 0, 0, 20).rgba;
+      const shadow = `${hShadow}px ${vShadow}px ${shadowSpread}px ${theColor}`;
       return { boxShadow: getBoxShadow(shadow) };
     },
   },
@@ -164,6 +198,20 @@ const TextareaContainer = CSSComponent({
       const { width } = themeMeta;
       return checkIsPercent(width) ? `width:${width};` : '';
     },
+    getThemeMeta(themeMeta: Object, themeProps: Object) {
+      const {
+        propsConfig: { validateStatus, validateType },
+      } = themeProps;
+      const { color } = themeMeta;
+      const theColor = color
+        ? color
+        : checkValidateResultFromStatusAndType(validateStatus, 'error', validateType, 'inner')
+        ? dangerColor
+        : blackColor;
+      return {
+        color: theColor,
+      };
+    },
   },
   hover: {
     selectNames: [],
@@ -189,7 +237,6 @@ type TextareaState = {
 };
 
 type TextareaProps = {
-  viewClass?: string,
   themeProps: Object,
   disabled: boolean,
   placeholder?: string,
@@ -209,6 +256,9 @@ type TextareaProps = {
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
   resizeType: ResizeType,
+  validateStatus: ValidateStatus,
+  validateType: ValidateType,
+  help: string,
 };
 
 class TextAreaBox extends Component<TextareaProps, TextareaState> {
@@ -217,9 +267,13 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
     autoFocus: false,
     defaultValue: '',
     resizeType: 'both',
+    validateStatus: 'default',
+    validateType: 'inner',
+    help: DefaultHelp,
   };
   textarea: any;
   static displayName = Widget.Textarea;
+  actualValue = '';
 
   constructor(props: TextareaProps) {
     super(props);
@@ -242,17 +296,24 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
   }
 
   onFocus = (event: UIEvent) => {
-    const { onFocus, disabled } = this.props;
-    if (disabled) {
+    const { onFocus, validateStatus, validateType, disabled, readOnly } = this.props;
+    if (disabled || readOnly) {
       return;
+    }
+    if (checkValidateResultFromStatusAndType(validateStatus, 'error', validateType, 'inner')) {
+      this.setState({ value: this.actualValue });
     }
     onFocus && onFocus(event);
   };
 
   onBlur = (event: UIEvent) => {
-    const { onBlur, disabled } = this.props;
+    const { onBlur, help, validateStatus, validateType, disabled } = this.props;
     if (disabled) {
       return;
+    }
+    if (checkValidateResultFromStatusAndType(validateStatus, 'error', validateType, 'inner')) {
+      this.setState({ value: help });
+      this.actualValue = this.state.value;
     }
     onBlur && onBlur(event);
   };
@@ -280,13 +341,76 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
   }
 
   render() {
+    const { props } = this;
+    const { validateType, help, validateStatus, getPartOfThemeHocProps } = props;
+    const result = this.getTextareaContainer();
+    const { theme: validateTopTipThemeProps, viewClass } = getPartOfThemeHocProps('ValidateTopTip');
+    const newTheme = {
+      [viewClass]: {
+        Container: deepMerge(
+          {
+            normal: {
+              background: { color: darkGreyColor },
+              getCSS() {
+                return 'display: inline-block;';
+              },
+            },
+          },
+          validateTopTipThemeProps
+        ),
+        TooltipTitle: deepMerge(
+          { normal: { color: defaultColor } },
+          validateTopTipThemeProps[viewClass]
+        ),
+      },
+    };
+    if (validateType === 'top') {
+      const visible = isValidateError(validateStatus);
+      return (
+        <ToolTip
+          theme={newTheme}
+          viewClass={viewClass}
+          title={help}
+          action={'focus'}
+          popArrowType={'round'}
+          placement={'topLeft'}
+          visible={visible}
+        >
+          {result}
+        </ToolTip>
+      );
+    }
+    return result;
+  }
+  getInnerTextarea() {
+    return [this.generateInput(), this.getClearButton()];
+  }
+
+  getTextareaContainer() {
+    const { props } = this;
+    const { validateType, help, validateStatus } = props;
+    if (validateType === 'bottom') {
+      const result = [
+        <TextareaContainer
+          {...addMouseEvent(this)}
+          themeProps={this.props.getPartOfThemeProps('Container')}
+        >
+          <BaseInputContainer>{this.getInnerTextarea()}</BaseInputContainer>
+        </TextareaContainer>,
+      ];
+      const tipBottomThemeProps = this.props.getPartOfThemeProps('ValidateErrorText', {
+        props: { validateStatus },
+      });
+      result.push(<TipBottom themeProps={tipBottomThemeProps}>{help}</TipBottom>);
+      return result;
+    }
+
     return (
       <TextareaContainer
         {...addMouseEvent(this)}
         themeProps={this.props.getPartOfThemeProps('Container')}
       >
-        {this.generateInput()}
-        {this.getClearButton()}
+        {this.getInnerTextarea()}
       </TextareaContainer>
     );
   }
@@ -350,18 +474,46 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
   }
   generateInput(): React$Node {
     const { value } = this.state;
-    const { placeholder, autoFocus, disabled, resizeType } = this.props;
+    const {
+      placeholder,
+      autoFocus,
+      disabled,
+      resizeType,
+      validateStatus,
+      validateType,
+      getPartOfThemeProps,
+    } = this.props;
     const {
       themeConfig: { normal: { color = lightGreyColor, font = {}, fontSize } = {} },
-    } = this.props.getPartOfThemeProps('Placeholder');
-    const theThemeProps = this.props.getPartOfThemeProps('Container', {
-      props: {
-        placeHolderColor: color,
-        placeHolderFont: font,
-        placeHolderFontSize: fontSize,
-        resizeType,
-      },
-    });
+    } = getPartOfThemeProps('Placeholder');
+
+    const validateErrorInputThemeProps = getPartOfThemeProps('ValidateErrorInput');
+
+    const theValidateThemeProps = checkValidateResultFromStatusAndType(
+      validateStatus,
+      'error',
+      validateType,
+      'inner'
+    )
+      ? validateErrorInputThemeProps
+      : {};
+    const propsConfig = {
+      validateType,
+      validateStatus,
+      placeHolderColor: color,
+      placeHolderFontSize: fontSize,
+      placeHolderFont: font,
+      resizeType,
+    };
+    const theThemeProps = deepMerge(
+      this.props.getPartOfThemeProps('Input', {
+        props: { ...propsConfig },
+      }),
+      theValidateThemeProps,
+      this.props.getPartOfThemeProps('Container', {
+        props: { ...propsConfig },
+      })
+    );
     return (
       <Textarea
         themeProps={theThemeProps}

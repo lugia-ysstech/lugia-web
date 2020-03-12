@@ -6,7 +6,7 @@ import Widget from '../consts/index';
 import ThemeHoc, { addMouseEvent } from '@lugia/theme-hoc';
 import { fixControlledValue } from '../utils';
 import type { InputSize, ValidateType, ValidateStatus } from '../css/input';
-import { DefaultHelp, checkValidateResultFromStatusAndType, isValidateSuccess } from '../css/input';
+import { DefaultHelp, checkValidateResultFromStatusAndType, isValidateError } from '../css/input';
 import ToolTip from '../tooltip/index';
 import Icon from '../icon';
 import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
@@ -26,7 +26,6 @@ const {
   blackColor,
   mediumGreyColor,
   darkGreyColor,
-  superLightColor,
   lightGreyColor,
   borderRadius,
   padding,
@@ -34,8 +33,8 @@ const {
   shadowSpread,
   hShadow,
   vShadow,
-  warningColor,
   transitionTime,
+  defaultColor,
 } = colorsFunc();
 
 const CommonInputStyle = CSSComponent({
@@ -91,7 +90,13 @@ const CommonInputStyle = CSSComponent({
       const paddingLeft = prefix ? 30 : width && width < 200 ? width / 20 : padding;
       const paddingRight =
         suffix || isShowClearButton ? 35 : width && width < 200 ? 15 + width / 10 : padding;
+      const shadowCSS = isValidateError(validateStatus)
+        ? getBoxShadow(`${hShadow}px ${vShadow}px ${shadowSpread}px rgba（242,29,53,0.1）`)
+        : {};
+      const borderColor = isValidateError(validateStatus) ? dangerColor : '';
       return {
+        boxShadow: shadowCSS,
+        border: getBorder({ color: borderColor, width: borderSize, style: 'solid' }),
         color: theColor,
         padding: {
           left: paddingLeft,
@@ -114,6 +119,15 @@ const CommonInputStyle = CSSComponent({
       border: getBorder({ color: themeColor, width: borderSize, style: 'solid' }),
       borderRadius: getBorderRadius(borderRadius),
     },
+    getThemeMeta(themeMeta: Object, themeProps: Object) {
+      const {
+        propsConfig: { validateStatus },
+      } = themeProps;
+      const borderColor = isValidateError(validateStatus) ? dangerColor : '';
+      return {
+        border: getBorder({ color: borderColor, width: borderSize, style: 'solid' }),
+      };
+    },
   },
   active: {
     selectNames: [['boxShadow'], ['border'], ['borderRadius'], ['cursor'], ['background']],
@@ -124,10 +138,10 @@ const CommonInputStyle = CSSComponent({
       } = themeProps;
       const theColor = disabled
         ? disableColor
-        : isValidateSuccess(validateStatus)
+        : !isValidateError(validateStatus)
         ? changeColor(themeColor, 0, 0, 20).rgba
-        : changeColor(warningColor, 0, 0, 20).rgba;
-      const shadow = `${hShadow} ${vShadow} ${shadowSpread} ${theColor}`;
+        : changeColor(dangerColor, 0, 0, 20).rgba;
+      const shadow = `${hShadow}px ${vShadow}px ${shadowSpread}px ${theColor}`;
       return { boxShadow: getBoxShadow(shadow) };
     },
   },
@@ -159,9 +173,10 @@ const CommonInputStyle = CSSComponent({
     height: 100%;
     width: 100%;
   `,
+  option: { hover: true, active: true },
 });
 
-const BaseInputContainer = StaticComponent({
+export const BaseInputContainer = StaticComponent({
   tag: 'span',
   className: 'InputBaseInputContainer',
   css: css`
@@ -209,7 +224,7 @@ const InputContainer = CSSComponent({
   `,
 });
 
-const TipBottom = CSSComponent({
+export const TipBottom = CSSComponent({
   tag: 'div',
   className: 'inputTipBottom',
   normal: {
@@ -220,12 +235,13 @@ const TipBottom = CSSComponent({
       height: 32,
       margin: {
         left: 10,
+        top: 4,
       },
     },
     getCSS(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
       const { validateStatus } = propsConfig;
-      const theVisibility = !isValidateSuccess(validateStatus) ? 'visible' : 'hidden';
+      const theVisibility = isValidateError(validateStatus) ? 'visible' : 'hidden';
       return `visibility:${theVisibility}`;
     },
   },
@@ -319,7 +335,7 @@ class TextBox extends Component<InputProps, InputState> {
     autoFocus: false,
     viewClass: Widget.Input,
     validateStatus: 'default',
-    validateType: 'default',
+    validateType: 'inner',
     size: 'default',
     help: DefaultHelp,
     defaultValue: '',
@@ -442,33 +458,23 @@ class TextBox extends Component<InputProps, InputState> {
       const tipBottomThemeProps = this.props.getPartOfThemeProps('ValidateErrorText', {
         props: { validateStatus, prefix, size },
       });
-      result.push(
-        <TipBottom themeProps={tipBottomThemeProps}>{this.isValidateError() ? help : ''}</TipBottom>
-      );
+      result.push(<TipBottom themeProps={tipBottomThemeProps}>{help}</TipBottom>);
       return result;
     }
     return [this.generatePrefix(), this.generateInput(), this.generateSuffix()];
   };
 
-  isValidateError(): boolean {
-    return this.props.validateStatus === 'error';
-  }
-
   render() {
     const { props } = this;
     const { validateType, size, help, validateStatus, prefix, getPartOfThemeHocProps } = props;
     const result = this.getInputContainer(this.getInputInner);
-    const { theme: validateTopTipThemeProps, viewClass } = getPartOfThemeHocProps(
-      'ValidateErrorText'
-    );
-    const toolTipColor = validateStatus === 'error' ? dangerColor : blackColor;
+    const { theme: validateTopTipThemeProps, viewClass } = getPartOfThemeHocProps('ValidateTopTip');
     const newTheme = {
       [viewClass]: {
         Container: deepMerge(
           {
             normal: {
-              background: { color: superLightColor },
-              color: toolTipColor,
+              background: { color: darkGreyColor },
               getCSS() {
                 return 'display: inline-block;';
               },
@@ -477,13 +483,13 @@ class TextBox extends Component<InputProps, InputState> {
           validateTopTipThemeProps
         ),
         TooltipTitle: deepMerge(
-          { normal: { color: toolTipColor } },
+          { normal: { color: defaultColor } },
           validateTopTipThemeProps[viewClass]
         ),
       },
     };
     if (validateType === 'top') {
-      const visible = this.isValidateError();
+      const visible = isValidateError(validateStatus);
       return (
         <ToolTip
           propsConfig={{ validateType, validateStatus, prefix, size }}
@@ -619,7 +625,7 @@ class TextBox extends Component<InputProps, InputState> {
       validateStatus,
       'error',
       validateType,
-      'bottom'
+      'inner'
     )
       ? validateErrorInputThemeProps
       : {};
