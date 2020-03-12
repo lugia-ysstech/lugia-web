@@ -19,11 +19,12 @@
     },
     "validateStatus": {
       "type": "ValidateStatus",
-      "desc": "input校验状态"
+      "desc": "校验状态",
+      "propsDefaultValue": "default"
     },
     "validateType": {
       "type": "ValidateType",
-      "desc": "input校验信息显示类型",
+      "desc": "校验信息显示类型",
       "propsDefaultValue": "default"
     },
     "help": {
@@ -184,7 +185,7 @@
     "InputSize": ["small", "default", "large"],
     "InputType": ["text", "password"],
     "ValidateStatus": ["default", "error"],
-    "ValidateType": ["top", "bottom", "inner", "default"],
+    "ValidateType": ["top", "bottom", "inner"],
     "ChangeType": {
       "newValue": "string",
       "oldValue": "string",
@@ -266,33 +267,31 @@
       "name": "校验失败的输入框",
       "desc": "配置校验失败的输入框",
       "normal": [
-        ["width"],
-        ["height"],
         ["fontSize"],
         ["font"],
         ["color"],
         ["background"],
         ["border"],
-        ["borderRadius"],
-        ["cursor"],
+        ["boxShadow"],
         ["opacity"]
-      ]
+      ],
+      "hover": [["background"], ["border"], ["boxShadow"]],
+      "active": [["background"], ["border"], ["boxShadow"]]
     },
     "ValidateErrorText": {
       "name": "校验失败提示信息",
       "desc": "配置校验失败的提示信息",
       "normal": [
         ["background"],
-        ["color"],
-        ["padding"],
-        ["font"],
-        ["fontSize"],
-        ["width"],
-        ["height"],
         ["boxShadow"],
         ["borderRadius"],
-        ["border"]
-      ]
+        ["border"],
+        ["fontSize"],
+        ["font"],
+        ["color"]
+      ],
+      "hover": [],
+      "active": []
     }
   },
   "defaultTheme": {
