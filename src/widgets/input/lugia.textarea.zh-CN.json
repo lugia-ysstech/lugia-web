@@ -46,7 +46,7 @@
     "validateType": {
       "type": "ValidateType",
       "desc": "校验信息显示类型",
-      "propsDefaultValue": "default"
+      "propsDefaultValue": "inner"
     },
     "help": {
       "type": "string",
