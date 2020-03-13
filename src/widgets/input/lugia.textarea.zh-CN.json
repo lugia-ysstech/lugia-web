@@ -51,7 +51,7 @@
     },
     "help": {
       "type": "string",
-      "desc": "input校验提示信息"
+      "desc": "校验提示信息"
     }
   },
   "events": {
@@ -211,24 +211,8 @@
         ["boxShadow"],
         ["opacity"]
       ],
-      "hover": [
-        ["fontSize"],
-        ["font"],
-        ["color"],
-        ["background"],
-        ["border"],
-        ["boxShadow"],
-        ["opacity"]
-      ],
-      "active": [
-        ["fontSize"],
-        ["font"],
-        ["color"],
-        ["background"],
-        ["border"],
-        ["boxShadow"],
-        ["opacity"]
-      ]
+      "hover": [["background"], ["border"], ["boxShadow"]],
+      "active": [["background"], ["border"], ["boxShadow"]]
     },
     "ValidateErrorText": {
       "name": "校验失败提示信息",
@@ -243,7 +227,7 @@
         ["color"]
       ],
       "hover": [],
-      "active": [],
+      "active": []
     }
   },
   "defaultTheme": {
