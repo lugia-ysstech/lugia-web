@@ -428,7 +428,7 @@ class TextBox extends Component<InputProps, InputState> {
     }
     if (checkValidateResultFromStatusAndType(validateStatus, 'error', validateType, 'inner')) {
       this.setState({ value: help });
-      this.actualValue = this.state.value;
+      this.actualValue = help;
     }
     onBlur && onBlur(event);
   };
