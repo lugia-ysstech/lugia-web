@@ -331,7 +331,11 @@ export const ButtonOut = CSSComponent({
       } else if (plain) {
         normalTheme = PlainTypeTheme[type] || PlainTypeTheme.default;
       } else {
-        normalTheme = TypeTheme[type] || TypeTheme.default;
+        normalTheme =
+          {
+            border: 'none',
+            background: { color: get('themeColor') },
+          } || TypeTheme.default;
       }
       const sizeTheme = circle
         ? CircleTheme[size] || CircleTheme.default
