@@ -10,6 +10,7 @@ import get from '../css/theme-common-dict';
 import { px2remcss } from '../css/units';
 import { css, keyframes } from 'styled-components';
 import {
+  getTypeTheme,
   TypeTheme,
   DisabledTypeTheme,
   PlainTypeTheme,
@@ -331,11 +332,7 @@ export const ButtonOut = CSSComponent({
       } else if (plain) {
         normalTheme = PlainTypeTheme[type] || PlainTypeTheme.default;
       } else {
-        normalTheme =
-          {
-            border: 'none',
-            background: { color: get('themeColor') },
-          } || TypeTheme.default;
+        normalTheme = getTypeTheme[type]() || TypeTheme.default();
       }
       const sizeTheme = circle
         ? CircleTheme[size] || CircleTheme.default
