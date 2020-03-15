@@ -347,7 +347,6 @@ export const TitleSpan = CSSComponent({
   },
   css: css`
     opacity: 1;
-    transition: all ${transitionTime};
     display: flex;
     flex: 1;
     overflow: hidden;
@@ -464,7 +463,6 @@ export const Text = StaticComponent({
   tag: 'span',
   className: 'Text',
   css: css`
-    transition: all 0.3s;
     flex: 1;
     overflow: hidden;
     white-space: nowrap;
