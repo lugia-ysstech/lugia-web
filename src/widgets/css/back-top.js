@@ -5,13 +5,11 @@
  */
 import styled, { css, keyframes } from 'styled-components';
 import { getBorder } from '@lugia/theme-utils';
-import colorsFunc from '../css/stateColor';
 import { px2remcss } from './units';
 import Icon from '../icon';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import { getBorderRadius } from '../theme/CSSProvider';
 
-const { defaultColor, themeColor } = colorsFunc();
 const FontSize = 1.2;
 const em = px2remcss;
 
@@ -105,8 +103,8 @@ export const BackTopContent = CSSComponent({
       ['borderRadius'],
     ],
     defaultTheme: {
-      background: { color: defaultColor },
-      color: themeColor,
+      background: { color: '$lugia-dict.@lugia/lugia-web.defaultColor' },
+      color: '$lugia-dict.@lugia/lugia-web.themeColor',
       width: 40,
       height: 40,
       opacity: 1,
