@@ -1059,10 +1059,10 @@
     immutable "^3.8.2"
     yargs "^13.2.2"
 
-"@lugia/dict@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@lugia/dict/-/dict-1.0.1.tgz#b7b0b44986b44a5ee9121dc4a7c3fca4c0edf41f"
-  integrity sha512-wmc4voHSobtFrRRYUDE3TxRMo+dCGJvYLaFvL32YiQEyn/ZjeNDIREpiyvDKcWgouaCXfqdqNwSHhAut7a3Axw==
+"@lugia/dict@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@lugia/dict/-/dict-1.0.2.tgz#b8bb19209e10ee3f2a143c5a9ba564c1a4333b32"
+  integrity sha512-pWQ8OdAIXJPFBaBfUw0AO24ycTTvlr/LGRYG6l0EiTOYTUb0G/9rNdoczQ4ta+AXHubKw/zMTCN5XWmaeImh/Q==
 
 "@lugia/jverify@^1.0.10":
   version "1.0.10"
@@ -1315,33 +1315,33 @@
     react "^16.4.0"
     react-dom "^16.4.0"
 
-"@lugia/theme-config@^1.0.36":
-  version "1.0.36"
-  resolved "https://registry.npmjs.org/@lugia/theme-config/-/theme-config-1.0.36.tgz#1dcd584a7bd48aecfe25d2f16ddb0d2665d3c67d"
-  integrity sha512-U9W0aernpRyL8GaGLaJvyGB4eyHEN7mo40CmpuKtBxA9Cx7/Clp8FJAEdleJtu8ACFmsLx0fYs0S5Dw/WO6sbQ==
+"@lugia/theme-config@^1.1.0-alpha.0":
+  version "1.1.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/@lugia/theme-config/-/theme-config-1.1.0-alpha.0.tgz#be3722cfab1dcf9aaa6a39fa694895e80c7823b6"
+  integrity sha512-KL8YvAeSxzSN5wEjSoZRwVzrMcLdcO2KDjfc4vsVJ9MmkQ9wAsl5Mqioe0Ylth9s+m8FSZVIRiQfrS2fFNMWCw==
   dependencies:
     "@babel/runtime" "^7.4.5"
-    "@lugia/theme-core" "^1.0.36"
+    "@lugia/theme-core" "^1.1.0-alpha.0"
     prop-types "^15.7.2"
 
-"@lugia/theme-core@^1.0.36":
-  version "1.0.36"
-  resolved "https://registry.npmjs.org/@lugia/theme-core/-/theme-core-1.0.36.tgz#a6a3192c61b3a9133ac81a224ed93e94fe69fc15"
-  integrity sha512-DU0ZFuANps1ZXn1Iky6RDw+3RYlvI6jRq9IT/SzHjkzDFbEeodJArgvB8b/uG42cwoLPffOL6dXr04uCaQ0zMA==
+"@lugia/theme-core@^1.1.0-alpha.0":
+  version "1.1.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/@lugia/theme-core/-/theme-core-1.1.0-alpha.0.tgz#9ba825eb44769ac95195481676d94668bdd63b1a"
+  integrity sha512-1AL40x9fsKFes3/txr3lbbucwbR32z9r067h8saK70rDcobGTwc+QftruNCWLaeicwm0cDsvpKihKLYpjhKRyQ==
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/object-utils" "^1.0.15"
 
-"@lugia/theme-css-hoc@^1.0.64":
-  version "1.0.64"
-  resolved "https://registry.yarnpkg.com/@lugia/theme-css-hoc/-/theme-css-hoc-1.0.64.tgz#de3109ccf76e1a8c91f6f3d59a52bfaffb09324f"
-  integrity sha512-TC90lQzrJ7CrRvMoRtiGaCyqLtJrCLMGL0dHJI7NsP/FGog3FnhVvV4eEy4zR2poHsK/vhiRSbBC+Md82GEXYA==
+"@lugia/theme-css-hoc@^1.1.0-alpha.0":
+  version "1.1.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/@lugia/theme-css-hoc/-/theme-css-hoc-1.1.0-alpha.0.tgz#ce25514bc768739225d92d734f23587561919829"
+  integrity sha512-LweB08XQr8CbaRAbqgEz1GiAA1WXjAYRheVBbZMUQdSNM88mex5NQpwNGrHYsku42QpH2B01EBSAYRTg2hiSBA==
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/css" "^1.0.19"
     "@lugia/object-utils" "^1.0.15"
     "@lugia/ramada" "^1.0.3"
-    "@lugia/theme-core" "^1.0.36"
+    "@lugia/theme-core" "^1.1.0-alpha.0"
     "@lugia/theme-utils" "^1.0.8"
     decamelize "^3.2.0"
 
@@ -1352,14 +1352,14 @@
   dependencies:
     "@lugia/react-devtools-core" "^1.0.3"
 
-"@lugia/theme-hoc@1.0.49":
-  version "1.0.49"
-  resolved "https://registry.npm.taobao.org/@lugia/theme-hoc/download/@lugia/theme-hoc-1.0.49.tgz#21db4d55f0fa56eef4092d4287b47771baccbcd3"
-  integrity sha1-IdtNVfD6Vu70CS1Ch7R3cbrMvNM=
+"@lugia/theme-hoc@^1.1.0-alpha.0":
+  version "1.1.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/@lugia/theme-hoc/-/theme-hoc-1.1.0-alpha.0.tgz#3553082faed9833929a99e7b3baa26ea6e3d1958"
+  integrity sha512-rXvlkCM5O5kPzAAcyjwbTrhpZSJTqvg1xgQIafvoEStHo/VhzY8tMiPIZuiwQGlokMHQtYLVaEiUZBqPWMzobg==
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/object-utils" "^1.0.15"
-    "@lugia/theme-core" "^1.0.36"
+    "@lugia/theme-core" "^1.1.0-alpha.0"
     "@lugia/theme-hoc-devtools" "^1.0.8"
 
 "@lugia/theme-utils@^1.0.8":
