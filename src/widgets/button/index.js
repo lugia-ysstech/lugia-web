@@ -27,7 +27,6 @@ import {
 } from '../css/button';
 import type { ButtonOutProps } from '../css/button';
 import { TextSizeTheme } from './theme';
-import { px2remcss } from '../css/units';
 import Icon from '../icon';
 
 type ButtonState = { clicked: boolean };
