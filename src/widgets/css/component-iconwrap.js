@@ -21,11 +21,26 @@ export type IconConState = {};
 const { themeColor, successColor, warningColor, dangerColor } = colorsFunc();
 
 export const IconInfo = {
-  info: { class: 'lugia-icon-reminder_info_circle', color: themeColor },
-  success: { class: 'lugia-icon-reminder_check_circle', color: successColor },
-  error: { class: 'lugia-icon-reminder_close_circle', color: dangerColor },
-  warning: { class: 'lugia-icon-reminder_exclamation_circle', color: warningColor },
-  loading: { class: 'lugia-icon-financial_loading_o', color: themeColor },
+  info: {
+    class: 'lugia-icon-reminder_info_circle',
+    color: '$lugia-dict.@lugia/lugia-web.themeColor',
+  },
+  success: {
+    class: 'lugia-icon-reminder_check_circle',
+    color: '$lugia-dict.@lugia/lugia-web.successColor',
+  },
+  error: {
+    class: 'lugia-icon-reminder_close_circle',
+    color: '$lugia-dict.@lugia/lugia-web.dangerColor',
+  },
+  warning: {
+    class: 'lugia-icon-reminder_exclamation_circle',
+    color: '$lugia-dict.@lugia/lugia-web.warningColor',
+  },
+  loading: {
+    class: 'lugia-icon-financial_loading_o',
+    color: '$lugia-dict.@lugia/lugia-web.themeColor',
+  },
 };
 
 const IconSpin = keyframes`
