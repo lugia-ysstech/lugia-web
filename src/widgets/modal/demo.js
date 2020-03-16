@@ -12,6 +12,9 @@ import Theme from '../theme';
 import Widgets from '../consts';
 import { getBorderRadius } from '../theme/CSSProvider';
 
+const Text = (props: Object) => {
+  return <div>{props.text}</div>;
+};
 class ModalBox extends React.Component<any, any> {
   constructor() {
     super();
@@ -252,8 +255,18 @@ export default class ModalDemo extends React.Component<any, any> {
         </Button>
         <br />
         <br />
-        <Button onClick={() => Modal.warning({ title: 'warning', content: 'this warning text!' })}>
+        <Button onClick={() => Modal.createShowModal({ title: 'warning', component: Text })()}>
           warning
+        </Button>
+
+        <Button
+          onClick={() =>
+            Modal.createShowModal({ title: 'warning', component: Text, footer: false })({
+              text: 'hello world',
+            })
+          }
+        >
+          createModal
         </Button>
       </div>
     );
