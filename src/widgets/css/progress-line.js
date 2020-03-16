@@ -5,7 +5,6 @@
  */
 import { css, keyframes } from 'styled-components';
 import CSSComponent from '@lugia/theme-css-hoc';
-import colorsFunc from '../css/stateColor';
 import { px2remcss } from './units';
 
 type StatusType = 'success' | 'error' | 'default';
@@ -40,7 +39,6 @@ type CSSProps = {
   showType: 'default' | 'inside',
 };
 
-const { themeColor, successColor, dangerColor, mediumGreyColor } = colorsFunc();
 const FontSize = 1.4;
 const isSmall = size => size === 'small';
 export const getWrapFontSize = (props: Object) => {
@@ -60,13 +58,13 @@ export const handlePercent = (per: number) => {
 const bgColor = background => ({ background });
 const BackgroundCSS = {
   success: {
-    ...bgColor(successColor),
+    ...bgColor('$lugia-dict.@lugia/lugia-web.successColor'),
   },
   default: {
-    ...bgColor(themeColor),
+    ...bgColor('$lugia-dict.@lugia/lugia-web.themeColor'),
   },
   error: {
-    ...bgColor(dangerColor),
+    ...bgColor('$lugia-dict.@lugia/lugia-web.dangerColor'),
   },
 };
 
@@ -151,7 +149,7 @@ export const ProgressBackground = CSSComponent({
     selectNames: [['height'], ['background'], ['border'], ['borderRadius'], ['boxShadow']],
     defaultTheme: {
       background: {
-        color: themeColor,
+        color: '$lugia-dict.@lugia/lugia-web.themeColor',
       },
     },
     getThemeMeta(themeMeta, themeProps): Object {
@@ -161,7 +159,11 @@ export const ProgressBackground = CSSComponent({
       const backgroundCSS = BackgroundCSS[status];
 
       return {
-        background: { color: backgroundCSS ? backgroundCSS.background : themeColor },
+        background: {
+          color: backgroundCSS
+            ? backgroundCSS.background
+            : '$lugia-dict.@lugia/lugia-web.themeColor',
+        },
         height,
       };
     },
@@ -194,13 +196,13 @@ export const ProgressBackground = CSSComponent({
 
 export const getTextColor = (status: 'error' | 'success' | 'default') => {
   if (status === 'error') {
-    return dangerColor;
+    return '$lugia-dict.@lugia/lugia-web.dangerColor';
   }
   if (status === 'success') {
-    return successColor;
+    return '$lugia-dict.@lugia/lugia-web.successColor';
   }
 
-  return mediumGreyColor;
+  return '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
 };
 
 export const getTextFont = (propsConfig: Object) => {
@@ -231,7 +233,7 @@ export const ProgressText = CSSComponent({
     selectNames: [['font'], ['color']],
     defaultTheme: {
       font: { size: 14 },
-      color: mediumGreyColor,
+      color: '$lugia-dict.@lugia/lugia-web.mediumGreyColor',
     },
     getThemeMeta(themeMeta, themeProps): Object {
       const { propsConfig = {} } = themeProps;
