@@ -49,36 +49,6 @@ export const defaultActiveTheme = {
 const primaryHoverColor = colorsFunc(themeColor).hoverColor;
 const primaryDisabeldColor = changeColor(themeColor, 45).color;
 
-export const getTypeTheme = {
-  default() {
-    return defaultTheme;
-  },
-  primary() {
-    return {
-      border: 'none',
-      background: { color: get('themeColor') },
-    };
-  },
-  success() {
-    return {
-      border: 'none',
-      background: { color: successColor },
-    };
-  },
-  warning() {
-    return {
-      border: 'none',
-      background: { color: warningColor },
-    };
-  },
-  danger() {
-    return {
-      border: 'none',
-      background: { color: dangerColor },
-    };
-  },
-};
-
 export const TypeTheme = {
   default: defaultTheme,
   primary: {
