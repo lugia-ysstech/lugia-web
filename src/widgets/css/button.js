@@ -116,17 +116,6 @@ const NotCircleSize = {
   width: 32,
   borderRadius: 4,
 };
-const CircleCSS = {
-  default: {
-    font: 16,
-  },
-  small: {
-    font: 12,
-  },
-  large: {
-    font: 18,
-  },
-};
 const {
   successColor,
   warningColor,

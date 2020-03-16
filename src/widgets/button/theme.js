@@ -4,51 +4,47 @@
  * @flow
  */
 import { getBorder, getBorderRadius } from '@lugia/theme-utils';
-import colorsFunc from '../css/stateColor';
-import changeColor from '../css/utilsColor';
-import get from '../css/theme-common-dict';
 
-const {
-  themeColor,
-  successColor,
-  warningColor,
-  dangerColor,
-  lightGreyColor,
-  darkGreyColor,
-  defaultColor,
-  hoverColor,
-  spiritColor,
-  mouseDownColor,
-} = colorsFunc();
+const defaultColors = '$lugia-dict.@lugia/lugia-web.defaultColorReduceS';
+const primaryColors = '$lugia-dict.@lugia/lugia-web.themeColorReduceS';
+const successColors = '$lugia-dict.@lugia/lugia-web.successColorReduceS';
+const warningColors = '$lugia-dict.@lugia/lugia-web.warningColorReduceS';
+const dangerColors = '$lugia-dict.@lugia/lugia-web.dangerColorReduceS';
 
-const bgReduceA = 5;
-const borderReduceS = 45;
-const defaultColors = changeColor('#333', borderReduceS).color;
-const primaryColors = changeColor(themeColor, borderReduceS).color;
-const successColors = changeColor(successColor, borderReduceS).color;
-const warningColors = changeColor(warningColor, borderReduceS).color;
-const dangerColors = changeColor(dangerColor, borderReduceS).color;
-
+const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
+const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 export const defaultTheme = {
-  border: getBorder({ width: 1, style: 'solid', color: lightGreyColor }),
+  border: getBorder({
+    width: 1,
+    style: 'solid',
+    color: lightGreyColor,
+  }),
   background: { color: defaultColor },
 };
 export const linkTheme = {
   border: 'none',
   background: 'none',
 };
+const hoverColor = '$lugia-dict.@lugia/lugia-web.hoverColor';
+const spiritColor = '$lugia-dict.@lugia/lugia-web.spiritColor';
 export const defaultHoverTheme = {
   border: getBorder({ width: 1, style: 'solid', color: hoverColor }),
   background: { color: spiritColor },
 };
+const mouseDownColor = '$lugia-dict.@lugia/lugia-web.mouseDownColor';
 export const defaultActiveTheme = {
-  border: getBorder({ width: 1, style: 'solid', color: mouseDownColor }),
+  border: getBorder({
+    width: 1,
+    style: 'solid',
+    color: mouseDownColor,
+  }),
   background: { color: spiritColor },
 };
 
-const primaryHoverColor = colorsFunc(themeColor).hoverColor;
-const primaryDisabeldColor = changeColor(themeColor, 45).color;
-
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
+const successColor = '$lugia-dict.@lugia/lugia-web.successColor';
+const warningColor = '$lugia-dict.@lugia/lugia-web.warningColor';
+const dangerColor = '$lugia-dict.@lugia/lugia-web.dangerColor';
 export const TypeTheme = {
   default: defaultTheme,
   primary: {
@@ -72,19 +68,19 @@ export const TypeHoverTheme = {
   default: defaultHoverTheme,
   primary: {
     border: 'none',
-    background: { color: primaryHoverColor },
+    background: { color: '$lugia-dict.@lugia/lugia-web.themeHoverColor' },
   },
   success: {
     border: 'none',
-    background: { color: colorsFunc(successColor).hoverColor },
+    background: { color: '$lugia-dict.@lugia/lugia-web.successHoverColor' },
   },
   warning: {
     border: 'none',
-    background: { color: colorsFunc(warningColor).hoverColor },
+    background: { color: '$lugia-dict.@lugia/lugia-web.warningHoverColor' },
   },
   danger: {
     border: 'none',
-    background: { color: colorsFunc(dangerColor).hoverColor },
+    background: { color: '$lugia-dict.@lugia/lugia-web.dangerHoverColor' },
   },
 };
 
@@ -97,130 +93,198 @@ export const DisabledTypeTheme = {
   default: defaultDisabledTheme,
   primary: {
     border: 'none',
-    background: { color: primaryDisabeldColor },
+    background: { color: '$lugia-dict.@lugia/lugia-web.themeDisabledColor' },
   },
   success: {
     border: 'none',
-    background: { color: changeColor(successColor, 45).color },
+    background: { color: '$lugia-dict.@lugia/lugia-web.successDisabledColor' },
   },
   warning: {
     border: 'none',
-    background: { color: changeColor(warningColor, 45).color },
+    background: { color: '$lugia-dict.@lugia/lugia-web.warningDisabledColor' },
   },
   danger: {
     border: 'none',
-    background: { color: changeColor(dangerColor, 45).color },
+    background: { color: '$lugia-dict.@lugia/lugia-web.dangerDisabledColor' },
   },
 };
-const mouseDownSuccessColor = colorsFunc(successColor).mouseDownColor;
-const mouseDownWarningColor = colorsFunc(warningColor).mouseDownColor;
-const mouseDownDangerColor = colorsFunc(dangerColor).mouseDownColor;
+
 export const ActiveTypeTheme = {
   default: defaultActiveTheme,
   primary: {
     border: 'none',
-    background: { color: mouseDownColor },
+    background: { color: '$lugia-dict.@lugia/lugia-web.themeActiveColor' },
   },
   success: {
     border: 'none',
-    background: { color: mouseDownSuccessColor },
+    background: { color: '$lugia-dict.@lugia/lugia-web.successActiveColor' },
   },
   warning: {
     border: 'none',
-    background: { color: mouseDownWarningColor },
+    background: { color: '$lugia-dict.@lugia/lugia-web.warningActiveColor' },
   },
   danger: {
     border: 'none',
-    background: { color: mouseDownDangerColor },
+    background: { color: '$lugia-dict.@lugia/lugia-web.dangerActiveColor' },
   },
 };
 
+const themeColorReduceA = '$lugia-dict.@lugia/lugia-web.themeColorReduceA';
+const successColorReduceA = '$lugia-dict.@lugia/lugia-web.successColorReduceA';
+const warningColorReduceA = '$lugia-dict.@lugia/lugia-web.warningColorReduceA';
+const dangerColorReduceA = '$lugia-dict.@lugia/lugia-web.dangerColorReduceA';
 export const PlainTypeTheme = {
   default: {
     background: { color: defaultColor },
-    border: getBorder({ width: 1, style: 'solid', color: lightGreyColor }),
+    border: getBorder({
+      width: 1,
+      style: 'solid',
+      color: lightGreyColor,
+    }),
   },
   primary: {
-    background: { color: changeColor(themeColor, 0, 0, bgReduceA).rgba },
-    border: getBorder({ width: 1, style: 'solid', color: themeColor }),
+    background: { color: themeColorReduceA },
+    border: getBorder({
+      width: 1,
+      style: 'solid',
+      color: themeColor,
+    }),
   },
   success: {
-    background: { color: changeColor(successColor, 0, 0, bgReduceA).rgba },
-    border: getBorder({ width: 1, style: 'solid', color: successColor }),
+    background: { color: successColorReduceA },
+    border: getBorder({
+      width: 1,
+      style: 'solid',
+      color: successColor,
+    }),
   },
   warning: {
-    background: { color: changeColor(warningColor, 0, 0, bgReduceA).rgba },
-    border: getBorder({ width: 1, style: 'solid', color: warningColor }),
+    background: { color: warningColorReduceA },
+    border: getBorder({
+      width: 1,
+      style: 'solid',
+      color: warningColor,
+    }),
   },
   danger: {
-    background: { color: changeColor(dangerColor, 0, 0, bgReduceA).rgba },
-    border: getBorder({ width: 1, style: 'solid', color: dangerColor }),
+    background: { color: dangerColorReduceA },
+    border: getBorder({
+      width: 1,
+      style: 'solid',
+      color: dangerColor,
+    }),
   },
 };
 export const PlainHoverTheme = {
   default: {
-    border: getBorder({ width: 1, style: 'solid', color: hoverColor }),
+    border: getBorder({
+      width: 1,
+      style: 'solid',
+      color: hoverColor,
+    }),
     background: { color: defaultColor },
   },
   primary: {
-    border: getBorder({ width: 1, style: 'solid', color: themeColor }),
+    border: getBorder({
+      width: 1,
+      style: 'solid',
+      color: themeColor,
+    }),
     background: { color: themeColor },
   },
   success: {
-    border: getBorder({ width: 1, style: 'solid', color: successColor }),
+    border: getBorder({
+      width: 1,
+      style: 'solid',
+      color: successColor,
+    }),
     background: { color: successColor },
   },
   warning: {
-    border: getBorder({ width: 1, style: 'solid', color: warningColor }),
+    border: getBorder({
+      width: 1,
+      style: 'solid',
+      color: warningColor,
+    }),
     background: { color: warningColor },
   },
   danger: {
-    border: getBorder({ width: 1, style: 'solid', color: dangerColor }),
+    border: getBorder({
+      width: 1,
+      style: 'solid',
+      color: dangerColor,
+    }),
     background: { color: dangerColor },
   },
 };
 export const PlainDisabledTypeTheme = {
   default: defaultDisabledTheme,
   primary: {
-    background: { color: changeColor(themeColor, 0, 0, bgReduceA).rgba },
+    background: { color: themeColorReduceA },
     border: getBorder({ width: 1, style: 'solid', color: primaryColors }),
   },
   success: {
-    background: { color: changeColor(successColor, 0, 0, bgReduceA).rgba },
-    border: getBorder({ width: 1, style: 'solid', color: successColors }),
+    background: { color: successColorReduceA },
+    border: getBorder({
+      width: 1,
+      style: 'solid',
+      color: successColors,
+    }),
   },
   warning: {
-    background: { color: changeColor(warningColor, 0, 0, bgReduceA).rgba },
+    background: { color: warningColorReduceA },
     border: getBorder({ width: 1, style: 'solid', color: warningColors }),
   },
   danger: {
-    background: { color: changeColor(dangerColor, 0, 0, bgReduceA).rgba },
+    background: { color: dangerColorReduceA },
     border: getBorder({ width: 1, style: 'solid', color: dangerColors }),
   },
 };
+const mouseDownSuccessColor = '$lugia-dict.@lugia/lugia-web.mouseDownSuccessColor';
+const mouseDownWarningColor = '$lugia-dict.@lugia/lugia-web.mouseDownWarningColor';
+const mouseDownDangerColor = '$lugia-dict.@lugia/lugia-web.mouseDownDangerColor';
 export const PlainActiveTypeTheme = {
   default: defaultActiveTheme,
   primary: {
-    border: getBorder({ width: 1, style: 'solid', color: mouseDownColor }),
+    border: getBorder({
+      width: 1,
+      style: 'solid',
+      color: mouseDownColor,
+    }),
     background: { color: mouseDownColor },
   },
   success: {
-    border: getBorder({ width: 1, style: 'solid', color: mouseDownSuccessColor }),
+    border: getBorder({
+      width: 1,
+      style: 'solid',
+      color: mouseDownSuccessColor,
+    }),
     background: { color: mouseDownSuccessColor },
   },
   warning: {
-    border: getBorder({ width: 1, style: 'solid', color: mouseDownWarningColor }),
+    border: getBorder({
+      width: 1,
+      style: 'solid',
+      color: mouseDownWarningColor,
+    }),
     background: { color: mouseDownWarningColor },
   },
   danger: {
-    border: getBorder({ width: 1, style: 'solid', color: mouseDownDangerColor }),
+    border: getBorder({
+      width: 1,
+      style: 'solid',
+      color: mouseDownDangerColor,
+    }),
     background: { color: mouseDownDangerColor },
   },
 };
 
+const largeSize = '$lugia-dict.@lugia/lugia-web.largeSize';
+const normalSize = '$lugia-dict.@lugia/lugia-web.normalSize';
+const smallSize = '$lugia-dict.@lugia/lugia-web.smallSize';
 export const SizeTheme = {
   large: {
-    height: 40,
+    height: largeSize,
     padding: {
       top: 0,
       right: 18,
@@ -229,7 +293,7 @@ export const SizeTheme = {
     },
   },
   default: {
-    height: 32,
+    height: normalSize,
     padding: {
       top: 0,
       right: 18,
@@ -238,7 +302,7 @@ export const SizeTheme = {
     },
   },
   small: {
-    height: 24,
+    height: smallSize,
     padding: {
       top: 0,
       right: 14,
@@ -249,20 +313,20 @@ export const SizeTheme = {
 };
 export const CircleTheme = {
   large: {
-    width: 40,
-    height: 40,
+    width: largeSize,
+    height: largeSize,
     padding: 0,
     borderRadius: getBorderRadius('50%'),
   },
   default: {
-    height: 32,
-    width: 32,
+    height: normalSize,
+    width: normalSize,
     padding: 0,
     borderRadius: getBorderRadius('50%'),
   },
   small: {
-    height: 24,
-    width: 24,
+    height: smallSize,
+    width: smallSize,
     padding: 0,
     borderRadius: getBorderRadius('50%'),
   },
@@ -280,7 +344,7 @@ export const ShapeTheme = {
 };
 
 export const textDefaultTheme = {
-  color: darkGreyColor,
+  color: '$lugia-dict.@lugia/lugia-web.darkGreyColor',
   font: { size: 14 },
 };
 export const textDefaultHoverTheme = {
@@ -306,7 +370,7 @@ export const TextTypeHoverTheme = {
   success: { color: defaultColor },
   warning: { color: defaultColor },
   danger: { color: defaultColor },
-  link: { color: primaryHoverColor },
+  link: { color: hoverColor },
 };
 export const TextTypeActiveTheme = {
   default: { color: mouseDownColor },
@@ -322,7 +386,7 @@ export const TextTypeDisabledTheme = {
   success: { color: defaultColor },
   warning: { color: defaultColor },
   danger: { color: defaultColor },
-  link: { color: primaryDisabeldColor },
+  link: { color: primaryColors },
 };
 
 export const TextPlainTypeTheme = {
