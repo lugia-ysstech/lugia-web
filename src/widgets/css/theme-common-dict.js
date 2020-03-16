@@ -27,7 +27,8 @@ export function load(value: Object) {
   if (value) {
     const ruleColor = getRuleColor(value);
     const buttonRuleColor = getButtonRuleColor(value);
-    dict.load(NameSpace, { ...value, ...ruleColor, ...buttonRuleColor });
+    const alertRuleColor = getAlertRuleColor(value);
+    dict.load(NameSpace, { ...value, ...ruleColor, ...buttonRuleColor, ...alertRuleColor });
   }
 }
 
@@ -88,6 +89,34 @@ function getButtonRuleColor(value: Object): Object {
   };
 
   return buttonRuleColor;
+}
+
+function getAlertRuleColor(value: Object): Object {
+  const { themeColor, successColor, warningColor, dangerColor } = value;
+  const alertRuleColor = {
+    alertThemeColorReduceA: getReduceColor(
+      themeColor,
+      { reduceS: 0, reduceB: 0, reduceA: 20 },
+      'rgba'
+    ),
+    alertSuccessColorReduceA: getReduceColor(
+      successColor,
+      { reduceS: 0, reduceB: 0, reduceA: 20 },
+      'rgba'
+    ),
+    alertWarningColorReduceA: getReduceColor(
+      warningColor,
+      { reduceS: 0, reduceB: 0, reduceA: 20 },
+      'rgba'
+    ),
+    alertDangerColorReduceA: getReduceColor(
+      dangerColor,
+      { reduceS: 0, reduceB: 0, reduceA: 20 },
+      'rgba'
+    ),
+  };
+
+  return alertRuleColor;
 }
 
 function getReduceColor(
