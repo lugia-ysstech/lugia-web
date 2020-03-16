@@ -5,10 +5,9 @@
  */
 import CSSComponent from '@lugia/theme-css-hoc';
 import { units } from '@lugia/css';
-import colorsFunc from '../css/stateColor';
-import changeColor from './utilsColor';
 import styled, { css, keyframes } from 'styled-components';
 import Icon from '../icon';
+import get from './theme-common-dict';
 
 const { px2remcss } = units;
 export type Type = 'info' | 'success' | 'error' | 'warning';
@@ -44,31 +43,22 @@ type CSSProps = {
   animateStart: boolean,
 };
 
-const {
-  themeColor,
-  successColor,
-  warningColor,
-  dangerColor,
-  mediumGreyColor,
-  blackColor,
-  darkGreyColor,
-} = colorsFunc();
 export const TypeCSS = {
   info: {
-    color: themeColor,
-    background: changeColor(themeColor, 0, 0, 20).rgba,
+    color: '$lugia-dict.@lugia/lugia-web.themeColor',
+    background: '$lugia-dict.@lugia/lugia-web.alertThemeColorReduceA',
   },
   success: {
-    color: successColor,
-    background: changeColor(successColor, 0, 0, 20).rgba,
+    color: '$lugia-dict.@lugia/lugia-web.successColor',
+    background: '$lugia-dict.@lugia/lugia-web.alertSuccessColorReduceA',
   },
   warning: {
-    color: warningColor,
-    background: changeColor(warningColor, 0, 0, 20).rgba,
+    color: '$lugia-dict.@lugia/lugia-web.warningColor',
+    background: '$lugia-dict.@lugia/lugia-web.alertWarningColorReduceA',
   },
   error: {
-    color: dangerColor,
-    background: changeColor(dangerColor, 0, 0, 20).rgba,
+    color: '$lugia-dict.@lugia/lugia-web.dangerColor',
+    background: '$lugia-dict.@lugia/lugia-web.alertDangerColorReduceA',
   },
 };
 
@@ -163,7 +153,7 @@ export const getPosition = (props: Object) => {
 };
 
 export const CloseIcon: Object = styled(Icon)`
-  color: ${mediumGreyColor};
+  color: ${get('mediumGreyColor')};
 `;
 
 export const Message = CSSComponent({
@@ -173,7 +163,7 @@ export const Message = CSSComponent({
     vertical-align: text-bottom;
   `,
   normal: {
-    defaultTheme: { color: blackColor, font: { fontSize: 14 } },
+    defaultTheme: { color: '$lugia-dict.@lugia/lugia-web.blackColor', font: { fontSize: 14 } },
     selectNames: [['color'], ['font']],
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig = {} } = themeProps;
@@ -228,7 +218,7 @@ export const Description = CSSComponent({
   `,
   normal: {
     defaultTheme: {
-      color: darkGreyColor,
+      color: '$lugia-dict.@lugia/lugia-web.darkGreyColor',
       font: { size: 14 },
       padding: { top: 0, right: 0, bottom: 0, left: 0 },
     },
