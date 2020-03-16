@@ -4,10 +4,8 @@
  * @flow
  */
 import { px2remcss } from '../css/units';
-import colorsFunc from '../css/stateColor';
 import { css, keyframes } from 'styled-components';
 import type { ThemeType } from '@lugia/lugia-web';
-import Icon from '../icon';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 
 import { getBorder, getBoxShadow } from '@lugia/theme-utils';
@@ -52,20 +50,27 @@ type CSSProps = {
 
 const FontSize = 1.4;
 
-const {
-  themeColor,
-  successColor,
-  warningColor,
-  dangerColor,
-  blackColor,
-  darkGreyColor,
-} = colorsFunc();
 export const IconInfo = {
-  info: { class: 'lugia-icon-reminder_info_circle', color: themeColor },
-  confirm: { class: 'lugia-icon-reminder_question_circle', color: warningColor },
-  success: { class: 'lugia-icon-reminder_check_circle', color: successColor },
-  error: { class: 'lugia-icon-reminder_close_circle', color: dangerColor },
-  warning: { class: 'lugia-icon-reminder_exclamation_circle', color: warningColor },
+  info: {
+    class: 'lugia-icon-reminder_info_circle',
+    color: '$lugia-dict.@lugia/lugia-web.themeColor',
+  },
+  confirm: {
+    class: 'lugia-icon-reminder_question_circle',
+    color: '$lugia-dict.@lugia/lugia-web.warningColor',
+  },
+  success: {
+    class: 'lugia-icon-reminder_check_circle',
+    color: '$lugia-dict.@lugia/lugia-web.successColor',
+  },
+  error: {
+    class: 'lugia-icon-reminder_close_circle',
+    color: '$lugia-dict.@lugia/lugia-web.dangerColor',
+  },
+  warning: {
+    class: 'lugia-icon-reminder_exclamation_circle',
+    color: '$lugia-dict.@lugia/lugia-web.warningColor',
+  },
 };
 
 export const Wrap = StaticComponent({
@@ -230,7 +235,7 @@ export const ModalTitle = CSSComponent({
     selectNames: [['font'], ['color'], ['padding']],
     defaultTheme: {
       font: { size: 18, weight: 500 },
-      color: blackColor,
+      color: '$lugia-dict.@lugia/lugia-web.blackColor',
       padding: {
         top: 0,
         right: 0,
@@ -251,7 +256,7 @@ export const ModalBody = CSSComponent({
     selectNames: [['font'], ['color'], ['padding']],
     defaultTheme: {
       font: { size: 14 },
-      color: darkGreyColor,
+      color: '$lugia-dict.@lugia/lugia-web.darkGreyColor',
       padding: {
         top: 0,
         right: 0,
