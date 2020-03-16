@@ -7,9 +7,7 @@ import styled, { css } from 'styled-components';
 import { px2remcss } from './units';
 import { getTextColor, getWrapFontSize } from './progress-line';
 import CSSComponent from '@lugia/theme-css-hoc';
-import colorsFunc from '../css/stateColor';
 
-const { mediumGreyColor } = colorsFunc();
 export const SvgInner = styled.div`
   width: ${props => {
     return props.size === 'default' ? px2remcss(120) : px2remcss(80);
@@ -45,7 +43,7 @@ export const SvgText = CSSComponent({
     selectNames: [['font'], ['color']],
     defaultTheme: {
       font: { size: 24 },
-      color: mediumGreyColor,
+      color: '$lugia-dict.@lugia/lugia-web.mediumGreyColor',
     },
     getThemeMeta(themeMeta, themeProps): Object {
       const { propsConfig = {} } = themeProps;
