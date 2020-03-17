@@ -7,7 +7,7 @@
 import colorsFunc from '../css/stateColor';
 import styled, { css } from 'styled-components';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
-
+import get from './theme-common-dict';
 import { px2remcss } from '../css/units';
 import type { ThemeType } from '@lugia/lugia-web';
 import Icon from '../icon';
@@ -16,18 +16,7 @@ import { getBorder, getBorderRadius } from '../theme/CSSProvider';
 const FontSize = 1.4;
 const defaultColor = '#fff';
 const em = px2remcss;
-const {
-  themeColor,
-  mediumGreyColor,
-  marginToDifferentElement,
-  marginToPeerElementForY,
-  blackColor,
-  lightGreyColor,
-  borderColor,
-  disableColor,
-  borderDisableColor,
-  padding,
-} = colorsFunc();
+const { marginToDifferentElement, marginToPeerElementForY } = colorsFunc();
 
 export type CSStype = {
   themes: ThemeType,
@@ -152,21 +141,21 @@ export const CheckBoxLabelSpan = CSSComponent({
   normal: {
     selectNames: [['color'], ['font'], ['padding']],
     defaultTheme: {
-      color: blackColor,
+      color: '$lugia-dict.@lugia/lugia-web.blackColor',
       font: { size: 14 },
     },
   },
   hover: {
     selectNames: [['color'], ['font']],
     defaultTheme: {
-      color: blackColor,
+      color: '$lugia-dict.@lugia/lugia-web.blackColor',
       font: { fontSize: 14 },
     },
   },
   disabled: {
     selectNames: [['color'], ['font']],
     defaultTheme: {
-      color: lightGreyColor,
+      color: '$lugia-dict.@lugia/lugia-web.lightGreyColor',
       font: { fontSize: 14 },
     },
   },
@@ -211,7 +200,11 @@ export const CheckBoxInnerSpan = CSSComponent({
     ],
     defaultTheme: {
       background: { color: defaultColor },
-      border: getBorder({ color: borderColor, width: 1, style: 'solid' }),
+      border: getBorder({
+        color: '$lugia-dict.@lugia/lugia-web.borderColor',
+        width: 1,
+        style: 'solid',
+      }),
       borderRadius: getBorderRadius(2),
       width: 18,
       height: 18,
@@ -260,7 +253,7 @@ export const CheckBoxInnerSpan = CSSComponent({
       }
 
       if (hasChecked) {
-        return `border: 1px solid ${themeColor};`;
+        return `border: 1px solid ${get('themeColor')};`;
       }
 
       return '';
@@ -269,7 +262,11 @@ export const CheckBoxInnerSpan = CSSComponent({
   hover: {
     selectNames: [['background'], ['borderRadius'], ['boxShadow'], ['border']],
     defaultTheme: {
-      border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
+      border: getBorder({
+        color: '$lugia-dict.@lugia/lugia-web.themeColor',
+        width: 1,
+        style: 'solid',
+      }),
       borderRadius: getBorderRadius(2),
       background: { color: defaultColor },
     },
@@ -277,9 +274,13 @@ export const CheckBoxInnerSpan = CSSComponent({
   disabled: {
     selectNames: [['background'], ['borderRadius'], ['boxShadow'], ['border']],
     defaultTheme: {
-      border: getBorder({ color: borderDisableColor, width: 1, style: 'solid' }),
+      border: getBorder({
+        color: '$lugia-dict.@lugia/lugia-web.borderDisableColor',
+        width: 1,
+        style: 'solid',
+      }),
       borderRadius: getBorderRadius(2),
-      background: { color: disableColor },
+      background: { color: '$lugia-dict.@lugia/lugia-web.disableColor' },
     },
   },
 });
@@ -297,5 +298,5 @@ export const HoverSpan = StaticComponent({
 export const IconWrap: Object = styled(Icon)`
   vertical-align: text-bottom !important;
   font-size: ${em(18)};
-  color: ${mediumGreyColor};
+  color: ${get('mediumGreyColor')};
 `;

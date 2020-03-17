@@ -7,7 +7,6 @@
 import * as React from 'react';
 import { getBorder } from '@lugia/theme-utils';
 import { deepMerge } from '@lugia/object-utils';
-import colorsFunc from '../css/stateColor';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import type { CheckBoxProps } from '../css/checkbox';
@@ -30,13 +29,7 @@ type CheckBoxState = {
   hasCancel: boolean,
 };
 
-const {
-  themeColor,
-
-  disableColor,
-  disabledColor,
-  lightGreyColor,
-} = colorsFunc();
+const disabledColor = '$lugia-dict.@lugia/lugia-web.disabledColor';
 const defaultEdgeCancelProps = {
   themeConfig: {
     normal: {
@@ -46,6 +39,8 @@ const defaultEdgeCancelProps = {
     },
   },
 };
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
+const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
 const defaultEdgeTheme = {
   themeConfig: {
     normal: {
@@ -73,7 +68,7 @@ const defaultInnerTheme = {
     color: '#fff',
   },
   disabled: {
-    color: lightGreyColor,
+    color: '$lugia-dict.@lugia/lugia-web.lightGreyColor',
   },
 };
 
