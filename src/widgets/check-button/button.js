@@ -5,20 +5,15 @@ import ThemeProvider from '../theme-provider';
 import Widget from '../consts';
 import { LabelWrapper, CheckInput, CheckSpan, CancelSpan, IconWrap } from '../css/check-button';
 import type { CheckProps, CheckState } from '../css/check-button';
-import colorsFunc from '../css/stateColor';
 
-const {
-  disabledColor,
-  themeColor,
-  borderDisableColor,
-  spiritColor,
-  lightGreyColor,
-  darkGreyColor,
-  borderColor,
-} = colorsFunc();
+const borderDisableColor = '$lugia-dict.@lugia/lugia-web.borderDisableColor';
+const spiritColor = '$lugia-dict.@lugia/lugia-web.spiritColor';
+const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
+const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
+const borderColor = '$lugia-dict.@lugia/lugia-web.borderColor';
 const cancelCommonTheme = {
   color: '#fff',
-  background: { color: disabledColor },
+  background: { color: '$lugia-dict.@lugia/lugia-web.disabledColor' },
 };
 const defaultRadioCancelTheme = {
   themeConfig: {
@@ -31,6 +26,7 @@ const defaultCancelTheme = {
     hover: cancelCommonTheme,
   },
 };
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 const checkedCommonTheme = {
   color: '#fff',
   background: { color: themeColor },
