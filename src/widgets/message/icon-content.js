@@ -7,8 +7,7 @@
  */
 import * as React from 'react';
 import { deepMerge } from '@lugia/object-utils';
-import colorsFunc from '../css/stateColor';
-import styled, { css, keyframes } from 'styled-components';
+import { css, keyframes } from 'styled-components';
 import Icon from '../icon';
 import type { IconConProps, IconConState } from '../css/component-iconwrap';
 import {
