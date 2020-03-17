@@ -4,7 +4,6 @@
  * @flow
  */
 import { px2remcss } from '../css/units';
-import colorsFunc from '../css/stateColor';
 import { css, keyframes } from 'styled-components';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 
@@ -17,8 +16,6 @@ export type IconConProps = {
   iconTheme: Object,
 };
 export type IconConState = {};
-
-const { themeColor, successColor, warningColor, dangerColor } = colorsFunc();
 
 export const IconInfo = {
   info: {
