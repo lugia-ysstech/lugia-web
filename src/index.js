@@ -6,13 +6,13 @@ import React from 'react';
 import { createBrowserHistory } from 'history';
 import { createApp, render } from '@lugia/lugiax-router';
 import registerServiceWorker from './registerServiceWorker';
-import Main from './App';
+import { CheckboxGroupDemo } from './widgets/checkbox/demo';
 
 const history = createBrowserHistory();
 const App = createApp(
   {
     '/': {
-      component: Main,
+      component: CheckboxGroupDemo,
     },
   },
   history
