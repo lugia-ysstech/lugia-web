@@ -11,19 +11,11 @@ import { px2remcss } from '../css/units';
 import type { ThemeType } from '@lugia/lugia-web';
 import { getBorder } from '@lugia/theme-utils';
 import { getBorderRadius } from '../theme/CSSProvider';
+import get from './theme-common-dict';
 
 const em = px2remcss;
-const {
-  themeColor,
-  padding,
-  borderColor,
-  borderDisableColor,
-  disableColor,
-  marginToSameElement,
-  marginToPeerElementForY,
-  lightGreyColor,
-  blackColor,
-} = colorsFunc();
+const { padding, marginToSameElement } = colorsFunc();
+const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
 
 type RadioStyleType = 'default' | 'vertical';
 export type CSStype = {
@@ -145,7 +137,7 @@ export const RadioChildrenSpan = CSSComponent({
   disabled: {
     selectNames: [['color']],
     defaultTheme: {
-      color: lightGreyColor,
+      color: '$lugia-dict.@lugia/lugia-web.lightGreyColor',
     },
   },
   active: {
@@ -167,7 +159,7 @@ export const RadioCircleSpan = CSSComponent({
     width: ${em(16)};
     height: ${em(16)};
     border-radius: 50%;
-    border: 1px solid ${borderColor};
+    border: 1px solid ${get('borderColor')};
     background-color: #fff;
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
@@ -216,7 +208,11 @@ export const RadioCircleSpan = CSSComponent({
       return '';
     },
     defaultTheme: {
-      border: getBorder({ color: borderColor, width: 1, style: 'solid' }),
+      border: getBorder({
+        color: '$lugia-dict.@lugia/lugia-web.borderColor',
+        width: 1,
+        style: 'solid',
+      }),
       borderRadius: getBorderRadius('100%'),
       background: { color: '#fff' },
       width: 16,
@@ -229,8 +225,12 @@ export const RadioCircleSpan = CSSComponent({
   disabled: {
     selectNames: [['background'], ['borderRadius'], ['border']],
     defaultTheme: {
-      background: { color: disableColor },
-      border: getBorder({ color: borderDisableColor, width: 1, style: 'solid' }),
+      background: { color: '$lugia-dict.@lugia/lugia-web.disableColor' },
+      border: getBorder({
+        color: '$lugia-dict.@lugia/lugia-web.borderDisableColor',
+        width: 1,
+        style: 'solid',
+      }),
       borderRadius: getBorderRadius('100%'),
     },
   },

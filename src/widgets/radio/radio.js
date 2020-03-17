@@ -12,15 +12,18 @@ import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import type { RadioProps } from '../css/radio';
 import { RadioChildrenSpan, RadioContent, RadioCircleSpan, RadioWrap } from '../css/radio';
-import colorsFunc from '../css/stateColor';
 import { getBorder, getBorderRadius } from '@lugia/theme-utils';
 
 type RadioState = {
   checked: boolean,
 };
 
-const { themeColor, lightGreyColor, disableColor, borderDisableColor, borderColor } = colorsFunc();
-const cancelColor = colorsFunc(themeColor).disabledColor;
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
+const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
+const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
+const borderDisableColor = '$lugia-dict.@lugia/lugia-web.borderDisableColor';
+const borderColor = '$lugia-dict.@lugia/lugia-web.borderColor';
+const cancelColor = '$lugia-dict.@lugia/lugia-web.disabledColor';
 const defaultProps = {
   normal: { width: 10, height: 10, background: { color: themeColor } },
   disabled: { width: 10, height: 10, background: { color: lightGreyColor } },
