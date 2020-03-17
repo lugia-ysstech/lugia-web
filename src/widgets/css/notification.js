@@ -4,9 +4,9 @@
  * @flow
  */
 import { px2emcss } from '../css/units';
-import colorsFunc from '../css/stateColor';
 import styled, { css, keyframes } from 'styled-components';
 import Icon from '../icon';
+import get from './theme-common-dict';
 
 export type NotificationProps = {
   duration?: number | null,
@@ -39,7 +39,6 @@ const FontSize = 1.4;
 const IconFontSize = 1.6;
 const em = px2emcss(FontSize);
 const iconEM = px2emcss(IconFontSize);
-const { themeColor, mediumGreyColor, blackColor, darkGreyColor } = colorsFunc();
 const getAnimateDirection = (props: CSSProps): 'left' | 'right' => {
   const { placement } = props;
   if (placement === 'bottomLeft' || placement === 'topLeft') {
@@ -101,7 +100,7 @@ export const Content = styled.div`
 export const Title = styled.div`
   font-size: ${em(16)};
   font-weight: 500;
-  color: ${blackColor};
+  color: ${get('blackColor')};
   margin-bottom: ${iconEM(8)};
   line-height: ${iconEM(24)};
   display: inline-block;
@@ -110,7 +109,7 @@ export const Title = styled.div`
 export const Text = styled.div`
   font-size: ${em(14)};
   font-weight: 500;
-  color: ${darkGreyColor};
+  color: ${get('darkGreyColor')};
   word-break: break-all;
 `;
 export const CloseIcon: Object = styled(Icon)`
@@ -120,7 +119,7 @@ export const CloseIconWrap = styled.div`
   position: absolute;
   right: ${em(22)};
   top: ${em(16)};
-  color: ${mediumGreyColor};
+  color: ${get('mediumGreyColor')};
   outline: none;
   cursor: pointer;
 `;
@@ -132,5 +131,5 @@ export const Icons: Object = styled(Icon)`
   top: ${leftIconEM(26)};
   left: ${leftIconEM(20)};
   cursor: default;
-  color: ${props => props.iconColor || themeColor};
+  color: ${props => props.iconColor || get('themeColor')};
 `;
