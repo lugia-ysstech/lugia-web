@@ -116,25 +116,17 @@ const NotCircleSize = {
   width: 32,
   borderRadius: 4,
 };
-const {
-  successColor,
-  warningColor,
-  dangerColor,
-  lightGreyColor,
-  darkGreyColor,
-  defaultColor: white,
-} = colorsFunc();
 const cursor = 'not-allowed';
 
 function fetchType(type: string): Object {
   if (type === 'default') {
     return {
-      color: darkGreyColor,
-      border: `1px solid ${lightGreyColor}`,
+      color: get('darkGreyColor'),
+      border: `1px solid ${get('lightGreyColor')}`,
     };
   }
   return {
-    color: white,
+    color: get('white'),
     border: 'none',
   };
 }
@@ -145,7 +137,7 @@ function fetchTypeCSS(color: string): { [key: ButtonType]: TypeColor } {
   const otherTypeStyle = fetchType('other');
   return {
     default: {
-      backgroundColor: white,
+      backgroundColor: get('white'),
       ...defaultTypeStyle,
     },
     primary: {
@@ -153,15 +145,15 @@ function fetchTypeCSS(color: string): { [key: ButtonType]: TypeColor } {
       ...otherTypeStyle,
     },
     success: {
-      backgroundColor: successColor,
+      backgroundColor: get('successColor'),
       ...otherTypeStyle,
     },
     warning: {
-      backgroundColor: warningColor,
+      backgroundColor: get('warningColor'),
       ...otherTypeStyle,
     },
     danger: {
-      backgroundColor: dangerColor,
+      backgroundColor: get('dangerColor'),
       ...otherTypeStyle,
     },
   };
