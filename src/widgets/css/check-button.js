@@ -3,11 +3,11 @@
  * create by guorg
  * @flow
  */
-import colorsFunc from '../css/stateColor';
 import styled, { css } from 'styled-components';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import { px2remcss } from '../css/units';
 import Icon from '../icon';
+import get from './theme-common-dict';
 
 type CheckSize = 'default' | 'small' | 'large' | 'bigger';
 type TypeSizeCSS = {
@@ -39,14 +39,6 @@ export type CheckState = {
 };
 
 const em = px2remcss;
-const {
-  themeColor,
-  borderColor,
-  borderDisableColor,
-  darkGreyColor,
-  lightGreyColor,
-  mediumGreyColor,
-} = colorsFunc();
 const SizeCSS: { [key: CheckSize]: TypeSizeCSS } = {
   default: {
     height: 32,
@@ -99,7 +91,7 @@ const getCursor = (props: PropsType) => {
 const getHasCheckCSS = (props: PropsType) => {
   const { hasChecked = false } = props;
   if (hasChecked) {
-    return ` border: 1px solid ${themeColor};`;
+    return ` border: 1px solid ${get('themeColor')};`;
   }
 };
 
@@ -138,6 +130,8 @@ const getPadding = (themeProps: Object): Object => {
   return { padding };
 };
 
+const borderColor = '$lugia-dict.@lugia/lugia-web.borderColor';
+const borderDisableColor = '$lugia-dict.@lugia/lugia-web.borderDisableColor';
 export const CheckSpan = CSSComponent({
   tag: 'span',
   className: 'CheckButtonCheckSpan',
@@ -168,7 +162,7 @@ export const CheckSpan = CSSComponent({
       ['padding'],
     ],
     defaultTheme: {
-      color: darkGreyColor,
+      color: '$lugia-dict.@lugia/lugia-web.darkGreyColor',
       border: {
         top: { color: borderColor, width: 1, style: 'solid' },
         right: { color: borderColor, width: 1, style: 'solid' },
@@ -205,7 +199,7 @@ export const CheckSpan = CSSComponent({
   disabled: {
     selectNames: [['opacity'], ['borderRadius'], ['border'], ['background'], ['color']],
     defaultTheme: {
-      color: lightGreyColor,
+      color: '$lugia-dict.@lugia/lugia-web.lightGreyColor',
       opacity: 1,
       border: {
         top: { color: borderDisableColor, width: 1, style: 'solid' },
@@ -236,8 +230,8 @@ export const CancelSpan = StaticComponent({
     bottom: 0;
     left: 0;
     right: 0;
-    color: ${darkGreyColor};
-    background: ${lightGreyColor};
+    color: ${get('darkGreyColor')};
+    background: ${get('lightGreyColor')};
     ${getDisplayCSS};
   `,
 });
@@ -257,5 +251,5 @@ const getIconFont = (props: Object) => {
 export const IconWrap: Object = styled(Icon)`
   vertical-align: text-bottom !important;
   ${getIconFont}
-  color: ${mediumGreyColor};
+  color: ${get('mediumGreyColor')};
 `;
