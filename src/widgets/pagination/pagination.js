@@ -18,17 +18,17 @@ import colorsFunc from '../css/stateColor';
 import Widget from '../consts';
 import { ObjectUtils } from '@lugia/type-utils';
 
-export const {
-  themeColor,
-  mediumGreyColor,
-  darkGreyColor,
-  blackColor,
-  lightGreyColor,
-  defaultColor,
-  superLightColor,
-  borderRadius,
-  borderSize,
-} = colorsFunc();
+export const { borderSize } = colorsFunc();
+
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
+const themeHoverColor = '$lugia-dict.@lugia/lugia-web.themeHoverColor';
+const borderColor = '$lugia-dict.@lugia/lugia-web.borderColor';
+const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
+const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
+const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
+const superLightColor = '$lugia-dict.@lugia/lugia-web.superLightColor';
+const borderRadius = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
+const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 
 const PaginationList = StaticComponent({
   tag: 'ul',
@@ -143,7 +143,7 @@ const PaginationListItem = CSSComponent({
       };
     },
     defaultTheme: {
-      border: getBorder({ color: lightGreyColor, width: borderSize, style: 'solid' }),
+      border: getBorder({ color: borderColor, width: borderSize, style: 'solid' }),
       borderRadius: getBorderRadius(borderRadius),
       cursor: 'pointer',
       background: { color: defaultColor },
@@ -159,7 +159,7 @@ const PaginationListItem = CSSComponent({
       ['boxShadow'],
     ],
     defaultTheme: {
-      border: getBorder({ color: themeColor, width: borderSize, style: 'solid' }),
+      border: getBorder({ color: themeHoverColor, width: borderSize, style: 'solid' }),
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
@@ -468,7 +468,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
       {
         [IconViewClass]: {
           normal: {
-            color: lightGreyColor,
+            color: borderColor,
             cursor: 'pointer',
             fontSize: 12,
           },
