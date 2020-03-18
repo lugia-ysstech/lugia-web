@@ -9,14 +9,16 @@ import Trigger from '../trigger';
 import Widget from '../consts/index';
 import type { TooltipProps, TooltipState } from '../css/tooltip';
 import { Down, Left, Right, Up } from '../css/tooltip';
-import colorsFunc from '../css/stateColor';
 import ThemeHoc from '@lugia/theme-hoc';
-import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
+import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import { getBoxShadow } from '@lugia/theme-utils';
 
 import { units } from '@lugia/css';
 const { px2remcss } = units;
-const { defaultColor, blackColor, darkGreyColor } = colorsFunc();
+
+const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
+const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
+const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 
 const ContentWrapper: Object = CSSComponent({
   tag: 'div',
