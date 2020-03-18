@@ -19,24 +19,22 @@ import { TipBottom, BaseInputContainer } from './input';
 import { checkValidateResultFromStatusAndType, DefaultHelp, isValidateError } from '../css/input';
 
 const { px2remcss } = units;
-const {
-  themeColor,
-  disableColor,
-  borderColor,
-  blackColor,
-  mediumGreyColor,
-  darkGreyColor,
-  lightGreyColor,
-  borderRadius,
-  padding,
-  borderSize,
-  shadowSpread,
-  hShadow,
-  vShadow,
-  transitionTime,
-  defaultColor,
-  dangerColor,
-} = colorsFunc();
+const { padding, shadowSpread, hShadow, vShadow, transitionTime } = colorsFunc();
+
+const themeHoverColor = '$lugia-dict.@lugia/lugia-web.themeHoverColor';
+const themeActiveColor = '$lugia-dict.@lugia/lugia-web.themeActiveColor';
+const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
+const borderColor = '$lugia-dict.@lugia/lugia-web.borderColor';
+const dangerColor = '$lugia-dict.@lugia/lugia-web.dangerColor';
+const dangerHoverColor = '$lugia-dict.@lugia/lugia-web.dangerHoverColor';
+const dangerActiveColor = '$lugia-dict.@lugia/lugia-web.dangerActiveColor';
+const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
+const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
+const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
+const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
+const borderRadius = '$lugia-dict.@lugia/lugia-web.borderRadius';
+const borderSize = '$lugia-dict.@lugia/lugia-web.borderSize';
+const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 
 const checkIsPercent = width => {
   return width && typeof width === 'string' && width.indexOf('%') !== -1;
@@ -147,7 +145,7 @@ const Textarea = CSSComponent({
         propsConfig: { validateStatus },
       } = themeProps;
       const { border } = themeMeta;
-      const borderColor = isValidateError(validateStatus) ? dangerColor : themeColor;
+      const borderColor = isValidateError(validateStatus) ? dangerHoverColor : themeHoverColor;
       const borderOBJ = border ? border : { color: borderColor, width: borderSize, style: 'solid' };
       return {
         border: getBorder(borderOBJ),
@@ -164,8 +162,8 @@ const Textarea = CSSComponent({
       const theColor = disabled
         ? disableColor
         : isValidateError(validateStatus)
-        ? changeColor(dangerColor, 0, 0, 20).rgba
-        : changeColor(themeColor, 0, 0, 20).rgba;
+        ? dangerActiveColor
+        : themeActiveColor;
       const shadow = `${hShadow}px ${vShadow}px ${shadowSpread}px ${theColor}`;
       return { boxShadow: getBoxShadow(shadow) };
     },

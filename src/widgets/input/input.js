@@ -13,29 +13,26 @@ import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import colorsFunc from '../css/stateColor';
 import { units } from '@lugia/css';
 import { deepMerge } from '@lugia/object-utils';
-
 import { getBorder, getBoxShadow, getBorderRadius } from '@lugia/theme-utils';
 import { ObjectUtils } from '@lugia/type-utils';
 import changeColor from '../css/utilsColor';
 const { px2remcss } = units;
-const {
-  themeColor,
-  disableColor,
-  borderColor,
-  dangerColor,
-  blackColor,
-  mediumGreyColor,
-  darkGreyColor,
-  lightGreyColor,
-  borderRadius,
-  padding,
-  borderSize,
-  shadowSpread,
-  hShadow,
-  vShadow,
-  transitionTime,
-  defaultColor,
-} = colorsFunc();
+
+const { padding, shadowSpread, hShadow, vShadow, transitionTime, borderSize } = colorsFunc();
+
+const themeHoverColor = '$lugia-dict.@lugia/lugia-web.themeHoverColor';
+const themeActiveColor = '$lugia-dict.@lugia/lugia-web.themeActiveColor';
+const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
+const borderColor = '$lugia-dict.@lugia/lugia-web.borderColor';
+const dangerColor = '$lugia-dict.@lugia/lugia-web.dangerColor';
+const dangerHoverColor = '$lugia-dict.@lugia/lugia-web.dangerHoverColor';
+const dangerActiveColor = '$lugia-dict.@lugia/lugia-web.dangerActiveColor';
+const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
+const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
+const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
+const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
+const borderRadius = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
+const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 
 const CommonInputStyle = CSSComponent({
   tag: 'input',
@@ -129,7 +126,7 @@ const CommonInputStyle = CSSComponent({
         propsConfig: { validateStatus },
       } = themeProps;
       const { border } = themeMeta;
-      const theBorderColor = isValidateError(validateStatus) ? dangerColor : themeColor;
+      const theBorderColor = isValidateError(validateStatus) ? dangerHoverColor : themeHoverColor;
       const borderOBJ = border
         ? border
         : { color: theBorderColor, width: borderSize, style: 'solid' };
@@ -145,9 +142,7 @@ const CommonInputStyle = CSSComponent({
         propsConfig: { validateStatus },
       } = themeProps;
       const { boxShadow } = themeMeta;
-      const theColor = isValidateError(validateStatus)
-        ? changeColor(dangerColor, 0, 0, 20).rgba
-        : changeColor(themeColor, 0, 0, 20).rgba;
+      const theColor = isValidateError(validateStatus) ? dangerActiveColor : themeActiveColor;
       const shadowCSS = `${hShadow}px ${vShadow}px ${shadowSpread}px ${theColor}`;
       const shadowOBJ = boxShadow ? boxShadow : getBoxShadow(shadowCSS);
       return { boxShadow: shadowOBJ };
