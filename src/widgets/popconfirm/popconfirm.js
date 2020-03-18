@@ -16,11 +16,9 @@ import { getStateFromProps, processOnVisibleChange } from '../tooltip';
 import ThemeHoc from '@lugia/theme-hoc';
 import CSSComponent, { css, StaticComponent } from '../theme/CSSProvider';
 import { units } from '@lugia/css';
-import colorsFunc from '../css/stateColor';
 import { deepMerge } from '@lugia/object-utils';
-const { blackColor } = colorsFunc();
 const { px2remcss } = units;
-
+const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
 type PopconfirmProps = {
   description: React.Node,
   title: React.Node,
