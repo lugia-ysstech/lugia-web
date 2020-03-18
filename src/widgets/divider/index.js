@@ -11,12 +11,10 @@ import type { DividerProps } from '../css/divider';
 import ThemeHoc from '@lugia/theme-hoc';
 import CSSComponent, { css } from '../theme/CSSProvider';
 import StaticComponent from '../theme/CSSProvider';
-import colorsFunc from '../css/stateColor';
 
 import { units } from '@lugia/css';
-
 const { px2remcss } = units;
-const { borderDisableColor } = colorsFunc();
+const borderDisableColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 const Divider = CSSComponent({
   tag: 'div',
   className: 'Divider',
