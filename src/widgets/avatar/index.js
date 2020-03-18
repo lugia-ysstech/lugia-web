@@ -14,12 +14,11 @@ import ThemeHoc from '@lugia/theme-hoc';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import CSSComponent, { css, getBorderRadius } from '../theme/CSSProvider';
 import { ObjectUtils } from '@lugia/type-utils';
-import colorsFunc from '../css/stateColor';
 import { units } from '@lugia/css';
 import { deepMerge } from '@lugia/object-utils';
 
 const { px2remcss } = units;
-const { lightGreyColor } = colorsFunc();
+const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
 const isLargeSize = size => {
   return size === 'large';
 };
