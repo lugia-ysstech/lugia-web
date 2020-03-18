@@ -15,10 +15,8 @@ import ThemeHoc from '@lugia/theme-hoc';
 import { deepMerge } from '@lugia/object-utils';
 import { css, StaticComponent } from '@lugia/theme-css-hoc';
 import { units } from '@lugia/css';
-import colorsFunc from '../css/stateColor';
-
-const { mediumGreyColor } = colorsFunc();
 const { px2remcss } = units;
+const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
 
 const ClearContainer: Object = StaticComponent({
   tag: 'div',
