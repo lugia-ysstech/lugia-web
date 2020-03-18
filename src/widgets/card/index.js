@@ -12,13 +12,16 @@ import type { CardProps, CardState, ImageOrientation } from '../css/card';
 import { ObjectUtils } from '@lugia/type-utils';
 import CSSComponent, { css, StaticComponent } from '../theme/CSSProvider';
 import ThemeHoc from '../theme-provider/index';
-import colorsFunc from '../css/stateColor';
 import { units } from '@lugia/css';
 import { deepMerge } from '@lugia/object-utils';
 import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
 
 const { px2remcss } = units;
-const { darkGreyColor, lightGreyColor, defaultColor, themeColor, superLightColor } = colorsFunc();
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
+const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
+const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
+const superLightColor = '$lugia-dict.@lugia/lugia-web.superLightColor';
+const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 
 const checkSizeIsNumber = size => {
   let theSize = size;
