@@ -16,20 +16,18 @@ import Icon from '../icon';
 import Tooltip from '../tooltip';
 import { deepMerge } from '@lugia/object-utils';
 import CSSComponent, { css, keyframes } from '@lugia/theme-css-hoc';
-import colorsFunc from '../css/stateColor';
 
 import { units } from '@lugia/css';
-const {
-  themeColor,
-  lightGreyColor,
-  darkGreyColor,
-  blackColor,
-  successColor,
-  dangerColor,
-  superLightColor,
-} = colorsFunc();
 
 const { px2remcss } = units;
+
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
+const successColor = '$lugia-dict.@lugia/lugia-web.successColor';
+const dangerColor = '$lugia-dict.@lugia/lugia-web.dangerColor';
+const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
+const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
+const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
+const superLightColor = '$lugia-dict.@lugia/lugia-web.superLightColor';
 
 const ItemContainer = CSSComponent({
   tag: 'div',
