@@ -11,11 +11,11 @@ import NumberTurn from './numberturn/index';
 import ThemeHoc from '@lugia/theme-hoc';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
-import colorsFunc from '../css/stateColor';
 import { units } from '@lugia/css';
 const { px2remcss } = units;
 
-const { dangerColor, defaultColor } = colorsFunc();
+const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
+const dangerColor = '$lugia-dict.@lugia/lugia-web.dangerColor';
 
 export const BaseRedPoint = CSSComponent({
   tag: 'div',
