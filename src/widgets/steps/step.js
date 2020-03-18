@@ -16,21 +16,17 @@ import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import { units } from '@lugia/css';
 import { getBorder, getBoxShadow } from '@lugia/theme-utils';
 import { deepMerge } from '@lugia/object-utils';
-import colorsFunc from '../css/stateColor';
-import changeColor from '../css/utilsColor';
-
-const {
-  themeColor,
-  blackColor,
-  darkGreyColor,
-  successColor,
-  lightGreyColor,
-  dangerColor,
-  defaultColor,
-} = colorsFunc();
-const lightThemeColor = changeColor(themeColor, 20).rgb;
 
 const { px2remcss } = units;
+
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
+const themeHoverColor = '$lugia-dict.@lugia/lugia-web.themeHoverColor';
+const successColor = '$lugia-dict.@lugia/lugia-web.successColor';
+const dangerColor = '$lugia-dict.@lugia/lugia-web.dangerColor';
+const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
+const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
+const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
+const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 
 export const isHorizontal = (orientation: OrientationType): boolean => {
   return orientation === 'horizontal';
@@ -732,7 +728,7 @@ class Step extends React.Component<StepProps, StepState> {
         break;
       case 'finish':
         const finishColor = isFlatType(stepType)
-          ? lightThemeColor
+          ? themeHoverColor
           : type === 'desc'
           ? darkGreyColor
           : blackColor;
@@ -754,11 +750,11 @@ class Step extends React.Component<StepProps, StepState> {
     let resultConfigColor;
     switch (stepStatus) {
       case 'finish':
-        const finishColor = isFlatType(stepType) ? lightThemeColor : successColor;
+        const finishColor = isFlatType(stepType) ? themeHoverColor : successColor;
         resultConfigColor = finishColor;
         break;
       case 'process':
-        const processColor = isFlatType(stepType) ? lightThemeColor : themeColor;
+        const processColor = isFlatType(stepType) ? themeHoverColor : themeColor;
         resultConfigColor = processColor;
         break;
       case 'next':
@@ -955,7 +951,7 @@ class Step extends React.Component<StepProps, StepState> {
   getStepBackgroundColor(stepStatus: StepStatus, stepType: StepType) {
     const color =
       (stepStatus === 'finish' || stepStatus === 'process') && isFlatType(stepType)
-        ? lightThemeColor
+        ? themeHoverColor
         : stepStatus === 'process'
         ? themeColor
         : stepStatus === 'error' && isFlatType(stepType)
