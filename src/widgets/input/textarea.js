@@ -19,7 +19,7 @@ import { TipBottom, BaseInputContainer } from './input';
 import { checkValidateResultFromStatusAndType, DefaultHelp, isValidateError } from '../css/input';
 
 const { px2remcss } = units;
-const { padding, shadowSpread, hShadow, vShadow, transitionTime } = colorsFunc();
+const { padding, shadowSpread, hShadow, vShadow, transitionTime, borderSize } = colorsFunc();
 
 const themeHoverColor = '$lugia-dict.@lugia/lugia-web.themeHoverColor';
 const themeActiveColor = '$lugia-dict.@lugia/lugia-web.themeActiveColor';
@@ -32,8 +32,7 @@ const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
 const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
 const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
-const borderRadius = '$lugia-dict.@lugia/lugia-web.borderRadius';
-const borderSize = '$lugia-dict.@lugia/lugia-web.borderSize';
+const borderRadius = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
 const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 
 const checkIsPercent = width => {
