@@ -14,7 +14,7 @@ import StaticComponent from '../theme/CSSProvider';
 
 import { units } from '@lugia/css';
 const { px2remcss } = units;
-const borderDisableColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
+const borderDisableColor = '$lugia-dict.@lugia/lugia-web.borderDisableColor';
 const Divider = CSSComponent({
   tag: 'div',
   className: 'Divider',
