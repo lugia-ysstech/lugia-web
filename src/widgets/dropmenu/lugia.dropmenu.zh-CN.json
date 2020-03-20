@@ -467,25 +467,13 @@
         ["margin"],
         ["lineHeight"],
         ["opacity"],
-        ["color"],
-        ["font"],
-        ["fontSize"],
         ["cursor"],
         ["boxShadow"],
         ["borderRadius"]
       ],
       "hover": [],
       "active": [],
-      "disabled": [
-        ["lineHeight"],
-        ["opacity"],
-        ["boxShadow"],
-        ["color"],
-        ["font"],
-        ["fontSize"],
-        ["cursor"],
-        ["borderRadius"]
-      ]
+      "disabled": [["lineHeight"], ["opacity"], ["boxShadow"], ["cursor"], ["borderRadius"]]
     },
 
     "Divides": {
