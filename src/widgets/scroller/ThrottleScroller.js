@@ -297,7 +297,6 @@ export default (
 
     onScroller = (value: number) => {
       const { onScroller } = this.props;
-
       const start = value / this.itemHeight;
       onScroller ? onScroller(start, this.fetchEnd(start)) : this.setState({ start });
     };
