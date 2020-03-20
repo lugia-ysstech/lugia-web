@@ -17,6 +17,7 @@ import { ObjectUtils } from '@lugia/type-utils';
 import changeColor from '../css/utilsColor';
 import { TipBottom, BaseInputContainer } from './input';
 import { checkValidateResultFromStatusAndType, DefaultHelp, isValidateError } from '../css/input';
+import get from '../css/theme-common-dict';
 
 const { px2remcss } = units;
 const { padding, shadowSpread, hShadow, vShadow, transitionTime, borderSize } = colorsFunc();
@@ -31,7 +32,6 @@ const dangerActiveColor = '$lugia-dict.@lugia/lugia-web.dangerActiveColor';
 const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
 const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
 const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
-const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
 const borderRadius = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
 const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 
@@ -492,7 +492,7 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
       getPartOfThemeProps,
     } = this.props;
     const {
-      themeConfig: { normal: { color = lightGreyColor, font = {}, fontSize } = {} },
+      themeConfig: { normal: { color = get('lightGreyColor'), font = {}, fontSize } = {} },
     } = getPartOfThemeProps('Placeholder');
 
     const validateErrorInputThemeProps = getPartOfThemeProps('ValidateErrorInput');

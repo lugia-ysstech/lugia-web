@@ -16,6 +16,7 @@ import { deepMerge } from '@lugia/object-utils';
 import { getBorder, getBoxShadow, getBorderRadius } from '@lugia/theme-utils';
 import { ObjectUtils } from '@lugia/type-utils';
 import changeColor from '../css/utilsColor';
+import get from '../css/theme-common-dict';
 const { px2remcss } = units;
 
 const { padding, shadowSpread, hShadow, vShadow, transitionTime, borderSize } = colorsFunc();
@@ -30,7 +31,6 @@ const dangerActiveColor = '$lugia-dict.@lugia/lugia-web.dangerActiveColor';
 const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
 const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
 const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
-const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
 const borderRadius = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
 const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 
@@ -268,7 +268,7 @@ const Fix = CSSComponent({
     bottom: 50%;
     line-height: ${px2remcss(10)};
     font-size: 1.4em;
-    color: ${mediumGreyColor};
+    color: ${get('mediumGreyColor')};
   `,
 });
 
@@ -628,7 +628,7 @@ class TextBox extends Component<InputProps, InputState> {
     }
 
     const {
-      themeConfig: { normal: { color = lightGreyColor, font = {}, fontSize } = {} },
+      themeConfig: { normal: { color = get('lightGreyColor'), font = {}, fontSize } = {} },
     } = this.props.getPartOfThemeProps('Placeholder');
 
     const validateErrorInputThemeProps = getPartOfThemeProps('ValidateErrorInput');
