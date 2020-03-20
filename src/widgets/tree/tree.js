@@ -613,7 +613,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     const check = shiftKey ? onlyProcessYouself : processAllNode;
     check.call(utils, eventKey, selectedInfo, id2ExtendInfo);
 
-    this.onChange(Object.keys(value), item);
+    this.onChange(Object.keys(value), item, selectedInfo);
     if (this.isNotLimit(props)) {
       const newState: TreeState = {
         start: this.state.start,
@@ -654,12 +654,12 @@ class Tree extends React.Component<TreeProps, TreeState> {
     return result;
   }
 
-  onChange = (value: any, item: Object) => {
+  onChange = (value: any, item: Object, selectedInfo?: Object) => {
     this.value = value;
     const { props } = this;
     const { onChange } = props;
     const checkedItems = this.getCheckedItems(value);
-    onChange && onChange(value, this.getTitle(value), { item, checkedItems });
+    onChange && onChange(value, this.getTitle(value), { item, checkedItems, selectedInfo });
   };
 
   getCheckedItems = (keys: any) => {

@@ -151,7 +151,10 @@ export default (
 
       const pack = (element: Object | Array<Object>) => {
         return (
-          <ScrollerContainer themeProps={themeProps} onWheel={this.onWheel}>
+          <ScrollerContainer
+            themeProps={themeProps}
+            onWheel={activeAutoHeight ? undefined : this.onWheel}
+          >
             {element}
           </ScrollerContainer>
         );
