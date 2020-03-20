@@ -4,7 +4,7 @@
  *
  * @flow
  */
-import { getDict } from '@lugia/dict';
+import { getDict } from '@lugia/theme-utils';
 import PublicValue from './public-value';
 import changeColor from './utilsColor';
 
