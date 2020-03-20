@@ -580,6 +580,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
       valueField,
       mutliple,
       autoHeight,
+      divided,
       renderSuffixItems,
     } = this.props;
 
@@ -595,6 +596,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     return (
       <SubMenu
         mutliple={mutliple}
+        divided={divided}
         theme={config}
         viewClass={'Szf'}
         autoHeight={autoHeight}
