@@ -140,6 +140,7 @@ export const OutContainer = CSSComponent({
     height: ${px2remcss(Height)};
     width: 100%;
     overflow: hidden;
+    position: relative;
     border-radius: ${px2remcss(4)};
     background: ${defaultColor};
     color: ${blackColor};
