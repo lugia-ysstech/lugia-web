@@ -1061,7 +1061,7 @@
 
 "@lugia/dict@^1.0.3":
   version "1.0.3"
-  resolved "https://registry.npmjs.org/@lugia/dict/-/dict-1.0.3.tgz#5143dbf47d89ba7cc3260f3c0921aeb3997e7336"
+  resolved "https://registry.yarnpkg.com/@lugia/dict/-/dict-1.0.3.tgz#5143dbf47d89ba7cc3260f3c0921aeb3997e7336"
   integrity sha512-QsJJMIdABB1MfK+t8IA6qSBCwh0mSU5yQwqtw2FQH8w0fwtJte83x+rhVVsMlHxHTjPIYqJh+TWQpwkaP8vjlQ==
 
 "@lugia/jverify@^1.0.10":
@@ -1332,17 +1332,17 @@
     "@babel/runtime" "^7.4.5"
     "@lugia/object-utils" "^1.0.15"
 
-"@lugia/theme-css-hoc@^1.1.2":
-  version "1.1.2"
-  resolved "https://registry.npmjs.org/@lugia/theme-css-hoc/-/theme-css-hoc-1.1.2.tgz#4d6cd9cddeb26c35d0408af156b2a6f95dff7aef"
-  integrity sha512-AWl2kr6gIDlA8FLN/c7HRdLF+GKiNPUPUvXK4athekX/F8O1jw7dEZsEOBIF0PrkRqZK+/UwW8/bpGIBmQYz9w==
+"@lugia/theme-css-hoc@^1.1.3":
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/@lugia/theme-css-hoc/-/theme-css-hoc-1.1.3.tgz#41b6724e449dcdf498fc9fcaaa57d9906a439ab7"
+  integrity sha512-bKmG+ORoNPIUeZMavoy2pjgse4/jpbhigJsvVBB+Dn0jq97oZ6N5zY4GuD4W/AfussSeOVHqAm/BoRS8m6dyrg==
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/css" "^1.0.19"
     "@lugia/object-utils" "^1.0.15"
     "@lugia/ramada" "^1.0.3"
     "@lugia/theme-core" "^1.1.1"
-    "@lugia/theme-utils" "^1.1.1"
+    "@lugia/theme-utils" "^1.1.2"
     decamelize "^3.2.0"
 
 "@lugia/theme-hoc-devtools@^1.0.8":
@@ -1362,13 +1362,14 @@
     "@lugia/theme-core" "^1.1.1"
     "@lugia/theme-hoc-devtools" "^1.0.8"
 
-"@lugia/theme-utils@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.npmjs.org/@lugia/theme-utils/-/theme-utils-1.1.1.tgz#38db23038623f51c7bf9808e32aa79bf856e5e76"
-  integrity sha512-IdGxoWQfjbNQs9xwXc5WIpZXRc6I/t7b86UfkzflYTZ+SMOoONJ3fG95Af8ahlSrJ+qfl3pyrTU18nBWRDqEhQ==
+"@lugia/theme-utils@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@lugia/theme-utils/-/theme-utils-1.1.2.tgz#f1116ee2ab9b14bc264430dd1d2be069ea65ffc9"
+  integrity sha512-NeA2HLvf+Qf5lWacupv8DDVnBram1XkNamfDP33ExYkWjkPss4Bj/TnOfGiuKCNl/v9zSTFgkiXPqooNYMfDhg==
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/css" "^1.0.19"
+    "@lugia/dict" "^1.0.3"
 
 "@lugia/type-utils@^1.0.1", "@lugia/type-utils@^1.0.6":
   version "1.0.6"
