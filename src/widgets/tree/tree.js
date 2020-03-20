@@ -614,6 +614,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
     check.call(utils, eventKey, selectedInfo, id2ExtendInfo);
 
     this.onChange(Object.keys(value), item, selectedInfo);
+
     if (this.isNotLimit(props)) {
       const newState: TreeState = {
         start: this.state.start,
