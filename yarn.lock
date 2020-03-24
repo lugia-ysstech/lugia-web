@@ -1332,10 +1332,10 @@
     "@babel/runtime" "^7.4.5"
     "@lugia/object-utils" "^1.0.15"
 
-"@lugia/theme-css-hoc@^1.1.4":
-  version "1.1.4"
-  resolved "https://registry.npmjs.org/@lugia/theme-css-hoc/-/theme-css-hoc-1.1.4.tgz#c89f228f24302fdf69589579738c5b1b19a8c2a3"
-  integrity sha512-jtxy10fTj3myosh6VQUJertxK+j0OZO6LEvg/8LU11/kJsloamCOPLogJpLviIkH1D1Heilbws7Apthp2y8PLQ==
+"@lugia/theme-css-hoc@^1.1.5":
+  version "1.1.5"
+  resolved "https://registry.npmjs.org/@lugia/theme-css-hoc/-/theme-css-hoc-1.1.5.tgz#1f27aa3e7d963743f6514aacf15e4c531ba2c052"
+  integrity sha512-FVoNBIhxMuP8fEGrtHUTkgQjN9/UoJZf8/+IwnpVNxAQUos6rey3B+CcOKm8gRFWOjeOdJPbmfc84fyeMjzuvw==
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/css" "^1.0.20"
@@ -1343,7 +1343,7 @@
     "@lugia/ramada" "^1.0.3"
     "@lugia/theme-core" "^1.1.1"
     "@lugia/theme-utils" "^1.1.3"
-    decamelize "^3.2.0"
+    decamelize "^4.0.0"
 
 "@lugia/theme-hoc-devtools@^1.0.8":
   version "1.0.8"
