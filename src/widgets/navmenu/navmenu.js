@@ -196,7 +196,6 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
 
   getMenuValue = (value: string) => {
     const { separator } = this.props;
-
     const keyArray = value.split(separator);
 
     const len = keyArray.length;
@@ -252,6 +251,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
         />
       );
     }
+    const { activityValue } = this.state;
     return (
       <Tabs
         tabType={'line'}
@@ -260,10 +260,24 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
         hideContent={true}
         onTabClick={this.onTabClick}
         data={tabsData}
-        activityValue={this.state.activityValue}
+        activityValue={this.getActivityValue(activityValue)}
         getTabpane={this.getTabpane}
       />
     );
+  };
+
+  getActivityValue = (activityValue: string) => {
+    const { valueField, pathSeparator } = this.props;
+    const item = this.treeData.filter(treeItem => activityValue === treeItem[valueField])[0];
+    if (!item) {
+      return '';
+    }
+    const { path } = item;
+    if (!path) {
+      return activityValue;
+    }
+
+    return path.split(pathSeparator)[0];
   };
 
   getTabpane = (target: Object, i: number) => {
@@ -299,10 +313,10 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
   };
 
   getParentTarget = (text: string) => {
-    const { valueField, data = [] } = this.props;
+    const { valueField, data = [], pathSeparator } = this.props;
     const key = this.treeData
       .filter(treeItem => text === treeItem[valueField])[0]
-      .path.split('/')[0];
+      .path.split(pathSeparator)[0];
 
     let parentItem;
     data.forEach((item, i) => {
