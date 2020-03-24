@@ -15,7 +15,8 @@ import { units } from '@lugia/css';
 import { deepMerge } from '@lugia/object-utils';
 import { getBorder, getBoxShadow, getBorderRadius } from '@lugia/theme-utils';
 import { ObjectUtils } from '@lugia/type-utils';
-import changeColor from '../css/utilsColor';
+import get from '../css/theme-common-dict';
+
 const { px2remcss } = units;
 
 const { padding, shadowSpread, hShadow, vShadow, transitionTime, borderSize } = colorsFunc();
@@ -32,7 +33,6 @@ const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
 const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
 const borderRadius = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
-const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 
 const CommonInputStyle = CSSComponent({
   tag: 'input',
@@ -89,9 +89,7 @@ const CommonInputStyle = CSSComponent({
       const shadowCSS = boxShadow
         ? boxShadow
         : isValidateError(validateStatus)
-        ? getBoxShadow(
-            `${hShadow}px ${vShadow}px ${shadowSpread}px ${changeColor(dangerColor, 0, 0, 10).rgba}`
-          )
+        ? getBoxShadow(`${hShadow}px ${vShadow}px ${shadowSpread}px ${get('inputDangerColor')}`)
         : {};
       const theBorderColor = isValidateError(validateStatus) ? dangerColor : borderColor;
       const borderOBJ = border
@@ -486,7 +484,7 @@ class TextBox extends Component<InputProps, InputState> {
         Container: deepMerge(
           {
             normal: {
-              background: { color: darkGreyColor },
+              background: { color: get('darkGreyColor') },
               getCSS() {
                 return 'display: inline-block;';
               },
@@ -495,7 +493,7 @@ class TextBox extends Component<InputProps, InputState> {
           validateTopTipThemeProps[viewClass]
         ),
         TooltipTitle: deepMerge(
-          { normal: { color: defaultColor } },
+          { normal: { color: get('defaultColor') } },
           validateTopTipThemeProps[viewClass]
         ),
       },
