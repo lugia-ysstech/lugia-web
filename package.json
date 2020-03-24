@@ -23,7 +23,7 @@
     "@lugia/ramada": "^1.0.3",
     "@lugia/theme-config": "^1.1.1",
     "@lugia/theme-core": "^1.1.1",
-    "@lugia/theme-css-hoc": "^1.1.4",
+    "@lugia/theme-css-hoc": "^1.1.5",
     "@lugia/theme-hoc": "^1.1.1",
     "@lugia/theme-hoc-devtools": "^1.0.8",
     "@lugia/theme-utils": "^1.1.3",
