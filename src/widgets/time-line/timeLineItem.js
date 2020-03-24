@@ -18,6 +18,7 @@ import { deepMerge } from '@lugia/object-utils';
 import CSSComponent, { css, keyframes } from '@lugia/theme-css-hoc';
 
 import { units } from '@lugia/css';
+import get from '../css/theme-common-dict';
 
 const { px2remcss } = units;
 
@@ -130,7 +131,8 @@ const Line = CSSComponent({
       const { propsConfig } = themeProps;
       const { isLast } = propsConfig;
       const display = isLast ? 'none' : '';
-      const borderColor = background && background.color ? background.color : superLightColor;
+      const borderColor =
+        background && background.color ? background.color : get('superLightColor');
       return `display:${display};
          border-left: ${px2remcss(1)} solid ${borderColor};
       `;
@@ -332,6 +334,13 @@ class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
                   bottom: 6,
                   left: 8,
                   right: 8,
+                },
+              },
+            },
+            ChildrenContainer: {
+              normal: {
+                getCSS() {
+                  return 'display:block;';
                 },
               },
             },
