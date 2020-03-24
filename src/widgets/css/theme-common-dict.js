@@ -4,7 +4,7 @@
  *
  * @flow
  */
-import { getDict } from '@lugia/dict';
+import { getDict } from '@lugia/theme-utils';
 import PublicValue from './public-value';
 import changeColor from './utilsColor';
 
@@ -28,7 +28,14 @@ export function load(value: Object) {
     const ruleColor = getRuleColor(value);
     const buttonRuleColor = getButtonRuleColor(value);
     const alertRuleColor = getAlertRuleColor(value);
-    dict.load(NameSpace, { ...value, ...ruleColor, ...buttonRuleColor, ...alertRuleColor });
+    const inputDangerColor = getInputDangerColor(value);
+    dict.load(NameSpace, {
+      ...value,
+      ...ruleColor,
+      ...buttonRuleColor,
+      ...alertRuleColor,
+      ...inputDangerColor,
+    });
   }
 }
 
@@ -53,6 +60,12 @@ function getRuleColor(value: Object): Object {
   };
 
   return ruleColor;
+}
+function getInputDangerColor(value: Object): Object {
+  const { dangerColor } = value;
+  return {
+    inputDangerColor: getReduceColor(dangerColor, { reduceS: 0, reduceB: 0, reduceA: 100 }, 'rgba'),
+  };
 }
 
 function getButtonRuleColor(value: Object): Object {

@@ -14,9 +14,9 @@ import { deepMerge } from '@lugia/object-utils';
 import type { ResizeType, ValidateStatus, ValidateType } from '../css/input';
 import { getBorder, getBoxShadow, getBorderRadius } from '@lugia/theme-utils';
 import { ObjectUtils } from '@lugia/type-utils';
-import changeColor from '../css/utilsColor';
 import { TipBottom, BaseInputContainer } from './input';
 import { checkValidateResultFromStatusAndType, DefaultHelp, isValidateError } from '../css/input';
+import get from '../css/theme-common-dict';
 
 const { px2remcss } = units;
 const { padding, shadowSpread, hShadow, vShadow, transitionTime, borderSize } = colorsFunc();
@@ -33,7 +33,6 @@ const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
 const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
 const borderRadius = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
-const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 
 const checkIsPercent = width => {
   return width && typeof width === 'string' && width.indexOf('%') !== -1;
@@ -106,9 +105,7 @@ const Textarea = CSSComponent({
       const shadowCSS = boxShadow
         ? boxShadow
         : isValidateError(validateStatus)
-        ? getBoxShadow(
-            `${hShadow}px ${vShadow}px ${shadowSpread}px ${changeColor(dangerColor, 0, 0, 10).rgba}`
-          )
+        ? getBoxShadow(`${hShadow}px ${vShadow}px ${shadowSpread}px ${get('inputDangerColor')}`)
         : {};
       const theBorderColor = isValidateError(validateStatus) ? dangerColor : borderColor;
       const borderOBJ = border
@@ -358,7 +355,7 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
         Container: deepMerge(
           {
             normal: {
-              background: { color: darkGreyColor },
+              background: { color: get('darkGreyColor') },
               getCSS() {
                 return 'display: inline-block;';
               },
@@ -367,7 +364,7 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
           validateTopTipThemeProps[viewClass]
         ),
         TooltipTitle: deepMerge(
-          { normal: { color: defaultColor } },
+          { normal: { color: get('defaultColor') } },
           validateTopTipThemeProps[viewClass]
         ),
       },
