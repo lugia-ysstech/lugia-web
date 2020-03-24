@@ -106,7 +106,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     return {
       value: getValue(props, state),
       expandedPath: state.expandedPath,
-      activityValue: props.activityValue ? props.activityValue : '',
+      activityValue: props.activityValue ? props.activityValue : state.activityValue,
     };
   }
 
