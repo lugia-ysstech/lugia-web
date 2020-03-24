@@ -12,7 +12,7 @@ import { Down, Left, Right, Up } from '../css/tooltip';
 import ThemeHoc from '@lugia/theme-hoc';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import { getBoxShadow } from '@lugia/theme-utils';
-
+import get from '../css/theme-common-dict';
 import { units } from '@lugia/css';
 const { px2remcss } = units;
 
@@ -79,7 +79,7 @@ const Arrow: Object = CSSComponent({
       const { propsConfig } = themeProps;
       const { background = {} } = themeMeta;
       const { direction = Up } = propsConfig;
-      const bgColor = background && background.color ? background.color : defaultColor;
+      const bgColor = background && background.color ? background.color : get('defaultColor');
       switch (direction) {
         case Up:
           return `
@@ -130,7 +130,7 @@ const BaseArrow: Object = CSSComponent({
     getCSS(themeMeta: Object, themeProps: Object): string {
       const { propsConfig } = themeProps;
       const { background = {} } = themeMeta;
-      const bgColor = background && background.color ? background.color : defaultColor;
+      const bgColor = background && background.color ? background.color : get('defaultColor');
 
       const { direction = Up, placement } = propsConfig;
       let angle = '';
