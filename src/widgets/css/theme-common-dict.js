@@ -64,7 +64,7 @@ function getRuleColor(value: Object): Object {
 function getInputDangerColor(value: Object): Object {
   const { dangerColor } = value;
   return {
-    inputDangerColor: getReduceColor(dangerColor, { reduceS: 0, reduceB: 0, reduceA: 100 }, 'rgba'),
+    inputDangerColor: getReduceColor(dangerColor, { reduceS: 0, reduceB: 0, reduceA: 10 }, 'rgba'),
   };
 }
 
