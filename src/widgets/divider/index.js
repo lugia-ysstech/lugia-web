@@ -11,7 +11,7 @@ import type { DividerProps } from '../css/divider';
 import ThemeHoc from '@lugia/theme-hoc';
 import CSSComponent, { css } from '../theme/CSSProvider';
 import StaticComponent from '../theme/CSSProvider';
-import get from '../css/theme-common-dict';
+
 import { units } from '@lugia/css';
 const { px2remcss } = units;
 const borderDisableColor = '$lugia-dict.@lugia/lugia-web.borderDisableColor';
@@ -92,7 +92,7 @@ const BorderDivider = CSSComponent({
       const { dashed, position, content } = propsConfig;
       const { background = {}, height, width } = themeMeta;
       const { color = '' } = background;
-      const theColor = color ? color : get('borderDisableColor');
+      const theColor = color ? color : borderDisableColor;
       const theWidth = width
         ? px2remcss(width)
         : !content
