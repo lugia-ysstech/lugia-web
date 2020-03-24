@@ -16,7 +16,7 @@ import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import { units } from '@lugia/css';
 import { getBorder, getBoxShadow } from '@lugia/theme-utils';
 import { deepMerge } from '@lugia/object-utils';
-
+import get from '../css/theme-common-dict';
 const { px2remcss } = units;
 
 const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
@@ -337,7 +337,7 @@ const FlatLine = CSSComponent({
         position: absolute;
         width: ${px2remcss(4)};
         height: ${px2remcss(4)};
-        background: ${defaultColor};`;
+        background: ${get('defaultColor')};`;
       return `
        &::before {
         ${commonCSS}
@@ -750,22 +750,22 @@ class Step extends React.Component<StepProps, StepState> {
     let resultConfigColor;
     switch (stepStatus) {
       case 'finish':
-        const finishColor = isFlatType(stepType) ? themeHoverColor : successColor;
+        const finishColor = isFlatType(stepType) ? get('themeHoverColor') : get('successColor');
         resultConfigColor = finishColor;
         break;
       case 'process':
-        const processColor = isFlatType(stepType) ? themeHoverColor : themeColor;
+        const processColor = isFlatType(stepType) ? get('themeHoverColor') : get('themeColor');
         resultConfigColor = processColor;
         break;
       case 'next':
-        resultConfigColor = themeColor;
+        resultConfigColor = get('themeColor');
         break;
       case 'wait':
-        resultConfigColor = lightGreyColor;
+        resultConfigColor = get('lightGreyColor');
         break;
       case 'error':
       default:
-        resultConfigColor = dangerColor;
+        resultConfigColor = get('dangerColor');
         break;
     }
     return resultConfigColor;
