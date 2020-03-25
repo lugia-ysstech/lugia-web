@@ -59,11 +59,11 @@ const SizeCSS: { [key: CheckSize]: TypeSizeCSS } = {
 };
 const getSizeCSS = (props: PropsType): string => {
   const { size = 'default' } = props;
-  const { height, lineHeight } = SizeCSS[size];
+  const { height } = SizeCSS[size];
 
   return `
     height: ${em(height)};
-    line-height: ${em(lineHeight)};
+    line-height: ${em(height)};
   `;
 };
 
