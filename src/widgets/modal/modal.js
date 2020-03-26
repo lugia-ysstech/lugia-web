@@ -50,6 +50,28 @@ export default ThemeProvider(
         opening: visible,
       };
     }
+    saveModalDom = el => {
+      this.modalEle = el;
+    };
+    componentDidMount() {
+      window.addEventListener('keydown', this.hideWindowPopUp, false);
+    }
+    componentWillUnmount() {
+      window.removeEventListener('keydown', this.hideWindowPopUp, false);
+    }
+    hideWindowPopUp = e => {
+      const { onCancel } = this.props;
+      if (this.modalEle === document.activeElement && e.keyCode === 27) {
+        if ('visible' in this.props) {
+          onCancel && onCancel();
+        } else {
+          this.setState({
+            visible: false,
+            closing: true,
+          });
+        }
+      }
+    };
 
     componentDidUpdate() {
       const { closing } = this.state;
@@ -151,7 +173,13 @@ export default ThemeProvider(
             <ModalMask onClick={this.handleMaskClick} closing={closing} opening={opening} />
           ) : null}
           <ModalWrap>
-            <Modal closing={closing} opening={opening} themeProps={modalWrapTheme}>
+            <Modal
+              tabIndex="1"
+              ref={this.saveModalDom}
+              closing={closing}
+              opening={opening}
+              themeProps={modalWrapTheme}
+            >
               <ModalContent showIcon={showIcon} theme={getTheme()} themeProps={modalWrapTheme}>
                 {showIcon ? (
                   <Icon
