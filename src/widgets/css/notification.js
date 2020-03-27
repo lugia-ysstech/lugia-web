@@ -92,6 +92,7 @@ export const Notification = styled.div`
   line-height: 1.5;
   position: relative;
   margin-bottom: ${em(16)};
+  z-index: 4001;
   ${getAnimate};
 `;
 export const Content = styled.div`
