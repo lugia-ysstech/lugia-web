@@ -1,0 +1,42 @@
+{
+  "widgetName": "Column",
+  "title": "ColumnProps",
+  "desc": "ColumnProps。",
+  "props": {
+    "align": {
+      "type": "AlignType",
+      "desc": "设置列内容的对齐方式",
+      "defaultValue": "left"
+    },
+    "dataIndex": {
+      "type": "string",
+      "desc": "列数据在数据项中对应的 key"
+    },
+    "key": {
+      "type": "string",
+      "desc": "指定每一行唯一的 key 值"
+    },
+    "render": {
+      "type": "Function(text, record, index) {}",
+      "desc": "生成复杂数据的渲染函数，参数分别为当前行的值、当前行的数据、当前行的索引，@return里面可以设置表格行/列合并"
+    },
+    "title": {
+      "type": "React.node",
+      "desc": "列头显示文字"
+    },
+    "width": {
+      "type": "string | number",
+      "desc": "列宽度"
+    }
+  },
+  "event": {
+    "onCell": {
+      "type": "Function(record, rowIndex)",
+      "desc": "设置单元格属性"
+    }
+  },
+  "type": {
+    "AlignType": ["left", "right", "center"]
+  },
+  "category": ["数据展示"]
+}
