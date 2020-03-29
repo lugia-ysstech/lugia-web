@@ -72,7 +72,7 @@ export const Td = CSSComponent({
   tag: 'div',
   className: 'Td',
   normal: {
-    selectNames: [['width'], ['height'], ['border']],
+    selectNames: [['width'], ['height'], ['border'], ['padding']],
     getCSS(themeMeta: Object, themeProps: Object) {
       const {
         propsConfig: { align, ellipsis },
@@ -116,7 +116,7 @@ export const customBlock = CSSComponent({
   tag: 'div',
   className: 'customBlock',
   normal: {
-    selectNames: [['height']],
+    selectNames: [['height'], ['padding']],
   },
   css: `
  width: 100%;
@@ -126,9 +126,6 @@ export const customBlock = CSSComponent({
 export const THead = StaticComponent({
   tag: 'div',
   className: 'THead',
-  normal: {
-    selectNames: [['height']],
-  },
   css: `
   display: table-header-group;
   `,
@@ -137,9 +134,6 @@ export const THead = StaticComponent({
 export const TBody = StaticComponent({
   tag: 'div',
   className: 'TBody',
-  normal: {
-    selectNames: [['height']],
-  },
   css: `
    display: table-row-group;
   `,
@@ -149,7 +143,7 @@ export const NoData = CSSComponent({
   tag: 'div',
   className: 'NoData',
   normal: {
-    selectNames: [['height']],
+    selectNames: [['height'], ['padding'], ['font']],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
         propsConfig: { tableSize },

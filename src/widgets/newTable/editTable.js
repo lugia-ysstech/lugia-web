@@ -4,7 +4,7 @@ import Table from './table';
 import ThemeProvider from '../theme-provider';
 import EditInput from './EditInput';
 import type { EditTableProps } from './editTableCss';
-
+import { deepMerge } from '@lugia/object-utils';
 import { Container, EditDiv, InnerTriggerDiv } from './editTableCss';
 import KeyBoardEventListener from './connection';
 import Widget from '../consts';
@@ -147,7 +147,10 @@ class EditTable extends React.Component<EditTableProps, Object> {
     const { tableSize, tableStyle } = this.props;
     const tableProps = { tableSize, tableStyle };
     const containerTheme = this.props.getPartOfThemeProps('Container');
-    const TableTheme = this.props.getPartOfThemeHocProps('Table');
+    const defaultTableTheme = {
+      Td: { normal: { padding: 0 } },
+    };
+    const TableTheme = this.getThemeForTable('Table', defaultTableTheme);
 
     return (
       <Container themeProps={containerTheme}>
@@ -162,6 +165,12 @@ class EditTable extends React.Component<EditTableProps, Object> {
       </Container>
     );
   }
+
+  getThemeForTable = (themeName, defaultTheme) => {
+    const { theme, viewClass } = this.props.getPartOfThemeHocProps(themeName);
+    const resultTheme = deepMerge({ [[viewClass]]: defaultTheme }, theme);
+    return { theme: resultTheme, viewClass };
+  };
 
   restColumnsWithMark = (columns: Array<Object>) => {
     if (!columns) return;
