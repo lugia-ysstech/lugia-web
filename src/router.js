@@ -212,6 +212,6 @@ export default {
     render: async () => import('./widgets/upload/demo'),
   },
   '/newTable': {
-    render: async () => import('./widgets/newTable/demo'),
+    render: async () => import('./widgets/new-table/demo'),
   },
 };

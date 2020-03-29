@@ -11,8 +11,6 @@ import Adapter from 'enzyme-adapter-react-16';
 import EditTable, { restDataWithMark, setFirstRowAsHead, restColumnsIntoData } from '../editTable';
 import Table from '../table';
 import renderer from 'react-test-renderer';
-import Widget from '../../consts/index';
-import MegaInput from '../megaFormDemo';
 
 const columns = [
   {
@@ -82,7 +80,7 @@ const getCmp = (target: any): Object => {
 };
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('newTable', () => {
+describe('new-table', () => {
   it(' Table css ', () => {
     const cmp = <Table data={data} columns={columns} />;
     expect(renderer.create(cmp).toJSON()).toMatchSnapshot();
