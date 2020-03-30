@@ -93,6 +93,10 @@
       "type": "Function(currentPageData)",
       "desc": "表格标题"
     },
+    "tableLineHeight": {
+      "type": "number",
+      "desc": "设置表格行高"
+    },
     "onHeaderRow": {
       "type": "Function(column, index)",
       "desc": "设置头部行属性"
