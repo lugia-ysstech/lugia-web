@@ -16,21 +16,35 @@ import './style/lugia-table.css';
 import type { TableProps, TableState } from '../css/table';
 import { css } from 'styled-components';
 
+const TableHeadHeight = 52;
+const TablePadding = 16;
+
 const TableWrap = CSSComponent({
   tag: 'div',
   className: 'TableWrap',
   normal: {
     selectNames: [['width']],
-    getCSS(themeMeta): string {
+    getCSS(themeMeta, themeProps): string {
       const { background: { color } = {} } = themeMeta;
-      if (color) {
-        return css`
-          tbody .rc-table-cell {
-            background: red;
-          }
-        `;
+      const { propsConfig: { tableLineHeight } = {} } = themeProps;
+      let padding = 16;
+      if (typeof tableLineHeight === 'number') {
+        padding = TablePadding - (TableHeadHeight - tableLineHeight) / 2;
       }
-      return '';
+      let bgColor;
+      if (color) {
+        bgColor = `tbody .rc-table-cell {
+          background: ${color};
+        }`;
+      }
+      return css`
+        .rc-table th,
+        .rc-table td {
+          padding: ${padding}px 8px;
+        }
+
+        ${color ? bgColor : ''}
+      `;
     },
   },
 });
@@ -117,14 +131,13 @@ export default ThemeProvider(
     }
 
     getTableBodyHeight = (themeHeight: number) => {
-      const { showHeader = true, headerHeight = 52 } = this.props;
-      console.log('themeHeight', themeHeight);
+      const { showHeader = true, tableLineHeight = 52 } = this.props;
       if (!themeHeight) {
         return {};
       }
       const height = parseInt(themeHeight);
       return {
-        y: showHeader ? height - headerHeight : height,
+        y: showHeader ? height - tableLineHeight : height,
       };
     };
 
@@ -161,6 +174,7 @@ export default ThemeProvider(
         getPartOfThemeProps,
         selectOptions = {},
         scroll = {},
+        tableLineHeight = TableHeadHeight,
       } = this.props;
       this.selectedRecords = [];
       this.validKeys = [];
@@ -171,11 +185,15 @@ export default ThemeProvider(
       const containerTheme = getPartOfThemeConfig('Container') || {};
       const { normal: normalTheme = {} } = containerTheme;
       const themeHeight = normalTheme.height;
+      const containerPartOfThemeProps = getPartOfThemeProps('Container', {
+        props: { tableLineHeight },
+      });
       if (children) {
         return (
           <TableWrap
-            themeProps={getPartOfThemeProps('Container')}
+            themeProps={containerPartOfThemeProps}
             className={this.getClass(tableStyle)}
+            tableLineHeight={tableLineHeight}
           >
             <RcTable
               {...this.props}
@@ -199,11 +217,13 @@ export default ThemeProvider(
         } = selectOptions;
         const selectColumnItem = {
           title: (
-            <Checkbox
-              checked={headChecked}
-              indeterminate={headIndeterminate}
-              onChange={this.tableHeadChange}
-            />
+            <div style={{ fontSize: 0 }}>
+              <Checkbox
+                checked={headChecked}
+                indeterminate={headIndeterminate}
+                onChange={this.tableHeadChange}
+              />
+            </div>
           ),
           className: 'lugia-select-column',
           key: 'selection-column',
@@ -226,11 +246,13 @@ export default ThemeProvider(
             }
 
             return (
-              <Checkbox
-                checked={select}
-                onChange={this.tableItemChange(rowKey, record)}
-                {...checkboxProps}
-              />
+              <div style={{ fontSize: 0 }}>
+                <Checkbox
+                  checked={select}
+                  onChange={this.tableItemChange(rowKey, record)}
+                  {...checkboxProps}
+                />
+              </div>
             );
           },
           [INTERNAL_COL_DEFINE]: {
@@ -249,8 +271,9 @@ export default ThemeProvider(
       const theScroll = { ...scroll, ...scrollObj };
       return (
         <TableWrap
-          themeProps={getPartOfThemeProps('Container')}
+          themeProps={containerPartOfThemeProps}
           className={this.getClass(tableStyle)}
+          tableLineHeight={tableLineHeight}
         >
           <RcTable
             {...this.props}
