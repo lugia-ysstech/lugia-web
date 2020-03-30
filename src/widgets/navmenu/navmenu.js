@@ -26,8 +26,8 @@ import {
   LightMenuTheme,
   DarkMenuTheme,
 } from '../css/navmenu';
-import Icon from '../icon';
 
+const TabPane = Tabs.TabPane;
 const MenuWrap = styled.div`
   display: inline-block;
   vertical-align: top;
@@ -60,9 +60,13 @@ type NavMenuProps = {
 type NavMenuState = {
   data: Array<RowData>,
   popupVisible: boolean,
+  activityIndex: Number,
+  tabsPopupVisible: Boolean,
   value: string[],
   expandedPath: string[],
   activityValue: number,
+  tabsMenuExpandedPath: string[],
+  tabsMenuValue: string[],
 };
 
 export default class MenuTree extends React.Component<NavMenuProps, NavMenuState> {
@@ -93,7 +97,11 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       value: getValue(props, null),
       expandedPath: getInitExpandedPath(props),
       activityValue: props.activityValue ? props.activityValue : '',
+      tabsPopupVisible: false,
+      tabsMenuExpandedPath: [],
+      tabsMenuValue: [],
     };
+    this.activityIndex = -1;
     const { pathSeparator } = props;
     this.treeData = getTreeData(this.props, pathSeparator);
   }
@@ -118,6 +126,9 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       state.popupVisible !== nextState.popupVisible ||
       state.expandedPath !== nextState.expandedPath ||
       state.activityValue !== nextState.activityValue ||
+      state.tabsPopupVisible !== nextState.tabsPopupVisible ||
+      state.tabsMenuExpandedPath !== nextState.tabsMenuExpandedPath ||
+      state.tabsMenuValue !== nextState.tabsMenuValue ||
       props.value !== nextProps.value ||
       props.inlineExpandAll !== nextProps.inlineExpandAll ||
       props.data !== nextProps.data ||
@@ -259,11 +270,54 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
         tabPosition={'top'}
         hideContent={true}
         onTabClick={this.onTabClick}
-        data={tabsData}
         activityValue={this.getActivityValue(activityValue)}
         getTabpane={this.getTabpane}
-      />
+      >
+        {this.getTabpanes(tabsData)}
+      </Tabs>
     );
+  };
+
+  getTabpanes = (tabsData: Object) => {
+    const tabpanes = [];
+    tabsData.forEach((item, index) => {
+      const { title, value, disabled } = item;
+      tabpanes.push(
+        <TabPane
+          title={title}
+          onMouseEnter={this.onTabsMouseEnter}
+          value={value}
+          disabled={disabled}
+          suffixIcon={this.isHasChildren(index) ? 'lugia-icon-direction_down' : null}
+        />
+      );
+    });
+
+    return tabpanes;
+  };
+
+  onTabsMouseEnter = (target: Object) => {
+    const { action } = this.props;
+    const { index } = target;
+    if (!this.isHasChildren(index) || action === 'click') {
+      return;
+    }
+    this.activityIndex = index;
+  };
+
+  onTabClick = (obj: Object) => {
+    const { index, activityValue } = obj;
+    const isHasChildren = this.isHasChildren(index);
+    if (!isHasChildren) {
+      this.exposeOnChange(activityValue);
+      this.setState({ activityValue });
+      return;
+    }
+    const { action } = this.props;
+    if (action === 'hover') {
+      return;
+    }
+    this.activityIndex = index;
   };
 
   getActivityValue = (activityValue: string) => {
@@ -281,35 +335,59 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
   };
 
   getTabpane = (target: Object, i: number) => {
+    const { tabsPopupVisible } = this.state;
+    if (!this.isHasChildren(i)) {
+      return target;
+    }
     const popup = this.getHorizontaMenu(i);
+    const { action } = this.props;
+    const poupVisible = tabsPopupVisible && this.activityIndex === i;
     return (
       <DropMenu
+        popupVisible={poupVisible}
+        onPopupVisibleChange={this.onTabsPopupVisibleChange}
         offsetY={4}
         align={'bottomLeft'}
         menus={popup}
-        action={'click'}
-        hideAction={'click'}
+        action={action}
+        hideAction={action}
       >
         {target}
       </DropMenu>
     );
   };
 
+  onTabsPopupVisibleChange = tabsPopupVisible => {
+    const { action } = this.props;
+    if (action === 'hover') {
+      this.setState({ tabsPopupVisible, tabsMenuExpandedPath: [] });
+    } else {
+      setTimeout(() => {
+        this.setState({ tabsPopupVisible, tabsMenuExpandedPath: [] });
+      }, 150);
+    }
+  };
+
   getHorizontaMenu = (i: number) => {
     const { data = [], autoHeight = true, themeStyle } = this.props;
     const { children } = data[i];
-    if (!children || children.length === 0) {
-      return <span />;
-    }
+    const { tabsMenuExpandedPath, tabsMenuValue } = this.state;
     return (
       <Menu
         action={'hover'}
         {...this.getTabsMenuTheme(themeStyle)}
         autoHeight={autoHeight}
         data={children}
+        expandedPath={tabsMenuExpandedPath}
+        onExpandPathChange={this.onTabsMenuExpandPathChange}
         onClick={this.onClickTabsMenu}
+        selectedKeys={tabsMenuValue}
       />
     );
+  };
+
+  onTabsMenuExpandPathChange = (tabsMenuExpandedPath: string[]) => {
+    this.setState({ tabsMenuExpandedPath });
   };
 
   getParentTarget = (text: string) => {
@@ -333,25 +411,15 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     const { children } = item;
     if (!children || children.length === 0) {
       const activityValue = this.getParentTarget(item[valueField])[valueField];
-
-      this.setState({ activityValue });
+      this.setState({ activityValue, tabsMenuValue: selectedKeys });
       this.exposeOnChange(this.getMenuValue(selectedKeys[0]));
     }
   };
 
   isHasChildren = (index: number) => {
     const { data = [] } = this.props;
-    const children = data[index].children;
+    const { children } = data[index];
     return !!children && !!children.length;
-  };
-
-  onTabClick = (obj: Object) => {
-    const { index, activityValue } = obj;
-    const isHasChildren = this.isHasChildren(index);
-    if (!isHasChildren) {
-      this.exposeOnChange(activityValue);
-      this.setState({ activityValue });
-    }
   };
 
   getTabsData = () => {
@@ -362,10 +430,6 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       target.title = item[displayField];
       target.value = item[valueField];
       target.disabled = item.disabled;
-      const { children = [] } = item;
-      if (children && children.length !== 0) {
-        target.suffixIcon = <Icon iconClass={'lugia-icon-direction_down'} />;
-      }
       tabsData.push(target);
     });
     return tabsData;
