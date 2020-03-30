@@ -19,11 +19,8 @@ import { css } from 'styled-components';
 const TableWrap = CSSComponent({
   tag: 'div',
   className: 'TableWrap',
-  css: css`
-    overflow: auto;
-  `,
   normal: {
-    selectNames: [['width'], ['height']],
+    selectNames: [['width']],
     getCSS(themeMeta): string {
       const { background: { color } = {} } = themeMeta;
       if (color) {
@@ -119,6 +116,18 @@ export default ThemeProvider(
       return target.filter(item => filter(item));
     }
 
+    getTableBodyHeight = (themeHeight: number) => {
+      const { showHeader = true, headerHeight = 52 } = this.props;
+      console.log('themeHeight', themeHeight);
+      if (!themeHeight) {
+        return {};
+      }
+      const height = parseInt(themeHeight);
+      return {
+        y: showHeader ? height - headerHeight : height,
+      };
+    };
+
     tableHeadChange = () => {
       const { selectOptions = {} } = this.props;
       const { headChecked } = this.state;
@@ -148,8 +157,10 @@ export default ThemeProvider(
         data,
         showHeader = true,
         tableStyle = 'bordered',
+        getPartOfThemeConfig,
         getPartOfThemeProps,
         selectOptions = {},
+        scroll = {},
       } = this.props;
       this.selectedRecords = [];
       this.validKeys = [];
@@ -157,10 +168,15 @@ export default ThemeProvider(
       this.validRecords = [];
       this.disabledSelectedRecords = [];
       const { headChecked, headIndeterminate, selectRowKeys: stateSelectRowKeys } = this.state;
-      const containerTheme = getPartOfThemeProps('Container');
+      const containerTheme = getPartOfThemeConfig('Container') || {};
+      const { normal: normalTheme = {} } = containerTheme;
+      const themeHeight = normalTheme.height;
       if (children) {
         return (
-          <TableWrap themeProps={containerTheme} className={this.getClass(tableStyle)}>
+          <TableWrap
+            themeProps={getPartOfThemeProps('Container')}
+            className={this.getClass(tableStyle)}
+          >
             <RcTable
               {...this.props}
               data={data}
@@ -229,14 +245,20 @@ export default ThemeProvider(
         const { expandIconColumnIndex: propsIndex } = this.props;
         expandIconColumnIndex = Number(propsIndex);
       }
+      const scrollObj = this.getTableBodyHeight(themeHeight);
+      const theScroll = { ...scroll, ...scrollObj };
       return (
-        <TableWrap themeProps={containerTheme} className={this.getClass(tableStyle)}>
+        <TableWrap
+          themeProps={getPartOfThemeProps('Container')}
+          className={this.getClass(tableStyle)}
+        >
           <RcTable
             {...this.props}
             columns={theColumns}
             data={data}
             showHeader={showHeader}
             expandIconColumnIndex={expandIconColumnIndex}
+            scroll={{ ...theScroll }}
           />
         </TableWrap>
       );

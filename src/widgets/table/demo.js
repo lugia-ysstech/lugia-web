@@ -44,6 +44,10 @@ const data = [
   { name: 'Rose', age: 36, address: 'some where', key: '2' },
   { name: 'Rook', age: 22, address: 'some where', key: '3' },
   { name: 'Lise', age: 33, address: 'some where', key: '4' },
+  { name: 'Lise', age: 33, address: 'some where', key: '5' },
+  { name: 'Lise', age: 33, address: 'some where', key: '6' },
+  { name: 'Lise', age: 33, address: 'some where', key: '7' },
+  { name: 'asdasda', age: 33, address: 'some where', key: '8' },
 ];
 
 const Data = [
@@ -108,6 +112,9 @@ export default class ModalDemo extends React.Component<any, any> {
       <div style={{ padding: '20px' }}>
         <h1>边框表格</h1>
         <Theme config={config}>
+          <Table useFixedHeader columns={columns} data={data} />
+        </Theme>
+        <Theme config={config}>
           <Table columns={columns} data={data} />
         </Theme>
         <br />
@@ -131,6 +138,10 @@ export default class ModalDemo extends React.Component<any, any> {
         <Table
           columns={columns}
           data={data}
+          scroll={{
+            y: 200,
+          }}
+          useFixedHeader
           selectOptions={{
             onChange: this.selectChange,
             selectRowKeys: this.state.selectRowKeys,
