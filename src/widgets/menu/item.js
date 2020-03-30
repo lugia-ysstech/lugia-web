@@ -220,6 +220,7 @@ class MenuItem extends React.Component<MenuItemProps> {
       getPartOfThemeProps,
       checked,
       checkedCSS,
+      hoverState,
       menuItemHeight = DefaultMenuItemHeight,
     } = this.props;
     const checkedTheme = this.getItemCheckedCSS(checked, checkedCSS);
@@ -255,6 +256,9 @@ class MenuItem extends React.Component<MenuItemProps> {
       const { themeConfig } = themeProps;
       const { hover = {} } = themeConfig;
       themeConfig.hover = deepMerge(hoverTheme, hover);
+      if (hoverState && !checked) {
+        themeConfig.normal = themeConfig.hover;
+      }
     }
     return themeProps;
   }

@@ -229,7 +229,6 @@ export function getDefaultData(props: Object) {
           return;
         }
         const item = { ...child.props };
-        item.value = child.value;
         configData && configData.push(item);
       });
     } else {

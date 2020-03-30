@@ -8,15 +8,20 @@
       "desc": "是否全局弹出下拉框",
       "propsDefaultValue": true
     },
+    "popupVisible": {
+      "type": "boolean",
+      "desc": "是否展开菜单",
+      "propsDefaultValue": false
+    },
     "action": {
       "type": "ActionType",
       "desc": "弹出项的打开方式",
-      "defaultValue": "click"
+      "propsDefaultValue": "click"
     },
     "hideAction": {
       "type": "ActionType",
       "desc": "弹出项的隐藏方式",
-      "defaultValue": "click"
+      "propsDefaultValue": "click"
     },
     "menus": {
       "type": "React.Node",
@@ -34,7 +39,7 @@
     "type": {
       "type": "StyleType",
       "desc": "按钮的风格,默认为customs",
-      "defaultValue": "customs"
+      "propsDefaultValue": "customs"
     },
 
     "switchIconClass": {
@@ -48,19 +53,19 @@
     "disabled": {
       "type": "boolean",
       "desc": "是否禁选",
-      "defaultValue": false
+      "propsDefaultValue": false
     },
 
     "divided": {
       "type": "boolean",
       "desc": "是否为分割线",
-      "defaultValue": true
+      "propsDefaultValue": true
     },
 
     "showSwitch": {
       "type": "boolean",
       "desc": "是否展示switch图标",
-      "defaultValue": true
+      "propsDefaultValue": true
     },
     "icons": {
       "type": "object",

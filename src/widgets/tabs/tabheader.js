@@ -820,6 +820,12 @@ class TabHeader extends Component<TabsProps, TabsState> {
       'hideCloseBtn',
       getAttributeFromObject(child.props, 'hideCloseBtn', false)
     );
+    const onMouseEnter = getAttributeFromObject(
+      child,
+      'onMouseEnter',
+      getAttributeFromObject(child.props, 'onMouseEnter', false)
+    );
+
     showDeleteBtn =
       !hideCloseBtn &&
       (showDeleteBtn ||
@@ -859,7 +865,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
       index: i,
       showDeleteBtn,
       isSelect: !disabled && activityValue === value,
-
+      onMouseEnter,
       disabled,
       ...tabHeaderTheme,
     };

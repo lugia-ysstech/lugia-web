@@ -55,7 +55,7 @@ type DropMenuProps = {
 };
 
 type DropMenuState = {
-  visible: boolean,
+  popupVisible: boolean,
 };
 
 class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
@@ -79,8 +79,21 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
 
   constructor(props: DropMenuProps) {
     super(props);
-    this.state = { filter: '', visible: false };
+    this.state = {
+      filter: '',
+      popupVisible: props.popupVisible !== undefined ? props.popupVisible : false,
+    };
     this.isLeaf = true;
+  }
+
+  static getDerivedStateFromProps(props: NavMenuProps, state: NavMenuState) {
+    if (!state) {
+      return {};
+    }
+
+    return {
+      popupVisible: props.popupVisible !== undefined ? props.popupVisible : state.popupVisible,
+    };
   }
 
   render() {
@@ -125,7 +138,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
           createPortal={createPortal}
           hideAction={hideAction}
           onPopupVisibleChange={this.onPopupVisibleChange}
-          popupVisible={this.state.visible}
+          popupVisible={this.state.popupVisible}
           popup={popup}
         >
           {this.getChildrenItem()}
@@ -209,13 +222,13 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
     onQuery && onQuery(value);
   };
 
-  onPopupVisibleChange = (visible: boolean) => {
+  onPopupVisibleChange = (popupVisible: boolean) => {
     const { onPopupVisibleChange } = this.props;
     if (this.isLeaf) {
       setTimeout(() => {
-        this.setState({ visible });
+        this.setState({ popupVisible });
       }, 200);
-      onPopupVisibleChange && onPopupVisibleChange(visible);
+      onPopupVisibleChange && onPopupVisibleChange(popupVisible);
     }
   };
 
