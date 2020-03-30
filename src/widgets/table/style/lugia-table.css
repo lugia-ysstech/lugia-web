@@ -2,7 +2,7 @@
   padding: 0;
   margin: 0;
 }
-:global(.lugia-table .rc-table-content table) {
+:global(.lugia-table .rc-table-container table) {
   border-collapse: collapse;
 }
 :global(.lugia-table .rc-table-content) {
