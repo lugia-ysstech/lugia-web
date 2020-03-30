@@ -77,6 +77,11 @@
     "nextIconSrc": {
       "type": "image",
       "desc": "分页下一页图片资源"
+    },
+    "blockList": {
+      "type": "string[]",
+      "desc": "分页各部位展示的位置列表",
+      "propsDefaultValue": ["Page","PageInput","Total","PageSize"]
     }
   },
   "events": {
@@ -107,6 +112,26 @@
           "name": "size",
           "desc": "每页条数",
           "type": "number"
+        }
+      ]
+    },
+    "quickJumperInputBlur": {
+      "desc": "快速跳转输入框失去焦点时触发",
+      "args": [
+        {
+          "name": "current",
+          "desc": "当前页数",
+          "type": "number"
+        },
+        {
+          "name": "size",
+          "desc": "每页条数",
+          "type": "number"
+        },
+        {
+          "name": "event",
+          "desc": "失去焦点的DOM事件",
+          "type": "FocusEvent"
         }
       ]
     }

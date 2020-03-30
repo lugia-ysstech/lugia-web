@@ -16,6 +16,8 @@ export type PaginationProps = {
   nextIconClass?: string,
   preIconSrc?: string,
   nextIconSrc?: string,
+  quickJumperInputBlur?: (page: number, pageSize: number, event: UIEvent) => void,
+  blockList?: string[],
 };
 export type MorePageType = 'default' | 'pre' | 'next';
 

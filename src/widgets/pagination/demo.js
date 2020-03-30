@@ -43,22 +43,6 @@ export default class PaginationDemo extends React.Component<any, any> {
             border: getBorder({ color: 'yellow', width: 1, style: 'solid' }),
           },
         },
-        PaginationQuickJumpContainer: {
-          normal: {
-            margin: {
-              left: 30,
-              right: 30,
-            },
-          },
-        },
-        PaginationTotalContainer: {
-          normal: {
-            margin: {
-              left: 20,
-              right: 20,
-            },
-          },
-        },
       },
     };
 
@@ -81,6 +65,15 @@ export default class PaginationDemo extends React.Component<any, any> {
           />
           <Title>快速跳转到某一页。</Title>
           <Pagination
+            showQuickJumper
+            defaultCurrent={2}
+            total={400}
+            onChange={this.onChange}
+            showSizeChanger={true}
+            onShowSizeChange={this.onShowSizeChange}
+          />
+          <Title>总计数据在右边</Title>
+          <Pagination
             isShowTotalData
             showQuickJumper
             defaultCurrent={2}
@@ -89,6 +82,18 @@ export default class PaginationDemo extends React.Component<any, any> {
             showSizeChanger={true}
             onShowSizeChange={this.onShowSizeChange}
           />
+          <Title>总计数据在左边</Title>
+          <Pagination
+            blockList={['Total', 'Page', 'PageInput', 'PageSize']}
+            isShowTotalData
+            showQuickJumper
+            defaultCurrent={2}
+            total={400}
+            onChange={this.onChange}
+            showSizeChanger={true}
+            onShowSizeChange={this.onShowSizeChange}
+          />
+
           <Title>简单的翻页。</Title>
           <Pagination simple defaultCurrent={2} total={500} />
           <Title>单页 不显示翻页箭头。</Title>
