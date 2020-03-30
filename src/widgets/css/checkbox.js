@@ -93,7 +93,7 @@ export const CheckBoxWrap = CSSComponent({
     padding: 0;
     list-style: none;
     display: inline-block;
-    position: relative;
+    line-height: 1;
     white-space: nowrap;
     ${getStyleCSS};
     overflow: hidden;
@@ -128,6 +128,7 @@ export const CheckBoxContent = StaticComponent({
     line-height: 1;
     vertical-align: middle;
     display: inline-block;
+    position: relative;
   `,
 });
 
