@@ -45,6 +45,7 @@ type DropMenuProps = {
   icons: Object,
   data: Array<Object>,
   defualtHeight?: number,
+  popupVisible: boolean,
   onPopupVisibleChange?: Function,
   _onClick?: Function,
   onClick?: Function,
@@ -56,6 +57,7 @@ type DropMenuProps = {
 
 type DropMenuState = {
   popupVisible: boolean,
+  filter: string,
 };
 
 class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
@@ -186,6 +188,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   setPopupVisible(...rest: any[]) {
     this.trigger && this.trigger.setPopupVisible(...rest);
   }
+
   ejectOnClick = (menu: Object): Object => {
     const newChildProps = {};
     if (!menu.props.onClick) {
