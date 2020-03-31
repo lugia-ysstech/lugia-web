@@ -59,11 +59,11 @@ const SizeCSS: { [key: CheckSize]: TypeSizeCSS } = {
 };
 const getSizeCSS = (props: PropsType): string => {
   const { size = 'default' } = props;
-  const { height } = SizeCSS[size];
+  const { height, lineHeight } = SizeCSS[size];
 
   return `
     height: ${em(height)};
-    line-height: ${em(height)};
+    line-height: ${em(lineHeight)};
   `;
 };
 
@@ -179,6 +179,24 @@ export const CheckSpan = CSSComponent({
     },
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       return getPadding(themeProps);
+    },
+    getCSS(themeMeta: Object, themeProps: Object): string {
+      const {
+        themeConfig: { normal },
+        themeState: { disabled },
+      } = themeProps;
+      const { height, padding } = normal;
+      let finalHeight = em(height);
+      if (height) {
+        if (!disabled && padding) {
+          const { top = 0, bottom = 0 } = padding;
+          finalHeight = em(height - top - bottom);
+        }
+        return `
+          line-height: ${finalHeight};                  
+        `;
+      }
+      return '';
     },
   },
   hover: {
