@@ -7,7 +7,7 @@ export type TableProps = {
   children?: any,
   columns: Object[],
   data: Object[],
-  tableLineHeight?: number,
+  size?: 'default' | 'small' | 'large',
   showHeader?: boolean,
   tableStyle?: 'zebraStripe' | 'linear' | 'bordered',
   getTheme: Function,
