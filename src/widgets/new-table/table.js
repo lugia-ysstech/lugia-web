@@ -2,11 +2,11 @@
 import * as React from 'react';
 import ThemeProvider from '../theme-provider';
 import { deepMerge } from '@lugia/object-utils';
-import type { TableProps } from './tableCss';
-import { Container, LugiaTable, customBlock, Tr, Td, NoData, TBody, THead } from './tableCss';
+import type { TableProps, TableState } from './tableCss';
+import { Container, LugiaTable, CustomBlock, Tr, Td, NoData, TBody, THead } from './tableCss';
 import Widget from '../consts';
 
-class Table extends React.Component<TableProps, Object> {
+class Table extends React.Component<TableProps, TableState> {
   defaultProps = {
     tableSize: 'middle',
     tableStyle: 'linear',
@@ -21,14 +21,14 @@ class Table extends React.Component<TableProps, Object> {
     const emptyDataTheme = this.props.getPartOfThemeProps('EmptyData', { props: { tableSize } });
     return (
       <Container themeProps={containerTheme} tabIndex={10}>
-        {title ? <customBlock themeProps={titleTheme}>{title}</customBlock> : null}
+        {title ? <CustomBlock themeProps={titleTheme}>{title}</CustomBlock> : null}
         <LugiaTable themeProps={tableTheme}>
           <THead>{showHeader && this.getColumns(columns)}</THead>
 
           <TBody>{this.getData(data)}</TBody>
         </LugiaTable>
         {data.length === 0 && <NoData themeProps={emptyDataTheme}>暂无数据</NoData>}
-        {footer ? <customBlock themeProps={footerTheme}>{footer}</customBlock> : null}
+        {footer ? <CustomBlock themeProps={footerTheme}>{footer}</CustomBlock> : null}
       </Container>
     );
   }

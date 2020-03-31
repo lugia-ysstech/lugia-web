@@ -8,6 +8,16 @@ export default class KeyBoardEventListener extends Listener<any> {
   isShift: boolean;
   isKeyBoardDown: boolean;
   moveTrack: Array;
+  keyDownListener: Object;
+  keyDownListener: Object;
+  enterMultipleSelect: Object;
+  quitMultipleSelect: Object;
+  enterMoveCells: Object;
+  quitMoveCells: Object;
+  shiftDown: Object;
+  shiftUp: Object;
+  enterMoveTrack: Object;
+  quiteMoveTrack: Object;
 
   constructor() {
     super();
@@ -18,31 +28,29 @@ export default class KeyBoardEventListener extends Listener<any> {
     this.isKeyBoardDown = false;
     this.moveTrack = [];
 
-    this.on('keyDown', this.onKeyDown);
-
-    this.on('enterMultipleSelect', () => {
+    this.keyDownListener = this.on('keyDown', this.onKeyDown);
+    this.enterMultipleSelect = this.on('enterMultipleSelect', () => {
       this.multipleSelect = true;
     });
-    this.on('quitMultipleSelect', () => {
+    this.quitMultipleSelect = this.on('quitMultipleSelect', () => {
       this.multipleSelect = false;
     });
-    this.on('enterMoveCells', () => {
+    this.enterMoveCells = this.on('enterMoveCells', () => {
       this.canMoveCells = true;
     });
-    this.on('quitMoveCells', () => {
+    this.quitMoveCells = this.on('quitMoveCells', () => {
       this.canMoveCells = false;
     });
-    this.on('shiftDown', () => {
+    this.shiftDown = this.on('shiftDown', () => {
       this.isShift = true;
     });
-    this.on('shiftUp', () => {
+    this.shiftUp = this.on('shiftUp', () => {
       this.isShift = false;
     });
-    this.on('enterMoveTrack', (currentCell: Object) => {
+    this.enterMoveTrack = this.on('enterMoveTrack', (currentCell: Object) => {
       this.moveTrack = this.moveTrack.concat([currentCell]);
     });
-
-    this.on('quiteMoveTrack', () => {
+    this.quiteMoveTrack = this.on('quiteMoveTrack', () => {
       this.moveTrack = [];
     });
   }
@@ -109,4 +117,17 @@ export default class KeyBoardEventListener extends Listener<any> {
   getMoveTrack = (): boolean => {
     return this.moveTrack;
   };
+
+  componentWillUnmount(): void {
+    this.keyDownListener.removeListener();
+    this.keyDownListener.removeListener();
+    this.enterMultipleSelect.removeListener();
+    this.quitMultipleSelect.removeListener();
+    this.enterMoveCells.removeListener();
+    this.quitMoveCells.removeListener();
+    this.shiftDown.removeListener();
+    this.shiftUp.removeListener();
+    this.enterMoveTrack.removeListener();
+    this.quiteMoveTrack.removeListener();
+  }
 }
