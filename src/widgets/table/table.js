@@ -16,21 +16,21 @@ import './style/lugia-table.css';
 import type { TableProps, TableState } from '../css/table';
 import { css } from 'styled-components';
 
-const TableHeadHeight = 52;
-const TablePadding = 16;
+const sizePadding = {
+  default: 16,
+  small: 10,
+  large: 20,
+};
 
 const TableWrap = CSSComponent({
   tag: 'div',
   className: 'TableWrap',
   normal: {
-    selectNames: [['width']],
+    selectNames: [['width'], ['height']],
     getCSS(themeMeta, themeProps): string {
       const { background: { color } = {} } = themeMeta;
-      const { propsConfig: { tableLineHeight } = {} } = themeProps;
-      let padding = 16;
-      if (typeof tableLineHeight === 'number') {
-        padding = TablePadding - (TableHeadHeight - tableLineHeight) / 2;
-      }
+      const { propsConfig: { size = 'default' } = {} } = themeProps;
+      const padding = sizePadding[size] || sizePadding.default;
       let bgColor;
       if (color) {
         bgColor = `tbody .rc-table-cell {
@@ -174,7 +174,7 @@ export default ThemeProvider(
         getPartOfThemeProps,
         selectOptions = {},
         scroll = {},
-        tableLineHeight = TableHeadHeight,
+        size = 'default',
       } = this.props;
       this.selectedRecords = [];
       this.validKeys = [];
@@ -186,15 +186,11 @@ export default ThemeProvider(
       const { normal: normalTheme = {} } = containerTheme;
       const themeHeight = normalTheme.height;
       const containerPartOfThemeProps = getPartOfThemeProps('Container', {
-        props: { tableLineHeight },
+        props: { size },
       });
       if (children) {
         return (
-          <TableWrap
-            themeProps={containerPartOfThemeProps}
-            className={this.getClass(tableStyle)}
-            tableLineHeight={tableLineHeight}
-          >
+          <TableWrap themeProps={containerPartOfThemeProps} className={this.getClass(tableStyle)}>
             <RcTable
               {...this.props}
               data={data}
@@ -270,11 +266,7 @@ export default ThemeProvider(
       const scrollObj = this.getTableBodyHeight(themeHeight);
       const theScroll = { ...scroll, ...scrollObj };
       return (
-        <TableWrap
-          themeProps={containerPartOfThemeProps}
-          className={this.getClass(tableStyle)}
-          tableLineHeight={tableLineHeight}
-        >
+        <TableWrap themeProps={containerPartOfThemeProps} className={this.getClass(tableStyle)}>
           <RcTable
             {...this.props}
             columns={theColumns}
