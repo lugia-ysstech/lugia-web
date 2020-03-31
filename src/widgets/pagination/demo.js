@@ -84,16 +84,28 @@ export default class PaginationDemo extends React.Component<any, any> {
           />
           <Title>总计数据在左边</Title>
           <Pagination
-            blockList={['Total', 'Page', 'PageInput', 'PageSize']}
+            align={'Left'}
+            blockList={['Total', 'Page', 'PageInput']}
             isShowTotalData
             showQuickJumper
+            showSizeChanger
             defaultCurrent={2}
             total={400}
             onChange={this.onChange}
-            showSizeChanger={true}
             onShowSizeChange={this.onShowSizeChange}
           />
-
+          <Title>分页 设置为右对齐方式</Title>
+          <Pagination
+            align={'Right'}
+            blockList={['Total', 'Page', 'PageInput']}
+            isShowTotalData
+            showQuickJumper
+            showSizeChanger
+            defaultCurrent={2}
+            total={400}
+            onChange={this.onChange}
+            onShowSizeChange={this.onShowSizeChange}
+          />
           <Title>简单的翻页。</Title>
           <Pagination simple defaultCurrent={2} total={500} />
           <Title>单页 不显示翻页箭头。</Title>

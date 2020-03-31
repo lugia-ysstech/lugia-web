@@ -18,8 +18,11 @@ export type PaginationProps = {
   nextIconSrc?: string,
   quickJumperInputBlur?: (page: number, pageSize: number, event: UIEvent) => void,
   blockList?: string[],
+  align?: AlignType,
+  showTotalData?: boolean,
 };
 export type MorePageType = 'default' | 'pre' | 'next';
+export type AlignType = 'Left' | 'Right';
 
 export type PaginationState = {
   current: number,
