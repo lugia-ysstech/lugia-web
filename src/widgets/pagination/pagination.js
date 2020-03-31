@@ -10,7 +10,6 @@ import type { MorePageType, PaginationProps, PaginationState } from '../css/pagi
 import Select from '../select';
 import Input from '../input';
 import Icon from '../icon';
-import { Row, Col } from '../grid';
 import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import ThemeHoc from '../theme-provider';
 import { getBorder, getBorderRadius } from '@lugia/theme-utils';
@@ -18,7 +17,7 @@ import { deepMerge } from '@lugia/object-utils';
 import colorsFunc from '../css/stateColor';
 import Widget from '../consts';
 import { ObjectUtils } from '@lugia/type-utils';
-
+import { checkNumber } from '../common/Math';
 export const { borderSize } = colorsFunc();
 
 const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
@@ -31,12 +30,40 @@ const superLightColor = '$lugia-dict.@lugia/lugia-web.superLightColor';
 const borderRadius = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
 const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 
-const PaginationList = StaticComponent({
+const getOrderCSS = props => {
+  const { order, align } = props;
+  const theOrder = order ? order : align === 'Right' ? '' : 5;
+  return `order: ${theOrder};`;
+};
+
+const PaginationList = CSSComponent({
   tag: 'ul',
   className: 'PaginationList',
+  normal: {
+    selectNames: [['margin']],
+    getThemeMeta(themeMeta, themeProps) {
+      const {
+        propsConfig: { isLast },
+      } = themeProps;
+      const theMargin = isLast ? 0 : 16;
+      return {
+        margin: {
+          right: theMargin,
+        },
+      };
+    },
+  },
   css: css`
     list-style: none;
     user-select: none;
+  `,
+});
+
+const BlockUnit = StaticComponent({
+  tag: 'div',
+  className: 'PaginationBlockUnit',
+  css: css`
+    ${props => getOrderCSS(props)};
   `,
 });
 const PaginationTextContainer = CSSComponent({
@@ -44,11 +71,16 @@ const PaginationTextContainer = CSSComponent({
   className: 'PaginationTextContainer',
   normal: {
     selectNames: [['margin']],
-    defaultTheme: {
-      margin: {
-        left: 8,
-        right: 8,
-      },
+    getThemeMeta(themeMeta, themeProps) {
+      const {
+        propsConfig: { isLast },
+      } = themeProps;
+      const theMargin = isLast ? 0 : 16;
+      return {
+        margin: {
+          right: theMargin,
+        },
+      };
     },
   },
   css: css`
@@ -301,26 +333,12 @@ const PaginationListContainer = CSSComponent({
   `,
 });
 
-// const RightContainer = StaticComponent({
-//   tag: 'div',
-//   className: 'PaginationRightContainer',
-//   css: css`
-//     display: flex;
-//   `,
-// });
-// const LeftContainer = StaticComponent({
-//   extend: RightContainer,
-//   className: 'PaginationLeftContainer',
-//   css: css`
-//     align-items: center;
-//     flex: 1;
-//   `,
-// });
-const InputWarpper = StaticComponent({
+const Blank = StaticComponent({
   tag: 'div',
-  className: 'InputWarpper',
+  className: 'PaginationBlank',
   css: css`
-    margin: 0 10px;
+    margin: auto;
+    ${props => getOrderCSS(props)};
   `,
 });
 
@@ -360,9 +378,13 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     };
   }
 
-  getPaginationList() {
+  getPaginationList(isLast: boolean) {
+    const { getPartOfThemeProps } = this.props;
+
     return (
-      <PaginationList>
+      <PaginationList
+        themeProps={getPartOfThemeProps('PaginationListContainer', { props: { isLast } })}
+      >
         {this.getArrow('pre')}
         {this.getPageList()}
         {this.getArrow('next')}
@@ -519,8 +541,10 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     );
   }
 
-  getPageSelect() {
-    const { theme, viewClass } = this.props.getPartOfThemeHocProps('PaginationPageSizeSelect');
+  getPageSelect(isLast: boolean) {
+    const { getPartOfThemeHocProps } = this.props;
+    const { theme, viewClass } = getPartOfThemeHocProps('PaginationPageSizeSelect');
+    const theMargin = isLast ? 0 : 16;
     const selectTheme = deepMerge(
       {
         [viewClass]: {
@@ -539,7 +563,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
                 right: 5,
               },
               margin: {
-                left: 8,
+                right: theMargin,
               },
               color: darkGreyColor,
               font: { size: 14 },
@@ -575,7 +599,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
     );
   }
 
-  getQuickJumper() {
+  getQuickJumper(isLast: boolean) {
     const { getPartOfThemeProps, getPartOfThemeHocProps } = this.props;
 
     const { viewClass, theme } = getPartOfThemeHocProps('QuickJumpInput');
@@ -596,8 +620,11 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
       theme
     );
     const quickJumpTextTheme = getPartOfThemeProps('PaginationQuickJumpText');
+    const { quickJumpValue } = this.state;
     return (
-      <PaginationTextContainer themeProps={getPartOfThemeProps('PaginationQuickJumpContainer')}>
+      <PaginationTextContainer
+        themeProps={getPartOfThemeProps('PaginationQuickJumpContainer', { props: { isLast } })}
+      >
         <PaginationBaseText themeProps={quickJumpTextTheme}>跳至</PaginationBaseText>
         <Input
           theme={InnerInputTheme}
@@ -605,16 +632,20 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
           onEnter={this.enterPage}
           onBlur={this.onInputBlur}
           isShowClearButton={false}
+          value={quickJumpValue}
+          onChange={this.quickJumpValueChange}
         />
         <PaginationBaseText themeProps={quickJumpTextTheme}>页</PaginationBaseText>
       </PaginationTextContainer>
     );
   }
 
-  getShowTotalData() {
+  getShowTotalData(isLast: boolean) {
     const { total, getPartOfThemeProps } = this.props;
     return (
-      <PaginationTextContainer themeProps={getPartOfThemeProps('PaginationTotalContainer')}>
+      <PaginationTextContainer
+        themeProps={getPartOfThemeProps('PaginationTotalContainer', { props: isLast })}
+      >
         <PaginationBaseText themeProps={getPartOfThemeProps('PaginationTotalText')}>
           {`共${total}条数据`}
         </PaginationBaseText>
@@ -627,6 +658,18 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
       this.handleChangePage(Number(e.target.value));
     }
   };
+  quickJumpValueChange = e => {
+    const { newValue } = e;
+    const theValue = checkNumber(newValue);
+    const { quickJumpValue } = this.state;
+    if (theValue !== quickJumpValue) {
+      this.setState({
+        quickJumpValue: theValue,
+      });
+    }
+    this.handleChangePage(Number(theValue));
+  };
+
   onInputBlur = (e: Object) => {
     if (e && e.target && e.target.value) {
       const { quickJumperInputBlur } = this.props;
@@ -806,9 +849,9 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
   inputChange = (obj: Object) => {
     const { current } = this.state;
     const { newValue } = obj;
-    const numberValue = Number(newValue);
+    const numberValue = checkNumber(newValue);
     if (current !== numberValue) {
-      this.handleChangePage(numberValue);
+      this.handleChangePage(Number(numberValue));
     }
   };
 
@@ -859,45 +902,46 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
       );
     }
 
-    const positionMap = [{ Total: 3 }, { Page: 1 }, { PageInput: 2 }, { PageSize: 4 }];
+    const positionMap = { Total: undefined, Page: 1, PageInput: undefined, PageSize: undefined };
+    const defaultList = ['Page'];
     const {
-      blockList = positionMap,
+      blockList = defaultList,
       showQuickJumper,
+      showTotalData,
       isShowTotalData,
       showSizeChanger,
+      align,
     } = this.props;
-    blockList.forEach((c, i) => {
-      positionMap[c] = i + 1;
-    });
-    const array = [showQuickJumper, isShowTotalData, showSizeChanger];
+    if (showQuickJumper) defaultList.push('PageInput');
+    if (showTotalData || isShowTotalData) defaultList.push('Total');
+    if (showSizeChanger) defaultList.push('PageSize');
 
-    let time = 0;
-    array.map(c => {
-      if (c === true) time++;
+    blockList.forEach((child, i) => {
+      positionMap[child] = i + 1;
     });
+    const length = blockList.length;
     return (
-      <Row type="flex" justify="start" align="middle">
-        <PaginationListContainer themeProps={this.props.getPartOfThemeProps('Container')}>
-          <Col span={24 - time * 4} order={positionMap.Page}>
-            {this.getPaginationList()}
-          </Col>
-          {showQuickJumper && (
-            <Col span={4} order={positionMap.PageInput}>
-              {this.getQuickJumper()}
-            </Col>
-          )}
-          {isShowTotalData && (
-            <Col span={4} order={positionMap.Total}>
-              {this.getShowTotalData()}
-            </Col>
-          )}
-          {showSizeChanger && (
-            <Col span={4} order={positionMap.PageSize}>
-              {this.getPageSelect()}
-            </Col>
-          )}
-        </PaginationListContainer>
-      </Row>
+      <PaginationListContainer themeProps={this.props.getPartOfThemeProps('Container')}>
+        <BlockUnit order={positionMap.Page || 1}>
+          {this.getPaginationList(length === positionMap.Page)}
+        </BlockUnit>
+        {positionMap.PageInput && (
+          <BlockUnit order={positionMap.PageInput || 2}>
+            {this.getQuickJumper(length === positionMap.PageInput)}
+          </BlockUnit>
+        )}
+        {positionMap.Total && (
+          <BlockUnit order={positionMap.Total || 3}>
+            {this.getShowTotalData(length === positionMap.Total)}
+          </BlockUnit>
+        )}
+        {positionMap.PageSize && (
+          <BlockUnit order={positionMap.PageSize || 4}>
+            {this.getPageSelect(length === positionMap.PageSize)}
+          </BlockUnit>
+        )}
+        <Blank align={align} />
+      </PaginationListContainer>
     );
   }
 }
