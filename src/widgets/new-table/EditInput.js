@@ -49,7 +49,7 @@ export default class EditInput extends React.Component<PropsType, StateType> {
         this.handleInputBlur();
       }
     };
-    document.addEventListener('keydown', this.keyDownHandler);
+    window.addEventListener('keydown', this.keyDownHandler);
   }
 
   handleInputChange = (event: Object) => {
@@ -100,6 +100,6 @@ export default class EditInput extends React.Component<PropsType, StateType> {
   }
 
   componentWillUnmount() {
-    document.removeEventListener('keydown', this.keyDownHandler);
+    window.removeEventListener('keydown', this.keyDownHandler);
   }
 }

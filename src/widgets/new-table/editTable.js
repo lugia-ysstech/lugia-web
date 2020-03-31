@@ -138,8 +138,8 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
       this.KeyBoardListener.onKeyUp(e);
     };
 
-    document.addEventListener('keydown', this.keyDownHandler);
-    document.addEventListener('keyup', this.keyUpHandler);
+    window.addEventListener('keydown', this.keyDownHandler);
+    window.addEventListener('keyup', this.keyUpHandler);
   }
 
   render() {
@@ -463,8 +463,8 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
   };
 
   componentWillUnmount() {
-    document.removeEventListener('keydown', this.keyDownHandler);
-    document.removeEventListener('keyup', this.keyUpHandler);
+    window.removeEventListener('keydown', this.keyDownHandler);
+    window.removeEventListener('keyup', this.keyUpHandler);
     this.moveCellsListener.removeListener();
     this.quitEditListener.removeListener();
   }
