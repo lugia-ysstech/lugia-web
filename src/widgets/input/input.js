@@ -63,7 +63,7 @@ const CommonInputStyle = CSSComponent({
         placeHolderFontSize,
       } = propsConfig;
       const theColor = color ? color : placeHolderColor;
-      const theSize = size ? size : placeHolderFontSize ? placeHolderFontSize : 12;
+      const theSize = placeHolderFontSize ? placeHolderFontSize : size ? size : 12;
       return css`
         &::placeholder {
           color: ${theColor};
@@ -76,12 +76,14 @@ const CommonInputStyle = CSSComponent({
       const {
         propsConfig: { prefix, validateStatus, validateType, suffix, isShowClearButton },
       } = themeProps;
-      const { width, color, border, boxShadow } = themeMeta;
+      const { width, color, border, boxShadow, font: { color: fontColor } = {} } = themeMeta;
 
       const paddingLeft = prefix ? 30 : width && width < 200 ? width / 20 : padding;
       const paddingRight =
         suffix || isShowClearButton ? 35 : width && width < 200 ? 15 + width / 10 : padding;
-      const theColor = color
+      const theColor = fontColor
+        ? fontColor
+        : color
         ? color
         : checkValidateResultFromStatusAndType(validateStatus, 'error', validateType, 'inner')
         ? dangerColor
@@ -94,10 +96,10 @@ const CommonInputStyle = CSSComponent({
       const theBorderColor = isValidateError(validateStatus) ? dangerColor : borderColor;
       const borderOBJ = border
         ? border
-        : { color: theBorderColor, width: borderSize, style: 'solid' };
+        : getBorder({ color: theBorderColor, width: borderSize, style: 'solid' });
       return {
         boxShadow: shadowCSS,
-        border: getBorder(borderOBJ),
+        border: borderOBJ,
         color: theColor,
         padding: {
           left: paddingLeft,
@@ -127,9 +129,9 @@ const CommonInputStyle = CSSComponent({
       const theBorderColor = isValidateError(validateStatus) ? dangerHoverColor : themeHoverColor;
       const borderOBJ = border
         ? border
-        : { color: theBorderColor, width: borderSize, style: 'solid' };
+        : getBorder({ color: theBorderColor, width: borderSize, style: 'solid' });
       return {
-        border: getBorder(borderOBJ),
+        border: borderOBJ,
       };
     },
   },
@@ -645,6 +647,7 @@ class TextBox extends Component<InputProps, InputState> {
           placeHolderColor: color,
           placeHolderFontSize: fontSize,
           isShowClearButton,
+          placeHolderFont: font,
         },
       }),
       theValidateThemeProps,
