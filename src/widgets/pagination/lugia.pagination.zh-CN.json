@@ -50,7 +50,7 @@
       "desc": "是否显示可以改变 pageSize",
       "propsDefaultValue": false
     },
-    "isShowTotalData": {
+    "showTotalData": {
       "type": "boolean",
       "desc": "是否可以显示数据总量",
       "propsDefaultValue": false
@@ -81,7 +81,12 @@
     "blockList": {
       "type": "string[]",
       "desc": "分页各部位展示的位置列表",
-      "propsDefaultValue": ["Page","PageInput","Total","PageSize"]
+      "propsDefaultValue": ["Page", "PageInput", "Total", "PageSize"]
+    },
+    "align": {
+      "type": "AlignType",
+      "desc": "分页各部位对齐的方式",
+      "propsDefaultValue": "Left"
     }
   },
   "events": {
@@ -135,6 +140,9 @@
         }
       ]
     }
+  },
+  "type": {
+    "AlignType": ["Left", "Right"]
   },
   "designInfo": {
     "SimplePagination": {
@@ -235,6 +243,11 @@
         ["opacity"],
         ["margin"]
       ]
+    },
+    "PaginationListContainer": {
+      "name": "分页列表的容器",
+      "desc": "分页列表的容器",
+      "normal": [["margin"]]
     },
     "PaginationListItem": {
       "name": "单个页数",
