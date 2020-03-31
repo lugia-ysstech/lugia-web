@@ -3,7 +3,7 @@ import React from 'react';
 import Table from './table';
 import ThemeProvider from '../theme-provider';
 import EditInput from './EditInput';
-import type { EditTableProps } from './editTableCss';
+import type { EditTableProps, EditTableState } from './editTableCss';
 import { deepMerge } from '@lugia/object-utils';
 import { Container, EditDiv, InnerTriggerDiv } from './editTableCss';
 import KeyBoardEventListener from './connection';
@@ -22,14 +22,14 @@ export const restColumnsIntoData = (columns: Array<Object>) => {
   return [rowDataItem];
 };
 
-export const setFirstRowAsHead = rowData => {
+export const setFirstRowAsHead = (rowData: Array<Object>) => {
   if (!rowData) return rowData;
   const newData = [...rowData];
   newData[0].isHead = true;
   return newData;
 };
 
-export const clearFirstRowAsHead = (rowData: Array) => {
+export const clearFirstRowAsHead = (rowData: Array<Object>) => {
   const newRowData = [];
   rowData.forEach(item => {
     const { isHead } = item;
@@ -52,7 +52,7 @@ export const restDataWithMark = (data: Array<Object>) => {
   return newData;
 };
 
-const clearLugiaMarkAndResetRender = (data: Array) => {
+const clearLugiaMarkAndResetRender = (data: Array<Object>) => {
   const newData = [];
   data.forEach(item => {
     const newItem = { ...item };
@@ -87,7 +87,7 @@ const doStopPropagation = (e: any, isStop?: boolean) => {
   }
 };
 
-class EditTable extends React.Component<EditTableProps, Object> {
+class EditTable extends React.Component<EditTableProps, EditTableState> {
   keyDownHandler: any;
   keyUpHandler: any;
   KeyBoardListener: any;
@@ -108,10 +108,10 @@ class EditTable extends React.Component<EditTableProps, Object> {
       editing: false,
     };
 
-    this.KeyBoardListener.on('moveCells', (props: Object) => {
+    this.moveCellsListener = this.KeyBoardListener.on('moveCells', (props: Object) => {
       this.doMoveCells(props);
     });
-    this.KeyBoardListener.on('quitEdit', (res: Object) => {
+    this.quitEditListener = this.KeyBoardListener.on('quitEdit', (res: Object) => {
       this.quitEdit(res);
     });
   }
@@ -172,8 +172,10 @@ class EditTable extends React.Component<EditTableProps, Object> {
     return { theme: resultTheme, viewClass };
   };
 
-  restColumnsWithMark = (columns: Array<Object>) => {
-    if (!columns) return;
+  restColumnsWithMark = (columns: ?Array<Object>): Array<Object> => {
+    if (!columns) {
+      return [];
+    }
     const newCols = [];
     columns.forEach((item, index) => {
       const { lugiaMark: oldMark, render } = item;
@@ -463,6 +465,8 @@ class EditTable extends React.Component<EditTableProps, Object> {
   componentWillUnmount() {
     document.removeEventListener('keydown', this.keyDownHandler);
     document.removeEventListener('keyup', this.keyUpHandler);
+    this.moveCellsListener.removeListener();
+    this.quitEditListener.removeListener();
   }
 }
 

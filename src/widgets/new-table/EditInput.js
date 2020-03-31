@@ -10,10 +10,13 @@ import Input from '../input';
 import Widget from '../consts/index';
 import { getBorder, getBorderRadius } from '@lugia/theme-utils';
 
-type DefProps = {
+type PropsType = {
   value: any,
   autoFocus: boolean,
   listener: any,
+};
+type StateType = {
+  value: any,
 };
 
 const doStopPropagation = (e: any) => {
@@ -25,16 +28,16 @@ const doStopPropagation = (e: any) => {
   }
 };
 
-export default class EditInput extends React.Component<DefProps, any> {
-  static getDerivedStateFromProps(defProps: DefProps, stateProps: any) {
+export default class EditInput extends React.Component<PropsType, StateType> {
+  static getDerivedStateFromProps(defProps: PropsType, state: StateType) {
     const { value } = defProps;
-    if (!stateProps) {
+    if (!state) {
       return {
         value,
       };
     }
     return {
-      value: 'value' in stateProps ? stateProps.value : value,
+      value: state && 'value' in state ? state.value : value,
     };
   }
 

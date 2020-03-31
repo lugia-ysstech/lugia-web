@@ -18,6 +18,14 @@ export type EditTableProps = TableProps & {
   customEditElement: any,
 };
 
+export type EditTableState = {
+  columns: Object[],
+  data?: Object[],
+  selectCell: Array<Object>,
+  editCell: ?Object | null,
+  editing: boolean,
+};
+
 export type Direction = 'left' | 'right' | 'top' | 'bottom';
 
 export const Container = CSSComponent({

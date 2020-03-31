@@ -27,7 +27,11 @@ export type TableProps = {
   tableSize?: 'small' | 'middle' | 'large',
   title?: string | React.Element<any>,
   footer?: string | React.Element<any>,
+  getPartOfThemeProps: Function,
+  getPartOfThemeHocProps: Function,
 };
+
+export type TableState = {};
 
 export const Container = CSSComponent({
   tag: 'div',
@@ -112,9 +116,9 @@ export const Td = CSSComponent({
   `,
 });
 
-export const customBlock = CSSComponent({
+export const CustomBlock = CSSComponent({
   tag: 'div',
-  className: 'customBlock',
+  className: 'CustomBlock',
   normal: {
     selectNames: [['height'], ['padding']],
   },
