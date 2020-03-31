@@ -1,4 +1,5 @@
 //@flow
+import type { KeyBoardEventListenerHandle } from '@lugia/lugia-web';
 import Listener from '@lugia/listener';
 
 export default class KeyBoardEventListener extends Listener<any> {

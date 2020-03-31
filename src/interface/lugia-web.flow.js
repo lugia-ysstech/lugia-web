@@ -100,10 +100,36 @@ declare module '@lugia/lugia-web' {
     choseValue?: any,
     weeks?: any,
   };
+
   declare type ChangeItemEventParam = ChangeEventParam & {
     newDisplayValue: any,
     oldDisplayValue: any,
     newItem: any,
     oldItem: any,
+  };
+
+  declare type KeyBoardEventListenerHandle = {
+    editing: boolean,
+    multipleSelect: boolean,
+    canMoveCells: boolean,
+    isShift: boolean,
+    isKeyBoardDown: boolean,
+    moveTrack: Array,
+    keyDownListener: Object,
+    keyDownListener: Object,
+    enterMultipleSelect: Object,
+    quitMultipleSelect: Object,
+    enterMoveCells: Object,
+    quitMoveCells: Object,
+    shiftDown: Object,
+    shiftUp: Object,
+    enterMoveTrack: Object,
+    quiteMoveTrack: Object,
+    onKeyDown(e: Object): void,
+    onKeyUp(e: Object): void,
+    isMultiple(): boolean,
+    isCanMoveCells(): boolean,
+    isShiftDown(): boolean,
+    getMoveTrack(): boolean,
   };
 }
