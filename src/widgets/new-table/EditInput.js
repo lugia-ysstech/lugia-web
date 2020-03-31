@@ -9,11 +9,12 @@ import Theme from '../theme';
 import Input from '../input';
 import Widget from '../consts/index';
 import { getBorder, getBorderRadius } from '@lugia/theme-utils';
+import type { KeyBoardEventListenerHandle } from '@lugia/lugia-web';
 
 type PropsType = {
   value: any,
   autoFocus: boolean,
-  listener: any,
+  listener: KeyBoardEventListenerHandle,
 };
 type StateType = {
   value: any,

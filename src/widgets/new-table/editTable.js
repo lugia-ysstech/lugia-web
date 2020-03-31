@@ -1,4 +1,5 @@
 //@flow
+import type { KeyBoardEventListenerHandle } from '@lugia/lugia-web';
 import React from 'react';
 import Table from './table';
 import ThemeProvider from '../theme-provider';
@@ -10,7 +11,7 @@ import KeyBoardEventListener from './connection';
 import Widget from '../consts';
 import { findDOMNode } from 'react-dom';
 
-export const restColumnsIntoData = (columns: Array<Object>) => {
+export const restColumnsIntoData = (columns: Array<Object>): Array<Object> => {
   if (!columns) {
     return [];
   }
@@ -22,14 +23,14 @@ export const restColumnsIntoData = (columns: Array<Object>) => {
   return [rowDataItem];
 };
 
-export const setFirstRowAsHead = (rowData: Array<Object>) => {
+export const setFirstRowAsHead = (rowData: Array<Object>): Array<Object> => {
   if (!rowData) return rowData;
   const newData = [...rowData];
   newData[0].isHead = true;
   return newData;
 };
 
-export const clearFirstRowAsHead = (rowData: Array<Object>) => {
+export const clearFirstRowAsHead = (rowData: Array<Object>): Array<Object> => {
   const newRowData = [];
   rowData.forEach(item => {
     const { isHead } = item;
@@ -40,8 +41,8 @@ export const clearFirstRowAsHead = (rowData: Array<Object>) => {
   return newRowData;
 };
 
-export const restDataWithMark = (data: Array<Object>) => {
-  if (!data) return;
+export const restDataWithMark = (data: Array<Object>): Array<Object> => {
+  if (!data) return [];
   const newData = [];
   data.forEach((item, index) => {
     const { lugiaMark: oldMark } = item;
@@ -52,7 +53,7 @@ export const restDataWithMark = (data: Array<Object>) => {
   return newData;
 };
 
-const clearLugiaMarkAndResetRender = (data: Array<Object>) => {
+const clearLugiaMarkAndResetRender = (data: Array<Object>): Array<Object> => {
   const newData = [];
   data.forEach(item => {
     const newItem = { ...item };
@@ -90,7 +91,7 @@ const doStopPropagation = (e: any, isStop?: boolean) => {
 class EditTable extends React.Component<EditTableProps, EditTableState> {
   keyDownHandler: any;
   keyUpHandler: any;
-  KeyBoardListener: any;
+  KeyBoardListener: KeyBoardEventListenerHandle;
   count: number;
   Table: any;
 
