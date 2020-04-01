@@ -36,12 +36,13 @@
   "warningDataColor": "#f58f8a",
   "commonBackgroundColor": "#f5f5f9",
   "navBackgroundColor": "#000333",
-  "boxShadow": { "x": 0, "y": 0, "color": "#e8e8e8", "blur": 6, "spread": 0 },
+  "normalBoxShadow": { "x": 0, "y": 0, "color": "#e8e8e8", "blur": 6, "spread": 0 },
   "hoverBoxShadow": { "x": 0, "y": 0, "color": "#4d68ff", "blur": 6, "spread": 0 },
   "activeBoxShadow": { "x": 0, "y": 0, "color": "#3648b3", "blur": 6, "spread": 0 },
   "disabledBoxShadow": { "x": 0, "y": 0, "color": "#3648b3", "blur": 6, "spread": 0 },
   "focusBoxShadow": { "x": 0, "y": 0, "color": "#4d68ff", "blur": 6, "spread": 0 },
   "borderRadiusValue": 2,
+  "largeBorderRadiusValue": 8,
   "xxsFontSize": 10,
   "xsFontSize": 12,
   "sFontSize": 14,
@@ -68,5 +69,12 @@
   "descriptionFontSize": 14,
   "smallLineHeight": 1,
   "normalLineHeight": 1.5,
-  "largeLineHeight": 1.8
+  "largeLineHeight": 1.8,
+  "padding": 10,
+  "paddingToText": 6,
+  "marginToSameElement": 10,
+  "marginToDifferentElement": 30,
+  "marginToPeerElementForY": 10,
+  "marginToSameElementForY": 6,
+  "marginToSonElement": 16
 }
