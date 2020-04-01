@@ -77,3 +77,10 @@ export function createExistMap(items: ?(string[])): { [key: string]: boolean } {
     return exist;
   }, {});
 }
+
+export function judgeStarts(value: string) {
+  if (!value || typeof value !== 'string') {
+    return false;
+  }
+  return value.startsWith('$lugia-dict.@lugia/lugia-web.');
+}
