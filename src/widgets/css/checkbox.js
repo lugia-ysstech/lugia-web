@@ -12,6 +12,8 @@ import { px2remcss } from '../css/units';
 import type { ThemeType } from '@lugia/lugia-web';
 import Icon from '../icon';
 import { getBorder, getBorderRadius } from '../theme/CSSProvider';
+import { judgeStarts } from '../utils';
+import { getDictValue } from '@lugia/theme-utils';
 
 const FontSize = 1.4;
 const defaultColor = '#fff';
@@ -231,6 +233,7 @@ export const CheckBoxInnerSpan = CSSComponent({
         const defaultHeight = isChecked ? 10 : isIndeterminate ? 1 : 10;
         const currentTheme = isDisabled ? disabledTheme : hover ? hoverTheme : normalTheme;
         const { color, width = defaultWidth, height = defaultHeight } = currentTheme;
+        const borderColor = judgeStarts(color) ? getDictValue(color) : color;
 
         return css`
           &::after {
@@ -245,7 +248,7 @@ export const CheckBoxInnerSpan = CSSComponent({
             width: ${em(width)};
             height: ${em(height)};
             display: table;
-            border: ${em(2)} solid ${color};
+            border: ${em(2)} solid ${borderColor};
             border-top: 0;
             border-left: 0;
             content: ' ';
