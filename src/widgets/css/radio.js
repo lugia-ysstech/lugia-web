@@ -185,9 +185,8 @@ export const RadioCircleSpan = CSSComponent({
           normal: normalTheme,
         } = afterThemeConfig;
         const theme = isDisabled ? disabledTheme : hover ? hoverTheme || normalTheme : normalTheme;
-        const { background = {} } = theme;
+        const { background: { color } = {} } = theme;
         const { width = 10, height = 10 } = normalTheme;
-        const { color } = background;
         const backgroundColor = judgeStarts(color) ? getDictValue(color) : color;
 
         return css`
