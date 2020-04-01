@@ -41,7 +41,7 @@
   "activeBoxShadow": { "x": 0, "y": 0, "color": "#3648b3", "blur": 6, "spread": 0 },
   "disabledBoxShadow": { "x": 0, "y": 0, "color": "#3648b3", "blur": 6, "spread": 0 },
   "focusBoxShadow": { "x": 0, "y": 0, "color": "#4d68ff", "blur": 6, "spread": 0 },
-  "borderRadiusValue": 2,
+  "borderRadiusValue": 4,
   "largeBorderRadiusValue": 8,
   "xxsFontSize": 10,
   "xsFontSize": 12,
