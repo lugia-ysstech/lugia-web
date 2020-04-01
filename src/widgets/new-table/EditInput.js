@@ -32,11 +32,6 @@ const doStopPropagation = (e: any) => {
 export default class EditInput extends React.Component<PropsType, StateType> {
   static getDerivedStateFromProps(defProps: PropsType, state: StateType) {
     const { value } = defProps;
-    if (!state) {
-      return {
-        value,
-      };
-    }
     return {
       value: state && 'value' in state ? state.value : value,
     };
