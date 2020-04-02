@@ -1,11 +1,10 @@
 /**
- * create by szfeng
  *
  * @flow
  */
 
 import Table from './table';
-import EditTable from './editTable';
+import EditTable from './editTableView';
 Table.EditTable = EditTable;
 
 export { Table, EditTable };

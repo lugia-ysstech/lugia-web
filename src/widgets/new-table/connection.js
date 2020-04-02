@@ -8,7 +8,8 @@ export default class KeyBoardEventListener extends Listener<any> {
   canMoveCells: boolean;
   isShift: boolean;
   isKeyBoardDown: boolean;
-  moveTrack: Array;
+  clickNumber: number;
+  moveTrack: Array<Object>;
   keyDownListener: Object;
   keyDownListener: Object;
   enterMultipleSelect: Object;
@@ -28,6 +29,7 @@ export default class KeyBoardEventListener extends Listener<any> {
     this.isShift = false;
     this.isKeyBoardDown = false;
     this.moveTrack = [];
+    this.clickNumber = 0;
 
     this.keyDownListener = this.on('keyDown', this.onKeyDown);
     this.enterMultipleSelect = this.on('enterMultipleSelect', () => {
@@ -40,7 +42,9 @@ export default class KeyBoardEventListener extends Listener<any> {
       this.canMoveCells = true;
     });
     this.quitMoveCells = this.on('quitMoveCells', () => {
-      this.canMoveCells = false;
+      if (this.canMoveCells) {
+        this.canMoveCells = false;
+      }
     });
     this.shiftDown = this.on('shiftDown', () => {
       this.isShift = true;
@@ -115,8 +119,17 @@ export default class KeyBoardEventListener extends Listener<any> {
   isShiftDown = (): boolean => {
     return this.isShift;
   };
-  getMoveTrack = (): boolean => {
+
+  getMoveTrack = (): Array<Object> => {
     return this.moveTrack;
+  };
+
+  getClickNumber = (): number => {
+    return this.clickNumber;
+  };
+
+  setClickNumber = (number: number): void => {
+    this.clickNumber = number;
   };
 
   componentWillUnmount(): void {
