@@ -97,3 +97,11 @@
   color: #4d63ff;
   border-color: #4d63ff;
 }
+
+
+:global(.lugia-small-table .rc-table) {
+  line-height: 1.4;
+}
+:global(.lugia-large-table .rc-table) {
+  line-height: 1.6;
+}
