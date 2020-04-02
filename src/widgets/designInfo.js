@@ -4877,12 +4877,13 @@ export default [
       desc: '选项过多时，弹出下拉菜单给用户选择操作',
       props: {
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: true },
-        action: { type: 'ActionType', desc: '弹出项的打开方式', defaultValue: 'click' },
-        hideAction: { type: 'ActionType', desc: '弹出项的隐藏方式', defaultValue: 'click' },
+        popupVisible: { type: 'boolean', desc: '是否展开菜单', propsDefaultValue: false },
+        action: { type: 'ActionType', desc: '弹出项的打开方式', propsDefaultValue: 'click' },
+        hideAction: { type: 'ActionType', desc: '弹出项的隐藏方式', propsDefaultValue: 'click' },
         menus: { type: 'React.Node', desc: '弹出项组件' },
         align: { type: 'React.Node', desc: '弹出方向', defaultValue: 'bottom' },
         text: { type: 'string', desc: '下拉菜单按钮的文本' },
-        type: { type: 'StyleType', desc: '按钮的风格,默认为customs', defaultValue: 'customs' },
+        type: { type: 'StyleType', desc: '按钮的风格,默认为customs', propsDefaultValue: 'customs' },
         switchIconClass: {
           type: 'object',
           desc: '自定义控制器图标',
@@ -4891,9 +4892,9 @@ export default [
             { key: 'iconSrc', title: '图片', type: 'string' },
           ],
         },
-        disabled: { type: 'boolean', desc: '是否禁选', defaultValue: false },
-        divided: { type: 'boolean', desc: '是否为分割线', defaultValue: true },
-        showSwitch: { type: 'boolean', desc: '是否展示switch图标', defaultValue: true },
+        disabled: { type: 'boolean', desc: '是否禁选', propsDefaultValue: false },
+        divided: { type: 'boolean', desc: '是否为分割线', propsDefaultValue: true },
+        showSwitch: { type: 'boolean', desc: '是否展示switch图标', propsDefaultValue: true },
         icons: {
           type: 'object',
           desc: '配置前置和后缀图标',
@@ -5520,12 +5521,13 @@ export default [
       desc: '无分隔符的下拉按钮',
       props: {
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: true },
-        action: { type: 'ActionType', desc: '弹出项的打开方式', defaultValue: 'click' },
-        hideAction: { type: 'ActionType', desc: '弹出项的隐藏方式', defaultValue: 'click' },
+        popupVisible: { type: 'boolean', desc: '是否展开菜单', propsDefaultValue: false },
+        action: { type: 'ActionType', desc: '弹出项的打开方式', propsDefaultValue: 'click' },
+        hideAction: { type: 'ActionType', desc: '弹出项的隐藏方式', propsDefaultValue: 'click' },
         menus: { type: 'React.Node', desc: '弹出项组件' },
         align: { type: 'React.Node', desc: '弹出方向', defaultValue: 'bottom' },
         text: { type: 'string', desc: '下拉菜单按钮的文本' },
-        type: { type: 'StyleType', desc: '按钮的风格,默认为customs', defaultValue: 'customs' },
+        type: { type: 'StyleType', desc: '按钮的风格,默认为customs', propsDefaultValue: 'customs' },
         switchIconClass: {
           type: 'object',
           desc: '自定义控制器图标',
@@ -5534,9 +5536,14 @@ export default [
             { key: 'iconSrc', title: '图片', type: 'string' },
           ],
         },
-        disabled: { type: 'boolean', desc: '是否禁选', defaultValue: false },
-        divided: { type: 'boolean', desc: '是否为分割线', defaultValue: false },
-        showSwitch: { type: 'boolean', desc: '是否展示switch图标', defaultValue: true },
+        disabled: { type: 'boolean', desc: '是否禁选', propsDefaultValue: false },
+        divided: {
+          type: 'boolean',
+          desc: '是否为分割线',
+          propsDefaultValue: true,
+          defaultValue: false,
+        },
+        showSwitch: { type: 'boolean', desc: '是否展示switch图标', propsDefaultValue: true },
         icons: {
           type: 'object',
           desc: '配置前置和后缀图标',
@@ -7130,17 +7137,18 @@ export default [
       title: '导航菜单',
       desc: '为页面提供导航功能的菜单',
       props: {
-        valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'value' },
-        pathSeparator: {
-          type: 'string',
-          desc: '指定结点数组中path信息的分隔符号',
-          defaultValue: '/',
-        },
+        valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
         displayField: {
           type: 'string',
           desc: 'data数据的displayValue值的名称',
-          defaultValue: 'text',
+          propsDefaultValue: 'text',
         },
+        pathSeparator: {
+          type: 'string',
+          desc: '指定结点数组中path信息的分隔符号',
+          propsDefaultValue: '/',
+        },
+        action: { type: 'ActionType', desc: '弹出项的打开方式', propsDefaultValue: 'click' },
         data: {
           type: 'object[]',
           desc: '生成选择项的数据',
@@ -7183,27 +7191,27 @@ export default [
         mode: {
           type: 'vertical | inline| horizontal',
           desc: '菜单类型，支持垂直、内嵌和水平模式',
-          defaultValue: 'inline',
+          propsDefaultValue: 'inline',
         },
         inlineType: {
           type: 'primary | ellipse',
           desc: '菜单类型为inline(内嵌模式)时,支持两种风格',
-          defaultValue: 'primary',
+          propsDefaultValue: 'primary',
         },
         themeStyle: {
           type: 'light | dark',
           desc: '菜单类型为inline(内嵌模式)时,支持两种主题',
-          defaultValue: 'light',
+          propsDefaultValue: 'light',
         },
         inlineExpandAll: {
           type: 'boolean',
           desc: '菜单类型为inline(内嵌模式)时,是否展开所有子元素,默认为true',
-          defaultValue: true,
+          propsDefaultValue: true,
         },
         separator: {
           type: 'string',
           desc: '自定义层级分隔符,只有在mode为 vertical 时,传入级联数据生效 ',
-          defaultValue: '|',
+          propsDefaultValue: '|',
         },
       },
       events: {
@@ -8283,17 +8291,18 @@ export default [
       title: '顶部导航菜单',
       desc: '水平的导航菜单',
       props: {
-        valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'value' },
-        pathSeparator: {
-          type: 'string',
-          desc: '指定结点数组中path信息的分隔符号',
-          defaultValue: '/',
-        },
+        valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
         displayField: {
           type: 'string',
           desc: 'data数据的displayValue值的名称',
-          defaultValue: 'text',
+          propsDefaultValue: 'text',
         },
+        pathSeparator: {
+          type: 'string',
+          desc: '指定结点数组中path信息的分隔符号',
+          propsDefaultValue: '/',
+        },
+        action: { type: 'ActionType', desc: '弹出项的打开方式', propsDefaultValue: 'click' },
         data: {
           type: 'object[]',
           desc: '生成选择项的数据',
@@ -8336,27 +8345,28 @@ export default [
         mode: {
           type: 'vertical | inline| horizontal',
           desc: '菜单类型，支持垂直、内嵌和水平模式',
+          propsDefaultValue: 'inline',
           defaultValue: 'horizontal',
         },
         inlineType: {
           type: 'primary | ellipse',
           desc: '菜单类型为inline(内嵌模式)时,支持两种风格',
-          defaultValue: 'primary',
+          propsDefaultValue: 'primary',
         },
         themeStyle: {
           type: 'light | dark',
           desc: '菜单类型为inline(内嵌模式)时,支持两种主题',
-          defaultValue: 'light',
+          propsDefaultValue: 'light',
         },
         inlineExpandAll: {
           type: 'boolean',
           desc: '菜单类型为inline(内嵌模式)时,是否展开所有子元素,默认为true',
-          defaultValue: true,
+          propsDefaultValue: true,
         },
         separator: {
           type: 'string',
           desc: '自定义层级分隔符,只有在mode为 vertical 时,传入级联数据生效 ',
-          defaultValue: '|',
+          propsDefaultValue: '|',
         },
       },
       events: {
@@ -8645,17 +8655,18 @@ export default [
       title: '垂直导航菜单',
       desc: '子菜单从右侧弹开',
       props: {
-        valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'value' },
-        pathSeparator: {
-          type: 'string',
-          desc: '指定结点数组中path信息的分隔符号',
-          defaultValue: '/',
-        },
+        valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
         displayField: {
           type: 'string',
           desc: 'data数据的displayValue值的名称',
-          defaultValue: 'text',
+          propsDefaultValue: 'text',
         },
+        pathSeparator: {
+          type: 'string',
+          desc: '指定结点数组中path信息的分隔符号',
+          propsDefaultValue: '/',
+        },
+        action: { type: 'ActionType', desc: '弹出项的打开方式', propsDefaultValue: 'click' },
         data: {
           type: 'object[]',
           desc: '生成选择项的数据',
@@ -8698,27 +8709,28 @@ export default [
         mode: {
           type: 'vertical | inline| horizontal',
           desc: '菜单类型，支持垂直、内嵌和水平模式',
+          propsDefaultValue: 'inline',
           defaultValue: 'vertical',
         },
         inlineType: {
           type: 'primary | ellipse',
           desc: '菜单类型为inline(内嵌模式)时,支持两种风格',
-          defaultValue: 'primary',
+          propsDefaultValue: 'primary',
         },
         themeStyle: {
           type: 'light | dark',
           desc: '菜单类型为inline(内嵌模式)时,支持两种主题',
-          defaultValue: 'light',
+          propsDefaultValue: 'light',
         },
         inlineExpandAll: {
           type: 'boolean',
           desc: '菜单类型为inline(内嵌模式)时,是否展开所有子元素,默认为true',
-          defaultValue: true,
+          propsDefaultValue: true,
         },
         separator: {
           type: 'string',
           desc: '自定义层级分隔符,只有在mode为 vertical 时,传入级联数据生效 ',
-          defaultValue: '|',
+          propsDefaultValue: '|',
         },
       },
       events: {
@@ -9085,17 +9097,18 @@ export default [
       title: '内嵌导航菜单',
       desc: '点击菜单收起或展开子菜单,ellipse样式',
       props: {
-        valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'value' },
-        pathSeparator: {
-          type: 'string',
-          desc: '指定结点数组中path信息的分隔符号',
-          defaultValue: '/',
-        },
+        valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
         displayField: {
           type: 'string',
           desc: 'data数据的displayValue值的名称',
-          defaultValue: 'text',
+          propsDefaultValue: 'text',
         },
+        pathSeparator: {
+          type: 'string',
+          desc: '指定结点数组中path信息的分隔符号',
+          propsDefaultValue: '/',
+        },
+        action: { type: 'ActionType', desc: '弹出项的打开方式', propsDefaultValue: 'click' },
         data: {
           type: 'object[]',
           desc: '生成选择项的数据',
@@ -9138,27 +9151,29 @@ export default [
         mode: {
           type: 'vertical | inline| horizontal',
           desc: '菜单类型，支持垂直、内嵌和水平模式',
+          propsDefaultValue: 'inline',
           defaultValue: 'inline',
         },
         inlineType: {
           type: 'primary | ellipse',
           desc: '菜单类型为inline(内嵌模式)时,支持两种风格',
+          propsDefaultValue: 'primary',
           defaultValue: 'ellipse',
         },
         themeStyle: {
           type: 'light | dark',
           desc: '菜单类型为inline(内嵌模式)时,支持两种主题',
-          defaultValue: 'light',
+          propsDefaultValue: 'light',
         },
         inlineExpandAll: {
           type: 'boolean',
           desc: '菜单类型为inline(内嵌模式)时,是否展开所有子元素,默认为true',
-          defaultValue: true,
+          propsDefaultValue: true,
         },
         separator: {
           type: 'string',
           desc: '自定义层级分隔符,只有在mode为 vertical 时,传入级联数据生效 ',
-          defaultValue: '|',
+          propsDefaultValue: '|',
         },
       },
       events: {
@@ -9586,11 +9601,7 @@ export default [
           desc: '是否显示可以改变 pageSize',
           propsDefaultValue: false,
         },
-        isShowTotalData: {
-          type: 'boolean',
-          desc: '是否可以显示数据总量',
-          propsDefaultValue: false,
-        },
+        showTotalData: { type: 'boolean', desc: '是否可以显示数据总量', propsDefaultValue: false },
         simple: {
           type: 'boolean',
           desc: '当添加该属性时，显示为简单分页',
@@ -9608,6 +9619,12 @@ export default [
         },
         preIconSrc: { type: 'image', desc: '分页上一页图片资源' },
         nextIconSrc: { type: 'image', desc: '分页下一页图片资源' },
+        blockList: {
+          type: 'string[]',
+          desc: '分页各部位展示的位置列表',
+          propsDefaultValue: ['Page', 'PageInput', 'Total', 'PageSize'],
+        },
+        align: { type: 'AlignType', desc: '分页各部位对齐的方式', propsDefaultValue: 'Left' },
       },
       events: {
         onChange: {
@@ -9624,7 +9641,16 @@ export default [
             { name: 'size', desc: '每页条数', type: 'number' },
           ],
         },
+        quickJumperInputBlur: {
+          desc: '快速跳转输入框失去焦点时触发',
+          args: [
+            { name: 'current', desc: '当前页数', type: 'number' },
+            { name: 'size', desc: '每页条数', type: 'number' },
+            { name: 'event', desc: '失去焦点的DOM事件', type: 'FocusEvent' },
+          ],
+        },
       },
+      type: { AlignType: ['Left', 'Right'] },
       designInfo: {
         SimplePagination: {
           sequence: 1,
@@ -9722,6 +9748,11 @@ export default [
             ['opacity'],
             ['margin'],
           ],
+        },
+        PaginationListContainer: {
+          name: '分页列表的容器',
+          desc: '分页列表的容器',
+          normal: [['margin']],
         },
         PaginationListItem: {
           name: '单个页数',
@@ -10071,11 +10102,7 @@ export default [
           desc: '是否显示可以改变 pageSize',
           propsDefaultValue: false,
         },
-        isShowTotalData: {
-          type: 'boolean',
-          desc: '是否可以显示数据总量',
-          propsDefaultValue: false,
-        },
+        showTotalData: { type: 'boolean', desc: '是否可以显示数据总量', propsDefaultValue: false },
         simple: {
           type: 'boolean',
           desc: '当添加该属性时，显示为简单分页',
@@ -10094,6 +10121,12 @@ export default [
         },
         preIconSrc: { type: 'image', desc: '分页上一页图片资源' },
         nextIconSrc: { type: 'image', desc: '分页下一页图片资源' },
+        blockList: {
+          type: 'string[]',
+          desc: '分页各部位展示的位置列表',
+          propsDefaultValue: ['Page', 'PageInput', 'Total', 'PageSize'],
+        },
+        align: { type: 'AlignType', desc: '分页各部位对齐的方式', propsDefaultValue: 'Left' },
       },
       events: {
         onChange: {
@@ -10110,7 +10143,16 @@ export default [
             { name: 'size', desc: '每页条数', type: 'number' },
           ],
         },
+        quickJumperInputBlur: {
+          desc: '快速跳转输入框失去焦点时触发',
+          args: [
+            { name: 'current', desc: '当前页数', type: 'number' },
+            { name: 'size', desc: '每页条数', type: 'number' },
+            { name: 'event', desc: '失去焦点的DOM事件', type: 'FocusEvent' },
+          ],
+        },
       },
+      type: { AlignType: ['Left', 'Right'] },
       theme: {
         Container: {
           name: '分页外部容器',
@@ -16361,6 +16403,11 @@ export default [
         },
         showHeader: { type: 'boolean', desc: '是否展示标头', defaultValue: true },
         title: { type: 'Function(currentPageData)', desc: '表格标题' },
+        size: {
+          type: 'number',
+          desc: '设置表格单元格大小，可选 default、large、small，默认为 default;',
+          propsDefaultValue: 'default',
+        },
         onHeaderRow: { type: 'Function(column, index)', desc: '设置头部行属性' },
         onRow: { type: 'Function(record, index)', desc: '设置行属性' },
         tableStyle: { type: 'tableStyleType', desc: '表格标题', defaultValue: 'bordered' },
