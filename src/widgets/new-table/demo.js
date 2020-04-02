@@ -1,6 +1,6 @@
 import React from 'react';
 import Table from './';
-import EditTable from './editTable';
+import EditTable from './editTableView';
 import styled from 'styled-components';
 
 const Title = styled.div`

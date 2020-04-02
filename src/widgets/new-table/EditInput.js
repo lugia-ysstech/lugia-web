@@ -30,6 +30,8 @@ const doStopPropagation = (e: any) => {
 };
 
 export default class EditInput extends React.Component<PropsType, StateType> {
+  keyDownHandler: Object;
+
   static getDerivedStateFromProps(defProps: PropsType, state: StateType) {
     const { value } = defProps;
     return {

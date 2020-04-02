@@ -108,13 +108,27 @@ declare module '@lugia/lugia-web' {
     oldItem: any,
   };
 
-  declare type KeyBoardEventListenerHandle = {
+  declare type ListenerHandle = {
+    removeListener: Function,
+  };
+
+  declare interface EventListener {
+    on(eventName: string, cb: Function): ListenerHandle;
+
+    once(eventName: string, cb: Function): ListenerHandle;
+
+    take(eventName: string, count: number): Promise<any>;
+
+    emit(eventName: string, param: Object): void;
+  }
+
+  declare type KeyBoardEventListenerHandle = EventListener & {
     editing: boolean,
     multipleSelect: boolean,
     canMoveCells: boolean,
     isShift: boolean,
     isKeyBoardDown: boolean,
-    moveTrack: Array,
+    moveTrack: Array<Object>,
     keyDownListener: Object,
     keyDownListener: Object,
     enterMultipleSelect: Object,
@@ -130,6 +144,6 @@ declare module '@lugia/lugia-web' {
     isMultiple(): boolean,
     isCanMoveCells(): boolean,
     isShiftDown(): boolean,
-    getMoveTrack(): boolean,
+    getMoveTrack(): Array<Object>,
   };
 }

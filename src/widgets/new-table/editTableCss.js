@@ -16,13 +16,14 @@ export type EditTableProps = TableProps & {
   onCell: Function,
   customContainerElement: any,
   customEditElement: any,
+  selectSuffixElement: any,
 };
 
 export type EditTableState = {
   columns: Object[],
-  data?: Object[],
+  data: Object[],
   selectCell: Array<Object>,
-  editCell: ?Object | null,
+  editCell?: Object,
   editing: boolean,
 };
 
