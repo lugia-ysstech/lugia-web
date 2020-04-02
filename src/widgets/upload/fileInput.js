@@ -7,10 +7,8 @@
  *
  */
 import React from 'react';
-import styled from 'styled-components';
 import CSSComponent, { css } from '../theme/CSSProvider';
-import ThemeHoc from '@lugia/theme-hoc';
-
+import { findDOMNode } from 'react-dom';
 type PropTypes = {
   accept?: string,
   multiple?: boolean,
@@ -48,7 +46,7 @@ class FileInput extends React.Component<PropTypes, any> {
 
   componentDidMount() {
     const { getRegisterInput } = this.props;
-    getRegisterInput(this.input);
+    getRegisterInput && getRegisterInput(findDOMNode(this.input));
   }
 
   render() {
