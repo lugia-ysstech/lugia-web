@@ -190,7 +190,10 @@ export default ThemeProvider(
       });
       if (children) {
         return (
-          <TableWrap themeProps={containerPartOfThemeProps} className={this.getClass(tableStyle)}>
+          <TableWrap
+            themeProps={containerPartOfThemeProps}
+            className={this.getClass(tableStyle, size)}
+          >
             <RcTable
               {...this.props}
               data={data}
@@ -266,7 +269,10 @@ export default ThemeProvider(
       const scrollObj = this.getTableBodyHeight(themeHeight);
       const theScroll = { ...scroll, ...scrollObj };
       return (
-        <TableWrap themeProps={containerPartOfThemeProps} className={this.getClass(tableStyle)}>
+        <TableWrap
+          themeProps={containerPartOfThemeProps}
+          className={this.getClass(tableStyle, size)}
+        >
           <RcTable
             {...this.props}
             columns={theColumns}
@@ -278,8 +284,12 @@ export default ThemeProvider(
         </TableWrap>
       );
     }
-    getClass = (tableStyle: 'zebraStripe' | 'linear' | 'bordered'): string => {
-      return `lugia-table lugia-table-${tableStyle}`;
+    getClass = (
+      tableStyle: 'zebraStripe' | 'linear' | 'bordered',
+      size: 'default' | 'small' | 'large'
+    ): string => {
+      const sizeClassName = `lugia-${size}-table`;
+      return `lugia-table lugia-table-${tableStyle} ${sizeClassName}`;
     };
   },
   Widget.Table
