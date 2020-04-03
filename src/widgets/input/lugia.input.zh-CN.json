@@ -179,6 +179,26 @@
           "type": "KeyboardEvent"
         }
       ]
+    },
+    "onMouseEnter": {
+      "desc": "当鼠标移入输入框内触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "当鼠标移入输入框内触发的事件",
+          "type": "MouseEvent"
+        }
+      ]
+    },
+    "onMouseLeave": {
+      "desc": "当鼠标移入输入框内触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "当鼠标移出输入框外触发的事件",
+          "type": "MouseEvent"
+        }
+      ]
     }
   },
   "type": {
@@ -198,41 +218,27 @@
     "Container": {
       "name": "输入框外部容器",
       "desc": "输入框外部容器",
-      "normal": [["width"], ["height"], ["margin"]]
+      "normal": [
+        ["width"],
+        ["height"],
+        ["margin"],
+        ["border"],
+        ["borderRadius"],
+        ["boxShadow"],
+        ["background"],
+        ["opacity"]
+      ],
+      "hover": [["border"], ["borderRadius"], ["background"], ["opacity"], ["boxShadow"]],
+      "active": [["boxShadow"], ["border"], ["borderRadius"], ["background"], ["opacity"]],
+      "disabled": [["background"], ["border"], ["borderRadius"], ["opacity"]]
     },
     "Input": {
       "name": "输入框主体",
       "desc": "输入框主体结构",
-      "normal": [
-        ["fontSize"],
-        ["font"],
-        ["color"],
-        ["background"],
-        ["border"],
-        ["borderRadius"],
-        ["cursor"],
-        ["opacity"]
-      ],
-      "hover": [
-        ["border"],
-        ["borderRadius"],
-        ["cursor"],
-        ["background"],
-        ["opacity"],
-        ["boxShadow"]
-      ],
-      "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"], ["background"]],
-      "disabled": [
-        ["fontSize"],
-        ["font"],
-        ["color"],
-        ["background"],
-        ["border"],
-        ["borderRadius"],
-        ["cursor"],
-        ["padding"],
-        ["opacity"]
-      ]
+      "normal": [["fontSize"], ["font"], ["color"], ["cursor"]],
+      "hover": [["cursor"], ["fontSize"], ["font"], ["color"]],
+      "active": [["fontSize"], ["font"], ["color"], ["cursor"]],
+      "disabled": [["fontSize"], ["font"], ["color"], ["cursor"], ["padding"]]
     },
     "Placeholder": {
       "name": "输入框提示信息文字",
