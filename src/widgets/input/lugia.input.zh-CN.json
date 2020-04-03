@@ -25,7 +25,7 @@
     "validateType": {
       "type": "ValidateType",
       "desc": "校验信息显示类型",
-      "propsDefaultValue": "default"
+      "propsDefaultValue": "top"
     },
     "help": {
       "type": "string",
@@ -216,29 +216,59 @@
   "childrenWidget": ["textarea"],
   "theme": {
     "Container": {
-      "name": "输入框外部容器",
-      "desc": "输入框外部容器",
+      "name": "输入框主体",
+      "desc": "输入框主体结构",
       "normal": [
         ["width"],
         ["height"],
         ["margin"],
+        ["margin"],
+        ["padding"],
         ["border"],
         ["borderRadius"],
         ["boxShadow"],
         ["background"],
+        ["opacity"],
+        ["fontSize"],
+        ["font"],
+        ["color"],
+        ["cursor"]
+      ],
+      "hover": [
+        ["border"],
+        ["borderRadius"],
+        ["background"],
+        ["opacity"],
+        ["boxShadow"],
+        ["cursor"],
+        ["fontSize"],
+        ["font"],
+        ["color"],
         ["opacity"]
       ],
-      "hover": [["border"], ["borderRadius"], ["background"], ["opacity"], ["boxShadow"]],
-      "active": [["boxShadow"], ["border"], ["borderRadius"], ["background"], ["opacity"]],
-      "disabled": [["background"], ["border"], ["borderRadius"], ["opacity"]]
-    },
-    "Input": {
-      "name": "输入框主体",
-      "desc": "输入框主体结构",
-      "normal": [["fontSize"], ["font"], ["color"], ["cursor"]],
-      "hover": [["cursor"], ["fontSize"], ["font"], ["color"]],
-      "active": [["fontSize"], ["font"], ["color"], ["cursor"]],
-      "disabled": [["fontSize"], ["font"], ["color"], ["cursor"], ["padding"]]
+      "active": [
+        ["boxShadow"],
+        ["border"],
+        ["borderRadius"],
+        ["background"],
+        ["opacity"],
+        ["cursor"],
+        ["fontSize"],
+        ["font"],
+        ["color"],
+        ["opacity"]
+      ],
+      "disabled": [
+        ["background"],
+        ["border"],
+        ["borderRadius"],
+        ["opacity"],
+        ["cursor"],
+        ["fontSize"],
+        ["font"],
+        ["color"],
+        ["opacity"]
+      ]
     },
     "Placeholder": {
       "name": "输入框提示信息文字",
