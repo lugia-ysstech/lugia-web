@@ -6,7 +6,12 @@ import Widget from '../consts/index';
 import ThemeHoc, { addMouseEvent } from '@lugia/theme-hoc';
 import { fixControlledValue } from '../utils';
 import type { InputSize, ValidateType, ValidateStatus } from '../css/input';
-import { DefaultHelp, checkValidateResultFromStatusAndType, isValidateError } from '../css/input';
+import {
+  DefaultHelp,
+  checkValidateResultFromStatusAndType,
+  isValidateError,
+  getInputHeight,
+} from '../css/input';
 import ToolTip from '../tooltip/index';
 import Icon from '../icon';
 import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
@@ -16,6 +21,7 @@ import { deepMerge } from '@lugia/object-utils';
 import { getBorder, getBoxShadow, getBorderRadius } from '@lugia/theme-utils';
 import { ObjectUtils } from '@lugia/type-utils';
 import get from '../css/theme-common-dict';
+import MouseEventAdaptor from '../common/MouseEventAdaptor';
 
 const { px2remcss } = units;
 
@@ -38,21 +44,9 @@ const CommonInputStyle = CSSComponent({
   tag: 'input',
   className: 'InnerInput',
   normal: {
-    selectNames: [
-      ['fontSize'],
-      ['font'],
-      ['color'],
-      ['background'],
-      ['border'],
-      ['borderRadius'],
-      ['cursor'],
-      ['padding'],
-      ['opacity'],
-      ['boxShadow'],
-    ],
+    selectNames: [['fontSize'], ['font'], ['color'], ['cursor'], ['padding'], ['opacity']],
     defaultTheme: {
       cursor: 'text',
-      borderRadius: getBorderRadius(borderRadius),
       fontSize: 12,
     },
     getCSS(themeMeta: Object, themeProps: Object) {
@@ -76,7 +70,7 @@ const CommonInputStyle = CSSComponent({
       const {
         propsConfig: { prefix, validateStatus, validateType, suffix, isShowClearButton },
       } = themeProps;
-      const { width, color, border, boxShadow, font: { color: fontColor } = {} } = themeMeta;
+      const { width, color, font: { color: fontColor } = {} } = themeMeta;
 
       const paddingLeft = prefix ? 30 : width && width < 200 ? width / 20 : padding;
       const paddingRight =
@@ -88,18 +82,7 @@ const CommonInputStyle = CSSComponent({
         : checkValidateResultFromStatusAndType(validateStatus, 'error', validateType, 'inner')
         ? dangerColor
         : blackColor;
-      const shadowCSS = boxShadow
-        ? boxShadow
-        : isValidateError(validateStatus)
-        ? getBoxShadow(`${hShadow}px ${vShadow}px ${shadowSpread}px ${get('inputDangerColor')}`)
-        : {};
-      const theBorderColor = isValidateError(validateStatus) ? dangerColor : borderColor;
-      const borderOBJ = border
-        ? border
-        : getBorder({ color: theBorderColor, width: borderSize, style: 'solid' });
       return {
-        boxShadow: shadowCSS,
-        border: borderOBJ,
         color: theColor,
         padding: {
           left: paddingLeft,
@@ -109,18 +92,84 @@ const CommonInputStyle = CSSComponent({
     },
   },
   hover: {
+    selectNames: [['cursor'], ['opacity']],
+  },
+  active: {
+    selectNames: [['cursor']],
+  },
+  disabled: {
+    selectNames: [['fontSize'], ['font'], ['color'], ['cursor'], ['padding'], ['opacity']],
+    defaultTheme: {
+      cursor: 'not-allowed',
+    },
+  },
+  css: css`
+    box-sizing: border-box;
+    line-height: 1.5;
+    display: inline-block;
+    font-family: inherit;
+    transition: all ${transitionTime};
+    outline: none;
+    height: 100%;
+    width: 100%;
+    border: none;
+  `,
+  option: { hover: true, active: true },
+});
+
+export const BaseInputContainer = StaticComponent({
+  tag: 'span',
+  className: 'InputBaseInputContainer',
+  css: css`
+    position: relative;
+    display: inline-flex;
+    width: 100%;
+    height: 100%;
+  `,
+});
+
+const InputContainer = CSSComponent({
+  tag: 'span',
+  className: 'inputContainer',
+  normal: {
     selectNames: [
-      ['padding'],
+      ['width'],
+      ['height'],
+      ['margin'],
       ['border'],
       ['borderRadius'],
-      ['cursor'],
+      ['boxShadow'],
       ['background'],
       ['opacity'],
-      ['boxShadow'],
     ],
     defaultTheme: {
+      width: '100%',
       borderRadius: getBorderRadius(borderRadius),
     },
+    getThemeMeta(themeMeta: Object, themeProps: Object) {
+      const {
+        propsConfig: { validateStatus, size },
+      } = themeProps;
+      const { border, boxShadow, height } = themeMeta;
+      const shadowCSS = boxShadow
+        ? boxShadow
+        : isValidateError(validateStatus)
+        ? getBoxShadow(`${hShadow}px ${vShadow}px ${shadowSpread}px ${get('inputDangerColor')}`)
+        : {};
+      const theBorderColor = isValidateError(validateStatus) ? dangerColor : borderColor;
+      const borderOBJ = border
+        ? border
+        : getBorder({ color: theBorderColor, width: borderSize, style: 'solid' });
+      const theHeight = getInputHeight(height, size);
+      return {
+        boxShadow: shadowCSS,
+        border: borderOBJ,
+        height: theHeight,
+      };
+    },
+  },
+  hover: {
+    selectNames: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
         propsConfig: { validateStatus },
@@ -136,88 +185,31 @@ const CommonInputStyle = CSSComponent({
     },
   },
   active: {
-    selectNames: [['boxShadow'], ['border'], ['borderRadius'], ['cursor'], ['background']],
+    selectNames: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
         propsConfig: { validateStatus },
       } = themeProps;
-      const { boxShadow } = themeMeta;
+      const { boxShadow, border } = themeMeta;
       const theColor = isValidateError(validateStatus) ? dangerActiveColor : themeActiveColor;
       const shadowCSS = `${hShadow}px ${vShadow}px ${shadowSpread}px ${theColor}`;
       const shadowOBJ = boxShadow ? boxShadow : getBoxShadow(shadowCSS);
-      return { boxShadow: shadowOBJ };
-    },
-  },
-  disabled: {
-    selectNames: [
-      ['fontSize'],
-      ['font'],
-      ['color'],
-      ['background'],
-      ['border'],
-      ['borderRadius'],
-      ['cursor'],
-      ['padding'],
-      ['opacity'],
-    ],
-    defaultTheme: {
-      cursor: 'not-allowed',
-      background: { color: disableColor },
-      border: getBorder({ color: borderColor, width: borderSize, style: 'solid' }),
-    },
-  },
-  css: css`
-    box-sizing: border-box;
-    line-height: 1.5;
-    display: inline-block;
-    font-family: inherit;
-    transition: all ${transitionTime};
-    outline: none;
-    height: 100%;
-    width: 100%;
-  `,
-  option: { hover: true, active: true },
-});
-
-export const BaseInputContainer = StaticComponent({
-  tag: 'span',
-  className: 'InputBaseInputContainer',
-  css: css`
-    position: relative;
-    display: inline-block;
-    width: 100%;
-    height: 100%;
-  `,
-});
-
-const InputContainer = CSSComponent({
-  tag: 'span',
-  className: 'inputContainer',
-  normal: {
-    selectNames: [['width'], ['height'], ['margin']],
-    defaultTheme: {
-      width: '100%',
-    },
-    getThemeMeta(themeMeta: Object, themeProps: Object) {
-      const {
-        propsConfig: { size },
-      } = themeProps;
-      const { height } = themeMeta;
-
-      const theHeight = height ? height : size === 'large' ? 40 : size === 'small' ? 24 : 32;
+      const theBorderColor = isValidateError(validateStatus) ? dangerHoverColor : themeHoverColor;
+      const borderOBJ = border
+        ? border
+        : getBorder({ color: theBorderColor, width: borderSize, style: 'solid' });
       return {
-        height: theHeight,
+        border: borderOBJ,
+        boxShadow: shadowOBJ,
       };
     },
   },
-  hover: {
-    selectNames: [],
-  },
-  active: {
-    selectNames: [],
-  },
   disabled: {
-    selectNames: [],
+    selectNames: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
+    defaultTheme: {
+      background: { color: disableColor },
+      border: getBorder({ color: borderColor, width: borderSize, style: 'solid' }),
+    },
   },
   css: css`
     position: relative;
@@ -225,6 +217,7 @@ const InputContainer = CSSComponent({
     outline: none;
     min-width: ${px2remcss(30)};
   `,
+  option: { hover: true, active: true },
 });
 
 export const TipBottom = CSSComponent({
@@ -268,7 +261,7 @@ const Fix = CSSComponent({
     bottom: 50%;
     line-height: ${px2remcss(10)};
     font-size: 1.4em;
-    color: ${mediumGreyColor};
+    color: ${get('mediumGreyColor')};
   `,
 });
 
@@ -336,6 +329,8 @@ type InputProps = {
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
   isShowClearButton?: boolean,
+  onMouseEnter?: Function,
+  onMouseLeave?: Function,
 } & InsideProps;
 
 class TextBox extends Component<InputProps, InputState> {
@@ -447,11 +442,7 @@ class TextBox extends Component<InputProps, InputState> {
     const theThemeProps = this.props.getPartOfThemeProps('Container', {
       props: { size },
     });
-    return (
-      <InputContainer themeProps={theThemeProps} {...addMouseEvent(this)}>
-        {fetcher()}
-      </InputContainer>
-    );
+    return <InputContainer themeProps={theThemeProps}>{fetcher()}</InputContainer>;
   }
 
   getInputInner = () => {
@@ -598,10 +589,25 @@ class TextBox extends Component<InputProps, InputState> {
         theme={newTheme}
         iconClass={clearIcon || Clear}
         onClick={this.onClear}
-        {...addMouseEvent(this)}
       />
     );
   }
+
+  onMouseLeave = (event: SyntheticMouseEvent<HTMLInputElement>) => {
+    const { disabled, onMouseLeave } = this.props;
+    if (disabled) {
+      return;
+    }
+    onMouseLeave && onMouseLeave(event);
+  };
+
+  onMouseEnter = (event: SyntheticMouseEvent<HTMLInputElement>) => {
+    const { disabled, onMouseEnter } = this.props;
+    if (disabled) {
+      return;
+    }
+    onMouseEnter && onMouseEnter(event);
+  };
 
   generateInput(): React$Node {
     const { props } = this;
@@ -656,8 +662,15 @@ class TextBox extends Component<InputProps, InputState> {
       })
     );
     const theType = type === 'password' ? 'password' : 'text';
+
+    const mouseConfig = {
+      enter: this.onMouseEnter,
+      leave: this.onMouseLeave,
+    };
+
     return (
       <CommonInputStyle
+        {...addMouseEvent(this, mouseConfig)}
         maxLength={_maxLength}
         themeProps={theThemeProps}
         autoFocus={autoFocus}
@@ -717,7 +730,7 @@ class TextBox extends Component<InputProps, InputState> {
   };
 }
 
-const TargetTxtBox = ThemeHoc(KeyBoardEventAdaptor(TextBox), Widget.Input, {
+const TargetTxtBox = ThemeHoc(MouseEventAdaptor(KeyBoardEventAdaptor(TextBox)), Widget.Input, {
   hover: true,
   active: true,
 });

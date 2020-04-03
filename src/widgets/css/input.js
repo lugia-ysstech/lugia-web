@@ -55,3 +55,13 @@ export function checkValidateResultFromStatusAndType(
 export function checkValidateType(validateType: ValidateType, expType: ValidateType): boolean {
   return expType === validateType;
 }
+
+export function getInputHeight(height, size: InputSize) {
+  return height
+    ? height
+    : size === 'large'
+    ? LargeHeight
+    : size === 'small'
+    ? SmallHeight
+    : DefaultHeight;
+}
