@@ -110,7 +110,34 @@ export default class ModalDemo extends React.Component<any, any> {
         },
       },
     };
-    const config1 = {
+    const configSmall = {
+      [Widget.Table]: {
+        Container: {
+          normal: {
+            width: 500,
+            height: 264,
+            background: {
+              color: 'red',
+            },
+          },
+        },
+      },
+    };
+    const configDefault = {
+      [Widget.Table]: {
+        Container: {
+          normal: {
+            width: 500,
+            height: 352,
+            background: {
+              color: 'red',
+            },
+          },
+        },
+      },
+    };
+
+    const configLarge = {
       [Widget.Table]: {
         Container: {
           normal: {
@@ -125,10 +152,28 @@ export default class ModalDemo extends React.Component<any, any> {
     };
     return (
       <div style={{ padding: '20px' }}>
+        <h1>表格size</h1>
+        <div style={{ display: 'flex' }}>
+          <div style={{ flex: '1' }}>
+            <h3>size=small</h3>
+            <Theme config={configSmall}>
+              <Table useFixedHeader columns={columns} data={data} size={'small'} />
+            </Theme>
+          </div>
+          <div style={{ flex: '1' }}>
+            <h3>size=default</h3>
+            <Theme config={configDefault}>
+              <Table useFixedHeader columns={columns} data={data} />
+            </Theme>
+          </div>
+          <div style={{ flex: '1' }}>
+            <h3>size=large</h3>
+            <Theme config={configLarge}>
+              <Table useFixedHeader columns={columns} data={data} size={'large'} />
+            </Theme>
+          </div>
+        </div>
         <h1>边框表格</h1>
-        <Theme config={config1}>
-          <Table useFixedHeader columns={columns} data={data} size={'small'} />
-        </Theme>
         <Theme config={config}>
           <Table useFixedHeader columns={columns} data={data} />
         </Theme>

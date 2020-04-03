@@ -14,7 +14,6 @@ export type TableProps = {
   getPartOfThemeConfig: Function,
   selectOptions?: Object,
   expandIconColumnIndex?: number,
-  tableLineHeight?: number,
 };
 export type TableState = {
   headChecked: boolean,
