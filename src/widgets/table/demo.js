@@ -48,6 +48,8 @@ const data = [
   { name: 'Lise', age: 33, address: 'some where', key: '6' },
   { name: 'Lise', age: 33, address: 'some where', key: '7' },
   { name: 'asdasda', age: 33, address: 'some where', key: '8' },
+  { name: 'asdasda', age: 33, address: 'some where', key: '9' },
+  { name: 'asdasda', age: 33, address: 'some where', key: '10' },
 ];
 
 const Data = [
@@ -108,9 +110,25 @@ export default class ModalDemo extends React.Component<any, any> {
         },
       },
     };
+    const config1 = {
+      [Widget.Table]: {
+        Container: {
+          normal: {
+            width: 500,
+            height: 440,
+            background: {
+              color: 'red',
+            },
+          },
+        },
+      },
+    };
     return (
       <div style={{ padding: '20px' }}>
         <h1>边框表格</h1>
+        <Theme config={config1}>
+          <Table useFixedHeader columns={columns} data={data} size={'small'} />
+        </Theme>
         <Theme config={config}>
           <Table useFixedHeader columns={columns} data={data} />
         </Theme>
