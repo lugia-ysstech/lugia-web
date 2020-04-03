@@ -220,8 +220,8 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     max: Infinity,
     min: -Infinity,
     viewClass: Widget.NumberInput,
-    validateStatus: 'success',
-    validateType: 'inner',
+    validateStatus: 'default',
+    validateType: 'top',
     size: 'default',
     precision: 0,
     step: 1,
@@ -408,8 +408,15 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
 
   render() {
     const { value } = this.state;
-    const { theme: inputThemeProps } = this.props.getPartOfThemeHocProps('Input');
-    const containerThemeProps = this.props.getPartOfThemeProps('Container');
+
+    const {
+      createEventChannel,
+      getPartOfThemeHocProps,
+      getPartOfThemeProps,
+      validateType,
+    } = this.props;
+    const { theme: inputThemeProps } = getPartOfThemeHocProps('Input');
+    const containerThemeProps = getPartOfThemeProps('Container');
     const theInputTheme = deepMerge(
       {
         [Widget.Input]: {
@@ -430,9 +437,9 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
       inputThemeProps,
       containerThemeProps
     );
-    const { createEventChannel } = this.props;
 
     const arrowContainerChannel = createEventChannel(['hover']);
+    const theValidateType = validateType === 'inner' ? 'top' : validateType;
     return (
       <Input
         lugiaConsumers={arrowContainerChannel.consumer}
@@ -443,6 +450,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
         suffix={this.getStepArrowIconContainer(arrowContainerChannel)}
         onBlur={this.onBlur}
         onChange={this.handleChange}
+        validateType={theValidateType}
       />
     );
   }
