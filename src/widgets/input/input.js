@@ -44,10 +44,19 @@ const CommonInputStyle = CSSComponent({
   tag: 'input',
   className: 'InnerInput',
   normal: {
-    selectNames: [['fontSize'], ['font'], ['color'], ['cursor'], ['padding'], ['opacity']],
+    selectNames: [
+      ['fontSize'],
+      ['font'],
+      ['color'],
+      ['cursor'],
+      ['padding'],
+      ['opacity'],
+      ['borderRadius'],
+    ],
     defaultTheme: {
       cursor: 'text',
       fontSize: 12,
+      borderRadius: getBorderRadius(borderRadius),
     },
     getCSS(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
