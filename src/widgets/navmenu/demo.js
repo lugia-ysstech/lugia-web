@@ -104,14 +104,181 @@ const newData = [
   },
 ];
 
+const hoverTabsData = [
+  {
+    value: 'Dashboard',
+    text: 'Dashboard',
+    icon: 'lugia-icon-financial_monitoring',
+    children: [
+      {
+        value: '/analyse',
+        text: '分析页',
+        children: [{ value: '/analyse/test', text: '二级菜单' }],
+      },
+    ],
+  },
+  {
+    value: '表单页',
+    text: '表单页',
+    icon: 'lugia-icon-financial_editor',
+    children: [
+      {
+        value: '/basic-form',
+        text: '基础表单',
+      },
+      {
+        value: '/step-form',
+        text: '分步表单',
+      },
+      {
+        value: '/advanced-form',
+        text: '高级表单',
+      },
+    ],
+  },
+  {
+    value: '列表页',
+    text: '列表页',
+    icon: 'lugia-icon-financial_table',
+    children: [
+      {
+        value: '/table-list',
+        text: '查询表格',
+      },
+
+      {
+        value: '/card-list',
+        text: '卡片列表',
+      },
+    ],
+  },
+  {
+    value: '详情页',
+    text: '详情页',
+    icon: 'lugia-icon-financial_questionnaire',
+    children: [
+      {
+        value: '/basic-detail',
+        text: '基础详情页',
+      },
+      {
+        value: '/advanced-detail',
+        text: '高级详情页',
+      },
+    ],
+  },
+];
+
+const menuTheme = {
+  [Widget.NavMenu]: {
+    Menu: {
+      Container: {
+        normal: {
+          width: 300,
+          height: 400,
+          background: {
+            color: '#DB7093',
+          },
+        },
+      },
+
+      MenuItem: {
+        MenuItemWrap: {
+          normal: {
+            color: '#fff',
+            background: {
+              image: 'linear-gradient(to right, #8B1A1A, #BCD2EE)',
+            },
+          },
+          hover: {
+            background: {
+              color: '#CD2626',
+            },
+          },
+        },
+
+        SelectedMenuItemWrap: {
+          normal: {
+            background: {
+              color: '#B22222',
+            },
+          },
+          hover: {
+            background: {
+              color: '#B22222',
+            },
+          },
+        },
+
+        PrefixIcon: {
+          normal: {
+            color: '#0000CD',
+            margin: {
+              right: 5,
+            },
+            font: {
+              size: 16,
+            },
+          },
+          hover: {
+            color: '#87CEFF',
+            font: {
+              size: 20,
+            },
+          },
+        },
+
+        SuffixIcon: {
+          normal: {
+            color: '#0000CD',
+            margin: {
+              left: 5,
+            },
+            font: {
+              size: 18,
+            },
+          },
+          hover: {
+            color: '#87CEFF',
+            font: {
+              size: 20,
+            },
+          },
+        },
+
+        SwitchIcon: {
+          normal: {
+            color: '#ffffff',
+          },
+        },
+      },
+
+      SubMenu: {
+        Container: {
+          normal: {
+            background: {
+              color: '#778899',
+            },
+          },
+        },
+
+        MenuItem: {
+          MenuItemWrap: {
+            normal: {
+              background: {
+                color: '#9AC0CD',
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+};
+
 const tabsTheme = {
   [Widget.NavMenu]: {
     Tabs: {
-      TitleContainer: {
-        normal: {
-          background: '#000033',
-        },
-      },
       TabHeader: {
         SelectTabPan: {
           normal: {
@@ -141,6 +308,44 @@ const tabsTheme = {
   },
 };
 
+const tabsHoverTheme = {
+  [Widget.NavMenu]: {
+    Menu: {
+      MenuItem: {
+        MenuItemWrap: {
+          normal: {
+            background: {
+              color: '#000033',
+            },
+          },
+          hover: {
+            background: {
+              color: '#000033',
+            },
+          },
+        },
+      },
+
+      SubMenu: {
+        MenuItem: {
+          MenuItemWrap: {
+            normal: {
+              background: {
+                color: '#000033',
+              },
+            },
+            hover: {
+              background: {
+                color: '#000033',
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+};
+
 export default class LimitDemo extends React.Component<Object, Object> {
   all: boolean;
 
@@ -155,115 +360,23 @@ export default class LimitDemo extends React.Component<Object, Object> {
   };
 
   render() {
-    const menuTheme = {
-      [Widget.NavMenu]: {
-        Menu: {
-          Container: {
-            normal: {
-              width: 300,
-              height: 400,
-              background: {
-                color: '#DB7093',
-              },
-            },
-          },
-
-          MenuItem: {
-            MenuItemWrap: {
-              normal: {
-                color: '#fff',
-                background: {
-                  image: 'linear-gradient(to right, #8B1A1A, #BCD2EE)',
-                },
-              },
-              hover: {
-                background: {
-                  color: '#CD2626',
-                },
-              },
-            },
-
-            SelectedMenuItemWrap: {
-              normal: {
-                background: {
-                  color: '#B22222',
-                },
-              },
-              hover: {
-                background: {
-                  color: '#B22222',
-                },
-              },
-            },
-
-            PrefixIcon: {
-              normal: {
-                color: '#0000CD',
-                margin: {
-                  right: 5,
-                },
-                font: {
-                  size: 16,
-                },
-              },
-              hover: {
-                color: '#87CEFF',
-                font: {
-                  size: 20,
-                },
-              },
-            },
-
-            SuffixIcon: {
-              normal: {
-                color: '#0000CD',
-                margin: {
-                  left: 5,
-                },
-                font: {
-                  size: 18,
-                },
-              },
-              hover: {
-                color: '#87CEFF',
-                font: {
-                  size: 20,
-                },
-              },
-            },
-
-            SwitchIcon: {
-              normal: {
-                color: '#ffffff',
-              },
-            },
-          },
-
-          SubMenu: {
-            Container: {
-              normal: {
-                background: {
-                  color: '#778899',
-                },
-              },
-            },
-
-            MenuItem: {
-              MenuItemWrap: {
-                normal: {
-                  background: {
-                    color: '#9AC0CD',
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    };
     return (
       <div>
         <H2>水平导航菜单</H2>
+
+        <HoriBox>
+          <H3>action='hover'的导航菜单</H3>
+          <Navmenu
+            theme={tabsHoverTheme}
+            data={hoverTabsData}
+            pathSeparator={'@'}
+            themeStyle={'dark'}
+            activityValue={this.state.activityValue}
+            mode={'horizontal'}
+            action={'hover'}
+            onChange={this.tabsOnChange}
+          />
+        </HoriBox>
 
         <HoriBox>
           <H3>light主题</H3>
