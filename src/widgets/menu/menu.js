@@ -290,7 +290,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
             icons={icons}
             marginBottom={marginBottom}
             renderSuffixItems={renderSuffixItems}
-            hoverState={expandedPathValues.indexOf(value) !== -1}
+            hoverState={expandedPathValues.indexOf(key) !== -1}
           />
         );
         return wrapItem ? wrapItem(result, { key, value }) : result;
