@@ -17,9 +17,14 @@ import type { TableProps, TableState } from '../css/table';
 import { css } from 'styled-components';
 
 const sizePadding = {
-  default: 16,
-  small: 10,
-  large: 20,
+  default: 8,
+  small: 4,
+  large: 16,
+};
+const sizeHeight = {
+  default: 32,
+  small: 24,
+  large: 40,
 };
 
 const TableWrap = CSSComponent({
@@ -40,7 +45,7 @@ const TableWrap = CSSComponent({
       return css`
         .rc-table th,
         .rc-table td {
-          padding: ${padding}px 8px;
+          padding: 0 ${padding}px;
         }
 
         ${color ? bgColor : ''}
@@ -145,10 +150,11 @@ export default ThemeProvider(
     }
 
     getTableBodyHeight = (themeHeight: number) => {
-      const { showHeader = true, tableLineHeight = 40 } = this.props;
+      const { showHeader = true, size = 'default' } = this.props;
       if (!themeHeight) {
         return {};
       }
+      const tableLineHeight = sizeHeight[size];
       const height = parseInt(themeHeight);
       return {
         y: showHeader ? height - tableLineHeight : height,
