@@ -56,9 +56,10 @@ export default ThemeProvider(
     disabledSelectedRecords: Object[];
     validKeys: any[];
     disabledSelectedKeys: any[];
+    tableWrap: Object;
     constructor(props) {
       super();
-      const { data = [], selectOptions: { selectRowKeys = [] } = {} } = props;
+      const { data = [], selectOptions: { selectRowKeys = [] } = {}, scroll = {} } = props;
 
       const dataLength = data.length;
       const selectRowKeyLength = selectRowKeys.length;
@@ -66,7 +67,20 @@ export default ThemeProvider(
         headChecked: dataLength === selectRowKeyLength && dataLength > 0,
         headIndeterminate: !!selectRowKeyLength,
         selectRowKeys: selectRowKeys || [],
+        scroll,
       };
+      this.tableWrap = React.createRef();
+    }
+    componentDidMount() {
+      const { getPartOfThemeConfig } = this.props;
+      const containerTheme = getPartOfThemeConfig('Container') || {};
+      const { normal: { height: themeHeight } = {} } = containerTheme;
+      const tableWarp = this.tableWrap.querySelector('.rc-table');
+      if (tableWarp && themeHeight < tableWarp.offsetHeight - 5) {
+        this.setState({ scroll: this.getTableBodyHeight(themeHeight) });
+      } else {
+        this.setState({ scroll: {} });
+      }
     }
 
     static getDerivedStateFromProps(props) {
@@ -131,7 +145,7 @@ export default ThemeProvider(
     }
 
     getTableBodyHeight = (themeHeight: number) => {
-      const { showHeader = true, tableLineHeight = 52 } = this.props;
+      const { showHeader = true, tableLineHeight = 40 } = this.props;
       if (!themeHeight) {
         return {};
       }
@@ -170,21 +184,22 @@ export default ThemeProvider(
         data,
         showHeader = true,
         tableStyle = 'bordered',
-        getPartOfThemeConfig,
         getPartOfThemeProps,
         selectOptions = {},
-        scroll = {},
         size = 'default',
       } = this.props;
+
       this.selectedRecords = [];
       this.validKeys = [];
       this.disabledSelectedKeys = [];
       this.validRecords = [];
       this.disabledSelectedRecords = [];
-      const { headChecked, headIndeterminate, selectRowKeys: stateSelectRowKeys } = this.state;
-      const containerTheme = getPartOfThemeConfig('Container') || {};
-      const { normal: normalTheme = {} } = containerTheme;
-      const themeHeight = normalTheme.height;
+      const {
+        headChecked,
+        headIndeterminate,
+        selectRowKeys: stateSelectRowKeys,
+        scroll = {},
+      } = this.state;
       const containerPartOfThemeProps = getPartOfThemeProps('Container', {
         props: { size },
       });
@@ -193,6 +208,9 @@ export default ThemeProvider(
           <TableWrap
             themeProps={containerPartOfThemeProps}
             className={this.getClass(tableStyle, size)}
+            ref={el => {
+              this.tableWrap = el;
+            }}
           >
             <RcTable
               {...this.props}
@@ -266,10 +284,11 @@ export default ThemeProvider(
         const { expandIconColumnIndex: propsIndex } = this.props;
         expandIconColumnIndex = Number(propsIndex);
       }
-      const scrollObj = this.getTableBodyHeight(themeHeight);
-      const theScroll = { ...scroll, ...scrollObj };
       return (
         <TableWrap
+          ref={el => {
+            this.tableWrap = el;
+          }}
           themeProps={containerPartOfThemeProps}
           className={this.getClass(tableStyle, size)}
         >
@@ -279,7 +298,7 @@ export default ThemeProvider(
             data={data}
             showHeader={showHeader}
             expandIconColumnIndex={expandIconColumnIndex}
-            scroll={{ ...theScroll }}
+            scroll={scroll}
           />
         </TableWrap>
       );
