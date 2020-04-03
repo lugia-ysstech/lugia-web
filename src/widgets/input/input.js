@@ -50,8 +50,8 @@ const CommonInputStyle = CSSComponent({
       ['color'],
       ['cursor'],
       ['padding'],
-      ['opacity'],
       ['borderRadius'],
+      ['background'],
     ],
     defaultTheme: {
       cursor: 'text',
@@ -101,15 +101,16 @@ const CommonInputStyle = CSSComponent({
     },
   },
   hover: {
-    selectNames: [['cursor'], ['opacity']],
+    selectNames: [['fontSize'], ['font'], ['color'], ['cursor'], ['background']],
   },
   active: {
-    selectNames: [['cursor']],
+    selectNames: [['fontSize'], ['font'], ['color'], ['cursor'], ['background']],
   },
   disabled: {
-    selectNames: [['fontSize'], ['font'], ['color'], ['cursor'], ['padding'], ['opacity']],
+    selectNames: [['fontSize'], ['font'], ['color'], ['cursor'], ['opacity'], ['background']],
     defaultTheme: {
       cursor: 'not-allowed',
+      background: { color: disableColor },
     },
   },
   css: css`
@@ -348,7 +349,7 @@ class TextBox extends Component<InputProps, InputState> {
     autoFocus: false,
     viewClass: Widget.Input,
     validateStatus: 'default',
-    validateType: 'inner',
+    validateType: 'top',
     size: 'default',
     help: DefaultHelp,
     defaultValue: '',
@@ -370,7 +371,7 @@ class TextBox extends Component<InputProps, InputState> {
   }
 
   static getDerivedStateFromProps(nextProps: Object, preState: Object) {
-    let { value, defaultValue } = nextProps;
+    let { value, defaultValue, validateStatus } = nextProps;
     const hasValueInprops = 'value' in nextProps;
     value = fixControlledValue(value);
 
@@ -408,12 +409,12 @@ class TextBox extends Component<InputProps, InputState> {
       onChange && onChange(param);
     }
   }
-
   onFocus = (event: UIEvent) => {
     const { onFocus, validateStatus, validateType, disabled, readOnly } = this.props;
     if (disabled || readOnly) {
       return;
     }
+    this.setState({ isToolTipVisible: true });
     if (checkValidateResultFromStatusAndType(validateStatus, 'error', validateType, 'inner')) {
       this.setState({ value: this.actualValue });
     }
@@ -422,12 +423,15 @@ class TextBox extends Component<InputProps, InputState> {
 
   onBlur = (event: UIEvent) => {
     const { onBlur, help, validateStatus, validateType, disabled } = this.props;
+
     if (disabled) {
       return;
     }
+    this.setState({ isToolTipVisible: false });
     if (checkValidateResultFromStatusAndType(validateStatus, 'error', validateType, 'inner')) {
+      const { value } = this.state;
+      this.actualValue = value;
       this.setState({ value: help });
-      this.actualValue = help;
     }
     onBlur && onBlur(event);
   };
@@ -447,11 +451,7 @@ class TextBox extends Component<InputProps, InputState> {
   };
 
   getInputContainer(fetcher: Function) {
-    const { size } = this.props;
-    const theThemeProps = this.props.getPartOfThemeProps('Container', {
-      props: { size },
-    });
-    return <InputContainer themeProps={theThemeProps}>{fetcher()}</InputContainer>;
+    return <InputContainer themeProps={this.getFinalThemeProps()}>{fetcher()}</InputContainer>;
   }
 
   getInputInner = () => {
@@ -500,8 +500,8 @@ class TextBox extends Component<InputProps, InputState> {
         ),
       },
     };
+    const { isToolTipVisible } = this.state;
     if (validateType === 'top') {
-      const visible = isValidateError(validateStatus);
       return (
         <ToolTip
           propsConfig={{ validateType, validateStatus, prefix, size }}
@@ -511,7 +511,7 @@ class TextBox extends Component<InputProps, InputState> {
           action={'focus'}
           popArrowType={'round'}
           placement={'topLeft'}
-          visible={visible}
+          visible={isValidateError(validateStatus) && isToolTipVisible}
         >
           {result}
         </ToolTip>
@@ -634,42 +634,11 @@ class TextBox extends Component<InputProps, InputState> {
       autoFocus,
       type,
       disabled,
-      isShowClearButton,
-      getPartOfThemeProps,
       _maxLength,
     } = props;
     if (formatter && parser) {
       value = formatter(value);
     }
-
-    const {
-      themeConfig: { normal: { color = lightGreyColor, font = {}, fontSize } = {} },
-    } = this.props.getPartOfThemeProps('Placeholder');
-
-    const validateErrorInputThemeProps = getPartOfThemeProps('ValidateErrorInput');
-
-    const theValidateThemeProps = isValidateError(validateStatus)
-      ? validateErrorInputThemeProps
-      : {};
-
-    const theThemeProps = deepMerge(
-      this.props.getPartOfThemeProps('Input', {
-        props: {
-          validateType,
-          validateStatus,
-          prefix,
-          suffix,
-          placeHolderColor: color,
-          placeHolderFontSize: fontSize,
-          isShowClearButton,
-          placeHolderFont: font,
-        },
-      }),
-      theValidateThemeProps,
-      this.props.getPartOfThemeProps('Container', {
-        props: { size },
-      })
-    );
     const theType = type === 'password' ? 'password' : 'text';
 
     const mouseConfig = {
@@ -681,7 +650,7 @@ class TextBox extends Component<InputProps, InputState> {
       <CommonInputStyle
         {...addMouseEvent(this, mouseConfig)}
         maxLength={_maxLength}
-        themeProps={theThemeProps}
+        themeProps={this.getFinalThemeProps()}
         autoFocus={autoFocus}
         ref={this.input}
         validateStatus={validateStatus}
@@ -705,6 +674,48 @@ class TextBox extends Component<InputProps, InputState> {
         disabled={disabled}
       />
     );
+  }
+
+  getFinalThemeProps() {
+    const {
+      getPartOfThemeProps,
+      validateStatus,
+      validateType,
+      prefix,
+      suffix,
+      isShowClearButton,
+      size,
+    } = this.props;
+
+    const {
+      themeConfig: { normal: { color = lightGreyColor, font = {}, fontSize } = {} },
+    } = getPartOfThemeProps('Placeholder');
+
+    const validateErrorInputThemeProps = getPartOfThemeProps('ValidateErrorInput');
+
+    const theValidateThemeProps = isValidateError(validateStatus)
+      ? validateErrorInputThemeProps
+      : {};
+
+    const theThemeProps = deepMerge(
+      getPartOfThemeProps('Input', {
+        props: {
+          validateType,
+          validateStatus,
+          prefix,
+          suffix,
+          placeHolderColor: color,
+          placeHolderFontSize: fontSize,
+          isShowClearButton,
+          placeHolderFont: font,
+        },
+      }),
+      theValidateThemeProps,
+      getPartOfThemeProps('Container', {
+        props: { size },
+      })
+    );
+    return theThemeProps;
   }
 
   onKeyDown = (event: KeyboardEvent) => {
