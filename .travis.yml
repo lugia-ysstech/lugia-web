@@ -19,7 +19,7 @@ script:
    # 执行测试的命令
   - yarn run dist
   - yarn run cover
-  
+  - codecov
 after_success:
   - CODECOV_TOKEN=$CODECOV_TOKEN
   - bash <(curl -s https://codecov.io/bash)
