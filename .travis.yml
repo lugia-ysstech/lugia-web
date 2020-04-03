@@ -17,4 +17,5 @@ install:
 #项目执行命令  
 script:
    # 执行测试的命令
+  - yarn run dist
   - yarn run cover
