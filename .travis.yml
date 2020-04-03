@@ -12,9 +12,9 @@ cache:
     - node_modules
 
 install:
-  - yarn install
+  - yarn
 
 #项目执行命令  
 script:
    # 执行测试的命令
-  - yarn cover
+  - yarn run cover
