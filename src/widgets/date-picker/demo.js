@@ -681,9 +681,9 @@ export default class Sl extends Component<any> {
         <div>
           <h2>weeks-normal-valid</h2>
           <DatePicker validateStatus={'error'} validateType={'top'} help={'格式有误'} />
-          <YearPicker validateStatus={'error'} validateType={'bottom'} help={'格式有误'} />
+          <YearPicker validateStatus={'error'} validateType={'top'} help={'格式有误'} />
           <MonthPicker validateStatus={'error'} validateType={'bottom'} help={'格式有误'} />
-          <rangePicker validateStatus={'error'} validateType={'bottom'} help={'格式有误'} />
+          <RangePicker validateStatus={'error'} validateType={'top'} help={'格式有误'} />
           <TimePicker validateStatus={'error'} validateType={'bottom'} help={'格式有误'} />
         </div>
       </div>
