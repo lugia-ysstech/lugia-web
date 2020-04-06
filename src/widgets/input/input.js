@@ -301,6 +301,7 @@ const Clear = 'lugia-icon-reminder_close';
 
 type InputState = {
   value: string,
+  _isToolTipVisible: boolean,
 };
 
 type InsideProps = {
@@ -414,7 +415,7 @@ class TextBox extends Component<InputProps, InputState> {
     if (disabled || readOnly) {
       return;
     }
-    this.setState({ isToolTipVisible: true });
+    this.setState({ _isToolTipVisible: true });
     if (checkValidateResultFromStatusAndType(validateStatus, 'error', validateType, 'inner')) {
       this.setState({ value: this.actualValue });
     }
@@ -427,7 +428,7 @@ class TextBox extends Component<InputProps, InputState> {
     if (disabled) {
       return;
     }
-    this.setState({ isToolTipVisible: false });
+    this.setState({ _isToolTipVisible: false });
     if (checkValidateResultFromStatusAndType(validateStatus, 'error', validateType, 'inner')) {
       const { value } = this.state;
       this.actualValue = value;
@@ -498,9 +499,16 @@ class TextBox extends Component<InputProps, InputState> {
           { normal: { color: get('defaultColor') } },
           validateTopTipThemeProps[viewClass]
         ),
+        ChildrenContainer: {
+          normal: {
+            getCSS() {
+              return 'display: block;';
+            },
+          },
+        },
       },
     };
-    const { isToolTipVisible } = this.state;
+    const { _isToolTipVisible } = this.state;
     if (validateType === 'top') {
       return (
         <ToolTip
@@ -511,7 +519,7 @@ class TextBox extends Component<InputProps, InputState> {
           action={'focus'}
           popArrowType={'round'}
           placement={'topLeft'}
-          visible={isValidateError(validateStatus) && isToolTipVisible}
+          visible={isValidateError(validateStatus) && _isToolTipVisible}
         >
           {result}
         </ToolTip>
