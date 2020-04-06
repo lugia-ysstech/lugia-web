@@ -11,8 +11,11 @@ import SwitchPanelMode from '../mode';
 import { differMonthAndYear, getIndexInRange, getCurrentPageDates } from '../utils/differUtils';
 import { formatValueIsValid, getIsSame } from '../utils/booleanUtils';
 import { getformatSymbol } from '../utils/utils';
-import { getFacePanelContain } from '../themeConfig/themeConfig';
+import { getErrorTipTheme, getFacePanelContain } from '../themeConfig/themeConfig';
 import { addMouseEvent } from '@lugia/theme-hoc';
+import ToolTip from '../../tooltip';
+import Theme from '../../theme';
+import Widget from '../../consts';
 type TypeProps = {
   defaultValue?: Array<string>,
   value?: Array<string>,
@@ -27,6 +30,10 @@ type TypeProps = {
   onOk?: any,
   theme: Object,
   mode: string,
+  getPartOfThemeProps: Function,
+  validateType?: string,
+  validateStatus?: string,
+  help?: string,
 };
 type TypeState = {
   value: Array<string>,
@@ -37,11 +44,32 @@ type TypeState = {
   status: string,
   isScroll: boolean,
   panelValue: Array<string>,
+  rangeValue: Array<string>,
   valueIsValid: boolean,
+  isHover: boolean,
+  isClear: boolean,
+  visible: boolean,
+  hasNormalvalue: boolean,
+  rangeIndex: Array<number>,
+  choseDayIndex: Array<number>,
 };
-class Range extends Component {
+class Range extends Component<TypeProps, TypeState> {
   static displayName = 'Range';
-  constructor(props) {
+  trigger: Object;
+  monthAndYear: Array<string>;
+  oldValue: Array<string>;
+  changeOldValue: Array<string>;
+  oldMonthandYear: Array<string>;
+  panelDatesArray: Array<string>;
+  isClear: boolean;
+  targetModeFirst: Object;
+  targetModeSecond: Object;
+  pageFooterChange: Object;
+  normalStyleValueObj: Object;
+  choseDate: string;
+  validValue: string;
+  times: Array<number>;
+  constructor(props: TypeProps) {
     super(props);
     this.trigger = React.createRef();
     this.monthAndYear = [];
@@ -70,7 +98,7 @@ class Range extends Component {
       isHover,
     };
   }
-  getDatePanelValue = (value: []) => {
+  getDatePanelValue = (value: Array<string>) => {
     const { format } = this.state;
     const { monthAndYear } = this;
     const currentValue = [];
@@ -94,7 +122,7 @@ class Range extends Component {
       isValid,
     };
   };
-  onClickTrigger = (e, visible: boolean, number) => {
+  onClickTrigger = (e: any, visible: boolean) => {
     const { isClear } = this;
     if (isClear && visible) {
       return;
@@ -118,7 +146,7 @@ class Range extends Component {
     }
     const { newValue, oldValue, number, event } = parmas;
     const { formatIsValids, isValid } = this.getIsValid(newValue);
-    let visible = true;
+    let visible = isValid ? true : false;
     if (isValid) {
       this.oldValue = [...newValue];
       this.oldMonthandYear = [...this.monthAndYear];
@@ -161,7 +189,7 @@ class Range extends Component {
       this.drawPageAgain(['', ''], this.state.format);
     }
   };
-  getIsValid = (newValue: Array = []) => {
+  getIsValid = (newValue: Array<string> = []) => {
     const { normalStyleValueObj } = this;
     const { format } = this.state;
     const formatIsValids = [];
@@ -269,14 +297,15 @@ class Range extends Component {
   setTriggerVisible = (open: boolean) => {
     this.setPopupVisible(open);
   };
-  onFocus = () => {
+  onFocus = (e: any) => {
     const { value, panelValue, status } = this.state;
     const { isValid } = this.getIsValid(value);
     this.isClear = false;
-    this.changeOldValue = [...value];
+
     const { format } = this.state;
     if (isValid) {
       this.oldValue = [...value];
+      this.changeOldValue = [...value];
       this.oldMonthandYear = [...this.monthAndYear];
       this.monthAndYear = [...panelValue];
       this.panelDatesArray = getCurrentPageDates(panelValue, format);
@@ -291,19 +320,20 @@ class Range extends Component {
       this.pageFooterChange.onFocus({ status: 'showTime' });
       this.setState({ status: 'showDate' });
     }
-    this.onClickTrigger(true);
+    this.onClickTrigger(e, true);
     const { onFocus } = this.props;
     onFocus && onFocus();
   };
-  onBlur = (index: number) => {
+  onBlur = () => {
     const { value } = this.state;
-    const { isValid, formatIsValids } = this.getIsValid(value);
-    const hasValue = value[0] !== '' && value[1] !== '';
+    const { isValid } = this.getIsValid(value);
+    const hasValue = value[0] !== '' || value[1] !== '';
     const noValue = value[0] === '' && value[1] === '';
     if (noValue) {
       this.oldValue = ['', ''];
     }
     if (hasValue && !isValid) {
+      console.log('onChangeRange-blur', this.oldValue);
       const newValue =
         this.oldValue[0] && this.oldValue[1]
           ? this.oldValue
@@ -311,12 +341,6 @@ class Range extends Component {
           ? this.changeOldValue
           : ['', ''];
       this.setState({ value: newValue });
-    }
-    if ((value[0] || value[1]) && !(value[0] !== '' && value[1] !== '')) {
-      if (!formatIsValids[index]) {
-        value[index] = '';
-        this.setState({ value });
-      }
     }
     const { onBlur } = this.props;
     onBlur && onBlur();
@@ -377,6 +401,28 @@ class Range extends Component {
     );
     this.setState({ rangeIndex, choseDayIndex });
   };
+  getInput = (errorTipTheme: Object) => {
+    const { value, visible, isClear, placeholder, valueIsValid } = this.state;
+    const { theme, disabled, readOnly } = this.props;
+    return (
+      <RangeInput
+        {...this.props}
+        placeholder={placeholder}
+        value={value}
+        onClick={this.onClickTrigger}
+        onChange={this.onChange}
+        onBlur={this.onBlur}
+        onFocus={this.onFocus}
+        onClear={this.onClear}
+        disabled={disabled}
+        readOnly={readOnly}
+        theme={theme}
+        visible={visible}
+        isClear={isClear}
+        errorTipTheme={errorTipTheme}
+      />
+    );
+  };
   componentDidMount() {
     const { format, panelValue } = this.state;
     const value = moment().format(format);
@@ -391,14 +437,21 @@ class Range extends Component {
       format,
       status,
       timeValue,
-      visible,
-      isClear,
       rangeIndex,
       choseDayIndex,
       rangeValue,
       valueIsValid,
     } = this.state;
-    const { disabled, readOnly, theme, mode, getPartOfThemeProps } = this.props;
+    const {
+      disabled,
+      readOnly,
+      theme,
+      mode,
+      getPartOfThemeProps,
+      validateType,
+      validateStatus,
+      help,
+    } = this.props;
     const { monthAndYear } = this;
     const showTimeBtnIsDisabled = valueIsValid ? true : false;
     const { differAmonth, differAyear } = differMonthAndYear(monthAndYear);
@@ -415,6 +468,7 @@ class Range extends Component {
       format,
     };
     const { themeProps } = getFacePanelContain({ mode, getPartOfThemeProps });
+    const { errorTheme, rangeToolTipTheme } = getErrorTipTheme(this.props);
     return (
       <Trigger
         themePass
@@ -470,21 +524,19 @@ class Range extends Component {
         action={disabled || readOnly ? [] : ['click']}
         hideAction={['click']}
       >
-        <RangeInput
-          {...this.props}
-          placeholder={this.state.placeholder}
-          value={value}
-          onClick={this.onClickTrigger}
-          onChange={this.onChange}
-          onBlur={this.onBlur}
-          onFocus={this.onFocus}
-          onClear={this.onClear}
-          disabled={disabled}
-          readOnly={readOnly}
-          theme={theme}
-          visible={visible}
-          isClear={isClear}
-        />
+        {validateType === 'top' && validateStatus === 'error' ? (
+          <Theme
+            config={{
+              [Widget.Tooltip]: rangeToolTipTheme,
+            }}
+          >
+            <ToolTip visible={true} placement="topLeft" title={help}>
+              {this.getInput(errorTheme)}
+            </ToolTip>
+          </Theme>
+        ) : (
+          this.getInput(errorTheme)
+        )}
       </Trigger>
     );
   }
