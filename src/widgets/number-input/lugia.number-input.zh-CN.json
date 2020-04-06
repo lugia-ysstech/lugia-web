@@ -172,7 +172,7 @@
       ]
     },
     "onMouseLeave": {
-      "desc": "当鼠标移入输入框内触发",
+      "desc": "当鼠标移出输入框内触发",
       "args": [
         {
           "name": "event",
@@ -201,7 +201,6 @@
         ["width"],
         ["height"],
         ["margin"],
-        ["margin"],
         ["padding"],
         ["border"],
         ["borderRadius"],
@@ -222,8 +221,7 @@
         ["cursor"],
         ["fontSize"],
         ["font"],
-        ["color"],
-        ["opacity"]
+        ["color"]
       ],
       "active": [
         ["border"],
@@ -234,8 +232,7 @@
         ["cursor"],
         ["fontSize"],
         ["font"],
-        ["color"],
-        ["opacity"]
+        ["color"]
       ],
       "disabled": [
         ["border"],
@@ -246,8 +243,7 @@
         ["cursor"],
         ["fontSize"],
         ["font"],
-        ["color"],
-        ["opacity"]
+        ["color"]
       ]
     },
     "ArrowIconContainer": {
@@ -264,9 +260,9 @@
         ["padding"],
         ["opacity"]
       ],
-      "hover": [["font"], ["color"], ["background"], ["cursor"], ["opacity"]],
-      "active": [["font"], ["color"], ["background"], ["cursor"], ["opacity"]],
-      "disabled": [["font"], ["color"], ["background"], ["cursor"], ["opacity"]]
+      "hover": [["font"], ["fontSize"], ["color"], ["background"], ["cursor"], ["opacity"]],
+      "active": [["font"], ["fontSize"], ["color"], ["background"], ["cursor"], ["opacity"]],
+      "disabled": [["font"], ["fontSize"], ["color"], ["background"], ["cursor"], ["opacity"]]
     },
     "InputArrowIcon": {
       "name": "数字输入框步长图标",

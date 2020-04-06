@@ -156,17 +156,7 @@ const PlusButton = CSSComponent({
 
 PlusButton.displayName = 'Plus';
 MinusButton.displayName = 'Minus';
-const InputContainer = CSSComponent({
-  tag: 'div',
-  className: 'NumberInputContainer',
-  normal: {
-    selectNames: [['width']],
-  },
-  css: css`
-    position: relative;
-    display: inline-block;
-  `,
-});
+
 type NumberInputState = {|
   value: number,
   disabled: boolean,
@@ -208,6 +198,7 @@ export type NumberInputProps = {
   createEventChannel: Function,
   addIcon?: string,
   subtractIcon?: string,
+  dispatchEvent: Function,
 };
 
 function hasValueProps(props: Object) {
@@ -286,7 +277,9 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     const overMax = Number(value) >= max;
     const belowMin = Number(value) <= min;
 
-    const { theme: IconThemeProps, viewClass: IconViewClass } = getPartOfThemeHocProps('ArrowIcon');
+    const { theme: IconThemeProps, viewClass: IconViewClass } = getPartOfThemeHocProps(
+      'InputArrowIcon'
+    );
 
     const iconTheme = deepMerge(
       {
