@@ -34,6 +34,7 @@ type TypeProps = {
   timeIndex?: number,
   valueIsValid?: boolean,
   hasOldValue?: boolean,
+  themeProps?: Object,
 };
 type TypeState = {
   value: string,

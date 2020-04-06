@@ -75,6 +75,7 @@ export const RangeInputInner = CSSComponent({
     }
 
     display: block;
+    position: relative;
   `,
 });
 export const RangeInputInnerInput = CSSComponent({
@@ -154,5 +155,27 @@ export const RangeMiddleSpan = CSSComponent({
     display: inline-block;
     text-align: center;
     background: transparent;
+  `,
+});
+export const ErrorTip = CSSComponent({
+  tag: 'span',
+  className: '"ValidateErrorText"',
+  normal: { selectNames: [['color'], ['fontSize']] },
+  hover: {
+    selectNames: [],
+  },
+  active: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
+  focus: {
+    selectNames: [],
+  },
+  css: css`
+    position: absolute;
+    left: 10px;
+    bottom: -20px;
   `,
 });
