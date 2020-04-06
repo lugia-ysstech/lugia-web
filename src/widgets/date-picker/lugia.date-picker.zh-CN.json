@@ -114,6 +114,7 @@
   },
   "type": {
     "ValidateType": ["top", "bottom"],
+    "ValidateStatus": ["default", "error"],
     "ChangeType": {
       "newValue": "string",
       "oldValue": "string",
@@ -281,6 +282,9 @@
         "color": "#333",
         "fontSize": 14
       }
+    },
+    "ValidateErrorText": {
+      "normal": {}
     }
   }
 }

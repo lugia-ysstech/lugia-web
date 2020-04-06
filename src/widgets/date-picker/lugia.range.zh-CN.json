@@ -74,6 +74,20 @@
     "prefix": {
       "type": "icon",
       "desc": "前缀图标"
+    },
+    "validateStatus": {
+      "type": "ValidateStatus",
+      "desc": "校验状态",
+      "propsDefaultValue": "default"
+    },
+    "validateType": {
+      "type": "ValidateType",
+      "desc": "校验信息显示类型",
+      "propsDefaultValue": "default"
+    },
+    "help": {
+      "type": "string",
+      "desc": "input校验提示信息"
     }
   },
   "events": {
@@ -101,6 +115,8 @@
     }
   },
   "type": {
+    "ValidateType": ["top", "bottom"],
+    "ValidateStatus": ["default", "error"],
     "ChangeType": {
       "newValue": "Array<string>",
       "oldValue": "Array<string>",
