@@ -9,6 +9,7 @@ import {
   RangeInputInner,
   RangeInputInnerInput,
   RangeMiddleSpan,
+  ErrorTip,
 } from '../styled/styledRangeInput';
 import Theme from '../../theme';
 import Widget from '../../consts/index';
@@ -32,6 +33,10 @@ type TypeProps = {
   placeholder: Array<string>,
   theme: Object,
   mode?: string,
+  errorTipTheme: Object,
+  validateStatus: string,
+  help: string,
+  validateType: string,
 };
 type TypeState = {
   value: Array<string>,
@@ -88,7 +93,15 @@ class RangeInput extends Component<TypeProps, TypeState> {
   };
   render() {
     const { value } = this.props;
-    const { disabled, readOnly, placeholder } = this.props;
+    const {
+      disabled,
+      readOnly,
+      placeholder,
+      errorTipTheme,
+      validateStatus,
+      help,
+      validateType,
+    } = this.props;
     const config = {
       onFocus: disabled || readOnly ? '' : this.onFocus,
       disabled,
@@ -111,7 +124,11 @@ class RangeInput extends Component<TypeProps, TypeState> {
         ...this.getInputStyle(state),
       };
     };
-    const inputContainProps = getWrapThemeProps({ mode, getPartOfThemeProps }, 'Container');
+    const inputContainProps = getWrapThemeProps(
+      { mode, getPartOfThemeProps, validateStatus },
+      'Container'
+    );
+
     const { inputPrefixProps, inputSuffixProps, clearButtonProps } = getIconTheme(this.props);
     const {
       themeConfig: {
@@ -223,6 +240,11 @@ class RangeInput extends Component<TypeProps, TypeState> {
                 {...this.props.dispatchEvent([['hover']], 'f2c')}
               />
             </RangeInputInnerInput>
+            {validateStatus === 'error' && validateType === 'bottom' ? (
+              <ErrorTip themeProps={errorTipTheme}>{help}</ErrorTip>
+            ) : (
+              ''
+            )}
           </RangeInputInner>
         </RangeInputWrap>
       </Theme>
