@@ -261,6 +261,13 @@ export function getErrorTipTheme(props) {
       },
     },
     TooltipTitle: { normal: { color, fontSize, ...font } },
+    ChildrenContainer: {
+      normal: {
+        getCSS() {
+          return 'display:block;';
+        },
+      },
+    },
   };
   return {
     errorTheme: deepMerge({ themeConfig: normalTheme }, themeProps),
