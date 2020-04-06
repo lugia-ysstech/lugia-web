@@ -19,22 +19,22 @@ import SwitchPanelMode from '../mode';
 import getThemeProps, { getFacePanelContain, getIconTheme } from '../themeConfig/themeConfig';
 import { addMouseEvent } from '@lugia/theme-hoc';
 import getDateIcon from '../panel/InputIcon';
+
 type TypeProps = {
-  defaultValue?: string,
-  value?: string,
-  placeholder?: string,
-  format?: string,
-  disabled?: boolean,
-  createPortal?: boolean,
-  readOnly?: boolean,
-  onChange?: Function,
-  onFocus?: Function,
-  onBlur?: Function,
   getPartOfThemeProps: Function,
-  showTime?: any,
-  onOk?: Object,
   theme: Object,
   mode: string,
+  validateType?: string,
+  validateStatus?: string,
+  help?: string,
+  disabled?: boolean,
+  readOnly?: boolean,
+  createPortal?: boolean,
+  onChange?: Function,
+  showTime?: Function,
+  onOk?: Function,
+  onFocus?: Function,
+  onBlur?: Function,
 };
 type TypeState = {
   value: string,
@@ -89,7 +89,15 @@ class DateInput extends Component<TypeProps, TypeState> {
     this.normalStyleValueObj = getformatSymbol(value);
   }
   render() {
-    const { disabled, readOnly, getPartOfThemeProps } = this.props;
+    const {
+      disabled,
+      readOnly,
+      getPartOfThemeProps,
+      validateType,
+      validateStatus,
+      help,
+      createPortal,
+    } = this.props;
     const {
       value,
       status,
@@ -118,6 +126,7 @@ class DateInput extends Component<TypeProps, TypeState> {
       onClear: this.onClear,
       clearButtonTheme: clearButtonProps,
     });
+    const errorTip = validateStatus === 'error' ? { validateType, validateStatus, help } : {};
     return (
       <Theme
         config={{
@@ -139,7 +148,7 @@ class DateInput extends Component<TypeProps, TypeState> {
       >
         <Trigger
           themePass
-          createPortal={this.props.createPortal}
+          createPortal={createPortal}
           popup={
             <React.Fragment>
               <PanelWrap themeProps={themeProps} {...addMouseEvent(this)}>
@@ -194,6 +203,7 @@ class DateInput extends Component<TypeProps, TypeState> {
             //onClear={this.onClear}
             disabled={disabled}
             readOnly={readOnly}
+            {...errorTip}
           />
         </Trigger>
       </Theme>

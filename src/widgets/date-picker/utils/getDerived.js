@@ -114,6 +114,11 @@ function getValueFromValue(nextProps: Object, preState: Object): Array<string> |
     : isRange
     ? ['', '']
     : '';
+
+  if (typeof newValue === 'string') {
+    newValue = [newValue];
+  }
+
   if (isRange && Array.isArray(newValue)) {
     const rangeValue = [...newValue];
     const { length } = rangeValue;
@@ -125,9 +130,7 @@ function getValueFromValue(nextProps: Object, preState: Object): Array<string> |
     }
     newValue = rangeValue;
   }
-  if (typeof newValue === 'string') {
-    newValue = [newValue];
-  }
+
   return newValue;
 }
 function getPlaceholder(nextProps: Object): Array<string> {

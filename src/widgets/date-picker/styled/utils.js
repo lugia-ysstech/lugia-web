@@ -24,6 +24,7 @@ const {
   circleBorderRadius,
   defaultColor,
   darkGreyColor,
+  dangerColor,
 } = colorsFunc();
 export const themeColor = {
   hoverColor,
@@ -36,6 +37,7 @@ export const themeColor = {
   circleBorderRadius,
   defaultColor,
   darkGreyColor,
+  dangerColor,
 };
 export function getThemeProperty(props: Object) {
   const { isRange, isTime } = modeStyle(props.mode);
