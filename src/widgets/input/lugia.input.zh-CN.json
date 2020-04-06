@@ -191,7 +191,7 @@
       ]
     },
     "onMouseLeave": {
-      "desc": "当鼠标移入输入框内触发",
+      "desc": "当鼠标移出输入框内触发",
       "args": [
         {
           "name": "event",
@@ -222,7 +222,6 @@
         ["width"],
         ["height"],
         ["margin"],
-        ["margin"],
         ["padding"],
         ["border"],
         ["borderRadius"],
@@ -243,8 +242,7 @@
         ["cursor"],
         ["fontSize"],
         ["font"],
-        ["color"],
-        ["opacity"]
+        ["color"]
       ],
       "active": [
         ["boxShadow"],
@@ -255,8 +253,7 @@
         ["cursor"],
         ["fontSize"],
         ["font"],
-        ["color"],
-        ["opacity"]
+        ["color"]
       ],
       "disabled": [
         ["background"],
@@ -266,8 +263,7 @@
         ["cursor"],
         ["fontSize"],
         ["font"],
-        ["color"],
-        ["opacity"]
+        ["color"]
       ]
     },
     "Placeholder": {
