@@ -214,13 +214,4 @@ export default {
   '/ValidateDemo': {
     render: async () => import('./ValidateDemo'),
   },
-  '/label': {
-    render: async () => import('./widgets/label/demo'),
-  },
-  '/pageLayout': {
-    render: async () => import('./widgets/page-layout/demo'),
-  },
-  '/popComponent': {
-    render: async () => import('./widgets/popup-components/demo'),
-  },
 };
