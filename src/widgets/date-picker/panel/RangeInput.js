@@ -153,6 +153,7 @@ class RangeInput extends Component<TypeProps, TypeState> {
       onClear: this.onClear,
       clearButtonTheme: clearButtonProps,
     });
+    const validType = validateType === 'bottom' || validateType === 'inner';
     return (
       <Theme
         config={{
@@ -240,8 +241,10 @@ class RangeInput extends Component<TypeProps, TypeState> {
                 {...this.props.dispatchEvent([['hover']], 'f2c')}
               />
             </RangeInputInnerInput>
-            {validateStatus === 'error' && validateType === 'bottom' ? (
-              <ErrorTip themeProps={errorTipTheme}>{help}</ErrorTip>
+            {validateStatus === 'error' && validType ? (
+              <ErrorTip themeProps={errorTipTheme} validType={validateType}>
+                {help}
+              </ErrorTip>
             ) : (
               ''
             )}
