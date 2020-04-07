@@ -211,4 +211,7 @@ export default {
   '/upload': {
     render: async () => import('./widgets/upload/demo'),
   },
+  '/ValidateDemo': {
+    render: async () => import('./ValidateDemo'),
+  },
 };
