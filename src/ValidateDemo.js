@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { fixControlledValue } from './widgets/utils';
-
 import Input from './widgets/input';
 import AmountInput from './widgets/amount-input';
 import NumberInput from './widgets/number-input';
@@ -40,12 +39,12 @@ export class ValidateInput extends React.Component<any, any> {
     const { validateType } = this.props;
     const value = this.state.value;
     const validateStatus = value.indexOf('a') === -1 ? 'default' : 'error';
-
     return (
       <Input onChange={this.onChange} validateType={validateType} validateStatus={validateStatus} />
     );
   }
 }
+
 export class ValidateAmountInput extends React.Component<any, any> {
   static getDerivedStateFromProps(nextProps: Object, preState: Object) {
     let { value } = nextProps;
@@ -64,21 +63,21 @@ export class ValidateAmountInput extends React.Component<any, any> {
   onChange = (obj: any) => {
     const { newValue } = obj;
     const validateStatus = newValue === 1 ? 'error' : 'default';
-    console.log(obj, validateStatus, this.props.validateType);
     this.setState({ validateStatus });
   };
   render() {
-    const { validateType } = this.props;
+    const { validateType, validateStatus } = this.props;
 
     return (
       <AmountInput
         onChange={this.onChange}
         validateType={validateType}
-        validateStatus={this.state.validateStatus}
+        validateStatus={validateStatus}
       />
     );
   }
 }
+
 export class ValidateNumberInput extends React.Component<any, any> {
   static getDerivedStateFromProps(nextProps: Object, preState: Object) {
     let { value } = nextProps;
@@ -97,16 +96,15 @@ export class ValidateNumberInput extends React.Component<any, any> {
   onChange = (obj: any) => {
     const { newValue } = obj;
     const validateStatus = newValue === 1 ? 'error' : 'default';
-    console.log(obj, validateStatus, this.props.validateType);
     this.setState({ newValue, validateStatus });
   };
   render() {
-    const { validateType } = this.props;
+    const { validateType, validateStatus } = this.props;
     return (
       <NumberInput
         onChange={this.onChange}
         validateType={validateType}
-        validateStatus={this.state.validateStatus}
+        validateStatus={validateStatus}
       />
     );
   }
@@ -194,8 +192,7 @@ export class ValidateAutoComplete extends React.Component<any, any> {
   onChange = (value: string) => {
     this.search(value);
     const validateStatus = value === 'Armin van Buuren' ? 'error' : 'default';
-    console.log(value, validateStatus, this.props.validateType);
-    this.setState({ value });
+    this.setState({ value, validateStatus });
   };
 
   render() {
@@ -210,7 +207,7 @@ export class ValidateAutoComplete extends React.Component<any, any> {
         data={menuData}
         onChange={this.onChange}
         validateType={validateType}
-        validateStatus={this.state.validateStatus}
+        validateStatus={this.props.validateStatus}
       />
     );
   }
@@ -276,7 +273,6 @@ export class ValidateCascader extends React.Component<any, any> {
 
   handleChangeActiveValue = (obj: Object) => {
     const validateStatus = obj[0] === 'a1' ? 'error' : 'default';
-    console.log(obj[0], this.props, validateStatus, this.props.validateType);
     this.setState({
       activeValue: obj.newValue,
       validateStatus,
@@ -298,7 +294,7 @@ export class ValidateCascader extends React.Component<any, any> {
         onClear={this.onClear}
         onChange={this.handleChangeActiveValue}
         validateType={validateType}
-        validateStatus={this.state.validateStatus}
+        validateStatus={this.props.validateStatus}
       />
     );
   }
@@ -329,12 +325,11 @@ export class ValidateSelect extends React.Component<any, any> {
   onChange = (obj: any) => {
     const { newDisplayValue } = obj;
     const validateStatus = newDisplayValue === 'txt0' ? 'error' : 'default';
-    console.log(obj, validateStatus, this.props.validateType);
     this.setState({ validateStatus });
   };
 
   render() {
-    const { validateType } = this.props;
+    const { validateType, validateStatus } = this.props;
     return (
       <Select
         canSearch
@@ -343,7 +338,7 @@ export class ValidateSelect extends React.Component<any, any> {
         data={data_select}
         onChange={this.onChange}
         validateType={validateType}
-        validateStatus={this.state.validateStatus}
+        validateStatus={validateStatus}
       />
     );
   }
@@ -425,12 +420,11 @@ export class ValidateTreeSelect extends React.Component<any, any> {
     const { value, newDisplayValue } = obj;
     this.props.onChange({ newValue: value });
     const validateStatus = newDisplayValue === 'txt0' ? 'error' : 'default';
-    console.log(validateStatus, this.props.validateType);
     this.setState({ validateStatus });
   };
 
   render() {
-    const { validateType } = this.props;
+    const { validateType, validateStatus } = this.props;
     return (
       <TreeSelect
         data={data_TreeSelect}
@@ -442,7 +436,7 @@ export class ValidateTreeSelect extends React.Component<any, any> {
         mutliple
         onChange={this.onChange}
         validateType={validateType}
-        validateStatus={this.state.validateStatus}
+        validateStatus={validateStatus}
       />
     );
   }
@@ -466,12 +460,11 @@ export class ValidateDatePicker extends React.Component<any, any> {
   onChange = (obj: any) => {
     const { newValue } = obj;
     const validateStatus = newValue === '2020-04-30' ? 'error' : 'default';
-    console.log(obj, validateStatus, this.props.validateType);
     this.setState({ validateStatus });
   };
 
   render() {
-    const { validateType } = this.props;
+    const { validateType, validateStatus } = this.props;
     return (
       <DatePicker
         step={9}
@@ -480,7 +473,7 @@ export class ValidateDatePicker extends React.Component<any, any> {
         data={data_select}
         onChange={this.onChange}
         validateType={validateType}
-        validateStatus={this.state.validateStatus}
+        validateStatus={validateStatus}
       />
     );
   }
@@ -504,12 +497,11 @@ export class ValidateTimePicker extends React.Component<any, any> {
   onChange = (obj: any) => {
     const { newValue } = obj;
     const validateStatus = newValue === '06:06:06' ? 'error' : 'default';
-    console.log(obj, validateStatus, this.props.validateType);
     this.setState({ validateStatus });
   };
 
   render() {
-    const { validateType } = this.props;
+    const { validateType, validateStatus } = this.props;
     return (
       <TimePicker
         canSearch
@@ -518,7 +510,7 @@ export class ValidateTimePicker extends React.Component<any, any> {
         data={data_select}
         onChange={this.onChange}
         validateType={validateType}
-        validateStatus={this.state.validateStatus}
+        validateStatus={validateStatus}
       />
     );
   }
