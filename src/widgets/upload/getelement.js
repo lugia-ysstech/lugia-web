@@ -764,7 +764,6 @@ class GetElement extends React.Component<DefProps, StateProps> {
           [buttonViewClass]: {
             Container: {
               normal: {
-                width: 60,
                 height: 30,
                 borderRadius: {
                   topLeft: 0,
@@ -815,7 +814,6 @@ class GetElement extends React.Component<DefProps, StateProps> {
           [buttonViewClass]: {
             Container: {
               normal: {
-                width: 100,
                 height: 30,
                 borderRadius: getBorderRadius(4),
               },
