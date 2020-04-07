@@ -27,7 +27,6 @@ const ArrowIconContainer = CSSComponent({
     selectNames: [
       ['width'],
       ['fontSize'],
-      ['fontSize'],
       ['font'],
       ['color'],
       ['background'],
@@ -49,13 +48,13 @@ const ArrowIconContainer = CSSComponent({
     },
   },
   hover: {
-    selectNames: [['font'], ['color'], ['background'], ['cursor'], ['opacity']],
+    selectNames: [['font'], ['fontSize'], ['color'], ['background'], ['cursor'], ['opacity']],
   },
   active: {
-    selectNames: [['font'], ['color'], ['background'], ['cursor'], ['opacity']],
+    selectNames: [['font'], ['fontSize'], ['color'], ['background'], ['cursor'], ['opacity']],
   },
   disabled: {
-    selectNames: [['font'], ['color'], ['background'], ['cursor'], ['opacity']],
+    selectNames: [['font'], ['fontSize'], ['color'], ['background'], ['cursor'], ['opacity']],
     defaultTheme: {
       opacity: 0,
     },
@@ -205,6 +204,14 @@ function hasValueProps(props: Object) {
   return 'value' in props;
 }
 
+function getOverMax(value, max) {
+  return Number(value) >= max;
+}
+
+function getBelowMin(value, min) {
+  return Number(value) <= min;
+}
+
 class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
   static defaultProps = {
     disabled: false,
@@ -260,22 +267,33 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
   getButtonMousePos = (type: ClickType) => () => {
     this.setState({ stepHover: type });
   };
+  getThemePropsByType = type => {
+    const { stepHover, value } = this.state;
+    const { size, getPartOfThemeProps, max, min, disabled } = this.props;
+    const propsConfig =
+      type === 'container'
+        ? { disabled }
+        : type === 'plus'
+        ? { outRange: getOverMax(value, max) }
+        : type === 'minus'
+        ? { outRange: getBelowMin(value, min) }
+        : {};
+    return getPartOfThemeProps('ArrowIconContainer', {
+      props: { size, hover: stepHover, ...propsConfig },
+    });
+  };
 
   getStepArrowIconContainer(arrowContainerChannel): React$Element<any> {
-    const { value, stepHover } = this.state;
+    const { value } = this.state;
     const {
-      max,
-      min,
-      size,
       disabled,
       addIcon,
       subtractIcon,
       getPartOfThemeHocProps,
-      getPartOfThemeProps,
       createEventChannel,
+      max,
+      min,
     } = this.props;
-    const overMax = Number(value) >= max;
-    const belowMin = Number(value) <= min;
 
     const { theme: IconThemeProps, viewClass: IconViewClass } = getPartOfThemeHocProps(
       'InputArrowIcon'
@@ -333,15 +351,10 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
       IconThemeProps
     );
 
-    const theThemeProps = getPartOfThemeProps('ArrowIconContainer', {
-      props: { size, hover: stepHover, disabled },
-    });
-    const arrowIconPlusButtonThemeProps = getPartOfThemeProps('ArrowIconContainer', {
-      props: { size, hover: stepHover, outRange: overMax },
-    });
-    const arrowIconMinusButtonThemeProps = getPartOfThemeProps('ArrowIconContainer', {
-      props: { size, hover: stepHover, outRange: belowMin },
-    });
+    const theThemeProps = this.getThemePropsByType('container');
+    const arrowIconPlusButtonThemeProps = this.getThemePropsByType('plus');
+    const arrowIconMinusButtonThemeProps = this.getThemePropsByType('minus');
+
     const plusChannel = createEventChannel(['hover']);
     const minusChannel = createEventChannel(['hover']);
 
@@ -369,7 +382,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
             theme={iconTheme}
             viewClass={IconViewClass}
             disabled={disabled}
-            propsConfig={{ outRange: overMax }}
+            propsConfig={{ outRange: getOverMax(value, max) }}
             iconClass={addIcon || PlusClass}
             singleTheme
           />
@@ -391,7 +404,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
             theme={iconTheme}
             viewClass={IconViewClass}
             disabled={disabled}
-            propsConfig={{ outRange: belowMin }}
+            propsConfig={{ outRange: getBelowMin(value, min) }}
             iconClass={subtractIcon || MinusClass}
           />
         </MinusButton>
