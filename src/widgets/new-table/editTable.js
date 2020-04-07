@@ -1,5 +1,4 @@
 //@flow
-import type { KeyBoardEventListenerHandle } from '@lugia/lugia-web';
 import { deepMerge } from '@lugia/object-utils';
 
 export const defaultTableTheme = {
@@ -25,46 +24,6 @@ export const setFirstRowAsHead = (rowData: Array<Object>): Array<Object> => {
   return newData;
 };
 
-export const clearFirstRowAsHead = (rowData: Array<Object>): Array<Object> => {
-  if (!rowData || !Array.isArray(rowData)) {
-    return [];
-  }
-  const newRowData = [...rowData];
-  const { isHead } = newRowData[0] || {};
-  if (isHead) {
-    newRowData.shift();
-  }
-  return newRowData;
-};
-
-export const restDataWithMark = (data: Array<Object>): Array<Object> => {
-  if (!data) return [];
-  const newData = [];
-  data.forEach((item, index) => {
-    const { lugiaMark: oldMark } = item;
-    const newItem = { ...item };
-    newItem.lugiaMark = oldMark || index;
-    newData.push(newItem);
-  });
-  return newData;
-};
-
-export const clearLugiaMarkAndResetRender = (data: Array<Object>): Array<Object> => {
-  const newData = [];
-  data.forEach(item => {
-    const newItem = { ...item };
-    delete newItem.lugiaMark;
-    delete newItem.render;
-    const { customRender } = newItem;
-    if (customRender) {
-      newItem.render = customRender;
-    }
-    delete newItem.customRender;
-    newData.push({ ...newItem });
-  });
-  return newData;
-};
-
 export const isSelectSameItem = (oldItem: Object, currentItem: Object): boolean => {
   if (!oldItem || !currentItem) {
     return false;
@@ -85,22 +44,22 @@ export const doStopPropagation = (e: any, isStop?: boolean): void => {
 };
 
 export const keyDownHandler = (props: Object) => (e: Object): void => {
-  const { isInTarget, keyBoardListener } = props;
+  const { isInTarget, EditTableListener } = props;
   doStopPropagation(e, isInTarget);
   const { key } = e;
-  const isMultiple = keyBoardListener && keyBoardListener.isMultiple();
+  const isMultiple = EditTableListener && EditTableListener.isMultiple();
   if (key.length === 1 && !isMultiple) {
-    keyBoardListener.emit('quitMoveCells');
-    keyBoardListener.emit('enterEditing');
+    EditTableListener.emit('quitMoveCells');
+    EditTableListener.emit('enterEditing');
     return;
   }
-  keyBoardListener.onKeyDown(e);
+  EditTableListener.onKeyDown(e);
 };
 
 export const keyUpHandler = (props: Object) => (e: Object): void => {
-  const { keyBoardListener } = props;
+  const { EditTableListener } = props;
   doStopPropagation(e);
-  keyBoardListener.onKeyUp(e);
+  EditTableListener.onKeyUp(e);
 };
 
 export const getThemeForTable = (targetTheme: Object, defaultTheme: Object): Object => {
@@ -118,13 +77,11 @@ export const restColumnsWithMark = (
   }
   const newCols = [];
   columns.forEach((item, index) => {
-    const { lugiaMark: oldMark, render } = item;
+    const { render } = item;
     const newItem = { ...item };
-    const lugiaMark = oldMark || index;
-    newItem.lugiaMark = lugiaMark;
     newItem.customRender = render;
     newItem.render = (text, record, index) => {
-      return renderFunc({ text, record, index, selectColumn: lugiaMark, ...newItem });
+      return renderFunc({ text, record, index, ...newItem });
     };
     newCols.push(newItem);
   });
@@ -183,7 +140,7 @@ export const getClearSingleSelectCell = (
 };
 
 export const getMovedCells = (props: Object): ?Object => {
-  const { directions, key, selectCell, keyBoardListener } = props;
+  const { directions, key, selectCell, EditTableListener } = props;
 
   if (!selectCell || selectCell.length <= 0) {
     return;
@@ -206,7 +163,7 @@ export const getMovedCells = (props: Object): ?Object => {
       selectRow += 1;
       break;
     case 'backToBottom':
-      const moveTrack = keyBoardListener.getMoveTrack();
+      const moveTrack = EditTableListener.getMoveTrack();
       if (moveTrack && moveTrack.length > 0) {
         selectColumn = moveTrack[0].selectColumn;
       }
@@ -218,11 +175,11 @@ export const getMovedCells = (props: Object): ?Object => {
 
   const { data = [], columns = [] } = props;
   const maxColumn = columns.length && columns.length - 1;
-  const maxData = data.length && data.length - 1;
+  const maxData = data.length && data.length;
   selectColumn = Math.max(Math.min(maxColumn, selectColumn), 0);
   selectRow = Math.max(Math.min(maxData, selectRow), 0);
   if (key && key === 'Tab' && selectCell) {
-    keyBoardListener.emit('enterMoveTrack', selectCell[0]);
+    EditTableListener.emit('enterMoveTrack', selectCell[0]);
   }
   return { selectColumn, selectRow };
 };
@@ -230,26 +187,27 @@ export const getMovedCells = (props: Object): ?Object => {
 export const setInputChangedValue = (props: Object): Object => {
   const { value, editing } = props;
   if (editing) {
-    const { editCell: { selectColumn, selectRow } = {}, data, columns } = props;
+    const { editCell: { selectColumn, selectRow } = {}, data, columns, EditTableListener } = props;
     let keyName = null;
     columns.forEach(col => {
-      const { lugiaMark } = col;
+      const { dataIndex } = col;
+      const lugiaMark = EditTableListener.getSelectColumnMark(dataIndex);
       if (lugiaMark === selectColumn) {
-        keyName = col.dataIndex;
+        keyName = dataIndex;
       }
     });
-    const newRowData = [...data];
-    newRowData[selectRow][keyName] = value;
+    const newRowData = JSON.parse(JSON.stringify(data));
+    newRowData[selectRow - 1][keyName] = value;
     return { data: newRowData };
   }
 };
 
 export const onCellClick = (props: Object) => {
-  const { e, keyBoardListener } = props;
-  let count = keyBoardListener.getClickNumber();
+  const { e, EditTableListener } = props;
+  let count = EditTableListener.getClickNumber();
   doStopPropagation(e);
   count += 1;
-  keyBoardListener.setClickNumber(count);
+  EditTableListener.setClickNumber(count);
   setTimeout(() => {
     const { selectColumn, selectRow, selectCell = [] } = props;
     if (count === 1) {
@@ -257,31 +215,35 @@ export const onCellClick = (props: Object) => {
       let selectCellResult = [{ selectColumn, selectRow }];
       let currentItem = { selectColumn, selectRow };
       if (isSelect) {
-        keyBoardListener.emit('quitMoveCells');
+        EditTableListener.emit('quitMoveCells');
         selectCellResult = getClearSingleSelectCell({ selectColumn, selectRow }, selectCell);
         currentItem = {};
       }
-      keyBoardListener.setClickNumber(0);
-      keyBoardListener.emit('quiteMoveTrack');
-      keyBoardListener.emit('enterMoveTrack', { selectColumn, selectRow });
-      const isMultiple = keyBoardListener.isMultiple();
+      EditTableListener.setClickNumber(0);
+      EditTableListener.emit('quiteMoveTrack');
+      EditTableListener.emit('enterMoveTrack', { selectColumn, selectRow });
+      const isMultiple = EditTableListener.isMultiple();
 
       if (isMultiple) {
         selectCellResult = selectCell.concat(selectCellResult);
       } else {
-        keyBoardListener.emit('enterMoveCells');
+        EditTableListener.emit('enterMoveCells');
       }
-      keyBoardListener.emit('setState', { selectCell: selectCellResult, editCell: currentItem });
-      keyBoardListener.emit('exportOnCell', {
+      EditTableListener.emit('setState', { selectCell: selectCellResult, editCell: currentItem });
+      EditTableListener.emit('exportOnCell', {
         currentItem,
         newValue: selectCellResult,
         oldValue: selectCell,
       });
     } else if (count === 2) {
-      keyBoardListener.setClickNumber(0);
-      keyBoardListener.emit('quitMoveCells');
-      keyBoardListener.emit('quiteMoveTrack');
-      keyBoardListener.emit('setState', { editing: true, editCell: { selectColumn, selectRow } });
+      EditTableListener.setClickNumber(0);
+      EditTableListener.emit('quitMoveCells');
+      EditTableListener.emit('quiteMoveTrack');
+      EditTableListener.emit('setState', { editing: true, editCell: { selectColumn, selectRow } });
     }
   }, 200);
+};
+
+export const isEqualArray = (oldValue?: Array<Object>, newValue?: Array<Object>): boolean => {
+  return JSON.stringify(oldValue) === JSON.stringify(newValue);
 };

@@ -1,21 +1,18 @@
 //@flow
-import type { KeyBoardEventListenerHandle } from '@lugia/lugia-web';
+import type { EditTableEventListenerHandle } from '@lugia/lugia-web';
 import React from 'react';
 import Table from './table';
 import ThemeProvider from '../theme-provider';
 import EditInput from './EditInput';
 import type { EditTableProps, EditTableState } from './editTableCss';
 import { Container, EditDiv, InnerTriggerDiv } from './editTableCss';
-import KeyBoardEventListener from './connection';
+import EditTableEventListener from './connection';
 import Widget from '../consts';
 import { findDOMNode } from 'react-dom';
 import {
   defaultTableTheme,
   restColumnsIntoData,
   setFirstRowAsHead,
-  clearFirstRowAsHead,
-  restDataWithMark,
-  clearLugiaMarkAndResetRender,
   keyDownHandler,
   keyUpHandler,
   getThemeForTable,
@@ -26,12 +23,13 @@ import {
   getMovedCells,
   setInputChangedValue,
   onCellClick,
+  isEqualArray,
 } from './editTable';
 
 class EditTable extends React.Component<EditTableProps, EditTableState> {
   keyDownHandler: any;
   keyUpHandler: any;
-  keyBoardListener: KeyBoardEventListenerHandle;
+  EditTableListener: EditTableEventListenerHandle;
   Table: any;
   moveCellsListener: Object;
   quitEditListener: Object;
@@ -42,43 +40,55 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
   constructor(props: EditTableProps) {
     super(props);
     const { columns, data = [] } = props;
-    const dataWidthColumn = setFirstRowAsHead(restColumnsIntoData(columns)).concat(data);
-    this.keyBoardListener = new KeyBoardEventListener();
+
+    this.EditTableListener = new EditTableEventListener();
     this.state = {
-      columns: restColumnsWithMark(columns, this.renderFunc),
-      data: restDataWithMark(dataWidthColumn),
       selectCell: [],
       editCell: {},
       editing: false,
     };
-
-    this.moveCellsListener = this.keyBoardListener.on('moveCells', (props: Object) => {
+    this.EditTableListener.emit('updateDataKeyMap', { columns, data });
+    this.moveCellsListener = this.EditTableListener.on('moveCells', (props: Object) => {
       this.doMoveCells(props);
     });
-    this.quitEditListener = this.keyBoardListener.on('quitEdit', (res: Object) => {
+    this.quitEditListener = this.EditTableListener.on('quitEdit', (res: Object) => {
       this.quitEdit(res);
     });
-    this.enterEditingListener = this.keyBoardListener.on('enterEditing', (res: Object) => {
+    this.enterEditingListener = this.EditTableListener.on('enterEditing', (res: Object) => {
       this.setState({ editing: true });
     });
 
-    this.setStateListener = this.keyBoardListener.on('setState', (res: Object) => {
+    this.setStateListener = this.EditTableListener.on('setState', (res: Object) => {
       this.doSetState(res);
     });
-    this.exportOnCellListener = this.keyBoardListener.on('exportOnCell', (res: Object) => {
+    this.exportOnCellListener = this.EditTableListener.on('exportOnCell', (res: Object) => {
       this.exportOnCell(res);
     });
   }
 
+  shouldComponentUpdate(nextProps: EditTableProps, nextState: EditTableState) {
+    const { data: oldData, columns: oldColumns } = this.props;
+    const { data, columns } = nextProps;
+    const isUpdateValue = !isEqualArray(oldData, data) || !isEqualArray(oldColumns, columns);
+    if (isUpdateValue) {
+      this.EditTableListener.emit('updateDataKeyMap', { columns, data });
+    }
+    return true;
+  }
+
   componentDidMount() {
-    const { keyBoardListener } = this;
+    const { EditTableListener } = this;
     const isInTarget = findDOMNode(this.Table.getThemeTarget()) === document.activeElement;
-    window.addEventListener('keydown', keyDownHandler({ isInTarget, keyBoardListener }));
-    window.addEventListener('keyup', keyUpHandler({ keyBoardListener }));
+    window.addEventListener('keydown', keyDownHandler({ isInTarget, EditTableListener }));
+    window.addEventListener('keyup', keyUpHandler({ EditTableListener }));
   }
 
   render() {
-    const { data = [], columns = [] } = this.state;
+    const { data = [], columns = [] } = this.props;
+    const firstLineData = setFirstRowAsHead(restColumnsIntoData(columns));
+    const tableData = firstLineData.concat(data);
+    const { renderFunc } = this;
+    const tableColumns = restColumnsWithMark(columns, renderFunc);
     const { tableSize, tableStyle } = this.props;
     const tableProps = { tableSize, tableStyle };
     const containerTheme = this.props.getPartOfThemeProps('Container');
@@ -91,8 +101,8 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
         <Table
           ref={el => (this.Table = el)}
           {...TableTheme}
-          data={data}
-          columns={columns}
+          data={tableData}
+          columns={tableColumns}
           {...tableProps}
           showHeader={false}
         />
@@ -101,15 +111,15 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
   }
 
   renderFunc = (renderObject: Object) => {
-    const { text, record, selectColumn } = renderObject;
+    const { text, record, dataIndex, index } = renderObject;
+    const selectColumn = this.EditTableListener.getSelectColumnMark(dataIndex);
+
     const defaultText =
       typeof text !== 'object' && (text || text === 0) ? record[text] || text : '';
-    const { lugiaMark: selectRow, isHead } = record;
+    const { isHead } = record;
+    const selectRow = index;
     const { editing, selectCell = [] } = this.state;
     const isSelect = !editing && isSelected({ selectColumn, selectRow }, selectCell);
-    if (isSelect) {
-      console.log('isSelect render', isSelect, editing, { selectColumn, selectRow }, selectCell);
-    }
 
     const { isEditHead } = this.props;
     const headEdit = isEditHead ? true : selectRow !== 0;
@@ -121,6 +131,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
       isSelect,
       isHead,
       enterEdit,
+      selectColumn,
       selectRow,
       ...renderObject,
     };
@@ -149,7 +160,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
             value={defaultText}
             autoFocus={true}
             type={editType}
-            listener={this.keyBoardListener}
+            listener={this.EditTableListener}
             data={selectData}
           />
         </EditDiv>
@@ -159,14 +170,14 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
     const { text, record, index, selectColumn, selectRow, customRender } = renderObject;
     const { selectSuffixElement, isEditHead } = this.props;
     const { selectCell } = this.state;
-    const { keyBoardListener } = this;
+    const { EditTableListener } = this;
     return (
       <EditDiv
         themeProps={editDivTheme}
         isSelect={isSelect}
         isHead={isHead}
         onClick={e =>
-          onCellClick({ e, selectColumn, selectRow, selectCell, keyBoardListener, isEditHead })
+          onCellClick({ e, selectColumn, selectRow, selectCell, EditTableListener, isEditHead })
         }
       >
         {customRender && !isHead ? customRender(text, record, index) : defaultText.toString()}
@@ -180,17 +191,19 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
   quitEdit = (res: Object) => {
     const { oldValue, newValue } = res;
     if (oldValue !== newValue) {
-      const { editCell, data, columns, editing } = this.state;
+      const { editCell, editing } = this.state;
+      const { data, columns } = this.props;
+      const { EditTableListener } = this;
       const changedData = setInputChangedValue({
         value: newValue,
         editCell,
         data,
         columns,
         editing,
+        EditTableListener,
       });
       if (changedData) {
         const { data: newData } = changedData;
-        this.setState({ data: newData });
         this.exportChange({ columns, data: newData });
       }
     }
@@ -198,14 +211,11 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
   };
 
   clearEditState = () => {
-    this.keyBoardListener.emit('quitMoveCells');
+    this.EditTableListener.emit('quitMoveCells');
     this.setState({ editing: false, editCell: null, selectCell: [] });
   };
 
   exportChange = (res: Object) => {
-    const { columns, data } = res;
-    res.data = clearLugiaMarkAndResetRender(clearFirstRowAsHead(data));
-    res.columns = clearLugiaMarkAndResetRender(columns);
     const { onChange } = this.props;
     onChange && onChange(res);
   };
@@ -220,9 +230,10 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
   };
 
   doMoveCells = (props: Object) => {
-    const { selectCell, data, columns } = this.state;
-    const { keyBoardListener } = this;
-    const selectInfo = getMovedCells({ selectCell, data, columns, ...props, keyBoardListener });
+    const { selectCell } = this.state;
+    const { data, columns } = this.props;
+    const { EditTableListener } = this;
+    const selectInfo = getMovedCells({ selectCell, data, columns, ...props, EditTableListener });
     this.exportOnCell({
       currentItem: selectInfo,
       newValue: [selectInfo],
