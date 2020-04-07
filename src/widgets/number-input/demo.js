@@ -117,7 +117,7 @@ const NumberInputDemo = () => {
         },
       },
       ArrowIconContainer: { normal: { fontSize: 14, width: 40 } },
-      ArrowIcon: {
+      InputArrowIcon: {
         hover: { color: 'blue', fontSize: 30 },
       },
       ValidateErrorText: {
