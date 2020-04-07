@@ -20,8 +20,6 @@ export type EditTableProps = TableProps & {
 };
 
 export type EditTableState = {
-  columns: Object[],
-  data: Object[],
   selectCell: Array<Object>,
   editCell?: Object,
   editing: boolean,

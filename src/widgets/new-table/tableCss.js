@@ -59,10 +59,10 @@ export const Tr = CSSComponent({
         propsConfig: { tableStyle },
       } = themeProps;
       if (tableStyle !== 'zebraStripe') {
-        return;
+        return '';
       }
       return `&:nth-child(even) {
-        background: ${changeColor(themeColor, 0, 0, 20).rgba};
+        background: ${changeColor(themeColor, 0, 0, 5).rgba};
       }`;
     },
   },

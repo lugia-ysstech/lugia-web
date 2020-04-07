@@ -8,7 +8,7 @@ import React from 'react';
 import 'jest-styled-components';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import EditTable, { restDataWithMark, setFirstRowAsHead, restColumnsIntoData } from '../editTable';
+import EditTable, { restColumnsIntoData } from '../editTable';
 import Table from '../table';
 import renderer from 'react-test-renderer';
 
@@ -115,9 +115,7 @@ describe('new-table', () => {
 
   it(' EditTable data & columns ', () => {
     const cmp = mount(<EditTable data={data} columns={columns} />);
-    expect(getCmp(cmp).state.data).toEqual(
-      setFirstRowAsHead(restDataWithMark(restColumnsIntoData(columns).concat(data)))
-    );
+    expect(getCmp(cmp).props.data).toEqual(data);
     expect(JSON.stringify(getCmp(cmp).state.columns)).toEqual(
       JSON.stringify(restColumnsWithMark(columns))
     );
@@ -125,9 +123,5 @@ describe('new-table', () => {
 
   it(' EditTable restColumnsIntoData ', () => {
     expect(restColumnsIntoData(columns)).toEqual(columnsIntoData);
-  });
-
-  it(' EditTable restDataWithMark ', () => {
-    expect(restDataWithMark(data)).toEqual(Markdata);
   });
 });

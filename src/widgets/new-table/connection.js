@@ -1,8 +1,7 @@
 //@flow
-import type { KeyBoardEventListenerHandle } from '@lugia/lugia-web';
 import Listener from '@lugia/listener';
 
-export default class KeyBoardEventListener extends Listener<any> {
+export default class EditTableEventListener extends Listener<any> {
   editing: boolean;
   multipleSelect: boolean;
   canMoveCells: boolean;
@@ -10,7 +9,7 @@ export default class KeyBoardEventListener extends Listener<any> {
   isKeyBoardDown: boolean;
   clickNumber: number;
   moveTrack: Array<Object>;
-  keyDownListener: Object;
+  dataKeyMap: Object;
   keyDownListener: Object;
   enterMultipleSelect: Object;
   quitMultipleSelect: Object;
@@ -20,6 +19,7 @@ export default class KeyBoardEventListener extends Listener<any> {
   shiftUp: Object;
   enterMoveTrack: Object;
   quiteMoveTrack: Object;
+  enterUpdateDataKeyMap: Object;
 
   constructor() {
     super();
@@ -30,6 +30,10 @@ export default class KeyBoardEventListener extends Listener<any> {
     this.isKeyBoardDown = false;
     this.moveTrack = [];
     this.clickNumber = 0;
+    this.dataKeyMap = {
+      columnsMap: {},
+      dataMap: {},
+    };
 
     this.keyDownListener = this.on('keyDown', this.onKeyDown);
     this.enterMultipleSelect = this.on('enterMultipleSelect', () => {
@@ -57,6 +61,9 @@ export default class KeyBoardEventListener extends Listener<any> {
     });
     this.quiteMoveTrack = this.on('quiteMoveTrack', () => {
       this.moveTrack = [];
+    });
+    this.enterUpdateDataKeyMap = this.on('updateDataKeyMap', (props: Object) => {
+      this.doUpdateDataKeyMap(props);
     });
   }
 
@@ -132,8 +139,28 @@ export default class KeyBoardEventListener extends Listener<any> {
     this.clickNumber = number;
   };
 
+  doUpdateDataKeyMap = (props: Object): void => {
+    const { columns, data } = props;
+    data &&
+      data.forEach((item: Object, index: number) => {
+        this.dataKeyMap.dataMap[index] = { ...item };
+      });
+    columns &&
+      columns.forEach((item: Object, index: number) => {
+        const { dataIndex } = item;
+        this.dataKeyMap.columnsMap[dataIndex] = index;
+      });
+  };
+
+  getSelectColumnMark = (dataIndex: Number) => {
+    return this.dataKeyMap.columnsMap[dataIndex];
+  };
+
+  getSelectDataMark = (index: Number) => {
+    return this.dataKeyMap.dataMap[index];
+  };
+
   componentWillUnmount(): void {
-    this.keyDownListener.removeListener();
     this.keyDownListener.removeListener();
     this.enterMultipleSelect.removeListener();
     this.quitMultipleSelect.removeListener();
@@ -143,5 +170,6 @@ export default class KeyBoardEventListener extends Listener<any> {
     this.shiftUp.removeListener();
     this.enterMoveTrack.removeListener();
     this.quiteMoveTrack.removeListener();
+    this.enterUpdateDataKeyMap.removeListener();
   }
 }

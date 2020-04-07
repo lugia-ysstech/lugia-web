@@ -86,6 +86,8 @@ export default class TableDemo extends React.Component<Object, Object> {
   }
   onChange = res => {
     console.log('onChange', res);
+    const { data } = res;
+    this.setState({ tableData: data });
   };
   onCell = res => {
     console.log('onCell', res);
@@ -94,33 +96,6 @@ export default class TableDemo extends React.Component<Object, Object> {
     const { tableData } = this.state;
     return (
       <div>
-        <Title>基本表格</Title>
-        <Table
-          data={data}
-          columns={columns}
-          title={'这是一个表格'}
-          footer={<div>这是表格底部信息</div>}
-        />
-        <Title>tableSize： large tableStyle：zebraStripe </Title>
-        <Table data={tableData} columns={columns} tableStyle={'zebraStripe'} tableSize={'large'} />
-        <Title>tableSize： middle tableStyle：bordered </Title>
-        <Table
-          data={tableData}
-          columns={columns}
-          tableStyle={'bordered'}
-          tableSize={'middle'}
-          title={'这是一个有边框的表格'}
-          footer={<div>这是表格底部信息</div>}
-        />
-        <Title>tableSize： large tableStyle：bordered data:null </Title>
-        <Table columns={columns} tableStyle={'bordered'} tableSize={'large'} />
-        <Title>tableSize： default tableStyle：bordered column:null </Title>
-        <Table
-          data={tableData}
-          // columns={columns}
-          tableStyle={'bordered'}
-          footer={<div>这是表格底部信息</div>}
-        />
         <Title>可编辑表格</Title>
         <EditTable
           data={tableData}
@@ -132,6 +107,33 @@ export default class TableDemo extends React.Component<Object, Object> {
           onChange={this.onChange}
           onCell={this.onCell}
           selectSuffixElement={<div>00</div>}
+        />
+        <Title>基本表格</Title>
+        <Table
+          data={data}
+          columns={columns}
+          title={'这是一个表格'}
+          footer={<div>这是表格底部信息</div>}
+        />
+        <Title>tableSize： large tableStyle：zebraStripe </Title>
+        <Table data={tableData} columns={columns} tableStyle={'zebraStripe'} tableSize={'large'} />
+        <Title>tableSize： middle tableStyle：bordered </Title>
+        <Table
+          data={data}
+          columns={columns}
+          tableStyle={'bordered'}
+          tableSize={'middle'}
+          title={'这是一个有边框的表格'}
+          footer={<div>这是表格底部信息</div>}
+        />
+        <Title>tableSize： large tableStyle：bordered data:null </Title>
+        <Table columns={columns} tableStyle={'bordered'} tableSize={'large'} />
+        <Title>tableSize： default tableStyle：bordered column:null </Title>
+        <Table
+          data={data}
+          // columns={columns}
+          tableStyle={'bordered'}
+          footer={<div>这是表格底部信息</div>}
         />
       </div>
     );
