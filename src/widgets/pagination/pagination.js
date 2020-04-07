@@ -881,7 +881,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
       );
       return (
         <PaginationListContainer themeProps={this.props.getPartOfThemeProps('Container')}>
-          {this.getArrowIcon('pre')}
+          {this.getArrowIcon('pre', current > 1)}
           <Input
             value={current}
             theme={InnerInputTheme}
@@ -897,7 +897,7 @@ class Pagination extends React.Component<PaginationProps, PaginationState> {
           <PaginationBaseText themeProps={this.props.getPartOfThemeProps('PaginationSimpleText')}>
             {totalPage}
           </PaginationBaseText>
-          {this.getArrowIcon('next')}
+          {this.getArrowIcon('next', current < totalPage)}
         </PaginationListContainer>
       );
     }
