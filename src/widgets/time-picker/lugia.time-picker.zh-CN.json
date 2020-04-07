@@ -71,7 +71,7 @@
     }
   },
   "type": {
-    "ValidateType": ["top", "bottom"],
+    "ValidateType": ["top", "bottom", "inner"],
     "ValidateStatus": ["default", "error"],
     "ChangeType": {
       "newValue": "string",
