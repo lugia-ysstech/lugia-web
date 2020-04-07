@@ -445,7 +445,8 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     );
 
     const arrowContainerChannel = createEventChannel(['hover']);
-    const theValidateType = validateType === 'inner' ? 'top' : validateType;
+    const theValidateType =
+      validateType === 'inner' || validateType === 'default' ? 'top' : validateType;
     return (
       <Input
         lugiaConsumers={arrowContainerChannel.consumer}
