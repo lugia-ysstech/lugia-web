@@ -175,7 +175,25 @@ export const ErrorTip = CSSComponent({
   },
   css: css`
     position: absolute;
-    left: 10px;
-    bottom: -20px;
+    ${props => getValidPosition(props)}
   `,
 });
+function getValidPosition(props) {
+  const { validType } = props;
+  let horizontal = 'left: 10px;';
+  let vertical = 'bottom: -20px;';
+  if (validType === 'inner') {
+    horizontal = 'right:30px;';
+    vertical = `
+      top:50%;
+      transform:translateY(-50%);
+      height:90%;
+      display:flex;
+      align-items:center;
+      background:#fff;
+      padding-left:1px;
+      box-shadow:-10px 0 10px rgba(255,255,255,0.7);
+    `;
+  }
+  return `${horizontal};${vertical};`;
+}
