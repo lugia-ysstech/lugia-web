@@ -17,6 +17,7 @@ import type { ValidateType, ValidateStatus } from '../css/input';
 import { units } from '@lugia/css';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import { deepMerge } from '@lugia/object-utils';
+import get from '../css/theme-common-dict';
 
 const { px2remcss } = units;
 
@@ -61,7 +62,7 @@ const ArrowIconContainer = CSSComponent({
   },
   css: css`
     height: 100%;
-    border-left: ${px2remcss(1)} solid #d9d9d9;
+    border-left: ${px2remcss(1)} solid ${get('borderColor')};
     -webkit-transition: all 0.3s linear 0.1s;
     transition: all 0.3s linear 0.1s;
     box-sizing: border-box;
@@ -116,7 +117,7 @@ const MinusButton = CSSComponent({
     },
   },
   css: css`
-    border-top: ${px2remcss(1)} solid #d9d9d9;
+    border-top: ${px2remcss(1)} solid ${get('borderColor')};
     height: 50%;
   `,
   option: { hover: true, active: true },
