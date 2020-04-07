@@ -26,9 +26,6 @@ export default {
   '/autocomplete': {
     render: async () => import('./widgets/auto-complete/demo'),
   },
-  '/p-autocomplete': {
-    render: async () => import('./widgets/auto-complete/p-demo'),
-  },
 
   '/avatar': {
     render: async () => import('./widgets/avatar/demo'),
@@ -58,9 +55,6 @@ export default {
   '/cascader': {
     render: async () => import('./widgets/cascader/demo'),
   },
-  '/p-cascader': {
-    render: async () => import('./widgets/cascader/p-demo'),
-  },
 
   '/checkbox': {
     render: async () => {
@@ -73,9 +67,7 @@ export default {
     },
   },
   '/collapse': {
-    render: async () => {
-      return (await import('./widgets/collapse/demo')).CollapseDemo;
-    },
+    render: async () => import('./widgets/collapse/demo').CollapseDemo,
   },
   '/datepicker': {
     render: async () => import('./widgets/date-picker/demo'),
@@ -90,9 +82,6 @@ export default {
   '/dropmenu': {
     render: async () => import('./widgets/dropmenu/demo'),
   },
-  '/p-dropmenu': {
-    render: async () => import('./widgets/dropmenu/p-dropmenu'),
-  },
   '/grid': {
     render: async () => import('./widgets/grid/demo'),
   },
@@ -104,9 +93,7 @@ export default {
     render: async () => import('./widgets/input/demo'),
   },
   '/layout': {
-    render: async () => {
-      return (await import('./widgets/layout/demo')).LayoutDemo;
-    },
+    render: async () => import('./widgets/layout/demo'),
   },
 
   '/loading': {
@@ -115,9 +102,6 @@ export default {
 
   '/menu': {
     render: async () => import('./widgets/menu/demo'),
-  },
-  '/p-menu': {
-    render: async () => import('./widgets/menu/p-menu'),
   },
   '/message': {
     render: async () => import('./widgets/message/demo'),
@@ -129,9 +113,6 @@ export default {
 
   '/navmenu': {
     render: async () => import('./widgets/navmenu/demo'),
-  },
-  '/p-navmenu': {
-    render: async () => import('./widgets/navmenu/p-navmenu'),
   },
   '/notification': {
     render: async () => import('./widgets/notification/demo'),
@@ -175,9 +156,6 @@ export default {
   },
   '/select': {
     render: async () => import('./widgets/select/demo'),
-  },
-  '/p-select': {
-    render: async () => import('./widgets/select/p-select'),
   },
 
   '/skeleton': {
@@ -227,20 +205,11 @@ export default {
   '/dragTree': {
     render: async () => import('./widgets/tree/dragDome.js'),
   },
-  '/p-tree': {
-    render: async () => import('./widgets/tree/p-tree.js'),
-  },
   '/treeselect': {
     render: async () => import('./widgets/tree-select/demo'),
   },
-  '/p-treeSelect': {
-    render: async () => import('./widgets/tree-select/p-demo'),
-  },
   '/upload': {
     render: async () => import('./widgets/upload/demo'),
-  },
-  '/newTable': {
-    render: async () => import('./widgets/new-table/demo'),
   },
   '/ValidateDemo': {
     render: async () => import('./ValidateDemo'),
