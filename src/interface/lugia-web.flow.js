@@ -122,7 +122,7 @@ declare module '@lugia/lugia-web' {
     emit(eventName: string, param: Object): void;
   }
 
-  declare type KeyBoardEventListenerHandle = EventListener & {
+  declare type EditTableEventListenerHandle = EventListener & {
     editing: boolean,
     multipleSelect: boolean,
     canMoveCells: boolean,
