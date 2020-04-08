@@ -213,7 +213,6 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     const clearButton = this.getClearButton();
     const placeholder = this.getPlaceholder();
     const FontItemThemeProps = props.getPartOfThemeProps('TagWrap');
-
     const font = (
       <FontItem
         themeProps={FontItemThemeProps}
@@ -365,7 +364,11 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     if (!placeholder || !this.isEmpty()) {
       return null;
     }
-    return <PlaceContainer>{placeholder}</PlaceContainer>;
+    return (
+      <PlaceContainer themeProps={this.props.getPartOfThemeProps('Placeholder')}>
+        {placeholder}
+      </PlaceContainer>
+    );
   }
 
   isEmpty(): boolean {

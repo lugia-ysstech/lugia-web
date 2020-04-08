@@ -248,6 +248,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
         InputTagWrap: getPartOfThemeConfig('Container'),
         SwitchIcon: getPartOfThemeConfig('SwitchIcon'),
         ClearIcon: getPartOfThemeConfig('ClearIcon'),
+        Placeholder: getPartOfThemeConfig('Placeholder'),
       },
     };
     return inputtagTheme;
