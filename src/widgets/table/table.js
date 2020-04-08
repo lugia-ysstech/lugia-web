@@ -77,15 +77,17 @@ export default ThemeProvider(
       this.tableWrap = React.createRef();
     }
     componentDidMount() {
-      const { getPartOfThemeConfig } = this.props;
-      const containerTheme = getPartOfThemeConfig('Container') || {};
-      const { normal: { height: themeHeight } = {} } = containerTheme;
-      const tableWarp = this.tableWrap.querySelector('.rc-table');
-      if (tableWarp && themeHeight < tableWarp.offsetHeight - 5) {
-        this.setState({ scroll: this.getTableBodyHeight(themeHeight) });
-      } else {
-        this.setState({ scroll: {} });
-      }
+      setTimeout(() => {
+        const { getPartOfThemeConfig } = this.props;
+        const containerTheme = getPartOfThemeConfig('Container') || {};
+        const { normal: { height: themeHeight } = {} } = containerTheme;
+        const tableWarp = this.tableWrap.querySelector('.rc-table');
+        if (tableWarp && themeHeight < tableWarp.offsetHeight - 5) {
+          this.setState({ scroll: this.getTableBodyHeight(themeHeight) });
+        } else {
+          this.setState({ scroll: {} });
+        }
+      }, 0);
     }
 
     static getDerivedStateFromProps(props) {
