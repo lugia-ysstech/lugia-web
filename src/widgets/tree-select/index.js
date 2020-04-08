@@ -332,6 +332,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
         TagIcon: getPartOfThemeConfig('TagIcon'),
         SwitchIcon: getPartOfThemeConfig('SwitchIcon'),
         ClearIcon: getPartOfThemeConfig('ClearIcon'),
+        Placeholder: getPartOfThemeConfig('Placeholder'),
         Menu: getPartOfThemeConfig('InputMenu'),
       },
     };

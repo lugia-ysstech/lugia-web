@@ -4,20 +4,29 @@
  *
  * @flow
  */
-import styled from 'styled-components';
+import CSSComponent, { css } from '@lugia/theme-css-hoc';
 
-export default styled.div`
-  top: 50%;
-  position: absolute;
-  left: 8px;
-  right: 7px;
-  margin-top: -10px;
-  text-align: left;
-  color: rgba(0, 0, 0, 0.25);
-  line-height: 20px;
-  max-width: 100%;
-  height: 20px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-`;
+const PlaceContainer = CSSComponent({
+  tag: 'div',
+  className: 'placeContainer',
+  normal: {
+    selectNames: [['color'], ['fontSize'], ['font'], ['padding']],
+  },
+  css: css`
+    top: 50%;
+    position: absolute;
+    padding-left: 5px;
+    right: 7px;
+    margin-top: -10px;
+    text-align: left;
+    color: rgba(0, 0, 0, 0.25);
+    line-height: 20px;
+    max-width: 100%;
+    height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  `,
+});
+
+export default PlaceContainer;
