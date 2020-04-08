@@ -346,6 +346,12 @@
           "disabled": [["color"], ["fontSize"], ["cursor"]]
         },
 
+        "Placeholder": {
+          "name": "提示信息文字",
+          "desc": "提示信息文字",
+          "normal": [["color"], ["fontSize"], ["font"], ["padding"]]
+        },
+
         "Menu": {
           "name": "弹开菜单",
           "theme": {
@@ -661,6 +667,12 @@
       "hover": [["color"], ["fontSize"]],
       "active": [["color"], ["fontSize"]],
       "disabled": [["color"], ["fontSize"], ["cursor"]]
+    },
+
+    "Placeholder": {
+      "name": "提示信息文字",
+      "desc": "提示信息文字",
+      "normal": [["color"], ["fontSize"], ["font"], ["padding"]]
     },
 
     "Menu": {
