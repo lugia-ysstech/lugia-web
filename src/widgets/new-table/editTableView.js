@@ -12,11 +12,10 @@ import { findDOMNode } from 'react-dom';
 import {
   defaultTableTheme,
   restColumnsIntoData,
-  setFirstRowAsHead,
   keyDownHandler,
   keyUpHandler,
   getThemeForTable,
-  restColumnsWithMark,
+  restColumnsWithRender,
   isSelected,
   isEditCell,
   resetSelectRow,
@@ -85,10 +84,10 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
 
   render() {
     const { data = [], columns = [] } = this.props;
-    const firstLineData = setFirstRowAsHead(restColumnsIntoData(columns));
+    const firstLineData = restColumnsIntoData(columns);
     const tableData = firstLineData.concat(data);
     const { renderFunc } = this;
-    const tableColumns = restColumnsWithMark(columns, renderFunc);
+    const tableColumns = restColumnsWithRender(columns, renderFunc);
     const { tableSize, tableStyle } = this.props;
     const tableProps = { tableSize, tableStyle };
     const containerTheme = this.props.getPartOfThemeProps('Container');
@@ -211,7 +210,6 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
   };
 
   clearEditState = () => {
-    this.EditTableListener.emit('quitMoveCells');
     this.setState({ editing: false, editCell: null, selectCell: [] });
   };
 
