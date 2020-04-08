@@ -13,15 +13,9 @@ export const restColumnsIntoData = (columns: Array<Object>): Array<Object> => {
   columns.forEach(item => {
     const { title, dataIndex } = item;
     rowDataItem[dataIndex] = title;
+    rowDataItem.isHead = true;
   });
   return [rowDataItem];
-};
-
-export const setFirstRowAsHead = (rowData: Array<Object>): Array<Object> => {
-  if (!rowData) return rowData;
-  const newData = [...rowData];
-  newData[0].isHead = true;
-  return newData;
 };
 
 export const isSelectSameItem = (oldItem: Object, currentItem: Object): boolean => {
@@ -68,7 +62,7 @@ export const getThemeForTable = (targetTheme: Object, defaultTheme: Object): Obj
   return { theme: resultTheme, viewClass };
 };
 
-export const restColumnsWithMark = (
+export const restColumnsWithRender = (
   columns: ?Array<Object>,
   renderFunc: Function
 ): Array<Object> => {
@@ -76,7 +70,7 @@ export const restColumnsWithMark = (
     return [];
   }
   const newCols = [];
-  columns.forEach((item, index) => {
+  columns.forEach((item: Object) => {
     const { render } = item;
     const newItem = { ...item };
     newItem.customRender = render;
@@ -116,7 +110,7 @@ export const resetSelectRow = (res: Object): Object => {
 
 export const resetSelectRowFromArray = (selectInfo: Object): Array<Object> => {
   if (!selectInfo || selectInfo.length === 0) {
-    return selectInfo;
+    return [];
   }
   return [...selectInfo].map(item => {
     const newItem = { ...item };
@@ -175,7 +169,7 @@ export const getMovedCells = (props: Object): ?Object => {
 
   const { data = [], columns = [] } = props;
   const maxColumn = columns.length && columns.length - 1;
-  const maxData = data.length && data.length;
+  const maxData = data.length || 0;
   selectColumn = Math.max(Math.min(maxColumn, selectColumn), 0);
   selectRow = Math.max(Math.min(maxData, selectRow), 0);
   if (key && key === 'Tab' && selectCell) {
@@ -191,8 +185,8 @@ export const setInputChangedValue = (props: Object): Object => {
     let keyName = null;
     columns.forEach(col => {
       const { dataIndex } = col;
-      const lugiaMark = EditTableListener.getSelectColumnMark(dataIndex);
-      if (lugiaMark === selectColumn) {
+      const currentMark = EditTableListener.getSelectColumnMark(dataIndex);
+      if (currentMark === selectColumn) {
         keyName = dataIndex;
       }
     });
@@ -210,18 +204,19 @@ export const onCellClick = (props: Object) => {
   EditTableListener.setClickNumber(count);
   setTimeout(() => {
     const { selectColumn, selectRow, selectCell = [] } = props;
+    const currentCell = { selectColumn, selectRow };
     if (count === 1) {
-      const isSelect = isSelected({ selectColumn, selectRow }, selectCell);
-      let selectCellResult = [{ selectColumn, selectRow }];
-      let currentItem = { selectColumn, selectRow };
+      const isSelect = isSelected(currentCell, selectCell);
+      let selectCellResult = [currentCell];
+      let currentItem = currentCell;
       if (isSelect) {
         EditTableListener.emit('quitMoveCells');
-        selectCellResult = getClearSingleSelectCell({ selectColumn, selectRow }, selectCell);
+        selectCellResult = getClearSingleSelectCell(currentCell, selectCell);
         currentItem = {};
       }
       EditTableListener.setClickNumber(0);
       EditTableListener.emit('quiteMoveTrack');
-      EditTableListener.emit('enterMoveTrack', { selectColumn, selectRow });
+      EditTableListener.emit('enterMoveTrack', currentCell);
       const isMultiple = EditTableListener.isMultiple();
 
       if (isMultiple) {
@@ -239,7 +234,7 @@ export const onCellClick = (props: Object) => {
       EditTableListener.setClickNumber(0);
       EditTableListener.emit('quitMoveCells');
       EditTableListener.emit('quiteMoveTrack');
-      EditTableListener.emit('setState', { editing: true, editCell: { selectColumn, selectRow } });
+      EditTableListener.emit('setState', { editing: true, editCell: currentCell });
     }
   }, 200);
 };
