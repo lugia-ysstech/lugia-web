@@ -16,6 +16,7 @@ const PlaceContainer = CSSComponent({
     top: 50%;
     position: absolute;
     padding-left: 5px;
+    left: 1px;
     right: 7px;
     margin-top: -10px;
     text-align: left;
