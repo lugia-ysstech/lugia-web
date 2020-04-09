@@ -113,7 +113,7 @@ export const getCellItem = (props: Object) => {
   if (!selectColumn || !selectRow) {
     return {};
   }
-  const dataItem = EditTableListener.getSelectDataMark(selectRow);
+  const dataItem = EditTableListener.getSelectDataMark(selectRow - 1);
   const columnItem = columns[selectColumn].dataIndex;
   return {
     currentCell: { [columnItem]: dataItem[columnItem] },

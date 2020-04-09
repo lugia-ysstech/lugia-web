@@ -77,6 +77,7 @@ export default class EditTableEventListener extends Listener<any> {
     if (shiftKey) {
       this.emit('shiftDown');
       this.emit('enterMultipleSelect');
+      return;
     }
     if (this.isCanMoveCells()) {
       let directions;
