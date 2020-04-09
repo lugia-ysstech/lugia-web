@@ -99,13 +99,27 @@ export const isEditCell = (currentItem: Object, editCell: Object): boolean => {
 };
 
 export const resetSelectRow = (res: Object): Object => {
-  const { currentItem, newValue, oldValue } = res;
+  const { currentItem, newValue, oldValue, EditTableListener, columns } = res;
   const newItem = { ...currentItem };
-  const { selectRow } = newItem;
-  newItem.selectRow = selectRow - 1;
   const newValueRes = resetSelectRowFromArray(newValue);
   const oldValueRes = resetSelectRowFromArray(oldValue);
-  return { currentItem: newItem, newValue: newValueRes, oldValue: oldValueRes };
+  const currentInfo = getCellItem({ newItem, EditTableListener, columns });
+  return { currentItem: currentInfo, newValue: newValueRes, oldValue: oldValueRes };
+};
+
+export const getCellItem = (props: Object) => {
+  const { newItem, EditTableListener, columns } = props;
+  const { selectColumn, selectRow } = newItem;
+  if (!selectColumn || !selectRow) {
+    return {};
+  }
+  const dataItem = EditTableListener.getSelectDataMark(selectRow);
+  const columnItem = columns[selectColumn].dataIndex;
+  return {
+    currentCell: { [columnItem]: dataItem[columnItem] },
+    record: dataItem,
+    cellIndex: resetItemName(newItem),
+  };
 };
 
 export const resetSelectRowFromArray = (selectInfo: Object): Array<Object> => {
@@ -113,11 +127,16 @@ export const resetSelectRowFromArray = (selectInfo: Object): Array<Object> => {
     return [];
   }
   return [...selectInfo].map(item => {
-    const newItem = { ...item };
-    const { selectRow } = newItem;
-    newItem.selectRow = selectRow - 1;
-    return newItem;
+    return resetItemName(item);
   });
+};
+
+export const resetItemName = (item: Object) => {
+  const newItem = {};
+  const { selectColumn, selectRow } = item;
+  newItem.rowIndex = selectRow - 1;
+  newItem.columnIndex = selectColumn;
+  return newItem;
 };
 
 export const getClearSingleSelectCell = (

@@ -219,8 +219,10 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
   };
 
   exportOnCell = (res: Object) => {
-    const { onCell } = this.props;
-    onCell && onCell(resetSelectRow({ ...res }));
+    const { onCell, columns } = this.props;
+    const { EditTableListener } = this;
+    const exportInfo = resetSelectRow({ ...res, EditTableListener, columns });
+    onCell && onCell({ ...exportInfo });
   };
 
   doSetState = (stateInfo: Object) => {
@@ -232,7 +234,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
     const { data, columns } = this.props;
     const { EditTableListener } = this;
     const selectInfo = getMovedCells({ selectCell, data, columns, ...props, EditTableListener });
-    this.exportOnCell({
+    EditTableListener.emit('exportOnCell', {
       currentItem: selectInfo,
       newValue: [selectInfo],
       oldValue: selectCell,
