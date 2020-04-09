@@ -6,7 +6,7 @@ export const defaultTableTheme = {
 };
 
 export const restColumnsIntoData = (columns: Array<Object>): Array<Object> => {
-  if (!columns) {
+  if (!columns || columns.length === 0) {
     return [];
   }
   const rowDataItem = {};
@@ -73,7 +73,9 @@ export const restColumnsWithRender = (
   columns.forEach((item: Object) => {
     const { render } = item;
     const newItem = { ...item };
-    newItem.customRender = render;
+    if (render) {
+      newItem.customRender = render;
+    }
     newItem.render = (text, record, index) => {
       return renderFunc({ text, record, index, ...newItem });
     };
@@ -82,7 +84,7 @@ export const restColumnsWithRender = (
   return newCols;
 };
 
-export const isSelected = (currentItem: Object, selectCell: Object): boolean => {
+export const isSelected = (currentItem: Object, selectCell: Array<Object>): boolean => {
   if (!selectCell || selectCell.length === 0) {
     return false;
   }
@@ -108,7 +110,7 @@ export const resetSelectRow = (res: Object): Object => {
 };
 
 export const getCellItem = (props: Object) => {
-  const { newItem, EditTableListener, columns } = props;
+  const { newItem = {}, EditTableListener, columns } = props;
   const { selectColumn, selectRow } = newItem;
   if (!selectColumn || !selectRow) {
     return {};
@@ -131,7 +133,7 @@ export const resetSelectRowFromArray = (selectInfo: Object): Array<Object> => {
   });
 };
 
-export const resetItemName = (item: Object) => {
+export const resetItemName = (item: Object): Object => {
   const newItem = {};
   const { selectColumn, selectRow } = item;
   newItem.rowIndex = selectRow - 1;
@@ -244,11 +246,13 @@ export const onCellClick = (props: Object) => {
         EditTableListener.emit('enterMoveCells');
       }
       EditTableListener.emit('setState', { selectCell: selectCellResult, editCell: currentItem });
-      EditTableListener.emit('exportOnCell', {
-        currentItem,
-        newValue: selectCellResult,
-        oldValue: selectCell,
-      });
+      const { isHead } = props;
+      !isHead &&
+        EditTableListener.emit('exportOnCell', {
+          currentItem,
+          newValue: selectCellResult,
+          oldValue: selectCell,
+        });
     } else if (count === 2) {
       EditTableListener.setClickNumber(0);
       EditTableListener.emit('quitMoveCells');

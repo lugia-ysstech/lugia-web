@@ -176,7 +176,15 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
         isSelect={isSelect}
         isHead={isHead}
         onClick={e =>
-          onCellClick({ e, selectColumn, selectRow, selectCell, EditTableListener, isEditHead })
+          onCellClick({
+            e,
+            selectColumn,
+            selectRow,
+            selectCell,
+            EditTableListener,
+            isEditHead,
+            isHead,
+          })
         }
       >
         {customRender && !isHead ? customRender(text, record, index) : defaultText.toString()}

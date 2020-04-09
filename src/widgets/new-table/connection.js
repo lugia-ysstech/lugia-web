@@ -63,7 +63,7 @@ export default class EditTableEventListener extends Listener<any> {
       this.moveTrack = [];
     });
     this.enterUpdateDataKeyMap = this.on('updateDataKeyMap', (props: Object) => {
-      this.doUpdateDataKeyMap(props);
+      this.setUpdateDataKeyMap(props);
     });
   }
 
@@ -140,24 +140,30 @@ export default class EditTableEventListener extends Listener<any> {
     this.clickNumber = number;
   };
 
-  doUpdateDataKeyMap = (props: Object): void => {
+  setUpdateDataKeyMap = (props: Object): void => {
+    this.dataKeyMap = this.getKeyMaps(props);
+  };
+
+  getKeyMaps = (props: Object) => {
     const { columns, data } = props;
+    const dataKeyMap = { dataMap: {}, columnsMap: {} };
     data &&
       data.forEach((item: Object, index: number) => {
-        this.dataKeyMap.dataMap[index] = { ...item };
+        dataKeyMap.dataMap[index] = { ...item };
       });
     columns &&
       columns.forEach((item: Object, index: number) => {
         const { dataIndex } = item;
-        this.dataKeyMap.columnsMap[dataIndex] = index;
+        dataKeyMap.columnsMap[dataIndex] = index;
       });
+    return dataKeyMap;
   };
 
-  getSelectColumnMark = (dataIndex: Number) => {
+  getSelectColumnMark = (dataIndex: Number): number => {
     return this.dataKeyMap.columnsMap[dataIndex];
   };
 
-  getSelectDataMark = (index: Number) => {
+  getSelectDataMark = (index: Number): Object => {
     return this.dataKeyMap.dataMap[index];
   };
 
