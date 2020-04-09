@@ -238,7 +238,7 @@ export const onCellClick = (props: Object) => {
       EditTableListener.emit('enterMoveTrack', currentCell);
       const isMultiple = EditTableListener.isMultiple();
 
-      if (isMultiple) {
+      if (isMultiple && !isSelect) {
         selectCellResult = selectCell.concat(selectCellResult);
       } else {
         EditTableListener.emit('enterMoveCells');
