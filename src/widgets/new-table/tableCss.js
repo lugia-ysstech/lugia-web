@@ -8,8 +8,8 @@ import { getBorder } from '@lugia/theme-utils';
 
 import colorsFunc from '../css/stateColor';
 
-const FontSize = 1.4;
-const em = px2emcss(FontSize);
+const fontSize = 1.4;
+const em = px2emcss(fontSize);
 
 const { borderColor, themeColor, borderSize } = colorsFunc();
 
