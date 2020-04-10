@@ -28,7 +28,7 @@ import {
 class EditTable extends React.Component<EditTableProps, EditTableState> {
   keyDownHandler: any;
   keyUpHandler: any;
-  EditTableListener: EditTableEventListenerHandle;
+  editTableListener: EditTableEventListenerHandle;
   Table: any;
   moveCellsListener: Object;
   quitEditListener: Object;
@@ -40,27 +40,27 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
     super(props);
     const { columns, data = [] } = props;
 
-    this.EditTableListener = new EditTableEventListener();
+    this.editTableListener = new EditTableEventListener();
     this.state = {
       selectCell: [],
       editCell: {},
       editing: false,
     };
-    this.EditTableListener.emit('updateDataKeyMap', { columns, data });
-    this.moveCellsListener = this.EditTableListener.on('moveCells', (props: Object) => {
+    this.editTableListener.emit('updateDataKeyMap', { columns, data });
+    this.moveCellsListener = this.editTableListener.on('moveCells', (props: Object) => {
       this.doMoveCells(props);
     });
-    this.quitEditListener = this.EditTableListener.on('quitEdit', (res: Object) => {
+    this.quitEditListener = this.editTableListener.on('quitEdit', (res: Object) => {
       this.quitEdit(res);
     });
-    this.enterEditingListener = this.EditTableListener.on('enterEditing', (res: Object) => {
+    this.enterEditingListener = this.editTableListener.on('enterEditing', (res: Object) => {
       this.setState({ editing: true });
     });
 
-    this.setStateListener = this.EditTableListener.on('setState', (res: Object) => {
+    this.setStateListener = this.editTableListener.on('setState', (res: Object) => {
       this.doSetState(res);
     });
-    this.exportOnCellListener = this.EditTableListener.on('exportOnCell', (res: Object) => {
+    this.exportOnCellListener = this.editTableListener.on('exportOnCell', (res: Object) => {
       this.exportOnCell(res);
     });
   }
@@ -70,16 +70,16 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
     const { data, columns } = nextProps;
     const isUpdateValue = !isEqualArray(oldData, data) || !isEqualArray(oldColumns, columns);
     if (isUpdateValue) {
-      this.EditTableListener.emit('updateDataKeyMap', { columns, data });
+      this.editTableListener.emit('updateDataKeyMap', { columns, data });
     }
     return true;
   }
 
   componentDidMount() {
-    const { EditTableListener } = this;
+    const { editTableListener } = this;
     const isInTarget = findDOMNode(this.Table.getThemeTarget()) === document.activeElement;
-    window.addEventListener('keydown', keyDownHandler({ isInTarget, EditTableListener }));
-    window.addEventListener('keyup', keyUpHandler({ EditTableListener }));
+    window.addEventListener('keydown', keyDownHandler({ isInTarget, editTableListener }));
+    window.addEventListener('keyup', keyUpHandler({ editTableListener }));
   }
 
   render() {
@@ -111,7 +111,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
 
   renderFunc = (renderObject: Object) => {
     const { text, record, dataIndex, index } = renderObject;
-    const selectColumn = this.EditTableListener.getSelectColumnMark(dataIndex);
+    const selectColumn = this.editTableListener.getSelectColumnMark(dataIndex);
 
     const defaultText =
       typeof text !== 'object' && (text || text === 0) ? record[text] || text : '';
@@ -159,7 +159,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
             value={defaultText}
             autoFocus={true}
             type={editType}
-            listener={this.EditTableListener}
+            listener={this.editTableListener}
             data={selectData}
           />
         </EditDiv>
@@ -169,7 +169,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
     const { text, record, index, selectColumn, selectRow, customRender } = renderObject;
     const { selectSuffixElement, isEditHead } = this.props;
     const { selectCell } = this.state;
-    const { EditTableListener } = this;
+    const { editTableListener } = this;
     return (
       <EditDiv
         themeProps={editDivTheme}
@@ -181,7 +181,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
             selectColumn,
             selectRow,
             selectCell,
-            EditTableListener,
+            editTableListener,
             isEditHead,
             isHead,
           })
@@ -200,14 +200,14 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
     if (oldValue !== newValue) {
       const { editCell, editing } = this.state;
       const { data, columns } = this.props;
-      const { EditTableListener } = this;
+      const { editTableListener } = this;
       const changedData = setInputChangedValue({
         value: newValue,
         editCell,
         data,
         columns,
         editing,
-        EditTableListener,
+        editTableListener,
       });
       if (changedData) {
         const { data: newData } = changedData;
@@ -228,8 +228,8 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
 
   exportOnCell = (res: Object) => {
     const { onCell, columns } = this.props;
-    const { EditTableListener } = this;
-    const exportInfo = resetSelectRow({ ...res, EditTableListener, columns });
+    const { editTableListener } = this;
+    const exportInfo = resetSelectRow({ ...res, editTableListener, columns });
     onCell && onCell({ ...exportInfo });
   };
 
@@ -240,9 +240,9 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
   doMoveCells = (props: Object) => {
     const { selectCell } = this.state;
     const { data, columns } = this.props;
-    const { EditTableListener } = this;
-    const selectInfo = getMovedCells({ selectCell, data, columns, ...props, EditTableListener });
-    EditTableListener.emit('exportOnCell', {
+    const { editTableListener } = this;
+    const selectInfo = getMovedCells({ selectCell, data, columns, ...props, editTableListener });
+    editTableListener.emit('exportOnCell', {
       currentItem: selectInfo,
       newValue: [selectInfo],
       oldValue: selectCell,
