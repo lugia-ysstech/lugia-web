@@ -44,18 +44,6 @@ export const getBackground = (props: CommonInputProps) => {
   return `background:${disabled === true ? disableColor : backgroundColor ? backgroundColor : ''}`;
 };
 
-export function checkValidateResultFromStatusAndType(
-  validateStatus: ValidateStatus,
-  expStatus: ValidateStatus,
-  validateType: ValidateType,
-  expType: ValidateType
-): boolean {
-  return validateStatus === expStatus && checkValidateType(validateType, expType);
-}
-export function checkValidateType(validateType: ValidateType, expType: ValidateType): boolean {
-  return expType === validateType;
-}
-
 export function getInputHeight(height, size: InputSize) {
   return height
     ? height
