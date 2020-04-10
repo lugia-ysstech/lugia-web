@@ -62,6 +62,7 @@ export const SliderBigBox = CSSComponent({
     display: inline-block;
     box-sizing: border-box;
     vertical-align: top;
+    font-size: 0;
   `,
 });
 export const SliderBox = StaticComponent({
