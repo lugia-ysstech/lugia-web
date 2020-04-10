@@ -21,7 +21,7 @@ export type EditTableProps = TableProps & {
 
 export type EditTableState = {
   selectCell: Array<Object>,
-  editCell?: Object,
+  editCell: Object,
   editing: boolean,
 };
 
