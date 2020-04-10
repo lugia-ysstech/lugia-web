@@ -1,0 +1,1693 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`new-table  EditTable css 1`] = `
+.c0 {
+  width: 100%;
+}
+
+.c0:focus {
+  outline: none;
+}
+
+.c4 {
+  border-bottom: 1px solid #cccccc;
+  display: table-row;
+}
+
+.c5 {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 0 10px;
+  height: 100%;
+  text-align: center;
+}
+
+.c7 {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 0 10px;
+  height: 100%;
+  text-align: undefined;
+}
+
+.c2 {
+  display: table-header-group;
+}
+
+.c3 {
+  display: table-row-group;
+}
+
+.c1 {
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+  border-top: 1px solid #cccccc;
+}
+
+.c6 {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+}
+
+<div
+  className=""
+  style={Object {}}
+>
+  <div
+    className="c0"
+    style={Object {}}
+    tabIndex={10}
+  >
+    <div
+      className="c1"
+      style={Object {}}
+    >
+      <div
+        className="c2"
+      />
+      <div
+        className="c3"
+      >
+        <div
+          className="c4"
+          style={Object {}}
+        >
+          <div
+            className="c5"
+            style={
+              Object {
+                "borderBottomColor": "#cccccc",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "0.1rem",
+                "height": "2.285714285714286em",
+                "paddingBottom": "0rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "0rem",
+                "paddingTop": "0rem",
+                "width": "10rem",
+              }
+            }
+          >
+            <div
+              className="c6"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "#f2f2f2",
+                  "borderBottomColor": "transparent",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "transparent",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "transparent",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "transparent",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                }
+              }
+            >
+              姓名
+            </div>
+          </div>
+          <div
+            className="c7"
+            style={
+              Object {
+                "borderBottomColor": "#cccccc",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "0.1rem",
+                "height": "2.285714285714286em",
+                "paddingBottom": "0rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "0rem",
+                "paddingTop": "0rem",
+              }
+            }
+          >
+            <div
+              className="c6"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "#f2f2f2",
+                  "borderBottomColor": "transparent",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "transparent",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "transparent",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "transparent",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                }
+              }
+            >
+              Age
+            </div>
+          </div>
+          <div
+            className="c7"
+            style={
+              Object {
+                "borderBottomColor": "#cccccc",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "0.1rem",
+                "height": "2.285714285714286em",
+                "paddingBottom": "0rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "0rem",
+                "paddingTop": "0rem",
+                "width": "20rem",
+              }
+            }
+          >
+            <div
+              className="c6"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "#f2f2f2",
+                  "borderBottomColor": "transparent",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "transparent",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "transparent",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "transparent",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                }
+              }
+            >
+              Address
+            </div>
+          </div>
+          <div
+            className="c7"
+            style={
+              Object {
+                "borderBottomColor": "#cccccc",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "0.1rem",
+                "height": "2.285714285714286em",
+                "paddingBottom": "0rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "0rem",
+                "paddingTop": "0rem",
+                "width": "20rem",
+              }
+            }
+          >
+            <div
+              className="c6"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "#f2f2f2",
+                  "borderBottomColor": "transparent",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "transparent",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "transparent",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "transparent",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                }
+              }
+            >
+              isIn
+            </div>
+          </div>
+        </div>
+        <div
+          className="c4"
+          style={Object {}}
+        >
+          <div
+            className="c5"
+            style={
+              Object {
+                "borderBottomColor": "#cccccc",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "0.1rem",
+                "height": "2.285714285714286em",
+                "paddingBottom": "0rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "0rem",
+                "paddingTop": "0rem",
+                "width": "10rem",
+              }
+            }
+          >
+            <div
+              className="c6"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderBottomColor": "transparent",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "transparent",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "transparent",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "transparent",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                }
+              }
+            >
+              
+            </div>
+          </div>
+          <div
+            className="c7"
+            style={
+              Object {
+                "borderBottomColor": "#cccccc",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "0.1rem",
+                "height": "2.285714285714286em",
+                "paddingBottom": "0rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "0rem",
+                "paddingTop": "0rem",
+              }
+            }
+          >
+            <div
+              className="c6"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderBottomColor": "transparent",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "transparent",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "transparent",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "transparent",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                }
+              }
+            >
+              28
+            </div>
+          </div>
+          <div
+            className="c7"
+            style={
+              Object {
+                "borderBottomColor": "#cccccc",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "0.1rem",
+                "height": "2.285714285714286em",
+                "paddingBottom": "0rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "0rem",
+                "paddingTop": "0rem",
+                "width": "20rem",
+              }
+            }
+          >
+            <div
+              className="c6"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderBottomColor": "transparent",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "transparent",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "transparent",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "transparent",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                }
+              }
+            >
+              
+            </div>
+          </div>
+          <div
+            className="c7"
+            style={
+              Object {
+                "borderBottomColor": "#cccccc",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "0.1rem",
+                "height": "2.285714285714286em",
+                "paddingBottom": "0rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "0rem",
+                "paddingTop": "0rem",
+                "width": "20rem",
+              }
+            }
+          >
+            <div
+              className="c6"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderBottomColor": "transparent",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "transparent",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "transparent",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "transparent",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                }
+              }
+            />
+          </div>
+        </div>
+        <div
+          className="c4"
+          style={Object {}}
+        >
+          <div
+            className="c5"
+            style={
+              Object {
+                "borderBottomColor": "#cccccc",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "0.1rem",
+                "height": "2.285714285714286em",
+                "paddingBottom": "0rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "0rem",
+                "paddingTop": "0rem",
+                "width": "10rem",
+              }
+            }
+          >
+            <div
+              className="c6"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderBottomColor": "transparent",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "transparent",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "transparent",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "transparent",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                }
+              }
+            >
+              Rose
+            </div>
+          </div>
+          <div
+            className="c7"
+            style={
+              Object {
+                "borderBottomColor": "#cccccc",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "0.1rem",
+                "height": "2.285714285714286em",
+                "paddingBottom": "0rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "0rem",
+                "paddingTop": "0rem",
+              }
+            }
+          >
+            <div
+              className="c6"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderBottomColor": "transparent",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "transparent",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "transparent",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "transparent",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                }
+              }
+            >
+              36
+            </div>
+          </div>
+          <div
+            className="c7"
+            style={
+              Object {
+                "borderBottomColor": "#cccccc",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "0.1rem",
+                "height": "2.285714285714286em",
+                "paddingBottom": "0rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "0rem",
+                "paddingTop": "0rem",
+                "width": "20rem",
+              }
+            }
+          >
+            <div
+              className="c6"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderBottomColor": "transparent",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "transparent",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "transparent",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "transparent",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                }
+              }
+            >
+              some where
+            </div>
+          </div>
+          <div
+            className="c7"
+            style={
+              Object {
+                "borderBottomColor": "#cccccc",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "0.1rem",
+                "height": "2.285714285714286em",
+                "paddingBottom": "0rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "0rem",
+                "paddingTop": "0rem",
+                "width": "20rem",
+              }
+            }
+          >
+            <div
+              className="c6"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderBottomColor": "transparent",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "transparent",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "transparent",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "transparent",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                }
+              }
+            />
+          </div>
+        </div>
+        <div
+          className="c4"
+          style={Object {}}
+        >
+          <div
+            className="c5"
+            style={
+              Object {
+                "borderBottomColor": "#cccccc",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "0.1rem",
+                "height": "2.285714285714286em",
+                "paddingBottom": "0rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "0rem",
+                "paddingTop": "0rem",
+                "width": "10rem",
+              }
+            }
+          >
+            <div
+              className="c6"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderBottomColor": "transparent",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "transparent",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "transparent",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "transparent",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                }
+              }
+            >
+              Uzi
+            </div>
+          </div>
+          <div
+            className="c7"
+            style={
+              Object {
+                "borderBottomColor": "#cccccc",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "0.1rem",
+                "height": "2.285714285714286em",
+                "paddingBottom": "0rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "0rem",
+                "paddingTop": "0rem",
+              }
+            }
+          >
+            <div
+              className="c6"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderBottomColor": "transparent",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "transparent",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "transparent",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "transparent",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                }
+              }
+            >
+              36
+            </div>
+          </div>
+          <div
+            className="c7"
+            style={
+              Object {
+                "borderBottomColor": "#cccccc",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "0.1rem",
+                "height": "2.285714285714286em",
+                "paddingBottom": "0rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "0rem",
+                "paddingTop": "0rem",
+                "width": "20rem",
+              }
+            }
+          >
+            <div
+              className="c6"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderBottomColor": "transparent",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "transparent",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "transparent",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "transparent",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                }
+              }
+            >
+              some where
+            </div>
+          </div>
+          <div
+            className="c7"
+            style={
+              Object {
+                "borderBottomColor": "#cccccc",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "0.1rem",
+                "height": "2.285714285714286em",
+                "paddingBottom": "0rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "0rem",
+                "paddingTop": "0rem",
+                "width": "20rem",
+              }
+            }
+          >
+            <div
+              className="c6"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderBottomColor": "transparent",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "transparent",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "transparent",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "transparent",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                }
+              }
+            />
+          </div>
+        </div>
+        <div
+          className="c4"
+          style={Object {}}
+        >
+          <div
+            className="c5"
+            style={
+              Object {
+                "borderBottomColor": "#cccccc",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "0.1rem",
+                "height": "2.285714285714286em",
+                "paddingBottom": "0rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "0rem",
+                "paddingTop": "0rem",
+                "width": "10rem",
+              }
+            }
+          >
+            <div
+              className="c6"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderBottomColor": "transparent",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "transparent",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "transparent",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "transparent",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                }
+              }
+            >
+              ClearLove
+            </div>
+          </div>
+          <div
+            className="c7"
+            style={
+              Object {
+                "borderBottomColor": "#cccccc",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "0.1rem",
+                "height": "2.285714285714286em",
+                "paddingBottom": "0rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "0rem",
+                "paddingTop": "0rem",
+              }
+            }
+          >
+            <div
+              className="c6"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderBottomColor": "transparent",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "transparent",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "transparent",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "transparent",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                }
+              }
+            >
+              36
+            </div>
+          </div>
+          <div
+            className="c7"
+            style={
+              Object {
+                "borderBottomColor": "#cccccc",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "0.1rem",
+                "height": "2.285714285714286em",
+                "paddingBottom": "0rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "0rem",
+                "paddingTop": "0rem",
+                "width": "20rem",
+              }
+            }
+          >
+            <div
+              className="c6"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderBottomColor": "transparent",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "transparent",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "transparent",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "transparent",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                }
+              }
+            >
+              some where
+            </div>
+          </div>
+          <div
+            className="c7"
+            style={
+              Object {
+                "borderBottomColor": "#cccccc",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "0.1rem",
+                "height": "2.285714285714286em",
+                "paddingBottom": "0rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "0rem",
+                "paddingTop": "0rem",
+                "width": "20rem",
+              }
+            }
+          >
+            <div
+              className="c6"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderBottomColor": "transparent",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "transparent",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "transparent",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "transparent",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                }
+              }
+            />
+          </div>
+        </div>
+        <div
+          className="c4"
+          style={Object {}}
+        >
+          <div
+            className="c5"
+            style={
+              Object {
+                "borderBottomColor": "#cccccc",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "0.1rem",
+                "height": "2.285714285714286em",
+                "paddingBottom": "0rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "0rem",
+                "paddingTop": "0rem",
+                "width": "10rem",
+              }
+            }
+          >
+            <div
+              className="c6"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderBottomColor": "transparent",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "transparent",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "transparent",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "transparent",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                }
+              }
+            >
+              Rookie
+            </div>
+          </div>
+          <div
+            className="c7"
+            style={
+              Object {
+                "borderBottomColor": "#cccccc",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "0.1rem",
+                "height": "2.285714285714286em",
+                "paddingBottom": "0rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "0rem",
+                "paddingTop": "0rem",
+              }
+            }
+          >
+            <div
+              className="c6"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderBottomColor": "transparent",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "transparent",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "transparent",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "transparent",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                }
+              }
+            >
+              36
+            </div>
+          </div>
+          <div
+            className="c7"
+            style={
+              Object {
+                "borderBottomColor": "#cccccc",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "0.1rem",
+                "height": "2.285714285714286em",
+                "paddingBottom": "0rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "0rem",
+                "paddingTop": "0rem",
+                "width": "20rem",
+              }
+            }
+          >
+            <div
+              className="c6"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderBottomColor": "transparent",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "transparent",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "transparent",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "transparent",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                }
+              }
+            >
+              some where
+            </div>
+          </div>
+          <div
+            className="c7"
+            style={
+              Object {
+                "borderBottomColor": "#cccccc",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "0.1rem",
+                "height": "2.285714285714286em",
+                "paddingBottom": "0rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "0rem",
+                "paddingTop": "0rem",
+                "width": "20rem",
+              }
+            }
+          >
+            <div
+              className="c6"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderBottomColor": "transparent",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "transparent",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "transparent",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "transparent",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                }
+              }
+            />
+          </div>
+        </div>
+        <div
+          className="c4"
+          style={Object {}}
+        >
+          <div
+            className="c5"
+            style={
+              Object {
+                "borderBottomColor": "#cccccc",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "0.1rem",
+                "height": "2.285714285714286em",
+                "paddingBottom": "0rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "0rem",
+                "paddingTop": "0rem",
+                "width": "10rem",
+              }
+            }
+          >
+            <div
+              className="c6"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderBottomColor": "transparent",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "transparent",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "transparent",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "transparent",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                }
+              }
+            >
+              TheShy
+            </div>
+          </div>
+          <div
+            className="c7"
+            style={
+              Object {
+                "borderBottomColor": "#cccccc",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "0.1rem",
+                "height": "2.285714285714286em",
+                "paddingBottom": "0rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "0rem",
+                "paddingTop": "0rem",
+              }
+            }
+          >
+            <div
+              className="c6"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderBottomColor": "transparent",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "transparent",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "transparent",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "transparent",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                }
+              }
+            >
+              36
+            </div>
+          </div>
+          <div
+            className="c7"
+            style={
+              Object {
+                "borderBottomColor": "#cccccc",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "0.1rem",
+                "height": "2.285714285714286em",
+                "paddingBottom": "0rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "0rem",
+                "paddingTop": "0rem",
+                "width": "20rem",
+              }
+            }
+          >
+            <div
+              className="c6"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderBottomColor": "transparent",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "transparent",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "transparent",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "transparent",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                }
+              }
+            >
+              some where
+            </div>
+          </div>
+          <div
+            className="c7"
+            style={
+              Object {
+                "borderBottomColor": "#cccccc",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "0.1rem",
+                "height": "2.285714285714286em",
+                "paddingBottom": "0rem",
+                "paddingLeft": "0rem",
+                "paddingRight": "0rem",
+                "paddingTop": "0rem",
+                "width": "20rem",
+              }
+            }
+          >
+            <div
+              className="c6"
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderBottomColor": "transparent",
+                  "borderBottomStyle": "solid",
+                  "borderBottomWidth": "0.1rem",
+                  "borderLeftColor": "transparent",
+                  "borderLeftStyle": "solid",
+                  "borderLeftWidth": "0.1rem",
+                  "borderRightColor": "transparent",
+                  "borderRightStyle": "solid",
+                  "borderRightWidth": "0.1rem",
+                  "borderTopColor": "transparent",
+                  "borderTopStyle": "solid",
+                  "borderTopWidth": "0.1rem",
+                }
+              }
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`new-table  Table css  1`] = `
+.c0 {
+  width: 100%;
+}
+
+.c0:focus {
+  outline: none;
+}
+
+.c3 {
+  border-bottom: 1px solid #cccccc;
+  display: table-row;
+}
+
+.c4 {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 0 10px;
+  height: 100%;
+  text-align: center;
+}
+
+.c6 {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 0 10px;
+  height: 100%;
+  text-align: undefined;
+}
+
+.c2 {
+  display: table-header-group;
+}
+
+.c5 {
+  display: table-row-group;
+}
+
+.c1 {
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+  border-top: 1px solid #cccccc;
+}
+
+<div
+  className="c0"
+  style={Object {}}
+  tabIndex={10}
+>
+  <div
+    className="c1"
+    style={Object {}}
+  >
+    <div
+      className="c2"
+    >
+      <div
+        className="c3"
+        style={Object {}}
+      >
+        <div
+          className="c4"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "10rem",
+            }
+          }
+        >
+          姓名
+        </div>
+        <div
+          className="c4"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+            }
+          }
+        >
+          Age
+        </div>
+        <div
+          className="c4"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "20rem",
+            }
+          }
+        >
+          Address
+        </div>
+        <div
+          className="c4"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "20rem",
+            }
+          }
+        >
+          isIn
+        </div>
+      </div>
+    </div>
+    <div
+      className="c5"
+    >
+      <div
+        className="c3"
+        style={Object {}}
+      >
+        <div
+          className="c4"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "10rem",
+            }
+          }
+        >
+          
+        </div>
+        <div
+          className="c6"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+            }
+          }
+        >
+          28
+        </div>
+        <div
+          className="c6"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "20rem",
+            }
+          }
+        />
+        <div
+          className="c6"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "20rem",
+            }
+          }
+        />
+      </div>
+      <div
+        className="c3"
+        style={Object {}}
+      >
+        <div
+          className="c4"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "10rem",
+            }
+          }
+        >
+          Rose
+        </div>
+        <div
+          className="c6"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+            }
+          }
+        >
+          36
+        </div>
+        <div
+          className="c6"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "20rem",
+            }
+          }
+        >
+          some where
+        </div>
+        <div
+          className="c6"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "20rem",
+            }
+          }
+        />
+      </div>
+      <div
+        className="c3"
+        style={Object {}}
+      >
+        <div
+          className="c4"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "10rem",
+            }
+          }
+        >
+          Uzi
+        </div>
+        <div
+          className="c6"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+            }
+          }
+        >
+          36
+        </div>
+        <div
+          className="c6"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "20rem",
+            }
+          }
+        >
+          some where
+        </div>
+        <div
+          className="c6"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "20rem",
+            }
+          }
+        />
+      </div>
+      <div
+        className="c3"
+        style={Object {}}
+      >
+        <div
+          className="c4"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "10rem",
+            }
+          }
+        >
+          ClearLove
+        </div>
+        <div
+          className="c6"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+            }
+          }
+        >
+          36
+        </div>
+        <div
+          className="c6"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "20rem",
+            }
+          }
+        >
+          some where
+        </div>
+        <div
+          className="c6"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "20rem",
+            }
+          }
+        />
+      </div>
+      <div
+        className="c3"
+        style={Object {}}
+      >
+        <div
+          className="c4"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "10rem",
+            }
+          }
+        >
+          Rookie
+        </div>
+        <div
+          className="c6"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+            }
+          }
+        >
+          36
+        </div>
+        <div
+          className="c6"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "20rem",
+            }
+          }
+        >
+          some where
+        </div>
+        <div
+          className="c6"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "20rem",
+            }
+          }
+        />
+      </div>
+      <div
+        className="c3"
+        style={Object {}}
+      >
+        <div
+          className="c4"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "10rem",
+            }
+          }
+        >
+          TheShy
+        </div>
+        <div
+          className="c6"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+            }
+          }
+        >
+          36
+        </div>
+        <div
+          className="c6"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "20rem",
+            }
+          }
+        >
+          some where
+        </div>
+        <div
+          className="c6"
+          style={
+            Object {
+              "borderBottomColor": "#cccccc",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "height": "2.285714285714286em",
+              "width": "20rem",
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

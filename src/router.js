@@ -211,6 +211,9 @@ export default {
   '/upload': {
     render: async () => import('./widgets/upload/demo'),
   },
+  '/newTable': {
+    render: async () => import('./widgets/new-table/demo'),
+  },
   '/ValidateDemo': {
     render: async () => import('./ValidateDemo'),
   },
