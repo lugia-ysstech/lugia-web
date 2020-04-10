@@ -76,12 +76,13 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
     const tableProps = { tableSize, tableStyle };
     const containerTheme = this.props.getPartOfThemeProps('Container');
     const defaultTableTheme = {
-      Td: { normal: { padding: 0 } },
+      Td: { normal: { padding: { left: 0, right: 0 } } },
     };
     const tableTheme = getThemeForTable(
       this.props.getPartOfThemeHocProps('Table'),
       defaultTableTheme
     );
+    console.log('tableTheme', tableTheme);
     return (
       <Container themeProps={containerTheme}>
         <Table
