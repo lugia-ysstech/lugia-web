@@ -82,7 +82,6 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
       this.props.getPartOfThemeHocProps('Table'),
       defaultTableTheme
     );
-    console.log('tableTheme', tableTheme);
     return (
       <Container themeProps={containerTheme}>
         <Table
