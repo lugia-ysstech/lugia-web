@@ -8,23 +8,7 @@ import React from 'react';
 import 'jest-styled-components';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import {
-  restColumnsIntoData,
-  isSelectSameItem,
-  keyUpHandler,
-  keyDownHandler,
-  getThemeForTable,
-  defaultTableTheme,
-  restColumnsWithRender,
-  isSelected,
-  isEditCell,
-  resetSelectRow,
-  resetSelectRowFromArray,
-  getCellItem,
-  resetItemName,
-  getClearSingleSelectCell,
-  getMovedCells,
-} from '../editTable';
+
 import EditTable from '../editTableView';
 import Table from '../table';
 import renderer from 'react-test-renderer';
@@ -32,6 +16,9 @@ import renderer from 'react-test-renderer';
 const { mockObject, VerifyOrder, VerifyOrderConfig } = require('@lugia/jverify');
 
 const render = () => true;
+const defaultTableTheme = {
+  Td: { normal: { padding: 0 } },
+};
 const columns = [
   {
     title: '姓名',
@@ -160,11 +147,15 @@ describe('new-table', () => {
     expect(cmp.props().tableStyle).toEqual('bordered');
   });
 
+  const publicTarget = getCmp(mount(<EditTable data={data} columns={columns} />));
+  const { editTableListener: publicEditTableListener } = mockListener(publicTarget);
+
   it(' EditTable restColumnsIntoData ', () => {
-    expect(restColumnsIntoData(columns)).toEqual(columnsIntoData);
+    expect(publicEditTableListener.restColumnsIntoData(columns)).toEqual(columnsIntoData);
   });
 
   it(' EditTable restColumnsIntoData  columns is null || undefined || []', () => {
+    const { restColumnsIntoData } = publicEditTableListener;
     expect(restColumnsIntoData(null)).toEqual([]);
     expect(restColumnsIntoData(undefined)).toEqual([]);
     expect(restColumnsIntoData([])).toEqual([]);
@@ -173,6 +164,7 @@ describe('new-table', () => {
   const oldItem = { selectColumn: 0, selectRow: 0 },
     currentItem = { selectColumn: 0, selectRow: 0 },
     falseItem = { selectColumn: 0, selectRow: 1 };
+  const { isSelectSameItem } = publicEditTableListener;
 
   it(' EditTable isSelectSameItem', () => {
     expect(isSelectSameItem(oldItem, currentItem)).toBeTruthy();
@@ -237,6 +229,7 @@ describe('new-table', () => {
   };
 
   it(' EditTable getThemeForTable', () => {
+    const { getThemeForTable } = publicEditTableListener;
     expect(getThemeForTable(targetTheme, defaultTableTheme)).toEqual(resultTheme);
     expect(getThemeForTable(targetWithTdTheme, defaultTableTheme)).toEqual(resultWithTdTheme);
   });
@@ -246,6 +239,7 @@ describe('new-table', () => {
   // });
 
   it(' EditTable restColumnsWithRender columns is null || undefined || []', () => {
+    const { restColumnsWithRender } = publicEditTableListener;
     expect(restColumnsWithRender(null)).toEqual([]);
     expect(restColumnsWithRender(undefined)).toEqual([]);
     expect(restColumnsWithRender([])).toEqual([]);
@@ -253,6 +247,7 @@ describe('new-table', () => {
 
   const selectCell = [{ selectColumn: 0, selectRow: 0 }];
   const multipleSelectCell = [{ selectColumn: 0, selectRow: 0 }, { selectColumn: 1, selectRow: 1 }];
+  const { isSelected } = publicEditTableListener;
 
   it(' EditTable isSelected', () => {
     expect(isSelected(currentItem, selectCell)).toBeTruthy();
@@ -271,6 +266,7 @@ describe('new-table', () => {
     expect(isSelected({}, selectCell)).toBeFalsy();
   });
 
+  const { isEditCell } = publicEditTableListener;
   it(' EditTable isEditCell', () => {
     expect(isEditCell(currentItem, falseItem)).toBeFalsy();
     expect(isEditCell(currentItem, oldItem)).toBeTruthy();
@@ -294,17 +290,14 @@ describe('new-table', () => {
   it(' EditTable resetItemName ', () => {
     const resetItemNameProps = current;
     const resetItemNameRes = { columnIndex: 2, rowIndex: 1 };
-
+    const { resetItemName } = publicEditTableListener;
     expect(resetItemName(resetItemNameProps)).toEqual(resetItemNameRes);
   });
 
   it(' EditTable getCellItem ', () => {
-    const cmp = getCmp(mount(<EditTable data={data} columns={columns} />));
-    const { mockEditTableListener, editTableListener } = mockListener(cmp);
-    const getKeyMaps = mockEditTableListener.mockFunction('getKeyMaps');
-    getKeyMaps.returned(dataKeyMap);
+    const { getCellItem } = publicEditTableListener;
 
-    const getCellItemProps = { newItem: current, editTableListener, columns };
+    const getCellItemProps = { newItem: current, columns };
     const getCellItemRes = {
       currentCell: { address: 'some where' },
       record: { name: 'Rose', age: 36, address: 'some where', key: '2', isIn: true },
@@ -317,6 +310,7 @@ describe('new-table', () => {
   it(' EditTable resetSelectRowFromArray ', () => {
     const resetSelectRowFromArrayProps = oldValue;
     const resetSelectRowFromArrayRes = [{ rowIndex: 0, columnIndex: 1 }];
+    const { resetSelectRowFromArray } = publicEditTableListener;
 
     expect(resetSelectRowFromArray(resetSelectRowFromArrayProps)).toEqual(
       resetSelectRowFromArrayRes
@@ -346,7 +340,6 @@ describe('new-table', () => {
     expect(cmp.editTableListener.dataKeyMap).toEqual(dataKeyMap);
 
     const resetSelectRowProps = {
-      editTableListener,
       currentItem: current,
       newValue: [current],
       oldValue,
@@ -361,10 +354,11 @@ describe('new-table', () => {
       newValue: [{ rowIndex: 1, columnIndex: 2 }],
       oldValue: [{ rowIndex: 0, columnIndex: 1 }],
     };
-
+    const { resetSelectRow } = editTableListener;
     expect(resetSelectRow(resetSelectRowProps)).toEqual(resetSelectRowRes);
   });
 
+  const { getClearSingleSelectCell } = publicEditTableListener;
   it(' EditTable getClearSingleSelectCell has select ', () => {
     const clearCellItem = { selectColumn: 0, selectRow: 1 };
     const clearSelectCell = [
@@ -373,6 +367,7 @@ describe('new-table', () => {
       { selectColumn: 3, selectRow: 1 },
     ];
     const clearCellRes = [{ selectColumn: 2, selectRow: 1 }, { selectColumn: 3, selectRow: 1 }];
+
     expect(getClearSingleSelectCell(clearCellItem, clearSelectCell)).toEqual(clearCellRes);
   });
 
