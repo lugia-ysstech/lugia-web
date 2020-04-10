@@ -38,22 +38,22 @@ export const doStopPropagation = (e: any, isStop?: boolean): void => {
 };
 
 export const keyDownHandler = (props: Object) => (e: Object): void => {
-  const { isInTarget, EditTableListener } = props;
+  const { isInTarget, editTableListener } = props;
   doStopPropagation(e, isInTarget);
   const { key } = e;
-  const isMultiple = EditTableListener && EditTableListener.isMultiple();
+  const isMultiple = editTableListener && editTableListener.isMultiple();
   if (key.length === 1 && !isMultiple) {
-    EditTableListener.emit('quitMoveCells');
-    EditTableListener.emit('enterEditing');
+    editTableListener.emit('quitMoveCells');
+    editTableListener.emit('enterEditing');
     return;
   }
-  EditTableListener.onKeyDown(e);
+  editTableListener.onKeyDown(e);
 };
 
 export const keyUpHandler = (props: Object) => (e: Object): void => {
-  const { EditTableListener } = props;
+  const { editTableListener } = props;
   doStopPropagation(e);
-  EditTableListener.onKeyUp(e);
+  editTableListener.onKeyUp(e);
 };
 
 export const getThemeForTable = (targetTheme: Object, defaultTheme: Object): Object => {
@@ -101,21 +101,21 @@ export const isEditCell = (currentItem: Object, editCell: Object): boolean => {
 };
 
 export const resetSelectRow = (res: Object): Object => {
-  const { currentItem, newValue, oldValue, EditTableListener, columns } = res;
+  const { currentItem, newValue, oldValue, editTableListener, columns } = res;
   const newItem = { ...currentItem };
   const newValueRes = resetSelectRowFromArray(newValue);
   const oldValueRes = resetSelectRowFromArray(oldValue);
-  const currentInfo = getCellItem({ newItem, EditTableListener, columns });
+  const currentInfo = getCellItem({ newItem, editTableListener, columns });
   return { currentItem: currentInfo, newValue: newValueRes, oldValue: oldValueRes };
 };
 
 export const getCellItem = (props: Object) => {
-  const { newItem = {}, EditTableListener, columns } = props;
+  const { newItem = {}, editTableListener, columns } = props;
   const { selectColumn, selectRow } = newItem;
   if (!selectColumn || !selectRow) {
     return {};
   }
-  const dataItem = EditTableListener.getSelectDataMark(selectRow - 1);
+  const dataItem = editTableListener.getSelectDataMark(selectRow - 1);
   const columnItem = columns[selectColumn].dataIndex;
   return {
     currentCell: { [columnItem]: dataItem[columnItem] },
@@ -155,7 +155,7 @@ export const getClearSingleSelectCell = (
 };
 
 export const getMovedCells = (props: Object): ?Object => {
-  const { directions, key, selectCell, EditTableListener } = props;
+  const { directions, key, selectCell, editTableListener } = props;
 
   if (!selectCell || selectCell.length <= 0) {
     return;
@@ -178,7 +178,7 @@ export const getMovedCells = (props: Object): ?Object => {
       selectRow += 1;
       break;
     case 'backToBottom':
-      const moveTrack = EditTableListener.getMoveTrack();
+      const moveTrack = editTableListener.getMoveTrack();
       if (moveTrack && moveTrack.length > 0) {
         selectColumn = moveTrack[0].selectColumn;
       }
@@ -194,7 +194,7 @@ export const getMovedCells = (props: Object): ?Object => {
   selectColumn = Math.max(Math.min(maxColumn, selectColumn), 0);
   selectRow = Math.max(Math.min(maxData, selectRow), 0);
   if (key && key === 'Tab' && selectCell) {
-    EditTableListener.emit('enterMoveTrack', selectCell[0]);
+    editTableListener.emit('enterMoveTrack', selectCell[0]);
   }
   return { selectColumn, selectRow };
 };
@@ -202,11 +202,11 @@ export const getMovedCells = (props: Object): ?Object => {
 export const setInputChangedValue = (props: Object): Object => {
   const { value, editing } = props;
   if (editing) {
-    const { editCell: { selectColumn, selectRow } = {}, data, columns, EditTableListener } = props;
+    const { editCell: { selectColumn, selectRow } = {}, data, columns, editTableListener } = props;
     let keyName = null;
     columns.forEach(col => {
       const { dataIndex } = col;
-      const currentMark = EditTableListener.getSelectColumnMark(dataIndex);
+      const currentMark = editTableListener.getSelectColumnMark(dataIndex);
       if (currentMark === selectColumn) {
         keyName = dataIndex;
       }
@@ -218,11 +218,11 @@ export const setInputChangedValue = (props: Object): Object => {
 };
 
 export const onCellClick = (props: Object) => {
-  const { e, EditTableListener } = props;
-  let count = EditTableListener.getClickNumber();
+  const { e, editTableListener } = props;
+  let count = editTableListener.getClickNumber();
   doStopPropagation(e);
   count += 1;
-  EditTableListener.setClickNumber(count);
+  editTableListener.setClickNumber(count);
   setTimeout(() => {
     const { selectColumn, selectRow, selectCell = [] } = props;
     const currentCell = { selectColumn, selectRow };
@@ -231,33 +231,33 @@ export const onCellClick = (props: Object) => {
       let selectCellResult = [currentCell];
       let currentItem = currentCell;
       if (isSelect) {
-        EditTableListener.emit('quitMoveCells');
+        editTableListener.emit('quitMoveCells');
         selectCellResult = getClearSingleSelectCell(currentCell, selectCell);
         currentItem = {};
       }
-      EditTableListener.setClickNumber(0);
-      EditTableListener.emit('quiteMoveTrack');
-      EditTableListener.emit('enterMoveTrack', currentCell);
-      const isMultiple = EditTableListener.isMultiple();
+      editTableListener.setClickNumber(0);
+      editTableListener.emit('quiteMoveTrack');
+      editTableListener.emit('enterMoveTrack', currentCell);
+      const isMultiple = editTableListener.isMultiple();
 
       if (isMultiple && !isSelect) {
         selectCellResult = selectCell.concat(selectCellResult);
       } else {
-        EditTableListener.emit('enterMoveCells');
+        editTableListener.emit('enterMoveCells');
       }
-      EditTableListener.emit('setState', { selectCell: selectCellResult, editCell: currentItem });
+      editTableListener.emit('setState', { selectCell: selectCellResult, editCell: currentItem });
       const { isHead } = props;
       !isHead &&
-        EditTableListener.emit('exportOnCell', {
+        editTableListener.emit('exportOnCell', {
           currentItem,
           newValue: selectCellResult,
           oldValue: selectCell,
         });
     } else if (count === 2) {
-      EditTableListener.setClickNumber(0);
-      EditTableListener.emit('quitMoveCells');
-      EditTableListener.emit('quiteMoveTrack');
-      EditTableListener.emit('setState', { editing: true, editCell: currentCell });
+      editTableListener.setClickNumber(0);
+      editTableListener.emit('quitMoveCells');
+      editTableListener.emit('quiteMoveTrack');
+      editTableListener.emit('setState', { editing: true, editCell: currentCell });
     }
   }, 200);
 };

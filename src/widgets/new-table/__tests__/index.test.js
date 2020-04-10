@@ -300,11 +300,11 @@ describe('new-table', () => {
 
   it(' EditTable getCellItem ', () => {
     const cmp = getCmp(mount(<EditTable data={data} columns={columns} />));
-    const { mockEditTableListener, EditTableListener } = mockListener(cmp);
+    const { mockEditTableListener, editTableListener } = mockListener(cmp);
     const getKeyMaps = mockEditTableListener.mockFunction('getKeyMaps');
     getKeyMaps.returned(dataKeyMap);
 
-    const getCellItemProps = { newItem: current, EditTableListener, columns };
+    const getCellItemProps = { newItem: current, editTableListener, columns };
     const getCellItemRes = {
       currentCell: { address: 'some where' },
       record: { name: 'Rose', age: 36, address: 'some where', key: '2', isIn: true },
@@ -339,14 +339,14 @@ describe('new-table', () => {
 
   it(' EditTable resetSelectRow ', () => {
     const cmp = getCmp(mount(<EditTable data={data} columns={columns} />));
-    const { mockEditTableListener, EditTableListener } = mockListener(cmp);
+    const { mockEditTableListener, editTableListener } = mockListener(cmp);
     const getKeyMaps = mockEditTableListener.mockFunction('getKeyMaps');
     getKeyMaps.returned(dataKeyMap);
 
-    expect(cmp.EditTableListener.dataKeyMap).toEqual(dataKeyMap);
+    expect(cmp.editTableListener.dataKeyMap).toEqual(dataKeyMap);
 
     const resetSelectRowProps = {
-      EditTableListener,
+      editTableListener,
       currentItem: current,
       newValue: [current],
       oldValue,
@@ -394,10 +394,10 @@ describe('new-table', () => {
   function mockListener(instance: Object) {
     const order = VerifyOrder.create();
     const mockEditTableListener = mockObject.create(
-      instance.EditTableListener,
-      VerifyOrderConfig.create('EditTableListener', order)
+      instance.editTableListener,
+      VerifyOrderConfig.create('editTableListener', order)
     );
 
-    return { order, mockEditTableListener, EditTableListener: mockEditTableListener.target };
+    return { order, mockEditTableListener, editTableListener: mockEditTableListener.target };
   }
 });
