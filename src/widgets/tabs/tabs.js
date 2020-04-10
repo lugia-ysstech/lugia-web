@@ -132,14 +132,13 @@ const OutContainer = CSSComponent({
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     position: relative;
-    min-height: 100%;
     display: flex;
     flex-direction: column;
   `,
 });
 const VerticalOutContainer = CSSComponent({
   tag: 'div',
-  className: 'OutContainer',
+  className: 'VerticalOutContainer',
   normal: {
     selectNames: [['width'], ['height']],
   },
@@ -229,7 +228,6 @@ export function getDefaultData(props: Object) {
           return;
         }
         const item = { ...child.props };
-        item.value = child.value;
         configData && configData.push(item);
       });
     } else {
@@ -282,7 +280,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
       tabType === 'line' && isVertical(tabPosition) ? VerticalOutContainer : OutContainer;
     const containerThemeProps = this.props.getPartOfThemeProps('Container');
     let target = (
-      <ContainerBox className={'OutContainer'} themeProps={containerThemeProps}>
+      <ContainerBox themeProps={containerThemeProps}>
         <TabHeader {...this.getTabHeaderProps()} />
         {this.getChildrenContent()}
       </ContainerBox>

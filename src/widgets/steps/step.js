@@ -496,7 +496,7 @@ const StepInner = CSSComponent({
     },
   },
   css: css`
-    box-sizing: content-box;
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: center;

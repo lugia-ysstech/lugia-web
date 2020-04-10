@@ -405,6 +405,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
             {this.getTabIconContainer(icon, prefixIconTheme)}
             {title}
             {this.getTabIconContainer(suffixIcon, suffixIconTheme)}
+            {this.getClearButton()}
           </Title>
         ) : (
           <CardTitle
@@ -420,7 +421,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
           </CardTitle>
         )}
 
-        {this.getClearButton()}
+        {!isLineType && this.getClearButton()}
       </TargetTab>
     );
     let resTabPan = Target;

@@ -17,7 +17,7 @@ export default ThemeProvider(
   MouseEventAdaptor(
     class extends React.Component<ColProps, ColState> {
       render() {
-        const { children, span = 1, offset, push, pull, order, gutter, equable } = this.props;
+        const { children, span = 1, offset, push, pull, order, gutter, equable = 24 } = this.props;
         const propsSizeData: Object = this.handlePropsData();
         const width = 100 / equable;
         return (

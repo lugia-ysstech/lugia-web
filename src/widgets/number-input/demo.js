@@ -10,6 +10,7 @@ import NumberInput from './';
 import Button from '../button';
 import Widget from '../consts/index';
 import styled from 'styled-components';
+import { fixControlledValue } from '../utils';
 
 export class LimitNumberInput extends React.Component<any, any> {
   constructor(props: any) {
@@ -66,6 +67,41 @@ class DisabledNumberInput extends React.Component<any, any> {
   }
 }
 
+class ValidateInput extends React.Component<any, any> {
+  constructor(props: any) {
+    super(props);
+  }
+
+  static getDerivedStateFromProps(nextProps: Object, preState: Object) {
+    let { value } = nextProps;
+    const hasValueInprops = 'value' in nextProps;
+    value = fixControlledValue(value);
+    if (!preState) {
+      return { value: hasValueInprops ? value : '' };
+    }
+    if (hasValueInprops) {
+      return { value };
+    }
+  }
+  onChange = ({ newValue: value }: any) => {
+    this.setState({ value });
+    this.props.onChange({ newValue: value });
+  };
+
+  render() {
+    const { validateType } = this.props;
+    const value = this.state.value;
+    const validateStatus = String(value).indexOf('5') === -1 ? 'default' : 'error';
+    return (
+      <NumberInput
+        onChange={this.onChange}
+        validateType={validateType}
+        validateStatus={validateStatus}
+      />
+    );
+  }
+}
+
 const Wrapper = styled.div`
   float: left;
   margin-left: 50px;
@@ -81,8 +117,11 @@ const NumberInputDemo = () => {
         },
       },
       ArrowIconContainer: { normal: { fontSize: 14, width: 40 } },
-      ArrowIcon: {
+      InputArrowIcon: {
         hover: { color: 'blue', fontSize: 30 },
+      },
+      ValidateErrorText: {
+        normal: { color: 'orange', fontSize: 16 },
       },
     },
   };
@@ -107,6 +146,11 @@ const NumberInputDemo = () => {
           <NumberInput disabled={true} />
           <p>可控制disabled 的numberInput</p>
           <DisabledNumberInput />
+
+          <p>校验信息显示类型 top 输入值 是否含有5</p>
+          <ValidateInput validateType="top" onChange={onChange('limit')} />
+          <p>校验信息显示类型 bottom 输入值 是否含有5</p>
+          <ValidateInput validateType="bottom" onChange={onChange('limit')} />
         </Theme>
       </Wrapper>
       <Wrapper>

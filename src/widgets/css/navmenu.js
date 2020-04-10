@@ -38,7 +38,7 @@ export const HorizontalDarkTheme = {
           color: '#000033',
         },
         font: {
-          weight: 900,
+          weight: 500,
         },
       },
     },

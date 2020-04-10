@@ -268,7 +268,11 @@ class Menu extends React.Component<MenuProps, MenuState> {
           return <li />;
         }
 
-        const { wrapItem } = this.props;
+        const { wrapItem, separator } = this.props;
+        const { expandedPath } = this.state;
+
+        const expandedPathValues =
+          expandedPath.length === 0 ? [] : expandedPath[0].split(separator);
 
         const result = (
           <Item
@@ -286,6 +290,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
             icons={icons}
             marginBottom={marginBottom}
             renderSuffixItems={renderSuffixItems}
+            hoverState={expandedPathValues.indexOf(key) !== -1}
           />
         );
         return wrapItem ? wrapItem(result, { key, value }) : result;

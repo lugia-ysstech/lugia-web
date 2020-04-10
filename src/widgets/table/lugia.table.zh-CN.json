@@ -93,6 +93,11 @@
       "type": "Function(currentPageData)",
       "desc": "表格标题"
     },
+    "size": {
+      "type": "number",
+      "desc": "设置表格单元格大小，可选 default、large、small，默认为 default;",
+      "propsDefaultValue": "default"
+    },
     "onHeaderRow": {
       "type": "Function(column, index)",
       "desc": "设置头部行属性"

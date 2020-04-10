@@ -214,4 +214,7 @@ export default {
   '/newTable': {
     render: async () => import('./widgets/new-table/demo'),
   },
+  '/ValidateDemo': {
+    render: async () => import('./ValidateDemo'),
+  },
 };

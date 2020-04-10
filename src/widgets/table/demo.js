@@ -44,6 +44,12 @@ const data = [
   { name: 'Rose', age: 36, address: 'some where', key: '2' },
   { name: 'Rook', age: 22, address: 'some where', key: '3' },
   { name: 'Lise', age: 33, address: 'some where', key: '4' },
+  { name: 'Lise', age: 33, address: 'some where', key: '5' },
+  { name: 'Lise', age: 33, address: 'some where', key: '6' },
+  { name: 'Lise', age: 33, address: 'some where', key: '7' },
+  { name: 'asdasda', age: 33, address: 'some where', key: '8' },
+  { name: 'asdasda', age: 33, address: 'some where', key: '9' },
+  { name: 'asdasda', age: 33, address: 'some where', key: '10' },
 ];
 
 const Data = [
@@ -104,9 +110,73 @@ export default class ModalDemo extends React.Component<any, any> {
         },
       },
     };
+    const configSmall = {
+      [Widget.Table]: {
+        Container: {
+          normal: {
+            width: 500,
+            height: 264,
+            background: {
+              color: 'red',
+            },
+          },
+        },
+      },
+    };
+    const configDefault = {
+      [Widget.Table]: {
+        Container: {
+          normal: {
+            width: 500,
+            height: 352,
+            background: {
+              color: 'red',
+            },
+          },
+        },
+      },
+    };
+
+    const configLarge = {
+      [Widget.Table]: {
+        Container: {
+          normal: {
+            width: 500,
+            height: 440,
+            background: {
+              color: 'red',
+            },
+          },
+        },
+      },
+    };
     return (
       <div style={{ padding: '20px' }}>
+        <h1>表格size</h1>
+        <div style={{ display: 'flex' }}>
+          <div style={{ flex: '1' }}>
+            <h3>size=small</h3>
+            <Theme config={configSmall}>
+              <Table useFixedHeader columns={columns} data={data} size={'small'} />
+            </Theme>
+          </div>
+          <div style={{ flex: '1' }}>
+            <h3>size=default</h3>
+            <Theme config={configDefault}>
+              <Table useFixedHeader columns={columns} data={data} />
+            </Theme>
+          </div>
+          <div style={{ flex: '1' }}>
+            <h3>size=large</h3>
+            <Theme config={configLarge}>
+              <Table useFixedHeader columns={columns} data={data} size={'large'} />
+            </Theme>
+          </div>
+        </div>
         <h1>边框表格</h1>
+        <Theme config={config}>
+          <Table useFixedHeader columns={columns} data={data} />
+        </Theme>
         <Theme config={config}>
           <Table columns={columns} data={data} />
         </Theme>
@@ -131,6 +201,10 @@ export default class ModalDemo extends React.Component<any, any> {
         <Table
           columns={columns}
           data={data}
+          scroll={{
+            y: 200,
+          }}
+          useFixedHeader
           selectOptions={{
             onChange: this.selectChange,
             selectRowKeys: this.state.selectRowKeys,

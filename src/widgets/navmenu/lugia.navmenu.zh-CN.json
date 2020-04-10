@@ -6,19 +6,27 @@
     "valueField": {
       "type": "string",
       "desc": "data数据的value值的名称",
-      "defaultValue": "value"
+      "propsDefaultValue": "value"
+    },
+
+    "displayField": {
+      "type": "string",
+      "desc": "data数据的displayValue值的名称",
+      "propsDefaultValue": "text"
     },
 
     "pathSeparator": {
       "type": "string",
       "desc": "指定结点数组中path信息的分隔符号",
-      "defaultValue": "/"
+      "propsDefaultValue": "/"
     },
-    "displayField": {
-      "type": "string",
-      "desc": "data数据的displayValue值的名称",
-      "defaultValue": "text"
+
+    "action": {
+      "type": "ActionType",
+      "desc": "弹出项的打开方式",
+      "propsDefaultValue": "click"
     },
+
     "data": {
       "type": "object[]",
       "desc": "生成选择项的数据",
@@ -76,28 +84,28 @@
     "mode": {
       "type": "vertical | inline| horizontal",
       "desc": "菜单类型，支持垂直、内嵌和水平模式",
-      "defaultValue": "inline"
+      "propsDefaultValue": "inline"
     },
     "inlineType": {
       "type": "primary | ellipse",
       "desc": "菜单类型为inline(内嵌模式)时,支持两种风格",
-      "defaultValue": "primary"
+      "propsDefaultValue": "primary"
     },
     "themeStyle": {
       "type": "light | dark",
       "desc": "菜单类型为inline(内嵌模式)时,支持两种主题",
-      "defaultValue": "light"
+      "propsDefaultValue": "light"
     },
     "inlineExpandAll": {
       "type": "boolean",
       "desc": "菜单类型为inline(内嵌模式)时,是否展开所有子元素,默认为true",
-      "defaultValue": true
+      "propsDefaultValue": true
     },
 
     "separator": {
       "type": "string",
       "desc": "自定义层级分隔符,只有在mode为 vertical 时,传入级联数据生效 ",
-      "defaultValue": "|"
+      "propsDefaultValue": "|"
     }
   },
   "events": {
@@ -196,6 +204,34 @@
                   "hover": [["color"], ["background"], ["border"], ["font"], ["opacity"]],
                   "clicked": [],
                   "disabled": []
+                },
+                "PrefixIcon": {
+                  "name": "前缀图标",
+                  "desc": "前缀图标样式配置",
+                  "normal": [["color"], ["font"]],
+                  "hover": [["color"], ["font"]],
+                  "disabled": [["color"], ["font"]]
+                },
+                "SelectPrefixIcon": {
+                  "name": "前缀图标选中样式",
+                  "desc": "前缀图标选中样式配置",
+                  "normal": [["color"], ["font"]],
+                  "hover": [["color"], ["font"]],
+                  "disabled": [["color"], ["font"]]
+                },
+                "SuffixIcon": {
+                  "name": "后缀图标",
+                  "desc": "后缀图标样式配置",
+                  "normal": [["color"], ["font"]],
+                  "hover": [["color"], ["font"]],
+                  "disabled": [["color"], ["font"]]
+                },
+                "SelectSuffixIcon": {
+                  "name": "后缀图标选中样式",
+                  "desc": "后缀图标选中样式配置",
+                  "normal": [["color"], ["font"]],
+                  "hover": [["color"], ["font"]],
+                  "disabled": [["color"], ["font"]]
                 }
               }
             }

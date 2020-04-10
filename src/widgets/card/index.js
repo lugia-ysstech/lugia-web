@@ -56,11 +56,13 @@ const CardOutContainer = CSSComponent({
     ],
     getCSS(themeMeta: Object, themeProps: Object) {
       const {
-        propsConfig: { imageOrientation, type },
+        propsConfig: { imageOrientation, type, minHeight },
       } = themeProps;
       const textAlign = type === 'avatar' && !isHorizontal(imageOrientation) ? 'center' : '';
       const flexDirection = !isHorizontal(imageOrientation) ? 'column' : 'row';
+      const theHeight = minHeight ? checkSizeIsNumber(minHeight) : px2remcss(20);
       return `
+        min-height:${theHeight};
         text-align:${textAlign};
         flex-direction:${flexDirection};`;
     },
@@ -91,7 +93,6 @@ const CardOutContainer = CSSComponent({
     position: relative;
     display: flex;
     min-width: ${px2remcss(50)};
-    min-height: ${px2remcss(20)};
   `,
   option: { hover: true },
 });
@@ -428,7 +429,7 @@ class Card extends React.Component<CardProps, CardState> {
   static getDerivedStateFromProps(nextProps, prevState) {}
 
   render() {
-    const { type, imageOrientation } = this.props;
+    const { type, imageOrientation, minHeight } = this.props;
     let resultTheme;
     const hCard = isHorizontal(imageOrientation);
     switch (type) {
@@ -455,12 +456,12 @@ class Card extends React.Component<CardProps, CardState> {
     }
     resultTheme = deepMerge(
       resultTheme,
-      this.props.getPartOfThemeProps('Container', { props: { type, imageOrientation } })
+      this.props.getPartOfThemeProps('Container', { props: { type, imageOrientation, minHeight } })
     );
     const { operation, title, description, content, children } = this.props;
     const hasChildren = operation || title || description || content || children;
     return (
-      <CardOutContainer themeProps={resultTheme} type={type} imageOrientation={imageOrientation}>
+      <CardOutContainer themeProps={resultTheme}>
         {hasChildren ? (
           [this.getDetails('operation'), this.getImageContainer(), this.getInnerContent()]
         ) : (

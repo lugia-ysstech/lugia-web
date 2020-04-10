@@ -25,7 +25,7 @@
     "validateType": {
       "type": "ValidateType",
       "desc": "校验信息显示类型",
-      "propsDefaultValue": "default"
+      "propsDefaultValue": "top"
     },
     "help": {
       "type": "string",
@@ -179,6 +179,26 @@
           "type": "KeyboardEvent"
         }
       ]
+    },
+    "onMouseEnter": {
+      "desc": "当鼠标移入输入框内触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "当鼠标移入输入框内触发的事件",
+          "type": "MouseEvent"
+        }
+      ]
+    },
+    "onMouseLeave": {
+      "desc": "当鼠标移出输入框内触发",
+      "args": [
+        {
+          "name": "event",
+          "desc": "当鼠标移出输入框外触发的事件",
+          "type": "MouseEvent"
+        }
+      ]
     }
   },
   "type": {
@@ -196,42 +216,54 @@
   "childrenWidget": ["textarea"],
   "theme": {
     "Container": {
-      "name": "输入框外部容器",
-      "desc": "输入框外部容器",
-      "normal": [["width"], ["height"], ["margin"]]
-    },
-    "Input": {
       "name": "输入框主体",
       "desc": "输入框主体结构",
       "normal": [
+        ["width"],
+        ["height"],
+        ["margin"],
+        ["padding"],
+        ["border"],
+        ["borderRadius"],
+        ["boxShadow"],
+        ["background"],
+        ["opacity"],
         ["fontSize"],
         ["font"],
         ["color"],
-        ["background"],
-        ["border"],
-        ["borderRadius"],
-        ["cursor"],
-        ["opacity"]
+        ["cursor"]
       ],
       "hover": [
         ["border"],
         ["borderRadius"],
-        ["cursor"],
         ["background"],
         ["opacity"],
-        ["boxShadow"]
-      ],
-      "active": [["boxShadow"], ["border"], ["borderRadius"], ["cursor"], ["background"]],
-      "disabled": [
+        ["boxShadow"],
+        ["cursor"],
         ["fontSize"],
         ["font"],
-        ["color"],
+        ["color"]
+      ],
+      "active": [
+        ["boxShadow"],
+        ["border"],
+        ["borderRadius"],
+        ["background"],
+        ["opacity"],
+        ["cursor"],
+        ["fontSize"],
+        ["font"],
+        ["color"]
+      ],
+      "disabled": [
         ["background"],
         ["border"],
         ["borderRadius"],
+        ["opacity"],
         ["cursor"],
-        ["padding"],
-        ["opacity"]
+        ["fontSize"],
+        ["font"],
+        ["color"]
       ]
     },
     "Placeholder": {

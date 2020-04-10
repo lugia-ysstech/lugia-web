@@ -9,9 +9,10 @@ import { css } from 'styled-components';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import { px2remcss } from '../css/units';
 import type { ThemeType } from '@lugia/lugia-web';
-import { getBorder } from '@lugia/theme-utils';
+import { getBorder, getDictValue } from '@lugia/theme-utils';
 import { getBorderRadius } from '../theme/CSSProvider';
 import get from './theme-common-dict';
+import { judgeStarts } from '../utils';
 
 const em = px2remcss;
 const { padding, marginToSameElement } = colorsFunc();
@@ -184,8 +185,9 @@ export const RadioCircleSpan = CSSComponent({
           normal: normalTheme,
         } = afterThemeConfig;
         const theme = isDisabled ? disabledTheme : hover ? hoverTheme || normalTheme : normalTheme;
-        const { background } = theme;
+        const { background: { color } = {} } = theme;
         const { width = 10, height = 10 } = normalTheme;
+        const backgroundColor = judgeStarts(color) ? getDictValue(color) : color;
 
         return css`
           &::after {
@@ -200,7 +202,7 @@ export const RadioCircleSpan = CSSComponent({
             border-top: 0;
             border-left: 0;
             content: ' ';
-            background-color: ${background.color};
+            background-color: ${backgroundColor};
           }
         `;
       }

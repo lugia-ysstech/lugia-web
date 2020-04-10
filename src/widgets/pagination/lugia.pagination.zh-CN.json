@@ -50,7 +50,7 @@
       "desc": "是否显示可以改变 pageSize",
       "propsDefaultValue": false
     },
-    "isShowTotalData": {
+    "showTotalData": {
       "type": "boolean",
       "desc": "是否可以显示数据总量",
       "propsDefaultValue": false
@@ -77,6 +77,16 @@
     "nextIconSrc": {
       "type": "image",
       "desc": "分页下一页图片资源"
+    },
+    "blockList": {
+      "type": "string[]",
+      "desc": "分页各部位展示的位置列表",
+      "propsDefaultValue": ["Page", "PageInput", "Total", "PageSize"]
+    },
+    "align": {
+      "type": "AlignType",
+      "desc": "分页各部位对齐的方式",
+      "propsDefaultValue": "Left"
     }
   },
   "events": {
@@ -109,7 +119,30 @@
           "type": "number"
         }
       ]
+    },
+    "quickJumperInputBlur": {
+      "desc": "快速跳转输入框失去焦点时触发",
+      "args": [
+        {
+          "name": "current",
+          "desc": "当前页数",
+          "type": "number"
+        },
+        {
+          "name": "size",
+          "desc": "每页条数",
+          "type": "number"
+        },
+        {
+          "name": "event",
+          "desc": "失去焦点的DOM事件",
+          "type": "FocusEvent"
+        }
+      ]
     }
+  },
+  "type": {
+    "AlignType": ["Left", "Right"]
   },
   "designInfo": {
     "SimplePagination": {
@@ -210,6 +243,11 @@
         ["opacity"],
         ["margin"]
       ]
+    },
+    "PaginationListContainer": {
+      "name": "分页列表的容器",
+      "desc": "分页列表的容器",
+      "normal": [["margin"]]
     },
     "PaginationListItem": {
       "name": "单个页数",
