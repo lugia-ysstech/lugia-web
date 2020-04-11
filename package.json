@@ -1,6 +1,6 @@
 {
   "name": "@lugia/lugia-web",
-  "version": "1.2.3-alpha-29",
+  "version": "1.2.3-alpha-30",
   "keywords": [
     "lugia",
     "design",
@@ -16,15 +16,15 @@
     "access": "public"
   },
   "dependencies": {
-    "@lugia/css": "^1.0.22",
-    "@lugia/listener": "^1.0.4",
-    "@lugia/math": "^1.0.9",
-    "@lugia/object-utils": "^1.0.15",
-    "@lugia/ramada": "^1.0.3",
-    "@lugia/theme-config": "^1.1.2",
-    "@lugia/theme-css-hoc": "^1.1.7",
-    "@lugia/theme-hoc": "^1.1.2",
-    "@lugia/theme-utils": "^1.1.5",
+    "@lugia/css": "^1.0.23",
+    "@lugia/listener": "^1.0.5",
+    "@lugia/math": "^1.0.10",
+    "@lugia/object-utils": "^1.0.16",
+    "@lugia/ramada": "^1.0.5",
+    "@lugia/theme-config": "^1.1.3",
+    "@lugia/theme-css-hoc": "^1.1.9",
+    "@lugia/theme-hoc": "^1.1.3",
+    "@lugia/theme-utils": "^1.1.6",
     "@lugia/type-utils": "^1.0.6",
     "babel-polyfill": "6.26.0",
     "classnames": "2.2.5",

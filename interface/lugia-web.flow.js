@@ -100,10 +100,79 @@ declare module '@lugia/lugia-web' {
     choseValue?: any,
     weeks?: any,
   };
+
   declare type ChangeItemEventParam = ChangeEventParam & {
     newDisplayValue: any,
     oldDisplayValue: any,
     newItem: any,
     oldItem: any,
+  };
+
+  declare type ListenerHandle = {
+    removeListener: Function,
+  };
+
+  declare type SelectItem = {
+    selectColumn: number,
+    selectRow: number,
+  };
+
+  declare interface EventListener {
+    on(eventName: string, cb: Function): ListenerHandle;
+
+    once(eventName: string, cb: Function): ListenerHandle;
+
+    take(eventName: string, count: number): Promise<any>;
+
+    emit(eventName: string, param: Object): void;
+  }
+
+  declare type EditTableEventListenerHandle = EventListener & {
+    editing: boolean,
+    multipleSelect: boolean,
+    canMoveCells: boolean,
+    isShift: boolean,
+    isKeyBoardDown: boolean,
+    moveTrack: Array<Object>,
+    keyDownListener: Object,
+    keyDownListener: Object,
+    enterMultipleSelect: Object,
+    quitMultipleSelect: Object,
+    enterMoveCells: Object,
+    quitMoveCells: Object,
+    shiftDown: Object,
+    shiftUp: Object,
+    enterMoveTrack: Object,
+    quiteMoveTrack: Object,
+    onKeyDown(e: Object): void,
+    onKeyUp(e: Object): void,
+    isMultiple(): boolean,
+    isCanMoveCells(): boolean,
+    isShiftDown(): boolean,
+    getMoveTrack(): Array<Object>,
+    setClickNumber(number: number): void,
+    getClickNumber(): number,
+    setUpdateDataKeyMap(props: Object): void,
+    getKeyMaps(props: Object): Object,
+    getSelectDataMark(index: number): Object,
+    getSelectColumnMark(dataIndex: number): number,
+    restColumnsIntoData(columns: Array<Object>): Array<Object>,
+    isSelectSameItem(oldItem: SelectItem, currentItem: SelectItem): boolean,
+    doStopPropagation(e: Object, isStop?: boolean): void,
+    keyDownHandler: (props: Object) => (e: Object) => void,
+    keyUpHandler(e: Object): void,
+    getThemeForTable(targetTheme: Object, defaultTheme: Object): Object,
+    restColumnsWithRender(columns: ?Array<Object>, renderFunc: Function): Array<Object>,
+    isSelected(currentItem: SelectItem, selectCell: SelectItem[]): boolean,
+    isEditCell(currentItem: SelectItem, editCell: SelectItem): boolean,
+    resetSelectRow(props: Object): Object,
+    getCellItem(props: Object): Object,
+    resetSelectRowFromArray(selectCell: SelectItem[]): Array<Object>,
+    getClearSingleSelectCell(currentItem: SelectItem, selectCell: SelectItem[]): Array<Object>,
+    resetItemName(selectItem: SelectItem): Object,
+    getMovedCells(props: Object): ?Object,
+    setInputChangedValue(props: Object): Object,
+    onCellClick(props: Object): void,
+    isEqualArray(oldValue: ?Array<Object>, newValue: ?Array<Object>): boolean,
   };
 }
