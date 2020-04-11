@@ -3352,6 +3352,11 @@ export default [
           active: [['color'], ['fontSize']],
           disabled: [['color'], ['fontSize'], ['cursor']],
         },
+        Placeholder: {
+          name: '提示信息文字',
+          desc: '提示信息文字',
+          normal: [['color'], ['fontSize'], ['font'], ['padding']],
+        },
         Menu: {
           name: '弹开菜单',
           theme: {
@@ -11545,6 +11550,11 @@ export default [
               active: [['color'], ['fontSize']],
               disabled: [['color'], ['fontSize'], ['cursor']],
             },
+            Placeholder: {
+              name: '提示信息文字',
+              desc: '提示信息文字',
+              normal: [['color'], ['fontSize'], ['font'], ['padding']],
+            },
             Menu: {
               name: '弹开菜单',
               theme: {
@@ -11844,6 +11854,11 @@ export default [
           hover: [['color'], ['fontSize']],
           active: [['color'], ['fontSize']],
           disabled: [['color'], ['fontSize'], ['cursor']],
+        },
+        Placeholder: {
+          name: '提示信息文字',
+          desc: '提示信息文字',
+          normal: [['color'], ['fontSize'], ['font'], ['padding']],
         },
         Menu: {
           name: '弹开菜单',
@@ -12230,6 +12245,11 @@ export default [
           hover: [['color'], ['fontSize']],
           active: [['color'], ['fontSize']],
           disabled: [['color'], ['fontSize'], ['cursor']],
+        },
+        Placeholder: {
+          name: '提示信息文字',
+          desc: '提示信息文字',
+          normal: [['color'], ['fontSize'], ['font'], ['padding']],
         },
         Menu: {
           name: '弹开菜单',
@@ -20498,6 +20518,11 @@ export default [
               active: [['color'], ['fontSize']],
               disabled: [['color'], ['fontSize'], ['cursor']],
             },
+            Placeholder: {
+              name: '提示信息文字',
+              desc: '提示信息文字',
+              normal: [['color'], ['fontSize'], ['font'], ['padding']],
+            },
             TagWrap: {
               name: '标签',
               desc: '配置展示选中项的标签样式',
@@ -20908,6 +20933,11 @@ export default [
           active: [['color'], ['fontSize']],
           disabled: [['color'], ['fontSize'], ['cursor']],
         },
+        Placeholder: {
+          name: '提示信息文字',
+          desc: '提示信息文字',
+          normal: [['color'], ['fontSize'], ['font'], ['padding']],
+        },
         Tree: {
           name: '弹开树形控件配置',
           theme: {
@@ -21264,6 +21294,11 @@ export default [
           hover: [['color'], ['fontSize']],
           active: [['color'], ['fontSize']],
           disabled: [['color'], ['fontSize'], ['cursor']],
+        },
+        Placeholder: {
+          name: '提示信息文字',
+          desc: '提示信息文字',
+          normal: [['color'], ['fontSize'], ['font'], ['padding']],
         },
         TagWrap: {
           name: '标签',
