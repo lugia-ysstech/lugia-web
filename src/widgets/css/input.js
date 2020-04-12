@@ -9,10 +9,6 @@ import colorsFunc from '../css/stateColor';
 
 const { disableColor } = colorsFunc();
 
-export function isValidateError(validateStatus: ValidateStatus): boolean {
-  return validateStatus === 'error';
-}
-
 export const FontSize = 1.2;
 export const RadiusSize = 4;
 export const LargeHeight = 40;
@@ -21,11 +17,7 @@ export const DefaultHeight = 32;
 export const Padding = 2;
 export const DefaultHelp = '验证出错';
 export const DefaultAmountPrefix = '¥';
-
-export type ValidateStatus = 'default' | 'error';
-
 export type InputSize = 'small' | 'default' | 'large';
-export type ValidateType = 'top' | 'bottom' | 'inner';
 export type ResizeType = 'both' | 'horizontal' | 'vertical' | 'none';
 
 type CommonInputProps = {

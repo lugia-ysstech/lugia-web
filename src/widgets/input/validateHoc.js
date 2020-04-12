@@ -2,23 +2,13 @@ import React from 'react';
 import { deepMerge } from '@lugia/object-utils';
 import get from '../css/theme-common-dict';
 import ToolTip from '../tooltip/index';
-import { DefaultHelp, isValidateError } from '../css/input';
-
-import {
-  TipBottom,
-  InnerTipText,
-  InnerTip,
-  InnerTipMask,
-  FatherContainer,
-  defaultBorderThemeProps,
-  defaultFontColorThemeProps,
-} from './validateCSS';
+import { DefaultHelp, isValidateError } from '../css/validateHoc';
+import { TipBottom, InnerTipText, FatherContainer } from './validateCSS';
 
 const ValidateHoc = (Target: Object) => {
   class ValidateContainer extends React.Component {
     state = {
-      _isTipMaskVisible: false,
-      _isToolTipVisible: false,
+      _isValidateVisible: false,
     };
 
     onFocus = (event: UIEvent) => {
@@ -26,7 +16,7 @@ const ValidateHoc = (Target: Object) => {
       if (disabled || readOnly) {
         return;
       }
-      this.setState({ _isToolTipVisible: true, _isTipMaskVisible: false });
+      this.setState({ _isValidateVisible: false });
       onFocus && onFocus(event);
     };
 
@@ -36,7 +26,7 @@ const ValidateHoc = (Target: Object) => {
       if (disabled) {
         return;
       }
-      this.setState({ _isToolTipVisible: false, _isTipMaskVisible: true });
+      this.setState({ _isValidateVisible: true });
       onBlur && onBlur(event);
     };
     render() {
@@ -48,15 +38,13 @@ const ValidateHoc = (Target: Object) => {
         getPartOfThemeProps,
         isValidate = true,
       } = this.props;
-
+      const { _isValidateVisible } = this.state;
       const theHelp = help || DefaultHelp;
       const result = (
         <Target
           {...this.props}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
-          getValidateBorderDefaultTheme={defaultBorderThemeProps}
-          getValidateValueDefaultTheme={defaultFontColorThemeProps}
           validateTextThemeProps={() => getPartOfThemeProps('ValidateErrorText')}
         />
       );
@@ -94,7 +82,7 @@ const ValidateHoc = (Target: Object) => {
             },
           },
         };
-        const { _isToolTipVisible } = this.state;
+        const { _isValidateVisible } = this.state;
         return (
           <ToolTip
             theme={newTheme}
@@ -103,35 +91,30 @@ const ValidateHoc = (Target: Object) => {
             action={'focus'}
             popArrowType={'round'}
             placement={'topLeft'}
-            visible={isValidateError(validateStatus) && _isToolTipVisible}
+            visible={isValidateError(validateStatus) && !_isValidateVisible}
           >
             {result}
           </ToolTip>
         );
       }
+      const innerProps = validateType === 'inner' ? { _isValidateVisible } : {};
+      const validateThemeProps = getPartOfThemeProps('ValidateErrorText', {
+        props: { validateStatus, ...innerProps },
+      });
       if (validateType === 'bottom') {
-        const innerThemeProps = getPartOfThemeProps('ValidateErrorText', {
-          props: { validateStatus },
-        });
         return (
           <React.Fragment>
             {result}
-            <TipBottom themeProps={innerThemeProps}>{theHelp}</TipBottom>
+            <TipBottom themeProps={validateThemeProps}>{theHelp}</TipBottom>
           </React.Fragment>
         );
       }
-      const { _isTipMaskVisible } = this.state;
+
       if (validateType === 'inner') {
-        const innerThemeProps = getPartOfThemeProps('ValidateErrorText', {
-          props: { validateStatus, _isTipMaskVisible },
-        });
         return (
           <FatherContainer>
             {result}
-            <InnerTip themeProps={innerThemeProps}>
-              <InnerTipMask />
-              <InnerTipText themeProps={innerThemeProps}>{theHelp}</InnerTipText>
-            </InnerTip>
+            <InnerTipText themeProps={validateThemeProps}>{theHelp}</InnerTipText>
           </FatherContainer>
         );
       }
