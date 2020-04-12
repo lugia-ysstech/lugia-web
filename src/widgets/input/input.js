@@ -5,10 +5,10 @@ import React, { Component } from 'react';
 import Widget from '../consts/index';
 import ThemeHoc, { addMouseEvent } from '@lugia/theme-hoc';
 import { fixControlledValue } from '../utils';
-import type { InputSize, ValidateType, ValidateStatus } from '../css/input';
-import { DefaultHelp, isValidateError, getInputHeight } from '../css/input';
+import type { InputSize } from '../css/input';
+import { getInputHeight } from '../css/input';
 import Icon from '../icon';
-import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
+import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import colorsFunc from '../css/stateColor';
 import { units } from '@lugia/css';
 import { deepMerge } from '@lugia/object-utils';
@@ -17,6 +17,13 @@ import { ObjectUtils } from '@lugia/type-utils';
 import get from '../css/theme-common-dict';
 import MouseEventAdaptor from '../common/MouseEventAdaptor';
 import ValidateHoc from './validateHoc';
+import {
+  validateValueDefaultTheme,
+  validateBorderDefaultTheme,
+  isValidateError,
+  ValidateType,
+  ValidateStatus,
+} from '../css/validateHoc';
 
 const { px2remcss } = units;
 
@@ -111,17 +118,6 @@ const CommonInputStyle = CSSComponent({
     border: none;
   `,
   option: { hover: true, active: true },
-});
-
-export const BaseInputContainer = StaticComponent({
-  tag: 'span',
-  className: 'InputBaseInputContainer',
-  css: css`
-    position: relative;
-    display: inline-flex;
-    width: 100%;
-    height: 100%;
-  `,
 });
 
 const InputContainer = CSSComponent({
@@ -275,7 +271,6 @@ class TextBox extends Component<InputProps, InputState> {
     validateStatus: 'default',
     validateType: 'top',
     size: 'default',
-    help: DefaultHelp,
     defaultValue: '',
     isShowClearButton: true,
     formatter: (value: string | number) => {
@@ -539,8 +534,6 @@ class TextBox extends Component<InputProps, InputState> {
       suffix,
       isShowClearButton,
       size,
-      getValidateBorderDefaultTheme,
-      getValidateValueDefaultTheme,
     } = this.props;
 
     const {
@@ -551,8 +544,8 @@ class TextBox extends Component<InputProps, InputState> {
 
     const theValidateThemeProps = isValidateError(validateStatus)
       ? deepMerge(
-          getValidateValueDefaultTheme,
-          getValidateBorderDefaultTheme,
+          validateValueDefaultTheme,
+          validateBorderDefaultTheme,
           validateErrorInputThemeProps
         )
       : {};
