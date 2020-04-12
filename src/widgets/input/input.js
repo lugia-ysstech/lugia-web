@@ -268,8 +268,6 @@ class TextBox extends Component<InputProps, InputState> {
     disabled: false,
     autoFocus: false,
     viewClass: Widget.Input,
-    validateStatus: 'default',
-    validateType: 'top',
     size: 'default',
     defaultValue: '',
     isShowClearButton: true,
