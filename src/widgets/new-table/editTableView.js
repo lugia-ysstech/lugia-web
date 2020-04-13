@@ -245,7 +245,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
     const {
       editCell: { selectRow },
     } = this.state;
-    const allowEdit = isEditHead ? true : selectRow !== 0;
+    const allowEdit = isEditHead || selectRow !== 0;
     if (allowEdit) {
       this.setState({ editing: true });
     }
