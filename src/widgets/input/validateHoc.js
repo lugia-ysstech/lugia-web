@@ -21,9 +21,9 @@ const ValidateHoc = (Target: Object) => {
     };
 
     onBlur = (event: UIEvent) => {
-      const { onBlur, disabled } = this.props;
+      const { onBlur, disabled, readOnly } = this.props;
 
-      if (disabled) {
+      if (disabled || readOnly) {
         return;
       }
       this.setState({ _isValidateVisible: true });
@@ -82,7 +82,6 @@ const ValidateHoc = (Target: Object) => {
             },
           },
         };
-        const { _isValidateVisible } = this.state;
         return (
           <ToolTip
             theme={newTheme}
