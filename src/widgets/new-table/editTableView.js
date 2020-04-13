@@ -36,8 +36,8 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
     this.quitEditListener = this.editTableListener.on('quitEdit', (res: Object) => {
       this.quitEdit(res);
     });
-    this.enterEditingListener = this.editTableListener.on('enterEditing', (res: Object) => {
-      this.setState({ editing: true });
+    this.enterEditingListener = this.editTableListener.on('enterEditing', () => {
+      this.doEnterEditing();
     });
 
     this.setStateListener = this.editTableListener.on('setState', (res: Object) => {
@@ -238,6 +238,17 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
       selectCell: [selectInfo],
       editCell: selectInfo,
     });
+  };
+
+  doEnterEditing = () => {
+    const { isEditHead } = this.props;
+    const {
+      editCell: { selectRow },
+    } = this.state;
+    const allowEdit = isEditHead ? true : selectRow !== 0;
+    if (allowEdit) {
+      this.setState({ editing: true });
+    }
   };
 
   componentWillUnmount() {
