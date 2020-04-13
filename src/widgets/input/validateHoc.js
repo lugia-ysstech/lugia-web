@@ -5,7 +5,7 @@ import ToolTip from '../tooltip/index';
 import { DefaultHelp, isValidateError } from '../css/validateHoc';
 import { TipBottom, InnerTipText, FatherContainer } from './validateCSS';
 
-const ValidateHoc = (Target: Object) => {
+const ValidateHoc = (Target: Object, displayName?: string) => {
   class ValidateContainer extends React.Component {
     state = {
       _isValidateVisible: false,
@@ -110,8 +110,9 @@ const ValidateHoc = (Target: Object) => {
       }
 
       if (validateType === 'inner') {
+        const { getPartOfThemeProps } = this.props;
         return (
-          <FatherContainer>
+          <FatherContainer displayName={displayName} themeProps={getPartOfThemeProps('Container')}>
             {result}
             <InnerTipText themeProps={validateThemeProps}>{theHelp}</InnerTipText>
           </FatherContainer>

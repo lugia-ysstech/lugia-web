@@ -431,8 +431,13 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
   };
 }
 
-const TargetTxtBox = ThemeHoc(ValidateHoc(KeyBoardEventAdaptor(TextAreaBox)), Widget.Textarea, {
-  hover: true,
-  active: true,
-});
+const TargetTxtBox = ThemeHoc(
+  ValidateHoc(KeyBoardEventAdaptor(TextAreaBox), Widget.Textarea),
+  Widget.Textarea,
+  {
+    hover: true,
+    active: true,
+  }
+);
+
 export default TargetTxtBox;
