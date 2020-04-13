@@ -74,10 +74,10 @@ export const FatherContainer: Object = CSSComponent({
   },
   css: css`
     position: relative;
-    display: ${props => {
+    ${props => {
       return props.displayName && props.displayName.indexOf('Textarea') !== -1
-        ? 'inline-block; font-size: 0;'
-        : 'block';
+        ? ' display:inline-block; font-size: 0;'
+        : ' display:block';
     }};
   `,
 });
