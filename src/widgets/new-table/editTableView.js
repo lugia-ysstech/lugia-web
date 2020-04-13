@@ -203,7 +203,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
   };
 
   clearEditState = (): void => {
-    this.setState({ editing: false, editCell: null, selectCell: [] });
+    this.setState({ editing: false, editCell: {}, selectCell: [] });
   };
 
   exportChange = (res: Object): void => {
@@ -240,12 +240,12 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
     });
   };
 
-  doEnterEditing = () => {
+  doEnterEditing = (): void => {
     const { isEditHead } = this.props;
     const {
       editCell: { selectRow },
     } = this.state;
-    const allowEdit = isEditHead || selectRow !== 0;
+    const allowEdit = isEditHead || (selectRow && selectRow !== 0);
     if (allowEdit) {
       this.setState({ editing: true });
     }
