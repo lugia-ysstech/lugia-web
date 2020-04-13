@@ -76,7 +76,7 @@ const ValidateHoc = (Target: Object) => {
             ChildrenContainer: {
               normal: {
                 getCSS() {
-                  return 'display: block;';
+                  return 'display: block;height:100%;';
                 },
               },
             },
