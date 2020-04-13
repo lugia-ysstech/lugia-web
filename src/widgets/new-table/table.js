@@ -23,7 +23,7 @@ class Table extends React.Component<TableProps, TableState> {
       <Container themeProps={containerTheme} tabIndex={10}>
         {title ? <CustomBlock themeProps={titleTheme}>{title}</CustomBlock> : null}
         <LugiaTable themeProps={tableTheme}>
-          <THead>{showHeader && this.getColumns(columns)}</THead>
+          {showHeader && <THead> {this.getColumns(columns)}</THead>}
 
           <TBody>{this.getData(data)}</TBody>
         </LugiaTable>
@@ -40,7 +40,7 @@ class Table extends React.Component<TableProps, TableState> {
     return (
       <Tr themeProps={trTheme}>
         {columns.map((item: Object) => {
-          const { title, width, align = 'center', ellipsis } = item;
+          const { title, width, align, ellipsis } = item;
           const tdTheme = this.props.getPartOfThemeProps('Td', {
             props: { align, ellipsis, tableSize, tableStyle },
           });

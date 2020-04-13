@@ -37,12 +37,13 @@ export const Container = CSSComponent({
   tag: 'div',
   className: 'Container',
   normal: {
-    selectNames: [['width'], ['height']],
+    selectNames: [['width'], ['height'], ['background']],
     defaultTheme: {
       width: '100%',
     },
   },
   css: `
+  background: #fff;
   &:focus {
     outline: none;
   }
@@ -79,16 +80,23 @@ export const Td = CSSComponent({
     selectNames: [['width'], ['height'], ['border'], ['padding']],
     getCSS(themeMeta: Object, themeProps: Object) {
       const {
-        propsConfig: { align, ellipsis },
+        propsConfig: { align = '', ellipsis, tableStyle },
       } = themeProps;
       const ellipsisStyle = ellipsis ? 'hidden' : '';
       const textOverflowStyle = ellipsis ? 'ellipsis' : '';
       const whiteSpaceStyle = ellipsis ? 'nowrap' : '';
+      let border = '';
+      if (tableStyle === 'bordered') {
+        border = `border-right: ${borderSize}px solid ${borderColor}`;
+      }
       return `
         text-align:${align};
         overflow:${ellipsisStyle};
         text-overflow:${textOverflowStyle};
         white-space:${whiteSpaceStyle};
+        &:last-child{
+        ${border};
+        }
       `;
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
