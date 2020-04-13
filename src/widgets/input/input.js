@@ -83,7 +83,7 @@ const CommonInputStyle = CSSComponent({
       const paddingLeft = prefix ? 30 : width && width < 200 ? width / 20 : padding;
       const paddingRight =
         suffix || isShowClearButton ? 35 : width && width < 200 ? 15 + width / 10 : padding;
-      const theColor = fontColor ? fontColor : color ? color : blackColor;
+      const theColor = fontColor || color || blackColor;
       return {
         color: theColor,
         padding: {
