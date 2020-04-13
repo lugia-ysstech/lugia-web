@@ -47,6 +47,7 @@ export const InnerTipText: Object = CSSComponent({
     selectNames: [['font'], ['fontSize'], ['color']],
     defaultTheme: {
       color: dangerColor,
+      fontSize: 12,
     },
     getCSS(themeMeta: Object, themeProps: Object) {
       return getTipShowCSS(themeProps);
@@ -62,11 +63,21 @@ export const InnerTipText: Object = CSSComponent({
     box-shadow: ${px2remcss(-14)} 0 ${px2remcss(6)} 0 ${get('defaultColor')};
   `,
 });
-export const FatherContainer: Object = StaticComponent({
+export const FatherContainer: Object = CSSComponent({
   tag: 'span',
   className: 'FatherContainer',
+  normal: {
+    selectNames: [['width'], ['height']],
+    defaultTheme: {
+      height: '100%',
+    },
+  },
   css: css`
     position: relative;
-    height: 100%;
+    display: ${props => {
+      return props.displayName && props.displayName.indexOf('Textarea') !== -1
+        ? 'inline-block; font-size: 0;'
+        : 'block';
+    }};
   `,
 });
