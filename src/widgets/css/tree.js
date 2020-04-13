@@ -8,30 +8,478 @@ import colorsFunc from './stateColor';
 import { px2remcss } from './units';
 import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import { getBorderRadius } from '@lugia/theme-utils';
+import get from './theme-common-dict';
+import changeColor from './utilsColor';
+import { getBorder } from '@lugia/theme-utils';
+import { getThemeDefaultConfigFromSource } from '../utils';
 
-export const {
-  themeColor,
-  darkGreyColor,
-  mediumGreyColor,
-  hoverColor,
-  spiritColor,
-  mouseDownColor,
-  lightGreyColor,
-  transitionTime,
-} = colorsFunc();
+export type SizeType = 'small' | 'default' | 'large';
+
+export const { transitionTime } = colorsFunc();
+
+const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
 
 export const TreeItemHeight = 35;
 export const DefaultHeight = 250;
-export const ItemBackgroundColor = '#edf0fe';
+
+type SizeThemeConfig = {
+  small: { [key: string]: Object },
+  default: { [key: string]: any },
+  large: { [key: string]: any },
+};
+
+const xxsFontSize = '$lugia-dict.@lugia/lugia-web.xxsFontSize';
+const xsFontSize = '$lugia-dict.@lugia/lugia-web.xsFontSize';
+const sFontSize = '$lugia-dict.@lugia/lugia-web.sFontSize';
+const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
+const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
+const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
+const borderDisableColor = '$lugia-dict.@lugia/lugia-web.borderDisableColor';
+const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
+const borderColor = '$lugia-dict.@lugia/lugia-web.borderColor';
+const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
+
+const smallTextFontSize = '12';
+const normalTextFontSize = '14';
+
+const checkBoxSmallSize = 14;
+const checkBoxDefaultAndLargeSize = 16;
+
+export const treeThemeDefaultConfig: SizeThemeConfig = {
+  small: {
+    Text: {
+      normal: {
+        fontSize: smallTextFontSize,
+        color: blackColor,
+      },
+      hover: {
+        fontSize: smallTextFontSize,
+        color: blackColor,
+        background: {
+          color: changeColor(get('themeColor'), 0, 0, 5).rgba,
+        },
+      },
+    },
+    SelectedText: {
+      normal: {
+        fontSize: smallTextFontSize,
+        color: themeColor,
+      },
+      hover: {
+        fontSize: smallTextFontSize,
+        color: blackColor,
+      },
+    },
+    SwitchIcon: {
+      normal: {
+        fontSize: xxsFontSize,
+        color: mediumGreyColor,
+      },
+      disabled: {
+        fontSize: xxsFontSize,
+        color: disableTextColor,
+      },
+    },
+    SwitchIconExpanded: {
+      normal: {
+        fontSize: xxsFontSize,
+        color: mediumGreyColor,
+      },
+      disabled: {
+        fontSize: xxsFontSize,
+        color: disableTextColor,
+      },
+    },
+    PrefixIcon: {
+      normal: {
+        fontSize: xsFontSize,
+      },
+    },
+    SuffixIcon: {
+      normal: {
+        fontSize: xsFontSize,
+      },
+    },
+    Checkbox: {
+      CheckboxText: {
+        normal: {
+          color: blackColor,
+        },
+        hover: {
+          color: blackColor,
+        },
+      },
+      CheckboxEdgeChecked: {
+        normal: {
+          height: checkBoxSmallSize,
+          width: checkBoxSmallSize,
+          background: {
+            color: themeColor,
+          },
+          borderRadius: getBorderRadius(2),
+          border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
+        },
+        disabled: {
+          height: checkBoxSmallSize,
+          width: checkBoxSmallSize,
+          background: {
+            color: disableTextColor,
+          },
+          borderRadius: getBorderRadius(2),
+          border: getBorder({ color: borderDisableColor, width: 1, style: 'solid' }),
+        },
+      },
+      CheckboxEdgeUnChecked: {
+        normal: {
+          height: checkBoxSmallSize,
+          width: checkBoxSmallSize,
+          background: {
+            color: defaultColor,
+          },
+          borderRadius: getBorderRadius(2),
+          border: getBorder({ color: borderColor, width: 1, style: 'solid' }),
+        },
+        hover: {
+          height: checkBoxSmallSize,
+          width: checkBoxSmallSize,
+          background: {
+            color: defaultColor,
+          },
+          borderRadius: getBorderRadius(2),
+          border: getBorder({ color: borderColor, width: 1, style: 'solid' }),
+        },
+        disabled: {
+          height: checkBoxSmallSize,
+          width: checkBoxSmallSize,
+          background: {
+            color: disableColor,
+          },
+          borderRadius: getBorderRadius(2),
+          border: getBorder({ color: borderDisableColor, width: 1, style: 'solid' }),
+        },
+      },
+      CheckboxEdgeIndeterminate: {
+        normal: {
+          height: checkBoxSmallSize,
+          width: checkBoxSmallSize,
+          background: {
+            color: themeColor,
+          },
+          borderRadius: getBorderRadius(2),
+          border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
+        },
+        disabled: {
+          height: checkBoxSmallSize,
+          width: checkBoxSmallSize,
+          background: {
+            color: disableTextColor,
+          },
+          borderRadius: getBorderRadius(2),
+          border: getBorder({ color: borderDisableColor, width: 1, style: 'solid' }),
+        },
+      },
+    },
+  },
+  default: {
+    Text: {
+      normal: {
+        fontSize: normalTextFontSize,
+        color: blackColor,
+      },
+      hover: {
+        fontSize: normalTextFontSize,
+        color: blackColor,
+        background: {
+          color: changeColor(get('themeColor'), 0, 0, 5).rgba,
+        },
+      },
+    },
+    SelectedText: {
+      normal: {
+        fontSize: normalTextFontSize,
+        color: themeColor,
+      },
+    },
+    SwitchIcon: {
+      normal: {
+        fontSize: xsFontSize,
+        color: mediumGreyColor,
+      },
+      disabled: {
+        fontSize: xsFontSize,
+        color: disableTextColor,
+      },
+    },
+    SwitchIconExpanded: {
+      normal: {
+        fontSize: xsFontSize,
+        color: mediumGreyColor,
+      },
+      disabled: {
+        fontSize: xsFontSize,
+        color: disableTextColor,
+      },
+    },
+    PrefixIcon: {
+      normal: {
+        fontSize: sFontSize,
+      },
+    },
+    SuffixIcon: {
+      normal: {
+        fontSize: sFontSize,
+      },
+    },
+    Checkbox: {
+      CheckboxText: {
+        normal: {
+          color: blackColor,
+        },
+        hover: {
+          color: blackColor,
+        },
+      },
+      CheckboxEdgeChecked: {
+        normal: {
+          height: checkBoxDefaultAndLargeSize,
+          width: checkBoxDefaultAndLargeSize,
+          background: {
+            color: themeColor,
+          },
+          borderRadius: getBorderRadius(2),
+          border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
+        },
+        disabled: {
+          height: checkBoxDefaultAndLargeSize,
+          width: checkBoxDefaultAndLargeSize,
+          background: {
+            color: disableTextColor,
+          },
+          borderRadius: getBorderRadius(2),
+          border: getBorder({ color: borderDisableColor, width: 1, style: 'solid' }),
+        },
+      },
+      CheckboxEdgeUnChecked: {
+        normal: {
+          height: checkBoxDefaultAndLargeSize,
+          width: checkBoxDefaultAndLargeSize,
+          background: {
+            color: defaultColor,
+          },
+          borderRadius: getBorderRadius(2),
+          border: getBorder({ color: borderColor, width: 1, style: 'solid' }),
+        },
+        hover: {
+          height: checkBoxDefaultAndLargeSize,
+          width: checkBoxDefaultAndLargeSize,
+          background: {
+            color: defaultColor,
+          },
+          borderRadius: getBorderRadius(2),
+          border: getBorder({ color: borderColor, width: 1, style: 'solid' }),
+        },
+        disabled: {
+          height: checkBoxDefaultAndLargeSize,
+          width: checkBoxDefaultAndLargeSize,
+          background: {
+            color: disableColor,
+          },
+          borderRadius: getBorderRadius(2),
+          border: getBorder({ color: borderDisableColor, width: 1, style: 'solid' }),
+        },
+      },
+      CheckboxEdgeIndeterminate: {
+        normal: {
+          height: checkBoxDefaultAndLargeSize,
+          width: checkBoxDefaultAndLargeSize,
+          background: {
+            color: themeColor,
+          },
+          borderRadius: getBorderRadius(2),
+          border: getBorder({ color: borderColor, width: 1, style: 'solid' }),
+        },
+        disabled: {
+          height: checkBoxDefaultAndLargeSize,
+          width: checkBoxDefaultAndLargeSize,
+          background: {
+            color: disableTextColor,
+          },
+          borderRadius: getBorderRadius(2),
+          border: getBorder({ color: borderDisableColor, width: 1, style: 'solid' }),
+        },
+      },
+    },
+  },
+  large: {
+    Text: {
+      normal: {
+        fontSize: normalTextFontSize,
+        color: blackColor,
+      },
+      hover: {
+        fontSize: normalTextFontSize,
+        color: blackColor,
+        background: {
+          color: changeColor(get('themeColor'), 0, 0, 5).rgba,
+        },
+      },
+    },
+    SelectedText: {
+      normal: {
+        fontSize: normalTextFontSize,
+        color: themeColor,
+      },
+      hover: {
+        fontSize: normalTextFontSize,
+        color: blackColor,
+      },
+    },
+    SwitchIcon: {
+      normal: {
+        fontSize: xsFontSize,
+        color: mediumGreyColor,
+      },
+      disabled: {
+        fontSize: xsFontSize,
+        color: disableTextColor,
+      },
+    },
+    SwitchIconExpanded: {
+      normal: {
+        fontSize: xsFontSize,
+        color: mediumGreyColor,
+      },
+      disabled: {
+        fontSize: xsFontSize,
+        color: disableTextColor,
+      },
+    },
+    PrefixIcon: {
+      normal: {
+        fontSize: sFontSize,
+      },
+    },
+    SuffixIcon: {
+      normal: {
+        fontSize: sFontSize,
+      },
+    },
+    Checkbox: {
+      CheckboxText: {
+        normal: {
+          color: blackColor,
+        },
+        hover: {
+          color: blackColor,
+        },
+      },
+      CheckboxEdgeChecked: {
+        normal: {
+          height: checkBoxDefaultAndLargeSize,
+          width: checkBoxDefaultAndLargeSize,
+          background: {
+            color: themeColor,
+          },
+          borderRadius: getBorderRadius(2),
+          border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
+        },
+        disabled: {
+          height: checkBoxDefaultAndLargeSize,
+          width: checkBoxDefaultAndLargeSize,
+          background: {
+            color: disableTextColor,
+          },
+          borderRadius: getBorderRadius(2),
+          border: getBorder({ color: borderDisableColor, width: 1, style: 'solid' }),
+        },
+      },
+      CheckboxEdgeUnChecked: {
+        normal: {
+          height: checkBoxDefaultAndLargeSize,
+          width: checkBoxDefaultAndLargeSize,
+          background: {
+            color: defaultColor,
+          },
+          borderRadius: getBorderRadius(2),
+          border: getBorder({ color: borderColor, width: 1, style: 'solid' }),
+        },
+        hover: {
+          height: checkBoxDefaultAndLargeSize,
+          width: checkBoxDefaultAndLargeSize,
+          background: {
+            color: defaultColor,
+          },
+          borderRadius: getBorderRadius(2),
+          border: getBorder({ color: borderColor, width: 2, style: 'solid' }),
+        },
+        disabled: {
+          height: checkBoxDefaultAndLargeSize,
+          width: checkBoxDefaultAndLargeSize,
+          background: {
+            color: disableColor,
+          },
+          borderRadius: getBorderRadius(2),
+          border: getBorder({ color: borderDisableColor, width: 1, style: 'solid' }),
+        },
+      },
+      CheckboxEdgeIndeterminate: {
+        normal: {
+          height: checkBoxDefaultAndLargeSize,
+          width: checkBoxDefaultAndLargeSize,
+          background: {
+            color: themeColor,
+          },
+          borderRadius: getBorderRadius(2),
+          border: getBorder({ color: themeColor, width: 1, style: 'solid' }),
+        },
+        disabled: {
+          height: checkBoxDefaultAndLargeSize,
+          width: checkBoxDefaultAndLargeSize,
+          background: {
+            color: disableTextColor,
+          },
+          borderRadius: getBorderRadius(2),
+          border: getBorder({ color: borderDisableColor, width: 1, style: 'solid' }),
+        },
+      },
+    },
+  },
+};
+
+export const getTreeThemeDefaultConfig = (sizeType: SizeType, themeName: string) => {
+  return getThemeDefaultConfigFromSource(treeThemeDefaultConfig)(sizeType, themeName);
+};
+
+export const getMenuItemHeight = (size: SizeType) => {
+  return size === 'large'
+    ? get('largeSize')
+    : size === 'default'
+    ? get('normalSize')
+    : get('smallSize');
+};
+
+export const CheckBoxContainer = StaticComponent({
+  tag: 'div',
+  className: 'CheckBoxContainer',
+  css: css`
+    display: flex;
+    height: 100%;
+    flex: 1;
+    align-items: center;
+    padding-left: ${px2remcss(get('padding'))};
+  `,
+  option: { hover: true, active: true },
+});
+CheckBoxContainer.displayName = 'CheckBoxContainer';
 
 export const Switch = StaticComponent({
   tag: 'span',
   className: 'Switch',
   css: css`
     font-size: ${px2remcss(14)};
-    color: ${mediumGreyColor};
+    color: ${get('mediumGreyColor')};
     display: inline-block;
-    padding: 0 ${px2remcss(2)};
   `,
   option: { hover: true, active: true },
 });
@@ -120,7 +568,7 @@ const getLiIcon = (inlineType, itemHeight, selected) => {
     width: ${px2remcss(6)};
     border-radius: ${px2remcss(4)};
     height: ${px2remcss(itemHeight)};
-    background: ${themeColor};
+    background: ${get('themeColor')};
     transition: all ${transitionTime};
     position: absolute;
     left: 0;
@@ -131,13 +579,11 @@ const getLiIcon = (inlineType, itemHeight, selected) => {
 };
 
 const getDragState = dragState => {
-  if (dragState === 'dragOver') {
-    return 'background: #E8E8E8;';
-  } else if (dragState === 'dragOverGapTop') {
+  if (dragState === 'dragOverGapTop') {
     return ` ::after {
       content: '';
       width: 100%;
-      border-top: 2px dashed #979797;
+      border-top: 2px dashed ${get('mediumGreyColor')};
       position: absolute;
       left: 0;
       top: 0;
@@ -146,7 +592,7 @@ const getDragState = dragState => {
     return ` ::after {
       content: '';
       width: 100%;
-      border-top: 2px dashed #979797;
+      border-top: 2px dashed  ${get('mediumGreyColor')};
       position: absolute;
       left: 0;
       bottom: 0;
@@ -238,6 +684,7 @@ export const TitleWrap = CSSComponent({
       ['lineHeight'],
       ['color'],
       ['font'],
+      ['fontSize'],
       ['background'],
       ['padding'],
       ['border'],
@@ -249,8 +696,9 @@ export const TitleWrap = CSSComponent({
     getThemeMeta: (themeMeta, themeProps) => {
       const { propsConfig: { selected, inlineType, __navmenu, shape } = {} } = themeProps;
 
-      const borderRadius = shape === 'round' || inlineType === 'ellipse' ? 99999 : 4;
-      const linearGradient = `linear-gradient(to right, ${themeColor}, #808eff)`;
+      const borderRadius =
+        shape === 'round' || inlineType === 'ellipse' ? 99999 : get('borderRadiusValue');
+      const linearGradient = `linear-gradient(to right, ${get('themeColor')}, #808eff)`;
       return __navmenu && selected && inlineType === 'ellipse'
         ? {
             background: {
@@ -316,7 +764,7 @@ export const TitleWrap = CSSComponent({
     align-items: center;
     height: 100%;
     vertical-align: top;
-    padding-left: ${px2remcss(10)};
+    padding-left: ${px2remcss(get('padding'))};
     box-sizing: border-box;
     transition-property: background-color, border, border-radius, opacity, box-shadow;
     transition-duration: 0.2s;
@@ -356,18 +804,6 @@ export const TitleSpan = CSSComponent({
 
 TitleSpan.displayName = 'titleSpan';
 
-export const CheckboxContainer = StaticComponent({
-  tag: 'div',
-  className: 'CheckboxContainer',
-  css: css`
-    position: relative;
-    display: flex;
-    flex: 1;
-    overflow: hidden;
-    align-items: center;
-  `,
-});
-
 const getFlexBoxPaddingLeft = pos => {
   const num = pos.split('-').length - 2;
   return num ? num * 20 : 0;
@@ -386,8 +822,15 @@ export const FlexWrap = CSSComponent({
       ['cursor'],
     ],
     getCSS: (themeMeta, themeProps) => {
-      const { pos, itemHeight } = themeProps.propsConfig;
+      const { pos, itemHeight, dragState } = themeProps.propsConfig;
       const paddingLeft = getFlexBoxPaddingLeft(pos);
+      if (dragState === 'dragOver') {
+        return `
+         padding-left: ${px2remcss(paddingLeft)};
+          height: ${px2remcss(itemHeight)}
+          background: ${get('disableColor')};
+        `;
+      }
       return `
           padding-left: ${px2remcss(paddingLeft)};
           height: ${px2remcss(itemHeight)}
@@ -440,7 +883,7 @@ export const FlexBox = CSSComponent({
     align-items: center;
     box-sizing: border-box;
     height: 100%;
-    padding-right: ${px2remcss(10)};
+    padding-right: ${px2remcss(get('padding'))};
   `,
 });
 
@@ -472,12 +915,14 @@ export const Text = StaticComponent({
 
 export const DragCopyWrap = StaticComponent({
   tag: 'div',
+  className: 'DragCopyWrap',
   css: css`
+    font-size: ${px2remcss(14)};
     position: fixed;
     text-align: center;
     width: 186px;
-    background-image: linear-gradient(-180deg, #f5f5f5 0%, #e8e8e8 100%);
-    border: 1px dashed #ccc;
+    background-color: ${get('disableColor')};
+    border: 1px dashed ${get('lightGreyColor')};
     border-radius: 2px;
     line-height: 28px;
     z-index: 100;

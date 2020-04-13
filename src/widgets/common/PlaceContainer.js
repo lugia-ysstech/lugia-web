@@ -5,6 +5,7 @@
  * @flow
  */
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
+import get from '../css/theme-common-dict';
 
 const PlaceContainer = CSSComponent({
   tag: 'div',
@@ -20,7 +21,7 @@ const PlaceContainer = CSSComponent({
     right: 7px;
     margin-top: -10px;
     text-align: left;
-    color: rgba(0, 0, 0, 0.25);
+    color: ${get('lightGreyColor')};
     line-height: 20px;
     max-width: 100%;
     height: 20px;

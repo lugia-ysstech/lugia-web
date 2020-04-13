@@ -11,6 +11,7 @@ import { getBoxShadow } from '@lugia/theme-utils';
 import { deepMerge } from '@lugia/object-utils';
 import { DefaultHeight, ScrollerContainer, Col, ScrollerCol } from '../css/scroller';
 import { getCanSeeCount } from './support';
+import get from '../css/theme-common-dict';
 type ThrottleScrollerState = {
   start: number,
 };
@@ -103,15 +104,15 @@ export default (
     }
 
     getActiveItemHeight = (props: Object) => {
-      const { normal: { height = MenuItemHeight } = {} } = this.getItemWrapThemeConfig();
-      return height;
+      const { normal: { height } = {} } = this.getItemWrapThemeConfig();
+      return height || props.menuItemHeight || MenuItemHeight;
     };
 
     getContainerThemeProps(target: string, params: Object) {
       const themeProps = this.props.getPartOfThemeProps(target, params);
       const { themeConfig = {} } = themeProps;
       const defaultTheme = {
-        boxShadow: getBoxShadow('0 1px 6px rgba(0, 0, 0, 0.2)'),
+        boxShadow: get('normalBoxShadow'),
       };
       themeConfig.normal = deepMerge(defaultTheme, themeConfig.normal);
       return themeProps;

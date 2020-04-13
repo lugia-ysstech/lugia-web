@@ -7,20 +7,17 @@
 
 import { px2remcss } from '../css/units';
 import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
-import colorsFunc from './stateColor';
 import Widget from '../consts/index';
 import Icon from '../icon';
+import get from './theme-common-dict';
+import { getBoxShadow } from '@lugia/theme-utils';
+import changeColor from './utilsColor';
 
-export const {
-  themeColor,
-  darkGreyColor,
-  blackColor,
-  mediumGreyColor,
-  lightGreyColor,
-  dangerColor,
-  defaultColor,
-  disableColor,
-} = colorsFunc();
+const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
+const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
+const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
+export const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
+export const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 
 export const FontSize = 12;
 export const MarginTop = 4;
@@ -52,26 +49,10 @@ export const OutContainer = CSSComponent({
     defaultTheme: {
       cursor: 'pointer',
       border: {
-        top: {
-          color: lightGreyColor,
-          style: 'solid',
-          width: 1,
-        },
-        left: {
-          color: lightGreyColor,
-          style: 'solid',
-          width: 1,
-        },
-        bottom: {
-          color: lightGreyColor,
-          style: 'solid',
-          width: 1,
-        },
-        right: {
-          color: lightGreyColor,
-          style: 'solid',
-          width: 1,
-        },
+        top: get('normalBorder'),
+        left: get('normalBorder'),
+        bottom: get('normalBorder'),
+        right: get('normalBorder'),
       },
     },
   },
@@ -85,34 +66,37 @@ export const OutContainer = CSSComponent({
       ['opacity'],
       ['cursor'],
     ],
-    getStyle: (themeMeta, themeProps) => {},
     defaultTheme: {
       border: {
-        top: {
-          color: themeColor,
-          style: 'solid',
-          width: 1,
-        },
-        left: {
-          color: themeColor,
-          style: 'solid',
-          width: 1,
-        },
-        bottom: {
-          color: themeColor,
-          style: 'solid',
-          width: 1,
-        },
-        right: {
-          color: themeColor,
-          style: 'solid',
-          width: 1,
-        },
+        top: get('hoverBorder'),
+        left: get('hoverBorder'),
+        bottom: get('hoverBorder'),
+        right: get('hoverBorder'),
       },
     },
   },
   active: {
-    selectNames: [],
+    selectNames: [['border']],
+    defaultTheme: {
+      border: {
+        top: get('activeBorder'),
+        left: get('activeBorder'),
+        bottom: get('activeBorder'),
+        right: get('activeBorder'),
+      },
+    },
+  },
+  focus: {
+    selectNames: [['border']],
+    defaultTheme: {
+      border: {
+        top: get('focusBorder'),
+        left: get('focusBorder'),
+        bottom: get('focusBorder'),
+        right: get('focusBorder'),
+      },
+      boxShadow: getBoxShadow(`0px 0px 4px 0px ${changeColor(get('themeColor'), 0, 0, 40).rgba}`),
+    },
   },
   disabled: {
     selectNames: [
@@ -129,6 +113,12 @@ export const OutContainer = CSSComponent({
       ['cursor'],
     ],
     defaultTheme: {
+      border: {
+        top: get('disabledBorder'),
+        left: get('disabledBorder'),
+        bottom: get('disabledBorder'),
+        right: get('disabledBorder'),
+      },
       background: {
         color: disableColor,
       },
@@ -141,9 +131,9 @@ export const OutContainer = CSSComponent({
     width: 100%;
     overflow: hidden;
     position: relative;
-    border-radius: ${px2remcss(4)};
-    background: ${defaultColor};
-    color: ${blackColor};
+    border-radius: ${px2remcss(get('borderRadiusValue'))};
+    background: ${get('defaultColor')};
+    color: ${get('blackColor')};
     font-size: ${px2remcss(FontSize)};
     transition: all 0.3s;
     & > div {
@@ -151,7 +141,7 @@ export const OutContainer = CSSComponent({
       width: 100%;
     }
   `,
-  option: { hover: true, disabled: true },
+  option: { hover: true, disabled: true, active: true, focus: true },
 });
 
 export const InnerContainer = CSSComponent({
@@ -221,12 +211,30 @@ export const FlexResBox = StaticComponent({
   `,
 });
 
+export const TextContent = CSSComponent({
+  tag: 'span',
+  className: 'TextContent',
+  normal: {
+    selectNames: [['color'], ['fontSize']],
+    defaultTheme: {
+      color: get('blackColor'),
+    },
+  },
+  disabled: {
+    selectNames: [['color'], ['fontSize']],
+    defaultTheme: {
+      color: get('disableTextColor'),
+    },
+  },
+  option: { disabled: true },
+});
+
 export const Prefix = StaticComponent({
   tag: 'span',
   className: 'Prefix',
   css: css`
+    padding-right: ${px2remcss(get('padding'))};
     position: relative;
-    left: ${px2remcss(-5)};
   `,
 });
 
@@ -235,7 +243,6 @@ export const Suffix = StaticComponent({
   className: 'Suffix',
   css: css`
     position: relative;
-    right: ${px2remcss(5)};
     display: flex;
     align-items: center;
   `,
@@ -312,6 +319,12 @@ export const ItemContainer = CSSComponent({
       ['margin', 'right'],
       ['opacity'],
     ],
+    defaultTheme: {
+      background: {
+        color: changeColor(get('themeColor'), 0, 0, 10).rgba,
+      },
+      color: darkGreyColor,
+    },
     getCSS: themeMeta => {
       const { height = 20 } = themeMeta;
       return `
@@ -331,15 +344,19 @@ export const ItemContainer = CSSComponent({
       ['boxShadow'],
     ],
   },
+  disabled: {
+    selectNames: [['color'], ['background']],
+    defaultTheme: {
+      color: disableTextColor,
+    },
+  },
 
   css: css`
-    padding: 0 ${px2remcss(5)};
+    padding: 0 ${px2remcss(get('padding'))};
     height: ${px2remcss(20)};
-    font-size: ${px2remcss(FontSize)};
-    margin-right: ${px2remcss(5)};
+    font-size: ${px2remcss(get('xxsFontSize'))};
+    margin-right: ${px2remcss(4)};
     user-select: none;
-    background: ${ItemBackgroundColor};
-    color: ${darkGreyColor};
     cursor: default;
     display: flex;
     align-items: center;
@@ -347,13 +364,14 @@ export const ItemContainer = CSSComponent({
     transition: all 0.3s;
     box-sizing: border-box;
   `,
-  option: { hover: true },
+  option: { hover: true, disabled: true },
 });
 
 export const ItemText = StaticComponent({
   tag: 'span',
   className: 'ItemText',
   css: css`
+    font-size: ${px2remcss(12)};
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -361,6 +379,9 @@ export const ItemText = StaticComponent({
     margin: 0;
     padding: 0;
     flex: 1;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
   `,
 });
 
