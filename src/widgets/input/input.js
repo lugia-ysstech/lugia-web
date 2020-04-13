@@ -21,9 +21,8 @@ import {
   validateValueDefaultTheme,
   validateBorderDefaultTheme,
   isValidateError,
-  ValidateType,
-  ValidateStatus,
 } from '../css/validateHoc';
+import type { ValidateStatus, ValidateType } from '../css/validateHoc';
 
 const { px2remcss } = units;
 
@@ -225,6 +224,7 @@ type InputState = {
 
 type InsideProps = {
   _maxLength: string,
+  getInputRef: Function,
 };
 
 type InputProps = {
@@ -300,6 +300,9 @@ class TextBox extends Component<InputProps, InputState> {
       return { value };
     }
   }
+  getRef() {
+    return this.input;
+  }
 
   onChange = (event: Object) => {
     const { target } = event;
@@ -334,8 +337,8 @@ class TextBox extends Component<InputProps, InputState> {
   };
 
   onBlur = (event: UIEvent) => {
-    const { onBlur, disabled } = this.props;
-    if (disabled) {
+    const { onBlur, disabled, readOnly } = this.props;
+    if (disabled || readOnly) {
       return;
     }
     onBlur && onBlur(event);
@@ -368,6 +371,12 @@ class TextBox extends Component<InputProps, InputState> {
     return this.getInputContainer();
   }
 
+  componentDidMount() {
+    setTimeout(() => {
+      const { getInputRef } = this.props;
+      getInputRef && getInputRef({ ref: this.getRef() });
+    }, 0);
+  }
   getFixIcon(fix: React$Node, WidgetName: string): React$Node {
     if (ObjectUtils.isString(fix)) {
       return (
