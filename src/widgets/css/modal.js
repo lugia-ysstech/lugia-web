@@ -10,6 +10,7 @@ import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 
 import { getBorder, getBoxShadow } from '@lugia/theme-utils';
 import { getBorderRadius } from '../theme/CSSProvider';
+import get from './theme-common-dict';
 
 type IconType = 'confirm' | 'info' | 'success' | 'warning' | 'error';
 type FunctionPropsType = {
@@ -53,23 +54,23 @@ const FontSize = 1.4;
 export const IconInfo = {
   info: {
     class: 'lugia-icon-reminder_info_circle',
-    color: '$lugia-dict.@lugia/lugia-web.themeColor',
+    color: 'themeColor',
   },
   confirm: {
     class: 'lugia-icon-reminder_question_circle',
-    color: '$lugia-dict.@lugia/lugia-web.warningColor',
+    color: 'warningColor',
   },
   success: {
     class: 'lugia-icon-reminder_check_circle',
-    color: '$lugia-dict.@lugia/lugia-web.successColor',
+    color: 'successColor',
   },
   error: {
     class: 'lugia-icon-reminder_close_circle',
-    color: '$lugia-dict.@lugia/lugia-web.dangerColor',
+    color: 'dangerColor',
   },
   warning: {
     class: 'lugia-icon-reminder_exclamation_circle',
-    color: '$lugia-dict.@lugia/lugia-web.warningColor',
+    color: 'warningColor',
   },
 };
 
@@ -286,5 +287,5 @@ export const getIconColor = (props: Object) => {
   const { iconType } = props;
   const typeTheme = IconInfo[iconType] || IconInfo.info;
 
-  return typeTheme.color;
+  return get(typeTheme.color);
 };
