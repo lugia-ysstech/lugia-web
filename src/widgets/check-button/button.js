@@ -5,6 +5,7 @@ import ThemeProvider from '../theme-provider';
 import Widget from '../consts';
 import { LabelWrapper, CheckInput, CheckSpan, CancelSpan, IconWrap } from '../css/check-button';
 import type { CheckProps, CheckState } from '../css/check-button';
+import { getBorder } from '@lugia/theme-utils';
 
 const borderDisableColor = '$lugia-dict.@lugia/lugia-web.borderDisableColor';
 const spiritColor = '$lugia-dict.@lugia/lugia-web.spiritColor';
@@ -31,18 +32,44 @@ const checkedCommonTheme = {
   color: '#fff',
   background: { color: themeColor },
   border: {
-    top: { color: themeColor, width: 1, style: 'solid' },
-    right: { color: '#fff', width: 1, style: 'solid' },
-    bottom: { color: themeColor, width: 1, style: 'solid' },
+    ...getBorder(
+      {
+        color: themeColor,
+        width: 1,
+        style: 'solid',
+      },
+      { directions: ['t', 'b'] }
+    ),
+    ...getBorder(
+      {
+        color: '#fff',
+        width: 1,
+        style: 'solid',
+      },
+      { directions: ['r'] }
+    ),
   },
 };
 const checkedDisabledCommonTheme = {
   color: lightGreyColor,
   background: { color: spiritColor },
   border: {
-    top: { color: borderDisableColor, width: 1, style: 'solid' },
-    right: { color: '#fff', width: 1, style: 'solid' },
-    bottom: { color: borderDisableColor, width: 1, style: 'solid' },
+    ...getBorder(
+      {
+        color: borderDisableColor,
+        width: 1,
+        style: 'solid',
+      },
+      { directions: ['t', 'b'] }
+    ),
+    ...getBorder(
+      {
+        color: '#fff',
+        width: 1,
+        style: 'solid',
+      },
+      { directions: ['r'] }
+    ),
   },
 };
 const defaultCheckedTheme = {
@@ -63,9 +90,14 @@ const defaultUnCheckedTheme = {
     normal: {
       color: darkGreyColor,
       border: {
-        top: { color: borderColor, width: 1, style: 'solid' },
-        right: { color: borderColor, width: 1, style: 'solid' },
-        bottom: { color: borderColor, width: 1, style: 'solid' },
+        ...getBorder(
+          {
+            color: borderColor,
+            width: 1,
+            style: 'solid',
+          },
+          { directions: ['t', 'r', 'b'] }
+        ),
       },
       background: { color: '#fff' },
       fontSize: 12,
@@ -82,9 +114,14 @@ const defaultUnCheckedTheme = {
     disabled: {
       color: lightGreyColor,
       border: {
-        top: { color: borderDisableColor, width: 1, style: 'solid' },
-        right: { color: borderDisableColor, width: 1, style: 'solid' },
-        bottom: { color: borderDisableColor, width: 1, style: 'solid' },
+        ...getBorder(
+          {
+            color: borderDisableColor,
+            width: 1,
+            style: 'solid',
+          },
+          { directions: ['t', 'r', 'b'] }
+        ),
       },
     },
   },

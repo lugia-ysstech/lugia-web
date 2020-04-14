@@ -8,6 +8,7 @@ import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import { px2remcss } from '../css/units';
 import Icon from '../icon';
 import get from './theme-common-dict';
+import { getBorder } from '@lugia/theme-utils';
 
 type CheckSize = 'default' | 'small' | 'large' | 'bigger';
 type TypeSizeCSS = {
@@ -164,9 +165,14 @@ export const CheckSpan = CSSComponent({
     defaultTheme: {
       color: '$lugia-dict.@lugia/lugia-web.darkGreyColor',
       border: {
-        top: { color: borderColor, width: 1, style: 'solid' },
-        right: { color: borderColor, width: 1, style: 'solid' },
-        bottom: { color: borderColor, width: 1, style: 'solid' },
+        ...getBorder(
+          {
+            color: borderColor,
+            width: 1,
+            style: 'solid',
+          },
+          { directions: ['t', 'r', 'b'] }
+        ),
       },
       background: { color: '#fff' },
       fontSize: em(12),
@@ -210,7 +216,6 @@ export const CheckSpan = CSSComponent({
       ['padding'],
     ],
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
-      // console.log(themeMeta);
       return getPadding(themeProps);
     },
   },
@@ -220,9 +225,14 @@ export const CheckSpan = CSSComponent({
       color: '$lugia-dict.@lugia/lugia-web.lightGreyColor',
       opacity: 1,
       border: {
-        top: { color: borderDisableColor, width: 1, style: 'solid' },
-        right: { color: borderDisableColor, width: 1, style: 'solid' },
-        bottom: { color: borderDisableColor, width: 1, style: 'solid' },
+        ...getBorder(
+          {
+            color: borderDisableColor,
+            width: 1,
+            style: 'solid',
+          },
+          { directions: ['t', 'r', 'b'] }
+        ),
       },
       background: { color: '#fff' },
       fontSize: em(12),
