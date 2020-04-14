@@ -18,13 +18,13 @@
   border-color: #e8e8e8;
 }
 :global(.lugia-table .rc-table-ping-right .rc-table-cell-fix-right-first::after) {
-  box-shadow: inset -10px 0 8px -8px #4d63ff;
+  box-shadow: none;
 }
 :global(.lugia-table .rc-table-cell-fix-right-first) {
-  box-shadow: -1px 0 0 #4d63ff;
+  box-shadow: none;
 }
 :global(.lugia-table .rc-table-expanded-row .rc-table-cell) {
-  box-shadow: inset 0 8px 8px -8px #4d63ff;
+  box-shadow: none;
 }
 :global(.lugia-table .rc-table th) {
   border-color: #e8e8e8;
