@@ -63,24 +63,7 @@ export const InnerTipText: Object = CSSComponent({
     box-shadow: ${px2remcss(-14)} 0 ${px2remcss(6)} 0 ${get('defaultColor')};
   `,
 });
-export const FatherContainer: Object = CSSComponent({
-  tag: 'span',
-  className: 'FatherContainer',
-  normal: {
-    selectNames: [['width']],
-    defaultTheme: {
-      width: '100%',
-    },
-  },
-  css: css`
-    position: relative;
-    ${props => {
-      return props.displayName && props.displayName.indexOf('Textarea') !== -1
-        ? ' display:inline-block; font-size: 0;'
-        : ' display:block';
-    }};
-  `,
-});
+
 export const BottomContainer: Object = CSSComponent({
   tag: 'div',
   className: 'BottomContainer',
@@ -90,4 +73,20 @@ export const BottomContainer: Object = CSSComponent({
       width: '100%',
     },
   },
+});
+
+export const FatherContainer: Object = CSSComponent({
+  extend: BottomContainer,
+  className: 'FatherContainer',
+  normal: {
+    selectNames: [['width']],
+  },
+  css: css`
+    position: relative;
+    ${props => {
+      return props.displayName && props.displayName.indexOf('Textarea') !== -1
+        ? ' display:inline-block; font-size: 0;'
+        : ' display:block';
+    }};
+  `,
 });
