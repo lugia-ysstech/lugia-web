@@ -198,7 +198,6 @@ export function getTreeData(props: Object, pathSeparator: string = '/') {
     pathField = 'path',
     pidField = 'pid',
   } = props;
-  console.log('pathField', pathField, pidField);
   if (data && data.length > 0) {
     recurTreeData(
       data,
