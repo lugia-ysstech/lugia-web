@@ -1,5 +1,5 @@
 import React from 'react';
-import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
+import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import { isValidateError } from '../css/validateHoc';
 import { units } from '@lugia/css';
 import get from '../css/theme-common-dict';
@@ -81,11 +81,13 @@ export const FatherContainer: Object = CSSComponent({
     }};
   `,
 });
-export const BottomContainer: Object = StaticComponent({
+export const BottomContainer: Object = CSSComponent({
   tag: 'div',
   className: 'BottomContainer',
-  css: css`
-    width: 100%;
-    height: 100%;
-  `,
+  normal: {
+    selectNames: [['width']],
+    defaultTheme: {
+      width: '100%',
+    },
+  },
 });

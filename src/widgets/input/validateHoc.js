@@ -102,7 +102,7 @@ const ValidateHoc = (Target: Object, displayName?: string) => {
       });
       if (validateType === 'bottom') {
         return (
-          <BottomContainer>
+          <BottomContainer themeProps={getPartOfThemeProps('Container')}>
             {result}
             <TipBottom themeProps={validateThemeProps}>{theHelp}</TipBottom>
           </BottomContainer>
