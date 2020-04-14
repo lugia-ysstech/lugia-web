@@ -51,6 +51,16 @@ export const EditDiv = CSSComponent({
         background: { color: backgroundColor },
       };
     },
+    getCSS(themeMeta: Object, themeProps: Object) {
+      const {
+        propsConfig: { align = 'left' },
+      } = themeProps;
+      const flexMap = { right: 'flex-end', left: 'flex-start', center: 'center' };
+
+      return `
+      justify-content: ${flexMap[align]};
+      `;
+    },
   },
   css: `
     width: 100%;
