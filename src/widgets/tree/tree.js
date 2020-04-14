@@ -421,6 +421,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
       splitQuery,
       igronSelectField,
       pathSeparator,
+      pathField,
+      pidField,
     },
     realyExpandAll: boolean = expandAll
   ): ?TreeUtils {
@@ -436,6 +438,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
       splitQuery,
       igronSelectField,
       pathSeparator,
+      pathField,
+      pidField,
     });
   }
 
@@ -538,11 +542,11 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 
   onSelect = (selectValue: Array<string>, eventObject: any, itemObj: Object) => {
-    const { parentIsHighlight } = this.props; // 是否开启选中子节点，父节点高亮
+    const { parentIsHighlight, pathField } = this.props; // 是否开启选中子节点，父节点高亮
     const {
       node: {
         props: {
-          item: { path: nodePath = '' },
+          item: { [pathField]: nodePath = '' },
           isLeaf,
         },
       },
