@@ -78,9 +78,6 @@ export const BottomContainer: Object = CSSComponent({
 export const FatherContainer: Object = CSSComponent({
   extend: BottomContainer,
   className: 'FatherContainer',
-  normal: {
-    selectNames: [['width']],
-  },
   css: css`
     position: relative;
     ${props => {
