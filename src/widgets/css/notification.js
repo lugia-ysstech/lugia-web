@@ -131,5 +131,5 @@ export const Icons: Object = styled(Icon)`
   top: ${leftIconEM(26)};
   left: ${leftIconEM(20)};
   cursor: default;
-  color: ${props => props.iconColor || get('themeColor')};
+  color: ${props => (props.iconColor ? get(props.iconColor) : get('themeColor'))};
 `;
