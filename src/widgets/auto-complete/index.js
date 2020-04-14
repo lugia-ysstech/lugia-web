@@ -128,6 +128,7 @@ export default ShortKeyBoard(
                 value={value}
                 disabled={disabled}
                 ref={this.inputEl}
+                getInputRef={this.getInputRef}
                 onChange={this.changeInputValue}
                 onClear={this.clearInputValue}
                 onFocus={this.onFocus}
@@ -314,8 +315,13 @@ export default ShortKeyBoard(
         return this.mergeTheme('Menu', defaultMenuTheme);
       };
 
+      getInputRef = refs => {
+        const { ref } = refs;
+        this.inputRef = ref;
+      };
+
       componentDidMount() {
-        const menuWidth = this.inputEl.current.getThemeTarget().svtarget.input.current.offsetWidth;
+        const menuWidth = this.inputRef.current.offsetWidth;
         this.setState({
           menuWidth,
         });
