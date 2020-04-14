@@ -121,6 +121,7 @@ class ScrollerTree extends React.Component<any, any> {
         switchAtEnd,
         checkedCSS,
         marginBottom,
+        pidField,
       } = this.props;
 
       const {
@@ -133,7 +134,7 @@ class ScrollerTree extends React.Component<any, any> {
         icons,
         suffix,
         value,
-        pid,
+        [pidField]: pid,
       } = item;
       if (draggable) {
         const currentNodeIndex = id2ExtendInfo[value].index;
