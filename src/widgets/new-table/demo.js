@@ -27,6 +27,7 @@ const columns = [
     title: 'Age',
     dataIndex: 'age',
     key: 'age',
+    align: 'left',
   },
   {
     title: 'Address',
@@ -40,6 +41,7 @@ const columns = [
     dataIndex: 'isIn',
     key: 'isIn',
     width: 200,
+    align: 'center',
     render: (text, record, index) => <div>{!text || text === 'false' ? 'B' : 'A'}</div>,
   },
   {

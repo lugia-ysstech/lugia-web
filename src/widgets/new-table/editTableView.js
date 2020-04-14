@@ -135,10 +135,11 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
       customEditElement,
       editType,
       selectData,
+      align,
     } = renderObject;
     const EditElement = customEditElement || EditInput;
     const editDivTheme = this.props.getPartOfThemeProps('EditTarget', {
-      props: { isSelect, isHead },
+      props: { isSelect, isHead, align },
     });
     if (enterEdit) {
       return (
