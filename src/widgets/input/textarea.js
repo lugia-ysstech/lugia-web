@@ -375,7 +375,7 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
       placeHolderFont: font,
       resizeType,
     };
-    const validateErrorInputThemeProps = getPartOfThemeProps('ValidateErrorText');
+    const validateErrorInputThemeProps = getPartOfThemeProps('ValidateErrorInput');
     const theValidateThemeProps = isValidateError(validateStatus)
       ? deepMerge(
           validateValueDefaultTheme,
