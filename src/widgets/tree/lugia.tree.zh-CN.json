@@ -33,6 +33,18 @@
       "defaultValue": "text"
     },
 
+    "pathField": {
+      "type": "string",
+      "desc": "data数据的存储节点路径信息字段",
+      "defaultValue": "text"
+    },
+
+    "pidField": {
+      "type": "string",
+      "desc": "data数据的存储节点父节点信息字段",
+      "defaultValue": "text"
+    },
+
     "value": {
       "type": "string | string[] | number | number[]",
       "desc": "指定当前选中的条目的valueField值"
