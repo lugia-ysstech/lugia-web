@@ -68,6 +68,9 @@ export const FatherContainer: Object = CSSComponent({
   className: 'FatherContainer',
   normal: {
     selectNames: [['width']],
+    defaultTheme: {
+      width: '100%',
+    },
   },
   css: css`
     position: relative;
