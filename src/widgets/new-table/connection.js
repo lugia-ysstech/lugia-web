@@ -272,7 +272,7 @@ export default class EditTableEventListener extends Listener<any> {
   getCellItem = (props: Object): Object => {
     const { newItem = {}, columns } = props;
     const { selectColumn, selectRow } = newItem;
-    if (!selectColumn || !selectRow) {
+    if ((!selectColumn && selectColumn !== 0) || (!selectRow && selectRow !== 0)) {
       return {};
     }
     const dataItem = this.getSelectDataMark(selectRow - 1);
