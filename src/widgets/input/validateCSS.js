@@ -81,3 +81,11 @@ export const FatherContainer: Object = CSSComponent({
     }};
   `,
 });
+export const BottomContainer: Object = StaticComponent({
+  tag: 'div',
+  className: 'BottomContainer',
+  css: css`
+    width: 100%;
+    height: 100%;
+  `,
+});
