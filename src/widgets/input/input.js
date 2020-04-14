@@ -544,7 +544,7 @@ class TextBox extends Component<InputProps, InputState> {
       themeConfig: { normal: { color = lightGreyColor, font = {}, fontSize } = {} },
     } = getPartOfThemeProps('Placeholder');
 
-    const validateErrorInputThemeProps = getPartOfThemeProps('ValidateErrorText');
+    const validateErrorInputThemeProps = getPartOfThemeProps('ValidateErrorInput');
 
     const theValidateThemeProps = isValidateError(validateStatus)
       ? deepMerge(
