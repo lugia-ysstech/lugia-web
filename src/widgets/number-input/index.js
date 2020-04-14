@@ -525,9 +525,11 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
 }
 
 const TargetNumberInput = ThemeHoc(
-  ValidateHoc(KeyBoardEventAdaptor(NumberTextBox), Widget.NumberInput, {
+  ValidateHoc(KeyBoardEventAdaptor(NumberTextBox)),
+  Widget.NumberInput,
+  {
     hover: true,
     active: true,
-  })
+  }
 );
 export default TargetNumberInput;
