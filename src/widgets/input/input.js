@@ -372,10 +372,8 @@ class TextBox extends Component<InputProps, InputState> {
   }
 
   componentDidMount() {
-    setTimeout(() => {
-      const { getInputRef } = this.props;
-      getInputRef && getInputRef({ ref: this.getRef() });
-    }, 0);
+    const { getInputRef } = this.props;
+    getInputRef && getInputRef({ ref: this.getRef() });
   }
   getFixIcon(fix: React$Node, WidgetName: string): React$Node {
     if (ObjectUtils.isString(fix)) {
@@ -536,7 +534,6 @@ class TextBox extends Component<InputProps, InputState> {
     const {
       getPartOfThemeProps,
       validateStatus,
-      validateType,
       prefix,
       suffix,
       isShowClearButton,
@@ -560,8 +557,6 @@ class TextBox extends Component<InputProps, InputState> {
     const theThemeProps = deepMerge(
       getPartOfThemeProps('Input', {
         props: {
-          validateType,
-          validateStatus,
           prefix,
           suffix,
           placeHolderColor: color,
@@ -570,9 +565,7 @@ class TextBox extends Component<InputProps, InputState> {
           placeHolderFont: font,
         },
       }),
-      getPartOfThemeProps('Container', {
-        props: { size },
-      }),
+      getPartOfThemeProps('Container', { props: { size } }),
       theValidateThemeProps
     );
     return theThemeProps;
