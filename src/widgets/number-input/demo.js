@@ -151,6 +151,8 @@ const NumberInputDemo = () => {
           <ValidateInput validateType="top" onChange={onChange('limit')} />
           <p>校验信息显示类型 bottom 输入值 是否含有5</p>
           <ValidateInput validateType="bottom" onChange={onChange('limit')} />
+          <p>校验信息显示类型 inner 输入值 是否含有5</p>
+          <ValidateInput validateType="inner" onChange={onChange('limit')} />
         </Theme>
       </Wrapper>
       <Wrapper>
