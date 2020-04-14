@@ -3,7 +3,7 @@ import { deepMerge } from '@lugia/object-utils';
 import get from '../css/theme-common-dict';
 import ToolTip from '../tooltip/index';
 import { DefaultHelp, isValidateError } from '../css/validateHoc';
-import { TipBottom, InnerTipText, FatherContainer } from './validateCSS';
+import { TipBottom, InnerTipText, FatherContainer, BottomContainer } from './validateCSS';
 
 const ValidateHoc = (Target: Object, displayName?: string) => {
   class ValidateContainer extends React.Component {
@@ -76,7 +76,7 @@ const ValidateHoc = (Target: Object, displayName?: string) => {
             ChildrenContainer: {
               normal: {
                 getCSS() {
-                  return 'display: block;height:100%;';
+                  return 'display: block;width:100%;height:100%;';
                 },
               },
             },
@@ -102,10 +102,10 @@ const ValidateHoc = (Target: Object, displayName?: string) => {
       });
       if (validateType === 'bottom') {
         return (
-          <React.Fragment>
+          <BottomContainer>
             {result}
             <TipBottom themeProps={validateThemeProps}>{theHelp}</TipBottom>
-          </React.Fragment>
+          </BottomContainer>
         );
       }
 
