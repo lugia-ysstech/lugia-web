@@ -194,7 +194,17 @@
     "ValidateErrorInput": {
       "name": "校验模式输入框",
       "desc": "校验模式输入框配置",
-      "normal": [["border"], ["boxShadow"], ["color"]]
+      "normal": [
+        ["fontSize"],
+        ["font"],
+        ["color"],
+        ["background"],
+        ["border"],
+        ["boxShadow"],
+        ["opacity"]
+      ],
+      "hover": [["background"], ["border"], ["boxShadow"]],
+      "active": [["background"], ["border"], ["boxShadow"]]
     }
   },
   "defaultTheme": {

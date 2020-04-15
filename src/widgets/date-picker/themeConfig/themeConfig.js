@@ -2,7 +2,11 @@ import { themeColor } from '../styled/utils';
 import { deepMerge } from '@lugia/object-utils';
 import { getBorder, getBorderRadius } from '@lugia/theme-utils';
 import { modeStyle } from '../utils/booleanUtils';
-import get from '../../css/theme-common-dict';
+import {
+  validateValueDefaultTheme,
+  validateBorderDefaultTheme,
+  isValidateError,
+} from '../../css/validateHoc';
 const {
   normalColor,
   hoverColor,
@@ -13,7 +17,6 @@ const {
   borderDisableColor,
   darkGreyColor,
   circleBorderRadius,
-  dangerColor,
 } = themeColor;
 export default function getThemeProps(props, partName) {
   const { getPartOfThemeProps, mode } = props;
@@ -82,14 +85,21 @@ export function getWrapThemeProps(props, partName) {
   const hoverTheme = deepMerge(deafultHoverBorderColor, hover);
   const disabledTheme = deepMerge(defaultDisabled, disabled);
 
-  const errorThemeNormal = getValidateErrorInput(props);
-  const errorNormal = deepMerge(normal, errorThemeNormal);
-  const errorHover = deepMerge(hoverTheme, errorThemeNormal);
-  const isError = validateStatus === 'error';
+  const {
+    validateNormalTheme,
+    validateActiveTheme,
+    validateHoverTheme,
+    validateDisabledTheme,
+  } = getValidateErrorInput(props);
+  const errorNormal = deepMerge(normal, validateNormalTheme);
+  const errorHover = deepMerge(hoverTheme, validateHoverTheme);
+  const errorActive = deepMerge(hoverTheme, validateActiveTheme);
+  const errorDisabled = deepMerge(disabledTheme, validateDisabledTheme);
+  const isError = isValidateError(validateStatus);
   themeConfig.normal = isError ? errorNormal : normal;
   themeConfig.hover = isError ? errorHover : hoverTheme;
-  themeConfig.disabled = disabledTheme;
-
+  themeConfig.active = isError ? errorActive : hoverTheme;
+  themeConfig.disabled = isError ? errorDisabled : disabledTheme;
   return themeProps;
 }
 export function getDateTheme(props) {
@@ -244,41 +254,40 @@ export function getIconTheme(props) {
     clearButtonProps: deepMerge({ themeConfig: normalTheme }, clearButtonProps),
   };
 }
-export function getErrorTipTheme(props) {
-  const { getPartOfThemeProps, validateType } = props;
-  const themeProps = getPartOfThemeProps('ValidateErrorText');
-  const normalColor = validateType === 'top' ? get('defaultColor') : dangerColor;
-  const normalTheme = {
-    normal: { color: normalColor, fontSize: 12 },
-  };
-  const { themeConfig: { normal = {} } = {} } = themeProps || {};
-  const { color = get('defaultColor'), font = {}, fontSize } = normal;
-  const toolTipTheme = {
-    Container: {
-      normal: {
-        background: { color: get('darkGreyColor') },
-        ...normal,
-      },
-    },
-    TooltipTitle: { normal: { color, fontSize, ...font } },
-    ChildrenContainer: {
-      normal: {
-        getCSS() {
-          return 'display:block;';
-        },
-      },
-    },
-  };
-  return {
-    errorTheme: deepMerge({ themeConfig: normalTheme }, themeProps),
-    rangeToolTipTheme: toolTipTheme,
-  };
-}
+
 export function getValidateErrorInput(props) {
   const { getPartOfThemeProps } = props;
-  const { themeConfig: { normal } = {} } = getPartOfThemeProps('ValidateErrorInput');
-  const normalTheme = {
-    border: getBorder({ color: dangerColor }),
+  const { themeConfig: { normal, active, hover, disabled } = {} } = getPartOfThemeProps(
+    'ValidateErrorInput'
+  );
+  const { themeConfig: { normal: defaultNormalFont = {} } = {} } = validateValueDefaultTheme;
+  const { themeConfig: borderThemeConfig } = validateBorderDefaultTheme;
+  const validateNormalTheme = {
+    ...defaultNormalFont,
+    ...deepMerge(borderThemeConfig.normal, normal),
+    ...getColorTheme(normal),
   };
-  return deepMerge(normalTheme, normal);
+  const validateActiveTheme = {
+    ...defaultNormalFont,
+    ...deepMerge(borderThemeConfig.active, active),
+    ...getColorTheme(normal),
+  };
+  const validateHoverTheme = {
+    ...defaultNormalFont,
+    ...deepMerge(borderThemeConfig.hover, hover),
+    ...getColorTheme(normal),
+  };
+  const validateDisabledTheme = {
+    ...defaultNormalFont,
+    ...deepMerge(borderThemeConfig.disabled, disabled),
+    ...getColorTheme(normal),
+  };
+  return { validateNormalTheme, validateActiveTheme, validateHoverTheme, validateDisabledTheme };
+}
+function getColorTheme(normal = {}) {
+  const { color } = normal;
+  if (!color) {
+    return {};
+  }
+  return { color };
 }

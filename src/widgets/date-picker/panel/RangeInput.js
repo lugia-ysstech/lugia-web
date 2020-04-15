@@ -9,7 +9,6 @@ import {
   RangeInputInner,
   RangeInputInnerInput,
   RangeMiddleSpan,
-  ErrorTip,
 } from '../styled/styledRangeInput';
 import Theme from '../../theme';
 import Widget from '../../consts/index';
@@ -153,7 +152,6 @@ class RangeInput extends Component<TypeProps, TypeState> {
       onClear: this.onClear,
       clearButtonTheme: clearButtonProps,
     });
-    const validType = validateType === 'bottom' || validateType === 'inner';
     return (
       <Theme
         config={{
@@ -241,13 +239,6 @@ class RangeInput extends Component<TypeProps, TypeState> {
                 {...this.props.dispatchEvent([['hover']], 'f2c')}
               />
             </RangeInputInnerInput>
-            {validateStatus === 'error' && validType ? (
-              <ErrorTip themeProps={errorTipTheme} validType={validateType}>
-                {help}
-              </ErrorTip>
-            ) : (
-              ''
-            )}
           </RangeInputInner>
         </RangeInputWrap>
       </Theme>
