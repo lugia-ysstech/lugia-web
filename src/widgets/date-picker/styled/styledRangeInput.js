@@ -43,6 +43,7 @@ export const RangeInputWrap = CSSComponent({
     display: inline-block;
     ${props => getBackground(props)};
     transition: all 0.3s;
+    overflow: hidden;
   `,
   option: {
     hover: true,
@@ -157,43 +158,3 @@ export const RangeMiddleSpan = CSSComponent({
     background: transparent;
   `,
 });
-export const ErrorTip = CSSComponent({
-  tag: 'span',
-  className: '"ValidateErrorText"',
-  normal: { selectNames: [['color'], ['fontSize']] },
-  hover: {
-    selectNames: [],
-  },
-  active: {
-    selectNames: [],
-  },
-  disabled: {
-    selectNames: [],
-  },
-  focus: {
-    selectNames: [],
-  },
-  css: css`
-    position: absolute;
-    ${props => getValidPosition(props)}
-  `,
-});
-function getValidPosition(props) {
-  const { validType } = props;
-  let horizontal = 'left: 10px;';
-  let vertical = 'bottom: -20px;';
-  if (validType === 'inner') {
-    horizontal = 'right:30px;';
-    vertical = `
-      top:50%;
-      transform:translateY(-50%);
-      height:90%;
-      display:flex;
-      align-items:center;
-      background:#fff;
-      padding-left:1px;
-      box-shadow:-10px 0 10px rgba(255,255,255,0.7);
-    `;
-  }
-  return `${horizontal};${vertical};`;
-}

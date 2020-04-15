@@ -11,11 +11,8 @@ import SwitchPanelMode from '../mode';
 import { differMonthAndYear, getIndexInRange, getCurrentPageDates } from '../utils/differUtils';
 import { formatValueIsValid, getIsSame } from '../utils/booleanUtils';
 import { getformatSymbol } from '../utils/utils';
-import { getErrorTipTheme, getFacePanelContain } from '../themeConfig/themeConfig';
+import { getFacePanelContain } from '../themeConfig/themeConfig';
 import { addMouseEvent } from '@lugia/theme-hoc';
-import ToolTip from '../../tooltip';
-import Theme from '../../theme';
-import Widget from '../../consts';
 type TypeProps = {
   defaultValue?: Array<string>,
   value?: Array<string>,
@@ -401,28 +398,6 @@ class Range extends Component<TypeProps, TypeState> {
     );
     this.setState({ rangeIndex, choseDayIndex });
   };
-  getInput = (errorTipTheme: Object) => {
-    const { value, visible, isClear, placeholder, valueIsValid } = this.state;
-    const { theme, disabled, readOnly } = this.props;
-    return (
-      <RangeInput
-        {...this.props}
-        placeholder={placeholder}
-        value={value}
-        onClick={this.onClickTrigger}
-        onChange={this.onChange}
-        onBlur={this.onBlur}
-        onFocus={this.onFocus}
-        onClear={this.onClear}
-        disabled={disabled}
-        readOnly={readOnly}
-        theme={theme}
-        visible={visible}
-        isClear={isClear}
-        errorTipTheme={errorTipTheme}
-      />
-    );
-  };
   componentDidMount() {
     const { format, panelValue } = this.state;
     const value = moment().format(format);
@@ -441,17 +416,11 @@ class Range extends Component<TypeProps, TypeState> {
       choseDayIndex,
       rangeValue,
       valueIsValid,
+      visible,
+      isClear,
+      placeholder,
     } = this.state;
-    const {
-      disabled,
-      readOnly,
-      theme,
-      mode,
-      getPartOfThemeProps,
-      validateType,
-      validateStatus,
-      help,
-    } = this.props;
+    const { disabled, readOnly, theme, mode, getPartOfThemeProps } = this.props;
     const { monthAndYear } = this;
     const showTimeBtnIsDisabled = valueIsValid ? true : false;
     const { differAmonth, differAyear } = differMonthAndYear(monthAndYear);
@@ -468,7 +437,6 @@ class Range extends Component<TypeProps, TypeState> {
       format,
     };
     const { themeProps } = getFacePanelContain({ mode, getPartOfThemeProps });
-    const { errorTheme, rangeToolTipTheme } = getErrorTipTheme(this.props);
     return (
       <Trigger
         themePass
@@ -524,19 +492,21 @@ class Range extends Component<TypeProps, TypeState> {
         action={disabled || readOnly ? [] : ['click']}
         hideAction={['click']}
       >
-        {validateType === 'top' && validateStatus === 'error' ? (
-          <Theme
-            config={{
-              [Widget.Tooltip]: rangeToolTipTheme,
-            }}
-          >
-            <ToolTip visible={true} placement="topLeft" title={help}>
-              {this.getInput(errorTheme)}
-            </ToolTip>
-          </Theme>
-        ) : (
-          this.getInput(errorTheme)
-        )}
+        <RangeInput
+          {...this.props}
+          placeholder={placeholder}
+          value={value}
+          onClick={this.onClickTrigger}
+          onChange={this.onChange}
+          onBlur={this.onBlur}
+          onFocus={this.onFocus}
+          onClear={this.onClear}
+          disabled={disabled}
+          readOnly={readOnly}
+          theme={theme}
+          visible={visible}
+          isClear={isClear}
+        />
       </Trigger>
     );
   }
