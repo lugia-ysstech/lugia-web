@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { fixControlledValue } from './widgets/utils';
 import Input from './widgets/input';
+import TextArea from './widgets/input';
 import AmountInput from './widgets/amount-input';
 import NumberInput from './widgets/number-input';
 import Cascader from './widgets/cascader';
@@ -14,62 +14,45 @@ const Wrapper = styled.div`
   margin-left: 20px;
   margin-top: 20px;
 `;
-
 export class ValidateInput extends React.Component<any, any> {
-  static getDerivedStateFromProps(nextProps: Object, preState: Object) {
-    let { value } = nextProps;
-    const hasValueInprops = 'value' in nextProps;
-    value = fixControlledValue(value);
-    if (!preState) {
-      return {
-        value: hasValueInprops ? value : '',
-      };
-    }
-    if (hasValueInprops) {
-      return { value };
-    }
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      value: props.value || '',
+    };
   }
-
   onChange = ({ newValue: value }: any) => {
     this.setState({ value });
-    this.props.onChange({ newValue: value });
   };
-
   render() {
     const { validateType } = this.props;
     const value = this.state.value;
     const validateStatus = value.indexOf('a') === -1 ? 'default' : 'error';
+    console.log(this);
     return (
       <Input onChange={this.onChange} validateType={validateType} validateStatus={validateStatus} />
     );
   }
 }
 
-export class ValidateAmountInput extends React.Component<any, any> {
-  static getDerivedStateFromProps(nextProps: Object, preState: Object) {
-    let { value } = nextProps;
-    const hasValueInprops = 'value' in nextProps;
-    value = fixControlledValue(value);
-    if (!preState) {
-      return {
-        value: hasValueInprops ? value : '',
-      };
-    }
-    if (hasValueInprops) {
-      return { value };
-    }
+export class ValidateNumberInput extends React.Component<any, any> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      value: props.value || '',
+    };
   }
-
   onChange = (obj: any) => {
-    const { newValue } = obj;
-    const validateStatus = newValue === 1 ? 'error' : 'default';
-    this.setState({ validateStatus });
+    const { newValue: value } = obj;
+    this.setState({ value });
   };
   render() {
-    const { validateType, validateStatus } = this.props;
-
+    const { validateType } = this.props;
+    const value = this.state.value;
+    const validateStatus = value === 1 ? 'error' : 'default';
+    console.log(this);
     return (
-      <AmountInput
+      <NumberInput
         onChange={this.onChange}
         validateType={validateType}
         validateStatus={validateStatus}
@@ -78,30 +61,50 @@ export class ValidateAmountInput extends React.Component<any, any> {
   }
 }
 
-export class ValidateNumberInput extends React.Component<any, any> {
-  static getDerivedStateFromProps(nextProps: Object, preState: Object) {
-    let { value } = nextProps;
-    const hasValueInprops = 'value' in nextProps;
-    value = fixControlledValue(value);
-    if (!preState) {
-      return {
-        value: hasValueInprops ? value : '',
-      };
-    }
-    if (hasValueInprops) {
-      return { value };
-    }
+export class ValidateTextArea extends React.Component<any, any> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      value: props.value || '',
+    };
   }
-
   onChange = (obj: any) => {
-    const { newValue } = obj;
-    const validateStatus = newValue === 1 ? 'error' : 'default';
-    this.setState({ newValue, validateStatus });
+    const { newValue: value } = obj;
+    this.setState({ value });
   };
   render() {
-    const { validateType, validateStatus } = this.props;
+    const { validateType } = this.props;
+    const value = this.state.value;
+    const validateStatus = value.indexOf('a') === -1 ? 'default' : 'error';
+    console.log(this);
     return (
-      <NumberInput
+      <TextArea
+        onChange={this.onChange}
+        validateType={validateType}
+        validateStatus={validateStatus}
+      />
+    );
+  }
+}
+export class ValidateAmountInput extends React.Component<any, any> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      value: props.value || '',
+    };
+  }
+  onChange = (obj: any) => {
+    const { newValue: value } = obj;
+    console.log(this);
+    this.setState({ value });
+  };
+
+  render() {
+    const { validateType } = this.props;
+    const value = this.state.value;
+    const validateStatus = value === 1 ? 'error' : 'default';
+    return (
+      <AmountInput
         onChange={this.onChange}
         validateType={validateType}
         validateStatus={validateStatus}
@@ -145,22 +148,11 @@ export class ValidateAutoComplete extends React.Component<any, any> {
     super(props);
     this.state = {
       menuData: data,
-      value: '',
+      value: props.value || '',
+      validateStatus: '',
     };
   }
-  static getDerivedStateFromProps(nextProps: Object, preState: Object) {
-    let { value } = nextProps;
-    const hasValueInprops = 'value' in nextProps;
-    value = fixControlledValue(value);
-    if (!preState) {
-      return {
-        value: hasValueInprops ? value : '',
-      };
-    }
-    if (hasValueInprops) {
-      return { value };
-    }
-  }
+
   search(query: string) {
     let menuData;
     let rowSet = [];
@@ -191,14 +183,14 @@ export class ValidateAutoComplete extends React.Component<any, any> {
   };
   onChange = (value: string) => {
     this.search(value);
+    console.log(value, this);
     const validateStatus = value === 'Armin van Buuren' ? 'error' : 'default';
     this.setState({ value, validateStatus });
   };
 
   render() {
     const { validateType } = this.props;
-    const { menuData, value } = this.state;
-
+    const { menuData, value, validateStatus } = this.state;
     return (
       <AutoComplete
         placeholder={'请输入'}
@@ -207,7 +199,7 @@ export class ValidateAutoComplete extends React.Component<any, any> {
         data={menuData}
         onChange={this.onChange}
         validateType={validateType}
-        validateStatus={this.props.validateStatus}
+        validateStatus={validateStatus}
       />
     );
   }
@@ -266,17 +258,16 @@ export class ValidateCascader extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
-      activeValue: '1',
-      defaultActiveValue: '1',
+      value: props.value || '',
+      validateStatus: '',
     };
   }
 
   handleChangeActiveValue = (obj: Object) => {
-    const validateStatus = obj[0] === 'a1' ? 'error' : 'default';
-    this.setState({
-      activeValue: obj.newValue,
-      validateStatus,
-    });
+    const value = obj[0];
+    const validateStatus = value === 'a1' ? 'error' : 'default';
+    console.log(this, obj);
+    this.setState({ value, validateStatus });
   };
 
   onClear = () => {
@@ -294,7 +285,7 @@ export class ValidateCascader extends React.Component<any, any> {
         onClear={this.onClear}
         onChange={this.handleChangeActiveValue}
         validateType={validateType}
-        validateStatus={this.props.validateStatus}
+        validateStatus={this.state.validateStatus}
       />
     );
   }
@@ -308,28 +299,22 @@ const data_select = (function(t) {
   return res;
 })(10);
 export class ValidateSelect extends React.Component<any, any> {
-  static getDerivedStateFromProps(nextProps: Object, preState: Object) {
-    let { value } = nextProps;
-    const hasValueInprops = 'value' in nextProps;
-    value = fixControlledValue(value);
-    if (!preState) {
-      return {
-        value: hasValueInprops ? value : '',
-      };
-    }
-    if (hasValueInprops) {
-      return { value };
-    }
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      value: props.value || '',
+      validateStatus: '',
+    };
   }
-
   onChange = (obj: any) => {
-    const { newDisplayValue } = obj;
-    const validateStatus = newDisplayValue === 'txt0' ? 'error' : 'default';
-    this.setState({ validateStatus });
+    const { newDisplayValue: value } = obj;
+    console.log(obj, this);
+    const validateStatus = value === 'txt0' ? 'error' : 'default';
+    this.setState({ value, validateStatus });
   };
 
   render() {
-    const { validateType, validateStatus } = this.props;
+    const { validateType } = this.props;
     return (
       <Select
         canSearch
@@ -338,52 +323,14 @@ export class ValidateSelect extends React.Component<any, any> {
         data={data_select}
         onChange={this.onChange}
         validateType={validateType}
-        validateStatus={validateStatus}
+        validateStatus={this.state.validateStatus}
       />
     );
   }
 }
 
 const data_TreeSelect = [
-  { key: '1', title: '1' },
-  { key: '1.1', title: '1.1', pid: '1', path: '1' },
-  { key: '1.1.1', title: '1.1.1', pid: '1.1', path: '1/1.1' },
-  { key: '1.1.1.1', title: '1.1.1.1', pid: '1.1.1', path: '1/1.1/1.1.1' },
-  {
-    key: '1.1.1.1.1',
-    title: '1.1.1.1.1',
-    pid: '1.1.1.1',
-    path: '1/1.1/1.1.1/1.1.1.1',
-    isLeaf: true,
-  },
-  { key: '1.2', title: '1.2', pid: '1', path: '1' },
-  { key: '1.2.1', title: '1.2.1', pid: '1.2', path: '1/1.2', isLeaf: true },
-  { key: '1.2.2', title: '1.2.2', pid: '1.2', path: '1/1.2' },
-  { key: '1.2.2.1', title: '1.2.2.1', pid: '1.2.2', path: '1/1.2/1.2.2' },
-  {
-    key: '1.2.2.1.1',
-    title: '1.2.2.1.1',
-    pid: '1.2.2.1',
-    path: '1/1.2/1.2.2/1.2.2.1',
-    isLeaf: true,
-  },
-  {
-    key: '1.2.2.1.2',
-    title: '1.2.2.1.2',
-    pid: '1.2.2.1',
-    path: '1/1.2/1.2.2/1.2.2.1',
-    isLeaf: true,
-  },
-  { key: '1.2.2.2', title: '1.2.2.2', pid: '1.2.2', path: '1/1.2/1.2.2', isLeaf: true },
-
-  { key: '1.3', title: '1.3', pid: '1', path: '1' },
-  { key: '1.3.1', title: '1.3.1', pid: '1.3', path: '1/1.3' },
-  { key: '1.3.1.1', title: '1.3.1.1', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true },
-  { key: '1.3.1.2', title: '1.3.1.2', pid: '1.3.1', path: '1/1.3/1.3.1', isLeaf: true },
-  { key: '1.3.2', title: '1.3.2', pid: '1.3', path: '1/1.3' },
-  { key: '1.3.2.1', title: '1.3.2.1', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true },
-  { key: '1.3.2.2', title: '1.3.2.2', pid: '1.3.2', path: '1/1.3/1.3.2', isLeaf: true },
-  { key: '1.3.3', title: '1.3.3', pid: '1.3', path: '1/1.3', isLeaf: true },
+  { key: '1', title: '1', isLeaf: true },
 
   { key: '2', title: '2' },
   { key: '2.1', title: '2.1', pid: '2', path: '2' },
@@ -402,29 +349,22 @@ const data_TreeSelect = [
   { key: '4', title: '4', isLeaf: true },
 ];
 export class ValidateTreeSelect extends React.Component<any, any> {
-  static getDerivedStateFromProps(nextProps: Object, preState: Object) {
-    let { value } = nextProps;
-    const hasValueInprops = 'value' in nextProps;
-    value = fixControlledValue(value);
-    if (!preState) {
-      return {
-        value: hasValueInprops ? value : '',
-      };
-    }
-    if (hasValueInprops) {
-      return { value };
-    }
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      value: props.value || '',
+      validateStatus: '',
+    };
   }
-
   onChange = (obj: any) => {
-    const { value, newDisplayValue } = obj;
-    this.props.onChange({ newValue: value });
-    const validateStatus = newDisplayValue === 'txt0' ? 'error' : 'default';
-    this.setState({ validateStatus });
+    const { newDisplayValue: value } = obj;
+    console.log(this, obj);
+    const validateStatus = value[0] === '1' ? 'error' : 'default';
+    this.setState({ value, validateStatus });
   };
-
   render() {
-    const { validateType, validateStatus } = this.props;
+    const { validateType } = this.props;
+
     return (
       <TreeSelect
         data={data_TreeSelect}
@@ -436,35 +376,29 @@ export class ValidateTreeSelect extends React.Component<any, any> {
         mutliple
         onChange={this.onChange}
         validateType={validateType}
-        validateStatus={validateStatus}
+        validateStatus={this.state.validateStatus}
       />
     );
   }
 }
 
 export class ValidateDatePicker extends React.Component<any, any> {
-  static getDerivedStateFromProps(nextProps: Object, preState: Object) {
-    let { value } = nextProps;
-    const hasValueInprops = 'value' in nextProps;
-    value = fixControlledValue(value);
-    if (!preState) {
-      return {
-        value: hasValueInprops ? value : '',
-      };
-    }
-    if (hasValueInprops) {
-      return { value };
-    }
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      value: props.value || '',
+      validateStatus: '',
+    };
   }
-
   onChange = (obj: any) => {
-    const { newValue } = obj;
-    const validateStatus = newValue === '2020-04-30' ? 'error' : 'default';
-    this.setState({ validateStatus });
+    const { newValue: value } = obj;
+    console.log(this, obj);
+    const validateStatus = value === '2020-04-30' ? 'error' : 'default';
+    this.setState({ value, validateStatus });
   };
 
   render() {
-    const { validateType, validateStatus } = this.props;
+    const { validateType } = this.props;
     return (
       <DatePicker
         step={9}
@@ -473,35 +407,28 @@ export class ValidateDatePicker extends React.Component<any, any> {
         data={data_select}
         onChange={this.onChange}
         validateType={validateType}
-        validateStatus={validateStatus}
+        validateStatus={this.state.validateStatus}
       />
     );
   }
 }
 
 export class ValidateTimePicker extends React.Component<any, any> {
-  static getDerivedStateFromProps(nextProps: Object, preState: Object) {
-    let { value } = nextProps;
-    const hasValueInprops = 'value' in nextProps;
-    value = fixControlledValue(value);
-    if (!preState) {
-      return {
-        value: hasValueInprops ? value : '',
-      };
-    }
-    if (hasValueInprops) {
-      return { value };
-    }
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      value: props.value || '',
+      validateStatus: '',
+    };
   }
-
   onChange = (obj: any) => {
-    const { newValue } = obj;
-    const validateStatus = newValue === '06:06:06' ? 'error' : 'default';
-    this.setState({ validateStatus });
+    const { newValue: value } = obj;
+    const validateStatus = value === '06:06:06' ? 'error' : 'default';
+    console.log(this);
+    this.setState({ value, validateStatus });
   };
-
   render() {
-    const { validateType, validateStatus } = this.props;
+    const { validateType } = this.props;
     return (
       <TimePicker
         canSearch
@@ -510,7 +437,7 @@ export class ValidateTimePicker extends React.Component<any, any> {
         data={data_select}
         onChange={this.onChange}
         validateType={validateType}
-        validateStatus={validateStatus}
+        validateStatus={this.state.validateStatus}
       />
     );
   }
@@ -518,16 +445,34 @@ export class ValidateTimePicker extends React.Component<any, any> {
 
 class ValidateDemo extends Component {
   render() {
-    const onChange = (cmpName: string) => (value: any) => {};
+    const onChange = (value: any) => {};
     return (
       <div>
         <Wrapper>
           <p>input top 输入值 是否含有a</p>
           <ValidateInput validateType="top" onChange={onChange()} />
           <p>input bottom 输入值 是否含有a</p>
-          <ValidateInput validateType="bottom" onChange={onChange('limit')} />
+          <ValidateInput validateType="bottom" onChange={onChange()} />
           <p>inputinner 输入值 是否含有a </p>
-          <ValidateInput validateType="inner" onChange={onChange('limit')} />
+          <ValidateInput validateType="inner" onChange={onChange()} />
+        </Wrapper>
+
+        <Wrapper>
+          <p>NumberInput top 输入值 是否是1</p>
+          <ValidateNumberInput validateType="top" onChange={onChange()} />
+          <p>NumberInput bottom 输入值 是否是1</p>
+          <ValidateNumberInput validateType="bottom" onChange={onChange()} />
+          <p>NumberInput inner 输入值 是否是1</p>
+          <ValidateNumberInput validateType="inner" onChange={onChange()} />
+        </Wrapper>
+
+        <Wrapper>
+          <p>TextArea top 输入值 包含a</p>
+          <ValidateTextArea validateType="top" onChange={onChange()} />
+          <p>TextArea bottom 输入值 包含a</p>
+          <ValidateTextArea validateType="bottom" onChange={onChange()} />
+          <p>TextArea inner 输入值 包含a</p>
+          <ValidateTextArea validateType="inner" onChange={onChange()} />
         </Wrapper>
 
         <Wrapper>
@@ -538,18 +483,9 @@ class ValidateDemo extends Component {
             onChange={onChange('limit')}
           />
           <p>AmountInput bottom 输入值 是否是1</p>
-          <ValidateAmountInput validateType="bottom" onChange={onChange('limit')} />
+          <ValidateAmountInput validateType="bottom" onChange={onChange()} />
           <p>AmountInput inner 输入值 是否是1</p>
-          <ValidateAmountInput validateType="inner" onChange={onChange('limit')} />
-        </Wrapper>
-
-        <Wrapper>
-          <p>NumberInput top 输入值 是否是1</p>
-          <ValidateNumberInput validateType="top" onChange={onChange('limit')} />
-          <p>NumberInput bottom 输入值 是否是1</p>
-          <ValidateNumberInput validateType="bottom" onChange={onChange('limit')} />
-          <p>NumberInput inner 输入值 是否是1</p>
-          <ValidateNumberInput validateType="inner" onChange={onChange('limit')} />
+          <ValidateAmountInput validateType="inner" onChange={onChange()} />
         </Wrapper>
 
         <Wrapper>
@@ -558,34 +494,34 @@ class ValidateDemo extends Component {
           <p>ValidateAutoComplete bottom 搜索结果是否为Armin van Buuren</p>
           <ValidateAutoComplete validateType="bottom" onChange={onChange} />
           <p>ValidateAutoComplete inner 搜索结果是否为Armin van Buuren</p>
-          <ValidateAutoComplete validateType="inner" onChange={onChange('limit')} />
+          <ValidateAutoComplete validateType="inner" onChange={onChange()} />
         </Wrapper>
 
         <Wrapper>
           <p>Cascader top 选择是否为一级菜单</p>
-          <ValidateCascader validateType="top" onChange={onChange('limit')} />
+          <ValidateCascader validateType="top" onChange={onChange()} />
           <p>Cascader bottom 选择是否为一级菜单</p>
-          <ValidateCascader validateType="bottom" onChange={onChange('limit')} />
+          <ValidateCascader validateType="bottom" onChange={onChange()} />
           <p>Cascader inner 选择是否为一级菜单</p>
-          <ValidateCascader validateType="inner" onChange={onChange('limit')} />
+          <ValidateCascader validateType="inner" onChange={onChange()} />
         </Wrapper>
 
         <Wrapper>
           <p>Select top 选择是否为txt0</p>
-          <ValidateSelect validateType="top" onChange={onChange('limit')} />
+          <ValidateSelect validateType="top" onChange={onChange()} />
           <p>Select bottom 选择是否为txt0</p>
-          <ValidateSelect validateType="bottom" onChange={onChange('limit')} />
+          <ValidateSelect validateType="bottom" onChange={onChange()} />
           <p>Select inner 选择是否为txt0</p>
-          <ValidateSelect validateType="inner" onChange={onChange('limit')} />
+          <ValidateSelect validateType="inner" onChange={onChange()} />
         </Wrapper>
 
         <Wrapper>
-          <p>TreeSelect top 选择是否为第4个文件</p>
-          <ValidateTreeSelect validateType="top" onChange={onChange('limit')} />
-          <p>TreeSelect bottom 选择是否为第4个文件</p>
-          <ValidateTreeSelect validateType="bottom" onChange={onChange('limit')} />
-          <p>TreeSelect inner 选择是否为第4个文件</p>
-          <ValidateTreeSelect validateType="inner" onChange={onChange('limit')} />
+          <p>TreeSelect top 选择是否为第1个文件</p>
+          <ValidateTreeSelect validateType="top" onChange={onChange()} />
+          <p>TreeSelect bottom 选择是否为第1个文件</p>
+          <ValidateTreeSelect validateType="bottom" onChange={onChange()} />
+          <p>TreeSelect inner 选择是否为第1个文件</p>
+          <ValidateTreeSelect validateType="inner" onChange={onChange()} />
         </Wrapper>
 
         <Wrapper>
