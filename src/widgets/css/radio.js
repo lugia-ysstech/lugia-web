@@ -17,6 +17,7 @@ import { judgeStarts } from '../utils';
 const em = px2remcss;
 const { padding, marginToSameElement } = colorsFunc();
 const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 
 type RadioStyleType = 'default' | 'vertical';
 export type CSStype = {
@@ -161,7 +162,7 @@ export const RadioCircleSpan = CSSComponent({
     height: ${em(16)};
     border-radius: 50%;
     border: 1px solid ${get('borderColor')};
-    background-color: #fff;
+    background-color: ${get('themeColor')};
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
   `,
@@ -216,7 +217,7 @@ export const RadioCircleSpan = CSSComponent({
         style: 'solid',
       }),
       borderRadius: getBorderRadius('100%'),
-      background: { color: '#fff' },
+      background: { color: themeColor },
       width: 16,
       height: 16,
     },
