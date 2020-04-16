@@ -146,6 +146,7 @@ export const OutContainer = CSSComponent({
     color: ${blackColor};
     font-size: ${px2remcss(FontSize)};
     transition: all 0.3s;
+    outline: none;
     & > div {
       height: 100%;
       width: 100%;

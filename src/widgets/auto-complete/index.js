@@ -87,7 +87,7 @@ export default ShortKeyBoard(
       render() {
         const { props, state } = this;
         const { value } = state;
-        const { disabled, placeholder, prefix, suffix, getPartOfThemeHocProps } = props;
+        const { disabled, placeholder, prefix, suffix, validateType, validateStatus } = props;
         const data = this.getMenuData();
         const len = data.length;
         const menuLen = Math.min(5, len);
@@ -136,6 +136,8 @@ export default ShortKeyBoard(
                 placeholder={placeholder}
                 prefix={prefix}
                 suffix={suffix}
+                validateType={validateType}
+                validateStatus={validateStatus}
               />
             </Trigger>
           </Theme>
@@ -150,6 +152,8 @@ export default ShortKeyBoard(
             InputSuffix: getPartOfThemeConfig('TagWrap'),
             InputPrefix: getPartOfThemeConfig('TagIcon'),
             InputClearButton: getPartOfThemeConfig('SwitchIcon'),
+            ValidateErrorInput: getPartOfThemeConfig('ValidateErrorInput'),
+            ValidateErrorText: getPartOfThemeConfig('ValidateErrorText'),
           },
         };
         return inputtagTheme;
