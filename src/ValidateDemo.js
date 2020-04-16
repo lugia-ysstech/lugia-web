@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Input from './widgets/input';
-import TextArea from './widgets/input';
 import AmountInput from './widgets/amount-input';
 import NumberInput from './widgets/number-input';
 import Cascader from './widgets/cascader';
@@ -28,7 +27,6 @@ export class ValidateInput extends React.Component<any, any> {
     const { validateType } = this.props;
     const { value } = this.state;
     const validateStatus = value.indexOf('a') === -1 ? 'default' : 'error';
-    console.log(this);
     return (
       <Input onChange={this.onChange} validateType={validateType} validateStatus={validateStatus} />
     );
@@ -50,7 +48,6 @@ export class ValidateNumberInput extends React.Component<any, any> {
     const { validateType } = this.props;
     const { value } = this.state;
     const validateStatus = value === 1 ? 'error' : 'default';
-    console.log(this);
     return (
       <NumberInput
         onChange={this.onChange}
@@ -76,9 +73,9 @@ export class ValidateTextArea extends React.Component<any, any> {
     const { validateType } = this.props;
     const { value } = this.state;
     const validateStatus = value.indexOf('a') === -1 ? 'default' : 'error';
-    console.log(this);
+    const Textarea = Input.Textarea;
     return (
-      <TextArea
+      <Textarea
         onChange={this.onChange}
         validateType={validateType}
         validateStatus={validateStatus}
@@ -180,8 +177,6 @@ export class ValidateAutoComplete extends React.Component<any, any> {
   };
   onChange = (value: string) => {
     this.search(value);
-    console.log(value, this);
-
     this.setState({ value });
   };
 
