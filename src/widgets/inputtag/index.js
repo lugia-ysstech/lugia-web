@@ -225,7 +225,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     const { disabled, validateStatus, prefix, suffix, getPartOfThemeProps, createPortal } = props;
     const themeProps = getPartOfThemeProps('InputTagWrap');
     if (!this.isMutliple()) {
-      result = this.generateOutter(
+      result = (
         <SingleInnerContainer disabled={disabled}>
           <FlexResBox>
             {prefix ? <Prefix>{prefix}</Prefix> : null}
@@ -239,7 +239,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       );
     } else {
       const { items } = state;
-      result = this.generateOutter(
+      result = (
         <InnerContainer themeProps={themeProps}>
           <FlexResBox>
             <List ref={cmp => (this.list = cmp)}>{items}</List>
@@ -279,33 +279,15 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
         validateStatus={validateStatus}
         ref={cmp => (this.container = cmp)}
         onClick={this.onClick}
+        tabIndex={0}
+        onFocus={this.props.onFocus}
+        onBlur={this.props.onBlur}
       >
         <HiddenList>
           <List>{font}</List>
         </HiddenList>
         {result}
       </OutContainer>
-    );
-  }
-
-  generateOutter(cmp: any) {
-    const { props } = this;
-    const { validateStatus } = props;
-    if (validateStatus === 'success') {
-      return cmp;
-    }
-    const { help } = props;
-    return (
-      <ErrorTip
-        title={help}
-        action={['click']}
-        placement="right"
-        ref={cmp => {
-          this.errorTip = cmp;
-        }}
-      >
-        {cmp}
-      </ErrorTip>
     );
   }
 

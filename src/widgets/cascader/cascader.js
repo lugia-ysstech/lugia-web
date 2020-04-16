@@ -11,6 +11,7 @@ import Theme from '../theme';
 import InputTag from '../inputtag';
 import { getTreeData } from '../menu/utils';
 import { deepMerge } from '@lugia/object-utils';
+import { getInputtagThemeHoc } from '../select/utils';
 import { DisplayField, ValueField } from '../consts/props';
 import {
   isHasValue,
@@ -105,7 +106,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
     const { placeholder, offsetY, disabled, createPortal } = props;
 
     return (
-      <Theme config={this.getInputtagTheme()}>
+      <Theme config={getInputtagThemeHoc(props)}>
         <Trigger
           ref={cmp => {
             this.trigger = cmp;
@@ -124,7 +125,6 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
           onPopupVisibleChange={this.onPopupVisibleChange}
         >
           <InputTag
-            {...this.props.getPartOfThemeHocProps('InputTag')}
             onClick={this.handleClickInputTag}
             value={inputValue}
             displayValue={inputValue}
@@ -132,6 +132,8 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
             placeholder={placeholder}
             disabled={disabled}
             onClear={this.onClear}
+            onFocus={this.props.onFocus}
+            onBlur={this.props.onBlur}
           />
         </Trigger>
       </Theme>
