@@ -8,5 +8,6 @@
 import Widget from '../consts/index';
 import Cascader from './cascader';
 import ThemeHoc from '@lugia/theme-hoc';
+import ValidateHoc from '../input/validateHoc';
 
-export default ThemeHoc(Cascader, Widget.Cascader, { hover: true });
+export default ThemeHoc(ValidateHoc(Cascader), Widget.Cascader, { hover: true });

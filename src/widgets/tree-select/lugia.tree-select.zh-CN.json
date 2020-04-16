@@ -5,10 +5,12 @@
   "props": {
     "validateStatus": {
       "type": "ValidateStatus",
-      "desc": "input校验状态, 'success' 成功 | 'error'错误",
-      "defaultValue": "success"
+      "desc": "校验状态"
     },
-
+    "validateType": {
+      "type": "ValidateType",
+      "desc": "校验信息显示类型"
+    },
     "data": {
       "type": "object[]",
       "desc": "生成选择项的数据",
@@ -187,7 +189,10 @@
       ]
     }
   },
-
+  "type": {
+    "ValidateStatus": ["default", "error"],
+    "ValidateType": ["top", "bottom", "inner"]
+  },
   "category": ["数据录入"],
 
   "designInfo": {
@@ -239,6 +244,37 @@
             ["opacity"],
             ["cursor"]
           ]
+        },
+
+        "ValidateErrorInput": {
+          "name": "校验失败的展示框",
+          "desc": "配置校验失败的展示框",
+          "normal": [
+            ["fontSize"],
+            ["font"],
+            ["color"],
+            ["background"],
+            ["border"],
+            ["boxShadow"],
+            ["opacity"]
+          ],
+          "hover": [["background"], ["border"], ["boxShadow"]],
+          "active": [["background"], ["border"], ["boxShadow"]]
+        },
+        "ValidateErrorText": {
+          "name": "校验失败提示信息",
+          "desc": "配置校验失败的提示信息",
+          "normal": [
+            ["background"],
+            ["boxShadow"],
+            ["borderRadius"],
+            ["border"],
+            ["fontSize"],
+            ["font"],
+            ["color"]
+          ],
+          "hover": [],
+          "active": []
         },
 
         "SwitchIcon": {
@@ -675,6 +711,37 @@
         ["opacity"],
         ["cursor"]
       ]
+    },
+
+    "ValidateErrorInput": {
+      "name": "校验失败的展示框",
+      "desc": "配置校验失败的展示框",
+      "normal": [
+        ["fontSize"],
+        ["font"],
+        ["color"],
+        ["background"],
+        ["border"],
+        ["boxShadow"],
+        ["opacity"]
+      ],
+      "hover": [["background"], ["border"], ["boxShadow"]],
+      "active": [["background"], ["border"], ["boxShadow"]]
+    },
+    "ValidateErrorText": {
+      "name": "校验失败提示信息",
+      "desc": "配置校验失败的提示信息",
+      "normal": [
+        ["background"],
+        ["boxShadow"],
+        ["borderRadius"],
+        ["border"],
+        ["fontSize"],
+        ["font"],
+        ["color"]
+      ],
+      "hover": [],
+      "active": []
     },
 
     "SwitchIcon": {
