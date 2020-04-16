@@ -13,6 +13,8 @@ import Menu from '../menu';
 import Widget from '../consts/index';
 import QueryInput from '../common/QueryInput';
 import { deepMerge } from '@lugia/object-utils';
+import ValidateHoc from '../input/validateHoc';
+import { getInputtagThemeHoc } from './utils';
 import {
   didUpdate,
   getDisplayValue,
@@ -24,7 +26,6 @@ import { DisplayField, ValueField } from '../consts/props';
 import { appendCustomValue, isCanInput, isMutliple, setNewValue } from '../common/selectFunction';
 import { toMatchFromType } from '../common/StringUtils';
 import ThemeHoc from '@lugia/theme-hoc';
-
 type ValidateStatus = 'success' | 'error';
 type RowData = { [key: string]: any };
 
@@ -367,7 +368,7 @@ class Select extends React.Component<SelectProps, SelectState> {
     };
 
     const result = (
-      <Theme config={this.getInputtagTheme()}>
+      <Theme config={getInputtagThemeHoc(props)}>
         <Trigger
           themePass
           popup={menu}
@@ -398,6 +399,8 @@ class Select extends React.Component<SelectProps, SelectState> {
             pullIconClass={pullIconClass}
             clearIconClass={clearIconClass}
             isShowClearButton={isShowClearButton}
+            onFocus={this.props.onFocus}
+            onBlur={this.props.onBlur}
           />
         </Trigger>
       </Theme>
@@ -704,22 +707,6 @@ class Select extends React.Component<SelectProps, SelectState> {
     return newTheme;
   };
 
-  getInputtagTheme = () => {
-    const { getPartOfThemeConfig } = this.props;
-    const inputtagTheme = {
-      [Widget.InputTag]: {
-        InputTagWrap: getPartOfThemeConfig('Container'),
-        TagWrap: getPartOfThemeConfig('TagWrap'),
-        TagIcon: getPartOfThemeConfig('TagIcon'),
-        SwitchIcon: getPartOfThemeConfig('SwitchIcon'),
-        ClearIcon: getPartOfThemeConfig('ClearIcon'),
-        Placeholder: getPartOfThemeConfig('Placeholder'),
-        Menu: getPartOfThemeConfig('InputMenu'),
-      },
-    };
-    return inputtagTheme;
-  };
-
   getMenuTheme = () => {
     const width = this.getContainerWidth();
     const initMenuTheme = {
@@ -743,4 +730,4 @@ class Select extends React.Component<SelectProps, SelectState> {
   }
 }
 
-export default ThemeHoc(Select, Widget.Select, { hover: true });
+export default ThemeHoc(ValidateHoc(Select), Widget.Select, { hover: true });
