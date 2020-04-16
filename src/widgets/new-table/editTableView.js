@@ -9,6 +9,7 @@ import { Container, EditDiv, InnerTriggerDiv } from './editTableCss';
 import EditTableEventListener from './connection';
 import Widget from '../consts';
 import { findDOMNode } from 'react-dom';
+import { deepMerge } from '@lugia/object-utils';
 
 class EditTable extends React.Component<EditTableProps, EditTableState> {
   editTableListener: EditTableEventListenerHandle;
@@ -138,9 +139,22 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
       align,
     } = renderObject;
     const EditElement = customEditElement || EditInput;
-    const editDivTheme = this.props.getPartOfThemeProps('EditTarget', {
-      props: { isSelect, isHead, align },
-    });
+    const editingTheme = enterEdit
+      ? {
+          themeConfig: {
+            normal: {
+              padding: { right: 0, left: 0 },
+            },
+          },
+        }
+      : {};
+    const editDivTheme = deepMerge(
+      this.props.getPartOfThemeProps('EditTarget', {
+        props: { isSelect, isHead, align, enterEdit },
+      }),
+      editingTheme
+    );
+
     if (enterEdit) {
       return (
         <EditDiv themeProps={editDivTheme} className={'EditDiv'}>
