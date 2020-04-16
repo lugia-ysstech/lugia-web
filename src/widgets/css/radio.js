@@ -15,7 +15,7 @@ import get from './theme-common-dict';
 import { judgeStarts } from '../utils';
 
 const em = px2remcss;
-const { padding, marginToSameElement } = colorsFunc();
+const { padding } = colorsFunc();
 const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
 const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 
@@ -53,7 +53,7 @@ const getStyleCSS = (props: RadioType): string => {
   }
   return `
     display: inline-block;
-    margin-right: ${last ? 0 : em(marginToSameElement)};
+    margin-right: ${last ? 0 : em(get('marginToSameElement'))};
   `;
 };
 
