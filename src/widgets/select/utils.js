@@ -10,7 +10,7 @@ function getInputtagWrapThemeConfig(props: Object): Object {
   const { getPartOfThemeConfig, validateStatus } = props;
   const containerThemeConfig = getPartOfThemeConfig('Container');
   if (!isValidateError(validateStatus)) {
-    return getPartOfThemeConfig('Container');
+    return containerThemeConfig;
   }
   const { themeConfig: colorThemeConfig } = validateValueDefaultTheme;
   const { themeConfig: borderThemeConfig } = validateBorderDefaultTheme;
@@ -19,7 +19,7 @@ function getInputtagWrapThemeConfig(props: Object): Object {
     borderThemeConfig,
     getPartOfThemeConfig('ValidateErrorInput')
   );
-  return deepMerge(errorVliDataStatus, containerThemeConfig);
+  return deepMerge(containerThemeConfig, errorVliDataStatus);
 }
 
 export function getInputtagThemeHoc(props: Object): Object {
