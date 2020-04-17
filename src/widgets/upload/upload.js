@@ -132,7 +132,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
     return {
       classNameStatus: 'classNameStatus' in stateProps ? classNameStatus : 'default',
       defaultText: 'defaultText' in stateProps ? defaultText : defaultUploadTips,
-      fileListDone: 'fileListDone' in stateProps ? fileListDone : defProps.fileList,
+      fileListDone: 'fileList' in defProps ? defProps.fileList : fileListDone,
       isAllowUpload: 'isAllowUpload' in stateProps ? isAllowUpload : defProps.autoUpload,
     };
   }
@@ -173,11 +173,12 @@ class Upload extends React.Component<UploadProps, StateProps> {
   getChangeUploadState = (typeState: string, name: string, hashMark: string) => {
     let list;
     const { fileListDone } = this.state;
-    if (isIdInArray(hashMark, fileListDone)) {
-      list = this.updateFieldList(fileListDone, hashMark, [{ target: 'status', value: 'loading' }]);
+    const newFileList = [...fileListDone];
+    if (isIdInArray(hashMark, newFileList)) {
+      list = this.updateFieldList(newFileList, hashMark, [{ target: 'status', value: 'loading' }]);
     } else {
       const { areaType } = this.props;
-      list = this.appendFileList(fileListDone, {
+      list = this.appendFileList(newFileList, {
         hashMark,
         name,
         areaType,
@@ -282,7 +283,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
 
     const list = this.updateFieldList(fileListDone, hashMark, [
       { target: 'status', value: 'done' },
-      { target: 'url', value: res.data.url },
+      { target: 'url', value: res && res.data && res.data.url },
     ]);
     this.setStateValue({ classNameStatus: 'done', fileListDone: list });
     const { areaType } = this.props;

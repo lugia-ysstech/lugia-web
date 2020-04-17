@@ -211,6 +211,7 @@ class UploadDemo extends React.Component<any, any> {
       ],
       multiple: true,
       autoUpload: false,
+      disabled: true,
       onChange: res => {},
     };
     const defaultProps3 = {
