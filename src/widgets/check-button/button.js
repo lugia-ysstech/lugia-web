@@ -12,9 +12,10 @@ const spiritColor = '$lugia-dict.@lugia/lugia-web.spiritColor';
 const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
 const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 const borderColor = '$lugia-dict.@lugia/lugia-web.borderColor';
+const themeDisabledColor = '$lugia-dict.@lugia/lugia-web.themeDisabledColor';
 const cancelCommonTheme = {
   color: '#fff',
-  background: { color: '$lugia-dict.@lugia/lugia-web.disabledColor' },
+  background: { color: themeDisabledColor },
 };
 const defaultRadioCancelTheme = {
   themeConfig: {
