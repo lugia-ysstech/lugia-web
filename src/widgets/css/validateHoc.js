@@ -44,3 +44,4 @@ export const validateValueDefaultTheme = {
     },
   },
 };
+export const validateWidthTheme = { themeConfig: { normal: { width: '100%' } } };
