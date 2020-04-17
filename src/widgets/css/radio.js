@@ -18,6 +18,7 @@ const em = px2remcss;
 const { padding } = colorsFunc();
 const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
 const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
+const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 
 type RadioStyleType = 'default' | 'vertical';
 export type CSStype = {
@@ -140,7 +141,7 @@ export const RadioChildrenSpan = CSSComponent({
   disabled: {
     selectNames: [['color']],
     defaultTheme: {
-      color: '$lugia-dict.@lugia/lugia-web.lightGreyColor',
+      color: disableTextColor,
     },
   },
   active: {
