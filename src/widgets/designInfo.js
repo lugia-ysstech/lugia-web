@@ -6117,12 +6117,8 @@ export default [
           desc: '可以调整段落文本输入框宽高的类型',
           propsDefaultValue: 'both',
         },
-        validateStatus: { type: 'ValidateStatus', desc: '校验状态', propsDefaultValue: 'default' },
-        validateType: {
-          type: 'ValidateType',
-          desc: '校验信息显示类型',
-          propsDefaultValue: 'default',
-        },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型' },
         help: { type: 'string', desc: '校验提示信息' },
       },
       events: {
@@ -9539,17 +9535,9 @@ export default [
           desc: "可配置三种尺寸大小的input ('大' , '默认' , '小'),高度分别为 40px、32px 和 24px。",
           defaultValue: 'default',
         },
-        validateStatus: {
-          type: 'ValidateStatus',
-          desc: 'input校验状态',
-          propsDefaultValue: 'default',
-        },
-        validateType: {
-          type: 'ValidateType',
-          desc: 'input校验信息显示类型',
-          propsDefaultValue: 'top',
-        },
-        help: { type: 'string', desc: 'input校验提示信息' },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型' },
+        help: { type: 'string', desc: '校验提示信息' },
         placeholder: { type: 'string', desc: 'input输入提示信息' },
         defaultValue: { type: 'string', desc: '默认显示内容' },
         value: { type: 'string', desc: '显示内容' },
@@ -9607,7 +9595,7 @@ export default [
       type: {
         InputSize: ['small', 'default', 'large'],
         ValidateStatus: ['default', 'error'],
-        ValidateType: ['top', 'bottom'],
+        ValidateType: ['top', 'bottom', 'inner'],
         ChangeType: { newValue: 'number', oldValue: 'number', event: 'SyntheticEvent' },
       },
       category: ['数据录入'],
@@ -19414,6 +19402,12 @@ export default [
           desc: 'data数据的displayValue值的名称',
           defaultValue: 'text',
         },
+        pathField: { type: 'string', desc: 'data数据的存储节点路径信息字段', defaultValue: 'text' },
+        pidField: {
+          type: 'string',
+          desc: 'data数据的存储节点父节点信息字段',
+          defaultValue: 'text',
+        },
         value: {
           type: 'string | string[] | number | number[]',
           desc: '指定当前选中的条目的valueField值',
@@ -20030,6 +20024,12 @@ export default [
         displayField: {
           type: 'string',
           desc: 'data数据的displayValue值的名称',
+          defaultValue: 'text',
+        },
+        pathField: { type: 'string', desc: 'data数据的存储节点路径信息字段', defaultValue: 'text' },
+        pidField: {
+          type: 'string',
+          desc: 'data数据的存储节点父节点信息字段',
           defaultValue: 'text',
         },
         value: {

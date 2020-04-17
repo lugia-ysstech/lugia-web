@@ -39,7 +39,7 @@ export const EditDiv = CSSComponent({
   tag: 'div',
   className: 'EditDiv',
   normal: {
-    selectNames: [['width'], ['height'], ['border'], ['background']],
+    selectNames: [['width'], ['height'], ['border'], ['background'], ['padding']],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
         propsConfig: { isSelect, isHead },
@@ -67,6 +67,7 @@ export const EditDiv = CSSComponent({
     height: 100%;
     display: flex;
     align-items: center;
+    padding: 0 10px;
     position: relative;`,
 });
 

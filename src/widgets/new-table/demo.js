@@ -2,6 +2,8 @@ import React from 'react';
 import Table from './';
 import EditTable from './editTableView';
 import styled from 'styled-components';
+import Theme from '../theme';
+import Widgets from '../consts';
 
 const Title = styled.div`
   font-size: 16px;
@@ -96,20 +98,36 @@ export default class TableDemo extends React.Component<Object, Object> {
   };
   render() {
     const { tableData } = this.state;
+
+    const config = {
+      [Widgets.EditTable]: {
+        EditTarget: {
+          normal: {
+            padding: {
+              right: 10,
+              left: 10,
+            },
+          },
+        },
+      },
+    };
     return (
       <div>
         <Title>可编辑表格</Title>
-        <EditTable
-          data={tableData}
-          columns={columns}
-          tableStyle={'bordered'}
-          tableSize={'large'}
-          title={'这是一个有边框的表格'}
-          footer={<div>这是表格底部信息</div>}
-          onChange={this.onChange}
-          onCell={this.onCell}
-          selectSuffixElement={<div>00</div>}
-        />
+        <Theme config={config}>
+          <EditTable
+            data={tableData}
+            columns={columns}
+            tableStyle={'bordered'}
+            tableSize={'large'}
+            title={'这是一个有边框的表格'}
+            footer={<div>这是表格底部信息</div>}
+            onChange={this.onChange}
+            onCell={this.onCell}
+            selectSuffixElement={<div>00</div>}
+          />
+        </Theme>
+
         <Title>基本表格</Title>
         <Table
           data={data}

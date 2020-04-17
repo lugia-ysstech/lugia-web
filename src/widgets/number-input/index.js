@@ -13,11 +13,17 @@ import Widget from '../consts';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import Icon from '../icon/index';
 import { accAdd, checkNumber, limit } from '../common/Math';
-import type { ValidateType, ValidateStatus } from '../css/input';
 import { units } from '@lugia/css';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import { deepMerge } from '@lugia/object-utils';
 import get from '../css/theme-common-dict';
+import ValidateHoc from '../input/validateHoc';
+import {
+  validateValueDefaultTheme,
+  validateBorderDefaultTheme,
+  isValidateError,
+} from '../css/validateHoc';
+import type { ValidateStatus, ValidateType } from '../css/validateHoc';
 
 const { px2remcss } = units;
 
@@ -171,6 +177,8 @@ export type NumberInputProps = {
   max: number,
   min: number,
   disabled: boolean,
+  validateStatus: ValidateStatus,
+  validateType: ValidateType,
   help: string,
   placeholder?: string,
   getTheme: Function,
@@ -412,17 +420,26 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
       </ArrowIconContainer>
     );
   }
-
   render() {
     const { value } = this.state;
-
     const {
       createEventChannel,
       getPartOfThemeHocProps,
       getPartOfThemeProps,
-      validateType,
+      validateStatus,
     } = this.props;
     const { theme: inputThemeProps } = getPartOfThemeHocProps('Input');
+
+    const validateErrorInputThemeProps = getPartOfThemeProps('ValidateErrorText');
+
+    const theValidateThemeProps = isValidateError(validateStatus)
+      ? deepMerge(
+          validateValueDefaultTheme,
+          validateBorderDefaultTheme,
+          validateErrorInputThemeProps
+        )
+      : {};
+
     const containerThemeProps = getPartOfThemeProps('Container');
     const theInputTheme = deepMerge(
       {
@@ -442,14 +459,14 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
         },
       },
       inputThemeProps,
-      containerThemeProps
+      containerThemeProps,
+      theValidateThemeProps
     );
 
     const arrowContainerChannel = createEventChannel(['hover']);
-    const theValidateType =
-      validateType === 'inner' || validateType === 'default' ? 'top' : validateType;
     return (
       <Input
+        isValidate={false}
         lugiaConsumers={arrowContainerChannel.consumer}
         theme={theInputTheme}
         ref={this.el}
@@ -458,7 +475,6 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
         suffix={this.getStepArrowIconContainer(arrowContainerChannel)}
         onBlur={this.onBlur}
         onChange={this.handleChange}
-        validateType={theValidateType}
       />
     );
   }
@@ -508,8 +524,12 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
   }
 }
 
-const TargetNumberInput = ThemeHoc(KeyBoardEventAdaptor(NumberTextBox), Widget.NumberInput, {
-  hover: true,
-  active: true,
-});
+const TargetNumberInput = ThemeHoc(
+  ValidateHoc(KeyBoardEventAdaptor(NumberTextBox)),
+  Widget.NumberInput,
+  {
+    hover: true,
+    active: true,
+  }
+);
 export default TargetNumberInput;

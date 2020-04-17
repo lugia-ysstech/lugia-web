@@ -15,6 +15,8 @@ class Tree extends React.Component<any, any> {
     pathSeparator: '/',
     valueField: 'value',
     displayField: 'text',
+    pathField: 'path',
+    pidField: 'pid',
   };
   innerTree: Object;
 
