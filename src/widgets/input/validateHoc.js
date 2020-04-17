@@ -2,13 +2,13 @@ import React from 'react';
 import { deepMerge } from '@lugia/object-utils';
 import get from '../css/theme-common-dict';
 import ToolTip from '../tooltip/index';
-import { DefaultHelp, isValidateError } from '../css/validateHoc';
 import { TipBottom, InnerTipText, FatherContainer, BottomContainer } from './validateCSS';
-
+import { getWidthCSS } from './utils';
+import { DefaultHelp, isValidateError } from '../css/validateHoc';
 const ValidateHoc = (Target: Object, displayName?: string) => {
   class ValidateContainer extends React.Component {
     state = {
-      _isValidateVisible: false,
+      _isValidateVisible: true,
     };
 
     onFocus = (event: UIEvent) => {
@@ -29,6 +29,7 @@ const ValidateHoc = (Target: Object, displayName?: string) => {
       this.setState({ _isValidateVisible: true });
       onBlur && onBlur(event);
     };
+
     render() {
       const {
         validateType,
@@ -37,6 +38,7 @@ const ValidateHoc = (Target: Object, displayName?: string) => {
         getPartOfThemeHocProps,
         getPartOfThemeProps,
         isValidate = true,
+        getPartOfThemeConfig,
       } = this.props;
       const { _isValidateVisible } = this.state;
       const theHelp = help || DefaultHelp;
@@ -50,7 +52,7 @@ const ValidateHoc = (Target: Object, displayName?: string) => {
       );
 
       if (!isValidate) {
-        return result;
+        return <Target {...this.props} />;
       }
       if (validateType === 'top') {
         const { theme: validateTopTipThemeProps, viewClass } = getPartOfThemeHocProps(
@@ -75,22 +77,28 @@ const ValidateHoc = (Target: Object, displayName?: string) => {
             ),
             ChildrenContainer: {
               normal: {
-                getCSS() {
-                  return 'display: block;width:100%;height:100%;';
+                getCSS(themeMeta, themeProps) {
+                  const { propsConfig } = themeProps;
+                  const { width = '100%' } = propsConfig;
+                  const widthCSS = getWidthCSS(width);
+                  return `${widthCSS};height:100%;display: block;`;
                 },
               },
             },
           },
         };
+        const { normal: { width } = {} } = getPartOfThemeConfig('Container');
+        const theWidth = width || '100%';
         return (
           <ToolTip
             theme={newTheme}
             viewClass={viewClass}
+            propsConfig={{ width: theWidth }}
             title={theHelp}
             action={'focus'}
             popArrowType={'round'}
             placement={'topLeft'}
-            visible={isValidateError(validateStatus) && !_isValidateVisible}
+            visible={isValidateError(validateStatus) && _isValidateVisible}
           >
             {result}
           </ToolTip>
@@ -100,9 +108,11 @@ const ValidateHoc = (Target: Object, displayName?: string) => {
       const validateThemeProps = getPartOfThemeProps('ValidateErrorText', {
         props: { validateStatus, ...innerProps },
       });
+      const ContainerThemeProps = deepMerge(getPartOfThemeProps('Container'));
+
       if (validateType === 'bottom') {
         return (
-          <BottomContainer themeProps={getPartOfThemeProps('Container')}>
+          <BottomContainer themeProps={ContainerThemeProps}>
             {result}
             <TipBottom themeProps={validateThemeProps}>{theHelp}</TipBottom>
           </BottomContainer>
@@ -110,15 +120,14 @@ const ValidateHoc = (Target: Object, displayName?: string) => {
       }
 
       if (validateType === 'inner') {
-        const { getPartOfThemeProps } = this.props;
         return (
-          <FatherContainer displayName={displayName} themeProps={getPartOfThemeProps('Container')}>
+          <FatherContainer themeProps={ContainerThemeProps}>
             {result}
             <InnerTipText themeProps={validateThemeProps}>{theHelp}</InnerTipText>
           </FatherContainer>
         );
       }
-      return result;
+      return <Target {...this.props} />;
     }
   }
   return ValidateContainer;
