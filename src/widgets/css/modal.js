@@ -140,9 +140,9 @@ export const ModalWrap = StaticComponent({
   className: 'ModalWrap',
   css: css`
     position: fixed;
-    right: 0;
-    left: 0;
-    margin: auto;
+    left: 50%;
+    top: 100px;
+    transform: translateX(-50%);
     z-index: 99999;
   `,
 });
@@ -153,17 +153,10 @@ export const Modal = CSSComponent({
   css: css`
     box-sizing: border-box;
     font-size: ${FontSize}rem;
-    position: relative;
-    top: ${px2remcss(100)};
-    margin: 0 auto;
-    z-index: 99999;
     ${getAnimate};
   `,
   normal: {
     selectNames: [['width']],
-    defaultTheme: {
-      width: 520,
-    },
   },
 });
 
@@ -175,6 +168,7 @@ export const ModalContent = CSSComponent({
     border: 0;
     border-radius: ${px2remcss(4)};
     box-shadow: 0 ${px2remcss(4)} ${px2remcss(12)} rgba(0, 0, 0, 0.15);
+    min-width: ${px2remcss(520)};
   `,
   normal: {
     selectNames: [
@@ -188,7 +182,6 @@ export const ModalContent = CSSComponent({
       ['padding'],
     ],
     defaultTheme: {
-      width: 520,
       background: { color: '#fff' },
       boxShadow: getBoxShadow(`0 ${px2remcss(4)} ${px2remcss(12)} rgba(0, 0, 0, 0.15)`),
       border: getBorder({ width: 0, style: 'solid', color: '#ccc' }),
