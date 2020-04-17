@@ -3,6 +3,7 @@ import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import { isValidateError } from '../css/validateHoc';
 import { units } from '@lugia/css';
 import get from '../css/theme-common-dict';
+import { getWidthCSS } from './utils';
 const { px2remcss } = units;
 const dangerColor = '$lugia-dict.@lugia/lugia-web.dangerColor';
 
@@ -63,28 +64,23 @@ export const InnerTipText: Object = CSSComponent({
     box-shadow: ${px2remcss(-14)} 0 ${px2remcss(6)} 0 ${get('defaultColor')};
   `,
 });
-export const FatherContainer: Object = CSSComponent({
-  tag: 'span',
-  className: 'FatherContainer',
-  normal: {
-    selectNames: [['width']],
-  },
-  css: css`
-    position: relative;
-    ${props => {
-      return props.displayName && props.displayName.indexOf('Textarea') !== -1
-        ? ' display:inline-block; font-size: 0;'
-        : ' display:block';
-    }};
-  `,
-});
+
 export const BottomContainer: Object = CSSComponent({
   tag: 'div',
   className: 'BottomContainer',
   normal: {
     selectNames: [['width']],
-    defaultTheme: {
-      width: '100%',
+    getCSS(themeMeta, themeProps) {
+      const { width } = themeMeta;
+      return getWidthCSS(width);
     },
   },
+});
+
+export const FatherContainer: Object = CSSComponent({
+  extend: BottomContainer,
+  className: 'FatherContainer',
+  css: css`
+    position: relative;
+  `,
 });
