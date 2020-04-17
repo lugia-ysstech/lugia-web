@@ -49,6 +49,7 @@ const getStyleCSS = (props: RadioType): string => {
   if (styles === 'vertical') {
     return `
       display: block;
+      margin-bottom: ${last ? 0 : em(get('marginToPeerElementForY'))};
     `;
   }
   return `
