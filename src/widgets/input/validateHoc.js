@@ -5,7 +5,7 @@ import ToolTip from '../tooltip/index';
 import { TipBottom, InnerTipText, FatherContainer, BottomContainer } from './validateCSS';
 import { getWidthCSS } from './utils';
 import { DefaultHelp, isValidateError } from '../css/validateHoc';
-const ValidateHoc = (Target: Object, displayName?: string) => {
+const ValidateHoc = (Target: Object) => {
   class ValidateContainer extends React.Component {
     state = {
       _isValidateVisible: true,
@@ -37,7 +37,6 @@ const ValidateHoc = (Target: Object, displayName?: string) => {
         help,
         getPartOfThemeHocProps,
         getPartOfThemeProps,
-        isValidate = true,
         getPartOfThemeConfig,
       } = this.props;
       const { _isValidateVisible } = this.state;
@@ -51,9 +50,6 @@ const ValidateHoc = (Target: Object, displayName?: string) => {
         />
       );
 
-      if (!isValidate) {
-        return <Target {...this.props} />;
-      }
       if (validateType === 'top') {
         const { theme: validateTopTipThemeProps, viewClass } = getPartOfThemeHocProps(
           'ValidateErrorText'
@@ -108,7 +104,7 @@ const ValidateHoc = (Target: Object, displayName?: string) => {
       const validateThemeProps = getPartOfThemeProps('ValidateErrorText', {
         props: { validateStatus, ...innerProps },
       });
-      const ContainerThemeProps = deepMerge(getPartOfThemeProps('Container'));
+      const ContainerThemeProps = getPartOfThemeProps('Container');
 
       if (validateType === 'bottom') {
         return (
