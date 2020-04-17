@@ -40,18 +40,21 @@ export type CheckState = {
 };
 
 const em = px2remcss;
+const normalSize = get('normalSize');
+const smallSize = get('smallSize');
+const largeSize = get('largeSize');
 const SizeCSS: { [key: CheckSize]: TypeSizeCSS } = {
   default: {
-    height: 32,
-    lineHeight: 30,
+    height: normalSize,
+    lineHeight: normalSize,
   },
   small: {
-    height: 28,
-    lineHeight: 26,
+    height: smallSize,
+    lineHeight: smallSize,
   },
   large: {
-    height: 38,
-    lineHeight: 36,
+    height: largeSize,
+    lineHeight: largeSize,
   },
   bigger: {
     height: 42,
