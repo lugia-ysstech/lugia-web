@@ -74,10 +74,19 @@ export const BottomContainer: Object = CSSComponent({
       const { width } = themeMeta;
       return getWidthCSS(width);
     },
-    css: css`
-      font-size: 0;
-    `,
   },
+  hover: {
+    selectNames: [],
+  },
+  active: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
+  css: css`
+    font-size: 0;
+  `,
 });
 
 export const FatherContainer: Object = CSSComponent({
