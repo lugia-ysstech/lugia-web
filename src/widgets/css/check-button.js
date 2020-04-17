@@ -46,15 +46,15 @@ const largeSize = get('largeSize');
 const SizeCSS: { [key: CheckSize]: TypeSizeCSS } = {
   default: {
     height: normalSize,
-    lineHeight: normalSize,
+    lineHeight: normalSize - 2,
   },
   small: {
     height: smallSize,
-    lineHeight: smallSize,
+    lineHeight: smallSize - 2,
   },
   large: {
     height: largeSize,
-    lineHeight: largeSize,
+    lineHeight: largeSize - 2,
   },
   bigger: {
     height: 42,
