@@ -256,6 +256,12 @@
           "hover": [["color"], ["font"]],
           "disabled": [["color"], ["font"]]
         },
+        "RadioTextCancel": {
+          "name": "文字样式",
+          "desc": "文字样式",
+          "normal": [["color"], ["font"], ["padding"]],
+          "disabled": [["color"], ["font"]]
+        },
         "RadioEdgeUnChecked": {
           "name": "未选中外框样式",
           "desc": "未选中外框样式",
