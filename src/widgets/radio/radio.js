@@ -26,6 +26,7 @@ const borderColor = '$lugia-dict.@lugia/lugia-web.borderColor';
 
 const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 const cancelColor = '$lugia-dict.@lugia/lugia-web.themeDisabledColor';
+const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 
 const defaultProps = {
   normal: { width: 10, height: 10, background: { color: themeColor } },
@@ -44,6 +45,13 @@ const defaultEdgeCancelProps = {
 };
 const defaultInnerCancelProps = {
   normal: { width: 10, height: 10, background: { color: cancelColor } },
+};
+const defaultTextCancelProps = {
+  themeConfig: {
+    normal: {
+      color: darkGreyColor,
+    },
+  },
 };
 const defaultEdgeUnCheckedProps = {
   themeConfig: {
@@ -131,7 +139,8 @@ export default ThemeProvider(
       } = this.props;
       const { checked } = this.state;
       const radioWrapTheme = getPartOfThemeProps('Container');
-      const radioTextTheme = getPartOfThemeProps('RadioText');
+      const radioTextNormalTheme = getPartOfThemeProps('RadioText');
+      const radioTextCancelTheme = getPartOfThemeProps('RadioTextCancel');
       const radioEdgeCheckedTheme = getPartOfThemeProps('RadioEdgeChecked');
       const radioEdgeUnCheckedTheme = getPartOfThemeProps('RadioEdgeUnChecked');
       const radioEdgeCancelTheme = getPartOfThemeProps('RadioEdgeCancel');
@@ -142,6 +151,9 @@ export default ThemeProvider(
         : checked
         ? deepMerge(defaultEdgeCheckedProps, radioEdgeCheckedTheme)
         : deepMerge(defaultEdgeUnCheckedProps, radioEdgeUnCheckedTheme);
+      const radioTextTheme = cancel
+        ? deepMerge(defaultTextCancelProps, radioTextCancelTheme)
+        : radioTextNormalTheme;
       if (checked) {
         circleEdgeTheme.propsConfig.radioInnerCheckedTheme = deepMerge(
           defaultProps,
@@ -175,7 +187,7 @@ export default ThemeProvider(
               checked={checked}
             />
           </RadioContent>
-          <RadioChildrenSpan hasChildren={!!children} themeProps={radioTextTheme}>
+          <RadioChildrenSpan hasChildren={!!children} cancel={cancel} themeProps={radioTextTheme}>
             {children}
           </RadioChildrenSpan>
         </RadioWrap>
