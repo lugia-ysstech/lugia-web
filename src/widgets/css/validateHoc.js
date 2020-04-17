@@ -3,10 +3,10 @@ import { getBorder, getBoxShadow } from '@lugia/theme-utils';
 import colorsFunc from '../css/stateColor';
 import get from '../css/theme-common-dict';
 const { shadowSpread, hShadow, vShadow, borderSize } = colorsFunc();
-const borderColor = '$lugia-dict.@lugia/lugia-web.borderColor';
 const dangerColor = '$lugia-dict.@lugia/lugia-web.dangerColor';
 const dangerHoverColor = '$lugia-dict.@lugia/lugia-web.dangerHoverColor';
 const dangerActiveColor = '$lugia-dict.@lugia/lugia-web.dangerActiveColor';
+const borderDisableColor = '$lugia-dict.@lugia/lugia-web.borderDisableColor';
 
 export const DefaultHelp = '验证出错';
 
@@ -32,8 +32,8 @@ export const validateBorderDefaultTheme = {
       border: getBorder({ color: dangerActiveColor, width: borderSize, style: 'solid' }),
       boxShadow: getBoxShadow(`${hShadow}px ${vShadow}px ${shadowSpread}px ${dangerActiveColor}`),
     },
-    disable: {
-      border: getBorder({ color: borderColor, width: borderSize, style: 'solid' }),
+    disabled: {
+      border: getBorder({ color: borderDisableColor, width: borderSize, style: 'solid' }),
     },
   },
 };
