@@ -65,10 +65,14 @@ const getButtonCSS = (props: GroupCSSProps) => {
   if (childType === 'button') {
     return `& > label:first-child > span {
       ${getFirstChildBorder(props)}; 
-      border-radius: ${px2remcss(4)} 0 0 ${px2remcss(4)};
+      border-radius: ${px2remcss(get('borderRadiusValue'))} 0 0 ${px2remcss(
+      get('borderRadiusValue')
+    )};
     }
     & > label:last-child > span {
-      border-radius: 0 ${px2remcss(4)} ${px2remcss(4)} 0;
+      border-radius: 0 ${px2remcss(get('borderRadiusValue'))} ${px2remcss(
+      get('borderRadiusValue')
+    )} 0;
       ${getLastChildBorder(props)};
     }`;
   }
