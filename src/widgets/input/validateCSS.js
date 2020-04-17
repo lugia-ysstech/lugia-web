@@ -64,9 +64,10 @@ export const InnerTipText: Object = CSSComponent({
     box-shadow: ${px2remcss(-14)} 0 ${px2remcss(6)} 0 ${get('defaultColor')};
   `,
 });
-export const FatherContainer: Object = CSSComponent({
-  tag: 'span',
-  className: 'FatherContainer',
+
+export const BottomContainer: Object = CSSComponent({
+  tag: 'div',
+  className: 'BottomContainer',
   normal: {
     selectNames: [['width']],
     getCSS(themeMeta, themeProps) {
@@ -74,17 +75,12 @@ export const FatherContainer: Object = CSSComponent({
       return getWidthCSS(width);
     },
   },
+});
+
+export const FatherContainer: Object = CSSComponent({
+  extend: BottomContainer,
+  className: 'FatherContainer',
   css: css`
     position: relative;
   `,
-});
-export const BottomContainer: Object = CSSComponent({
-  tag: 'div',
-  className: 'BottomContainer',
-  normal: {
-    selectNames: [['width']],
-    defaultTheme: {
-      width: '100%',
-    },
-  },
 });
