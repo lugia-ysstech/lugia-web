@@ -126,7 +126,6 @@ class DateInput extends Component<TypeProps, TypeState> {
       onClear: this.onClear,
       clearButtonTheme: clearButtonProps,
     });
-    const errorTip = validateStatus === 'error' ? { validateType, validateStatus, help } : {};
     return (
       <Theme
         config={{
@@ -203,7 +202,9 @@ class DateInput extends Component<TypeProps, TypeState> {
             //onClear={this.onClear}
             disabled={disabled}
             readOnly={readOnly}
-            {...errorTip}
+            validateType={validateType}
+            validateStatus={validateStatus}
+            help={help}
           />
         </Trigger>
       </Theme>

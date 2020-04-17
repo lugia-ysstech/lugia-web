@@ -420,7 +420,14 @@ class Range extends Component<TypeProps, TypeState> {
       isClear,
       placeholder,
     } = this.state;
-    const { disabled, readOnly, theme, mode, getPartOfThemeProps } = this.props;
+    const {
+      disabled,
+      readOnly,
+      theme,
+      mode,
+      getPartOfThemeProps,
+      createPortal = true,
+    } = this.props;
     const { monthAndYear } = this;
     const showTimeBtnIsDisabled = valueIsValid ? true : false;
     const { differAmonth, differAyear } = differMonthAndYear(monthAndYear);
@@ -440,7 +447,7 @@ class Range extends Component<TypeProps, TypeState> {
     return (
       <Trigger
         themePass
-        createPortal={this.props.createPortal}
+        createPortal={createPortal}
         popup={
           <RangeWrap
             {...addMouseEvent(this)}
