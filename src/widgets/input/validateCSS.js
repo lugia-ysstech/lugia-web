@@ -74,6 +74,9 @@ export const BottomContainer: Object = CSSComponent({
       const { width } = themeMeta;
       return getWidthCSS(width);
     },
+    css: css`
+      font-size: 0;
+    `,
   },
 });
 
