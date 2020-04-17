@@ -14,6 +14,7 @@ type CheckSize = 'default' | 'small' | 'large' | 'bigger';
 type TypeSizeCSS = {
   height: number,
   lineHeight: number,
+  fontSize: number,
 };
 export type CheckProps = {
   size?: CheckSize,
@@ -47,27 +48,32 @@ const SizeCSS: { [key: CheckSize]: TypeSizeCSS } = {
   default: {
     height: normalSize,
     lineHeight: normalSize - 2,
+    fontSize: 14,
   },
   small: {
     height: smallSize,
     lineHeight: smallSize - 2,
+    fontSize: 12,
   },
   large: {
     height: largeSize,
     lineHeight: largeSize - 2,
+    fontSize: 14,
   },
   bigger: {
     height: 42,
     lineHeight: 40,
+    fontSize: 16,
   },
 };
 const getSizeCSS = (props: PropsType): string => {
   const { size = 'default' } = props;
-  const { height, lineHeight } = SizeCSS[size];
+  const { height, lineHeight, fontSize } = SizeCSS[size];
 
   return `
     height: ${em(height)};
     line-height: ${em(lineHeight)};
+    font-size: ${em(fontSize)}
   `;
 };
 
@@ -178,7 +184,6 @@ export const CheckSpan = CSSComponent({
         ),
       },
       background: { color: '#fff' },
-      fontSize: em(12),
       padding: {
         top: 0,
         right: 10,
@@ -238,7 +243,6 @@ export const CheckSpan = CSSComponent({
         ),
       },
       background: { color: '#fff' },
-      fontSize: em(12),
       padding: {
         top: 0,
         right: 10,
