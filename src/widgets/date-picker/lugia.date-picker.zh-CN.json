@@ -186,14 +186,9 @@
       "normal": [["color"]],
       "hover": [["color"]]
     },
-    "ValidateErrorText": {
-      "name": "校验文本",
-      "desc": "校验文本配置",
-      "normal": [["color"], ["fontSize"], ["background"]]
-    },
     "ValidateErrorInput": {
-      "name": "校验模式输入框",
-      "desc": "校验模式输入框配置",
+      "name": "校验失败的输入框",
+      "desc": "配置校验失败的输入框",
       "normal": [
         ["fontSize"],
         ["font"],
@@ -205,6 +200,21 @@
       ],
       "hover": [["background"], ["border"], ["boxShadow"]],
       "active": [["background"], ["border"], ["boxShadow"]]
+    },
+    "ValidateErrorText": {
+      "name": "校验失败提示信息",
+      "desc": "配置校验失败的提示信息",
+      "normal": [
+        ["background"],
+        ["boxShadow"],
+        ["borderRadius"],
+        ["border"],
+        ["fontSize"],
+        ["font"],
+        ["color"]
+      ],
+      "hover": [],
+      "active": []
     }
   },
   "defaultTheme": {

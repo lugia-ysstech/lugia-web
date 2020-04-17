@@ -6,6 +6,7 @@ import {
   validateValueDefaultTheme,
   validateBorderDefaultTheme,
   isValidateError,
+  validateWidthTheme,
 } from '../../css/validateHoc';
 const {
   normalColor,
@@ -41,7 +42,8 @@ export function getWrapThemeProps(props, partName) {
   };
 
   const deeMergeTheme = deepMerge(defaultNormal, themeConfig) || {};
-  const { normal = {}, hover = {}, disabled = {} } = deeMergeTheme;
+  const { normal: newNormal = {}, hover = {}, disabled = {} } = deeMergeTheme;
+  const normal = deepMerge(newNormal, validateWidthTheme.themeConfig.normal);
   const {
     border: {
       top: { width: topWidth } = {},
@@ -86,16 +88,17 @@ export function getWrapThemeProps(props, partName) {
   const disabledTheme = deepMerge(defaultDisabled, disabled);
 
   const {
-    validateNormalTheme,
-    validateActiveTheme,
-    validateHoverTheme,
-    validateDisabledTheme,
+    normal: validateNormalTheme,
+    active: validateActiveTheme,
+    hover: validateHoverTheme,
+    disabled: validateDisabledTheme,
   } = getValidateErrorInput(props);
   const errorNormal = deepMerge(normal, validateNormalTheme);
   const errorHover = deepMerge(hoverTheme, validateHoverTheme);
   const errorActive = deepMerge(hoverTheme, validateActiveTheme);
   const errorDisabled = deepMerge(disabledTheme, validateDisabledTheme);
   const isError = isValidateError(validateStatus);
+
   themeConfig.normal = isError ? errorNormal : normal;
   themeConfig.hover = isError ? errorHover : hoverTheme;
   themeConfig.active = isError ? errorActive : hoverTheme;
@@ -257,37 +260,13 @@ export function getIconTheme(props) {
 
 export function getValidateErrorInput(props) {
   const { getPartOfThemeProps } = props;
-  const { themeConfig: { normal, active, hover, disabled } = {} } = getPartOfThemeProps(
-    'ValidateErrorInput'
-  );
+  const themeProps = getPartOfThemeProps('ValidateErrorInput');
+  const { themeConfig = {} } = themeProps;
   const { themeConfig: { normal: defaultNormalFont = {} } = {} } = validateValueDefaultTheme;
-  const { themeConfig: borderThemeConfig } = validateBorderDefaultTheme;
-  const validateNormalTheme = {
-    ...defaultNormalFont,
-    ...deepMerge(borderThemeConfig.normal, normal),
-    ...getColorTheme(normal),
-  };
-  const validateActiveTheme = {
-    ...defaultNormalFont,
-    ...deepMerge(borderThemeConfig.active, active),
-    ...getColorTheme(normal),
-  };
-  const validateHoverTheme = {
-    ...defaultNormalFont,
-    ...deepMerge(borderThemeConfig.hover, hover),
-    ...getColorTheme(normal),
-  };
-  const validateDisabledTheme = {
-    ...defaultNormalFont,
-    ...deepMerge(borderThemeConfig.disabled, disabled),
-    ...getColorTheme(normal),
-  };
-  return { validateNormalTheme, validateActiveTheme, validateHoverTheme, validateDisabledTheme };
-}
-function getColorTheme(normal = {}) {
-  const { color } = normal;
-  if (!color) {
-    return {};
-  }
-  return { color };
+  const newThemeConfig = deepMerge(validateBorderDefaultTheme.themeConfig, themeConfig, {
+    normal: defaultNormalFont,
+    hover: defaultNormalFont,
+    active: defaultNormalFont,
+  });
+  return newThemeConfig;
 }
