@@ -32,7 +32,7 @@ export const validateBorderDefaultTheme = {
       border: getBorder({ color: dangerActiveColor, width: borderSize, style: 'solid' }),
       boxShadow: getBoxShadow(`${hShadow}px ${vShadow}px ${shadowSpread}px ${dangerActiveColor}`),
     },
-    disable: {
+    disabled: {
       border: getBorder({ color: borderColor, width: borderSize, style: 'solid' }),
     },
   },
