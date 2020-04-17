@@ -2,6 +2,7 @@
 
 exports[`new-table  EditTable css 1`] = `
 .c0 {
+  background: #fff;
   width: 100%;
 }
 
@@ -9,12 +10,12 @@ exports[`new-table  EditTable css 1`] = `
   outline: none;
 }
 
-.c4 {
+.c3 {
   border-bottom: 1px solid #cccccc;
   display: table-row;
 }
 
-.c5 {
+.c4 {
   display: table-cell;
   vertical-align: middle;
   padding: 0 10px;
@@ -22,19 +23,14 @@ exports[`new-table  EditTable css 1`] = `
   text-align: center;
 }
 
-.c7 {
+.c6 {
   display: table-cell;
   vertical-align: middle;
   padding: 0 10px;
   height: 100%;
-  text-align: undefined;
 }
 
 .c2 {
-  display: table-header-group;
-}
-
-.c3 {
   display: table-row-group;
 }
 
@@ -45,7 +41,7 @@ exports[`new-table  EditTable css 1`] = `
   border-top: 1px solid #cccccc;
 }
 
-.c6 {
+.c5 {
   width: 100%;
   height: 100%;
   display: -webkit-box;
@@ -56,7 +52,31 @@ exports[`new-table  EditTable css 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  padding: 0 10px;
   position: relative;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c7 {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0 10px;
+  position: relative;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
 }
 
 <div
@@ -74,16 +94,13 @@ exports[`new-table  EditTable css 1`] = `
     >
       <div
         className="c2"
-      />
-      <div
-        className="c3"
       >
         <div
-          className="c4"
+          className="c3"
           style={Object {}}
         >
           <div
-            className="c5"
+            className="c4"
             style={
               Object {
                 "borderBottomColor": "#cccccc",
@@ -99,7 +116,7 @@ exports[`new-table  EditTable css 1`] = `
             }
           >
             <div
-              className="c6"
+              className="c5"
               onClick={[Function]}
               style={
                 Object {
@@ -123,7 +140,7 @@ exports[`new-table  EditTable css 1`] = `
             </div>
           </div>
           <div
-            className="c7"
+            className="c6"
             style={
               Object {
                 "borderBottomColor": "#cccccc",
@@ -138,7 +155,7 @@ exports[`new-table  EditTable css 1`] = `
             }
           >
             <div
-              className="c6"
+              className="c7"
               onClick={[Function]}
               style={
                 Object {
@@ -162,7 +179,7 @@ exports[`new-table  EditTable css 1`] = `
             </div>
           </div>
           <div
-            className="c7"
+            className="c6"
             style={
               Object {
                 "borderBottomColor": "#cccccc",
@@ -178,7 +195,7 @@ exports[`new-table  EditTable css 1`] = `
             }
           >
             <div
-              className="c6"
+              className="c7"
               onClick={[Function]}
               style={
                 Object {
@@ -202,7 +219,7 @@ exports[`new-table  EditTable css 1`] = `
             </div>
           </div>
           <div
-            className="c7"
+            className="c6"
             style={
               Object {
                 "borderBottomColor": "#cccccc",
@@ -218,7 +235,7 @@ exports[`new-table  EditTable css 1`] = `
             }
           >
             <div
-              className="c6"
+              className="c7"
               onClick={[Function]}
               style={
                 Object {
@@ -243,11 +260,11 @@ exports[`new-table  EditTable css 1`] = `
           </div>
         </div>
         <div
-          className="c4"
+          className="c3"
           style={Object {}}
         >
           <div
-            className="c5"
+            className="c4"
             style={
               Object {
                 "borderBottomColor": "#cccccc",
@@ -263,7 +280,7 @@ exports[`new-table  EditTable css 1`] = `
             }
           >
             <div
-              className="c6"
+              className="c5"
               onClick={[Function]}
               style={
                 Object {
@@ -287,7 +304,7 @@ exports[`new-table  EditTable css 1`] = `
             </div>
           </div>
           <div
-            className="c7"
+            className="c6"
             style={
               Object {
                 "borderBottomColor": "#cccccc",
@@ -302,7 +319,7 @@ exports[`new-table  EditTable css 1`] = `
             }
           >
             <div
-              className="c6"
+              className="c7"
               onClick={[Function]}
               style={
                 Object {
@@ -326,7 +343,7 @@ exports[`new-table  EditTable css 1`] = `
             </div>
           </div>
           <div
-            className="c7"
+            className="c6"
             style={
               Object {
                 "borderBottomColor": "#cccccc",
@@ -342,7 +359,7 @@ exports[`new-table  EditTable css 1`] = `
             }
           >
             <div
-              className="c6"
+              className="c7"
               onClick={[Function]}
               style={
                 Object {
@@ -366,7 +383,7 @@ exports[`new-table  EditTable css 1`] = `
             </div>
           </div>
           <div
-            className="c7"
+            className="c6"
             style={
               Object {
                 "borderBottomColor": "#cccccc",
@@ -382,7 +399,7 @@ exports[`new-table  EditTable css 1`] = `
             }
           >
             <div
-              className="c6"
+              className="c7"
               onClick={[Function]}
               style={
                 Object {
@@ -405,11 +422,11 @@ exports[`new-table  EditTable css 1`] = `
           </div>
         </div>
         <div
-          className="c4"
+          className="c3"
           style={Object {}}
         >
           <div
-            className="c5"
+            className="c4"
             style={
               Object {
                 "borderBottomColor": "#cccccc",
@@ -425,7 +442,7 @@ exports[`new-table  EditTable css 1`] = `
             }
           >
             <div
-              className="c6"
+              className="c5"
               onClick={[Function]}
               style={
                 Object {
@@ -449,7 +466,7 @@ exports[`new-table  EditTable css 1`] = `
             </div>
           </div>
           <div
-            className="c7"
+            className="c6"
             style={
               Object {
                 "borderBottomColor": "#cccccc",
@@ -464,7 +481,7 @@ exports[`new-table  EditTable css 1`] = `
             }
           >
             <div
-              className="c6"
+              className="c7"
               onClick={[Function]}
               style={
                 Object {
@@ -488,7 +505,7 @@ exports[`new-table  EditTable css 1`] = `
             </div>
           </div>
           <div
-            className="c7"
+            className="c6"
             style={
               Object {
                 "borderBottomColor": "#cccccc",
@@ -504,7 +521,7 @@ exports[`new-table  EditTable css 1`] = `
             }
           >
             <div
-              className="c6"
+              className="c7"
               onClick={[Function]}
               style={
                 Object {
@@ -528,7 +545,7 @@ exports[`new-table  EditTable css 1`] = `
             </div>
           </div>
           <div
-            className="c7"
+            className="c6"
             style={
               Object {
                 "borderBottomColor": "#cccccc",
@@ -544,7 +561,7 @@ exports[`new-table  EditTable css 1`] = `
             }
           >
             <div
-              className="c6"
+              className="c7"
               onClick={[Function]}
               style={
                 Object {
@@ -567,11 +584,11 @@ exports[`new-table  EditTable css 1`] = `
           </div>
         </div>
         <div
-          className="c4"
+          className="c3"
           style={Object {}}
         >
           <div
-            className="c5"
+            className="c4"
             style={
               Object {
                 "borderBottomColor": "#cccccc",
@@ -587,7 +604,7 @@ exports[`new-table  EditTable css 1`] = `
             }
           >
             <div
-              className="c6"
+              className="c5"
               onClick={[Function]}
               style={
                 Object {
@@ -611,7 +628,7 @@ exports[`new-table  EditTable css 1`] = `
             </div>
           </div>
           <div
-            className="c7"
+            className="c6"
             style={
               Object {
                 "borderBottomColor": "#cccccc",
@@ -626,7 +643,7 @@ exports[`new-table  EditTable css 1`] = `
             }
           >
             <div
-              className="c6"
+              className="c7"
               onClick={[Function]}
               style={
                 Object {
@@ -650,7 +667,7 @@ exports[`new-table  EditTable css 1`] = `
             </div>
           </div>
           <div
-            className="c7"
+            className="c6"
             style={
               Object {
                 "borderBottomColor": "#cccccc",
@@ -666,7 +683,7 @@ exports[`new-table  EditTable css 1`] = `
             }
           >
             <div
-              className="c6"
+              className="c7"
               onClick={[Function]}
               style={
                 Object {
@@ -690,7 +707,7 @@ exports[`new-table  EditTable css 1`] = `
             </div>
           </div>
           <div
-            className="c7"
+            className="c6"
             style={
               Object {
                 "borderBottomColor": "#cccccc",
@@ -706,7 +723,7 @@ exports[`new-table  EditTable css 1`] = `
             }
           >
             <div
-              className="c6"
+              className="c7"
               onClick={[Function]}
               style={
                 Object {
@@ -729,11 +746,11 @@ exports[`new-table  EditTable css 1`] = `
           </div>
         </div>
         <div
-          className="c4"
+          className="c3"
           style={Object {}}
         >
           <div
-            className="c5"
+            className="c4"
             style={
               Object {
                 "borderBottomColor": "#cccccc",
@@ -749,7 +766,7 @@ exports[`new-table  EditTable css 1`] = `
             }
           >
             <div
-              className="c6"
+              className="c5"
               onClick={[Function]}
               style={
                 Object {
@@ -773,7 +790,7 @@ exports[`new-table  EditTable css 1`] = `
             </div>
           </div>
           <div
-            className="c7"
+            className="c6"
             style={
               Object {
                 "borderBottomColor": "#cccccc",
@@ -788,7 +805,7 @@ exports[`new-table  EditTable css 1`] = `
             }
           >
             <div
-              className="c6"
+              className="c7"
               onClick={[Function]}
               style={
                 Object {
@@ -812,7 +829,7 @@ exports[`new-table  EditTable css 1`] = `
             </div>
           </div>
           <div
-            className="c7"
+            className="c6"
             style={
               Object {
                 "borderBottomColor": "#cccccc",
@@ -828,7 +845,7 @@ exports[`new-table  EditTable css 1`] = `
             }
           >
             <div
-              className="c6"
+              className="c7"
               onClick={[Function]}
               style={
                 Object {
@@ -852,7 +869,7 @@ exports[`new-table  EditTable css 1`] = `
             </div>
           </div>
           <div
-            className="c7"
+            className="c6"
             style={
               Object {
                 "borderBottomColor": "#cccccc",
@@ -868,7 +885,7 @@ exports[`new-table  EditTable css 1`] = `
             }
           >
             <div
-              className="c6"
+              className="c7"
               onClick={[Function]}
               style={
                 Object {
@@ -891,11 +908,11 @@ exports[`new-table  EditTable css 1`] = `
           </div>
         </div>
         <div
-          className="c4"
+          className="c3"
           style={Object {}}
         >
           <div
-            className="c5"
+            className="c4"
             style={
               Object {
                 "borderBottomColor": "#cccccc",
@@ -911,7 +928,7 @@ exports[`new-table  EditTable css 1`] = `
             }
           >
             <div
-              className="c6"
+              className="c5"
               onClick={[Function]}
               style={
                 Object {
@@ -935,7 +952,7 @@ exports[`new-table  EditTable css 1`] = `
             </div>
           </div>
           <div
-            className="c7"
+            className="c6"
             style={
               Object {
                 "borderBottomColor": "#cccccc",
@@ -950,7 +967,7 @@ exports[`new-table  EditTable css 1`] = `
             }
           >
             <div
-              className="c6"
+              className="c7"
               onClick={[Function]}
               style={
                 Object {
@@ -974,7 +991,7 @@ exports[`new-table  EditTable css 1`] = `
             </div>
           </div>
           <div
-            className="c7"
+            className="c6"
             style={
               Object {
                 "borderBottomColor": "#cccccc",
@@ -990,7 +1007,7 @@ exports[`new-table  EditTable css 1`] = `
             }
           >
             <div
-              className="c6"
+              className="c7"
               onClick={[Function]}
               style={
                 Object {
@@ -1014,7 +1031,7 @@ exports[`new-table  EditTable css 1`] = `
             </div>
           </div>
           <div
-            className="c7"
+            className="c6"
             style={
               Object {
                 "borderBottomColor": "#cccccc",
@@ -1030,7 +1047,7 @@ exports[`new-table  EditTable css 1`] = `
             }
           >
             <div
-              className="c6"
+              className="c7"
               onClick={[Function]}
               style={
                 Object {
@@ -1053,11 +1070,11 @@ exports[`new-table  EditTable css 1`] = `
           </div>
         </div>
         <div
-          className="c4"
+          className="c3"
           style={Object {}}
         >
           <div
-            className="c5"
+            className="c4"
             style={
               Object {
                 "borderBottomColor": "#cccccc",
@@ -1073,7 +1090,7 @@ exports[`new-table  EditTable css 1`] = `
             }
           >
             <div
-              className="c6"
+              className="c5"
               onClick={[Function]}
               style={
                 Object {
@@ -1097,7 +1114,7 @@ exports[`new-table  EditTable css 1`] = `
             </div>
           </div>
           <div
-            className="c7"
+            className="c6"
             style={
               Object {
                 "borderBottomColor": "#cccccc",
@@ -1112,7 +1129,7 @@ exports[`new-table  EditTable css 1`] = `
             }
           >
             <div
-              className="c6"
+              className="c7"
               onClick={[Function]}
               style={
                 Object {
@@ -1136,7 +1153,7 @@ exports[`new-table  EditTable css 1`] = `
             </div>
           </div>
           <div
-            className="c7"
+            className="c6"
             style={
               Object {
                 "borderBottomColor": "#cccccc",
@@ -1152,7 +1169,7 @@ exports[`new-table  EditTable css 1`] = `
             }
           >
             <div
-              className="c6"
+              className="c7"
               onClick={[Function]}
               style={
                 Object {
@@ -1176,7 +1193,7 @@ exports[`new-table  EditTable css 1`] = `
             </div>
           </div>
           <div
-            className="c7"
+            className="c6"
             style={
               Object {
                 "borderBottomColor": "#cccccc",
@@ -1192,7 +1209,7 @@ exports[`new-table  EditTable css 1`] = `
             }
           >
             <div
-              className="c6"
+              className="c7"
               onClick={[Function]}
               style={
                 Object {
