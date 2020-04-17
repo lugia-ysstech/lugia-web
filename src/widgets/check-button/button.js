@@ -10,11 +10,13 @@ import { getBorder } from '@lugia/theme-utils';
 const borderDisableColor = '$lugia-dict.@lugia/lugia-web.borderDisableColor';
 const spiritColor = '$lugia-dict.@lugia/lugia-web.spiritColor';
 const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
-const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 const borderColor = '$lugia-dict.@lugia/lugia-web.borderColor';
 const themeDisabledColor = '$lugia-dict.@lugia/lugia-web.themeDisabledColor';
+const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
+const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
+const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 const cancelCommonTheme = {
-  color: '#fff',
+  color: defaultColor,
   background: { color: themeDisabledColor },
 };
 const defaultRadioCancelTheme = {
@@ -30,7 +32,7 @@ const defaultCancelTheme = {
 };
 const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 const checkedCommonTheme = {
-  color: '#fff',
+  color: defaultColor,
   background: { color: themeColor },
   border: {
     ...getBorder(
@@ -89,7 +91,7 @@ const defaultRadioCheckedTheme = {
 const defaultUnCheckedTheme = {
   themeConfig: {
     normal: {
-      color: darkGreyColor,
+      color: blackColor,
       border: {
         ...getBorder(
           {
@@ -113,7 +115,7 @@ const defaultUnCheckedTheme = {
       color: themeColor,
     },
     disabled: {
-      color: lightGreyColor,
+      color: disableTextColor,
       border: {
         ...getBorder(
           {
