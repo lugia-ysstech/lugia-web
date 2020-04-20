@@ -468,7 +468,6 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     const { value } = this.state;
     const finalValue = limit(value, [min, max]);
     this.setValue(finalValue, event);
-    console.log(111111111111);
     onBlur && onBlur(event);
   };
   onFocus = (event: UIEvent) => {
