@@ -34,10 +34,12 @@ const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
 const themeDisabledColor = '$lugia-dict.@lugia/lugia-web.themeDisabledColor';
 const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
+const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 
 const defaultEdgeCancelProps = {
   themeConfig: {
     normal: {
+      color: 'red',
       border: getBorder({ color: themeDisabledColor, width: 1, style: 'solid' }),
       borderRadius: getBorderRadius(2),
       background: { color: themeDisabledColor },
@@ -73,6 +75,13 @@ const defaultInnerTheme = {
   },
   disabled: {
     color: disableTextColor,
+  },
+};
+const defaultCancelTextTheme = {
+  themeConfig: {
+    normal: {
+      color: darkGreyColor,
+    },
   },
 };
 
@@ -154,7 +163,11 @@ export default ThemeProvider(
       const circleEdgeUnCheckedTheme = getPartOfThemeProps('CheckboxEdgeUnChecked');
       const circleEdgeCancelTheme = getPartOfThemeProps('CheckboxEdgeCancel');
       const circleEdgeIndeterminateTheme = getPartOfThemeProps('CheckboxEdgeIndeterminate');
-      const checkboxTextTheme = getPartOfThemeProps('CheckboxText');
+      const checkboxCommonTextTheme = getPartOfThemeProps('CheckboxText');
+      const checkboxCancelTextTheme = getPartOfThemeProps('CheckboxCancelText');
+      const checkboxTextTheme = cancel
+        ? deepMerge(defaultCancelTextTheme, checkboxCancelTextTheme)
+        : checkboxCommonTextTheme;
       const circleEdgeTheme = cancel
         ? deepMerge(defaultEdgeCancelProps, circleEdgeCancelTheme)
         : checked
