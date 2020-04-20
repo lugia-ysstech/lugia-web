@@ -21,6 +21,7 @@ import {
   validateValueDefaultTheme,
   validateBorderDefaultTheme,
   isValidateError,
+  validateWidthTheme,
 } from '../css/validateHoc';
 import type { ValidateStatus, ValidateType } from '../css/validateHoc';
 
@@ -120,7 +121,7 @@ const CommonInputStyle = CSSComponent({
 });
 
 const InputContainer = CSSComponent({
-  tag: 'span',
+  tag: 'div',
   className: 'inputContainer',
   normal: {
     selectNames: [
@@ -534,6 +535,7 @@ class TextBox extends Component<InputProps, InputState> {
     const {
       getPartOfThemeProps,
       validateStatus,
+      validateType,
       prefix,
       suffix,
       isShowClearButton,
@@ -553,6 +555,7 @@ class TextBox extends Component<InputProps, InputState> {
           validateErrorInputThemeProps
         )
       : {};
+    const theValidateWidthThemeProps = validateType ? validateWidthTheme : {};
 
     const theThemeProps = deepMerge(
       getPartOfThemeProps('Input', {
@@ -566,6 +569,7 @@ class TextBox extends Component<InputProps, InputState> {
         },
       }),
       getPartOfThemeProps('Container', { props: { size } }),
+      theValidateWidthThemeProps,
       theValidateThemeProps
     );
     return theThemeProps;

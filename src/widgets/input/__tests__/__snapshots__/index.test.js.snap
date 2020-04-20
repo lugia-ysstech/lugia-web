@@ -11,8 +11,41 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
   outline: none;
   height: 100%;
   width: 100%;
+  border: none;
   font-size: 1.2rem;
   cursor: text;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
+}
+
+.c1::-webkit-input-placeholder {
+  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
+  font-size: 1.2rem;
+}
+
+.c1::-moz-placeholder {
+  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
+  font-size: 1.2rem;
+}
+
+.c1:-ms-input-placeholder {
+  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
+  font-size: 1.2rem;
+}
+
+.c1::placeholder {
+  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
+  font-size: 1.2rem;
+}
+
+.c0 {
+  position: relative;
+  display: inline-block;
+  outline: none;
+  min-width: 3rem;
+  width: 100%;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -31,35 +64,7 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
   border-bottom-left-radius: 0.4rem;
 }
 
-.c1::-webkit-input-placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
-.c1::-moz-placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
-.c1:-ms-input-placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
-.c1::placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
-.c0 {
-  position: relative;
-  display: inline-block;
-  outline: none;
-  min-width: 3rem;
-  width: 100%;
-}
-
-<span
+<div
   className="c0"
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
@@ -82,6 +87,10 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
     onKeyDown={[Function]}
     onKeyPress={[Function]}
     onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
     size="default"
     style={
       Object {
@@ -92,9 +101,10 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
         "paddingTop": "0rem",
       }
     }
+    type="text"
     value=""
   />
-</span>
+</div>
 `;
 
 exports[`Input props: null 1`] = `
@@ -108,8 +118,41 @@ exports[`Input props: null 1`] = `
   outline: none;
   height: 100%;
   width: 100%;
+  border: none;
   font-size: 1.2rem;
   cursor: text;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
+}
+
+.c1::-webkit-input-placeholder {
+  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
+  font-size: 1.2rem;
+}
+
+.c1::-moz-placeholder {
+  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
+  font-size: 1.2rem;
+}
+
+.c1:-ms-input-placeholder {
+  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
+  font-size: 1.2rem;
+}
+
+.c1::placeholder {
+  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
+  font-size: 1.2rem;
+}
+
+.c0 {
+  position: relative;
+  display: inline-block;
+  outline: none;
+  min-width: 3rem;
+  width: 100%;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -128,35 +171,7 @@ exports[`Input props: null 1`] = `
   border-bottom-left-radius: 0.4rem;
 }
 
-.c1::-webkit-input-placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
-.c1::-moz-placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
-.c1:-ms-input-placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
-.c1::placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
-.c0 {
-  position: relative;
-  display: inline-block;
-  outline: none;
-  min-width: 3rem;
-  width: 100%;
-}
-
-<span
+<div
   className="c0"
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
@@ -179,6 +194,10 @@ exports[`Input props: null 1`] = `
     onKeyDown={[Function]}
     onKeyPress={[Function]}
     onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
     size="default"
     style={
       Object {
@@ -189,9 +208,10 @@ exports[`Input props: null 1`] = `
         "paddingTop": "0rem",
       }
     }
+    type="text"
     value=""
   />
-</span>
+</div>
 `;
 
 exports[`Input props: placeholder  1`] = `
@@ -205,8 +225,41 @@ exports[`Input props: placeholder  1`] = `
   outline: none;
   height: 100%;
   width: 100%;
+  border: none;
   font-size: 1.2rem;
   cursor: text;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
+}
+
+.c1::-webkit-input-placeholder {
+  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
+  font-size: 1.2rem;
+}
+
+.c1::-moz-placeholder {
+  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
+  font-size: 1.2rem;
+}
+
+.c1:-ms-input-placeholder {
+  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
+  font-size: 1.2rem;
+}
+
+.c1::placeholder {
+  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
+  font-size: 1.2rem;
+}
+
+.c0 {
+  position: relative;
+  display: inline-block;
+  outline: none;
+  min-width: 3rem;
+  width: 100%;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -225,35 +278,7 @@ exports[`Input props: placeholder  1`] = `
   border-bottom-left-radius: 0.4rem;
 }
 
-.c1::-webkit-input-placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
-.c1::-moz-placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
-.c1:-ms-input-placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
-.c1::placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
-.c0 {
-  position: relative;
-  display: inline-block;
-  outline: none;
-  min-width: 3rem;
-  width: 100%;
-}
-
-<span
+<div
   className="c0"
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
@@ -276,6 +301,10 @@ exports[`Input props: placeholder  1`] = `
     onKeyDown={[Function]}
     onKeyPress={[Function]}
     onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
     placeholder="请填写内容"
     size="default"
     style={
@@ -287,9 +316,10 @@ exports[`Input props: placeholder  1`] = `
         "paddingTop": "0rem",
       }
     }
+    type="text"
     value=""
   />
-</span>
+</div>
 `;
 
 exports[`Input props: placeholder  2`] = `
@@ -303,8 +333,41 @@ exports[`Input props: placeholder  2`] = `
   outline: none;
   height: 100%;
   width: 100%;
+  border: none;
   font-size: 1.2rem;
   cursor: text;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
+}
+
+.c1::-webkit-input-placeholder {
+  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
+  font-size: 1.2rem;
+}
+
+.c1::-moz-placeholder {
+  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
+  font-size: 1.2rem;
+}
+
+.c1:-ms-input-placeholder {
+  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
+  font-size: 1.2rem;
+}
+
+.c1::placeholder {
+  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
+  font-size: 1.2rem;
+}
+
+.c0 {
+  position: relative;
+  display: inline-block;
+  outline: none;
+  min-width: 3rem;
+  width: 100%;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -323,35 +386,7 @@ exports[`Input props: placeholder  2`] = `
   border-bottom-left-radius: 0.4rem;
 }
 
-.c1::-webkit-input-placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
-.c1::-moz-placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
-.c1:-ms-input-placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
-.c1::placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
-.c0 {
-  position: relative;
-  display: inline-block;
-  outline: none;
-  min-width: 3rem;
-  width: 100%;
-}
-
-<span
+<div
   className="c0"
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
@@ -374,6 +409,10 @@ exports[`Input props: placeholder  2`] = `
     onKeyDown={[Function]}
     onKeyPress={[Function]}
     onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
     placeholder=""
     size="default"
     style={
@@ -385,9 +424,10 @@ exports[`Input props: placeholder  2`] = `
         "paddingTop": "0rem",
       }
     }
+    type="text"
     value=""
   />
-</span>
+</div>
 `;
 
 exports[`Input props: size 1`] = `
@@ -401,8 +441,41 @@ exports[`Input props: size 1`] = `
   outline: none;
   height: 100%;
   width: 100%;
+  border: none;
   font-size: 1.2rem;
   cursor: text;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
+}
+
+.c1::-webkit-input-placeholder {
+  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
+  font-size: 1.2rem;
+}
+
+.c1::-moz-placeholder {
+  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
+  font-size: 1.2rem;
+}
+
+.c1:-ms-input-placeholder {
+  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
+  font-size: 1.2rem;
+}
+
+.c1::placeholder {
+  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
+  font-size: 1.2rem;
+}
+
+.c0 {
+  position: relative;
+  display: inline-block;
+  outline: none;
+  min-width: 3rem;
+  width: 100%;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -421,35 +494,7 @@ exports[`Input props: size 1`] = `
   border-bottom-left-radius: 0.4rem;
 }
 
-.c1::-webkit-input-placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
-.c1::-moz-placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
-.c1:-ms-input-placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
-.c1::placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
-.c0 {
-  position: relative;
-  display: inline-block;
-  outline: none;
-  min-width: 3rem;
-  width: 100%;
-}
-
-<span
+<div
   className="c0"
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
@@ -472,6 +517,10 @@ exports[`Input props: size 1`] = `
     onKeyDown={[Function]}
     onKeyPress={[Function]}
     onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
     size="small"
     style={
       Object {
@@ -482,9 +531,10 @@ exports[`Input props: size 1`] = `
         "paddingTop": "0rem",
       }
     }
+    type="text"
     value=""
   />
-</span>
+</div>
 `;
 
 exports[`Input props: size 2`] = `
@@ -498,8 +548,41 @@ exports[`Input props: size 2`] = `
   outline: none;
   height: 100%;
   width: 100%;
+  border: none;
   font-size: 1.2rem;
   cursor: text;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
+}
+
+.c1::-webkit-input-placeholder {
+  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
+  font-size: 1.2rem;
+}
+
+.c1::-moz-placeholder {
+  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
+  font-size: 1.2rem;
+}
+
+.c1:-ms-input-placeholder {
+  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
+  font-size: 1.2rem;
+}
+
+.c1::placeholder {
+  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
+  font-size: 1.2rem;
+}
+
+.c0 {
+  position: relative;
+  display: inline-block;
+  outline: none;
+  min-width: 3rem;
+  width: 100%;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -518,35 +601,7 @@ exports[`Input props: size 2`] = `
   border-bottom-left-radius: 0.4rem;
 }
 
-.c1::-webkit-input-placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
-.c1::-moz-placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
-.c1:-ms-input-placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
-.c1::placeholder {
-  color: #cccccc;
-  font-size: 1.2rem;
-}
-
-.c0 {
-  position: relative;
-  display: inline-block;
-  outline: none;
-  min-width: 3rem;
-  width: 100%;
-}
-
-<span
+<div
   className="c0"
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
@@ -569,6 +624,10 @@ exports[`Input props: size 2`] = `
     onKeyDown={[Function]}
     onKeyPress={[Function]}
     onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
     size="large"
     style={
       Object {
@@ -579,7 +638,8 @@ exports[`Input props: size 2`] = `
         "paddingTop": "0rem",
       }
     }
+    type="text"
     value=""
   />
-</span>
+</div>
 `;
