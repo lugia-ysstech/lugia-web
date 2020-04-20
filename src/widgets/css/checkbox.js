@@ -213,8 +213,8 @@ export const CheckBoxInnerSpan = CSSComponent({
         style: 'solid',
       }),
       borderRadius: getBorderRadius(2),
-      width: 18,
-      height: 18,
+      width: 16,
+      height: 16,
     },
     getCSS(themeMeta: Object, themeConfig: Object): string {
       const { propsConfig, themeState } = themeConfig;
