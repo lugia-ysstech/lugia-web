@@ -12,11 +12,13 @@ import { units } from '@lugia/css';
 import { deepMerge } from '@lugia/object-utils';
 import type { ResizeType } from '../css/input';
 import { getBorder, getBoxShadow, getBorderRadius } from '@lugia/theme-utils';
+import { checkIsPercent } from './utils';
 import { ObjectUtils } from '@lugia/type-utils';
 import {
   validateValueDefaultTheme,
   validateBorderDefaultTheme,
   isValidateError,
+  validateWidthTheme,
 } from '../css/validateHoc';
 import ValidateHoc from './validateHoc';
 import type { ValidateStatus, ValidateType } from '../css/validateHoc';
@@ -33,10 +35,6 @@ const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
 const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
 const borderRadius = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
-
-const checkIsPercent = width => {
-  return width && typeof width === 'string' && width.indexOf('%') !== -1;
-};
 
 const Textarea = CSSComponent({
   tag: 'textarea',
@@ -159,7 +157,8 @@ const TextareaContainer = CSSComponent({
     selectNames: [['margin']],
     getCSS(themeMeta: Object, themeProps: Object) {
       const { width } = themeMeta;
-      return checkIsPercent(width) ? `width:${width};` : '';
+      const theWidth = checkIsPercent(width) ? width : '100%';
+      return `width:${theWidth};`;
     },
   },
   hover: {
@@ -208,6 +207,7 @@ type TextareaProps = {
   validateStatus: ValidateStatus,
   validateType: ValidateType,
   help: string,
+  readOnly: boolean,
 };
 
 class TextAreaBox extends Component<TextareaProps, TextareaState> {
@@ -376,6 +376,7 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
       resizeType,
     };
     const validateErrorInputThemeProps = getPartOfThemeProps('ValidateErrorInput');
+    const theValidateWidthThemeProps = validateType ? validateWidthTheme : {};
     const theValidateThemeProps = isValidateError(validateStatus)
       ? deepMerge(
           validateValueDefaultTheme,
@@ -385,6 +386,7 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
       : {};
     const theThemeProps = deepMerge(
       getPartOfThemeProps('Container', { props: { ...propsConfig } }),
+      theValidateWidthThemeProps,
       theValidateThemeProps
     );
 
@@ -431,13 +433,9 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
   };
 }
 
-const TargetTxtBox = ThemeHoc(
-  ValidateHoc(KeyBoardEventAdaptor(TextAreaBox), Widget.Textarea),
-  Widget.Textarea,
-  {
-    hover: true,
-    active: true,
-  }
-);
+const TargetTxtBox = ThemeHoc(ValidateHoc(KeyBoardEventAdaptor(TextAreaBox)), Widget.Textarea, {
+  hover: true,
+  active: true,
+});
 
 export default TargetTxtBox;
