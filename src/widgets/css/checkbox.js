@@ -4,7 +4,6 @@
  * @flow
  */
 
-import colorsFunc from '../css/stateColor';
 import styled, { css } from 'styled-components';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import get from './theme-common-dict';
@@ -18,7 +17,6 @@ import { getDictValue } from '@lugia/theme-utils';
 const FontSize = 1.4;
 const defaultColor = '#fff';
 const em = px2remcss;
-const { marginToDifferentElement, marginToPeerElementForY } = colorsFunc();
 const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
 const borderColor = '$lugia-dict.@lugia/lugia-web.borderColor';
 const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
@@ -80,12 +78,12 @@ const getStyleCSS = (props: CheckBoxType): string => {
   if (styles === 'vertical') {
     return `
       display: block;
-      margin-bottom: ${last ? 0 : em(marginToPeerElementForY)};
+      margin-bottom: ${last ? 0 : em(get('marginToPeerElementForY'))};
     `;
   }
   return `
     display: inline-block;
-    margin-right: ${last ? 0 : em(marginToDifferentElement)};
+    margin-right: ${last ? 0 : em(get('marginToSameElement'))};
   `;
 };
 
