@@ -22,6 +22,7 @@ import {
   validateValueDefaultTheme,
   validateBorderDefaultTheme,
   isValidateError,
+  validateWidthTheme,
 } from '../css/validateHoc';
 import type { ValidateStatus, ValidateType } from '../css/validateHoc';
 
@@ -323,26 +324,6 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
             },
             getThemeMeta(themeMeta, themeProps) {
               const { propsConfig } = themeProps;
-              const { outRange } = propsConfig;
-              const theCursor = outRange ? 'not-allowed' : 'pointer';
-              return {
-                cursor: theCursor,
-              };
-            },
-          },
-          hover: {
-            getThemeMeta(themeMeta, themeProps) {
-              const { propsConfig } = themeProps;
-              const { outRange } = propsConfig;
-              const theCursor = outRange ? 'not-allowed' : 'pointer';
-              return {
-                cursor: theCursor,
-              };
-            },
-          },
-          active: {
-            getThemeMeta(themeMeta, themeProps) {
-              const { propsConfig } = themeProps;
               const { outRange, disabled } = propsConfig;
               const theCursor = outRange || disabled ? 'not-allowed' : 'pointer';
               return {
@@ -364,8 +345,8 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     const arrowIconPlusButtonThemeProps = this.getThemePropsByType('plus');
     const arrowIconMinusButtonThemeProps = this.getThemePropsByType('minus');
 
-    const plusChannel = createEventChannel(['hover']);
-    const minusChannel = createEventChannel(['hover']);
+    const plusChannel = createEventChannel([['hover'], ['focus']]);
+    const minusChannel = createEventChannel(['hover'], ['focus']);
 
     return (
       <ArrowIconContainer
@@ -373,7 +354,6 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
         themeProps={theThemeProps}
         {...arrowContainerChannel.provider}
         lugiaConsumers={plusChannel.consumer}
-        {...this.props.dispatchEvent(['hover', 'disabled'], 'f2c')}
       >
         <PlusButton
           {...plusChannel.provider}
@@ -427,6 +407,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
       getPartOfThemeHocProps,
       getPartOfThemeProps,
       validateStatus,
+      validateType,
     } = this.props;
     const { theme: inputThemeProps } = getPartOfThemeHocProps('Input');
 
@@ -441,6 +422,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
       : {};
 
     const containerThemeProps = getPartOfThemeProps('Container');
+    const theValidateWidthThemeProps = validateType ? validateWidthTheme : {};
     const theInputTheme = deepMerge(
       {
         [Widget.Input]: {
@@ -460,13 +442,13 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
       },
       inputThemeProps,
       containerThemeProps,
+      theValidateWidthThemeProps,
       theValidateThemeProps
     );
 
-    const arrowContainerChannel = createEventChannel(['hover']);
+    const arrowContainerChannel = createEventChannel([['hover'], ['focus']]);
     return (
       <Input
-        isValidate={false}
         lugiaConsumers={arrowContainerChannel.consumer}
         theme={theInputTheme}
         ref={this.el}
@@ -475,6 +457,8 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
         suffix={this.getStepArrowIconContainer(arrowContainerChannel)}
         onBlur={this.onBlur}
         onChange={this.handleChange}
+        validateType={''}
+        {...addMouseEvent(this)}
       />
     );
   }
@@ -484,7 +468,12 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     const { value } = this.state;
     const finalValue = limit(value, [min, max]);
     this.setValue(finalValue, event);
+    console.log(111111111111);
     onBlur && onBlur(event);
+  };
+  onFocus = (event: UIEvent) => {
+    const { onFocus } = this.props;
+    onFocus && onFocus(event);
   };
 
   handleClick = (click: ClickType) => (event: Event) => {
@@ -529,6 +518,7 @@ const TargetNumberInput = ThemeHoc(
   Widget.NumberInput,
   {
     hover: true,
+    focus: true,
     active: true,
   }
 );
