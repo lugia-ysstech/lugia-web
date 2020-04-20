@@ -32,6 +32,8 @@ type CheckBoxState = {
 const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
 const themeDisabledColor = '$lugia-dict.@lugia/lugia-web.themeDisabledColor';
+const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
+const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 
 const defaultEdgeCancelProps = {
   themeConfig: {
@@ -64,13 +66,13 @@ const defaultEdgeTheme = {
 };
 const defaultInnerTheme = {
   normal: {
-    color: '#fff',
+    color: defaultColor,
   },
   hover: {
-    color: '#fff',
+    color: defaultColor,
   },
   disabled: {
-    color: '$lugia-dict.@lugia/lugia-web.lightGreyColor',
+    color: disableTextColor,
   },
 };
 
