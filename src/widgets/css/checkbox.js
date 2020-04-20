@@ -21,6 +21,8 @@ const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
 const borderColor = '$lugia-dict.@lugia/lugia-web.borderColor';
 const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 const borderDisableColor = '$lugia-dict.@lugia/lugia-web.borderDisableColor';
+const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
+const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 
 export type CSStype = {
   themes: ThemeType,
@@ -146,21 +148,21 @@ export const CheckBoxLabelSpan = CSSComponent({
   normal: {
     selectNames: [['color'], ['font'], ['padding']],
     defaultTheme: {
-      color: '$lugia-dict.@lugia/lugia-web.blackColor',
+      color: blackColor,
       font: { size: 14 },
     },
   },
   hover: {
     selectNames: [['color'], ['font']],
     defaultTheme: {
-      color: '$lugia-dict.@lugia/lugia-web.blackColor',
+      color: blackColor,
       font: { fontSize: 14 },
     },
   },
   disabled: {
     selectNames: [['color'], ['font']],
     defaultTheme: {
-      color: '$lugia-dict.@lugia/lugia-web.lightGreyColor',
+      color: disableTextColor,
       font: { fontSize: 14 },
     },
   },
