@@ -188,6 +188,7 @@ describe('NumberInput', () => {
     const component = target
       .children()
       .children()
+      .children()
       .instance();
     return component;
   }
