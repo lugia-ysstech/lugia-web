@@ -259,25 +259,25 @@ export const CancelSpan = StaticComponent({
     left: 0;
     right: 0;
     color: ${get('darkGreyColor')};
-    background: ${get('lightGreyColor')};
+    background: ${get('superLightColor')};
     ${getDisplayCSS};
   `,
 });
 
 const getIconFont = (props: Object) => {
   const { size = 'default' } = props;
-  if (size === 'default' || size === 'small') {
+  if (size === 'small') {
     return `
-      font-size: ${em(16)}!important;
+      font-size: ${em(12)}!important;
     `;
   }
 
   return `
-      font-size: ${em(18)}!important;
+      font-size: ${em(14)}!important;
     `;
 };
 export const IconWrap: Object = styled(Icon)`
   vertical-align: text-bottom !important;
   ${getIconFont}
-  color: ${get('mediumGreyColor')};
+  color: ${get('darkGreyColor')};
 `;
