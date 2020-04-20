@@ -350,7 +350,7 @@ describe('Input', () => {
     });
   }
 
-  testValidateTop('value :""', '', 'success');
+  testValidateTop('value :""', '', 'default');
   testValidateTop('value :"111a1111"', '111a1111', 'error');
   testValidateTop('value :"a"', 'a', 'error');
   testValidateTop('value :"aaa"', 'aaa', 'error');
@@ -370,17 +370,11 @@ describe('Input', () => {
     });
   }
 
-  testValidateBottomAndInner('value :""', 'bottom', '', 'success');
-  testValidateBottomAndInner('value :"111"', 'bottom', '111', 'success');
+  testValidateBottomAndInner('value :""', 'bottom', '', 'default');
+  testValidateBottomAndInner('value :"111"', 'bottom', '111', 'default');
   testValidateBottomAndInner('value :"111a1"', 'bottom', '111a1', 'error');
   testValidateBottomAndInner('value :"a"', 'bottom', 'a', 'error');
   testValidateBottomAndInner('value :"a"', 'bottom', 'aaa', 'error');
-
-  testValidateBottomAndInner('value :""', 'inner', '', 'success');
-  testValidateBottomAndInner('value :"1111"', 'inner', '111', 'success');
-  testValidateBottomAndInner('value :"111a11"', 'inner', '111a1', 'error');
-  testValidateBottomAndInner('value :"a"', 'inner', 'a', 'error');
-  testValidateBottomAndInner('value :"aaaa"', 'inner', 'aaa', 'error');
 
   it('props: readOnly true', () => {
     const value = '诸行无常';
