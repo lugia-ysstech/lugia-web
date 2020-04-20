@@ -29,18 +29,20 @@ type CheckBoxState = {
   hasCancel: boolean,
 };
 
-const disabledColor = '$lugia-dict.@lugia/lugia-web.disabledColor';
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
+const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
+const themeDisabledColor = '$lugia-dict.@lugia/lugia-web.themeDisabledColor';
+
 const defaultEdgeCancelProps = {
   themeConfig: {
     normal: {
-      border: getBorder({ color: disabledColor, width: 1, style: 'solid' }),
+      border: getBorder({ color: themeDisabledColor, width: 1, style: 'solid' }),
       borderRadius: getBorderRadius(2),
-      background: { color: disabledColor },
+      background: { color: themeDisabledColor },
     },
   },
 };
-const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
-const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
+
 const defaultEdgeTheme = {
   themeConfig: {
     normal: {
@@ -120,7 +122,7 @@ export default ThemeProvider(
         hover: false,
       });
     };
-    handleCancel = e => {
+    handleCancel = () => {
       const { value, handleCancelItemClick } = this.props;
       handleCancelItemClick && handleCancelItemClick(value);
     };
