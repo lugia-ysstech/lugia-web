@@ -411,7 +411,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     } = this.props;
     const { theme: inputThemeProps } = getPartOfThemeHocProps('Input');
 
-    const validateErrorInputThemeProps = getPartOfThemeProps('ValidateErrorText');
+    const validateErrorInputThemeProps = getPartOfThemeProps('ValidateErrorInput');
 
     const theValidateThemeProps = isValidateError(validateStatus)
       ? deepMerge(
