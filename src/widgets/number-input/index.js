@@ -470,10 +470,6 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     this.setValue(finalValue, event);
     onBlur && onBlur(event);
   };
-  onFocus = (event: UIEvent) => {
-    const { onFocus } = this.props;
-    onFocus && onFocus(event);
-  };
 
   handleClick = (click: ClickType) => (event: Event) => {
     this.calculateValue(click, event);
