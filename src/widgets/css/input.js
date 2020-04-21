@@ -6,6 +6,7 @@
  */
 import type { ThemeType } from '@lugia/lugia-web';
 import colorsFunc from '../css/stateColor';
+import type { ValidateStatus, ValidateType } from './validateHoc';
 
 const smallSize = '$lugia-dict.@lugia/lugia-web.smallSize';
 const normalSize = '$lugia-dict.@lugia/lugia-web.normalSize';
@@ -40,7 +41,7 @@ export const getBackground = (props: CommonInputProps) => {
   return `background:${disabled === true ? disableColor : backgroundColor ? backgroundColor : ''}`;
 };
 
-export function getInputHeight(height, size: InputSize) {
+export function getInputHeight(height: string | number, size: InputSize) {
   return height ? height : size === 'large' ? largeSize : size === 'small' ? smallSize : normalSize;
 }
 export function getInputSize(size: InputSize) {

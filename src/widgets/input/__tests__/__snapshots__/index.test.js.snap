@@ -75,6 +75,11 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
   style={
     Object {
       "height": "3.2rem",
+      "marginBottom": "1rem",
+      "marginLeft": "1rem",
+      "marginRight": "1rem",
+      "marginTop": "1rem",
+      "width": "10rem",
     }
   }
 >
@@ -98,7 +103,7 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
       Object {
         "color": "#363B40",
         "paddingBottom": "0rem",
-        "paddingLeft": "1rem",
+        "paddingLeft": "0.5rem",
         "paddingRight": "3.5rem",
         "paddingTop": "0rem",
       }
