@@ -7,6 +7,7 @@ const dangerColor = '$lugia-dict.@lugia/lugia-web.dangerColor';
 const dangerHoverColor = '$lugia-dict.@lugia/lugia-web.dangerHoverColor';
 const dangerActiveColor = '$lugia-dict.@lugia/lugia-web.dangerActiveColor';
 const borderDisableColor = '$lugia-dict.@lugia/lugia-web.borderDisableColor';
+const xxsFontSize = '$lugia-dict.@lugia/lugia-web.xxsFontSize';
 
 export const DefaultHelp = '验证出错';
 
@@ -41,6 +42,7 @@ export const validateValueDefaultTheme = {
   themeConfig: {
     normal: {
       color: dangerColor,
+      fontSize: xxsFontSize,
     },
   },
 };

@@ -6,7 +6,7 @@ import Widget from '../consts/index';
 import ThemeHoc, { addMouseEvent } from '@lugia/theme-hoc';
 import { fixControlledValue } from '../utils';
 import type { InputSize } from '../css/input';
-import { getInputHeight } from '../css/input';
+import { getInputHeight, getInputSize, getInputFixSize } from '../css/input';
 import Icon from '../icon';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import colorsFunc from '../css/stateColor';
@@ -27,18 +27,15 @@ import type { ValidateStatus, ValidateType } from '../css/validateHoc';
 
 const { px2remcss } = units;
 
-const { padding, shadowSpread, hShadow, vShadow, transitionTime, borderSize } = colorsFunc();
+const { padding, shadowSpread, hShadow, vShadow, transitionTime } = colorsFunc();
 
-const themeHoverColor = '$lugia-dict.@lugia/lugia-web.themeHoverColor';
-const themeActiveColor = '$lugia-dict.@lugia/lugia-web.themeActiveColor';
 const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
-const borderColor = '$lugia-dict.@lugia/lugia-web.borderColor';
 const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
 const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
 const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
 const borderRadius = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
-
+const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 const CommonInputStyle = CSSComponent({
   tag: 'input',
   className: 'InnerInput',
@@ -96,6 +93,9 @@ const CommonInputStyle = CSSComponent({
   hover: {
     selectNames: [['fontSize'], ['font'], ['color'], ['cursor'], ['background']],
   },
+  focus: {
+    selectNames: [['fontSize'], ['font'], ['color'], ['cursor'], ['background']],
+  },
   active: {
     selectNames: [['fontSize'], ['font'], ['color'], ['cursor'], ['background']],
   },
@@ -137,7 +137,7 @@ const InputContainer = CSSComponent({
     defaultTheme: {
       width: '100%',
       borderRadius: getBorderRadius(borderRadius),
-      border: getBorder({ color: borderColor, width: borderSize, style: 'solid' }),
+      border: getBorder(get('normalBorder')),
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
@@ -153,21 +153,31 @@ const InputContainer = CSSComponent({
   hover: {
     selectNames: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
     defaultTheme: {
-      border: getBorder({ color: themeHoverColor, width: borderSize, style: 'solid' }),
+      border: getBorder(get('hoverBorder')),
+    },
+  },
+  focus: {
+    selectNames: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
+    defaultTheme: {
+      border: getBorder(get('focusBorder')),
+      boxShadow: getBoxShadow(`${hShadow}px ${vShadow}px 4px ${get('InputFocusShadowColor')}`),
     },
   },
   active: {
     selectNames: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
     defaultTheme: {
-      border: getBorder({ color: themeActiveColor, width: borderSize, style: 'solid' }),
-      boxShadow: getBoxShadow(`${hShadow}px ${vShadow}px ${shadowSpread}px ${themeActiveColor}`),
+      border: getBorder(get('activeBorder')),
+      boxShadow: getBoxShadow(
+        `${hShadow}px ${vShadow}px ${shadowSpread}px ${get('themeActiveColor')}`
+      ),
     },
   },
   disabled: {
     selectNames: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
     defaultTheme: {
       background: { color: disableColor },
-      border: getBorder({ color: borderColor, width: borderSize, style: 'solid' }),
+      color: disableTextColor,
+      border: getBorder(get('disabledBorder')),
     },
   },
   css: css`
@@ -176,21 +186,34 @@ const InputContainer = CSSComponent({
     outline: none;
     min-width: ${px2remcss(30)};
   `,
-  option: { hover: true, active: true },
+  option: { hover: true, focus: true, active: true },
 });
 
 const Fix = CSSComponent({
   tag: 'span',
   className: 'inputFix',
   normal: {
-    selectNames: [['font'], ['color']],
+    selectNames: [['font'], ['fontSize'], ['color']],
+    getThemeMeta(themeMeta, themeProps) {
+      const {
+        propsConfig: { size },
+      } = themeProps;
+      const { fontSize, font: { size: innerFontSize } = {} } = themeMeta;
+      const theSize = innerFontSize || fontSize || getInputFixSize(size);
+      return { fontSize: theSize };
+    },
   },
+  disabled: {
+    selectNames: [['font'], ['fontSize'], ['color']],
+    defaultTheme: {
+      color: disableTextColor,
+    },
+  },
+
   css: css`
     position: absolute;
     transform: translateY(50%);
     bottom: 50%;
-    line-height: ${px2remcss(10)};
-    font-size: 1.4em;
     color: ${get('mediumGreyColor')};
   `,
 });
@@ -198,9 +221,7 @@ const Fix = CSSComponent({
 const Prefix: Object = CSSComponent({
   extend: Fix,
   className: 'inputPrefix',
-  normal: {
-    selectNames: [['font'], ['fontSize'], ['color']],
-  },
+  normal: {},
   css: css`
     left: ${px2remcss(padding)};
   `,
@@ -209,9 +230,7 @@ const Prefix: Object = CSSComponent({
 const Suffix: Object = CSSComponent({
   extend: Fix,
   className: 'inputSuffix',
-  normal: {
-    selectNames: [['font'], ['fontSize'], ['color']],
-  },
+  normal: {},
   css: css`
     right: ${px2remcss(padding)};
   `,
@@ -360,8 +379,12 @@ class TextBox extends Component<InputProps, InputState> {
   };
 
   getInputContainer() {
+    const mouseConfig = {
+      enter: this.onMouseEnter,
+      leave: this.onMouseLeave,
+    };
     return (
-      <InputContainer themeProps={this.getFinalThemeProps()}>
+      <InputContainer themeProps={this.getFinalThemeProps()} {...addMouseEvent(this, mouseConfig)}>
         {this.generatePrefix()}
         {this.generateInput()}
         {this.generateSuffix()}
@@ -434,12 +457,16 @@ class TextBox extends Component<InputProps, InputState> {
                    right: ${px2remcss(padding)};`;
             },
           },
-          hover: {
-            color: darkGreyColor,
+          getThemeMeta(themeMeta, themeProps) {
+            const {
+              propsConfig: { size },
+            } = themeProps;
+            const { fontSize, font: { size: innerFontSize } = {} } = themeMeta;
+            const theSize = innerFontSize || fontSize || getInputSize(size);
+            return { fontSize: theSize };
           },
-          disabled: {
-            cursor: 'not-allowed',
-          },
+          hover: { color: darkGreyColor },
+          disabled: { cursor: 'not-allowed', color: disableTextColor },
         },
       },
       ClearButtonThemeProps
@@ -497,13 +524,8 @@ class TextBox extends Component<InputProps, InputState> {
     }
     const theType = type === 'password' ? 'password' : 'text';
 
-    const mouseConfig = {
-      enter: this.onMouseEnter,
-      leave: this.onMouseLeave,
-    };
     return (
       <CommonInputStyle
-        {...addMouseEvent(this, mouseConfig)}
         maxLength={_maxLength}
         themeProps={this.getFinalThemeProps()}
         autoFocus={autoFocus}

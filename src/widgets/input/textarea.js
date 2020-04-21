@@ -22,19 +22,19 @@ import {
 } from '../css/validateHoc';
 import ValidateHoc from './validateHoc';
 import type { ValidateStatus, ValidateType } from '../css/validateHoc';
+import get from '../css/theme-common-dict';
 
 const { px2remcss } = units;
-const { padding, shadowSpread, hShadow, vShadow, transitionTime, borderSize } = colorsFunc();
+const { padding, shadowSpread, hShadow, vShadow, transitionTime } = colorsFunc();
 
-const themeHoverColor = '$lugia-dict.@lugia/lugia-web.themeHoverColor';
-const themeActiveColor = '$lugia-dict.@lugia/lugia-web.themeActiveColor';
 const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
-const borderColor = '$lugia-dict.@lugia/lugia-web.borderColor';
 const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
 const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
 const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
 const borderRadius = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
+const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
+const xxsFontSize = '$lugia-dict.@lugia/lugia-web.xxsFontSize';
 
 const Textarea = CSSComponent({
   tag: 'textarea',
@@ -56,8 +56,8 @@ const Textarea = CSSComponent({
     defaultTheme: {
       cursor: 'text',
       borderRadius: getBorderRadius(borderRadius),
-      fontSize: 12,
-      border: getBorder({ color: borderColor, width: borderSize, style: 'solid' }),
+      fontSize: xxsFontSize,
+      border: getBorder(get('normalBorder')),
     },
     getCSS(themeMeta: Object, themeProps: Object) {
       const {
@@ -70,7 +70,7 @@ const Textarea = CSSComponent({
       } = themeProps;
       const { width } = themeMeta;
       const theColor = color ? color : placeHolderColor;
-      const theSize = size ? size : placeHolderFontSize ? placeHolderFontSize : 12;
+      const theSize = size || placeHolderFontSize || xxsFontSize;
       let theWidth = ObjectUtils.isNumber(width) ? px2remcss(width) : width;
       let theResizeType = resizeType;
       if (checkIsPercent(width)) {
@@ -103,24 +103,25 @@ const Textarea = CSSComponent({
     },
   },
   hover: {
-    selectNames: [
-      ['padding'],
-      ['border'],
-      ['borderRadius'],
-      ['cursor'],
-      ['background'],
-      ['opacity'],
-      ['boxShadow'],
-    ],
+    selectNames: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
     defaultTheme: {
-      borderRadius: getBorderRadius(borderRadius),
-      border: getBorder({ color: themeHoverColor, width: borderSize, style: 'solid' }),
+      border: getBorder(get('hoverBorder')),
+    },
+  },
+  focus: {
+    selectNames: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
+    defaultTheme: {
+      border: getBorder(get('focusBorder')),
+      boxShadow: getBoxShadow(`${hShadow}px ${vShadow}px 4px ${get('InputFocusShadowColor')}`),
     },
   },
   active: {
-    selectNames: [['boxShadow'], ['border'], ['borderRadius'], ['cursor'], ['background']],
+    selectNames: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
     defaultTheme: {
-      boxShadow: getBoxShadow(`${hShadow}px ${vShadow}px ${shadowSpread}px ${themeActiveColor}`),
+      border: getBorder(get('activeBorder')),
+      boxShadow: getBoxShadow(
+        `${hShadow}px ${vShadow}px ${shadowSpread}px ${get('themeActiveColor')}`
+      ),
     },
   },
   disabled: {
@@ -138,7 +139,8 @@ const Textarea = CSSComponent({
     defaultTheme: {
       cursor: 'not-allowed',
       background: { color: disableColor },
-      border: getBorder({ color: borderColor, width: borderSize, style: 'solid' }),
+      color: disableTextColor,
+      border: getBorder(get('disabledBorder')),
     },
   },
   css: css`
@@ -148,6 +150,7 @@ const Textarea = CSSComponent({
     transition: all ${transitionTime};
     outline: none;
   `,
+  option: { hover: true, focus: true, active: true },
 });
 
 const TextareaContainer = CSSComponent({
@@ -157,7 +160,7 @@ const TextareaContainer = CSSComponent({
     selectNames: [['margin']],
     getCSS(themeMeta: Object, themeProps: Object) {
       const { width } = themeMeta;
-      const theWidth = checkIsPercent(width) ? width : '100%';
+      const theWidth = checkIsPercent(width) ? width : '';
       return `width:${theWidth};`;
     },
   },
@@ -287,9 +290,11 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
   }
 
   getTextareaContainer() {
-    const { getPartOfThemeProps } = this.props;
+    const { getPartOfThemeProps, validateType } = this.props;
+    const theValidateWidthThemeProps = validateType ? validateWidthTheme : {};
+    const theTheme = deepMerge(getPartOfThemeProps('Container'), theValidateWidthThemeProps);
     return (
-      <TextareaContainer {...addMouseEvent(this)} themeProps={getPartOfThemeProps('Container')}>
+      <TextareaContainer {...addMouseEvent(this)} themeProps={theTheme}>
         {this.getInnerTextarea()}
       </TextareaContainer>
     );
@@ -324,7 +329,7 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
         [clearViewClass]: {
           normal: {
             color: mediumGreyColor,
-            fontSize: 10,
+            fontSize: xxsFontSize,
             getCSS() {
               return `position: absolute;right:${px2remcss(padding)};top:${px2remcss(8)};`;
             },
@@ -334,6 +339,7 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
           },
           disabled: {
             cursor: 'not-allowed',
+            color: disableTextColor,
           },
         },
       },
@@ -376,7 +382,6 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
       resizeType,
     };
     const validateErrorInputThemeProps = getPartOfThemeProps('ValidateErrorInput');
-    const theValidateWidthThemeProps = validateType ? validateWidthTheme : {};
     const theValidateThemeProps = isValidateError(validateStatus)
       ? deepMerge(
           validateValueDefaultTheme,
@@ -386,7 +391,6 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
       : {};
     const theThemeProps = deepMerge(
       getPartOfThemeProps('Container', { props: { ...propsConfig } }),
-      theValidateWidthThemeProps,
       theValidateThemeProps
     );
 
