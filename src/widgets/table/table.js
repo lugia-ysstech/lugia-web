@@ -135,7 +135,6 @@ export default ThemeProvider(
         ? this.filterKey(this.selectedRecords, item => item[rowKey] !== key)
         : [...this.selectedRecords, record];
       const { onChange } = selectOptions;
-      console.log('newSelectRowKeys', newSelectRowKeys);
       onChange && onChange(newSelectRowKeys, newRecords);
       if ('selectRowKeys' in selectOptions) {
         return;
