@@ -143,7 +143,7 @@ class Range extends Component<TypeProps, TypeState> {
     }
     const { newValue, oldValue, number, event } = parmas;
     const { formatIsValids, isValid } = this.getIsValid(newValue);
-    let visible = isValid ? true : false;
+    let visible = isValid;
     if (isValid) {
       this.oldValue = [...newValue];
       this.oldMonthandYear = [...this.monthAndYear];
@@ -330,7 +330,6 @@ class Range extends Component<TypeProps, TypeState> {
       this.oldValue = ['', ''];
     }
     if (hasValue && !isValid) {
-      console.log('onChangeRange-blur', this.oldValue);
       const newValue =
         this.oldValue[0] && this.oldValue[1]
           ? this.oldValue
@@ -429,7 +428,6 @@ class Range extends Component<TypeProps, TypeState> {
       createPortal = true,
     } = this.props;
     const { monthAndYear } = this;
-    const showTimeBtnIsDisabled = valueIsValid ? true : false;
     const { differAmonth, differAyear } = differMonthAndYear(monthAndYear);
     const config = {
       panelChoseDate: rangeValue && rangeValue[0],
@@ -489,7 +487,7 @@ class Range extends Component<TypeProps, TypeState> {
               onChange={this.onChange}
               footerChange={this.footerChange}
               model={this.pageFooterChange}
-              showTimeBtnIsDisabled={showTimeBtnIsDisabled}
+              showTimeBtnIsDisabled={valueIsValid}
             />
           </RangeWrap>
         }
