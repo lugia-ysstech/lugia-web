@@ -79,7 +79,7 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
       "marginLeft": "1rem",
       "marginRight": "1rem",
       "marginTop": "1rem",
-      "width": "10rem",
+      "width": "100%",
     }
   }
 >
@@ -103,7 +103,7 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
       Object {
         "color": "#363B40",
         "paddingBottom": "0rem",
-        "paddingLeft": "0.5rem",
+        "paddingLeft": "1rem",
         "paddingRight": "3.5rem",
         "paddingTop": "0rem",
       }
@@ -189,6 +189,7 @@ exports[`Input props: null 1`] = `
   style={
     Object {
       "height": "3.2rem",
+      "width": "100%",
     }
   }
 >
@@ -298,6 +299,7 @@ exports[`Input props: placeholder  1`] = `
   style={
     Object {
       "height": "3.2rem",
+      "width": "100%",
     }
   }
 >
@@ -408,6 +410,7 @@ exports[`Input props: placeholder  2`] = `
   style={
     Object {
       "height": "3.2rem",
+      "width": "100%",
     }
   }
 >
@@ -518,6 +521,7 @@ exports[`Input props: size 1`] = `
   style={
     Object {
       "height": "2.4rem",
+      "width": "100%",
     }
   }
 >
@@ -627,6 +631,7 @@ exports[`Input props: size 2`] = `
   style={
     Object {
       "height": "4rem",
+      "width": "100%",
     }
   }
 >
