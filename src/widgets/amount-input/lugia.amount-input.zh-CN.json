@@ -39,6 +39,19 @@
     "value": {
       "type": "string",
       "desc": "显示内容"
+    },
+    "validateStatus": {
+      "type": "ValidateStatus",
+      "desc": "校验状态"
+    },
+    "validateType": {
+      "type": "ValidateType",
+      "desc": "校验信息显示类型",
+      "propsDefaultValue": "top"
+    },
+    "help": {
+      "type": "string",
+      "desc": "校验提示信息"
     }
   },
   "events": {
