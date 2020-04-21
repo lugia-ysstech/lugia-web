@@ -60,56 +60,6 @@ const ValidateHoc = (Target: Object) => {
       if (!isOpenValidate) {
         return <Target {...this.props} />;
       }
-      if (validateType === 'top') {
-        const { theme: validateTopTipThemeProps, viewClass } = getPartOfThemeHocProps(
-          'ValidateErrorText'
-        );
-        const newTheme = {
-          [viewClass]: {
-            Container: deepMerge(
-              {
-                normal: {
-                  borderRadius: getBorderRadius(2),
-                  background: { color: get('blackColor') },
-                  getCSS() {
-                    return 'display: inline-block;';
-                  },
-                },
-              },
-              validateTopTipThemeProps[viewClass]
-            ),
-            TooltipTitle: deepMerge(
-              { normal: { color: get('defaultColor') } },
-              validateTopTipThemeProps[viewClass]
-            ),
-            ChildrenContainer: {
-              normal: {
-                getCSS(themeMeta, themeProps) {
-                  const { propsConfig } = themeProps;
-                  const { width = '100%' } = propsConfig;
-                  const widthCSS = getWidthCSS(width);
-                  return `${widthCSS};height:100%;display: block;`;
-                },
-              },
-            },
-          },
-        };
-        const { normal: { width } = {} } = getPartOfThemeConfig('Container');
-        const theWidth = width || '100%';
-        return (
-          <ToolTip
-            theme={newTheme}
-            viewClass={viewClass}
-            propsConfig={{ width: theWidth }}
-            title={theHelp}
-            action={'focus'}
-            placement={'topLeft'}
-            visible={isValidateError(validateStatus) && _isValidateVisible}
-          >
-            {result}
-          </ToolTip>
-        );
-      }
       const innerProps = validateType === 'inner' ? { _isValidateVisible } : {};
       const validateThemeProps = getPartOfThemeProps('ValidateErrorText', {
         props: { validateStatus, ...innerProps },
@@ -133,6 +83,54 @@ const ValidateHoc = (Target: Object) => {
           </FatherContainer>
         );
       }
+      const { theme: validateTopTipThemeProps, viewClass } = getPartOfThemeHocProps(
+        'ValidateErrorText'
+      );
+      const newTheme = {
+        [viewClass]: {
+          Container: deepMerge(
+            {
+              normal: {
+                borderRadius: getBorderRadius(2),
+                background: { color: get('blackColor') },
+                getCSS() {
+                  return 'display: inline-block;';
+                },
+              },
+            },
+            validateTopTipThemeProps[viewClass]
+          ),
+          TooltipTitle: deepMerge(
+            { normal: { color: get('defaultColor') } },
+            validateTopTipThemeProps[viewClass]
+          ),
+          ChildrenContainer: {
+            normal: {
+              getCSS(themeMeta, themeProps) {
+                const { propsConfig } = themeProps;
+                const { width = '100%' } = propsConfig;
+                const widthCSS = getWidthCSS(width);
+                return `${widthCSS};height:100%;display: block;`;
+              },
+            },
+          },
+        },
+      };
+      const { normal: { width } = {} } = getPartOfThemeConfig('Container');
+      const theWidth = width || '100%';
+      return (
+        <ToolTip
+          theme={newTheme}
+          viewClass={viewClass}
+          propsConfig={{ width: theWidth }}
+          title={theHelp}
+          action={'focus'}
+          placement={'topLeft'}
+          visible={isValidateError(validateStatus) && _isValidateVisible}
+        >
+          {result}
+        </ToolTip>
+      );
     }
   }
   return ValidateContainer;
