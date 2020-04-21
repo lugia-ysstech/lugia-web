@@ -57,7 +57,10 @@ const ValidateHoc = (Target: Object) => {
         />
       );
       const isOpenValidate = hasValidateStatusInProps(this.props);
-      if (validateType === 'top' && isOpenValidate) {
+      if (!isOpenValidate) {
+        return <Target {...this.props} />;
+      }
+      if (validateType === 'top') {
         const { theme: validateTopTipThemeProps, viewClass } = getPartOfThemeHocProps(
           'ValidateErrorText'
         );
@@ -113,7 +116,7 @@ const ValidateHoc = (Target: Object) => {
       });
       const ContainerThemeProps = getPartOfThemeProps('Container');
 
-      if (validateType === 'bottom' && isOpenValidate) {
+      if (validateType === 'bottom') {
         return (
           <BottomContainer themeProps={ContainerThemeProps}>
             {result}
@@ -122,7 +125,7 @@ const ValidateHoc = (Target: Object) => {
         );
       }
 
-      if (validateType === 'inner' && isOpenValidate) {
+      if (validateType === 'inner') {
         return (
           <FatherContainer themeProps={ContainerThemeProps}>
             {result}
@@ -130,7 +133,6 @@ const ValidateHoc = (Target: Object) => {
           </FatherContainer>
         );
       }
-      return <Target {...this.props} />;
     }
   }
   return ValidateContainer;
