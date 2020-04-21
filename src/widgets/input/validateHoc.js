@@ -5,10 +5,17 @@ import ToolTip from '../tooltip/index';
 import { TipBottom, InnerTipText, FatherContainer, BottomContainer } from './validateCSS';
 import { getWidthCSS } from './utils';
 import { DefaultHelp, isValidateError } from '../css/validateHoc';
+import { getBorderRadius } from '@lugia/theme-utils';
+const hasValidateStatusInProps = (props: Object) => {
+  return 'validateStatus' in props;
+};
 const ValidateHoc = (Target: Object) => {
   class ValidateContainer extends React.Component {
     state = {
       _isValidateVisible: true,
+    };
+    static defaultProps = {
+      validateType: 'top',
     };
 
     onFocus = (event: UIEvent) => {
@@ -49,8 +56,8 @@ const ValidateHoc = (Target: Object) => {
           validateTextThemeProps={() => getPartOfThemeProps('ValidateErrorText')}
         />
       );
-
-      if (validateType === 'top') {
+      const isOpenValidate = hasValidateStatusInProps(this.props);
+      if (validateType === 'top' && isOpenValidate) {
         const { theme: validateTopTipThemeProps, viewClass } = getPartOfThemeHocProps(
           'ValidateErrorText'
         );
@@ -59,7 +66,8 @@ const ValidateHoc = (Target: Object) => {
             Container: deepMerge(
               {
                 normal: {
-                  background: { color: get('darkGreyColor') },
+                  borderRadius: getBorderRadius(2),
+                  background: { color: get('blackColor') },
                   getCSS() {
                     return 'display: inline-block;';
                   },
@@ -92,7 +100,6 @@ const ValidateHoc = (Target: Object) => {
             propsConfig={{ width: theWidth }}
             title={theHelp}
             action={'focus'}
-            popArrowType={'round'}
             placement={'topLeft'}
             visible={isValidateError(validateStatus) && _isValidateVisible}
           >
@@ -106,7 +113,7 @@ const ValidateHoc = (Target: Object) => {
       });
       const ContainerThemeProps = getPartOfThemeProps('Container');
 
-      if (validateType === 'bottom') {
+      if (validateType === 'bottom' && isOpenValidate) {
         return (
           <BottomContainer themeProps={ContainerThemeProps}>
             {result}
@@ -115,7 +122,7 @@ const ValidateHoc = (Target: Object) => {
         );
       }
 
-      if (validateType === 'inner') {
+      if (validateType === 'inner' && isOpenValidate) {
         return (
           <FatherContainer themeProps={ContainerThemeProps}>
             {result}

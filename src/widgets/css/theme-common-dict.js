@@ -30,6 +30,7 @@ export function load(value: Object) {
     const alertRuleColor = getAlertRuleColor(value);
     const inputDangerColor = getInputDangerColor(value);
     const inputFocusShadowColor = getInputFocusShadowColor(value);
+    const validateFocusShadowColor = getValidateFocusShadowColor(value);
     dict.load(NameSpace, {
       ...value,
       ...ruleColor,
@@ -37,6 +38,7 @@ export function load(value: Object) {
       ...alertRuleColor,
       ...inputDangerColor,
       ...inputFocusShadowColor,
+      ...validateFocusShadowColor,
     });
   }
 }
@@ -72,8 +74,18 @@ function getInputDangerColor(value: Object): Object {
 function getInputFocusShadowColor(value: Object): Object {
   const { themeColor } = value;
   return {
-    InputFocusShadowColor: getReduceColor(
+    inputFocusShadowColor: getReduceColor(
       themeColor,
+      { reduceS: 0, reduceB: 0, reduceA: 40 },
+      'rgba'
+    ),
+  };
+}
+function getValidateFocusShadowColor(value: Object): Object {
+  const { dangerColor } = value;
+  return {
+    validateFocusShadowColor: getReduceColor(
+      dangerColor,
       { reduceS: 0, reduceB: 0, reduceA: 40 },
       'rgba'
     ),
