@@ -91,7 +91,7 @@ export default ThemeProvider(
     }
 
     static getDerivedStateFromProps(props) {
-      const { data, selectOptions = {} } = props;
+      const { data, selectOptions = {}, rowKey = 'key' } = props;
       if ('selectRowKeys' in selectOptions) {
         const {
           selectRowKeys = [],
@@ -103,7 +103,7 @@ export default ThemeProvider(
         const validSelectRowKeys = [];
         for (let i = 0; i < data.length; i++) {
           const item = data[i];
-          const itemKey = item.key;
+          const itemKey = item[rowKey];
           const checkboxProps = setCheckboxProps(item) || {};
           if (!checkboxProps.disabled) {
             const selectc = selectRowKeys.includes(itemKey);
@@ -125,16 +125,17 @@ export default ThemeProvider(
     }
 
     tableItemChange = (key, record) => () => {
-      const { selectOptions = {} } = this.props;
+      const { selectOptions = {}, rowKey = 'key' } = this.props;
       const { selectRowKeys } = this.state;
       const unSelect = selectRowKeys.includes(key);
       const newSelectRowKeys = unSelect
         ? this.filterKey(selectRowKeys, item => item !== key)
         : [...selectRowKeys, key];
       const newRecords = unSelect
-        ? this.filterKey(this.selectedRecords, item => item.key !== key)
+        ? this.filterKey(this.selectedRecords, item => item[rowKey] !== key)
         : [...this.selectedRecords, record];
       const { onChange } = selectOptions;
+      console.log('newSelectRowKeys', newSelectRowKeys);
       onChange && onChange(newSelectRowKeys, newRecords);
       if ('selectRowKeys' in selectOptions) {
         return;
@@ -195,6 +196,7 @@ export default ThemeProvider(
         getPartOfThemeProps,
         selectOptions = {},
         size = 'default',
+        rowKey: cusRowKey = 'key',
       } = this.props;
 
       this.selectedRecords = [];
@@ -254,7 +256,7 @@ export default ThemeProvider(
           key: 'selection-column',
           width,
           render: (text, record) => {
-            const rowKey = record.key;
+            const rowKey = record[cusRowKey];
             const select = stateSelectRowKeys.includes(rowKey);
             const checkboxProps = setCheckboxProps(record) || {};
 
@@ -287,7 +289,7 @@ export default ThemeProvider(
         theColumns.unshift(selectColumnItem);
       }
       let expandIconColumnIndex =
-        theColumns && theColumns[0] && theColumns[0].key === 'selection-column' ? 1 : 0;
+        theColumns && theColumns[0] && theColumns[0][cusRowKey] === 'selection-column' ? 1 : 0;
       if ('expandIconColumnIndex' in this.props) {
         const { expandIconColumnIndex: propsIndex } = this.props;
         expandIconColumnIndex = Number(propsIndex);
