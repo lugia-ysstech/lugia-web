@@ -117,6 +117,14 @@ class DateInput extends Component<TypeProps, TypeState> {
     const { isTime } = modeStyle(mode);
     const { themeProps } = getFacePanelContain({ mode, getPartOfThemeProps }, 'FacePanelContain');
     const inputContainProps = getThemeProps({ mode, getPartOfThemeProps }, 'Container');
+    const { themeConfig: validateErrorText } = getThemeProps(
+      { mode, getPartOfThemeProps },
+      'ValidateErrorText'
+    );
+    const { themeConfig: validateErrorInput } = getThemeProps(
+      { mode, getPartOfThemeProps },
+      'ValidateErrorInput'
+    );
     const { inputPrefixProps, inputSuffixProps, clearButtonProps } = getIconTheme(this.props);
     const { themeConfig } = inputContainProps;
     const { themeConfig: inputPrefixThemeConfig } = inputPrefixProps;
@@ -142,6 +150,8 @@ class DateInput extends Component<TypeProps, TypeState> {
             InputSuffix: {
               ...inputSuffixProps.themeConfig,
             },
+            ValidateErrorText: validateErrorText,
+            ValidateErrorInput: validateErrorInput,
           },
         }}
       >
