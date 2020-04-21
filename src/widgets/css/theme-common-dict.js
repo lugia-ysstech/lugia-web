@@ -203,6 +203,5 @@ export function rebackProduction() {
  *   naem： 公共值名称
  */
 export default function(name: string) {
-  console.log('name', name);
   return dict.get(name);
 }
