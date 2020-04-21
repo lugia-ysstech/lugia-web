@@ -285,6 +285,7 @@ describe('AmountInputDemo', () => {
     const component = target
       .children()
       .children()
+      .children()
       .instance();
     return component;
   }
@@ -319,8 +320,6 @@ describe('AmountInputDemo', () => {
 
   it('props.value 2 state.value', () => {
     const component = mount(<AmountInput defaultValue={defaultValue} />);
-    expect(getInputComponent(component).state.value).toBe(defaultValue + '');
-
     component.setProps({ value: '壹佰元整' });
     expect(getInputComponent(component).state.value).toBe('100');
 
