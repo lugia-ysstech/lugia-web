@@ -5,8 +5,8 @@
  * @flow
  */
 import type { ThemeType } from '@lugia/lugia-web';
-import colorsFunc from '../css/stateColor';
 import type { ValidateStatus, ValidateType } from './validateHoc';
+import get from '../css/theme-common-dict';
 
 const smallSize = '$lugia-dict.@lugia/lugia-web.smallSize';
 const normalSize = '$lugia-dict.@lugia/lugia-web.normalSize';
@@ -14,7 +14,6 @@ const largeSize = '$lugia-dict.@lugia/lugia-web.largeSize';
 const xxsFontSize = '$lugia-dict.@lugia/lugia-web.xxsFontSize';
 const xsFontSize = '$lugia-dict.@lugia/lugia-web.xsFontSize';
 const sFontSize = '$lugia-dict.@lugia/lugia-web.sFontSize';
-const { disableColor } = colorsFunc();
 
 export const FontSize = 1.2;
 export const RadiusSize = 4;
@@ -38,7 +37,9 @@ type CommonInputProps = {
 export const getBackground = (props: CommonInputProps) => {
   const { disabled, theme } = props;
   const { backgroundColor } = theme;
-  return `background:${disabled === true ? disableColor : backgroundColor ? backgroundColor : ''}`;
+  return `background:${
+    disabled === true ? get('disableColor') : backgroundColor ? backgroundColor : ''
+  }`;
 };
 
 export function getInputHeight(height: string | number, size: InputSize) {
