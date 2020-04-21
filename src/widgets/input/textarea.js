@@ -25,7 +25,7 @@ import type { ValidateStatus, ValidateType } from '../css/validateHoc';
 import get from '../css/theme-common-dict';
 
 const { px2remcss } = units;
-const { padding, shadowSpread, hShadow, vShadow, transitionTime } = colorsFunc();
+const { padding, hShadow, vShadow, transitionTime } = colorsFunc();
 
 const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
 const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
@@ -119,9 +119,6 @@ const Textarea = CSSComponent({
     selectNames: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
     defaultTheme: {
       border: getBorder(get('activeBorder')),
-      boxShadow: getBoxShadow(
-        `${hShadow}px ${vShadow}px ${shadowSpread}px ${get('themeActiveColor')}`
-      ),
     },
   },
   disabled: {

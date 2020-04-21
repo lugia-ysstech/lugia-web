@@ -16,7 +16,7 @@ import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Widget from '../../consts';
 import { TopInput, ValidateInput } from '../demo';
-import type { ValidateType, ValidateStatus } from '../../css/input';
+import type { ValidateType, ValidateStatus } from '../../css/validateHoc';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -111,8 +111,12 @@ describe('Input', () => {
   it('props: getTheme: width:100,margin:10,', () => {
     const view = {
       [Widget.Input]: {
-        width: 100,
-        margin: 10,
+        Container: {
+          normal: {
+            width: 100,
+            margin: 10,
+          },
+        },
       },
     };
     const jsx = (
