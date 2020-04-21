@@ -4,13 +4,13 @@
  * @flow
  */
 import { getBorder, getBorderRadius } from '@lugia/theme-utils';
+import get from '../css/theme-common-dict';
 
 const defaultColors = '$lugia-dict.@lugia/lugia-web.defaultColorReduceS';
 const primaryColors = '$lugia-dict.@lugia/lugia-web.themeColorReduceS';
 const successColors = '$lugia-dict.@lugia/lugia-web.successColorReduceS';
 const warningColors = '$lugia-dict.@lugia/lugia-web.warningColorReduceS';
 const dangerColors = '$lugia-dict.@lugia/lugia-web.dangerColorReduceS';
-
 const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
 const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 export const defaultTheme = {
@@ -84,10 +84,9 @@ export const TypeHoverTheme = {
   },
 };
 
-const defaultBorderColor = '#e8e8e8';
 export const defaultDisabledTheme = {
   background: { color: defaultColor },
-  border: getBorder({ width: 1, style: 'solid', color: defaultBorderColor }),
+  border: getBorder({ width: 1, style: 'solid', color: get('defaultBorderColor') }),
 };
 export const DisabledTypeTheme = {
   default: defaultDisabledTheme,
@@ -282,70 +281,68 @@ export const PlainActiveTypeTheme = {
 const largeSize = '$lugia-dict.@lugia/lugia-web.largeSize';
 const normalSize = '$lugia-dict.@lugia/lugia-web.normalSize';
 const smallSize = '$lugia-dict.@lugia/lugia-web.smallSize';
+function paddingStyle(paddingType: string): Object {
+  if (paddingType === 'small') {
+    return {
+      padding: get('smallPaddingCSS'),
+    };
+  }
+  return {
+    padding: get('OtherPaddingCSS'),
+  };
+}
+const smallPaddingStyle = paddingStyle('small');
+const otherPaddingStyle = paddingStyle('other');
 export const SizeTheme = {
-  large: {
-    height: largeSize,
-    padding: {
-      top: 0,
-      right: 18,
-      bottom: 0,
-      left: 18,
-    },
+  small: {
+    height: smallSize,
+    ...smallPaddingStyle,
   },
   default: {
     height: normalSize,
-    padding: {
-      top: 0,
-      right: 18,
-      bottom: 0,
-      left: 18,
-    },
+    ...otherPaddingStyle,
   },
-  small: {
-    height: smallSize,
-    padding: {
-      top: 0,
-      right: 14,
-      bottom: 0,
-      left: 14,
-    },
+  large: {
+    height: largeSize,
+    ...otherPaddingStyle,
   },
 };
+
 export const CircleTheme = {
   large: {
     width: largeSize,
     height: largeSize,
     padding: 0,
-    borderRadius: getBorderRadius('50%'),
+    borderRadius: getBorderRadius(get('circleRadiusValue')),
   },
   default: {
     height: normalSize,
     width: normalSize,
     padding: 0,
-    borderRadius: getBorderRadius('50%'),
+    borderRadius: getBorderRadius(get('circleRadiusValue')),
   },
   small: {
     height: smallSize,
     width: smallSize,
     padding: 0,
-    borderRadius: getBorderRadius('50%'),
+    borderRadius: getBorderRadius(get('circleRadiusValue')),
   },
 };
 export const ShapeTheme = {
   default: {
-    borderRadius: getBorderRadius(16),
+    borderRadius: getBorderRadius(get('sizeDefaultBorderRadius')),
   },
   large: {
-    borderRadius: getBorderRadius(20),
+    borderRadius: getBorderRadius(get('sizeLargeBorderRadius')),
   },
   small: {
-    borderRadius: getBorderRadius(12),
+    borderRadius: getBorderRadius(get('sizeSmallBorderRadius')),
   },
 };
 
 export const textDefaultTheme = {
   color: '$lugia-dict.@lugia/lugia-web.darkGreyColor',
-  font: { size: 14 },
+  font: get('textSizeOther'),
 };
 export const textDefaultHoverTheme = {
   color: hoverColor,
@@ -421,14 +418,26 @@ export const TextPlainActiveTypeTheme = {
   danger: { color: defaultColor },
   link: { color: mouseDownColor },
 };
+function textSizeStyle(textSizeType: string): object {
+  if (textSizeType === 'small') {
+    return { font: get('textSizeSmall') };
+  }
+  return { font: get('textSizeOther') };
+}
+const textCircleStyle = (TextCircleType: string): object => {
+  if (TextCircleType === 'small') {
+    return { font: get('textCircleSmall') };
+  }
+  return { font: get('textCircleOther') };
+};
 
 export const TextSizeTheme = {
-  large: { font: { size: 14 } },
-  default: { font: { size: 14 } },
-  small: { font: { size: 12 } },
+  large: textSizeStyle('large'),
+  default: textSizeStyle('default'),
+  small: textSizeStyle('small'),
 };
 export const TextCircleTheme = {
-  large: { font: { size: 14 } },
-  default: { font: { size: 14 } },
-  small: { font: { size: 12 } },
+  large: textCircleStyle('large'),
+  default: textCircleStyle('default'),
+  small: textCircleStyle('small'),
 };

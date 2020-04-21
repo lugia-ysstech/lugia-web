@@ -49,8 +49,8 @@ type ButtonSize = 'default' | 'small' | 'large';
 type CSSProps = {
   shape?: ButtonShape,
   type?: ButtonType,
-  plain?: boolean,
   size?: ButtonSize,
+  plain?: boolean,
   loading?: boolean,
   circle?: boolean,
   disabled?: boolean,
@@ -61,7 +61,6 @@ type CSSProps = {
   onClick?: (SyntheticEvent<HTMLButtonElement>) => any,
   getTheme: Function,
   viewClass?: string,
-  loading?: boolean,
   em: Function,
   hasChildren?: boolean,
   block?: boolean,
@@ -89,32 +88,19 @@ type TypeColor = {
   backgroundColor: string,
   border: string,
 };
+
 type ShapeStyle = {
   borderRadius: number,
 };
+
 type SizeStyle = {
   height: number,
   borderRadius: number,
 };
 
-const Size: { [key: ButtonSize]: SizeStyle } = {
-  large: {
-    height: 40,
-    borderRadius: 20,
-  },
-  default: {
-    height: 32,
-    borderRadius: 16,
-  },
-  small: {
-    height: 24,
-    borderRadius: 12,
-  },
-};
-
 const NotCircleSize = {
   width: 32,
-  borderRadius: 4,
+  borderRadius: get('borderRadiusValue'),
 };
 const cursor = 'not-allowed';
 
@@ -126,7 +112,7 @@ function fetchType(type: string): Object {
     };
   }
   return {
-    color: get('white'),
+    color: get('defaultColor'),
     border: 'none',
   };
 }
@@ -137,7 +123,7 @@ function fetchTypeCSS(color: string): { [key: ButtonType]: TypeColor } {
   const otherTypeStyle = fetchType('other');
   return {
     default: {
-      backgroundColor: get('white'),
+      backgroundColor: get('defaultColor'),
       ...defaultTypeStyle,
     },
     primary: {
@@ -158,6 +144,20 @@ function fetchTypeCSS(color: string): { [key: ButtonType]: TypeColor } {
     },
   };
 }
+const Size: { [key: ButtonSize]: SizeStyle } = {
+  default: {
+    height: get('normalSize'),
+    borderRadius: get('sizeDefaultBorderRadius'),
+  },
+  small: {
+    height: get('smallSize'),
+    borderRadius: get('sizeSmallBorderRadius'),
+  },
+  large: {
+    height: get('largeSize'),
+    borderRadius: get('sizeLargeBorderRadius'),
+  },
+};
 
 function fetchSize(sizeType: ButtonSize) {
   const { height } = Size[sizeType] || Size.default;
@@ -320,8 +320,7 @@ export const ButtonOut = CSSComponent({
       const shapeTheme =
         shape === 'round'
           ? ShapeTheme[size] || ShapeTheme.default
-          : { borderRadius: getBorderRadius(4) };
-
+          : { borderRadius: getBorderRadius(get('borderRadiusValue')) };
       return { ...normalTheme, ...shapeTheme, ...sizeTheme };
     },
   },
