@@ -257,20 +257,6 @@ export default class Sl extends Component<any> {
     };
     return (
       <div>
-        <RangePicker
-          onChange={this.onChange}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
-          showTime
-          format={'YYYY-MM-DD HH:mm:ss'}
-          buttonOptions={{
-            options: { today: '2015-02-03 00:00:00', 此刻: '2015-02-05 00:00:00' },
-          }}
-          extraFooter={{ message: 'extraFooter' }}
-          onOk={this.onOk}
-          //disabled
-          suffix={'lugia-icon-financial_date'}
-        />
         <div style={{ margin: '30px', overflow: 'hidden' }}>
           <h2 style={{ margin: '10px' }}>Date</h2>
 
@@ -297,6 +283,8 @@ export default class Sl extends Component<any> {
               // },
             }}
           >
+            <RangePicker validateStatus={'error'} validateType={'bottom'} help={'格式有误'} />
+            <DatePicker validateStatus={'error'} validateType={'top'} help={'格式有误'} />
             <RangePicker
               onChange={this.onChange}
               onFocus={this.onFocus}
@@ -324,7 +312,7 @@ export default class Sl extends Component<any> {
             <YearPicker />
             <WeekPicker />
             <TimePicker />
-            {/*<WeeksPicker />*/}
+            <WeeksPicker />
           </Theme>
 
           <div style={{ float: 'left', marginRight: '30px' }}>
