@@ -9,7 +9,7 @@ import Theme from '../theme';
 import AmountInput from './index';
 import Widget from '../consts/index';
 import styled from 'styled-components';
-import { getBoxShadow } from '@lugia/theme-utils';
+import { fixControlledValue } from '../utils';
 
 class LimitAmountInput extends React.Component<any, any> {
   constructor(props: any) {
@@ -31,6 +31,42 @@ class DefaultValueAmountInput extends React.Component<any, any> {
     return <AmountInput defaultValue={'123456'} onChange={this.props.onChange} />;
   }
 }
+
+class ValidateInput extends React.Component<any, any> {
+  constructor(props: any) {
+    super(props);
+  }
+
+  static getDerivedStateFromProps(nextProps: Object, preState: Object) {
+    let { value } = nextProps;
+    const hasValueInprops = 'value' in nextProps;
+    value = fixControlledValue(value);
+    if (!preState) {
+      return { value: hasValueInprops ? value : '' };
+    }
+    if (hasValueInprops) {
+      return { value };
+    }
+  }
+  onChange = ({ newValue: value }: any) => {
+    this.setState({ value });
+    this.props.onChange({ newValue: value });
+  };
+
+  render() {
+    const { validateType } = this.props;
+    const value = this.state.value;
+    const validateStatus = String(value).indexOf('5') === -1 ? 'default' : 'error';
+    return (
+      <AmountInput
+        onChange={this.onChange}
+        validateType={validateType}
+        validateStatus={validateStatus}
+      />
+    );
+  }
+}
+
 const Wrapper = styled.div`
   float: left;
   margin-left: 50px;
@@ -48,21 +84,6 @@ export default () => {
         },
       },
       AmountInputPrefix: { normal: { fontSize: 14, color: 'blue' } },
-      AmountTip: {
-        Container: {
-          normal: {
-            background: {
-              color: '#eee',
-            },
-          },
-        },
-        TooltipTitle: {
-          normal: {
-            color: '#4d63ff',
-            fontSize: 16,
-          },
-        },
-      },
     },
   };
   const onChange = (cmpName: string) => (value: any) => {};
@@ -97,6 +118,18 @@ export default () => {
         <AmountInput amountPrefix="¥" transform={false} />
         <p>amountPrefix: '$' transform: false </p>
         <AmountInput amountPrefix="$" transform={false} />
+      </Wrapper>
+      <Wrapper>
+        <p>校验信息显示类型 top 输入值 是否含有5</p>
+        <ValidateInput validateType="top" onChange={onChange('limit')} validateStatus={'error'} />
+        <p>校验信息显示类型 bottom 输入值 是否含有5</p>
+        <ValidateInput
+          validateType="bottom"
+          onChange={onChange('limit')}
+          validateStatus={'error'}
+        />
+        <p>校验信息显示类型 inner 输入值 是否含有5</p>
+        <ValidateInput validateType="inner" onChange={onChange('limit')} validateStatus={'error'} />
       </Wrapper>
     </div>
   );

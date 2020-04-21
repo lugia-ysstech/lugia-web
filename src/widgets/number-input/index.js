@@ -25,6 +25,7 @@ import {
   validateWidthTheme,
 } from '../css/validateHoc';
 import type { ValidateStatus, ValidateType } from '../css/validateHoc';
+import { getInputSize } from '../css/input';
 
 const { px2remcss } = units;
 
@@ -160,6 +161,11 @@ const PlusButton = CSSComponent({
   `,
   option: { hover: true, active: true },
 });
+
+const themeHoverColor = '$lugia-dict.@lugia/lugia-web.themeHoverColor';
+const themeActiveColor = '$lugia-dict.@lugia/lugia-web.themeActiveColor';
+const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
+const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 
 PlusButton.displayName = 'Plus';
 MinusButton.displayName = 'Minus';
@@ -314,6 +320,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
         [IconViewClass]: {
           normal: {
             cursor: 'pointer',
+            color: mediumGreyColor,
             fontSize: 10,
             getCSS() {
               return ` position: absolute;
@@ -324,16 +331,25 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
             },
             getThemeMeta(themeMeta, themeProps) {
               const { propsConfig } = themeProps;
-              const { outRange, disabled } = propsConfig;
+              const { outRange, disabled, size } = propsConfig;
+              const { fontSize, font: { size: innerFontSize } = {} } = themeMeta;
+              const theSize = innerFontSize || fontSize || getInputSize(size);
               const theCursor = outRange || disabled ? 'not-allowed' : 'pointer';
               return {
                 cursor: theCursor,
+                fontSize: theSize,
               };
             },
           },
+          hover: {
+            color: themeHoverColor,
+          },
+          active: {
+            color: themeActiveColor,
+          },
           disabled: {
+            color: disableTextColor,
             cursor: 'not-allowed',
-            fontSize: 10,
             opacity: 0,
           },
         },
@@ -347,7 +363,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
 
     const plusChannel = createEventChannel([['hover'], ['focus']]);
     const minusChannel = createEventChannel(['hover'], ['focus']);
-
+    const { size } = this.props;
     return (
       <ArrowIconContainer
         disabled={disabled}
@@ -371,7 +387,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
             theme={iconTheme}
             viewClass={IconViewClass}
             disabled={disabled}
-            propsConfig={{ outRange: getOverMax(value, max) }}
+            propsConfig={{ outRange: getOverMax(value, max), size }}
             iconClass={addIcon || PlusClass}
             singleTheme
           />
@@ -393,7 +409,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
             theme={iconTheme}
             viewClass={IconViewClass}
             disabled={disabled}
-            propsConfig={{ outRange: getBelowMin(value, min) }}
+            propsConfig={{ outRange: getBelowMin(value, min), size }}
             iconClass={subtractIcon || MinusClass}
           />
         </MinusButton>
@@ -457,7 +473,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
         suffix={this.getStepArrowIconContainer(arrowContainerChannel)}
         onBlur={this.onBlur}
         onChange={this.handleChange}
-        validateType={''}
+        validateStatus={undefined}
         {...addMouseEvent(this)}
       />
     );
@@ -469,6 +485,10 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     const finalValue = limit(value, [min, max]);
     this.setValue(finalValue, event);
     onBlur && onBlur(event);
+  };
+  onFocus = (event: UIEvent) => {
+    const { onFocus } = this.props;
+    onFocus && onFocus(event);
   };
 
   handleClick = (click: ClickType) => (event: Event) => {
