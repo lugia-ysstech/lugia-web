@@ -160,7 +160,7 @@ const InputContainer = CSSComponent({
     selectNames: [['background'], ['border'], ['borderRadius'], ['boxShadow'], ['opacity']],
     defaultTheme: {
       border: getBorder(get('focusBorder')),
-      boxShadow: getBoxShadow(`${hShadow}px ${vShadow}px 4px ${get('InputFocusShadowColor')}`),
+      boxShadow: getBoxShadow(`${hShadow}px ${vShadow}px 4px ${get('inputFocusShadowColor')}`),
     },
   },
   active: {
