@@ -29,12 +29,14 @@ export function load(value: Object) {
     const buttonRuleColor = getButtonRuleColor(value);
     const alertRuleColor = getAlertRuleColor(value);
     const inputDangerColor = getInputDangerColor(value);
+    const inputFocusShadowColor = getInputFocusShadowColor(value);
     dict.load(NameSpace, {
       ...value,
       ...ruleColor,
       ...buttonRuleColor,
       ...alertRuleColor,
       ...inputDangerColor,
+      ...inputFocusShadowColor,
     });
   }
 }
@@ -65,6 +67,16 @@ function getInputDangerColor(value: Object): Object {
   const { dangerColor } = value;
   return {
     inputDangerColor: getReduceColor(dangerColor, { reduceS: 0, reduceB: 0, reduceA: 10 }, 'rgba'),
+  };
+}
+function getInputFocusShadowColor(value: Object): Object {
+  const { themeColor } = value;
+  return {
+    InputFocusShadowColor: getReduceColor(
+      themeColor,
+      { reduceS: 0, reduceB: 0, reduceA: 40 },
+      'rgba'
+    ),
   };
 }
 

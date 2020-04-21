@@ -7,12 +7,16 @@
 import type { ThemeType } from '@lugia/lugia-web';
 import colorsFunc from '../css/stateColor';
 
+const smallSize = '$lugia-dict.@lugia/lugia-web.smallSize';
+const normalSize = '$lugia-dict.@lugia/lugia-web.normalSize';
+const largeSize = '$lugia-dict.@lugia/lugia-web.largeSize';
+const xxsFontSize = '$lugia-dict.@lugia/lugia-web.xxsFontSize';
+const xsFontSize = '$lugia-dict.@lugia/lugia-web.xsFontSize';
+const sFontSize = '$lugia-dict.@lugia/lugia-web.sFontSize';
 const { disableColor } = colorsFunc();
 
 export const FontSize = 1.2;
 export const RadiusSize = 4;
-export const LargeHeight = 40;
-export const SmallHeight = 24;
 export const DefaultHeight = 32;
 export const Padding = 2;
 export const DefaultHelp = '验证出错';
@@ -37,11 +41,11 @@ export const getBackground = (props: CommonInputProps) => {
 };
 
 export function getInputHeight(height, size: InputSize) {
-  return height
-    ? height
-    : size === 'large'
-    ? LargeHeight
-    : size === 'small'
-    ? SmallHeight
-    : DefaultHeight;
+  return height ? height : size === 'large' ? largeSize : size === 'small' ? smallSize : normalSize;
+}
+export function getInputSize(size: InputSize) {
+  return size === 'small' ? xxsFontSize : xsFontSize;
+}
+export function getInputFixSize(size: InputSize) {
+  return size === 'small' ? xsFontSize : sFontSize;
 }
