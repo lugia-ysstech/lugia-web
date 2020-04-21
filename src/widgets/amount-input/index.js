@@ -1,10 +1,10 @@
 // @flow
 import '../common/shirm';
 import React, { Component } from 'react';
-import InnerInput from '../input/index';
+import Input from '../input/index';
 import Widget from '../consts/index';
 import type { InputSize } from '../css/input';
-import { DefaultAmountPrefix } from '../css/input';
+import { DefaultAmountPrefix, getInputSize } from '../css/input';
 import { findDOMNode } from 'react-dom';
 
 import ToolTip from '../tooltip';
@@ -22,24 +22,20 @@ import {
 } from './amountUtils';
 import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import { checkNumber } from '../common/Math';
-import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
+import CSSComponent from '@lugia/theme-css-hoc';
 import ThemeHoc from '@lugia/theme-hoc';
 import { deepMerge } from '@lugia/object-utils';
 
-const InputContainer = CSSComponent({
-  tag: 'span',
-  className: 'AmountInputContainer',
-  normal: {
-    defaultTheme: {
-      width: '100%',
-    },
-    selectNames: [['width'], ['height'], ['margin']],
-  },
-  css: css`
-    position: relative;
-    display: inline-block;
-  `,
-});
+import ValidateHoc from '../input/validateHoc';
+import {
+  validateValueDefaultTheme,
+  validateBorderDefaultTheme,
+  isValidateError,
+  validateWidthTheme,
+} from '../css/validateHoc';
+import type { ValidateStatus, ValidateType } from '../css/validateHoc';
+import get from '../css/theme-common-dict';
+import { getBorderRadius } from '@lugia/theme-utils';
 
 const Title = CSSComponent({
   tag: 'span',
@@ -53,7 +49,16 @@ const AmountInputPrefix = CSSComponent({
   tag: 'span',
   className: 'AmountInputPrefix',
   normal: {
-    selectNames: [['fontSize'], ['color']],
+    selectNames: [['fontSize'], ['font'], ['color']],
+    getThemeMeta(themeMeta, themeProps) {
+      const { propsConfig } = themeProps;
+      const { size } = propsConfig;
+      const { fontSize, font: { size: innerFontSize } = {} } = themeMeta;
+      const theSize = innerFontSize || fontSize || getInputSize(size);
+      return {
+        fontSize: theSize,
+      };
+    },
   },
 });
 Title.displayName = 'toolTip_title';
@@ -83,6 +88,9 @@ type AmountInputProps = {|
   themeProps: Object,
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
+  validateStatus: ValidateStatus,
+  validateType: ValidateType,
+  help: string,
 |};
 
 class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
@@ -218,6 +226,11 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
         [viewClass]: {
           Container: {
             normal: {
+              borderRadius: getBorderRadius(2),
+              background: {
+                color: get('blackColor'),
+              },
+              boxShadow: get('normalShadow'),
               getThemeMeta(themeMeta: Object, themeProps: Object) {
                 const { propsConfig } = themeProps;
                 const { value } = propsConfig;
@@ -227,23 +240,32 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
                 };
               },
             },
+            hover: {
+              background: {
+                color: get('darkGreyColor'),
+              },
+              boxShadow: get('hoverShadow'),
+            },
           },
+          TooltipTitle: deepMerge(
+            { normal: { color: get('defaultColor') } },
+            toolTipThemeProps[viewClass]
+          ),
         },
       },
       toolTipThemeProps
     );
-    const theThemeProps = this.props.getPartOfThemeProps('Container');
+
     return (
       <ToolTip
         propsConfig={{ value }}
         title={this.getTitle()}
         action={'focus'}
         placement={'topLeft'}
-        popArrowType={'round'}
         theme={newTheme}
         viewClass={viewClass}
       >
-        <InputContainer themeProps={theThemeProps}>{this.generateInput()}</InputContainer>
+        {this.generateInput()}
       </ToolTip>
     );
   }
@@ -282,24 +304,46 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
   generateInput(): React$Element<any> {
     const { props } = this;
     const { value, rmb } = this.state;
-    const { onKeyUp, onKeyPress, size, disabled, placeholder } = props;
+    const {
+      onKeyUp,
+      onKeyPress,
+      size,
+      disabled,
+      placeholder,
+      validateStatus,
+      validateType,
+      getPartOfThemeProps,
+      getPartOfThemeHocProps,
+    } = props;
     const prefix = this.getPrefix();
     const thePlaceholder = disabled ? '' : placeholder;
     const actualValue = rmb ? tipTool(parser(value), convertCurrency) : amountFormatter(value);
-    const { theme: inputTheme, viewClass: inputViewClass } = this.props.getPartOfThemeHocProps(
-      'InnerInput'
-    );
 
-    inputTheme[inputViewClass].Container = deepMerge(
-      inputTheme[inputViewClass].Container,
-      this.props.getPartOfThemeProps('Container').themeConfig
-    );
+    const { theme: inputTheme } = getPartOfThemeHocProps('InnerInput');
 
+    const validateErrorInputThemeProps = getPartOfThemeProps('ValidateErrorInput');
+
+    const theValidateThemeProps = isValidateError(validateStatus)
+      ? deepMerge(
+          validateValueDefaultTheme,
+          validateBorderDefaultTheme,
+          validateErrorInputThemeProps
+        )
+      : {};
+
+    const containerThemeProps = getPartOfThemeProps('Container');
+    const theValidateWidthThemeProps = validateType ? validateWidthTheme : {};
+    const theInputTheme = deepMerge(
+      inputTheme,
+      containerThemeProps,
+      theValidateWidthThemeProps,
+      theValidateThemeProps
+    );
     return (
-      <InnerInput
+      <Input
         _maxLength="16"
-        theme={inputTheme}
-        viewClass={inputViewClass}
+        theme={theInputTheme}
+        {...this.props}
         ref={this.el}
         value={actualValue}
         size={size}
@@ -314,19 +358,24 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
         prefix={prefix}
         formatter={amountFormatter}
         readOnly={rmb}
+        validateStatus={undefined}
       />
     );
   }
 
   getPrefix() {
-    const { amountPrefix } = this.props;
-    const theThemeProps = this.props.getPartOfThemeProps('AmountInputPrefix');
+    const { amountPrefix, size } = this.props;
+    const theThemeProps = this.props.getPartOfThemeProps('AmountInputPrefix', { props: { size } });
     return <AmountInputPrefix themeProps={theThemeProps}>{amountPrefix}</AmountInputPrefix>;
   }
 }
 
-const TargetAmountTextBox = ThemeHoc(KeyBoardEventAdaptor(AmountTextBox), Widget.AmountInput, {
-  hover: true,
-  active: true,
-});
+const TargetAmountTextBox = ThemeHoc(
+  ValidateHoc(KeyBoardEventAdaptor(AmountTextBox)),
+  Widget.AmountInput,
+  {
+    hover: true,
+    active: true,
+  }
+);
 export default TargetAmountTextBox;

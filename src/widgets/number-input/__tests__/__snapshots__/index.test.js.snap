@@ -86,9 +86,7 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
   -ms-transform: translateY(50%);
   transform: translateY(50%);
   bottom: 50%;
-  line-height: 1rem;
-  font-size: 1.4em;
-  color: #999999;
+  color: #9EA4AE;
   right: 1rem;
   height: 100%;
   opacity: 0;
@@ -135,6 +133,8 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
 
 <div
   className="c0"
+  onBlur={[Function]}
+  onFocus={[Function]}
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
@@ -163,7 +163,7 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
     size="default"
     style={
       Object {
-        "color": "#333333",
+        "color": "#363B40",
         "paddingBottom": "0rem",
         "paddingLeft": "1rem",
         "paddingRight": "3.5rem",
@@ -175,7 +175,11 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
   />
   <span
     className="c2"
-    style={Object {}}
+    style={
+      Object {
+        "fontSize": "1.4rem",
+      }
+    }
   >
     <div
       className="c3"
@@ -211,6 +215,7 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
           onMouseUp={[Function]}
           style={
             Object {
+              "color": "#9EA4AE",
               "cursor": "pointer",
               "fontSize": "1rem",
             }
@@ -237,6 +242,7 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
           onMouseUp={[Function]}
           style={
             Object {
+              "color": "#9EA4AE",
               "cursor": "pointer",
               "fontSize": "1rem",
             }
@@ -334,9 +340,7 @@ exports[`NumberInput props: null 1`] = `
   -ms-transform: translateY(50%);
   transform: translateY(50%);
   bottom: 50%;
-  line-height: 1rem;
-  font-size: 1.4em;
-  color: #999999;
+  color: #9EA4AE;
   right: 1rem;
   height: 100%;
   opacity: 0;
@@ -383,6 +387,8 @@ exports[`NumberInput props: null 1`] = `
 
 <div
   className="c0"
+  onBlur={[Function]}
+  onFocus={[Function]}
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
@@ -411,7 +417,7 @@ exports[`NumberInput props: null 1`] = `
     size="default"
     style={
       Object {
-        "color": "#333333",
+        "color": "#363B40",
         "paddingBottom": "0rem",
         "paddingLeft": "1rem",
         "paddingRight": "3.5rem",
@@ -423,7 +429,11 @@ exports[`NumberInput props: null 1`] = `
   />
   <span
     className="c2"
-    style={Object {}}
+    style={
+      Object {
+        "fontSize": "1.4rem",
+      }
+    }
   >
     <div
       className="c3"
@@ -459,6 +469,7 @@ exports[`NumberInput props: null 1`] = `
           onMouseUp={[Function]}
           style={
             Object {
+              "color": "#9EA4AE",
               "cursor": "pointer",
               "fontSize": "1rem",
             }
@@ -485,6 +496,7 @@ exports[`NumberInput props: null 1`] = `
           onMouseUp={[Function]}
           style={
             Object {
+              "color": "#9EA4AE",
               "cursor": "pointer",
               "fontSize": "1rem",
             }
@@ -582,9 +594,7 @@ exports[`NumberInput props: placeholder  1`] = `
   -ms-transform: translateY(50%);
   transform: translateY(50%);
   bottom: 50%;
-  line-height: 1rem;
-  font-size: 1.4em;
-  color: #999999;
+  color: #9EA4AE;
   right: 1rem;
   height: 100%;
   opacity: 0;
@@ -631,6 +641,8 @@ exports[`NumberInput props: placeholder  1`] = `
 
 <div
   className="c0"
+  onBlur={[Function]}
+  onFocus={[Function]}
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
@@ -660,7 +672,7 @@ exports[`NumberInput props: placeholder  1`] = `
     size="default"
     style={
       Object {
-        "color": "#333333",
+        "color": "#363B40",
         "paddingBottom": "0rem",
         "paddingLeft": "1rem",
         "paddingRight": "3.5rem",
@@ -672,7 +684,11 @@ exports[`NumberInput props: placeholder  1`] = `
   />
   <span
     className="c2"
-    style={Object {}}
+    style={
+      Object {
+        "fontSize": "1.4rem",
+      }
+    }
   >
     <div
       className="c3"
@@ -708,6 +724,7 @@ exports[`NumberInput props: placeholder  1`] = `
           onMouseUp={[Function]}
           style={
             Object {
+              "color": "#9EA4AE",
               "cursor": "pointer",
               "fontSize": "1rem",
             }
@@ -734,6 +751,7 @@ exports[`NumberInput props: placeholder  1`] = `
           onMouseUp={[Function]}
           style={
             Object {
+              "color": "#9EA4AE",
               "cursor": "pointer",
               "fontSize": "1rem",
             }
@@ -831,9 +849,7 @@ exports[`NumberInput props: placeholder  2`] = `
   -ms-transform: translateY(50%);
   transform: translateY(50%);
   bottom: 50%;
-  line-height: 1rem;
-  font-size: 1.4em;
-  color: #999999;
+  color: #9EA4AE;
   right: 1rem;
   height: 100%;
   opacity: 0;
@@ -880,6 +896,8 @@ exports[`NumberInput props: placeholder  2`] = `
 
 <div
   className="c0"
+  onBlur={[Function]}
+  onFocus={[Function]}
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
@@ -909,7 +927,7 @@ exports[`NumberInput props: placeholder  2`] = `
     size="default"
     style={
       Object {
-        "color": "#333333",
+        "color": "#363B40",
         "paddingBottom": "0rem",
         "paddingLeft": "1rem",
         "paddingRight": "3.5rem",
@@ -921,7 +939,11 @@ exports[`NumberInput props: placeholder  2`] = `
   />
   <span
     className="c2"
-    style={Object {}}
+    style={
+      Object {
+        "fontSize": "1.4rem",
+      }
+    }
   >
     <div
       className="c3"
@@ -957,6 +979,7 @@ exports[`NumberInput props: placeholder  2`] = `
           onMouseUp={[Function]}
           style={
             Object {
+              "color": "#9EA4AE",
               "cursor": "pointer",
               "fontSize": "1rem",
             }
@@ -983,6 +1006,7 @@ exports[`NumberInput props: placeholder  2`] = `
           onMouseUp={[Function]}
           style={
             Object {
+              "color": "#9EA4AE",
               "cursor": "pointer",
               "fontSize": "1rem",
             }
@@ -1080,9 +1104,7 @@ exports[`NumberInput props: size 1`] = `
   -ms-transform: translateY(50%);
   transform: translateY(50%);
   bottom: 50%;
-  line-height: 1rem;
-  font-size: 1.4em;
-  color: #999999;
+  color: #9EA4AE;
   right: 1rem;
   height: 100%;
   opacity: 0;
@@ -1129,6 +1151,8 @@ exports[`NumberInput props: size 1`] = `
 
 <div
   className="c0"
+  onBlur={[Function]}
+  onFocus={[Function]}
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
@@ -1157,7 +1181,7 @@ exports[`NumberInput props: size 1`] = `
     size="small"
     style={
       Object {
-        "color": "#333333",
+        "color": "#363B40",
         "paddingBottom": "0rem",
         "paddingLeft": "1rem",
         "paddingRight": "3.5rem",
@@ -1169,7 +1193,11 @@ exports[`NumberInput props: size 1`] = `
   />
   <span
     className="c2"
-    style={Object {}}
+    style={
+      Object {
+        "fontSize": "1.4rem",
+      }
+    }
   >
     <div
       className="c3"
@@ -1205,6 +1233,7 @@ exports[`NumberInput props: size 1`] = `
           onMouseUp={[Function]}
           style={
             Object {
+              "color": "#9EA4AE",
               "cursor": "pointer",
               "fontSize": "1rem",
             }
@@ -1231,6 +1260,7 @@ exports[`NumberInput props: size 1`] = `
           onMouseUp={[Function]}
           style={
             Object {
+              "color": "#9EA4AE",
               "cursor": "pointer",
               "fontSize": "1rem",
             }
@@ -1328,9 +1358,7 @@ exports[`NumberInput props: size 2`] = `
   -ms-transform: translateY(50%);
   transform: translateY(50%);
   bottom: 50%;
-  line-height: 1rem;
-  font-size: 1.4em;
-  color: #999999;
+  color: #9EA4AE;
   right: 1rem;
   height: 100%;
   opacity: 0;
@@ -1377,6 +1405,8 @@ exports[`NumberInput props: size 2`] = `
 
 <div
   className="c0"
+  onBlur={[Function]}
+  onFocus={[Function]}
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
@@ -1405,7 +1435,7 @@ exports[`NumberInput props: size 2`] = `
     size="large"
     style={
       Object {
-        "color": "#333333",
+        "color": "#363B40",
         "paddingBottom": "0rem",
         "paddingLeft": "1rem",
         "paddingRight": "3.5rem",
@@ -1417,7 +1447,11 @@ exports[`NumberInput props: size 2`] = `
   />
   <span
     className="c2"
-    style={Object {}}
+    style={
+      Object {
+        "fontSize": "1.4rem",
+      }
+    }
   >
     <div
       className="c3"
@@ -1453,6 +1487,7 @@ exports[`NumberInput props: size 2`] = `
           onMouseUp={[Function]}
           style={
             Object {
+              "color": "#9EA4AE",
               "cursor": "pointer",
               "fontSize": "1rem",
             }
@@ -1479,6 +1514,7 @@ exports[`NumberInput props: size 2`] = `
           onMouseUp={[Function]}
           style={
             Object {
+              "color": "#9EA4AE",
               "cursor": "pointer",
               "fontSize": "1rem",
             }
