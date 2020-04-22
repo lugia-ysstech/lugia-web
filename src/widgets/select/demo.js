@@ -42,6 +42,19 @@ const config = {
     Container: {
       normal: {
         width: 300,
+        height: 50,
+        border: getBorder({ color: 'orange', width: 1, style: 'solid' }),
+      },
+      hover: {
+        border: getBorder({ color: 'blue', width: 10, style: 'solid' }),
+      },
+      active: {
+        border: getBorder({ color: 'pink', width: 10, style: 'solid' }),
+      },
+    },
+    ValidateErrorInput: {
+      normal: {
+        border: getBorder({ color: 'yellow', width: 1, style: 'solid' }),
       },
     },
   },
@@ -70,6 +83,8 @@ export default class Demo extends React.Component {
           onSelect={this.onSelect}
           isShowClearButton={false}
           displayField={'label'}
+          validateStatus={'error'}
+          validateType={'inner'}
           suffix={
             <Icon
               onClick={e => {

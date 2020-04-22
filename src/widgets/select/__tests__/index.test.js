@@ -9,9 +9,7 @@ import 'jest-styled-components';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { delay } from '@lugia/react-test-utils';
-import renderer from 'react-test-renderer';
 import Select from '../';
-import Trigger from '../../trigger';
 import Widget from '../../consts/index';
 import Theme from '../../theme';
 
@@ -739,9 +737,9 @@ describe('Select', () => {
     const cmp = mount(<Select data={data} value={value} mutliple />);
     expect(
       cmp
-        .children()
+        .find(Widget.InputTag)
         .at(0)
-        .instance().displayValue
+        .instance().props.displayValue
     ).toEqual([value]);
   });
 
@@ -751,9 +749,9 @@ describe('Select', () => {
     const cmp = mount(<Select data={data} value={value} mutliple />);
     expect(
       cmp
-        .children()
+        .find(Widget.InputTag)
         .at(0)
-        .instance().displayValue
+        .instance().props.displayValue
     ).toEqual(value);
   });
 
@@ -764,22 +762,9 @@ describe('Select', () => {
     const cmp = mount(<Select data={data} value={value} displayValue={displayValue} mutliple />);
     expect(
       cmp
-        .children()
+        .find(Widget.InputTag)
         .at(0)
-        .instance().displayValue
-    ).toEqual([displayValue]);
-  });
-
-  it('displayValue  ["szfeng"]  displayValue = \'displayValue\' not exist &  dataItem not exist', async () => {
-    const value = ['szfeng'];
-    const displayValue = 'displayValue';
-
-    const cmp = mount(<Select data={data} value={value} displayValue={displayValue} mutliple />);
-    expect(
-      cmp
-        .children()
-        .at(0)
-        .instance().displayValue
+        .instance().props.displayValue
     ).toEqual([displayValue]);
   });
 
@@ -790,22 +775,9 @@ describe('Select', () => {
     const cmp = mount(<Select data={data} value={value} displayValue={displayValue} mutliple />);
     expect(
       cmp
-        .children()
+        .find(Widget.InputTag)
         .at(0)
-        .instance().displayValue
-    ).toEqual(displayValue);
-  });
-
-  it('didUpdate ', async () => {
-    const value = ['szfeng'];
-    const displayValue = ['displayValue'];
-
-    const cmp = mount(<Select data={data} value={value} displayValue={displayValue} mutliple />);
-    expect(
-      cmp
-        .children()
-        .at(0)
-        .instance().displayValue
+        .instance().props.displayValue
     ).toEqual(displayValue);
   });
 
@@ -813,11 +785,19 @@ describe('Select', () => {
     const value = ['key-0'];
 
     const cmp = mount(<Select displayField={'label'} data={data} value={value} mutliple />);
+    console.log(
+      'cmpcmp',
+      cmp
+        .find(Widget.InputTag)
+        .at(0)
+        .instance().props.displayValue
+    );
+
     expect(
       cmp
-        .children()
+        .find(Widget.InputTag)
         .at(0)
-        .instance().displayValue
+        .instance().props.displayValue
     ).toEqual(['txt0']);
   });
 
@@ -829,9 +809,9 @@ describe('Select', () => {
     );
     expect(
       cmp
-        .children()
+        .find(Widget.InputTag)
         .at(0)
-        .instance().displayValue
+        .instance().props.displayValue
     ).toEqual(['txt0']);
   });
 
@@ -843,16 +823,16 @@ describe('Select', () => {
     );
     expect(
       cmp
-        .children()
+        .find(Widget.InputTag)
         .at(0)
-        .instance().displayValue
+        .instance().props.displayValue
     ).toEqual(['txt0']);
     cmp.setProps({ displayValue: ['hello'] });
     expect(
       cmp
-        .children()
+        .find(Widget.InputTag)
         .at(0)
-        .instance().displayValue
+        .instance().props.displayValue
     ).toEqual(['hello']);
   });
 
@@ -864,16 +844,16 @@ describe('Select', () => {
     );
     expect(
       cmp
-        .children()
+        .find(Widget.InputTag)
         .at(0)
-        .instance().displayValue
+        .instance().props.displayValue
     ).toEqual(['hello']);
     cmp.setProps({ displayValue: [] });
     expect(
       cmp
-        .children()
+        .find(Widget.InputTag)
         .at(0)
-        .instance().displayValue
+        .instance().props.displayValue
     ).toEqual(['txt0']);
   });
 

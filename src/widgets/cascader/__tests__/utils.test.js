@@ -87,7 +87,7 @@ const treeData = [
   { value: 'a6-2-3', text: '三级菜单6-2-3', pid: 'a6-2', path: 'a6/a6-2', isLeaf: true },
 ];
 
-describe('Cascader', () => {
+describe('Cascader utils', () => {
   it('getInitStart ', () => {
     expect(isHasValue({})).toBeFalsy();
     expect(isHasValue({ value: null })).toBeTruthy();

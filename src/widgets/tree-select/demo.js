@@ -269,6 +269,8 @@ export default class DefaultTreeSelect extends React.Component<any, any> {
   render() {
     return (
       <TreeSelect
+        validateStatus={'error'}
+        validateType={'inner'}
         theme={theme}
         data={data}
         onlySelectLeaf
