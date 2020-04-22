@@ -8,7 +8,6 @@ import * as React from 'react';
 import Theme from '../theme';
 import NumberInput from './';
 import Button from '../button';
-import Widget from '../consts/index';
 import styled from 'styled-components';
 
 export class LimitNumberInput extends React.Component<any, any> {
@@ -90,28 +89,11 @@ class ValidateInput extends React.Component<any, any> {
 }
 
 const Wrapper = styled.div`
-  float: left;
   margin-left: 50px;
 `;
 
 const NumberInputDemo = () => {
-  const view = {
-    [Widget.NumberInput]: {
-      Container: {
-        normal: {
-          width: 800,
-          height: 40,
-        },
-      },
-      ArrowIconContainer: { normal: { fontSize: 14, width: 40 } },
-      InputArrowIcon: {
-        hover: { color: 'blue', fontSize: 30 },
-      },
-      ValidateErrorText: {
-        normal: { color: 'orange', fontSize: 16 },
-      },
-    },
-  };
+  const view = {};
   const onChange = (cmpName: string) => (value: any) => {};
   const formatter = (value: string) => {
     return `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
