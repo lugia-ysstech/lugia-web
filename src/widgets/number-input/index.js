@@ -474,7 +474,6 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
         onBlur={this.onBlur}
         onFocus={this.onFocus}
         onChange={this.handleChange}
-        validateStatus={undefined}
         {...addMouseEvent(this)}
       />
     );
@@ -529,13 +528,9 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
   }
 }
 
-const TargetNumberInput = ThemeHoc(
-  ValidateHoc(KeyBoardEventAdaptor(NumberTextBox)),
-  Widget.NumberInput,
-  {
-    hover: true,
-    focus: true,
-    active: true,
-  }
-);
+const TargetNumberInput = ThemeHoc(KeyBoardEventAdaptor(NumberTextBox), Widget.NumberInput, {
+  hover: true,
+  focus: true,
+  active: true,
+});
 export default TargetNumberInput;

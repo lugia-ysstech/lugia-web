@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
-.c5 {
+.c6 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -17,7 +17,14 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
   transition: all 0.3s;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.c2 {
   box-sizing: border-box;
   line-height: 1.5;
   display: inline-block;
@@ -36,27 +43,27 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
   border-bottom-left-radius: 0.4rem;
 }
 
-.c1::-webkit-input-placeholder {
+.c2::-webkit-input-placeholder {
   color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
   font-size: 1.2rem;
 }
 
-.c1::-moz-placeholder {
+.c2::-moz-placeholder {
   color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
   font-size: 1.2rem;
 }
 
-.c1:-ms-input-placeholder {
+.c2:-ms-input-placeholder {
   color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
   font-size: 1.2rem;
 }
 
-.c1::placeholder {
+.c2::placeholder {
   color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
   font-size: 1.2rem;
 }
 
-.c0 {
+.c1 {
   position: relative;
   display: inline-block;
   outline: none;
@@ -80,7 +87,7 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
   border-bottom-left-radius: 0.4rem;
 }
 
-.c2 {
+.c3 {
   position: absolute;
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
@@ -95,7 +102,7 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
   right: 0;
 }
 
-.c3 {
+.c4 {
   height: 100%;
   border-left: 0.1rem solid #cccccc;
   -webkit-transition: all 0.3s linear 0.1s;
@@ -104,7 +111,7 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
   box-sizing: border-box;
 }
 
-.c6 {
+.c7 {
   text-align: center;
   color: rgba(0,0,0,0.45);
   position: relative;
@@ -118,7 +125,7 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
   cursor: pointer;
 }
 
-.c4 {
+.c5 {
   text-align: center;
   color: rgba(0,0,0,0.45);
   position: relative;
@@ -135,128 +142,135 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
   className="c0"
   onBlur={[Function]}
   onFocus={[Function]}
-  onMouseDown={[Function]}
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
-  onMouseUp={[Function]}
-  style={
-    Object {
-      "height": "3.2rem",
-      "width": "100%",
-    }
-  }
+  style={Object {}}
 >
-  <input
-    autoFocus={false}
+  <div
     className="c1"
-    disabled={false}
     onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
     onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyPress={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     onMouseUp={[Function]}
-    size="default"
     style={
       Object {
-        "color": "#363B40",
-        "paddingBottom": "0rem",
-        "paddingLeft": "1rem",
-        "paddingRight": "3.5rem",
-        "paddingTop": "0rem",
-      }
-    }
-    type="text"
-    value=""
-  />
-  <span
-    className="c2"
-    style={
-      Object {
-        "fontSize": "1.4rem",
+        "height": "3.2rem",
+        "width": "100%",
       }
     }
   >
-    <div
-      className="c3"
+    <input
+      autoFocus={false}
+      className="c2"
       disabled={false}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       onMouseUp={[Function]}
+      size="default"
       style={
         Object {
-          "cursor": "pointer",
-          "width": "2.2rem",
+          "color": "#363B40",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1rem",
+          "paddingRight": "3.5rem",
+          "paddingTop": "0rem",
+        }
+      }
+      type="text"
+      value=""
+    />
+    <span
+      className="c3"
+      style={
+        Object {
+          "fontSize": "1.4rem",
         }
       }
     >
-      <span
+      <div
         className="c4"
         disabled={false}
-        onClick={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
+        style={
+          Object {
+            "cursor": "pointer",
+            "width": "2.2rem",
+          }
+        }
       >
-        <i
-          className="lugia-icon-direction_up   c5"
+        <span
+          className="c5"
           disabled={false}
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "color": "#9EA4AE",
-              "cursor": "pointer",
-              "fontSize": "1rem",
+          style={Object {}}
+        >
+          <i
+            className="lugia-icon-direction_up   c6"
+            disabled={false}
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#9EA4AE",
+                "cursor": "pointer",
+                "fontSize": "1rem",
+              }
             }
-          }
-        />
-      </span>
-      <span
-        className="c6"
-        disabled={false}
-        onClick={[Function]}
-        onMouseDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        style={Object {}}
-      >
-        <i
-          className="lugia-icon-direction_down   c5"
+          />
+        </span>
+        <span
+          className="c7"
           disabled={false}
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "color": "#9EA4AE",
-              "cursor": "pointer",
-              "fontSize": "1rem",
+          style={Object {}}
+        >
+          <i
+            className="lugia-icon-direction_down   c6"
+            disabled={false}
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#9EA4AE",
+                "cursor": "pointer",
+                "fontSize": "1rem",
+              }
             }
-          }
-        />
-      </span>
-    </div>
-  </span>
+          />
+        </span>
+      </div>
+    </span>
+  </div>
 </div>
 `;
 
 exports[`NumberInput props: null 1`] = `
-.c5 {
+.c6 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -272,7 +286,14 @@ exports[`NumberInput props: null 1`] = `
   transition: all 0.3s;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.c2 {
   box-sizing: border-box;
   line-height: 1.5;
   display: inline-block;
@@ -291,27 +312,27 @@ exports[`NumberInput props: null 1`] = `
   border-bottom-left-radius: 0.4rem;
 }
 
-.c1::-webkit-input-placeholder {
+.c2::-webkit-input-placeholder {
   color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
   font-size: 1.2rem;
 }
 
-.c1::-moz-placeholder {
+.c2::-moz-placeholder {
   color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
   font-size: 1.2rem;
 }
 
-.c1:-ms-input-placeholder {
+.c2:-ms-input-placeholder {
   color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
   font-size: 1.2rem;
 }
 
-.c1::placeholder {
+.c2::placeholder {
   color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
   font-size: 1.2rem;
 }
 
-.c0 {
+.c1 {
   position: relative;
   display: inline-block;
   outline: none;
@@ -335,7 +356,7 @@ exports[`NumberInput props: null 1`] = `
   border-bottom-left-radius: 0.4rem;
 }
 
-.c2 {
+.c3 {
   position: absolute;
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
@@ -350,7 +371,7 @@ exports[`NumberInput props: null 1`] = `
   right: 0;
 }
 
-.c3 {
+.c4 {
   height: 100%;
   border-left: 0.1rem solid #cccccc;
   -webkit-transition: all 0.3s linear 0.1s;
@@ -359,7 +380,7 @@ exports[`NumberInput props: null 1`] = `
   box-sizing: border-box;
 }
 
-.c6 {
+.c7 {
   text-align: center;
   color: rgba(0,0,0,0.45);
   position: relative;
@@ -373,7 +394,7 @@ exports[`NumberInput props: null 1`] = `
   cursor: pointer;
 }
 
-.c4 {
+.c5 {
   text-align: center;
   color: rgba(0,0,0,0.45);
   position: relative;
@@ -390,128 +411,135 @@ exports[`NumberInput props: null 1`] = `
   className="c0"
   onBlur={[Function]}
   onFocus={[Function]}
-  onMouseDown={[Function]}
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
-  onMouseUp={[Function]}
-  style={
-    Object {
-      "height": "3.2rem",
-      "width": "100%",
-    }
-  }
+  style={Object {}}
 >
-  <input
-    autoFocus={false}
+  <div
     className="c1"
-    disabled={false}
     onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
     onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyPress={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     onMouseUp={[Function]}
-    size="default"
     style={
       Object {
-        "color": "#363B40",
-        "paddingBottom": "0rem",
-        "paddingLeft": "1rem",
-        "paddingRight": "3.5rem",
-        "paddingTop": "0rem",
-      }
-    }
-    type="text"
-    value=""
-  />
-  <span
-    className="c2"
-    style={
-      Object {
-        "fontSize": "1.4rem",
+        "height": "3.2rem",
+        "width": "100%",
       }
     }
   >
-    <div
-      className="c3"
+    <input
+      autoFocus={false}
+      className="c2"
       disabled={false}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       onMouseUp={[Function]}
+      size="default"
       style={
         Object {
-          "cursor": "pointer",
-          "width": "2.2rem",
+          "color": "#363B40",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1rem",
+          "paddingRight": "3.5rem",
+          "paddingTop": "0rem",
+        }
+      }
+      type="text"
+      value=""
+    />
+    <span
+      className="c3"
+      style={
+        Object {
+          "fontSize": "1.4rem",
         }
       }
     >
-      <span
+      <div
         className="c4"
         disabled={false}
-        onClick={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
+        style={
+          Object {
+            "cursor": "pointer",
+            "width": "2.2rem",
+          }
+        }
       >
-        <i
-          className="lugia-icon-direction_up   c5"
+        <span
+          className="c5"
           disabled={false}
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "color": "#9EA4AE",
-              "cursor": "pointer",
-              "fontSize": "1rem",
+          style={Object {}}
+        >
+          <i
+            className="lugia-icon-direction_up   c6"
+            disabled={false}
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#9EA4AE",
+                "cursor": "pointer",
+                "fontSize": "1rem",
+              }
             }
-          }
-        />
-      </span>
-      <span
-        className="c6"
-        disabled={false}
-        onClick={[Function]}
-        onMouseDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        style={Object {}}
-      >
-        <i
-          className="lugia-icon-direction_down   c5"
+          />
+        </span>
+        <span
+          className="c7"
           disabled={false}
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "color": "#9EA4AE",
-              "cursor": "pointer",
-              "fontSize": "1rem",
+          style={Object {}}
+        >
+          <i
+            className="lugia-icon-direction_down   c6"
+            disabled={false}
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#9EA4AE",
+                "cursor": "pointer",
+                "fontSize": "1rem",
+              }
             }
-          }
-        />
-      </span>
-    </div>
-  </span>
+          />
+        </span>
+      </div>
+    </span>
+  </div>
 </div>
 `;
 
 exports[`NumberInput props: placeholder  1`] = `
-.c5 {
+.c6 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -527,7 +555,14 @@ exports[`NumberInput props: placeholder  1`] = `
   transition: all 0.3s;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.c2 {
   box-sizing: border-box;
   line-height: 1.5;
   display: inline-block;
@@ -546,27 +581,27 @@ exports[`NumberInput props: placeholder  1`] = `
   border-bottom-left-radius: 0.4rem;
 }
 
-.c1::-webkit-input-placeholder {
+.c2::-webkit-input-placeholder {
   color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
   font-size: 1.2rem;
 }
 
-.c1::-moz-placeholder {
+.c2::-moz-placeholder {
   color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
   font-size: 1.2rem;
 }
 
-.c1:-ms-input-placeholder {
+.c2:-ms-input-placeholder {
   color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
   font-size: 1.2rem;
 }
 
-.c1::placeholder {
+.c2::placeholder {
   color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
   font-size: 1.2rem;
 }
 
-.c0 {
+.c1 {
   position: relative;
   display: inline-block;
   outline: none;
@@ -590,7 +625,7 @@ exports[`NumberInput props: placeholder  1`] = `
   border-bottom-left-radius: 0.4rem;
 }
 
-.c2 {
+.c3 {
   position: absolute;
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
@@ -605,7 +640,7 @@ exports[`NumberInput props: placeholder  1`] = `
   right: 0;
 }
 
-.c3 {
+.c4 {
   height: 100%;
   border-left: 0.1rem solid #cccccc;
   -webkit-transition: all 0.3s linear 0.1s;
@@ -614,7 +649,7 @@ exports[`NumberInput props: placeholder  1`] = `
   box-sizing: border-box;
 }
 
-.c6 {
+.c7 {
   text-align: center;
   color: rgba(0,0,0,0.45);
   position: relative;
@@ -628,7 +663,7 @@ exports[`NumberInput props: placeholder  1`] = `
   cursor: pointer;
 }
 
-.c4 {
+.c5 {
   text-align: center;
   color: rgba(0,0,0,0.45);
   position: relative;
@@ -645,129 +680,136 @@ exports[`NumberInput props: placeholder  1`] = `
   className="c0"
   onBlur={[Function]}
   onFocus={[Function]}
-  onMouseDown={[Function]}
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
-  onMouseUp={[Function]}
-  style={
-    Object {
-      "height": "3.2rem",
-      "width": "100%",
-    }
-  }
+  style={Object {}}
 >
-  <input
-    autoFocus={false}
+  <div
     className="c1"
-    disabled={false}
     onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
     onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyPress={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     onMouseUp={[Function]}
-    placeholder="请填写内容"
-    size="default"
     style={
       Object {
-        "color": "#363B40",
-        "paddingBottom": "0rem",
-        "paddingLeft": "1rem",
-        "paddingRight": "3.5rem",
-        "paddingTop": "0rem",
-      }
-    }
-    type="text"
-    value=""
-  />
-  <span
-    className="c2"
-    style={
-      Object {
-        "fontSize": "1.4rem",
+        "height": "3.2rem",
+        "width": "100%",
       }
     }
   >
-    <div
-      className="c3"
+    <input
+      autoFocus={false}
+      className="c2"
       disabled={false}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       onMouseUp={[Function]}
+      placeholder="请填写内容"
+      size="default"
       style={
         Object {
-          "cursor": "pointer",
-          "width": "2.2rem",
+          "color": "#363B40",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1rem",
+          "paddingRight": "3.5rem",
+          "paddingTop": "0rem",
+        }
+      }
+      type="text"
+      value=""
+    />
+    <span
+      className="c3"
+      style={
+        Object {
+          "fontSize": "1.4rem",
         }
       }
     >
-      <span
+      <div
         className="c4"
         disabled={false}
-        onClick={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
+        style={
+          Object {
+            "cursor": "pointer",
+            "width": "2.2rem",
+          }
+        }
       >
-        <i
-          className="lugia-icon-direction_up   c5"
+        <span
+          className="c5"
           disabled={false}
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "color": "#9EA4AE",
-              "cursor": "pointer",
-              "fontSize": "1rem",
+          style={Object {}}
+        >
+          <i
+            className="lugia-icon-direction_up   c6"
+            disabled={false}
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#9EA4AE",
+                "cursor": "pointer",
+                "fontSize": "1rem",
+              }
             }
-          }
-        />
-      </span>
-      <span
-        className="c6"
-        disabled={false}
-        onClick={[Function]}
-        onMouseDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        style={Object {}}
-      >
-        <i
-          className="lugia-icon-direction_down   c5"
+          />
+        </span>
+        <span
+          className="c7"
           disabled={false}
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "color": "#9EA4AE",
-              "cursor": "pointer",
-              "fontSize": "1rem",
+          style={Object {}}
+        >
+          <i
+            className="lugia-icon-direction_down   c6"
+            disabled={false}
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#9EA4AE",
+                "cursor": "pointer",
+                "fontSize": "1rem",
+              }
             }
-          }
-        />
-      </span>
-    </div>
-  </span>
+          />
+        </span>
+      </div>
+    </span>
+  </div>
 </div>
 `;
 
 exports[`NumberInput props: placeholder  2`] = `
-.c5 {
+.c6 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -783,7 +825,14 @@ exports[`NumberInput props: placeholder  2`] = `
   transition: all 0.3s;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.c2 {
   box-sizing: border-box;
   line-height: 1.5;
   display: inline-block;
@@ -802,27 +851,27 @@ exports[`NumberInput props: placeholder  2`] = `
   border-bottom-left-radius: 0.4rem;
 }
 
-.c1::-webkit-input-placeholder {
+.c2::-webkit-input-placeholder {
   color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
   font-size: 1.2rem;
 }
 
-.c1::-moz-placeholder {
+.c2::-moz-placeholder {
   color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
   font-size: 1.2rem;
 }
 
-.c1:-ms-input-placeholder {
+.c2:-ms-input-placeholder {
   color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
   font-size: 1.2rem;
 }
 
-.c1::placeholder {
+.c2::placeholder {
   color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
   font-size: 1.2rem;
 }
 
-.c0 {
+.c1 {
   position: relative;
   display: inline-block;
   outline: none;
@@ -846,7 +895,7 @@ exports[`NumberInput props: placeholder  2`] = `
   border-bottom-left-radius: 0.4rem;
 }
 
-.c2 {
+.c3 {
   position: absolute;
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
@@ -861,7 +910,7 @@ exports[`NumberInput props: placeholder  2`] = `
   right: 0;
 }
 
-.c3 {
+.c4 {
   height: 100%;
   border-left: 0.1rem solid #cccccc;
   -webkit-transition: all 0.3s linear 0.1s;
@@ -870,7 +919,7 @@ exports[`NumberInput props: placeholder  2`] = `
   box-sizing: border-box;
 }
 
-.c6 {
+.c7 {
   text-align: center;
   color: rgba(0,0,0,0.45);
   position: relative;
@@ -884,7 +933,7 @@ exports[`NumberInput props: placeholder  2`] = `
   cursor: pointer;
 }
 
-.c4 {
+.c5 {
   text-align: center;
   color: rgba(0,0,0,0.45);
   position: relative;
@@ -901,129 +950,136 @@ exports[`NumberInput props: placeholder  2`] = `
   className="c0"
   onBlur={[Function]}
   onFocus={[Function]}
-  onMouseDown={[Function]}
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
-  onMouseUp={[Function]}
-  style={
-    Object {
-      "height": "3.2rem",
-      "width": "100%",
-    }
-  }
+  style={Object {}}
 >
-  <input
-    autoFocus={false}
+  <div
     className="c1"
-    disabled={false}
     onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
     onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyPress={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     onMouseUp={[Function]}
-    placeholder=""
-    size="default"
     style={
       Object {
-        "color": "#363B40",
-        "paddingBottom": "0rem",
-        "paddingLeft": "1rem",
-        "paddingRight": "3.5rem",
-        "paddingTop": "0rem",
-      }
-    }
-    type="text"
-    value=""
-  />
-  <span
-    className="c2"
-    style={
-      Object {
-        "fontSize": "1.4rem",
+        "height": "3.2rem",
+        "width": "100%",
       }
     }
   >
-    <div
-      className="c3"
+    <input
+      autoFocus={false}
+      className="c2"
       disabled={false}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       onMouseUp={[Function]}
+      placeholder=""
+      size="default"
       style={
         Object {
-          "cursor": "pointer",
-          "width": "2.2rem",
+          "color": "#363B40",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1rem",
+          "paddingRight": "3.5rem",
+          "paddingTop": "0rem",
+        }
+      }
+      type="text"
+      value=""
+    />
+    <span
+      className="c3"
+      style={
+        Object {
+          "fontSize": "1.4rem",
         }
       }
     >
-      <span
+      <div
         className="c4"
         disabled={false}
-        onClick={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
+        style={
+          Object {
+            "cursor": "pointer",
+            "width": "2.2rem",
+          }
+        }
       >
-        <i
-          className="lugia-icon-direction_up   c5"
+        <span
+          className="c5"
           disabled={false}
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "color": "#9EA4AE",
-              "cursor": "pointer",
-              "fontSize": "1rem",
+          style={Object {}}
+        >
+          <i
+            className="lugia-icon-direction_up   c6"
+            disabled={false}
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#9EA4AE",
+                "cursor": "pointer",
+                "fontSize": "1rem",
+              }
             }
-          }
-        />
-      </span>
-      <span
-        className="c6"
-        disabled={false}
-        onClick={[Function]}
-        onMouseDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        style={Object {}}
-      >
-        <i
-          className="lugia-icon-direction_down   c5"
+          />
+        </span>
+        <span
+          className="c7"
           disabled={false}
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "color": "#9EA4AE",
-              "cursor": "pointer",
-              "fontSize": "1rem",
+          style={Object {}}
+        >
+          <i
+            className="lugia-icon-direction_down   c6"
+            disabled={false}
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#9EA4AE",
+                "cursor": "pointer",
+                "fontSize": "1rem",
+              }
             }
-          }
-        />
-      </span>
-    </div>
-  </span>
+          />
+        </span>
+      </div>
+    </span>
+  </div>
 </div>
 `;
 
 exports[`NumberInput props: size 1`] = `
-.c5 {
+.c6 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1039,7 +1095,14 @@ exports[`NumberInput props: size 1`] = `
   transition: all 0.3s;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.c2 {
   box-sizing: border-box;
   line-height: 1.5;
   display: inline-block;
@@ -1058,27 +1121,27 @@ exports[`NumberInput props: size 1`] = `
   border-bottom-left-radius: 0.4rem;
 }
 
-.c1::-webkit-input-placeholder {
+.c2::-webkit-input-placeholder {
   color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
   font-size: 1.2rem;
 }
 
-.c1::-moz-placeholder {
+.c2::-moz-placeholder {
   color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
   font-size: 1.2rem;
 }
 
-.c1:-ms-input-placeholder {
+.c2:-ms-input-placeholder {
   color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
   font-size: 1.2rem;
 }
 
-.c1::placeholder {
+.c2::placeholder {
   color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
   font-size: 1.2rem;
 }
 
-.c0 {
+.c1 {
   position: relative;
   display: inline-block;
   outline: none;
@@ -1102,7 +1165,7 @@ exports[`NumberInput props: size 1`] = `
   border-bottom-left-radius: 0.4rem;
 }
 
-.c2 {
+.c3 {
   position: absolute;
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
@@ -1117,7 +1180,7 @@ exports[`NumberInput props: size 1`] = `
   right: 0;
 }
 
-.c3 {
+.c4 {
   height: 100%;
   border-left: 0.1rem solid #cccccc;
   -webkit-transition: all 0.3s linear 0.1s;
@@ -1126,7 +1189,7 @@ exports[`NumberInput props: size 1`] = `
   box-sizing: border-box;
 }
 
-.c6 {
+.c7 {
   text-align: center;
   color: rgba(0,0,0,0.45);
   position: relative;
@@ -1140,7 +1203,7 @@ exports[`NumberInput props: size 1`] = `
   cursor: pointer;
 }
 
-.c4 {
+.c5 {
   text-align: center;
   color: rgba(0,0,0,0.45);
   position: relative;
@@ -1157,128 +1220,135 @@ exports[`NumberInput props: size 1`] = `
   className="c0"
   onBlur={[Function]}
   onFocus={[Function]}
-  onMouseDown={[Function]}
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
-  onMouseUp={[Function]}
-  style={
-    Object {
-      "height": "2.4rem",
-      "width": "100%",
-    }
-  }
+  style={Object {}}
 >
-  <input
-    autoFocus={false}
+  <div
     className="c1"
-    disabled={false}
     onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
     onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyPress={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     onMouseUp={[Function]}
-    size="small"
     style={
       Object {
-        "color": "#363B40",
-        "paddingBottom": "0rem",
-        "paddingLeft": "1rem",
-        "paddingRight": "3.5rem",
-        "paddingTop": "0rem",
-      }
-    }
-    type="text"
-    value=""
-  />
-  <span
-    className="c2"
-    style={
-      Object {
-        "fontSize": "1.4rem",
+        "height": "2.4rem",
+        "width": "100%",
       }
     }
   >
-    <div
-      className="c3"
+    <input
+      autoFocus={false}
+      className="c2"
       disabled={false}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       onMouseUp={[Function]}
+      size="small"
       style={
         Object {
-          "cursor": "pointer",
-          "width": "2.2rem",
+          "color": "#363B40",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1rem",
+          "paddingRight": "3.5rem",
+          "paddingTop": "0rem",
+        }
+      }
+      type="text"
+      value=""
+    />
+    <span
+      className="c3"
+      style={
+        Object {
+          "fontSize": "1.4rem",
         }
       }
     >
-      <span
+      <div
         className="c4"
         disabled={false}
-        onClick={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
+        style={
+          Object {
+            "cursor": "pointer",
+            "width": "2.2rem",
+          }
+        }
       >
-        <i
-          className="lugia-icon-direction_up   c5"
+        <span
+          className="c5"
           disabled={false}
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "color": "#9EA4AE",
-              "cursor": "pointer",
-              "fontSize": "1rem",
+          style={Object {}}
+        >
+          <i
+            className="lugia-icon-direction_up   c6"
+            disabled={false}
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#9EA4AE",
+                "cursor": "pointer",
+                "fontSize": "1rem",
+              }
             }
-          }
-        />
-      </span>
-      <span
-        className="c6"
-        disabled={false}
-        onClick={[Function]}
-        onMouseDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        style={Object {}}
-      >
-        <i
-          className="lugia-icon-direction_down   c5"
+          />
+        </span>
+        <span
+          className="c7"
           disabled={false}
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "color": "#9EA4AE",
-              "cursor": "pointer",
-              "fontSize": "1rem",
+          style={Object {}}
+        >
+          <i
+            className="lugia-icon-direction_down   c6"
+            disabled={false}
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#9EA4AE",
+                "cursor": "pointer",
+                "fontSize": "1rem",
+              }
             }
-          }
-        />
-      </span>
-    </div>
-  </span>
+          />
+        </span>
+      </div>
+    </span>
+  </div>
 </div>
 `;
 
 exports[`NumberInput props: size 2`] = `
-.c5 {
+.c6 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1294,7 +1364,14 @@ exports[`NumberInput props: size 2`] = `
   transition: all 0.3s;
 }
 
-.c1 {
+.c0 {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.c2 {
   box-sizing: border-box;
   line-height: 1.5;
   display: inline-block;
@@ -1313,27 +1390,27 @@ exports[`NumberInput props: size 2`] = `
   border-bottom-left-radius: 0.4rem;
 }
 
-.c1::-webkit-input-placeholder {
+.c2::-webkit-input-placeholder {
   color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
   font-size: 1.2rem;
 }
 
-.c1::-moz-placeholder {
+.c2::-moz-placeholder {
   color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
   font-size: 1.2rem;
 }
 
-.c1:-ms-input-placeholder {
+.c2:-ms-input-placeholder {
   color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
   font-size: 1.2rem;
 }
 
-.c1::placeholder {
+.c2::placeholder {
   color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
   font-size: 1.2rem;
 }
 
-.c0 {
+.c1 {
   position: relative;
   display: inline-block;
   outline: none;
@@ -1357,7 +1434,7 @@ exports[`NumberInput props: size 2`] = `
   border-bottom-left-radius: 0.4rem;
 }
 
-.c2 {
+.c3 {
   position: absolute;
   -webkit-transform: translateY(50%);
   -ms-transform: translateY(50%);
@@ -1372,7 +1449,7 @@ exports[`NumberInput props: size 2`] = `
   right: 0;
 }
 
-.c3 {
+.c4 {
   height: 100%;
   border-left: 0.1rem solid #cccccc;
   -webkit-transition: all 0.3s linear 0.1s;
@@ -1381,7 +1458,7 @@ exports[`NumberInput props: size 2`] = `
   box-sizing: border-box;
 }
 
-.c6 {
+.c7 {
   text-align: center;
   color: rgba(0,0,0,0.45);
   position: relative;
@@ -1395,7 +1472,7 @@ exports[`NumberInput props: size 2`] = `
   cursor: pointer;
 }
 
-.c4 {
+.c5 {
   text-align: center;
   color: rgba(0,0,0,0.45);
   position: relative;
@@ -1412,122 +1489,129 @@ exports[`NumberInput props: size 2`] = `
   className="c0"
   onBlur={[Function]}
   onFocus={[Function]}
-  onMouseDown={[Function]}
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
-  onMouseUp={[Function]}
-  style={
-    Object {
-      "height": "4rem",
-      "width": "100%",
-    }
-  }
+  style={Object {}}
 >
-  <input
-    autoFocus={false}
+  <div
     className="c1"
-    disabled={false}
     onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
     onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyPress={[Function]}
-    onKeyUp={[Function]}
     onMouseDown={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     onMouseUp={[Function]}
-    size="large"
     style={
       Object {
-        "color": "#363B40",
-        "paddingBottom": "0rem",
-        "paddingLeft": "1rem",
-        "paddingRight": "3.5rem",
-        "paddingTop": "0rem",
-      }
-    }
-    type="text"
-    value=""
-  />
-  <span
-    className="c2"
-    style={
-      Object {
-        "fontSize": "1.4rem",
+        "height": "4rem",
+        "width": "100%",
       }
     }
   >
-    <div
-      className="c3"
+    <input
+      autoFocus={false}
+      className="c2"
       disabled={false}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       onMouseUp={[Function]}
+      size="large"
       style={
         Object {
-          "cursor": "pointer",
-          "width": "2.2rem",
+          "color": "#363B40",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1rem",
+          "paddingRight": "3.5rem",
+          "paddingTop": "0rem",
+        }
+      }
+      type="text"
+      value=""
+    />
+    <span
+      className="c3"
+      style={
+        Object {
+          "fontSize": "1.4rem",
         }
       }
     >
-      <span
+      <div
         className="c4"
         disabled={false}
-        onClick={[Function]}
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
+        style={
+          Object {
+            "cursor": "pointer",
+            "width": "2.2rem",
+          }
+        }
       >
-        <i
-          className="lugia-icon-direction_up   c5"
+        <span
+          className="c5"
           disabled={false}
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "color": "#9EA4AE",
-              "cursor": "pointer",
-              "fontSize": "1rem",
+          style={Object {}}
+        >
+          <i
+            className="lugia-icon-direction_up   c6"
+            disabled={false}
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#9EA4AE",
+                "cursor": "pointer",
+                "fontSize": "1rem",
+              }
             }
-          }
-        />
-      </span>
-      <span
-        className="c6"
-        disabled={false}
-        onClick={[Function]}
-        onMouseDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        style={Object {}}
-      >
-        <i
-          className="lugia-icon-direction_down   c5"
+          />
+        </span>
+        <span
+          className="c7"
           disabled={false}
           onClick={[Function]}
           onMouseDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           onMouseUp={[Function]}
-          style={
-            Object {
-              "color": "#9EA4AE",
-              "cursor": "pointer",
-              "fontSize": "1rem",
+          style={Object {}}
+        >
+          <i
+            className="lugia-icon-direction_down   c6"
+            disabled={false}
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#9EA4AE",
+                "cursor": "pointer",
+                "fontSize": "1rem",
+              }
             }
-          }
-        />
-      </span>
-    </div>
-  </span>
+          />
+        </span>
+      </div>
+    </span>
+  </div>
 </div>
 `;
