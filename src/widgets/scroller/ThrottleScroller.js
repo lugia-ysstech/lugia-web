@@ -126,6 +126,9 @@ export default (
       const { data = [], autoHeight = false, getPartOfThemeProps } = this.props;
       const { themeConfig: { normal: { height } = {} } = {} } = getPartOfThemeProps(TargetWrapName);
 
+      if (!data || data.length === 0) {
+        return false;
+      }
       return autoHeight
         ? autoHeight
         : this.itemHeight * data.length <= this.getDefaultHeight() && !height

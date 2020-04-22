@@ -811,7 +811,7 @@ describe('autocomplete', () => {
   }
 
   function findOldValueSpan(cmp: Object) {
-    return cmp.find('oldValueTitleSpan');
+    return cmp.find('OldValueTitle');
   }
   function getOldValue(cmp: Object) {
     return findOldValueSpan(cmp)
@@ -821,7 +821,7 @@ describe('autocomplete', () => {
 
   function clickClearButton(cmp: Object) {
     return cmp
-      .find('ClearButton')
+      .find('i')
       .at(0)
       .simulate('click', {});
   }
