@@ -85,7 +85,7 @@ const getStyleCSS = (props: CheckBoxType): string => {
   }
   return `
     display: inline-block;
-    margin-right: ${last ? 0 : em(get('marginToSameElement'))};
+    margin-right: ${last ? 0 : em(get('marginToDifferentElement'))};
   `;
 };
 
