@@ -9,7 +9,8 @@
     },
     "validateType": {
       "type": "ValidateType",
-      "desc": "校验信息显示类型"
+      "desc": "校验信息显示类型",
+      "propsDefaultValue": "top"
     },
     "data": {
       "type": "object[]",
