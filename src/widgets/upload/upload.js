@@ -147,10 +147,15 @@ class Upload extends React.Component<UploadProps, StateProps> {
           setChoosedFile={this.setChoosedFile}
           setAutoUploadState={this.setAutoUploadState}
           setDeleteList={this.setDeleteList}
+          getInputRef={this.getInputRef}
         />
       </Container>
     );
   }
+
+  getInputRef = (element: any) => {
+    this.input = element;
+  };
 
   setChoosedFile = (res: Array<Object>): void => {
     const { multiple } = this.props;
@@ -262,7 +267,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
         this.uploadProgress(res, hashMark);
       },
       onComplete: res => {
-        this.uploadComplete(res, hashMark);
+        this.uploadComplete(res);
       },
     });
   };
@@ -296,8 +301,9 @@ class Upload extends React.Component<UploadProps, StateProps> {
     onSuccess && onSuccess(res, this.getResponse(fileListDone));
   };
 
-  uploadComplete = (res: Object, hashMark: string): void => {
+  uploadComplete = (res: Object): void => {
     const { onComplete } = this.props;
+    this.input.value = '';
     onComplete && onComplete(res.currentTarget.response);
   };
 
@@ -322,7 +328,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
       { target: 'status', value: 'fail' },
     ]);
     this.setStateValue({ classNameStatus: 'fail', fileListDone: list });
-
+    this.input.value = '';
     const { onFail } = this.props;
     onFail && onFail(res);
   };

@@ -596,6 +596,7 @@ type DefProps = {
   themeProps: Object,
   getPartOfThemeHocProps: Function,
   getPartOfThemeProps: Function,
+  getInputRef: Function,
 };
 type StateProps = {
   status: string,
@@ -666,6 +667,8 @@ class GetElement extends React.Component<DefProps, StateProps> {
     }
     const element = input;
     if (element) {
+      const { getInputRef } = this.props;
+      getInputRef && getInputRef(element);
       this.setState({
         inputElement: element,
       });
@@ -922,7 +925,6 @@ class GetElement extends React.Component<DefProps, StateProps> {
     const { inputElement } = this.state;
     const { disabled } = this.props;
     if (disabled || !inputElement) return;
-
     inputElement.click();
   };
   handleClickToSubmit = () => {
