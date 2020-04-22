@@ -6,12 +6,13 @@ import get from '../css/theme-common-dict';
 import { getWidthCSS } from './utils';
 const { px2remcss } = units;
 const dangerColor = '$lugia-dict.@lugia/lugia-web.dangerColor';
+const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 
 function getTipShowCSS(themeProps: Object) {
   const { propsConfig } = themeProps;
-  const { validateStatus, _isValidateVisible = true } = propsConfig;
+  const { validateStatus, _isValidateVisible = false } = propsConfig;
   const theVisibility =
-    isValidateError(validateStatus) && _isValidateVisible ? 'visible' : 'hidden';
+    isValidateError(validateStatus) && !_isValidateVisible ? 'visible' : 'hidden';
   return `visibility:${theVisibility}`;
 }
 
@@ -45,23 +46,26 @@ export const InnerTipText: Object = CSSComponent({
   tag: 'span',
   className: 'InnerTip',
   normal: {
-    selectNames: [['font'], ['fontSize'], ['color']],
+    selectNames: [['font'], ['fontSize'], ['color'], ['background']],
     defaultTheme: {
       color: dangerColor,
       fontSize: 12,
     },
     getCSS(themeMeta: Object, themeProps: Object) {
-      return getTipShowCSS(themeProps);
+      const { background } = themeMeta;
+      const theColor = background && background.color ? background.color : get('defaultColor');
+      return `${getTipShowCSS(themeProps)};background-color:${theColor};
+          box-shadow: ${px2remcss(-14)} 0 ${px2remcss(6)} 0 ${theColor};`;
     },
   },
   css: css`
     min-width: ${px2remcss(30)};
-    background-color: ${get('defaultColor')};
     position: absolute;
-    right: ${px2remcss(32)};
-    top: 50%;
-    transform: translateY(-50%);
-    box-shadow: ${px2remcss(-14)} 0 ${px2remcss(6)} 0 ${get('defaultColor')};
+    right: ${px2remcss(get('padding'))};
+    top: 10%;
+    height: 80%;
+    display: flex;
+    align-items: center;
   `,
 });
 

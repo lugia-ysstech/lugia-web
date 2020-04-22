@@ -17,15 +17,8 @@ import { units } from '@lugia/css';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import { deepMerge } from '@lugia/object-utils';
 import get from '../css/theme-common-dict';
-import ValidateHoc from '../input/validateHoc';
-import {
-  validateValueDefaultTheme,
-  validateBorderDefaultTheme,
-  isValidateError,
-  validateWidthTheme,
-} from '../css/validateHoc';
 import type { ValidateStatus, ValidateType } from '../css/validateHoc';
-import { getInputSize } from '../css/input';
+import { getInputIconSize } from '../css/input';
 
 const { px2remcss } = units;
 
@@ -234,8 +227,6 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     max: Infinity,
     min: -Infinity,
     viewClass: Widget.NumberInput,
-    validateStatus: 'default',
-    validateType: 'top',
     size: 'default',
     precision: 0,
     step: 1,
@@ -321,7 +312,6 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
           normal: {
             cursor: 'pointer',
             color: mediumGreyColor,
-            fontSize: 10,
             getCSS() {
               return ` position: absolute;
                        top: 50%;
@@ -333,7 +323,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
               const { propsConfig } = themeProps;
               const { outRange, disabled, size } = propsConfig;
               const { fontSize, font: { size: innerFontSize } = {} } = themeMeta;
-              const theSize = innerFontSize || fontSize || getInputSize(size);
+              const theSize = innerFontSize || fontSize || getInputIconSize(size);
               const theCursor = outRange || disabled ? 'not-allowed' : 'pointer';
               return {
                 cursor: theCursor,
@@ -418,34 +408,17 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
   }
   render() {
     const { value } = this.state;
-    const {
-      createEventChannel,
-      getPartOfThemeHocProps,
-      getPartOfThemeProps,
-      validateStatus,
-      validateType,
-    } = this.props;
+    const { createEventChannel, getPartOfThemeHocProps, getPartOfThemeProps } = this.props;
     const { theme: inputThemeProps } = getPartOfThemeHocProps('Input');
 
-    const validateErrorInputThemeProps = getPartOfThemeProps('ValidateErrorInput');
-
-    const theValidateThemeProps = isValidateError(validateStatus)
-      ? deepMerge(
-          validateValueDefaultTheme,
-          validateBorderDefaultTheme,
-          validateErrorInputThemeProps
-        )
-      : {};
-
     const containerThemeProps = getPartOfThemeProps('Container');
-    const theValidateWidthThemeProps = validateType ? validateWidthTheme : {};
     const theInputTheme = deepMerge(
       {
         [Widget.Input]: {
           InputSuffix: {
             normal: {
               getCSS() {
-                return 'height:100%;opacity: 0;transition: all 0.3s;right:0;';
+                return 'height:100%;opacity: 0;transition: all 0.3s;padding-right:0;';
               },
             },
             hover: {
@@ -457,9 +430,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
         },
       },
       inputThemeProps,
-      containerThemeProps,
-      theValidateWidthThemeProps,
-      theValidateThemeProps
+      containerThemeProps
     );
 
     const arrowContainerChannel = createEventChannel([['hover'], ['focus']]);

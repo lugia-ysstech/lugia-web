@@ -9,7 +9,7 @@ import chai from 'chai';
 import renderer from 'react-test-renderer';
 import Wrapper from '../demo';
 import 'jest-styled-components';
-import Enzyme, { mount, shallow } from 'enzyme';
+import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import AmountInput from '../index.js';
 

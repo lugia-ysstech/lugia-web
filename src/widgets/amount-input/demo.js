@@ -7,7 +7,6 @@
 import * as React from 'react';
 import Theme from '../theme';
 import AmountInput from './index';
-import Widget from '../consts/index';
 import styled from 'styled-components';
 
 class LimitAmountInput extends React.Component<any, any> {
@@ -54,24 +53,10 @@ class ValidateInput extends React.Component<any, any> {
 }
 
 const Wrapper = styled.div`
-  float: left;
   margin-left: 50px;
 `;
 export default () => {
-  const view = {
-    [Widget.AmountInput]: {
-      Container: {
-        normal: {
-          width: 400,
-          height: 40,
-          border: {
-            top: 10,
-          },
-        },
-      },
-      AmountInputPrefix: { normal: { fontSize: 14, color: 'blue' } },
-    },
-  };
+  const view = {};
   const onChange = (cmpName: string) => (value: any) => {};
   return (
     <div>

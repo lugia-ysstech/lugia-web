@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import Input from '../input/index';
 import Widget from '../consts/index';
 import type { InputSize } from '../css/input';
-import { DefaultAmountPrefix, getInputSize } from '../css/input';
+import { DefaultAmountPrefix } from '../css/input';
 import { findDOMNode } from 'react-dom';
 
 import ToolTip from '../tooltip';
@@ -25,14 +25,6 @@ import { checkNumber } from '../common/Math';
 import CSSComponent from '@lugia/theme-css-hoc';
 import ThemeHoc from '@lugia/theme-hoc';
 import { deepMerge } from '@lugia/object-utils';
-
-import ValidateHoc from '../input/validateHoc';
-import {
-  validateValueDefaultTheme,
-  validateBorderDefaultTheme,
-  isValidateError,
-  validateWidthTheme,
-} from '../css/validateHoc';
 import type { ValidateStatus, ValidateType } from '../css/validateHoc';
 import get from '../css/theme-common-dict';
 import { getBorderRadius } from '@lugia/theme-utils';
@@ -50,15 +42,6 @@ const AmountInputPrefix = CSSComponent({
   className: 'AmountInputPrefix',
   normal: {
     selectNames: [['fontSize'], ['font'], ['color']],
-    getThemeMeta(themeMeta, themeProps) {
-      const { propsConfig } = themeProps;
-      const { size } = propsConfig;
-      const { fontSize, font: { size: innerFontSize } = {} } = themeMeta;
-      const theSize = innerFontSize || fontSize || getInputSize(size);
-      return {
-        fontSize: theSize,
-      };
-    },
   },
 });
 Title.displayName = 'toolTip_title';
@@ -251,6 +234,13 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
             { normal: { color: get('defaultColor') } },
             toolTipThemeProps[viewClass]
           ),
+          ChildrenContainer: {
+            normal: {
+              getCSS(themeMeta, themeProps) {
+                return 'display: block;';
+              },
+            },
+          },
         },
       },
       toolTipThemeProps
@@ -296,39 +286,15 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
 
   generateInput(): React$Element<any> {
     const { value, rmb } = this.state;
-    const {
-      size,
-      disabled,
-      placeholder,
-      validateStatus,
-      validateType,
-      getPartOfThemeProps,
-      getPartOfThemeHocProps,
-    } = this.props;
+    const { size, disabled, placeholder, getPartOfThemeProps, getPartOfThemeHocProps } = this.props;
     const prefix = this.getPrefix();
     const thePlaceholder = disabled ? '' : placeholder;
     const actualValue = rmb ? tipTool(parser(value), convertCurrency) : amountFormatter(value);
 
     const { theme: inputTheme } = getPartOfThemeHocProps('InnerInput');
 
-    const validateErrorInputThemeProps = getPartOfThemeProps('ValidateErrorInput');
-
-    const theValidateThemeProps = isValidateError(validateStatus)
-      ? deepMerge(
-          validateValueDefaultTheme,
-          validateBorderDefaultTheme,
-          validateErrorInputThemeProps
-        )
-      : {};
-
     const containerThemeProps = getPartOfThemeProps('Container');
-    const theValidateWidthThemeProps = validateType ? validateWidthTheme : {};
-    const theInputTheme = deepMerge(
-      inputTheme,
-      containerThemeProps,
-      theValidateWidthThemeProps,
-      theValidateThemeProps
-    );
+    const theInputTheme = deepMerge(inputTheme, containerThemeProps);
     return (
       <Input
         _maxLength="16"
