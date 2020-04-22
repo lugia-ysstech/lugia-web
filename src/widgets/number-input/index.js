@@ -472,6 +472,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
         value={value}
         suffix={this.getStepArrowIconContainer(arrowContainerChannel)}
         onBlur={this.onBlur}
+        onFocus={this.onFocus}
         onChange={this.handleChange}
         validateStatus={undefined}
         {...addMouseEvent(this)}

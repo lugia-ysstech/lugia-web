@@ -10,7 +10,6 @@ import NumberInput from './';
 import Button from '../button';
 import Widget from '../consts/index';
 import styled from 'styled-components';
-import { fixControlledValue } from '../utils';
 
 export class LimitNumberInput extends React.Component<any, any> {
   constructor(props: any) {
@@ -68,21 +67,8 @@ class DisabledNumberInput extends React.Component<any, any> {
 }
 
 class ValidateInput extends React.Component<any, any> {
-  constructor(props: any) {
-    super(props);
-  }
+  state = { value: '' };
 
-  static getDerivedStateFromProps(nextProps: Object, preState: Object) {
-    let { value } = nextProps;
-    const hasValueInprops = 'value' in nextProps;
-    value = fixControlledValue(value);
-    if (!preState) {
-      return { value: hasValueInprops ? value : '' };
-    }
-    if (hasValueInprops) {
-      return { value };
-    }
-  }
   onChange = ({ newValue: value }: any) => {
     this.setState({ value });
     this.props.onChange({ newValue: value });
@@ -91,9 +77,10 @@ class ValidateInput extends React.Component<any, any> {
   render() {
     const { validateType } = this.props;
     const value = this.state.value;
-    const validateStatus = String(value).indexOf('5') === -1 ? 'default' : 'error';
+    const validateStatus = String(value).indexOf('5') !== -1 ? 'error' : 'default';
     return (
       <NumberInput
+        value={value}
         onChange={this.onChange}
         validateType={validateType}
         validateStatus={validateStatus}
