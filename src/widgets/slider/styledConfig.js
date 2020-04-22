@@ -8,10 +8,11 @@ import {
 import { btnWidthNormal, rangeHeightNormal, rangeWidthNormal } from './slider_public_size';
 import colorsFunc from '../css/stateColor';
 import { getBorder, getBorderRadius } from '@lugia/theme-utils';
-export const { themeColor } = colorsFunc();
 
 const superLightColor = '$lugia-dict.@lugia/lugia-web.superLightColor';
 const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
+const themeHoverColor = '$lugia-dict.@lugia/lugia-web.themeHoverColor';
 
 function verticalSize(props) {
   let { width, height, vertical } = props;
@@ -170,7 +171,7 @@ function getSliderPassedWayThemeProps(getPartOfThemeProps, height) {
     ...mergeNormal,
     hover: {
       background: {
-        color: colorsFunc(color).hoverColor,
+        color: themeHoverColor,
       },
       height: sliderPassedWayHeight,
     },
@@ -182,7 +183,7 @@ function getSliderPassedWayThemeProps(getPartOfThemeProps, height) {
     },
     disabled: {
       background: {
-        color: btnDisabledBackground,
+        color: superLightColor,
       },
       height: sliderPassedWayHeight,
     },
@@ -237,7 +238,7 @@ export function getSliderButtonThemeProps(getPartOfThemeProps, vertical) {
       width: btnWidth + 4,
       height: btnHeight + 4,
       background: {
-        color: colorsFunc(color).hoverColor,
+        color: themeHoverColor,
       },
     },
     active: {
@@ -251,7 +252,7 @@ export function getSliderButtonThemeProps(getPartOfThemeProps, vertical) {
       width: btnWidth,
       height: btnHeight,
       background: {
-        color: btnDisabledBackground,
+        color: superLightColor,
       },
     },
   };
