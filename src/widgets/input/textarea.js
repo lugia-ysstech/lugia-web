@@ -23,6 +23,7 @@ import {
 import ValidateHoc from './validateHoc';
 import type { ValidateStatus, ValidateType } from '../css/validateHoc';
 import get from '../css/theme-common-dict';
+import { getInputIconSize } from '../css/input';
 
 const { px2remcss } = units;
 const { padding, hShadow, vShadow, transitionTime } = colorsFunc();
@@ -56,7 +57,7 @@ const Textarea = CSSComponent({
     defaultTheme: {
       cursor: 'text',
       borderRadius: getBorderRadius(borderRadius),
-      fontSize: xxsFontSize,
+      fontSize: 12,
       border: getBorder(get('normalBorder')),
     },
     getCSS(themeMeta: Object, themeProps: Object) {
@@ -174,7 +175,6 @@ const TextareaContainer = CSSComponent({
     position: relative;
     outline: none;
     display: inline-block;
-    font-size: 0;
   `,
 });
 
@@ -287,8 +287,8 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
   }
 
   getTextareaContainer() {
-    const { getPartOfThemeProps, validateType } = this.props;
-    const theValidateWidthThemeProps = validateType ? validateWidthTheme : {};
+    const { getPartOfThemeProps, validateType, validateStatus } = this.props;
+    const theValidateWidthThemeProps = validateType && validateStatus ? validateWidthTheme : {};
     const theTheme = deepMerge(getPartOfThemeProps('Container'), theValidateWidthThemeProps);
     return (
       <TextareaContainer {...addMouseEvent(this)} themeProps={theTheme}>
@@ -328,7 +328,15 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
             color: mediumGreyColor,
             fontSize: xxsFontSize,
             getCSS() {
-              return `position: absolute;right:${px2remcss(padding)};top:${px2remcss(8)};`;
+              return `position: absolute;right:${px2remcss(get('padding'))};top:${px2remcss(8)};`;
+            },
+            getThemeMeta(themeMeta, themeProps) {
+              const {
+                propsConfig: { size },
+              } = themeProps;
+              const { fontSize, font: { size: innerFontSize } = {} } = themeMeta;
+              const theSize = innerFontSize || fontSize || getInputIconSize(size);
+              return { fontSize: theSize };
             },
           },
           hover: {

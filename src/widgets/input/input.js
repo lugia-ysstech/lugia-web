@@ -6,7 +6,7 @@ import Widget from '../consts/index';
 import ThemeHoc, { addMouseEvent } from '@lugia/theme-hoc';
 import { fixControlledValue } from '../utils';
 import type { InputSize } from '../css/input';
-import { getInputHeight, getInputSize, getInputFixSize } from '../css/input';
+import { getInputHeight, getInputIconSize, getInputFixSize } from '../css/input';
 import Icon from '../icon';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import colorsFunc from '../css/stateColor';
@@ -26,16 +26,17 @@ import {
 import type { ValidateStatus, ValidateType } from '../css/validateHoc';
 
 const { px2remcss } = units;
-
-const { padding, hShadow, vShadow, transitionTime } = colorsFunc();
+const { hShadow, vShadow, transitionTime } = colorsFunc();
 
 const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
 const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
 const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
 const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
-const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
 const borderRadius = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
 const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
+const padding = '$lugia-dict.@lugia/lugia-web.padding';
+const paddingToText = '$lugia-dict.@lugia/lugia-web.paddingToText';
+
 const CommonInputStyle = CSSComponent({
   tag: 'input',
   className: 'InnerInput',
@@ -51,18 +52,18 @@ const CommonInputStyle = CSSComponent({
     ],
     defaultTheme: {
       cursor: 'text',
-      fontSize: 12,
       borderRadius: getBorderRadius(borderRadius),
     },
     getCSS(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
       const {
+        size,
         placeHolderColor,
-        placeHolderFont: { size, weight, color } = {},
+        placeHolderFont: { size: placeHolderSize, weight, color } = {},
         placeHolderFontSize,
       } = propsConfig;
-      const theColor = color ? color : placeHolderColor;
-      const theSize = placeHolderFontSize ? placeHolderFontSize : size ? size : 12;
+      const theColor = color || placeHolderColor || get('lightGreyColor');
+      const theSize = placeHolderFontSize || placeHolderSize || getInputFixSize(size);
       return css`
         &::placeholder {
           color: ${theColor};
@@ -73,15 +74,16 @@ const CommonInputStyle = CSSComponent({
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
-        propsConfig: { prefix, suffix, isShowClearButton },
+        propsConfig: { prefix, suffix, size },
       } = themeProps;
-      const { width, color, font: { color: fontColor } = {} } = themeMeta;
+      const { color, fontSize, font: { color: fontColor, size: innerFontSize } = {} } = themeMeta;
 
-      const paddingLeft = prefix ? 30 : width && width < 200 ? width / 20 : padding;
-      const paddingRight =
-        suffix || isShowClearButton ? 35 : width && width < 200 ? 15 + width / 10 : padding;
+      const paddingLeft = prefix ? paddingToText : padding;
+      const paddingRight = suffix ? paddingToText : padding;
       const theColor = fontColor || color || blackColor;
+      const theFontSize = innerFontSize || fontSize || getInputFixSize(size);
       return {
+        fontSize: theFontSize,
         color: theColor,
         padding: {
           left: paddingLeft,
@@ -104,18 +106,18 @@ const CommonInputStyle = CSSComponent({
     defaultTheme: {
       cursor: 'not-allowed',
       background: { color: disableColor },
+      color: disableTextColor,
     },
   },
   css: css`
     box-sizing: border-box;
-    line-height: 1.5;
-    display: inline-block;
     font-family: inherit;
     transition: all ${transitionTime};
     outline: none;
     height: 100%;
     width: 100%;
     border: none;
+    flex: 1;
   `,
   option: { hover: true, active: true },
 });
@@ -179,7 +181,8 @@ const InputContainer = CSSComponent({
   },
   css: css`
     position: relative;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     outline: none;
     min-width: ${px2remcss(30)};
   `,
@@ -191,6 +194,9 @@ const Fix = CSSComponent({
   className: 'inputFix',
   normal: {
     selectNames: [['font'], ['fontSize'], ['color']],
+    defaultTheme: {
+      color: blackColor,
+    },
     getThemeMeta(themeMeta, themeProps) {
       const {
         propsConfig: { size },
@@ -208,9 +214,8 @@ const Fix = CSSComponent({
   },
 
   css: css`
-    position: absolute;
-    transform: translateY(50%);
-    bottom: 50%;
+    display: inline-flex;
+    align-items: center;
     color: ${get('mediumGreyColor')};
   `,
 });
@@ -220,7 +225,7 @@ const Prefix: Object = CSSComponent({
   className: 'inputPrefix',
   normal: {},
   css: css`
-    left: ${px2remcss(padding)};
+    padding-left: ${px2remcss(get('padding'))};
   `,
 });
 
@@ -229,7 +234,7 @@ const Suffix: Object = CSSComponent({
   className: 'inputSuffix',
   normal: {},
   css: css`
-    right: ${px2remcss(padding)};
+    padding-right: ${px2remcss(get('padding'))};
   `,
 });
 
@@ -406,8 +411,8 @@ class TextBox extends Component<InputProps, InputState> {
   }
 
   generatePrefix(): React$Node | null {
-    const { prefix, getPartOfThemeProps } = this.props;
-    const PrefixThemeProps = getPartOfThemeProps('InputPrefix');
+    const { prefix, getPartOfThemeProps, size } = this.props;
+    const PrefixThemeProps = getPartOfThemeProps('InputPrefix', { props: { size } });
     if (prefix) {
       return (
         <Prefix themeProps={PrefixThemeProps}>{this.getFixIcon(prefix, 'InputPrefix')}</Prefix>
@@ -417,10 +422,10 @@ class TextBox extends Component<InputProps, InputState> {
   }
 
   generateSuffix(): React$Node | null {
-    const { suffix, getPartOfThemeProps } = this.props;
+    const { suffix, getPartOfThemeProps, size } = this.props;
     if (suffix) {
       return (
-        <Suffix themeProps={getPartOfThemeProps('InputSuffix')}>
+        <Suffix themeProps={getPartOfThemeProps('InputSuffix', { props: { size } })}>
           {this.getFixIcon(suffix, 'InputSuffix')}
         </Suffix>
       );
@@ -434,9 +439,6 @@ class TextBox extends Component<InputProps, InputState> {
 
   getClearButton() {
     const { canClear = true } = this.props;
-    if (this.isEmpty() || !canClear) {
-      return null;
-    }
     const {
       theme: ClearButtonThemeProps,
       viewClass: clearViewClass,
@@ -447,31 +449,33 @@ class TextBox extends Component<InputProps, InputState> {
         [clearViewClass]: {
           normal: {
             color: mediumGreyColor,
-            getCSS() {
-              return ` position: absolute;
-                   transform: translateY(50%);
-                   bottom: 50%;
-                   right: ${px2remcss(padding)};`;
+            getCSS(themeMeta, themeProps) {
+              const {
+                propsConfig: { hideClearButton },
+              } = themeProps;
+              const theVisible = hideClearButton ? 'hidden' : 'visible';
+              return `    visibility: ${theVisible};padding-right: ${px2remcss(get('padding'))};`;
             },
+            getThemeMeta(themeMeta, themeProps) {
+              const {
+                propsConfig: { size },
+              } = themeProps;
+              const { fontSize, font: { size: innerFontSize } = {} } = themeMeta;
+              const theSize = innerFontSize || fontSize || getInputIconSize(size);
+              return { fontSize: theSize };
+            },
+            hover: { color: darkGreyColor },
+            disabled: { cursor: 'not-allowed', color: disableTextColor },
           },
-          getThemeMeta(themeMeta, themeProps) {
-            const {
-              propsConfig: { size },
-            } = themeProps;
-            const { fontSize, font: { size: innerFontSize } = {} } = themeMeta;
-            const theSize = innerFontSize || fontSize || getInputSize(size);
-            return { fontSize: theSize };
-          },
-          hover: { color: darkGreyColor },
-          disabled: { cursor: 'not-allowed', color: disableTextColor },
         },
       },
       ClearButtonThemeProps
     );
 
-    const { disabled, clearIcon } = this.props;
+    const { disabled, clearIcon, size } = this.props;
     return (
       <Icon
+        propsConfig={{ size, hideClearButton: this.isEmpty() || !canClear }}
         disabled={disabled}
         singleTheme
         viewClass={clearViewClass}
@@ -560,9 +564,8 @@ class TextBox extends Component<InputProps, InputState> {
       isShowClearButton,
       size,
     } = this.props;
-
     const {
-      themeConfig: { normal: { color = lightGreyColor, font = {}, fontSize } = {} },
+      themeConfig: { normal: { color, font = {}, fontSize } = {} },
     } = getPartOfThemeProps('Placeholder');
 
     const validateErrorInputThemeProps = getPartOfThemeProps('ValidateErrorInput');
@@ -574,7 +577,7 @@ class TextBox extends Component<InputProps, InputState> {
           validateErrorInputThemeProps
         )
       : {};
-    const theValidateWidthThemeProps = validateType ? validateWidthTheme : {};
+    const theValidateWidthThemeProps = validateType && validateStatus ? validateWidthTheme : {};
 
     const theThemeProps = deepMerge(
       getPartOfThemeProps('Input', {

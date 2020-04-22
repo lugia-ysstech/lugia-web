@@ -23,7 +23,7 @@ const ValidateHoc = (Target: Object) => {
       if (disabled || readOnly) {
         return;
       }
-      this.setState({ _isValidateVisible: false });
+      this.setState({ _isValidateVisible: true });
       onFocus && onFocus(event);
     };
 
@@ -33,7 +33,7 @@ const ValidateHoc = (Target: Object) => {
       if (disabled || readOnly) {
         return;
       }
-      this.setState({ _isValidateVisible: true });
+      this.setState({ _isValidateVisible: false });
       onBlur && onBlur(event);
     };
 
@@ -64,6 +64,7 @@ const ValidateHoc = (Target: Object) => {
       const validateThemeProps = getPartOfThemeProps('ValidateErrorText', {
         props: { validateStatus, ...innerProps },
       });
+      const innerThemeProps = deepMerge(validateThemeProps, getPartOfThemeProps('Container'));
       const ContainerThemeProps = getPartOfThemeProps('Container');
 
       if (validateType === 'bottom') {
@@ -79,7 +80,7 @@ const ValidateHoc = (Target: Object) => {
         return (
           <FatherContainer themeProps={ContainerThemeProps}>
             {result}
-            <InnerTipText themeProps={validateThemeProps}>{theHelp}</InnerTipText>
+            <InnerTipText themeProps={innerThemeProps}>{theHelp}</InnerTipText>
           </FatherContainer>
         );
       }
@@ -96,6 +97,9 @@ const ValidateHoc = (Target: Object) => {
                 getCSS() {
                   return 'display: inline-block;';
                 },
+              },
+              hover: {
+                background: { color: get('blackColor') },
               },
             },
             validateTopTipThemeProps[viewClass]
