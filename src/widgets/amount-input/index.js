@@ -63,12 +63,12 @@ const AmountInputPrefix = CSSComponent({
 });
 Title.displayName = 'toolTip_title';
 
-type AmountInputState = {|
+type AmountInputState = {
   value: string,
   rmb: boolean,
-|};
+};
 
-type AmountInputProps = {|
+type AmountInputProps = {
   size?: InputSize,
   viewClass: string,
   disabled: boolean,
@@ -91,7 +91,7 @@ type AmountInputProps = {|
   validateStatus: ValidateStatus,
   validateType: ValidateType,
   help: string,
-|};
+};
 
 class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
   static defaultProps = {
@@ -294,19 +294,9 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
     return <Title themeProps={themeProps}>{titleValue}</Title>;
   }
 
-  onKeyDown = (event: KeyboardEvent) => {
-    const { onKeyDown, onEnter } = this.props;
-    onKeyDown && onKeyDown(event);
-    const { keyCode } = event;
-    onEnter && keyCode === 13 && onEnter(event);
-  };
-
   generateInput(): React$Element<any> {
-    const { props } = this;
     const { value, rmb } = this.state;
     const {
-      onKeyUp,
-      onKeyPress,
       size,
       disabled,
       placeholder,
@@ -314,7 +304,7 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
       validateType,
       getPartOfThemeProps,
       getPartOfThemeHocProps,
-    } = props;
+    } = this.props;
     const prefix = this.getPrefix();
     const thePlaceholder = disabled ? '' : placeholder;
     const actualValue = rmb ? tipTool(parser(value), convertCurrency) : amountFormatter(value);
@@ -347,9 +337,6 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
         ref={this.el}
         value={actualValue}
         size={size}
-        onKeyUp={onKeyUp}
-        onKeyPress={onKeyPress}
-        onKeyDown={this.onKeyDown}
         onFocus={this.onFocus}
         onBlur={this.onBlur}
         placeholder={thePlaceholder}

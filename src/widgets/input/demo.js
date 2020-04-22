@@ -46,23 +46,7 @@ export class LimitTextarea extends React.Component<any, any> {
   }
 }
 export class ValidateInput extends React.Component<any, any> {
-  constructor(props: any) {
-    super(props);
-  }
-
-  static getDerivedStateFromProps(nextProps: Object, preState: Object) {
-    let { value } = nextProps;
-    const hasValueInprops = 'value' in nextProps;
-    value = fixControlledValue(value);
-    if (!preState) {
-      return {
-        value: hasValueInprops ? value : '',
-      };
-    }
-    if (hasValueInprops) {
-      return { value };
-    }
-  }
+  state = { value: '' };
   onChange = ({ newValue: value }: any) => {
     this.setState({ value });
     this.props.onChange({ newValue: value });
@@ -71,18 +55,19 @@ export class ValidateInput extends React.Component<any, any> {
   render() {
     const { validateType } = this.props;
     const value = this.state.value;
-    const validateStatus = value.indexOf('a') === -1 ? 'default' : 'error';
+    const validateStatus = value.indexOf('a') !== -1 ? 'error' : 'default';
 
     return (
-      <Input onChange={this.onChange} validateType={validateType} validateStatus={validateStatus} />
+      <Input
+        value={value}
+        onChange={this.onChange}
+        validateType={validateType}
+        validateStatus={validateStatus}
+      />
     );
   }
 }
 export class TopInput extends React.Component<any, any> {
-  constructor(props: any) {
-    super(props);
-  }
-
   static getDerivedStateFromProps(nextProps: Object, preState: Object) {
     let { value } = nextProps;
     const hasValueInprops = 'value' in nextProps;
@@ -93,9 +78,7 @@ export class TopInput extends React.Component<any, any> {
         validateStatus: 'default',
       };
     }
-    if (hasValueInprops) {
-      return { value };
-    }
+    return { value };
   }
   onChange = (param: any) => {
     const { newValue: value } = param;
@@ -105,9 +88,10 @@ export class TopInput extends React.Component<any, any> {
   };
   render() {
     const { validateType } = this.props;
-
+    const { value } = this.state;
     return (
       <Input
+        value={value}
         onChange={this.onChange}
         validateType={validateType}
         validateStatus={this.state.validateStatus}
