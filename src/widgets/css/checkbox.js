@@ -305,6 +305,6 @@ export const HoverSpan = StaticComponent({
 });
 export const IconWrap: Object = styled(Icon)`
   vertical-align: text-bottom !important;
-  font-size: ${em(18)};
+  font-size: ${em(16)};
   color: ${get('mediumGreyColor')};
 `;
