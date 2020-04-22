@@ -35,6 +35,7 @@ const themeDisabledColor = '$lugia-dict.@lugia/lugia-web.themeDisabledColor';
 const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
+const borderDisableColor = '$lugia-dict.@lugia/lugia-web.borderDisableColor';
 
 const defaultEdgeCancelProps = {
   themeConfig: {
@@ -60,7 +61,7 @@ const defaultEdgeTheme = {
       background: { color: themeColor },
     },
     disabled: {
-      border: getBorder({ color: disableColor, width: 1, style: 'solid' }),
+      border: getBorder({ color: borderDisableColor, width: 1, style: 'solid' }),
       borderRadius: getBorderRadius(2),
       background: { color: disableColor },
     },
