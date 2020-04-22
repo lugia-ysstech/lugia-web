@@ -1,8 +1,6 @@
 import { deepMerge } from '@lugia/object-utils';
 import {
-  trackBackground,
   throughRangeBackground,
-  trackDisabledBackground,
   btnDisabledBackground,
   tipBackground,
   tipColor,
@@ -11,6 +9,9 @@ import { btnWidthNormal, rangeHeightNormal, rangeWidthNormal } from './slider_pu
 import colorsFunc from '../css/stateColor';
 import { getBorder, getBorderRadius } from '@lugia/theme-utils';
 export const { themeColor } = colorsFunc();
+
+const superLightColor = '$lugia-dict.@lugia/lugia-web.superLightColor';
+const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
 
 function verticalSize(props) {
   let { width, height, vertical } = props;
@@ -91,7 +92,7 @@ function getSliderTrackThemeProps(
       width: rangeWidthNormal,
       height: rangeHeightNormal,
       background: {
-        color: trackBackground,
+        color: superLightColor,
       },
       border: getBorder({ color: '', style: '', width: 0 }),
       borderRadius: getBorderRadius(6),
@@ -108,7 +109,7 @@ function getSliderTrackThemeProps(
     ...mergeSliderTrackNormal,
     hover: {
       background: {
-        color: throughRangeBackground,
+        color: disableColor,
       },
     },
     active: {
@@ -118,7 +119,7 @@ function getSliderTrackThemeProps(
     },
     disabled: {
       background: {
-        color: trackDisabledBackground,
+        color: disableColor,
       },
     },
   };
