@@ -62,9 +62,9 @@ const getStyleCSS = (props: RadioType): string => {
 const RadioDefaultTheme = {
   opacity: 1,
   padding: {
-    top: em(5),
+    top: 0,
     right: 0,
-    bottom: em(5),
+    bottom: 0,
     left: 0,
   },
 };
