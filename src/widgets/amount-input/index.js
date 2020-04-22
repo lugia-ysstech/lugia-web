@@ -345,7 +345,6 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
         prefix={prefix}
         formatter={amountFormatter}
         readOnly={rmb}
-        validateStatus={undefined}
       />
     );
   }
@@ -357,12 +356,8 @@ class AmountTextBox extends Component<AmountInputProps, AmountInputState> {
   }
 }
 
-const TargetAmountTextBox = ThemeHoc(
-  ValidateHoc(KeyBoardEventAdaptor(AmountTextBox)),
-  Widget.AmountInput,
-  {
-    hover: true,
-    active: true,
-  }
-);
+const TargetAmountTextBox = ThemeHoc(KeyBoardEventAdaptor(AmountTextBox), Widget.AmountInput, {
+  hover: true,
+  active: true,
+});
 export default TargetAmountTextBox;

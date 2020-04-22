@@ -285,7 +285,6 @@ describe('AmountInputDemo', () => {
     const component = target
       .children()
       .children()
-      .children()
       .instance();
     return component;
   }
