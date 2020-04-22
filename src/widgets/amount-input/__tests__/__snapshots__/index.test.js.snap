@@ -15,15 +15,15 @@ exports[`AmountInputDemo Component JSON 1`] = `
   right: 1rem;
 }
 
+.c1 {
+  display: inline-block;
+}
+
 .c6 {
   display: inline-block;
   width: 100%;
   height: 100%;
   display: block;
-}
-
-.c1 {
-  display: inline-block;
 }
 
 .c8 {
@@ -1184,13 +1184,13 @@ exports[`AmountInputDemo Component JSON 1`] = `
       校验信息显示类型 top 输入值 是否含有5
     </p>
     <div
-      className="c6"
+      className="c1"
       onBlur={[Function]}
       onFocus={[Function]}
       style={Object {}}
     >
       <div
-        className="c1"
+        className="c6"
         onBlur={[Function]}
         onFocus={[Function]}
         style={Object {}}
@@ -1286,13 +1286,13 @@ exports[`AmountInputDemo Component JSON 1`] = `
       校验信息显示类型 bottom 输入值 是否含有5
     </p>
     <div
-      className="c7"
+      className="c1"
+      onBlur={[Function]}
+      onFocus={[Function]}
       style={Object {}}
     >
       <div
-        className="c1"
-        onBlur={[Function]}
-        onFocus={[Function]}
+        className="c7"
         style={Object {}}
       >
         <div
@@ -1380,25 +1380,25 @@ exports[`AmountInputDemo Component JSON 1`] = `
             value=""
           />
         </div>
-      </div>
-      <div
-        className="c8"
-        style={Object {}}
-      >
-        验证出错
+        <div
+          className="c8"
+          style={Object {}}
+        >
+          验证出错
+        </div>
       </div>
     </div>
     <p>
       校验信息显示类型 inner 输入值 是否含有5
     </p>
     <div
-      className="c9"
+      className="c1"
+      onBlur={[Function]}
+      onFocus={[Function]}
       style={Object {}}
     >
       <div
-        className="c1"
-        onBlur={[Function]}
-        onFocus={[Function]}
+        className="c9"
         style={Object {}}
       >
         <div
@@ -1486,13 +1486,13 @@ exports[`AmountInputDemo Component JSON 1`] = `
             value=""
           />
         </div>
+        <span
+          className="c10"
+          style={Object {}}
+        >
+          验证出错
+        </span>
       </div>
-      <span
-        className="c10"
-        style={Object {}}
-      >
-        验证出错
-      </span>
     </div>
   </div>
 </div>
@@ -1841,671 +1841,5 @@ exports[`AmountInputDemo props: placeholder  2`] = `
       value=""
     />
   </div>
-</div>
-`;
-
-exports[`Input props: getTheme: width:100,margin:10, 1`] = `
-.c1 {
-  box-sizing: border-box;
-  line-height: 1.5;
-  display: inline-block;
-  font-family: inherit;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  outline: none;
-  height: 100%;
-  width: 100%;
-  border: none;
-  font-size: 1.2rem;
-  cursor: text;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
-}
-
-.c1::-webkit-input-placeholder {
-  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
-  font-size: 1.2rem;
-}
-
-.c1::-moz-placeholder {
-  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
-  font-size: 1.2rem;
-}
-
-.c1:-ms-input-placeholder {
-  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
-  font-size: 1.2rem;
-}
-
-.c1::placeholder {
-  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
-  font-size: 1.2rem;
-}
-
-.c0 {
-  position: relative;
-  display: inline-block;
-  outline: none;
-  min-width: 3rem;
-  width: 100%;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
-}
-
-<div
-  className="c0"
-  onBlur={[Function]}
-  onFocus={[Function]}
-  onMouseDown={[Function]}
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
-  onMouseUp={[Function]}
-  style={
-    Object {
-      "height": "3.2rem",
-      "marginBottom": "1rem",
-      "marginLeft": "1rem",
-      "marginRight": "1rem",
-      "marginTop": "1rem",
-      "width": "100%",
-    }
-  }
->
-  <input
-    autoFocus={false}
-    className="c1"
-    disabled={false}
-    onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyPress={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-    onMouseUp={[Function]}
-    size="default"
-    style={
-      Object {
-        "color": "#363B40",
-        "paddingBottom": "0rem",
-        "paddingLeft": "1rem",
-        "paddingRight": "3.5rem",
-        "paddingTop": "0rem",
-      }
-    }
-    type="text"
-    value=""
-  />
-</div>
-`;
-
-exports[`Input props: null 1`] = `
-.c1 {
-  box-sizing: border-box;
-  line-height: 1.5;
-  display: inline-block;
-  font-family: inherit;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  outline: none;
-  height: 100%;
-  width: 100%;
-  border: none;
-  font-size: 1.2rem;
-  cursor: text;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
-}
-
-.c1::-webkit-input-placeholder {
-  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
-  font-size: 1.2rem;
-}
-
-.c1::-moz-placeholder {
-  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
-  font-size: 1.2rem;
-}
-
-.c1:-ms-input-placeholder {
-  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
-  font-size: 1.2rem;
-}
-
-.c1::placeholder {
-  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
-  font-size: 1.2rem;
-}
-
-.c0 {
-  position: relative;
-  display: inline-block;
-  outline: none;
-  min-width: 3rem;
-  width: 100%;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
-}
-
-<div
-  className="c0"
-  onBlur={[Function]}
-  onFocus={[Function]}
-  onMouseDown={[Function]}
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
-  onMouseUp={[Function]}
-  style={
-    Object {
-      "height": "3.2rem",
-      "width": "100%",
-    }
-  }
->
-  <input
-    autoFocus={false}
-    className="c1"
-    disabled={false}
-    onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyPress={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-    onMouseUp={[Function]}
-    size="default"
-    style={
-      Object {
-        "color": "#363B40",
-        "paddingBottom": "0rem",
-        "paddingLeft": "1rem",
-        "paddingRight": "3.5rem",
-        "paddingTop": "0rem",
-      }
-    }
-    type="text"
-    value=""
-  />
-</div>
-`;
-
-exports[`Input props: placeholder  1`] = `
-.c1 {
-  box-sizing: border-box;
-  line-height: 1.5;
-  display: inline-block;
-  font-family: inherit;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  outline: none;
-  height: 100%;
-  width: 100%;
-  border: none;
-  font-size: 1.2rem;
-  cursor: text;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
-}
-
-.c1::-webkit-input-placeholder {
-  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
-  font-size: 1.2rem;
-}
-
-.c1::-moz-placeholder {
-  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
-  font-size: 1.2rem;
-}
-
-.c1:-ms-input-placeholder {
-  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
-  font-size: 1.2rem;
-}
-
-.c1::placeholder {
-  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
-  font-size: 1.2rem;
-}
-
-.c0 {
-  position: relative;
-  display: inline-block;
-  outline: none;
-  min-width: 3rem;
-  width: 100%;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
-}
-
-<div
-  className="c0"
-  onBlur={[Function]}
-  onFocus={[Function]}
-  onMouseDown={[Function]}
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
-  onMouseUp={[Function]}
-  style={
-    Object {
-      "height": "3.2rem",
-      "width": "100%",
-    }
-  }
->
-  <input
-    autoFocus={false}
-    className="c1"
-    disabled={false}
-    onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyPress={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-    onMouseUp={[Function]}
-    placeholder="请填写内容"
-    size="default"
-    style={
-      Object {
-        "color": "#363B40",
-        "paddingBottom": "0rem",
-        "paddingLeft": "1rem",
-        "paddingRight": "3.5rem",
-        "paddingTop": "0rem",
-      }
-    }
-    type="text"
-    value=""
-  />
-</div>
-`;
-
-exports[`Input props: placeholder  2`] = `
-.c1 {
-  box-sizing: border-box;
-  line-height: 1.5;
-  display: inline-block;
-  font-family: inherit;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  outline: none;
-  height: 100%;
-  width: 100%;
-  border: none;
-  font-size: 1.2rem;
-  cursor: text;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
-}
-
-.c1::-webkit-input-placeholder {
-  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
-  font-size: 1.2rem;
-}
-
-.c1::-moz-placeholder {
-  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
-  font-size: 1.2rem;
-}
-
-.c1:-ms-input-placeholder {
-  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
-  font-size: 1.2rem;
-}
-
-.c1::placeholder {
-  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
-  font-size: 1.2rem;
-}
-
-.c0 {
-  position: relative;
-  display: inline-block;
-  outline: none;
-  min-width: 3rem;
-  width: 100%;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
-}
-
-<div
-  className="c0"
-  onBlur={[Function]}
-  onFocus={[Function]}
-  onMouseDown={[Function]}
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
-  onMouseUp={[Function]}
-  style={
-    Object {
-      "height": "3.2rem",
-      "width": "100%",
-    }
-  }
->
-  <input
-    autoFocus={false}
-    className="c1"
-    disabled={false}
-    onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyPress={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-    onMouseUp={[Function]}
-    placeholder=""
-    size="default"
-    style={
-      Object {
-        "color": "#363B40",
-        "paddingBottom": "0rem",
-        "paddingLeft": "1rem",
-        "paddingRight": "3.5rem",
-        "paddingTop": "0rem",
-      }
-    }
-    type="text"
-    value=""
-  />
-</div>
-`;
-
-exports[`Input props: size 1`] = `
-.c1 {
-  box-sizing: border-box;
-  line-height: 1.5;
-  display: inline-block;
-  font-family: inherit;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  outline: none;
-  height: 100%;
-  width: 100%;
-  border: none;
-  font-size: 1.2rem;
-  cursor: text;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
-}
-
-.c1::-webkit-input-placeholder {
-  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
-  font-size: 1.2rem;
-}
-
-.c1::-moz-placeholder {
-  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
-  font-size: 1.2rem;
-}
-
-.c1:-ms-input-placeholder {
-  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
-  font-size: 1.2rem;
-}
-
-.c1::placeholder {
-  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
-  font-size: 1.2rem;
-}
-
-.c0 {
-  position: relative;
-  display: inline-block;
-  outline: none;
-  min-width: 3rem;
-  width: 100%;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
-}
-
-<div
-  className="c0"
-  onBlur={[Function]}
-  onFocus={[Function]}
-  onMouseDown={[Function]}
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
-  onMouseUp={[Function]}
-  style={
-    Object {
-      "height": "2.4rem",
-      "width": "100%",
-    }
-  }
->
-  <input
-    autoFocus={false}
-    className="c1"
-    disabled={false}
-    onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyPress={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-    onMouseUp={[Function]}
-    size="small"
-    style={
-      Object {
-        "color": "#363B40",
-        "paddingBottom": "0rem",
-        "paddingLeft": "1rem",
-        "paddingRight": "3.5rem",
-        "paddingTop": "0rem",
-      }
-    }
-    type="text"
-    value=""
-  />
-</div>
-`;
-
-exports[`Input props: size 2`] = `
-.c1 {
-  box-sizing: border-box;
-  line-height: 1.5;
-  display: inline-block;
-  font-family: inherit;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  outline: none;
-  height: 100%;
-  width: 100%;
-  border: none;
-  font-size: 1.2rem;
-  cursor: text;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
-}
-
-.c1::-webkit-input-placeholder {
-  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
-  font-size: 1.2rem;
-}
-
-.c1::-moz-placeholder {
-  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
-  font-size: 1.2rem;
-}
-
-.c1:-ms-input-placeholder {
-  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
-  font-size: 1.2rem;
-}
-
-.c1::placeholder {
-  color: $lugia-dict.@lugia/lugia-web.lightGreyColor;
-  font-size: 1.2rem;
-}
-
-.c0 {
-  position: relative;
-  display: inline-block;
-  outline: none;
-  min-width: 3rem;
-  width: 100%;
-  border-top-width: 0.1rem;
-  border-top-style: solid;
-  border-top-color: #cccccc;
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-bottom-color: #cccccc;
-  border-left-width: 0.1rem;
-  border-left-style: solid;
-  border-left-color: #cccccc;
-  border-right-width: 0.1rem;
-  border-right-style: solid;
-  border-right-color: #cccccc;
-  border-top-left-radius: 0.4rem;
-  border-top-right-radius: 0.4rem;
-  border-bottom-right-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
-}
-
-<div
-  className="c0"
-  onBlur={[Function]}
-  onFocus={[Function]}
-  onMouseDown={[Function]}
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
-  onMouseUp={[Function]}
-  style={
-    Object {
-      "height": "4rem",
-      "width": "100%",
-    }
-  }
->
-  <input
-    autoFocus={false}
-    className="c1"
-    disabled={false}
-    onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyPress={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-    onMouseUp={[Function]}
-    size="large"
-    style={
-      Object {
-        "color": "#363B40",
-        "paddingBottom": "0rem",
-        "paddingLeft": "1rem",
-        "paddingRight": "3.5rem",
-        "paddingTop": "0rem",
-      }
-    }
-    type="text"
-    value=""
-  />
 </div>
 `;
