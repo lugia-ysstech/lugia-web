@@ -258,6 +258,9 @@ export const CancelSpan = StaticComponent({
     bottom: 0;
     left: 0;
     right: 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     color: ${get('darkGreyColor')};
     background: ${get('superLightColor')};
     ${getDisplayCSS};
