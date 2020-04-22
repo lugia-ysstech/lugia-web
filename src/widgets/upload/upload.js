@@ -31,6 +31,7 @@ type UploadProps = {
   withCredentials?: boolean,
   autoUpload?: boolean,
   accept?: string,
+  name?: string,
   url: string,
   headers?: Object,
   inputId?: string,
@@ -222,8 +223,24 @@ class Upload extends React.Component<UploadProps, StateProps> {
     }
     if (!autoUpload && !isAllowUpload) return;
 
-    const { url, withCredentials, data, headers, method = 'post', dataType = 'json' } = this.props;
-    const dataObject = { url, withCredentials, data, headers, method, dataType };
+    const {
+      url,
+      withCredentials,
+      data,
+      headers,
+      method = 'post',
+      dataType = 'json',
+      name = 'file',
+    } = this.props;
+    const dataObject = {
+      url,
+      withCredentials,
+      data,
+      headers,
+      method,
+      dataType,
+      uploadFileName: name,
+    };
 
     for (let i = 0; i < len; i++) {
       if (i >= limit) break;

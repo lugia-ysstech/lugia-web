@@ -103,6 +103,7 @@ class UploadDemo extends React.Component<any, any> {
       inputId: 'upload1',
       url: 'http://localhost:7001/upload',
       multiple: true,
+      name: 'lugiaRR',
       showFileList: true,
       fileList: [
         {
