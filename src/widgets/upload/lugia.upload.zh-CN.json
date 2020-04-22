@@ -58,6 +58,10 @@
       "type": "string",
       "desc": "指定上传文件类型"
     },
+    "name": {
+      "type": "string",
+      "desc": "发送到后台的文件参数名"
+    },
     "size": {
       "type": "UploadSize",
       "desc": "picture类型可配置的三种尺寸",
