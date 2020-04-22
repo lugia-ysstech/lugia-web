@@ -155,7 +155,7 @@ const PlusButton = CSSComponent({
   option: { hover: true, active: true },
 });
 
-const themeHoverColor = '$lugia-dict.@lugia/lugia-web.themeHoverColor';
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 const themeActiveColor = '$lugia-dict.@lugia/lugia-web.themeActiveColor';
 const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
 const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
@@ -332,7 +332,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
             },
           },
           hover: {
-            color: themeHoverColor,
+            color: themeColor,
           },
           active: {
             color: themeActiveColor,
