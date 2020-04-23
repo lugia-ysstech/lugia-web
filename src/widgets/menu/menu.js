@@ -93,6 +93,7 @@ export type MenuProps = {
   getPartOfThemeProps: Function,
   getPartOfThemeConfig: Function,
   getPartOfThemeHocProps: Function,
+  defaultHeight?: number,
 };
 const EmptyData = [];
 
@@ -261,6 +262,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
           itemHeight,
           marginBottom,
           renderSuffixItems,
+          size,
         } = this.props;
 
         const { [valueField]: key, [displayField]: value, disabled, icon, icons, divided } = obj;
@@ -291,6 +293,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
             marginBottom={marginBottom}
             renderSuffixItems={renderSuffixItems}
             hoverState={expandedPathValues.indexOf(key) !== -1}
+            size={size}
           />
         );
         return wrapItem ? wrapItem(result, { key, value }) : result;
@@ -638,7 +641,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
   }
 
   getSubMenuTheme() {
-    const { getPartOfThemeConfig, level } = this.props;
+    const { getPartOfThemeConfig } = this.props;
     const config = {
       [Widget.Menu]: getPartOfThemeConfig('SubMenu'),
     };

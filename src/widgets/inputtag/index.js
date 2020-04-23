@@ -21,11 +21,9 @@ import Menu from '../menu';
 import Support from '../common/FormFieldWidgetSupport';
 import PlaceContainer from '../common/PlaceContainer';
 import { DefaultHelp } from '../css/input';
-
 import { DefaultHeight } from '../css/menu';
 import {
   FontSize,
-  lightGreyColor,
   OutContainer,
   InnerContainer,
   SingleInnerContainer,
@@ -36,9 +34,13 @@ import {
   List,
   HiddenList,
   FocuInput,
+  TextContent,
+  blackColor,
+  themeColor,
 } from '../css/inputtag';
 import ErrorTip from '../tooltip/ErrorTip';
 import { px2remcss } from '../css/units';
+import get from '../css/theme-common-dict';
 
 const ClearMenuItemButton: Object = styled(Icon)`
   top: 50%;
@@ -46,7 +48,7 @@ const ClearMenuItemButton: Object = styled(Icon)`
   position: absolute;
   transform: translateY(-50%);
   font-size: ${px2remcss(16)};
-  color: ${lightGreyColor};
+  color: ${get('lightGreyColor')};
 `;
 
 type ValidateStatus = 'success' | 'error';
@@ -79,6 +81,8 @@ type InputTagProps = {
   pullIconClass?: string,
   clearIconClass?: string,
   createPortal?: boolean,
+  menuVisible?: boolean,
+  isShowClearButton?: boolean,
 };
 
 type InputTagState = {
@@ -144,6 +148,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       (this.needMoreItem && state.query !== nextState.query) ||
       state.value !== nextState.value ||
       state.focus !== nextState.focus ||
+      props.menuVisible !== nextPros.menuVisible ||
       props.displayValue !== nextPros.displayValue ||
       props.displayValue.length !== nextPros.displayValue.length;
     return isChange;
@@ -222,18 +227,34 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       />
     );
     const { focus } = state;
-    const { disabled, validateStatus, prefix, suffix, getPartOfThemeProps, createPortal } = props;
+    const {
+      disabled,
+      validateStatus,
+      prefix,
+      suffix,
+      getPartOfThemeProps,
+      createPortal,
+      menuVisible,
+      dispatchEvent,
+    } = props;
     const themeProps = getPartOfThemeProps('InputTagWrap');
+    const textContentThemeProps = getPartOfThemeProps('TextContent');
+    const { themeState } = themeProps;
+    themeState.focus = menuVisible;
     if (!this.isMutliple()) {
       result = (
         <SingleInnerContainer disabled={disabled}>
           <FlexResBox>
-            {prefix ? <Prefix>{prefix}</Prefix> : null}
+            {prefix ? (
+              <Prefix {...dispatchEvent(['hover', 'disabled'], 'f2c')}>{prefix}</Prefix>
+            ) : null}
             {placeholder}
-            {this.getSingleValue()}
+            <TextContent themeProps={textContentThemeProps}>{this.getSingleValue()}</TextContent>
             <FocuInput />
           </FlexResBox>
-          {suffix ? <Suffix>{suffix}</Suffix> : null}
+          {suffix ? (
+            <Suffix {...dispatchEvent(['hover', 'disabled'], 'f2c')}>{suffix}</Suffix>
+          ) : null}
           {clearButton}
         </SingleInnerContainer>
       );
@@ -270,7 +291,6 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
         );
       }
     }
-
     return (
       <OutContainer
         themeProps={themeProps}
@@ -309,31 +329,46 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     });
   };
 
+  getIconTheme(themeName: string) {
+    const { getPartOfThemeConfig } = this.props;
+    const colorName = themeName === 'ClearIcon' ? 'darkGreyColor' : 'themeColor';
+    const IconTheme = getPartOfThemeConfig(themeName);
+    const defaultIcon = {
+      normal: {
+        color: get('mediumGreyColor'),
+      },
+      hover: {
+        color: get(colorName),
+      },
+      disabled: {
+        color: get('disableTextColor'),
+      },
+    };
+    IconTheme.themeConfig = deepMerge(defaultIcon, IconTheme);
+    const newClearIconTheme = {
+      [Widget.Icon]: {
+        Icon: IconTheme.themeConfig,
+      },
+    };
+    return newClearIconTheme;
+  }
+
   getClearButton() {
-    const {
-      canClear,
-      pullIconClass,
-      getPartOfThemeHocProps,
-      clearIconClass,
-      disabled,
-      isShowClearButton,
-    } = this.props;
+    const { canClear, pullIconClass, clearIconClass, disabled, isShowClearButton } = this.props;
     if (!isShowClearButton) {
       return null;
     }
     const theme =
       this.isEmpty() || !canClear
-        ? getPartOfThemeHocProps('SwitchIcon')
-        : getPartOfThemeHocProps('ClearIcon');
-
+        ? this.getIconTheme('SwitchIcon')
+        : this.getIconTheme('ClearIcon');
     const Icon =
       this.isEmpty() || !canClear ? (
-        <CommonIcon {...theme} disabled={disabled} singleTheme iconClass={pullIconClass} />
+        <CommonIcon theme={theme} disabled={disabled} iconClass={pullIconClass} />
       ) : (
         <CommonIcon
-          {...theme}
+          theme={theme}
           disabled={disabled}
-          singleTheme
           iconClass={clearIconClass}
           onClick={this.onClear}
         />
@@ -342,14 +377,12 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   }
 
   getPlaceholder() {
-    const { placeholder } = this.props;
+    const { placeholder, getPartOfThemeProps } = this.props;
     if (!placeholder || !this.isEmpty()) {
       return null;
     }
     return (
-      <PlaceContainer themeProps={this.props.getPartOfThemeProps('Placeholder')}>
-        {placeholder}
-      </PlaceContainer>
+      <PlaceContainer themeProps={getPartOfThemeProps('Placeholder')}>{placeholder}</PlaceContainer>
     );
   }
 
@@ -378,7 +411,6 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
 
   mergeTheme = (target: string, defaultTheme: Object) => {
     const { viewClass, theme } = this.props.getPartOfThemeHocProps(target);
-
     const themeHoc = deepMerge(
       {
         [viewClass]: { ...defaultTheme },
@@ -406,13 +438,11 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
       MenuItem: {
         MenuItemWrap: {
           normal: {
-            color: '#222',
+            color: blackColor,
+            height: 32,
           },
           hover: {
-            color: '#222',
-            background: {
-              color: '',
-            },
+            color: themeColor,
           },
         },
       },
@@ -608,6 +638,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   }
 
   async adaptiveItems(listWidth: number): Promise<boolean> {
+    const { disabled } = this.props;
     if (!this.isMutliple()) {
       return true;
     }
@@ -639,6 +670,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
           items.push(
             <Item
               theme={this.getTagItemTheme()}
+              disabled={disabled}
               key={key}
               onCloseClick={this.onDelItem.bind(this, key)}
             >
@@ -681,7 +713,6 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
         TagIcon: getPartOfThemeConfig('TagIcon'),
       },
     };
-
     return ItemThemeProps;
   }
 

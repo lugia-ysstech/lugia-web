@@ -5,22 +5,17 @@
  * @flow
  */
 import styled from 'styled-components';
-import {
-  MarginRight,
-  MarginTop,
-  PaddingLeft,
-  PadingRight,
-  Height,
-  darkGreyColor,
-} from '../css/inputtag';
+import { MarginTop, PaddingLeft, PadingRight, Height } from '../css/inputtag';
 import { ItemBackgroundColor } from '../css/menu';
 import { Padding } from '../css/input';
 import { px2remcss } from '../css/units';
+import get from '../css/theme-common-dict';
 
 const ItemTagHeight = Height - Padding - MarginTop * 2;
 
-const getPaddingRight = (props: Object) =>
-  (props.closeable ? px2remcss(PadingRight) : px2remcss(PaddingLeft));
+const getPaddingRight = (props: Object) => {
+  return props.closeable ? px2remcss(PadingRight) : px2remcss(PaddingLeft);
+};
 export const ItemContainer = styled.li`
   margin-top: ${px2remcss(4)};
   height: ${px2remcss(ItemTagHeight)};
@@ -28,7 +23,7 @@ export const ItemContainer = styled.li`
   user-select: none;
   background: ${ItemBackgroundColor};
   border-radius: ${px2remcss(ItemTagHeight)};
-  color: ${darkGreyColor};
+  color: ${get('darkGreyColor')};
   cursor: default;
   float: left;
   position: relative;

@@ -122,6 +122,7 @@ class ScrollerTree extends React.Component<any, any> {
         checkedCSS,
         marginBottom,
         pidField,
+        size,
       } = this.props;
 
       const {
@@ -178,6 +179,7 @@ class ScrollerTree extends React.Component<any, any> {
             icons={icons}
             checkedCSS={checkedCSS}
             marginBottom={marginBottom}
+            size={size}
           >
             {this.loopNode(children)}
           </TreeNode>
@@ -206,8 +208,10 @@ class ScrollerTree extends React.Component<any, any> {
           onlySelectLeaf={onlySelectLeaf}
           translateTreeData={translateTreeData}
           icon={icon}
+          icons={icons}
           checkedCSS={checkedCSS}
           marginBottom={marginBottom}
+          size={size}
         />
       );
     });

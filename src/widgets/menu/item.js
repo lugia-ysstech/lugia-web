@@ -9,6 +9,7 @@ import ThemeHoc from '@lugia/theme-hoc';
 import Widget from '../consts/index';
 import { deepMerge } from '@lugia/object-utils';
 import { addMouseEvent } from '@lugia/theme-hoc';
+
 import {
   ItemWrap,
   DividerWrap,
@@ -17,17 +18,24 @@ import {
   Text,
   SwitchIconContainer,
   DesContainer,
-  ItemBackgroundColor,
   SuffixElementWrap,
 } from '../css/menu';
 import CheckBox from '../checkbox';
 import Icon from '../icon';
-import colorsFunc from '../css/stateColor';
+import get from '../css/theme-common-dict';
+import changeColor from '../css/utilsColor';
+import { px2remcss } from '../css/units';
+import { getMenuThemeDefaultConfig } from '../css//menu';
 
-const { themeColor, blackColor, disableColor } = colorsFunc();
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
+const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
+const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
+const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
+const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
+
 const Utils = require('@lugia/type-utils');
 const { ObjectUtils } = Utils;
-export type SizeType = 'large' | 'default' | 'bigger';
+export type SizeType = 'large' | 'default' | 'small';
 export type MenuItemProps = {
   key?: any,
   checked: boolean,
@@ -37,7 +45,7 @@ export type MenuItemProps = {
   children?: React.Node,
   disabled: boolean,
   divided: ?boolean,
-  checkedCSS?: 'none' | 'background' | 'mark' | 'checkbox',
+  checkedCSS?: 'none' | 'background' | 'checkbox',
   theme: Object,
   isFirst: boolean,
   value: string,
@@ -52,6 +60,7 @@ export type MenuItemProps = {
   getPartOfThemeHocProps: Function,
   getPartOfThemeProps: Function,
   createEventChannel: Function,
+  size: SizeType,
 };
 
 class MenuItem extends React.Component<MenuItemProps> {
@@ -63,6 +72,7 @@ class MenuItem extends React.Component<MenuItemProps> {
     switchIconClass: {
       iconClass: 'lugia-icon-direction_right',
     },
+    size: 'default',
   };
   static displayName = Widget.MenuItem;
 
@@ -83,23 +93,17 @@ class MenuItem extends React.Component<MenuItemProps> {
     return treeTheme;
   };
 
-  getCheckBoxTheme() {
-    const defaultTheme = {
-      CheckboxText: {
-        normal: {
-          font: { size: 13, fontWeight: 500 },
-        },
-        hover: { font: { size: 13, fontWeight: 500 } },
-        disabled: { font: { size: 13, fontWeight: 500 } },
-      },
-    };
+  getCheckBoxTheme = () => {
+    const { size } = this.props;
+    const defaultTheme = getMenuThemeDefaultConfig(size, 'Checkbox');
     return this.mergeTheme('Checkbox', defaultTheme);
-  }
+  };
 
   getIconTheme = (iconType: string) => {
+    const { size } = this.props;
     const { viewClass, theme } = this.props.getPartOfThemeHocProps(iconType);
-    const paddingLeft = iconType === 'SuffixIcon' ? 3 : 0;
-    const paddingRight = iconType === 'PrefixIcon' ? 3 : 0;
+    const paddingLeft = iconType === 'SuffixIcon' ? px2remcss(get('padding')) : 0;
+    const paddingRight = iconType === 'PrefixIcon' ? px2remcss(get('paddingToText')) : 0;
     const defaultTheme = {
       normal: {
         padding: {
@@ -118,7 +122,7 @@ class MenuItem extends React.Component<MenuItemProps> {
       viewClass,
       theme: deepMerge(
         {
-          [viewClass]: { ...defaultTheme },
+          [viewClass]: { ...deepMerge(defaultTheme, getMenuThemeDefaultConfig(size, iconType)) },
         },
         theme
       ),
@@ -201,16 +205,16 @@ class MenuItem extends React.Component<MenuItemProps> {
     );
   }
 
-  getItemCheckedCSS = (checked: Boolean, checkedCSS: string) => {
-    const color = checked && checkedCSS !== 'background' ? themeColor : blackColor;
-    const backgroundColor = checked && checkedCSS === 'background' ? disableColor : '';
+  getItemCheckedCSS = (checkedCSS: string) => {
+    const { disabled } = this.props;
+    const color =
+      checkedCSS === 'background' ? defaultColor : checkedCSS === 'none' ? themeColor : blackColor;
+    const backgroundColor =
+      checkedCSS === 'background' ? (disabled ? '' : themeColor) : defaultColor;
     return {
       color,
       background: {
         color: backgroundColor,
-      },
-      font: {
-        weight: 900,
       },
     };
   };
@@ -223,14 +227,15 @@ class MenuItem extends React.Component<MenuItemProps> {
       hoverState,
       menuItemHeight = DefaultMenuItemHeight,
     } = this.props;
-    const checkedTheme = this.getItemCheckedCSS(checked, checkedCSS);
+    const hoverColor =
+      checkedCSS === 'background' ? defaultColor : changeColor(get('themeColor'), 0, 0, 10).rgba;
     const hoverTheme = {
       color: themeColor,
-      background: { color: ItemBackgroundColor },
-      font: { weight: 900 },
+      background: { color: hoverColor },
     };
     let themeProps;
     if (checked) {
+      const checkedTheme = this.getItemCheckedCSS(checkedCSS);
       themeProps = getPartOfThemeProps('SelectedMenuItemWrap', {
         props: {
           checkedCSS,
@@ -276,6 +281,62 @@ class MenuItem extends React.Component<MenuItemProps> {
     return <SuffixElementWrap>{suffixItems}</SuffixElementWrap>;
   }
 
+  getTextThemeProps = () => {
+    const { getPartOfThemeProps, size } = this.props;
+    const themeProps = getPartOfThemeProps('Text');
+    const defaultTextTheme = getMenuThemeDefaultConfig(size, 'Text');
+    return deepMerge({ themeConfig: { ...defaultTextTheme } }, themeProps);
+  };
+
+  getDesContainer = () => {
+    const { checked, getPartOfThemeProps, checkedCSS } = this.props;
+    const isCheckbox = checkedCSS === 'checkbox';
+    const defaultSelectedDesContainerTheme = {
+      themeConfig: {
+        normal: {
+          color:
+            checkedCSS === 'background'
+              ? defaultColor
+              : checkedCSS === 'checkbox'
+              ? blackColor
+              : themeColor,
+        },
+        hover: {
+          color: checkedCSS === 'background' ? defaultColor : themeColor,
+        },
+        disabled: {
+          color: disableTextColor,
+        },
+      },
+    };
+    const defaultDesContainerTheme = {
+      themeConfig: {
+        normal: {
+          color: darkGreyColor,
+        },
+        hover: {
+          color: themeColor,
+        },
+        disabled: {
+          color: disableTextColor,
+        },
+      },
+    };
+
+    const desContainerTheme = checked
+      ? deepMerge(
+          defaultSelectedDesContainerTheme,
+          getPartOfThemeProps('SelectedDesContainer', {
+            props: { isCheckbox },
+          })
+        )
+      : deepMerge(
+          defaultDesContainerTheme,
+          getPartOfThemeProps('DesContainer', { props: { isCheckbox } })
+        );
+    return desContainerTheme;
+  };
+
   render() {
     const {
       children,
@@ -290,6 +351,7 @@ class MenuItem extends React.Component<MenuItemProps> {
       item = {},
       getPartOfThemeProps,
       renderSuffixItems,
+      dispatchEvent,
     } = this.props;
 
     let title = '';
@@ -304,7 +366,6 @@ class MenuItem extends React.Component<MenuItemProps> {
     const DividerThemeProps = getPartOfThemeProps('Divider');
 
     const { des } = item;
-
     const target = (
       <ItemWrap
         onClick={onClick}
@@ -317,22 +378,33 @@ class MenuItem extends React.Component<MenuItemProps> {
       >
         {divided && !isFirst ? <DividerWrap themeProps={DividerThemeProps} /> : null}
         {isCheckbox ? (
-          <TextContainer themeProps={getPartOfThemeProps('TextContainer')}>
+          <TextContainer
+            themeProps={getPartOfThemeProps('TextContainer')}
+            {...dispatchEvent(['hover'], 'f2c')}
+          >
             <CheckBox
               {...this.getCheckBoxTheme()}
               checked={checked}
               disabled={disabled}
               onChange={onClick}
+              {...dispatchEvent(['hover'], 'f2c')}
             >
               {this.getPreIcon()}
-              <Text>{value ? value : children}</Text>
+              <Text {...dispatchEvent(['hover'], 'f2c')} themeProps={this.getTextThemeProps()}>
+                {value ? value : children}
+              </Text>
               {this.getSuffixIcon()}
             </CheckBox>
           </TextContainer>
         ) : (
-          <TextContainer themeProps={getPartOfThemeProps('TextContainer')}>
+          <TextContainer
+            themeProps={getPartOfThemeProps('TextContainer')}
+            {...dispatchEvent(['hover'], 'f2c')}
+          >
             {this.getPreIcon()}
-            <Text>{value ? value : children}</Text>
+            <Text {...dispatchEvent(['hover'], 'f2c')} themeProps={this.getTextThemeProps()}>
+              {value ? value : children}
+            </Text>
             {this.getSuffixIcon()}
           </TextContainer>
         )}
@@ -340,11 +412,7 @@ class MenuItem extends React.Component<MenuItemProps> {
         {des ? (
           <DesContainer
             {...this.props.dispatchEvent([['hover']], 'f2c')}
-            themeProps={
-              checked
-                ? getPartOfThemeProps('SelectedDesContainer')
-                : getPartOfThemeProps('DesContainer')
-            }
+            themeProps={this.getDesContainer()}
           >
             {des.toString()}
           </DesContainer>

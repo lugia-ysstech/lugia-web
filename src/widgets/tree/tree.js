@@ -72,6 +72,7 @@ export type TreeProps = {
   getPartOfThemeProps: Function,
   renderSuffixItems?: Function,
   onRightClick?: Function,
+  theme?: Object,
 };
 
 export type TreeState = {

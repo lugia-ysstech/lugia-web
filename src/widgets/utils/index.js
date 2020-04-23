@@ -84,3 +84,12 @@ export function judgeStarts(value: string) {
   }
   return value.startsWith('$lugia-dict.@lugia/lugia-web.');
 }
+
+export const getThemeDefaultConfigFromSource = sourceThemeConfig => (
+  sizeType: 'small' | 'default' | 'large',
+  themeName
+) => {
+  return sourceThemeConfig[sizeType]
+    ? sourceThemeConfig[sizeType][themeName] || {}
+    : sourceThemeConfig.default[themeName] || {};
+};
