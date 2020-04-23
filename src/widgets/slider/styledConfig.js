@@ -1,12 +1,14 @@
 import { deepMerge } from '@lugia/object-utils';
-import { btnDisabledBackground, tipBackground, tipColor } from './slider_public_color';
 import { btnWidthNormal, rangeHeightNormal, rangeWidthNormal } from './slider_public_size';
-import { getBorder, getBorderRadius } from '@lugia/theme-utils';
+import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
+import get from '../css/theme-common-dict';
+import colorsFunc from '../css/stateColor';
 
 const superLightColor = '$lugia-dict.@lugia/lugia-web.superLightColor';
 const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
 const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 const themeHoverColor = '$lugia-dict.@lugia/lugia-web.themeHoverColor';
+const { hShadow, vShadow, shadowSpread } = colorsFunc();
 
 function verticalSize(props) {
   let { width, height, vertical } = props;
@@ -268,18 +270,15 @@ function getTipsThemeProps(getPartOfThemeProps) {
   const defaultTipThemeProps = {
     normal: {
       background: {
-        color: tipBackground,
+        color: get('blackColor'),
       },
       height: 27,
-      color: tipColor,
-      borderRadius: getBorderRadius(3),
-      fontSize: 14,
-    },
-    disabled: {
-      background: {
-        color: btnDisabledBackground,
-      },
-      color: '#fff',
+      color: get('defaultColor'),
+      borderRadius: getBorderRadius(2),
+      fontSize: 12,
+      boxShadow: getBoxShadow(
+        `${hShadow}px ${vShadow}px ${shadowSpread}px 0 ${get('borderColor')}`
+      ),
     },
   };
   const mergeThemeConfig = deepMerge(defaultTipThemeProps, sliderTipsThemeProps.themeConfig);
