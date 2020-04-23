@@ -60,7 +60,8 @@ const ValidateHoc = (Target: Object) => {
       if (!isOpenValidate) {
         return <Target {...this.props} />;
       }
-      const innerProps = validateType === 'inner' ? { _isValidateVisible } : {};
+      const innerProps =
+        validateType === 'inner' ? { innerVisible: !_isValidateVisible } : { innerVisible: true };
       const validateThemeProps = getPartOfThemeProps('ValidateErrorText', {
         props: { validateStatus, ...innerProps },
       });
