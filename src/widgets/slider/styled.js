@@ -13,6 +13,8 @@ import {
   iconChangeColor,
 } from './slider_public_color';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
+import get from '../css/theme-common-dict';
+
 const em = px2remcss;
 type CssTypeProps = {
   background: string,
@@ -314,7 +316,7 @@ export const Tipinner = CSSComponent({
   css: css`
     display: block;
     min-width: ${em(40)};
-    padding: ${em(3)} ${em(3)};
+    padding: ${em(4)} ${em(get('padding'))};
     user-select: none;
     -webkit-user-select: none;
     position: relative;
@@ -350,7 +352,10 @@ function getTipsArrowBorder(themeMate) {
   const {
     background: { color = '' } = {},
     border: {
-      bottom: { color: bottomBorderColor = '', style: bottomBorderStyle = 'solid' } = {},
+      bottom: {
+        color: bottomBorderColor = get('blackColor'),
+        style: bottomBorderStyle = 'solid',
+      } = {},
     } = {},
     boxShadow: { color: boxShadowColor = '', x = 0, y = 0, blur = 0, spread = 0 } = {},
     borderRadius: { topLeft = 3, topRight = 3, bottomRight = 3, bottomLeft = 3 } = {},
