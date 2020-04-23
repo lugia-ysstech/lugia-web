@@ -103,6 +103,9 @@ export default {
   '/menu': {
     render: async () => import('./widgets/menu/demo'),
   },
+  '/p-menu': {
+    render: async () => import('./widgets/menu/p-menu'),
+  },
   '/message': {
     render: async () => import('./widgets/message/demo'),
   },
@@ -157,6 +160,9 @@ export default {
   '/select': {
     render: async () => import('./widgets/select/demo'),
   },
+  '/p-select': {
+    render: async () => import('./widgets/select/p-select'),
+  },
 
   '/skeleton': {
     render: async () => import('./widgets/skeleton/demo'),
@@ -204,6 +210,9 @@ export default {
   },
   '/dragTree': {
     render: async () => import('./widgets/tree/dragDome.js'),
+  },
+  '/p-tree': {
+    render: async () => import('./widgets/tree/p-tree.js'),
   },
   '/treeselect': {
     render: async () => import('./widgets/tree-select/demo'),
