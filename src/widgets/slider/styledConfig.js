@@ -1,12 +1,6 @@
 import { deepMerge } from '@lugia/object-utils';
-import {
-  throughRangeBackground,
-  btnDisabledBackground,
-  tipBackground,
-  tipColor,
-} from './slider_public_color';
+import { btnDisabledBackground, tipBackground, tipColor } from './slider_public_color';
 import { btnWidthNormal, rangeHeightNormal, rangeWidthNormal } from './slider_public_size';
-import colorsFunc from '../css/stateColor';
 import { getBorder, getBorderRadius } from '@lugia/theme-utils';
 
 const superLightColor = '$lugia-dict.@lugia/lugia-web.superLightColor';
@@ -115,7 +109,7 @@ function getSliderTrackThemeProps(
     },
     active: {
       background: {
-        color: throughRangeBackground,
+        color: disableColor,
       },
     },
     disabled: {
@@ -177,7 +171,7 @@ function getSliderPassedWayThemeProps(getPartOfThemeProps, height) {
     },
     active: {
       background: {
-        color: colorsFunc(color).hoverColor,
+        color: themeColor,
       },
       height: sliderPassedWayHeight,
     },
@@ -245,7 +239,7 @@ export function getSliderButtonThemeProps(getPartOfThemeProps, vertical) {
       width: btnWidth + 4,
       height: btnHeight + 4,
       background: {
-        color: colorsFunc(color).hoverColor,
+        color: themeColor,
       },
     },
     disabled: {
