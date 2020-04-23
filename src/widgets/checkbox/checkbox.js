@@ -40,7 +40,6 @@ const borderDisableColor = '$lugia-dict.@lugia/lugia-web.borderDisableColor';
 const defaultEdgeCancelProps = {
   themeConfig: {
     normal: {
-      color: 'red',
       border: getBorder({ color: themeDisabledColor, width: 1, style: 'solid' }),
       borderRadius: getBorderRadius(2),
       background: { color: themeDisabledColor },
