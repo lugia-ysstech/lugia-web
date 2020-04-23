@@ -8,6 +8,7 @@ import CheckBox from '../../checkbox';
 import { deepMerge } from '@lugia/object-utils';
 import ThemeHoc from '@lugia/theme-hoc';
 import { addMouseEvent } from '@lugia/theme-hoc';
+import get from '../../css/theme-common-dict';
 
 import {
   FlexBox,
@@ -21,12 +22,13 @@ import {
   Text,
   NavLi,
   SuffixWrap,
-  CheckboxContainer,
-  spiritColor,
+  CheckBoxContainer,
 } from '../../css/tree';
-import { mediumGreyColor, themeColor, lightGreyColor } from '../../css/stateColor';
+import { getTreeThemeDefaultConfig } from '../../css/tree';
 
 const defaultTitle = '---';
+const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 
 class TreeNode extends React.Component {
   static propTypes = {
@@ -207,39 +209,57 @@ class TreeNode extends React.Component {
 
   renderCheckbox() {
     const {
-      checked,
       halfChecked: indeterminate,
       title,
       disabled,
-      mutliple,
-      itemHeight,
+      parentIsHighlight,
+      pos,
+      shape,
+      selected,
+      describe,
+      inlineType,
+      checked,
     } = this.props;
 
+    const TextThemeProps = this.getTitleWrapThemeProps('Text', 'SelectedText', {
+      parentIsHighlight,
+    });
+    const domProps = {
+      onContextMenu: this.onContextMenu,
+    };
     return (
-      <TitleWrap
-        disabled={disabled}
-        themeProps={this.getTitleWrapThemeProps('Text', 'SelectedText', { mutliple, itemHeight })}
-      >
-        <CheckboxContainer>
+      <CheckBoxContainer>
+        <CheckBox
+          {...this.getCheckBoxTheme()}
+          checked={checked}
+          disabled={disabled}
+          indeterminate={indeterminate}
+          onChange={this.onCheck}
+        ></CheckBox>
+        <TitleWrap
+          themeProps={TextThemeProps}
+          ref={this.saveSelectHandle}
+          title={typeof title === 'string' ? title : ''}
+          {...domProps}
+          pos={pos}
+          inlineType={inlineType}
+          shape={shape}
+          checked={checked}
+          selected={selected}
+          describe={describe}
+          disabled={disabled}
+          onClick={this.onCheck}
+        >
           {this.getPreIcon()}
-          <CheckBox
-            {...this.getCheckBoxTheme()}
-            checked={checked}
-            disabled={disabled}
-            indeterminate={indeterminate}
-            onChange={this.onCheck}
-          >
-            {title}
-          </CheckBox>
+          <Text>{title}</Text>
           {this.getSuffixIcon()}
-        </CheckboxContainer>
-      </TitleWrap>
+        </TitleWrap>
+      </CheckBoxContainer>
     );
   }
 
   mergeTheme = (target: string, defaultTheme: Object) => {
     const { viewClass, theme } = this.props.getPartOfThemeHocProps(target);
-
     const themeHoc = deepMerge(
       {
         [viewClass]: { ...defaultTheme },
@@ -255,7 +275,8 @@ class TreeNode extends React.Component {
   };
 
   getCheckBoxTheme() {
-    const defaultTheme = this.getCheckboxTextDefaultTheme();
+    const { size } = this.props;
+    const defaultTheme = getTreeThemeDefaultConfig(size, 'Checkbox');
     return this.mergeTheme('Checkbox', defaultTheme);
   }
 
@@ -359,56 +380,71 @@ class TreeNode extends React.Component {
     if (expanded && !isLeaf) {
       const { normal: TextExpanded = {} } = this.props.getPartOfThemeProps('TextExpanded');
       themeConfig.normal = deepMerge(
-        deepMerge(this.getDefaultTitleWrapTheme('normal', params.props), normal),
+        deepMerge(this.getDefaultTitleWrapTheme('normal', params.props, target), normal),
         TextExpanded
       );
     } else {
-      themeConfig.normal = deepMerge(this.getDefaultTitleWrapTheme('normal', params.props), normal);
+      themeConfig.normal = deepMerge(
+        this.getDefaultTitleWrapTheme('normal', params.props, target),
+        normal
+      );
     }
     return themeProps;
   }
 
   getDefaultTitleWrapThemeProps(target: string, params: Object) {
     const { expanded, isLeaf } = this.props;
+
     const themeProps = this.props.getPartOfThemeProps(target, params);
     const { themeConfig = {} } = themeProps;
-
     const { hover = {}, normal = {} } = themeConfig;
 
     if (expanded && !isLeaf) {
       const { themeConfig: { normal: TextExpanded = {} } = {} } = this.props.getPartOfThemeProps(
         'TextExpanded'
       );
-      themeConfig.normal = deepMerge(normal, TextExpanded);
+      themeConfig.normal = deepMerge(
+        deepMerge(this.getDefaultTitleWrapTheme('normal', params.props, target), normal),
+        TextExpanded
+      );
+    } else {
+      themeConfig.normal = deepMerge(
+        this.getDefaultTitleWrapTheme('normal', params.props, target),
+        normal
+      );
     }
-    themeConfig.hover = deepMerge(this.getDefaultTitleWrapTheme('hover', params.props), hover);
+    themeConfig.hover = deepMerge(
+      this.getDefaultTitleWrapTheme('hover', params.props, target),
+      hover
+    );
     return themeProps;
   }
 
-  getDefaultTitleWrapTheme(state: string, props: Object) {
+  getDefaultTitleWrapTheme(state: string, props: Object, target: string) {
+    const { size, draggable } = this.props;
     const { mutliple, __navmenu } = props;
-
-    return __navmenu || mutliple === true
-      ? {}
-      : state === 'hover'
-      ? {
-          background: {
-            color: spiritColor,
-          },
-        }
-      : {
-          background: {
-            color: 'rgba(77,99,255,0.2)',
-          },
-        };
+    const { dragState } = this.state;
+    if (__navmenu || mutliple === true) {
+      return {};
+    }
+    if (draggable && dragState === 'dragOver') {
+      return deepMerge(getTreeThemeDefaultConfig(size, target)[state], {
+        background: { color: 'transparent' },
+      });
+    }
+    return getTreeThemeDefaultConfig(size, target)[state];
   }
 
   getTitleWrapThemeProps(defaultName: string, selectedName: string, params: Object = {}): Object {
     const { parentIsHighlight } = this.props;
 
     return this.isChecked() || parentIsHighlight
-      ? this.getSelectedTitleWrapThemeProps(selectedName, { props: params })
-      : this.getDefaultTitleWrapThemeProps(defaultName, { props: params });
+      ? this.getSelectedTitleWrapThemeProps(selectedName, {
+          props: params,
+        })
+      : this.getDefaultTitleWrapThemeProps(defaultName, {
+          props: params,
+        });
   }
 
   getThemeProps(defaultName: string, selectedName: string, params: Object = {}): Object {
@@ -437,7 +473,7 @@ class TreeNode extends React.Component {
         iconClass={iconClass}
         src={prefixIconSrc}
         disabled={disabled}
-        {...this.props.dispatchEvent([['hover'], ['active']], 'f2c')}
+        {...this.props.dispatchEvent([['hover'], ['active'], ['focus']], 'f2c')}
         singleTheme
         viewClass={viewClass}
         theme={theme}
@@ -471,48 +507,35 @@ class TreeNode extends React.Component {
   }
 
   getSwitchIconTheme = (expandedState: string) => {
-    const { viewClass, theme } = this.props.getPartOfThemeHocProps('SwitchIcon');
-
-    const {
-      viewClass: expandedViewClass,
-      theme: expandedTheme,
-    } = this.props.getPartOfThemeHocProps('SwitchIconExpanded');
-    const defaultTheme = {
-      normal: {
-        margin: {
-          left: 3,
-          right: 3,
-        },
-      },
-    };
-
+    const { size } = this.props;
+    let switchIconThemeHocProps;
     if (expandedState === 'open') {
-      return {
+      const { viewClass, theme } = this.props.getPartOfThemeHocProps('SwitchIconExpanded');
+      switchIconThemeHocProps = {
         viewClass,
-        theme: deepMerge(
-          deepMerge(
-            {
-              [viewClass]: { ...defaultTheme },
-            },
-            theme
+        theme: {
+          [viewClass]: deepMerge(
+            getTreeThemeDefaultConfig(size, 'SwitchIconExpanded'),
+            theme[viewClass]
           ),
-          {
-            [viewClass]: { ...expandedTheme[expandedViewClass] },
-          }
-        ),
+        },
+      };
+    } else {
+      const { viewClass, theme } = this.props.getPartOfThemeHocProps('SwitchIcon');
+      switchIconThemeHocProps = {
+        viewClass,
+        theme: {
+          [viewClass]: deepMerge(getTreeThemeDefaultConfig(size, 'SwitchIcon'), theme[viewClass]),
+        },
       };
     }
-
-    return {
-      viewClass,
-      theme: deepMerge({ [viewClass]: { ...defaultTheme } }, theme),
-    };
+    return switchIconThemeHocProps;
   };
 
   getIconTheme = (iconType: string) => {
     const { viewClass, theme } = this.props.getPartOfThemeHocProps(iconType);
-    const marginLeft = iconType === 'SuffixIcon' ? 3 : 0;
-    const marginRight = iconType === 'PrefixIcon' ? 3 : 0;
+    const marginLeft = iconType === 'SuffixIcon' ? get('padding') : 0;
+    const marginRight = iconType === 'PrefixIcon' ? get('paddingToText') : 0;
     const defaultTheme = {
       normal: {
         margin: {
@@ -657,7 +680,6 @@ class TreeNode extends React.Component {
           // domProps.onDragStart = this.onDragStart;
         }
       }
-
       return (
         <TitleWrap
           themeProps={TextThemeProps}
@@ -687,8 +709,7 @@ class TreeNode extends React.Component {
     }
 
     const renderNoopSwitch = () => {
-      const { viewClass, theme } = this.getIconTheme('SwitchIcon');
-
+      const { viewClass, theme } = this.props.getPartOfThemeHocProps('SwitchIcon');
       return (
         <NullSwitch>
           <Icon
@@ -719,7 +740,6 @@ class TreeNode extends React.Component {
     }
 
     const ItemWrap = __navmenu ? NavLi : Li;
-
     return (
       <ItemWrap
         key={eventKey}
@@ -741,7 +761,6 @@ class TreeNode extends React.Component {
               : canRenderSwitch
               ? this.renderSwitch(expandedState)
               : renderNoopSwitch()}
-
             {props.checkable && checkedCSS === 'checkbox' ? this.renderCheckbox() : selectHandle()}
             {renderSuffixItems ? this.getRenderSuffixItems(item) : null}
             {switchAtEnd && canRenderSwitch ? this.renderSwitch(expandedState) : null}

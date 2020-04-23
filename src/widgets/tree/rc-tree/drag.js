@@ -320,7 +320,7 @@ class TreeDrag {
     mouseEvent: SyntheticMouseEvent<HTMLButtonElement>,
     eventFn: Function,
     onDragEnd: Function,
-    opt?: object
+    opt?: Object
   ) {
     if (!treeDragController.isDrag || !treeDragController.dragNode) return;
     const { isIgnoreDragOut } = opt;

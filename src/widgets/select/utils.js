@@ -5,6 +5,7 @@ import {
 } from '../css/validateHoc';
 import { deepMerge } from '@lugia/object-utils';
 import Widget from '../consts/index';
+import { inputTagThemeDefaultConfig } from '../css/select';
 
 function getInputtagWrapThemeConfig(props: Object): Object {
   const { getPartOfThemeConfig, validateStatus } = props;
@@ -23,10 +24,10 @@ function getInputtagWrapThemeConfig(props: Object): Object {
 }
 
 export function getInputtagThemeHoc(props: Object): Object {
-  const { getPartOfThemeConfig } = props;
+  const { getPartOfThemeConfig, size = 'default' } = props;
+  const defaultInputTagThemeConfig = inputTagThemeDefaultConfig[size];
   const inputtagWrapThemeConfig = getInputtagWrapThemeConfig(props);
-
-  const inputtagTheme = {
+  const customInputTagThemeConfig = {
     [Widget.InputTag]: {
       InputTagWrap: inputtagWrapThemeConfig,
       TagWrap: getPartOfThemeConfig('TagWrap'),
@@ -37,5 +38,9 @@ export function getInputtagThemeHoc(props: Object): Object {
       Menu: getPartOfThemeConfig('InputMenu'),
     },
   };
-  return inputtagTheme;
+  const deepMergeThemeConfig = deepMerge(defaultInputTagThemeConfig, customInputTagThemeConfig);
+  const inputTagTheme = {
+    [Widget.InputTag]: deepMergeThemeConfig,
+  };
+  return inputTagTheme;
 }
