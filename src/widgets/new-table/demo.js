@@ -81,11 +81,78 @@ const dataA = [
   { name: 'TheShy', age: 36, address: 'some where', key: '6', isIn: true },
 ];
 
+const treeColumns = [
+  {
+    title: 'value',
+    dataIndex: 'value',
+    key: 'value',
+    editType: 'string',
+    columnType: '',
+  },
+  { title: 'text', dataIndex: 'text', key: 'text', editType: 'string', columnType: '' },
+  {
+    title: 'icons',
+    dataIndex: 'icons',
+    key: 'icons',
+    editType: 'object',
+    columnType: '',
+    disableEdit: true,
+    children: [
+      { title: 'prefix', dataIndex: 'prefix', key: 'prefix', editType: 'Icon' },
+      { title: 'suffix', dataIndex: 'suffix', key: 'suffix', editType: 'Icon' },
+    ],
+  },
+  {
+    title: 'children',
+    dataIndex: 'children',
+    key: 'children',
+    editType: 'Object[]',
+    columnType: '',
+  },
+];
+const treeData = [
+  {
+    value: '一级节点-1',
+    text: '一级节点-1',
+    key: 1,
+    children: [
+      { key: 11, value: '二级节点1-1', text: '二级节点1-1' },
+      {
+        key: 12,
+        value: '二级节点1-2',
+        text: '二级节点1-2',
+      },
+    ],
+    icons: {
+      prefix: 123,
+      suffix: 334,
+    },
+  },
+  {
+    value: '一级节点-2',
+    text: '一级节点-2',
+    key: 2,
+    children: [
+      {
+        key: 21,
+        value: '二级节点2-1',
+        text: '二级节点2-1',
+      },
+      {
+        key: 22,
+        value: '二级节点2-2',
+        text: '二级节点2-2',
+      },
+    ],
+  },
+];
+
 export default class TableDemo extends React.Component<Object, Object> {
   constructor(props) {
     super(props);
     this.state = {
       tableData: dataA,
+      treeData,
     };
   }
   onChange = res => {
@@ -93,11 +160,16 @@ export default class TableDemo extends React.Component<Object, Object> {
     const { data } = res;
     this.setState({ tableData: data });
   };
+  onChangeTreeData = res => {
+    console.log('onChange', res);
+    const { data } = res;
+    this.setState({ treeData: data });
+  };
   onCell = res => {
     console.log('onCell', res);
   };
   render() {
-    const { tableData } = this.state;
+    const { tableData, treeData } = this.state;
 
     const config = {
       [Widgets.EditTable]: {
@@ -113,6 +185,21 @@ export default class TableDemo extends React.Component<Object, Object> {
     };
     return (
       <div>
+        <Title>可编辑表格 嵌套数据</Title>
+        <div>{JSON.stringify(treeData)}</div>
+        <Theme config={config}>
+          <EditTable
+            data={treeData}
+            columns={treeColumns}
+            tableStyle={'bordered'}
+            tableSize={'large'}
+            title={'这是一个有边框的表格'}
+            footer={<div>这是表格底部信息</div>}
+            onChange={this.onChangeTreeData}
+            onCell={this.onCell}
+            selectSuffixElement={<div>00</div>}
+          />
+        </Theme>
         <Title>可编辑表格</Title>
         <Theme config={config}>
           <EditTable
