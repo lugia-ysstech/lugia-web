@@ -15,6 +15,7 @@ import QueryInput from '../common/QueryInput';
 import { deepMerge } from '@lugia/object-utils';
 import ValidateHoc from '../input/validateHoc';
 import { getInputtagThemeHoc } from './utils';
+import { PopupMenuWrap } from '../css/select';
 import {
   didUpdate,
   getDisplayValue,
@@ -26,8 +27,11 @@ import { DisplayField, ValueField } from '../consts/props';
 import { appendCustomValue, isCanInput, isMutliple, setNewValue } from '../common/selectFunction';
 import { toMatchFromType } from '../common/StringUtils';
 import ThemeHoc from '@lugia/theme-hoc';
+import { inputTagThemeDefaultConfig } from '../css/select';
 type ValidateStatus = 'success' | 'error';
 type RowData = { [key: string]: any };
+type CheckedCSS = 'none' | 'background' | 'checkbox';
+type Size = 'small' | 'default' | 'large';
 
 export function getNewValueOrOldValue(v: string[], mutliple: boolean) {
   return mutliple ? v : v[0];
@@ -72,6 +76,10 @@ type SelectProps = {
   pullIconClass?: string,
   clearIconClass?: string,
   isShowClearButton?: boolean,
+  size?: Size,
+  checkedCSS?: CheckedCSS,
+  getPartOfThemeProps: (str: string) => any,
+  getPartOfThemeHocProps: (str: string) => any,
 };
 type SelectState = {
   value: Array<string>,
@@ -84,6 +92,7 @@ type SelectState = {
   selectCount: number,
   isCheckedAll: boolean,
   menuWidth: number,
+  menuVisible: boolean,
 };
 
 const ScrollerStep = 30;
@@ -117,6 +126,7 @@ class Select extends React.Component<SelectProps, SelectState> {
     pullIconClass: 'lugia-icon-direction_down',
     clearIconClass: 'lugia-icon-reminder_close',
     isShowClearButton: true,
+    size: 'default',
   };
   static displayName = Widget.Select;
 
@@ -320,34 +330,26 @@ class Select extends React.Component<SelectProps, SelectState> {
     return this.state.menuWidth;
   };
 
-  fetchRenderItems() {
+  getPopupMenu = () => {
     const { props, state } = this;
-    const {
-      disabled,
-      validateStatus,
-      placeholder,
-      mutliple,
-      canSearch,
-      canInput,
-      createPortal,
-      prefix,
-      suffix,
-      data,
-      canClear,
-      pullIconClass,
-      clearIconClass,
-      isShowClearButton,
-    } = props;
-    const { displayValue = [] } = this;
-    const { value = [], query, isCheckedAll } = state;
-
+    const { mutliple, canSearch, canInput, data } = props;
+    const { query, isCheckedAll } = state;
     const getMenu: Function = (cmp: Object) => {
       this.menuCmp = cmp;
     };
-
+    const queryInputTheme = {
+      [Widget.QueryInput]: {
+        OutContainer: {
+          normal: {
+            margin: { top: 4, right: 4, bottom: 4, left: 4 },
+          },
+        },
+      },
+    };
     const menu = [
       data && data.length !== 0 ? (
         <QueryInput
+          theme={queryInputTheme}
           query={query}
           onQueryInputChange={this.onQueryInputChange}
           onQueryInputKeyDown={this.onQueryInputKeyDown}
@@ -362,6 +364,38 @@ class Select extends React.Component<SelectProps, SelectState> {
       ) : null,
       this.getMenuItems(getMenu),
     ];
+
+    const width = this.getContainerWidth();
+    const PopupMenuWrapTheme = {
+      normal: {
+        width,
+      },
+    };
+
+    const menuThemeConfig = this.props.getPartOfThemeProps('Menu');
+    const { themeConfig } = menuThemeConfig;
+    menuThemeConfig.themeConfig = deepMerge(PopupMenuWrapTheme, themeConfig.Container);
+    return <PopupMenuWrap themeProps={menuThemeConfig}>{menu}</PopupMenuWrap>;
+  };
+
+  fetchRenderItems() {
+    const { props, state } = this;
+    const {
+      disabled,
+      validateStatus,
+      placeholder,
+      createPortal,
+      prefix,
+      suffix,
+      canClear,
+      pullIconClass,
+      clearIconClass,
+      isShowClearButton,
+    } = props;
+    const { displayValue = [] } = this;
+    const { value = [], menuVisible } = state;
+
+    const menu = this.getPopupMenu();
 
     const getMenuTriger: Function = (cmp: Object) => {
       this.menuTriger = cmp;
@@ -382,6 +416,7 @@ class Select extends React.Component<SelectProps, SelectState> {
         >
           <InputTag
             ref={this.inputTag}
+            menuVisible={menuVisible}
             prefix={prefix}
             suffix={suffix}
             key="inputtag"
@@ -419,12 +454,13 @@ class Select extends React.Component<SelectProps, SelectState> {
       divided,
       autoHeight,
       defaultHeight,
+      checkedCSS = 'background',
     } = props;
     const menuData = this.updateMenuData(data, query, searchType);
-
     return (
       <Menu
         {...this.getMenuTheme()}
+        checkedCSS={checkedCSS}
         displayField={displayField}
         valueField={valueField}
         data={menuData}
@@ -641,6 +677,7 @@ class Select extends React.Component<SelectProps, SelectState> {
       onTrigger && onTrigger(visible);
       this.onQueryInputChange({ newValue: '' });
     }
+    this.setState({ menuVisible: visible });
     this.menuVisible = visible;
   };
 
@@ -707,14 +744,41 @@ class Select extends React.Component<SelectProps, SelectState> {
     return newTheme;
   };
 
+  getInputTagTheme = () => {
+    const { getPartOfThemeConfig, size = 'default' } = this.props;
+    const defaultInputTagThemeConfig = inputTagThemeDefaultConfig[size];
+    const customInputTagThemeConfig = {
+      InputTagWrap: getPartOfThemeConfig('Container'),
+      TagWrap: getPartOfThemeConfig('TagWrap'),
+      TagIcon: getPartOfThemeConfig('TagIcon'),
+      SwitchIcon: getPartOfThemeConfig('SwitchIcon'),
+      ClearIcon: getPartOfThemeConfig('ClearIcon'),
+      Placeholder: getPartOfThemeConfig('Placeholder'),
+      Menu: getPartOfThemeConfig('InputMenu'),
+    };
+    const deepMergeThemeConfig = deepMerge(defaultInputTagThemeConfig, customInputTagThemeConfig);
+    const inputTagTheme = {
+      [Widget.InputTag]: deepMergeThemeConfig,
+    };
+    return inputTagTheme;
+  };
+
   getMenuTheme = () => {
     const width = this.getContainerWidth();
-    const initMenuTheme = {
-      width,
-    };
     const defaultMenuTheme = {
       Container: {
-        normal: initMenuTheme,
+        normal: {
+          width,
+          boxShadow: null,
+        },
+        hover: {},
+      },
+      MenuItem: {
+        MenuItemWrap: {
+          normal: {
+            height: 32,
+          },
+        },
       },
     };
     return this.mergeTheme('Menu', defaultMenuTheme);

@@ -8,6 +8,7 @@ import { css, keyframes } from 'styled-components';
 import colorsFunc from '../css/stateColor';
 import * as InputCSS from './input';
 import { px2remcss } from '../css/units';
+import get from '../css/theme-common-dict';
 
 export const { themeColor, darkGreyColor } = colorsFunc();
 
@@ -36,14 +37,14 @@ export function IsShowSearchInputHandle(props: Object): string {
   } = props;
   if (toShowSearchInputIng) {
     return css`
-      animation: ${checkAllButtonAnimate(0, InputCSS.DefaultHeight)} 0.4s linear;
+      animation: ${checkAllButtonAnimate(0, get('smallSize'))} 0.4s linear;
       animation-fill-mode: forwards;
     `;
   }
 
   if (toShowCheckAllButtonIng) {
     return css`
-      animation: ${checkAllButtonAnimate(InputCSS.DefaultHeight, 0)} 0.4s linear;
+      animation: ${checkAllButtonAnimate(get('smallSize'), 0)} 0.4s linear;
       animation-fill-mode: forwards;
     `;
   }
@@ -56,7 +57,7 @@ export function IsShowSearchInputHandle(props: Object): string {
 
   if (showSearchInput) {
     return `
-      transform: translateY(-${px2remcss(InputCSS.DefaultHeight)});
+      transform: translateY(-${px2remcss(get('smallSize'))});
         `;
   }
   return '';
