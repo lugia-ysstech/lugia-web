@@ -6,12 +6,7 @@ import { css } from 'styled-components';
 import { valueInRange } from '../common/Math';
 import { iconStyles, dotStyles } from './slider_public_size';
 import { px2remcss } from '../css/units';
-import {
-  dotNormalColor,
-  dotThroughColor,
-  iconNormalColor,
-  iconChangeColor,
-} from './slider_public_color';
+import { iconNormalColor, iconChangeColor } from './slider_public_color';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import get from '../css/theme-common-dict';
 
@@ -411,11 +406,10 @@ export const Dot = CSSComponent({
   },
   disabled: {
     selectNames: [['color'], ['font']],
-    getCSS(themeMate) {
-      const { color } = themeMate;
+    getCSS() {
       return `
          &::before{
-          color:${color};
+          color:${get('disableTextColor')};
          }
       `;
     },
@@ -564,7 +558,7 @@ const getDotStyle = (props: CssTypeProps) => {
     }
     let dotBorder = '#cccccc';
     let dotBg = '#ffffff';
-    let dotColor = dotNormalColor;
+    let dotColor = get('mediumGreyColor');
     let dotFontSize = 14;
     if (isShowDot) {
       dotBorder = 'transparent';
@@ -575,7 +569,7 @@ const getDotStyle = (props: CssTypeProps) => {
       dotBg = '#ffffff';
     }
     if (isBiger) {
-      dotColor = dotThroughColor;
+      dotColor = get('darkGreyColor');
     }
     if (dotStyle && dotStyle.color) {
       dotColor = dotStyle.color;
