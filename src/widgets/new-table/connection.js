@@ -368,8 +368,13 @@ export default class EditTableEventListener extends Listener<any> {
           keyName = dataIndex;
         }
       });
-      const newRowData = JSON.parse(JSON.stringify(data));
-      newRowData[selectRow - 1][keyName] = value;
+      const newRowData = [...data].map((item, index) => {
+        const newItem = { ...item };
+        if (index === selectRow - 1) {
+          newItem[keyName] = value;
+        }
+        return newItem;
+      });
       return { data: newRowData };
     }
   };
@@ -414,7 +419,8 @@ export default class EditTableEventListener extends Listener<any> {
         this.setClickNumber(0);
         this.emit('quitMoveCells');
         this.emit('quiteMoveTrack');
-        this.emit('setState', { editing: true, editCell: currentCell });
+        const { allowEdit } = props;
+        allowEdit && this.emit('setState', { editing: true, editCell: currentCell });
       }
     }, 200);
   };
