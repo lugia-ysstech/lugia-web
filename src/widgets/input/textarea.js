@@ -209,6 +209,9 @@ type TextareaProps = {
   help: string,
   readOnly: boolean,
 };
+function getTheValidateWidthThemeProps(validateType: ValidateType, validateStatus: ValidateStatus) {
+  return validateType && validateStatus ? validateWidthTheme : {};
+}
 
 class TextAreaBox extends Component<TextareaProps, TextareaState> {
   static defaultProps = {
@@ -288,8 +291,10 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
 
   getTextareaContainer() {
     const { getPartOfThemeProps, validateType, validateStatus } = this.props;
-    const theValidateWidthThemeProps = validateType && validateStatus ? validateWidthTheme : {};
-    const theTheme = deepMerge(getPartOfThemeProps('Container'), theValidateWidthThemeProps);
+    const theTheme = deepMerge(
+      getPartOfThemeProps('Container'),
+      getTheValidateWidthThemeProps(validateType, validateStatus)
+    );
     return (
       <TextareaContainer {...addMouseEvent(this)} themeProps={theTheme}>
         {this.getInnerTextarea()}
@@ -396,6 +401,7 @@ class TextAreaBox extends Component<TextareaProps, TextareaState> {
       : {};
     const theThemeProps = deepMerge(
       getPartOfThemeProps('Container', { props: { ...propsConfig } }),
+      getTheValidateWidthThemeProps(validateType, validateStatus),
       theValidateThemeProps
     );
 
