@@ -6,13 +6,11 @@ import get from '../css/theme-common-dict';
 import { getWidthCSS } from './utils';
 const { px2remcss } = units;
 const dangerColor = '$lugia-dict.@lugia/lugia-web.dangerColor';
-const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 
 function getTipShowCSS(themeProps: Object) {
   const { propsConfig } = themeProps;
-  const { validateStatus, _isValidateVisible = false } = propsConfig;
-  const theVisibility =
-    isValidateError(validateStatus) && !_isValidateVisible ? 'visible' : 'hidden';
+  const { validateStatus, innerVisible } = propsConfig;
+  const theVisibility = isValidateError(validateStatus) && innerVisible ? 'visible' : 'hidden';
   return `visibility:${theVisibility}`;
 }
 
