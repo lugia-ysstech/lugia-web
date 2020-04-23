@@ -98,7 +98,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
   }
 
   renderFunc = (renderObject: Object) => {
-    const { text, record, dataIndex, index } = renderObject;
+    const { text, record, dataIndex, index, disableEdit } = renderObject;
     const { getSelectColumnMark, isSelected, isEditCell } = this.editTableListener;
 
     const selectColumn = getSelectColumnMark(dataIndex);
@@ -112,7 +112,8 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
     const { isEditHead } = this.props;
     const headEdit = isEditHead ? true : selectRow !== 0;
     const { editCell } = this.state;
-    const enterEdit = headEdit && editing && isEditCell({ selectColumn, selectRow }, editCell);
+    const enterEdit =
+      !disableEdit && headEdit && editing && isEditCell({ selectColumn, selectRow }, editCell);
 
     const renderPros = {
       defaultText,
@@ -169,9 +170,18 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
       );
     }
 
-    const { text, record, index, selectColumn, selectRow, customRender } = renderObject;
+    const {
+      text,
+      record,
+      index,
+      selectColumn,
+      selectRow,
+      customRender,
+      disableEdit,
+    } = renderObject;
     const { selectSuffixElement, isEditHead } = this.props;
     const { selectCell } = this.state;
+    const allowEdit = !disableEdit;
     const { editTableListener: { onCellClick } = {} } = this;
     return (
       <EditDiv
@@ -186,6 +196,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
             selectCell,
             isEditHead,
             isHead,
+            allowEdit,
           })
         }
       >
