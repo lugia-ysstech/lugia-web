@@ -1,6 +1,5 @@
 export const iconStyles = {
-  fontSizeNormal: 40,
-  marginNormal: 10,
+  fontSizeNormal: 20,
 };
 export const btnWidthNormal = 16;
 export const rangeHeightNormal = 6;

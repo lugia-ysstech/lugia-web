@@ -24,6 +24,8 @@ import { findDOMNode } from 'react-dom';
 import { deepMerge } from '@lugia/object-utils';
 import { addMouseEvent } from '@lugia/theme-hoc';
 import Icon from '../icon';
+import get from '../css/theme-common-dict';
+
 type TypeProps = {
   maxValue?: number,
   minValue?: number,
@@ -54,6 +56,9 @@ type TypeState = {
   dotWidths: Array<number>,
   dotHeights: Array<number>,
 };
+
+const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
+const marginNormal = get('marginToSameElement');
 
 class Slider extends Component<TypeProps, TypeState> {
   static displayName = 'SliderComponent';
@@ -471,7 +476,7 @@ class Slider extends Component<TypeProps, TypeState> {
   ): Object {
     const hasIconsProps = 'icons' in this.props;
     const iconsChildren = [];
-    const { fontSizeNormal, marginNormal } = iconStyles;
+    const { fontSizeNormal } = iconStyles;
     const halfBthSize = btnSize / 2;
     const numbers = hasIconsProps ? marginNormal + fontSizeNormal + halfBthSize : halfBthSize;
     const levelPaddings = this.getLevePadding(vertical, dotWidths, dotHeights, numbers);
@@ -522,7 +527,7 @@ class Slider extends Component<TypeProps, TypeState> {
           {
             [viewClass]: {
               normal: {
-                color: '#666',
+                color: mediumGreyColor,
                 fontSize,
               },
             },
