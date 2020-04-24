@@ -22,7 +22,11 @@ import colorsFunc from '../css/stateColor';
 type LineProps = {
   getIconTheme: Function,
 } & ProgressProps;
-const { successColor, dangerColor, mediumGreyColor } = colorsFunc();
+const { mediumGreyColor } = colorsFunc();
+const dangerColor = '$lugia-dict.@lugia/lugia-web.dangerColor';
+const successColor = '$lugia-dict.@lugia/lugia-web.successColor';
+const xsFontSize = '$lugia-dict.@lugia/lugia-web.xsFontSize';
+const sFontSize = '$lugia-dict.@lugia/lugia-web.sFontSize';
 
 export const getText = (inside?: boolean, props: Object) => {
   const { percent = 0, format, hasFormat = false, getIconTheme, iconClass } = props;
@@ -36,7 +40,7 @@ export const getText = (inside?: boolean, props: Object) => {
   if (type === 'circle' || type === 'dashboard') {
     iconFont = size === 'small' ? 26 : 40;
   } else {
-    iconFont = size === 'small' ? 12 : 14;
+    iconFont = size === 'small' ? xsFontSize : sFontSize;
   }
 
   const iconColor =
