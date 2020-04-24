@@ -139,6 +139,9 @@ export default [
         amountPrefix: { type: 'PrefixType', desc: "货币种类,默认'¥'", defaultValue: '¥' },
         defaultValue: { type: 'string', desc: '默认显示内容' },
         value: { type: 'string', desc: '显示内容' },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
+        help: { type: 'string', desc: '校验提示信息' },
       },
       events: {
         onChange: {
@@ -298,6 +301,8 @@ export default [
         disabled: { type: 'boolean', desc: '是否禁用输入框', defaultValue: false },
         showOldValue: { type: 'boolean', desc: '是否显示上一次选中的值', defaultValue: true },
         placeholder: { type: 'string', desc: 'input输入提示信息' },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
         prefix: { type: 'ReactNode', desc: '输入框前缀', isHidden: true },
         suffix: { type: 'ReactNode', desc: '输入框后缀', isHidden: true },
       },
@@ -319,7 +324,7 @@ export default [
           args: [{ name: 'selectedKeys', desc: '选中项的数据', type: 'string[]' }],
         },
       },
-      type: {},
+      type: { ValidateStatus: ['default', 'error'], ValidateType: ['top', 'bottom', 'inner'] },
       category: ['数据录入'],
       theme: {
         AutoInput: {
@@ -368,6 +373,36 @@ export default [
                 ['margin'],
                 ['padding'],
               ],
+            },
+            ValidateErrorInput: {
+              name: '校验失败的输入框',
+              desc: '配置校验失败的输入框',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['background'],
+                ['border'],
+                ['boxShadow'],
+                ['opacity'],
+              ],
+              hover: [['background'], ['border'], ['boxShadow']],
+              active: [['background'], ['border'], ['boxShadow']],
+            },
+            ValidateErrorText: {
+              name: '校验失败提示信息',
+              desc: '配置校验失败的提示信息',
+              normal: [
+                ['background'],
+                ['boxShadow'],
+                ['borderRadius'],
+                ['border'],
+                ['fontSize'],
+                ['font'],
+                ['color'],
+              ],
+              hover: [],
+              active: [],
             },
             InputSuffix: {
               name: '后缀图标',
@@ -3218,6 +3253,8 @@ export default [
           desc: 'data数据的displayValue值的名称',
           propsDefaultValue: 'text',
         },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
         data: {
           type: 'Object[]',
           desc: '生成选择项的数据',
@@ -3294,6 +3331,7 @@ export default [
           ],
         },
       },
+      type: { ValidateStatus: ['default', 'error'], ValidateType: ['top', 'bottom', 'inner'] },
       category: ['数据录入'],
       theme: {
         Container: {
@@ -3336,6 +3374,36 @@ export default [
             ['opacity'],
             ['cursor'],
           ],
+        },
+        ValidateErrorInput: {
+          name: '校验失败的展示框',
+          desc: '配置校验失败的展示框',
+          normal: [
+            ['fontSize'],
+            ['font'],
+            ['color'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['opacity'],
+          ],
+          hover: [['background'], ['border'], ['boxShadow']],
+          active: [['background'], ['border'], ['boxShadow']],
+        },
+        ValidateErrorText: {
+          name: '校验失败提示信息',
+          desc: '配置校验失败的提示信息',
+          normal: [
+            ['background'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['border'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+          ],
+          hover: [],
+          active: [],
         },
         SwitchIcon: {
           name: '下拉图标',
@@ -3938,6 +4006,13 @@ export default [
               hover: [['color'], ['font']],
               disabled: [['color'], ['font']],
             },
+            CheckboxCancelText: {
+              name: '取消状态文字样式',
+              desc: '取消状态文字样式',
+              normal: [['color'], ['font'], ['padding']],
+              hover: [['color'], ['font']],
+              disabled: [['color'], ['font']],
+            },
             CheckboxEdgeUnChecked: {
               name: '未选中外框样式',
               desc: '未选中外框样式',
@@ -4254,6 +4329,9 @@ export default [
         step: { type: 'number', desc: '设置周,年的展示步长', propsDefaultValue: false },
         suffix: { type: 'icon', desc: '后缀图标' },
         prefix: { type: 'icon', desc: '前缀图标' },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
+        help: { type: 'string', desc: '校验提示信息' },
       },
       events: {
         onChange: {
@@ -4268,7 +4346,11 @@ export default [
         onFocus: { desc: '输入框获取焦点', args: [] },
         onBlur: { desc: '输入框失去焦点', args: [] },
       },
-      type: { ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' } },
+      type: {
+        ValidateType: ['top', 'bottom', 'inner'],
+        ValidateStatus: ['default', 'error'],
+        ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
+      },
       childrenWidget: [
         'DatePicker.MonthPicker',
         'DatePicker.YearPicker',
@@ -4343,6 +4425,36 @@ export default [
           normal: [['color']],
           hover: [['color']],
         },
+        ValidateErrorInput: {
+          name: '校验失败的输入框',
+          desc: '配置校验失败的输入框',
+          normal: [
+            ['fontSize'],
+            ['font'],
+            ['color'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['opacity'],
+          ],
+          hover: [['background'], ['border'], ['boxShadow']],
+          active: [['background'], ['border'], ['boxShadow']],
+        },
+        ValidateErrorText: {
+          name: '校验失败提示信息',
+          desc: '配置校验失败的提示信息',
+          normal: [
+            ['background'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['border'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+          ],
+          hover: [],
+          active: [],
+        },
       },
       defaultTheme: {
         Container: {
@@ -4382,6 +4494,7 @@ export default [
         InMonthDate: { normal: { color: '#666666', fontSize: 14 } },
         OutMonthDate: { normal: { color: '#ccc', fontSize: 14 } },
         SecondWeekDate: { normal: { color: '#333', fontSize: 14 } },
+        ValidateErrorText: { normal: {} },
       },
     },
     target: DatePicker,
@@ -4409,6 +4522,9 @@ export default [
           type: 'Object',
           desc: "在面板中添加额外的页脚 extraFooter={message:'XXX',style:{...}}",
         },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
+        help: { type: 'string', desc: '校验提示信息' },
       },
       events: {
         onChange: {
@@ -4418,7 +4534,11 @@ export default [
         onFocus: { desc: '输入框获取焦点', args: [] },
         onBlur: { desc: '输入框失去焦点', args: [] },
       },
-      type: { ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' } },
+      type: {
+        ValidateType: ['top', 'bottom', 'inner'],
+        ValidateStatus: ['default', 'error'],
+        ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
+      },
       category: ['数据录入'],
       componentName: 'MonthPicker',
       needExport: true,
@@ -4446,6 +4566,9 @@ export default [
           desc: "在面板中添加额外的页脚 extraFooter={message:'XXX',style:{...}}",
         },
         step: { type: 'number', desc: '设置年的展示步长', propsDefaultValue: false },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
+        help: { type: 'string', desc: '校验提示信息' },
       },
       events: {
         onChange: {
@@ -4455,7 +4578,11 @@ export default [
         onFocus: { desc: '输入框获取焦点', args: [] },
         onBlur: { desc: '输入框失去焦点', args: [] },
       },
-      type: { ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' } },
+      type: {
+        ValidateType: ['top', 'bottom', 'inner'],
+        ValidateStatus: ['default', 'error'],
+        ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
+      },
       category: ['数据录入'],
       componentName: 'YearPicker',
       needExport: true,
@@ -4498,6 +4625,9 @@ export default [
             '自定义页脚展示的一些按钮 buttonOptions={{options: { buttonNameXXX:自定义时间, buttonNameXXX:自定义时间}}} ',
         },
         step: { type: 'number', desc: '设置周,年的展示步长', propsDefaultValue: false },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
+        help: { type: 'string', desc: '校验提示信息' },
       },
       events: {
         onChange: {
@@ -4512,7 +4642,11 @@ export default [
         onFocus: { desc: '输入框获取焦点', args: [] },
         onBlur: { desc: '输入框失去焦点', args: [] },
       },
-      type: { ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' } },
+      type: {
+        ValidateType: ['top', 'bottom', 'inner'],
+        ValidateStatus: ['default', 'error'],
+        ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
+      },
       category: ['数据录入'],
       componentName: 'WeekPicker',
       needExport: true,
@@ -4544,6 +4678,9 @@ export default [
           desc: "在面板中添加额外的页脚 extraFooter={message:'XXX',style:{...}}",
         },
         step: { type: 'number', desc: '设置周,年的展示步长', propsDefaultValue: false },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
+        help: { type: 'string', desc: '校验提示信息' },
       },
       events: {
         onChange: {
@@ -4553,7 +4690,11 @@ export default [
         onFocus: { desc: '输入框获取焦点', args: [] },
         onBlur: { desc: '输入框失去焦点', args: [] },
       },
-      type: { ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' } },
+      type: {
+        ValidateType: ['top', 'bottom', 'inner'],
+        ValidateStatus: ['default', 'error'],
+        ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
+      },
       category: ['数据录入'],
       componentName: 'WeeksPicker',
       needExport: true,
@@ -4613,6 +4754,9 @@ export default [
         step: { type: 'number', desc: '设置周,年的展示步长', propsDefaultValue: false },
         suffix: { type: 'icon', desc: '后缀图标' },
         prefix: { type: 'icon', desc: '前缀图标' },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
+        help: { type: 'string', desc: '校验提示信息' },
       },
       events: {
         onChange: {
@@ -4628,6 +4772,8 @@ export default [
         onBlur: { desc: '输入框失去焦点', args: [] },
       },
       type: {
+        ValidateType: ['top', 'bottom', 'inner'],
+        ValidateStatus: ['default', 'error'],
         ChangeType: {
           newValue: 'Array<string>',
           oldValue: 'Array<string>',
@@ -5910,7 +6056,7 @@ export default [
           propsDefaultValue: 'default',
         },
         validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
-        validateType: { type: 'ValidateType', desc: '校验信息显示类型' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
         help: { type: 'string', desc: 'input校验提示信息' },
         placeholder: { type: 'string', desc: 'input输入提示信息' },
         prefix: { type: 'icon', desc: '带有前缀的 input' },
@@ -6118,7 +6264,7 @@ export default [
           propsDefaultValue: 'both',
         },
         validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
-        validateType: { type: 'ValidateType', desc: '校验信息显示类型' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
         help: { type: 'string', desc: '校验提示信息' },
       },
       events: {
@@ -9536,7 +9682,7 @@ export default [
           defaultValue: 'default',
         },
         validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
-        validateType: { type: 'ValidateType', desc: '校验信息显示类型' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
         help: { type: 'string', desc: '校验提示信息' },
         placeholder: { type: 'string', desc: 'input输入提示信息' },
         defaultValue: { type: 'string', desc: '默认显示内容' },
@@ -11450,11 +11596,8 @@ export default [
         },
         disabled: { type: 'boolean', desc: '是否禁选', propsDefaultValue: false },
         mutliple: { type: 'boolean', desc: '是否多选', propsDefaultValue: false },
-        validateStatus: {
-          type: 'ValidateStatus',
-          desc: "input校验状态, 'success' 成功 | 'error'错误",
-          propsDefaultValue: 'success',
-        },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
         limitCount: { type: 'number', desc: '多选时最多个数' },
         placeholder: { type: 'string', desc: '占位符' },
         searchType: { type: 'SearchType', desc: '查询的方式', propsDefaultValue: 'include' },
@@ -11496,7 +11639,11 @@ export default [
         },
         onRefresh: { desc: '点击刷新按钮时触发' },
       },
-      type: { SearchType: ['start', 'end', 'include', 'eql'] },
+      type: {
+        SearchType: ['start', 'end', 'include', 'eql'],
+        ValidateStatus: ['default', 'error'],
+        ValidateType: ['top', 'bottom', 'inner'],
+      },
       category: ['数据录入'],
       designInfo: {
         MutlipleSelect: {
@@ -11545,6 +11692,36 @@ export default [
                 ['opacity'],
                 ['cursor'],
               ],
+            },
+            ValidateErrorInput: {
+              name: '校验失败的展示框',
+              desc: '配置校验失败的展示框',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['background'],
+                ['border'],
+                ['boxShadow'],
+                ['opacity'],
+              ],
+              hover: [['background'], ['border'], ['boxShadow']],
+              active: [['background'], ['border'], ['boxShadow']],
+            },
+            ValidateErrorText: {
+              name: '校验失败提示信息',
+              desc: '配置校验失败的提示信息',
+              normal: [
+                ['background'],
+                ['boxShadow'],
+                ['borderRadius'],
+                ['border'],
+                ['fontSize'],
+                ['font'],
+                ['color'],
+              ],
+              hover: [],
+              active: [],
             },
             SwitchIcon: {
               name: '下拉图标',
@@ -11890,6 +12067,36 @@ export default [
             ['cursor'],
           ],
         },
+        ValidateErrorInput: {
+          name: '校验失败的展示框',
+          desc: '配置校验失败的展示框',
+          normal: [
+            ['fontSize'],
+            ['font'],
+            ['color'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['opacity'],
+          ],
+          hover: [['background'], ['border'], ['boxShadow']],
+          active: [['background'], ['border'], ['boxShadow']],
+        },
+        ValidateErrorText: {
+          name: '校验失败提示信息',
+          desc: '配置校验失败的提示信息',
+          normal: [
+            ['background'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['border'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+          ],
+          hover: [],
+          active: [],
+        },
         SwitchIcon: {
           name: '下拉图标',
           desc: '配置下拉图标样式',
@@ -12152,11 +12359,8 @@ export default [
           propsDefaultValue: false,
           defaultValue: true,
         },
-        validateStatus: {
-          type: 'ValidateStatus',
-          desc: "input校验状态, 'success' 成功 | 'error'错误",
-          propsDefaultValue: 'success',
-        },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
         limitCount: { type: 'number', desc: '多选时最多个数' },
         placeholder: { type: 'string', desc: '占位符' },
         searchType: { type: 'SearchType', desc: '查询的方式', propsDefaultValue: 'include' },
@@ -12198,7 +12402,11 @@ export default [
         },
         onRefresh: { desc: '点击刷新按钮时触发' },
       },
-      type: { SearchType: ['start', 'end', 'include', 'eql'] },
+      type: {
+        SearchType: ['start', 'end', 'include', 'eql'],
+        ValidateStatus: ['default', 'error'],
+        ValidateType: ['top', 'bottom', 'inner'],
+      },
       category: ['数据录入'],
       theme: {
         Container: {
@@ -12241,6 +12449,36 @@ export default [
             ['opacity'],
             ['cursor'],
           ],
+        },
+        ValidateErrorInput: {
+          name: '校验失败的展示框',
+          desc: '配置校验失败的展示框',
+          normal: [
+            ['fontSize'],
+            ['font'],
+            ['color'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['opacity'],
+          ],
+          hover: [['background'], ['border'], ['boxShadow']],
+          active: [['background'], ['border'], ['boxShadow']],
+        },
+        ValidateErrorText: {
+          name: '校验失败提示信息',
+          desc: '配置校验失败的提示信息',
+          normal: [
+            ['background'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['border'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+          ],
+          hover: [],
+          active: [],
         },
         SwitchIcon: {
           name: '下拉图标',
@@ -18268,6 +18506,9 @@ export default [
         placeholder: { type: 'string', desc: 'input输入提示信息' },
         disabled: { type: 'boolean', desc: '禁用状态,是否不可用', propsDefaultValue: false },
         readOnly: { type: 'boolean', desc: '只读input', propsDefaultValue: false },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
+        help: { type: 'string', desc: '校验提示信息' },
       },
       events: {
         onChange: {
@@ -18277,7 +18518,11 @@ export default [
         onFocus: { desc: '输入框获取焦点', args: [] },
         onBlur: { desc: '输入框失去焦点', args: [] },
       },
-      type: { ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' } },
+      type: {
+        ValidateType: ['top', 'bottom', 'inner'],
+        ValidateStatus: ['default', 'error'],
+        ChangeType: { newValue: 'string', oldValue: 'string', event: 'SyntheticEvent' },
+      },
       category: ['数据录入'],
       childrenWidget: [],
     },
@@ -20418,11 +20663,8 @@ export default [
       title: '树形选择控件',
       desc: '类似Select选择器，弹出面板是一个树形控件，可以清晰地展示层级数据结构。',
       props: {
-        validateStatus: {
-          type: 'ValidateStatus',
-          desc: "input校验状态, 'success' 成功 | 'error'错误",
-          defaultValue: 'success',
-        },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
         data: {
           type: 'object[]',
           desc: '生成选择项的数据',
@@ -20516,6 +20758,7 @@ export default [
           args: [{ name: 'event', desc: '清除输入框内容事件', type: 'Object' }],
         },
       },
+      type: { ValidateStatus: ['default', 'error'], ValidateType: ['top', 'bottom', 'inner'] },
       category: ['数据录入'],
       designInfo: {
         MutlipleTreeSelect: {
@@ -20564,6 +20807,36 @@ export default [
                 ['opacity'],
                 ['cursor'],
               ],
+            },
+            ValidateErrorInput: {
+              name: '校验失败的展示框',
+              desc: '配置校验失败的展示框',
+              normal: [
+                ['fontSize'],
+                ['font'],
+                ['color'],
+                ['background'],
+                ['border'],
+                ['boxShadow'],
+                ['opacity'],
+              ],
+              hover: [['background'], ['border'], ['boxShadow']],
+              active: [['background'], ['border'], ['boxShadow']],
+            },
+            ValidateErrorText: {
+              name: '校验失败提示信息',
+              desc: '配置校验失败的提示信息',
+              normal: [
+                ['background'],
+                ['boxShadow'],
+                ['borderRadius'],
+                ['border'],
+                ['fontSize'],
+                ['font'],
+                ['color'],
+              ],
+              hover: [],
+              active: [],
             },
             SwitchIcon: {
               name: '下拉图标',
@@ -20980,6 +21253,36 @@ export default [
             ['cursor'],
           ],
         },
+        ValidateErrorInput: {
+          name: '校验失败的展示框',
+          desc: '配置校验失败的展示框',
+          normal: [
+            ['fontSize'],
+            ['font'],
+            ['color'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['opacity'],
+          ],
+          hover: [['background'], ['border'], ['boxShadow']],
+          active: [['background'], ['border'], ['boxShadow']],
+        },
+        ValidateErrorText: {
+          name: '校验失败提示信息',
+          desc: '配置校验失败的提示信息',
+          normal: [
+            ['background'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['border'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+          ],
+          hover: [],
+          active: [],
+        },
         SwitchIcon: {
           name: '下拉图标',
           desc: '配置下拉图标样式',
@@ -21201,11 +21504,8 @@ export default [
       title: '多项树形选择',
       desc: '支持多项树形选择',
       props: {
-        validateStatus: {
-          type: 'ValidateStatus',
-          desc: "input校验状态, 'success' 成功 | 'error'错误",
-          defaultValue: 'success',
-        },
+        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
+        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
         data: {
           type: 'object[]',
           desc: '生成选择项的数据',
@@ -21299,6 +21599,7 @@ export default [
           args: [{ name: 'event', desc: '清除输入框内容事件', type: 'Object' }],
         },
       },
+      type: { ValidateStatus: ['default', 'error'], ValidateType: ['top', 'bottom', 'inner'] },
       category: ['数据录入'],
       theme: {
         Container: {
@@ -21341,6 +21642,36 @@ export default [
             ['opacity'],
             ['cursor'],
           ],
+        },
+        ValidateErrorInput: {
+          name: '校验失败的展示框',
+          desc: '配置校验失败的展示框',
+          normal: [
+            ['fontSize'],
+            ['font'],
+            ['color'],
+            ['background'],
+            ['border'],
+            ['boxShadow'],
+            ['opacity'],
+          ],
+          hover: [['background'], ['border'], ['boxShadow']],
+          active: [['background'], ['border'], ['boxShadow']],
+        },
+        ValidateErrorText: {
+          name: '校验失败提示信息',
+          desc: '配置校验失败的提示信息',
+          normal: [
+            ['background'],
+            ['boxShadow'],
+            ['borderRadius'],
+            ['border'],
+            ['fontSize'],
+            ['font'],
+            ['color'],
+          ],
+          hover: [],
+          active: [],
         },
         SwitchIcon: {
           name: '下拉图标',
@@ -21716,6 +22047,7 @@ export default [
         autoUpload: { type: 'boolean', desc: '是否允许自动上传', propsDefaultValue: true },
         url: { type: 'string', desc: '上传的请求地址(必填参数)' },
         accept: { type: 'string', desc: '指定上传文件类型' },
+        name: { type: 'string', desc: '发送到后台的文件参数名' },
         size: {
           type: 'UploadSize',
           desc: 'picture类型可配置的三种尺寸',
@@ -22044,6 +22376,7 @@ export default [
         autoUpload: { type: 'boolean', desc: '是否允许自动上传', propsDefaultValue: true },
         url: { type: 'string', desc: '上传的请求地址(必填参数)' },
         accept: { type: 'string', desc: '指定上传文件类型' },
+        name: { type: 'string', desc: '发送到后台的文件参数名' },
         size: {
           type: 'UploadSize',
           desc: 'picture类型可配置的三种尺寸',
@@ -22176,6 +22509,7 @@ export default [
         autoUpload: { type: 'boolean', desc: '是否允许自动上传', propsDefaultValue: true },
         url: { type: 'string', desc: '上传的请求地址(必填参数)' },
         accept: { type: 'string', desc: '指定上传文件类型' },
+        name: { type: 'string', desc: '发送到后台的文件参数名' },
         size: {
           type: 'UploadSize',
           desc: 'picture类型可配置的三种尺寸',
@@ -22308,6 +22642,7 @@ export default [
         autoUpload: { type: 'boolean', desc: '是否允许自动上传', propsDefaultValue: true },
         url: { type: 'string', desc: '上传的请求地址(必填参数)' },
         accept: { type: 'string', desc: '指定上传文件类型' },
+        name: { type: 'string', desc: '发送到后台的文件参数名' },
         size: {
           type: 'UploadSize',
           desc: 'picture类型可配置的三种尺寸',
@@ -22439,6 +22774,7 @@ export default [
         autoUpload: { type: 'boolean', desc: '是否允许自动上传', propsDefaultValue: true },
         url: { type: 'string', desc: '上传的请求地址(必填参数)' },
         accept: { type: 'string', desc: '指定上传文件类型' },
+        name: { type: 'string', desc: '发送到后台的文件参数名' },
         size: {
           type: 'UploadSize',
           desc: 'picture类型可配置的三种尺寸',
