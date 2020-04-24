@@ -3,18 +3,14 @@
  * create by guorg
  * @flow
  */
-import colorsFunc from '../css/stateColor';
-import styled, { css, keyframes } from 'styled-components';
+import { css, keyframes } from 'styled-components';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import { px2remcss } from '../css/units';
 import changeColor from '../css/utilsColor';
 import type { ThemeType } from '@lugia/lugia-web';
+import get from './theme-common-dict';
 
 const FontSize = 1.4;
-const defaultColor = '#fff';
-const { themeColor } = colorsFunc();
-const hoverColor = changeColor(themeColor, 0, 0, 10).rgba;
-
 type BasicPropsType = {
   disabled?: boolean,
   open: boolean,
@@ -45,15 +41,17 @@ type CSSProps = {
 } & BasicPropsType &
   BasicStateType;
 
-const { darkGreyColor, blackColor, lightGreyColor } = colorsFunc();
+const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
+const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
+const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 
 export const PanelWrap = StaticComponent({
   tag: 'div',
   className: 'PanelWrap',
   css: css`
     box-sizing: border-box;
-    background: ${defaultColor};
-    border-color: #e8e8e8;
+    background: ${get('defaultColor')};
+    border-color: ${get('borderColor')};
     border-style: solid;
     border-width: 0 0 1px;
   `,
@@ -89,7 +87,12 @@ export const PanelHeader = CSSComponent({
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig = {} } = themeProps;
       const { showArrow } = propsConfig;
-      const padding = { top: 16, right: 0, bottom: 16, left: showArrow ? 30 : 20 };
+      const padding = {
+        top: 16,
+        right: 0,
+        bottom: 16,
+        left: showArrow ? get('sFontSize') + get('marginToSameElement') + 10 : 20,
+      };
 
       return { padding };
     },
@@ -97,7 +100,7 @@ export const PanelHeader = CSSComponent({
   hover: {
     selectNames: [['borderRadius'], ['background'], ['opacity'], ['border'], ['boxShadow']],
     defaultTheme: {
-      background: { color: hoverColor },
+      background: { color: changeColor(get('themeColor'), 0, 0, 5).rgba },
     },
     getCSS(themeMeta, themeProps) {
       const { propsConfig = {}, themeConfig = {} } = themeProps;
@@ -152,7 +155,7 @@ export const PanelHeaderText = CSSComponent({
   },
   disabled: {
     defaultTheme: {
-      color: lightGreyColor,
+      color: disableTextColor,
     },
     selectNames: [['color']],
   },
@@ -217,9 +220,9 @@ export const PanelContent = CSSComponent({
   `,
   normal: {
     defaultTheme: {
-      font: { size: 14, weight: 300 },
+      font: { size: 12, weight: 300 },
       color: darkGreyColor,
-      background: { color: defaultColor },
+      background: { color: get('defaultColor') },
     },
     selectNames: [['width'], ['height'], ['background'], ['padding'], ['font'], ['color']],
     getThemeMeta(themeMeta, themeProps) {
@@ -244,6 +247,9 @@ export const PanelContent = CSSComponent({
   },
   disabled: {
     selectNames: [['color'], ['background']],
+    defaultTheme: {
+      color: disableTextColor,
+    },
   },
 });
 
