@@ -14,6 +14,7 @@ export type EditTableProps = TableProps & {
   isEditHead?: boolean,
   onChange: Function,
   onCell: Function,
+  onHeaderCell: Function,
   customContainerElement: any,
   customEditElement: any,
   selectSuffixElement: any,
@@ -42,12 +43,16 @@ export const EditDiv = CSSComponent({
     selectNames: [['width'], ['height'], ['border'], ['background'], ['padding']],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
-        propsConfig: { isSelect, isHead },
+        propsConfig: { isSelect, isHead, isDisableEdit },
       } = themeProps;
       const editBorderColor = isSelect ? themeColor : 'transparent';
       const backgroundColor = isHead ? disableColor : 'transparent';
+      let border = getBorder({ color: editBorderColor, width: borderSize, style: 'solid' });
+      if (isDisableEdit) {
+        border = getBorder({ color: 'transparent', width: borderSize, style: 'solid' });
+      }
       return {
-        border: getBorder({ color: editBorderColor, width: borderSize, style: 'solid' }),
+        border,
         background: { color: backgroundColor },
       };
     },

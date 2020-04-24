@@ -168,6 +168,9 @@ export default class TableDemo extends React.Component<Object, Object> {
   onCell = res => {
     console.log('onCell', res);
   };
+  onHeaderCell = res => {
+    console.log('OnHeaderCell', res);
+  };
   render() {
     const { tableData, treeData } = this.state;
 
@@ -178,6 +181,40 @@ export default class TableDemo extends React.Component<Object, Object> {
             padding: {
               right: 10,
               left: 10,
+            },
+          },
+        },
+        Table: {
+          Th_Td: {
+            normal: {
+              padding: {
+                left: 20,
+              },
+            },
+          },
+          Th: {
+            normal: {
+              background: {
+                color: 'pink',
+              },
+            },
+          },
+        },
+      },
+    };
+    const tableConfig = {
+      [Widgets.Table]: {
+        Th_Td: {
+          normal: {
+            padding: {
+              left: 30,
+            },
+          },
+        },
+        Th: {
+          normal: {
+            background: {
+              color: 'pink',
             },
           },
         },
@@ -197,6 +234,7 @@ export default class TableDemo extends React.Component<Object, Object> {
             footer={<div>这是表格底部信息</div>}
             onChange={this.onChangeTreeData}
             onCell={this.onCell}
+            onHeaderCell={this.onHeaderCell}
             selectSuffixElement={<div>00</div>}
           />
         </Theme>
@@ -211,17 +249,20 @@ export default class TableDemo extends React.Component<Object, Object> {
             footer={<div>这是表格底部信息</div>}
             onChange={this.onChange}
             onCell={this.onCell}
+            onHeaderCell={this.onHeaderCell}
+            isEditHead
             selectSuffixElement={<div>00</div>}
           />
         </Theme>
-
-        <Title>基本表格</Title>
-        <Table
-          data={data}
-          columns={columns}
-          title={'这是一个表格'}
-          footer={<div>这是表格底部信息</div>}
-        />
+        <Theme config={tableConfig}>
+          <Title>基本表格</Title>
+          <Table
+            data={data}
+            columns={columns}
+            title={'这是一个表格'}
+            footer={<div>这是表格底部信息</div>}
+          />
+        </Theme>
         <Title>tableSize： large tableStyle：zebraStripe </Title>
         <Table data={tableData} columns={columns} tableStyle={'zebraStripe'} tableSize={'large'} />
         <Title>tableSize： middle tableStyle：bordered </Title>
