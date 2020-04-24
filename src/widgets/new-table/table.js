@@ -35,13 +35,13 @@ class Table extends React.Component<TableProps, TableState> {
 
   getColumns = columns => {
     const { tableSize = 'middle', tableStyle = 'linear' } = this.props;
-    const trTheme = this.props.getPartOfThemeProps('Tr', { props: { tableStyle } });
+    const trTheme = this.props.getPartOfThemeProps('Th', { props: { tableStyle } });
 
     return (
       <Tr themeProps={trTheme}>
         {columns.map((item: Object) => {
           const { title, width, align, ellipsis } = item;
-          const tdTheme = this.props.getPartOfThemeProps('Td', {
+          const tdTheme = this.props.getPartOfThemeProps('Th_Td', {
             props: { align, ellipsis, tableSize, tableStyle },
           });
           return <Td themeProps={this.getTdThemeWithWidth(tdTheme, width)}>{title}</Td>;
