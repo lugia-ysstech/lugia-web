@@ -55,6 +55,7 @@ const successColor = '$lugia-dict.@lugia/lugia-web.successColor';
 const dangerColor = '$lugia-dict.@lugia/lugia-web.dangerColor';
 const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
 const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
+const superLightColor = '$lugia-dict.@lugia/lugia-web.superLightColor';
 
 export const handlePercent = (per: number) => {
   per = per - 0;
@@ -111,7 +112,7 @@ export const ProgressLine = CSSComponent({
   normal: {
     selectNames: [['background'], ['borderRadius'], ['border'], ['boxShadow']],
     defaultTheme: {
-      background: { color: '#f5f5f5' },
+      background: { color: superLightColor },
     },
   },
 });
