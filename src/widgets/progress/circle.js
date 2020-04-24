@@ -9,7 +9,7 @@ import * as React from 'react';
 import { handlePercent } from '../css/progress-line';
 import { SvgInner, SvgText } from '../css/progress-circle';
 import { getText, getStatus } from './line';
-import colorsFunc from '../css/stateColor';
+import get from '../css/theme-common-dict';
 import { getPoints } from '../common/circleUtils';
 
 function getPolyLine(radius: number, strokeWidth: number, cnt: number, stroke: string) {
@@ -21,8 +21,6 @@ function getPolyLine(radius: number, strokeWidth: number, cnt: number, stroke: s
     />
   );
 }
-
-const { themeColor, successColor, dangerColor } = colorsFunc();
 
 export default class extends React.Component<any, any> {
   render() {
@@ -49,7 +47,7 @@ export default class extends React.Component<any, any> {
     textTheme.propsConfig = { status: getStatus({ status, percent }) };
     const backgroundTarget = this.getBackgroundTarget(type);
     const backgroundTheme = this.getTargetTheme(backgroundTarget);
-    const backgroundLineColor = this.getLineColor(backgroundTheme, '#f2f2f2');
+    const backgroundLineColor = this.getLineColor(backgroundTheme, get('superLightColor'));
     const lineTarget = type === 'circle' ? 'ProgressCircleLine' : 'DashboardLine';
     const lineTheme = this.getTargetTheme(lineTarget);
     const lineColor = this.getLineColor(lineTheme);
@@ -136,16 +134,16 @@ export default class extends React.Component<any, any> {
 
     const { status } = this.props;
     if (status === 'error') {
-      return dangerColor;
+      return get('dangerColor');
     }
 
     if (status === 'success' || percent === 100) {
-      return successColor;
+      return get('successColor');
     }
 
     const { getTheme } = this.props;
     const theme = getTheme();
-    return theme.color || themeColor;
+    return theme.color || get('themeColor');
   };
 
   getTargetTheme = (target: string) => {
