@@ -9,7 +9,7 @@ import { Container, EditDiv, InnerTriggerDiv } from './editTableCss';
 import EditTableEventListener from './connection';
 import Widget from '../consts';
 import { findDOMNode } from 'react-dom';
-import { deepMerge } from '@lugia/object-utils';
+import { getEditDivTheme } from './utils';
 
 class EditTable extends React.Component<EditTableProps, EditTableState> {
   editTableListener: EditTableEventListenerHandle;
@@ -47,6 +47,12 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
     this.exportOnCellListener = this.editTableListener.on('exportOnCell', (res: Object) => {
       this.exportOnCell(res);
     });
+    this.exportOnHeaderCellListener = this.editTableListener.on(
+      'exportOnHeaderCell',
+      (res: Object) => {
+        this.exportOnHeaderCell(res);
+      }
+    );
   }
 
   shouldComponentUpdate(nextProps: EditTableProps, nextState: EditTableState) {
@@ -149,12 +155,10 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
           },
         }
       : {};
-    const editDivTheme = deepMerge(
-      this.props.getPartOfThemeProps('EditTarget', {
-        props: { isSelect, isHead, align, enterEdit },
-      }),
-      editingTheme
-    );
+    const { isEditHead } = this.props;
+    const isDisableEdit = isHead && isSelect && !isEditHead;
+    const propsConfig = { isSelect, isHead, align, enterEdit, isDisableEdit };
+    const editDivTheme = getEditDivTheme(this.props, isHead, propsConfig, editingTheme);
 
     if (enterEdit) {
       return (
@@ -179,15 +183,13 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
       customRender,
       disableEdit,
     } = renderObject;
-    const { selectSuffixElement, isEditHead } = this.props;
+    const { selectSuffixElement } = this.props;
     const { selectCell } = this.state;
     const allowEdit = !disableEdit;
     const { editTableListener: { onCellClick } = {} } = this;
     return (
       <EditDiv
         themeProps={editDivTheme}
-        isSelect={isSelect}
-        isHead={isHead}
         onClick={e =>
           onCellClick({
             e,
@@ -201,7 +203,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
         }
       >
         {customRender && !isHead ? customRender(text, record, index) : defaultText.toString()}
-        {isSelect && selectSuffixElement ? (
+        {!isDisableEdit && isSelect && selectSuffixElement ? (
           <InnerTriggerDiv>{selectSuffixElement}</InnerTriggerDiv>
         ) : null}
       </EditDiv>
@@ -243,19 +245,32 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
     onCell && onCell({ ...exportInfo });
   };
 
+  exportOnHeaderCell = (res: Object): void => {
+    const { onHeaderCell, columns } = this.props;
+    const exportInfo = this.editTableListener.getHeaderCell({ ...res, columns });
+    onHeaderCell && onHeaderCell({ ...exportInfo });
+  };
+
   doSetState = (stateInfo: Object): void => {
     this.setState({ ...stateInfo });
   };
 
   doMoveCells = (props: Object): void => {
     const { selectCell } = this.state;
-    const { data, columns } = this.props;
+    const { data, columns, isEditHead } = this.props;
     const { editTableListener } = this;
     const selectInfo = editTableListener.getMovedCells({ selectCell, data, columns, ...props });
-    if (!selectInfo) {
+    const { selectRow } = selectInfo || {};
+    const isQuitMove = !selectRow && !isEditHead;
+    if (!selectInfo || isQuitMove) {
       return;
     }
-    editTableListener.emit('exportOnCell', {
+    const isHeadCell = selectRow === 0;
+    let emitName = 'exportOnCell';
+    if (isHeadCell) {
+      emitName = 'exportOnHeaderCell';
+    }
+    editTableListener.emit(emitName, {
       currentItem: selectInfo,
       newValue: [selectInfo],
       oldValue: selectCell,
@@ -285,6 +300,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
     this.enterEditingListener.removeListener();
     this.setStateListener.removeListener();
     this.exportOnCellListener.removeListener();
+    this.exportOnHeaderCellListener.removeListener();
   }
 }
 

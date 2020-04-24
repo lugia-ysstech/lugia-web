@@ -301,6 +301,21 @@ export default class EditTableEventListener extends Listener<any> {
     return newItem;
   };
 
+  getHeaderCell = (props: Object) => {
+    const { currentItem: { selectColumn } = {}, newValue, oldValue, columns } = props;
+    const newItem = { ...columns[selectColumn] };
+    const newValueRes = this.getSelectColumnsInfo(newValue, columns);
+    const oldValueRes = this.getSelectColumnsInfo(oldValue, columns);
+    return { currentItem: newItem, newValue: newValueRes, oldValue: oldValueRes };
+  };
+
+  getSelectColumnsInfo = (selectInfo: Array<Object>, columns: Array<Object>) => {
+    return selectInfo.map((item: Object, index: number) => {
+      const { selectColumn } = item;
+      return { ...columns[selectColumn] };
+    });
+  };
+
   getClearSingleSelectCell = (currentItem: Object, selectCell: Array<Object>): Array<Object> => {
     const newSelectCell = [];
     selectCell.forEach(item => {
@@ -386,7 +401,7 @@ export default class EditTableEventListener extends Listener<any> {
     count += 1;
     this.setClickNumber(count);
     setTimeout(() => {
-      const { selectColumn, selectRow, selectCell = [] } = props;
+      const { selectColumn, selectRow, selectCell = [], allowEdit } = props;
       const currentCell = { selectColumn, selectRow };
       if (count === 1) {
         const isSelect = this.isSelected(currentCell, selectCell);
@@ -407,19 +422,24 @@ export default class EditTableEventListener extends Listener<any> {
         } else {
           this.emit('enterMoveCells');
         }
+        if (!allowEdit) {
+          currentItem = {};
+        }
         this.emit('setState', { selectCell: selectCellResult, editCell: currentItem });
         const { isHead } = props;
-        !isHead &&
-          this.emit('exportOnCell', {
-            currentItem,
-            newValue: selectCellResult,
-            oldValue: selectCell,
-          });
+        let emitName = 'exportOnCell';
+        if (isHead) {
+          emitName = 'exportOnHeaderCell';
+        }
+        this.emit(emitName, {
+          currentItem,
+          newValue: selectCellResult,
+          oldValue: selectCell,
+        });
       } else if (count === 2) {
         this.setClickNumber(0);
         this.emit('quitMoveCells');
         this.emit('quiteMoveTrack');
-        const { allowEdit } = props;
         allowEdit && this.emit('setState', { editing: true, editCell: currentCell });
       }
     }, 200);
