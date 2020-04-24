@@ -557,7 +557,7 @@ const getDotStyle = (props: CssTypeProps) => {
       isChangDotBg = valueInRange(dotIndex, value);
       isBiger = isChangDotBg;
     }
-    let dotBorder = '#cccccc';
+    let dotBorder = get('lightGreyColor');
     let dotBg = '#ffffff';
     let dotColor = get('mediumGreyColor');
     let dotFontSize = 14;
