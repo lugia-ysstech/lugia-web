@@ -133,7 +133,7 @@ export default () => {
           <Button type="danger" shape="round" plain>
             Danger
           </Button>
-          <p>danger</p>
+          <p>link</p>
           <Button type="link" shape="round" plain>
             Link
           </Button>
@@ -207,23 +207,38 @@ export default () => {
           <p>circle</p>
           <Button circle plain />
           <br />
+          <br />
           <Button circle size="large" type="primary" />
           <br />
+          <br />
           <Button circle size="small" />
+        </Wrapper>
+        <Wrapper>
           <p>loading</p>
           <Button loading>loading</Button>
-          <p>link loading</p>
-          <Button type="link" loading>
+          <br />
+          <br />
+          <p>link loading </p>
+          <Button size="small" loading type="link">
             loading
           </Button>
-          <p>loading</p>
-          <Button loading={{ delay: 3000 }}>loading</Button>
+          <br />
+          <br />
+          <p>loading持续2s</p>
+          <Button loading={{ delay: 2000 }}>loading</Button>
+        </Wrapper>
+        <Wrapper>
           <p>icon Button</p>
           <Button icon="lugia-icon-direction_logout">Button</Button>
+          <br />
+          <br />
           <p>icon link Button</p>
+          <br />
           <Button type="link" icon="lugia-icon-direction_logout">
             Button
           </Button>
+        </Wrapper>
+        <Wrapper>
           <p>icon Button</p>
           <Theme config={config}>
             <Button icon="lugia-icon-financial_global">Button</Button>
@@ -274,8 +289,8 @@ export default () => {
         <Button loading block>
           loading
         </Button>
-        <p>loading</p>
-        <Button loading={{ delay: 3000 }} block>
+        <p>loading持续2s</p>
+        <Button loading={{ delay: 2000 }} block>
           loading
         </Button>
         <p>icon Button</p>

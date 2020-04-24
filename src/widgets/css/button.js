@@ -40,12 +40,17 @@ import {
   TextPlainActiveTypeTheme,
   TextSizeTheme,
   TextCircleTheme,
+  textDefaultFocusTheme,
+  defaultFocusTheme,
+  TypeFocusTheme,
+  PlainFocusTypeTheme,
+  TextPlainFocusTheme,
+  TextTypeFocusTheme,
 } from '../button/theme';
 
 export type ButtonType = 'default' | 'primary' | 'success' | 'warning' | 'danger' | 'link';
 type ButtonShape = 'default' | 'round';
 type ButtonSize = 'default' | 'small' | 'large';
-
 type CSSProps = {
   shape?: ButtonShape,
   type?: ButtonType,
@@ -79,11 +84,9 @@ export type ButtonOutProps = CSSProps & {
   dispatchEvent: Function,
   themeProps: Object,
 };
-
 type IconLoadingProps = {
   loading?: boolean,
 };
-
 type TypeColor = {
   color: string,
   backgroundColor: string,
@@ -97,36 +100,19 @@ type SizeStyle = {
   borderRadius: number,
 };
 
-const Size: { [key: ButtonSize]: SizeStyle } = {
-  large: {
-    height: 40,
-    borderRadius: 20,
-  },
-  default: {
-    height: 32,
-    borderRadius: 16,
-  },
-  small: {
-    height: 24,
-    borderRadius: 12,
-  },
-};
-
 const NotCircleSize = {
   width: 32,
-  borderRadius: 4,
+  borderRadius: get('borderRadiusValue'),
 };
 const cursor = 'not-allowed';
 
 function fetchType(type: string): Object {
   if (type === 'default') {
     return {
-      color: get('darkGreyColor'),
-      border: `1px solid ${get('lightGreyColor')}`,
+      border: `1px solid ${get('borderColor')}`,
     };
   }
   return {
-    color: get('white'),
     border: 'none',
   };
 }
@@ -137,7 +123,7 @@ function fetchTypeCSS(color: string): { [key: ButtonType]: TypeColor } {
   const otherTypeStyle = fetchType('other');
   return {
     default: {
-      backgroundColor: get('white'),
+      backgroundColor: get('defaultColor'),
       ...defaultTypeStyle,
     },
     primary: {
@@ -159,13 +145,27 @@ function fetchTypeCSS(color: string): { [key: ButtonType]: TypeColor } {
   };
 }
 
+const Size: { [key: ButtonSize]: SizeStyle } = {
+  large: {
+    height: get('largeSize'),
+    borderRadius: get('largeSize') / 2,
+  },
+  default: {
+    height: get('normalSize'),
+    borderRadius: get('normalSize') / 2,
+  },
+  small: {
+    height: get('smallSize'),
+    borderRadius: get('smallSize') / 2,
+  },
+};
+
 function fetchSize(sizeType: ButtonSize) {
   const { height } = Size[sizeType] || Size.default;
   return {
     height: `${px2remcss(height)}`,
   };
 }
-
 const ShapeCSS: { [key: ButtonSize]: ShapeStyle } = {
   default: {
     borderRadius: Size.default.borderRadius,
@@ -239,7 +239,7 @@ export const getIconStyle = (props: Object) => {
     return '';
   }
   return `
-    margin-${isSuffix ? 'left' : 'right'}: ${px2remcss(10)};
+    margin-${isSuffix ? 'left' : 'right'}: ${px2remcss(get('paddingToText'))};
   `;
 };
 const spin = keyframes`
@@ -320,7 +320,7 @@ export const ButtonOut = CSSComponent({
       const shapeTheme =
         shape === 'round'
           ? ShapeTheme[size] || ShapeTheme.default
-          : { borderRadius: getBorderRadius(4) };
+          : { borderRadius: getBorderRadius(get('borderRadiusValue')) };
 
       return { ...normalTheme, ...shapeTheme, ...sizeTheme };
     },
@@ -372,15 +372,22 @@ export const ButtonOut = CSSComponent({
       return activeTheme;
     },
   },
+
   focus: {
     selectNames: [['background'], ['border']],
-    defaultTheme: defaultHoverTheme,
+    defaultTheme: defaultFocusTheme,
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
-      const { type = 'default' } = propsConfig;
+      const { type = 'default', plain } = propsConfig;
       if (type === 'link') return linkTheme;
 
-      return getHoverStyle(propsConfig);
+      let focusTheme;
+      if (plain) {
+        focusTheme = PlainFocusTypeTheme[type] || PlainFocusTypeTheme.default;
+      } else {
+        focusTheme = TypeFocusTheme[type] || TypeFocusTheme.default;
+      }
+      return focusTheme;
     },
   },
   css: css`
@@ -432,6 +439,16 @@ export const getTextHoverStyle = (propsConfig: Object = {}) => {
   }
   return hoverTheme;
 };
+export const getTextFocusStyle = (propsConfig: Object = {}) => {
+  const { type = 'default', plain } = propsConfig;
+  let focusTheme;
+  if (plain) {
+    focusTheme = TextPlainFocusTheme[type] || TextPlainFocusTheme.default;
+  } else {
+    focusTheme = TextTypeFocusTheme[type] || TextTypeFocusTheme.default;
+  }
+  return focusTheme;
+};
 export const getTextActiveTheme = (propsConfig: Object) => {
   const { type = 'default', plain } = propsConfig;
   let activeTheme;
@@ -467,7 +484,6 @@ export const Text = CSSComponent({
       const sizeTheme = circle
         ? TextCircleTheme[size] || TextCircleTheme.default
         : TextSizeTheme[size] || TextSizeTheme.default;
-
       return { ...normalTheme, ...sizeTheme };
     },
   },
@@ -500,11 +516,11 @@ export const Text = CSSComponent({
   },
   focus: {
     selectNames: [['color'], ['font']],
-    defaultTheme: textDefaultHoverTheme,
+    defaultTheme: textDefaultFocusTheme,
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
 
-      return getTextHoverStyle(propsConfig);
+      return getTextFocusStyle(propsConfig);
     },
   },
 });
