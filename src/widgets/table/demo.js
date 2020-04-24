@@ -84,8 +84,16 @@ export default class ModalDemo extends React.Component<any, any> {
     super();
     this.state = {
       selectRowKeys: ['1'],
+      updateData: data,
     };
   }
+  update = () => {
+    const data = [];
+    for (let i = 0; i < Math.floor(Math.random() * 10); i++) {
+      data.push({ name: 'Rose' + i, age: 36, address: 'some where', key: '2' });
+    }
+    this.setState({ updateData: data });
+  };
 
   selectChange = (selectRowKeys: string, records: Object) => {
     console.log('selectRowKeys', selectRowKeys);
@@ -115,7 +123,7 @@ export default class ModalDemo extends React.Component<any, any> {
         Container: {
           normal: {
             width: 500,
-            height: 264,
+            height: 100,
             background: {
               color: 'red',
             },
@@ -150,20 +158,26 @@ export default class ModalDemo extends React.Component<any, any> {
         },
       },
     };
+    const { updateData } = this.state;
     return (
       <div style={{ padding: '20px' }}>
         <h1>表格size</h1>
         <div style={{ display: 'flex' }}>
           <div style={{ flex: '1' }}>
             <h3>size=small</h3>
-            <Theme config={configSmall}>
-              <Table useFixedHeader columns={columns} data={data} size={'small'} />
-            </Theme>
+            <Table
+              theme={configSmall}
+              useFixedHeader
+              columns={columns}
+              data={updateData}
+              size={'small'}
+            />
+            <button onClick={this.update}>动态改数据条数</button>
           </div>
           <div style={{ flex: '1' }}>
             <h3>size=default</h3>
             <Theme config={configDefault}>
-              <Table useFixedHeader columns={columns} data={data} />
+              <Table useFixedHeader columns={columns} data={updateData} />
             </Theme>
           </div>
           <div style={{ flex: '1' }}>
