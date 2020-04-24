@@ -53,6 +53,7 @@ const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 const successColor = '$lugia-dict.@lugia/lugia-web.successColor';
 const dangerColor = '$lugia-dict.@lugia/lugia-web.dangerColor';
 const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
+const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
 
 export const handlePercent = (per: number) => {
   per = per - 0;
@@ -205,7 +206,7 @@ export const getTextColor = (status: 'error' | 'success' | 'default') => {
     return successColor;
   }
 
-  return mediumGreyColor;
+  return blackColor;
 };
 
 export const getTextFont = (propsConfig: Object) => {
