@@ -8,138 +8,26 @@ import * as React from 'react';
 import Trigger from '../trigger';
 import Widget from '../consts/index';
 import type { TooltipProps, TooltipState } from '../css/tooltip';
-import { Down, Left, Right, Up } from '../css/tooltip';
+import { Down, Left, Right, Up, getRoundArrowCSS, getArrowCSS } from '../css/tooltip';
 import ThemeHoc from '@lugia/theme-hoc';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
-import { getBoxShadow } from '@lugia/theme-utils';
+import { getBoxShadow, getBorderRadius } from '@lugia/theme-utils';
 import get from '../css/theme-common-dict';
 import { units } from '@lugia/css';
 const { px2remcss } = units;
 
 const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
-const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
-const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
-function getRoundArrowCSS(themeMeta, themeProps) {
-  const { background = {} } = themeMeta;
-  const { propsConfig } = themeProps;
-  const bgColor = background && background.color ? background.color : get('defaultColor');
-
-  const { direction = Up, placement } = propsConfig;
-  let angle = '';
-  switch (direction) {
-    case Up:
-      angle = '45deg';
-      break;
-    case Down:
-      angle = '225deg';
-      break;
-    case Left:
-      angle = '315deg';
-      break;
-    case Right:
-      angle = '135deg';
-      break;
-    default:
-      break;
-  }
-  const theBottom = `top: ${px2remcss(-4)};`;
-  const theTop = `bottom: ${px2remcss(-4)};`;
-  const theLeft = `right: ${px2remcss(-4)};`;
-  const theRight = `left: ${px2remcss(-4)};`;
-  let arrowDirectionCSS = '';
-  switch (placement) {
-    case 'bottomLeft':
-      arrowDirectionCSS = `left: ${px2remcss(10)};${theBottom}; `;
-      break;
-    case 'bottom':
-      arrowDirectionCSS = `left: 46%;${theBottom}; `;
-      break;
-    case 'bottomRight':
-      arrowDirectionCSS = `right: ${px2remcss(10)};${theBottom}; `;
-      break;
-    case 'topLeft':
-      arrowDirectionCSS = `left: ${px2remcss(10)};${theTop};`;
-      break;
-    case 'top':
-      arrowDirectionCSS = `left: 46%;${theTop};`;
-      break;
-    case 'topRight':
-      arrowDirectionCSS = `right: ${px2remcss(10)};${theTop}; `;
-      break;
-    case 'rightTop':
-      arrowDirectionCSS = `top: ${px2remcss(10)};${theRight}; `;
-      break;
-    case 'right':
-      arrowDirectionCSS = `top: 46%;${theRight};`;
-      break;
-    case 'rightBottom':
-      arrowDirectionCSS = `bottom: ${px2remcss(10)}; ${theRight};`;
-      break;
-    case 'leftTop':
-      arrowDirectionCSS = `top: ${px2remcss(10)};${theLeft};`;
-      break;
-    case 'left':
-      arrowDirectionCSS = ` top: 46%;${theLeft};`;
-      break;
-    case 'leftBottom':
-      arrowDirectionCSS = ` bottom: ${px2remcss(10)}; ${theLeft};`;
-      break;
-    default:
-      arrowDirectionCSS = '';
-      break;
-  }
-  return `border-color: ${bgColor} transparent transparent ${bgColor};transform: rotateZ(${angle}); ${arrowDirectionCSS};`;
-}
-function getArrowCSS(themeMeta, themeProps) {
-  const { propsConfig } = themeProps;
-  const { background = {} } = themeMeta;
-  const { direction = Up } = propsConfig;
-  const bgColor = background && background.color ? background.color : get('defaultColor');
-  switch (direction) {
-    case Up:
-      return `
-        left: ${px2remcss(10)};
-        top: ${px2remcss(-5)};
-        border-width: 0 ${px2remcss(5)} ${px2remcss(5)};
-        border-bottom-color: ${bgColor};
-      `;
-    case Down:
-      return `
-        left: ${px2remcss(10)};
-        bottom: ${px2remcss(-3)};
-        border-width: ${px2remcss(5)} ${px2remcss(5)} 0;
-        border-top-color: ${bgColor};
-      `;
-    case Left:
-      return `
-        top: ${px2remcss(10)};
-        left: ${px2remcss(-5)};
-        border-width: ${px2remcss(5)} ${px2remcss(5)} ${px2remcss(5)} 0;
-        border-right-color: ${bgColor};
-      `;
-    case Right:
-      return `
-        top: ${px2remcss(10)};
-        right: ${px2remcss(-5)};
-        border-width: ${px2remcss(5)} 0 ${px2remcss(5)} ${px2remcss(5)};
-        border-left-color: ${bgColor};
-      `;
-    default:
-      return 'background:transparent';
-  }
-}
+const borderRadiusValue = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
 
 const ContentWrapper: Object = CSSComponent({
   tag: 'div',
   className: 'TooltipContentWrapper',
   normal: {
-    selectNames: [['margin'], ['opacity']],
-    defaultTheme: {},
+    selectNames: [],
     getCSS(themeMeta, themeProps) {
       const { propsConfig } = themeProps;
       const { direction } = propsConfig;
-      return `padding:${px2remcss(1)};
-      padding-${direction}:${px2remcss(4)};
+      return `padding-${direction}:${px2remcss(4)};
       background: transparent;box-shadow:none;`;
     },
   },
@@ -162,8 +50,9 @@ const Content: Object = CSSComponent({
       ['opacity'],
     ],
     defaultTheme: {
-      background: { color: defaultColor },
-      boxShadow: getBoxShadow('0 0 6 rgba(51, 51, 51, 0.2)'),
+      borderRadius: getBorderRadius(borderRadiusValue),
+      background: { color: get('blackColor') },
+
       padding: {
         top: 4,
         bottom: 4,
@@ -171,9 +60,17 @@ const Content: Object = CSSComponent({
         right: 8,
       },
     },
+    getThemeMeta(themeMeta, themeProps) {
+      const { boxShadow } = themeMeta;
+      const { x, y, color, blur, spread } = get('normalBoxShadow');
+      const theBoxShadow =
+        boxShadow || getBoxShadow(`${x}px ${y}px ${blur}px ${spread}px ${color}`);
+      return {
+        boxShadow: theBoxShadow,
+      };
+    },
   },
   css: css`
-    border-radius: ${px2remcss(5)};
     position: relative;
     box-sizing: border-box;
   `,
@@ -218,9 +115,6 @@ const BaseArrow: Object = CSSComponent({
   },
   hover: {
     selectNames: [],
-    getCSS(themeMeta: Object, themeProps: Object): string {
-      return getRoundArrowCSS(themeMeta, themeProps);
-    },
   },
   css: css`
     position: absolute;
@@ -258,26 +152,10 @@ const Title: Object = CSSComponent({
   tag: 'div',
   className: 'TooltipTitle',
   normal: {
-    selectNames: [
-      ['opacity'],
-      ['background'],
-      ['width'],
-      ['height'],
-      ['color'],
-      ['font'],
-      ['fontSize'],
-      ['margin'],
-    ],
+    selectNames: [['color'], ['font'], ['fontSize'], ['padding']],
     defaultTheme: {
-      color: blackColor,
+      color: defaultColor,
       fontSize: 12,
-    },
-    getCSS(themeMeta: Object, themeProps: Object) {
-      const { propsConfig } = themeProps;
-      const { description } = propsConfig;
-      if (description) {
-        return `margin-bottom:${px2remcss(10)}`;
-      }
     },
   },
   css: css`
@@ -286,35 +164,21 @@ const Title: Object = CSSComponent({
     overflow: hidden;
     text-align: left;
     text-decoration: none;
+    display: flex;
+    align-items: center;
   `,
 });
 const Description: Object = CSSComponent({
-  tag: 'div',
+  extend: Title,
   className: 'TooltipDescription',
   normal: {
-    selectNames: [
-      ['opacity'],
-      ['background'],
-      ['width'],
-      ['height'],
-      ['color'],
-      ['font'],
-      ['fontSize'],
-      ['margin'],
-    ],
+    selectNames: [['margin']],
     defaultTheme: {
-      color: darkGreyColor,
-      fontSize: 12,
+      margin: {
+        top: 6,
+      },
     },
   },
-  css: css`
-    box-sizing: border-box;
-    user-select: none;
-    overflow: hidden;
-    text-align: left;
-    text-decoration: none;
-    line-height: 1.5;
-  `,
 });
 const ChildrenContainer: Object = CSSComponent({
   tag: 'div',
@@ -481,12 +345,8 @@ class Tooltip extends React.Component<TooltipProps, TooltipState> {
   };
 
   getTitle(): React$Element<any> | null {
-    const { title, description } = this.props;
-    const TitleThemeProps = this.props.getPartOfThemeProps('TooltipTitle', {
-      props: {
-        description,
-      },
-    });
+    const { title } = this.props;
+    const TitleThemeProps = this.props.getPartOfThemeProps('TooltipTitle');
     if (title) {
       return <Title themeProps={TitleThemeProps}>{title}</Title>;
     }
