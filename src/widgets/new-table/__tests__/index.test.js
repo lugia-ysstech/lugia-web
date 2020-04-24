@@ -395,4 +395,76 @@ describe('new-table', () => {
 
     return { order, mockEditTableListener, editTableListener: mockEditTableListener.target };
   }
+
+  it(' EditTable getHeaderCell ', () => {
+    const cmp = getCmp(mount(<EditTable data={data} columns={columns} />));
+    const { mockEditTableListener, editTableListener } = mockListener(cmp);
+    const getKeyMaps = mockEditTableListener.mockFunction('getKeyMaps');
+    getKeyMaps.returned(dataKeyMap);
+
+    expect(cmp.editTableListener.dataKeyMap).toEqual(dataKeyMap);
+
+    const resetSelectRowProps = {
+      currentItem: { selectColumn: 2, selectRow: 0 },
+      newValue: [{ selectColumn: 2, selectRow: 0 }],
+      oldValue: [{ selectColumn: 1, selectRow: 0 }],
+      columns,
+    };
+
+    const resetSelectRowRes = {
+      currentItem: { title: 'Address', dataIndex: 'address', key: 'address', width: 200 },
+      newValue: [{ title: 'Address', dataIndex: 'address', key: 'address', width: 200 }],
+      oldValue: [{ title: 'Age', dataIndex: 'age', key: 'age' }],
+    };
+    const { getHeaderCell } = editTableListener;
+    expect(getHeaderCell(resetSelectRowProps)).toEqual(resetSelectRowRes);
+
+    const multipleResetSelectRowProps = {
+      currentItem: { selectColumn: 2, selectRow: 0 },
+      newValue: [{ selectColumn: 2, selectRow: 0 }],
+      oldValue: [{ selectColumn: 1, selectRow: 0 }, { selectColumn: 0, selectRow: 0 }],
+      columns,
+    };
+
+    const multipleResetSelectRowRes = {
+      currentItem: { title: 'Address', dataIndex: 'address', key: 'address', width: 200 },
+      newValue: [{ title: 'Address', dataIndex: 'address', key: 'address', width: 200 }],
+      oldValue: [
+        { title: 'Age', dataIndex: 'age', key: 'age' },
+        { title: '姓名', dataIndex: 'name', key: 'name', width: 100, align: 'center' },
+      ],
+    };
+
+    expect(getHeaderCell(multipleResetSelectRowProps)).toEqual(multipleResetSelectRowRes);
+  });
+
+  it(' EditTable getSelectColumnsInfo ', () => {
+    const cmp = getCmp(mount(<EditTable data={data} columns={columns} />));
+    const { mockEditTableListener, editTableListener } = mockListener(cmp);
+    const getKeyMaps = mockEditTableListener.mockFunction('getKeyMaps');
+    getKeyMaps.returned(dataKeyMap);
+
+    expect(cmp.editTableListener.dataKeyMap).toEqual(dataKeyMap);
+
+    const selectInfo = [{ selectColumn: 1, selectRow: 0 }, { selectColumn: 0, selectRow: 0 }];
+    const result = [
+      { title: 'Age', dataIndex: 'age', key: 'age' },
+      { title: '姓名', dataIndex: 'name', key: 'name', width: 100, align: 'center' },
+    ];
+
+    const { getSelectColumnsInfo } = editTableListener;
+    expect(getSelectColumnsInfo(selectInfo, columns)).toEqual(result);
+    const selectInfo2 = [
+      { selectColumn: 2, selectRow: 0 },
+      { selectColumn: 1, selectRow: 0 },
+      { selectColumn: 0, selectRow: 0 },
+    ];
+    const result2 = [
+      { title: 'Address', dataIndex: 'address', key: 'address', width: 200 },
+      { title: 'Age', dataIndex: 'age', key: 'age' },
+      { title: '姓名', dataIndex: 'name', key: 'name', width: 100, align: 'center' },
+    ];
+    expect(getSelectColumnsInfo(selectInfo2, columns)).toEqual(result2);
+    expect(getSelectColumnsInfo([], columns)).toEqual([]);
+  });
 });
