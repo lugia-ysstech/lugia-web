@@ -8,6 +8,8 @@ import { px2remcss } from './units';
 import { getTextColor, getWrapFontSize } from './progress-line';
 import CSSComponent from '@lugia/theme-css-hoc';
 
+const blackColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
+
 export const SvgInner = styled.div`
   width: ${props => {
     return props.size === 'default' ? px2remcss(120) : px2remcss(80);
@@ -43,7 +45,7 @@ export const SvgText = CSSComponent({
     selectNames: [['font'], ['color']],
     defaultTheme: {
       font: { size: 24 },
-      color: '$lugia-dict.@lugia/lugia-web.mediumGreyColor',
+      color: blackColor,
     },
     getThemeMeta(themeMeta, themeProps): Object {
       const { propsConfig = {} } = themeProps;
