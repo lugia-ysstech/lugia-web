@@ -10,13 +10,16 @@ import Icon from '../icon/index';
 import Widget from '../consts/index';
 import type { PopoverProps, PopoverState } from '../css/popover';
 import { getStateFromProps, processOnVisibleChange } from '../tooltip';
-
+import get from '../css/theme-common-dict';
 import ThemeHoc from '@lugia/theme-hoc';
 import { deepMerge } from '@lugia/object-utils';
 import { css, StaticComponent } from '@lugia/theme-css-hoc';
 import { units } from '@lugia/css';
 const { px2remcss } = units;
 const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
+const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
+const xsFontSize = '$lugia-dict.@lugia/lugia-web.xsFontSize';
+const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
 
 const ClearContainer: Object = StaticComponent({
   tag: 'div',
@@ -26,10 +29,8 @@ const ClearContainer: Object = StaticComponent({
   },
   css: css`
     position: absolute;
-    right: ${px2remcss(6)};
-    top: ${px2remcss(6)};
-    width: ${px2remcss(10)};
-    height: ${px2remcss(10)};
+    right: ${px2remcss(8)};
+    top: ${px2remcss(8)};
   `,
 });
 
@@ -78,6 +79,10 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
           normal: {
             color: mediumGreyColor,
             cursor: 'pointer',
+            fontSize: xsFontSize,
+          },
+          hover: {
+            color: darkGreyColor,
           },
         },
       },
@@ -113,21 +118,28 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
         [viewClass]: {
           Container: {
             normal: {
-              padding: {
-                top: 12,
-                bottom: 12,
-                left: 16,
-                right: 16,
+              background: {
+                color: get('defaultColor'),
               },
+              padding: 8,
               fontSize: 12,
+            },
+            hover: {
+              background: {
+                color: get('defaultColor'),
+              },
             },
           },
           TooltipTitle: {
             normal: {
-              font: {
-                size: 16,
-                weight: 500,
-              },
+              color: blackColor,
+              fontSize: 14,
+            },
+          },
+          TooltipDescription: {
+            normal: {
+              color: darkGreyColor,
+              fontSize: 12,
             },
           },
         },
@@ -141,7 +153,6 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
         visible={visible}
         action={action}
         onVisibleChange={this.onVisibleChange}
-        popArrowType={'round'}
         placement={placement}
         content={this.getContent()}
         title={this.getTitle()}

@@ -39,11 +39,11 @@ class InnerCloseDemo extends React.Component<any, any> {
         showClearButton
         placement="top"
         title={title}
+        description={description}
         action="click"
         visible={this.state.visible}
         onVisibleChange={this.handleVisibleChange}
         clear={'lugia-icon-reminder_close'}
-        description={[<div>{description}</div>]}
         onClearClick={this.hide}
       >
         <Direction type="primary">Click me</Direction>
@@ -84,13 +84,6 @@ class HoverAndClickDemo extends React.Component<any, any> {
     const hoverContent = <div>This is hover content.</div>;
     const clickContent = <div>This is click content.</div>;
     const config = {
-      [Widget.Popover]: {
-        PopoverContent: {
-          Container: {
-            normal: { width: 200, background: { color: 'blue' } },
-          },
-        },
-      },
       [Widget.Button]: { width: buttonWidth },
     };
     return (
@@ -127,19 +120,9 @@ const Wrapper = styled.div`
 `;
 
 export const WrapperDemo = () => {
-  const text = 'This is title ';
-  const description = 'This is description';
+  const text = 'title ';
+  const description = 'description';
   const config = {
-    [Widget.Popover]: {
-      PopoverClearIcon: {
-        normal: { color: 'purple' },
-      },
-      PopoverContent: {
-        Container: { normal: { background: { color: 'pink' } } },
-        TooltipTitle: { normal: { color: 'green' } },
-        TooltipDescription: { normal: { color: 'yellow' } },
-      },
-    },
     [Widget.Button]: {
       Container: {
         normal: {
