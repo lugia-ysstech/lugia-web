@@ -174,18 +174,10 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
       );
     }
 
-    const {
-      text,
-      record,
-      index,
-      selectColumn,
-      selectRow,
-      customRender,
-      disableEdit,
-    } = renderObject;
+    const { text, record, index, selectColumn, selectRow, customRender } = renderObject;
     const { selectSuffixElement } = this.props;
     const { selectCell } = this.state;
-    const allowEdit = !disableEdit;
+    const allowEdit = !isDisableEdit;
     const { editTableListener: { onCellClick } = {} } = this;
     return (
       <EditDiv
@@ -203,7 +195,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
         }
       >
         {customRender && !isHead ? customRender(text, record, index) : defaultText.toString()}
-        {!isDisableEdit && isSelect && selectSuffixElement ? (
+        {allowEdit && isSelect && selectSuffixElement ? (
           <InnerTriggerDiv>{selectSuffixElement}</InnerTriggerDiv>
         ) : null}
       </EditDiv>
