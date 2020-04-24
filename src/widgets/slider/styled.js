@@ -523,7 +523,7 @@ const getButtonStyle = (props: CssTypeProps) => {
   const btnleft = vertical ? '50%' : `calc(${moveX}% + ${em(left)})`;
   const btnTorBot = vertical ? `bottom:calc(${moveY}% + ${em(top)})` : 'top: 50%';
   const btnTransform = vertical ? 'translateX' : 'translateY';
-  const btnPosition = `
+  return `
         left: ${btnleft};
         ${btnTorBot};
         transform: ${btnTransform}(-50%);
@@ -531,7 +531,6 @@ const getButtonStyle = (props: CssTypeProps) => {
         ${btnZIndex};
         transition:${transitionTime}s;
       `;
-  return btnPosition;
 };
 const getDotStyle = (props: CssTypeProps) => {
   const { marksData } = props;
@@ -543,10 +542,12 @@ const getDotStyle = (props: CssTypeProps) => {
     dotPosition,
     dotTextPosition,
     dotW,
-    dotH;
+    dotH,
+    isMaxValueDot;
   if (marksData) {
     const { dotIndex, value, maxValue, minValue, moveValue, marks, rangeW, rangeH } = marksData;
     isShowDot = dotIndex === maxValue || dotIndex === minValue;
+    isMaxValueDot = dotIndex === maxValue;
     dotStyle = marks.style;
     marskText = marks.text || marks;
     isChangDotBg = moveValue >= dotIndex && !isShowDot;
@@ -576,6 +577,9 @@ const getDotStyle = (props: CssTypeProps) => {
     }
     if (dotStyle && dotStyle.fontSize) {
       dotFontSize = dotStyle.fontSize;
+    }
+    if (!(dotStyle && dotStyle.color) && isMaxValueDot) {
+      dotColor = get('dangerColor');
     }
     dotBackground = `
       border-width:${em(1)};
