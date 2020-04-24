@@ -15,7 +15,6 @@ import {
   SliderWrapper,
   Tipinner,
   Tips,
-  IconsInner,
 } from './styled';
 import { getChangeValue } from './utils';
 import { iconStyles, rangeHeightNormal } from './slider_public_size';
@@ -624,8 +623,7 @@ class Slider extends Component<TypeProps, TypeState> {
           rangeW: this.style.rangeW,
           rangeH: this.style.rangeH,
         };
-        const sliderMarksName = 'SliderMarks';
-        const sliderMarksThemeProps = getPartOfThemeProps(sliderMarksName, {
+        const sliderMarksThemeProps = getPartOfThemeProps('SliderMarks', {
           selector: { index: i, count: marksKeys.length },
         });
         dots.push(
