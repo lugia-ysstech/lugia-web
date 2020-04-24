@@ -14,15 +14,9 @@ import Popconfirm from './popconfirm';
 import Input from '../input/index';
 import Widget from '../consts';
 import Theme from '../theme';
-import Popover from '../popover/popover';
 
 const Wrapper = styled.div`
   margin: 100px;
-`;
-const IconWrapper = styled.div`
-  border-radius: 50%;
-  width: 14px;
-  height: 14px;
 `;
 export class Condition extends React.Component<any, any> {
   state = {
@@ -81,25 +75,13 @@ export class Condition extends React.Component<any, any> {
 export const WrapperDemo = () => {
   const text = '确定删除这个选项吗?';
   const config = {
-    [Widget.Popconfirm]: {
-      PopconfirmContent: {
-        PopoverContent: {
-          Container: {
-            normal: { background: { color: '#f1f1f1' } },
-          },
-        },
-      },
-      PopconfirmIcon: {
-        normal: {
-          color: 'red',
-        },
-      },
-    },
-    [Widget.Button]: {
-      Container: {
-        normal: {
-          width: 80,
-        },
+    [Widget.Button]: { Container: { normal: { width: 80 } } },
+  };
+  const iconConfig = {
+    [Widget.Icon]: {
+      normal: {
+        fontSize: 14,
+        color: 'red',
       },
     },
   };
@@ -176,22 +158,15 @@ export const WrapperDemo = () => {
             cancelText="No"
             okText="yes"
             okType="danger"
-            icon={'lugia-icon-reminder_exclamation'}
+            icon={
+              <Theme config={iconConfig}>
+                <Icon iconClass={'lugia-icon-reminder_exclamation_circle_o'} singleTheme />
+              </Theme>
+            }
           >
             <Direction type="primary">提示</Direction>
           </Popconfirm>
-          <Popconfirm
-            title={text}
-            action={'click'}
-            cancelText="No"
-            okText="yes"
-            okType="danger"
-            icon={
-              <IconWrapper>
-                <Icon iconClass={'lugia-icon-reminder_question'} />
-              </IconWrapper>
-            }
-          >
+          <Popconfirm title={text} action={'click'} cancelText="No" okText="yes" okType="danger">
             <Direction type="primary">危险操作</Direction>
           </Popconfirm>
         </div>
