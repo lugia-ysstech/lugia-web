@@ -25,6 +25,10 @@ import Icon from '../icon';
 
 PanelHeader.displayName = 'Panel';
 
+const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
+const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
+const sFontSize = '$lugia-dict.@lugia/lugia-web.sFontSize';
+
 export default ThemeProvider(
   class extends React.Component<PanelProps, PanelState> {
     panel: any;
@@ -70,8 +74,8 @@ export default ThemeProvider(
         {
           [viewClass]: {
             normal: {
-              color: '#666',
-              fontSize: 14,
+              color: darkGreyColor,
+              fontSize: sFontSize,
               getCSS() {
                 return `position: absolute;
                   top: 50%;
@@ -80,6 +84,9 @@ export default ThemeProvider(
                   ${getIconTransform({ opening, open, closing })}
                 `;
               },
+            },
+            disabled: {
+              color: disableTextColor,
             },
           },
         },
