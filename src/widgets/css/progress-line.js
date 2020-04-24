@@ -5,6 +5,7 @@
  */
 import { css, keyframes } from 'styled-components';
 import CSSComponent from '@lugia/theme-css-hoc';
+import get from '../css/theme-common-dict';
 import { px2remcss } from './units';
 
 type StatusType = 'success' | 'error' | 'default';
@@ -228,7 +229,7 @@ export const ProgressText = CSSComponent({
     display: inline-block;
     width: ${px2remcss(20)};
     text-align: left;
-    margin-left: ${px2remcss(10)};
+    margin-left: ${px2remcss(get('marginToSameElement'))};
     white-space: nowrap;
     word-break: normal;
     vertical-align: middle;
