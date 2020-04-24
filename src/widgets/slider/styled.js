@@ -4,7 +4,7 @@
  * */
 import { css } from 'styled-components';
 import { valueInRange } from '../common/Math';
-import { iconStyles, dotStyles } from './slider_public_size';
+import { iconStyles } from './slider_public_size';
 import { px2remcss } from '../css/units';
 import { iconNormalColor, iconChangeColor } from './slider_public_color';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
@@ -592,9 +592,10 @@ const getDotStyle = (props: CssTypeProps) => {
     const dotPosLeft = vertical ? 50 : dotMoveX;
     const dotPosTorBot = vertical ? `bottom: ${dotMoveX}%` : 'top: 50%';
     const dotPosTrans = vertical ? 'translateX' : 'translateY';
-    const { distanceForSlider } = dotStyles;
-    const dotTextLeft = vertical ? 'left:calc(100% + 10px)' : 'left:50%';
-    const dotTextTop = vertical ? '50%' : `-${em(distanceForSlider)}`;
+    const dotTextLeft = vertical
+      ? `left: calc(100% + ${get('marginToPeerElementForY')}px)`
+      : 'left:50%';
+    const dotTextTop = vertical ? '50%' : `-${get('marginToPeerElementForY') + 15}px`;
     const dotTextTrans = vertical ? 'translateY(50%)' : 'translateX(-50%)';
     dotTextPosition = `
       font-size:${px2remcss(dotFontSize)};
