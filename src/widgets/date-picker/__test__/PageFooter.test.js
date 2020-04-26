@@ -19,13 +19,23 @@ describe('default', () => {
     themeState: {},
     propsConfig: {},
   };
+  const defaultThmeFunction = {
+    getPartOfThemeProps: () => {
+      return { ...defaultTheme };
+    },
+    getPartOfThemeHocProps: () => {
+      return { viewClass: {} };
+    },
+  };
   function handleClick(title: string, params: Object, expValue: Object) {
     it(`onChange ${title}`, () => {
       let onChangeResult = {};
       const onChange = (obj: Object) => {
         onChangeResult = obj;
       };
-      const target = mount(<PageFooter themeProps={{ ...defaultTheme }} onChange={onChange} />);
+      const target = mount(
+        <PageFooter themeProps={{ ...defaultTheme }} onChange={onChange} {...defaultThmeFunction} />
+      );
       const newTarget = getTarget(target, 'PageFooter');
       const { value } = params;
       newTarget.handleClick(value)();
@@ -47,7 +57,11 @@ describe('default', () => {
         onChangeResult = obj;
       };
       const target = mount(
-        <PageFooter themeProps={{ ...defaultTheme }} footerChange={footerChange} />
+        <PageFooter
+          themeProps={{ ...defaultTheme }}
+          footerChange={footerChange}
+          {...defaultThmeFunction}
+        />
       );
       const newTarget = getTarget(target, 'PageFooter');
       const { status } = params;
@@ -61,7 +75,9 @@ describe('default', () => {
 
   function statusClick(title: string, props: Object, params: Object, expValue: Object) {
     it(`onChange ${title}`, () => {
-      const target = mount(<PageFooter themeProps={{ ...defaultTheme }} {...props} />);
+      const target = mount(
+        <PageFooter themeProps={{ ...defaultTheme }} {...props} {...defaultThmeFunction} />
+      );
       const newTarget = getTarget(target, 'PageFooter');
       newTarget.statusClick(params.status)();
       const { showTimeMessage, status } = newTarget.state;

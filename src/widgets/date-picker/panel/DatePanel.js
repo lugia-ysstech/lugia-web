@@ -8,7 +8,6 @@ import { modeStyle } from '../utils/booleanUtils';
 import { valueInRange, getMinAndMax } from '../../common/Math';
 import { getYandM } from '../utils/differUtils';
 import { getDateTheme } from '../themeConfig/themeConfig';
-import { addMouseEvent } from '@lugia/theme-hoc';
 type TypeProps = {
   choseDayIndex: Array<number> | number | string,
   onMouseOver?: Function,
