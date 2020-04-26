@@ -125,6 +125,7 @@ export const Alert = CSSComponent({
     position: relative;
     box-sizing: border-box;
     overflow: hidden;
+    height: 40px;
     line-height: ${props => getLineHeight(props)};
     border-radius: ${px2remcss(get('borderRadiusValue'))};
     ${getAlertAnimate};
