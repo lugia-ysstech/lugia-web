@@ -110,7 +110,7 @@ export default ThemeProvider(
         {
           [viewClass]: {
             normal: {
-              font: { size: hasDect ? 20 : mFontSize },
+              font: { size: mFontSize },
               cursor: 'default',
               color: typeTheme.color,
               getCSS() {
