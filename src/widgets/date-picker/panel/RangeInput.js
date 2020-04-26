@@ -13,7 +13,12 @@ import {
 import Theme from '../../theme';
 import Widget from '../../consts/index';
 import { getBorder } from '@lugia/theme-utils';
-import { getWrapThemeProps, getIconTheme } from '../themeConfig/themeConfig';
+import {
+  getWrapThemeProps,
+  getIconTheme,
+  getRangeInputMiddleSymbolTheme,
+  getRangeInputPlaceholderTheme,
+} from '../themeConfig/themeConfig';
 import { addMouseEvent } from '@lugia/theme-hoc';
 import getDateIcon from '../panel/InputIcon';
 import { themeColor } from '../styled/utils';
@@ -92,15 +97,7 @@ class RangeInput extends Component<TypeProps, TypeState> {
   };
   render() {
     const { value } = this.props;
-    const {
-      disabled,
-      readOnly,
-      placeholder,
-      errorTipTheme,
-      validateStatus,
-      help,
-      validateType,
-    } = this.props;
+    const { disabled, readOnly, placeholder, validateStatus, size } = this.props;
     const config = {
       onFocus: disabled || readOnly ? '' : this.onFocus,
       disabled,
@@ -124,7 +121,7 @@ class RangeInput extends Component<TypeProps, TypeState> {
       };
     };
     const inputContainProps = getWrapThemeProps(
-      { mode, getPartOfThemeProps, validateStatus },
+      { mode, size, getPartOfThemeProps, validateStatus },
       'Container'
     );
 
@@ -152,6 +149,12 @@ class RangeInput extends Component<TypeProps, TypeState> {
       onClear: this.onClear,
       clearButtonTheme: clearButtonProps,
     });
+    const middleSymbolTheme = getRangeInputMiddleSymbolTheme({ size, getPartOfThemeProps });
+    const { themeConfig: placeholderTheme } = getRangeInputPlaceholderTheme({
+      size,
+      getPartOfThemeProps,
+    });
+    console.log('prefixIcon', prefixIcon);
     return (
       <Theme
         config={{
@@ -160,6 +163,7 @@ class RangeInput extends Component<TypeProps, TypeState> {
               normal: {
                 width: '100%',
                 height: height - (borderWidthT * 1 + borderWidthB * 1),
+                border: getBorder({ style: '', width: 0, color: '' }),
               },
             },
             Input: {
@@ -197,6 +201,9 @@ class RangeInput extends Component<TypeProps, TypeState> {
               },
               ...inputSuffixProps.themeConfig,
             },
+            Placeholder: {
+              ...placeholderTheme,
+            },
           },
         }}
       >
@@ -222,12 +229,12 @@ class RangeInput extends Component<TypeProps, TypeState> {
             </RangeInputInnerInput>
 
             <RangeMiddleSpan
-              themeProps={inputContainProps}
+              themeProps={middleSymbolTheme}
               {...this.props.dispatchEvent([['hover']], 'f2c')}
             >
               ~
             </RangeMiddleSpan>
-            <RangeInputInnerInput themeProps={inputContainProps}>
+            <RangeInputInnerInput themeProps={inputContainProps} last>
               <Input
                 {...suffixIcon}
                 value={value[1]}
