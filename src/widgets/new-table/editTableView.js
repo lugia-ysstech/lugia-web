@@ -13,7 +13,7 @@ import { getEditDivTheme } from './utils';
 
 class EditTable extends React.Component<EditTableProps, EditTableState> {
   editTableListener: EditTableEventListenerHandle;
-  Table: any;
+  table: any;
   moveCellsListener: Object;
   quitEditListener: Object;
   enterEditingListener: Object;
@@ -67,9 +67,10 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
   }
 
   componentDidMount() {
-    const isInTarget = findDOMNode(this.Table.getThemeTarget()) === document.activeElement;
-    window.addEventListener('keydown', this.editTableListener.keyDownHandler({ isInTarget }));
-    window.addEventListener('keyup', this.editTableListener.keyUpHandler);
+    const tableEl = findDOMNode(this.table.getThemeTarget());
+    const isInTarget = tableEl === document.activeElement;
+    tableEl.addEventListener('keydown', this.editTableListener.keyDownHandler({ isInTarget }));
+    tableEl.addEventListener('keyup', this.editTableListener.keyUpHandler);
   }
 
   render() {
@@ -92,7 +93,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
     return (
       <Container themeProps={containerTheme}>
         <Table
-          ref={el => (this.Table = el)}
+          ref={el => (this.table = el)}
           {...tableTheme}
           data={tableData}
           columns={tableColumns}
@@ -273,20 +274,28 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
     });
   };
 
-  doEnterEditing = (): void => {
-    const { isEditHead } = this.props;
+  isAllowEditing = () => {
     const {
-      editCell: { selectRow },
+      editCell: { selectRow, selectColumn },
+      editing,
     } = this.state;
-    const allowEdit = isEditHead || (selectRow && selectRow !== 0);
+
+    const { isEditHead, columns } = this.props;
+    const isDisableEdit = columns[selectColumn].disableEdit;
+    return !editing && (isEditHead || !!selectRow) && !isDisableEdit;
+  };
+
+  doEnterEditing = (): void => {
+    const allowEdit = this.isAllowEditing();
     if (allowEdit) {
       this.setState({ editing: true });
     }
   };
 
   componentWillUnmount() {
-    window.removeEventListener('keydown', this.editTableListener.keyDownHandler);
-    window.removeEventListener('keyup', this.editTableListener.keyUpHandler);
+    const tableEl = findDOMNode(this.table.getThemeTarget());
+    tableEl.removeEventListener('keydown', this.editTableListener.keyDownHandler);
+    tableEl.removeEventListener('keyup', this.editTableListener.keyUpHandler);
     this.moveCellsListener.removeListener();
     this.quitEditListener.removeListener();
     this.enterEditingListener.removeListener();

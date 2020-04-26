@@ -10,6 +10,7 @@ import Input from '../input';
 import Widget from '../consts/index';
 import { getBorder, getBorderRadius } from '@lugia/theme-utils';
 import type { KeyBoardEventListenerHandle } from '@lugia/lugia-web';
+import { findDOMNode } from 'react-dom';
 
 type PropsType = {
   value: any,
@@ -47,7 +48,8 @@ export default class EditInput extends React.Component<PropsType, StateType> {
         this.handleInputBlur();
       }
     };
-    window.addEventListener('keydown', this.keyDownHandler);
+    const inputEl = findDOMNode(this.input.getThemeTarget());
+    inputEl.addEventListener('keydown', this.keyDownHandler);
   }
 
   handleInputChange = (event: Object) => {
@@ -92,12 +94,14 @@ export default class EditInput extends React.Component<PropsType, StateType> {
           value={value}
           autoFocus={autoFocus}
           canClear={false}
+          ref={el => (this.input = el)}
         />
       </Theme>
     );
   }
 
   componentWillUnmount() {
-    window.removeEventListener('keydown', this.keyDownHandler);
+    const inputEl = findDOMNode(this.input.getThemeTarget());
+    inputEl.removeEventListener('keydown', this.keyDownHandler);
   }
 }
