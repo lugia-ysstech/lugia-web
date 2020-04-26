@@ -28,15 +28,13 @@ export function getInputtagThemeHoc(props: Object): Object {
   const defaultInputTagThemeConfig = inputTagThemeDefaultConfig[size];
   const inputtagWrapThemeConfig = getInputtagWrapThemeConfig(props);
   const customInputTagThemeConfig = {
-    [Widget.InputTag]: {
-      InputTagWrap: inputtagWrapThemeConfig,
-      TagWrap: getPartOfThemeConfig('TagWrap'),
-      TagIcon: getPartOfThemeConfig('TagIcon'),
-      SwitchIcon: getPartOfThemeConfig('SwitchIcon'),
-      ClearIcon: getPartOfThemeConfig('ClearIcon'),
-      Placeholder: getPartOfThemeConfig('Placeholder'),
-      Menu: getPartOfThemeConfig('InputMenu'),
-    },
+    InputTagWrap: inputtagWrapThemeConfig,
+    TagWrap: getPartOfThemeConfig('TagWrap'),
+    TagIcon: getPartOfThemeConfig('TagIcon'),
+    SwitchIcon: getPartOfThemeConfig('SwitchIcon'),
+    ClearIcon: getPartOfThemeConfig('ClearIcon'),
+    Placeholder: getPartOfThemeConfig('Placeholder'),
+    Menu: getPartOfThemeConfig('InputMenu'),
   };
   const deepMergeThemeConfig = deepMerge(defaultInputTagThemeConfig, customInputTagThemeConfig);
   const inputTagTheme = {
