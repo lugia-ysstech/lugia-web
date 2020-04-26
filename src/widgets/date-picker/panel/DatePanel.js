@@ -147,6 +147,7 @@ class Dates extends Component<TypeProps, any> {
       activeTheme,
       outMonthNormalTheme,
       rangeNormalTheme,
+      todayTheme,
       dateTheme,
     } = getDateTheme(this.props);
     const dateChildren = days.map((currentValue, index) => {
@@ -164,6 +165,7 @@ class Dates extends Component<TypeProps, any> {
           activeTheme={activeTheme}
           hoverTheme={hoverTheme}
           rangeNormalTheme={rangeNormalTheme}
+          todayTheme={todayTheme}
           value={value}
           todayDate={todayDate}
           mode={mode}
@@ -199,6 +201,7 @@ class Dates extends Component<TypeProps, any> {
             activeTheme={activeTheme}
             normalTheme={normalTheme}
             outMonthNormalTheme={outMonthNormalTheme}
+            todayTheme={todayTheme}
             mode={mode}
             key={index}
             isToday={showToday && todayIndex === index + 1 ? true : false}
