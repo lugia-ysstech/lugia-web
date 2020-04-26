@@ -1,17 +1,23 @@
-import styled, { css } from 'styled-components';
+import { css } from 'styled-components';
 
 import { themeColor, getDateWrrap, em } from './utils';
-import CSSComponent from '@lugia/theme-css-hoc';
+import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 const { borderColor } = themeColor;
-export const FooterButtonsWrap = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-export const FooterWrap = styled.div`
-  ${props => getBorder(props)};
-  padding: ${em(10)} ${props => getDateWrrap(props).left};
-`;
+export const FooterButtonsWrap = StaticComponent({
+  tag: 'div',
+  css: css`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  `,
+});
+export const FooterWrap = StaticComponent({
+  tag: 'div',
+  css: css`
+    ${props => getBorder(props)};
+    padding: ${em(10)} ${props => getDateWrrap(props).left};
+  `,
+});
 function getBorder(props) {
   const { showFooter } = props;
   if (showFooter) {
@@ -19,9 +25,12 @@ function getBorder(props) {
   }
   return '';
 }
-export const Footer = styled.div`
-  text-align: ${props => (props.showToday ? 'center' : '')};
-`;
+export const Footer = StaticComponent({
+  tag: 'div',
+  css: css`
+    text-align: ${props => (props.showToday ? 'center' : '')};
+  `,
+});
 export const FooterBtn = CSSComponent({
   tag: 'span',
   className: 'FooterBtn',
@@ -45,9 +54,6 @@ export const FooterBtn = CSSComponent({
   },
   hover: {
     selectNames: [['color'], ['font'], ['fontSize'], ['border'], ['background']],
-    getCSS() {
-      console.log('hover');
-    },
   },
   active: {
     selectNames: [],
@@ -62,6 +68,7 @@ export const FooterBtn = CSSComponent({
     cursor: pointer;
     ${props => (props.showToday ? 'display:inline-block;margin:0 !important;' : '')};
   `,
+  option: { hover: true },
 });
 export const FooterBtnToday = CSSComponent({
   tag: 'span',
@@ -84,6 +91,7 @@ export const FooterBtnToday = CSSComponent({
   css: css`
     cursor: pointer;
   `,
+  option: { hover: true },
 });
 export const FooterBtnTime = CSSComponent({
   tag: 'span',
@@ -111,6 +119,7 @@ export const FooterBtnTime = CSSComponent({
     cursor: pointer;
     display: inline-block;
   `,
+  option: { hover: true },
 });
 export const FooterBtnOk = CSSComponent({
   tag: 'span',
@@ -146,6 +155,7 @@ export const FooterBtnOk = CSSComponent({
     cursor: pointer;
     display: inline-block;
   `,
+  option: { hover: true },
 });
 export const ExtraFooter = CSSComponent({
   tag: 'div',
@@ -170,4 +180,5 @@ export const ExtraFooter = CSSComponent({
     text-align: left;
     color: #999;
   `,
+  option: { hover: true },
 });

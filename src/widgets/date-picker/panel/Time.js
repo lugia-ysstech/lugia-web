@@ -8,7 +8,7 @@ import Menu from '../../menu/index';
 import InnerMenu from '../../menu/menu';
 import Theme from '../../theme';
 
-import { TimeWrap, TimeWrapInner, TimeCol, TimeTitle } from '../styled/styledTime';
+import { TimeWrap, TimeWrapInner, TimeCol, TimeTitle, Line } from '../styled/styledTime';
 import { modeStyle } from '../utils/booleanUtils';
 import { getFacePanelContain, getTimeTheme } from '../themeConfig/themeConfig';
 import {
@@ -34,6 +34,7 @@ type TypeProps = {
   hasTimeWrapBorder?: boolean,
   format: string,
   isScroll?: boolean,
+  noBorder?: boolean,
 };
 type TypeState = {
   value: string,
@@ -124,20 +125,15 @@ class Time extends Component<TypeProps, TypeState> {
   render() {
     const { hours, minutes, seconds } = this.times;
     const { keys, starts } = this.state;
-    const { mode, value, getPartOfThemeProps } = this.props;
+    const { mode, value, getPartOfThemeProps, noBorder } = this.props;
     const { isTime } = modeStyle(mode);
     const { format } = this.state;
     const { hasHour, hasMinutes, hasSeconds } = isTime && haveWhichOneItemInTime(format);
 
-    const { timePikerSingleWrapTheme, timePikerColSizeTheme } = getFacePanelContain({
+    const { timePikerSingleWrapTheme } = getFacePanelContain({
       mode,
       getPartOfThemeProps,
     });
-    const {
-      themeConfig: {
-        normal: { width },
-      },
-    } = timePikerColSizeTheme;
     const {
       timePanelTheme,
       timePanelListTheme,
@@ -149,8 +145,6 @@ class Time extends Component<TypeProps, TypeState> {
     const timeColTheme = timePanelListTheme;
     const { themeConfig: menuContainerTheme } = timePanelTheme;
     const { themeConfig: selectTimeOptionThemeTheme } = selectTimeOptionTheme;
-    console.log('selectTimeOptionThemeTheme', selectTimeOptionThemeTheme);
-    console.log('timePanelTheme', timePanelTheme);
     return (
       <Theme
         config={{
@@ -166,7 +160,7 @@ class Time extends Component<TypeProps, TypeState> {
           },
         }}
       >
-        <TimeWrap themeProps={timePikerSingleWrapTheme}>
+        <TimeWrap themeProps={timePikerSingleWrapTheme} noBorder={noBorder}>
           {isTime ? (
             ''
           ) : (
@@ -206,7 +200,7 @@ class Time extends Component<TypeProps, TypeState> {
             {isTime && !hasSeconds ? (
               ''
             ) : (
-              <TimeCol themeProps={timeColTheme}>
+              <TimeCol themeProps={timeColTheme} noBorder>
                 <Menu
                   data={seconds}
                   onClick={this.onClickSeconds}
