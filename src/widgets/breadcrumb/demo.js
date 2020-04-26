@@ -4,16 +4,13 @@ import styled from 'styled-components';
 import Widget from '../consts/index';
 import Icon from '../icon';
 import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
-
 const Hr = styled.div`
   height: 2px;
   background: orange;
 `;
-
 const CommonIcon: Object = styled(Icon)`
   border-radius: 50%;
 `;
-
 const routes = [
   {
     path: 'index',
@@ -44,7 +41,6 @@ const routes = [
     },
   },
 ];
-
 export default class Demo extends React.Component<any, any> {
   render() {
     const config = {
@@ -143,14 +139,14 @@ export default class Demo extends React.Component<any, any> {
         <Breadcrumb />
         <Hr />
 
-        {/*Breadcrumb 和 Breadcrumb.Item配合使用，使用href属性时，可跳转 */}
+        {/*/!*Breadcrumb 和 Breadcrumb.Item配合使用，使用href属性时，可跳转 *!/*/}
         <Breadcrumb separator={'>'} lastSeparator={'!'}>
           <Breadcrumb.Item href="a">主页</Breadcrumb.Item>
           <Breadcrumb.Item href="b">一级菜单</Breadcrumb.Item>
           <Breadcrumb.Item href="c">二级菜单</Breadcrumb.Item>
         </Breadcrumb>
         <Hr />
-        <Breadcrumb separator={'>'} theme={config}>
+        <Breadcrumb separator={'>'}>
           <Breadcrumb.Item path="/index">主页</Breadcrumb.Item>
           <Breadcrumb.Item path="two">一级菜单</Breadcrumb.Item>
           <Breadcrumb.Item path="/index">二级菜单</Breadcrumb.Item>
@@ -158,27 +154,23 @@ export default class Demo extends React.Component<any, any> {
         </Breadcrumb>
         <Hr />
         {/* 传入routes路由属性，使用默认的 renderItem函数,生成面包屑组件 */}
-        <Breadcrumb
-          theme={config}
-          separator={'>'}
-          lastSeparator={'!'}
-          params={{ id: 1 }}
-          routes={routes}
-        />
+        <Breadcrumb separator={'>'} lastSeparator={'!'} params={{ id: 1 }} routes={routes} />
         <Hr />
         {/* 传入Icon图标 */}
-        <Breadcrumb theme={config}>
-          <Breadcrumb.Item href="">
-            <CommonIcon iconClass="lugia-icon-logo_chrome" type="home" />
+        <Breadcrumb>
+          <Breadcrumb.Item
+            href=""
+            icons={{ suffixIconClass: 'lugia-icon-logo_chrome' }}
+            isLastItem={true}
+          >
             <span>一级面包屑菜单 </span>
           </Breadcrumb.Item>
-          <Breadcrumb.Item href="">
+          <Breadcrumb.Item href="" icons={{ suffixIconClass: 'lugia-icon-financial_smile' }}>
             <span>二级面包屑菜单</span>
-            <CommonIcon iconClass="lugia-icon-financial_smile" type="user" />
           </Breadcrumb.Item>
           <Breadcrumb.Item>
             <span>三级面包屑菜单</span>
-            <CommonIcon iconClass="lugia-icon-logo_apple" type="user" />
+            <CommonIcon iconClass="lugia-icon-logo_apple" type="home" />
           </Breadcrumb.Item>
         </Breadcrumb>
         <Hr />
