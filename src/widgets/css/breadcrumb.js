@@ -1,13 +1,19 @@
-import colorsFunc from '../css/stateColor';
 import { px2remcss } from '../css/units';
 import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
+import get from '../css/theme-common-dict';
 
-export const { themeColor, mediumGreyColor, darkGreyColor, blackColor } = colorsFunc();
-export const DefaultColor = mediumGreyColor;
-export const HoverDefaultColor = blackColor;
+const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
+const noLastItemColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
+const themeHoverColor = '$lugia-dict.@lugia/lugia-web.themeColor';
+const textToSeparatorDistance = get('padding');
+const iconToTextpadding = get('paddingToText');
+
+export const defaultColor = blackColor;
+export const HoverDefaultColor = themeHoverColor;
 export const FontSize = px2remcss(14);
-export const separatorMarginLeft = px2remcss(10);
-export const separatorMarginRight = px2remcss(10);
+export const separatorMarginLeft = px2remcss(textToSeparatorDistance);
+export const separatorMarginRight = px2remcss(textToSeparatorDistance);
+export const iconToTextMargin = iconToTextpadding;
 
 export const CommonSpan = CSSComponent({
   tag: 'span',
@@ -17,16 +23,22 @@ export const CommonSpan = CSSComponent({
     getThemeMeta(themeMeta, themeConfig) {
       const { propsConfig } = themeConfig;
       const { isLastItem } = propsConfig;
-      const color = isLastItem ? '#000' : DefaultColor;
+      const color = isLastItem ? defaultColor : noLastItemColor;
       return {
         color,
       };
     },
   },
+
   hover: {
     selectNames: [['color'], ['font'], ['fontSize'], ['font']],
-    defaultTheme: {
-      color: HoverDefaultColor,
+    getThemeMeta(themeMeta, themeConfig) {
+      const { propsConfig } = themeConfig;
+      const { isLastItem } = propsConfig;
+      const color = isLastItem ? defaultColor : HoverDefaultColor;
+      return {
+        color,
+      };
     },
   },
   css: css`
@@ -57,16 +69,22 @@ export const ALink = CSSComponent({
     getThemeMeta(themeMeta, themeConfig) {
       const { propsConfig } = themeConfig;
       const { isLastItem } = propsConfig;
-      const color = isLastItem ? '#000' : DefaultColor;
+      const color = isLastItem ? defaultColor : noLastItemColor;
       return {
         color,
       };
     },
   },
+
   hover: {
     selectNames: [['color'], ['font'], ['fontSize']],
-    defaultTheme: {
-      color: HoverDefaultColor,
+    getThemeMeta(themeMeta, themeConfig) {
+      const { propsConfig } = themeConfig;
+      const { isLastItem } = propsConfig;
+      const color = isLastItem ? defaultColor : HoverDefaultColor;
+      return {
+        color,
+      };
     },
   },
 
@@ -99,7 +117,7 @@ export const SeparatorSpan = CSSComponent({
     getThemeMeta(themeMeta, themeConfig) {
       const { propsConfig } = themeConfig;
       const { isLastItem } = propsConfig;
-      const color = isLastItem ? '#000' : DefaultColor;
+      const color = isLastItem ? defaultColor : noLastItemColor;
       return {
         color,
       };
