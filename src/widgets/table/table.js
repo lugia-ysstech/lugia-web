@@ -94,7 +94,7 @@ export default ThemeProvider(
     }
 
     computeTableHeight() {
-      if (this.tableWrap.querySelector) {
+      if (this.tableWrap && this.tableWrap.querySelector) {
         const tableWarp = this.tableWrap.querySelector('.rc-table-content');
         const tableBody = this.tableWrap.querySelector('.rc-table-body table');
         const tableHead = this.tableWrap.querySelector('.rc-table-header');
@@ -112,9 +112,13 @@ export default ThemeProvider(
         const containerTheme = getPartOfThemeConfig('Container') || {};
         const { normal: { height: themeHeight } = {} } = containerTheme;
         const tableHeight = this.computeTableHeight();
+        const { data, scroll } = this.props;
+        const { data: prevPropsData } = prevProps;
         if (
-          this.props.data.length === prevProps.data.length ||
-          (this.props.scroll && this.props.scroll.y)
+          !data ||
+          !prevPropsData ||
+          data.length === prevPropsData.length ||
+          (scroll && scroll.y)
         ) {
           return;
         }
