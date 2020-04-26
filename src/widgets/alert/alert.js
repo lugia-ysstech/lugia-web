@@ -20,8 +20,14 @@ import {
   TypeCSS,
 } from '../css/alert';
 import changeColor from '../css/utilsColor';
-import colorsFunc from '../css/stateColor';
+import get from '../css/theme-common-dict';
 import Icon from '../icon';
+
+const mFontSize = '$lugia-dict.@lugia/lugia-web.mFontSize';
+const themeColor = get('themeColor');
+const successColor = get('successColor');
+const warningColor = get('warningColor');
+const dangerColor = get('dangerColor');
 
 const AlertIcons = {
   info: 'lugia-icon-reminder_info_circle_o',
@@ -29,7 +35,6 @@ const AlertIcons = {
   error: 'lugia-icon-reminder_close_circle_o',
   warning: 'lugia-icon-reminder_exclamation_circle_o',
 };
-const { themeColor, successColor, warningColor, dangerColor } = colorsFunc();
 const TypeThemeProps = {
   info: {
     normal: {
@@ -38,7 +43,7 @@ const TypeThemeProps = {
         left: { color: themeColor, style: 'solid', width: 4 },
         radius: { topLeft: 4, topRight: 4, bottomLeft: 4, bottomRight: 4 },
       },
-      background: { color: changeColor(themeColor, 0, 0, 20).rgba },
+      background: { color: changeColor(themeColor, 0, 0, 10).rgba },
     },
   },
   success: {
@@ -48,7 +53,7 @@ const TypeThemeProps = {
         left: { color: successColor, style: 'solid', width: 4 },
         radius: { topLeft: 4, topRight: 4, bottomLeft: 4, bottomRight: 4 },
       },
-      background: { color: changeColor(successColor, 0, 0, 20).rgba },
+      background: { color: changeColor(successColor, 0, 0, 10).rgba },
     },
   },
   warning: {
@@ -58,7 +63,7 @@ const TypeThemeProps = {
         left: { color: warningColor, style: 'solid', width: 4 },
         radius: { topLeft: 4, topRight: 4, bottomLeft: 4, bottomRight: 4 },
       },
-      background: { color: changeColor(warningColor, 0, 0, 20).rgba },
+      background: { color: changeColor(warningColor, 0, 0, 10).rgba },
     },
   },
   error: {
@@ -68,7 +73,7 @@ const TypeThemeProps = {
         left: { color: dangerColor, style: 'solid', width: 4 },
         radius: { topLeft: 4, topRight: 4, bottomLeft: 4, bottomRight: 4 },
       },
-      background: { color: changeColor(dangerColor, 0, 0, 20).rgba },
+      background: { color: changeColor(dangerColor, 0, 0, 10).rgba },
     },
   },
 };
@@ -109,7 +114,7 @@ export default ThemeProvider(
         {
           [viewClass]: {
             normal: {
-              font: { size: hasDect ? 20 : 14 },
+              font: { size: hasDect ? 20 : mFontSize },
               cursor: 'default',
               color: typeTheme.color,
               getCSS() {
