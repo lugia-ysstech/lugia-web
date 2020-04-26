@@ -26,6 +26,7 @@ type TypeProps = {
   value?: string,
   onChange?: Function,
   onScroller?: Function,
+  getPartOfThemeProps: Function,
   isFocus?: boolean,
   theme?: Object,
   mode: string,
@@ -123,7 +124,7 @@ class Time extends Component<TypeProps, TypeState> {
   render() {
     const { hours, minutes, seconds } = this.times;
     const { keys, starts } = this.state;
-    const { mode, value, themeProps, getPartOfThemeProps } = this.props;
+    const { mode, value, getPartOfThemeProps } = this.props;
     const { isTime } = modeStyle(mode);
     const { format } = this.state;
     const { hasHour, hasMinutes, hasSeconds } = isTime && haveWhichOneItemInTime(format);
