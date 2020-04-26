@@ -13,14 +13,8 @@ const {
   defaultColor,
   normalColor,
   hoverColor,
-  activeColor,
-  spiritColor,
-  borderSize,
-  borderColor,
   disableColor,
-  borderDisableColor,
   darkGreyColor,
-  circleBorderRadius,
   normalBorder,
   hoverBorder,
   activeBorder,
@@ -196,7 +190,7 @@ export function getDateTheme(props) {
   const defaultHover = {
     background: { color: hoverColor },
     color: defaultColor,
-    borderRadius: getBorderRadius(circleBorderRadius),
+    borderRadius: getBorderRadius('50%'),
     border: getBorder({ width: 0, color: '', style: '' }),
   };
   const outMonthNormalTheme = deepMerge(defaultOutNormal, outNormal);
@@ -275,6 +269,7 @@ export function getSecondWeekDateTheme(props) {
   return {
     normalTheme,
     hoverTheme,
+    themeProps,
   };
 }
 export function getFacePanelContain(props) {
@@ -436,6 +431,7 @@ export function getHeadYearAndMonth(props) {
   const { mode, getPartOfThemeProps } = props;
   const headYearTextTheme = getThemeProps({ mode, getPartOfThemeProps }, 'HeadYearText');
   const headMonthTextTheme = getThemeProps({ mode, getPartOfThemeProps }, 'HeadMonthText');
+  const headWeekTextTheme = getThemeProps({ mode, getPartOfThemeProps }, 'HeadWeekText');
   const defaultFont = {
     font: { size: 14 },
     fontSize: 14,
@@ -453,6 +449,7 @@ export function getHeadYearAndMonth(props) {
   return {
     headYearTextTheme: deepMerge({ themeConfig: { ...defaultTheme } }, headYearTextTheme),
     headMonthTextTheme: deepMerge({ themeConfig: { ...defaultTheme } }, headMonthTextTheme),
+    headWeekTextTheme: deepMerge({ themeConfig: { ...defaultTheme } }, headWeekTextTheme),
   };
 }
 export function getFooterButtonsTheme(props) {
@@ -545,6 +542,7 @@ export function getExtraFooterTheme(props) {
   return deepMerge({ themeConfig: defaultTheme }, themeProps);
 }
 export function getBigDate(props) {
+  console.log('props', props);
   const { getPartOfThemeProps } = props;
   const themeProps = getPartOfThemeProps('GroupDate');
   const defaultTheme = {
