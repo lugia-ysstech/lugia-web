@@ -2,12 +2,10 @@
  * by wangcuixia
  * */
 import { css } from 'styled-components';
-import colorsFunc from '../css/stateColor';
 import CSSProvider from '../theme/CSSProvider';
 import { px2remcss } from '../css/units';
 const em = px2remcss;
-
-const { themeColor } = colorsFunc();
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 export const Container = CSSProvider({
   tag: 'span',
   className: 'Container',
@@ -98,7 +96,6 @@ export const SwitchText = CSSProvider({
         propsConfig: { textPosition, textBox },
       } = themeProps;
       return `
-
           & > *:first-child {
           ${textBox};
             ${textPosition};
