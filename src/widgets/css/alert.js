@@ -5,8 +5,7 @@
  */
 import CSSComponent from '@lugia/theme-css-hoc';
 import { units } from '@lugia/css';
-import styled, { css, keyframes } from 'styled-components';
-import Icon from '../icon';
+import { css, keyframes } from 'styled-components';
 import get from './theme-common-dict';
 
 const { px2remcss } = units;
@@ -171,11 +170,6 @@ export const getPosition = (props: Object) => {
     get('marginToSameElement')
   )}`;
 };
-
-export const CloseIcon: Object = styled(Icon)`
-  color: ${get('mediumGreyColor')};
-  font-size: ${px2remcss(get('xsFontSize'))};
-`;
 
 export const Message = CSSComponent({
   tag: 'span',
