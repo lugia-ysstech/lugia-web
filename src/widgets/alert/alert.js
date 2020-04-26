@@ -10,15 +10,7 @@ import { deepMerge } from '@lugia/object-utils';
 import ThemeProvider from '../theme-provider';
 import Widget from '../consts/index';
 import type { AlertProps, AlertState, Type } from '../css/alert';
-import {
-  Alert,
-  CloseIcon,
-  CloseText,
-  Description,
-  Message,
-  getPosition,
-  TypeCSS,
-} from '../css/alert';
+import { Alert, CloseText, Description, Message, getPosition, TypeCSS } from '../css/alert';
 import changeColor from '../css/utilsColor';
 import get from '../css/theme-common-dict';
 import Icon from '../icon';
@@ -27,6 +19,7 @@ const mFontSize = '$lugia-dict.@lugia/lugia-web.mFontSize';
 const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
 const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
+const xsFontSize = '$lugia-dict.@lugia/lugia-web.xsFontSize';
 const themeColor = get('themeColor');
 const successColor = get('successColor');
 const warningColor = get('warningColor');
@@ -197,6 +190,7 @@ export default ThemeProvider(
           [IconViewClass]: {
             normal: {
               color: mediumGreyColor,
+              fontSize: xsFontSize,
             },
             hover: {
               color: darkGreyColor,
