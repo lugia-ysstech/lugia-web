@@ -16,7 +16,11 @@ import { PanelWrap } from '../styled/styled';
 import Theme from '../../theme';
 import Widget from '../../consts/index';
 import SwitchPanelMode from '../mode';
-import getThemeProps, { getFacePanelContain, getIconTheme } from '../themeConfig/themeConfig';
+import getThemeProps, {
+  getFacePanelContain,
+  getIconTheme,
+  getRangeInputPlaceholderTheme,
+} from '../themeConfig/themeConfig';
 import { addMouseEvent } from '@lugia/theme-hoc';
 import getDateIcon from '../panel/InputIcon';
 
@@ -97,6 +101,7 @@ class DateInput extends Component<TypeProps, TypeState> {
       validateStatus,
       help,
       createPortal,
+      size,
     } = this.props;
     const {
       value,
@@ -134,6 +139,10 @@ class DateInput extends Component<TypeProps, TypeState> {
       onClear: this.onClear,
       clearButtonTheme: clearButtonProps,
     });
+    const { themeConfig: placeholderTheme } = getRangeInputPlaceholderTheme({
+      size,
+      getPartOfThemeProps,
+    });
     return (
       <Theme
         config={{
@@ -152,6 +161,7 @@ class DateInput extends Component<TypeProps, TypeState> {
             },
             ValidateErrorText: validateErrorText,
             ValidateErrorInput: validateErrorInput,
+            Placeholder: { ...placeholderTheme },
           },
         }}
       >
@@ -215,6 +225,7 @@ class DateInput extends Component<TypeProps, TypeState> {
             validateType={validateType}
             validateStatus={validateStatus}
             help={help}
+            size={size}
           />
         </Trigger>
       </Theme>

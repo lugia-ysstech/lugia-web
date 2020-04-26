@@ -1,4 +1,4 @@
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { valueInRange } from '../../common/Math';
 import { modeStyle } from '../utils/booleanUtils';
 import {
@@ -389,7 +389,7 @@ export const OtherChild = CSSComponent({
   tag: 'span',
   className: 'OtherChild',
   normal: {
-    selectNames: [],
+    selectNames: [['color'], ['font'], ['fontSize']],
   },
   hover: {
     selectNames: [],
@@ -404,14 +404,8 @@ export const OtherChild = CSSComponent({
     display: inline-block;
     width: ${props => 100 / props.column}%;
     line-height: ${em(40)};
-    font-size: ${em(14)};
     text-align: center;
     white-space: nowrap;
-
-    &:hover {
-      color: ${hoverColor};
-    }
-
     cursor: pointer;
   `,
 });
@@ -433,10 +427,10 @@ export const OtherChildText = CSSComponent({
   css: css`
     padding: ${em(5)} ${em(10)};
     font-style: normal;
-    border-radius: ${em(borderRadius)};
-    ${props => (props.isChose ? `background:${normalColor};color:#fff;` : '')};
+    ${props => getOtherChildTextStyle(props)};
   `,
 });
+
 export const RangeWrap = CSSComponent({
   tag: 'div',
   className: 'RangeWrap',
@@ -470,6 +464,10 @@ export const RangeWrap = CSSComponent({
     font-size: ${fontSize}rem;
   `,
 });
+export const RangeWrapInner = styled.div`
+  display: flex;
+  flex-grow: 1;
+`;
 const getDateChildStyle = props => {
   const {
     choseDayIndex,
@@ -484,6 +482,7 @@ const getDateChildStyle = props => {
     selectToday,
     activeTheme = {},
     hoverTheme = {},
+    todayTheme = {},
   } = props;
   const arrChoseDayIndex = Array.isArray(choseDayIndex) ? choseDayIndex : [choseDayIndex];
   const {
@@ -517,6 +516,7 @@ const getDateChildStyle = props => {
   const radiusLvalueH = getRadiusValue(hoverRadiusL);
 
   const normalBorderRadius = `border-radius:${radiusTvalue} ${radiusRvalue} ${radiusBvalue} ${radiusLvalue};`;
+
   const chooseStyle = arrChoseDayIndex.reduce((p, n) => {
     return `${p}
     &:nth-child(${n})>i{
@@ -530,10 +530,11 @@ const getDateChildStyle = props => {
     }`;
   }, '');
   const todayInd = noToday ? '' : selectToday ? todayIndex : '';
+  const { border: todayBorder, color: todayColor } = todayTheme;
   let todayStyle = `
       &:nth-child(${todayInd})>i{
-        border:1px solid ${normalColor};
-        color:${darkGreyColor};
+       ${todayBorder};
+        color:${todayColor};
         background:${defaultColor};
         ${normalBorderRadius};
         &:hover {
@@ -619,4 +620,33 @@ function getBorderStyle(border) {
       border-right:${em(borderWidthR)} ${botderColorR} ${borderSolidR};
       border-bottom:${em(borderWidthB)} ${botderColorB} ${borderSolidB};
       border-left:${em(borderWidthL)} ${botderColorL} ${borderSolidL};`;
+}
+function getOtherChildTextStyle(props) {
+  const { themeProps, isChose } = props;
+  const {
+    themeConfig: {
+      active,
+      hover: { color: hoverColor },
+    },
+  } = themeProps;
+  const {
+    color,
+    borderRadius: { topLeft, topRight, bottomLeft, bottomRight },
+    background: { color: bgC },
+    fontSize,
+    font: { size } = {},
+  } = active;
+  if (!isChose) {
+    return `
+      &:hover{
+        color:${hoverColor};
+      }
+    `;
+  }
+  return `
+    color:${color};
+    background:${bgC};
+    border-radius:${em(topLeft)} ${em(topRight)} ${em(bottomLeft)} ${em(bottomRight)};
+    font-size:${em(fontSize || size)}
+  `;
 }
