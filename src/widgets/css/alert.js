@@ -150,7 +150,7 @@ export const Alert = CSSComponent({
       let verticalPad = 12;
       let leftPad = 10;
       if (showIcon) {
-        leftPad = hasDect ? 40 : `${get('padding') + get('xsFontSize') + get('paddingToText') + 4}`;
+        leftPad = `${get('padding') + get('mFontSize') + get('paddingToText')}`;
       }
       if (hasDect) {
         verticalPad = 18;
