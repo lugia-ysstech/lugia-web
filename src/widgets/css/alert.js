@@ -150,7 +150,7 @@ export const Alert = CSSComponent({
       let verticalPad = 12;
       let leftPad = 10;
       if (showIcon) {
-        leftPad = hasDect ? 40 : 34;
+        leftPad = hasDect ? 40 : `${get('padding') + get('xsFontSize') + get('paddingToText') + 4}`;
       }
       if (hasDect) {
         verticalPad = 18;
@@ -166,9 +166,7 @@ export const Alert = CSSComponent({
 export const getPosition = (props: Object) => {
   const { hasDect } = props;
 
-  return `top: ${hasDect ? px2remcss(20) : px2remcss(12)};left: ${px2remcss(
-    get('marginToSameElement')
-  )}`;
+  return `top: ${hasDect ? px2remcss(20) : px2remcss(12)};left: ${px2remcss(get('padding'))}`;
 };
 
 export const Message = CSSComponent({
