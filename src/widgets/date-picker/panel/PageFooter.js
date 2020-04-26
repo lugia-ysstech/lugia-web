@@ -144,6 +144,7 @@ class PageFooter extends Component<TypeProps, TypeState> {
       timeButtonTheme,
       okButtonTheme,
     } = getFooterButtonsTheme(this.props);
+    console.log('todayTheme', todayTheme);
     let childrenNode;
     if (buttonOptions && buttonOptions.options) {
       const optionsKeys = [];

@@ -1,16 +1,8 @@
-import styled, { css } from 'styled-components';
+import { css } from 'styled-components';
 import { valueInRange } from '../../common/Math';
 import { modeStyle } from '../utils/booleanUtils';
-import {
-  borderRadius,
-  distance,
-  em,
-  fontSize,
-  getDateWrrap,
-  getThemeProperty,
-  themeColor,
-} from './utils';
-import CSSComponent from '@lugia/theme-css-hoc';
+import { distance, em, fontSize, getDateWrrap, getThemeProperty, themeColor } from './utils';
+import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 const { hoverColor, normalColor, defaultColor, darkGreyColor } = themeColor;
 export const Icons = CSSComponent({
   tag: 'span',
@@ -74,40 +66,16 @@ export const DateWrapper = CSSComponent({
   `,
 });
 
-export const DateHeader = CSSComponent({
+export const DateHeader = StaticComponent({
   tag: 'div',
   className: 'DateHeader',
-  normal: {
-    selectNames: [],
-  },
-  hover: {
-    selectNames: [],
-  },
-  active: {
-    selectNames: [],
-  },
-  disabled: {
-    selectNames: [],
-  },
   css: css`
     font-size: ${em(14)};
   `,
 });
-export const HeaderTop = CSSComponent({
+export const HeaderTop = StaticComponent({
   tag: 'div',
   className: 'HeaderTop',
-  normal: {
-    selectNames: [],
-  },
-  hover: {
-    selectNames: [],
-  },
-  active: {
-    selectNames: [],
-  },
-  disabled: {
-    selectNames: [],
-  },
   css: css`
     text-align: center;
     margin-bottom: ${em(12)};
@@ -172,21 +140,8 @@ export const HeaderTopArrow = CSSComponent({
   `,
 });
 
-export const HeaderWeekBox = CSSComponent({
+export const HeaderWeekBox = StaticComponent({
   tag: 'ul',
-  className: 'HeaderWeekBox',
-  normal: {
-    selectNames: [],
-  },
-  hover: {
-    selectNames: [],
-  },
-  active: {
-    selectNames: [],
-  },
-  disabled: {
-    selectNames: [],
-  },
   css: css`
     padding: 0;
     margin: 0;
@@ -464,10 +419,14 @@ export const RangeWrap = CSSComponent({
     font-size: ${fontSize}rem;
   `,
 });
-export const RangeWrapInner = styled.div`
-  display: flex;
-  flex-grow: 1;
-`;
+export const RangeWrapInner = StaticComponent({
+  tag: 'div',
+  css: css`
+    display: flex;
+    flex-grow: 1;
+  `,
+});
+
 const getDateChildStyle = props => {
   const {
     choseDayIndex,
