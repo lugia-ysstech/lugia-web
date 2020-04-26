@@ -85,6 +85,11 @@
     "help": {
       "type": "string",
       "desc": "校验提示信息"
+    },
+    "size": {
+      "type": "InputSize",
+      "desc": "可配置三种尺寸大小的input",
+      "propsDefaultValue": "default"
     }
   },
   "events": {
@@ -112,6 +117,7 @@
     }
   },
   "type": {
+    "InputSize": ["small", "default", "large"],
     "ValidateType": ["top", "bottom", "inner"],
     "ValidateStatus": ["default", "error"],
     "ChangeType": {
