@@ -6,7 +6,14 @@
 
 import * as React from 'react';
 import ThemeHoc from '@lugia/theme-hoc';
-import { ALink, CommonSpan, SeparatorSpan, ItemWrap, FlexBox } from '../css/breadcrumb';
+import {
+  ALink,
+  CommonSpan,
+  SeparatorSpan,
+  ItemWrap,
+  FlexBox,
+  iconToTextMargin,
+} from '../css/breadcrumb';
 import Icon from '../icon';
 import { deepMerge } from '@lugia/object-utils';
 import { addMouseEvent } from '@lugia/theme-hoc';
@@ -58,13 +65,10 @@ class BreadcrumbItem extends React.Component<BreadcrumbItemProps, any> {
       return null;
     }
     const { suffixIconClass } = icons;
-
     if (!suffixIconClass) {
       return null;
     }
-
     const { viewClass, theme } = this.getIconTheme('SuffixIcon');
-
     return (
       <Icon
         iconClass={suffixIconClass}
@@ -79,18 +83,18 @@ class BreadcrumbItem extends React.Component<BreadcrumbItemProps, any> {
   getIconTheme = (iconType: string) => {
     const { index, count, getPartOfThemeHocProps, getPartOfThemeProps } = this.props;
     const { viewClass, theme } = getPartOfThemeHocProps(iconType);
-
     theme[viewClass] = getPartOfThemeProps(iconType, {
       selector: { index, count },
     }).themeConfig;
-    const marginLeft = iconType === 'SuffixIcon' ? 3 : 0;
-    const marginRight = iconType === 'PrefixIcon' ? 3 : 0;
+    const marginLeft = iconType === 'SuffixIcon' ? iconToTextMargin : 0;
+    const marginRight = iconType === 'PrefixIcon' ? iconToTextMargin : 0;
     const defaultTheme = {
       normal: {
         margin: {
           left: marginLeft,
           right: marginRight,
         },
+
         getCSS: () => {
           return `
           transition: all 0.3s
@@ -98,7 +102,6 @@ class BreadcrumbItem extends React.Component<BreadcrumbItemProps, any> {
         },
       },
     };
-
     return {
       viewClass,
       theme: deepMerge(
@@ -116,7 +119,6 @@ class BreadcrumbItem extends React.Component<BreadcrumbItemProps, any> {
     if ('href' in this.props) {
       Link = ALink;
     }
-
     return (
       <ItemWrap
         themeProps={getPartOfThemeProps('ItemWrap', { selector: { index, count } })}
