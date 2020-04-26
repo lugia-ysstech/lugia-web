@@ -8,7 +8,7 @@ import Menu from '../../menu/index';
 import InnerMenu from '../../menu/menu';
 import Theme from '../../theme';
 
-import { TimeWrap, TimeWrapInner, TimeCol, TimeTitle, Line } from '../styled/styledTime';
+import { TimeWrap, TimeWrapInner, TimeCol, TimeTitle } from '../styled/styledTime';
 import { modeStyle } from '../utils/booleanUtils';
 import { getFacePanelContain, getTimeTheme } from '../themeConfig/themeConfig';
 import {
