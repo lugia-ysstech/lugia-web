@@ -10,6 +10,7 @@ type TypeProps = {
   onChangeWeek?: Function,
   lang?: Function,
   firstWeekDay?: number,
+  themeProps: Object,
 };
 
 class WeekDays extends Component<TypeProps, null> {
@@ -39,14 +40,13 @@ class WeekDays extends Component<TypeProps, null> {
     const { themeProps } = this.props;
     const { normalTheme, hoverTheme } = getSecondWeekDateTheme(this.props);
     return (
-      <HeaderWeekBox themeProps={themeProps}>
+      <HeaderWeekBox>
         {newWeeks.map((currentValue, index) => {
           return (
             <HeaderWeek
               themeProps={themeProps}
               normalTheme={normalTheme}
               hoverTheme={hoverTheme}
-              {...this.props}
               key={index}
               onClick={this.handleClick}
             >

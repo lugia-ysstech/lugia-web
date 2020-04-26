@@ -1,4 +1,3 @@
-import colorsFunc from '../../css/stateColor';
 import getTheme from '../../css/theme-common-dict';
 import { px2remcss } from '../../css/units';
 import { modeStyle } from '../utils/booleanUtils';
@@ -9,33 +8,19 @@ export const distance = {
   iconLeft: 10,
 };
 export const DateWrapperPadding = {
-  top: 30,
+  top: 20,
   left: 20,
   bottom: 44,
 };
 export const borderRadius = 3;
-const normalColor = getTheme('themeColor');
-const {
-  spiritColor,
-  lightGreyColor,
-  borderDisableColor,
-  borderSize,
-  circleBorderRadius,
-  defaultColor,
-  darkGreyColor,
-  dangerColor,
-} = colorsFunc(themeColor);
 export const themeColor = {
+  normalColor: getTheme('themeColor'),
   hoverColor: getTheme('themeHoverColor'),
-  normalColor,
   activeColor: getTheme('themeActiveColor'),
   disableColor: getTheme('themeDisabledColor'),
-  spiritColor,
   lightGreyColor: getTheme('lightGreyColor'),
   blackColor: getTheme('blackColor'),
   borderDisableColor: getTheme('borderDisableColor'),
-  borderSize,
-  circleBorderRadius,
   defaultColor: getTheme('defaultColor'),
   darkGreyColor: getTheme('darkGreyColor'),
   dangerColor: getTheme('darkGreyColor'),

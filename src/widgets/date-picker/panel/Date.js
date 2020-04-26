@@ -16,7 +16,7 @@ import {
   HeaderTopText,
 } from '../styled/styled';
 import moment from 'moment';
-import getThemeProps, { getHeadArrowTheme, getHeadYearAndMonth } from '../themeConfig/themeConfig';
+import { getHeadArrowTheme, getHeadYearAndMonth } from '../themeConfig/themeConfig';
 type TypeProps = {
   value?: string,
   firstWeekDay?: number,
@@ -147,13 +147,10 @@ class Date extends Component<TypeProps, TypeState> {
     const { firstDayIndex } = getFirstDayIndex(days);
     const { themeProps } = this.props;
 
-    // const themeProp = getThemeProps({ mode, getPartOfThemeProps }, 'PanelTitle');
     const { headYearTextTheme, headMonthTextTheme } = getHeadYearAndMonth({
       mode,
       getPartOfThemeProps,
     });
-    // const headYearTextTheme = getThemeProps({ mode, getPartOfThemeProps }, 'HeadYearText');
-    // const headMonthTextTheme = getThemeProps({ mode, getPartOfThemeProps }, 'HeadMonthText');
 
     const {
       single: { singleViewClass, singleTheme } = {},
@@ -172,8 +169,8 @@ class Date extends Component<TypeProps, TypeState> {
     return (
       <DateWrapper mode={mode} themeProps={themeProps}>
         <div>
-          <DateHeader themeProps={themeProps}>
-            <HeaderTop themeProps={themeProps}>
+          <DateHeader>
+            <HeaderTop>
               {differAyear && index === 1 ? (
                 ''
               ) : (

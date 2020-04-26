@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components';
-import { getThemeProperty, getDateWrrap, fontSize, em } from './utils';
-import CSSComponent from '@lugia/theme-css-hoc';
+import { css } from 'styled-components';
+import { getDateWrrap, fontSize, em } from './utils';
+import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import { themeColor } from './utils';
 const { borderColor } = themeColor;
 export const TimeWrap = CSSComponent({
@@ -20,7 +20,6 @@ export const TimeWrap = CSSComponent({
   },
   css: css`
     font-size: ${fontSize}rem;
-    border-right: ${props => (props.hasTimeWrapBorder ? '1px solid #ddd' : '')};
     zoom: 1;
     &::after {
       content: '';
@@ -30,12 +29,17 @@ export const TimeWrap = CSSComponent({
       visibility: hidden;
       clear: both;
     }
+
+    ${props => (props.noBorder ? '' : 'border-right: 1px solid #ddd;')};
   `,
 });
-export const TimeWrapInner = styled.ul`
-  display: flex;
-  flex-grow: 1;
-`;
+export const TimeWrapInner = StaticComponent({
+  tag: 'ul',
+  css: css`
+    display: flex;
+    flex-grow: 1;
+  `,
+});
 export const TimeCol = CSSComponent({
   tag: 'li',
   className: 'TimeCol',
@@ -53,6 +57,7 @@ export const TimeCol = CSSComponent({
   },
   css: css`
     overflow: hidden;
+    ${props => (props.noBorder ? 'border-right:none !important;' : '')};
   `,
 });
 
