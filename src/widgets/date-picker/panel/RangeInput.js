@@ -154,7 +154,6 @@ class RangeInput extends Component<TypeProps, TypeState> {
       size,
       getPartOfThemeProps,
     });
-    console.log('prefixIcon', prefixIcon);
     return (
       <Theme
         config={{
