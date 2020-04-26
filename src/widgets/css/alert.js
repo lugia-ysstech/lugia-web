@@ -111,7 +111,7 @@ export const Alert = CSSComponent({
     box-sizing: border-box;
     overflow: hidden;
     line-height: ${props => getLineHeight(props)};
-    border-radius: ${px2remcss(4)};
+    border-radius: ${px2remcss(get('borderRadiusValue'))};
     ${getAlertAnimate};
   `,
   normal: {
@@ -151,7 +151,9 @@ export const Alert = CSSComponent({
 export const getPosition = (props: Object) => {
   const { hasDect } = props;
 
-  return `top: ${hasDect ? px2remcss(20) : px2remcss(12)};left: ${px2remcss(10)}`;
+  return `top: ${hasDect ? px2remcss(20) : px2remcss(12)};left: ${px2remcss(
+    get('marginToSameElement')
+  )}`;
 };
 
 export const CloseIcon: Object = styled(Icon)`
@@ -194,10 +196,10 @@ export const CloseText = CSSComponent({
     overflow: hidden;
     position: absolute;
     top: ${props => getCloseTop(props)};
-    right: ${px2remcss(14)};
+    right: ${px2remcss(get('padding'))};
   `,
   normal: {
-    defaultTheme: { font: { size: 16 } },
+    defaultTheme: { font: { size: 12 } },
     selectNames: [['color'], ['font']],
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig = {} } = themeProps;
