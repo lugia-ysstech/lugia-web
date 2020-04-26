@@ -9,6 +9,8 @@ import { px2remcss } from '../css/units';
 import { css, keyframes } from 'styled-components';
 import type { Type } from './component-iconwrap';
 import get from './theme-common-dict';
+import colorsFunc from './stateColor';
+const { hShadow, vShadow, shadowSpread } = colorsFunc();
 
 export type MessageProps = {
   iconType?: Type,
@@ -101,7 +103,9 @@ export const MessageContent = CSSComponent({
     ],
     defaultTheme: {
       font: { size: 14 },
-      boxShadow: getBoxShadow('0 0 6px rgba(102, 102, 102, 0.2)'),
+      boxShadow: getBoxShadow(
+        `${hShadow}px ${vShadow}px ${shadowSpread}px 0 ${get('borderColor')}`
+      ),
       background: { color: '#fff' },
       borderRadius: getBorderRadius(get('borderRadiusValue')),
       padding: {
