@@ -17,6 +17,7 @@ import {
   getLoadingIconStyle,
 } from '../css/component-iconwrap';
 import { px2remcss } from '../css/units';
+import get from '../css/theme-common-dict';
 
 export default class extends React.Component<IconConProps, IconConState> {
   getIconTheme = () => {
@@ -34,7 +35,7 @@ export default class extends React.Component<IconConProps, IconConState> {
             return css`
               position: relative;
               top: ${px2remcss(3)};
-              margin-right: ${px2remcss(10)};
+              margin-right: ${px2remcss(get('marginToSameElement'))};
               ${getLoadingIconStyle({ iconType })};
             `;
           },
