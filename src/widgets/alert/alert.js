@@ -24,6 +24,9 @@ import get from '../css/theme-common-dict';
 import Icon from '../icon';
 
 const mFontSize = '$lugia-dict.@lugia/lugia-web.mFontSize';
+const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
+const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
+const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 const themeColor = get('themeColor');
 const successColor = get('successColor');
 const warningColor = get('warningColor');
@@ -184,8 +187,27 @@ export default ThemeProvider(
     }
 
     getCloseText = () => {
-      const { closeText, type = 'info', getPartOfThemeProps } = this.props;
+      const { closeText, type = 'info', getPartOfThemeProps, getPartOfThemeHocProps } = this.props;
       const CloseTextTheme = getPartOfThemeProps('CloseText');
+      const { theme: IconThemeProps, viewClass: IconViewClass } = getPartOfThemeHocProps(
+        'CloseIcon'
+      );
+      const closeIconTheme = deepMerge(
+        {
+          [IconViewClass]: {
+            normal: {
+              color: mediumGreyColor,
+            },
+            hover: {
+              color: darkGreyColor,
+            },
+            disabled: {
+              color: disableTextColor,
+            },
+          },
+        },
+        IconThemeProps
+      );
       CloseTextTheme.propsConfig = { textInProps: this.isInProps('closeText'), type };
       return (
         <CloseText
@@ -194,7 +216,14 @@ export default ThemeProvider(
           type={type}
           hasDect={this.isInProps('description')}
         >
-          {closeText || <CloseIcon iconClass="lugia-icon-reminder_close" />}
+          {closeText || (
+            <Icon
+              theme={closeIconTheme}
+              viewClass={IconViewClass}
+              iconClass="lugia-icon-reminder_close"
+              singleTheme
+            />
+          )}
         </CloseText>
       );
     };
