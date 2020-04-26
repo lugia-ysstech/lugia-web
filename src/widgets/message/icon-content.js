@@ -7,7 +7,7 @@
  */
 import * as React from 'react';
 import { deepMerge } from '@lugia/object-utils';
-import { css, keyframes } from 'styled-components';
+import { css } from 'styled-components';
 import Icon from '../icon';
 import type { IconConProps, IconConState } from '../css/component-iconwrap';
 import {
@@ -28,7 +28,7 @@ export default class extends React.Component<IconConProps, IconConState> {
       [viewClass]: {
         normal: {
           color: IconInfo[iconType].color,
-          font: { size: 16 },
+          font: { size: 20 },
           cursor: 'default',
           getCSS() {
             return css`
