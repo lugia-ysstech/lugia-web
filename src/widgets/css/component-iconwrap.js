@@ -17,6 +17,8 @@ export type IconConProps = {
 };
 export type IconConState = {};
 
+const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
+
 export const IconInfo = {
   info: {
     class: 'lugia-icon-reminder_info_circle',
@@ -65,7 +67,7 @@ export const MessageText = CSSComponent({
   normal: {
     selectNames: [['font'], ['color']],
     defaultTheme: {
-      color: '#000',
+      color: darkGreyColor,
       font: {
         size: 14,
       },
