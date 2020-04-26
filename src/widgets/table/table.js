@@ -100,29 +100,31 @@ export default ThemeProvider(
         const tableHead = this.tableWrap.querySelector('.rc-table-header');
         if (tableWarp && tableWarp.offsetHeight) {
           return tableWarp.offsetHeight;
-        } else if (tableBody.offsetHeight && tableHead.offsetHeight) {
+        } else if (tableBody && tableBody.offsetHeight && tableHead && tableHead.offsetHeight) {
           return parseInt(tableBody.offsetHeight, 10) + parseInt(tableHead.offsetHeight, 10);
         }
       }
     }
 
     componentDidUpdate(prevProps, prevState) {
-      const { getPartOfThemeConfig } = this.props;
-      const containerTheme = getPartOfThemeConfig('Container') || {};
-      const { normal: { height: themeHeight } = {} } = containerTheme;
-      const tableHeight = this.computeTableHeight();
-      if (
-        this.props.data.length === prevProps.data.length ||
-        (this.props.scroll && this.props.scroll.y)
-      ) {
-        return;
-      }
-      if (tableHeight && themeHeight < tableHeight - 2) {
-        this.setState({ scroll: this.getTableBodyHeight(themeHeight) });
-      } else {
-        this.setState({ scroll: undefined });
-      }
-      this.tableHeight = tableHeight;
+      setTimeout(() => {
+        const { getPartOfThemeConfig } = this.props;
+        const containerTheme = getPartOfThemeConfig('Container') || {};
+        const { normal: { height: themeHeight } = {} } = containerTheme;
+        const tableHeight = this.computeTableHeight();
+        if (
+          this.props.data.length === prevProps.data.length ||
+          (this.props.scroll && this.props.scroll.y)
+        ) {
+          return;
+        }
+        if (tableHeight && themeHeight < tableHeight - 2) {
+          this.setState({ scroll: this.getTableBodyHeight(themeHeight) });
+        } else {
+          this.setState({ scroll: undefined });
+        }
+        this.tableHeight = tableHeight;
+      }, 0);
     }
 
     static getDerivedStateFromProps(props) {
