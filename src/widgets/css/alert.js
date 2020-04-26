@@ -43,6 +43,8 @@ type CSSProps = {
   animateStart: boolean,
 };
 
+const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
+
 export const TypeCSS = {
   info: {
     color: '$lugia-dict.@lugia/lugia-web.themeColor',
@@ -154,6 +156,7 @@ export const getPosition = (props: Object) => {
 
 export const CloseIcon: Object = styled(Icon)`
   color: ${get('mediumGreyColor')};
+  font-size: ${get('xsFontSize')}px;
 `;
 
 export const Message = CSSComponent({
@@ -163,7 +166,7 @@ export const Message = CSSComponent({
     vertical-align: text-bottom;
   `,
   normal: {
-    defaultTheme: { color: '$lugia-dict.@lugia/lugia-web.blackColor', font: { fontSize: 14 } },
+    defaultTheme: { color: darkGreyColor, font: { fontSize: 14 } },
     selectNames: [['color'], ['font']],
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig = {} } = themeProps;
