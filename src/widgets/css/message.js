@@ -8,6 +8,7 @@ import { getBoxShadow, getBorderRadius } from '@lugia/theme-utils';
 import { px2remcss } from '../css/units';
 import { css, keyframes } from 'styled-components';
 import type { Type } from './component-iconwrap';
+import get from './theme-common-dict';
 
 export type MessageProps = {
   iconType?: Type,
@@ -102,7 +103,7 @@ export const MessageContent = CSSComponent({
       font: { size: 14 },
       boxShadow: getBoxShadow('0 0 6px rgba(102, 102, 102, 0.2)'),
       background: { color: '#fff' },
-      borderRadius: getBorderRadius(4),
+      borderRadius: getBorderRadius(get('borderRadiusValue')),
       padding: {
         top: 10,
         right: 20,
