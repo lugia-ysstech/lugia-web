@@ -89,5 +89,139 @@
   },
   "category": ["数据录入"],
   "componentName": "WeeksPicker",
-  "needExport": true
+  "needExport": true,
+  "theme": {
+    "Container": {
+      "name": "文本框",
+      "desc": "文本框配置",
+      "normal": [
+        ["width"],
+        ["height"],
+        ["background"],
+        ["fontSize"],
+        ["borderRadius"],
+        ["border"],
+        ["boxShadow"],
+        ["color"],
+        ["font"]
+      ],
+      "hover": [["border"], ["borderRadius"], ["boxShadow"], ["background"]],
+      "active": [],
+      "disabled": [["background"], ["borderRadius"], ["border"], ["boxShadow"]]
+    },
+    "Placeholder": {
+      "name": "文本框提示信息",
+      "desc": "文本框提示信息配置",
+      "normal": [["color"], ["fontSize"], ["font"]]
+    },
+    "InputPrefix": {
+      "name": "前缀图标",
+      "desc": "前缀图标配置",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]],
+      "disabled": [["color"], ["font"]]
+    },
+    "InputSuffix": {
+      "name": "后缀图标",
+      "desc": "后缀图标配置",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]],
+      "disabled": [["color"], ["font"]]
+    },
+    "ClearButton": {
+      "name": "清除图标",
+      "desc": "清除图标配置",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]],
+      "disabled": [["color"], ["font"]]
+    },
+    "FacePanelContain": {
+      "name": "日期面板",
+      "desc": "日期面板配置",
+      "normal": [["width"], ["height"], ["background"], ["border"], ["boxShadow"], ["borderRadius"]]
+    },
+    "GroupDate": {
+      "name": "分类日期",
+      "desc": "分类日期配置/年/月/周",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]],
+      "active": [["color"], ["font"], ["background"], ["borderRadius"]]
+    },
+    "ValidateErrorInput": {
+      "name": "校验失败的输入框",
+      "desc": "配置校验失败的输入框",
+      "normal": [
+        ["fontSize"],
+        ["font"],
+        ["color"],
+        ["background"],
+        ["border"],
+        ["boxShadow"],
+        ["opacity"]
+      ],
+      "hover": [["background"], ["border"], ["boxShadow"]],
+      "active": [["background"], ["border"], ["boxShadow"]]
+    },
+    "ValidateErrorText": {
+      "name": "校验失败提示信息",
+      "desc": "配置校验失败的提示信息",
+      "normal": [
+        ["background"],
+        ["boxShadow"],
+        ["borderRadius"],
+        ["border"],
+        ["fontSize"],
+        ["font"],
+        ["color"]
+      ],
+      "hover": [],
+      "active": []
+    },
+    "ExtraFooter": {
+      "name": "额外页脚",
+      "desc": "额外页脚配置",
+      "normal": [["color"], ["font"]]
+    },
+    "FooterButtonOptions": {
+      "name": "页脚按钮",
+      "desc": "页脚按钮配置",
+      "normal": [
+        ["color"],
+        ["font"],
+        ["margin"],
+        ["padding"],
+        ["width"],
+        ["height"],
+        ["border"],
+        ["borderRadius"],
+        ["background"]
+      ]
+    },
+    "FooterToday": {
+      "name": "页脚'今天'按钮",
+      "desc": "页脚'今天'按钮配置",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]]
+    },
+    "FooterTimeButton": {
+      "name": "页脚时间按钮",
+      "desc": "页脚时间按钮配置",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]]
+    },
+    "FooterOkButton": {
+      "name": "页脚确定按钮",
+      "desc": "页脚确定按钮配置",
+      "normal": [
+        ["background"],
+        ["margin"],
+        ["padding"],
+        ["borderRadius"],
+        ["color"],
+        ["font"],
+        ["fontSize"]
+      ],
+      "hover": [["color"], ["font"], ["fontSize"], ["background"]]
+    }
+  }
 }

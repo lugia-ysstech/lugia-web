@@ -141,6 +141,11 @@
       "active": [],
       "disabled": [["background"], ["borderRadius"], ["border"], ["boxShadow"]]
     },
+    "Placeholder": {
+      "name": "文本框提示信息",
+      "desc": "文本框提示信息配置",
+      "normal": [["color"], ["fontSize"], ["font"]]
+    },
     "InputPrefix": {
       "name": "前缀图标",
       "desc": "前缀图标配置",
@@ -179,11 +184,23 @@
       "desc": "非本月日期配置",
       "normal": [["color"]]
     },
+    "SelectToday": {
+      "name": "当天日期",
+      "desc": "当天日期配置",
+      "normal": [["border", "style", "color"], ["color"]]
+    },
     "SecondWeekDate": {
       "name": "星期项",
       "desc": "星期项配置",
       "normal": [["color"]],
       "hover": [["color"]]
+    },
+    "GroupDate": {
+      "name": "分类日期",
+      "desc": "分类日期配置/年/月/周",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]],
+      "active": [["color"], ["font"], ["background"], ["borderRadius"]]
     },
     "ValidateErrorInput": {
       "name": "校验失败的输入框",
@@ -214,6 +231,52 @@
       ],
       "hover": [],
       "active": []
+    },
+    "ExtraFooter": {
+      "name": "额外页脚",
+      "desc": "额外页脚配置",
+      "normal": [["color"], ["font"]]
+    },
+    "FooterButtonOptions": {
+      "name": "页脚按钮",
+      "desc": "页脚按钮配置",
+      "normal": [
+        ["color"],
+        ["font"],
+        ["margin"],
+        ["padding"],
+        ["width"],
+        ["height"],
+        ["border"],
+        ["borderRadius"],
+        ["background"]
+      ]
+    },
+    "FooterToday": {
+      "name": "页脚'今天'按钮",
+      "desc": "页脚'今天'按钮配置",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]]
+    },
+    "FooterTimeButton": {
+      "name": "页脚时间按钮",
+      "desc": "页脚时间按钮配置",
+      "normal": [["color"], ["font"]],
+      "hover": [["color"], ["font"]]
+    },
+    "FooterOkButton": {
+      "name": "页脚确定按钮",
+      "desc": "页脚确定按钮配置",
+      "normal": [
+        ["background"],
+        ["margin"],
+        ["padding"],
+        ["borderRadius"],
+        ["color"],
+        ["font"],
+        ["fontSize"]
+      ],
+      "hover": [["color"], ["font"], ["fontSize"], ["background"]]
     }
   },
   "defaultTheme": {
