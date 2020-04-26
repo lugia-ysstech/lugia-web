@@ -76,9 +76,28 @@
     "onBlur": {
       "desc": "输入框失去焦点",
       "args": []
+    },
+    "validateStatus": {
+      "type": "ValidateStatus",
+      "desc": "校验状态"
+    },
+    "validateType": {
+      "type": "ValidateType",
+      "desc": "校验信息显示类型",
+      "propsDefaultValue": "top"
+    },
+    "help": {
+      "type": "string",
+      "desc": "校验提示信息"
+    },
+    "size": {
+      "type": "InputSize",
+      "desc": "可配置三种尺寸大小的input",
+      "propsDefaultValue": "default"
     }
   },
   "type": {
+    "InputSize": ["small", "default", "large"],
     "ValidateType": ["top", "bottom", "inner"],
     "ValidateStatus": ["default", "error"],
     "ChangeType": {
