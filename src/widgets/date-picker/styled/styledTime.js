@@ -30,7 +30,7 @@ export const TimeWrap = CSSComponent({
       clear: both;
     }
 
-    ${props => (props.noBorder ? '' : 'border-right: 1px solid #ddd;')};
+    ${props => (props.noBorder ? '' : `border-right: 1px solid ${borderColor}`)};
   `,
 });
 export const TimeWrapInner = StaticComponent({
