@@ -125,7 +125,6 @@ export const Alert = CSSComponent({
     position: relative;
     box-sizing: border-box;
     overflow: hidden;
-    height: 40px;
     line-height: ${props => getLineHeight(props)};
     border-radius: ${px2remcss(get('borderRadiusValue'))};
     ${getAlertAnimate};
@@ -184,7 +183,7 @@ export const Message = CSSComponent({
       const { hasDect } = propsConfig;
 
       return {
-        font: { size: hasDect ? 18 : 14 },
+        font: { size: hasDect ? 16 : 14 },
       };
     },
   },
@@ -264,7 +263,7 @@ export const Description = CSSComponent({
   `,
   normal: {
     defaultTheme: {
-      color: '$lugia-dict.@lugia/lugia-web.darkGreyColor',
+      color: darkGreyColor,
       font: { size: 14 },
       padding: { top: 0, right: 0, bottom: 0, left: 0 },
     },
