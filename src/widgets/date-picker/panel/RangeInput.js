@@ -34,6 +34,7 @@ type TypeProps = {
   value: Array<string>,
   disabled?: boolean,
   readOnly?: boolean,
+  size: boolean,
   placeholder: Array<string>,
   theme: Object,
   mode?: string,
@@ -96,8 +97,7 @@ class RangeInput extends Component<TypeProps, TypeState> {
     return obj;
   };
   render() {
-    const { value } = this.props;
-    const { disabled, readOnly, placeholder, validateStatus, size } = this.props;
+    const { disabled, readOnly, placeholder, validateStatus, size, value } = this.props;
     const config = {
       onFocus: disabled || readOnly ? '' : this.onFocus,
       disabled,
