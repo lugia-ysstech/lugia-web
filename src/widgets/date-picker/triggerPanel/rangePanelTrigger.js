@@ -12,7 +12,6 @@ import { differMonthAndYear, getIndexInRange, getCurrentPageDates } from '../uti
 import { formatValueIsValid, getIsSame } from '../utils/booleanUtils';
 import { getformatSymbol } from '../utils/utils';
 import { getFacePanelContain } from '../themeConfig/themeConfig';
-import { addMouseEvent } from '@lugia/theme-hoc';
 type TypeProps = {
   defaultValue?: Array<string>,
   value?: Array<string>,
@@ -23,6 +22,7 @@ type TypeProps = {
   onFocus?: Function,
   onBlur?: Function,
   createPortal?: boolean,
+  size?: boolean,
   showTime?: any,
   onOk?: any,
   theme: Object,
@@ -447,13 +447,7 @@ class Range extends Component<TypeProps, TypeState> {
         themePass
         createPortal={createPortal}
         popup={
-          <RangeWrap
-            // {...addMouseEvent(this)}
-            {...theme}
-            isTime={status === 'showTime'}
-            mode={mode}
-            themeProps={themeProps}
-          >
+          <RangeWrap {...theme} isTime={status === 'showTime'} mode={mode} themeProps={themeProps}>
             <RangeWrapInner>
               <SwitchPanel
                 {...this.props}
@@ -481,6 +475,7 @@ class Range extends Component<TypeProps, TypeState> {
                 model={this.targetModeSecond}
                 timeValue={value[1]}
                 themeProps={themeProps}
+                noBorder
               />
             </RangeWrapInner>
             <PageFooter
