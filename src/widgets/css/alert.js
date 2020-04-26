@@ -48,18 +48,34 @@ const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 export const TypeCSS = {
   info: {
     color: '$lugia-dict.@lugia/lugia-web.themeColor',
+    hoverColor: '$lugia-dict.@lugia/lugia-web.themeHoverColor',
+    activeColor: '$lugia-dict.@lugia/lugia-web.themeActiveColor',
+    focusColor: '$lugia-dict.@lugia/lugia-web.themeFocusColor',
+    disabledColor: '$lugia-dict.@lugia/lugia-web.themeDisabledColor',
     background: '$lugia-dict.@lugia/lugia-web.alertThemeColorReduceA',
   },
   success: {
     color: '$lugia-dict.@lugia/lugia-web.successColor',
+    hoverColor: '$lugia-dict.@lugia/lugia-web.successHoverColor',
+    activeColor: '$lugia-dict.@lugia/lugia-web.successActiveColor',
+    focusColor: '$lugia-dict.@lugia/lugia-web.successFocusColor',
+    disabledColor: '$lugia-dict.@lugia/lugia-web.successDisabledColor',
     background: '$lugia-dict.@lugia/lugia-web.alertSuccessColorReduceA',
   },
   warning: {
     color: '$lugia-dict.@lugia/lugia-web.warningColor',
+    hoverColor: '$lugia-dict.@lugia/lugia-web.warningHoverColor',
+    activeColor: '$lugia-dict.@lugia/lugia-web.warningActiveColor',
+    focusColor: '$lugia-dict.@lugia/lugia-web.warningFocusColor',
+    disabledColor: '$lugia-dict.@lugia/lugia-web.warningDisabledColor',
     background: '$lugia-dict.@lugia/lugia-web.alertWarningColorReduceA',
   },
   error: {
     color: '$lugia-dict.@lugia/lugia-web.dangerColor',
+    hoverColor: '$lugia-dict.@lugia/lugia-web.dangerHoverColor',
+    activeColor: '$lugia-dict.@lugia/lugia-web.dangerActiveColor',
+    focusColor: '$lugia-dict.@lugia/lugia-web.dangerFocusColor',
+    disabledColor: '$lugia-dict.@lugia/lugia-web.dangerDisabledColor',
     background: '$lugia-dict.@lugia/lugia-web.alertDangerColorReduceA',
   },
 };
@@ -188,6 +204,17 @@ const getCloseTop = (props: CSSProps): string => {
   }
   return px2remcss(12);
 };
+const getCloseTextColor = (props: Object, name: string) => {
+  const { propsConfig = {} } = props;
+  const { textInProps, type } = propsConfig;
+  if (textInProps) {
+    const typeCSSCplor = TypeCSS[type];
+    const color = typeCSSCplor ? typeCSSCplor[name] : TypeCSS.info[name];
+    return {
+      color,
+    };
+  }
+};
 
 export const CloseText = CSSComponent({
   tag: 'a',
@@ -202,17 +229,38 @@ export const CloseText = CSSComponent({
     defaultTheme: { font: { size: 12 } },
     selectNames: [['color'], ['font']],
     getThemeMeta(themeMeta, themeProps) {
-      const { propsConfig = {} } = themeProps;
-      const { textInProps, type } = propsConfig;
-      if (textInProps) {
-        const typeCSSCplor = TypeCSS[type];
-        const color = typeCSSCplor ? typeCSSCplor.color : TypeCSS.info.color;
-        return {
-          color,
-        };
-      }
+      return getCloseTextColor(themeProps, 'color');
     },
   },
+  hover: {
+    defaultTheme: {},
+    selectNames: [['color']],
+    getThemeMeta(themeMeta, themeProps) {
+      return getCloseTextColor(themeProps, 'hoverColor');
+    },
+  },
+  active: {
+    defaultTheme: {},
+    selectNames: [['color']],
+    getThemeMeta(themeMeta, themeProps) {
+      return getCloseTextColor(themeProps, 'activeColor');
+    },
+  },
+  focus: {
+    defaultTheme: {},
+    selectNames: [['color']],
+    getThemeMeta(themeMeta, themeProps) {
+      return getCloseTextColor(themeProps, 'focusColor');
+    },
+  },
+  disabled: {
+    defaultTheme: {},
+    selectNames: [['color']],
+    getThemeMeta(themeMeta, themeProps) {
+      return getCloseTextColor(themeProps, 'disabledColor');
+    },
+  },
+  option: { hover: true, active: true, focus: true, disabled: true },
 });
 
 export const Description = CSSComponent({
