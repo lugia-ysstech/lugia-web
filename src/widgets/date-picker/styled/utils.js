@@ -1,4 +1,5 @@
 import colorsFunc from '../../css/stateColor';
+import getTheme from '../../css/theme-common-dict';
 import { px2remcss } from '../../css/units';
 import { modeStyle } from '../utils/booleanUtils';
 export const fontSize = 1.4;
@@ -13,10 +14,8 @@ export const DateWrapperPadding = {
   bottom: 44,
 };
 export const borderRadius = 3;
+const normalColor = getTheme('themeColor');
 const {
-  hoverColor,
-  normalColor,
-  disableColor,
   spiritColor,
   lightGreyColor,
   borderDisableColor,
@@ -25,19 +24,43 @@ const {
   defaultColor,
   darkGreyColor,
   dangerColor,
-} = colorsFunc();
+} = colorsFunc(themeColor);
 export const themeColor = {
-  hoverColor,
+  hoverColor: getTheme('themeHoverColor'),
   normalColor,
-  disableColor,
+  activeColor: getTheme('themeActiveColor'),
+  disableColor: getTheme('themeDisabledColor'),
   spiritColor,
-  lightGreyColor,
-  borderDisableColor,
+  lightGreyColor: getTheme('lightGreyColor'),
+  blackColor: getTheme('blackColor'),
+  borderDisableColor: getTheme('borderDisableColor'),
   borderSize,
   circleBorderRadius,
-  defaultColor,
-  darkGreyColor,
-  dangerColor,
+  defaultColor: getTheme('defaultColor'),
+  darkGreyColor: getTheme('darkGreyColor'),
+  dangerColor: getTheme('darkGreyColor'),
+  normalBorder: getTheme('normalBorder'),
+  hoverBorder: getTheme('hoverBorder'),
+  activeBorder: getTheme('activeBorder'),
+  disabledBorder: getTheme('disabledBorder'),
+  focusBorder: getTheme('focusBorder'),
+  smallSize: getTheme('smallSize'),
+  normalSize: getTheme('normalSize'),
+  largeSize: getTheme('largeSize'),
+  disabledBoxShadow: getTheme('disabledBoxShadow'),
+  borderRadiusValue: getTheme('borderRadiusValue'),
+  largeBorderRadiusValue: getTheme('largeBorderRadiusValue'),
+  disableTextColor: getTheme('disableTextColor'),
+  mediumGreyColor: getTheme('mediumGreyColor'),
+  xxsFontSize: getTheme('xxsFontSize'),
+  xsFontSize: getTheme('xsFontSize'),
+  sFontSize: getTheme('sFontSize'),
+  normalBoxShadow: getTheme('normalBoxShadow'),
+  paddingToText: getTheme('paddingToText'),
+  borderColor: getTheme('borderColor'),
+  publicPadding: getTheme('padding'),
+  marginToSameElement: getTheme('marginToSameElement'),
+  superLightColor: getTheme('superLightColor'),
 };
 export function getThemeProperty(props: Object) {
   const { isRange, isTime } = modeStyle(props.mode);
