@@ -59,7 +59,7 @@ export default class Sl extends Component<any> {
     const dateFormate = 'YYYY年MM月DD日';
     const config = {
       ValidateErrorText: { normal: { color: 'green', fontSize: 16, background: { color: 'red' } } },
-      ValidateErrorInput: { normal: { border: getBorder({ color: '#000' }) } },
+      ValidateErrorInput: { normal: { border: getBorder({ color: '#000' }), color: 'blue' } },
       FacePanelContain: {
         normal: {
           boxShadow: {
@@ -73,7 +73,7 @@ export default class Sl extends Component<any> {
           // background: {
           //   color: 'green',
           // },
-          width: 300,
+          width: 500,
           height: 200,
         },
       },
@@ -87,8 +87,9 @@ export default class Sl extends Component<any> {
           //borderRadius: getBorderRadius({ radius: 5 }),
         },
         active: {
-          color: 'blue',
-          background: { color: 'red' },
+          color: 'yellow',
+          background: { color: 'blue' },
+          border: { top: { style: 'dashed', width: 1, color: 'red' } },
         },
       },
       RangeDate: {
@@ -224,7 +225,7 @@ export default class Sl extends Component<any> {
           fontSize: 16,
         },
         hover: {
-          color: 'pink',
+          color: 'blue',
           fontSize: 18,
         },
         active: {
@@ -252,6 +253,51 @@ export default class Sl extends Component<any> {
         disabled: {
           color: 'blue',
           fontSize: 14,
+        },
+      },
+      FooterButtonOptions: {
+        normal: {
+          color: 'pink',
+          background: { color: '#333' },
+        },
+      },
+      ExtraFooter: {
+        normal: { color: 'blue' },
+      },
+      FooterToday: {
+        normal: { color: 'blue' },
+      },
+      FooterTimeButton: { normal: { color: 'blue' } },
+      FooterOkButton: { normal: { color: 'blue' } },
+      BigDate: {
+        normal: {
+          color: 'red',
+          fontSize: 14,
+        },
+        hover: {
+          color: 'blue',
+          fontSize: 14,
+        },
+        active: {
+          color: '#000',
+          fontSize: 14,
+        },
+      },
+      TimePanel: {
+        normal: {
+          background: { color: 'red' },
+          color: '#fff',
+        },
+      },
+      SelectTimeOption: {
+        normal: {
+          background: { color: 'green' },
+          color: '#fff',
+        },
+      },
+      TimePanelHead: {
+        normal: {
+          color: '',
         },
       },
     };
@@ -612,7 +658,6 @@ export default class Sl extends Component<any> {
             </Theme>
           </div>
         </div>
-
         <div style={{ float: 'left', marginRight: '30px' }}>
           <h2>date-normal-theme5656</h2>
           <Theme config={{ [Widget.DatePicker]: { width: 200, color: '#e05959' } }}>
@@ -669,6 +714,17 @@ export default class Sl extends Component<any> {
         <div>
           <h2>weeks-normal-valid</h2>
           <DatePicker validateStatus={'error'} validateType={'inner'} help={'格式有误'} />
+          <YearPicker validateStatus={'error'} validateType={'top'} help={'格式有误'} />
+          <MonthPicker validateStatus={'error'} validateType={'bottom'} help={'格式有误'} />
+          <RangePicker validateStatus={'error'} validateType={'inner'} help={'格式有误'} />
+          <TimePicker validateStatus={'error'} validateType={'bottom'} help={'格式有误'} />
+        </div>{' '}
+        <div>
+          <h2>size</h2>
+          <h2>size-small</h2>
+          <DatePicker size={'small'} />
+          <h2>size-large</h2>
+          <DatePicker size={'large'} />
           <YearPicker validateStatus={'error'} validateType={'top'} help={'格式有误'} />
           <MonthPicker validateStatus={'error'} validateType={'bottom'} help={'格式有误'} />
           <RangePicker validateStatus={'error'} validateType={'inner'} help={'格式有误'} />
