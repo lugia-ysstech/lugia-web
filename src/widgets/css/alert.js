@@ -158,7 +158,7 @@ export const getPosition = (props: Object) => {
 
 export const CloseIcon: Object = styled(Icon)`
   color: ${get('mediumGreyColor')};
-  font-size: ${get('xsFontSize')}px;
+  font-size: ${px2remcss(get('xsFontSize'))};
 `;
 
 export const Message = CSSComponent({
