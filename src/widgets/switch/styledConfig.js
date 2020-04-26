@@ -2,12 +2,20 @@
  * by wangcuixia
  * */
 
-import colorsFunc from '../css/stateColor';
 import { deepMerge } from '@lugia/object-utils';
 import { getBorder, getBorderRadius } from '@lugia/theme-utils';
 import { px2remcss } from '../css/units';
 const rem = px2remcss;
-const { themeColor, successColor, dangerColor } = colorsFunc();
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
+const successColor = '$lugia-dict.@lugia/lugia-web.successColor';
+const dangerColor = '$lugia-dict.@lugia/lugia-web.dangerColor';
+const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
+const themeDisabledColor = '$lugia-dict.@lugia/lugia-web.themeDisabledColor';
+const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
+const successDisabledColor = '$lugia-dict.@lugia/lugia-web.successDisabledColor';
+const dangerDisabledColor = '$lugia-dict.@lugia/lugia-web.dangerDisabledColor';
+const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
+
 const normalSize = {
   width: 38,
   height: 20,
@@ -31,7 +39,7 @@ const getStyled = (props: CssProps) => {
   const { size } = props;
   let switchWrapperSize = normalSize;
   let circleSize = normallCircleSize;
-  if (size == 'small') {
+  if (size === 'small') {
     switchWrapperSize = smallSize;
     circleSize = smallCircleSize;
   }
@@ -50,14 +58,29 @@ const getBackground = (props: Object, value) => {
       color = successColor;
     }
   } else {
-    color = '#ccc';
+    color = lightGreyColor;
     if (isInverse) {
       color = dangerColor;
     }
   }
   return color;
 };
-
+const getDisableBackground = (props: Object, value) => {
+  const { isInverse } = props;
+  let color;
+  if (value) {
+    color = themeDisabledColor;
+    if (isInverse) {
+      color = successDisabledColor;
+    }
+  } else {
+    color = disableColor;
+    if (isInverse) {
+      color = dangerDisabledColor;
+    }
+  }
+  return color;
+};
 export function getThemeProps(props, value) {
   const {
     switchWrapperSize: { width: wrapWidth, height: wrapHeight },
@@ -68,8 +91,9 @@ export function getThemeProps(props, value) {
   const switchClosedName = 'Switch_SwitchClosed';
   const open = getPartOfThemeProps(switchOpenName);
   const closed = getPartOfThemeProps(switchClosedName);
-  const opencolor = getBackground(props, true);
-  const closedcolor = getBackground(props, false);
+  const openColor = getBackground(props, true);
+  const closedColor = getBackground(props, false);
+  const disabledColor = getDisableBackground(props, false);
   const { getInternalThemeProps } = props;
   const nessecaryProps = (getInternalThemeProps && getInternalThemeProps()) || {};
   const {
@@ -89,12 +113,12 @@ export function getThemeProps(props, value) {
         fontWeight: 'normal',
       },
       background: {
-        color: opencolor,
+        color: openColor,
       },
     },
     disabled: {
       background: {
-        color: colorsFunc(opencolor).disabledColor,
+        color: disabledColor,
       },
     },
   };
@@ -111,17 +135,17 @@ export function getThemeProps(props, value) {
         fontWeight: 'normal',
       },
       background: {
-        color: closedcolor,
+        color: closedColor,
       },
     },
     disabled: {
       background: {
-        color: closedcolor === '#ccc' ? '#f2f2f2' : colorsFunc(closedcolor).disabledColor,
+        color: disabledColor,
       },
     },
   };
-  const childrenwidgetName = 'SwitchButton';
-  const childrenThemeProps = getPartOfThemeProps(childrenwidgetName);
+  const childrenWidgetName = 'SwitchButton';
+  const childrenThemeProps = getPartOfThemeProps(childrenWidgetName);
   const { themeConfig: childrenConfig } = childrenThemeProps;
   const { normal } = childrenConfig;
 
@@ -130,7 +154,7 @@ export function getThemeProps(props, value) {
       width: circleWidth,
       height: circleHeight,
       background: {
-        color: '#fff',
+        color: defaultColor,
       },
       border: getBorder({ color: '', style: '', width: 0 }),
       borderRadius: getBorderRadius('50%'),
@@ -140,7 +164,7 @@ export function getThemeProps(props, value) {
       width: circleWidth + 4,
       height: circleHeight,
       background: {
-        color: '#fff',
+        color: defaultColor,
       },
       border: getBorder({ color: '', style: '', width: 0 }),
       borderRadius: getBorderRadius(circleWidth / 2),
@@ -150,7 +174,7 @@ export function getThemeProps(props, value) {
         width: circleWidth,
         height: circleHeight,
         background: {
-          color: '#fff',
+          color: defaultColor,
         },
       },
       normal
