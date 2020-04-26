@@ -580,10 +580,19 @@ export function getTimeTheme(props) {
       color: blackColor,
     },
   };
+  const defaultselectTimeOptionTheme = {
+    normal: {
+      color: normalColor,
+      background: { color: changeColor(normalColor, 0, 0, 10).rgba },
+    },
+  };
   return {
     timePanelTheme,
     timePanelListTheme: deepMerge({ themeConfig: defaultTimePanelListTheme }, timePanelListTheme),
     timePanelHeadTheme: deepMerge({ themeConfig: defaultTimePanelHeadTheme }, timePanelHeadTheme),
-    selectTimeOptionTheme,
+    selectTimeOptionTheme: deepMerge(
+      { themeConfig: defaultselectTimeOptionTheme },
+      selectTimeOptionTheme
+    ),
   };
 }
