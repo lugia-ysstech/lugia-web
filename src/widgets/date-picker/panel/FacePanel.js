@@ -7,6 +7,7 @@ import { modeStyle } from '../utils/booleanUtils';
 import { OtherChild, OtherChildText, DatePanel } from '../styled/styled';
 import { getWeeksRange } from '../utils/differUtils';
 import moment from 'moment';
+import { getBigDate } from '../themeConfig/themeConfig';
 type TypeProps = {
   onChange?: Function,
   showYears?: boolean,
@@ -50,7 +51,7 @@ class FacePanel extends Component<TypeProps, any> {
       years,
     };
     const ChildrenData = this.getChildrenData(this.props, childDatas);
-    const { themeProps } = this.props;
+    const themeProps = getBigDate(this.props);
     return (
       <DatePanel themeProps={themeProps}>
         {ChildrenData.map((current: any, index: number) => {

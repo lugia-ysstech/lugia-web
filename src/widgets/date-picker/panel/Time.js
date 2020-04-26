@@ -8,9 +8,9 @@ import Menu from '../../menu/index';
 import InnerMenu from '../../menu/menu';
 import Theme from '../../theme';
 
-import { TimeWrap, TimeCol, TimeTitle } from '../styled/styledTime';
+import { TimeWrap, TimeWrapInner, TimeCol, TimeTitle } from '../styled/styledTime';
 import { modeStyle } from '../utils/booleanUtils';
-import { getFacePanelContain } from '../themeConfig/themeConfig';
+import { getFacePanelContain, getTimeTheme } from '../themeConfig/themeConfig';
 import {
   getTimes,
   getShowTime,
@@ -137,56 +137,86 @@ class Time extends Component<TypeProps, TypeState> {
         normal: { width },
       },
     } = timePikerColSizeTheme;
+    const {
+      timePanelTheme,
+      timePanelListTheme,
+      selectTimeOptionTheme,
+      timePanelHeadTheme,
+    } = getTimeTheme({
+      getPartOfThemeProps,
+    });
+    const timeColTheme = timePanelListTheme;
+    const { themeConfig: menuContainerTheme } = timePanelTheme;
+    const { themeConfig: selectTimeOptionThemeTheme } = selectTimeOptionTheme;
+    console.log('selectTimeOptionThemeTheme', selectTimeOptionThemeTheme);
+    console.log('timePanelTheme', timePanelTheme);
     return (
-      <Theme config={{ [Widget.Menu]: { width } }}>
+      <Theme
+        config={{
+          [Widget.Menu]: {
+            Container: {
+              ...menuContainerTheme,
+            },
+            MenuItem: {
+              SelectedMenuItemWrap: {
+                ...selectTimeOptionThemeTheme,
+              },
+            },
+          },
+        }}
+      >
         <TimeWrap themeProps={timePikerSingleWrapTheme}>
           {isTime ? (
             ''
           ) : (
-            <TimeTitle themeProps={themeProps}>{moment(value).format('YYYY年MM月DD日')}</TimeTitle>
+            <TimeTitle themeProps={timePanelHeadTheme}>
+              {moment(value).format('YYYY年MM月DD日')}
+            </TimeTitle>
           )}
-          {isTime && !hasHour ? (
-            ''
-          ) : (
-            <TimeCol themeProps={timePikerColSizeTheme}>
-              <Menu
-                data={hours}
-                onClick={this.onClickHours}
-                start={starts[0]}
-                selectedKeys={[keys[0]]}
-                checkedCSS={'background'}
-                onScroller={this.onScrollerFirst}
-              />
-            </TimeCol>
-          )}
-          {isTime && !hasMinutes ? (
-            ''
-          ) : (
-            <TimeCol themeProps={timePikerColSizeTheme}>
-              <Menu
-                data={minutes}
-                onClick={this.onClickMinutes}
-                start={starts[1]}
-                selectedKeys={[keys[1]]}
-                checkedCSS={'background'}
-                onScroller={this.onScrollerSecond}
-              />
-            </TimeCol>
-          )}
-          {isTime && !hasSeconds ? (
-            ''
-          ) : (
-            <TimeCol themeProps={timePikerColSizeTheme} noBorder>
-              <Menu
-                data={seconds}
-                onClick={this.onClickSeconds}
-                start={starts[2]}
-                selectedKeys={[keys[2]]}
-                checkedCSS={'background'}
-                onScroller={this.onScrollerThird}
-              />
-            </TimeCol>
-          )}
+          <TimeWrapInner>
+            {isTime && !hasHour ? (
+              ''
+            ) : (
+              <TimeCol themeProps={timeColTheme}>
+                <Menu
+                  data={hours}
+                  onClick={this.onClickHours}
+                  start={starts[0]}
+                  selectedKeys={[keys[0]]}
+                  checkedCSS={'background'}
+                  onScroller={this.onScrollerFirst}
+                />
+              </TimeCol>
+            )}
+            {isTime && !hasMinutes ? (
+              ''
+            ) : (
+              <TimeCol themeProps={timeColTheme}>
+                <Menu
+                  data={minutes}
+                  onClick={this.onClickMinutes}
+                  start={starts[1]}
+                  selectedKeys={[keys[1]]}
+                  checkedCSS={'background'}
+                  onScroller={this.onScrollerSecond}
+                />
+              </TimeCol>
+            )}
+            {isTime && !hasSeconds ? (
+              ''
+            ) : (
+              <TimeCol themeProps={timeColTheme}>
+                <Menu
+                  data={seconds}
+                  onClick={this.onClickSeconds}
+                  start={starts[2]}
+                  selectedKeys={[keys[2]]}
+                  checkedCSS={'background'}
+                  onScroller={this.onScrollerThird}
+                />
+              </TimeCol>
+            )}
+          </TimeWrapInner>
         </TimeWrap>
       </Theme>
     );

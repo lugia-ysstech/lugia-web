@@ -16,7 +16,7 @@ import {
   HeaderTopText,
 } from '../styled/styled';
 import moment from 'moment';
-import getThemeProps from '../themeConfig/themeConfig';
+import getThemeProps, { getHeadArrowTheme, getHeadYearAndMonth } from '../themeConfig/themeConfig';
 type TypeProps = {
   value?: string,
   firstWeekDay?: number,
@@ -148,14 +148,19 @@ class Date extends Component<TypeProps, TypeState> {
     const { themeProps } = this.props;
 
     // const themeProp = getThemeProps({ mode, getPartOfThemeProps }, 'PanelTitle');
-    const headYearTextTheme = getThemeProps({ mode, getPartOfThemeProps }, 'HeadYearText');
-    const headMonthTextTheme = getThemeProps({ mode, getPartOfThemeProps }, 'HeadMonthText');
-    const { viewClass: singleViewClass, theme: singleTheme } = getPartOfThemeHocProps(
-      'HeadSingleArrow'
-    );
-    const { viewClass: doubleViewClass, theme: doubleTheme } = getPartOfThemeHocProps(
-      'HeadDoubleArrow'
-    );
+    const { headYearTextTheme, headMonthTextTheme } = getHeadYearAndMonth({
+      mode,
+      getPartOfThemeProps,
+    });
+    // const headYearTextTheme = getThemeProps({ mode, getPartOfThemeProps }, 'HeadYearText');
+    // const headMonthTextTheme = getThemeProps({ mode, getPartOfThemeProps }, 'HeadMonthText');
+
+    const {
+      single: { singleViewClass, singleTheme } = {},
+      double: { doubleViewClass, doubleTheme } = {},
+    } = getHeadArrowTheme({
+      getPartOfThemeHocProps,
+    });
     const singleArrowConfig = {
       viewClass: singleViewClass,
       theme: singleTheme,
