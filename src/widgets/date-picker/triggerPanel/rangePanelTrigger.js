@@ -6,7 +6,7 @@ import Trigger from '../../trigger/index';
 import RangeInput from '../panel/RangeInput';
 import PageFooter from '../panel/PageFooter';
 import { getDerivedForInput } from '../utils/getDerived';
-import { RangeWrap } from '../styled/styled';
+import { RangeWrap, RangeWrapInner } from '../styled/styled';
 import SwitchPanelMode from '../mode';
 import { differMonthAndYear, getIndexInRange, getCurrentPageDates } from '../utils/differUtils';
 import { formatValueIsValid, getIsSame } from '../utils/booleanUtils';
@@ -448,39 +448,41 @@ class Range extends Component<TypeProps, TypeState> {
         createPortal={createPortal}
         popup={
           <RangeWrap
-            {...addMouseEvent(this)}
+            // {...addMouseEvent(this)}
             {...theme}
             isTime={status === 'showTime'}
             mode={mode}
             themeProps={themeProps}
           >
-            <SwitchPanel
-              {...this.props}
-              value={monthAndYear[0]}
-              onChange={this.onChangeFirst}
-              index={0}
-              timeIndex={0}
-              hasTimeWrapBorder
-              {...config}
-              rangeRenderIndex={rangeIndex && rangeIndex[0]}
-              choseDayIndex={choseDayIndex && choseDayIndex[0]}
-              model={this.targetModeFirst}
-              timeValue={value[0]}
-              themeProps={themeProps}
-            />
-            <SwitchPanel
-              {...this.props}
-              value={monthAndYear[1]}
-              onChange={this.onChangeSecond}
-              index={1}
-              timeIndex={1}
-              {...config}
-              rangeRenderIndex={rangeIndex && rangeIndex[1]}
-              choseDayIndex={choseDayIndex && choseDayIndex[1]}
-              model={this.targetModeSecond}
-              timeValue={value[1]}
-              themeProps={themeProps}
-            />
+            <RangeWrapInner>
+              <SwitchPanel
+                {...this.props}
+                value={monthAndYear[0]}
+                onChange={this.onChangeFirst}
+                index={0}
+                timeIndex={0}
+                hasTimeWrapBorder
+                {...config}
+                rangeRenderIndex={rangeIndex && rangeIndex[0]}
+                choseDayIndex={choseDayIndex && choseDayIndex[0]}
+                model={this.targetModeFirst}
+                timeValue={value[0]}
+                themeProps={themeProps}
+              />
+              <SwitchPanel
+                {...this.props}
+                value={monthAndYear[1]}
+                onChange={this.onChangeSecond}
+                index={1}
+                timeIndex={1}
+                {...config}
+                rangeRenderIndex={rangeIndex && rangeIndex[1]}
+                choseDayIndex={choseDayIndex && choseDayIndex[1]}
+                model={this.targetModeSecond}
+                timeValue={value[1]}
+                themeProps={themeProps}
+              />
+            </RangeWrapInner>
             <PageFooter
               {...this.props}
               format={format}
