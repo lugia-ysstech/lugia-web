@@ -116,7 +116,7 @@ export const FooterBtnTime = CSSComponent({
     selectNames: [],
   },
   css: css`
-    cursor: pointer;
+    cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
     display: inline-block;
   `,
   option: { hover: true },
@@ -152,7 +152,7 @@ export const FooterBtnOk = CSSComponent({
     selectNames: [],
   },
   css: css`
-    cursor: pointer;
+    cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
     display: inline-block;
   `,
   option: { hover: true },
