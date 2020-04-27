@@ -196,7 +196,7 @@ const getCloseTop = (props: CSSProps): string => {
   if (hasDect) {
     return px2remcss(24);
   }
-  return px2remcss(12);
+  return px2remcss(13);
 };
 const getCloseTextColor = (props: Object, name: string) => {
   const { propsConfig = {} } = props;
