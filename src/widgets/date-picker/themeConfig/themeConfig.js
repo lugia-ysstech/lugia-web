@@ -67,10 +67,10 @@ function getDefaultStyleFromSize(size: string) {
   };
 }
 export function getWrapThemeProps(props, partName) {
-  const { getPartOfThemeProps, mode, validateStatus, size } = props;
+  const { getPartOfThemeProps, mode, validateStatus, size, visible } = props;
   const themeProps = getPartOfThemeProps(partName);
   themeProps.propsConfig = { mode };
-
+  themeProps.themeState.focus = visible;
   const { themeConfig = {} } = themeProps;
   const { defaultBorderRadius, defaultFontSize } = getDefaultStyleFromSize(size);
   const defaultNormal = {

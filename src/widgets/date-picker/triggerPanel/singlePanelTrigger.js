@@ -92,6 +92,7 @@ class DateInput extends Component<TypeProps, TypeState> {
     const value = moment().format(format);
     this.normalStyleValueObj = getformatSymbol(value);
   }
+
   render() {
     const {
       disabled,
@@ -112,6 +113,7 @@ class DateInput extends Component<TypeProps, TypeState> {
       valueIsValid,
       placeholder,
       isStartOfWeek,
+      visible,
     } = this.state;
     const hasStateValue = value ? true : false;
     const showTimeBtnIsDisabled = valueIsValid ? true : false;
@@ -168,6 +170,7 @@ class DateInput extends Component<TypeProps, TypeState> {
         <Trigger
           themePass
           createPortal={createPortal}
+          onDocumentClick={this.onDocumentClick}
           popup={
             <React.Fragment>
               <PanelWrap themeProps={themeProps} {...addMouseEvent(this)}>
@@ -218,6 +221,7 @@ class DateInput extends Component<TypeProps, TypeState> {
             onChange={this.onChange}
             placeholder={placeholder}
             onFocus={this.onFocus}
+            focus={visible}
             onBlur={this.onBlur}
             //onClear={this.onClear}
             disabled={disabled}
@@ -231,6 +235,11 @@ class DateInput extends Component<TypeProps, TypeState> {
       </Theme>
     );
   }
+
+  onDocumentClick = () => {
+    this.setState({ visible: false });
+  };
+
   onChange = (param: Object) => {
     let visible = true;
     const { isClear } = this;
@@ -255,7 +264,7 @@ class DateInput extends Component<TypeProps, TypeState> {
     }
 
     onChange && onChange({ event, newValue, oldValue: this.oldValue });
-    this.setState({ value: newValue, isValid });
+    this.setState({ value: newValue, isValid, visible });
     !isTime && this.setPopupVisible(visible);
   };
   setModeState = (value: string, format: string, isWeeks: boolean) => {
@@ -295,7 +304,7 @@ class DateInput extends Component<TypeProps, TypeState> {
     this.oldValue = value;
     const { mode } = this.props;
     const { isWeeks, isWeek } = modeStyle(mode);
-    this.setState({ value, status: 'showDate' });
+    this.setState({ value, status: 'showDate', visible: true });
     const newValue = valueIsValid ? value : normalValue;
     this.setModeState(newValue, format, isWeeks || isWeek);
     if (status === 'showTime') {
@@ -339,7 +348,7 @@ class DateInput extends Component<TypeProps, TypeState> {
       stateData = { status };
     }
     this.setPopupVisible(visible);
-    this.setState(stateData);
+    this.setState({ ...stateData, visible });
   };
   timeChange = (obj: Object) => {
     const { value } = obj;

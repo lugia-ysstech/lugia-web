@@ -21,8 +21,6 @@ import {
 } from '../themeConfig/themeConfig';
 import { addMouseEvent } from '@lugia/theme-hoc';
 import getDateIcon from '../panel/InputIcon';
-import { themeColor } from '../styled/utils';
-const { borderSize } = themeColor;
 type TypeProps = {
   onChange?: Function,
   onClick?: Function,
@@ -69,7 +67,7 @@ class RangeInput extends Component<TypeProps, TypeState> {
   };
   onHandleClick = (e: any) => {
     const { onClick } = this.props;
-    onClick && onClick(e);
+    onClick && onClick(e, true);
   };
   onFocus = (e: any) => {
     const { value } = this.props;
@@ -97,7 +95,7 @@ class RangeInput extends Component<TypeProps, TypeState> {
     return obj;
   };
   render() {
-    const { disabled, readOnly, placeholder, validateStatus, size, value } = this.props;
+    const { disabled, readOnly, placeholder, validateStatus, size, value, visible } = this.props;
     const config = {
       onFocus: disabled || readOnly ? '' : this.onFocus,
       disabled,
@@ -121,7 +119,7 @@ class RangeInput extends Component<TypeProps, TypeState> {
       };
     };
     const inputContainProps = getWrapThemeProps(
-      { mode, size, getPartOfThemeProps, validateStatus },
+      { mode, size, getPartOfThemeProps, validateStatus, visible },
       'Container'
     );
 
@@ -138,8 +136,8 @@ class RangeInput extends Component<TypeProps, TypeState> {
     const {
       height,
       border: {
-        top: { width: borderWidthT = borderSize } = {},
-        bottom: { width: borderWidthB = borderSize } = {},
+        top: { width: borderWidthT = 0 } = {},
+        bottom: { width: borderWidthB = 0 } = {},
       } = {},
     } = normal;
 
