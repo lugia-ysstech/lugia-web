@@ -112,14 +112,9 @@ export default ThemeProvider(
         const containerTheme = getPartOfThemeConfig('Container') || {};
         const { normal: { height: themeHeight } = {} } = containerTheme;
         const tableHeight = this.computeTableHeight();
-        const { data, scroll } = this.props;
-        const { data: prevPropsData } = prevProps;
-        if (
-          !data ||
-          !prevPropsData ||
-          data.length === prevPropsData.length ||
-          (scroll && scroll.y)
-        ) {
+        const { data = [], scroll } = this.props;
+        const { data: prevPropsData = [] } = prevProps;
+        if (data.length === prevPropsData.length || (scroll && scroll.y)) {
           return;
         }
         if (tableHeight && themeHeight < tableHeight - 2) {
