@@ -39,7 +39,7 @@ class Head extends Component<TypeProps, TypeState> {
     const { start, title, mode, secondTitle, isWeekInner } = nextProps;
     const star = start - 1;
     const normalTitle = star + '-' + (star + 11);
-    const secontTit = isWeekInner && secondTitle ? `-${secondTitle}` : '';
+    const secontTit = isWeekInner && secondTitle ? `${secondTitle}` : '';
     return {
       year: start,
       title: mode !== 'year' ? start : title || normalTitle,
@@ -130,7 +130,7 @@ class Head extends Component<TypeProps, TypeState> {
             <Icon iconClass={'lugia-icon-direction_Left'} {...singleArrowConfig} />
           </HeaderTopArrow>
           <HeaderTopText themeProps={headYearTextTheme} onClick={this.headClick}>
-            {title}
+            {title}年
           </HeaderTopText>
           <HeaderTopText themeProps={headWeekTextTheme} onClick={this.secondHeadClick}>
             {secondTitle}

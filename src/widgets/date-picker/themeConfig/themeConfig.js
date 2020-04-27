@@ -354,6 +354,9 @@ export function getIconTheme(props) {
   };
   const defaultClearIconTheme = {
     normal: clearIconNormal,
+    hover: {
+      color: darkGreyColor,
+    },
     disabled: deepMerge(clearIconNormal, { color: disableTextColor }),
   };
 
