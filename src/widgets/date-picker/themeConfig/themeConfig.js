@@ -304,7 +304,6 @@ export function getFacePanelContain(props) {
       normal: { width: getTimeColSize(normalTimePikerSingleWidth) },
     },
   };
-  console.log('themeProps', themeProps);
   return { themeProps, timePikerSingleWrapTheme, timePikerColSizeTheme };
 }
 function getFacePanelContainSize(state = {}) {
