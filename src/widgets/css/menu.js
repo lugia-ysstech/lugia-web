@@ -29,6 +29,7 @@ const borderDisableColor = '$lugia-dict.@lugia/lugia-web.borderDisableColor';
 const borderColor = '$lugia-dict.@lugia/lugia-web.borderColor';
 const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
+const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
 
 const xsFontSize = '$lugia-dict.@lugia/lugia-web.xsFontSize';
 const sFontSize = '$lugia-dict.@lugia/lugia-web.sFontSize';
@@ -154,6 +155,19 @@ const crateTreeThemeConfig = (type: SizeType) => {
           borderRadius: getBorderRadius(2),
           border: getBorder({ color: borderDisableColor, width: 1, style: 'solid' }),
         },
+      },
+    },
+    SwitchIcon: {
+      normal: {
+        fontSize: xsFontSize,
+        color: mediumGreyColor,
+      },
+      hover: {
+        fontSize: xsFontSize,
+        color: themeColor,
+      },
+      disabled: {
+        color: disableTextColor,
       },
     },
   };

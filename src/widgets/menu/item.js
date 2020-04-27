@@ -186,7 +186,7 @@ class MenuItem extends React.Component<MenuItemProps> {
       item: { children } = {},
       switchIconClass: { iconClass, iconSrc },
     } = this.props;
-    if (mutliple === true || checkedCSS !== 'none' || !children || children.length === 0) {
+    if (mutliple === true || checkedCSS === 'checkbox' || !children || children.length === 0) {
       return null;
     }
     const { viewClass, theme } = this.getIconTheme('SwitchIcon');
