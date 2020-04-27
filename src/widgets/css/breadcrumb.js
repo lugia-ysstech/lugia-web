@@ -18,8 +18,7 @@ export const CommonSpan = CSSComponent({
   normal: {
     selectNames: [['color'], ['fontSize'], ['font'], ['margin'], ['padding'], ['font']],
     getThemeMeta(themeMeta, themeConfig) {
-      const { propsConfig } = themeConfig;
-      const { isLastItem } = propsConfig;
+      const { propsConfig: { isLastItem } = {} } = themeConfig;
       const color = isLastItem ? defaultColor : noLastItemColor;
       return {
         color,
@@ -30,8 +29,7 @@ export const CommonSpan = CSSComponent({
   hover: {
     selectNames: [['color'], ['font'], ['fontSize'], ['font']],
     getThemeMeta(themeMeta, themeConfig) {
-      const { propsConfig } = themeConfig;
-      const { isLastItem } = propsConfig;
+      const { propsConfig: { isLastItem } = {} } = themeConfig;
       const color = isLastItem ? defaultColor : hoverDefaultColor;
       return {
         color,
