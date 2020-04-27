@@ -132,6 +132,7 @@ export default ThemeProvider(
                   {...this.getIconTheme()}
                   {...dispatchEvent(['hover', 'disabled'], 'f2c')}
                   singleTheme
+                  disabled={disabled}
                 />
               ) : null}
               <PanelHeaderText themeProps={panelHeaderTextTheme}>{title}</PanelHeaderText>
