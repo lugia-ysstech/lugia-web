@@ -35,7 +35,7 @@ export default class extends React.Component<IconConProps, IconConState> {
             return css`
               position: relative;
               top: ${px2remcss(3)};
-              margin-right: ${px2remcss(get('marginToSameElement'))};
+              margin-right: ${px2remcss(get('paddingToText'))};
               ${getLoadingIconStyle({ iconType })};
             `;
           },
