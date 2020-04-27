@@ -180,6 +180,7 @@ class Time extends Component<TypeProps, TypeState> {
                   selectedKeys={[keys[0]]}
                   checkedCSS={'background'}
                   onScroller={this.onScrollerFirst}
+                  size={'small'}
                 />
               </TimeCol>
             )}
@@ -194,6 +195,7 @@ class Time extends Component<TypeProps, TypeState> {
                   selectedKeys={[keys[1]]}
                   checkedCSS={'background'}
                   onScroller={this.onScrollerSecond}
+                  size={'small'}
                 />
               </TimeCol>
             )}
@@ -208,6 +210,7 @@ class Time extends Component<TypeProps, TypeState> {
                   selectedKeys={[keys[2]]}
                   checkedCSS={'background'}
                   onScroller={this.onScrollerThird}
+                  size={'small'}
                 />
               </TimeCol>
             )}
