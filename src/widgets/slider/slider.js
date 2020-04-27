@@ -17,7 +17,7 @@ import {
   Tips,
 } from './styled';
 import { getChangeValue } from './utils';
-import { iconStyles, rangeHeightNormal } from './slider_public_size';
+import { rangeHeightNormal } from './slider_public_size';
 import { getThemeProps } from './styledConfig';
 import { findDOMNode } from 'react-dom';
 import { deepMerge } from '@lugia/object-utils';
@@ -57,6 +57,7 @@ type TypeState = {
 };
 
 const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
+const mFontSize = get('mFontSize');
 const marginNormal = get('marginToSameElement');
 
 class Slider extends Component<TypeProps, TypeState> {
@@ -475,17 +476,16 @@ class Slider extends Component<TypeProps, TypeState> {
   ): Object {
     const hasIconsProps = 'icons' in this.props;
     const iconsChildren = [];
-    const { fontSizeNormal } = iconStyles;
     const halfBthSize = btnSize / 2;
-    const numbers = hasIconsProps ? marginNormal + fontSizeNormal + halfBthSize : halfBthSize;
+    const numbers = hasIconsProps ? marginNormal + mFontSize + halfBthSize : halfBthSize;
     const levelPaddings = this.getLevePadding(vertical, dotWidths, dotHeights, numbers);
-    const iconSize = hasIconsProps ? [fontSizeNormal, fontSizeNormal] : [0, 0];
+    const iconSize = hasIconsProps ? [mFontSize, mFontSize] : [0, 0];
     if (hasIconsProps && value.length === 1 && Array.isArray(icons) && icons.length > 0) {
       icons.forEach((icon, key) => {
         const index = key > 1 ? 1 : key;
         const { style } = icon;
         let iconDistancen = numbers;
-        let newFontSize = fontSizeNormal;
+        let newFontSize = mFontSize;
         if (style) {
           const { fontSize, margin = marginNormal } = style;
           newFontSize = fontSize > 0 && fontSize < 12 ? 12 : fontSize;
