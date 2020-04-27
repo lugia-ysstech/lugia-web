@@ -402,17 +402,19 @@ export function getHeadArrowTheme(props) {
     },
   };
   const defaultTheme = {
-    normal: {
-      color: mediumGreyColor,
-      ...defaultFontSize,
-    },
-    hover: {
-      color: normalColor,
-      ...defaultFontSize,
-    },
-    disabled: {
-      color: disableTextColor,
-      ...defaultFontSize,
+    Icon: {
+      normal: {
+        color: mediumGreyColor,
+        ...defaultFontSize,
+      },
+      hover: {
+        color: normalColor,
+        ...defaultFontSize,
+      },
+      disabled: {
+        color: disableTextColor,
+        ...defaultFontSize,
+      },
     },
   };
   return {
