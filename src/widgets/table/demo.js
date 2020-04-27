@@ -52,6 +52,89 @@ const data = [
   { name: 'asdasda', age: 33, address: 'some where', key: '10' },
 ];
 
+const treeTable = [
+  {
+    batch_date: '2020-04-23',
+    batch_seq_no: '001',
+    batch_type: 'TABLE',
+    src_sys_cd: 'SAKILA',
+    table_id: 'SAKILA.SAKILA.ADDRESS',
+    src_tbl_en_name: 'ADDRESS',
+    src_tbl_type_cd: '0',
+    optdate: '2020-04-23T16:00:00.000+0000',
+    ext_start_date: null,
+    extract_status: '9',
+    row_count: 0,
+    ext_time: '',
+    ext_start_time: '',
+    del_flag: '0',
+  },
+  {
+    batch_date: '2020-04-23',
+    batch_seq_no: '001',
+    batch_type: 'TABLE',
+    src_sys_cd: 'SAKILA',
+    table_id: 'SAKILA.SAKILA.CATEGORY',
+    src_tbl_en_name: 'CATEGORY',
+    src_tbl_type_cd: '0',
+    optdate: '2020-04-23T16:00:00.000+0000',
+    ext_start_date: null,
+    extract_status: '9',
+    row_count: 0,
+    ext_time: '',
+    ext_start_time: '',
+    del_flag: '0',
+  },
+  {
+    batch_date: '2020-04-23',
+    batch_seq_no: '001',
+    batch_type: 'TABLE',
+    src_sys_cd: 'SAKILA',
+    table_id: 'SAKILA.SAKILA.CITY',
+    src_tbl_en_name: 'CITY',
+    src_tbl_type_cd: '0',
+    optdate: '2020-04-23T16:00:00.000+0000',
+    ext_start_date: null,
+    extract_status: '9',
+    row_count: 0,
+    ext_time: '',
+    ext_start_time: '',
+    del_flag: '0',
+  },
+  {
+    batch_date: '2020-04-23',
+    batch_seq_no: '001',
+    batch_type: 'TABLE',
+    src_sys_cd: 'SAKILA',
+    table_id: 'SAKILA.SAKILA.COUNTRY',
+    src_tbl_en_name: 'COUNTRY',
+    src_tbl_type_cd: '0',
+    optdate: '2020-04-23T16:00:00.000+0000',
+    ext_start_date: null,
+    extract_status: '9',
+    row_count: 0,
+    ext_time: '',
+    ext_start_time: '',
+    del_flag: '0',
+  },
+  {
+    batch_date: '2020-04-23',
+    batch_seq_no: '001',
+    batch_type: 'TABLE',
+    src_sys_cd: 'SAKILA',
+    table_id: 'SAKILA.SAKILA.CUSTOMER',
+    src_tbl_en_name: 'CUSTOMER',
+    src_tbl_type_cd: '0',
+    optdate: '2020-04-23T16:00:00.000+0000',
+    ext_start_date: null,
+    extract_status: '9',
+    row_count: 0,
+    ext_time: '',
+    ext_start_time: '',
+    del_flag: '0',
+  },
+];
+
 const Data = [
   {
     key: '1',
@@ -79,12 +162,41 @@ const Data = [
   },
 ];
 
+const treeColumns = [
+  {
+    title: '系统标识',
+    dataIndex: 'src_sys_cd',
+    key: 'src_sys_cd',
+  },
+  {
+    title: '批次号',
+    dataIndex: 'batch_seq_no',
+    key: 'batch_seq_no',
+  },
+  {
+    title: '抽取状态',
+    dataIndex: 'extract_status',
+    key: 'extract_status',
+  },
+  {
+    title: '系统名称',
+    dataIndex: 'src_sys_cn_name',
+    key: 'src_sys_cn_name',
+  },
+  {
+    title: '批次日期',
+    dataIndex: 'batch_date',
+    key: 'batch_date',
+  },
+];
+
 export default class ModalDemo extends React.Component<any, any> {
   constructor() {
     super();
     this.state = {
       selectRowKeys: ['1'],
       updateData: data,
+      treeTable: undefined,
     };
   }
   update = () => {
@@ -102,6 +214,20 @@ export default class ModalDemo extends React.Component<any, any> {
       selectRowKeys,
     });
   };
+
+  componentDidMount() {
+    const promise = new Promise(res => {
+      setTimeout(() => {
+        res(treeTable);
+      }, 2000);
+    });
+    promise.then(data => {
+      data.forEach(item => {
+        item.children = [];
+      });
+      this.setState({ treeTable: data });
+    });
+  }
 
   render() {
     console.log('this.state', this.state.selectRowKeys);
@@ -158,9 +284,20 @@ export default class ModalDemo extends React.Component<any, any> {
         },
       },
     };
-    const { updateData } = this.state;
+    const { updateData, treeTable } = this.state;
+
     return (
       <div style={{ padding: '20px' }}>
+        <h1>tree-table 模拟异步获取数据</h1>
+        <div style={{ display: 'flex' }}>
+          <Table
+            theme={configSmall}
+            rowKey={'table_id'}
+            useFixedHeader
+            columns={treeColumns}
+            data={treeTable}
+          />
+        </div>
         <h1>表格size</h1>
         <div style={{ display: 'flex' }}>
           <div style={{ flex: '1' }}>
