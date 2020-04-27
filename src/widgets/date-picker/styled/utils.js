@@ -23,7 +23,7 @@ export const themeColor = {
   borderDisableColor: getTheme('borderDisableColor'),
   defaultColor: getTheme('defaultColor'),
   darkGreyColor: getTheme('darkGreyColor'),
-  dangerColor: getTheme('darkGreyColor'),
+  dangerColor: getTheme('dangerColor'),
   normalBorder: getTheme('normalBorder'),
   hoverBorder: getTheme('hoverBorder'),
   activeBorder: getTheme('activeBorder'),
