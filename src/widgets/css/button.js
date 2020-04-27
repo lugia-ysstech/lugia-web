@@ -10,42 +10,42 @@ import get from '../css/theme-common-dict';
 import { px2remcss } from '../css/units';
 import { css, keyframes } from 'styled-components';
 import {
-  TypeTheme,
-  DisabledTypeTheme,
-  PlainTypeTheme,
-  PlainDisabledTypeTheme,
-  TypeHoverTheme,
-  ActiveTypeTheme,
-  PlainHoverTheme,
-  PlainActiveTypeTheme,
+  typeTheme,
+  disabledTypeTheme,
+  plainTypeTheme,
+  plainDisabledTypeTheme,
+  typeHoverTheme,
+  activeTypeTheme,
+  plainHoverTheme,
+  plainActiveTypeTheme,
   defaultActiveTheme,
   defaultHoverTheme,
   defaultTheme,
   linkTheme,
   defaultDisabledTheme,
-  SizeTheme,
-  CircleTheme,
-  ShapeTheme,
+  sizeTheme,
+  circleTheme,
+  shapeTheme,
   textDefaultTheme,
   textDefaultHoverTheme,
   textDefaultActiveTheme,
   textDefaultDisabledTheme,
-  TextTypeTheme,
-  TextTypeHoverTheme,
-  TextTypeActiveTheme,
-  TextTypeDisabledTheme,
-  TextPlainTypeTheme,
-  TextPlainHoverTheme,
-  TextPlainDisabledTypeTheme,
-  TextPlainActiveTypeTheme,
-  TextSizeTheme,
-  TextCircleTheme,
+  textTypeTheme,
+  textTypeHoverTheme,
+  textTypeActiveTheme,
+  textTypeDisabledTheme,
+  textPlainTypeTheme,
+  textPlainHoverTheme,
+  textPlainDisabledTypeTheme,
+  textPlainActiveTypeTheme,
+  textSizeTheme,
+  textCircleTheme,
   textDefaultFocusTheme,
   defaultFocusTheme,
-  TypeFocusTheme,
-  PlainFocusTypeTheme,
-  TextPlainFocusTheme,
-  TextTypeFocusTheme,
+  typeFocusTheme,
+  plainFocusTypeTheme,
+  textPlainFocusTheme,
+  textTypeFocusTheme,
 } from '../button/theme';
 
 export type ButtonType = 'default' | 'primary' | 'success' | 'warning' | 'danger' | 'link';
@@ -145,7 +145,7 @@ function fetchTypeCSS(color: string): { [key: ButtonType]: TypeColor } {
   };
 }
 
-const Size: { [key: ButtonSize]: SizeStyle } = {
+const size: { [key: ButtonSize]: SizeStyle } = {
   large: {
     height: get('largeSize'),
     borderRadius: get('largeSize') / 2,
@@ -161,20 +161,20 @@ const Size: { [key: ButtonSize]: SizeStyle } = {
 };
 
 function fetchSize(sizeType: ButtonSize) {
-  const { height } = Size[sizeType] || Size.default;
+  const { height } = size[sizeType] || size.default;
   return {
     height: `${px2remcss(height)}`,
   };
 }
 const ShapeCSS: { [key: ButtonSize]: ShapeStyle } = {
   default: {
-    borderRadius: Size.default.borderRadius,
+    borderRadius: size.default.borderRadius,
   },
   large: {
-    borderRadius: Size.large.borderRadius,
+    borderRadius: size.large.borderRadius,
   },
   small: {
-    borderRadius: Size.small.borderRadius,
+    borderRadius: size.small.borderRadius,
   },
 };
 
@@ -270,9 +270,9 @@ const getHoverStyle = (propsConfig: Object = {}) => {
   const { type = 'default', plain } = propsConfig;
   let hoverTheme;
   if (plain) {
-    hoverTheme = PlainHoverTheme[type] || PlainHoverTheme.default;
+    hoverTheme = plainHoverTheme[type] || plainHoverTheme.default;
   } else {
-    hoverTheme = TypeHoverTheme[type] || TypeHoverTheme.default;
+    hoverTheme = typeHoverTheme[type] || typeHoverTheme.default;
   }
   return hoverTheme;
 };
@@ -305,24 +305,24 @@ export const ButtonOut = CSSComponent({
       let normalTheme;
       if (loading) {
         if (plain) {
-          normalTheme = PlainHoverTheme[type] || PlainHoverTheme.default;
+          normalTheme = plainHoverTheme[type] || plainHoverTheme.default;
         } else {
-          normalTheme = TypeHoverTheme[type] || TypeHoverTheme.default;
+          normalTheme = typeHoverTheme[type] || typeHoverTheme.default;
         }
       } else if (plain) {
-        normalTheme = PlainTypeTheme[type] || PlainTypeTheme.default;
+        normalTheme = plainTypeTheme[type] || plainTypeTheme.default;
       } else {
-        normalTheme = TypeTheme[type] || TypeTheme.default;
+        normalTheme = typeTheme[type] || typeTheme.default;
       }
-      const sizeTheme = circle
-        ? CircleTheme[size] || CircleTheme.default
-        : SizeTheme[size] || SizeTheme.default;
-      const shapeTheme =
+      const sizeThemeStyle = circle
+        ? circleTheme[size] || circleTheme.default
+        : sizeTheme[size] || sizeTheme.default;
+      const shapeThemeStyle =
         shape === 'round'
-          ? ShapeTheme[size] || ShapeTheme.default
+          ? shapeTheme[size] || shapeTheme.default
           : { borderRadius: getBorderRadius(get('borderRadiusValue')) };
 
-      return { ...normalTheme, ...shapeTheme, ...sizeTheme };
+      return { ...normalTheme, ...shapeThemeStyle, ...sizeThemeStyle };
     },
   },
   hover: {
@@ -346,9 +346,9 @@ export const ButtonOut = CSSComponent({
 
       let disabledTheme;
       if (plain) {
-        disabledTheme = PlainDisabledTypeTheme[type] || PlainDisabledTypeTheme.default;
+        disabledTheme = plainDisabledTypeTheme[type] || plainDisabledTypeTheme.default;
       } else {
-        disabledTheme = DisabledTypeTheme[type] || DisabledTypeTheme.default;
+        disabledTheme = disabledTypeTheme[type] || disabledTypeTheme.default;
       }
 
       return disabledTheme;
@@ -364,9 +364,9 @@ export const ButtonOut = CSSComponent({
 
       let activeTheme;
       if (plain) {
-        activeTheme = PlainActiveTypeTheme[type] || PlainActiveTypeTheme.default;
+        activeTheme = plainActiveTypeTheme[type] || plainActiveTypeTheme.default;
       } else {
-        activeTheme = ActiveTypeTheme[type] || ActiveTypeTheme.default;
+        activeTheme = activeTypeTheme[type] || activeTypeTheme.default;
       }
 
       return activeTheme;
@@ -383,9 +383,9 @@ export const ButtonOut = CSSComponent({
 
       let focusTheme;
       if (plain) {
-        focusTheme = PlainFocusTypeTheme[type] || PlainFocusTypeTheme.default;
+        focusTheme = plainFocusTypeTheme[type] || plainFocusTypeTheme.default;
       } else {
-        focusTheme = TypeFocusTheme[type] || TypeFocusTheme.default;
+        focusTheme = typeFocusTheme[type] || typeFocusTheme.default;
       }
       return focusTheme;
     },
@@ -412,9 +412,9 @@ export const ButtonOut = CSSComponent({
 export const getTextLoadingTheme = (props: Object) => {
   const { plain, type = 'default' } = props;
   if (plain) {
-    return TextPlainHoverTheme[type] || TextPlainHoverTheme.default;
+    return textPlainHoverTheme[type] || textPlainHoverTheme.default;
   }
-  return TextTypeHoverTheme[type] || TextTypeHoverTheme.default;
+  return textTypeHoverTheme[type] || textTypeHoverTheme.default;
 };
 export const getTextNormalTheme = (propsConfig: Object) => {
   const { type = 'default', plain, loading } = propsConfig;
@@ -422,9 +422,9 @@ export const getTextNormalTheme = (propsConfig: Object) => {
   if (loading) {
     normalTheme = getTextLoadingTheme({ plain, type });
   } else if (plain) {
-    normalTheme = TextPlainTypeTheme[type] || TextPlainTypeTheme.default;
+    normalTheme = textPlainTypeTheme[type] || textPlainTypeTheme.default;
   } else {
-    normalTheme = TextTypeTheme[type] || TextTypeTheme.default;
+    normalTheme = textTypeTheme[type] || textTypeTheme.default;
   }
 
   return normalTheme;
@@ -433,9 +433,9 @@ export const getTextHoverStyle = (propsConfig: Object = {}) => {
   const { type = 'default', plain } = propsConfig;
   let hoverTheme;
   if (plain) {
-    hoverTheme = TextPlainHoverTheme[type] || TextPlainHoverTheme.default;
+    hoverTheme = textPlainHoverTheme[type] || textPlainHoverTheme.default;
   } else {
-    hoverTheme = TextTypeHoverTheme[type] || TextTypeHoverTheme.default;
+    hoverTheme = textTypeHoverTheme[type] || textTypeHoverTheme.default;
   }
   return hoverTheme;
 };
@@ -443,9 +443,9 @@ export const getTextFocusStyle = (propsConfig: Object = {}) => {
   const { type = 'default', plain } = propsConfig;
   let focusTheme;
   if (plain) {
-    focusTheme = TextPlainFocusTheme[type] || TextPlainFocusTheme.default;
+    focusTheme = textPlainFocusTheme[type] || textPlainFocusTheme.default;
   } else {
-    focusTheme = TextTypeFocusTheme[type] || TextTypeFocusTheme.default;
+    focusTheme = textTypeFocusTheme[type] || textTypeFocusTheme.default;
   }
   return focusTheme;
 };
@@ -453,9 +453,9 @@ export const getTextActiveTheme = (propsConfig: Object) => {
   const { type = 'default', plain } = propsConfig;
   let activeTheme;
   if (plain) {
-    activeTheme = TextPlainActiveTypeTheme[type] || TextPlainActiveTypeTheme.default;
+    activeTheme = textPlainActiveTypeTheme[type] || textPlainActiveTypeTheme.default;
   } else {
-    activeTheme = TextTypeActiveTheme[type] || TextTypeActiveTheme.default;
+    activeTheme = textTypeActiveTheme[type] || textTypeActiveTheme.default;
   }
 
   return activeTheme;
@@ -464,9 +464,9 @@ export const getTextDisabledTheme = (propsConfig: Object) => {
   const { type = 'default', plain } = propsConfig;
   let disabledTheme;
   if (plain) {
-    disabledTheme = TextPlainDisabledTypeTheme[type] || TextPlainDisabledTypeTheme.default;
+    disabledTheme = textPlainDisabledTypeTheme[type] || textPlainDisabledTypeTheme.default;
   } else {
-    disabledTheme = TextTypeDisabledTheme[type] || TextTypeDisabledTheme.default;
+    disabledTheme = textTypeDisabledTheme[type] || textTypeDisabledTheme.default;
   }
 
   return disabledTheme;
@@ -482,8 +482,8 @@ export const Text = CSSComponent({
       const { size = 'default', circle } = propsConfig;
       const normalTheme = getTextNormalTheme(propsConfig);
       const sizeTheme = circle
-        ? TextCircleTheme[size] || TextCircleTheme.default
-        : TextSizeTheme[size] || TextSizeTheme.default;
+        ? textCircleTheme[size] || textCircleTheme.default
+        : textSizeTheme[size] || textSizeTheme.default;
       return { ...normalTheme, ...sizeTheme };
     },
   },

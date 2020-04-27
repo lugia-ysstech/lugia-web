@@ -27,7 +27,7 @@ import {
   getIconCursor,
 } from '../css/button';
 import type { ButtonOutProps } from '../css/button';
-import { IconSizeTheme } from './theme';
+import { iconSizeTheme } from './theme';
 import Icon from '../icon';
 
 type ButtonState = { clicked: boolean };
@@ -72,7 +72,7 @@ export default ThemeProvider(
             disabled,
           } = this.props;
           const hasChildren = !!children || !!text;
-          const normalIconSize = IconSizeTheme[size] || IconSizeTheme.default;
+          const normalIconSize = iconSizeTheme[size] || iconSizeTheme.default;
           const normalColor = getTextNormalTheme({ type, plain, loading });
           const hoverTheme = getTextHoverStyle({ type, plain });
           const activeTheme = getTextActiveTheme({ type, plain });
