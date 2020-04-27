@@ -58,7 +58,7 @@ type TypeState = {
 
 const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
 const mFontSize = get('mFontSize');
-const marginNormal = get('marginToSameElement');
+const marginNormal = 8;
 
 class Slider extends Component<TypeProps, TypeState> {
   static displayName = 'SliderComponent';
