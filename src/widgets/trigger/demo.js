@@ -172,6 +172,9 @@ class Test extends React.Component<PropsType, StateType> {
                 弹出来了
               </div>
             }
+            onDocumentClick={() => {
+              console.log('onDocumentClick事件触发！！！！！');
+            }}
           >
             <a href="#" style={{ margin: 20 }} onClick={preventDefault}>
               trigger
