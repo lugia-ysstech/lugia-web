@@ -259,7 +259,7 @@ export const Tipinner = CSSComponent({
       const { height } = themeMate;
       return `
         height:${em(height)};
-        line-height:${em(height - 8)};
+        line-height:${em(height - 6)};
         box-sizing: border-box;
 
         &::before{
