@@ -2,18 +2,15 @@ import { px2remcss } from '../css/units';
 import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import get from '../css/theme-common-dict';
 
-const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
 const noLastItemColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
-const themeHoverColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 const textToSeparatorDistance = get('padding');
-const iconToTextpadding = get('paddingToText');
 
-export const defaultColor = blackColor;
-export const HoverDefaultColor = themeHoverColor;
-export const FontSize = px2remcss(14);
+export const defaultColor = '$lugia-dict.@lugia/lugia-web.blackColor';
+export const hoverDefaultColor = '$lugia-dict.@lugia/lugia-web.themeColor';
+export const fontSize = px2remcss(14);
 export const separatorMarginLeft = px2remcss(textToSeparatorDistance);
 export const separatorMarginRight = px2remcss(textToSeparatorDistance);
-export const iconToTextMargin = iconToTextpadding;
+export const iconToTextMargin = get('paddingToText');
 
 export const CommonSpan = CSSComponent({
   tag: 'span',
@@ -35,14 +32,14 @@ export const CommonSpan = CSSComponent({
     getThemeMeta(themeMeta, themeConfig) {
       const { propsConfig } = themeConfig;
       const { isLastItem } = propsConfig;
-      const color = isLastItem ? defaultColor : HoverDefaultColor;
+      const color = isLastItem ? defaultColor : hoverDefaultColor;
       return {
         color,
       };
     },
   },
   css: css`
-    font-size: ${FontSize};
+    font-size: ${fontSize};
     transition: font-size 0.3s;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -81,7 +78,7 @@ export const ALink = CSSComponent({
     getThemeMeta(themeMeta, themeConfig) {
       const { propsConfig } = themeConfig;
       const { isLastItem } = propsConfig;
-      const color = isLastItem ? defaultColor : HoverDefaultColor;
+      const color = isLastItem ? defaultColor : hoverDefaultColor;
       return {
         color,
       };
@@ -94,7 +91,7 @@ export const ALink = CSSComponent({
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    font-size: ${FontSize};
+    font-size: ${fontSize};
     display: flex;
     align-items: center;
   `,
