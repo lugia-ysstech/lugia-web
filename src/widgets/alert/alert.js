@@ -191,7 +191,7 @@ export default ThemeProvider(
           [IconViewClass]: {
             normal: {
               color: mediumGreyColor,
-              fontSize: xsFontSize,
+              fontSize: sFontSize,
             },
             hover: {
               color: darkGreyColor,
