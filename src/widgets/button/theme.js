@@ -66,7 +66,7 @@ export const defaultTheme = {
     color: borderColor,
   }),
 };
-export const TypeTheme = {
+export const typeTheme = {
   default: defaultTheme,
   primary: {
     border: 'none',
@@ -95,7 +95,7 @@ export const defaultHoverTheme = {
   background: { color: themeColorReduceA },
 };
 
-export const TypeHoverTheme = {
+export const typeHoverTheme = {
   default: defaultHoverTheme,
   primary: {
     border: 'none',
@@ -123,7 +123,7 @@ export const defaultActiveTheme = {
   }),
   background: { color: themeColorReduceA },
 };
-export const ActiveTypeTheme = {
+export const activeTypeTheme = {
   default: defaultActiveTheme,
   primary: {
     border: 'none',
@@ -150,7 +150,7 @@ export const defaultFocusTheme = {
   }),
   background: { color: themeColorReduceA },
 };
-export const TypeFocusTheme = {
+export const typeFocusTheme = {
   default: defaultFocusTheme,
   primary: {
     border: 'none',
@@ -173,7 +173,7 @@ export const defaultDisabledTheme = {
   background: { color: defaultColor },
   border: getBorder({ width: 1, style: 'solid', color: borderDisableColor }),
 };
-export const DisabledTypeTheme = {
+export const disabledTypeTheme = {
   default: defaultDisabledTheme,
   primary: {
     border: 'none',
@@ -193,7 +193,7 @@ export const DisabledTypeTheme = {
   },
 };
 
-export const SizeTheme = {
+export const sizeTheme = {
   large: {
     height: largeSize,
     padding: {
@@ -222,7 +222,7 @@ export const SizeTheme = {
     },
   },
 };
-export const CircleTheme = {
+export const circleTheme = {
   large: {
     width: largeSize,
     height: largeSize,
@@ -242,7 +242,7 @@ export const CircleTheme = {
     borderRadius: getBorderRadius('50%'),
   },
 };
-export const ShapeTheme = {
+export const shapeTheme = {
   default: {
     borderRadius: getBorderRadius(get('normalSize') / 2),
   },
@@ -269,7 +269,7 @@ export const textDefaultFocusTheme = {
 export const textDefaultDisabledTheme = {
   color: themeDisabledColor,
 };
-export const TextTypeTheme = {
+export const textTypeTheme = {
   default: { color: blackColor },
   primary: { color: defaultColor },
   success: { color: defaultColor },
@@ -277,7 +277,7 @@ export const TextTypeTheme = {
   danger: { color: defaultColor },
   link: { color: themeColor },
 };
-export const TextTypeHoverTheme = {
+export const textTypeHoverTheme = {
   default: { color: themeColor },
   primary: { color: defaultColor },
   success: { color: defaultColor },
@@ -285,7 +285,7 @@ export const TextTypeHoverTheme = {
   danger: { color: defaultColor },
   link: { color: themeHoverColor },
 };
-export const TextTypeActiveTheme = {
+export const textTypeActiveTheme = {
   default: { color: themeActiveColor },
   primary: { color: defaultColor },
   success: { color: defaultColor },
@@ -293,7 +293,7 @@ export const TextTypeActiveTheme = {
   danger: { color: defaultColor },
   link: { color: themeActiveColor },
 };
-export const TextTypeFocusTheme = {
+export const textTypeFocusTheme = {
   default: { color: themeFocusColor },
   primary: { color: defaultColor },
   success: { color: defaultColor },
@@ -301,7 +301,7 @@ export const TextTypeFocusTheme = {
   danger: { color: defaultColor },
   link: { color: themeFocusColor },
 };
-export const TextTypeDisabledTheme = {
+export const textTypeDisabledTheme = {
   default: { color: themeDisabledColor },
   primary: { color: defaultColor },
   success: { color: defaultColor },
@@ -310,7 +310,7 @@ export const TextTypeDisabledTheme = {
   link: { color: themeDisabledColor },
 };
 
-export const PlainTypeTheme = {
+export const plainTypeTheme = {
   default: {
     background: { color: defaultColor },
     border: getBorder({
@@ -352,7 +352,7 @@ export const PlainTypeTheme = {
     }),
   },
 };
-export const PlainHoverTheme = {
+export const plainHoverTheme = {
   default: {
     background: { color: defaultColor },
     border: getBorder({
@@ -394,7 +394,7 @@ export const PlainHoverTheme = {
     }),
   },
 };
-export const PlainActiveTypeTheme = {
+export const plainActiveTypeTheme = {
   default: defaultActiveTheme,
   primary: {
     border: getBorder({
@@ -429,7 +429,7 @@ export const PlainActiveTypeTheme = {
     background: { color: dangerHoverColor },
   },
 };
-export const PlainFocusTypeTheme = {
+export const plainFocusTypeTheme = {
   default: defaultFocusTheme,
   primary: {
     border: getBorder({
@@ -465,7 +465,7 @@ export const PlainFocusTypeTheme = {
   },
 };
 
-export const PlainDisabledTypeTheme = {
+export const plainDisabledTypeTheme = {
   default: defaultDisabledTheme,
   primary: {
     background: { color: themeColorReduceA },
@@ -501,7 +501,7 @@ export const PlainDisabledTypeTheme = {
   },
 };
 
-export const TextPlainTypeTheme = {
+export const textPlainTypeTheme = {
   default: { color: blackColor },
   primary: { color: themeColor },
   success: { color: successColor },
@@ -509,7 +509,7 @@ export const TextPlainTypeTheme = {
   danger: { color: dangerColor },
   link: { color: themeColor },
 };
-export const TextPlainHoverTheme = {
+export const textPlainHoverTheme = {
   default: { color: themeColor },
   primary: { color: themeHoverColor },
   success: { color: successHoverColor },
@@ -517,7 +517,7 @@ export const TextPlainHoverTheme = {
   danger: { color: dangerHoverColor },
   link: { color: themeHoverColor },
 };
-export const TextPlainActiveTypeTheme = {
+export const textPlainActiveTypeTheme = {
   default: { color: themeActiveColor },
   primary: { color: themeActiveColor },
   success: { color: successActiveColor },
@@ -525,7 +525,7 @@ export const TextPlainActiveTypeTheme = {
   danger: { color: dangerActiveColor },
   link: { color: themeActiveColor },
 };
-export const TextPlainFocusTheme = {
+export const textPlainFocusTheme = {
   default: { color: themeFocusColor },
   primary: { color: themeFocusColor },
   success: { color: successFocusColor },
@@ -533,7 +533,7 @@ export const TextPlainFocusTheme = {
   danger: { color: dangerFocusColor },
   link: { color: themeFocusColor },
 };
-export const TextPlainDisabledTypeTheme = {
+export const textPlainDisabledTypeTheme = {
   default: { color: disableTextColor },
   primary: { color: themeDisabledColor },
   success: { color: successColors },
@@ -542,18 +542,18 @@ export const TextPlainDisabledTypeTheme = {
   link: { color: themeDisabledColor },
 };
 
-export const TextSizeTheme = {
+export const textSizeTheme = {
   large: { font: { size: 14 } },
   default: { font: { size: 14 } },
   small: { font: { size: 12 } },
 };
-export const TextCircleTheme = {
+export const textCircleTheme = {
   large: { font: { size: 14 } },
   default: { font: { size: 14 } },
   small: { font: { size: 12 } },
 };
 
-export const IconSizeTheme = {
+export const iconSizeTheme = {
   large: { font: { size: sFontSize } },
   default: { font: { size: sFontSize } },
   small: { font: { size: xsFontSize } },
