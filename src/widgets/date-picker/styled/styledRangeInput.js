@@ -32,6 +32,9 @@ export const RangeInputWrap = CSSComponent({
   active: {
     selectNames: [['border'], ['boxShadow'], ['borderRadius'], ['background']],
   },
+  focus: {
+    selectNames: [['border'], ['boxShadow'], ['borderRadius'], ['background']],
+  },
   disabled: {
     selectNames: [['border'], ['boxShadow'], ['borderRadius'], ['background'], ['borderRadius']],
     defaultTheme: {
@@ -59,6 +62,9 @@ export const RangeInputInner = CSSComponent({
     selectNames: [['background']],
   },
   active: {
+    selectNames: [],
+  },
+  focus: {
     selectNames: [],
   },
   disabled: {

@@ -120,6 +120,7 @@ class Range extends Component<TypeProps, TypeState> {
     };
   };
   onClickTrigger = (e: any, visible: boolean) => {
+    console.log('onClickTrigger', visible);
     const { isClear } = this;
     if (isClear && visible) {
       return;
@@ -133,8 +134,9 @@ class Range extends Component<TypeProps, TypeState> {
     isValid && this.drawPageAgain(value, format);
     const { monthAndYear } = this;
     this.setTargetMode(monthAndYear);
-    this.setPopupVisible(visible);
-    this.setState({ visible });
+    console.log('visible onClickTrigger', visible);
+    this.setPopupVisible(true);
+    this.setState({ visible: true });
   };
   onChange = (parmas: Object) => {
     const { isClear } = this;
@@ -245,7 +247,7 @@ class Range extends Component<TypeProps, TypeState> {
     }
     this.setPopupVisible(visible);
     this.drawPageAgain(renderValue, format);
-    this.setState(setStateData);
+    this.setState({ ...setStateData, visible });
   };
   getSortValue = (rangeValue: Array<string>, format: string) => {
     const momentsA = moment(rangeValue[0], format);
@@ -293,6 +295,7 @@ class Range extends Component<TypeProps, TypeState> {
   };
   setTriggerVisible = (open: boolean) => {
     this.setPopupVisible(open);
+    this.setState({ visible: open });
   };
   onFocus = (e: any) => {
     const { value, panelValue, status } = this.state;
@@ -346,7 +349,7 @@ class Range extends Component<TypeProps, TypeState> {
     this.oldValue = ['', ''];
     this.isClear = true;
 
-    this.setState({ value: newValue, hasNormalvalue: false }, () => {
+    this.setState({ value: newValue, hasNormalvalue: false, visible: false }, () => {
       this.setPopupVisible(false);
     });
 
@@ -404,7 +407,9 @@ class Range extends Component<TypeProps, TypeState> {
     this.monthAndYear = [...panelValue];
     this.panelDatesArray = getCurrentPageDates(panelValue, format);
   }
-
+  onDocumentClick = () => {
+    this.setState({ visible: false });
+  };
   render() {
     const {
       value,
@@ -442,10 +447,12 @@ class Range extends Component<TypeProps, TypeState> {
       format,
     };
     const { themeProps } = getFacePanelContain({ mode, getPartOfThemeProps });
+
     return (
       <Trigger
         themePass
         createPortal={createPortal}
+        onDocumentClick={this.onDocumentClick}
         popup={
           <RangeWrap {...theme} isTime={status === 'showTime'} mode={mode} themeProps={themeProps}>
             <RangeWrapInner>
