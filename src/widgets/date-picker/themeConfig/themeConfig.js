@@ -547,11 +547,9 @@ export function getExtraFooterTheme(props) {
       fontSize: sFontSize,
     },
   };
-  console.log('themeProps', themeProps);
   return deepMerge({ themeConfig: defaultTheme }, themeProps);
 }
 export function getBigDate(props) {
-  console.log('props', props);
   const { getPartOfThemeProps } = props;
   const themeProps = getPartOfThemeProps('GroupDate');
   const defaultTheme = {

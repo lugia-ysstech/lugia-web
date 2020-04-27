@@ -253,7 +253,7 @@
         "width": 300,
         "height": 32,
         "background": {
-          "color": "#ffffff"
+          "color": "#fff"
         },
         "border": {
           "top": { "color": "#ccc", "style": "solid", "width": 1 },
@@ -273,7 +273,7 @@
     },
     "InputPrefix": {
       "normal": {
-        "color": "#999999",
+        "color": "#999",
         "font": {
           "size": 14,
           "weight": "normal"
@@ -282,7 +282,7 @@
     },
     "InputSuffix": {
       "normal": {
-        "color": "#999999",
+        "color": "#999",
         "font": {
           "size": 14,
           "weight": "normal"
@@ -291,7 +291,7 @@
     },
     "ClearButton": {
       "normal": {
-        "color": "#999999",
+        "color": "#999",
         "font": {
           "size": 14,
           "weight": "normal"
@@ -310,10 +310,10 @@
     },
     "InMonthDate": {
       "normal": {
-        "color": "#666666",
+        "color": "#666",
         "fontSize": 14,
         "background": {
-          "color": "#ffffff"
+          "color": "#fff"
         },
         "borderRadius": {
           "topLeft": 0,
@@ -337,7 +337,7 @@
     },
     "RangeDate": {
       "normal": {
-        "color": "#666666",
+        "color": "#666",
         "background": {
           "color": "rgba(77,99,255,0.05)"
         },
