@@ -77,8 +77,314 @@ const data = [
   { value: '杰尼龟', text: '杰尼龟', icon: 'lugia-icon-direction_play_circle', des: '市场' },
   { value: '绿毛虫', text: '绿毛虫', icon: 'lugia-icon-financial_pdf' },
   { value: '独角虫', text: '独角虫', icon: 'lugia-icon-financial_warnings' },
-  { value: '波波', text: '波波', icon: 'lugia-icon-logo_android' },
+  { value: '波波', text: '波波', icon: 'lugia-icon-financial_transfer_i' },
   { value: '小拉达', text: '小拉达', icon: 'lugia-icon-logo_QQ' },
+];
+
+const multiLevelMenuSmallData = [
+  {
+    text: '一级菜单1',
+    value: '一级菜单1',
+    icon: 'lugia-icon-financial_group',
+    des: '一级菜单1',
+    disabled: true,
+  },
+  {
+    text: '一级菜单2',
+    value: '一级菜单2',
+    icon: 'lugia-icon-financial_date',
+    des: '一级菜单2',
+  },
+  {
+    text: '一级菜单3',
+    value: '一级菜单3',
+    icon: 'lugia-icon-financial_classification',
+    des: '一级菜单3',
+  },
+  {
+    text: '一级菜单4',
+    value: '一级菜单4',
+    icon: 'lugia-icon-financial_editor',
+    des: '一级菜单4',
+    children: [
+      {
+        text: '次级菜单4-1',
+        value: '次级菜单4-1',
+        icon: 'lugia-icon-financial_markdown',
+        des: '市场',
+        children: [
+          {
+            text: '三级菜单4-1-1',
+            value: '三级菜单4-1-1',
+            icon: 'lugia-icon-financial_bell',
+            des: '三级菜单4-1-1',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    text: '一级菜单6',
+    value: '一级菜单6',
+    icon: 'lugia-icon-financial_editor',
+    des: '一级菜单6',
+    children: [
+      {
+        text: '次级菜单6-1',
+        value: '次级菜单6-1',
+        icon: 'lugia-icon-financial_home',
+        des: '次级菜单6-1',
+      },
+      {
+        text: '次级菜单6-2',
+        value: '次级菜单6-2',
+        icon: 'lugia-icon-financial_lock',
+        des: '次级菜单6-2',
+        children: [
+          {
+            text: '三级菜单6-2-1',
+            value: '三级菜单6-2-1',
+            icon: 'lugia-icon-financial_pdf',
+            des: '三级菜单6-2-1',
+          },
+          {
+            text: '三级菜单6-2-2',
+            value: '三级菜单6-2-2',
+            icon: 'lugia-icon-financial_remind',
+            des: '三级菜单6-2-2',
+          },
+          {
+            text: '三级菜单6-2-3',
+            value: '三级菜单6-2-3',
+            icon: 'lugia-icon-financial_transfer_i',
+            des: '三级菜单6-2-3',
+          },
+        ],
+      },
+      {
+        text: '次级菜单6-3',
+        value: '次级菜单6-3',
+        icon: 'lugia-icon-financial_transfer_i',
+        des: '次级菜单6-3',
+      },
+      {
+        text: '次级菜单6-4',
+        value: '次级菜单6-4',
+        icon: 'lugia-icon-logo_baidu',
+        des: '次级菜单6-4',
+      },
+      {
+        text: '次级菜单6-5',
+        value: '次级菜单6-5',
+        icon: 'lugia-icon-logo_github',
+        des: '次级菜单6-5',
+      },
+      {
+        text: '次级菜单6-6',
+        value: '次级菜单6-6',
+        icon: 'lugia-icon-logo_html5',
+        des: '次级菜单6-6',
+      },
+    ],
+  },
+];
+
+const multiLevelMenuDefaultData = [
+  {
+    text: '一级菜单1',
+    value: '一级菜单1',
+    icon: 'lugia-icon-financial_group',
+    des: '一级菜单1',
+  },
+
+  {
+    text: '一级菜单4',
+    value: '一级菜单4',
+    icon: 'lugia-icon-financial_editor',
+    des: '一级菜单4',
+    children: [
+      {
+        text: '次级菜单4-1',
+        value: '次级菜单4-1',
+        icon: 'lugia-icon-financial_markdown',
+        des: '市场',
+        children: [
+          {
+            text: '三级菜单4-1-1',
+            value: '三级菜单4-1-1',
+            icon: 'lugia-icon-financial_bell',
+            des: '三级菜单4-1-1',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    text: '一级菜单6',
+    value: '一级菜单6',
+    icon: 'lugia-icon-financial_editor',
+    des: '一级菜单6',
+    children: [
+      {
+        text: '次级菜单6-1',
+        value: '次级菜单6-1',
+        icon: 'lugia-icon-financial_home',
+        des: '次级菜单6-1',
+      },
+      {
+        text: '次级菜单6-2',
+        value: '次级菜单6-2',
+        icon: 'lugia-icon-financial_lock',
+        des: '次级菜单6-2',
+        children: [
+          {
+            text: '三级菜单6-2-1',
+            value: '三级菜单6-2-1',
+            icon: 'lugia-icon-financial_pdf',
+            des: '三级菜单6-2-1',
+          },
+          {
+            text: '三级菜单6-2-2',
+            value: '三级菜单6-2-2',
+            icon: 'lugia-icon-financial_remind',
+            des: '三级菜单6-2-2',
+          },
+          {
+            text: '三级菜单6-2-3',
+            value: '三级菜单6-2-3',
+            icon: 'lugia-icon-financial_transfer_i',
+            des: '三级菜单6-2-3',
+          },
+        ],
+      },
+      {
+        text: '次级菜单6-3',
+        value: '次级菜单6-3',
+        icon: 'lugia-icon-financial_transfer_i',
+        des: '次级菜单6-3',
+      },
+      {
+        text: '次级菜单6-4',
+        value: '次级菜单6-4',
+        icon: 'lugia-icon-logo_baidu',
+        des: '次级菜单6-4',
+      },
+      {
+        text: '次级菜单6-5',
+        value: '次级菜单6-5',
+        icon: 'lugia-icon-logo_github',
+        des: '次级菜单6-5',
+      },
+      {
+        text: '次级菜单6-6',
+        value: '次级菜单6-6',
+        icon: 'lugia-icon-logo_html5',
+        des: '次级菜单6-6',
+      },
+      {
+        text: '次级菜单6-7',
+        value: '次级菜单6-7',
+        icon: 'lugia-icon-logo_html5',
+        des: '次级菜单6-6',
+      },
+    ],
+  },
+];
+
+const multiLevelMenuLargeData = [
+  {
+    text: '一级菜单1',
+    value: '一级菜单1',
+    icon: 'lugia-icon-financial_group',
+    des: '一级菜单1',
+  },
+
+  {
+    text: '一级菜单4',
+    value: '一级菜单4',
+    icon: 'lugia-icon-financial_editor',
+    des: '一级菜单4',
+    children: [
+      {
+        text: '次级菜单4-1',
+        value: '次级菜单4-1',
+        icon: 'lugia-icon-financial_markdown',
+        des: '市场',
+        children: [
+          {
+            text: '三级菜单4-1-1',
+            value: '三级菜单4-1-1',
+            icon: 'lugia-icon-financial_bell',
+            des: '三级菜单4-1-1',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    text: '一级菜单6',
+    value: '一级菜单6',
+    icon: 'lugia-icon-financial_editor',
+    des: '一级菜单6',
+    children: [
+      {
+        text: '次级菜单6-1',
+        value: '次级菜单6-1',
+        icon: 'lugia-icon-financial_home',
+        des: '次级菜单6-1',
+      },
+      {
+        text: '次级菜单6-2',
+        value: '次级菜单6-2',
+        icon: 'lugia-icon-financial_lock',
+        des: '次级菜单6-2',
+        children: [
+          {
+            text: '三级菜单6-2-1',
+            value: '三级菜单6-2-1',
+            icon: 'lugia-icon-financial_pdf',
+            des: '三级菜单6-2-1',
+          },
+          {
+            text: '三级菜单6-2-2',
+            value: '三级菜单6-2-2',
+            icon: 'lugia-icon-financial_remind',
+            des: '三级菜单6-2-2',
+          },
+          {
+            text: '三级菜单6-2-3',
+            value: '三级菜单6-2-3',
+            icon: 'lugia-icon-financial_transfer_i',
+            des: '三级菜单6-2-3',
+          },
+        ],
+      },
+      {
+        text: '次级菜单6-3',
+        value: '次级菜单6-3',
+        icon: 'lugia-icon-financial_transfer_i',
+        des: '次级菜单6-3',
+      },
+      {
+        text: '次级菜单6-4',
+        value: '次级菜单6-4',
+        icon: 'lugia-icon-logo_baidu',
+        des: '次级菜单6-4',
+      },
+      {
+        text: '次级菜单6-5',
+        value: '次级菜单6-5',
+        icon: 'lugia-icon-logo_github',
+        des: '次级菜单6-5',
+      },
+      {
+        text: '次级菜单6-6',
+        value: '次级菜单6-6',
+        icon: 'lugia-icon-logo_html5',
+        des: '次级菜单6-6',
+      },
+    ],
+  },
 ];
 
 const items = [];
@@ -91,12 +397,77 @@ export default class extends React.Component<any, any> {
     this.state = {
       selectedKeys: [],
       expandedPath: [],
+      selectedKeysSmall: [],
+      expandedPathSmall: [],
+      selectedKeysDefault: [],
+      expandedPathDefault: [],
+      selectedKeysLarge: [],
+      expandedPathLarge: [],
       start: 0,
     };
   }
 
+  onExpandPathChange = expandedPath => {
+    this.setState({ expandedPath });
+  };
+
   render() {
+    const {
+      selectedKeys,
+      expandedPath,
+      selectedKeysSmall,
+      expandedPathSmall,
+      selectedKeysDefault,
+      expandedPathDefault,
+      selectedKeysLarge,
+      expandedPathLarge,
+    } = this.state;
     return [
+      <H1>多级菜单 </H1>,
+      <RowWrap>
+        <RowWrapItem>
+          <H1> size={'small'} 多级菜单 </H1>
+          <Menu
+            separator={'/'}
+            size={'small'}
+            checkedCSS={'background'}
+            expandedPath={expandedPathSmall}
+            selectedKeys={selectedKeysSmall}
+            data={multiLevelMenuSmallData}
+            onClick={this.onClickSmall}
+            offsetY={0}
+            autoHeight={true}
+          />
+        </RowWrapItem>
+        <RowWrapItem>
+          <H1> size={'default'} 多级菜单 </H1>
+          <Menu
+            mutliple={false}
+            separator={'/'}
+            size={'default'}
+            checkedCSS={'background'}
+            expandedPath={expandedPathDefault}
+            selectedKeys={selectedKeysDefault}
+            data={multiLevelMenuDefaultData}
+            offsetY={0}
+            onClick={this.onClickDefault}
+            autoHeight={true}
+          />
+        </RowWrapItem>
+        <RowWrapItem>
+          <H1> size={'large'} 多级菜单 </H1>,
+          <Menu
+            separator={'/'}
+            size={'large'}
+            expandedPath={expandedPathLarge}
+            selectedKeys={selectedKeysLarge}
+            data={multiLevelMenuLargeData}
+            offsetY={0}
+            onClick={this.onClickLager}
+            autoHeight={true}
+          />
+        </RowWrapItem>
+      </RowWrap>,
       <H1>menu checkedCSS="none"</H1>,
       <RowWrap>
         <RowWrapItem>
@@ -145,8 +516,16 @@ export default class extends React.Component<any, any> {
     ];
   }
 
-  onClick = (e, keys, item) => {
+  onClickSmall = (e, keys, item) => {
     const { selectedKeys } = keys;
-    this.setState({ selectedKeys, expandedPath: selectedKeys });
+    this.setState({ selectedKeysSmall: selectedKeys, expandedPathSmall: selectedKeys });
+  };
+  onClickDefault = (e, keys, item) => {
+    const { selectedKeys } = keys;
+    this.setState({ selectedKeysDefault: selectedKeys, expandedPathDefault: selectedKeys });
+  };
+  onClickLager = (e, keys, item) => {
+    const { selectedKeys } = keys;
+    this.setState({ selectedKeysLarge: selectedKeys, expandedPathLarge: selectedKeys });
   };
 }

@@ -20,6 +20,7 @@ import addEventListener from 'rc-util/lib/Dom/addEventListener';
 import { DisplayField, ValueField } from '../consts/props';
 import contains from 'rc-util/lib/Dom/contains';
 import { getCanSeeCountRealy } from '../scroller/support';
+import { getMenuItemHeight } from '../css/menu';
 import {
   getExpandDataOrSelectData,
   getExpandedPath,
@@ -201,7 +202,15 @@ class Menu extends React.Component<MenuProps, MenuState> {
   render() {
     const { props } = this;
     const items = this.getItems(props);
-    const { data = [], autoHeight = false, getPartOfThemeProps, itemHeight, defaultHeight } = props;
+    const {
+      data = [],
+      autoHeight = false,
+      getPartOfThemeProps,
+      itemHeight,
+      defaultHeight,
+      mutliple,
+      checkedCSS,
+    } = props;
     const length = data ? data.length : 0;
     const wrapThemeProps = getPartOfThemeProps('Container', {
       props: {
@@ -218,7 +227,12 @@ class Menu extends React.Component<MenuProps, MenuState> {
       </MenuContainer>
     );
 
-    if (!Array.isArray(this.state.childData) || this.state.childData.length === 0) {
+    if (
+      !Array.isArray(this.state.childData) ||
+      this.state.childData.length === 0 ||
+      !!mutliple ||
+      checkedCSS === 'checkbox'
+    ) {
       return bodyContent;
     }
 
@@ -337,7 +351,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
     indexOffsetY: number
   ) => {
     const { key, props } = child;
-    const { disabled } = props;
+    const { disabled, size } = props;
     return React.cloneElement(
       child,
       this.fetchExtendProps(key, isSelect, item, disabled, indexOffsetY)
@@ -590,6 +604,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
       autoHeight,
       divided,
       renderSuffixItems,
+      size,
     } = this.props;
 
     const { selectedKeys, expandedPath } = this.state;
@@ -600,10 +615,10 @@ class Menu extends React.Component<MenuProps, MenuState> {
         Szf: this.props.getPartOfThemeConfig('SubMenu'),
       },
     };
-
     return (
       <SubMenu
         mutliple={mutliple}
+        size={size}
         divided={divided}
         theme={config}
         viewClass={'Szf'}
@@ -859,6 +874,8 @@ SubMenu = ThemeHoc(
     render() {
       const { props } = this;
       const { SubMenu } = props.getPartOfThemeConfig('Szf');
+      const { size = 'default' } = props;
+      const menuItemHeight = getMenuItemHeight(size);
 
       const { getPartOfThemeHocProps } = props;
       let { viewClass, theme } = getPartOfThemeHocProps('Szf');
@@ -874,7 +891,13 @@ SubMenu = ThemeHoc(
       }
 
       return (
-        <Result {...props} theme={theme} viewClass={viewClass} ref={cmp => (this.svtarget = cmp)} />
+        <Result
+          {...props}
+          theme={theme}
+          menuItemHeight={menuItemHeight}
+          viewClass={viewClass}
+          ref={cmp => (this.svtarget = cmp)}
+        />
       );
     }
   },
