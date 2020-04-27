@@ -142,7 +142,6 @@ export function getRangeInputMiddleSymbolTheme(props) {
   const { defaultFontSize } = getDefaultStyleFromSize(size);
   const font = {
     fontSize: defaultFontSize,
-    font: { size: defaultFontSize },
   };
   const defaultTheme = {
     normal: {
@@ -185,7 +184,6 @@ export function getDateTheme(props) {
   const defaultNormal = {
     color: blackColor,
     fontSize: 14,
-    font: { size: 14 },
   };
   const defaultHover = {
     background: { color: hoverColor },
@@ -258,7 +256,6 @@ export function getSecondWeekDateTheme(props) {
   const defaultNormal = {
     color: blackColor,
     fontSize: 14,
-    font: { size: 14 },
   };
   const normalTheme = deepMerge(defaultNormal, normal);
   const defaultHover = {
@@ -403,9 +400,6 @@ export function getHeadArrowTheme(props) {
   );
   const defaultFontSize = {
     fontSize: sFontSize,
-    font: {
-      size: sFontSize,
-    },
   };
   const defaultTheme = {
     Icon: {
@@ -441,7 +435,6 @@ export function getHeadYearAndMonth(props) {
   const headMonthTextTheme = getThemeProps({ mode, getPartOfThemeProps }, 'HeadMonthText');
   const headWeekTextTheme = getThemeProps({ mode, getPartOfThemeProps }, 'HeadWeekText');
   const defaultFont = {
-    font: { size: 14 },
     fontSize: 14,
   };
   const defaultTheme = {
