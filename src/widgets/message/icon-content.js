@@ -29,7 +29,7 @@ export default class extends React.Component<IconConProps, IconConState> {
       [viewClass]: {
         normal: {
           color: IconInfo[iconType].color,
-          font: { size: 20 },
+          font: { size: 16 },
           cursor: 'default',
           getCSS() {
             return css`
