@@ -285,10 +285,10 @@ export function getFacePanelContain(props) {
     width: isRange ? 600 : 420,
   };
   const normalTheme = deepMerge(defaultNormal, normal);
-  themeConfig.normal = { ...normalTheme };
   const { width } = normalTheme;
   normal.width = isRange && width > isRange ? 600 : width;
   normalTheme.width = normal.width;
+  themeConfig.normal = { ...normalTheme };
   const normalSize = getFacePanelContainSize(normalTheme);
 
   propsConfig.normalSize = { ...normalSize };
