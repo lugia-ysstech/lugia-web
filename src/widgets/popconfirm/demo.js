@@ -166,7 +166,18 @@ export const WrapperDemo = () => {
           >
             <Direction type="primary">提示</Direction>
           </Popconfirm>
-          <Popconfirm title={text} action={'click'} cancelText="No" okText="yes" okType="danger">
+          <Popconfirm
+            title={text}
+            action={'click'}
+            cancelText="No"
+            okText="yes"
+            okType="danger"
+            icon={
+              <Theme config={iconConfig}>
+                <Icon iconClass={'lugia-icon-reminder_question_circle_o'} singleTheme />
+              </Theme>
+            }
+          >
             <Direction type="primary">危险操作</Direction>
           </Popconfirm>
         </div>
