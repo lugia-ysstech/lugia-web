@@ -11,7 +11,7 @@ import type { TooltipProps, TooltipState } from '../css/tooltip';
 import { Down, Left, Right, Up, getRoundArrowCSS, getArrowCSS } from '../css/tooltip';
 import ThemeHoc from '@lugia/theme-hoc';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
-import { getBoxShadow, getBorderRadius } from '@lugia/theme-utils';
+import { getBorderRadius } from '@lugia/theme-utils';
 import get from '../css/theme-common-dict';
 import { units } from '@lugia/css';
 const { px2remcss } = units;
@@ -52,22 +52,13 @@ const Content: Object = CSSComponent({
     defaultTheme: {
       borderRadius: getBorderRadius(borderRadiusValue),
       background: { color: get('blackColor') },
-
+      boxShadow: get('normalBoxShadow'),
       padding: {
         top: 4,
         bottom: 4,
         left: 8,
         right: 8,
       },
-    },
-    getThemeMeta(themeMeta, themeProps) {
-      const { boxShadow } = themeMeta;
-      const { x, y, color, blur, spread } = get('normalBoxShadow');
-      const theBoxShadow =
-        boxShadow || getBoxShadow(`${x}px ${y}px ${blur}px ${spread}px ${color}`);
-      return {
-        boxShadow: theBoxShadow,
-      };
     },
   },
   css: css`
