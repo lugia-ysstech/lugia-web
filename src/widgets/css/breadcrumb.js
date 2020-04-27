@@ -62,8 +62,7 @@ export const ALink = CSSComponent({
       ['padding', 'right'],
     ],
     getThemeMeta(themeMeta, themeConfig) {
-      const { propsConfig } = themeConfig;
-      const { isLastItem } = propsConfig;
+      const { propsConfig: { isLastItem } = {} } = themeConfig;
       const color = isLastItem ? defaultColor : noLastItemColor;
       return {
         color,
@@ -74,8 +73,7 @@ export const ALink = CSSComponent({
   hover: {
     selectNames: [['color'], ['font'], ['fontSize']],
     getThemeMeta(themeMeta, themeConfig) {
-      const { propsConfig } = themeConfig;
-      const { isLastItem } = propsConfig;
+      const { propsConfig: { isLastItem } = {} } = themeConfig;
       const color = isLastItem ? defaultColor : hoverDefaultColor;
       return {
         color,
@@ -110,17 +108,14 @@ export const SeparatorSpan = CSSComponent({
       ['padding', 'right'],
     ],
     getThemeMeta(themeMeta, themeConfig) {
-      const { propsConfig } = themeConfig;
-      const { isLastItem } = propsConfig;
+      const { propsConfig: { isLastItem } = {} } = themeConfig;
       const color = isLastItem ? defaultColor : noLastItemColor;
       return {
         color,
       };
     },
     getCSS(themeMeta, themeConfig) {
-      const {
-        propsConfig: { isLastItem },
-      } = themeConfig;
+      const { propsConfig: { isLastItem } = {} } = themeConfig;
       return `
       margin-left: ${isLastItem ? 0 : separatorMarginLeft};
       margin-right: ${isLastItem ? 0 : separatorMarginRight}
