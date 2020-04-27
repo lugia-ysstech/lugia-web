@@ -74,8 +74,7 @@ const Title = CSSComponent({
       color: blackColor,
     },
     getThemeMeta(themeMeta, themeProps) {
-      const { propsConfig } = themeProps;
-      const { icon } = propsConfig;
+      const { propsConfig: { icon } = {} } = themeProps;
       const { padding } = themeMeta;
       const thePadding = icon ? 0 : padding;
       return {

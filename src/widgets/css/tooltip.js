@@ -133,9 +133,8 @@ export function getRoundArrowCSS(themeMeta, themeProps) {
   return `border-color: ${bgColor} transparent transparent ${bgColor};transform: rotateZ(${angle}); ${arrowDirectionCSS};`;
 }
 export function getArrowCSS(themeMeta, themeProps) {
-  const { propsConfig } = themeProps;
+  const { propsConfig: { placement } = {} } = themeProps;
   const { background = {} } = themeMeta;
-  const { placement } = propsConfig;
 
   const bgColor = background && background.color ? background.color : get('blackColor');
   let arrowDirectionCSS = '';
