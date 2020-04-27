@@ -93,7 +93,8 @@ export function getThemeProps(props, value) {
   const closed = getPartOfThemeProps(switchClosedName);
   const openColor = getBackground(props, true);
   const closedColor = getBackground(props, false);
-  const disabledColor = getDisableBackground(props, false);
+  const disabledOpenColor = getDisableBackground(props, true);
+  const disabledCloseColor = getDisableBackground(props, false);
   const { getInternalThemeProps } = props;
   const nessecaryProps = (getInternalThemeProps && getInternalThemeProps()) || {};
   const {
@@ -118,7 +119,7 @@ export function getThemeProps(props, value) {
     },
     disabled: {
       background: {
-        color: disabledColor,
+        color: disabledOpenColor,
       },
     },
   };
@@ -140,7 +141,7 @@ export function getThemeProps(props, value) {
     },
     disabled: {
       background: {
-        color: disabledColor,
+        color: disabledCloseColor,
       },
     },
   };
