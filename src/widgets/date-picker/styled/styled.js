@@ -18,21 +18,17 @@ export const PanelWrap = CSSComponent({
   className: 'FacePanelContain',
   normal: {
     selectNames: [['boxShadow'], ['borderRadius'], ['border'], ['background', 'color'], ['width']],
-    defaultTheme: {
-      boxShadow: {
-        color: 'rgba(0, 0, 0, 0.1)',
-        x: 2,
-        y: 2,
-        blur: 3,
-        spread: 2,
-        type: 'outset',
-      },
-      background: {
-        color: defaultColor,
-      },
-    },
   },
   hover: {
+    selectNames: [],
+  },
+  focus: {
+    selectNames: [],
+  },
+  active: {
+    selectNames: [],
+  },
+  disabled: {
     selectNames: [],
   },
   css: css`
@@ -391,20 +387,6 @@ export const RangeWrap = CSSComponent({
   className: 'RangeWrap',
   normal: {
     selectNames: [['boxShadow'], ['width'], ['borderRadius'], ['border'], ['background', 'color']],
-    defaultTheme: {
-      boxShadow: {
-        color: 'rgba(0, 0, 0, 0.1)',
-        x: 2,
-        y: 2,
-        blur: 3,
-        spread: 2,
-        type: 'outset',
-      },
-      background: {
-        color: defaultColor,
-      },
-      width: 600,
-    },
   },
   hover: {
     selectNames: [],
