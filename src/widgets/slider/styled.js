@@ -258,8 +258,9 @@ export const Tipinner = CSSComponent({
     ) {
       const { height } = themeMate;
       return `
-        height:${em(height - 2)};
-        line-height:${em(height - 2)};
+        height:${em(height)};
+        line-height:${em(height - 8)};
+        box-sizing: border-box;
 
         &::before{
          content:'${tipsText}';
@@ -326,7 +327,7 @@ export const Tipinner = CSSComponent({
       top: 0;
       z-index: 1;
       border-radius: ${em(3)};
-      padding: 0 ${em(3)};
+      padding: 4px ${em(3)};
       text-align: center;
       overflow: hidden;
     }
