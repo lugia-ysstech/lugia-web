@@ -16,6 +16,7 @@ import get from '../css/theme-common-dict';
 import Icon from '../icon';
 
 const mFontSize = '$lugia-dict.@lugia/lugia-web.mFontSize';
+const sFontSize = '$lugia-dict.@lugia/lugia-web.sFontSize';
 const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
 const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
@@ -110,7 +111,7 @@ export default ThemeProvider(
         {
           [viewClass]: {
             normal: {
-              font: { size: mFontSize },
+              font: { size: hasDect ? mFontSize : sFontSize },
               cursor: 'default',
               color: typeTheme.color,
               getCSS() {
