@@ -471,10 +471,12 @@ class Trigger extends React.Component<TriggerProps, TriggerState> {
 
   forcePopup: boolean;
   onDocumentClick = (e: Object) => {
+    const { onDocumentClick } = this.props;
     const target = e.target;
     const root = findDOMNode(this);
     const popupNode = this.getPopupDomNode();
     if (!contains(root, target) && !contains(popupNode, target) && !this.forcePopup) {
+      onDocumentClick && onDocumentClick();
       this.close();
     }
   };
