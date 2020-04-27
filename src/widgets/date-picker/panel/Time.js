@@ -145,6 +145,10 @@ class Time extends Component<TypeProps, TypeState> {
     const timeColTheme = timePanelListTheme;
     const { themeConfig: menuContainerTheme } = timePanelTheme;
     const { themeConfig: selectTimeOptionThemeTheme } = selectTimeOptionTheme;
+    const menuConfig = {
+      size: 'small',
+      checkedCSS: 'background',
+    };
     return (
       <Theme
         config={{
@@ -178,9 +182,8 @@ class Time extends Component<TypeProps, TypeState> {
                   onClick={this.onClickHours}
                   start={starts[0]}
                   selectedKeys={[keys[0]]}
-                  checkedCSS={'background'}
                   onScroller={this.onScrollerFirst}
-                  size={'small'}
+                  {...menuConfig}
                 />
               </TimeCol>
             )}
@@ -193,9 +196,8 @@ class Time extends Component<TypeProps, TypeState> {
                   onClick={this.onClickMinutes}
                   start={starts[1]}
                   selectedKeys={[keys[1]]}
-                  checkedCSS={'background'}
                   onScroller={this.onScrollerSecond}
-                  size={'small'}
+                  {...menuConfig}
                 />
               </TimeCol>
             )}
@@ -208,9 +210,8 @@ class Time extends Component<TypeProps, TypeState> {
                   onClick={this.onClickSeconds}
                   start={starts[2]}
                   selectedKeys={[keys[2]]}
-                  checkedCSS={'background'}
                   onScroller={this.onScrollerThird}
-                  size={'small'}
+                  {...menuConfig}
                 />
               </TimeCol>
             )}

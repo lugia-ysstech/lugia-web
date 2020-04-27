@@ -279,10 +279,13 @@ export function getFacePanelContain(props) {
   const { themeConfig = {}, propsConfig } = themeProps;
   const { normal = {} } = themeConfig;
   const defaultNormal = {
-    background: { color: '#fff', borderRadius: borderRadiusValue, boxShadow: normalBoxShadow },
+    background: { color: defaultColor },
+    borderRadius: getBorderRadius(borderRadiusValue),
+    boxShadow: normalBoxShadow,
     width: isRange ? 600 : 420,
   };
   const normalTheme = deepMerge(defaultNormal, normal);
+  themeConfig.normal = { ...normalTheme };
   const { width } = normalTheme;
   normal.width = isRange && width > isRange ? 600 : width;
   normalTheme.width = normal.width;
@@ -301,6 +304,7 @@ export function getFacePanelContain(props) {
       normal: { width: getTimeColSize(normalTimePikerSingleWidth) },
     },
   };
+  console.log('themeProps', themeProps);
   return { themeProps, timePikerSingleWrapTheme, timePikerColSizeTheme };
 }
 function getFacePanelContainSize(state = {}) {
