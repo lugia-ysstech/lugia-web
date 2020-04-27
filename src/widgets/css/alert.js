@@ -43,6 +43,7 @@ type CSSProps = {
 };
 
 const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
+const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
 
 export const TypeCSS = {
   info: {
@@ -184,6 +185,7 @@ export const Message = CSSComponent({
 
       return {
         font: { size: hasDect ? 16 : 14 },
+        color: hasDect ? blackColor : darkGreyColor,
       };
     },
   },
