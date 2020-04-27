@@ -5,6 +5,7 @@ exports[`default Wrapper 1`] = `
   display: inline-block;
   box-sizing: border-box;
   vertical-align: top;
+  font-size: 0;
 }
 
 .c1 {
@@ -20,7 +21,7 @@ exports[`default Wrapper 1`] = `
   font-size: 1.4rem;
   display: inline-block;
   vertical-align: top;
-  padding: 17px 58px 17px 38px;
+  padding: 7px 36px 7px 38px;
 }
 
 .c36 {
@@ -31,12 +32,12 @@ exports[`default Wrapper 1`] = `
   padding: 8px 5px 8px 5px;
 }
 
-.c61 {
+.c65 {
   box-sizing: border-box;
   font-size: 1.4rem;
   display: inline-block;
   vertical-align: top;
-  padding: 58px 17px 58px 17px;
+  padding: 36px 6px 36px 6px;
 }
 
 .c2 {
@@ -240,22 +241,22 @@ exports[`default Wrapper 1`] = `
   transform: translateX(-50%);
 }
 
-.c54 {
+.c57 {
   border-radius: 0.6rem;
   position: absolute;
   -webkit-transition: 0.3s;
   transition: 0.3s;
   width: 0.6rem;
-  height: 20%;
+  height: 14.285714285714285%;
   width: 0.6rem;
   left: 50%;
-  bottom: 20%;
+  bottom: 14.285714285714285%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
 }
 
-.c56 {
+.c60 {
   border-radius: 0.6rem;
   position: absolute;
   -webkit-transition: 0.3s;
@@ -462,11 +463,11 @@ exports[`default Wrapper 1`] = `
   transition: 0.3s;
 }
 
-.c55 {
+.c58 {
   border-radius: 50%;
   position: absolute;
   left: 50%;
-  bottom: calc(90% + 0rem);
+  bottom: calc(64.28571428571428% + 0rem);
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -476,7 +477,21 @@ exports[`default Wrapper 1`] = `
   transition: 0.3s;
 }
 
-.c57 {
+.c59 {
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  bottom: calc(78.57142857142857% + 0rem);
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  z-index: 2;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.c61 {
   border-radius: 50%;
   position: absolute;
   left: 50%;
@@ -502,7 +517,7 @@ exports[`default Wrapper 1`] = `
 .c35 {
   border-radius: 50%;
   position: absolute;
-  left: calc(8.333333333333332% + 0rem);
+  left: calc(10.81081081081081% + 0rem);
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -513,11 +528,11 @@ exports[`default Wrapper 1`] = `
   transition: 0.3s;
 }
 
-.c64 {
+.c68 {
   border-radius: 50%;
   position: absolute;
   left: 50%;
-  bottom: calc(6.896551724137931% + 0rem);
+  bottom: calc(11.11111111111111% + 0rem);
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -560,8 +575,8 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -2.5rem;
-  color: #333;
+  bottom: -25px;
+  color: #646A6E;
   color: undefined;
 }
 
@@ -598,7 +613,7 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -2.5rem;
+  bottom: -25px;
   color: blue;
   color: undefined;
 }
@@ -636,7 +651,7 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -2.5rem;
+  bottom: -25px;
   color: pink;
   color: undefined;
 }
@@ -674,8 +689,8 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -2.5rem;
-  color: #999;
+  bottom: -25px;
+  color: #f22735;
   color: undefined;
 }
 
@@ -712,8 +727,8 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -2.5rem;
-  color: #999;
+  bottom: -25px;
+  color: #9EA4AE;
   color: undefined;
 }
 
@@ -750,7 +765,7 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -2.5rem;
+  bottom: -25px;
   color: blue;
   color: undefined;
 }
@@ -788,7 +803,7 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -2.5rem;
+  bottom: -25px;
   color: pink;
   color: undefined;
 }
@@ -826,8 +841,8 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -2.5rem;
-  color: #333;
+  bottom: -25px;
+  color: #646A6E;
   color: undefined;
 }
 
@@ -864,8 +879,8 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -2.5rem;
-  color: #999;
+  bottom: -25px;
+  color: #9EA4AE;
   color: undefined;
 }
 
@@ -902,7 +917,7 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -2.5rem;
+  bottom: -25px;
   color: red;
   color: undefined;
 }
@@ -941,7 +956,7 @@ exports[`default Wrapper 1`] = `
   transform: translateY(50%);
   -webkit-transform: translateY(50%);
   bottom: 50%;
-  color: #333;
+  color: #646A6E;
   color: undefined;
 }
 
@@ -979,7 +994,7 @@ exports[`default Wrapper 1`] = `
   transform: translateY(50%);
   -webkit-transform: translateY(50%);
   bottom: 50%;
-  color: #333;
+  color: #646A6E;
   color: undefined;
 }
 
@@ -1017,7 +1032,7 @@ exports[`default Wrapper 1`] = `
   transform: translateY(50%);
   -webkit-transform: translateY(50%);
   bottom: 50%;
-  color: #999;
+  color: #9EA4AE;
   color: undefined;
 }
 
@@ -1093,7 +1108,7 @@ exports[`default Wrapper 1`] = `
   transform: translateY(50%);
   -webkit-transform: translateY(50%);
   bottom: 50%;
-  color: #999;
+  color: #f22735;
   color: undefined;
 }
 
@@ -1131,7 +1146,7 @@ exports[`default Wrapper 1`] = `
   transform: translateY(50%);
   -webkit-transform: translateY(50%);
   bottom: 50%;
-  color: #999;
+  color: #9EA4AE;
   color: undefined;
 }
 
@@ -1141,7 +1156,7 @@ exports[`default Wrapper 1`] = `
   z-index: 1;
   font-size: 1.4rem;
   left: 50%;
-  bottom: 38.75%;
+  bottom: 33.035714285714285%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -1169,7 +1184,7 @@ exports[`default Wrapper 1`] = `
   transform: translateY(50%);
   -webkit-transform: translateY(50%);
   bottom: 50%;
-  color: #333;
+  color: #646A6E;
   color: undefined;
 }
 
@@ -1179,7 +1194,7 @@ exports[`default Wrapper 1`] = `
   z-index: 1;
   font-size: 1.4rem;
   left: 50%;
-  bottom: 58.75%;
+  bottom: 47.32142857142857%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -1207,11 +1222,125 @@ exports[`default Wrapper 1`] = `
   transform: translateY(50%);
   -webkit-transform: translateY(50%);
   bottom: 50%;
-  color: #333;
+  color: #646A6E;
   color: undefined;
 }
 
 .c53 {
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
+  font-size: 1.4rem;
+  left: 50%;
+  bottom: 75.89285714285714%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  border-width: 0.1rem;
+  border-style: solid;
+  border-color: #cccccc;
+  background: #ffffff;
+  width: -1.6rem;
+  height: -1.6rem;
+}
+
+.c53::before {
+  display: block;
+  position: absolute;
+}
+
+.c53::before {
+  content: '40℃';
+  font-size: 1.4rem;
+  line-height: 1;
+  left: calc(100% + 10px);
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  -webkit-transform: translateY(50%);
+  bottom: 50%;
+  color: red;
+  color: undefined;
+}
+
+.c54 {
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
+  font-size: 1.4rem;
+  left: 50%;
+  bottom: 90.17857142857143%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  border-width: 0.1rem;
+  border-style: solid;
+  border-color: #cccccc;
+  background: #ffffff;
+  width: -1.6rem;
+  height: -1.6rem;
+}
+
+.c54::before {
+  display: block;
+  position: absolute;
+}
+
+.c54::before {
+  content: '50℃';
+  font-size: 1.4rem;
+  line-height: 1;
+  left: calc(100% + 10px);
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  -webkit-transform: translateY(50%);
+  bottom: 50%;
+  color: #9EA4AE;
+  color: undefined;
+}
+
+.c55 {
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
+  font-size: 1.4rem;
+  left: 50%;
+  bottom: 104.46428571428572%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  border-width: 0.1rem;
+  border-style: solid;
+  border-color: #cccccc;
+  background: #ffffff;
+  width: -1.6rem;
+  height: -1.6rem;
+}
+
+.c55::before {
+  display: block;
+  position: absolute;
+}
+
+.c55::before {
+  content: '60℃';
+  font-size: 1.4rem;
+  line-height: 1;
+  left: calc(100% + 10px);
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  -webkit-transform: translateY(50%);
+  bottom: 50%;
+  color: #9EA4AE;
+  color: undefined;
+}
+
+.c56 {
   border-radius: 50%;
   position: absolute;
   z-index: 1;
@@ -1230,13 +1359,13 @@ exports[`default Wrapper 1`] = `
   height: -1.6rem;
 }
 
-.c53::before {
+.c56::before {
   display: block;
   position: absolute;
 }
 
-.c53::before {
-  content: '50℃';
+.c56::before {
+  content: '70℃';
   font-size: 1.4rem;
   line-height: 1;
   left: calc(100% + 10px);
@@ -1245,11 +1374,11 @@ exports[`default Wrapper 1`] = `
   transform: translateY(50%);
   -webkit-transform: translateY(50%);
   bottom: 50%;
-  color: #999;
+  color: #f22735;
   color: undefined;
 }
 
-.c58 {
+.c62 {
   border-radius: 50%;
   position: absolute;
   z-index: 1;
@@ -1268,12 +1397,12 @@ exports[`default Wrapper 1`] = `
   height: -1.6rem;
 }
 
-.c58::before {
+.c62::before {
   display: block;
   position: absolute;
 }
 
-.c58::before {
+.c62::before {
   content: '0℃';
   font-size: 1.4rem;
   line-height: 1;
@@ -1283,11 +1412,11 @@ exports[`default Wrapper 1`] = `
   transform: translateY(50%);
   -webkit-transform: translateY(50%);
   bottom: 50%;
-  color: #333;
+  color: #646A6E;
   color: undefined;
 }
 
-.c59 {
+.c63 {
   border-radius: 50%;
   position: absolute;
   z-index: 1;
@@ -1306,12 +1435,12 @@ exports[`default Wrapper 1`] = `
   height: -1.6rem;
 }
 
-.c59::before {
+.c63::before {
   display: block;
   position: absolute;
 }
 
-.c59::before {
+.c63::before {
   content: '5';
   font-size: 1.4rem;
   line-height: 1;
@@ -1321,11 +1450,11 @@ exports[`default Wrapper 1`] = `
   transform: translateY(50%);
   -webkit-transform: translateY(50%);
   bottom: 50%;
-  color: #999;
+  color: #9EA4AE;
   color: undefined;
 }
 
-.c60 {
+.c64 {
   border-radius: 50%;
   position: absolute;
   z-index: 1;
@@ -1344,12 +1473,12 @@ exports[`default Wrapper 1`] = `
   height: -1.6rem;
 }
 
-.c60::before {
+.c64::before {
   display: block;
   position: absolute;
 }
 
-.c60::before {
+.c64::before {
   content: '10℃';
   font-size: 1.4rem;
   line-height: 1;
@@ -1359,7 +1488,7 @@ exports[`default Wrapper 1`] = `
   transform: translateY(50%);
   -webkit-transform: translateY(50%);
   bottom: 50%;
-  color: #999;
+  color: #f22735;
   color: undefined;
 }
 
@@ -1384,12 +1513,12 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
-  right: -5.8rem;
+  right: -3.6rem;
   color: #ccc;
-  font-size: 4rem;
+  font-size: 1.8rem;
 }
 
-.c62 {
+.c66 {
   position: absolute;
   line-height: 0;
   left: 50%;
@@ -1397,12 +1526,12 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -5.8rem;
+  bottom: -3.6rem;
   color: #999;
-  font-size: 4rem;
+  font-size: 1.8rem;
 }
 
-.c63 {
+.c67 {
   position: absolute;
   line-height: 0;
   left: 50%;
@@ -1410,9 +1539,9 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  top: -5.8rem;
+  top: -3.6rem;
   color: #ccc;
-  font-size: 4rem;
+  font-size: 1.8rem;
 }
 
 .c33 {
@@ -1541,7 +1670,13 @@ exports[`default Wrapper 1`] = `
       </div>
     </div>
   </div>
-  <div>
+  <div
+    style={
+      Object {
+        "marginTop": "40px",
+      }
+    }
+  >
     <div
       className="c0"
       onMouseDown={[Function]}
@@ -2746,7 +2881,7 @@ exports[`default Wrapper 1`] = `
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
               "height": "0.6rem",
-              "width": "-9.6rem",
+              "width": "-7.4rem",
             }
           }
           value={
@@ -2773,7 +2908,7 @@ exports[`default Wrapper 1`] = `
               onMouseUp={[Function]}
               style={
                 Object {
-                  "color": "#666",
+                  "color": "#9EA4AE",
                 }
               }
             />
@@ -2796,7 +2931,7 @@ exports[`default Wrapper 1`] = `
               onMouseUp={[Function]}
               style={
                 Object {
-                  "color": "#666",
+                  "color": "#9EA4AE",
                 }
               }
             />
@@ -3639,17 +3774,27 @@ exports[`default Wrapper 1`] = `
             style={Object {}}
           />
           <span
-            className="c46"
-            data-sign="mask"
-            style={Object {}}
-          />
-          <span
             className="c53"
             data-sign="mask"
             style={Object {}}
           />
-          <div
+          <span
             className="c54"
+            data-sign="mask"
+            style={Object {}}
+          />
+          <span
+            className="c55"
+            data-sign="mask"
+            style={Object {}}
+          />
+          <span
+            className="c56"
+            data-sign="mask"
+            style={Object {}}
+          />
+          <div
+            className="c57"
             style={
               Object {
                 "backgroundColor": "#4d63ff",
@@ -3657,7 +3802,7 @@ exports[`default Wrapper 1`] = `
             }
           />
           <span
-            className="c49"
+            className="c58"
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
@@ -3679,7 +3824,7 @@ exports[`default Wrapper 1`] = `
             
           </span>
           <span
-            className="c55"
+            className="c59"
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
@@ -3765,7 +3910,7 @@ exports[`default Wrapper 1`] = `
           }
         >
           <div
-            className="c56"
+            className="c60"
             style={
               Object {
                 "backgroundColor": "#e8e8e8",
@@ -3773,7 +3918,7 @@ exports[`default Wrapper 1`] = `
             }
           />
           <span
-            className="c57"
+            className="c61"
             disabled={true}
             onMouseDown={null}
             onMouseEnter={[Function]}
@@ -3857,17 +4002,17 @@ exports[`default Wrapper 1`] = `
           }
         >
           <span
-            className="c58"
+            className="c62"
             data-sign="mask"
             style={Object {}}
           />
           <span
-            className="c59"
+            className="c63"
             data-sign="mask"
             style={Object {}}
           />
           <span
-            className="c60"
+            className="c64"
             data-sign="mask"
             style={Object {}}
           />
@@ -3928,7 +4073,7 @@ exports[`default Wrapper 1`] = `
       style={Object {}}
     >
       <div
-        className="c61"
+        className="c65"
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
@@ -3952,7 +4097,7 @@ exports[`default Wrapper 1`] = `
               "borderTopLeftRadius": "0.6rem",
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
-              "height": "-11.6rem",
+              "height": "-7.2rem",
               "width": "0.6rem",
             }
           }
@@ -3963,7 +4108,7 @@ exports[`default Wrapper 1`] = `
           }
         >
           <span
-            className="c62"
+            className="c66"
             style={Object {}}
             value={
               Array [
@@ -3980,13 +4125,13 @@ exports[`default Wrapper 1`] = `
               onMouseUp={[Function]}
               style={
                 Object {
-                  "color": "#666",
+                  "color": "#9EA4AE",
                 }
               }
             />
           </span>
           <span
-            className="c63"
+            className="c67"
             style={Object {}}
             value={
               Array [
@@ -4003,7 +4148,7 @@ exports[`default Wrapper 1`] = `
               onMouseUp={[Function]}
               style={
                 Object {
-                  "color": "#666",
+                  "color": "#9EA4AE",
                 }
               }
             />
@@ -4017,7 +4162,7 @@ exports[`default Wrapper 1`] = `
             }
           />
           <span
-            className="c64"
+            className="c68"
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
