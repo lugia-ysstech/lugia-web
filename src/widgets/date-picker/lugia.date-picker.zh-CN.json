@@ -291,7 +291,7 @@
         "width": 192,
         "height": 32,
         "background": {
-          "color": "#ffffff"
+          "color": "#fff"
         },
         "border": {
           "top": { "color": "#ccc", "style": "solid", "width": 1 },
@@ -311,7 +311,7 @@
     },
     "InputPrefix": {
       "normal": {
-        "color": "#999999",
+        "color": "#999",
         "font": {
           "size": 14,
           "weight": "normal"
@@ -320,7 +320,7 @@
     },
     "InputSuffix": {
       "normal": {
-        "color": "#999999",
+        "color": "#999",
         "font": {
           "size": 14,
           "weight": "normal"
@@ -329,7 +329,7 @@
     },
     "ClearButton": {
       "normal": {
-        "color": "#999999",
+        "color": "#999",
         "font": {
           "size": 14,
           "weight": "normal"
@@ -355,7 +355,7 @@
     },
     "InMonthDate": {
       "normal": {
-        "color": "#666666",
+        "color": "#666",
         "fontSize": 14
       }
     },
