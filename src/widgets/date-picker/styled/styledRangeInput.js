@@ -2,9 +2,8 @@ import { css } from 'styled-components';
 import { getBackground, FontSize } from '../../css/input';
 import { px2remcss } from '../../css/units';
 import CSSComponent from '@lugia/theme-css-hoc';
-import { getBorder } from '@lugia/theme-utils';
-import { themeColor } from './utils';
-const { lightGreyColor, normalColor, borderSize, paddingToText } = themeColor;
+import { getThemeUpdate } from './utils';
+
 export const em = px2remcss;
 
 export const RangeInputWrap = CSSComponent({
@@ -19,15 +18,9 @@ export const RangeInputWrap = CSSComponent({
       ['borderRadius'],
       ['background'],
     ],
-    defaultTheme: {
-      border: getBorder({ style: 'solid', width: borderSize, color: lightGreyColor }),
-    },
   },
   hover: {
     selectNames: [['border'], ['boxShadow'], ['borderRadius'], ['background']],
-    defaultTheme: {
-      border: getBorder({ color: normalColor }),
-    },
   },
   active: {
     selectNames: [['border'], ['boxShadow'], ['borderRadius'], ['background']],
@@ -37,9 +30,6 @@ export const RangeInputWrap = CSSComponent({
   },
   disabled: {
     selectNames: [['border'], ['boxShadow'], ['borderRadius'], ['background'], ['borderRadius']],
-    defaultTheme: {
-      border: getBorder({ color: lightGreyColor }),
-    },
   },
   css: css`
     font-size: ${FontSize}rem;
@@ -127,6 +117,6 @@ export const RangeMiddleSpan = CSSComponent({
     display: flex;
     align-items: center;
     background: transparent;
-    padding: 0 ${paddingToText}px;
+    padding: 0 ${getThemeUpdate().paddingToText}px;
   `,
 });
