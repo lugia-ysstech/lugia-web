@@ -17,6 +17,7 @@ import {
   lightGreyColor,
 } from './slider_public_color';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
+import get from '../css/theme-common-dict';
 
 const em = px2remcss;
 type CssTypeProps = {
@@ -415,7 +416,7 @@ export const Dot = CSSComponent({
     getCSS() {
       return `
          &::before{
-          color:${disableTextColor};
+          color:${get('disableTextColor')};
          }
       `;
     },
@@ -563,9 +564,9 @@ const getDotStyle = (props: CssTypeProps) => {
       isChangDotBg = valueInRange(dotIndex, value);
       isBiger = isChangDotBg;
     }
-    let dotBorder = lightGreyColor;
+    let dotBorder = get('lightGreyColor');
     let dotBg = '#ffffff';
-    let dotColor = dotNormalColor;
+    let dotColor = get('mediumGreyColor');
     let dotFontSize = 14;
     if (isShowDot) {
       dotBorder = 'transparent';
@@ -576,7 +577,7 @@ const getDotStyle = (props: CssTypeProps) => {
       dotBg = '#ffffff';
     }
     if (isBiger) {
-      dotColor = dotThroughColor;
+      dotColor = get('darkGreyColor');
     }
     if (dotStyle && dotStyle.color) {
       dotColor = dotStyle.color;
@@ -585,7 +586,7 @@ const getDotStyle = (props: CssTypeProps) => {
       dotFontSize = dotStyle.fontSize;
     }
     if (!(dotStyle && dotStyle.color) && isMaxValueDot) {
-      dotColor = dangerColor;
+      dotColor = get('dangerColor');
     }
     dotBackground = `
       border-width:${em(1)};
