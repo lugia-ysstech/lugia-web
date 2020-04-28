@@ -1,8 +1,9 @@
 import { css } from 'styled-components';
 
-import { themeColor, getDateWrrap, em } from './utils';
+import { getDateWrrap, em } from './utils';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
-const { borderColor } = themeColor;
+import { getThemeUpdate } from './utils';
+
 export const FooterButtonsWrap = StaticComponent({
   tag: 'div',
   css: css`
@@ -21,7 +22,7 @@ export const FooterWrap = StaticComponent({
 function getBorder(props) {
   const { showFooter } = props;
   if (showFooter) {
-    return `border-top: 1px solid ${borderColor} ;`;
+    return `border-top: 1px solid ${getThemeUpdate().borderColor} ;`;
   }
   return '';
 }

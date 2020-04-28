@@ -1,8 +1,8 @@
 import { css } from 'styled-components';
 import { getDateWrrap, fontSize, em } from './utils';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
-import { themeColor } from './utils';
-const { borderColor } = themeColor;
+import { getThemeUpdate } from './utils';
+
 export const TimeWrap = CSSComponent({
   tag: 'div',
   className: 'TimeWrap',
@@ -30,7 +30,7 @@ export const TimeWrap = CSSComponent({
       clear: both;
     }
 
-    ${props => (props.noBorder ? '' : `border-right: 1px solid ${borderColor}`)};
+    ${props => (props.noBorder ? '' : `border-right: 1px solid ${getThemeUpdate().borderColor}`)};
   `,
 });
 export const TimeWrapInner = StaticComponent({
@@ -79,7 +79,7 @@ export const TimeTitle = CSSComponent({
   css: css`
     font-size: ${em(14)};
     text-align: center;
-    border-bottom: 1px solid ${borderColor};
+    border-bottom: 1px solid ${getThemeUpdate().borderColor};
     padding: ${getDateWrrap().top} 0 ${em(12)};
   `,
 });
