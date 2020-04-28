@@ -318,7 +318,7 @@ export const Tipinner = CSSComponent({
   css: css`
     display: block;
     min-width: ${em(40)};
-    padding: ${em(4)} ${em(horizontalPadding)};
+    padding: 0 ${em(horizontalPadding)};
     user-select: none;
     -webkit-user-select: none;
     position: relative;
@@ -333,7 +333,6 @@ export const Tipinner = CSSComponent({
       top: 0;
       z-index: 1;
       border-radius: ${em(3)};
-      padding: 0 ${em(3)};
       text-align: center;
       overflow: hidden;
     }
