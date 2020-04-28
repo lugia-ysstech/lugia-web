@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Message css 1`] = `
-.c2 {
+.c3 {
   font-size: 1.4rem;
   text-align: center;
   -webkit-transition: all 0.3s;
@@ -9,12 +9,12 @@ exports[`Message css 1`] = `
   padding: 0.8rem;
 }
 
-.c3 {
+.c4 {
   display: inline-block;
   -webkit-animation: hJDLVB 0.3s ease-in;
   animation: hJDLVB 0.3s ease-in;
   opacity: 1;
-  box-shadow: 0px 0px 6px 0px rgba(102,102,102,0.2);
+  box-shadow: 0px 0px 6px 0px #cccccc;
   font-size: 1.4rem;
   background-color: #fff;
   border-top-left-radius: 0.4rem;
@@ -27,7 +27,7 @@ exports[`Message css 1`] = `
   padding-right: 2rem;
 }
 
-.c5 {
+.c6 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -35,10 +35,10 @@ exports[`Message css 1`] = `
   cursor: pointer;
   position: relative;
   top: 0.3rem;
-  margin-right: 1rem;
+  margin-right: 0.6rem;
 }
 
-.c8 {
+.c9 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -46,22 +46,22 @@ exports[`Message css 1`] = `
   cursor: pointer;
   position: relative;
   top: 0.3rem;
-  margin-right: 1rem;
+  margin-right: 0.6rem;
   -webkit-animation: iECmZH 1s infinite linear;
   animation: iECmZH 1s infinite linear;
 }
 
-.c6 {
-  color: #000;
+.c7 {
+  color: #646A6E;
   font-size: 1.4rem;
 }
 
-.c4 {
+.c5 {
   display: inline-block;
   line-height: 3rem;
 }
 
-.c7 {
+.c8 {
   display: inline-block;
   line-height: 2rem;
 }
@@ -70,7 +70,6 @@ exports[`Message css 1`] = `
   display: inline-block;
   margin-bottom: 0;
   box-sizing: border-box;
-  text-align: center;
   touch-action: manipulation;
   cursor: pointer;
   white-space: nowrap;
@@ -99,9 +98,26 @@ exports[`Message css 1`] = `
   border-right-color: #cccccc;
 }
 
-.c1 {
-  color: #666666;
+.c2 {
+  color: #646A6E;
   font-size: 1.4rem;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
 <div>
@@ -148,14 +164,18 @@ exports[`Message css 1`] = `
   >
     <span
       className="c1"
-      style={
-        Object {
-          "color": "#666666",
-          "fontSize": "1.4rem",
-        }
-      }
     >
-      普通提示
+      <span
+        className="c2"
+        style={
+          Object {
+            "color": "#646A6E",
+            "fontSize": "1.4rem",
+          }
+        }
+      >
+        普通提示
+      </span>
     </span>
   </button>
   <br />
@@ -201,14 +221,18 @@ exports[`Message css 1`] = `
   >
     <span
       className="c1"
-      style={
-        Object {
-          "color": "#666666",
-          "fontSize": "1.4rem",
-        }
-      }
     >
-      成功提示
+      <span
+        className="c2"
+        style={
+          Object {
+            "color": "#646A6E",
+            "fontSize": "1.4rem",
+          }
+        }
+      >
+        成功提示
+      </span>
     </span>
   </button>
   <br />
@@ -254,14 +278,18 @@ exports[`Message css 1`] = `
   >
     <span
       className="c1"
-      style={
-        Object {
-          "color": "#666666",
-          "fontSize": "1.4rem",
-        }
-      }
     >
-      错误提示
+      <span
+        className="c2"
+        style={
+          Object {
+            "color": "#646A6E",
+            "fontSize": "1.4rem",
+          }
+        }
+      >
+        错误提示
+      </span>
     </span>
   </button>
   <br />
@@ -307,14 +335,18 @@ exports[`Message css 1`] = `
   >
     <span
       className="c1"
-      style={
-        Object {
-          "color": "#666666",
-          "fontSize": "1.4rem",
-        }
-      }
     >
-      警告提示
+      <span
+        className="c2"
+        style={
+          Object {
+            "color": "#646A6E",
+            "fontSize": "1.4rem",
+          }
+        }
+      >
+        警告提示
+      </span>
     </span>
   </button>
   <br />
@@ -360,14 +392,18 @@ exports[`Message css 1`] = `
   >
     <span
       className="c1"
-      style={
-        Object {
-          "color": "#666666",
-          "fontSize": "1.4rem",
-        }
-      }
     >
-      加载提示
+      <span
+        className="c2"
+        style={
+          Object {
+            "color": "#646A6E",
+            "fontSize": "1.4rem",
+          }
+        }
+      >
+        加载提示
+      </span>
     </span>
   </button>
   <div
@@ -378,10 +414,10 @@ exports[`Message css 1`] = `
     }
   >
     <div
-      className="c2"
+      className="c3"
     >
       <div
-        className="c3"
+        className="c4"
         style={
           Object {
             "backgroundColor": "green",
@@ -413,11 +449,11 @@ exports[`Message css 1`] = `
         }
       >
         <span
-          className="c4"
+          className="c5"
           height={30}
         >
           <i
-            className="lugia-icon-reminder_info_circle   c5"
+            className="lugia-icon-reminder_info_circle   c6"
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
@@ -432,7 +468,7 @@ exports[`Message css 1`] = `
             }
           />
           <span
-            className="c6"
+            className="c7"
             style={
               Object {
                 "color": "red",
@@ -449,18 +485,18 @@ exports[`Message css 1`] = `
     <br />
     <br />
     <div
-      className="c2"
+      className="c3"
     >
       <div
-        className="c3"
+        className="c4"
         style={Object {}}
       >
         <span
-          className="c7"
+          className="c8"
           height={20}
         >
           <i
-            className="lugia-icon-reminder_info_circle   c5"
+            className="lugia-icon-reminder_info_circle   c6"
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
@@ -475,7 +511,7 @@ exports[`Message css 1`] = `
             }
           />
           <span
-            className="c6"
+            className="c7"
             style={Object {}}
           >
             hello world
@@ -486,18 +522,18 @@ exports[`Message css 1`] = `
     <br />
     <br />
     <div
-      className="c2"
+      className="c3"
     >
       <div
-        className="c3"
+        className="c4"
         style={Object {}}
       >
         <span
-          className="c7"
+          className="c8"
           height={20}
         >
           <i
-            className="lugia-icon-reminder_check_circle   c5"
+            className="lugia-icon-reminder_check_circle   c6"
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
@@ -512,7 +548,7 @@ exports[`Message css 1`] = `
             }
           />
           <span
-            className="c6"
+            className="c7"
             style={Object {}}
           >
             hello world
@@ -523,18 +559,18 @@ exports[`Message css 1`] = `
     <br />
     <br />
     <div
-      className="c2"
+      className="c3"
     >
       <div
-        className="c3"
+        className="c4"
         style={Object {}}
       >
         <span
-          className="c7"
+          className="c8"
           height={20}
         >
           <i
-            className="lugia-icon-reminder_close_circle   c5"
+            className="lugia-icon-reminder_close_circle   c6"
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
@@ -549,7 +585,7 @@ exports[`Message css 1`] = `
             }
           />
           <span
-            className="c6"
+            className="c7"
             style={Object {}}
           >
             hello world
@@ -560,18 +596,18 @@ exports[`Message css 1`] = `
     <br />
     <br />
     <div
-      className="c2"
+      className="c3"
     >
       <div
-        className="c3"
+        className="c4"
         style={Object {}}
       >
         <span
-          className="c7"
+          className="c8"
           height={20}
         >
           <i
-            className="lugia-icon-reminder_exclamation_circle   c5"
+            className="lugia-icon-reminder_exclamation_circle   c6"
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
@@ -586,7 +622,7 @@ exports[`Message css 1`] = `
             }
           />
           <span
-            className="c6"
+            className="c7"
             style={Object {}}
           >
             hello world
@@ -597,18 +633,18 @@ exports[`Message css 1`] = `
     <br />
     <br />
     <div
-      className="c2"
+      className="c3"
     >
       <div
-        className="c3"
+        className="c4"
         style={Object {}}
       >
         <span
-          className="c7"
+          className="c8"
           height={20}
         >
           <i
-            className="lugia-icon-financial_loading_o   c8"
+            className="lugia-icon-financial_loading_o   c9"
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
@@ -623,7 +659,7 @@ exports[`Message css 1`] = `
             }
           />
           <span
-            className="c6"
+            className="c7"
             style={Object {}}
           >
             hello world
