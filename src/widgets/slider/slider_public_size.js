@@ -8,8 +8,7 @@ export const btnWidthNormal = 16;
 export const rangeHeightNormal = 6;
 export const rangeWidthNormal = '100%';
 export const dotStyles = {
-  distanceForSlider: 25,
+  distanceForSlider: get('marginToPeerElementForY'),
 };
 export const horizontalPadding = get('padding');
-export const marginToPeerElementForY = get('marginToPeerElementForY');
 export const mFontSize = get('mFontSize');

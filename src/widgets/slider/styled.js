@@ -4,12 +4,12 @@
  * */
 import { css } from 'styled-components';
 import { valueInRange } from '../common/Math';
-import { iconStyles, horizontalPadding, marginToPeerElementForY } from './slider_public_size';
+import { iconStyles, dotStyles, horizontalPadding } from './slider_public_size';
 import { px2remcss } from '../css/units';
 import {
   iconNormalColor,
   iconChangeColor,
-  blackColor,
+  TipsArrowBorderColor,
   disableTextColor,
   dotNormalColor,
   dotThroughColor,
@@ -356,7 +356,10 @@ function getTipsArrowBorder(themeMate) {
   const {
     background: { color = '' } = {},
     border: {
-      bottom: { color: bottomBorderColor = blackColor, style: bottomBorderStyle = 'solid' } = {},
+      bottom: {
+        color: bottomBorderColor = TipsArrowBorderColor,
+        style: bottomBorderStyle = 'solid',
+      } = {},
     } = {},
     boxShadow: { color: boxShadowColor = '', x = 0, y = 0, blur = 0, spread = 0 } = {},
     borderRadius: { topLeft = 3, topRight = 3, bottomRight = 3, bottomLeft = 3 } = {},
@@ -596,10 +599,11 @@ const getDotStyle = (props: CssTypeProps) => {
 
     const { dotMoveX, vertical } = marksData;
     const dotPosLeft = vertical ? 50 : dotMoveX;
+    const { distanceForSlider } = dotStyles;
     const dotPosTorBot = vertical ? `bottom: ${dotMoveX}%` : 'top: 50%';
     const dotPosTrans = vertical ? 'translateX' : 'translateY';
-    const dotTextLeft = vertical ? `left: calc(100% + ${marginToPeerElementForY}px)` : 'left:50%';
-    const dotTextTop = vertical ? '50%' : `-${marginToPeerElementForY + 15}px`;
+    const dotTextLeft = vertical ? `left: calc(100% + ${distanceForSlider}px)` : 'left:50%';
+    const dotTextTop = vertical ? '50%' : `-${distanceForSlider + 15}px`;
     const dotTextTrans = vertical ? 'translateY(50%)' : 'translateX(-50%)';
     dotTextPosition = `
       font-size:${px2remcss(dotFontSize)};
