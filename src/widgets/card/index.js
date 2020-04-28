@@ -14,14 +14,14 @@ import CSSComponent, { css, StaticComponent } from '../theme/CSSProvider';
 import ThemeHoc from '../theme-provider/index';
 import { units } from '@lugia/css';
 import { deepMerge } from '@lugia/object-utils';
-import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
-
+import { getBorderRadius } from '@lugia/theme-utils';
+import { blackColor } from '../css/inputtag';
+import get from '../css/theme-common-dict';
 const { px2remcss } = units;
 const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
-const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
-const superLightColor = '$lugia-dict.@lugia/lugia-web.superLightColor';
 const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
+const borderRadiusValue = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
 
 const checkSizeIsNumber = size => {
   let theSize = size;
@@ -54,6 +54,9 @@ const CardOutContainer = CSSComponent({
       ['padding'],
       ['opacity'],
     ],
+    defaultTheme: {
+      boxShadow: get('normalBoxShadow'),
+    },
     getCSS(themeMeta: Object, themeProps: Object) {
       const {
         propsConfig: { imageOrientation, type, minHeight },
@@ -77,9 +80,7 @@ const CardOutContainer = CSSComponent({
         background: {
           color: defaultColor,
         },
-        border: getBorder({ color: lightGreyColor, width: 1, style: 'solid' }),
-        borderRadius: getBorderRadius(5),
-        boxShadow: getBoxShadow('0 0 6 rgba(0, 0, 50, 0.1)'),
+        borderRadius: getBorderRadius(borderRadiusValue),
       };
     },
   },
@@ -218,6 +219,11 @@ const AvatarContainer = CSSComponent({
       ['boxShadow'],
       ['opacity'],
     ],
+    defaultTheme: {
+      padding: {
+        top: 28,
+      },
+    },
     getCSS(themeMeta: Object, themeProps: Object) {
       const { width, height } = themeMeta;
       const {
@@ -289,6 +295,7 @@ const Title = CSSComponent({
     defaultTheme: {
       fontSize: 16,
       width: '100%',
+      color: blackColor,
     },
   },
   css: css`
@@ -310,12 +317,12 @@ const TitleHeadContainer = CSSComponent({
       ['boxShadow'],
     ],
     defaultTheme: {
-      padding: {
-        top: 10,
-      },
       borderRadius: {
         topLeft: 5,
         topRight: 5,
+      },
+      padding: {
+        top: 10,
       },
     },
   },
@@ -374,8 +381,11 @@ const TitleBottomLine = CSSComponent({
         bottom: {
           style: 'solid',
           width: 1,
-          color: superLightColor,
+          color: get('borderColor'),
         },
+      },
+      margin: {
+        top: 10,
       },
     },
     getCSS(themeMeta, themeProps) {
@@ -548,30 +558,32 @@ class Card extends React.Component<CardProps, CardState> {
   getPaddingByType(type: string, position: string, imageOrientation: ImageOrientation) {
     let left = 0;
     let top = 0;
-    if (type === 'avatar' && !isHorizontal(imageOrientation)) {
-      left = 0;
-    } else if (type === 'tip') {
+    let bottom = 0;
+
+    if (type === 'tip') {
       switch (position) {
         case 'description':
           left = 16;
           break;
         case 'title':
         default:
-          left = 10;
+          left = 12;
           break;
       }
     } else {
-      left = 10;
+      left = 12;
     }
     switch (position) {
       case 'content':
         top = 16;
+        bottom = 10;
         break;
       case 'description':
         top = 14;
+        bottom = 10;
         break;
       case 'title':
-        top = 13;
+        top = 14;
         break;
       default:
         top = 0;
@@ -581,7 +593,8 @@ class Card extends React.Component<CardProps, CardState> {
       padding: {
         left,
         top,
-        right: 10,
+        right: 12,
+        bottom,
       },
     };
   }
