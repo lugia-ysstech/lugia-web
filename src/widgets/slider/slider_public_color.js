@@ -23,3 +23,4 @@ export const disableTextColor = get('disableTextColor');
 export const dangerColor = get('dangerColor');
 export const lightGreyColor = get('lightGreyColor');
 export const borderColor = get('borderColor');
+export const normalBoxShadow = get('normalBoxShadow');
