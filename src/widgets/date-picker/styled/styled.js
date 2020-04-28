@@ -1,9 +1,9 @@
 import { css } from 'styled-components';
 import { valueInRange } from '../../common/Math';
 import { modeStyle } from '../utils/booleanUtils';
-import { distance, em, fontSize, getDateWrrap, getThemeProperty, themeColor } from './utils';
+import { distance, em, fontSize, getDateWrrap, getThemeProperty } from './utils';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
-const { hoverColor, normalColor, defaultColor, darkGreyColor } = themeColor;
+import { getThemeUpdate } from './utils';
 export const Icons = CSSComponent({
   tag: 'span',
   css: css`
@@ -82,19 +82,9 @@ export const HeaderTopText = CSSComponent({
   className: 'HeaderTopText',
   normal: {
     selectNames: [['color'], ['font'], ['fontSize']],
-    defaultTheme: {
-      font: {
-        size: 14,
-        weight: 500,
-      },
-      color: darkGreyColor,
-    },
   },
   hover: {
     selectNames: [['color']],
-    defaultTheme: {
-      color: hoverColor,
-    },
   },
   active: {
     selectNames: [['color']],
@@ -180,12 +170,12 @@ export const HeaderWeek = CSSComponent({
 function getHeaderWeekStyle(props) {
   const { normalTheme, hoverTheme } = props;
   const { color, fontSize, font: { size } = {} } = normalTheme;
-  const { color: hoverColor, fontSize: hoverFont, font: { size: hoverSize } = {} } = hoverTheme;
+  const { color: hoverC, fontSize: hoverFont, font: { size: hoverSize } = {} } = hoverTheme;
   return `
     color:${color};
     font-size:${em(size || fontSize)};
     &:hover{
-      color:${hoverColor};
+      color:${hoverC};
       font-size:${em(hoverSize || hoverFont)};
     }
   `;
@@ -468,10 +458,10 @@ const getDateChildStyle = props => {
       &:nth-child(${todayInd})>i{
        ${todayBorder};
         color:${todayColor};
-        background:${defaultColor};
+        background:${getThemeUpdate().defaultColor};
         ${normalBorderRadius};
         &:hover {
-          background: ${hoverColor};
+          background: ${getThemeUpdate().hoverColor};
           color:#fff;
           border-radius:${radiusTvalueH} ${radiusRvalueH} ${radiusBvalueH} ${radiusLvalueH};
         }
@@ -480,7 +470,9 @@ const getDateChildStyle = props => {
   `;
   let chooseWeeks;
   if (isChooseWeek || isHoverWeek) {
-    const backG = isChooseWeek ? `${normalColor}` : `${hoverColor}`;
+    const backG = isChooseWeek
+      ? `${getThemeUpdate().normalColor}`
+      : `${getThemeUpdate().hoverColor}`;
     const start = isChooseWeek ? startInWeeks : weekHoverStart;
     const end = isChooseWeek ? endInWeeks : weekHoverEnd;
     const todayIn = valueInRange(todayIndex, [start, end]);
@@ -559,7 +551,7 @@ function getOtherChildTextStyle(props) {
   const {
     themeConfig: {
       active,
-      hover: { color: hoverColor },
+      hover: { color: hoverC },
     },
   } = themeProps;
   const {
@@ -572,7 +564,7 @@ function getOtherChildTextStyle(props) {
   if (!isChose) {
     return `
       &:hover{
-        color:${hoverColor};
+        color:${hoverC};
       }
     `;
   }

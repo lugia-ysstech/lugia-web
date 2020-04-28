@@ -1,4 +1,3 @@
-import { themeColor } from '../styled/utils';
 import { deepMerge } from '@lugia/object-utils';
 import { getBorder, getBorderRadius } from '@lugia/theme-utils';
 import { modeStyle } from '../utils/booleanUtils';
@@ -9,36 +8,7 @@ import {
   validateWidthTheme,
 } from '../../css/validateHoc';
 import changeColor from '../../css/utilsColor';
-const {
-  defaultColor,
-  normalColor,
-  hoverColor,
-  disableColor,
-  darkGreyColor,
-  normalBorder,
-  hoverBorder,
-  activeBorder,
-  disabledBorder,
-  superLightColor,
-  focusBorder,
-  smallSize,
-  normalSize,
-  largeSize,
-  disabledBoxShadow,
-  borderRadiusValue,
-  largeBorderRadiusValue,
-  lightGreyColor,
-  blackColor,
-  disableTextColor,
-  mediumGreyColor,
-  xxsFontSize,
-  xsFontSize,
-  sFontSize,
-  normalBoxShadow,
-  publicPadding,
-  marginToSameElement,
-  paddingToText,
-} = themeColor;
+import { getThemeUpdate } from '../styled/utils';
 
 export default function getThemeProps(props, partName) {
   const { getPartOfThemeProps, mode } = props;
@@ -47,6 +17,7 @@ export default function getThemeProps(props, partName) {
   return themeProps;
 }
 function getSizeHeight(size: string) {
+  const { smallSize, normalSize, largeSize } = getThemeUpdate();
   let height = normalSize;
   switch (size) {
     case 'small':
@@ -61,6 +32,7 @@ function getSizeHeight(size: string) {
   return height;
 }
 function getDefaultStyleFromSize(size: string) {
+  const { largeBorderRadiusValue, borderRadiusValue } = getThemeUpdate();
   return {
     defaultBorderRadius: size === 'large' ? largeBorderRadiusValue : borderRadiusValue,
     defaultFontSize: size === 'small' ? 12 : 14,
@@ -73,6 +45,18 @@ export function getWrapThemeProps(props, partName) {
   themeProps.themeState.focus = visible;
   const { themeConfig = {} } = themeProps;
   const { defaultBorderRadius, defaultFontSize } = getDefaultStyleFromSize(size);
+  const {
+    normalBorder,
+    hoverBorder,
+    activeBorder,
+    focusBorder,
+    disabledBorder,
+    disabledBoxShadow,
+    blackColor,
+    disableColor,
+    disableTextColor,
+    normalColor,
+  } = getThemeUpdate();
   const defaultNormal = {
     normal: {
       width: '100%',
@@ -140,6 +124,7 @@ export function getRangeInputMiddleSymbolTheme(props) {
 
   const themeProps = getPartOfThemeProps('RangeInputMiddleSymbol');
   const { defaultFontSize } = getDefaultStyleFromSize(size);
+  const { darkGreyColor, disableTextColor } = getThemeUpdate();
   const font = {
     fontSize: defaultFontSize,
   };
@@ -159,6 +144,8 @@ export function getRangeInputPlaceholderTheme(props) {
   const { getPartOfThemeProps, size } = props;
   const { defaultFontSize } = getDefaultStyleFromSize(size);
   const themeProps = getPartOfThemeProps('Placeholder');
+  const { lightGreyColor } = getThemeUpdate();
+
   const defaultTheme = {
     normal: {
       color: lightGreyColor,
@@ -177,6 +164,8 @@ export function getDateTheme(props) {
   const { themeConfig: { normal: rangeNormal = {} } = {} } = rangeDateDateThemeProps;
 
   const { themeConfig: { normal: outNormal = {} } = {} } = outMonthDateThemeProps;
+  const { lightGreyColor, blackColor, normalColor, hoverColor, defaultColor } = getThemeUpdate();
+
   const defaultOutNormal = {
     color: lightGreyColor,
   };
@@ -223,6 +212,7 @@ export function getTodayTheme(props, dateNormalTheme) {
   const { getPartOfThemeProps } = props;
 
   const themeProps = getPartOfThemeProps('SelectToday');
+  const { normalColor } = getThemeUpdate();
   const {
     themeConfig: { normal },
   } = themeProps;
@@ -253,6 +243,7 @@ export function getSecondWeekDateTheme(props) {
   const { getPartOfThemeProps } = props;
   const themeProps = getPartOfThemeProps('SecondWeekDate');
   const { themeConfig: { normal = {}, hover = {} } = {} } = themeProps;
+  const { blackColor, normalColor } = getThemeUpdate();
   const defaultNormal = {
     color: blackColor,
     fontSize: 14,
@@ -275,6 +266,7 @@ export function getFacePanelContain(props) {
   const themeProps = getThemeProps({ ...props }, 'FacePanelContain');
   const { themeConfig = {}, propsConfig } = themeProps;
   const { normal = {} } = themeConfig;
+  const { normalBoxShadow, defaultColor, borderRadiusValue } = getThemeUpdate();
   const defaultNormal = {
     background: { color: defaultColor },
     borderRadius: getBorderRadius(borderRadiusValue),
@@ -344,6 +336,15 @@ function getTimeColSize(width) {
 
 export function getIconTheme(props) {
   const { mode, getPartOfThemeProps, size } = props;
+  const {
+    mediumGreyColor,
+    darkGreyColor,
+    disableTextColor,
+    blackColor,
+    xxsFontSize,
+    xsFontSize,
+    sFontSize,
+  } = getThemeUpdate();
   const clearIconNormal = {
     color: mediumGreyColor,
     fontSize: size === 'small' ? xxsFontSize : xsFontSize,
@@ -398,6 +399,7 @@ export function getHeadArrowTheme(props) {
   const { viewClass: doubleViewClass, theme: doubleTheme } = getPartOfThemeHocProps(
     'HeadDoubleArrow'
   );
+  const { sFontSize, mediumGreyColor, normalColor, disableTextColor } = getThemeUpdate();
   const defaultFontSize = {
     fontSize: sFontSize,
   };
@@ -434,6 +436,7 @@ export function getHeadYearAndMonth(props) {
   const headYearTextTheme = getThemeProps({ mode, getPartOfThemeProps }, 'HeadYearText');
   const headMonthTextTheme = getThemeProps({ mode, getPartOfThemeProps }, 'HeadMonthText');
   const headWeekTextTheme = getThemeProps({ mode, getPartOfThemeProps }, 'HeadWeekText');
+  const { blackColor, normalColor } = getThemeUpdate();
   const defaultFont = {
     fontSize: 14,
   };
@@ -459,6 +462,19 @@ export function getFooterButtonsTheme(props) {
   const themePropsFooterToday = getPartOfThemeProps('FooterToday');
   const themePropsFooterTime = getPartOfThemeProps('FooterTimeButton');
   const themePropsFooterOk = getPartOfThemeProps('FooterOkButton');
+  const {
+    defaultColor,
+    disableColor,
+    normalColor,
+    hoverColor,
+    sFontSize,
+    publicPadding,
+    disableTextColor,
+    normalSize,
+    borderRadiusValue,
+    marginToSameElement,
+    paddingToText,
+  } = getThemeUpdate();
   const defaultTheme = {
     normal: {
       color: normalColor,
@@ -533,6 +549,7 @@ export function getFooterButtonsTheme(props) {
 export function getExtraFooterTheme(props) {
   const { getPartOfThemeProps } = props;
   const themeProps = getPartOfThemeProps('ExtraFooter');
+  const { lightGreyColor, sFontSize } = getThemeUpdate();
   const defaultTheme = {
     normal: {
       color: lightGreyColor,
@@ -544,6 +561,7 @@ export function getExtraFooterTheme(props) {
 export function getBigDate(props) {
   const { getPartOfThemeProps } = props;
   const themeProps = getPartOfThemeProps('GroupDate');
+  const { darkGreyColor, sFontSize, hoverColor, normalColor, borderRadiusValue } = getThemeUpdate();
   const defaultTheme = {
     normal: {
       color: darkGreyColor,
@@ -569,6 +587,7 @@ export function getTimeTheme(props) {
   const timePanelListTheme = getPartOfThemeProps('TimePanelList');
   const selectTimeOptionTheme = getPartOfThemeProps('SelectTimeOption');
   const timePanelHeadTheme = getPartOfThemeProps('TimePanelHead');
+  const { superLightColor, blackColor, normalColor } = getThemeUpdate();
   const defaultTimePanelListTheme = {
     normal: {
       border: getBorder({ width: 1, style: 'solid', color: superLightColor }),
