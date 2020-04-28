@@ -9,9 +9,9 @@ import {
   tipColor,
   themeColor,
   themeHoverColor,
-  normalBoxShadow,
 } from './slider_public_color';
 import { getBorder, getBorderRadius } from '@lugia/theme-utils';
+import get from '../css/theme-common-dict';
 
 function verticalSize(props) {
   let { width, height, vertical } = props;
@@ -273,13 +273,13 @@ function getTipsThemeProps(getPartOfThemeProps) {
   const defaultTipThemeProps = {
     normal: {
       background: {
-        color: tipBackground,
+        color: get('blackColor'),
       },
       height: 27,
       color: tipColor,
       borderRadius: getBorderRadius(2),
       fontSize: 12,
-      boxShadow: normalBoxShadow,
+      boxShadow: get('normalBoxShadow'),
     },
     disabled: {
       background: {
