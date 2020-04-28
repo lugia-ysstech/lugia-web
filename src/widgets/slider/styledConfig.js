@@ -179,7 +179,7 @@ function getSliderPassedWayThemeProps(getPartOfThemeProps, height) {
     },
     active: {
       background: {
-        color: themeColor,
+        color: themeHoverColor,
       },
       height: sliderPassedWayHeight,
     },
@@ -247,7 +247,7 @@ export function getSliderButtonThemeProps(getPartOfThemeProps, vertical) {
       width: btnWidth + 4,
       height: btnHeight + 4,
       background: {
-        color: themeColor,
+        color: themeHoverColor,
       },
     },
     disabled: {
