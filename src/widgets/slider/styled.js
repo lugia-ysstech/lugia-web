@@ -4,20 +4,19 @@
  * */
 import { css } from 'styled-components';
 import { valueInRange } from '../common/Math';
-import { iconStyles } from './slider_public_size';
+import { iconStyles, horizontalPadding, marginToPeerElementForY } from './slider_public_size';
 import { px2remcss } from '../css/units';
-import { iconNormalColor, iconChangeColor } from './slider_public_color';
+import {
+  iconNormalColor,
+  iconChangeColor,
+  blackColor,
+  disableTextColor,
+  dotNormalColor,
+  dotThroughColor,
+  dangerColor,
+  lightGreyColor,
+} from './slider_public_color';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
-import get from '../css/theme-common-dict';
-
-const horizontalPadding = get('padding');
-const disableTextColor = get('disableTextColor');
-const lightGreyColor = get('lightGreyColor');
-const mediumGreyColor = get('mediumGreyColor');
-const darkGreyColor = get('darkGreyColor');
-const dangerColor = get('dangerColor');
-const marginToPeerElementForY = get('marginToPeerElementForY');
-const blackColor = get('blackColor');
 
 const em = px2remcss;
 type CssTypeProps = {
@@ -566,7 +565,7 @@ const getDotStyle = (props: CssTypeProps) => {
     }
     let dotBorder = lightGreyColor;
     let dotBg = '#ffffff';
-    let dotColor = mediumGreyColor;
+    let dotColor = dotNormalColor;
     let dotFontSize = 14;
     if (isShowDot) {
       dotBorder = 'transparent';
@@ -577,7 +576,7 @@ const getDotStyle = (props: CssTypeProps) => {
       dotBg = '#ffffff';
     }
     if (isBiger) {
-      dotColor = darkGreyColor;
+      dotColor = dotThroughColor;
     }
     if (dotStyle && dotStyle.color) {
       dotColor = dotStyle.color;

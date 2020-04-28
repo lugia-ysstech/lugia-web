@@ -7,18 +7,13 @@ import {
   btnDisabledBackground,
   tipBackground,
   tipColor,
+  themeColor,
+  themeHoverColor,
+  borderColor,
 } from './slider_public_color';
 import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
-import get from '../css/theme-common-dict';
 import colorsFunc from '../css/stateColor';
 
-const superLightColor = '$lugia-dict.@lugia/lugia-web.superLightColor';
-const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
-const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
-const themeHoverColor = '$lugia-dict.@lugia/lugia-web.themeHoverColor';
-const blackColor = get('blackColor');
-const defaultColor = get('defaultColor');
-const borderColor = get('borderColor');
 const { hShadow, vShadow, shadowSpread } = colorsFunc();
 
 function verticalSize(props) {
@@ -122,12 +117,12 @@ function getSliderTrackThemeProps(
     },
     active: {
       background: {
-        color: disableColor,
+        color: throughRangeBackground,
       },
     },
     disabled: {
       background: {
-        color: disableColor,
+        color: trackDisabledBackground,
       },
     },
   };
@@ -190,7 +185,7 @@ function getSliderPassedWayThemeProps(getPartOfThemeProps, height) {
     },
     disabled: {
       background: {
-        color: superLightColor,
+        color: btnDisabledBackground,
       },
       height: sliderPassedWayHeight,
     },
@@ -259,7 +254,7 @@ export function getSliderButtonThemeProps(getPartOfThemeProps, vertical) {
       width: btnWidth,
       height: btnHeight,
       background: {
-        color: superLightColor,
+        color: btnDisabledBackground,
       },
     },
   };
@@ -281,10 +276,10 @@ function getTipsThemeProps(getPartOfThemeProps) {
   const defaultTipThemeProps = {
     normal: {
       background: {
-        color: blackColor,
+        color: tipBackground,
       },
       height: 27,
-      color: defaultColor,
+      color: tipColor,
       borderRadius: getBorderRadius(2),
       fontSize: 12,
       boxShadow: getBoxShadow(`${hShadow}px ${vShadow}px ${shadowSpread}px 0 ${borderColor}`),
