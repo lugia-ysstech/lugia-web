@@ -1,5 +1,13 @@
 import { deepMerge } from '@lugia/object-utils';
 import { btnWidthNormal, rangeHeightNormal, rangeWidthNormal } from './slider_public_size';
+import {
+  trackBackground,
+  throughRangeBackground,
+  trackDisabledBackground,
+  btnDisabledBackground,
+  tipBackground,
+  tipColor,
+} from './slider_public_color';
 import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
 import get from '../css/theme-common-dict';
 import colorsFunc from '../css/stateColor';
@@ -92,7 +100,7 @@ function getSliderTrackThemeProps(
       width: rangeWidthNormal,
       height: rangeHeightNormal,
       background: {
-        color: superLightColor,
+        color: trackBackground,
       },
       border: getBorder({ color: '', style: '', width: 0 }),
       borderRadius: getBorderRadius(6),
@@ -109,7 +117,7 @@ function getSliderTrackThemeProps(
     ...mergeSliderTrackNormal,
     hover: {
       background: {
-        color: disableColor,
+        color: throughRangeBackground,
       },
     },
     active: {
