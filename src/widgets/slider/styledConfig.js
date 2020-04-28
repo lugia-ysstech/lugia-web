@@ -9,12 +9,9 @@ import {
   tipColor,
   themeColor,
   themeHoverColor,
-  borderColor,
+  normalBoxShadow,
 } from './slider_public_color';
-import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
-import colorsFunc from '../css/stateColor';
-
-const { hShadow, vShadow, shadowSpread } = colorsFunc();
+import { getBorder, getBorderRadius } from '@lugia/theme-utils';
 
 function verticalSize(props) {
   let { width, height, vertical } = props;
@@ -282,7 +279,13 @@ function getTipsThemeProps(getPartOfThemeProps) {
       color: tipColor,
       borderRadius: getBorderRadius(2),
       fontSize: 12,
-      boxShadow: getBoxShadow(`${hShadow}px ${vShadow}px ${shadowSpread}px 0 ${borderColor}`),
+      boxShadow: normalBoxShadow,
+    },
+    disabled: {
+      background: {
+        color: btnDisabledBackground,
+      },
+      color: '#fff',
     },
   };
   const mergeThemeConfig = deepMerge(defaultTipThemeProps, sliderTipsThemeProps.themeConfig);
