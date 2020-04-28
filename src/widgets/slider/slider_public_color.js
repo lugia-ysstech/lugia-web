@@ -1,7 +1,7 @@
 import colorsFunc from '../css/stateColor';
 export const { themeColor } = colorsFunc();
-export const trackBackground = '#e8e8e8'; //默认底层轨道的颜色
-export const throughRangeBackground = '#f2f2f2'; //底层轨道划过过程的颜色
+export const trackBackground = '$lugia-dict.@lugia/lugia-web.superLightColor'; //默认底层轨道的颜色
+export const throughRangeBackground = '$lugia-dict.@lugia/lugia-web.disableColor'; //底层轨道划过过程的颜色
 export const trackDisabledBackground = '#f2f2f2'; //轨道禁用的颜色
 export const btnDisabledBackground = '#e8e8e8'; ////按钮禁用的颜色
 export const tipBackground = '#333333'; ////提示框背景色
