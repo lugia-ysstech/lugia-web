@@ -8,6 +8,9 @@ const superLightColor = '$lugia-dict.@lugia/lugia-web.superLightColor';
 const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
 const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 const themeHoverColor = '$lugia-dict.@lugia/lugia-web.themeHoverColor';
+const blackColor = get('blackColor');
+const defaultColor = get('defaultColor');
+const borderColor = get('borderColor');
 const { hShadow, vShadow, shadowSpread } = colorsFunc();
 
 function verticalSize(props) {
@@ -270,15 +273,13 @@ function getTipsThemeProps(getPartOfThemeProps) {
   const defaultTipThemeProps = {
     normal: {
       background: {
-        color: get('blackColor'),
+        color: blackColor,
       },
       height: 27,
-      color: get('defaultColor'),
+      color: defaultColor,
       borderRadius: getBorderRadius(2),
       fontSize: 12,
-      boxShadow: getBoxShadow(
-        `${hShadow}px ${vShadow}px ${shadowSpread}px 0 ${get('borderColor')}`
-      ),
+      boxShadow: getBoxShadow(`${hShadow}px ${vShadow}px ${shadowSpread}px 0 ${borderColor}`),
     },
   };
   const mergeThemeConfig = deepMerge(defaultTipThemeProps, sliderTipsThemeProps.themeConfig);

@@ -10,6 +10,15 @@ import { iconNormalColor, iconChangeColor } from './slider_public_color';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import get from '../css/theme-common-dict';
 
+const horizontalPadding = get('padding');
+const disableTextColor = get('disableTextColor');
+const lightGreyColor = get('lightGreyColor');
+const mediumGreyColor = get('mediumGreyColor');
+const darkGreyColor = get('darkGreyColor');
+const dangerColor = get('dangerColor');
+const marginToPeerElementForY = get('marginToPeerElementForY');
+const blackColor = get('blackColor');
+
 const em = px2remcss;
 type CssTypeProps = {
   background: string,
@@ -312,7 +321,7 @@ export const Tipinner = CSSComponent({
   css: css`
     display: block;
     min-width: ${em(40)};
-    padding: ${em(4)} ${em(get('padding'))};
+    padding: ${em(4)} ${em(horizontalPadding)};
     user-select: none;
     -webkit-user-select: none;
     position: relative;
@@ -348,10 +357,7 @@ function getTipsArrowBorder(themeMate) {
   const {
     background: { color = '' } = {},
     border: {
-      bottom: {
-        color: bottomBorderColor = get('blackColor'),
-        style: bottomBorderStyle = 'solid',
-      } = {},
+      bottom: { color: bottomBorderColor = blackColor, style: bottomBorderStyle = 'solid' } = {},
     } = {},
     boxShadow: { color: boxShadowColor = '', x = 0, y = 0, blur = 0, spread = 0 } = {},
     borderRadius: { topLeft = 3, topRight = 3, bottomRight = 3, bottomLeft = 3 } = {},
@@ -410,7 +416,7 @@ export const Dot = CSSComponent({
     getCSS() {
       return `
          &::before{
-          color:${get('disableTextColor')};
+          color:${disableTextColor};
          }
       `;
     },
@@ -558,9 +564,9 @@ const getDotStyle = (props: CssTypeProps) => {
       isChangDotBg = valueInRange(dotIndex, value);
       isBiger = isChangDotBg;
     }
-    let dotBorder = get('lightGreyColor');
+    let dotBorder = lightGreyColor;
     let dotBg = '#ffffff';
-    let dotColor = get('mediumGreyColor');
+    let dotColor = mediumGreyColor;
     let dotFontSize = 14;
     if (isShowDot) {
       dotBorder = 'transparent';
@@ -571,7 +577,7 @@ const getDotStyle = (props: CssTypeProps) => {
       dotBg = '#ffffff';
     }
     if (isBiger) {
-      dotColor = get('darkGreyColor');
+      dotColor = darkGreyColor;
     }
     if (dotStyle && dotStyle.color) {
       dotColor = dotStyle.color;
@@ -580,7 +586,7 @@ const getDotStyle = (props: CssTypeProps) => {
       dotFontSize = dotStyle.fontSize;
     }
     if (!(dotStyle && dotStyle.color) && isMaxValueDot) {
-      dotColor = get('dangerColor');
+      dotColor = dangerColor;
     }
     dotBackground = `
       border-width:${em(1)};
@@ -593,10 +599,8 @@ const getDotStyle = (props: CssTypeProps) => {
     const dotPosLeft = vertical ? 50 : dotMoveX;
     const dotPosTorBot = vertical ? `bottom: ${dotMoveX}%` : 'top: 50%';
     const dotPosTrans = vertical ? 'translateX' : 'translateY';
-    const dotTextLeft = vertical
-      ? `left: calc(100% + ${get('marginToPeerElementForY')}px)`
-      : 'left:50%';
-    const dotTextTop = vertical ? '50%' : `-${get('marginToPeerElementForY') + 15}px`;
+    const dotTextLeft = vertical ? `left: calc(100% + ${marginToPeerElementForY}px)` : 'left:50%';
+    const dotTextTop = vertical ? '50%' : `-${marginToPeerElementForY + 15}px`;
     const dotTextTrans = vertical ? 'translateY(50%)' : 'translateX(-50%)';
     dotTextPosition = `
       font-size:${px2remcss(dotFontSize)};
