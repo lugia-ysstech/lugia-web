@@ -13,8 +13,8 @@ import {
   LoadingFatherBox,
 } from './styled';
 import Icon from '../icon/index';
-import colorsFunc from '../css/stateColor';
-export const { themeColor } = colorsFunc();
+import get from '../css/theme-common-dict';
+const themeColor = get('themeColor');
 type PropsCheck = {
   width?: number,
   color?: string,
