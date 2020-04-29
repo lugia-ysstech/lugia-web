@@ -163,6 +163,7 @@ export default class SkeletonDemo extends React.Component<any, any> {
         >
           <Box>我是被Skeleton组件包裹的项</Box>
         </Skeleton>
+        <Skeleton />
       </div>
     );
   }

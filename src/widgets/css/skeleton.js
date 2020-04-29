@@ -5,13 +5,12 @@
  */
 import CSSComponent, { css, keyframes } from '@lugia/theme-css-hoc';
 import { px2remcss } from '../css/units';
-import colorsFunc from '../css/stateColor';
-
-const { disableColor, superLightColor } = colorsFunc();
+import get from '../css/theme-common-dict';
+const superLightColor = get('superLightColor');
+const disableColor = get('disableColor');
 
 const defaultPictureWidth = 180;
 const defaultPictureHeight = 128;
-
 /**
  * skeleton
  */
