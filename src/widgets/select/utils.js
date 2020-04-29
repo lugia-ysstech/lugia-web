@@ -29,6 +29,7 @@ export function getInputtagThemeHoc(props: Object): Object {
   const inputtagWrapThemeConfig = getInputtagWrapThemeConfig(props);
   const customInputTagThemeConfig = {
     InputTagWrap: inputtagWrapThemeConfig,
+    TextContent: getPartOfThemeConfig('TextContent'),
     TagWrap: getPartOfThemeConfig('TagWrap'),
     TagIcon: getPartOfThemeConfig('TagIcon'),
     SwitchIcon: getPartOfThemeConfig('SwitchIcon'),

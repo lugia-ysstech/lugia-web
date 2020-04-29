@@ -293,7 +293,12 @@
             ["cursor"]
           ]
         },
-
+        "TextContent": {
+          "name": "单选文本样式",
+          "desc": "单选文本样式",
+          "normal": [["color"], ["font"], ["fontSize"]],
+          "disabled": [["color"], ["font"], ["fontSize"]]
+        },
         "ValidateErrorInput": {
           "name": "校验失败的展示框",
           "desc": "配置校验失败的展示框",
