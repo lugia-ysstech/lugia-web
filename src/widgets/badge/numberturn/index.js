@@ -13,12 +13,12 @@ import KeyBoardEventAdaptor from '../../common/KeyBoardEventAdaptor';
 import CSSComponent from '../../theme/CSSProvider';
 
 import { css } from '../../theme/CSSProvider';
-import colorsFunc from '../../css/stateColor';
 import { units } from '@lugia/css';
 
 const { px2remcss } = units;
-const { dangerColor, defaultColor } = colorsFunc();
 
+const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
+const dangerColor = '$lugia-dict.@lugia/lugia-web.dangerColor';
 type NumberTurnProps = {
   className?: string,
   getTheme: Function,
