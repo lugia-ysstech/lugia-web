@@ -9,7 +9,7 @@ export const btnDisabledBackground = superLightColor; ////按钮禁用的颜色
 export const tipColor = '$lugia-dict.@lugia/lugia-web.defaultColor'; ////提示框字体颜色
 export const iconNormalColor = '#ccc';
 export const iconChangeColor = '#999';
-export const TipsArrowBorderColor = blackColor;
+export const tipsArrowBorderColor = blackColor;
 
 export const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 export const themeHoverColor = '$lugia-dict.@lugia/lugia-web.themeHoverColor';
