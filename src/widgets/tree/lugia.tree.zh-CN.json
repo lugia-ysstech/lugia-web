@@ -24,25 +24,25 @@
     "valueField": {
       "type": "string",
       "desc": "data数据的value值的名称",
-      "defaultValue": "value"
+      "propsDefaultValue": "value"
     },
 
     "displayField": {
       "type": "string",
       "desc": "data数据的displayValue值的名称",
-      "defaultValue": "text"
+      "propsDefaultValue": "text"
     },
 
     "pathField": {
       "type": "string",
       "desc": "data数据的存储节点路径信息字段",
-      "defaultValue": "text"
+      "propsDefaultValue": "path"
     },
 
     "pidField": {
       "type": "string",
       "desc": "data数据的存储节点父节点信息字段",
-      "defaultValue": "text"
+      "propsDefaultValue": "pid"
     },
 
     "value": {
