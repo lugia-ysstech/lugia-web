@@ -309,8 +309,8 @@ export default class EditTableEventListener extends Listener<any> {
     return { currentItem: newItem, newValue: newValueRes, oldValue: oldValueRes };
   };
 
-  getSelectColumnsInfo = (selectInfo: Array<Object>, columns: Array<Object>) => {
-    return selectInfo.map((item: Object, index: number) => {
+  getSelectColumnsInfo = (selectInfo: Array<Object>, columns: Array<Object>): Array<Object> => {
+    return selectInfo.map((item: Object) => {
       const { selectColumn } = item;
       return { ...columns[selectColumn] };
     });
@@ -383,15 +383,38 @@ export default class EditTableEventListener extends Listener<any> {
           keyName = dataIndex;
         }
       });
-      const newRowData = [...data].map((item, index) => {
-        const newItem = { ...item };
-        if (index === selectRow - 1) {
-          newItem[keyName] = value;
-        }
-        return newItem;
-      });
+      const newRowData = this.changeData(data, selectRow, keyName, value);
       return { data: newRowData };
     }
+  };
+
+  changeData = (
+    data: Array<Object>,
+    selectRow: number,
+    keyName: ?string,
+    value: string | number
+  ): Array<Object> => {
+    return [...data].map((item, index) => {
+      const newItem = { ...item };
+      if (index === selectRow - 1) {
+        newItem[keyName] = value;
+      }
+      return newItem;
+    });
+  };
+
+  changeColumns = (props: Object): ?Array<Object> => {
+    const { editCell: { selectColumn } = {}, columns, value, editing } = props;
+    if (!editing) {
+      return;
+    }
+    return [...columns].map((item, index) => {
+      const newItem = { ...item };
+      if (index === selectColumn) {
+        newItem.title = value;
+      }
+      return newItem;
+    });
   };
 
   onCellClick = (props: Object): void => {
