@@ -1,7 +1,6 @@
 import { css } from 'styled-components';
-import { getDateWrrap, fontSize, em } from './utils';
+import { getDateWrrap, fontSize, em, getThemeUpdate } from './utils';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
-import { getThemeUpdate } from './utils';
 
 export const TimeWrap = CSSComponent({
   tag: 'div',
