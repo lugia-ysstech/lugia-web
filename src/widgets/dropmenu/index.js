@@ -12,6 +12,7 @@ import Widget from '../consts/index';
 import '../common/shirm';
 import Menu from '../menu';
 import DropMenuButton from './dropmenuButton';
+export type SizeType = 'large' | 'default' | 'small';
 
 const alignType = 'topLeft | top | topRight | bottomLeft | bottom | bottomRight';
 
@@ -53,6 +54,7 @@ type DropMenuProps = {
   onMouseEnter?: Function,
   onMouseLeave?: Function,
   onMenuClick?: Function,
+  size?: SizeType,
 };
 
 type DropMenuState = {
@@ -73,6 +75,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
     autoHeight: false,
     icons: {},
     createPortal: true,
+    size: 'default',
   };
   state: DropMenuState;
   static displayName = Widget.DropMenu;
@@ -100,7 +103,6 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
 
   render() {
     const { menus, action, hideAction, align, createPortal } = this.props;
-
     const config = {
       [Widget.DropMenuButton]: this.getDropMenuButtonTheme(),
       [Widget.Menu]: this.getMenuTheme(),
@@ -108,13 +110,20 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
 
     let popup;
     if (!menus) {
-      const { data = defaultData, autoHeight, defualtHeight } = this.props;
+      const {
+        data = defaultData,
+        autoHeight,
+        defualtHeight,
+        checkedCSS = 'background',
+      } = this.props;
       popup = (
         <Menu
+          size={'small'}
           data={data}
           autoHeight={autoHeight}
           defualtHeight={defualtHeight}
           onClick={this.onMenuClick}
+          checkedCSS={checkedCSS}
         />
       );
     } else {
@@ -166,10 +175,12 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
       switchIconClass,
       showSwitch,
       icons,
+      size,
     } = this.props;
 
     return (
       <DropMenuButton
+        size={size}
         text={text}
         divided={divided}
         type={type}
@@ -190,7 +201,8 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
   }
 
   ejectOnClick = (menu: Object): Object => {
-    const newChildProps = {};
+    const { checkedCSS = 'background' } = this.props;
+    const newChildProps = { checkedCSS };
     if (!menu.props.onClick) {
       newChildProps.onClick = this.onMenuClick;
     } else {

@@ -8,6 +8,7 @@ import Widget from '../consts/index';
 import ThemeProvider from '../theme-provider';
 import Icon from '../icon';
 import { deepMerge } from '@lugia/object-utils';
+import { getMenuThemeDefaultConfig } from '../css/dropmenubutton';
 
 import {
   NoDividedContainer,
@@ -45,6 +46,8 @@ type DropMenuButtonState = {
   hasButtonChecked: boolean,
 };
 
+const paddingToText = '$lugia-dict.@lugia/lugia-web.paddingToText';
+
 class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButtonState> {
   static displayName = Widget.DropMenuButton;
   static defaultProps = {
@@ -75,12 +78,15 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
   }
 
   getWrapThemeProps = dividedThemeConfig => {
-    const { divided, type, getPartOfThemeProps, disabled } = this.props;
+    const { divided, type, getPartOfThemeProps, disabled, size = 'default' } = this.props;
     const { hasButtonChecked } = this.state;
-
-    return getPartOfThemeProps('Container', {
-      props: { type, checked: hasButtonChecked, disabled, divided, dividedThemeConfig },
+    const customContainerTheme = getPartOfThemeProps('Container', {
+      props: { type, checked: hasButtonChecked, disabled, divided, dividedThemeConfig, size },
     });
+    const defaultContainerTheme = {
+      themeConfig: getMenuThemeDefaultConfig(size, 'Container'),
+    };
+    return deepMerge(defaultContainerTheme, customContainerTheme);
   };
   getNoDevidedButton = () => {
     const { getPartOfThemeProps, disabled, switchIconClass, showSwitch } = this.props;
@@ -106,12 +112,11 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
           {this.getPreIcon(channel)}
           <NoDevidedTextContainer
             lugiaConsumers={channel.consumer}
-            themeProps={getPartOfThemeProps('TextContainer', { disabled })}
+            themeProps={this.getTextContainerTheme(false)}
           >
             {this.getText()}
           </NoDevidedTextContainer>
           {this.getSuffixIcon(channel)}
-
           {showSwitch ? (
             <Icon
               iconClass={iconClass}
@@ -129,7 +134,6 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
 
   getPreOrSuffixIcon = (type: string, iconClass: string, src: string, channel: object) => {
     const { viewClass, theme } = this.getIconTheme(type);
-
     return (
       <Icon
         iconClass={iconClass}
@@ -188,6 +192,46 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
     return this.props.createEventChannel(['active', 'hover', 'disabled']);
   };
 
+  getTextContainerTheme = (isDivider: Boolean) => {
+    const { divided, type, disabled, getPartOfThemeProps, size } = this.props;
+    const { hasButtonChecked } = this.state;
+    const option = isDivider
+      ? {
+          props: {
+            type,
+            checked: hasButtonChecked,
+            disabled,
+            divided,
+            borderRadius: this.getDividedContainerRadius(),
+          },
+        }
+      : {
+          props: {
+            disabled,
+          },
+        };
+    const customizeTextContainerTheme = getPartOfThemeProps('TextContainer', option);
+    const defaultTextContainerTheme = {
+      themeConfig: getMenuThemeDefaultConfig(size, 'TextContainer'),
+    };
+    return deepMerge(defaultTextContainerTheme, customizeTextContainerTheme);
+  };
+
+  getDividerSwitchIcon = () => {
+    const { getPartOfThemeHocProps, size } = this.props;
+    const { viewClass, theme } = getPartOfThemeHocProps('SwitchIcon');
+    const switchIconTheme = deepMerge(getMenuThemeDefaultConfig(size, 'SwitchIcon'));
+    return {
+      viewClass,
+      theme: deepMerge(
+        {
+          [viewClass]: switchIconTheme,
+        },
+        theme
+      ),
+    };
+  };
+
   getDevidedButton = () => {
     const { props, state } = this;
     const {
@@ -210,16 +254,6 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
 
     const dividedThemeConfig = getPartOfThemeConfig('Divided');
 
-    const textContainerTheme = getPartOfThemeProps('TextContainer', {
-      props: {
-        type,
-        checked: hasButtonChecked,
-        disabled,
-        divided,
-        borderRadius: this.getDividedContainerRadius(),
-      },
-    });
-
     return (
       <DividedContainer
         themeProps={this.getWrapThemeProps(dividedThemeConfig)}
@@ -239,7 +273,7 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
             disabled={disabled}
             type={type}
             checked={hasButtonChecked}
-            themeProps={textContainerTheme}
+            themeProps={this.getTextContainerTheme(true)}
             {...leftChannel.provider}
           >
             {this.getPreIcon(leftChannel)}
@@ -277,7 +311,7 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
               iconClass={iconClass}
               lugiaConsumers={rightChannel.consumer}
               singleTheme
-              {...this.props.getPartOfThemeHocProps('SwitchIcon')}
+              {...this.getDividerSwitchIcon()}
               src={iconSrc}
             />
           </PullContainer>
@@ -353,25 +387,30 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
   };
 
   getIconTheme = (iconType: string) => {
-    const { viewClass, theme } = this.props.getPartOfThemeHocProps(iconType);
+    const { size = 'default', getPartOfThemeHocProps } = this.props;
+    const { viewClass, theme } = getPartOfThemeHocProps(iconType);
+    const iconTheme = getMenuThemeDefaultConfig(size, iconType);
 
     switch (iconType) {
       case 'SwitchIcon':
-        const defaultSwitchIconTheme = {
-          normal: {
-            padding: {
-              top: 0,
-              left: 6,
-              bottom: 0,
-              right: 6,
-            },
-            getCSS: () => {
-              return `
+        const defaultSwitchIconTheme = deepMerge(
+          {
+            normal: {
+              padding: {
+                top: 0,
+                left: paddingToText,
+                bottom: 0,
+                right: 0,
+              },
+              getCSS: () => {
+                return `
               transition: all 0.3s
               `;
+              },
             },
           },
-        };
+          iconTheme
+        );
         return {
           viewClass,
           theme: deepMerge(
@@ -383,21 +422,24 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
         };
 
       case 'PrefixIcon':
-        const defaultPreIconTheme = {
-          normal: {
-            padding: {
-              top: 0,
-              left: 0,
-              bottom: 0,
-              right: 3,
-            },
-            getCSS: () => {
-              return `
+        const defaultPreIconTheme = deepMerge(
+          {
+            normal: {
+              padding: {
+                top: 0,
+                left: 0,
+                bottom: 0,
+                right: paddingToText,
+              },
+              getCSS: () => {
+                return `
               transition: all 0.3s
               `;
+              },
             },
           },
-        };
+          iconTheme
+        );
 
         return {
           viewClass,
@@ -410,21 +452,24 @@ class DropMenuButton extends React.Component<DropMenuButtonProps, DropMenuButton
         };
 
       case 'SuffixIcon':
-        const defaultSuffixIconTheme = {
-          normal: {
-            padding: {
-              top: 0,
-              left: 3,
-              bottom: 0,
-              right: 0,
-            },
-            getCSS: () => {
-              return `
+        const defaultSuffixIconTheme = deepMerge(
+          {
+            normal: {
+              padding: {
+                top: 0,
+                left: paddingToText,
+                bottom: 0,
+                right: 0,
+              },
+              getCSS: () => {
+                return `
               transition: all 0.3s
               `;
+              },
             },
           },
-        };
+          iconTheme
+        );
 
         return {
           viewClass,

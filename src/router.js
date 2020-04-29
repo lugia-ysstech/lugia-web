@@ -82,6 +82,9 @@ export default {
   '/dropmenu': {
     render: async () => import('./widgets/dropmenu/demo'),
   },
+  '/p-dropmenu': {
+    render: async () => import('./widgets/dropmenu/p-dropmenu'),
+  },
   '/grid': {
     render: async () => import('./widgets/grid/demo'),
   },
