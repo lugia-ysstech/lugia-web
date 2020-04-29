@@ -1,9 +1,8 @@
 import { css } from 'styled-components';
 import { valueInRange } from '../../common/Math';
 import { modeStyle } from '../utils/booleanUtils';
-import { distance, em, fontSize, getDateWrrap, getThemeProperty } from './utils';
+import { distance, em, fontSize, getDateWrrap, getThemeProperty, getThemeUpdate } from './utils';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
-import { getThemeUpdate } from './utils';
 export const Icons = CSSComponent({
   tag: 'span',
   css: css`

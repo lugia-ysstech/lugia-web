@@ -1,8 +1,7 @@
 import { css } from 'styled-components';
 
-import { getDateWrrap, em } from './utils';
+import { getDateWrrap, em, getThemeUpdate } from './utils';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
-import { getThemeUpdate } from './utils';
 
 export const FooterButtonsWrap = StaticComponent({
   tag: 'div',
