@@ -263,6 +263,8 @@ class MenuItem extends React.Component<MenuItemProps> {
       themeConfig.hover = deepMerge(hoverTheme, hover);
       if (hoverState && !checked) {
         themeConfig.normal = themeConfig.hover;
+      } else {
+        themeConfig.normal = { color: blackColor };
       }
     }
     return themeProps;
