@@ -192,13 +192,13 @@ export const TextContent = CSSComponent({
   tag: 'span',
   className: 'TextContent',
   normal: {
-    selectNames: [['color'], ['fontSize']],
+    selectNames: [['color'], ['fontSize'], ['font']],
     defaultTheme: {
       color: get('blackColor'),
     },
   },
   disabled: {
-    selectNames: [['color'], ['fontSize']],
+    selectNames: [['color'], ['fontSize'], ['font']],
     defaultTheme: {
       color: get('disableTextColor'),
     },
