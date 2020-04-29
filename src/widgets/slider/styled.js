@@ -6,16 +6,7 @@ import { css } from 'styled-components';
 import { valueInRange } from '../common/Math';
 import { iconStyles, dotStyles, horizontalPadding } from './slider_public_size';
 import { px2remcss } from '../css/units';
-import {
-  iconNormalColor,
-  iconChangeColor,
-  TipsArrowBorderColor,
-  disableTextColor,
-  dotNormalColor,
-  dotThroughColor,
-  dangerColor,
-  lightGreyColor,
-} from './slider_public_color';
+import { iconNormalColor, iconChangeColor, TipsArrowBorderColor } from './slider_public_color';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import get from '../css/theme-common-dict';
 

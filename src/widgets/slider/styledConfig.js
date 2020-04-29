@@ -5,7 +5,6 @@ import {
   throughRangeBackground,
   trackDisabledBackground,
   btnDisabledBackground,
-  tipBackground,
   tipColor,
   themeColor,
   themeHoverColor,
