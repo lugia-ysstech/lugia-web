@@ -120,10 +120,10 @@ describe('new-table', () => {
     expect(renderer.create(cmp).toJSON()).toMatchSnapshot();
   });
 
-  it(' EditTable css', () => {
-    const cmp = <EditTable data={data} columns={columns} />;
-    expect(renderer.create(cmp).toJSON()).toMatchSnapshot();
-  });
+  // it(' EditTable css', () => {
+  //   const cmp = <EditTable data={data} columns={columns} />;
+  //   expect(renderer.create(cmp).toJSON()).toMatchSnapshot();
+  // });
 
   it(' Table data & columns ', () => {
     const cmp = mount(<Table data={data} columns={columns} />);
@@ -466,5 +466,132 @@ describe('new-table', () => {
     ];
     expect(getSelectColumnsInfo(selectInfo2, columns)).toEqual(result2);
     expect(getSelectColumnsInfo([], columns)).toEqual([]);
+  });
+
+  it(' EditTable changeData ', () => {
+    const cmp = getCmp(mount(<EditTable data={data} columns={columns} />));
+    const { mockEditTableListener, editTableListener } = mockListener(cmp);
+    const getKeyMaps = mockEditTableListener.mockFunction('getKeyMaps');
+    getKeyMaps.returned(dataKeyMap);
+
+    expect(cmp.editTableListener.dataKeyMap).toEqual(dataKeyMap);
+
+    const selectRow = 1,
+      keyName = 'age',
+      value = 128;
+    const result = [
+      { name: '', age: 128, key: '1', isIn: true },
+      { name: 'Rose', age: 36, address: 'some where', key: '2', isIn: true },
+      { name: 'Uzi', age: 36, address: 'some where', key: '3', isIn: false },
+      { name: 'ClearLove', age: 36, address: 'some where', key: '4', isIn: true },
+      { name: 'Rookie', age: 36, address: 'some where', key: '5', isIn: true },
+      { name: 'TheShy', age: 36, address: 'some where', key: '6', isIn: true },
+    ];
+
+    const { changeData } = editTableListener;
+    expect(changeData(data, selectRow, keyName, value)).toEqual(result);
+
+    const selectRow1 = 3,
+      keyName1 = 'address',
+      value1 = 'address';
+    const result1 = [
+      { name: '', age: 28, key: '1', isIn: true },
+      { name: 'Rose', age: 36, address: 'some where', key: '2', isIn: true },
+      { name: 'Uzi', age: 36, address: 'address', key: '3', isIn: false },
+      { name: 'ClearLove', age: 36, address: 'some where', key: '4', isIn: true },
+      { name: 'Rookie', age: 36, address: 'some where', key: '5', isIn: true },
+      { name: 'TheShy', age: 36, address: 'some where', key: '6', isIn: true },
+    ];
+
+    expect(changeData(data, selectRow1, keyName1, value1)).toEqual(result1);
+  });
+
+  it(' EditTable changeColumns ', () => {
+    const cmp = getCmp(mount(<EditTable data={data} columns={columns} />));
+    const { mockEditTableListener, editTableListener } = mockListener(cmp);
+    const getKeyMaps = mockEditTableListener.mockFunction('getKeyMaps');
+    getKeyMaps.returned(dataKeyMap);
+
+    expect(cmp.editTableListener.dataKeyMap).toEqual(dataKeyMap);
+
+    const props = {
+      columns,
+      editCell: { selectColumn: 0, selectRow: 0 },
+      editing: true,
+      value: '改变后的数据',
+    };
+    const result = [
+      {
+        title: '改变后的数据',
+        dataIndex: 'name',
+        key: 'name',
+        width: 100,
+        align: 'center',
+      },
+      {
+        title: 'Age',
+        dataIndex: 'age',
+        key: 'age',
+      },
+      {
+        title: 'Address',
+        dataIndex: 'address',
+        key: 'address',
+        width: 200,
+      },
+      {
+        title: 'isIn',
+        dataIndex: 'isIn',
+        key: 'isIn',
+        width: 200,
+        render,
+      },
+    ];
+
+    const { changeColumns } = editTableListener;
+    expect(changeColumns(props)).toEqual(result);
+
+    const props1 = {
+      columns,
+      editCell: { selectColumn: 2, selectRow: 0 },
+      editing: true,
+      value: '改变后的数据',
+    };
+    const result1 = [
+      {
+        title: '姓名',
+        dataIndex: 'name',
+        key: 'name',
+        width: 100,
+        align: 'center',
+      },
+      {
+        title: 'Age',
+        dataIndex: 'age',
+        key: 'age',
+      },
+      {
+        title: '改变后的数据',
+        dataIndex: 'address',
+        key: 'address',
+        width: 200,
+      },
+      {
+        title: 'isIn',
+        dataIndex: 'isIn',
+        key: 'isIn',
+        width: 200,
+        render,
+      },
+    ];
+
+    expect(changeColumns(props1)).toEqual(result1);
+    const props2 = {
+      columns,
+      editCell: { selectColumn: 2, selectRow: 0 },
+      editing: false,
+      value: '改变后的数据',
+    };
+    expect(changeColumns(props2)).toEqual(undefined);
   });
 });

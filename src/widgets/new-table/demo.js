@@ -153,12 +153,13 @@ export default class TableDemo extends React.Component<Object, Object> {
     this.state = {
       tableData: dataA,
       treeData,
+      columns,
     };
   }
   onChange = res => {
     console.log('onChange', res);
-    const { data } = res;
-    this.setState({ tableData: data });
+    const { data, columns } = res;
+    this.setState({ tableData: data, columns });
   };
   onChangeTreeData = res => {
     console.log('onChange', res);
@@ -172,7 +173,7 @@ export default class TableDemo extends React.Component<Object, Object> {
     console.log('OnHeaderCell', res);
   };
   render() {
-    const { tableData, treeData } = this.state;
+    const { tableData, treeData, columns } = this.state;
 
     const config = {
       [Widgets.EditTable]: {

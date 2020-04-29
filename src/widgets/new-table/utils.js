@@ -16,3 +16,7 @@ export const getEditDivTheme = (props, isHead, propsConfig, defaultTheme) => {
   }
   return editDivTheme;
 };
+
+export const isValued = (value: any) => {
+  return value || value === 0;
+};

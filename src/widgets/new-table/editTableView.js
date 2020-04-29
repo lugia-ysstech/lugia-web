@@ -9,7 +9,7 @@ import { Container, EditDiv, InnerTriggerDiv } from './editTableCss';
 import EditTableEventListener from './connection';
 import Widget from '../consts';
 import { findDOMNode } from 'react-dom';
-import { getEditDivTheme } from './utils';
+import { getEditDivTheme, isValued } from './utils';
 
 class EditTable extends React.Component<EditTableProps, EditTableState> {
   editTableListener: EditTableEventListenerHandle;
@@ -109,8 +109,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
     const { getSelectColumnMark, isSelected, isEditCell } = this.editTableListener;
 
     const selectColumn = getSelectColumnMark(dataIndex);
-    const defaultText =
-      typeof text !== 'object' && (text || text === 0) ? record[text] || text : '';
+    const defaultText = typeof text !== 'object' && isValued(text) ? record[text] || text : '';
     const { isHead } = record;
     const selectRow = index;
     const { editing, selectCell = [] } = this.state;
@@ -208,17 +207,33 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
     if (oldValue !== newValue) {
       const { editCell, editing } = this.state;
       const { data, columns } = this.props;
-      const changedData = this.editTableListener.setInputChangedValue({
-        value: newValue,
-        editCell,
+      const { selectRow } = editCell;
+      const result = {
         data,
         columns,
-        editing,
-      });
-      if (changedData) {
-        const { data: newData } = changedData;
-        this.exportChange({ columns, data: newData });
+      };
+      if (selectRow !== 0) {
+        const changedData = this.editTableListener.setInputChangedValue({
+          value: newValue,
+          editCell,
+          data,
+          columns,
+          editing,
+        });
+        if (changedData) {
+          const { data: newData } = changedData;
+          result.data = [...newData];
+        }
+      } else {
+        const newColumns = this.editTableListener.changeColumns({
+          value: newValue,
+          editCell,
+          columns,
+          editing,
+        });
+        result.columns = [...newColumns];
       }
+      this.exportChange({ ...result });
     }
     this.clearEditState();
   };
@@ -279,7 +294,9 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
       editCell: { selectRow, selectColumn },
       editing,
     } = this.state;
-
+    if (!isValued(selectColumn) || !isValued(selectRow)) {
+      return false;
+    }
     const { isEditHead, columns } = this.props;
     const isDisableEdit = columns[selectColumn].disableEdit;
     return !editing && (isEditHead || !!selectRow) && !isDisableEdit;
