@@ -58,6 +58,11 @@ const config = {
         width: 300,
       },
     },
+    TextContent: {
+      normal: {
+        color: 'yellow',
+      },
+    },
   },
 };
 
