@@ -7,8 +7,8 @@ import CSSComponent, { css, keyframes } from '@lugia/theme-css-hoc';
 import { px2remcss } from '../css/units';
 import get from '../css/theme-common-dict';
 const superLightColor = get('superLightColor');
-const disableColor = get('disableColor');
-
+const getDisableColor = get('disableColor');
+const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
 const defaultPictureWidth = 180;
 const defaultPictureHeight = 128;
 /**
@@ -87,7 +87,7 @@ export const AnimationItem = CSSComponent({
   normal: {
     selectNames: [['width'], ['height']],
     getCSS: (themeMeta, themeProps) => {
-      const { width = 40 } = themeMeta;
+      const { width = 300 } = themeMeta;
       const animationCSS = getCommonAnimation(width);
       return css`
         animation: ${animationCSS} 1s linear infinite;
@@ -105,7 +105,7 @@ export const AnimationItem = CSSComponent({
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: ${disableColor};
+    background: ${getDisableColor};
     opacity: 0.5;
   `,
 });
