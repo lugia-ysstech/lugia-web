@@ -590,10 +590,9 @@ const getDotStyle = (props: CssTypeProps) => {
     const dotPosLeft = vertical ? 50 : dotMoveX;
     const dotPosTorBot = vertical ? `bottom: ${dotMoveX}%` : 'top: 50%';
     const dotPosTrans = vertical ? 'translateX' : 'translateY';
-    const dotTextLeft = vertical
-      ? `left: calc(100% + ${get('marginToPeerElementForY')}px)`
-      : 'left:50%';
-    const dotTextTop = vertical ? '50%' : `-${get('marginToPeerElementForY') + 15}px`;
+    const marginToPeerElementForY = get('marginToPeerElementForY');
+    const dotTextLeft = vertical ? `left: calc(100% + ${marginToPeerElementForY}px)` : 'left:50%';
+    const dotTextTop = vertical ? '50%' : `-${marginToPeerElementForY + 15}px`;
     const dotTextTrans = vertical ? 'translateY(50%)' : 'translateX(-50%)';
     dotTextPosition = `
       font-size:${px2remcss(dotFontSize)};
