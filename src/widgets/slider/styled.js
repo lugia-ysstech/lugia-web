@@ -544,8 +544,8 @@ const getDotStyle = (props: CssTypeProps) => {
     isMaxValueDot;
   if (marksData) {
     const { dotIndex, value, maxValue, minValue, moveValue, marks, rangeW, rangeH } = marksData;
-    isShowDot = dotIndex === maxValue || dotIndex === minValue;
     isMaxValueDot = dotIndex === maxValue;
+    isShowDot = isMaxValueDot || dotIndex === minValue;
     dotStyle = marks.style;
     marskText = marks.text || marks;
     isChangDotBg = moveValue >= dotIndex && !isShowDot;
@@ -557,7 +557,7 @@ const getDotStyle = (props: CssTypeProps) => {
     }
     let dotBorder = get('lightGreyColor');
     let dotBg = '#ffffff';
-    let dotColor = get('mediumGreyColor');
+    let dotColor = isMaxValueDot ? get('dangerColor') : get('mediumGreyColor');
     let dotFontSize = 14;
     if (isShowDot) {
       dotBorder = 'transparent';
@@ -575,9 +575,6 @@ const getDotStyle = (props: CssTypeProps) => {
     }
     if (dotStyle && dotStyle.fontSize) {
       dotFontSize = dotStyle.fontSize;
-    }
-    if (!(dotStyle && dotStyle.color) && isMaxValueDot) {
-      dotColor = get('dangerColor');
     }
     dotBackground = `
       border-width:${em(1)};
