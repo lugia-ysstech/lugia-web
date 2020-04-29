@@ -17,13 +17,14 @@ import {
   Tips,
 } from './styled';
 import { getChangeValue } from './utils';
-import { iconStyles, rangeHeightNormal, mFontSize } from './slider_public_size';
+import { iconStyles, rangeHeightNormal } from './slider_public_size';
 import { mediumGreyColor } from './slider_public_color';
 import { getThemeProps } from './styledConfig';
 import { findDOMNode } from 'react-dom';
 import { deepMerge } from '@lugia/object-utils';
 import { addMouseEvent } from '@lugia/theme-hoc';
 import Icon from '../icon';
+import get from '../css/theme-common-dict';
 
 type TypeProps = {
   maxValue?: number,
@@ -474,6 +475,7 @@ class Slider extends Component<TypeProps, TypeState> {
     const iconsChildren = [];
     const { marginNormal } = iconStyles;
     const halfBthSize = btnSize / 2;
+    const mFontSize = get('mFontSize');
     const numbers = hasIconsProps ? marginNormal + mFontSize + halfBthSize : halfBthSize;
     const levelPaddings = this.getLevePadding(vertical, dotWidths, dotHeights, numbers);
     const iconSize = hasIconsProps ? [mFontSize, mFontSize] : [0, 0];
