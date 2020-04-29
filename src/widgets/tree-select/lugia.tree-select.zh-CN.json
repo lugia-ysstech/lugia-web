@@ -46,7 +46,7 @@
     "mutliple": {
       "type": "boolean",
       "desc": "是否多选",
-      "defaultValue": false
+      "propsDefaultValue": false
     },
     "createPortal": {
       "type": "boolean",
@@ -56,13 +56,26 @@
     "valueField": {
       "type": "string",
       "desc": "data数据的value值的名称",
-      "defaultValue": "value"
+      "propsDefaultValue": "value"
     },
     "displayField": {
       "type": "string",
       "desc": "data数据的displayValue值的名称",
-      "defaultValue": "text"
+      "propsDefaultValue": "text"
     },
+
+    "pathField": {
+      "type": "string",
+      "desc": "data数据的存储节点路径信息字段",
+      "propsDefaultValue": "path"
+    },
+
+    "pidField": {
+      "type": "string",
+      "desc": "data数据的存储节点父节点信息字段",
+      "propsDefaultValue": "pid"
+    },
+
     "translateTreeData": {
       "type": "boolean",
       "desc": "是否开启嵌套数据生成Tree",
