@@ -87,7 +87,7 @@ export const AnimationItem = CSSComponent({
   normal: {
     selectNames: [['width'], ['height']],
     getCSS: (themeMeta, themeProps) => {
-      const { width = 300 } = themeMeta;
+      const { width = 40 } = themeMeta;
       const animationCSS = getCommonAnimation(width);
       return css`
         animation: ${animationCSS} 1s linear infinite;
