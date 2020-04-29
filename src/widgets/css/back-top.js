@@ -4,14 +4,20 @@
  * @flow
  */
 import styled, { css, keyframes } from 'styled-components';
-import { getBorder } from '@lugia/theme-utils';
 import { px2remcss } from './units';
 import Icon from '../icon';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import { getBorderRadius } from '../theme/CSSProvider';
+import get from '../css/theme-common-dict';
 
-const FontSize = 1.2;
+const fontSize = 1.2;
 const em = px2remcss;
+const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
+const themeHoverColor = '$lugia-dict.@lugia/lugia-web.themeHoverColor';
+const themeActiveColor = '$lugia-dict.@lugia/lugia-web.themeActiveColor';
+const normalBoxShadow = get('normalBoxShadow');
+const hoverBoxShadow = get('hoverBoxShadow');
+const activeBoxShadow = get('activeBoxShadow');
 
 export type BackTopProps = {
   visibilityHeight?: number,
@@ -79,7 +85,7 @@ export const BackTop = StaticComponent({
   tag: 'div',
   className: 'BackTop',
   css: css`
-    font-size: ${FontSize}rem;
+    font-size: ${fontSize}rem;
     ${getFixedCSS};
     ${getLeftOrRight};
     cursor: pointer;
@@ -103,15 +109,33 @@ export const BackTopContent = CSSComponent({
       ['borderRadius'],
     ],
     defaultTheme: {
-      background: { color: '$lugia-dict.@lugia/lugia-web.defaultColor' },
+      background: { color: defaultColor },
       color: '$lugia-dict.@lugia/lugia-web.themeColor',
       width: 40,
       height: 40,
       opacity: 1,
-      border: getBorder({ color: '#e8e8e8', width: 1, style: 'solid' }),
+      boxShadow: normalBoxShadow,
       borderRadius: getBorderRadius(40),
     },
   },
+  hover: {
+    selectNames: [['color'], ['boxShadow']],
+    defaultTheme: {
+      background: { color: defaultColor },
+      color: themeHoverColor,
+      boxShadow: hoverBoxShadow,
+    },
+  },
+  active: {
+    selectNames: [['color'], ['boxShadow']],
+    defaultTheme: {
+      background: { color: defaultColor },
+      color: themeActiveColor,
+      boxShadow: activeBoxShadow,
+    },
+  },
+
+  option: { hover: true, active: true },
 });
 
 export const IconBox = CSSComponent({
