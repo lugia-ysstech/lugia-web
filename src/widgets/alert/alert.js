@@ -20,12 +20,10 @@ const sFontSize = '$lugia-dict.@lugia/lugia-web.sFontSize';
 const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
 const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
-const xsFontSize = '$lugia-dict.@lugia/lugia-web.xsFontSize';
-const themeColor = get('themeColor');
-const successColor = get('successColor');
-const warningColor = get('warningColor');
-const dangerColor = get('dangerColor');
-
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
+const successColor = '$lugia-dict.@lugia/lugia-web.successColor';
+const warningColor = '$lugia-dict.@lugia/lugia-web.warningColor';
+const dangerColor = '$lugia-dict.@lugia/lugia-web.dangerColor';
 const AlertIcons = {
   info: 'lugia-icon-reminder_info_circle_o',
   success: 'lugia-icon-reminder_check_circle_o',
@@ -37,44 +35,43 @@ const TypeThemeProps = {
     normal: {
       color: themeColor,
       border: {
-        left: { color: themeColor, style: 'solid', width: 4 },
+        left: { color: get('themeColor'), style: 'solid', width: 4 },
         radius: { topLeft: 4, topRight: 4, bottomLeft: 4, bottomRight: 4 },
       },
-      background: { color: changeColor(themeColor, 0, 0, 10).rgba },
+      background: { color: changeColor(get('themeColor'), 0, 0, 10).rgba },
     },
   },
   success: {
     normal: {
       color: successColor,
       border: {
-        left: { color: successColor, style: 'solid', width: 4 },
+        left: { color: get('successColor'), style: 'solid', width: 4 },
         radius: { topLeft: 4, topRight: 4, bottomLeft: 4, bottomRight: 4 },
       },
-      background: { color: changeColor(successColor, 0, 0, 10).rgba },
+      background: { color: changeColor(get('successColor'), 0, 0, 10).rgba },
     },
   },
   warning: {
     normal: {
       color: warningColor,
       border: {
-        left: { color: warningColor, style: 'solid', width: 4 },
+        left: { color: get('warningColor'), style: 'solid', width: 4 },
         radius: { topLeft: 4, topRight: 4, bottomLeft: 4, bottomRight: 4 },
       },
-      background: { color: changeColor(warningColor, 0, 0, 10).rgba },
+      background: { color: changeColor(get('warningColor'), 0, 0, 10).rgba },
     },
   },
   error: {
     normal: {
       color: dangerColor,
       border: {
-        left: { color: dangerColor, style: 'solid', width: 4 },
+        left: { color: get('dangerColor'), style: 'solid', width: 4 },
         radius: { topLeft: 4, topRight: 4, bottomLeft: 4, bottomRight: 4 },
       },
-      background: { color: changeColor(dangerColor, 0, 0, 10).rgba },
+      background: { color: changeColor(get('dangerColor'), 0, 0, 10).rgba },
     },
   },
 };
-
 export default ThemeProvider(
   class extends React.Component<AlertProps, AlertState> {
     alert: any;
