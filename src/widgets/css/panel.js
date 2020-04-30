@@ -53,7 +53,7 @@ export const PanelWrap = StaticComponent({
     background: ${get('defaultColor')};
     border-color: ${get('borderColor')};
     border-style: solid;
-    border-width: 0 0 1px;
+    border-width: 0 0 ${props => (props.zebraStripe ? 0 : 1)}px;
   `,
 });
 
@@ -86,21 +86,28 @@ export const PanelHeader = CSSComponent({
     ],
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig = {} } = themeProps;
-      const { showArrow } = propsConfig;
+      const { showArrow, zebraStripe, count } = propsConfig;
       const padding = {
         top: 16,
         right: 0,
         bottom: 16,
         left: showArrow ? get('sFontSize') + get('marginToSameElement') + 10 : 20,
       };
+      const background = zebraStripe ? getZebraStripeColor(count, '#F8F8F8') : { color: '#fff' };
 
-      return { padding };
+      return { padding, background };
     },
   },
   hover: {
     selectNames: [['borderRadius'], ['background'], ['opacity'], ['border'], ['boxShadow']],
     defaultTheme: {
-      background: { color: changeColor(get('themeColor'), 0, 0, 5).rgba },
+      // background: { color: changeColor(get('themeColor'), 0, 0, 5).rgba },
+    },
+    getThemeMeta(themeMeta, themeProps) {
+      const { propsConfig = {} } = themeProps;
+      const { zebraStripe, count } = propsConfig;
+      const background = zebraStripe ? getZebraStripeColor(count, '#F8F8F8') : { color: '#fff' };
+      return { background };
     },
     getCSS(themeMeta, themeProps) {
       const { propsConfig = {}, themeConfig = {} } = themeProps;
@@ -287,3 +294,7 @@ export const Wrap = CSSComponent({
     selectNames: [['width']],
   },
 });
+
+const getZebraStripeColor = (index, color) => {
+  return index % 2 === 0 ? { color } : { color: '#fff' };
+};
