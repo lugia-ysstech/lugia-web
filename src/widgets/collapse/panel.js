@@ -115,7 +115,11 @@ export default ThemeProvider(
         config.enter = this.changeHover(true);
         config.leave = this.changeHover(false);
       }
-      const partProps = { showArrow: theShowArrow, zebraStripe, count };
+      const partProps = { showArrow: theShowArrow, zebraStripe, count, open };
+
+      const panelWrapTheme = getPartOfThemeProps('PanelHeader', {
+        props: { hover, ...partProps },
+      });
       const panelHeaderTheme = getPartOfThemeProps('PanelHeader', {
         props: { hover, ...partProps },
       });
@@ -127,7 +131,7 @@ export default ThemeProvider(
       });
       return (
         <Wrap {...addMouseEvent(this, config)} themeProps={getPartOfThemeProps('Wrap')}>
-          <PanelWrap zebraStripe={zebraStripe}>
+          <PanelWrap themeProps={panelWrapTheme}>
             <PanelHeader
               disabled={disabled}
               themeProps={panelHeaderTheme}
