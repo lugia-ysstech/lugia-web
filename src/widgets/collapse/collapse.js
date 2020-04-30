@@ -41,7 +41,7 @@ export default ThemeProvider(
       return <Wrap themeProps={wrapTheme}>{this.renderChildren()}</Wrap>;
     }
     renderChildren = () => {
-      const { children, accordion, data, getPartOfThemeHocProps } = this.props;
+      const { children, accordion, zebraStripe, data, getPartOfThemeHocProps } = this.props;
       if ((!children && !data) || typeof children === 'string') {
         return (
           <Panel
@@ -62,6 +62,7 @@ export default ThemeProvider(
             onClick={this.handleClick}
             open={this.handleOpen(item.value)}
             accordion={accordion}
+            zebraStripe={zebraStripe}
             {...getPartOfThemeHocProps('Panel')}
             count={index}
           >
@@ -75,6 +76,7 @@ export default ThemeProvider(
             onClick: this.handleClick,
             open: this.handleOpen(child.props.value),
             accordion,
+            zebraStripe,
             ...getPartOfThemeHocProps('Panel'),
             count: index,
           });
