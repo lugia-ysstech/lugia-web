@@ -3,9 +3,11 @@
 exports[`Panel Panel CSS 1`] = `
 .c2 {
   box-sizing: border-box;
-  background: #fff;
-  border-color: #e8e8e8;
+  background: #ffffff;
+  border-color: #cccccc;
   border-style: solid;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
   border-width: 0 0 1px;
 }
 
@@ -21,7 +23,7 @@ exports[`Panel Panel CSS 1`] = `
   user-select: none;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  color: #333333;
+  color: #363B40;
   opacity: 1;
 }
 
@@ -37,12 +39,12 @@ exports[`Panel Panel CSS 1`] = `
   user-select: none;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  color: #333333;
+  color: #363B40;
   opacity: 1;
 }
 
 .c5 {
-  color: #333333;
+  color: #363B40;
   font-size: 1.4rem;
 }
 
@@ -61,10 +63,10 @@ exports[`Panel Panel CSS 1`] = `
 .c7 {
   box-sizing: border-box;
   line-height: 1.5;
-  color: #666666;
-  font-size: 1.4rem;
+  color: #646A6E;
+  font-size: 1.2rem;
   font-weight: 300;
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
 .c1 {
@@ -124,6 +126,7 @@ exports[`Panel Panel CSS 1`] = `
     >
       <div
         className="c2"
+        style={Object {}}
       >
         <div
           className="c3"
@@ -131,8 +134,9 @@ exports[`Panel Panel CSS 1`] = `
           onClick={[Function]}
           style={
             Object {
+              "backgroundColor": "#fff",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3rem",
+              "paddingLeft": "3.4rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -140,6 +144,7 @@ exports[`Panel Panel CSS 1`] = `
         >
           <i
             className="lugia-icon-direction_caret_right   c4"
+            disabled={false}
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
@@ -147,7 +152,7 @@ exports[`Panel Panel CSS 1`] = `
             onMouseUp={[Function]}
             style={
               Object {
-                "color": "#666",
+                "color": "#646A6E",
                 "fontSize": "1.4rem",
               }
             }
@@ -180,6 +185,7 @@ exports[`Panel Panel CSS 1`] = `
     >
       <div
         className="c2"
+        style={Object {}}
       >
         <div
           className="c3"
@@ -187,8 +193,9 @@ exports[`Panel Panel CSS 1`] = `
           onClick={[Function]}
           style={
             Object {
+              "backgroundColor": "#fff",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3rem",
+              "paddingLeft": "3.4rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -196,6 +203,7 @@ exports[`Panel Panel CSS 1`] = `
         >
           <i
             className="lugia-icon-direction_caret_right   c8"
+            disabled={false}
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
@@ -203,7 +211,7 @@ exports[`Panel Panel CSS 1`] = `
             onMouseUp={[Function]}
             style={
               Object {
-                "color": "#666",
+                "color": "#646A6E",
                 "fontSize": "1.4rem",
               }
             }
@@ -225,6 +233,7 @@ exports[`Panel Panel CSS 1`] = `
             className="c7"
             style={
               Object {
+                "backgroundColor": "#fff",
                 "paddingBottom": "2.2rem",
                 "paddingLeft": "3.4rem",
                 "paddingRight": "3rem",
@@ -251,15 +260,17 @@ exports[`Panel Panel CSS 1`] = `
     >
       <div
         className="c2"
+        style={Object {}}
       >
         <div
-          className="c10"
-          disabled={true}
+          className="c3"
+          disabled={false}
           onClick={[Function]}
           style={
             Object {
+              "backgroundColor": "#fff",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3rem",
+              "paddingLeft": "3.4rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -267,6 +278,7 @@ exports[`Panel Panel CSS 1`] = `
         >
           <i
             className="lugia-icon-direction_caret_right   c4"
+            disabled={false}
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
@@ -274,18 +286,14 @@ exports[`Panel Panel CSS 1`] = `
             onMouseUp={[Function]}
             style={
               Object {
-                "color": "#666",
+                "color": "#646A6E",
                 "fontSize": "1.4rem",
               }
             }
           />
           <span
             className="c5"
-            style={
-              Object {
-                "color": "#cccccc",
-              }
-            }
+            style={Object {}}
           >
             LUGIA
           </span>
@@ -299,6 +307,7 @@ exports[`Panel Panel CSS 1`] = `
             className="c7"
             style={
               Object {
+                "backgroundColor": "#fff",
                 "paddingBottom": "2.2rem",
                 "paddingLeft": "3.4rem",
                 "paddingRight": "3rem",
@@ -325,15 +334,17 @@ exports[`Panel Panel CSS 1`] = `
     >
       <div
         className="c2"
+        style={Object {}}
       >
         <div
-          className="c10"
-          disabled={true}
+          className="c3"
+          disabled={false}
           onClick={[Function]}
           style={
             Object {
+              "backgroundColor": "#fff",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "3rem",
+              "paddingLeft": "3.4rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -341,6 +352,7 @@ exports[`Panel Panel CSS 1`] = `
         >
           <i
             className="lugia-icon-direction_caret_right   c8"
+            disabled={false}
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
@@ -348,18 +360,14 @@ exports[`Panel Panel CSS 1`] = `
             onMouseUp={[Function]}
             style={
               Object {
-                "color": "#666",
+                "color": "#646A6E",
                 "fontSize": "1.4rem",
               }
             }
           />
           <span
             className="c5"
-            style={
-              Object {
-                "color": "#cccccc",
-              }
-            }
+            style={Object {}}
           >
             LUGIA
           </span>
@@ -374,6 +382,7 @@ exports[`Panel Panel CSS 1`] = `
             className="c7"
             style={
               Object {
+                "backgroundColor": "#fff",
                 "paddingBottom": "2.2rem",
                 "paddingLeft": "3.4rem",
                 "paddingRight": "3rem",
@@ -400,6 +409,7 @@ exports[`Panel Panel CSS 1`] = `
     >
       <div
         className="c2"
+        style={Object {}}
       >
         <div
           className="c3"
@@ -407,8 +417,9 @@ exports[`Panel Panel CSS 1`] = `
           onClick={[Function]}
           style={
             Object {
+              "backgroundColor": "#fff",
               "paddingBottom": "1.6rem",
-              "paddingLeft": "2rem",
+              "paddingLeft": "3.4rem",
               "paddingRight": "0rem",
               "paddingTop": "1.6rem",
             }
@@ -430,8 +441,9 @@ exports[`Panel Panel CSS 1`] = `
             className="c7"
             style={
               Object {
+                "backgroundColor": "#fff",
                 "paddingBottom": "2.2rem",
-                "paddingLeft": "2.4rem",
+                "paddingLeft": "3.4rem",
                 "paddingRight": "3rem",
                 "paddingTop": "0.6rem",
               }
@@ -460,6 +472,15 @@ exports[`Panel Panel CSS 1`] = `
     >
       <div
         className="c2"
+        style={
+          Object {
+            "borderBottomLeftRadius": "1rem",
+            "borderBottomRightRadius": "1rem",
+            "borderTopLeftRadius": "1rem",
+            "borderTopRightRadius": "1rem",
+            "boxShadow": "1px 2px 2px 2px #e8e8e8",
+          }
+        }
       >
         <div
           className="c3"
@@ -491,7 +512,7 @@ exports[`Panel Panel CSS 1`] = `
               "paddingLeft": "3rem",
               "paddingRight": "1rem",
               "paddingTop": "1rem",
-              "width": "40rem",
+              "width": "100%",
             }
           }
         >
@@ -526,7 +547,7 @@ exports[`Panel Panel CSS 1`] = `
                 "paddingLeft": "3rem",
                 "paddingRight": "1rem",
                 "paddingTop": "1rem",
-                "width": "40rem",
+                "width": "100%",
               }
             }
           >
@@ -553,6 +574,15 @@ exports[`Panel Panel CSS 1`] = `
     >
       <div
         className="c2"
+        style={
+          Object {
+            "borderBottomLeftRadius": "1rem",
+            "borderBottomRightRadius": "1rem",
+            "borderTopLeftRadius": "1rem",
+            "borderTopRightRadius": "1rem",
+            "boxShadow": "1px 2px 2px 2px #e8e8e8",
+          }
+        }
       >
         <div
           className="c3"
@@ -584,12 +614,13 @@ exports[`Panel Panel CSS 1`] = `
               "paddingLeft": "3rem",
               "paddingRight": "1rem",
               "paddingTop": "1rem",
-              "width": "40rem",
+              "width": "100%",
             }
           }
         >
           <i
             className="lugia-icon-direction_caret_right   c4"
+            disabled={false}
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
@@ -633,7 +664,7 @@ exports[`Panel Panel CSS 1`] = `
                 "paddingLeft": "3rem",
                 "paddingRight": "1rem",
                 "paddingTop": "1rem",
-                "width": "40rem",
+                "width": "100%",
               }
             }
           >
@@ -660,6 +691,29 @@ exports[`Panel Panel CSS 1`] = `
     >
       <div
         className="c2"
+        style={
+          Object {
+            "backgroundColor": "orange",
+            "borderBottomColor": "green",
+            "borderBottomLeftRadius": "1rem",
+            "borderBottomRightRadius": "1rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.2rem",
+            "borderLeftColor": "green",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.2rem",
+            "borderRightColor": "green",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.2rem",
+            "borderTopColor": "green",
+            "borderTopLeftRadius": "1rem",
+            "borderTopRightRadius": "1rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.2rem",
+            "boxShadow": "1px 2px 2px 2px #e8e8e8",
+            "opacity": 0.8,
+          }
+        }
       >
         <div
           className="c10"
@@ -691,12 +745,13 @@ exports[`Panel Panel CSS 1`] = `
               "paddingLeft": "3rem",
               "paddingRight": "1rem",
               "paddingTop": "1rem",
-              "width": "40rem",
+              "width": "100%",
             }
           }
         >
           <i
             className="lugia-icon-direction_caret_right   c4"
+            disabled={true}
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
@@ -704,7 +759,8 @@ exports[`Panel Panel CSS 1`] = `
             onMouseUp={[Function]}
             style={
               Object {
-                "color": "green",
+                "color": "yellow",
+                "cursor": "not-allowed",
                 "fontSize": "1.4rem",
               }
             }
@@ -732,7 +788,7 @@ exports[`Panel Panel CSS 1`] = `
             style={
               Object {
                 "backgroundColor": "#f7f4ef",
-                "color": "red",
+                "color": "#cccccc",
                 "fontSize": "1.6rem",
                 "fontWeight": 300,
                 "height": "20rem",
@@ -740,7 +796,7 @@ exports[`Panel Panel CSS 1`] = `
                 "paddingLeft": "3rem",
                 "paddingRight": "1rem",
                 "paddingTop": "1rem",
-                "width": "40rem",
+                "width": "100%",
               }
             }
           >
@@ -767,6 +823,15 @@ exports[`Panel Panel CSS 1`] = `
     >
       <div
         className="c2"
+        style={
+          Object {
+            "borderBottomLeftRadius": "1rem",
+            "borderBottomRightRadius": "1rem",
+            "borderTopLeftRadius": "1rem",
+            "borderTopRightRadius": "1rem",
+            "boxShadow": "1px 2px 2px 2px #e8e8e8",
+          }
+        }
       >
         <div
           className="c3"
@@ -798,12 +863,13 @@ exports[`Panel Panel CSS 1`] = `
               "paddingLeft": "3rem",
               "paddingRight": "1rem",
               "paddingTop": "1rem",
-              "width": "40rem",
+              "width": "100%",
             }
           }
         >
           <i
             className="lugia-icon-direction_caret_right   c4"
+            disabled={false}
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
@@ -847,7 +913,7 @@ exports[`Panel Panel CSS 1`] = `
                 "paddingLeft": "3rem",
                 "paddingRight": "1rem",
                 "paddingTop": "1rem",
-                "width": "40rem",
+                "width": "100%",
               }
             }
           />
