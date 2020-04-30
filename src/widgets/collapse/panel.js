@@ -106,27 +106,35 @@ export default ThemeProvider(
         getPartOfThemeProps,
         dispatchEvent,
         themeProps,
+        zebraStripe,
+        count,
       } = this.props;
       const config = {};
-      if (!showArrow) {
+      const theShowArrow = zebraStripe ? false : showArrow;
+      if (!theShowArrow) {
         config.enter = this.changeHover(true);
         config.leave = this.changeHover(false);
       }
-      const panelHeaderTheme = getPartOfThemeProps('PanelHeader', { props: { hover, showArrow } });
-      const panelHeaderTextTheme = getPartOfThemeProps('PanelHeaderText', { props: { showArrow } });
+      const partProps = { showArrow: theShowArrow, zebraStripe, count };
+      const panelHeaderTheme = getPartOfThemeProps('PanelHeader', {
+        props: { hover, ...partProps },
+      });
+      const panelHeaderTextTheme = getPartOfThemeProps('PanelHeaderText', {
+        props: { ...partProps },
+      });
       const panelContentTheme = getPartOfThemeProps('PanelContent', {
-        props: { showArrow, hasChildren: !!children },
+        props: { hasChildren: !!children, ...partProps },
       });
       return (
         <Wrap {...addMouseEvent(this, config)} themeProps={getPartOfThemeProps('Wrap')}>
-          <PanelWrap>
+          <PanelWrap zebraStripe={zebraStripe}>
             <PanelHeader
               disabled={disabled}
               themeProps={panelHeaderTheme}
               onClick={this.handlePanelClick}
               ref={(node: any) => (this.header = node)}
             >
-              {showArrow || hover ? (
+              {theShowArrow || hover ? (
                 <Icon
                   iconClass="lugia-icon-direction_caret_right"
                   {...this.getIconTheme()}

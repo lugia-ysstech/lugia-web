@@ -17,6 +17,7 @@ export type CollapseProps = {
   onChange?: Function,
   showArrow?: boolean,
   accordion?: boolean,
+  zebraStripe?: boolean,
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
   children: any,
