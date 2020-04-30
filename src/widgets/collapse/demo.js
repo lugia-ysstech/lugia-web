@@ -44,7 +44,7 @@ export const PanelDemo = class extends React.Component<any, any> {
         },
         PanelHeader: {
           normal: {
-            width: 400,
+            width: '100%',
             height: 80,
             borderRadius: getBorderRadius(10),
             background: { color: 'pink' },
@@ -94,7 +94,7 @@ export const PanelDemo = class extends React.Component<any, any> {
         },
         PanelContent: {
           normal: {
-            width: 400,
+            width: '100%',
             height: 200,
             background: { color: '#f7f4ef' },
             padding: {
@@ -119,12 +119,12 @@ export const PanelDemo = class extends React.Component<any, any> {
             <div>PanelContent...</div>
           </Panel>
           <br />
-          <Panel value="3" title="LUGIA" disabled>
+          <Panel value="3" title="LUGIA">
             <div>PanelContent...</div>
             <div>PanelContent...</div>
           </Panel>
           <br />
-          <Panel title="LUGIA" disabled open>
+          <Panel title="LUGIA" open>
             <div>PanelContent...</div>
             <div>PanelContent...</div>
           </Panel>
@@ -377,6 +377,25 @@ export const CollapseDemo = class extends React.Component<any, any> {
               </Collapse>
             </Panel>
             <Panel value="2" title="LUGIA">
+              <div>PanelContent...</div>
+              <div>PanelContent...</div>
+            </Panel>
+          </Collapse>
+          <p style={{ margin: '20px' }}>zebraStripe</p>
+          <Collapse defaultActiveValue={defaultActiveValue} accordion zebraStripe>
+            <Panel value="1" title="LUGIA">
+              <div>PanelContent...</div>
+              <div>PanelContent...</div>
+            </Panel>
+            <Panel value="2" title="LUGIA">
+              <div>PanelContent...</div>
+              <div>PanelContent...</div>
+            </Panel>
+            <Panel value="3" title="LUGIA">
+              <div>PanelContent...</div>
+              <div>PanelContent...</div>
+            </Panel>
+            <Panel value="4" title="LUGIA">
               <div>PanelContent...</div>
               <div>PanelContent...</div>
             </Panel>

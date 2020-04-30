@@ -144,7 +144,7 @@ export const PanelHeader = CSSComponent({
         top: 16,
         right: 0,
         bottom: 16,
-        left: showArrow ? get('sFontSize') + get('marginToSameElement') + 10 : 20,
+        left: get('sFontSize') + get('marginToSameElement') + 10,
       };
       const background = zebraStripe ? { color: getZebraStripeColor(count) } : { color: '#fff' };
       const borderRadius = zebraStripe
@@ -189,7 +189,7 @@ export const PanelHeaderText = CSSComponent({
       const { propsConfig = {} } = themeProps;
       const { showArrow } = propsConfig;
       if (!showArrow) {
-        return `padding: 0 0 0 ${px2remcss(10)};`;
+        return 'padding: 0 0 0 0;';
       }
 
       return '';
@@ -290,7 +290,7 @@ export const PanelContent = CSSComponent({
           top: 6,
           right: 30,
           bottom: 22,
-          left: showArrow ? 34 : 24,
+          left: showArrow ? 34 : get('sFontSize') + get('marginToSameElement') + 10,
         },
         background,
         borderRadius,
