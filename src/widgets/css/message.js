@@ -103,9 +103,7 @@ export const MessageContent = CSSComponent({
     ],
     defaultTheme: {
       font: { size: 14 },
-      boxShadow: getBoxShadow(
-        `${hShadow}px ${vShadow}px ${shadowSpread}px 0 ${get('borderColor')}`
-      ),
+      boxShadow: get('normalBoxShadow'),
       background: { color: '#fff' },
       borderRadius: getBorderRadius(get('borderRadiusValue')),
       padding: {
