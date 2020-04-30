@@ -5,7 +5,7 @@ import Table from './table';
 import ThemeProvider from '../theme-provider';
 import EditInput from './EditInput';
 import type { EditTableProps, EditTableState } from './editTableCss';
-import { Container, EditDiv, InnerTriggerDiv } from './editTableCss';
+import { Container, TdContainer, EditDiv, InnerTriggerDiv } from './editTableCss';
 import EditTableEventListener from './connection';
 import Widget from '../consts';
 import { findDOMNode } from 'react-dom';
@@ -162,7 +162,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
 
     if (enterEdit) {
       return (
-        <EditDiv themeProps={editDivTheme} className={'EditDiv'}>
+        <TdContainer>
           <EditElement
             value={defaultText}
             autoFocus={true}
@@ -170,7 +170,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
             listener={this.editTableListener}
             data={selectData}
           />
-        </EditDiv>
+        </TdContainer>
       );
     }
 

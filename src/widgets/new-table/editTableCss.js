@@ -76,6 +76,15 @@ export const EditDiv = CSSComponent({
     position: relative;`,
 });
 
+export const TdContainer = StaticComponent({
+  tag: 'div',
+  className: 'TdContainer',
+  css: `
+    width: 100%;
+    height: 100%;
+    position: relative;`,
+});
+
 export const InnerTriggerDiv = StaticComponent({
   tag: 'div',
   className: 'InnerTriggerDiv',
