@@ -94,6 +94,16 @@
       "desc": "页码改变的回调，参数是改变后的页码及每页条数",
       "args": [
         {
+          "name": "newValue",
+          "desc": "页码改变后的页码",
+          "type": "number"
+        },
+        {
+          "name": "oldValue",
+          "desc": "页码改变前的页码",
+          "type": "number"
+        },
+        {
           "name": "page",
           "desc": "页码改变后的页码",
           "type": "number"
