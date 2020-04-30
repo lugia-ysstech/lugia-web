@@ -4,11 +4,12 @@
  * @flow
  */
 import { css, keyframes } from 'styled-components';
-import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
+import CSSComponent from '@lugia/theme-css-hoc';
 import { px2remcss } from '../css/units';
 import changeColor from '../css/utilsColor';
 import type { ThemeType } from '@lugia/lugia-web';
 import get from './theme-common-dict';
+import { getBorderRadius } from '@lugia/theme-utils';
 
 const FontSize = 1.4;
 type BasicPropsType = {
@@ -45,7 +46,7 @@ const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
 const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 
-export const PanelWrap = StaticComponent({
+export const PanelWrap = CSSComponent({
   tag: 'div',
   className: 'PanelWrap',
   css: css`
@@ -53,8 +54,60 @@ export const PanelWrap = StaticComponent({
     background: ${get('defaultColor')};
     border-color: ${get('borderColor')};
     border-style: solid;
-    border-width: 0 0 ${props => (props.zebraStripe ? 0 : 1)}px;
+    transition: all 0.3s;
   `,
+  normal: {
+    selectNames: [['boxShadow'], ['borderRadius']],
+    getThemeMeta(themeMeta, themeProps) {
+      const { propsConfig = {} } = themeProps;
+      const { zebraStripe, open } = propsConfig;
+      const boxShadow = zebraStripe && open ? get('normalBoxShadow') : null;
+      const borderRadius = zebraStripe ? getBorderRadius(get('borderRadiusValue')) : null;
+      return { boxShadow, borderRadius };
+    },
+    getCSS(themeMeta, themeProps) {
+      const { propsConfig = {} } = themeProps;
+      const { open, zebraStripe } = propsConfig;
+      let borderWidth = 1;
+      zebraStripe && (borderWidth = 0);
+      if (zebraStripe && open) {
+        return `
+         position: relative;
+         z-index: 99;
+         border-width: 0 0 ${borderWidth}px;
+       `;
+      }
+      return `
+        border-width: 0 0 ${borderWidth}px;
+      `;
+    },
+  },
+  hover: {
+    getCSS(themeMeta, themeProps) {
+      const { propsConfig = {}, themeConfig = {} } = themeProps;
+      const { hover } = propsConfig;
+      const { width } = themeMeta;
+      const { normal = {} } = themeConfig;
+      const theWidth = width || normal.width;
+      let widthStyle;
+      if (hover) {
+        if (theWidth) {
+          if (typeof theWidth === 'number') {
+            widthStyle = px2remcss(theWidth + 24);
+          } else {
+            widthStyle = `calc(${theWidth} + 24px)`;
+          }
+        } else {
+          widthStyle = 'calc(100% + 24px)';
+        }
+
+        return `
+        width: ${widthStyle} !important;
+        transform: translateX(-24px);
+        `;
+      }
+    },
+  },
 });
 
 export const PanelHeader = CSSComponent({
@@ -86,49 +139,31 @@ export const PanelHeader = CSSComponent({
     ],
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig = {} } = themeProps;
-      const { showArrow, zebraStripe, count } = propsConfig;
+      const { showArrow, zebraStripe, count, open } = propsConfig;
       const padding = {
         top: 16,
         right: 0,
         bottom: 16,
         left: showArrow ? get('sFontSize') + get('marginToSameElement') + 10 : 20,
       };
-      const background = zebraStripe ? getZebraStripeColor(count, '#F8F8F8') : { color: '#fff' };
-
-      return { padding, background };
+      const background = zebraStripe ? { color: getZebraStripeColor(count) } : { color: '#fff' };
+      const borderRadius = zebraStripe
+        ? open
+          ? getBorderRadius(get('borderRadiusValue'), ['tl', 'tr'])
+          : getBorderRadius(get('borderRadiusValue'))
+        : null;
+      return { padding, background, borderRadius };
     },
   },
   hover: {
     selectNames: [['borderRadius'], ['background'], ['opacity'], ['border'], ['boxShadow']],
-    defaultTheme: {
-      // background: { color: changeColor(get('themeColor'), 0, 0, 5).rgba },
-    },
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig = {} } = themeProps;
       const { zebraStripe, count } = propsConfig;
-      const background = zebraStripe ? getZebraStripeColor(count, '#F8F8F8') : { color: '#fff' };
+      const background = zebraStripe
+        ? { color: getZebraStripeColor(count) }
+        : { color: changeColor(get('themeColor'), 0, 0, 5).rgba };
       return { background };
-    },
-    getCSS(themeMeta, themeProps) {
-      const { propsConfig = {}, themeConfig = {} } = themeProps;
-      const { hover } = propsConfig;
-      const { width } = themeMeta;
-      const { normal = {} } = themeConfig;
-      const theWidth = width || normal.width;
-      let widthStyle;
-      if (hover) {
-        if (theWidth) {
-          if (typeof theWidth === 'number') {
-            widthStyle = px2remcss(theWidth + 24);
-          } else {
-            widthStyle = `calc(${theWidth} + 24px)`;
-          }
-        } else {
-          widthStyle = 'calc(100% + 24px)';
-        }
-
-        return `width: ${widthStyle} !important;transform: translateX(-24px);`;
-      }
     },
   },
   disabled: {
@@ -231,13 +266,24 @@ export const PanelContent = CSSComponent({
       color: darkGreyColor,
       background: { color: get('defaultColor') },
     },
-    selectNames: [['width'], ['height'], ['background'], ['padding'], ['font'], ['color']],
+    selectNames: [
+      ['width'],
+      ['height'],
+      ['background'],
+      ['padding'],
+      ['font'],
+      ['color'],
+      ['borderRadius'],
+    ],
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig = {} } = themeProps;
-      const { showArrow, hasChildren } = propsConfig;
+      const { showArrow, hasChildren, zebraStripe, count, open } = propsConfig;
       if (!hasChildren) {
         return {};
       }
+      const background = zebraStripe ? { color: getZebraStripeColor(count) } : { color: '#fff' };
+      const borderRadius =
+        zebraStripe && open ? getBorderRadius(get('borderRadiusValue'), ['bl', 'br']) : null;
 
       return {
         padding: {
@@ -246,6 +292,8 @@ export const PanelContent = CSSComponent({
           bottom: 22,
           left: showArrow ? 34 : 24,
         },
+        background,
+        borderRadius,
       };
     },
   },
@@ -295,6 +343,6 @@ export const Wrap = CSSComponent({
   },
 });
 
-const getZebraStripeColor = (index, color) => {
-  return index % 2 === 0 ? { color } : { color: '#fff' };
+const getZebraStripeColor = index => {
+  return index % 2 === 0 ? '#F8F8F8' : '#fff';
 };
