@@ -97,10 +97,9 @@ const BaseAvatar = CSSComponent({
     },
     getCSS(themeMeta: Object, themeProps: Object) {
       const {
-        propsConfig: { size, shape },
+        propsConfig: { size },
       } = themeProps;
-      const theBorderRadius = shape === 'circle' ? '50%' : borderRadiusValue;
-      return `border-radius:${theBorderRadius};
+      return `
       line-height: ${px2remcss(getDefaultSize(size))};
       min-width: ${px2remcss(24)};
       min-height: ${px2remcss(24)};
@@ -108,9 +107,9 @@ const BaseAvatar = CSSComponent({
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
-        propsConfig: { size, type },
+        propsConfig: { size, type, shape },
       } = themeProps;
-      const { width, height, background = {} } = themeMeta;
+      const { width, height, background = {}, borderRadius } = themeMeta;
       const theBackgroundColor =
         background && background.color
           ? background.color
@@ -124,7 +123,13 @@ const BaseAvatar = CSSComponent({
       const theWidth = newSize(width, theSize);
       const theHeight = newSize(height, theSize);
 
+      const theBorderRadius = borderRadius
+        ? borderRadius
+        : shape === 'circle'
+        ? '50%'
+        : borderRadiusValue;
       return {
+        borderRadius: getBorderRadius(theBorderRadius),
         width: theWidth,
         height: theHeight,
         background: {
