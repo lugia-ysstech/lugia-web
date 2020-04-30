@@ -139,7 +139,7 @@ export const PanelHeader = CSSComponent({
     ],
     getThemeMeta(themeMeta, themeProps) {
       const { propsConfig = {} } = themeProps;
-      const { showArrow, zebraStripe, count, open } = propsConfig;
+      const { zebraStripe, count, open } = propsConfig;
       const padding = {
         top: 16,
         right: 0,
