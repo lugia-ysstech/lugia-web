@@ -15,9 +15,9 @@ import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import CSSComponent, { css, getBorderRadius } from '../theme/CSSProvider';
 import { units } from '@lugia/css';
 import { deepMerge } from '@lugia/object-utils';
-
+import get from '../css/theme-common-dict';
 const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
-const borderRadiusValue = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
+const borderRadiusValue = get('borderRadiusValue');
 const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 
 const sFontSize = '$lugia-dict.@lugia/lugia-web.sFontSize';
