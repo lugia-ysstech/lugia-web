@@ -113,15 +113,18 @@ export const Text = styled.div`
   word-break: break-all;
 `;
 export const CloseIcon: Object = styled(Icon)`
-  font-size: ${em(14)};
+  font-size: ${em(get('xsFontSize'))};
 `;
 export const CloseIconWrap = styled.div`
   position: absolute;
-  right: ${em(22)};
+  right: ${em(get('padding'))};
   top: ${em(16)};
   color: ${get('mediumGreyColor')};
   outline: none;
   cursor: pointer;
+  :hover {
+    color: ${get('darkGreyColor')};
+  }
 `;
 const leftIconEM = px2emcss(2);
 export const Icons: Object = styled(Icon)`
