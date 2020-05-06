@@ -127,7 +127,6 @@ export const InnerContainer = CSSComponent({
   normal: {
     selectNames: [['padding']],
   },
-
   hover: {
     selectNames: [],
   },
@@ -147,13 +146,23 @@ export const InnerContainer = CSSComponent({
   option: { hover: false, active: false, disabled: true },
 });
 
-export const SingleInnerContainer = StaticComponent({
+export const SingleInnerContainer = CSSComponent({
   tag: 'div',
   className: 'SingleInnerContainer',
+  normal: {
+    selectNames: [['padding']],
+  },
+  hover: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [['padding']],
+  },
   css: css`
+    width: 100%;
+    height: 100%;
     position: relative;
     user-select: none;
-    height: 100%;
     padding-left: ${px2remcss(10)};
     padding-right: ${px2remcss(10)};
     display: flex;

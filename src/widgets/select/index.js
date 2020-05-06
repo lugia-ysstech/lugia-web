@@ -58,6 +58,8 @@ type SelectProps = {
   onQuery?: Function,
   onClear?: Function,
   onSelect?: Function,
+  onFocus?: Function,
+  onBlur?: Function,
   onRefresh?: Function,
   value?: string[],
   displayValue?: string[],
@@ -391,6 +393,8 @@ class Select extends React.Component<SelectProps, SelectState> {
       pullIconClass,
       clearIconClass,
       isShowClearButton,
+      onFocus,
+      onBlur,
     } = props;
     const { displayValue = [] } = this;
     const { value = [], menuVisible } = state;
@@ -417,9 +421,9 @@ class Select extends React.Component<SelectProps, SelectState> {
           <InputTag
             ref={this.inputTag}
             menuVisible={menuVisible}
+            key="inputtag"
             prefix={prefix}
             suffix={suffix}
-            key="inputtag"
             canClear={canClear}
             value={value}
             displayValue={displayValue}
@@ -434,8 +438,8 @@ class Select extends React.Component<SelectProps, SelectState> {
             pullIconClass={pullIconClass}
             clearIconClass={clearIconClass}
             isShowClearButton={isShowClearButton}
-            onFocus={this.props.onFocus}
-            onBlur={this.props.onBlur}
+            onFocus={onFocus}
+            onBlur={onBlur}
           />
         </Trigger>
       </Theme>
