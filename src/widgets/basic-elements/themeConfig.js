@@ -1,7 +1,7 @@
-import colorsFunc from '../css/stateColor';
 import { getBorderRadius } from '@lugia/theme-utils';
 import { deepMerge } from '@lugia/object-utils';
-const { themeColor } = colorsFunc();
+import get from '../css/theme-common-dict';
+
 export default function getThemeProps(props: TypeProps) {
   const { getPartOfThemeProps, shape } = props;
   let themeProps = getPartOfThemeProps('Container');
@@ -10,7 +10,7 @@ export default function getThemeProps(props: TypeProps) {
     normal: {
       width: 32,
       height: 32,
-      background: { color: themeColor },
+      background: { color: '$lugia-dict.@lugia/lugia-web.themeColor' },
     },
   };
   themeProps = deepMerge({ themeConfig: { ...defaultNormalTheme } }, themeProps);
@@ -25,11 +25,7 @@ export default function getThemeProps(props: TypeProps) {
   if (shape === 'triangle') {
     const { themeConfig } = themeProps;
     const {
-      normal: {
-        width,
-        height,
-        background: { color },
-      },
+      normal: { width, height },
     } = themeConfig;
 
     const border = width / 2;
@@ -38,7 +34,7 @@ export default function getThemeProps(props: TypeProps) {
         border: {
           top: { width: 0, style: 'solid', color: 'transparent' },
           right: { width: border, style: 'solid', color: 'transparent' },
-          bottom: { width: height, style: 'solid', color },
+          bottom: { width: height, style: 'solid', color: get('themeColor') },
           left: { width: border, style: 'solid', color: 'transparent' },
         },
         borderRadius: getBorderRadius(0),
