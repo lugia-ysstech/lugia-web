@@ -40,6 +40,8 @@ type TreeSelectProps = {
   onTrigger?: Function,
   onChange?: Function,
   onSelect?: Function,
+  onFocus?: Function,
+  onBlur?: Function,
   expandAll: boolean,
   splitQuery?: string,
   onQuery?: Function,
@@ -57,6 +59,10 @@ type TreeSelectProps = {
   getPartOfThemeHocProps: Function,
   renderSuffixItems?: Function,
   onRightClick?: Function,
+  pullIconClass?: string,
+  clearIconClass?: string,
+  canClear?: boolean,
+  isShowClearButton?: boolean,
 };
 type TreeSelectState = {
   open: boolean,
@@ -91,6 +97,9 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
     canSearch: false,
     expandAll: false,
     translateTreeData: false,
+    isShowClearButton: true,
+    pullIconClass: 'lugia-icon-direction_down',
+    clearIconClass: 'lugia-icon-reminder_close',
   };
 
   state: TreeSelectState;
@@ -234,9 +243,14 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       createPortal,
       renderSuffixItems,
       onRightClick,
+      pullIconClass,
+      clearIconClass,
+      isShowClearButton,
+      canClear,
+      onFocus,
+      onBlur,
     } = props;
     const { onSelect, ...res } = props;
-
     const { current, start, treeFilter, value, displayValue, query, selectAll } = state;
 
     const getTree: Function = (cmp: Object) => {
@@ -278,6 +292,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
         translateTreeData={translateTreeData}
         renderSuffixItems={renderSuffixItems}
         onRightClick={onRightClick}
+        canClear={canClear}
       />,
     ];
 
@@ -300,22 +315,24 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
           hideAction={['click']}
         >
           <InputTag
+            ref={this.inputTag}
             key="inputtag"
             help={help}
-            validateStatus={validateStatus}
-            onFocus={this.onFocus}
-            disabled={disabled}
             value={value}
             displayValue={displayValue}
+            validateStatus={validateStatus}
             onChange={this.onInputTagChange}
-            mutliple={this.isMutliple()}
-            placeholder={placeholder}
-            ref={this.inputTag}
-            createPortal={createPortal}
-            onClear={this.onClear}
             onPopupVisibleChange={this.onInputTagPopupVisibleChange}
-            onFocus={this.props.onFocus}
-            onBlur={this.props.onBlur}
+            disabled={disabled}
+            createPortal={createPortal}
+            placeholder={placeholder}
+            mutliple={this.isMutliple()}
+            onClear={this.onClear}
+            pullIconClass={pullIconClass}
+            clearIconClass={clearIconClass}
+            isShowClearButton={isShowClearButton}
+            onFocus={onFocus}
+            onBlur={onBlur}
           />
         </Trigger>
       </Theme>
@@ -336,8 +353,6 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
 
     return this.getInner(props, state);
   }
-
-  onFocus = () => {};
 
   onClearQuery = () => {
     this.onQueryInputChange('');
