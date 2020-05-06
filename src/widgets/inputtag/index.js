@@ -104,6 +104,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     validateStatus: 'success',
     help: DefaultHelp,
     canClear: true,
+    isShowClearButton: true,
     pullIconClass: 'lugia-icon-direction_down',
     clearIconClass: 'lugia-icon-reminder_close',
   };
@@ -243,7 +244,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     themeState.focus = menuVisible;
     if (!this.isMutliple()) {
       result = (
-        <SingleInnerContainer disabled={disabled}>
+        <SingleInnerContainer disabled={disabled} themeProps={themeProps}>
           <FlexResBox>
             {prefix ? (
               <Prefix {...dispatchEvent(['hover', 'disabled'], 'f2c')}>{prefix}</Prefix>
@@ -261,7 +262,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     } else {
       const { items } = state;
       result = (
-        <InnerContainer themeProps={themeProps}>
+        <InnerContainer disabled={disabled} themeProps={themeProps}>
           <FlexResBox>
             <List ref={cmp => (this.list = cmp)}>{items}</List>
             {placeholder}
