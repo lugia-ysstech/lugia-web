@@ -528,7 +528,7 @@ export const TitleWrap = CSSComponent({
     align-items: center;
     height: 100%;
     vertical-align: top;
-    padding-left: ${px2remcss(get('padding'))};
+    padding-left: ${px2remcss(4)};
     box-sizing: border-box;
     transition-property: background-color, border, border-radius, opacity, box-shadow;
     transition-duration: 0.2s;
@@ -570,7 +570,7 @@ TitleSpan.displayName = 'titleSpan';
 
 const getFlexBoxPaddingLeft = pos => {
   const num = pos.split('-').length - 2;
-  return num ? num * 20 : 0;
+  return num ? num * 14 : 0;
 };
 
 export const FlexWrap = CSSComponent({
@@ -670,7 +670,6 @@ export const Text = StaticComponent({
   tag: 'span',
   className: 'Text',
   css: css`
-    flex: 1;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;

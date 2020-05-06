@@ -292,7 +292,6 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
         translateTreeData={translateTreeData}
         renderSuffixItems={renderSuffixItems}
         onRightClick={onRightClick}
-        canClear={canClear}
       />,
     ];
 
@@ -330,6 +329,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
             onClear={this.onClear}
             pullIconClass={pullIconClass}
             clearIconClass={clearIconClass}
+            canClear={canClear}
             isShowClearButton={isShowClearButton}
             onFocus={onFocus}
             onBlur={onBlur}
