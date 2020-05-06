@@ -40,7 +40,7 @@ export const EditDiv = CSSComponent({
   tag: 'div',
   className: 'EditDiv',
   normal: {
-    selectNames: [['width'], ['height'], ['border'], ['background'], ['padding']],
+    selectNames: [['width'], ['height'], ['border'], ['background'], ['padding'], ['color']],
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
         propsConfig: { isSelect, isHead, isDisableEdit },
@@ -82,6 +82,7 @@ export const TdContainer = StaticComponent({
   css: `
     width: 100%;
     height: 100%;
+    font-size:0;
     position: relative;`,
 });
 
