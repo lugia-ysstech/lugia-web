@@ -170,6 +170,12 @@ const crateTreeThemeConfig = (type: SizeType) => {
         color: disableTextColor,
       },
     },
+    SwitchIconSelected: {
+      normal: {
+        fontSize: xsFontSize,
+        color: defaultColor,
+      },
+    },
   };
 };
 

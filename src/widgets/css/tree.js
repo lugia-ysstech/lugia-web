@@ -329,8 +329,8 @@ const getLiIcon = (inlineType, itemHeight, selected) => {
     : `
   ::before {
     content: '';
-    width: ${px2remcss(6)};
-    border-radius: ${px2remcss(4)};
+    width: ${px2remcss(4)};
+    border-radius: ${px2remcss(2)};
     height: ${px2remcss(itemHeight)};
     background: ${get('themeColor')};
     transition: all ${transitionTime};
@@ -460,9 +460,10 @@ export const TitleWrap = CSSComponent({
     getThemeMeta: (themeMeta, themeProps) => {
       const { propsConfig: { selected, inlineType, __navmenu, shape } = {} } = themeProps;
 
-      const borderRadius =
-        shape === 'round' || inlineType === 'ellipse' ? 99999 : get('borderRadiusValue');
-      const linearGradient = `linear-gradient(to right, ${get('themeColor')}, #808eff)`;
+      const borderRadius = shape === 'round' ? 99999 : get('borderRadiusValue');
+      const linearGradient = `linear-gradient(to right, ${get('themeColor')}, ${get(
+        'themeHoverColor'
+      )})`;
       return __navmenu && selected && inlineType === 'ellipse'
         ? {
             background: {
@@ -547,7 +548,7 @@ export const TitleSpan = CSSComponent({
     getCSS: (themeMeta, themeProps) => {
       const { propsConfig } = themeProps;
       const { describe } = propsConfig;
-      const color = describe ? '#ccc' : '';
+      const color = describe ? get('mediumGreyColor') : '';
       return `color: ${color}`;
     },
   },

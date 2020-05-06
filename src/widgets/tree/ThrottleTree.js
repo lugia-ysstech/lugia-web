@@ -101,7 +101,7 @@ class ScrollerTree extends React.Component<any, any> {
     return theme;
   }
 
-  loopNode = (data: Array<RowData>) => {
+  loopNode = (data: Array<RowData>, subTreeLevel: number = 0) => {
     const { inlineType, shape, id2ExtendInfo, translateTreeData, draggable } = this.props;
     return data.map(item => {
       const {
@@ -180,8 +180,9 @@ class ScrollerTree extends React.Component<any, any> {
             checkedCSS={checkedCSS}
             marginBottom={marginBottom}
             size={size}
+            subTreeLevel={subTreeLevel}
           >
-            {this.loopNode(children)}
+            {this.loopNode(children, subTreeLevel + 1)}
           </TreeNode>
         );
       }
@@ -195,6 +196,7 @@ class ScrollerTree extends React.Component<any, any> {
           renderSuffixItems={renderSuffixItems}
           onRightClick={onRightClick}
           switchIconNames={switchIconNames}
+          subTreeLevel={subTreeLevel}
           key={key}
           title={title}
           item={item}

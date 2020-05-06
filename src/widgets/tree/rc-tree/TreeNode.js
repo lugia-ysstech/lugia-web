@@ -308,6 +308,18 @@ class TreeNode extends React.Component {
     };
   }
 
+  getSubTreeWrapTheme = () => {
+    const { marginBottom, subTreeLevel } = this.props;
+    const themeProps = this.props.getPartOfThemeProps('SubTreeWrap', {
+      props: { paddingTop: marginBottom },
+    });
+    const { themeConfig: { normal } = {} } = themeProps;
+    if (subTreeLevel !== 0 && normal && normal.background) {
+      normal.background = 'transparent';
+    }
+    return themeProps;
+  };
+
   renderChildren(props) {
     const renderFirst = this.renderFirst;
     this.renderFirst = 1;
@@ -347,9 +359,7 @@ class TreeNode extends React.Component {
         >
           {!props.expanded ? null : (
             <SubTreeWrap
-              themeProps={this.props.getPartOfThemeProps('SubTreeWrap', {
-                props: { paddingTop: props.marginBottom },
-              })}
+              themeProps={this.getSubTreeWrapTheme()}
               data-expanded={props.expanded}
               propsConfig={{ expanded: props.expanded }}
             >
@@ -436,16 +446,39 @@ class TreeNode extends React.Component {
     return getTreeThemeDefaultConfig(size, target)[state];
   }
 
+  getSelectedParentTextThemeProps = (target, params) => {
+    const themeProps = this.props.getPartOfThemeProps(target, params);
+    const { themeConfig = {} } = themeProps;
+    const { normal = {} } = themeConfig;
+    const { themeConfig: parentTexThemeConfig = {} } = this.props.getPartOfThemeProps(
+      'SelectedParentText'
+    );
+    const { normal: TextExpanded = {} } = this.props.getPartOfThemeProps('TextExpanded');
+    themeConfig.normal = deepMerge(
+      deepMerge(
+        this.getDefaultTitleWrapTheme('normal', params.props, target),
+        normal,
+        parentTexThemeConfig.normal
+      ),
+      TextExpanded
+    );
+    return themeProps;
+  };
+
   getTitleWrapThemeProps(defaultName: string, selectedName: string, params: Object = {}): Object {
     const { parentIsHighlight } = this.props;
-
-    return this.isChecked() || parentIsHighlight
-      ? this.getSelectedTitleWrapThemeProps(selectedName, {
-          props: params,
-        })
-      : this.getDefaultTitleWrapThemeProps(defaultName, {
-          props: params,
-        });
+    if (this.isChecked()) {
+      return this.getSelectedTitleWrapThemeProps(selectedName, {
+        props: params,
+      });
+    } else if (parentIsHighlight) {
+      return this.getSelectedParentTextThemeProps(selectedName, {
+        props: params,
+      });
+    }
+    return this.getDefaultTitleWrapThemeProps(defaultName, {
+      props: params,
+    });
   }
 
   getThemeProps(defaultName: string, selectedName: string, params: Object = {}): Object {
@@ -508,7 +541,7 @@ class TreeNode extends React.Component {
   }
 
   getSwitchIconTheme = (expandedState: string) => {
-    const { size } = this.props;
+    const { size, parentIsHighlight, item } = this.props;
     let switchIconThemeHocProps;
     const defaultMarginLeft = {
       normal: {
@@ -522,7 +555,9 @@ class TreeNode extends React.Component {
     );
 
     if (expandedState === 'open') {
-      const { viewClass, theme } = this.props.getPartOfThemeHocProps('SwitchIconExpanded');
+      const { viewClass, theme } = parentIsHighlight
+        ? this.props.getPartOfThemeHocProps('SelectedParentSwitchIconExpanded')
+        : this.props.getPartOfThemeHocProps('SwitchIconExpanded');
       switchIconThemeHocProps = {
         viewClass,
         theme: {
@@ -535,13 +570,17 @@ class TreeNode extends React.Component {
         },
       };
     } else {
+      const { viewClass, theme } = parentIsHighlight
+        ? this.props.getPartOfThemeHocProps('SelectedParentSwitchIcon')
+        : this.props.getPartOfThemeHocProps('SwitchIcon');
       switchIconThemeHocProps = {
         viewClass: notOpenViewClass,
         theme: {
           [notOpenViewClass]: deepMerge(
             getTreeThemeDefaultConfig(size, 'SwitchIcon'),
             defaultMarginLeft,
-            notOpenTheme[notOpenViewClass]
+            notOpenTheme[notOpenViewClass],
+            theme[viewClass]
           ),
         },
       };
@@ -550,7 +589,7 @@ class TreeNode extends React.Component {
   };
 
   getIconTheme = (iconType: string) => {
-    const { viewClass, theme } = this.props.getPartOfThemeHocProps(iconType);
+    const { viewClass, theme, size } = this.props.getPartOfThemeHocProps(iconType);
     const marginLeft = iconType === 'SuffixIcon' ? get('paddingToText') : 0;
     const marginRight = iconType === 'PrefixIcon' ? get('paddingToText') : 0;
     const defaultTheme = {
@@ -566,7 +605,7 @@ class TreeNode extends React.Component {
       viewClass,
       theme: deepMerge(
         {
-          [viewClass]: { ...defaultTheme },
+          [viewClass]: deepMerge(defaultTheme, getTreeThemeDefaultConfig(size, iconType)),
         },
         theme
       ),
