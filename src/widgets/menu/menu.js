@@ -289,7 +289,6 @@ class Menu extends React.Component<MenuProps, MenuState> {
 
         const expandedPathValues =
           expandedPath.length === 0 ? [] : expandedPath[0].split(separator);
-
         const result = (
           <Item
             key={key}

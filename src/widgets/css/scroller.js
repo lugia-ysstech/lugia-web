@@ -7,6 +7,8 @@
 
 import { px2remcss } from '../css/units';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
+import { getBorderRadius } from '../theme/CSSProvider';
+import get from './theme-common-dict';
 
 export const BarDefaultSize = 12;
 export const DefaultWidth = 250;
@@ -43,6 +45,7 @@ export const ScrollerContainer = CSSComponent({
         color: '#fff',
       },
       width: DefaultWidth,
+      borderRadius: getBorderRadius(4),
     },
   },
   hover: {
@@ -52,7 +55,7 @@ export const ScrollerContainer = CSSComponent({
     position: relative;
     transition: all 0.3s;
     overflow: hidden;
-    border-radius: ${px2remcss(4)};
+
     &:hover > div:nth-child(2) {
       opacity: 1;
     }

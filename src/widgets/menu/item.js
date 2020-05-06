@@ -179,26 +179,44 @@ class MenuItem extends React.Component<MenuItemProps> {
     );
   }
 
+  getSwitchIconTheme = () => {
+    const { checked, getPartOfThemeHocProps, size, hoverState, item } = this.props;
+    const iconType = checked ? 'SwitchIconSelected' : 'SwitchIcon';
+    const { viewClass, theme } = getPartOfThemeHocProps(iconType);
+    if (hoverState && !checked) {
+      theme[viewClass].normal = theme[viewClass].hover;
+    } else {
+      theme[viewClass].normal = theme[viewClass].normal;
+    }
+    return {
+      viewClass,
+      theme: deepMerge(
+        {
+          [viewClass]: getMenuThemeDefaultConfig(size, iconType),
+        },
+        theme
+      ),
+    };
+  };
+
   getSwitchIcon() {
     const {
       mutliple,
       checkedCSS,
-      item: { children } = {},
+      item: { children, disabled } = {},
       switchIconClass: { iconClass, iconSrc },
     } = this.props;
     if (mutliple === true || checkedCSS === 'checkbox' || !children || children.length === 0) {
       return null;
     }
-    const { viewClass, theme } = this.getIconTheme('SwitchIcon');
-
     return (
       <SwitchIconContainer>
         <Icon
           iconClass={iconClass}
+          disabled={disabled}
           src={iconSrc}
           singleTheme
-          viewClass={viewClass}
-          theme={theme}
+          {...this.getSwitchIconTheme()}
           {...this.props.dispatchEvent([['hover'], ['active']], 'f2c')}
         />
       </SwitchIconContainer>
@@ -264,7 +282,7 @@ class MenuItem extends React.Component<MenuItemProps> {
       if (hoverState && !checked) {
         themeConfig.normal = themeConfig.hover;
       } else {
-        themeConfig.normal = { color: blackColor };
+        themeConfig.normal = deepMerge({ color: blackColor }, themeConfig.normal);
       }
     }
     return themeProps;
@@ -366,7 +384,6 @@ class MenuItem extends React.Component<MenuItemProps> {
     const themeProps = this.getMenuItemThemeProps(checked);
 
     const DividerThemeProps = getPartOfThemeProps('Divider');
-
     const { des } = item;
     const target = (
       <ItemWrap

@@ -174,11 +174,13 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       themeStyle,
       divided,
       renderSuffixItems,
+      size = 'small',
     } = this.props;
     const { popupVisible, value, expandedPath } = this.state;
     return (
       <MenuWrap>
         <Menu
+          size={size}
           {...this.getMenuTheme(themeStyle)}
           data={data}
           separator={separator}
@@ -195,6 +197,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
           expandedPath={expandedPath}
           onExpandPathChange={this.onExpandPathChange}
           renderSuffixItems={renderSuffixItems}
+          checkedCSS={'background'}
         />
       </MenuWrap>
     );
@@ -376,6 +379,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     return (
       <Menu
         action={'hover'}
+        size={'small'}
         {...this.getTabsMenuTheme(themeStyle)}
         autoHeight={autoHeight}
         data={children}
@@ -460,7 +464,6 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     } else {
       defaultTheme = HorizontalLightTheme;
     }
-
     return this.mergeTheme('Tabs', defaultTheme);
   };
 
@@ -482,7 +485,6 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     } else {
       defaultTheme = LightMenuTheme;
     }
-
     return this.mergeTheme('Menu', defaultTheme);
   };
 
@@ -535,6 +537,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
           inlineType={inlineType}
           data={this.treeData}
           value={value}
+          parentIsHighlight
           mutliple={false}
           valueField={valueField}
           displayField={displayField}

@@ -234,7 +234,6 @@ class Tree extends React.Component<TreeProps, TreeState> {
         expandedKeys: this.getExpandedKeys(props, id2ExtendInfo),
         expand,
         selectValue: [],
-        parentHighlightKeys: [],
       };
 
       if (this.isNotLimit(props)) {
@@ -391,6 +390,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
       state.selectValue !== nextState.selectValue ||
       state.expand !== nextState.expand ||
       state.selectedInfo !== nextState.selectedInfo ||
+      state.parentHighlightKeys !== nextState.parentHighlightKeys ||
       themeChange
     );
   }
@@ -543,7 +543,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
   }
 
   onSelect = (selectValue: Array<string>, eventObject: any, itemObj: Object) => {
-    const { parentIsHighlight, pathField } = this.props; // 是否开启选中子节点，父节点高亮
+    const { parentIsHighlight, pathField, pathSeparator } = this.props; // 是否开启选中子节点，父节点高亮
     const {
       node: {
         props: {
@@ -552,11 +552,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
         },
       },
     } = eventObject;
-    let parentHighlightKeys = [];
-    if (parentIsHighlight && isLeaf) {
-      // 开启高亮并且是叶子节点
-      parentHighlightKeys = nodePath.split('/');
-    }
+    const parentHighlightKeys = parentIsHighlight ? nodePath.split(pathSeparator) : [];
     const { onSelect } = this.props;
     onSelect && onSelect(selectValue, itemObj);
     this.select(selectValue, parentHighlightKeys, itemObj);
@@ -591,6 +587,8 @@ class Tree extends React.Component<TreeProps, TreeState> {
     this.onChange([value], itemObj);
     if (this.isNotLimit(props)) {
       this.setState({ selectValue, parentHighlightKeys });
+    } else {
+      this.setState({ parentHighlightKeys });
     }
   }
 
