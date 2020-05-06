@@ -82,12 +82,16 @@ const getAnimate = (props: CSSProps) => {
     `;
   }
 };
+const getOutBoxShadow = () => {
+  const { x, y, color, blur, spread } = get('normalBoxShadow');
+  return `${em(x)} ${em(y)} ${em(blur)} ${em(spread)} ${color}`;
+};
 export const Notification = styled.div`
   font-size: ${FontSize}rem;
   box-sizing: border-box;
   padding: ${em(20)} ${props => (props.needIcon ? em(50) : em(20))};
-  border-radius: ${em(4)};
-  box-shadow: 0 0 ${em(6)} rgba(102, 102, 102, 0.2);
+  border-radius: ${em(get('largeBorderRadiusValue'))};
+  box-shadow: ${getOutBoxShadow};
   background: #fff;
   line-height: 1.5;
   position: relative;
@@ -132,7 +136,7 @@ export const Icons: Object = styled(Icon)`
   font-size: ${em(20)};
   line-height: ${leftIconEM(22)};
   top: ${leftIconEM(26)};
-  left: ${leftIconEM(20)};
+  left: ${leftIconEM(36 - get('marginToSameElement'))};
   cursor: default;
   color: ${props => (props.iconColor ? get(props.iconColor) : get('themeColor'))};
 `;
