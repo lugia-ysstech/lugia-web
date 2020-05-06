@@ -246,7 +246,7 @@ const getNoDividedCustomsHoverCSS = param => {
 };
 
 const getNoDividedCustomsActiveCSS = param => {
-  const activebgColor = getActiveBgColorFromNormalOrActive(param, themeColor);
+  const activebgColor = getActiveBgColorFromNormalOrActive(param);
   const activeCSS = {
     background: {
       color: activebgColor,
@@ -688,7 +688,7 @@ const getDevidedTextContainerPrimaryActiveCSS = () => {
 };
 
 const getDevidedTextContainerCustomsActiveCSS = themeConfig => {
-  const activebgColor = getActiveBgColorFromNormalOrActive(themeConfig, -get('themeColor'));
+  const activebgColor = getActiveBgColorFromNormalOrActive(themeConfig);
   const activeCSS = {
     background: {
       color: activebgColor,
