@@ -264,6 +264,9 @@ export const ModalBody = CSSComponent({
       },
     },
   },
+  disabled: {
+    color: '$lugia-dict.@lugia/lugia-web.disableTextColor',
+  },
 });
 
 export const ModalFooter = StaticComponent({
