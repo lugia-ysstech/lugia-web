@@ -185,7 +185,7 @@ export const ModalContent = CSSComponent({
       background: { color: '#fff' },
       boxShadow: getBoxShadow(`0 ${px2remcss(4)} ${px2remcss(12)} rgba(0, 0, 0, 0.15)`),
       border: getBorder({ width: 0, style: 'solid', color: '#ccc' }),
-      borderRadius: getBorderRadius(4),
+      borderRadius: getBorderRadius(get('largeBorderRadiusValue')),
     },
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
       const { propsConfig = {} } = themeProps;
@@ -228,7 +228,7 @@ export const ModalTitle = CSSComponent({
   normal: {
     selectNames: [['font'], ['color'], ['padding']],
     defaultTheme: {
-      font: { size: 18, weight: 500 },
+      font: { size: 16, weight: 500 },
       color: '$lugia-dict.@lugia/lugia-web.blackColor',
       padding: {
         top: 0,
@@ -236,6 +236,11 @@ export const ModalTitle = CSSComponent({
         bottom: 16,
         left: 0,
       },
+    },
+  },
+  disabled: {
+    defaultTheme: {
+      color: '$lugia-dict.@lugia/lugia-web.disableTextColor',
     },
   },
 });
