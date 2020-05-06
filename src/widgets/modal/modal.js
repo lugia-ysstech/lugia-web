@@ -27,6 +27,7 @@ import Button from '../button';
 import Icon from '../icon';
 import { px2remcss } from '../css/units';
 import { deepMerge } from '@lugia/object-utils';
+import get from '../css/theme-common-dict';
 
 const BtnType = {
   confirm: 'warning',
@@ -118,12 +119,12 @@ export default ThemeProvider(
         {
           [viewClass]: {
             normal: {
-              fontSize: 20,
+              fontSize: '$lugia-dict.@lugia/lugia-web.mFontSize',
               color: getIconColor({ iconType }),
               getCSS() {
                 return `
                   position: absolute;
-                  left: ${px2remcss(22)};
+                  left: ${px2remcss(50 - get('mFontSize') - get('marginToSameElement'))};
                   top: ${px2remcss(28)};
                 `;
               },
