@@ -509,6 +509,13 @@ class TreeNode extends React.Component {
   getSwitchIconTheme = (expandedState: string) => {
     const { size } = this.props;
     let switchIconThemeHocProps;
+    const defaultMarginLeft = {
+      normal: {
+        padding: {
+          left: get('padding'),
+        },
+      },
+    };
     if (expandedState === 'open') {
       const { viewClass, theme } = this.props.getPartOfThemeHocProps('SwitchIconExpanded');
       switchIconThemeHocProps = {
@@ -516,6 +523,7 @@ class TreeNode extends React.Component {
         theme: {
           [viewClass]: deepMerge(
             getTreeThemeDefaultConfig(size, 'SwitchIconExpanded'),
+            defaultMarginLeft,
             theme[viewClass]
           ),
         },
@@ -525,7 +533,11 @@ class TreeNode extends React.Component {
       switchIconThemeHocProps = {
         viewClass,
         theme: {
-          [viewClass]: deepMerge(getTreeThemeDefaultConfig(size, 'SwitchIcon'), theme[viewClass]),
+          [viewClass]: deepMerge(
+            getTreeThemeDefaultConfig(size, 'SwitchIcon'),
+            defaultMarginLeft,
+            theme[viewClass]
+          ),
         },
       };
     }
@@ -534,7 +546,7 @@ class TreeNode extends React.Component {
 
   getIconTheme = (iconType: string) => {
     const { viewClass, theme } = this.props.getPartOfThemeHocProps(iconType);
-    const marginLeft = iconType === 'SuffixIcon' ? get('padding') : 0;
+    const marginLeft = iconType === 'SuffixIcon' ? get('paddingToText') : 0;
     const marginRight = iconType === 'PrefixIcon' ? get('paddingToText') : 0;
     const defaultTheme = {
       normal: {
