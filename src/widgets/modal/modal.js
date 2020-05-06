@@ -91,7 +91,14 @@ export default ThemeProvider(
         {
           [viewClass]: {
             normal: {
-              fontSize: 16,
+              fontSize: '$lugia-dict.@lugia/lugia-web.sFontSize',
+              color: '$lugia-dict.@lugia/lugia-web.mediumGreyColor',
+            },
+            hover: {
+              color: '$lugia-dict.@lugia/lugia-web.darkGreyColor',
+            },
+            disabled: {
+              color: '$lugia-dict.@lugia/lugia-web.disableTextColor',
             },
           },
         },
