@@ -120,6 +120,9 @@ export default {
   '/navmenu': {
     render: async () => import('./widgets/navmenu/demo'),
   },
+  '/p-navmenu': {
+    render: async () => import('./widgets/navmenu/p-navmenu'),
+  },
   '/notification': {
     render: async () => import('./widgets/notification/demo'),
   },
