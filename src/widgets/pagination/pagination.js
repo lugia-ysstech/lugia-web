@@ -15,12 +15,10 @@ import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import ThemeHoc from '../theme-provider';
 import { getBorder, getBorderRadius } from '@lugia/theme-utils';
 import { deepMerge } from '@lugia/object-utils';
-import colorsFunc from '../css/stateColor';
 import Widget from '../consts';
 import { ObjectUtils } from '@lugia/type-utils';
 import { checkNumber } from '../common/Math';
 import get from '../css/theme-common-dict';
-export const { borderSize } = colorsFunc();
 
 const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
@@ -211,7 +209,7 @@ const PaginationListItem = CSSComponent({
       background: {
         color: themeColor,
       },
-      border: getBorder({ color: themeColor, width: borderSize, style: 'solid' }),
+      border: getBorder(get('focusBorder')),
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const { height } = themeMeta;
