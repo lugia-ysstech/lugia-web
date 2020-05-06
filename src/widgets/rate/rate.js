@@ -125,13 +125,13 @@ const RateText = CSSComponent({
     selectNames: [['color']],
     defaultTheme: {
       color: superLightColor,
-      fontSize: 20,
+      fontSize: 18,
     },
   },
   disabled: {
     selectNames: [['color']],
     defaultTheme: {
-      color: '#ccc',
+      color: disableTextColor,
     },
   },
   css: css`
@@ -154,7 +154,7 @@ const RateTextBottom = CSSComponent({
     selectNames: [['color'], ['fontSize']],
     defaultTheme: {
       color: superLightColor,
-      fontSize: 20,
+      fontSize: 18,
     },
   },
   disabled: {
