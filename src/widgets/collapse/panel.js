@@ -117,7 +117,7 @@ export default ThemeProvider(
       }
       const partProps = { showArrow: theShowArrow, zebraStripe, count, open };
 
-      const panelWrapTheme = getPartOfThemeProps('PanelHeader', {
+      const panelWrapTheme = getPartOfThemeProps('PanelWrap', {
         props: { hover, ...partProps },
       });
       const panelHeaderTheme = getPartOfThemeProps('PanelHeader', {
