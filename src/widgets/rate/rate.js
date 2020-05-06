@@ -15,9 +15,13 @@ import { toNumber } from '../common/NumberUtils';
 
 import CSSComponent, { css, keyframes, StaticComponent } from '@lugia/theme-css-hoc';
 import { deepMerge } from '@lugia/object-utils';
+import get from '../css/theme-common-dict';
 
-import colorsFunc from '../css/stateColor';
-const { warningColor, mediumGreyColor, superLightColor } = colorsFunc();
+const warningColor = '$lugia-dict.@lugia/lugia-web.warningColor';
+const warningHoverColor = '$lugia-dict.@lugia/lugia-web.warningHoverColor';
+const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
+const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
+const superLightColor = '$lugia-dict.@lugia/lugia-web.superLightColor';
 
 const showUp = keyframes`
   from {
@@ -87,6 +91,7 @@ const Ratespan = CSSComponent({
   css: css`
     margin-right: 6px;
     position: relative;
+    font-size: 18px;
     & > i.bottom {
       position: absolute;
       left: 0;
@@ -690,7 +695,13 @@ class Rate extends React.Component<RateProps, any> {
         const { viewClass, theme } = this.props.getPartOfThemeHocProps('ActiveIcon');
         resultTheme = deepMerge(
           getDefaultTheme(viewClass, RateIconBottomTheme, RateIconBottomViewClass),
-          { [viewClass]: { normal: { color: warningColor } } },
+          {
+            [viewClass]: {
+              normal: { color: warningColor },
+              hover: { color: warningHoverColor },
+              disabled: { color: disableTextColor },
+            },
+          },
           theme
         );
         resultViewClass = viewClass;
@@ -718,7 +729,7 @@ class Rate extends React.Component<RateProps, any> {
             getCSS: () => {
               return `              
               vertical-align: text-bottom !important;
-              color:${superLightColor};
+              color:${get('superLightColor')};
               position: absolute;
               left: 0;
               bottom: 0;
