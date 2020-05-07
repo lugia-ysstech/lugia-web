@@ -8,8 +8,11 @@ import Theme from '../theme/index';
 import TreeSelect from './index';
 import Widget from '../consts/index';
 import styled from 'styled-components';
-import colors from '../css/stateColor';
+import Icon from '../icon';
 import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
+const Box = styled.div`
+  margin: 50px;
+`;
 
 const data = [
   { key: '1', title: '1' },
@@ -69,115 +72,95 @@ const data = [
   { key: '4', title: '4', isLeaf: true },
 ];
 
+const info = [
+  {
+    value: '0',
+    text: '北京分行',
+
+    children: [
+      // { value: '0-1-0', text: '朝阳支行办事处-1' },
+      { value: '0-1-1', text: '朝阳支行办事处-2', children: [{ value: '0-111', text: '123' }] },
+      {
+        value: '0-2',
+        text: '海淀支行办事处',
+        icons: {
+          prefixIconClass: 'lugia-icon-financial_heart',
+          prefixIconSrc: '',
+          suffixIconClass: 'lugia-icon-financial_contacts',
+          suffixIconSrc: '',
+        },
+      },
+      { value: '0-3', text: '石景山支行办事处' },
+    ],
+  },
+  { value: '0-3', text: '石景山支行办事处' },
+  { value: '0-4', text: '石景山支行办事处' },
+  { value: '0-5', text: '石景山支行办事处' },
+  { value: '0-6', text: '石景山支行办事处' },
+  { value: '0-7', text: '石景山支行办事处' },
+];
+
 const theme = {
   [Widget.TreeSelect]: {
     Tree: {
       Container: {
         normal: {
-          width: 500,
-          height: 300,
-          opacity: 1,
-          background: { color: '#E086BB' },
-          boxShadow: getBoxShadow('2px 2px 5px 5px #9C2D6E'),
-          border: getBorder({ color: '#9C2D6E', width: 1, style: 'solid' }),
-          borderRadius: getBorderRadius(20),
-          // padding: {
-          //   left: 20,
-          //   right: 20,
-          // },
-          // margin: {
-          //   left: 20,
-          // },
+          width: 202,
+          height: 224,
+          background: { color: '#fff' },
+          boxShadow: getBoxShadow('0 0 6px 0 rgba(0,0,0,0.20)'),
+          borderRadius: getBorderRadius(1),
         },
-        hover: {
-          opacity: 0.9,
-          background: { color: '#F51196' },
-          boxShadow: getBoxShadow('2px 2px 5px 5px #F51196'),
-          border: getBorder({ color: '#F51196', width: 1, style: 'solid' }),
-          // borderRadius: getBorderRadius(40),
-        },
+        hover: {},
       },
 
       TreeItem: {
         TreeItemWrap: {
           normal: {
-            background: { color: '#21EBE8' },
-            border: getBorder({ color: '#F51196', width: 1, style: 'solid' }),
-
-            // padding: { left: 30, right: 30 },
+            height: 28,
           },
           hover: {
-            background: { color: '#119E9C' },
-            color: 'white',
-            // borderRadius: getBorderRadius(40),
-          },
-          active: {
-            background: { color: '#036664' },
-            // color: '#4d63ff',
+            background: {
+              color: '#4d63ff',
+            },
           },
         },
         SelectedTreeItemWrap: {
-          normal: {
+          normal: {},
+          hover: {
             background: {
-              color: '#000',
+              color: '#4d63ff',
             },
           },
         },
         Text: {
-          normal: {
-            color: '#fff',
-            width: 200,
-            // background: { color: '#333' },
-            font: { size: 14 },
-            padding: {
-              left: 20,
-            },
-            // border: getBorder({ color: '#F51196', width: 1, style: 'solid' }),
-            borderRadius: getBorderRadius(40),
-            // border: getBorder({ color: '#F51196', width: 1, style: 'solid' }),
-          },
+          normal: {},
           hover: {
-            color: 'red',
-            background: { color: '#2982F5' },
-            // border: getBorder({ color: '#F75993', width: 1, style: 'solid' }),
-            borderRadius: getBorderRadius(10),
-          },
-          active: {
             color: '#fff',
-            background: { color: '#ddd' },
-            // border: getBorder({ color: '#ddd', width: 1, style: 'solid' }),
-            borderRadius: getBorderRadius(40),
+            background: { color: '' },
           },
         },
         SelectedText: {
-          normal: {
-            color: 'red',
-            font: { size: 20 },
+          normal: {},
+          hover: {
+            color: '#fff',
+            background: { color: '' },
           },
         },
         SubTreeWrap: {
-          normal: {
-            background: { color: '#66eecc' },
-          },
-          hover: {
-            background: { color: '#bbb' },
-          },
-        },
-        Checkbox: {
-          normal: {
-            color: '#4d63ff',
-          },
+          normal: {},
+          hover: {},
         },
 
-        Switch: {
+        SwitchIcon: {
           normal: {
-            color: '#F51196',
             font: {
-              size: 20,
+              size: 18,
             },
+            color: 'red',
           },
           hover: {
-            color: '#4d63ff',
+            color: 'blue',
           },
         },
       },
@@ -185,102 +168,71 @@ const theme = {
 
     Container: {
       normal: {
-        width: 340,
-        height: 60,
-        color: '#4d63ff',
-        boxShadow: '2px 2px 5px #000',
-        font: { size: 20 },
-        borderRadius: getBorderRadius(20),
-      },
-      hover: {
-        boxShadow: '2px 2px 5px #4d63ff',
-        color: '#4d63ff',
-        borderRadius: getBorderRadius(10),
-      },
-    },
-    TagWrap: {
-      normal: {
-        height: 20,
-        margin: {
-          left: 50,
-          right: 5,
-        },
+        width: 202,
+        height: 28,
         padding: {
           left: 10,
-          right: 10,
+          right: 4,
         },
-
-        // border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }, { radius: 10 }),
+        borderRadius: getBorderRadius(2),
+        border: getBorder({ color: '#e8e8e8', width: 1, style: 'solid' }),
       },
       hover: {
-        background: { color: 'orange' },
+        borderRadius: getBorderRadius(2),
+        border: getBorder({ color: '#4d68ff', width: 1, style: 'solid' }),
+        boxShadow: getBoxShadow('0 0 4px 0 rgba(77,104,255,0.3)'),
       },
     },
-    TagIcon: {
+    SwitchIcon: {
       normal: {
-        font: { fontSize: 14, color: '#999' },
+        font: {
+          size: 10,
+        },
+        color: '#a6aab2',
       },
       hover: {
-        color: '#4d63ff',
+        color: '#a6aab2',
       },
     },
+  },
+};
+
+const iconConfig = {
+  [Widget.Icon]: {
     Icon: {
       normal: {
-        color: '#ddd',
-        font: { fontSize: 30 },
+        opacity: 0,
       },
-      hover: { color: '#4d63ff' },
-    },
-    Menu: {
-      Container: {
-        normal: {
-          width: 200,
-          height: 200,
-          opacity: 0.6,
-          boxShadow: '2px 2px 5px #4d63ff',
-          background: { color: '#000' },
-          border: getBorder({ color: '#4d63ff', width: 1, style: 'solid' }, { radius: 20 }),
-        },
-        hover: {
-          opacity: 1,
-        },
-      },
-      MenuItem: {
-        normal: { color: '#ccc', fontSize: 14, font: { fontWeight: 900 } },
-        hover: {
-          color: '#fff',
-          fontSize: 20,
-          background: { color: 'green' },
-          font: { fontWeight: 400 },
-        },
-        active: {
-          color: 'blue',
-          fontSize: 14,
-          background: { color: 'pink' },
-          font: { fontWeight: 900 },
-        },
-        disabled: { color: 'red', background: { color: '#000' } },
+      hover: {
+        opacity: 1,
       },
     },
   },
 };
 
 export default class DefaultTreeSelect extends React.Component<any, any> {
+  renderSuffix = item => {
+    const { isLeaf } = item;
+    if (isLeaf) {
+      return <Icon theme={iconConfig} iconClass={'lugia-icon-reminder_check_square'} />;
+    }
+  };
   render() {
     return (
-      <TreeSelect
-        validateStatus={'error'}
-        validateType={'inner'}
-        theme={theme}
-        data={data}
-        onlySelectLeaf
-        valueField={'key'}
-        displayField={'title'}
-        igronSelectField="notCanSelect"
-        expandAll
-        // autoHeight
-        mutliple
-      />
+      <Box>
+        <TreeSelect
+          theme={theme}
+          data={info}
+          translateTreeData
+          onlySelectLeaf
+          expandAll
+          autoHeight
+          pullIconClass="lugia-icon-direction_caret_down"
+          renderSuffixItems={this.renderSuffix}
+          // autoHeight
+          // mutliple
+        />
+      </Box>
     );
   }
 }
