@@ -18,7 +18,6 @@ import { deepMerge } from '@lugia/object-utils';
 import get from '../css/theme-common-dict';
 
 const warningColor = '$lugia-dict.@lugia/lugia-web.warningColor';
-const warningHoverColor = '$lugia-dict.@lugia/lugia-web.warningHoverColor';
 const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
 const superLightColor = '$lugia-dict.@lugia/lugia-web.superLightColor';
@@ -695,13 +694,7 @@ class Rate extends React.Component<RateProps, any> {
         const { viewClass, theme } = this.props.getPartOfThemeHocProps('ActiveIcon');
         resultTheme = deepMerge(
           getDefaultTheme(viewClass, RateIconBottomTheme, RateIconBottomViewClass),
-          {
-            [viewClass]: {
-              normal: { color: warningColor },
-              hover: { color: warningHoverColor },
-              disabled: { color: disableTextColor },
-            },
-          },
+          { [viewClass]: { normal: { color: warningColor } } },
           theme
         );
         resultViewClass = viewClass;
