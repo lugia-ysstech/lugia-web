@@ -13,6 +13,7 @@ import {
   LoadingFatherBox,
 } from './styled';
 import Icon from '../icon/index';
+
 const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 type PropsCheck = {
   width?: number,
