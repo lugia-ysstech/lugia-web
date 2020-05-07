@@ -440,7 +440,7 @@ class Rate extends React.Component<RateProps, any> {
         x !== 'default'
           ? activeTextIconThemeProps
           : deepMerge(defaultTextIconThemeProps, {
-              themeConfig: { disabled: { color: '#e8e8e8' } },
+              themeConfig: { disabled: { color: superLightColor } },
             });
       return (
         <React.Fragment>
