@@ -10,7 +10,7 @@ import Widget from '../consts/index';
 import ThemeHoc from '@lugia/theme-hoc';
 import Icon from '../icon';
 import { deepMerge } from '@lugia/object-utils';
-import { TagWrap, OptionalWrap, ItemText, CloseButtonWrap, FlexBox } from '../css/tag';
+import { TagWrap, OptionalWrap, ItemText, FlexBox, fontSize } from '../css/tag';
 
 type shapeType = 'basic' | 'round';
 type styleType = 'customs' | 'primary' | 'basic' | 'presets' | 'optional';
@@ -142,9 +142,9 @@ class Tag extends React.Component<TagProps, TagState> {
       {
         [viewClass]: {
           normal: {
-            font: { size: 16 },
+            font: { size: fontSize },
             margin: {
-              left: 5,
+              left: 4,
             },
           },
         },

@@ -7,24 +7,23 @@
 import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import colorsFunc from '../css/stateColor';
 import { px2remcss } from '../css/units';
-import { FontSize } from '../css';
 import { toNumber } from '../common/NumberUtils';
-
-export const {
-  themeColor,
-  mediumGreyColor,
-  disableColor,
-  dangerColor,
-  darkGreyColor,
-  borderRadius,
-  defaultColor,
-  borderDisableColor,
-  mouseDownColor,
-  lightGreyColor,
-} = colorsFunc();
+import get from '../css/theme-common-dict';
 
 const defaultHeight = 20;
-
+export function getPublicColor() {
+  return {
+    themeColor: get('themeColor'),
+    disableColor: get('disableColor'),
+    dangerColor: get('dangerColor'),
+    dangerHoverColor: get('dangerHoverColor'),
+    themeHoverColor: get('themeHoverColor'),
+    darkGreyColor: get('darkGreyColor'),
+    borderRadiusValue: get('borderRadiusValue'),
+    defaultColor: get('defaultColor'),
+  };
+}
+export const fontSize = '$lugia-dict.@lugia/lugia-web.sFontSize';
 type shapeType = 'basic' | 'round';
 type styleType = 'customs' | 'primary' | 'basic' | 'presets' | 'optional';
 
@@ -35,21 +34,23 @@ const getAnimationCSS = (isClose: boolean) => {
 };
 
 const getPadding = (closable: Boolean) => {
-  return closable ? `0 ${px2remcss(5)} 0 ${px2remcss(8)}` : ` 0 ${px2remcss(8)}`;
+  return closable ? `0 ${px2remcss(8)} 0 ${px2remcss(8)}` : ` 0 ${px2remcss(8)}`;
 };
 
 const getRadius = (shape: shapeType, height: number) => {
   height = toNumber(height, defaultHeight);
-  return shape === 'round' ? `${px2remcss(height)}` : `${px2remcss(borderRadius)}`;
+  return shape === 'round'
+    ? `${px2remcss(height)}`
+    : `${px2remcss(getPublicColor().borderRadiusValue)}`;
 };
 
 const getCustomsCSS = (params: Object) => {
   // 由于边框色默认随着bgColor改变，所以要获取到配置的bgColor
   // 其他type不需要，则直接取默认bgColor
   const defaultBgColor = {
-    color: themeColor,
+    color: getPublicColor().themeColor,
   };
-  const { color = '#fff', background = defaultBgColor } = params;
+  const { color = getPublicColor().defaultColor, background = defaultBgColor } = params;
   const { color: bgColor } = background;
   return {
     color,
@@ -60,11 +61,10 @@ const getCustomsCSS = (params: Object) => {
 
 const getPrimaryCSS = (params: Object) => {
   const defaultBgColor = {
-    color: '#e8e8e8',
+    color: get('superLightColor'),
   };
-  const { color = darkGreyColor, background = defaultBgColor } = params;
+  const { color = getPublicColor().darkGreyColor, background = defaultBgColor } = params;
   const { color: bgColor } = background;
-
   return {
     color,
     background: bgColor,
@@ -73,16 +73,16 @@ const getPrimaryCSS = (params: Object) => {
 };
 
 const getBasicCSS = (params: Object) => {
-  const { color = darkGreyColor, background = '' } = params;
+  const { color = getPublicColor().darkGreyColor, background = '' } = params;
   return {
     color,
     background,
-    border: '1px solid #cccccc',
+    border: `1px solid ${get('borderColor')}`,
   };
 };
 
 const getPresetsCSS = (params: Object) => {
-  const { color = dangerColor } = params;
+  const { color = getPublicColor().dangerColor } = params;
   const defaultBgColor = colorsFunc(color).spiritColor;
   const { background = defaultBgColor } = params;
 
@@ -129,20 +129,19 @@ const isHasBorder = (params: Object, obj: Object, defaultBorderColor: string) =>
 };
 
 const getPrimaryHoverCSS = (params: Object) => {
-  const hoverbgColor = getHoverBgColorFromNormalOrHover(params, disableColor);
+  const hoverBgColor = getHoverBgColorFromNormalOrHover(params, getPublicColor().disableColor);
   const hoverCSS = {
-    background: hoverbgColor,
+    background: hoverBgColor,
   };
-  return isHasBorder(params, hoverCSS, hoverbgColor);
+  return isHasBorder(params, hoverCSS, hoverBgColor);
 };
 const getBasicHoverCSS = (params: Object) => {
   const { hover } = params;
   const { color: hoverColor } = hover;
-  const color = hoverColor ? hoverColor : themeColor;
+  const color = hoverColor ? hoverColor : getPublicColor().themeColor;
   const hoverCSS = {
     color,
   };
-
   return isHasBorder(params, hoverCSS, color);
 };
 const getPresetsHoverCSS = (params: Object) => {
@@ -150,7 +149,7 @@ const getPresetsHoverCSS = (params: Object) => {
   const { color: normalColor } = normal;
   const { color: hoverColor } = hover;
   const hoverCSS = {};
-  const color = normalColor ? normalColor : dangerColor;
+  const color = normalColor ? normalColor : getPublicColor().dangerHoverColor;
 
   if (hoverColor) {
     hoverCSS.color = hoverColor;
@@ -162,11 +161,11 @@ const getPresetsHoverCSS = (params: Object) => {
 };
 
 const getCustomsHoverCSS = (params: Object) => {
-  const hoverbgColor = colorsFunc(getHoverBgColorFromNormalOrHover(params, themeColor)).hoverColor;
+  const hoverBgColor = getHoverBgColorFromNormalOrHover(params, getPublicColor().themeHoverColor);
   const hoverCSS = {
-    background: hoverbgColor,
+    background: hoverBgColor,
   };
-  return isHasBorder(params, hoverCSS, hoverbgColor);
+  return isHasBorder(params, hoverCSS, hoverBgColor);
 };
 
 const getHoverCSS = (type: styleType, params: Object) => {
@@ -249,7 +248,7 @@ export const TagWrap = CSSComponent({
     display: inline-block;
     height: ${px2remcss(defaultHeight)};
     border-radius: ${getRadius};
-    font-size: ${FontSize};
+    font-size: 12px;
     cursor: pointer;
     overflow: hidden;
     user-select: none;
@@ -283,9 +282,13 @@ export const ItemText = CSSComponent({
 });
 
 const getOptionalCSS = (checked: Boolean, params: Object) => {
-  const defaultBackgroundColor = checked ? themeColor : 'transparent';
+  const defaultBackgroundColor = checked ? getPublicColor().themeColor : 'transparent';
   const { color: normalColor, background = {} } = params;
-  const color = normalColor ? normalColor : checked ? defaultColor : darkGreyColor;
+  const color = normalColor
+    ? normalColor
+    : checked
+    ? getPublicColor().defaultColor
+    : getPublicColor().darkGreyColor;
   const backgroundColor = background.color ? background.color : defaultBackgroundColor;
   return {
     color,
@@ -351,13 +354,17 @@ export const OptionalWrap = CSSComponent({
       const { color: hoverColor } = themeMeta;
       const { propsConfig } = themeProps;
       const { checked } = propsConfig;
-      const color = hoverColor ? hoverColor : checked ? defaultColor : themeColor;
+      const color = hoverColor
+        ? hoverColor
+        : checked
+        ? getPublicColor().defaultColor
+        : getPublicColor().themeColor;
       return `
         color: ${color};
         `;
     },
   },
-  active: {
+  focus: {
     selectNames: [
       ['color'],
       ['background'],
@@ -368,17 +375,17 @@ export const OptionalWrap = CSSComponent({
       ['font'],
     ],
     getStyle: (themeMeta, themeProps) => {
-      const { color: activeColor, background = {} } = themeMeta;
-      const color = activeColor ? activeColor : colorsFunc(themeColor).mouseDownColor;
-      const backgroundColor = background.color ? background.color : themeColor;
-      return { color, backgroundColor };
+      const { background = {} } = themeMeta;
+
+      const backgroundColor = background.color ? background.color : getPublicColor().themeColor;
+      return { backgroundColor };
     },
   },
   css: css`
     display: inline-block;
     height: ${px2remcss(defaultHeight)};
     border-radius: ${getRadius};
-    font-size: ${FontSize};
+    font-size: 12px;
     cursor: pointer;
     overflow: hidden;
     user-select: none;
@@ -386,7 +393,7 @@ export const OptionalWrap = CSSComponent({
     vertical-align: top;
     transition: all 0.15s ease-in;
   `,
-  option: { hover: true, active: true },
+  option: { hover: true, focus: true },
 });
 
 export const FlexBox = StaticComponent({
