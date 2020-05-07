@@ -188,6 +188,7 @@ class TreeNode extends React.Component {
             viewClass={viewClass}
             theme={theme}
             disabled={disabled}
+            {...this.props.dispatchEvent([['hover']], 'f2c')}
             singleTheme
             iconClass={iconClass}
           />
@@ -516,6 +517,10 @@ class TreeNode extends React.Component {
         },
       },
     };
+    const { viewClass: notOpenViewClass, theme: notOpenTheme } = this.props.getPartOfThemeHocProps(
+      'SwitchIcon'
+    );
+
     if (expandedState === 'open') {
       const { viewClass, theme } = this.props.getPartOfThemeHocProps('SwitchIconExpanded');
       switchIconThemeHocProps = {
@@ -524,19 +529,19 @@ class TreeNode extends React.Component {
           [viewClass]: deepMerge(
             getTreeThemeDefaultConfig(size, 'SwitchIconExpanded'),
             defaultMarginLeft,
+            notOpenTheme[notOpenViewClass],
             theme[viewClass]
           ),
         },
       };
     } else {
-      const { viewClass, theme } = this.props.getPartOfThemeHocProps('SwitchIcon');
       switchIconThemeHocProps = {
-        viewClass,
+        viewClass: notOpenViewClass,
         theme: {
-          [viewClass]: deepMerge(
+          [notOpenViewClass]: deepMerge(
             getTreeThemeDefaultConfig(size, 'SwitchIcon'),
             defaultMarginLeft,
-            theme[viewClass]
+            notOpenTheme[notOpenViewClass]
           ),
         },
       };
@@ -764,9 +769,8 @@ class TreeNode extends React.Component {
         title={title}
         color={color}
         height={itemHeight}
-        {...addMouseEvent(this)}
       >
-        <FlexWrap disabled={disabled} themeProps={TreeItemWrapThemeProps}>
+        <FlexWrap disabled={disabled} themeProps={TreeItemWrapThemeProps} {...addMouseEvent(this)}>
           <FlexBox disabled={disabled} themeProps={TreeItemWrapThemeProps}>
             {!showSwitch || switchAtEnd
               ? null
