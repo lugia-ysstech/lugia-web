@@ -51,7 +51,6 @@ export const TypeCSS = {
     hoverColor: '$lugia-dict.@lugia/lugia-web.themeHoverColor',
     activeColor: '$lugia-dict.@lugia/lugia-web.themeActiveColor',
     focusColor: '$lugia-dict.@lugia/lugia-web.themeFocusColor',
-    disabledColor: '$lugia-dict.@lugia/lugia-web.themeDisabledColor',
     background: '$lugia-dict.@lugia/lugia-web.alertThemeColorReduceA',
   },
   success: {
@@ -59,7 +58,6 @@ export const TypeCSS = {
     hoverColor: '$lugia-dict.@lugia/lugia-web.successHoverColor',
     activeColor: '$lugia-dict.@lugia/lugia-web.successActiveColor',
     focusColor: '$lugia-dict.@lugia/lugia-web.successFocusColor',
-    disabledColor: '$lugia-dict.@lugia/lugia-web.successDisabledColor',
     background: '$lugia-dict.@lugia/lugia-web.alertSuccessColorReduceA',
   },
   warning: {
@@ -67,7 +65,6 @@ export const TypeCSS = {
     hoverColor: '$lugia-dict.@lugia/lugia-web.warningHoverColor',
     activeColor: '$lugia-dict.@lugia/lugia-web.warningActiveColor',
     focusColor: '$lugia-dict.@lugia/lugia-web.warningFocusColor',
-    disabledColor: '$lugia-dict.@lugia/lugia-web.warningDisabledColor',
     background: '$lugia-dict.@lugia/lugia-web.alertWarningColorReduceA',
   },
   error: {
@@ -75,7 +72,6 @@ export const TypeCSS = {
     hoverColor: '$lugia-dict.@lugia/lugia-web.dangerHoverColor',
     activeColor: '$lugia-dict.@lugia/lugia-web.dangerActiveColor',
     focusColor: '$lugia-dict.@lugia/lugia-web.dangerFocusColor',
-    disabledColor: '$lugia-dict.@lugia/lugia-web.dangerDisabledColor',
     background: '$lugia-dict.@lugia/lugia-web.alertDangerColorReduceA',
   },
 };
@@ -247,14 +243,7 @@ export const CloseText = CSSComponent({
       return getCloseTextColor(themeProps, 'focusColor');
     },
   },
-  disabled: {
-    defaultTheme: {},
-    selectNames: [['color']],
-    getThemeMeta(themeMeta, themeProps) {
-      return getCloseTextColor(themeProps, 'disabledColor');
-    },
-  },
-  option: { hover: true, active: true, focus: true, disabled: true },
+  option: { hover: true, active: true, focus: true },
 });
 
 export const Description = CSSComponent({
