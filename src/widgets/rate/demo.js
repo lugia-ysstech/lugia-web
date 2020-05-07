@@ -12,6 +12,7 @@ import Theme from '../theme';
 import Widget from '../consts/index';
 import styled from 'styled-components';
 import colorsFunc from '../css/stateColor';
+import get from '../css/theme-common-dict';
 
 const { warningColor, dangerColor } = colorsFunc();
 const TitleBox = styled.div`
@@ -22,7 +23,12 @@ const TitleBox = styled.div`
 `;
 const TextBox = styled.span`
   font-size: 14px;
-  color: #333;
+  display: inline-block;
+  height: 20px;
+  line-height: 20px;
+  color: ${get('darkGreyColor')};
+  margin-left: 10px;
+  vertical-align: bottom;
 `;
 class RateDemo extends React.Component<any, any> {
   constructor(props: Object) {
