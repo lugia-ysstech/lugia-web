@@ -91,7 +91,7 @@ const Ratespan = CSSComponent({
   css: css`
     margin-right: 6px;
     position: relative;
-    font-size: 18px;
+    font-size: 14px;
     & > i.bottom {
       position: absolute;
       left: 0;
@@ -125,7 +125,7 @@ const RateText = CSSComponent({
     selectNames: [['color']],
     defaultTheme: {
       color: superLightColor,
-      fontSize: 18,
+      fontSize: 16,
     },
   },
   disabled: {
@@ -154,7 +154,7 @@ const RateTextBottom = CSSComponent({
     selectNames: [['color'], ['fontSize']],
     defaultTheme: {
       color: superLightColor,
-      fontSize: 18,
+      fontSize: 16,
     },
   },
   disabled: {
