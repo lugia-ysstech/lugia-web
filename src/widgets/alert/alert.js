@@ -15,11 +15,6 @@ import changeColor from '../css/utilsColor';
 import get from '../css/theme-common-dict';
 import Icon from '../icon';
 
-const mFontSize = '$lugia-dict.@lugia/lugia-web.mFontSize';
-const sFontSize = '$lugia-dict.@lugia/lugia-web.sFontSize';
-const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
-const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
-const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 const successColor = '$lugia-dict.@lugia/lugia-web.successColor';
 const warningColor = '$lugia-dict.@lugia/lugia-web.warningColor';
@@ -187,14 +182,14 @@ export default ThemeProvider(
         {
           [IconViewClass]: {
             normal: {
-              color: mediumGreyColor,
-              fontSize: sFontSize,
+              color: get('mediumGreyColor'),
+              fontSize: get('sFontSize'),
             },
             hover: {
-              color: darkGreyColor,
+              color: get('darkGreyColor'),
             },
             disabled: {
-              color: disableTextColor,
+              color: get('disableTextColor'),
             },
           },
         },
