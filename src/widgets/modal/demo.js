@@ -38,7 +38,7 @@ class ModalBox extends React.Component<any, any> {
   render() {
     const { visable } = this.state;
     return (
-      <div>
+      <div style={{ position: 'absolute', bottom: '30px', right: '30px' }}>
         <Button onClick={this.click}>弹出</Button>
         <Modal
           visible={visable}
