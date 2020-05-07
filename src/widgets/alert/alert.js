@@ -108,7 +108,7 @@ export default ThemeProvider(
         {
           [viewClass]: {
             normal: {
-              font: { size: hasDect ? mFontSize : sFontSize },
+              font: { size: hasDect ? get('mFontSize') : get('sFontSize') },
               cursor: 'default',
               color: typeTheme.color,
               getCSS() {
