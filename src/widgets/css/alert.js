@@ -202,8 +202,8 @@ const getCloseTextColor = (props: Object, name: string) => {
   const { propsConfig = {} } = props;
   const { textInProps, type } = propsConfig;
   if (textInProps) {
-    const typeCSSCplor = TypeCSS[type];
-    const color = typeCSSCplor ? typeCSSCplor[name] : TypeCSS.info[name];
+    const typeCSSColor = TypeCSS[type];
+    const color = typeCSSColor ? typeCSSColor[name] : TypeCSS.info[name];
     return {
       color,
     };
