@@ -14,6 +14,7 @@ import { Alert, CloseText, Description, Message, getPosition, TypeCSS } from '..
 import changeColor from '../css/utilsColor';
 import get from '../css/theme-common-dict';
 import Icon from '../icon';
+import { getBorder, getBorderRadius } from '@lugia/theme-utils';
 
 const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 const successColor = '$lugia-dict.@lugia/lugia-web.successColor';
@@ -29,40 +30,44 @@ const TypeThemeProps = {
   info: {
     normal: {
       color: themeColor,
-      border: {
-        left: { color: get('themeColor'), style: 'solid', width: 4 },
-        radius: { topLeft: 4, topRight: 4, bottomLeft: 4, bottomRight: 4 },
-      },
+      border: getBorder(
+        { color: '$lugia-dict.@lugia/lugia-web.themeColor', width: 4, style: 'solid' },
+        ['l']
+      ),
+      borderRadius: getBorderRadius(4),
       background: { color: changeColor(get('themeColor'), 0, 0, 10).rgba },
     },
   },
   success: {
     normal: {
       color: successColor,
-      border: {
-        left: { color: get('successColor'), style: 'solid', width: 4 },
-        radius: { topLeft: 4, topRight: 4, bottomLeft: 4, bottomRight: 4 },
-      },
+      border: getBorder(
+        { color: '$lugia-dict.@lugia/lugia-web.successColor', width: 4, style: 'solid' },
+        ['l']
+      ),
+      borderRadius: getBorderRadius(4),
       background: { color: changeColor(get('successColor'), 0, 0, 10).rgba },
     },
   },
   warning: {
     normal: {
       color: warningColor,
-      border: {
-        left: { color: get('warningColor'), style: 'solid', width: 4 },
-        radius: { topLeft: 4, topRight: 4, bottomLeft: 4, bottomRight: 4 },
-      },
+      border: getBorder(
+        { color: '$lugia-dict.@lugia/lugia-web.warningColor', width: 4, style: 'solid' },
+        ['l']
+      ),
+      borderRadius: getBorderRadius(4),
       background: { color: changeColor(get('warningColor'), 0, 0, 10).rgba },
     },
   },
   error: {
     normal: {
       color: dangerColor,
-      border: {
-        left: { color: get('dangerColor'), style: 'solid', width: 4 },
-        radius: { topLeft: 4, topRight: 4, bottomLeft: 4, bottomRight: 4 },
-      },
+      border: getBorder(
+        { color: '$lugia-dict.@lugia/lugia-web.dangerColor', width: 4, style: 'solid' },
+        ['l']
+      ),
+      borderRadius: getBorderRadius(4),
       background: { color: changeColor(get('dangerColor'), 0, 0, 10).rgba },
     },
   },
