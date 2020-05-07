@@ -121,8 +121,8 @@ export const CloseIcon: Object = styled(Icon)`
 `;
 export const CloseIconWrap = styled.div`
   position: absolute;
-  right: ${em(get('padding'))};
-  top: ${em(16)};
+  right: 16px;
+  top: 9.5px;
   color: ${get('mediumGreyColor')};
   outline: none;
   cursor: pointer;
