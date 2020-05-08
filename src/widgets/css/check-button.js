@@ -41,39 +41,28 @@ export type CheckState = {
 };
 
 const em = px2remcss;
-const normalSize = get('normalSize');
-const smallSize = get('smallSize');
-const largeSize = get('largeSize');
 const SizeCSS: { [key: CheckSize]: TypeSizeCSS } = {
   default: {
-    height: normalSize,
-    lineHeight: normalSize - 2,
+    height: 'normalSize',
     fontSize: 14,
   },
   small: {
-    height: smallSize,
-    lineHeight: smallSize - 2,
+    height: 'smallSize',
     fontSize: 12,
   },
   large: {
-    height: largeSize,
-    lineHeight: largeSize - 2,
+    height: 'largeSize',
     fontSize: 14,
-  },
-  bigger: {
-    height: 42,
-    lineHeight: 40,
-    fontSize: 16,
   },
 };
 const getSizeCSS = (props: PropsType): string => {
   const { size = 'default' } = props;
-  const { height, lineHeight, fontSize } = SizeCSS[size];
+  const { height, fontSize } = SizeCSS[size];
 
   return `
-    height: ${em(height)};
-    line-height: ${em(lineHeight)};
-    font-size: ${em(fontSize)}
+    height: ${em(get(height))};
+    line-height: ${em(get(height) - 2)};
+    font-size: ${em(get(fontSize))}
   `;
 };
 
