@@ -58,7 +58,7 @@ describe('Anchor', () => {
     const { activeLink } = component.state;
     expect(component.isClick).toBe(true);
     expect(activeLink).toBe('#a');
-    await delay(50);
+    await delay(500);
     expect(component.isClick).toBe(false);
   });
 
