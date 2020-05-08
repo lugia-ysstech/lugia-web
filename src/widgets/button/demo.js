@@ -127,7 +127,7 @@ export default () => {
           </Button>
           <p>warning</p>
           <Button type="warning" shape="round" plain>
-            primary
+            warning
           </Button>
           <p>danger</p>
           <Button type="danger" shape="round" plain>
