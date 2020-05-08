@@ -13,15 +13,12 @@ export const getEditDivTheme = (
     }),
     defaultTheme
   );
-  console.log('isHead', isHead, 'propsConfig', propsConfig);
   if (isHead) {
     const tableTheme = props.getPartOfThemeProps('Table');
     const { themeConfig: { Th_Td } = {} } = tableTheme;
     const editingTheme = { themeConfig: { ...Th_Td } };
     editDivTheme = deepMerge(editDivTheme, editingTheme);
-    console.log('tableTheme', tableTheme, 'editingTheme', editingTheme);
   }
-  console.log('editDivTheme', editDivTheme);
   return editDivTheme;
 };
 
