@@ -19,7 +19,6 @@ import get from '../css/theme-common-dict';
 
 const warningColor = '$lugia-dict.@lugia/lugia-web.warningColor';
 const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
-const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
 const superLightColor = '$lugia-dict.@lugia/lugia-web.superLightColor';
 
 const showUp = keyframes`
@@ -683,7 +682,7 @@ class Rate extends React.Component<RateProps, any> {
         } = this.props.getPartOfThemeHocProps('DangerIcon');
         resultTheme = deepMerge(
           getDefaultTheme(dangerIconViewClass, RateIconBottomTheme, RateIconBottomViewClass),
-          { [dangerIconViewClass]: { normal: { color: mediumGreyColor } } },
+          { [dangerIconViewClass]: { normal: { color: get('mediumGreyColor') } } },
           dangerIconTheme
         );
         resultViewClass = dangerIconViewClass;
@@ -694,7 +693,7 @@ class Rate extends React.Component<RateProps, any> {
         const { viewClass, theme } = this.props.getPartOfThemeHocProps('ActiveIcon');
         resultTheme = deepMerge(
           getDefaultTheme(viewClass, RateIconBottomTheme, RateIconBottomViewClass),
-          { [viewClass]: { normal: { color: warningColor } } },
+          { [viewClass]: { normal: { color: get('warningColor') } } },
           theme
         );
         resultViewClass = viewClass;
@@ -706,7 +705,7 @@ class Rate extends React.Component<RateProps, any> {
         const obj = {
           [RateIconBottomViewClass]: {
             normal: {
-              color: superLightColor,
+              color: get('superLightColor'),
             },
           },
         };
