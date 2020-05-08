@@ -7,18 +7,26 @@ import styled, { css, keyframes } from 'styled-components';
 import { px2remcss } from './units';
 import Icon from '../icon';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
-import { getBorderRadius } from '../theme/CSSProvider';
+import { getBorderRadius, getBorder } from '../theme/CSSProvider';
+import { getBoxShadow } from '@lugia/theme-utils';
 import get from '../css/theme-common-dict';
 
 const fontSize = 1.2;
 const em = px2remcss;
-const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 const themeHoverColor = '$lugia-dict.@lugia/lugia-web.themeHoverColor';
 const themeActiveColor = '$lugia-dict.@lugia/lugia-web.themeActiveColor';
-const normalBoxShadow = get('normalBoxShadow');
-const hoverBoxShadow = get('hoverBoxShadow');
-const activeBoxShadow = get('activeBoxShadow');
-
+const borderColor = '$lugia-dict.@lugia/lugia-web.borderColor';
+const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
+export function getThemeStyle() {
+  return {
+    defaultColor: get('defaultColor'),
+    normalBoxShadow: get('normalBoxShadow'),
+    hoverBoxShadow: get('hoverBoxShadow'),
+    activeBoxShadow: get('activeBoxShadow'),
+  };
+}
+type showType = 'textType' | 'iconType';
 export type BackTopProps = {
   visibilityHeight?: number,
   children?: any,
@@ -27,6 +35,8 @@ export type BackTopProps = {
   target?: Function,
   themeProps: Object,
   icon?: string,
+  text: string,
+  showType: showType,
 };
 export type BackTopState = {
   fixed: boolean,
@@ -70,16 +80,24 @@ export const IconWrap: Object = styled(Icon)`
   vertical-align: bottom !important;
 `;
 
-const CommonBackTopStyle = CSSComponent({
-  tag: 'div',
-  className: 'CommonBackTopStyle',
-  css: css`
-    border: 1px solid #e8e8e8;
-    text-align: center;
-    overflow: hidden;
-    box-shadow: 0 0 ${em(4)} #e8e8e8;
-  `,
-});
+export const textStyle = {
+  normal: {
+    color: blackColor,
+    border: getBorder({ width: 1, style: 'solid', color: borderColor }),
+    borderRadius: getBorderRadius(4),
+    boxShadow: getBoxShadow('0 0 0 0 transparent'),
+  },
+  hover: {
+    color: themeHoverColor,
+    border: getBorder({ width: 1, style: 'solid', color: themeHoverColor }),
+    boxShadow: getBoxShadow('0 0 0 0 transparent'),
+  },
+  active: {
+    color: themeActiveColor,
+    border: getBorder({ width: 1, style: 'solid', color: themeActiveColor }),
+    boxShadow: getBoxShadow('0 0 0 0 transparent'),
+  },
+};
 
 export const BackTop = StaticComponent({
   tag: 'div',
@@ -92,11 +110,23 @@ export const BackTop = StaticComponent({
   `,
 });
 
+const CommonBackTopStyle = CSSComponent({
+  tag: 'div',
+  className: 'CommonBackTopStyle',
+  css: css`
+    border: 1px solid #e8e8e8;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 0 ${em(4)} #e8e8e8;
+  `,
+});
+
 export const BackTopContent = CSSComponent({
   extend: CommonBackTopStyle,
   className: 'BackTopContent',
   css: css`
     position: relative;
+    background: ${getThemeStyle().defaultColor};
   `,
   normal: {
     selectNames: [
@@ -107,31 +137,26 @@ export const BackTopContent = CSSComponent({
       ['opacity'],
       ['border'],
       ['borderRadius'],
+      ['boxShadow'],
     ],
     defaultTheme: {
-      background: { color: defaultColor },
-      color: '$lugia-dict.@lugia/lugia-web.themeColor',
+      color: themeColor,
       width: 40,
       height: 40,
       opacity: 1,
-      boxShadow: normalBoxShadow,
       borderRadius: getBorderRadius(40),
     },
   },
   hover: {
-    selectNames: [['color'], ['boxShadow']],
+    selectNames: [['color'], ['boxShadow'], ['border']],
     defaultTheme: {
-      background: { color: defaultColor },
       color: themeHoverColor,
-      boxShadow: hoverBoxShadow,
     },
   },
   active: {
-    selectNames: [['color'], ['boxShadow']],
+    selectNames: [['color'], ['boxShadow'], ['border']],
     defaultTheme: {
-      background: { color: defaultColor },
       color: themeActiveColor,
-      boxShadow: activeBoxShadow,
     },
   },
 
