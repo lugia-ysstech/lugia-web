@@ -10,7 +10,7 @@ exports[`Anchor css 1`] = `
   font-size: 1.2rem;
   position: relative;
   background-color: #fff;
-  border-left: 0.08333333333333334em solid #e8e8e8;
+  border-left: 0.08333333333333334em solid #cccccc;
   box-sizing: border-box;
   padding-bottom: 0.5em;
 }
@@ -55,7 +55,7 @@ exports[`Anchor css 1`] = `
 
 .c4 {
   display: block;
-  color: #333;
+  color: #646A6E;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   -webkit-text-decoration: none;
@@ -110,7 +110,6 @@ exports[`Anchor css 1`] = `
           >
             <a
               className="c4"
-              href="#anchor-link1"
               onClick={[Function]}
             >
               anchor-link1
@@ -121,7 +120,6 @@ exports[`Anchor css 1`] = `
           >
             <a
               className="c4"
-              href="#anchor-link2"
               onClick={[Function]}
             >
               anchor-link2
@@ -132,7 +130,6 @@ exports[`Anchor css 1`] = `
           >
             <a
               className="c4"
-              href="#anchor-link3"
               onClick={[Function]}
             >
               anchor-link3
@@ -142,7 +139,6 @@ exports[`Anchor css 1`] = `
             >
               <a
                 className="c4"
-                href="#anchor-link3.1"
                 onClick={[Function]}
               >
                 anchor-link3.1
@@ -153,7 +149,6 @@ exports[`Anchor css 1`] = `
             >
               <a
                 className="c4"
-                href="#anchor-link3.2"
                 onClick={[Function]}
               >
                 anchor-link3.2
@@ -165,7 +160,6 @@ exports[`Anchor css 1`] = `
           >
             <a
               className="c4"
-              href="#anchor-link4"
               onClick={[Function]}
             >
               anchor-link4
