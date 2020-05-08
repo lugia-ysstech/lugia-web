@@ -1,7 +1,7 @@
-import colorsFunc from '../css/stateColor';
 import { getBorderRadius } from '@lugia/theme-utils';
 import { deepMerge } from '@lugia/object-utils';
-const { themeColor } = colorsFunc();
+import get from '../css/theme-common-dict';
+
 export default function getThemeProps(props: TypeProps) {
   const { getPartOfThemeProps, shape } = props;
   let themeProps = getPartOfThemeProps('Container');
@@ -10,7 +10,7 @@ export default function getThemeProps(props: TypeProps) {
     normal: {
       width: 32,
       height: 32,
-      background: { color: themeColor },
+      background: { color: get('themeColor') },
     },
   };
   themeProps = deepMerge({ themeConfig: { ...defaultNormalTheme } }, themeProps);
