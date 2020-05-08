@@ -15,7 +15,6 @@ export type GroupCSSProps = {
   childType: 'default' | 'button',
 };
 
-const borderRadiusValue = get('borderRadiusValue');
 const getFirstChildBorder = (props: GroupCSSProps): string => {
   const { children = [], themes = {}, childType = 'default' } = props;
   if (children && children.length > 0) {
@@ -62,6 +61,7 @@ const getLastChildBorder = (props: GroupCSSProps): string => {
   return '';
 };
 const getButtonCSS = (props: GroupCSSProps) => {
+  const borderRadiusValue = get('borderRadiusValue');
   const { childType = 'default' } = props;
   if (childType === 'button') {
     return `& > label:first-child > span {
