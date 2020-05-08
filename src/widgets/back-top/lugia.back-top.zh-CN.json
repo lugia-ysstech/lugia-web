@@ -20,7 +20,7 @@
     },
     "showType": {
       "type": "showType",
-      "desc": "选择backTop为图标类型时，还是文字类型"
+      "desc": "选择backTop是图标类型，还是文字类型"
     },
     "text": {
       "type": "string",
