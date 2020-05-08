@@ -23,7 +23,9 @@ export function getPublicColor() {
     defaultColor: get('defaultColor'),
   };
 }
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 export const fontSize = '$lugia-dict.@lugia/lugia-web.sFontSize';
+
 type shapeType = 'basic' | 'round';
 type styleType = 'customs' | 'primary' | 'basic' | 'presets' | 'optional';
 
@@ -376,8 +378,7 @@ export const OptionalWrap = CSSComponent({
     ],
     getStyle: (themeMeta, themeProps) => {
       const { background = {} } = themeMeta;
-
-      const backgroundColor = background.color ? background.color : getPublicColor().themeColor;
+      const backgroundColor = background.color ? background.color : themeColor;
       return { backgroundColor };
     },
   },
