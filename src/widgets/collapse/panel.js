@@ -22,12 +22,9 @@ import {
 } from '../css/panel';
 import { px2remcss } from '../css/units';
 import Icon from '../icon';
+import get from '../css/theme-common-dict';
 
 PanelHeader.displayName = 'Panel';
-
-const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
-const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
-const sFontSize = '$lugia-dict.@lugia/lugia-web.sFontSize';
 
 export default ThemeProvider(
   class extends React.Component<PanelProps, PanelState> {
@@ -74,8 +71,8 @@ export default ThemeProvider(
         {
           [viewClass]: {
             normal: {
-              color: darkGreyColor,
-              fontSize: sFontSize,
+              color: get('darkGreyColor'),
+              fontSize: get('sFontSize'),
               getCSS() {
                 return `position: absolute;
                   top: 50%;
@@ -86,7 +83,7 @@ export default ThemeProvider(
               },
             },
             disabled: {
-              color: disableTextColor,
+              color: get('disableTextColor'),
             },
           },
         },
