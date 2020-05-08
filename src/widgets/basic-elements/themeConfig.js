@@ -10,7 +10,7 @@ export default function getThemeProps(props: TypeProps) {
     normal: {
       width: 32,
       height: 32,
-      background: { color: '$lugia-dict.@lugia/lugia-web.themeColor' },
+      background: { color: get('themeColor') },
     },
   };
   themeProps = deepMerge({ themeConfig: { ...defaultNormalTheme } }, themeProps);
@@ -25,7 +25,11 @@ export default function getThemeProps(props: TypeProps) {
   if (shape === 'triangle') {
     const { themeConfig } = themeProps;
     const {
-      normal: { width, height },
+      normal: {
+        width,
+        height,
+        background: { color },
+      },
     } = themeConfig;
 
     const border = width / 2;
@@ -34,7 +38,7 @@ export default function getThemeProps(props: TypeProps) {
         border: {
           top: { width: 0, style: 'solid', color: 'transparent' },
           right: { width: border, style: 'solid', color: 'transparent' },
-          bottom: { width: height, style: 'solid', color: get('themeColor') },
+          bottom: { width: height, style: 'solid', color },
           left: { width: border, style: 'solid', color: 'transparent' },
         },
         borderRadius: getBorderRadius(0),
