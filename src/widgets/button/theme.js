@@ -5,6 +5,7 @@
  */
 import { getBorder, getBorderRadius } from '@lugia/theme-utils';
 import get from '../css/theme-common-dict';
+import changeColor from '../css/utilsColor';
 
 const successColors = '$lugia-dict.@lugia/lugia-web.successColorReduceS';
 const warningColors = '$lugia-dict.@lugia/lugia-web.warningColorReduceS';
@@ -53,6 +54,12 @@ const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 
 const xsFontSize = '$lugia-dict.@lugia/lugia-web.xsFontSize';
 const sFontSize = '$lugia-dict.@lugia/lugia-web.sFontSize';
+
+const themeColorReduce0 = changeColor(themeColor, 0, 0, 0).rgba;
+const successColorReduce0 = changeColor(successColor, 0, 0, 0).rgba;
+const warningColorReduce0 = changeColor(warningColor, 0, 0, 0).rgba;
+const dangerColorReduce0 = changeColor(dangerColor, 0, 0, 0).rgba;
+
 export const linkTheme = {
   border: 'none',
   background: 'none',
@@ -312,7 +319,6 @@ export const textTypeDisabledTheme = {
 
 export const plainTypeTheme = {
   default: {
-    background: { color: defaultColor },
     border: getBorder({
       width: 1,
       style: 'solid',
@@ -352,9 +358,9 @@ export const plainTypeTheme = {
     }),
   },
 };
+
 export const plainHoverTheme = {
   default: {
-    background: { color: defaultColor },
     border: getBorder({
       width: 1,
       style: 'solid',
@@ -362,7 +368,7 @@ export const plainHoverTheme = {
     }),
   },
   primary: {
-    background: { color: themeColorReduceA },
+    background: { color: themeColorReduce0 },
     border: getBorder({
       width: 1,
       style: 'solid',
@@ -370,7 +376,7 @@ export const plainHoverTheme = {
     }),
   },
   success: {
-    background: { color: successColorReduceA },
+    background: { color: successColorReduce0 },
     border: getBorder({
       width: 1,
       style: 'solid',
@@ -378,7 +384,7 @@ export const plainHoverTheme = {
     }),
   },
   warning: {
-    background: { color: warningColorReduceA },
+    background: { color: warningColorReduce0 },
     border: getBorder({
       width: 1,
       style: 'solid',
@@ -386,7 +392,7 @@ export const plainHoverTheme = {
     }),
   },
   danger: {
-    background: { color: dangerColorReduceA },
+    background: { color: dangerColorReduce0 },
     border: getBorder({
       width: 1,
       style: 'solid',
@@ -395,14 +401,20 @@ export const plainHoverTheme = {
   },
 };
 export const plainActiveTypeTheme = {
-  default: defaultActiveTheme,
+  default: {
+    border: getBorder({
+      width: 1,
+      style: 'solid',
+      color: themeActiveColor,
+    }),
+  },
   primary: {
     border: getBorder({
       width: 1,
       style: 'solid',
       color: themeActiveColor,
     }),
-    background: { color: themeColorReduceA },
+    background: { color: themeColorReduce0 },
   },
   success: {
     border: getBorder({
@@ -410,7 +422,7 @@ export const plainActiveTypeTheme = {
       style: 'solid',
       color: successActiveColor,
     }),
-    background: { color: successColorReduceA },
+    background: { color: successColorReduce0 },
   },
   warning: {
     border: getBorder({
@@ -418,7 +430,7 @@ export const plainActiveTypeTheme = {
       style: 'solid',
       color: warningActiveColor,
     }),
-    background: { color: warningColorReduceA },
+    background: { color: warningColorReduce0 },
   },
   danger: {
     border: getBorder({
@@ -426,11 +438,17 @@ export const plainActiveTypeTheme = {
       style: 'solid',
       color: dangerActiveColor,
     }),
-    background: { color: dangerHoverColor },
+    background: { color: dangerColorReduce0 },
   },
 };
 export const plainFocusTypeTheme = {
-  default: defaultFocusTheme,
+  default: {
+    border: getBorder({
+      width: 1,
+      style: 'solid',
+      color: themeFocusColor,
+    }),
+  },
   primary: {
     border: getBorder({
       width: 1,
@@ -466,7 +484,13 @@ export const plainFocusTypeTheme = {
 };
 
 export const plainDisabledTypeTheme = {
-  default: defaultDisabledTheme,
+  default: {
+    border: getBorder({
+      width: 1,
+      style: 'solid',
+      color: borderDisableColor,
+    }),
+  },
   primary: {
     background: { color: themeColorReduceA },
     border: getBorder({
