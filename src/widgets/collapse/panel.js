@@ -107,12 +107,11 @@ export default ThemeProvider(
         count,
       } = this.props;
       const config = {};
-      const theShowArrow = zebraStripe ? false : showArrow;
-      if (!theShowArrow) {
+      if (!showArrow) {
         config.enter = this.changeHover(true);
         config.leave = this.changeHover(false);
       }
-      const partProps = { showArrow: theShowArrow, zebraStripe, count, open };
+      const partProps = { showArrow, zebraStripe, count, open };
 
       const panelWrapTheme = getPartOfThemeProps('PanelWrap', {
         props: { hover, ...partProps },
@@ -135,7 +134,7 @@ export default ThemeProvider(
               onClick={this.handlePanelClick}
               ref={(node: any) => (this.header = node)}
             >
-              {theShowArrow || hover ? (
+              {showArrow || hover ? (
                 <Icon
                   iconClass="lugia-icon-direction_caret_right"
                   {...this.getIconTheme()}
