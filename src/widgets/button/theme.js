@@ -55,10 +55,10 @@ const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 const xsFontSize = '$lugia-dict.@lugia/lugia-web.xsFontSize';
 const sFontSize = '$lugia-dict.@lugia/lugia-web.sFontSize';
 
-const themeColorReduce0 = changeColor(themeColor, 0, 0, 0).rgba;
-const successColorReduce0 = changeColor(successColor, 0, 0, 0).rgba;
-const warningColorReduce0 = changeColor(warningColor, 0, 0, 0).rgba;
-const dangerColorReduce0 = changeColor(dangerColor, 0, 0, 0).rgba;
+const themeColorReduce0 = 'transparent';
+const successColorReduce0 = 'transparent';
+const warningColorReduce0 = 'transparent';
+const dangerColorReduce0 = 'transparent';
 
 export const linkTheme = {
   border: 'none',
