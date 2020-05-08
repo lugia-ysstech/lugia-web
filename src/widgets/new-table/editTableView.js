@@ -183,7 +183,6 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
       <EditDiv
         themeProps={editDivTheme}
         className={'EditDiv'}
-        alt={JSON.stringify(editDivTheme)}
         onClick={e =>
           onCellClick({
             e,
