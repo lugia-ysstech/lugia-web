@@ -15,7 +15,6 @@ import get from './theme-common-dict';
 import { judgeStarts } from '../utils';
 
 const em = px2remcss;
-const { padding } = colorsFunc();
 const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
 const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
@@ -122,7 +121,7 @@ export const RadioChildrenSpan = CSSComponent({
   tag: 'span',
   className: 'RadioChildrenSpan',
   css: css`
-    padding-left: ${props => (props.hasChildren ? em(padding) : 0)};
+    padding-left: ${props => (props.hasChildren ? em(get('padding')) : 0)};
     vertical-align: middle;
   `,
   normal: {
