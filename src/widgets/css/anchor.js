@@ -4,8 +4,8 @@
  * @flow
  */
 import { px2emcss } from '../css/units';
-import colorsFunc from '../css/stateColor';
 import styled from 'styled-components';
+import get from './theme-common-dict';
 
 export type AnchorProps = {
   children: any,
@@ -27,12 +27,11 @@ type CSSProps = {
 
 const FontSize = 1.2;
 const em = px2emcss(FontSize);
-const { themeColor } = colorsFunc();
 
 const getAnchorBorder = (props: CSSProps) => {
   const { slideLine = true } = props;
   if (slideLine) {
-    return `border-left: ${em(1)} solid #e8e8e8;`;
+    return `border-left: ${em(1)} solid ${get('borderColor')};`;
   }
 };
 export const Anchor = styled.div`
@@ -56,7 +55,7 @@ const getTop = (props: CSSProps) => {
     if (slideType === 'circle') {
       top += 9;
     }
-    return `top: ${em(top)};background: ${themeColor};`;
+    return `top: ${em(top)};background: ${get('themeColor')};`;
   }
   return 'display: none';
 };

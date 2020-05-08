@@ -4,8 +4,8 @@
  * @flow
  */
 import { px2emcss } from '../css/units';
-import colorsFunc from '../css/stateColor';
 import styled from 'styled-components';
+import get from './theme-common-dict';
 
 export type AnchorLinkProps = {
   title: string | React.ReactNode,
@@ -21,22 +21,21 @@ type CSSProps = {
 
 const FontSize = 1.2;
 const em = px2emcss(FontSize);
-const { themeColor } = colorsFunc();
 
 export const LinkWrap = styled.div`
   font-size: ${FontSize}rem;
   padding-top: ${em(12)};
-  padding-left: ${em(10)};
+  padding-left: ${em(get('marginToSameElement'))};
   line-height: 1;
 `;
 
 const getLinkColor = (props: CSSProps) => {
   const { active } = props;
-  let color = '#333';
+  let color = 'darkGreyColor';
   if (active) {
-    color = themeColor;
+    color = 'themeColor';
   }
-  return `color: ${color};`;
+  return `color: ${get(color)};`;
 };
 
 export const Link = styled.a`
@@ -45,7 +44,7 @@ export const Link = styled.a`
   transition: all 0.3s ease-in-out;
   text-decoration: none;
   &:hover {
-    color: ${themeColor};
+    color: ${get('themeColor')};
   }
   &:focus {
     text-decoration: none;
