@@ -211,9 +211,11 @@ export default class ModalDemo extends React.Component<any, any> {
         <Modal
           visible={visable3}
           footer={[
-            <Button type="primary" onClick={this.buttonClick(3)}>
-              自定义页脚
-            </Button>,
+            <div style={{ marginTop: '15px' }}>
+              <Button type="primary" onClick={this.buttonClick(3)}>
+                自定义页脚
+              </Button>
+            </div>,
           ]}
           onCancel={this.buttonClick(3)}
           title="这是标题！"
