@@ -27,6 +27,7 @@ import Button from '../button';
 import Icon from '../icon';
 import { px2remcss } from '../css/units';
 import { deepMerge } from '@lugia/object-utils';
+import get from '../css/theme-common-dict';
 
 const BtnType = {
   confirm: 'warning',
@@ -91,14 +92,14 @@ export default ThemeProvider(
         {
           [viewClass]: {
             normal: {
-              fontSize: '$lugia-dict.@lugia/lugia-web.sFontSize',
-              color: '$lugia-dict.@lugia/lugia-web.mediumGreyColor',
+              fontSize: get('sFontSize'),
+              color: get('mediumGreyColor'),
             },
             hover: {
-              color: '$lugia-dict.@lugia/lugia-web.darkGreyColor',
+              color: get('darkGreyColor'),
             },
             disabled: {
-              color: '$lugia-dict.@lugia/lugia-web.disableTextColor',
+              color: get('disableTextColor'),
             },
           },
         },
@@ -118,7 +119,7 @@ export default ThemeProvider(
         {
           [viewClass]: {
             normal: {
-              fontSize: '$lugia-dict.@lugia/lugia-web.mFontSize',
+              fontSize: get('mFontSize'),
               color: getIconColor({ iconType }),
               getCSS() {
                 return `
