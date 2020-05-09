@@ -52,6 +52,18 @@
       "type": "InputSize",
       "desc": "可配置三种尺寸大小的input",
       "propsDefaultValue": "default"
+    },
+    "open": {
+      "type": "boolean",
+      "desc": "控制面板是展开",
+      "defaultValue": false,
+      "propsDefaultValue": true
+    },
+    "liquidLayout": {
+      "type": "boolean",
+      "desc": "是否开启流式布局",
+      "defaultValue": false,
+      "propsDefaultValue": true
     }
   },
   "events": {
@@ -170,53 +182,12 @@
       "desc": "额外页脚配置",
       "normal": [["color"], ["font"]]
     },
-    "FooterButtonOptions": {
-      "name": "页脚按钮",
-      "desc": "页脚按钮配置",
-      "normal": [
-        ["color"],
-        ["font"],
-        ["margin"],
-        ["padding"],
-        ["width"],
-        ["height"],
-        ["border"],
-        ["borderRadius"],
-        ["background"]
-      ]
-    },
     "GroupDate": {
       "name": "分类日期",
       "desc": "分类日期配置/年/月/周",
       "normal": [["color"], ["font"]],
       "hover": [["color"], ["font"]],
       "active": [["color"], ["font"], ["background"], ["borderRadius"]]
-    },
-    "FooterToday": {
-      "name": "页脚'今天'按钮",
-      "desc": "页脚'今天'按钮配置",
-      "normal": [["color"], ["font"]],
-      "hover": [["color"], ["font"]]
-    },
-    "FooterTimeButton": {
-      "name": "页脚时间按钮",
-      "desc": "页脚时间按钮配置",
-      "normal": [["color"], ["font"]],
-      "hover": [["color"], ["font"]]
-    },
-    "FooterOkButton": {
-      "name": "页脚确定按钮",
-      "desc": "页脚确定按钮配置",
-      "normal": [
-        ["background"],
-        ["margin"],
-        ["padding"],
-        ["borderRadius"],
-        ["color"],
-        ["font"],
-        ["fontSize"]
-      ],
-      "hover": [["color"], ["font"], ["fontSize"], ["background"]]
     },
     "TimePanelHead": {
       "name": "时间板头部",
