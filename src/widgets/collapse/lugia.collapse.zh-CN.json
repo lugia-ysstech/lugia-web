@@ -62,7 +62,7 @@
   "childrenWidget": ["panel"],
   "category": ["数据展示"],
   "theme": {
-    "Wrap": {
+    "Container": {
       "name": "Collapse整体配置",
       "desc": "Collapse整体配置",
       "normal": [
@@ -77,7 +77,7 @@
     },
     "Panel":  {
       "theme": {
-        "Wrap": {
+        "Container": {
           "name": "面板整体配置",
           "desc": "面板整体配置",
           "normal": [["width"]]

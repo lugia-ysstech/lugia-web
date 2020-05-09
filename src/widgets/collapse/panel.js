@@ -126,7 +126,7 @@ export default ThemeProvider(
         props: { hasChildren: !!children, ...partProps },
       });
       return (
-        <Wrap {...addMouseEvent(this, config)} themeProps={getPartOfThemeProps('Wrap')}>
+        <Wrap {...addMouseEvent(this, config)} themeProps={getPartOfThemeProps('Container')}>
           <PanelWrap themeProps={panelWrapTheme}>
             <PanelHeader
               disabled={disabled}
