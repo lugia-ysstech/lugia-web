@@ -26,7 +26,7 @@ type TypeProps = {
   value?: string,
   onChange?: Function,
   onScroller?: Function,
-  getPartOfThemeProps: Function,
+  getPartOfThemeProps?: Function,
   isFocus?: boolean,
   theme?: Object,
   mode: string,

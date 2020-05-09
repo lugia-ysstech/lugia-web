@@ -4,15 +4,14 @@
  * */
 import React, { Component } from 'react';
 import moment from 'moment';
-import Trigger from '../../trigger/index';
 import Input from '../../input';
 import PageFooter from '../panel/PageFooter';
 import { getDerivedForInput } from '../utils/getDerived';
 import SwitchPanel from '../switchPanel/SwitchPanel';
 import { getValueFromWeekToDate } from '../utils/differUtils';
 import { getformatSymbol, getNewProps } from '../utils/utils';
-import { formatValueIsValid, modeStyle } from '../utils/booleanUtils';
-import { PanelWrap } from '../styled/styled';
+import { formatValueIsValid, modeStyle, getOpenProps } from '../utils/booleanUtils';
+import { PanelWrap, TrrigerWrap, Box } from '../styled/styled';
 import Theme from '../../theme';
 import Widget from '../../consts/index';
 import SwitchPanelMode from '../mode';
@@ -34,16 +33,21 @@ type TypeProps = {
   disabled?: boolean,
   readOnly?: boolean,
   createPortal?: boolean,
+  open?: boolean,
   onChange?: Function,
   showTime?: Function,
   onOk?: Function,
   onFocus?: Function,
   onBlur?: Function,
+  onDocumentClick?: Function,
+  size?: string,
+  liquidLayout?: boolean,
 };
 type TypeState = {
   value: string,
   format: string,
   isValid: boolean,
+  visible: boolean,
   timeValue: string,
   status: string,
   isScroll: boolean,
@@ -91,6 +95,10 @@ class DateInput extends Component<TypeProps, TypeState> {
     const { format } = this.state;
     const value = moment().format(format);
     this.normalStyleValueObj = getformatSymbol(value);
+    const { hasOpenInProps, open } = getOpenProps(this.props);
+    if (hasOpenInProps) {
+      this.setState({ visible: open });
+    }
   }
 
   render() {
@@ -103,6 +111,7 @@ class DateInput extends Component<TypeProps, TypeState> {
       help,
       createPortal,
       size,
+      liquidLayout,
     } = this.props;
     const {
       value,
@@ -115,6 +124,7 @@ class DateInput extends Component<TypeProps, TypeState> {
       isStartOfWeek,
       visible,
     } = this.state;
+    const { hasOpenInProps, open } = getOpenProps(this.props);
     const hasStateValue = value ? true : false;
     const showTimeBtnIsDisabled = valueIsValid ? true : false;
     const { oldValue } = this;
@@ -145,15 +155,17 @@ class DateInput extends Component<TypeProps, TypeState> {
       size,
       getPartOfThemeProps,
     });
+    const { normal = {} } = themeConfig;
     return (
       <Theme
         config={{
           [Widget.Input]: {
             Container: {
               ...themeConfig,
-            },
-            Input: {
-              ...themeConfig,
+              normal: {
+                ...normal,
+                width: '100%',
+              },
             },
             InputPrefix: {
               ...inputPrefixThemeConfig,
@@ -167,77 +179,90 @@ class DateInput extends Component<TypeProps, TypeState> {
           },
         }}
       >
-        <Trigger
-          themePass
-          createPortal={createPortal}
-          onDocumentClick={this.onDocumentClick}
-          popup={
-            <React.Fragment>
-              <PanelWrap themeProps={themeProps} {...addMouseEvent(this)}>
-                <SwitchPanel
-                  {...newProps}
-                  hasStateValue={hasStateValue}
-                  onChange={this.onChange}
-                  status={status}
-                  value={panelValue}
-                  timeValue={value}
-                  format={format}
-                  timeChange={this.timeChange}
-                  model={this.targetMode}
-                  isScroll={isScroll}
-                  valueIsValid={valueIsValid}
-                  index={0}
-                  hasOldValue={hasOldValue}
-                  isStartOfWeek={isStartOfWeek}
-                  themeProps={themeProps}
-                />
-
-                {isTime ? (
-                  ''
-                ) : (
-                  <PageFooter
-                    {...this.props}
-                    format={format}
+        <Box themeProps={inputContainProps}>
+          <TrrigerWrap
+            liquidLayout={liquidLayout}
+            themePass
+            createPortal={liquidLayout ? false : createPortal}
+            onDocumentClick={this.onDocumentClick}
+            popupVisible={hasOpenInProps ? open : visible}
+            popup={
+              <React.Fragment>
+                <PanelWrap themeProps={themeProps} {...addMouseEvent(this)}>
+                  <SwitchPanel
+                    {...newProps}
+                    hasStateValue={hasStateValue}
                     onChange={this.onChange}
-                    footerChange={this.footerChange}
-                    setPopupVisible={this.setPopupVisible}
-                    showTimeBtnIsDisabled={showTimeBtnIsDisabled}
-                    model={this.pageFooterChange}
+                    status={status}
+                    value={panelValue}
+                    timeValue={value}
+                    format={format}
+                    timeChange={this.timeChange}
+                    model={this.targetMode}
+                    isScroll={isScroll}
+                    valueIsValid={valueIsValid}
+                    index={0}
+                    hasOldValue={hasOldValue}
+                    isStartOfWeek={isStartOfWeek}
+                    themeProps={themeProps}
                   />
-                )}
-              </PanelWrap>
-            </React.Fragment>
-          }
-          align="bottomLeft"
-          key="trigger"
-          ref={this.trigger}
-          action={disabled || readOnly || this.isClear ? [] : ['click']}
-          hideAction={['click']}
-        >
-          <Input
-            {...prefixIcon}
-            {...suffixIcon}
-            value={value}
-            onChange={this.onChange}
-            placeholder={placeholder}
-            onFocus={this.onFocus}
-            focus={visible}
-            onBlur={this.onBlur}
-            //onClear={this.onClear}
-            disabled={disabled}
-            readOnly={readOnly}
-            validateType={validateType}
-            validateStatus={validateStatus}
-            help={help}
-            size={size}
-          />
-        </Trigger>
+
+                  {isTime ? (
+                    ''
+                  ) : (
+                    <PageFooter
+                      {...this.props}
+                      format={format}
+                      onChange={this.onChange}
+                      footerChange={this.footerChange}
+                      showTimeBtnIsDisabled={showTimeBtnIsDisabled}
+                      model={this.pageFooterChange}
+                    />
+                  )}
+                </PanelWrap>
+              </React.Fragment>
+            }
+            align="bottomLeft"
+            key="trigger"
+            ref={this.trigger}
+            action={disabled || readOnly || this.isClear || hasOpenInProps ? [] : ['click']}
+            hideAction={hasOpenInProps ? [] : ['click']}
+          >
+            <Input
+              {...prefixIcon}
+              {...suffixIcon}
+              value={value}
+              onChange={this.onChange}
+              placeholder={placeholder}
+              onFocus={this.onFocus}
+              focus={visible}
+              onBlur={this.onBlur}
+              //onClear={this.onClear}
+              disabled={disabled}
+              readOnly={readOnly}
+              validateType={validateType}
+              validateStatus={validateStatus}
+              help={help}
+              size={size}
+            />
+          </TrrigerWrap>
+        </Box>
       </Theme>
     );
   }
 
   onDocumentClick = () => {
-    this.setState({ visible: false });
+    const { hasOpenInProps, open } = getOpenProps(this.props);
+    let visible = false;
+    if (hasOpenInProps) {
+      visible = open;
+    }
+    console.log('onDocumentClick', this.props);
+    this.setState({ visible });
+    const { onDocumentClick } = this.props;
+    if (onDocumentClick) {
+      onDocumentClick();
+    }
   };
 
   onChange = (param: Object) => {
@@ -264,8 +289,8 @@ class DateInput extends Component<TypeProps, TypeState> {
     }
 
     onChange && onChange({ event, newValue, oldValue: this.oldValue });
-    this.setState({ value: newValue, isValid, visible });
-    !isTime && this.setPopupVisible(visible);
+    const visibleState = isTime ? {} : { visible };
+    this.setState({ value: newValue, isValid, ...visibleState });
   };
   setModeState = (value: string, format: string, isWeeks: boolean) => {
     const newFormat = isWeeks ? 'YYYY-MM-DD' : format;
@@ -347,16 +372,12 @@ class DateInput extends Component<TypeProps, TypeState> {
       status === 'showDate' && this.targetMode.onChange({ value: panelValue });
       stateData = { status };
     }
-    this.setPopupVisible(visible);
     this.setState({ ...stateData, visible });
   };
   timeChange = (obj: Object) => {
     const { value } = obj;
     this.setState({ value });
   };
-  setPopupVisible(...rest: any[]) {
-    this.trigger.current && this.trigger.current.setPopupVisible(...rest);
-  }
 }
 
 export default DateInput;

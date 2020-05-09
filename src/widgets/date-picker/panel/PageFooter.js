@@ -30,7 +30,6 @@ type TypeProps = {
   format?: string,
   mode?: string,
   model?: Object,
-  themeProps: Object,
 };
 
 type TypeState = {
@@ -58,7 +57,6 @@ function getShowTimeMessage(showTime) {
 }
 class PageFooter extends Component<TypeProps, TypeState> {
   static displayName = 'PageFooter';
-  timeMessage: string;
   constructor(props: TypeProps) {
     super(props);
     const { model } = props;
@@ -137,14 +135,13 @@ class PageFooter extends Component<TypeProps, TypeState> {
     footerChange && footerChange(status);
   };
   render() {
-    const { extraFooter, buttonOptions, theme, themeProps } = this.props;
+    const { extraFooter, buttonOptions } = this.props;
     const {
       buttonOptionsTheme,
       todayTheme,
       timeButtonTheme,
       okButtonTheme,
     } = getFooterButtonsTheme(this.props);
-    console.log('todayTheme', todayTheme);
     let childrenNode;
     if (buttonOptions && buttonOptions.options) {
       const optionsKeys = [];

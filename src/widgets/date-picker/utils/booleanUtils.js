@@ -82,3 +82,8 @@ export function modeStyle(mode: string): Object {
     isTimes,
   };
 }
+export function getOpenProps(props) {
+  const { open } = props;
+  const hasOpenInProps = 'open' in props && open !== 'undefined' && open !== 'null';
+  return { hasOpenInProps, open };
+}
