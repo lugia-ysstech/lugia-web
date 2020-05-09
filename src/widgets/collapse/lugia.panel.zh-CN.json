@@ -53,7 +53,7 @@
   "componentName": "Panel",
   "needExport": true,
   "theme": {
-    "Wrap": {
+    "Container": {
       "name": "面板整体配置",
       "desc": "面板整体配置",
       "normal": [["width"]]

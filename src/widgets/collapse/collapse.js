@@ -37,7 +37,7 @@ export default ThemeProvider(
 
     render() {
       const { getPartOfThemeProps } = this.props;
-      const wrapTheme = getPartOfThemeProps('Wrap');
+      const wrapTheme = getPartOfThemeProps('Container');
       return <Wrap themeProps={wrapTheme}>{this.renderChildren()}</Wrap>;
     }
     renderChildren = () => {
