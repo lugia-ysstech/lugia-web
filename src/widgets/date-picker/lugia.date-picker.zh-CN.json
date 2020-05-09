@@ -90,6 +90,18 @@
       "type": "InputSize",
       "desc": "可配置三种尺寸大小的input",
       "propsDefaultValue": "default"
+    },
+    "open": {
+      "type": "boolean",
+      "desc": "控制面板是展开",
+      "defaultValue": false,
+      "propsDefaultValue": true
+    },
+    "liquidLayout": {
+      "type": "boolean",
+      "desc": "是否开启流式布局",
+      "defaultValue": false,
+      "propsDefaultValue": true
     }
   },
   "events": {
@@ -288,7 +300,7 @@
   "defaultTheme": {
     "Container": {
       "normal": {
-        "width": 192,
+        "width": 300,
         "height": 32,
         "background": {
           "color": "#fff"
