@@ -74,7 +74,9 @@ const CardOutContainer = CSSComponent({
         propsConfig: { type },
       } = themeProps;
       if (type === 'transparent') {
-        return {};
+        return {
+          boxShadow: 'none',
+        };
       }
       return {
         background: {
