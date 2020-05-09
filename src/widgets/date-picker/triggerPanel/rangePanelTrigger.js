@@ -2,16 +2,15 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import SwitchPanel from '../switchPanel/SwitchPanel';
-import Trigger from '../../trigger/index';
 import RangeInput from '../panel/RangeInput';
 import PageFooter from '../panel/PageFooter';
 import { getDerivedForInput } from '../utils/getDerived';
-import { RangeWrap, RangeWrapInner } from '../styled/styled';
+import { RangeWrap, RangeWrapInner, TrrigerWrap, Box } from '../styled/styled';
 import SwitchPanelMode from '../mode';
 import { differMonthAndYear, getIndexInRange, getCurrentPageDates } from '../utils/differUtils';
-import { formatValueIsValid, getIsSame } from '../utils/booleanUtils';
+import { formatValueIsValid, getIsSame, getOpenProps } from '../utils/booleanUtils';
 import { getformatSymbol } from '../utils/utils';
-import { getFacePanelContain } from '../themeConfig/themeConfig';
+import { getFacePanelContain, getWrapThemeProps } from '../themeConfig/themeConfig';
 type TypeProps = {
   defaultValue?: Array<string>,
   value?: Array<string>,
@@ -22,6 +21,8 @@ type TypeProps = {
   onFocus?: Function,
   onBlur?: Function,
   createPortal?: boolean,
+  open?: boolean,
+  liquidLayout?: boolean,
   size?: boolean,
   showTime?: any,
   onOk?: any,
@@ -120,7 +121,6 @@ class Range extends Component<TypeProps, TypeState> {
     };
   };
   onClickTrigger = (e: any, visible: boolean) => {
-    console.log('onClickTrigger', visible);
     const { isClear } = this;
     if (isClear && visible) {
       return;
@@ -134,8 +134,6 @@ class Range extends Component<TypeProps, TypeState> {
     isValid && this.drawPageAgain(value, format);
     const { monthAndYear } = this;
     this.setTargetMode(monthAndYear);
-    console.log('visible onClickTrigger', visible);
-    this.setPopupVisible(true);
     this.setState({ visible: true });
   };
   onChange = (parmas: Object) => {
@@ -151,7 +149,6 @@ class Range extends Component<TypeProps, TypeState> {
       this.oldMonthandYear = [...this.monthAndYear];
       visible = false;
     }
-    this.setPopupVisible(visible);
     const hasOldValue = this.oldValue && this.oldValue[0] !== '' && this.oldValue !== '';
     const rangeValue = isValid
       ? newValue
@@ -245,7 +242,6 @@ class Range extends Component<TypeProps, TypeState> {
         onChange({ newValue: sortValue, oldValue: this.changeOldValue, event });
       setStateData = { value: sortValue, rangeValue: [], isHover: false };
     }
-    this.setPopupVisible(visible);
     this.drawPageAgain(renderValue, format);
     this.setState({ ...setStateData, visible });
   };
@@ -294,7 +290,6 @@ class Range extends Component<TypeProps, TypeState> {
     rangeValue && this.drawPageAgain(renderValue, format);
   };
   setTriggerVisible = (open: boolean) => {
-    this.setPopupVisible(open);
     this.setState({ visible: open });
   };
   onFocus = (e: any) => {
@@ -349,9 +344,7 @@ class Range extends Component<TypeProps, TypeState> {
     this.oldValue = ['', ''];
     this.isClear = true;
 
-    this.setState({ value: newValue, hasNormalvalue: false, visible: false }, () => {
-      this.setPopupVisible(false);
-    });
+    this.setState({ value: newValue, hasNormalvalue: false, visible: false });
 
     const { onChange } = this.props;
     const { value } = this.state;
@@ -378,7 +371,6 @@ class Range extends Component<TypeProps, TypeState> {
       status === 'showDate' && this.drawPageAgain(value, this.state.format);
       stateData = { status };
     }
-    this.setPopupVisible(visible);
     this.setState({ ...stateData, visible, rangeValue: [] });
   };
   timeChange = (obj: Object) => {
@@ -406,9 +398,22 @@ class Range extends Component<TypeProps, TypeState> {
     this.normalStyleValueObj = getformatSymbol(value);
     this.monthAndYear = [...panelValue];
     this.panelDatesArray = getCurrentPageDates(panelValue, format);
+    const { hasOpenInProps, open } = getOpenProps(this.props);
+    if (hasOpenInProps) {
+      this.setState({ visible: open });
+    }
   }
   onDocumentClick = () => {
-    this.setState({ visible: false });
+    const { hasOpenInProps, open } = getOpenProps(this.props);
+    let visible = false;
+    if (hasOpenInProps) {
+      visible = open;
+    }
+    this.setState({ visible });
+    const { onDocumentClick } = this.props;
+    if (onDocumentClick) {
+      onDocumentClick();
+    }
   };
   render() {
     const {
@@ -431,7 +436,11 @@ class Range extends Component<TypeProps, TypeState> {
       mode,
       getPartOfThemeProps,
       createPortal = true,
+      size,
+      validateStatus,
+      liquidLayout,
     } = this.props;
+    const { hasOpenInProps, open } = getOpenProps(this.props);
     const { monthAndYear } = this;
     const { differAmonth, differAyear } = differMonthAndYear(monthAndYear);
     const config = {
@@ -447,80 +456,90 @@ class Range extends Component<TypeProps, TypeState> {
       format,
     };
     const { themeProps } = getFacePanelContain({ mode, getPartOfThemeProps });
-
-    return (
-      <Trigger
-        themePass
-        createPortal={createPortal}
-        onDocumentClick={this.onDocumentClick}
-        popup={
-          <RangeWrap {...theme} isTime={status === 'showTime'} mode={mode} themeProps={themeProps}>
-            <RangeWrapInner>
-              <SwitchPanel
-                {...this.props}
-                value={monthAndYear[0]}
-                onChange={this.onChangeFirst}
-                index={0}
-                timeIndex={0}
-                hasTimeWrapBorder
-                {...config}
-                rangeRenderIndex={rangeIndex && rangeIndex[0]}
-                choseDayIndex={choseDayIndex && choseDayIndex[0]}
-                model={this.targetModeFirst}
-                timeValue={value[0]}
-                themeProps={themeProps}
-              />
-              <SwitchPanel
-                {...this.props}
-                value={monthAndYear[1]}
-                onChange={this.onChangeSecond}
-                index={1}
-                timeIndex={1}
-                {...config}
-                rangeRenderIndex={rangeIndex && rangeIndex[1]}
-                choseDayIndex={choseDayIndex && choseDayIndex[1]}
-                model={this.targetModeSecond}
-                timeValue={value[1]}
-                themeProps={themeProps}
-                noBorder
-              />
-            </RangeWrapInner>
-            <PageFooter
-              {...this.props}
-              format={format}
-              onChange={this.onChange}
-              footerChange={this.footerChange}
-              model={this.pageFooterChange}
-              showTimeBtnIsDisabled={valueIsValid}
-            />
-          </RangeWrap>
-        }
-        align="bottomLeft"
-        key="trigger"
-        ref={this.trigger}
-        action={disabled || readOnly ? [] : ['click']}
-        hideAction={['click']}
-      >
-        <RangeInput
-          {...this.props}
-          placeholder={placeholder}
-          value={value}
-          onClick={this.onClickTrigger}
-          onChange={this.onChange}
-          onBlur={this.onBlur}
-          onFocus={this.onFocus}
-          onClear={this.onClear}
-          disabled={disabled}
-          readOnly={readOnly}
-          theme={theme}
-          visible={visible}
-          isClear={isClear}
-        />
-      </Trigger>
+    const inputContainProps = getWrapThemeProps(
+      { mode, size, getPartOfThemeProps, validateStatus, visible },
+      'Container'
     );
-  }
-  setPopupVisible(...rest: any[]) {
-    this.trigger.current && this.trigger.current.setPopupVisible(...rest);
+    return (
+      <Box themeProps={inputContainProps}>
+        <TrrigerWrap
+          liquidLayout={liquidLayout}
+          themePass
+          createPortal={liquidLayout ? false : createPortal}
+          onDocumentClick={this.onDocumentClick}
+          popupVisible={hasOpenInProps ? open : visible}
+          popup={
+            <RangeWrap
+              {...theme}
+              isTime={status === 'showTime'}
+              mode={mode}
+              themeProps={themeProps}
+            >
+              <RangeWrapInner>
+                <SwitchPanel
+                  {...this.props}
+                  value={monthAndYear[0]}
+                  onChange={this.onChangeFirst}
+                  index={0}
+                  timeIndex={0}
+                  hasTimeWrapBorder
+                  {...config}
+                  rangeRenderIndex={rangeIndex && rangeIndex[0]}
+                  choseDayIndex={choseDayIndex && choseDayIndex[0]}
+                  model={this.targetModeFirst}
+                  timeValue={value[0]}
+                  themeProps={themeProps}
+                />
+                <SwitchPanel
+                  {...this.props}
+                  value={monthAndYear[1]}
+                  onChange={this.onChangeSecond}
+                  index={1}
+                  timeIndex={1}
+                  {...config}
+                  rangeRenderIndex={rangeIndex && rangeIndex[1]}
+                  choseDayIndex={choseDayIndex && choseDayIndex[1]}
+                  model={this.targetModeSecond}
+                  timeValue={value[1]}
+                  themeProps={themeProps}
+                  noBorder
+                />
+              </RangeWrapInner>
+              <PageFooter
+                {...this.props}
+                format={format}
+                onChange={this.onChange}
+                footerChange={this.footerChange}
+                model={this.pageFooterChange}
+                showTimeBtnIsDisabled={valueIsValid}
+              />
+            </RangeWrap>
+          }
+          align="bottomLeft"
+          key="trigger"
+          ref={this.trigger}
+          action={disabled || readOnly || hasOpenInProps ? [] : ['click']}
+          hideAction={hasOpenInProps ? [] : ['click']}
+        >
+          <RangeInput
+            {...this.props}
+            placeholder={placeholder}
+            value={value}
+            onClick={this.onClickTrigger}
+            onChange={this.onChange}
+            onBlur={this.onBlur}
+            onFocus={this.onFocus}
+            onClear={this.onClear}
+            disabled={disabled}
+            readOnly={readOnly}
+            theme={theme}
+            visible={visible}
+            isClear={isClear}
+            themeProps={inputContainProps}
+          />
+        </TrrigerWrap>
+      </Box>
+    );
   }
 }
 export default Range;

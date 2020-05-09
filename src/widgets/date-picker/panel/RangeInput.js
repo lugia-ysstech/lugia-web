@@ -14,7 +14,6 @@ import Theme from '../../theme';
 import Widget from '../../consts/index';
 import { getBorder } from '@lugia/theme-utils';
 import {
-  getWrapThemeProps,
   getIconTheme,
   getRangeInputMiddleSymbolTheme,
   getRangeInputPlaceholderTheme,
@@ -37,6 +36,7 @@ type TypeProps = {
   theme: Object,
   mode?: string,
   errorTipTheme: Object,
+  themeProps: Object,
   validateStatus: string,
   help: string,
   validateType: string,
@@ -95,7 +95,7 @@ class RangeInput extends Component<TypeProps, TypeState> {
     return obj;
   };
   render() {
-    const { disabled, readOnly, placeholder, validateStatus, size, value, visible } = this.props;
+    const { disabled, readOnly, placeholder, size, value, themeProps } = this.props;
     const config = {
       onFocus: disabled || readOnly ? '' : this.onFocus,
       disabled,
@@ -118,10 +118,7 @@ class RangeInput extends Component<TypeProps, TypeState> {
         ...this.getInputStyle(state),
       };
     };
-    const inputContainProps = getWrapThemeProps(
-      { mode, size, getPartOfThemeProps, validateStatus, visible },
-      'Container'
-    );
+    const inputContainProps = themeProps;
 
     const { inputPrefixProps, inputSuffixProps, clearButtonProps } = getIconTheme(this.props);
     const {
