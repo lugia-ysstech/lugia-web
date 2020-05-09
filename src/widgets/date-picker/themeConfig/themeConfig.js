@@ -271,7 +271,7 @@ export function getFacePanelContain(props) {
     background: { color: defaultColor },
     borderRadius: getBorderRadius(borderRadiusValue),
     boxShadow: normalBoxShadow,
-    width: isRange ? 600 : 420,
+    width: isRange ? 600 : 300,
   };
   const normalTheme = deepMerge(defaultNormal, normal);
   const { width } = normalTheme;

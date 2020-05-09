@@ -1,8 +1,39 @@
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { valueInRange } from '../../common/Math';
 import { modeStyle } from '../utils/booleanUtils';
 import { distance, em, fontSize, getDateWrrap, getThemeProperty, getThemeUpdate } from './utils';
 import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
+import Trigger from '../../trigger';
+export const Box = CSSComponent({
+  tag: 'div',
+  className: 'Box',
+  normal: {
+    selectNames: [['width']],
+    defaultTheme: {
+      width: '100%',
+    },
+  },
+  hover: {
+    selectNames: [],
+  },
+  focus: {
+    selectNames: [],
+  },
+  active: {
+    selectNames: [],
+  },
+  disabled: {
+    selectNames: [],
+  },
+  css: css`
+    display: inline-block;
+    vertical-align: text-top;
+  `,
+});
+export const TrrigerWrap = styled(Trigger)`
+  display: inline-block;
+  ${props => (props.liquidLayout ? 'position:unset !important;' : 'position:absolute;')};
+`;
 export const Icons = CSSComponent({
   tag: 'span',
   css: css`

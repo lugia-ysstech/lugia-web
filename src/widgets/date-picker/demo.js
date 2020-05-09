@@ -10,9 +10,8 @@ import moment from 'moment';
 import DatePicker, { momentConfig } from './index';
 import Theme from '../theme';
 import Widget from '../consts/index';
-import NumberInput from '../number-input';
 import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
-import Input from '../input';
+import Button from '../button';
 import TimePicker from '../time-picker/TimePicker';
 const { MonthPicker, YearPicker, WeekPicker, WeeksPicker, RangePicker } = DatePicker;
 
@@ -30,6 +29,7 @@ export default class Sl extends Component<any> {
       disabled: false,
       v: moment().year(),
       cv: moment().year(),
+      open: true,
     };
   }
   onChange = (obj: Object) => {
@@ -54,7 +54,10 @@ export default class Sl extends Component<any> {
     console.log(obj);
     this.setState({ rangeValue: newValue });
   };
-
+  onClick = () => {
+    const { open } = this.state;
+    this.setState({ open: !open });
+  };
   render() {
     const dateFormate = 'YYYY年MM月DD日';
     const config = {
@@ -301,9 +304,19 @@ export default class Sl extends Component<any> {
         },
       },
     };
+    const { open } = this.state;
     return (
       <div>
         <div style={{ margin: '30px', overflow: 'hidden' }}>
+          <h2 style={{ margin: '10px' }}>
+            open 占位/不占位 <Button onClick={this.onClick}>{open ? '关闭' : '开启'}</Button>
+          </h2>
+          <div>
+            <p>占位</p>
+            <DatePicker open={open} liquidLayout />
+            <p>不占位</p>
+            <DatePicker open={open} />
+          </div>
           <h2 style={{ margin: '10px' }}>Date</h2>
 
           <h2>date-normal-selectToday-theme</h2>
@@ -718,7 +731,7 @@ export default class Sl extends Component<any> {
           <MonthPicker validateStatus={'error'} validateType={'bottom'} help={'格式有误'} />
           <RangePicker validateStatus={'error'} validateType={'inner'} help={'格式有误'} />
           <TimePicker validateStatus={'error'} validateType={'bottom'} help={'格式有误'} />
-        </div>{' '}
+        </div>
         <div>
           <h2>size</h2>
           <h2>size-small</h2>
