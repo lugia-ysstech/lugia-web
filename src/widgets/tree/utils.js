@@ -85,7 +85,7 @@ class TreeUtils {
       igronSelectField,
       limitCount,
       splitQuery,
-      pathSeparator = '/',
+      pathSeparator = '|',
       pathField,
       pidField,
     } = config;

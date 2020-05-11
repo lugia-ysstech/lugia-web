@@ -6,12 +6,12 @@
     "title": {
       "type": "boolean",
       "desc": "是否展示标题占位符",
-      "defaultValue": true
+      "propsDefaultValue": true
     },
     "avatar": {
       "type": "boolean",
       "desc": "是否展示头像占位符",
-      "defaultValue": true
+      "propsDefaultValue": true
     },
     "paragraph": {
       "type": "object",
@@ -22,17 +22,17 @@
     "loading": {
       "type": "boolean",
       "desc": "是否展示占位符组合",
-      "defaultValue": true
+      "propsDefaultValue": true
     },
     "picture": {
       "type": "boolean",
       "desc": "是否展示图片占位符",
-      "defaultValue": false
+      "propsDefaultValue": false
     },
     "animation": {
       "type": "boolean",
       "desc": "是否展示动画效果",
-      "defaultValue": false
+      "propsDefaultValue": false
     }
   },
 
