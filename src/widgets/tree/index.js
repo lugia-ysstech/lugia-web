@@ -13,7 +13,7 @@ import { getMenuItemHeight } from '../css/tree';
 class Tree extends React.Component<any, any> {
   static defaultProps = {
     translateTreeData: false,
-    pathSeparator: '/',
+    pathSeparator: '|',
     valueField: 'value',
     displayField: 'text',
     pathField: 'path',
@@ -51,7 +51,7 @@ class Tree extends React.Component<any, any> {
   };
 
   mapDataTranslateTreeData = () => {
-    const { igronSelectField = 'disabled', pathSeparator = '/' } = this.props;
+    const { igronSelectField = 'disabled', pathSeparator = '|' } = this.props;
     return getTreeData({ ...this.props, igronSelectField }, pathSeparator);
   };
 }

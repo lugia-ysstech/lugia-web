@@ -27,13 +27,13 @@
     "disabled": {
       "type": "boolean",
       "desc": "是否禁用输入框",
-      "defaultValue": false
+      "propsDefaultValue": false
     },
 
     "showOldValue": {
       "type": "boolean",
       "desc": "是否显示上一次选中的值",
-      "defaultValue": true
+      "propsDefaultValue": true
     },
 
     "placeholder": {
