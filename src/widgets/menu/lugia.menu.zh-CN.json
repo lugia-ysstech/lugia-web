@@ -77,9 +77,13 @@
 
     "offsety": {
       "type": "number",
-      "desc": "菜单间的间隔",
+      "desc": "菜单间的间隔"
     },
-
+    "start": {
+      "type": "number",
+      "desc": "开始展示数据的索引值",
+      "defaultValue": 0
+    },
     "autoHeight": {
       "type": "boolean",
       "desc": "根据data数量，自动计算菜单高度",
