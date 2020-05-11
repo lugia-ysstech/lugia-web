@@ -30,7 +30,7 @@
     "align": {
       "type": "React.Node",
       "desc": "弹出方向",
-      "defaultValue": "bottom"
+      "propsDefaultValue": "bottom"
     },
     "text": {
       "type": "string",

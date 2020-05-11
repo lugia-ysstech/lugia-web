@@ -135,7 +135,7 @@ export function getTreeData(
       },
       displayField,
       valueField,
-      pathSeparator: '/',
+      pathSeparator: '|',
     }
   );
   return { target, mapData, enableKeys };

@@ -77,7 +77,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     inlineExpandAll: true,
     themeStyle: 'light',
     inlineType: 'primary',
-    pathSeparator: '/',
+    pathSeparator: '|',
     separator: '|',
     switchAtEnd: true,
     igronSelectField: 'disabled',

@@ -100,7 +100,7 @@ class Tree extends React.Component<TreeProps, TreeState> {
   static defaultProps = {
     expandAll: false,
     mutliple: false,
-    pathSeparator: '/',
+    pathSeparator: '|',
     defaultValue: '',
     displayField: 'title',
     valueField: 'key',

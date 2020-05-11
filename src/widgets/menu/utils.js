@@ -189,7 +189,7 @@ export function mapGetAllChildData(
   return target;
 }
 
-export function getTreeData(props: Object, pathSeparator: string = '/') {
+export function getTreeData(props: Object, pathSeparator: string = '|') {
   const newData = [];
   const {
     data,

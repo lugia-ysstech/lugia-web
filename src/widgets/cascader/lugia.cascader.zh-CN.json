@@ -133,13 +133,13 @@
     "allowClear": {
       "type": "boolean",
       "desc": "是否允许清空选中值",
-      "defaultValue": true
+      "propsDefaultValue": true
     },
 
     "showAllLevels": {
       "type": "boolean",
       "desc": "是否显示所有层级关系的值",
-      "defaultValue": true
+      "propsDefaultValue": true
     }
   },
   "events": {
