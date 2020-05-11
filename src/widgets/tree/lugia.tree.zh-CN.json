@@ -145,6 +145,11 @@
       "desc": "指定结点数组中path信息的分隔符号",
       "propsDefaultValue": "|"
     },
+    "searchType": {
+      "type": "start | end | include | eql",
+      "desc": "生成过滤数据的方式",
+      "defaultValue": "include"
+    },
     "switchAtEnd": {
       "type": "boolean",
       "desc": "控制器后置",
