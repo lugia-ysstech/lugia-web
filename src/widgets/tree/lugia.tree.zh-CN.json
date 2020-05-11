@@ -160,6 +160,12 @@
       "desc": "是否展示控制器",
       "propsDefaultValue": true
     },
+
+    "shape": {
+      "type": "default | round",
+      "desc": "单选树形控件,选中时的样式",
+      "propsDefaultValue": "default"
+    },
     "translateTreeData": {
       "type": "boolean",
       "desc": "是否开启嵌套数据生成Tree",
