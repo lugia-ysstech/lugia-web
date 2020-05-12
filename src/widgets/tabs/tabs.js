@@ -36,8 +36,15 @@ const TabContentContainer = CSSComponent({
       ['font'],
       ['color'],
     ],
-    defaultTheme: {
-      borderRadius: getBorderRadius(borderRadiusValue),
+    getThemeMeta: (theme: Object, themeProps: Object) => {
+      const {
+        propsConfig: { tabType },
+      } = themeProps;
+      const borderRadiusStyle =
+        tabType === 'window' ? { borderRadius: getBorderRadius(borderRadiusValue) } : {};
+      return {
+        ...borderRadiusStyle,
+      };
     },
     getCSS: (theme: Object, themeProps: Object) => {
       const {
@@ -437,11 +444,11 @@ class TabsBox extends Component<TabsProps, TabsState> {
 
   getChildrenContent() {
     const { activityValue, data } = this.state;
-    const { tabPosition, themeProps, hideContent } = this.props;
+    const { tabPosition, themeProps, hideContent, tabType } = this.props;
     if (data) {
       themeProps.propsConfig = { tabPosition };
       const contentThemeProps = this.props.getPartOfThemeProps('ContentBlock', {
-        props: { tabPosition },
+        props: { tabPosition, tabType },
       });
       if (hideContent) {
         return;
