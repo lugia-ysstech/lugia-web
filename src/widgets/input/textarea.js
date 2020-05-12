@@ -57,7 +57,7 @@ const Textarea = CSSComponent({
     defaultTheme: {
       cursor: 'text',
       borderRadius: getBorderRadius(borderRadius),
-      fontSize: 12,
+      fontSize: 14,
       border: getBorder(get('normalBorder')),
     },
     getCSS(themeMeta: Object, themeProps: Object) {

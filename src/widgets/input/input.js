@@ -36,6 +36,7 @@ const borderRadius = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
 const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 const padding = '$lugia-dict.@lugia/lugia-web.padding';
 const paddingToText = '$lugia-dict.@lugia/lugia-web.paddingToText';
+const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 
 const CommonInputStyle = CSSComponent({
   tag: 'input',
@@ -53,6 +54,7 @@ const CommonInputStyle = CSSComponent({
     defaultTheme: {
       cursor: 'text',
       borderRadius: getBorderRadius(borderRadius),
+      background: { color: defaultColor },
     },
     getCSS(themeMeta: Object, themeProps: Object) {
       const { propsConfig } = themeProps;
@@ -140,6 +142,7 @@ const InputContainer = CSSComponent({
       width: '100%',
       borderRadius: getBorderRadius(borderRadius),
       border: getBorder(get('normalBorder')),
+      background: { color: defaultColor },
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
@@ -247,6 +250,7 @@ type InputState = {
 type InsideProps = {
   _maxLength: string,
   getInputRef: Function,
+  _focus: boolean,
 };
 
 type InputProps = {
@@ -351,16 +355,15 @@ class TextBox extends Component<InputProps, InputState> {
     }
   }
   onFocus = (event: UIEvent) => {
-    const { onFocus, disabled, readOnly } = this.props;
-    if (disabled || readOnly) {
+    const { onFocus, disabled, readOnly, _focus } = this.props;
+    if (disabled || readOnly || _focus) {
       return;
     }
     onFocus && onFocus(event);
   };
-
   onBlur = (event: UIEvent) => {
-    const { onBlur, disabled, readOnly } = this.props;
-    if (disabled || readOnly) {
+    const { onBlur, disabled, readOnly, _focus } = this.props;
+    if (disabled || readOnly || _focus) {
       return;
     }
     onBlur && onBlur(event);
@@ -454,7 +457,7 @@ class TextBox extends Component<InputProps, InputState> {
                 propsConfig: { hideClearButton },
               } = themeProps;
               const theVisible = hideClearButton ? 'hidden' : 'visible';
-              return `    visibility: ${theVisible};padding-right: ${px2remcss(get('padding'))};`;
+              return `visibility: ${theVisible};padding-right: ${px2remcss(get('padding'))};`;
             },
             getThemeMeta(themeMeta, themeProps) {
               const {
@@ -563,6 +566,7 @@ class TextBox extends Component<InputProps, InputState> {
       suffix,
       isShowClearButton,
       size,
+      _focus,
     } = this.props;
     const {
       themeConfig: { normal: { color, font = {}, fontSize } = {} },
@@ -590,10 +594,15 @@ class TextBox extends Component<InputProps, InputState> {
           placeHolderFont: font,
         },
       }),
-      getPartOfThemeProps('Container', { props: { size } }),
+      getPartOfThemeProps('Container', {
+        props: { size },
+      }),
       theValidateWidthThemeProps,
       theValidateThemeProps
     );
+    if (_focus) {
+      theThemeProps.themeState.focus = true;
+    }
     return theThemeProps;
   }
 
