@@ -101,8 +101,7 @@
     "liquidLayout": {
       "type": "boolean",
       "desc": "是否开启流式布局",
-      "defaultValue": false,
-      "propsDefaultValue": true
+      "propsDefaultValue": false
     }
   },
   "events": {
