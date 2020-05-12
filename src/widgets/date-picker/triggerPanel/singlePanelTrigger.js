@@ -257,7 +257,6 @@ class DateInput extends Component<TypeProps, TypeState> {
     if (hasOpenInProps) {
       visible = open;
     }
-    console.log('onDocumentClick', this.props);
     this.setState({ visible });
     const { onDocumentClick } = this.props;
     if (onDocumentClick) {
