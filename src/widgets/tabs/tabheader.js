@@ -17,10 +17,14 @@ import { getAttributeFromObject } from '../common/ObjectUtils.js';
 import Icon from '../icon';
 import CSSComponent, { css, StaticComponent } from '@lugia/theme-css-hoc';
 import { deepMerge } from '@lugia/object-utils';
-import colorsFunc from '../css/stateColor';
 import { findDOMNode } from 'react-dom';
+import get from '../css/theme-common-dict';
 
-const { superLightColor, borderColor, borderSize, disableTextColor } = colorsFunc();
+const borderColor = '$lugia-dict.@lugia/lugia-web.borderColor';
+const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
+const borderSize = '$lugia-dict.@lugia/lugia-web.borderSize';
+const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
+const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
 
 const ArrowContainer = CSSComponent({
   tag: 'div',
@@ -56,7 +60,7 @@ const HBasePage = CSSComponent({
   css: css`
     text-align: center;
     width: 24px;
-    display: ${props => (props.arrowShow === false ? 'none' : 'block')};
+    display: ${props => (props.arrowShow === false ? 'none' : 'flex')};
   `,
 });
 
@@ -142,7 +146,7 @@ const AddContainer = CSSComponent({
     ],
     defaultTheme: {
       background: {
-        color: '#999',
+        color: darkGreyColor,
       },
     },
     getThemeMeta: (theme: Object, themeProps: Object) => {},
@@ -253,8 +257,8 @@ const HTabsOutContainer = CSSComponent({
       }
       const position = tabPosition === 'bottom' ? 'top' : 'bottom';
 
-      const { [position]: { color, width } = {} } = border || {
-        [position]: { color: borderColor, width: borderSize },
+      const { [position]: { color = get('superLightColor'), width } = {} } = border || {
+        [position]: { color: get('superLightColor'), width: get('borderSize') },
       };
       const resPosition = `${position} : 0 ;height:${width}px;background-color:${color}`;
 
@@ -531,8 +535,8 @@ class TabHeader extends Component<TabsProps, TabsState> {
         themeConfig: { normal: { color, width, background: { color: bgColor } = {} } = {} } = {},
       } = borderThemeProps;
 
-      const borderColor = bgColor || color || superLightColor,
-        borderWidth = width || borderSize,
+      const borderColor = bgColor || color || get('superLightColor'),
+        borderWidth = width || 1,
         borderStyle = 'solid';
 
       const style = {
@@ -670,9 +674,16 @@ class TabHeader extends Component<TabsProps, TabsState> {
     const { viewClass, theme: configTheme } = IconThemeProps;
     const defaultTheme = {
       [viewClass]: {
+        normal: {
+          color: mediumGreyColor,
+          fontSize: 14,
+        },
+        hover: {
+          color: darkGreyColor,
+        },
         disabled: {
-          cursor: 'not-allowed',
           color: disableTextColor,
+          cursor: 'not-allowed',
         },
       },
     };
@@ -739,7 +750,7 @@ class TabHeader extends Component<TabsProps, TabsState> {
     const { isDisabledToPrev, isDisabledToNext } = this.getIsAllowToMove();
 
     const prevPageThemeProps = deepMerge(
-      { themeConfig: { normal: { height: 31 } } },
+      { themeConfig: { normal: { height: 32 } } },
       this.props.getPartOfThemeProps('ArrowIcon')
     );
     const IconThemeProps = this.props.getPartOfThemeHocProps('ArrowIcon');
@@ -796,10 +807,26 @@ class TabHeader extends Component<TabsProps, TabsState> {
   getAddButton() {
     const { showAddBtn, themeProps, addIcon } = this.props;
     if (showAddBtn) {
-      const addBtnThemeProps = this.props.getPartOfThemeHocProps('AddButton');
+      const { theme: addBtnThemeProps, viewClass } = this.props.getPartOfThemeHocProps('AddButton');
+      const defaultIconTheme = {
+        [viewClass]: {
+          normal: {
+            color: mediumGreyColor,
+            fontSize: 12,
+          },
+          hover: {
+            color: darkGreyColor,
+          },
+          disabled: {
+            cursor: 'not-allowed',
+            color: disableTextColor,
+          },
+        },
+      };
+      const iconTheme = deepMerge(defaultIconTheme, addBtnThemeProps);
       return (
         <AddContainer themeProps={themeProps} onClick={this.onAddClick}>
-          <Icon iconClass={addIcon} {...addBtnThemeProps} singleTheme />
+          <Icon iconClass={addIcon} theme={iconTheme} viewClass={viewClass} singleTheme />
         </AddContainer>
       );
     }

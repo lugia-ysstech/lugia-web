@@ -15,14 +15,23 @@ import { ObjectUtils } from '@lugia/type-utils';
 
 import CSSComponent, { css, keyframes, StaticComponent } from '@lugia/theme-css-hoc';
 import ThemeHoc from '@lugia/theme-hoc';
-
+import get from '../css/theme-common-dict';
 import { deepMerge } from '@lugia/object-utils';
-import colorsFunc from '../css/stateColor';
 
 import { getBorder } from '@lugia/theme-utils';
+const superLightColor = '$lugia-dict.@lugia/lugia-web.superLightColor';
+const borderRadiusValue = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
+const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
+const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
+const mediumGreyColor = '$lugia-dict.@lugia/lugia-web.mediumGreyColor';
+const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
+const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
+const marginToSameElement = '$lugia-dict.@lugia/lugia-web.marginToSameElement';
 
-const { themeColor, defaultColor, disableTextColor, mediumGreyColor, darkGreyColor } = colorsFunc();
-
+const getTitleSelectColor = (isSelect: boolean) => {
+  return isSelect ? { color: themeColor } : {};
+};
 const SelectTab = CSSComponent({
   tag: 'div',
   className: 'SelectTabPan',
@@ -41,6 +50,7 @@ const SelectTab = CSSComponent({
       ['boxShadow'],
       ['textAlign'],
     ],
+    defaultTheme: {},
     getCSS: (theme: Object, themeProps: Object) => {
       const { color } = theme;
       const {
@@ -85,14 +95,12 @@ const SelectTab = CSSComponent({
         }
         return css`
           display: ${display};
-          ${textAlignStyle}
-          & > div::before {
+          ${textAlignStyle} & > div::before {
             content: '';
-            background: ${lineColor || color || themeColor};
+            background: ${lineColor || color || get('themeColor')};
             border-radius: 2px;
             position: absolute;
-            ${pos}
-            ${cssString}
+            ${pos} ${cssString};
           }
         `;
       }
@@ -101,8 +109,7 @@ const SelectTab = CSSComponent({
       }
       return css`
         display: ${display};
-        ${textAlignStyle}
-        ${position}
+        ${textAlignStyle} ${position};
       `;
     },
   },
@@ -124,7 +131,7 @@ const SelectTab = CSSComponent({
         }`;
       }
       return css`
-        ${cssString}
+        ${cssString};
       `;
     },
   },
@@ -184,9 +191,11 @@ const Title = CSSComponent({
   tag: 'div',
   className: 'TitleLine',
   normal: {
-    selectNames: [['height']],
+    selectNames: [['height'], ['color'], ['fontSize'], ['font']],
     defaultTheme: {
       height: 42,
+      color: darkGreyColor,
+      fontSize: 14,
     },
     getCSS: (theme: Object, themeProps: Object) => {
       const { textAlign } = theme;
@@ -208,8 +217,10 @@ const Title = CSSComponent({
     },
     getThemeMeta: (theme: Object, themeProps: Object) => {
       const { height } = theme;
+      const { propsConfig: { isSelect } = {} } = themeProps;
       return {
         lineHeight: height ? `${height}` : '3.4rem',
+        ...getTitleSelectColor(isSelect),
       };
     },
   },
@@ -237,28 +248,27 @@ const Title = CSSComponent({
       max-width: 100%;
     }
   `,
+  option: {
+    hover: true,
+  },
 });
 
 const CardTitle = CSSComponent({
   tag: 'div',
   className: 'TitleCard',
   normal: {
-    selectNames: [['height'], ['lineHeight']],
+    selectNames: [['height'], ['color'], ['fontSize'], ['font'], ['lineHeight']],
     defaultTheme: {
-      height: 31,
-      lineHeight: 31,
+      height: 32,
+      color: darkGreyColor,
+      lineHeight: 32,
     },
-    getStyle: (theme: Object, themeProps: Object) => {
-      const { height } = theme;
-      const { propsConfig: { tabType } = {} } = themeProps;
-      if (tabType === 'card') {
-        return {
-          lineHeight: height ? `${height}px` : '32px',
-          width: '100%',
-        };
-      }
+    getThemeMeta: (theme: Object, themeProps: Object) => {
+      const { propsConfig: { tabType, isSelect } = {} } = themeProps;
+      const getCardStyle = tabType === 'card' ? { width: '100%' } : {};
       return {
-        lineHeight: height ? `${height}px` : '32px',
+        ...getCardStyle,
+        ...getTitleSelectColor(isSelect),
       };
     },
   },
@@ -276,13 +286,17 @@ const CardTitle = CSSComponent({
   },
   css: css`
     position: relative;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     box-sizing: border-box;
     user-select: none;
     &:focus {
-      color: ${themeColor};
+      color: ${get('themeColor')};
     }
   `,
+  option: {
+    hover: true,
+  },
 });
 
 const ClearButtonContainer = CSSComponent({
@@ -370,6 +384,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
       disabled,
       showDeleteBtn,
       showDividerLine,
+      createEventChannel,
     } = this.props;
     const { TargetTab, themeProps } = this.getHTabPaneThemeProps(
       tabType,
@@ -383,6 +398,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     const suffixIconTheme = this.getIconTheme('SuffixIcon', isSelect);
     const isLineType = matchType(tabType, 'line');
 
+    const channel = createEventChannel(['hover']);
     const Target = (
       <TargetTab
         themeProps={themeProps}
@@ -393,31 +409,34 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
         tabPosition={tabPosition}
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
+        {...channel.provider}
       >
         {isLineType ? (
           <Title
+            lugiaConsumers={channel.consumer}
             className={'lineTitle'}
             themeProps={themeProps}
             tabType={tabType}
             isSelect={isSelect}
             disabled={disabled}
           >
-            {this.getTabIconContainer(icon, prefixIconTheme)}
+            {this.getTabIconContainer(icon, prefixIconTheme, channel)}
             {title}
-            {this.getTabIconContainer(suffixIcon, suffixIconTheme)}
+            {this.getTabIconContainer(suffixIcon, suffixIconTheme, channel)}
             {this.getClearButton()}
           </Title>
         ) : (
           <CardTitle
+            lugiaConsumers={channel.consumer}
             className={'cardTitle'}
             themeProps={themeProps}
             tabType={tabType}
             isSelect={isSelect}
             disabled={disabled}
           >
-            {this.getTabIconContainer(icon, prefixIconTheme)}
+            {this.getTabIconContainer(icon, prefixIconTheme, channel)}
             {title}
-            {this.getTabIconContainer(suffixIcon, suffixIconTheme)}
+            {this.getTabIconContainer(suffixIcon, suffixIconTheme, channel)}
           </CardTitle>
         )}
 
@@ -459,29 +478,28 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     });
     selectThemeProps = deepMerge(
       titleThemeProps,
-      { themeConfig: { normal: { color: themeColor } } },
+      { themeConfig: { normal: { color: get('themeColor') } } },
       selectThemeProps
     );
-    const baseDefaultTab = BaseTab;
     switch (tabType) {
       case 'card':
         const targetObj = {
           themeConfig: {
             normal: {
               border: getBorder(
-                { color: '#e8e8e8', width: 1, style: 'solid' },
+                { color: superLightColor, width: 1, style: 'solid' },
                 { directions: ['l', 'r', 't'] }
               ),
               borderRadius: {
-                topLeft: 4,
-                topRight: 4,
+                topLeft: borderRadiusValue,
+                topRight: borderRadiusValue,
               },
               margin: {
                 left: 4,
                 right: 4,
               },
               background: {
-                color: '#e8e8e8',
+                color: disableColor,
               },
             },
           },
@@ -491,16 +509,13 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
           themeConfig: {
             normal: {
               margin: {
-                left: 4,
-                right: 4,
+                left: borderRadiusValue,
+                right: borderRadiusValue,
               },
-              border: getBorder(
-                { color: '#e8e8e8', width: 1, style: 'solid' },
-                { directions: ['l', 'r', 't'] }
-              ),
+              border: getBorder(get('normalBorder'), { directions: ['l', 'r', 't'] }),
               borderRadius: {
-                topLeft: 4,
-                topRight: 4,
+                topLeft: borderRadiusValue,
+                topRight: borderRadiusValue,
               },
               background: { color: defaultColor },
             },
@@ -514,11 +529,11 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
             normal: {
               border: getBorder({ border: 'none' }),
               borderRadius: {
-                topLeft: 4,
-                topRight: 4,
+                topLeft: borderRadiusValue,
+                topRight: borderRadiusValue,
               },
               background: {
-                color: '#fff',
+                color: defaultColor,
               },
             },
           },
@@ -528,7 +543,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
       default:
         break;
     }
-    const TargetTab = isSelect ? SelectTab : baseDefaultTab;
+    const TargetTab = isSelect ? SelectTab : BaseTab;
     const themeProps = isSelect ? selectThemeProps : titleThemeProps;
     return { TargetTab, themeProps };
   }
@@ -545,14 +560,25 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     const themeObj = {
       [viewClass]: {
         normal: {
+          color: darkGreyColor,
+          fontSize: 14,
           getThemeMeta: (theme: Object, themeProps: Object) => {
-            return { margin: { left: suffixIcon ? 10 : 0, right: icon ? 10 : 0 } };
+            const { propsConfig: { isSelect } = {} } = themeProps;
+            return {
+              margin: {
+                left: suffixIcon ? marginToSameElement : 0,
+                right: icon ? marginToSameElement : 0,
+              },
+              ...getTitleSelectColor(isSelect),
+            };
           },
         },
+        hover: {
+          color: themeColor,
+        },
         disabled: {
-          getThemeMeta: (theme: Object, themeProps: Object) => {
-            return { cursor: 'not-allowed', color: disableTextColor };
-          },
+          color: disableTextColor,
+          cursor: 'not-allowed',
         },
       },
     };
@@ -580,16 +606,17 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     if (!disabled) onClick && onClick({ index, activityValue: keyVal });
   };
 
-  getTabIconContainer(icon: ?string, themeProps?: Object = {}) {
-    return icon ? this.getIcon(icon, themeProps) : null;
+  getTabIconContainer(icon: ?string, themeProps?: Object = {}, channel: any) {
+    return icon ? this.getIcon(icon, themeProps, channel) : null;
   }
-  getIcon(icon: string, themeProps: Object) {
-    const { isSelect, disabled } = this.props;
+  getIcon(icon: string, themeProps: Object, channel: any) {
+    const { disabled, isSelect } = this.props;
     if (ObjectUtils.isString(icon)) {
       return (
         <Icon
+          lugiaConsumers={channel.consumer}
+          propsConfig={{ isSelect }}
           {...themeProps}
-          isSelect={isSelect}
           iconClass={icon}
           disabled={disabled}
           singleTheme
@@ -609,7 +636,15 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
     const themeObj = {
       [viewClass]: {
         Divider: {
-          normal: deepMerge({ [props]: size }, normal),
+          normal: deepMerge(
+            {
+              background: {
+                color: get('superLightColor'),
+              },
+              [props]: size,
+            },
+            normal
+          ),
         },
       },
     };
@@ -629,6 +664,7 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
       [viewClass]: {
         normal: {
           color: mediumGreyColor,
+          fontSize: 12,
         },
         hover: {
           color: darkGreyColor,
