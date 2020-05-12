@@ -11,7 +11,7 @@ import SwitchPanel from '../switchPanel/SwitchPanel';
 import { getValueFromWeekToDate } from '../utils/differUtils';
 import { getformatSymbol, getNewProps } from '../utils/utils';
 import { formatValueIsValid, modeStyle, getOpenProps } from '../utils/booleanUtils';
-import { PanelWrap, TrrigerWrap, Box } from '../styled/styled';
+import { PanelWrap, TriggerWrap, Box } from '../styled/styled';
 import Theme from '../../theme';
 import Widget from '../../consts/index';
 import SwitchPanelMode from '../mode';
@@ -180,7 +180,7 @@ class DateInput extends Component<TypeProps, TypeState> {
         }}
       >
         <Box themeProps={inputContainProps}>
-          <TrrigerWrap
+          <TriggerWrap
             liquidLayout={liquidLayout}
             themePass
             createPortal={liquidLayout ? false : createPortal}
@@ -245,7 +245,7 @@ class DateInput extends Component<TypeProps, TypeState> {
               help={help}
               size={size}
             />
-          </TrrigerWrap>
+          </TriggerWrap>
         </Box>
       </Theme>
     );

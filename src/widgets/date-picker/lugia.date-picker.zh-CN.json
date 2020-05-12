@@ -94,8 +94,7 @@
     "open": {
       "type": "boolean",
       "desc": "控制面板是展开",
-      "defaultValue": false,
-      "propsDefaultValue": true
+      "propsDefaultValue": false
     },
     "liquidLayout": {
       "type": "boolean",

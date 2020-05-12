@@ -30,7 +30,7 @@ export const Box = CSSComponent({
     vertical-align: text-top;
   `,
 });
-export const TrrigerWrap = styled(Trigger)`
+export const TriggerWrap = styled(Trigger)`
   display: inline-block;
   ${props => (props.liquidLayout ? 'position:unset !important;' : 'position:absolute;')};
 `;

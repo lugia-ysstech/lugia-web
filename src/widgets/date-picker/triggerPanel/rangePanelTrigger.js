@@ -5,7 +5,7 @@ import SwitchPanel from '../switchPanel/SwitchPanel';
 import RangeInput from '../panel/RangeInput';
 import PageFooter from '../panel/PageFooter';
 import { getDerivedForInput } from '../utils/getDerived';
-import { RangeWrap, RangeWrapInner, TrrigerWrap, Box } from '../styled/styled';
+import { RangeWrap, RangeWrapInner, TriggerWrap, Box } from '../styled/styled';
 import SwitchPanelMode from '../mode';
 import { differMonthAndYear, getIndexInRange, getCurrentPageDates } from '../utils/differUtils';
 import { formatValueIsValid, getIsSame, getOpenProps } from '../utils/booleanUtils';
@@ -462,7 +462,7 @@ class Range extends Component<TypeProps, TypeState> {
     );
     return (
       <Box themeProps={inputContainProps}>
-        <TrrigerWrap
+        <TriggerWrap
           liquidLayout={liquidLayout}
           themePass
           createPortal={liquidLayout ? false : createPortal}
@@ -537,7 +537,7 @@ class Range extends Component<TypeProps, TypeState> {
             isClear={isClear}
             themeProps={inputContainProps}
           />
-        </TrrigerWrap>
+        </TriggerWrap>
       </Box>
     );
   }
