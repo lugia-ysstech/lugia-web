@@ -13,8 +13,7 @@ import {
   LoadingFatherBox,
 } from './styled';
 import Icon from '../icon/index';
-
-const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
+import get from '../css/theme-common-dict';
 type PropsCheck = {
   width?: number,
   color?: string,
@@ -45,7 +44,7 @@ class Loading extends React.Component<PropsCheck, StateCheck> {
     let { color, width } = theme;
     width = width ? width : size === 'large' ? 100 : size === 'small' ? 36 : 64;
     if (!color) {
-      color = themeColor;
+      color = get('themeColor');
     }
     scale = scale === true;
     return {
