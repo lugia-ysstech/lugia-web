@@ -24,6 +24,7 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
   -ms-flex: 1;
   flex: 1;
   cursor: text;
+  background-color: #ffffff;
   border-top-left-radius: 0.4rem;
   border-top-right-radius: 0.4rem;
   border-bottom-right-radius: 0.4rem;
@@ -63,6 +64,7 @@ exports[`Input props: getTheme: width:100,margin:10, 1`] = `
   outline: none;
   min-width: 3rem;
   width: 100%;
+  background-color: #ffffff;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -171,6 +173,7 @@ exports[`Input props: null 1`] = `
   -ms-flex: 1;
   flex: 1;
   cursor: text;
+  background-color: #ffffff;
   border-top-left-radius: 0.4rem;
   border-top-right-radius: 0.4rem;
   border-bottom-right-radius: 0.4rem;
@@ -210,6 +213,7 @@ exports[`Input props: null 1`] = `
   outline: none;
   min-width: 3rem;
   width: 100%;
+  background-color: #ffffff;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -313,6 +317,7 @@ exports[`Input props: placeholder  1`] = `
   -ms-flex: 1;
   flex: 1;
   cursor: text;
+  background-color: #ffffff;
   border-top-left-radius: 0.4rem;
   border-top-right-radius: 0.4rem;
   border-bottom-right-radius: 0.4rem;
@@ -352,6 +357,7 @@ exports[`Input props: placeholder  1`] = `
   outline: none;
   min-width: 3rem;
   width: 100%;
+  background-color: #ffffff;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -456,6 +462,7 @@ exports[`Input props: placeholder  2`] = `
   -ms-flex: 1;
   flex: 1;
   cursor: text;
+  background-color: #ffffff;
   border-top-left-radius: 0.4rem;
   border-top-right-radius: 0.4rem;
   border-bottom-right-radius: 0.4rem;
@@ -495,6 +502,7 @@ exports[`Input props: placeholder  2`] = `
   outline: none;
   min-width: 3rem;
   width: 100%;
+  background-color: #ffffff;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -599,6 +607,7 @@ exports[`Input props: size 1`] = `
   -ms-flex: 1;
   flex: 1;
   cursor: text;
+  background-color: #ffffff;
   border-top-left-radius: 0.4rem;
   border-top-right-radius: 0.4rem;
   border-bottom-right-radius: 0.4rem;
@@ -638,6 +647,7 @@ exports[`Input props: size 1`] = `
   outline: none;
   min-width: 3rem;
   width: 100%;
+  background-color: #ffffff;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -741,6 +751,7 @@ exports[`Input props: size 2`] = `
   -ms-flex: 1;
   flex: 1;
   cursor: text;
+  background-color: #ffffff;
   border-top-left-radius: 0.4rem;
   border-top-right-radius: 0.4rem;
   border-bottom-right-radius: 0.4rem;
@@ -780,6 +791,7 @@ exports[`Input props: size 2`] = `
   outline: none;
   min-width: 3rem;
   width: 100%;
+  background-color: #ffffff;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
