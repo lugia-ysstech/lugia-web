@@ -105,8 +105,10 @@ export default ThemeProvider(
         themeProps,
         zebraStripe,
         count,
+        icon,
       } = this.props;
       const config = {};
+      const iconType = icon || 'lugia-icon-direction_caret_right';
       if (!showArrow) {
         config.enter = this.changeHover(true);
         config.leave = this.changeHover(false);
@@ -136,7 +138,7 @@ export default ThemeProvider(
             >
               {showArrow || hover ? (
                 <Icon
-                  iconClass="lugia-icon-direction_caret_right"
+                  iconClass={iconType}
                   {...this.getIconTheme()}
                   {...dispatchEvent(['hover', 'disabled'], 'f2c')}
                   singleTheme
