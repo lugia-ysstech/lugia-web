@@ -29,9 +29,6 @@ const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
 const marginToSameElement = '$lugia-dict.@lugia/lugia-web.marginToSameElement';
 
-const getTitleSelectColor = (isSelect: boolean) => {
-  return isSelect ? { color: themeColor } : {};
-};
 const SelectTab = CSSComponent({
   tag: 'div',
   className: 'SelectTabPan',
@@ -50,7 +47,10 @@ const SelectTab = CSSComponent({
       ['boxShadow'],
       ['textAlign'],
     ],
-    defaultTheme: {},
+    defaultTheme: {
+      color: darkGreyColor,
+      fontSize: 14,
+    },
     getCSS: (theme: Object, themeProps: Object) => {
       const { color } = theme;
       const {
@@ -191,11 +191,9 @@ const Title = CSSComponent({
   tag: 'div',
   className: 'TitleLine',
   normal: {
-    selectNames: [['height'], ['color'], ['fontSize'], ['font']],
+    selectNames: [['height']],
     defaultTheme: {
       height: 42,
-      color: darkGreyColor,
-      fontSize: 14,
     },
     getCSS: (theme: Object, themeProps: Object) => {
       const { textAlign } = theme;
@@ -217,10 +215,8 @@ const Title = CSSComponent({
     },
     getThemeMeta: (theme: Object, themeProps: Object) => {
       const { height } = theme;
-      const { propsConfig: { isSelect } = {} } = themeProps;
       return {
         lineHeight: height ? `${height}` : '3.4rem',
-        ...getTitleSelectColor(isSelect),
       };
     },
   },
@@ -257,18 +253,22 @@ const CardTitle = CSSComponent({
   tag: 'div',
   className: 'TitleCard',
   normal: {
-    selectNames: [['height'], ['color'], ['fontSize'], ['font'], ['lineHeight']],
+    selectNames: [['height'], ['lineHeight']],
     defaultTheme: {
       height: 32,
-      color: darkGreyColor,
       lineHeight: 32,
     },
     getThemeMeta: (theme: Object, themeProps: Object) => {
-      const { propsConfig: { tabType, isSelect } = {} } = themeProps;
-      const getCardStyle = tabType === 'card' ? { width: '100%' } : {};
+      const { height } = theme;
+      const { propsConfig: { tabType } = {} } = themeProps;
+      if (tabType === 'card') {
+        return {
+          lineHeight: height ? `${height}px` : '32px',
+          width: '100%',
+        };
+      }
       return {
-        ...getCardStyle,
-        ...getTitleSelectColor(isSelect),
+        lineHeight: height ? `${height}px` : '32px',
       };
     },
   },
@@ -564,12 +564,13 @@ class Tabpane extends Component<TabpaneProps, TabpaneState> {
           fontSize: 14,
           getThemeMeta: (theme: Object, themeProps: Object) => {
             const { propsConfig: { isSelect } = {} } = themeProps;
+            const titleSelectColor = isSelect ? { color: themeColor } : {};
             return {
               margin: {
                 left: suffixIcon ? marginToSameElement : 0,
                 right: icon ? marginToSameElement : 0,
               },
-              ...getTitleSelectColor(isSelect),
+              ...titleSelectColor,
             };
           },
         },
