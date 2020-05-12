@@ -127,7 +127,7 @@ export default ThemeProvider(
     }
 
     static getDerivedStateFromProps(props) {
-      const { data, selectOptions = {}, rowKey = 'key' } = props;
+      const { data = [], selectOptions = {}, rowKey = 'key' } = props;
       if ('selectRowKeys' in selectOptions) {
         const {
           selectRowKeys = [],
@@ -221,6 +221,43 @@ export default ThemeProvider(
       });
     };
 
+    getValidKey = () => {
+      const selectedRecords = [];
+      const validKeys = [];
+      const disabledSelectedKeys = [];
+      const validRecords = [];
+      const disabledSelectedRecords = [];
+      const { data = [], rowKey: cusRowKey = 'key', selectOptions = {} } = this.props;
+      const {
+        setCheckboxProps = (record: Object) => {
+          return {};
+        },
+      } = selectOptions;
+      const { selectRowKeys: stateSelectRowKeys } = this.state;
+      data.forEach(record => {
+        const rowKey = record[cusRowKey];
+        const select = stateSelectRowKeys.includes(rowKey);
+        const checkboxProps = setCheckboxProps(record) || {};
+        if (select) {
+          selectedRecords.push(record);
+          if (checkboxProps.disabled) {
+            disabledSelectedKeys.push(rowKey);
+            disabledSelectedRecords.push(record);
+          }
+        }
+        if (!checkboxProps.disabled) {
+          validKeys.push(rowKey);
+          validRecords.push(record);
+        }
+      });
+
+      this.selectedRecords = selectedRecords;
+      this.validKeys = validKeys;
+      this.disabledSelectedKeys = disabledSelectedKeys;
+      this.validRecords = validRecords;
+      this.disabledSelectedRecords = disabledSelectedRecords;
+    };
+
     render() {
       const {
         children,
@@ -273,6 +310,7 @@ export default ThemeProvider(
       }
       const theColumns = [...columns];
       if ('selectOptions' in this.props) {
+        this.getValidKey();
         const {
           setCheckboxProps = (record: Object) => {
             return {};
@@ -296,18 +334,6 @@ export default ThemeProvider(
             const rowKey = record[cusRowKey];
             const select = stateSelectRowKeys.includes(rowKey);
             const checkboxProps = setCheckboxProps(record) || {};
-
-            if (select) {
-              this.selectedRecords.push(record);
-              if (checkboxProps.disabled) {
-                this.disabledSelectedKeys.push(rowKey);
-                this.disabledSelectedRecords.push(record);
-              }
-            }
-            if (!checkboxProps.disabled) {
-              this.validKeys.push(rowKey);
-              this.validRecords.push(record);
-            }
 
             return (
               <div style={{ fontSize: 0 }}>
