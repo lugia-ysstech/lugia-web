@@ -22,6 +22,7 @@ import Support from '../common/FormFieldWidgetSupport';
 import PlaceContainer from '../common/PlaceContainer';
 import { DefaultHelp } from '../css/input';
 import { DefaultHeight } from '../css/menu';
+import { addMouseEvent } from '@lugia/theme-hoc';
 import {
   FontSize,
   OutContainer,
@@ -303,6 +304,7 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
         tabIndex={0}
         onFocus={this.props.onFocus}
         onBlur={this.props.onBlur}
+        {...addMouseEvent(this)}
       >
         <HiddenList>
           <List>{font}</List>
@@ -331,12 +333,17 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
   };
 
   getIconTheme(themeName: string) {
-    const { getPartOfThemeConfig } = this.props;
+    const { getPartOfThemeConfig, getPartOfThemeHocProps } = this.props;
     const colorName = themeName === 'ClearIcon' ? 'darkGreyColor' : 'themeColor';
     const IconTheme = getPartOfThemeConfig(themeName);
     const defaultIcon = {
       normal: {
         color: get('mediumGreyColor'),
+        getCSS: () => {
+          return `
+          transition: all 0.3s
+          `;
+        },
       },
       hover: {
         color: get(colorName),
@@ -345,33 +352,54 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
         color: get('disableTextColor'),
       },
     };
-    IconTheme.themeConfig = deepMerge(defaultIcon, IconTheme);
-    const newClearIconTheme = {
-      [Widget.Icon]: {
-        Icon: IconTheme.themeConfig,
-      },
+
+    const { theme, viewClass } = getPartOfThemeHocProps(colorName);
+    return {
+      viewClass,
+      theme: deepMerge(
+        {
+          [viewClass]: { ...deepMerge(defaultIcon, IconTheme) },
+        },
+        theme
+      ),
     };
-    return newClearIconTheme;
   }
 
   getClearButton() {
-    const { canClear, pullIconClass, clearIconClass, disabled, isShowClearButton } = this.props;
+    const {
+      canClear,
+      pullIconClass,
+      clearIconClass,
+      disabled,
+      isShowClearButton,
+      dispatchEvent,
+    } = this.props;
     if (!isShowClearButton) {
       return null;
     }
-    const theme =
+    const { theme, viewClass } =
       this.isEmpty() || !canClear
         ? this.getIconTheme('SwitchIcon')
         : this.getIconTheme('ClearIcon');
     const Icon =
       this.isEmpty() || !canClear ? (
-        <CommonIcon theme={theme} disabled={disabled} iconClass={pullIconClass} />
+        <CommonIcon
+          theme={theme}
+          viewClass={viewClass}
+          singleTheme
+          disabled={disabled}
+          iconClass={pullIconClass}
+          {...dispatchEvent(['hover', 'disabled'], 'f2c')}
+        />
       ) : (
         <CommonIcon
           theme={theme}
+          viewClass={viewClass}
+          singleTheme
           disabled={disabled}
           iconClass={clearIconClass}
           onClick={this.onClear}
+          {...dispatchEvent(['hover', 'disabled'], 'f2c')}
         />
       );
     return Icon;
