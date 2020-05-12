@@ -15,8 +15,10 @@ import { getAttributeFromObject } from '../common/ObjectUtils.js';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import ThemeHoc from '@lugia/theme-hoc';
 import { deepMerge } from '@lugia/object-utils';
-import colorsFunc from '../css/stateColor';
-const { superLightColor } = colorsFunc();
+import { getBorderRadius } from '@lugia/theme-utils';
+
+const borderRadiusValue = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
+const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
 
 const TabContentContainer = CSSComponent({
   tag: 'div',
@@ -34,6 +36,9 @@ const TabContentContainer = CSSComponent({
       ['font'],
       ['color'],
     ],
+    defaultTheme: {
+      borderRadius: getBorderRadius(borderRadiusValue),
+    },
     getCSS: (theme: Object, themeProps: Object) => {
       const {
         propsConfig: { tabPosition },
@@ -102,11 +107,6 @@ const WindowContainer = CSSComponent({
       ['width'],
       ['height'],
     ],
-    defaultTheme: {
-      background: {
-        color: superLightColor,
-      },
-    },
   },
   disabled: {
     selectNames: [],
@@ -307,7 +307,7 @@ class TabsBox extends Component<TabsProps, TabsState> {
                 bottom: 10,
               },
               background: {
-                color: superLightColor,
+                color: disableColor,
               },
             },
           },
