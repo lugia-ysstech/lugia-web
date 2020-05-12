@@ -163,8 +163,8 @@ export const SingleInnerContainer = CSSComponent({
     height: 100%;
     position: relative;
     user-select: none;
-    padding-left: ${px2remcss(10)};
-    padding-right: ${px2remcss(10)};
+    padding-left: ${px2remcss(get('padding'))};
+    padding-right: ${px2remcss(get('padding'))};
     display: flex;
     align-items: center;
 

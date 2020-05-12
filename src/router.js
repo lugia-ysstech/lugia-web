@@ -223,6 +223,9 @@ export default {
   '/treeselect': {
     render: async () => import('./widgets/tree-select/demo'),
   },
+  '/p-treeSelect': {
+    render: async () => import('./widgets/tree-select/p-demo'),
+  },
   '/upload': {
     render: async () => import('./widgets/upload/demo'),
   },
