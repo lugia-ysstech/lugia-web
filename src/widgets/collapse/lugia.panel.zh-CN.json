@@ -29,6 +29,10 @@
       "type": "boolean",
       "desc": "Panel面板是否展示箭头",
       "defaultValue": true
+    },
+    "icon": {
+      "type": "string",
+      "desc": "设置按钮前置图标类型"
     }
   },
   "events": {
