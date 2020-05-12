@@ -23,7 +23,8 @@ export function getPublicColor() {
     defaultColor: get('defaultColor'),
   };
 }
-const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
+export const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
+const themeActiveColor = '$lugia-dict.@lugia/lugia-web.themeActiveColor';
 export const fontSize = '$lugia-dict.@lugia/lugia-web.sFontSize';
 
 type shapeType = 'basic' | 'round';
@@ -76,10 +77,11 @@ const getPrimaryCSS = (params: Object) => {
 
 const getBasicCSS = (params: Object) => {
   const { color = getPublicColor().darkGreyColor, background = '' } = params;
+  const { width, style, color: borderColor } = get('normalBorder');
   return {
     color,
     background,
-    border: `1px solid ${get('borderColor')}`,
+    border: `${width}px ${style} ${borderColor}`,
   };
 };
 
@@ -290,7 +292,7 @@ const getOptionalCSS = (checked: Boolean, params: Object) => {
     ? normalColor
     : checked
     ? getPublicColor().defaultColor
-    : getPublicColor().darkGreyColor;
+    : getPublicColor().blackColor;
   const backgroundColor = background.color ? background.color : defaultBackgroundColor;
   return {
     color,
@@ -326,7 +328,6 @@ export const OptionalWrap = CSSComponent({
       const { propsConfig } = themeProps;
       const { shape, closable, checked } = propsConfig;
       const radius = getRadius(shape, height);
-
       const { color, background, border } = getOptionalCSS(checked, {
         color: themeColor,
         background: themeBgColor,
@@ -366,7 +367,7 @@ export const OptionalWrap = CSSComponent({
         `;
     },
   },
-  focus: {
+  active: {
     selectNames: [
       ['color'],
       ['background'],
@@ -377,9 +378,9 @@ export const OptionalWrap = CSSComponent({
       ['font'],
     ],
     getStyle: (themeMeta, themeProps) => {
-      const { background = {} } = themeMeta;
-      const backgroundColor = background.color ? background.color : themeColor;
-      return { backgroundColor };
+      const { color: activeColor } = themeMeta;
+      const color = activeColor ? activeColor : themeActiveColor;
+      return { color };
     },
   },
   css: css`
@@ -394,7 +395,7 @@ export const OptionalWrap = CSSComponent({
     vertical-align: top;
     transition: all 0.15s ease-in;
   `,
-  option: { hover: true, focus: true },
+  option: { hover: true, active: true },
 });
 
 export const FlexBox = StaticComponent({

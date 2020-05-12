@@ -92,7 +92,6 @@
             ["font"]
           ],
           "active": [],
-          "clicked": [],
           "disabled": []
         },
 
@@ -102,7 +101,6 @@
           "normal": [["font"], ["color"], ["margin"]],
           "hover": [["font"], ["color"]],
           "active": [],
-          "clicked": [],
           "disabled": []
         }
       }
@@ -150,7 +148,6 @@
             ["opacity"],
             ["font"]
           ],
-          "clicked": [],
           "disabled": []
         },
 
@@ -188,7 +185,6 @@
             ["font"],
             ["borderRadius"]
           ],
-          "clicked": [],
           "disabled": []
         }
       }
@@ -222,7 +218,6 @@
         ["font"]
       ],
       "active": [],
-      "clicked": [],
       "disabled": []
     }
   }
