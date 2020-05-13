@@ -45,70 +45,6 @@ const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
 const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
 const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 
-export const PanelWrap = CSSComponent({
-  tag: 'div',
-  className: 'PanelWrap',
-  css: css`
-    box-sizing: border-box;
-    background: ${get('defaultColor')};
-    border-color: ${get('borderColor')};
-    border-style: solid;
-    transition: all 0.3s;
-  `,
-  normal: {
-    selectNames: [['boxShadow'], ['borderRadius']],
-    getThemeMeta(themeMeta, themeProps) {
-      const { propsConfig = {} } = themeProps;
-      const { zebraStripe, open } = propsConfig;
-      const boxShadow = zebraStripe && open ? get('normalBoxShadow') : null;
-      const borderRadius = zebraStripe ? getBorderRadius(get('borderRadiusValue')) : null;
-      return { boxShadow, borderRadius };
-    },
-    getCSS(themeMeta, themeProps) {
-      const { propsConfig = {} } = themeProps;
-      const { open, zebraStripe } = propsConfig;
-      let borderWidth = 1;
-      zebraStripe && (borderWidth = 0);
-      if (zebraStripe && open) {
-        return `
-         position: relative;
-         z-index: 99;
-         border-width: 0 0 ${borderWidth}px;
-       `;
-      }
-      return `
-        border-width: 0 0 ${borderWidth}px;
-      `;
-    },
-  },
-  hover: {
-    getCSS(themeMeta, themeProps) {
-      const { propsConfig = {}, themeConfig = {} } = themeProps;
-      const { hover } = propsConfig;
-      const { width } = themeMeta;
-      const { normal = {} } = themeConfig;
-      const theWidth = width || normal.width;
-      let widthStyle;
-      if (hover) {
-        if (theWidth) {
-          if (typeof theWidth === 'number') {
-            widthStyle = px2remcss(theWidth + 24);
-          } else {
-            widthStyle = `calc(${theWidth} + 24px)`;
-          }
-        } else {
-          widthStyle = 'calc(100% + 24px)';
-        }
-
-        return `
-        width: ${widthStyle} !important;
-        transform: translateX(-24px);
-        `;
-      }
-    },
-  },
-});
-
 const getZebraStripeColor = index => {
   return index % 2 === 0 ? '#F8F8F8' : '#fff';
 };
@@ -337,10 +273,63 @@ export const Wrap = CSSComponent({
   tag: 'div',
   className: 'WrapPanel',
   css: css`
-    transition: all 0.2s;
     font-size: ${px2remcss(14)};
+    box-sizing: border-box;
+    background: ${get('defaultColor')};
+    border-color: ${get('borderColor')};
+    border-style: solid;
+    transition: all 0.3s;
   `,
   normal: {
-    selectNames: [['width']],
+    selectNames: [['boxShadow'], ['borderRadius'], ['width']],
+    getThemeMeta(themeMeta, themeProps) {
+      const { propsConfig = {} } = themeProps;
+      const { zebraStripe, open } = propsConfig;
+      const boxShadow = zebraStripe && open ? get('normalBoxShadow') : null;
+      const borderRadius = zebraStripe ? getBorderRadius(get('borderRadiusValue')) : null;
+      return { boxShadow, borderRadius };
+    },
+    getCSS(themeMeta, themeProps) {
+      const { propsConfig = {} } = themeProps;
+      const { open, zebraStripe } = propsConfig;
+      let borderWidth = 1;
+      zebraStripe && (borderWidth = 0);
+      if (zebraStripe && open) {
+        return `
+         position: relative;
+         z-index: 99;
+         border-width: 0 0 ${borderWidth}px;
+       `;
+      }
+      return `
+        border-width: 0 0 ${borderWidth}px;
+      `;
+    },
+  },
+  hover: {
+    getCSS(themeMeta, themeProps) {
+      const { propsConfig = {}, themeConfig = {} } = themeProps;
+      const { hover } = propsConfig;
+      const { width } = themeMeta;
+      const { normal = {} } = themeConfig;
+      const theWidth = width || normal.width;
+      let widthStyle;
+      if (hover) {
+        if (theWidth) {
+          if (typeof theWidth === 'number') {
+            widthStyle = px2remcss(theWidth + 24);
+          } else {
+            widthStyle = `calc(${theWidth} + 24px)`;
+          }
+        } else {
+          widthStyle = 'calc(100% + 24px)';
+        }
+
+        return `
+        width: ${widthStyle} !important;
+        transform: translateX(-24px);
+        `;
+      }
+    },
   },
 });
