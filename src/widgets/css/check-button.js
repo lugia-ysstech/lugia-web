@@ -62,7 +62,7 @@ const getSizeCSS = (props: PropsType): string => {
   return `
     height: ${em(get(height))};
     line-height: ${em(get(height) - 2)};
-    font-size: ${em(get(fontSize))}
+    font-size: ${em(fontSize)}
   `;
 };
 
