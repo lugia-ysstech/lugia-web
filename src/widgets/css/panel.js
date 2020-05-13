@@ -110,6 +110,9 @@ export const PanelWrap = CSSComponent({
   },
 });
 
+const getZebraStripeColor = index => {
+  return index % 2 === 0 ? '#F8F8F8' : '#fff';
+};
 export const PanelHeader = CSSComponent({
   tag: 'div',
   className: 'PanelHeader',
@@ -342,7 +345,3 @@ export const Wrap = CSSComponent({
     selectNames: [['width']],
   },
 });
-
-const getZebraStripeColor = index => {
-  return index % 2 === 0 ? '#F8F8F8' : '#fff';
-};
