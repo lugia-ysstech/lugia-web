@@ -15,7 +15,7 @@ import KeyBoardEventAdaptor from '../common/KeyBoardEventAdaptor';
 import CSSComponent, { css, getBorderRadius } from '../theme/CSSProvider';
 import { units } from '@lugia/css';
 import { deepMerge } from '@lugia/object-utils';
-
+import get from '../css/theme-common-dict';
 const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
 const borderRadiusValue = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
 const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
@@ -99,7 +99,7 @@ const BaseAvatar = CSSComponent({
       const {
         propsConfig: { size, shape },
       } = themeProps;
-      const theBorderRadius = shape === 'circle' ? '50%' : borderRadiusValue;
+      const theBorderRadius = shape === 'circle' ? '50%' : get('borderRadiusValue');
       return `border-radius:${theBorderRadius};
       line-height: ${px2remcss(getDefaultSize(size))};
       min-width: ${px2remcss(24)};
