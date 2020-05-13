@@ -11,7 +11,6 @@ import type { ThemeType } from '@lugia/lugia-web';
 import get from './theme-common-dict';
 import { getBorderRadius } from '@lugia/theme-utils';
 
-const FontSize = 1.4;
 type BasicPropsType = {
   disabled?: boolean,
   open: boolean,
@@ -119,7 +118,7 @@ export const PanelHeader = CSSComponent({
   css: css`
     box-sizing: border-box;
     position: relative;
-    font-size: ${FontSize}rem;
+    font-size: ${px2remcss(14)};
     cursor: ${(props: CSSProps) => (props.disabled ? 'not-allowed' : 'pointer')};
     line-height: 1;
     user-select: none;
@@ -339,7 +338,7 @@ export const Wrap = CSSComponent({
   className: 'WrapPanel',
   css: css`
     transition: all 0.2s;
-    font-size: ${FontSize}rem;
+    font-size: ${px2remcss(14)};
   `,
   normal: {
     selectNames: [['width']],
