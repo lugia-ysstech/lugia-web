@@ -136,7 +136,7 @@ export const Icons: Object = styled(Icon)`
   font-size: ${em(20)};
   line-height: ${leftIconEM(22)};
   top: ${leftIconEM(26)};
-  left: ${leftIconEM(16)};
+  left: ${leftIconEM(20)};
   cursor: default;
   color: ${props => (props.iconColor ? get(props.iconColor) : get('themeColor'))};
 `;
