@@ -55,6 +55,9 @@ export default {
   '/cascader': {
     render: async () => import('./widgets/cascader/demo'),
   },
+  '/p-cascader': {
+    render: async () => import('./widgets/cascader/p-demo'),
+  },
 
   '/checkbox': {
     render: async () => {

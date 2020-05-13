@@ -125,6 +125,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
           onPopupVisibleChange={this.onPopupVisibleChange}
         >
           <InputTag
+            menuVisible={popupVisible}
             onClick={this.handleClickInputTag}
             value={inputValue}
             displayValue={inputValue}
@@ -188,6 +189,7 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
         popupVisible={popupVisible}
         onChange={this.onChange}
         handleIsInMenu={this.handleIsInMenu}
+        checkedCSS={'background'}
         data={data}
         displayField={displayField}
         valueField={valueField}
