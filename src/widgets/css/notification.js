@@ -121,8 +121,8 @@ export const CloseIcon: Object = styled(Icon)`
 `;
 export const CloseIconWrap = styled.div`
   position: absolute;
-  right: 16px;
-  top: 9.5px;
+  right: ${em(16)};
+  top: ${em(9.5)};
   color: ${get('mediumGreyColor')};
   outline: none;
   cursor: pointer;
@@ -136,7 +136,7 @@ export const Icons: Object = styled(Icon)`
   font-size: ${em(20)};
   line-height: ${leftIconEM(22)};
   top: ${leftIconEM(26)};
-  left: 16px;
+  left: ${leftIconEM(16)};
   cursor: default;
   color: ${props => (props.iconColor ? get(props.iconColor) : get('themeColor'))};
 `;
