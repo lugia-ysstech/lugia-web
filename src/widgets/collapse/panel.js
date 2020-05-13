@@ -16,7 +16,6 @@ import {
   PanelContent,
   PanelContentWrap,
   PanelHeader,
-  PanelWrap,
   Wrap,
   getIconTransform,
 } from '../css/panel';
@@ -115,7 +114,7 @@ export default ThemeProvider(
       }
       const partProps = { showArrow, zebraStripe, count, open };
 
-      const panelWrapTheme = getPartOfThemeProps('PanelWrap', {
+      const panelContainerTheme = getPartOfThemeProps('Container', {
         props: { hover, ...partProps },
       });
       const panelHeaderTheme = getPartOfThemeProps('PanelHeader', {
@@ -128,36 +127,34 @@ export default ThemeProvider(
         props: { hasChildren: !!children, ...partProps },
       });
       return (
-        <Wrap {...addMouseEvent(this, config)} themeProps={getPartOfThemeProps('Container')}>
-          <PanelWrap themeProps={panelWrapTheme}>
-            <PanelHeader
-              disabled={disabled}
-              themeProps={panelHeaderTheme}
-              onClick={this.handlePanelClick}
-              ref={(node: any) => (this.header = node)}
-            >
-              {showArrow || hover ? (
-                <Icon
-                  iconClass={iconType}
-                  {...this.getIconTheme()}
-                  {...dispatchEvent(['hover', 'disabled'], 'f2c')}
-                  singleTheme
-                  disabled={disabled}
-                />
-              ) : null}
-              <PanelHeaderText themeProps={panelHeaderTextTheme}>{title}</PanelHeaderText>
-            </PanelHeader>
-            <PanelContentWrap
-              ref={(node: any) => (this.panel = node)}
-              open={open}
-              opening={opening}
-              closing={closing}
-              height={this.height}
-              themeProps={themeProps}
-            >
-              <PanelContent themeProps={panelContentTheme}>{children}</PanelContent>
-            </PanelContentWrap>
-          </PanelWrap>
+        <Wrap {...addMouseEvent(this, config)} themeProps={panelContainerTheme}>
+          <PanelHeader
+            disabled={disabled}
+            themeProps={panelHeaderTheme}
+            onClick={this.handlePanelClick}
+            ref={(node: any) => (this.header = node)}
+          >
+            {showArrow || hover ? (
+              <Icon
+                iconClass={iconType}
+                {...this.getIconTheme()}
+                {...dispatchEvent(['hover', 'disabled'], 'f2c')}
+                singleTheme
+                disabled={disabled}
+              />
+            ) : null}
+            <PanelHeaderText themeProps={panelHeaderTextTheme}>{title}</PanelHeaderText>
+          </PanelHeader>
+          <PanelContentWrap
+            ref={(node: any) => (this.panel = node)}
+            open={open}
+            opening={opening}
+            closing={closing}
+            height={this.height}
+            themeProps={themeProps}
+          >
+            <PanelContent themeProps={panelContentTheme}>{children}</PanelContent>
+          </PanelContentWrap>
         </Wrap>
       );
     }
