@@ -76,6 +76,7 @@ const AvatarWrapper = CSSComponent({
     text-align: center;
   `,
 });
+
 const BaseAvatar = CSSComponent({
   tag: 'div',
   className: 'BaseAvatar',
@@ -91,24 +92,20 @@ const BaseAvatar = CSSComponent({
       ['border'],
       ['borderRadius'],
       ['boxShadow'],
+      ['lineHeight'],
     ],
     defaultTheme: {
       color: defaultColor,
     },
     getCSS(themeMeta: Object, themeProps: Object) {
-      const {
-        propsConfig: { size, shape },
-      } = themeProps;
-      const theBorderRadius = shape === 'circle' ? '50%' : get('borderRadiusValue');
-      return `border-radius:${theBorderRadius};
-      line-height: ${px2remcss(getDefaultSize(size))};
+      return `;
       min-width: ${px2remcss(24)};
       min-height: ${px2remcss(24)};
       `;
     },
     getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
-        propsConfig: { size, type },
+        propsConfig: { size, type, shape },
       } = themeProps;
       const { width, height, background = {} } = themeMeta;
       const theBackgroundColor =
@@ -123,8 +120,10 @@ const BaseAvatar = CSSComponent({
       };
       const theWidth = newSize(width, theSize);
       const theHeight = newSize(height, theSize);
-
+      const theBorderRadius = shape === 'circle' ? '50%' : get('borderRadiusValue');
       return {
+        lineHeight: getDefaultSize(size),
+        borderRadius: getBorderRadius(theBorderRadius),
         width: theWidth,
         height: theHeight,
         background: {
@@ -149,15 +148,17 @@ const Name = CSSComponent({
   normal: {
     selectNames: [['color'], ['width'], ['height'], ['fontSize']],
     defaultTheme: { color: defaultColor },
-    getCSS(themeMeta: Object, themeProps: Object) {
+    getThemeMeta(themeMeta: Object, themeProps: Object) {
       const {
         propsConfig: { size },
       } = themeProps;
       const { width, height } = themeMeta;
       const theWidth = getSize(width, getDefaultSize(size));
       const theHeight = getSize(height, getDefaultSize(size));
-
-      return `width :${px2remcss(theWidth)};height:${px2remcss(theHeight)};`;
+      return {
+        width: theWidth,
+        height: theHeight,
+      };
     },
   },
   css: css`

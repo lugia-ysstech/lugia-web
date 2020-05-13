@@ -73,7 +73,10 @@ const Container: Object = CSSComponent({
   tag: 'div',
   className: 'BadgeContainer',
   normal: {
-    selectNames: [],
+    selectNames: [['background']],
+    defaultTheme: {
+      background: 'transparent',
+    },
     getCSS(themeMeta: Object, themeProps: Object) {
       const { width, height } = themeMeta;
       const theWidth = width ? width : 10;
@@ -85,7 +88,6 @@ const Container: Object = CSSComponent({
     },
   },
   css: css`
-    background: transparent;
     box-sizing: border-box;
     position: relative;
     display: inline-block;
