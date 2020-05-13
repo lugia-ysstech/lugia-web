@@ -8,7 +8,6 @@
 import { px2remcss } from '../css/units';
 import CSSComponent, { css } from '@lugia/theme-css-hoc';
 import { getBorderRadius } from '../theme/CSSProvider';
-import get from './theme-common-dict';
 
 export const BarDefaultSize = 12;
 export const DefaultWidth = 250;

@@ -39,6 +39,7 @@ const borderDisableColor = '$lugia-dict.@lugia/lugia-web.borderDisableColor';
 const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 const borderColor = '$lugia-dict.@lugia/lugia-web.borderColor';
 const disableColor = '$lugia-dict.@lugia/lugia-web.disableColor';
+const borderRadiusValue = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
 const textFontSize = {
   small: 12,
   default: 14,
@@ -460,7 +461,7 @@ export const TitleWrap = CSSComponent({
     getThemeMeta: (themeMeta, themeProps) => {
       const { propsConfig: { selected, inlineType, __navmenu, shape } = {} } = themeProps;
 
-      const borderRadius = shape === 'round' ? 99999 : get('borderRadiusValue');
+      const borderRadius = shape === 'round' ? 99999 : borderRadiusValue;
       const linearGradient = `linear-gradient(to right, ${get('themeColor')}, ${get(
         'themeHoverColor'
       )})`;
