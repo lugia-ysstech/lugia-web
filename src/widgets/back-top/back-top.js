@@ -14,7 +14,6 @@ import { getScrollTop } from '../affix/affix';
 import { BackTop, BackTopContent, IconBox, textStyle, getThemeStyle } from '../css/back-top';
 import type { BackTopProps, BackTopState } from '../css/back-top';
 import { deepMerge } from '@lugia/object-utils';
-import get from '../css/theme-common-dict';
 export default ThemeProvider(
   class extends React.Component<BackTopProps, BackTopState> {
     static displayName = 'BackTop';
