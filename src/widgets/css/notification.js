@@ -3,10 +3,10 @@
  * create by guorg
  * @flow
  */
-import { px2emcss } from '../css/units';
 import styled, { css, keyframes } from 'styled-components';
 import Icon from '../icon';
 import get from './theme-common-dict';
+import { px2remcss } from './units';
 
 export type NotificationProps = {
   duration?: number | null,
@@ -35,10 +35,7 @@ type ForTestType = {
   create?: boolean,
 };
 
-const FontSize = 1.4;
-const IconFontSize = 1.6;
-const em = px2emcss(FontSize);
-const iconEM = px2emcss(IconFontSize);
+const em = px2remcss;
 const getAnimateDirection = (props: CSSProps): 'left' | 'right' => {
   const { placement } = props;
   if (placement === 'bottomLeft' || placement === 'topLeft') {
@@ -87,7 +84,7 @@ const getOutBoxShadow = () => {
   return `${em(x)} ${em(y)} ${em(blur)} ${em(spread)} ${color}`;
 };
 export const Notification = styled.div`
-  font-size: ${FontSize}rem;
+  font-size: ${em(14)};
   box-sizing: border-box;
   padding: ${em(20)} ${props => (props.needIcon ? em(44) : em(20))};
   border-radius: ${em(get('largeBorderRadiusValue'))};
@@ -105,8 +102,8 @@ export const Title = styled.div`
   font-size: ${em(16)};
   font-weight: 500;
   color: ${get('blackColor')};
-  margin-bottom: ${iconEM(8)};
-  line-height: ${iconEM(24)};
+  margin-bottom: ${em(8)};
+  line-height: ${em(24)};
   display: inline-block;
   word-break: break-all;
 `;
@@ -122,7 +119,7 @@ export const CloseIcon: Object = styled(Icon)`
 export const CloseIconWrap = styled.div`
   position: absolute;
   right: ${em(16)};
-  top: ${em(9.5)};
+  top: ${em(11.5)};
   color: ${get('mediumGreyColor')};
   outline: none;
   cursor: pointer;
@@ -130,13 +127,12 @@ export const CloseIconWrap = styled.div`
     color: ${get('darkGreyColor')};
   }
 `;
-const leftIconEM = px2emcss(2);
 export const Icons: Object = styled(Icon)`
   position: absolute;
   font-size: ${em(20)};
-  line-height: ${leftIconEM(22)};
-  top: ${leftIconEM(26)};
-  left: ${leftIconEM(20)};
+  line-height: ${em(22)};
+  top: ${em(22)};
+  left: ${em(16)};
   cursor: default;
   color: ${props => (props.iconColor ? get(props.iconColor) : get('themeColor'))};
 `;
