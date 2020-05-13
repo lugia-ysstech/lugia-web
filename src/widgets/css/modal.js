@@ -238,11 +238,6 @@ export const ModalTitle = CSSComponent({
       },
     },
   },
-  disabled: {
-    defaultTheme: {
-      color: '$lugia-dict.@lugia/lugia-web.disableTextColor',
-    },
-  },
 });
 
 export const ModalBody = CSSComponent({
@@ -263,9 +258,6 @@ export const ModalBody = CSSComponent({
         left: 0,
       },
     },
-  },
-  disabled: {
-    color: '$lugia-dict.@lugia/lugia-web.disableTextColor',
   },
 });
 
