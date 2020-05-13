@@ -460,9 +460,9 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
   getTabsTheme = (themeStyle: 'light' | 'dark') => {
     let defaultTheme;
     if (themeStyle === 'dark') {
-      defaultTheme = HorizontalDarkTheme;
+      defaultTheme = HorizontalDarkTheme();
     } else {
-      defaultTheme = HorizontalLightTheme;
+      defaultTheme = HorizontalLightTheme();
     }
     return this.mergeTheme('Tabs', defaultTheme);
   };
@@ -470,9 +470,9 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
   getTabsMenuTheme = (themeStyle: 'light' | 'dark') => {
     let defaultTheme;
     if (themeStyle === 'dark') {
-      defaultTheme = DarkTabsMenuTheme;
+      defaultTheme = DarkTabsMenuTheme();
     } else {
-      defaultTheme = LightTabsMenuTheme;
+      defaultTheme = LightTabsMenuTheme();
     }
 
     return this.mergeTheme('Menu', defaultTheme);
@@ -481,9 +481,9 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
   getMenuTheme = (themeStyle: 'light' | 'dark') => {
     let defaultTheme;
     if (themeStyle === 'dark') {
-      defaultTheme = DarkMenuTheme;
+      defaultTheme = DarkMenuTheme();
     } else {
-      defaultTheme = LightMenuTheme;
+      defaultTheme = LightMenuTheme();
     }
     return this.mergeTheme('Menu', defaultTheme);
   };
@@ -492,15 +492,15 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     let defaultTheme;
     if (inlineType === 'ellipse') {
       if (themeStyle === 'dark') {
-        defaultTheme = EllipseDarkTheme;
+        defaultTheme = EllipseDarkTheme();
       } else {
-        defaultTheme = EllipseLightTheme;
+        defaultTheme = EllipseLightTheme();
       }
     } else {
       if (themeStyle === 'dark') {
-        defaultTheme = PrimaryDarkTheme;
+        defaultTheme = PrimaryDarkTheme();
       } else {
-        defaultTheme = PrimaryLightTheme;
+        defaultTheme = PrimaryLightTheme();
       }
     }
     return this.mergeTheme('Tree', defaultTheme);

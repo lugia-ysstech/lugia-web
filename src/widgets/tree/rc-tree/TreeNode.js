@@ -467,16 +467,17 @@ class TreeNode extends React.Component {
 
   getTitleWrapThemeProps(defaultName: string, selectedName: string, params: Object = {}): Object {
     const { parentIsHighlight } = this.props;
+    const targetName = this.isChecked() || parentIsHighlight ? selectedName : defaultName;
     if (this.isChecked()) {
-      return this.getSelectedTitleWrapThemeProps(selectedName, {
+      return this.getSelectedTitleWrapThemeProps(targetName, {
         props: params,
       });
     } else if (parentIsHighlight) {
-      return this.getSelectedParentTextThemeProps(selectedName, {
+      return this.getSelectedParentTextThemeProps(targetName, {
         props: params,
       });
     }
-    return this.getDefaultTitleWrapThemeProps(defaultName, {
+    return this.getDefaultTitleWrapThemeProps(targetName, {
       props: params,
     });
   }
