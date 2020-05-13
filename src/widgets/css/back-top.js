@@ -114,10 +114,8 @@ const CommonBackTopStyle = CSSComponent({
   tag: 'div',
   className: 'CommonBackTopStyle',
   css: css`
-    border: 1px solid #e8e8e8;
     text-align: center;
     overflow: hidden;
-    box-shadow: 0 0 ${em(4)} #e8e8e8;
   `,
 });
 
