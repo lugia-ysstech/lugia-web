@@ -467,9 +467,9 @@ class TextBox extends Component<InputProps, InputState> {
               const theSize = innerFontSize || fontSize || getInputIconSize(size);
               return { fontSize: theSize };
             },
-            hover: { color: darkGreyColor },
-            disabled: { cursor: 'not-allowed', color: disableTextColor },
           },
+          hover: { color: darkGreyColor },
+          disabled: { cursor: 'not-allowed', color: disableTextColor },
         },
       },
       ClearButtonThemeProps
