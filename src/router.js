@@ -26,6 +26,9 @@ export default {
   '/autocomplete': {
     render: async () => import('./widgets/auto-complete/demo'),
   },
+  '/p-autocomplete': {
+    render: async () => import('./widgets/auto-complete/p-demo'),
+  },
 
   '/avatar': {
     render: async () => import('./widgets/avatar/demo'),

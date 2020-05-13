@@ -13,6 +13,7 @@ import Keys from '../consts/KeyBoard';
 import Widget from '../consts/index';
 import { DisplayField, ValueField } from '../consts/props';
 import { OldValueItem, OldValueTitle, TimeIcon, EmptyBox } from '../css/autocomplete';
+import { PopupMenuWrap } from '../css/select';
 import { MenuItemHeight } from '../css/menu';
 import ThemeHoc from '@lugia/theme-hoc';
 import Theme from '../theme';
@@ -84,33 +85,46 @@ export default ShortKeyBoard(
         };
       }
 
+      getPopupMenu = () => {
+        const data = this.getMenuData();
+        const { value } = this.state;
+        const menuThemeConfig = this.props.getPartOfThemeProps('Menu');
+        const { themeConfig } = menuThemeConfig;
+        menuThemeConfig.themeConfig = deepMerge(themeConfig.Container);
+        return (
+          <PopupMenuWrap themeProps={menuThemeConfig}>
+            {this.getOldValueItem()}
+            <Menu
+              data={data}
+              checkedCSS={'background'}
+              {...this.getMenuTheme()}
+              mutliple={false}
+              selectedKeys={value}
+              onClick={this.menuItemClickHandler}
+              step={ScrollerStep}
+              valueField={ValueField}
+              displayField={DisplayField}
+            />
+          </PopupMenuWrap>
+        );
+      };
       render() {
         const { props, state } = this;
         const { value } = state;
-        const { disabled, placeholder, prefix, suffix, validateType, validateStatus } = props;
+        const {
+          disabled,
+          placeholder,
+          prefix,
+          suffix,
+          validateType,
+          validateStatus,
+          size = 'default',
+        } = props;
         const data = this.getMenuData();
         const len = data.length;
         const menuLen = Math.min(5, len);
         const menuHeight = menuLen * MenuItemHeight;
-
-        const menu =
-          menuHeight === 0 ? (
-            <EmptyBox />
-          ) : (
-            [
-              this.getOldValueItem(),
-              <Menu
-                data={data}
-                {...this.getMenuTheme()}
-                mutliple={false}
-                selectedKeys={value}
-                onClick={this.menuItemClickHandler}
-                step={ScrollerStep}
-                valueField={ValueField}
-                displayField={DisplayField}
-              />,
-            ]
-          );
+        const menu = menuHeight === 0 ? <EmptyBox /> : this.getPopupMenu();
 
         return (
           <Theme config={this.getInputTheme()}>
@@ -125,10 +139,11 @@ export default ShortKeyBoard(
               ref={this.triggerEl}
             >
               <Input
+                size={size}
                 value={value}
                 disabled={disabled}
                 ref={this.inputEl}
-                getInputRef={this.getInputRef}
+                getInputWidgetRef={this.getInputRef}
                 onChange={this.changeInputValue}
                 onClear={this.clearInputValue}
                 onFocus={this.onFocus}
@@ -310,6 +325,7 @@ export default ShortKeyBoard(
         const width = this.getContainerWidth();
         const initMenuTheme = {
           width,
+          boxShadow: null,
         };
         const defaultMenuTheme = {
           Container: {
