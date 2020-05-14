@@ -3,6 +3,11 @@
   "title": "周选择器",
   "desc": "用于周选择,",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "createPortal": {
       "type": "boolean",
       "desc": "是否全局弹出下拉框",

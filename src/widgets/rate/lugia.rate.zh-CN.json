@@ -3,6 +3,11 @@
   "title": "评分",
   "desc": "评分组件",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "count": {
       "type": "number",
       "desc": "展示的 star 总数",

@@ -3,6 +3,11 @@
   "title": "步骤条",
   "desc": "引导用户按照流程完成任务的导航条",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "children": {
       "type": "React.Node",
       "desc": "步骤条需要包含的子组件"

@@ -29,7 +29,9 @@
     "pageSizeOptions": {
       "type": "string[]",
       "desc": "指定每页可以显示多少条",
-      "propsDefaultValue": ["10", "20", "30", "50"]
+      "meta": [{ "key": "pageSizes", "title": "每页显示多少条的集合", "type": "string[]" }],
+      "propsDefaultValue": [["10", "20", "30", "50"]],
+      "defaultValue": [["10", "20", "30", "50"]]
     },
     "showQuickJumper": {
       "type": "boolean",
@@ -81,7 +83,9 @@
     "blockList": {
       "type": "string[]",
       "desc": "分页各部位展示的位置列表",
-      "propsDefaultValue": ["Page", "PageInput", "Total", "PageSize"]
+      "meta": [{ "key": "displayLocation", "title": "分页各部位展示的位置", "type": "string[]" }],
+      "propsDefaultValue": ["Page", "PageInput", "Total", "PageSize"],
+      "defaultValue": ["Page", "PageInput", "Total", "PageSize"]
     },
     "align": {
       "type": "AlignType",

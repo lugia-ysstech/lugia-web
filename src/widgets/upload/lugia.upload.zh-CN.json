@@ -3,6 +3,11 @@
   "title": "上传",
   "desc": "上传组件,可通过文件选择和拖拽上传",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "data": {
       "type": "object",
       "desc": "上传时附带的额外参数"

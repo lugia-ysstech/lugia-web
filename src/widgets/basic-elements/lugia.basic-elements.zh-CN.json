@@ -3,6 +3,11 @@
   "title": "基本元素",
   "desc": "基本元素",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "shape": {
       "type": "shapeType",
       "desc": "基本元素形状",

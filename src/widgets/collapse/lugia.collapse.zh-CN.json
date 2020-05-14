@@ -3,6 +3,11 @@
   "title": "折叠面板",
   "desc": "折叠面板，用于展开/折叠内容区域。",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "activeValue": {
       "type": "string | string[]",
       "desc": "当前展开面板的 value值 或者 value 集合"

@@ -3,6 +3,11 @@
   "title": "单步骤",
   "desc": "步骤条中每一个步骤",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "children": {
       "type": "React.Node",
       "desc": "气泡卡片需要包含的子组件"

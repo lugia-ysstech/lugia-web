@@ -3,6 +3,11 @@
   "title": "单选框组",
   "desc": "单选框组。",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "defaultValue": {
       "type": "string",
       "desc": "单选框初始选中值"

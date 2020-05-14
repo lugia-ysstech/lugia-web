@@ -3,6 +3,11 @@
   "title": "树形选择控件",
   "desc": "类似Select选择器，弹出面板是一个树形控件，可以清晰地展示层级数据结构。",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "validateStatus": {
       "type": "ValidateStatus",
       "desc": "校验状态"

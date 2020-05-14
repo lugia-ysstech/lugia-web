@@ -3,6 +3,11 @@
   "title": "穿梭框",
   "desc": "穿梭框。",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "data": {
       "type": "Object[]",
       "desc": "左右两个面板数据源",

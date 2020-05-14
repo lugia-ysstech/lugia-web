@@ -3,6 +3,11 @@
   "title": "回到顶部",
   "desc": "返回页面顶部。",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "visibilityHeight": {
       "type": "number",
       "desc": "页面滚动高度达到指定值后出现BackTop",
