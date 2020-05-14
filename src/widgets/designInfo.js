@@ -50,6 +50,7 @@ export default [
       title: '警告提示',
       desc: '警告提示信息。',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         type: {
           type: 'AlertType',
           desc: '指定警告提示的样式，有四种可以选择：success、error、info、warning',
@@ -125,6 +126,7 @@ export default [
       title: '金额输入框',
       desc: '用于金额数字的填写,可切换人民币大小写显示效果.',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         disabled: { type: 'boolean', desc: '禁用状态,是否不可用', defaultValue: false },
         transform: {
           type: 'boolean',
@@ -292,6 +294,7 @@ export default [
       title: '自动完成',
       desc: '需要自动完成数据时使用',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         data: {
           type: 'string[]',
           desc: '生成选择项的数据',
@@ -301,8 +304,8 @@ export default [
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: true },
         value: { type: 'string', desc: '给定输入框的值' },
         defaultValue: { type: 'string', desc: '默认输入框的值，仅第一次生效' },
-        disabled: { type: 'boolean', desc: '是否禁用输入框', defaultValue: false },
-        showOldValue: { type: 'boolean', desc: '是否显示上一次选中的值', defaultValue: true },
+        disabled: { type: 'boolean', desc: '是否禁用输入框', propsDefaultValue: false },
+        showOldValue: { type: 'boolean', desc: '是否显示上一次选中的值', propsDefaultValue: true },
         placeholder: { type: 'string', desc: 'input输入提示信息' },
         validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
         validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
@@ -579,6 +582,7 @@ export default [
       title: '头像',
       desc: '用来代表用户或事物，支持图片、图标或字符展示。',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
         size: {
           type: 'AvatarSize',
@@ -729,6 +733,7 @@ export default [
       title: '图标头像',
       desc: '使用图标样式展示头像',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
         size: {
           type: 'AvatarSize',
@@ -798,6 +803,7 @@ export default [
       title: '图片头像',
       desc: '使用图片资源展示头像',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
         size: {
           type: 'AvatarSize',
@@ -867,6 +873,7 @@ export default [
       title: '徽标数',
       desc: '图标右上角的圆形徽标数字',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
         showZero: { type: 'boolean', desc: '当数值为 0 时，是否展示 Badge', defaultValue: false },
         overflowCount: {
@@ -941,6 +948,7 @@ export default [
       title: '数字徽标',
       desc: '徽标数大于0时,显示的数字',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
         showZero: { type: 'boolean', desc: '当数值为 0 时，是否展示 Badge', defaultValue: true },
         overflowCount: {
@@ -989,7 +997,10 @@ export default [
       widgetName: 'BasicElements',
       title: '基本元素',
       desc: '基本元素',
-      props: { shape: { type: 'shapeType', desc: '基本元素形状', defaultValue: 'square' } },
+      props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        shape: { type: 'shapeType', desc: '基本元素形状', defaultValue: 'square' },
+      },
       type: { shapeType: ['circle', 'square'] },
       category: ['通用'],
       designInfo: {
@@ -1054,7 +1065,10 @@ export default [
       widgetName: 'BasicElements',
       title: '圆形元素',
       desc: '圆形元素',
-      props: { shape: { type: 'shapeType', desc: '基本元素形状', defaultValue: 'circle' } },
+      props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        shape: { type: 'shapeType', desc: '基本元素形状', defaultValue: 'circle' },
+      },
       type: { shapeType: ['circle', 'square'] },
       category: ['通用'],
       theme: {
@@ -1091,6 +1105,7 @@ export default [
       title: '面包屑',
       desc: '显示系统的层级关系和当先所在的位置,并能向上返回',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         separator: { type: 'string', desc: '自定义层级分隔符', defaultPropsValue: '/' },
         lastSeparator: { type: 'string | React.Element<any>', desc: '最后一个元素的分隔符' },
         routes: {
@@ -1350,6 +1365,7 @@ export default [
       title: '按钮',
       desc: '方便用户点击操作',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         disabled: {
           type: 'boolean',
           desc: '按钮是否禁用，true 禁用 false 可用',
@@ -1664,6 +1680,7 @@ export default [
       title: '朴素按钮',
       desc: '朴素按钮',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         disabled: {
           type: 'boolean',
           desc: '按钮是否禁用，true 禁用 false 可用',
@@ -1768,6 +1785,7 @@ export default [
       title: '图标按钮',
       desc: '图标按钮',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         disabled: {
           type: 'boolean',
           desc: '按钮是否禁用，true 禁用 false 可用',
@@ -1876,6 +1894,7 @@ export default [
       title: '圆形图标按钮',
       desc: '圆形图标按钮',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         disabled: {
           type: 'boolean',
           desc: '按钮是否禁用，true 禁用 false 可用',
@@ -1975,6 +1994,7 @@ export default [
       title: '文字按钮',
       desc: '文字按钮',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         disabled: {
           type: 'boolean',
           desc: '按钮是否禁用，true 禁用 false 可用',
@@ -2049,6 +2069,7 @@ export default [
       title: '文字图标按钮',
       desc: '文字图标按钮',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         disabled: {
           type: 'boolean',
           desc: '按钮是否禁用，true 禁用 false 可用',
@@ -2145,6 +2166,7 @@ export default [
       title: '卡片',
       desc: '卡片容器，可添加文字、列表、图片等',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         getThemeByDisplayName: { type: 'Function', desc: '用于配置组件内部图片的通用主题属性' },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
         title: { type: 'React.Node', desc: '卡片标题显示内容', defaultValue: '卡片头部标题' },
@@ -2589,6 +2611,7 @@ export default [
       title: '水平头像卡片',
       desc: '水平头像卡片样式',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         getThemeByDisplayName: { type: 'Function', desc: '用于配置组件内部图片的通用主题属性' },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
         title: { type: 'React.Node', desc: '卡片标题显示内容', defaultValue: '卡片头部标题' },
@@ -2697,6 +2720,7 @@ export default [
       title: '水平图片卡片',
       desc: '水平图片卡片样式',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         getThemeByDisplayName: { type: 'Function', desc: '用于配置组件内部图片的通用主题属性' },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
         title: { type: 'React.Node', desc: '卡片标题显示内容', defaultValue: '卡片头部标题' },
@@ -2810,6 +2834,7 @@ export default [
       title: '垂直头像卡片',
       desc: '垂直头像卡片不同选择显示不同卡片样式',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         getThemeByDisplayName: { type: 'Function', desc: '用于配置组件内部图片的通用主题属性' },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
         title: { type: 'React.Node', desc: '卡片标题显示内容', defaultValue: '卡片头部标题' },
@@ -2918,6 +2943,7 @@ export default [
       title: '垂直图片卡片',
       desc: '垂直图片卡片样式',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         getThemeByDisplayName: { type: 'Function', desc: '用于配置组件内部图片的通用主题属性' },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
         title: { type: 'React.Node', desc: '卡片标题显示内容', defaultValue: '卡片头部标题' },
@@ -3031,6 +3057,7 @@ export default [
       title: '自定义组合卡片',
       desc: '组合卡片样式',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         getThemeByDisplayName: { type: 'Function', desc: '用于配置组件内部图片的通用主题属性' },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
         title: { type: 'React.Node', desc: '卡片标题显示内容', defaultValue: '' },
@@ -3146,30 +3173,31 @@ export default [
       title: '走马灯',
       desc: '常用于展示一组图片或卡片轮播',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         defaultStart: {
           type: 'number',
           desc: '幻灯片初始状态开始激活的索引，默认从0开始',
-          defaultValue: 0,
+          propsDefaultValue: 0,
         },
         start: { type: 'number', desc: '手动切换,指定幻灯片开始的索引' },
-        autoPlay: { type: 'boolean', desc: '是否自动切换', defaultValue: true },
-        delay: { type: 'number', desc: '自动切换的时间间隔，单位为毫秒', defaultValue: 3000 },
+        autoPlay: { type: 'boolean', desc: '是否自动切换', propsDefaultValue: true },
+        delay: { type: 'number', desc: '自动切换的时间间隔，单位为毫秒', propsDefaultValue: 3000 },
         indicatorType: {
           type: 'horizontal | vertical | outside',
           desc: '指示器的显示方式',
-          defaultValue: 'horizontal',
+          propsDefaultValue: 'horizontal',
         },
         switchType: {
           type: 'horizontal | vertical | fade',
           desc: '动画切换的方式',
-          defaultValue: 'horizontal',
+          propsDefaultValue: 'horizontal',
         },
         animationTime: {
           type: 'number',
           desc: '单次动画执行的时间，单位为毫秒',
-          defaultValue: 500,
+          propsDefaultValue: 500,
         },
-        action: { type: 'hover | click', desc: '指示器触发切换的方式', defaultValue: 'hover' },
+        action: { type: 'hover | click', desc: '指示器触发切换的方式', propsDefaultValue: 'hover' },
       },
       events: {
         onChange: {
@@ -3245,6 +3273,7 @@ export default [
       title: '级联选择',
       desc: '通过级联选择,可以清晰地显示层级数据结构',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         action: { type: 'hover | click', desc: '展开子菜单的方式' },
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: false },
         offsetX: { type: 'number', desc: '菜单间的间隔', propsDefaultValue: 2 },
@@ -3304,8 +3333,12 @@ export default [
         },
         disabled: { type: 'boolean', desc: '是否禁选', propsDefaultValue: false },
         divided: { type: 'boolean', desc: '菜单项之间是否展示分割线', propsDefaultValue: false },
-        allowClear: { type: 'boolean', desc: '是否允许清空选中值', defaultValue: true },
-        showAllLevels: { type: 'boolean', desc: '是否显示所有层级关系的值', defaultValue: true },
+        allowClear: { type: 'boolean', desc: '是否允许清空选中值', propsDefaultValue: true },
+        showAllLevels: {
+          type: 'boolean',
+          desc: '是否显示所有层级关系的值',
+          propsDefaultValue: true,
+        },
       },
       events: {
         onClick: {
@@ -3777,6 +3810,7 @@ export default [
       title: '多选框',
       desc: '多选框。',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         checked: { type: 'boolean', desc: '指定Checkbox是否选中' },
         defaultChecked: { type: 'boolean', desc: '指定Checkbox初始是否选中' },
         disabled: { type: 'boolean', desc: '指定Checkbox是否禁用' },
@@ -3910,6 +3944,7 @@ export default [
       title: '多选框组',
       desc: '多选框组。',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         defaultValue: { type: 'string[]', desc: '指定CheckboxGroup初始选中值' },
         value: { type: 'string[]', desc: '指定CheckboxGroup选中值' },
         disabled: { type: 'boolean', desc: '指定CheckboxGroup是否禁用' },
@@ -4104,6 +4139,7 @@ export default [
       title: '按钮状多选框组',
       desc: '按钮形状的多选框组',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         defaultValue: { type: 'string[]', desc: '指定CheckboxGroup初始选中值' },
         value: { type: 'string[]', desc: '指定CheckboxGroup选中值' },
         disabled: { type: 'boolean', desc: '指定CheckboxGroup是否禁用' },
@@ -4295,6 +4331,7 @@ export default [
       title: '日期选择器',
       desc: '用于日期选择',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         defaultValue: { type: 'string', desc: '日期默认显示值' },
         value: { type: 'string', desc: '日期显示值' },
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: false },
@@ -4340,6 +4377,8 @@ export default [
           desc: '可配置三种尺寸大小的input',
           propsDefaultValue: 'default',
         },
+        open: { type: 'boolean', desc: '控制面板是展开', propsDefaultValue: false },
+        liquidLayout: { type: 'boolean', desc: '是否开启流式布局', propsDefaultValue: false },
       },
       events: {
         onChange: {
@@ -4527,7 +4566,7 @@ export default [
       defaultTheme: {
         Container: {
           normal: {
-            width: 192,
+            width: 300,
             height: 32,
             background: { color: '#fff' },
             border: {
@@ -4575,6 +4614,7 @@ export default [
       title: '月选择器',
       desc: '用于月份选择,',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         defaultValue: { type: 'string', desc: '日期默认显示值' },
         value: { type: 'string', desc: '日期显示值' },
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: false },
@@ -4598,6 +4638,8 @@ export default [
           desc: '可配置三种尺寸大小的input',
           propsDefaultValue: 'default',
         },
+        open: { type: 'boolean', desc: '控制面板是展开', propsDefaultValue: false },
+        liquidLayout: { type: 'boolean', desc: '是否开启流式布局', propsDefaultValue: false },
       },
       events: {
         onChange: {
@@ -4807,8 +4849,6 @@ export default [
             },
           },
         },
-        InMonthDate: { normal: { color: '#666', fontSize: 14 } },
-        OutMonthDate: { normal: { color: '#ccc', fontSize: 14 } },
         SecondWeekDate: { normal: { color: '#333', fontSize: 14 } },
         ValidateErrorText: { normal: {} },
       },
@@ -4824,6 +4864,7 @@ export default [
       title: '年选择器',
       desc: '用于年选择,',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: false },
         defaultValue: { type: 'string', desc: '日期默认显示值' },
         value: { type: 'string', desc: '日期显示值' },
@@ -4839,6 +4880,13 @@ export default [
         validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
         validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
         help: { type: 'string', desc: '校验提示信息' },
+        size: {
+          type: 'InputSize',
+          desc: '可配置三种尺寸大小的input',
+          propsDefaultValue: 'default',
+        },
+        open: { type: 'boolean', desc: '控制面板是展开', propsDefaultValue: false },
+        liquidLayout: { type: 'boolean', desc: '是否开启流式布局', propsDefaultValue: false },
       },
       events: {
         onChange: {
@@ -4847,14 +4895,6 @@ export default [
         },
         onFocus: { desc: '输入框获取焦点', args: [] },
         onBlur: { desc: '输入框失去焦点', args: [] },
-        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
-        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
-        help: { type: 'string', desc: '校验提示信息' },
-        size: {
-          type: 'InputSize',
-          desc: '可配置三种尺寸大小的input',
-          propsDefaultValue: 'default',
-        },
       },
       type: {
         InputSize: ['small', 'default', 'large'],
@@ -4960,47 +5000,6 @@ export default [
           active: [],
         },
         ExtraFooter: { name: '额外页脚', desc: '额外页脚配置', normal: [['color'], ['font']] },
-        FooterButtonOptions: {
-          name: '页脚按钮',
-          desc: '页脚按钮配置',
-          normal: [
-            ['color'],
-            ['font'],
-            ['margin'],
-            ['padding'],
-            ['width'],
-            ['height'],
-            ['border'],
-            ['borderRadius'],
-            ['background'],
-          ],
-        },
-        FooterToday: {
-          name: "页脚'今天'按钮",
-          desc: "页脚'今天'按钮配置",
-          normal: [['color'], ['font']],
-          hover: [['color'], ['font']],
-        },
-        FooterTimeButton: {
-          name: '页脚时间按钮',
-          desc: '页脚时间按钮配置',
-          normal: [['color'], ['font']],
-          hover: [['color'], ['font']],
-        },
-        FooterOkButton: {
-          name: '页脚确定按钮',
-          desc: '页脚确定按钮配置',
-          normal: [
-            ['background'],
-            ['margin'],
-            ['padding'],
-            ['borderRadius'],
-            ['color'],
-            ['font'],
-            ['fontSize'],
-          ],
-          hover: [['color'], ['font'], ['fontSize'], ['background']],
-        },
       },
       parentWidget: 'DatePicker',
     },
@@ -5014,6 +5013,7 @@ export default [
       title: '周选择器',
       desc: '用于周选择,',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         defaultValue: { type: 'string', desc: '日期默认显示值' },
         value: { type: 'string', desc: '日期显示值' },
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: false },
@@ -5049,6 +5049,8 @@ export default [
           desc: '可配置三种尺寸大小的input',
           propsDefaultValue: 'default',
         },
+        open: { type: 'boolean', desc: '控制面板是展开', propsDefaultValue: false },
+        liquidLayout: { type: 'boolean', desc: '是否开启流式布局', propsDefaultValue: false },
       },
       events: {
         onChange: {
@@ -5167,47 +5169,6 @@ export default [
           active: [],
         },
         ExtraFooter: { name: '额外页脚', desc: '额外页脚配置', normal: [['color'], ['font']] },
-        FooterButtonOptions: {
-          name: '页脚按钮',
-          desc: '页脚按钮配置',
-          normal: [
-            ['color'],
-            ['font'],
-            ['margin'],
-            ['padding'],
-            ['width'],
-            ['height'],
-            ['border'],
-            ['borderRadius'],
-            ['background'],
-          ],
-        },
-        FooterToday: {
-          name: "页脚'今天'按钮",
-          desc: "页脚'今天'按钮配置",
-          normal: [['color'], ['font']],
-          hover: [['color'], ['font']],
-        },
-        FooterTimeButton: {
-          name: '页脚时间按钮',
-          desc: '页脚时间按钮配置',
-          normal: [['color'], ['font']],
-          hover: [['color'], ['font']],
-        },
-        FooterOkButton: {
-          name: '页脚确定按钮',
-          desc: '页脚确定按钮配置',
-          normal: [
-            ['background'],
-            ['margin'],
-            ['padding'],
-            ['borderRadius'],
-            ['color'],
-            ['font'],
-            ['fontSize'],
-          ],
-          hover: [['color'], ['font'], ['fontSize'], ['background']],
-        },
       },
       parentWidget: 'DatePicker',
     },
@@ -5221,6 +5182,7 @@ export default [
       title: '周选择器',
       desc: '用于周选择,',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: false },
         defaultValue: { type: 'string', desc: '日期默认显示值' },
         value: { type: 'string', desc: '日期显示值' },
@@ -5240,6 +5202,13 @@ export default [
         validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
         validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
         help: { type: 'string', desc: '校验提示信息' },
+        size: {
+          type: 'InputSize',
+          desc: '可配置三种尺寸大小的input',
+          propsDefaultValue: 'default',
+        },
+        open: { type: 'boolean', desc: '控制面板是展开', propsDefaultValue: false },
+        liquidLayout: { type: 'boolean', desc: '是否开启流式布局', propsDefaultValue: false },
       },
       events: {
         onChange: {
@@ -5248,14 +5217,6 @@ export default [
         },
         onFocus: { desc: '输入框获取焦点', args: [] },
         onBlur: { desc: '输入框失去焦点', args: [] },
-        validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
-        validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
-        help: { type: 'string', desc: '校验提示信息' },
-        size: {
-          type: 'InputSize',
-          desc: '可配置三种尺寸大小的input',
-          propsDefaultValue: 'default',
-        },
       },
       type: {
         InputSize: ['small', 'default', 'large'],
@@ -5361,47 +5322,6 @@ export default [
           active: [],
         },
         ExtraFooter: { name: '额外页脚', desc: '额外页脚配置', normal: [['color'], ['font']] },
-        FooterButtonOptions: {
-          name: '页脚按钮',
-          desc: '页脚按钮配置',
-          normal: [
-            ['color'],
-            ['font'],
-            ['margin'],
-            ['padding'],
-            ['width'],
-            ['height'],
-            ['border'],
-            ['borderRadius'],
-            ['background'],
-          ],
-        },
-        FooterToday: {
-          name: "页脚'今天'按钮",
-          desc: "页脚'今天'按钮配置",
-          normal: [['color'], ['font']],
-          hover: [['color'], ['font']],
-        },
-        FooterTimeButton: {
-          name: '页脚时间按钮',
-          desc: '页脚时间按钮配置',
-          normal: [['color'], ['font']],
-          hover: [['color'], ['font']],
-        },
-        FooterOkButton: {
-          name: '页脚确定按钮',
-          desc: '页脚确定按钮配置',
-          normal: [
-            ['background'],
-            ['margin'],
-            ['padding'],
-            ['borderRadius'],
-            ['color'],
-            ['font'],
-            ['fontSize'],
-          ],
-          hover: [['color'], ['font'], ['fontSize'], ['background']],
-        },
       },
       parentWidget: 'DatePicker',
     },
@@ -5415,6 +5335,7 @@ export default [
       title: '日期范围选择器',
       desc: '用于日期范围选择,',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         defaultValue: {
           type: 'string[]',
           meta: [{ key: 'value', type: 'string' }],
@@ -5467,6 +5388,8 @@ export default [
           desc: '可配置三种尺寸大小的input',
           propsDefaultValue: 'default',
         },
+        open: { type: 'boolean', desc: '控制面板是展开', propsDefaultValue: false },
+        liquidLayout: { type: 'boolean', desc: '是否开启流式布局', propsDefaultValue: false },
       },
       events: {
         onChange: {
@@ -5616,7 +5539,7 @@ export default [
       defaultTheme: {
         Container: {
           normal: {
-            width: 300,
+            width: 600,
             height: 32,
             background: { color: '#fff' },
             border: {
@@ -5671,6 +5594,7 @@ export default [
       title: '分割线',
       desc: '区隔内容的分割线',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         position: { type: 'DividerPosition', desc: '分割线中显示内容的位置,与content 配合使用' },
         dashed: {
           type: 'boolean',
@@ -5740,6 +5664,7 @@ export default [
       title: '垂直分割线',
       desc: '垂直分割线',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         position: { type: 'DividerPosition', desc: '分割线中显示内容的位置,与content 配合使用' },
         dashed: {
           type: 'boolean',
@@ -5786,12 +5711,13 @@ export default [
       title: '下拉菜单',
       desc: '选项过多时，弹出下拉菜单给用户选择操作',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: true },
         popupVisible: { type: 'boolean', desc: '是否展开菜单', propsDefaultValue: false },
         action: { type: 'ActionType', desc: '弹出项的打开方式', propsDefaultValue: 'click' },
         hideAction: { type: 'ActionType', desc: '弹出项的隐藏方式', propsDefaultValue: 'click' },
         menus: { type: 'React.Node', desc: '弹出项组件' },
-        align: { type: 'React.Node', desc: '弹出方向', defaultValue: 'bottom' },
+        align: { type: 'React.Node', desc: '弹出方向', propsDefaultValue: 'bottom' },
         text: { type: 'string', desc: '下拉菜单按钮的文本' },
         type: { type: 'StyleType', desc: '按钮的风格,默认为customs', propsDefaultValue: 'customs' },
         switchIconClass: {
@@ -6430,12 +6356,13 @@ export default [
       title: '无分隔符的按钮',
       desc: '无分隔符的下拉按钮',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: true },
         popupVisible: { type: 'boolean', desc: '是否展开菜单', propsDefaultValue: false },
         action: { type: 'ActionType', desc: '弹出项的打开方式', propsDefaultValue: 'click' },
         hideAction: { type: 'ActionType', desc: '弹出项的隐藏方式', propsDefaultValue: 'click' },
         menus: { type: 'React.Node', desc: '弹出项组件' },
-        align: { type: 'React.Node', desc: '弹出方向', defaultValue: 'bottom' },
+        align: { type: 'React.Node', desc: '弹出方向', propsDefaultValue: 'bottom' },
         text: { type: 'string', desc: '下拉菜单按钮的文本' },
         type: { type: 'StyleType', desc: '按钮的风格,默认为customs', propsDefaultValue: 'customs' },
         switchIconClass: {
@@ -6772,6 +6699,7 @@ export default [
       title: '图标',
       desc: '语义化的矢量图形',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
         iconClass: { type: 'icon', desc: '图标资源,需从图标库中获取.' },
         src: { type: 'image', desc: '头像显示图片资源' },
@@ -6806,6 +6734,7 @@ export default [
       title: '文本输入框',
       desc: '常用于昵称,名称,表格内容等填写.',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         disabled: { type: 'boolean', desc: '禁用状态,是否不可用', defaultValue: false },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
         size: {
@@ -7009,6 +6938,7 @@ export default [
       title: '段落文本输入框',
       desc: '常用于多行文本输入',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         disabled: { type: 'boolean', desc: '禁用状态,是否不可用', propsDefaultValue: false },
         placeholder: { type: 'string', desc: '段落文本输入框输入提示信息' },
         defaultValue: { type: 'string', desc: '默认显示内容' },
@@ -7162,6 +7092,7 @@ export default [
       title: '文本',
       desc: '文本组件',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         text: { type: 'string', desc: '文本内容', defaultValue: 'Label' },
         showPrefix: { type: 'boolean', desc: '是否显示文本前缀', defaultValue: false },
         prefix: { type: 'string', desc: '文本前缀内容', defaultValue: '*' },
@@ -7261,11 +7192,12 @@ export default [
       title: '菜单',
       desc: '为用户提供菜单列表',
       props: {
-        valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'value' },
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
         displayField: {
           type: 'string',
           desc: 'data数据的displayValue值的名称',
-          defaultValue: 'text',
+          propsDefaultValue: 'text',
         },
         data: {
           type: 'Object[]',
@@ -7292,34 +7224,45 @@ export default [
             { value: '选项三', text: '选项三' },
           ],
         },
-        mutliple: { type: 'boolean', desc: '是否多选', defaultValue: false },
-        start: { type: 'number', desc: '开始展示数据的索引值', defaultValue: 0 },
+        mutliple: { type: 'boolean', desc: '是否多选', propsDefaultValue: false },
         selectedKeys: { type: 'string | string[] | number | number[]', desc: '指定当前选中的项' },
         defaultSelectedKeys: {
           type: 'string | string[] | number | number[]',
           desc: '默认指定当前选中的项,仅第一次生效',
         },
-        checkedCSS: { type: 'CheckedCSSType', desc: '选中项的样式', defaultValue: 'none' },
-        limitCount: { type: 'number', desc: '多选时的最大选中数', defaultValue: 999999 },
-        offsety: { type: 'number', desc: '菜单间的间隔', defaultValue: 4 },
+        checkedCSS: { type: 'CheckedCSSType', desc: '选中项的样式', propsDefaultValue: 'none' },
+        limitCount: { type: 'number', desc: '多选时的最大选中数' },
+        offsety: { type: 'number', desc: '菜单间的间隔' },
+        start: { type: 'number', desc: '开始展示数据的索引值', defaultValue: 0 },
         autoHeight: {
           type: 'boolean',
           desc: '根据data数量，自动计算菜单高度',
-          defaultValue: false,
+          propsDefaultValue: false,
         },
-        divided: { type: 'boolean', desc: '项之间是否展示分割线', defaultValue: false },
+        divided: { type: 'boolean', desc: '项之间是否展示分割线', propsDefaultValue: false },
         expandedPath: { type: 'string[]', desc: '层级菜单时展开的数据' },
-        separator: { type: 'string', desc: '层级菜单时连接层级数据的分隔符', defaultValue: '|' },
-        offsetX: { type: 'number', desc: '层级菜单时，菜单间的间隔', defaultValue: 4 },
+        separator: {
+          type: 'string',
+          desc: '层级菜单时连接层级数据的分隔符',
+          propsDefaultValue: '|',
+        },
+        offsetX: { type: 'number', desc: '层级菜单时，菜单间的间隔' },
         offsetY: { type: 'string', desc: '层级菜单时，子菜单相对父级菜单的top值' },
-        action: { type: 'ActionType', desc: '层级菜单时，展开子菜单的方式', defaultValue: 'click' },
+        action: {
+          type: 'ActionType',
+          desc: '层级菜单时，展开子菜单的方式',
+          propsDefaultValue: 'click',
+        },
         size: {
           type: 'large | default | bigger',
           desc: '设置列表项的高度',
-          defaultValue: 'default',
+          propsDefaultValue: 'default',
         },
-        subsize: { type: 'SubsizeType', desc: '设置子菜单列表项的高度', defaultValue: 'default' },
-        popupVisible: { type: 'boolean', desc: '层级菜单,是否允许打开子菜单', defaultValue: true },
+        subsize: {
+          type: 'SubsizeType',
+          desc: '设置子菜单列表项的高度',
+          propsDefaultValue: 'default',
+        },
       },
       events: {
         onChange: {
@@ -7759,11 +7702,12 @@ export default [
       title: '多选菜单',
       desc: '多项选择的菜单',
       props: {
-        valueField: { type: 'string', desc: 'data数据的value值的名称', defaultValue: 'value' },
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
         displayField: {
           type: 'string',
           desc: 'data数据的displayValue值的名称',
-          defaultValue: 'text',
+          propsDefaultValue: 'text',
         },
         data: {
           type: 'Object[]',
@@ -7790,34 +7734,50 @@ export default [
             { value: '选项三', text: '选项三' },
           ],
         },
-        mutliple: { type: 'boolean', desc: '是否多选', defaultValue: true },
-        start: { type: 'number', desc: '开始展示数据的索引值', defaultValue: 0 },
+        mutliple: {
+          type: 'boolean',
+          desc: '是否多选',
+          propsDefaultValue: false,
+          defaultValue: true,
+        },
         selectedKeys: { type: 'string | string[] | number | number[]', desc: '指定当前选中的项' },
         defaultSelectedKeys: {
           type: 'string | string[] | number | number[]',
           desc: '默认指定当前选中的项,仅第一次生效',
         },
-        checkedCSS: { type: 'CheckedCSSType', desc: '选中项的样式', defaultValue: 'none' },
-        limitCount: { type: 'number', desc: '多选时的最大选中数', defaultValue: 999999 },
-        offsety: { type: 'number', desc: '菜单间的间隔', defaultValue: 4 },
+        checkedCSS: { type: 'CheckedCSSType', desc: '选中项的样式', propsDefaultValue: 'none' },
+        limitCount: { type: 'number', desc: '多选时的最大选中数' },
+        offsety: { type: 'number', desc: '菜单间的间隔' },
+        start: { type: 'number', desc: '开始展示数据的索引值', defaultValue: 0 },
         autoHeight: {
           type: 'boolean',
           desc: '根据data数量，自动计算菜单高度',
-          defaultValue: false,
+          propsDefaultValue: false,
         },
-        divided: { type: 'boolean', desc: '项之间是否展示分割线', defaultValue: false },
+        divided: { type: 'boolean', desc: '项之间是否展示分割线', propsDefaultValue: false },
         expandedPath: { type: 'string[]', desc: '层级菜单时展开的数据' },
-        separator: { type: 'string', desc: '层级菜单时连接层级数据的分隔符', defaultValue: '|' },
-        offsetX: { type: 'number', desc: '层级菜单时，菜单间的间隔', defaultValue: 4 },
+        separator: {
+          type: 'string',
+          desc: '层级菜单时连接层级数据的分隔符',
+          propsDefaultValue: '|',
+        },
+        offsetX: { type: 'number', desc: '层级菜单时，菜单间的间隔' },
         offsetY: { type: 'string', desc: '层级菜单时，子菜单相对父级菜单的top值' },
-        action: { type: 'ActionType', desc: '层级菜单时，展开子菜单的方式', defaultValue: 'click' },
+        action: {
+          type: 'ActionType',
+          desc: '层级菜单时，展开子菜单的方式',
+          propsDefaultValue: 'click',
+        },
         size: {
           type: 'large | default | bigger',
           desc: '设置列表项的高度',
-          defaultValue: 'default',
+          propsDefaultValue: 'default',
         },
-        subsize: { type: 'SubsizeType', desc: '设置子菜单列表项的高度', defaultValue: 'default' },
-        popupVisible: { type: 'boolean', desc: '层级菜单,是否允许打开子菜单', defaultValue: true },
+        subsize: {
+          type: 'SubsizeType',
+          desc: '设置子菜单列表项的高度',
+          propsDefaultValue: 'default',
+        },
       },
       events: {
         onChange: {
@@ -8063,6 +8023,7 @@ export default [
       title: '导航菜单',
       desc: '为页面提供导航功能的菜单',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
         displayField: {
           type: 'string',
@@ -8072,7 +8033,7 @@ export default [
         pathSeparator: {
           type: 'string',
           desc: '指定结点数组中path信息的分隔符号',
-          propsDefaultValue: '/',
+          propsDefaultValue: '|',
         },
         action: { type: 'ActionType', desc: '弹出项的打开方式', propsDefaultValue: 'click' },
         data: {
@@ -9245,6 +9206,7 @@ export default [
       title: '顶部导航菜单',
       desc: '水平的导航菜单',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
         displayField: {
           type: 'string',
@@ -9254,7 +9216,7 @@ export default [
         pathSeparator: {
           type: 'string',
           desc: '指定结点数组中path信息的分隔符号',
-          propsDefaultValue: '/',
+          propsDefaultValue: '|',
         },
         action: { type: 'ActionType', desc: '弹出项的打开方式', propsDefaultValue: 'click' },
         data: {
@@ -9637,6 +9599,7 @@ export default [
       title: '垂直导航菜单',
       desc: '子菜单从右侧弹开',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
         displayField: {
           type: 'string',
@@ -9646,7 +9609,7 @@ export default [
         pathSeparator: {
           type: 'string',
           desc: '指定结点数组中path信息的分隔符号',
-          propsDefaultValue: '/',
+          propsDefaultValue: '|',
         },
         action: { type: 'ActionType', desc: '弹出项的打开方式', propsDefaultValue: 'click' },
         data: {
@@ -10079,6 +10042,7 @@ export default [
       title: '内嵌导航菜单',
       desc: '点击菜单收起或展开子菜单,ellipse样式',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         valueField: { type: 'string', desc: 'data数据的value值的名称', propsDefaultValue: 'value' },
         displayField: {
           type: 'string',
@@ -10088,7 +10052,7 @@ export default [
         pathSeparator: {
           type: 'string',
           desc: '指定结点数组中path信息的分隔符号',
-          propsDefaultValue: '/',
+          propsDefaultValue: '|',
         },
         action: { type: 'ActionType', desc: '弹出项的打开方式', propsDefaultValue: 'click' },
         data: {
@@ -10374,6 +10338,7 @@ export default [
       title: '表格',
       desc: 'Table  表格',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         columns: {
           type: 'Object[]',
           meta: [
@@ -10436,6 +10401,7 @@ export default [
       title: '数字输入框',
       desc: '常用于数字输入,可以进行快速加减显示',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         disabled: { type: 'boolean', desc: '禁用状态,是否不可用', defaultValue: false },
         viewClass: { type: 'string', desc: '用于配置通用主题属性' },
         size: {
@@ -10637,7 +10603,9 @@ export default [
         pageSizeOptions: {
           type: 'string[]',
           desc: '指定每页可以显示多少条',
-          propsDefaultValue: ['10', '20', '30', '50'],
+          meta: [{ key: 'pageSizes', title: '每页显示多少条的集合', type: 'string[]' }],
+          propsDefaultValue: [['10', '20', '30', '50']],
+          defaultValue: [['10', '20', '30', '50']],
         },
         showQuickJumper: {
           type: 'boolean',
@@ -10676,7 +10644,9 @@ export default [
         blockList: {
           type: 'string[]',
           desc: '分页各部位展示的位置列表',
+          meta: [{ key: 'displayLocation', title: '分页各部位展示的位置', type: 'string[]' }],
           propsDefaultValue: ['Page', 'PageInput', 'Total', 'PageSize'],
+          defaultValue: ['Page', 'PageInput', 'Total', 'PageSize'],
         },
         align: { type: 'AlignType', desc: '分页各部位对齐的方式', propsDefaultValue: 'Left' },
       },
@@ -11140,7 +11110,9 @@ export default [
         pageSizeOptions: {
           type: 'string[]',
           desc: '指定每页可以显示多少条',
-          propsDefaultValue: ['10', '20', '30', '50'],
+          meta: [{ key: 'pageSizes', title: '每页显示多少条的集合', type: 'string[]' }],
+          propsDefaultValue: [['10', '20', '30', '50']],
+          defaultValue: [['10', '20', '30', '50']],
         },
         showQuickJumper: {
           type: 'boolean',
@@ -11180,7 +11152,9 @@ export default [
         blockList: {
           type: 'string[]',
           desc: '分页各部位展示的位置列表',
+          meta: [{ key: 'displayLocation', title: '分页各部位展示的位置', type: 'string[]' }],
           propsDefaultValue: ['Page', 'PageInput', 'Total', 'PageSize'],
+          defaultValue: ['Page', 'PageInput', 'Total', 'PageSize'],
         },
         align: { type: 'AlignType', desc: '分页各部位对齐的方式', propsDefaultValue: 'Left' },
       },
@@ -11301,6 +11275,7 @@ export default [
       title: '进度条',
       desc: '展示操作的当前进度。',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         type: {
           type: 'ProgressType',
           desc: '进度条类型，line、circle、dashboard',
@@ -11450,6 +11425,7 @@ export default [
       title: '圆形进度条',
       desc: '圆形进度条',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         type: {
           type: 'ProgressType',
           desc: '进度条类型，line、circle、dashboard',
@@ -11522,6 +11498,7 @@ export default [
       title: '仪表盘进度条',
       desc: '仪表盘进度条',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         type: {
           type: 'ProgressType',
           desc: '进度条类型，line、circle、dashboard',
@@ -11594,6 +11571,7 @@ export default [
       title: '单选框',
       desc: '单选框。',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         checked: { type: 'boolean', desc: '单选框是否选中' },
         defaultChecked: { type: 'boolean', desc: '单选框初始是否选中' },
         disabled: { type: 'boolean', desc: '单选框是否禁用' },
@@ -11694,6 +11672,7 @@ export default [
       title: '单选框组',
       desc: '单选框组。',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         defaultValue: { type: 'string', desc: '单选框初始选中值' },
         value: { type: 'string', desc: '单选框选中值' },
         disabled: { type: 'boolean', desc: '指定RadioGroup是否禁用' },
@@ -11841,6 +11820,7 @@ export default [
       title: '按钮状单选框组',
       desc: '按钮形状的单选框组',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         defaultValue: { type: 'string', desc: '单选框初始选中值' },
         value: { type: 'string', desc: '单选框选中值' },
         disabled: { type: 'boolean', desc: '指定RadioGroup是否禁用' },
@@ -12013,6 +11993,7 @@ export default [
       title: '评分',
       desc: '评分组件',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         count: { type: 'number', desc: '展示的 star 总数', defaultValue: 5 },
         max: { type: 'number', desc: '最大分值', defaultValue: 5 },
         disabled: { type: 'boolean', desc: '禁用状态,不可进行交互', defaultValue: false },
@@ -12165,6 +12146,7 @@ export default [
       title: '分级图标评分',
       desc: '按分值等级展示不同图标样式和颜色',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         count: { type: 'number', desc: '展示的 star 总数', defaultValue: 5 },
         max: { type: 'number', desc: '最大分值', defaultValue: 5 },
         disabled: { type: 'boolean', desc: '禁用状态,不可进行交互', defaultValue: false },
@@ -12251,6 +12233,7 @@ export default [
       title: '文字评分',
       desc: '按分值等级展示不同图标样式和颜色',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         count: { type: 'number', desc: '展示的 star 总数', defaultValue: 5 },
         max: { type: 'number', desc: '最大分值', defaultValue: 5 },
         disabled: { type: 'boolean', desc: '禁用状态,不可进行交互', defaultValue: false },
@@ -12327,6 +12310,7 @@ export default [
       title: '选择器',
       desc: '选项过多时，弹出下拉菜单给用户选择操作',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         data: {
           type: 'Object[]',
           desc: '生成选择项的数据',
@@ -13091,6 +13075,7 @@ export default [
       title: '多项选择器',
       desc: '支持多项选择',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         data: {
           type: 'Object[]',
           desc: '生成选择项的数据',
@@ -13577,17 +13562,18 @@ export default [
       title: '加载占位符',
       desc: '在等待加载内容时，提供一个占位的图形组合',
       props: {
-        title: { type: 'boolean', desc: '是否展示标题占位符', defaultValue: true },
-        avatar: { type: 'boolean', desc: '是否展示头像占位符', defaultValue: true },
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        title: { type: 'boolean', desc: '是否展示标题占位符', propsDefaultValue: true },
+        avatar: { type: 'boolean', desc: '是否展示头像占位符', propsDefaultValue: true },
         paragraph: {
           type: 'object',
           desc: '段落占位符的数目',
           meta: [{ key: 'rows', title: '段落的数目', type: 'number' }],
           defaultValue: { rows: 3 },
         },
-        loading: { type: 'boolean', desc: '是否展示占位符组合', defaultValue: true },
-        picture: { type: 'boolean', desc: '是否展示图片占位符', defaultValue: false },
-        animation: { type: 'boolean', desc: '是否展示动画效果', defaultValue: false },
+        loading: { type: 'boolean', desc: '是否展示占位符组合', propsDefaultValue: true },
+        picture: { type: 'boolean', desc: '是否展示图片占位符', propsDefaultValue: false },
+        animation: { type: 'boolean', desc: '是否展示动画效果', propsDefaultValue: false },
       },
       category: ['反馈'],
       theme: {
@@ -13692,6 +13678,7 @@ export default [
       title: '滑动输入条',
       desc: '滑动型输入器，展示当前值和可选范围',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         maxValue: { type: 'number', desc: '最大值限制', propsDefaultValue: 30 },
         minValue: { type: 'number', desc: '最小值限制', propsDefaultValue: 0 },
         defaultValue: {
@@ -14366,6 +14353,7 @@ export default [
       title: '单个滑块的样式',
       desc: '单个滑块的样式配置',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         maxValue: { type: 'number', desc: '最大值限制', propsDefaultValue: 30, defaultValue: 30 },
         minValue: { type: 'number', desc: '最小值限制', propsDefaultValue: 0, defaultValue: 0 },
         defaultValue: {
@@ -14560,6 +14548,7 @@ export default [
       title: '双滑块的样式',
       desc: '双滑块的样式配置',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         maxValue: { type: 'number', desc: '最大值限制', propsDefaultValue: 30, defaultValue: 30 },
         minValue: { type: 'number', desc: '最小值限制', propsDefaultValue: 0, defaultValue: 0 },
         defaultValue: {
@@ -14765,6 +14754,7 @@ export default [
       title: '离散值样式',
       desc: '带有离散值节点的样式配置',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         maxValue: { type: 'number', desc: '最大值限制', propsDefaultValue: 30, defaultValue: 15 },
         minValue: { type: 'number', desc: '最小值限制', propsDefaultValue: 0, defaultValue: 5 },
         defaultValue: {
@@ -14977,6 +14967,7 @@ export default [
       title: '步骤条',
       desc: '引导用户按照流程完成任务的导航条',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         children: { type: 'React.Node', desc: '步骤条需要包含的子组件' },
         data: {
           type: 'object[]',
@@ -16188,6 +16179,7 @@ export default [
       title: '垂直步骤条',
       desc: '垂直步骤条配置',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         children: { type: 'React.Node', desc: '步骤条需要包含的子组件' },
         data: {
           type: 'object[]',
@@ -16481,6 +16473,7 @@ export default [
       title: '半扁平步骤条',
       desc: '半扁平步骤条配置',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         children: { type: 'React.Node', desc: '步骤条需要包含的子组件' },
         data: {
           type: 'object[]',
@@ -16774,6 +16767,7 @@ export default [
       title: '图标步骤条',
       desc: '图标步骤条步骤条配置',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         children: { type: 'React.Node', desc: '步骤条需要包含的子组件' },
         data: {
           type: 'object[]',
@@ -17062,6 +17056,7 @@ export default [
       title: '点状步骤条',
       desc: '点状步骤条配置',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         children: { type: 'React.Node', desc: '步骤条需要包含的子组件' },
         data: {
           type: 'object[]',
@@ -17345,6 +17340,7 @@ export default [
       title: '开关',
       desc: '开关选择器',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         defaultValue: { type: 'boolean', desc: '默认开关状态', propsDefaultValue: false },
         value: { type: 'boolean', desc: '开关状态', propsDefaultValue: false },
         data: {
@@ -17544,6 +17540,7 @@ export default [
       title: '表格',
       desc: 'Table  表格。',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         columns: {
           type: 'Object[]',
           meta: [
@@ -17643,6 +17640,7 @@ export default [
       title: '标签页',
       desc: '选项卡切换组件',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         activityValue: { type: 'string', desc: '当前激活 tab 面板的 value' },
         defaultActivityValue: { type: 'string', desc: '默认激活 tab 面板的 value' },
         tabType: {
@@ -18152,6 +18150,7 @@ export default [
       title: '卡片风格标签页',
       desc: '卡片风格标签页',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         activityValue: { type: 'string', desc: '当前激活 tab 面板的 value' },
         defaultActivityValue: { type: 'string', desc: '默认激活 tab 面板的 value' },
         tabType: {
@@ -18404,6 +18403,7 @@ export default [
       title: '窗口风格标签页',
       desc: '窗口风格标签页',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         activityValue: { type: 'string', desc: '当前激活 tab 面板的 value' },
         defaultActivityValue: { type: 'string', desc: '默认激活 tab 面板的 value' },
         tabType: {
@@ -18651,14 +18651,14 @@ export default [
       title: '标签',
       desc: '标记和分类的标签',
       props: {
-        closable: { type: 'boolean', desc: '标签是否可关闭', defaultValue: true },
-        text: { type: 'string', desc: '指定标签的文本值', defaultValue: 'Tag' },
+        closable: { type: 'boolean', desc: '标签是否可关闭', propsDefaultValue: true },
+        text: { type: 'string', desc: '指定标签的文本值', propsDefaultValue: 'Tag' },
         shape: {
           type: 'ShapeType',
           desc: '标签的圆角, basic为4px圆角,round为圆角标签',
-          defaultValue: 'basic',
+          propsDefaultValue: 'basic',
         },
-        type: { type: 'StyleType', desc: '标签的主题样式', defaultValue: 'customs' },
+        type: { type: 'StyleType', desc: '标签的主题样式', propsDefaultValue: 'customs' },
       },
       events: {
         onClick: {
@@ -18855,14 +18855,19 @@ export default [
       title: '可关闭标签',
       desc: '点击关闭按钮可隐藏标签',
       props: {
-        closable: { type: 'boolean', desc: '标签是否可关闭', defaultValue: true },
-        text: { type: 'string', desc: '指定标签的文本值', defaultValue: 'Tag' },
+        closable: {
+          type: 'boolean',
+          desc: '标签是否可关闭',
+          propsDefaultValue: true,
+          defaultValue: true,
+        },
+        text: { type: 'string', desc: '指定标签的文本值', propsDefaultValue: 'Tag' },
         shape: {
           type: 'ShapeType',
           desc: '标签的圆角, basic为4px圆角,round为圆角标签',
-          defaultValue: 'basic',
+          propsDefaultValue: 'basic',
         },
-        type: { type: 'StyleType', desc: '标签的主题样式', defaultValue: 'customs' },
+        type: { type: 'StyleType', desc: '标签的主题样式', propsDefaultValue: 'customs' },
       },
       events: {
         onClick: {
@@ -18939,14 +18944,19 @@ export default [
       title: '可选择标签',
       desc: '点击标签可配置选中样式',
       props: {
-        closable: { type: 'boolean', desc: '标签是否可关闭', defaultValue: true },
-        text: { type: 'string', desc: '指定标签的文本值', defaultValue: 'Tag' },
+        closable: { type: 'boolean', desc: '标签是否可关闭', propsDefaultValue: true },
+        text: { type: 'string', desc: '指定标签的文本值', propsDefaultValue: 'Tag' },
         shape: {
           type: 'ShapeType',
           desc: '标签的圆角, basic为4px圆角,round为圆角标签',
-          defaultValue: 'basic',
+          propsDefaultValue: 'basic',
         },
-        type: { type: 'StyleType', desc: '标签的主题样式', defaultValue: 'optional' },
+        type: {
+          type: 'StyleType',
+          desc: '标签的主题样式',
+          propsDefaultValue: 'customs',
+          defaultValue: 'optional',
+        },
       },
       events: {
         onClick: {
@@ -19059,6 +19069,7 @@ export default [
       title: '时间轴',
       desc: '垂直展示的时间流信息',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         children: { type: 'React.Node', desc: '时间轴需要包含的子组件' },
         data: {
           type: 'object[]',
@@ -19215,6 +19226,7 @@ export default [
       title: '幽灵节点时间轴',
       desc: '幽灵节点时间轴配置',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         children: { type: 'React.Node', desc: '时间轴需要包含的子组件' },
         data: {
           type: 'object[]',
@@ -19293,6 +19305,7 @@ export default [
       title: '时间选择器',
       desc: '用于时间选择,',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         defaultValue: { type: 'string', desc: '时间默认显示值' },
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: false },
         value: { type: 'string', desc: '时间显示值' },
@@ -19312,6 +19325,8 @@ export default [
           desc: '可配置三种尺寸大小的input',
           propsDefaultValue: 'default',
         },
+        open: { type: 'boolean', desc: '控制面板是展开', propsDefaultValue: false },
+        liquidLayout: { type: 'boolean', desc: '是否开启流式布局', propsDefaultValue: false },
       },
       events: {
         onChange: {
@@ -19416,53 +19431,12 @@ export default [
           active: [],
         },
         ExtraFooter: { name: '额外页脚', desc: '额外页脚配置', normal: [['color'], ['font']] },
-        FooterButtonOptions: {
-          name: '页脚按钮',
-          desc: '页脚按钮配置',
-          normal: [
-            ['color'],
-            ['font'],
-            ['margin'],
-            ['padding'],
-            ['width'],
-            ['height'],
-            ['border'],
-            ['borderRadius'],
-            ['background'],
-          ],
-        },
         GroupDate: {
           name: '分类日期',
           desc: '分类日期配置/年/月/周',
           normal: [['color'], ['font']],
           hover: [['color'], ['font']],
           active: [['color'], ['font'], ['background'], ['borderRadius']],
-        },
-        FooterToday: {
-          name: "页脚'今天'按钮",
-          desc: "页脚'今天'按钮配置",
-          normal: [['color'], ['font']],
-          hover: [['color'], ['font']],
-        },
-        FooterTimeButton: {
-          name: '页脚时间按钮',
-          desc: '页脚时间按钮配置',
-          normal: [['color'], ['font']],
-          hover: [['color'], ['font']],
-        },
-        FooterOkButton: {
-          name: '页脚确定按钮',
-          desc: '页脚确定按钮配置',
-          normal: [
-            ['background'],
-            ['margin'],
-            ['padding'],
-            ['borderRadius'],
-            ['color'],
-            ['font'],
-            ['fontSize'],
-          ],
-          hover: [['color'], ['font'], ['fontSize'], ['background']],
         },
         TimePanelHead: {
           name: '时间板头部',
@@ -19493,6 +19467,7 @@ export default [
       title: '穿梭框',
       desc: '穿梭框。',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         data: {
           type: 'Object[]',
           desc: '左右两个面板数据源',
@@ -20179,6 +20154,7 @@ export default [
       title: '树形穿梭框',
       desc: '树形穿梭框，展示树形数据',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         data: {
           type: 'Object[]',
           desc: '左右两个面板数据源',
@@ -20595,6 +20571,7 @@ export default [
       title: '树形控件',
       desc: '清晰地展示层级结构的信息,可展开或折叠。',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         limitCount: { type: 'number', desc: '多选时的最大选中数', defaultValue: 999999 },
         expandAll: { type: 'boolean', desc: '是否展开所有子元素', defaultValue: true },
         onlySelectLeaf: { type: 'boolean', desc: '是否只能选择根节点选项', defaultValue: false },
@@ -20674,25 +20651,29 @@ export default [
             { key: 'close', title: '关闭图标', type: 'icon' },
           ],
         },
-        igronSelectField: { type: 'string', desc: '指定不可选的标识', defaultValue: 'disabled' },
-        mutliple: { type: 'boolean', desc: '是否多选', defaultValue: false },
+        igronSelectField: {
+          type: 'string',
+          desc: '指定不可选的标识',
+          propsDefaultValue: 'disabled',
+        },
+        mutliple: { type: 'boolean', desc: '是否多选', propsDefaultValue: false },
         pathSeparator: {
           type: 'string',
           desc: '指定结点数组中path信息的分隔符号',
-          defaultValue: '/',
+          propsDefaultValue: '|',
         },
         searchType: {
           type: 'start | end | include | eql',
           desc: '生成过滤数据的方式',
           defaultValue: 'include',
         },
-        shpale: {
+        switchAtEnd: { type: 'boolean', desc: '控制器后置', propsDefaultValue: false },
+        showSwitch: { type: 'boolean', desc: '是否展示控制器', propsDefaultValue: true },
+        shape: {
           type: 'default | round',
           desc: '单选树形控件,选中时的样式',
-          defaultValue: 'default',
+          propsDefaultValue: 'default',
         },
-        switchAtEnd: { type: 'boolean', desc: '控制器后置', defaultValue: false },
-        showSwitch: { type: 'boolean', desc: '是否展示控制器', defaultValue: true },
         translateTreeData: {
           type: 'boolean',
           desc: '是否开启嵌套数据生成Tree',
@@ -20892,6 +20873,24 @@ export default [
                   active: [],
                   disabled: [],
                 },
+                SelectedParentText: {
+                  name: '选中项的父节点文本框区域',
+                  desc: '配置选中项的父节点文本框区域的样式',
+                  normal: [
+                    ['color'],
+                    ['font'],
+                    ['fontSize'],
+                    ['background'],
+                    ['padding'],
+                    ['border'],
+                    ['opacity'],
+                    ['boxShadow'],
+                    ['borderRadius'],
+                  ],
+                  hover: [],
+                  active: [],
+                  disabled: [],
+                },
                 TextExpanded: {
                   name: '父节点展开状态的文本框区域',
                   desc: '配置父节点展开状态的文本框区域的样式',
@@ -20955,6 +20954,11 @@ export default [
                     ['cursor'],
                   ],
                 },
+                SelectedParentSwitchIcon: {
+                  name: '选中节点的父节点控制器配置',
+                  desc: '选中节点的父节点配置控制树节点展开或隐藏的控制器的样式',
+                  normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+                },
                 SwitchIconExpanded: {
                   name: '节点展开状态控制器',
                   desc: '配置在父节点展开状态下控制控制器的样式',
@@ -20969,6 +20973,11 @@ export default [
                     ['padding'],
                     ['cursor'],
                   ],
+                },
+                SelectedParentSwitchIconExpanded: {
+                  name: '选中节点的父节点展开状态控制器',
+                  desc: '选中节点的父节点配置在父节点展开状态下控制控制器的样式',
+                  normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
                 },
                 SubTreeWrap: {
                   name: '子树的外盒配置',
@@ -21223,6 +21232,7 @@ export default [
       title: '多选树形控件',
       desc: '多项选择的树形控件',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         limitCount: { type: 'number', desc: '多选时的最大选中数', defaultValue: 999999 },
         expandAll: { type: 'boolean', desc: '是否展开所有子元素', defaultValue: true },
         onlySelectLeaf: { type: 'boolean', desc: '是否只能选择根节点选项', defaultValue: false },
@@ -21302,25 +21312,34 @@ export default [
             { key: 'close', title: '关闭图标', type: 'icon' },
           ],
         },
-        igronSelectField: { type: 'string', desc: '指定不可选的标识', defaultValue: 'disabled' },
-        mutliple: { type: 'boolean', desc: '是否多选', defaultValue: true },
+        igronSelectField: {
+          type: 'string',
+          desc: '指定不可选的标识',
+          propsDefaultValue: 'disabled',
+        },
+        mutliple: {
+          type: 'boolean',
+          desc: '是否多选',
+          propsDefaultValue: false,
+          defaultValue: true,
+        },
         pathSeparator: {
           type: 'string',
           desc: '指定结点数组中path信息的分隔符号',
-          defaultValue: '/',
+          propsDefaultValue: '|',
         },
         searchType: {
           type: 'start | end | include | eql',
           desc: '生成过滤数据的方式',
           defaultValue: 'include',
         },
-        shpale: {
+        switchAtEnd: { type: 'boolean', desc: '控制器后置', propsDefaultValue: false },
+        showSwitch: { type: 'boolean', desc: '是否展示控制器', propsDefaultValue: true },
+        shape: {
           type: 'default | round',
           desc: '单选树形控件,选中时的样式',
-          defaultValue: 'default',
+          propsDefaultValue: 'default',
         },
-        switchAtEnd: { type: 'boolean', desc: '控制器后置', defaultValue: false },
-        showSwitch: { type: 'boolean', desc: '是否展示控制器', defaultValue: true },
         translateTreeData: {
           type: 'boolean',
           desc: '是否开启嵌套数据生成Tree',
@@ -21514,6 +21533,24 @@ export default [
               active: [],
               disabled: [],
             },
+            SelectedParentText: {
+              name: '选中项的父节点文本框区域',
+              desc: '配置选中项的父节点文本框区域的样式',
+              normal: [
+                ['color'],
+                ['font'],
+                ['fontSize'],
+                ['background'],
+                ['padding'],
+                ['border'],
+                ['opacity'],
+                ['boxShadow'],
+                ['borderRadius'],
+              ],
+              hover: [],
+              active: [],
+              disabled: [],
+            },
             TextExpanded: {
               name: '父节点展开状态的文本框区域',
               desc: '配置父节点展开状态的文本框区域的样式',
@@ -21556,6 +21593,11 @@ export default [
               active: [['color'], ['font'], ['fontSize']],
               disabled: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
             },
+            SelectedParentSwitchIcon: {
+              name: '选中节点的父节点控制器配置',
+              desc: '选中节点的父节点配置控制树节点展开或隐藏的控制器的样式',
+              normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+            },
             SwitchIconExpanded: {
               name: '节点展开状态控制器',
               desc: '配置在父节点展开状态下控制控制器的样式',
@@ -21563,6 +21605,11 @@ export default [
               hover: [['color'], ['font'], ['fontSize']],
               active: [],
               disabled: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+            },
+            SelectedParentSwitchIconExpanded: {
+              name: '选中节点的父节点展开状态控制器',
+              desc: '选中节点的父节点配置在父节点展开状态下控制控制器的样式',
+              normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
             },
             SubTreeWrap: {
               name: '子树的外盒配置',
@@ -21628,6 +21675,7 @@ export default [
       title: '树形选择控件',
       desc: '类似Select选择器，弹出面板是一个树形控件，可以清晰地展示层级数据结构。',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
         validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
         data: {
@@ -22479,6 +22527,7 @@ export default [
       title: '多项树形选择',
       desc: '支持多项树形选择',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
         validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
         data: {
@@ -23014,6 +23063,7 @@ export default [
       title: '上传',
       desc: '上传组件,可通过文件选择和拖拽上传',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         data: { type: 'object', desc: '上传时附带的额外参数' },
         areaType: { type: 'UploadType', desc: '上传组件的类型', propsDefaultValue: 'default' },
         disabled: { type: 'boolean', desc: '禁用状态', propsDefaultValue: false },
@@ -23446,6 +23496,7 @@ export default [
       title: '按钮上传',
       desc: '按钮上传模式的配置项',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         data: { type: 'object', desc: '上传时附带的额外参数' },
         areaType: {
           type: 'UploadType',
@@ -23592,6 +23643,7 @@ export default [
       title: '图片上传',
       desc: '图片上传模式的配置项，仅支持图片',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         data: { type: 'object', desc: '上传时附带的额外参数' },
         areaType: {
           type: 'UploadType',
@@ -23746,6 +23798,7 @@ export default [
       title: '区域拖拽上传',
       desc: '大面积区域拖拽上传模式的配置项',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         data: { type: 'object', desc: '上传时附带的额外参数' },
         areaType: {
           type: 'UploadType',
@@ -23899,6 +23952,7 @@ export default [
       title: '带按钮的拖拽上传',
       desc: '带按钮的拖拽上传模式的配置项',
       props: {
+        lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         data: { type: 'object', desc: '上传时附带的额外参数' },
         areaType: {
           type: 'UploadType',
