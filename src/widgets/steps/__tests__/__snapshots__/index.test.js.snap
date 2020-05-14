@@ -197,7 +197,7 @@ exports[`stepsDemo Component JSON 1`] = `
   word-break: keep-all;
   overflow: hidden;
   font-size: 1.2rem;
-  white-space: nowrap;
+  white-space: normal;
   top: 2.5rem;
   left: 3rem;
   text-align: left;
@@ -209,7 +209,7 @@ exports[`stepsDemo Component JSON 1`] = `
   word-break: keep-all;
   overflow: hidden;
   font-size: 1.2rem;
-  white-space: nowrap;
+  white-space: normal;
   top: 2.5rem;
   left: 3.5rem;
   text-align: left;
@@ -221,7 +221,7 @@ exports[`stepsDemo Component JSON 1`] = `
   word-break: keep-all;
   overflow: hidden;
   font-size: 1.2rem;
-  white-space: nowrap;
+  white-space: normal;
   top: 1.5rem;
   left: 2rem;
   text-align: left;
