@@ -61,8 +61,8 @@ const getSize = (
   const widthAndHorizontal = isWidth ? isHorizontal(orientation) : !isHorizontal(orientation);
   return widthAndHorizontal ? '100%' : defaultValue;
 };
-const getWhiteSpaceCSS = (orientation: OrientationType): string => {
-  const theWhiteSpace = isHorizontal(orientation) ? 'normal' : 'nowrap';
+const getWhiteSpaceCSS = (width: string | number): string => {
+  const theWhiteSpace = width ? 'nowrap' : 'normal';
   return `white-space:${theWhiteSpace};`;
 };
 
@@ -163,6 +163,7 @@ const Description = CSSComponent({
       ['margin'],
     ],
     getCSS(themeMeta, themeProps) {
+      const { width } = themeMeta;
       const { propsConfig } = themeProps;
       const { size, stepType, orientation, stepContainerWidth, desAlign } = propsConfig;
       let top = 0;
@@ -180,7 +181,7 @@ const Description = CSSComponent({
       const topCSS = `top:${px2remcss(top)};`;
       const leftPosition = !isHorizontal(orientation) ? `left:${px2remcss(left)};` : '';
       const alignCSS = `text-align:${desAlign && desAlign === 'center' ? 'center' : 'left'};`;
-      return `${getWhiteSpaceCSS(orientation)}${topCSS}${leftPosition}${maxWidthCSS}${alignCSS}`;
+      return `${getWhiteSpaceCSS(width)}${topCSS}${leftPosition}${maxWidthCSS}${alignCSS}`;
     },
     defaultTheme: {
       fontSize: 12,
