@@ -93,7 +93,6 @@ type SelectState = {
   validateStatus: ValidateStatus,
   selectCount: number,
   isCheckedAll: boolean,
-  menuWidth: number,
   menuVisible: boolean,
 };
 
@@ -182,7 +181,6 @@ class Select extends React.Component<SelectProps, SelectState> {
         isCheckedAll: false,
       };
     }
-
     return {
       value: theValue,
       displayValue,
@@ -329,7 +327,11 @@ class Select extends React.Component<SelectProps, SelectState> {
   };
 
   getContainerWidth = () => {
-    return this.state.menuWidth;
+    return (
+      this.inputTag &&
+      this.inputTag.current &&
+      this.inputTag.current.getThemeTarget().container.offsetWidth
+    );
   };
 
   getPopupMenu = () => {
@@ -787,15 +789,6 @@ class Select extends React.Component<SelectProps, SelectState> {
     };
     return this.mergeTheme('Menu', defaultMenuTheme);
   };
-
-  componentDidMount() {
-    setTimeout(() => {
-      const menuWidth = this.inputTag.current.getThemeTarget().container.offsetWidth;
-      this.setState({
-        menuWidth,
-      });
-    }, 0);
-  }
 }
 
 export default ThemeHoc(ValidateHoc(Select), Widget.Select, { hover: true });
