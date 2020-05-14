@@ -75,7 +75,7 @@ const Container: Object = CSSComponent({
   normal: {
     selectNames: [['background']],
     defaultTheme: {
-      background: 'transparent',
+      background: { color: 'transparent' },
     },
     getCSS(themeMeta: Object, themeProps: Object) {
       const { width, height } = themeMeta;
