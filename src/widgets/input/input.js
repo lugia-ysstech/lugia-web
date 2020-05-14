@@ -250,6 +250,7 @@ type InputState = {
 type InsideProps = {
   _maxLength: string,
   getInputRef: Function,
+  getInputWidgetRef: Function,
   _focus: boolean,
 };
 
@@ -305,11 +306,13 @@ class TextBox extends Component<InputProps, InputState> {
     },
   };
   input: any;
+  inputContainer: any;
   static displayName = Widget.Input;
 
   constructor(props: InputProps) {
     super(props);
     this.input = React.createRef();
+    this.inputContainer = React.createRef();
   }
 
   static getDerivedStateFromProps(nextProps: Object, preState: Object) {
@@ -328,6 +331,10 @@ class TextBox extends Component<InputProps, InputState> {
   }
   getRef() {
     return this.input;
+  }
+
+  getContainerRef() {
+    return this.inputContainer;
   }
 
   onChange = (event: Object) => {
@@ -389,7 +396,11 @@ class TextBox extends Component<InputProps, InputState> {
       leave: this.onMouseLeave,
     };
     return (
-      <InputContainer themeProps={this.getFinalThemeProps()} {...addMouseEvent(this, mouseConfig)}>
+      <InputContainer
+        ref={this.inputContainer}
+        themeProps={this.getFinalThemeProps()}
+        {...addMouseEvent(this, mouseConfig)}
+      >
         {this.generatePrefix()}
         {this.generateInput()}
         {this.generateSuffix()}
@@ -401,8 +412,9 @@ class TextBox extends Component<InputProps, InputState> {
   }
 
   componentDidMount() {
-    const { getInputRef } = this.props;
+    const { getInputRef, getInputWidgetRef } = this.props;
     getInputRef && getInputRef({ ref: this.getRef() });
+    getInputWidgetRef && getInputWidgetRef({ ref: this.getContainerRef() });
   }
   getFixIcon(fix: React$Node, WidgetName: string): React$Node {
     if (ObjectUtils.isString(fix)) {
