@@ -238,13 +238,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
       return value;
     },
   };
-  el: any;
   static displayName = Widget.NumberInput;
-
-  constructor(props: NumberInputProps) {
-    super(props);
-    this.el = React.createRef();
-  }
 
   static getDerivedStateFromProps(nextProps: NumberInputProps, state: NumberInputState) {
     const { value, defaultValue, disabled } = nextProps;
@@ -406,6 +400,15 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
       </ArrowIconContainer>
     );
   }
+  focusInput() {
+    this.inputRef && this.inputRef.current.focus();
+  }
+
+  getInputRef = refs => {
+    const { ref } = refs;
+    this.inputRef = ref;
+  };
+
   render() {
     const { value } = this.state;
     const { createEventChannel, getPartOfThemeHocProps, getPartOfThemeProps } = this.props;
@@ -436,9 +439,9 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     const arrowContainerChannel = createEventChannel([['hover'], ['focus']]);
     return (
       <Input
+        getInputRef={this.getInputRef}
         lugiaConsumers={arrowContainerChannel.consumer}
         theme={theInputTheme}
-        ref={this.el}
         {...this.props}
         value={value}
         suffix={this.getStepArrowIconContainer(arrowContainerChannel)}
@@ -463,6 +466,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
   };
 
   handleClick = (click: ClickType) => (event: Event) => {
+    this.focusInput();
     this.calculateValue(click, event);
   };
 
