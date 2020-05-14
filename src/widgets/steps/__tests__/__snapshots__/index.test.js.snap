@@ -18,7 +18,7 @@ exports[`stepsDemo Component JSON 1`] = `
   z-index: 5;
 }
 
-.c25 {
+.c26 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -49,44 +49,40 @@ exports[`stepsDemo Component JSON 1`] = `
 
 .c9 {
   position: absolute;
-  white-space: normal;
   display: block;
   word-break: keep-all;
-  white-space: nowrap;
   font-size: 1.4rem;
+  white-space: nowrap;
   bottom: -2rem;
   text-align: left;
 }
 
 .c17 {
   position: absolute;
-  white-space: normal;
   display: block;
   word-break: keep-all;
-  white-space: nowrap;
   font-size: 1.4rem;
+  white-space: nowrap;
   bottom: -2rem;
   text-align: center;
 }
 
 .c19 {
   position: absolute;
-  white-space: normal;
   display: block;
   word-break: keep-all;
-  white-space: nowrap;
   font-size: 1.4rem;
+  white-space: nowrap;
   bottom: -2.5rem;
   text-align: left;
 }
 
-.c35 {
+.c36 {
   position: absolute;
-  white-space: normal;
   display: block;
   word-break: keep-all;
-  white-space: nowrap;
   font-size: 1.4rem;
+  white-space: nowrap;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
@@ -95,13 +91,12 @@ exports[`stepsDemo Component JSON 1`] = `
   text-align: left;
 }
 
-.c39 {
+.c40 {
   position: absolute;
-  white-space: normal;
   display: block;
   word-break: keep-all;
-  white-space: nowrap;
   font-size: 1.4rem;
+  white-space: nowrap;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
@@ -110,13 +105,12 @@ exports[`stepsDemo Component JSON 1`] = `
   text-align: left;
 }
 
-.c44 {
+.c45 {
   position: absolute;
-  white-space: normal;
   display: block;
   word-break: keep-all;
-  white-space: nowrap;
   font-size: 1.4rem;
+  white-space: nowrap;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
@@ -127,102 +121,101 @@ exports[`stepsDemo Component JSON 1`] = `
 
 .c10 {
   position: absolute;
-  white-space: normal;
   display: block;
   word-break: keep-all;
-  white-space: inherit;
   overflow: hidden;
   font-size: 1.2rem;
-  top: 5rem;
+  white-space: normal;
+  top: 5.5rem;
   max-width: 20rem;
   text-align: left;
 }
 
 .c18 {
   position: absolute;
-  white-space: normal;
   display: block;
   word-break: keep-all;
-  white-space: inherit;
   overflow: hidden;
   font-size: 1.2rem;
-  top: 5rem;
+  white-space: normal;
+  top: 5.5rem;
   max-width: 20rem;
   text-align: center;
 }
 
-.c26 {
+.c20 {
   position: absolute;
-  white-space: normal;
   display: block;
   word-break: keep-all;
-  white-space: inherit;
   overflow: hidden;
   font-size: 1.2rem;
+  white-space: normal;
+  top: 5rem;
+  max-width: 20rem;
+  text-align: left;
+}
+
+.c27 {
+  position: absolute;
+  display: block;
+  word-break: keep-all;
+  overflow: hidden;
+  font-size: 1.2rem;
+  white-space: normal;
   top: 4.5rem;
   max-width: 20rem;
   text-align: left;
 }
 
-.c30 {
+.c31 {
   position: absolute;
-  white-space: normal;
   display: block;
   word-break: keep-all;
-  white-space: inherit;
   overflow: hidden;
   font-size: 1.2rem;
+  white-space: normal;
   top: 3.5rem;
   max-width: 20rem;
   text-align: left;
 }
 
-.c36 {
+.c37 {
   position: absolute;
-  white-space: normal;
   display: block;
   word-break: keep-all;
-  white-space: inherit;
   overflow: hidden;
   font-size: 1.2rem;
+  white-space: nowrap;
   top: 2.5rem;
   left: 3rem;
-  -webkit-undefinedtext-align: left;
-  -ms-flex-undefinedtext-align: left;
-  undefinedtext-align: left;
+  text-align: left;
 }
 
-.c40 {
+.c41 {
   position: absolute;
-  white-space: normal;
   display: block;
   word-break: keep-all;
-  white-space: inherit;
   overflow: hidden;
   font-size: 1.2rem;
+  white-space: nowrap;
   top: 2.5rem;
   left: 3.5rem;
-  -webkit-undefinedtext-align: left;
-  -ms-flex-undefinedtext-align: left;
-  undefinedtext-align: left;
+  text-align: left;
 }
 
-.c45 {
+.c46 {
   position: absolute;
-  white-space: normal;
   display: block;
   word-break: keep-all;
-  white-space: inherit;
   overflow: hidden;
   font-size: 1.2rem;
+  white-space: nowrap;
   top: 1.5rem;
   left: 2rem;
-  -webkit-undefinedtext-align: left;
-  -ms-flex-undefinedtext-align: left;
-  undefinedtext-align: left;
+  text-align: left;
 }
 
-.c20 {
+.c21 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -247,7 +240,7 @@ exports[`stepsDemo Component JSON 1`] = `
   flex: 1;
 }
 
-.c37 {
+.c38 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -268,7 +261,7 @@ exports[`stepsDemo Component JSON 1`] = `
   transform: translate(-50%,-50%);
 }
 
-.c22 {
+.c23 {
   position: relative;
   top: 50%;
   left: 50%;
@@ -277,7 +270,7 @@ exports[`stepsDemo Component JSON 1`] = `
   transform: translate(-50%,-50%);
 }
 
-.c22::before {
+.c23::before {
   content: '';
   opacity: 1;
   position: absolute;
@@ -288,7 +281,7 @@ exports[`stepsDemo Component JSON 1`] = `
   left: -0.2rem;
 }
 
-.c22::after {
+.c23::after {
   content: '';
   opacity: 1;
   position: absolute;
@@ -299,7 +292,7 @@ exports[`stepsDemo Component JSON 1`] = `
   right: -0.2rem;
 }
 
-.c41 {
+.c42 {
   position: relative;
   top: 50%;
   left: 50%;
@@ -308,7 +301,7 @@ exports[`stepsDemo Component JSON 1`] = `
   transform: translate(-50%,-50%);
 }
 
-.c41::before {
+.c42::before {
   content: '';
   opacity: 1;
   position: absolute;
@@ -319,7 +312,7 @@ exports[`stepsDemo Component JSON 1`] = `
   top: -0.2rem;
 }
 
-.c41::after {
+.c42::after {
   content: '';
   opacity: 1;
   position: absolute;
@@ -330,7 +323,7 @@ exports[`stepsDemo Component JSON 1`] = `
   bottom: -0.2rem;
 }
 
-.c21 {
+.c22 {
   position: relative;
   top: 50%;
   left: 50%;
@@ -343,7 +336,7 @@ exports[`stepsDemo Component JSON 1`] = `
   position: relative;
 }
 
-.c29 {
+.c30 {
   position: relative;
   display: inLine-block;
   border-radius: 50%;
@@ -351,7 +344,7 @@ exports[`stepsDemo Component JSON 1`] = `
   height: 1.2rem;
 }
 
-.c24 {
+.c25 {
   text-align: left;
   position: relative;
   display: inLine-block;
@@ -368,7 +361,7 @@ exports[`stepsDemo Component JSON 1`] = `
 }
 
 .c7 {
-  box-sizing: content-box;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -398,7 +391,7 @@ exports[`stepsDemo Component JSON 1`] = `
   flex-direction: row;
 }
 
-.c33 {
+.c34 {
   height: 100%;
   width: 100%;
   position: relative;
@@ -411,7 +404,7 @@ exports[`stepsDemo Component JSON 1`] = `
   flex-direction: column;
 }
 
-.c27 {
+.c28 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -423,7 +416,7 @@ exports[`stepsDemo Component JSON 1`] = `
   flex-direction: row;
 }
 
-.c43 {
+.c44 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -475,7 +468,7 @@ exports[`stepsDemo Component JSON 1`] = `
   justify-content: center;
 }
 
-.c23 {
+.c24 {
   text-align: center;
   position: relative;
   display: -webkit-box;
@@ -493,7 +486,7 @@ exports[`stepsDemo Component JSON 1`] = `
   transform: translateY(-50%);
 }
 
-.c34 {
+.c35 {
   text-align: center;
   position: relative;
   display: -webkit-box;
@@ -507,7 +500,7 @@ exports[`stepsDemo Component JSON 1`] = `
   justify-content: center;
 }
 
-.c42 {
+.c43 {
   text-align: center;
   position: relative;
   display: -webkit-box;
@@ -521,7 +514,7 @@ exports[`stepsDemo Component JSON 1`] = `
   justify-content: center;
 }
 
-.c28 {
+.c29 {
   text-align: center;
   position: relative;
   display: -webkit-box;
@@ -551,7 +544,7 @@ exports[`stepsDemo Component JSON 1`] = `
   flex-direction: row;
 }
 
-.c32 {
+.c33 {
   font-variant: tabular-nums;
   box-sizing: border-box;
   list-style: none;
@@ -568,7 +561,7 @@ exports[`stepsDemo Component JSON 1`] = `
   display: block;
 }
 
-.c38 {
+.c39 {
   display: inline-block;
 }
 
@@ -576,7 +569,7 @@ exports[`stepsDemo Component JSON 1`] = `
   display: inline-block;
 }
 
-.c47 {
+.c48 {
   display: inline-block;
   margin-bottom: 0;
   box-sizing: border-box;
@@ -608,12 +601,11 @@ exports[`stepsDemo Component JSON 1`] = `
   border-right-color: #cccccc;
 }
 
-.c49 {
-  color: #666666;
+.c50 {
   font-size: 1.4rem;
 }
 
-.c48 {
+.c49 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -634,12 +626,12 @@ exports[`stepsDemo Component JSON 1`] = `
   margin: 50px;
 }
 
-.c31 {
+.c32 {
   margin: 50px;
   display: inline-block;
 }
 
-.c46 {
+.c47 {
   width: 400px;
   margin-top: 40px;
   border: 1px solid #ccc;
@@ -658,11 +650,7 @@ exports[`stepsDemo Component JSON 1`] = `
       <div
         className="c1"
         orientation="horizontal"
-        style={
-          Object {
-            "width": "150rem",
-          }
-        }
+        style={Object {}}
       >
         <div>
           <div
@@ -741,21 +729,21 @@ exports[`stepsDemo Component JSON 1`] = `
                       className="c9"
                       style={
                         Object {
-                          "color": "#333333",
+                          "color": "#363B40",
                         }
                       }
                     >
-                      This is title1
+                      步骤1
                     </div>
                     <div
                       className="c10"
                       style={
                         Object {
-                          "color": "#666666",
+                          "color": "#646A6E",
                         }
                       }
                     >
-                      This is description1
+                      描述性文本1
                     </div>
                   </div>
                 </div>
@@ -866,21 +854,21 @@ exports[`stepsDemo Component JSON 1`] = `
                         className="c9"
                         style={
                           Object {
-                            "color": "#333333",
+                            "color": "#363B40",
                           }
                         }
                       >
-                        This is title2
+                        步骤2
                       </div>
                       <div
                         className="c10"
                         style={
                           Object {
-                            "color": "#666666",
+                            "color": "#646A6E",
                           }
                         }
                       >
-                        This is description2
+                        描述性文本2
                       </div>
                     </div>
                   </div>
@@ -983,7 +971,7 @@ exports[`stepsDemo Component JSON 1`] = `
                           }
                         }
                       >
-                        This is title3
+                        步骤3
                       </div>
                       <div
                         className="c10"
@@ -993,7 +981,7 @@ exports[`stepsDemo Component JSON 1`] = `
                           }
                         }
                       >
-                        This is description3
+                        描述性文本3
                       </div>
                     </div>
                   </div>
@@ -1096,7 +1084,7 @@ exports[`stepsDemo Component JSON 1`] = `
                           }
                         }
                       >
-                        This is title4
+                        步骤4
                       </div>
                       <div
                         className="c10"
@@ -1106,7 +1094,7 @@ exports[`stepsDemo Component JSON 1`] = `
                           }
                         }
                       >
-                        This is description4
+                        描述性文本4
                       </div>
                     </div>
                   </div>
@@ -1209,7 +1197,7 @@ exports[`stepsDemo Component JSON 1`] = `
                           }
                         }
                       >
-                        This is title5
+                        步骤5
                       </div>
                       <div
                         className="c10"
@@ -1219,7 +1207,7 @@ exports[`stepsDemo Component JSON 1`] = `
                           }
                         }
                       >
-                        This is description5
+                        描述性文本5
                       </div>
                     </div>
                   </div>
@@ -1240,11 +1228,7 @@ exports[`stepsDemo Component JSON 1`] = `
     <div
       className="c1"
       orientation="horizontal"
-      style={
-        Object {
-          "width": "150rem",
-        }
-      }
+      style={Object {}}
     >
       <div>
         <div
@@ -1323,21 +1307,21 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c9"
                     style={
                       Object {
-                        "color": "#333333",
+                        "color": "#363B40",
                       }
                     }
                   >
-                    title1
+                    步骤1
                   </div>
                   <div
                     className="c10"
                     style={
                       Object {
-                        "color": "#666666",
+                        "color": "#646A6E",
                       }
                     }
                   >
-                    This is description1
+                    描述性文本1
                   </div>
                 </div>
               </div>
@@ -1435,17 +1419,17 @@ exports[`stepsDemo Component JSON 1`] = `
                       className="c9"
                       style={
                         Object {
-                          "color": "#333333",
+                          "color": "#363B40",
                         }
                       }
                     >
-                      title1
+                      步骤1
                     </div>
                     <div
                       className="c10"
                       style={
                         Object {
-                          "color": "#666666",
+                          "color": "#646A6E",
                         }
                       }
                     >
@@ -1563,17 +1547,17 @@ exports[`stepsDemo Component JSON 1`] = `
                       className="c9"
                       style={
                         Object {
-                          "color": "#333333",
+                          "color": "#363B40",
                         }
                       }
                     >
-                      title2
+                      步骤2
                     </div>
                     <div
                       className="c10"
                       style={
                         Object {
-                          "color": "#666666",
+                          "color": "#646A6E",
                         }
                       }
                     >
@@ -1682,7 +1666,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      title3
+                      步骤3
                     </div>
                     <div
                       className="c10"
@@ -1692,7 +1676,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      This is description3
+                      描述性文本3
                     </div>
                   </div>
                 </div>
@@ -1795,7 +1779,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      title4
+                      步骤4
                     </div>
                     <div
                       className="c10"
@@ -1805,7 +1789,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      This is description4
+                      描述性文本4
                     </div>
                   </div>
                 </div>
@@ -1908,7 +1892,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      title5
+                      步骤5
                     </div>
                     <div
                       className="c10"
@@ -1918,7 +1902,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      This is description5
+                      描述性文本5
                     </div>
                   </div>
                 </div>
@@ -1942,11 +1926,7 @@ exports[`stepsDemo Component JSON 1`] = `
     <div
       className="c1"
       orientation="horizontal"
-      style={
-        Object {
-          "width": "150rem",
-        }
-      }
+      style={Object {}}
     >
       <div>
         <div
@@ -2025,21 +2005,21 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c17"
                     style={
                       Object {
-                        "color": "#333333",
+                        "color": "#363B40",
                       }
                     }
                   >
-                    title1
+                    步骤1
                   </div>
                   <div
                     className="c18"
                     style={
                       Object {
-                        "color": "#666666",
+                        "color": "#646A6E",
                       }
                     }
                   >
-                    This is description1
+                    描述性文本1
                   </div>
                 </div>
               </div>
@@ -2137,21 +2117,21 @@ exports[`stepsDemo Component JSON 1`] = `
                       className="c17"
                       style={
                         Object {
-                          "color": "#333333",
+                          "color": "#363B40",
                         }
                       }
                     >
-                      title2
+                      步骤2
                     </div>
                     <div
                       className="c18"
                       style={
                         Object {
-                          "color": "#666666",
+                          "color": "#646A6E",
                         }
                       }
                     >
-                      This is description2
+                      描述性文本2
                     </div>
                   </div>
                 </div>
@@ -2263,21 +2243,21 @@ exports[`stepsDemo Component JSON 1`] = `
                       className="c17"
                       style={
                         Object {
-                          "color": "#333333",
+                          "color": "#363B40",
                         }
                       }
                     >
-                      title3
+                      步骤3
                     </div>
                     <div
                       className="c18"
                       style={
                         Object {
-                          "color": "#666666",
+                          "color": "#646A6E",
                         }
                       }
                     >
-                      This is description3
+                      描述性文本3
                     </div>
                   </div>
                 </div>
@@ -2380,7 +2360,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      title4
+                      步骤4
                     </div>
                     <div
                       className="c18"
@@ -2390,7 +2370,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      This is description4
+                      描述性文本4
                     </div>
                   </div>
                 </div>
@@ -2493,7 +2473,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      title5
+                      步骤5
                     </div>
                     <div
                       className="c18"
@@ -2503,7 +2483,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      This is description5
+                      描述性文本5
                     </div>
                   </div>
                 </div>
@@ -2606,7 +2586,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      title6
+                      步骤6
                     </div>
                     <div
                       className="c18"
@@ -2616,7 +2596,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      This is description6
+                      描述性文本6
                     </div>
                   </div>
                 </div>
@@ -2640,11 +2620,7 @@ exports[`stepsDemo Component JSON 1`] = `
     <div
       className="c1"
       orientation="horizontal"
-      style={
-        Object {
-          "width": "150rem",
-        }
-      }
+      style={Object {}}
     >
       <div>
         <div
@@ -2723,11 +2699,21 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c19"
                     style={
                       Object {
-                        "color": "#333333",
+                        "color": "#363B40",
                       }
                     }
                   >
-                    title1
+                    步骤1
+                  </div>
+                  <div
+                    className="c20"
+                    style={
+                      Object {
+                        "color": "#646A6E",
+                      }
+                    }
+                  >
+                    描述性文本
                   </div>
                 </div>
               </div>
@@ -2825,11 +2811,21 @@ exports[`stepsDemo Component JSON 1`] = `
                       className="c19"
                       style={
                         Object {
-                          "color": "#333333",
+                          "color": "#363B40",
                         }
                       }
                     >
-                      title2
+                      步骤2
+                    </div>
+                    <div
+                      className="c20"
+                      style={
+                        Object {
+                          "color": "#646A6E",
+                        }
+                      }
+                    >
+                      描述性文本
                     </div>
                   </div>
                 </div>
@@ -2941,11 +2937,11 @@ exports[`stepsDemo Component JSON 1`] = `
                       className="c19"
                       style={
                         Object {
-                          "color": "#333333",
+                          "color": "#363B40",
                         }
                       }
                     >
-                      title3
+                      步骤3
                     </div>
                   </div>
                 </div>
@@ -3048,7 +3044,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      title4
+                      步骤4
                     </div>
                   </div>
                 </div>
@@ -3151,7 +3147,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      title5
+                      步骤5
                     </div>
                   </div>
                 </div>
@@ -3254,7 +3250,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      title6
+                      步骤6
                     </div>
                   </div>
                 </div>
@@ -3278,11 +3274,7 @@ exports[`stepsDemo Component JSON 1`] = `
     <div
       className="c1"
       orientation="horizontal"
-      style={
-        Object {
-          "width": "150rem",
-        }
-      }
+      style={Object {}}
     >
       <div>
         <div
@@ -3324,7 +3316,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     size="mini"
                     style={
                       Object {
-                        "backgroundColor": "rgb(128,144,255)",
+                        "backgroundColor": "#4d63ff",
                         "height": "2.4rem",
                         "width": "2.4rem",
                       }
@@ -3349,11 +3341,21 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c19"
                     style={
                       Object {
-                        "color": "rgb(128,144,255)",
+                        "color": "#4d63ff",
                       }
                     }
                   >
-                    title1
+                    步骤1
+                  </div>
+                  <div
+                    className="c20"
+                    style={
+                      Object {
+                        "color": "#646A6E",
+                      }
+                    }
+                  >
+                    描述性文本
                   </div>
                 </div>
               </div>
@@ -3379,7 +3381,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   style={Object {}}
                 >
                   <div
-                    className="c20"
+                    className="c21"
                     style={
                       Object {
                         "height": "3.2rem",
@@ -3388,10 +3390,10 @@ exports[`stepsDemo Component JSON 1`] = `
                     }
                   >
                     <div
-                      className="c21"
+                      className="c22"
                       style={
                         Object {
-                          "backgroundColor": "rgb(128,144,255)",
+                          "backgroundColor": "#4d63ff",
                           "height": "0.6rem",
                           "width": "100%",
                         }
@@ -3413,7 +3415,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       size="mini"
                       style={
                         Object {
-                          "backgroundColor": "rgb(128,144,255)",
+                          "backgroundColor": "#4d63ff",
                           "height": "2.4rem",
                           "width": "2.4rem",
                         }
@@ -3438,11 +3440,21 @@ exports[`stepsDemo Component JSON 1`] = `
                       className="c19"
                       style={
                         Object {
-                          "color": "rgb(128,144,255)",
+                          "color": "#4d63ff",
                         }
                       }
                     >
-                      title2
+                      步骤2
+                    </div>
+                    <div
+                      className="c20"
+                      style={
+                        Object {
+                          "color": "#646A6E",
+                        }
+                      }
+                    >
+                      描述性文本
                     </div>
                   </div>
                 </div>
@@ -3469,7 +3481,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   style={Object {}}
                 >
                   <div
-                    className="c20"
+                    className="c21"
                     style={
                       Object {
                         "height": "3.2rem",
@@ -3478,10 +3490,10 @@ exports[`stepsDemo Component JSON 1`] = `
                     }
                   >
                     <div
-                      className="c21"
+                      className="c22"
                       style={
                         Object {
-                          "backgroundColor": "rgb(128,144,255)",
+                          "backgroundColor": "#4d63ff",
                           "height": "0.6rem",
                           "width": "100%",
                         }
@@ -3503,7 +3515,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       size="mini"
                       style={
                         Object {
-                          "backgroundColor": "rgb(128,144,255)",
+                          "backgroundColor": "#4d63ff",
                           "height": "2.4rem",
                           "width": "2.4rem",
                         }
@@ -3541,11 +3553,11 @@ exports[`stepsDemo Component JSON 1`] = `
                       className="c19"
                       style={
                         Object {
-                          "color": "#333333",
+                          "color": "#363B40",
                         }
                       }
                     >
-                      title3
+                      步骤3
                     </div>
                   </div>
                 </div>
@@ -3572,7 +3584,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   style={Object {}}
                 >
                   <div
-                    className="c20"
+                    className="c21"
                     style={
                       Object {
                         "height": "3.2rem",
@@ -3581,10 +3593,10 @@ exports[`stepsDemo Component JSON 1`] = `
                     }
                   >
                     <div
-                      className="c22"
+                      className="c23"
                       style={
                         Object {
-                          "boxShadow": "0px 0px 2px 0px rgba(104, 79, 255,0.3) inset",
+                          "boxShadow": "0px 0px 2px 0px rgba(77,99,255,0.4) inset",
                           "height": "0.6rem",
                           "width": "100%",
                         }
@@ -3592,7 +3604,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c23"
+                    className="c24"
                     style={
                       Object {
                         "height": "2.4rem",
@@ -3607,7 +3619,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       style={
                         Object {
                           "backgroundColor": "#ffffff",
-                          "boxShadow": "0px 0px 2px 0px rgba(104, 79, 255,0.3) inset",
+                          "boxShadow": "0px 0px 2px 0px rgba(77,99,255,0.4) inset",
                           "height": "2.4rem",
                           "width": "2.4rem",
                         }
@@ -3636,7 +3648,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      title4
+                      步骤4
                     </div>
                   </div>
                 </div>
@@ -3663,7 +3675,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   style={Object {}}
                 >
                   <div
-                    className="c20"
+                    className="c21"
                     style={
                       Object {
                         "height": "3.2rem",
@@ -3672,10 +3684,10 @@ exports[`stepsDemo Component JSON 1`] = `
                     }
                   >
                     <div
-                      className="c22"
+                      className="c23"
                       style={
                         Object {
-                          "boxShadow": "0px 0px 2px 0px rgba(104, 79, 255,0.3) inset",
+                          "boxShadow": "0px 0px 2px 0px rgba(77,99,255,0.4) inset",
                           "height": "0.6rem",
                           "width": "100%",
                         }
@@ -3683,7 +3695,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c23"
+                    className="c24"
                     style={
                       Object {
                         "height": "2.4rem",
@@ -3698,7 +3710,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       style={
                         Object {
                           "backgroundColor": "#ffffff",
-                          "boxShadow": "0px 0px 2px 0px rgba(104, 79, 255,0.3) inset",
+                          "boxShadow": "0px 0px 2px 0px rgba(77,99,255,0.4) inset",
                           "height": "2.4rem",
                           "width": "2.4rem",
                         }
@@ -3727,7 +3739,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      title5
+                      步骤5
                     </div>
                   </div>
                 </div>
@@ -3754,7 +3766,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   style={Object {}}
                 >
                   <div
-                    className="c20"
+                    className="c21"
                     style={
                       Object {
                         "height": "3.2rem",
@@ -3763,7 +3775,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     }
                   >
                     <div
-                      className="c21"
+                      className="c22"
                       style={
                         Object {
                           "backgroundColor": "#f22735",
@@ -3817,7 +3829,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      title6
+                      步骤6
                     </div>
                   </div>
                 </div>
@@ -3841,11 +3853,7 @@ exports[`stepsDemo Component JSON 1`] = `
     <div
       className="c1"
       orientation="horizontal"
-      style={
-        Object {
-          "width": "150rem",
-        }
-      }
+      style={Object {}}
     >
       <div>
         <div
@@ -3887,7 +3895,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     size="normal"
                     style={
                       Object {
-                        "backgroundColor": "rgb(128,144,255)",
+                        "backgroundColor": "#4d63ff",
                         "height": "3.2rem",
                         "width": "3.2rem",
                       }
@@ -3903,7 +3911,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       style={
                         Object {
                           "color": "#ffffff",
-                          "fontSize": "1.8rem",
+                          "fontSize": "2.4rem",
                         }
                       }
                     />
@@ -3912,11 +3920,11 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c9"
                     style={
                       Object {
-                        "color": "rgb(128,144,255)",
+                        "color": "#4d63ff",
                       }
                     }
                   >
-                    title1
+                    步骤1
                   </div>
                 </div>
               </div>
@@ -3942,7 +3950,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   style={Object {}}
                 >
                   <div
-                    className="c20"
+                    className="c21"
                     style={
                       Object {
                         "height": "3.2rem",
@@ -3951,10 +3959,10 @@ exports[`stepsDemo Component JSON 1`] = `
                     }
                   >
                     <div
-                      className="c21"
+                      className="c22"
                       style={
                         Object {
-                          "backgroundColor": "rgb(128,144,255)",
+                          "backgroundColor": "#4d63ff",
                           "height": "0.6rem",
                           "width": "100%",
                         }
@@ -3976,7 +3984,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       size="normal"
                       style={
                         Object {
-                          "backgroundColor": "rgb(128,144,255)",
+                          "backgroundColor": "#4d63ff",
                           "height": "3.2rem",
                           "width": "3.2rem",
                         }
@@ -3992,7 +4000,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         style={
                           Object {
                             "color": "#ffffff",
-                            "fontSize": "1.8rem",
+                            "fontSize": "2.4rem",
                           }
                         }
                       />
@@ -4001,11 +4009,11 @@ exports[`stepsDemo Component JSON 1`] = `
                       className="c9"
                       style={
                         Object {
-                          "color": "rgb(128,144,255)",
+                          "color": "#4d63ff",
                         }
                       }
                     >
-                      title2
+                      步骤2
                     </div>
                   </div>
                 </div>
@@ -4032,7 +4040,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   style={Object {}}
                 >
                   <div
-                    className="c20"
+                    className="c21"
                     style={
                       Object {
                         "height": "3.2rem",
@@ -4041,10 +4049,10 @@ exports[`stepsDemo Component JSON 1`] = `
                     }
                   >
                     <div
-                      className="c21"
+                      className="c22"
                       style={
                         Object {
-                          "backgroundColor": "rgb(128,144,255)",
+                          "backgroundColor": "#4d63ff",
                           "height": "0.6rem",
                           "width": "100%",
                         }
@@ -4066,7 +4074,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       size="normal"
                       style={
                         Object {
-                          "backgroundColor": "rgb(128,144,255)",
+                          "backgroundColor": "#4d63ff",
                           "height": "3.2rem",
                           "width": "3.2rem",
                         }
@@ -4082,7 +4090,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         style={
                           Object {
                             "color": "#ffffff",
-                            "fontSize": "1.8rem",
+                            "fontSize": "2.4rem",
                           }
                         }
                       />
@@ -4104,11 +4112,11 @@ exports[`stepsDemo Component JSON 1`] = `
                       className="c9"
                       style={
                         Object {
-                          "color": "#333333",
+                          "color": "#363B40",
                         }
                       }
                     >
-                      title3
+                      步骤3
                     </div>
                   </div>
                 </div>
@@ -4135,7 +4143,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   style={Object {}}
                 >
                   <div
-                    className="c20"
+                    className="c21"
                     style={
                       Object {
                         "height": "3.2rem",
@@ -4144,10 +4152,10 @@ exports[`stepsDemo Component JSON 1`] = `
                     }
                   >
                     <div
-                      className="c22"
+                      className="c23"
                       style={
                         Object {
-                          "boxShadow": "0px 0px 2px 0px rgba(104, 79, 255,0.3) inset",
+                          "boxShadow": "0px 0px 2px 0px rgba(77,99,255,0.4) inset",
                           "height": "0.6rem",
                           "width": "100%",
                         }
@@ -4155,7 +4163,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c23"
+                    className="c24"
                     style={
                       Object {
                         "height": "3.2rem",
@@ -4170,7 +4178,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       style={
                         Object {
                           "backgroundColor": "#ffffff",
-                          "boxShadow": "0px 0px 2px 0px rgba(104, 79, 255,0.3) inset",
+                          "boxShadow": "0px 0px 2px 0px rgba(77,99,255,0.4) inset",
                           "height": "3.2rem",
                           "width": "3.2rem",
                         }
@@ -4186,7 +4194,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         style={
                           Object {
                             "color": "#ffffff",
-                            "fontSize": "1.8rem",
+                            "fontSize": "2.4rem",
                           }
                         }
                       />
@@ -4199,7 +4207,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      title4
+                      步骤4
                     </div>
                   </div>
                 </div>
@@ -4226,7 +4234,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   style={Object {}}
                 >
                   <div
-                    className="c20"
+                    className="c21"
                     style={
                       Object {
                         "height": "3.2rem",
@@ -4235,10 +4243,10 @@ exports[`stepsDemo Component JSON 1`] = `
                     }
                   >
                     <div
-                      className="c22"
+                      className="c23"
                       style={
                         Object {
-                          "boxShadow": "0px 0px 2px 0px rgba(104, 79, 255,0.3) inset",
+                          "boxShadow": "0px 0px 2px 0px rgba(77,99,255,0.4) inset",
                           "height": "0.6rem",
                           "width": "100%",
                         }
@@ -4246,7 +4254,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c23"
+                    className="c24"
                     style={
                       Object {
                         "height": "3.2rem",
@@ -4261,7 +4269,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       style={
                         Object {
                           "backgroundColor": "#ffffff",
-                          "boxShadow": "0px 0px 2px 0px rgba(104, 79, 255,0.3) inset",
+                          "boxShadow": "0px 0px 2px 0px rgba(77,99,255,0.4) inset",
                           "height": "3.2rem",
                           "width": "3.2rem",
                         }
@@ -4277,7 +4285,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         style={
                           Object {
                             "color": "#ffffff",
-                            "fontSize": "1.8rem",
+                            "fontSize": "2.4rem",
                           }
                         }
                       />
@@ -4290,7 +4298,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      title5
+                      步骤5
                     </div>
                   </div>
                 </div>
@@ -4317,7 +4325,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   style={Object {}}
                 >
                   <div
-                    className="c20"
+                    className="c21"
                     style={
                       Object {
                         "height": "3.2rem",
@@ -4326,7 +4334,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     }
                   >
                     <div
-                      className="c21"
+                      className="c22"
                       style={
                         Object {
                           "backgroundColor": "#f22735",
@@ -4367,7 +4375,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         style={
                           Object {
                             "color": "#ffffff",
-                            "fontSize": "1.8rem",
+                            "fontSize": "2.4rem",
                           }
                         }
                       />
@@ -4380,7 +4388,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      title6
+                      步骤6
                     </div>
                   </div>
                 </div>
@@ -4404,11 +4412,7 @@ exports[`stepsDemo Component JSON 1`] = `
     <div
       className="c1"
       orientation="horizontal"
-      style={
-        Object {
-          "width": "150rem",
-        }
-      }
+      style={Object {}}
     >
       <div>
         <div
@@ -4436,7 +4440,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 style={Object {}}
               >
                 <div
-                  className="c24"
+                  className="c25"
                   style={
                     Object {
                       "height": "2.4rem",
@@ -4445,7 +4449,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   }
                 >
                   <i
-                    className="lugia-icon-financial_cloud   c25"
+                    className="lugia-icon-financial_cloud   c26"
                     onClick={[Function]}
                     onMouseDown={[Function]}
                     onMouseEnter={[Function]}
@@ -4462,21 +4466,21 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c9"
                     style={
                       Object {
-                        "color": "#333333",
+                        "color": "#363B40",
                       }
                     }
                   >
-                    title1
+                    步骤1
                   </div>
                   <div
-                    className="c26"
+                    className="c27"
                     style={
                       Object {
-                        "color": "#666666",
+                        "color": "#646A6E",
                       }
                     }
                   >
-                    This is description
+                    描述性文本
                   </div>
                 </div>
               </div>
@@ -4523,7 +4527,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c24"
+                    className="c25"
                     style={
                       Object {
                         "height": "2.4rem",
@@ -4532,7 +4536,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     }
                   >
                     <i
-                      className="lugia-icon-financial_upload_cloud   c25"
+                      className="lugia-icon-financial_upload_cloud   c26"
                       onClick={[Function]}
                       onMouseDown={[Function]}
                       onMouseEnter={[Function]}
@@ -4549,109 +4553,21 @@ exports[`stepsDemo Component JSON 1`] = `
                       className="c9"
                       style={
                         Object {
-                          "color": "#333333",
+                          "color": "#363B40",
                         }
                       }
                     >
-                      title2
+                      步骤2
                     </div>
                     <div
-                      className="c26"
+                      className="c27"
                       style={
                         Object {
-                          "color": "#666666",
+                          "color": "#646A6E",
                         }
                       }
                     >
-                      This is description
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className="c11"
-              style={
-                Object {
-                  "width": "20.4rem",
-                }
-              }
-            >
-              <div
-                className="c4"
-                style={
-                  Object {
-                    "width": "100%",
-                  }
-                }
-              >
-                <div
-                  className="c5"
-                  style={Object {}}
-                >
-                  <div
-                    className="c12"
-                    style={
-                      Object {
-                        "height": "50%",
-                        "width": "100%",
-                      }
-                    }
-                  >
-                    <div
-                      className="c13"
-                      style={
-                        Object {
-                          "borderBottomColor": "#4d63ff",
-                          "borderBottomStyle": "solid",
-                          "borderBottomWidth": "0.1rem",
-                          "width": "100%",
-                        }
-                      }
-                    />
-                  </div>
-                  <div
-                    className="c24"
-                    style={
-                      Object {
-                        "height": "2.4rem",
-                        "width": "2.4rem",
-                      }
-                    }
-                  >
-                    <i
-                      className="lugia-icon-financial_download_cloud   c25"
-                      onClick={[Function]}
-                      onMouseDown={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      onMouseUp={[Function]}
-                      style={
-                        Object {
-                          "color": "#4d63ff",
-                          "fontSize": "2.4rem",
-                        }
-                      }
-                    />
-                    <div
-                      className="c9"
-                      style={
-                        Object {
-                          "color": "#333333",
-                        }
-                      }
-                    >
-                      title3
-                    </div>
-                    <div
-                      className="c26"
-                      style={
-                        Object {
-                          "color": "#666666",
-                        }
-                      }
-                    >
-                      description3
+                      描述性文本
                     </div>
                   </div>
                 </div>
@@ -4699,7 +4615,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c24"
+                    className="c25"
                     style={
                       Object {
                         "height": "2.4rem",
@@ -4708,7 +4624,95 @@ exports[`stepsDemo Component JSON 1`] = `
                     }
                   >
                     <i
-                      className="lugia-icon-financial_download_cloud   c25"
+                      className="lugia-icon-financial_download_cloud   c26"
+                      onClick={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseEnter={[Function]}
+                      onMouseLeave={[Function]}
+                      onMouseUp={[Function]}
+                      style={
+                        Object {
+                          "color": "#4d63ff",
+                          "fontSize": "2.4rem",
+                        }
+                      }
+                    />
+                    <div
+                      className="c9"
+                      style={
+                        Object {
+                          "color": "#363B40",
+                        }
+                      }
+                    >
+                      步骤3
+                    </div>
+                    <div
+                      className="c27"
+                      style={
+                        Object {
+                          "color": "#646A6E",
+                        }
+                      }
+                    >
+                      描述性文本3
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="c11"
+              style={
+                Object {
+                  "width": "20.4rem",
+                }
+              }
+            >
+              <div
+                className="c4"
+                style={
+                  Object {
+                    "width": "100%",
+                  }
+                }
+              >
+                <div
+                  className="c5"
+                  style={Object {}}
+                >
+                  <div
+                    className="c12"
+                    style={
+                      Object {
+                        "height": "50%",
+                        "width": "100%",
+                      }
+                    }
+                  >
+                    <div
+                      className="c13"
+                      style={
+                        Object {
+                          "borderBottomColor": "#4d63ff",
+                          "borderBottomStyle": "solid",
+                          "borderBottomWidth": "0.1rem",
+                          "width": "100%",
+                        }
+                      }
+                    />
+                  </div>
+                  <div
+                    className="c25"
+                    style={
+                      Object {
+                        "height": "2.4rem",
+                        "width": "2.4rem",
+                      }
+                    }
+                  >
+                    <i
+                      className="lugia-icon-financial_download_cloud   c26"
                       onClick={[Function]}
                       onMouseDown={[Function]}
                       onMouseEnter={[Function]}
@@ -4729,17 +4733,17 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      title4
+                      步骤4
                     </div>
                     <div
-                      className="c26"
+                      className="c27"
                       style={
                         Object {
                           "color": "#cccccc",
                         }
                       }
                     >
-                      description4
+                      描述性文本4
                     </div>
                   </div>
                 </div>
@@ -4787,7 +4791,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c24"
+                    className="c25"
                     style={
                       Object {
                         "height": "2.4rem",
@@ -4796,7 +4800,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     }
                   >
                     <i
-                      className="lugia-icon-financial_cloud   c25"
+                      className="lugia-icon-financial_cloud   c26"
                       onClick={[Function]}
                       onMouseDown={[Function]}
                       onMouseEnter={[Function]}
@@ -4817,17 +4821,17 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      title5
+                      步骤5
                     </div>
                     <div
-                      className="c26"
+                      className="c27"
                       style={
                         Object {
                           "color": "#cccccc",
                         }
                       }
                     >
-                      description5
+                      描述性文本5
                     </div>
                   </div>
                 </div>
@@ -4875,7 +4879,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c24"
+                    className="c25"
                     style={
                       Object {
                         "height": "2.4rem",
@@ -4884,7 +4888,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     }
                   >
                     <i
-                      className="lugia-icon-financial_cloud   c25"
+                      className="lugia-icon-financial_cloud   c26"
                       onClick={[Function]}
                       onMouseDown={[Function]}
                       onMouseEnter={[Function]}
@@ -4905,17 +4909,17 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      title5
+                      步骤5
                     </div>
                     <div
-                      className="c26"
+                      className="c27"
                       style={
                         Object {
                           "color": "#f22735",
                         }
                       }
                     >
-                      description5
+                      描述性文本5
                     </div>
                   </div>
                 </div>
@@ -4939,11 +4943,7 @@ exports[`stepsDemo Component JSON 1`] = `
     <div
       className="c1"
       orientation="horizontal"
-      style={
-        Object {
-          "width": "150rem",
-        }
-      }
+      style={Object {}}
     >
       <div>
         <div
@@ -4967,15 +4967,15 @@ exports[`stepsDemo Component JSON 1`] = `
               }
             >
               <div
-                className="c27"
+                className="c28"
                 style={Object {}}
               >
                 <div
-                  className="c28"
+                  className="c29"
                   style={Object {}}
                 >
                   <div
-                    className="c29"
+                    className="c30"
                     style={
                       Object {
                         "backgroundColor": "#56c22d",
@@ -4986,21 +4986,21 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c9"
                     style={
                       Object {
-                        "color": "#333333",
+                        "color": "#363B40",
                       }
                     }
                   >
-                    title1
+                    步骤1
                   </div>
                   <div
-                    className="c30"
+                    className="c31"
                     style={
                       Object {
-                        "color": "#666666",
+                        "color": "#646A6E",
                       }
                     }
                   >
-                    description1
+                    描述性文本1
                   </div>
                 </div>
               </div>
@@ -5022,7 +5022,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c27"
+                  className="c28"
                   style={Object {}}
                 >
                   <div
@@ -5047,11 +5047,11 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c28"
+                    className="c29"
                     style={Object {}}
                   >
                     <div
-                      className="c29"
+                      className="c30"
                       style={
                         Object {
                           "backgroundColor": "#56c22d",
@@ -5062,21 +5062,21 @@ exports[`stepsDemo Component JSON 1`] = `
                       className="c9"
                       style={
                         Object {
-                          "color": "#333333",
+                          "color": "#363B40",
                         }
                       }
                     >
-                      title1
+                      步骤1
                     </div>
                     <div
-                      className="c30"
+                      className="c31"
                       style={
                         Object {
-                          "color": "#666666",
+                          "color": "#646A6E",
                         }
                       }
                     >
-                      description1
+                      描述性文本1
                     </div>
                   </div>
                 </div>
@@ -5099,7 +5099,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c27"
+                  className="c28"
                   style={Object {}}
                 >
                   <div
@@ -5124,11 +5124,11 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c28"
+                    className="c29"
                     style={Object {}}
                   >
                     <div
-                      className="c29"
+                      className="c30"
                       style={
                         Object {
                           "backgroundColor": "#4d63ff",
@@ -5139,21 +5139,21 @@ exports[`stepsDemo Component JSON 1`] = `
                       className="c9"
                       style={
                         Object {
-                          "color": "#333333",
+                          "color": "#363B40",
                         }
                       }
                     >
-                      title2
+                      步骤2
                     </div>
                     <div
-                      className="c30"
+                      className="c31"
                       style={
                         Object {
-                          "color": "#666666",
+                          "color": "#646A6E",
                         }
                       }
                     >
-                      This is description
+                      描述性文本
                     </div>
                   </div>
                 </div>
@@ -5176,7 +5176,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c27"
+                  className="c28"
                   style={Object {}}
                 >
                   <div
@@ -5201,11 +5201,11 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c28"
+                    className="c29"
                     style={Object {}}
                   >
                     <div
-                      className="c29"
+                      className="c30"
                       style={
                         Object {
                           "backgroundColor": "#4d63ff",
@@ -5220,17 +5220,17 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      title3
+                      步骤3
                     </div>
                     <div
-                      className="c30"
+                      className="c31"
                       style={
                         Object {
                           "color": "#cccccc",
                         }
                       }
                     >
-                      description3
+                      描述性文本3
                     </div>
                   </div>
                 </div>
@@ -5253,7 +5253,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c27"
+                  className="c28"
                   style={Object {}}
                 >
                   <div
@@ -5278,11 +5278,11 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c28"
+                    className="c29"
                     style={Object {}}
                   >
                     <div
-                      className="c29"
+                      className="c30"
                       style={
                         Object {
                           "backgroundColor": "#cccccc",
@@ -5297,17 +5297,17 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      title4
+                      步骤4
                     </div>
                     <div
-                      className="c30"
+                      className="c31"
                       style={
                         Object {
                           "color": "#cccccc",
                         }
                       }
                     >
-                      description4
+                      描述性文本4
                     </div>
                   </div>
                 </div>
@@ -5330,7 +5330,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c27"
+                  className="c28"
                   style={Object {}}
                 >
                   <div
@@ -5355,11 +5355,11 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c28"
+                    className="c29"
                     style={Object {}}
                   >
                     <div
-                      className="c29"
+                      className="c30"
                       style={
                         Object {
                           "backgroundColor": "#f22735",
@@ -5374,17 +5374,17 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      title5
+                      步骤5
                     </div>
                     <div
-                      className="c30"
+                      className="c31"
                       style={
                         Object {
                           "color": "#f22735",
                         }
                       }
                     >
-                      description5
+                      描述性文本5
                     </div>
                   </div>
                 </div>
@@ -5408,11 +5408,7 @@ exports[`stepsDemo Component JSON 1`] = `
     <div
       className="c1"
       orientation="horizontal"
-      style={
-        Object {
-          "width": "150rem",
-        }
-      }
+      style={Object {}}
     >
       <div>
         <div
@@ -5436,15 +5432,15 @@ exports[`stepsDemo Component JSON 1`] = `
               }
             >
               <div
-                className="c27"
+                className="c28"
                 style={Object {}}
               >
                 <div
-                  className="c28"
+                  className="c29"
                   style={Object {}}
                 >
                   <div
-                    className="c29"
+                    className="c30"
                     style={
                       Object {
                         "backgroundColor": "#56c22d",
@@ -5455,11 +5451,11 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c9"
                     style={
                       Object {
-                        "color": "#333333",
+                        "color": "#363B40",
                       }
                     }
                   >
-                    title1
+                    步骤1
                   </div>
                 </div>
               </div>
@@ -5481,7 +5477,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c27"
+                  className="c28"
                   style={Object {}}
                 >
                   <div
@@ -5506,11 +5502,11 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c28"
+                    className="c29"
                     style={Object {}}
                   >
                     <div
-                      className="c29"
+                      className="c30"
                       style={
                         Object {
                           "backgroundColor": "#56c22d",
@@ -5521,21 +5517,21 @@ exports[`stepsDemo Component JSON 1`] = `
                       className="c9"
                       style={
                         Object {
-                          "color": "#333333",
+                          "color": "#363B40",
                         }
                       }
                     >
-                      title1
+                      步骤1
                     </div>
                     <div
-                      className="c30"
+                      className="c31"
                       style={
                         Object {
-                          "color": "#666666",
+                          "color": "#646A6E",
                         }
                       }
                     >
-                      description1
+                      描述性文本1
                     </div>
                   </div>
                 </div>
@@ -5558,7 +5554,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c27"
+                  className="c28"
                   style={Object {}}
                 >
                   <div
@@ -5583,11 +5579,11 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c28"
+                    className="c29"
                     style={Object {}}
                   >
                     <div
-                      className="c29"
+                      className="c30"
                       style={
                         Object {
                           "backgroundColor": "#4d63ff",
@@ -5598,21 +5594,21 @@ exports[`stepsDemo Component JSON 1`] = `
                       className="c9"
                       style={
                         Object {
-                          "color": "#333333",
+                          "color": "#363B40",
                         }
                       }
                     >
-                      title2
+                      步骤2
                     </div>
                     <div
-                      className="c30"
+                      className="c31"
                       style={
                         Object {
-                          "color": "#666666",
+                          "color": "#646A6E",
                         }
                       }
                     >
-                      description1
+                      描述性文本1
                     </div>
                   </div>
                 </div>
@@ -5635,7 +5631,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c27"
+                  className="c28"
                   style={Object {}}
                 >
                   <div
@@ -5660,11 +5656,11 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c28"
+                    className="c29"
                     style={Object {}}
                   >
                     <div
-                      className="c29"
+                      className="c30"
                       style={
                         Object {
                           "backgroundColor": "#4d63ff",
@@ -5679,17 +5675,17 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      title3
+                      步骤3
                     </div>
                     <div
-                      className="c30"
+                      className="c31"
                       style={
                         Object {
                           "color": "#cccccc",
                         }
                       }
                     >
-                      This is description
+                      描述性文本
                     </div>
                   </div>
                 </div>
@@ -5712,7 +5708,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c27"
+                  className="c28"
                   style={Object {}}
                 >
                   <div
@@ -5737,11 +5733,11 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c28"
+                    className="c29"
                     style={Object {}}
                   >
                     <div
-                      className="c29"
+                      className="c30"
                       style={
                         Object {
                           "backgroundColor": "#cccccc",
@@ -5756,17 +5752,17 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      title4
+                      步骤4
                     </div>
                     <div
-                      className="c30"
+                      className="c31"
                       style={
                         Object {
                           "color": "#cccccc",
                         }
                       }
                     >
-                      description4
+                      描述性文本4
                     </div>
                   </div>
                 </div>
@@ -5789,7 +5785,7 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c27"
+                  className="c28"
                   style={Object {}}
                 >
                   <div
@@ -5814,11 +5810,11 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c28"
+                    className="c29"
                     style={Object {}}
                   >
                     <div
-                      className="c29"
+                      className="c30"
                       style={
                         Object {
                           "backgroundColor": "#f22735",
@@ -5833,17 +5829,17 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      title5
+                      步骤5
                     </div>
                     <div
-                      className="c30"
+                      className="c31"
                       style={
                         Object {
                           "color": "#f22735",
                         }
                       }
                     >
-                      description5
+                      描述性文本5
                     </div>
                   </div>
                 </div>
@@ -5859,7 +5855,7 @@ exports[`stepsDemo Component JSON 1`] = `
     </div>
   </div>
   <div
-    className="c31"
+    className="c32"
   >
     <p>
       简洁风格 size mini
@@ -5867,21 +5863,14 @@ exports[`stepsDemo Component JSON 1`] = `
     <div
       className="c1"
       orientation="vertical"
-      style={
-        Object {
-          "marginBottom": "1rem",
-          "marginLeft": "1rem",
-          "marginRight": "1rem",
-          "marginTop": "1rem",
-        }
-      }
+      style={Object {}}
     >
       <div>
         <div
           className="c2"
         >
           <div
-            className="c32"
+            className="c33"
             orientation="vertical"
             style={
               Object {
@@ -5898,11 +5887,11 @@ exports[`stepsDemo Component JSON 1`] = `
               }
             >
               <div
-                className="c33"
+                className="c34"
                 style={Object {}}
               >
                 <div
-                  className="c34"
+                  className="c35"
                   style={
                     Object {
                       "height": "2.4rem",
@@ -5950,24 +5939,24 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c35"
-                    style={
-                      Object {
-                        "color": "#333333",
-                      }
-                    }
-                  >
-                    title1
-                  </div>
-                  <div
                     className="c36"
                     style={
                       Object {
-                        "color": "#666666",
+                        "color": "#363B40",
                       }
                     }
                   >
-                    description1
+                    步骤1
+                  </div>
+                  <div
+                    className="c37"
+                    style={
+                      Object {
+                        "color": "#646A6E",
+                      }
+                    }
+                  >
+                    描述性文本1
                   </div>
                 </div>
               </div>
@@ -5989,11 +5978,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c33"
+                  className="c34"
                   style={Object {}}
                 >
                   <div
-                    className="c37"
+                    className="c38"
                     style={
                       Object {
                         "height": "100%",
@@ -6014,7 +6003,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c34"
+                    className="c35"
                     style={
                       Object {
                         "height": "2.4rem",
@@ -6062,24 +6051,24 @@ exports[`stepsDemo Component JSON 1`] = `
                       />
                     </div>
                     <div
-                      className="c35"
-                      style={
-                        Object {
-                          "color": "#333333",
-                        }
-                      }
-                    >
-                      title1
-                    </div>
-                    <div
                       className="c36"
                       style={
                         Object {
-                          "color": "#666666",
+                          "color": "#363B40",
                         }
                       }
                     >
-                      description1
+                      步骤1
+                    </div>
+                    <div
+                      className="c37"
+                      style={
+                        Object {
+                          "color": "#646A6E",
+                        }
+                      }
+                    >
+                      描述性文本1
                     </div>
                   </div>
                 </div>
@@ -6102,11 +6091,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c33"
+                  className="c34"
                   style={Object {}}
                 >
                   <div
-                    className="c37"
+                    className="c38"
                     style={
                       Object {
                         "height": "100%",
@@ -6127,7 +6116,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c34"
+                    className="c35"
                     style={
                       Object {
                         "height": "2.4rem",
@@ -6188,24 +6177,24 @@ exports[`stepsDemo Component JSON 1`] = `
                       </div>
                     </div>
                     <div
-                      className="c35"
-                      style={
-                        Object {
-                          "color": "#333333",
-                        }
-                      }
-                    >
-                      title2
-                    </div>
-                    <div
                       className="c36"
                       style={
                         Object {
-                          "color": "#666666",
+                          "color": "#363B40",
                         }
                       }
                     >
-                      This is description
+                      步骤2
+                    </div>
+                    <div
+                      className="c37"
+                      style={
+                        Object {
+                          "color": "#646A6E",
+                        }
+                      }
+                    >
+                      描述性文本
                     </div>
                   </div>
                 </div>
@@ -6228,11 +6217,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c33"
+                  className="c34"
                   style={Object {}}
                 >
                   <div
-                    className="c37"
+                    className="c38"
                     style={
                       Object {
                         "height": "100%",
@@ -6253,7 +6242,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c34"
+                    className="c35"
                     style={
                       Object {
                         "height": "2.4rem",
@@ -6301,16 +6290,6 @@ exports[`stepsDemo Component JSON 1`] = `
                       />
                     </div>
                     <div
-                      className="c35"
-                      style={
-                        Object {
-                          "color": "#cccccc",
-                        }
-                      }
-                    >
-                      title3
-                    </div>
-                    <div
                       className="c36"
                       style={
                         Object {
@@ -6318,7 +6297,17 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      description3
+                      步骤3
+                    </div>
+                    <div
+                      className="c37"
+                      style={
+                        Object {
+                          "color": "#cccccc",
+                        }
+                      }
+                    >
+                      描述性文本3
                     </div>
                   </div>
                 </div>
@@ -6341,11 +6330,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c33"
+                  className="c34"
                   style={Object {}}
                 >
                   <div
-                    className="c37"
+                    className="c38"
                     style={
                       Object {
                         "height": "100%",
@@ -6366,7 +6355,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c34"
+                    className="c35"
                     style={
                       Object {
                         "height": "2.4rem",
@@ -6414,16 +6403,6 @@ exports[`stepsDemo Component JSON 1`] = `
                       />
                     </div>
                     <div
-                      className="c35"
-                      style={
-                        Object {
-                          "color": "#cccccc",
-                        }
-                      }
-                    >
-                      title4
-                    </div>
-                    <div
                       className="c36"
                       style={
                         Object {
@@ -6431,7 +6410,17 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      description4
+                      步骤4
+                    </div>
+                    <div
+                      className="c37"
+                      style={
+                        Object {
+                          "color": "#cccccc",
+                        }
+                      }
+                    >
+                      描述性文本4
                     </div>
                   </div>
                 </div>
@@ -6454,11 +6443,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c33"
+                  className="c34"
                   style={Object {}}
                 >
                   <div
-                    className="c37"
+                    className="c38"
                     style={
                       Object {
                         "height": "100%",
@@ -6479,7 +6468,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c34"
+                    className="c35"
                     style={
                       Object {
                         "height": "2.4rem",
@@ -6527,16 +6516,6 @@ exports[`stepsDemo Component JSON 1`] = `
                       />
                     </div>
                     <div
-                      className="c35"
-                      style={
-                        Object {
-                          "color": "#f22735",
-                        }
-                      }
-                    >
-                      title5
-                    </div>
-                    <div
                       className="c36"
                       style={
                         Object {
@@ -6544,7 +6523,17 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      description5
+                      步骤5
+                    </div>
+                    <div
+                      className="c37"
+                      style={
+                        Object {
+                          "color": "#f22735",
+                        }
+                      }
+                    >
+                      描述性文本5
                     </div>
                   </div>
                 </div>
@@ -6553,14 +6542,14 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c38"
+          className="c39"
           style={Object {}}
         />
       </div>
     </div>
   </div>
   <div
-    className="c31"
+    className="c32"
   >
     <p>
       简洁风格 size normal
@@ -6568,21 +6557,14 @@ exports[`stepsDemo Component JSON 1`] = `
     <div
       className="c1"
       orientation="vertical"
-      style={
-        Object {
-          "marginBottom": "1rem",
-          "marginLeft": "1rem",
-          "marginRight": "1rem",
-          "marginTop": "1rem",
-        }
-      }
+      style={Object {}}
     >
       <div>
         <div
           className="c2"
         >
           <div
-            className="c32"
+            className="c33"
             orientation="vertical"
             style={
               Object {
@@ -6599,11 +6581,11 @@ exports[`stepsDemo Component JSON 1`] = `
               }
             >
               <div
-                className="c33"
+                className="c34"
                 style={Object {}}
               >
                 <div
-                  className="c34"
+                  className="c35"
                   style={
                     Object {
                       "height": "3.2rem",
@@ -6651,24 +6633,24 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c39"
-                    style={
-                      Object {
-                        "color": "#333333",
-                      }
-                    }
-                  >
-                    title1
-                  </div>
-                  <div
                     className="c40"
                     style={
                       Object {
-                        "color": "#666666",
+                        "color": "#363B40",
                       }
                     }
                   >
-                    description1
+                    步骤1
+                  </div>
+                  <div
+                    className="c41"
+                    style={
+                      Object {
+                        "color": "#646A6E",
+                      }
+                    }
+                  >
+                    描述性文本1
                   </div>
                 </div>
               </div>
@@ -6690,11 +6672,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c33"
+                  className="c34"
                   style={Object {}}
                 >
                   <div
-                    className="c37"
+                    className="c38"
                     style={
                       Object {
                         "height": "100%",
@@ -6715,7 +6697,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c34"
+                    className="c35"
                     style={
                       Object {
                         "height": "3.2rem",
@@ -6763,24 +6745,24 @@ exports[`stepsDemo Component JSON 1`] = `
                       />
                     </div>
                     <div
-                      className="c39"
-                      style={
-                        Object {
-                          "color": "#333333",
-                        }
-                      }
-                    >
-                      title1
-                    </div>
-                    <div
                       className="c40"
                       style={
                         Object {
-                          "color": "#666666",
+                          "color": "#363B40",
                         }
                       }
                     >
-                      description1
+                      步骤1
+                    </div>
+                    <div
+                      className="c41"
+                      style={
+                        Object {
+                          "color": "#646A6E",
+                        }
+                      }
+                    >
+                      描述性文本1
                     </div>
                   </div>
                 </div>
@@ -6803,11 +6785,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c33"
+                  className="c34"
                   style={Object {}}
                 >
                   <div
-                    className="c37"
+                    className="c38"
                     style={
                       Object {
                         "height": "100%",
@@ -6828,7 +6810,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c34"
+                    className="c35"
                     style={
                       Object {
                         "height": "3.2rem",
@@ -6889,24 +6871,24 @@ exports[`stepsDemo Component JSON 1`] = `
                       </div>
                     </div>
                     <div
-                      className="c39"
-                      style={
-                        Object {
-                          "color": "#333333",
-                        }
-                      }
-                    >
-                      title2
-                    </div>
-                    <div
                       className="c40"
                       style={
                         Object {
-                          "color": "#666666",
+                          "color": "#363B40",
                         }
                       }
                     >
-                      This is description
+                      步骤2
+                    </div>
+                    <div
+                      className="c41"
+                      style={
+                        Object {
+                          "color": "#646A6E",
+                        }
+                      }
+                    >
+                      描述性文本
                     </div>
                   </div>
                 </div>
@@ -6929,11 +6911,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c33"
+                  className="c34"
                   style={Object {}}
                 >
                   <div
-                    className="c37"
+                    className="c38"
                     style={
                       Object {
                         "height": "100%",
@@ -6954,7 +6936,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c34"
+                    className="c35"
                     style={
                       Object {
                         "height": "3.2rem",
@@ -7002,16 +6984,6 @@ exports[`stepsDemo Component JSON 1`] = `
                       />
                     </div>
                     <div
-                      className="c39"
-                      style={
-                        Object {
-                          "color": "#cccccc",
-                        }
-                      }
-                    >
-                      title3
-                    </div>
-                    <div
                       className="c40"
                       style={
                         Object {
@@ -7019,7 +6991,17 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      description3
+                      步骤3
+                    </div>
+                    <div
+                      className="c41"
+                      style={
+                        Object {
+                          "color": "#cccccc",
+                        }
+                      }
+                    >
+                      描述性文本3
                     </div>
                   </div>
                 </div>
@@ -7042,11 +7024,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c33"
+                  className="c34"
                   style={Object {}}
                 >
                   <div
-                    className="c37"
+                    className="c38"
                     style={
                       Object {
                         "height": "100%",
@@ -7067,7 +7049,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c34"
+                    className="c35"
                     style={
                       Object {
                         "height": "3.2rem",
@@ -7115,16 +7097,6 @@ exports[`stepsDemo Component JSON 1`] = `
                       />
                     </div>
                     <div
-                      className="c39"
-                      style={
-                        Object {
-                          "color": "#cccccc",
-                        }
-                      }
-                    >
-                      title4
-                    </div>
-                    <div
                       className="c40"
                       style={
                         Object {
@@ -7132,7 +7104,17 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      description4
+                      步骤4
+                    </div>
+                    <div
+                      className="c41"
+                      style={
+                        Object {
+                          "color": "#cccccc",
+                        }
+                      }
+                    >
+                      描述性文本4
                     </div>
                   </div>
                 </div>
@@ -7155,11 +7137,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c33"
+                  className="c34"
                   style={Object {}}
                 >
                   <div
-                    className="c37"
+                    className="c38"
                     style={
                       Object {
                         "height": "100%",
@@ -7180,7 +7162,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c34"
+                    className="c35"
                     style={
                       Object {
                         "height": "3.2rem",
@@ -7228,16 +7210,6 @@ exports[`stepsDemo Component JSON 1`] = `
                       />
                     </div>
                     <div
-                      className="c39"
-                      style={
-                        Object {
-                          "color": "#f22735",
-                        }
-                      }
-                    >
-                      title5
-                    </div>
-                    <div
                       className="c40"
                       style={
                         Object {
@@ -7245,7 +7217,17 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      description5
+                      步骤5
+                    </div>
+                    <div
+                      className="c41"
+                      style={
+                        Object {
+                          "color": "#f22735",
+                        }
+                      }
+                    >
+                      描述性文本5
                     </div>
                   </div>
                 </div>
@@ -7254,14 +7236,14 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c38"
+          className="c39"
           style={Object {}}
         />
       </div>
     </div>
   </div>
   <div
-    className="c31"
+    className="c32"
   >
     <p>
       带有描述
@@ -7269,21 +7251,14 @@ exports[`stepsDemo Component JSON 1`] = `
     <div
       className="c1"
       orientation="vertical"
-      style={
-        Object {
-          "marginBottom": "1rem",
-          "marginLeft": "1rem",
-          "marginRight": "1rem",
-          "marginTop": "1rem",
-        }
-      }
+      style={Object {}}
     >
       <div>
         <div
           className="c2"
         >
           <div
-            className="c32"
+            className="c33"
             orientation="vertical"
             style={
               Object {
@@ -7300,11 +7275,11 @@ exports[`stepsDemo Component JSON 1`] = `
               }
             >
               <div
-                className="c33"
+                className="c34"
                 style={Object {}}
               >
                 <div
-                  className="c34"
+                  className="c35"
                   style={
                     Object {
                       "height": "3.2rem",
@@ -7352,24 +7327,24 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c39"
-                    style={
-                      Object {
-                        "color": "#333333",
-                      }
-                    }
-                  >
-                    title1
-                  </div>
-                  <div
                     className="c40"
                     style={
                       Object {
-                        "color": "#666666",
+                        "color": "#363B40",
                       }
                     }
                   >
-                    This is description
+                    步骤1
+                  </div>
+                  <div
+                    className="c41"
+                    style={
+                      Object {
+                        "color": "#646A6E",
+                      }
+                    }
+                  >
+                    描述性文本
                   </div>
                 </div>
               </div>
@@ -7391,11 +7366,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c33"
+                  className="c34"
                   style={Object {}}
                 >
                   <div
-                    className="c37"
+                    className="c38"
                     style={
                       Object {
                         "height": "100%",
@@ -7416,7 +7391,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c34"
+                    className="c35"
                     style={
                       Object {
                         "height": "3.2rem",
@@ -7464,24 +7439,24 @@ exports[`stepsDemo Component JSON 1`] = `
                       />
                     </div>
                     <div
-                      className="c39"
-                      style={
-                        Object {
-                          "color": "#333333",
-                        }
-                      }
-                    >
-                      title1
-                    </div>
-                    <div
                       className="c40"
                       style={
                         Object {
-                          "color": "#666666",
+                          "color": "#363B40",
                         }
                       }
                     >
-                      This is description
+                      步骤1
+                    </div>
+                    <div
+                      className="c41"
+                      style={
+                        Object {
+                          "color": "#646A6E",
+                        }
+                      }
+                    >
+                      描述性文本
                     </div>
                   </div>
                 </div>
@@ -7504,11 +7479,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c33"
+                  className="c34"
                   style={Object {}}
                 >
                   <div
-                    className="c37"
+                    className="c38"
                     style={
                       Object {
                         "height": "100%",
@@ -7529,7 +7504,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c34"
+                    className="c35"
                     style={
                       Object {
                         "height": "3.2rem",
@@ -7590,20 +7565,20 @@ exports[`stepsDemo Component JSON 1`] = `
                       </div>
                     </div>
                     <div
-                      className="c39"
-                      style={
-                        Object {
-                          "color": "#333333",
-                        }
-                      }
-                    >
-                      title2
-                    </div>
-                    <div
                       className="c40"
                       style={
                         Object {
-                          "color": "#666666",
+                          "color": "#363B40",
+                        }
+                      }
+                    >
+                      步骤2
+                    </div>
+                    <div
+                      className="c41"
+                      style={
+                        Object {
+                          "color": "#646A6E",
                         }
                       }
                     >
@@ -7632,11 +7607,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c33"
+                  className="c34"
                   style={Object {}}
                 >
                   <div
-                    className="c37"
+                    className="c38"
                     style={
                       Object {
                         "height": "100%",
@@ -7657,7 +7632,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c34"
+                    className="c35"
                     style={
                       Object {
                         "height": "3.2rem",
@@ -7705,16 +7680,6 @@ exports[`stepsDemo Component JSON 1`] = `
                       />
                     </div>
                     <div
-                      className="c39"
-                      style={
-                        Object {
-                          "color": "#cccccc",
-                        }
-                      }
-                    >
-                      title3
-                    </div>
-                    <div
                       className="c40"
                       style={
                         Object {
@@ -7722,7 +7687,17 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      This is description
+                      步骤3
+                    </div>
+                    <div
+                      className="c41"
+                      style={
+                        Object {
+                          "color": "#cccccc",
+                        }
+                      }
+                    >
+                      描述性文本
                     </div>
                   </div>
                 </div>
@@ -7745,11 +7720,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c33"
+                  className="c34"
                   style={Object {}}
                 >
                   <div
-                    className="c37"
+                    className="c38"
                     style={
                       Object {
                         "height": "100%",
@@ -7770,7 +7745,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c34"
+                    className="c35"
                     style={
                       Object {
                         "height": "3.2rem",
@@ -7818,16 +7793,6 @@ exports[`stepsDemo Component JSON 1`] = `
                       />
                     </div>
                     <div
-                      className="c39"
-                      style={
-                        Object {
-                          "color": "#cccccc",
-                        }
-                      }
-                    >
-                      title4
-                    </div>
-                    <div
                       className="c40"
                       style={
                         Object {
@@ -7835,7 +7800,17 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      This is description
+                      步骤4
+                    </div>
+                    <div
+                      className="c41"
+                      style={
+                        Object {
+                          "color": "#cccccc",
+                        }
+                      }
+                    >
+                      描述性文本
                     </div>
                   </div>
                 </div>
@@ -7858,11 +7833,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c33"
+                  className="c34"
                   style={Object {}}
                 >
                   <div
-                    className="c37"
+                    className="c38"
                     style={
                       Object {
                         "height": "100%",
@@ -7883,7 +7858,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c34"
+                    className="c35"
                     style={
                       Object {
                         "height": "3.2rem",
@@ -7931,16 +7906,6 @@ exports[`stepsDemo Component JSON 1`] = `
                       />
                     </div>
                     <div
-                      className="c39"
-                      style={
-                        Object {
-                          "color": "#f22735",
-                        }
-                      }
-                    >
-                      title5
-                    </div>
-                    <div
                       className="c40"
                       style={
                         Object {
@@ -7948,7 +7913,17 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      This is description
+                      步骤5
+                    </div>
+                    <div
+                      className="c41"
+                      style={
+                        Object {
+                          "color": "#f22735",
+                        }
+                      }
+                    >
+                      描述性文本
                     </div>
                   </div>
                 </div>
@@ -7957,14 +7932,14 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c38"
+          className="c39"
           style={Object {}}
         />
       </div>
     </div>
   </div>
   <div
-    className="c31"
+    className="c32"
   >
     <p>
       半扁平风格 size normal
@@ -7972,21 +7947,14 @@ exports[`stepsDemo Component JSON 1`] = `
     <div
       className="c1"
       orientation="vertical"
-      style={
-        Object {
-          "marginBottom": "1rem",
-          "marginLeft": "1rem",
-          "marginRight": "1rem",
-          "marginTop": "1rem",
-        }
-      }
+      style={Object {}}
     >
       <div>
         <div
           className="c2"
         >
           <div
-            className="c32"
+            className="c33"
             orientation="vertical"
             style={
               Object {
@@ -8003,11 +7971,11 @@ exports[`stepsDemo Component JSON 1`] = `
               }
             >
               <div
-                className="c33"
+                className="c34"
                 style={Object {}}
               >
                 <div
-                  className="c34"
+                  className="c35"
                   style={
                     Object {
                       "height": "3.2rem",
@@ -8021,7 +7989,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     size="normal"
                     style={
                       Object {
-                        "backgroundColor": "rgb(128,144,255)",
+                        "backgroundColor": "#4d63ff",
                         "height": "3.2rem",
                         "width": "3.2rem",
                       }
@@ -8037,30 +8005,30 @@ exports[`stepsDemo Component JSON 1`] = `
                       style={
                         Object {
                           "color": "#ffffff",
-                          "fontSize": "1.8rem",
+                          "fontSize": "2.4rem",
                         }
                       }
                     />
                   </div>
                   <div
-                    className="c39"
-                    style={
-                      Object {
-                        "color": "rgb(128,144,255)",
-                      }
-                    }
-                  >
-                    title1
-                  </div>
-                  <div
                     className="c40"
                     style={
                       Object {
-                        "color": "rgb(128,144,255)",
+                        "color": "#4d63ff",
                       }
                     }
                   >
-                    description1
+                    步骤1
+                  </div>
+                  <div
+                    className="c41"
+                    style={
+                      Object {
+                        "color": "#646A6E",
+                      }
+                    }
+                  >
+                    描述性文本1
                   </div>
                 </div>
               </div>
@@ -8082,11 +8050,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c33"
+                  className="c34"
                   style={Object {}}
                 >
                   <div
-                    className="c20"
+                    className="c21"
                     style={
                       Object {
                         "height": "100%",
@@ -8095,10 +8063,10 @@ exports[`stepsDemo Component JSON 1`] = `
                     }
                   >
                     <div
-                      className="c21"
+                      className="c22"
                       style={
                         Object {
-                          "backgroundColor": "rgb(128,144,255)",
+                          "backgroundColor": "#4d63ff",
                           "height": "100%",
                           "width": "0.6rem",
                         }
@@ -8106,7 +8074,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c34"
+                    className="c35"
                     style={
                       Object {
                         "height": "3.2rem",
@@ -8120,7 +8088,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       size="normal"
                       style={
                         Object {
-                          "backgroundColor": "rgb(128,144,255)",
+                          "backgroundColor": "#4d63ff",
                           "height": "3.2rem",
                           "width": "3.2rem",
                         }
@@ -8136,30 +8104,30 @@ exports[`stepsDemo Component JSON 1`] = `
                         style={
                           Object {
                             "color": "#ffffff",
-                            "fontSize": "1.8rem",
+                            "fontSize": "2.4rem",
                           }
                         }
                       />
                     </div>
                     <div
-                      className="c39"
-                      style={
-                        Object {
-                          "color": "rgb(128,144,255)",
-                        }
-                      }
-                    >
-                      title1
-                    </div>
-                    <div
                       className="c40"
                       style={
                         Object {
-                          "color": "rgb(128,144,255)",
+                          "color": "#4d63ff",
                         }
                       }
                     >
-                      description1
+                      步骤1
+                    </div>
+                    <div
+                      className="c41"
+                      style={
+                        Object {
+                          "color": "#646A6E",
+                        }
+                      }
+                    >
+                      描述性文本1
                     </div>
                   </div>
                 </div>
@@ -8182,11 +8150,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c33"
+                  className="c34"
                   style={Object {}}
                 >
                   <div
-                    className="c20"
+                    className="c21"
                     style={
                       Object {
                         "height": "100%",
@@ -8195,10 +8163,10 @@ exports[`stepsDemo Component JSON 1`] = `
                     }
                   >
                     <div
-                      className="c21"
+                      className="c22"
                       style={
                         Object {
-                          "backgroundColor": "rgb(128,144,255)",
+                          "backgroundColor": "#4d63ff",
                           "height": "100%",
                           "width": "0.6rem",
                         }
@@ -8206,7 +8174,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c34"
+                    className="c35"
                     style={
                       Object {
                         "height": "3.2rem",
@@ -8220,7 +8188,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       size="normal"
                       style={
                         Object {
-                          "backgroundColor": "rgb(128,144,255)",
+                          "backgroundColor": "#4d63ff",
                           "height": "3.2rem",
                           "width": "3.2rem",
                         }
@@ -8236,7 +8204,7 @@ exports[`stepsDemo Component JSON 1`] = `
                         style={
                           Object {
                             "color": "#ffffff",
-                            "fontSize": "1.8rem",
+                            "fontSize": "2.4rem",
                           }
                         }
                       />
@@ -8255,24 +8223,24 @@ exports[`stepsDemo Component JSON 1`] = `
                       </div>
                     </div>
                     <div
-                      className="c39"
-                      style={
-                        Object {
-                          "color": "#333333",
-                        }
-                      }
-                    >
-                      title2
-                    </div>
-                    <div
                       className="c40"
                       style={
                         Object {
-                          "color": "#666666",
+                          "color": "#363B40",
                         }
                       }
                     >
-                      description2
+                      步骤2
+                    </div>
+                    <div
+                      className="c41"
+                      style={
+                        Object {
+                          "color": "#646A6E",
+                        }
+                      }
+                    >
+                      描述性文本2
                     </div>
                   </div>
                 </div>
@@ -8295,11 +8263,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c33"
+                  className="c34"
                   style={Object {}}
                 >
                   <div
-                    className="c20"
+                    className="c21"
                     style={
                       Object {
                         "height": "100%",
@@ -8308,10 +8276,10 @@ exports[`stepsDemo Component JSON 1`] = `
                     }
                   >
                     <div
-                      className="c41"
+                      className="c42"
                       style={
                         Object {
-                          "boxShadow": "0px 0px 2px 0px rgba(104, 79, 255,0.3) inset",
+                          "boxShadow": "0px 0px 2px 0px rgba(77,99,255,0.4) inset",
                           "height": "100%",
                           "width": "0.6rem",
                         }
@@ -8319,7 +8287,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c42"
+                    className="c43"
                     style={
                       Object {
                         "height": "3.2rem",
@@ -8334,7 +8302,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       style={
                         Object {
                           "backgroundColor": "#ffffff",
-                          "boxShadow": "0px 0px 2px 0px rgba(104, 79, 255,0.3) inset",
+                          "boxShadow": "0px 0px 2px 0px rgba(77,99,255,0.4) inset",
                           "height": "3.2rem",
                           "width": "3.2rem",
                         }
@@ -8350,20 +8318,10 @@ exports[`stepsDemo Component JSON 1`] = `
                         style={
                           Object {
                             "color": "#ffffff",
-                            "fontSize": "1.8rem",
+                            "fontSize": "2.4rem",
                           }
                         }
                       />
-                    </div>
-                    <div
-                      className="c39"
-                      style={
-                        Object {
-                          "color": "#cccccc",
-                        }
-                      }
-                    >
-                      title3
                     </div>
                     <div
                       className="c40"
@@ -8373,7 +8331,17 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      description3
+                      步骤3
+                    </div>
+                    <div
+                      className="c41"
+                      style={
+                        Object {
+                          "color": "#cccccc",
+                        }
+                      }
+                    >
+                      描述性文本3
                     </div>
                   </div>
                 </div>
@@ -8396,11 +8364,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c33"
+                  className="c34"
                   style={Object {}}
                 >
                   <div
-                    className="c20"
+                    className="c21"
                     style={
                       Object {
                         "height": "100%",
@@ -8409,10 +8377,10 @@ exports[`stepsDemo Component JSON 1`] = `
                     }
                   >
                     <div
-                      className="c41"
+                      className="c42"
                       style={
                         Object {
-                          "boxShadow": "0px 0px 2px 0px rgba(104, 79, 255,0.3) inset",
+                          "boxShadow": "0px 0px 2px 0px rgba(77,99,255,0.4) inset",
                           "height": "100%",
                           "width": "0.6rem",
                         }
@@ -8420,7 +8388,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c42"
+                    className="c43"
                     style={
                       Object {
                         "height": "3.2rem",
@@ -8435,7 +8403,7 @@ exports[`stepsDemo Component JSON 1`] = `
                       style={
                         Object {
                           "backgroundColor": "#ffffff",
-                          "boxShadow": "0px 0px 2px 0px rgba(104, 79, 255,0.3) inset",
+                          "boxShadow": "0px 0px 2px 0px rgba(77,99,255,0.4) inset",
                           "height": "3.2rem",
                           "width": "3.2rem",
                         }
@@ -8451,20 +8419,10 @@ exports[`stepsDemo Component JSON 1`] = `
                         style={
                           Object {
                             "color": "#ffffff",
-                            "fontSize": "1.8rem",
+                            "fontSize": "2.4rem",
                           }
                         }
                       />
-                    </div>
-                    <div
-                      className="c39"
-                      style={
-                        Object {
-                          "color": "#cccccc",
-                        }
-                      }
-                    >
-                      title4
                     </div>
                     <div
                       className="c40"
@@ -8474,7 +8432,17 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      description4
+                      步骤4
+                    </div>
+                    <div
+                      className="c41"
+                      style={
+                        Object {
+                          "color": "#cccccc",
+                        }
+                      }
+                    >
+                      描述性文本4
                     </div>
                   </div>
                 </div>
@@ -8497,11 +8465,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c33"
+                  className="c34"
                   style={Object {}}
                 >
                   <div
-                    className="c20"
+                    className="c21"
                     style={
                       Object {
                         "height": "100%",
@@ -8510,7 +8478,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     }
                   >
                     <div
-                      className="c21"
+                      className="c22"
                       style={
                         Object {
                           "backgroundColor": "#f22735",
@@ -8521,7 +8489,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c34"
+                    className="c35"
                     style={
                       Object {
                         "height": "3.2rem",
@@ -8551,20 +8519,10 @@ exports[`stepsDemo Component JSON 1`] = `
                         style={
                           Object {
                             "color": "#ffffff",
-                            "fontSize": "1.8rem",
+                            "fontSize": "2.4rem",
                           }
                         }
                       />
-                    </div>
-                    <div
-                      className="c39"
-                      style={
-                        Object {
-                          "color": "#f22735",
-                        }
-                      }
-                    >
-                      title5
                     </div>
                     <div
                       className="c40"
@@ -8574,7 +8532,17 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      description5
+                      步骤5
+                    </div>
+                    <div
+                      className="c41"
+                      style={
+                        Object {
+                          "color": "#f22735",
+                        }
+                      }
+                    >
+                      描述性文本5
                     </div>
                   </div>
                 </div>
@@ -8583,14 +8551,14 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c38"
+          className="c39"
           style={Object {}}
         />
       </div>
     </div>
   </div>
   <div
-    className="c31"
+    className="c32"
   >
     <p>
       icon
@@ -8598,21 +8566,14 @@ exports[`stepsDemo Component JSON 1`] = `
     <div
       className="c1"
       orientation="vertical"
-      style={
-        Object {
-          "marginBottom": "1rem",
-          "marginLeft": "1rem",
-          "marginRight": "1rem",
-          "marginTop": "1rem",
-        }
-      }
+      style={Object {}}
     >
       <div>
         <div
           className="c2"
         >
           <div
-            className="c32"
+            className="c33"
             orientation="vertical"
             style={
               Object {
@@ -8629,11 +8590,11 @@ exports[`stepsDemo Component JSON 1`] = `
               }
             >
               <div
-                className="c33"
+                className="c34"
                 style={Object {}}
               >
                 <div
-                  className="c24"
+                  className="c25"
                   style={
                     Object {
                       "height": "2.4rem",
@@ -8642,7 +8603,7 @@ exports[`stepsDemo Component JSON 1`] = `
                   }
                 >
                   <i
-                    className="lugia-icon-financial_cloud   c25"
+                    className="lugia-icon-financial_cloud   c26"
                     onClick={[Function]}
                     onMouseDown={[Function]}
                     onMouseEnter={[Function]}
@@ -8656,24 +8617,24 @@ exports[`stepsDemo Component JSON 1`] = `
                     }
                   />
                   <div
-                    className="c35"
-                    style={
-                      Object {
-                        "color": "#333333",
-                      }
-                    }
-                  >
-                    title1
-                  </div>
-                  <div
                     className="c36"
                     style={
                       Object {
-                        "color": "#666666",
+                        "color": "#363B40",
                       }
                     }
                   >
-                    description1
+                    步骤1
+                  </div>
+                  <div
+                    className="c37"
+                    style={
+                      Object {
+                        "color": "#646A6E",
+                      }
+                    }
+                  >
+                    描述性文本1
                   </div>
                 </div>
               </div>
@@ -8695,11 +8656,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c33"
+                  className="c34"
                   style={Object {}}
                 >
                   <div
-                    className="c37"
+                    className="c38"
                     style={
                       Object {
                         "height": "100%",
@@ -8720,7 +8681,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c24"
+                    className="c25"
                     style={
                       Object {
                         "height": "2.4rem",
@@ -8729,7 +8690,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     }
                   >
                     <i
-                      className="lugia-icon-financial_upload_cloud   c25"
+                      className="lugia-icon-financial_upload_cloud   c26"
                       onClick={[Function]}
                       onMouseDown={[Function]}
                       onMouseEnter={[Function]}
@@ -8743,24 +8704,24 @@ exports[`stepsDemo Component JSON 1`] = `
                       }
                     />
                     <div
-                      className="c35"
-                      style={
-                        Object {
-                          "color": "#333333",
-                        }
-                      }
-                    >
-                      title2
-                    </div>
-                    <div
                       className="c36"
                       style={
                         Object {
-                          "color": "#666666",
+                          "color": "#363B40",
                         }
                       }
                     >
-                      description2
+                      步骤2
+                    </div>
+                    <div
+                      className="c37"
+                      style={
+                        Object {
+                          "color": "#646A6E",
+                        }
+                      }
+                    >
+                      描述性文本2
                     </div>
                   </div>
                 </div>
@@ -8783,11 +8744,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c33"
+                  className="c34"
                   style={Object {}}
                 >
                   <div
-                    className="c37"
+                    className="c38"
                     style={
                       Object {
                         "height": "100%",
@@ -8808,7 +8769,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c24"
+                    className="c25"
                     style={
                       Object {
                         "height": "2.4rem",
@@ -8817,7 +8778,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     }
                   >
                     <i
-                      className="lugia-icon-financial_download_cloud   c25"
+                      className="lugia-icon-financial_download_cloud   c26"
                       onClick={[Function]}
                       onMouseDown={[Function]}
                       onMouseEnter={[Function]}
@@ -8831,24 +8792,24 @@ exports[`stepsDemo Component JSON 1`] = `
                       }
                     />
                     <div
-                      className="c35"
-                      style={
-                        Object {
-                          "color": "#333333",
-                        }
-                      }
-                    >
-                      title3
-                    </div>
-                    <div
                       className="c36"
                       style={
                         Object {
-                          "color": "#666666",
+                          "color": "#363B40",
                         }
                       }
                     >
-                      description3
+                      步骤3
+                    </div>
+                    <div
+                      className="c37"
+                      style={
+                        Object {
+                          "color": "#646A6E",
+                        }
+                      }
+                    >
+                      描述性文本3
                     </div>
                   </div>
                 </div>
@@ -8871,11 +8832,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c33"
+                  className="c34"
                   style={Object {}}
                 >
                   <div
-                    className="c37"
+                    className="c38"
                     style={
                       Object {
                         "height": "100%",
@@ -8896,7 +8857,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c24"
+                    className="c25"
                     style={
                       Object {
                         "height": "2.4rem",
@@ -8905,7 +8866,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     }
                   >
                     <i
-                      className="lugia-icon-financial_download_cloud   c25"
+                      className="lugia-icon-financial_download_cloud   c26"
                       onClick={[Function]}
                       onMouseDown={[Function]}
                       onMouseEnter={[Function]}
@@ -8919,16 +8880,6 @@ exports[`stepsDemo Component JSON 1`] = `
                       }
                     />
                     <div
-                      className="c35"
-                      style={
-                        Object {
-                          "color": "#cccccc",
-                        }
-                      }
-                    >
-                      title4
-                    </div>
-                    <div
                       className="c36"
                       style={
                         Object {
@@ -8936,7 +8887,17 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      description4
+                      步骤4
+                    </div>
+                    <div
+                      className="c37"
+                      style={
+                        Object {
+                          "color": "#cccccc",
+                        }
+                      }
+                    >
+                      描述性文本4
                     </div>
                   </div>
                 </div>
@@ -8959,11 +8920,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c33"
+                  className="c34"
                   style={Object {}}
                 >
                   <div
-                    className="c37"
+                    className="c38"
                     style={
                       Object {
                         "height": "100%",
@@ -8984,7 +8945,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c24"
+                    className="c25"
                     style={
                       Object {
                         "height": "2.4rem",
@@ -8993,7 +8954,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     }
                   >
                     <i
-                      className="lugia-icon-financial_cloud   c25"
+                      className="lugia-icon-financial_cloud   c26"
                       onClick={[Function]}
                       onMouseDown={[Function]}
                       onMouseEnter={[Function]}
@@ -9007,16 +8968,6 @@ exports[`stepsDemo Component JSON 1`] = `
                       }
                     />
                     <div
-                      className="c35"
-                      style={
-                        Object {
-                          "color": "#cccccc",
-                        }
-                      }
-                    >
-                      title5
-                    </div>
-                    <div
                       className="c36"
                       style={
                         Object {
@@ -9024,7 +8975,17 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      description5
+                      步骤5
+                    </div>
+                    <div
+                      className="c37"
+                      style={
+                        Object {
+                          "color": "#cccccc",
+                        }
+                      }
+                    >
+                      描述性文本5
                     </div>
                   </div>
                 </div>
@@ -9047,11 +9008,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c33"
+                  className="c34"
                   style={Object {}}
                 >
                   <div
-                    className="c37"
+                    className="c38"
                     style={
                       Object {
                         "height": "100%",
@@ -9072,7 +9033,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c24"
+                    className="c25"
                     style={
                       Object {
                         "height": "2.4rem",
@@ -9081,7 +9042,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     }
                   >
                     <i
-                      className="lugia-icon-financial_cloud   c25"
+                      className="lugia-icon-financial_cloud   c26"
                       onClick={[Function]}
                       onMouseDown={[Function]}
                       onMouseEnter={[Function]}
@@ -9095,16 +9056,6 @@ exports[`stepsDemo Component JSON 1`] = `
                       }
                     />
                     <div
-                      className="c35"
-                      style={
-                        Object {
-                          "color": "#f22735",
-                        }
-                      }
-                    >
-                      title5
-                    </div>
-                    <div
                       className="c36"
                       style={
                         Object {
@@ -9112,7 +9063,17 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      description5
+                      步骤5
+                    </div>
+                    <div
+                      className="c37"
+                      style={
+                        Object {
+                          "color": "#f22735",
+                        }
+                      }
+                    >
+                      描述性文本5
                     </div>
                   </div>
                 </div>
@@ -9121,14 +9082,14 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c38"
+          className="c39"
           style={Object {}}
         />
       </div>
     </div>
   </div>
   <div
-    className="c31"
+    className="c32"
   >
     <p>
       点状 虚线 size normal
@@ -9136,21 +9097,14 @@ exports[`stepsDemo Component JSON 1`] = `
     <div
       className="c1"
       orientation="vertical"
-      style={
-        Object {
-          "marginBottom": "1rem",
-          "marginLeft": "1rem",
-          "marginRight": "1rem",
-          "marginTop": "1rem",
-        }
-      }
+      style={Object {}}
     >
       <div>
         <div
           className="c2"
         >
           <div
-            className="c32"
+            className="c33"
             orientation="vertical"
             style={
               Object {
@@ -9167,15 +9121,15 @@ exports[`stepsDemo Component JSON 1`] = `
               }
             >
               <div
-                className="c43"
+                className="c44"
                 style={Object {}}
               >
                 <div
-                  className="c28"
+                  className="c29"
                   style={Object {}}
                 >
                   <div
-                    className="c29"
+                    className="c30"
                     style={
                       Object {
                         "backgroundColor": "#56c22d",
@@ -9183,14 +9137,14 @@ exports[`stepsDemo Component JSON 1`] = `
                     }
                   />
                   <div
-                    className="c44"
+                    className="c45"
                     style={
                       Object {
-                        "color": "#333333",
+                        "color": "#363B40",
                       }
                     }
                   >
-                    title1
+                    步骤1
                   </div>
                 </div>
               </div>
@@ -9212,11 +9166,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c43"
+                  className="c44"
                   style={Object {}}
                 >
                   <div
-                    className="c37"
+                    className="c38"
                     style={
                       Object {
                         "height": "100%",
@@ -9237,11 +9191,11 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c28"
+                    className="c29"
                     style={Object {}}
                   >
                     <div
-                      className="c29"
+                      className="c30"
                       style={
                         Object {
                           "backgroundColor": "#56c22d",
@@ -9249,14 +9203,14 @@ exports[`stepsDemo Component JSON 1`] = `
                       }
                     />
                     <div
-                      className="c44"
+                      className="c45"
                       style={
                         Object {
-                          "color": "#333333",
+                          "color": "#363B40",
                         }
                       }
                     >
-                      title1
+                      步骤1
                     </div>
                   </div>
                 </div>
@@ -9279,11 +9233,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c43"
+                  className="c44"
                   style={Object {}}
                 >
                   <div
-                    className="c37"
+                    className="c38"
                     style={
                       Object {
                         "height": "100%",
@@ -9304,11 +9258,11 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c28"
+                    className="c29"
                     style={Object {}}
                   >
                     <div
-                      className="c29"
+                      className="c30"
                       style={
                         Object {
                           "backgroundColor": "#4d63ff",
@@ -9316,14 +9270,14 @@ exports[`stepsDemo Component JSON 1`] = `
                       }
                     />
                     <div
-                      className="c44"
+                      className="c45"
                       style={
                         Object {
-                          "color": "#333333",
+                          "color": "#363B40",
                         }
                       }
                     >
-                      title2
+                      步骤2
                     </div>
                   </div>
                 </div>
@@ -9346,11 +9300,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c43"
+                  className="c44"
                   style={Object {}}
                 >
                   <div
-                    className="c37"
+                    className="c38"
                     style={
                       Object {
                         "height": "100%",
@@ -9371,11 +9325,11 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c28"
+                    className="c29"
                     style={Object {}}
                   >
                     <div
-                      className="c29"
+                      className="c30"
                       style={
                         Object {
                           "backgroundColor": "#4d63ff",
@@ -9383,14 +9337,14 @@ exports[`stepsDemo Component JSON 1`] = `
                       }
                     />
                     <div
-                      className="c44"
+                      className="c45"
                       style={
                         Object {
                           "color": "#cccccc",
                         }
                       }
                     >
-                      title3
+                      步骤3
                     </div>
                   </div>
                 </div>
@@ -9413,11 +9367,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c43"
+                  className="c44"
                   style={Object {}}
                 >
                   <div
-                    className="c37"
+                    className="c38"
                     style={
                       Object {
                         "height": "100%",
@@ -9438,11 +9392,11 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c28"
+                    className="c29"
                     style={Object {}}
                   >
                     <div
-                      className="c29"
+                      className="c30"
                       style={
                         Object {
                           "backgroundColor": "#cccccc",
@@ -9450,14 +9404,14 @@ exports[`stepsDemo Component JSON 1`] = `
                       }
                     />
                     <div
-                      className="c44"
+                      className="c45"
                       style={
                         Object {
                           "color": "#cccccc",
                         }
                       }
                     >
-                      title4
+                      步骤4
                     </div>
                   </div>
                 </div>
@@ -9480,11 +9434,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c43"
+                  className="c44"
                   style={Object {}}
                 >
                   <div
-                    className="c37"
+                    className="c38"
                     style={
                       Object {
                         "height": "100%",
@@ -9505,11 +9459,11 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c28"
+                    className="c29"
                     style={Object {}}
                   >
                     <div
-                      className="c29"
+                      className="c30"
                       style={
                         Object {
                           "backgroundColor": "#f22735",
@@ -9517,14 +9471,14 @@ exports[`stepsDemo Component JSON 1`] = `
                       }
                     />
                     <div
-                      className="c44"
+                      className="c45"
                       style={
                         Object {
                           "color": "#f22735",
                         }
                       }
                     >
-                      title5
+                      步骤5
                     </div>
                   </div>
                 </div>
@@ -9533,14 +9487,14 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c38"
+          className="c39"
           style={Object {}}
         />
       </div>
     </div>
   </div>
   <div
-    className="c31"
+    className="c32"
   >
     <p>
       点状风格 size normal
@@ -9548,21 +9502,14 @@ exports[`stepsDemo Component JSON 1`] = `
     <div
       className="c1"
       orientation="vertical"
-      style={
-        Object {
-          "marginBottom": "1rem",
-          "marginLeft": "1rem",
-          "marginRight": "1rem",
-          "marginTop": "1rem",
-        }
-      }
+      style={Object {}}
     >
       <div>
         <div
           className="c2"
         >
           <div
-            className="c32"
+            className="c33"
             orientation="vertical"
             style={
               Object {
@@ -9579,15 +9526,15 @@ exports[`stepsDemo Component JSON 1`] = `
               }
             >
               <div
-                className="c43"
+                className="c44"
                 style={Object {}}
               >
                 <div
-                  className="c28"
+                  className="c29"
                   style={Object {}}
                 >
                   <div
-                    className="c29"
+                    className="c30"
                     style={
                       Object {
                         "backgroundColor": "#56c22d",
@@ -9595,24 +9542,24 @@ exports[`stepsDemo Component JSON 1`] = `
                     }
                   />
                   <div
-                    className="c44"
-                    style={
-                      Object {
-                        "color": "#333333",
-                      }
-                    }
-                  >
-                    title1
-                  </div>
-                  <div
                     className="c45"
                     style={
                       Object {
-                        "color": "#666666",
+                        "color": "#363B40",
                       }
                     }
                   >
-                    description1
+                    步骤1
+                  </div>
+                  <div
+                    className="c46"
+                    style={
+                      Object {
+                        "color": "#646A6E",
+                      }
+                    }
+                  >
+                    描述性文本
                   </div>
                 </div>
               </div>
@@ -9634,11 +9581,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c43"
+                  className="c44"
                   style={Object {}}
                 >
                   <div
-                    className="c37"
+                    className="c38"
                     style={
                       Object {
                         "height": "100%",
@@ -9659,11 +9606,11 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c28"
+                    className="c29"
                     style={Object {}}
                   >
                     <div
-                      className="c29"
+                      className="c30"
                       style={
                         Object {
                           "backgroundColor": "#56c22d",
@@ -9671,24 +9618,24 @@ exports[`stepsDemo Component JSON 1`] = `
                       }
                     />
                     <div
-                      className="c44"
-                      style={
-                        Object {
-                          "color": "#333333",
-                        }
-                      }
-                    >
-                      title1
-                    </div>
-                    <div
                       className="c45"
                       style={
                         Object {
-                          "color": "#666666",
+                          "color": "#363B40",
                         }
                       }
                     >
-                      description1
+                      步骤1
+                    </div>
+                    <div
+                      className="c46"
+                      style={
+                        Object {
+                          "color": "#646A6E",
+                        }
+                      }
+                    >
+                      描述性文本
                     </div>
                   </div>
                 </div>
@@ -9711,11 +9658,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c43"
+                  className="c44"
                   style={Object {}}
                 >
                   <div
-                    className="c37"
+                    className="c38"
                     style={
                       Object {
                         "height": "100%",
@@ -9736,11 +9683,11 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c28"
+                    className="c29"
                     style={Object {}}
                   >
                     <div
-                      className="c29"
+                      className="c30"
                       style={
                         Object {
                           "backgroundColor": "#4d63ff",
@@ -9748,24 +9695,24 @@ exports[`stepsDemo Component JSON 1`] = `
                       }
                     />
                     <div
-                      className="c44"
-                      style={
-                        Object {
-                          "color": "#333333",
-                        }
-                      }
-                    >
-                      title2
-                    </div>
-                    <div
                       className="c45"
                       style={
                         Object {
-                          "color": "#666666",
+                          "color": "#363B40",
                         }
                       }
                     >
-                      description2
+                      步骤2
+                    </div>
+                    <div
+                      className="c46"
+                      style={
+                        Object {
+                          "color": "#646A6E",
+                        }
+                      }
+                    >
+                      描述性文本2
                     </div>
                   </div>
                 </div>
@@ -9788,11 +9735,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c43"
+                  className="c44"
                   style={Object {}}
                 >
                   <div
-                    className="c37"
+                    className="c38"
                     style={
                       Object {
                         "height": "100%",
@@ -9813,27 +9760,17 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c28"
+                    className="c29"
                     style={Object {}}
                   >
                     <div
-                      className="c29"
+                      className="c30"
                       style={
                         Object {
                           "backgroundColor": "#4d63ff",
                         }
                       }
                     />
-                    <div
-                      className="c44"
-                      style={
-                        Object {
-                          "color": "#cccccc",
-                        }
-                      }
-                    >
-                      title3
-                    </div>
                     <div
                       className="c45"
                       style={
@@ -9842,7 +9779,17 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      description3
+                      步骤3
+                    </div>
+                    <div
+                      className="c46"
+                      style={
+                        Object {
+                          "color": "#cccccc",
+                        }
+                      }
+                    >
+                      描述性文本3
                     </div>
                   </div>
                 </div>
@@ -9865,11 +9812,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c43"
+                  className="c44"
                   style={Object {}}
                 >
                   <div
-                    className="c37"
+                    className="c38"
                     style={
                       Object {
                         "height": "100%",
@@ -9890,27 +9837,17 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c28"
+                    className="c29"
                     style={Object {}}
                   >
                     <div
-                      className="c29"
+                      className="c30"
                       style={
                         Object {
                           "backgroundColor": "#cccccc",
                         }
                       }
                     />
-                    <div
-                      className="c44"
-                      style={
-                        Object {
-                          "color": "#cccccc",
-                        }
-                      }
-                    >
-                      title4
-                    </div>
                     <div
                       className="c45"
                       style={
@@ -9919,7 +9856,17 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      description4
+                      步骤4
+                    </div>
+                    <div
+                      className="c46"
+                      style={
+                        Object {
+                          "color": "#cccccc",
+                        }
+                      }
+                    >
+                      描述性文本4
                     </div>
                   </div>
                 </div>
@@ -9942,11 +9889,11 @@ exports[`stepsDemo Component JSON 1`] = `
                 }
               >
                 <div
-                  className="c43"
+                  className="c44"
                   style={Object {}}
                 >
                   <div
-                    className="c37"
+                    className="c38"
                     style={
                       Object {
                         "height": "100%",
@@ -9967,27 +9914,17 @@ exports[`stepsDemo Component JSON 1`] = `
                     />
                   </div>
                   <div
-                    className="c28"
+                    className="c29"
                     style={Object {}}
                   >
                     <div
-                      className="c29"
+                      className="c30"
                       style={
                         Object {
                           "backgroundColor": "#f22735",
                         }
                       }
                     />
-                    <div
-                      className="c44"
-                      style={
-                        Object {
-                          "color": "#f22735",
-                        }
-                      }
-                    >
-                      title5
-                    </div>
                     <div
                       className="c45"
                       style={
@@ -9996,7 +9933,17 @@ exports[`stepsDemo Component JSON 1`] = `
                         }
                       }
                     >
-                      description5
+                      步骤5
+                    </div>
+                    <div
+                      className="c46"
+                      style={
+                        Object {
+                          "color": "#f22735",
+                        }
+                      }
+                    >
+                      描述性文本5
                     </div>
                   </div>
                 </div>
@@ -10005,7 +9952,7 @@ exports[`stepsDemo Component JSON 1`] = `
           </div>
         </div>
         <div
-          className="c38"
+          className="c39"
           style={Object {}}
         />
       </div>
@@ -10109,7 +10056,7 @@ exports[`stepsDemo Component JSON 1`] = `
                     className="c9"
                     style={
                       Object {
-                        "color": "#333333",
+                        "color": "#363B40",
                       }
                     }
                   >
@@ -10333,12 +10280,12 @@ exports[`stepsDemo Component JSON 1`] = `
       </div>
     </div>
     <div
-      className="c46"
+      className="c47"
     >
       First Step Content
     </div>
     <button
-      className="c47"
+      className="c48"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -10375,10 +10322,10 @@ exports[`stepsDemo Component JSON 1`] = `
       type="primary"
     >
       <span
-        className="c48"
+        className="c49"
       >
         <span
-          className="c49"
+          className="c50"
           style={
             Object {
               "color": "#ffffff",
@@ -10391,7 +10338,7 @@ exports[`stepsDemo Component JSON 1`] = `
       </span>
     </button>
     <button
-      className="c47"
+      className="c48"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -10428,10 +10375,10 @@ exports[`stepsDemo Component JSON 1`] = `
       type="primary"
     >
       <span
-        className="c48"
+        className="c49"
       >
         <span
-          className="c49"
+          className="c50"
           style={
             Object {
               "color": "#ffffff",

@@ -10,18 +10,12 @@ import Wrapper from '../demo';
 import { _Step } from '../step';
 import 'jest-styled-components';
 import { getStepColor, getStepBackgroundColor } from '../../css/steps';
-import colorsFunc from '../../css/stateColor';
 import type { StepStatus } from '../../css/steps';
-import changeColor from '../../css/utilsColor';
-const {
-  themeColor,
-  blackColor,
-  successColor,
-  lightGreyColor,
-  dangerColor,
-  defaultColor,
-} = colorsFunc();
-const lightThemeColor = changeColor(themeColor, 20).rgb;
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
+const themeHoverColor = '$lugia-dict.@lugia/lugia-web.themeHoverColor';
+const successColor = '$lugia-dict.@lugia/lugia-web.successColor';
+const dangerColor = '$lugia-dict.@lugia/lugia-web.dangerColor';
+const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 
 describe('stepsDemo', () => {
   it('Component JSON', () => {
@@ -30,7 +24,7 @@ describe('stepsDemo', () => {
   });
 
   function TestgetStepValue(stepNumber: number, status: StepStatus, exceptNumber: number) {
-    it('getIcon', () => {
+    it('getIconByStepStatus', () => {
       expect(_Step.prototype.getStepValue(stepNumber, status)).toBe(exceptNumber);
     });
   }
@@ -40,8 +34,8 @@ describe('stepsDemo', () => {
   TestgetStepValue(0, 'process', 0);
   TestgetStepValue(1, 'process', 1);
   function TestgetIcon(status: StepStatus, exceptIcon: string) {
-    it('getIcon', () => {
-      expect(_Step.prototype.getIcon(status)).toBe(exceptIcon);
+    it('getIconByStepStatus', () => {
+      expect(_Step.prototype.getIconByStepStatus(status)).toBe(exceptIcon);
     });
   }
   TestgetIcon('finish', 'lugia-icon-reminder_check');
@@ -55,9 +49,9 @@ describe('stepsDemo', () => {
     });
   }
   testGetStepColor({ stepStatus: 'finish', stepType: 'simple' }, successColor);
-  testGetStepColor({ stepStatus: 'finish', stepType: 'flat' }, lightThemeColor);
+  testGetStepColor({ stepStatus: 'finish', stepType: 'flat' }, themeHoverColor);
   testGetStepColor({ stepStatus: 'finish', stepType: 'dot' }, successColor);
-  testGetStepColor({ stepStatus: 'process', stepType: 'flat' }, lightThemeColor);
+  testGetStepColor({ stepStatus: 'process', stepType: 'flat' }, themeHoverColor);
   testGetStepColor({ stepStatus: 'next', stepType: 'simple' }, themeColor);
   testGetStepColor({ stepStatus: 'error', stepType: 'simple' }, dangerColor);
   function testGetStepBackgroundColor(props: Object, exceptColor) {
@@ -66,8 +60,8 @@ describe('stepsDemo', () => {
     });
   }
   testGetStepBackgroundColor({ stepStatus: 'finish', stepType: 'simple' }, defaultColor);
-  testGetStepBackgroundColor({ stepStatus: 'finish', stepType: 'flat' }, lightThemeColor);
-  testGetStepBackgroundColor({ stepStatus: 'process', stepType: 'flat' }, lightThemeColor);
+  testGetStepBackgroundColor({ stepStatus: 'finish', stepType: 'flat' }, themeHoverColor);
+  testGetStepBackgroundColor({ stepStatus: 'process', stepType: 'flat' }, themeHoverColor);
   testGetStepBackgroundColor({ stepStatus: 'next', stepType: 'simple' }, defaultColor);
   testGetStepBackgroundColor({ stepStatus: 'error', stepType: 'flat' }, dangerColor);
   testGetStepBackgroundColor({ stepStatus: 'error', stepType: 'simple' }, defaultColor);
