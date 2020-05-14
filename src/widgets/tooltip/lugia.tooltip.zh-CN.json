@@ -3,6 +3,11 @@
   "title": "文字提示",
   "desc": "简单的文字气泡提示框",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "size": {
       "type": "ToolTipSize",
       "desc": "可配置三种尺寸大小的气泡提示框",

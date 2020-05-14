@@ -3,6 +3,11 @@
   "title": "走马灯",
   "desc": "常用于展示一组图片或卡片轮播",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "defaultStart": {
       "type": "number",
       "desc": "幻灯片初始状态开始激活的索引，默认从0开始",

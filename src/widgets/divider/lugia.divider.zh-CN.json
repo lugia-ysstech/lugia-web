@@ -3,6 +3,11 @@
   "title": "分割线",
   "desc": "区隔内容的分割线",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "position": {
       "type": "DividerPosition",
       "desc": "分割线中显示内容的位置,与content 配合使用"

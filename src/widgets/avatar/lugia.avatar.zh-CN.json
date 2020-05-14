@@ -3,6 +3,11 @@
   "title": "头像",
   "desc": "用来代表用户或事物，支持图片、图标或字符展示。",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "viewClass": {
       "type": "string",
       "desc": "用于配置通用主题属性"

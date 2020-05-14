@@ -3,6 +3,11 @@
   "title": "气泡卡片",
   "desc": "气泡式的卡片浮层",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "title": {
       "type": "React.Node",
       "desc": "卡片标题显示内容",

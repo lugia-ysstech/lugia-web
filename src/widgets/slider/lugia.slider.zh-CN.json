@@ -3,6 +3,11 @@
   "title": "滑动输入条",
   "desc": "滑动型输入器，展示当前值和可选范围",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "maxValue": {
       "type": "number",
       "desc": "最大值限制",

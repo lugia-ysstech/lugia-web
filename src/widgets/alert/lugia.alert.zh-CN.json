@@ -3,6 +3,11 @@
   "title": "警告提示",
   "desc": "警告提示信息。",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "type": {
       "type": "AlertType",
       "desc": "指定警告提示的样式，有四种可以选择：success、error、info、warning",
