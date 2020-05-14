@@ -168,7 +168,7 @@ class NumberTurn extends React.Component<NumberTurnProps, NumberTurnState> {
   }
 
   getBitOut(count: number) {
-    const { overflow, beforeOverflow } = this.state;
+    const { overflow } = this.state;
     const bitCnt = this.getBitCnt(count);
     const countStr = (count + '').split('');
     const result = [];
@@ -181,7 +181,7 @@ class NumberTurn extends React.Component<NumberTurnProps, NumberTurnState> {
         </BitOut>
       );
     }
-    if (overflow || beforeOverflow) {
+    if (overflow) {
       result.push(this.getPlus());
     }
     return result;
