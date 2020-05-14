@@ -3,6 +3,11 @@
   "title": "开关",
   "desc": "开关选择器",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "defaultValue": {
       "type": "boolean",
       "desc": "默认开关状态",

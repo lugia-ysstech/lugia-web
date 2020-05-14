@@ -3,6 +3,11 @@
   "title": "数字输入框",
   "desc": "常用于数字输入,可以进行快速加减显示",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "disabled": {
       "type": "boolean",
       "desc": "禁用状态,是否不可用",

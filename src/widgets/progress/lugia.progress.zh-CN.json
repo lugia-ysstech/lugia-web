@@ -3,6 +3,11 @@
   "title": "进度条",
   "desc": "展示操作的当前进度。",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "type": {
       "type": "ProgressType",
       "desc": "进度条类型，line、circle、dashboard",

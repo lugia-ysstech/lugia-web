@@ -3,6 +3,11 @@
   "title": "下拉菜单的按钮",
   "desc": "用于Dropmenu的按钮",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "disabled": {
       "type": "boolean",
       "desc": "是否禁选",

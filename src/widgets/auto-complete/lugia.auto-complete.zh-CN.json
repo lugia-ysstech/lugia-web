@@ -3,6 +3,11 @@
   "title": "自动完成",
   "desc": "需要自动完成数据时使用",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "data": {
       "type": "string[]",
       "desc": "生成选择项的数据",

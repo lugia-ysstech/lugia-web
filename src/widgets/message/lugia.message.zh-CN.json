@@ -3,6 +3,11 @@
   "title": "全局提示",
   "desc": "全局提示，展示操作反馈信息。",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "content": {
       "type": "React.node",
       "desc": "提示消息的内容"

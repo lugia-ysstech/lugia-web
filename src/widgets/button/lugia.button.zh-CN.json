@@ -3,6 +3,11 @@
   "title": "按钮",
   "desc": "方便用户点击操作",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "disabled": {
       "type": "boolean",
       "desc": "按钮是否禁用，true 禁用 false 可用",

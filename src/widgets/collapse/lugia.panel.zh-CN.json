@@ -3,6 +3,11 @@
   "title": "Panel 面板",
   "desc": "Panel 面板。",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "value": {
       "type": "string",
       "desc": "指定Panel面板value值"

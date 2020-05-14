@@ -3,6 +3,11 @@
   "title": "导航菜单",
   "desc": "为页面提供导航功能的菜单",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "valueField": {
       "type": "string",
       "desc": "data数据的value值的名称",

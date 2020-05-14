@@ -3,6 +3,11 @@
   "title": "时间轴",
   "desc": "垂直展示的时间流信息",
   "props": {
+    "lugiaHidden": {
+      "type": "boolean",
+      "desc": "是否渲染当前组件",
+      "defaultValue": false
+    },
     "children": {
       "type": "React.Node",
       "desc": "时间轴需要包含的子组件"
