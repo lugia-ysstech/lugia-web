@@ -122,7 +122,7 @@ const BaseAvatar = CSSComponent({
       const theHeight = newSize(height, theSize);
       const theBorderRadius = shape === 'circle' ? '50%' : get('borderRadiusValue');
       return {
-        lineHeight: getDefaultSize(size),
+        lineHeight: theHeight,
         borderRadius: getBorderRadius(theBorderRadius),
         width: theWidth,
         height: theHeight,
