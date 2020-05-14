@@ -125,11 +125,6 @@ class Steps extends Component<StepsProps, StepsState> {
   };
   static displayName = Widget.Steps;
   state = { _renderAgain: false };
-  constructor(props: StepsProps) {
-    super(props);
-  }
-
-  static getDerivedStateFromProps(props: StepsProps, state: StepsState) {}
 
   render() {
     const { orientation } = this.props;
