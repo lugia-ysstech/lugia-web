@@ -125,7 +125,7 @@ exports[`stepsDemo Component JSON 1`] = `
   word-break: keep-all;
   overflow: hidden;
   font-size: 1.2rem;
-  white-space: normal;
+  white-space: nowrap;
   top: 5.5rem;
   max-width: 20rem;
   text-align: left;
@@ -137,7 +137,7 @@ exports[`stepsDemo Component JSON 1`] = `
   word-break: keep-all;
   overflow: hidden;
   font-size: 1.2rem;
-  white-space: normal;
+  white-space: nowrap;
   top: 5.5rem;
   max-width: 20rem;
   text-align: center;
@@ -149,7 +149,7 @@ exports[`stepsDemo Component JSON 1`] = `
   word-break: keep-all;
   overflow: hidden;
   font-size: 1.2rem;
-  white-space: normal;
+  white-space: nowrap;
   top: 5rem;
   max-width: 20rem;
   text-align: left;
@@ -161,7 +161,7 @@ exports[`stepsDemo Component JSON 1`] = `
   word-break: keep-all;
   overflow: hidden;
   font-size: 1.2rem;
-  white-space: normal;
+  white-space: nowrap;
   top: 4.5rem;
   max-width: 20rem;
   text-align: center;
@@ -173,7 +173,7 @@ exports[`stepsDemo Component JSON 1`] = `
   word-break: keep-all;
   overflow: hidden;
   font-size: 1.2rem;
-  white-space: normal;
+  white-space: nowrap;
   top: 3.5rem;
   max-width: 20rem;
   text-align: center;
@@ -185,7 +185,7 @@ exports[`stepsDemo Component JSON 1`] = `
   word-break: keep-all;
   overflow: hidden;
   font-size: 1.2rem;
-  white-space: normal;
+  white-space: nowrap;
   top: 3.5rem;
   max-width: 20rem;
   text-align: left;
@@ -197,7 +197,7 @@ exports[`stepsDemo Component JSON 1`] = `
   word-break: keep-all;
   overflow: hidden;
   font-size: 1.2rem;
-  white-space: normal;
+  white-space: nowrap;
   top: 2.5rem;
   left: 3rem;
   text-align: left;
@@ -209,7 +209,7 @@ exports[`stepsDemo Component JSON 1`] = `
   word-break: keep-all;
   overflow: hidden;
   font-size: 1.2rem;
-  white-space: normal;
+  white-space: nowrap;
   top: 2.5rem;
   left: 3.5rem;
   text-align: left;
@@ -221,7 +221,7 @@ exports[`stepsDemo Component JSON 1`] = `
   word-break: keep-all;
   overflow: hidden;
   font-size: 1.2rem;
-  white-space: normal;
+  white-space: nowrap;
   top: 1.5rem;
   left: 2rem;
   text-align: left;
