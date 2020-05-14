@@ -30,10 +30,7 @@ const TypeThemeProps = {
   info: {
     normal: {
       color: themeColor,
-      border: getBorder(
-        { color: '$lugia-dict.@lugia/lugia-web.themeColor', width: 4, style: 'solid' },
-        ['l']
-      ),
+      border: getBorder({ color: themeColor, width: 4, style: 'solid' }, ['l']),
       borderRadius: getBorderRadius(4),
       background: { color: changeColor(get('themeColor'), 0, 0, 10).rgba },
     },
@@ -41,10 +38,7 @@ const TypeThemeProps = {
   success: {
     normal: {
       color: successColor,
-      border: getBorder(
-        { color: '$lugia-dict.@lugia/lugia-web.successColor', width: 4, style: 'solid' },
-        ['l']
-      ),
+      border: getBorder({ color: successColor, width: 4, style: 'solid' }, ['l']),
       borderRadius: getBorderRadius(4),
       background: { color: changeColor(get('successColor'), 0, 0, 10).rgba },
     },
@@ -52,10 +46,7 @@ const TypeThemeProps = {
   warning: {
     normal: {
       color: warningColor,
-      border: getBorder(
-        { color: '$lugia-dict.@lugia/lugia-web.warningColor', width: 4, style: 'solid' },
-        ['l']
-      ),
+      border: getBorder({ color: warningColor, width: 4, style: 'solid' }, ['l']),
       borderRadius: getBorderRadius(4),
       background: { color: changeColor(get('warningColor'), 0, 0, 10).rgba },
     },
@@ -63,10 +54,7 @@ const TypeThemeProps = {
   error: {
     normal: {
       color: dangerColor,
-      border: getBorder(
-        { color: '$lugia-dict.@lugia/lugia-web.dangerColor', width: 4, style: 'solid' },
-        ['l']
-      ),
+      border: getBorder({ color: dangerColor, width: 4, style: 'solid' }, ['l']),
       borderRadius: getBorderRadius(4),
       background: { color: changeColor(get('dangerColor'), 0, 0, 10).rgba },
     },
