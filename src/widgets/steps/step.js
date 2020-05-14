@@ -62,7 +62,7 @@ const getSize = (
   return widthAndHorizontal ? '100%' : defaultValue;
 };
 const getWhiteSpaceCSS = (width: string | number): string => {
-  const theWhiteSpace = width ? 'nowrap' : 'normal';
+  const theWhiteSpace = width ? 'normal' : 'nowrap';
   return `white-space:${theWhiteSpace};`;
 };
 
