@@ -185,8 +185,8 @@ export default () => {
       </Wrapper>
 
       <Wrapper>
-        <p>icon</p>
-        <Steps orientation="horizontal" stepType={'icon'} size={'mini'}>
+        <p>icon 描述文本居中展示</p>
+        <Steps orientation="horizontal" stepType={'icon'} size={'mini'} desAlign={'center'}>
           <Step
             icon={'lugia-icon-financial_cloud'}
             stepStatus="finish"
@@ -226,8 +226,8 @@ export default () => {
         </Steps>
       </Wrapper>
       <Wrapper>
-        <p>点状 虚线</p>
-        <Steps orientation="horizontal" stepType={'dot'}>
+        <p>点状 虚线 描述文本居中展示</p>
+        <Steps orientation="horizontal" stepType={'dot'} desAlign={'center'}>
           <Step description={'描述性文本1'} title="步骤1" stepStatus="finish" />
           <Step description={'描述性文本1'} title="步骤1" stepStatus="finish" />
           <Step description={'描述性文本'} title="步骤2" stepStatus="process" isDashed={true} />

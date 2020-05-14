@@ -428,11 +428,15 @@ const IconContainer = CSSComponent({
         height: theSize,
       };
     },
+    getCSS(themeMeta, themeProps) {
+      const { propsConfig: { desAlign } = {} } = themeProps;
+      return `${getTextAlignCenterCSS(desAlign)};`;
+    },
   },
   css: css`
     text-align: left;
     position: relative;
-    display: inLine-block;
+    display: inline-flex;
   `,
 });
 const StepNumber = CSSComponent({
@@ -560,6 +564,10 @@ const BaseInnerContainer = CSSComponent({
   `,
 });
 
+function getTextAlignCenterCSS(desAlign: AlignType) {
+  return desAlign === 'center' ? 'justify-content: center;' : '';
+}
+
 const StepInnerContainer = CSSComponent({
   extend: BaseInnerContainer,
   className: 'StepInnerContainer',
@@ -583,10 +591,9 @@ const StepInnerContainer = CSSComponent({
       const position = isHorizontal(orientation)
         ? 'align-items: center;top: 50%;transform: translateY(-50%);'
         : 'justify-content: center;';
-      const center = desAlign === 'center' ? 'justify-content: center;' : '';
       const index =
         isFlatType(stepType) && (stepStatus === 'wait' || stepStatus === 'next') ? 9 : 11;
-      return `z-index: ${index};${position};${center};`;
+      return `z-index: ${index};${position};${getTextAlignCenterCSS(desAlign)};`;
     },
   },
 });
@@ -598,6 +605,10 @@ const DotInnerContainer = CSSComponent({
     defaultTheme: {
       width: 12,
       height: 12,
+    },
+    getCSS(themeMeta, themeProps) {
+      const { propsConfig: { desAlign } = {} } = themeProps;
+      return `${getTextAlignCenterCSS(desAlign)};`;
     },
   },
 });
@@ -857,7 +868,7 @@ class Step extends React.Component<StepProps, StepState> {
   }
 
   getStepHead() {
-    const { stepType, orientation } = this.props;
+    const { stepType, orientation, desAlign } = this.props;
     const { stepStatus } = this.state;
 
     const theThemeProps = this.getThemeByPartName('StepContainer');
@@ -867,6 +878,7 @@ class Step extends React.Component<StepProps, StepState> {
     const dotThemeProps = this.getThemeByPartName('StepDot');
     dotThemeProps.propsConfig = {
       orientation,
+      desAlign,
     };
 
     if (isDotType(stepType)) {
@@ -1076,7 +1088,7 @@ class Step extends React.Component<StepProps, StepState> {
     }
   }
   getIconStep() {
-    const { icon = 'lugia-icon-financial_cloud', size } = this.props;
+    const { icon = 'lugia-icon-financial_cloud', size, desAlign } = this.props;
     const { stepStatus } = this.state;
 
     const { theme: iconThemeProps, viewClass: iconViewClass } = this.props.getPartOfThemeHocProps(
@@ -1125,7 +1137,9 @@ class Step extends React.Component<StepProps, StepState> {
     );
 
     return (
-      <IconContainer themeProps={this.props.getPartOfThemeProps('StepIcon', { props: { size } })}>
+      <IconContainer
+        themeProps={this.props.getPartOfThemeProps('StepIcon', { props: { size, desAlign } })}
+      >
         <Icon
           iconClass={icon}
           propsConfig={{ stepStatus, size }}
