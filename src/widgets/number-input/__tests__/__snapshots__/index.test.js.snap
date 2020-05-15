@@ -30,6 +30,7 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
   -ms-flex: 1;
   flex: 1;
   cursor: text;
+  background-color: #ffffff;
   border-top-left-radius: 0.4rem;
   border-top-right-radius: 0.4rem;
   border-bottom-right-radius: 0.4rem;
@@ -69,6 +70,7 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
   outline: none;
   min-width: 3rem;
   width: 100%;
+  background-color: #ffffff;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -113,6 +115,7 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
   -webkit-transition: all 0.3s linear 0.1s;
   transition: all 0.3s linear 0.1s;
   box-sizing: border-box;
+  outline: 0;
 }
 
 .c6 {
@@ -196,6 +199,8 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
     <div
       className="c3"
       disabled={false}
+      onBlur={[Function]}
+      onFocus={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -206,6 +211,7 @@ exports[`NumberInput props: getTheme: width:100,margin:10, 1`] = `
           "width": "2.2rem",
         }
       }
+      tabIndex="-1"
     >
       <span
         className="c4"
@@ -296,6 +302,7 @@ exports[`NumberInput props: null 1`] = `
   -ms-flex: 1;
   flex: 1;
   cursor: text;
+  background-color: #ffffff;
   border-top-left-radius: 0.4rem;
   border-top-right-radius: 0.4rem;
   border-bottom-right-radius: 0.4rem;
@@ -335,6 +342,7 @@ exports[`NumberInput props: null 1`] = `
   outline: none;
   min-width: 3rem;
   width: 100%;
+  background-color: #ffffff;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -379,6 +387,7 @@ exports[`NumberInput props: null 1`] = `
   -webkit-transition: all 0.3s linear 0.1s;
   transition: all 0.3s linear 0.1s;
   box-sizing: border-box;
+  outline: 0;
 }
 
 .c6 {
@@ -462,6 +471,8 @@ exports[`NumberInput props: null 1`] = `
     <div
       className="c3"
       disabled={false}
+      onBlur={[Function]}
+      onFocus={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -472,6 +483,7 @@ exports[`NumberInput props: null 1`] = `
           "width": "2.2rem",
         }
       }
+      tabIndex="-1"
     >
       <span
         className="c4"
@@ -562,6 +574,7 @@ exports[`NumberInput props: placeholder  1`] = `
   -ms-flex: 1;
   flex: 1;
   cursor: text;
+  background-color: #ffffff;
   border-top-left-radius: 0.4rem;
   border-top-right-radius: 0.4rem;
   border-bottom-right-radius: 0.4rem;
@@ -601,6 +614,7 @@ exports[`NumberInput props: placeholder  1`] = `
   outline: none;
   min-width: 3rem;
   width: 100%;
+  background-color: #ffffff;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -645,6 +659,7 @@ exports[`NumberInput props: placeholder  1`] = `
   -webkit-transition: all 0.3s linear 0.1s;
   transition: all 0.3s linear 0.1s;
   box-sizing: border-box;
+  outline: 0;
 }
 
 .c6 {
@@ -729,6 +744,8 @@ exports[`NumberInput props: placeholder  1`] = `
     <div
       className="c3"
       disabled={false}
+      onBlur={[Function]}
+      onFocus={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -739,6 +756,7 @@ exports[`NumberInput props: placeholder  1`] = `
           "width": "2.2rem",
         }
       }
+      tabIndex="-1"
     >
       <span
         className="c4"
@@ -829,6 +847,7 @@ exports[`NumberInput props: placeholder  2`] = `
   -ms-flex: 1;
   flex: 1;
   cursor: text;
+  background-color: #ffffff;
   border-top-left-radius: 0.4rem;
   border-top-right-radius: 0.4rem;
   border-bottom-right-radius: 0.4rem;
@@ -868,6 +887,7 @@ exports[`NumberInput props: placeholder  2`] = `
   outline: none;
   min-width: 3rem;
   width: 100%;
+  background-color: #ffffff;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -912,6 +932,7 @@ exports[`NumberInput props: placeholder  2`] = `
   -webkit-transition: all 0.3s linear 0.1s;
   transition: all 0.3s linear 0.1s;
   box-sizing: border-box;
+  outline: 0;
 }
 
 .c6 {
@@ -996,6 +1017,8 @@ exports[`NumberInput props: placeholder  2`] = `
     <div
       className="c3"
       disabled={false}
+      onBlur={[Function]}
+      onFocus={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -1006,6 +1029,7 @@ exports[`NumberInput props: placeholder  2`] = `
           "width": "2.2rem",
         }
       }
+      tabIndex="-1"
     >
       <span
         className="c4"
@@ -1096,6 +1120,7 @@ exports[`NumberInput props: size 1`] = `
   -ms-flex: 1;
   flex: 1;
   cursor: text;
+  background-color: #ffffff;
   border-top-left-radius: 0.4rem;
   border-top-right-radius: 0.4rem;
   border-bottom-right-radius: 0.4rem;
@@ -1135,6 +1160,7 @@ exports[`NumberInput props: size 1`] = `
   outline: none;
   min-width: 3rem;
   width: 100%;
+  background-color: #ffffff;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -1179,6 +1205,7 @@ exports[`NumberInput props: size 1`] = `
   -webkit-transition: all 0.3s linear 0.1s;
   transition: all 0.3s linear 0.1s;
   box-sizing: border-box;
+  outline: 0;
 }
 
 .c6 {
@@ -1262,6 +1289,8 @@ exports[`NumberInput props: size 1`] = `
     <div
       className="c3"
       disabled={false}
+      onBlur={[Function]}
+      onFocus={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -1272,6 +1301,7 @@ exports[`NumberInput props: size 1`] = `
           "width": "2.2rem",
         }
       }
+      tabIndex="-1"
     >
       <span
         className="c4"
@@ -1362,6 +1392,7 @@ exports[`NumberInput props: size 2`] = `
   -ms-flex: 1;
   flex: 1;
   cursor: text;
+  background-color: #ffffff;
   border-top-left-radius: 0.4rem;
   border-top-right-radius: 0.4rem;
   border-bottom-right-radius: 0.4rem;
@@ -1401,6 +1432,7 @@ exports[`NumberInput props: size 2`] = `
   outline: none;
   min-width: 3rem;
   width: 100%;
+  background-color: #ffffff;
   border-top-width: 0.1rem;
   border-top-style: solid;
   border-top-color: #cccccc;
@@ -1445,6 +1477,7 @@ exports[`NumberInput props: size 2`] = `
   -webkit-transition: all 0.3s linear 0.1s;
   transition: all 0.3s linear 0.1s;
   box-sizing: border-box;
+  outline: 0;
 }
 
 .c6 {
@@ -1528,6 +1561,8 @@ exports[`NumberInput props: size 2`] = `
     <div
       className="c3"
       disabled={false}
+      onBlur={[Function]}
+      onFocus={[Function]}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -1538,6 +1573,7 @@ exports[`NumberInput props: size 2`] = `
           "width": "2.2rem",
         }
       }
+      tabIndex="-1"
     >
       <span
         className="c4"

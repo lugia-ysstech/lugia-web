@@ -67,6 +67,7 @@ const ArrowIconContainer = CSSComponent({
     -webkit-transition: all 0.3s linear 0.1s;
     transition: all 0.3s linear 0.1s;
     box-sizing: border-box;
+    outline: 0;
   `,
   option: { hover: true, active: true },
 });
@@ -350,6 +351,9 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     const { size } = this.props;
     return (
       <ArrowIconContainer
+        tabIndex="-1"
+        onFocus={this.onFocus}
+        onBlur={this.onBlur}
         disabled={disabled}
         themeProps={theThemeProps}
         {...arrowContainerChannel.provider}
@@ -402,7 +406,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
   }
 
   render() {
-    const { value } = this.state;
+    const { value, innerFocus } = this.state;
     const { createEventChannel, getPartOfThemeHocProps, getPartOfThemeProps } = this.props;
     const { theme: inputThemeProps } = getPartOfThemeHocProps('Input');
 
@@ -431,6 +435,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     const arrowContainerChannel = createEventChannel([['hover'], ['focus']]);
     return (
       <Input
+        _focus={innerFocus}
         lugiaConsumers={arrowContainerChannel.consumer}
         theme={theInputTheme}
         {...this.props}
@@ -449,14 +454,24 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     const { value } = this.state;
     const finalValue = limit(value, [min, max]);
     this.setValue(finalValue, event);
+    this.setState({ innerFocus: false });
     onBlur && onBlur(event);
   };
+
   onFocus = (event: UIEvent) => {
     const { onFocus } = this.props;
+    const { focus } = this.state;
+    if (!focus) {
+      this.setState({ innerFocus: true });
+    }
     onFocus && onFocus(event);
   };
 
   handleClick = (click: ClickType) => (event: Event) => {
+    const { innerFocus } = this.state;
+    if (!innerFocus) {
+      this.onFocus();
+    }
     this.calculateValue(click, event);
   };
 
