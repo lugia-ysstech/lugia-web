@@ -400,14 +400,6 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
       </ArrowIconContainer>
     );
   }
-  focusInput() {
-    this.inputRef && this.inputRef.current.focus();
-  }
-
-  getInputRef = refs => {
-    const { ref } = refs;
-    this.inputRef = ref;
-  };
 
   render() {
     const { value } = this.state;
@@ -439,7 +431,6 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     const arrowContainerChannel = createEventChannel([['hover'], ['focus']]);
     return (
       <Input
-        getInputRef={this.getInputRef}
         lugiaConsumers={arrowContainerChannel.consumer}
         theme={theInputTheme}
         {...this.props}
@@ -466,7 +457,6 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
   };
 
   handleClick = (click: ClickType) => (event: Event) => {
-    this.focusInput();
     this.calculateValue(click, event);
   };
 

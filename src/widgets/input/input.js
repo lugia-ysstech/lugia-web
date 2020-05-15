@@ -612,7 +612,9 @@ class TextBox extends Component<InputProps, InputState> {
       theValidateWidthThemeProps,
       theValidateThemeProps
     );
+
     if (_focus) {
+      theThemeProps.themeState.active = false;
       theThemeProps.themeState.focus = true;
     }
     return theThemeProps;
