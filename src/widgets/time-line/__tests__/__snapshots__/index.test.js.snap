@@ -30,31 +30,28 @@ exports[`timeLineDemo Component JSON 1`] = `
 
 .c1 {
   position: relative;
-  width: -webkit-min-content;
-  width: -moz-min-content;
-  width: min-content;
 }
 
 .c9 {
   position: relative;
-  width: -webkit-min-content;
-  width: -moz-min-content;
-  width: min-content;
   -webkit-transform: translateX(0px);
   -ms-transform: translateX(0px);
   transform: translateX(0px);
 }
 
 .c7 {
-  line-height: 1.5;
-  color: #666666;
+  color: #646A6E;
+  margin-top: 0.4rem;
+  margin-bottom: 0rem;
+  margin-left: 0rem;
+  margin-right: 0rem;
 }
 
 .c6 {
   text-align: inherit;
   overflow: hidden;
   white-space: nowrap;
-  color: #333333;
+  color: #363B40;
 }
 
 .c5 {
@@ -87,7 +84,7 @@ exports[`timeLineDemo Component JSON 1`] = `
   position: relative;
   left: 1rem;
   z-index: 2;
-  border-left: 0.1rem solid #e8e8e8;
+  border-left: 0.1rem solid #cccccc;
 }
 
 .c8 {
@@ -95,7 +92,7 @@ exports[`timeLineDemo Component JSON 1`] = `
   left: 1rem;
   z-index: 2;
   display: none;
-  border-left: 0.1rem solid #e8e8e8;
+  border-left: 0.1rem solid #cccccc;
 }
 
 .c3 {
@@ -142,7 +139,6 @@ exports[`timeLineDemo Component JSON 1`] = `
 }
 
 .c15 {
-  color: #666666;
   font-size: 1.4rem;
 }
 
@@ -2072,8 +2068,7 @@ exports[`timeLineDemo Component JSON 1`] = `
             onMouseUp={[Function]}
             style={
               Object {
-                "color": "red",
-                "fontSize": "1.6rem",
+                "color": "#646A6E",
               }
             }
           />
