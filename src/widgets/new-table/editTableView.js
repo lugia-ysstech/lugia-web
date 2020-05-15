@@ -19,6 +19,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
   enterEditingListener: Object;
   setStateListener: Object;
   exportOnCellListener: Object;
+  exportOnHeaderCellListener: Object;
 
   constructor(props: EditTableProps) {
     super(props);
@@ -240,7 +241,9 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
   };
 
   clearEditState = (): void => {
-    this.setState({ editing: false, editCell: {}, selectCell: [] });
+    this.setState({ editing: false });
+    const tableEl = findDOMNode(this.table.getThemeTarget());
+    this.editTableListener.focusTable(tableEl);
   };
 
   exportChange = (res: Object): void => {

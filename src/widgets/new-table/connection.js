@@ -207,7 +207,6 @@ export default class EditTableEventListener extends Listener<any> {
     const { key } = e;
     const isMultiple = this.isMultiple();
     if (key.length === 1 && !isMultiple) {
-      this.emit('quitMoveCells');
       this.emit('enterEditing');
       return;
     }
@@ -301,7 +300,7 @@ export default class EditTableEventListener extends Listener<any> {
     return newItem;
   };
 
-  getHeaderCell = (props: Object) => {
+  getHeaderCell = (props: Object): Object => {
     const { currentItem: { selectColumn } = {}, newValue, oldValue, columns } = props;
     const newItem = { ...columns[selectColumn] };
     const newValueRes = this.getSelectColumnsInfo(newValue, columns);
@@ -470,6 +469,10 @@ export default class EditTableEventListener extends Listener<any> {
 
   isEqualArray = (oldValue: ?Array<Object>, newValue: ?Array<Object>): boolean => {
     return JSON.stringify(oldValue) === JSON.stringify(newValue);
+  };
+
+  focusTable = (table: Object): void => {
+    table.focus();
   };
 
   componentWillUnmount(): void {
