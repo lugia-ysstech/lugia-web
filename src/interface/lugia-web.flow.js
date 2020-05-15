@@ -181,5 +181,7 @@ declare module '@lugia/lugia-web' {
     changeColumns(props: Object): Array<Object>,
     onCellClick(props: Object): void,
     isEqualArray(oldValue: ?Array<Object>, newValue: ?Array<Object>): boolean,
+    getHeaderCell(props: Object): Object,
+    focusTable(table: Object): void,
   };
 }
