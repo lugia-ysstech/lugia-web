@@ -14,7 +14,7 @@ import type { TimeLineMode } from '../css/time-line';
 import TimeLineItem from './timeLineItem';
 import { getAttributeFromObject } from '../common/ObjectUtils';
 import moment from 'moment';
-import CSSComponent, { css } from '@lugia/theme-css-hoc';
+import CSSComponent from '@lugia/theme-css-hoc';
 import { deepMerge } from '@lugia/object-utils';
 
 const OutContainer = CSSComponent({
@@ -25,7 +25,9 @@ const OutContainer = CSSComponent({
   },
 });
 
-type TimeLineState = {};
+type TimeLineState = {
+  _renderWidth: boolean,
+};
 
 type TimeLineProps = {
   mode: TimeLineMode,
@@ -36,6 +38,8 @@ type TimeLineProps = {
   pending: boolean,
   data: Array<Object>,
   defaultData: Array<Object>,
+  getPartOfThemeProps: Function,
+  getPartOfThemeHocProps: Function,
 };
 
 function getDay(i: string) {
@@ -64,11 +68,9 @@ class TimeLine extends Component<TimeLineProps, TimeLineState> {
   };
   static displayName = Widget.TimeLine;
   state = { _renderWidth: false };
-  constructor(props: TimeLineProps) {
-    super(props);
-  }
+  cmpWidth: any;
+  childrenLength: any;
 
-  static getDerivedStateFromProps(props: TimeLineProps, state: TimeLineState) {}
   getContainerHeight() {
     if (this.cmpWidth) {
       const theWidth = this.cmpWidth;
@@ -147,7 +149,7 @@ class TimeLine extends Component<TimeLineProps, TimeLineState> {
       _leftMaxWidth: this.leftChildMaxWidth,
     };
   }
-  handleCmpWidth(widthArray: Array) {
+  handleCmpWidth(widthArray) {
     const { mode } = this.props;
     if (mode === 'alternate') {
       this.cmpWidth = widthArray[0] + widthArray[1];
@@ -165,7 +167,7 @@ class TimeLine extends Component<TimeLineProps, TimeLineState> {
   childArray = [];
   leftChildMaxWidth = 0;
   getChildDirectionAndWidth = (childObj: Object) => {
-    const { width, direction } = childObj;
+    const { width } = childObj;
     this.widthArray.push(width);
     this.childArray.push(childObj);
     if (this.childrenLength === this.widthArray.length) {

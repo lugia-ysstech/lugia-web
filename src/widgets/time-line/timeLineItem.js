@@ -4,7 +4,7 @@
  *
  * @flow
  */
-import type { TimeLineStatus, TimeLineType } from '../css/time-line';
+import type { TimeLineMode, TimeLineStatus, TimeLineType } from '../css/time-line';
 import '../common/shirm';
 import * as React from 'react';
 import { Component } from 'react';
@@ -28,7 +28,6 @@ const dangerColor = '$lugia-dict.@lugia/lugia-web.dangerColor';
 const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
 const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
-const superLightColor = '$lugia-dict.@lugia/lugia-web.superLightColor';
 
 const ItemContainer = CSSComponent({
   tag: 'div',
@@ -41,9 +40,6 @@ const ItemContainer = CSSComponent({
       if (mode !== 'right') {
         return `transform: translateX(${maxWidth}px);`;
       }
-    },
-    defaultTheme: {
-      width: 'min-content',
     },
   },
   css: css`
@@ -67,14 +63,14 @@ const Description = CSSComponent({
   tag: 'div',
   className: 'TimeLineItemBaseText',
   normal: {
-    selectNames: [['width'], ['height'], ['font'], ['fontSize'], ['color']],
+    selectNames: [['width'], ['height'], ['font'], ['fontSize'], ['color'], ['margin']],
     defaultTheme: {
       color: darkGreyColor,
+      margin: {
+        top: 4,
+      },
     },
   },
-  css: css`
-    line-height: 1.5;
-  `,
 });
 
 const Time = CSSComponent({
@@ -131,8 +127,7 @@ const Line = CSSComponent({
       const { propsConfig } = themeProps;
       const { isLast } = propsConfig;
       const display = isLast ? 'none' : '';
-      const borderColor =
-        background && background.color ? background.color : get('superLightColor');
+      const borderColor = background && background.color ? background.color : get('borderColor');
       return `display:${display};
          border-left: ${px2remcss(1)} solid ${borderColor};
       `;
@@ -211,7 +206,9 @@ const ExplainDot = CSSComponent({
   },
 });
 
-type TimeLineState = {};
+type TimeLineState = {
+  _renderHeight: boolean,
+};
 
 type TimeLineProps = {
   time: string,
@@ -224,7 +221,12 @@ type TimeLineProps = {
   timeLineType: TimeLineType,
   pendingDot: React.Node,
   pending: boolean,
+  mode: TimeLineMode,
   getChildDirectionAndWidth: Function,
+  getPartOfThemeHocProps: Function,
+  getPartOfThemeProps: Function,
+  themeProps: Object,
+  _leftMaxWidth: string,
 };
 
 class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
@@ -232,13 +234,14 @@ class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
     status: 'normal',
   };
   state = { _renderHeight: false };
+  desc: any;
+  descHeight: any;
+  descWidth: any;
 
   constructor(props: TimeLineProps) {
     super(props);
     this.desc = React.createRef();
   }
-
-  static getDerivedStateFromProps(props: TimeLineProps, state: TimeLineState) {}
 
   getHeightByType(type: string, description: React.Node) {
     const theHeight =
@@ -261,10 +264,9 @@ class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
     if (this.desc.current) {
       this.descHeight = this.desc.current.offsetHeight;
       this.descWidth = this.desc.current.offsetWidth;
-      const { getChildDirectionAndWidth, direction } = this.props;
+      const { getChildDirectionAndWidth } = this.props;
       getChildDirectionAndWidth &&
         getChildDirectionAndWidth({
-          direction,
           width: this.descWidth,
         });
       this.setState({ _renderHeight: true });
@@ -328,13 +330,6 @@ class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
             TooltipContent: {
               normal: {
                 fontSize: 12,
-                background: { color: superLightColor },
-                padding: {
-                  top: 6,
-                  bottom: 6,
-                  left: 8,
-                  right: 8,
-                },
               },
             },
             ChildrenContainer: {
@@ -353,7 +348,6 @@ class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
           theme={tooltipTheme}
           viewClass={TimeLineItemTipViewClass}
           placement="right"
-          popArrowType={'round'}
           title={getString(time)}
           description={getString(description)}
           action={'hover'}
@@ -369,6 +363,7 @@ class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
       {
         [viewClass]: {
           normal: {
+            color: darkGreyColor,
             getCSS(themeMeta, themeProps) {
               const { propsConfig } = themeProps;
               const { pending } = propsConfig;
