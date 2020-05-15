@@ -129,7 +129,6 @@ const Bit = CSSComponent({
 type NumberTurnState = {
   count: number,
   overflow: boolean,
-  beforeOverflow: boolean,
 };
 
 class NumberTurn extends React.Component<NumberTurnProps, NumberTurnState> {
@@ -143,7 +142,6 @@ class NumberTurn extends React.Component<NumberTurnProps, NumberTurnState> {
     return {
       count: Math.min(count < 0 ? 0 : count, overflowCount),
       overflow: count > overflowCount,
-      beforeOverflow: count > overflowCount - 1,
     };
   }
 
