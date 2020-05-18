@@ -71,7 +71,7 @@ class TimeLine extends Component<TimeLineProps, TimeLineState> {
   cmpWidth: any;
   childrenLength: any;
 
-  getContainerHeight() {
+  getContainerWidth() {
     if (this.cmpWidth) {
       const theWidth = this.cmpWidth;
       return {
@@ -81,7 +81,7 @@ class TimeLine extends Component<TimeLineProps, TimeLineState> {
   }
   render() {
     const theThemeProps = deepMerge(
-      { themeConfig: { normal: this.getContainerHeight() } },
+      { themeConfig: { normal: this.getContainerWidth() } },
       this.props.getPartOfThemeProps('TimeLineContainer')
     );
     return <OutContainer themeProps={theThemeProps}>{this.getChildren()}</OutContainer>;
@@ -167,7 +167,7 @@ class TimeLine extends Component<TimeLineProps, TimeLineState> {
   childArray = [];
   leftChildMaxWidth = 0;
   getChildDirectionAndWidth = (childObj: Object) => {
-    const { width } = childObj;
+    const { width, direction } = childObj;
     this.widthArray.push(width);
     this.childArray.push(childObj);
     if (this.childrenLength === this.widthArray.length) {
@@ -175,7 +175,7 @@ class TimeLine extends Component<TimeLineProps, TimeLineState> {
       this.leftChildMaxWidth = this.childArray[1].width;
       for (let i = 0; i < this.childArray.length; i++) {
         if (
-          this.childArray[i].direction === 'right' &&
+          direction === 'right' &&
           this.childArray[i + 1] &&
           this.childArray[i + 1].width > this.childArray[i].width
         ) {
@@ -197,7 +197,8 @@ class TimeLine extends Component<TimeLineProps, TimeLineState> {
   }
 
   getDirection(mode: TimeLineMode): (index: number) => 'left' | 'right' {
-    return (index: number) => (mode === 'alternate' && index % 2 === 0 ? 'left' : 'right');
+    return (index: number) =>
+      (mode === 'left' || (mode === 'alternate' && index % 2 === 0) ? 'left' : 'right');
   }
 
   isLast(index: number, size: number, reverse: boolean): boolean {

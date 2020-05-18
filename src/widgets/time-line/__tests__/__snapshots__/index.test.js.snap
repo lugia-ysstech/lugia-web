@@ -39,7 +39,7 @@ exports[`timeLineDemo Component JSON 1`] = `
   transform: translateX(0px);
 }
 
-.c7 {
+.c8 {
   color: #646A6E;
   margin-top: 0.4rem;
   margin-bottom: 0rem;
@@ -87,7 +87,7 @@ exports[`timeLineDemo Component JSON 1`] = `
   border-left: 0.1rem solid #cccccc;
 }
 
-.c8 {
+.c7 {
   position: relative;
   left: 1rem;
   z-index: 2;
@@ -170,6 +170,10 @@ exports[`timeLineDemo Component JSON 1`] = `
   <div
     className="c0"
   >
+    <p>
+       显示默认数据的 时间轴
+    </p>
+    <br />
     <div
       className=""
       style={Object {}}
@@ -178,7 +182,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         className="c1"
         style={
           Object {
-            "height": "5.4rem",
+            "height": "4.2rem",
           }
         }
       >
@@ -199,7 +203,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           className="c4"
           style={
             Object {
-              "height": "inherit",
+              "height": "100%",
             }
           }
         />
@@ -211,14 +215,7 @@ exports[`timeLineDemo Component JSON 1`] = `
             className="c6"
             style={Object {}}
           >
-            2018-01-01
-             
-          </div>
-          <div
-            className="c7"
-            style={Object {}}
-          >
-            description111
+            2020-05-18
           </div>
         </div>
       </div>
@@ -226,7 +223,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         className="c1"
         style={
           Object {
-            "height": "5.4rem",
+            "height": "4.2rem",
           }
         }
       >
@@ -247,7 +244,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           className="c4"
           style={
             Object {
-              "height": "inherit",
+              "height": "100%",
             }
           }
         />
@@ -259,14 +256,7 @@ exports[`timeLineDemo Component JSON 1`] = `
             className="c6"
             style={Object {}}
           >
-            2018-01-02
-             
-          </div>
-          <div
-            className="c7"
-            style={Object {}}
-          >
-            description222
+            2020-05-19
           </div>
         </div>
       </div>
@@ -274,7 +264,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         className="c1"
         style={
           Object {
-            "height": "5.4rem",
+            "height": "4.2rem",
           }
         }
       >
@@ -295,7 +285,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           className="c4"
           style={
             Object {
-              "height": "inherit",
+              "height": "100%",
             }
           }
         />
@@ -307,14 +297,7 @@ exports[`timeLineDemo Component JSON 1`] = `
             className="c6"
             style={Object {}}
           >
-            2018-01-03
-             
-          </div>
-          <div
-            className="c7"
-            style={Object {}}
-          >
-            description333
+            2020-05-20
           </div>
         </div>
       </div>
@@ -322,7 +305,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         className="c1"
         style={
           Object {
-            "height": "5.4rem",
+            "height": "4.2rem",
           }
         }
       >
@@ -343,7 +326,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           className="c4"
           style={
             Object {
-              "height": "inherit",
+              "height": "100%",
             }
           }
         />
@@ -355,14 +338,7 @@ exports[`timeLineDemo Component JSON 1`] = `
             className="c6"
             style={Object {}}
           >
-            2018-01-04
-             
-          </div>
-          <div
-            className="c7"
-            style={Object {}}
-          >
-            description444
+            2020-05-21
           </div>
         </div>
       </div>
@@ -370,7 +346,7 @@ exports[`timeLineDemo Component JSON 1`] = `
         className="c1"
         style={
           Object {
-            "height": "5.4rem",
+            "height": "4.2rem",
           }
         }
       >
@@ -388,10 +364,10 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c8"
+          className="c7"
           style={
             Object {
-              "height": "inherit",
+              "height": "100%",
             }
           }
         />
@@ -403,14 +379,7 @@ exports[`timeLineDemo Component JSON 1`] = `
             className="c6"
             style={Object {}}
           >
-            2018-01-05
-             
-          </div>
-          <div
-            className="c7"
-            style={Object {}}
-          >
-            description555
+            2020-05-22
           </div>
         </div>
       </div>
@@ -465,7 +434,6 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-01
-             
           </div>
         </div>
       </div>
@@ -507,7 +475,6 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-02
-             
           </div>
         </div>
       </div>
@@ -549,7 +516,6 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-03
-             
           </div>
         </div>
       </div>
@@ -591,7 +557,6 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-04
-             
           </div>
         </div>
       </div>
@@ -617,7 +582,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c8"
+          className="c7"
           style={
             Object {
               "height": "100%",
@@ -633,7 +598,6 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-05
-             
           </div>
         </div>
       </div>
@@ -688,10 +652,9 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-01
-             
           </div>
           <div
-            className="c7"
+            className="c8"
             style={Object {}}
           >
             description111
@@ -736,10 +699,9 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-02
-             
           </div>
           <div
-            className="c7"
+            className="c8"
             style={Object {}}
           >
             description222
@@ -784,10 +746,9 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-03
-             
           </div>
           <div
-            className="c7"
+            className="c8"
             style={Object {}}
           >
             description333
@@ -832,10 +793,9 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-04
-             
           </div>
           <div
-            className="c7"
+            className="c8"
             style={Object {}}
           >
             description444
@@ -864,7 +824,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c8"
+          className="c7"
           style={
             Object {
               "height": "inherit",
@@ -880,10 +840,9 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-05
-             
           </div>
           <div
-            className="c7"
+            className="c8"
             style={Object {}}
           >
             description555
@@ -941,7 +900,6 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-01
-             
           </div>
         </div>
       </div>
@@ -983,7 +941,6 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-02
-             
           </div>
         </div>
       </div>
@@ -1025,7 +982,6 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-03
-             
           </div>
         </div>
       </div>
@@ -1067,7 +1023,6 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-04
-             
           </div>
         </div>
       </div>
@@ -1093,7 +1048,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c8"
+          className="c7"
           style={
             Object {
               "height": "100%",
@@ -1109,7 +1064,6 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-05
-             
           </div>
         </div>
       </div>
@@ -1164,10 +1118,9 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-01
-             
           </div>
           <div
-            className="c7"
+            className="c8"
             style={Object {}}
           >
             description111
@@ -1212,10 +1165,9 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-02
-             
           </div>
           <div
-            className="c7"
+            className="c8"
             style={Object {}}
           >
             description222
@@ -1260,10 +1212,9 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-03
-             
           </div>
           <div
-            className="c7"
+            className="c8"
             style={Object {}}
           >
             description333
@@ -1308,10 +1259,9 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-04
-             
           </div>
           <div
-            className="c7"
+            className="c8"
             style={Object {}}
           >
             description444
@@ -1340,7 +1290,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c8"
+          className="c7"
           style={
             Object {
               "height": "inherit",
@@ -1356,10 +1306,9 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-05
-             
           </div>
           <div
-            className="c7"
+            className="c8"
             style={Object {}}
           >
             description555
@@ -1372,7 +1321,7 @@ exports[`timeLineDemo Component JSON 1`] = `
     className="c0"
   >
     <p>
-      不同状态 简洁样式
+      不同状态 简洁样式 左边展示
     </p>
     <br />
     <div
@@ -1380,7 +1329,7 @@ exports[`timeLineDemo Component JSON 1`] = `
       style={Object {}}
     >
       <div
-        className="c1"
+        className="c9"
         style={
           Object {
             "height": "4.2rem",
@@ -1409,7 +1358,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           }
         />
         <div
-          className="c5"
+          className="c10"
           style={Object {}}
         >
           <div
@@ -1417,12 +1366,11 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-01
-             
           </div>
         </div>
       </div>
       <div
-        className="c1"
+        className="c9"
         style={
           Object {
             "height": "4.2rem",
@@ -1451,7 +1399,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           }
         />
         <div
-          className="c5"
+          className="c10"
           style={Object {}}
         >
           <div
@@ -1459,12 +1407,11 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-02
-             
           </div>
         </div>
       </div>
       <div
-        className="c1"
+        className="c9"
         style={
           Object {
             "height": "4.2rem",
@@ -1493,7 +1440,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           }
         />
         <div
-          className="c5"
+          className="c10"
           style={Object {}}
         >
           <div
@@ -1501,12 +1448,11 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-03
-             
           </div>
         </div>
       </div>
       <div
-        className="c1"
+        className="c9"
         style={
           Object {
             "height": "4.2rem",
@@ -1535,7 +1481,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           }
         />
         <div
-          className="c5"
+          className="c10"
           style={Object {}}
         >
           <div
@@ -1543,12 +1489,11 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-04
-             
           </div>
         </div>
       </div>
       <div
-        className="c1"
+        className="c9"
         style={
           Object {
             "height": "4.2rem",
@@ -1569,7 +1514,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c8"
+          className="c7"
           style={
             Object {
               "height": "100%",
@@ -1577,7 +1522,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           }
         />
         <div
-          className="c5"
+          className="c10"
           style={Object {}}
         >
           <div
@@ -1585,7 +1530,6 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-05
-             
           </div>
         </div>
       </div>
@@ -1640,10 +1584,9 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-01
-             
           </div>
           <div
-            className="c7"
+            className="c8"
             style={Object {}}
           >
             description111
@@ -1688,10 +1631,9 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-02
-             
           </div>
           <div
-            className="c7"
+            className="c8"
             style={Object {}}
           >
             description222
@@ -1736,10 +1678,9 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-03
-             
           </div>
           <div
-            className="c7"
+            className="c8"
             style={Object {}}
           >
             description333
@@ -1784,10 +1725,9 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-04
-             
           </div>
           <div
-            className="c7"
+            className="c8"
             style={Object {}}
           >
             description444
@@ -1816,7 +1756,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c8"
+          className="c7"
           style={
             Object {
               "height": "inherit",
@@ -1832,10 +1772,9 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-05
-             
           </div>
           <div
-            className="c7"
+            className="c8"
             style={Object {}}
           >
             description555
@@ -1893,10 +1832,9 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-01
-             
           </div>
           <div
-            className="c7"
+            className="c8"
             style={Object {}}
           >
             description111
@@ -1941,10 +1879,9 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-02
-             
           </div>
           <div
-            className="c7"
+            className="c8"
             style={Object {}}
           >
             description222
@@ -1989,10 +1926,9 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-03
-             
           </div>
           <div
-            className="c7"
+            className="c8"
             style={Object {}}
           >
             description333
@@ -2037,10 +1973,9 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-04
-             
           </div>
           <div
-            className="c7"
+            className="c8"
             style={Object {}}
           >
             description444
@@ -2074,7 +2009,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c8"
+          className="c7"
           style={
             Object {
               "height": "inherit",
@@ -2090,10 +2025,9 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-05
-             
           </div>
           <div
-            className="c7"
+            className="c8"
             style={Object {}}
           >
             description555
@@ -2151,10 +2085,9 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-01
-             
           </div>
           <div
-            className="c7"
+            className="c8"
             style={Object {}}
           >
             description111
@@ -2199,10 +2132,9 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-02
-             
           </div>
           <div
-            className="c7"
+            className="c8"
             style={Object {}}
           >
             description222
@@ -2247,10 +2179,9 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-03
-             
           </div>
           <div
-            className="c7"
+            className="c8"
             style={Object {}}
           >
             description333
@@ -2295,10 +2226,9 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-04
-             
           </div>
           <div
-            className="c7"
+            className="c8"
             style={Object {}}
           >
             description444
@@ -2328,7 +2258,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c8"
+          className="c7"
           style={
             Object {
               "height": "inherit",
@@ -2344,10 +2274,9 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-05
-             
           </div>
           <div
-            className="c7"
+            className="c8"
             style={Object {}}
           >
             description555
@@ -2453,10 +2382,9 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-01
-             
           </div>
           <div
-            className="c7"
+            className="c8"
             style={Object {}}
           >
             description111
@@ -2501,10 +2429,9 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-02
-             
           </div>
           <div
-            className="c7"
+            className="c8"
             style={Object {}}
           >
             description222
@@ -2549,10 +2476,9 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-03
-             
           </div>
           <div
-            className="c7"
+            className="c8"
             style={Object {}}
           >
             description333
@@ -2597,10 +2523,9 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-04
-             
           </div>
           <div
-            className="c7"
+            className="c8"
             style={Object {}}
           >
             description444
@@ -2629,7 +2554,7 @@ exports[`timeLineDemo Component JSON 1`] = `
           />
         </div>
         <div
-          className="c8"
+          className="c7"
           style={
             Object {
               "height": "inherit",
@@ -2645,10 +2570,9 @@ exports[`timeLineDemo Component JSON 1`] = `
             style={Object {}}
           >
             2018-01-05
-             
           </div>
           <div
-            className="c7"
+            className="c8"
             style={Object {}}
           >
             description555
