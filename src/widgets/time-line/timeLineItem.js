@@ -264,13 +264,13 @@ class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
     if (this.desc.current) {
       this.descHeight = this.desc.current.offsetHeight;
       this.descWidth = this.desc.current.offsetWidth;
-      this.handleWidth(this.descWidth);
     }
-
     if (this.time.current) {
       this.timeWidth = this.time.current.offsetWidth;
-      this.handleWidth(this.timeWidth);
     }
+    const theWidth =
+      this.desc.current && this.descWidth >= this.timeWidth ? this.descWidth : this.timeWidth;
+    this.handleWidth(theWidth);
   }
 
   handleWidth(width: number) {
@@ -290,7 +290,7 @@ class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
       { themeConfig: { normal: this.getHeightByType(timeLineType, this.props.description) } },
       this.props.getPartOfThemeProps('TimeLineItemContainer', {
         props: {
-          maxWidth: _leftMaxWidth,
+          maxWidth: _leftMaxWidth || 0,
           mode,
         },
       })
