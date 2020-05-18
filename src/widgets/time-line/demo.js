@@ -7,11 +7,9 @@
 import * as React from 'react';
 import TimeLine from './timeLine';
 import TimeLineItem from './timeLineItem';
-import Theme from '../theme/';
 import Icon from '../icon/';
 import Button from '../button/';
 import styled from 'styled-components';
-import Widget from '../consts/index';
 
 class TimeLinePending extends React.Component<Object, Object> {
   state = {
@@ -46,18 +44,13 @@ const Wrapper = styled.div`
   margin-left: 100px;
   display: inline-block;
 `;
-const data = [
-  { time: '2018-01-01', description: 'description111' },
-  { time: '2018-01-02', description: 'description222' },
-  { time: '2018-01-03', description: 'description333' },
-  { time: '2018-01-04', description: 'description444' },
-  { time: '2018-01-05', description: 'description555' },
-];
 export const SimpleDemo = () => {
   return (
     <div>
       <Wrapper>
-        <TimeLine data={data} />
+        <p> 显示默认数据的 时间轴</p>
+        <br />
+        <TimeLine />
       </Wrapper>
       <Wrapper>
         <p> 调节高度的 简洁样式</p>
@@ -104,9 +97,9 @@ export const SimpleDemo = () => {
         </TimeLine>
       </Wrapper>
       <Wrapper>
-        <p>不同状态 简洁样式</p>
+        <p>不同状态 简洁样式 左边展示</p>
         <br />
-        <TimeLine direction={'left'}>
+        <TimeLine mode={'left'}>
           <TimeLineItem time="2018-01-01" status={'success'} />
           <TimeLineItem time="2018-01-02" />
           <TimeLineItem time="2018-01-03" status={'failed'} />

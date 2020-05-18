@@ -44,12 +44,12 @@
     },
     "mode": {
       "type": "TimeLineMode",
-      "desc": "时间轴 描述信息的显示位置 ,可选择右侧或者交错显示.",
+      "desc": "时间轴 描述信息的显示位置 ,可选择右侧,左侧，或者交错显示.",
       "defaultValue": "right"
     }
   },
   "type": {
-    "TimeLineMode": ["right", "alternate"]
+    "TimeLineMode": ["left","right", "alternate"]
   },
   "childrenWidget": ["timeLineItem"],
   "category": ["数据展示"],
