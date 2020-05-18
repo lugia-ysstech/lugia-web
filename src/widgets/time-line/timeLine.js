@@ -167,7 +167,7 @@ class TimeLine extends Component<TimeLineProps, TimeLineState> {
   childArray = [];
   leftChildMaxWidth = 0;
   getChildDirectionAndWidth = (childObj: Object) => {
-    const { width, direction } = childObj;
+    const { width } = childObj;
     this.widthArray.push(width);
     this.childArray.push(childObj);
     if (this.childrenLength === this.widthArray.length) {
@@ -175,7 +175,7 @@ class TimeLine extends Component<TimeLineProps, TimeLineState> {
       this.leftChildMaxWidth = this.childArray[1].width;
       for (let i = 0; i < this.childArray.length; i++) {
         if (
-          direction === 'right' &&
+          this.childArray[i].direction === 'right' &&
           this.childArray[i + 1] &&
           this.childArray[i + 1].width > this.childArray[i].width
         ) {
