@@ -76,8 +76,7 @@ export const PanelHeader = CSSComponent({
       ['background'],
     ],
     getThemeMeta(themeMeta, themeProps) {
-      const { propsConfig = {} } = themeProps;
-      const { zebraStripe, count, open } = propsConfig;
+      const { propsConfig: { zebraStripe, count, open } = {} } = themeProps;
       const padding = {
         top: 16,
         right: 0,
@@ -96,8 +95,7 @@ export const PanelHeader = CSSComponent({
   hover: {
     selectNames: [['borderRadius'], ['background'], ['opacity'], ['border'], ['boxShadow']],
     getThemeMeta(themeMeta, themeProps) {
-      const { propsConfig = {} } = themeProps;
-      const { zebraStripe, count } = propsConfig;
+      const { propsConfig: { zebraStripe, count } = {} } = themeProps;
       const background = zebraStripe
         ? { color: getZebraStripeColor(count) }
         : { color: changeColor(get('themeColor'), 0, 0, 5).rgba };
@@ -214,8 +212,7 @@ export const PanelContent = CSSComponent({
       ['borderRadius'],
     ],
     getThemeMeta(themeMeta, themeProps) {
-      const { propsConfig = {} } = themeProps;
-      const { showArrow, hasChildren, zebraStripe, count, open } = propsConfig;
+      const { propsConfig: { showArrow, hasChildren, zebraStripe, count, open } = {} } = themeProps;
       if (!hasChildren) {
         return {};
       }
@@ -283,8 +280,7 @@ export const Wrap = CSSComponent({
   normal: {
     selectNames: [['boxShadow'], ['borderRadius'], ['width']],
     getThemeMeta(themeMeta, themeProps) {
-      const { propsConfig = {} } = themeProps;
-      const { zebraStripe, open } = propsConfig;
+      const { propsConfig: { zebraStripe, open } = {} } = themeProps;
       const boxShadow = zebraStripe && open ? get('normalBoxShadow') : null;
       const borderRadius = zebraStripe ? getBorderRadius(get('borderRadiusValue')) : null;
       return { boxShadow, borderRadius };

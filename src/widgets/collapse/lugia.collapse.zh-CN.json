@@ -26,8 +26,17 @@
     "data": {
       "type": "Object[]",
       "desc": "指定折叠面板data数据源，仅用于设计器",
-
-      "designOnly": true
+      "designOnly": true,
+      "meta": [
+        { "key": "value", "title": "对应字段", "type": "string" },
+        { "key": "title", "title": "展示文字", "type": "string" },
+        { "key": "children", "title": "展示内容", "type": "string" }
+      ],
+      "defaultValue": [
+        { "value": "1", "title": "标题1", "children": "内容1" },
+        { "value": "2", "title": "标题2", "children": "内容2" },
+        { "value": "3", "title": "标题3", "children": "内容3" }
+      ]
     }
   },
   "events": {
@@ -75,7 +84,7 @@
         ["border"]
       ]
     },
-    "Panel":  {
+    "Panel": {
       "theme": {
         "Container": {
           "name": "面板整体配置",
