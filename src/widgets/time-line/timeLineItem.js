@@ -206,9 +206,7 @@ const ExplainDot = CSSComponent({
   },
 });
 
-type TimeLineState = {
-  _renderHeight: boolean,
-};
+type TimeLineState = {};
 
 type TimeLineProps = {
   time: string,
@@ -233,14 +231,16 @@ class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
   static defaultProps = {
     status: 'normal',
   };
-  state = { _renderHeight: false };
   desc: any;
+  time: any;
   descHeight: any;
   descWidth: any;
+  timeWidth: any;
 
   constructor(props: TimeLineProps) {
     super(props);
     this.desc = React.createRef();
+    this.time = React.createRef();
   }
 
   getHeightByType(type: string, description: React.Node) {
@@ -264,13 +264,22 @@ class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
     if (this.desc.current) {
       this.descHeight = this.desc.current.offsetHeight;
       this.descWidth = this.desc.current.offsetWidth;
-      const { getChildDirectionAndWidth } = this.props;
-      getChildDirectionAndWidth &&
-        getChildDirectionAndWidth({
-          width: this.descWidth,
-        });
-      this.setState({ _renderHeight: true });
+      this.handleWidth(this.descWidth);
     }
+
+    if (this.time.current) {
+      this.timeWidth = this.time.current.offsetWidth;
+      this.handleWidth(this.timeWidth);
+    }
+  }
+
+  handleWidth(width: number) {
+    const { getChildDirectionAndWidth, direction } = this.props;
+    getChildDirectionAndWidth &&
+      getChildDirectionAndWidth({
+        width,
+        direction,
+      });
   }
 
   render() {
@@ -309,7 +318,9 @@ class TimeLineItem extends Component<TimeLineProps, TimeLineState> {
             props: { direction },
           })}
         >
-          <Time themeProps={this.props.themeProps}>{theTime} </Time>
+          <Time ref={this.time} themeProps={this.props.themeProps}>
+            {theTime}
+          </Time>
           {this.getDescription()}
         </Content>
       </ItemContainer>
