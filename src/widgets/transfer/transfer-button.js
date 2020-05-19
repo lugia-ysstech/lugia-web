@@ -8,8 +8,6 @@
 import * as React from 'react';
 import { deepMerge } from '@lugia/object-utils';
 import Button from '../button';
-import Widget from '../consts/index';
-import Theme from '../theme';
 import { OperationBtn } from '../css/transfer-group';
 
 type TransferButtonProps = {
@@ -78,14 +76,11 @@ export default class TransferButton extends React.Component<
 
   render() {
     const { leftDisabled, rightDisabled } = this.state;
-    const buttonView = {
-      [Widget.Button]: {
-        width: 38,
-      },
-    };
+    const { size } = this.props;
     return (
       <OperationBtn>
         <Button
+          size={size}
           icon="lugia-icon-direction_right"
           onClick={this.handleClick('left')}
           type="primary"
@@ -96,6 +91,7 @@ export default class TransferButton extends React.Component<
         <br />
 
         <Button
+          size={size}
           icon="lugia-icon-direction_Left"
           onClick={this.handleClick('right')}
           type="primary"
