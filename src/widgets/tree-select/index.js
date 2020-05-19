@@ -256,6 +256,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
       translateTreeData,
       renderSuffixItems,
       onRightClick,
+      getPartOfThemeProps,
     } = this.props;
     const { onSelect, ...res } = this.props;
     const { current, start, treeFilter, value, displayValue, query, selectAll } = this.state;
@@ -312,9 +313,7 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
         onRightClick={onRightClick}
       />,
     ];
-    const menuThemeConfig = this.props.getPartOfThemeProps('Menu');
-    const { themeConfig } = menuThemeConfig;
-    menuThemeConfig.themeConfig = deepMerge(themeConfig.Container);
+    const menuThemeConfig = getPartOfThemeProps('Menu');
     return <PopupMenuWrap themeProps={menuThemeConfig}>{tree}</PopupMenuWrap>;
   };
 
