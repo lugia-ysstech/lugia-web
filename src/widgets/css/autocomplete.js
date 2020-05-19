@@ -50,7 +50,6 @@ export const OldValueItem = CSSComponent({
     width: 100%;
     overflow: hidden;
     height: ${px2remcss(MenuItemHeight)};
-    line-height: ${px2remcss(MenuItemHeight)};
     padding: 0 ${px2remcss(get('padding'))};
     font-size: ${px2remcss(14)};
     position: relative;
