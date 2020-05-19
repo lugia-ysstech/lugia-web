@@ -313,7 +313,9 @@ class TreeSelect extends React.Component<TreeSelectProps, TreeSelectState> {
         onRightClick={onRightClick}
       />,
     ];
-    const menuThemeConfig = getPartOfThemeProps('Menu');
+    const menuThemeConfig = this.props.getPartOfThemeProps('Tree');
+    const { themeConfig } = menuThemeConfig;
+    menuThemeConfig.themeConfig = themeConfig.Container;
     return <PopupMenuWrap themeProps={menuThemeConfig}>{tree}</PopupMenuWrap>;
   };
 
