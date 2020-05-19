@@ -12,6 +12,11 @@
       "type": "hover | click",
       "desc": "展开子菜单的方式"
     },
+    "size": {
+      "type": "InputSize",
+      "desc": "可配置三种尺寸大小的input",
+      "propsDefaultValue": "default"
+    },
     "createPortal": {
       "type": "boolean",
       "desc": "是否全局弹出下拉框",
