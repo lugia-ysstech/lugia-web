@@ -178,7 +178,7 @@
         "areaType": "button"
       },
       "theme": {
-        "UploadButtonType": {
+        "Container": {
           "name": "按钮",
           "desc": "按钮上传类型的样式配置",
           "normal": [["background"], ["width"], ["height"], ["boxShadow"], ["border"], ["opacity"]],
@@ -257,7 +257,7 @@
         "areaType": "picture"
       },
       "theme": {
-        "UploadPictureType": {
+        "Container": {
           "name": "图片上传区域",
           "desc": "图片上传类型的样式配置",
           "normal": [["background"], ["width"], ["height"], ["opacity"], ["border"]],
@@ -343,7 +343,7 @@
         "areaType": "area"
       },
       "theme": {
-        "UploadAreaType": {
+        "Container": {
           "name": "文件上传区域",
           "desc": "区域拖拽上传类型的样式配置",
           "normal": [["width"], ["height"], ["fontSize"], ["color"]],
@@ -445,7 +445,7 @@
             }
           }
         },
-        "UploadDefaultType": {
+        "Container": {
           "name": "文件上传区域",
           "desc": "默认上传框的样式",
           "normal": [["width"], ["height"], ["boxShadow"], ["border"]],
@@ -542,7 +542,7 @@
     }
   },
   "theme": {
-    "UploadDefaultType": {
+    "Container": {
       "name": "文件上传区域",
       "desc": "默认上传框的样式",
       "normal": [["width"], ["height"], ["boxShadow"], ["border"]],
