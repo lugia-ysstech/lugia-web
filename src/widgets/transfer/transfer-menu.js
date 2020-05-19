@@ -63,12 +63,21 @@ export default class TransferMenu extends React.Component<TransferMenuProps, Tra
 
   render() {
     const { menuData } = this.state;
-    const { displayField, valueField, selectedKeys, query, height, menuThemeObj } = this.props;
+    const {
+      displayField,
+      valueField,
+      selectedKeys,
+      query,
+      height,
+      menuThemeObj,
+      size,
+    } = this.props;
     if (query && !menuData.length) {
       return <NoData height={height}>无匹配数据</NoData>;
     }
     return (
       <Menu
+        size={size}
         checkedCSS={'checkbox'}
         mutliple={true}
         data={menuData}

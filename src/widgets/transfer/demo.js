@@ -283,6 +283,25 @@ export default class TransferDemo extends React.Component<any, any> {
             defaultDisplayValue={['dis1', 'dis2', '2.1.1']}
           />
         </Theme>
+        <p>测试公共值</p>
+        <br />
+        <Transfer
+          data={data}
+          showSearch
+          defaultSourceSelectedKeys={['选项5']}
+          defaultTargetSelectedKeys={['选项2']}
+          defaultValue={['选项2', '选项3', '选项4']}
+        />
+
+        <Transfer
+          data={treeData}
+          type="tree"
+          defaultSourceSelectedKeys={['2.2.1']}
+          defaultTargetSelectedKeys={['2.1.1']}
+          defaultValue={['3.1', '3.2', '2.1.1']}
+          showSearch
+          defaultDisplayValue={['dis1', 'dis2', '2.1.1']}
+        />
       </div>
     );
   }

@@ -70,6 +70,11 @@
       "type": "string",
       "desc": "指定 Transfer 面板选项 value 字段值",
       "defaultValue": "value"
+    },
+    "size": {
+      "type": "SizeType",
+      "desc": "指定 Transfer 的尺寸",
+      "defaultValue": "default"
     }
   },
   "event": {
@@ -125,6 +130,7 @@
     }
   },
   "type": {
+    "SizeType": ["default", "small", "large"],
     "TransferType": ["panel", "tree"],
     "DirectionType": ["left", "right"],
     "TransferStyle": {
