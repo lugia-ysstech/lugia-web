@@ -13,6 +13,11 @@
       "desc": "是否全局弹出下拉框",
       "propsDefaultValue": true
     },
+    "size": {
+      "type": "InputSize",
+      "desc": "可配置三种尺寸大小的input",
+      "propsDefaultValue": "default"
+    },
     "popupVisible": {
       "type": "boolean",
       "desc": "是否展开菜单",

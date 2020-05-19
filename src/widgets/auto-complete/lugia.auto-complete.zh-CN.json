@@ -8,6 +8,11 @@
       "desc": "是否渲染当前组件",
       "defaultValue": false
     },
+    "size": {
+      "type": "InputSize",
+      "desc": "可配置三种尺寸大小的input",
+      "propsDefaultValue": "default"
+    },
     "data": {
       "type": "string[]",
       "desc": "生成选择项的数据",

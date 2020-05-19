@@ -42,7 +42,11 @@
         }
       ]
     },
-
+    "size": {
+      "type": "InputSize",
+      "desc": "可配置三种尺寸大小的input",
+      "propsDefaultValue": "default"
+    },
     "canSearch": {
       "type": "boolean",
       "desc": "是否支持查询",
