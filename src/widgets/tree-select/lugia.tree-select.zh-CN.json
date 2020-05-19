@@ -17,6 +17,11 @@
       "desc": "校验信息显示类型",
       "propsDefaultValue": "top"
     },
+    "size": {
+      "type": "InputSize",
+      "desc": "可配置三种尺寸大小的input",
+      "propsDefaultValue": "default"
+    },
     "data": {
       "type": "object[]",
       "desc": "生成选择项的数据",

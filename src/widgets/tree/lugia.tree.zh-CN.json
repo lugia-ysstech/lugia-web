@@ -77,6 +77,12 @@
       "desc": "多tree的分组标识,当两个tree的groupKey值相同时.可实现相互拖拽"
     },
 
+    "size": {
+      "type": "InputSize",
+      "desc": "可配置三种尺寸大小的input",
+      "propsDefaultValue": "default"
+    },
+
     "data": {
       "type": "object[]",
       "desc": "生成选择项的数据",
@@ -437,6 +443,7 @@
                 ["borderRadius"]
               ]
             },
+
             "SelectedText": {
               "name": "选中项的文本框区域",
               "desc": "配置选中项的文本框区域的样式",
@@ -455,6 +462,7 @@
               "active": [],
               "disabled": []
             },
+
             "SelectedParentText": {
               "name": "选中项的父节点文本框区域",
               "desc": "配置选中项的父节点文本框区域的样式",
