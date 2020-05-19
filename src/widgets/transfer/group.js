@@ -153,14 +153,17 @@ export default ThemeProvider(
         displayField = DisplayField,
         getPartOfThemeProps,
         getPartOfThemeHocProps,
+        size,
       } = this.props;
       const transFerWrapTheme = getPartOfThemeProps('TransferWrap');
       const transferPanelTheme = getPartOfThemeProps('TransferPanel');
       const transferPanelHeaderCheckboxThemeObj = getPartOfThemeHocProps(
         'TransferPanelHeaderCheckbox'
       );
-      const transferHeaderTextTheme = getPartOfThemeProps('TransferHeaderText');
-      const transferHeaderTheme = getPartOfThemeProps('TransferHeaderWrap');
+      const transferHeaderTextTheme = getPartOfThemeProps('TransferHeaderText', {
+        props: { size },
+      });
+      const transferHeaderTheme = getPartOfThemeProps('TransferHeaderWrap', { props: { size } });
       const transferInputTheme = getPartOfThemeHocProps('TransferSearchInput');
       const transferCancelBoxTheme = getPartOfThemeProps('TransferCancelBox');
       const transferCancelCheckboxThemeObj = getPartOfThemeHocProps('TransferCancelCheckbox');
@@ -190,6 +193,7 @@ export default ThemeProvider(
             inputTheme={transferInputTheme}
           />
           <TransFerButton
+            size={size}
             leftModel={this.sourceModel}
             rightModel={this.targetModel}
             onLeftClick={this.handleToRight}
