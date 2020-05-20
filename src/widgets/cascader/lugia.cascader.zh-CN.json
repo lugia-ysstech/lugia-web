@@ -13,8 +13,8 @@
       "desc": "展开子菜单的方式"
     },
     "size": {
-      "type": "InputSize",
-      "desc": "可配置三种尺寸大小的input",
+      "type": "sizeType",
+      "desc": "可配置三种尺寸大小的cascader",
       "propsDefaultValue": "default"
     },
     "createPortal": {
@@ -187,6 +187,7 @@
     }
   },
   "type": {
+    "sizeType": ["small", "default", "large"],
     "ValidateStatus": ["default", "error"],
     "ValidateType": ["top", "bottom", "inner"]
   },

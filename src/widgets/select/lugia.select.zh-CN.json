@@ -43,8 +43,8 @@
       ]
     },
     "size": {
-      "type": "InputSize",
-      "desc": "可配置三种尺寸大小的input",
+      "type": "sizeType",
+      "desc": "可配置三种尺寸大小的select",
       "propsDefaultValue": "default"
     },
     "canSearch": {
@@ -246,6 +246,7 @@
     }
   },
   "type": {
+    "sizeType": ["small", "default", "large"],
     "SearchType": ["start", "end", "include", "eql"],
     "ValidateStatus": ["default", "error"],
     "ValidateType": ["top", "bottom", "inner"]

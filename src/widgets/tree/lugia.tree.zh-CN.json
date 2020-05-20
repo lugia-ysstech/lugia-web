@@ -78,8 +78,8 @@
     },
 
     "size": {
-      "type": "InputSize",
-      "desc": "可配置三种尺寸大小的input",
+      "type": "sizeType",
+      "desc": "可配置三种尺寸大小的tree",
       "propsDefaultValue": "default"
     },
 
@@ -327,6 +327,9 @@
         }
       ]
     }
+  },
+  "type": {
+    "sizeType": ["small", "default", "large"]
   },
 
   "category": ["数据录入"],

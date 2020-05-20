@@ -14,8 +14,8 @@
       "propsDefaultValue": true
     },
     "size": {
-      "type": "InputSize",
-      "desc": "可配置三种尺寸大小的input",
+      "type": "sizeType",
+      "desc": "可配置三种尺寸大小的dropmenu",
       "propsDefaultValue": "default"
     },
     "popupVisible": {
@@ -197,6 +197,7 @@
     }
   },
   "type": {
+    "sizeType": ["small", "default", "large"],
     "StyleType": ["customs", "primary", "basic"],
     "ActionType": ["hover", "click"]
   },
