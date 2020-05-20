@@ -528,7 +528,6 @@ const iconClassMap = {
   'li-loading': 'lugia-icon-financial_loading_o right loading',
 };
 
-//得到所有图标样式
 export const getIconByType = (
   props: Object,
   status: ?string,
@@ -540,7 +539,6 @@ export const getIconByType = (
   let resultTheme;
   let resultViewClass;
   switch (status) {
-    //上传成功图标样式
     case 'li-done':
       const { viewClass: successViewClass, theme: successTheme } = props.getPartOfThemeHocProps(
         'UploadListSuccessIcon'
@@ -558,7 +556,6 @@ export const getIconByType = (
       );
       resultViewClass = successViewClass;
       break;
-    //上传失败图标样式
     case 'li-fail':
       const { viewClass: failViewClass, theme: failTheme } = props.getPartOfThemeHocProps(
         'UploadListFailedIcon'
@@ -966,10 +963,6 @@ class GetElement extends React.Component<DefProps, StateProps> {
             Container: {
               normal: {
                 height: 30,
-                // borderRadius: {
-                //   topLeft: 0,
-                //   bottomLeft: 0,
-                // },
                 borderRadius: getBorderRadius(0, ['tl', 'bl']),
               },
               ...buttonThemeStyle,
