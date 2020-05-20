@@ -99,9 +99,11 @@ class MenuItem extends React.Component<MenuItemProps> {
     return this.mergeTheme('Checkbox', defaultTheme);
   };
 
-  getIconTheme = (iconType: string) => {
-    const { size } = this.props;
-    const { viewClass, theme } = this.props.getPartOfThemeHocProps(iconType);
+  getIconTheme = (iconType: string, selectedIconType: string) => {
+    const { size, checked } = this.props;
+    const { viewClass, theme } = checked
+      ? this.props.getPartOfThemeHocProps(selectedIconType)
+      : this.props.getPartOfThemeHocProps(iconType);
     const paddingLeft = iconType === 'SuffixIcon' ? px2remcss(get('padding')) : 0;
     const paddingRight = iconType === 'PrefixIcon' ? px2remcss(get('paddingToText')) : 0;
     const defaultTheme = {
@@ -139,7 +141,7 @@ class MenuItem extends React.Component<MenuItemProps> {
     if (!iconClass && !prefixIconSrc) {
       return null;
     }
-    const { viewClass, theme } = this.getIconTheme('PrefixIcon');
+    const { viewClass, theme } = this.getIconTheme('PrefixIcon', 'SelectedPrefixIcon');
 
     return (
       <Icon
@@ -164,7 +166,7 @@ class MenuItem extends React.Component<MenuItemProps> {
       return null;
     }
 
-    const { viewClass, theme } = this.getIconTheme('SuffixIcon');
+    const { viewClass, theme } = this.getIconTheme('SuffixIcon', 'SelectedSuffixIcon');
 
     return (
       <Icon
