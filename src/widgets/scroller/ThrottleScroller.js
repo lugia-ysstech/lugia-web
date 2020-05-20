@@ -141,8 +141,8 @@ export default (
       const { props } = this;
       const start = this.getStart(props, this.state);
       const { level, autoHeight = false } = props;
-      const totalSize = this.fetchTotalSize();
       const activeAutoHeight = this.getActiveAutoHeight();
+      const totalSize = this.fetchTotalSize(activeAutoHeight);
       const defaultHeight = this.getDefaultHeight();
       const themeProps = this.getContainerThemeProps(TargetWrapName, {
         props: {
@@ -170,6 +170,7 @@ export default (
         return pack(
           <Target
             {...props}
+            autoHeight={activeAutoHeight}
             start={0}
             end={length}
             canSeeCount={length}
@@ -190,6 +191,7 @@ export default (
         <Col themeProps={themeProps} level={level}>
           <Target
             {...props}
+            autoHeight={activeAutoHeight}
             canSeeCount={canSeeCount}
             start={start}
             end={end}
@@ -259,21 +261,13 @@ export default (
       }
       const { padding: { top = 0, bottom = 0 } = {} } = normal;
       const allItemHeight = this.itemHeight * data.length + top + bottom;
-      return autoHeight || this.isUseComputeViewHeight() ? allItemHeight : height;
+      return autoHeight ? allItemHeight : height;
     };
 
-    isUseComputeViewHeight = () => {
-      const { data = [] } = this.props;
-      if (!data || data.length === 0) {
-        return false;
-      }
-      return this.itemHeight * data.length <= this.getDefaultHeight();
-    };
-
-    fetchTotalSize(): number {
+    fetchTotalSize(autoHeight: boolean): number {
       const { length } = this.getTarget();
       let remainder;
-      if (this.viewSize % this.itemHeight === 0) {
+      if (this.viewSize % this.itemHeight === 0 || autoHeight) {
         remainder = 0;
       } else {
         remainder = this.viewSize % this.itemHeight;
