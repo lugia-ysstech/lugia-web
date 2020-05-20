@@ -9,8 +9,8 @@
       "defaultValue": false
     },
     "size": {
-      "type": "InputSize",
-      "desc": "可配置三种尺寸大小的input",
+      "type": "sizeType",
+      "desc": "可配置三种尺寸大小的autoComplete",
       "propsDefaultValue": "default"
     },
     "data": {
@@ -116,6 +116,7 @@
   },
 
   "type": {
+    "sizeType": ["small", "default", "large"],
     "ValidateStatus": ["default", "error"],
     "ValidateType": ["top", "bottom", "inner"]
   },
