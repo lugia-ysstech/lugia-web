@@ -7,13 +7,13 @@ import CSSComponent, { StaticComponent } from '@lugia/theme-css-hoc';
 import { px2remcss } from '../css/units';
 import type { ThemeType } from '@lugia/lugia-web';
 import { css } from 'styled-components';
-import get from '../css/theme-common-dict';
 import { getBorder, getBorderRadius } from '@lugia/theme-utils';
 
 const borderRadiusValue = '$lugia-dict.@lugia/lugia-web.borderRadiusValue';
 const paddingToText = '$lugia-dict.@lugia/lugia-web.paddingToText';
 const padding = '$lugia-dict.@lugia/lugia-web.padding';
 const lightGreyColor = '$lugia-dict.@lugia/lugia-web.lightGreyColor';
+const normalBorder = '$lugia-dict.@lugia/lugia-web.normalBorder';
 
 export type SizeType = 'small' | 'default' | 'large';
 
@@ -95,7 +95,7 @@ export const TransFer = CSSComponent({
       ['fontSize'],
     ],
     defaultTheme: {
-      border: getBorder(get('normalBorder')),
+      border: getBorder(normalBorder),
       borderRadius: getBorderRadius(borderRadiusValue),
       background: { color: '#fff' },
       fontSize: 12,
