@@ -10,7 +10,7 @@ import Widget from '../consts/index';
 import { getBoxShadow } from '@lugia/theme-utils';
 import { deepMerge } from '@lugia/object-utils';
 import { DefaultHeight, ScrollerContainer, Col, ScrollerCol } from '../css/scroller';
-import { getCanSeeCount } from './support';
+import { getCanSeeCount, getCanRenderCompleteCount } from './support';
 import get from '../css/theme-common-dict';
 type ThrottleScrollerState = {
   start: number,
@@ -237,11 +237,15 @@ export default (
 
     isNeedScroller() {
       const { length } = this.getTarget();
-      return this.canSeeCount() < length;
+      return this.canRendCompleteCount() < length;
     }
 
     canSeeCount(): number {
       return getCanSeeCount(this.viewSize, this.itemHeight);
+    }
+
+    canRendCompleteCount(): number {
+      return getCanRenderCompleteCount(this.viewSize, this.itemHeight);
     }
 
     fetchViewSize = () => {
@@ -255,7 +259,15 @@ export default (
       }
       const { padding: { top = 0, bottom = 0 } = {} } = normal;
       const allItemHeight = this.itemHeight * data.length + top + bottom;
-      return autoHeight ? allItemHeight : height;
+      return autoHeight || this.isUseComputeViewHeight() ? allItemHeight : height;
+    };
+
+    isUseComputeViewHeight = () => {
+      const { data = [] } = this.props;
+      if (!data || data.length === 0) {
+        return false;
+      }
+      return this.itemHeight * data.length <= this.getDefaultHeight();
     };
 
     fetchTotalSize(): number {
