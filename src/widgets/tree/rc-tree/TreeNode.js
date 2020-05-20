@@ -501,7 +501,7 @@ class TreeNode extends React.Component {
     if (!iconClass && !prefixIconSrc) {
       return null;
     }
-    const { viewClass, theme } = this.getIconTheme('PrefixIcon');
+    const { viewClass, theme } = this.getIconTheme('PrefixIcon', 'SelectedPrefixIcon');
 
     return (
       <Icon
@@ -526,7 +526,7 @@ class TreeNode extends React.Component {
       return null;
     }
 
-    const { viewClass, theme } = this.getIconTheme('SuffixIcon');
+    const { viewClass, theme } = this.getIconTheme('SuffixIcon', 'SelectedSuffixIcon');
 
     return (
       <Icon
@@ -589,8 +589,12 @@ class TreeNode extends React.Component {
     return switchIconThemeHocProps;
   };
 
-  getIconTheme = (iconType: string) => {
-    const { viewClass, theme, size } = this.props.getPartOfThemeHocProps(iconType);
+  getIconTheme = (iconType: string, selectedIconType: string) => {
+    const { checked, selected } = this.props;
+    const { viewClass, theme, size } =
+      checked || selected
+        ? this.props.getPartOfThemeHocProps(selectedIconType)
+        : this.props.getPartOfThemeHocProps(iconType);
     const marginLeft = iconType === 'SuffixIcon' ? get('paddingToText') : 0;
     const marginRight = iconType === 'PrefixIcon' ? get('paddingToText') : 0;
     const defaultTheme = {
