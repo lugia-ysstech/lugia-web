@@ -22,6 +22,9 @@ import { filterEnableKeysFromSelectKeys } from './utils';
 
 const { MenuItem } = Menu;
 const cancelBoxHeight = 70;
+const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
+const xsFontSize = '$lugia-dict.@lugia/lugia-web.xsFontSize';
+const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 
 export default ThemeProvider(
   class extends React.Component<TransferProps, TransferState> {
@@ -174,7 +177,7 @@ export default ThemeProvider(
       }
 
       return showSearch ? (
-        <div style={{ padding: '8px 4px' }}>
+        <div style={{ display: 'flex' }}>
           <Input
             size={'small'}
             onChange={this.handleInputChange}
@@ -225,14 +228,23 @@ export default ThemeProvider(
     getInputThemeConfig() {
       const { inputTheme = {} } = this.props;
       const { viewClass, theme } = inputTheme;
-      const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
-      const xsFontSize = '$lugia-dict.@lugia/lugia-web.xsFontSize';
-      const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
       const inputView = {
         [viewClass]: {
           Container: {
             normal: {
-              borderRadius: getBorderRadius(12),
+              margin: {
+                top: 8,
+                bottom: 8,
+                left: 4,
+                right: 4,
+              },
+              getThemeMeta(themeMeta: Object, themeProps: Object) {
+                const { height } = themeMeta;
+                const theBorderRadius = height / 2 || 12;
+                return {
+                  borderRadius: getBorderRadius(theBorderRadius),
+                };
+              },
             },
           },
           InputSuffix: {
