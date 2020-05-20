@@ -495,7 +495,7 @@
 
             "PrefixIcon": {
               "name": "前置图标配置",
-              "desc": "前置图标或图片的样式配置",
+              "desc": "前置图标的样式配置",
               "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
               "hover": [["color"], ["font"], ["fontSize"]],
               "active": [["color"], ["font"], ["fontSize"]],
@@ -504,7 +504,7 @@
 
             "SelectedPrefixIcon": {
               "name": "选中项前置图标配置",
-              "desc": "选中项前置图标或图片的样式配置",
+              "desc": "选中项前置图标的样式配置",
               "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
               "hover": [["color"], ["font"], ["fontSize"]],
               "active": [["color"], ["font"], ["fontSize"]],
@@ -513,7 +513,7 @@
 
             "SuffixIcon": {
               "name": "后缀图标配置",
-              "desc": "后缀图标或图片的样式配置",
+              "desc": "后缀图标的样式配置",
               "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
               "hover": [["color"], ["font"], ["fontSize"]],
               "active": [["color"], ["font"], ["fontSize"]],
@@ -522,7 +522,7 @@
 
             "SelectedSuffixIcon": {
               "name": "选中项后缀图标配置",
-              "desc": "选中项后缀图标或图片的样式配置",
+              "desc": "选中项后缀图标的样式配置",
               "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
               "hover": [["color"], ["font"], ["fontSize"]],
               "active": [["color"], ["font"], ["fontSize"]],
@@ -756,7 +756,7 @@
 
         "PrefixIcon": {
           "name": "前置图标配置",
-          "desc": "前置图标或图片的样式配置",
+          "desc": "前置图标的样式配置",
           "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
           "hover": [["color"], ["font"], ["fontSize"]],
           "active": [["color"], ["font"], ["fontSize"]],
@@ -765,7 +765,7 @@
 
         "SelectedPrefixIcon": {
           "name": "选中项前置图标配置",
-          "desc": "选中项前置图标或图片的样式配置",
+          "desc": "选中项前置图标的样式配置",
           "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
           "hover": [["color"], ["font"], ["fontSize"]],
           "active": [["color"], ["font"], ["fontSize"]],
@@ -774,7 +774,7 @@
 
         "SuffixIcon": {
           "name": "后缀图标配置",
-          "desc": "后缀图标或图片的样式配置",
+          "desc": "后缀图标的样式配置",
           "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
           "hover": [["color"], ["font"], ["fontSize"]],
           "active": [["color"], ["font"], ["fontSize"]],
@@ -783,7 +783,7 @@
 
         "SelectedSuffixIcon": {
           "name": "选中项后缀图标配置",
-          "desc": "选中项后缀图标或图片的样式配置",
+          "desc": "选中项后缀图标的样式配置",
           "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]],
           "hover": [["color"], ["font"], ["fontSize"]],
           "active": [["color"], ["font"], ["fontSize"]],
