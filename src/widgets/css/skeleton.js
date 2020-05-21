@@ -7,8 +7,8 @@ import CSSComponent, { css, keyframes } from '@lugia/theme-css-hoc';
 import { px2remcss } from '../css/units';
 import colorsFunc from '../css/stateColor';
 
-const { disableColor, superLightColor } = colorsFunc();
-
+const superLightColor = '$lugia-dict.@lugia/lugia-web.superLightColor';
+const { disableColor } = colorsFunc();
 const defaultPictureWidth = 180;
 const defaultPictureHeight = 128;
 
