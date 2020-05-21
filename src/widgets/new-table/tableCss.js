@@ -29,6 +29,7 @@ export type TableProps = {
   footer?: string | React.Element<any>,
   getPartOfThemeProps: Function,
   getPartOfThemeHocProps: Function,
+  rowKey: string | Function,
 };
 
 export type TableState = {};

@@ -25,3 +25,11 @@ export const getEditDivTheme = (
 export const isValued = (value: any) => {
   return value || value === 0;
 };
+
+export const getRandom = (limit: number) => {
+  return Math.floor(Math.random() * limit);
+};
+
+export const isEqualArray = (oldValue: ?Array<Object>, newValue: ?Array<Object>): boolean => {
+  return JSON.stringify(oldValue) === JSON.stringify(newValue);
+};
