@@ -496,7 +496,12 @@ class InputTag extends React.Component<InputTagProps, InputTagState> {
     }
 
     return (
-      <Menu {...this.getInputTagMenuTheme()} data={items} step={30} getSuffix={this.getIcon} />
+      <Menu
+        {...this.getInputTagMenuTheme()}
+        data={items}
+        step={30}
+        renderSuffixItems={this.getIcon}
+      />
     );
   }
 
