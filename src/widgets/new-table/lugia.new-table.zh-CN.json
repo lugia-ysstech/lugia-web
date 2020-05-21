@@ -52,7 +52,7 @@
     "showHeader": {
       "type": "boolean",
       "desc": "是否展示表头",
-      "defaultValue": true
+      "propsDefaultValue": true
     },
     "title": {
       "type": "React.node",
@@ -61,7 +61,12 @@
     "tableStyle": {
       "type": "tableStyleType",
       "desc": "表格标题",
-      "defaultValue": "bordered"
+      "propsDefaultValue": "bordered"
+    },
+    "rowKey":{
+      "type": "string",
+      "desc": "表格行 key 的取值，可以是字符串或一个返回值是字符串的函数",
+      "propsDefaultValue": "key"
     }
   },
   "type": {

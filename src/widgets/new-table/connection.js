@@ -2,6 +2,7 @@
 import type { SelectItem } from '@lugia/lugia-web';
 import Listener from '@lugia/listener';
 import { deepMerge } from '@lugia/object-utils';
+import { getRandom } from './utils';
 
 export default class EditTableEventListener extends Listener<any> {
   editing: boolean;
@@ -147,11 +148,17 @@ export default class EditTableEventListener extends Listener<any> {
   };
 
   getKeyMaps = (props: Object) => {
-    const { columns, data } = props;
+    const { columns, data, rowKey = 'key' } = props;
     const dataKeyMap = { dataMap: {}, columnsMap: {} };
     data &&
       data.forEach((item: Object, index: number) => {
-        dataKeyMap.dataMap[index] = { ...item };
+        const keyNumber = item[rowKey] || getRandom(1000);
+        const keyValue = `data-${index}-${keyNumber}`;
+        const mapValue = {
+          dataItem: { ...item },
+          keyValue,
+        };
+        dataKeyMap.dataMap[index] = { ...mapValue };
       });
     columns &&
       columns.forEach((item: Object, index: number) => {
@@ -274,7 +281,7 @@ export default class EditTableEventListener extends Listener<any> {
     if ((!selectColumn && selectColumn !== 0) || (!selectRow && selectRow !== 0)) {
       return {};
     }
-    const dataItem = this.getSelectDataMark(selectRow - 1);
+    const { dataItem } = this.getSelectDataMark(selectRow - 1);
     const columnItem = columns[selectColumn].dataIndex;
     return {
       currentCell: { [columnItem]: dataItem[columnItem] },
@@ -465,10 +472,6 @@ export default class EditTableEventListener extends Listener<any> {
         allowEdit && this.emit('setState', { editing: true, editCell: currentCell });
       }
     }, 200);
-  };
-
-  isEqualArray = (oldValue: ?Array<Object>, newValue: ?Array<Object>): boolean => {
-    return JSON.stringify(oldValue) === JSON.stringify(newValue);
   };
 
   focusTable = (table: Object): void => {

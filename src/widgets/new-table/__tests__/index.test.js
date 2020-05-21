@@ -1,9 +1,4 @@
-/**
- *
- * create by szfeng
- *
- * @flow
- */
+//flow
 import React from 'react';
 import 'jest-styled-components';
 import Enzyme, { mount } from 'enzyme';
@@ -100,12 +95,27 @@ const dataKeyMap = {
     isIn: 3,
   },
   dataMap: {
-    0: { name: '', age: 28, key: '1', isIn: true },
-    1: { name: 'Rose', age: 36, address: 'some where', key: '2', isIn: true },
-    2: { name: 'Uzi', age: 36, address: 'some where', key: '3', isIn: false },
-    3: { name: 'ClearLove', age: 36, address: 'some where', key: '4', isIn: true },
-    4: { name: 'Rookie', age: 36, address: 'some where', key: '5', isIn: true },
-    5: { name: 'TheShy', age: 36, address: 'some where', key: '6', isIn: true },
+    0: { dataItem: { name: '', age: 28, key: '1', isIn: true }, keyValue: 'data-0-1' },
+    1: {
+      dataItem: { name: 'Rose', age: 36, address: 'some where', key: '2', isIn: true },
+      keyValue: 'data-1-2',
+    },
+    2: {
+      dataItem: { name: 'Uzi', age: 36, address: 'some where', key: '3', isIn: false },
+      keyValue: 'data-2-3',
+    },
+    3: {
+      dataItem: { name: 'ClearLove', age: 36, address: 'some where', key: '4', isIn: true },
+      keyValue: 'data-3-4',
+    },
+    4: {
+      dataItem: { name: 'Rookie', age: 36, address: 'some where', key: '5', isIn: true },
+      keyValue: 'data-4-5',
+    },
+    5: {
+      dataItem: { name: 'TheShy', age: 36, address: 'some where', key: '6', isIn: true },
+      keyValue: 'data-5-6',
+    },
   },
 };
 

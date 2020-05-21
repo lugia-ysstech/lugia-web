@@ -9,7 +9,7 @@ import { Container, TdContainer, EditDiv, InnerTriggerDiv } from './editTableCss
 import EditTableEventListener from './connection';
 import Widget from '../consts';
 import { findDOMNode } from 'react-dom';
-import { getEditDivTheme, isValued } from './utils';
+import { getEditDivTheme, isValued, isEqualArray } from './utils';
 
 class EditTable extends React.Component<EditTableProps, EditTableState> {
   editTableListener: EditTableEventListenerHandle;
@@ -23,7 +23,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
 
   constructor(props: EditTableProps) {
     super(props);
-    const { columns, data = [] } = props;
+    const { columns, data = [], rowKey } = props;
 
     this.editTableListener = new EditTableEventListener();
     this.state = {
@@ -31,7 +31,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
       editCell: {},
       editing: false,
     };
-    this.editTableListener.emit('updateDataKeyMap', { columns, data });
+    this.editTableListener.emit('updateDataKeyMap', { columns, data, rowKey });
     this.moveCellsListener = this.editTableListener.on('moveCells', (props: Object) => {
       this.doMoveCells(props);
     });
@@ -58,11 +58,10 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
 
   shouldComponentUpdate(nextProps: EditTableProps, nextState: EditTableState) {
     const { data: oldData, columns: oldColumns } = this.props;
-    const { data, columns } = nextProps;
-    const { isEqualArray } = this.editTableListener;
+    const { data, columns, rowKey } = nextProps;
     const isUpdateValue = !isEqualArray(oldData, data) || !isEqualArray(oldColumns, columns);
     if (isUpdateValue) {
-      this.editTableListener.emit('updateDataKeyMap', { columns, data });
+      this.editTableListener.emit('updateDataKeyMap', { columns, data, rowKey });
     }
     return true;
   }
@@ -146,6 +145,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
       selectData,
       align,
       dataIndex,
+      index,
     } = renderObject;
     const EditElement = customEditElement || EditInput;
     const editingTheme = enterEdit
@@ -161,10 +161,13 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
     const isDisableEdit = isHead && isSelect && !isEditHead;
     const propsConfig = { isSelect, isHead, align, enterEdit, isDisableEdit };
     const editDivTheme = getEditDivTheme(this.props, isHead, propsConfig, editingTheme);
+    const { editTableListener: { getSelectDataMark } = {} } = this;
+    const keyMap = getSelectDataMark(index - 1);
+    const keyVal = isHead ? dataIndex : keyMap.keyValue;
 
     if (enterEdit) {
       return (
-        <TdContainer key={dataIndex}>
+        <TdContainer key={`Head-${keyVal}`}>
           <EditElement
             value={defaultText}
             autoFocus={true}
@@ -176,7 +179,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
       );
     }
 
-    const { text, record, index, selectColumn, selectRow, customRender } = renderObject;
+    const { text, record, selectColumn, selectRow, customRender } = renderObject;
     const { selectSuffixElement } = this.props;
     const { selectCell } = this.state;
     const allowEdit = !isDisableEdit;
@@ -185,7 +188,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
       <EditDiv
         themeProps={editDivTheme}
         className={'EditDiv'}
-        key={dataIndex}
+        key={`EditDiv-${keyVal}`}
         onClick={e =>
           onCellClick({
             e,
