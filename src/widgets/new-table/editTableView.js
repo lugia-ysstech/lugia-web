@@ -145,6 +145,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
       editType,
       selectData,
       align,
+      dataIndex,
     } = renderObject;
     const EditElement = customEditElement || EditInput;
     const editingTheme = enterEdit
@@ -163,7 +164,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
 
     if (enterEdit) {
       return (
-        <TdContainer>
+        <TdContainer key={dataIndex}>
           <EditElement
             value={defaultText}
             autoFocus={true}
@@ -184,6 +185,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
       <EditDiv
         themeProps={editDivTheme}
         className={'EditDiv'}
+        key={dataIndex}
         onClick={e =>
           onCellClick({
             e,
