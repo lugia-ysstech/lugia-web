@@ -188,7 +188,7 @@ class EditTable extends React.Component<EditTableProps, EditTableState> {
       <EditDiv
         themeProps={editDivTheme}
         className={'EditDiv'}
-        key={`EditDiv-${keyVal}`}
+        key={`EditDiv-${dataIndex}-${keyVal}`}
         onClick={e =>
           onCellClick({
             e,
