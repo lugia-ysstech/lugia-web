@@ -10,13 +10,27 @@ import React from 'react';
 import GetElement from './getelement';
 import request from './request';
 import CSSComponent, { css } from '../theme/CSSProvider';
+import { deepMerge } from '@lugia/object-utils';
 
 const Container = CSSComponent({
   tag: 'div',
   className: 'upload_Container',
+  normal: {
+    selectNames: [['width'], ['height'], ['boxShadow'], ['borderRadius'], ['border'], ['color']],
+    getCSS(themeMeta: Object, themeProps: Object) {
+      const { areaTypeValue } = themeProps;
+      if (areaTypeValue === 'both' || areaTypeValue === 'default' || areaTypeValue === 'area') {
+        return `
+            display: block;
+        `;
+      }
+      return `
+            display: inline-block;
+        `;
+    },
+  },
   css: css`
     position: relative;
-    display: inline-block;
   `,
 });
 
@@ -139,9 +153,10 @@ class Upload extends React.Component<UploadProps, StateProps> {
   }
 
   render() {
-    const { themeProps } = this.props;
+    const { themeProps, areaType } = this.props;
+    const areaTypeTheme = deepMerge(themeProps, { areaTypeValue: areaType });
     return (
-      <Container themeProps={themeProps}>
+      <Container themeProps={areaTypeTheme}>
         <GetElement
           {...this.props}
           {...this.state}

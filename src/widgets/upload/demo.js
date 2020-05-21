@@ -127,7 +127,7 @@ class UploadDemo extends React.Component<any, any> {
       ],
       defaultTips: {
         uploadText: '点击上传',
-        failTips: '文件上传失败请重试',
+        failTips: '上传失败',
         loadingTips: '文件上传中...',
       },
     };
