@@ -94,9 +94,7 @@ export default {
     render: async () => import('./widgets/dropmenu/p-dropmenu'),
   },
   '/grid': {
-    render: async () => {
-      return await import('./widgets/grid/demo');
-    },
+    render: async () => import('./widgets/grid/demo'),
   },
   '/icon': {
     render: async () => import('./widgets/icon/demo'),
