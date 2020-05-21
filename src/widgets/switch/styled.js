@@ -4,8 +4,8 @@
 import { css } from 'styled-components';
 import CSSProvider from '../theme/CSSProvider';
 import { px2remcss } from '../css/units';
+import get from '../css/theme-common-dict';
 const em = px2remcss;
-const themeColor = '$lugia-dict.@lugia/lugia-web.themeColor';
 export const Container = CSSProvider({
   tag: 'span',
   className: 'Container',
@@ -212,7 +212,7 @@ export const SwitchCircle = CSSProvider({
     -webkit-transition: all 0.2s;
     & > *:first-child {
       display: block;
-      color: ${themeColor};
+      color: ${get('themeColor')};
       animation: rotate 1.5s linear infinite;
       position: relative;
       & > *:first-child {
