@@ -95,7 +95,7 @@ export default {
   },
   '/grid': {
     render: async () => {
-      return (await import('./widgets/grid/demo')).RowDemo;
+      return await import('./widgets/grid/demo');
     },
   },
   '/icon': {
