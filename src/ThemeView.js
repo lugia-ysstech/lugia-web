@@ -25,6 +25,11 @@ export default class extends Component<any, any> {
 
   target: Object;
 
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
+    console.log(error);
+    console.log(errorInfo);
+  }
+
   render() {
     const { modulePath, modules } = this.props;
     const module = modules[modulePath];
