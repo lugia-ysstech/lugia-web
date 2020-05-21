@@ -42,6 +42,7 @@ import Upload from './upload';
 import Window from './window';
 import { load } from './css/theme-common-dict.js';
 export { load };
+
 export default [
   {
     meta: {
@@ -294,6 +295,11 @@ export default [
       desc: '需要自动完成数据时使用',
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
+        size: {
+          type: 'sizeType',
+          desc: '可配置三种尺寸大小的autoComplete',
+          propsDefaultValue: 'default',
+        },
         data: {
           type: 'string[]',
           desc: '生成选择项的数据',
@@ -329,7 +335,11 @@ export default [
           args: [{ name: 'selectedKeys', desc: '选中项的数据', type: 'string[]' }],
         },
       },
-      type: { ValidateStatus: ['default', 'error'], ValidateType: ['top', 'bottom', 'inner'] },
+      type: {
+        sizeType: ['small', 'default', 'large'],
+        ValidateStatus: ['default', 'error'],
+        ValidateType: ['top', 'bottom', 'inner'],
+      },
       category: ['数据录入'],
       theme: {
         AutoInput: {
@@ -3274,6 +3284,11 @@ export default [
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         action: { type: 'hover | click', desc: '展开子菜单的方式' },
+        size: {
+          type: 'sizeType',
+          desc: '可配置三种尺寸大小的cascader',
+          propsDefaultValue: 'default',
+        },
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: false },
         offsetX: { type: 'number', desc: '菜单间的间隔', propsDefaultValue: 2 },
         offsetY: { type: 'number', desc: '显示框与菜单的间隔', propsDefaultValue: 5 },
@@ -3366,7 +3381,11 @@ export default [
           ],
         },
       },
-      type: { ValidateStatus: ['default', 'error'], ValidateType: ['top', 'bottom', 'inner'] },
+      type: {
+        sizeType: ['small', 'default', 'large'],
+        ValidateStatus: ['default', 'error'],
+        ValidateType: ['top', 'bottom', 'inner'],
+      },
       category: ['数据录入'],
       theme: {
         Container: {
@@ -5712,6 +5731,11 @@ export default [
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: true },
+        size: {
+          type: 'sizeType',
+          desc: '可配置三种尺寸大小的dropmenu',
+          propsDefaultValue: 'default',
+        },
         popupVisible: { type: 'boolean', desc: '是否展开菜单', propsDefaultValue: false },
         action: { type: 'ActionType', desc: '弹出项的打开方式', propsDefaultValue: 'click' },
         hideAction: { type: 'ActionType', desc: '弹出项的隐藏方式', propsDefaultValue: 'click' },
@@ -5795,7 +5819,11 @@ export default [
           ],
         },
       },
-      type: { StyleType: ['customs', 'primary', 'basic'], ActionType: ['hover', 'click'] },
+      type: {
+        sizeType: ['small', 'default', 'large'],
+        StyleType: ['customs', 'primary', 'basic'],
+        ActionType: ['hover', 'click'],
+      },
       designInfo: {
         NoDividedDropmenu: {
           sequence: 1,
@@ -6357,6 +6385,11 @@ export default [
       props: {
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         createPortal: { type: 'boolean', desc: '是否全局弹出下拉框', propsDefaultValue: true },
+        size: {
+          type: 'sizeType',
+          desc: '可配置三种尺寸大小的dropmenu',
+          propsDefaultValue: 'default',
+        },
         popupVisible: { type: 'boolean', desc: '是否展开菜单', propsDefaultValue: false },
         action: { type: 'ActionType', desc: '弹出项的打开方式', propsDefaultValue: 'click' },
         hideAction: { type: 'ActionType', desc: '弹出项的隐藏方式', propsDefaultValue: 'click' },
@@ -6445,7 +6478,11 @@ export default [
           ],
         },
       },
-      type: { StyleType: ['customs', 'primary', 'basic'], ActionType: ['hover', 'click'] },
+      type: {
+        sizeType: ['small', 'default', 'large'],
+        StyleType: ['customs', 'primary', 'basic'],
+        ActionType: ['hover', 'click'],
+      },
       theme: {
         Container: {
           name: '下拉菜单整体配置',
@@ -7443,7 +7480,22 @@ export default [
                 },
                 PrefixIcon: {
                   name: '前置图标配置',
-                  desc: '前置图标或图片的样式配置',
+                  desc: '前置图标的样式配置',
+                  normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+                  hover: [['color'], ['font'], ['fontSize']],
+                  active: [['color'], ['font'], ['fontSize']],
+                  disabled: [
+                    ['color'],
+                    ['margin'],
+                    ['fontSize'],
+                    ['font'],
+                    ['padding'],
+                    ['cursor'],
+                  ],
+                },
+                SelectedPrefixIcon: {
+                  name: '选中项前置图标配置',
+                  desc: '选中项前置图标的样式配置',
                   normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
                   hover: [['color'], ['font'], ['fontSize']],
                   active: [['color'], ['font'], ['fontSize']],
@@ -7458,7 +7510,22 @@ export default [
                 },
                 SuffixIcon: {
                   name: '后缀图标配置',
-                  desc: '后缀图标或图片的样式配置',
+                  desc: '后缀图标的样式配置',
+                  normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+                  hover: [['color'], ['font'], ['fontSize']],
+                  active: [['color'], ['font'], ['fontSize']],
+                  disabled: [
+                    ['color'],
+                    ['margin'],
+                    ['fontSize'],
+                    ['font'],
+                    ['padding'],
+                    ['cursor'],
+                  ],
+                },
+                SelectedSuffixIcon: {
+                  name: '选中项后缀图标配置',
+                  desc: '选中项后缀图标的样式配置',
                   normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
                   hover: [['color'], ['font'], ['fontSize']],
                   active: [['color'], ['font'], ['fontSize']],
@@ -7639,7 +7706,15 @@ export default [
             },
             PrefixIcon: {
               name: '前置图标配置',
-              desc: '前置图标或图片的样式配置',
+              desc: '前置图标的样式配置',
+              normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+              hover: [['color'], ['font'], ['fontSize']],
+              active: [['color'], ['font'], ['fontSize']],
+              disabled: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+            },
+            SelectedPrefixIcon: {
+              name: '选中项前置图标配置',
+              desc: '选中项前置图标的样式配置',
               normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
               hover: [['color'], ['font'], ['fontSize']],
               active: [['color'], ['font'], ['fontSize']],
@@ -7647,7 +7722,15 @@ export default [
             },
             SuffixIcon: {
               name: '后缀图标配置',
-              desc: '后缀图标或图片的样式配置',
+              desc: '后缀图标的样式配置',
+              normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+              hover: [['color'], ['font'], ['fontSize']],
+              active: [['color'], ['font'], ['fontSize']],
+              disabled: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+            },
+            SelectedSuffixIcon: {
+              name: '选中项后缀图标配置',
+              desc: '选中项后缀图标的样式配置',
               normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
               hover: [['color'], ['font'], ['fontSize']],
               active: [['color'], ['font'], ['fontSize']],
@@ -7952,7 +8035,15 @@ export default [
             },
             PrefixIcon: {
               name: '前置图标配置',
-              desc: '前置图标或图片的样式配置',
+              desc: '前置图标的样式配置',
+              normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+              hover: [['color'], ['font'], ['fontSize']],
+              active: [['color'], ['font'], ['fontSize']],
+              disabled: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+            },
+            SelectedPrefixIcon: {
+              name: '选中项前置图标配置',
+              desc: '选中项前置图标的样式配置',
               normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
               hover: [['color'], ['font'], ['fontSize']],
               active: [['color'], ['font'], ['fontSize']],
@@ -7960,7 +8051,15 @@ export default [
             },
             SuffixIcon: {
               name: '后缀图标配置',
-              desc: '后缀图标或图片的样式配置',
+              desc: '后缀图标的样式配置',
+              normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+              hover: [['color'], ['font'], ['fontSize']],
+              active: [['color'], ['font'], ['fontSize']],
+              disabled: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+            },
+            SelectedSuffixIcon: {
+              name: '选中项后缀图标配置',
+              desc: '选中项后缀图标的样式配置',
               normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
               hover: [['color'], ['font'], ['fontSize']],
               active: [['color'], ['font'], ['fontSize']],
@@ -11755,6 +11854,12 @@ export default [
               hover: [['color'], ['font']],
               disabled: [['color'], ['font']],
             },
+            RadioTextCancel: {
+              name: '取消状态文字样式',
+              desc: '取消状态文字样式',
+              normal: [['color'], ['font'], ['padding']],
+              disabled: [['color'], ['font']],
+            },
             RadioEdgeUnChecked: {
               name: '未选中外框样式',
               desc: '未选中外框样式',
@@ -12335,6 +12440,11 @@ export default [
             { value: '选项三', text: '选项三' },
           ],
         },
+        size: {
+          type: 'sizeType',
+          desc: '可配置三种尺寸大小的select',
+          propsDefaultValue: 'default',
+        },
         canSearch: { type: 'boolean', desc: '是否支持查询', propsDefaultValue: false },
         canInput: {
           type: 'boolean',
@@ -12409,6 +12519,7 @@ export default [
         onRefresh: { desc: '点击刷新按钮时触发' },
       },
       type: {
+        sizeType: ['small', 'default', 'large'],
         SearchType: ['start', 'end', 'include', 'eql'],
         ValidateStatus: ['default', 'error'],
         ValidateType: ['top', 'bottom', 'inner'],
@@ -13100,6 +13211,11 @@ export default [
             { value: '选项三', text: '选项三' },
           ],
         },
+        size: {
+          type: 'sizeType',
+          desc: '可配置三种尺寸大小的select',
+          propsDefaultValue: 'default',
+        },
         canSearch: { type: 'boolean', desc: '是否支持查询', propsDefaultValue: false },
         canInput: {
           type: 'boolean',
@@ -13179,6 +13295,7 @@ export default [
         onRefresh: { desc: '点击刷新按钮时触发' },
       },
       type: {
+        sizeType: ['small', 'default', 'large'],
         SearchType: ['start', 'end', 'include', 'eql'],
         ValidateStatus: ['default', 'error'],
         ValidateType: ['top', 'bottom', 'inner'],
@@ -18714,7 +18831,6 @@ export default [
                 ['font'],
               ],
               active: [],
-              clicked: [],
               disabled: [],
             },
             CloseButton: {
@@ -18723,7 +18839,6 @@ export default [
               normal: [['font'], ['color'], ['margin']],
               hover: [['font'], ['color']],
               active: [],
-              clicked: [],
               disabled: [],
             },
           },
@@ -18768,7 +18883,6 @@ export default [
                 ['opacity'],
                 ['font'],
               ],
-              clicked: [],
               disabled: [],
             },
             CheckedTagWrap: {
@@ -18805,7 +18919,6 @@ export default [
                 ['font'],
                 ['borderRadius'],
               ],
-              clicked: [],
               disabled: [],
             },
           },
@@ -18838,7 +18951,6 @@ export default [
             ['font'],
           ],
           active: [],
-          clicked: [],
           disabled: [],
         },
       },
@@ -18917,7 +19029,6 @@ export default [
             ['font'],
           ],
           active: [],
-          clicked: [],
           disabled: [],
         },
         CloseButton: {
@@ -18926,7 +19037,6 @@ export default [
           normal: [['font'], ['color'], ['margin']],
           hover: [['font'], ['color']],
           active: [],
-          clicked: [],
           disabled: [],
         },
       },
@@ -19014,7 +19124,6 @@ export default [
             ['opacity'],
             ['font'],
           ],
-          clicked: [],
           disabled: [],
         },
         CheckedTagWrap: {
@@ -19051,7 +19160,6 @@ export default [
             ['font'],
             ['borderRadius'],
           ],
-          clicked: [],
           disabled: [],
         },
       },
@@ -19095,11 +19203,11 @@ export default [
         pendingDot: { type: 'icon', desc: '当最后一个是幽灵节点时,指定其图标资源' },
         mode: {
           type: 'TimeLineMode',
-          desc: '时间轴 描述信息的显示位置 ,可选择右侧或者交错显示.',
+          desc: '时间轴 描述信息的显示位置 ,可选择右侧,左侧，或者交错显示.',
           defaultValue: 'right',
         },
       },
-      type: { TimeLineMode: ['right', 'alternate'] },
+      type: { TimeLineMode: ['left', 'right', 'alternate'] },
       childrenWidget: [],
       category: ['数据展示'],
       designInfo: {
@@ -19256,11 +19364,11 @@ export default [
         },
         mode: {
           type: 'TimeLineMode',
-          desc: '时间轴 描述信息的显示位置 ,可选择右侧或者交错显示.',
+          desc: '时间轴 描述信息的显示位置 ,可选择右侧,左侧，或者交错显示.',
           defaultValue: 'right',
         },
       },
-      type: { TimeLineMode: ['right', 'alternate'] },
+      type: { TimeLineMode: ['left', 'right', 'alternate'] },
       childrenWidget: [],
       category: ['数据展示'],
       theme: {
@@ -20604,6 +20712,7 @@ export default [
           type: 'string',
           desc: '多tree的分组标识,当两个tree的groupKey值相同时.可实现相互拖拽',
         },
+        size: { type: 'sizeType', desc: '可配置三种尺寸大小的tree', propsDefaultValue: 'default' },
         data: {
           type: 'object[]',
           desc: '生成选择项的数据',
@@ -20745,6 +20854,7 @@ export default [
           args: [{ name: 'item', desc: '节点数据', type: 'object' }],
         },
       },
+      type: { sizeType: ['small', 'default', 'large'] },
       category: ['数据录入'],
       designInfo: {
         MutlipleTree: {
@@ -20910,7 +21020,22 @@ export default [
                 },
                 PrefixIcon: {
                   name: '前置图标配置',
-                  desc: '前置图标或图片的样式配置',
+                  desc: '前置图标的样式配置',
+                  normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+                  hover: [['color'], ['font'], ['fontSize']],
+                  active: [['color'], ['font'], ['fontSize']],
+                  disabled: [
+                    ['color'],
+                    ['margin'],
+                    ['fontSize'],
+                    ['font'],
+                    ['padding'],
+                    ['cursor'],
+                  ],
+                },
+                SelectedPrefixIcon: {
+                  name: '选中项前置图标配置',
+                  desc: '选中项前置图标的样式配置',
                   normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
                   hover: [['color'], ['font'], ['fontSize']],
                   active: [['color'], ['font'], ['fontSize']],
@@ -20925,7 +21050,22 @@ export default [
                 },
                 SuffixIcon: {
                   name: '后缀图标配置',
-                  desc: '后缀图标或图片的样式配置',
+                  desc: '后缀图标的样式配置',
+                  normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+                  hover: [['color'], ['font'], ['fontSize']],
+                  active: [['color'], ['font'], ['fontSize']],
+                  disabled: [
+                    ['color'],
+                    ['margin'],
+                    ['fontSize'],
+                    ['font'],
+                    ['padding'],
+                    ['cursor'],
+                  ],
+                },
+                SelectedSuffixIcon: {
+                  name: '选中项后缀图标配置',
+                  desc: '选中项后缀图标的样式配置',
                   normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
                   hover: [['color'], ['font'], ['fontSize']],
                   active: [['color'], ['font'], ['fontSize']],
@@ -21171,7 +21311,15 @@ export default [
             },
             PrefixIcon: {
               name: '前置图标配置',
-              desc: '前置图标或图片的样式配置',
+              desc: '前置图标的样式配置',
+              normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+              hover: [['color'], ['font'], ['fontSize']],
+              active: [['color'], ['font'], ['fontSize']],
+              disabled: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+            },
+            SelectedPrefixIcon: {
+              name: '选中项前置图标配置',
+              desc: '选中项前置图标的样式配置',
               normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
               hover: [['color'], ['font'], ['fontSize']],
               active: [['color'], ['font'], ['fontSize']],
@@ -21179,7 +21327,15 @@ export default [
             },
             SuffixIcon: {
               name: '后缀图标配置',
-              desc: '后缀图标或图片的样式配置',
+              desc: '后缀图标的样式配置',
+              normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+              hover: [['color'], ['font'], ['fontSize']],
+              active: [['color'], ['font'], ['fontSize']],
+              disabled: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+            },
+            SelectedSuffixIcon: {
+              name: '选中项后缀图标配置',
+              desc: '选中项后缀图标的样式配置',
               normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
               hover: [['color'], ['font'], ['fontSize']],
               active: [['color'], ['font'], ['fontSize']],
@@ -21265,6 +21421,7 @@ export default [
           type: 'string',
           desc: '多tree的分组标识,当两个tree的groupKey值相同时.可实现相互拖拽',
         },
+        size: { type: 'sizeType', desc: '可配置三种尺寸大小的tree', propsDefaultValue: 'default' },
         data: {
           type: 'object[]',
           desc: '生成选择项的数据',
@@ -21411,6 +21568,7 @@ export default [
           args: [{ name: 'item', desc: '节点数据', type: 'object' }],
         },
       },
+      type: { sizeType: ['small', 'default', 'large'] },
       category: ['数据录入'],
       theme: {
         Container: {
@@ -21570,7 +21728,15 @@ export default [
             },
             PrefixIcon: {
               name: '前置图标配置',
-              desc: '前置图标或图片的样式配置',
+              desc: '前置图标的样式配置',
+              normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+              hover: [['color'], ['font'], ['fontSize']],
+              active: [['color'], ['font'], ['fontSize']],
+              disabled: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+            },
+            SelectedPrefixIcon: {
+              name: '选中项前置图标配置',
+              desc: '选中项前置图标的样式配置',
               normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
               hover: [['color'], ['font'], ['fontSize']],
               active: [['color'], ['font'], ['fontSize']],
@@ -21578,7 +21744,15 @@ export default [
             },
             SuffixIcon: {
               name: '后缀图标配置',
-              desc: '后缀图标或图片的样式配置',
+              desc: '后缀图标的样式配置',
+              normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+              hover: [['color'], ['font'], ['fontSize']],
+              active: [['color'], ['font'], ['fontSize']],
+              disabled: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
+            },
+            SelectedSuffixIcon: {
+              name: '选中项后缀图标配置',
+              desc: '选中项后缀图标的样式配置',
               normal: [['color'], ['margin'], ['fontSize'], ['font'], ['padding'], ['cursor']],
               hover: [['color'], ['font'], ['fontSize']],
               active: [['color'], ['font'], ['fontSize']],
@@ -21677,6 +21851,11 @@ export default [
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
         validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
+        size: {
+          type: 'sizeType',
+          desc: '可配置三种尺寸大小的treeSelect',
+          propsDefaultValue: 'default',
+        },
         data: {
           type: 'object[]',
           desc: '生成选择项的数据',
@@ -21780,7 +21959,11 @@ export default [
           args: [{ name: 'event', desc: '清除输入框内容事件', type: 'Object' }],
         },
       },
-      type: { ValidateStatus: ['default', 'error'], ValidateType: ['top', 'bottom', 'inner'] },
+      type: {
+        sizeType: ['small', 'default', 'large'],
+        ValidateStatus: ['default', 'error'],
+        ValidateType: ['top', 'bottom', 'inner'],
+      },
       category: ['数据录入'],
       designInfo: {
         MutlipleTreeSelect: {
@@ -22529,6 +22712,11 @@ export default [
         lugiaHidden: { type: 'boolean', desc: '是否渲染当前组件', defaultValue: false },
         validateStatus: { type: 'ValidateStatus', desc: '校验状态' },
         validateType: { type: 'ValidateType', desc: '校验信息显示类型', propsDefaultValue: 'top' },
+        size: {
+          type: 'sizeType',
+          desc: '可配置三种尺寸大小的treeSelect',
+          propsDefaultValue: 'default',
+        },
         data: {
           type: 'object[]',
           desc: '生成选择项的数据',
@@ -22637,7 +22825,11 @@ export default [
           args: [{ name: 'event', desc: '清除输入框内容事件', type: 'Object' }],
         },
       },
-      type: { ValidateStatus: ['default', 'error'], ValidateType: ['top', 'bottom', 'inner'] },
+      type: {
+        sizeType: ['small', 'default', 'large'],
+        ValidateStatus: ['default', 'error'],
+        ValidateType: ['top', 'bottom', 'inner'],
+      },
       category: ['数据录入'],
       theme: {
         Container: {
