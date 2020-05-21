@@ -38,7 +38,7 @@
       "desc": "弹出项组件"
     },
     "align": {
-      "type": "React.Node",
+      "type": "alignType",
       "desc": "弹出方向",
       "propsDefaultValue": "bottom"
     },
@@ -197,6 +197,7 @@
     }
   },
   "type": {
+    "alignType": ["topLeft", "top", "topRight", "bottomLeft", "bottom", "bottomRight"],
     "sizeType": ["small", "default", "large"],
     "StyleType": ["customs", "primary", "basic"],
     "ActionType": ["hover", "click"]

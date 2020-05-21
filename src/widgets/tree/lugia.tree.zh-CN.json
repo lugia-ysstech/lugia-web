@@ -610,12 +610,33 @@
                   "hover": [["background"], ["borderRadius"], ["border"]],
                   "disabled": [["background"], ["borderRadius"], ["border"]]
                 },
+                "CheckboxEdgeIndeterminate": {
+                  "name": "半选外框样式",
+                  "desc": "半选状态外框样式",
+                  "normal": [
+                    ["background"],
+                    ["borderRadius"],
+                    ["border"],
+                    ["boxShadow"],
+                    ["width"],
+                    ["height"]
+                  ],
+                  "hover": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]],
+                  "disabled": [["background"], ["borderRadius"], ["border"], ["width"], ["height"]]
+                },
                 "CheckboxInnerChecked": {
                   "name": "Checkbox选中样式配置",
                   "desc": "Checkbox选中样式配置",
                   "normal": [["color"]],
                   "hover": [["color"]],
                   "disabled": [["color"]]
+                },
+                "CheckboxInnerIndeterminate": {
+                  "name": "半选内框样式",
+                  "desc": "半选内框样式",
+                  "normal": [["color"], ["width"], ["height"]],
+                  "hover": [["color"], ["width"], ["height"]],
+                  "disabled": [["color"], ["width"], ["height"]]
                 }
               }
             }
@@ -746,6 +767,25 @@
           "disabled": []
         },
 
+        "SelectedParentText": {
+          "name": "选中项的父节点文本框区域",
+          "desc": "配置选中项的父节点文本框区域的样式",
+          "normal": [
+            ["color"],
+            ["font"],
+            ["fontSize"],
+            ["background"],
+            ["padding"],
+            ["border"],
+            ["opacity"],
+            ["boxShadow"],
+            ["borderRadius"]
+          ],
+          "hover": [],
+          "active": [],
+          "disabled": []
+        },
+
         "TextExpanded": {
           "name": "父节点展开状态的文本框区域",
           "desc": "配置父节点展开状态的文本框区域的样式",
@@ -810,6 +850,12 @@
           "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
         },
 
+        "SelectedParentSwitchIcon": {
+          "name": "选中节点的父节点控制器配置",
+          "desc": "选中节点的父节点配置控制树节点展开或隐藏的控制器的样式",
+          "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+        },
+
         "SwitchIconExpanded": {
           "name": "节点展开状态控制器",
           "desc": "配置在父节点展开状态下控制控制器的样式",
@@ -817,6 +863,12 @@
           "hover": [["color"], ["font"], ["fontSize"]],
           "active": [],
           "disabled": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
+        },
+
+        "SelectedParentSwitchIconExpanded": {
+          "name": "选中节点的父节点展开状态控制器",
+          "desc": "选中节点的父节点配置在父节点展开状态下控制控制器的样式",
+          "normal": [["color"], ["margin"], ["fontSize"], ["font"], ["padding"], ["cursor"]]
         },
 
         "SubTreeWrap": {

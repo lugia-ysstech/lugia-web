@@ -132,8 +132,8 @@
       "propsDefaultValue": "click"
     },
     "size": {
-      "type": "large | default | bigger",
-      "desc": "设置列表项的高度",
+      "type": "sizeType",
+      "desc": "可配置三种尺寸大小的menu",
       "propsDefaultValue": "default"
     },
     "subsize": {
@@ -203,9 +203,10 @@
     }
   },
   "type": {
+    "sizeType": ["small", "default", "large"],
     "CheckedCSSType": ["background", "checkbox", "none"],
     "ActionType": ["hover", "click"],
-    "SubsizeType": ["large", "default", "bigger"]
+    "SubsizeType": ["small", "default", "large"]
   },
   "category": ["数据录入"],
 

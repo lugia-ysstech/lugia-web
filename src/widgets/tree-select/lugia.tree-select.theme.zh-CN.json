@@ -1,0 +1,948 @@
+[
+  {
+    "widgetName": "TreeSelect",
+    "title": "树形选择控件",
+    "viewProps": [
+      { "name": "disabled", "text": "禁用" },
+      { "name": "canSearch", "text": "支持查询" },
+      { "name": "query", "text": "搜索框关键字" },
+      { "name": "data", "text": "数据编辑" }
+    ],
+    "data": [
+      {
+        "title": "主体",
+        "iconClass": "checkboxCheck",
+        "data": [
+          {
+            "name": "选择框整体配置",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "选择框",
+                "desc": "选择框外观配置的区"
+              },
+              "textPart": {
+                "text": "选择文本",
+                "desc": "选择文本文本配置"
+              },
+              "spacingPart": {
+                "text": "选择框",
+                "desc": "选择框外观配置的区"
+              }
+            }
+          },
+          {
+            "name": "提示信息文字",
+            "path": ["Placeholder"],
+            "props": [
+              {
+                "name": "placeholder",
+                "typeInTheme": "text"
+              }
+            ],
+            "description": {
+              "textPart": {
+                "text": "提示文本",
+                "desc": "提示文本文本配置"
+              },
+              "spacingPart": {
+                "hidden": true
+              }
+            }
+          },
+          {
+            "name": "下拉图标",
+            "path": ["SwitchIcon"],
+            "props": {
+              "name": "pullIconClass",
+              "typeInTheme": "icon"
+            },
+            "description": {
+              "appearancePart": {
+                "hidden": true
+              },
+              "textPart": {
+                "text": "下拉图标",
+                "desc": "整体背景外观配置的区"
+              },
+              "spacingPart": {
+                "hidden": true
+              }
+            }
+          },
+          {
+            "name": "清空图标",
+            "path": ["ClearIcon"],
+            "props": {
+              "name": "clearIconClass",
+              "typeInTheme": "icon"
+            },
+            "description": {
+              "appearancePart": {
+                "hidden": true
+              },
+              "textPart": {
+                "text": "清除图标",
+                "desc": "整体背景外观配置的区"
+              },
+              "spacingPart": {
+                "hidden": true
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "菜单外盒",
+        "iconClass": "checkboxUncheck",
+        "data": [
+          {
+            "name": "树形控件外盒",
+            "path": ["Tree", "Container"],
+            "description": {
+              "appearancePart": {
+                "desc": "菜单外盒外观配置的区"
+              },
+              "textPart": {
+                "hidden": true
+              },
+              "spacingPart": {
+                "desc": "菜单外盒内外边距配置"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "树形控件",
+        "iconClass": "treeSelect",
+        "children": [
+          {
+            "title": "展开项背景",
+            "iconClass": "treeChildElementBackground",
+            "data": [
+              {
+                "name": "展开项背景",
+                "path": ["Tree", "TreeItem", "SubTreeWrap"],
+                "description": {
+                  "appearancePart": {
+                    "text": "展开项背景",
+                    "desc": "展开项背景外观配置的区"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "展开项背景内外边距配置区"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "默认项文本",
+            "iconClass": "treeText",
+            "data": [
+              {
+                "name": "子选项文本",
+                "path": ["Tree", "TreeItem", "Text"],
+                "description": {
+                  "appearancePart": {
+                    "text": "子选项背景",
+                    "desc": "子选项背景外观配置的区"
+                  },
+                  "textPart": {
+                    "text": "子选项文本",
+                    "desc": "子选项文本配置"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "子选项背景内外边距配置区"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "选中项文本",
+            "iconClass": "treeSelectedText",
+            "data": [
+              {
+                "name": "选中项文本文本",
+                "path": ["Tree", "TreeItem", "SelectedText"],
+                "description": {
+                  "appearancePart": {
+                    "text": "选中项文本背景",
+                    "desc": "选中项文本背景外观配置的区"
+                  },
+                  "textPart": {
+                    "text": "选中项文本",
+                    "desc": "选中项文本配置"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "子选项背景内外边距配置区"
+                  }
+                }
+              },
+              {
+                "name": "父选项文本",
+                "path": ["Tree", "TreeItem", "SelectedParentText"],
+                "description": {
+                  "appearancePart": {
+                    "text": "父选项文本",
+                    "desc": "父选项文本外观配置的区"
+                  },
+                  "textPart": {
+                    "text": "父选项文本",
+                    "desc": "父选项文本配置"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "父选项文本内外边距配置区"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "前后缀图标",
+            "iconClass": "iconsearch",
+            "data": [
+              {
+                "name": "前缀图标",
+                "path": ["Tree", "TreeItem", "PrefixIcon"],
+                "props": [
+                  {
+                    "name": "data",
+                    "typeInTheme": "icon"
+                  }
+                ],
+                "description": {
+                  "textPart": {
+                    "text": "前缀图标",
+                    "desc": "前缀图标"
+                  },
+                  "spacingPart": {
+                    "hidden": true
+                  }
+                }
+              },
+              {
+                "name": "后缀图标",
+                "path": ["Tree", "TreeItem", "SuffixIcon"],
+                "props": [
+                  {
+                    "name": "data",
+                    "typeInTheme": "icon"
+                  }
+                ],
+                "description": {
+                  "textPart": {
+                    "text": "后缀图标",
+                    "desc": "后缀图标"
+                  },
+                  "spacingPart": {
+                    "hidden": true
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "展开图标",
+            "iconClass": "expandIcon",
+            "data": [
+              {
+                "name": "前缀图标",
+                "path": ["Tree", "TreeItem", "SwitchIcon"],
+                "props": [
+                  {
+                    "name": "switchIconNames",
+                    "typeInTheme": "icon"
+                  }
+                ],
+                "description": {
+                  "textPart": {
+                    "text": "图标",
+                    "desc": "图标"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "默认项底色",
+            "iconClass": "treeBackground",
+            "data": [
+              {
+                "name": "默认项底色",
+                "path": ["Tree", "TreeItem", "TreeItemWrap"],
+                "description": {
+                  "appearancePart": {
+                    "text": "默认项底色",
+                    "desc": "父选项文本外观配置的区"
+                  },
+                  "textPart": {
+                    "hidden": true
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "父选项文本内外边距配置区"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "选中项底色",
+            "iconClass": "treeSelectedBackground",
+            "data": [
+              {
+                "name": "选中项底色",
+                "path": ["Tree", "TreeItem", "SelectedTreeItemWrap"],
+                "description": {
+                  "appearancePart": {
+                    "text": "选中项底色",
+                    "desc": "父选项文本外观配置的区"
+                  },
+                  "textPart": {
+                    "hidden": true
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "父选项文本内外边距配置区"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "校验失败",
+        "iconClass": "treeSelect",
+        "data": [
+          {
+            "name": "校验失败的展示框",
+            "path": ["ValidateErrorInput"],
+            "description": {
+              "appearancePart": {
+                "desc": "校验失败外观配置"
+              },
+              "textPart": {
+                "text": "",
+                "desc": "校验失败内外边距配置"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "失败提示",
+        "iconClass": "Verificationfailed",
+        "data": [
+          {
+            "name": "验证失败",
+            "path": ["ValidateErrorText"],
+            "props": [
+              {
+                "name": "help",
+                "typeInTheme": "text"
+              }
+            ],
+            "description": {
+              "appearancePart": {
+                "desc": "验证失败外观配置"
+              },
+              "textPart": {
+                "text": "提示文本",
+                "desc": "提示文本内外边距配置"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "widgetName": "TreeSelect",
+    "aliasName": "MutlipleTreeSelect",
+    "title": "多项树形选择",
+    "viewProps": [
+      { "name": "disabled", "text": "禁用" },
+      { "name": "canSearch", "text": "支持查询" },
+      { "name": "query", "text": "搜索框关键字" },
+      { "name": "data", "text": "数据编辑" }
+    ],
+    "data": [
+      {
+        "title": "主体",
+        "iconClass": "input",
+        "data": [
+          {
+            "name": "选择框整体配置",
+            "path": ["Container"],
+            "description": {
+              "appearancePart": {
+                "text": "选择框",
+                "desc": "选择框外观配置的区"
+              },
+              "textPart": {
+                "text": "选择文本",
+                "desc": "选择文本文本配置"
+              },
+              "spacingPart": {
+                "text": "选择框",
+                "desc": "选择框外观配置的区"
+              }
+            }
+          },
+          {
+            "name": "提示信息文字",
+            "path": ["Placeholder"],
+            "props": [
+              {
+                "name": "placeholder",
+                "typeInTheme": "text"
+              }
+            ],
+            "description": {
+              "textPart": {
+                "text": "提示文本",
+                "desc": "提示文本文本配置"
+              },
+              "spacingPart": {
+                "hidden": true
+              }
+            }
+          },
+          {
+            "name": "下拉图标",
+            "path": ["SwitchIcon"],
+            "props": {
+              "name": "pullIconClass",
+              "typeInTheme": "icon"
+            },
+            "description": {
+              "appearancePart": {
+                "hidden": true
+              },
+              "textPart": {
+                "text": "下拉图标",
+                "desc": "整体背景外观配置的区"
+              },
+              "spacingPart": {
+                "hidden": true
+              }
+            }
+          },
+          {
+            "name": "清空图标",
+            "path": ["ClearIcon"],
+            "props": {
+              "name": "clearIconClass",
+              "typeInTheme": "icon"
+            },
+            "description": {
+              "appearancePart": {
+                "hidden": true
+              },
+              "textPart": {
+                "text": "清除图标",
+                "desc": "整体背景外观配置的区"
+              },
+              "spacingPart": {
+                "hidden": true
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "选中标签",
+        "iconClass": "treeSelectTab",
+        "data": [
+          {
+            "name": "标签",
+            "path": ["TagWrap"],
+            "description": {
+              "appearancePart": {
+                "desc": "选中标签外观配置的区"
+              },
+              "textPart": {
+                "text": "文本",
+                "desc": "文本配置"
+              },
+              "spacingPart": {
+                "text": "选择框",
+                "desc": "选中标签内外边距配置"
+              }
+            }
+          },
+          {
+            "name": "标签删除按钮",
+            "path": ["TagIcon"],
+            "description": {
+              "appearancePart": {
+                "hidden": true
+              },
+              "textPart": {
+                "text": "删除图标",
+                "desc": "选择文本文本配置"
+              },
+              "spacingPart": {
+                "text": "选择框",
+                "desc": "选择框内外边距配置"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "菜单外盒",
+        "iconClass": "menubackground",
+        "data": [
+          {
+            "name": "树形控件外盒",
+            "path": ["Tree", "Container"],
+            "description": {
+              "appearancePart": {
+                "desc": "菜单外盒外观配置的区"
+              },
+              "textPart": {
+                "hidden": true
+              },
+              "spacingPart": {
+                "desc": "菜单外盒内外边距配置"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "树形控件",
+        "iconClass": "treeSelectCheckbox",
+        "children": [
+          {
+            "title": "展开项背景",
+            "iconClass": "treeChildElementBackground",
+            "data": [
+              {
+                "name": "展开项背景",
+                "path": ["Tree", "TreeItem", "SubTreeWrap"],
+                "description": {
+                  "appearancePart": {
+                    "text": "展开项背景",
+                    "desc": "展开项背景外观配置的区"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "展开项背景内外边距配置区"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "默认项文本",
+            "iconClass": "treeText",
+            "data": [
+              {
+                "name": "子选项文本",
+                "path": ["Tree", "TreeItem", "Text"],
+                "description": {
+                  "appearancePart": {
+                    "text": "子选项背景",
+                    "desc": "子选项背景外观配置的区"
+                  },
+                  "textPart": {
+                    "text": "子选项文本",
+                    "desc": "子选项文本配置"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "子选项背景内外边距配置区"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "选中项文本",
+            "iconClass": "treeSelectedText",
+            "data": [
+              {
+                "name": "选中项文本文本",
+                "path": ["Tree", "TreeItem", "SelectedText"],
+                "description": {
+                  "appearancePart": {
+                    "text": "选中项文本背景",
+                    "desc": "选中项文本背景外观配置的区"
+                  },
+                  "textPart": {
+                    "text": "选中项文本",
+                    "desc": "选中项文本配置"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "子选项背景内外边距配置区"
+                  }
+                }
+              },
+              {
+                "name": "父选项文本",
+                "path": ["Tree", "TreeItem", "SelectedParentText"],
+                "description": {
+                  "appearancePart": {
+                    "text": "父选项文本",
+                    "desc": "父选项文本外观配置的区"
+                  },
+                  "textPart": {
+                    "text": "父选项文本",
+                    "desc": "父选项文本配置"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "父选项文本内外边距配置区"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "前后缀图标",
+            "iconClass": "iconsearch",
+            "data": [
+              {
+                "name": "前缀图标",
+                "path": ["Tree", "TreeItem", "PrefixIcon"],
+                "props": [
+                  {
+                    "name": "data",
+                    "typeInTheme": "icon"
+                  }
+                ],
+                "description": {
+                  "textPart": {
+                    "text": "前缀图标",
+                    "desc": "前缀图标"
+                  },
+                  "spacingPart": {
+                    "hidden": true
+                  }
+                }
+              },
+              {
+                "name": "后缀图标",
+                "path": ["Tree", "TreeItem", "SuffixIcon"],
+                "props": [
+                  {
+                    "name": "data",
+                    "typeInTheme": "icon"
+                  }
+                ],
+                "description": {
+                  "textPart": {
+                    "text": "后缀图标",
+                    "desc": "后缀图标"
+                  },
+                  "spacingPart": {
+                    "hidden": true
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "展开图标",
+            "iconClass": "expandIcon",
+            "data": [
+              {
+                "name": "前缀图标",
+                "path": ["Tree", "TreeItem", "SwitchIcon"],
+                "props": [
+                  {
+                    "name": "switchIconNames",
+                    "typeInTheme": "icon"
+                  }
+                ],
+                "description": {
+                  "textPart": {
+                    "text": "图标",
+                    "desc": "图标"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "默认项底色",
+            "iconClass": "treeBackground",
+            "data": [
+              {
+                "name": "默认项底色",
+                "path": ["Tree", "TreeItem", "TreeItemWrap"],
+                "description": {
+                  "appearancePart": {
+                    "text": "默认项底色",
+                    "desc": "父选项文本外观配置的区"
+                  },
+                  "textPart": {
+                    "hidden": true
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "父选项文本内外边距配置区"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "选中项底色",
+            "iconClass": "treeSelectedBackground",
+            "data": [
+              {
+                "name": "选中项底色",
+                "path": ["Tree", "TreeItem", "SelectedTreeItemWrap"],
+                "description": {
+                  "appearancePart": {
+                    "text": "选中项底色",
+                    "desc": "父选项文本外观配置的区"
+                  },
+                  "textPart": {
+                    "hidden": true
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "父选项文本内外边距配置区"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "多选框",
+            "iconClass": "checkboxCheck",
+            "children": [
+              {
+                "title": "未选中",
+                "iconClass": "checkboxUncheck",
+                "data": [
+                  {
+                    "name": "未选中外框样式",
+                    "path": ["Tree", "TreeItem", "Checkbox", "CheckboxEdgeUnChecked"],
+                    "description": {
+                      "appearancePart": {
+                        "text": "外观",
+                        "desc": "面板中外观配置的区块显示文本"
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "选中",
+                "iconClass": "checkboxCheck",
+                "data": [
+                  {
+                    "name": "选中外框样式",
+                    "path": ["Tree", "TreeItem", "Checkbox", "CheckboxEdgeChecked"],
+                    "description": {
+                      "appearancePart": {
+                        "text": "外框",
+                        "desc": "面板中外观配置的区块显示文本"
+                      },
+                      "textPart": {
+                        "hidden": true
+                      }
+                    }
+                  },
+                  {
+                    "name": "选中内框样式",
+                    "path": ["TreeItem", "Checkbox", "CheckboxInnerChecked"],
+                    "description": {
+                      "appearancePart": {
+                        "text": "内框",
+                        "desc": "面板中外观配置的区块显示文本"
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "title": "半选中",
+                "iconClass": "checkboxSemiselective",
+                "data": [
+                  {
+                    "name": "半选外框样式",
+                    "path": ["Tree", "TreeItem", "Checkbox", "CheckboxEdgeIndeterminate"],
+                    "description": {
+                      "appearancePart": {
+                        "text": "外框",
+                        "desc": "面板中外观配置的区块显示文本"
+                      }
+                    }
+                  },
+                  {
+                    "name": "半选内框样式",
+                    "path": ["Tree", "TreeItem", "Checkbox", "CheckboxInnerIndeterminate"],
+                    "description": {
+                      "appearancePart": {
+                        "text": "内框",
+                        "desc": "面板中外观配置的区块显示文本"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "隐藏选中菜单",
+        "iconClass": "menu",
+        "children": [
+          {
+            "title": "整体面板",
+            "iconClass": "menubackground",
+            "data": [
+              {
+                "name": "选择框整体配置",
+                "path": ["Tree", "InputMenu", "Container"],
+                "description": {
+                  "appearancePart": {
+                    "text": "外框",
+                    "desc": "面板中外观配置的区"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "面板内外边距配置区"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "默认项",
+            "iconClass": "Default",
+            "data": [
+              {
+                "name": "项的外盒",
+                "path": ["Tree", "InputMenu", "MenuItem", "MenuItemWrap"],
+                "description": {
+                  "appearancePart": {
+                    "text": "选项背景",
+                    "desc": "项的外盒外观配置区"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "项的外盒内外边距配置区"
+                  }
+                }
+              },
+              {
+                "name": "文本框",
+                "path": ["Tree", "InputMenu", "MenuItem", "TextContainer"],
+                "description": {
+                  "textPart": {
+                    "text": "padding/margin",
+                    "desc": "文本框置内外边距配置区"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "选中项",
+            "iconClass": "Checked",
+            "data": [
+              {
+                "name": "选中项的外盒",
+                "path": ["Tree", "InputMenu", "MenuItem", "SelectedMenuItemWrap"],
+                "description": {
+                  "appearancePart": {
+                    "text": "选项背景",
+                    "desc": "文本配置区块的显示文本"
+                  },
+                  "textPart": {
+                    "text": "标题文本",
+                    "desc": "选中项辅助文本文本配置区"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "选中项内外边距配置区"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "title": "分割线",
+            "iconClass": "Dividingline",
+            "data": [
+              {
+                "name": "分割线",
+                "path": ["Tree", "InputMenu", "MenuItem", "Divider"],
+                "description": {
+                  "appearancePart": {
+                    "text": "分割线",
+                    "desc": "分割线外观配置"
+                  },
+                  "spacingPart": {
+                    "text": "padding/margin",
+                    "desc": "分割线内外边距配置区"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "校验失败",
+        "iconClass": "Verificationfailed",
+        "data": [
+          {
+            "name": "校验失败的展示框",
+            "path": ["ValidateErrorInput"],
+            "description": {
+              "appearancePart": {
+                "desc": "校验失败外观配置"
+              },
+              "textPart": {
+                "text": "",
+                "desc": "校验失败内外边距配置"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "title": "失败提示",
+        "iconClass": "Failureprompt",
+        "data": [
+          {
+            "name": "验证失败",
+            "path": ["ValidateErrorText"],
+            "props": [
+              {
+                "name": "help",
+                "typeInTheme": "text"
+              }
+            ],
+            "description": {
+              "appearancePart": {
+                "desc": "验证失败外观配置"
+              },
+              "textPart": {
+                "text": "提示文本",
+                "desc": "提示文本内外边距配置"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

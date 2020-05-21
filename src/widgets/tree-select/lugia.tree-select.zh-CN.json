@@ -17,11 +17,27 @@
       "desc": "校验信息显示类型",
       "propsDefaultValue": "top"
     },
+    "pullIconClass": {
+      "type": "string",
+      "desc": "下拉图标icon名称",
+      "propsDefaultValue": "lugia-icon-direction_down"
+    },
+    "clearIconClass": {
+      "type": "string",
+      "desc": "清除图标icon名称",
+      "propsDefaultValue": "lugia-icon-reminder_close"
+    },
     "size": {
       "type": "sizeType",
       "desc": "可配置三种尺寸大小的treeSelect",
       "propsDefaultValue": "default"
     },
+
+    "help": {
+      "type": "string",
+      "desc": "input校验提示信息"
+    },
+
     "data": {
       "type": "object[]",
       "desc": "生成选择项的数据",
@@ -606,6 +622,39 @@
                       "hover": [["background"], ["borderRadius"], ["border"]],
                       "disabled": [["background"], ["borderRadius"], ["border"]]
                     },
+                    "CheckboxEdgeIndeterminate": {
+                      "name": "半选外框样式",
+                      "desc": "半选状态外框样式",
+                      "normal": [
+                        ["background"],
+                        ["borderRadius"],
+                        ["border"],
+                        ["boxShadow"],
+                        ["width"],
+                        ["height"]
+                      ],
+                      "hover": [
+                        ["background"],
+                        ["borderRadius"],
+                        ["border"],
+                        ["width"],
+                        ["height"]
+                      ],
+                      "disabled": [
+                        ["background"],
+                        ["borderRadius"],
+                        ["border"],
+                        ["width"],
+                        ["height"]
+                      ]
+                    },
+                    "CheckboxInnerIndeterminate": {
+                      "name": "半选内框样式",
+                      "desc": "半选内框样式",
+                      "normal": [["color"], ["width"], ["height"]],
+                      "hover": [["color"], ["width"], ["height"]],
+                      "disabled": [["color"], ["width"], ["height"]]
+                    },
                     "CheckboxInnerChecked": {
                       "name": "Checkbox选中样式配置",
                       "desc": "Checkbox选中样式配置",
@@ -676,6 +725,53 @@
                         ["color"],
                         ["font"]
                       ]
+                    },
+                    "SelectedMenuItemWrap": {
+                      "name": "选中项的外盒",
+                      "desc": "配置选中项的外盒",
+                      "normal": [
+                        ["height"],
+                        ["color"],
+                        ["font"],
+                        ["fontSize"],
+                        ["cursor"],
+                        ["border"],
+                        ["borderRadius"],
+                        ["padding"],
+                        ["background"],
+                        ["opacity"],
+                        ["boxShadow"]
+                      ],
+                      "hover": [
+                        ["color"],
+                        ["font"],
+                        ["fontSize"],
+                        ["background"],
+                        ["opacity"],
+                        ["border"],
+                        ["borderRadius"],
+                        ["boxShadow"]
+                      ],
+                      "active": [
+                        ["color"],
+                        ["font"],
+                        ["fontSize"],
+                        ["background"],
+                        ["opacity"],
+                        ["border"],
+                        ["borderRadius"],
+                        ["boxShadow"]
+                      ],
+                      "disabled": []
+                    },
+
+                    "Divider": {
+                      "name": "分割线",
+                      "desc": "配置每项之间的分割线，当divided为true时生效",
+                      "normal": [["background"]],
+                      "hover": [],
+                      "active": [],
+                      "disabled": []
                     }
                   }
                 }
