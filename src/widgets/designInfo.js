@@ -42,7 +42,6 @@ import Upload from './upload';
 import Window from './window';
 import { load } from './css/theme-common-dict.js';
 export { load };
-
 export default [
   {
     meta: {
@@ -10463,9 +10462,14 @@ export default [
           ],
         },
         footer: { type: 'React.node', desc: '表格尾部' },
-        showHeader: { type: 'boolean', desc: '是否展示表头', defaultValue: true },
+        showHeader: { type: 'boolean', desc: '是否展示表头', propsDefaultValue: true },
         title: { type: 'React.node', desc: '表格标题' },
-        tableStyle: { type: 'tableStyleType', desc: '表格标题', defaultValue: 'bordered' },
+        tableStyle: { type: 'tableStyleType', desc: '表格标题', propsDefaultValue: 'bordered' },
+        rowKey: {
+          type: 'string',
+          desc: '表格行 key 的取值，可以是字符串或一个返回值是字符串的函数',
+          propsDefaultValue: 'key',
+        },
       },
       type: { tableStyleType: ['zebraStripe', 'linear', 'bordered'] },
       childrenWidget: [],
@@ -19617,6 +19621,7 @@ export default [
           desc: '指定 Transfer 面板选项 value 字段值',
           defaultValue: 'value',
         },
+        size: { type: 'SizeType', desc: '指定 Transfer 的尺寸', defaultValue: 'default' },
       },
       event: {
         onSelectChange: {
@@ -19651,6 +19656,7 @@ export default [
         },
       },
       type: {
+        SizeType: ['default', 'small', 'large'],
         TransferType: ['panel', 'tree'],
         DirectionType: ['left', 'right'],
         TransferStyle: {
@@ -20317,6 +20323,7 @@ export default [
           desc: '指定 Transfer 面板选项 value 字段值',
           defaultValue: 'value',
         },
+        size: { type: 'SizeType', desc: '指定 Transfer 的尺寸', defaultValue: 'default' },
       },
       event: {
         onSelectChange: {
@@ -20351,6 +20358,7 @@ export default [
         },
       },
       type: {
+        SizeType: ['default', 'small', 'large'],
         TransferType: ['panel', 'tree'],
         DirectionType: ['left', 'right'],
         TransferStyle: {
