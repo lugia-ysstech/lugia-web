@@ -194,6 +194,7 @@ export const FlexResBox = StaticComponent({
   css: css`
     flex: 1;
     position: relative;
+    overflow: hidden;
   `,
 });
 
@@ -212,6 +213,13 @@ export const TextContent = CSSComponent({
       color: get('disableTextColor'),
     },
   },
+  css: css`
+    width: 100%;
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  `,
   option: { disabled: true },
 });
 
