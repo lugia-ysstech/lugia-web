@@ -73,7 +73,9 @@ export default {
     },
   },
   '/collapse': {
-    render: async () => import('./widgets/collapse/demo').CollapseDemo,
+    render: async () => {
+      return (await import('./widgets/collapse/demo')).CollapseDemo;
+    },
   },
   '/datepicker': {
     render: async () => import('./widgets/date-picker/demo'),
@@ -92,7 +94,9 @@ export default {
     render: async () => import('./widgets/dropmenu/p-dropmenu'),
   },
   '/grid': {
-    render: async () => import('./widgets/grid/demo'),
+    render: async () => {
+      return (await import('./widgets/grid/demo')).RowDemo;
+    },
   },
   '/icon': {
     render: async () => import('./widgets/icon/demo'),
@@ -102,7 +106,9 @@ export default {
     render: async () => import('./widgets/input/demo'),
   },
   '/layout': {
-    render: async () => import('./widgets/layout/demo'),
+    render: async () => {
+      return (await import('./widgets/layout/demo')).LayoutDemo;
+    },
   },
 
   '/loading': {
