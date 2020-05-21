@@ -221,6 +221,10 @@ function getBelowMin(value, min) {
   return Number(value) <= min;
 }
 
+function handleEmpty(value, handleValue) {
+  return value === '' ? '' : handleValue;
+}
+
 class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
   static defaultProps = {
     disabled: false,
@@ -367,7 +371,6 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
         >
           <Icon
             lugiaConsumers={plusChannel.consumer}
-            onClick={this.handleClick('plus')}
             theme={iconTheme}
             viewClass={IconViewClass}
             disabled={disabled}
@@ -389,7 +392,6 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
           <Icon
             lugiaConsumers={minusChannel.consumer}
             singleTheme
-            onClick={this.handleClick('minus')}
             theme={iconTheme}
             viewClass={IconViewClass}
             disabled={disabled}
@@ -410,7 +412,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
   };
 
   render() {
-    const { value } = this.state;
+    const { value, stepHover } = this.state;
     const { createEventChannel, getPartOfThemeHocProps, getPartOfThemeProps } = this.props;
     const { theme: inputThemeProps } = getPartOfThemeHocProps('Input');
 
@@ -439,6 +441,7 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
     const arrowContainerChannel = createEventChannel([['hover'], ['focus']]);
     return (
       <Input
+        _focus={stepHover === 'plus' || stepHover === 'minus'}
         getInputRef={this.getInputRef}
         lugiaConsumers={arrowContainerChannel.consumer}
         theme={theInputTheme}
@@ -455,30 +458,38 @@ class NumberTextBox extends Component<NumberInputProps, NumberInputState> {
 
   onBlur = (event: UIEvent) => {
     const { onBlur, min, max } = this.props;
-    const { value } = this.state;
-    const finalValue = limit(value, [min, max]);
-    this.setValue(finalValue, event);
-    onBlur && onBlur(event);
+    const { value, stepHover } = this.state;
+    const finalValue = handleEmpty(value, limit(value, [min, max]));
+    if (stepHover !== 'plus' && stepHover !== 'minus') {
+      this.setValue(finalValue, event);
+      this.setState({ _innerFocus: false });
+      onBlur && onBlur(event);
+    }
   };
   onFocus = (event: UIEvent) => {
     const { onFocus } = this.props;
+    this.setState({ _innerFocus: true });
     onFocus && onFocus(event);
   };
 
   handleClick = (click: ClickType) => (event: Event) => {
     this.focusInput();
     this.calculateValue(click, event);
+    const { stepHover, _innerFocus } = this.state;
+    if ((stepHover === 'plus' || stepHover === 'minus') && !_innerFocus) {
+      this.onFocus();
+    }
   };
 
   handleChange = (event: Object) => {
     const value = event.newValue;
-    this.setValue(Number(checkNumber(value + '')), event);
+    const theValue = handleEmpty(value, Number(checkNumber(value + '')));
+    this.setValue(theValue, event);
   };
 
   setValue(value: number, event: any): void {
     const oldValue = this.state.value;
     const { disabled, onChange } = this.props;
-
     const param = { newValue: value, oldValue, event };
     if (hasValueProps(this.props) === false) {
       if (disabled) {
