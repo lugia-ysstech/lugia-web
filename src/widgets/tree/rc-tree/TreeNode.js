@@ -643,7 +643,10 @@ class TreeNode extends React.Component {
 
   getRenderSuffixItems = (itemObj: Object) => {
     const { renderSuffixItems } = this.props;
-    const items = renderSuffixItems(itemObj);
+    const items = renderSuffixItems(
+      itemObj,
+      this.props.dispatchEvent([['hover'], ['active']], 'f2c')
+    );
     const suffixItems = React.Children.map(items, item => {
       const { props } = item;
       return React.cloneElement(item, {
