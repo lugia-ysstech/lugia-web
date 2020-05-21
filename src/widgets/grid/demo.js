@@ -44,7 +44,7 @@ export const ColDemo = () => {
     </div>
   );
 };
-export const RowDemo = () => {
+export default () => {
   const data = [
     { span: 5, children: 'col-6' },
     { span: 5, children: 'col-6' },
