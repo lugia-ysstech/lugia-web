@@ -1,4 +1,4 @@
-//flow
+//@flow
 import React from 'react';
 import 'jest-styled-components';
 import Enzyme, { mount } from 'enzyme';
