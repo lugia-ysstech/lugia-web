@@ -51,11 +51,16 @@ class Table extends React.Component<TableProps, TableState> {
   };
 
   getData = data => {
-    const { columns = [], tableSize = 'middle', tableStyle = 'linear' } = this.props;
+    const {
+      columns = [],
+      tableSize = 'middle',
+      tableStyle = 'linear',
+      rowKey = 'key',
+    } = this.props;
     const trTheme = this.props.getPartOfThemeProps('Tr', { props: { tableStyle } });
     return data.map((item, index) => {
       return (
-        <Tr themeProps={trTheme}>
+        <Tr themeProps={trTheme} key={item[rowKey]}>
           {columns.map(column => {
             const { dataIndex, render, align, ellipsis, width } = column;
 
