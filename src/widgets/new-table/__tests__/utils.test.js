@@ -1,4 +1,4 @@
-//flow
+//@flow
 import 'jest-styled-components';
 import { isValued, isEqualArray } from '../utils';
 
