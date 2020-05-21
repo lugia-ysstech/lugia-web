@@ -54,16 +54,22 @@ const Container = CSSComponent({
 const ContainerTheme = CSSComponent({
   tag: 'div',
   className: 'Container',
+  normal: {
+    selectNames: [['width'], ['height'], ['boxShadow'], ['borderRadius'], ['border'], ['color']],
+  },
+  disabled: {
+    selectNames: [['border'], ['borderRadius'], ['cursor']],
+  },
   css: css`
     display: flex;
     flex-direction: row;
-    width: 346px;
+    width: 100%;
     height: 30px;
   `,
 });
 const bothButtonTheme = {
   height: 30,
-  borderRadius: getBorderRadius([4, 0], ['tr', 'br', 'tl', 'bl']),
+  borderRadius: getBorderRadius(0, ['tl', 'bl']),
 };
 const buttonTheme = {
   height: 30,
@@ -410,7 +416,7 @@ const AreaView = CSSComponent({
     ],
     defaultTheme: {
       color: darkGreyColor,
-      width: 300,
+      width: '100%',
       height: 150,
       fontSize: xxlFontSize,
       borderRadius: getBorderRadius(borderRadiusValue),
@@ -901,7 +907,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
       const { handleClickToUpload } = this;
       const { defaultText, disabled } = props;
       const inputDefaultTheme = deepMerge(
-        { themeConfig: { normal: { width: 346 } } },
+        { themeConfig: { normal: { width: '100%' } } },
         this.props.getPartOfThemeProps('Container', { props: { areaType } })
       );
       const inputTheme = {
@@ -940,7 +946,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
       const inputBorderTheme = {
         themeConfig: {
           normal: {
-            borderRadius: getBorderRadius(4, ['tl', 'bl']),
+            borderRadius: getBorderRadius(borderRadiusValue, ['tl', 'bl']),
             ...getDefaultStyle[classNameStatus],
           },
         },
@@ -949,13 +955,10 @@ class GetElement extends React.Component<DefProps, StateProps> {
         inputBorderTheme,
         this.props.getPartOfThemeProps('inputStyle', { props: { areaType } })
       );
-      const buttonBothTheme = { ...getButtonStyle(normalButtonTheme, classNameStatus) };
       const buttonThemeStyle =
-        classNameStatus === 'fail'
-          ? buttonBothTheme
-          : classNameStatus === 'done'
-          ? buttonBothTheme
-          : '';
+        classNameStatus === 'fail' || classNameStatus === 'done'
+          ? { ...getButtonStyle(normalButtonTheme, classNameStatus) }
+          : {};
 
       const resultButtonTheme = deepMerge(
         {
@@ -1030,7 +1033,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
       const newTheme = { viewClass: buttonViewClass, theme: resultButtonTheme };
       children = (
         <Button {...newTheme} type={'primary'} disabled={disabled} onClick={handleClickToUpload}>
-          {classNameStatus === 'fail' ? '上传失败' : uploadText}
+          {classNameStatus === 'fail' ? failTips : uploadText}
         </Button>
       );
     }
@@ -1044,7 +1047,7 @@ class GetElement extends React.Component<DefProps, StateProps> {
     if (areaType === 'picture') {
       const { size, disabled, fileListDone, multiple, previewUrl } = props;
       const { handleClickToUpload, handleClickToDelete, dropArea } = this;
-      const sizeFailTheme = classNameStatus === 'fail' ? { fontSize: 12, color: 'red' } : {};
+      const sizeFailTheme = classNameStatus === 'fail' ? { fontSize: 12, color: dangerColor } : {};
       const pictureThemeProps = this.props.getPartOfThemeProps('Container');
       const resultTheme = deepMerge(
         {
