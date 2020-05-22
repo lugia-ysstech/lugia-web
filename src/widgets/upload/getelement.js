@@ -906,10 +906,6 @@ class GetElement extends React.Component<DefProps, StateProps> {
     if (areaType === 'default') {
       const { handleClickToUpload } = this;
       const { defaultText, disabled } = props;
-      const inputDefaultTheme = deepMerge(
-        { themeConfig: { normal: { width: '100%' } } },
-        this.props.getPartOfThemeProps('Container', { props: { areaType } })
-      );
       const inputTheme = {
         themeConfig: {
           normal: {
@@ -918,7 +914,10 @@ class GetElement extends React.Component<DefProps, StateProps> {
           },
         },
       };
-      const uploadTheme = deepMerge(inputTheme, inputDefaultTheme);
+      const uploadTheme = deepMerge(
+        inputTheme,
+        this.props.getPartOfThemeProps('Container', { props: { areaType } })
+      );
       children = (
         <InputContent
           themeProps={uploadTheme}
