@@ -23,6 +23,7 @@ export const quickcall = (
       cancelButtonProps = {},
       okButtonProps = {},
       iconClass,
+      mask,
     } = props;
 
     const config: Object = {
@@ -37,6 +38,7 @@ export const quickcall = (
       cancelButtonProps,
       okButtonProps,
       iconClass,
+      mask,
     };
 
     const div = document.createElement('div');
