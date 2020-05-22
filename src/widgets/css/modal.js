@@ -184,7 +184,7 @@ export const ModalContent = CSSComponent({
     defaultTheme: {
       background: { color: '#fff' },
       boxShadow: getBoxShadow(`0 ${px2remcss(4)} ${px2remcss(12)} rgba(0, 0, 0, 0.15)`),
-      border: getBorder({ width: 0, style: 'solid', color: '#ccc' }),
+      border: getBorder({ width: 1, style: 'solid', color: '#ccc' }),
       borderRadius: getBorderRadius('$lugia-dict.@lugia/lugia-web.largeBorderRadiusValue'),
     },
     getThemeMeta(themeMeta: Object, themeProps: Object): Object {
