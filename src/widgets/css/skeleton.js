@@ -5,9 +5,9 @@
  */
 import CSSComponent, { css, keyframes } from '@lugia/theme-css-hoc';
 import { px2remcss } from '../css/units';
-
+import get from '../css/theme-common-dict';
 const superLightColor = '$lugia-dict.@lugia/lugia-web.superLightColor';
-const disableColor = '$lugia-dict.@lugia/lugia-web.superLightColor';
+
 const defaultPictureWidth = 180;
 const defaultPictureHeight = 128;
 
@@ -99,7 +99,7 @@ export const AnimationItem = CSSComponent({
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: ${disableColor};
+    background: ${get('disableColor')};
     opacity: 0.5;
   `,
 });
