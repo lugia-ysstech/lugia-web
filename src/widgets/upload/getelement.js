@@ -332,19 +332,17 @@ const Triangle = CSSComponent({
   `,
 });
 
-const getPictureStyle = {
-  fail: {
-    border: getBorder({ width: 1, style: 'dashed', color: dangerColor }),
-    color: dangerColor,
-  },
-  loading: {
-    border: getBorder({ width: 1, style: 'dashed', color: themeColor }),
-    color: themeColor,
-  },
-  done: {
-    border: getBorder({ width: 1, style: 'dashed', color: mediumGreyColor }),
-    color: darkGreyColor,
-  },
+const pictureStyle = {
+  default: { color: darkGreyColor, borderColor: mediumGreyColor },
+  fail: { color: dangerColor, borderColor: dangerColor },
+  loading: { color: themeColor, borderColor: themeColor },
+  done: { color: darkGreyColor, borderColor: mediumGreyColor },
+};
+const getPictureStyle = status => {
+  return {
+    border: getBorder({ width: 1, style: 'dashed', color: pictureStyle[status].borderColor }),
+    color: pictureStyle[status].color,
+  };
 };
 const PictureView = CSSComponent({
   tag: 'div',
@@ -1060,10 +1058,10 @@ class GetElement extends React.Component<DefProps, StateProps> {
         {
           themeConfig: {
             normal: {
-              ...getPictureStyle[classNameStatus],
+              ...getPictureStyle(classNameStatus),
             },
             hover: {
-              ...getPictureStyle[classNameStatus],
+              ...getPictureStyle(classNameStatus),
             },
           },
         },
@@ -1119,10 +1117,10 @@ class GetElement extends React.Component<DefProps, StateProps> {
         {
           themeConfig: {
             normal: {
-              ...getPictureStyle[classNameStatus],
+              ...getPictureStyle(classNameStatus),
             },
             hover: {
-              ...getPictureStyle[classNameStatus],
+              ...getPictureStyle(classNameStatus),
             },
           },
         },
