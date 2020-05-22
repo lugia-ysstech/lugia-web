@@ -18,15 +18,14 @@ const Container = CSSComponent({
   normal: {
     selectNames: [['width'], ['height'], ['boxShadow'], ['borderRadius'], ['border'], ['color']],
     getCSS(themeMeta: Object, themeProps: Object) {
-      const { areaTypeValue } = themeProps;
-      if (areaTypeValue === 'both' || areaTypeValue === 'default' || areaTypeValue === 'area') {
+      const {
+        propsConfig: { areaType },
+      } = themeProps;
+      if (areaType === 'picture' || areaType === 'button') {
         return `
-            display: block;
-        `;
-      }
-      return `
             display: inline-block;
         `;
+      }
     },
   },
   css: css`
@@ -154,7 +153,7 @@ class Upload extends React.Component<UploadProps, StateProps> {
 
   render() {
     const { themeProps, areaType } = this.props;
-    const areaTypeTheme = deepMerge(themeProps, { areaTypeValue: areaType });
+    const areaTypeTheme = deepMerge(themeProps, { propsConfig: { areaType } });
     return (
       <Container themeProps={areaTypeTheme}>
         <GetElement
