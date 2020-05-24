@@ -36,8 +36,10 @@ type TypeProps = {
   tips?: boolean,
   marks?: { [key: number]: string | Object },
   icons?: Array<Object>,
-  vertical?: boolean,
+  vertical?: boolean | void,
   getTheme: Function,
+  getPartOfThemeProps: Function,
+  getPartOfThemeHocProps: Function,
 };
 type TypeState = {
   changeBackground?: boolean,
@@ -165,7 +167,7 @@ class Slider extends Component<TypeProps, TypeState> {
   mousedown = (e: SyntheticMouseEvent<HTMLButtonElement>) => {
     e = e || window.event;
     const { pageX, pageY } = e;
-    const { vertical } = this.props;
+    const { vertical = false } = this.props;
     const { offsetLeft, offsetTop } = this.getOffset(vertical);
     this.offsetLeft = offsetLeft;
     this.offsetTop = offsetTop;
@@ -311,7 +313,16 @@ class Slider extends Component<TypeProps, TypeState> {
   };
   componentDidMount() {
     this.addDocListener();
+    this.initWidthOrDistance();
+  }
+  componentWillUnmount() {
+    document.removeEventListener('mousemove', this.onDocMouseMove);
+    document.removeEventListener('mouseup', this.onDocMouseUp);
+    window.removeEventListener('resize', this.onWindowChange);
+  }
+  initWidthOrDistance = () => {
     const { disabled, vertical = false } = this.props;
+    this.sliderFatherWidth = this.getSliderFatherWidth(vertical);
     const { dotWidths, dotHeights } = this.getOffset(vertical);
     this.setState(
       {
@@ -327,24 +338,27 @@ class Slider extends Component<TypeProps, TypeState> {
     if (disabled) {
       this.mousedown = null;
     }
-    this.getSliderFatherWidth(vertical);
-  }
+  };
   getSliderFatherWidth = (vertical: boolean) => {
     if (this.SliderBigBox.current && this.SliderBigBox.current.parentNode) {
       const { offsetWidth = 0, offsetHeight = 0 } = this.SliderBigBox.current.parentNode;
-      this.sliderFatherWidth = vertical ? offsetHeight : offsetWidth;
+      return vertical ? offsetHeight : offsetWidth;
     }
+    return 300;
   };
   addDocListener = () => {
     document.addEventListener('mousemove', this.onDocMouseMove);
     document.addEventListener('mouseup', this.onDocMouseUp);
+    window.addEventListener('resize', this.onWindowChange);
   };
 
-  componentWillUnmount() {
-    document.removeEventListener('mousemove', this.onDocMouseMove);
-    document.removeEventListener('mouseup', this.onDocMouseUp);
-  }
-
+  onWindowChange = () => {
+    const { vertical = false } = this.props;
+    const sliderFatherWidth = this.getSliderFatherWidth(vertical);
+    if (this.sliderFatherWidth !== sliderFatherWidth) {
+      this.initWidthOrDistance();
+    }
+  };
   onDocMouseMove = (e: Object) => {
     if (this.draging) {
       e = e || window.event;
@@ -495,9 +509,9 @@ class Slider extends Component<TypeProps, TypeState> {
           levelPaddings[index] = paddings[index];
         }
         const sliderIcons = 'Icons';
-
-        const { viewClass, theme } = this.props.getPartOfThemeHocProps(sliderIcons);
-        const themeProps = this.props.getPartOfThemeProps(sliderIcons);
+        const { getPartOfThemeHocProps, getPartOfThemeProps } = this.props;
+        const { viewClass, theme } = getPartOfThemeHocProps(sliderIcons);
+        const themeProps = getPartOfThemeProps(sliderIcons);
 
         const {
           themeConfig: { normal: { font: { size: fontObjSize } = {}, fontSize } = {} },
