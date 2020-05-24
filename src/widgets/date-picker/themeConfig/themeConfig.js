@@ -80,6 +80,7 @@ export function getWrapThemeProps(props, partName) {
   };
   const deafultFocusBorderColor = {
     border: getBorder(focusBorder),
+    boxShadow: deepMerge(disabledBoxShadow, { color: changeColor(normalColor, 0, 0, 40).rgba }),
   };
   const defaultDisabled = {
     background: {
@@ -87,7 +88,6 @@ export function getWrapThemeProps(props, partName) {
     },
     color: disableTextColor,
     border: getBorder(disabledBorder),
-    boxShadow: deepMerge(disabledBoxShadow, { color: changeColor(normalColor, 0, 0, 40).rgba }),
     borderRadius,
   };
 

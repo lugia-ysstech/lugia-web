@@ -18,7 +18,7 @@ export function getThemeUpdate() {
     normalColor: getTheme('themeColor'),
     hoverColor: getTheme('themeHoverColor'),
     activeColor: getTheme('themeActiveColor'),
-    disableColor: getTheme('themeDisabledColor'),
+    disableColor: getTheme('disableColor'),
     lightGreyColor: getTheme('lightGreyColor'),
     blackColor: getTheme('blackColor'),
     borderDisableColor: getTheme('borderDisableColor'),

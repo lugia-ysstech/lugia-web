@@ -33,7 +33,6 @@ type TypeProps = {
   readOnly?: boolean,
   size: boolean,
   placeholder: Array<string>,
-  theme: Object,
   mode?: string,
   errorTipTheme: Object,
   themeProps: Object,
