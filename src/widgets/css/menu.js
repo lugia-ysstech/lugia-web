@@ -39,7 +39,7 @@ const defaultCheckboxSize = 16;
 const largeCheckboxSize = 16;
 
 const fontSize = {
-  small: 14,
+  small: 12,
   default: 14,
   large: 14,
 };
@@ -189,12 +189,41 @@ export const getMenuThemeDefaultConfig = (sizeType: SizeType, themeName: string)
   return getThemeDefaultConfigFromSource(menuThemeDefaultConfig)(sizeType, themeName);
 };
 
-export const getMenuItemHeight = (size: SizeType) => {
-  return size === 'large'
-    ? LargeMenuItemHeight
-    : size === 'default'
-    ? BiggerMenuItemHeight
-    : DefaultMenuItemHeight;
+const getTextContainerHeightBySize = size => {
+  const sizeToDictName = {
+    small: 'smallSize',
+    default: 'normalSize',
+    large: 'largeSize',
+  };
+  return get(sizeToDictName[size]);
+};
+
+const getDesContainerHeightBySize = size => {
+  const sizeToDictName = {
+    small: 22,
+    default: 24,
+    large: 26,
+  };
+  return sizeToDictName[size];
+};
+
+export const getMenuItemHeight = (itemThemeConfig, props): number => {
+  const { size = 'default', isShowAuxiliaryText } = props;
+  const { MenuItemWrap = {}, DesContainer = {}, TextContainer = {} } = itemThemeConfig || {};
+  const {
+    normal: { height: desContainerHeight = getDesContainerHeightBySize(size) } = {},
+  } = DesContainer;
+  const {
+    normal: { height: textContainerHeight = getTextContainerHeightBySize(size) } = {},
+  } = TextContainer;
+  const {
+    normal: {
+      height: menuItemWrapHeight = isShowAuxiliaryText
+        ? Number(textContainerHeight) + Number(desContainerHeight)
+        : Number(textContainerHeight),
+    } = {},
+  } = MenuItemWrap;
+  return menuItemWrapHeight;
 };
 
 export const SwitchIconContainer = StaticComponent({
@@ -356,6 +385,7 @@ export const ItemWrap = CSSComponent({
     font-size: ${px2remcss(14)};
     display: flex;
     flex-direction: column;
+    justify-content: center;
 
     & > i {
       vertical-align: middle;
@@ -385,7 +415,7 @@ export const TextContainer = CSSComponent({
   tag: 'div',
   className: 'TextContainer',
   normal: {
-    selectNames: [['padding'], ['lineHeight']],
+    selectNames: [['padding'], ['lineHeight'], ['height']],
   },
   hover: {
     selectNames: [],
@@ -400,7 +430,6 @@ export const TextContainer = CSSComponent({
     align-items: center;
     box-sizing: border-box;
     overflow: hidden;
-    flex: 1;
     & i {
       vertical-align: middle;
     }
@@ -411,7 +440,7 @@ export const DesContainer = CSSComponent({
   tag: 'div',
   className: 'DesContainer',
   normal: {
-    selectNames: [['color'], ['font'], ['fontSize'], ['padding'], ['lineHeight']],
+    selectNames: [['color'], ['font'], ['fontSize'], ['padding'], ['lineHeight'], ['height']],
     getCSS(themeMeta, themeConfig) {
       const {
         propsConfig: { isCheckbox },
@@ -434,7 +463,6 @@ export const DesContainer = CSSComponent({
     flex: 1;
     color: ${get('mediumGreyColor')};
     display: flex;
-    align-items: center;
     font-size: ${px2remcss(12)};
     transition: all 0.3s;
     font-weight: 500;

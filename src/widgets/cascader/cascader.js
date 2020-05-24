@@ -346,8 +346,11 @@ export default class Cascader extends React.Component<CascaderProps, CascaderSta
   }
 
   componentDidUpdate() {
-    if (this.menu && this.menu.current) {
-      this.menu.current.innerMenu.current.getThemeTarget().scrollerTarget.current.forceAlign();
+    const { current: menuCurrent } = this.menu || {};
+    const { innerMenu } =
+      menuCurrent && menuCurrent.getThemeTarget ? menuCurrent.getThemeTarget() : {};
+    if (menuCurrent && innerMenu) {
+      innerMenu.current.getThemeTarget().scrollerTarget.current.forceAlign();
     }
   }
 }

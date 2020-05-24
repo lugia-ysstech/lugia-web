@@ -174,7 +174,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
       themeStyle,
       divided,
       renderSuffixItems,
-      size = 'small',
+      size = 'large',
     } = this.props;
     const { popupVisible, value, expandedPath } = this.state;
     return (
@@ -379,7 +379,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     return (
       <Menu
         action={'hover'}
-        size={'small'}
+        size={'large'}
         {...this.getTabsMenuTheme(themeStyle)}
         autoHeight={autoHeight}
         data={children}
@@ -527,6 +527,7 @@ export default class MenuTree extends React.Component<NavMenuProps, NavMenuState
     return (
       <MenuWrap>
         <Tree
+          size={'large'}
           {...treeTheme}
           switchIconNames={switchIconNames}
           expandAll={inlineExpandAll}

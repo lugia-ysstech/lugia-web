@@ -5,7 +5,9 @@
  */
 import * as React from 'react';
 import Menu from './index';
+import Widget from '../consts/index';
 import styled from 'styled-components';
+import Icon from '../icon';
 const RowWrap = styled.div`
   display: flex;
   padding: 10px;
@@ -64,17 +66,17 @@ const data = [
     text: '皮卡丘',
     disabled: true,
     icon: 'lugia-icon-financial_excle',
-    des: '市场',
+    xxx: '市场',
   },
   {
     value: '妙蛙种子',
     text: '妙蛙种子',
     disabled: true,
     icon: 'lugia-icon-financial_excle',
-    des: '市场',
+    xxx: '市场',
   },
-  { value: '小火龙', text: '小火龙', icon: 'lugia-icon-financial_markdown', des: '市场' },
-  { value: '杰尼龟', text: '杰尼龟', icon: 'lugia-icon-direction_play_circle', des: '市场' },
+  { value: '小火龙', text: '小火龙', icon: 'lugia-icon-financial_markdown', xxx: '市场' },
+  { value: '杰尼龟', text: '杰尼龟', icon: 'lugia-icon-direction_play_circle', xxx: '市场' },
   { value: '绿毛虫', text: '绿毛虫', icon: 'lugia-icon-financial_pdf' },
   { value: '独角虫', text: '独角虫', icon: 'lugia-icon-financial_warnings' },
   { value: '波波', text: '波波', icon: 'lugia-icon-financial_transfer_i' },
@@ -391,6 +393,21 @@ const items = [];
 for (let i = 0; i < 20; i++) {
   items.push({ text: i, value: i, disabled: false });
 }
+
+const theme = {
+  [Widget.Menu]: {
+    MenuItem: {
+      TextContainer: { normal: { height: 40 } },
+      DesContainer: { normal: { height: 30, padding: { left: 20, top: 10 } } },
+    },
+    SubMenu: {
+      MenuItem: {
+        TextContainer: { normal: { height: 30 } },
+        DesContainer: { normal: { height: 40 } },
+      },
+    },
+  },
+};
 export default class extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
@@ -410,6 +427,52 @@ export default class extends React.Component<any, any> {
   onExpandPathChange = expandedPath => {
     this.setState({ expandedPath });
   };
+  renderSuffixItems(item) {
+    const iconTheme = {
+      [Widget.Icon]: {
+        Icon: {
+          normal: {
+            margin: {
+              left: 5,
+              right: 5,
+              top: 0,
+              bottom: 0,
+            },
+            fontSize: 14,
+            opacity: 0,
+            getCSS: () => {
+              return `
+              transition: all 0.3s
+              `;
+            },
+          },
+          hover: {
+            color: 'red',
+            opacity: 1,
+          },
+        },
+      },
+    };
+
+    return [
+      <Icon
+        theme={iconTheme}
+        iconClass={'lugia-icon-financial_editor'}
+        onClick={e => {
+          e.stopPropagation();
+          console.log('first Icon');
+        }}
+      />,
+      <Icon
+        theme={iconTheme}
+        iconClass={'lugia-icon-reminder_close_circle_o'}
+        onClick={e => {
+          e.stopPropagation();
+          console.log('second Icon');
+        }}
+      />,
+    ];
+  }
 
   render() {
     const {
@@ -423,11 +486,12 @@ export default class extends React.Component<any, any> {
       expandedPathLarge,
     } = this.state;
     return [
-      <H1>多级菜单 </H1>,
+      // <H1>多级菜单 </H1>,
       <RowWrap>
         <RowWrapItem>
           <H1> size={'small'} 多级菜单 </H1>
           <Menu
+            theme={theme}
             separator={'/'}
             size={'small'}
             checkedCSS={'background'}
@@ -435,6 +499,7 @@ export default class extends React.Component<any, any> {
             selectedKeys={selectedKeysSmall}
             data={multiLevelMenuSmallData}
             onClick={this.onClickSmall}
+            isShowAuxiliaryText
             offsetY={0}
             autoHeight={true}
           />
@@ -449,6 +514,7 @@ export default class extends React.Component<any, any> {
             expandedPath={expandedPathDefault}
             selectedKeys={selectedKeysDefault}
             data={multiLevelMenuDefaultData}
+            isShowAuxiliaryText
             offsetY={0}
             onClick={this.onClickDefault}
             autoHeight={true}
@@ -459,9 +525,11 @@ export default class extends React.Component<any, any> {
           <Menu
             separator={'/'}
             size={'large'}
+            checkedCSS={'background'}
             expandedPath={expandedPathLarge}
             selectedKeys={selectedKeysLarge}
             data={multiLevelMenuLargeData}
+            isShowAuxiliaryText
             offsetY={0}
             onClick={this.onClickLager}
             autoHeight={true}
@@ -487,30 +555,71 @@ export default class extends React.Component<any, any> {
       <RowWrap>
         <RowWrapItem>
           <H1>size={'small'} </H1>
-          <Menu size={'small'} checkedCSS="background" autoHeight data={data} />
+          <Menu
+            size={'small'}
+            checkedCSS="background"
+            autoHeight
+            data={data}
+            renderSuffixItems={this.renderSuffixItems}
+          />
         </RowWrapItem>
         <RowWrapItem>
           <H1>size={'default'} </H1>
-          <Menu size={'default'} checkedCSS="background" autoHeight data={objData} />
+          <Menu
+            size={'default'}
+            checkedCSS="background"
+            autoHeight
+            data={objData}
+            renderSuffixItems={this.renderSuffixItems}
+          />
         </RowWrapItem>
         <RowWrapItem>
           <H1>size={'large'} </H1>
-          <Menu size={'large'} checkedCSS="background" autoHeight data={objData} />
+          <Menu
+            size={'large'}
+            checkedCSS="background"
+            autoHeight
+            data={objData}
+            renderSuffixItems={this.renderSuffixItems}
+          />
         </RowWrapItem>
       </RowWrap>,
       <H1>menu checkedCSS="checkbox"</H1>,
       <RowWrap>
         <RowWrapItem>
           <H1>size={'small'} </H1>
-          <Menu size={'small'} checkedCSS="checkbox" autoHeight data={data} />
+          <Menu
+            size={'small'}
+            isShowAuxiliaryText
+            auxiliaryTextField={'xxx'}
+            autoHeight
+            theme={theme}
+            checkedCSS="checkbox"
+            data={data}
+            renderSuffixItems={this.renderSuffixItems}
+          />
         </RowWrapItem>
         <RowWrapItem>
           <H1>size={'default'} </H1>
-          <Menu size={'default'} checkedCSS="checkbox" autoHeight data={objData} />
+          <Menu
+            size={'default'}
+            theme={theme}
+            autoHeight
+            checkedCSS="checkbox"
+            data={objData}
+            renderSuffixItems={this.renderSuffixItems}
+          />
         </RowWrapItem>
         <RowWrapItem>
           <H1>size={'large'} </H1>
-          <Menu size={'large'} checkedCSS="checkbox" autoHeight data={objData} />
+          <Menu
+            size={'large'}
+            autoHeight
+            theme={theme}
+            checkedCSS="checkbox"
+            data={objData}
+            renderSuffixItems={this.renderSuffixItems}
+          />
         </RowWrapItem>
       </RowWrap>,
     ];

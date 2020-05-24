@@ -779,13 +779,6 @@ class Select extends React.Component<SelectProps, SelectState> {
         },
         hover: {},
       },
-      MenuItem: {
-        MenuItemWrap: {
-          normal: {
-            height: 32,
-          },
-        },
-      },
     };
     return this.mergeTheme('Menu', defaultMenuTheme);
   };
