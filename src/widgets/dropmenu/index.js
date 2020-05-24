@@ -118,7 +118,7 @@ class DropMenu extends React.Component<DropMenuProps, DropMenuState> {
       } = this.props;
       popup = (
         <Menu
-          size={'small'}
+          size={'default'}
           data={data}
           autoHeight={autoHeight}
           defualtHeight={defualtHeight}

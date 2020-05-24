@@ -32,6 +32,9 @@ const blackColor = '$lugia-dict.@lugia/lugia-web.blackColor';
 const defaultColor = '$lugia-dict.@lugia/lugia-web.defaultColor';
 const darkGreyColor = '$lugia-dict.@lugia/lugia-web.darkGreyColor';
 const disableTextColor = '$lugia-dict.@lugia/lugia-web.disableTextColor';
+const smallSize = '$lugia-dict.@lugia/lugia-web.smallSize';
+const normalSize = '$lugia-dict.@lugia/lugia-web.normalSize';
+const largeSize = '$lugia-dict.@lugia/lugia-web.largeSize';
 
 const Utils = require('@lugia/type-utils');
 const { ObjectUtils } = Utils;
@@ -188,7 +191,7 @@ class MenuItem extends React.Component<MenuItemProps> {
     if (hoverState && !checked) {
       theme[viewClass].normal = theme[viewClass].hover;
     } else {
-      theme[viewClass].normal = theme[viewClass].normal;
+      theme[viewClass].normal = theme[viewClass].normal || {};
     }
     return {
       viewClass,
@@ -248,7 +251,7 @@ class MenuItem extends React.Component<MenuItemProps> {
       menuItemHeight = DefaultMenuItemHeight,
     } = this.props;
     const hoverColor =
-      checkedCSS === 'background' ? defaultColor : changeColor(get('themeColor'), 0, 0, 10).rgba;
+      checkedCSS === 'background' ? 'transparent' : changeColor(get('themeColor'), 0, 0, 10).rgba;
     const hoverTheme = {
       color: themeColor,
       background: { color: hoverColor },
@@ -362,6 +365,23 @@ class MenuItem extends React.Component<MenuItemProps> {
     return desContainerTheme;
   };
 
+  getTextContainerThemeProps = () => {
+    const { getPartOfThemeProps, size = 'default' } = this.props;
+    const sizeToDictName = {
+      small: smallSize,
+      default: normalSize,
+      large: largeSize,
+    };
+    const defaultThemeConfig = {
+      themeConfig: {
+        normal: {
+          height: sizeToDictName[size],
+        },
+      },
+    };
+    return deepMerge(defaultThemeConfig, getPartOfThemeProps('TextContainer'));
+  };
+
   render() {
     const {
       children,
@@ -377,6 +397,8 @@ class MenuItem extends React.Component<MenuItemProps> {
       getPartOfThemeProps,
       renderSuffixItems,
       dispatchEvent,
+      isShowAuxiliaryText,
+      auxiliaryTextField,
     } = this.props;
 
     let title = '';
@@ -389,7 +411,6 @@ class MenuItem extends React.Component<MenuItemProps> {
     const themeProps = this.getMenuItemThemeProps(checked);
 
     const DividerThemeProps = getPartOfThemeProps('Divider');
-    const { des } = item;
     const target = (
       <ItemWrap
         onClick={onClick}
@@ -403,7 +424,7 @@ class MenuItem extends React.Component<MenuItemProps> {
         {divided && !isFirst ? <DividerWrap themeProps={DividerThemeProps} /> : null}
         {isCheckbox ? (
           <TextContainer
-            themeProps={getPartOfThemeProps('TextContainer')}
+            themeProps={this.getTextContainerThemeProps('TextContainer')}
             {...dispatchEvent(['hover'], 'f2c')}
           >
             <CheckBox
@@ -422,7 +443,7 @@ class MenuItem extends React.Component<MenuItemProps> {
           </TextContainer>
         ) : (
           <TextContainer
-            themeProps={getPartOfThemeProps('TextContainer')}
+            themeProps={this.getTextContainerThemeProps('TextContainer')}
             {...dispatchEvent(['hover'], 'f2c')}
           >
             {this.getPreIcon()}
@@ -433,12 +454,12 @@ class MenuItem extends React.Component<MenuItemProps> {
           </TextContainer>
         )}
 
-        {des ? (
+        {isShowAuxiliaryText ? (
           <DesContainer
             {...this.props.dispatchEvent([['hover']], 'f2c')}
             themeProps={this.getDesContainer()}
           >
-            {des.toString()}
+            {item[auxiliaryTextField] && item[auxiliaryTextField].toString()}
           </DesContainer>
         ) : null}
         {renderSuffixItems ? this.getRenderSuffixItems(item) : null}

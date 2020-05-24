@@ -95,6 +95,8 @@ export type MenuProps = {
   getPartOfThemeConfig: Function,
   getPartOfThemeHocProps: Function,
   defaultHeight?: number,
+  isShowAuxiliaryText?: boolean,
+  auxiliaryTextField?: string,
 };
 const EmptyData = [];
 
@@ -124,6 +126,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
     getTheme: () => {
       return {};
     },
+    isShowAuxiliaryText: false,
+    auxiliaryTextField: 'des',
   };
   static displayName = Widget.Menu;
   isSelect: Function;
@@ -277,6 +281,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
           marginBottom,
           renderSuffixItems,
           size,
+          isShowAuxiliaryText,
+          auxiliaryTextField,
         } = this.props;
 
         const { [valueField]: key, [displayField]: value, disabled, icon, icons, divided } = obj;
@@ -291,6 +297,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
           expandedPath.length === 0 ? [] : expandedPath[0].split(separator);
         const result = (
           <Item
+            isShowAuxiliaryText={isShowAuxiliaryText}
+            auxiliaryTextField={auxiliaryTextField}
             key={key}
             item={obj}
             disabled={disabled}
@@ -604,6 +612,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
       divided,
       renderSuffixItems,
       size,
+      isShowAuxiliaryText = false,
+      auxiliaryTextField = 'des',
     } = this.props;
 
     const { selectedKeys, expandedPath } = this.state;
@@ -650,6 +660,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
         selectedKeysData={this.getSelectedKeysData()}
         expandedPathInProps={this.getExpandedPathInProps()}
         renderSuffixItems={renderSuffixItems}
+        isShowAuxiliaryText={isShowAuxiliaryText}
+        auxiliaryTextField={auxiliaryTextField}
       />
     );
   }
@@ -872,9 +884,8 @@ SubMenu = ThemeHoc(
 
     render() {
       const { props } = this;
-      const { SubMenu } = props.getPartOfThemeConfig('Szf');
-      const { size = 'default' } = props;
-      const menuItemHeight = getMenuItemHeight(size);
+      const { SubMenu, MenuItem } = props.getPartOfThemeConfig('Szf');
+      const menuItemHeight = getMenuItemHeight(MenuItem, props);
 
       const { getPartOfThemeHocProps } = props;
       let { viewClass, theme } = getPartOfThemeHocProps('Szf');
