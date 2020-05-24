@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import { getBackground, FontSize } from '../../css/input';
+import { FontSize } from '../../css/input';
 import { px2remcss } from '../../css/units';
 import CSSComponent from '@lugia/theme-css-hoc';
 import { getThemeUpdate } from './utils';
@@ -34,7 +34,6 @@ export const RangeInputWrap = CSSComponent({
   css: css`
     font-size: ${FontSize}rem;
     display: inline-block;
-    ${props => getBackground(props)};
     transition: all 0.3s;
     overflow: hidden;
   `,
