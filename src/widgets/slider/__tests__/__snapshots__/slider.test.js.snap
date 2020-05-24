@@ -21,7 +21,7 @@ exports[`default Wrapper 1`] = `
   font-size: 1.4rem;
   display: inline-block;
   vertical-align: top;
-  padding: 7px 36px 7px 38px;
+  padding: 7px 34px 7px 36px;
 }
 
 .c36 {
@@ -32,12 +32,12 @@ exports[`default Wrapper 1`] = `
   padding: 8px 5px 8px 5px;
 }
 
-.c65 {
+.c61 {
   box-sizing: border-box;
   font-size: 1.4rem;
   display: inline-block;
   vertical-align: top;
-  padding: 36px 6px 36px 6px;
+  padding: 34px 6px 34px 6px;
 }
 
 .c2 {
@@ -241,22 +241,22 @@ exports[`default Wrapper 1`] = `
   transform: translateX(-50%);
 }
 
-.c57 {
+.c54 {
   border-radius: 0.6rem;
   position: absolute;
   -webkit-transition: 0.3s;
   transition: 0.3s;
   width: 0.6rem;
-  height: 14.285714285714285%;
+  height: 20%;
   width: 0.6rem;
   left: 50%;
-  bottom: 14.285714285714285%;
+  bottom: 20%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
 }
 
-.c60 {
+.c56 {
   border-radius: 0.6rem;
   position: absolute;
   -webkit-transition: 0.3s;
@@ -275,7 +275,7 @@ exports[`default Wrapper 1`] = `
 .c4 {
   border-radius: 50%;
   position: absolute;
-  left: calc(116.66666666666666% + 0rem);
+  left: calc(63.84976525821595% + 0rem);
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -289,7 +289,7 @@ exports[`default Wrapper 1`] = `
 .c6 {
   border-radius: 50%;
   position: absolute;
-  left: calc(50% + 0rem);
+  left: calc(-2.8169014084507045% + 0rem);
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -303,7 +303,7 @@ exports[`default Wrapper 1`] = `
 .c8 {
   border-radius: 50%;
   position: absolute;
-  left: calc(100% + 0rem);
+  left: calc(47.183098591549296% + 0rem);
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -317,7 +317,7 @@ exports[`default Wrapper 1`] = `
 .c10 {
   border-radius: 50%;
   position: absolute;
-  left: calc(66.66666666666666% + 0rem);
+  left: calc(13.84976525821596% + 0rem);
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -331,7 +331,7 @@ exports[`default Wrapper 1`] = `
 .c12 {
   border-radius: 50%;
   position: absolute;
-  left: calc(150% + 0rem);
+  left: calc(97.1830985915493% + 0rem);
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -345,7 +345,7 @@ exports[`default Wrapper 1`] = `
 .c14 {
   border-radius: 50%;
   position: absolute;
-  left: calc(116.66666666666666% + 0rem);
+  left: calc(63.84976525821595% + 0rem);
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -354,7 +354,7 @@ exports[`default Wrapper 1`] = `
   z-index: 2;
   -webkit-transition: 0.3s;
   transition: 0.3s;
-  left: calc(116.66666666666666% + 0rem);
+  left: calc(63.84976525821595% + 0rem);
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -368,7 +368,7 @@ exports[`default Wrapper 1`] = `
 .c16 {
   border-radius: 50%;
   position: absolute;
-  left: calc(126.66666666666666% + 0rem);
+  left: calc(73.84976525821597% + 0rem);
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -382,7 +382,7 @@ exports[`default Wrapper 1`] = `
 .c22 {
   border-radius: 50%;
   position: absolute;
-  left: calc(90% + 0rem);
+  left: calc(37.183098591549296% + 0rem);
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -396,7 +396,21 @@ exports[`default Wrapper 1`] = `
 .c27 {
   border-radius: 50%;
   position: absolute;
-  left: calc(130% + 0rem);
+  left: calc(77.18309859154931% + 0rem);
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  z-index: 2;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.c35 {
+  border-radius: 50%;
+  position: absolute;
+  left: calc(-3.4782608695652173% + 0rem);
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -411,7 +425,7 @@ exports[`default Wrapper 1`] = `
   border-radius: 50%;
   position: absolute;
   left: 50%;
-  bottom: calc(50% + 0rem);
+  bottom: calc(-2.8169014084507045% + 0rem);
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -425,7 +439,7 @@ exports[`default Wrapper 1`] = `
   border-radius: 50%;
   position: absolute;
   left: 50%;
-  bottom: calc(83.33333333333333% + 0rem);
+  bottom: calc(30.516431924882625% + 0rem);
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -439,7 +453,7 @@ exports[`default Wrapper 1`] = `
   border-radius: 50%;
   position: absolute;
   left: 50%;
-  bottom: calc(116.66666666666666% + 0rem);
+  bottom: calc(63.84976525821595% + 0rem);
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -453,7 +467,7 @@ exports[`default Wrapper 1`] = `
   border-radius: 50%;
   position: absolute;
   left: 50%;
-  bottom: calc(70% + 0rem);
+  bottom: calc(17.1830985915493% + 0rem);
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -463,11 +477,11 @@ exports[`default Wrapper 1`] = `
   transition: 0.3s;
 }
 
-.c58 {
+.c55 {
   border-radius: 50%;
   position: absolute;
   left: 50%;
-  bottom: calc(64.28571428571428% + 0rem);
+  bottom: calc(37.183098591549296% + 0rem);
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -477,11 +491,20 @@ exports[`default Wrapper 1`] = `
   transition: 0.3s;
 }
 
-.c59 {
+.c57 {
   border-radius: 50%;
   position: absolute;
   left: 50%;
-  bottom: calc(78.57142857142857% + 0rem);
+  bottom: calc(13.84976525821596% + 0rem);
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  z-index: 2;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  left: 50%;
+  bottom: calc(13.84976525821596% + 0rem);
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -491,48 +514,11 @@ exports[`default Wrapper 1`] = `
   transition: 0.3s;
 }
 
-.c61 {
+.c64 {
   border-radius: 50%;
   position: absolute;
   left: 50%;
-  bottom: calc(66.66666666666666% + 0rem);
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  z-index: 2;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  left: 50%;
-  bottom: calc(66.66666666666666% + 0rem);
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  z-index: 2;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-
-.c35 {
-  border-radius: 50%;
-  position: absolute;
-  left: calc(10.81081081081081% + 0rem);
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  z-index: 2;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-
-.c68 {
-  border-radius: 50%;
-  position: absolute;
-  left: 50%;
-  bottom: calc(11.11111111111111% + 0rem);
+  bottom: calc(-3.4482758620689653% + 0rem);
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -547,7 +533,7 @@ exports[`default Wrapper 1`] = `
   position: absolute;
   z-index: 1;
   font-size: 1.4rem;
-  left: 18.75%;
+  left: -1.056338028169014%;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -557,8 +543,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: transparent;
   background: none;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c17::before {
@@ -585,7 +571,7 @@ exports[`default Wrapper 1`] = `
   position: absolute;
   z-index: 1;
   font-size: 1.4rem;
-  left: 58.75%;
+  left: 38.94366197183099%;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -595,8 +581,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: #cccccc;
   background: #ffffff;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c18::before {
@@ -623,7 +609,7 @@ exports[`default Wrapper 1`] = `
   position: absolute;
   z-index: 1;
   font-size: 1.4rem;
-  left: 98.75%;
+  left: 78.94366197183099%;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -633,8 +619,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: #cccccc;
   background: #ffffff;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c19::before {
@@ -661,7 +647,7 @@ exports[`default Wrapper 1`] = `
   position: absolute;
   z-index: 1;
   font-size: 1.4rem;
-  left: 118.75%;
+  left: 98.94366197183099%;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -671,8 +657,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: transparent;
   background: none;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c20::before {
@@ -699,7 +685,7 @@ exports[`default Wrapper 1`] = `
   position: absolute;
   z-index: 1;
   font-size: 1.4rem;
-  left: 18.75%;
+  left: -1.056338028169014%;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -709,8 +695,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: transparent;
   background: none;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c23::before {
@@ -737,7 +723,7 @@ exports[`default Wrapper 1`] = `
   position: absolute;
   z-index: 1;
   font-size: 1.4rem;
-  left: 58.75%;
+  left: 38.94366197183099%;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -747,8 +733,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: transparent;
   background: #ffffff;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c24::before {
@@ -775,7 +761,7 @@ exports[`default Wrapper 1`] = `
   position: absolute;
   z-index: 1;
   font-size: 1.4rem;
-  left: 98.75%;
+  left: 78.94366197183099%;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -785,8 +771,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: transparent;
   background: #ffffff;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c25::before {
@@ -813,7 +799,7 @@ exports[`default Wrapper 1`] = `
   position: absolute;
   z-index: 1;
   font-size: 1.4rem;
-  left: 18.75%;
+  left: -1.056338028169014%;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -823,8 +809,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: transparent;
   background: none;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c28::before {
@@ -851,7 +837,7 @@ exports[`default Wrapper 1`] = `
   position: absolute;
   z-index: 1;
   font-size: 1.4rem;
-  left: 52.08333333333333%;
+  left: 32.27699530516431%;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -861,8 +847,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: #cccccc;
   background: #ffffff;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c29::before {
@@ -889,7 +875,7 @@ exports[`default Wrapper 1`] = `
   position: absolute;
   z-index: 1;
   font-size: 1.4rem;
-  left: 118.75%;
+  left: 98.94366197183099%;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -899,8 +885,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: transparent;
   background: none;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c30::before {
@@ -928,7 +914,7 @@ exports[`default Wrapper 1`] = `
   z-index: 1;
   font-size: 1.4rem;
   left: 50%;
-  bottom: 18.75%;
+  bottom: -1.056338028169014%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -937,8 +923,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: transparent;
   background: none;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c43::before {
@@ -966,7 +952,7 @@ exports[`default Wrapper 1`] = `
   z-index: 1;
   font-size: 1.4rem;
   left: 50%;
-  bottom: 38.75%;
+  bottom: 18.943661971830988%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -975,8 +961,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: #cccccc;
   background: #ffffff;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c44::before {
@@ -1004,7 +990,7 @@ exports[`default Wrapper 1`] = `
   z-index: 1;
   font-size: 1.4rem;
   left: 50%;
-  bottom: 58.75%;
+  bottom: 38.94366197183099%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -1013,8 +999,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: #cccccc;
   background: #ffffff;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c45::before {
@@ -1042,7 +1028,7 @@ exports[`default Wrapper 1`] = `
   z-index: 1;
   font-size: 1.4rem;
   left: 50%;
-  bottom: 98.75%;
+  bottom: 78.94366197183099%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -1051,8 +1037,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: #cccccc;
   background: #ffffff;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c46::before {
@@ -1080,7 +1066,7 @@ exports[`default Wrapper 1`] = `
   z-index: 1;
   font-size: 1.4rem;
   left: 50%;
-  bottom: 118.75%;
+  bottom: 98.94366197183099%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -1089,8 +1075,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: transparent;
   background: none;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c47::before {
@@ -1118,7 +1104,7 @@ exports[`default Wrapper 1`] = `
   z-index: 1;
   font-size: 1.4rem;
   left: 50%;
-  bottom: 18.75%;
+  bottom: -1.056338028169014%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -1127,8 +1113,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: transparent;
   background: none;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c50::before {
@@ -1156,7 +1142,7 @@ exports[`default Wrapper 1`] = `
   z-index: 1;
   font-size: 1.4rem;
   left: 50%;
-  bottom: 33.035714285714285%;
+  bottom: 18.943661971830988%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -1165,8 +1151,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: transparent;
   background: #ffffff;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c51::before {
@@ -1194,7 +1180,7 @@ exports[`default Wrapper 1`] = `
   z-index: 1;
   font-size: 1.4rem;
   left: 50%;
-  bottom: 47.32142857142857%;
+  bottom: 38.94366197183099%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -1203,8 +1189,8 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: transparent;
   background: #ffffff;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .c52::before {
@@ -1232,121 +1218,7 @@ exports[`default Wrapper 1`] = `
   z-index: 1;
   font-size: 1.4rem;
   left: 50%;
-  bottom: 75.89285714285714%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  border-width: 0.1rem;
-  border-style: solid;
-  border-color: #cccccc;
-  background: #ffffff;
-  width: -1.6rem;
-  height: -1.6rem;
-}
-
-.c53::before {
-  display: block;
-  position: absolute;
-}
-
-.c53::before {
-  content: '40℃';
-  font-size: 1.4rem;
-  line-height: 1;
-  left: calc(100% + 10px);
-  -webkit-transform: translateY(50%);
-  -ms-transform: translateY(50%);
-  transform: translateY(50%);
-  -webkit-transform: translateY(50%);
-  bottom: 50%;
-  color: red;
-  color: undefined;
-}
-
-.c54 {
-  border-radius: 50%;
-  position: absolute;
-  z-index: 1;
-  font-size: 1.4rem;
-  left: 50%;
-  bottom: 90.17857142857143%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  border-width: 0.1rem;
-  border-style: solid;
-  border-color: #cccccc;
-  background: #ffffff;
-  width: -1.6rem;
-  height: -1.6rem;
-}
-
-.c54::before {
-  display: block;
-  position: absolute;
-}
-
-.c54::before {
-  content: '50℃';
-  font-size: 1.4rem;
-  line-height: 1;
-  left: calc(100% + 10px);
-  -webkit-transform: translateY(50%);
-  -ms-transform: translateY(50%);
-  transform: translateY(50%);
-  -webkit-transform: translateY(50%);
-  bottom: 50%;
-  color: #9EA4AE;
-  color: undefined;
-}
-
-.c55 {
-  border-radius: 50%;
-  position: absolute;
-  z-index: 1;
-  font-size: 1.4rem;
-  left: 50%;
-  bottom: 104.46428571428572%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  border-width: 0.1rem;
-  border-style: solid;
-  border-color: #cccccc;
-  background: #ffffff;
-  width: -1.6rem;
-  height: -1.6rem;
-}
-
-.c55::before {
-  display: block;
-  position: absolute;
-}
-
-.c55::before {
-  content: '60℃';
-  font-size: 1.4rem;
-  line-height: 1;
-  left: calc(100% + 10px);
-  -webkit-transform: translateY(50%);
-  -ms-transform: translateY(50%);
-  transform: translateY(50%);
-  -webkit-transform: translateY(50%);
-  bottom: 50%;
-  color: #9EA4AE;
-  color: undefined;
-}
-
-.c56 {
-  border-radius: 50%;
-  position: absolute;
-  z-index: 1;
-  font-size: 1.4rem;
-  left: 50%;
-  bottom: 118.75%;
+  bottom: 98.94366197183099%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -1355,17 +1227,17 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: transparent;
   background: none;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
-.c56::before {
+.c53::before {
   display: block;
   position: absolute;
 }
 
-.c56::before {
-  content: '70℃';
+.c53::before {
+  content: '50℃';
   font-size: 1.4rem;
   line-height: 1;
   left: calc(100% + 10px);
@@ -1378,13 +1250,13 @@ exports[`default Wrapper 1`] = `
   color: undefined;
 }
 
-.c62 {
+.c58 {
   border-radius: 50%;
   position: absolute;
   z-index: 1;
   font-size: 1.4rem;
   left: 50%;
-  bottom: 18.75%;
+  bottom: -1.056338028169014%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -1393,16 +1265,16 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: transparent;
   background: none;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
-.c62::before {
+.c58::before {
   display: block;
   position: absolute;
 }
 
-.c62::before {
+.c58::before {
   content: '0℃';
   font-size: 1.4rem;
   line-height: 1;
@@ -1416,13 +1288,13 @@ exports[`default Wrapper 1`] = `
   color: undefined;
 }
 
-.c63 {
+.c59 {
   border-radius: 50%;
   position: absolute;
   z-index: 1;
   font-size: 1.4rem;
   left: 50%;
-  bottom: 68.75%;
+  bottom: 48.943661971830984%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -1431,16 +1303,16 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: #cccccc;
   background: #ffffff;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
-.c63::before {
+.c59::before {
   display: block;
   position: absolute;
 }
 
-.c63::before {
+.c59::before {
   content: '5';
   font-size: 1.4rem;
   line-height: 1;
@@ -1454,13 +1326,13 @@ exports[`default Wrapper 1`] = `
   color: undefined;
 }
 
-.c64 {
+.c60 {
   border-radius: 50%;
   position: absolute;
   z-index: 1;
   font-size: 1.4rem;
   left: 50%;
-  bottom: 118.75%;
+  bottom: 98.94366197183099%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -1469,16 +1341,16 @@ exports[`default Wrapper 1`] = `
   border-style: solid;
   border-color: transparent;
   background: none;
-  width: -1.6rem;
-  height: -1.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
-.c64::before {
+.c60::before {
   display: block;
   position: absolute;
 }
 
-.c64::before {
+.c60::before {
   content: '10℃';
   font-size: 1.4rem;
   line-height: 1;
@@ -1500,7 +1372,7 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
-  left: -3.8rem;
+  left: -3.6rem;
   color: #999;
   font-size: 2rem;
 }
@@ -1513,12 +1385,12 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
-  right: -3.6rem;
+  right: -3.4rem;
   color: #ccc;
   font-size: 1.8rem;
 }
 
-.c66 {
+.c62 {
   position: absolute;
   line-height: 0;
   left: 50%;
@@ -1526,12 +1398,12 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  bottom: -3.6rem;
+  bottom: -3.4rem;
   color: #999;
   font-size: 1.8rem;
 }
 
-.c67 {
+.c63 {
   position: absolute;
   line-height: 0;
   left: 50%;
@@ -1539,7 +1411,7 @@ exports[`default Wrapper 1`] = `
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  top: -3.6rem;
+  top: -3.4rem;
   color: #ccc;
   font-size: 1.8rem;
 }
@@ -1616,7 +1488,7 @@ exports[`default Wrapper 1`] = `
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
               "height": "0.6rem",
-              "width": "-1.6rem",
+              "width": "28.4rem",
             }
           }
           value={
@@ -1670,13 +1542,7 @@ exports[`default Wrapper 1`] = `
       </div>
     </div>
   </div>
-  <div
-    style={
-      Object {
-        "marginTop": "40px",
-      }
-    }
-  >
+  <div>
     <div
       className="c0"
       onMouseDown={[Function]}
@@ -1709,7 +1575,7 @@ exports[`default Wrapper 1`] = `
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
               "height": "0.6rem",
-              "width": "-1.6rem",
+              "width": "28.4rem",
             }
           }
           value={
@@ -1793,7 +1659,7 @@ exports[`default Wrapper 1`] = `
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
               "height": "0.6rem",
-              "width": "-1.6rem",
+              "width": "28.4rem",
             }
           }
           value={
@@ -1867,7 +1733,7 @@ exports[`default Wrapper 1`] = `
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
               "height": "0.6rem",
-              "width": "-1.6rem",
+              "width": "28.4rem",
             }
           }
           value={
@@ -1975,7 +1841,7 @@ exports[`default Wrapper 1`] = `
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
               "height": "0.6rem",
-              "width": "-1.6rem",
+              "width": "28.4rem",
             }
           }
           value={
@@ -2059,7 +1925,7 @@ exports[`default Wrapper 1`] = `
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
               "height": "0.6rem",
-              "width": "-1.6rem",
+              "width": "28.4rem",
             }
           }
           value={
@@ -2143,7 +2009,7 @@ exports[`default Wrapper 1`] = `
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
               "height": "0.6rem",
-              "width": "-1.6rem",
+              "width": "28.4rem",
             }
           }
           value={
@@ -2228,7 +2094,7 @@ exports[`default Wrapper 1`] = `
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
               "height": "0.6rem",
-              "width": "-1.6rem",
+              "width": "28.4rem",
             }
           }
           value={
@@ -2345,7 +2211,7 @@ exports[`default Wrapper 1`] = `
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
               "height": "0.6rem",
-              "width": "-1.6rem",
+              "width": "28.4rem",
             }
           }
           value={
@@ -2437,7 +2303,7 @@ exports[`default Wrapper 1`] = `
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
               "height": "0.6rem",
-              "width": "-1.6rem",
+              "width": "28.4rem",
             }
           }
           value={
@@ -2528,7 +2394,7 @@ exports[`default Wrapper 1`] = `
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
               "height": "0.6rem",
-              "width": "-1.6rem",
+              "width": "28.4rem",
             }
           }
           value={
@@ -2640,7 +2506,7 @@ exports[`default Wrapper 1`] = `
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
               "height": "0.6rem",
-              "width": "-1.6rem",
+              "width": "28.4rem",
             }
           }
           value={
@@ -2775,7 +2641,7 @@ exports[`default Wrapper 1`] = `
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
               "height": "0.6rem",
-              "width": "-1.6rem",
+              "width": "28.4rem",
             }
           }
           value={
@@ -2881,7 +2747,7 @@ exports[`default Wrapper 1`] = `
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
               "height": "0.6rem",
-              "width": "-7.4rem",
+              "width": "23rem",
             }
           }
           value={
@@ -3020,7 +2886,7 @@ exports[`default Wrapper 1`] = `
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
               "height": "0.6rem",
-              "width": "-1.6rem",
+              "width": "28.4rem",
             }
           }
           value={
@@ -3125,7 +2991,7 @@ exports[`default Wrapper 1`] = `
               "borderTopLeftRadius": "0.6rem",
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
-              "height": "-1.6rem",
+              "height": "28.4rem",
               "width": "0.6rem",
             }
           }
@@ -3216,7 +3082,7 @@ exports[`default Wrapper 1`] = `
               "borderTopLeftRadius": "0.6rem",
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
-              "height": "-1.6rem",
+              "height": "28.4rem",
               "width": "0.6rem",
             }
           }
@@ -3307,7 +3173,7 @@ exports[`default Wrapper 1`] = `
               "borderTopLeftRadius": "0.6rem",
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
-              "height": "-1.6rem",
+              "height": "28.4rem",
               "width": "0.6rem",
             }
           }
@@ -3399,7 +3265,7 @@ exports[`default Wrapper 1`] = `
               "borderTopLeftRadius": "0.6rem",
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
-              "height": "-1.6rem",
+              "height": "28.4rem",
               "width": "0.6rem",
             }
           }
@@ -3515,7 +3381,7 @@ exports[`default Wrapper 1`] = `
               "borderTopLeftRadius": "0.6rem",
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
-              "height": "-1.6rem",
+              "height": "28.4rem",
               "width": "0.6rem",
             }
           }
@@ -3630,7 +3496,7 @@ exports[`default Wrapper 1`] = `
               "borderTopLeftRadius": "0.6rem",
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
-              "height": "-1.6rem",
+              "height": "28.4rem",
               "width": "0.6rem",
             }
           }
@@ -3747,7 +3613,7 @@ exports[`default Wrapper 1`] = `
               "borderTopLeftRadius": "0.6rem",
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
-              "height": "-1.6rem",
+              "height": "28.4rem",
               "width": "0.6rem",
             }
           }
@@ -3774,27 +3640,17 @@ exports[`default Wrapper 1`] = `
             style={Object {}}
           />
           <span
+            className="c46"
+            data-sign="mask"
+            style={Object {}}
+          />
+          <span
             className="c53"
             data-sign="mask"
             style={Object {}}
           />
-          <span
-            className="c54"
-            data-sign="mask"
-            style={Object {}}
-          />
-          <span
-            className="c55"
-            data-sign="mask"
-            style={Object {}}
-          />
-          <span
-            className="c56"
-            data-sign="mask"
-            style={Object {}}
-          />
           <div
-            className="c57"
+            className="c54"
             style={
               Object {
                 "backgroundColor": "#4d63ff",
@@ -3802,7 +3658,7 @@ exports[`default Wrapper 1`] = `
             }
           />
           <span
-            className="c58"
+            className="c49"
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
@@ -3824,7 +3680,7 @@ exports[`default Wrapper 1`] = `
             
           </span>
           <span
-            className="c59"
+            className="c55"
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
@@ -3899,7 +3755,7 @@ exports[`default Wrapper 1`] = `
               "borderTopLeftRadius": "0.6rem",
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
-              "height": "-1.6rem",
+              "height": "28.4rem",
               "width": "0.6rem",
             }
           }
@@ -3910,7 +3766,7 @@ exports[`default Wrapper 1`] = `
           }
         >
           <div
-            className="c60"
+            className="c56"
             style={
               Object {
                 "backgroundColor": "#e8e8e8",
@@ -3918,7 +3774,7 @@ exports[`default Wrapper 1`] = `
             }
           />
           <span
-            className="c61"
+            className="c57"
             disabled={true}
             onMouseDown={null}
             onMouseEnter={[Function]}
@@ -3991,7 +3847,7 @@ exports[`default Wrapper 1`] = `
               "borderTopLeftRadius": "0.6rem",
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
-              "height": "-1.6rem",
+              "height": "28.4rem",
               "width": "0.6rem",
             }
           }
@@ -4002,17 +3858,17 @@ exports[`default Wrapper 1`] = `
           }
         >
           <span
-            className="c62"
+            className="c58"
             data-sign="mask"
             style={Object {}}
           />
           <span
-            className="c63"
+            className="c59"
             data-sign="mask"
             style={Object {}}
           />
           <span
-            className="c64"
+            className="c60"
             data-sign="mask"
             style={Object {}}
           />
@@ -4073,7 +3929,7 @@ exports[`default Wrapper 1`] = `
       style={Object {}}
     >
       <div
-        className="c65"
+        className="c61"
         onMouseDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
@@ -4097,7 +3953,7 @@ exports[`default Wrapper 1`] = `
               "borderTopLeftRadius": "0.6rem",
               "borderTopRightRadius": "0.6rem",
               "borderTopWidth": "0rem",
-              "height": "-7.2rem",
+              "height": "23.2rem",
               "width": "0.6rem",
             }
           }
@@ -4108,7 +3964,7 @@ exports[`default Wrapper 1`] = `
           }
         >
           <span
-            className="c66"
+            className="c62"
             style={Object {}}
             value={
               Array [
@@ -4131,7 +3987,7 @@ exports[`default Wrapper 1`] = `
             />
           </span>
           <span
-            className="c67"
+            className="c63"
             style={Object {}}
             value={
               Array [
@@ -4162,7 +4018,7 @@ exports[`default Wrapper 1`] = `
             }
           />
           <span
-            className="c68"
+            className="c64"
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
