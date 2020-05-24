@@ -1,6 +1,8 @@
 import * as React from 'react';
 import Menu from './menu';
 import { getMenuItemHeight } from '../css/menu';
+import ThemeHoc from '@lugia/theme-hoc';
+import Widget from '../consts/index';
 import Item from './item';
 
 class ThrottleMenu extends React.Component<any, any> {
@@ -11,8 +13,9 @@ class ThrottleMenu extends React.Component<any, any> {
 
   render() {
     const { props } = this;
-    const { size = 'default', children } = props;
-    const menuItemHeight = getMenuItemHeight(size);
+    const { children, getPartOfThemeConfig } = props;
+    const menuItemThemeConfig = getPartOfThemeConfig('MenuItem');
+    const menuItemHeight = getMenuItemHeight(menuItemThemeConfig, props);
     return (
       <Menu ref={this.innerMenu} {...props} menuItemHeight={menuItemHeight}>
         {children}
@@ -21,5 +24,9 @@ class ThrottleMenu extends React.Component<any, any> {
   }
 }
 
-ThrottleMenu.MenuItem = Item;
-export default ThrottleMenu;
+const MenuWrap = ThemeHoc(ThrottleMenu, Widget.Menu, {
+  hover: true,
+});
+
+MenuWrap.MenuItem = Item;
+export default MenuWrap;

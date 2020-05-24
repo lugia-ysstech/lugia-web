@@ -104,6 +104,20 @@ export default class extends React.Component<any, any> {
             width: 250,
           },
         },
+        Menu: {
+          MenuItem: {
+            MenuItemWrap: { normal: {} },
+            TextContainer: { normal: {} },
+            DesContainer: { normal: { height: 40 } },
+          },
+          SubMenu: {
+            MenuItem: {
+              MenuItemWrap: {},
+              TextContainer: { normal: {} },
+              DesContainer: { normal: { height: 40 } },
+            },
+          },
+        },
       },
     };
 

@@ -276,6 +276,7 @@ export default class extends React.Component<any, any> {
           <Menu
             theme={view}
             autoHeight
+            isShowAuxiliaryText
             divided
             data={objData}
             renderSuffixItems={this.renderSuffixItems}
@@ -288,6 +289,7 @@ export default class extends React.Component<any, any> {
             checkedCSS={'checkbox'}
             mutliple={true}
             autoHeight
+            isShowAuxiliaryText
             divided
             renderSuffixItems={this.renderSuffixItems}
             data={objData}

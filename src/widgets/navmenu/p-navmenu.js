@@ -106,7 +106,6 @@ const horizontalData = [
     value: 'Components',
     text: 'Components',
     icon: 'lugia-icon-financial_add_pic',
-    disabled: true,
     children: [
       {
         value: 'General',
