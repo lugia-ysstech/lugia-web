@@ -86,10 +86,9 @@
         "maxValue": 30
       },
       "defaultTheme": {
-        "Container": {
+        "SliderContainer": {
           "normal": {
             "background": { "color": "transparent" },
-            "width": 300,
             "opacity": 1,
             "border": {
               "top": { "color": "", "style": "", "width": 0 },
@@ -119,7 +118,7 @@
         },
         "Container": {
           "normal": {
-            "width": 300,
+            "width": "100%",
             "height": 6,
             "background": {
               "color": "#e8e8e8"
@@ -721,7 +720,6 @@
     "SliderContainer": {
       "normal": {
         "background": { "color": "transparent" },
-        "width": 300,
         "opacity": 1,
         "border": {
           "top": { "color": "", "style": "", "width": 0 },
@@ -751,7 +749,7 @@
     },
     "Container": {
       "normal": {
-        "width": 300,
+        "width": "100%",
         "height": 6,
         "background": {
           "color": "#e8e8e8"
