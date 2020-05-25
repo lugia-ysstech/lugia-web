@@ -42,7 +42,6 @@ import Upload from './upload';
 import Window from './window';
 import { load } from './css/theme-common-dict.js';
 export { load };
-
 export default [
   {
     meta: {
@@ -13841,9 +13840,29 @@ export default [
           desc: '单个滑块的样式配置',
           props: { defaultValue: 2, vertical: true, minValue: 0, maxValue: 30 },
           defaultTheme: {
+            SliderContainer: {
+              normal: {
+                background: { color: 'transparent' },
+                opacity: 1,
+                border: {
+                  top: { color: '', style: '', width: 0 },
+                  right: { color: '', style: '', width: 0 },
+                  bottom: { color: '', style: '', width: 0 },
+                  left: { color: '', style: '', width: 0 },
+                },
+                borderRadius: {
+                  topLeft: { radius: 0 },
+                  topRight: { radius: 0 },
+                  bottomLeft: { radius: 0 },
+                  bottomRight: { radius: 0 },
+                },
+                margin: { top: 0, right: 0, bottom: 0, left: 0 },
+                padding: { top: 0, right: 0, bottom: 0, left: 0 },
+              },
+            },
             Container: {
               normal: {
-                width: 300,
+                width: '100%',
                 height: 6,
                 background: { color: '#e8e8e8' },
                 borderRadius: {
@@ -14391,7 +14410,6 @@ export default [
         SliderContainer: {
           normal: {
             background: { color: 'transparent' },
-            width: 300,
             opacity: 1,
             border: {
               top: { color: '', style: '', width: 0 },
@@ -14406,7 +14424,7 @@ export default [
         },
         Container: {
           normal: {
-            width: 300,
+            width: '100%',
             height: 6,
             background: { color: '#e8e8e8' },
             borderRadius: { topLeft: 6, topRight: 6, bottomLeft: 6, bottomRight: 6 },
@@ -14583,9 +14601,29 @@ export default [
         },
       },
       defaultTheme: {
+        SliderContainer: {
+          normal: {
+            background: { color: 'transparent' },
+            opacity: 1,
+            border: {
+              top: { color: '', style: '', width: 0 },
+              right: { color: '', style: '', width: 0 },
+              bottom: { color: '', style: '', width: 0 },
+              left: { color: '', style: '', width: 0 },
+            },
+            borderRadius: {
+              topLeft: { radius: 0 },
+              topRight: { radius: 0 },
+              bottomLeft: { radius: 0 },
+              bottomRight: { radius: 0 },
+            },
+            margin: { top: 0, right: 0, bottom: 0, left: 0 },
+            padding: { top: 0, right: 0, bottom: 0, left: 0 },
+          },
+        },
         Container: {
           normal: {
-            width: 300,
+            width: '100%',
             height: 6,
             background: { color: '#e8e8e8' },
             borderRadius: {
@@ -15115,28 +15153,28 @@ export default [
         stepType: {
           type: 'StepType',
           desc: '步骤条风格 有 简洁,半扁平,图标,点状四种风格可供选择',
-          defaultValue: 'simple',
+          propsDefaultValue: 'simple',
         },
         size: {
           type: 'SizeType',
           desc: '步骤条尺寸,有正常和迷你 两种尺寸可供选择',
-          defaultValue: 'normal',
+          propsDefaultValue: 'default',
         },
         orientation: {
           type: 'OrientationType',
           desc: '步骤条方向,可选择水平,垂直',
-          defaultValue: 'horizontal',
+          propsDefaultValue: 'horizontal',
         },
         desAlign: {
           type: 'AlignType',
           desc: '步骤条描述信息的对齐位置 ,可选择左对齐,居中对齐',
-          defaultValue: 'left',
+          propsDefaultValue: 'left',
         },
-        currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', defaultValue: 0 },
+        currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', propsDefaultValue: 0 },
       },
       type: {
         StepType: ['simple', 'flat', 'icon', 'dot'],
-        SizeType: ['normal', 'mini'],
+        SizeType: ['default', 'small'],
         OrientationType: ['horizontal', 'vertical'],
         AlignType: ['center', 'left'],
         StepStatus: ['finish', 'process', 'next', 'wait', 'error'],
@@ -16327,28 +16365,29 @@ export default [
         stepType: {
           type: 'StepType',
           desc: '步骤条风格 有 简洁,半扁平,图标,点状四种风格可供选择',
-          defaultValue: 'simple',
+          propsDefaultValue: 'simple',
         },
         size: {
           type: 'SizeType',
           desc: '步骤条尺寸,有正常和迷你 两种尺寸可供选择',
-          defaultValue: 'normal',
+          propsDefaultValue: 'default',
         },
         orientation: {
           type: 'OrientationType',
           desc: '步骤条方向,可选择水平,垂直',
+          propsDefaultValue: 'horizontal',
           defaultValue: 'vertical',
         },
         desAlign: {
           type: 'AlignType',
           desc: '步骤条描述信息的对齐位置 ,可选择左对齐,居中对齐',
-          defaultValue: 'left',
+          propsDefaultValue: 'left',
         },
-        currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', defaultValue: 0 },
+        currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', propsDefaultValue: 0 },
       },
       type: {
         StepType: ['simple', 'flat', 'icon', 'dot'],
-        SizeType: ['normal', 'mini'],
+        SizeType: ['default', 'small'],
         OrientationType: ['horizontal', 'vertical'],
         AlignType: ['center', 'left'],
         StepStatus: ['finish', 'process', 'next', 'wait', 'error'],
@@ -16621,28 +16660,30 @@ export default [
         stepType: {
           type: 'StepType',
           desc: '步骤条风格 有 简洁,半扁平,图标,点状四种风格可供选择',
+          propsDefaultValue: 'simple',
           defaultValue: 'flat',
         },
         size: {
           type: 'SizeType',
           desc: '步骤条尺寸,有正常和迷你 两种尺寸可供选择',
-          defaultValue: 'normal',
+          propsDefaultValue: 'default',
         },
         orientation: {
           type: 'OrientationType',
           desc: '步骤条方向,可选择水平,垂直',
+          propsDefaultValue: 'horizontal',
           defaultValue: 'horizontal',
         },
         desAlign: {
           type: 'AlignType',
           desc: '步骤条描述信息的对齐位置 ,可选择左对齐,居中对齐',
-          defaultValue: 'left',
+          propsDefaultValue: 'left',
         },
-        currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', defaultValue: 0 },
+        currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', propsDefaultValue: 0 },
       },
       type: {
         StepType: ['simple', 'flat', 'icon', 'dot'],
-        SizeType: ['normal', 'mini'],
+        SizeType: ['default', 'small'],
         OrientationType: ['horizontal', 'vertical'],
         AlignType: ['center', 'left'],
         StepStatus: ['finish', 'process', 'next', 'wait', 'error'],
@@ -16915,28 +16956,30 @@ export default [
         stepType: {
           type: 'StepType',
           desc: '步骤条风格 有 简洁,半扁平,图标,点状四种风格可供选择',
+          propsDefaultValue: 'simple',
           defaultValue: 'icon',
         },
         size: {
           type: 'SizeType',
           desc: '步骤条尺寸,有正常和迷你 两种尺寸可供选择',
-          defaultValue: 'normal',
+          propsDefaultValue: 'default',
         },
         orientation: {
           type: 'OrientationType',
           desc: '步骤条方向,可选择水平,垂直',
+          propsDefaultValue: 'horizontal',
           defaultValue: 'horizontal',
         },
         desAlign: {
           type: 'AlignType',
           desc: '步骤条描述信息的对齐位置 ,可选择左对齐,居中对齐',
-          defaultValue: 'left',
+          propsDefaultValue: 'left',
         },
-        currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', defaultValue: 0 },
+        currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', propsDefaultValue: 0 },
       },
       type: {
         StepType: ['simple', 'flat', 'icon', 'dot'],
-        SizeType: ['normal', 'mini'],
+        SizeType: ['default', 'small'],
         OrientationType: ['horizontal', 'vertical'],
         AlignType: ['center', 'left'],
         StepStatus: ['finish', 'process', 'next', 'wait', 'error'],
@@ -17204,28 +17247,30 @@ export default [
         stepType: {
           type: 'StepType',
           desc: '步骤条风格 有 简洁,半扁平,图标,点状四种风格可供选择',
+          propsDefaultValue: 'simple',
           defaultValue: 'dot',
         },
         size: {
           type: 'SizeType',
           desc: '步骤条尺寸,有正常和迷你 两种尺寸可供选择',
-          defaultValue: 'normal',
+          propsDefaultValue: 'default',
         },
         orientation: {
           type: 'OrientationType',
           desc: '步骤条方向,可选择水平,垂直',
+          propsDefaultValue: 'horizontal',
           defaultValue: 'horizontal',
         },
         desAlign: {
           type: 'AlignType',
           desc: '步骤条描述信息的对齐位置 ,可选择左对齐,居中对齐',
-          defaultValue: 'left',
+          propsDefaultValue: 'left',
         },
-        currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', defaultValue: 0 },
+        currentStepNumber: { type: 'number', desc: '当前显示的步骤条位置', propsDefaultValue: 0 },
       },
       type: {
         StepType: ['simple', 'flat', 'icon', 'dot'],
-        SizeType: ['normal', 'mini'],
+        SizeType: ['default', 'small'],
         OrientationType: ['horizontal', 'vertical'],
         AlignType: ['center', 'left'],
         StepStatus: ['finish', 'process', 'next', 'wait', 'error'],
