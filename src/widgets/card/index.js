@@ -38,7 +38,7 @@ const isHorizontal = (imageOrientation: ImageOrientation = 'horizontal') => {
   return imageOrientation === 'horizontal';
 };
 const getPositionCSS = (position: boolean) => {
-  const positionCSS = position ? 'position:absolute;' : '';
+  const positionCSS = position ? 'position:absolute;z-index:4000;' : '';
   return positionCSS;
 };
 
@@ -266,6 +266,7 @@ const TextContainer = CSSComponent({
   className: 'TextContainer',
   normal: {
     selectNames: [['width'], ['height'], ['padding']],
+    width: '100%',
     getCSS(themeMeta: Object, themeProps: Object) {
       const {
         propsConfig: { imageOrientation, type, __lugiad__header__absolute__ },
@@ -316,6 +317,7 @@ const TitleHeadContainer = CSSComponent({
   className: 'CardTitleTipLineContainer',
   normal: {
     selectNames: [
+      ['width'],
       ['height'],
       ['background'],
       ['padding'],
@@ -324,6 +326,7 @@ const TitleHeadContainer = CSSComponent({
       ['boxShadow'],
     ],
     defaultTheme: {
+      width: '100%',
       borderRadius: {
         topLeft: 5,
         topRight: 5,
