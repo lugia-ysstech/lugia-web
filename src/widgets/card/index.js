@@ -37,6 +37,10 @@ const getDefaultSize = (size, defaultSize) => {
 const isHorizontal = (imageOrientation: ImageOrientation = 'horizontal') => {
   return imageOrientation === 'horizontal';
 };
+const getPositionCSS = (position: boolean) => {
+  const positionCSS = position ? 'position:absolute;' : '';
+  return positionCSS;
+};
 
 const CardOutContainer = CSSComponent({
   tag: 'div',
@@ -264,12 +268,13 @@ const TextContainer = CSSComponent({
     selectNames: [['width'], ['height'], ['padding']],
     getCSS(themeMeta: Object, themeProps: Object) {
       const {
-        propsConfig: { imageOrientation, type },
+        propsConfig: { imageOrientation, type, __lugiad__header__absolute__ },
       } = themeProps;
       const vCard = !isHorizontal(imageOrientation);
       const textAlign = type === 'avatar' && vCard ? 'center' : '';
       const flexDirection = vCard ? 'column' : 'row';
-      return `text-align:${textAlign};flex-direction:${flexDirection};`;
+      const positionCSS = getPositionCSS(__lugiad__header__absolute__);
+      return `text-align:${textAlign};flex-direction:${flexDirection};${positionCSS}`;
     },
     defaultTheme: {
       height: 'fit-content',
@@ -326,6 +331,13 @@ const TitleHeadContainer = CSSComponent({
       padding: {
         top: 10,
       },
+    },
+    getCSS(themeMeta, themeProps) {
+      const {
+        propsConfig: { __lugiad__header__absolute__ },
+      } = themeProps;
+      const positionCSS = getPositionCSS(__lugiad__header__absolute__);
+      return `${positionCSS}`;
     },
   },
   css: css`
@@ -505,11 +517,15 @@ class Card extends React.Component<CardProps, CardState> {
   }
 
   getTitleTipContainer() {
-    const { title, type, getPartOfThemeProps } = this.props;
+    const { title, type, getPartOfThemeProps, __lugiad__header__absolute__ } = this.props;
     const TitleCmp = this.getDetails('title');
     if (title && type === 'tip') {
       return (
-        <TitleHeadContainer themeProps={getPartOfThemeProps('CardTitleHeadContainer')}>
+        <TitleHeadContainer
+          themeProps={getPartOfThemeProps('CardTitleHeadContainer', {
+            props: { __lugiad__header__absolute__ },
+          })}
+        >
           <TitleTipContainer>
             <TitleTipLine themeProps={getPartOfThemeProps('CardTitleTipLine')} />
             {TitleCmp}
@@ -606,7 +622,16 @@ class Card extends React.Component<CardProps, CardState> {
   }
 
   getDetails(information: string): React.Node | null {
-    const { operation, title, description, content, children, type, imageOrientation } = this.props;
+    const {
+      operation,
+      title,
+      description,
+      content,
+      children,
+      type,
+      imageOrientation,
+      __lugiad__header__absolute__,
+    } = this.props;
     const hasNoContent = !(content && children);
 
     switch (information) {
@@ -618,7 +643,9 @@ class Card extends React.Component<CardProps, CardState> {
       case 'title':
         const titleThemeProps = deepMerge(
           this.getThemeNormalConfig(this.getPaddingByType(type, 'title', imageOrientation)),
-          this.props.getPartOfThemeProps('CardTitle', { props: { type } })
+          this.props.getPartOfThemeProps('CardTitle', {
+            props: { type, __lugiad__header__absolute__ },
+          })
         );
         return title ? this.getTitle(titleThemeProps) : null;
       case 'description':
