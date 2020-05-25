@@ -2,7 +2,7 @@
 
 exports[`DropMenuButton default 1`] = `
 <div
-  className="sc-gPEVay kRBhTm"
+  className="sc-gPEVay bSVfGR"
   onClick={[Function]}
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
@@ -23,8 +23,8 @@ exports[`DropMenuButton default 1`] = `
       "borderTopColor": "#4d63ff",
       "borderTopStyle": "solid",
       "borderTopWidth": "0.1rem",
-      "color": "#fff",
-      "lineHeight": "3rem",
+      "color": "#ffffff",
+      "height": "3.2rem",
     }
   }
 >
@@ -36,7 +36,7 @@ exports[`DropMenuButton default 1`] = `
     type="button"
   />
   <div
-    className="sc-jlyJG grYeNN"
+    className="sc-jlyJG gDwgBL"
   >
     <div
       className="sc-hzDkRC bCNFoS"
@@ -44,7 +44,11 @@ exports[`DropMenuButton default 1`] = `
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       onMouseUp={[Function]}
-      style={Object {}}
+      style={
+        Object {
+          "fontSize": "1.4rem",
+        }
+      }
     />
     <i
       className="lugia-icon-direction_down   sc-VigVT bZGqSI"
@@ -55,9 +59,10 @@ exports[`DropMenuButton default 1`] = `
       onMouseUp={[Function]}
       style={
         Object {
+          "fontSize": "1.4rem",
           "paddingBottom": "0rem",
           "paddingLeft": "0.6rem",
-          "paddingRight": "0.6rem",
+          "paddingRight": "0rem",
           "paddingTop": "0rem",
         }
       }
@@ -68,7 +73,7 @@ exports[`DropMenuButton default 1`] = `
 
 exports[`DropMenuButton divided={false} 1`] = `
 <div
-  className="sc-gPEVay kRBhTm"
+  className="sc-gPEVay bSVfGR"
   onClick={[Function]}
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
@@ -89,8 +94,8 @@ exports[`DropMenuButton divided={false} 1`] = `
       "borderTopColor": "#4d63ff",
       "borderTopStyle": "solid",
       "borderTopWidth": "0.1rem",
-      "color": "#fff",
-      "lineHeight": "3rem",
+      "color": "#ffffff",
+      "height": "3.2rem",
     }
   }
 >
@@ -102,7 +107,7 @@ exports[`DropMenuButton divided={false} 1`] = `
     type="button"
   />
   <div
-    className="sc-jlyJG grYeNN"
+    className="sc-jlyJG gDwgBL"
   >
     <div
       className="sc-hzDkRC bCNFoS"
@@ -110,7 +115,11 @@ exports[`DropMenuButton divided={false} 1`] = `
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       onMouseUp={[Function]}
-      style={Object {}}
+      style={
+        Object {
+          "fontSize": "1.4rem",
+        }
+      }
     />
     <i
       className="lugia-icon-direction_down   sc-VigVT bZGqSI"
@@ -121,9 +130,10 @@ exports[`DropMenuButton divided={false} 1`] = `
       onMouseUp={[Function]}
       style={
         Object {
+          "fontSize": "1.4rem",
           "paddingBottom": "0rem",
           "paddingLeft": "0.6rem",
-          "paddingRight": "0.6rem",
+          "paddingRight": "0rem",
           "paddingTop": "0rem",
         }
       }
@@ -134,7 +144,7 @@ exports[`DropMenuButton divided={false} 1`] = `
 
 exports[`DropMenuButton type=basic 1`] = `
 <div
-  className="sc-gPEVay kRBhTm"
+  className="sc-gPEVay bSVfGR"
   onClick={[Function]}
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
@@ -149,7 +159,7 @@ exports[`DropMenuButton type=basic 1`] = `
       "borderRightWidth": 0,
       "borderTopWidth": 0,
       "color": "#4d63ff",
-      "lineHeight": "3rem",
+      "height": "3.2rem",
     }
   }
 >
@@ -161,7 +171,7 @@ exports[`DropMenuButton type=basic 1`] = `
     type="button"
   />
   <div
-    className="sc-jlyJG grYeNN"
+    className="sc-jlyJG gDwgBL"
   >
     <div
       className="sc-hzDkRC bCNFoS"
@@ -169,7 +179,11 @@ exports[`DropMenuButton type=basic 1`] = `
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       onMouseUp={[Function]}
-      style={Object {}}
+      style={
+        Object {
+          "fontSize": "1.4rem",
+        }
+      }
     />
     <i
       className="lugia-icon-direction_down   sc-VigVT bZGqSI"
@@ -180,9 +194,10 @@ exports[`DropMenuButton type=basic 1`] = `
       onMouseUp={[Function]}
       style={
         Object {
+          "fontSize": "1.4rem",
           "paddingBottom": "0rem",
           "paddingLeft": "0.6rem",
-          "paddingRight": "0.6rem",
+          "paddingRight": "0rem",
           "paddingTop": "0rem",
         }
       }
@@ -193,11 +208,11 @@ exports[`DropMenuButton type=basic 1`] = `
 
 exports[`DropMenuButton type=primary,divided={true} 1`] = `
 <div
-  className="sc-csuQGl cdqunj"
+  className="sc-csuQGl eauwPn"
   disabled={false}
   style={
     Object {
-      "lineHeight": "3rem",
+      "height": "3.2rem",
     }
   }
   type="primary"
@@ -213,7 +228,7 @@ exports[`DropMenuButton type=primary,divided={true} 1`] = `
   >
     <div
       checked={false}
-      className="sc-bRBYWo cgJQpJ"
+      className="sc-bRBYWo dEFMCV"
       disabled={false}
       onMouseDown={[Function]}
       onMouseEnter={[Function]}
@@ -230,7 +245,8 @@ exports[`DropMenuButton type=primary,divided={true} 1`] = `
           "borderTopColor": "#cccccc",
           "borderTopStyle": "solid",
           "borderTopWidth": "0.1rem",
-          "color": "#666666",
+          "color": "#363B40",
+          "fontSize": "1.4rem",
         }
       }
       type="primary"
@@ -245,7 +261,7 @@ exports[`DropMenuButton type=primary,divided={true} 1`] = `
     </div>
     <span
       checked={false}
-      className="sc-jhAzac jDffzn"
+      className="sc-jhAzac fVFFSj"
       disabled={false}
       onClick={[Function]}
       onMouseDown={[Function]}
@@ -263,7 +279,7 @@ exports[`DropMenuButton type=primary,divided={true} 1`] = `
           "borderTopColor": "#cccccc",
           "borderTopStyle": "solid",
           "borderTopWidth": "0.1rem",
-          "color": "#666666",
+          "color": "#9EA4AE",
         }
       }
       type="primary"
@@ -281,7 +297,11 @@ exports[`DropMenuButton type=primary,divided={true} 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
-        style={Object {}}
+        style={
+          Object {
+            "fontSize": "1.4rem",
+          }
+        }
       />
     </span>
   </div>

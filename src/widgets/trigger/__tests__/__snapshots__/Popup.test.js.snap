@@ -3,13 +3,11 @@
 exports[`Popup Popup snapshot 1`] = `
 .c0 {
   position: absolute;
-  background-color: #fff;
-  box-shadow: 0 1px 6px rgba(0,0,0,0.2);
   border-radius: 4px;
   box-sizing: border-box;
   left: -9999px;
   top: -9999px;
-  z-index: 9999;
+  z-index: 999999;
 }
 
 <div

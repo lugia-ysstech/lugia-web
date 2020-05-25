@@ -68,7 +68,6 @@ Array [
 }
 
 .c3 {
-  color: #666666;
   font-size: 1.4rem;
 }
 
@@ -95,7 +94,6 @@ Array [
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  vertical-align: -0.175rem !important;
 }
 
 .c6 {
@@ -104,7 +102,7 @@ Array [
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  margin-right: 1rem;
+  margin-right: 0.6rem;
   -webkit-animation: iECmZH 1s infinite linear;
   animation: iECmZH 1s infinite linear;
 }
@@ -115,8 +113,7 @@ Array [
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  vertical-align: -0.175rem !important;
-  margin-right: 1rem;
+  margin-right: 0.6rem;
 }
 
 .c8 {
@@ -125,8 +122,7 @@ Array [
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  vertical-align: -0.175rem !important;
-  margin-right: 1rem;
+  margin-right: 0.6rem;
   cursor: not-allowed;
 }
 
@@ -197,7 +193,7 @@ Array [
             className="c3"
             style={
               Object {
-                "color": "#666666",
+                "color": "#363B40",
                 "fontSize": "1.4rem",
               }
             }
@@ -478,7 +474,6 @@ Array [
         size="default"
         style={
           Object {
-            "backgroundColor": "#ffffff",
             "borderBottomColor": "#cccccc",
             "borderBottomLeftRadius": "1.6rem",
             "borderBottomRightRadius": "1.6rem",
@@ -510,7 +505,7 @@ Array [
             className="c3"
             style={
               Object {
-                "color": "#000000",
+                "color": "#363B40",
                 "fontSize": "1.4rem",
               }
             }
@@ -695,7 +690,7 @@ Array [
               }
             }
           >
-            primary
+            warning
           </span>
         </span>
       </button>
@@ -760,7 +755,7 @@ Array [
         </span>
       </button>
       <p>
-        danger
+        link
       </p>
       <button
         className="c1"
@@ -794,7 +789,7 @@ Array [
             className="c3"
             style={
               Object {
-                "color": "#000000",
+                "color": "#4d63ff",
                 "fontSize": "1.4rem",
               }
             }
@@ -859,7 +854,7 @@ Array [
             className="c3"
             style={
               Object {
-                "color": "#666666",
+                "color": "#363B40",
                 "fontSize": "1.4rem",
               }
             }
@@ -1028,7 +1023,7 @@ Array [
             className="c3"
             style={
               Object {
-                "color": "#cccccc",
+                "color": "#c0c8ff",
                 "fontSize": "1.4rem",
               }
             }
@@ -1641,7 +1636,7 @@ Array [
             className="c3"
             style={
               Object {
-                "color": "#cccccc",
+                "color": "#c0c8ff",
                 "fontSize": "1.4rem",
               }
             }
@@ -1671,7 +1666,6 @@ Array [
         size="default"
         style={
           Object {
-            "backgroundColor": "#ffffff",
             "borderBottomColor": "#cccccc",
             "borderBottomLeftRadius": "50%",
             "borderBottomRightRadius": "50%",
@@ -1689,10 +1683,6 @@ Array [
             "borderTopStyle": "solid",
             "borderTopWidth": "0.1rem",
             "height": "3.2rem",
-            "paddingBottom": "0rem",
-            "paddingLeft": "0rem",
-            "paddingRight": "0rem",
-            "paddingTop": "0rem",
             "width": "3.2rem",
           }
         }
@@ -1709,7 +1699,7 @@ Array [
             onMouseUp={[Function]}
             style={
               Object {
-                "color": "#000000",
+                "color": "#363B40",
                 "fontSize": "1.4rem",
               }
             }
@@ -1718,13 +1708,14 @@ Array [
             className="c3"
             style={
               Object {
-                "color": "#000000",
+                "color": "#363B40",
                 "fontSize": "1.4rem",
               }
             }
           />
         </span>
       </button>
+      <br />
       <br />
       <button
         className="c1"
@@ -1750,10 +1741,6 @@ Array [
             "borderTopRightRadius": "50%",
             "borderTopWidth": 0,
             "height": "4rem",
-            "paddingBottom": "0rem",
-            "paddingLeft": "0rem",
-            "paddingRight": "0rem",
-            "paddingTop": "0rem",
             "width": "4rem",
           }
         }
@@ -1788,6 +1775,7 @@ Array [
         </span>
       </button>
       <br />
+      <br />
       <button
         className="c1"
         onBlur={[Function]}
@@ -1820,10 +1808,6 @@ Array [
             "borderTopStyle": "solid",
             "borderTopWidth": "0.1rem",
             "height": "2.4rem",
-            "paddingBottom": "0rem",
-            "paddingLeft": "0rem",
-            "paddingRight": "0rem",
-            "paddingTop": "0rem",
             "width": "2.4rem",
           }
         }
@@ -1840,8 +1824,8 @@ Array [
             onMouseUp={[Function]}
             style={
               Object {
-                "color": "#666666",
-                "fontSize": "1.4rem",
+                "color": "#363B40",
+                "fontSize": "1.2rem",
               }
             }
           />
@@ -1849,13 +1833,17 @@ Array [
             className="c3"
             style={
               Object {
-                "color": "#666666",
+                "color": "#363B40",
                 "fontSize": "1.2rem",
               }
             }
           />
         </span>
       </button>
+    </div>
+    <div
+      className="c0"
+    >
       <p>
         loading
       </p>
@@ -1874,18 +1862,18 @@ Array [
         style={
           Object {
             "backgroundColor": "rgba(77,99,255,0.05)",
-            "borderBottomColor": "#8090ff",
+            "borderBottomColor": "#4d63ff",
             "borderBottomLeftRadius": "0.4rem",
             "borderBottomRightRadius": "0.4rem",
             "borderBottomStyle": "solid",
             "borderBottomWidth": "0.1rem",
-            "borderLeftColor": "#8090ff",
+            "borderLeftColor": "#4d63ff",
             "borderLeftStyle": "solid",
             "borderLeftWidth": "0.1rem",
-            "borderRightColor": "#8090ff",
+            "borderRightColor": "#4d63ff",
             "borderRightStyle": "solid",
             "borderRightWidth": "0.1rem",
-            "borderTopColor": "#8090ff",
+            "borderTopColor": "#4d63ff",
             "borderTopLeftRadius": "0.4rem",
             "borderTopRightRadius": "0.4rem",
             "borderTopStyle": "solid",
@@ -1910,7 +1898,7 @@ Array [
             onMouseUp={[Function]}
             style={
               Object {
-                "color": "#8090ff",
+                "color": "#4d63ff",
               }
             }
           />
@@ -1918,7 +1906,7 @@ Array [
             className="c3"
             style={
               Object {
-                "color": "#8090ff",
+                "color": "#4d63ff",
                 "fontSize": "1.4rem",
               }
             }
@@ -1927,8 +1915,10 @@ Array [
           </span>
         </span>
       </button>
+      <br />
+      <br />
       <p>
-        link loading
+        link loading 
       </p>
       <button
         className="c5"
@@ -1941,7 +1931,7 @@ Array [
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         onMouseUp={[Function]}
-        size="default"
+        size="small"
         style={
           Object {
             "backgroundColor": "rgb(0,0,0,0)",
@@ -1966,7 +1956,7 @@ Array [
             onMouseUp={[Function]}
             style={
               Object {
-                "color": "#8090ff",
+                "color": "#8c9dff",
               }
             }
           />
@@ -1974,8 +1964,8 @@ Array [
             className="c3"
             style={
               Object {
-                "color": "#8090ff",
-                "fontSize": "1.4rem",
+                "color": "#8c9dff",
+                "fontSize": "1.2rem",
               }
             }
           >
@@ -1983,8 +1973,10 @@ Array [
           </span>
         </span>
       </button>
+      <br />
+      <br />
       <p>
-        loading
+        loading持续2s
       </p>
       <button
         className="c5"
@@ -2001,18 +1993,18 @@ Array [
         style={
           Object {
             "backgroundColor": "rgba(77,99,255,0.05)",
-            "borderBottomColor": "#8090ff",
+            "borderBottomColor": "#4d63ff",
             "borderBottomLeftRadius": "0.4rem",
             "borderBottomRightRadius": "0.4rem",
             "borderBottomStyle": "solid",
             "borderBottomWidth": "0.1rem",
-            "borderLeftColor": "#8090ff",
+            "borderLeftColor": "#4d63ff",
             "borderLeftStyle": "solid",
             "borderLeftWidth": "0.1rem",
-            "borderRightColor": "#8090ff",
+            "borderRightColor": "#4d63ff",
             "borderRightStyle": "solid",
             "borderRightWidth": "0.1rem",
-            "borderTopColor": "#8090ff",
+            "borderTopColor": "#4d63ff",
             "borderTopLeftRadius": "0.4rem",
             "borderTopRightRadius": "0.4rem",
             "borderTopStyle": "solid",
@@ -2037,7 +2029,7 @@ Array [
             onMouseUp={[Function]}
             style={
               Object {
-                "color": "#8090ff",
+                "color": "#4d63ff",
               }
             }
           />
@@ -2045,7 +2037,7 @@ Array [
             className="c3"
             style={
               Object {
-                "color": "#8090ff",
+                "color": "#4d63ff",
                 "fontSize": "1.4rem",
               }
             }
@@ -2054,6 +2046,10 @@ Array [
           </span>
         </span>
       </button>
+    </div>
+    <div
+      className="c0"
+    >
       <p>
         icon Button
       </p>
@@ -2108,7 +2104,7 @@ Array [
             onMouseUp={[Function]}
             style={
               Object {
-                "color": "#666666",
+                "color": "#363B40",
                 "fontSize": "1.4rem",
               }
             }
@@ -2117,19 +2113,21 @@ Array [
             className="c3"
             style={
               Object {
-                "color": "#666666",
+                "color": "#363B40",
                 "fontSize": "1.4rem",
               }
             }
           >
             Button
-             
           </span>
         </span>
       </button>
+      <br />
+      <br />
       <p>
         icon link Button
       </p>
+      <br />
       <button
         className="c1"
         onBlur={[Function]}
@@ -2181,10 +2179,13 @@ Array [
             }
           >
             Button
-             
           </span>
         </span>
       </button>
+    </div>
+    <div
+      className="c0"
+    >
       <p>
         icon Button
       </p>
@@ -2247,6 +2248,10 @@ Array [
                 "color": "black",
                 "fontSize": "1.6rem",
                 "fontWeight": 500,
+                "marginBottom": "0rem",
+                "marginLeft": "0rem",
+                "marginRight": "2rem",
+                "marginTop": "0rem",
               }
             }
           />
@@ -2261,7 +2266,6 @@ Array [
             }
           >
             Button
-             
           </span>
         </span>
       </button>
@@ -2325,8 +2329,13 @@ Array [
             style={
               Object {
                 "color": "orange",
+                "cursor": "not-allowed",
                 "fontSize": "1.6rem",
                 "fontWeight": 500,
+                "marginBottom": "0rem",
+                "marginLeft": "0rem",
+                "marginRight": "2rem",
+                "marginTop": "0rem",
               }
             }
           />
@@ -2341,7 +2350,6 @@ Array [
             }
           >
             Button
-             
           </span>
         </span>
       </button>
@@ -2416,7 +2424,6 @@ Array [
 }
 
 .c2 {
-  color: #666666;
   font-size: 1.4rem;
 }
 
@@ -2443,7 +2450,7 @@ Array [
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  margin-right: 1rem;
+  margin-right: 0.6rem;
   -webkit-animation: iECmZH 1s infinite linear;
   animation: iECmZH 1s infinite linear;
 }
@@ -2454,8 +2461,7 @@ Array [
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  vertical-align: -0.175rem !important;
-  margin-right: 1rem;
+  margin-right: 0.6rem;
 }
 
 <div
@@ -2511,7 +2517,7 @@ Array [
           className="c2"
           style={
             Object {
-              "color": "#666666",
+              "color": "#363B40",
               "fontSize": "1.4rem",
             }
           }
@@ -2964,18 +2970,18 @@ Array [
       style={
         Object {
           "backgroundColor": "rgba(77,99,255,0.05)",
-          "borderBottomColor": "#8090ff",
+          "borderBottomColor": "#4d63ff",
           "borderBottomLeftRadius": "0.4rem",
           "borderBottomRightRadius": "0.4rem",
           "borderBottomStyle": "solid",
           "borderBottomWidth": "0.1rem",
-          "borderLeftColor": "#8090ff",
+          "borderLeftColor": "#4d63ff",
           "borderLeftStyle": "solid",
           "borderLeftWidth": "0.1rem",
-          "borderRightColor": "#8090ff",
+          "borderRightColor": "#4d63ff",
           "borderRightStyle": "solid",
           "borderRightWidth": "0.1rem",
-          "borderTopColor": "#8090ff",
+          "borderTopColor": "#4d63ff",
           "borderTopLeftRadius": "0.4rem",
           "borderTopRightRadius": "0.4rem",
           "borderTopStyle": "solid",
@@ -3000,7 +3006,7 @@ Array [
           onMouseUp={[Function]}
           style={
             Object {
-              "color": "#8090ff",
+              "color": "#4d63ff",
             }
           }
         />
@@ -3008,7 +3014,7 @@ Array [
           className="c2"
           style={
             Object {
-              "color": "#8090ff",
+              "color": "#4d63ff",
               "fontSize": "1.4rem",
             }
           }
@@ -3018,7 +3024,7 @@ Array [
       </span>
     </button>
     <p>
-      loading
+      loading持续2s
     </p>
     <button
       className="c3"
@@ -3035,18 +3041,18 @@ Array [
       style={
         Object {
           "backgroundColor": "rgba(77,99,255,0.05)",
-          "borderBottomColor": "#8090ff",
+          "borderBottomColor": "#4d63ff",
           "borderBottomLeftRadius": "0.4rem",
           "borderBottomRightRadius": "0.4rem",
           "borderBottomStyle": "solid",
           "borderBottomWidth": "0.1rem",
-          "borderLeftColor": "#8090ff",
+          "borderLeftColor": "#4d63ff",
           "borderLeftStyle": "solid",
           "borderLeftWidth": "0.1rem",
-          "borderRightColor": "#8090ff",
+          "borderRightColor": "#4d63ff",
           "borderRightStyle": "solid",
           "borderRightWidth": "0.1rem",
-          "borderTopColor": "#8090ff",
+          "borderTopColor": "#4d63ff",
           "borderTopLeftRadius": "0.4rem",
           "borderTopRightRadius": "0.4rem",
           "borderTopStyle": "solid",
@@ -3071,7 +3077,7 @@ Array [
           onMouseUp={[Function]}
           style={
             Object {
-              "color": "#8090ff",
+              "color": "#4d63ff",
             }
           }
         />
@@ -3079,7 +3085,7 @@ Array [
           className="c2"
           style={
             Object {
-              "color": "#8090ff",
+              "color": "#4d63ff",
               "fontSize": "1.4rem",
             }
           }
@@ -3142,7 +3148,7 @@ Array [
           onMouseUp={[Function]}
           style={
             Object {
-              "color": "#666666",
+              "color": "#363B40",
               "fontSize": "1.4rem",
             }
           }
@@ -3151,13 +3157,12 @@ Array [
           className="c2"
           style={
             Object {
-              "color": "#666666",
+              "color": "#363B40",
               "fontSize": "1.4rem",
             }
           }
         >
           Button
-           
         </span>
       </span>
     </button>
@@ -3195,7 +3200,6 @@ Array [
 }
 
 .c2 {
-  color: #666666;
   font-size: 1.4rem;
 }
 
@@ -3266,7 +3270,7 @@ Array [
           className="c2"
           style={
             Object {
-              "color": "#666666",
+              "color": "#363B40",
               "fontSize": "1.4rem",
             }
           }

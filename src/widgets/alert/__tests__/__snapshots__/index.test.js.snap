@@ -97,9 +97,13 @@ exports[`Alert css 1`] = `
     style={
       Object {
         "backgroundColor": "rgba(77,99,255,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "#4d63ff",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "paddingBottom": "1.2rem",
         "paddingLeft": "1rem",
         "paddingRight": "1rem",
@@ -130,9 +134,13 @@ exports[`Alert css 1`] = `
     style={
       Object {
         "backgroundColor": "rgba(86,194,45,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "#56c22d",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "paddingBottom": "1.2rem",
         "paddingLeft": "1rem",
         "paddingRight": "1rem",
@@ -163,9 +171,13 @@ exports[`Alert css 1`] = `
     style={
       Object {
         "backgroundColor": "rgba(242,39,53,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "#f22735",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "paddingBottom": "1.2rem",
         "paddingLeft": "1rem",
         "paddingRight": "1rem",
@@ -196,9 +208,13 @@ exports[`Alert css 1`] = `
     style={
       Object {
         "backgroundColor": "rgba(248,172,48,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "#f8ac30",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "paddingBottom": "1.2rem",
         "paddingLeft": "1rem",
         "paddingRight": "1rem",
@@ -229,9 +245,13 @@ exports[`Alert css 1`] = `
     style={
       Object {
         "backgroundColor": "rgba(77,99,255,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "#4d63ff",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "paddingBottom": "1.2rem",
         "paddingLeft": "1rem",
         "paddingRight": "1rem",
@@ -289,9 +309,13 @@ exports[`Alert css 1`] = `
     style={
       Object {
         "backgroundColor": "rgba(86,194,45,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "#56c22d",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "paddingBottom": "1.2rem",
         "paddingLeft": "1rem",
         "paddingRight": "1rem",
@@ -349,9 +373,13 @@ exports[`Alert css 1`] = `
     style={
       Object {
         "backgroundColor": "rgba(242,39,53,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "#f22735",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "paddingBottom": "1.2rem",
         "paddingLeft": "1rem",
         "paddingRight": "1rem",
@@ -400,9 +428,13 @@ exports[`Alert css 1`] = `
     style={
       Object {
         "backgroundColor": "rgba(248,172,48,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "#f8ac30",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "paddingBottom": "1.2rem",
         "paddingLeft": "1rem",
         "paddingRight": "1rem",
@@ -451,9 +483,13 @@ exports[`Alert css 1`] = `
     style={
       Object {
         "backgroundColor": "rgba(77,99,255,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "#4d63ff",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "paddingBottom": "1.2rem",
         "paddingLeft": "3.4rem",
         "paddingRight": "1rem",
@@ -499,9 +535,13 @@ exports[`Alert css 1`] = `
     style={
       Object {
         "backgroundColor": "rgba(86,194,45,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "#56c22d",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "paddingBottom": "1.2rem",
         "paddingLeft": "3.4rem",
         "paddingRight": "1rem",
@@ -547,9 +587,13 @@ exports[`Alert css 1`] = `
     style={
       Object {
         "backgroundColor": "rgba(242,39,53,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "#f22735",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "paddingBottom": "1.2rem",
         "paddingLeft": "3.4rem",
         "paddingRight": "1rem",
@@ -595,9 +639,13 @@ exports[`Alert css 1`] = `
     style={
       Object {
         "backgroundColor": "rgba(248,172,48,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "#f8ac30",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "paddingBottom": "1.2rem",
         "paddingLeft": "3.4rem",
         "paddingRight": "1rem",
@@ -637,22 +685,19 @@ exports[`Alert css 1`] = `
       style={Object {}}
     />
   </div>
-  <hr
-    style={
-      Object {
-        "height": "50px",
-      }
-    }
-  />
   <div
     className="c7"
     height={null}
     style={
       Object {
         "backgroundColor": "rgba(77,99,255,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "#4d63ff",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "paddingBottom": "1.8rem",
         "paddingLeft": "1rem",
         "paddingRight": "1rem",
@@ -712,9 +757,13 @@ exports[`Alert css 1`] = `
     style={
       Object {
         "backgroundColor": "rgba(86,194,45,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "#56c22d",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "paddingBottom": "1.8rem",
         "paddingLeft": "1rem",
         "paddingRight": "1rem",
@@ -774,9 +823,13 @@ exports[`Alert css 1`] = `
     style={
       Object {
         "backgroundColor": "rgba(242,39,53,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "#f22735",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "paddingBottom": "1.8rem",
         "paddingLeft": "1rem",
         "paddingRight": "1rem",
@@ -827,9 +880,13 @@ exports[`Alert css 1`] = `
     style={
       Object {
         "backgroundColor": "rgba(248,172,48,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "#f8ac30",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "paddingBottom": "1.8rem",
         "paddingLeft": "1rem",
         "paddingRight": "1rem",
@@ -880,9 +937,13 @@ exports[`Alert css 1`] = `
     style={
       Object {
         "backgroundColor": "rgba(77,99,255,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "#4d63ff",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "paddingBottom": "1.8rem",
         "paddingLeft": "3.4rem",
         "paddingRight": "1rem",
@@ -957,9 +1018,13 @@ exports[`Alert css 1`] = `
     style={
       Object {
         "backgroundColor": "rgba(86,194,45,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "#56c22d",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "paddingBottom": "1.8rem",
         "paddingLeft": "3.4rem",
         "paddingRight": "1rem",
@@ -1034,9 +1099,13 @@ exports[`Alert css 1`] = `
     style={
       Object {
         "backgroundColor": "rgba(242,39,53,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "#f22735",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "paddingBottom": "1.8rem",
         "paddingLeft": "3.4rem",
         "paddingRight": "1rem",
@@ -1102,9 +1171,13 @@ exports[`Alert css 1`] = `
     style={
       Object {
         "backgroundColor": "rgba(248,172,48,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "#f8ac30",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "paddingBottom": "1.8rem",
         "paddingLeft": "3.4rem",
         "paddingRight": "1rem",
@@ -1170,9 +1243,13 @@ exports[`Alert css 1`] = `
     style={
       Object {
         "backgroundColor": "rgba(77,99,255,0.1)",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "#4d63ff",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "paddingBottom": "1.2rem",
         "paddingLeft": "3.4rem",
         "paddingRight": "1rem",
@@ -1221,9 +1298,13 @@ exports[`Alert css 1`] = `
     style={
       Object {
         "backgroundColor": "orange",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "red",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "boxShadow": "undefinedpx undefinedpx 0px 0px",
         "height": "20rem",
         "marginBottom": "1rem",
@@ -1273,9 +1354,13 @@ exports[`Alert css 1`] = `
     style={
       Object {
         "backgroundColor": "orange",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "red",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "boxShadow": "undefinedpx undefinedpx 0px 0px",
         "height": "20rem",
         "marginBottom": "1rem",
@@ -1340,9 +1425,13 @@ exports[`Alert css 1`] = `
     style={
       Object {
         "backgroundColor": "orange",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "red",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "boxShadow": "undefinedpx undefinedpx 0px 0px",
         "height": "20rem",
         "marginBottom": "1rem",
@@ -1427,9 +1516,13 @@ exports[`Alert css 1`] = `
     style={
       Object {
         "backgroundColor": "orange",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "red",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "boxShadow": "undefinedpx undefinedpx 0px 0px",
         "height": "20rem",
         "marginBottom": "1rem",
@@ -1529,9 +1622,13 @@ exports[`Alert css 1`] = `
     style={
       Object {
         "backgroundColor": "orange",
+        "borderBottomLeftRadius": "0.4rem",
+        "borderBottomRightRadius": "0.4rem",
         "borderLeftColor": "red",
         "borderLeftStyle": "solid",
         "borderLeftWidth": "0.4rem",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
         "boxShadow": "undefinedpx undefinedpx 0px 0px",
         "height": "20rem",
         "marginBottom": "1rem",

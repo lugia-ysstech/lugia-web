@@ -10,7 +10,11 @@ exports[`BackTop css 1`] = `
 }
 
 .c2 > div > div {
-  bottom: 200px;
+  bottom: NaNpx;
+}
+
+.c3 > div > div {
+  bottom: 250px;
 }
 
 <div
@@ -20,7 +24,6 @@ exports[`BackTop css 1`] = `
     }
   }
 >
-  <div />
   <div
     className="c0"
   >
@@ -28,6 +31,16 @@ exports[`BackTop css 1`] = `
   </div>
   <div
     className="c1"
+  >
+    <div />
+  </div>
+  <div
+    className="c2"
+  >
+    <div />
+  </div>
+  <div
+    className="c3"
   >
     <div />
   </div>
@@ -42,7 +55,7 @@ exports[`BackTop css 1`] = `
     }
   >
     <div
-      className="c2"
+      className="c3"
     >
       <div
         style={

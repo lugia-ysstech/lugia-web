@@ -42,6 +42,7 @@ import Upload from './upload';
 import Window from './window';
 import { load } from './css/theme-common-dict.js';
 export { load };
+
 export default [
   {
     meta: {
@@ -23355,7 +23356,7 @@ export default [
           desc: '按钮上传模式的配置项',
           props: { areaType: 'button' },
           theme: {
-            UploadButtonType: {
+            Container: {
               name: '按钮',
               desc: '按钮上传类型的样式配置',
               normal: [
@@ -23418,7 +23419,7 @@ export default [
           desc: '图片上传模式的配置项，仅支持图片',
           props: { areaType: 'picture' },
           theme: {
-            UploadPictureType: {
+            Container: {
               name: '图片上传区域',
               desc: '图片上传类型的样式配置',
               normal: [['background'], ['width'], ['height'], ['opacity'], ['border']],
@@ -23482,7 +23483,7 @@ export default [
           desc: '大面积区域拖拽上传模式的配置项',
           props: { areaType: 'area' },
           theme: {
-            UploadAreaType: {
+            Container: {
               name: '文件上传区域',
               desc: '区域拖拽上传类型的样式配置',
               normal: [['width'], ['height'], ['fontSize'], ['color']],
@@ -23562,7 +23563,7 @@ export default [
                 },
               },
             },
-            UploadDefaultType: {
+            Container: {
               name: '文件上传区域',
               desc: '默认上传框的样式',
               normal: [['width'], ['height'], ['boxShadow'], ['border']],
@@ -23632,7 +23633,7 @@ export default [
         },
       },
       theme: {
-        UploadDefaultType: {
+        Container: {
           name: '文件上传区域',
           desc: '默认上传框的样式',
           normal: [['width'], ['height'], ['boxShadow'], ['border']],
@@ -23787,7 +23788,7 @@ export default [
       },
       category: ['数据录入'],
       theme: {
-        UploadButtonType: {
+        Container: {
           name: '按钮',
           desc: '按钮上传类型的样式配置',
           normal: [['background'], ['width'], ['height'], ['boxShadow'], ['border'], ['opacity']],
@@ -23934,7 +23935,7 @@ export default [
       },
       category: ['数据录入'],
       theme: {
-        UploadPictureType: {
+        Container: {
           name: '图片上传区域',
           desc: '图片上传类型的样式配置',
           normal: [['background'], ['width'], ['height'], ['opacity'], ['border']],
@@ -24089,7 +24090,7 @@ export default [
       },
       category: ['数据录入'],
       theme: {
-        UploadAreaType: {
+        Container: {
           name: '文件上传区域',
           desc: '区域拖拽上传类型的样式配置',
           normal: [['width'], ['height'], ['fontSize'], ['color']],
@@ -24260,7 +24261,7 @@ export default [
             },
           },
         },
-        UploadDefaultType: {
+        Container: {
           name: '文件上传区域',
           desc: '默认上传框的样式',
           normal: [['width'], ['height'], ['boxShadow'], ['border']],

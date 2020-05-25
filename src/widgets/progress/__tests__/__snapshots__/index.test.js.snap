@@ -1,7 +1,280 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Progress css 1`] = `
+.c3 {
+  width: calc(100% - 3rem);
+  display: inline-block;
+  border-radius: 5rem;
+  vertical-align: middle;
+  background-color: #e8e8e8;
+}
+
+.c10 {
+  width: 100%;
+  display: inline-block;
+  border-radius: 5rem;
+  vertical-align: middle;
+  background-color: #e8e8e8;
+}
+
+.c4 {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 30%;
+  border-radius: 5rem;
+  position: relative;
+  text-align: right;
+  box-sizing: border-box;
+  background-color: #4d63ff;
+  line-height: 0.8rem;
+}
+
+.c7 {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 30%;
+  border-radius: 5rem;
+  position: relative;
+  text-align: right;
+  box-sizing: border-box;
+  background-color: #4d63ff;
+  line-height: 2.5rem;
+}
+
+.c8 {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 100%;
+  border-radius: 5rem;
+  position: relative;
+  text-align: right;
+  box-sizing: border-box;
+  background-color: #4d63ff;
+  line-height: 2.5rem;
+}
+
+.c9 {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 60%;
+  border-radius: 5rem;
+  position: relative;
+  text-align: right;
+  box-sizing: border-box;
+  background-color: #4d63ff;
+  line-height: 2.5rem;
+}
+
+.c11 {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 30%;
+  border-radius: 5rem;
+  position: relative;
+  text-align: right;
+  box-sizing: border-box;
+  background-color: #4d63ff;
+  line-height: 2.5rem;
+}
+
+.c11::before {
+  content: '';
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  border-radius: 50%;
+  -webkit-animation: evMZmO 2.4s ease infinite;
+  animation: evMZmO 2.4s ease infinite;
+}
+
+.c13 {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 30%;
+  border-radius: 5rem;
+  position: relative;
+  text-align: right;
+  box-sizing: border-box;
+  background-color: #4d63ff;
+  line-height: 0.8rem;
+}
+
+.c13::before {
+  content: '';
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  border-radius: 50%;
+  -webkit-animation: evMZmO 2.4s ease infinite;
+  animation: evMZmO 2.4s ease infinite;
+}
+
+.c14 {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 100%;
+  border-radius: 5rem;
+  position: relative;
+  text-align: right;
+  box-sizing: border-box;
+  background-color: #4d63ff;
+  line-height: 0.8rem;
+}
+
+.c19 {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 30%;
+  border-radius: 5rem;
+  position: relative;
+  text-align: right;
+  box-sizing: border-box;
+  background-color: #4d63ff;
+  line-height: 0.6rem;
+}
+
+.c20 {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 30%;
+  border-radius: 5rem;
+  position: relative;
+  text-align: right;
+  box-sizing: border-box;
+  background-color: #4d63ff;
+  line-height: 0.6rem;
+}
+
+.c20::before {
+  content: '';
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  border-radius: 50%;
+  -webkit-animation: evMZmO 2.4s ease infinite;
+  animation: evMZmO 2.4s ease infinite;
+}
+
+.c21 {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 100%;
+  border-radius: 5rem;
+  position: relative;
+  text-align: right;
+  box-sizing: border-box;
+  background-color: #4d63ff;
+  line-height: 0.6rem;
+}
+
+.c22 {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 0%;
+  border-radius: 5rem;
+  position: relative;
+  text-align: right;
+  box-sizing: border-box;
+  background-color: #4d63ff;
+  line-height: 1.6rem;
+}
+
+.c23 {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 30%;
+  border-radius: 5rem;
+  position: relative;
+  text-align: right;
+  box-sizing: border-box;
+  background-color: #4d63ff;
+  line-height: 1.6rem;
+}
+
+.c23::before {
+  content: '';
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  border-radius: 50%;
+  -webkit-animation: evMZmO 2.4s ease infinite;
+  animation: evMZmO 2.4s ease infinite;
+}
+
+.c24 {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 30%;
+  border-radius: 5rem;
+  position: relative;
+  text-align: right;
+  box-sizing: border-box;
+  background-color: #4d63ff;
+  line-height: 1.6rem;
+}
+
+.c25 {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 100%;
+  border-radius: 5rem;
+  position: relative;
+  text-align: right;
+  box-sizing: border-box;
+  background-color: #4d63ff;
+  line-height: 1.6rem;
+}
+
+.c5 {
+  display: inline-block;
+  width: 2rem;
+  text-align: left;
+  margin-left: 1rem;
+  white-space: nowrap;
+  word-break: normal;
+  vertical-align: middle;
+  color: #9EA4AE;
+  font-size: 1.4rem;
+}
+
 .c2 {
+  font-size: 1.4rem;
+  min-width: 6rem;
+  opacity: 1;
+}
+
+.c18 {
+  font-size: 1.2rem;
+  min-width: 5.6rem;
+  opacity: 1;
+}
+
+.c12 {
+  text-align: left;
+  margin: 0 0.6rem;
+  white-space: nowrap;
+  word-break: normal;
+  color: #fff;
+  font-size: 1.4rem;
+}
+
+.c6 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -15,6 +288,13 @@ exports[`Progress css 1`] = `
   height: 12rem;
   position: relative;
   font-size: 1.4rem;
+}
+
+.c26 {
+  width: 8rem;
+  height: 8rem;
+  position: relative;
+  font-size: 1.2rem;
 }
 
 .c1 {
@@ -39,7 +319,7 @@ exports[`Progress css 1`] = `
   font-size: 2.4rem;
 }
 
-.c3 {
+.c15 {
   display: inline-block;
   margin-bottom: 0;
   box-sizing: border-box;
@@ -71,12 +351,11 @@ exports[`Progress css 1`] = `
   border-right-color: #cccccc;
 }
 
-.c5 {
-  color: #646A6E;
+.c17 {
   font-size: 1.4rem;
 }
 
-.c4 {
+.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -95,12 +374,3465 @@ exports[`Progress css 1`] = `
 
 <div>
   <div
+    className="c0"
+    size="default"
+  >
+    <svg
+      height={120}
+      width={120}
+    >
+      <circle
+        cx={60}
+        cy={60}
+        fill="none"
+        r={56}
+        stroke="#e8e8e8"
+        strokeWidth={8}
+      />
+      <circle
+        cx={60}
+        cy={60}
+        fill="none"
+        r={56}
+        stroke="#4d63ff"
+        strokeDasharray="105.6 352"
+        strokeLinecap="round"
+        strokeWidth={8}
+        style={
+          Object {
+            "transition": "all .3s",
+          }
+        }
+        transform="matrix(0,-1,1,0,0,120)"
+      />
+    </svg>
+    <span
+      className="c1"
+      size="default"
+      style={
+        Object {
+          "color": "red",
+          "fontSize": "2rem",
+          "fontWeight": 500,
+        }
+      }
+    >
+      30%
+    </span>
+  </div>
+  <div
+    className="c0"
+    size="default"
+  >
+    <svg
+      height={120}
+      width={120}
+    >
+      <circle
+        cx={60}
+        cy={60}
+        fill="none"
+        r={56}
+        stroke="green"
+        strokeWidth={8}
+      />
+      <circle
+        cx={60}
+        cy={60}
+        fill="none"
+        r={56}
+        stroke="red"
+        strokeDasharray="105.6 352"
+        strokeLinecap="round"
+        strokeWidth={8}
+        style={
+          Object {
+            "transition": "all .3s",
+          }
+        }
+        transform="matrix(0,-1,1,0,0,120)"
+      />
+    </svg>
+    <span
+      className="c1"
+      size="default"
+      style={
+        Object {
+          "color": "red",
+          "fontSize": "2rem",
+          "fontWeight": 500,
+        }
+      }
+    >
+      30%
+    </span>
+  </div>
+  <div
+    className="c0"
+    size="default"
+  >
+    <svg
+      height={120}
+      width={120}
+    >
+      <polyline
+        points={
+          Array [
+            "24.00389686313312,102.8984913366431",
+            "21.91544749915196,101.05565564949791",
+            "19.921209604016354,99.11125874214238",
+            "18.026116413618162,97.0701105565773",
+            "16.234855905138318,94.93726037278816",
+            "14.55185920018667,92.71798431811384",
+            "12.981289603337459,90.41777231545363",
+            "11.52703230317578,88.04231450259832",
+            "10.192684761331854,85.59748715628032",
+            "8.981547813278716,83.08933815576432",
+            "7.8966175029069845,80.52407202193612",
+            "6.94057767107666,77.90803456890094",
+            "6.115793316479241,75.24769720605761",
+            "5.424304745234259,72.54964092948242",
+            "4.867822523692375,69.82054004222368",
+            "4.447723246930437,67.06714564377778",
+            "4.165046133406491,64.29626892959165",
+            "4.020490454198317,61.51476434190222",
+            "4.014413803185157,58.72951261359441",
+            "4.14683121245168,55.94740374702363",
+            "4.417415115102429,53.17531996990659",
+            "4.825496155578762,50.42011871044605",
+            "5.370064845473777,47.68861563380217",
+            "6.049774060749186,44.987567781875285",
+            "6.862942374176498,42.323656858107995",
+            "7.80755821475919,39.703472698654856",
+            "8.881284843846245,37.13349697080867",
+            "10.081466135627501,34.620087139009016",
+            "11.40513314771151,32.169460738096475",
+            "12.84901146553171,29.78767999271754",
+            "14.4095293024128,27.480636820927096",
+            "16.082826335260066,25.254038259085803",
+            "17.8647632540139,23.1133923441081",
+            "19.75093200124742,21.06399448798335",
+            "21.736666676575773,19.110914378277755",
+            "23.817055078903905,17.25898343702005",
+            "25.986950857959016,15.512782868995892",
+            "28.24098624504844,13.87663232901572",
+            "30.57358533155046,12.35457923619041",
+            "32.97897786228969,10.950388761648995",
+            "35.45121350967688,9.667534514465423",
+            "37.984176593301584,8.509189948835818",
+            "40.57160120856536,7.478220513762281",
+            "43.20708672693202,6.577176564662764",
+            "45.88411362944946,5.808287054442488",
+            "48.59605963437714,5.173454019632814",
+            "51.33621607902181,4.674247875238066",
+            "54.09780451525775,4.31190352992941",
+            "56.87399347767858,4.087317331195742",
+            "59.657915382900356,4.001044848008604",
+            "62.44268351821098,4.0532994964862965",
+            "65.22140907754097,4.243952011956836",
+            "67.98721820261255,4.572530768725741",
+            "70.73326898711179,5.03822294675777",
+            "73.45276840181961,5.639876542386297",
+            "76.13898909883355,6.37600321807659",
+            "78.78528605331047,7.244781984193267",
+            "81.3851130015631,8.244063703664125",
+            "83.93203863484659,9.371376408397097",
+            "86.4197625087762,10.623931414298852",
+            "88.84213062901948,11.998630219767932",
+            "91.19315067470858,13.492072170597318",
+            "93.4670068219137,15.100562872325654",
+            "95.65807413050811,16.820123329226746",
+            "97.7609324588352,18.646499787330143",
+            "99.77037987175656,20.575174257123464",
+            "101.68144550891262,22.601375689906078",
+            "103.48940188136325,24.720091780146625",
+            "105.18977656618966,26.926081364648446",
+            "106.7783632701279,29.21388738785051",
+            "108.25123223486548,31.577850401191004",
+            "109.60473995826118,34.012122563139435",
+            "110.83553820743997,36.51068210526515",
+            "111.94058230146709,39.06734822855634",
+            "112.91713864311214,41.675796393140374",
+            "113.76279148107139,44.32957396358227",
+            "114.47544888592023,47.02211617105888",
+            "115.0533479250132,49.74676235292261",
+            "115.49505902352942,52.496772429481695",
+            "115.79948950087629,55.2653435772385",
+            "115.96588627370245,58.0456270573394",
+            "115.99383771883394,60.830745157608035",
+            "115.88327469152496,63.61380820625092",
+            "115.63447069650428,66.38793161514799",
+            "115.24804121139437,69.14625291056785",
+            "114.72494216417667,71.88194870917721",
+            "114.06646756846972,74.58825159735095",
+            "113.27424632246934,77.25846687202727",
+            "112.35023817947013,79.88598910169539",
+            "111.29672889993562,82.46431846654846",
+            "110.11632459710987,84.98707683737976",
+            "108.81194529015808,87.4480235534476",
+            "107.38681768078399,89.84107086027808",
+            "105.8444671711928,92.1602989692171",
+            "104.18870914314539,94.39997070147734",
+            "102.42363951967702,96.55454568045536",
+            "100.5536246328284,98.61869403721019",
+            "98.58329042245403,100.58730959519943",
+            "96.51751099282674,102.45552250165787",
+            "94.36139655534717,104.21871127437089",
+            "92.12028078718406,105.87251423404274",
+          ]
+        }
+        stroke-dasharray="5,5"
+        style={
+          Object {
+            "fill": "none",
+            "stroke": "#e8e8e8",
+            "strokeWidth": 8,
+            "transition": "all .3s",
+          }
+        }
+      />
+      <polyline
+        points={
+          Array [
+            "24.00389686313312,102.8984913366431",
+            "21.91544749915196,101.05565564949791",
+            "19.921209604016354,99.11125874214238",
+            "18.026116413618162,97.0701105565773",
+            "16.234855905138318,94.93726037278816",
+            "14.55185920018667,92.71798431811384",
+            "12.981289603337459,90.41777231545363",
+            "11.52703230317578,88.04231450259832",
+            "10.192684761331854,85.59748715628032",
+            "8.981547813278716,83.08933815576432",
+            "7.8966175029069845,80.52407202193612",
+            "6.94057767107666,77.90803456890094",
+            "6.115793316479241,75.24769720605761",
+            "5.424304745234259,72.54964092948242",
+            "4.867822523692375,69.82054004222368",
+            "4.447723246930437,67.06714564377778",
+            "4.165046133406491,64.29626892959165",
+            "4.020490454198317,61.51476434190222",
+            "4.014413803185157,58.72951261359441",
+            "4.14683121245168,55.94740374702363",
+            "4.417415115102429,53.17531996990659",
+            "4.825496155578762,50.42011871044605",
+            "5.370064845473777,47.68861563380217",
+            "6.049774060749186,44.987567781875285",
+            "6.862942374176498,42.323656858107995",
+            "7.80755821475919,39.703472698654856",
+            "8.881284843846245,37.13349697080867",
+            "10.081466135627501,34.620087139009016",
+            "11.40513314771151,32.169460738096475",
+            "12.84901146553171,29.78767999271754",
+            "14.4095293024128,27.480636820927096",
+          ]
+        }
+        stroke-dasharray="5,5"
+        style={
+          Object {
+            "fill": "none",
+            "stroke": "#4d63ff",
+            "strokeWidth": 8,
+            "transition": "all .3s",
+          }
+        }
+      />
+    </svg>
+    <span
+      className="c1"
+      size="default"
+      style={
+        Object {
+          "color": "red",
+          "fontSize": "2rem",
+          "fontWeight": 500,
+        }
+      }
+    >
+      30%
+    </span>
+  </div>
+  <div
+    className="c0"
+    size="default"
+  >
+    <svg
+      height={120}
+      width={120}
+    >
+      <polyline
+        points={
+          Array [
+            "24.00389686313312,102.8984913366431",
+            "21.91544749915196,101.05565564949791",
+            "19.921209604016354,99.11125874214238",
+            "18.026116413618162,97.0701105565773",
+            "16.234855905138318,94.93726037278816",
+            "14.55185920018667,92.71798431811384",
+            "12.981289603337459,90.41777231545363",
+            "11.52703230317578,88.04231450259832",
+            "10.192684761331854,85.59748715628032",
+            "8.981547813278716,83.08933815576432",
+            "7.8966175029069845,80.52407202193612",
+            "6.94057767107666,77.90803456890094",
+            "6.115793316479241,75.24769720605761",
+            "5.424304745234259,72.54964092948242",
+            "4.867822523692375,69.82054004222368",
+            "4.447723246930437,67.06714564377778",
+            "4.165046133406491,64.29626892959165",
+            "4.020490454198317,61.51476434190222",
+            "4.014413803185157,58.72951261359441",
+            "4.14683121245168,55.94740374702363",
+            "4.417415115102429,53.17531996990659",
+            "4.825496155578762,50.42011871044605",
+            "5.370064845473777,47.68861563380217",
+            "6.049774060749186,44.987567781875285",
+            "6.862942374176498,42.323656858107995",
+            "7.80755821475919,39.703472698654856",
+            "8.881284843846245,37.13349697080867",
+            "10.081466135627501,34.620087139009016",
+            "11.40513314771151,32.169460738096475",
+            "12.84901146553171,29.78767999271754",
+            "14.4095293024128,27.480636820927096",
+            "16.082826335260066,25.254038259085803",
+            "17.8647632540139,23.1133923441081",
+            "19.75093200124742,21.06399448798335",
+            "21.736666676575773,19.110914378277755",
+            "23.817055078903905,17.25898343702005",
+            "25.986950857959016,15.512782868995892",
+            "28.24098624504844,13.87663232901572",
+            "30.57358533155046,12.35457923619041",
+            "32.97897786228969,10.950388761648995",
+            "35.45121350967688,9.667534514465423",
+            "37.984176593301584,8.509189948835818",
+            "40.57160120856536,7.478220513762281",
+            "43.20708672693202,6.577176564662764",
+            "45.88411362944946,5.808287054442488",
+            "48.59605963437714,5.173454019632814",
+            "51.33621607902181,4.674247875238066",
+            "54.09780451525775,4.31190352992941",
+            "56.87399347767858,4.087317331195742",
+            "59.657915382900356,4.001044848008604",
+            "62.44268351821098,4.0532994964862965",
+            "65.22140907754097,4.243952011956836",
+            "67.98721820261255,4.572530768725741",
+            "70.73326898711179,5.03822294675777",
+            "73.45276840181961,5.639876542386297",
+            "76.13898909883355,6.37600321807659",
+            "78.78528605331047,7.244781984193267",
+            "81.3851130015631,8.244063703664125",
+            "83.93203863484659,9.371376408397097",
+            "86.4197625087762,10.623931414298852",
+            "88.84213062901948,11.998630219767932",
+            "91.19315067470858,13.492072170597318",
+            "93.4670068219137,15.100562872325654",
+            "95.65807413050811,16.820123329226746",
+            "97.7609324588352,18.646499787330143",
+            "99.77037987175656,20.575174257123464",
+            "101.68144550891262,22.601375689906078",
+            "103.48940188136325,24.720091780146625",
+            "105.18977656618966,26.926081364648446",
+            "106.7783632701279,29.21388738785051",
+            "108.25123223486548,31.577850401191004",
+            "109.60473995826118,34.012122563139435",
+            "110.83553820743997,36.51068210526515",
+            "111.94058230146709,39.06734822855634",
+            "112.91713864311214,41.675796393140374",
+            "113.76279148107139,44.32957396358227",
+            "114.47544888592023,47.02211617105888",
+            "115.0533479250132,49.74676235292261",
+            "115.49505902352942,52.496772429481695",
+            "115.79948950087629,55.2653435772385",
+            "115.96588627370245,58.0456270573394",
+            "115.99383771883394,60.830745157608035",
+            "115.88327469152496,63.61380820625092",
+            "115.63447069650428,66.38793161514799",
+            "115.24804121139437,69.14625291056785",
+            "114.72494216417667,71.88194870917721",
+            "114.06646756846972,74.58825159735095",
+            "113.27424632246934,77.25846687202727",
+            "112.35023817947013,79.88598910169539",
+            "111.29672889993562,82.46431846654846",
+            "110.11632459710987,84.98707683737976",
+            "108.81194529015808,87.4480235534476",
+            "107.38681768078399,89.84107086027808",
+            "105.8444671711928,92.1602989692171",
+            "104.18870914314539,94.39997070147734",
+            "102.42363951967702,96.55454568045536",
+            "100.5536246328284,98.61869403721019",
+            "98.58329042245403,100.58730959519943",
+            "96.51751099282674,102.45552250165787",
+            "94.36139655534717,104.21871127437089",
+            "92.12028078718406,105.87251423404274",
+          ]
+        }
+        stroke-dasharray="5,5"
+        style={
+          Object {
+            "fill": "none",
+            "stroke": "green",
+            "strokeWidth": 8,
+            "transition": "all .3s",
+          }
+        }
+      />
+      <polyline
+        points={
+          Array [
+            "24.00389686313312,102.8984913366431",
+            "21.91544749915196,101.05565564949791",
+            "19.921209604016354,99.11125874214238",
+            "18.026116413618162,97.0701105565773",
+            "16.234855905138318,94.93726037278816",
+            "14.55185920018667,92.71798431811384",
+            "12.981289603337459,90.41777231545363",
+            "11.52703230317578,88.04231450259832",
+            "10.192684761331854,85.59748715628032",
+            "8.981547813278716,83.08933815576432",
+            "7.8966175029069845,80.52407202193612",
+            "6.94057767107666,77.90803456890094",
+            "6.115793316479241,75.24769720605761",
+            "5.424304745234259,72.54964092948242",
+            "4.867822523692375,69.82054004222368",
+            "4.447723246930437,67.06714564377778",
+            "4.165046133406491,64.29626892959165",
+            "4.020490454198317,61.51476434190222",
+            "4.014413803185157,58.72951261359441",
+            "4.14683121245168,55.94740374702363",
+            "4.417415115102429,53.17531996990659",
+            "4.825496155578762,50.42011871044605",
+            "5.370064845473777,47.68861563380217",
+            "6.049774060749186,44.987567781875285",
+            "6.862942374176498,42.323656858107995",
+            "7.80755821475919,39.703472698654856",
+            "8.881284843846245,37.13349697080867",
+            "10.081466135627501,34.620087139009016",
+            "11.40513314771151,32.169460738096475",
+            "12.84901146553171,29.78767999271754",
+            "14.4095293024128,27.480636820927096",
+          ]
+        }
+        stroke-dasharray="5,5"
+        style={
+          Object {
+            "fill": "none",
+            "stroke": "red",
+            "strokeWidth": 8,
+            "transition": "all .3s",
+          }
+        }
+      />
+    </svg>
+    <span
+      className="c1"
+      size="default"
+      style={
+        Object {
+          "color": "red",
+          "fontSize": "2rem",
+          "fontWeight": 500,
+        }
+      }
+    >
+      30%
+    </span>
+  </div>
+  <div
+    className="c2"
+    size="default"
+    style={Object {}}
+    type="line"
+  >
+    <div
+      className="c3"
+      size="default"
+      style={Object {}}
+    >
+      <div
+        className="c4"
+        size="default"
+        style={
+          Object {
+            "backgroundColor": "#56c22d",
+            "height": "0.8rem",
+          }
+        }
+      />
+    </div>
+    <span
+      className="c5"
+      size="default"
+      style={
+        Object {
+          "color": "#56c22d",
+          "fontSize": "1.4rem",
+        }
+      }
+      type="line"
+    >
+      <i
+        className="lugia-icon-direction_play_circle_o   c6"
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "#56c22d",
+            "cursor": "default",
+            "fontSize": "1.4rem",
+          }
+        }
+      />
+    </span>
+  </div>
+  <div
+    className="c2"
+    size="default"
+    style={Object {}}
+    type="line"
+  >
+    <div
+      className="c3"
+      size="default"
+      style={Object {}}
+    >
+      <div
+        className="c4"
+        size="default"
+        style={
+          Object {
+            "backgroundColor": "#f22735",
+            "height": "0.8rem",
+          }
+        }
+      />
+    </div>
+    <span
+      className="c5"
+      size="default"
+      style={
+        Object {
+          "color": "#f22735",
+          "fontSize": "1.4rem",
+        }
+      }
+      type="line"
+    >
+      <i
+        className="lugia-icon-direction_play_circle_o   c6"
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "#f22735",
+            "cursor": "default",
+            "fontSize": "1.4rem",
+          }
+        }
+      />
+    </span>
+  </div>
+  <div
+    className="c0"
+    size="default"
+  >
+    <svg
+      height={120}
+      width={120}
+    >
+      <circle
+        cx={60}
+        cy={60}
+        fill="none"
+        r={56}
+        stroke="#e8e8e8"
+        strokeWidth={8}
+      />
+      <circle
+        cx={60}
+        cy={60}
+        fill="none"
+        r={56}
+        stroke="#56c22d"
+        strokeDasharray="176 352"
+        strokeLinecap="round"
+        strokeWidth={8}
+        style={
+          Object {
+            "transition": "all .3s",
+          }
+        }
+        transform="matrix(0,-1,1,0,0,120)"
+      />
+    </svg>
+    <span
+      className="c1"
+      size="default"
+      style={
+        Object {
+          "color": "#56c22d",
+        }
+      }
+    >
+      <i
+        className="lugia-icon-direction_play_circle_o   c6"
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "#56c22d",
+            "cursor": "default",
+            "fontSize": "3rem",
+          }
+        }
+      />
+    </span>
+  </div>
+  <div
+    className="c0"
+    size="default"
+  >
+    <svg
+      height={120}
+      width={120}
+    >
+      <circle
+        cx={60}
+        cy={60}
+        fill="none"
+        r={56}
+        stroke="#e8e8e8"
+        strokeWidth={8}
+      />
+      <circle
+        cx={60}
+        cy={60}
+        fill="none"
+        r={56}
+        stroke="#f22735"
+        strokeDasharray="176 352"
+        strokeLinecap="round"
+        strokeWidth={8}
+        style={
+          Object {
+            "transition": "all .3s",
+          }
+        }
+        transform="matrix(0,-1,1,0,0,120)"
+      />
+    </svg>
+    <span
+      className="c1"
+      size="default"
+      style={
+        Object {
+          "color": "#f22735",
+        }
+      }
+    >
+      <i
+        className="lugia-icon-direction_play_circle_o   c6"
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "#f22735",
+            "cursor": "default",
+            "fontSize": "3rem",
+          }
+        }
+      />
+    </span>
+  </div>
+  <div
+    className="c2"
+    size="default"
+    style={
+      Object {
+        "backgroundColor": "red",
+        "height": "5rem",
+        "marginBottom": "1rem",
+        "marginLeft": "1rem",
+        "marginRight": "1rem",
+        "marginTop": "1rem",
+        "opacity": 0.8,
+        "paddingBottom": "1rem",
+        "paddingLeft": "1rem",
+        "paddingRight": "1rem",
+        "paddingTop": "1rem",
+        "width": "30rem",
+      }
+    }
+    type="line"
+  >
+    <div
+      className="c3"
+      size="default"
+      style={
+        Object {
+          "backgroundColor": "green",
+          "borderBottomColor": "#4d63ff",
+          "borderBottomLeftRadius": "5rem",
+          "borderBottomRightRadius": "5rem",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.1rem",
+          "borderLeftColor": "#4d63ff",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.1rem",
+          "borderRightColor": "#4d63ff",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.1rem",
+          "borderTopColor": "#4d63ff",
+          "borderTopLeftRadius": "5rem",
+          "borderTopRightRadius": "5rem",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.1rem",
+          "boxShadow": "1px 2px 2px 2px #e8e8e8",
+        }
+      }
+    >
+      <div
+        className="c7"
+        size="default"
+        style={
+          Object {
+            "backgroundColor": "blue",
+            "borderBottomColor": "#ccc",
+            "borderBottomLeftRadius": "5rem",
+            "borderBottomRightRadius": "5rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "#ccc",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "#ccc",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#ccc",
+            "borderTopLeftRadius": "5rem",
+            "borderTopRightRadius": "5rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "boxShadow": "1px 2px 2px 2px green",
+            "height": "2.5rem",
+          }
+        }
+      />
+    </div>
+    <span
+      className="c5"
+      size="default"
+      style={
+        Object {
+          "color": "green",
+          "fontSize": "1.6rem",
+          "fontWeight": 500,
+        }
+      }
+      type="line"
+    >
+      30%
+    </span>
+  </div>
+  <div
+    className="c2"
+    size="default"
+    style={
+      Object {
+        "backgroundColor": "red",
+        "height": "5rem",
+        "marginBottom": "1rem",
+        "marginLeft": "1rem",
+        "marginRight": "1rem",
+        "marginTop": "1rem",
+        "opacity": 0.8,
+        "paddingBottom": "1rem",
+        "paddingLeft": "1rem",
+        "paddingRight": "1rem",
+        "paddingTop": "1rem",
+        "width": "30rem",
+      }
+    }
+    type="line"
+  >
+    <div
+      className="c3"
+      size="default"
+      style={
+        Object {
+          "backgroundColor": "green",
+          "borderBottomColor": "#4d63ff",
+          "borderBottomLeftRadius": "5rem",
+          "borderBottomRightRadius": "5rem",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.1rem",
+          "borderLeftColor": "#4d63ff",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.1rem",
+          "borderRightColor": "#4d63ff",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.1rem",
+          "borderTopColor": "#4d63ff",
+          "borderTopLeftRadius": "5rem",
+          "borderTopRightRadius": "5rem",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.1rem",
+          "boxShadow": "1px 2px 2px 2px #e8e8e8",
+        }
+      }
+    >
+      <div
+        className="c8"
+        size="default"
+        style={
+          Object {
+            "backgroundColor": "green",
+            "borderBottomColor": "red",
+            "borderBottomLeftRadius": "5rem",
+            "borderBottomRightRadius": "5rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "red",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "red",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "red",
+            "borderTopLeftRadius": "5rem",
+            "borderTopRightRadius": "5rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "boxShadow": "1px 2px 2px 2px green",
+            "height": "2.5rem",
+          }
+        }
+      />
+    </div>
+    <span
+      className="c5"
+      size="default"
+      style={
+        Object {
+          "color": "green",
+          "fontSize": "1.6rem",
+          "fontWeight": 500,
+        }
+      }
+      type="line"
+    >
+      <i
+        className="lugia-icon-reminder_check_circle   c6"
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "yellow",
+            "cursor": "default",
+            "fontSize": "1.6rem",
+          }
+        }
+      />
+    </span>
+  </div>
+  <div
+    className="c2"
+    size="default"
+    style={
+      Object {
+        "backgroundColor": "red",
+        "height": "5rem",
+        "marginBottom": "1rem",
+        "marginLeft": "1rem",
+        "marginRight": "1rem",
+        "marginTop": "1rem",
+        "opacity": 0.8,
+        "paddingBottom": "1rem",
+        "paddingLeft": "1rem",
+        "paddingRight": "1rem",
+        "paddingTop": "1rem",
+        "width": "30rem",
+      }
+    }
+    type="line"
+  >
+    <div
+      className="c3"
+      size="default"
+      style={
+        Object {
+          "backgroundColor": "green",
+          "borderBottomColor": "#4d63ff",
+          "borderBottomLeftRadius": "5rem",
+          "borderBottomRightRadius": "5rem",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.1rem",
+          "borderLeftColor": "#4d63ff",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.1rem",
+          "borderRightColor": "#4d63ff",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.1rem",
+          "borderTopColor": "#4d63ff",
+          "borderTopLeftRadius": "5rem",
+          "borderTopRightRadius": "5rem",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.1rem",
+          "boxShadow": "1px 2px 2px 2px #e8e8e8",
+        }
+      }
+    >
+      <div
+        className="c8"
+        size="default"
+        style={
+          Object {
+            "backgroundColor": "red",
+            "borderBottomColor": "green",
+            "borderBottomLeftRadius": "5rem",
+            "borderBottomRightRadius": "5rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "green",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "green",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "green",
+            "borderTopLeftRadius": "5rem",
+            "borderTopRightRadius": "5rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "boxShadow": "1px 2px 2px 2px red",
+            "height": "2.5rem",
+          }
+        }
+      />
+    </div>
+    <span
+      className="c5"
+      size="default"
+      style={
+        Object {
+          "color": "green",
+          "fontSize": "1.6rem",
+          "fontWeight": 500,
+        }
+      }
+      type="line"
+    >
+      <i
+        className="lugia-icon-reminder_close_circle   c6"
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "green",
+            "cursor": "default",
+            "fontSize": "2rem",
+          }
+        }
+      />
+    </span>
+  </div>
+  <div
+    className="c2"
+    size="default"
+    style={
+      Object {
+        "backgroundColor": "red",
+        "height": "5rem",
+        "marginBottom": "1rem",
+        "marginLeft": "1rem",
+        "marginRight": "1rem",
+        "marginTop": "1rem",
+        "opacity": 0.8,
+        "paddingBottom": "1rem",
+        "paddingLeft": "1rem",
+        "paddingRight": "1rem",
+        "paddingTop": "1rem",
+        "width": "30rem",
+      }
+    }
+    type="line"
+  >
+    <div
+      className="c3"
+      size="default"
+      style={
+        Object {
+          "backgroundColor": "green",
+          "borderBottomColor": "#4d63ff",
+          "borderBottomLeftRadius": "5rem",
+          "borderBottomRightRadius": "5rem",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.1rem",
+          "borderLeftColor": "#4d63ff",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.1rem",
+          "borderRightColor": "#4d63ff",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.1rem",
+          "borderTopColor": "#4d63ff",
+          "borderTopLeftRadius": "5rem",
+          "borderTopRightRadius": "5rem",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.1rem",
+          "boxShadow": "1px 2px 2px 2px #e8e8e8",
+        }
+      }
+    >
+      <div
+        className="c9"
+        size="default"
+        style={
+          Object {
+            "backgroundColor": "green",
+            "borderBottomColor": "red",
+            "borderBottomLeftRadius": "5rem",
+            "borderBottomRightRadius": "5rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "red",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "red",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "red",
+            "borderTopLeftRadius": "5rem",
+            "borderTopRightRadius": "5rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "boxShadow": "1px 2px 2px 2px green",
+            "height": "2.5rem",
+          }
+        }
+      />
+    </div>
+    <span
+      className="c5"
+      size="default"
+      style={
+        Object {
+          "color": "green",
+          "fontSize": "1.6rem",
+          "fontWeight": 500,
+        }
+      }
+      type="line"
+    >
+      <i
+        className="lugia-icon-reminder_check_circle   c6"
+        onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "color": "yellow",
+            "cursor": "default",
+            "fontSize": "1.6rem",
+          }
+        }
+      />
+    </span>
+  </div>
+  <div
+    className="c2"
+    size="default"
+    style={
+      Object {
+        "backgroundColor": "red",
+        "height": "5rem",
+        "marginBottom": "1rem",
+        "marginLeft": "1rem",
+        "marginRight": "1rem",
+        "marginTop": "1rem",
+        "opacity": 0.8,
+        "paddingBottom": "1rem",
+        "paddingLeft": "1rem",
+        "paddingRight": "1rem",
+        "paddingTop": "1rem",
+        "width": "30rem",
+      }
+    }
+    type="line"
+  >
+    <div
+      className="c10"
+      size="default"
+      style={
+        Object {
+          "backgroundColor": "green",
+          "borderBottomColor": "#4d63ff",
+          "borderBottomLeftRadius": "5rem",
+          "borderBottomRightRadius": "5rem",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.1rem",
+          "borderLeftColor": "#4d63ff",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.1rem",
+          "borderRightColor": "#4d63ff",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.1rem",
+          "borderTopColor": "#4d63ff",
+          "borderTopLeftRadius": "5rem",
+          "borderTopRightRadius": "5rem",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.1rem",
+          "boxShadow": "1px 2px 2px 2px #e8e8e8",
+        }
+      }
+    >
+      <div
+        className="c11"
+        size="default"
+        style={
+          Object {
+            "backgroundColor": "blue",
+            "borderBottomColor": "#ccc",
+            "borderBottomLeftRadius": "5rem",
+            "borderBottomRightRadius": "5rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "#ccc",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "#ccc",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#ccc",
+            "borderTopLeftRadius": "5rem",
+            "borderTopRightRadius": "5rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "boxShadow": "1px 2px 2px 2px green",
+            "height": "2.5rem",
+          }
+        }
+      >
+        <span
+          className="c12"
+          size="default"
+          style={
+            Object {
+              "color": "red",
+              "fontSize": "1.6rem",
+              "fontWeight": 500,
+            }
+          }
+        >
+          30%
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    style={
+      Object {
+        "margin": "50px",
+        "width": "300px",
+      }
+    }
+  >
+    <h1>
+      line
+    </h1>
+    <p>
+      props: percent=
+      30
+    </p>
+    <br />
+    <div
+      className="c2"
+      size="default"
+      style={Object {}}
+      type="line"
+    >
+      <div
+        className="c3"
+        size="default"
+        style={Object {}}
+      >
+        <div
+          className="c4"
+          size="default"
+          style={
+            Object {
+              "backgroundColor": "#4d63ff",
+              "height": "0.8rem",
+            }
+          }
+        />
+      </div>
+      <span
+        className="c5"
+        size="default"
+        style={
+          Object {
+            "color": "#363B40",
+            "fontSize": "1.4rem",
+          }
+        }
+        type="line"
+      >
+        30%
+      </span>
+    </div>
+    <br />
+    <p>
+      props: percent=
+      30
+      active 
+    </p>
+    <br />
+    <div
+      className="c2"
+      size="default"
+      style={Object {}}
+      type="line"
+    >
+      <div
+        className="c3"
+        size="default"
+        style={Object {}}
+      >
+        <div
+          className="c13"
+          size="default"
+          style={
+            Object {
+              "backgroundColor": "#4d63ff",
+              "height": "0.8rem",
+            }
+          }
+        />
+      </div>
+      <span
+        className="c5"
+        size="default"
+        style={
+          Object {
+            "color": "#363B40",
+            "fontSize": "1.4rem",
+          }
+        }
+        type="line"
+      >
+        30%
+      </span>
+    </div>
+    <br />
+    <p>
+      props: percent=
+      30
+       status="success" format= percent =&gt; percent + '--'
+    </p>
+    <br />
+    <div
+      className="c2"
+      size="default"
+      style={Object {}}
+      type="line"
+    >
+      <div
+        className="c3"
+        size="default"
+        style={Object {}}
+      >
+        <div
+          className="c4"
+          size="default"
+          style={
+            Object {
+              "backgroundColor": "#56c22d",
+              "height": "0.8rem",
+            }
+          }
+        />
+      </div>
+      <span
+        className="c5"
+        size="default"
+        style={
+          Object {
+            "color": "#56c22d",
+            "fontSize": "1.4rem",
+          }
+        }
+        type="line"
+      >
+        30--
+      </span>
+    </div>
+    <br />
+    <p>
+      props: percent=
+      30
+       status="success"
+    </p>
+    <br />
+    <div
+      className="c2"
+      size="default"
+      style={Object {}}
+      type="line"
+    >
+      <div
+        className="c3"
+        size="default"
+        style={Object {}}
+      >
+        <div
+          className="c4"
+          size="default"
+          style={
+            Object {
+              "backgroundColor": "#56c22d",
+              "height": "0.8rem",
+            }
+          }
+        />
+      </div>
+      <span
+        className="c5"
+        size="default"
+        style={
+          Object {
+            "color": "#56c22d",
+            "fontSize": "1.4rem",
+          }
+        }
+        type="line"
+      >
+        <i
+          className="lugia-icon-reminder_check_circle   c6"
+          onClick={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "color": "#56c22d",
+              "cursor": "default",
+              "fontSize": "1.4rem",
+            }
+          }
+        />
+      </span>
+    </div>
+    <br />
+    <p>
+      props: percent=
+      30
+       status="error"
+    </p>
+    <br />
+    <div
+      className="c2"
+      size="default"
+      style={Object {}}
+      type="line"
+    >
+      <div
+        className="c3"
+        size="default"
+        style={Object {}}
+      >
+        <div
+          className="c4"
+          size="default"
+          style={
+            Object {
+              "backgroundColor": "#f22735",
+              "height": "0.8rem",
+            }
+          }
+        />
+      </div>
+      <span
+        className="c5"
+        size="default"
+        style={
+          Object {
+            "color": "#f22735",
+            "fontSize": "1.4rem",
+          }
+        }
+        type="line"
+      >
+        <i
+          className="lugia-icon-reminder_close_circle   c6"
+          onClick={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "color": "#f22735",
+              "cursor": "default",
+              "fontSize": "1.4rem",
+            }
+          }
+        />
+      </span>
+    </div>
+    <br />
+    <p>
+      props: percent=
+      100
+       status="error"
+    </p>
+    <br />
+    <div
+      className="c2"
+      size="default"
+      style={Object {}}
+      type="line"
+    >
+      <div
+        className="c3"
+        size="default"
+        style={Object {}}
+      >
+        <div
+          className="c14"
+          size="default"
+          style={
+            Object {
+              "backgroundColor": "#f22735",
+              "height": "0.8rem",
+            }
+          }
+        />
+      </div>
+      <span
+        className="c5"
+        size="default"
+        style={
+          Object {
+            "color": "#f22735",
+            "fontSize": "1.4rem",
+          }
+        }
+        type="line"
+      >
+        <i
+          className="lugia-icon-reminder_close_circle   c6"
+          onClick={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "color": "#f22735",
+              "cursor": "default",
+              "fontSize": "1.4rem",
+            }
+          }
+        />
+      </span>
+    </div>
+    <br />
+    <p>
+      props: percent=this.state.percent active 
+    </p>
+    <br />
+    <div
+      className="c2"
+      size="default"
+      style={Object {}}
+      type="line"
+    >
+      <div
+        className="c3"
+        size="default"
+        style={Object {}}
+      >
+        <div
+          className="c13"
+          size="default"
+          style={
+            Object {
+              "backgroundColor": "#4d63ff",
+              "height": "0.8rem",
+            }
+          }
+        />
+      </div>
+      <span
+        className="c5"
+        size="default"
+        style={
+          Object {
+            "color": "#363B40",
+            "fontSize": "1.4rem",
+          }
+        }
+        type="line"
+      >
+        30%
+      </span>
+    </div>
+    <button
+      className="c15"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      onMouseUp={[Function]}
+      size="default"
+      style={
+        Object {
+          "backgroundColor": "#ffffff",
+          "borderBottomColor": "#cccccc",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.1rem",
+          "borderLeftColor": "#cccccc",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.1rem",
+          "borderRightColor": "#cccccc",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.1rem",
+          "borderTopColor": "#cccccc",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.1rem",
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
+    >
+      <span
+        className="c16"
+      >
+        <span
+          className="c17"
+          style={
+            Object {
+              "color": "#363B40",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          +10
+        </span>
+      </span>
+    </button>
+     
+    <button
+      className="c15"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      onMouseUp={[Function]}
+      size="default"
+      style={
+        Object {
+          "backgroundColor": "#ffffff",
+          "borderBottomColor": "#cccccc",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.1rem",
+          "borderLeftColor": "#cccccc",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.1rem",
+          "borderRightColor": "#cccccc",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.1rem",
+          "borderTopColor": "#cccccc",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.1rem",
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
+    >
+      <span
+        className="c16"
+      >
+        <span
+          className="c17"
+          style={
+            Object {
+              "color": "#363B40",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          -10
+        </span>
+      </span>
+    </button>
+    <br />
+    <p>
+      props: percent=
+      30
+       showInfo=false
+    </p>
+    <br />
+    <div
+      className="c2"
+      size="default"
+      style={Object {}}
+      type="line"
+    >
+      <div
+        className="c10"
+        size="default"
+        style={Object {}}
+      >
+        <div
+          className="c4"
+          size="default"
+          style={
+            Object {
+              "backgroundColor": "#4d63ff",
+              "height": "0.8rem",
+            }
+          }
+        />
+      </div>
+    </div>
+    <br />
+    <p>
+      Theme===&gt;&gt;&gt; props: percent=
+      30
+    </p>
+    <br />
+    <div
+      className="c2"
+      size="default"
+      style={
+        Object {
+          "backgroundColor": "red",
+          "height": "5rem",
+          "marginBottom": "1rem",
+          "marginLeft": "1rem",
+          "marginRight": "1rem",
+          "marginTop": "1rem",
+          "opacity": 0.8,
+          "paddingBottom": "1rem",
+          "paddingLeft": "1rem",
+          "paddingRight": "1rem",
+          "paddingTop": "1rem",
+          "width": "30rem",
+        }
+      }
+      type="line"
+    >
+      <div
+        className="c3"
+        size="default"
+        style={
+          Object {
+            "backgroundColor": "green",
+            "borderBottomColor": "#4d63ff",
+            "borderBottomLeftRadius": "5rem",
+            "borderBottomRightRadius": "5rem",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": "0.1rem",
+            "borderLeftColor": "#4d63ff",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": "0.1rem",
+            "borderRightColor": "#4d63ff",
+            "borderRightStyle": "solid",
+            "borderRightWidth": "0.1rem",
+            "borderTopColor": "#4d63ff",
+            "borderTopLeftRadius": "5rem",
+            "borderTopRightRadius": "5rem",
+            "borderTopStyle": "solid",
+            "borderTopWidth": "0.1rem",
+            "boxShadow": "1px 2px 2px 2px #e8e8e8",
+          }
+        }
+      >
+        <div
+          className="c7"
+          size="default"
+          style={
+            Object {
+              "backgroundColor": "blue",
+              "borderBottomColor": "#ccc",
+              "borderBottomLeftRadius": "5rem",
+              "borderBottomRightRadius": "5rem",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "borderLeftColor": "#ccc",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": "0.1rem",
+              "borderRightColor": "#ccc",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.1rem",
+              "borderTopColor": "#ccc",
+              "borderTopLeftRadius": "5rem",
+              "borderTopRightRadius": "5rem",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.1rem",
+              "boxShadow": "1px 2px 2px 2px green",
+              "height": "2.5rem",
+            }
+          }
+        />
+      </div>
+      <span
+        className="c5"
+        size="default"
+        style={
+          Object {
+            "color": "green",
+            "fontSize": "1.6rem",
+            "fontWeight": 500,
+          }
+        }
+        type="line"
+      >
+        30%
+      </span>
+    </div>
+    <div
+      style={
+        Object {
+          "margin": "50px 0",
+          "width": "200px",
+        }
+      }
+    >
+      <p>
+        props: size=small percent=
+        30
+      </p>
+      <br />
+      <div
+        className="c18"
+        size="small"
+        style={Object {}}
+        type="line"
+      >
+        <div
+          className="c3"
+          size="small"
+          style={Object {}}
+        >
+          <div
+            className="c19"
+            size="small"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+                "height": "0.6rem",
+              }
+            }
+          />
+        </div>
+        <span
+          className="c5"
+          size="small"
+          style={
+            Object {
+              "color": "#363B40",
+              "fontSize": "1.4rem",
+            }
+          }
+          type="line"
+        >
+          30%
+        </span>
+      </div>
+      <br />
+      <p>
+        props: size=small percent=
+        30
+         active 
+      </p>
+      <br />
+      <div
+        className="c18"
+        size="small"
+        style={Object {}}
+        type="line"
+      >
+        <div
+          className="c3"
+          size="small"
+          style={Object {}}
+        >
+          <div
+            className="c20"
+            size="small"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+                "height": "0.6rem",
+              }
+            }
+          />
+        </div>
+        <span
+          className="c5"
+          size="small"
+          style={
+            Object {
+              "color": "#363B40",
+              "fontSize": "1.4rem",
+            }
+          }
+          type="line"
+        >
+          30%
+        </span>
+      </div>
+      <br />
+      <p>
+        props: size=small percent=
+        30
+         status="success"
+      </p>
+      <br />
+      <div
+        className="c18"
+        size="small"
+        style={Object {}}
+        type="line"
+      >
+        <div
+          className="c3"
+          size="small"
+          style={Object {}}
+        >
+          <div
+            className="c19"
+            size="small"
+            style={
+              Object {
+                "backgroundColor": "#56c22d",
+                "height": "0.6rem",
+              }
+            }
+          />
+        </div>
+        <span
+          className="c5"
+          size="small"
+          style={
+            Object {
+              "color": "#56c22d",
+              "fontSize": "1.4rem",
+            }
+          }
+          type="line"
+        >
+          <i
+            className="lugia-icon-reminder_check_circle   c6"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#56c22d",
+                "cursor": "default",
+                "fontSize": "1.2rem",
+              }
+            }
+          />
+        </span>
+      </div>
+      <br />
+      <p>
+        props: size=small percent=
+        30
+         status="error"
+      </p>
+      <br />
+      <div
+        className="c18"
+        size="small"
+        style={Object {}}
+        type="line"
+      >
+        <div
+          className="c3"
+          size="small"
+          style={Object {}}
+        >
+          <div
+            className="c19"
+            size="small"
+            style={
+              Object {
+                "backgroundColor": "#f22735",
+                "height": "0.6rem",
+              }
+            }
+          />
+        </div>
+        <span
+          className="c5"
+          size="small"
+          style={
+            Object {
+              "color": "#f22735",
+              "fontSize": "1.4rem",
+            }
+          }
+          type="line"
+        >
+          <i
+            className="lugia-icon-reminder_close_circle   c6"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#f22735",
+                "cursor": "default",
+                "fontSize": "1.2rem",
+              }
+            }
+          />
+        </span>
+      </div>
+      <br />
+      <p>
+        props: size=small percent=
+        100
+         status="error"
+      </p>
+      <br />
+      <div
+        className="c18"
+        size="small"
+        style={Object {}}
+        type="line"
+      >
+        <div
+          className="c3"
+          size="small"
+          style={Object {}}
+        >
+          <div
+            className="c21"
+            size="small"
+            style={
+              Object {
+                "backgroundColor": "#f22735",
+                "height": "0.6rem",
+              }
+            }
+          />
+        </div>
+        <span
+          className="c5"
+          size="small"
+          style={
+            Object {
+              "color": "#f22735",
+              "fontSize": "1.4rem",
+            }
+          }
+          type="line"
+        >
+          <i
+            className="lugia-icon-reminder_close_circle   c6"
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "color": "#f22735",
+                "cursor": "default",
+                "fontSize": "1.2rem",
+              }
+            }
+          />
+        </span>
+      </div>
+    </div>
+    <div
+      style={
+        Object {
+          "margin": "50px 0",
+          "width": "300px",
+        }
+      }
+    >
+      <p>
+        percent=
+        0
+         showType="inside"
+      </p>
+      <br />
+      <div
+        className="c2"
+        size="default"
+        style={Object {}}
+        type="line"
+      >
+        <div
+          className="c10"
+          size="default"
+          style={Object {}}
+        >
+          <div
+            className="c22"
+            size="default"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+                "height": "1.6rem",
+              }
+            }
+          >
+            <span
+              className="c12"
+              size="default"
+              style={Object {}}
+            >
+              0%
+            </span>
+          </div>
+        </div>
+      </div>
+      <br />
+      <p>
+        percent=
+        30
+         showType="inside" active
+      </p>
+      <br />
+      <div
+        className="c2"
+        size="default"
+        style={Object {}}
+        type="line"
+      >
+        <div
+          className="c10"
+          size="default"
+          style={Object {}}
+        >
+          <div
+            className="c23"
+            size="default"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+                "height": "1.6rem",
+              }
+            }
+          >
+            <span
+              className="c12"
+              size="default"
+              style={Object {}}
+            >
+              30%
+            </span>
+          </div>
+        </div>
+      </div>
+      <br />
+      <p>
+        percent=
+        30
+         showType="inside"
+      </p>
+      <br />
+      <div
+        className="c2"
+        size="default"
+        style={Object {}}
+        type="line"
+      >
+        <div
+          className="c10"
+          size="default"
+          style={Object {}}
+        >
+          <div
+            className="c24"
+            size="default"
+            style={
+              Object {
+                "backgroundColor": "#4d63ff",
+                "height": "1.6rem",
+              }
+            }
+          >
+            <span
+              className="c12"
+              size="default"
+              style={Object {}}
+            >
+              30%
+            </span>
+          </div>
+        </div>
+      </div>
+      <br />
+      <p>
+        percent=
+        30
+         showType="inside" status="success"
+      </p>
+      <br />
+      <div
+        className="c2"
+        size="default"
+        style={Object {}}
+        type="line"
+      >
+        <div
+          className="c10"
+          size="default"
+          style={Object {}}
+        >
+          <div
+            className="c25"
+            size="default"
+            style={
+              Object {
+                "backgroundColor": "#56c22d",
+                "height": "1.6rem",
+              }
+            }
+          >
+            <span
+              className="c12"
+              size="default"
+              style={Object {}}
+            >
+              <i
+                className="lugia-icon-reminder_check   c6"
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={
+                  Object {
+                    "color": "#999999",
+                    "cursor": "default",
+                    "fontSize": "1.4rem",
+                  }
+                }
+              />
+            </span>
+          </div>
+        </div>
+      </div>
+      <br />
+      <p>
+        percent=
+        30
+         showType="inside" status="error"
+      </p>
+      <br />
+      <div
+        className="c2"
+        size="default"
+        style={Object {}}
+        type="line"
+      >
+        <div
+          className="c10"
+          size="default"
+          style={Object {}}
+        >
+          <div
+            className="c24"
+            size="default"
+            style={
+              Object {
+                "backgroundColor": "#f22735",
+                "height": "1.6rem",
+              }
+            }
+          >
+            <span
+              className="c12"
+              size="default"
+              style={Object {}}
+            >
+              <i
+                className="lugia-icon-reminder_close   c6"
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={
+                  Object {
+                    "color": "#f22735",
+                    "cursor": "default",
+                    "fontSize": "1.4rem",
+                  }
+                }
+              />
+            </span>
+          </div>
+        </div>
+      </div>
+      <br />
+      <br />
+      <p>
+        percent=
+        100
+         showType="inside" status="error"
+      </p>
+      <br />
+      <div
+        className="c2"
+        size="default"
+        style={Object {}}
+        type="line"
+      >
+        <div
+          className="c10"
+          size="default"
+          style={Object {}}
+        >
+          <div
+            className="c25"
+            size="default"
+            style={
+              Object {
+                "backgroundColor": "#f22735",
+                "height": "1.6rem",
+              }
+            }
+          >
+            <span
+              className="c12"
+              size="default"
+              style={Object {}}
+            >
+              <i
+                className="lugia-icon-reminder_close   c6"
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                style={
+                  Object {
+                    "color": "#f22735",
+                    "cursor": "default",
+                    "fontSize": "1.4rem",
+                  }
+                }
+              />
+            </span>
+          </div>
+        </div>
+      </div>
+      <br />
+      <p>
+        Theme===&gt;&gt;&gt; props: percent=
+        30
+      </p>
+      <br />
+      <div
+        className="c2"
+        size="default"
+        style={
+          Object {
+            "backgroundColor": "red",
+            "height": "5rem",
+            "marginBottom": "1rem",
+            "marginLeft": "1rem",
+            "marginRight": "1rem",
+            "marginTop": "1rem",
+            "opacity": 0.8,
+            "paddingBottom": "1rem",
+            "paddingLeft": "1rem",
+            "paddingRight": "1rem",
+            "paddingTop": "1rem",
+            "width": "30rem",
+          }
+        }
+        type="line"
+      >
+        <div
+          className="c10"
+          size="default"
+          style={
+            Object {
+              "backgroundColor": "green",
+              "borderBottomColor": "#4d63ff",
+              "borderBottomLeftRadius": "5rem",
+              "borderBottomRightRadius": "5rem",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "0.1rem",
+              "borderLeftColor": "#4d63ff",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": "0.1rem",
+              "borderRightColor": "#4d63ff",
+              "borderRightStyle": "solid",
+              "borderRightWidth": "0.1rem",
+              "borderTopColor": "#4d63ff",
+              "borderTopLeftRadius": "5rem",
+              "borderTopRightRadius": "5rem",
+              "borderTopStyle": "solid",
+              "borderTopWidth": "0.1rem",
+              "boxShadow": "1px 2px 2px 2px #e8e8e8",
+            }
+          }
+        >
+          <div
+            className="c7"
+            size="default"
+            style={
+              Object {
+                "backgroundColor": "blue",
+                "borderBottomColor": "#ccc",
+                "borderBottomLeftRadius": "5rem",
+                "borderBottomRightRadius": "5rem",
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": "0.1rem",
+                "borderLeftColor": "#ccc",
+                "borderLeftStyle": "solid",
+                "borderLeftWidth": "0.1rem",
+                "borderRightColor": "#ccc",
+                "borderRightStyle": "solid",
+                "borderRightWidth": "0.1rem",
+                "borderTopColor": "#ccc",
+                "borderTopLeftRadius": "5rem",
+                "borderTopRightRadius": "5rem",
+                "borderTopStyle": "solid",
+                "borderTopWidth": "0.1rem",
+                "boxShadow": "1px 2px 2px 2px green",
+                "height": "2.5rem",
+              }
+            }
+          >
+            <span
+              className="c12"
+              size="default"
+              style={
+                Object {
+                  "color": "red",
+                  "fontSize": "1.6rem",
+                  "fontWeight": 500,
+                }
+              }
+            >
+              30%
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
     style={
       Object {
         "margin": "50px",
       }
     }
   >
+    <div
+      className="c0"
+      size="default"
+    >
+      <svg
+        height={120}
+        width={120}
+      >
+        <circle
+          cx={60}
+          cy={60}
+          fill="none"
+          r={56}
+          stroke="#e8e8e8"
+          strokeWidth={8}
+        />
+        <circle
+          cx={60}
+          cy={60}
+          fill="none"
+          r={56}
+          stroke="#e8e8e8"
+          strokeDasharray="0 352"
+          strokeLinecap="round"
+          strokeWidth={8}
+          style={
+            Object {
+              "transition": "all .3s",
+            }
+          }
+          transform="matrix(0,-1,1,0,0,120)"
+        />
+      </svg>
+      <span
+        className="c1"
+        size="default"
+        style={
+          Object {
+            "color": "red",
+            "fontSize": "2rem",
+            "fontWeight": 500,
+          }
+        }
+      >
+        0%
+      </span>
+    </div>
+    <p>
+      theme
+    </p>
+    <div
+      className="c0"
+      size="default"
+    >
+      <svg
+        height={120}
+        width={120}
+      >
+        <circle
+          cx={60}
+          cy={60}
+          fill="none"
+          r={56}
+          stroke="#e8e8e8"
+          strokeWidth={8}
+        />
+        <circle
+          cx={60}
+          cy={60}
+          fill="none"
+          r={56}
+          stroke="#e8e8e8"
+          strokeDasharray="0 352"
+          strokeLinecap="round"
+          strokeWidth={8}
+          style={
+            Object {
+              "transition": "all .3s",
+            }
+          }
+          transform="matrix(0,-1,1,0,0,120)"
+        />
+      </svg>
+      <span
+        className="c1"
+        size="default"
+        style={
+          Object {
+            "color": "red",
+            "fontSize": "2rem",
+            "fontWeight": 500,
+          }
+        }
+      >
+        <i
+          className="lugia-icon-reminder_close   c6"
+          onClick={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "color": "green",
+              "cursor": "default",
+              "fontSize": "2rem",
+            }
+          }
+        />
+      </span>
+    </div>
+    <p>
+      theme
+    </p>
+    <div
+      className="c0"
+      size="default"
+    >
+      <svg
+        height={120}
+        width={120}
+      >
+        <circle
+          cx={60}
+          cy={60}
+          fill="none"
+          r={56}
+          stroke="#e8e8e8"
+          strokeWidth={8}
+        />
+        <circle
+          cx={60}
+          cy={60}
+          fill="none"
+          r={56}
+          stroke="#56c22d"
+          strokeDasharray="352 352"
+          strokeLinecap="round"
+          strokeWidth={8}
+          style={
+            Object {
+              "transition": "all .3s",
+            }
+          }
+          transform="matrix(0,-1,1,0,0,120)"
+        />
+      </svg>
+      <span
+        className="c1"
+        size="default"
+        style={
+          Object {
+            "color": "red",
+            "fontSize": "2rem",
+            "fontWeight": 500,
+          }
+        }
+      >
+        <i
+          className="lugia-icon-reminder_check   c6"
+          onClick={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "color": "red",
+              "cursor": "default",
+              "fontSize": "1.6rem",
+            }
+          }
+        />
+      </span>
+    </div>
+    <h1>
+      circle
+    </h1>
+    <p>
+      type="circle" props: percent=
+      0
+    </p>
+    <br />
+    <div
+      className="c0"
+      size="default"
+    >
+      <svg
+        height={120}
+        width={120}
+      >
+        <circle
+          cx={60}
+          cy={60}
+          fill="none"
+          r={56}
+          stroke="#e8e8e8"
+          strokeWidth={8}
+        />
+        <circle
+          cx={60}
+          cy={60}
+          fill="none"
+          r={56}
+          stroke="#e8e8e8"
+          strokeDasharray="0 352"
+          strokeLinecap="round"
+          strokeWidth={8}
+          style={
+            Object {
+              "transition": "all .3s",
+            }
+          }
+          transform="matrix(0,-1,1,0,0,120)"
+        />
+      </svg>
+      <span
+        className="c1"
+        size="default"
+        style={
+          Object {
+            "color": "#363B40",
+          }
+        }
+      >
+        0%
+      </span>
+    </div>
+    <br />
+    <p>
+      type="circle" props: percent=
+      30
+    </p>
+    <br />
+    <div
+      className="c0"
+      size="default"
+    >
+      <svg
+        height={120}
+        width={120}
+      >
+        <circle
+          cx={60}
+          cy={60}
+          fill="none"
+          r={56}
+          stroke="#e8e8e8"
+          strokeWidth={8}
+        />
+        <circle
+          cx={60}
+          cy={60}
+          fill="none"
+          r={56}
+          stroke="#4d63ff"
+          strokeDasharray="105.6 352"
+          strokeLinecap="round"
+          strokeWidth={8}
+          style={
+            Object {
+              "transition": "all .3s",
+            }
+          }
+          transform="matrix(0,-1,1,0,0,120)"
+        />
+      </svg>
+      <span
+        className="c1"
+        size="default"
+        style={
+          Object {
+            "color": "#363B40",
+          }
+        }
+      >
+        30%
+      </span>
+    </div>
+    <button
+      className="c15"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      onMouseUp={[Function]}
+      size="default"
+      style={
+        Object {
+          "backgroundColor": "#ffffff",
+          "borderBottomColor": "#cccccc",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.1rem",
+          "borderLeftColor": "#cccccc",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.1rem",
+          "borderRightColor": "#cccccc",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.1rem",
+          "borderTopColor": "#cccccc",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.1rem",
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
+    >
+      <span
+        className="c16"
+      >
+        <span
+          className="c17"
+          style={
+            Object {
+              "color": "#363B40",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          +10
+        </span>
+      </span>
+    </button>
+     
+    <button
+      className="c15"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      onMouseUp={[Function]}
+      size="default"
+      style={
+        Object {
+          "backgroundColor": "#ffffff",
+          "borderBottomColor": "#cccccc",
+          "borderBottomLeftRadius": "0.4rem",
+          "borderBottomRightRadius": "0.4rem",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": "0.1rem",
+          "borderLeftColor": "#cccccc",
+          "borderLeftStyle": "solid",
+          "borderLeftWidth": "0.1rem",
+          "borderRightColor": "#cccccc",
+          "borderRightStyle": "solid",
+          "borderRightWidth": "0.1rem",
+          "borderTopColor": "#cccccc",
+          "borderTopLeftRadius": "0.4rem",
+          "borderTopRightRadius": "0.4rem",
+          "borderTopStyle": "solid",
+          "borderTopWidth": "0.1rem",
+          "height": "3.2rem",
+          "paddingBottom": "0rem",
+          "paddingLeft": "1.8rem",
+          "paddingRight": "1.8rem",
+          "paddingTop": "0rem",
+        }
+      }
+    >
+      <span
+        className="c16"
+      >
+        <span
+          className="c17"
+          style={
+            Object {
+              "color": "#363B40",
+              "fontSize": "1.4rem",
+            }
+          }
+        >
+          -10
+        </span>
+      </span>
+    </button>
+    <br />
+    <p>
+      type="circle" props: percent=
+      100
+    </p>
+    <br />
+    <div
+      className="c0"
+      size="default"
+    >
+      <svg
+        height={120}
+        width={120}
+      >
+        <circle
+          cx={60}
+          cy={60}
+          fill="none"
+          r={56}
+          stroke="#e8e8e8"
+          strokeWidth={8}
+        />
+        <circle
+          cx={60}
+          cy={60}
+          fill="none"
+          r={56}
+          stroke="#56c22d"
+          strokeDasharray="352 352"
+          strokeLinecap="round"
+          strokeWidth={8}
+          style={
+            Object {
+              "transition": "all .3s",
+            }
+          }
+          transform="matrix(0,-1,1,0,0,120)"
+        />
+      </svg>
+      <span
+        className="c1"
+        size="default"
+        style={
+          Object {
+            "color": "#56c22d",
+          }
+        }
+      >
+        <i
+          className="lugia-icon-reminder_check   c6"
+          onClick={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "color": "#56c22d",
+              "cursor": "default",
+              "fontSize": "3rem",
+            }
+          }
+        />
+      </span>
+    </div>
+    <br />
+    <p>
+      type="circle" props: percent=
+      50
+    </p>
+    <br />
+    <div
+      className="c0"
+      size="default"
+    >
+      <svg
+        height={120}
+        width={120}
+      >
+        <circle
+          cx={60}
+          cy={60}
+          fill="none"
+          r={56}
+          stroke="#e8e8e8"
+          strokeWidth={8}
+        />
+        <circle
+          cx={60}
+          cy={60}
+          fill="none"
+          r={56}
+          stroke="#56c22d"
+          strokeDasharray="176 352"
+          strokeLinecap="round"
+          strokeWidth={8}
+          style={
+            Object {
+              "transition": "all .3s",
+            }
+          }
+          transform="matrix(0,-1,1,0,0,120)"
+        />
+      </svg>
+      <span
+        className="c1"
+        size="default"
+        style={
+          Object {
+            "color": "#56c22d",
+          }
+        }
+      >
+        <i
+          className="lugia-icon-reminder_check   c6"
+          onClick={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "color": "#56c22d",
+              "cursor": "default",
+              "fontSize": "3rem",
+            }
+          }
+        />
+      </span>
+    </div>
+    <br />
+    <p>
+      type="circle" props: percent=
+      50
+    </p>
+    <br />
+    <div
+      className="c0"
+      size="default"
+    >
+      <svg
+        height={120}
+        width={120}
+      >
+        <circle
+          cx={60}
+          cy={60}
+          fill="none"
+          r={56}
+          stroke="#e8e8e8"
+          strokeWidth={8}
+        />
+        <circle
+          cx={60}
+          cy={60}
+          fill="none"
+          r={56}
+          stroke="#f22735"
+          strokeDasharray="176 352"
+          strokeLinecap="round"
+          strokeWidth={8}
+          style={
+            Object {
+              "transition": "all .3s",
+            }
+          }
+          transform="matrix(0,-1,1,0,0,120)"
+        />
+      </svg>
+      <span
+        className="c1"
+        size="default"
+        style={
+          Object {
+            "color": "#f22735",
+          }
+        }
+      >
+        <i
+          className="lugia-icon-reminder_close   c6"
+          onClick={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "color": "#f22735",
+              "cursor": "default",
+              "fontSize": "3rem",
+            }
+          }
+        />
+      </span>
+    </div>
+    <br />
+    <p>
+      type="circle" props: percent=
+      100
+    </p>
+    <br />
+    <div
+      className="c0"
+      size="default"
+    >
+      <svg
+        height={120}
+        width={120}
+      >
+        <circle
+          cx={60}
+          cy={60}
+          fill="none"
+          r={56}
+          stroke="#e8e8e8"
+          strokeWidth={8}
+        />
+        <circle
+          cx={60}
+          cy={60}
+          fill="none"
+          r={56}
+          stroke="#f22735"
+          strokeDasharray="352 352"
+          strokeLinecap="round"
+          strokeWidth={8}
+          style={
+            Object {
+              "transition": "all .3s",
+            }
+          }
+          transform="matrix(0,-1,1,0,0,120)"
+        />
+      </svg>
+      <span
+        className="c1"
+        size="default"
+        style={
+          Object {
+            "color": "#f22735",
+          }
+        }
+      >
+        <i
+          className="lugia-icon-reminder_close   c6"
+          onClick={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "color": "#f22735",
+              "cursor": "default",
+              "fontSize": "3rem",
+            }
+          }
+        />
+      </span>
+    </div>
+    <br />
+    <p>
+      props: percent=
+      50
+       status="error" format= percent =&gt; percent + '--'
+    </p>
+    <br />
+    <div
+      className="c0"
+      size="default"
+    >
+      <svg
+        height={120}
+        width={120}
+      >
+        <circle
+          cx={60}
+          cy={60}
+          fill="none"
+          r={56}
+          stroke="#e8e8e8"
+          strokeWidth={8}
+        />
+        <circle
+          cx={60}
+          cy={60}
+          fill="none"
+          r={56}
+          stroke="#f22735"
+          strokeDasharray="176 352"
+          strokeLinecap="round"
+          strokeWidth={8}
+          style={
+            Object {
+              "transition": "all .3s",
+            }
+          }
+          transform="matrix(0,-1,1,0,0,120)"
+        />
+      </svg>
+      <span
+        className="c1"
+        size="default"
+        style={
+          Object {
+            "color": "#f22735",
+          }
+        }
+      >
+        50--
+      </span>
+    </div>
+    <br />
+    <p>
+      Theme: color===&gt;&gt;&gt; props: percent=
+      30
+    </p>
+    <br />
+    <div
+      className="c0"
+      size="default"
+    >
+      <svg
+        height={120}
+        width={120}
+      >
+        <circle
+          cx={60}
+          cy={60}
+          fill="none"
+          r={56}
+          stroke="#e8e8e8"
+          strokeWidth={8}
+        />
+        <circle
+          cx={60}
+          cy={60}
+          fill="none"
+          r={56}
+          stroke="#4d63ff"
+          strokeDasharray="105.6 352"
+          strokeLinecap="round"
+          strokeWidth={8}
+          style={
+            Object {
+              "transition": "all .3s",
+            }
+          }
+          transform="matrix(0,-1,1,0,0,120)"
+        />
+      </svg>
+      <span
+        className="c1"
+        size="default"
+        style={
+          Object {
+            "color": "red",
+            "fontSize": "2rem",
+            "fontWeight": 500,
+          }
+        }
+      >
+        30%
+      </span>
+    </div>
+    <p>
+      type="circle" size="small" props: percent=
+      0
+    </p>
+    <br />
+    <div
+      className="c26"
+      size="small"
+    >
+      <svg
+        height={80}
+        width={80}
+      >
+        <circle
+          cx={40}
+          cy={40}
+          fill="none"
+          r={37}
+          stroke="#e8e8e8"
+          strokeWidth={6}
+        />
+        <circle
+          cx={40}
+          cy={40}
+          fill="none"
+          r={37}
+          stroke="#e8e8e8"
+          strokeDasharray="0 233"
+          strokeLinecap="round"
+          strokeWidth={6}
+          style={
+            Object {
+              "transition": "all .3s",
+            }
+          }
+          transform="matrix(0,-1,1,0,0,80)"
+        />
+      </svg>
+      <span
+        className="c1"
+        size="small"
+        style={
+          Object {
+            "color": "#363B40",
+          }
+        }
+      >
+        0%
+      </span>
+    </div>
+    <br />
+    <p>
+      type="circle" props: percent=
+      30
+    </p>
+    <br />
+    <div
+      className="c26"
+      size="small"
+    >
+      <svg
+        height={80}
+        width={80}
+      >
+        <circle
+          cx={40}
+          cy={40}
+          fill="none"
+          r={37}
+          stroke="#e8e8e8"
+          strokeWidth={6}
+        />
+        <circle
+          cx={40}
+          cy={40}
+          fill="none"
+          r={37}
+          stroke="#4d63ff"
+          strokeDasharray="69.89999999999999 233"
+          strokeLinecap="round"
+          strokeWidth={6}
+          style={
+            Object {
+              "transition": "all .3s",
+            }
+          }
+          transform="matrix(0,-1,1,0,0,80)"
+        />
+      </svg>
+      <span
+        className="c1"
+        size="small"
+        style={
+          Object {
+            "color": "#363B40",
+          }
+        }
+      >
+        30%
+      </span>
+    </div>
+    <br />
+    <p>
+      type="circle" props: percent=
+      100
+    </p>
+    <br />
+    <div
+      className="c26"
+      size="small"
+    >
+      <svg
+        height={80}
+        width={80}
+      >
+        <circle
+          cx={40}
+          cy={40}
+          fill="none"
+          r={37}
+          stroke="#e8e8e8"
+          strokeWidth={6}
+        />
+        <circle
+          cx={40}
+          cy={40}
+          fill="none"
+          r={37}
+          stroke="#56c22d"
+          strokeDasharray="233 233"
+          strokeLinecap="round"
+          strokeWidth={6}
+          style={
+            Object {
+              "transition": "all .3s",
+            }
+          }
+          transform="matrix(0,-1,1,0,0,80)"
+        />
+      </svg>
+      <span
+        className="c1"
+        size="small"
+        style={
+          Object {
+            "color": "#56c22d",
+          }
+        }
+      >
+        <i
+          className="lugia-icon-reminder_check   c6"
+          onClick={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "color": "#56c22d",
+              "cursor": "default",
+              "fontSize": "2.4rem",
+            }
+          }
+        />
+      </span>
+    </div>
+    <br />
+    <p>
+      type="circle" props: percent=
+      50
+    </p>
+    <br />
+    <div
+      className="c26"
+      size="small"
+    >
+      <svg
+        height={80}
+        width={80}
+      >
+        <circle
+          cx={40}
+          cy={40}
+          fill="none"
+          r={37}
+          stroke="#e8e8e8"
+          strokeWidth={6}
+        />
+        <circle
+          cx={40}
+          cy={40}
+          fill="none"
+          r={37}
+          stroke="#f22735"
+          strokeDasharray="116.5 233"
+          strokeLinecap="round"
+          strokeWidth={6}
+          style={
+            Object {
+              "transition": "all .3s",
+            }
+          }
+          transform="matrix(0,-1,1,0,0,80)"
+        />
+      </svg>
+      <span
+        className="c1"
+        size="small"
+        style={
+          Object {
+            "color": "#f22735",
+          }
+        }
+      >
+        <i
+          className="lugia-icon-reminder_close   c6"
+          onClick={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "color": "#f22735",
+              "cursor": "default",
+              "fontSize": "2.4rem",
+            }
+          }
+        />
+      </span>
+    </div>
+    <br />
+    <p>
+      type="circle" props: percent=
+      100
+    </p>
+    <br />
+    <div
+      className="c26"
+      size="small"
+    >
+      <svg
+        height={80}
+        width={80}
+      >
+        <circle
+          cx={40}
+          cy={40}
+          fill="none"
+          r={37}
+          stroke="#e8e8e8"
+          strokeWidth={6}
+        />
+        <circle
+          cx={40}
+          cy={40}
+          fill="none"
+          r={37}
+          stroke="#f22735"
+          strokeDasharray="233 233"
+          strokeLinecap="round"
+          strokeWidth={6}
+          style={
+            Object {
+              "transition": "all .3s",
+            }
+          }
+          transform="matrix(0,-1,1,0,0,80)"
+        />
+      </svg>
+      <span
+        className="c1"
+        size="small"
+        style={
+          Object {
+            "color": "#f22735",
+          }
+        }
+      >
+        <i
+          className="lugia-icon-reminder_close   c6"
+          onClick={[Function]}
+          onMouseDown={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "color": "#f22735",
+              "cursor": "default",
+              "fontSize": "2.4rem",
+            }
+          }
+        />
+      </span>
+    </div>
+    <br />
     <div
       style={
         Object {
@@ -469,7 +4201,7 @@ exports[`Progress css 1`] = `
           }
         >
           <i
-            className="lugia-icon-reminder_close   c2"
+            className="lugia-icon-reminder_close   c6"
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
@@ -738,7 +4470,7 @@ exports[`Progress css 1`] = `
           }
         >
           <i
-            className="lugia-icon-reminder_check   c2"
+            className="lugia-icon-reminder_check   c6"
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
@@ -1219,7 +4951,7 @@ exports[`Progress css 1`] = `
           }
         >
           <i
-            className="lugia-icon-reminder_check   c2"
+            className="lugia-icon-reminder_check   c6"
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
@@ -1473,7 +5205,7 @@ exports[`Progress css 1`] = `
           }
         >
           <i
-            className="lugia-icon-reminder_check   c2"
+            className="lugia-icon-reminder_check   c6"
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
@@ -1687,7 +5419,7 @@ exports[`Progress css 1`] = `
           }
         >
           <i
-            className="lugia-icon-reminder_close   c2"
+            className="lugia-icon-reminder_close   c6"
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
@@ -1961,7 +5693,7 @@ exports[`Progress css 1`] = `
           }
         >
           <i
-            className="lugia-icon-reminder_close   c2"
+            className="lugia-icon-reminder_close   c6"
             onClick={[Function]}
             onMouseDown={[Function]}
             onMouseEnter={[Function]}
@@ -2377,7 +6109,7 @@ exports[`Progress css 1`] = `
         </span>
       </div>
       <button
-        className="c3"
+        className="c15"
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
@@ -2416,13 +6148,13 @@ exports[`Progress css 1`] = `
         }
       >
         <span
-          className="c4"
+          className="c16"
         >
           <span
-            className="c5"
+            className="c17"
             style={
               Object {
-                "color": "#646A6E",
+                "color": "#363B40",
                 "fontSize": "1.4rem",
               }
             }
@@ -2433,7 +6165,7 @@ exports[`Progress css 1`] = `
       </button>
        
       <button
-        className="c3"
+        className="c15"
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
@@ -2472,13 +6204,13 @@ exports[`Progress css 1`] = `
         }
       >
         <span
-          className="c4"
+          className="c16"
         >
           <span
-            className="c5"
+            className="c17"
             style={
               Object {
-                "color": "#646A6E",
+                "color": "#363B40",
                 "fontSize": "1.4rem",
               }
             }
