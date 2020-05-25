@@ -15,7 +15,7 @@
     "stepType": {
       "type": "StepType",
       "desc": "步骤条风格 有 简洁,半扁平,图标,点状四种风格可供选择",
-      "defaultValue": "simple"
+      "propsDefaultValue": "simple"
     },
     "size": {
       "type": "SizeType",
@@ -25,17 +25,17 @@
     "desAlign": {
       "type": "AlignType",
       "desc": "步骤条描述信息的对齐位置 ,可选择左对齐,居中对齐",
-      "defaultValue": "left"
+      "propsDefaultValue": "left"
     },
     "orientation": {
       "type": "SizeType",
       "desc": "步骤条方向,可选择水平,垂直",
-      "defaultValue": "horizontal"
+      "propsDefaultValue": "horizontal"
     },
     "currentStepNumber": {
       "type": "number",
       "desc": "当前显示的步骤条位置",
-      "defaultValue": 0
+      "propsDefaultValue": 0
     },
     "stepNumber": {
       "type": "number",
@@ -56,17 +56,17 @@
     "icon": {
       "type": "icon",
       "desc": "步骤条显示的图标",
-      "defaultValue": "lugia-icon-financial_cloud"
+      "propsDefaultValue": "lugia-icon-financial_cloud"
     },
     "isFirst": {
       "type": "boolean",
       "desc": "该步骤是否是第一步",
-      "defaultValue": false
+      "propsDefaultValue": false
     },
     "isDashed": {
       "type": "boolean",
       "desc": "步骤条进度是否用虚线显示",
-      "defaultValue": false
+      "propsDefaultValue": false
     }
   },
   "type": {
