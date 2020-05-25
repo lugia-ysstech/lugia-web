@@ -37,7 +37,7 @@
     "stepType": {
       "type": "StepType",
       "desc": "步骤条风格 有 简洁,半扁平,图标,点状四种风格可供选择",
-      "defaultValue": "simple"
+      "propsDefaultValue": "simple"
     },
     "size": {
       "type": "SizeType",
@@ -47,17 +47,17 @@
     "orientation": {
       "type": "OrientationType",
       "desc": "步骤条方向,可选择水平,垂直",
-      "defaultValue": "horizontal"
+      "propsDefaultValue": "horizontal"
     },
     "desAlign": {
       "type": "AlignType",
       "desc": "步骤条描述信息的对齐位置 ,可选择左对齐,居中对齐",
-      "defaultValue": "left"
+      "propsDefaultValue": "left"
     },
     "currentStepNumber": {
       "type": "number",
       "desc": "当前显示的步骤条位置",
-      "defaultValue": 0
+      "propsDefaultValue": 0
     }
   },
   "type": {
