@@ -42,7 +42,7 @@
     "size": {
       "type": "SizeType",
       "desc": "步骤条尺寸,有正常和迷你 两种尺寸可供选择",
-      "defaultValue": "default"
+      "propsDefaultValue": "default"
     },
     "orientation": {
       "type": "OrientationType",
